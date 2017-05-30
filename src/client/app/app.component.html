@@ -1,0 +1,41 @@
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <a class="navbar-brand" href="#">
+    <span>Land of the Rair</span>
+    <span *ngIf="colyseus.lobby.myAccount">- {{ colyseus.lobby.myAccount.username }}</span>
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
+        <a class="nav-link" href="#" dropdownToggle>Game</a>
+
+        <ul *dropdownMenu class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" (click)="colyseus.lobby.logout()">Logout</a>
+          </li>
+        </ul>
+
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="window lobby" [ng2-draggable]="true" [ng2DraggableHandle]="lobbyDrag" windowName="lobby" [class.hidden]="!loggedIn">
+  <div class="window-header text-center" #lobbyDrag>Lobby Chat</div>
+  <div class="window-body">
+    <app-lobby [lobbyState]="colyseus.lobby.lobbyState"></app-lobby>
+  </div>
+</div>
+
+<div class="window character-select" [ng2-draggable]="true" [ng2DraggableHandle]="characterSelectDrag" windowName="chararacterSelect" [class.hidden]="!loggedIn">
+  <div class="window-header text-center" #characterSelectDrag>Character Select</div>
+  <div class="window-body">
+    <app-character-select [lobbyState]="colyseus.lobby.lobbyState"></app-character-select>
+  </div>
+</div>
+
+
+{{ colyseus.lobby.myAccount | json }}
+<br>
+{{ colyseus.lobby.lobbyState | json }}

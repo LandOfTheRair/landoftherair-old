@@ -1,0 +1,129 @@
+
+<div class="container">
+  <div class="row" *ngFor="let charSlot of charSlots; let i = index">
+    <label class="col btn btn-info no-border-radius no-margin" [class.active]="i === curSlot" [(ngModel)]="curSlot" [btnRadio]="i">
+      {{ lobby.myAccount.characterNames[i] || 'New Character' }}
+    </label>
+  </div>
+  <div class="row">
+    <button class="col no-border-radius btn btn-warning" (click)="charModal.show()">Create</button>
+    <button class="col no-border-radius btn btn-primary" [disabled]="!lobby.myAccount.characterNames[curSlot]">Play</button>
+  </div>
+</div>
+
+<div class="modal fade"
+     bsModal
+     #charModal="bs-modal"
+     [config]="{backdrop: 'static'}"
+     (onHidden)="deleteCharacter()"
+     (onShow)="getCharacter()"
+     tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Create Character</h4>
+        <button type="button" class="close pull-right" (click)="charModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col text-center">
+            <label for="name">
+              <h3>Name</h3>
+            </label>
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-6">
+            <input class="form-control"
+                   placeholder="Enter a character name (letters only)..."
+                   maxlength="20"
+                   type="text"
+                   id="name"
+                   (keyup)="validateName()"
+                   [(ngModel)]="lobby.myCharacter.name" />
+          </div>
+        </div>
+
+        <div class="row m-1">
+          <div class="col text-center">
+            <h3>Allegiance</h3>
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <div class="btn-group">
+            <label class="btn btn-info"
+                   *ngFor="let allegiance of lobby.myCharacter._validAllegiances"
+                   [btnRadio]="allegiance"
+                   [class.active]="allegiance === lobby.myCharacter.allegiance"
+                   (click)="getCharacter()"
+                   [(ngModel)]="lobby.myCharacter.allegiance">{{ allegiance }}</label>
+          </div>
+        </div>
+
+        <div class="row m-1">
+          <div class="col text-center">
+            <h3>Statistics</h3>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-6">
+            <table class="table table-bordered">
+              <tr>
+                <td><strong>STR</strong> {{ lobby.myCharacter.str }}</td>
+                <td><strong>DEX</strong> {{ lobby.myCharacter.dex }}</td>
+                <td><strong>AGI</strong> {{ lobby.myCharacter.agi }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>INT</strong> {{ lobby.myCharacter.int }}</td>
+                <td><strong>WIS</strong> {{ lobby.myCharacter.wis }}</td>
+                <td><strong>WIL</strong> {{ lobby.myCharacter.wil }}</td>
+              </tr>
+
+              <tr>
+                <td><strong>CON</strong> {{ lobby.myCharacter.con }}</td>
+                <td><strong>LUK</strong> {{ lobby.myCharacter.luk }}</td>
+                <td><strong>CHA</strong> {{ lobby.myCharacter.cha }}</td>
+              </tr>
+
+              <tr>
+                <td colspan="3" class="text-center"><strong>Gold</strong> {{ lobby.myCharacter.gold | number:0 }}</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col-6">
+            {{ lobby.myCharacter._allegianceDesc }}
+          </div>
+
+        </div>
+
+        <div class="row" *ngIf="needsOverwrite">
+          <div class="col-1 offset-3 vertical-center">
+            <input type="checkbox" id="overwrite" class="form-control" [(ngModel)]="confirmOverwrite" />
+          </div>
+          <div class="col">
+            <label for="overwrite">
+              Yes, I want to overwrite my old character.
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="charModal.hide()">Close</button>
+        <button class="btn btn-primary" [disabled]="invalidCharacterInfo()" (click)="createCharacter()">Create</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

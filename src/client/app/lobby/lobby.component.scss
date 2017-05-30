@@ -1,0 +1,23 @@
+
+.chat-area {
+  height: calc(100% - 38px);
+  max-height: 350px;
+  overflow-y: auto;
+
+  .message {
+    display: flex;
+    flex-direction: row;
+
+    .account {
+      min-width: 150px;
+      text-align: right;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+  }
+}
+
+.input-area {
+  height: 38px;
+  flex: 1;
+}

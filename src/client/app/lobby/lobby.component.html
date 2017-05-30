@@ -1,0 +1,20 @@
+
+<div class="container no-padding">
+
+  <div class="chat-area no-padding" ngx-auto-scroll lock-y-offset="30">
+    <div class="message" *ngFor="let message of lobbyState.messages">
+      <span class="account">[{{ message.account }}]</span>
+      <span class="message">{{ message.message }}</span>
+    </div>
+  </div>
+
+  <div class="input-area row no-margin">
+    <div class="col no-padding">
+      <input class="form-control no-border-radius" placeholder="Type a message here..." type="text" [(ngModel)]="chatText" (keyup.enter)="sendMessage()" />
+    </div>
+    <div class="col-2 no-padding">
+      <button class="btn btn-primary form-control no-border-radius" (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+
+</div>
