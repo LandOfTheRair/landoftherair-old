@@ -1,0 +1,61 @@
+{
+  "name": "kod-prototype",
+  "version": "1.0.0",
+  "description": "a prototype morpg",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm-run-all --parallel start:*",
+    "start:server": "nodemon --ignore \"*.json\" --exec \"ts-node \" -- \"src/server/index.ts\"",
+    "start:client": "ng serve",
+    "build": "ng build",
+    "build:prod": "ng build --environment=prod",
+    "lint": "ng lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seiyria/kod-prototype.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/seiyria/kod-prototype/issues"
+  },
+  "homepage": "https://github.com/seiyria/kod-prototype#readme",
+  "dependencies": {
+    "@angular/common": "^4.1.3",
+    "@angular/compiler": "^4.1.3",
+    "@angular/core": "^4.1.3",
+    "@angular/forms": "^4.1.3",
+    "@angular/http": "^4.1.3",
+    "@angular/platform-browser": "^4.1.3",
+    "@angular/platform-browser-dynamic": "^4.1.3",
+    "@angular/router": "^4.1.3",
+    "angular2-auto-scroll": "^1.0.12",
+    "auth0-lock": "^10.16.0",
+    "bootstrap": "^4.0.0-alpha.6",
+    "colyseus": "^0.4.18",
+    "colyseus.js": "^0.6.0",
+    "core-js": "^2.4.1",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.27",
+    "ngx-auto-scroll": "^1.0.13",
+    "ngx-bootstrap": "^1.6.6",
+    "restricted-number": "^1.1.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.0.6",
+    "@angular/compiler-cli": "^4.1.3",
+    "@types/jasmine": "2.5.38",
+    "@types/node": "~6.0.60",
+    "codelyzer": "~2.0.0",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
+    "ts-node": "^2.0.0",
+    "tslint": "~4.5.0",
+    "typescript": "^2.3.3"
+  }
+}
