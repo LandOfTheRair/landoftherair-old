@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import * as swal from 'sweetalert2';
+
 import { AuthService } from './auth.service';
 
 import { LobbyState } from '../../models/lobbystate';
@@ -69,14 +71,22 @@ export class ColyseusLobbyService {
   }
 
   private getUserName() {
-    let username = '';
-    do {
-      username = prompt('Enter your desired username.');
-    } while(!username || !username.trim() || username.length < 2 || username.length > 20);
-
-    localStorage.setItem('user_name', username);
-
-    this.sendUserId();
+    (<any>swal)({
+      titleText: 'Enter your desired username:',
+      text: 'It must be between 2 and 20 characters.',
+      input: 'text',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      preConfirm: (username) => {
+        return new Promise((resolve, reject) => {
+          if(username.length < 2 || username.length > 20) reject('Username is not the right size');
+          resolve();
+        });
+      }
+    }).then(username => {
+      localStorage.setItem('user_name', username);
+      this.sendUserId();
+    });
   }
 
   private setAccount(account) {
