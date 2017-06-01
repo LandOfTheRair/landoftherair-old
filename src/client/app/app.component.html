@@ -41,6 +41,6 @@
     <button class="no-border-radius btn btn-danger btn-sm float-right" (click)="colyseus.game.quit()">&times;</button>
   </div>
   <div class="window-body">
-    <app-map [clientGameState]="colyseus.game.clientGameState" *ngIf="inGame"></app-map>
+    <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character" *ngIf="inGame"></app-map>
   </div>
 </div>

@@ -1,5 +1,5 @@
 
-import { omit, extend } from 'lodash';
+import { omit, merge } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 
 export type Allegiance =
@@ -10,6 +10,10 @@ export type Allegiance =
 | 'Adventurers'
 | 'Wilderness'
 | 'Underground'
+
+export type Sex = 'Male' | 'Female';
+
+export type Direction = 'N' | 'S' | 'E' | 'W' | 'C';
 
 export class Stats {
   str = 0;
@@ -23,9 +27,13 @@ export class Stats {
   luk = 0;
   cha = 0;
   con = 0;
+
+  move = 3;
 }
 
 export class Character {
+
+  _id?: any;
 
   username: string;
   charSlot: number;
@@ -39,9 +47,11 @@ export class Character {
   stats: Stats = new Stats();
 
   allegiance: Allegiance = 'None';
+  sex: Sex = 'Male';
+  dir: Direction = 'S';
 
-  x: number;
-  y: number;
+  x: number = 0;
+  y: number = 0;
   map: string;
 
   get level() {
@@ -49,11 +59,11 @@ export class Character {
   }
 
   constructor(opts) {
-    extend(this, opts);
+    merge(this, opts);
   }
 
   toJSON() {
-    return omit(this, ['username', 'charSlot']);
+    return omit(this, ['_id', 'username', 'charSlot']);
   }
 }
 
