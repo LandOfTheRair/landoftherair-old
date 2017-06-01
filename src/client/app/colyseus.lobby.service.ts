@@ -9,13 +9,15 @@ import { Account } from '../../models/account';
 export class ColyseusLobbyService {
 
   client: any;
+  colyseus: any;
   lobbyState: LobbyState = new LobbyState({});
   myAccount: Account = new Account({});
   myCharacter: any = { name: '' };
 
   constructor(private auth: AuthService) {}
 
-  init(client) {
+  init(colyseus, client) {
+    this.colyseus = colyseus;
     this.client = client;
     this.initLobby();
   }
@@ -42,7 +44,6 @@ export class ColyseusLobbyService {
     });
 
     room.onData.add((data) => {
-      console.log(data);
       this.interceptLobbyCommand(data);
     });
   }
@@ -87,9 +88,14 @@ export class ColyseusLobbyService {
   }
 
   private interceptLobbyCommand({ action, error, ...other }) {
-    if(error === 'error_invalid_token') {
-      // alert('Your token was invalid. Refresh and try again.');
-      this.loginThenEmit();
+    if(error) {
+      if(error === 'error_invalid_token') {
+        // alert('Your token was invalid. Refresh and try again.');
+        this.loginThenEmit();
+        return;
+      }
+
+      alert(error);
       return;
     }
 
@@ -97,6 +103,7 @@ export class ColyseusLobbyService {
     if(action === 'need_user_name') return this.getUserName();
     if(action === 'set_account')    return this.setAccount(other.account);
     if(action === 'set_character')  return this.setCharacter(other.character);
+    if(action === 'start_game')     return this.startGame(other.character);
   }
 
   private logout() {
@@ -104,6 +111,10 @@ export class ColyseusLobbyService {
     this.client.send({ action: 'logout' });
 
     window.location.reload();
+  }
+
+  private startGame(character) {
+    this.colyseus.initGame(character);
   }
 
   public sendMessage(message) {
@@ -118,5 +129,9 @@ export class ColyseusLobbyService {
 
   public createCharacter(charSlot) {
     this.client.send({ action: 'create', charSlot, character: this.myCharacter });
+  }
+
+  public playCharacter(charSlot) {
+    this.client.send({ action: 'play', charSlot });
   }
 }

@@ -5,8 +5,16 @@
 
 export const environment = {
   production: false,
-  domain: 'localhost',
-  port: 3303,
+  server: {
+    domain: 'localhost',
+    protocol: 'http',
+    port: 3303,
+  },
+  client: {
+    domain: 'localhost',
+    protocol: 'http',
+    port: 4200
+  },
   auth0: {
     domain: 'landoftherair.auth0.com',
     client: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',

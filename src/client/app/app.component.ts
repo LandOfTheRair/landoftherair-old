@@ -14,6 +14,10 @@ export class AppComponent implements OnInit {
     return this.colyseus.lobby.myAccount;
   }
 
+  get inGame() {
+    return this.colyseus.game.inGame;
+  }
+
   ngOnInit() {
     this.colyseus.init();
   }

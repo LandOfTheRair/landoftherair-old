@@ -61,4 +61,8 @@ export class CharacterSelectComponent implements OnInit {
     return this.lobby.myAccount.characterNames[this.curSlot];
   }
 
+  playCharacter() {
+    this.lobby.playCharacter(this.curSlot);
+  }
+
 }

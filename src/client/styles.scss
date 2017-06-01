@@ -1,4 +1,8 @@
 
+.hidden {
+  display: none !important;
+}
+
 .no-padding {
   padding: 0;
 }
@@ -33,6 +37,13 @@
     max-width: 600px;
   }
 
+  &.map {
+    .window-body {
+      min-height: 576px;
+      min-width: 576px;
+    }
+  }
+
   position: absolute !important;
 
   border: 1px solid #000;
@@ -51,8 +62,8 @@
   }
 
   .window-header {
-    min-height: 25px;
-    max-height: 25px;
+    min-height: 28px;
+    max-height: 28px;
     flex: 1;
 
     user-select: none;

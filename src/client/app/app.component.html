@@ -28,14 +28,19 @@
   </div>
 </div>
 
-<div class="window character-select" [ng2-draggable]="true" [ng2DraggableHandle]="characterSelectDrag" windowName="chararacterSelect" [class.hidden]="!loggedIn">
+<div class="window character-select" [ng2-draggable]="true" [ng2DraggableHandle]="characterSelectDrag" windowName="chararacterSelect" [class.hidden]="!loggedIn || inGame">
   <div class="window-header text-center" #characterSelectDrag>Character Select</div>
   <div class="window-body">
     <app-character-select [lobbyState]="colyseus.lobby.lobbyState"></app-character-select>
   </div>
 </div>
 
-
-{{ colyseus.lobby.myAccount | json }}
-<br>
-{{ colyseus.lobby.lobbyState | json }}
+<div class="window map" [ng2-draggable]="true" [ng2DraggableHandle]="mapDrag" windowName="map" [class.hidden]="!inGame">
+  <div class="window-header text-center" #mapDrag>
+    World
+    <button class="no-border-radius btn btn-danger btn-sm float-right" (click)="colyseus.game.quit()">&times;</button>
+  </div>
+  <div class="window-body">
+    <app-map [clientGameState]="colyseus.game.clientGameState" *ngIf="inGame"></app-map>
+  </div>
+</div>
