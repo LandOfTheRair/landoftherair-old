@@ -24,4 +24,8 @@ export class ColyseusService {
   private initClient() {
     this.client = new Colyseus.Client(`ws://${environment.server.domain}:${environment.server.port}`);
   }
+
+  get username() {
+    return this.lobby.myAccount.username;
+  }
 }
