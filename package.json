@@ -46,6 +46,7 @@
     "phaser": "^2.6.2",
     "restricted-number": "^1.1.0",
     "rxjs": "^5.1.0",
+    "sweetalert2": "^6.6.4",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
