@@ -1,14 +1,19 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
 import { ClientGameState } from '../../../models/clientgamestate';
 
 import { Game } from './phasergame';
+import { Player } from '../../../models/player';
+import { ColyseusService } from '../colyseus.service';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit, OnDestroy {
+export class MapComponent implements OnInit, OnDestroy, OnChanges {
+
+  @Input()
+  public currentPlayer: Player = new Player({});
 
   @Input()
   public clientGameState: ClientGameState = new ClientGameState({});
@@ -16,14 +21,24 @@ export class MapComponent implements OnInit, OnDestroy {
   private phaser: any;
   private game: Game;
 
-  constructor() { }
+  constructor(private colyseus: ColyseusService) {}
+
+  updateGamePlayer() {
+    this.game.setPlayer(this.currentPlayer);
+  }
 
   ngOnInit() {
     // 9x9, tiles are 64x64
     const boxSize = 9 * 64;
 
-    this.game = new Game(this.clientGameState);
+    this.game = new Game(this.clientGameState, this.currentPlayer);
+    this.game.moveCallback = (x, y) => this.colyseus.game.doMove(x, y);
     this.phaser = new (<any>window).Phaser.Game(boxSize, boxSize, (<any>window).Phaser.CANVAS, 'map', this.game);
+
+    this.clientGameState.updateMyPlayer.subscribe((player) => {
+      this.currentPlayer = player;
+      this.updateGamePlayer();
+    });
   }
 
   ngOnDestroy() {
@@ -33,6 +48,11 @@ export class MapComponent implements OnInit, OnDestroy {
 
     const elements = document.getElementsByTagName('canvas');
     while(elements[0]) elements[0].parentNode.removeChild(elements[0]);
+  }
+
+  ngOnChanges() {
+    if(!this.currentPlayer || !this.game) return;
+    this.updateGamePlayer();
   }
 
 }
