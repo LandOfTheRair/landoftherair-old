@@ -50,6 +50,8 @@ export class Lobby extends Room<LobbyState> {
 
   private async tryLogin(client, { userId, username }) {
 
+    // TODO check if account logged in, if so, fail here
+
     let account = await this.getAccount(userId);
 
     if(!account) {
@@ -124,6 +126,23 @@ export class Lobby extends Room<LobbyState> {
     DB.$players.insert(player);
   }
 
+  private getCharacter(username, charSlot) {
+    return DB.$players.findOne({ username, charSlot });
+  }
+
+  private async playCharacter(client, { charSlot }) {
+    const character = await this.getCharacter(client.username, charSlot);
+
+    if(!character) {
+      this.send(client, { error: 'no_character' });
+      return;
+    }
+
+    // TODO set in game flag, check, fail if necessary
+
+    this.send(client, { action: 'start_game', character });
+  }
+
   onJoin(client, options) {
     this.send(client, { action: 'need_user_id' });
   }
@@ -141,6 +160,7 @@ export class Lobby extends Room<LobbyState> {
     if(data.userId && data.idToken) return this.tryLogin(client, data);
     if(data.message)                return this.sendMessage(client, data.message);
     if(data.characterCreator)       return this.viewCharacter(client, data);
+    if(data.action === 'play')      return this.playCharacter(client, data);
     if(data.action === 'create')    return this.createCharacter(client, data);
     if(data.action === 'logout')    return this.logout(client);
   }

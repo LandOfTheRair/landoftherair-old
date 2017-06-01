@@ -2,6 +2,7 @@
 import * as colyseus from 'colyseus';
 import * as http from 'http';
 import * as express from 'express';
+import * as cors from 'cors';
 
 import * as Rooms from './rooms';
 
@@ -14,6 +15,8 @@ class GameAPI {
   constructor() {
     this.isReady = new Promise(resolve => {
       const app = express();
+      app.use(cors());
+      app.use('/maps', express.static(require('path').join(__dirname, 'maps')));
       const port = process.env.PORT || 3303;
 
       const server = http.createServer(app);

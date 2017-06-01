@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "kod"
+    "name": "landoftherair"
   },
   "apps": [
     {
@@ -21,7 +21,11 @@
         "../../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../../node_modules/phaser/build/p2.js",
+        "../../node_modules/phaser/build/pixi.js",
+        "../../node_modules/phaser/build/phaser.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

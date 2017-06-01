@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-
 import { Draggable } from './draggable.directive';
 
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
@@ -14,8 +13,12 @@ import { AppComponent } from './app.component';
 import { AuthService } from './auth.service';
 import { ColyseusService } from './colyseus.service';
 import { ColyseusLobbyService } from './colyseus.lobby.service';
+import { ColyseusGameService } from './colyseus.game.service';
 import { LobbyComponent } from './lobby/lobby.component';
 import { CharacterSelectComponent } from './character-select/character-select.component';
+import { MapComponent } from './map/map.component';
+
+(<any>window).PhaserGlobal = { hideBanner: true };
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { CharacterSelectComponent } from './character-select/character-select.co
 
     Draggable,
     NgxAutoScroll,
-    CharacterSelectComponent
+    CharacterSelectComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,8 @@ import { CharacterSelectComponent } from './character-select/character-select.co
   providers: [
     AuthService,
     ColyseusService,
-    ColyseusLobbyService
+    ColyseusLobbyService,
+    ColyseusGameService
   ],
   bootstrap: [AppComponent]
 })

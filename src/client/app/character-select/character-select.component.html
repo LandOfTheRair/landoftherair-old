@@ -7,7 +7,8 @@
   </div>
   <div class="row">
     <button class="col no-border-radius btn btn-warning" (click)="charModal.show()">Create</button>
-    <button class="col no-border-radius btn btn-primary" [disabled]="!lobby.myAccount.characterNames[curSlot]">Play</button>
+    <button class="col no-border-radius btn btn-primary"
+            (click)="playCharacter()" [disabled]="!lobby.myAccount.characterNames[curSlot]">Play</button>
   </div>
 </div>
 

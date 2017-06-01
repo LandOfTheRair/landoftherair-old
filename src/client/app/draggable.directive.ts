@@ -25,7 +25,10 @@ export class Draggable implements OnInit {
   }
 
   private loadCoordinates() {
-    const { top, left } = JSON.parse(localStorage.getItem(`window-${this.windowName}`));
+    const coordinates = JSON.parse(localStorage.getItem(`window-${this.windowName}`));
+    if(!coordinates) return;
+
+    const { top, left } = coordinates;
     if(!top || !left) return;
     this.setElementCoords(top, left);
   }
