@@ -6,6 +6,7 @@ import { Player } from './player';
 export class GameState {
   players: Player[] = [];
   map: any = {};
+  mapName: string = '';
 
   addPlayer(player) {
     this.players.push(player);
@@ -26,6 +27,7 @@ export class GameState {
   toJSON() {
     return {
       map: this.map,
+      mapName: this.mapName,
       players: this.players
     }
   }

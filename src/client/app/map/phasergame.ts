@@ -11,17 +11,29 @@ export class Game {
   private player: Player;
   private playerSprite: any;
 
-  private otherPlayerSprites: Player[] = [];
+  private otherPlayerSprites = [];
+
+  private canCreate: Promise<boolean>;
+  private resolveCanCreate;
 
   public moveCallback = (x, y) => {};
 
   constructor(private clientGameState: ClientGameState, player) {
     this.player = player;
+    this.canCreate = new Promise(resolve => this.resolveCanCreate = resolve);
   }
 
-  createPlayer(player: Player) {
+  async createPlayer(player: Player) {
+    if(!this.g.add) return;
+    await this.canCreate;
+
     const sprite = this.getPlayerSprite(player);
-    this.otherPlayerSprites.push(sprite);
+    if(player.username === this.player.username) {
+      this.playerSprite = sprite;
+
+    } else {
+      this.otherPlayerSprites.push(sprite);
+    }
   }
 
   updatePlayer(player: Player) {
@@ -40,9 +52,15 @@ export class Game {
   }
 
   removePlayer(player: Player) {
-    const sprite = find(this.otherPlayerSprites, { username: player.username });
-    sprite.destroy();
-    remove(this.otherPlayerSprites, sprite => sprite.username === player.username);
+    if(this.player.username === player.username) {
+      this.playerSprite.destroy();
+      delete this.playerSprite;
+
+    } else {
+      const sprite = find(this.otherPlayerSprites, { username: player.username });
+      sprite.destroy();
+      remove(this.otherPlayerSprites, sprite => sprite.username === player.username);
+    }
   }
 
   get assetUrl() {
@@ -136,7 +154,8 @@ export class Game {
     map.createLayer('Walls');
     map.createLayer('Foliage');
 
-    this.playerSprite = this.getPlayerSprite(this.player);
+    this.resolveCanCreate();
+    // this.playerSprite = this.getPlayerSprite(this.player);
 
     this.setupPhaser();
   }
@@ -147,7 +166,13 @@ export class Game {
 
   update() {
     if(!this.player) return;
-    // this.updatePlayerSprite(this.playerSprite, this.player);
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
+  }
+
+  destroy() {
+    if(this.playerSprite) {
+      this.playerSprite.destroy();
+    }
+    this.otherPlayerSprites.forEach(sprite => sprite.destroy());
   }
 }
