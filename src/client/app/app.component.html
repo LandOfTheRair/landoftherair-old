@@ -51,12 +51,12 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="mapDrag"
      windowName="map"
-     [class.hidden]="!inGame">
+     *ngIf="inGame">
   <div class="window-header text-center" #mapDrag>
     World
     <button class="no-border-radius btn btn-danger btn-sm float-right" (click)="colyseus.game.quit()">&times;</button>
   </div>
   <div class="window-body">
-    <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character" *ngIf="inGame"></app-map>
+    <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character"></app-map>
   </div>
 </div>
