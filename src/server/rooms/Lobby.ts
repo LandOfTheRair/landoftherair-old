@@ -38,13 +38,13 @@ export class Lobby extends Room<LobbyState> {
     return DB.$accounts.update({ userId: account.userId }, { $set: account });
   }
 
-  private saveAccount(account: Account) {
+  private async saveAccount(account: Account) {
     return DB.$accounts.insert(account);
   }
 
-  private createAccount({ userId, username }): Account {
+  private async createAccount({ userId, username }): Promise<Account> {
     const account: Account = new Account({ userId, username, createdAt: Date.now(), characterNames: [], maxCharacters: 4 });
-    this.saveAccount(account);
+    await this.saveAccount(account);
     return account;
   }
 
@@ -60,7 +60,11 @@ export class Lobby extends Room<LobbyState> {
         return;
 
       } else {
-        account = this.createAccount({ userId, username });
+        try {
+          account = await this.createAccount({ userId, username });
+        } catch(e) {
+          this.send(client, { error: 'account_exists' });
+        }
       }
     }
 
