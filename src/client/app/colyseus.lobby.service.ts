@@ -70,11 +70,16 @@ export class ColyseusLobbyService {
     }
   }
 
-  private getUserName() {
+  private getUserName(fromError = false) {
+    let titleText = 'Enter your desired username.';
+    if(fromError) {
+      titleText = `${titleText} Your previous account id is already in use. Please choose another.`
+    }
     (<any>swal)({
-      titleText: 'Enter your desired username:',
+      titleText,
       text: 'It must be between 2 and 20 characters.',
       input: 'text',
+      type: fromError ? 'error' : null,
       allowOutsideClick: false,
       allowEscapeKey: false,
       preConfirm: (username) => {
@@ -102,6 +107,11 @@ export class ColyseusLobbyService {
       if(error === 'error_invalid_token') {
         // alert('Your token was invalid. Refresh and try again.');
         this.loginThenEmit();
+        return;
+      }
+
+      if(error === 'account_exists') {
+        this.getUserName(true);
         return;
       }
 
