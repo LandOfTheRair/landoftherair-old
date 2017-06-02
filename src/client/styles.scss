@@ -32,9 +32,13 @@
 
   &.lobby {
     min-height: 400px;
-    min-width: 400px;
+    min-width: 600px;
 
     max-width: 600px;
+
+    &.minimized {
+      min-height: 0;
+    }
   }
 
   &.map {
