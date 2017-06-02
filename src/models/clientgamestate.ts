@@ -1,7 +1,7 @@
 
 import { EventEmitter } from '@angular/core';
 
-import { extend, reject } from 'lodash';
+import { extend, remove, find } from 'lodash';
 
 import { Player } from './player';
 
@@ -10,17 +10,33 @@ export class ClientGameState {
   map: any = {};
   mapName: string = '';
 
-  updateMyPlayer = new EventEmitter();
+  createPlayer$ = new EventEmitter();
+  updatePlayer$ = new EventEmitter();
+  removePlayer$ = new EventEmitter();
 
   constructor(opts) {
     extend(this, opts);
   }
 
-  addPlayer(player) {
-    this.players.push(new Player(player));
+  addPlayer(playerRef) {
+    const player = new Player(playerRef);
+    this.players.push(player);
+    this.createPlayer$.emit(player);
   }
 
-  removePlayer(player) {
-    this.players = reject(this.players, p => p.username === player.username);
+  findPlayer(username) {
+    return find(this.players, { username });
+  }
+
+  updatePlayer(playerIndex, attr, val) {
+    this.players[playerIndex][attr] = val;
+    this.updatePlayer$.emit(this.players[playerIndex]);
+  }
+
+  removePlayer(playerIndex) {
+    const player = this.players[playerIndex];
+    this.removePlayer$.emit(player);
+
+    remove(this.players, (p, i) => i === playerIndex);
   }
 }

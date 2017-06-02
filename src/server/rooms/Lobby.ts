@@ -39,7 +39,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private saveAccount(account: Account) {
-    return DB.$accounts.update(account, { upsert: true });
+    return DB.$accounts.insert(account);
   }
 
   private createAccount({ userId, username }): Account {
