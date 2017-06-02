@@ -21,15 +21,15 @@ export class Move extends Command {
 
     const checkX = Math.abs(x);
     const checkY = Math.abs(y);
-
-    if(checkX > checkY) {
+    
+    if(checkX >= checkY) {
       if(x > 0) {
         player.dir = 'E';
       } else if(x < 0) {
         player.dir = 'W';
       }
 
-    } else if(checkY > x) {
+    } else if(checkY > checkX) {
       if(y > 0) {
         player.dir = 'S';
       } else if(y < 0) {
