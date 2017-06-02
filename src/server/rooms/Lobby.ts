@@ -63,7 +63,11 @@ export class Lobby extends Room<LobbyState> {
         try {
           account = await this.createAccount({ userId, username });
         } catch(e) {
-          this.send(client, { error: 'account_exists' });
+          this.send(client, {
+            error: 'account_exists',
+            prettyErrorName: 'Account Already Exists',
+            prettyErrorDesc: 'Please choose a unique username.'
+          });
         }
       }
     }
@@ -138,7 +142,11 @@ export class Lobby extends Room<LobbyState> {
     const character = await this.getCharacter(client.username, charSlot);
 
     if(!character) {
-      this.send(client, { error: 'no_character' });
+      this.send(client, {
+        error: 'no_character',
+        prettyErrorName: 'No Character',
+        prettyErrorDesc: 'There is no character in this slot. Please create one.'
+      });
       return;
     }
 
@@ -157,7 +165,11 @@ export class Lobby extends Room<LobbyState> {
 
   onMessage(client, data) {
     if(data.idToken && !this.verifyToken(data.idToken)) {
-      this.send(client, { error: 'error_invalid_token' });
+      this.send(client, {
+        error: 'error_invalid_token',
+        prettyErrorName: 'Invalid Auth Token',
+        prettyErrorDesc: 'Stop hacking.'
+      });
       return;
     }
 
