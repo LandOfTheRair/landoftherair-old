@@ -21,21 +21,37 @@
   </div>
 </nav>
 
-<div class="window lobby" [ng2-draggable]="true" [ng2DraggableHandle]="lobbyDrag" windowName="lobby" [class.hidden]="!loggedIn">
-  <div class="window-header text-center" #lobbyDrag>Lobby Chat</div>
-  <div class="window-body">
+<div class="window lobby"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="lobbyDrag"
+     windowName="lobby"
+     [class.minimized]="minimized['lobby']"
+     [class.hidden]="!loggedIn">
+  <div class="window-header text-center" #lobbyDrag>
+    Lobby Chat
+    <button class="no-border-radius btn btn-warning btn-sm float-right" (click)="minimize('lobby')">_</button>
+  </div>
+  <div class="window-body" [class.hidden]="minimized['lobby']">
     <app-lobby [lobbyState]="colyseus.lobby.lobbyState"></app-lobby>
   </div>
 </div>
 
-<div class="window character-select" [ng2-draggable]="true" [ng2DraggableHandle]="characterSelectDrag" windowName="chararacterSelect" [class.hidden]="!loggedIn || inGame">
+<div class="window character-select"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="characterSelectDrag"
+     windowName="chararacterSelect"
+     [class.hidden]="!loggedIn || inGame">
   <div class="window-header text-center" #characterSelectDrag>Character Select</div>
   <div class="window-body">
     <app-character-select [lobbyState]="colyseus.lobby.lobbyState"></app-character-select>
   </div>
 </div>
 
-<div class="window map" [ng2-draggable]="true" [ng2DraggableHandle]="mapDrag" windowName="map" [class.hidden]="!inGame">
+<div class="window map"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="mapDrag"
+     windowName="map"
+     [class.hidden]="!inGame">
   <div class="window-header text-center" #mapDrag>
     World
     <button class="no-border-radius btn btn-danger btn-sm float-right" (click)="colyseus.game.quit()">&times;</button>
