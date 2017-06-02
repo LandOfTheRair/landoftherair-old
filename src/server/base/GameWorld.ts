@@ -14,7 +14,7 @@ export class GameWorld extends Room<GameState> {
 
     this.setPatchRate(1000 / 20);
     this.setSimulationInterval(this.tick.bind(this), 1000 / 60);
-    this.setState(new GameState({ players: [], map: require(`../maps/${this.constructor.name}.json`) }));
+    this.setState(new GameState({ players: [], map: require(`../maps/${this.constructor.name}.json`), mapName: this.constructor.name }));
 
     this.onInit();
   }

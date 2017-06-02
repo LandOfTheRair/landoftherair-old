@@ -34,9 +34,10 @@ export class ColyseusGameService {
     this.worldRoom = this.client.join(this.character.map, { charSlot: this.character.charSlot });
 
     this.worldRoom.onUpdate.addOnce((state) => {
+      this.clientGameState.mapName = state.mapName;
+      this.clientGameState.setMap(state.map);
+
       state.players.forEach(p => this.clientGameState.addPlayer(p));
-      this.clientGameState.map = state.map;
-      this.clientGameState.mapName = this.character.map;
     });
 
     this.worldRoom.onUpdate.add((state) => {
