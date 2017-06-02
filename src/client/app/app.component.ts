@@ -10,6 +10,8 @@ export class AppComponent implements OnInit {
 
   constructor(public colyseus: ColyseusService) {}
 
+  public minimized = {};
+
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
   }
@@ -20,5 +22,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.colyseus.init();
+  }
+
+  minimize(window: string) {
+    this.minimized[window] = !this.minimized[window];
   }
 }
