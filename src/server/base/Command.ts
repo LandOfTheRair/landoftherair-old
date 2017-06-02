@@ -5,5 +5,5 @@ export abstract class Command {
 
   abstract name: string;
 
-  abstract execute(player: Player, args);
+  abstract execute(client, player: Player, args);
 }

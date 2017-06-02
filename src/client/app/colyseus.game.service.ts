@@ -52,15 +52,12 @@ export class ColyseusGameService {
       this.clientGameState.addPlayer(value);
     });
 
-    this.worldRoom.state.listen('players/:id', 'remove', (playerId: string, value: any) => {
-      this.clientGameState.removePlayer(value);
+    this.worldRoom.state.listen('players/:id', 'remove', (playerId: string|number) => {
+      this.clientGameState.removePlayer(+playerId);
     });
 
-    const locDirChange = (attribute: string, playerId: string, value: any) => {
-      const player = this.clientGameState.players[playerId];
-      player[attribute] = value;
-
-      this.clientGameState.updateMyPlayer.emit(player);
+    const locDirChange = (attribute: string, playerId: string|number, value: any) => {
+      this.clientGameState.updatePlayer(+playerId, attribute, value);
     };
 
     this.worldRoom.state.listen('players/:id/x',    'replace', locDirChange.bind(this, 'x'));
@@ -99,7 +96,7 @@ export class ColyseusGameService {
   }
 
   public doMove(x, y) {
-    this.sendAction({ command: 'move', x, y });
+    this.sendAction({ command: '~move', x, y });
   }
 
   public quit() {

@@ -4,9 +4,9 @@ import { Player } from '../../../models/player';
 
 export class Talk extends Command {
 
-  public name = 'talk';
+  public name = '~talk';
 
-  execute(player: Player, { data }) {
+  execute(client, player: Player, { data }) {
     console.log(player, data);
   }
 

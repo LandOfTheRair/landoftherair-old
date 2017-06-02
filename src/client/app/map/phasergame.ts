@@ -1,4 +1,6 @@
 
+import { find, remove } from 'lodash';
+
 import { ClientGameState } from '../../../models/clientgamestate';
 
 import { environment } from '../../environments/environment';
@@ -9,14 +11,38 @@ export class Game {
   private player: Player;
   private playerSprite: any;
 
+  private otherPlayerSprites: Player[] = [];
+
   public moveCallback = (x, y) => {};
 
   constructor(private clientGameState: ClientGameState, player) {
-    this.setPlayer(player);
+    this.player = player;
   }
 
-  setPlayer(player: Player) {
-    this.player = player;
+  createPlayer(player: Player) {
+    const sprite = this.getPlayerSprite(player);
+    this.otherPlayerSprites.push(sprite);
+  }
+
+  updatePlayer(player: Player) {
+    if(this.player.username === player.username) {
+      this.player = player;
+      this.updatePlayerSprite(this.playerSprite, player);
+
+    } else {
+      let sprite = find(this.otherPlayerSprites, { username: player.username });
+      if(!sprite) {
+        this.createPlayer(player);
+      } else {
+        this.updatePlayerSprite(sprite, player);
+      }
+    }
+  }
+
+  removePlayer(player: Player) {
+    const sprite = find(this.otherPlayerSprites, { username: player.username });
+    sprite.destroy();
+    remove(this.otherPlayerSprites, sprite => sprite.username === player.username);
   }
 
   get assetUrl() {
@@ -49,6 +75,7 @@ export class Game {
     const spriteDir = this.getSpriteOffsetForDirection(player.dir);
 
     const sprite = this.g.add.sprite(player.x * 64, player.y * 64, 'Creatures', spriteGender+spriteDir);
+    sprite.username = player.username;
 
     // input enabled on sprite
 
@@ -120,7 +147,7 @@ export class Game {
 
   update() {
     if(!this.player) return;
-    this.updatePlayerSprite(this.playerSprite, this.player);
+    // this.updatePlayerSprite(this.playerSprite, this.player);
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
   }
 }

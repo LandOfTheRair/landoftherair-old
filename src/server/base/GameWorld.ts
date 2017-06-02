@@ -20,7 +20,9 @@ export class GameWorld extends Room<GameState> {
   }
 
   savePlayer(player: Player) {
-    delete player._id;
+    if(player._id) {
+      delete player._id;
+    }
 
     return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: player });
   }
@@ -48,7 +50,10 @@ export class GameWorld extends Room<GameState> {
 
   onMessage(client, data) {
     const player = this.state.findPlayer(client.username);
-    const wasSuccess = CommandExecutor.executeCommand(player, data.command, data);
+
+    data.map = this.state.map;
+
+    const wasSuccess = CommandExecutor.executeCommand(client, player, data.command, data);
 
     if(!wasSuccess) {
       // TODO emit "invalid command, try again"

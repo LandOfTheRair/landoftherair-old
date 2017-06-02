@@ -23,10 +23,6 @@ export class MapComponent implements OnInit, OnDestroy, OnChanges {
 
   constructor(private colyseus: ColyseusService) {}
 
-  updateGamePlayer() {
-    this.game.setPlayer(this.currentPlayer);
-  }
-
   ngOnInit() {
     // 9x9, tiles are 64x64
     const boxSize = 9 * 64;
@@ -35,10 +31,17 @@ export class MapComponent implements OnInit, OnDestroy, OnChanges {
     this.game.moveCallback = (x, y) => this.colyseus.game.doMove(x, y);
     this.phaser = new (<any>window).Phaser.Game(boxSize, boxSize, (<any>window).Phaser.CANVAS, 'map', this.game);
 
-    this.clientGameState.updateMyPlayer.subscribe((player) => {
-      this.currentPlayer = player;
-      this.updateGamePlayer();
+    this.clientGameState.createPlayer$.subscribe((player) => {
+      this.game.createPlayer(player);
     });
+
+    this.clientGameState.updatePlayer$.subscribe((player) => {
+      this.game.updatePlayer(player);
+    });
+
+    this.clientGameState.removePlayer$.subscribe((player) => {
+      this.game.removePlayer(player);
+    })
   }
 
   ngOnDestroy() {
@@ -52,7 +55,7 @@ export class MapComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnChanges() {
     if(!this.currentPlayer || !this.game) return;
-    this.updateGamePlayer();
+    // this.updateGamePlayer(this.currentPlayer);
   }
 
 }
