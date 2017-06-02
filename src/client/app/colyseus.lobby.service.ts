@@ -104,6 +104,13 @@ export class ColyseusLobbyService {
 
   private interceptLobbyCommand({ action, error, ...other }) {
     if(error) {
+
+      (<any>swal)({
+        titleText: other.prettyErrorName,
+        text: other.prettyErrorDesc,
+        type: 'error'
+      });
+
       if(error === 'error_invalid_token') {
         // alert('Your token was invalid. Refresh and try again.');
         this.loginThenEmit();
