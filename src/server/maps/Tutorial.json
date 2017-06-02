@@ -49,14 +49,6 @@
          "height":40,
          "name":"Walls",
          "opacity":1,
-         "properties":
-            {
-             "region":"Tutorial"
-            },
-         "propertytypes":
-            {
-             "region":"string"
-            },
          "type":"tilelayer",
          "visible":true,
          "width":40,
@@ -135,6 +127,14 @@
         }],
  "nextobjectid":6,
  "orientation":"orthogonal",
+ "properties":
+    {
+     "region":"Tutorial"
+    },
+ "propertytypes":
+    {
+     "region":"string"
+    },
  "renderorder":"right-down",
  "tileheight":64,
  "tilesets":[
