@@ -38,6 +38,8 @@ export class Character {
   username: string;
   charSlot: number;
 
+  name: string;
+
   hp: RestrictedNumber = new RestrictedNumber(0, 100, 100);
   mp: RestrictedNumber = new RestrictedNumber(0, 0, 0);
   xp: number = 0;
@@ -63,7 +65,7 @@ export class Character {
   }
 
   toJSON() {
-    return omit(this, ['_id', 'username', 'charSlot']);
+    return omit(this, ['_id', 'charSlot']);
   }
 }
 
