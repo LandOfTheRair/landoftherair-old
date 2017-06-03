@@ -41,7 +41,6 @@ export class ClientGameState {
 
   setFOV(fov) {
     this.initFOV(fov);
-    console.log(fov);
   }
 
   addPlayer(playerRef) {

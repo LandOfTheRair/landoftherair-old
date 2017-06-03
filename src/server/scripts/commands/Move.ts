@@ -106,7 +106,7 @@ export class Move extends Command {
       affected[x - player.x][y - player.y] = true;
     });
 
-    room.send(client, { action: 'set_fov', fov: affected });
+    player.$fov = affected;
   }
 
 }

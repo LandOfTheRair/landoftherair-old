@@ -1,4 +1,6 @@
 
+import { omitBy, startsWith } from 'lodash';
+
 import { Room } from 'colyseus';
 import { GameState } from '../../models/gamestate';
 
@@ -27,6 +29,8 @@ export class GameWorld extends Room<GameState> {
     if(player._id) {
       delete player._id;
     }
+
+    player = omitBy(player, (value, key) => startsWith(key, '$'));
 
     return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: player });
   }
@@ -63,6 +67,7 @@ export class GameWorld extends Room<GameState> {
 
     if(!wasSuccess) {
       // TODO emit "invalid command, try again"
+      return;
     }
   }
 
