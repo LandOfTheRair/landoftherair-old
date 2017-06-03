@@ -13,8 +13,8 @@ export class Game {
 
   private otherPlayerSprites = [];
 
-  private canCreate: Promise<any>;
-  private canUpdate: Promise<any>;
+  public canCreate: Promise<any>;
+  public canUpdate: Promise<any>;
   private resolveCanCreate;
   private resolveCanUpdate;
 
@@ -44,7 +44,6 @@ export class Game {
     await this.canCreate;
 
     if(this.player.username === player.username) {
-      await this.canUpdate;
       this.player = player;
       this.updatePlayerSprite(this.playerSprite, player);
 
@@ -140,8 +139,8 @@ export class Game {
 
   preload() {
     this.g.load.image('Terrain', `${this.assetUrl}/terrain.png`, 64, 64);
-    this.g.load.image('Walls', `${this.assetUrl}/walls.png`, 64, 64);
-    this.g.load.image('Decor', `${this.assetUrl}/decor.png`, 64, 64);
+    this.g.load.spritesheet('Walls', `${this.assetUrl}/walls.png`, 64, 64);
+    this.g.load.spritesheet('Decor', `${this.assetUrl}/decor.png`, 64, 64);
 
     this.g.load.spritesheet('Creatures', `${this.assetUrl}/creatures.png`, 64, 64);
     this.g.load.tilemap(this.clientGameState.mapName, null, this.clientGameState.map, (<any>window).Phaser.Tilemap.TILED_JSON);
@@ -161,8 +160,26 @@ export class Game {
     map.createLayer('Walls');
     map.createLayer('Foliage');
 
+    const doneGids = {};
+
+    const decorFirstGid = map.tilesets[1].firstgid;
+    const wallFirstGid = map.tilesets[2].firstgid;
+
+    const parseLayer = (layer, obj) => {
+      if(doneGids[obj.gid]) return;
+      doneGids[obj.gid] = 1;
+
+      const isWall = obj.gid > wallFirstGid;
+      const firstGid = isWall ? wallFirstGid : decorFirstGid;
+      const tileSet = isWall ? 'Walls' : 'Decor';
+      map.createFromObjects(layer, obj.gid, tileSet, obj.gid - firstGid);
+    };
+
+    map.objects.Decor.forEach(parseLayer.bind(this, 'Decor'));
+    map.objects.DenseDecor.forEach(parseLayer.bind(this, 'DenseDecor'));
+    map.objects.Interactables.forEach(parseLayer.bind(this, 'Interactables'));
+
     this.resolveCanCreate();
-    // this.playerSprite = this.getPlayerSprite(this.player);
 
     this.setupPhaser();
   }
