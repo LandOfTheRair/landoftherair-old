@@ -6,14 +6,14 @@ export class Move extends Command {
 
   public name = '~move';
 
-  execute(client, player: Player, { map, x, y }) {
+  execute(player: Player, { room, client, gameState, x, y }) {
     x = Math.max(Math.min(x, player.stats.move), -player.stats.move);
     y = Math.max(Math.min(y, player.stats.move), -player.stats.move);
 
     const checkX = Math.abs(x);
     const checkY = Math.abs(y);
 
-    const denseTiles = map.layers[4].data;
+    const denseTiles = gameState.map.layers[4].data;
     const maxTilesMoved = Math.max(checkX, checkY);
     const steps = Array(maxTilesMoved).fill(null);
 
@@ -48,7 +48,7 @@ export class Move extends Command {
     const getNumStepsSuccessful = (trySteps) => {
       for(var i = 0; i < trySteps.length; i++) {
         const step = trySteps[i];
-        const nextTileLoc = ((player.y + step.y) * map.width) + (player.x + step.x);
+        const nextTileLoc = ((player.y + step.y) * gameState.map.width) + (player.x + step.x);
         const nextTile = denseTiles[nextTileLoc];
 
         if(nextTile !== 0) {
@@ -65,7 +65,7 @@ export class Move extends Command {
     const finalSteps = normalStepsTaken > reverseStepsTaken ? steps : reverseSteps;
 
     finalSteps.forEach(step => {
-      const nextTileLoc = ((player.y + step.y) * map.width) + (player.x + step.x);
+      const nextTileLoc = ((player.y + step.y) * gameState.map.width) + (player.x + step.x);
       const nextTile = denseTiles[nextTileLoc];
 
       if(nextTile !== 0) {
@@ -76,17 +76,11 @@ export class Move extends Command {
       player.y += step.y;
     });
 
-    // console.log(steps);
-
-
-    // player.x += x;
-    // player.y += y;
-
     if(player.x < 0) player.x = 0;
     if(player.y < 0) player.y = 0;
 
-    if(player.x > map.width)  player.x = map.width;
-    if(player.y > map.height) player.y = map.height;
+    if(player.x > gameState.map.width)  player.x = gameState.map.width;
+    if(player.y > gameState.map.height) player.y = gameState.map.height;
 
     if(checkX >= checkY) {
       if(x > 0) {
@@ -102,6 +96,17 @@ export class Move extends Command {
         player.dir = 'N';
       }
     }
+
+    const affected = {};
+
+    gameState.fov.compute(player.x, player.y, 4, (x, y) => {
+      return affected[x - player.x] && affected[x - player.x][y - player.y];
+    }, (x, y) => {
+      affected[x - player.x] = affected[x - player.x] || {};
+      affected[x - player.x][y - player.y] = true;
+    });
+
+    room.send(client, { action: 'set_fov', fov: affected });
   }
 
 }

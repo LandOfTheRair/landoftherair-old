@@ -9,6 +9,9 @@ export class ClientGameState {
   players: Player[] = [];
   map: any = {};
   mapName: string = '';
+  fov: any = {};
+
+  fovArray = Array(9).fill(null).map((x, i) => i - 4);
 
   createPlayer$ = new Subject<Player>();
   updatePlayer$ = new Subject<Player>();
@@ -18,11 +21,27 @@ export class ClientGameState {
 
   constructor(opts) {
     extend(this, opts);
+    this.initFOV();
   }
 
   setMap(map) {
     this.map = map;
     this.setMap$.next(map);
+  }
+
+  initFOV(fov?) {
+    for(let x = -4; x <= 4; x++) {
+      this.fov[x] = this.fov[x] || {};
+
+      for(let y = -4; y <= 4; y++) {
+        this.fov[x][y] = !!(fov && fov[x] && fov[x][y]);
+      }
+    }
+  }
+
+  setFOV(fov) {
+    this.initFOV(fov);
+    console.log(fov);
   }
 
   addPlayer(playerRef) {

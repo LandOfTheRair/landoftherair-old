@@ -14,7 +14,11 @@ export class GameWorld extends Room<GameState> {
 
     this.setPatchRate(1000 / 20);
     this.setSimulationInterval(this.tick.bind(this), 1000 / 60);
-    this.setState(new GameState({ players: [], map: require(`../maps/${this.constructor.name}.json`), mapName: this.constructor.name }));
+    this.setState(new GameState({
+      players: [],
+      map: require(`../maps/${this.constructor.name}.json`),
+      mapName: this.constructor.name
+    }));
 
     this.onInit();
   }
@@ -51,9 +55,11 @@ export class GameWorld extends Room<GameState> {
   onMessage(client, data) {
     const player = this.state.findPlayer(client.username);
 
-    data.map = this.state.map;
+    data.gameState = this.state;
+    data.room = this;
+    data.client = client;
 
-    const wasSuccess = CommandExecutor.executeCommand(client, player, data.command, data);
+    const wasSuccess = CommandExecutor.executeCommand(player, data.command, data);
 
     if(!wasSuccess) {
       // TODO emit "invalid command, try again"
