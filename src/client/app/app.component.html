@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
-        <a class="nav-link" href="#" dropdownToggle>Game</a>
+        <a class="nav-link" href="#" dropdownToggle>Game {{ colyseus.isConnected ? '' : '(Disconnected)' }}</a>
 
         <ul *dropdownMenu class="dropdown-menu">
           <li>

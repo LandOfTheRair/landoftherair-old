@@ -13,14 +13,17 @@ export class Game {
 
   private otherPlayerSprites = [];
 
-  private canCreate: Promise<boolean>;
+  private canCreate: Promise<any>;
+  private canUpdate: Promise<any>;
   private resolveCanCreate;
+  private resolveCanUpdate;
 
   public moveCallback = (x, y) => {};
 
   constructor(private clientGameState: ClientGameState, player) {
     this.player = player;
     this.canCreate = new Promise(resolve => this.resolveCanCreate = resolve);
+    this.canUpdate = new Promise(resolve => this.resolveCanUpdate = resolve);
   }
 
   async createPlayer(player: Player) {
@@ -30,6 +33,7 @@ export class Game {
     const sprite = this.getPlayerSprite(player);
     if(player.username === this.player.username) {
       this.playerSprite = sprite;
+      this.resolveCanUpdate(sprite);
 
     } else {
       this.otherPlayerSprites.push(sprite);
@@ -40,6 +44,7 @@ export class Game {
     await this.canCreate;
 
     if(this.player.username === player.username) {
+      await this.canUpdate;
       this.player = player;
       this.updatePlayerSprite(this.playerSprite, player);
 

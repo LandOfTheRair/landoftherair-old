@@ -14,7 +14,7 @@ export class ColyseusGameService {
 
   worldRoom: any;
 
-  inGame: boolean;
+  _inGame: boolean;
 
   constructor() {}
 
@@ -24,6 +24,10 @@ export class ColyseusGameService {
     this.setCharacter(character);
 
     this.initGame();
+  }
+
+  get inGame() {
+    return this._inGame && this.worldRoom;
   }
 
   private initGame() {
@@ -66,11 +70,11 @@ export class ColyseusGameService {
     this.worldRoom.state.listen('players/:id/dir',  'replace', locDirChange.bind(this, 'dir'));
 
     this.worldRoom.onJoin.add(() => {
-      this.inGame = true;
+      this._inGame = true;
     });
 
     this.worldRoom.onLeave.add(() => {
-      this.inGame = false;
+      this._inGame = false;
     });
 
     this.worldRoom.onError.add((e) => {
@@ -97,7 +101,6 @@ export class ColyseusGameService {
       return;
     }
 
-    // if(action === 'set_fov')        return this.setFOV(other.fov);
     if(action === 'set_character')  return this.setCharacter(other.character);
   }
 
@@ -112,5 +115,6 @@ export class ColyseusGameService {
   public quit() {
     if(!this.worldRoom) return;
     this.worldRoom.leave();
+    delete this.worldRoom;
   }
 }
