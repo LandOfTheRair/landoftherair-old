@@ -53,11 +53,15 @@ export class MapComponent implements OnInit, OnDestroy {
       this.colyseus.game.doMove(0, 0);
 
       this.create$ = this.clientGameState.createPlayer$.subscribe((player) => {
-        this.game.createPlayer(player);
+        this.game.canCreate.then(() => {
+          this.game.createPlayer(player);
+        });
       });
 
       this.update$ = this.clientGameState.updatePlayer$.subscribe((player) => {
-        this.game.updatePlayer(player);
+        this.game.canUpdate.then(() => {
+          this.game.updatePlayer(player);
+        });
       });
 
       this.remove$ = this.clientGameState.removePlayer$.subscribe((player) => {
