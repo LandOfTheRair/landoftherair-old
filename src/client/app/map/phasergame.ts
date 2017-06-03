@@ -177,6 +177,7 @@ export class Game {
 
     map.objects.Decor.forEach(parseLayer.bind(this, 'Decor'));
     map.objects.DenseDecor.forEach(parseLayer.bind(this, 'DenseDecor'));
+    map.objects.OpaqueDecor.forEach(parseLayer.bind(this, 'OpaqueDecor'));
     map.objects.Interactables.forEach(parseLayer.bind(this, 'Interactables'));
 
     this.resolveCanCreate();
