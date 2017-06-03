@@ -81,6 +81,10 @@ export class ColyseusGameService {
   private setCharacter(character) {
     if(!character) return;
     this.character = new Player(character);
+
+    if(character.$fov) {
+      this.setFOV(character.$fov);
+    }
   }
 
   private setFOV(fov) {
@@ -93,7 +97,7 @@ export class ColyseusGameService {
       return;
     }
 
-    if(action === 'set_fov')        return this.setFOV(other.fov);
+    // if(action === 'set_fov')        return this.setFOV(other.fov);
     if(action === 'set_character')  return this.setCharacter(other.character);
   }
 

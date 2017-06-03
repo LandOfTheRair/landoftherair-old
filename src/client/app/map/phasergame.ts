@@ -36,7 +36,9 @@ export class Game {
     }
   }
 
-  updatePlayer(player: Player) {
+  async updatePlayer(player: Player) {
+    await this.canCreate;
+
     if(this.player.username === player.username) {
       this.player = player;
       this.updatePlayerSprite(this.playerSprite, player);
