@@ -11,11 +11,11 @@ Object.keys(Commands).forEach(cmd => {
 
 export class CommandExecutor {
 
-  static executeCommand(client: any, player: Player, command: string, args: any) {
+  static executeCommand(player: Player, command: string, args: any) {
     const cmd = commandHash[command];
     if(!cmd) return false;
 
-    cmd.execute(client, player, args);
+    cmd.execute(player, args);
     return true;
   }
 

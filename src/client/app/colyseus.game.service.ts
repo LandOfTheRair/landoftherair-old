@@ -83,12 +83,17 @@ export class ColyseusGameService {
     this.character = new Player(character);
   }
 
+  private setFOV(fov) {
+    this.clientGameState.setFOV(fov);
+  }
+
   private interceptGameCommand({ action, error, ...other }) {
     if(error) {
       alert(error);
       return;
     }
 
+    if(action === 'set_fov')        return this.setFOV(other.fov);
     if(action === 'set_character')  return this.setCharacter(other.character);
   }
 
