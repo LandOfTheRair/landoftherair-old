@@ -128,7 +128,7 @@ export class Lobby extends Room<LobbyState> {
       username: account.username,
       charSlot,
       stats, name, allegiance, gold,
-      x: 10, y: 10, map: 'Tutorial'
+      x: 14, y: 14, map: 'Tutorial'
     });
 
     DB.$players.insert(player);

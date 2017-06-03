@@ -1,1 +1,13 @@
 <div id="map"></div>
+
+<div *ngIf="colyseus.game.clientGameState.fov">
+  <div *ngFor="let x of colyseus.game.clientGameState.fovArray">
+    <div *ngFor="let y of colyseus.game.clientGameState.fovArray"
+         [attr.pos]="x + '-' + y"
+         style="width: 64px; height: 64px; background-color: #000; z-index: 500; position: absolute;"
+         [style.left]="((x+4)*64)+'px'"
+         [style.top]="(((y+4)*64)+28)+'px'"
+         [class.hidden]="colyseus.game.clientGameState.fov[x] && colyseus.game.clientGameState.fov[x][y]"
+    ></div>
+  </div>
+</div>

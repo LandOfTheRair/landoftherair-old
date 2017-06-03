@@ -3,10 +3,14 @@ import { reject, extend, find } from 'lodash';
 
 import { Player } from './player';
 
+import * as Mrpas from 'mrpas';
+
 export class GameState {
   players: Player[] = [];
   map: any = {};
   mapName: string = '';
+
+  fov: Mrpas;
 
   addPlayer(player) {
     this.players.push(player);
@@ -22,6 +26,12 @@ export class GameState {
 
   constructor(opts) {
     extend(this, opts);
+
+    const denseLayer = this.map.layers[4].data;
+
+    this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
+      return !denseLayer[(y * this.map.width) + x];
+    });
   }
 
   toJSON() {
