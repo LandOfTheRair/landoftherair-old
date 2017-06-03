@@ -13,7 +13,9 @@
       <input class="form-control no-border-radius" placeholder="Type a message here..." type="text" [(ngModel)]="chatText" (keyup.enter)="sendMessage()" />
     </div>
     <div class="col-2 no-padding">
-      <button class="btn btn-primary form-control no-border-radius" (click)="sendMessage()">Send</button>
+      <button class="btn btn-primary form-control no-border-radius"
+              (click)="lobby.colyseus.isConnected && sendMessage()"
+              [disabled]="!lobby.colyseus.isConnected">Send</button>
     </div>
   </div>
 

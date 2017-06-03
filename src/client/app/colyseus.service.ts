@@ -9,6 +9,7 @@ import { ColyseusGameService } from './colyseus.game.service';
 export class ColyseusService {
 
   client: any;
+  private _isConnected = false;
 
   constructor(public lobby: ColyseusLobbyService, public game: ColyseusGameService) {}
 
@@ -23,6 +24,19 @@ export class ColyseusService {
 
   private initClient() {
     this.client = new Colyseus.Client(`ws://${environment.server.domain}:${environment.server.port}`);
+
+    this.client.onOpen.add(() => {
+      this._isConnected = true;
+    });
+
+    this.client.onClose.add(() => {
+      this.game.quit();
+      this._isConnected = false;
+    });
+  }
+
+  get isConnected() {
+    return this._isConnected;
   }
 
   get username() {
