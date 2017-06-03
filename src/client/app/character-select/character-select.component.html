@@ -6,9 +6,9 @@
     </label>
   </div>
   <div class="row">
-    <button class="col no-border-radius btn btn-warning" (click)="charModal.show()">Create</button>
+    <button class="col no-border-radius btn btn-warning" (click)="charModal.show()" [disabled]="!lobby.colyseus.isConnected">Create</button>
     <button class="col no-border-radius btn btn-primary"
-            (click)="playCharacter()" [disabled]="!lobby.myAccount.characterNames[curSlot]">Play</button>
+            (click)="playCharacter()" [disabled]="!lobby.myAccount.characterNames[curSlot] || !lobby.colyseus.isConnected">Play</button>
   </div>
 </div>
 
