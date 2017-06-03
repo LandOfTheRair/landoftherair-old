@@ -56,6 +56,8 @@ export class Character {
   y: number = 0;
   map: string;
 
+  $fov: any;
+
   get level() {
     return Math.floor(this.xp / 1000);
   }
