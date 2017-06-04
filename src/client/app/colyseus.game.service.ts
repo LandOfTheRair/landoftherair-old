@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ClientGameState } from '../../models/clientgamestate';
 
-import { find } from 'lodash';
+import { find, includes } from 'lodash';
 import { Player } from '../../models/player';
 
 @Injectable()
@@ -97,17 +97,38 @@ export class ColyseusGameService {
     this.clientGameState.setFOV(fov);
   }
 
+  private logMessage({ message }: any) {
+    console.log(message);
+  }
+
   private interceptGameCommand({ action, error, ...other }) {
     if(error) {
       alert(error);
       return;
     }
 
+    if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
   }
 
   private sendAction(data) {
     this.client.send(data);
+  }
+
+  private sendCommandString(str: string) {
+    let command = '';
+    let args = '';
+
+    if(includes(str, ',')) {
+      command = '~talk';
+      args = str;
+    } else {
+      const arr = str.split(' ');
+      command = arr[0];
+      args = str.substring(str.indexOf(' ')).trim();
+    }
+
+    this.sendAction({ command, args });
   }
 
   public doMove(x, y) {
