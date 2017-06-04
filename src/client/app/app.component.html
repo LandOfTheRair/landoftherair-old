@@ -19,13 +19,16 @@
       </li>
     </ul>
 
-    <ul class="navbar-nav mr-auto" *ngIf="colyseus.game.inGame">
+    <ul class="navbar-nav mr-auto" *ngIf="inGame">
       <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
         <a class="nav-link" href="#" dropdownToggle>Windows</a>
 
         <ul *dropdownMenu class="dropdown-menu">
           <li>
             <a class="dropdown-item" (click)="showStatsWindow = !showStatsWindow">Stats</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="showCommandLine = !showCommandLine">Command Line</a>
           </li>
         </ul>
 
@@ -87,3 +90,18 @@
     <app-stats-window [currentPlayer]="colyseus.game.character"></app-stats-window>
   </div>
 </div>
+
+<div class="window command-line"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="commandLine"
+     windowName="commandLine"
+     *ngIf="inGame && showCommandLine">
+  <div class="window-header text-center" #commandLine>
+    Command Line
+    <button class="no-border-radius btn btn-danger btn-sm float-right" (click)="showCommandLine = false">&times;</button>
+  </div>
+  <div class="window-body">
+    <app-command-line [colyseusGame]="colyseus.game"></app-command-line>
+  </div>
+</div>
+

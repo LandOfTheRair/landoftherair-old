@@ -6,8 +6,10 @@ export class Talk extends Command {
 
   public name = '~talk';
 
-  execute(player: Player, { data }) {
-    console.log(player, data);
+  execute(player: Player, { args }) {
+    console.log(player, args);
+
+    // TODO if npc not visible, say so
   }
 
 }
