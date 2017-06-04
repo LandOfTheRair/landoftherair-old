@@ -28,9 +28,15 @@ export class GameState {
     extend(this, opts);
 
     const denseLayer = this.map.layers[4].data;
+    const opaqueObjects = this.map.layers[7].objects;
 
     this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
-      return !denseLayer[(y * this.map.width) + x];
+      const tile = denseLayer[(y * this.map.width) + x];
+      if(tile === 0) {
+        const object = find(opaqueObjects, { x: x*64, y: (y+1)*64 });
+        return !object;
+      }
+      return false;
     });
   }
 

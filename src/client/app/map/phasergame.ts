@@ -162,14 +162,14 @@ export class Game {
 
     const doneGids = {};
 
-    const decorFirstGid = map.tilesets[1].firstgid;
-    const wallFirstGid = map.tilesets[2].firstgid;
+    const decorFirstGid = map.tilesets[2].firstgid;
+    const wallFirstGid = map.tilesets[1].firstgid;
 
     const parseLayer = (layer, obj) => {
       if(doneGids[obj.gid]) return;
       doneGids[obj.gid] = 1;
 
-      const isWall = obj.gid > wallFirstGid;
+      const isWall = obj.gid < decorFirstGid;
       const firstGid = isWall ? wallFirstGid : decorFirstGid;
       const tileSet = isWall ? 'Walls' : 'Decor';
       map.createFromObjects(layer, obj.gid, tileSet, obj.gid - firstGid);
