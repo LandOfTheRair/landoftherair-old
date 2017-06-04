@@ -98,7 +98,7 @@ export class ColyseusGameService {
   }
 
   private logMessage({ message }: any) {
-    console.log(message);
+    this.clientGameState.addLogMessage(message);
   }
 
   private interceptGameCommand({ action, error, ...other }) {

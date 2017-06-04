@@ -11,6 +11,8 @@ export class ClientGameState {
   mapName: string = '';
   fov: any = {};
 
+  logMessages: string[] = [];
+
   fovArray = Array(9).fill(null).map((x, i) => i - 4);
 
   createPlayer$ = new Subject<Player>();
@@ -63,5 +65,11 @@ export class ClientGameState {
     this.removePlayer$.next(player);
 
     remove(this.players, (p, i) => i === playerIndex);
+  }
+
+  addLogMessage(message) {
+    this.logMessages.push(message);
+
+    if(this.logMessages.length > 500) this.logMessages.shift();
   }
 }

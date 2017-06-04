@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   }
 
   minimize(window: string) {
-    this.minimized[window] = !this.minimized[window]
+    this.minimized[window] = !this.minimized[window];
 
     // trigger localstorage memorizing
     this.minimized = this.minimized;

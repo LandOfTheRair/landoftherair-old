@@ -22,6 +22,7 @@ import { StatsWindowComponent } from './stats-window/stats-window.component';
 import { CommandLineComponent } from './command-line/command-line.component';
 import { CloseButtonComponent } from './buttons/close-button.component';
 import { MinimizeButtonComponent } from './buttons/minimize-button.component';
+import { LogWindowComponent } from './log-window/log-window.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -37,7 +38,8 @@ import { MinimizeButtonComponent } from './buttons/minimize-button.component';
     StatsWindowComponent,
     CommandLineComponent,
     CloseButtonComponent,
-    MinimizeButtonComponent
+    MinimizeButtonComponent,
+    LogWindowComponent
   ],
   imports: [
     BrowserModule,
