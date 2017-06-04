@@ -23,7 +23,9 @@
 
 .window {
 
-  z-index: 600;
+  &.game-window {
+    z-index: 700;
+  }
 
   &.character-select {
     min-height: 215px;
