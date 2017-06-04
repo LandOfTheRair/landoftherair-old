@@ -1,5 +1,5 @@
 
-import { omitBy, startsWith } from 'lodash';
+import { omitBy, startsWith, isString } from 'lodash';
 
 import { Room } from 'colyseus';
 import { GameState } from '../../models/gamestate';
@@ -35,6 +35,10 @@ export class GameWorld extends Room<GameState> {
     return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: player });
   }
 
+  sendClientLogMessage(client, message) {
+    this.send(client, { action: 'log_message', message });
+  }
+
   // TODO check if player is in this map, return false if not - also, modify this to take a promise? - also fail if in game already
   requestJoin(opts) {
     // console.log('req', opts);
@@ -66,7 +70,7 @@ export class GameWorld extends Room<GameState> {
     const wasSuccess = CommandExecutor.executeCommand(player, data.command, data);
 
     if(!wasSuccess) {
-      // TODO emit "invalid command, try again"
+      this.sendClientLogMessage(client, `Command "${data.command}" is invalid. Try again.`);
       return;
     }
   }

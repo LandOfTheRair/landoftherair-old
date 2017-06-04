@@ -19,6 +19,8 @@ import { LobbyComponent } from './lobby/lobby.component';
 import { CharacterSelectComponent } from './character-select/character-select.component';
 import { MapComponent } from './map/map.component';
 import { StatsWindowComponent } from './stats-window/stats-window.component';
+import { AppCommandLineComponent } from './app-command-line/app-command-line.component';
+import { CommandLineComponent } from './command-line/command-line.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -31,7 +33,9 @@ import { StatsWindowComponent } from './stats-window/stats-window.component';
     NgxAutoScroll,
     CharacterSelectComponent,
     MapComponent,
-    StatsWindowComponent
+    StatsWindowComponent,
+    AppCommandLineComponent,
+    CommandLineComponent
   ],
   imports: [
     BrowserModule,

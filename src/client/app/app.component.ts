@@ -17,6 +17,9 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public showStatsWindow: boolean;
 
+  @LocalStorage()
+  public showCommandLine: boolean;
+
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
   }
