@@ -105,3 +105,16 @@
   </div>
 </div>
 
+
+<div class="window log-window game-window"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="logWindow"
+     windowName="logWindow"
+     *ngIf="inGame">
+  <div class="window-header text-center" #logWindow>
+    Log
+  </div>
+  <div class="window-body">
+    <app-log-window [clientGameState]="colyseus.game.clientGameState"></app-log-window>
+  </div>
+</div>
