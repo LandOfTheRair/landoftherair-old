@@ -15,6 +15,9 @@ export type Sex = 'Male' | 'Female';
 
 export type Direction = 'N' | 'S' | 'E' | 'W' | 'C';
 
+export type CharacterClass =
+  'Undecided';
+
 export class Stats {
   str = 0;
   dex = 0;
@@ -56,7 +59,13 @@ export class Character {
   y: number = 0;
   map: string;
 
+  baseClass: CharacterClass = 'Undecided';
+
   $fov: any;
+
+  get ageString() {
+    return 'extremely young';
+  }
 
   get level() {
     return Math.floor(this.xp / 1000);
