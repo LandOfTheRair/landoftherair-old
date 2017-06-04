@@ -12,7 +12,8 @@ export class AppComponent implements OnInit {
 
   constructor(public colyseus: ColyseusService) {}
 
-  public minimized = {};
+  @LocalStorage()
+  public minimized;
 
   @LocalStorage()
   public showStatsWindow: boolean;
@@ -29,10 +30,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!this.minimized) this.minimized = {};
     this.colyseus.init();
   }
 
   minimize(window: string) {
-    this.minimized[window] = !this.minimized[window];
+    this.minimized[window] = !this.minimized[window]
+
+    // trigger localstorage memorizing
+    this.minimized = this.minimized;
   }
 }
