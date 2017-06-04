@@ -1,0 +1,38 @@
+<div class="p-2 text-center">
+  <strong>{{ currentPlayer.name }} the {{ currentPlayer.ageString }} level {{ currentPlayer.level }} {{ currentPlayer.baseClass }}</strong>
+</div>
+
+<table class="table table-bordered m-0">
+  <tr>
+    <th>STR</th>
+    <td>{{ currentPlayer.stats.str }}</td>
+
+    <th>DEX</th>
+    <td>{{ currentPlayer.stats.dex }}</td>
+
+    <th>AGI</th>
+    <td>{{ currentPlayer.stats.agi }}</td>
+  </tr>
+
+  <tr>
+    <th>INT</th>
+    <td>{{ currentPlayer.stats.int }}</td>
+
+    <th>WIS</th>
+    <td>{{ currentPlayer.stats.wis }}</td>
+
+    <th>WIL</th>
+    <td>{{ currentPlayer.stats.wil }}</td>
+  </tr>
+
+  <tr>
+    <th>CON</th>
+    <td>{{ currentPlayer.stats.con }}</td>
+
+    <th>CHA</th>
+    <td>{{ currentPlayer.stats.cha }}</td>
+
+    <th>LUK</th>
+    <td>{{ currentPlayer.stats.luk }}</td>
+  </tr>
+</table>

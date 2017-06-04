@@ -6,13 +6,26 @@
   </a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav">
       <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
         <a class="nav-link" href="#" dropdownToggle>Game {{ colyseus.isConnected ? '' : '(Disconnected)' }}</a>
 
         <ul *dropdownMenu class="dropdown-menu">
           <li>
             <a class="dropdown-item" (click)="colyseus.lobby.logout()">Logout</a>
+          </li>
+        </ul>
+
+      </li>
+    </ul>
+
+    <ul class="navbar-nav mr-auto" *ngIf="colyseus.game.inGame">
+      <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
+        <a class="nav-link" href="#" dropdownToggle>Windows</a>
+
+        <ul *dropdownMenu class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" (click)="showStatsWindow = !showStatsWindow">Stats</a>
           </li>
         </ul>
 
@@ -58,5 +71,19 @@
   </div>
   <div class="window-body">
     <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character"></app-map>
+  </div>
+</div>
+
+<div class="window stats"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="statsDrag"
+     windowName="stats"
+     *ngIf="inGame && showStatsWindow">
+  <div class="window-header text-center" #statsDrag>
+    Stats
+    <button class="no-border-radius btn btn-danger btn-sm float-right" (click)="showStatsWindow = false">&times;</button>
+  </div>
+  <div class="window-body">
+    <app-stats-window [currentPlayer]="colyseus.game.character"></app-stats-window>
   </div>
 </div>

@@ -6,7 +6,7 @@ export class Talk extends Command {
 
   public name = '~talk';
 
-  execute(client, player: Player, { data }) {
+  execute(player: Player, { data }) {
     console.log(player, data);
   }
 
