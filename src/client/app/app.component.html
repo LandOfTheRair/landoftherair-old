@@ -45,7 +45,7 @@
      [class.hidden]="!loggedIn">
   <div class="window-header text-center" #lobbyDrag>
     Lobby Chat ({{ colyseus.lobby.lobbyState.accounts.length }} Online)
-    <button class="no-border-radius btn btn-warning btn-sm float-right" (click)="minimize('lobby')">_</button>
+    <app-minimize-button (click)="minimize('lobby')"></app-minimize-button>
   </div>
   <div class="window-body" [class.hidden]="minimized['lobby']">
     <app-lobby [lobbyState]="colyseus.lobby.lobbyState"></app-lobby>
