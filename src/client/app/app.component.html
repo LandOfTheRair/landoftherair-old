@@ -70,7 +70,7 @@
      *ngIf="inGame">
   <div class="window-header text-center" #mapDrag>
     World
-    <button class="no-border-radius btn btn-danger btn-sm float-right" (click)="colyseus.game.quit()">&times;</button>
+    <app-close-button (click)="colyseus.game.quit()"></app-close-button>
   </div>
   <div class="window-body">
     <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character"></app-map>
@@ -84,7 +84,7 @@
      *ngIf="inGame && showStatsWindow">
   <div class="window-header text-center" #statsDrag>
     Stats
-    <button class="no-border-radius btn btn-danger btn-sm float-right" (click)="showStatsWindow = false">&times;</button>
+    <app-close-button (click)="showStatsWindow = false"></app-close-button>
   </div>
   <div class="window-body">
     <app-stats-window [currentPlayer]="colyseus.game.character"></app-stats-window>
@@ -98,7 +98,7 @@
      *ngIf="inGame && showCommandLine">
   <div class="window-header text-center" #commandLine>
     Command Line
-    <button class="no-border-radius btn btn-danger btn-sm float-right" (click)="showCommandLine = false">&times;</button>
+    <app-close-button (click)="showCommandLine = false"></app-close-button>
   </div>
   <div class="window-body">
     <app-command-line [colyseusGame]="colyseus.game"></app-command-line>

@@ -21,6 +21,7 @@ import { MapComponent } from './map/map.component';
 import { StatsWindowComponent } from './stats-window/stats-window.component';
 import { AppCommandLineComponent } from './app-command-line/app-command-line.component';
 import { CommandLineComponent } from './command-line/command-line.component';
+import { CloseButtonComponent } from './close-button/close-button.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -35,7 +36,8 @@ import { CommandLineComponent } from './command-line/command-line.component';
     MapComponent,
     StatsWindowComponent,
     AppCommandLineComponent,
-    CommandLineComponent
+    CommandLineComponent,
+    CloseButtonComponent
   ],
   imports: [
     BrowserModule,
