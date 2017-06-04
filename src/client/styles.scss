@@ -23,6 +23,8 @@
 
 .window {
 
+  z-index: 600;
+
   &.character-select {
     min-height: 215px;
     min-width: 200px;
@@ -42,9 +44,24 @@
   }
 
   &.map {
+    z-index: 400;
+
     .window-body {
       min-height: 576px;
       min-width: 576px;
+    }
+  }
+
+  &.stats {
+    max-width: 400px;
+    min-width: 400px;
+
+    min-height: 250px;
+    max-height: 250px;
+
+    .window-body > app-stats-window {
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 
