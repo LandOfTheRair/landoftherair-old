@@ -19,9 +19,9 @@ import { LobbyComponent } from './lobby/lobby.component';
 import { CharacterSelectComponent } from './character-select/character-select.component';
 import { MapComponent } from './map/map.component';
 import { StatsWindowComponent } from './stats-window/stats-window.component';
-import { AppCommandLineComponent } from './app-command-line/app-command-line.component';
 import { CommandLineComponent } from './command-line/command-line.component';
-import { CloseButtonComponent } from './close-button/close-button.component';
+import { CloseButtonComponent } from './buttons/close-button.component';
+import { MinimizeButtonComponent } from './buttons/minimize-button.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -35,9 +35,9 @@ import { CloseButtonComponent } from './close-button/close-button.component';
     CharacterSelectComponent,
     MapComponent,
     StatsWindowComponent,
-    AppCommandLineComponent,
     CommandLineComponent,
-    CloseButtonComponent
+    CloseButtonComponent,
+    MinimizeButtonComponent
   ],
   imports: [
     BrowserModule,
