@@ -1,4 +1,6 @@
 
+import { find } from 'lodash';
+
 import { Command } from '../../base/Command';
 import { Player } from '../../../models/player';
 
@@ -44,6 +46,7 @@ export class Move extends Command {
     }
 
     const reverseSteps = steps.reverse();
+    const denseObjects = gameState.map.layers[6].objects;
 
     const getNumStepsSuccessful = (trySteps) => {
       for(var i = 0; i < trySteps.length; i++) {
@@ -51,7 +54,12 @@ export class Move extends Command {
         const nextTileLoc = ((player.y + step.y) * gameState.map.width) + (player.x + step.x);
         const nextTile = denseTiles[nextTileLoc];
 
-        if(nextTile !== 0) {
+        if(nextTile === 0) {
+          const object = find(denseObjects, { x: (player.x + step.x + 1)*64, y: (player.y + step.y + 1)*64 });
+          if(object) {
+            break;
+          }
+        } else {
           break;
         }
       }
@@ -68,8 +76,13 @@ export class Move extends Command {
       const nextTileLoc = ((player.y + step.y) * gameState.map.width) + (player.x + step.x);
       const nextTile = denseTiles[nextTileLoc];
 
-      if(nextTile !== 0) {
-       return;
+      if(nextTile === 0) {
+        const object = find(denseObjects, { x: (player.x + step.x + 1)*64, y: (player.y + step.y + 1)*64 });
+        if(object) {
+          return;
+        }
+      } else {
+        return;
       }
 
       player.x += step.x;
