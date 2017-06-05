@@ -20,8 +20,9 @@ import { CharacterSelectComponent } from './character-select/character-select.co
 import { MapComponent } from './map/map.component';
 import { StatsWindowComponent } from './stats-window/stats-window.component';
 import { CommandLineComponent } from './command-line/command-line.component';
-import { CloseButtonComponent } from './buttons/close-button.component';
-import { MinimizeButtonComponent } from './buttons/minimize-button.component';
+import { CloseButtonComponent } from './_shared/close-button.component';
+import { MinimizeButtonComponent } from './_shared/minimize-button.component';
+import { PlayerTaglineComponent } from './_shared/character-tagline.component';
 import { LogWindowComponent } from './log-window/log-window.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
@@ -39,6 +40,7 @@ import { LogWindowComponent } from './log-window/log-window.component';
     CommandLineComponent,
     CloseButtonComponent,
     MinimizeButtonComponent,
+    PlayerTaglineComponent,
     LogWindowComponent
   ],
   imports: [
