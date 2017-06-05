@@ -18,6 +18,8 @@ export class Interact extends Command {
     const interactables = gameState.map.layers[MapLayer.Interactables].objects;
     const interactable = find(interactables, { x: (player.x + x)*64, y: (player.y + y + 1)*64 });
 
+    if(!interactable) return;
+
     let cmdInfo = {};
     switch(interactable.type) {
       case 'Door': cmdInfo = this.doDoor(interactable);
