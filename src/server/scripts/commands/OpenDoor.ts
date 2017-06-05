@@ -2,19 +2,24 @@
 import { Command } from '../../base/Command';
 import { Player } from '../../../models/player';
 import { MapLayer } from '../../../models/gamestate';
-import { find } from 'lodash';
+import { find, includes } from 'lodash';
 
 export class OpenDoor extends Command {
 
-  public name = 'open';
-  public format = 'open DIR';
+  public name = ['open', 'close'];
+  public format = 'DIR';
 
   execute(player: Player, { room, client, gameState, args }) {
     if(!args) return false;
 
+    let { x, y } = this.getXYFromDir(args);
+
+    if(includes(args, ' ')) {
+      [x, y] = args.split(' ').map(x => +x);
+    }
+
     const map = gameState.map;
     const interactables = map.layers[MapLayer.Interactables].objects;
-    const { x, y } = this.getXYFromDir(args);
 
     const targetX = (player.x + x);
     const targetY = (player.y + y + 1);
@@ -26,14 +31,10 @@ export class OpenDoor extends Command {
       return;
     }
 
-    if(door.isOpen) {
-      room.sendClientLogMessage(client, 'The door is already open.');
-      return;
-    }
-
-    room.sendClientLogMessage(client, 'You open the door.');
+    room.sendClientLogMessage(client, door.isOpen ? 'You close the door.' : 'You open the door.');
     gameState.toggleDoor(door);
 
+    // TODO click to open door
     // TODO make fov take doors into account
     // TODO update all nearby players fov
   }
