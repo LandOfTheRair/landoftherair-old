@@ -3,6 +3,7 @@ import { find } from 'lodash';
 
 import { Command } from '../../base/Command';
 import { Player } from '../../../models/player';
+import { MapLayer } from '../../../models/gamestate';
 
 export class Move extends Command {
 
@@ -15,7 +16,7 @@ export class Move extends Command {
     const checkX = Math.abs(x);
     const checkY = Math.abs(y);
 
-    const denseTiles = gameState.map.layers[4].data;
+    const denseTiles = gameState.map.layers[MapLayer.Walls].data;
     const maxTilesMoved = Math.max(checkX, checkY);
     const steps = Array(maxTilesMoved).fill(null);
 
@@ -46,7 +47,7 @@ export class Move extends Command {
     }
 
     const reverseSteps = steps.reverse();
-    const denseObjects = gameState.map.layers[6].objects;
+    const denseObjects: any[] = gameState.map.layers[MapLayer.DenseDecor].objects;
 
     const getNumStepsSuccessful = (trySteps) => {
       for(var i = 0; i < trySteps.length; i++) {
