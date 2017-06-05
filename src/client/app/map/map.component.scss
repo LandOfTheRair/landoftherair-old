@@ -1,0 +1,11 @@
+
+:host {
+  .fog {
+    width: 64px;
+    height: 64px;
+    background-color: #000;
+    z-index: 500;
+    position: absolute;
+    pointer-events: none;
+  }
+}
