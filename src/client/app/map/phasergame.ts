@@ -1,7 +1,7 @@
 
-import { find, remove } from 'lodash';
+import { find, remove, compact } from 'lodash';
 
-import { ClientGameState } from '../../../models/clientgamestate';
+import { ClientGameState } from '../clientgamestate';
 
 import { environment } from '../../environments/environment';
 import { Player, Sex, Direction } from '../../../models/player';
@@ -10,6 +10,14 @@ export class Game {
 
   private player: Player;
   private playerSprite: any;
+  private map: any;
+
+  private groups: any = {
+    Decor: {},
+    DenseDecor: {},
+    OpaqueDecor: {},
+    Interactables: {}
+  };
 
   private otherPlayerSprites = [];
 
@@ -147,23 +155,23 @@ export class Game {
   }
 
   create() {
-    const map = this.g.add.tilemap(this.clientGameState.mapName);
+    this.map = this.g.add.tilemap(this.clientGameState.mapName);
 
-    map.addTilesetImage('Terrain', 'Terrain');
-    map.addTilesetImage('Walls', 'Walls');
-    map.addTilesetImage('Decor', 'Decor');
+    this.map.addTilesetImage('Terrain', 'Terrain');
+    this.map.addTilesetImage('Walls', 'Walls');
+    this.map.addTilesetImage('Decor', 'Decor');
 
-    map.createLayer('Terrain').resizeWorld();
+    this.map.createLayer('Terrain').resizeWorld();
 
-    map.createLayer('Fluids');
-    map.createLayer('Floors');
-    map.createLayer('Walls');
-    map.createLayer('Foliage');
+    this.map.createLayer('Fluids');
+    this.map.createLayer('Floors');
+    this.map.createLayer('Walls');
+    this.map.createLayer('Foliage');
 
     const doneGids = {};
 
-    const decorFirstGid = map.tilesets[2].firstgid;
-    const wallFirstGid = map.tilesets[1].firstgid;
+    const decorFirstGid = this.map.tilesets[2].firstgid;
+    const wallFirstGid = this.map.tilesets[1].firstgid;
 
     const parseLayer = (layer, obj) => {
       if(doneGids[obj.gid]) return;
@@ -172,13 +180,13 @@ export class Game {
       const isWall = obj.gid < decorFirstGid;
       const firstGid = isWall ? wallFirstGid : decorFirstGid;
       const tileSet = isWall ? 'Walls' : 'Decor';
-      map.createFromObjects(layer, obj.gid, tileSet, obj.gid - firstGid);
+      this.map.createFromObjects(layer, obj.gid, tileSet, obj.gid - firstGid, true, false, this.groups[layer]);
     };
 
-    map.objects.Decor.forEach(parseLayer.bind(this, 'Decor'));
-    map.objects.DenseDecor.forEach(parseLayer.bind(this, 'DenseDecor'));
-    map.objects.OpaqueDecor.forEach(parseLayer.bind(this, 'OpaqueDecor'));
-    map.objects.Interactables.forEach(parseLayer.bind(this, 'Interactables'));
+    ['Decor', 'DenseDecor', 'OpaqueDecor', 'Interactables'].forEach(layer => {
+      this.groups[layer] = this.g.add.group();
+      this.map.objects[layer].forEach(parseLayer.bind(this, layer));
+    });
 
     this.resolveCanCreate();
 
@@ -191,7 +199,24 @@ export class Game {
 
   update() {
     if(!this.player) return;
+
+    // center on player mid
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
+
+    if(this.clientGameState.updates.openDoors.length > 0) {
+      this.clientGameState.updates.openDoors.forEach((doorId, i) => {
+        const door = this.clientGameState.mapData.openDoors[doorId];
+        if(!door) return;
+
+        const doorSprite = find(this.groups.Interactables.children, { x: door.x, y: door.y });
+        if(door.isOpen) doorSprite.frame += 1;
+        else            doorSprite.frame -= 1;
+
+        this.clientGameState.updates.openDoors[i] = null;
+      });
+
+      this.clientGameState.updates.openDoors = compact(this.clientGameState.updates.openDoors);
+    }
   }
 
   destroy() {

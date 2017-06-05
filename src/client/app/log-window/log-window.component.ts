@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ClientGameState } from '../../../models/clientgamestate';
+import { ClientGameState } from '../clientgamestate';
 
 @Component({
   selector: 'app-log-window',

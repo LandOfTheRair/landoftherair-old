@@ -15,7 +15,12 @@ export class CommandExecutor {
     const cmd = commandHash[command];
     if(!cmd) return false;
 
-    cmd.execute(player, args);
+    const wasSuccess = cmd.execute(player, args);
+    if(wasSuccess === false) {
+      const { room, client } = args;
+      room.sendClientLogMessage(client, `Invalid format. Format: ${cmd.format}`);
+    }
+
     return true;
   }
 
