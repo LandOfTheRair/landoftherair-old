@@ -1,9 +1,18 @@
 <div class="row ml-0 mr-0">
   <div class="col-8"></div>
-  <div class="col-2 p-0">
-    <div class="btn btn-outline-danger no-border-radius" disabled>{{ player.hp.__current }}/{{ player.hp.maximum }}</div>
-  </div>
-  <div class="col-2 p-0">
-    <div class="btn btn-outline-primary no-border-radius" disabled>{{ player.mp.__current }}/{{ player.mp.maximum }}</div>
+  <div class="col-4 p-0">
+    <div class="row m-0">
+      <div class="col-6 p-0">
+        <div class="btn btn-outline-danger no-border-radius" disabled tooltip="HP">{{ player.hp.__current }}/{{ player.hp.maximum }}</div>
+      </div>
+      <div class="col-6 p-0">
+        <div class="btn btn-outline-primary no-border-radius" disabled tooltip="MP">{{ player.mp.__current }}/{{ player.mp.maximum }}</div>
+      </div>
+    </div>
+    <div class="row m-0">
+      <div class="col-12 p-0">
+        <div class="btn btn-outline-success no-border-radius" disabled tooltip="XP">{{ player.xp | number }}</div>
+      </div>
+    </div>
   </div>
 </div>

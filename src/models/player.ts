@@ -45,7 +45,7 @@ export class Character {
 
   hp: RestrictedNumber = new RestrictedNumber(0, 100, 100);
   mp: RestrictedNumber = new RestrictedNumber(0, 0, 0);
-  xp: number = 0;
+  xp: number = 1000;
 
   gold: number = 0;
 
