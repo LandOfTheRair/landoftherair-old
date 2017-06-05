@@ -39,20 +39,39 @@ export class GameState {
 
   toggleDoor(door) {
     door.isOpen = !door.isOpen;
+    door.opacity = !door.isOpen;
+    door.density = !door.isOpen;
+
     this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y-64 };
+
+    console.log(door);
   }
 
   constructor(opts) {
     extend(this, opts);
 
-    const denseLayer = this.map.layers[4].data;
-    const opaqueObjects = this.map.layers[7].objects;
+    const denseLayer = this.map.layers[MapLayer.Walls].data;
+    const opaqueObjects = this.map.layers[MapLayer.OpaqueDecor].objects;
+    opaqueObjects.forEach(obj => obj.opacity = 1);
+
+    const denseObjects = this.map.layers[MapLayer.DenseDecor].objects;
+    denseObjects.forEach(obj => obj.density = 1);
+
+    const interactables = this.map.layers[MapLayer.Interactables].objects;
+    interactables.forEach(obj => {
+      if(obj.type === 'Door') {
+        obj.opacity = 1;
+        obj.density = 1;
+      }
+    });
+
+    const checkObjects = opaqueObjects.concat(interactables);
 
     this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
       const tile = denseLayer[(y * this.map.width) + x];
       if(tile === 0) {
-        const object = find(opaqueObjects, { x: x*64, y: (y+1)*64 });
-        return !object;
+        const object = find(checkObjects, { x: x*64, y: (y+1)*64 });
+        return !object || (object && !object.opacity);
       }
       return false;
     });

@@ -48,6 +48,9 @@ export class Move extends Command {
 
     const reverseSteps = steps.reverse();
     const denseObjects: any[] = gameState.map.layers[MapLayer.DenseDecor].objects;
+    const interactables = gameState.map.layers[MapLayer.Interactables].objects;
+
+    const denseCheck = denseObjects.concat(interactables);
 
     const getNumStepsSuccessful = (trySteps) => {
       for(var i = 0; i < trySteps.length; i++) {
@@ -56,8 +59,8 @@ export class Move extends Command {
         const nextTile = denseTiles[nextTileLoc];
 
         if(nextTile === 0) {
-          const object = find(denseObjects, { x: (player.x + step.x + 1)*64, y: (player.y + step.y + 1)*64 });
-          if(object) {
+          const object = find(denseCheck, { x: (player.x + step.x)*64, y: (player.y + step.y + 1)*64 });
+          if(object && object.density) {
             break;
           }
         } else {
@@ -78,8 +81,8 @@ export class Move extends Command {
       const nextTile = denseTiles[nextTileLoc];
 
       if(nextTile === 0) {
-        const object = find(denseObjects, { x: (player.x + step.x + 1)*64, y: (player.y + step.y + 1)*64 });
-        if(object) {
+        const object = find(denseCheck, { x: (player.x + step.x)*64, y: (player.y + step.y + 1)*64 });
+        if(object && object.density) {
           return;
         }
       } else {

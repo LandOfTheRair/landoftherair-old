@@ -34,8 +34,6 @@ export class OpenDoor extends Command {
     room.sendClientLogMessage(client, door.isOpen ? 'You close the door.' : 'You open the door.');
     gameState.toggleDoor(door);
 
-    // TODO click to open door
-    // TODO make fov take doors into account
     // TODO update all nearby players fov
   }
 
