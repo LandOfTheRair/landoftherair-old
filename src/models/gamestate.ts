@@ -65,8 +65,6 @@ export class GameState {
     door.density = !door.isOpen;
 
     this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y-64 };
-
-    console.log(door);
   }
 
   constructor(opts) {
