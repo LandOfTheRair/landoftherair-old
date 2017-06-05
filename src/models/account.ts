@@ -10,6 +10,8 @@ export class Account {
   characterNames: string[] = [];
   maxCharacters: number = 4;
 
+  isGM: boolean = false;
+
   constructor(opts) {
     extend(this, opts);
   }
