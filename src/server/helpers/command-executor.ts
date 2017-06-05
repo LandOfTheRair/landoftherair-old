@@ -2,11 +2,22 @@
 import * as Commands from '../scripts/commands';
 import { Player } from '../../models/player';
 
+import { isArray } from 'lodash';
+
 const commandHash = {};
 
 Object.keys(Commands).forEach(cmd => {
   const command = new Commands[cmd];
-  commandHash[command.name] = command;
+
+  let names = command.name;
+
+  if(!isArray(command.name)) {
+    names = [command.name];
+  }
+
+  names.forEach(name => {
+    commandHash[name] = command;
+  });
 });
 
 export class CommandExecutor {
@@ -18,7 +29,7 @@ export class CommandExecutor {
     const wasSuccess = cmd.execute(player, args);
     if(wasSuccess === false) {
       const { room, client } = args;
-      room.sendClientLogMessage(client, `Invalid format. Format: ${cmd.format}`);
+      room.sendClientLogMessage(client, `Invalid format. Format: ${command} ${cmd.format}`);
     }
 
     return true;
