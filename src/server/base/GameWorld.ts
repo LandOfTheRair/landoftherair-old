@@ -61,6 +61,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   onMessage(client, data) {
+    if(!data.command) return;
     const player = this.state.findPlayer(client.username);
 
     data.gameState = this.state;
