@@ -1,4 +1,6 @@
 
+export * from './gm';
+
 export * from './DebugPos';
 export * from './ShowStats';
 
