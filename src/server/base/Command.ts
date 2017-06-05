@@ -3,7 +3,7 @@ import { Player, Direction } from '../../models/player';
 
 export abstract class Command {
 
-  abstract name: string;
+  abstract name: string|string[];
   format: string = '';
 
   abstract execute(player: Player, args);
