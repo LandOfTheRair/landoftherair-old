@@ -1,11 +1,11 @@
 
 import { find } from 'lodash';
 
-import { Command } from '../../base/Command';
-import { Player } from '../../../models/player';
-import { MapLayer } from '../../../models/gamestate';
+import { Command } from '../../../base/Command';
+import { Player } from '../../../../models/player';
+import { MapLayer } from '../../../../models/gamestate';
 
-import { CommandExecutor } from '../../helpers/command-executor';
+import { CommandExecutor } from '../../../helpers/command-executor';
 
 export class Interact extends Command {
 
