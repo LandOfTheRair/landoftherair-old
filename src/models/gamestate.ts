@@ -37,6 +37,28 @@ export class GameState {
     this.players = reject(this.players, p => p.username === username);
   }
 
+  calculateFOV(player) {
+    const affected = {};
+
+    this.fov.compute(player.x, player.y, 4, (x, y) => {
+      return affected[x - player.x] && affected[x - player.x][y - player.y];
+    }, (x, y) => {
+      affected[x - player.x] = affected[x - player.x] || {};
+      affected[x - player.x][y - player.y] = true;
+    });
+
+    player.$fov = affected;
+  }
+
+  getPlayersInRange(x, y, radius) {
+    return reject(this.players, p => {
+      return p.x < radius-x
+          || p.x > radius+x
+          || p.y < radius-y
+          || p.y > radius+y;
+    });
+  }
+
   toggleDoor(door) {
     door.isOpen = !door.isOpen;
     door.opacity = !door.isOpen;
