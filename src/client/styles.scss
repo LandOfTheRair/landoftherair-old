@@ -23,6 +23,10 @@
 
 .window {
 
+  &.minimized {
+    min-height: 0 !important;
+  }
+
   &.game-window {
     z-index: 700;
   }
@@ -39,10 +43,6 @@
     min-width: 600px;
 
     max-width: 600px;
-
-    &.minimized {
-      min-height: 0;
-    }
   }
 
   &.map {
@@ -78,6 +78,15 @@
 
     min-height: 400px;
     max-height: 400px;
+  }
+
+  &.status-window {
+    min-width: 578px;
+
+    .window-body {
+      max-width: 576px;
+      min-width: 576px;
+    }
   }
 
   position: absolute !important;

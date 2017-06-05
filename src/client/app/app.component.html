@@ -105,7 +105,6 @@
   </div>
 </div>
 
-
 <div class="window log-window game-window"
      [ng2-draggable]="true"
      [ng2DraggableHandle]="logWindow"
@@ -116,5 +115,20 @@
   </div>
   <div class="window-body">
     <app-log-window [clientGameState]="colyseus.game.clientGameState"></app-log-window>
+  </div>
+</div>
+
+<div class="window status-window game-window"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="statusWindow"
+     windowName="statusWindow"
+     [class.minimized]="minimized['status']"
+     *ngIf="inGame">
+  <div class="window-header text-center" #statusWindow>
+    Status
+    <app-minimize-button (click)="minimize('status')"></app-minimize-button>
+  </div>
+  <div class="window-body" [class.hidden]="minimized['status']">
+    <app-status-window [player]="colyseus.game.character"></app-status-window>
   </div>
 </div>
