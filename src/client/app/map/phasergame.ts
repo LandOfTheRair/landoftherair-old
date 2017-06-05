@@ -27,6 +27,7 @@ export class Game {
   private resolveCanUpdate;
 
   public moveCallback = (x, y) => {};
+  public interactCallback = (x, y) => {};
 
   constructor(private clientGameState: ClientGameState, player) {
     this.player = player;
@@ -138,6 +139,15 @@ export class Game {
       // adjust X/Y so they're relative to the player
       const xDiff = xCoord - xPlayer;
       const yDiff = yCoord - yPlayer;
+
+      const possibleInteractable = find(this.map.objects.Interactables, { x: xCoord*64, y: (yCoord+1)*64 });
+
+      if(possibleInteractable) {
+        // check if it's within "interact" range
+        if(Math.abs(xDiff) < 2 && Math.abs(yDiff) < 2) {
+          this.interactCallback(xDiff, yDiff);
+        }
+      }
 
       if(xDiff === 0 && yDiff === 0) return;
 

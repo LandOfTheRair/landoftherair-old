@@ -48,6 +48,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
       this.game = new Game(this.clientGameState, this.currentPlayer);
       this.game.moveCallback = (x, y) => this.colyseus.game.doMove(x, y);
+      this.game.interactCallback = (x, y) => this.colyseus.game.doInteract(x, y);
       this.phaser = new (<any>window).Phaser.Game(boxSize, boxSize, (<any>window).Phaser.CANVAS, 'map', this.game);
 
       this.colyseus.game.doMove(0, 0);
