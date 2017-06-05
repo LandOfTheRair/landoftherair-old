@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ClientGameState } from '../../models/clientgamestate';
+import { ClientGameState } from './clientgamestate';
 
 import { find, includes } from 'lodash';
 import { Player } from '../../models/player';
@@ -39,6 +39,7 @@ export class ColyseusGameService {
 
     this.worldRoom.onUpdate.addOnce((state) => {
       this.clientGameState.mapName = state.mapName;
+      this.clientGameState.setMapData(state.mapData);
       this.clientGameState.setMap(state.map);
 
       state.players.forEach(p => {
@@ -47,6 +48,7 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onUpdate.add((state) => {
+      this.clientGameState.setMapData(state.mapData);
       this.setCharacter(find(state.players, { username: this.colyseus.username }));
     });
 
@@ -70,6 +72,13 @@ export class ColyseusGameService {
     this.worldRoom.state.listen('players/:id/x',    'replace', locDirChange.bind(this, 'x'));
     this.worldRoom.state.listen('players/:id/y',    'replace', locDirChange.bind(this, 'y'));
     this.worldRoom.state.listen('players/:id/dir',  'replace', locDirChange.bind(this, 'dir'));
+
+    const updateDoor = (doorId) => {
+      this.clientGameState.updates.openDoors.push(doorId);
+    };
+
+    this.worldRoom.state.listen('mapData/openDoors/:id', 'add', updateDoor);
+    this.worldRoom.state.listen('mapData/openDoors/:id/isOpen', 'replace', updateDoor);
 
     this.worldRoom.onJoin.add(() => {
       this._inGame = true;
@@ -125,7 +134,7 @@ export class ColyseusGameService {
     } else {
       const arr = str.split(' ');
       command = arr[0];
-      args = str.substring(str.indexOf(' ')).trim();
+      args = arr.length > 1 ? str.substring(str.indexOf(' ')).trim() : '';
     }
 
     this.sendAction({ command, args });

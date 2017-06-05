@@ -1,7 +1,7 @@
 
 import { extend, remove, find } from 'lodash';
 
-import { Player } from './player';
+import { Player } from '../../models/player';
 
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -9,6 +9,7 @@ export class ClientGameState {
   players: Player[] = [];
   map: any = {};
   mapName: string = '';
+  mapData: any = { openDoors: {} };
   fov: any = {};
 
   logMessages: string[] = [];
@@ -21,6 +22,10 @@ export class ClientGameState {
 
   setMap$ = new BehaviorSubject({});
 
+  updates = {
+    openDoors: []
+  };
+
   constructor(opts) {
     extend(this, opts);
     this.initFOV();
@@ -29,6 +34,10 @@ export class ClientGameState {
   setMap(map) {
     this.map = map;
     this.setMap$.next(map);
+  }
+
+  setMapData(data) {
+    this.mapData = data;
   }
 
   initFOV(fov?) {
