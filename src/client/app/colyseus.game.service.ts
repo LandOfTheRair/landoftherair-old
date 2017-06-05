@@ -144,6 +144,10 @@ export class ColyseusGameService {
     this.sendAction({ command: '~move', x, y });
   }
 
+  public doInteract(x, y) {
+    this.sendAction({ command: '~interact', x, y });
+  }
+
   public quit() {
     if(!this.worldRoom) return;
     this.worldRoom.leave();
