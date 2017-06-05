@@ -30,7 +30,11 @@ export class GameWorld extends Room<GameState> {
       delete player._id;
     }
 
-    player = omitBy(player, (value, key) => startsWith(key, '$'));
+    player = omitBy(player, (value, key) => {
+      if(startsWith(key, '$')) return true;
+      if(!Object.getOwnPropertyDescriptor(player, key)) return true;
+      return false;
+    });
 
     return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: player });
   }
