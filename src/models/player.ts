@@ -40,6 +40,7 @@ export class Character {
 
   username: string;
   charSlot: number;
+  isGM: boolean;
 
   name: string;
 
