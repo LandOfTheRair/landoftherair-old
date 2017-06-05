@@ -1,9 +1,9 @@
 
 import { find } from 'lodash';
 
-import { Command } from '../../base/Command';
-import { Player } from '../../../models/player';
-import { MapLayer } from '../../../models/gamestate';
+import { Command } from '../../../base/Command';
+import { Player } from '../../../../models/player';
+import { MapLayer } from '../../../../models/gamestate';
 
 export class Move extends Command {
 
