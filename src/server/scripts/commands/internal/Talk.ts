@@ -1,6 +1,6 @@
 
-import { Command } from '../../base/Command';
-import { Player } from '../../../models/player';
+import { Command } from '../../../base/Command';
+import { Player } from '../../../../models/player';
 
 export class Talk extends Command {
 
