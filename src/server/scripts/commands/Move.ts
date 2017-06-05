@@ -114,16 +114,7 @@ export class Move extends Command {
       }
     }
 
-    const affected = {};
-
-    gameState.fov.compute(player.x, player.y, 4, (x, y) => {
-      return affected[x - player.x] && affected[x - player.x][y - player.y];
-    }, (x, y) => {
-      affected[x - player.x] = affected[x - player.x] || {};
-      affected[x - player.x][y - player.y] = true;
-    });
-
-    player.$fov = affected;
+    gameState.calculateFOV(player);
   }
 
 }
