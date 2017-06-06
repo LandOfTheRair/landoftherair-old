@@ -1,4 +1,4 @@
 
 export * from './Lobby';
 
-export * from './Tutorial';
+export * from './GameWorld';
