@@ -1,9 +1,11 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnDestroy } from '@angular/core';
 import { ClientGameState } from '../clientgamestate';
 
 import { Game } from './phasergame';
 import { Player } from '../../../models/player';
 import { ColyseusService } from '../colyseus.service';
+
+import { HPBox, XPBox } from './floating-box';
 
 @Component({
   selector: 'app-map',
@@ -11,6 +13,9 @@ import { ColyseusService } from '../colyseus.service';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit, OnDestroy {
+
+  @ViewChild('mapElement')
+  public mapContainer;
 
   @Input()
   public currentPlayer: Player = new Player({});
@@ -26,6 +31,7 @@ export class MapComponent implements OnInit, OnDestroy {
   create$: any;
   update$: any;
   remove$: any;
+  boxes$:  any;
 
   started: boolean;
 
@@ -66,6 +72,24 @@ export class MapComponent implements OnInit, OnDestroy {
       this.remove$ = this.clientGameState.removePlayer$.subscribe((player) => {
         this.game.removePlayer(player);
       });
+
+      this.boxes$ = this.clientGameState.playerBoxes$.subscribe(player => {
+        if(player.username !== this.currentPlayer.username) return;
+        const hpDifference = player.hp.__current - this.currentPlayer.hp.__current;
+        const xpDifference = player.xp - this.currentPlayer.xp;
+
+        if(hpDifference !== 0) {
+          const box = new HPBox(hpDifference);
+          box.init(this.mapContainer.nativeElement);
+        }
+
+        if(xpDifference !== 0) {
+          const box = new XPBox(xpDifference);
+          box.init(this.mapContainer.nativeElement);
+        }
+
+        this.currentPlayer = player;
+      })
     });
   }
 
@@ -75,6 +99,7 @@ export class MapComponent implements OnInit, OnDestroy {
     if(this.create$) this.create$.unsubscribe();
     if(this.update$) this.update$.unsubscribe();
     if(this.remove$) this.remove$.unsubscribe();
+    if(this.boxes$)  this.boxes$.unsubscribe();
 
     if(this.game) {
       this.game.destroy();
