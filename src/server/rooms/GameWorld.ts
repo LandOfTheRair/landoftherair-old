@@ -15,12 +15,16 @@ const TickRates = {
 
 export class GameWorld extends Room<GameState> {
 
+  private allMapNames;
+
   ticks = {
     Player: 0
   };
 
   constructor(opts) {
     super(opts);
+
+    this.allMapNames = opts.allMapNames;
 
     this.setPatchRate(1000 / 20);
     this.setSimulationInterval(this.tick.bind(this), 1000 / 60);
@@ -51,6 +55,18 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'log_message', message });
   }
 
+  teleport(client, player, { newMap, x, y }) {
+    if(!this.allMapNames[newMap]) {
+      this.sendClientLogMessage(client, `Warning: map "${newMap}" does not exist.`);
+      return;
+    }
+
+    player.x = x;
+    player.y = y;
+    player.map = newMap;
+    this.send(client, { action: 'change_map', map: newMap });
+  }
+
   // TODO check if player is in this map, return false if not - also, modify this to take a promise? - also fail if in game already
   requestJoin(opts) {
     // console.log('req', opts);
@@ -59,7 +75,9 @@ export class GameWorld extends Room<GameState> {
 
   async onJoin(client, options) {
     const playerData = await DB.$players.findOne({ username: client.username, map: this.state.mapName, charSlot: options.charSlot });
+
     if(!playerData) {
+      this.send(client, { error: 'invalid_char', prettyErrorName: 'Invalid Character Data', prettyErrorDesc: 'No idea how this happened!' });
       return false;
     }
 
