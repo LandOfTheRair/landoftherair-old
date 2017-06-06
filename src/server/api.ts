@@ -6,6 +6,9 @@ import * as cors from 'cors';
 
 import * as Rooms from './rooms';
 
+import * as recurse from 'recursive-readdir';
+import * as path from 'path';
+
 import { Logger } from './logger';
 
 class GameAPI {
@@ -22,8 +25,13 @@ class GameAPI {
       const server = http.createServer(app);
       const gameServer = new colyseus.Server({ server });
 
-      Object.keys(Rooms).forEach(name => {
-        gameServer.register(name, Rooms[name]);
+      gameServer.register('Lobby', Rooms.Lobby);
+
+      recurse(`${__dirname}/maps`).then(files => {
+        files.forEach(file => {
+          const mapName = path.basename(file, path.extname(file));
+          gameServer.register(mapName, Rooms.GameWorld, { mapName, mapPath: file });
+        })
       });
 
       server.listen(port);

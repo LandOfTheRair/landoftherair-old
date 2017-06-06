@@ -26,8 +26,8 @@ export class GameWorld extends Room<GameState> {
     this.setSimulationInterval(this.tick.bind(this), 1000 / 60);
     this.setState(new GameState({
       players: [],
-      map: require(`../maps/${this.constructor.name}.json`),
-      mapName: this.constructor.name
+      map: require(opts.mapPath),
+      mapName: opts.mapName
     }));
 
     this.onInit();
@@ -58,7 +58,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   async onJoin(client, options) {
-    const playerData = await DB.$players.findOne({ username: client.username, map: this.constructor.name, charSlot: options.charSlot });
+    const playerData = await DB.$players.findOne({ username: client.username, map: this.state.mapName, charSlot: options.charSlot });
     if(!playerData) {
       return false;
     }
