@@ -29,7 +29,7 @@ class FloatingBox {
   windUp() {
     const scrollUp = () => {
       const val = parseInt(this.el.style.bottom);
-      this.el.style.bottom = `${val+3}px`;
+      this.el.style.bottom = `${val+1}px`;
     };
 
     const int = setInterval(() => {
@@ -38,7 +38,7 @@ class FloatingBox {
         clearInterval(int);
         this.el.parentNode.removeChild(this.el);
       }
-    }, 25);
+    }, 10);
 
   }
 }
