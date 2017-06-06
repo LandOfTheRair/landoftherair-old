@@ -72,7 +72,7 @@
     World
     <app-close-button (click)="colyseus.game.quit()"></app-close-button>
   </div>
-  <div class="window-body">
+  <div class="window-body" *ngIf="!colyseus.game.isChangingMap">
     <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character"></app-map>
   </div>
 </div>
