@@ -93,6 +93,13 @@ export class Game {
     }
   }
 
+  getStartingSwimmingSpriteForSex(sex: Sex) {
+    switch(sex) {
+      case 'Male':    return 6;
+      case 'Female':  return 0;
+    }
+  }
+
   getSpriteOffsetForDirection(dir: Direction) {
     switch(dir) {
       case 'S': return 0;
@@ -103,6 +110,15 @@ export class Game {
     }
   }
 
+  getSwimmingSpriteOffsetForDirection(dir: Direction) {
+    switch(dir) {
+      case 'S': return 60;
+      case 'W': return 84;
+      case 'E': return 36;
+      case 'N': return 12;
+    }
+  }
+
   getPlayerSprite(player: Player) {
     const spriteGender = this.getStartingSpriteForSex(player.sex);
     const spriteDir = this.getSpriteOffsetForDirection(player.dir);
@@ -110,19 +126,39 @@ export class Game {
     const sprite = this.g.add.sprite(player.x * 64, player.y * 64, 'Creatures', spriteGender+spriteDir);
     sprite.username = player.username;
 
+    this.updatePlayerSprite(sprite, player);
+
     // input enabled on sprite
 
     return sprite;
   }
 
   updatePlayerSprite(sprite, player: Player) {
-    const spriteGender = this.getStartingSpriteForSex(player.sex);
-    const spriteDir = this.getSpriteOffsetForDirection(player.dir);
+
+    let frame = 0;
+    let key = '';
+
+    // if player isn't swimming or player is dead
+    if(!player.swimLevel || player.dir === 'C') {
+      const spriteGender = this.getStartingSpriteForSex(player.sex);
+      const spriteDir = this.getSpriteOffsetForDirection(player.dir);
+      frame = spriteGender + spriteDir;
+      key = 'Creatures';
+    } else {
+      const spriteGender = this.getStartingSwimmingSpriteForSex(player.sex);
+      const spriteDir = this.getSwimmingSpriteOffsetForDirection(player.dir);
+      frame = spriteGender + spriteDir;
+      key = 'Swimming';
+    }
 
     sprite.x = player.x * 64;
     sprite.y = player.y * 64;
 
-    sprite.frame = spriteGender + spriteDir;
+    if(sprite.key !== key) {
+      sprite.loadTexture(key, frame);
+    }
+
+    sprite.frame = frame;
   }
 
   private setupPhaser() {
@@ -161,6 +197,7 @@ export class Game {
     this.g.load.spritesheet('Decor', `${this.assetUrl}/decor.png`, 64, 64);
 
     this.g.load.spritesheet('Creatures', `${this.assetUrl}/creatures.png`, 64, 64);
+    this.g.load.spritesheet('Swimming', `${this.assetUrl}/swimming.png`, 64, 64);
     this.g.load.tilemap(this.clientGameState.mapName, null, this.clientGameState.map, (<any>window).Phaser.Tilemap.TILED_JSON);
   }
 

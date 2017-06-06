@@ -17,7 +17,7 @@ export class GMTeleport extends Command {
     player.x = +x;
     player.y = +y;
 
-    gameState.calculateFOV(player);
+    gameState.resetPlayerStatus(player);
   }
 
 }

@@ -32,6 +32,8 @@ export class Stats {
   con = 0;
 
   move = 3;
+  hpregen = 1;
+  mpregen = 0;
 }
 
 export class Character {
@@ -63,6 +65,7 @@ export class Character {
   baseClass: CharacterClass = 'Undecided';
 
   $fov: any;
+  swimLevel: number;
 
   get ageString() {
     return 'extremely young';
@@ -82,5 +85,4 @@ export class Character {
 }
 
 export class Player extends Character {
-
 }
