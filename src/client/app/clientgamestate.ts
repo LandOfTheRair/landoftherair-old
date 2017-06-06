@@ -77,6 +77,14 @@ export class ClientGameState {
     remove(this.players, (p, i) => i === playerIndex);
   }
 
+  removeAllPlayers() {
+    this.players.forEach((p) => {
+      this.removePlayer$.next(p);
+    });
+
+    this.players = [];
+  }
+
   addLogMessage(message) {
     this.logMessages.push(message);
 

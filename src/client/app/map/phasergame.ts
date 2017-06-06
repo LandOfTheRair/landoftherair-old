@@ -41,6 +41,7 @@ export class Game {
 
     const sprite = this.getPlayerSprite(player);
     if(player.username === this.player.username) {
+      this.player = player;
       this.playerSprite = sprite;
       this.resolveCanUpdate(sprite);
 
