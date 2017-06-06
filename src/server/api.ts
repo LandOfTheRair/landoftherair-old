@@ -27,10 +27,13 @@ class GameAPI {
 
       gameServer.register('Lobby', Rooms.Lobby);
 
+      const allMapNames = {};
+
       recurse(`${__dirname}/maps`).then(files => {
         files.forEach(file => {
           const mapName = path.basename(file, path.extname(file));
-          gameServer.register(mapName, Rooms.GameWorld, { mapName, mapPath: file });
+          allMapNames[mapName] = true;
+          gameServer.register(mapName, Rooms.GameWorld, { mapName, mapPath: file, allMapNames });
         })
       });
 

@@ -86,7 +86,7 @@ export class Character {
   }
 
   toJSON() {
-    return omit(this, ['_id', 'charSlot']);
+    return omit(this, ['_id']);
   }
 
   tick() {
