@@ -18,6 +18,7 @@ class FloatingBox {
     el.style.color = this.color;
     el.style.fontWeight = 'bold';
     el.style.border = '1px solid #000';
+    el.style.pointerEvents = 'none';
     el.innerText = `${this.value > 0 ? '+': ''}${this.value}`;
     element.appendChild(el);
 
