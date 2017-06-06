@@ -14,6 +14,7 @@ class Database {
 
   public $accounts: any;
   public $players: any;
+  public $items: any;
 
   private client: MongoClient;
 
@@ -34,6 +35,9 @@ class Database {
 
         this.$players = client.collection('players');
         this.$players.ensureIndex({ username: 1, charSlot: 1 });
+
+        this.$items = client.collection('items');
+        this.$items.ensureIndex({ name: 1 }, { unique: true });
 
         resolve();
       });
