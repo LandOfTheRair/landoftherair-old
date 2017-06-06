@@ -12,16 +12,8 @@ export class GMTeleport extends Command {
 
     const [x, y, map] = args.split(' ');
 
-    if(map && map !== player.map) {
-      player.map = map;
-      room.teleport(client, player, { x: +x, y: +y, newMap: map });
+    if(!x || !y || args.length < 2) return false;
 
-    } else {
-      player.x = +x;
-      player.y = +y;
-
-      gameState.resetPlayerStatus(player);
-    }
+    room.teleport(client, player, { x: +x, y: +y, newMap: map });
   }
-
 }

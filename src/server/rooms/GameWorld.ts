@@ -56,15 +56,20 @@ export class GameWorld extends Room<GameState> {
   }
 
   teleport(client, player, { newMap, x, y }) {
-    if(!this.allMapNames[newMap]) {
+    if(newMap && !this.allMapNames[newMap]) {
       this.sendClientLogMessage(client, `Warning: map "${newMap}" does not exist.`);
       return;
     }
 
     player.x = x;
     player.y = y;
-    player.map = newMap;
-    this.send(client, { action: 'change_map', map: newMap });
+
+    this.state.resetPlayerStatus(player);
+
+    if(newMap) {
+      player.map = newMap;
+      this.send(client, { action: 'change_map', map: newMap });
+    }
   }
 
   // TODO check if player is in this map, return false if not - also, modify this to take a promise? - also fail if in game already
