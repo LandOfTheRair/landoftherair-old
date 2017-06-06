@@ -1,0 +1,5 @@
+- name: Antanian Cloak
+  ac: 1
+  desc: "a leather cloak"
+  value: 1
+  sprite: 239

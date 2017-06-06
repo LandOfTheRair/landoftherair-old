@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "npm-run-all --parallel start:*",
+    "start:server:plain": "ts-node src/server/index.ts",
     "start:server": "nodemon --ignore \"*.json\" --exec \"ts-node \" -- \"src/server/index.ts\"",
     "start:client": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --environment=prod",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "task:items": "ts-node src/server/tasks/items.ts"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "colyseus.js": "^0.6.0",
     "core-js": "^2.4.1",
     "cors": "^2.8.3",
+    "cross-env": "^5.0.0",
     "express": "^4.15.3",
     "jsonwebtoken": "^7.4.1",
     "lodash": "^4.17.4",
@@ -50,6 +53,7 @@
     "restricted-number": "^1.1.0",
     "rxjs": "^5.1.0",
     "sweetalert2": "^6.6.4",
+    "yamljs": "^0.2.10",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
