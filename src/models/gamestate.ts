@@ -75,6 +75,10 @@ export class GameState {
     this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y-64 };
   }
 
+  tickPlayers() {
+    this.players.forEach(p => p.tick());
+  }
+
   constructor(opts) {
     extend(this, opts);
 

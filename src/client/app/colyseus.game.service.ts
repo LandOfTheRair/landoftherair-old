@@ -53,7 +53,6 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onData.add((data) => {
-      console.log('data', data);
       this.interceptGameCommand(data);
     });
 
@@ -98,9 +97,11 @@ export class ColyseusGameService {
     if(!character) return;
     this.character = new Player(character);
 
-    if(character.$fov) {
-      this.setFOV(character.$fov);
+    if(this.character.$fov) {
+      this.setFOV(this.character.$fov);
     }
+
+    this.clientGameState.playerBoxes$.next(this.character);
   }
 
   private setFOV(fov) {

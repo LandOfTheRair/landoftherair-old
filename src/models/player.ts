@@ -1,5 +1,5 @@
 
-import { omit, merge } from 'lodash';
+import { omit, merge, find } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 
 export type Allegiance =
@@ -75,12 +75,32 @@ export class Character {
     return Math.floor(this.xp / 1000);
   }
 
+  getTotalStat(stat) {
+    return this.stats[stat];
+  }
+
   constructor(opts) {
     merge(this, opts);
+    this.hp = new RestrictedNumber(this.hp.minimum, this.hp.maximum, this.hp.__current);
+    this.mp = new RestrictedNumber(this.mp.minimum, this.mp.maximum, this.mp.__current);
   }
 
   toJSON() {
     return omit(this, ['_id', 'charSlot']);
+  }
+
+  tick() {
+    const hpRegen = this.getTotalStat('hpregen');
+    const mpRegen = this.getTotalStat('mpregen');
+
+    this.hp.add(hpRegen);
+    this.mp.add(mpRegen);
+
+    if(this.swimLevel > 0) {
+      const hpPercentLost = this.swimLevel * 2;
+      const hpLost = Math.floor(this.hp.maximum * (hpPercentLost/100));
+      this.hp.sub(hpLost);
+    }
   }
 }
 
