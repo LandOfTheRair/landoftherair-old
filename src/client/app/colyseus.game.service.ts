@@ -47,8 +47,6 @@ export class ColyseusGameService {
       this.worldRoom.leave();
     }
 
-    console.log(this.character);
-
     this.worldRoom = this.client.join(room, { charSlot: this.character.charSlot });
 
     this.changingMap = false;
@@ -101,7 +99,7 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onLeave.add(() => {
-      console.log(this.changingMap);
+      this.clientGameState.removeAllPlayers();
       if(this.changingMap) return;
       this._inGame = false;
     });
