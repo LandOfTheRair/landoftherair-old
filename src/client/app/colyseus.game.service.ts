@@ -69,9 +69,10 @@ export class ColyseusGameService {
       this.clientGameState.updatePlayer(+playerId, attribute, value);
     };
 
-    this.worldRoom.state.listen('players/:id/x',    'replace', locDirChange.bind(this, 'x'));
-    this.worldRoom.state.listen('players/:id/y',    'replace', locDirChange.bind(this, 'y'));
-    this.worldRoom.state.listen('players/:id/dir',  'replace', locDirChange.bind(this, 'dir'));
+    this.worldRoom.state.listen('players/:id/x',          'replace', locDirChange.bind(this, 'x'));
+    this.worldRoom.state.listen('players/:id/y',          'replace', locDirChange.bind(this, 'y'));
+    this.worldRoom.state.listen('players/:id/dir',        'replace', locDirChange.bind(this, 'dir'));
+    this.worldRoom.state.listen('players/:id/swimLevel',  'replace', locDirChange.bind(this, 'swimLevel'));
 
     const updateDoor = (doorId) => {
       this.clientGameState.updates.openDoors.push(doorId);

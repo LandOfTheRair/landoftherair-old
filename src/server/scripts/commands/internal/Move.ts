@@ -114,7 +114,7 @@ export class Move extends Command {
       }
     }
 
-    gameState.calculateFOV(player);
+    gameState.resetPlayerStatus(player);
   }
 
 }

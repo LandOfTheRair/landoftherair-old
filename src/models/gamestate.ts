@@ -27,6 +27,7 @@ export class GameState {
 
   addPlayer(player) {
     this.players.push(player);
+    this.resetPlayerStatus(player);
   }
 
   findPlayer(username) {
@@ -57,6 +58,13 @@ export class GameState {
           || p.y < radius-y
           || p.y > radius+y;
     });
+  }
+
+  resetPlayerStatus(player: Player) {
+    this.calculateFOV(player);
+
+    const swimTile = this.map.layers[MapLayer.Fluids].data[(player.y * this.map.width) + player.x];
+    player.swimLevel = swimTile ? 1 : 0;
   }
 
   toggleDoor(door) {
