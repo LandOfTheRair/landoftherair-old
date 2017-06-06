@@ -29,6 +29,10 @@ export class ColyseusGameService {
     this.initGame();
   }
 
+  get isChangingMap() {
+    return this.changingMap;
+  }
+
   get inGame() {
     return this._inGame && this.worldRoom;
   }
@@ -49,8 +53,6 @@ export class ColyseusGameService {
 
     this.worldRoom = this.client.join(room, { charSlot: this.character.charSlot });
 
-    this.changingMap = false;
-
     this.worldRoom.onUpdate.addOnce((state) => {
       this.clientGameState.mapName = state.mapName;
       this.clientGameState.setMapData(state.mapData);
@@ -59,6 +61,8 @@ export class ColyseusGameService {
       state.players.forEach(p => {
         this.clientGameState.addPlayer(p);
       });
+
+      this.changingMap = false;
     });
 
     this.worldRoom.onUpdate.add((state) => {

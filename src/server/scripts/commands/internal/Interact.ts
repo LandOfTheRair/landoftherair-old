@@ -25,7 +25,7 @@ export class Interact extends Command {
       case 'Teleport': return this.doTeleport(room, client, player, interactable);
       case 'Door': cmdInfo = this.doDoor(gameState, interactable); break;
     }
-    
+
     const { command, shouldContinue }: any = cmdInfo;
     const args = `${x} ${y}`;
     if(!command || !shouldContinue) return;
