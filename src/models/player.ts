@@ -97,7 +97,7 @@ export class Character {
     this.mp.add(mpRegen);
 
     if(this.swimLevel > 0) {
-      const hpPercentLost = this.swimLevel * 2;
+      const hpPercentLost = this.swimLevel * 4;
       const hpLost = Math.floor(this.hp.maximum * (hpPercentLost/100));
       this.hp.sub(hpLost);
     }
