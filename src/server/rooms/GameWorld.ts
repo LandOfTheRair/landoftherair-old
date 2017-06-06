@@ -1,5 +1,6 @@
 
-import { omitBy, startsWith, isString } from 'lodash';
+import { omitBy, startsWith, isString, cloneDeep } from 'lodash';
+
 
 import { Room } from 'colyseus';
 import { GameState } from '../../models/gamestate';
@@ -30,7 +31,7 @@ export class GameWorld extends Room<GameState> {
     this.setSimulationInterval(this.tick.bind(this), 1000 / 60);
     this.setState(new GameState({
       players: [],
-      map: require(opts.mapPath),
+      map: cloneDeep(require(opts.mapPath)),
       mapName: opts.mapName
     }));
 

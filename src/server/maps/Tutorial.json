@@ -442,8 +442,20 @@
                  "height":64,
                  "id":117,
                  "name":"Portal",
+                 "properties":
+                    {
+                     "teleportMap":"Antania",
+                     "teleportX":68,
+                     "teleportY":13
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
                  "rotation":0,
-                 "type":"Portal",
+                 "type":"Teleport",
                  "visible":true,
                  "width":64,
                  "x":896,
