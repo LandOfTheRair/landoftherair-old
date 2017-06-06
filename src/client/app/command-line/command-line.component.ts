@@ -14,6 +14,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   public colyseusGame;
 
   public command: string = '';
+  public lastCommand: string = '';
 
   private listener: any;
 
@@ -33,7 +34,18 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   sendCommand() {
     if(!this.command || !this.command.trim()) return;
 
+    if(this.command === '.' && this.lastCommand) {
+      this.colyseusGame.sendCommandString(this.lastCommand);
+      this.command = '';
+      return;
+    }
+
     this.colyseusGame.sendCommandString(this.command);
+
+    if(this.command !== '.') {
+      this.lastCommand = this.command;
+    }
+    
     this.command = '';
   }
 }
