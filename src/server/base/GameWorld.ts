@@ -9,7 +9,15 @@ import { Player } from '../../models/player';
 
 import { CommandExecutor } from '../helpers/command-executor';
 
+const TickRates = {
+  Player: 50
+};
+
 export class GameWorld extends Room<GameState> {
+
+  ticks = {
+    Player: 0
+  };
 
   constructor(opts) {
     super(opts);
@@ -92,5 +100,11 @@ export class GameWorld extends Room<GameState> {
 
   // TODO save every player every minute
   tick() {
+    this.ticks.Player++;
+
+    if(this.ticks.Player >= TickRates.Player) {
+      this.ticks.Player = 0;
+      this.state.tickPlayers();
+    }
   }
 }
