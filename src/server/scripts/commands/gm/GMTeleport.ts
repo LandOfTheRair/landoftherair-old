@@ -7,17 +7,21 @@ export class GMTeleport extends Command {
   public name = '@teleport';
   public format = 'X Y [Map]';
 
-  execute(player: Player, { gameState, args }) {
+  execute(player: Player, { client, room, gameState, args }) {
     if(!player.isGM) return;
 
     const [x, y, map] = args.split(' ');
 
-    // TODO implement map teleporting
+    if(map && map !== player.map) {
+      player.map = map;
+      room.teleport(client, player, { x: +x, y: +y, newMap: map });
 
-    player.x = +x;
-    player.y = +y;
+    } else {
+      player.x = +x;
+      player.y = +y;
 
-    gameState.resetPlayerStatus(player);
+      gameState.resetPlayerStatus(player);
+    }
   }
 
 }

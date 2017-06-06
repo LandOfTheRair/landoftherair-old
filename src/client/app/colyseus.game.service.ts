@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ClientGameState } from './clientgamestate';
+import * as swal from 'sweetalert2';
 
 import { find, includes } from 'lodash';
 import { Player } from '../../models/player';
@@ -16,6 +17,8 @@ export class ColyseusGameService {
 
   _inGame: boolean;
 
+  private changingMap: boolean;
+
   constructor() {}
 
   init(colyseus, client, character) {
@@ -31,11 +34,24 @@ export class ColyseusGameService {
   }
 
   private initGame() {
-    if(!this.client) throw new Error('Client not intialized; cannot initialize game connection.');
+    if (!this.client) throw new Error('Client not intialized; cannot initialize game connection.');
 
     this.quit();
 
-    this.worldRoom = this.client.join(this.character.map, { charSlot: this.character.charSlot });
+    this.joinRoom(this.character.map);
+
+  }
+
+  private joinRoom(room) {
+    if(this.worldRoom) {
+      this.worldRoom.leave();
+    }
+
+    console.log(this.character);
+
+    this.worldRoom = this.client.join(room, { charSlot: this.character.charSlot });
+
+    this.changingMap = false;
 
     this.worldRoom.onUpdate.addOnce((state) => {
       this.clientGameState.mapName = state.mapName;
@@ -85,6 +101,8 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onLeave.add(() => {
+      console.log(this.changingMap);
+      if(this.changingMap) return;
       this._inGame = false;
     });
 
@@ -114,12 +132,22 @@ export class ColyseusGameService {
 
   private interceptGameCommand({ action, error, ...other }) {
     if(error) {
-      alert(error);
+      (<any>swal)({
+        titleText: other.prettyErrorName,
+        text: other.prettyErrorDesc,
+        type: 'error'
+      });
       return;
     }
 
+    if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
+  }
+
+  private changeMap(map) {
+    this.changingMap = true;
+    this.joinRoom(map);
   }
 
   private sendAction(data) {
