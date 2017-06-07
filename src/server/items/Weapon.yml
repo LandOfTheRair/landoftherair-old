@@ -1,5 +1,4 @@
 - name: Antanian Dagger
-  ac: 0
   accuracy: 5
   desc: "a steel dagger"
   baseDamage: 3
@@ -8,7 +7,7 @@
 
 - name: Battlemage Halberd
   desc: "a halberd symbolizing the yin and yang of the Magus"
-  ac: 2
+  armorClass: 2
   accuracy: 10
   baseDamage: 100
   sprite: 134
