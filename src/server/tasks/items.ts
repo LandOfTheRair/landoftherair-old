@@ -5,7 +5,7 @@ import * as YAML from 'yamljs';
 import * as recurse from 'recursive-readdir';
 import * as path from 'path';
 
-import { includes, flatten } from 'lodash';
+import { includes, flatten, isUndefined } from 'lodash';
 
 import { Item, ValidItemTypes } from '../../models/item';
 
@@ -23,6 +23,7 @@ class ItemLoader {
           const promises = itemsOfType.map(itemData => {
             itemData.itemClass = fileName;
             itemData.type = itemData.type || 'Martial';
+            this.conditionallyAddInformation(itemData);
             if(!this.validateItem(itemData)) return;
 
             console.log(`Inserting ${itemData.name}`);
@@ -38,6 +39,20 @@ class ItemLoader {
         });
       });
     });
+  }
+
+  static conditionallyAddInformation(item: Item) {
+    if(item.itemClass === 'Weapon') {
+      if(isUndefined(item.isBeltable))  item.isBeltable = true;
+      if(isUndefined(item.isSackable))  item.isSackable = false;
+      if(isUndefined(item.isPouchable)) item.isPouchable = false;
+    }
+
+    if(item.itemClass === 'Armor') {
+      if(isUndefined(item.isBeltable))  item.isBeltable = false;
+      if(isUndefined(item.isSackable))  item.isSackable = false;
+      if(isUndefined(item.isPouchable)) item.isPouchable = false;
+    }
   }
 
   static validateItem(item: Item): boolean {
