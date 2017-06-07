@@ -1,6 +1,7 @@
 
-import { omit, merge, find } from 'lodash';
+import { omitBy, merge, find } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
+import { Item } from './item';
 
 export type Allegiance =
   'None'
@@ -64,6 +65,14 @@ export class Character {
 
   baseClass: CharacterClass = 'Undecided';
 
+  inventory: Item[] = [];
+  pouch: Item[] = [];
+  belt: Item[] = [];
+
+  gear: any = {};
+  leftHand: Item;
+  rightHand: Item;
+
   $fov: any;
   $doNotSave: boolean;
   swimLevel: number;
@@ -87,7 +96,11 @@ export class Character {
   }
 
   toJSON() {
-    return omit(this, ['_id']);
+    return omitBy(this, (value, key) => {
+      if(!Object.getOwnPropertyDescriptor(this, key)) return true;
+      if(key === '_id') return true;
+      return false;
+    });
   }
 
   tick() {
