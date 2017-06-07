@@ -25,6 +25,7 @@ import { MinimizeButtonComponent } from './_shared/minimize-button.component';
 import { PlayerTaglineComponent } from './_shared/character-tagline.component';
 import { LogWindowComponent } from './log-window/log-window.component';
 import { StatusWindowComponent } from './status-window/status-window.component';
+import { GroundComponent } from './ground/ground.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -43,7 +44,8 @@ import { StatusWindowComponent } from './status-window/status-window.component';
     MinimizeButtonComponent,
     PlayerTaglineComponent,
     LogWindowComponent,
-    StatusWindowComponent
+    StatusWindowComponent,
+    GroundComponent
   ],
   imports: [
     BrowserModule,
