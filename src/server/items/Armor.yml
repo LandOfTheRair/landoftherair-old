@@ -1,5 +1,5 @@
 - name: Antanian Tunic
-  ac: 1
+  armorClass: 1
   desc: "a leather tunic"
   value: 1
   sprite: 234
@@ -7,7 +7,7 @@
     str: 1
 
 - name: Battlemage Armor
-  ac: 10
+  armorClass: 10
   sprite: 133
   desc: "a breastplate symbolizing the yin and yang of the Magus"
   value: 10000

@@ -23,7 +23,7 @@ export class Item {
   sprite: number;
   itemClass: string;
 
-  ac = 0;
+  armorClass = 0;
   accuracy = 0;
   baseDamage = 5;
 
