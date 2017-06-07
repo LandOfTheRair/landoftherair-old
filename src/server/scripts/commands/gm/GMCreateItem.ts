@@ -22,7 +22,8 @@ export class GMCreateItem extends Command {
       return;
     }
 
-    console.log(item);
+    room.placeItemOnGround(player, item);
 
+    // TODO drop on ground, render on ground, ground menu, pick up, hands, gear, sack, belt, pouch
   }
 }

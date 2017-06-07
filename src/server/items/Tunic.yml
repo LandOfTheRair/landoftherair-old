@@ -1,0 +1,7 @@
+- name: Antanian Tunic
+  armorClass: 1
+  desc: "a leather tunic"
+  value: 1
+  sprite: 234
+  stats:
+    str: 1
