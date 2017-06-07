@@ -88,25 +88,7 @@ export class GameState {
     this.groundItems[x][y][item.itemClass] = this.groundItems[x][y][item.itemClass] || [];
 
     const typeList = this.groundItems[x][y][item.itemClass];
-
-    if(item.owner) {
-      typeList.push(item);
-
-    } else {
-      if(typeList.length > 0) {
-        const sameItem = find(typeList, (checkItem) => item.name === checkItem.name && !checkItem.owner);
-        if(sameItem) {
-          sameItem.count = sameItem.count || 1;
-          sameItem.count++;
-
-        } else {
-          typeList.push(item);
-        }
-      } else {
-        typeList.push(item);
-      }
-    }
-
+    typeList.push(item);
   }
 
   tickPlayers() {
