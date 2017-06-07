@@ -1,6 +1,7 @@
 
 import { extend, omitBy } from 'lodash';
 import * as uuid from 'uuid/v4';
+import { Player } from './player';
 
 export const ValidItemTypes = [
   'Mace', 'Axe', 'Dagger', 'Magical', 'OneHandedSword', 'TwoHandedSword', 'Polearm', 'Ranged',
@@ -59,6 +60,15 @@ export class Item {
     if(this.condition <= 40000) return 'mint';
     if(this.condition <= 50000) return 'above mint';
     return 'perfect';
+  }
+
+  descTextFor(player: Player) {
+    let ownedText = '';
+    if(this.owner) {
+      if(this.owner === player.username) ownedText = 'This item belongs to you.';
+      else                               ownedText = 'This item does not belong to you.';
+    }
+    return `You are looking at ${this.desc}. The item is in ${this.conditionString} condition. ${ownedText}`;
   }
 
   toJSON() {

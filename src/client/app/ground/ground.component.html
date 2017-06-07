@@ -1,6 +1,6 @@
 
 <div class="upper-container">
-  <div class="vertical-center" *ngIf="itemTypes.length === 0">There are no items here.</div>
+  <div class="vertical-center full-width" *ngIf="itemTypes.length === 0">There are no items here.</div>
 
   <app-item *ngFor="let type of itemTypes"
             [item]="currentGround[type][0]"
@@ -11,5 +11,8 @@
 </div>
 
 <div class="lower-container" *ngIf="selectedType && currentGround[selectedType] && currentGround[selectedType].length > 0">
-  <app-item *ngFor="let item of currentGround[selectedType]" [item]="item"></app-item>
+  <app-item *ngFor="let item of currentGround[selectedType]"
+            [item]="item"
+            [player]="colyseusGame.character"
+            [showDesc]="true"></app-item>
 </div>
