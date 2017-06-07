@@ -5,6 +5,7 @@ import { ClientGameState } from '../clientgamestate';
 
 import { environment } from '../../environments/environment';
 import { Player, Sex, Direction } from '../../../models/player';
+import { Item } from '../../../models/item';
 
 export class Game {
 
@@ -12,12 +13,16 @@ export class Game {
   private playerSprite: any;
   private map: any;
 
+  private itemsOnGround: any = {};
+
   private groups: any = {
     Decor: {},
     DenseDecor: {},
     OpaqueDecor: {},
     Interactables: {}
   };
+
+  private visibleSprites = {};
 
   private otherPlayerSprites = [];
 
@@ -192,6 +197,50 @@ export class Game {
     });
   }
 
+  private showItemSprites(centerX, centerY) {
+    for(let x = centerX-4; x <= centerX+4; x++) {
+
+      const itemPatchX = this.clientGameState.groundItems[x];
+      if(!itemPatchX) continue;
+
+      for(let y = centerY-4; y <= centerY+4; y++) {
+        const itemPatchY = this.clientGameState.groundItems[x][y];
+        if(!itemPatchY) continue;
+
+        Object.keys(itemPatchY).forEach(itemType => {
+          if(itemPatchY[itemType].length === 0) return;
+          this.createItemSprite(itemPatchY[itemType][0], x, y);
+        });
+      }
+    }
+  }
+
+  private createItemSprite(item: Item, x, y) {
+    if(!this.visibleSprites[x]) this.visibleSprites[x] = {};
+    if(!this.visibleSprites[x][y]) this.visibleSprites[x][y] = {};
+    if(!this.visibleSprites[x][y][item.itemClass]) this.visibleSprites[x][y][item.itemClass] = null;
+
+    if(this.visibleSprites[x][y][item.itemClass]) return;
+
+    const sprite = this.g.add.sprite(x * 64, y * 64, 'Items', item.sprite);
+    this.visibleSprites[x][y][item.itemClass] = sprite;
+    sprite.itemClass = item.itemClass;
+    this.itemsOnGround.add(sprite);
+  }
+
+  private removeOldItemSprites(centerX, centerY) {
+    this.itemsOnGround.children.forEach(sprite => {
+      const x = sprite.x / 64;
+      const y = sprite.y / 64;
+
+      if(x < centerX - 4 || x > centerX + 4 || y < centerY - 4 || y > centerY + 4) {
+        this.visibleSprites[x][y][sprite.itemClass] = null;
+        this.itemsOnGround.removeChild(sprite);
+        sprite.destroy();
+      }
+    });
+  }
+
   preload() {
     this.g.load.image('Terrain', `${this.assetUrl}/terrain.png`, 64, 64);
     this.g.load.spritesheet('Walls', `${this.assetUrl}/walls.png`, 64, 64);
@@ -199,6 +248,8 @@ export class Game {
 
     this.g.load.spritesheet('Creatures', `${this.assetUrl}/creatures.png`, 64, 64);
     this.g.load.spritesheet('Swimming', `${this.assetUrl}/swimming.png`, 64, 64);
+
+    this.g.load.spritesheet('Items', `${this.assetUrl}/items.png`, 64, 64);
     this.g.load.tilemap(this.clientGameState.mapName, null, this.clientGameState.map, (<any>window).Phaser.Tilemap.TILED_JSON);
   }
 
@@ -238,11 +289,9 @@ export class Game {
 
     this.resolveCanCreate();
 
+    this.itemsOnGround = this.g.add.group();
+
     this.setupPhaser();
-  }
-
-  render() {
-
   }
 
   update() {
@@ -265,6 +314,9 @@ export class Game {
 
       this.clientGameState.updates.openDoors = compact(this.clientGameState.updates.openDoors);
     }
+
+    this.removeOldItemSprites(this.player.x, this.player.y);
+    this.showItemSprites(this.player.x, this.player.y);
   }
 
   destroy() {
