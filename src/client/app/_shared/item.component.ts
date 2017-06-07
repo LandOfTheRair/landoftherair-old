@@ -19,8 +19,8 @@ import { Item } from '../../../models/item';
     
     .count {
       position: absolute;
-      color: #fff;
-      text-shadow: -1px 0 #222, 0 1px #222, 1px 0 #222, 0 -1px #222;
+      color: #000;
+      text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
       top: 5px;
       right: 5px;
       font-size: 0.7rem;
