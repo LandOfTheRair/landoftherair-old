@@ -3,25 +3,26 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../models/player';
 import { ItemCreator } from '../../../helpers/item-creator';
 
-export class GMCreateItem extends Command {
+export class GMCreateGold extends Command {
 
-  public name = '@item';
-  public format = 'ItemName';
+  public name = '@gold';
+  public format = 'Value';
 
   async execute(player: Player, { client, room, gameState, args }) {
     if(!player.isGM) return;
 
-    const itemName = args;
-    if(!itemName) return false;
+    const value = +args;
+    if(!value) return false;
 
     let item;
     try {
-      item = await ItemCreator.getItemByName(itemName);
+      item = await ItemCreator.getItemByName('Gold Coin');
     } catch(e) {
-      room.sendClientLogMessage(client, `Warning: item "${itemName}" does not exist.`);
+      room.sendClientLogMessage(client, `Warning: "Gold Coin" does not exist.`);
       return;
     }
 
+    item.value = value;
     room.placeItemOnGround(player, item);
   }
 }

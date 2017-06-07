@@ -27,6 +27,7 @@ export class Look extends Command {
     }
 
     const typesWithNames = numTypes.sort().map(itemType => {
+      if(itemType === 'Coin') return `${items.Coin[0].value} ${items.Coin[0].name.toLowerCase()}${items.Coin[0].value > 1 ? 's' : ''}`;
       const len = items[itemType].length;
       const str = this.getStringForNum(len);
       return `${str} ${itemType.toLowerCase()}${len > 1 ? 's' : ''}`;

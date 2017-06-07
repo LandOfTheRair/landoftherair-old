@@ -4,7 +4,6 @@ import { extend, remove, find } from 'lodash';
 import { Player } from '../../models/player';
 
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Item } from '../../models/item';
 
 export class ClientGameState {
   players: Player[] = [];

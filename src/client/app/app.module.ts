@@ -23,6 +23,7 @@ import { CommandLineComponent } from './command-line/command-line.component';
 import { CloseButtonComponent } from './_shared/close-button.component';
 import { MinimizeButtonComponent } from './_shared/minimize-button.component';
 import { PlayerTaglineComponent } from './_shared/character-tagline.component';
+import { ItemComponent } from './_shared/item.component';
 import { LogWindowComponent } from './log-window/log-window.component';
 import { StatusWindowComponent } from './status-window/status-window.component';
 import { GroundComponent } from './ground/ground.component';
@@ -43,6 +44,7 @@ import { GroundComponent } from './ground/ground.component';
     CloseButtonComponent,
     MinimizeButtonComponent,
     PlayerTaglineComponent,
+    ItemComponent,
     LogWindowComponent,
     StatusWindowComponent,
     GroundComponent

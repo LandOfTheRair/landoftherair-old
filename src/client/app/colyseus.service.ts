@@ -16,6 +16,10 @@ export class ColyseusService {
   init() {
     this.initClient();
     this.lobby.init(this, this.client);
+
+    if(!environment.production) {
+      (<any>window).colyseus = this;
+    }
   }
 
   initGame(character) {
