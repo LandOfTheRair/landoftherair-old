@@ -66,7 +66,6 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onUpdate.add((state) => {
-      console.log(state.groundItems);
       this.clientGameState.setGroundItems(state.groundItems);
       this.clientGameState.setMapData(state.mapData);
       this.setCharacter(find(state.players, { username: this.colyseus.username }));
