@@ -5,7 +5,7 @@
   armorClass: 2
   accuracy: 10
   baseDamage: 100
-  sprite: 134
+  sprite: 135
   type: Polearm
   stats:
     agi: 3

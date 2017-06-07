@@ -2,6 +2,6 @@
   armorClass: 1
   desc: "a leather tunic"
   value: 1
-  sprite: 234
+  sprite: 206
   stats:
     str: 1
