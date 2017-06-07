@@ -1,5 +1,6 @@
 
 import { extend, omitBy } from 'lodash';
+import * as uuid from 'uuid/v4';
 
 export const ValidItemTypes = [
   'Mace', 'Axe', 'Dagger', 'Magical', 'OneHandedSword', 'TwoHandedSword', 'Polearm', 'Ranged',
@@ -25,6 +26,8 @@ export class Item {
   sprite: number;
   itemClass: string;
 
+  uuid?: string;
+
   // username ref
   owner?: string;
 
@@ -44,6 +47,7 @@ export class Item {
 
   constructor(opts) {
     extend(this, opts);
+    if(!this.uuid) this.uuid = uuid();
   }
 
   get conditionString() {
