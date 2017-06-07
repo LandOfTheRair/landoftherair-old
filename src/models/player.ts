@@ -65,6 +65,7 @@ export class Character {
   baseClass: CharacterClass = 'Undecided';
 
   $fov: any;
+  $doNotSave: boolean;
   swimLevel: number;
 
   get ageString() {

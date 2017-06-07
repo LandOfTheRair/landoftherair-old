@@ -39,6 +39,8 @@ export class GameWorld extends Room<GameState> {
   }
 
   savePlayer(player: Player) {
+    if(player.$doNotSave) return;
+
     if(player._id) {
       delete player._id;
     }
@@ -69,6 +71,8 @@ export class GameWorld extends Room<GameState> {
 
     if(newMap) {
       player.map = newMap;
+      this.savePlayer(player);
+      player.$doNotSave = true;
       this.send(client, { action: 'change_map', map: newMap });
     }
   }
@@ -92,7 +96,8 @@ export class GameWorld extends Room<GameState> {
   }
 
   onLeave(client) {
-    this.savePlayer(this.state.findPlayer(client.username));
+    const player = this.state.findPlayer(client.username);
+    this.savePlayer(player);
     this.state.removePlayer(client.username);
   }
 
