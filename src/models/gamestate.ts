@@ -91,6 +91,12 @@ export class GameState {
     typeList.push(item);
   }
 
+  getGroundItems(x, y) {
+    if(!this.groundItems[x]) return {};
+    if(!this.groundItems[x][y]) return {};
+    return this.groundItems[x][y];
+  }
+
   tickPlayers() {
     this.players.forEach(p => p.tick());
   }
