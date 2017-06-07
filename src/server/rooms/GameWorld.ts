@@ -77,6 +77,10 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
+  placeItemOnGround(player, item) {
+    this.state.addItemToGround(player, item);
+  }
+
   // TODO check if player is in this map, return false if not - also, modify this to take a promise? - also fail if in game already
   requestJoin(opts) {
     // console.log('req', opts);
@@ -118,11 +122,13 @@ export class GameWorld extends Room<GameState> {
   }
 
   // TODO retrieve boss timers
+  // TODO retrieve tied items
   onInit() {
 
   }
 
   // TODO store boss timers
+  // TODO store tied items (or maybe whole ground state?)
   onDispose() {
 
   }

@@ -4,6 +4,7 @@ import { reject, extend, find } from 'lodash';
 import { Player } from './player';
 
 import * as Mrpas from 'mrpas';
+import { Item } from './item';
 
 export const MapLayer = {
   Terrain: 0,
@@ -22,6 +23,8 @@ export class GameState {
   map: any = {};
   mapName: string = '';
   mapData: any = { openDoors: {} };
+
+  groundItems: any = {};
 
   fov: Mrpas;
 
@@ -75,6 +78,37 @@ export class GameState {
     this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y-64 };
   }
 
+  addItemToGround(player, item: Item) {
+    if(!item) return;
+
+    const { x, y } = player;
+
+    this.groundItems[x] = this.groundItems[x] || {};
+    this.groundItems[x][y] = this.groundItems[x][y] || {};
+    this.groundItems[x][y][item.itemClass] = this.groundItems[x][y][item.itemClass] || [];
+
+    const typeList = this.groundItems[x][y][item.itemClass];
+
+    if(item.owner) {
+      typeList.push(item);
+
+    } else {
+      if(typeList.length > 0) {
+        const sameItem = find(typeList, (checkItem) => item.name === checkItem.name && !checkItem.owner);
+        if(sameItem) {
+          sameItem.count = sameItem.count || 1;
+          sameItem.count++;
+
+        } else {
+          typeList.push(item);
+        }
+      } else {
+        typeList.push(item);
+      }
+    }
+
+  }
+
   tickPlayers() {
     this.players.forEach(p => p.tick());
   }
@@ -114,7 +148,8 @@ export class GameState {
       map: this.map,
       mapData: this.mapData,
       mapName: this.mapName,
-      players: this.players
+      players: this.players,
+      groundItems: this.groundItems
     }
   }
 }
