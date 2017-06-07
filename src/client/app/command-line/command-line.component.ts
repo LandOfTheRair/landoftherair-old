@@ -45,7 +45,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
     if(this.command !== '.') {
       this.lastCommand = this.command;
     }
-    
+
     this.command = '';
   }
 }
