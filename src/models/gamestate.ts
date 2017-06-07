@@ -78,6 +78,10 @@ export class GameState {
     this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y-64 };
   }
 
+  isItemValueStackable(item: Item) {
+    return item.itemClass === 'Coin';
+  }
+
   addItemToGround(player, item: Item) {
     if(!item) return;
 
@@ -88,7 +92,12 @@ export class GameState {
     this.groundItems[x][y][item.itemClass] = this.groundItems[x][y][item.itemClass] || [];
 
     const typeList = this.groundItems[x][y][item.itemClass];
-    typeList.push(item);
+
+    if(this.isItemValueStackable(item) && typeList[0]) {
+      typeList[0].value += item.value;
+    } else {
+      typeList.push(item);
+    }
   }
 
   getGroundItems(x, y) {

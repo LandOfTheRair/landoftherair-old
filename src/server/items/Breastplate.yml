@@ -1,4 +1,10 @@
 
+- name: Antanian Breastplate
+  armorClass: 5
+  sprite: 210
+  desc: "a simple iron brestplate"
+  value: 500
+
 - name: Battlemage Armor
   armorClass: 10
   sprite: 133

@@ -1,3 +1,15 @@
-<p>
-  ground works!
-</p>
+
+<div class="upper-container">
+  <div class="vertical-center" *ngIf="itemTypes.length === 0">There are no items here.</div>
+
+  <app-item *ngFor="let type of itemTypes"
+            [item]="currentGround[type][0]"
+            [count]="currentGround[type].length"
+            class="item-type"
+            [class.selected]="selectedType === type"
+            (click)="selectedType = type"></app-item>
+</div>
+
+<div class="lower-container" *ngIf="selectedType && currentGround[selectedType] && currentGround[selectedType].length > 0">
+  <app-item *ngFor="let item of currentGround[selectedType]" [item]="item"></app-item>
+</div>

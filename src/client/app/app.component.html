@@ -137,9 +137,9 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="groundWindow"
      windowName="groundWindow"
-     *ngIf="colyseus.game.showGround">
-  <div class="window-header text-center" #statusWindow>
-    Status
+     *ngIf="inGame && colyseus.game.showGround">
+  <div class="window-header text-center" #groundWindow>
+    Ground
     <app-close-button (click)="colyseus.game.showGround = false"></app-close-button>
   </div>
   <div class="window-body">

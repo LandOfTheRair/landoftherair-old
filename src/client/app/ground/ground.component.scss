@@ -1,0 +1,25 @@
+.upper-container, .lower-container {
+  max-height: 133px;
+  min-height: 133px;
+
+  width: 360px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  overflow-y: auto;
+
+  padding: 5px;
+}
+
+.upper-container {
+  .item-type {
+    &.selected {
+      outline: 1px solid #ccc;
+    }
+  }
+}
+
+.lower-container {
+  border-top: 1px solid #000;
+}
