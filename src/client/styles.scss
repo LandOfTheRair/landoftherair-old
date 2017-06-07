@@ -21,6 +21,11 @@
   justify-content: center;
 }
 
+app-item {
+  max-height: 64px;
+  max-width: 64px;
+}
+
 .window {
 
   &.minimized {
@@ -86,6 +91,21 @@
     .window-body {
       max-width: 576px;
       min-width: 576px;
+    }
+  }
+
+  &.ground-window {
+    min-width: 360px;
+    max-width: 360px;
+
+    .window-header {
+      min-width: 360px;
+    }
+
+    .window-body {
+      & > app-ground {
+        flex-direction: column;
+      }
     }
   }
 
