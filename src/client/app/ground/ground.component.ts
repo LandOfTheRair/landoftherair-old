@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { includes, pull } from 'lodash';
 
 @Component({
   selector: 'app-ground',
@@ -28,7 +29,12 @@ export class GroundComponent {
 
   get itemTypes() {
     const ground = this.currentGround;
-    return Object.keys(ground).sort();
+    let sorted = Object.keys(ground).sort();
+    if(includes(sorted, 'Coin')) {
+      pull(sorted, 'Coin');
+      sorted.unshift('Coin');
+    }
+    return sorted;
   }
 
 }
