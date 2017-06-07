@@ -23,6 +23,9 @@ export class Item {
   sprite: number;
   itemClass: string;
 
+  // username ref
+  owner?: string;
+
   armorClass = 0;
   accuracy = 0;
   baseDamage = 5;
@@ -39,5 +42,15 @@ export class Item {
 
   constructor(opts) {
     extend(this, opts);
+  }
+
+  get conditionString() {
+    if(this.condition <= 0)     return 'broken';
+    if(this.condition <= 10000) return 'below average';
+    if(this.condition <= 20000) return 'average';
+    if(this.condition <= 30000) return 'above average';
+    if(this.condition <= 40000) return 'mint';
+    if(this.condition <= 50000) return 'above mint';
+    return 'perfect';
   }
 }
