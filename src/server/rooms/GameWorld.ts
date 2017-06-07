@@ -58,6 +58,10 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'log_message', message });
   }
 
+  showGroundWindow(client) {
+    this.send(client, { action: 'show_ground' });
+  }
+
   teleport(client, player, { newMap, x, y }) {
     if(newMap && !this.allMapNames[newMap]) {
       this.sendClientLogMessage(client, `Warning: map "${newMap}" does not exist.`);

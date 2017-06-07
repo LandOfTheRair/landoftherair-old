@@ -33,6 +33,7 @@ export class Look extends Command {
     });
 
     room.sendClientLogMessage(client, `You see ${typesWithNames.join(', ')}.`);
+    room.showGroundWindow(client);
   }
 
 }

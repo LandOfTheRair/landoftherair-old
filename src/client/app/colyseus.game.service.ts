@@ -17,6 +17,8 @@ export class ColyseusGameService {
 
   _inGame: boolean;
 
+  showGround: boolean;
+
   private changingMap: boolean;
 
   constructor() {}
@@ -143,6 +145,7 @@ export class ColyseusGameService {
       return;
     }
 
+    if(action === 'show_ground')    return this.showGroundWindow();
     if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
@@ -151,6 +154,10 @@ export class ColyseusGameService {
   private changeMap(map) {
     this.changingMap = true;
     this.joinRoom(map);
+  }
+
+  private showGroundWindow() {
+    this.showGround = true;
   }
 
   private sendAction(data) {
