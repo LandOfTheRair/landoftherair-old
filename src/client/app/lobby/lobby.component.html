@@ -1,18 +1,18 @@
 
-<div class="container no-padding">
+<div class="container p-0">
 
-  <div class="chat-area no-padding" ngx-auto-scroll lock-y-offset="30">
+  <div class="chat-area p-0" ngx-auto-scroll lock-y-offset="30">
     <div class="message" *ngFor="let message of lobbyState.messages">
       <span class="account">[{{ message.account }}]</span>
       <span class="message">{{ message.message }}</span>
     </div>
   </div>
 
-  <div class="input-area row no-margin">
-    <div class="col no-padding">
+  <div class="input-area row m-0">
+    <div class="col p-0">
       <input class="form-control no-border-radius" placeholder="Type a message here..." type="text" [(ngModel)]="chatText" (keyup.enter)="sendMessage()" />
     </div>
-    <div class="col-2 no-padding">
+    <div class="col-2 p-0">
       <button class="btn btn-primary form-control no-border-radius"
               (click)="lobby.colyseus.isConnected && sendMessage()"
               [disabled]="!lobby.colyseus.isConnected">Send</button>
