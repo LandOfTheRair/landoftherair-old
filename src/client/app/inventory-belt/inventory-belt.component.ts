@@ -11,6 +11,14 @@ export class InventoryBeltComponent {
   @Input()
   public player: Player = new Player({});
 
-  constructor() { }
+  public slots = [];
+
+  get maxSize() {
+    return 5;
+  }
+
+  constructor() {
+    this.slots = Array(this.maxSize).fill(null);
+  }
 
 }

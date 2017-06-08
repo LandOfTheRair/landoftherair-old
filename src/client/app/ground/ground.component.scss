@@ -1,8 +1,8 @@
 .upper-container, .lower-container {
-  max-height: 133px;
-  min-height: 133px;
+  max-height: 135px;
+  min-height: 135px;
 
-  width: 360px;
+  width: 370px;
 
   display: flex;
   flex-wrap: wrap;
@@ -10,12 +10,16 @@
   overflow-y: auto;
 
   padding: 5px;
+
+  app-item {
+    margin: 2px;
+  }
 }
 
 .upper-container {
   .item-type {
     &.selected {
-      outline: 1px solid #ccc;
+      outline: 1px solid #555;
     }
   }
 }
