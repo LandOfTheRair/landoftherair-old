@@ -20,7 +20,6 @@
 .item-background {
   background-color: #ccc;
   box-shadow: 3px 3px 5px #aaa;
-  z-index: 520;
 }
 
 .item-slot {
@@ -169,5 +168,9 @@
       flex: 1;
     }
   }
+}
+
+.sh-context--container {
+  z-index: 1000 !important;
 }
 
