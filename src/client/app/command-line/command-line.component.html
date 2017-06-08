@@ -1,1 +1,7 @@
-<input class="no-border-radius form-control" #cmdEntry [(ngModel)]="command" (keyup.enter)="sendCommand()" placeholder="Type a command here..." />
+<input class="no-border-radius form-control"
+       #cmdEntry
+       [(ngModel)]="command"
+       (keyup.arrowup)="prevCommand($event)"
+       (keyup.arrowdown)="nextCommand($event)"
+       (keyup.enter)="sendCommand()"
+       placeholder="Type a command here..." />
