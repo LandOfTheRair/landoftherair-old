@@ -26,13 +26,16 @@ export class Draggable implements OnInit {
 
   private loadCoordinates() {
     const coordinates = JSON.parse(localStorage.getItem(`window-${this.windowName}`));
-    if(!coordinates) return;
-
-    const { top, left } = coordinates;
-    if(!top || !left) return;
-    this.setElementCoords(top, left);
+    if(!coordinates) {
+        this.setDefaultElementCoords()
+    }
+    else{
+        const { top, left } = coordinates;
+        if(!top || !left) return;
+        this.setElementCoords(top, left);
+    }
   }
-
+  
   private saveCoordinates(top, left) {
     if(!this.windowName) return;
 
@@ -43,6 +46,40 @@ export class Draggable implements OnInit {
     this.saveCoordinates(top, left);
     this.element.nativeElement.style.top = `${top}px`;
     this.element.nativeElement.style.left = `${left}px`;
+  }
+
+  private setDefaultElementCoords() {
+      
+      switch(`window-${this.windowName}`){
+          
+          case 'window-lobby':
+            this.setElementCoords(55, 576);
+            break;
+          
+          case 'window-chararacterSelect':
+            this.setElementCoords(55, 0);
+            break;
+          
+          case 'window-statusWindow':
+            this.setElementCoords(656, 0);
+            break;
+          
+          case 'window-map':
+            this.setElementCoords(55, 0);
+            break;
+
+          case 'window-stats':
+            this.setElementCoords(120, 670);
+            break;
+
+          case 'window-commandLine':
+            this.setElementCoords(685, 575);
+            break;
+                        
+          default:
+            this.setElementCoords(55, 0);
+            break;
+      }
   }
 
   @HostListener('mousedown', ['$event'])
