@@ -40,6 +40,10 @@ app-item {
     z-index: 700;
   }
 
+  &.above-game-window {
+    z-index: 800;
+  }
+
   &.character-select {
     min-height: 215px;
     min-width: 200px;
