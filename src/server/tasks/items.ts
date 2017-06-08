@@ -1,4 +1,6 @@
 
+require('dotenv').config({ silent: true });
+
 import { DB } from '../database';
 
 import * as YAML from 'yamljs';
