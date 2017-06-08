@@ -28,19 +28,17 @@ export class Draggable implements OnInit {
     const coordinates = JSON.parse(localStorage.getItem(`window-${this.windowName}`));
     if(!coordinates) {
       if(!this.defaultY || !this.defaultX) {
-        return; 
+        return;
+      } else {
+        this.setElementCoords(this.defaultY, this.defaultX);
       }
-      else {
-        this.setElementCoords(this.defaultY, this.defaultX);   
-      }
-    }
-    else{
+    } else {
       const { top, left } = coordinates;
       if(!top || !left) return;
       this.setElementCoords(top, left);
     }
   }
-  
+
   private saveCoordinates(top, left) {
     if(!this.windowName) return;
 
@@ -118,10 +116,10 @@ export class Draggable implements OnInit {
 
   @Input()
   public windowName: string;
-  
+
   @Input()
   public defaultX: number;
-  
+
   @Input()
   public defaultY: number;
 }
