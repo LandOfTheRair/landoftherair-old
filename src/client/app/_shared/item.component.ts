@@ -2,8 +2,13 @@
 import { Component, Input } from '@angular/core';
 
 import { environment } from '../../environments/environment';
-import { Item } from '../../../models/item';
+import { Item, EquippableItemClasses } from '../../../models/item';
 import { Player } from '../../../models/player';
+
+import { includes } from 'lodash';
+import { ColyseusGameService } from '../colyseus.game.service';
+
+export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment';
 
 @Component({
   selector: 'app-item',
@@ -65,12 +70,25 @@ import { Player } from '../../../models/player';
     }
   `],
   template: `
-    <div class="item-container" [isDisabled]="!showDesc" triggers="dblclick:mouseleave" [tooltip]="descText">
-      <img [src]="imgUrl" [style.object-position]="spriteLocation" />
-      <div class="item-background" *ngIf="showBackground"></div>
-      <div class="glow-container {{ glowColor }}" *ngIf="showDesc"></div>
-      <span class="count" *ngIf="realCount > 0">{{ realCount }}</span>
+    
+    <div [contextMenu]="contextMenu">
+    
+      <div class="item-container" [isDisabled]="!showDesc" triggers="dblclick:mouseleave" [tooltip]="descText">
+        <img [src]="imgUrl" [style.object-position]="spriteLocation" />
+        <div class="item-background" *ngIf="showBackground"></div>
+        <div class="glow-container {{ glowColor }}" *ngIf="showDesc"></div>
+        <span class="count" *ngIf="realCount > 0">{{ realCount }}</span>
+      </div>
+      
     </div>
+    
+    <context-menu #contextMenu>
+      <ng-template *ngFor="let action of menuOptions" contextMenuItem let-item
+        [visible]="action.visible()"
+        (execute)="action.execute()">
+        {{ action.label }}
+      </ng-template>
+    </context-menu>
   `
 })
 export class ItemComponent {
@@ -88,7 +106,48 @@ export class ItemComponent {
   public showBackground: boolean;
 
   @Input()
-  public player: Player;
+  public context: MenuContext;
+
+  public menuOptions = [
+    { label: 'Sense',         visible: () => false },
+    { label: 'Consume',       visible: () => false },
+    { label: 'Enchant',       visible: () => false },
+    { label: 'Imbue',         visible: () => false },
+
+    { label: 'Equip',         visible: () => this.context !== 'Equipment'
+                                          && this.context !== 'GroundGroup'
+                                          && (!this.item.owner || this.item.owner === this.player.username)
+                                          && this.isEquippable,
+                              execute: () => {} },
+
+    { label: 'To Right Hand', visible: () => !this.player.rightHand,
+                              execute: () => {}  },
+
+    { label: 'To Left Hand',  visible: () => !this.player.leftHand,
+                              execute: () => {}  },
+
+    { label: 'To Ground',     visible: () => this.context !== 'Ground'
+                                          && this.context !== 'GroundGroup',
+                              execute: () => {}  },
+
+    { label: 'To Sack',       visible: () => this.context !== 'Sack' && this.item.isSackable,
+                              execute: () => {}  },
+
+    { label: 'To Belt',       visible: () => this.context !== 'Belt' && this.item.isBeltable,
+                              execute: () => {}  }
+  ];
+
+  get hasMenu() {
+    return this.context !== 'GroundGroup';
+  }
+
+  get isEquippable(): boolean {
+    return this.player.canEquip(this.item);
+  }
+
+  get player(): Player {
+    return this.colyseusGame.character;
+  }
 
   get realCount() {
     if(this.item.itemClass === 'Coin') return this.item.value;
@@ -116,6 +175,8 @@ export class ItemComponent {
     const item = new Item(this.item);
     return item.descTextFor(this.player);
   }
+
+  constructor(private colyseusGame: ColyseusGameService) {}
 
   // TODO draggable, highlight appropriate containers with red border if not usable and green border if usable
 }

@@ -9,7 +9,7 @@ import * as path from 'path';
 
 import { includes, flatten, isUndefined } from 'lodash';
 
-import { Item, ValidItemTypes } from '../../models/item';
+import { Item, ValidItemTypes, WeaponClasses, ArmorClasses } from '../../models/item';
 
 class ItemLoader {
 
@@ -44,11 +44,11 @@ class ItemLoader {
   }
 
   static isWeapon(item: Item) {
-    return includes(['Dagger', 'Halberd'], item.itemClass);
+    return includes(WeaponClasses, item.itemClass);
   }
 
   static isArmor(item: Item) {
-    return includes(['Tunic', 'Breastplate'], item.itemClass);
+    return includes(ArmorClasses, item.itemClass);
   }
 
   static conditionallyAddInformation(item: Item) {

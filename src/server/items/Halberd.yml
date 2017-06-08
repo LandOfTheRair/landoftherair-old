@@ -7,6 +7,7 @@
   baseDamage: 100
   sprite: 135
   type: Polearm
+  isBeltable: false
   stats:
     agi: 3
   requirements:

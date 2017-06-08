@@ -1,0 +1,8 @@
+- name: Tutorial Yeti Club
+  accuracy: 1
+  desc: "a crudely-made club"
+  baseDamage: 1
+  requirements:
+    level: 2
+  type: Mace
+  sprite: 238

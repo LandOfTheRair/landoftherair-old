@@ -3,6 +3,7 @@
   <div class="vertical-center w-100 background-text" *ngIf="itemTypes.length === 0">There are no items here.</div>
 
   <app-item *ngFor="let type of itemTypes"
+            context="GroundGroup"
             [item]="currentGround[type][0]"
             [count]="currentGround[type].length"
             class="item-type"
@@ -12,8 +13,8 @@
 
 <div class="lower-container" *ngIf="selectedType && currentGround[selectedType] && currentGround[selectedType].length > 0">
   <app-item *ngFor="let item of currentGround[selectedType]"
+            context="Ground"
             [item]="item"
-            [player]="colyseusGame.character"
             [showBackground]="true"
             [showDesc]="true"></app-item>
 </div>
