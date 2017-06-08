@@ -66,7 +66,6 @@ export class Character {
   baseClass: CharacterClass = 'Undecided';
 
   inventory: Item[] = [];
-  pouch: Item[] = [];
   belt: Item[] = [];
 
   gear: any = {};

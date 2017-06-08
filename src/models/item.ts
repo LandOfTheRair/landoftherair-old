@@ -44,7 +44,6 @@ export class Item {
   type = 'Martial';
 
   isBeltable = false;
-  isPouchable = true;
   isSackable = true;
 
   constructor(opts) {
