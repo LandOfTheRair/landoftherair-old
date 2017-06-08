@@ -21,6 +21,9 @@ import { Player } from '../../../models/player';
       width: 64px;
       height: 64px;
       object-fit: none;
+      z-index: 550;
+      position: absolute;
+      top: 0;
     }
     
     .count {
@@ -30,6 +33,7 @@ import { Player } from '../../../models/player';
       top: 5px;
       right: 5px;
       font-size: 0.7rem;
+      z-index: 560;
     }
     
     .glow-container {
@@ -38,6 +42,7 @@ import { Player } from '../../../models/player';
       width: 64px;
       position: absolute;
       top: 0;
+      z-index: 540;
     }
     
     .glow-yellow {
@@ -51,10 +56,18 @@ import { Player } from '../../../models/player';
     .glow-black {
       box-shadow: inset 0 0 14px #000;
     }
+    
+    .item-background {
+      height: 64px;
+      width: 64px;
+      position: absolute;
+      top: 0;
+    }
   `],
   template: `
     <div class="item-container" [isDisabled]="!showDesc" triggers="dblclick:mouseleave" [tooltip]="descText">
       <img [src]="imgUrl" [style.object-position]="spriteLocation" />
+      <div class="item-background" *ngIf="showBackground"></div>
       <div class="glow-container {{ glowColor }}" *ngIf="showDesc"></div>
       <span class="count" *ngIf="realCount > 0">{{ realCount }}</span>
     </div>
@@ -70,6 +83,9 @@ export class ItemComponent {
 
   @Input()
   public showDesc: boolean;
+
+  @Input()
+  public showBackground: boolean;
 
   @Input()
   public player: Player;

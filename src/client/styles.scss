@@ -17,6 +17,17 @@
   color: #aaa;
 }
 
+.item-background {
+  background-color: #ccc;
+  box-shadow: 3px 3px 5px #aaa;
+  z-index: 520;
+}
+
+.item-slot {
+  width: 64px;
+  height: 64px;
+}
+
 .window {
 
   &.minimized {
@@ -90,11 +101,11 @@
   }
 
   &.ground-window {
-    min-width: 360px;
-    max-width: 360px;
+    min-width: 370px;
+    max-width: 370px;
 
     .window-header {
-      min-width: 360px;
+      min-width: 370px;
     }
 
     .window-body {
@@ -102,6 +113,16 @@
         flex-direction: column;
       }
     }
+  }
+
+  &.inventory-sack-window {
+    min-width: 351px;
+    max-width: 351px;
+  }
+
+  &.inventory-belt-window {
+    min-width: 351px;
+    max-width: 351px;
   }
 
   position: absolute !important;

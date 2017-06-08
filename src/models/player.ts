@@ -65,7 +65,7 @@ export class Character {
 
   baseClass: CharacterClass = 'Undecided';
 
-  inventory: Item[] = [];
+  sack: Item[] = [];
   belt: Item[] = [];
 
   gear: any = {};
@@ -92,6 +92,9 @@ export class Character {
     merge(this, opts);
     this.hp = new RestrictedNumber(this.hp.minimum, this.hp.maximum, this.hp.__current);
     this.mp = new RestrictedNumber(this.mp.minimum, this.mp.maximum, this.mp.__current);
+
+    this.sack = this.sack.map(item => new Item(item));
+    this.belt = this.belt.map(item => new Item(item));
   }
 
   toJSON() {
