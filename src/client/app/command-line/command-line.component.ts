@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { LocalStorage } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-command-line',
@@ -14,9 +15,13 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   public colyseusGame;
 
   public command: string = '';
-  public lastCommand: string = '';
+
+  @LocalStorage()
+  public lastCommands: string[];
 
   private listener: any;
+
+  private curIndex = -1;
 
   ngOnInit() {
     this.listener = () => {
@@ -25,6 +30,8 @@ export class CommandLineComponent implements OnInit, OnDestroy {
     };
 
     document.addEventListener('keypress', this.listener);
+
+    if(!this.lastCommands) this.lastCommands = [];
   }
 
   ngOnDestroy() {
@@ -34,8 +41,10 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   sendCommand() {
     if(!this.command || !this.command.trim()) return;
 
-    if(this.command === '.' && this.lastCommand) {
-      this.colyseusGame.sendCommandString(this.lastCommand);
+    this.curIndex = -1;
+
+    if(this.command === '.' && this.lastCommands[0]) {
+      this.colyseusGame.sendCommandString(this.lastCommands[0]);
       this.command = '';
       return;
     }
@@ -43,9 +52,32 @@ export class CommandLineComponent implements OnInit, OnDestroy {
     this.colyseusGame.sendCommandString(this.command);
 
     if(this.command !== '.') {
-      this.lastCommand = this.command;
+      this.lastCommands.unshift(this.command);
+      if(this.lastCommands.length > 20) this.lastCommands.length = 20;
+      // trigger ngx-webstorage writes
+      this.lastCommands = this.lastCommands;
     }
 
     this.command = '';
+  }
+
+  setCommandFromIndex() {
+    if(this.curIndex === -1) this.command = '';
+    if(!this.lastCommands[this.curIndex]) return;
+    this.command = this.lastCommands[this.curIndex];
+  }
+
+  prevCommand($event) {
+    $event.preventDefault();
+    if(this.curIndex >= this.lastCommands.length) return;
+    this.curIndex++;
+    this.setCommandFromIndex();
+  }
+
+  nextCommand($event) {
+    $event.preventDefault();
+    if(this.curIndex <= -1) return;
+    this.curIndex--;
+    this.setCommandFromIndex();
   }
 }
