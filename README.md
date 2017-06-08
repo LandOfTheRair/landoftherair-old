@@ -5,6 +5,7 @@ A prototype MORPG.
 ## Install
 
 * `npm install`
+* [run setup tasks]
 * `npm start`
 
 ## Environment Variables
