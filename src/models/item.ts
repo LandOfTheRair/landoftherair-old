@@ -14,6 +14,7 @@ export const ValidItemTypes = [
   - items that can only grow by killing certain mobs
   - items that have stats that grow based on the player level
   - items that have random stats assigned to them
+  - items that boost skills
  */
 
 export class ItemRequirements {
