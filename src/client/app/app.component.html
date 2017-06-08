@@ -30,6 +30,12 @@
           <li>
             <a class="dropdown-item" (click)="showCommandLine = !showCommandLine">Command Line</a>
           </li>
+          <li>
+            <a class="dropdown-item" (click)="showInventoryBelt = !showInventoryBelt">Belt</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="showInventorySack = !showInventorySack">Sack</a>
+          </li>
         </ul>
 
       </li>
@@ -144,5 +150,33 @@
   </div>
   <div class="window-body">
     <app-ground [colyseusGame]="colyseus.game"></app-ground>
+  </div>
+</div>
+
+<div class="window inventory-sack-window game-window"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="sackWindow"
+     windowName="sackWindow"
+     *ngIf="inGame && showInventorySack">
+  <div class="window-header text-center" #sackWindow>
+    Inventory - Sack
+    <app-close-button (click)="showInventorySack = false"></app-close-button>
+  </div>
+  <div class="window-body">
+    <app-inventory-sack [player]="colyseus.game.character"></app-inventory-sack>
+  </div>
+</div>
+
+<div class="window inventory-belt-window game-window"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="beltWindow"
+     windowName="beltWindow"
+     *ngIf="inGame && showInventoryBelt">
+  <div class="window-header text-center" #beltWindow>
+    Inventory - Belt
+    <app-close-button (click)="showInventoryBelt = false"></app-close-button>
+  </div>
+  <div class="window-body">
+    <app-inventory-belt [player]="colyseus.game.character"></app-inventory-belt>
   </div>
 </div>

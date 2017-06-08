@@ -1,6 +1,6 @@
 
 <div class="upper-container">
-  <div class="vertical-center w-100" *ngIf="itemTypes.length === 0">There are no items here.</div>
+  <div class="vertical-center w-100 background-text" *ngIf="itemTypes.length === 0">There are no items here.</div>
 
   <app-item *ngFor="let type of itemTypes"
             [item]="currentGround[type][0]"
