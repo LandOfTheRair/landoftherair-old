@@ -43,17 +43,23 @@ class ItemLoader {
     });
   }
 
+  static isWeapon(item: Item) {
+    return includes(['Dagger', 'Halberd'], item.itemClass);
+  }
+
+  static isArmor(item: Item) {
+    return includes(['Tunic', 'Breastplate'], item.itemClass);
+  }
+
   static conditionallyAddInformation(item: Item) {
-    if(item.itemClass === 'Weapon') {
+    if(this.isWeapon(item)) {
       if(isUndefined(item.isBeltable))  item.isBeltable = true;
       if(isUndefined(item.isSackable))  item.isSackable = false;
-      if(isUndefined(item.isPouchable)) item.isPouchable = false;
     }
 
-    if(item.itemClass === 'Armor') {
+    if(this.isArmor(item)) {
       if(isUndefined(item.isBeltable))  item.isBeltable = false;
       if(isUndefined(item.isSackable))  item.isSackable = false;
-      if(isUndefined(item.isPouchable)) item.isPouchable = false;
     }
   }
 
