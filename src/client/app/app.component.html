@@ -50,6 +50,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="lobbyDrag"
      windowName="lobby"
+     defaultX="576"
+     defaultY="55"
      [class.minimized]="minimized['lobby']"
      [class.hidden]="!loggedIn">
   <div class="window-header text-center" #lobbyDrag>
@@ -65,6 +67,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="characterSelectDrag"
      windowName="chararacterSelect"
+     defaultX="0"
+     defaultY="55"
      [class.hidden]="!loggedIn || inGame">
   <div class="window-header text-center" #characterSelectDrag>Character Select</div>
   <div class="window-body">
@@ -76,6 +80,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="mapDrag"
      windowName="map"
+     defaultX="0"
+     defaultY="55"
      *ngIf="inGame">
   <div class="window-header text-center" #mapDrag>
     World
@@ -90,6 +96,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="statsDrag"
      windowName="stats"
+     defaultX="670"
+     defaultY="120"
      *ngIf="inGame && showStatsWindow">
   <div class="window-header text-center" #statsDrag>
     Stats
@@ -104,6 +112,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="commandLine"
      windowName="commandLine"
+     defaultX="575"
+     defaultY="685"
      *ngIf="inGame && showCommandLine">
   <div class="window-header text-center" #commandLine>
     Command Line
@@ -118,6 +128,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="logWindow"
      windowName="logWindow"
+     defaultX="0"
+     defaultY="55"
      *ngIf="inGame">
   <div class="window-header text-center" #logWindow>
     Log
@@ -131,6 +143,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="statusWindow"
      windowName="statusWindow"
+     defaultX="0"
+     defaultY="656"
      [class.minimized]="minimized['status']"
      *ngIf="inGame">
   <div class="window-header text-center" #statusWindow>
@@ -146,6 +160,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="groundWindow"
      windowName="groundWindow"
+     defaultX="0"
+     defaultY="0"
      *ngIf="inGame && colyseus.game.showGround">
   <div class="window-header text-center" #groundWindow>
     Ground

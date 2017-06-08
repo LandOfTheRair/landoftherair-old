@@ -56,5 +56,10 @@ typings/
 
 # dotenv environment variables file
 .env
-
 .idea
+
+# MS Windows & Google Drive created files.
+desktop.ini
+
+# Netbeans IDE Proprietary Metadata
+nbproject/
