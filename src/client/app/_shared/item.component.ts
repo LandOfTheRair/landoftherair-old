@@ -8,6 +8,11 @@ import { Player } from '../../../models/player';
 @Component({
   selector: 'app-item',
   styles: [`
+    :host {
+      width: 64px;
+      height: 64px;
+    }
+    
     .item-container {
       position: relative;
     }
