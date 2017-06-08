@@ -27,6 +27,9 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public showInventoryBelt: boolean;
 
+  @LocalStorage()
+  public showEquipment: boolean;
+
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
   }
