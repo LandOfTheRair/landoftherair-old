@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="row" *ngFor="let charSlot of charSlots; let i = index">
-    <label class="col btn btn-info no-border-radius no-margin" [class.active]="i === curSlot" [(ngModel)]="curSlot" [btnRadio]="i">
+    <label class="col btn btn-info no-border-radius m-0" [class.active]="i === curSlot" [(ngModel)]="curSlot" [btnRadio]="i">
       {{ lobby.myAccount.characterNames[i] || 'New Character' }}
     </label>
   </div>
