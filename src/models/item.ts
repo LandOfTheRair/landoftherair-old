@@ -8,6 +8,18 @@ export const ValidItemTypes = [
   'Martial', 'Staff', 'HealingMagic', 'ElementalMagic', 'Throwing', 'Thievery'
 ];
 
+export const WeaponClasses = [
+  'Dagger', 'Halberd', 'Club'
+];
+
+export const ArmorClasses = [
+  'Tunic', 'Breastplate'
+];
+
+export const EquippableItemClasses = [
+  'Cloak'
+].concat(WeaponClasses).concat(ArmorClasses);
+
 /* TODO Eventually:
 
   - items that have an xp value, xp max, level, value, level max, and stat growth per item level

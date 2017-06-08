@@ -1,7 +1,7 @@
 
-import { omitBy, merge, find } from 'lodash';
+import { omitBy, merge, find, includes } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
-import { Item } from './item';
+import { Item, EquippableItemClasses } from './item';
 
 export type Allegiance =
   'None'
@@ -81,7 +81,7 @@ export class Character {
   }
 
   get level() {
-    return Math.floor(this.xp / 1000);
+    return Math.floor(this.xp / 500);
   }
 
   getTotalStat(stat) {
@@ -107,6 +107,14 @@ export class Character {
 
   hasEmptyHand() {
     return !this.leftHand || !this.rightHand;
+  }
+
+  canEquip(item: Item) {
+    if(!includes(EquippableItemClasses, item.itemClass)) return false;
+    if(!item.requirements) return true;
+    if(item.requirements.level && this.level < item.requirements.level) return false;
+    if(item.requirements.class && !includes(item.requirements.class, this.baseClass)) return false;
+    return true;
   }
 
   tick() {
