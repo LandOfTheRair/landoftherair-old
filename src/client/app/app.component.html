@@ -36,6 +36,9 @@
           <li>
             <a class="dropdown-item" (click)="showInventorySack = !showInventorySack">Sack</a>
           </li>
+          <li>
+            <a class="dropdown-item" (click)="showEquipment = !showEquipment">Equipment</a>
+          </li>
         </ul>
 
       </li>
@@ -178,5 +181,19 @@
   </div>
   <div class="window-body">
     <app-inventory-belt [player]="colyseus.game.character"></app-inventory-belt>
+  </div>
+</div>
+
+<div class="window equipment-window game-window"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="equipmentWindow"
+     windowName="equipmentWindow"
+     *ngIf="inGame && showEquipment">
+  <div class="window-header text-center" #equipmentWindow>
+    Equipment
+    <app-close-button (click)="showEquipment = false"></app-close-button>
+  </div>
+  <div class="window-body">
+    <app-equipment [player]="colyseus.game.character"></app-equipment>
   </div>
 </div>

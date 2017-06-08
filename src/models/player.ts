@@ -105,6 +105,10 @@ export class Character {
     });
   }
 
+  hasEmptyHand() {
+    return !this.leftHand || !this.rightHand;
+  }
+
   tick() {
     const hpRegen = this.getTotalStat('hpregen');
     const mpRegen = this.getTotalStat('mpregen');
