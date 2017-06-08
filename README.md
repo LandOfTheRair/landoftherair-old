@@ -2,6 +2,11 @@
 
 A prototype MORPG.
 
+## Requirements
+
+* Node.js (recommended: 8.0.0+)
+* MongoDB (recommended: 3.4.4+)
+
 ## Install
 
 * `npm install`
