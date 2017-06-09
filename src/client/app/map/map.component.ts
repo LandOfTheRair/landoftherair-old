@@ -101,13 +101,8 @@ export class MapComponent implements OnInit, OnDestroy {
     if(this.remove$) this.remove$.unsubscribe();
     if(this.boxes$)  this.boxes$.unsubscribe();
 
-    if(this.game) {
-      this.game.destroy();
-      this.phaser.destroy();
-
-      delete this.game;
-      delete this.phaser;
-    }
+    this.game.destroy();
+    this.phaser.destroy();
 
     this.cleanCanvases();
   }
