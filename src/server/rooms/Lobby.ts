@@ -95,6 +95,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private sendMessage(client, message) {
+    if(!client.username || !client.userId) return;
     message = truncate(message, { length: 500, omission: '[truncated]' });
     if(!message || !message.trim()) return;
 

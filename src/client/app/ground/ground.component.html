@@ -2,13 +2,14 @@
 <div class="upper-container">
   <div class="vertical-center w-100 background-text" *ngIf="itemTypes.length === 0">There are no items here.</div>
 
-  <app-item *ngFor="let type of itemTypes"
-            context="GroundGroup"
-            [item]="currentGround[type][0]"
-            [count]="currentGround[type].length"
-            class="item-type"
-            [class.selected]="selectedType === type"
-            (click)="selectedType = type"></app-item>
+  <div *ngFor="let type of itemTypes" class="item-type" [class.selected]="selectedType === type" [class.hidden]="!currentGround[type] || !currentGround[type][0]">
+    <app-item
+      *ngIf="currentGround[type] && currentGround[type][0]"
+      context="GroundGroup"
+      [item]="currentGround[type][0]"
+      [count]="currentGround[type].length"
+      (click)="selectedType = type"></app-item>
+  </div>
 </div>
 
 <div class="lower-container" *ngIf="selectedType && currentGround[selectedType] && currentGround[selectedType].length > 0">

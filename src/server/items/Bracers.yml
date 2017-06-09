@@ -1,0 +1,5 @@
+- name: Antanian Bracers
+  armorClass: 0
+  sprite: 234
+  desc: "a pair of gold bracers"
+  value: 100
