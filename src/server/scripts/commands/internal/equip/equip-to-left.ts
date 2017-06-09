@@ -19,7 +19,7 @@ export class EquipToLeft extends Command {
     if(player.leftHand) return room.sendClientLogMessage(client, 'Your left hand is full.');
 
     player.unequip(slot);
-    player.leftHand = item;
+    player.setLeftHand(item);
   }
 
 }

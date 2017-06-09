@@ -1,6 +1,8 @@
 
 - name: Antanian Amulet
-  armorClass: 0
+  defense: 1
+  stats:
+    int: 1
   sprite: 318
   desc: "a polished ruby amulet"
   value: 1000

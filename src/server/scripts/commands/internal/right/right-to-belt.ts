@@ -18,7 +18,7 @@ export class RightToBelt extends Command {
     if(player.fullBelt()) return room.sendClientLogMessage(client, 'Your belt is full.');
 
     player.addItemToBelt(item);
-    player.rightHand = null;
+    player.setRightHand(null);
   }
 
 }

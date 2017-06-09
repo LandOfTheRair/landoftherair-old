@@ -13,8 +13,8 @@ export class LeftToRight extends Command {
     const left = player.leftHand;
     const right = player.rightHand;
 
-    player.leftHand = right;
-    player.rightHand = left;
+    player.setLeftHand(right);
+    player.setRightHand(left);
   }
 
 }

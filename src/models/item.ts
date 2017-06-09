@@ -48,6 +48,8 @@ export const HandsClasses = [
   'Gloves'
 ];
 
+export const GivesBonusInHandItemClasses = WeaponClasses.concat(NeckClasses);
+
 export const EquippableItemClasses = HeadClasses
   .concat(NeckClasses)
   .concat(WaistClasses)
