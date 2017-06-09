@@ -2,7 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../models/player';
 
-import { compact } from 'lodash';
+import { compact, endsWith } from 'lodash';
 
 export class Look extends Command {
 
@@ -29,7 +29,8 @@ export class Look extends Command {
       const len = items[itemType].length;
       if(len === 0) return '';
       const str = this.getStringForNum(len);
-      return `${str} ${itemType.toLowerCase()}${len > 1 ? 's' : ''}`;
+      const shouldS = !endsWith(itemType, 's');
+      return `${str} ${itemType.toLowerCase()}${len > 1 && shouldS ? 's' : ''}`;
     }));
 
     if(typesWithNames.length === 0) {
