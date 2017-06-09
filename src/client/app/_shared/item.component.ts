@@ -1,14 +1,14 @@
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { environment } from '../../environments/environment';
-import { Item, EquippableItemClasses } from '../../../models/item';
+import { Item, WeaponClasses } from '../../../models/item';
 import { Player } from '../../../models/player';
 
 import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment';
+export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment' | 'Left' | 'Right';
 
 @Component({
   selector: 'app-item',
@@ -91,7 +91,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
     </context-menu>
   `
 })
-export class ItemComponent {
+export class ItemComponent implements OnInit {
 
   @Input()
   public item: Item;
@@ -108,6 +108,9 @@ export class ItemComponent {
   @Input()
   public context: MenuContext;
 
+  @Input()
+  public contextSlot: number|string;
+
   public menuOptions = [
     { label: 'Sense',         visible: () => false },
     { label: 'Consume',       visible: () => false },
@@ -118,23 +121,23 @@ export class ItemComponent {
                                           && this.context !== 'GroundGroup'
                                           && (!this.item.owner || this.item.owner === this.player.username)
                                           && this.isEquippable,
-                              execute: () => {} },
+                              execute: () => this.buildAction('E') },
 
     { label: 'To Right Hand', visible: () => !this.player.rightHand,
-                              execute: () => {}  },
+                              execute: () => this.buildAction('R')  },
 
     { label: 'To Left Hand',  visible: () => !this.player.leftHand,
-                              execute: () => {}  },
+                              execute: () => this.buildAction('L')  },
 
     { label: 'To Ground',     visible: () => this.context !== 'Ground'
                                           && this.context !== 'GroundGroup',
-                              execute: () => {}  },
+                              execute: () => this.buildAction('G')  },
 
     { label: 'To Sack',       visible: () => this.context !== 'Sack' && this.item.isSackable,
-                              execute: () => {}  },
+                              execute: () => this.buildAction('S')  },
 
     { label: 'To Belt',       visible: () => this.context !== 'Belt' && this.item.isBeltable,
-                              execute: () => {}  }
+                              execute: () => this.buildAction('B')  }
   ];
 
   get hasMenu() {
@@ -142,7 +145,7 @@ export class ItemComponent {
   }
 
   get isEquippable(): boolean {
-    return this.player.canEquip(this.item);
+    return this.player.canEquip(this.item) && !includes(WeaponClasses, this.item.itemClass);
   }
 
   get player(): Player {
@@ -177,6 +180,26 @@ export class ItemComponent {
   }
 
   constructor(private colyseusGame: ColyseusGameService) {}
+
+  ngOnInit() {
+    this.item = new Item(this.item);
+  }
+
+  buildAction(choice) {
+    const cmd = `~${this.context.substring(0, 1)}t${choice}`;
+
+    let args = '';
+
+    if(this.context === 'Ground') {
+      args = `${this.item.itemClass} ${this.item.uuid}`;
+
+    } else if(includes(['Sack', 'Belt', 'Equipment'], this.context)) {
+      args = `${this.contextSlot}`;
+
+    }
+
+    this.colyseusGame.sendRawCommand(cmd, args);
+  }
 
   // TODO draggable, highlight appropriate containers with red border if not usable and green border if usable
 }

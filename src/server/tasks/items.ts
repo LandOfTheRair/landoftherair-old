@@ -9,7 +9,9 @@ import * as path from 'path';
 
 import { includes, flatten, isUndefined } from 'lodash';
 
-import { Item, ValidItemTypes, WeaponClasses, ArmorClasses } from '../../models/item';
+import {
+  Item, ValidItemTypes, WeaponClasses, ArmorClasses
+} from '../../models/item';
 
 class ItemLoader {
 

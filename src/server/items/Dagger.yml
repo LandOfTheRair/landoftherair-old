@@ -1,6 +1,7 @@
 - name: Antanian Dagger
   accuracy: 5
   desc: "a steel dagger"
+  isSackable: true
   baseDamage: 3
   type: Dagger
   sprite: 205

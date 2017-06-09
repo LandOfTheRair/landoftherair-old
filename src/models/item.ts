@@ -1,5 +1,5 @@
 
-import { extend, omitBy } from 'lodash';
+import { extend, omitBy, includes } from 'lodash';
 import * as uuid from 'uuid/v4';
 import { Player } from './player';
 
@@ -16,9 +16,48 @@ export const ArmorClasses = [
   'Tunic', 'Breastplate'
 ];
 
-export const EquippableItemClasses = [
+export const RobeClasses = [
   'Cloak'
-].concat(WeaponClasses).concat(ArmorClasses);
+];
+
+export const HeadClasses = [
+  'Helm'
+];
+
+export const NeckClasses = [
+  'Amulet'
+];
+
+export const WaistClasses = [
+  'Sash'
+];
+
+export const WristsClasses = [
+  'Bracers'
+];
+
+export const RingClasses = [
+  'Ring'
+];
+
+export const FeetClasses = [
+  'Boots'
+];
+
+export const HandsClasses = [
+  'Gloves'
+];
+
+export const EquippableItemClasses = HeadClasses
+  .concat(NeckClasses)
+  .concat(WaistClasses)
+  .concat(WristsClasses)
+  .concat(RingClasses)
+  .concat(FeetClasses)
+  .concat(HandsClasses)
+  .concat(WeaponClasses)
+  .concat(ArmorClasses)
+  .concat(RobeClasses);
 
 /* TODO Eventually:
 
@@ -81,6 +120,14 @@ export class Item {
       else                               ownedText = 'This item does not belong to you.';
     }
     return `You are looking at ${this.desc}. The item is in ${this.conditionString} condition. ${ownedText}`;
+  }
+
+  isRobe() {
+    return includes(RobeClasses, this.itemClass);
+  }
+
+  isArmor() {
+    return includes(ArmorClasses, this.itemClass);
   }
 
   toJSON() {

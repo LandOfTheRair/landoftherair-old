@@ -1,5 +1,5 @@
 
-import { reject, extend, find } from 'lodash';
+import { reject, extend, find, pull } from 'lodash';
 
 import { Player } from './player';
 
@@ -98,6 +98,11 @@ export class GameState {
     } else {
       typeList.push(item);
     }
+  }
+
+  removeItemFromGround(player: Player, item: Item) {
+    const ground = this.getGroundItems(player.x, player.y)[item.itemClass];
+    pull(ground, item);
   }
 
   getGroundItems(x, y) {
