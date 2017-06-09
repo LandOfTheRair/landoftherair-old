@@ -24,7 +24,7 @@ export class CoinToRight extends Command {
       return;
     }
 
-    player.rightHand = item;
+    player.setRightHand(item);
     player.loseGold(value);
   }
 

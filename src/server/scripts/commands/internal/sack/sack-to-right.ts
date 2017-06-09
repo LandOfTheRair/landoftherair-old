@@ -18,7 +18,7 @@ export class SackToRight extends Command {
 
     if(player.rightHand) return room.sendClientLogMessage(client, 'Your right hand is full.');
 
-    player.rightHand = item;
+    player.setRightHand(item);
     player.takeItemFromSack(slot);
   }
 
