@@ -211,6 +211,10 @@ export class Character {
   }
 
   addItemToSack(item: Item) {
+    if(item.itemClass === 'Coin') {
+      this.addGold(item);
+      return;
+    }
     this.sack.push(item);
   }
 
@@ -239,6 +243,16 @@ export class Character {
     pull(this.belt, item);
     this.fixBelt();
     return item;
+  }
+
+  addGold(gold: Item) {
+    if(gold.value <= 0) return;
+    this.gold += gold.value;
+  }
+
+  loseGold(gold: number) {
+    this.gold -= gold;
+    if(this.gold <= 0) this.gold = 0;
   }
 
   tick() {
