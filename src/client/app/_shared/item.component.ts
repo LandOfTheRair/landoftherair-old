@@ -1,6 +1,8 @@
 
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
+import * as swal from 'sweetalert2';
+
 import { environment } from '../../environments/environment';
 import { Item, WeaponClasses } from '../../../models/item';
 import { Player } from '../../../models/player';
@@ -9,7 +11,7 @@ import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { ContextMenuComponent, ContextMenuService } from 'ngx-contextmenu';
 
-export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment' | 'Left' | 'Right';
+export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment' | 'Left' | 'Right' | 'Coin';
 
 @Component({
   selector: 'app-item',
@@ -137,10 +139,13 @@ export class ItemComponent implements OnInit {
                                           && this.context !== 'GroundGroup',
                               execute: () => this.buildAction('G')  },
 
-    { label: 'To Sack',       visible: () => this.context !== 'Sack' && this.item.isSackable,
+    { label: 'To Sack',       visible: () => this.context !== 'Sack'
+                                          && this.context !== 'Coin'
+                                          && this.item.isSackable,
                               execute: () => this.buildAction('S')  },
 
-    { label: 'To Belt',       visible: () => this.context !== 'Belt' && this.item.isBeltable,
+    { label: 'To Belt',       visible: () => this.context !== 'Belt'
+                                          && this.item.isBeltable,
                               execute: () => this.buildAction('B')  }
   ];
 
@@ -188,7 +193,7 @@ export class ItemComponent implements OnInit {
   public onContextMenu($event: MouseEvent) {
     $event.preventDefault();
     $event.stopPropagation();
-    
+
     if(!this.hasMenu) {
       return false;
     }
@@ -217,6 +222,27 @@ export class ItemComponent implements OnInit {
     } else if(includes(['Sack', 'Belt', 'Equipment'], this.context)) {
       args = `${this.contextSlot}`;
 
+    } else if(this.context === 'Coin') {
+
+      (<any>swal)({
+        titleText: 'Take Gold From Stash',
+        input: 'number',
+        inputAttributes: {
+          min: 0,
+          max: this.count
+        },
+        preConfirm: (val) => {
+          return new Promise((resolve, reject) => {
+            if(val < 0 || val > this.count) return reject('You do not have that much gold!');
+            resolve();
+          });
+        }
+      }).then(amount => {
+        args = amount;
+        this.colyseusGame.sendRawCommand(cmd, args);
+      });
+
+      return;
     }
 
     this.colyseusGame.sendRawCommand(cmd, args);

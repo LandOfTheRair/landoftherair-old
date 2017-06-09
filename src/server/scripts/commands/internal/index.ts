@@ -10,3 +10,4 @@ export * from './right';
 export * from './sack';
 export * from './belt';
 export * from './equip';
+export * from './coin';

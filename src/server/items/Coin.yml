@@ -2,3 +2,4 @@
   sprite: 212
   value: 1
   desc: "gold coins"
+  isBeltable: false
