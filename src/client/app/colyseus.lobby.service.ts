@@ -13,7 +13,7 @@ export class ColyseusLobbyService {
   client: any;
   colyseus: any;
   lobbyState: LobbyState = new LobbyState({});
-  myAccount: Account = new Account({});
+  myAccount: Account = null;
   myCharacter: any = { name: '' };
 
   constructor(private auth: AuthService) {}
@@ -135,6 +135,7 @@ export class ColyseusLobbyService {
   private logout() {
     this.auth.logout();
     this.client.send({ action: 'logout' });
+    this.myAccount = null;
 
     window.location.reload();
   }
