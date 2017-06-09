@@ -3,6 +3,7 @@
 - name: Battlemage Halberd
   desc: "a halberd symbolizing the yin and yang of the Magus"
   armorClass: 2
+  offense: 3
   accuracy: 10
   baseDamage: 100
   sprite: 135
