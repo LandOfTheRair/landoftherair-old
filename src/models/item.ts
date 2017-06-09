@@ -87,6 +87,8 @@ export class Item {
   armorClass = 0;
   accuracy = 0;
   baseDamage = 5;
+  offense = 0;
+  defense = 0;
 
   value = 0;
   stats: any = {};

@@ -1,5 +1,7 @@
 - name: Tutorial Yeti Club
   accuracy: 1
+  defense: 1
+  offense: 1
   desc: "a crudely-made club"
   baseDamage: 1
   requirements:
