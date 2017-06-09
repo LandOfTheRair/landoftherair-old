@@ -1,5 +1,5 @@
 
-import { find, remove, compact } from 'lodash';
+import { find, remove, compact, difference } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
 
@@ -202,6 +202,8 @@ export class Game {
   }
 
   private showItemSprites(centerX, centerY) {
+    const checkedUUIDs = [];
+
     for(let x = centerX-4; x <= centerX+4; x++) {
 
       const itemPatchX = this.clientGameState.groundItems[x];
@@ -213,10 +215,21 @@ export class Game {
 
         Object.keys(itemPatchY).forEach(itemType => {
           if(itemPatchY[itemType].length === 0) return;
-          this.createItemSprite(itemPatchY[itemType][0], x, y);
+          const item = itemPatchY[itemType][0];
+          if(!item) return;
+          checkedUUIDs.push(item.uuid);
+          this.createItemSprite(item, x, y);
         });
       }
     }
+
+    const groundUUIDs = this.itemsOnGround.children.map(x => x.uuid);
+    const diff = difference(groundUUIDs, checkedUUIDs);
+
+    diff.forEach(uuid => {
+      const sprite = find(this.itemsOnGround.children, { uuid });
+      sprite.destroy();
+    });
   }
 
   private createItemSprite(item: Item, x, y) {
@@ -224,11 +237,20 @@ export class Game {
     if(!this.visibleSprites[x][y]) this.visibleSprites[x][y] = {};
     if(!this.visibleSprites[x][y][item.itemClass]) this.visibleSprites[x][y][item.itemClass] = null;
 
-    if(this.visibleSprites[x][y][item.itemClass]) return;
+    const currentItemSprite = this.visibleSprites[x][y][item.itemClass];
+
+    if(currentItemSprite) {
+      if(currentItemSprite.uuid === item.uuid) {
+        return;
+      } else {
+        currentItemSprite.destroy();
+      }
+    }
 
     const sprite = this.g.add.sprite(x * 64, y * 64, 'Items', item.sprite);
     this.visibleSprites[x][y][item.itemClass] = sprite;
     sprite.itemClass = item.itemClass;
+    sprite.uuid = item.uuid;
     this.itemsOnGround.add(sprite);
   }
 
