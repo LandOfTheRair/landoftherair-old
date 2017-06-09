@@ -1,5 +1,5 @@
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { environment } from '../../environments/environment';
 import { Item, WeaponClasses } from '../../../models/item';
@@ -7,6 +7,7 @@ import { Player } from '../../../models/player';
 
 import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
+import { ContextMenuComponent, ContextMenuService } from 'ngx-contextmenu';
 
 export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment' | 'Left' | 'Right';
 
@@ -71,7 +72,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
   `],
   template: `
     
-    <div [contextMenu]="contextMenu">
+    <div (contextmenu)="onContextMenu($event)">
     
       <div class="item-container" [isDisabled]="!showDesc" triggers="dblclick:mouseleave" [tooltip]="descText">
         <img [src]="imgUrl" [style.object-position]="spriteLocation" />
@@ -110,6 +111,9 @@ export class ItemComponent implements OnInit {
 
   @Input()
   public contextSlot: number|string;
+
+  @ViewChild('contextMenu')
+  public contextMenu: ContextMenuComponent;
 
   public menuOptions = [
     { label: 'Sense',         visible: () => false },
@@ -179,7 +183,24 @@ export class ItemComponent implements OnInit {
     return item.descTextFor(this.player);
   }
 
-  constructor(private colyseusGame: ColyseusGameService) {}
+  constructor(private colyseusGame: ColyseusGameService, public contextMenuService: ContextMenuService) {}
+
+  public onContextMenu($event: MouseEvent) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    
+    if(!this.hasMenu) {
+      return false;
+    }
+
+    this.contextMenuService.show.next({
+      contextMenu: this.contextMenu,
+      event: $event,
+      item: {}
+    });
+
+    return false;
+  }
 
   ngOnInit() {
     this.item = new Item(this.item);
