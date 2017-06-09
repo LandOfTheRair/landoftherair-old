@@ -1,5 +1,5 @@
 - name: Antanian Boots
-  armorClass: 0
+  defense: 1
   sprite: 232
   desc: "a pair of leather boots"
   value: 50

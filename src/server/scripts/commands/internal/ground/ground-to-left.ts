@@ -22,7 +22,7 @@ export class GroundToLeft extends Command {
 
     if(player.leftHand) return room.sendClientLogMessage(client, 'Your left hand is full.');
 
-    player.leftHand = item;
+    player.setLeftHand(item);
     gameState.removeItemFromGround(player, item);
   }
 

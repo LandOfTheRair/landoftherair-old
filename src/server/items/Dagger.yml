@@ -4,5 +4,7 @@
   desc: "a steel dagger"
   isSackable: true
   baseDamage: 3
+  stats:
+    dex: 1
   type: Dagger
   sprite: 205

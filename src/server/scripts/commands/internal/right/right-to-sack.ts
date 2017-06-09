@@ -18,7 +18,7 @@ export class RightToSack extends Command {
     if(player.fullSack()) return room.sendClientLogMessage(client, 'Your sack is full.');
 
     player.addItemToSack(item);
-    player.rightHand = null;
+    player.setRightHand(null);
   }
 
 }

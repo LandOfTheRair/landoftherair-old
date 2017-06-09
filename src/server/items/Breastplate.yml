@@ -1,12 +1,14 @@
 
 - name: Antanian Breastplate
   armorClass: 5
+  defense: 1
   sprite: 210
   desc: "a simple iron breastplate"
   value: 500
 
 - name: Battlemage Armor
   armorClass: 10
+  defense: 2
   sprite: 133
   desc: "a breastplate symbolizing the yin and yang of the Magus"
   value: 10000

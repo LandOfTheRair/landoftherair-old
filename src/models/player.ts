@@ -1,9 +1,9 @@
 
-import { omitBy, merge, find, includes, compact, pull } from 'lodash';
+import { omitBy, merge, find, includes, compact, pull, values } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
   Item, EquippableItemClasses, HeadClasses, NeckClasses, WaistClasses, WristsClasses,
-  RingClasses, FeetClasses, HandsClasses
+  RingClasses, FeetClasses, HandsClasses, GivesBonusInHandItemClasses
 } from './item';
 
 export type Allegiance =
@@ -57,6 +57,7 @@ export class Character {
   gold: number = 0;
 
   stats: Stats = new Stats();
+  totalStats: Stats = new Stats();
 
   allegiance: Allegiance = 'None';
   sex: Sex = 'Male';
@@ -178,20 +179,62 @@ export class Character {
     return slot;
   }
 
+  recalculateStats() {
+    const allGear = compact(values(this.gear));
+
+    const canGetBonusFromItemInHand = (item) => {
+      return this.checkCanEquipWithoutGearCheck(item) && includes(GivesBonusInHandItemClasses, item.itemClass);
+    };
+
+    Object.keys(this.stats).forEach(stat => {
+      this.totalStats[stat] = this.stats[stat];
+    });
+
+    const addStatsForItem = (item) => {
+      Object.keys(item.stats).forEach(stat => {
+        this.totalStats[stat] += item.stats[stat];
+      })
+    };
+
+    allGear.forEach(item => {
+      if(!item.stats || !this.checkCanEquipWithoutGearCheck(item)) return;
+      addStatsForItem(item);
+    });
+
+    if(this.leftHand && this.leftHand.stats && canGetBonusFromItemInHand(this.leftHand))    addStatsForItem(this.leftHand);
+    if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
+  }
+
+  setLeftHand(item: Item) {
+    this.leftHand = item;
+    this.recalculateStats();
+  }
+
+  setRightHand(item: Item) {
+    this.rightHand = item;
+    this.recalculateStats();
+  }
+
   equip(item: Item) {
     const slot = this.getItemSlotToEquipIn(item);
     if(!slot) return false;
 
     this.gear[slot] = item;
+    this.recalculateStats();
     return true;
   }
 
-  canEquip(item: Item) {
+  private checkCanEquipWithoutGearCheck(item: Item) {
     if(!includes(EquippableItemClasses, item.itemClass)) return false;
     if(item.requirements) {
       if(item.requirements.level && this.level < item.requirements.level) return false;
       if(item.requirements.class && !includes(item.requirements.class, this.baseClass)) return false;
     }
+    return true;
+  }
+
+  canEquip(item: Item) {
+    if(!this.checkCanEquipWithoutGearCheck(item)) return false;
 
     const slot = this.getItemSlotToEquipIn(item);
     if(!slot || this.gear[slot]) return false;
@@ -200,6 +243,7 @@ export class Character {
 
   unequip(slot: string) {
     this.gear[slot] = null;
+    this.recalculateStats();
   }
 
   private fixSack() {
