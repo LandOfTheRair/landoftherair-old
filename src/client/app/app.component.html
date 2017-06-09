@@ -53,7 +53,7 @@
      defaultX="576"
      defaultY="55"
      [class.minimized]="minimized['lobby']"
-     [class.hidden]="!loggedIn">
+     [class.hidden]="!loggedIn || !colyseus.username">
   <div class="window-header text-center" #lobbyDrag>
     Lobby Chat ({{ colyseus.lobby.lobbyState.accounts.length }} Online)
     <app-minimize-button (click)="minimize('lobby')"></app-minimize-button>
@@ -69,7 +69,7 @@
      windowName="chararacterSelect"
      defaultX="0"
      defaultY="55"
-     [class.hidden]="!loggedIn || inGame">
+     [class.hidden]="!loggedIn || inGame || !colyseus.username">
   <div class="window-header text-center" #characterSelectDrag>Character Select</div>
   <div class="window-body">
     <app-character-select [lobbyState]="colyseus.lobby.lobbyState"></app-character-select>
@@ -112,8 +112,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="commandLine"
      windowName="commandLine"
-     defaultX="575"
-     defaultY="685"
+     defaultX="0"
+     defaultY="761"
      *ngIf="inGame && showCommandLine">
   <div class="window-header text-center" #commandLine>
     Command Line
@@ -128,7 +128,7 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="logWindow"
      windowName="logWindow"
-     defaultX="0"
+     defaultX="578"
      defaultY="55"
      *ngIf="inGame">
   <div class="window-header text-center" #logWindow>
@@ -160,8 +160,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="groundWindow"
      windowName="groundWindow"
-     defaultX="0"
-     defaultY="0"
+     defaultX="578"
+     defaultY="454"
      *ngIf="inGame && colyseus.game.showGround">
   <div class="window-header text-center" #groundWindow>
     Ground
@@ -176,6 +176,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="sackWindow"
      windowName="sackWindow"
+     defaultX="966"
+     defaultY="548"
      *ngIf="inGame && showInventorySack">
   <div class="window-header text-center" #sackWindow>
     Inventory - Sack
@@ -190,6 +192,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="beltWindow"
      windowName="beltWindow"
+     defaultX="966"
+     defaultY="443"
      *ngIf="inGame && showInventoryBelt">
   <div class="window-header text-center" #beltWindow>
     Inventory - Belt
@@ -204,6 +208,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="equipmentWindow"
      windowName="equipmentWindow"
+     defaultX="977"
+     defaultY="55"
      *ngIf="inGame && showEquipment">
   <div class="window-header text-center" #equipmentWindow>
     Equipment
