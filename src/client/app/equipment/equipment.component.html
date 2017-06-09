@@ -2,7 +2,7 @@
 
   <!-- top row (gold, helm, neck) -->
   <div class="item-slot item-background">
-    <app-item [item]="{ sprite: 212 }" [count]="player.gold" context="Equipment"></app-item>
+    <app-item [item]="{ sprite: 212 }" [count]="player.gold" context="Coin"></app-item>
   </div>
   <div class="item-slot item-background">
     <app-item [item]="player.gear.Head" context="Equipment" *ngIf="player.gear.Head" contextSlot="Head"></app-item>
