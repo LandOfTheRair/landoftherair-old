@@ -1,5 +1,7 @@
 import { Directive, Input, ElementRef, HostListener, OnInit } from '@angular/core';
 
+import { isUndefined } from 'lodash';
+
 @Directive({
   selector: '[ng2-draggable]'
 })
@@ -26,15 +28,11 @@ export class Draggable implements OnInit {
 
   private loadCoordinates() {
     const coordinates = JSON.parse(localStorage.getItem(`window-${this.windowName}`));
-    if(!coordinates) {
-      if(!this.defaultY || !this.defaultX) {
-        return;
-      } else {
-        this.setElementCoords(this.defaultY, this.defaultX);
-      }
+    if(!coordinates && !isUndefined(this.defaultY) && !isUndefined(this.defaultX)) {
+      this.setElementCoords(this.defaultY, this.defaultX);
     } else {
       const { top, left } = coordinates;
-      if(!top || !left) return;
+      if(isUndefined(top) || isUndefined(left)) return;
       this.setElementCoords(top, left);
     }
   }
