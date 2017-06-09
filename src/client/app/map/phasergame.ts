@@ -13,7 +13,7 @@ export class Game {
   private playerSprite: any;
   private map: any;
 
-  private itemsOnGround: any = {};
+  private itemsOnGround: any;
 
   private groups: any = {
     Decor: {},
@@ -35,6 +35,10 @@ export class Game {
   public interactCallback = (x, y) => {};
 
   constructor(private clientGameState: ClientGameState, player) {
+    if(this.itemsOnGround) {
+      this.itemsOnGround.destroy();
+    }
+
     this.player = player;
     this.canCreate = new Promise(resolve => this.resolveCanCreate = resolve);
     this.canUpdate = new Promise(resolve => this.resolveCanUpdate = resolve);
@@ -324,5 +328,6 @@ export class Game {
       this.playerSprite.destroy();
     }
     this.otherPlayerSprites.forEach(sprite => sprite.destroy());
+    this.itemsOnGround.destroy();
   }
 }

@@ -98,6 +98,14 @@ export class Character {
 
     this.sack = this.sack.map(item => new Item(item));
     this.belt = this.belt.map(item => new Item(item));
+
+    if(this.leftHand) this.leftHand = new Item(this.leftHand);
+    if(this.rightHand) this.rightHand = new Item(this.rightHand);
+
+    Object.keys(this.gear).forEach(slot => {
+      if(!this.gear[slot]) return;
+      this.gear[slot] = new Item(this.gear[slot]);
+    });
   }
 
   toJSON() {
