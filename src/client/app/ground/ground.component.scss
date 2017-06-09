@@ -1,6 +1,6 @@
 .upper-container, .lower-container {
-  max-height: 135px;
-  min-height: 135px;
+  max-height: 140px;
+  min-height: 140px;
 
   width: 370px;
 
@@ -11,8 +11,10 @@
 
   padding: 5px;
 
-  app-item {
+  .item-type {
     margin: 2px;
+    width: 64px;
+    height: 64px;
   }
 }
 
@@ -26,4 +28,8 @@
 
 .lower-container {
   border-top: 1px solid #000;
+
+  app-item {
+    margin: 2px;
+  }
 }

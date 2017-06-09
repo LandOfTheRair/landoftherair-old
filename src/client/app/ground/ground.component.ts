@@ -34,6 +34,7 @@ export class GroundComponent {
       pull(sorted, 'Coin');
       sorted.unshift('Coin');
     }
+    sorted = sorted.filter(type => ground[type].length > 0);
     return sorted;
   }
 

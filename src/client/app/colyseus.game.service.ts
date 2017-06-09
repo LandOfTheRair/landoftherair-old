@@ -164,6 +164,10 @@ export class ColyseusGameService {
     this.client.send(data);
   }
 
+  public sendRawCommand(command: string, args: string) {
+    this.sendAction({ command, args });
+  }
+
   private sendCommandString(str: string) {
     let command = '';
     let args = '';

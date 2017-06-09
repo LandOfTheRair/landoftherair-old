@@ -1,7 +1,10 @@
 
-import { omitBy, merge, find, includes } from 'lodash';
+import { omitBy, merge, find, includes, compact, pull } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
-import { Item, EquippableItemClasses } from './item';
+import {
+  Item, EquippableItemClasses, HeadClasses, NeckClasses, WaistClasses, WristsClasses,
+  RingClasses, FeetClasses, HandsClasses
+} from './item';
 
 export type Allegiance =
   'None'
@@ -81,7 +84,7 @@ export class Character {
   }
 
   get level() {
-    return Math.floor(this.xp / 500);
+    return Math.floor(this.xp / 1000);
   }
 
   getTotalStat(stat) {
@@ -109,12 +112,125 @@ export class Character {
     return !this.leftHand || !this.rightHand;
   }
 
+  determineItemType(itemClass) {
+    if(includes(HeadClasses, itemClass))   return 'Head';
+    if(includes(NeckClasses, itemClass))   return 'Neck';
+    if(includes(WaistClasses, itemClass))  return 'Waist';
+    if(includes(WristsClasses, itemClass)) return 'Wrists';
+    if(includes(RingClasses, itemClass))   return 'Ring';
+    if(includes(FeetClasses, itemClass))   return 'Feet';
+    if(includes(HandsClasses, itemClass))  return 'Hands';
+    return itemClass;
+  }
+
+  private getItemSlotToEquipIn(item: Item) {
+
+    let slot = item.itemClass;
+
+    if(item.isRobe()) {
+      const armor = this.gear.Armor;
+      const robe1 = this.gear.Robe1;
+      const robe2 = this.gear.Robe2;
+
+      if(armor && robe1 && robe2) return false;
+
+      if(!armor) {
+        slot = 'Armor';
+      } else if(!robe1) {
+        slot = 'Robe1';
+      } else if(!robe2) {
+        slot = 'Robe2';
+      }
+
+    } else if(item.isArmor()) {
+      const armor = this.gear.Armor;
+      if(armor) return false;
+
+      slot = 'Armor';
+
+    } else if(item.itemClass === 'Ring') {
+      const ring1 = this.gear.Ring1;
+      const ring2 = this.gear.Ring2;
+
+      if(ring1 && ring2) return false;
+
+      if(!ring1) {
+        slot = 'Ring1';
+      } else if(!ring2) {
+        slot = 'Ring2';
+      }
+    } else {
+      const realSlot = this.determineItemType(item.itemClass);
+      if(!includes(['Head', 'Neck', 'Waist', 'Wrists', 'Hands', 'Feet'], realSlot)) return false;
+      if(this.gear[realSlot]) return false;
+
+      slot = realSlot;
+    }
+
+    return slot;
+  }
+
+  equip(item: Item) {
+    const slot = this.getItemSlotToEquipIn(item);
+    if(!slot) return false;
+
+    this.gear[slot] = item;
+    return true;
+  }
+
   canEquip(item: Item) {
     if(!includes(EquippableItemClasses, item.itemClass)) return false;
-    if(!item.requirements) return true;
-    if(item.requirements.level && this.level < item.requirements.level) return false;
-    if(item.requirements.class && !includes(item.requirements.class, this.baseClass)) return false;
+    if(item.requirements) {
+      if(item.requirements.level && this.level < item.requirements.level) return false;
+      if(item.requirements.class && !includes(item.requirements.class, this.baseClass)) return false;
+    }
+
+    const slot = this.getItemSlotToEquipIn(item);
+    if(!slot || this.gear[slot]) return false;
     return true;
+  }
+
+  unequip(slot: string) {
+    this.gear[slot] = null;
+  }
+
+  private fixSack() {
+    this.sack = compact(this.sack);
+  }
+
+  fullSack() {
+    return this.sack.length >= 25;
+  }
+
+  addItemToSack(item: Item) {
+    this.sack.push(item);
+  }
+
+  takeItemFromSack(slot: number) {
+    const item = this.sack[slot];
+    pull(this.sack, item);
+    this.fixSack();
+    return item;
+  }
+
+  private fixBelt() {
+    this.belt = compact(this.belt);
+  }
+
+  fullBelt() {
+    return this.belt.length >= 5;
+  }
+
+  addItemToBelt(item: Item) {
+    this.belt.push(item);
+    this.fixBelt();
+  }
+
+  takeItemFromBelt(slot: number) {
+    const item = this.belt[slot];
+    pull(this.belt, item);
+    this.fixBelt();
+    return item;
   }
 
   tick() {

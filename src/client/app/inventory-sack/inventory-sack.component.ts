@@ -18,7 +18,7 @@ export class InventorySackComponent {
   }
 
   constructor() {
-    this.slots = Array(this.maxSize).fill(null);
+    this.slots = Array(this.maxSize).fill(null).map((v, i) => i).reverse();
   }
 
 }
