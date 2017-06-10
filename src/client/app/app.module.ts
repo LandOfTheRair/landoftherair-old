@@ -9,6 +9,7 @@ import { Ng2Webstorage } from 'ngx-webstorage';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
 import { NgxAutoScroll } from 'ngx-auto-scroll';
 import { ContextMenuModule } from 'ngx-contextmenu';
+import { Ng2DragDropModule } from 'ng2-drag-drop';
 
 import { AppComponent } from './app.component';
 
@@ -40,6 +41,7 @@ import { EquipmentComponent } from './equipment/equipment.component';
     LobbyComponent,
 
     Draggable,
+
     NgxAutoScroll,
     CharacterSelectComponent,
     MapComponent,
@@ -61,6 +63,7 @@ import { EquipmentComponent } from './equipment/equipment.component';
     FormsModule,
     HttpModule,
 
+    Ng2DragDropModule,
     ContextMenuModule.forRoot({ useBootstrap4: true }),
     Ng2Webstorage.forRoot({ prefix: 'lotr', separator: '-' }),
     Ng2BootstrapModule.forRoot()

@@ -197,4 +197,47 @@ export class ColyseusGameService {
     this.worldRoom.leave();
     delete this.worldRoom;
   }
+
+  public buildDropAction({ dragData }, choice) {
+    const { context, contextSlot, count, item } = dragData;
+    if(context.substring(0, 1) === choice.substring(0, 1)) return;
+    this.buildAction(item, { context, contextSlot, count}, choice.substring(0, 1));
+  }
+
+  public buildAction(item, { context, contextSlot, count }, choice) {
+    const cmd = `~${context.substring(0, 1)}t${choice}`;
+
+    let args = '';
+
+    if(context === 'Ground') {
+      args = `${item.itemClass} ${item.uuid}`;
+
+    } else if(includes(['Sack', 'Belt', 'Equipment'], context)) {
+      args = `${contextSlot}`;
+
+    } else if(context === 'Coin') {
+
+      (<any>swal)({
+        titleText: 'Take Gold From Stash',
+        input: 'number',
+        inputAttributes: {
+          min: 0,
+          max: count
+        },
+        preConfirm: (val) => {
+          return new Promise((resolve, reject) => {
+            if(val < 0 || val > count) return reject('You do not have that much gold!');
+            resolve();
+          });
+        }
+      }).then(amount => {
+        args = amount;
+        this.sendRawCommand(cmd, args);
+      });
+
+      return;
+    }
+
+    this.sendRawCommand(cmd, args);
+  }
 }
