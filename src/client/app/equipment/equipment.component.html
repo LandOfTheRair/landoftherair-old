@@ -1,7 +1,7 @@
 <div class="p-1 item-container d-flex flex-wrap">
 
   <!-- top row (gold, helm, neck) -->
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="coin" (onDrop)="colyseusGame.buildDropAction($event, 'Sack')">
     <app-item [item]="{ sprite: 212 }" [count]="player.gold" context="Coin"></app-item>
   </div>
   <div class="item-slot item-background" droppable dropScope="head" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">

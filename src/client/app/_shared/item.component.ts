@@ -237,6 +237,8 @@ export class ItemComponent implements OnInit {
       scopes.push('left');
     }
 
+    if(this.item.itemClass === 'Coin') scopes.push('coin');
+
     if(this.item.isSackable) scopes.push('sack');
     if(this.item.isBeltable) scopes.push('belt');
 
