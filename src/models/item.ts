@@ -1,5 +1,5 @@
 
-import { extend, omitBy, includes } from 'lodash';
+import { extend, omitBy, includes, without } from 'lodash';
 import * as uuid from 'uuid/v4';
 import { Player } from './player';
 
@@ -50,6 +50,7 @@ export const HandsClasses = [
 
 export const GivesBonusInHandItemClasses = WeaponClasses.concat(NeckClasses);
 
+
 export const EquippableItemClasses = HeadClasses
   .concat(NeckClasses)
   .concat(WaistClasses)
@@ -57,9 +58,11 @@ export const EquippableItemClasses = HeadClasses
   .concat(RingClasses)
   .concat(FeetClasses)
   .concat(HandsClasses)
-  .concat(WeaponClasses)
   .concat(ArmorClasses)
   .concat(RobeClasses);
+
+export const EquippableItemClassesWithWeapons = EquippableItemClasses
+  .concat(WeaponClasses);
 
 /* TODO Eventually:
 

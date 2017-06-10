@@ -13,7 +13,7 @@ export class BeltToSack extends Command {
     const slot = +args;
     if(isUndefined(slot)) return false;
 
-    const item = player.sack[slot];
+    const item = player.belt[slot];
     if(!item) return false;
 
     if(!item.isSackable) return room.sendClientLogMessage(client, 'That item is not sackable.');

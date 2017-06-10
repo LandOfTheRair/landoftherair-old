@@ -166,3 +166,18 @@
   z-index: 1000 !important;
 }
 
+.drag-over-border {
+  border: none !important;
+  outline: 2px dashed green !important;
+}
+
+.drag-hint-border {
+  border: none !important;
+  outline: 2px dashed orange;
+}
+
+.drag-border {
+  border: none !important;
+  outline: 2px dashed red;
+}
+

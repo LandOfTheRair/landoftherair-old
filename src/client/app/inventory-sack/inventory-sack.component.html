@@ -1,6 +1,11 @@
 
-<div class="p-1 item-container d-flex flex-wrap">
-  <div *ngFor="let slot of slots" class="item-slot item-background">
-    <app-item *ngIf="player.sack[slot]" [item]="player.sack[slot]" [showDesc]="true" context="Sack" [contextSlot]="slot"></app-item>
+<div class="p-1 item-container d-flex flex-wrap" droppable dropScope="sack" (onDrop)="colyseusGame.buildDropAction($event, 'Sack')">
+  <div *ngFor="let slot of slots"
+       class="item-slot item-background">
+    <app-item *ngIf="player.sack[slot]"
+              [item]="player.sack[slot]"
+              [showDesc]="true"
+              context="Sack"
+              [contextSlot]="slot"></app-item>
   </div>
 </div>

@@ -34,6 +34,7 @@ export class Look extends Command {
     }));
 
     if(typesWithNames.length === 0) {
+      room.showGroundWindow(client);
       room.sendClientLogMessage(client, 'You see nothing of interest.');
       return;
     }
