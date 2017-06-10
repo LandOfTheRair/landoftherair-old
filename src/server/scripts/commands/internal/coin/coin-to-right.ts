@@ -13,7 +13,11 @@ export class CoinToRight extends Command {
   async execute(player: Player, { room, client, gameState, args }) {
     const value = +args;
     if(value <= 0 || value > player.gold || isNaN(value)) return false;
-    if(player.rightHand) return room.sendClientLogMessage(client, 'Your right hand is full.');
+
+    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(player.rightHand && !player.leftHand) {
+      player.setLeftHand(player.rightHand);
+    }
 
     let item;
     try {

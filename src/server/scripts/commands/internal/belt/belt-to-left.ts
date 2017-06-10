@@ -16,7 +16,10 @@ export class BeltToLeft extends Command {
     const item = player.belt[slot];
     if(!item) return false;
 
-    if(player.leftHand) return room.sendClientLogMessage(client, 'Your left hand is full.');
+    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(player.leftHand && !player.rightHand) {
+      player.setRightHand(player.leftHand);
+    }
 
     player.setLeftHand(item);
     player.takeItemFromBelt(slot);
