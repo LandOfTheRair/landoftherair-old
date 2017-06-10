@@ -13,7 +13,11 @@ export class CoinToLeft extends Command {
   async execute(player: Player, { room, client, gameState, args }) {
     const value = +args;
     if(value <= 0 || value > player.gold || isNaN(value)) return false;
-    if(player.leftHand) return room.sendClientLogMessage(client, 'Your left hand is full.');
+
+    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(player.leftHand && !player.rightHand) {
+      player.setRightHand(player.leftHand);
+    }
 
     let item;
     try {
@@ -23,8 +27,6 @@ export class CoinToLeft extends Command {
       room.sendClientLogMessage(client, `Warning: "Gold Coin" does not exist.`);
       return;
     }
-
-    if(player.leftHand) return room.sendClientLogMessage(client, 'Your left hand is full.');
 
     player.setLeftHand(item);
     player.loseGold(value);
