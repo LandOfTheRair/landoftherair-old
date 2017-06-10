@@ -20,7 +20,10 @@ export class GroundToLeft extends Command {
     const item = find(ground[itemType], { uuid: itemId });
     if(!item) return room.sendClientLogMessage(client, 'You do not see that item.');
 
-    if(player.leftHand) return room.sendClientLogMessage(client, 'Your left hand is full.');
+    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(player.leftHand && !player.rightHand) {
+      player.setRightHand(player.leftHand);
+    }
 
     player.setLeftHand(item);
     gameState.removeItemFromGround(player, item);
