@@ -1,8 +1,6 @@
 
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
-import * as swal from 'sweetalert2';
-
 import { environment } from '../../environments/environment';
 import { Item, WeaponClasses } from '../../../models/item';
 import { Player } from '../../../models/player';
@@ -23,6 +21,8 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
     
     .item-container {
       position: relative;
+      height: 64px;
+      width: 64px;
     }
 
     img {
@@ -76,7 +76,15 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
     
     <div (contextmenu)="onContextMenu($event)">
     
-      <div class="item-container" [isDisabled]="!showDesc" triggers="dblclick:mouseleave" [tooltip]="descText">
+      <div class="item-container" 
+           [isDisabled]="!showDesc" 
+           triggers="dblclick:mouseleave" 
+           [dragScope]="scopes"
+           draggable 
+           [dragEnabled]="context !== 'GroundGroup'"
+           (mouseenter)="determineScopes()"
+           [dragData]="{ item: item, context: context, contextSlot: contextSlot, count: count }"
+           [tooltip]="descText">
         <img [src]="imgUrl" [style.object-position]="spriteLocation" />
         <div class="item-background" *ngIf="showBackground"></div>
         <div class="glow-container {{ glowColor }}" *ngIf="showDesc"></div>
@@ -117,6 +125,8 @@ export class ItemComponent implements OnInit {
   @ViewChild('contextMenu')
   public contextMenu: ContextMenuComponent;
 
+  public scopes: string[] = [];
+
   public menuOptions = [
     { label: 'Sense',         visible: () => false },
     { label: 'Consume',       visible: () => false },
@@ -127,26 +137,26 @@ export class ItemComponent implements OnInit {
                                           && this.context !== 'GroundGroup'
                                           && (!this.item.owner || this.item.owner === this.player.username)
                                           && this.isEquippable,
-                              execute: () => this.buildAction('E') },
+                              execute: () => this.doColyseusMoveAction('E') },
 
     { label: 'To Right Hand', visible: () => !this.player.rightHand,
-                              execute: () => this.buildAction('R')  },
+                              execute: () => this.doColyseusMoveAction('R')  },
 
     { label: 'To Left Hand',  visible: () => !this.player.leftHand,
-                              execute: () => this.buildAction('L')  },
+                              execute: () => this.doColyseusMoveAction('L')  },
 
     { label: 'To Ground',     visible: () => this.context !== 'Ground'
                                           && this.context !== 'GroundGroup',
-                              execute: () => this.buildAction('G')  },
+                              execute: () => this.doColyseusMoveAction('G')  },
 
     { label: 'To Sack',       visible: () => this.context !== 'Sack'
                                           && this.context !== 'Coin'
                                           && this.item.isSackable,
-                              execute: () => this.buildAction('S')  },
+                              execute: () => this.doColyseusMoveAction('S')  },
 
     { label: 'To Belt',       visible: () => this.context !== 'Belt'
                                           && this.item.isBeltable,
-                              execute: () => this.buildAction('B')  }
+                              execute: () => this.doColyseusMoveAction('B')  }
   ];
 
   get hasMenu() {
@@ -211,42 +221,26 @@ export class ItemComponent implements OnInit {
     this.item = new Item(this.item);
   }
 
-  buildAction(choice) {
-    const cmd = `~${this.context.substring(0, 1)}t${choice}`;
-
-    let args = '';
-
-    if(this.context === 'Ground') {
-      args = `${this.item.itemClass} ${this.item.uuid}`;
-
-    } else if(includes(['Sack', 'Belt', 'Equipment'], this.context)) {
-      args = `${this.contextSlot}`;
-
-    } else if(this.context === 'Coin') {
-
-      (<any>swal)({
-        titleText: 'Take Gold From Stash',
-        input: 'number',
-        inputAttributes: {
-          min: 0,
-          max: this.count
-        },
-        preConfirm: (val) => {
-          return new Promise((resolve, reject) => {
-            if(val < 0 || val > this.count) return reject('You do not have that much gold!');
-            resolve();
-          });
-        }
-      }).then(amount => {
-        args = amount;
-        this.colyseusGame.sendRawCommand(cmd, args);
-      });
-
-      return;
-    }
-
-    this.colyseusGame.sendRawCommand(cmd, args);
+  doColyseusMoveAction(choice) {
+    this.colyseusGame.buildAction(this.item, { context: this.context, count: this.count, contextSlot: this.contextSlot }, choice);
   }
 
-  // TODO draggable, highlight appropriate containers with red border if not usable and green border if usable
+  determineScopes() {
+    const scopes = ['ground', 'mapground'];
+    const itemType = this.player.determineItemType(this.item.itemClass);
+    if(itemType !== this.item.itemClass) {
+      scopes.push(itemType.toLowerCase());
+    }
+
+    if(!this.player.leftHand || !this.player.rightHand) {
+      scopes.push('right');
+      scopes.push('left');
+    }
+
+    if(this.item.isSackable) scopes.push('sack');
+    if(this.item.isBeltable) scopes.push('belt');
+
+    this.scopes = scopes;
+  }
+
 }

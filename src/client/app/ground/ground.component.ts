@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { includes, pull } from 'lodash';
+import { ColyseusGameService } from '../colyseus.game.service';
 
 @Component({
   selector: 'app-ground',
@@ -8,10 +9,9 @@ import { includes, pull } from 'lodash';
 })
 export class GroundComponent {
 
-  @Input()
-  public colyseusGame: any;
-
   public selectedType: string;
+
+  constructor(public colyseusGame: ColyseusGameService) {}
 
   get player() {
     return this.colyseusGame.character;

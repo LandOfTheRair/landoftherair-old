@@ -2,8 +2,8 @@
 import { omitBy, merge, find, includes, compact, pull, values } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
-  Item, EquippableItemClasses, HeadClasses, NeckClasses, WaistClasses, WristsClasses,
-  RingClasses, FeetClasses, HandsClasses, GivesBonusInHandItemClasses
+  Item, EquippableItemClassesWithWeapons, HeadClasses, NeckClasses, WaistClasses, WristsClasses,
+  RingClasses, FeetClasses, HandsClasses, GivesBonusInHandItemClasses, RobeClasses, ArmorClasses
 } from './item';
 
 export type Allegiance =
@@ -129,6 +129,8 @@ export class Character {
     if(includes(RingClasses, itemClass))   return 'Ring';
     if(includes(FeetClasses, itemClass))   return 'Feet';
     if(includes(HandsClasses, itemClass))  return 'Hands';
+    if(includes(RobeClasses, itemClass))   return 'Robe';
+    if(includes(ArmorClasses, itemClass))  return 'Armor';
     return itemClass;
   }
 
@@ -225,7 +227,7 @@ export class Character {
   }
 
   private checkCanEquipWithoutGearCheck(item: Item) {
-    if(!includes(EquippableItemClasses, item.itemClass)) return false;
+    if(!includes(EquippableItemClassesWithWeapons, item.itemClass)) return false;
     if(item.requirements) {
       if(item.requirements.level && this.level < item.requirements.level) return false;
       if(item.requirements.class && !includes(item.requirements.class, this.baseClass)) return false;

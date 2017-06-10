@@ -4,56 +4,56 @@
   <div class="item-slot item-background">
     <app-item [item]="{ sprite: 212 }" [count]="player.gold" context="Coin"></app-item>
   </div>
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="head" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Head" context="Equipment" *ngIf="player.gear.Head" contextSlot="Head"></app-item>
   </div>
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="neck" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Neck" context="Equipment" *ngIf="player.gear.Neck" contextSlot="Neck"></app-item>
   </div>
   <div class="item-slot"></div>
 
   <!-- next row (sash, bracers) -->
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="waist" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Waist" context="Equipment" *ngIf="player.gear.Waist" contextSlot="Waist"></app-item>
   </div>
   <div class="item-slot"></div>
   <div class="item-slot"></div>
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="wrists" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Wrists" context="Equipment" *ngIf="player.gear.Wrists" contextSlot="Wrists"></app-item>
   </div>
 
   <!-- next row (ring, lefthand, righthand, ring) -->
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="ring" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Ring1" context="Equipment" *ngIf="player.gear.Ring1" contextSlot="Ring1"></app-item>
   </div>
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="left" (onDrop)="colyseusGame.buildDropAction($event, 'Left')">
     <app-item [item]="player.leftHand" context="Left" *ngIf="player.leftHand"></app-item>
   </div>
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="right" (onDrop)="colyseusGame.buildDropAction($event, 'Right')">
     <app-item [item]="player.rightHand" context="Right" *ngIf="player.rightHand"></app-item>
   </div>
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="ring" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Ring2" context="Equipment" *ngIf="player.gear.Ring2" contextSlot="Ring2"></app-item>
   </div>
 
   <!-- next row (gloves, boots) -->
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="hands" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Hands" context="Equipment" *ngIf="player.gear.Hands" contextSlot="Hands"></app-item>
   </div>
   <div class="item-slot"></div>
   <div class="item-slot"></div>
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="feet" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Feet" context="Equipment" *ngIf="player.gear.Feet" contextSlot="Feet"></app-item>
   </div>
 
   <!-- last row (armor, robe, robe) -->
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable [dropScope]="['armor', 'robe']" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Armor" context="Equipment" *ngIf="player.gear.Armor" contextSlot="Armor"></app-item>
   </div>
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="robe" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Robe1" context="Equipment" *ngIf="player.gear.Robe1" contextSlot="Robe1"></app-item>
   </div>
-  <div class="item-slot item-background">
+  <div class="item-slot item-background" droppable dropScope="robe" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Robe2" context="Equipment" *ngIf="player.gear.Robe2" contextSlot="Robe2"></app-item>
   </div>
   <div class="item-slot"></div>

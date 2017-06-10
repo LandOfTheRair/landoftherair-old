@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Player } from '../../../models/player';
+import { ColyseusGameService } from '../colyseus.game.service';
 
 @Component({
   selector: 'app-equipment',
@@ -11,6 +12,6 @@ export class EquipmentComponent {
   @Input()
   public player: Player = new Player({});
 
-  constructor() { }
+  constructor(public colyseusGame: ColyseusGameService) { }
 
 }
