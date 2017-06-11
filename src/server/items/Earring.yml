@@ -1,0 +1,7 @@
+
+- name: Antanian Earring
+  defense: 1
+  offense: 1
+  sprite: 900
+  desc: "a golden earring"
+  value: 1000

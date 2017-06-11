@@ -3,7 +3,7 @@ import { omitBy, merge, find, includes, compact, pull, values } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
   Item, EquippableItemClassesWithWeapons, HeadClasses, NeckClasses, WaistClasses, WristsClasses,
-  RingClasses, FeetClasses, HandsClasses, GivesBonusInHandItemClasses, RobeClasses, ArmorClasses
+  RingClasses, FeetClasses, HandsClasses, GivesBonusInHandItemClasses, RobeClasses, ArmorClasses, EarClasses
 } from './item';
 
 export type Allegiance =
@@ -122,6 +122,7 @@ export class Character {
     if(includes(HandsClasses, itemClass))  return 'Hands';
     if(includes(RobeClasses, itemClass))   return 'Robe';
     if(includes(ArmorClasses, itemClass))  return 'Armor';
+    if(includes(EarClasses, itemClass))    return 'Ear';
     return itemClass;
   }
 
@@ -163,7 +164,7 @@ export class Character {
       }
     } else {
       const realSlot = this.determineItemType(item.itemClass);
-      if(!includes(['Head', 'Neck', 'Waist', 'Wrists', 'Hands', 'Feet'], realSlot)) return false;
+      if(!includes(['Head', 'Neck', 'Waist', 'Wrists', 'Hands', 'Feet', 'Ear'], realSlot)) return false;
       if(this.gear[realSlot]) return false;
 
       slot = realSlot;
