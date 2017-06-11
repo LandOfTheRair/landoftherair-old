@@ -80,8 +80,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="mapDrag"
      windowName="map"
-     defaultX="0"
-     defaultY="55"
+     defaultX="379"
+     defaultY="107"
      *ngIf="inGame">
   <div class="window-header text-center" #mapDrag>
     World
@@ -112,8 +112,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="commandLine"
      windowName="commandLine"
-     defaultX="0"
-     defaultY="761"
+     defaultX="379"
+     defaultY="816"
      *ngIf="inGame && showCommandLine">
   <div class="window-header text-center" #commandLine>
     Command Line
@@ -128,8 +128,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="logWindow"
      windowName="logWindow"
-     defaultX="578"
-     defaultY="55"
+     defaultX="3"
+     defaultY="392"
      *ngIf="inGame">
   <div class="window-header text-center" #logWindow>
     Log
@@ -143,8 +143,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="statusWindow"
      windowName="statusWindow"
-     defaultX="0"
-     defaultY="656"
+     defaultX="379"
+     defaultY="712"
      [class.minimized]="minimized['status']"
      *ngIf="inGame">
   <div class="window-header text-center" #statusWindow>
@@ -160,8 +160,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="groundWindow"
      windowName="groundWindow"
-     defaultX="578"
-     defaultY="454"
+     defaultX="3"
+     defaultY="646"
      *ngIf="inGame && colyseus.game.showGround">
   <div class="window-header text-center" #groundWindow>
     Ground
@@ -176,8 +176,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="sackWindow"
      windowName="sackWindow"
-     defaultX="966"
-     defaultY="548"
+     defaultX="962"
+     defaultY="547"
      *ngIf="inGame && showInventorySack">
   <div class="window-header text-center" #sackWindow>
     Inventory - Sack
@@ -192,8 +192,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="beltWindow"
      windowName="beltWindow"
-     defaultX="966"
-     defaultY="443"
+     defaultX="962"
+     defaultY="442"
      *ngIf="inGame && showInventoryBelt">
   <div class="window-header text-center" #beltWindow>
     Inventory - Belt
@@ -208,8 +208,8 @@
      [ng2-draggable]="true"
      [ng2DraggableHandle]="equipmentWindow"
      windowName="equipmentWindow"
-     defaultX="977"
-     defaultY="55"
+     defaultX="962"
+     defaultY="65"
      *ngIf="inGame && showEquipment">
   <div class="window-header text-center" #equipmentWindow>
     Equipment
