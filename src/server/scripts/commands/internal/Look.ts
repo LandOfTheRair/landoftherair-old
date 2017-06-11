@@ -39,7 +39,9 @@ export class Look extends Command {
       return;
     }
 
-    typesWithNames[typesWithNames.length - 1] = `and ${typesWithNames[typesWithNames.length - 1]}`;
+    if(typesWithNames.length > 1) {
+      typesWithNames[typesWithNames.length - 1] = `and ${typesWithNames[typesWithNames.length - 1]}`;
+    }
     room.sendClientLogMessage(client, `You see ${typesWithNames.join(', ')}.`);
     room.showGroundWindow(client);
   }

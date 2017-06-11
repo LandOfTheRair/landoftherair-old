@@ -4,8 +4,8 @@
   <div class="item-slot item-background" droppable dropScope="coin" (onDrop)="colyseusGame.buildDropAction($event, 'Sack')">
     <app-item [item]="{ sprite: 212 }" [count]="player.gold" context="Coin"></app-item>
   </div>
-  <div class="item-slot item-background" droppable dropScope="earring" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
-    <app-item [item]="player.gear.Earring" context="Equipment" *ngIf="player.gear.Earring" contextSlot="Earring"></app-item>
+  <div class="item-slot item-background" droppable dropScope="ear" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
+    <app-item [item]="player.gear.Ear" context="Equipment" *ngIf="player.gear.Ear" contextSlot="Ear"></app-item>
   </div>
   <div class="item-slot item-background" droppable dropScope="head" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [item]="player.gear.Head" context="Equipment" *ngIf="player.gear.Head" contextSlot="Head"></app-item>
