@@ -1,4 +1,12 @@
 
+- name: Antanian Halberd
+  desc: "an iron-tipped halberd"
+  armorClass: 1
+  offense: 1
+  accuracy: 5
+  baseDamage: 5
+  type: Polearm
+  sprite: 230
 
 - name: Battlemage Halberd
   desc: "a halberd symbolizing the yin and yang of the Magus"
@@ -8,7 +16,6 @@
   baseDamage: 100
   sprite: 135
   type: Polearm
-  isBeltable: false
   stats:
     agi: 3
   requirements:

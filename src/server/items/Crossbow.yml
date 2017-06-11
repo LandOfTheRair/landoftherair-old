@@ -1,0 +1,7 @@
+- name: Antanian Crossbow
+  accuracy: 1
+  offense: 1
+  desc: "a wooden crossbow"
+  baseDamage: 5
+  type: Ranged
+  sprite: 201

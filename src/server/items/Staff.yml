@@ -1,0 +1,6 @@
+- name: Antanian Staff
+  offense: 0
+  desc: "a wooden staff"
+  baseDamage: 5
+  type: Staff
+  sprite: 196

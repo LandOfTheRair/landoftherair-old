@@ -5,11 +5,12 @@ import { Player } from './player';
 
 export const ValidItemTypes = [
   'Mace', 'Axe', 'Dagger', 'Magical', 'OneHandedSword', 'TwoHandedSword', 'Polearm', 'Ranged',
-  'Martial', 'Staff', 'HealingMagic', 'ElementalMagic', 'Throwing', 'Thievery'
+  'Martial', 'Staff', 'HealingMagic', 'ElementalMagic', 'Throwing', 'Thievery', 'Shortsword'
 ];
 
 export const WeaponClasses = [
-  'Dagger', 'Halberd', 'Club'
+  'Dagger', 'Halberd', 'Club', 'Crossbow', 'Greatsword', 'Longbow', 'Longsword', 'Shortbow', 'Shortsword', 'Staff',
+  'Shield'
 ];
 
 export const ArmorClasses = [
@@ -100,6 +101,8 @@ export class Item {
   requirements?: ItemRequirements;
   condition: number = 20000;
   type = 'Martial';
+
+  twoHanded = false;
 
   isBeltable = false;
   isSackable = true;

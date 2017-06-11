@@ -1,0 +1,7 @@
+- name: Antanian Mace
+  accuracy: 4
+  offense: 2
+  desc: "an iron mace"
+  baseDamage: 6
+  type: Mace
+  sprite: 204
