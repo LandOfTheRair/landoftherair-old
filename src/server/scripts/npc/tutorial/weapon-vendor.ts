@@ -4,12 +4,14 @@ export const setup = (npc: NPC) => {
   npc.hostility = 'Never';
 
   const vendorItems = [
-    'Antanian Tunic',
-    'Antanian Studded Tunic',
-    'Antanian Scalemail Tunic',
-    'Antanian Ringmail Tunic',
-    'Antanian Breastplate',
-    'Antanian Cloak'
+    'Antanian Dagger',
+    'Antanian Shortsword',
+    'Antanian Longsword',
+    'Antanian Greatsword',
+    'Antanian Staff',
+    'Antanian Crossbow',
+    'Antanian Shortbow',
+    'Antanian Wooden Shield'
   ];
 
   npc.loadVendorItems(vendorItems);

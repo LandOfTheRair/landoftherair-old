@@ -63,6 +63,20 @@ class ItemLoader {
       if(isUndefined(item.isBeltable))  item.isBeltable = false;
       if(isUndefined(item.isSackable))  item.isSackable = false;
     }
+
+    if(item.itemClass === 'Halberd') {
+      item.isBeltable = false;
+      item.twoHanded = true;
+    }
+
+    if(includes(['Shortbow', 'Longbow'], item.itemClass)) {
+      item.twoHanded = true;
+    }
+
+    if(item.itemClass === 'Shield') {
+      item.accuracy = 1;
+      item.baseDamage = 1;
+    }
   }
 
   static validateItem(item: Item): boolean {
