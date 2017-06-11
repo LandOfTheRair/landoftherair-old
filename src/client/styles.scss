@@ -125,6 +125,14 @@
     max-width: 351px;
   }
 
+  &.npc-window {
+    max-width: 372px;
+    min-width: 372px;
+
+    min-height: 320px;
+    max-height: 320px;
+  }
+
   position: absolute !important;
 
   border: 1px solid #000;

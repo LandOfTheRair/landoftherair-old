@@ -571,15 +571,13 @@
                  "gid":3134,
                  "height":64,
                  "id":174,
-                 "name":"",
+                 "name":"Armor Seller",
                  "properties":
                     {
-                     "name":"Armor Vendor",
                      "script":"tutorial\/armor-vendor"
                     },
                  "propertytypes":
                     {
-                     "name":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -593,15 +591,13 @@
                  "gid":3134,
                  "height":64,
                  "id":177,
-                 "name":"",
+                 "name":"Weapon Seller",
                  "properties":
                     {
-                     "name":"Weapon Vendor",
                      "script":"tutorial\/weapon-vendor"
                     },
                  "propertytypes":
                     {
-                     "name":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -615,15 +611,13 @@
                  "gid":3134,
                  "height":64,
                  "id":178,
-                 "name":"",
+                 "name":"Alchemist",
                  "properties":
                     {
-                     "name":"Alchemist",
                      "script":"tutorial\/alchemist"
                     },
                  "propertytypes":
                     {
-                     "name":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -637,15 +631,13 @@
                  "gid":3149,
                  "height":64,
                  "id":179,
-                 "name":"",
+                 "name":"Hermit",
                  "properties":
                     {
-                     "name":"Hermit",
                      "script":"tutorial\/hermit"
                     },
                  "propertytypes":
                     {
-                     "name":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -654,6 +646,86 @@
                  "width":64,
                  "x":448,
                  "y":512
+                }, 
+                {
+                 "gid":3049,
+                 "height":64,
+                 "id":180,
+                 "name":"Healer Trainer",
+                 "properties":
+                    {
+                     "script":"trainer\/healer"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2560,
+                 "y":384
+                }, 
+                {
+                 "gid":3044,
+                 "height":64,
+                 "id":181,
+                 "name":"Mage Trainer",
+                 "properties":
+                    {
+                     "script":"trainer\/mage"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2688,
+                 "y":384
+                }, 
+                {
+                 "gid":3039,
+                 "height":64,
+                 "id":182,
+                 "name":"Warrior Trainer",
+                 "properties":
+                    {
+                     "script":"trainer\/warrior"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2560,
+                 "y":512
+                }, 
+                {
+                 "gid":3059,
+                 "height":64,
+                 "id":183,
+                 "name":"Thief Trainer",
+                 "properties":
+                    {
+                     "script":"trainer\/thief"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2688,
+                 "y":512
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -661,7 +733,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":180,
+ "nextobjectid":184,
  "orientation":"orthogonal",
  "properties":
     {
