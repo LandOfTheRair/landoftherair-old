@@ -20,18 +20,19 @@ import { ColyseusGameService } from './colyseus.game.service';
 import { LobbyComponent } from './lobby/lobby.component';
 import { CharacterSelectComponent } from './character-select/character-select.component';
 import { MapComponent } from './map/map.component';
-import { StatsWindowComponent } from './stats-window/stats-window.component';
+import { StatsWindowComponent } from './stats/stats-window.component';
 import { CommandLineComponent } from './command-line/command-line.component';
 import { CloseButtonComponent } from './_shared/close-button.component';
 import { MinimizeButtonComponent } from './_shared/minimize-button.component';
 import { PlayerTaglineComponent } from './_shared/character-tagline.component';
 import { ItemComponent } from './_shared/item.component';
-import { LogWindowComponent } from './log-window/log-window.component';
-import { StatusWindowComponent } from './status-window/status-window.component';
+import { LogWindowComponent } from './log/log-window.component';
+import { StatusWindowComponent } from './status/status-window.component';
 import { GroundComponent } from './ground/ground.component';
 import { InventorySackComponent } from './inventory-sack/inventory-sack.component';
 import { InventoryBeltComponent } from './inventory-belt/inventory-belt.component';
 import { EquipmentComponent } from './equipment/equipment.component';
+import { NpcsComponent } from './npcs/npcs.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -57,6 +58,7 @@ import { EquipmentComponent } from './equipment/equipment.component';
     InventorySackComponent,
     InventoryBeltComponent,
     EquipmentComponent,
+    NpcsComponent,
   ],
   imports: [
     BrowserModule,
