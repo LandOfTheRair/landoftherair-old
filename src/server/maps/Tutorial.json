@@ -532,14 +532,48 @@
                  "width":64,
                  "x":896,
                  "y":512
+                }, 
+                {
+                 "gid":1396,
+                 "height":64,
+                 "id":170,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1408,
+                 "y":2304
+                }, 
+                {
+                 "gid":1456,
+                 "height":64,
+                 "id":171,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1600,
+                 "y":2304
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"NPCs",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":170,
+ "nextobjectid":172,
  "orientation":"orthogonal",
  "properties":
     {
