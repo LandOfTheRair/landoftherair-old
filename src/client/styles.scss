@@ -53,6 +53,8 @@
     min-width: 600px;
 
     max-width: 600px;
+
+    z-index: 1500;
   }
 
   &.map {
@@ -70,16 +72,16 @@
   }
 
   &.command-line {
-    min-width: 400px;
-    max-width: 400px;
+    min-width: 578px;
+    max-width: 578px;
   }
 
   &.log-window {
-    max-width: 400px;
-    min-width: 400px;
+    max-width: 372px;
+    min-width: 372px;
 
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 256px;
+    max-height: 256px;
   }
 
   &.status-window {
@@ -92,11 +94,13 @@
   }
 
   &.ground-window {
-    min-width: 370px;
-    max-width: 370px;
+    min-width: 372px;
+    max-width: 372px;
+
+    z-index: 900;
 
     .window-header {
-      min-width: 370px;
+      min-width: 369px;
     }
 
     .window-body {
@@ -117,8 +121,8 @@
   }
 
   &.equipment-window {
-    min-width: 288px;
-    max-width: 288px;
+    min-width: 351px;
+    max-width: 351px;
   }
 
   position: absolute !important;
