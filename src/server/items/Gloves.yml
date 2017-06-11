@@ -1,5 +1,7 @@
 - name: Antanian Gloves
   defense: 1
+  accuracy: 3
+  baseDamage: 3
   sprite: 233
   desc: "a pair of leather gloves"
   value: 50

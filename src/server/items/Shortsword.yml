@@ -1,0 +1,6 @@
+- name: Antanian Shortsword
+  offense: 1
+  desc: "an iron shortsword"
+  baseDamage: 5
+  type: Shortsword
+  sprite: 195

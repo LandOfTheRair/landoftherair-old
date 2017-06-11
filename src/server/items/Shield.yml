@@ -1,0 +1,6 @@
+- name: Antanian Wooden Shield
+  defense: 1
+  armorClass: 2
+  desc: "a wooden shield"
+  type: Mace
+  sprite: 327
