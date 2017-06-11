@@ -15,7 +15,8 @@ export const MapLayer = {
   Decor: 5,
   DenseDecor: 6,
   OpaqueDecor: 7,
-  Interactables: 8
+  Interactables: 8,
+  NPCs: 9
 };
 
 export class GameState {

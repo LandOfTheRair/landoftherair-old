@@ -4,7 +4,8 @@ import { find, remove, compact, difference } from 'lodash';
 import { ClientGameState } from '../clientgamestate';
 
 import { environment } from '../../environments/environment';
-import { Player, Sex, Direction } from '../../../models/player';
+import { Player } from '../../../models/player';
+import { Sex, Direction } from '../../../models/character';
 import { Item } from '../../../models/item';
 
 export class Game {
