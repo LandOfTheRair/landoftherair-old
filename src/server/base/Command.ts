@@ -1,5 +1,6 @@
 
-import { Player, Direction } from '../../models/player';
+import { Player } from '../../models/player';
+import { Direction } from '../../models/character';
 
 export abstract class Command {
 
