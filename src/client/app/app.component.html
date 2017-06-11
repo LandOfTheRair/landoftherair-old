@@ -219,3 +219,19 @@
     <app-equipment [player]="colyseus.game.character"></app-equipment>
   </div>
 </div>
+
+<div class="window npc-window game-window"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="npcWindow"
+     windowName="npcWindow"
+     defaultX="962"
+     defaultY="65"
+     *ngIf="inGame">
+  <div class="window-header text-center" #npcWindow>
+    NPCs
+  </div>
+  <div class="window-body">
+    <app-npcs></app-npcs>
+  </div>
+</div>
+
