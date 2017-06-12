@@ -1,6 +1,6 @@
 
 <div class="p-1 message-container" ngx-auto-scroll lock-y-offset="30">
   <div class="message" *ngFor="let message of clientGameState.logMessages">
-    {{ message }}
+    <strong *ngIf="message.name">{{ message.name }}: </strong>{{ message.message }}
   </div>
 </div>
