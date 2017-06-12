@@ -153,10 +153,11 @@ export class GameWorld extends Room<GameState> {
 
   loadNPCsFromMap() {
     const npcs = this.state.map.layers[MapLayer.NPCs].objects;
+
     npcs.forEach(npcData => {
       const data = npcData.properties;
       data.name = npcData.name;
-      data.sprite = npcData.gid;
+      data.sprite = npcData.gid - this.state.map.tilesets[3].firstgid;
       data.x = npcData.x / 64;
       data.y = npcData.y / 64;
       const npc = new NPC(data);
