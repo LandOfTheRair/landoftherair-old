@@ -15,7 +15,8 @@ import { CommandExecutor } from '../helpers/command-executor';
 import { NPC } from '../../models/npc';
 
 const TickRates = {
-  Player: 50
+  PlayerAction: 60,
+  PlayerSave: 360
 };
 
 export class GameWorld extends Room<GameState> {
@@ -210,13 +211,17 @@ export class GameWorld extends Room<GameState> {
     return possTargets;
   }
 
-  // TODO save every player every minute
   tick() {
     this.ticks.Player++;
 
-    if(this.ticks.Player >= TickRates.Player) {
-      this.ticks.Player = 0;
+    // tick players every second or so
+    if(this.ticks.Player % TickRates.PlayerAction === 0) {
       this.state.tickPlayers();
+    }
+
+    // save players every minute or so
+    if(this.ticks.Player % TickRates.PlayerSave === 0) {
+      this.state.players.forEach(player => this.savePlayer(player));
     }
   }
 }
