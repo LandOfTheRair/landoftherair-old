@@ -194,6 +194,21 @@ export class GameWorld extends Room<GameState> {
     return species[func](sample(['male', 'female']));
   }
 
+  getPossibleMessageTargets(player: Player, findStr: string) {
+    const allTargets = this.state.mapNPCs;
+    const possTargets = allTargets.filter(target => {
+      const diffX = target.x - player.x;
+      const diffY = target.y - player.y - 1;
+
+      if(!player.$fov[diffX]) return false;
+      if(!player.$fov[diffX][diffY]) return false;
+
+      return target.uuid = findStr || startsWith(target.name, findStr);
+    });
+
+    return possTargets;
+  }
+
   // TODO save every player every minute
   tick() {
     this.ticks.Player++;
