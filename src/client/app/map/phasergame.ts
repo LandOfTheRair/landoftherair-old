@@ -239,15 +239,13 @@ export class Game {
   }
 
   private showNPCSprites(centerX, centerY) {
-    const spriteOffset = this.clientGameState.map.tilesets[3].firstgid;
-
     this.clientGameState.mapNPCs.forEach(npc => {
       if(npc.x < centerX - 4 || npc.x > centerX + 4 || npc.y < centerY - 4 || npc.y > centerY + 4) return;
 
       const currentSprite = find(this.visibleNPCs.children, { uuid: npc.uuid });
       if(currentSprite) return;
 
-      const sprite = this.g.add.sprite(npc.x * 64, (npc.y - 1) * 64, 'Creatures', npc.sprite - spriteOffset);
+      const sprite = this.g.add.sprite(npc.x * 64, (npc.y - 1) * 64, 'Creatures', npc.sprite);
       sprite.uuid = npc.uuid;
       this.visibleNPCs.add(sprite);
     });
