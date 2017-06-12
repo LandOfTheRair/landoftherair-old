@@ -1,5 +1,6 @@
 
 <div class="p-1 char-container">
+  <div class="vertical-center w-100 background-text" *ngIf="visibleNPCS().length === 0">You don't see anything.</div>
   <div class="char-card-container" *ngFor="let npc of visibleNPCS()">
 
     <div class="char-direction vertical-center">
