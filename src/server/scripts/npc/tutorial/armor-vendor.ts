@@ -1,6 +1,7 @@
 import { NPC } from '../../../../models/npc';
+import { NPCLoader } from '../../../helpers/npc-loader';
 
-export const setup = (npc: NPC) => {
+export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
   const vendorItems = [
@@ -12,7 +13,12 @@ export const setup = (npc: NPC) => {
     'Antanian Cloak'
   ];
 
-  npc.loadVendorItems(vendorItems);
+  NPCLoader.loadVendorItems(npc, vendorItems);
+
+  npc.rightHand = await NPCLoader.loadItem('Antanian Longsword');
+  npc.gear.Armor = await NPCLoader.loadItem('Antanian Breastplate');
+
+  npc.recalculateStats();
 };
 
 export const responses = (npc: NPC) => {

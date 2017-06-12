@@ -5,6 +5,7 @@ import { Player } from './player';
 
 import * as Mrpas from 'mrpas';
 import { Item } from './item';
+import { NPC } from './npc';
 
 export const MapLayer = {
   Terrain: 0,
@@ -24,10 +25,15 @@ export class GameState {
   map: any = {};
   mapName: string = '';
   mapData: any = { openDoors: {} };
+  mapNPCs: NPC[] = [];
 
   groundItems: any = {};
 
   fov: Mrpas;
+
+  addNPC(npc: NPC) {
+    this.mapNPCs.push(npc);
+  }
 
   addPlayer(player) {
     this.players.push(player);
@@ -151,6 +157,7 @@ export class GameState {
       map: this.map,
       mapData: this.mapData,
       mapName: this.mapName,
+      mapNPCs: this.mapNPCs,
       players: this.players,
       groundItems: this.groundItems
     }
