@@ -12,7 +12,7 @@ export class LookAt extends Command {
 
     const possTargets = room.getPossibleMessageTargets(player, args);
     const target = possTargets[0];
-    if(!target) return room.sendClientLogMessage(client, 'You do not see that person.');;
+    if(!target) return room.sendClientLogMessage(client, 'You do not see that person.');
 
     const chestItem = target.gear.Robe2 || target.gear.Robe1 || target.gear.Armor;
     const chestDesc = chestItem ? chestItem.desc : 'nothing';
