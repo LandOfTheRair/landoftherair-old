@@ -59,10 +59,13 @@
 
   &.map {
     z-index: 400;
+    min-height: 576px;
+    min-width: 576px;
 
     .window-body {
       min-height: 576px;
       min-width: 576px;
+      background-color: #000;
     }
   }
 
