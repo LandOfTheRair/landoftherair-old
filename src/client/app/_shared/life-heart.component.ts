@@ -30,6 +30,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     
     .heart .fill:before, .heart .fill:after {
       background: #e74c3c;
+      background: linear-gradient(to bottom, #f8e36d 0%,#e42403 31%,#b72606 100%);
       border-radius: 9px 9px;
       content: "";
       height: 12px;
