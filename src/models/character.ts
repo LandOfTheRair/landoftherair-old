@@ -8,12 +8,12 @@ import {
 
 export type Allegiance =
   'None'
-    | 'Pirates'
-    | 'Townsfolk'
-    | 'Royalty'
-    | 'Adventurers'
-    | 'Wilderness'
-    | 'Underground'
+| 'Pirates'
+| 'Townsfolk'
+| 'Royalty'
+| 'Adventurers'
+| 'Wilderness'
+| 'Underground'
 
 export type Sex = 'Male' | 'Female';
 
