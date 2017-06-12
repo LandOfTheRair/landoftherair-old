@@ -38,6 +38,21 @@
       .char-title {
         height: 18px;
 
+        &.friendly {
+          background-color: #44a05a;
+          color: white;
+        }
+
+        &.angry {
+          background-color: #b20000;
+          color: white;
+        }
+
+        &.neutral {
+          background-color: #bbb;
+          color: black;
+        }
+
         .char-name {
           user-select: none;
           padding-left: 2px;
