@@ -37,4 +37,23 @@ export class NpcsComponent {
     return npc.gear.Robe2 || npc.gear.Robe1 || npc.gear.Armor;
   }
 
+  public directionTo(npc: NPC) {
+    const me = this.colyseusGame.character;
+    const diffX = npc.x - me.x;
+    const diffY = npc.y - me.y - 1;
+
+    if(diffX < 0 && diffY > 0) return '↙';
+    if(diffX > 0 && diffY < 0) return '↗';
+    if(diffX > 0 && diffY > 0) return '↘';
+    if(diffX < 0 && diffY < 0) return '↖';
+
+    if(diffX > 0)              return '→';
+    if(diffY > 0)              return '↓';
+
+    if(diffX < 0)              return '←';
+    if(diffY < 0)              return '↑';
+
+    return '✧';
+  }
+
 }

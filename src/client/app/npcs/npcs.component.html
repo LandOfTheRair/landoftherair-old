@@ -1,24 +1,33 @@
 
 <div class="p-1 char-container">
-  <div *ngFor="let npc of visibleNPCS()" class="char-card">
-    <div class="char-title">
-      <div class="char-name">
-        {{ npc.name }}
-        <div class="float-right">
-          <app-life-heart [target]="npc"></app-life-heart>
+  <div class="char-card-container" *ngFor="let npc of visibleNPCS()">
+
+    <div class="char-direction vertical-center">
+      {{ directionTo(npc) }}
+    </div>
+
+    <div class="char-card">
+
+      <div class="char-title">
+        <div class="char-name">
+          {{ npc.name }}
+          <div class="float-right">
+            <app-life-heart [target]="npc"></app-life-heart>
+          </div>
         </div>
+
       </div>
 
-    </div>
-    <div class="char-gear">
-      <div class="gear-item right">
-        <app-item size="sm" [showDesc]="false" [item]="npc.rightHand" *ngIf="npc.rightHand"></app-item>
-      </div>
-      <div class="gear-item armor">
-        <app-item size="sm" [showDesc]="false" [item]="npcArmorItem(npc)" *ngIf="npcArmorItem(npc)"></app-item>
-      </div>
-      <div class="gear-item left">
-        <app-item size="sm" [showDesc]="false" [item]="npc.leftHand" *ngIf="npc.leftHand"></app-item>
+      <div class="char-gear">
+        <div class="gear-item right">
+          <app-item size="sm" [showDesc]="false" [item]="npc.rightHand" *ngIf="npc.rightHand"></app-item>
+        </div>
+        <div class="gear-item armor">
+          <app-item size="sm" [showDesc]="false" [item]="npcArmorItem(npc)" *ngIf="npcArmorItem(npc)"></app-item>
+        </div>
+        <div class="gear-item left">
+          <app-item size="sm" [showDesc]="false" [item]="npc.leftHand" *ngIf="npc.leftHand"></app-item>
+        </div>
       </div>
     </div>
   </div>
