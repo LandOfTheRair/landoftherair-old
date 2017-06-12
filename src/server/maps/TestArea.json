@@ -88,6 +88,112 @@
         {
          "draworder":"topdown",
          "name":"Interactables",
+         "objects":[
+                {
+                 "gid":1763,
+                 "height":64,
+                 "id":170,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"TestArea",
+                     "teleportX":26,
+                     "teleportY":37
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsDown",
+                 "visible":true,
+                 "width":64,
+                 "x":1536,
+                 "y":2432
+                }, 
+                {
+                 "gid":1761,
+                 "height":64,
+                 "id":172,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"TestArea",
+                     "teleportX":24,
+                     "teleportY":37
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsUp",
+                 "visible":true,
+                 "width":64,
+                 "x":1664,
+                 "y":2432
+                }, 
+                {
+                 "gid":1593,
+                 "height":64,
+                 "id":173,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"TestArea",
+                     "teleportX":32,
+                     "teleportY":37
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"ClimbUp",
+                 "visible":true,
+                 "width":64,
+                 "x":1920,
+                 "y":2432
+                }, 
+                {
+                 "gid":1705,
+                 "height":64,
+                 "id":174,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"TestArea",
+                     "teleportX":30,
+                     "teleportY":37
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"ClimbDown",
+                 "visible":true,
+                 "width":64,
+                 "x":2048,
+                 "y":2432
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"NPCs",
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
@@ -95,7 +201,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":170,
+ "nextobjectid":175,
  "orientation":"orthogonal",
  "properties":
     {
@@ -1925,6 +2031,19 @@
                  "terrain":[0, 0, 0, 0]
                 }
             },
+         "tilewidth":64
+        }, 
+        {
+         "columns":40,
+         "firstgid":2529,
+         "image":"..\/..\/client\/assets\/creatures.png",
+         "imageheight":2880,
+         "imagewidth":2560,
+         "margin":0,
+         "name":"NPCs",
+         "spacing":0,
+         "tilecount":1800,
+         "tileheight":64,
          "tilewidth":64
         }],
  "tilewidth":64,
