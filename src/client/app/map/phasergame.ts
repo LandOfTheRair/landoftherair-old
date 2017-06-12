@@ -15,6 +15,7 @@ export class Game {
   private map: any;
 
   private itemsOnGround: any;
+  private visibleNPCs: any;
 
   private groups: any = {
     Decor: {},
@@ -38,6 +39,9 @@ export class Game {
   constructor(private clientGameState: ClientGameState, player) {
     if(this.itemsOnGround) {
       this.itemsOnGround.destroy();
+    }
+    if(this.visibleNPCs) {
+      this.visibleNPCs.destroy();
     }
 
     this.player = player;
@@ -234,6 +238,33 @@ export class Game {
     });
   }
 
+  private showNPCSprites(centerX, centerY) {
+    const spriteOffset = this.clientGameState.map.tilesets[3].firstgid;
+
+    this.clientGameState.mapNPCs.forEach(npc => {
+      if(npc.x < centerX - 4 || npc.x > centerX + 4 || npc.y < centerY - 4 || npc.y > centerY + 4) return;
+
+      const currentSprite = find(this.visibleNPCs.children, { uuid: npc.uuid });
+      if(currentSprite) return;
+
+      const sprite = this.g.add.sprite(npc.x * 64, (npc.y - 1) * 64, 'Creatures', npc.sprite - spriteOffset);
+      sprite.uuid = npc.uuid;
+      this.visibleNPCs.add(sprite);
+    });
+  }
+
+  private removeOldNPCSprites(centerX, centerY) {
+    this.visibleNPCs.children.forEach(sprite => {
+      const x = sprite.x / 64;
+      const y = sprite.y / 64;
+
+      if(x < centerX - 4 || x > centerX + 4 || y < centerY - 4 || y > centerY + 4) {
+        this.visibleNPCs.removeChild(sprite);
+        sprite.destroy();
+      }
+    });
+  }
+
   private createItemSprite(item: Item, x, y) {
     if(!this.visibleSprites[x]) this.visibleSprites[x] = {};
     if(!this.visibleSprites[x][y]) this.visibleSprites[x][y] = {};
@@ -318,6 +349,7 @@ export class Game {
     this.resolveCanCreate();
 
     this.itemsOnGround = this.g.add.group();
+    this.visibleNPCs = this.g.add.group();
 
     this.setupPhaser();
   }
@@ -345,6 +377,9 @@ export class Game {
 
     this.removeOldItemSprites(this.player.x, this.player.y);
     this.showItemSprites(this.player.x, this.player.y);
+
+    this.removeOldNPCSprites(this.player.x, this.player.y);
+    this.showNPCSprites(this.player.x, this.player.y);
   }
 
   destroy() {
