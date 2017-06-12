@@ -19,6 +19,7 @@ class FloatingBox {
     el.style.fontWeight = 'bold';
     el.style.border = '1px solid #000';
     el.style.pointerEvents = 'none';
+    el.style.transition = 'all 7s ease 0s';
     el.innerText = `${this.value > 0 ? '+': ''}${this.value}`;
     element.appendChild(el);
 
@@ -27,19 +28,13 @@ class FloatingBox {
   }
 
   windUp() {
-    const scrollUp = () => {
-      const val = parseInt(this.el.style.bottom);
-      this.el.style.bottom = `${val+1}px`;
-    };
 
-    const int = setInterval(() => {
-      scrollUp();
-      if(parseInt(this.el.style.bottom) > 576) {
-        clearInterval(int);
-        this.el.parentNode.removeChild(this.el);
-      }
-    }, 10);
+    const animation = this.el.animate([
+      { transform: 'translateY(0px)' },
+      { transform: 'translateY(-548px)' }
+    ], { duration: 7000 });
 
+    animation.onfinish = () => this.el.parentNode.removeChild(this.el);
   }
 }
 
