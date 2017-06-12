@@ -35,8 +35,6 @@ export class OpenDoor extends Command {
     gameState.toggleDoor(door);
 
     gameState.getPlayersInRange(targetX, targetY, 3).forEach(p => gameState.calculateFOV(p));
-
-    // TODO update all nearby players fov
   }
 
 }
