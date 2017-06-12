@@ -56,4 +56,13 @@ export class NpcsComponent {
     return '✧';
   }
 
+  public barClass(npc: NPC) {
+    const me = this.colyseusGame.character;
+
+    if(npc.hostility === 'Never') return 'friendly';
+    if(npc.hostility === 'Always' || npc.agro[me.username]) return 'angry';
+    return 'neutral';
+
+  }
+
 }
