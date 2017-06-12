@@ -22,5 +22,11 @@ export const setup = async (npc: NPC) => {
 };
 
 export const responses = (npc: NPC) => {
-
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, env) => {
+      const p = env.player;
+      if(npc.distFrom(p) > 2) return 'Please move closer.';
+      return '';
+    });
 };
