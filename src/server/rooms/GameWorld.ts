@@ -1,5 +1,5 @@
 
-import { omitBy, startsWith, isString, cloneDeep, sample } from 'lodash';
+import { omitBy, startsWith, isString, isObject, cloneDeep, sample } from 'lodash';
 
 import { Parser } from 'mingy';
 
@@ -58,8 +58,18 @@ export class GameWorld extends Room<GameState> {
     return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: player });
   }
 
-  sendClientLogMessage(client, message) {
-    this.send(client, { action: 'log_message', message });
+  sendClientLogMessage(client, messageData) {
+
+    let overMessage = messageData;
+    let overName = '';
+
+    if(isObject(messageData)) {
+      const { message, name } = messageData;
+      overMessage = message;
+      overName = name;
+    }
+
+    this.send(client, { action: 'log_message', name: overName, message: overMessage });
   }
 
   showGroundWindow(client) {

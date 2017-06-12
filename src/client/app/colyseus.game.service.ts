@@ -132,8 +132,8 @@ export class ColyseusGameService {
     this.clientGameState.setFOV(fov);
   }
 
-  private logMessage({ message }: any) {
-    this.clientGameState.addLogMessage(message);
+  private logMessage({ name, message }: any) {
+    this.clientGameState.addLogMessage({ name, message });
   }
 
   private interceptGameCommand({ action, error, ...other }) {
