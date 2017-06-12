@@ -25,6 +25,7 @@ import { CommandLineComponent } from './command-line/command-line.component';
 import { CloseButtonComponent } from './_shared/close-button.component';
 import { MinimizeButtonComponent } from './_shared/minimize-button.component';
 import { PlayerTaglineComponent } from './_shared/character-tagline.component';
+import { LifeHeartComponent } from './_shared/life-heart.component';
 import { ItemComponent } from './_shared/item.component';
 import { LogWindowComponent } from './log/log-window.component';
 import { StatusWindowComponent } from './status/status-window.component';
@@ -51,6 +52,7 @@ import { NpcsComponent } from './npcs/npcs.component';
     CloseButtonComponent,
     MinimizeButtonComponent,
     PlayerTaglineComponent,
+    LifeHeartComponent,
     ItemComponent,
     LogWindowComponent,
     StatusWindowComponent,

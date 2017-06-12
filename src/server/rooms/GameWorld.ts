@@ -1,14 +1,14 @@
 
 import { omitBy, startsWith, isString, cloneDeep } from 'lodash';
 
-
 import { Room } from 'colyseus';
-import { GameState } from '../../models/gamestate';
+import { GameState, MapLayer } from '../../models/gamestate';
 
 import { DB } from '../database';
 import { Player } from '../../models/player';
 
 import { CommandExecutor } from '../helpers/command-executor';
+import { NPC } from '../../models/npc';
 
 const TickRates = {
   Player: 50
@@ -128,13 +128,33 @@ export class GameWorld extends Room<GameState> {
   // TODO retrieve boss timers
   // TODO retrieve tied items
   onInit() {
-
+    this.loadNPCsFromMap();
   }
 
   // TODO store boss timers
   // TODO store tied items (or maybe whole ground state?)
   onDispose() {
 
+  }
+
+  loadNPCsFromMap() {
+    const npcs = this.state.map.layers[MapLayer.NPCs].objects;
+    npcs.forEach(npcData => {
+      const data = npcData.properties;
+      data.name = npcData.name;
+      data.sprite = npcData.gid;
+      data.x = npcData.x / 64;
+      data.y = npcData.y / 64;
+      const npc = new NPC(data);
+
+      if(npc.script) {
+        const { setup, responses } = require(`${__dirname}/../scripts/npc/${npc.script}`);
+        setup(npc);
+        responses(npc);
+      }
+
+      this.state.addNPC(npc);
+    });
   }
 
   // TODO save every player every minute

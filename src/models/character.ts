@@ -83,22 +83,35 @@ export class Character {
     return this.stats[stat];
   }
 
-  constructor(opts) {
-    merge(this, opts);
-    this.hp = new RestrictedNumber(this.hp.minimum, this.hp.maximum, this.hp.__current);
-    this.mp = new RestrictedNumber(this.mp.minimum, this.mp.maximum, this.mp.__current);
-
+  initSack() {
     this.sack = this.sack.map(item => new Item(item));
-    this.belt = this.belt.map(item => new Item(item));
+  }
 
+  initBelt() {
+    this.belt = this.belt.map(item => new Item(item));
+  }
+
+  initHands() {
     if(this.leftHand) this.leftHand = new Item(this.leftHand);
     if(this.rightHand) this.rightHand = new Item(this.rightHand);
+  }
 
+  initGear() {
     Object.keys(this.gear).forEach(slot => {
       if(!this.gear[slot]) return;
       this.gear[slot] = new Item(this.gear[slot]);
     });
   }
+
+  constructor(opts) {
+    merge(this, opts);
+    this.hp = new RestrictedNumber(this.hp.minimum, this.hp.maximum, this.hp.__current);
+    this.mp = new RestrictedNumber(this.mp.minimum, this.mp.maximum, this.mp.__current);
+
+    this.init();
+  }
+
+  init() {}
 
   toJSON() {
     return omitBy(this, (value, key) => {

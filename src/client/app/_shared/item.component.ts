@@ -13,16 +13,25 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
 
 @Component({
   selector: 'app-item',
-  styles: [`
-    :host {
-      width: 64px;
-      height: 64px;
-    }
-    
+  styles: [`    
     .item-container {
       position: relative;
       height: 64px;
       width: 64px;
+    }
+    
+    .item-container.md {
+      height: 48px;
+      width: 48px;
+      
+      transform: scale(0.75, 0.75) translate(-25%, -25%);
+    }
+    
+    .item-container.sm {
+      height: 32px;
+      width: 32px;
+      
+      transform: scale(0.5, 0.5) translate(-50%, -50%);
     }
 
     img {
@@ -45,7 +54,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
     }
     
     .glow-container {
-      border-radius: 32px;
+      border-radius: 50%;
       height: 64px;
       width: 64px;
       position: absolute;
@@ -76,7 +85,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
     
     <div (contextmenu)="onContextMenu($event)">
     
-      <div class="item-container" 
+      <div class="item-container {{ size }}" 
            [isDisabled]="!showDesc" 
            triggers="dblclick:mouseleave" 
            [dragScope]="scopes"
@@ -121,6 +130,9 @@ export class ItemComponent implements OnInit {
 
   @Input()
   public contextSlot: number|string;
+
+  @Input()
+  public size: 'sm'|'md'|'lg' = 'lg';
 
   @ViewChild('contextMenu')
   public contextMenu: ContextMenuComponent;
