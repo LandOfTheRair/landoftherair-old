@@ -1,6 +1,8 @@
 
 import { omitBy, startsWith, isString, cloneDeep, sample } from 'lodash';
 
+import { Parser } from 'mingy';
+
 import { species } from 'fantastical';
 
 import { Room } from 'colyseus';
@@ -152,7 +154,11 @@ export class GameWorld extends Room<GameState> {
       if(npc.script) {
         const { setup, responses } = require(`${__dirname}/../scripts/npc/${npc.script}`);
         setup(npc);
-        responses(npc);
+
+        if(npc.hostility === 'Never') {
+          npc.parser = new Parser();
+          responses(npc);
+        }
       }
 
       if(!npc.name) this.determineNPCName(npc);

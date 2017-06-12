@@ -13,4 +13,28 @@ export const setup = async (npc: NPC) => {
 
 export const responses = (npc: NPC) => {
 
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, env) => {
+      const p = env.player;
+      return `Hello and welcome to The Land of the Rair, ${p.name}! It looks like you're stuck in here with me. But fret not! If you kill the nearby YETI and bring me his SKULL, I can give you a KEY to let you out of here.`;
+    });
+
+  npc.parser.addCommand('yeti')
+    .set('syntax', ['yeti'])
+    .set('logic', () => {
+      return `Yes, yes. There is a yeti in the forest to the east. He plagues this small town, and no one would miss him if he were to, erm, expire.`;
+    });
+
+  npc.parser.addCommand('skull')
+    .set('syntax', ['skull'])
+    .set('logic', () => {
+      return `Yeti skulls happen to be a prized item in these parts. No, I'm not some sort of weirdo! I'll trade you a KEY for his skull.`;
+    });
+
+  npc.parser.addCommand('key')
+    .set('syntax', ['key'])
+    .set('logic', () => {
+      return `Yes, I'm willing to trade this key for the Yeti's skull. A small price for your freedom, wouldn't you say?`;
+    });
 };

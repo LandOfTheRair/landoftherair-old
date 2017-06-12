@@ -44,6 +44,7 @@
     "fantastical": "^1.0.1",
     "jsonwebtoken": "^7.4.1",
     "lodash": "^4.17.4",
+    "mingy": "^0.2.7",
     "mongodb": "^2.2.27",
     "mrpas": "^1.2.1",
     "ng2-drag-drop": "^2.0.1",

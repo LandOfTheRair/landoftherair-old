@@ -1,6 +1,10 @@
 
 .message-container {
   width: 100%;
-  height: 370px;
+  height: 226px;
   overflow-y: auto;
+
+  .message {
+    font-size: 0.8rem;
+  }
 }
