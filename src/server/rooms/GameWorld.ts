@@ -88,7 +88,7 @@ export class GameWorld extends Room<GameState> {
 
     this.state.resetPlayerStatus(player);
 
-    if(newMap) {
+    if(newMap && player.map !== newMap) {
       player.map = newMap;
       this.savePlayer(player);
       player.$doNotSave = true;
