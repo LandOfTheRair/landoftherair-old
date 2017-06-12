@@ -169,7 +169,7 @@ export class ColyseusGameService {
     this.sendAction({ command, args });
   }
 
-  private sendCommandString(str: string) {
+  public sendCommandString(str: string) {
     let command = '';
     let args = '';
 
