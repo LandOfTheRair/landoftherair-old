@@ -26,7 +26,7 @@ export class NPC extends Character {
   }
 
   distFrom(character: Character) {
-    return Math.sqrt(Math.pow(character.x - this.x, 2) + Math.pow(character.y - this.y, 2));
+    return Math.sqrt(Math.pow(character.x - this.x, 2) + Math.pow(character.y - this.y + 1, 2));
   }
 
   receiveMessage(room, client, player, message) {
