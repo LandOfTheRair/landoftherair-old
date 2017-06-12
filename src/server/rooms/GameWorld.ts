@@ -1,5 +1,7 @@
 
-import { omitBy, startsWith, isString, cloneDeep } from 'lodash';
+import { omitBy, startsWith, isString, cloneDeep, sample } from 'lodash';
+
+import { species } from 'fantastical';
 
 import { Room } from 'colyseus';
 import { GameState, MapLayer } from '../../models/gamestate';
@@ -153,8 +155,27 @@ export class GameWorld extends Room<GameState> {
         responses(npc);
       }
 
+      if(!npc.name) this.determineNPCName(npc);
+
       this.state.addNPC(npc);
     });
+  }
+
+  determineNPCName(npc: NPC) {
+    let func = 'human';
+
+    switch(npc.allegiance) {
+      case 'None': func = 'human'; break;
+      case 'Pirates': func = 'dwarf'; break;
+      case 'Townsfolk': func = 'human'; break;
+      case 'Royalty': func = sample(['elf', 'highelf']); break;
+      case 'Adventurers': func = 'human'; break;
+      case 'Wilderness': func = sample(['fairy', 'highfairy']); break;
+      case 'Underground': func = sample(['goblin', 'orc', 'ogre']); break;
+    }
+
+    if(func === 'human') return species[func]({ allowMultipleNames: false });
+    return species[func](sample(['male', 'female']));
   }
 
   // TODO save every player every minute
