@@ -62,7 +62,10 @@ export class NpcsComponent {
     if(npc.hostility === 'Never') return 'friendly';
     if(npc.hostility === 'Always' || npc.agro[me.username]) return 'angry';
     return 'neutral';
+  }
 
+  public doAction(npc: NPC) {
+    this.colyseusGame.sendCommandString(`${npc.uuid}, hello`);
   }
 
 }

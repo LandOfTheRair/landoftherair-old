@@ -6,7 +6,7 @@
       {{ directionTo(npc) }}
     </div>
 
-    <div class="char-card">
+    <div class="char-card" (click)="doAction(npc)">
 
       <div class="char-title {{ barClass(npc) }}">
         <div class="char-name">
