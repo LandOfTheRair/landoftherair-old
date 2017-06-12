@@ -25,6 +25,10 @@ export class NPC extends Character {
     return omit(this, ['script', 'parser', 'agro']);
   }
 
+  distFrom(character: Character) {
+    return Math.sqrt(Math.pow(character.x - this.x, 2) + Math.pow(character.y - this.y, 2));
+  }
+
   receiveMessage(room, client, player, message) {
     if(!this.parser) return;
 
@@ -32,6 +36,6 @@ export class NPC extends Character {
     const output = this.parser.parse(message);
     if(!output) return;
 
-    room.sendClientLogMessage(client, `${this.name}: ${output}`);
+    room.sendClientLogMessage(client, { name: this.name, message: output });
   }
 }
