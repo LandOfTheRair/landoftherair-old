@@ -23,7 +23,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('yeti')
     .set('syntax', ['yeti'])
     .set('logic', () => {
-      return `Yes, yes. There is a yeti in the forest to the east. He plagues this small town, and no one would miss him if he were to, erm, expire.`;
+      return `Yes, yes. There is a yeti in the forest to the east. He plagues this small town, and no one would miss him if he were to, erm, expire. You may want to dedicate to a PROFESSION before taking him on, though.`;
     });
 
   npc.parser.addCommand('skull')
@@ -36,5 +36,18 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['key'])
     .set('logic', () => {
       return `Yes, I'm willing to trade this key for the Yeti's skull. A small price for your freedom, wouldn't you say?`;
+    });
+
+  npc.parser.addCommand('profession')
+    .set('syntax', ['profession'])
+    .set('logic', () => {
+      return `Rumor has it, there's an enclave of trainers that seek new recruits for their ranks. I don't know where to find them, but I can grant you VISION to help you on your way.`;
+    });
+
+  npc.parser.addCommand('vision')
+    .set('syntax', ['vision'])
+    .set('logic', () => {
+      // TODO cast detect
+      return `Here you go! Best of luck on finding them.`;
     });
 };
