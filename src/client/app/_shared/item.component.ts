@@ -83,14 +83,15 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
   `],
   template: `
     
-    <div (contextmenu)="onContextMenu($event)">
+    <div [contextMenu]="contextMenu">
     
       <div class="item-container {{ size }}" 
            [isDisabled]="!showDesc" 
            triggers="dblclick:mouseleave" 
            [dragScope]="scopes"
            draggable 
-           [dragEnabled]="context !== 'GroundGroup'"
+           container="body"
+           [dragEnabled]="!displayOnly"
            (mouseenter)="determineScopes()"
            [dragData]="{ item: item, context: context, contextSlot: contextSlot, count: count }"
            [tooltip]="descText">
@@ -102,7 +103,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
       
     </div>
     
-    <context-menu #contextMenu>
+    <context-menu #contextMenu [disabled]="displayOnly">
       <ng-template *ngFor="let action of menuOptions" contextMenuItem let-item
         [visible]="action.visible()"
         (execute)="action.execute()">
@@ -120,7 +121,7 @@ export class ItemComponent implements OnInit {
   public count: number;
 
   @Input()
-  public showDesc: boolean;
+  public showDesc: boolean = true;
 
   @Input()
   public showBackground: boolean;
@@ -171,8 +172,8 @@ export class ItemComponent implements OnInit {
                               execute: () => this.doColyseusMoveAction('B')  }
   ];
 
-  get hasMenu() {
-    return this.context !== 'GroundGroup';
+  get displayOnly(): boolean {
+    return this.context === 'GroundGroup' || !this.context;
   }
 
   get isEquippable(): boolean {
@@ -211,23 +212,6 @@ export class ItemComponent implements OnInit {
   }
 
   constructor(private colyseusGame: ColyseusGameService, public contextMenuService: ContextMenuService) {}
-
-  public onContextMenu($event: MouseEvent) {
-    $event.preventDefault();
-    $event.stopPropagation();
-
-    if(!this.hasMenu) {
-      return false;
-    }
-
-    this.contextMenuService.show.next({
-      contextMenu: this.contextMenu,
-      event: $event,
-      item: {}
-    });
-
-    return false;
-  }
 
   ngOnInit() {
     this.item = new Item(this.item);
