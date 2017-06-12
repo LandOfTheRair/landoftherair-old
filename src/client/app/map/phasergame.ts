@@ -78,12 +78,13 @@ export class Game {
   }
 
   removePlayer(player: Player) {
-    if(this.player.username === player.username) {
+    if(this.player.username === player.username && this.playerSprite) {
       this.playerSprite.destroy();
       delete this.playerSprite;
 
     } else {
       const sprite = find(this.otherPlayerSprites, { username: player.username });
+      if(!sprite) return;
       sprite.destroy();
       remove(this.otherPlayerSprites, sprite => sprite.username === player.username);
     }

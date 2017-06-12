@@ -10,4 +10,11 @@ export class Player extends Character {
 
   $fov: any;
   $doNotSave: boolean;
+
+  init() {
+    this.initBelt();
+    this.initSack();
+    this.initGear();
+    this.initHands();
+  }
 }

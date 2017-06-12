@@ -4,12 +4,14 @@ import { extend, remove, find } from 'lodash';
 import { Player } from '../../models/player';
 
 import { BehaviorSubject, Subject } from 'rxjs';
+import { NPC } from '../../models/npc';
 
 export class ClientGameState {
   players: Player[] = [];
   map: any = {};
   mapName: string = '';
   mapData: any = { openDoors: {} };
+  mapNPCs: NPC[] = [];
   fov: any = {};
 
   groundItems: any = {};
@@ -41,6 +43,10 @@ export class ClientGameState {
 
   setMapData(data) {
     this.mapData = data;
+  }
+
+  setMapNPCs(data) {
+    this.mapNPCs = data;
   }
 
   setGroundItems(data) {
