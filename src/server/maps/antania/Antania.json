@@ -94,6 +94,16 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"NPCs",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
  "nextobjectid":170,
  "orientation":"orthogonal",
@@ -1925,6 +1935,19 @@
                  "terrain":[0, 0, 0, 0]
                 }
             },
+         "tilewidth":64
+        }, 
+        {
+         "columns":40,
+         "firstgid":2529,
+         "image":"..\/..\/..\/client\/assets\/creatures.png",
+         "imageheight":2880,
+         "imagewidth":2560,
+         "margin":0,
+         "name":"NPCs",
+         "spacing":0,
+         "tilecount":1800,
+         "tileheight":64,
          "tilewidth":64
         }],
  "tilewidth":64,
