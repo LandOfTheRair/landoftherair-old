@@ -7,7 +7,6 @@ import { Player } from '../../../models/player';
 
 import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
-import { ContextMenuComponent, ContextMenuService } from 'ngx-contextmenu';
 
 export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment' | 'Left' | 'Right' | 'Coin';
 
@@ -135,9 +134,6 @@ export class ItemComponent implements OnInit {
   @Input()
   public size: 'sm'|'md'|'lg' = 'lg';
 
-  @ViewChild('contextMenu')
-  public contextMenu: ContextMenuComponent;
-
   public scopes: string[] = [];
 
   public menuOptions = [
@@ -211,7 +207,7 @@ export class ItemComponent implements OnInit {
     return item.descTextFor(this.player);
   }
 
-  constructor(private colyseusGame: ColyseusGameService, public contextMenuService: ContextMenuService) {}
+  constructor(private colyseusGame: ColyseusGameService) {}
 
   ngOnInit() {
     this.item = new Item(this.item);
