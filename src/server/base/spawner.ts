@@ -1,7 +1,7 @@
 
 import { NPCLoader } from '../helpers/npc-loader';
 
-import { sample, random, extend } from 'lodash';
+import { sample, random, extend, isNumber, isString } from 'lodash';
 import { NPC } from '../../models/npc';
 import { Logger } from '../logger';
 
@@ -53,12 +53,14 @@ export class Spawner {
   }
 
   private async chooseItemFrom(choices: string[]) {
+    if(isString(choices)) return NPCLoader.loadItem(choices);
     const item = sample(choices);
     if(item) return NPCLoader.loadItem(item);
     return null;
   }
 
-  private chooseSpriteFrom(choices: number[]): number {
+  private chooseSpriteFrom(choices): number {
+    if(isNumber(choices)) return choices;
     if(!choices || choices.length === 0) return 0;
     return sample(choices);
   }
@@ -115,8 +117,19 @@ export class Spawner {
       npcData.gold = random(npcData.gold.min, npcData.gold.max);
     }
 
+    if(npcData.hp) {
+      const hp = random(npcData.hp.min, npcData.hp.max);
+      npcData.hp = { minimum: 0, maximum: hp, __current: hp };
+    }
+
+    if(npcData.mp) {
+      const mp = random(npcData.mp.min, npcData.mp.max);
+      npcData.mp = { minimum: 0, maximum: mp, __current: mp };
+    }
+
     const npc = new NPC(npcData);
 
+    npc.hostility = npcData.hostility;
     npc.spawner = this;
     this.assignPath(npc);
     this.addNPC(npc);

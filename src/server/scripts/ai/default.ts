@@ -1,6 +1,6 @@
 
 import { NPC } from '../../../models/npc';
-import { random } from 'lodash';
+import { random, sumBy } from 'lodash';
 
 export const tick = (npc: NPC) => {
 
@@ -9,8 +9,9 @@ export const tick = (npc: NPC) => {
 
   // do movement
   // TODO agro checks
-  if(npc.path.length > 0) {
-    const numSteps = random(0, Math.min(npc.stats.move, npc.path.length));
+  const numSteps = random(0, Math.min(npc.stats.move, npc.path ? npc.path.length : npc.stats.move));
+
+  if(npc.path && npc.path.length > 0) {
     for(let i = 0; i < numSteps; i++) {
       const step = npc.path.shift();
       npc.x += step.x;
@@ -23,12 +24,28 @@ export const tick = (npc: NPC) => {
     if(!npc.path.length) {
       npc.spawner.assignPath(npc);
     }
+    // TODO should have an else if (something is agro'd in view)
   } else {
-    // move randomly but don't step on dense tiles
+    const oldX = npc.x;
+    const oldY = npc.y;
+    const steps = Array(numSteps).fill(null).map(() => ({ x: random(-1, 1), y: random(-1, 1) }));
+    npc.takeSequenceOfSteps(steps);
+    diffX = npc.x - oldX;
+    diffY = npc.y - oldY;
   }
 
   npc.setDirBasedOnXYDiff(diffX, diffY);
-  // TODO move, check spawner.randomwalk, spawner.leashradius, check for hostility, and attempt to follow path, get new path if current one is empty and spawner has paths
 
-  // TODO if taken off path and have path left, teleport back to start when no more agro
+  // TODO reset agro on leash
+  if(npc.distFrom(npc.spawner) > npc.spawner.leashRadius) {
+    npc.x = npc.spawner.x;
+    npc.y = npc.spawner.y;
+
+    if(npc.path && npc.path.length > 0) {
+      npc.spawner.assignPath(npc);
+    }
+  }
+
+  // TODO check hostility
+
 };

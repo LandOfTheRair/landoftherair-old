@@ -26,11 +26,19 @@ export class NPC extends Character {
   }
 
   toJSON() {
-    return omit(this, ['script', 'parser', 'spawner', 'ai', 'path']);
+    return omit(super.toJSON(), ['script', 'parser', 'spawner', 'ai', 'path']);
   }
 
-  distFrom(character: Character) {
-    return Math.sqrt(Math.pow(character.x - this.x, 2) + Math.pow(character.y - this.y + 1, 2));
+  distFrom(point, vector?) {
+    let checkX = this.x;
+    let checkY = this.y;
+
+    if(vector) {
+      checkX += vector.x || 0;
+      checkY += vector.y || 0;
+    }
+
+    return Math.sqrt(Math.pow(point.x - checkX, 2) + Math.pow(point.y - checkY + 1, 2));
   }
 
   receiveMessage(room, client, player, message) {
@@ -64,16 +72,17 @@ export class NPC extends Character {
     }));
   }
 
-  takeStep({ x, y }) {
-    this.x += x;
-    this.y += y;
-  }
-
   tick() {
     super.tick();
 
     if(this.ai) {
       this.ai.tick(this);
     }
+  }
+
+  isValidStep({ x, y }) {
+    if(!this.spawner) return true;
+    if(this.distFrom(this.spawner, { x, y }) > this.spawner.randomWalkRadius) return false;
+    return true;
   }
 }

@@ -22,7 +22,7 @@ export const RobeClasses = [
 ];
 
 export const HeadClasses = [
-  'Helm'
+  'Helm', 'Skull'
 ];
 
 export const NeckClasses = [

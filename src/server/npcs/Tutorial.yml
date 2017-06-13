@@ -1,6 +1,6 @@
 
 - npcId: Tutorial Townee
-  name: Townee
+  name: townee
   stats: 3
 
   sprite: [580, 595, 610, 615]
@@ -32,3 +32,49 @@
     Robe1:
       - null
       - Antanian Cloak
+
+- npcId: Tutorial Deer
+  name: deer
+  sprite: 205
+  stats: 1
+  level: 1
+
+  gear:
+    Armor: Tutorial Fur
+
+- npcId: Tutorial Wolf
+  name: wolf
+  hostility: Always
+  sprite: 215
+  stats: 5
+  level: 2
+
+  gold:
+    min: 10
+    max: 20
+
+  hp:
+    min: 100
+    max: 200
+
+  gear:
+    Armor: Tutorial Fur
+
+- npcId: Tutorial Yeti
+  name: yeti
+  hostility: Always
+  sprite: 220
+  stats: 10
+  level: 2
+
+  gold:
+    min: 100
+    max: 200
+
+  hp:
+    min: 400
+    max: 500
+
+  rightHand: Tutorial Yeti Club
+  gear:
+    Head: Tutorial Yeti Skull

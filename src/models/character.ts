@@ -5,6 +5,7 @@ import {
   Item, EquippableItemClassesWithWeapons, HeadClasses, NeckClasses, WaistClasses, WristsClasses,
   RingClasses, FeetClasses, HandsClasses, GivesBonusInHandItemClasses, RobeClasses, ArmorClasses, EarClasses
 } from './item';
+import { MapLayer } from './gamestate';
 
 export type Allegiance =
   'None'
@@ -60,6 +61,8 @@ export class Character {
   y: number = 0;
   map: string;
 
+  level: number = 1;
+
   baseClass: CharacterClass = 'Undecided';
 
   sack: Item[] = [];
@@ -71,12 +74,10 @@ export class Character {
 
   swimLevel: number;
 
+  $map: any;
+
   get ageString() {
     return 'extremely young';
-  }
-
-  get level() {
-    return Math.floor(this.xp / 1000);
   }
 
   getTotalStat(stat) {
@@ -116,7 +117,7 @@ export class Character {
   toJSON() {
     return omitBy(this, (value, key) => {
       if(!Object.getOwnPropertyDescriptor(this, key)) return true;
-      if(key === '_id') return true;
+      if(key === '_id' || key === '$map') return true;
       return false;
     });
   }
@@ -358,5 +359,40 @@ export class Character {
       case 'SE': return { x: -1,  y: 1 };
       default:   return { x: 0,   y: 0 };
     }
+  }
+
+  takeSequenceOfSteps(steps: any[]) {
+    const denseTiles = this.$map.layers[MapLayer.Walls].data;
+    const denseObjects: any[] = this.$map.layers[MapLayer.DenseDecor].objects;
+    const interactables = this.$map.layers[MapLayer.Interactables].objects;
+    const denseCheck = denseObjects.concat(interactables);
+
+    steps.forEach(step => {
+      const nextTileLoc = ((this.y + step.y) * this.$map.width) + (this.x + step.x);
+      const nextTile = denseTiles[nextTileLoc];
+
+      if(nextTile === 0) {
+        const object = find(denseCheck, { x: (this.x + step.x)*64, y: (this.y + step.y + 1)*64 });
+        if(object && object.density) {
+          return;
+        }
+      } else {
+        return;
+      }
+
+      if(!this.isValidStep(step)) return;
+      this.x += step.x;
+      this.y += step.y;
+    });
+
+    if(this.x < 0) this.x = 0;
+    if(this.y < 0) this.y = 0;
+
+    if(this.x > this.$map.width)  this.x = this.$map.width;
+    if(this.y > this.$map.height) this.y = this.$map.height;
+  }
+
+  isValidStep(step) {
+    return true;
   }
 }

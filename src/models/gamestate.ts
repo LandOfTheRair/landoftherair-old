@@ -33,6 +33,7 @@ export class GameState {
   fov: Mrpas;
 
   addNPC(npc: NPC) {
+    npc.$map = this.map;
     this.mapNPCs.push(npc);
   }
 
@@ -41,6 +42,7 @@ export class GameState {
   }
 
   addPlayer(player) {
+    player.$map = this.map;
     this.players.push(player);
     this.resetPlayerStatus(player);
   }
