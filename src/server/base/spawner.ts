@@ -14,7 +14,7 @@ export class Spawner {
   currentTick = 0;
 
   // in ticks
-  respawnRate = 360;
+  respawnRate = 3600;
 
   initialSpawn = 0;
 
@@ -140,7 +140,7 @@ export class Spawner {
 
     this.currentTick++;
     if(this.currentTick > this.respawnRate && this.npcs.length < this.maxCreatures) {
-      // this.currentTick = 0;
+      this.currentTick = 0;
       this.createNPC();
     }
 
