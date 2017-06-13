@@ -1,6 +1,6 @@
 
 - npcId: Tutorial Townee
-  # name: Townee
+  name: Townee
   stats: 3
 
   sprite: [580, 595, 610, 615]
