@@ -14,6 +14,8 @@ export class Game {
   private playerSprite: any;
   private map: any;
 
+  private visibleNPCUUIDHash = {};
+
   private itemsOnGround: any;
   private visibleNPCs: any;
 
@@ -177,6 +179,10 @@ export class Game {
     sprite.frame = frame;
   }
 
+  private notInRange(centerX, centerY, x, y) {
+    return x < centerX - 4 || x > centerX + 4 || y < centerY - 4 || y > centerY + 4;
+  }
+
   private setupPhaser() {
     this.g.stage.disableVisibilityChange = true;
     this.g.inputEnabled = true;
@@ -239,18 +245,33 @@ export class Game {
   }
 
   private showNPCSprites(centerX, centerY) {
+    const removeUUIDs = [];
+
     this.clientGameState.mapNPCs.forEach(npc => {
-      if(npc.x < centerX - 4 || npc.x > centerX + 4 || npc.y < centerY - 4 || npc.y > centerY + 4) return;
+      if(this.notInRange(centerX, centerY, npc.x, npc.y)) {
+        removeUUIDs.push(npc.uuid);
+        return;
+      }
 
       const currentSprite = find(this.visibleNPCs.children, { uuid: npc.uuid });
       if(currentSprite) {
+        currentSprite.x = npc.x * 64;
+        currentSprite.y = (npc.y - 1) * 64;
         currentSprite.frame = npc.sprite + this.getSpriteOffsetForDirection(npc.dir);
         return;
       }
 
       const sprite = this.g.add.sprite(npc.x * 64, (npc.y - 1) * 64, 'Creatures', npc.sprite);
       sprite.uuid = npc.uuid;
+      this.visibleNPCUUIDHash[npc.uuid] = sprite;
       this.visibleNPCs.add(sprite);
+    });
+
+    removeUUIDs.forEach(uuid => {
+      const sprite = this.visibleNPCUUIDHash[uuid];
+      if(!sprite) return;
+      delete this.visibleNPCUUIDHash[uuid];
+      sprite.destroy();
     });
   }
 
@@ -259,7 +280,8 @@ export class Game {
       const x = sprite.x / 64;
       const y = sprite.y / 64;
 
-      if(x < centerX - 4 || x > centerX + 4 || y < centerY - 4 || y > centerY + 4) {
+      if(this.notInRange(centerX, centerY, x, y)) {
+        delete this.visibleNPCUUIDHash[sprite.uuid];
         this.visibleNPCs.removeChild(sprite);
         sprite.destroy();
       }
@@ -293,7 +315,7 @@ export class Game {
       const x = sprite.x / 64;
       const y = sprite.y / 64;
 
-      if(x < centerX - 4 || x > centerX + 4 || y < centerY - 4 || y > centerY + 4) {
+      if(this.notInRange(centerX, centerY, x, y)) {
         this.visibleSprites[x][y][sprite.itemClass] = null;
         this.itemsOnGround.removeChild(sprite);
         sprite.destroy();
@@ -379,7 +401,7 @@ export class Game {
     this.removeOldItemSprites(this.player.x, this.player.y);
     this.showItemSprites(this.player.x, this.player.y);
 
-    this.removeOldNPCSprites(this.player.x, this.player.y);
+    // this.removeOldNPCSprites(this.player.x, this.player.y);
     this.showNPCSprites(this.player.x, this.player.y);
   }
 
