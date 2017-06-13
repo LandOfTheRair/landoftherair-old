@@ -23,6 +23,7 @@ First, create a `[.env](https://www.npmjs.com/package/dotenv)` file in the root.
 ## Setup
 
 * `npm run task:items` - this will populate the database with items
+* `npm run task:npcs`  - this will populate the database with npc data
 
 ## Making Yourself a GM
 

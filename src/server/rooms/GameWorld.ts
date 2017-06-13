@@ -13,6 +13,8 @@ import { Player } from '../../models/player';
 
 import { CommandExecutor } from '../helpers/command-executor';
 import { NPC } from '../../models/npc';
+import { Logger } from '../logger';
+import { Spawner } from '../base/spawner';
 
 const TickRates = {
   PlayerAction: 60,
@@ -22,6 +24,8 @@ const TickRates = {
 export class GameWorld extends Room<GameState> {
 
   private allMapNames;
+
+  private spawners: Spawner[] = [];
 
   ticks = {
     Player: 0
@@ -144,6 +148,7 @@ export class GameWorld extends Room<GameState> {
   // TODO retrieve tied items
   onInit() {
     this.loadNPCsFromMap();
+    this.loadSpawners();
   }
 
   // TODO store boss timers
@@ -163,19 +168,33 @@ export class GameWorld extends Room<GameState> {
       data.y = npcData.y / 64;
       const npc = new NPC(data);
 
-      if(npc.script) {
-        const { setup, responses } = require(`${__dirname}/../scripts/npc/${npc.script}`);
-        setup(npc);
+      try {
+        if(npc.script) {
+          const { setup, responses } = require(`${__dirname}/../scripts/npc/${npc.script}`);
+          setup(npc);
 
-        if(npc.hostility === 'Never') {
-          npc.parser = new Parser();
-          responses(npc);
+          if(npc.hostility === 'Never') {
+            npc.parser = new Parser();
+            responses(npc);
+          }
         }
+      } catch(e) {
+        Logger.error(e);
       }
 
       if(!npc.name) this.determineNPCName(npc);
 
       this.state.addNPC(npc);
+    });
+  }
+
+  loadSpawners() {
+    const spawners = this.state.map.layers[MapLayer.Spawners].objects;
+
+    spawners.forEach(spawnerData => {
+      const spawner = require(`${__dirname}/../scripts/spawners/${spawnerData.properties.script}`);
+      const spawnerProto = spawner[Object.keys(spawner)[0]];
+      this.spawners.push(new spawnerProto(this, { map: this.state.mapName, x: spawnerData.x, y: spawnerData.y }));
     });
   }
 

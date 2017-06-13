@@ -1,0 +1,30 @@
+
+- npcId: Tutorial Townee
+  # name: Townee
+  stats: 3
+
+  sprite: [580, 595, 610, 615]
+
+  leftHand:
+    - null
+    - Antanian Wooden Shield
+
+  rightHand:
+    - null
+    - Antanian Shortsword
+    - Antanian Longsword
+    - Antanian Greatsword
+    - Antanian Staff
+    - Antanian Dagger
+
+  gear:
+    Armor:
+      - Antanian Tunic
+      - Antanian Studded Tunic
+      - Antanian Scalemail Tunic
+      - Antanian Ringmail Tunic
+      - Antanian Breastplate
+
+    Robe1:
+      - null
+      - Antanian Cloak
