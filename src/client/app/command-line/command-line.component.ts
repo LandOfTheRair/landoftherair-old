@@ -1,5 +1,8 @@
 import { Component, Input, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { LocalStorage } from 'ngx-webstorage';
+import { ColyseusGameService } from '../colyseus.game.service';
+
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-command-line',
@@ -8,11 +11,11 @@ import { LocalStorage } from 'ngx-webstorage';
 })
 export class CommandLineComponent implements OnInit, OnDestroy {
 
+  @Input()
+  public rightClickSend: boolean;
+
   @ViewChild('cmdEntry')
   public cmdEntryInput;
-
-  @Input()
-  public colyseusGame;
 
   public command: string = '';
 
@@ -20,8 +23,11 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   public lastCommands: string[];
 
   private listener: any;
+  private sendListener: any;
 
   private curIndex = -1;
+
+  constructor(public colyseusGame: ColyseusGameService) {}
 
   ngOnInit() {
     this.listener = () => {
@@ -31,11 +37,22 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
     document.addEventListener('keypress', this.listener);
 
+    this.sendListener = (ev) => {
+      if(environment.production) {
+        ev.preventDefault();
+      }
+      if(!this.rightClickSend) return;
+      this.sendCommand();
+    };
+
+    document.addEventListener('contextmenu', this.sendListener);
+
     if(!this.lastCommands) this.lastCommands = [];
   }
 
   ngOnDestroy() {
     document.removeEventListener('keypress', this.listener);
+    document.removeEventListener('contextmenu', this.sendListener);
   }
 
   sendCommand() {

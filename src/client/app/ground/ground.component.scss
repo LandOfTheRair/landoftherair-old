@@ -4,6 +4,40 @@
 
   width: 370px;
 
+  &.small {
+    max-height: 108px;
+    min-height: 108px;
+
+    width: 290px;
+
+    .item-type {
+      width: 48px;
+      height: 48px;
+    }
+
+    app-item {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &.xsmall {
+    max-height: 76px;
+    min-height: 76px;
+
+    width: 210px;
+
+    .item-type {
+      width: 32px;
+      height: 32px;
+    }
+
+    app-item {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
   display: flex;
   flex-wrap: wrap;
 

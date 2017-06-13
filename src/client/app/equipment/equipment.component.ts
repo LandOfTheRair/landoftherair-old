@@ -12,6 +12,9 @@ export class EquipmentComponent {
   @Input()
   public player: Player = new Player({});
 
+  @Input()
+  public size;
+
   constructor(public colyseusGame: ColyseusGameService) { }
 
 }

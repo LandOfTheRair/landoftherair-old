@@ -3,6 +3,10 @@ import { ColyseusService } from './colyseus.service';
 
 import { LocalStorage } from 'ngx-webstorage';
 
+type Size = 'normal' | 'small' | 'xsmall';
+type XSize = 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
+type Theme = 'Light' | 'Dark';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +19,7 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public minimized;
 
+  // window visibility
   @LocalStorage()
   public showStatsWindow: boolean;
 
@@ -30,6 +35,34 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public showEquipment: boolean;
 
+  // options
+  @LocalStorage()
+  public sackSize: Size;
+
+  @LocalStorage()
+  public beltSize: Size;
+
+  @LocalStorage()
+  public equipmentSize: Size;
+
+  @LocalStorage()
+  public groundSize: Size;
+
+  @LocalStorage()
+  public logFontSize: XSize;
+
+  @LocalStorage()
+  public logWindowSize: XSize;
+
+  @LocalStorage()
+  public theme: Theme;
+
+  @LocalStorage()
+  public rightClickSend: boolean;
+
+  @LocalStorage()
+  public autoHideLobby: boolean;
+
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
   }
@@ -41,6 +74,17 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     if(!this.minimized) this.minimized = {};
     this.colyseus.init();
+
+    this.initDefaultOptions();
+  }
+
+  initDefaultOptions() {
+    ['sack', 'belt', 'equipment', 'ground', 'logFont', 'logWindow'].forEach(opt => {
+      if(this[`${opt}Size`]) return;
+      this[`${opt}Size`] = 'normal';
+    });
+
+    this.theme = 'Light';
   }
 
   minimize(window: string) {
