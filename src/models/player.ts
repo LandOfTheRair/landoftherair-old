@@ -17,4 +17,10 @@ export class Player extends Character {
     this.initGear();
     this.initHands();
   }
+
+  canSee(x, y) {
+    if(!this.$fov[x]) return false;
+    if(!this.$fov[x][y]) return false;
+    return true;
+  }
 }
