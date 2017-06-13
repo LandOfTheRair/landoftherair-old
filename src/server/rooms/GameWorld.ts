@@ -235,6 +235,7 @@ export class GameWorld extends Room<GameState> {
     // tick players every second or so
     if(this.ticks.Player % TickRates.PlayerAction === 0) {
       this.state.tickPlayers();
+      this.spawners.forEach(spawner => spawner.npcTick());
     }
 
     // save players every minute or so

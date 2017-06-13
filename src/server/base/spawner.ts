@@ -143,7 +143,9 @@ export class Spawner {
       this.currentTick = 0;
       this.createNPC();
     }
+  }
 
+  npcTick() {
     this.npcs.forEach(npc => npc.tick());
   }
 

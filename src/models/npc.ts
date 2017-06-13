@@ -1,7 +1,7 @@
 
-import { omit } from 'lodash';
+import { omit, flatten } from 'lodash';
 
-import { Character } from './character';
+import { Character, Direction } from './character';
 import { Item } from './item';
 import * as uuid from 'uuid/v4';
 
@@ -18,7 +18,7 @@ export class NPC extends Character {
   script: string;
   parser: any;
   spawner?: any;
-  path?: any;
+  path?: any[];
   ai?: any;
 
   init() {
@@ -51,17 +51,29 @@ export class NPC extends Character {
     this.setDirBasedOnXYDiff(diffX, diffY);
   }
 
-  setPath(path: string[]) {
-    this.path = path;
+  setPath(path: string) {
+    if(!path) return;
+    this.path = flatten(path.split(' ').map(str => {
+      const [numSteps, dir] = str.split('-');
+      const coord = this.getXYFromDir(<Direction>dir);
+      const ret = [];
+      for(let i = 0; i < +numSteps; i++) {
+        ret.push(coord);
+      }
+      return ret;
+    }));
+  }
 
-    // TODO break into steps
+  takeStep({ x, y }) {
+    this.x += x;
+    this.y += y;
   }
 
   tick() {
     super.tick();
 
     if(this.ai) {
-      this.ai.tick();
+      this.ai.tick(this);
     }
   }
 }

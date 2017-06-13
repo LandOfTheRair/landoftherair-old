@@ -2,10 +2,10 @@
 import { Spawner } from '../../../base/spawner';
 
 const paths = [
-  '23E 16S 23W 16N',
-  '16S 23E 16N 23W',
-  '8S 23E 8S 16W 8N 23E 8N 23W',
-  '23E 8S 23W 8S 23E 8N 23W 8N'
+  '23-E 16-S 23-W 16-N',
+  '16-S 23-E 16-N 23-W',
+  '8-S 23-E 8-S 23-W 8-N 23-E 8-N 23-W',
+  '23-E 8-S 23-W 8-S 23-E 8-N 23-W 8-N'
 ];
 
 const npcIds = [
@@ -18,10 +18,10 @@ export class TutorialTowneeSpawner extends Spawner {
     super(room, opts, {
       respawnRate: 3600,
       initialSpawn: 4,
-      maxCreatures: 25,
+      maxCreatures: 20,
       spawnRadius: 0,
       randomWalkRadius: 0,
-      leashRadius: 20,
+      leashRadius: 30,
       paths,
       npcIds
     });
