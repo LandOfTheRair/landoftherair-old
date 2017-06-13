@@ -221,8 +221,7 @@ export class GameWorld extends Room<GameState> {
       const diffX = target.x - player.x;
       const diffY = target.y - player.y - 1;
 
-      if(!player.$fov[diffX]) return false;
-      if(!player.$fov[diffX][diffY]) return false;
+      if(!player.canSee(diffX, diffY)) return false;
 
       return target.uuid === findStr || startsWith(target.name.toLowerCase(), findStr.toLowerCase());
     });

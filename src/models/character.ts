@@ -319,4 +319,8 @@ export class Character {
       this.hp.sub(hpLost);
     }
   }
+
+  canSee(x, y): boolean {
+    return true;
+  }
 }
