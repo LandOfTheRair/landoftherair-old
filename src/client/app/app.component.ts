@@ -4,6 +4,7 @@ import { ColyseusService } from './colyseus.service';
 import { LocalStorage } from 'ngx-webstorage';
 
 type Size = 'normal' | 'small' | 'xsmall';
+type XSizeMax = 'max' | 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
 type XSize = 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
 type Theme = 'Light' | 'Dark';
 
@@ -52,7 +53,10 @@ export class AppComponent implements OnInit {
   public logFontSize: XSize;
 
   @LocalStorage()
-  public logWindowSize: XSize;
+  public logWindowSize: XSizeMax;
+
+  @LocalStorage()
+  public npcWindowSize: XSizeMax;
 
   @LocalStorage()
   public theme: Theme;

@@ -95,8 +95,19 @@
   }
 
   &.log-window {
-    max-width: 372px;
-    min-width: 372px;
+    max-width: 387px;
+    min-width: 387px;
+
+    &.max {
+      min-height: calc(100% - 56px);
+      max-height: calc(100% - 56px);
+
+      .message-container {
+        min-height: calc(100% - 56px - 28px);
+        height: initial;
+        max-height: calc(100% - 56px - 28px);
+      }
+    }
   }
 
   &.status-window {
@@ -109,8 +120,8 @@
   }
 
   &.ground-window {
-    min-width: 372px;
-    max-width: 372px;
+    min-width: 387px;
+    max-width: 387px;
 
     &.small {
       min-width: 292px;
@@ -159,11 +170,36 @@
   }
 
   &.npc-window {
-    max-width: 372px;
-    min-width: 372px;
+    max-width: 387px;
+    min-width: 387px;
 
-    min-height: 320px;
-    max-height: 320px;
+    min-height: 310px;
+    max-height: 310px;
+
+    &.max {
+      min-height: calc(100% - 56px);
+      max-height: calc(100% - 56px);
+    }
+
+    &.xlarge {
+      min-height: 526px;
+      max-height: 526px;
+    }
+
+    &.large {
+      min-height: 418px;
+      max-height: 418px;
+    }
+
+    &.small {
+      min-height: 202px;
+      max-height: 202px;
+    }
+
+    &.xsmall {
+      min-height: 94px;
+      max-height: 94px;
+    }
   }
 
   position: absolute !important;
