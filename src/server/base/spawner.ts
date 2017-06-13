@@ -86,6 +86,14 @@ export class Spawner {
       return item;
     }));
 
+    npcData.sack = await Promise.all(npcData.sack.map(async itemName => {
+      return await NPCLoader.loadItem(itemName);
+    }));
+
+    npcData.belt = await Promise.all(npcData.belt.map(async itemName => {
+      return await NPCLoader.loadItem(itemName);
+    }));
+
     npcData.x = random(this.x - this.spawnRadius, this.x + this.spawnRadius);
     npcData.y = random(this.y - this.spawnRadius, this.y + this.spawnRadius);
     npcData.map = this.map;
@@ -95,6 +103,10 @@ export class Spawner {
 
     if(!npcData.name) {
       npcData.name = this.room.determineNPCName(npcData);
+    }
+
+    if(npcData.gold) {
+      npcData.gold = random(npcData.gold.min, npcData.gold.max);
     }
 
     const npc = new NPC(npcData);
