@@ -80,19 +80,25 @@ export class Spawner {
     npcData.rightHand = await this.chooseItemFrom(npcData.rightHand);
     npcData.leftHand = await this.chooseItemFrom(npcData.leftHand);
 
-    await Promise.all(Object.keys(npcData.gear).map(async slot => {
-      const item = await this.chooseItemFrom(npcData.gear[slot]);
-      npcData.gear[slot] = item;
-      return item;
-    }));
+    if(npcData.gear) {
+      await Promise.all(Object.keys(npcData.gear).map(async slot => {
+        const item = await this.chooseItemFrom(npcData.gear[slot]);
+        npcData.gear[slot] = item;
+        return item;
+      }));
+    }
 
-    npcData.sack = await Promise.all(npcData.sack.map(async itemName => {
-      return await NPCLoader.loadItem(itemName);
-    }));
+    if(npcData.sack) {
+      npcData.sack = await Promise.all(npcData.sack.map(async itemName => {
+        return await NPCLoader.loadItem(itemName);
+      }));
+    }
 
-    npcData.belt = await Promise.all(npcData.belt.map(async itemName => {
-      return await NPCLoader.loadItem(itemName);
-    }));
+    if(npcData.belt) {
+      npcData.belt = await Promise.all(npcData.belt.map(async itemName => {
+        return await NPCLoader.loadItem(itemName);
+      }));
+    }
 
     npcData.x = random(this.x - this.spawnRadius, this.x + this.spawnRadius);
     npcData.y = random(this.y - this.spawnRadius, this.y + this.spawnRadius);
