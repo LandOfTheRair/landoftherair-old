@@ -76,29 +76,7 @@ export class Move extends Command {
 
     const finalSteps = normalStepsTaken > reverseStepsTaken ? steps : reverseSteps;
 
-    finalSteps.forEach(step => {
-      const nextTileLoc = ((player.y + step.y) * gameState.map.width) + (player.x + step.x);
-      const nextTile = denseTiles[nextTileLoc];
-
-      if(nextTile === 0) {
-        const object = find(denseCheck, { x: (player.x + step.x)*64, y: (player.y + step.y + 1)*64 });
-        if(object && object.density) {
-          return;
-        }
-      } else {
-        return;
-      }
-
-      player.x += step.x;
-      player.y += step.y;
-    });
-
-    if(player.x < 0) player.x = 0;
-    if(player.y < 0) player.y = 0;
-
-    if(player.x > gameState.map.width)  player.x = gameState.map.width;
-    if(player.y > gameState.map.height) player.y = gameState.map.height;
-
+    player.takeSequenceOfSteps(finalSteps);
     player.setDirBasedOnXYDiff(x, y);
 
     gameState.resetPlayerStatus(player);
