@@ -12,7 +12,7 @@ export class OpenDoor extends Command {
   execute(player: Player, { room, client, gameState, args }) {
     if(!args) return false;
 
-    let { x, y } = this.getXYFromDir(args);
+    let { x, y } = player.getXYFromDir(args);
 
     if(includes(args, ' ')) {
       [x, y] = args.split(' ').map(x => +x);
