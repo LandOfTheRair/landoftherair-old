@@ -99,20 +99,7 @@ export class Move extends Command {
     if(player.x > gameState.map.width)  player.x = gameState.map.width;
     if(player.y > gameState.map.height) player.y = gameState.map.height;
 
-    if(checkX >= checkY) {
-      if(x > 0) {
-        player.dir = 'E';
-      } else if(x < 0) {
-        player.dir = 'W';
-      }
-
-    } else if(checkY > checkX) {
-      if(y > 0) {
-        player.dir = 'S';
-      } else if(y < 0) {
-        player.dir = 'N';
-      }
-    }
+    player.setDirBasedOnXYDiff(x, y);
 
     gameState.resetPlayerStatus(player);
   }
