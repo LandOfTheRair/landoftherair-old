@@ -17,7 +17,8 @@ export const MapLayer = {
   DenseDecor: 6,
   OpaqueDecor: 7,
   Interactables: 8,
-  NPCs: 9
+  NPCs: 9,
+  Spawners: 10
 };
 
 export class GameState {
@@ -33,6 +34,10 @@ export class GameState {
 
   addNPC(npc: NPC) {
     this.mapNPCs.push(npc);
+  }
+
+  removeNPC(npc: NPC) {
+    pull(this.mapNPCs, npc);
   }
 
   addPlayer(player) {

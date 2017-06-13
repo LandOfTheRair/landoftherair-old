@@ -14,15 +14,19 @@ export class NPC extends Character {
   hostility: Hostility = 'OnHit';
   agro: any = {};
   vendorItems: Item[];
+
   script: string;
   parser: any;
+  spawner?: any;
+  path?: any;
+  ai?: any;
 
   init() {
     if(!this.uuid) this.uuid = uuid();
   }
 
   toJSON() {
-    return omit(this, ['script', 'parser', 'agro']);
+    return omit(this, ['script', 'parser', 'spawner', 'ai']);
   }
 
   distFrom(character: Character) {
@@ -37,5 +41,13 @@ export class NPC extends Character {
     if(!output) return;
 
     room.sendClientLogMessage(client, { name: this.name, message: output });
+  }
+
+  tick() {
+    super.tick();
+
+    if(this.ai) {
+      this.ai.tick();
+    }
   }
 }

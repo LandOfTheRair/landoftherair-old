@@ -732,8 +732,38 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"Spawners",
+         "objects":[
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":185,
+                 "name":"Townee Spawner",
+                 "properties":
+                    {
+                     "script":"tutorial\/townee"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":512,
+                 "y":1536
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":185,
+ "nextobjectid":189,
  "orientation":"orthogonal",
  "properties":
     {
