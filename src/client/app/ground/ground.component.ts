@@ -9,6 +9,9 @@ import { ColyseusGameService } from '../colyseus.game.service';
 })
 export class GroundComponent {
 
+  @Input()
+  public size;
+
   public selectedType: string;
 
   constructor(public colyseusGame: ColyseusGameService) {}

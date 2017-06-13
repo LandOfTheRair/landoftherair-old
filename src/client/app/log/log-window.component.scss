@@ -4,7 +4,39 @@
   height: 226px;
   overflow-y: auto;
 
+  &.window-size-xlarge {
+    height: 606px;
+  }
+
+  &.window-size-large {
+    height: 426px;
+  }
+
+  &.window-size-small {
+    height: 166px;
+  }
+
+  &.window-size-xsmall {
+    height: 106px;
+  }
+
   .message {
     font-size: 0.8rem;
+
+    &.font-size-xlarge {
+      font-size: 1.1rem;
+    }
+
+    &.font-size-large {
+      font-size: 0.9rem;
+    }
+
+    &.font-size-small {
+      font-size: 0.7rem;
+    }
+
+    &.font-size-xsmall {
+      font-size: 0.5rem;
+    }
   }
 }

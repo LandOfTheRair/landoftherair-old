@@ -19,17 +19,11 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
       width: 64px;
     }
     
-    .item-container.md {
-      height: 48px;
-      width: 48px;
-      
-      transform: scale(0.75, 0.75) translate(-25%, -25%);
+    .item-container.small {
+      transform: scale(0.75, 0.75) translate(-15%, -15%);
     }
     
-    .item-container.sm {
-      height: 32px;
-      width: 32px;
-      
+    .item-container.xsmall {      
       transform: scale(0.5, 0.5) translate(-50%, -50%);
     }
 
@@ -132,7 +126,7 @@ export class ItemComponent implements OnInit {
   public contextSlot: number|string;
 
   @Input()
-  public size: 'sm'|'md'|'lg' = 'lg';
+  public size: 'xsmall' | 'small' | 'normal' = 'normal';
 
   public scopes: string[] = [];
 

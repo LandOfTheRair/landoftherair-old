@@ -3,6 +3,7 @@
   <div *ngFor="let slot of slots"
        class="item-slot item-background">
     <app-item *ngIf="player.sack[slot]"
+              [size]="size"
               [item]="player.sack[slot]"
               [showDesc]="true"
               context="Sack"
