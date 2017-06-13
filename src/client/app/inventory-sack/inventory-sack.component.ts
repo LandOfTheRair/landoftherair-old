@@ -12,6 +12,9 @@ export class InventorySackComponent {
   @Input()
   public player: Player = new Player({});
 
+  @Input()
+  public size;
+
   public slots = [];
 
   get maxSize() {

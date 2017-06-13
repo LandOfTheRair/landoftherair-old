@@ -11,6 +11,12 @@ export class LogWindowComponent {
   @Input()
   public clientGameState: ClientGameState = new ClientGameState({});
 
+  @Input()
+  public windowSize;
+
+  @Input()
+  public fontSize;
+
   constructor() { }
 
 }
