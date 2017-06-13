@@ -243,7 +243,10 @@ export class Game {
       if(npc.x < centerX - 4 || npc.x > centerX + 4 || npc.y < centerY - 4 || npc.y > centerY + 4) return;
 
       const currentSprite = find(this.visibleNPCs.children, { uuid: npc.uuid });
-      if(currentSprite) return;
+      if(currentSprite) {
+        currentSprite.frame = npc.sprite + this.getSpriteOffsetForDirection(npc.dir);
+        return;
+      }
 
       const sprite = this.g.add.sprite(npc.x * 64, (npc.y - 1) * 64, 'Creatures', npc.sprite);
       sprite.uuid = npc.uuid;

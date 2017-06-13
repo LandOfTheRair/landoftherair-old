@@ -306,6 +306,27 @@ export class Character {
     if(this.gold <= 0) this.gold = 0;
   }
 
+  setDirBasedOnXYDiff(x, y) {
+
+    const checkX = Math.abs(x);
+    const checkY = Math.abs(y);
+
+    if(checkX >= checkY) {
+      if(x > 0) {
+        this.dir = 'E';
+      } else if(x < 0) {
+        this.dir = 'W';
+      }
+
+    } else if(checkY > checkX) {
+      if(y > 0) {
+        this.dir = 'S';
+      } else if(y < 0) {
+        this.dir = 'N';
+      }
+    }
+  }
+
   tick() {
     const hpRegen = this.getTotalStat('hpregen');
     const mpRegen = this.getTotalStat('mpregen');

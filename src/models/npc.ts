@@ -40,7 +40,15 @@ export class NPC extends Character {
     const output = this.parser.parse(message);
     if(!output) return;
 
+    this.setDirRelativeTo(player);
     room.sendClientLogMessage(client, { name: this.name, message: output });
+  }
+
+  setDirRelativeTo(char: Character) {
+    const diffX = char.x - this.x;
+    const diffY = char.y - this.y + 1;
+
+    this.setDirBasedOnXYDiff(diffX, diffY);
   }
 
   setPath(path: string[]) {
