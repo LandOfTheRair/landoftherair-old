@@ -132,7 +132,7 @@ export class Spawner {
 
   assignPath(npc: NPC) {
     if(!this.paths || this.paths.length === 0) return false;
-    npc.path = sample(this.paths);
+    npc.setPath(sample(this.paths));
   }
 
   tick() {
