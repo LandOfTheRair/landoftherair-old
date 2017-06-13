@@ -241,5 +241,7 @@ export class GameWorld extends Room<GameState> {
     if(this.ticks.Player % TickRates.PlayerSave === 0) {
       this.state.players.forEach(player => this.savePlayer(player));
     }
+
+    this.spawners.forEach(spawner => spawner.tick());
   }
 }
