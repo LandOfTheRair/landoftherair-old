@@ -26,7 +26,7 @@ export class NPC extends Character {
   }
 
   toJSON() {
-    return omit(this, ['script', 'parser', 'spawner', 'ai']);
+    return omit(this, ['script', 'parser', 'spawner', 'ai', 'path']);
   }
 
   distFrom(character: Character) {
@@ -41,6 +41,12 @@ export class NPC extends Character {
     if(!output) return;
 
     room.sendClientLogMessage(client, { name: this.name, message: output });
+  }
+
+  setPath(path: string[]) {
+    this.path = path;
+
+    // TODO break into steps
   }
 
   tick() {
