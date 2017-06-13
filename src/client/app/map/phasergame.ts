@@ -275,19 +275,6 @@ export class Game {
     });
   }
 
-  private removeOldNPCSprites(centerX, centerY) {
-    this.visibleNPCs.children.forEach(sprite => {
-      const x = sprite.x / 64;
-      const y = sprite.y / 64;
-
-      if(this.notInRange(centerX, centerY, x, y)) {
-        delete this.visibleNPCUUIDHash[sprite.uuid];
-        this.visibleNPCs.removeChild(sprite);
-        sprite.destroy();
-      }
-    });
-  }
-
   private createItemSprite(item: Item, x, y) {
     if(!this.visibleSprites[x]) this.visibleSprites[x] = {};
     if(!this.visibleSprites[x][y]) this.visibleSprites[x][y] = {};
@@ -401,7 +388,6 @@ export class Game {
     this.removeOldItemSprites(this.player.x, this.player.y);
     this.showItemSprites(this.player.x, this.player.y);
 
-    // this.removeOldNPCSprites(this.player.x, this.player.y);
     this.showNPCSprites(this.player.x, this.player.y);
   }
 
