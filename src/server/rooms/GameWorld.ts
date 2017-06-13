@@ -224,7 +224,7 @@ export class GameWorld extends Room<GameState> {
       if(!player.$fov[diffX]) return false;
       if(!player.$fov[diffX][diffY]) return false;
 
-      return target.uuid = findStr || startsWith(target.name, findStr);
+      return target.uuid === findStr || startsWith(target.name.toLowerCase(), findStr.toLowerCase());
     });
 
     return possTargets;
