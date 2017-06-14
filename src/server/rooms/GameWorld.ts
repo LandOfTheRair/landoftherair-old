@@ -16,6 +16,9 @@ import { NPC } from '../../models/npc';
 import { Logger } from '../logger';
 import { Spawner } from '../base/spawner';
 
+import * as Classes from '../classes';
+import { Character } from '../../models/character';
+
 const TickRates = {
   PlayerAction: 60,
   PlayerSave: 360
@@ -119,6 +122,7 @@ export class GameWorld extends Room<GameState> {
     }
 
     const player = new Player(playerData);
+    this.setUpClassFor(player);
     this.state.addPlayer(player);
   }
 
@@ -167,6 +171,8 @@ export class GameWorld extends Room<GameState> {
       data.x = npcData.x / 64;
       data.y = npcData.y / 64;
       const npc = new NPC(data);
+
+      this.setUpClassFor(npc);
 
       try {
         if(npc.script) {
@@ -227,6 +233,10 @@ export class GameWorld extends Room<GameState> {
     });
 
     return possTargets;
+  }
+
+  setUpClassFor(char: Character) {
+    Classes[char.baseClass || 'Undecided'].becomeClass(char);
   }
 
   tick() {
