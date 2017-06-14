@@ -78,3 +78,7 @@
   rightHand: Tutorial Yeti Club
   gear:
     Head: Tutorial Yeti Skull
+
+  drops:
+    - name: Tutorial Yeti Club
+      chance: -1

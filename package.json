@@ -12,7 +12,8 @@
     "build:prod": "ng build --environment=prod",
     "lint": "ng lint",
     "task:items": "ts-node src/server/tasks/items.ts",
-    "task:npcs": "ts-node src/server/tasks/npcs.ts"
+    "task:npcs": "ts-node src/server/tasks/npcs.ts",
+    "task:drops": "ts-node src/server/tasks/drops.ts"
   },
   "repository": {
     "type": "git",
