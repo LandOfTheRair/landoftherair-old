@@ -86,6 +86,7 @@ export class ItemRequirements {
 export class Item {
   name: string;
   desc: string;
+  extendedDesc: string;
   sprite: number;
   itemClass: string;
 
@@ -100,6 +101,7 @@ export class Item {
   offense = 0;
   defense = 0;
 
+  ounces = 0;
   value = 0;
   stats: any = {};
   requirements?: ItemRequirements;
@@ -133,7 +135,10 @@ export class Item {
       if(this.owner === player.username) ownedText = 'This item belongs to you.';
       else                               ownedText = 'This item does not belong to you.';
     }
-    return `You are looking at ${this.desc}. The item is in ${this.conditionString} condition. ${ownedText}`;
+
+    const fluidText = this.ounces > 0 ? `It is filled with ${this.ounces}oz of fluid. ` : '';
+
+    return `You are looking at ${this.desc}. ${fluidText}The item is in ${this.conditionString} condition. ${ownedText}`;
   }
 
   isRobe() {
