@@ -16,6 +16,8 @@ class Database {
   public $players: any;
   public $items: any;
   public $npcs: any;
+  public $mapDrops: any;
+  public $regionDrops: any;
 
   private client: MongoClient;
 
@@ -42,6 +44,12 @@ class Database {
 
         this.$npcs = client.collection('npcs');
         this.$npcs.ensureIndex({ npcId: 1 }, { unique: true });
+
+        this.$mapDrops = client.collection('mapdrops');
+        this.$mapDrops.ensureIndex({ mapName: 1 }, { unique: true });
+
+        this.$regionDrops = client.collection('regiondrops');
+        this.$regionDrops.ensureIndex({ regionName: 1 }, { unique: true });
 
         resolve();
       });
