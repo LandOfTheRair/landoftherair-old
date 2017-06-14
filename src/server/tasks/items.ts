@@ -77,6 +77,10 @@ class ItemLoader {
       item.accuracy = 1;
       item.baseDamage = 1;
     }
+
+    if(item.itemClass === 'Bottle') {
+      item.ounces = item.ounces || 1;
+    }
   }
 
   static validateItem(item: Item): boolean {
