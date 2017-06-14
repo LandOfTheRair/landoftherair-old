@@ -395,4 +395,8 @@ export class Character {
   isValidStep(step) {
     return true;
   }
+
+  changeBaseClass(newClass) {
+    this.baseClass = newClass;
+  }
 }
