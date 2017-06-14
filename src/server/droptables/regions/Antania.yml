@@ -1,0 +1,44 @@
+
+- name: Antanian Strength Potion
+  chance: 1
+  maxChance: 10000
+
+- name: Antanian Agility Potion
+  chance: 1
+  maxChance: 5000
+
+- name: Antanian Dexterity Potion
+  chance: 1
+  maxChance: 75000
+
+- name: Antanian Intelligence Potion
+  chance: 1
+  maxChance: 11000
+
+- name: Antanian Wisdom Potion
+  chance: 1
+  maxChance: 11000
+
+- name: Antanian Willpower Potion
+  chance: 1
+  maxChance: 50000
+
+- name: Antanian Constitution Potion
+  chance: 1
+  maxChance: 500
+
+- name: Antanian Luck Potion
+  chance: 1
+  maxChance: 100000
+
+- name: Antanian Charisma Potion
+  chance: 1
+  maxChance: 100000
+
+- name: Antanian Health Potion
+  chance: 1
+  maxChance: 4000
+
+- name: Antanian Magic Potion
+  chance: 1
+  maxChance: 25000
