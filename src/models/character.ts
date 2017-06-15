@@ -226,7 +226,6 @@ export class Character {
   itemCheck(item: Item) {
     if(!item) return;
     if(item.itemClass === 'Corpse') return;
-    // TODO tie items
   }
 
   setLeftHand(item: Item) {
