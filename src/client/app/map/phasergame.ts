@@ -293,7 +293,9 @@ export class Game {
       const x = sprite.x / 64;
       const y = sprite.y / 64;
 
-      if(this.notInRange(centerX, centerY, x, y)) {
+      const ground = this.clientGameState.groundItems[x] ? this.clientGameState.groundItems[x][y] : {};
+      const myGround = ground[sprite.itemClass];
+      if(this.notInRange(centerX, centerY, x, y) || !myGround || !myGround[0] || myGround[0].uuid !== sprite.uuid) {
         delete this.visibleItemUUIDHash[sprite.uuid];
         this.visibleSprites[x][y][sprite.itemClass] = null;
         this.itemsOnGround.removeChild(sprite);
