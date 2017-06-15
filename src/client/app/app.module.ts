@@ -27,6 +27,7 @@ import { MinimizeButtonComponent } from './_shared/minimize-button.component';
 import { PlayerTaglineComponent } from './_shared/character-tagline.component';
 import { LifeHeartComponent } from './_shared/life-heart.component';
 import { ItemComponent } from './_shared/item.component';
+import { IconComponent } from './_shared/icon.component';
 import { LogWindowComponent } from './log/log-window.component';
 import { StatusWindowComponent } from './status/status-window.component';
 import { GroundComponent } from './ground/ground.component';
@@ -54,6 +55,7 @@ import { NpcsComponent } from './npcs/npcs.component';
     PlayerTaglineComponent,
     LifeHeartComponent,
     ItemComponent,
+    IconComponent,
     LogWindowComponent,
     StatusWindowComponent,
     GroundComponent,
