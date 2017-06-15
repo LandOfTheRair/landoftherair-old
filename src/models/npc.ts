@@ -105,9 +105,7 @@ export class NPC extends Character {
       return;
     }
 
-    this.$corpseRef.searchItems.forEach(item => {
-      this.$room.placeItemOnGround(this, item);
-    });
+    this.$room.dropCorpseItems(this.$corpseRef);
 
     if(this.$corpseRef.$heldBy) {
       this.$room.corpseCheck(this.$room.state.findPlayer(this.$corpseRef.$heldBy));
