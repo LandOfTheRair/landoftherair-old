@@ -99,6 +99,9 @@ export class GameState {
   addItemToGround({ x, y }, item: Item) {
     if(!item) return;
 
+    item.x = x;
+    item.y = y;
+
     this.groundItems[x] = this.groundItems[x] || {};
     this.groundItems[x][y] = this.groundItems[x][y] || {};
     this.groundItems[x][y][item.itemClass] = this.groundItems[x][y][item.itemClass] || [];
@@ -112,9 +115,11 @@ export class GameState {
     }
   }
 
-  removeItemFromGround(player: Player, item: Item) {
-    const ground = this.getGroundItems(player.x, player.y)[item.itemClass];
+  removeItemFromGround(item: Item) {
+    const ground = this.getGroundItems(item.x, item.y)[item.itemClass];
     pull(ground, item);
+    delete item.x;
+    delete item.y;
   }
 
   getGroundItems(x, y) {

@@ -1,0 +1,7 @@
+
+- name: Corpse
+  sprite: 224
+  value: 0
+  desc: "corpse"
+  isBeltable: false
+  isSackable: false

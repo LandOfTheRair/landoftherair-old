@@ -27,7 +27,7 @@ export class GroundToBelt extends Command {
     if(player.fullBelt()) return room.sendClientLogMessage(client, 'Your belt is full.');
 
     player.addItemToBelt(item);
-    gameState.removeItemFromGround(player, item);
+    gameState.removeItemFromGround(item);
   }
 
 }

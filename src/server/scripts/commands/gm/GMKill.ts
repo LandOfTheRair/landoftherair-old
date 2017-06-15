@@ -17,6 +17,7 @@ export class GMKill extends Command {
     const target = possTargets[0];
     if(target.hostility === 'Never') return room.sendClientLogMessage(client, 'That target is not killable.');
 
+    target.hp.toMinimum();
     target.die(player);
   }
 }

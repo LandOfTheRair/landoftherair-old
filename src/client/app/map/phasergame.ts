@@ -248,7 +248,7 @@ export class Game {
     const removeUUIDs = [];
 
     this.clientGameState.mapNPCs.forEach(npc => {
-      if(this.notInRange(centerX, centerY, npc.x, npc.y)) {
+      if(this.notInRange(centerX, centerY, npc.x, npc.y) || npc.dir === 'C') {
         removeUUIDs.push(npc.uuid);
         return;
       }
@@ -290,7 +290,8 @@ export class Game {
       }
     }
 
-    const sprite = this.g.add.sprite(x * 64, y * 64, 'Items', item.sprite);
+    const isCorpse = item.name === 'Corpse';
+    const sprite = this.g.add.sprite(x * 64, y * 64, isCorpse ? 'Creatures' : 'Items', item.sprite);
     this.visibleSprites[x][y][item.itemClass] = sprite;
     sprite.itemClass = item.itemClass;
     sprite.uuid = item.uuid;

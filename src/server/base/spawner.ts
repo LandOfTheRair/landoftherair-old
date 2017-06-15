@@ -1,7 +1,7 @@
 
 import { NPCLoader } from '../helpers/npc-loader';
 
-import { sample, random, extend, isNumber, isString } from 'lodash';
+import { sample, random, extend, isNumber, isString, pull } from 'lodash';
 import { NPC } from '../../models/npc';
 import { Logger } from '../logger';
 
@@ -131,6 +131,7 @@ export class Spawner {
 
     npc.hostility = npcData.hostility;
     npc.spawner = this;
+    npc.$room = this.room;
     this.assignPath(npc);
     this.addNPC(npc);
     npc.recalculateStats();
@@ -141,6 +142,11 @@ export class Spawner {
   addNPC(npc: NPC) {
     this.npcs.push(npc);
     this.room.state.addNPC(npc);
+  }
+
+  removeNPC(npc: NPC) {
+    pull(this.npcs, npc);
+    this.room.state.removeNPC(npc);
   }
 
   assignPath(npc: NPC) {

@@ -65,13 +65,18 @@ export class GameWorld extends Room<GameState> {
       delete player._id;
     }
 
-    player = omitBy(player, (value, key) => {
-      if(startsWith(key, '$')) return true;
-      if(!Object.getOwnPropertyDescriptor(player, key)) return true;
-      return false;
-    });
+    const savePlayer = player.toJSON();
+    delete savePlayer.$fov;
 
-    return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: player });
+    if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
+      savePlayer.leftHand = null;
+    }
+
+    if(player.rightHand && player.rightHand.itemClass === 'Corpse') {
+      savePlayer.rightHand = null;
+    }
+
+    return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }
 
   sendClientLogMessage(client, messageData) {
@@ -113,6 +118,11 @@ export class GameWorld extends Room<GameState> {
 
   placeItemOnGround(player, item) {
     this.state.addItemToGround(player, item);
+    if(item.$heldBy) item.$heldBy = null;
+  }
+
+  removeItemFromGround(item) {
+    this.state.removeItemFromGround(item);
   }
 
   // TODO check if player is in this map, return false if not - also, modify this to take a promise? - also fail if in game already
@@ -137,6 +147,7 @@ export class GameWorld extends Room<GameState> {
 
   onLeave(client) {
     const player = this.state.findPlayer(client.username);
+    this.corpseCheck(player);
     this.savePlayer(player);
     this.state.removePlayer(client.username);
   }
@@ -301,7 +312,6 @@ export class GameWorld extends Room<GameState> {
       });
     }
 
-
     const items = LootRoller.rollTables(tables);
 
     const itemPromises: Array<Promise<Item>> = items.map(itemName => ItemCreator.getItemByName(itemName));
@@ -312,7 +322,32 @@ export class GameWorld extends Room<GameState> {
       gold.value = npc.gold;
       allItems.push(gold);
     }
-    
-    npc.searchItems = allItems;
+
+    this.createCorpse(npc, allItems);
+  }
+
+  async createCorpse(target: Character, searchItems) {
+    const corpse = await ItemCreator.getItemByName('Corpse');
+    corpse.sprite = target.sprite + 4;
+    corpse.searchItems = searchItems;
+    corpse.desc = `the corpse of a ${target.name}`;
+
+    this.placeItemOnGround(target, corpse);
+
+    target.$corpseRef = corpse;
+  }
+
+  corpseCheck(player) {
+    if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
+      this.placeItemOnGround(player, player.leftHand);
+      player.leftHand.$heldBy = null;
+      player.setLeftHand(null);
+    }
+
+    if(player.rightHand && player.rightHand.itemClass === 'Corpse') {
+      this.placeItemOnGround(player, player.rightHand);
+      player.rightHand.$heldBy = null;
+      player.setRightHand(null);
+    }
   }
 }
