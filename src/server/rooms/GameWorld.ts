@@ -312,7 +312,7 @@ export class GameWorld extends Room<GameState> {
       gold.value = npc.gold;
       allItems.push(gold);
     }
-
+    
     npc.searchItems = allItems;
   }
 }
