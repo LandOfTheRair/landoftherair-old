@@ -15,6 +15,7 @@ export class Game {
   private map: any;
 
   private visibleNPCUUIDHash = {};
+  private visibleItemUUIDHash = {};
 
   private itemsOnGround: any;
   private visibleNPCs: any;
@@ -214,8 +215,6 @@ export class Game {
   }
 
   private showItemSprites(centerX, centerY) {
-    const checkedUUIDs = [];
-
     for(let x = centerX-4; x <= centerX+4; x++) {
 
       const itemPatchX = this.clientGameState.groundItems[x];
@@ -228,20 +227,10 @@ export class Game {
         Object.keys(itemPatchY).forEach(itemType => {
           if(itemPatchY[itemType].length === 0) return;
           const item = itemPatchY[itemType][0];
-          if(!item) return;
-          checkedUUIDs.push(item.uuid);
           this.createItemSprite(item, x, y);
         });
       }
     }
-
-    const groundUUIDs = this.itemsOnGround.children.map(x => x.uuid);
-    const diff = difference(groundUUIDs, checkedUUIDs);
-
-    diff.forEach(uuid => {
-      const sprite = find(this.itemsOnGround.children, { uuid });
-      sprite.destroy();
-    });
   }
 
   private showNPCSprites(centerX, centerY) {
@@ -295,6 +284,7 @@ export class Game {
     this.visibleSprites[x][y][item.itemClass] = sprite;
     sprite.itemClass = item.itemClass;
     sprite.uuid = item.uuid;
+    this.visibleItemUUIDHash[sprite.uuid] = sprite;
     this.itemsOnGround.add(sprite);
   }
 
@@ -304,6 +294,7 @@ export class Game {
       const y = sprite.y / 64;
 
       if(this.notInRange(centerX, centerY, x, y)) {
+        delete this.visibleItemUUIDHash[sprite.uuid];
         this.visibleSprites[x][y][sprite.itemClass] = null;
         this.itemsOnGround.removeChild(sprite);
         sprite.destroy();
