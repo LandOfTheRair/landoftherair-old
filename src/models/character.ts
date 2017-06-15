@@ -436,8 +436,6 @@ export class Character {
     if(this.exp <= 1) {
       this.exp = 1;
     }
-
-    this.tryLevelUp();
   }
 
   tryLevelUp() {
