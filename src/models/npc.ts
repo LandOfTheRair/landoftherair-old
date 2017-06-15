@@ -4,6 +4,7 @@ import { omit, flatten } from 'lodash';
 import { Character, Direction } from './character';
 import { Item } from './item';
 import * as uuid from 'uuid/v4';
+import { Logger } from '../server/logger';
 
 export type Hostility = 'Never' | 'OnHit' | 'OppositeAlignment' | 'Faction' | 'Always';
 
@@ -20,6 +21,9 @@ export class NPC extends Character {
   spawner?: any;
   path?: any[];
   ai?: any;
+
+  drops: Item[] = [];
+  searchItems: Item[] = [];
 
   init() {
     if(!this.uuid) this.uuid = uuid();
@@ -84,5 +88,29 @@ export class NPC extends Character {
     if(!this.spawner) return true;
     if(this.distFrom(this.spawner, { x, y }) > this.spawner.randomWalkRadius) return false;
     return true;
+  }
+
+  canDie() {
+    return super.canDie() && this.hostility !== 'Never';
+  }
+
+  die(killer) {
+    super.die(killer);
+    if(!this.spawner) return false;
+
+    this.spawner.room.calculateLootDrops(this, killer);
+  }
+
+  restore() {
+    if(!this.spawner) {
+      Logger.error(new Error(`Error: ${this.name} @ ${this.x},${this.y} on ${this.map} tried to respawn without having a spawner.`));
+      return;
+    }
+
+    this.searchItems.forEach(item => {
+      this.spawner.room.addItemToGround(this, item);
+    });
+
+    this.spawner.room.state.removeNPC(this);
   }
 }

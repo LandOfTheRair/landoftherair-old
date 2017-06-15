@@ -4,6 +4,8 @@ import { random, sumBy } from 'lodash';
 
 export const tick = (npc: NPC) => {
 
+  if(npc.isDead()) return;
+
   let diffX = 0;
   let diffY = 0;
 
