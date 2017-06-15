@@ -180,6 +180,9 @@ export class ItemComponent implements OnInit {
   }
 
   get imgUrl() {
+    if(this.item.itemClass === 'Corpse') {
+      return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets/creatures.png`;
+    }
     return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets/items.png`;
   }
 
@@ -191,8 +194,9 @@ export class ItemComponent implements OnInit {
   }
 
   get spriteLocation() {
-    const y = Math.floor(this.item.sprite/32);
-    const x = this.item.sprite%32;
+    const divisor = this.item.itemClass === 'Corpse' ? 40 : 32;
+    const y = Math.floor(this.item.sprite/divisor);
+    const x = this.item.sprite%divisor;
     return `-${x*64}px -${y*64}px`;
   }
 

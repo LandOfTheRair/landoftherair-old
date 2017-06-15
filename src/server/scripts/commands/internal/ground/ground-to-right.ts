@@ -26,7 +26,7 @@ export class GroundToRight extends Command {
     }
 
     player.setRightHand(item);
-    gameState.removeItemFromGround(player, item);
+    gameState.removeItemFromGround(item);
   }
 
 }
