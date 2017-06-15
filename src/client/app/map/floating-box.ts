@@ -40,7 +40,7 @@ class FloatingBox {
 
 export class XPBox extends FloatingBox {
   constructor(value: number) {
-    super(value, 'left', 'green');
+    super(value, 'left', value < 0 ? 'red' : 'green');
   }
 }
 
