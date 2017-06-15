@@ -46,5 +46,6 @@ export class Player extends Character {
     if(item.itemClass === 'Corpse') {
       item.$heldBy = this.username;
     }
+    // TODO tie items
   }
 }
