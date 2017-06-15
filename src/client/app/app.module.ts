@@ -21,6 +21,7 @@ import { LobbyComponent } from './lobby/lobby.component';
 import { CharacterSelectComponent } from './character-select/character-select.component';
 import { MapComponent } from './map/map.component';
 import { StatsWindowComponent } from './stats/stats-window.component';
+import { SkillsWindowComponent } from './skills/skills-window.component';
 import { CommandLineComponent } from './command-line/command-line.component';
 import { CloseButtonComponent } from './_shared/close-button.component';
 import { MinimizeButtonComponent } from './_shared/minimize-button.component';
@@ -49,6 +50,7 @@ import { NpcsComponent } from './npcs/npcs.component';
     CharacterSelectComponent,
     MapComponent,
     StatsWindowComponent,
+    SkillsWindowComponent,
     CommandLineComponent,
     CloseButtonComponent,
     MinimizeButtonComponent,

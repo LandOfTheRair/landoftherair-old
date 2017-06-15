@@ -24,6 +24,24 @@ export type Direction = 'N' | 'S' | 'E' | 'W' | 'C';
 export type CharacterClass =
   'Undecided';
 
+export class Skills {
+  mace = 0;
+  axe = 0;
+  dagger = 0;
+  onehanded = 0;
+  twohanded = 0;
+  shortsword = 0;
+  polearm = 0;
+  ranged = 0;
+  martial = 0;
+  staff = 0;
+  throwing = 0;
+  thievery = 0;
+  wand = 0;
+  conjuration = 0;
+  restoration = 0;
+}
+
 export class Stats {
   str = 0;
   dex = 0;
@@ -53,6 +71,8 @@ export class Character {
 
   stats: Stats = new Stats();
   totalStats: Stats = new Stats();
+
+  skills: Skills = new Skills();
 
   allegiance: Allegiance = 'None';
   sex: Sex = 'Male';

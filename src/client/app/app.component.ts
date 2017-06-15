@@ -25,6 +25,9 @@ export class AppComponent implements OnInit {
   public showStatsWindow: boolean;
 
   @LocalStorage()
+  public showSkillsWindow: boolean;
+
+  @LocalStorage()
   public showCommandLine: boolean;
 
   @LocalStorage()
