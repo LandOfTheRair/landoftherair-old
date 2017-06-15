@@ -26,9 +26,15 @@ export class CommandExecutor {
     const cmd = commandHash[command];
     if(!cmd) return false;
 
+    const { room, client } = args;
+
+    if(command !== 'restore' && player.isDead()) {
+      room.sendClientLogMessage(client, `Your corpse can't do that.`);
+      return;
+    }
+
     const wasSuccess = cmd.execute(player, args);
     if(wasSuccess === false) {
-      const { room, client } = args;
       room.sendClientLogMessage(client, `Invalid format. Format: ${command} ${cmd.format}`);
     }
 

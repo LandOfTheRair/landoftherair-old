@@ -3,6 +3,7 @@ import { omitBy, startsWith, isString, isObject, cloneDeep, sample } from 'lodas
 
 import { Parser } from 'mingy';
 
+import { LootRoller, LootFunctions, LootTable } from 'lootastic';
 import { species } from 'fantastical';
 
 import { Room } from 'colyseus';
@@ -18,6 +19,8 @@ import { Spawner } from '../base/spawner';
 
 import * as Classes from '../classes';
 import { Character } from '../../models/character';
+import { ItemCreator } from '../helpers/item-creator';
+import { Item } from '../../models/item';
 
 const TickRates = {
   PlayerAction: 60,
@@ -29,6 +32,11 @@ export class GameWorld extends Room<GameState> {
   private allMapNames;
 
   private spawners: Spawner[] = [];
+
+  private dropTables = {
+    region: [],
+    map: []
+  };
 
   ticks = {
     Player: 0
@@ -122,6 +130,7 @@ export class GameWorld extends Room<GameState> {
     }
 
     const player = new Player(playerData);
+    player.$room = this;
     this.setUpClassFor(player);
     this.state.addPlayer(player);
   }
@@ -153,12 +162,20 @@ export class GameWorld extends Room<GameState> {
   onInit() {
     this.loadNPCsFromMap();
     this.loadSpawners();
+    this.loadDropTables();
   }
 
   // TODO store boss timers
   // TODO store tied items (or maybe whole ground state?)
   onDispose() {
 
+  }
+
+  async loadDropTables() {
+    this.dropTables.map = await DB.$mapDrops.findOne({ mapName: this.state.mapName }).drops || [];
+    if(this.state.map.properties.region) {
+      this.dropTables.region = await DB.$regionDrops.findOne({ regionName: this.state.map.properties.region }).drops || [];
+    }
   }
 
   loadNPCsFromMap() {
@@ -254,5 +271,48 @@ export class GameWorld extends Room<GameState> {
     }
 
     this.spawners.forEach(spawner => spawner.tick());
+  }
+
+  async calculateLootDrops(npc: NPC, killer: Character) {
+    const tables = [];
+    const bonus = killer.getTotalStat('luk');
+
+    if(this.dropTables.map.length > 0) {
+      tables.push({
+        table: new LootTable(this.dropTables.map, bonus),
+        func: LootFunctions.EachItem,
+        args: 0
+      });
+    }
+
+    if(this.dropTables.region.length > 0) {
+      tables.push({
+        table: new LootTable(this.dropTables.region, bonus),
+        func: LootFunctions.EachItem,
+        args: 0
+      });
+    }
+
+    if(npc.drops && npc.drops.length > 0) {
+      tables.push({
+        table: new LootTable(npc.drops, bonus),
+        func: LootFunctions.EachItem,
+        args: 0
+      });
+    }
+
+
+    const items = LootRoller.rollTables(tables);
+
+    const itemPromises: Array<Promise<Item>> = items.map(itemName => ItemCreator.getItemByName(itemName));
+    const allItems: Item[] = await Promise.all(itemPromises);
+
+    if(npc.gold) {
+      const gold = await ItemCreator.getItemByName('Gold Coin');
+      gold.value = npc.gold;
+      allItems.push(gold);
+    }
+
+    npc.searchItems = allItems;
   }
 }
