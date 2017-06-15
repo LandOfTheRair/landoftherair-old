@@ -1,5 +1,5 @@
 
-import { omit, flatten } from 'lodash';
+import { omit, flatten, random } from 'lodash';
 
 import { Character, Direction } from './character';
 import { Item } from './item';
@@ -22,6 +22,7 @@ export class NPC extends Character {
   ai?: any;
 
   drops: Item[];
+  giveXp: any;
 
   init() {
     if(!this.uuid) this.uuid = uuid();
@@ -95,6 +96,9 @@ export class NPC extends Character {
   die(killer) {
     super.die(killer);
     if(!this.spawner) return false;
+
+    const giveXp = this.giveXp || { min: 1, max: 10 };
+    killer.gainExp(random(giveXp.min, giveXp.max));
 
     this.$room.calculateLootDrops(this, killer);
   }

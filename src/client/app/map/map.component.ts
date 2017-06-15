@@ -76,7 +76,7 @@ export class MapComponent implements OnInit, OnDestroy {
       this.boxes$ = this.clientGameState.playerBoxes$.subscribe(player => {
         if(player.username !== this.currentPlayer.username) return;
         const hpDifference = player.hp.__current - this.currentPlayer.hp.__current;
-        const xpDifference = player.xp - this.currentPlayer.xp;
+        const xpDifference = player.exp - this.currentPlayer.exp;
 
         if(hpDifference !== 0) {
           const box = new HPBox(hpDifference);

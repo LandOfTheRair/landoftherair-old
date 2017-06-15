@@ -9,6 +9,10 @@
     min: 0
     max: 100
 
+  giveXp:
+    min: 300
+    max: 500
+
   leftHand:
     - null
     - Antanian Wooden Shield
@@ -42,6 +46,10 @@
   gear:
     Armor: Tutorial Fur
 
+  giveXp:
+    min: 10
+    max: 50
+
   tansFor: Tutorial Fur
 
 - npcId: Tutorial Wolf
@@ -58,6 +66,10 @@
   hp:
     min: 100
     max: 200
+
+  giveXp:
+    min: 50
+    max: 75
 
   gear:
     Armor: Tutorial Fur
@@ -78,6 +90,10 @@
   hp:
     min: 400
     max: 500
+
+  giveXp:
+    min: 100
+    max: 150
 
   rightHand: Tutorial Yeti Club
   gear:
