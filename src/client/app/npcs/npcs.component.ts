@@ -24,6 +24,7 @@ export class NpcsComponent {
 
     return compact(npcs.map(npc => {
       if((<any>npc).username === me.username) return false;
+      if(npc.dir === 'C') return false;
       const diffX = npc.x - me.x;
       const diffY = npc.y - me.y - 1;
 

@@ -80,5 +80,5 @@
     Head: Tutorial Yeti Skull
 
   drops:
-    - name: Tutorial Yeti Club
+    - result: Tutorial Yeti Club
       chance: -1

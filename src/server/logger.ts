@@ -4,7 +4,7 @@ export class Logger {
     console.log(`[${new Date()}] ${msg}`);
   }
 
-  static error(msg: string) {
+  static error(msg: string|Error) {
     console.error(new Date(), msg);
   }
 }

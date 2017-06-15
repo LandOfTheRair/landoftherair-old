@@ -75,13 +75,15 @@ export class Character {
   swimLevel: number;
 
   $map: any;
+  $deathTicks: number;
+  $room: any;
 
   get ageString() {
     return 'extremely young';
   }
 
   getTotalStat(stat) {
-    return this.stats[stat];
+    return this.totalStats[stat];
   }
 
   initSack() {
@@ -117,7 +119,7 @@ export class Character {
   toJSON() {
     return omitBy(this, (value, key) => {
       if(!Object.getOwnPropertyDescriptor(this, key)) return true;
-      if(key === '_id' || key === '$map') return true;
+      if(key === '_id' || key === '$map' || key === '$room') return true;
       return false;
     });
   }
@@ -340,6 +342,13 @@ export class Character {
       const hpLost = Math.floor(this.hp.maximum * (hpPercentLost/100));
       this.hp.sub(hpLost);
     }
+
+    if(this.$deathTicks > 0) {
+      this.$deathTicks--;
+      if(this.$deathTicks <= 0) {
+        this.restore(true);
+      }
+    }
   }
 
   canSee(x, y): boolean {
@@ -396,7 +405,27 @@ export class Character {
     return true;
   }
 
+  isDead() {
+    return this.dir === 'C';
+  }
+
   changeBaseClass(newClass) {
     this.baseClass = newClass;
   }
+
+  canDie() {
+    return this.hp.atMinimum();
+  }
+
+  die(killer: Character) {
+    this.dir = 'C';
+
+    // TODO broadcast to all nearby who killed me
+    // TODO make broadcastToVisiblePlayers function
+
+    // 1 minutes to rot
+    this.$deathTicks = 3600 * 3;
+  }
+
+  restore(force = false) {}
 }

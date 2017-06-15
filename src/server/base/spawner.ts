@@ -129,6 +129,7 @@ export class Spawner {
 
     const npc = new NPC(npcData);
 
+    npc.drops = npcData.drops;
     npc.hostility = npcData.hostility;
     npc.spawner = this;
     this.assignPath(npc);

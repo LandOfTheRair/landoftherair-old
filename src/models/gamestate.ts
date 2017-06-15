@@ -96,10 +96,8 @@ export class GameState {
     return item.itemClass === 'Coin';
   }
 
-  addItemToGround(player, item: Item) {
+  addItemToGround({ x, y }, item: Item) {
     if(!item) return;
-
-    const { x, y } = player;
 
     this.groundItems[x] = this.groundItems[x] || {};
     this.groundItems[x][y] = this.groundItems[x][y] || {};
