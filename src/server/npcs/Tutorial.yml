@@ -2,6 +2,7 @@
 - npcId: Tutorial Townee
   name: townee
   stats: 3
+  level: 1
 
   sprite: [580, 595, 610, 615]
 
