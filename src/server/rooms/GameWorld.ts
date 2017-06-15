@@ -116,8 +116,8 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
-  placeItemOnGround(player, item) {
-    this.state.addItemToGround(player, item);
+  placeItemOnGround(ref, item) {
+    this.state.addItemToGround(ref, item);
     if(item.$heldBy) item.$heldBy = null;
   }
 
@@ -335,6 +335,16 @@ export class GameWorld extends Room<GameState> {
     this.placeItemOnGround(target, corpse);
 
     target.$corpseRef = corpse;
+  }
+
+  dropCorpseItems(corpse: Item) {
+    if(!corpse.searchItems) return;
+
+    corpse.searchItems.forEach(item => {
+      this.placeItemOnGround(corpse, item);
+    });
+
+    corpse.searchItems = null;
   }
 
   corpseCheck(player) {

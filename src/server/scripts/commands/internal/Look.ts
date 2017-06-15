@@ -8,7 +8,7 @@ export class Look extends Command {
 
   public name = '~look';
 
-  private getStringForNum(num) {
+  protected getStringForNum(num) {
     if(num === 1) return 'a';
     if(num <= 3)  return num;
     if(num <= 5)  return 'a handful of';
