@@ -432,6 +432,11 @@ export class Character {
 
   gainExp(xp: number) {
     this.exp += xp;
+
+    if(this.exp <= 1) {
+      this.exp = 1;
+    }
+
     this.tryLevelUp();
   }
 
