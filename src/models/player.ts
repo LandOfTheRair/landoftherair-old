@@ -28,10 +28,23 @@ export class Player extends Character {
     super.die(killer);
 
     // 5 minutes to restore
-    this.$deathTicks = 3600 * 5;
+    this.$deathTicks = 360 * 5;
   }
 
   restore(force = false) {
     // TODO set restore point etc
+  }
+
+  getSprite() {
+    return 725;
+  }
+
+  itemCheck(item) {
+    super.itemCheck(item);
+    if(!item) return;
+
+    if(item.itemClass === 'Corpse') {
+      item.$heldBy = this.username;
+    }
   }
 }

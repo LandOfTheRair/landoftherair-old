@@ -6,6 +6,7 @@ import {
   RingClasses, FeetClasses, HandsClasses, GivesBonusInHandItemClasses, RobeClasses, ArmorClasses, EarClasses
 } from './item';
 import { MapLayer } from './gamestate';
+import { environment } from '../client/environments/environment';
 
 export type Allegiance =
   'None'
@@ -77,6 +78,13 @@ export class Character {
   $map: any;
   $deathTicks: number;
   $room: any;
+  $corpseRef: Item;
+
+  sprite: number;
+
+  getSprite() {
+    return 0;
+  }
 
   get ageString() {
     return 'extremely young';
@@ -119,7 +127,7 @@ export class Character {
   toJSON() {
     return omitBy(this, (value, key) => {
       if(!Object.getOwnPropertyDescriptor(this, key)) return true;
-      if(key === '_id' || key === '$map' || key === '$room') return true;
+      if(key === '_id' || key === '$map' || key === '$room' || key === '$corpseRef') return true;
       return false;
     });
   }
@@ -215,13 +223,21 @@ export class Character {
     if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
   }
 
+  itemCheck(item: Item) {
+    if(!item) return;
+    if(item.itemClass === 'Corpse') return;
+    // TODO tie items
+  }
+
   setLeftHand(item: Item) {
     this.leftHand = item;
+    this.itemCheck(item);
     this.recalculateStats();
   }
 
   setRightHand(item: Item) {
     this.rightHand = item;
+    this.itemCheck(item);
     this.recalculateStats();
   }
 
@@ -231,6 +247,7 @@ export class Character {
 
     this.gear[slot] = item;
     this.recalculateStats();
+    this.itemCheck(item);
     return true;
   }
 
@@ -269,6 +286,7 @@ export class Character {
       this.addGold(item);
       return;
     }
+    this.itemCheck(item);
     this.sack.push(item);
   }
 
@@ -290,6 +308,7 @@ export class Character {
   addItemToBelt(item: Item) {
     this.belt.push(item);
     this.fixBelt();
+    this.itemCheck(item);
   }
 
   takeItemFromBelt(slot: number) {
@@ -326,27 +345,6 @@ export class Character {
         this.dir = 'S';
       } else if(y < 0) {
         this.dir = 'N';
-      }
-    }
-  }
-
-  tick() {
-    const hpRegen = this.getTotalStat('hpregen');
-    const mpRegen = this.getTotalStat('mpregen');
-
-    this.hp.add(hpRegen);
-    this.mp.add(mpRegen);
-
-    if(this.swimLevel > 0) {
-      const hpPercentLost = this.swimLevel * 4;
-      const hpLost = Math.floor(this.hp.maximum * (hpPercentLost/100));
-      this.hp.sub(hpLost);
-    }
-
-    if(this.$deathTicks > 0) {
-      this.$deathTicks--;
-      if(this.$deathTicks <= 0) {
-        this.restore(true);
       }
     }
   }
@@ -406,7 +404,7 @@ export class Character {
   }
 
   isDead() {
-    return this.dir === 'C';
+    return this.hp.atMinimum();
   }
 
   changeBaseClass(newClass) {
@@ -423,9 +421,44 @@ export class Character {
     // TODO broadcast to all nearby who killed me
     // TODO make broadcastToVisiblePlayers function
 
-    // 1 minutes to rot
-    this.$deathTicks = 3600 * 3;
+    // 3 minutes to rot
+    if(environment.production) {
+      this.$deathTicks = 60 * 3;
+    } else {
+      this.$deathTicks = 10; //6 * 3;
+    }
   }
 
   restore(force = false) {}
+
+  tick() {
+    if(this.isDead()) {
+      if(this.$corpseRef && this.$corpseRef.$heldBy) {
+        const holder = this.$room.state.findPlayer(this.$corpseRef.$heldBy);
+        this.x = holder.x;
+        this.y = holder.y;
+      }
+
+      if(this.$deathTicks > 0) {
+        this.$deathTicks--;
+        if(this.$deathTicks <= 0) {
+          this.restore(true);
+        }
+      }
+
+      return;
+    }
+
+    const hpRegen = this.getTotalStat('hpregen');
+    const mpRegen = this.getTotalStat('mpregen');
+
+    this.hp.add(hpRegen);
+    this.mp.add(mpRegen);
+
+    if(this.swimLevel > 0) {
+      const hpPercentLost = this.swimLevel * 4;
+      const hpLost = Math.floor(this.hp.maximum * (hpPercentLost/100));
+      this.hp.sub(hpLost);
+    }
+  }
 }

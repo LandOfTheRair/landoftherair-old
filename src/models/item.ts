@@ -113,6 +113,14 @@ export class Item {
   isBeltable = false;
   isSackable = true;
 
+  searchItems: Item[];
+  tansFor: string;
+
+  x: number;
+  y: number;
+
+  $heldBy;
+
   constructor(opts) {
     extend(this, opts);
     if(!this.uuid) this.uuid = uuid();
@@ -152,7 +160,7 @@ export class Item {
   toJSON() {
     return omitBy(this, (value, key) => {
       if(!Object.getOwnPropertyDescriptor(this, key)) return true;
-      if(key === '_id') return true;
+      if(key === '_id' || key === '$heldBy') return true;
       return false;
     });
   }

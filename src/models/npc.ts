@@ -11,7 +11,6 @@ export type Hostility = 'Never' | 'OnHit' | 'OppositeAlignment' | 'Faction' | 'A
 export class NPC extends Character {
   uuid: string;
 
-  sprite: number;
   hostility: Hostility = 'OnHit';
   agro: any = {};
   vendorItems: Item[];
@@ -23,8 +22,6 @@ export class NPC extends Character {
   ai?: any;
 
   drops: Item[];
-  searchItems: Item[];
-  tansFor: string;
 
   init() {
     if(!this.uuid) this.uuid = uuid();
@@ -99,7 +96,7 @@ export class NPC extends Character {
     super.die(killer);
     if(!this.spawner) return false;
 
-    this.spawner.room.calculateLootDrops(this, killer);
+    this.$room.calculateLootDrops(this, killer);
   }
 
   restore() {
@@ -108,10 +105,15 @@ export class NPC extends Character {
       return;
     }
 
-    this.searchItems.forEach(item => {
-      this.spawner.room.addItemToGround(this, item);
+    this.$corpseRef.searchItems.forEach(item => {
+      this.$room.placeItemOnGround(this, item);
     });
 
-    this.spawner.room.state.removeNPC(this);
+    if(this.$corpseRef.$heldBy) {
+      this.$room.corpseCheck(this.$room.state.findPlayer(this.$corpseRef.$heldBy));
+    }
+
+    this.$room.removeItemFromGround(this.$corpseRef);
+    this.spawner.removeNPC(this);
   }
 }
