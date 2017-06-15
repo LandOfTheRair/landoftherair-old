@@ -22,8 +22,9 @@ export class NPC extends Character {
   path?: any[];
   ai?: any;
 
-  drops: Item[] = [];
-  searchItems: Item[] = [];
+  drops: Item[];
+  searchItems: Item[];
+  tansFor: string;
 
   init() {
     if(!this.uuid) this.uuid = uuid();
