@@ -24,6 +24,7 @@ First, create a `[.env](https://www.npmjs.com/package/dotenv)` file in the root.
 
 * `npm run task:items` - this will populate the database with items
 * `npm run task:npcs`  - this will populate the database with npc data
+* `npm run task:drops` - this will populate the database with drop table data
 
 ## Making Yourself a GM
 
@@ -47,8 +48,10 @@ Some commands are hidden and don't really need to be used by players, but should
 #### Internal Commands
 
 * `~look` - look at the ground (currently this has to be done manually, since there is no macro support)
+* `~search` - search corpses on the ground, then look.
 * `~interact` - called when clicking on something interactable
 * `~move` - called when clicking on the map to move
+* `~talk` - called automatically when doing `xxx, message` - will trigger appropriate dialog for an npc if it has any
 
 #### Debugging Commands
 
@@ -58,4 +61,6 @@ Some commands are hidden and don't really need to be used by players, but should
 
 * `@gold <num>` - create <num> gold on your tile
 * `@item <item name>` - create a particular item on your tile
+* `@xp <xp>` - gain <xp> XP
+* `@kill <target>` - will instantly kill <target>
 * `@teleport <x> <y> [map]` - teleport to X,Y, and if map is specified, you'll also change maps.
