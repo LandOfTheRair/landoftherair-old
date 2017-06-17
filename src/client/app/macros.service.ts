@@ -35,7 +35,7 @@ export class Macro {
 
 @Injectable()
 export class MacroService {
-  public visibleMacroGroups: string[] = ['default'];
+  public visibleMacroGroups: string[] = ['default', null, null];
 
   public allMacros: any = {};
 
