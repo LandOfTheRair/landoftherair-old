@@ -2,8 +2,7 @@
 import { omitBy, merge, find, includes, compact, pull, values } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
-  Item, EquippableItemClassesWithWeapons, HeadClasses, NeckClasses, WaistClasses, WristsClasses,
-  RingClasses, FeetClasses, HandsClasses, GivesBonusInHandItemClasses, RobeClasses, ArmorClasses, EarClasses
+  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses
 } from './item';
 import { MapLayer } from './gamestate';
 import { environment } from '../client/environments/environment';
@@ -157,17 +156,7 @@ export class Character {
   }
 
   determineItemType(itemClass) {
-    if(includes(HeadClasses, itemClass))   return 'Head';
-    if(includes(NeckClasses, itemClass))   return 'Neck';
-    if(includes(WaistClasses, itemClass))  return 'Waist';
-    if(includes(WristsClasses, itemClass)) return 'Wrists';
-    if(includes(RingClasses, itemClass))   return 'Ring';
-    if(includes(FeetClasses, itemClass))   return 'Feet';
-    if(includes(HandsClasses, itemClass))  return 'Hands';
-    if(includes(RobeClasses, itemClass))   return 'Robe';
-    if(includes(ArmorClasses, itemClass))  return 'Armor';
-    if(includes(EarClasses, itemClass))    return 'Ear';
-    return itemClass;
+    return EquipHash[itemClass] || itemClass;
   }
 
   private getItemSlotToEquipIn(item: Item) {
