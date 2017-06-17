@@ -6,6 +6,14 @@ export class ShowStats extends Command {
 
   public name = 'show_stats';
 
+  static macroMetadata = {
+    name: 'Show Stats',
+    macro: 'show_stats',
+    icon: 'checklist',
+    color: '#000000',
+    mode: 'autoActivate'
+  };
+
   execute(player: Player, { room, client, args }) {
     room.sendClientLogMessage(client, `You are ${player.name}, the ${player.ageString} level ${player.level} ${player.baseClass}.`);
     room.sendClientLogMessage(client, `Your allegiance lies with the ${player.allegiance}.`);

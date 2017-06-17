@@ -7,6 +7,14 @@ export class LookAt extends Command {
   public name = 'look_at';
   public format = 'TARGET';
 
+  static macroMetadata = {
+    name: 'Look At',
+    macro: 'look_at',
+    icon: 'look-at',
+    color: '#8A6948',
+    mode: 'clickToTarget'
+  };
+
   execute(player: Player, { room, client, args }) {
     if(!args) return false;
 

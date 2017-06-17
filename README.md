@@ -25,6 +25,7 @@ First, create a `[.env](https://www.npmjs.com/package/dotenv)` file in the root.
 * `npm run task:items` - this will populate the database with items
 * `npm run task:npcs`  - this will populate the database with npc data
 * `npm run task:drops` - this will populate the database with drop table data
+* `npm run task:macros`- this will generate the macro icon metadata. If you add new icons, please only take from [my repository](http://seiyria.com/gameicons-font/).
 
 ## Making Yourself a GM
 

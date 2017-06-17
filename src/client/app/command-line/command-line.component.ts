@@ -17,8 +17,6 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   @ViewChild('cmdEntry')
   public cmdEntryInput;
 
-  public command: string = '';
-
   @LocalStorage()
   public lastCommands: string[];
 
@@ -31,7 +29,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.listener = () => {
-      if(document.activeElement.tagName === 'INPUT') return;
+      if(document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
       this.cmdEntryInput.nativeElement.focus();
     };
 
@@ -56,32 +54,32 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   }
 
   sendCommand() {
-    if(!this.command || !this.command.trim()) return;
+    if(!this.colyseusGame.currentCommand || !this.colyseusGame.currentCommand.trim()) return;
 
     this.curIndex = -1;
 
-    if(this.command === '.' && this.lastCommands[0]) {
+    if(this.colyseusGame.currentCommand === '.' && this.lastCommands[0]) {
       this.colyseusGame.sendCommandString(this.lastCommands[0]);
-      this.command = '';
+      this.colyseusGame.currentCommand = '';
       return;
     }
 
-    this.colyseusGame.sendCommandString(this.command);
+    this.colyseusGame.sendCommandString(this.colyseusGame.currentCommand);
 
-    if(this.command !== '.') {
-      this.lastCommands.unshift(this.command);
+    if(this.colyseusGame.currentCommand !== '.') {
+      this.lastCommands.unshift(this.colyseusGame.currentCommand);
       if(this.lastCommands.length > 20) this.lastCommands.length = 20;
       // trigger ngx-webstorage writes
       this.lastCommands = this.lastCommands;
     }
 
-    this.command = '';
+    this.colyseusGame.currentCommand = '';
   }
 
   setCommandFromIndex() {
-    if(this.curIndex === -1) this.command = '';
+    if(this.curIndex === -1) this.colyseusGame.currentCommand = '';
     if(!this.lastCommands[this.curIndex]) return;
-    this.command = this.lastCommands[this.curIndex];
+    this.colyseusGame.currentCommand = this.lastCommands[this.curIndex];
   }
 
   prevCommand($event) {

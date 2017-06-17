@@ -6,6 +6,7 @@ export abstract class Command {
 
   abstract name: string|string[];
   format: string = '';
+  static macroMetadata: any = {};
 
   abstract execute(player: Player, args);
 }

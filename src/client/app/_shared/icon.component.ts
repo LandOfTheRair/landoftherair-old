@@ -5,23 +5,44 @@ import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-icon',
   styles: [`
-    img.normal {
-      width: 64px;
-      height: 64px;
+    .mac-container {
+      min-width: 48px;
+      max-width: 48px;
+      min-height: 48px;
+      max-height: 48px;
+      overflow: hidden;
     }
     
-    img.small {
-      width: 48px;
-      height: 48px
+    .mac-container.normal .macicons {
+      font-size: 300%;
     }
     
-    img.xsmall {
-      width: 24px;
-      height: 24px;
+    .mac-container.small {
+      min-width: 32px;
+      max-width: 32px;
+      min-height: 32px;
+      max-height: 32px;
+    }
+    
+    .mac-container.small .macicons {
+      font-size: 200%;
+    }
+    
+    .mac-container.xsmall {
+      min-width: 24px;
+      max-width: 24px;
+      min-height: 24px;
+      max-height: 24px;
+    }
+    
+    .mac-container.xsmall .macicons {
+      font-size: 110%;
     }
   `],
   template: `
-    <img class="{{ size }}" [src]="imgUrl" container="body" />
+    <div class="mac-container vertical-center {{ size }}" [style.background-color]="bgColor">
+      <span class="macicons macicons-{{ name }}" container="body" [style.color]="fgColor"></span>
+    </div>
   `
 })
 export class IconComponent {
@@ -32,8 +53,14 @@ export class IconComponent {
   @Input()
   public size: 'normal' | 'small' | 'xsmall' = 'normal';
 
+  @Input()
+  public bgColor: string = 'white';
+
+  @Input()
+  public fgColor: string = '#000';
+
   get imgUrl() {
-    return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets/icons/${this.name}.svg`;
+    return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets/icons/${this.name || 'undecided'}.svg`;
   }
 
 }

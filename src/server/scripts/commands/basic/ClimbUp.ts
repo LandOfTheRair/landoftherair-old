@@ -8,6 +8,14 @@ export class ClimbUp extends Command {
 
   public name = ['climbup', 'climbdown'];
 
+  static macroMetadata = {
+    name: 'Climb',
+    macro: 'climbup',
+    icon: 'ladder',
+    color: '#D2691E',
+    mode: 'autoActivate'
+  };
+
   execute(player: Player, { room, client, gameState, args }) {
 
     const stairs = find(gameState.map.layers[MapLayer.Interactables].objects, item => {

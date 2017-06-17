@@ -8,6 +8,14 @@ export class Search extends Look {
 
   public name = '~search';
 
+  static macroMetadata = {
+    name: 'Search',
+    macro: '~search',
+    icon: 'cash',
+    color: '#665600',
+    mode: 'autoActivate'
+  };
+
   execute(player: Player, { room, client, gameState, args }) {
     const items = gameState.getGroundItems(player.x, player.y);
 

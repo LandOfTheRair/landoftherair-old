@@ -21,6 +21,8 @@ export class ColyseusGameService {
 
   private changingMap: boolean;
 
+  public currentCommand: string = '';
+
   constructor() {}
 
   init(colyseus, client, character) {
@@ -170,19 +172,23 @@ export class ColyseusGameService {
   }
 
   public sendCommandString(str: string) {
-    let command = '';
-    let args = '';
+    str.split(';').forEach(cmd => {
+      cmd = cmd.trim();
 
-    if(includes(str, ',')) {
-      command = '~talk';
-      args = str;
-    } else {
-      const arr = str.split(' ');
-      command = arr[0];
-      args = arr.length > 1 ? str.substring(str.indexOf(' ')).trim() : '';
-    }
+      let command = '';
+      let args = '';
 
-    this.sendAction({ command, args });
+      if(includes(cmd, ',')) {
+        command = '~talk';
+        args = cmd;
+      } else {
+        const arr = cmd.split(' ');
+        command = arr[0];
+        args = arr.length > 1 ? cmd.substring(cmd.indexOf(' ')).trim() : '';
+      }
+
+      this.sendAction({ command, args });
+    });
   }
 
   public doMove(x, y) {
