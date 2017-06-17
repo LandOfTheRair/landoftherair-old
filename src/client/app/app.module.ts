@@ -33,6 +33,7 @@ import { LogWindowComponent } from './log/log-window.component';
 import { StatusWindowComponent } from './status/status-window.component';
 import { GroundComponent } from './ground/ground.component';
 import { InventorySackComponent } from './inventory-sack/inventory-sack.component';
+import { InventoryLockerComponent } from './inventory-locker/inventory-locker.component';
 import { InventoryBeltComponent } from './inventory-belt/inventory-belt.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { NpcsComponent } from './npcs/npcs.component';
@@ -62,6 +63,7 @@ import { NpcsComponent } from './npcs/npcs.component';
     StatusWindowComponent,
     GroundComponent,
     InventorySackComponent,
+    InventoryLockerComponent,
     InventoryBeltComponent,
     EquipmentComponent,
     NpcsComponent,

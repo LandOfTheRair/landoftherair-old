@@ -40,6 +40,9 @@
             <a class="dropdown-item" (click)="showInventorySack = !showInventorySack">Sack</a>
           </li>
           <li>
+            <a class="dropdown-item" (click)="showInventoryLocker = !showInventoryLocker">Locker</a>
+          </li>
+          <li>
             <a class="dropdown-item" (click)="showEquipment = !showEquipment">Equipment</a>
           </li>
           <li>
@@ -210,6 +213,22 @@
   </div>
 </div>
 
+<div class="window inventory-locker-window game-window {{ lockerSize }}"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="lockerWindow"
+     windowName="lockerWindow"
+     defaultX="966"
+     defaultY="538"
+     *ngIf="inGame && showInventoryLocker">
+  <div class="window-header text-center" #lockerWindow>
+    Inventory - Locker
+    <app-close-button (click)="showInventoryLocker = false"></app-close-button>
+  </div>
+  <div class="window-body">
+    <app-inventory-locker [size]="lockerSize" [player]="colyseus.game.character"></app-inventory-locker>
+  </div>
+</div>
+
 <div class="window inventory-belt-window game-window {{ beltSize }}"
      [ng2-draggable]="true"
      [ng2DraggableHandle]="beltWindow"
@@ -281,7 +300,18 @@
             </div>
           </div>
         </div>
-
+          
+        <div class="row">
+          <div class="col-3 text-right font-weight-bold">Locker Icons</div>
+          <div class="col">
+            <div class="btn-group">
+              <label class="btn btn-info" [(ngModel)]="lockerSize" btnRadio="normal">Normal</label>
+              <label class="btn btn-info" [(ngModel)]="lockerSize" btnRadio="small">Small</label>
+              <label class="btn btn-info" [(ngModel)]="lockerSize" btnRadio="xsmall">Miniature</label>
+            </div>
+          </div>
+        </div>
+          
         <div class="row">
           <div class="col-3 text-right font-weight-bold">Belt Icons</div>
           <div class="col">

@@ -112,6 +112,7 @@ export class Item {
 
   isBeltable = false;
   isSackable = true;
+  isLockerable = true;
 
   searchItems: Item[];
   tansFor: string;

@@ -88,6 +88,7 @@ export class Character {
 
   sack: Item[] = [];
   belt: Item[] = [];
+  locker: Item[] = [];
 
   gear: any = {};
   leftHand: Item;
@@ -117,7 +118,11 @@ export class Character {
   initSack() {
     this.sack = this.sack.map(item => new Item(item));
   }
-
+  
+  initLocker() {
+    this.locker = this.locker.map(item => new Item(item));
+  }
+  
   initBelt() {
     this.belt = this.belt.map(item => new Item(item));
   }
@@ -299,7 +304,7 @@ export class Character {
   fullSack() {
     return this.sack.length >= 25;
   }
-
+  
   addItemToSack(item: Item) {
     if(item.itemClass === 'Coin') {
       this.addGold(item);
@@ -308,14 +313,33 @@ export class Character {
     this.itemCheck(item);
     this.sack.push(item);
   }
-
+  
   takeItemFromSack(slot: number) {
     const item = this.sack[slot];
     pull(this.sack, item);
     this.fixSack();
     return item;
   }
-
+  
+  private fixLocker() {
+    this.locker = compact(this.locker);
+  }
+  
+  fullLocker() {
+    return this.locker.length >= 20;
+  }
+  
+  addItemToLocker(item: Item) {
+    this.locker.push(item);
+  }
+  
+  takeItemFromLocker(slot: number) {
+    const item = this.locker[slot];
+    pull(this.locker, item);
+    this.fixLocker();
+    return item;
+  }
+  
   private fixBelt() {
     this.belt = compact(this.belt);
   }
