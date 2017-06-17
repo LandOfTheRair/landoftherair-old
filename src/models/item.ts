@@ -53,6 +53,18 @@ export const EarClasses = [
   'Earring'
 ];
 
+export const EquipHash = {};
+ArmorClasses.forEach(t => EquipHash[t] = 'Armor');
+RobeClasses.forEach(t => EquipHash[t] = 'Robe');
+HeadClasses.forEach(t => EquipHash[t] = 'Head');
+NeckClasses.forEach(t => EquipHash[t] = 'Neck');
+WaistClasses.forEach(t => EquipHash[t] = 'Waist');
+WristsClasses.forEach(t => EquipHash[t] = 'Wrists');
+RingClasses.forEach(t => EquipHash[t] = 'Ring');
+FeetClasses.forEach(t => EquipHash[t] = 'Feet');
+HandsClasses.forEach(t => EquipHash[t] = 'Hands');
+EarClasses.forEach(t => EquipHash[t] = 'Ear');
+
 export const GivesBonusInHandItemClasses = WeaponClasses.concat(NeckClasses);
 
 export const EquippableItemClasses = HeadClasses
