@@ -394,18 +394,18 @@
         <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Active Macros</div>
           <div class="col-3">
-            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[0]">
+            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[0]" (change)="macroService.saveMacros()">
               <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
             </select>
           </div>
           <div class="col-3">
-            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[1]">
+            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[1]" (change)="macroService.saveMacros()">
               <option [value]="null">None</option>
               <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
             </select>
           </div>
           <div class="col-3">
-            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[2]">
+            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[2]" (change)="macroService.saveMacros()">
               <option [value]="null">None</option>
               <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
             </select>
