@@ -1,6 +1,6 @@
 <input class="no-border-radius form-control"
        #cmdEntry
-       [(ngModel)]="command"
+       [(ngModel)]="colyseusGame.currentCommand"
        (keyup.arrowup)="prevCommand($event)"
        (keyup.arrowdown)="nextCommand($event)"
        (keyup.enter)="sendCommand()"

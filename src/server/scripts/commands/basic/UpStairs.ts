@@ -8,6 +8,14 @@ export class UpStairs extends Command {
 
   public name = ['up', 'down'];
 
+  static macroMetadata = {
+    name: 'Stairs',
+    macro: 'up',
+    icon: '3d-stairs',
+    color: '#404040',
+    mode: 'autoActivate'
+  };
+
   execute(player: Player, { room, client, gameState, args }) {
 
     const stairs = find(gameState.map.layers[MapLayer.Interactables].objects, item => {

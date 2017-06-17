@@ -1,0 +1,27 @@
+
+<div class="macro-group-container d-flex flex-wrap">
+  <div class="macro-group" *ngFor="let group of macroService.visibleMacroGroups">
+
+    <div class="group-name">
+      <div class="text-rotated">
+        {{ group }}
+      </div>
+    </div>
+
+    <div class="macro-container"
+         *ngFor="let macroIdx of macroArray"
+         [class.active]="macroService.allMacroGroups[group][macroIdx] === selectedMacro">
+
+      <div class="macro"
+           *ngIf="macroService.allMacroGroups[group][macroIdx] && macroService.allMacros[macroService.allMacroGroups[group][macroIdx]]"
+           (click)="operateOnMacro(macroService.allMacros[macroService.allMacroGroups[group][macroIdx]])"
+           [tooltip]="macroService.allMacros[macroService.allMacroGroups[group][macroIdx]].name">
+
+        <app-icon [name]="macroService.allMacros[macroService.allMacroGroups[group][macroIdx]].icon"
+                  [bgColor]="macroService.allMacros[macroService.allMacroGroups[group][macroIdx]].background || '#ccc'"
+                  [fgColor]="macroService.allMacros[macroService.allMacroGroups[group][macroIdx]].foreground"
+                  size="normal"></app-icon>
+      </div>
+    </div>
+  </div>
+</div>

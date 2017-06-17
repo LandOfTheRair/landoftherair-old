@@ -1,4 +1,8 @@
 
+.color-picker {
+  left: 15px !important;
+}
+
 .hidden {
   display: none !important;
 }
@@ -95,6 +99,11 @@
   }
 
   &.command-line {
+    min-width: 578px;
+    max-width: 578px;
+  }
+
+  &.macro-bars {
     min-width: 578px;
     max-width: 578px;
   }
@@ -240,6 +249,8 @@
     display: flex;
     flex-direction: column;
 
+    overflow: hidden;
+
     & > * {
       height: 100%;
       display: flex;
@@ -255,11 +266,13 @@
 .drag-over-border {
   border: none !important;
   outline: 2px dashed green !important;
+  outline-offset: -2px;
 }
 
 .drag-hint-border {
   border: none !important;
   outline: 2px dashed orange;
+  outline-offset: -2px;
 }
 
 .drag-border {

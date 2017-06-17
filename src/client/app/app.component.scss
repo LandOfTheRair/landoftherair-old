@@ -1,1 +1,18 @@
 
+.macro-sheet-macro {
+  margin: 1px;
+
+  &:not(.active-macro) {
+    margin: 2px;
+  }
+}
+
+.active-macro {
+  outline: 2px solid #000;
+  border: 1px solid #fff;
+}
+
+.macro-list-body {
+  max-height: 570px;
+  overflow-y: auto;
+}

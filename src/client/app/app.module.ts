@@ -10,6 +10,7 @@ import { Ng2BootstrapModule } from 'ngx-bootstrap';
 import { NgxAutoScroll } from 'ngx-auto-scroll';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 import { AppComponent } from './app.component';
 
@@ -17,6 +18,8 @@ import { AuthService } from './auth.service';
 import { ColyseusService } from './colyseus.service';
 import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
+import { MacroService } from './macros.service';
+
 import { LobbyComponent } from './lobby/lobby.component';
 import { CharacterSelectComponent } from './character-select/character-select.component';
 import { MapComponent } from './map/map.component';
@@ -36,6 +39,7 @@ import { InventorySackComponent } from './inventory-sack/inventory-sack.componen
 import { InventoryBeltComponent } from './inventory-belt/inventory-belt.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { NpcsComponent } from './npcs/npcs.component';
+import { MacroBarsComponent } from './macro-bars/macro-bars.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -65,12 +69,14 @@ import { NpcsComponent } from './npcs/npcs.component';
     InventoryBeltComponent,
     EquipmentComponent,
     NpcsComponent,
+    MacroBarsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
 
+    ColorPickerModule,
     Ng2DragDropModule,
     ContextMenuModule.forRoot({ useBootstrap4: true }),
     Ng2Webstorage.forRoot({ prefix: 'lotr', separator: '-' }),
@@ -80,7 +86,8 @@ import { NpcsComponent } from './npcs/npcs.component';
     AuthService,
     ColyseusService,
     ColyseusLobbyService,
-    ColyseusGameService
+    ColyseusGameService,
+    MacroService
   ],
   bootstrap: [AppComponent]
 })

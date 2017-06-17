@@ -1,0 +1,68 @@
+{
+    "allMeta": [
+        {
+            "name": "Climb",
+            "macro": "climbup",
+            "icon": "ladder",
+            "color": "#D2691E",
+            "mode": "autoActivate",
+            "isSystem": true
+        },
+        {
+            "name": "Look At",
+            "macro": "look_at",
+            "icon": "look-at",
+            "color": "#8A6948",
+            "mode": "clickToTarget",
+            "isSystem": true
+        },
+        {
+            "name": "Show Stats",
+            "macro": "show_stats",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "isSystem": true
+        },
+        {
+            "name": "Stairs",
+            "macro": "up",
+            "icon": "3d-stairs",
+            "color": "#404040",
+            "mode": "autoActivate",
+            "isSystem": true
+        },
+        {
+            "name": "Drink",
+            "macro": "~drink",
+            "icon": "potion-ball",
+            "color": "#2020B2",
+            "mode": "autoActivate",
+            "isSystem": true
+        },
+        {
+            "name": "Restore",
+            "macro": "restore",
+            "icon": "quicksand",
+            "color": "#8A6948",
+            "mode": "autoActivate",
+            "isSystem": true
+        },
+        {
+            "name": "Search",
+            "macro": "~search",
+            "icon": "cash",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "isSystem": true
+        },
+        {
+            "name": "Attack",
+            "macro": "attack",
+            "icon": "blade-drag",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "isSystem": true
+        }
+    ]
+}
