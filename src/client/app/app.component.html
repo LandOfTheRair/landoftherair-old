@@ -400,11 +400,13 @@
           </div>
           <div class="col-3">
             <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[1]">
+              <option [value]="null">None</option>
               <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
             </select>
           </div>
           <div class="col-3">
             <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[2]">
+              <option [value]="null">None</option>
               <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
             </select>
           </div>
