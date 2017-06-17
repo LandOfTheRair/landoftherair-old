@@ -112,6 +112,7 @@ export class Item {
 
   isBeltable = false;
   isSackable = true;
+  isLockerable = true;
 
   constructor(opts) {
     extend(this, opts);
