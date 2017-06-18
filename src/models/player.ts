@@ -16,6 +16,7 @@ export class Player extends Character {
     this.initSack();
     this.initGear();
     this.initHands();
+    this.recalculateStats();
   }
 
   canSee(x, y) {

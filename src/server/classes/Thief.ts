@@ -9,6 +9,7 @@ export class Thief extends BaseClass {
 
   static gainLevelStats(character: Character) {
     super.gainLevelStats(character);
-    character.hp.maximum += this.rollDie(`1df([con] / 3) + f([con] / 2)`, character);
+    character.stats.hp += this.rollDie(`1df([con] / 3) + f([con] / 2)`, character);
+    character.recalculateStats();
   }
 }
