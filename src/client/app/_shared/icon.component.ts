@@ -40,8 +40,8 @@ import { environment } from '../../environments/environment';
     }
   `],
   template: `
-    <div class="mac-container vertical-center {{ size }}" [style.background-color]="bgColor">
-      <span class="macicons macicons-{{ name }}" container="body" [style.color]="fgColor"></span>
+    <div class="mac-container vertical-center" [ngClass]="[size]" [style.background-color]="bgColor">
+      <span class="macicons" [ngClass]="['macicons-'+name]" container="body" [style.color]="fgColor"></span>
     </div>
   `
 })
