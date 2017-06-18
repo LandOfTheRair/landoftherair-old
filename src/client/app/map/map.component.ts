@@ -58,7 +58,8 @@ export class MapComponent implements OnInit, OnDestroy {
       const config = {
         width: boxSize, height: boxSize,
         multiTexture: true, renderer: (<any>window).Phaser.WEBGL_MULTI,
-        state: this.game, parent: 'map'
+        state: this.game, parent: 'map',
+        enableDebug: false
       };
       this.phaser = new (<any>window).Phaser.Game(config);
 
