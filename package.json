@@ -61,7 +61,7 @@
     "ngx-color-picker": "^4.0.3",
     "ngx-contextmenu": "^1.2.0",
     "ngx-webstorage": "^1.8.0",
-    "phaser": "^2.6.2",
+    "phaser-ce": "^2.8.0",
     "recursive-readdir": "^2.2.1",
     "restricted-number": "^1.1.0",
     "rxjs": "^5.1.0",
