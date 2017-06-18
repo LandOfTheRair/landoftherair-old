@@ -6,6 +6,7 @@
   accuracy: 5
   baseDamage: 5
   type: Polearm
+  value: 145
   sprite: 230
 
 - name: Battlemage Halberd
@@ -14,6 +15,7 @@
   offense: 3
   accuracy: 10
   baseDamage: 100
+  value: 10000
   sprite: 135
   type: Polearm
   stats:

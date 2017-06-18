@@ -4,4 +4,5 @@
   desc: "an iron mace"
   baseDamage: 6
   type: Mace
+  value: 105
   sprite: 204

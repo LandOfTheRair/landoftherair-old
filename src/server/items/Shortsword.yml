@@ -3,4 +3,5 @@
   desc: "an iron shortsword"
   baseDamage: 5
   type: Shortsword
+  value: 85
   sprite: 195

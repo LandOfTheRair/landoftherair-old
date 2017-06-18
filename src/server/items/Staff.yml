@@ -3,4 +3,5 @@
   desc: "a wooden staff"
   baseDamage: 5
   type: Staff
+  value: 65
   sprite: 196

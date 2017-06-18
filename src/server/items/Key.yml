@@ -2,3 +2,4 @@
 - name: Tutorial Key
   desc: "a silver key"
   sprite: 357
+  value: 1

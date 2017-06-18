@@ -4,4 +4,5 @@
   desc: "a wooden crossbow"
   baseDamage: 5
   type: Ranged
+  value: 100
   sprite: 201

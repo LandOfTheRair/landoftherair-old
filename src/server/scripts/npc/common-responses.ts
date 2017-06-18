@@ -2,6 +2,29 @@
 import { NPC } from '../../../models/npc';
 import { includes, capitalize } from 'lodash';
 
+export const VendorResponses = (npc: NPC) => {
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+
+      // TODO open shop
+    });
+
+  npc.parser.addCommand('appraise')
+    .set('syntax', ['appraise'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+
+      if(!player.rightHand) return 'I cannot give you as value for your hand.';
+
+      const value = player.rightHand.value;
+      if(value === 0) return 'That item is worthless.';
+
+      return `That item is worth about ${value.toLocaleString()} coins.`;
+    });
+};
+
 export const BaseClassTrainerResponses = (npc: NPC) => {
 
   npc.parser.addCommand('hello')

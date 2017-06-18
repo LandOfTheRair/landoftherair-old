@@ -1,4 +1,10 @@
 
+- name: Mend Bottle
+  desc: "a small bottle filled with fizzy purple liquid"
+  extendedDesc: "a mending potion"
+  sprite: 107
+  value: 5
+
 - name: Antanian Strength Potion
   desc: "a small bottle filled with brown fluid. It smells like a tree"
   extendedDesc: "a potion of strength"
