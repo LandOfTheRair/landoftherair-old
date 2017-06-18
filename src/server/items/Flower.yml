@@ -2,3 +2,4 @@
 - name: Antanian Blueflower
   desc: "a deep blue flower"
   sprite: 740
+  value: 10

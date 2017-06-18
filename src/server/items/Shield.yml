@@ -3,4 +3,5 @@
   armorClass: 2
   desc: "a wooden shield"
   type: Mace
+  value: 200
   sprite: 327

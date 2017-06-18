@@ -3,4 +3,5 @@
   desc: "a wooden shortbow"
   baseDamage: 5
   type: Ranged
+  value: 95
   sprite: 199

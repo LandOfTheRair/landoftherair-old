@@ -3,4 +3,5 @@
   desc: "an iron longsword"
   baseDamage: 7
   type: Onehanded
+  value: 115
   sprite: 197

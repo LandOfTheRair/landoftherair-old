@@ -3,4 +3,5 @@
   desc: "a wooden longbow"
   baseDamage: 7
   type: Ranged
+  value: 110
   sprite: 200

@@ -3,4 +3,5 @@
   desc: "an iron greatsword"
   baseDamage: 10
   type: Twohanded
+  value: 150
   sprite: 198
