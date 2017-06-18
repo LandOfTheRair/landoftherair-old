@@ -285,12 +285,28 @@
      windowName="macroBars"
      defaultX="389"
      defaultY="661"
-     *ngIf="inGame && showCommandLine">
+     *ngIf="inGame">
   <div class="window-header text-center" #macroBars>
     Macros
   </div>
   <div class="window-body">
     <app-macro-bars></app-macro-bars>
+  </div>
+</div>
+
+<div class="window trainer above-game-window"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="trainerDrag"
+     windowName="trainer"
+     defaultX="670"
+     defaultY="120"
+     *ngIf="inGame && colyseus.game.showTrainer.classTrain">
+  <div class="window-header text-center" #trainerDrag>
+    {{ colyseus.game.showTrainer.classTrain }} Guide
+    <app-close-button (click)="colyseus.game.showTrainer = {}"></app-close-button>
+  </div>
+  <div class="window-body">
+    <app-trainer></app-trainer>
   </div>
 </div>
 

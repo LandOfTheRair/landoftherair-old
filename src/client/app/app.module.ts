@@ -20,18 +20,20 @@ import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
 import { MacroService } from './macros.service';
 
-import { LobbyComponent } from './lobby/lobby.component';
-import { CharacterSelectComponent } from './character-select/character-select.component';
-import { MapComponent } from './map/map.component';
-import { StatsWindowComponent } from './stats/stats-window.component';
-import { SkillsWindowComponent } from './skills/skills-window.component';
-import { CommandLineComponent } from './command-line/command-line.component';
 import { CloseButtonComponent } from './_shared/close-button.component';
 import { MinimizeButtonComponent } from './_shared/minimize-button.component';
 import { PlayerTaglineComponent } from './_shared/character-tagline.component';
 import { LifeHeartComponent } from './_shared/life-heart.component';
 import { ItemComponent } from './_shared/item.component';
 import { IconComponent } from './_shared/icon.component';
+import { SkillIconComponent } from './_shared/skill-icon.component';
+
+import { LobbyComponent } from './lobby/lobby.component';
+import { CharacterSelectComponent } from './character-select/character-select.component';
+import { MapComponent } from './map/map.component';
+import { StatsWindowComponent } from './stats/stats-window.component';
+import { SkillsWindowComponent } from './skills/skills-window.component';
+import { CommandLineComponent } from './command-line/command-line.component';
 import { LogWindowComponent } from './log/log-window.component';
 import { StatusWindowComponent } from './status/status-window.component';
 import { GroundComponent } from './ground/ground.component';
@@ -40,6 +42,7 @@ import { InventoryBeltComponent } from './inventory-belt/inventory-belt.componen
 import { EquipmentComponent } from './equipment/equipment.component';
 import { NpcsComponent } from './npcs/npcs.component';
 import { MacroBarsComponent } from './macro-bars/macro-bars.component';
+import { TrainerComponent } from './trainer/trainer.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -62,6 +65,7 @@ import { MacroBarsComponent } from './macro-bars/macro-bars.component';
     LifeHeartComponent,
     ItemComponent,
     IconComponent,
+    SkillIconComponent,
     LogWindowComponent,
     StatusWindowComponent,
     GroundComponent,
@@ -70,6 +74,7 @@ import { MacroBarsComponent } from './macro-bars/macro-bars.component';
     EquipmentComponent,
     NpcsComponent,
     MacroBarsComponent,
+    TrainerComponent,
   ],
   imports: [
     BrowserModule,

@@ -97,6 +97,10 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_ground' });
   }
 
+  showTrainerWindow(client, npc: NPC) {
+    this.send(client, { action: 'show_trainer', trainSkills: npc.trainSkills, classTrain: npc.classTrain, uuid: npc.uuid });
+  }
+
   teleport(client, player, { newMap, x, y }) {
     if(newMap && !this.allMapNames[newMap]) {
       this.sendClientLogMessage(client, `Warning: map "${newMap}" does not exist.`);
@@ -199,6 +203,7 @@ export class GameWorld extends Room<GameState> {
       data.x = npcData.x / 64;
       data.y = npcData.y / 64;
       const npc = new NPC(data);
+      npc.$room = this;
 
       this.setUpClassFor(npc);
 

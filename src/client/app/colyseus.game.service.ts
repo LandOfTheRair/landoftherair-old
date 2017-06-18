@@ -18,6 +18,7 @@ export class ColyseusGameService {
   _inGame: boolean;
 
   showGround: boolean;
+  showTrainer: any = {};
 
   private changingMap: boolean;
 
@@ -148,10 +149,30 @@ export class ColyseusGameService {
       return;
     }
 
+    if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
     if(action === 'show_ground')    return this.showGroundWindow();
     if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
+  }
+
+  private showTrainerWindow(classTrain, trainSkills, uuid) {
+    this.showTrainer = { classTrain, trainSkills, uuid };
+  }
+
+  public assessSkill(skill) {
+    if(!skill || !this.showTrainer.uuid) return;
+    this.sendCommandString(`${this.showTrainer.uuid}, assess ${skill}`);
+  }
+
+  public train() {
+    if(!this.showTrainer.uuid) return;
+    this.sendCommandString(`${this.showTrainer.uuid}, train`);
+  }
+
+  public join() {
+    if(!this.showTrainer.uuid) return;
+    this.sendCommandString(`${this.showTrainer.uuid}, join`);
   }
 
   private changeMap(map) {
@@ -193,6 +214,7 @@ export class ColyseusGameService {
 
   public doMove(x, y) {
     this.sendAction({ command: '~move', x, y });
+    this.showTrainer = {};
   }
 
   public doInteract(x, y) {

@@ -7,6 +7,8 @@ import {
 import { MapLayer } from './gamestate';
 import { environment } from '../client/environments/environment';
 
+import * as Classes from '../server/classes';
+
 export type Allegiance =
   'None'
 | 'Pirates'
@@ -56,7 +58,7 @@ export class Stats {
 
   move = 3;
   hpregen = 1;
-  mpregen = 0;
+  mpregen = 1;
 }
 
 export class Character {
@@ -418,6 +420,7 @@ export class Character {
 
   changeBaseClass(newClass) {
     this.baseClass = newClass;
+    Classes[this.baseClass].becomeClass(this);
   }
 
   canDie() {
@@ -459,16 +462,25 @@ export class Character {
     }
   }
 
-  tryLevelUp() {
+  tryLevelUp(maxLevel = 0) {
     do {
+      if(this.level >= maxLevel) break;
+
       const neededXp = this.calcLevelXP(this.level + 1);
       if(this.exp > neededXp) {
         this.level += 1;
-        if(this.level > this.highestLevel) this.highestLevel = this.level;
+        if(this.level > this.highestLevel) {
+          this.highestLevel = this.level;
+          this.gainLevelStats();
+        }
       } else {
         break;
       }
-    } while(true);
+    } while(this.level < maxLevel);
+  }
+
+  gainLevelStats() {
+    Classes[this.baseClass].gainLevelStats(this);
   }
 
   calcLevelXP(level: number) {
@@ -502,11 +514,11 @@ export class Character {
   }
 
   calcSkillLevel(type) {
-    return Math.floor(Math.pow(this.skills[type]/100, 1/2));
+    return Math.floor(Math.pow((this.skills[type] || 0)/100, 1/2));
   }
 
   calcSkillXP(level: number) {
-    return Math.pow(2, level - 1) * 100;
+    return Math.pow(2, level) * 100;
   }
 
   tick() {

@@ -27,6 +27,5 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, env) => {
       const p = env.player;
       if(npc.distFrom(p) > 2) return 'Please move closer.';
-      return '';
     });
 };

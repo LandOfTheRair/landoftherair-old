@@ -216,6 +216,10 @@
     }
   }
 
+  &.trainer {
+    max-width: 400px;
+  }
+
   position: absolute !important;
 
   border: 1px solid #000;

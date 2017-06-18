@@ -1,9 +1,17 @@
 import { NPC } from '../../../../models/npc';
+import { NPCLoader } from '../../../helpers/npc-loader';
+import { BaseClassTrainerResponses } from '../common-responses';
 
-export const setup = (npc: NPC) => {
+export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+
+  npc.gear.Armor = await NPCLoader.loadItem('Antanian Scalemail Tunic');
+  npc.rightHand = await NPCLoader.loadItem('Antanian Dagger');
+  npc.classTrain = 'Thief';
+  npc.trainSkills = ['Thievery', 'Dagger', 'Throwing'];
+  npc.recalculateStats();
 };
 
 export const responses = (npc: NPC) => {
-
+  BaseClassTrainerResponses(npc);
 };
