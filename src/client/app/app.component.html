@@ -19,13 +19,16 @@
       </li>
     </ul>
 
-    <ul class="navbar-nav mr-auto" *ngIf="inGame">
+    <ul class="navbar-nav" *ngIf="inGame">
       <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
         <a class="nav-link" href="#" dropdownToggle>Windows</a>
 
         <ul *dropdownMenu class="dropdown-menu">
           <li>
             <a class="dropdown-item" (click)="showStatsWindow = !showStatsWindow">Stats</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="showSkillsWindow = !showSkillsWindow">Skills</a>
           </li>
           <li>
             <a class="dropdown-item" (click)="showCommandLine = !showCommandLine">Command Line</a>
@@ -44,6 +47,22 @@
           </li>
           <li>
             <a class="dropdown-item" (click)="options.show()">Options</a>
+          </li>
+        </ul>
+
+      </li>
+    </ul>
+
+    <ul class="navbar-nav mr-auto" *ngIf="inGame">
+      <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
+        <a class="nav-link" href="#" dropdownToggle>Macros</a>
+
+        <ul *dropdownMenu class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" (click)="macros.show()">Macros</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="macroGroups.show()">Macro Groups</a>
           </li>
         </ul>
 
@@ -114,12 +133,28 @@
   </div>
 </div>
 
+<div class="window skills above-game-window"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="skillsDrag"
+     windowName="skills"
+     defaultX="670"
+     defaultY="120"
+     *ngIf="inGame && showSkillsWindow">
+  <div class="window-header text-center" #skillsDrag>
+    Skills
+    <app-close-button (click)="showSkillsWindow = false"></app-close-button>
+  </div>
+  <div class="window-body">
+    <app-skills-window [currentPlayer]="colyseus.game.character"></app-skills-window>
+  </div>
+</div>
+
 <div class="window command-line game-window"
      [ng2-draggable]="true"
      [ng2DraggableHandle]="commandLine"
      windowName="commandLine"
      defaultX="389"
-     defaultY="765"
+     defaultY="848"
      *ngIf="inGame && showCommandLine">
   <div class="window-header text-center" #commandLine>
     Command Line
@@ -130,7 +165,8 @@
   </div>
 </div>
 
-<div class="window log-window game-window {{ logWindowSize }}"
+<div class="window log-window game-window"
+     [ngClass]="[logWindowSize]"
      [ng2-draggable]="true"
      [ng2DraggableHandle]="logWindow"
      windowName="logWindow"
@@ -150,7 +186,7 @@
      [ng2DraggableHandle]="statusWindow"
      windowName="statusWindow"
      defaultX="389"
-     defaultY="661"
+     defaultY="743"
      [class.minimized]="minimized['status']"
      *ngIf="inGame">
   <div class="window-header text-center" #statusWindow>
@@ -162,7 +198,8 @@
   </div>
 </div>
 
-<div class="window ground-window game-window {{ groundSize }}"
+<div class="window ground-window game-window"
+     [ngClass]="[groundSize]"
      [ng2-draggable]="true"
      [ng2DraggableHandle]="groundWindow"
      windowName="groundWindow"
@@ -178,7 +215,8 @@
   </div>
 </div>
 
-<div class="window inventory-sack-window game-window {{ sackSize }}"
+<div class="window inventory-sack-window game-window"
+     [ngClass]="[sackSize]"
      [ng2-draggable]="true"
      [ng2DraggableHandle]="sackWindow"
      windowName="sackWindow"
@@ -210,7 +248,8 @@
   </div>
 </div>
 
-<div class="window inventory-belt-window game-window {{ beltSize }}"
+<div class="window inventory-belt-window game-window"
+     [ngClass]="[beltSize]"
      [ng2-draggable]="true"
      [ng2DraggableHandle]="beltWindow"
      windowName="beltWindow"
@@ -226,7 +265,8 @@
   </div>
 </div>
 
-<div class="window equipment-window game-window {{ equipmentSize }}"
+<div class="window equipment-window game-window"
+     [ngClass]="[equipmentSize]"
      [ng2-draggable]="true"
      [ng2DraggableHandle]="equipmentWindow"
      windowName="equipmentWindow"
@@ -242,7 +282,8 @@
   </div>
 </div>
 
-<div class="window npc-window game-window {{ npcWindowSize }}"
+<div class="window npc-window game-window"
+     [ngClass]="[npcWindowSize]"
      [ng2-draggable]="true"
      [ng2DraggableHandle]="npcWindow"
      windowName="npcWindow"
@@ -257,7 +298,38 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #options="bs-modal" tabindex="-1">
+<div class="window macro-bars game-window"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="macroBars"
+     windowName="macroBars"
+     defaultX="389"
+     defaultY="661"
+     *ngIf="inGame">
+  <div class="window-header text-center" #macroBars>
+    Macros
+  </div>
+  <div class="window-body">
+    <app-macro-bars></app-macro-bars>
+  </div>
+</div>
+
+<div class="window trainer above-game-window"
+     [ng2-draggable]="true"
+     [ng2DraggableHandle]="trainerDrag"
+     windowName="trainer"
+     defaultX="670"
+     defaultY="120"
+     *ngIf="inGame && colyseus.game.showTrainer.classTrain">
+  <div class="window-header text-center" #trainerDrag>
+    {{ colyseus.game.showTrainer.classTrain }} Guide
+    <app-close-button (click)="colyseus.game.showTrainer = {}"></app-close-button>
+  </div>
+  <div class="window-body">
+    <app-trainer></app-trainer>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #options="bs-modal" tabindex="-1" (onShow)="optionsModalVisible = true" (onHide)="optionsModalVisible = false">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -266,7 +338,7 @@
           <span>&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" *ngIf="optionsModalVisible">
         <div class="row">
           <div class="col text-center"><h4>UI Window Sizes</h4></div>
         </div>
@@ -371,6 +443,27 @@
           <div class="col text-center"><h4>UI Options</h4></div>
         </div>
 
+        <div class="row mb-1">
+          <div class="col-3 text-right font-weight-bold">Active Macros</div>
+          <div class="col-3">
+            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[0]" (change)="macroService.saveMacros()">
+              <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[1]" (change)="macroService.saveMacros()">
+              <option [value]="null">None</option>
+              <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[2]" (change)="macroService.saveMacros()">
+              <option [value]="null">None</option>
+              <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
+            </select>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-3 text-right font-weight-bold">Theme</div>
           <div class="col form-check">
@@ -399,6 +492,221 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #macros="bs-modal" tabindex="-1" (onShow)="macroModalVisible = true" (onHide)="macroModalVisible = false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">All Macros</h3>
+        <button type="button" class="close pull-right" (click)="macros.hide()">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macroModalVisible">
+        <div class="row mb-1" *ngFor="let macro of macroService.allMacroNames()">
+          <div class="col-2">
+            <app-icon [name]="macroService.allMacros[macro].icon"
+                      [bgColor]="macroService.allMacros[macro].background || '#ccc'"
+                      [fgColor]="macroService.allMacros[macro].foreground"
+                      size="small"></app-icon>
+          </div>
+          <div class="col-6">
+            {{ macro }}
+          </div>
+          <div class="col-4">
+            <button class="btn btn-info btn-sm"
+                    *ngIf="!macroService.allMacros[macro].isSystem" (click)="editMacro(macroService.allMacros[macro])">Edit</button>
+            <button class="btn btn-danger btn-sm"
+                    *ngIf="!macroService.allMacros[macro].isSystem" (click)="deleteMacro(macroService.allMacros[macro])">Remove</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="addMacro()">New Macro</button>
+        <button type="button" class="btn btn-secondary" (click)="macros.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #viewMacro="bs-modal" tabindex="-1" (onShow)="macroEditModalVisible = true" (onHide)="macroEditModalVisible = false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">Edit Macro</h3>
+        <button type="button" class="close pull-right" (click)="viewMacro.hide()">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body" *ngIf="macroEditModalVisible">
+
+        <div class="row mb-1">
+          <div class="col-3 text-right font-weight-bold">Name</div>
+          <div class="col-9">
+            <input class="form-control" [(ngModel)]="currentlyEditingMacro.name" placeholder="Enter your macro name" />
+          </div>
+        </div>
+
+        <div class="row mb-1">
+          <div class="col-3 text-right font-weight-bold">Macro</div>
+          <div class="col-9">
+            <textarea class="form-control" rows="3" [(ngModel)]="currentlyEditingMacro.macro" placeholder="Enter your macro command. Separate multiple commands with semicolons"></textarea>
+          </div>
+        </div>
+
+        <div class="row mb-1">
+          <div class="col-3 text-right font-weight-bold">Key</div>
+          <div class="col-3">
+            <input class="form-control" [(ngModel)]="currentlyEditingMacro.key" (keydown)="setMacroKey($event)" placeholder="Press Key" />
+          </div>
+          <div class="col-2">
+            <button class="btn"
+                    [class.btn-secondary]="!currentlyEditingMacro.modifiers.shift"
+                    [class.btn-success]="currentlyEditingMacro.modifiers.shift"
+                    btnCheckbox
+                    [(ngModel)]="currentlyEditingMacro.modifiers.shift">Shift</button>
+          </div>
+          <div class="col-2">
+            <button class="btn"
+                    [class.btn-secondary]="!currentlyEditingMacro.modifiers.ctrl"
+                    [class.btn-success]="currentlyEditingMacro.modifiers.ctrl"
+                    btnCheckbox
+                    [(ngModel)]="currentlyEditingMacro.modifiers.ctrl">Ctrl</button>
+          </div>
+          <div class="col-2">
+            <button class="btn"
+                    [class.btn-secondary]="!currentlyEditingMacro.modifiers.alt"
+                    [class.btn-success]="currentlyEditingMacro.modifiers.alt"
+                    btnCheckbox
+                    [(ngModel)]="currentlyEditingMacro.modifiers.alt">Alt</button>
+          </div>
+        </div>
+
+        <div class="row mb-1">
+          <div class="col-3 text-right font-weight-bold">Mode</div>
+          <div class="col-9">
+            <button class="btn"
+                    [class.btn-secondary]="!currentlyEditingMacro.clickToTarget"
+                    [class.btn-success]="currentlyEditingMacro.clickToTarget"
+                    (click)="changeMacroMode('clickToTarget')"
+                    tooltip="Clicking this macro will let you click an npc target"
+            >Need Target</button>
+            <button class="btn"
+                    [class.btn-secondary]="!currentlyEditingMacro.autoActivate"
+                    [class.btn-success]="currentlyEditingMacro.autoActivate"
+                    (click)="changeMacroMode('autoActivate')"
+                    tooltip="Clicking this macro will fire it instantly"
+            >Instant</button>
+            <button class="btn"
+                    [class.btn-secondary]="!currentlyEditingMacro.lockActivation"
+                    [class.btn-success]="currentlyEditingMacro.lockActivation"
+                    (click)="changeMacroMode('lockActivation')"
+                    tooltip="Clicking this macro will make it your default click action (similar to Attack)"
+            >Locked</button>
+          </div>
+        </div>
+
+        <div class="row mb-1">
+          <div class="col-3 text-right font-weight-bold">FG Color</div>
+          <div class="col-3">
+            <input class="form-control"
+                   cpPosition="bottom"
+                   cpAlphaChannel="disabled"
+                   [(colorPicker)]="currentlyEditingMacro.foreground"
+                   [style.background]="currentlyEditingMacro.foreground"
+                   [value]="currentlyEditingMacro.foreground"/>
+          </div>
+          <div class="col-3 text-right font-weight-bold">BG Color</div>
+          <div class="col-3">
+            <input class="form-control"
+                   cpPosition="bottom"
+                   cpAlphaChannel="disabled"
+                   [(colorPicker)]="currentlyEditingMacro.background"
+                   [style.background]="currentlyEditingMacro.background"
+                   [value]="currentlyEditingMacro.background"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6 offset-6">
+            <div class="row p-0">
+              <div class="col-3">
+                <button class="btn btn-info btn-sm" (click)="changePage(currentIconPage-1)">&lt;</button>
+              </div>
+              <div class="col-6 text-center">Page {{ currentIconPage+1 }}</div>
+              <div class="col-3">
+                <button class="btn btn-info btn-sm" (click)="changePage(currentIconPage+1)">&gt;</button>
+              </div>
+            </div>
+            <div class="d-flex flex-wrap flex-row">
+              <app-icon *ngFor="let icon of currentIconsInPage"
+                        [name]="icon"
+                        class="macro-sheet-macro"
+                        [class.active-macro]="icon === currentlyEditingMacro.icon"
+                        size="small"
+                        (click)="currentlyEditingMacro.icon = icon"
+                        [fgColor]="currentlyEditingMacro.foreground"
+                        [bgColor]="currentlyEditingMacro.background"></app-icon>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="saveMacro()">Save Macro</button>
+        <button type="button" class="btn btn-secondary" (click)="viewMacro.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #macroGroups="bs-modal" tabindex="-1" (onShow)="macroGroupModalVisible = true" (onHide)="macroGroupModalVisible = false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">All Macro Groups</h3>
+        <button type="button" class="close pull-right" (click)="macroGroups.hide()">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macroGroupModalVisible">
+        <div class="row">
+          <div class="col-6">
+            <ul class="nav nav-pills flex-column">
+              <li class="nav-item" *ngFor="let macroGroup of macroService.allMacroGroupNames()">
+                <a class="nav-link" (click)="currentMacroGroup = macroGroup" [class.active]="currentMacroGroup === macroGroup">{{ macroGroup }}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <div class="row mr-1" *ngFor="let macro of macroArray">
+              <select [(ngModel)]="macroService.allMacroGroups[currentMacroGroup][macro]"
+                      class="form-control"
+                      (change)="macroService.saveMacros()"
+                      placeholder="Select a macro">
+                <option *ngFor="let macro of macroService.allUsableMacros" [value]="macro.name">{{ macro.name }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="removeMacroGroup()" *ngIf="currentMacroGroup !== 'default'">Remove Current Group</button>
+        <button type="button" class="btn btn-primary" (click)="addMacroGroup()">New Macro Group</button>
+        <button type="button" class="btn btn-secondary" (click)="macroGroups.hide()">Close</button>
       </div>
     </div>
   </div>
