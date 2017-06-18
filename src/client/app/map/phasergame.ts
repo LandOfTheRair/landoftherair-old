@@ -314,6 +314,8 @@ export class Game {
 
     this.g.load.spritesheet('Items', `${this.assetUrl}/items.png`, 64, 64);
     this.g.load.tilemap(this.clientGameState.mapName, null, this.clientGameState.map, (<any>window).Phaser.Tilemap.TILED_JSON);
+
+    this.g.game.renderer.setTexturePriority(['Terrain', 'Walls', 'Decor', 'Creatures', 'Items']);
   }
 
   create() {
