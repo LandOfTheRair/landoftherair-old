@@ -36,7 +36,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
       const percentWay = Math.max(0, (normalizedCurrent/normalizedMax * 100)).toFixed(3);
 
-      return `You are ${percentWay}% on your way towards the next level of proficiency.`;
+      return `You are ${percentWay}% on your way towards the next level of ${skill.toUpperCase()} proficiency.`;
     });
 
   npc.parser.addCommand('train')
