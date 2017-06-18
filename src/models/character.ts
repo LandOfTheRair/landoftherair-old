@@ -2,7 +2,7 @@
 import { omitBy, merge, find, includes, compact, pull, values, floor } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
-  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses
+  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
 } from './item';
 import { MapLayer } from './gamestate';
 import { environment } from '../client/environments/environment';
@@ -477,6 +477,24 @@ export class Character {
     }
 
     return 99999999999999999999999 * level;
+  }
+
+  gainSkill(type, skillGained) {
+    if(!includes(ValidItemTypes, type) || !this.canGainSkill(type)) return;
+    this.skills[type] += skillGained;
+  }
+
+  canGainSkill(type) {
+    const curLevel = this.calcSkillLevel(type);
+    return curLevel < this.$room.state.maxSkill;
+  }
+
+  calcSkillLevel(type) {
+    return Math.pow(this.skills[type]/100, 1/2);
+  }
+
+  calcSkillXP(level: number) {
+    return Math.pow(2, level - 1) * 100;
   }
 
   tick() {

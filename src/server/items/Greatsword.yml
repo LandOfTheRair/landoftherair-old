@@ -2,5 +2,5 @@
   offense: 2
   desc: "an iron greatsword"
   baseDamage: 10
-  type: TwoHandedSword
+  type: Twohanded
   sprite: 198

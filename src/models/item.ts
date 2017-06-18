@@ -4,8 +4,8 @@ import * as uuid from 'uuid/v4';
 import { Player } from './player';
 
 export const ValidItemTypes = [
-  'Mace', 'Axe', 'Dagger', 'Magical', 'OneHandedSword', 'TwoHandedSword', 'Polearm', 'Ranged',
-  'Martial', 'Staff', 'HealingMagic', 'ElementalMagic', 'Throwing', 'Thievery', 'Shortsword'
+  'Mace', 'Axe', 'Dagger', 'Wand', 'Onehanded', 'Twohanded', 'Polearm', 'Ranged',
+  'Martial', 'Staff', 'Restoration', 'Conjuration', 'Throwing', 'Thievery', 'Shortsword'
 ];
 
 export const WeaponClasses = [

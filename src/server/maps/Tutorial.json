@@ -847,10 +847,12 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "maxSkill":3,
      "region":"Tutorial"
     },
  "propertytypes":
     {
+     "maxSkill":"int",
      "region":"string"
     },
  "renderorder":"right-down",

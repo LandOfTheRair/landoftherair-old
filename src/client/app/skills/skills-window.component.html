@@ -1,57 +1,57 @@
 <table class="table table-bordered m-0">
   <tr>
     <th><app-icon name="katana" tooltip="One-Handed Swords"></app-icon></th>
-    <td>{{ currentPlayer.skills.onehanded }}</td>
+    <td>{{ getSkillName('onehanded') }}</td>
 
     <th><app-icon name="relic-blade" tooltip="Two-Handed Swords"></app-icon></th>
-    <td>{{ currentPlayer.skills.twohanded }}</td>
+    <td>{{ getSkillName('twohanded') }}</td>
 
     <th><app-icon name="gladius" tooltip="Shortswords"></app-icon></th>
-    <td>{{ currentPlayer.skills.shortsword }}</td>
+    <td>{{ getSkillName('shortsword') }}</td>
   </tr>
 
   <tr>
     <th><app-icon name="bo" tooltip="Staves"></app-icon></th>
-    <td>{{ currentPlayer.skills.staff}}</td>
+    <td>{{ getSkillName('staff') }}</td>
 
     <th><app-icon name="sharp-halberd" tooltip="Polearms"></app-icon></th>
-    <td>{{ currentPlayer.skills.polearm }}</td>
+    <td>{{ getSkillName('polearm') }}</td>
 
     <th><app-icon name="battered-axe" tooltip="Axes"></app-icon></th>
-    <td>{{ currentPlayer.skills.axe}}</td>
+    <td>{{ getSkillName('axe') }}</td>
   </tr>
 
   <tr>
     <th><app-icon name="plain-dagger" tooltip="Daggers"></app-icon></th>
-    <td>{{ currentPlayer.skills.dagger }}</td>
+    <td>{{ getSkillName('dagger') }}</td>
 
     <th><app-icon name="flanged-mace" tooltip="Maces"></app-icon></th>
-    <td>{{ currentPlayer.skills.mace }}</td>
+    <td>{{ getSkillName('mace') }}</td>
 
     <th><app-icon name="black-belt" tooltip="Martial"></app-icon></th>
-    <td>{{ currentPlayer.skills.martial }}</td>
+    <td>{{ getSkillName('martial') }}</td>
   </tr>
 
   <tr>
     <th><app-icon name="high-shot" tooltip="Ranged Weapons"></app-icon></th>
-    <td>{{ currentPlayer.skills.ranged }}</td>
+    <td>{{ getSkillName('ranged') }}</td>
 
     <th><app-icon name="thrown-spear" tooltip="Throwing Weapons"></app-icon></th>
-    <td>{{ currentPlayer.skills.throwing}}</td>
+    <td>{{ getSkillName('throwing') }}</td>
 
     <th><app-icon name="two-shadows" tooltip="Thievery"></app-icon></th>
-    <td>{{ currentPlayer.skills.thievery }}</td>
+    <td>{{ getSkillName('thievery') }}</td>
   </tr>
 
   <tr>
     <th><app-icon name="orb-wand" tooltip="Magical Weapons"></app-icon></th>
-    <td>{{ currentPlayer.skills.wand }}</td>
+    <td>{{ getSkillName('wand') }}</td>
 
     <th><app-icon name="ankh" tooltip="Restoration Magic"></app-icon></th>
-    <td>{{ currentPlayer.skills.conjuration }}</td>
+    <td>{{ getSkillName('conjuration') }}</td>
 
     <th><app-icon name="enlightenment" tooltip="Conjuration Magic"></app-icon></th>
-    <td>{{ currentPlayer.skills.restoration }}</td>
+    <td>{{ getSkillName('restoration') }}</td>
   </tr>
 
 </table>
