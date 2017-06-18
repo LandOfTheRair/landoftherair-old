@@ -59,6 +59,9 @@ export class Stats {
   move = 3;
   hpregen = 1;
   mpregen = 1;
+
+  hp = 100;
+  mp = 0;
 }
 
 export class Character {
@@ -233,6 +236,12 @@ export class Character {
 
     if(this.leftHand && this.leftHand.stats && canGetBonusFromItemInHand(this.leftHand))    addStatsForItem(this.leftHand);
     if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
+
+    this.hp.maximum = Math.max(1, this.getTotalStat('hp'));
+    this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
+
+    this.mp.maximum = Math.max(0, this.getTotalStat('mp'));
+    this.mp.__current = Math.min(this.mp.__current, this.mp.maximum);
   }
 
   itemCheck(item: Item) {

@@ -31,6 +31,7 @@ export class NPC extends Character {
 
   init() {
     if(!this.uuid) this.uuid = uuid();
+    this.recalculateStats();
   }
 
   toJSON() {
