@@ -212,6 +212,11 @@ export class Character {
     return slot;
   }
 
+  loseStat(stat, value = 1) {
+    this.stats[stat] = Math.max(this.stats[stat] - value, 1);
+    this.recalculateStats();
+  }
+
   recalculateStats() {
     const allGear = compact(values(this.gear));
 

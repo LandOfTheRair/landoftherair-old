@@ -21,7 +21,7 @@ export const VendorResponses = (npc: NPC) => {
       const value = player.rightHand.value;
       if(value === 0) return 'That item is worthless.';
 
-      return `That item is worth about ${value.toLocaleString()} coins.`;
+      return `That item is worth about ${value.toLocaleString()} coins, but I'd only buy it for ${player.sellValue(player.rightHand).toLocaleString()} coins.`;
     });
 };
 
