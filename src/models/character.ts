@@ -450,7 +450,7 @@ export class Character {
     if(xp < 0) {
       do {
         const prevLevelXp = this.calcLevelXP(this.level);
-        if(this.exp < prevLevelXp) {
+        if(this.exp < prevLevelXp && this.level >= 2) {
           this.level -= 1;
         } else {
           break;
@@ -460,15 +460,23 @@ export class Character {
   }
 
   tryLevelUp() {
-    const neededXp = this.calcLevelXP(this.level + 1);
-    if(this.exp > neededXp) {
-      this.level += 1;
-      if(this.level > this.highestLevel) this.highestLevel = this.level;
-    }
+    do {
+      const neededXp = this.calcLevelXP(this.level + 1);
+      if(this.exp > neededXp) {
+        this.level += 1;
+        if(this.level > this.highestLevel) this.highestLevel = this.level;
+      } else {
+        break;
+      }
+    } while(true);
   }
 
   calcLevelXP(level: number) {
-    return floor(Math.round(Math.pow(level*level, 1.4) * 1000), -3);
+    if(level <= 20) {
+      return Math.pow(2, level - 1) * 1000;
+    }
+
+    return 99999999999999999999999 * level;
   }
 
   tick() {
