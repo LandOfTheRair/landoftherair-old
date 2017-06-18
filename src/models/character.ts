@@ -82,6 +82,7 @@ export class Character {
   map: string;
 
   level: number = 1;
+  highestLevel: number = 1;
 
   baseClass: CharacterClass = 'Undecided';
 
@@ -442,17 +443,32 @@ export class Character {
   gainExp(xp: number) {
     this.exp += xp;
 
-    if(this.exp <= 1) {
-      this.exp = 1;
+    if(this.exp <= 100) {
+      this.exp = 100;
+    }
+
+    if(xp < 0) {
+      do {
+        const prevLevelXp = this.calcLevelXP(this.level);
+        if(this.exp < prevLevelXp) {
+          this.level -= 1;
+        } else {
+          break;
+        }
+      } while(true);
     }
   }
 
   tryLevelUp() {
-
+    const neededXp = this.calcLevelXP(this.level + 1);
+    if(this.exp > neededXp) {
+      this.level += 1;
+      if(this.level > this.highestLevel) this.highestLevel = this.level;
+    }
   }
 
   calcLevelXP(level: number) {
-    return floor(Math.round(Math.pow(level*level, 1.4)) * 1000, -4);
+    return floor(Math.round(Math.pow(level*level, 1.4) * 1000), -3);
   }
 
   tick() {
