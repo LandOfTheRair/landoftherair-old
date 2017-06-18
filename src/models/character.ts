@@ -1,5 +1,5 @@
 
-import { omitBy, merge, find, includes, compact, pull, values } from 'lodash';
+import { omitBy, merge, find, includes, compact, pull, values, floor } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses
@@ -449,6 +449,10 @@ export class Character {
 
   tryLevelUp() {
 
+  }
+
+  calcLevelXP(level: number) {
+    return floor(Math.round(Math.pow(level*level, 1.4)) * 1000, -4);
   }
 
   tick() {
