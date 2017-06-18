@@ -4,7 +4,7 @@ import { find, isUndefined } from 'lodash';
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../models/player';
 
-export class LockerToGround extends Command {
+export class KubbyToGround extends Command {
 
   public name = '~KtG';
   public format = 'ItemSlot';
@@ -13,14 +13,14 @@ export class LockerToGround extends Command {
     const slot = +args;
     if(isUndefined(slot)) return false;
 
-    const item = player.locker[slot];
+    const item = player.kubby[slot];
     if(!item) return false;
 
     if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
 
     gameState.addItemToGround(player, item);
     room.showGroundWindow(client);
-    player.takeItemFromLocker(slot);
+    player.takeItemFromKubby(slot);
   }
 
 }

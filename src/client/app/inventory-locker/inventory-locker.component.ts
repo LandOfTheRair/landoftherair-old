@@ -3,11 +3,11 @@ import { Player } from '../../../models/player';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 @Component({
-  selector: 'app-inventory-locker',
-  templateUrl: './inventory-locker.component.html',
-  styleUrls: ['./inventory-locker.component.scss']
+  selector: 'app-inventory-kubby',
+  templateUrl: './inventory-kubby.component.html',
+  styleUrls: ['./inventory-kubby.component.scss']
 })
-export class InventoryLockerComponent {
+export class InventoryKubbyComponent {
 
   @Input()
   public player: Player = new Player({});
