@@ -8,7 +8,7 @@ import { Player } from '../../../models/player';
 import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-export type MenuContext = 'Locker' | 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment' | 'Left' | 'Right' | 'Coin';
+export type MenuContext = 'Kubby' | 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment' | 'Left' | 'Right' | 'Coin';
 
 @Component({
   selector: 'app-item',
@@ -157,9 +157,9 @@ export class ItemComponent implements OnInit {
                                           && this.item.isSackable,
                               execute: () => this.doColyseusMoveAction('S')  },
                           
-    { label: 'To Locker',     visible: () => this.context !== 'Locker'
+    { label: 'To Kubby',     visible: () => this.context !== 'Kubby'
                                           && this.context !== 'Coin'
-                                          && this.item.isLockerable,
+                                          && this.item.isKubbiable,
                               execute: () => this.doColyseusMoveAction('K')  },
                           
     { label: 'To Belt',       visible: () => this.context !== 'Belt'
@@ -231,7 +231,7 @@ export class ItemComponent implements OnInit {
     if(this.item.itemClass === 'Coin') scopes.push('coin');
 
     if(this.item.isSackable) scopes.push('sack');
-    if(this.item.isLockerable) scopes.push('sack');
+    if(this.item.isKubbiable) scopes.push('kubby');
     if(this.item.isBeltable) scopes.push('belt');
 
     this.scopes = scopes;

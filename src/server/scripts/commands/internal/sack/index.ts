@@ -3,4 +3,4 @@ export * from './sack-to-ground';
 export * from './sack-to-left';
 export * from './sack-to-right';
 export * from './sack-to-equip';
-export * from './sack-to-locker';
+export * from './sack-to-kubby';

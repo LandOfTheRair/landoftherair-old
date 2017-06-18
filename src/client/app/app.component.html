@@ -37,7 +37,7 @@
             <a class="dropdown-item" (click)="showInventorySack = !showInventorySack">Sack</a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="showInventoryLocker = !showInventoryLocker">Locker</a>
+            <a class="dropdown-item" (click)="showInventoryKubby = !showInventoryKubby">Kubby</a>
           </li>
           <li>
             <a class="dropdown-item" (click)="showEquipment = !showEquipment">Equipment</a>
@@ -194,19 +194,19 @@
   </div>
 </div>
 
-<div class="window inventory-locker-window game-window {{ lockerSize }}"
+<div class="window inventory-kubby-window game-window {{ kubbySize }}"
      [ng2-draggable]="true"
-     [ng2DraggableHandle]="lockerWindow"
-     windowName="lockerWindow"
+     [ng2DraggableHandle]="kubbyWindow"
+     windowName="kubbyWindow"
      defaultX="966"
      defaultY="538"
-     *ngIf="inGame && showInventoryLocker">
-  <div class="window-header text-center" #lockerWindow>
-    Inventory - Locker
-    <app-close-button (click)="showInventoryLocker = false"></app-close-button>
+     *ngIf="inGame && showInventoryKubby">
+  <div class="window-header text-center" #kubbyWindow>
+    Inventory - Kubby
+    <app-close-button (click)="showInventoryKubby = false"></app-close-button>
   </div>
   <div class="window-body">
-    <app-inventory-locker [size]="lockerSize" [player]="colyseus.game.character"></app-inventory-locker>
+    <app-inventory-kubby [size]="kubbySize" [player]="colyseus.game.character"></app-inventory-kubby>
   </div>
 </div>
 
@@ -283,12 +283,12 @@
         </div>
           
         <div class="row">
-          <div class="col-3 text-right font-weight-bold">Locker Icons</div>
+          <div class="col-3 text-right font-weight-bold">Kubby Icons</div>
           <div class="col">
             <div class="btn-group">
-              <label class="btn btn-info" [(ngModel)]="lockerSize" btnRadio="normal">Normal</label>
-              <label class="btn btn-info" [(ngModel)]="lockerSize" btnRadio="small">Small</label>
-              <label class="btn btn-info" [(ngModel)]="lockerSize" btnRadio="xsmall">Miniature</label>
+              <label class="btn btn-info" [(ngModel)]="kubbySize" btnRadio="normal">Normal</label>
+              <label class="btn btn-info" [(ngModel)]="kubbySize" btnRadio="small">Small</label>
+              <label class="btn btn-info" [(ngModel)]="kubbySize" btnRadio="xsmall">Miniature</label>
             </div>
           </div>
         </div>

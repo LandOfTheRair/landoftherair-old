@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   public showInventorySack: boolean;
   
   @LocalStorage()
-  public showInventoryLocker: boolean;
+  public showInventoryKubby: boolean;
   
   @LocalStorage()
   public showInventoryBelt: boolean;
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
   public sackSize: Size;
   
   @LocalStorage()
-  public lockerSize: Size;
+  public kubbySize: Size;
   
   @LocalStorage()
   public beltSize: Size;
@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
   }
 
   initDefaultOptions() {
-    ['locker', 'sack', 'belt', 'equipment', 'ground', 'logFont', 'logWindow'].forEach(opt => {
+    ['kubby', 'sack', 'belt', 'equipment', 'ground', 'logFont', 'logWindow'].forEach(opt => {
       if(this[`${opt}Size`]) return;
       this[`${opt}Size`] = 'normal';
     });

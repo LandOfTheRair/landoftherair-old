@@ -67,7 +67,7 @@ export class Character {
 
   sack: Item[] = [];
   belt: Item[] = [];
-  locker: Item[] = [];
+  kubby: Item[] = [];
 
   gear: any = {};
   leftHand: Item;
@@ -89,8 +89,8 @@ export class Character {
     this.sack = this.sack.map(item => new Item(item));
   }
   
-  initLocker() {
-    this.locker = this.locker.map(item => new Item(item));
+  initKubby() {
+    this.kubby = this.kubby.map(item => new Item(item));
   }
   
   initBelt() {
@@ -282,22 +282,22 @@ export class Character {
     return item;
   }
   
-  private fixLocker() {
-    this.locker = compact(this.locker);
+  private fixKubby() {
+    this.kubby = compact(this.kubby);
   }
   
-  fullLocker() {
-    return this.locker.length >= 20;
+  fullKubby() {
+    return this.kubby.length >= 20;
   }
   
-  addItemToLocker(item: Item) {
-    this.locker.push(item);
+  addItemToKubby(item: Item) {
+    this.kubby.push(item);
   }
   
-  takeItemFromLocker(slot: number) {
-    const item = this.locker[slot];
-    pull(this.locker, item);
-    this.fixLocker();
+  takeItemFromKubby(slot: number) {
+    const item = this.kubby[slot];
+    pull(this.kubby, item);
+    this.fixKubby();
     return item;
   }
   

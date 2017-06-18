@@ -213,7 +213,7 @@ export class ColyseusGameService {
     if(context === 'Ground') {
       args = `${item.itemClass} ${item.uuid}`;
 
-    } else if(includes(['Locker', 'Sack', 'Belt', 'Equipment'], context)) {
+    } else if(includes(['Kubby', 'Sack', 'Belt', 'Equipment'], context)) {
       args = `${contextSlot}`;
 
     } else if(context === 'Coin') {

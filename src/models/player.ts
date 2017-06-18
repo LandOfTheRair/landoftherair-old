@@ -14,7 +14,7 @@ export class Player extends Character {
   init() {
     this.initBelt();
     this.initSack();
-    this.initLocker();
+    this.initKubby();
     this.initGear();
     this.initHands();
   }
