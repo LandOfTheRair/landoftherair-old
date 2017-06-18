@@ -479,9 +479,21 @@ export class Character {
     return 99999999999999999999999 * level;
   }
 
+  isValidSkill(type) {
+    return includes(ValidItemTypes, type);
+  }
+
   gainSkill(type, skillGained) {
-    if(!includes(ValidItemTypes, type) || !this.canGainSkill(type)) return;
+    if(!this.isValidSkill(type) || !this.canGainSkill(type)) return;
+    this._gainSkill(type, skillGained);
+  }
+
+  _gainSkill(type, skillGained) {
+    type = type.toLowerCase();
+
     this.skills[type] += skillGained;
+
+    if(this.skills[type] <= 0 || isNaN(this.skills[type])) this.skills[type] = 0;
   }
 
   canGainSkill(type) {
@@ -490,7 +502,7 @@ export class Character {
   }
 
   calcSkillLevel(type) {
-    return Math.pow(this.skills[type]/100, 1/2);
+    return Math.floor(Math.pow(this.skills[type]/100, 1/2));
   }
 
   calcSkillXP(level: number) {
