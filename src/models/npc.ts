@@ -15,6 +15,11 @@ export class NPC extends Character {
   agro: any = {};
   vendorItems: Item[];
 
+  classTrain: string;
+  trainSkills: string[] = [];
+  maxSkillTrain: number;
+  maxLevelUpLevel: number;
+
   script: string;
   parser: any;
   spawner?: any;
@@ -48,8 +53,9 @@ export class NPC extends Character {
     if(!this.parser) return;
 
     this.parser.setEnv('player', player);
+    this.parser.setEnv('client', client);
     const output = this.parser.parse(message);
-    if(!output) return;
+    if(!output || output === 'undefined') return;
 
     this.setDirRelativeTo(player);
     room.sendClientLogMessage(client, { name: this.name, message: output });

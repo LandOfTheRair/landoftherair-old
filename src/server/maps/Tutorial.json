@@ -654,10 +654,14 @@
                  "name":"Healer Trainer",
                  "properties":
                     {
+                     "maxLevelUpLevel":3,
+                     "maxSkillTrain":3,
                      "script":"trainer\/healer"
                     },
                  "propertytypes":
                     {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
                      "script":"string"
                     },
                  "rotation":0,
@@ -674,10 +678,14 @@
                  "name":"Mage Trainer",
                  "properties":
                     {
+                     "maxLevelUpLevel":3,
+                     "maxSkillTrain":3,
                      "script":"trainer\/mage"
                     },
                  "propertytypes":
                     {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
                      "script":"string"
                     },
                  "rotation":0,
@@ -694,10 +702,14 @@
                  "name":"Warrior Trainer",
                  "properties":
                     {
+                     "maxLevelUpLevel":3,
+                     "maxSkillTrain":3,
                      "script":"trainer\/warrior"
                     },
                  "propertytypes":
                     {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
                      "script":"string"
                     },
                  "rotation":0,
@@ -714,10 +726,14 @@
                  "name":"Thief Trainer",
                  "properties":
                     {
+                     "maxLevelUpLevel":3,
+                     "maxSkillTrain":3,
                      "script":"trainer\/thief"
                     },
                  "propertytypes":
                     {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
                      "script":"string"
                     },
                  "rotation":0,

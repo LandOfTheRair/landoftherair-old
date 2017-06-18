@@ -1,0 +1,23 @@
+
+<div class="d-flex flex-column p-1">
+  <div class="row mt-1">
+    <div class="col-4 text-right">
+      <button class="btn btn-primary" [disabled]="colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain" (click)="train()">Train</button>
+    </div>
+    <div class="col-4 text-center">
+      <button class="btn btn-primary" [disabled]="!selectedSkill" (click)="assess()">Assess</button>
+    </div>
+    <div class="col-4">
+      <button class="btn btn-primary" [disabled]="colyseusGame.character.baseClass !== 'Undecided'" (click)="join()">Join</button>
+    </div>
+  </div>
+
+  <div class="row mt-2 px-3">
+    <div class="col-4" *ngFor="let skill of colyseusGame.showTrainer.trainSkills">
+      <div class="skill-container d-flex justify-content-center p-2" (click)="selectedSkill = skill" [class.selected]="selectedSkill === skill">
+        <app-skill-icon [skillName]="skill"></app-skill-icon>
+      </div>
+    </div>
+  </div>
+
+</div>
