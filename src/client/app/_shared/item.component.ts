@@ -1,5 +1,5 @@
 
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { environment } from '../../environments/environment';
 import { Item, WeaponClasses } from '../../../models/item';
@@ -98,7 +98,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
     
     <context-menu #contextMenu [disabled]="displayOnly">
       <ng-template *ngFor="let action of menuOptions" contextMenuItem let-item
-        [visible]="action.visible()"
+        [visible]="action.visible && action.visible()"
         (execute)="action.execute()">
         {{ action.label }}
       </ng-template>
@@ -131,10 +131,10 @@ export class ItemComponent implements OnInit {
   public scopes: string[] = [];
 
   public menuOptions = [
-    { label: 'Sense',         visible: () => false },
-    { label: 'Consume',       visible: () => false },
-    { label: 'Enchant',       visible: () => false },
-    { label: 'Imbue',         visible: () => false },
+    { label: 'Sense',         },
+    { label: 'Consume',       },
+    { label: 'Enchant',       },
+    { label: 'Imbue',         },
 
     { label: 'Equip',         visible: () => this.context !== 'Equipment'
                                           && this.context !== 'GroundGroup'

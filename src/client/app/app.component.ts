@@ -33,6 +33,11 @@ export class AppComponent implements OnInit {
   public currentMacroGroup = 'default';
   public macroArray = Array(10).fill(null).map((x, i) => i);
 
+  public optionsModalVisible = false;
+  public macroModalVisible = false;
+  public macroEditModalVisible = false;
+  public macroGroupModalVisible = false;
+
   @LocalStorage()
   public minimized;
 

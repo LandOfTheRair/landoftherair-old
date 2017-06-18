@@ -288,7 +288,7 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #options="bs-modal" tabindex="-1">
+<div class="modal fade" bsModal #options="bs-modal" tabindex="-1" (onShow)="optionsModalVisible = true" (onHide)="optionsModalVisible = false">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -297,7 +297,7 @@
           <span>&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" *ngIf="optionsModalVisible">
         <div class="row">
           <div class="col text-center"><h4>UI Window Sizes</h4></div>
         </div>
@@ -445,7 +445,7 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #macros="bs-modal" tabindex="-1">
+<div class="modal fade" bsModal #macros="bs-modal" tabindex="-1" (onShow)="macroModalVisible = true" (onHide)="macroModalVisible = false">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -456,7 +456,7 @@
         </button>
       </div>
 
-      <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded">
+      <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macroModalVisible">
         <div class="row mb-1" *ngFor="let macro of macroService.allMacroNames()">
           <div class="col-2">
             <app-icon [name]="macroService.allMacros[macro].icon"
@@ -484,7 +484,7 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #viewMacro="bs-modal" tabindex="-1">
+<div class="modal fade" bsModal #viewMacro="bs-modal" tabindex="-1" (onShow)="macroEditModalVisible = true" (onHide)="macroEditModalVisible = false">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -495,7 +495,7 @@
         </button>
       </div>
 
-      <div class="modal-body">
+      <div class="modal-body" *ngIf="macroEditModalVisible">
 
         <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Name</div>
@@ -618,7 +618,7 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #macroGroups="bs-modal" tabindex="-1">
+<div class="modal fade" bsModal #macroGroups="bs-modal" tabindex="-1" (onShow)="macroGroupModalVisible = true" (onHide)="macroGroupModalVisible = false">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -629,7 +629,7 @@
         </button>
       </div>
 
-      <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded">
+      <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macroGroupModalVisible">
         <div class="row">
           <div class="col-6">
             <ul class="nav nav-pills flex-column">
