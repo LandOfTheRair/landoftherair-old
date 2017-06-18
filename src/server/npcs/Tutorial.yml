@@ -6,6 +6,10 @@
 
   sprite: [580, 595, 610, 615]
 
+  hp:
+    min: 1000
+    max: 2000
+
   gold:
     min: 0
     max: 100
