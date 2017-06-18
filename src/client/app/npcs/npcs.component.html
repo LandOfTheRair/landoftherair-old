@@ -9,7 +9,7 @@
 
     <div class="char-card" (click)="doAction(npc)">
 
-      <div class="char-title {{ barClass(npc) }}">
+      <div class="char-title" [ngClass]="[barClass(npc)]">
         <div class="char-name">
           {{ npc.name }}
           <div class="float-right">

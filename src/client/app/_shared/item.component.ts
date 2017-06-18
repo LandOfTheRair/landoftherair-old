@@ -78,7 +78,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
     
     <div [contextMenu]="contextMenu">
     
-      <div class="item-container {{ size }}" 
+      <div class="item-container" [ngClass]="[size]"
            [isDisabled]="!showDesc" 
            triggers="dblclick:mouseleave" 
            [dragScope]="scopes"
@@ -90,7 +90,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
            [tooltip]="descText">
         <img [src]="imgUrl" [style.object-position]="spriteLocation" />
         <div class="item-background" *ngIf="showBackground"></div>
-        <div class="glow-container {{ glowColor }}" *ngIf="showDesc"></div>
+        <div class="glow-container" [ngClass]="[glowColor]" *ngIf="showDesc"></div>
         <span class="count" *ngIf="realCount > 0">{{ realCount }}</span>
       </div>
       

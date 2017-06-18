@@ -1,6 +1,6 @@
 
 <div droppable dropScope="ground" (onDrop)="colyseusGame.buildDropAction($event, 'Ground')">
-  <div class="upper-container {{ size }}">
+  <div class="upper-container" [ngClass]="[size]">
     <div class="vertical-center w-100 background-text" *ngIf="itemTypes.length === 0">There are no items here.</div>
 
     <div *ngFor="let type of itemTypes" class="item-type" [class.selected]="selectedType === type" [class.hidden]="!currentGround[type] || !currentGround[type][0]">
@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <div class="lower-container {{ size }}"
+  <div class="lower-container" [ngClass]="[size]"
        *ngIf="selectedType && currentGround[selectedType] && currentGround[selectedType].length > 0">
     <app-item *ngFor="let item of currentGround[selectedType]"
               context="Ground"
