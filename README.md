@@ -63,5 +63,6 @@ Some commands are hidden and don't really need to be used by players, but should
 * `@gold <num>` - create <num> gold on your tile
 * `@item <item name>` - create a particular item on your tile
 * `@xp <xp>` - gain <xp> XP
+* `@skill <skillname> <xpgain>` - gain <xpgain> skill for <skillname>
 * `@kill <target>` - will instantly kill <target>
 * `@teleport <x> <y> [map]` - teleport to X,Y, and if map is specified, you'll also change maps.
