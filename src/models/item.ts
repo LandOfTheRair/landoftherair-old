@@ -162,11 +162,11 @@ export class Item {
   }
 
   isRobe() {
-    return includes(RobeClasses, this.itemClass);
+    return EquipHash[this.itemClass] === 'Robe';
   }
 
   isArmor() {
-    return includes(ArmorClasses, this.itemClass);
+    return EquipHash[this.itemClass] === 'Armor';
   }
 
   toJSON() {
