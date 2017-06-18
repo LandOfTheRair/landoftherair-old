@@ -2,5 +2,5 @@
   offense: 0
   desc: "an iron longsword"
   baseDamage: 7
-  type: OneHandedSword
+  type: Onehanded
   sprite: 197

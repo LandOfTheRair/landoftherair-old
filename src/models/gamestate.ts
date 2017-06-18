@@ -162,6 +162,10 @@ export class GameState {
     });
   }
 
+  get maxSkill() {
+    return this.map.properties.maxSkill;
+  }
+
   toJSON() {
     return {
       map: this.map,

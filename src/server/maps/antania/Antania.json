@@ -119,10 +119,12 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "maxSkill":7,
      "region":"Antania"
     },
  "propertytypes":
     {
+     "maxSkill":"int",
      "region":"string"
     },
  "renderorder":"right-down",
