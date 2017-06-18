@@ -66,7 +66,7 @@ class ItemLoader {
 
     if(item.itemClass === 'Halberd') {
       item.isBeltable = false;
-      item.isLockerable = true;
+      item.isKubbiable = true;
       item.twoHanded = true;
     }
 
