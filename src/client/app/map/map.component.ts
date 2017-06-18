@@ -55,7 +55,12 @@ export class MapComponent implements OnInit, OnDestroy {
       this.game = new Game(this.clientGameState, this.currentPlayer);
       this.game.moveCallback = (x, y) => this.colyseus.game.doMove(x, y);
       this.game.interactCallback = (x, y) => this.colyseus.game.doInteract(x, y);
-      this.phaser = new (<any>window).Phaser.Game(boxSize, boxSize, (<any>window).Phaser.WEBGL_MULTI, 'map', this.game);
+      const config = {
+        width: boxSize, height: boxSize,
+        multiTexture: true, renderer: (<any>window).Phaser.WEBGL_MULTI,
+        state: this.game, parent: 'map'
+      };
+      this.phaser = new (<any>window).Phaser.Game(config);
 
       this.create$ = this.clientGameState.createPlayer$.subscribe((player) => {
         this.game.canCreate.then(() => {
