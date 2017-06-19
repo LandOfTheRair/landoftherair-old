@@ -48,7 +48,8 @@ Some commands are hidden and don't really need to be used by players, but should
 
 #### Internal Commands
 
-* `~look` - look at the ground (currently this has to be done manually, since there is no macro support)
+* `~look` - look at the ground (only used by `~search`)
+* `~use` - use an item
 * `~search` - search corpses on the ground, then look.
 * `~interact` - called when clicking on something interactable
 * `~move` - called when clicking on the map to move
@@ -63,6 +64,6 @@ Some commands are hidden and don't really need to be used by players, but should
 * `@gold <num>` - create <num> gold on your tile
 * `@item <item name>` - create a particular item on your tile
 * `@xp <xp>` - gain <xp> XP
-* `@skill <skillname> <xpgain>` - gain <xpgain> skill for <skillname>
-* `@kill <target>` - will instantly kill <target>
+* `@skill <skillname> <xpgain>` - gain `xpgain` skill for `skillname`
+* `@kill <target>` - will instantly kill `target`
 * `@teleport <x> <y> [map]` - teleport to X,Y, and if map is specified, you'll also change maps.
