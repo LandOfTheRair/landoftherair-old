@@ -27,6 +27,7 @@ import { LifeHeartComponent } from './_shared/life-heart.component';
 import { ItemComponent } from './_shared/item.component';
 import { IconComponent } from './_shared/icon.component';
 import { SkillIconComponent } from './_shared/skill-icon.component';
+import { StatusEffectComponent } from './_shared/status-effect.component';
 
 import { LobbyComponent } from './lobby/lobby.component';
 import { CharacterSelectComponent } from './character-select/character-select.component';
@@ -66,6 +67,8 @@ import { TrainerComponent } from './trainer/trainer.component';
     ItemComponent,
     IconComponent,
     SkillIconComponent,
+    StatusEffectComponent,
+
     LogWindowComponent,
     StatusWindowComponent,
     GroundComponent,

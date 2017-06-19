@@ -12,3 +12,5 @@ export * from './MinorLUK';
 export * from './MinorCHA';
 export * from './MinorHP';
 export * from './MinorMP';
+
+export * from './TrueSight';

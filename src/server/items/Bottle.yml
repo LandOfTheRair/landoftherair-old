@@ -106,3 +106,12 @@
     name: MinorMP
     potency: 3
   value: 150000
+
+- name: TrueSight Potion
+  desc: "a small bottle covered with eyes"
+  extendedDesc: "a potion of TrueSight"
+  sprite: 254
+  effect:
+    name: TrueSight
+    duration: 100
+  value: 200

@@ -11,12 +11,17 @@ export class Effect {
 
   name = '';
   iconData = {};
+  _baseDuration = 0;
   duration = 0;
   potency = 0;
   stats = {};
 
   constructor(opts) {
     extend(this, opts);
+
+    if(!this._baseDuration) {
+      this._baseDuration = this.duration;
+    }
   }
 
   tick(char: Character) {
