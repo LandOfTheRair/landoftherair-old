@@ -106,6 +106,10 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_trainer', trainSkills: npc.trainSkills, classTrain: npc.classTrain, uuid: npc.uuid });
   }
 
+  showShopWindow(client, npc: NPC) {
+    this.send(client, { action: 'show_shop', vendorItems: npc.vendorItems, uuid: npc.uuid });
+  }
+
   teleport(client, player, { newMap, x, y }) {
     if(newMap && !this.allMapNames[newMap]) {
       this.sendClientLogMessage(client, `Warning: map "${newMap}" does not exist.`);

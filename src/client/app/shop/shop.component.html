@@ -1,0 +1,36 @@
+
+<div class="p-1 shop-container" droppable dropScope="merchant" (onDrop)="colyseusGame.buildDropAction($event, 'Merchant')">
+  <div class="row p-0">
+
+    <div class="col-9 shop-area d-flex flex-wrap flex-row">
+
+      <h4 class="w-100 text-center">Vendor Items</h4>
+
+      <div class="item-slot item-background" *ngFor="let slot of shopSlots">
+        <app-item *ngIf="colyseusGame.showShop.vendorItems[slot]"
+                  [item]="colyseusGame.showShop.vendorItems[slot]"
+                  [count]="colyseusGame.showShop.vendorItems[slot].value"
+                  [containerUUID]="colyseusGame.showShop.uuid"
+                  [showDesc]="true"
+                  context="Merchant"
+                  [contextSlot]="slot"></app-item>
+      </div>
+
+    </div>
+
+    <div class="col-3 buyback-area d-flex flex-wrap flex-column">
+
+      <h4 class="w-100 text-center">Buyback</h4>
+
+      <div class="item-slot item-background" *ngFor="let slot of buybackSlots">
+        <app-item *ngIf="colyseusGame.character.buyback && colyseusGame.character.buyback[slot]"
+                  [item]="colyseusGame.character.buyback[slot]"
+                  [count]="colyseusGame.character.buyback[slot]._buybackValue"
+                  [showDesc]="true"
+                  context="Obtainagain"
+                  [contextSlot]="slot"></app-item>
+      </div>
+    </div>
+
+  </div>
+</div>

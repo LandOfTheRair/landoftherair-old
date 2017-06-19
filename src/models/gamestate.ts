@@ -37,6 +37,10 @@ export class GameState {
     this.mapNPCs.push(npc);
   }
 
+  findNPC(uuid: string) {
+    return find(this.mapNPCs, { uuid });
+  }
+
   removeNPC(npc: NPC) {
     pull(this.mapNPCs, npc);
   }

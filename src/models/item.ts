@@ -119,6 +119,7 @@ export class Item {
 
   ounces = 0;
   value = 0;
+  _buybackValue?: number;
   stats: any = {};
   requirements?: ItemRequirements;
   condition: number = 20000;
@@ -142,6 +143,10 @@ export class Item {
   constructor(opts) {
     extend(this, opts);
     if(!this.uuid) this.uuid = uuid();
+  }
+
+  regenerateUUID() {
+    this.uuid = uuid();
   }
 
   get conditionString() {

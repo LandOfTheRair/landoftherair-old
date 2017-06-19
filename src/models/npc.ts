@@ -13,6 +13,7 @@ export class NPC extends Character {
 
   hostility: Hostility = 'OnHit';
   agro: any = {};
+
   vendorItems: Item[];
 
   classTrain: string;

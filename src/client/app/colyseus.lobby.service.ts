@@ -91,7 +91,7 @@ export class ColyseusLobbyService {
     }).then(username => {
       localStorage.setItem('user_name', username);
       this.sendUserId();
-    });
+    }).reject(() => {});
   }
 
   private setAccount(account) {
