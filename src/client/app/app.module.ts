@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { NgxAutoScrollDirective } from './ngx-auto-scroll.directive';
 import { DraggableWindowDirective } from './draggable.directive';
 
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
-import { NgxAutoScroll } from 'ngx-auto-scroll';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -54,8 +54,8 @@ import { ShopComponent } from './shop/shop.component';
     LobbyComponent,
 
     DraggableWindowDirective,
+    NgxAutoScrollDirective,
 
-    NgxAutoScroll,
     CharacterSelectComponent,
     MapComponent,
     StatsWindowComponent,
