@@ -9,9 +9,9 @@
       <div class="item-slot item-background" *ngFor="let slot of shopSlots">
         <app-item *ngIf="colyseusGame.showShop.vendorItems[slot]"
                   [item]="colyseusGame.showShop.vendorItems[slot]"
-                  [count]="colyseusGame.showShop.vendorItems[slot].value"
                   [containerUUID]="colyseusGame.showShop.uuid"
                   [showDesc]="true"
+                  [showValue]="true"
                   context="Merchant"
                   [contextSlot]="slot"></app-item>
       </div>
@@ -25,8 +25,8 @@
       <div class="item-slot item-background" *ngFor="let slot of buybackSlots">
         <app-item *ngIf="colyseusGame.character.buyback && colyseusGame.character.buyback[slot]"
                   [item]="colyseusGame.character.buyback[slot]"
-                  [count]="colyseusGame.character.buyback[slot]._buybackValue"
                   [showDesc]="true"
+                  [showValue]="true"
                   context="Obtainagain"
                   [contextSlot]="slot"></app-item>
       </div>

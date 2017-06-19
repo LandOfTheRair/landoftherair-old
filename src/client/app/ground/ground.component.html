@@ -8,8 +8,9 @@
         *ngIf="currentGround[type] && currentGround[type][0]"
         context="GroundGroup"
         [size]="size"
+        [showValue]="currentGround[type][0].itemClass === 'Coin'"
         [item]="currentGround[type][0]"
-        [count]="currentGround[type].length"
+        [count]="currentGround[type][0].itemClass === 'Coin' ? 0 : currentGround[type].length"
         (click)="selectedType = type"></app-item>
     </div>
   </div>
@@ -20,6 +21,7 @@
               context="Ground"
               [item]="item"
               [size]="size"
+              [showValue]="item.itemClass === 'Coin'"
               [showBackground]="true"
               [showDesc]="true"></app-item>
   </div>
