@@ -3,6 +3,9 @@
   desc: "a small bottle filled with fizzy purple liquid"
   extendedDesc: "a mending potion"
   sprite: 107
+  effect:
+    name: ExactHeal
+    potency: 50
   value: 5
 
 - name: Antanian Strength Potion

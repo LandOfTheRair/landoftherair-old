@@ -4,6 +4,7 @@ import * as swal from 'sweetalert2';
 
 import { find, includes } from 'lodash';
 import { Player } from '../../models/player';
+import { Item } from '../../models/item';
 
 @Injectable()
 export class ColyseusGameService {
@@ -268,5 +269,9 @@ export class ColyseusGameService {
     }
 
     this.sendRawCommand(cmd, args);
+  }
+
+  public buildUseAction(item: Item, context: string, contextSlot: string|number) {
+    this.sendRawCommand('~use', `${context} ${contextSlot || -1} ${item.itemClass} ${item.uuid}`);
   }
 }

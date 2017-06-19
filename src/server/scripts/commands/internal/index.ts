@@ -6,6 +6,7 @@ export * from './Talk';
 export * from './Restore';
 export * from './Search';
 export * from './Drink';
+export * from './Use';
 
 export * from './ground';
 export * from './left';
