@@ -36,14 +36,22 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
       top: 0;
     }
     
-    .count {
+    .count, .value {
       position: absolute;
       color: #000;
       text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
-      top: 5px;
-      right: 5px;
       font-size: 0.7rem;
       z-index: 560;
+    }
+    
+    .count {
+      top: 5px;
+      right: 5px;
+    }
+    
+    .value {
+      bottom: 5px;
+      left: 5px;
     }
     
     .glow-container {
@@ -92,6 +100,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
         <div class="item-background" *ngIf="showBackground"></div>
         <div class="glow-container" [ngClass]="[glowColor]" *ngIf="showDesc"></div>
         <span class="count" *ngIf="realCount > 0">{{ realCount }}</span>
+        <span class="value" *ngIf="showValue">{{ item._buybackValue || item.value }}</span>
       </div>
       
     </div>
@@ -115,6 +124,12 @@ export class ItemComponent implements OnInit {
 
   @Input()
   public showDesc = true;
+
+  @Input()
+  public showValue = false;
+
+  @Input()
+  public showOunces = false;
 
   @Input()
   public showBackground: boolean;
@@ -183,7 +198,6 @@ export class ItemComponent implements OnInit {
   }
 
   get realCount() {
-    if(this.item.itemClass === 'Coin') return this.item.value;
     return this.count;
   }
 

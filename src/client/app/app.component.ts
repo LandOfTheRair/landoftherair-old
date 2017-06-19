@@ -166,7 +166,7 @@ export class AppComponent implements OnInit {
       }
     }).then(name => {
       this.macroService.addMacroGroup(name);
-    }).reject(() => {});
+    }).catch(() => {});
   }
 
   removeMacroGroup() {

@@ -259,6 +259,7 @@ export class ColyseusGameService {
       (<any>swal)({
         titleText: 'Take Gold From Stash',
         input: 'number',
+        inputValue: 1,
         inputAttributes: {
           min: 0,
           max: count
@@ -272,7 +273,7 @@ export class ColyseusGameService {
       }).then(amount => {
         args = amount;
         this.sendRawCommand(cmd, args);
-      }).reject(() => {});
+      }).catch(() => {});
 
       return;
 
@@ -294,7 +295,7 @@ export class ColyseusGameService {
         }).then(amount => {
           args = `${containerUUID} ${item.uuid} ${amount}`;
           this.sendRawCommand(cmd, args);
-        }).reject(() => {});
+        }).catch(() => {});
       } else {
         args = `${containerUUID} ${item.uuid} 1`;
         this.sendRawCommand(cmd, args);
