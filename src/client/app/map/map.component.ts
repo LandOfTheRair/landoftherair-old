@@ -35,7 +35,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   started: boolean;
 
-  constructor(private colyseus: ColyseusService) {}
+  constructor(public colyseus: ColyseusService) {}
 
   private cleanCanvases() {
     const elements = document.getElementsByTagName('canvas');

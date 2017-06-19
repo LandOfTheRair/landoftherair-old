@@ -1,5 +1,5 @@
 
-<div class="p-1 message-container" [ngClass]="['window-size-' + windowSize]" ngx-auto-scroll lock-y-offset="30">
+<div class="p-1 message-container" [ngClass]="['window-size-' + windowSize]" appNgxAutoScroll lockYOffset="30">
   <div class="message" [ngClass]="['font-size-'+fontSize]" *ngFor="let message of clientGameState.logMessages">
     <strong *ngIf="message.name">{{ message.name }}: </strong>{{ message.message }}
   </div>

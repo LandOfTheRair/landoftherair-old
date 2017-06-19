@@ -1,7 +1,7 @@
 
 <div class="container p-0">
 
-  <div class="chat-area p-0" ngx-auto-scroll lock-y-offset="30">
+  <div class="chat-area p-0" appNgxAutoScroll lockYOffset="30">
     <div class="message" *ngFor="let message of lobbyState.messages">
       <span class="account">[{{ message.account }}]</span>
       <span class="message">{{ message.message }}</span>
