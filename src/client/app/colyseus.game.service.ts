@@ -24,7 +24,7 @@ export class ColyseusGameService {
 
   private changingMap: boolean;
 
-  public currentCommand: string = '';
+  public currentCommand = '';
 
   constructor() {}
 

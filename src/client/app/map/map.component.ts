@@ -95,7 +95,7 @@ export class MapComponent implements OnInit, OnDestroy {
         }
 
         this.currentPlayer = player;
-      })
+      });
     });
   }
 

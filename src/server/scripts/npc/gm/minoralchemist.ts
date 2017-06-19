@@ -19,7 +19,6 @@ export const setup = async (npc: NPC) => {
     'Antanian Magic Potion'
   ];
 
-  
   NPCLoader.loadVendorItems(npc, vendorItems);
 
   npc.gear.Armor = await NPCLoader.loadItem('Battlemage Armor');

@@ -3,13 +3,15 @@ import { extend, remove, find } from 'lodash';
 
 import { Player } from '../../models/player';
 
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
+
 import { NPC } from '../../models/npc';
 
 export class ClientGameState {
   players: Player[] = [];
   map: any = {};
-  mapName: string = '';
+  mapName = '';
   mapData: any = { openDoors: {} };
   mapNPCs: NPC[] = [];
   fov: any = {};

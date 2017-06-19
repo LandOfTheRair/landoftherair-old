@@ -8,9 +8,9 @@ export class Account {
   userId: string;
   username: string;
   characterNames: string[] = [];
-  maxCharacters: number = 4;
+  maxCharacters = 4;
 
-  isGM: boolean = false;
+  isGM = false;
 
   constructor(opts) {
     extend(this, opts);

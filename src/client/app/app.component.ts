@@ -21,8 +21,6 @@ type Theme = 'Light' | 'Dark';
 })
 export class AppComponent implements OnInit {
 
-  constructor(public colyseus: ColyseusService, public macroService: MacroService) {}
-
   @ViewChild('viewMacro')
   public viewMacroModal;
 
@@ -98,6 +96,8 @@ export class AppComponent implements OnInit {
   get inGame() {
     return this.colyseus.game.inGame;
   }
+
+  constructor(public colyseus: ColyseusService, public macroService: MacroService) {}
 
   ngOnInit() {
     if(!this.minimized) this.minimized = {};
@@ -211,6 +211,6 @@ export class AppComponent implements OnInit {
     if(newPage > maxPage) return;
     this.currentIconPage = newPage;
     const page = this.currentIconPage * pageSize;
-    this.currentIconsInPage = this.allMacroIcons.slice(page, page+pageSize);
+    this.currentIconsInPage = this.allMacroIcons.slice(page, page + pageSize);
   }
 }

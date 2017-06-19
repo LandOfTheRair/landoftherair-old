@@ -48,16 +48,16 @@ import { environment } from '../../environments/environment';
 export class IconComponent {
 
   @Input()
-  public name: string = 'undecided';
+  public name = 'undecided';
 
   @Input()
   public size: 'normal' | 'small' | 'xsmall' = 'normal';
 
   @Input()
-  public bgColor: string = 'white';
+  public bgColor = 'white';
 
   @Input()
-  public fgColor: string = '#000';
+  public fgColor = '#000';
 
   get imgUrl() {
     return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets/icons/${this.name || 'undecided'}.svg`;

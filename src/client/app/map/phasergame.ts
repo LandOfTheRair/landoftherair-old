@@ -75,7 +75,7 @@ export class Game {
       this.updatePlayerSprite(this.playerSprite, player);
 
     } else {
-      let sprite = find(this.otherPlayerSprites, { username: player.username });
+      const sprite = find(this.otherPlayerSprites, { username: player.username });
       if(!sprite) {
         this.createPlayer(player);
       } else {
@@ -90,9 +90,9 @@ export class Game {
       delete this.playerSprite;
 
     } else {
-      const sprite = find(this.otherPlayerSprites, { username: player.username });
-      if(!sprite) return;
-      sprite.destroy();
+      const oldSprite = find(this.otherPlayerSprites, { username: player.username });
+      if(!oldSprite) return;
+      oldSprite.destroy();
       remove(this.otherPlayerSprites, sprite => sprite.username === player.username);
     }
   }
@@ -142,7 +142,7 @@ export class Game {
     const spriteGender = this.getStartingSpriteForSex(player.sex);
     const spriteDir = this.getSpriteOffsetForDirection(player.dir);
 
-    const sprite = this.g.add.sprite(player.x * 64, player.y * 64, 'Creatures', spriteGender+spriteDir);
+    const sprite = this.g.add.sprite(player.x * 64, player.y * 64, 'Creatures', spriteGender + spriteDir);
     sprite.username = player.username;
 
     this.updatePlayerSprite(sprite, player);
@@ -199,7 +199,7 @@ export class Game {
       const xDiff = xCoord - xPlayer;
       const yDiff = yCoord - yPlayer;
 
-      const possibleInteractable = find(this.map.objects.Interactables, { x: xCoord*64, y: (yCoord+1)*64 });
+      const possibleInteractable = find(this.map.objects.Interactables, { x: xCoord * 64, y: (yCoord + 1) * 64 });
 
       if(possibleInteractable) {
         // check if it's within "interact" range
@@ -215,12 +215,12 @@ export class Game {
   }
 
   private showItemSprites(centerX, centerY) {
-    for(let x = centerX-4; x <= centerX+4; x++) {
+    for(let x = centerX - 4; x <= centerX + 4; x++) {
 
       const itemPatchX = this.clientGameState.groundItems[x];
       if(!itemPatchX) continue;
 
-      for(let y = centerY-4; y <= centerY+4; y++) {
+      for(let y = centerY - 4; y <= centerY + 4; y++) {
         const itemPatchY = this.clientGameState.groundItems[x][y];
         if(!itemPatchY) continue;
 

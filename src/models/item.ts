@@ -122,7 +122,7 @@ export class Item {
   _buybackValue?: number;
   stats: any = {};
   requirements?: ItemRequirements;
-  condition: number = 20000;
+  condition = 20000;
   type = 'Martial';
 
   twoHanded = false;

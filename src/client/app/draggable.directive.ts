@@ -3,18 +3,42 @@ import { Directive, Input, ElementRef, HostListener, OnInit } from '@angular/cor
 import { isUndefined } from 'lodash';
 
 @Directive({
-  selector: '[ng2-draggable]'
+  selector: '[appDraggableWindow]'
 })
-export class Draggable implements OnInit {
+export class DraggableWindowDirective implements OnInit {
   private topStart: number;
   private leftStart: number;
-  private _allowDrag: boolean = true;
+  private _allowDrag = true;
   private md: boolean;
   private _handle: HTMLElement;
 
+  @Input('appDraggableWindow')
+  set allowDrag(value: boolean){
+    this._allowDrag = value;
+    if(this._allowDrag) {
+      this.element.nativeElement.className += ' cursor-draggable';
+    } else {
+      this.element.nativeElement.className = this.element.nativeElement.className.replace(' cursor-draggable', '');
+    }
+  }
+
+  @Input('windowHandle')
+  set windowHandle(handle: HTMLElement){
+    this._handle = handle;
+  }
+
+  @Input()
+  public windowName: string;
+
+  @Input()
+  public defaultX: number;
+
+  @Input()
+  public defaultY: number;
+
   constructor(public element: ElementRef) {}
 
-  ngOnInit(){
+  ngOnInit() {
     // css changes
     if(this._allowDrag) {
       this.element.nativeElement.style.position = 'relative';
@@ -55,8 +79,8 @@ export class Draggable implements OnInit {
     if(event.button === 2 || (this._handle !== undefined && event.target !== this._handle)) return;
 
     this.md = true;
-    this.topStart = event.clientY - this.element.nativeElement.style.top.replace('px','');
-    this.leftStart = event.clientX - this.element.nativeElement.style.left.replace('px','');
+    this.topStart = event.clientY - this.element.nativeElement.style.top.replace('px', '');
+    this.leftStart = event.clientX - this.element.nativeElement.style.left.replace('px', '');
   }
 
   @HostListener('document:mouseup', ['$event'])
@@ -96,28 +120,4 @@ export class Draggable implements OnInit {
     }
     event.stopPropagation();
   }
-
-  @Input('ng2-draggable')
-  set allowDrag(value: boolean){
-    this._allowDrag = value;
-    if(this._allowDrag) {
-      this.element.nativeElement.className += ' cursor-draggable';
-    } else {
-      this.element.nativeElement.className = this.element.nativeElement.className.replace(' cursor-draggable', '');
-    }
-  }
-
-  @Input()
-  set ng2DraggableHandle(handle: HTMLElement){
-    this._handle = handle;
-  }
-
-  @Input()
-  public windowName: string;
-
-  @Input()
-  public defaultX: number;
-
-  @Input()
-  public defaultY: number;
 }

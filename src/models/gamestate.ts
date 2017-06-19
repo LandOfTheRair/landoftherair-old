@@ -24,7 +24,7 @@ export const MapLayer = {
 export class GameState {
   players: Player[] = [];
   map: any = {};
-  mapName: string = '';
+  mapName = '';
   mapData: any = { openDoors: {} };
   mapNPCs: NPC[] = [];
 
@@ -74,10 +74,10 @@ export class GameState {
 
   getPlayersInRange(x, y, radius) {
     return reject(this.players, p => {
-      return p.x < radius-x
-          || p.x > radius+x
-          || p.y < radius-y
-          || p.y > radius+y;
+      return p.x < radius - x
+          || p.x > radius + x
+          || p.y < radius - y
+          || p.y > radius + y;
     });
   }
 
@@ -93,7 +93,7 @@ export class GameState {
     door.opacity = !door.isOpen;
     door.density = !door.isOpen;
 
-    this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y-64 };
+    this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y - 64 };
   }
 
   isItemValueStackable(item: Item) {
@@ -159,7 +159,7 @@ export class GameState {
     this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
       const tile = denseLayer[(y * this.map.width) + x];
       if(tile === 0) {
-        const object = find(checkObjects, { x: x*64, y: (y+1)*64 });
+        const object = find(checkObjects, { x: x * 64, y: (y + 1) * 64 });
         return !object || (object && !object.opacity);
       }
       return false;
@@ -178,6 +178,6 @@ export class GameState {
       mapNPCs: this.mapNPCs,
       players: this.players,
       groundItems: this.groundItems
-    }
+    };
   }
 }

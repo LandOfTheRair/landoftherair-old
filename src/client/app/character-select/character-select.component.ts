@@ -19,7 +19,7 @@ export class CharacterSelectComponent implements OnInit {
 
   public charSlots: any[];
 
-  public curSlot: number = 0;
+  public curSlot = 0;
 
   public confirmOverwrite: boolean;
 
