@@ -150,6 +150,7 @@ export class GameWorld extends Room<GameState> {
 
     const player = new Player(playerData);
     player.$room = this;
+    player.initServer();
     this.setUpClassFor(player);
     this.state.addPlayer(player);
   }
