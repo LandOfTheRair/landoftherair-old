@@ -36,7 +36,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
       top: 0;
     }
     
-    .count, .value {
+    .count, .value, .ounces {
       position: absolute;
       color: #000;
       text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
@@ -51,6 +51,11 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
     
     .value {
       bottom: 5px;
+      left: 5px;
+    }
+    
+    .ounces {
+      top: 5px;
       left: 5px;
     }
     
@@ -100,6 +105,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
         <div class="item-background" *ngIf="showBackground"></div>
         <div class="glow-container" [ngClass]="[glowColor]" *ngIf="showDesc"></div>
         <span class="count" *ngIf="realCount > 0">{{ realCount }}</span>
+        <span class="ounces" *ngIf="showOunces && item.ounces > 0">{{ item.ounces }}</span>
         <span class="value" *ngIf="showValue">{{ item._buybackValue || item.value }}</span>
       </div>
       
