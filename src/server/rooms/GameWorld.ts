@@ -1,5 +1,5 @@
 
-import { omitBy, startsWith, isString, isObject, cloneDeep, sample } from 'lodash';
+import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find } from 'lodash';
 
 import { Parser } from 'mingy';
 
@@ -77,6 +77,11 @@ export class GameWorld extends Room<GameState> {
     }
 
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
+  }
+
+  sendPlayerLogMessage(player: Player, messageData) {
+    const client = find(this.clients, { username: player.username });
+    this.sendClientLogMessage(client, messageData);
   }
 
   sendClientLogMessage(client, messageData) {

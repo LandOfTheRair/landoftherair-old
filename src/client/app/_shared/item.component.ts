@@ -142,10 +142,10 @@ export class ItemComponent implements OnInit {
                                           && this.isEquippable,
                               execute: () => this.doColyseusMoveAction('E') },
 
-    { label: 'To Right Hand', visible: () => !this.player.rightHand,
+    { label: 'To Right Hand', visible: () => this.context === 'Left' || !this.player.rightHand,
                               execute: () => this.doColyseusMoveAction('R')  },
 
-    { label: 'To Left Hand',  visible: () => !this.player.leftHand,
+    { label: 'To Left Hand',  visible: () => this.context === 'Right' || !this.player.leftHand,
                               execute: () => this.doColyseusMoveAction('L')  },
 
     { label: 'To Ground',     visible: () => this.context !== 'Ground'
@@ -159,7 +159,12 @@ export class ItemComponent implements OnInit {
 
     { label: 'To Belt',       visible: () => this.context !== 'Belt'
                                           && this.item.isBeltable,
-                              execute: () => this.doColyseusMoveAction('B')  }
+                              execute: () => this.doColyseusMoveAction('B')  },
+
+    { label: 'Use',           visible: () => this.item.canUse && this.item.canUse(this.player)
+                                          && this.context !== 'Ground'
+                                          && this.context !== 'Equipment',
+                              execute: () => this.doColyseusUseAction()  }
   ];
 
   get displayOnly(): boolean {
@@ -215,6 +220,10 @@ export class ItemComponent implements OnInit {
     this.colyseusGame.buildAction(this.item, { context: this.context, count: this.count, contextSlot: this.contextSlot }, choice);
   }
 
+  doColyseusUseAction() {
+    this.colyseusGame.buildUseAction(this.item, this.context, this.contextSlot);
+  }
+
   determineScopes() {
     const scopes = ['ground', 'mapground'];
     const itemType = this.player.determineItemType(this.item.itemClass);
@@ -222,7 +231,7 @@ export class ItemComponent implements OnInit {
       scopes.push(itemType.toLowerCase());
     }
 
-    if(!this.player.leftHand || !this.player.rightHand) {
+    if(!this.player.leftHand || !this.player.rightHand || this.context === 'Left' || this.context === 'Right') {
       scopes.push('right');
       scopes.push('left');
     }

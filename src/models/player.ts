@@ -16,6 +16,7 @@ export class Player extends Character {
     this.initSack();
     this.initGear();
     this.initHands();
+    this.initEffects();
     this.recalculateStats();
   }
 
@@ -54,5 +55,9 @@ export class Player extends Character {
     // every cha after 10 increases the sale value by ~2%
     const valueMod = 10 - ((this.getTotalStat('cha') - 10) / 5);
     return Math.floor(item.value / valueMod);
+  }
+
+  sendClientMessage(message) {
+    this.$room.sendPlayerLogMessage(this, message);
   }
 }

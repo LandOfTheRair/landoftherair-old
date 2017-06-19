@@ -2,6 +2,10 @@
 import { extend, omitBy, includes, without } from 'lodash';
 import * as uuid from 'uuid/v4';
 import { Player } from './player';
+import { Character } from './character';
+
+import * as Effects from '../server/effects';
+import { Logger } from '../server/logger';
 
 export const ValidItemTypes = [
   'Mace', 'Axe', 'Dagger', 'Wand', 'Onehanded', 'Twohanded', 'Polearm', 'Ranged',
@@ -133,6 +137,8 @@ export class Item {
 
   $heldBy;
 
+  effect: any;
+
   constructor(opts) {
     extend(this, opts);
     if(!this.uuid) this.uuid = uuid();
@@ -167,6 +173,24 @@ export class Item {
 
   isArmor() {
     return EquipHash[this.itemClass] === 'Armor';
+  }
+
+  canUse(char: Character) {
+    return this.effect && (!this.owner || this.owner && (<any>char).username === this.owner);
+  }
+
+  use(char: Character) {
+    if(!this.canUse(char)) return false;
+    if(this.effect) {
+      if(!Effects[this.effect.name]) {
+        Logger.error(new Error(`Error: Effect ${this.effect.name} does not exist.`));
+        return false;
+      }
+
+      char.applyEffect(new Effects[this.effect.name](this.effect));
+    }
+
+    return true;
   }
 
   toJSON() {

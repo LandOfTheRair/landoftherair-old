@@ -1,5 +1,5 @@
 
-import { omitBy, merge, find, includes, compact, pull, values, floor } from 'lodash';
+import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
@@ -8,6 +8,8 @@ import { MapLayer } from './gamestate';
 import { environment } from '../client/environments/environment';
 
 import * as Classes from '../server/classes';
+import { Effect } from '../server/base/Effect';
+import * as Effects from '../server/effects';
 
 export type Allegiance =
   'None'
@@ -94,6 +96,8 @@ export class Character {
   sack: Item[] = [];
   belt: Item[] = [];
 
+  effects: Effect[] = [];
+
   gear: any = {};
   leftHand: Item;
   rightHand: Item;
@@ -137,6 +141,10 @@ export class Character {
       if(!this.gear[slot]) return;
       this.gear[slot] = new Item(this.gear[slot]);
     });
+  }
+
+  initEffects() {
+    this.effects = this.effects.map(x => new Effects[x.name](x));
   }
 
   constructor(opts) {
@@ -535,6 +543,47 @@ export class Character {
     return Math.pow(2, level) * 100;
   }
 
+  applyEffect(effect: Effect) {
+    const existingEffect = this.hasEffect(effect.name);
+    if(existingEffect) {
+      this.unapplyEffect(effect);
+    }
+
+    this.effects.push(effect);
+    effect.effectStart(this);
+  }
+
+  unapplyEffect(effect: Effect) {
+    pull(this.effects, effect);
+  }
+
+  hasEffect(effectName) {
+    return find(this.effects, { name: effectName });
+  }
+
+  useItem(source: 'leftHand' | 'rightHand') {
+    const item = this[source];
+    if(!item || !item.use(this)) return;
+
+    let remove = false;
+
+    if(item.ounces === 0) {
+      this.sendClientMessage('The bottle was empty.');
+      remove = true;
+
+    } else if(item.ounces > 0) {
+      item.ounces--;
+      if(item.ounces <= 0) remove = true;
+    }
+
+    if(remove) {
+      this[source] = null;
+      this.recalculateStats();
+    }
+  }
+
+  sendClientMessage(message) {}
+
   tick() {
     if(this.isDead()) {
       if(this.$corpseRef && this.$corpseRef.$heldBy) {
@@ -564,5 +613,7 @@ export class Character {
       const hpLost = Math.floor(this.hp.maximum * (hpPercentLost/100));
       this.hp.sub(hpLost);
     }
+
+    this.effects.forEach(eff => eff.tick(this));
   }
 }
