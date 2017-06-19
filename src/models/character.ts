@@ -550,12 +550,15 @@ export class Character {
       this.unapplyEffect(effect);
     }
 
-    this.effects.push(effect);
+    if(effect.duration > 0) {
+      this.effects.push(effect);
+    }
+
     effect.effectStart(this);
   }
 
   unapplyEffect(effect: Effect) {
-    pull(this.effects, effect);
+    this.effects = this.effects.filter(eff => eff.name !== effect.name);
   }
 
   hasEffect(effectName) {

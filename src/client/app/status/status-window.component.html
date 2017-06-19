@@ -1,6 +1,9 @@
 <div class="row ml-0 mr-0">
-  <div class="col-8">
-    <div class="vertical-center h-100 background-text">You have no buffs.</div>
+  <div class="col-8 d-flex flex-row flex-wrap p-0" [class.justify-content-center]="player.effects.length === 0">
+    <div class="vertical-center h-100 background-text" *ngIf="player.effects.length === 0">You have no status effects.</div>
+    <div *ngFor="let effect of player.effects" class="effect-container">
+      <app-status-effect [effect]="effect"></app-status-effect>
+    </div>
   </div>
   <div class="col-4 p-0">
     <div class="row m-0">
