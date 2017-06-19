@@ -5,10 +5,10 @@ import { includes, capitalize } from 'lodash';
 export const VendorResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
-    .set('logic', (args, { player }) => {
+    .set('logic', (args, { client, player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
-
-      // TODO open shop
+      npc.$room.showShopWindow(client, npc);
+      return `Greetings ${player.name}! Please view my wares.`;
     });
 
   npc.parser.addCommand('appraise')

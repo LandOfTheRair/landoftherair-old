@@ -8,7 +8,7 @@ import { Player } from '../../../models/player';
 import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment' | 'Left' | 'Right' | 'Coin';
+export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment' | 'Left' | 'Right' | 'Coin' | 'Merchant' | 'Obtainagain';
 
 @Component({
   selector: 'app-item',
@@ -86,7 +86,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
            container="body"
            [dragEnabled]="!displayOnly"
            (mouseenter)="determineScopes()"
-           [dragData]="{ item: item, context: context, contextSlot: contextSlot, count: count }"
+           [dragData]="{ item: item, context: context, contextSlot: contextSlot, count: count, containerUUID: containerUUID }"
            [tooltip]="descText">
         <img [src]="imgUrl" [style.object-position]="spriteLocation" />
         <div class="item-background" *ngIf="showBackground"></div>
@@ -124,6 +124,9 @@ export class ItemComponent implements OnInit {
 
   @Input()
   public contextSlot: number|string;
+
+  @Input()
+  public containerUUID: string;
 
   @Input()
   public size: 'xsmall' | 'small' | 'normal' = 'normal';
@@ -217,7 +220,7 @@ export class ItemComponent implements OnInit {
   }
 
   doColyseusMoveAction(choice) {
-    this.colyseusGame.buildAction(this.item, { context: this.context, count: this.count, contextSlot: this.contextSlot }, choice);
+    this.colyseusGame.buildAction(this.item, { context: this.context, count: this.count, contextSlot: this.contextSlot, containerUUID: this.containerUUID }, choice);
   }
 
   doColyseusUseAction() {
@@ -225,18 +228,27 @@ export class ItemComponent implements OnInit {
   }
 
   determineScopes() {
-    const scopes = ['ground', 'mapground'];
-    const itemType = this.player.determineItemType(this.item.itemClass);
-    if(itemType !== this.item.itemClass) {
-      scopes.push(itemType.toLowerCase());
+    const scopes = [];
+    if(this.context !== 'Obtainagain' && this.context !== 'Merchant') {
+      scopes.push('ground', 'mapground');
+
+      const itemType = this.player.determineItemType(this.item.itemClass);
+      if(itemType !== this.item.itemClass) {
+        scopes.push(itemType.toLowerCase());
+      }
     }
 
     if(!this.player.leftHand || !this.player.rightHand || this.context === 'Left' || this.context === 'Right') {
-      scopes.push('right');
-      scopes.push('left');
+      scopes.push('right', 'left');
     }
 
     if(this.item.itemClass === 'Coin') scopes.push('coin');
+
+    if(this.item.itemClass !== 'Coin'
+    && this.item.itemClass !== 'Corpse'
+    && this.context !== 'Obtainagain'
+    && this.context !== 'Equipment'
+    && this.context !== 'Ground') scopes.push('merchant');
 
     if(this.item.isSackable) scopes.push('sack');
     if(this.item.isBeltable) scopes.push('belt');

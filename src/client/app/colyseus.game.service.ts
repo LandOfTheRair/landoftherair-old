@@ -20,6 +20,7 @@ export class ColyseusGameService {
 
   showGround: boolean;
   showTrainer: any = {};
+  showShop: any = {};
 
   private changingMap: boolean;
 
@@ -150,11 +151,16 @@ export class ColyseusGameService {
       return;
     }
 
+    if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid);
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
     if(action === 'show_ground')    return this.showGroundWindow();
     if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
+  }
+
+  private showShopWindow(vendorItems, uuid) {
+    this.showShop = { vendorItems, uuid };
   }
 
   private showTrainerWindow(classTrain, trainSkills, uuid) {
@@ -216,6 +222,7 @@ export class ColyseusGameService {
   public doMove(x, y) {
     this.sendAction({ command: '~move', x, y });
     this.showTrainer = {};
+    this.showShop = {};
   }
 
   public doInteract(x, y) {
@@ -223,18 +230,20 @@ export class ColyseusGameService {
   }
 
   public quit() {
+    this.showShop = {};
+    this.showTrainer = {};
     if(!this.worldRoom) return;
     this.worldRoom.leave();
     delete this.worldRoom;
   }
 
   public buildDropAction({ dragData }, choice) {
-    const { context, contextSlot, count, item } = dragData;
+    const { context, contextSlot, count, containerUUID, item } = dragData;
     if(context.substring(0, 1) === choice.substring(0, 1)) return;
-    this.buildAction(item, { context, contextSlot, count}, choice.substring(0, 1));
+    this.buildAction(item, { context, contextSlot, count, containerUUID }, choice.substring(0, 1));
   }
 
-  public buildAction(item, { context, contextSlot, count }, choice) {
+  public buildAction(item, { context, contextSlot, count, containerUUID }, choice) {
     const cmd = `~${context.substring(0, 1)}t${choice}`;
 
     let args = '';
@@ -263,9 +272,46 @@ export class ColyseusGameService {
       }).then(amount => {
         args = amount;
         this.sendRawCommand(cmd, args);
-      });
+      }).reject(() => {});
 
       return;
+
+    } else if(context === 'Merchant') {
+      if(choice === 'S' || choice === 'B') {
+        (<any>swal)({
+          titleText: 'How Many Items?',
+          input: 'number',
+          inputValue: 1,
+          inputAttributes: {
+            min: 0
+          },
+          preConfirm: (val) => {
+            return new Promise((resolve, reject) => {
+              if(val < 0) return reject('Invalid amount');
+              resolve();
+            });
+          }
+        }).then(amount => {
+          args = `${containerUUID} ${item.uuid} ${amount}`;
+          this.sendRawCommand(cmd, args);
+        }).reject(() => {});
+      } else {
+        args = `${containerUUID} ${item.uuid} 1`;
+        this.sendRawCommand(cmd, args);
+      }
+      return;
+    }
+
+    if(choice === 'M' && this.showShop && includes(['Sack', 'Belt', 'Left', 'Right'], context)) {
+      if(!args) {
+        args = this.showShop.uuid;
+      } else {
+        args = `${args} ${this.showShop.uuid}`;
+      }
+    }
+
+    if(context === 'Obtainagain') {
+      args = `${this.showShop.uuid} ${contextSlot}`;
     }
 
     this.sendRawCommand(cmd, args);

@@ -15,5 +15,7 @@ export * from './sack';
 export * from './belt';
 export * from './equip';
 export * from './coin';
+export * from './merchant';
+export * from './buyback';
 
 export * from './skills';

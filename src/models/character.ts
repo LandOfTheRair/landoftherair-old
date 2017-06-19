@@ -66,6 +66,12 @@ export class Stats {
   mp = 0;
 }
 
+export const MaxSizes = {
+  Belt: 5,
+  Sack: 25,
+  Buyback: 5
+};
+
 export class Character {
   name: string;
 
@@ -311,13 +317,17 @@ export class Character {
     this.sack = compact(this.sack);
   }
 
+  sackSize() {
+    return MaxSizes.Sack;
+  }
+
   fullSack() {
-    return this.sack.length >= 25;
+    return this.sack.length >= this.sackSize();
   }
 
   addItemToSack(item: Item) {
     if(item.itemClass === 'Coin') {
-      this.addGold(item);
+      this.addGold(item.value);
       return;
     }
     this.itemCheck(item);
@@ -335,8 +345,12 @@ export class Character {
     this.belt = compact(this.belt);
   }
 
+  beltSize() {
+    return MaxSizes.Belt;
+  }
+
   fullBelt() {
-    return this.belt.length >= 5;
+    return this.belt.length >= this.beltSize();
   }
 
   addItemToBelt(item: Item) {
@@ -352,9 +366,9 @@ export class Character {
     return item;
   }
 
-  addGold(gold: Item) {
-    if(gold.value <= 0) return;
-    this.gold += gold.value;
+  addGold(gold: number) {
+    if(gold <= 0) return;
+    this.gold += gold;
   }
 
   loseGold(gold: number) {
