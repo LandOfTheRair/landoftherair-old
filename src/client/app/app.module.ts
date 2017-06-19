@@ -7,7 +7,9 @@ import { NgxAutoScrollDirective } from './ngx-auto-scroll.directive';
 import { DraggableWindowDirective } from './draggable.directive';
 
 import { Ng2Webstorage } from 'ngx-webstorage';
-import { Ng2BootstrapModule } from 'ngx-bootstrap';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -90,7 +92,9 @@ import { ShopComponent } from './shop/shop.component';
     Ng2DragDropModule,
     ContextMenuModule.forRoot({ useBootstrap4: true }),
     Ng2Webstorage.forRoot({ prefix: 'lotr', separator: '-' }),
-    Ng2BootstrapModule.forRoot()
+    ModalModule.forRoot(),
+    ButtonsModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [
     AuthService,
