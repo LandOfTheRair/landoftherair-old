@@ -9,7 +9,7 @@
       true,
       "check-space"
     ],
-    "curly": true,
+    "curly": [false, "ignore-same-line"],
     "eofline": true,
     "forin": true,
     "import-blacklist": [
@@ -25,7 +25,7 @@
     "label-position": true,
     "max-line-length": [
       true,
-      140
+      180
     ],
     "member-access": false,
     "member-ordering": [
@@ -96,7 +96,6 @@
     "variable-name": false,
     "whitespace": [
       true,
-      "check-branch",
       "check-decl",
       "check-operator",
       "check-separator",

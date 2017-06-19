@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorage } from 'ngx-webstorage'
+import { LocalStorage } from 'ngx-webstorage';
 
 import { ColyseusGameService } from '../colyseus.game.service';
 

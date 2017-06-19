@@ -60,7 +60,7 @@ export class ColyseusLobbyService {
     const username = localStorage.getItem('user_name');
 
     this.client.send({ userId, idToken, username });
-  };
+  }
 
   private sendUserId() {
     if(localStorage.getItem('user_id') && localStorage.getItem('id_token')) {
@@ -73,8 +73,9 @@ export class ColyseusLobbyService {
   private getUserName(fromError = false) {
     let titleText = 'Enter your desired username.';
     if(fromError) {
-      titleText = `${titleText} Your previous account id is already in use. Please choose another.`
+      titleText = `${titleText} Your previous account id is already in use. Please choose another.`;
     }
+
     (<any>swal)({
       titleText,
       text: 'It must be between 2 and 20 characters.',

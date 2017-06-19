@@ -114,7 +114,7 @@ export class ItemComponent implements OnInit {
   public count: number;
 
   @Input()
-  public showDesc: boolean = true;
+  public showDesc = true;
 
   @Input()
   public showBackground: boolean;
@@ -203,9 +203,9 @@ export class ItemComponent implements OnInit {
 
   get spriteLocation() {
     const divisor = this.item.itemClass === 'Corpse' ? 40 : 32;
-    const y = Math.floor(this.item.sprite/divisor);
-    const x = this.item.sprite%divisor;
-    return `-${x*64}px -${y*64}px`;
+    const y = Math.floor(this.item.sprite / divisor);
+    const x = this.item.sprite % divisor;
+    return `-${x * 64}px -${y * 64}px`;
   }
 
   get descText() {

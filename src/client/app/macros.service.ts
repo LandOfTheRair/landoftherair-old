@@ -15,16 +15,16 @@ export class Macro {
 
   autoActivate: boolean;
   lockActivation: boolean;
-  clickToTarget: boolean = true;
+  clickToTarget = true;
 
-  appendTargetToEachMacro: boolean = true;
-  macro: string = '';
+  appendTargetToEachMacro = true;
+  macro = '';
 
   name: string;
   icon: string;
 
-  foreground: string = '#000';
-  background: string = '#ccc';
+  foreground = '#000';
+  background = '#ccc';
 
   isSystem: boolean;
 

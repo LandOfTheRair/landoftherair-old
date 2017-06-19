@@ -69,8 +69,8 @@
 </nav>
 
 <div class="window lobby game-window"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="lobbyDrag"
+     appDraggableWindow="true"
+     [windowHandle]="lobbyDrag"
      windowName="lobby"
      defaultX="576"
      defaultY="55"
@@ -86,8 +86,8 @@
 </div>
 
 <div class="window character-select"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="characterSelectDrag"
+     appDraggableWindow="true"
+     [windowHandle]="characterSelectDrag"
      windowName="chararacterSelect"
      defaultX="0"
      defaultY="55"
@@ -99,8 +99,8 @@
 </div>
 
 <div class="window map"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="mapDrag"
+     appDraggableWindow="true"
+     [windowHandle]="mapDrag"
      windowName="map"
      defaultX="389"
      defaultY="56"
@@ -115,8 +115,8 @@
 </div>
 
 <div class="window stats above-game-window"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="statsDrag"
+     appDraggableWindow="true"
+     [windowHandle]="statsDrag"
      windowName="stats"
      defaultX="670"
      defaultY="120"
@@ -131,8 +131,8 @@
 </div>
 
 <div class="window skills above-game-window"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="skillsDrag"
+     appDraggableWindow="true"
+     [windowHandle]="skillsDrag"
      windowName="skills"
      defaultX="670"
      defaultY="120"
@@ -147,8 +147,8 @@
 </div>
 
 <div class="window command-line game-window"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="commandLine"
+     appDraggableWindow="true"
+     [windowHandle]="commandLine"
      windowName="commandLine"
      defaultX="389"
      defaultY="848"
@@ -164,8 +164,8 @@
 
 <div class="window log-window game-window"
      [ngClass]="[logWindowSize]"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="logWindow"
+     appDraggableWindow="true"
+     [windowHandle]="logWindow"
      windowName="logWindow"
      defaultX="3"
      defaultY="365"
@@ -179,8 +179,8 @@
 </div>
 
 <div class="window status-window game-window"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="statusWindow"
+     appDraggableWindow="true"
+     [windowHandle]="statusWindow"
      windowName="statusWindow"
      defaultX="389"
      defaultY="743"
@@ -197,8 +197,8 @@
 
 <div class="window ground-window game-window"
      [ngClass]="[groundSize]"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="groundWindow"
+     appDraggableWindow="true"
+     [windowHandle]="groundWindow"
      windowName="groundWindow"
      defaultX="3"
      defaultY="619"
@@ -214,8 +214,8 @@
 
 <div class="window inventory-sack-window game-window"
      [ngClass]="[sackSize]"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="sackWindow"
+     appDraggableWindow="true"
+     [windowHandle]="sackWindow"
      windowName="sackWindow"
      defaultX="966"
      defaultY="538"
@@ -231,8 +231,8 @@
 
 <div class="window inventory-belt-window game-window"
      [ngClass]="[beltSize]"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="beltWindow"
+     appDraggableWindow="true"
+     [windowHandle]="beltWindow"
      windowName="beltWindow"
      defaultX="966"
      defaultY="433"
@@ -248,8 +248,8 @@
 
 <div class="window equipment-window game-window"
      [ngClass]="[equipmentSize]"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="equipmentWindow"
+     appDraggableWindow="true"
+     [windowHandle]="equipmentWindow"
      windowName="equipmentWindow"
      defaultX="966"
      defaultY="56"
@@ -265,8 +265,8 @@
 
 <div class="window npc-window game-window"
      [ngClass]="[npcWindowSize]"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="npcWindow"
+     appDraggableWindow="true"
+     [windowHandle]="npcWindow"
      windowName="npcWindow"
      defaultX="3"
      defaultY="56"
@@ -280,8 +280,8 @@
 </div>
 
 <div class="window macro-bars game-window"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="macroBars"
+     appDraggableWindow="true"
+     [windowHandle]="macroBars"
      windowName="macroBars"
      defaultX="389"
      defaultY="661"
@@ -295,8 +295,8 @@
 </div>
 
 <div class="window trainer above-game-window"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="trainerDrag"
+     appDraggableWindow="true"
+     [windowHandle]="trainerDrag"
      windowName="trainer"
      defaultX="670"
      defaultY="120"
@@ -311,8 +311,8 @@
 </div>
 
 <div class="window shop above-game-window"
-     [ng2-draggable]="true"
-     [ng2DraggableHandle]="shopDrag"
+     appDraggableWindow="true"
+     [windowHandle]="shopDrag"
      windowName="shop"
      defaultX="670"
      defaultY="120"

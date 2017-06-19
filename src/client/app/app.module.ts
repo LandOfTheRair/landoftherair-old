@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { Draggable } from './draggable.directive';
+import { DraggableWindowDirective } from './draggable.directive';
 
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
@@ -53,7 +53,7 @@ import { ShopComponent } from './shop/shop.component';
     AppComponent,
     LobbyComponent,
 
-    Draggable,
+    DraggableWindowDirective,
 
     NgxAutoScroll,
     CharacterSelectComponent,

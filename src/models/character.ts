@@ -18,7 +18,7 @@ export type Allegiance =
 | 'Royalty'
 | 'Adventurers'
 | 'Wilderness'
-| 'Underground'
+| 'Underground';
 
 export type Sex = 'Male' | 'Female';
 
@@ -77,9 +77,9 @@ export class Character {
 
   hp: RestrictedNumber = new RestrictedNumber(0, 100, 100);
   mp: RestrictedNumber = new RestrictedNumber(0, 0, 0);
-  exp: number = 1000;
+  exp = 1000;
 
-  gold: number = 0;
+  gold = 0;
 
   stats: Stats = new Stats();
   totalStats: Stats = new Stats();
@@ -90,12 +90,12 @@ export class Character {
   sex: Sex = 'Male';
   dir: Direction = 'S';
 
-  x: number = 0;
-  y: number = 0;
+  x = 0;
+  y = 0;
   map: string;
 
-  level: number = 1;
-  highestLevel: number = 1;
+  level = 1;
+  highestLevel = 1;
 
   baseClass: CharacterClass = 'Undecided';
 
@@ -246,7 +246,7 @@ export class Character {
     const addStatsForItem = (item) => {
       Object.keys(item.stats).forEach(stat => {
         this.totalStats[stat] += item.stats[stat];
-      })
+      });
     };
 
     allGear.forEach(item => {
@@ -427,7 +427,7 @@ export class Character {
       const nextTile = denseTiles[nextTileLoc];
 
       if(nextTile === 0) {
-        const object = find(denseCheck, { x: (this.x + step.x)*64, y: (this.y + step.y + 1)*64 });
+        const object = find(denseCheck, { x: (this.x + step.x) * 64, y: (this.y + step.y + 1) * 64 });
         if(object && object.density) {
           return;
         }
@@ -474,7 +474,7 @@ export class Character {
     if(environment.production) {
       this.$deathTicks = 60 * 3;
     } else {
-      this.$deathTicks = 10; //6 * 3;
+      this.$deathTicks = 6 * 3;
     }
   }
 
@@ -551,7 +551,7 @@ export class Character {
   }
 
   calcSkillLevel(type) {
-    return Math.floor(Math.pow((this.skills[type] || 0)/100, 1/2));
+    return Math.floor(Math.pow((this.skills[type] || 0) / 100, 1 / 2));
   }
 
   calcSkillXP(level: number) {
@@ -628,7 +628,7 @@ export class Character {
 
     if(this.swimLevel > 0) {
       const hpPercentLost = this.swimLevel * 4;
-      const hpLost = Math.floor(this.hp.maximum * (hpPercentLost/100));
+      const hpLost = Math.floor(this.hp.maximum * (hpPercentLost / 100));
       this.hp.sub(hpLost);
     }
 

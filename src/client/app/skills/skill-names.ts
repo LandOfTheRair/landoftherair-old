@@ -15,7 +15,7 @@ const Thievery = [
   'Adept of Shadows',
   'Master of Shadows',
   'Lord of Shadows',
-  'Observer of Thievery',// 15
+  'Observer of Thievery', // 15
   'Seeker of Thievery',
   'Initiate of Thievery',
   'Thief',
@@ -153,7 +153,7 @@ export class SkillNames {
   static getName(level, skill) {
     const arr = this.determineArray(skill);
     if(level < 0) level = 0;
-    if(level > arr.length) return arr[arr.length-1];
+    if(level > arr.length) return arr[arr.length - 1];
     return arr[level];
   }
 }
