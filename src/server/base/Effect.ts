@@ -2,6 +2,11 @@
 import { Character } from '../../models/character';
 import { extend } from 'lodash';
 
+export const Maxes = {
+  Lesser: 10,
+  Minor: 15
+};
+
 export class Effect {
 
   name = '';

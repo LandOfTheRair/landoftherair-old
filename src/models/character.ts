@@ -156,6 +156,7 @@ export class Character {
   }
 
   init() {}
+  initServer() {}
 
   toJSON() {
     return omitBy(this, (value, key) => {
