@@ -4,8 +4,14 @@ import { Character } from '../../models/character';
 
 export class MinorWIS extends Effect {
   effectStart(char: Character) {
-    if(char.stats.wis >= Maxes.Minor) {
+    const canGainMP = char.baseClass === 'Healer' && char.stats.mp < 200;
+
+    if(char.stats.wis >= Maxes.Minor && !canGainMP) {
       return this.effectMessage(char, 'The fluid was tasteless.');
+    }
+
+    if(canGainMP) {
+      char.stats.mp += 2;
     }
 
     char.stats.wis += this.potency;

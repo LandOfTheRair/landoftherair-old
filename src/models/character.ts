@@ -25,7 +25,11 @@ export type Sex = 'Male' | 'Female';
 export type Direction = 'N' | 'S' | 'E' | 'W' | 'C';
 
 export type CharacterClass =
-  'Undecided';
+  'Undecided'
+| 'Mage'
+| 'Healer'
+| 'Warrior'
+| 'Thief';
 
 export class Skills {
   mace = 0;

@@ -4,8 +4,14 @@ import { Character } from '../../models/character';
 
 export class MinorINT extends Effect {
   effectStart(char: Character) {
-    if(char.stats.int >= Maxes.Minor) {
+    const canGainMP = char.baseClass === 'Mage' && char.stats.mp < 200;
+
+    if(char.stats.int >= Maxes.Minor && !canGainMP) {
       return this.effectMessage(char, 'The fluid was tasteless.');
+    }
+
+    if(canGainMP) {
+      char.stats.mp += 2;
     }
 
     char.stats.int += this.potency;
