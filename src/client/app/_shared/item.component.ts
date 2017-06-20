@@ -40,7 +40,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
       position: absolute;
       color: #000;
       text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       z-index: 560;
     }
     
@@ -104,9 +104,9 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
         <img [src]="imgUrl" [style.object-position]="spriteLocation" />
         <div class="item-background" *ngIf="showBackground"></div>
         <div class="glow-container" [ngClass]="[glowColor]" *ngIf="showDesc"></div>
-        <span class="count" *ngIf="realCount > 0">{{ realCount }}</span>
-        <span class="ounces" *ngIf="showOunces && item.ounces > 0">{{ item.ounces }}</span>
-        <span class="value" *ngIf="showValue">{{ item._buybackValue || item.value }}</span>
+        <span class="count" *ngIf="realCount > 0">{{ realCount }}x</span>
+        <span class="ounces" *ngIf="showOunces && item.ounces > 0">{{ item.ounces }}oz</span>
+        <span class="value" *ngIf="showValue">{{ item._buybackValue || item.value }}gp</span>
       </div>
       
     </div>
