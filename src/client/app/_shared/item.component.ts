@@ -87,37 +87,25 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipmen
       top: 0;
     }
   `],
-  template: `
-    
-    <div [contextMenu]="contextMenu">
-    
-      <div class="item-container" [ngClass]="[size]"
-           [isDisabled]="!showDesc" 
-           triggers="dblclick:mouseleave" 
-           [dragScope]="scopes"
-           draggable 
-           container="body"
-           [dragEnabled]="!displayOnly"
-           (mouseenter)="determineScopes()"
-           [dragData]="{ item: item, context: context, contextSlot: contextSlot, count: count, containerUUID: containerUUID }"
-           [tooltip]="descText">
-        <img [src]="imgUrl" [style.object-position]="spriteLocation" />
-        <div class="item-background" *ngIf="showBackground"></div>
-        <div class="glow-container" [ngClass]="[glowColor]" *ngIf="showDesc"></div>
-        <span class="count" *ngIf="realCount > 0">{{ realCount }}x</span>
-        <span class="ounces" *ngIf="showOunces && item.ounces > 0">{{ item.ounces }}oz</span>
-        <span class="value" *ngIf="showValue">{{ item._buybackValue || item.value }}gp</span>
-      </div>
-      
+  template: `    
+    <div class="item-container" [ngClass]="[size]"
+         [isDisabled]="!showDesc" 
+         triggers="dblclick:mouseleave" 
+         [dragScope]="scopes"
+         draggable 
+         container="body"
+         [dragEnabled]="!displayOnly"
+         (mouseenter)="determineScopes()"
+         [dragData]="{ item: item, context: context, contextSlot: contextSlot, count: count, containerUUID: containerUUID }"
+         [tooltip]="descText">
+      <img [src]="imgUrl" [style.object-position]="spriteLocation" />
+      <div class="item-background" *ngIf="showBackground"></div>
+      <div class="glow-container" [ngClass]="[glowColor]" *ngIf="showDesc"></div>
+      <span class="count" *ngIf="realCount > 0">{{ realCount }}x</span>
+      <span class="ounces" *ngIf="showOunces && item.ounces > 0">{{ item.ounces }}oz</span>
+      <span class="value" *ngIf="showValue">{{ item._buybackValue || item.value }}gp</span>
     </div>
     
-    <context-menu #contextMenu [disabled]="displayOnly">
-      <ng-template *ngFor="let action of menuOptions" contextMenuItem let-item
-        [visible]="action.visible && action.visible()"
-        (execute)="action.execute()">
-        {{ action.label }}
-      </ng-template>
-    </context-menu>
   `
 })
 export class ItemComponent implements OnInit {
