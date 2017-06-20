@@ -134,6 +134,30 @@
                  "width":64,
                  "x":4928,
                  "y":2560
+                }, 
+                {
+                 "gid":3089,
+                 "height":64,
+                 "id":174,
+                 "name":"Alchemist",
+                 "properties":
+                    {
+                     "alchCost":50,
+                     "alchOz":5,
+                     "script":"global\/alchemist"
+                    },
+                 "propertytypes":
+                    {
+                     "alchCost":"int",
+                     "alchOz":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3008,
+                 "y":1984
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -151,7 +175,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":174,
+ "nextobjectid":175,
  "orientation":"orthogonal",
  "properties":
     {

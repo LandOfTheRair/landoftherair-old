@@ -30,6 +30,9 @@ export class NPC extends Character {
   bankId: string;
   branchId: string;
 
+  alchOz: number;
+  alchCost: number;
+
   drops: Item[];
   giveXp: any;
 

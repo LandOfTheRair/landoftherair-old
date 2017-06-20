@@ -611,10 +611,10 @@
                  "gid":3134,
                  "height":64,
                  "id":178,
-                 "name":"Alchemist",
+                 "name":"Potion Seller",
                  "properties":
                     {
-                     "script":"tutorial\/alchemist"
+                     "script":"tutorial\/potion-vendor"
                     },
                  "propertytypes":
                     {

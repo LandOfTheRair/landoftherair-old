@@ -3,6 +3,45 @@ import { NPC } from '../../../models/npc';
 import { includes, capitalize } from 'lodash';
 import { Logger } from '../../logger';
 
+export const AlchemistResponses = (npc: NPC) => {
+
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { client, player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      return `Hello, ${player.name}! You can tell me COMBINE while holding a bottle in your right hand to mix together that with other bottles of the same type in your sack. I can combine up to ${npc.alchOz}oz into one bottle. It will cost ${npc.alchCost} gold per ounce to do this.`;
+    });
+
+  npc.parser.addCommand('combine')
+    .set('syntax', ['combine'])
+    .set('logic', (args, { client, player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+
+      const item = player.rightHand;
+      if(!item || item.itemClass !== 'Bottle') return 'You are not holding a bottle.';
+      if(item.ounces >= npc.alchOz) return 'That bottle is already too full for me.';
+
+      let itemsRemoved = 0;
+
+      player.sack.forEach((checkItem, i) => {
+        if(checkItem.name !== item.name) return;
+        if(checkItem.ounces + item.ounces > npc.alchOz) return;
+
+        const cost = checkItem.ounces * npc.alchCost;
+        if(npc.alchCost > cost) return;
+
+        player.loseGold(cost);
+        player.takeItemFromSack(i);
+        item.ounces += checkItem.ounces;
+        itemsRemoved++;
+      });
+
+      if(itemsRemoved === 0) return 'I was not able to combine any bottles.';
+
+      return `I've taken ${itemsRemoved} bottles from your sack and combined them with the item in your hand. Enjoy!`;
+    });
+};
+
 export const BankResponses = (npc: NPC) => {
   if(!npc.bankId || !npc.branchId) {
     Logger.error(new Error(`Banker at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid bank/branch id`));
