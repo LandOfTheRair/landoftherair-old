@@ -4,8 +4,12 @@ import { Character } from '../../models/character';
 
 export class MinorCON extends Effect {
   effectStart(char: Character) {
-    if(char.stats.con >= Maxes.Minor) {
+    if(char.stats.con >= Maxes.Minor && char.stats.hp > 100) {
       return this.effectMessage(char, 'The fluid was tasteless.');
+    }
+
+    if(char.stats.hp < 100) {
+      char.stats.hp += 3;
     }
 
     char.stats.con += this.potency;

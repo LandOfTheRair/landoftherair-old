@@ -104,7 +104,7 @@
   sprite: 149
   effect:
     name: MinorMP
-    potency: 3
+    potency: 5
   value: 150000
 
 - name: TrueSight Potion
