@@ -47,6 +47,7 @@ import { NpcsComponent } from './npcs/npcs.component';
 import { MacroBarsComponent } from './macro-bars/macro-bars.component';
 import { TrainerComponent } from './trainer/trainer.component';
 import { ShopComponent } from './shop/shop.component';
+import { BankComponent } from './bank/bank.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -82,6 +83,7 @@ import { ShopComponent } from './shop/shop.component';
     MacroBarsComponent,
     TrainerComponent,
     ShopComponent,
+    BankComponent,
   ],
   imports: [
     BrowserModule,

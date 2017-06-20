@@ -27,6 +27,9 @@ export class NPC extends Character {
   path?: any[];
   ai?: any;
 
+  bankId: string;
+  branchId: string;
+
   drops: Item[];
   giveXp: any;
 

@@ -224,6 +224,10 @@
     max-width: 480px;
   }
 
+  &.bank {
+    min-width: 650px;
+  }
+
   position: absolute !important;
 
   border: 1px solid #000;

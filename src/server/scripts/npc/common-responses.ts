@@ -1,6 +1,49 @@
 
 import { NPC } from '../../../models/npc';
 import { includes, capitalize } from 'lodash';
+import { Logger } from '../../logger';
+
+export const BankResponses = (npc: NPC) => {
+  if(!npc.bankId || !npc.branchId) {
+    Logger.error(new Error(`Banker at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid bank/branch id`));
+    return;
+  }
+
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { client, player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      player.addBankMoney(npc.bankId, 0);
+      npc.$room.showBankWindow(client, npc);
+      return `Greetings ${player.name}! Welcome to the ${npc.bankId} National Bank, ${npc.branchId} branch. You can WITHDRAW or DEPOSIT your coins here!`;
+    });
+
+  npc.parser.addCommand('deposit')
+    .set('syntax', ['deposit <string:amount>'])
+    .set('logic', (args, { client, player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+
+      const amount = +args.amount;
+      const region = npc.bankId;
+      const res = player.addBankMoney(region, amount);
+      if(res === false) return 'That amount of gold is not valid.';
+      if(res === 0) return 'What, do you think you\'re funny? Get out of line, there are other people to service!';
+      return `Thank you, you have deposited ${res.toLocaleString()} gold into the ${region} National Bank. Your new balance is ${player.banks[region].toLocaleString()} gold.`;
+    });
+
+  npc.parser.addCommand('withdraw')
+    .set('syntax', ['withdraw <string:amount>'])
+    .set('logic', (args, { client, player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+
+      const amount = +args.amount;
+      const region = npc.bankId;
+      const res = player.loseBankMoney(region, amount);
+      if(res === false) return 'That amount of gold is not valid.';
+      if(res === 0) return 'Hey, do I look like a charity to you? Get lost!';
+      return `Thank you, you have withdrawn ${res.toLocaleString()} gold into the ${region} National Bank. Your new balance is ${player.banks[region].toLocaleString()} gold.`;
+    });
+};
 
 export const VendorResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
