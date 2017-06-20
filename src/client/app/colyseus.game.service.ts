@@ -21,6 +21,7 @@ export class ColyseusGameService {
   showGround: boolean;
   showTrainer: any = {};
   showShop: any = {};
+  showBank: any = {};
 
   private changingMap: boolean;
 
@@ -151,12 +152,17 @@ export class ColyseusGameService {
       return;
     }
 
+    if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId);
     if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid);
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
     if(action === 'show_ground')    return this.showGroundWindow();
     if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
+  }
+
+  private showBankWindow(uuid, bankId) {
+    this.showBank = { uuid, bankId };
   }
 
   private showShopWindow(vendorItems, uuid) {
@@ -180,6 +186,16 @@ export class ColyseusGameService {
   public join() {
     if(!this.showTrainer.uuid) return;
     this.sendCommandString(`${this.showTrainer.uuid}, join`);
+  }
+
+  public withdraw(amount: number) {
+    if(!this.showBank.uuid) return;
+    this.sendCommandString(`${this.showBank.uuid}, withdraw ${amount}`);
+  }
+
+  public deposit(amount: number) {
+    if(!this.showBank.uuid) return;
+    this.sendCommandString(`${this.showBank.uuid}, deposit ${amount}`);
   }
 
   private changeMap(map) {
@@ -223,6 +239,7 @@ export class ColyseusGameService {
     this.sendAction({ command: '~move', x, y });
     this.showTrainer = {};
     this.showShop = {};
+    this.showBank = {};
   }
 
   public doInteract(x, y) {
@@ -232,6 +249,7 @@ export class ColyseusGameService {
   public quit() {
     this.showShop = {};
     this.showTrainer = {};
+    this.showBank = {};
     if(!this.worldRoom) return;
     this.worldRoom.leave();
     delete this.worldRoom;

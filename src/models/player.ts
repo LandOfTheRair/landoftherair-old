@@ -13,6 +13,8 @@ export class Player extends Character {
 
   buyback: Item[];
 
+  banks: any;
+
   $fov: any;
   $doNotSave: boolean;
 
@@ -94,6 +96,35 @@ export class Player extends Character {
     this.buyback.push(item);
 
     if(this.buyback.length > this.buybackSize()) this.buyback.shift();
+  }
+
+  addBankMoney(region: string, amount: number) {
+    amount = Math.round(+amount);
+    if(isNaN(amount)) return false;
+
+    if(amount < 0) return false;
+    if(amount > this.gold) amount = this.gold;
+
+    this.banks = this.banks || {};
+    this.banks[region] = this.banks[region] || 0;
+    this.banks[region] += amount;
+
+    this.loseGold(amount);
+    return amount;
+  }
+
+  loseBankMoney(region, amount) {
+    amount = Math.round(+amount);
+    if(isNaN(amount)) return false;
+    if(amount < 0) return false;
+    this.banks = this.banks || {};
+    this.banks[region] = this.banks[region] || 0;
+
+    if(amount > this.banks[region]) amount = this.banks[region];
+
+    this.banks[region] -= amount;
+    this.addGold(amount);
+    return amount;
   }
 
   sendClientMessage(message) {
