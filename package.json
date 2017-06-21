@@ -58,7 +58,6 @@
     "mongodb": "^2.2.27",
     "mrpas": "^1.2.1",
     "ng2-drag-drop": "^2.0.1",
-    "ng2-right-click-menu": "0.0.11",
     "ngx-bootstrap": "^2.0.0-beta.2",
     "ngx-color-picker": "^4.0.3",
     "ngx-contextmenu": "^1.2.0",
@@ -69,7 +68,6 @@
     "rxjs": "^5.1.0",
     "sweetalert2": "^6.6.4",
     "uuid": "^3.0.1",
-    "yamljs": "^0.2.10",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
@@ -83,6 +81,7 @@
     "ts-node": "^2.0.0",
     "tslint": "~4.5.0",
     "typescript": "^2.3.3",
-    "webfont": "^7.1.4"
+    "webfont": "^7.1.4",
+    "yamljs": "^0.2.10"
   }
 }
