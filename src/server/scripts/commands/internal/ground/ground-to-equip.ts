@@ -25,7 +25,7 @@ export class GroundToEquip extends Command {
     if(!player.canEquip(item)) return room.sendClientLogMessage(client, 'You cannot equip that item.');
 
     player.equip(item);
-    gameState.removeItemFromGround(item);
+    room.removeItemFromGround(item);
   }
 
 }

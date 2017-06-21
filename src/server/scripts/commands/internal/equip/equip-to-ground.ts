@@ -18,7 +18,7 @@ export class EquipToGround extends Command {
 
     if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
 
-    gameState.addItemToGround(player, item);
+    room.addItemToGround(player, item);
     room.showGroundWindow(client);
     player.unequip(slot);
   }

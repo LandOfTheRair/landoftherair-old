@@ -1,5 +1,7 @@
 
-import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find } from 'lodash';
+import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact } from 'lodash';
+
+import * as scheduler from 'node-schedule';
 
 import { Parser } from 'mingy';
 
@@ -38,9 +40,21 @@ export class GameWorld extends Room<GameState> {
     map: []
   };
 
-  ticks = {
+  private ticks = {
     Player: 0
   };
+
+  get maxSkill() {
+    return this.state.map.properties.maxSkill || 1;
+  }
+
+  get decayRateHours() {
+    return this.state.map.properties.itemExpirationHours || 6;
+  }
+
+  get decayChecksMinutes() {
+    return this.state.map.properties.itemGarbageCollection || 60;
+  }
 
   constructor(opts) {
     super(opts);
@@ -133,12 +147,14 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
-  placeItemOnGround(ref, item) {
+  addItemToGround(ref, item) {
+    this.setItemExpiry(item);
     this.state.addItemToGround(ref, item);
     if(item.$heldBy) item.$heldBy = null;
   }
 
   removeItemFromGround(item) {
+    this.removeItemExpiry(item);
     this.state.removeItemFromGround(item);
   }
 
@@ -196,17 +212,65 @@ export class GameWorld extends Room<GameState> {
   }
 
   // TODO retrieve boss timers
-  // TODO retrieve tied items
   onInit() {
     this.loadNPCsFromMap();
     this.loadSpawners();
     this.loadDropTables();
+    this.loadGround();
+    this.watchForItemDecay();
   }
 
   // TODO store boss timers
-  // TODO store tied items (or maybe whole ground state?)
   onDispose() {
+    this.saveGround();
+  }
 
+  async loadGround() {
+    let obj = await DB.$mapGroundItems.findOne({ mapName: this.state.mapName });
+    if(!obj) obj = {};
+    const groundItems = obj.groundItems || {};
+
+    this.checkIfAnyItemsAreExpired(groundItems);
+
+    this.state.groundItems = groundItems;
+    DB.$mapGroundItems.remove({ mapName: this.state.mapName });
+  }
+
+  async saveGround() {
+    DB.$mapGroundItems.update({ mapName: this.state.mapName }, { $set: { groundItems: this.state.groundItems } }, { upsert: true });
+  }
+
+  checkIfAnyItemsAreExpired(groundItems) {
+    Object.keys(groundItems).forEach(x => {
+      Object.keys(groundItems[x]).forEach(y => {
+        Object.keys(groundItems[x][y]).forEach(itemClass => {
+          groundItems[x][y][itemClass] = compact(groundItems[x][y][itemClass].map(i => this.hasItemExpired(i) ? null : new Item(i)));
+        });
+      });
+    });
+  }
+
+  watchForItemDecay() {
+    const rule = new scheduler.RecurrenceRule();
+    rule.minute = this.decayChecksMinutes;
+
+    scheduler.scheduleJob(rule, () => {
+      this.checkIfAnyItemsAreExpired(this.state.groundItems);
+    });
+  }
+
+  removeItemExpiry(item: Item) {
+    delete item.expiresAt;
+  }
+
+  setItemExpiry(item: Item) {
+    const expiry = new Date();
+    expiry.setHours(expiry.getHours() + this.decayRateHours);
+    item.expiresAt = expiry.getTime();
+  }
+
+  hasItemExpired(item: Item) {
+    return Date.now() > item.expiresAt;
   }
 
   async loadDropTables() {
@@ -360,7 +424,7 @@ export class GameWorld extends Room<GameState> {
     corpse.searchItems = searchItems;
     corpse.desc = `the corpse of a ${target.name}`;
 
-    this.placeItemOnGround(target, corpse);
+    this.addItemToGround(target, corpse);
 
     target.$corpseRef = corpse;
   }
@@ -369,7 +433,7 @@ export class GameWorld extends Room<GameState> {
     if(!corpse.searchItems) return;
 
     corpse.searchItems.forEach(item => {
-      this.placeItemOnGround(corpse, item);
+      this.addItemToGround(corpse, item);
     });
 
     corpse.searchItems = null;
@@ -377,13 +441,13 @@ export class GameWorld extends Room<GameState> {
 
   corpseCheck(player) {
     if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
-      this.placeItemOnGround(player, player.leftHand);
+      this.addItemToGround(player, player.leftHand);
       player.leftHand.$heldBy = null;
       player.setLeftHand(null);
     }
 
     if(player.rightHand && player.rightHand.itemClass === 'Corpse') {
-      this.placeItemOnGround(player, player.rightHand);
+      this.addItemToGround(player, player.rightHand);
       player.rightHand.$heldBy = null;
       player.setRightHand(null);
     }

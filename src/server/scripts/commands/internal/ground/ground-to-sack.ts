@@ -27,7 +27,7 @@ export class GroundToSack extends Command {
     if(player.fullSack()) return room.sendClientLogMessage(client, 'Your sack is full.');
 
     player.addItemToSack(item);
-    gameState.removeItemFromGround(item);
+    room.removeItemFromGround(item);
   }
 
 }

@@ -863,11 +863,13 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "itemExpirationHours":1,
      "maxSkill":3,
      "region":"Tutorial"
     },
  "propertytypes":
     {
+     "itemExpirationHours":"int",
      "maxSkill":"int",
      "region":"string"
     },

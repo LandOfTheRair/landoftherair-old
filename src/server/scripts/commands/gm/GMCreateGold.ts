@@ -23,6 +23,6 @@ export class GMCreateGold extends Command {
     }
 
     item.value = value;
-    room.placeItemOnGround(player, item);
+    room.addItemToGround(player, item);
   }
 }
