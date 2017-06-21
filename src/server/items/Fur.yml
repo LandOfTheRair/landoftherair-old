@@ -1,7 +1,5 @@
 
 - name: Tutorial Fur
-  armorClass: 0
-  defense: 0
   desc: "a coat of fur"
   value: 1
   sprite: 297

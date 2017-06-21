@@ -1,6 +1,7 @@
 
 - name: Antanian Sash
-  defense: 1
+  stats:
+    defense: 1
   sprite: 236
   desc: "a simple silk sash"
   value: 150

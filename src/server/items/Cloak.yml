@@ -1,6 +1,7 @@
 - name: Antanian Cloak
-  armorClass: 1
-  defense: 1
+  stats:
+    armorClass: 1
+    defense: 1
   desc: "a woolen cloak"
   value: 1
   sprite: 211

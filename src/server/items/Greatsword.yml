@@ -1,5 +1,6 @@
 - name: Antanian Greatsword
-  offense: 2
+  stats:
+    offense: 2
   desc: "an iron greatsword"
   baseDamage: 10
   type: Twohanded

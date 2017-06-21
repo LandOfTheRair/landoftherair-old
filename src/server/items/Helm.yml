@@ -1,6 +1,7 @@
 - name: Antanian Helm
-  armorClass: 2
-  defense: 1
+  stats:
+    armorClass: 2
+    defense: 1
   sprite: 235
   desc: "a simple iron helm"
   value: 100

@@ -1,5 +1,6 @@
 - name: Antanian Bracers
-  defense: 1
+  stats:
+    defense: 1
   sprite: 234
   desc: "a pair of gold bracers"
   value: 100

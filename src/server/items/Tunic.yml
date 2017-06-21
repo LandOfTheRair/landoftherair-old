@@ -1,28 +1,32 @@
 
 - name: Antanian Tunic
-  armorClass: 1
-  defense: 1
+  stats:
+    armorClass: 1
+    defense: 1
   desc: "a leather tunic"
   value: 20
   sprite: 206
 
 - name: Antanian Studded Tunic
-  armorClass: 2
-  defense: 1
+  stats:
+    armorClass: 2
+    defense: 1
   desc: "a studded leather tunic"
   value: 40
   sprite: 209
 
 - name: Antanian Scalemail Tunic
-  armorClass: 3
-  defense: 1
+  stats:
+    armorClass: 3
+    defense: 1
   desc: "a scalemail tunic"
   value: 60
   sprite: 207
 
 - name: Antanian Ringmail Tunic
-  armorClass: 4
-  defense: 1
+  stats:
+    armorClass: 4
+    defense: 1
   desc: "a ringmail tunic"
   value: 100
   sprite: 208

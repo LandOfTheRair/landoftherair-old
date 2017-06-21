@@ -1,6 +1,7 @@
 
 - name: Antanian Ring
-  defense: 1
+  stats:
+    defense: 1
   sprite: 215
   desc: "a simple gold ring"
   value: 150

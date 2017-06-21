@@ -111,11 +111,7 @@ export class Item {
   // username ref
   owner?: string;
 
-  armorClass = 0;
-  accuracy = 0;
   baseDamage = 5;
-  offense = 0;
-  defense = 0;
 
   ounces = 0;
   value = 0;
