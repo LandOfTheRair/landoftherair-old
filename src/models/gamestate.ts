@@ -1,5 +1,5 @@
 
-import { reject, extend, find, pull } from 'lodash';
+import { reject, extend, find, pull, size } from 'lodash';
 
 import { Player } from './player';
 
@@ -122,6 +122,11 @@ export class GameState {
   removeItemFromGround(item: Item) {
     const ground = this.getGroundItems(item.x, item.y)[item.itemClass];
     pull(ground, item);
+
+    if(size(this.groundItems[item.x][item.y][item.itemClass]) === 0) delete this.groundItems[item.x][item.y][item.itemClass];
+    if(size(this.groundItems[item.x][item.y]) === 0) delete this.groundItems[item.x][item.y];
+    if(size(this.groundItems[item.x]) === 0) delete this.groundItems[item.x];
+
     delete item.x;
     delete item.y;
   }
