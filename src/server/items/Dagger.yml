@@ -1,11 +1,11 @@
 - name: Antanian Dagger
-  accuracy: 5
-  offense: 1
+  stats:
+    accuracy: 5
+    offense: 1
+    dex: 1
   desc: "an iron dagger"
   isSackable: true
   baseDamage: 5
-  stats:
-    dex: 1
   type: Dagger
   value: 75
   sprite: 205

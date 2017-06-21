@@ -1,5 +1,6 @@
 - name: Antanian Shortbow
-  accuracy: 7
+  stats:
+    accuracy: 7
   desc: "a wooden shortbow"
   baseDamage: 5
   type: Ranged

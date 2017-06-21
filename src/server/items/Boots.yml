@@ -1,6 +1,7 @@
 - name: Antanian Boots
-  defense: 1
-  accuracy: 3
+  stats:
+    defense: 1
+    accuracy: 3
   baseDamage: 3
   sprite: 232
   desc: "a pair of leather boots"

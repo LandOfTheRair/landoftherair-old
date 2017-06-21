@@ -68,6 +68,11 @@ export class Stats {
 
   hp = 100;
   mp = 0;
+
+  armorClass = 0;
+  accuracy = 0;
+  offense = 0;
+  defense = 0;
 }
 
 export const MaxSizes = {

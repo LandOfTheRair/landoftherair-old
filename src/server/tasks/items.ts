@@ -1,4 +1,5 @@
 
+import { Stats } from '../../models/character';
 require('dotenv').config({ silent: true });
 
 import { DB } from '../database';
@@ -27,6 +28,7 @@ class ItemLoader {
           const promises = itemsOfType.map(itemData => {
             itemData.itemClass = fileName;
             itemData.type = itemData.type || 'Martial';
+            if(!itemData.stats) itemData.stats = new Stats();
             this.conditionallyAddInformation(itemData);
             if(!this.validateItem(itemData)) return;
 
@@ -74,7 +76,7 @@ class ItemLoader {
     }
 
     if(item.itemClass === 'Shield') {
-      item.accuracy = 1;
+      item.stats.accuracy = 1;
       item.baseDamage = 1;
     }
 

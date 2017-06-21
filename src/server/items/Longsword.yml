@@ -1,5 +1,4 @@
 - name: Antanian Longsword
-  offense: 0
   desc: "an iron longsword"
   baseDamage: 7
   type: Onehanded
