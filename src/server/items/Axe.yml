@@ -1,0 +1,9 @@
+- name: Antanian Axe
+  stats:
+    offense: 1
+  desc: "an iron axe"
+  baseDamage: 1
+  maxDamage: 3
+  type: Axe
+  value: 85
+  sprite: 165

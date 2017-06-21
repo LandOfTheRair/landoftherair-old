@@ -1,8 +1,7 @@
 - name: Antanian Greatsword
-  stats:
-    offense: 2
   desc: "an iron greatsword"
-  baseDamage: 10
+  baseDamage: 3
+  maxDamage: 5
   type: Twohanded
   value: 150
   sprite: 198

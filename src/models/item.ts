@@ -111,7 +111,8 @@ export class Item {
   // username ref
   owner?: string;
 
-  baseDamage = 5;
+  baseDamage = 0;
+  maxDamage = 0;
 
   ounces = 0;
   value = 0;
@@ -120,6 +121,7 @@ export class Item {
   requirements?: ItemRequirements;
   condition = 20000;
   type = 'Martial';
+  secondaryType: string;
 
   twoHanded = false;
 

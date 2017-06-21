@@ -3,7 +3,8 @@
     accuracy: 1
     offense: 1
   desc: "a wooden crossbow"
-  baseDamage: 5
+  baseDamage: 1
+  maxDamage: 2
   type: Ranged
   value: 100
   sprite: 201

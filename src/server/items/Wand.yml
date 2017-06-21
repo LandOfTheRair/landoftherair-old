@@ -1,0 +1,7 @@
+- name: Antanian Blue Wand
+  desc: "an blue wand"
+  baseDamage: 1
+  maxDamage: 1
+  type: Wand
+  value: 205
+  sprite: 281

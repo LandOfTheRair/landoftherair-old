@@ -59,6 +59,8 @@ class ItemLoader {
     if(this.isWeapon(item)) {
       if(isUndefined(item.isBeltable))  item.isBeltable = true;
       if(isUndefined(item.isSackable))  item.isSackable = false;
+
+      if(!item.maxDamage) item.maxDamage = item.baseDamage;
     }
 
     if(this.isArmor(item)) {
@@ -76,7 +78,7 @@ class ItemLoader {
     }
 
     if(item.itemClass === 'Shield') {
-      item.stats.accuracy = 1;
+      if(!item.stats.accuracy) item.stats.accuracy = 1;
       item.baseDamage = 1;
     }
 
