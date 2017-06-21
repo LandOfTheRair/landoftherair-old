@@ -145,6 +145,7 @@ export class Character {
   initHands() {
     if(this.leftHand) this.leftHand = new Item(this.leftHand);
     if(this.rightHand) this.rightHand = new Item(this.rightHand);
+    if(this.potionHand) this.potionHand = new Item(this.potionHand);
   }
 
   initGear() {
@@ -588,7 +589,7 @@ export class Character {
     return find(this.effects, { name: effectName });
   }
 
-  useItem(source: 'leftHand' | 'rightHand') {
+  useItem(source: 'leftHand' | 'rightHand' | 'potionHand') {
     const item = this[source];
     if(!item || !item.use(this)) return;
 

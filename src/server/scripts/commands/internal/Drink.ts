@@ -17,6 +17,10 @@ export class Drink extends Command {
   };
 
   execute(player: Player, { room, client, gameState, args }) {
+    const item = player.potionHand;
+    if(!item) return room.sendClientLogMessage(client, 'You do not have a potion to drink!');
+
+    player.useItem('potionHand');
   }
 
 }
