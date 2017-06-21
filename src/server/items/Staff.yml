@@ -1,6 +1,7 @@
 - name: Antanian Staff
   desc: "a wooden staff"
-  baseDamage: 5
+  baseDamage: 1
+  maxDamage: 1
   type: Staff
   value: 65
   sprite: 196

@@ -1,0 +1,10 @@
+- name: Antanian Greataxe
+  stats:
+    offense: 2
+  desc: "an iron greataxe"
+  baseDamage: 3
+  maxDamage: 5
+  type: Axe
+  secondaryType: Twohanded
+  value: 150
+  sprite: 453

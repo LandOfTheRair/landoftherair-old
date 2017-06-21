@@ -1,0 +1,10 @@
+- name: Antanian Greatmace
+  stats:
+    offense: 2
+  desc: "an iron greatmace"
+  baseDamage: 3
+  maxDamage: 5
+  type: Mace
+  secondaryType: Twohanded
+  value: 150
+  sprite: 325

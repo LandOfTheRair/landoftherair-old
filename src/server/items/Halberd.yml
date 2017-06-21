@@ -5,7 +5,8 @@
     armorClass: 1
     offense: 1
     accuracy: 5
-  baseDamage: 5
+  baseDamage: 2
+  maxDamage: 5
   type: Polearm
   value: 145
   sprite: 230

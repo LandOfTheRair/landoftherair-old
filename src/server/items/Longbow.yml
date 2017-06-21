@@ -1,8 +1,10 @@
 - name: Antanian Longbow
   stats:
-    accuracy: 3
+    accuracy: 1
   desc: "a wooden longbow"
-  baseDamage: 7
+  baseDamage: 1
+  maxDamage: 4
   type: Ranged
+  secondaryType: Twohanded
   value: 110
   sprite: 200

@@ -3,7 +3,8 @@
     accuracy: 4
     offense: 2
   desc: "an iron mace"
-  baseDamage: 6
+  baseDamage: 2
+  maxDamage: 3
   type: Mace
   value: 105
   sprite: 204

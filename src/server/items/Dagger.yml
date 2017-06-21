@@ -2,10 +2,10 @@
   stats:
     accuracy: 5
     offense: 1
-    dex: 1
   desc: "an iron dagger"
   isSackable: true
-  baseDamage: 5
+  baseDamage: 2
+  maxDamage: 2
   type: Dagger
   value: 75
   sprite: 205
