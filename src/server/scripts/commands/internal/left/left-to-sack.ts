@@ -11,6 +11,7 @@ export class LeftToSack extends Command {
 
   execute(player: Player, { room, client, gameState, args }) {
     const item = player.leftHand;
+    if(!item) return false;
 
     if(!item.isSackable) return room.sendClientLogMessage(client, 'That item is not sackable.');
 

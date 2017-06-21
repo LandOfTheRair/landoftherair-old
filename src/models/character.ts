@@ -111,6 +111,7 @@ export class Character {
   gear: any = {};
   leftHand: Item;
   rightHand: Item;
+  potionHand: Item;
 
   swimLevel: number;
 
@@ -283,6 +284,10 @@ export class Character {
     this.rightHand = item;
     this.itemCheck(item);
     this.recalculateStats();
+  }
+
+  setPotionHand(item: Item) {
+    this.potionHand = item;
   }
 
   equip(item: Item) {

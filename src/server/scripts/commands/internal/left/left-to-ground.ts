@@ -10,7 +10,7 @@ export class LeftToGround extends Command {
   public format = '';
 
   execute(player: Player, { room, client, gameState, args }) {
-    if(!player.leftHand) return;
+    if(!player.leftHand) return false;
     gameState.addItemToGround(player, player.leftHand);
     player.setLeftHand(null);
     room.showGroundWindow(client);
