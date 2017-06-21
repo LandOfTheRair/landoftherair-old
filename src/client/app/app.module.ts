@@ -10,6 +10,7 @@ import { Ng2Webstorage } from 'ngx-webstorage';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
 import { ColorPickerModule } from 'ngx-color-picker';
 
@@ -92,6 +93,7 @@ import { BankComponent } from './bank/bank.component';
     ColorPickerModule,
     Ng2DragDropModule,
     Ng2Webstorage.forRoot({ prefix: 'lotr', separator: '-' }),
+    BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     ButtonsModule.forRoot(),
     TooltipModule.forRoot()
