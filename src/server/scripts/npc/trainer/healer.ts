@@ -1,6 +1,6 @@
 import { NPC } from '../../../../models/npc';
 import { NPCLoader } from '../../../helpers/npc-loader';
-import { BaseClassTrainerResponses } from '../common-responses';
+import { BaseClassTrainerResponses, RecallerResponses } from '../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
@@ -14,4 +14,5 @@ export const setup = async (npc: NPC) => {
 
 export const responses = (npc: NPC) => {
   BaseClassTrainerResponses(npc);
+  RecallerResponses(npc);
 };
