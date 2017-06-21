@@ -161,11 +161,20 @@ export class GameWorld extends Room<GameState> {
     player.initServer();
     this.setUpClassFor(player);
     this.state.addPlayer(player);
+
+    if(this.state.mapName === 'Tutorial' && !player.respawnPoint) {
+      player.respawnPoint = { x: 14, y: 14, map: 'Tutorial' };
+    }
   }
 
   onLeave(client) {
     const player = this.state.findPlayer(client.username);
     this.corpseCheck(player);
+
+    if(this.state.mapName === 'Tutorial' && !player.respawnPoint) {
+      player.respawnPoint = { x: 68, y: 13, map: 'Antania' };
+    }
+
     this.savePlayer(player);
     this.state.removePlayer(client.username);
   }

@@ -3,6 +3,17 @@ import { NPC } from '../../../models/npc';
 import { includes, capitalize } from 'lodash';
 import { Logger } from '../../logger';
 
+export const RecallerResponses = (npc: NPC) => {
+  npc.parser.addCommand('recall')
+    .set('syntax', ['recall'])
+    .set('logic', (args, { client, player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+
+      player.respawnPoint = { map: npc.$room.state.mapName, x: npc.x, y: npc.y };
+      return `I will recall you here when you die, ${player.name}. Safe travels.`;
+    });
+};
+
 export const AlchemistResponses = (npc: NPC) => {
 
   npc.parser.addCommand('hello')

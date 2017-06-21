@@ -18,6 +18,8 @@ export class Player extends Character {
   $fov: any;
   $doNotSave: boolean;
 
+  respawnPoint: { x: number, y: number, map: string };
+
   init() {
     this.initBelt();
     this.initSack();
