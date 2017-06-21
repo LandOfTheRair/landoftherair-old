@@ -1,4 +1,6 @@
 
+import * as TiledPlugin from 'phaser-tiled';
+
 import { find, remove, compact, difference } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
@@ -199,7 +201,8 @@ export class Game {
       const xDiff = xCoord - xPlayer;
       const yDiff = yCoord - yPlayer;
 
-      const possibleInteractable = find(this.map.objects.Interactables, { x: xCoord * 64, y: (yCoord + 1) * 64 });
+      // objects[3] is Interactables in this case
+      const possibleInteractable = find(this.map.objects[3].objects, { x: xCoord * 64, y: (yCoord + 1) * 64 });
 
       if(possibleInteractable) {
         // check if it's within "interact" range
@@ -305,51 +308,50 @@ export class Game {
   }
 
   preload() {
-    this.g.load.image('Terrain', `${this.assetUrl}/terrain.png`, 64, 64);
-    this.g.load.spritesheet('Walls', `${this.assetUrl}/walls.png`, 64, 64);
-    this.g.load.spritesheet('Decor', `${this.assetUrl}/decor.png`, 64, 64);
+    const cacheKey = TiledPlugin.utils.cacheKey;
 
-    this.g.load.spritesheet('Creatures', `${this.assetUrl}/creatures.png`, 64, 64);
+    this.g.add.plugin(new TiledPlugin(this.g, this.g.stage));
+
+    const loadMap = this.clientGameState.map;
+
+    // remove unused tileset to prevent warnings since things on a layer that uses this tileset are handled manually
+    loadMap.tilesets.length = 3;
+
+    this.g.load.tiledmap(cacheKey(this.clientGameState.mapName, 'tiledmap'), null, loadMap, (<any>window).Phaser.Tilemap.TILED_JSON);
+
+    this.g.load.image(cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'), `${this.assetUrl}/terrain.png`, 64, 64);
+    this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Walls'), `${this.assetUrl}/walls.png`, 64, 64);
+    this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Decor'), `${this.assetUrl}/decor.png`, 64, 64);
+
     this.g.load.spritesheet('Swimming', `${this.assetUrl}/swimming.png`, 64, 64);
-
+    this.g.load.spritesheet('Creatures', `${this.assetUrl}/creatures.png`, 64, 64);
     this.g.load.spritesheet('Items', `${this.assetUrl}/items.png`, 64, 64);
-    this.g.load.tilemap(this.clientGameState.mapName, null, this.clientGameState.map, (<any>window).Phaser.Tilemap.TILED_JSON);
 
     this.g.game.renderer.setTexturePriority(['Terrain', 'Walls', 'Decor', 'Creatures', 'Items']);
   }
 
   create() {
-    this.map = this.g.add.tilemap(this.clientGameState.mapName);
+    const cacheKey = TiledPlugin.utils.cacheKey;
 
-    this.map.addTilesetImage('Terrain', 'Terrain');
-    this.map.addTilesetImage('Walls', 'Walls');
-    this.map.addTilesetImage('Decor', 'Decor');
-
-    this.map.createLayer('Terrain').resizeWorld();
-
-    this.map.createLayer('Fluids');
-    this.map.createLayer('Floors');
-    this.map.createLayer('Walls');
-    this.map.createLayer('Foliage');
-
-    const doneGids = {};
+    this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 
     const decorFirstGid = this.map.tilesets[2].firstgid;
     const wallFirstGid = this.map.tilesets[1].firstgid;
 
-    const parseLayer = (layer, obj) => {
-      if(doneGids[obj.gid]) return;
-      doneGids[obj.gid] = 1;
+    const parseLayer = (layer) => {
+      layer.objects.forEach(obj => {
+        const isWall = obj.gid < decorFirstGid;
+        const firstGid = isWall ? wallFirstGid : decorFirstGid;
+        const tileSet = isWall ? 'Walls' : 'Decor';
 
-      const isWall = obj.gid < decorFirstGid;
-      const firstGid = isWall ? wallFirstGid : decorFirstGid;
-      const tileSet = isWall ? 'Walls' : 'Decor';
-      this.map.createFromObjects(layer, obj.gid, tileSet, obj.gid - firstGid, true, false, this.groups[layer]);
+        const sprite = this.g.add.sprite(obj.x, obj.y - 64, cacheKey(this.clientGameState.mapName, 'tileset', tileSet), obj.gid - firstGid);
+        this.groups[layer.name].add(sprite);
+      });
     };
 
-    ['Decor', 'DenseDecor', 'OpaqueDecor', 'Interactables'].forEach(layer => {
+    ['Decor', 'DenseDecor', 'OpaqueDecor', 'Interactables'].forEach((layer, index) => {
       this.groups[layer] = this.g.add.group();
-      this.map.objects[layer].forEach(parseLayer.bind(this, layer));
+      parseLayer(this.map.objects[index]);
     });
 
     this.resolveCanCreate();
@@ -372,6 +374,8 @@ export class Game {
         if(!door) return;
 
         const doorSprite = find(this.groups.Interactables.children, { x: door.x, y: door.y });
+        if(!doorSprite) return;
+
         if(door.isOpen) doorSprite.frame += 1;
         else            doorSprite.frame -= 1;
 

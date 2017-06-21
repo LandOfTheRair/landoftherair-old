@@ -61,6 +61,7 @@ export class MapComponent implements OnInit, OnDestroy {
         state: this.game, parent: 'map',
         enableDebug: false
       };
+
       this.phaser = new (<any>window).Phaser.Game(config);
 
       this.create$ = this.clientGameState.createPlayer$.subscribe((player) => {
