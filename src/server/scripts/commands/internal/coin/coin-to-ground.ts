@@ -24,7 +24,7 @@ export class CoinToGround extends Command {
       return;
     }
 
-    gameState.addItemToGround(player, item);
+    room.addItemToGround(player, item);
     room.showGroundWindow(client);
     player.loseGold(value);
   }

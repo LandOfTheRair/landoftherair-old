@@ -27,7 +27,7 @@ export class GroundToPotion extends Command {
     if(player.potionHand) return room.sendClientLogMessage(client, 'Your potion slot is occupied.');
 
     player.setPotionHand(item);
-    gameState.removeItemFromGround(item);
+    room.removeItemFromGround(item);
   }
 
 }

@@ -22,6 +22,6 @@ export class GMCreateItem extends Command {
       return;
     }
 
-    room.placeItemOnGround(player, item);
+    room.addItemToGround(player, item);
   }
 }

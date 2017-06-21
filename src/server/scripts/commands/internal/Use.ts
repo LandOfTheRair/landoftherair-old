@@ -49,7 +49,7 @@ export class Use extends Command {
         if(!item) return room.sendClientLogMessage(client, 'You do not see that item.');
 
         func(item);
-        gameState.removeItemFromGround(item);
+        room.removeItemFromGround(item);
         useItemInHand(slotName);
         return;
       }

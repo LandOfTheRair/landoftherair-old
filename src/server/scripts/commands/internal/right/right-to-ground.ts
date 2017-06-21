@@ -11,7 +11,7 @@ export class RightToGround extends Command {
 
   execute(player: Player, { room, client, gameState, args }) {
     if(!player.rightHand) return false;
-    gameState.addItemToGround(player, player.rightHand);
+    room.addItemToGround(player, player.rightHand);
     player.setRightHand(null);
     room.showGroundWindow(client);
   }

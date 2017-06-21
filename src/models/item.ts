@@ -140,6 +140,8 @@ export class Item {
 
   effect: any;
 
+  expiresAt: number;
+
   constructor(opts) {
     extend(this, opts);
     if(!this.uuid) this.uuid = uuid();
