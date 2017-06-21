@@ -1,7 +1,7 @@
 <div class="p-1 item-container d-flex flex-wrap">
 
   <!-- top row (gold, helm, neck) -->
-  <div class="item-slot item-background" droppable dropScope="coin" (onDrop)="colyseusGame.buildDropAction($event, 'Sack')">
+  <div class="item-slot item-background" droppable dropScope="coin" (onDrop)="colyseusGame.buildDropAction($event, 'Coin')">
     <app-item [size]="size" [item]="{ sprite: 212, value: player.gold }" showValue="true" context="Coin"></app-item>
   </div>
   <div class="item-slot item-background" droppable dropScope="ear" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
@@ -62,8 +62,10 @@
     <app-item [size]="size" [item]="player.gear.Feet" context="Equipment" *ngIf="player.gear.Feet" contextSlot="Feet"></app-item>
   </div>
 
-  <!-- last row (armor, robe, robe) -->
-  <div class="item-slot"></div>
+  <!-- last row (potion, armor, robe, robe) -->
+  <div class="item-slot item-background" droppable dropScope="potion" (onDrop)="colyseusGame.buildDropAction($event, 'Potion')">
+    <app-item [size]="size" [item]="player.potionHand" showOunces="true" context="Potion" *ngIf="player.potionHand"></app-item>
+  </div>
   <div class="item-slot item-background" droppable [dropScope]="['armor', 'robe']" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [size]="size" [item]="player.gear.Armor" context="Equipment" *ngIf="player.gear.Armor" contextSlot="Armor"></app-item>
   </div>

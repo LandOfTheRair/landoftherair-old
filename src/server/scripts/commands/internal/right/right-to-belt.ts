@@ -11,7 +11,7 @@ export class RightToBelt extends Command {
 
   execute(player: Player, { room, client, gameState, args }) {
     const item = player.rightHand;
-    if(!item) return;
+    if(!item) return false;
 
     if(!item.isBeltable) return room.sendClientLogMessage(client, 'That item is not beltable.');
 

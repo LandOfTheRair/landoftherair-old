@@ -4,13 +4,13 @@ import { find } from 'lodash';
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../models/player';
 
-export class LeftToMerchant extends Command {
+export class RightToMerchant extends Command {
 
-  public name = '~LtM';
+  public name = '~RtM';
   public format = 'MerchantUUID';
 
   execute(player: Player, { room, client, gameState, args }) {
-    const item = player.leftHand;
+    const item = player.rightHand;
 
     if(!item) return false;
 
@@ -20,7 +20,7 @@ export class LeftToMerchant extends Command {
     if(container.distFrom(player) > 2) return room.sendClientLogMessage(client, 'That person is too far away.');
 
     player.sellItem(item);
-    player.setLeftHand(null);
+    player.setRightHand(null);
   }
 
 }

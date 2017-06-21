@@ -258,6 +258,14 @@ export class ItemComponent implements OnInit {
     && this.context !== 'Equipment'
     && this.context !== 'Ground') scopes.push('merchant');
 
+    if(this.item.itemClass === 'Bottle'
+    && (this.context === 'Sack'
+      || this.context === 'Ground'
+      || this.context === 'Right'
+      || this.context === 'Left')) {
+      scopes.push('potion');
+    }
+
     if(this.item.isSackable) scopes.push('sack');
     if(this.item.isBeltable) scopes.push('belt');
 
