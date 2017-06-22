@@ -5,7 +5,7 @@
     offense: 1
   desc: "a crudely-made club"
   baseDamage: 1
-  maxDamage: 4
+  maxDamage: 1
   requirements:
     level: 2
   type: Mace
