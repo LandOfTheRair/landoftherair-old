@@ -5,3 +5,4 @@ export * from './left-to-right';
 export * from './left-to-equip';
 export * from './left-to-merchant';
 export * from './left-to-potion';
+export * from './left-to-locker';

@@ -22,7 +22,6 @@ export class Interact extends Command {
 
     let cmdInfo = {};
     switch(interactable.type) {
-      case 'Teleport': return this.doTeleport(room, client, player, interactable);
       case 'Door': cmdInfo = this.doDoor(gameState, interactable); break;
     }
 
@@ -36,11 +35,6 @@ export class Interact extends Command {
   private doDoor(gameState, door) {
     const gameStateDoor = gameState.mapData.openDoors[door.id];
     return { command: 'open', shouldContinue: !gameStateDoor || (gameStateDoor && !gameStateDoor.isOpen) };
-  }
-
-  private doTeleport(room, client, player, obj) {
-    const { teleportX, teleportY, teleportMap } = obj.properties;
-    room.teleport(client, player, { x: teleportX, y: teleportY, newMap: teleportMap });
   }
 
 }

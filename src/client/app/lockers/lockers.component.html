@@ -1,0 +1,27 @@
+
+<div class="p-1 item-container d-flex flex-wrap" droppable dropScope="wardrobe" (onDrop)="colyseusGame.buildDropAction($event, 'Wardrobe')">
+
+  <div class="row w-100 m-0">
+    <div class="col-4 p-0">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item" *ngFor="let locker of colyseusGame.showLocker; let i = index">
+          <a class="nav-link"
+             (click)="colyseusGame.activeLockerNumber = i"
+             [class.active]="i === colyseusGame.activeLockerNumber">{{ locker.lockerName }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-8 p-0 d-flex flex-wrap flex-row">
+      <div *ngFor="let slot of slots"
+           class="item-slot item-background">
+        <app-item *ngIf="colyseusGame.showLocker[colyseusGame.activeLockerNumber].items[slot]"
+                  [item]="colyseusGame.showLocker[colyseusGame.activeLockerNumber].items[slot]"
+                  [showDesc]="true"
+                  [showOunces]="true"
+                  context="Wardrobe"
+                  [contextSlot]="slot"></app-item>
+      </div>
+    </div>
+  </div>
+</div>

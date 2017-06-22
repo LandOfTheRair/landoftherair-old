@@ -18,5 +18,6 @@ export * from './coin';
 export * from './merchant';
 export * from './buyback';
 export * from './potion';
+export * from './locker';
 
 export * from './skills';

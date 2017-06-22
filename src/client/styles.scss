@@ -226,6 +226,12 @@
 
   &.bank {
     min-width: 650px;
+    max-width: 650px;
+  }
+
+  &.locker {
+    min-width: 525px;
+    max-width: 525px;
   }
 
   position: absolute !important;

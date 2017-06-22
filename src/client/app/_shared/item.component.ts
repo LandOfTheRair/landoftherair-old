@@ -8,7 +8,10 @@ import { Player } from '../../../models/player';
 import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'GroundGroup' | 'Equipment' | 'Left' | 'Right' | 'Coin' | 'Merchant' | 'Obtainagain';
+export type MenuContext = 'Sack' | 'Belt' | 'Ground'
+                        | 'GroundGroup' | 'Equipment' | 'Left'
+                        | 'Right' | 'Coin' | 'Merchant'
+                        | 'Obtainagain' | 'Wardrobe';
 
 @Component({
   selector: 'app-item',
@@ -241,9 +244,7 @@ export class ItemComponent implements OnInit {
       scopes.push('ground', 'mapground');
 
       const itemType = this.player.determineItemType(this.item.itemClass);
-      if(itemType !== this.item.itemClass) {
-        scopes.push(itemType.toLowerCase());
-      }
+      scopes.push(itemType.toLowerCase());
     }
 
     if(!this.player.leftHand || !this.player.rightHand || this.context === 'Left' || this.context === 'Right') {
@@ -257,6 +258,9 @@ export class ItemComponent implements OnInit {
     && this.context !== 'Obtainagain'
     && this.context !== 'Equipment'
     && this.context !== 'Ground') scopes.push('merchant');
+
+    if(this.item.itemClass !== 'Coin'
+    && this.item.itemClass !== 'Corpse') scopes.push('wardrobe');
 
     if(this.item.itemClass === 'Bottle'
     && (this.context === 'Sack'
