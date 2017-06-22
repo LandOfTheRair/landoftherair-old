@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { ClientGameState } from './clientgamestate';
 import * as swal from 'sweetalert2';
 
-import { find, includes } from 'lodash';
+import { find, includes, findIndex, extend } from 'lodash';
 import { Player } from '../../models/player';
 import { Item } from '../../models/item';
+import { Locker } from '../../models/locker';
 
 @Injectable()
 export class ColyseusGameService {
@@ -22,6 +23,9 @@ export class ColyseusGameService {
   showTrainer: any = {};
   showShop: any = {};
   showBank: any = {};
+
+  showLocker: Locker[] = [];
+  activeLockerNumber: number;
 
   private changingMap: boolean;
 
@@ -152,6 +156,8 @@ export class ColyseusGameService {
       return;
     }
 
+    if(action === 'update_locker')  return this.updateLocker(other.locker);
+    if(action === 'show_lockers')   return this.showLockerWindow(other.lockers, other.lockerId);
     if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId);
     if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid);
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
@@ -159,6 +165,16 @@ export class ColyseusGameService {
     if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
+  }
+
+  private updateLocker(updateLocker: Locker) {
+    const locker = find(this.showLocker, { lockerId: updateLocker.lockerId });
+    extend(locker, updateLocker);
+  }
+
+  private showLockerWindow(lockers, lockerId) {
+    this.showLocker = lockers;
+    this.activeLockerNumber = findIndex(lockers, { lockerId });
   }
 
   private showBankWindow(uuid, bankId) {
@@ -235,11 +251,16 @@ export class ColyseusGameService {
     });
   }
 
-  public doMove(x, y) {
-    this.sendAction({ command: '~move', x, y });
+  private unshowWindows() {
     this.showTrainer = {};
     this.showShop = {};
     this.showBank = {};
+    this.showLocker = [];
+  }
+
+  public doMove(x, y) {
+    this.sendAction({ command: '~move', x, y });
+    this.unshowWindows();
   }
 
   public doInteract(x, y) {
@@ -247,9 +268,8 @@ export class ColyseusGameService {
   }
 
   public quit() {
-    this.showShop = {};
-    this.showTrainer = {};
-    this.showBank = {};
+    this.unshowWindows();
+
     if(!this.worldRoom) return;
     this.worldRoom.leave();
     delete this.worldRoom;
@@ -333,7 +353,15 @@ export class ColyseusGameService {
       args = `${this.showShop.uuid} ${contextSlot}`;
     }
 
-    this.sendRawCommand(cmd, args);
+    if(choice === 'W') {
+      args = `${args} ${this.showLocker[this.activeLockerNumber].lockerId}`;
+    }
+
+    if(context === 'Wardrobe') {
+      args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].lockerId}`;
+    }
+
+    this.sendRawCommand(cmd, args.trim());
   }
 
   public buildUseAction(item: Item, context: string, contextSlot: string|number) {

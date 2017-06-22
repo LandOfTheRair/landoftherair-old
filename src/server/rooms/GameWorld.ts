@@ -23,6 +23,7 @@ import * as Classes from '../classes';
 import { Character } from '../../models/character';
 import { ItemCreator } from '../helpers/item-creator';
 import { Item } from '../../models/item';
+import { Locker } from '../../models/locker';
 
 const TickRates = {
   PlayerAction: 60,
@@ -43,6 +44,10 @@ export class GameWorld extends Room<GameState> {
   private ticks = {
     Player: 0
   };
+
+  get mapRegion() {
+    return this.state.map.properties.region;
+  }
 
   get maxSkill() {
     return this.state.map.properties.maxSkill || 1;
@@ -126,6 +131,40 @@ export class GameWorld extends Room<GameState> {
 
   showBankWindow(client, npc: NPC) {
     this.send(client, { action: 'show_bank', uuid: npc.uuid, bankId: npc.bankId });
+  }
+
+  private async createLockerIfNotExist(player, regionId, lockerName, lockerId) {
+    return DB.$characterLockers.update(
+      { username: player.username, charSlot: player.charSlot, regionId, lockerId },
+      { $setOnInsert: { items: [] }, $set: { lockerName } },
+      { upsert: true }
+    );
+  }
+
+  async loadLocker(player: Player, lockerId): Promise<Locker> {
+    return DB.$characterLockers.findOne({ username: player.username, charSlot: player.charSlot, regionId: this.mapRegion, lockerId })
+      .then(lock => lock && lock.lockerId ? new Locker(lock) : null);
+  }
+
+  updateLocker(client, player: Player, locker: Locker) {
+    this.saveLocker(player, locker);
+    this.send(client, { action: 'update_locker', locker });
+  }
+
+  saveLocker(player: Player, locker: Locker) {
+    return DB.$characterLockers.update(
+      { username: player.username, charSlot: player.charSlot, regionId: locker.regionId, lockerId: locker.lockerId },
+      { $set: { lockerName: locker.lockerName, items: locker.items } }
+    );
+  }
+
+  async openLocker(client, player: Player, lockerName, lockerId) {
+    const regionId = this.mapRegion;
+
+    await this.createLockerIfNotExist(player, regionId, lockerName, lockerId);
+    const lockers = await DB.$characterLockers.find({ username: player.username, charSlot: player.charSlot, regionId }).toArray();
+
+    this.send(client, { action: 'show_lockers', lockers, lockerId });
   }
 
   teleport(client, player, { newMap, x, y }) {
@@ -275,8 +314,8 @@ export class GameWorld extends Room<GameState> {
 
   async loadDropTables() {
     this.dropTables.map = await DB.$mapDrops.findOne({ mapName: this.state.mapName }).drops || [];
-    if(this.state.map.properties.region) {
-      this.dropTables.region = await DB.$regionDrops.findOne({ regionName: this.state.map.properties.region }).drops || [];
+    if(this.mapRegion) {
+      this.dropTables.region = await DB.$regionDrops.findOne({ regionName: this.mapRegion }).drops || [];
     }
   }
 

@@ -80,6 +80,28 @@ export class Move extends Command {
     player.setDirBasedOnXYDiff(x, y);
 
     gameState.resetPlayerStatus(player);
+
+    const interactable = find(gameState.map.layers[MapLayer.Interactables].objects, { x: player.x * 64, y: (player.y + 1) * 64 });
+    if(interactable) {
+      this.handleInteractable(room, client, player, interactable);
+    }
+  }
+
+  private handleInteractable(room, client, player, obj) {
+    switch(obj.type) {
+      case 'Teleport': return this.handleTeleport(room, client, player, obj);
+      case 'Locker':   return this.handleLocker(room, client, player, obj);
+    }
+  }
+
+  private handleTeleport(room, client, player, obj) {
+    const { teleportX, teleportY, teleportMap } = obj.properties;
+    room.teleport(client, player, { x: teleportX, y: teleportY, newMap: teleportMap });
+  }
+
+  private handleLocker(room, client, player, obj) {
+    const { lockerId } = obj.properties;
+    room.openLocker(client, player, obj.name, lockerId);
   }
 
 }

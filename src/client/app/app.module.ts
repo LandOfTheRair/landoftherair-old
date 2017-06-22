@@ -48,6 +48,7 @@ import { MacroBarsComponent } from './macro-bars/macro-bars.component';
 import { TrainerComponent } from './trainer/trainer.component';
 import { ShopComponent } from './shop/shop.component';
 import { BankComponent } from './bank/bank.component';
+import { LockersComponent } from './lockers/lockers.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -84,6 +85,7 @@ import { BankComponent } from './bank/bank.component';
     TrainerComponent,
     ShopComponent,
     BankComponent,
+    LockersComponent,
   ],
   imports: [
     BrowserModule,
