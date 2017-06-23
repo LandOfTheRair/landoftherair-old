@@ -88,7 +88,7 @@ export class Player extends Character {
   }
 
   dropHands() {
-
+    // TODO drop hands
   }
 
   strip() {
