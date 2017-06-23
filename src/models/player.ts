@@ -70,20 +70,20 @@ export class Player extends Character {
         this.stats.hp -= 2;
       }
 
-      if(random(1, myLuk) === 1) this.strip();
+      if(random(1, myLuk) === 1) this.strip(this);
 
       if(random(1, myLuk / 5) === 1) this.stats.con--;
     }
 
     if(myCon === 2) {
       if(this.stats.hp > 10) this.stats.hp -= 2;
-      if(random(1, myLuk / 5) === 1) this.strip();
+      if(random(1, myLuk / 5) === 1) this.strip(this);
       if(random(1, myLuk) === 1) this.stats.con--;
     }
 
     if(myCon === 1) {
       if(this.stats.hp > 10) this.stats.hp -= 2;
-      if(random(1, 2) === 1) this.strip();
+      if(random(1, 2) === 1) this.strip(this);
     }
   }
 
@@ -91,7 +91,7 @@ export class Player extends Character {
     // TODO drop hands
   }
 
-  strip() {
+  strip({ x, y }, spread = 0) {
     // TODO get stripp't
   }
 
