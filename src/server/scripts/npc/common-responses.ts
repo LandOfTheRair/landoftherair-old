@@ -6,10 +6,10 @@ import { Logger } from '../../logger';
 export const RecallerResponses = (npc: NPC) => {
   npc.parser.addCommand('recall')
     .set('syntax', ['recall'])
-    .set('logic', (args, { client, player }) => {
+    .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
-      player.respawnPoint = { map: npc.$room.state.mapName, x: npc.x, y: npc.y };
+      player.respawnPoint = { map: npc.$$room.state.mapName, x: npc.x, y: npc.y };
       return `I will recall you here when you die, ${player.name}. Safe travels.`;
     });
 };
@@ -18,14 +18,14 @@ export const AlchemistResponses = (npc: NPC) => {
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
-    .set('logic', (args, { client, player }) => {
+    .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
       return `Hello, ${player.name}! You can tell me COMBINE while holding a bottle in your right hand to mix together that with other bottles of the same type in your sack. I can combine up to ${npc.alchOz}oz into one bottle. It will cost ${npc.alchCost} gold per ounce to do this.`;
     });
 
   npc.parser.addCommand('combine')
     .set('syntax', ['combine'])
-    .set('logic', (args, { client, player }) => {
+    .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
       const item = player.rightHand;
@@ -61,16 +61,16 @@ export const BankResponses = (npc: NPC) => {
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
-    .set('logic', (args, { client, player }) => {
+    .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
       player.addBankMoney(npc.bankId, 0);
-      npc.$room.showBankWindow(client, npc);
+      npc.$$room.showBankWindow(player, npc);
       return `Greetings ${player.name}! Welcome to the ${npc.bankId} National Bank, ${npc.branchId} branch. You can WITHDRAW or DEPOSIT your coins here!`;
     });
 
   npc.parser.addCommand('deposit')
     .set('syntax', ['deposit <string:amount>'])
-    .set('logic', (args, { client, player }) => {
+    .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
       const amount = +args.amount;
@@ -83,7 +83,7 @@ export const BankResponses = (npc: NPC) => {
 
   npc.parser.addCommand('withdraw')
     .set('syntax', ['withdraw <string:amount>'])
-    .set('logic', (args, { client, player }) => {
+    .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
       const amount = +args.amount;
@@ -98,9 +98,9 @@ export const BankResponses = (npc: NPC) => {
 export const VendorResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
-    .set('logic', (args, { client, player }) => {
+    .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
-      npc.$room.showShopWindow(client, npc);
+      npc.$$room.showShopWindow(player, npc);
       return `Greetings ${player.name}! Please view my wares.`;
     });
 
@@ -122,9 +122,9 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
-    .set('logic', (args, { player, client }) => {
+    .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      npc.$room.showTrainerWindow(client, npc);
+      npc.$$room.showTrainerWindow(player, npc);
       return `Hail, ${player.name}! If you want to try to level up, TRAIN with me. Alternatively, I can let you know how your combat skills are progressing if you want to ASSESS them! You can also JOIN the ${npc.classTrain} profession if you haven't chosen one already!`;
     });
 

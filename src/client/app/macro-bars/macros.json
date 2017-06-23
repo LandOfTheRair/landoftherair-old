@@ -17,8 +17,8 @@
             "isSystem": true
         },
         {
-            "name": "Show Stats",
-            "macro": "show_stats",
+            "name": "Show Skills",
+            "macro": "show_skills",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
@@ -30,6 +30,23 @@
             "icon": "3d-stairs",
             "color": "#404040",
             "mode": "autoActivate",
+            "isSystem": true
+        },
+        {
+            "name": "Show Stats",
+            "macro": "show_stats",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "isSystem": true
+        },
+        {
+            "name": "Clear Buffer",
+            "macro": "~clear",
+            "icon": "ultrasound",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "key": "ESCAPE",
             "isSystem": true
         },
         {

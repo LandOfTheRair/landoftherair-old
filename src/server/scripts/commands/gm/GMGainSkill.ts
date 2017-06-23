@@ -8,7 +8,7 @@ export class GMGainSkill extends Command {
   public name = '@skill';
   public format = 'SkillName Amount';
 
-  async execute(player: Player, { client, room, gameState, args }) {
+  async execute(player: Player, { room, gameState, args }) {
     if(!player.isGM) return;
 
     const [skillname, amount] = args.split(' ');

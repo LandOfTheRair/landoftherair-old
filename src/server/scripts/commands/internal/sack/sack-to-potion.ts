@@ -9,18 +9,18 @@ export class SackToPotion extends Command {
   public name = '~StP';
   public format = 'ItemSlot';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const slot = +args;
     if(isUndefined(slot)) return false;
 
     const item = player.sack[slot];
     if(!item) return false;
 
-    if(item.itemClass !== 'Bottle') return room.sendClientLogMessage(client, 'That item is not a bottle.');
+    if(item.itemClass !== 'Bottle') return player.sendClientMessage('That item is not a bottle.');
 
-    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
-    if(player.potionHand) return room.sendClientLogMessage(client, 'Your potion slot is occupied.');
+    if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
 
     player.setPotionHand(item);
     player.takeItemFromSack(slot);

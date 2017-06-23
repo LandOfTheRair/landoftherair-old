@@ -11,7 +11,7 @@ export class Interact extends Command {
 
   public name = '~interact';
 
-  execute(player: Player, { room, client, gameState, x, y }) {
+  execute(player: Player, { room, gameState, x, y }) {
     // can't interact from >1 tile away
     if(Math.abs(x) > 1 || Math.abs(y) > 1) return;
 
@@ -29,7 +29,7 @@ export class Interact extends Command {
     const args = `${x} ${y}`;
     if(!command || !shouldContinue) return;
 
-    CommandExecutor.executeCommand(player, command, { room, client, gameState, args });
+    CommandExecutor.executeCommand(player, command, { room, gameState, args });
   }
 
   private doDoor(gameState, door) {

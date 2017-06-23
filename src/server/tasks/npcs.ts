@@ -41,6 +41,18 @@ class NPCLoader {
   }
 
   static conditionallyAddInformation(npc: NPC) {
+    if(!npc.allegiance) npc.allegiance = 'Enemy';
+
+    if(!npc.usableSkills) npc.usableSkills = [];
+
+    if(!npc.skillOnKill) npc.skillOnKill = 1;
+
+    npc.usableSkills.push('Attack');
+
+    // TODO skill levels shortcut to set skill levels
+
+    if(!npc.level) npc.level = 1;
+
     if(isNumber(npc.stats)) {
       const statValue: number = <any>npc.stats;
 

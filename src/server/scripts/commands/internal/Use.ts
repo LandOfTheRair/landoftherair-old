@@ -8,7 +8,7 @@ export class Use extends Command {
 
   public name = '~use';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const [context, slot, itemType, itemId] = args.split(' ');
 
     const useItemInHand = (slot) => {
@@ -18,7 +18,7 @@ export class Use extends Command {
     if(context === 'Left') return useItemInHand('leftHand');
     if(context === 'Right') return useItemInHand('rightHand');
 
-    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full!');
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full!');
 
     const emptyHand = player.leftHand ? 'Right' : 'Left';
     const slotName = `${emptyHand.toLowerCase()}Hand`;
@@ -43,10 +43,10 @@ export class Use extends Command {
 
       case 'Ground': {
         const ground = gameState.getGroundItems(player.x, player.y);
-        if(!ground[itemType]) return room.sendClientLogMessage(client, 'You do not see that item.');
+        if(!ground[itemType]) return player.sendClientMessage('You do not see that item.');
 
         const item = find(ground[itemType], { uuid: itemId });
-        if(!item) return room.sendClientLogMessage(client, 'You do not see that item.');
+        if(!item) return player.sendClientMessage('You do not see that item.');
 
         func(item);
         room.removeItemFromGround(item);

@@ -9,12 +9,12 @@ export class RightToPotion extends Command {
   public name = '~RtP';
   public format = '';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const right = player.rightHand;
     if(!right) return false;
-    if(right.itemClass !== 'Bottle') return room.sendClientLogMessage(client, 'That item is not a bottle.');
+    if(right.itemClass !== 'Bottle') return player.sendClientMessage('That item is not a bottle.');
 
-    if(player.potionHand) return room.sendClientLogMessage(client, 'Your potion slot is occupied.');
+    if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
 
     player.setPotionHand(right);
     player.setRightHand(null);

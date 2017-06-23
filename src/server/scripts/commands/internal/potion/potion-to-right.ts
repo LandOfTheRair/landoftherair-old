@@ -10,10 +10,10 @@ export class PotionToRight extends Command {
   public name = '~PtR';
   public format = '';
 
-  async execute(player: Player, { room, client, gameState, args }) {
+  async execute(player: Player, { room, gameState, args }) {
     if(!player.potionHand) return false;
 
-    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
     if(player.rightHand && !player.leftHand) {
       player.setLeftHand(player.rightHand);
     }

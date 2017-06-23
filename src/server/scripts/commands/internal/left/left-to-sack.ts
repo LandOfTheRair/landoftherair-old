@@ -9,13 +9,13 @@ export class LeftToSack extends Command {
   public name = '~LtS';
   public format = '';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const item = player.leftHand;
     if(!item) return false;
 
-    if(!item.isSackable) return room.sendClientLogMessage(client, 'That item is not sackable.');
+    if(!item.isSackable) return player.sendClientMessage('That item is not sackable.');
 
-    if(player.fullSack()) return room.sendClientLogMessage(client, 'Your sack is full.');
+    if(player.fullSack()) return player.sendClientMessage('Your sack is full.');
 
     player.addItemToSack(item);
     player.setLeftHand(null);

@@ -1,7 +1,8 @@
 
 - npcId: Tutorial Townee
   name: townee
-  stats: 3
+  allegiance: 'Townsfolk'
+  stats: 10
   level: 1
 
   sprite: [580, 595, 610, 615]
@@ -50,6 +51,11 @@
 
   gear:
     Armor: Tutorial Fur
+    Hands: Basic Claws
+
+  hp:
+    min: 50
+    max: 100
 
   giveXp:
     min: 10
@@ -69,8 +75,8 @@
     max: 20
 
   hp:
-    min: 100
-    max: 200
+    min: 50
+    max: 100
 
   giveXp:
     min: 50
@@ -78,6 +84,7 @@
 
   gear:
     Armor: Tutorial Fur
+    Hands: Basic Claws
 
   tansFor: Tutorial Fur
 
@@ -85,7 +92,7 @@
   name: yeti
   hostility: Always
   sprite: 220
-  stats: 10
+  stats: 7
   level: 2
 
   gold:
@@ -93,8 +100,8 @@
     max: 200
 
   hp:
-    min: 400
-    max: 500
+    min: 100
+    max: 150
 
   giveXp:
     min: 100

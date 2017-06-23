@@ -9,13 +9,13 @@ export class PotionToGround extends Command {
   public name = '~PtG';
   public format = '';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     if(!player.potionHand) return false;
-    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     room.addItemToGround(player, player.potionHand);
     player.setPotionHand(null);
-    room.showGroundWindow(client);
+    room.showGroundWindow(player);
   }
 
 }

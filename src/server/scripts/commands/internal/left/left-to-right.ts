@@ -9,7 +9,7 @@ export class LeftToRight extends Command {
   public name = '~LtR';
   public format = '';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const left = player.leftHand;
     const right = player.rightHand;
 

@@ -2,7 +2,7 @@
 import { Character, MaxSizes } from './character';
 import { Item } from './item';
 
-import { compact, pull } from 'lodash';
+import { compact, pull, random } from 'lodash';
 
 export class Player extends Character {
   _id?: any;
@@ -16,7 +16,8 @@ export class Player extends Character {
   banks: any;
 
   $fov: any;
-  $doNotSave: boolean;
+  $$doNotSave: boolean;
+  $$actionQueue = [];
 
   respawnPoint: { x: number, y: number, map: string };
 
@@ -26,7 +27,6 @@ export class Player extends Character {
     this.initGear();
     this.initHands();
     this.initBuyback();
-    this.recalculateStats();
   }
 
   initBuyback() {
@@ -36,6 +36,8 @@ export class Player extends Character {
 
   initServer() {
     this.initEffects();
+    this.recalculateStats();
+    this.uuid = this._id;
   }
 
   canSee(x, y) {
@@ -44,15 +46,64 @@ export class Player extends Character {
     return true;
   }
 
+  kill(target: Character, killAbility) {
+    // TODO gain skill
+  }
+
   die(killer) {
     super.die(killer);
 
     // 5 minutes to restore
-    this.$deathTicks = 360 * 5;
+    this.$$deathTicks = 360 * 5;
+
+    const myCon = this.getTotalStat('con');
+    const myLuk = this.getTotalStat('luk');
+
+    if(!(killer instanceof Player)) {
+      this.dropHands();
+    }
+
+    if(myCon > 3) this.stats.con--;
+
+    if(myCon === 3) {
+      if(this.stats.hp > 10 && random(1, 5) === 1) {
+        this.stats.hp -= 2;
+      }
+
+      if(random(1, myLuk) === 1) this.strip();
+
+      if(random(1, myLuk/5) === 1) this.stats.con--;
+    }
+
+    if(myCon === 2) {
+      if(this.stats.hp > 10) this.stats.hp -= 2;
+      if(random(1, myLuk/5) === 1) this.strip();
+      if(random(1, myLuk) === 1) this.stats.con--;
+    }
+
+    if(myCon === 1) {
+      if(this.stats.hp > 10) this.stats.hp -= 2;
+      if(random(1, 2) === 1) this.strip();
+    }
+  }
+
+  dropHands() {
+
+  }
+
+  strip() {
+    // TODO get stripp't
   }
 
   restore(force = false) {
-    // TODO set restore point etc
+    if(force) {
+      this.sendClientMessage('You feel a churning sensation.');
+      // TODO take stats
+    }
+
+    this.hp.set(1);
+    this.dir = 'S';
+    this.$$room.teleport(this, { newMap: this.respawnPoint.map, x: this.respawnPoint.x, y: this.respawnPoint.y });
   }
 
   getSprite() {
@@ -130,6 +181,24 @@ export class Player extends Character {
   }
 
   sendClientMessage(message) {
-    this.$room.sendPlayerLogMessage(this, message);
+    this.$$room.sendPlayerLogMessage(this, message);
+  }
+
+  queueAction({ command, args }) {
+    this.$$actionQueue.push({ command, args });
+    if(this.$$actionQueue.length > 20) this.$$actionQueue.length = 20;
+  }
+
+  tick() {
+    super.tick();
+    const nextAction = this.$$actionQueue.shift();
+    if(nextAction) {
+      this.$$room.executeCommand(this, nextAction.command, nextAction.args);
+    }
+  }
+
+  addAgro(char: Character, value) {
+    if((<any>char).ai) return;
+    super.addAgro(char, value);
   }
 }

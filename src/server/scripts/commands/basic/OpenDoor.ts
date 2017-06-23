@@ -9,7 +9,7 @@ export class OpenDoor extends Command {
   public name = ['open', 'close'];
   public format = 'DIR';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     if(!args) return false;
 
     let { x, y } = player.getXYFromDir(args);
@@ -27,11 +27,11 @@ export class OpenDoor extends Command {
     const door = find(interactables, { x: targetX * 64, y: targetY * 64 });
 
     if(!door) {
-      room.sendClientLogMessage(client, 'There is no door there.');
+      player.sendClientMessage('There is no door there.');
       return;
     }
 
-    room.sendClientLogMessage(client, door.isOpen ? 'You close the door.' : 'You open the door.');
+    player.sendClientMessage(door.isOpen ? 'You close the door.' : 'You open the door.');
     gameState.toggleDoor(door);
 
     gameState.getPlayersInRange(targetX, targetY, 3).forEach(p => gameState.calculateFOV(p));

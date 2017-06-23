@@ -38,5 +38,23 @@
     &.font-size-xsmall {
       font-size: 0.5rem;
     }
+
+    &.combat {
+      &.self {
+        color: #00a;
+      }
+
+      &.other.miss, &.other.block {
+        color: #aaa;
+      }
+
+      &.other.hit {
+        color: #b20;
+      }
+
+      &.kill {
+        font-weight: bold;
+      }
+    }
   }
 }

@@ -10,19 +10,19 @@ export class BuybackToRight extends Command {
   public name = '~OtR';
   public format = 'MerchantUUID ItemSlot';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
 
     const [containerUUID, slot] = args.split(' ');
 
     const container = room.state.findNPC(containerUUID);
-    if(!container) return room.sendClientLogMessage(client, 'That person is not here.');
+    if(!container) return player.sendClientMessage('That person is not here.');
 
     const item = player.buyback[+slot];
-    if(!item) return room.sendClientLogMessage(client, 'You do not see that item.');
+    if(!item) return player.sendClientMessage('You do not see that item.');
 
-    if(player.gold < item._buybackValue) return room.sendClientLogMessage(client, 'You do not have enough gold for that.');
+    if(player.gold < item._buybackValue) return player.sendClientMessage('You do not have enough gold for that.');
 
-    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     player.buyItemBack(slot);
     player.loseGold(item._buybackValue);

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 import { compact } from 'lodash';
-import { Character } from '../../../models/character';
 import { NPC } from '../../../models/npc';
+import { MacroService } from '../macros.service';
 
 @Component({
   selector: 'app-npcs',
@@ -12,12 +12,11 @@ import { NPC } from '../../../models/npc';
 })
 export class NpcsComponent {
 
-  constructor(private colyseusGame: ColyseusGameService) { }
+  constructor(private colyseusGame: ColyseusGameService, private macroService: MacroService) { }
 
   public visibleNPCS() {
     const fov = this.colyseusGame.character.$fov;
-    const npcs: Character[] = (<Character[]>this.colyseusGame.clientGameState.mapNPCs)
-                                    .concat(this.colyseusGame.clientGameState.players);
+    const npcs: any[] = (<any[]>this.colyseusGame.clientGameState.mapNPCs).concat(this.colyseusGame.clientGameState.players);
 
     if(!fov) return [];
     const me = this.colyseusGame.character;
@@ -61,12 +60,16 @@ export class NpcsComponent {
     const me = this.colyseusGame.character;
 
     if(npc.hostility === 'Never') return 'friendly';
-    if(npc.hostility === 'Always' || npc.agro[me.username]) return 'angry';
+    if(npc.hostility === 'Always' || npc.agro[me.uuid]) return 'angry';
     return 'neutral';
   }
 
   public doAction(npc: NPC) {
-    this.colyseusGame.sendCommandString(`${npc.uuid}, hello`);
+    if(npc.hostility === 'Never') {
+      this.colyseusGame.sendCommandString(`${npc.uuid}, hello`);
+    } else {
+      this.colyseusGame.sendCommandString(this.macroService.activeMacro.macro, npc.uuid);
+    }
   }
 
 }

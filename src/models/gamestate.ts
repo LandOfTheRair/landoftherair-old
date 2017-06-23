@@ -1,11 +1,12 @@
 
-import { reject, extend, find, pull, size } from 'lodash';
+import { reject, filter, extend, find, pull, size } from 'lodash';
 
 import { Player } from './player';
 
 import * as Mrpas from 'mrpas';
 import { Item } from './item';
 import { NPC } from './npc';
+import { Character } from './character';
 
 export const MapLayer = {
   Terrain: 0,
@@ -33,7 +34,7 @@ export class GameState {
   fov: Mrpas;
 
   addNPC(npc: NPC) {
-    npc.$map = this.map;
+    npc.$$map = this.map;
     this.mapNPCs.push(npc);
   }
 
@@ -46,7 +47,7 @@ export class GameState {
   }
 
   addPlayer(player) {
-    player.$map = this.map;
+    player.$$map = this.map;
     this.players.push(player);
     this.resetPlayerStatus(player);
   }
@@ -74,10 +75,28 @@ export class GameState {
 
   getPlayersInRange(x, y, radius) {
     return reject(this.players, p => {
-      return p.x < radius - x
-          || p.x > radius + x
-          || p.y < radius - y
-          || p.y > radius + y;
+      return p.x < x - radius
+          || p.x > x + radius
+          || p.y < y - radius
+          || p.y > y + radius;
+    });
+  }
+
+  getPossibleTargetsFor(me: Character, radius) {
+    return filter((<any>this.players).concat(this.mapNPCs), char => {
+
+      if(char.isDead()) return false;
+
+      // no reason to attack my own people
+      if(me.allegiance === char.allegiance) return false;
+
+      // if they can't attack, they're not worth fighting
+      if(char.hostility === 'Never') return false;
+
+      return char.x > me.x - radius
+          && char.x < me.x + radius
+          && char.y > me.y - radius
+          && char.y < me.y + radius;
     });
   }
 
