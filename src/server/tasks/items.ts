@@ -85,6 +85,8 @@ class ItemLoader {
     if(item.itemClass === 'Bottle') {
       item.ounces = item.ounces || 1;
     }
+
+    // TODO check effect, if it is an array, then pick a random value between 0 and 1
   }
 
   static validateItem(item: Item): boolean {
