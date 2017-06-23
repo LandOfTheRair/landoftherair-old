@@ -13,8 +13,8 @@ export class TutorialYetiSpawner extends Spawner {
       initialSpawn: 1,
       maxCreatures: 1,
       spawnRadius: 1,
-      randomWalkRadius: 2,
-      leashRadius: 5,
+      randomWalkRadius: 5,
+      leashRadius: 10,
       npcIds
     });
   }

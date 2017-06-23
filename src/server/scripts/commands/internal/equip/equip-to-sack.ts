@@ -9,18 +9,18 @@ export class EquipToSack extends Command {
   public name = '~EtS';
   public format = 'ItemSlot';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const slot = args;
     if(isUndefined(slot)) return false;
 
     const item = player.gear[slot];
     if(!item) return false;
 
-    if(!item.isSackable) return room.sendClientLogMessage(client, 'That item is not sackable.');
+    if(!item.isSackable) return player.sendClientMessage('That item is not sackable.');
 
-    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
-    if(player.fullSack()) return room.sendClientLogMessage(client, 'Your sack is full.');
+    if(player.fullSack()) return player.sendClientMessage('Your sack is full.');
 
     player.unequip(slot);
     player.addItemToSack(item);

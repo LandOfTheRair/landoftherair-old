@@ -26,13 +26,14 @@ export class MacroBarsComponent implements OnInit {
 
   createDefaultMacros() {
 
-    (<any>macros).allMeta.forEach(({ name, macro, icon, mode, color, isSystem }) => {
+    (<any>macros).allMeta.forEach(({ name, macro, icon, mode, color, key, isSystem }) => {
       const macroObject = new Macro();
       macroObject.name = name;
       macroObject.macro = macro;
       macroObject.icon = icon;
       macroObject.foreground = color;
       macroObject[mode] = true;
+      macroObject.key = key;
       macroObject.isSystem = isSystem;
 
       this.macroService.allMacros[name] = macroObject;
@@ -42,7 +43,9 @@ export class MacroBarsComponent implements OnInit {
     // this is manual because there will be more default macros but not all of them get added to group
     this.macroService.allMacroGroups.default = ['Attack', 'Search', 'Drink', 'Stairs', 'Climb', 'Restore'];
 
-    this.selectedMacro = 'Attack';
+    if(!this.selectedMacro) {
+      this.selectedMacro = 'Attack';
+    }
 
     this.macroService.saveMacros();
   }

@@ -10,11 +10,11 @@ export class CoinToRight extends Command {
   public name = '~CtR';
   public format = 'Value';
 
-  async execute(player: Player, { room, client, gameState, args }) {
+  async execute(player: Player, { room, gameState, args }) {
     const value = +args;
     if(value <= 0 || value > player.gold || isNaN(value)) return false;
 
-    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
     if(player.rightHand && !player.leftHand) {
       player.setLeftHand(player.rightHand);
     }
@@ -24,7 +24,7 @@ export class CoinToRight extends Command {
       item = await ItemCreator.getItemByName('Gold Coin');
       item.value = value;
     } catch(e) {
-      room.sendClientLogMessage(client, `Warning: "Gold Coin" does not exist.`);
+      player.sendClientMessage(`Warning: "Gold Coin" does not exist.`);
       return;
     }
 

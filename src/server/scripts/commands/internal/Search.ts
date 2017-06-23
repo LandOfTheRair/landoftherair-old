@@ -16,7 +16,7 @@ export class Search extends Look {
     mode: 'autoActivate'
   };
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const items = gameState.getGroundItems(player.x, player.y);
 
     if(items.Corpse) {
@@ -25,7 +25,7 @@ export class Search extends Look {
       });
     }
 
-    super.execute(player, { room, client, gameState, args });
+    super.execute(player, { room, gameState, args });
   }
 
 }

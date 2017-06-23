@@ -9,17 +9,17 @@ export class BeltToGround extends Command {
   public name = '~BtG';
   public format = 'ItemSlot';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const slot = +args;
     if(isUndefined(slot)) return false;
 
     const item = player.belt[slot];
     if(!item) return false;
 
-    if(!player.hasEmptyHand()) return room.sendClientLogMessage(client, 'Your hands are full.');
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     room.addItemToGround(player, item);
-    room.showGroundWindow(client);
+    room.showGroundWindow(player);
     player.takeItemFromBelt(slot);
   }
 

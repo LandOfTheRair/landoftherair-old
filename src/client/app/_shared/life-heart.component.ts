@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Character } from '../../../models/character';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -75,7 +74,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class LifeHeartComponent {
   @Input()
-  public target: Character;
+  public target;
 
   constructor(private domSanitizer: DomSanitizer) {}
 
@@ -85,6 +84,6 @@ export class LifeHeartComponent {
   }
 
   get hpPercent() {
-    return (this.target.hp.__current / this.target.hp.maximum);
+    return 100 - ((this.target.hp.__current / this.target.hp.maximum) * 100);
   }
 }

@@ -131,7 +131,7 @@ export class Spawner {
 
     npc.hostility = npcData.hostility;
     npc.spawner = this;
-    npc.$room = this.room;
+    npc.$$room = this.room;
     this.assignPath(npc);
     this.addNPC(npc);
     npc.recalculateStats();

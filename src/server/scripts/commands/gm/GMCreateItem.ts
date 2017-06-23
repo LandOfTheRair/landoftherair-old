@@ -8,7 +8,7 @@ export class GMCreateItem extends Command {
   public name = '@item';
   public format = 'ItemName';
 
-  async execute(player: Player, { client, room, gameState, args }) {
+  async execute(player: Player, { room, gameState, args }) {
     if(!player.isGM) return;
 
     const itemName = args;
@@ -18,7 +18,7 @@ export class GMCreateItem extends Command {
     try {
       item = await ItemCreator.getItemByName(itemName);
     } catch(e) {
-      room.sendClientLogMessage(client, `Warning: item "${itemName}" does not exist.`);
+      player.sendClientMessage(`Warning: item "${itemName}" does not exist.`);
       return;
     }
 

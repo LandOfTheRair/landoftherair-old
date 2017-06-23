@@ -9,14 +9,14 @@ export class RightToEquip extends Command {
   public name = '~RtE';
   public format = 'ItemSlot';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const slot = +args;
     if(isUndefined(slot)) return false;
 
     const item = player.rightHand;
     if(!item) return false;
 
-    if(!player.canEquip(item)) return room.sendClientLogMessage(client, 'You cannot equip that item.');
+    if(!player.canEquip(item)) return player.sendClientMessage('You cannot equip that item.');
 
     player.equip(item);
     player.setRightHand(null);

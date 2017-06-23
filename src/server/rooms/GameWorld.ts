@@ -78,7 +78,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   savePlayer(player: Player) {
-    if(player.$doNotSave) return;
+    if(player.$$doNotSave) return;
 
     if(player._id) {
       delete player._id;
@@ -98,8 +98,12 @@ export class GameWorld extends Room<GameState> {
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }
 
+  findClient(player: Player) {
+    return find(this.clients, { username: player.username });
+  }
+
   sendPlayerLogMessage(player: Player, messageData) {
-    const client = find(this.clients, { username: player.username });
+    const client = this.findClient(player);
     this.sendClientLogMessage(client, messageData);
   }
 
@@ -107,29 +111,35 @@ export class GameWorld extends Room<GameState> {
 
     let overMessage = messageData;
     let overName = '';
+    let overClass = '';
 
     if(isObject(messageData)) {
-      const { message, name } = messageData;
+      const { message, name, subClass } = messageData;
       overMessage = message;
       overName = name;
+      overClass = subClass;
     }
 
-    this.send(client, { action: 'log_message', name: overName, message: overMessage });
+    this.send(client, { action: 'log_message', name: overName, message: overMessage, subClass: overClass });
   }
 
-  showGroundWindow(client) {
+  showGroundWindow(player: Player) {
+    const client = this.findClient(player);
     this.send(client, { action: 'show_ground' });
   }
 
-  showTrainerWindow(client, npc: NPC) {
+  showTrainerWindow(player: Player, npc: NPC) {
+    const client = this.findClient(player);
     this.send(client, { action: 'show_trainer', trainSkills: npc.trainSkills, classTrain: npc.classTrain, uuid: npc.uuid });
   }
 
-  showShopWindow(client, npc: NPC) {
+  showShopWindow(player: Player, npc: NPC) {
+    const client = this.findClient(player);
     this.send(client, { action: 'show_shop', vendorItems: npc.vendorItems, uuid: npc.uuid });
   }
 
-  showBankWindow(client, npc: NPC) {
+  showBankWindow(player: Player, npc: NPC) {
+    const client = this.findClient(player);
     this.send(client, { action: 'show_bank', uuid: npc.uuid, bankId: npc.bankId });
   }
 
@@ -146,7 +156,8 @@ export class GameWorld extends Room<GameState> {
       .then(lock => lock && lock.lockerId ? new Locker(lock) : null);
   }
 
-  updateLocker(client, player: Player, locker: Locker) {
+  updateLocker(player: Player, locker: Locker) {
+    const client = this.findClient(player);
     this.saveLocker(player, locker);
     this.send(client, { action: 'update_locker', locker });
   }
@@ -167,7 +178,9 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_lockers', lockers, lockerId });
   }
 
-  teleport(client, player, { newMap, x, y }) {
+  teleport(player, { newMap, x, y }) {
+    const client = this.findClient(player);
+
     if(newMap && !this.allMapNames[newMap]) {
       this.sendClientLogMessage(client, `Warning: map "${newMap}" does not exist.`);
       return;
@@ -181,13 +194,15 @@ export class GameWorld extends Room<GameState> {
     if(newMap && player.map !== newMap) {
       player.map = newMap;
       this.savePlayer(player);
-      player.$doNotSave = true;
+      player.$$doNotSave = true;
       this.send(client, { action: 'change_map', map: newMap });
     }
   }
 
   addItemToGround(ref, item) {
-    this.setItemExpiry(item);
+    if(item.itemClass !== 'Corpse') {
+      this.setItemExpiry(item);
+    }
     this.state.addItemToGround(ref, item);
     if(item.$heldBy) item.$heldBy = null;
   }
@@ -212,7 +227,7 @@ export class GameWorld extends Room<GameState> {
     }
 
     const player = new Player(playerData);
-    player.$room = this;
+    player.$$room = this;
     player.initServer();
     this.setUpClassFor(player);
     this.state.addPlayer(player);
@@ -225,6 +240,7 @@ export class GameWorld extends Room<GameState> {
   onLeave(client) {
     const player = this.state.findPlayer(client.username);
     this.corpseCheck(player);
+    this.restoreCheck(player);
 
     if(this.state.mapName === 'Tutorial' && !player.respawnPoint) {
       player.respawnPoint = { x: 68, y: 13, map: 'Antania' };
@@ -242,12 +258,18 @@ export class GameWorld extends Room<GameState> {
     data.room = this;
     data.client = client;
 
-    const wasSuccess = CommandExecutor.executeCommand(player, data.command, data);
+    CommandExecutor.queueCommand(player, data.command, data);
+  }
 
-    if(!wasSuccess) {
-      this.sendClientLogMessage(client, `Command "${data.command}" is invalid. Try again.`);
-      return;
-    }
+  executeCommand(player: Player, command, args: string) {
+    const data = {
+      gameState: this.state,
+      room: this,
+      args,
+      command
+    };
+
+    CommandExecutor.executeCommand(player, data.command, data);
   }
 
   // TODO retrieve boss timers
@@ -329,7 +351,7 @@ export class GameWorld extends Room<GameState> {
       data.x = npcData.x / 64;
       data.y = npcData.y / 64;
       const npc = new NPC(data);
-      npc.$room = this;
+      npc.$$room = this;
 
       this.setUpClassFor(npc);
 
@@ -465,7 +487,7 @@ export class GameWorld extends Room<GameState> {
 
     this.addItemToGround(target, corpse);
 
-    target.$corpseRef = corpse;
+    target.$$corpseRef = corpse;
   }
 
   dropCorpseItems(corpse: Item) {
@@ -490,5 +512,10 @@ export class GameWorld extends Room<GameState> {
       player.rightHand.$heldBy = null;
       player.setRightHand(null);
     }
+  }
+
+  restoreCheck(player) {
+    if(!player.isDead()) return;
+    player.restore(false);
   }
 }

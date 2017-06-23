@@ -9,13 +9,13 @@ export class RightToBelt extends Command {
   public name = '~RtB';
   public format = '';
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const item = player.rightHand;
     if(!item) return false;
 
-    if(!item.isBeltable) return room.sendClientLogMessage(client, 'That item is not beltable.');
+    if(!item.isBeltable) return player.sendClientMessage('That item is not beltable.');
 
-    if(player.fullBelt()) return room.sendClientLogMessage(client, 'Your belt is full.');
+    if(player.fullBelt()) return player.sendClientMessage('Your belt is full.');
 
     player.addItemToBelt(item);
     player.setRightHand(null);

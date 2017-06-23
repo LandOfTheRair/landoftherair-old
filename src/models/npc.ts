@@ -12,7 +12,6 @@ export class NPC extends Character {
   uuid: string;
 
   hostility: Hostility = 'OnHit';
-  agro: any = {};
 
   vendorItems: Item[];
 
@@ -36,6 +35,8 @@ export class NPC extends Character {
   drops: Item[];
   giveXp: any;
 
+  usableSkills: string[];
+
   init() {
     if(!this.uuid) this.uuid = uuid();
     this.recalculateStats();
@@ -45,28 +46,15 @@ export class NPC extends Character {
     return omit(super.toJSON(), ['script', 'parser', 'spawner', 'ai', 'path']);
   }
 
-  distFrom(point, vector?) {
-    let checkX = this.x;
-    let checkY = this.y;
-
-    if(vector) {
-      checkX += vector.x || 0;
-      checkY += vector.y || 0;
-    }
-
-    return Math.sqrt(Math.pow(point.x - checkX, 2) + Math.pow(point.y - checkY + 1, 2));
-  }
-
-  receiveMessage(room, client, player, message) {
+  receiveMessage(player, message) {
     if(!this.parser) return;
 
     this.parser.setEnv('player', player);
-    this.parser.setEnv('client', client);
     const output = this.parser.parse(message);
     if(!output || output === 'undefined') return;
 
     this.setDirRelativeTo(player);
-    room.sendClientLogMessage(client, { name: this.name, message: output });
+    player.sendClientMessage({ name: this.name, message: output });
   }
 
   setDirRelativeTo(char: Character) {
@@ -99,7 +87,7 @@ export class NPC extends Character {
 
   isValidStep({ x, y }) {
     if(!this.spawner) return true;
-    if(this.distFrom(this.spawner, { x, y }) > this.spawner.randomWalkRadius) return false;
+    if(this.spawner.randomWalkRadius > 0 && this.distFrom(this.spawner, { x, y: y + 1 }) > this.spawner.randomWalkRadius) return false;
     return true;
   }
 
@@ -114,7 +102,7 @@ export class NPC extends Character {
     const giveXp = this.giveXp || { min: 1, max: 10 };
     killer.gainExp(random(giveXp.min, giveXp.max));
 
-    this.$room.calculateLootDrops(this, killer);
+    this.$$room.calculateLootDrops(this, killer);
   }
 
   restore() {
@@ -123,13 +111,13 @@ export class NPC extends Character {
       return;
     }
 
-    this.$room.dropCorpseItems(this.$corpseRef);
+    this.$$room.dropCorpseItems(this.$$corpseRef);
 
-    if(this.$corpseRef.$heldBy) {
-      this.$room.corpseCheck(this.$room.state.findPlayer(this.$corpseRef.$heldBy));
+    if(this.$$corpseRef.$heldBy) {
+      this.$$room.corpseCheck(this.$$room.state.findPlayer(this.$$corpseRef.$heldBy));
     }
 
-    this.$room.removeItemFromGround(this.$corpseRef);
+    this.$$room.removeItemFromGround(this.$$corpseRef);
     this.spawner.removeNPC(this);
   }
 }

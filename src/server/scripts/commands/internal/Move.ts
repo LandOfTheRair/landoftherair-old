@@ -9,7 +9,7 @@ export class Move extends Command {
 
   public name = '~move';
 
-  execute(player: Player, { room, client, gameState, x, y }) {
+  execute(player: Player, { room, gameState, x, y }) {
     x = Math.max(Math.min(x, player.stats.move), -player.stats.move);
     y = Math.max(Math.min(y, player.stats.move), -player.stats.move);
 
@@ -83,25 +83,25 @@ export class Move extends Command {
 
     const interactable = find(gameState.map.layers[MapLayer.Interactables].objects, { x: player.x * 64, y: (player.y + 1) * 64 });
     if(interactable) {
-      this.handleInteractable(room, client, player, interactable);
+      this.handleInteractable(room, player, interactable);
     }
   }
 
-  private handleInteractable(room, client, player, obj) {
+  private handleInteractable(room, player, obj) {
     switch(obj.type) {
-      case 'Teleport': return this.handleTeleport(room, client, player, obj);
-      case 'Locker':   return this.handleLocker(room, client, player, obj);
+      case 'Teleport': return this.handleTeleport(room, player, obj);
+      case 'Locker':   return this.handleLocker(room, player, obj);
     }
   }
 
-  private handleTeleport(room, client, player, obj) {
+  private handleTeleport(room, player, obj) {
     const { teleportX, teleportY, teleportMap } = obj.properties;
-    room.teleport(client, player, { x: teleportX, y: teleportY, newMap: teleportMap });
+    room.teleport(player, { x: teleportX, y: teleportY, newMap: teleportMap });
   }
 
-  private handleLocker(room, client, player, obj) {
+  private handleLocker(room, player, obj) {
     const { lockerId } = obj.properties;
-    room.openLocker(client, player, obj.name, lockerId);
+    room.openLocker(player, obj.name, lockerId);
   }
 
 }

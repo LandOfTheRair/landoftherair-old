@@ -28,7 +28,7 @@ class ItemLoader {
           const promises = itemsOfType.map(itemData => {
             itemData.itemClass = fileName;
             itemData.type = itemData.type || 'Martial';
-            if(!itemData.stats) itemData.stats = new Stats();
+            if(!itemData.stats) itemData.stats = {};
             this.conditionallyAddInformation(itemData);
             if(!this.validateItem(itemData)) return;
 

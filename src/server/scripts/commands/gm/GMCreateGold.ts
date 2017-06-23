@@ -8,7 +8,7 @@ export class GMCreateGold extends Command {
   public name = '@gold';
   public format = 'Value';
 
-  async execute(player: Player, { client, room, gameState, args }) {
+  async execute(player: Player, { room, gameState, args }) {
     if(!player.isGM) return;
 
     const value = +args;
@@ -18,7 +18,7 @@ export class GMCreateGold extends Command {
     try {
       item = await ItemCreator.getItemByName('Gold Coin');
     } catch(e) {
-      room.sendClientLogMessage(client, `Warning: "Gold Coin" does not exist.`);
+      player.sendClientMessage(`Warning: "Gold Coin" does not exist.`);
       return;
     }
 

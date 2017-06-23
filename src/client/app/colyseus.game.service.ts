@@ -142,8 +142,8 @@ export class ColyseusGameService {
     this.clientGameState.setFOV(fov);
   }
 
-  private logMessage({ name, message }: any) {
-    this.clientGameState.addLogMessage({ name, message });
+  private logMessage({ name, message, subClass }: any) {
+    this.clientGameState.addLogMessage({ name, message, subClass });
   }
 
   private interceptGameCommand({ action, error, ...other }) {
@@ -231,7 +231,7 @@ export class ColyseusGameService {
     this.sendAction({ command, args });
   }
 
-  public sendCommandString(str: string) {
+  public sendCommandString(str: string, target?: string) {
     str.split(';').forEach(cmd => {
       cmd = cmd.trim();
 
@@ -247,7 +247,11 @@ export class ColyseusGameService {
         args = arr.length > 1 ? cmd.substring(cmd.indexOf(' ')).trim() : '';
       }
 
-      this.sendAction({ command, args });
+      if(target) {
+        args = `${args} ${target}`;
+      }
+
+      this.sendAction({ command, args: args.trim() });
     });
   }
 

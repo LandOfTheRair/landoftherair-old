@@ -1,5 +1,5 @@
 
-import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize } from 'lodash';
+import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize, startsWith } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
@@ -18,7 +18,8 @@ export type Allegiance =
 | 'Royalty'
 | 'Adventurers'
 | 'Wilderness'
-| 'Underground';
+| 'Underground'
+| 'Enemy';
 
 export type Sex = 'Male' | 'Female';
 
@@ -73,6 +74,12 @@ export class Stats {
   accuracy = 0;
   offense = 0;
   defense = 0;
+
+  physicalResist = 0;
+  energyResist = 0;
+  waterResist = 0;
+  fireResist = 0;
+  iceResist = 0;
 }
 
 export const MaxSizes = {
@@ -83,6 +90,8 @@ export const MaxSizes = {
 
 export class Character {
   name: string;
+  agro: any = {};
+  uuid: string;
 
   hp: RestrictedNumber = new RestrictedNumber(0, 100, 100);
   mp: RestrictedNumber = new RestrictedNumber(0, 0, 0);
@@ -106,6 +115,8 @@ export class Character {
   level = 1;
   highestLevel = 1;
 
+  skillOnKill: number;
+
   baseClass: CharacterClass = 'Undecided';
 
   sack: Item[] = [];
@@ -120,10 +131,10 @@ export class Character {
 
   swimLevel: number;
 
-  $map: any;
-  $deathTicks: number;
-  $room: any;
-  $corpseRef: Item;
+  $$map: any;
+  $$deathTicks: number;
+  $$room: any;
+  $$corpseRef: Item;
 
   sprite: number;
 
@@ -136,7 +147,7 @@ export class Character {
   }
 
   getTotalStat(stat) {
-    return this.totalStats[stat];
+    return this.totalStats[stat] || 0;
   }
 
   initSack() {
@@ -177,8 +188,10 @@ export class Character {
 
   toJSON() {
     return omitBy(this, (value, key) => {
+      if(key === '$fov') return false;
       if(!Object.getOwnPropertyDescriptor(this, key)) return true;
-      if(key === '_id' || key === '$map' || key === '$room' || key === '$corpseRef') return true;
+      if(startsWith(key, '$$')) return true;
+      if(key === '_id') return true;
       return false;
     });
   }
@@ -266,6 +279,7 @@ export class Character {
     });
 
     if(this.leftHand && this.leftHand.stats && canGetBonusFromItemInHand(this.leftHand))    addStatsForItem(this.leftHand);
+    if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
     if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
 
     this.hp.maximum = Math.max(1, this.getTotalStat('hp'));
@@ -431,14 +445,14 @@ export class Character {
     }
   }
 
-  takeSequenceOfSteps(steps: any[]) {
-    const denseTiles = this.$map.layers[MapLayer.Walls].data;
-    const denseObjects: any[] = this.$map.layers[MapLayer.DenseDecor].objects;
-    const interactables = this.$map.layers[MapLayer.Interactables].objects;
+  takeSequenceOfSteps(steps: any[], isChasing = false) {
+    const denseTiles = this.$$map.layers[MapLayer.Walls].data;
+    const denseObjects: any[] = this.$$map.layers[MapLayer.DenseDecor].objects;
+    const interactables = this.$$map.layers[MapLayer.Interactables].objects;
     const denseCheck = denseObjects.concat(interactables);
 
     steps.forEach(step => {
-      const nextTileLoc = ((this.y + step.y) * this.$map.width) + (this.x + step.x);
+      const nextTileLoc = ((this.y + step.y) * this.$$map.width) + (this.x + step.x);
       const nextTile = denseTiles[nextTileLoc];
 
       if(nextTile === 0) {
@@ -450,16 +464,17 @@ export class Character {
         return;
       }
 
-      if(!this.isValidStep(step)) return;
+      if(!isChasing && !this.isValidStep(step)) return;
       this.x += step.x;
       this.y += step.y;
+
     });
 
     if(this.x < 0) this.x = 0;
     if(this.y < 0) this.y = 0;
 
-    if(this.x > this.$map.width)  this.x = this.$map.width;
-    if(this.y > this.$map.height) this.y = this.$map.height;
+    if(this.x > this.$$map.width)  this.x = this.$$map.width;
+    if(this.y > this.$$map.height) this.y = this.$$map.height;
   }
 
   isValidStep(step) {
@@ -475,6 +490,8 @@ export class Character {
     Classes[this.baseClass].becomeClass(this);
   }
 
+  kill(dead: Character, killAbility) {}
+
   canDie() {
     return this.hp.atMinimum();
   }
@@ -482,14 +499,11 @@ export class Character {
   die(killer: Character) {
     this.dir = 'C';
 
-    // TODO broadcast to all nearby who killed me
-    // TODO make broadcastToVisiblePlayers function
-
     // 3 minutes to rot
     if(environment.production) {
-      this.$deathTicks = 60 * 3;
+      this.$$deathTicks = 60 * 3;
     } else {
-      this.$deathTicks = 6 * 3;
+      this.$$deathTicks = 6 * 3;
     }
   }
 
@@ -562,11 +576,11 @@ export class Character {
 
   canGainSkill(type) {
     const curLevel = this.calcSkillLevel(type);
-    return curLevel < this.$room.state.maxSkill;
+    return curLevel < this.$$room.state.maxSkill;
   }
 
   calcSkillLevel(type) {
-    return Math.floor(Math.pow((this.skills[type] || 0) / 100, 1 / 2));
+    return Math.floor(Math.pow((this.skills[type.toLowerCase()] || 0) / 100, 1 / 2));
   }
 
   calcSkillXP(level: number) {
@@ -616,18 +630,23 @@ export class Character {
   }
 
   sendClientMessage(message) {}
+  sendClientMessageToRadius(message, radius = 0) {
+    this.$$room.state.getPlayersInRange(this.x, this.y, radius).forEach(p => {
+      p.sendClientMessage(message);
+    });
+  }
 
   tick() {
     if(this.isDead()) {
-      if(this.$corpseRef && this.$corpseRef.$heldBy) {
-        const holder = this.$room.state.findPlayer(this.$corpseRef.$heldBy);
+      if(this.$$corpseRef && this.$$corpseRef.$heldBy) {
+        const holder = this.$$room.state.findPlayer(this.$$corpseRef.$heldBy);
         this.x = holder.x;
         this.y = holder.y;
       }
 
-      if(this.$deathTicks > 0) {
-        this.$deathTicks--;
-        if(this.$deathTicks <= 0) {
+      if(this.$$deathTicks > 0) {
+        this.$$deathTicks--;
+        if(this.$$deathTicks <= 0) {
           this.restore(true);
         }
       }
@@ -644,9 +663,29 @@ export class Character {
     if(this.swimLevel > 0) {
       const hpPercentLost = this.swimLevel * 4;
       const hpLost = Math.floor(this.hp.maximum * (hpPercentLost / 100));
+      // TODO modify to take damage of type water
       this.hp.sub(hpLost);
     }
 
     this.effects.forEach(eff => eff.tick(this));
+  }
+
+  distFrom(point, vector?) {
+    let checkX = this.x;
+    let checkY = this.y;
+
+    if(vector) {
+      checkX += vector.x || 0;
+      checkY += vector.y || 0;
+    }
+
+    return Math.sqrt(Math.pow(point.x - checkX, 2) + Math.pow(point.y - checkY + 1, 2));
+  }
+
+  addAgro(char: Character, value) {
+    this.agro[char.uuid] = this.agro[char.uuid] || 0;
+    this.agro[char.uuid] += value;
+
+    if(this.agro[char.uuid] <= 0) delete this.agro[char.uuid];
   }
 }

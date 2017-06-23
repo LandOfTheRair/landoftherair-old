@@ -6,8 +6,8 @@ export class DebugPos extends Command {
 
   public name = '~~pos';
 
-  execute(player: Player, { room, client, args }) {
-    room.sendClientLogMessage(client, `Currently @ ${player.x}, ${player.y} on ${player.map}.`);
+  execute(player: Player, { room, args }) {
+    player.sendClientMessage(`Currently @ ${player.x}, ${player.y} on ${player.map}.`);
   }
 
 }

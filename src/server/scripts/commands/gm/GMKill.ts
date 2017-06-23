@@ -8,14 +8,14 @@ export class GMKill extends Command {
   public name = '@kill';
   public format = 'Target';
 
-  async execute(player: Player, { client, room, gameState, args }) {
+  async execute(player: Player, { room, gameState, args }) {
     if(!player.isGM) return;
 
     const possTargets = room.getPossibleMessageTargets(player, args);
-    if(!possTargets.length) return room.sendClientLogMessage(client, 'You do not see that person.');
+    if(!possTargets.length) return player.sendClientMessage('You do not see that person.');
 
     const target = possTargets[0];
-    if(target.hostility === 'Never') return room.sendClientLogMessage(client, 'That target is not killable.');
+    if(target.hostility === 'Never') return player.sendClientMessage('That target is not killable.');
 
     target.hp.toMinimum();
     target.die(player);

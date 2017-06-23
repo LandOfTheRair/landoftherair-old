@@ -1,4 +1,5 @@
 
+export * from './ClearCommands';
 export * from './Interact';
 export * from './Look';
 export * from './Move';
@@ -19,5 +20,3 @@ export * from './merchant';
 export * from './buyback';
 export * from './potion';
 export * from './locker';
-
-export * from './skills';

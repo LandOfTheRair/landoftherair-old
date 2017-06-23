@@ -20,7 +20,7 @@ export class Look extends Command {
     return 'zounds of';
   }
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     const items = gameState.getGroundItems(player.x, player.y);
     const numTypes = Object.keys(items);
 
@@ -34,16 +34,16 @@ export class Look extends Command {
     }));
 
     if(typesWithNames.length === 0) {
-      room.showGroundWindow(client);
-      room.sendClientLogMessage(client, 'You see nothing of interest.');
+      room.showGroundWindow(player);
+      player.sendClientMessage('You see nothing of interest.');
       return;
     }
 
     if(typesWithNames.length > 1) {
       typesWithNames[typesWithNames.length - 1] = `and ${typesWithNames[typesWithNames.length - 1]}`;
     }
-    room.sendClientLogMessage(client, `You see ${typesWithNames.join(', ')}.`);
-    room.showGroundWindow(client);
+    player.sendClientMessage(`You see ${typesWithNames.join(', ')}.`);
+    room.showGroundWindow(player);
   }
 
 }

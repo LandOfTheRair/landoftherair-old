@@ -2,7 +2,7 @@
 
   <!-- top row (gold, helm, neck) -->
   <div class="item-slot item-background" droppable dropScope="coin" (onDrop)="colyseusGame.buildDropAction($event, 'Coin')">
-    <app-item [size]="size" [item]="{ sprite: 212, value: player.gold }" showValue="true" context="Coin"></app-item>
+    <app-item [size]="size" [item]="{ sprite: 212, value: player.gold, itemClass: 'Coin' }" showValue="true" context="Coin"></app-item>
   </div>
   <div class="item-slot item-background" droppable dropScope="ear" (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <app-item [size]="size" [item]="player.gear.Ear" context="Equipment" *ngIf="player.gear.Ear" contextSlot="Ear"></app-item>

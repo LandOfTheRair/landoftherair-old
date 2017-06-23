@@ -15,12 +15,12 @@ export class LookAt extends Command {
     mode: 'clickToTarget'
   };
 
-  execute(player: Player, { room, client, args }) {
+  execute(player: Player, { room, args }) {
     if(!args) return false;
 
     const possTargets = room.getPossibleMessageTargets(player, args);
     const target = possTargets[0];
-    if(!target) return room.sendClientLogMessage(client, 'You do not see that person.');
+    if(!target) return player.sendClientMessage('You do not see that person.');
 
     const chestItem = target.gear.Robe2 || target.gear.Robe1 || target.gear.Armor;
     const chestDesc = chestItem ? chestItem.desc : 'nothing';
@@ -39,7 +39,7 @@ export class LookAt extends Command {
 
     const description = `You are looking at a ${target.ageString} being named ${target.name}. ${target.name} is wearing ${chestDesc} and holding ${handDesc}.`;
 
-    room.sendClientLogMessage(client, description);
+    player.sendClientMessage(description);
   }
 
 }

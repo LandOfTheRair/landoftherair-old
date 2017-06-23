@@ -1,19 +1,90 @@
 
 import { NPC } from '../../../models/npc';
-import { random, sumBy } from 'lodash';
+import { CommandExecutor } from '../../helpers/command-executor';
+import { random, sumBy, maxBy, sample, sampleSize, clamp, size } from 'lodash';
 
 export const tick = (npc: NPC) => {
 
   if(npc.isDead()) return;
+  if(npc.hostility === 'Never') return;
 
   let diffX = 0;
   let diffY = 0;
 
+  const ALWAYS_ATTACK = npc.allegiance === 'Enemy' && npc.hostility === 'Always';
+
+  // TODO calculate fov so you dont target things behind walls
+  const playersInRange = npc.$$room.state.getPossibleTargetsFor(npc, 4);
+
+  let highestAgro = maxBy(playersInRange, char => npc.agro[char.uuid]);
+  if(!highestAgro && ALWAYS_ATTACK) highestAgro = sample(playersInRange);
+
   // do movement
-  // TODO agro checks
   const numSteps = random(0, Math.min(npc.stats.move, npc.path ? npc.path.length : npc.stats.move));
 
-  if(npc.path && npc.path.length > 0) {
+  // we have a target
+  if(highestAgro) {
+
+    const attemptSkills = sampleSize(npc.usableSkills, 3);
+    let chosenSkill = null;
+
+    attemptSkills.forEach(skill => {
+      if(chosenSkill) return;
+      chosenSkill = CommandExecutor.checkIfCanUseSkill(skill, npc, highestAgro);
+    });
+
+
+    // use a skill that can hit the target
+    if(chosenSkill) {
+      chosenSkill.use(npc, highestAgro);
+
+
+    // either move towards target
+    } else {
+      const oldX = npc.x;
+      const oldY = npc.y;
+
+      const steps = [];
+      let stepdiffX = clamp(highestAgro.x - npc.x, -npc.stats.move, npc.stats.move);
+      let stepdiffY = clamp(highestAgro.y - npc.y + 1, -npc.stats.move, npc.stats.move);
+
+      for(let curStep = 0; curStep < npc.stats.move; curStep++) {
+        const step = { x: 0, y: 0 };
+
+        if(stepdiffX < 0) {
+          step.x = -1;
+          stepdiffX++;
+        } else if(stepdiffX > 0) {
+          step.x = 1;
+          stepdiffX--;
+        }
+
+        if(stepdiffY < 0) {
+          step.y = -1;
+          stepdiffY++;
+        } else if(stepdiffY > 0) {
+          step.y = 1;
+          stepdiffY--;
+        }
+
+        steps[curStep] = step;
+
+      }
+
+      npc.takeSequenceOfSteps(steps, true);
+      diffX = npc.x - oldX;
+      diffY = npc.y - oldY;
+    }
+
+  // we have a path
+  } else if(npc.path && npc.path.length > 0) {
+    if(size(npc.agro) > 0) {
+      npc.agro = {};
+      npc.x = npc.spawner.x;
+      npc.y = npc.spawner.y;
+      npc.spawner.assignPath(npc);
+    }
+
     for(let i = 0; i < numSteps; i++) {
       const step = npc.path.shift();
       npc.x += step.x;
@@ -26,7 +97,8 @@ export const tick = (npc: NPC) => {
     if(!npc.path.length) {
       npc.spawner.assignPath(npc);
     }
-    // TODO should have an else if (something is agro'd in view)
+
+  // we wander
   } else {
     const oldX = npc.x;
     const oldY = npc.y;
@@ -36,18 +108,29 @@ export const tick = (npc: NPC) => {
     diffY = npc.y - oldY;
   }
 
+
+  // change dir
   npc.setDirBasedOnXYDiff(diffX, diffY);
 
-  // TODO reset agro on leash
-  if(npc.distFrom(npc.spawner) > npc.spawner.leashRadius) {
+
+  // check if should leash
+  const distFrom = npc.distFrom(npc.spawner);
+
+  if(distFrom > npc.spawner.leashRadius) {
     npc.x = npc.spawner.x;
     npc.y = npc.spawner.y;
 
+    // chasing a player, probably - leash, fix hp, fix agro
+    if(distFrom > npc.spawner.leashRadius + 4) {
+      npc.hp.toMaximum();
+      npc.mp.toMaximum();
+      npc.agro = {};
+    }
+
+    // if we had a path, re-assign a path
     if(npc.path && npc.path.length > 0) {
       npc.spawner.assignPath(npc);
     }
   }
-
-  // TODO check hostility
 
 };

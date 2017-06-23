@@ -1,0 +1,6 @@
+- name: Basic Claws
+  baseDamage: 1
+  maxDamage: 2
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0

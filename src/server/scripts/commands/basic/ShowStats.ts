@@ -14,12 +14,12 @@ export class ShowStats extends Command {
     mode: 'autoActivate'
   };
 
-  execute(player: Player, { room, client, args }) {
-    room.sendClientLogMessage(client, `You are ${player.name}, the ${player.ageString} level ${player.level} ${player.baseClass}.`);
-    room.sendClientLogMessage(client, `Your allegiance lies with the ${player.allegiance}.`);
+  execute(player: Player, { room, args }) {
+    player.sendClientMessage(`You are ${player.name}, the ${player.ageString} level ${player.level} ${player.baseClass}.`);
+    player.sendClientMessage(`Your allegiance lies with the ${player.allegiance}.`);
 
     Object.keys(player.stats).forEach(key => {
-      room.sendClientLogMessage(client, `Your ${key.toUpperCase()} is ${player.stats[key]}.`);
+      player.sendClientMessage(`Your ${key.toUpperCase()} is ${player.stats[key]}.`);
     });
   }
 

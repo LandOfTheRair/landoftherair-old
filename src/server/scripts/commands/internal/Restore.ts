@@ -16,7 +16,12 @@ export class Restore extends Command {
     mode: 'autoActivate'
   };
 
-  execute(player: Player, { room, client, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
+    if(!player.isDead()) return;
+
+    player.restore(false);
+
+    player.sendClientMessage('You are being welcomed back to life.');
   }
 
 }
