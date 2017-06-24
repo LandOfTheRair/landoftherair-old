@@ -146,10 +146,6 @@ export class CombatHelper {
       if(attackerScope.damageMax === damageMax) damageType = 'a grievous wound';
     }
 
-    attacker.sendClientMessage({ message: `Your attack was ${damageType}! [${damage} physical damage]`, subClass: 'combat self hit' });
-
-    damage = this.dealDamage(attacker, defender, { damage, damageClass: 'physical', attackerWeapon });
-
     let msg = '';
 
     if(attacker.rightHand) {
@@ -160,7 +156,13 @@ export class CombatHelper {
       msg = `${attacker.name} punches you!`;
     }
 
-    defender.sendClientMessage({ message: `${msg} [${damage} damage]`, subClass: 'combat other hit' });
+    damage = this.dealDamage(attacker, defender, {
+      damage,
+      damageClass: 'physical',
+      attackerWeapon,
+      attackerDamageMessage: `Your attack was ${damageType}!`,
+      defenderDamageMessage: msg
+    });
 
     if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
 
@@ -175,12 +177,15 @@ export class CombatHelper {
 
   }
 
-  static dealDamage(attacker: Character, defender: Character, { damage, damageClass, attackerWeapon }) {
+  static dealDamage(attacker: Character, defender: Character, { damage, damageClass, attackerWeapon, attackerDamageMessage, defenderDamageMessage }) {
 
     let damageReduced = defender.getTotalStat(`${damageClass}Resist`);
     damage -= damageReduced;
 
     if(damage < 0) return 0;
+
+    attacker.sendClientMessage({ message: `${attackerDamageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat self hit' });
+    defender.sendClientMessage({ message: `${defenderDamageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' });
 
     defender.hp.sub(damage);
 
