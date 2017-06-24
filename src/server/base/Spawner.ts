@@ -1,7 +1,7 @@
 
 import { NPCLoader } from '../helpers/npc-loader';
 
-import { sample, random, extend, isNumber, isString, pull } from 'lodash';
+import { sample, random, extend, isNumber, isString, pull, min } from 'lodash';
 import { NPC } from '../../models/npc';
 import { Logger } from '../logger';
 
@@ -37,6 +37,8 @@ export class Spawner {
   npcs: NPC[] = [];
 
   alwaysSpawn: boolean;
+
+  $$slowTicks = 0;
 
   constructor(private room, { x, y, map }, spawnOpts) {
     extend(this, spawnOpts);
@@ -156,8 +158,26 @@ export class Spawner {
     npc.setPath(sample(this.paths));
   }
 
+  getDistsForPlayers() {
+    return this.room.state.players.map(x => x.distFrom(this));
+  }
+
+  shouldSlowDown(dists) {
+    return dists.length > 0 && min(dists) > 30;
+  }
+
   tick() {
     if(!this.isActive()) return;
+
+    if(this.$$slowTicks > 0) {
+      this.$$slowTicks--;
+      return;
+    }
+
+    if(this.shouldSlowDown(this.getDistsForPlayers())) {
+      this.$$slowTicks = 120;
+      return;
+    }
 
     this.currentTick++;
     if(this.currentTick > this.respawnRate && this.npcs.length < this.maxCreatures && (this.alwaysSpawn || this.room.canSpawnCreatures)) {
