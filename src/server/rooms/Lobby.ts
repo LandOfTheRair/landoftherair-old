@@ -6,11 +6,12 @@ import { Player } from '../../models/player';
 
 import { CharacterCreator } from '../helpers/character-creator';
 
-import { truncate, pick } from 'lodash';
+import { truncate, pick, sampleSize } from 'lodash';
 
 import { DB } from '../database';
 
 import * as jwt from 'jsonwebtoken';
+import { ItemCreator } from '../helpers/item-creator';
 
 const AUTH0_SECRET = process.env.AUTH0_SECRET;
 
@@ -106,7 +107,7 @@ export class Lobby extends Room<LobbyState> {
     this.send(client, { action: 'set_character', character: CharacterCreator.getCustomizedCharacter(data) });
   }
 
-  private createCharacter(client, { charSlot, character }) {
+  private async createCharacter(client, { charSlot, character }) {
     character = CharacterCreator.getCustomizedCharacter(character);
 
     const account = this.state.findAccount(client.userId);
@@ -134,7 +135,78 @@ export class Lobby extends Room<LobbyState> {
       isGM: account.isGM
     });
 
+    await this.giveCharacterBasicGearAndSkills(player);
+
     DB.$players.insert(player);
+  }
+
+  private async giveCharacterBasicGearAndSkills(player: Player) {
+    let skill2 = '';
+    sampleSize(['onehanded', 'twohanded', 'shortsword', 'staff', 'dagger', 'mace', 'axe'], 4).forEach(skill => {
+      player.skills[skill] = player.calcSkillXP(1);
+    });
+
+    let body = '';
+    let mainhand = '';
+
+    switch(player.allegiance) {
+      case 'None': {
+        mainhand = 'Antanian Dagger';
+        body = 'Antanian Studded Tunic';
+        skill2 = 'dagger';
+        break;
+      }
+
+      case 'Pirates': {
+        mainhand = 'Antanian Axe';
+        body = 'Antanian Tunic';
+        skill2 = 'axe';
+        break;
+      }
+
+      case 'Townsfolk': {
+        mainhand = 'Antanian Greatsword';
+        body = 'Antanian Ringmail Tunic';
+        skill2 = 'twohanded';
+        break;
+      }
+
+      case 'Royalty': {
+        mainhand = 'Antanian Mace';
+        body = 'Antanian Tunic';
+        skill2 = 'mace';
+        break;
+
+      }
+
+      case 'Adventurers': {
+        mainhand = 'Antanian Longsword';
+        body = 'Antanian Studded Tunic';
+        skill2 = 'onehanded';
+        break;
+
+      }
+
+      case 'Wilderness': {
+        mainhand = 'Antanian Staff';
+        body = 'Antanian Studded Tunic';
+        skill2 = 'staff';
+        break;
+
+      }
+
+      case 'Underground': {
+        mainhand = 'Antanian Shortsword';
+        body = 'Antanian Tunic';
+        skill2 = 'shortsword';
+        break;
+      }
+    }
+
+    player.gear.Armor = await ItemCreator.getItemByName(body);
+    player.rightHand = await ItemCreator.getItemByName(mainhand);
+    player.skills[skill2] = player.calcSkillXP(2);
+
   }
 
   private getCharacter(username, charSlot) {
