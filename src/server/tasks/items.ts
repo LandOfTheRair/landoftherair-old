@@ -1,5 +1,5 @@
 
-import { Stats } from '../../models/character';
+import { SkillClassNames } from '../../models/character';
 require('dotenv').config({ silent: true });
 
 import { DB } from '../database';
@@ -8,7 +8,7 @@ import * as YAML from 'yamljs';
 import * as recurse from 'recursive-readdir';
 import * as path from 'path';
 
-import { includes, flatten, isUndefined } from 'lodash';
+import { includes, flatten, isUndefined, capitalize } from 'lodash';
 
 import {
   Item, ValidItemTypes, WeaponClasses, ArmorClasses
@@ -27,7 +27,7 @@ class ItemLoader {
 
           const promises = itemsOfType.map(itemData => {
             itemData.itemClass = fileName;
-            itemData.type = itemData.type || 'Martial';
+            itemData.type = itemData.type || SkillClassNames.Martial;
             if(!itemData.stats) itemData.stats = {};
             this.conditionallyAddInformation(itemData);
             if(!this.validateItem(itemData)) return;
@@ -91,7 +91,11 @@ class ItemLoader {
       item.ounces = item.ounces || 1;
     }
 
+    item.type = capitalize(item.type);
+    if(item.secondaryType) item.secondaryType = capitalize(item.secondaryType);
+
     // TODO check effect, if it is an array, then pick a random value between 0 and 1
+    // TODO random stats, array of min-max
   }
 
   static validateItem(item: Item): boolean {

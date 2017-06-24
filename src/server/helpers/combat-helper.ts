@@ -34,16 +34,18 @@ export class CombatHelper {
       attackerWeapon = attacker[`${throwHand}Hand`];
 
     } else {
-      attackerWeapon = attacker.rightHand || attacker.gear.Hands || { type: 'Martial', itemClass: 'hands', name: 'hands'};
+      attackerWeapon = attacker.rightHand || attacker.gear.Hands || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands'};
     }
 
     const flagSkills = [];
     flagSkills[0] = attackerWeapon.type;
     if(attackerWeapon.secondaryType) flagSkills[1] = attackerWeapon.secondaryType;
 
+    attacker.flagSkill(flagSkills);
+
     if(isThrow) flagSkills[1] = SkillClassNames.Throwing;
 
-    const defenderBlocker = defender.rightHand || { type: 'Martial', itemClass: 'hands', name: 'hands' };
+    const defenderBlocker = defender.rightHand || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands' };
     const defenderShield = defender.leftHand && this.isShield(defender.leftHand) ? defender.leftHand : null;
 
     const attackerScope = {
