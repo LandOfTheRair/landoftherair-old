@@ -133,6 +133,7 @@ export class Item {
   isSackable = true;
 
   attackRange = 0;
+  returnsOnThrow: boolean;
 
   searchItems: Item[];
   tansFor: string;

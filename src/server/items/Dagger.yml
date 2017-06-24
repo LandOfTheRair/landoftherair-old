@@ -9,3 +9,13 @@
   type: Dagger
   value: 75
   sprite: 205
+
+- name: Antanian Returning Dagger
+  desc: "a small iron dagger that vibrates strangely"
+  isSackable: true
+  baseDamage: 3
+  maxDamage: 3
+  returnsOnThrow: true
+  type: Dagger
+  value: 500
+  sprite: 216

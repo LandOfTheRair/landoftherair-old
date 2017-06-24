@@ -25,6 +25,14 @@
             "isSystem": true
         },
         {
+            "name": "Show Stats",
+            "macro": "show_stats",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "isSystem": true
+        },
+        {
             "name": "Stairs",
             "macro": "up",
             "icon": "3d-stairs",
@@ -33,11 +41,19 @@
             "isSystem": true
         },
         {
-            "name": "Show Stats",
-            "macro": "show_stats",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
+            "name": "Attack",
+            "macro": "attack",
+            "icon": "blade-drag",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "isSystem": true
+        },
+        {
+            "name": "Throw",
+            "macro": "throw right",
+            "icon": "thrown-spear",
+            "color": "#530000",
+            "mode": "lockActivation",
             "isSystem": true
         },
         {
@@ -58,6 +74,14 @@
             "isSystem": true
         },
         {
+            "name": "Look At Ground",
+            "macro": "~look",
+            "icon": "semi-closed-eye",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "isSystem": true
+        },
+        {
             "name": "Restore",
             "macro": "restore",
             "icon": "quicksand",
@@ -71,14 +95,6 @@
             "icon": "cash",
             "color": "#665600",
             "mode": "autoActivate",
-            "isSystem": true
-        },
-        {
-            "name": "Attack",
-            "macro": "attack",
-            "icon": "blade-drag",
-            "color": "#530000",
-            "mode": "lockActivation",
             "isSystem": true
         }
     ]

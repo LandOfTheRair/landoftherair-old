@@ -1,5 +1,5 @@
 
-import { includes, random } from 'lodash';
+import { includes, random, capitalize } from 'lodash';
 
 import { Character } from '../../models/character';
 import { ShieldClasses } from '../../models/item';
@@ -16,16 +16,32 @@ export class CombatHelper {
     return includes(ShieldClasses, item.itemClass);
   }
 
-  static physicalAttack(attacker: Character, defender: Character) {
+  static resolveThrow(attacker, defender, hand, item) {
+    if(item.returnsOnThrow) return;
+    attacker[`set${capitalize(hand)}Hand`](null);
+    defender.$$room.addItemToGround(defender, item);
+  }
+
+  static physicalAttack(attacker: Character, defender: Character, opts: any = {}) {
+
+    const { isThrow, throwHand } = opts;
 
     if(defender.isDead()) return { isDead: true };
 
-    const attackerWeapon = attacker.rightHand || attacker.gear.Hands || { type: 'Martial', itemClass: 'hands', name: 'hands'};
+    let attackerWeapon;
+
+    if(isThrow) {
+      attackerWeapon = attacker[`${throwHand}Hand`];
+
+    } else {
+      attackerWeapon = attacker.rightHand || attacker.gear.Hands || { type: 'Martial', itemClass: 'hands', name: 'hands'};
+    }
+
     const defenderBlocker = defender.rightHand || { type: 'Martial', itemClass: 'hands', name: 'hands' };
     const defenderShield = defender.leftHand && this.isShield(defender.leftHand) ? defender.leftHand : null;
 
     const attackerScope = {
-      skill: attacker.calcSkillLevel(attackerWeapon.type),
+      skill: attacker.calcSkillLevel(isThrow ? 'throwing' : attackerWeapon.type),
       offense: attacker.getTotalStat('offense'),
       accuracy: attacker.getTotalStat('accuracy'),
       dex: attacker.getTotalStat('dex'),
@@ -64,6 +80,7 @@ export class CombatHelper {
     if(dodgeRoll < 0) {
       attacker.sendClientMessage({ message: `You miss!`, subClass: 'combat self miss' });
       defender.sendClientMessage({ message: `${attacker.name} misses!`, subClass: 'combat other miss' });
+      if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { dodge: true };
     }
 
@@ -77,6 +94,7 @@ export class CombatHelper {
     if(acRoll < 0) {
       attacker.sendClientMessage({ message: `You were blocked by armor!`, subClass: 'combat self block armor' });
       defender.sendClientMessage({ message: `${attacker.name} was blocked by your armor!`, subClass: 'combat other block armor' });
+      if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { block: true, blockedBy: 'armor' };
     }
 
@@ -93,6 +111,7 @@ export class CombatHelper {
       const itemTypeToLower = defenderBlocker.itemClass.toLowerCase();
       attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block weapon' });
       defender.sendClientMessage({ message: `${attacker.name} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block weapon' });
+      if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { block: true, blockedBy: `a ${itemTypeToLower}` };
     }
 
@@ -109,6 +128,7 @@ export class CombatHelper {
         const itemTypeToLower = defenderShield.itemClass.toLowerCase();
         attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block shield' });
         defender.sendClientMessage({ message: `${attacker.name} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block shield' });
+        if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
         return { block: true, blockedBy: `a ${itemTypeToLower}` };
       }
     }
@@ -137,6 +157,8 @@ export class CombatHelper {
     } else {
       defender.sendClientMessage({ message: `${attacker.name} punches you!`, subClass: 'combat other hit' });
     }
+
+    if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
 
     if(damage <= 0) {
       return { noDamage: true };
