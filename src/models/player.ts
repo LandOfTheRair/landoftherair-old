@@ -103,6 +103,10 @@ export class Player extends Character {
 
     this.hp.set(1);
     this.dir = 'S';
+    this.teleportToRespawnPoint();
+  }
+
+  teleportToRespawnPoint() {
     this.$$room.teleport(this, { newMap: this.respawnPoint.map, x: this.respawnPoint.x, y: this.respawnPoint.y });
   }
 
