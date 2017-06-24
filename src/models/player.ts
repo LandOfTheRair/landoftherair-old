@@ -17,7 +17,7 @@ export class Player extends Character {
 
   $fov: any;
   $$doNotSave: boolean;
-  $$actionQueue = [];
+  $$actionQueue;
 
   respawnPoint: { x: number, y: number, map: string };
 
@@ -38,6 +38,7 @@ export class Player extends Character {
     this.initEffects();
     this.recalculateStats();
     this.uuid = this._id;
+    this.$$actionQueue = [];
   }
 
   canSee(x, y) {
@@ -195,6 +196,8 @@ export class Player extends Character {
 
   tick() {
     super.tick();
+
+    if(!this.$$actionQueue) return;
     const nextAction = this.$$actionQueue.shift();
     if(nextAction) {
       this.$$room.executeCommand(this, nextAction.command, nextAction.args);
