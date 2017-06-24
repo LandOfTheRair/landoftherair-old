@@ -36,6 +36,8 @@ export class Spawner {
 
   npcs: NPC[] = [];
 
+  alwaysSpawn: boolean;
+
   constructor(private room, { x, y, map }, spawnOpts) {
     extend(this, spawnOpts);
 
@@ -158,7 +160,7 @@ export class Spawner {
     if(!this.isActive()) return;
 
     this.currentTick++;
-    if(this.currentTick > this.respawnRate && this.npcs.length < this.maxCreatures) {
+    if(this.currentTick > this.respawnRate && this.npcs.length < this.maxCreatures && (this.alwaysSpawn || this.room.canSpawnCreatures)) {
       this.currentTick = 0;
       this.createNPC();
     }

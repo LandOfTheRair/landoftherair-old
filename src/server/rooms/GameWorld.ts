@@ -53,6 +53,14 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.maxSkill || 1;
   }
 
+  get maxCreatures() {
+    return this.state.map.properties.maxCreatures || 0;
+  }
+
+  get canSpawnCreatures() {
+    return this.state.mapNPCs.length < this.maxCreatures;
+  }
+
   get decayRateHours() {
     return this.state.map.properties.itemExpirationHours || 6;
   }
