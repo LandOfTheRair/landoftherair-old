@@ -86,7 +86,7 @@ export class CombatHelper {
 
     const dodgeRoll = random(defenderDodgeRoll, attackerDodgeRoll);
     if(dodgeRoll < 0) {
-      attacker.sendClientMessage({ message: `You miss!`, subClass: 'combat self miss' });
+      attacker.sendClientMessage({ message: `You miss!`, subClass: 'combat self miss', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} misses!`, subClass: 'combat other miss' });
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { dodge: true };
@@ -100,7 +100,7 @@ export class CombatHelper {
 
     const acRoll = random(attackerACRoll, defenderACRoll);
     if(acRoll < 0) {
-      attacker.sendClientMessage({ message: `You were blocked by armor!`, subClass: 'combat self block armor' });
+      attacker.sendClientMessage({ message: `You were blocked by armor!`, subClass: 'combat self block armor', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} was blocked by your armor!`, subClass: 'combat other block armor' });
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { block: true, blockedBy: 'armor' };
@@ -117,7 +117,7 @@ export class CombatHelper {
     const weaponBlockRoll = random(attackerWeaponBlockRoll, defenderWeaponBlockRoll);
     if(weaponBlockRoll < 0) {
       const itemTypeToLower = defenderBlocker.itemClass.toLowerCase();
-      attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block weapon' });
+      attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block weapon', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block weapon' });
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { block: true, blockedBy: `a ${itemTypeToLower}` };
@@ -134,7 +134,7 @@ export class CombatHelper {
       const shieldBlockRoll = random(attackerShieldBlockRoll, defenderShieldBlockRoll);
       if(shieldBlockRoll < 0) {
         const itemTypeToLower = defenderShield.itemClass.toLowerCase();
-        attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block shield' });
+        attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block shield', target: defender.uuid });
         defender.sendClientMessage({ message: `${attacker.name} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block shield' });
         if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
         return { block: true, blockedBy: `a ${itemTypeToLower}` };
@@ -213,7 +213,7 @@ export class CombatHelper {
     if(damage < 0) return 0;
 
     if(attackerDamageMessage) {
-      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat self hit' });
+      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat self hit', target: defender.uuid });
     }
 
     if(defenderDamageMessage) {
@@ -227,7 +227,7 @@ export class CombatHelper {
     if(!wasFatal) {
       defender.addAgro(attacker, damage);
     } else {
-      attacker.sendClientMessageToRadius({ message: `${defender.name} was killed by ${attacker.name}!`, subClass: 'combat self kill' });
+      defender.sendClientMessageToRadius({ message: `${defender.name} was killed by ${attacker.name}!`, subClass: 'combat self kill' });
       defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
       defender.die(attacker);
       attacker.kill(defender, attackerWeapon);

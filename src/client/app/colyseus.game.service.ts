@@ -27,6 +27,8 @@ export class ColyseusGameService {
   showLocker: Locker[] = [];
   activeLockerNumber: number;
 
+  currentTarget: string;
+
   private changingMap: boolean;
 
   public currentCommand = '';
@@ -146,6 +148,10 @@ export class ColyseusGameService {
     this.clientGameState.addLogMessage({ name, message, subClass });
   }
 
+  private setTarget(target: string) {
+    this.currentTarget = target;
+  }
+
   private interceptGameCommand({ action, error, ...other }) {
     if(error) {
       (<any>swal)({
@@ -156,6 +162,7 @@ export class ColyseusGameService {
       return;
     }
 
+    if(other.target)                this.setTarget(other.target);
     if(action === 'update_locker')  return this.updateLocker(other.locker);
     if(action === 'show_lockers')   return this.showLockerWindow(other.lockers, other.lockerId);
     if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId);
