@@ -28,15 +28,23 @@ export const tick = (npc: NPC) => {
     const attemptSkills = sampleSize(npc.usableSkills, 3);
     let chosenSkill = null;
 
+    let isThrowing = false;
+
     attemptSkills.forEach(skill => {
       if(chosenSkill) return;
+      if(skill === 'Attack' && npc.rightHand && npc.rightHand.returnsOnThrow) {
+        isThrowing = true;
+        skill = 'Throw';
+      }
       chosenSkill = CommandExecutor.checkIfCanUseSkill(skill, npc, highestAgro);
     });
 
 
     // use a skill that can hit the target
     if(chosenSkill) {
-      chosenSkill.use(npc, highestAgro);
+      let opts = {};
+      if(isThrowing) opts = { throwHand: 'right' };
+      chosenSkill.use(npc, highestAgro, opts);
 
 
     // either move towards target

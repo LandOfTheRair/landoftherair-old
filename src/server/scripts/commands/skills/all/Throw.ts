@@ -36,10 +36,11 @@ export class Throw extends Skill {
     if(hand !== 'left' && hand !== 'right') return false;
     if(!user[`${hand}Hand`]) return user.sendClientMessage('You do not have anything to throw in that hand!');
 
-    this.use(user, target, hand);
+    this.use(user, target, { throwHand: hand });
   }
 
-  use(user: Character, target: Character, throwHand: 'left'|'right') {
+  use(user: Character, target: Character, opts: any = {}) {
+    let { throwHand } = opts;
     CombatHelper.physicalAttack(user, target, { isThrow: true, throwHand });
   }
 
