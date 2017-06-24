@@ -16,7 +16,7 @@ export class ShowSkills extends Command {
 
   execute(player: Player, { room, args }) {
     player.sendClientMessage(`You are ${player.name}, the ${player.ageString} level ${player.level} ${player.baseClass}.`);
-    room.sendClientMessage(`Your allegiance lies with the ${player.allegiance}.`);
+    player.sendClientMessage(`Your allegiance lies with the ${player.allegiance}.`);
 
     Object.keys(player.skills).forEach(key => {
       player.sendClientMessage(`Your ${key.toUpperCase()} skill level is ${player.calcSkillLevel(key)}.`);
