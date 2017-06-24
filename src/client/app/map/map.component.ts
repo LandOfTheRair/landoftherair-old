@@ -44,6 +44,9 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.start$ = this.clientGameState.setMap$.subscribe((map: any) => {
+      if(this.started && this.phaser) {
+        this.phaser.state.start(this.phaser.state.current);
+      }
       if(!map || !map.layers || this.started) return;
 
       this.started = true;
