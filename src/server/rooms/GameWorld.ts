@@ -211,8 +211,8 @@ export class GameWorld extends Room<GameState> {
     if(item.itemClass !== 'Corpse') {
       this.setItemExpiry(item);
     }
+    delete item.$heldBy;
     this.state.addItemToGround(ref, item);
-    if(item.$heldBy) item.$heldBy = null;
   }
 
   removeItemFromGround(item) {
@@ -249,6 +249,7 @@ export class GameWorld extends Room<GameState> {
     const player = this.state.findPlayer(client.username);
     this.corpseCheck(player);
     this.restoreCheck(player);
+    this.doorCheck(player);
 
     if(this.state.mapName === 'Tutorial' && !player.respawnPoint) {
       player.respawnPoint = { x: 68, y: 13, map: 'Antania' };
@@ -509,21 +510,35 @@ export class GameWorld extends Room<GameState> {
   }
 
   corpseCheck(player) {
+
+    let item = null;
+
     if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
-      this.addItemToGround(player, player.leftHand);
-      player.leftHand.$heldBy = null;
+      item = player.leftHand;
       player.setLeftHand(null);
     }
 
     if(player.rightHand && player.rightHand.itemClass === 'Corpse') {
-      this.addItemToGround(player, player.rightHand);
-      player.rightHand.$heldBy = null;
+      item = player.rightHand;
       player.setRightHand(null);
+    }
+
+    if(item) {
+      delete item.$heldBy;
+      this.addItemToGround(player, item);
     }
   }
 
   restoreCheck(player) {
     if(!player.isDead()) return;
     player.restore(false);
+  }
+
+  doorCheck(player) {
+    const interactables = this.state.map.layers[MapLayer.Interactables].objects;
+    const interactable = find(interactables, { x: (player.x) * 64, y: (player.y + 1) * 64 });
+    if(interactable && interactable.type === 'Door') {
+      player.teleportToRespawnPoint();
+    }
   }
 }
