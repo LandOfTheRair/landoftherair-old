@@ -46,8 +46,8 @@ export class CombatHelper {
       accuracy: attacker.getTotalStat('accuracy'),
       dex: attacker.getTotalStat('dex'),
       str: attacker.getTotalStat('str'),
-      str4: attacker.getTotalStat('str')/4,
-      level: Math.max(1, attacker.level/Classes[attacker.baseClass || 'Undecided'].combatDivisor),
+      str4: attacker.getTotalStat('str') / 4,
+      level: Math.max(1, attacker.level / Classes[attacker.baseClass || 'Undecided'].combatDivisor),
       damageMin: attackerWeapon.baseDamage,
       damageMax: attackerWeapon.maxDamage
     };
@@ -57,11 +57,11 @@ export class CombatHelper {
       defense: defender.getTotalStat('defense'),
       agi: defender.getTotalStat('agi'),
       dex: defender.getTotalStat('dex'),
-      dex4: defender.getTotalStat('dex')/4,
+      dex4: defender.getTotalStat('dex') / 4,
       armorClass: defender.getTotalStat('armorClass'),
       shieldAC: defenderShield ? defenderShield.stats.armorClass : 0,
       shieldDefense: defenderShield ? defenderShield.stats.defense : 0,
-      level: Math.max(1, defender.level/Classes[defender.baseClass || 'Undecided'].combatDivisor)
+      level: Math.max(1, defender.level / Classes[defender.baseClass || 'Undecided'].combatDivisor)
     };
 
     defender.addAgro(attacker, 1);
@@ -178,7 +178,7 @@ export class CombatHelper {
   }
 
   static dealOnesidedDamage(defender, { damage, damageClass, damageMessage }) {
-    let damageReduced = defender.getTotalStat(`${damageClass}Resist`);
+    const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
     damage -= damageReduced;
 
     if(damage < 0) return 0;
@@ -199,7 +199,7 @@ export class CombatHelper {
     { damage, damageClass, attackerWeapon, attackerDamageMessage, defenderDamageMessage }
   ) {
 
-    let damageReduced = defender.getTotalStat(`${damageClass}Resist`);
+    const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
     damage -= damageReduced;
 
     if(damage < 0) return 0;

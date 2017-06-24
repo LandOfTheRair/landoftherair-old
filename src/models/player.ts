@@ -49,6 +49,7 @@ export class Player extends Character {
 
   kill(target: Character, killAbility) {
     // TODO gain skill
+    // TODO gain secondary skill
   }
 
   die(killer) {
