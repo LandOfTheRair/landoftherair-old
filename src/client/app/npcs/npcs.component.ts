@@ -25,7 +25,7 @@ export class NpcsComponent {
       if((<any>npc).username === me.username) return false;
       if(npc.dir === 'C') return false;
       const diffX = npc.x - me.x;
-      const diffY = npc.y - me.y - 1;
+      const diffY = npc.y - me.y;
 
       if(!fov[diffX]) return false;
       if(!fov[diffX][diffY]) return false;
@@ -40,7 +40,7 @@ export class NpcsComponent {
   public directionTo(npc: NPC) {
     const me = this.colyseusGame.character;
     const diffX = npc.x - me.x;
-    const diffY = npc.y - me.y - 1;
+    const diffY = npc.y - me.y;
 
     if(diffX < 0 && diffY > 0) return '↙';
     if(diffX > 0 && diffY < 0) return '↗';

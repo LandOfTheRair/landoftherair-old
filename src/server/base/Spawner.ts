@@ -44,7 +44,7 @@ export class Spawner {
     extend(this, spawnOpts);
 
     this.x = x / 64;
-    this.y = y / 64;
+    this.y = (y / 64) - 1;
     this.map = map;
 
     for(let i = 0; i < this.initialSpawn; i++) {

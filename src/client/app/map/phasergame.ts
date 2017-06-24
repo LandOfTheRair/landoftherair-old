@@ -248,12 +248,12 @@ export class Game {
       const currentSprite = find(this.visibleNPCs.children, { uuid: npc.uuid });
       if(currentSprite) {
         currentSprite.x = npc.x * 64;
-        currentSprite.y = (npc.y - 1) * 64;
+        currentSprite.y = npc.y * 64;
         currentSprite.frame = npc.sprite + this.getSpriteOffsetForDirection(npc.dir);
         return;
       }
 
-      const sprite = this.g.add.sprite(npc.x * 64, (npc.y - 1) * 64, 'Creatures', npc.sprite);
+      const sprite = this.g.add.sprite(npc.x * 64, npc.y * 64, 'Creatures', npc.sprite);
       sprite.uuid = npc.uuid;
       this.visibleNPCUUIDHash[npc.uuid] = sprite;
       this.visibleNPCs.add(sprite);

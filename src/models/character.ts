@@ -679,7 +679,7 @@ export class Character {
       checkY += vector.y || 0;
     }
 
-    return Math.sqrt(Math.pow(point.x - checkX, 2) + Math.pow(point.y - checkY + 1, 2));
+    return Math.sqrt(Math.pow(point.x - checkX, 2) + Math.pow(point.y - checkY, 2));
   }
 
   addAgro(char: Character, value) {
