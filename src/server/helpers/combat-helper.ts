@@ -1,7 +1,7 @@
 
 import { includes, random, capitalize } from 'lodash';
 
-import { Character } from '../../models/character';
+import { Character, SkillClassNames } from '../../models/character';
 import { ShieldClasses } from '../../models/item';
 import * as Classes from '../classes';
 
@@ -37,11 +37,17 @@ export class CombatHelper {
       attackerWeapon = attacker.rightHand || attacker.gear.Hands || { type: 'Martial', itemClass: 'hands', name: 'hands'};
     }
 
+    const flagSkills = [];
+    flagSkills[0] = attackerWeapon.type;
+    if(attackerWeapon.secondaryType) flagSkills[1] = attackerWeapon.secondaryType;
+
+    if(isThrow) flagSkills[1] = SkillClassNames.Throwing;
+
     const defenderBlocker = defender.rightHand || { type: 'Martial', itemClass: 'hands', name: 'hands' };
     const defenderShield = defender.leftHand && this.isShield(defender.leftHand) ? defender.leftHand : null;
 
     const attackerScope = {
-      skill: attacker.calcSkillLevel(isThrow ? 'throwing' : attackerWeapon.type),
+      skill: attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type),
       offense: attacker.getTotalStat('offense'),
       accuracy: attacker.getTotalStat('accuracy'),
       dex: attacker.getTotalStat('dex'),

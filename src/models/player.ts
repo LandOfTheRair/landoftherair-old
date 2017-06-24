@@ -2,7 +2,7 @@
 import { Character, MaxSizes } from './character';
 import { Item } from './item';
 
-import { compact, pull, random } from 'lodash';
+import { compact, pull, random, isArray } from 'lodash';
 
 export class Player extends Character {
   _id?: any;
@@ -18,6 +18,7 @@ export class Player extends Character {
   $fov: any;
   $$doNotSave: boolean;
   $$actionQueue;
+  $$flaggedSkills;
 
   respawnPoint: { x: number, y: number, map: string };
 
@@ -45,6 +46,11 @@ export class Player extends Character {
     if(!this.$fov[x]) return false;
     if(!this.$fov[x][y]) return false;
     return true;
+  }
+
+  flagSkill(skills) {
+    if(!isArray(skills)) skills = [skills];
+    this.$$flaggedSkills = skills;
   }
 
   kill(target: Character, killAbility) {
