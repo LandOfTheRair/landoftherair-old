@@ -12,6 +12,7 @@ import { DB } from '../database';
 
 import * as jwt from 'jsonwebtoken';
 import { ItemCreator } from '../helpers/item-creator';
+import { SkillClassNames } from '../../models/character';
 
 const AUTH0_SECRET = process.env.AUTH0_SECRET;
 
@@ -142,7 +143,10 @@ export class Lobby extends Room<LobbyState> {
 
   private async giveCharacterBasicGearAndSkills(player: Player) {
     let skill2 = '';
-    sampleSize(['onehanded', 'twohanded', 'shortsword', 'staff', 'dagger', 'mace', 'axe'], 4).forEach(skill => {
+    sampleSize([
+      SkillClassNames.OneHanded, SkillClassNames.TwoHanded, SkillClassNames.Shortsword,
+      SkillClassNames.Staff, SkillClassNames.Dagger, SkillClassNames.Mace, SkillClassNames.Axe
+    ], 4).forEach(skill => {
       player.skills[skill] = player.calcSkillXP(1);
     });
 
@@ -153,28 +157,28 @@ export class Lobby extends Room<LobbyState> {
       case 'None': {
         mainhand = 'Antanian Dagger';
         body = 'Antanian Studded Tunic';
-        skill2 = 'dagger';
+        skill2 = SkillClassNames.Dagger;
         break;
       }
 
       case 'Pirates': {
         mainhand = 'Antanian Axe';
         body = 'Antanian Tunic';
-        skill2 = 'axe';
+        skill2 = SkillClassNames.Axe;
         break;
       }
 
       case 'Townsfolk': {
         mainhand = 'Antanian Greatsword';
         body = 'Antanian Ringmail Tunic';
-        skill2 = 'twohanded';
+        skill2 = SkillClassNames.TwoHanded;
         break;
       }
 
       case 'Royalty': {
         mainhand = 'Antanian Mace';
         body = 'Antanian Tunic';
-        skill2 = 'mace';
+        skill2 = SkillClassNames.Mace;
         break;
 
       }
@@ -182,7 +186,7 @@ export class Lobby extends Room<LobbyState> {
       case 'Adventurers': {
         mainhand = 'Antanian Longsword';
         body = 'Antanian Studded Tunic';
-        skill2 = 'onehanded';
+        skill2 = SkillClassNames.OneHanded;
         break;
 
       }
@@ -190,7 +194,7 @@ export class Lobby extends Room<LobbyState> {
       case 'Wilderness': {
         mainhand = 'Antanian Staff';
         body = 'Antanian Studded Tunic';
-        skill2 = 'staff';
+        skill2 = SkillClassNames.Staff;
         break;
 
       }
@@ -198,7 +202,7 @@ export class Lobby extends Room<LobbyState> {
       case 'Underground': {
         mainhand = 'Antanian Shortsword';
         body = 'Antanian Tunic';
-        skill2 = 'shortsword';
+        skill2 = SkillClassNames.Shortsword;
         break;
       }
     }

@@ -33,6 +33,24 @@ export type CharacterClass =
 | 'Warrior'
 | 'Thief';
 
+export const SkillClassNames = {
+  Mace: 'mace',
+  Axe: 'axe',
+  Dagger: 'dagger',
+  OneHanded: 'onehanded',
+  TwoHanded: 'twohanded',
+  Shortsword: 'shortsword',
+  Polearm: 'polearm',
+  Ranged: 'ranged',
+  Martial: 'martial',
+  Staff: 'staff',
+  Throwing: 'throwing',
+  Thievery: 'thievery',
+  Wand: 'wand',
+  Conjuration: 'conjuration',
+  Restoration: 'restoration'
+};
+
 export class Skills {
   mace = 0;
   axe = 0;
@@ -493,6 +511,8 @@ export class Character {
 
   kill(dead: Character, killAbility) {}
 
+  flagSkill(skills) {}
+
   canDie() {
     return this.hp.atMinimum();
   }
@@ -563,7 +583,7 @@ export class Character {
     return includes(ValidItemTypes, type);
   }
 
-  gainSkill(type, skillGained) {
+  gainSkill(type, skillGained = 1) {
     if(!this.isValidSkill(type) || !this.canGainSkill(type)) return;
     this._gainSkill(type, skillGained);
   }
