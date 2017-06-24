@@ -46,7 +46,7 @@ export const tick = (npc: NPC) => {
 
       const steps = [];
       let stepdiffX = clamp(highestAgro.x - npc.x, -npc.stats.move, npc.stats.move);
-      let stepdiffY = clamp(highestAgro.y - npc.y + 1, -npc.stats.move, npc.stats.move);
+      let stepdiffY = clamp(highestAgro.y - npc.y, -npc.stats.move, npc.stats.move);
 
       for(let curStep = 0; curStep < npc.stats.move; curStep++) {
         const step = { x: 0, y: 0 };

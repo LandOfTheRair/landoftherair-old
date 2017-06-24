@@ -358,7 +358,7 @@ export class GameWorld extends Room<GameState> {
       data.name = npcData.name;
       data.sprite = npcData.gid - this.state.map.tilesets[3].firstgid;
       data.x = npcData.x / 64;
-      data.y = npcData.y / 64;
+      data.y = (npcData.y / 64) - 1;
       const npc = new NPC(data);
       npc.$$room = this;
 
@@ -415,7 +415,7 @@ export class GameWorld extends Room<GameState> {
     const allTargets = this.state.mapNPCs;
     const possTargets = allTargets.filter(target => {
       const diffX = target.x - player.x;
-      const diffY = target.y - player.y - 1;
+      const diffY = target.y - player.y;
 
       if(!player.canSee(diffX, diffY)) return false;
 

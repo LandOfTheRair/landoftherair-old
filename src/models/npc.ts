@@ -59,7 +59,7 @@ export class NPC extends Character {
 
   setDirRelativeTo(char: Character) {
     const diffX = char.x - this.x;
-    const diffY = char.y - this.y + 1;
+    const diffY = char.y - this.y;
 
     this.setDirBasedOnXYDiff(diffX, diffY);
   }
@@ -87,7 +87,7 @@ export class NPC extends Character {
 
   isValidStep({ x, y }) {
     if(!this.spawner) return true;
-    if(this.spawner.randomWalkRadius > 0 && this.distFrom(this.spawner, { x, y: y + 1 }) > this.spawner.randomWalkRadius) return false;
+    if(this.spawner.randomWalkRadius > 0 && this.distFrom(this.spawner, { x, y }) > this.spawner.randomWalkRadius) return false;
     return true;
   }
 
