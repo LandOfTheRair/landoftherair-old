@@ -104,13 +104,13 @@
      windowName="map"
      defaultX="389"
      defaultY="56"
-     *ngIf="inGame">
+     [class.hidden]="!inGame">
   <div class="window-header text-center" #mapDrag>
     World
     <app-close-button (click)="colyseus.game.quit()"></app-close-button>
   </div>
   <div class="window-body">
-    <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character" *ngIf="!colyseus.game.isChangingMap"></app-map>
+    <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character" [class.hidden]="colyseus.game.isChangingMap"></app-map>
   </div>
 </div>
 
