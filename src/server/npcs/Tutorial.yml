@@ -5,6 +5,8 @@
   stats: 10
   level: 1
 
+  skillOnKill: 50
+
   sprite: [580, 595, 610, 615]
 
   hp:
@@ -94,6 +96,8 @@
   sprite: 220
   stats: 7
   level: 2
+
+  skillOnKill: 30
 
   gold:
     min: 100
