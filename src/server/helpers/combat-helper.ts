@@ -150,13 +150,17 @@ export class CombatHelper {
 
     damage = this.dealDamage(attacker, defender, { damage, damageClass: 'physical', attackerWeapon });
 
+    let msg = '';
+
     if(attacker.rightHand) {
-      defender.sendClientMessage({ message: `${attacker.name} hits with a ${attackerWeapon.itemClass.toLowerCase()}!`, subClass: 'combat other hit' })
+      msg = `${attacker.name} hits with a ${attackerWeapon.itemClass.toLowerCase()}!`;
     } else if(attackerWeapon.itemClass === 'Claws') {
-      defender.sendClientMessage({ message: `${attacker.name} claws you!`, subClass: 'combat other hit' });
+      msg = `${attacker.name} claws you!`;
     } else {
-      defender.sendClientMessage({ message: `${attacker.name} punches you!`, subClass: 'combat other hit' });
+      msg = `${attacker.name} punches you!`;
     }
+
+    defender.sendClientMessage({ message: `${msg} [${damage} damage]`, subClass: 'combat other hit' });
 
     if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
 
