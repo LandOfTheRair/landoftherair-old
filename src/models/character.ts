@@ -10,6 +10,7 @@ import { environment } from '../client/environments/environment';
 import * as Classes from '../server/classes';
 import { Effect } from '../server/base/Effect';
 import * as Effects from '../server/effects';
+import { CombatHelper } from '../server/helpers/combat-helper';
 
 export type Allegiance =
   'None'
@@ -496,8 +497,9 @@ export class Character {
     return this.hp.atMinimum();
   }
 
-  die(killer: Character) {
+  die(killer?: Character) {
     this.dir = 'C';
+    this.effects = [];
 
     // 3 minutes to rot
     if(environment.production) {
@@ -664,7 +666,8 @@ export class Character {
       const hpPercentLost = this.swimLevel * 4;
       const hpLost = Math.floor(this.hp.maximum * (hpPercentLost / 100));
       // TODO modify to take damage of type water
-      this.hp.sub(hpLost);
+
+      CombatHelper.dealOnesidedDamage(this, { damage: hpLost, damageClass: 'water', damageMessage: 'You are drowning!' });
     }
 
     this.effects.forEach(eff => eff.tick(this));

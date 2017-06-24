@@ -100,9 +100,12 @@ export class NPC extends Character {
     if(!this.spawner) return false;
 
     const giveXp = this.giveXp || { min: 1, max: 10 };
-    killer.gainExp(random(giveXp.min, giveXp.max));
 
-    this.$$room.calculateLootDrops(this, killer);
+    if(killer) {
+      killer.gainExp(random(giveXp.min, giveXp.max));
+
+      this.$$room.calculateLootDrops(this, killer);
+    }
   }
 
   restore() {
