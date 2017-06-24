@@ -104,4 +104,8 @@ export class ClientGameState {
 
     if(this.logMessages.length > 500) this.logMessages.shift();
   }
+
+  reset() {
+    this.logMessages = [];
+  }
 }

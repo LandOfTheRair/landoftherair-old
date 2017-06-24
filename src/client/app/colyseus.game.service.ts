@@ -273,6 +273,7 @@ export class ColyseusGameService {
 
   public quit() {
     this.unshowWindows();
+    this.clientGameState.reset();
 
     if(!this.worldRoom) return;
     this.worldRoom.leave();
