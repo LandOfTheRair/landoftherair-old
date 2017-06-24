@@ -1,6 +1,6 @@
 
 <div class="p-1 message-container" [ngClass]="['window-size-' + windowSize]" appNgxAutoScroll lockYOffset="30">
-  <div class="message" [ngClass]="['font-size-'+fontSize + ' ' + message.subClass ? message.subClass : '']" *ngFor="let message of clientGameState.logMessages">
+  <div class="message {{ message.subClass }}" [ngClass]="['font-size-'+fontSize]" *ngFor="let message of clientGameState.logMessages">
     <strong *ngIf="message.name">{{ message.name }}: </strong>{{ message.message }}
   </div>
 </div>
