@@ -21,7 +21,7 @@ export class Search extends Look {
 
     if(items.Corpse) {
       items.Corpse.forEach(corpse => {
-        room.dropCorpseItems(corpse);
+        room.dropCorpseItems(corpse, player);
       });
     }
 

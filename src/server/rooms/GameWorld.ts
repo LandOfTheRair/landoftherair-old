@@ -499,11 +499,17 @@ export class GameWorld extends Room<GameState> {
     target.$$corpseRef = corpse;
   }
 
-  dropCorpseItems(corpse: Item) {
+  dropCorpseItems(corpse: Item, searcher?: Player) {
     if(!corpse.searchItems) return;
 
     corpse.searchItems.forEach(item => {
-      this.addItemToGround(corpse, item);
+      if(searcher && item.itemClass === 'Coin') {
+        searcher.addGold(item.value);
+        searcher.sendClientMessage(`You loot ${item.value} gold coins from the corpse.`);
+
+      } else {
+        this.addItemToGround(corpse, item);
+      }
     });
 
     corpse.searchItems = null;
