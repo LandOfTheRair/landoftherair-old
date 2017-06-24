@@ -6,12 +6,60 @@
 
   width: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 
   .char-card-container {
     display: flex;
     flex-direction: row;
     max-height: 50px;
     margin-top: 4px;
+    position: relative;
+
+    .char-target {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid #000;
+        left: 0;
+        right: 0;
+        margin: auto;
+
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 650;
+
+        &.outer {
+          width: 24px;
+          height: 24px;
+          background-color: #b20000;
+        }
+
+        &.middle {
+          width: 18px;
+          height: 18px;
+          background-color: #fff;
+        }
+
+        &.inner {
+          width: 12px;
+          height: 12px;
+          background-color: #b20000;
+        }
+
+        &.innermost {
+          width: 6px;
+          height: 6px;
+          background-color: #fff;
+        }
+      }
+    }
 
     .char-direction {
       width: 20px;

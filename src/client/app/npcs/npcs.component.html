@@ -9,6 +9,13 @@
 
     <div class="char-card" (click)="doAction(npc)">
 
+      <div class="char-target" *ngIf="npc.uuid === colyseusGame.currentTarget">
+        <div class="outer circle"></div>
+        <div class="middle circle"></div>
+        <div class="inner circle"></div>
+        <div class="innermost circle"></div>
+      </div>
+
       <div class="char-title" [ngClass]="[barClass(npc)]">
         <div class="char-name">
           {{ npc.name }}

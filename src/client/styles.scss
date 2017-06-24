@@ -91,11 +91,15 @@
   &.stats {
     max-width: 537px;
     min-width: 537px;
+
+    z-index: 1000;
   }
 
   &.skills {
     max-width: 603px;
     min-width: 603px;
+
+    z-index: 1000;
   }
 
   &.command-line {
@@ -218,20 +222,28 @@
 
   &.trainer {
     max-width: 400px;
+
+    z-index: 1000;
   }
 
   &.shop {
     max-width: 480px;
+
+    z-index: 1000;
   }
 
   &.bank {
     min-width: 650px;
     max-width: 650px;
+
+    z-index: 1000;
   }
 
   &.locker {
     min-width: 525px;
     max-width: 525px;
+
+    z-index: 1000;
   }
 
   position: absolute !important;
