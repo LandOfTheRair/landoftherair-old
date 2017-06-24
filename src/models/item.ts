@@ -132,6 +132,8 @@ export class Item {
   isBeltable = false;
   isSackable = true;
 
+  attackRange = 0;
+
   searchItems: Item[];
   tansFor: string;
 
