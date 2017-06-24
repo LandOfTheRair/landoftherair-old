@@ -26,7 +26,8 @@ import { Item } from '../../models/item';
 import { Locker } from '../../models/locker';
 
 const TickRates = {
-  PlayerAction: 60,
+  PlayerAction: 30,
+  NPCAction: 60,
   PlayerSave: 360
 };
 
@@ -435,6 +436,9 @@ export class GameWorld extends Room<GameState> {
     // tick players every second or so
     if(this.ticks.Player % TickRates.PlayerAction === 0) {
       this.state.tickPlayers();
+    }
+
+    if(this.ticks.Player % TickRates.NPCAction === 0) {
       this.spawners.forEach(spawner => spawner.npcTick());
     }
 
