@@ -177,15 +177,40 @@ export class CombatHelper {
 
   }
 
-  static dealDamage(attacker: Character, defender: Character, { damage, damageClass, attackerWeapon, attackerDamageMessage, defenderDamageMessage }) {
+  static dealOnesidedDamage(defender, { damage, damageClass, damageMessage }) {
+    let damageReduced = defender.getTotalStat(`${damageClass}Resist`);
+    damage -= damageReduced;
+
+    if(damage < 0) return 0;
+
+    defender.hp.sub(damage);
+
+    defender.sendClientMessage({ message: `${damageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' });
+
+    if(defender.isDead()) {
+      defender.sendClientMessage({ message: `You died!`, subClass: 'combat other kill' });
+      defender.die();
+    }
+  }
+
+  static dealDamage(
+    attacker: Character,
+    defender: Character,
+    { damage, damageClass, attackerWeapon, attackerDamageMessage, defenderDamageMessage }
+  ) {
 
     let damageReduced = defender.getTotalStat(`${damageClass}Resist`);
     damage -= damageReduced;
 
     if(damage < 0) return 0;
 
-    attacker.sendClientMessage({ message: `${attackerDamageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat self hit' });
-    defender.sendClientMessage({ message: `${defenderDamageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' });
+    if(attackerDamageMessage) {
+      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat self hit' });
+    }
+
+    if(defenderDamageMessage) {
+      defender.sendClientMessage({ message: `${defenderDamageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' });
+    }
 
     defender.hp.sub(damage);
 

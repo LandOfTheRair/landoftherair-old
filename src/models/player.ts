@@ -57,34 +57,36 @@ export class Player extends Character {
     // 5 minutes to restore
     this.$$deathTicks = 360 * 5;
 
-    const myCon = this.getTotalStat('con');
-    const myLuk = this.getTotalStat('luk');
+    if(killer) {
+      const myCon = this.getTotalStat('con');
+      const myLuk = this.getTotalStat('luk');
 
-    if(!(killer instanceof Player)) {
-      this.dropHands();
-    }
-
-    if(myCon > 3) this.stats.con--;
-
-    if(myCon === 3) {
-      if(this.stats.hp > 10 && random(1, 5) === 1) {
-        this.stats.hp -= 2;
+      if(!(killer instanceof Player)) {
+        this.dropHands();
       }
 
-      if(random(1, myLuk) === 1) this.strip(this);
+      if(myCon > 3) this.stats.con--;
 
-      if(random(1, myLuk / 5) === 1) this.stats.con--;
-    }
+      if(myCon === 3) {
+        if(this.stats.hp > 10 && random(1, 5) === 1) {
+          this.stats.hp -= 2;
+        }
 
-    if(myCon === 2) {
-      if(this.stats.hp > 10) this.stats.hp -= 2;
-      if(random(1, myLuk / 5) === 1) this.strip(this);
-      if(random(1, myLuk) === 1) this.stats.con--;
-    }
+        if(random(1, myLuk) === 1) this.strip(this);
 
-    if(myCon === 1) {
-      if(this.stats.hp > 10) this.stats.hp -= 2;
-      if(random(1, 2) === 1) this.strip(this);
+        if(random(1, myLuk / 5) === 1) this.stats.con--;
+      }
+
+      if(myCon === 2) {
+        if(this.stats.hp > 10) this.stats.hp -= 2;
+        if(random(1, myLuk / 5) === 1) this.strip(this);
+        if(random(1, myLuk) === 1) this.stats.con--;
+      }
+
+      if(myCon === 1) {
+        if(this.stats.hp > 10) this.stats.hp -= 2;
+        if(random(1, 2) === 1) this.strip(this);
+      }
     }
   }
 
