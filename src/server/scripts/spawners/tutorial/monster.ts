@@ -13,7 +13,7 @@ export class TutorialMonsterSpawner extends Spawner {
       respawnRate: 1800,
       initialSpawn: 4,
       maxCreatures: 6,
-      spawnRadius: 2,
+      spawnRadius: 1,
       randomWalkRadius: 5,
       leashRadius: 10,
       npcIds
