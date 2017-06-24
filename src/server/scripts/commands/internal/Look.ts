@@ -8,6 +8,14 @@ export class Look extends Command {
 
   public name = '~look';
 
+  static macroMetadata = {
+    name: 'Look At Ground',
+    macro: '~look',
+    icon: 'semi-closed-eye',
+    color: '#665600',
+    mode: 'autoActivate'
+  };
+
   protected getStringForNum(num) {
     if(num === 1) return 'a';
     if(num <= 3)  return num;
