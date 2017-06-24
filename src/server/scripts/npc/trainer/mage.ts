@@ -1,6 +1,7 @@
 import { NPC } from '../../../../models/npc';
 import { NPCLoader } from '../../../helpers/npc-loader';
 import { BaseClassTrainerResponses } from '../common-responses';
+import { SkillClassNames } from '../../../../models/character';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
@@ -8,7 +9,7 @@ export const setup = async (npc: NPC) => {
   npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
   npc.rightHand = await NPCLoader.loadItem('Antanian Shortsword');
   npc.classTrain = 'Mage';
-  npc.trainSkills = ['Conjuration', 'Wand', 'Shortsword'];
+  npc.trainSkills = [SkillClassNames.Conjuration, SkillClassNames.Wand, SkillClassNames.Shortsword];
   npc.recalculateStats();
 };
 

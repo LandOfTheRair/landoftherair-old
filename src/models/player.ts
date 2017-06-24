@@ -53,9 +53,16 @@ export class Player extends Character {
     this.$$flaggedSkills = skills;
   }
 
-  kill(target: Character, killAbility) {
-    // TODO gain skill
-    // TODO gain secondary skill
+  kill(target: Character) {
+    const [primary, secondary] = this.$$flaggedSkills;
+    const skillGain = target.skillOnKill;
+
+    if(secondary) {
+      this.gainSkill(primary, skillGain * 0.75);
+      this.gainSkill(secondary, skillGain * 0.25);
+    } else {
+      this.gainSkill(primary, skillGain);
+    }
   }
 
   die(killer) {

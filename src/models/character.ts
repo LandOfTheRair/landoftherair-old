@@ -1,5 +1,5 @@
 
-import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize, startsWith } from 'lodash';
+import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize, startsWith, isUndefined } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
@@ -11,6 +11,7 @@ import * as Classes from '../server/classes';
 import { Effect } from '../server/base/Effect';
 import * as Effects from '../server/effects';
 import { CombatHelper } from '../server/helpers/combat-helper';
+import { Logger } from '../server/logger';
 
 export type Allegiance =
   'None'
@@ -34,21 +35,21 @@ export type CharacterClass =
 | 'Thief';
 
 export const SkillClassNames = {
-  Mace: 'mace',
-  Axe: 'axe',
-  Dagger: 'dagger',
-  OneHanded: 'onehanded',
-  TwoHanded: 'twohanded',
-  Shortsword: 'shortsword',
-  Polearm: 'polearm',
-  Ranged: 'ranged',
-  Martial: 'martial',
-  Staff: 'staff',
-  Throwing: 'throwing',
-  Thievery: 'thievery',
-  Wand: 'wand',
-  Conjuration: 'conjuration',
-  Restoration: 'restoration'
+  Mace: 'Mace',
+  Axe: 'Axe',
+  Dagger: 'Dagger',
+  OneHanded: 'Onehanded',
+  TwoHanded: 'Twohanded',
+  Shortsword: 'Shortsword',
+  Polearm: 'Polearm',
+  Ranged: 'Ranged',
+  Martial: 'Martial',
+  Staff: 'Staff',
+  Throwing: 'Throwing',
+  Thievery: 'Thievery',
+  Wand: 'Wand',
+  Conjuration: 'Conjuration',
+  Restoration: 'Restoration'
 };
 
 export class Skills {
@@ -590,6 +591,11 @@ export class Character {
 
   _gainSkill(type, skillGained) {
     type = type.toLowerCase();
+
+    if(isUndefined(this.skills[type])) {
+      Logger.error(new Error(`Skill type ${type} is invalid.`));
+      return;
+    }
 
     this.skills[type] += skillGained;
 

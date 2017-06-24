@@ -1,6 +1,7 @@
 import { NPC } from '../../../../models/npc';
 import { NPCLoader } from '../../../helpers/npc-loader';
 import { BaseClassTrainerResponses } from '../common-responses';
+import { SkillClassNames } from '../../../../models/character';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
@@ -9,7 +10,10 @@ export const setup = async (npc: NPC) => {
   npc.leftHand = await NPCLoader.loadItem('Antanian Wooden Shield');
   npc.rightHand = await NPCLoader.loadItem('Antanian Longsword');
   npc.classTrain = 'Warrior';
-  npc.trainSkills = ['Axe', 'Onehanded', 'Twohanded', 'Ranged', 'Martial', 'Polearm'];
+  npc.trainSkills = [
+    SkillClassNames.Axe, SkillClassNames.OneHanded, SkillClassNames.TwoHanded,
+    SkillClassNames.Ranged, SkillClassNames.Martial, SkillClassNames.Polearm
+  ];
   npc.recalculateStats();
 };
 
