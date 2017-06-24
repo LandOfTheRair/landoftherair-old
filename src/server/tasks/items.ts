@@ -71,10 +71,15 @@ class ItemLoader {
     if(item.itemClass === 'Halberd') {
       item.isBeltable = false;
       item.twoHanded = true;
+      item.attackRange = 1;
     }
 
     if(includes(['Shortbow', 'Longbow'], item.itemClass)) {
       item.twoHanded = true;
+    }
+
+    if(includes(['Crossbow', 'Shortbow', 'Longbow'], item.itemClass)) {
+      item.attackRange = 4;
     }
 
     if(item.itemClass === 'Shield') {
