@@ -2,7 +2,7 @@
 import { includes, random, capitalize } from 'lodash';
 
 import { Character, SkillClassNames } from '../../models/character';
-import { ShieldClasses } from '../../models/item';
+import { ShieldClasses, Item } from '../../models/item';
 import * as Classes from '../classes';
 
 import * as dice from 'dice.js';
@@ -28,13 +28,13 @@ export class CombatHelper {
 
     if(defender.isDead()) return { isDead: true };
 
-    let attackerWeapon;
+    let attackerWeapon: Item;
 
     if(isThrow) {
       attackerWeapon = attacker[`${throwHand}Hand`];
 
     } else {
-      attackerWeapon = attacker.rightHand || attacker.gear.Hands || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands'};
+      attackerWeapon = attacker.rightHand || attacker.gear.Hands || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands', isOwnedBy: () => true };
     }
 
     const flagSkills = [];
@@ -44,6 +44,16 @@ export class CombatHelper {
     attacker.flagSkill(flagSkills);
 
     if(isThrow) flagSkills[1] = SkillClassNames.Throwing;
+
+    if(!attackerWeapon.isOwnedBy(attacker)) {
+      if(!isThrow || (isThrow && attackerWeapon.returnsOnThrow)) {
+        attacker.$$room.addItemToGround(attacker, attacker.rightHand);
+        attacker.setRightHand(null);
+      }
+
+      attacker.sendClientMessage({ message: `Your hand feels a burning sensation!`, target: defender.uuid });
+      return;
+    }
 
     const defenderBlocker = defender.rightHand || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands' };
     const defenderShield = defender.leftHand && this.isShield(defender.leftHand) ? defender.leftHand : null;
