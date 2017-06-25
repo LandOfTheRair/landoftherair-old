@@ -17,7 +17,7 @@ class NPCLoader {
     DB.isReady.then(async () => {
       await DB.$npcs.remove({}, { multi: true });
 
-      recurse(`${__dirname}/../npcs`).then(files => {
+      recurse(`${__dirname}/../data/npcs`).then(files => {
         const filePromises = files.map(file => {
           const npcs = YAML.load(file);
 
