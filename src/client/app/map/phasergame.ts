@@ -358,8 +358,6 @@ export class Game {
   }
 
   create() {
-    const cacheKey = TiledPlugin.utils.cacheKey;
-
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 
     const decorFirstGid = this.map.tilesets[2].firstgid;
