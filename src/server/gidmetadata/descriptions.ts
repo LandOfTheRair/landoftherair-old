@@ -1,21 +1,6 @@
 
 import { range } from 'lodash';
 
-export const GetGidDescription = (gid) => {
-  if(gid === 0) return '';
-
-  // terrain
-  if(gid <= 960) return DESCS[Math.floor((gid - 1) / 48)];
-
-  // decor
-  if(gid > 1313) {
-    return DecorGids[gid - 1313];
-  }
-
-  // whatever
-  return '';
-};
-
 const WEAPON_RACK_DESC = 'You are standing near a rack of weapons. They look very pointy.';
 const ARMOR_STATUE_DESC = 'You are standing near a suit of armor.';
 const LOCKER_DESC = 'You are standing near a wardrobe. Every time you touch it, it feels warm and strangely familiar.';
@@ -37,14 +22,14 @@ const DecorGids = {
   219: LOCKER_DESC,
 };
 
-export const GetSwimLevel = (gid) => {
-  return SwimInfo[Math.floor((gid - 1) / 48)];
-};
-
 const SwimInfo = {
   8:  { element: 'water', swimLevel: 1 },
   9:  { element: 'fire',  swimLevel: 3 },
   16: { element: 'water', swimLevel: 5 }
+};
+
+export const GetSwimLevel = (gid) => {
+  return SwimInfo[Math.floor((gid - 1) / 48)];
 };
 
 const DESCS = [
@@ -69,3 +54,18 @@ const DESCS = [
   'You are standing knee-deep in weeds and bog flowers',
   'You are standing on dirt.'
 ];
+
+export const GetGidDescription = (gid) => {
+  if(gid === 0) return '';
+
+  // terrain
+  if(gid <= 960) return DESCS[Math.floor((gid - 1) / 48)];
+
+  // decor
+  if(gid > 1313) {
+    return DecorGids[gid - 1313];
+  }
+
+  // whatever
+  return '';
+};
