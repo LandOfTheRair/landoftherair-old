@@ -750,6 +750,26 @@
                  "width":64,
                  "x":2688,
                  "y":512
+                }, 
+                {
+                 "gid":2589,
+                 "height":64,
+                 "id":194,
+                 "name":"Billy",
+                 "properties":
+                    {
+                     "script":"tutorial\/billy"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":768,
+                 "y":1728
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -867,7 +887,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":194,
+ "nextobjectid":195,
  "orientation":"orthogonal",
  "properties":
     {
