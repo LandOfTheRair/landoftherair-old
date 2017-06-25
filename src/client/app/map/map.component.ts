@@ -60,7 +60,7 @@ export class MapComponent implements OnInit, OnDestroy {
       this.game.interactCallback = (x, y) => this.colyseus.game.doInteract(x, y);
       const config = {
         width: boxSize, height: boxSize,
-        multiTexture: true, renderer: (<any>window).Phaser.WEBGL_MULTI,
+        multiTexture: true, renderer: (<any>window).Phaser.AUTO,
         state: this.game, parent: 'map',
         enableDebug: false
       };
