@@ -334,6 +334,16 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"RegionDescriptions",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
  "nextobjectid":211,
  "orientation":"orthogonal",
@@ -2173,12 +2183,12 @@
          "columns":40,
          "firstgid":2529,
          "image":"..\/..\/client\/assets\/creatures.png",
-         "imageheight":2880,
+         "imageheight":2944,
          "imagewidth":2560,
          "margin":0,
          "name":"Creatures",
          "spacing":0,
-         "tilecount":1800,
+         "tilecount":1840,
          "tileheight":64,
          "tilewidth":64
         }],

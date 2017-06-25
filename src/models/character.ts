@@ -696,8 +696,6 @@ export class Character {
     if(this.swimLevel > 0) {
       const hpPercentLost = this.swimLevel * 4;
       const hpLost = Math.floor(this.hp.maximum * (hpPercentLost / 100));
-      // TODO modify to take damage of type water
-
       CombatHelper.dealOnesidedDamage(this, { damage: hpLost, damageClass: 'water', damageMessage: 'You are drowning!' });
     }
 
