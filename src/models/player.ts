@@ -7,6 +7,7 @@ import { compact, pull, random, isArray } from 'lodash';
 export class Player extends Character {
   _id?: any;
 
+  createdAt: number;
   username: string;
   charSlot: number;
   isGM: boolean;

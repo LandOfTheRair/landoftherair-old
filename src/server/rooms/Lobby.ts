@@ -129,6 +129,7 @@ export class Lobby extends Room<LobbyState> {
 
     const player: Player = new Player({
       username: account.username,
+      createdAt: Date.now(),
       charSlot,
       stats, name, allegiance, gold,
       x: 14, y: 14, map: 'Tutorial',
