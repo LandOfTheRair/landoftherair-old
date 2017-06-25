@@ -693,12 +693,6 @@ export class Character {
     this.hp.add(hpRegen);
     this.mp.add(mpRegen);
 
-    if(this.swimLevel > 0) {
-      const hpPercentLost = this.swimLevel * 4;
-      const hpLost = Math.floor(this.hp.maximum * (hpPercentLost / 100));
-      CombatHelper.dealOnesidedDamage(this, { damage: hpLost, damageClass: 'water', damageMessage: 'You are drowning!' });
-    }
-
     this.effects.forEach(eff => eff.tick(this));
   }
 

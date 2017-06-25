@@ -37,6 +37,16 @@ const DecorGids = {
   219: LOCKER_DESC,
 };
 
+export const GetSwimLevel = (gid) => {
+  return SwimInfo[Math.floor((gid - 1) / 48)];
+};
+
+const SwimInfo = {
+  8:  { element: 'water', swimLevel: 1 },
+  9:  { element: 'fire',  swimLevel: 3 },
+  16: { element: 'water', swimLevel: 5 }
+};
+
 const DESCS = [
   'You are standing on darkened cobblestone.',
   'You are standing in sand.',
