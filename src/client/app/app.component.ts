@@ -7,7 +7,7 @@ import { MacroService, Macro } from './macros.service';
 
 import * as macicons from '../macicons/macicons.json';
 
-import { includes } from 'lodash';
+import { includes, isNull } from 'lodash';
 
 type Size = 'normal' | 'small' | 'xsmall';
 type XSizeMax = 'max' | 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
@@ -107,10 +107,15 @@ export class AppComponent implements OnInit {
   }
 
   initDefaultOptions() {
-    ['sack', 'belt', 'equipment', 'ground', 'logFont', 'logWindow'].forEach(opt => {
+    ['sack', 'belt', 'equipment', 'ground', 'logFont', 'logWindow', 'npcWindow'].forEach(opt => {
       if(this[`${opt}Size`]) return;
       this[`${opt}Size`] = 'normal';
     });
+
+    if(isNull(this.showInventoryBelt)) this.showInventoryBelt = true;
+    if(isNull(this.showInventorySack)) this.showInventorySack = true;
+    if(isNull(this.showEquipment))     this.showEquipment = true;
+    if(isNull(this.showCommandLine))   this.showCommandLine = true;
 
     this.theme = 'Light';
   }
