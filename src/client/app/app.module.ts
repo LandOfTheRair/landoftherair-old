@@ -94,7 +94,7 @@ import { LockersComponent } from './lockers/lockers.component';
 
     ColorPickerModule,
     Ng2DragDropModule,
-    Ng2Webstorage.forRoot({ prefix: 'lotr', separator: '-' }),
+    Ng2Webstorage.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     ButtonsModule.forRoot(),
