@@ -7,7 +7,7 @@ import { ClientGameState } from '../clientgamestate';
 
 import { environment } from '../../environments/environment';
 import { Player } from '../../../models/player';
-import { Sex, Direction } from '../../../models/character';
+import { Sex, Direction, Allegiance } from '../../../models/character';
 import { Item } from '../../../models/item';
 import { TrueSightMap, TrueSightMapReversed } from './phaserconversionmaps';
 
@@ -114,11 +114,22 @@ export class Game {
     return <any>this;
   }
 
-  getStartingSpriteForSex(sex: Sex) {
-    switch(sex) {
-      case 'Male':    return 725;
-      case 'Female':  return 675;
+  getStartingSpriteForSex(allegiance: Allegiance, sex: Sex) {
+
+    let choices: any = { Male: 725, Female: 675 };
+
+    switch(allegiance) {
+      case 'None':          { choices = { Male: 725, Female: 675 }; break; }
+      case 'Townsfolk':     { choices = { Male: 725, Female: 675 }; break; }
+
+      case 'Pirates':       { choices = { Male: 750, Female: 695 }; break; }
+      case 'Wilderness':    { choices = { Male: 730, Female: 680 }; break; }
+      case 'Adventurers':   { choices = { Male: 725, Female: 675 }; break; }
+      case 'Royalty':       { choices = { Male: 735, Female: 685 }; break; }
+      case 'Underground':   { choices = { Male: 745, Female: 690 }; break; }
     }
+
+    return choices[sex];
   }
 
   getStartingSwimmingSpriteForSex(sex: Sex) {
@@ -148,7 +159,7 @@ export class Game {
   }
 
   getPlayerSprite(player: Player) {
-    const spriteGender = this.getStartingSpriteForSex(player.sex);
+    const spriteGender = this.getStartingSpriteForSex(player.allegiance, player.sex);
     const spriteDir = this.getSpriteOffsetForDirection(player.dir);
 
     const sprite = this.g.add.sprite(player.x * 64, player.y * 64, 'Creatures', spriteGender + spriteDir);
@@ -168,7 +179,7 @@ export class Game {
 
     // if player isn't swimming or player is dead
     if(!player.swimLevel || player.dir === 'C') {
-      const spriteGender = this.getStartingSpriteForSex(player.sex);
+      const spriteGender = this.getStartingSpriteForSex(player.allegiance, player.sex);
       const spriteDir = this.getSpriteOffsetForDirection(player.dir);
       frame = spriteGender + spriteDir;
       key = 'Creatures';
