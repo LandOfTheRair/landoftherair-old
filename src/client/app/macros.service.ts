@@ -156,7 +156,7 @@ export class MacroService {
   public loadMacros() {
     this.customMacros = this.localStorage.retrieve('customMacros') || {};
     this.visibleMacroGroups = this.localStorage.retrieve('visibleMacroGroups') || ['default', null, null];
-    this.allMacroGroups = this.localStorage.retrieve('allMacroGroups') || ['default'];
+    this.allMacroGroups = this.localStorage.retrieve('allMacroGroups') || {};
     this.hasLoaded = true;
 
     extend(this.allMacros, this.customMacros);
