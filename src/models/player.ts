@@ -225,4 +225,14 @@ export class Player extends Character {
     if((<any>char).ai) return;
     super.addAgro(char, value);
   }
+
+  hasHeldItem(item: string, hand: 'left'|'right' = 'right') {
+    const ref = this[`${hand}Hand`];
+    return (ref && ref.name === item && ref.isOwnedBy(this));
+  }
+
+  hasHeldItems(item1: string, item2: string) {
+    return (this.hasHeldItem(item1, 'right') && this.hasHeldItem(item2, 'left'))
+        || (this.hasHeldItem(item2, 'right') && this.hasHeldItem(item1, 'left'));
+  }
 }

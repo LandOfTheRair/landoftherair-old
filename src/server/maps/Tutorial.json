@@ -526,6 +526,14 @@
                  "height":64,
                  "id":169,
                  "name":"ExitDoor",
+                 "properties":
+                    {
+                     "requireHeld":"Tutorial Key"
+                    },
+                 "propertytypes":
+                    {
+                     "requireHeld":"string"
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -2699,12 +2707,12 @@
          "columns":40,
          "firstgid":2529,
          "image":"..\/..\/client\/assets\/creatures.png",
-         "imageheight":2880,
+         "imageheight":2944,
          "imagewidth":2560,
          "margin":0,
          "name":"Creatures",
          "spacing":0,
-         "tilecount":1800,
+         "tilecount":1840,
          "tileheight":64,
          "tilewidth":64
         }],
