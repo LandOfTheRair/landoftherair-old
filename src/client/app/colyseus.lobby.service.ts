@@ -54,7 +54,7 @@ export class ColyseusLobbyService {
     this.auth.login().then(() => this.emitUserId());
   }
 
-  private emitUserId = () => {
+  private emitUserId() {
     const userId = localStorage.getItem('user_id');
     const idToken = localStorage.getItem('id_token');
     const username = localStorage.getItem('user_name');
