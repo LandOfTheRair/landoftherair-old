@@ -31,6 +31,11 @@ export class OpenDoor extends Command {
       return;
     }
 
+    if(!door.isOpen
+      && door.properties
+      && door.properties.requireHeld
+      && !player.hasHeldItem(door.properties.requireHeld)) return player.sendClientMessage('The door is locked.');
+
     player.sendClientMessage(door.isOpen ? 'You close the door.' : 'You open the door.');
     gameState.toggleDoor(door);
 

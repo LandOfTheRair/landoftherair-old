@@ -15,9 +15,14 @@ export const responses = (npc: NPC) => {
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
-    .set('logic', (args, env) => {
-      const p = env.player;
-      return `Hello and welcome to The Land of the Rair, ${p.name}! It looks like you're stuck in here with me. But fret not! If you kill the nearby YETI and bring me his SKULL, I can give you a KEY to let you out of here.`;
+    .set('logic', (args, { player }) => {
+      if(NPCLoader.checkPlayerHeldItem(player, 'Tutorial Yeti Skull')) {
+        NPCLoader.takePlayerItem(player, 'Tutorial Yeti Skull');
+        NPCLoader.givePlayerItem(player, 'Tutorial Key');
+        return `Ah, thank you ${player.name}! I see you've brought me the skull of the feared yeti. Here, you can have this key. Now go out into the world and do great things!`;
+      }
+
+      return `Hello and welcome to The Land of the Rair, ${player.name}! It looks like you're stuck in here with me. But fret not! If you kill the nearby YETI and bring me his SKULL, I can give you a KEY to let you out of here.`;
     });
 
   npc.parser.addCommand('yeti')
@@ -29,7 +34,13 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('skull')
     .set('syntax', ['skull'])
     .set('logic', () => {
-      return `Yeti skulls happen to be a prized item in these parts. No, I'm not some sort of weirdo! I'll trade you a KEY for his skull.`;
+      return `Yeti skulls happen to be a prized item in these parts. No, I'm not some sort of weirdo! I'll trade you a KEY for his skull. Just hold it in your hand, and greet me again! Note also that the skull must BELONG to you!`;
+    });
+
+  npc.parser.addCommand('belong')
+    .set('syntax', ['belong'])
+    .set('logic', () => {
+      return `Yes, yes. Some items have a faint warm sensation upon grasping them. It truly is a strange phenomena, but it means that you own that item, and no one else can use it. That's how I'll known you've completed your trial!`;
     });
 
   npc.parser.addCommand('key')
@@ -46,8 +57,8 @@ export const responses = (npc: NPC) => {
 
   npc.parser.addCommand('vision')
     .set('syntax', ['vision'])
-    .set('logic', () => {
-      // TODO cast detect
-      return `Here you go! Best of luck on finding them.`;
+    .set('logic', (args, { player }) => {
+      NPCLoader.givePlayerEffect(player, 'TrueSight', { duration: 100 });
+      return `Here you go! Best of luck on finding them. I hear they're holed up in the northeast somewhere.`;
     });
 };

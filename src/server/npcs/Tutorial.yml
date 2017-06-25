@@ -118,3 +118,6 @@
   drops:
     - result: Tutorial Yeti Club
       chance: -1
+
+    - result: Tutorial Yeti Skull
+      chance: -1

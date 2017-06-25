@@ -25,16 +25,21 @@ export class Interact extends Command {
       case 'Door': cmdInfo = this.doDoor(gameState, interactable); break;
     }
 
-    const { command, shouldContinue }: any = cmdInfo;
+    const { command, shouldContinue, errorMessage }: any = cmdInfo;
     const args = `${x} ${y}`;
-    if(!command || !shouldContinue) return;
+    if(!command || !shouldContinue) {
+      if(errorMessage) player.sendClientMessage(errorMessage);
+      return;
+    }
 
     CommandExecutor.executeCommand(player, command, { room, gameState, args });
   }
 
-  private doDoor(gameState, door) {
+  private doDoor( gameState, door) {
     const gameStateDoor = gameState.mapData.openDoors[door.id];
-    return { command: 'open', shouldContinue: !gameStateDoor || (gameStateDoor && !gameStateDoor.isOpen) };
+    const shouldContinue = !gameStateDoor || (gameStateDoor && !gameStateDoor.isOpen);
+
+    return { command: 'open', shouldContinue };
   }
 
 }

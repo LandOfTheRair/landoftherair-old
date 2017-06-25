@@ -167,6 +167,10 @@ export class Item {
     return 'perfect';
   }
 
+  setOwner(player: Player) {
+    this.owner = player.username;
+  }
+
   descTextFor(player: Player) {
     let ownedText = '';
     if(this.owner) {
@@ -187,8 +191,12 @@ export class Item {
     return EquipHash[this.itemClass] === 'Armor';
   }
 
+  isOwnedBy(char: Character) {
+    return !this.owner || this.owner && (<any>char).username === this.owner;
+  }
+
   canUse(char: Character) {
-    return this.effect && (!this.owner || this.owner && (<any>char).username === this.owner);
+    return this.effect && this.isOwnedBy(char);
   }
 
   use(char: Character) {
