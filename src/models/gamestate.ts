@@ -7,7 +7,7 @@ import * as Mrpas from 'mrpas';
 import { Item } from './item';
 import { NPC } from './npc';
 import { Character } from './character';
-import { GetGidDescription } from '../server/gidmetadata/descriptions';
+import { GetGidDescription, GetSwimLevel } from '../server/gidmetadata/descriptions';
 
 export const MapLayer = {
   Terrain: 0,
@@ -109,7 +109,13 @@ export class GameState {
     const playerOffset = (player.y * this.map.width) + player.x;
 
     const swimTile = mapLayers[MapLayer.Fluids].data[playerOffset];
-    player.swimLevel = swimTile ? 1 : 0;
+    const swimInfo = GetSwimLevel(swimTile);
+    if(swimInfo) {
+      player.$$swimElement = swimInfo.element;
+      player.swimLevel = swimInfo.swimLevel;
+    } else {
+      player.swimLevel = 0;
+    }
 
     const regionObj = find(this.map.layers[MapLayer.RegionDescriptions].objects, reg => {
       const x = (reg.x / 64);
