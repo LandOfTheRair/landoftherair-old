@@ -7,6 +7,7 @@ import * as Mrpas from 'mrpas';
 import { Item } from './item';
 import { NPC } from './npc';
 import { Character } from './character';
+import { GetGidDescription } from '../server/gidmetadata/descriptions';
 
 export const MapLayer = {
   Terrain: 0,
@@ -19,7 +20,8 @@ export const MapLayer = {
   OpaqueDecor: 7,
   Interactables: 8,
   NPCs: 9,
-  Spawners: 10
+  Spawners: 10,
+  RegionDescriptions: 11
 };
 
 export class GameState {
@@ -103,8 +105,55 @@ export class GameState {
   resetPlayerStatus(player: Player) {
     this.calculateFOV(player);
 
-    const swimTile = this.map.layers[MapLayer.Fluids].data[(player.y * this.map.width) + player.x];
+    const mapLayers = this.map.layers;
+    const playerOffset = (player.y * this.map.width) + player.x;
+
+    const swimTile = mapLayers[MapLayer.Fluids].data[playerOffset];
     player.swimLevel = swimTile ? 1 : 0;
+
+    const regionObj = find(this.map.layers[MapLayer.RegionDescriptions].objects, reg => {
+      const x = (reg.x / 64);
+      const y = (reg.y / 64);
+      const width = reg.width / 64;
+      const height = reg.height / 64;
+      return player.x > x
+          && player.x < x + width
+          && player.y > y
+          && player.y < y + height;
+    });
+
+    let regionDesc = '';
+
+    if(regionObj && regionObj.properties.desc) {
+      regionDesc = regionObj.properties.desc;
+    }
+
+    const descObjs = this.map.layers[MapLayer.Interactables].objects.concat(this.map.layers[MapLayer.Decor].objects);
+    const descObj = find(descObjs, { x: player.x * 64, y: (player.y + 1) * 64 });
+    const intDesc = GetGidDescription(descObj ? descObj.gid : 0);
+
+    const swimDesc = GetGidDescription(swimTile);
+    const foliageDesc = mapLayers[MapLayer.Foliage].data[playerOffset] ? 'You are near some trees.' : '';
+    const floorDesc = GetGidDescription(mapLayers[MapLayer.Floors].data[playerOffset]);
+    const terrainDesc = GetGidDescription(mapLayers[MapLayer.Terrain].data[playerOffset]);
+
+    const desc = intDesc || swimDesc || foliageDesc || floorDesc || terrainDesc;
+
+    let hasNewRegion = regionDesc && regionDesc !== player.$$lastRegion;
+
+    if(hasNewRegion) {
+      player.$$lastRegion = regionDesc;
+      player.sendClientMessage(regionDesc);
+
+    } else if(!regionDesc) {
+      player.$$lastRegion = '';
+
+    }
+
+    if(!hasNewRegion && desc !== player.$$lastDesc) {
+      player.$$lastDesc = desc;
+      player.sendClientMessage(desc);
+    }
   }
 
   toggleDoor(door) {

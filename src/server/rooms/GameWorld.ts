@@ -113,6 +113,7 @@ export class GameWorld extends Room<GameState> {
 
   sendPlayerLogMessage(player: Player, messageData) {
     const client = this.findClient(player);
+    if(!client) return;
     this.sendClientLogMessage(client, messageData);
   }
 

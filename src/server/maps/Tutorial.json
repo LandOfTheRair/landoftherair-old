@@ -886,8 +886,113 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"RegionDescriptions",
+         "objects":[
+                {
+                 "height":384,
+                 "id":198,
+                 "name":"Billy's House",
+                 "properties":
+                    {
+                     "desc":"You find yourself in an almost-empty house. A small child stares hopefully in your direction as you enter."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":640,
+                 "y":1600
+                }, 
+                {
+                 "height":384,
+                 "id":199,
+                 "name":"Shop",
+                 "properties":
+                    {
+                     "desc":"You enter a shop, a loud bell signaling the shopkeeps to your entry."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":896,
+                 "x":832,
+                 "y":2048
+                }, 
+                {
+                 "height":384,
+                 "id":200,
+                 "name":"Old Smith",
+                 "properties":
+                    {
+                     "desc":"You enter what appears to be an old smithy. Where could it's owner have gone?"
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":1472,
+                 "y":1600
+                }, 
+                {
+                 "height":320,
+                 "id":201,
+                 "name":"Hermit's House",
+                 "properties":
+                    {
+                     "desc":"You enter a small shack on the outskirts of town, clearly fortified against intruders. A pair of beady eyes glares in your direction."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":320,
+                 "y":320
+                }, 
+                {
+                 "height":192,
+                 "id":202,
+                 "name":"Trainer Alcove",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a hidden alcove surrounded by professionals that may be able to help you on your quest."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":2560,
+                 "y":320
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":195,
+ "nextobjectid":203,
  "orientation":"orthogonal",
  "properties":
     {

@@ -294,8 +294,18 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"RegionDescriptions",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":197,
+ "nextobjectid":198,
  "orientation":"orthogonal",
  "properties":
     {

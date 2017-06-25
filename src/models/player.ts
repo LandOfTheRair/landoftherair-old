@@ -20,6 +20,8 @@ export class Player extends Character {
   $$doNotSave: boolean;
   $$actionQueue;
   $$flaggedSkills;
+  $$lastDesc: string;
+  $$lastRegion: string;
 
   respawnPoint: { x: number, y: number, map: string };
 
