@@ -12,7 +12,7 @@
     "build:prod": "ng build --environment=prod --target=production",
     "lint": "ng lint",
     "test": "npm run lint && npm run build:prod",
-    "setup": "npm-run-all task*",
+    "setup": "npm-run-all task:*",
     "task:items": "ts-node src/server/tasks/items.ts",
     "task:npcs": "ts-node src/server/tasks/npcs.ts",
     "task:drops": "ts-node src/server/tasks/drops.ts",
