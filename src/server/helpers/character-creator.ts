@@ -31,6 +31,7 @@ export class CharacterCreator {
     return {
       name: '',
       allegiance: 'None',
+      sex: 'Male',
       _validAllegiances: this.validAllegiances(),
       _allegianceDesc: 'Placeholder',
 
@@ -50,14 +51,19 @@ export class CharacterCreator {
     };
   }
 
-  static getCustomizedCharacter({ allegiance, name }) {
+  static getCustomizedCharacter({ allegiance, sex, name }) {
     const char = this.getDefaultCharacter();
     char.allegiance = allegiance;
+    char.sex = sex;
 
     if(!name) name = '';
 
     if(!includes(this.validAllegiances(), char.allegiance)) {
       char.allegiance = 'None';
+    }
+
+    if(!includes(['Male', 'Female'], char.sex)) {
+      char.sex = 'Male';
     }
 
     char.name = capitalize(truncate(name.replace(/[^a-zA-Z]/g, ''), { length: 20, omission: '' }));

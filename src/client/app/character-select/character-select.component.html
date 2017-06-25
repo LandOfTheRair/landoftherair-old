@@ -68,6 +68,23 @@
 
         <div class="row m-1">
           <div class="col text-center">
+            <h3>Sex</h3>
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <div class="btn-group">
+            <label class="btn btn-info"
+                   *ngFor="let sex of ['Male', 'Female']"
+                   [btnRadio]="sex"
+                   [class.active]="sex === lobby.myCharacter.sex"
+                   (click)="getCharacter()"
+                   [(ngModel)]="lobby.myCharacter.sex">{{ sex }}</label>
+          </div>
+        </div>
+
+        <div class="row m-1">
+          <div class="col text-center">
             <h3>Statistics</h3>
           </div>
         </div>
