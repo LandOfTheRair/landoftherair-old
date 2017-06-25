@@ -145,7 +145,7 @@ export class GameState {
 
     const desc = intDesc || swimDesc || foliageDesc || floorDesc || terrainDesc;
 
-    let hasNewRegion = regionDesc && regionDesc !== player.$$lastRegion;
+    const hasNewRegion = regionDesc && regionDesc !== player.$$lastRegion;
 
     if(hasNewRegion) {
       player.$$lastRegion = regionDesc;
