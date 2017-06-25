@@ -273,6 +273,10 @@ export class ItemComponent implements OnInit {
     if(this.item.isSackable) scopes.push('sack');
     if(this.item.isBeltable) scopes.push('belt');
 
+    if(this.item.canUse && this.item.canUse(this.player)
+    && this.context !== 'Ground'
+    && this.context !== 'Equipment') scopes.push('use');
+
     this.scopes = scopes;
   }
 

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Player } from '../../../models/player';
+import { Component } from '@angular/core';
+import { ColyseusGameService } from '../colyseus.game.service';
 
 @Component({
   selector: 'app-status-window',
@@ -8,9 +8,6 @@ import { Player } from '../../../models/player';
 })
 export class StatusWindowComponent {
 
-  @Input()
-  public player: Player = new Player({});
-
-  constructor() { }
+  constructor(public colyseusGame: ColyseusGameService) { }
 
 }
