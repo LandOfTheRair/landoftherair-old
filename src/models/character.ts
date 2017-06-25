@@ -10,7 +10,6 @@ import { environment } from '../client/environments/environment';
 import * as Classes from '../server/classes';
 import { Effect } from '../server/base/Effect';
 import * as Effects from '../server/effects';
-import { CombatHelper } from '../server/helpers/combat-helper';
 import { Logger } from '../server/logger';
 
 export type Allegiance =
