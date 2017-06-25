@@ -20,7 +20,7 @@ class ItemLoader {
     DB.isReady.then(async () => {
       await DB.$items.remove({}, { multi: true });
 
-      recurse(`${__dirname}/../items`).then(files => {
+      recurse(`${__dirname}/../data/items`).then(files => {
         const filePromises = files.map(file => {
           const fileName = path.basename(file, path.extname(file));
           const itemsOfType = YAML.load(file);

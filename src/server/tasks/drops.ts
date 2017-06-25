@@ -15,7 +15,7 @@ class DropsLoader {
     DB.isReady.then(async () => {
       await DB.$npcs.remove({}, { multi: true });
 
-      recurse(`${__dirname}/../droptables/regions`).then(files => {
+      recurse(`${__dirname}/../data/droptables/regions`).then(files => {
         const filePromises = files.map(file => {
           const droptable = YAML.load(file);
           const fileName = path.basename(file, path.extname(file));
@@ -39,7 +39,7 @@ class DropsLoader {
     DB.isReady.then(async () => {
       await DB.$npcs.remove({}, { multi: true });
 
-      recurse(`${__dirname}/../droptables/maps`).then(files => {
+      recurse(`${__dirname}/../data/droptables/maps`).then(files => {
         const filePromises = files.map(file => {
           console.log(file);
           const droptable = YAML.load(file);
