@@ -53,6 +53,7 @@ export class MacroService {
   public macroMap: any = {};
 
   constructor(private localStorage: LocalStorageService, private colyseusGame: ColyseusGameService) {
+    this.allMacroGroups = this.allMacroGroups || {};
     this.loadMacros();
     this.watchActiveMacro();
     this.watchForMacros();
