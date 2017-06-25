@@ -312,6 +312,10 @@ export class Character {
   itemCheck(item: Item) {
     if(!item) return;
     if(item.itemClass === 'Corpse') return;
+    if(item.binds && !item.owner) {
+      item.setOwner(this);
+      this.sendClientMessage(`The ${item.itemClass.toLowerCase()} feels momentarily warm to the touch as it molds to fit your grasp.`);
+    }
   }
 
   setLeftHand(item: Item) {
@@ -327,6 +331,7 @@ export class Character {
   }
 
   setPotionHand(item: Item) {
+    this.itemCheck(item);
     this.potionHand = item;
   }
 
@@ -350,6 +355,7 @@ export class Character {
   }
 
   canEquip(item: Item) {
+    if(!item.isOwnedBy(this)) return false;
     if(!this.checkCanEquipWithoutGearCheck(item)) return false;
 
     const slot = this.getItemSlotToEquipIn(item);
@@ -403,9 +409,8 @@ export class Character {
   }
 
   addItemToBelt(item: Item) {
-    this.belt.push(item);
-    this.fixBelt();
     this.itemCheck(item);
+    this.belt.push(item);
   }
 
   takeItemFromBelt(slot: number) {

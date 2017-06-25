@@ -134,6 +134,7 @@ export class Item {
 
   attackRange = 0;
   returnsOnThrow: boolean;
+  binds: boolean;
 
   searchItems: Item[];
   tansFor: string;
@@ -167,8 +168,8 @@ export class Item {
     return 'perfect';
   }
 
-  setOwner(player: Player) {
-    this.owner = player.username;
+  setOwner(player: Character) {
+    this.owner = player.uuid;
   }
 
   descTextFor(player: Player) {

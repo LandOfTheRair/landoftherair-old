@@ -39,7 +39,7 @@ export class Player extends Character {
   initServer() {
     this.initEffects();
     this.recalculateStats();
-    this.uuid = this._id;
+    this.uuid = this.username;
     this.$$actionQueue = [];
   }
 
