@@ -9,6 +9,9 @@ import { environment } from '../../environments/environment';
 import { Player } from '../../../models/player';
 import { Sex, Direction } from '../../../models/character';
 import { Item } from '../../../models/item';
+import { TrueSightMap, TrueSightMapReversed } from './phaserconversionmaps';
+
+const cacheKey = TiledPlugin.utils.cacheKey;
 
 export class Game {
 
@@ -21,6 +24,8 @@ export class Game {
 
   private itemsOnGround: any;
   private visibleNPCs: any;
+
+  private isRenderingTruesight: boolean;
 
   private groups: any = {
     Decor: {},
@@ -62,6 +67,7 @@ export class Game {
     if(player.username === this.player.username) {
       this.player = player;
       this.playerSprite = sprite;
+      this.truesightCheck();
       this.resolveCanUpdate(sprite);
 
     } else {
@@ -74,6 +80,7 @@ export class Game {
 
     if(this.player.username === player.username) {
       this.player = player;
+      this.truesightCheck();
       this.updatePlayerSprite(this.playerSprite, player);
 
     } else {
@@ -180,6 +187,28 @@ export class Game {
     }
 
     sprite.frame = frame;
+  }
+
+  private toggleTruesightForWalls(set: boolean) {
+    this.groups.OpaqueDecor.children.forEach(sprite => {
+      if(set && TrueSightMap[sprite.frame]) {
+        sprite.loadTexture(cacheKey(this.clientGameState.mapName, 'tileset', 'Decor'), +TrueSightMap[sprite.frame]);
+      } else if(!set && TrueSightMapReversed[sprite.frame]) {
+        sprite.loadTexture(cacheKey(this.clientGameState.mapName, 'tileset', 'Walls'), +TrueSightMapReversed[sprite.frame]);
+      }
+    });
+  }
+
+  private truesightCheck() {
+    if(this.isRenderingTruesight && !this.player.hasEffect('TrueSight')) {
+      this.isRenderingTruesight = false;
+      this.toggleTruesightForWalls(false);
+
+    } else if(!this.isRenderingTruesight && this.player.hasEffect('TrueSight')) {
+      this.isRenderingTruesight = true;
+      this.toggleTruesightForWalls(true);
+
+    }
   }
 
   private notInRange(centerX, centerY, x, y) {
@@ -308,8 +337,6 @@ export class Game {
   }
 
   preload() {
-    const cacheKey = TiledPlugin.utils.cacheKey;
-
     this.g.add.plugin(new TiledPlugin(this.g, this.g.stage));
 
     const loadMap = this.clientGameState.map;

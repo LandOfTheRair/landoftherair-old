@@ -79,9 +79,18 @@ export class ClientGameState {
     return find(this.players, { username });
   }
 
+  _updatePlayerAtIndex(playerIndex) {
+    this.updatePlayer$.next(this.players[playerIndex]);
+  }
+
+  updatePlayerEffect(playerIndex, effectIndex, effect) {
+    this.players[playerIndex].effects[effectIndex] = effect;
+    this._updatePlayerAtIndex(playerIndex);
+  }
+
   updatePlayer(playerIndex, attr, val) {
     this.players[playerIndex][attr] = val;
-    this.updatePlayer$.next(this.players[playerIndex]);
+    this._updatePlayerAtIndex(playerIndex);
   }
 
   removePlayer(playerIndex) {
