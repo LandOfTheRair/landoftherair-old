@@ -10,6 +10,7 @@ import { Player } from '../../../models/player';
 import { Sex, Direction, Allegiance } from '../../../models/character';
 import { Item } from '../../../models/item';
 import { TrueSightMap, TrueSightMapReversed } from './phaserconversionmaps';
+import { MapLayer } from '../../../models/gamestate';
 
 const cacheKey = TiledPlugin.utils.cacheKey;
 
@@ -257,6 +258,13 @@ export class Game {
     });
   }
 
+  private canCreateItemSpriteAt(x, y) {
+    const tileCheck = (y * this.clientGameState.map.width) + x;
+    const fluid = this.clientGameState.map.layers[MapLayer.Fluids].data;
+    const foliage = this.clientGameState.map.layers[MapLayer.Foliage].data;
+    return !fluid[tileCheck] && !foliage[tileCheck];
+  }
+
   private showItemSprites(centerX, centerY) {
     for(let x = centerX - 4; x <= centerX + 4; x++) {
 
@@ -270,6 +278,8 @@ export class Game {
         Object.keys(itemPatchY).forEach(itemType => {
           if(itemPatchY[itemType].length === 0) return;
           const item = itemPatchY[itemType][0];
+
+          if(!this.canCreateItemSpriteAt(x, y)) return;
           this.createItemSprite(item, x, y);
         });
       }
