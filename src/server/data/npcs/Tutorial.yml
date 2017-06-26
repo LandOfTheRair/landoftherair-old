@@ -45,6 +45,16 @@
       - null
       - Antanian Cloak
 
+  copyDrops:
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+
 - npcId: Tutorial Deer
   name: deer
   sprite: 205
