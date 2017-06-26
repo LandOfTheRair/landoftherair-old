@@ -84,10 +84,24 @@ export class GameState {
     });
   }
 
-  getPossibleTargetsFor(me: Character, radius) {
-    return filter((<any>this.players).concat(this.mapNPCs), char => {
+  private checkTargetForHostility(me: NPC, target: Character): boolean {
+    if(me.hostility === 'Always') return true;
+    if(me.alignment === 'Evil' && (target.alignment === 'Neutral' || target.alignment === 'Good')) return true;
+    return false;
+  }
 
+  getPossibleTargetsFor(me: NPC, radius) {
+    return filter((<any>this.players).concat(this.mapNPCs), char => {
+      // no hitting dead people
       if(char.isDead()) return false;
+
+      // they have to be visible
+      const inRadius = char.x > me.x - radius
+        && char.x < me.x + radius
+        && char.y > me.y - radius
+        && char.y < me.y + radius;
+
+      if(!inRadius) return false;
 
       // no reason to attack my own people
       if(me.allegiance === char.allegiance) return false;
@@ -95,10 +109,9 @@ export class GameState {
       // if they can't attack, they're not worth fighting
       if(char.hostility === 'Never') return false;
 
-      return char.x > me.x - radius
-          && char.x < me.x + radius
-          && char.y > me.y - radius
-          && char.y < me.y + radius;
+      if(this.checkTargetForHostility(me, char)) return true;
+
+      return false;
     });
   }
 

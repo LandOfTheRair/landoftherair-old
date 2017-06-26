@@ -26,6 +26,8 @@ export type Sex = 'Male' | 'Female';
 
 export type Direction = 'N' | 'S' | 'E' | 'W' | 'C';
 
+export type Alignment = 'Good' | 'Neutral' | 'Evil';
+
 export type CharacterClass =
   'Undecided'
 | 'Mage'
@@ -157,12 +159,10 @@ export class Character {
 
   sprite: number;
 
+  alignment: Alignment = 'Neutral';
+
   getSprite() {
     return 0;
-  }
-
-  get ageString() {
-    return 'extremely young';
   }
 
   getTotalStat(stat) {
