@@ -160,6 +160,7 @@ export class Character {
   sprite: number;
 
   alignment: Alignment = 'Neutral';
+  allegianceReputation: any = {};
 
   getSprite() {
     return 0;
@@ -712,5 +713,10 @@ export class Character {
     this.agro[char.uuid] += value;
 
     if(this.agro[char.uuid] <= 0) delete this.agro[char.uuid];
+  }
+
+  changeRep(allegiance: Allegiance, modifier) {
+    this.allegianceReputation[allegiance] = this.allegianceReputation[allegiance] || 0;
+    this.allegianceReputation[allegiance] += modifier;
   }
 }

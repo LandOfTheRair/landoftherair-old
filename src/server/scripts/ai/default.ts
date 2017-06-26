@@ -11,7 +11,7 @@ export const tick = (npc: NPC) => {
   let diffX = 0;
   let diffY = 0;
 
-  const ALWAYS_ATTACK = npc.allegiance === 'Enemy' && npc.hostility === 'Always';
+  const ALWAYS_ATTACK = npc.allegiance === 'Enemy' || npc.hostility === 'Always';
   const IS_EVIL = npc.alignment === 'Evil';
 
   // TODO calculate fov so you dont target things behind walls
