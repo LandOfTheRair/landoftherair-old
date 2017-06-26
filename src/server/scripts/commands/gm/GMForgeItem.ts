@@ -19,13 +19,13 @@ export class GMForgeItem extends Command {
     if(!mergeObj.desc)    return player.sendClientMessage('You need to specify a desc.');
     if(!mergeObj.sprite)  return player.sendClientMessage('You need to specify a sprite.');
     if(!mergeObj.itemClass)  return player.sendClientMessage('You need to specify an itemClass.');
-    
+
     if(!includes(EquippableItemClassesWithWeapons, mergeObj.itemClass)) {
       player.sendClientMessage('WARN: This item is not a valid equippable item or a weapon.');
     }
 
     if(!includes(ValidItemTypes, mergeObj.type)) {
-      player.sendClientMessage(`WARN: ${mergeObj.type || '(none)'} is not a valid skill. Setting to Martial.`);
+      player.sendClientMessage(`WARN: ${mergeObj.type || '(none)'} is not a valid type (for skills). Setting to Martial.`);
       mergeObj.type = 'Martial';
     }
 
