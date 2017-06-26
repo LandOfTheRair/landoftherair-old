@@ -35,6 +35,7 @@ export class NPC extends Character {
   copyDrops: any[];
   drops: Item[];
   giveXp: any;
+  repMod: number;
 
   usableSkills: string[];
 
@@ -103,6 +104,7 @@ export class NPC extends Character {
     const giveXp = this.giveXp || { min: 1, max: 10 };
 
     if(killer) {
+      killer.changeRep(this.allegiance, -this.repMod);
       killer.gainExp(random(giveXp.min, giveXp.max));
 
       this.$$room.calculateLootDrops(this, killer);
