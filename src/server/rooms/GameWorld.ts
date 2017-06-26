@@ -181,12 +181,13 @@ export class GameWorld extends Room<GameState> {
     );
   }
 
-  async openLocker(client, player: Player, lockerName, lockerId) {
+  async openLocker(player: Player, lockerName, lockerId) {
     const regionId = this.mapRegion;
 
     await this.createLockerIfNotExist(player, regionId, lockerName, lockerId);
     const lockers = await DB.$characterLockers.find({ username: player.username, charSlot: player.charSlot, regionId }).toArray();
 
+    const client = this.findClient(player);
     this.send(client, { action: 'show_lockers', lockers, lockerId });
   }
 

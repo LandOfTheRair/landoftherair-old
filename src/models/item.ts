@@ -157,7 +157,7 @@ export class Item {
     this.uuid = uuid();
   }
 
-  get conditionString() {
+  conditionString(): string {
     if(this.condition <= 0)     return 'broken';
     if(this.condition <= 5000)  return 'tattered';
     if(this.condition <= 10000) return 'below average';
@@ -181,7 +181,7 @@ export class Item {
 
     const fluidText = this.ounces > 0 ? `It is filled with ${this.ounces}oz of fluid. ` : '';
 
-    return `You are looking at ${this.desc}. ${fluidText}The item is in ${this.conditionString} condition. ${ownedText}`;
+    return `You are looking at ${this.desc}. ${fluidText}The item is in ${this.conditionString()} condition. ${ownedText}`;
   }
 
   isRobe() {
