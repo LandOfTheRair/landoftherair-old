@@ -1,5 +1,5 @@
 
-import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact } from 'lodash';
+import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get } from 'lodash';
 
 import * as scheduler from 'node-schedule';
 
@@ -419,6 +419,8 @@ export class GameWorld extends Room<GameState> {
   getPossibleMessageTargets(player: Player, findStr: string) {
     const allTargets = this.state.mapNPCs;
     const possTargets = allTargets.filter(target => {
+      if(target.isDead()) return;
+
       const diffX = target.x - player.x;
       const diffY = target.y - player.y;
 
@@ -480,6 +482,22 @@ export class GameWorld extends Room<GameState> {
         func: LootFunctions.EachItem,
         args: 0
       });
+    }
+
+    if(npc.copyDrops && npc.copyDrops.length > 0) {
+      const drops = compact(npc.copyDrops.map(({ drop, chance }) => {
+        const item = get(npc, drop);
+        if(!item) return null;
+        return { result: item.name, chance };
+      }));
+
+      if(drops.length > 0) {
+        tables.push({
+          table: new LootTable(drops, bonus),
+          func: LootFunctions.EachItem,
+          args: 0
+        });
+      }
     }
 
     const items = LootRoller.rollTables(tables);
