@@ -30,7 +30,7 @@ export class GMForgeItem extends Command {
     }
 
     const item = new Item(mergeObj);
-    player.rightHand = item;
+    player.setRightHand(item);
 
   }
 }
