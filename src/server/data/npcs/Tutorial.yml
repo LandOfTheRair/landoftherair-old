@@ -57,7 +57,9 @@
 
 - npcId: Tutorial Deer
   name: deer
+  allegiance: Wilderness
   sprite: 205
+  alignment: Good
   stats: 1
   level: 1
 
@@ -79,6 +81,7 @@
   name: wolf
   hostility: Always
   sprite: 215
+  alignment: Evil
   stats: 5
   level: 2
 

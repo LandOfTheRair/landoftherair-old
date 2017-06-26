@@ -6,7 +6,7 @@ import { Item } from './item';
 import * as uuid from 'uuid/v4';
 import { Logger } from '../server/logger';
 
-export type Hostility = 'Never' | 'OnHit' | 'OppositeAlignment' | 'Faction' | 'Always';
+export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 
 export class NPC extends Character {
   uuid: string;

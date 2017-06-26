@@ -133,6 +133,8 @@ export class Spawner {
 
     const npc = new NPC(npcData);
 
+    npc.allegiance = npcData.allegiance;
+    npc.alignment = npcData.alignment;
     npc.hostility = npcData.hostility;
     npc.spawner = this;
     npc.$$room = this.room;

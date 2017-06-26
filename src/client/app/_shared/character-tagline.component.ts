@@ -3,7 +3,7 @@ import { Player } from '../../../models/player';
 
 @Component({
   selector: 'app-character-tagline',
-  template: `{{ player.name }} the {{ player.ageString }} level {{ player.level }} {{ player.baseClass }}`
+  template: `{{ player.name }} the {{ player.alignment }} level {{ player.level }} {{ player.baseClass }}`
 })
 export class PlayerTaglineComponent {
 

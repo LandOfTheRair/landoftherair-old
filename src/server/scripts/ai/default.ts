@@ -12,12 +12,13 @@ export const tick = (npc: NPC) => {
   let diffY = 0;
 
   const ALWAYS_ATTACK = npc.allegiance === 'Enemy' && npc.hostility === 'Always';
+  const IS_EVIL = npc.alignment === 'Evil';
 
   // TODO calculate fov so you dont target things behind walls
-  const playersInRange = npc.$$room.state.getPossibleTargetsFor(npc, 4);
+  const targetsInRange = npc.$$room.state.getPossibleTargetsFor(npc, 4);
 
-  let highestAgro = maxBy(playersInRange, char => npc.agro[char.uuid]);
-  if(!highestAgro && ALWAYS_ATTACK) highestAgro = sample(playersInRange);
+  let highestAgro = maxBy(targetsInRange, char => npc.agro[char.uuid]);
+  if(!highestAgro && (IS_EVIL || ALWAYS_ATTACK)) highestAgro = sample(targetsInRange);
 
   // do movement
   const numSteps = random(0, Math.min(npc.stats.move, npc.path ? npc.path.length : npc.stats.move));
