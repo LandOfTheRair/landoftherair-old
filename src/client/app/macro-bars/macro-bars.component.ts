@@ -13,7 +13,6 @@ import { MacroService, Macro } from '../macros.service';
 })
 export class MacroBarsComponent implements OnInit {
 
-  @LocalStorage()
   public selectedMacro;
 
   public macroArray = Array(10).fill(null).map((x, i) => i);
@@ -21,12 +20,13 @@ export class MacroBarsComponent implements OnInit {
   constructor(private colyseusGame: ColyseusGameService, public macroService: MacroService) { }
 
   ngOnInit() {
+    this.selectedMacro = this.macroService.retrieveForCharacter('selectedMacro');
     this.createDefaultMacros();
   }
 
   createDefaultMacros() {
 
-    (<any>macros).allMeta.forEach(({ name, macro, icon, mode, color, key, isSystem }) => {
+    (<any>macros).allMeta.forEach(({ name, macro, icon, mode, color, key, isSystem, requiresLearn }) => {
       const macroObject = new Macro();
       macroObject.name = name;
       macroObject.macro = macro;
@@ -35,6 +35,7 @@ export class MacroBarsComponent implements OnInit {
       macroObject[mode] = true;
       macroObject.key = key;
       macroObject.isSystem = isSystem;
+      macroObject.requiresLearn = requiresLearn;
 
       this.macroService.allMacros[name] = macroObject;
     });
@@ -46,6 +47,7 @@ export class MacroBarsComponent implements OnInit {
 
     if(!this.selectedMacro) {
       this.selectedMacro = 'Attack';
+      this.macroService.storeForCharacter('selectedMacro', this.selectedMacro);
     }
 
     this.macroService.saveMacros();

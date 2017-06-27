@@ -27,6 +27,8 @@ export class ClientGameState {
   removePlayer$ = new Subject<Player>();
   playerBoxes$  = new Subject<Player>();
 
+  loadPlayer$   = new Subject<any>();
+
   setMap$ = new BehaviorSubject({});
 
   updates = {

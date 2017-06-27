@@ -40,6 +40,8 @@ export class ColyseusGameService {
     this.client = client;
     this.setCharacter(character);
 
+    this.clientGameState.loadPlayer$.next();
+
     this.initGame();
   }
 
