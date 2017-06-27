@@ -37,7 +37,10 @@ export class CombatHelper {
       attackerWeapon = attacker[`${throwHand}Hand`];
 
     } else {
-      attackerWeapon = attacker.rightHand || attacker.gear.Hands || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands', isOwnedBy: () => true };
+      attackerWeapon = attacker.rightHand
+                    || attacker.gear.Hands
+                    || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands',
+                         isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
     }
 
     const flagSkills = [];
@@ -48,7 +51,7 @@ export class CombatHelper {
 
     if(isThrow) flagSkills[1] = SkillClassNames.Throwing;
 
-    if(!attackerWeapon.isOwnedBy(attacker)) {
+    if(!attackerWeapon.isOwnedBy(attacker) || !attackerWeapon.hasCondition()) {
       if(!isThrow || (isThrow && attackerWeapon.returnsOnThrow)) {
         attacker.$$room.addItemToGround(attacker, attacker.rightHand);
         attacker.setRightHand(null);
@@ -58,8 +61,21 @@ export class CombatHelper {
       return;
     }
 
-    const defenderBlocker = defender.rightHand || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands' };
-    const defenderShield = defender.leftHand && this.isShield(defender.leftHand) ? defender.leftHand : null;
+    let defenderArmor = null;
+
+    if(!defenderArmor && defender.gear.Robe2 && defender.gear.Robe2.hasCondition()) defenderArmor = defender.gear.Robe2;
+    if(!defenderArmor && defender.gear.Robe1 && defender.gear.Robe1.hasCondition()) defenderArmor = defender.gear.Robe1;
+    if(!defenderArmor && defender.gear.Armor && defender.gear.Armor.hasCondition()) defenderArmor = defender.gear.Armor;
+
+    if(!defenderArmor) defenderArmor = { hasCondition: () => true, isOwnedBy: (x) => true, loseCondition: (x, y) => {} };
+
+    const defenderBlocker = defender.rightHand
+                        || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands',
+                             hasCondition: () => true, isOwnedBy: (x) => true, loseCondition: (x, y) => {} };
+
+    const defenderShield = defender.leftHand && this.isShield(defender.leftHand)
+                         ? defender.leftHand
+                         : null;
 
     const attackerScope = {
       skill: attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type),
@@ -85,6 +101,7 @@ export class CombatHelper {
       level: Math.max(1, defender.level / Classes[defender.baseClass || 'Undecided'].combatDivisor)
     };
 
+    attackerWeapon.loseCondition(1, () => attacker.recalculateStats());
     defender.addAgro(attacker, 1);
 
     // try to dodge
@@ -115,6 +132,7 @@ export class CombatHelper {
     if(acRoll < 0) {
       attacker.sendClientMessage({ message: `You were blocked by armor!`, subClass: 'combat self block armor', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} was blocked by your armor!`, subClass: 'combat other block armor' });
+      defenderArmor.loseCondition(1, () => defender.recalculateStats());
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { block: true, blockedBy: 'armor' };
     }
@@ -128,16 +146,17 @@ export class CombatHelper {
     const defenderWeaponBlockRoll = -+dice.roll(`${defenderWeaponBlockLeftSide}d${defenderWeaponBlockRightSide}`);
 
     const weaponBlockRoll = random(attackerWeaponBlockRoll, defenderWeaponBlockRoll);
-    if(weaponBlockRoll < 0) {
+    if(weaponBlockRoll < 0 && defenderBlocker.isOwnedBy(defender) && defenderBlocker.hasCondition()) {
       const itemTypeToLower = defenderBlocker.itemClass.toLowerCase();
       attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block weapon', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block weapon' });
+      defenderBlocker.loseCondition(1, () => defender.recalculateStats());
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { block: true, blockedBy: `a ${itemTypeToLower}` };
     }
 
     // try to block with shield
-    if(defenderShield) {
+    if(defenderShield && defender.leftHand.isOwnedBy(defender) && defenderShield.hasCondition()) {
       const defenderShieldBlockLeftSide = Math.floor(1 + defenderScope.shieldDefense);
       const defenderShieldBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.skill);
 
@@ -149,6 +168,7 @@ export class CombatHelper {
         const itemTypeToLower = defenderShield.itemClass.toLowerCase();
         attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block shield', target: defender.uuid });
         defender.sendClientMessage({ message: `${attacker.name} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block shield' });
+        defenderShield.loseCondition(1, () => defender.recalculateStats());
         if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
         return { block: true, blockedBy: `a ${itemTypeToLower}` };
       }
@@ -210,6 +230,8 @@ export class CombatHelper {
   }
 
   static dealOnesidedDamage(defender, { damage, damageClass, damageMessage }) {
+    if(defender.isDead()) return;
+
     const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
     damage -= damageReduced;
 
@@ -230,6 +252,8 @@ export class CombatHelper {
     defender: Character,
     { damage, damageClass, attackerDamageMessage, defenderDamageMessage }
   ) {
+
+    if(defender.isDead()) return;
 
     const isHeal = damage < 0;
 

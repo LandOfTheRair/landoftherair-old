@@ -21,7 +21,7 @@ export class Throw extends Skill {
   };
 
   range = (attacker: Character) => {
-    return 4;
+    return 5;
   };
 
   execute(user: Character, { gameState, args }) {
@@ -33,6 +33,8 @@ export class Throw extends Skill {
     const possTargets = user.$$room.getPossibleMessageTargets(user, targetId);
     const target = possTargets[0];
     if(!target) return user.sendClientMessage('You do not see that person.');
+
+    if(target.distFrom(user) > this.range(user)) return user.sendClientMessage('That target is too far away!');
 
     hand = hand.toLowerCase();
     if(hand !== 'left' && hand !== 'right') return false;

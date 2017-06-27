@@ -37,7 +37,8 @@ export class CommandExecutor {
 
     const wasSuccess = this._queueCommand(player, command, args);
 
-    if(!wasSuccess) {
+    // explicit check
+    if(wasSuccess === false) {
       player.sendClientMessage(`Command "${command}" is invalid. Try again.`);
     }
   }
