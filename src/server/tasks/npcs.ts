@@ -1,5 +1,5 @@
 
-import { Stats } from '../../models/character';
+import { Stats, Skills } from '../../models/character';
 require('dotenv').config({ silent: true });
 
 import { DB } from '../database';
@@ -59,6 +59,10 @@ class NPCLoader {
     antiReps[npc.allegiance].forEach(antiRep => npc.allegianceReputation[antiRep] = -1);
   }
 
+  static skillXPFromLevel(level: number) {
+    return Math.pow(2, level) * 100;
+  }
+
   static conditionallyAddInformation(npc: NPC) {
     if(!npc.allegiance) npc.allegiance = 'Enemy';
 
@@ -70,9 +74,23 @@ class NPCLoader {
 
     npc.usableSkills.push('Attack');
 
-    // TODO skill levels shortcut to set skill levels
-
     if(!npc.level) npc.level = 1;
+
+    const skillLevels = (<any>npc).skillLevels || {};
+    const skillSet = new Skills();
+
+    if(isNumber(skillLevels)) {
+      Object.keys(skillSet).forEach(skill => {
+        skillSet[skill] = this.skillXPFromLevel(skillLevels);
+      });
+    } else {
+      Object.keys(skillLevels).forEach(skill => {
+        skillSet[skill] = this.skillXPFromLevel(skillLevels[skill]);
+      });
+    }
+
+    (<any>npc).skills = skillSet;
+    delete (<any>npc).skillLevels;
 
     if(isNumber(npc.stats)) {
       const statValue: number = <any>npc.stats;

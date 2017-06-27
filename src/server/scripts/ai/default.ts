@@ -15,7 +15,7 @@ export const tick = (npc: NPC) => {
   const IS_EVIL = npc.alignment === 'Evil';
 
   // TODO calculate fov so you dont target things behind walls
-  const targetsInRange = npc.$$room.state.getPossibleTargetsFor(npc, 4);
+  const targetsInRange = npc.$$room.state.getPossibleTargetsFor(npc, 5);
 
   let highestAgro = maxBy(targetsInRange, char => npc.agro[char.uuid]);
   if(!highestAgro && (IS_EVIL || ALWAYS_ATTACK)) highestAgro = sample(targetsInRange);

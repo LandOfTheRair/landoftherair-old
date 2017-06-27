@@ -257,7 +257,7 @@ export class GameWorld extends Room<GameState> {
     this.doorCheck(player);
 
     if(this.state.mapName === 'Tutorial' && !player.respawnPoint) {
-      player.respawnPoint = { x: 68, y: 13, map: 'Antania' };
+      player.respawnPoint = { x: 68, y: 13, map: 'Rylt' };
     }
 
     this.savePlayer(player);
@@ -366,7 +366,7 @@ export class GameWorld extends Room<GameState> {
     this.spawners.push(normalNPCSpawner);
 
     npcs.forEach(npcData => {
-      const data = npcData.properties;
+      const data = npcData.properties || {};
       data.name = npcData.name || this.determineNPCName(npcData);
       data.sprite = npcData.gid - this.state.map.tilesets[3].firstgid;
       data.x = npcData.x / 64;
