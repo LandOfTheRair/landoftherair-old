@@ -163,7 +163,7 @@ export class Spawner {
   }
 
   shouldSlowDown(dists) {
-    return dists.length > 0 && min(dists) > 30;
+    return dists.length > 0 && min(dists) > Math.max(this.leashRadius, 30);
   }
 
   tick() {

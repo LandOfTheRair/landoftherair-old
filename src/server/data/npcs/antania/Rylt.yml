@@ -1,0 +1,180 @@
+
+- npcId: Rylt Townee
+  allegiance: 'None'
+  stats: 15
+  skillLevels: 5
+  level: 10
+
+  skillOnKill: 15
+
+  sprite: [580, 595, 610, 615]
+
+  hp:
+    min: 5000
+    max: 7000
+
+  gold:
+    min: 0
+    max: 100
+
+  giveXp:
+    min: 300
+    max: 500
+
+  leftHand:
+    - null
+    - Antanian Wooden Shield
+
+  rightHand:
+    - null
+    - Antanian Shortsword
+    - Antanian Longsword
+    - Antanian Staff
+    - Antanian Dagger
+    - Antanian Crossbow
+
+  gear:
+    Armor:
+      - Antanian Tunic
+      - Antanian Studded Tunic
+      - Antanian Scalemail Tunic
+      - Antanian Ringmail Tunic
+      - Antanian Breastplate
+
+    Robe1:
+      - null
+      - Antanian Cloak
+
+  copyDrops:
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+
+
+- npcId: Rylt Guard
+  name: guard
+  allegiance: 'None'
+  stats: 30
+  level: 20
+
+  skillLevels:
+    twohanded: 20
+    polearm: 20
+    mace: 20
+
+  allegianceReputation:
+    Enemy: -1
+
+  skillOnKill: 50
+
+  sprite: 625
+
+  hp:
+    min: 15000
+    max: 17000
+
+  gold:
+    min: 0
+    max: 100
+
+  giveXp:
+    min: 3000
+    max: 5000
+
+  rightHand:
+    - Antanian Halberd
+    - Antanian Greatsword
+    - Antanian Greatmace
+
+  gear:
+    Armor:
+      - Antanian Breastplate
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+
+- npcId: Rylt Deer
+  name: deer
+  allegiance: Wilderness
+  sprite: 205
+  alignment: Good
+  stats: 4
+  level: 1
+
+  gear:
+    Armor: Rylt Fur
+    Hands: Basic Claws
+
+  hp:
+    min: 50
+    max: 100
+
+  giveXp:
+    min: 10
+    max: 50
+
+  tansFor: Rylt Fur
+
+- npcId: Rylt Wolf
+  name: wolf
+  hostility: Always
+  sprite: 215
+  alignment: Evil
+  stats: 7
+  skillLevels:
+    Martial: 3
+  level: 3
+
+  gold:
+    min: 10
+    max: 20
+
+  hp:
+    min: 250
+    max: 400
+
+  giveXp:
+    min: 100
+    max: 125
+
+  gear:
+    Armor: Rylt Fur
+    Hands: Basic Claws
+
+  tansFor: Rylt Fur
+
+- npcId: Rylt Bear
+  name: bear
+  hostility: Always
+  sprite: 210
+  alignment: Evil
+  stats: 10
+  skillLevels:
+    Martial: 5
+  level: 5
+
+  gold:
+    min: 40
+    max: 90
+
+  hp:
+    min: 550
+    max: 700
+
+  giveXp:
+    min: 200
+    max: 325
+
+  gear:
+    Armor: Rylt Bear Fur
+    Hands: Basic Claws
+
+  tansFor: Rylt Bear Fur
