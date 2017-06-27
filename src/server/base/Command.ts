@@ -4,9 +4,9 @@ import { set, startsWith } from 'lodash';
 
 export abstract class Command {
 
-  abstract name: string|string[];
-  format: string = '';
   static macroMetadata: any = {};
+  abstract name: string|string[];
+  format = '';
 
   abstract execute(player: Player, args);
 
@@ -14,7 +14,10 @@ export abstract class Command {
     const matches = args.match(/(?:[^\s"']+|['"][^'"]*["'])+/g);
 
     const mergeObj = matches.reduce((obj, prop) => {
-      let [key, val] = prop.split('=');
+      let propData = prop.split('=');
+      const key = propData[0];
+      let val = propData[1];
+
       val = val.trim();
 
       if(!isNaN(+val)) {
