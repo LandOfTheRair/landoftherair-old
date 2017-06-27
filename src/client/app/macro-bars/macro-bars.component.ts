@@ -46,16 +46,20 @@ export class MacroBarsComponent implements OnInit {
     this.macroService.allMacroGroups.default = ['Attack', 'Search', 'Drink', 'Stairs', 'Climb', 'Restore'];
 
     if(!this.selectedMacro) {
-      this.selectedMacro = 'Attack';
-      this.macroService.storeForCharacter('selectedMacro', this.selectedMacro);
+      this.setSelectedMacro('Attack');
     }
 
     this.macroService.saveMacros();
   }
 
+  public setSelectedMacro(macro) {
+    this.selectedMacro = macro;
+    this.macroService.storeForCharacter('selectedMacro', this.selectedMacro);
+  }
+
   public operateOnMacro(macro: Macro) {
     if(macro.lockActivation) {
-      this.selectedMacro = macro.name;
+      this.setSelectedMacro(macro.name);
       return;
     }
 
