@@ -367,7 +367,7 @@ export class GameWorld extends Room<GameState> {
 
     npcs.forEach(npcData => {
       const data = npcData.properties;
-      data.name = npcData.name;
+      data.name = npcData.name || this.determineNPCName(npcData);
       data.sprite = npcData.gid - this.state.map.tilesets[3].firstgid;
       data.x = npcData.x / 64;
       data.y = (npcData.y / 64) - 1;

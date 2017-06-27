@@ -35,6 +35,9 @@ export class NPC extends Character {
   costPerThousand: number;
   repairsUpToCondition: number;
 
+  peddleItem: string;
+  peddleCost: number;
+
   copyDrops: any[];
   drops: Item[];
   giveXp: any;

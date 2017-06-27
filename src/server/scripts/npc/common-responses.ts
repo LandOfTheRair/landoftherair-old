@@ -3,11 +3,34 @@ import { NPC } from '../../../models/npc';
 import { includes, capitalize, sample, get } from 'lodash';
 import { Logger } from '../../logger';
 import { AllNormalGearSlots } from '../../../models/character';
+import { Item } from '../../../models/item';
+
+export const PeddlerResponses = (npc: NPC) => {
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+
+      if(player.rightHand) return 'Please empty your right hand!';
+
+      if(player.gold < npc.peddleCost) return `I can't offer this for free. You need ${npc.peddleCost.toLocaleString()} gold for a ${npc.peddleItem}.`;
+
+      player.loseGold(npc.peddleCost);
+
+      const item = new Item(npc.rightHand);
+      item.regenerateUUID();
+
+      player.setRightHand(item);
+
+      return `Thank you, ${player.name}!`;
+    });
+};
 
 export const SmithResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
 
       if(player.rightHand) {
         const myCondition = npc.repairsUpToCondition || 20000;
@@ -32,6 +55,8 @@ export const SmithResponses = (npc: NPC) => {
   npc.parser.addCommand('repairall')
     .set('syntax', ['repairall'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+
       const myCondition = npc.repairsUpToCondition || 20000;
       const cpt = npc.costPerThousand || 1;
 
