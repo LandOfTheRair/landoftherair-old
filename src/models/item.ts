@@ -22,7 +22,7 @@ export const ShieldClasses = [
 ];
 
 export const ArmorClasses = [
-  'Tunic', 'Breastplate'
+  'Tunic', 'Breastplate', 'Fur'
 ];
 
 export const RobeClasses = [

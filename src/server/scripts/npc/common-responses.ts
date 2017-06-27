@@ -4,6 +4,37 @@ import { includes, capitalize, sample, get } from 'lodash';
 import { Logger } from '../../logger';
 import { AllNormalGearSlots } from '../../../models/character';
 import { Item } from '../../../models/item';
+import { NPCLoader } from '../../helpers/npc-loader';
+
+export const TannerResponses = (npc: NPC) => {
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+      return `Greetings, ${player.name}, and welcome to my Tannery. Bring me your kills, and I will TAN them for you!`;
+    });
+
+  npc.parser.addCommand('tan')
+    .set('syntax', ['tan'])
+    .set('logic', (args, { player }) => {
+
+      const ground = npc.$$room.state.getGroundItems(npc.x, npc.y);
+      if(!ground.Corpse || !ground.Corpse.length) return 'There are no corpses here!';
+
+      ground.Corpse.forEach(corpse => {
+        const corpseNPC = npc.$$room.state.findNPC(corpse.npcUUID);
+        corpseNPC.restore();
+        if(!corpseNPC.tansFor) return;
+
+        NPCLoader.loadItem(corpseNPC.tansFor)
+          .then(item => {
+            item.setOwner(player);
+            npc.$$room.addItemToGround(npc, item);
+          });
+      });
+
+      return `Here you go, ${player.name}!`;
+    });
+};
 
 export const PeddlerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')

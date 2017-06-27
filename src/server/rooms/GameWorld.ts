@@ -27,7 +27,7 @@ import { Locker } from '../../models/locker';
 
 const TickRates = {
   PlayerAction: 30,
-  NPCAction: 60,
+  NPCAction: 45,
   PlayerSave: 360
 };
 
@@ -530,6 +530,7 @@ export class GameWorld extends Room<GameState> {
     this.addItemToGround(target, corpse);
 
     target.$$corpseRef = corpse;
+    (<any>corpse).npcUUID = target.uuid;
   }
 
   dropCorpseItems(corpse: Item, searcher?: Player) {
