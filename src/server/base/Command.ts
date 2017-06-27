@@ -14,7 +14,7 @@ export abstract class Command {
     const matches = args.match(/(?:[^\s"']+|['"][^'"]*["'])+/g);
 
     const mergeObj = matches.reduce((obj, prop) => {
-      let propData = prop.split('=');
+      const propData = prop.split('=');
       const key = propData[0];
       let val = propData[1];
 
