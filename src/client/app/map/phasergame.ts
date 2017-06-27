@@ -78,6 +78,7 @@ export class Game {
 
   async updatePlayer(player: Player) {
     await this.canCreate;
+    await this.canUpdate;
 
     if(this.player.username === player.username) {
       this.player = player;
@@ -123,21 +124,32 @@ export class Game {
       case 'None':          { choices = { Male: 725, Female: 675 }; break; }
       case 'Townsfolk':     { choices = { Male: 725, Female: 675 }; break; }
 
-      case 'Pirates':       { choices = { Male: 750, Female: 695 }; break; }
       case 'Wilderness':    { choices = { Male: 730, Female: 680 }; break; }
-      case 'Adventurers':   { choices = { Male: 725, Female: 675 }; break; }
       case 'Royalty':       { choices = { Male: 735, Female: 685 }; break; }
-      case 'Underground':   { choices = { Male: 745, Female: 690 }; break; }
+      case 'Adventurers':   { choices = { Male: 740, Female: 690 }; break; }
+      case 'Underground':   { choices = { Male: 745, Female: 695 }; break; }
+      case 'Pirates':       { choices = { Male: 750, Female: 700 }; break; }
     }
 
     return choices[sex];
   }
 
-  getStartingSwimmingSpriteForSex(sex: Sex) {
-    switch(sex) {
-      case 'Male':    return 6;
-      case 'Female':  return 0;
+  getStartingSwimmingSpriteForSex(allegiance: Allegiance, sex: Sex) {
+
+    let choices: any = { Male: 6, Female: 0 };
+
+    switch(allegiance) {
+      case 'None':          { choices = { Male: 6,  Female: 0 }; break; }
+      case 'Townsfolk':     { choices = { Male: 6,  Female: 0 }; break; }
+
+      case 'Wilderness':    { choices = { Male: 7,  Female: 1 }; break; }
+      case 'Royalty':       { choices = { Male: 8,  Female: 2 }; break; }
+      case 'Adventurers':   { choices = { Male: 9,  Female: 3 }; break; }
+      case 'Underground':   { choices = { Male: 10, Female: 4 }; break; }
+      case 'Pirates':       { choices = { Male: 11, Female: 5 }; break; }
     }
+
+    return choices[sex];
   }
 
   getSpriteOffsetForDirection(dir: Direction) {
@@ -185,7 +197,7 @@ export class Game {
       frame = spriteGender + spriteDir;
       key = 'Creatures';
     } else {
-      const spriteGender = this.getStartingSwimmingSpriteForSex(player.sex);
+      const spriteGender = this.getStartingSwimmingSpriteForSex(player.allegiance, player.sex);
       const spriteDir = this.getSwimmingSpriteOffsetForDirection(player.dir);
       frame = spriteGender + spriteDir;
       key = 'Swimming';
