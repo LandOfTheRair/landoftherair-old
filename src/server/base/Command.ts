@@ -18,6 +18,8 @@ export abstract class Command {
       const key = propData[0];
       let val = propData[1];
 
+      if(!val) return obj;
+
       val = val.trim();
 
       if(!isNaN(+val)) {
