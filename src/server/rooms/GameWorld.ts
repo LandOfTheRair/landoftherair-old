@@ -358,6 +358,13 @@ export class GameWorld extends Room<GameState> {
   loadNPCsFromMap() {
     const npcs = this.state.map.layers[MapLayer.NPCs].objects;
 
+    if(npcs.length === 0) return;
+    const normalNPCSpawner = new Spawner(this, { x: 0, y: 0, map: this.state.mapName }, {
+      leashRadius: -1
+    });
+
+    this.spawners.push(normalNPCSpawner);
+
     npcs.forEach(npcData => {
       const data = npcData.properties;
       data.name = npcData.name;
@@ -385,7 +392,7 @@ export class GameWorld extends Room<GameState> {
 
       if(!npc.name) this.determineNPCName(npc);
 
-      this.state.addNPC(npc);
+      normalNPCSpawner.addNPC(npc);
     });
   }
 

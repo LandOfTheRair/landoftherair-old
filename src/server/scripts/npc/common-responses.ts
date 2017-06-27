@@ -1,7 +1,30 @@
 
 import { NPC } from '../../../models/npc';
-import { includes, capitalize } from 'lodash';
+import { includes, capitalize, sample } from 'lodash';
 import { Logger } from '../../logger';
+
+export const RandomlyShouts = (npc: NPC, responses: string[] = []) => {
+  let ticks = 0;
+
+  npc.ai = { tick: () => {
+    ticks++;
+
+    if(ticks >= 5) {
+      ticks = 0;
+
+      const msgObject = { name: npc.name, message: sample(responses) };
+      npc.sendClientMessageToRadius(msgObject, 4);
+    }
+  }};
+};
+
+export const CrierResponses = (npc: NPC) => {
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+      return `Hello, ${player.name}! I am the Crier, and my voice is the voice of the people!`;
+    });
+};
 
 export const RecallerResponses = (npc: NPC) => {
   npc.parser.addCommand('recall')
