@@ -81,7 +81,7 @@
     "npm-run-all": "^4.0.2",
     "ts-node": "^2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "^2.3.3",
+    "typescript": "2.3.3",
     "webfont": "^7.1.4",
     "yamljs": "^0.2.10"
   }
