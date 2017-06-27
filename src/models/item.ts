@@ -183,7 +183,7 @@ export class Item {
 
     const sense1Text = senseLevel > 0 && this.extendedDesc ? `This item is ${this.extendedDesc}. ` : '';
     let sense1AfterText = '';
-    if(this.stats.offense > 0 || this.stats.defense > 0) {
+    if(senseLevel > 0 && this.stats.offense > 0 || this.stats.defense > 0) {
       sense1AfterText = `The combat adds are ${this.stats.offense || 0}/${this.stats.defense || 0}. `;
     }
 
