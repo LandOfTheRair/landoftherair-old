@@ -189,7 +189,7 @@ export class Item {
 
     let sense2Text = '';
     if(senseLevel > 1 && this.effect && this.itemClass !== 'Bottle') {
-      sense2Text = `This item has on-contact ${this.effect.name}`;
+      sense2Text = `This item has ${this.effect.uses ? 'castable' : 'on-contact'} ${this.effect.name}`;
       sense2Text = this.effect.potency ? `${sense2Text} with a potency of ${this.effect.potency}. ` : `${sense2Text}. `;
     }
 
@@ -219,6 +219,13 @@ export class Item {
 
   canUse(char: Character) {
     return this.effect && this.hasCondition() && this.isOwnedBy(char);
+  }
+
+  // < 0 means it lasts forever
+  castAndTryBreak() {
+    if(this.effect.uses < 0) return false;
+    this.effect.uses--;
+    return this.effect.uses === 0;
   }
 
   use(char: Character) {

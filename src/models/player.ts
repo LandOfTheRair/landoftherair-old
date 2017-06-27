@@ -1,8 +1,8 @@
 
-import { Character, MaxSizes } from './character';
+import { Character, MaxSizes, AllNormalGearSlots } from './character';
 import { Item } from './item';
 
-import { compact, pull, random, isArray } from 'lodash';
+import { compact, pull, random, isArray, get, find } from 'lodash';
 import { CombatHelper } from '../server/helpers/combat-helper';
 
 export class Player extends Character {
@@ -49,15 +49,47 @@ export class Player extends Character {
     this.$$actionQueue = [];
   }
 
-  learnSpell(skillName): boolean {
+  learnSpell(skillName, conditional = false): boolean {
     this.learnedSpells = this.learnedSpells || {};
-    if(this.learnedSpells[skillName.toLowerCase()]) return false;
-    this.learnedSpells[skillName.toLowerCase()] = 1;
+    const storeName = skillName.toLowerCase();
+    if(this.learnedSpells[storeName] > 0) return false;
+    if(conditional && !this.learnedSpells[storeName]) {
+      this.sendClientMessage(`Your item has bestowed the ability to cast ${skillName}!`);
+    }
+    this.learnedSpells[storeName] = conditional ? -1 : 1;
     return true;
   }
 
-  hasLearned(skillName): boolean {
-    if(this.learnedSpells) return this.learnedSpells[skillName.toLowerCase()];
+  hasLearned(skillName) {
+    if(this.learnedSpells) {
+      const isLearned = this.learnedSpells[skillName.toLowerCase()];
+      if(isLearned > 0) return true;
+
+      if(isLearned < 0) {
+        const slot = find(AllNormalGearSlots, slot => {
+          const checkItem = get(this, slot);
+          if(!checkItem || !checkItem.effect) return false;
+          return checkItem.effect.name.toLowerCase() === skillName.toLowerCase();
+        });
+
+        if(!slot) return false;
+
+        const item = get(this, slot);
+
+        if(!item) return false;
+
+        if(item.castAndTryBreak()) {
+          this.sendClientMessage('Your item has fizzled and turned to dust.');
+
+          if(slot === 'leftHand') this.setLeftHand(null);
+          else if(slot === 'rightHand') this.setRightHand(null);
+          else this.unequip(slot.split('.')[1]);
+
+        }
+
+        return item;
+      }
+    }
     return false;
   }
 
@@ -158,7 +190,10 @@ export class Player extends Character {
     if(item.itemClass === 'Corpse') {
       item.$heldBy = this.username;
     }
-    // TODO tie items (like the yeti club)
+
+    if(item.effect && item.effect.uses) {
+      this.learnSpell(item.effect.name, true);
+    }
   }
 
   sellValue(item) {

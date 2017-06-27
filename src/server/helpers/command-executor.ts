@@ -67,7 +67,10 @@ export class CommandExecutor {
     const cmd = commandHash[command];
     if(!cmd) return false;
 
-    if(cmd.requiresLearn && !player.hasLearned(command)) return player.sendClientMessage('You do not know that spell!');
+    const hasLearned = player.hasLearned(command);
+    if(cmd.requiresLearn && !hasLearned) return player.sendClientMessage('You do not know that spell!');
+
+    if(hasLearned.effect) args.effect = hasLearned.effect;
 
     const wasSuccess = cmd.execute(player, args);
     if(wasSuccess === false) {
