@@ -1,34 +1,34 @@
 <table class="table table-bordered m-0">
   <tr>
     <th><app-icon name="biceps" tooltip="STR"></app-icon></th>
-    <td>{{ currentPlayer.totalStats.str }} ({{ currentPlayer.stats.str }})</td>
+    <td>{{ currentPlayer.getTotalStat('str') }} ({{ currentPlayer.stats.str }})</td>
 
     <th><app-icon name="bowman" tooltip="DEX"></app-icon></th>
-    <td>{{ currentPlayer.totalStats.dex }} ({{ currentPlayer.stats.dex }})</td>
+    <td>{{ currentPlayer.getTotalStat('dex') }} ({{ currentPlayer.stats.dex }})</td>
 
     <th><app-icon name="sprint" tooltip="AGI"></app-icon></th>
-    <td>{{ currentPlayer.totalStats.agi }} ({{ currentPlayer.stats.agi }})</td>
+    <td>{{ currentPlayer.getTotalStat('agi') }} ({{ currentPlayer.stats.agi }})</td>
   </tr>
 
   <tr>
     <th><app-icon name="bookmarklet" tooltip="INT"></app-icon></th>
-    <td>{{ currentPlayer.totalStats.int }} ({{ currentPlayer.stats.int }})</td>
+    <td>{{ currentPlayer.getTotalStat('int') }} ({{ currentPlayer.stats.int }})</td>
 
     <th><app-icon name="embrassed-energy" tooltip="WIS"></app-icon></th>
-    <td>{{ currentPlayer.totalStats.wis }} ({{ currentPlayer.stats.wis }})</td>
+    <td>{{ currentPlayer.getTotalStat('wis') }} ({{ currentPlayer.stats.wis }})</td>
 
     <th><app-icon name="aura" tooltip="WIL"></app-icon></th>
-    <td>{{ currentPlayer.totalStats.wil }} ({{ currentPlayer.stats.wil }})</td>
+    <td>{{ currentPlayer.getTotalStat('wil') }} ({{ currentPlayer.stats.wil }})</td>
   </tr>
 
   <tr>
     <th><app-icon name="glass-heart" tooltip="CON"></app-icon></th>
-    <td>{{ currentPlayer.totalStats.con }} ({{ currentPlayer.stats.con }})</td>
+    <td>{{ currentPlayer.getTotalStat('con') }} ({{ currentPlayer.stats.con }})</td>
 
     <th><app-icon name="rose" tooltip="CHA"></app-icon></th>
-    <td>{{ currentPlayer.totalStats.cha }} ({{ currentPlayer.stats.cha }})</td>
+    <td>{{ currentPlayer.getTotalStat('cha') }} ({{ currentPlayer.stats.cha }})</td>
 
     <th><app-icon name="clover" tooltip="LUK"></app-icon></th>
-    <td>{{ currentPlayer.totalStats.luk }} ({{ currentPlayer.stats.luk }})</td>
+    <td>{{ currentPlayer.getTotalStat('luk') }} ({{ currentPlayer.stats.luk }})</td>
   </tr>
 </table>
