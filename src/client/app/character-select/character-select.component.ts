@@ -3,6 +3,7 @@ import { ColyseusLobbyService } from '../colyseus.lobby.service';
 import { LobbyState } from '../../../models/lobbystate';
 
 import { truncate, capitalize } from 'lodash';
+import { LocalStorage } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-character-select',
@@ -19,13 +20,15 @@ export class CharacterSelectComponent implements OnInit {
 
   public charSlots: any[];
 
-  public curSlot = 0;
+  @LocalStorage()
+  public curSlot;
 
   public confirmOverwrite: boolean;
 
   constructor(public lobby: ColyseusLobbyService) { }
 
   ngOnInit() {
+    if(!this.curSlot) this.curSlot = 0;
     this.charSlots = Array(this.lobby.myAccount.maxCharacters).fill(0);
   }
 
