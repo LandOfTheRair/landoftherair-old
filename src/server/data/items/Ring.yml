@@ -5,3 +5,12 @@
   sprite: 215
   desc: "a simple gold ring"
   value: 150
+
+- name: Identify Ring
+  sprite: 239
+  desc: "a silver ring with a blue gem set in the center"
+  value: 100
+  effect:
+    name: Identify
+    uses: 10
+    potency: 1

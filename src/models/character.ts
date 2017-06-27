@@ -109,6 +109,11 @@ export const MaxSizes = {
   Buyback: 5
 };
 
+export const AllNormalGearSlots = [
+  'rightHand', 'leftHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2', 'gear.Ring1', 'gear.Ring2',
+  'gear.Head', 'gear.Neck', 'gear.Waist', 'gear.Wrists', 'gear.Hands', 'gear.Feet', 'gear.Ear'
+];
+
 export class Character {
   name: string;
   agro: any = {};

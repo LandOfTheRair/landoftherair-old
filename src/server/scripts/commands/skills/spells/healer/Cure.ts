@@ -23,7 +23,7 @@ export class Cure extends Skill {
   mpCost = () => 5;
   range = () => 5;
 
-  execute(user: Character, { gameState, args }) {
+  execute(user: Character, { gameState, args, effect }) {
     const range = this.range();
 
     let target = user;
@@ -38,14 +38,14 @@ export class Cure extends Skill {
 
     const cost = this.mpCost();
 
-    if(user.mp.getValue() < cost) return user.sendClientMessage('You do not have enough MP!');
+    if(!effect && user.mp.getValue() < cost) return user.sendClientMessage('You do not have enough MP!');
     user.mp.sub(cost);
 
-    this.use(user, target);
+    this.use(user, target, effect);
   }
 
-  use(user: Character, target: Character) {
-    const effect = new CastEffect({});
+  use(user: Character, target: Character, baseEffect = {}) {
+    const effect = new CastEffect(baseEffect);
     effect.cast(user, target, this);
   }
 

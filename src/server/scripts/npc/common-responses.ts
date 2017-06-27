@@ -2,6 +2,7 @@
 import { NPC } from '../../../models/npc';
 import { includes, capitalize, sample, get } from 'lodash';
 import { Logger } from '../../logger';
+import { AllNormalGearSlots } from '../../../models/character';
 
 export const SmithResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -36,19 +37,17 @@ export const SmithResponses = (npc: NPC) => {
 
       let totalCosts = 0;
 
-      ['rightHand', 'leftHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2', 'gear.Ring1', 'gear.Ring2',
-        'gear.Head', 'gear.Neck', 'gear.Waist', 'gear.Wrists', 'gear.Hands', 'gear.Feet', 'gear.Ear'].forEach(slot => {
+      AllNormalGearSlots.forEach(slot => {
+        const item = get(player, slot);
+        if(!item || item.condition > myCondition) return;
 
-          const item = get(player, slot);
-          if(!item || item.condition > myCondition) return;
+        const cost = Math.floor((myCondition - item.condition) / 1000 * cpt);
+        if(cost === 0 || cost > player.gold) return;
 
-          const cost = Math.floor((myCondition - item.condition) / 1000 * cpt);
-          if(cost === 0 || cost > player.gold) return;
+        totalCosts += cost;
 
-          totalCosts += cost;
-
-          player.loseGold(cost);
-          item.condition = myCondition;
+        player.loseGold(cost);
+        item.condition = myCondition;
       });
 
       return `Thank you, ${player.name}! I've done what I can. You've spent ${totalCosts.toLocaleString()} gold.`;

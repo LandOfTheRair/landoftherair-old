@@ -22,19 +22,19 @@ export class Identify extends Skill {
   mpCost = () => 15;
   range = () => 0;
 
-  execute(user: Character, { gameState, args }) {
+  execute(user: Character, { gameState, args, effect }) {
     if(!user.rightHand) return user.sendClientMessage('You need to have something in your right hand to identify it.');
 
     const cost = this.mpCost();
 
-    if(user.mp.getValue() < cost) return user.sendClientMessage('You do not have enough MP!');
+    if(!effect && user.mp.getValue() < cost) return user.sendClientMessage('You do not have enough MP!');
     user.mp.sub(cost);
 
-    this.use(user);
+    this.use(user, effect);
   }
 
-  use(user: Character) {
-    const potency = 1 + Math.floor(user.calcSkillLevel(SkillClassNames.Conjuration) / 10);
+  use(user: Character, baseEffect = { potency: 0 }) {
+    const potency = 1 + Math.floor(baseEffect.potency || user.calcSkillLevel(SkillClassNames.Conjuration) / 10);
     user.sendClientMessage(user.rightHand.descTextFor(user, potency));
   }
 

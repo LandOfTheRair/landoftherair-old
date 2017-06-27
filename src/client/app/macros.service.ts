@@ -211,7 +211,9 @@ export class MacroService {
       .values()
       .reject(x => {
         const learnedSpells = this.colyseusGame.character.learnedSpells || {};
-        if(x.requiresLearn && learnedSpells[x.name.toLowerCase()]) return true;
+        if(x.requiresLearn) {
+          return !learnedSpells[x.name.toLowerCase()];
+        }
         return false;
       })
       .sortBy('name')
