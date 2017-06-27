@@ -42,7 +42,7 @@ export class Effect {
 }
 
 export class SpellEffect extends Effect {
-  flagSkills = []
+  flagSkills = [];
 
   cast(caster: Character, target: Character, skillRef: Skill) {}
 }
