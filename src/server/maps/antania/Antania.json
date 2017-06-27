@@ -322,6 +322,30 @@
                  "width":64,
                  "x":3840,
                  "y":2688
+                }, 
+                {
+                 "gid":3134,
+                 "height":64,
+                 "id":200,
+                 "name":"",
+                 "properties":
+                    {
+                     "peddleCost":1000,
+                     "peddleItem":"Identify Ring",
+                     "script":"global\/peddler"
+                    },
+                 "propertytypes":
+                    {
+                     "peddleCost":"int",
+                     "peddleItem":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3584,
+                 "y":2048
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -349,7 +373,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":200,
+ "nextobjectid":201,
  "orientation":"orthogonal",
  "properties":
     {
