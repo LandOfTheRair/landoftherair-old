@@ -66,8 +66,8 @@ export class Player extends Character {
       if(isLearned > 0) return true;
 
       if(isLearned < 0) {
-        const slot = find(AllNormalGearSlots, slot => {
-          const checkItem = get(this, slot);
+        const slot = find(AllNormalGearSlots, itemSlot => {
+          const checkItem = get(this, itemSlot);
           if(!checkItem || !checkItem.effect) return false;
           return checkItem.effect.name.toLowerCase() === skillName.toLowerCase();
         });
