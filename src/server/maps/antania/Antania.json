@@ -278,6 +278,50 @@
                  "width":64,
                  "x":3008,
                  "y":1984
+                }, 
+                {
+                 "gid":3129,
+                 "height":64,
+                 "id":198,
+                 "name":"Crier",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/crier"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4160,
+                 "y":2112
+                }, 
+                {
+                 "gid":2559,
+                 "height":64,
+                 "id":199,
+                 "name":"Smith",
+                 "properties":
+                    {
+                     "costPerThousand":5,
+                     "repairsUpToCondition":20000,
+                     "script":"antania\/rylt\/smith"
+                    },
+                 "propertytypes":
+                    {
+                     "costPerThousand":"int",
+                     "repairsUpToCondition":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3840,
+                 "y":2688
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -305,7 +349,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":198,
+ "nextobjectid":200,
  "orientation":"orthogonal",
  "properties":
     {

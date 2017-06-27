@@ -1,0 +1,7 @@
+- name: Smith Hammer
+  desc: "a hammer used for repairing gear"
+  baseDamage: 1
+  maxDamage: 1
+  type: Mace
+  value: 0
+  sprite: 226

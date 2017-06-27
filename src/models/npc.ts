@@ -32,6 +32,9 @@ export class NPC extends Character {
   alchOz: number;
   alchCost: number;
 
+  costPerThousand: number;
+  repairsUpToCondition: number;
+
   copyDrops: any[];
   drops: Item[];
   giveXp: any;

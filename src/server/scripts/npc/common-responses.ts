@@ -1,7 +1,60 @@
 
 import { NPC } from '../../../models/npc';
-import { includes, capitalize, sample } from 'lodash';
+import { includes, capitalize, sample, get } from 'lodash';
 import { Logger } from '../../logger';
+
+export const SmithResponses = (npc: NPC) => {
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+
+      if(player.rightHand) {
+        const myCondition = npc.repairsUpToCondition || 20000;
+        const cpt = npc.costPerThousand || 1;
+
+        const missingCondition = myCondition - player.rightHand.condition;
+        if(missingCondition < 0) return 'That item is already beyond my capabilities!';
+
+        const cost = Math.floor(missingCondition / 1000 * cpt);
+
+        if(cost === 0) return 'That item is not in need of repair!';
+        if(player.gold < cost) return `You need ${cost.toLocaleString()} gold to repair that item.`;
+
+        player.loseGold(cost);
+        player.rightHand.condition = myCondition;
+        return `Thank you, ${player.name}! I've repaired your item for ${cost.toLocaleString()} gold.`;
+      }
+
+      return `Hello, ${player.name}! I am a Smith. I can repair your weapons and armor - just hold them in your right hand! Or, you can tell me REPAIRALL and I will repair what you're holding and what you're wearing.`;
+    });
+
+  npc.parser.addCommand('repairall')
+    .set('syntax', ['repairall'])
+    .set('logic', (args, { player }) => {
+      const myCondition = npc.repairsUpToCondition || 20000;
+      const cpt = npc.costPerThousand || 1;
+
+      let totalCosts = 0;
+
+      ['rightHand', 'leftHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2', 'gear.Ring1', 'gear.Ring2',
+        'gear.Head', 'gear.Neck', 'gear.Waist', 'gear.Wrists', 'gear.Hands', 'gear.Feet', 'gear.Ear'].forEach(slot => {
+
+          const item = get(player, slot);
+          if(!item || item.condition > myCondition) return;
+
+          const cost = Math.floor((myCondition - item.condition) / 1000 * cpt);
+          if(cost === 0 || cost > player.gold) return;
+
+          totalCosts += cost;
+
+          player.loseGold(cost);
+          item.condition = myCondition;
+      });
+
+      return `Thank you, ${player.name}! I've done what I can. You've spent ${totalCosts.toLocaleString()} gold.`;
+    });
+
+};
 
 export const RandomlyShouts = (npc: NPC, responses: string[] = []) => {
   let ticks = 0;
