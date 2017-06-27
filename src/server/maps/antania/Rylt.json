@@ -1098,6 +1098,26 @@
                  "width":64,
                  "x":4736,
                  "y":1728
+                }, 
+                {
+                 "gid":3094,
+                 "height":64,
+                 "id":316,
+                 "name":"",
+                 "properties":
+                    {
+                     "script":"global\/tanner"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3456,
+                 "y":2496
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1365,7 +1385,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":316,
+ "nextobjectid":317,
  "orientation":"orthogonal",
  "properties":
     {
