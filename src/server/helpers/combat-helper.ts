@@ -4,8 +4,10 @@ import { includes, random, capitalize } from 'lodash';
 import { Character, SkillClassNames } from '../../models/character';
 import { ShieldClasses, Item } from '../../models/item';
 import * as Classes from '../classes';
+import * as Effects from '../effects';
 
 import * as dice from 'dice.js';
+import { Logger } from '../logger';
 
 export type DamageType =
   'Physical'
@@ -205,6 +207,21 @@ export class CombatHelper {
     });
 
     if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
+
+    if(attackerWeapon.effect) {
+      const applyEffect = Effects[attackerWeapon.effect.name];
+
+      if(!applyEffect) {
+        Logger.error(new Error(`Effect ${attackerWeapon.effect.name} does not exist.`));
+      } else {
+
+        const chance = attackerWeapon.effect.chance || 100;
+        if(+dice.roll('1d100') <= chance) {
+          const effect = new applyEffect(attackerWeapon.effect);
+          effect.cast(attacker, defender);
+        }
+      }
+    }
 
     if(damage <= 0) {
       return { noDamage: true };
