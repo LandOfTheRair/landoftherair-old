@@ -188,7 +188,7 @@ export class MacroService {
     this.customMacros = this.retrieveForCharacter('customMacros') || {};
     this.visibleMacroGroups = this.retrieveForCharacter('visibleMacroGroups') || ['default', null, null];
     this.allMacroGroups = this.retrieveForCharacter('allMacroGroups') || { default: [] };
-    
+
     _.extend(this.allMacros, this.customMacros);
     this.resetUsableMacros();
     this.updateMacroKeys();
@@ -210,7 +210,8 @@ export class MacroService {
     this.allUsableMacros = _(this.allMacros)
       .values()
       .reject(x => {
-        if(x.requiresLearn && this.colyseusGame.character && !this.colyseusGame.character.learnedSpells[x.name.toLowerCase()]) return true;
+        const learnedSpells = this.colyseusGame.character.learnedSpells || {};
+        if(x.requiresLearn && learnedSpells[x.name.toLowerCase()]) return true;
         return false;
       })
       .sortBy('name')
