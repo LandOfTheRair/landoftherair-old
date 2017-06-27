@@ -304,7 +304,6 @@ export class Character {
 
     if(this.leftHand && this.leftHand.stats && canGetBonusFromItemInHand(this.leftHand))    addStatsForItem(this.leftHand);
     if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
-    if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
 
     this.hp.maximum = Math.max(1, this.getTotalStat('hp'));
     this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
@@ -350,6 +349,7 @@ export class Character {
   }
 
   private checkCanEquipWithoutGearCheck(item: Item) {
+    if(!item.hasCondition()) return false;
     if(!includes(EquippableItemClassesWithWeapons, item.itemClass)) return false;
     if(item.requirements) {
       if(item.requirements.level && this.level < item.requirements.level) return false;

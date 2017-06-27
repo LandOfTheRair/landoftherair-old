@@ -208,8 +208,17 @@ export class Item {
     return !this.owner || this.owner && (<any>char).username === this.owner;
   }
 
+  hasCondition() {
+    return this.condition > 0;
+  }
+
+  loseCondition(val = 1, onBreak = () => {}) {
+    this.condition -= val;
+    if(onBreak && this.condition <= 0) onBreak();
+  }
+
   canUse(char: Character) {
-    return this.effect && this.isOwnedBy(char);
+    return this.effect && this.hasCondition() && this.isOwnedBy(char);
   }
 
   use(char: Character) {
