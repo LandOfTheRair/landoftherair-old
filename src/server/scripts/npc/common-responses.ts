@@ -118,7 +118,7 @@ export const VendorResponses = (npc: NPC) => {
     });
 };
 
-export const BaseClassTrainerResponses = (npc: NPC) => {
+export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
@@ -142,6 +142,11 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
       const maxAssessSkill = npc.maxSkillTrain;
 
+      const assessCost = maxAssessSkill * 50;
+      if(player.gold < assessCost) return `I require ${assessCost} gold for my assessment.`;
+
+      player.loseGold(assessCost);
+
       if(skillLevel >= maxAssessSkill) return 'You are too advanced for my teachings.';
 
       const nextLevel = skillLevel === 0 ? 100 : player.calcSkillXP(skillLevel + 1);
@@ -162,12 +167,18 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       if(player.baseClass !== npc.classTrain) return 'I have nothing to teach you.';
 
       const level = player.level;
+
+      const trainCost = npc.maxLevelUpLevel * 200;
+      if(player.gold < trainCost) return `I require ${trainCost} gold for my training.`;
+
       if(level > npc.maxLevelUpLevel) return 'You are too advanced for my teachings.';
 
       player.tryLevelUp(npc.maxLevelUpLevel);
       const newLevel = player.level;
 
       if(newLevel === level) return 'You are not experienced enough to train with me.';
+
+      player.loseGold(trainCost);
 
       return `You have gained ${newLevel-level} experience levels.`;
     });
@@ -181,5 +192,33 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       player.changeBaseClass(npc.classTrain);
 
       return `Welcome to the ${npc.classTrain} profession, ${player.name}!`;
+    });
+
+  npc.parser.addCommand('learn')
+    .set('syntax', ['learn'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(player.baseClass !== npc.classTrain) return 'I have nothing to teach you.';
+
+      const learnCost = npc.maxSkillTrain * 100;
+      if(player.gold < learnCost) return `I require ${learnCost} gold for my teaching.`;
+
+      const learnedSkills = [];
+
+      Object.keys(skills).forEach(skillName => {
+        Object.keys(skills[skillName]).forEach(spellLevel => {
+          if(player.calcSkillLevel(skillName) < +spellLevel) return;
+          skills[skillName][spellLevel].forEach(spellName => {
+            if(!player.learnSpell(spellName)) return;
+            learnedSkills.push(spellName);
+          });
+        });
+      });
+
+      if(learnedSkills.length === 0) return 'I cannot currently teach you anything new.';
+
+      player.loseGold(learnCost);
+
+      return `You have learned the abilities: ${learnedSkills.join(', ')}.`;
     });
 };

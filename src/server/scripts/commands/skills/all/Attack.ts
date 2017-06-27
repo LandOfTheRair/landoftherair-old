@@ -9,6 +9,8 @@ export class Attack extends Skill {
 
   public name = 'attack';
 
+  requiresLearn = false;
+
   static macroMetadata = {
     name: 'Attack',
     macro: 'attack',

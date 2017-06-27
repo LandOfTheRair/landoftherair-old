@@ -1,5 +1,5 @@
 
-import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize, startsWith, isUndefined } from 'lodash';
+import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize, startsWith, isUndefined, clone } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
@@ -121,9 +121,13 @@ export class Character {
   gold = 0;
 
   stats: Stats = new Stats();
-  totalStats: Stats = new Stats();
+  private totalStats: Stats = new Stats();
 
-  skills: Skills = new Skills();
+  private skills: Skills = new Skills();
+
+  get allSkills() {
+    return clone(this.skills);
+  }
 
   allegiance: Allegiance = 'None';
   sex: Sex = 'Male';
@@ -515,7 +519,7 @@ export class Character {
     Classes[this.baseClass].becomeClass(this);
   }
 
-  kill(dead: Character, killAbility) {}
+  kill(dead: Character) {}
 
   flagSkill(skills) {}
 

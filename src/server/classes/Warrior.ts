@@ -4,6 +4,7 @@ import { Character } from '../../models/character';
 
 export class Warrior extends BaseClass {
   static combatDivisor = 3;
+  static willDivisor = 4;
 
   static becomeClass(character: Character) {
     super.becomeClass(character);

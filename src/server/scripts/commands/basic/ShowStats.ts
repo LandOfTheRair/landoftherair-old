@@ -19,7 +19,7 @@ export class ShowStats extends Command {
     player.sendClientMessage(`Your allegiance lies with the ${player.allegiance}.`);
 
     Object.keys(player.stats).forEach(key => {
-      player.sendClientMessage(`Your ${key.toUpperCase()} is ${player.totalStats[key]} (BASE: ${player.stats[key]}).`);
+      player.sendClientMessage(`Your ${key.toUpperCase()} is ${player.getTotalStat(key)} (BASE: ${player.getTotalStat(key)}).`);
     });
   }
 

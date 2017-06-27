@@ -1,15 +1,16 @@
 
 import { BaseClass } from '../base/BaseClass';
-import { Character } from '../../models/character';
+import { Character, SkillClassNames } from '../../models/character';
 
 export class Healer extends BaseClass {
   static combatDivisor = 5;
+  static willDivisor = 3;
 
   static becomeClass(character: Character) {
     super.becomeClass(character);
     character.stats.mp = 30;
     character.recalculateStats();
-    character.skills.restoration = character.calcSkillXP(1);
+    character._gainSkill(SkillClassNames.Restoration, character.calcSkillXP(1));
   }
 
   static gainLevelStats(character: Character) {

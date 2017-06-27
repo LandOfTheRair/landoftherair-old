@@ -14,3 +14,6 @@ export * from './MinorHP';
 export * from './MinorMP';
 
 export * from './TrueSight';
+
+export * from './Afflict';
+export * from './MagicMissile';

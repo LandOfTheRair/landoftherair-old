@@ -18,6 +18,7 @@ class MacroMetadataOrganizer {
         const meta = cmd[Object.keys(cmd)[0]].macroMetadata;
         if(!meta.name) return;
         meta.isSystem = true;
+        meta.requiresLearn = includes(command, 'spell');
         allMeta.push(meta);
       });
 

@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
 
-import { extend, values, sortBy } from 'lodash';
+import { extend, values, sortBy, compact } from 'lodash';
 import { ColyseusGameService } from './colyseus.game.service';
 
 export class MacroGroup {
@@ -28,6 +28,7 @@ export class Macro {
   background = '#ccc';
 
   isSystem: boolean;
+  requiresLearn: boolean;
 
   constructor(opts = {}) {
     extend(this, opts);
@@ -177,6 +178,9 @@ export class MacroService {
   }
 
   public resetUsableMacros() {
-    this.allUsableMacros = sortBy(values(this.allMacros), x => x.name.toLowerCase());
+    this.allUsableMacros = sortBy(compact(values(this.allMacros), x => {
+      if(x.requiresLearn && this.colyseusGame.character && !this.colyseusGame.character.learnedSkills[x.name]) return null;
+      return x.name.toLowerCase();
+    }));
   }
 }

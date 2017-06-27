@@ -7,7 +7,10 @@
     <div class="col-4 text-center">
       <button class="btn btn-primary" [disabled]="!selectedSkill" (click)="assess()">Assess</button>
     </div>
-    <div class="col-4">
+    <div class="col-4" *ngIf="colyseusGame.character.baseClass === colyseusGame.showTrainer.classTrain">
+      <button class="btn btn-primary" (click)="learn()">Learn</button>
+    </div>
+    <div class="col-4" *ngIf="colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain">
       <button class="btn btn-primary" [disabled]="colyseusGame.character.baseClass !== 'Undecided'" (click)="join()">Join</button>
     </div>
   </div>

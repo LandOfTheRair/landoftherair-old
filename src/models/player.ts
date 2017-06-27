@@ -15,6 +15,8 @@ export class Player extends Character {
 
   buyback: Item[];
 
+  private learnedSpells: any;
+
   banks: any;
 
   $fov: any;
@@ -47,6 +49,18 @@ export class Player extends Character {
     this.$$actionQueue = [];
   }
 
+  learnSpell(skillName): boolean {
+    this.learnedSpells = this.learnedSpells || {};
+    if(this.learnedSpells[skillName.toLowerCase()]) return false;
+    this.learnedSpells[skillName.toLowerCase()] = 1;
+    return true;
+  }
+
+  hasLearned(skillName): boolean {
+    if(this.learnedSpells) return this.learnedSpells[skillName.toLowerCase()];
+    return false;
+  }
+
   canSee(x, y) {
     if(!this.$fov[x]) return false;
     if(!this.$fov[x][y]) return false;
@@ -59,6 +73,7 @@ export class Player extends Character {
   }
 
   kill(target: Character) {
+    if(!this.$$flaggedSkills || !this.$$flaggedSkills.length) return;
     const [primary, secondary] = this.$$flaggedSkills;
     const skillGain = target.skillOnKill;
 

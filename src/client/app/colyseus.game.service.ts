@@ -210,6 +210,11 @@ export class ColyseusGameService {
     this.sendCommandString(`${this.showTrainer.uuid}, train`);
   }
 
+  public learn() {
+    if(!this.showTrainer.uuid) return;
+    this.sendCommandString(`${this.showTrainer.uuid}, learn`);
+  }
+
   public join() {
     if(!this.showTrainer.uuid) return;
     this.sendCommandString(`${this.showTrainer.uuid}, join`);

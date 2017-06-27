@@ -218,4 +218,9 @@ export class AppComponent implements OnInit {
     const page = this.currentIconPage * pageSize;
     this.currentIconsInPage = this.allMacroIcons.slice(page, page + pageSize);
   }
+
+  showMacroModal() {
+    this.macroModalVisible = true;
+    this.macroService.resetUsableMacros();
+  }
 }

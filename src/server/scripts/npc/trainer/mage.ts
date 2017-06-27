@@ -3,6 +3,12 @@ import { NPCLoader } from '../../../helpers/npc-loader';
 import { BaseClassTrainerResponses } from '../common-responses';
 import { SkillClassNames } from '../../../../models/character';
 
+const learnedSkills = { Conjuration: {
+  1: ['MagicMissile'],
+  2: ['Identify'],
+  3: ['TrueSight']
+} };
+
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
@@ -14,5 +20,5 @@ export const setup = async (npc: NPC) => {
 };
 
 export const responses = (npc: NPC) => {
-  BaseClassTrainerResponses(npc);
+  BaseClassTrainerResponses(npc, learnedSkills);
 };
