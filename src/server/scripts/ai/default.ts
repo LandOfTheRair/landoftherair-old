@@ -125,7 +125,7 @@ export const tick = (npc: NPC) => {
   // check if should leash
   const distFrom = npc.distFrom(npc.spawner);
 
-  if(distFrom > npc.spawner.leashRadius) {
+  if(npc.spawner.leashRadius >= 0 && distFrom > npc.spawner.leashRadius) {
     npc.x = npc.spawner.x;
     npc.y = npc.spawner.y;
 

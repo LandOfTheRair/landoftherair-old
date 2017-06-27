@@ -20,12 +20,10 @@ export class Spawner {
 
   maxCreatures = 5;
 
-  // TODO -1 to spawn anywhere in map
   spawnRadius = 0;
 
   randomWalkRadius = 10;
 
-  // TODO -1 to disable
   leashRadius = 20;
 
   paths: string[];

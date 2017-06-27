@@ -770,6 +770,26 @@
                  "width":64,
                  "x":768,
                  "y":1728
+                }, 
+                {
+                 "gid":3129,
+                 "height":64,
+                 "id":208,
+                 "name":"Crier",
+                 "properties":
+                    {
+                     "script":"tutorial\/crier"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1216,
+                 "y":1600
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -985,6 +1005,25 @@
                  "width":192,
                  "x":2560,
                  "y":320
+                }, 
+                {
+                 "height":192,
+                 "id":205,
+                 "name":"Respawn",
+                 "properties":
+                    {
+                     "desc":"Welcome to Land of the Rair! To the south, you'll find a town with NPCs you can talk to find out more about where you are."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":832,
+                 "y":832
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -992,7 +1031,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":203,
+ "nextobjectid":209,
  "orientation":"orthogonal",
  "properties":
     {
