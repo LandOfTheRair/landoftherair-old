@@ -6,6 +6,8 @@ import { isFunction } from 'lodash';
 
 export abstract class Skill extends Command {
 
+  requiresLearn = true;
+
   mpCost = (caster?: Character) => 0;
   hpCost = (caster?: Character) => 0;
   range = (caster?: Character) => 0;

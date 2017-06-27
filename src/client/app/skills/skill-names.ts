@@ -44,11 +44,17 @@ const Thievery = [
 ];
 
 const HealingMagic = [
-  'Unpracticed'
+  'Unpracticed',
+  'Mender of Wounds',
+  'Inflictor of Wounds',
+  'Seer of Truth'
 ];
 
 const ElementalMagic = [
-  'Unpracticed'
+  'Unpracticed',
+  'Flinger of Energy',
+  'Identifier of Items',
+  'Seer of Truth'
 ];
 
 const Martial = [
@@ -141,7 +147,7 @@ const Weapon = [
 
 export class SkillNames {
   static determineArray(skill) {
-    switch(skill) {
+    switch(skill.toLowerCase()) {
       case 'thievery': return Thievery;
       case 'restoration': return HealingMagic;
       case 'conjuration': return ElementalMagic;
@@ -153,7 +159,7 @@ export class SkillNames {
   static getName(level, skill) {
     const arr = this.determineArray(skill);
     if(level < 0) level = 0;
-    if(level > arr.length) return arr[arr.length - 1];
+    if(level >= arr.length) return arr[arr.length - 1];
     return arr[level];
   }
 }

@@ -1,6 +1,7 @@
 
 import { Character } from '../../models/character';
 import { extend } from 'lodash';
+import { Skill } from './Skill';
 
 export const Maxes = {
   Lesser: 10,
@@ -11,17 +12,13 @@ export class Effect {
 
   name = '';
   iconData = {};
-  _baseDuration = 0;
   duration = 0;
   potency = 0;
   stats = {};
 
   constructor(opts) {
     extend(this, opts);
-
-    if(!this._baseDuration) {
-      this._baseDuration = this.duration;
-    }
+    if(!this.name) this.name = this.constructor.name;
   }
 
   tick(char: Character) {
@@ -39,6 +36,13 @@ export class Effect {
   effectEnd(char: Character) {}
 
   effectMessage(char: Character, message: string) {
+    if(!char) return;
     char.sendClientMessage(message);
   }
+}
+
+export class SpellEffect extends Effect {
+  flagSkills = []
+
+  cast(caster: Character, target: Character, skillRef: Skill) {}
 }

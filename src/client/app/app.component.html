@@ -515,7 +515,7 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #macros="bs-modal" tabindex="-1" (onShow)="macroModalVisible = true" (onHide)="macroModalVisible = false">
+<div class="modal fade" bsModal #macros="bs-modal" tabindex="-1" (onShow)="showMacroModal()" (onHide)="macroModalVisible = false">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -713,6 +713,7 @@
               <select [(ngModel)]="macroService.allMacroGroups[currentMacroGroup][macro]"
                       class="form-control"
                       (change)="macroService.saveMacros()"
+                      [disabled]="currentMacroGroup === 'default'"
                       placeholder="Select a macro">
                 <option *ngFor="let macro of macroService.allUsableMacros" [value]="macro.name">{{ macro.name }}</option>
               </select>

@@ -149,7 +149,7 @@ export class Lobby extends Room<LobbyState> {
       SkillClassNames.OneHanded, SkillClassNames.TwoHanded, SkillClassNames.Shortsword,
       SkillClassNames.Staff, SkillClassNames.Dagger, SkillClassNames.Mace, SkillClassNames.Axe
     ], 4).forEach(skill => {
-      player.skills[skill] = player.calcSkillXP(1);
+      player._gainSkill(skill, player.calcSkillXP(1));
     });
 
     let body = '';
@@ -211,7 +211,7 @@ export class Lobby extends Room<LobbyState> {
 
     player.gear.Armor = await ItemCreator.getItemByName(body);
     player.rightHand = await ItemCreator.getItemByName(mainhand);
-    player.skills[skill2] = player.calcSkillXP(2);
+    player._gainSkill(skill2, player.calcSkillXP(2));
 
   }
 

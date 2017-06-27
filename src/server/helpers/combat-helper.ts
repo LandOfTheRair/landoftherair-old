@@ -8,7 +8,10 @@ import * as Classes from '../classes';
 import * as dice from 'dice.js';
 
 export type DamageType =
-  'Physical';
+  'Physical'
+| 'Fire'
+| 'Water'
+| 'Energy';
 
 export class CombatHelper {
 
@@ -177,7 +180,6 @@ export class CombatHelper {
     damage = this.dealDamage(attacker, defender, {
       damage,
       damageClass: 'physical',
-      attackerWeapon,
       attackerDamageMessage: `Your attack was ${damageType}!`,
       defenderDamageMessage: msg
     });
@@ -191,8 +193,20 @@ export class CombatHelper {
     return { damage, dealtBy: attackerWeapon.itemClass.toLowerCase(), damageType };
   }
 
-  static magicalAttack(attacker: Character, attacked: Character) {
+  static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass }) {
 
+    if(skillRef) {
+      attacker.flagSkill(skillRef.flagSkills);
+    }
+
+    const willCheck = +dice.roll('1d500') <= attacked.getTotalStat('wil');
+
+    if(willCheck) {
+      const willDivisor = Classes[attacker.baseClass || 'Undecided'].willDivisor;
+      damage -= Math.floor(damage / willDivisor);
+    }
+
+    this.dealDamage(attacker, attacked, { damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg });
   }
 
   static dealOnesidedDamage(defender, { damage, damageClass, damageMessage }) {
@@ -214,20 +228,30 @@ export class CombatHelper {
   static dealDamage(
     attacker: Character,
     defender: Character,
-    { damage, damageClass, attackerWeapon, attackerDamageMessage, defenderDamageMessage }
+    { damage, damageClass, attackerDamageMessage, defenderDamageMessage }
   ) {
 
-    const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
-    damage -= damageReduced;
+    const isHeal = damage < 0;
 
-    if(damage < 0) return 0;
+    // if not healing, check for damage resist
+    if(!isHeal) {
+      const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
+      damage -= damageReduced;
 
-    if(attackerDamageMessage) {
-      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat self hit', target: defender.uuid });
+      if(damage < 0) return 0;
     }
 
-    if(defenderDamageMessage) {
-      defender.sendClientMessage({ message: `${defenderDamageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' });
+    const absDmg = Math.abs(damage);
+    const dmgString = isHeal ? 'health' : `${damageClass} damage`;
+
+    const otherClass = isHeal ? 'heal' : 'hit';
+
+    if(attackerDamageMessage && attacker) {
+      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat self ${otherClass}`, target: defender.uuid });
+    }
+
+    if(defenderDamageMessage && attacker !== defender) {
+      defender.sendClientMessage({ message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat other ${otherClass}` });
     }
 
     defender.hp.sub(damage);
@@ -240,7 +264,7 @@ export class CombatHelper {
       defender.sendClientMessageToRadius({ message: `${defender.name} was killed by ${attacker.name}!`, subClass: 'combat self kill' });
       defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
       defender.die(attacker);
-      attacker.kill(defender, attackerWeapon);
+      attacker.kill(defender);
     }
 
     return damage;

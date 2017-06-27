@@ -10,6 +10,8 @@ export class Throw extends Skill {
   public name = 'throw';
   public format = 'Hand Target';
 
+  requiresLearn = false;
+
   static macroMetadata = {
     name: 'Throw',
     macro: 'throw right',

@@ -3,6 +3,12 @@ import { NPCLoader } from '../../../helpers/npc-loader';
 import { BaseClassTrainerResponses, RecallerResponses } from '../common-responses';
 import { SkillClassNames } from '../../../../models/character';
 
+const learnedSkills = { Restoration: {
+  1: ['Cure'],
+  2: ['Afflict'],
+  3: ['TrueSight']
+} };
+
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
@@ -14,6 +20,6 @@ export const setup = async (npc: NPC) => {
 };
 
 export const responses = (npc: NPC) => {
-  BaseClassTrainerResponses(npc);
+  BaseClassTrainerResponses(npc, learnedSkills);
   RecallerResponses(npc);
 };

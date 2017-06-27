@@ -16,6 +16,10 @@ export class TrainerComponent {
     this.colyseusGame.train();
   }
 
+  learn() {
+    this.colyseusGame.learn();
+  }
+
   assess() {
     this.colyseusGame.assessSkill(this.selectedSkill);
   }

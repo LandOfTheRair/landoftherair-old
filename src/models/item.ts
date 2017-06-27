@@ -172,16 +172,28 @@ export class Item {
     this.owner = player.uuid;
   }
 
-  descTextFor(player: Player) {
+  descTextFor(player: Character, senseLevel = 0) {
     let ownedText = '';
     if(this.owner) {
-      if(this.owner === player.username) ownedText = 'This item belongs to you.';
-      else                               ownedText = 'This item does not belong to you.';
+      if(this.owner === (<any>player).username) ownedText = 'This item belongs to you.';
+      else                                      ownedText = 'This item does NOT belong to you.';
     }
 
     const fluidText = this.ounces > 0 ? `It is filled with ${this.ounces}oz of fluid. ` : '';
 
-    return `You are looking at ${this.desc}. ${fluidText}The item is in ${this.conditionString()} condition. ${ownedText}`;
+    const sense1Text = senseLevel > 0 && this.extendedDesc ? `This item is ${this.extendedDesc}. ` : '';
+    let sense1AfterText = '';
+    if(this.stats.offense > 0 || this.stats.defense > 0) {
+      sense1AfterText = `The combat adds are ${this.stats.offense || 0}/${this.stats.defense || 0}. `;
+    }
+
+    let sense2Text = '';
+    if(senseLevel > 1 && this.effect && this.itemClass !== 'Bottle') {
+      sense2Text = `This item has on-contact ${this.effect.name}`;
+      sense2Text = this.effect.potency ? `${sense2Text} with a potency of ${this.effect.potency}. ` : `${sense2Text}. `;
+    }
+
+    return `You are looking at ${this.desc}. ${sense1Text}${sense1AfterText}${sense2Text}${fluidText}The item is in ${this.conditionString()} condition. ${ownedText}`;
   }
 
   isRobe() {

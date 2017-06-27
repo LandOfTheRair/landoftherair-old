@@ -46,6 +46,9 @@ export class CommandExecutor {
     const cmd = commandHash[command];
     if(!cmd) return false;
 
+    // wat?
+    if(!player) return;
+
     if(command !== 'restore' && player.isDead()) {
       player.sendClientMessage(`Your corpse can't do that.`);
       return;
@@ -62,6 +65,8 @@ export class CommandExecutor {
   static executeCommand(player: Player, command: string, args: any) {
     const cmd = commandHash[command];
     if(!cmd) return false;
+
+    if(cmd.requiresLearn && !player.hasLearned(command)) return player.sendClientMessage('You do not know that spell!');
 
     const wasSuccess = cmd.execute(player, args);
     if(wasSuccess === false) {
