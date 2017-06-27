@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
 
-import { extend, values, sortBy, compact } from 'lodash';
+import * as _ from 'lodash';
 import { ColyseusGameService } from './colyseus.game.service';
 
 export class MacroGroup {
@@ -31,7 +31,7 @@ export class Macro {
   requiresLearn: boolean;
 
   constructor(opts = {}) {
-    extend(this, opts);
+    _.extend(this, opts);
   }
 }
 
@@ -53,10 +53,21 @@ export class MacroService {
 
   public macroMap: any = {};
 
+  public macroSubscription: any;
+
   constructor(private localStorage: LocalStorageService, private colyseusGame: ColyseusGameService) {
+    this.colyseusGame.clientGameState.loadPlayer$.subscribe(() => {
+      this.init();
+    });
+  }
+
+  init() {
+    this.hasLoaded = false;
+    this.allMacros = {};
     this.loadMacros();
     this.watchActiveMacro();
     this.watchForMacros();
+    this.hasLoaded = true;
   }
 
   get activeMacro(): Macro {
@@ -89,9 +100,28 @@ export class MacroService {
     });
   }
 
+  public retrieveForCharacter(key) {
+    if(!this.colyseusGame.character) return {};
+    const charName = this.colyseusGame.character.name;
+    return this.localStorage.retrieve(`${charName}-${key}`);
+  }
+
+  public storeForCharacter(key, value) {
+    if(!this.colyseusGame.character) return;
+    const charName = this.colyseusGame.character.name;
+    return this.localStorage.store(`${charName}-${key}`, value);
+  }
+
+  private observeForCharacter(key) {
+    if(!this.colyseusGame.character) return;
+    const charName = this.colyseusGame.character.name;
+    return this.localStorage.observe(`${charName}-${key}`);
+  }
+
   private watchActiveMacro() {
-    this.currentlySelectedMacro = this.localStorage.retrieve('selectedMacro');
-    this.localStorage.observe('selectedMacro')
+    this.currentlySelectedMacro = this.retrieveForCharacter('selectedMacro');
+    if(this.macroSubscription) this.macroSubscription.unsubscribe();
+    this.macroSubscription = this.observeForCharacter('selectedMacro')
       .subscribe(macro => {
         this.currentlySelectedMacro = macro;
       });
@@ -99,7 +129,7 @@ export class MacroService {
 
   public updateMacroKeys() {
     this.macroMap = {};
-    values(this.allMacros).forEach(macro => {
+    _.values(this.allMacros).forEach(macro => {
       if(!macro.key) return;
 
       let macroString = '';
@@ -136,9 +166,9 @@ export class MacroService {
   }
 
   public saveMacros() {
-    this.localStorage.store('customMacros', this.customMacros);
-    this.localStorage.store('visibleMacroGroups', this.visibleMacroGroups);
-    this.localStorage.store('allMacroGroups', this.allMacroGroups);
+    this.storeForCharacter('customMacros', this.customMacros);
+    this.storeForCharacter('visibleMacroGroups', this.visibleMacroGroups);
+    this.storeForCharacter('allMacroGroups', this.allMacroGroups);
     this.resetUsableMacros();
     this.updateMacroKeys();
   }
@@ -155,18 +185,17 @@ export class MacroService {
   }
 
   public loadMacros() {
-    this.customMacros = this.localStorage.retrieve('customMacros') || {};
-    this.visibleMacroGroups = this.localStorage.retrieve('visibleMacroGroups') || ['default', null, null];
-    this.allMacroGroups = this.localStorage.retrieve('allMacroGroups') || {};
-    this.hasLoaded = true;
-
-    extend(this.allMacros, this.customMacros);
+    this.customMacros = this.retrieveForCharacter('customMacros') || {};
+    this.visibleMacroGroups = this.retrieveForCharacter('visibleMacroGroups') || ['default', null, null];
+    this.allMacroGroups = this.retrieveForCharacter('allMacroGroups') || { default: [] };
+    
+    _.extend(this.allMacros, this.customMacros);
     this.resetUsableMacros();
     this.updateMacroKeys();
   }
 
   public allMacroNames() {
-    return Object.keys(this.allMacros).sort();
+    return this.allUsableMacros.map(x => x.name);
   }
 
   public allMacroGroupNames() {
@@ -178,9 +207,15 @@ export class MacroService {
   }
 
   public resetUsableMacros() {
-    this.allUsableMacros = sortBy(compact(values(this.allMacros), x => {
-      if(x.requiresLearn && this.colyseusGame.character && !this.colyseusGame.character.learnedSkills[x.name]) return null;
-      return x.name.toLowerCase();
-    }));
+    this.allUsableMacros = _(this.allMacros)
+      .values()
+      .reject(x => {
+        if(x.requiresLearn && this.colyseusGame.character && !this.colyseusGame.character.learnedSpells[x.name.toLowerCase()]) return true;
+        return false;
+      })
+      .sortBy('name')
+      .sortBy('isSystem')
+      .sortBy('requiresLearn')
+      .value();
   }
 }

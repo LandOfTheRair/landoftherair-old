@@ -104,6 +104,10 @@ export class AppComponent implements OnInit {
     this.colyseus.init();
 
     this.initDefaultOptions();
+
+    this.colyseus.game.clientGameState.loadPlayer$.subscribe(() => {
+      this.currentMacroGroup = 'default';
+    });
   }
 
   initDefaultOptions() {
