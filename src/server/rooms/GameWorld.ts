@@ -26,8 +26,14 @@ import { Item } from '../../models/item';
 import { Locker } from '../../models/locker';
 
 const TickRates = {
-  PlayerAction: 30,
-  NPCAction: 45,
+  // tick players every second
+  PlayerAction: 45,
+
+  // npc actions every
+  NPCAction: 60,
+
+  // tick spawners every half-second
+  SpawnerTick: 60,
   PlayerSave: 360
 };
 
@@ -75,7 +81,7 @@ export class GameWorld extends Room<GameState> {
 
     this.allMapNames = opts.allMapNames;
 
-    this.setPatchRate(1000 / 20);
+    this.setPatchRate(1000 / 60);
     this.setSimulationInterval(this.tick.bind(this), 1000 / 60);
     this.setState(new GameState({
       players: [],
@@ -363,6 +369,8 @@ export class GameWorld extends Room<GameState> {
       leashRadius: -1
     });
 
+    normalNPCSpawner.canSlowDown = false;
+
     this.spawners.push(normalNPCSpawner);
 
     npcs.forEach(npcData => {
@@ -460,7 +468,10 @@ export class GameWorld extends Room<GameState> {
       this.state.players.forEach(player => this.savePlayer(player));
     }
 
-    this.spawners.forEach(spawner => spawner.tick());
+    if(this.ticks.Player % TickRates.SpawnerTick === 0) {
+      this.spawners.forEach(spawner => spawner.tick());
+    }
+
   }
 
   async calculateLootDrops(npc: NPC, killer: Character) {

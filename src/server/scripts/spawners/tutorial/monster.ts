@@ -10,7 +10,7 @@ export class TutorialMonsterSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 1800,
+      respawnRate: 30,
       initialSpawn: 4,
       maxCreatures: 6,
       spawnRadius: 1,

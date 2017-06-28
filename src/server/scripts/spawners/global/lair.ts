@@ -7,13 +7,15 @@ export class LairSpawner extends Spawner {
   constructor(room, opts, properties) {
 
     const spawnerProps = extend({
-      respawnRate: 7200,
+      respawnRate: 3600,
       initialSpawn: 1,
       maxSpawn: 1,
       spawnRadius: 0,
       randomWalkRadius: 2,
       leashRadius: 10,
-      shouldSerialize: true
+      shouldSerialize: true,
+      alwaysSpawn: true,
+      requireDeadToRespawn: true
     }, properties);
 
     spawnerProps.npcIds = [properties.lairName];
