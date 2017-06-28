@@ -212,6 +212,7 @@ export class GameWorld extends Room<GameState> {
 
     if(newMap && player.map !== newMap) {
       player.map = newMap;
+      this.prePlayerMapLeave(player);
       this.savePlayer(player);
       player.$$doNotSave = true;
       this.send(client, { action: 'change_map', map: newMap });
@@ -256,17 +257,17 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
-  onLeave(client) {
-    const player = this.state.findPlayer(client.username);
+  prePlayerMapLeave(player: Player) {
     this.corpseCheck(player);
     this.restoreCheck(player);
     this.doorCheck(player);
 
-    if(this.state.mapName === 'Tutorial' && !player.respawnPoint) {
+    if(this.state.mapName === 'Tutorial' && player.respawnPoint.map === 'Tutorial') {
       player.respawnPoint = { x: 68, y: 13, map: 'Rylt' };
     }
+  }
 
-    this.savePlayer(player);
+  onLeave(client) {
     this.state.removePlayer(client.username);
   }
 
