@@ -26,7 +26,7 @@ export const ArmorClasses = [
 ];
 
 export const RobeClasses = [
-  'Cloak'
+  'Cloak', 'Robe'
 ];
 
 export const HeadClasses = [
@@ -54,7 +54,7 @@ export const FeetClasses = [
 ];
 
 export const HandsClasses = [
-  'Gloves'
+  'Gloves', 'Claws'
 ];
 
 export const EarClasses = [
@@ -193,7 +193,9 @@ export class Item {
       sense2Text = this.effect.potency ? `${sense2Text} with a potency of ${this.effect.potency}. ` : `${sense2Text}. `;
     }
 
-    return `You are looking at ${this.desc}. ${sense1Text}${sense1AfterText}${sense2Text}${fluidText}The item is in ${this.conditionString()} condition. ${ownedText}`;
+    const levelText = this.requirements && this.requirements.level ? `You must be level ${this.requirements.level} to use this item. ` : '';
+
+    return `You are looking at ${this.desc}. ${sense1Text}${sense1AfterText}${sense2Text}${fluidText}${levelText}The item is in ${this.conditionString()} condition. ${ownedText}`;
   }
 
   isRobe() {

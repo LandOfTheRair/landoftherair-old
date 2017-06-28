@@ -18,3 +18,16 @@
   value: 100
   sprite: 218
 
+- name: Rylt Werebear Fur
+  desc: "a warm coat of bear fur tanned from a werebear"
+  stats:
+    armorClass: 9
+    defense: 2
+
+  requirements:
+    level: 5
+
+  value: 1000
+  sprite: 218
+
+

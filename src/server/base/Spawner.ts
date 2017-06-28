@@ -36,6 +36,9 @@ export class Spawner {
 
   alwaysSpawn: boolean;
 
+  // TODO use this for lair respawn timer storage
+  shouldSerialize: boolean;
+
   $$slowTicks = 0;
 
   constructor(private room, { x, y, map }, spawnOpts) {
