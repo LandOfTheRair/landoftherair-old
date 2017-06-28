@@ -4,6 +4,7 @@
     offense: 1
   desc: "a wooden crossbow"
   baseDamage: 1
+  minDamage: 1
   maxDamage: 2
   type: Ranged
   value: 100

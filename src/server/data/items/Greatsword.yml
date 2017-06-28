@@ -1,6 +1,7 @@
 - name: Antanian Greatsword
   desc: "an iron greatsword"
   baseDamage: 3
+  minDamage: 1
   maxDamage: 5
   type: Twohanded
   value: 150

@@ -2,6 +2,8 @@
   stats:
     defense: 1
     accuracy: 3
+  minDamage: 1
+  maxDamage: 3
   baseDamage: 3
   sprite: 232
   desc: "a pair of leather boots"

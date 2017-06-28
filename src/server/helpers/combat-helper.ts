@@ -87,8 +87,9 @@ export class CombatHelper {
       str: attacker.getTotalStat('str'),
       str4: attacker.getTotalStat('str') / 4,
       level: Math.max(1, attacker.level / Classes[attacker.baseClass || 'Undecided'].combatDivisor),
-      damageMin: attackerWeapon.baseDamage,
-      damageMax: attackerWeapon.maxDamage
+      damageMin: attackerWeapon.minDamage,
+      damageMax: attackerWeapon.maxDamage,
+      damageBase: attackerWeapon.baseDamage
     };
 
     const defenderScope = {
@@ -180,13 +181,13 @@ export class CombatHelper {
     const damageMax = random(attackerScope.damageMin, attackerScope.damageMax);
     const damageRight = Math.floor(attackerScope.str + damageMax);
 
-    let damage = +dice.roll(`${damageLeft}d${damageRight}`);
+    let damage = +dice.roll(`${damageLeft}d${damageRight}`) + attackerScope.damageBase;
 
-    let damageType = 'a successful strike';
+    let damageType = 'was a successful strike';
 
     if(attackerScope.damageMin !== attackerScope.damageMax) {
-      if(attackerScope.damageMin === damageMax) damageType = 'a grazing blow';
-      if(attackerScope.damageMax === damageMax) damageType = 'a grievous wound';
+      if(attackerScope.damageMin === damageMax) damageType = 'was a grazing blow';
+      if(attackerScope.damageMax === damageMax) damageType = 'left a grievous wound';
     }
 
     let msg = '';
@@ -202,7 +203,7 @@ export class CombatHelper {
     damage = this.dealDamage(attacker, defender, {
       damage,
       damageClass: 'physical',
-      attackerDamageMessage: `Your attack was ${damageType}!`,
+      attackerDamageMessage: `Your attack ${damageType}!`,
       defenderDamageMessage: msg
     });
 

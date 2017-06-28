@@ -1,6 +1,7 @@
 - name: Cave Shaman Wand
   desc: "an blue wand"
   baseDamage: 1
+  minDamage: 1
   maxDamage: 1
   effect:
     name: MagicMissile

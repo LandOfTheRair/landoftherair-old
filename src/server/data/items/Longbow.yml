@@ -3,6 +3,7 @@
     accuracy: 1
   desc: "a wooden longbow"
   baseDamage: 1
+  minDamage: 1
   maxDamage: 4
   type: Ranged
   secondaryType: Twohanded

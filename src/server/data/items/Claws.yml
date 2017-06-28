@@ -1,12 +1,14 @@
 - name: Basic Claws
   baseDamage: 1
+  minDamage: 1
   maxDamage: 2
   sprite: -1
   desc: "a pair of sharp claws"
   value: 0
 
 - name: Werebear Claws
-  baseDamage: 3
+  baseDamage: 7
+  minDamage: 3
   maxDamage: 5
   stats:
     str: 1

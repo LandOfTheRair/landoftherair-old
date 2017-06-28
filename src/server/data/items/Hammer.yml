@@ -2,6 +2,7 @@
   desc: "a hammer used for repairing gear"
   baseDamage: 1
   maxDamage: 1
+  minDamage: 1
   type: Mace
   value: 0
   sprite: 226

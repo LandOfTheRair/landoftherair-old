@@ -116,6 +116,7 @@ export class Item {
   owner?: string;
 
   baseDamage = 0;
+  minDamage = 0;
   maxDamage = 0;
 
   ounces = 0;
