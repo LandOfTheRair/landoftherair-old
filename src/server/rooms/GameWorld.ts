@@ -548,7 +548,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   dropCorpseItems(corpse: Item, searcher?: Player) {
-    if(!corpse.searchItems) return;
+    if(!corpse || corpse.searchItems) return;
 
     corpse.searchItems.forEach(item => {
       if(searcher && item.itemClass === 'Coin') {
