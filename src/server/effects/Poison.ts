@@ -40,7 +40,7 @@ export class Poison extends SpellEffect {
     this.effectMessage(char, 'You were poisoned!');
   }
 
-  tick(char: Character) {
+  effectTick(char: Character) {
     const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
 
     CombatHelper.magicalAttack(caster, char, {
@@ -49,6 +49,7 @@ export class Poison extends SpellEffect {
       damage: this.effectInfo.damage,
       damageClass: 'necrotic'
     });
+
   }
 
   effectEnd(char: Character) {
