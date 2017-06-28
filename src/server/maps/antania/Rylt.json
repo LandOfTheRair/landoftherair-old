@@ -1452,6 +1452,28 @@
                  "width":64,
                  "x":5376,
                  "y":7872
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":325,
+                 "name":"Werebear Spawner",
+                 "properties":
+                    {
+                     "lairName":"Rylt Werebear",
+                     "script":"global\/lair"
+                    },
+                 "propertytypes":
+                    {
+                     "lairName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5248,
+                 "y":6464
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1469,7 +1491,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":325,
+ "nextobjectid":326,
  "orientation":"orthogonal",
  "properties":
     {

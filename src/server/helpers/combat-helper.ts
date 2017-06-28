@@ -31,7 +31,7 @@ export class CombatHelper {
 
     const { isThrow, throwHand } = opts;
 
-    if(defender.isDead()) return { isDead: true };
+    if(defender.isDead() || attacker.isDead()) return { isDead: true };
 
     let attackerWeapon: Item;
 
@@ -230,7 +230,7 @@ export class CombatHelper {
     return { damage, dealtBy: attackerWeapon.itemClass.toLowerCase(), damageType };
   }
 
-  static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass }) {
+  static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass }: any = {}) {
 
     if(skillRef) {
       attacker.flagSkill(skillRef.flagSkills);
@@ -302,10 +302,16 @@ export class CombatHelper {
     if(!wasFatal) {
       defender.addAgro(attacker, damage);
     } else {
-      defender.sendClientMessageToRadius({ message: `${defender.name} was killed by ${attacker.name}!`, subClass: 'combat self kill' });
-      defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
-      defender.die(attacker);
-      attacker.kill(defender);
+      if(attacker) {
+        defender.sendClientMessageToRadius({ message: `${defender.name} was killed by ${attacker.name}!`, subClass: 'combat self kill' });
+        defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
+        defender.die(attacker);
+        attacker.kill(defender);
+      } else {
+        defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' });
+        defender.sendClientMessage({ message: `You were killed!`, subClass: 'combat other kill' });
+        defender.die(attacker);
+      }
     }
 
     return damage;

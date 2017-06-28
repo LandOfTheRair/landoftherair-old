@@ -16,6 +16,8 @@ export class Effect {
   potency = 0;
   stats = {};
 
+  effectInfo: any = {};
+
   constructor(opts) {
     extend(this, opts);
     if(!this.name) this.name = this.constructor.name;

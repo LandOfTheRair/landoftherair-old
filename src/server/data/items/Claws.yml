@@ -4,3 +4,26 @@
   sprite: -1
   desc: "a pair of sharp claws"
   value: 0
+
+- name: Werebear Claws
+  baseDamage: 3
+  maxDamage: 5
+  stats:
+    str: 1
+    dex: 1
+    agi: 1
+    offense: 2
+    armorClass: 1
+  effect:
+    name: Poison
+    potency: 5
+    chance: 20
+
+  binds: true
+
+  requirements:
+    level: 5
+
+  sprite: 938
+  desc: "a pair of grizzly sharp claws"
+  value: 500

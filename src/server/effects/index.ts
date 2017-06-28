@@ -17,3 +17,5 @@ export * from './TrueSight';
 
 export * from './Afflict';
 export * from './MagicMissile';
+
+export * from './Poison';

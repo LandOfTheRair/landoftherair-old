@@ -402,7 +402,7 @@ export class GameWorld extends Room<GameState> {
     spawners.forEach(spawnerData => {
       const spawner = require(`${__dirname}/../scripts/spawners/${spawnerData.properties.script}`);
       const spawnerProto = spawner[Object.keys(spawner)[0]];
-      this.spawners.push(new spawnerProto(this, { map: this.state.mapName, x: spawnerData.x, y: spawnerData.y }));
+      this.spawners.push(new spawnerProto(this, { map: this.state.mapName, x: spawnerData.x, y: spawnerData.y }, spawnerData.properties));
     });
   }
 
