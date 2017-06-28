@@ -265,19 +265,22 @@ export class GameState {
   }
 
   cleanNPCs() {
-    return this.mapNPCs.map(npc => pick(npc, [
-      'agro', 'uuid', 'name',
-      'hostility', 'alignment', 'allegiance', 'allegianceReputation',
-      'dir', 'sprite',
-      'leftHand', 'rightHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2',
-      'hp',
-      'x', 'y'
-    ]));
+    return this.mapNPCs.map(npc => {
+      const baseObj = pick(npc, [
+        'agro', 'uuid', 'name',
+        'hostility', 'alignment', 'allegiance', 'allegianceReputation',
+        'dir', 'sprite',
+        'leftHand', 'rightHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2',
+        'hp',
+        'x', 'y'
+      ]);
+      if(!baseObj.gear) baseObj.gear = {};
+      return baseObj;
+    });
   }
 
   toJSON() {
     return {
-      map: this.map,
       mapData: this.mapData,
       mapName: this.mapName,
       mapNPCs: this.cleanNPCs(),
