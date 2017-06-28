@@ -1860,13 +1860,17 @@
                  "name":"Weredeer Spawner",
                  "properties":
                     {
+                     "initialSpawn":3,
                      "lairName":"Rylt Weredeer",
+                     "maxSpawn":3,
                      "randomWalkRadius":5,
                      "script":"global\/lair"
                     },
                  "propertytypes":
                     {
+                     "initialSpawn":"int",
                      "lairName":"string",
+                     "maxSpawn":"int",
                      "randomWalkRadius":"int",
                      "script":"string"
                     },
