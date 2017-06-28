@@ -87,7 +87,6 @@ export class Game {
       this.player = player;
       this.truesightCheck();
       this.updatePlayerSprite(this.playerSprite, player);
-      
     } else {
       const sprite = find(this.otherPlayerSprites, { username: player.username });
       if(!sprite) {
