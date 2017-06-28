@@ -96,6 +96,7 @@ export class Stats {
   offense = 0;
   defense = 0;
 
+  magicalResist = 0;
   physicalResist = 0;
   energyResist = 0;
   waterResist = 0;

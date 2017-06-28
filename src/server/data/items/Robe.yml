@@ -21,6 +21,8 @@
   stats:
     armorClass: 1
     defense: 1
+    magicalResist: 20
+    energyResist: 50
   desc: "a red robe with a shimmering gold trim"
   value: 400
   sprite: 489
