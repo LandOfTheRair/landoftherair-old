@@ -56,6 +56,10 @@ export class Game {
     }
 
     this.player = player;
+    this.initPromises();
+  }
+
+  initPromises() {
     this.canCreate = new Promise(resolve => this.resolveCanCreate = resolve);
     this.canUpdate = new Promise(resolve => this.resolveCanUpdate = resolve);
   }
@@ -78,13 +82,12 @@ export class Game {
 
   async updatePlayer(player: Player) {
     await this.canCreate;
-    await this.canUpdate;
 
     if(this.player.username === player.username) {
       this.player = player;
       this.truesightCheck();
       this.updatePlayerSprite(this.playerSprite, player);
-
+      
     } else {
       const sprite = find(this.otherPlayerSprites, { username: player.username });
       if(!sprite) {
@@ -210,7 +213,9 @@ export class Game {
       sprite.loadTexture(key, frame);
     }
 
-    sprite.frame = frame;
+    if(frame) {
+      sprite.frame = frame;
+    }
   }
 
   private toggleTruesightForWalls(set: boolean) {
