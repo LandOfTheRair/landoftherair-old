@@ -1,5 +1,6 @@
 
 import { NPCLoader } from '../helpers/npc-loader';
+import { LootTable } from 'lootastic';
 
 import { sample, random, extend, isNumber, isString, pull, min } from 'lodash';
 import { NPC } from '../../models/npc';
@@ -28,7 +29,7 @@ export class Spawner {
 
   paths: string[];
 
-  npcIds: string[];
+  npcIds: string[]|any[];
 
   npcAISettings: string[];
 
@@ -61,10 +62,13 @@ export class Spawner {
     return true;
   }
 
-  private async chooseItemFrom(choices: string[]) {
+  private async chooseItemFrom(choices: string[]|any[]) {
+    if(!choices) return null;
     if(isString(choices)) return NPCLoader.loadItem(choices);
-    const item = sample(choices);
-    if(item) return NPCLoader.loadItem(item);
+    const itemChooser = new LootTable(choices);
+    const item = itemChooser.chooseWithReplacement(1);
+
+    if(item && item[0] && item[0] !== 'none') return NPCLoader.loadItem(item[0]);
     return null;
   }
 
@@ -80,7 +84,11 @@ export class Spawner {
       return;
     }
 
-    const npcData = await NPCLoader.loadNPCData(sample(this.npcIds));
+    const npcChooser = new LootTable(this.npcIds);
+    const chosenNPC = npcChooser.chooseWithReplacement(1)[0];
+
+    const npcData = await NPCLoader.loadNPCData(chosenNPC);
+
     if(!npcData) {
       Logger.error(`No valid spawn for spawner ${this.constructor.name} at ${this.x}, ${this.y} on ${this.map}`);
       return;
