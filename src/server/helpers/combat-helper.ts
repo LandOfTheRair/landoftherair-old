@@ -239,7 +239,7 @@ export class CombatHelper {
     const willCheck = +dice.roll('1d500') <= attacked.getTotalStat('wil');
 
     if(willCheck) {
-      const willDivisor = Classes[attacker.baseClass || 'Undecided'].willDivisor;
+      const willDivisor = Classes[attacked.baseClass || 'Undecided'].willDivisor;
       damage -= Math.floor(damage / willDivisor);
     }
 
