@@ -81,11 +81,11 @@ class NPCLoader {
 
     if(isNumber(skillLevels)) {
       Object.keys(skillSet).forEach(skill => {
-        skillSet[skill] = this.skillXPFromLevel(skillLevels);
+        skillSet[skill.toLowerCase()] = this.skillXPFromLevel(skillLevels);
       });
     } else {
       Object.keys(skillLevels).forEach(skill => {
-        skillSet[skill] = this.skillXPFromLevel(skillLevels[skill]);
+        skillSet[skill.toLowerCase()] = this.skillXPFromLevel(skillLevels[skill]);
       });
     }
 

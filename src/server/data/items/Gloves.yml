@@ -1,9 +1,21 @@
-- name: Antanian Gloves
+- name: Antanian Leather Gloves
   stats:
     defense: 1
     accuracy: 3
   baseDamage: 1
+  minDamage: 1
   maxDamage: 2
   sprite: 233
   desc: "a pair of leather gloves"
   value: 50
+
+- name: Rylt Rockgolem Gloves
+  stats:
+    defense: 5
+    offense: 5
+    accuracy: 10
+  baseDamage: 10
+  minDamage: 1
+  maxDamage: 4
+  desc: "a pair of rocky gloves"
+  sprite: -1

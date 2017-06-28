@@ -232,3 +232,94 @@
   drops:
     - result: Werebear Claws
       chance: -1
+
+- npcId: Rylt Rockgolem
+  name: rockgolem
+  hostility: Always
+  sprite: 75
+  alignment: Evil
+  stats: 15
+  skillLevels:
+    Martial: 10
+  level: 7
+
+  gold:
+    min: 40
+    max: 90
+
+  hp:
+    min: 950
+    max: 1300
+
+  giveXp:
+    min: 500
+    max: 725
+
+  gear:
+    Hands: Rylt Rockgolem Gloves
+
+  drops:
+    - result: Antanian Leather Gloves
+      chance: 20
+
+    - result: Antanian Leather Boots
+      chance: 20
+
+
+- npcId: Rylt Cave Apprentice
+  name: apprentice
+  hostility: Always
+  sprite: 545
+  alignment: Evil
+  stats: 20
+  skillLevels:
+    Wand: 5
+    Conjuration: 5
+
+  level: 7
+
+  gold:
+    min: 40
+    max: 90
+
+  hp:
+    min: 500
+    max: 600
+
+  mp:
+    min: 1000
+    max: 1500
+
+  giveXp:
+    min: 300
+    max: 425
+
+  gear:
+    rightHand: Antanian Staff
+    Armor: Antanian Tunic
+    Neck:
+      - null
+      - Rylt Apprentice Regen Amulet
+    Ring1:
+      - null
+      - Antanian Ring
+      - Identify Ring
+    Robe1:
+      - null
+      - Antanian Cloak
+      - Cave Apprentice Robe
+    Robe2:
+      - null
+      - Antanian Cloak
+      - Cave Apprentice Robe
+
+  usableSkills:
+    - MagicMissile
+
+  copyDrops:
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1

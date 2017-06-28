@@ -11,7 +11,8 @@ export const setup = async (npc: NPC) => {
     'Antanian Scalemail Tunic',
     'Antanian Ringmail Tunic',
     'Antanian Breastplate',
-    'Antanian Cloak'
+    'Antanian Cloak',
+    'Leather Ring'
   ];
 
   NPCLoader.loadVendorItems(npc, vendorItems);
