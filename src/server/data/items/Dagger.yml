@@ -5,6 +5,7 @@
   desc: "an iron dagger"
   isSackable: true
   baseDamage: 2
+  minDamage: 1
   maxDamage: 2
   type: Dagger
   value: 75
@@ -14,6 +15,7 @@
   desc: "a small iron dagger that vibrates strangely"
   isSackable: true
   baseDamage: 3
+  minDamage: 1
   maxDamage: 3
   returnsOnThrow: true
   type: Dagger

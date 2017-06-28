@@ -3,6 +3,7 @@
     offense: 2
   desc: "an iron greataxe"
   baseDamage: 3
+  minDamage: 2
   maxDamage: 5
   type: Axe
   secondaryType: Twohanded

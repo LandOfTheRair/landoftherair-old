@@ -5,6 +5,7 @@
     offense: 1
   desc: "a crudely-made club"
   baseDamage: 1
+  minDamage: 1
   maxDamage: 1
   requirements:
     level: 2

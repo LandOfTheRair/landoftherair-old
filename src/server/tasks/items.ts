@@ -93,9 +93,6 @@ class ItemLoader {
 
     item.type = capitalize(item.type);
     if(item.secondaryType) item.secondaryType = capitalize(item.secondaryType);
-
-    // TODO check effect, if it is an array, then pick a random value between 0 and 1
-    // TODO random stats, array of min-max
   }
 
   static validateItem(item: Item): boolean {

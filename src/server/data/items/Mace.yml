@@ -4,6 +4,7 @@
     offense: 2
   desc: "an iron mace"
   baseDamage: 2
+  minDamage: 1
   maxDamage: 3
   type: Mace
   value: 105
