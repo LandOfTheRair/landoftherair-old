@@ -28,12 +28,14 @@ const DecorGids = {
 };
 
 const SwimInfo = {
-  8:  { element: 'water', swimLevel: 1 },
-  9:  { element: 'fire',  swimLevel: 3 },
-  16: { element: 'water', swimLevel: 5 }
+  1:  { element: 'water', swimLevel: 1 },
+  8:  { element: 'water', swimLevel: 2 },
+  9:  { element: 'fire',  swimLevel: 4 },
+  16: { element: 'water', swimLevel: 6 }
 };
 
 export const GetSwimLevel = (gid) => {
+  if(gid >= 2288 && gid <= 2296 || gid === 2200) return SwimInfo[1];
   return SwimInfo[Math.floor((gid - 1) / 48)];
 };
 
