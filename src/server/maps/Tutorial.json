@@ -888,10 +888,14 @@
                  "name":"Yeti Spawner",
                  "properties":
                     {
-                     "script":"tutorial\/yeti"
+                     "lairName":"Tutorial Yeti",
+                     "respawnRate":30,
+                     "script":"global\/lair"
                     },
                  "propertytypes":
                     {
+                     "lairName":"string",
+                     "respawnRate":"int",
                      "script":"string"
                     },
                  "rotation":0,

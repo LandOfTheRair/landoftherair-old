@@ -16,7 +16,7 @@ export class TutorialTowneeSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 3600,
+      respawnRate: 30,
       initialSpawn: 4,
       maxCreatures: 20,
       spawnRadius: 0,

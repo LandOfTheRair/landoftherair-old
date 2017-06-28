@@ -13,8 +13,8 @@ export class Spawner {
 
   currentTick = 0;
 
-  // in ticks
-  respawnRate = 3600;
+  // in half-seconds
+  respawnRate = 240;
 
   initialSpawn = 0;
 
@@ -38,6 +38,10 @@ export class Spawner {
 
   // TODO use this for lair respawn timer storage
   shouldSerialize: boolean;
+
+  requireDeadToRespawn = false;
+
+  canSlowDown = true;
 
   $$slowTicks = 0;
 
@@ -166,11 +170,18 @@ export class Spawner {
   }
 
   shouldSlowDown(dists) {
+    if(!this.canSlowDown) return false;
     return dists.length > 0 && min(dists) > Math.max(this.leashRadius, 30);
   }
 
   tick() {
     if(!this.isActive()) return;
+
+    if(this.requireDeadToRespawn) {
+      if(this.npcs.length === 0) this.currentTick++;
+    } else {
+      this.currentTick++;
+    }
 
     if(this.$$slowTicks > 0) {
       this.$$slowTicks--;
@@ -178,12 +189,12 @@ export class Spawner {
     }
 
     if(this.shouldSlowDown(this.getDistsForPlayers())) {
-      this.$$slowTicks = 120;
-      return;
+      this.$$slowTicks = 4;
     }
 
-    this.currentTick++;
-    if(this.currentTick > this.respawnRate && this.npcs.length < this.maxCreatures && (this.alwaysSpawn || this.room.canSpawnCreatures)) {
+    if(this.currentTick > this.respawnRate
+    && this.npcs.length < this.maxCreatures
+    && (this.alwaysSpawn || this.room.canSpawnCreatures)) {
       this.currentTick = 0;
       this.createNPC();
     }

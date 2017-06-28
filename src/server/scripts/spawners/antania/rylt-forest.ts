@@ -11,7 +11,7 @@ export class RyltForestMonsterSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 1800,
+      respawnRate: 60,
       initialSpawn: 5,
       maxCreatures: 10,
       spawnRadius: 4,

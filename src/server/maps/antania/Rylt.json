@@ -1217,7 +1217,7 @@
                  "gid":2347,
                  "height":64,
                  "id":302,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1230,14 +1230,14 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6592,
-                 "y":2496
+                 "x":6400,
+                 "y":2752
                 }, 
                 {
                  "gid":2347,
                  "height":64,
                  "id":303,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1257,7 +1257,7 @@
                  "gid":2347,
                  "height":64,
                  "id":304,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1270,14 +1270,14 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6400,
-                 "y":5184
+                 "x":6464,
+                 "y":5120
                 }, 
                 {
                  "gid":2347,
                  "height":64,
                  "id":305,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1290,8 +1290,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4480,
-                 "y":7360
+                 "x":4032,
+                 "y":7616
                 }, 
                 {
                  "gid":2347,
@@ -1317,7 +1317,7 @@
                  "gid":2347,
                  "height":64,
                  "id":309,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1330,14 +1330,14 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":3968,
-                 "y":5696
+                 "x":4352,
+                 "y":5312
                 }, 
                 {
                  "gid":2347,
                  "height":64,
                  "id":310,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1357,7 +1357,7 @@
                  "gid":2347,
                  "height":64,
                  "id":311,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1377,7 +1377,7 @@
                  "gid":2347,
                  "height":64,
                  "id":312,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1397,7 +1397,7 @@
                  "gid":2347,
                  "height":64,
                  "id":313,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1410,14 +1410,14 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":3712,
-                 "y":6464
+                 "x":3328,
+                 "y":6336
                 }, 
                 {
                  "gid":2347,
                  "height":64,
                  "id":314,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1437,7 +1437,7 @@
                  "gid":2347,
                  "height":64,
                  "id":315,
-                 "name":"Monster Spawner",
+                 "name":"Forest Monster Spawner",
                  "properties":
                     {
                      "script":"antania\/rylt-forest"
@@ -1450,8 +1450,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":5376,
-                 "y":7872
+                 "x":5568,
+                 "y":8064
                 }, 
                 {
                  "gid":2347,
@@ -1491,7 +1491,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":326,
+ "nextobjectid":327,
  "orientation":"orthogonal",
  "properties":
     {
