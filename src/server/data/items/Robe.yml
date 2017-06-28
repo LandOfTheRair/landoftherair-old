@@ -1,7 +1,7 @@
 - name: Deer Robe
   stats:
     energyResist: 30
-    necroticResist: 20
+    necroticResist: 10
     defense: 1
   desc: "a gold robe made from the hide of a deer"
   value: 100
@@ -11,7 +11,7 @@
   stats:
     armorClass: 2
     energyResist: 70
-    necroticResist: 50
+    necroticResist: 30
     defense: 2
   desc: "a silver robe made from the hide of a weredeer"
   value: 1000
