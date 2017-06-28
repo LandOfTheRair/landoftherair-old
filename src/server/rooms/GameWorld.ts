@@ -81,7 +81,7 @@ export class GameWorld extends Room<GameState> {
 
     this.allMapNames = opts.allMapNames;
 
-    this.setPatchRate(1000 / 120);
+    this.setPatchRate(1000 / 480);
     this.setSimulationInterval(this.tick.bind(this), 1000 / 60);
     this.setState(new GameState({
       players: [],
