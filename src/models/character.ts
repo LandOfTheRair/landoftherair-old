@@ -547,6 +547,8 @@ export class Character {
   restore(force = false) {}
 
   gainExp(xp: number) {
+    if(this.isDead()) return;
+    
     this.exp += xp;
 
     if(this.exp <= 100) {
