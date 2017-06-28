@@ -149,8 +149,6 @@ export class Spawner {
     npc.hp.toMaximum();
     npc.mp.toMaximum();
 
-    console.log(npc.name, npc.hp);
-
     return npc;
   }
 
