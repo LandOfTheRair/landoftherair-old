@@ -128,12 +128,12 @@ export class Spawner {
 
     if(npcData.hp) {
       const hp = random(npcData.hp.min, npcData.hp.max);
-      npcData.hp = { minimum: 0, maximum: hp, __current: hp };
+      npcData.stats.hp = hp;
     }
 
     if(npcData.mp) {
       const mp = random(npcData.mp.min, npcData.mp.max);
-      npcData.mp = { minimum: 0, maximum: mp, __current: mp };
+      npcData.stats.mp = mp;
     }
 
     const npc = new NPC(npcData);
@@ -146,6 +146,10 @@ export class Spawner {
     this.assignPath(npc);
     this.addNPC(npc);
     npc.recalculateStats();
+    npc.hp.toMaximum();
+    npc.mp.toMaximum();
+
+    console.log(npc.name, npc.hp);
 
     return npc;
   }

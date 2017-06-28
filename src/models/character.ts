@@ -179,6 +179,11 @@ export class Character {
     return this.totalStats[stat] || 0;
   }
 
+  initHpMp() {
+    this.hp = new RestrictedNumber(this.hp.minimum, this.hp.maximum, this.hp.__current);
+    this.mp = new RestrictedNumber(this.mp.minimum, this.mp.maximum, this.mp.__current);
+  }
+
   initSack() {
     this.sack = this.sack.map(item => new Item(item));
   }
@@ -206,9 +211,8 @@ export class Character {
 
   constructor(opts) {
     merge(this, opts);
-    this.hp = new RestrictedNumber(this.hp.minimum, this.hp.maximum, this.hp.__current);
-    this.mp = new RestrictedNumber(this.mp.minimum, this.mp.maximum, this.mp.__current);
 
+    this.initHpMp();
     this.init();
   }
 
