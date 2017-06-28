@@ -720,6 +720,7 @@ export class Character {
   }
 
   addAgro(char: Character, value) {
+    if(!char) return;
     this.agro[char.uuid] = this.agro[char.uuid] || 0;
     this.agro[char.uuid] += value;
 
