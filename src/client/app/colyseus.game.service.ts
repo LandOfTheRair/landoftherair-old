@@ -82,7 +82,6 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onUpdate.add((state) => {
-      console.log(state);
       this.clientGameState.setGroundItems(state.groundItems);
       this.clientGameState.setMapData(state.mapData);
       this.clientGameState.setMapNPCs(state.mapNPCs);
@@ -170,6 +169,7 @@ export class ColyseusGameService {
     }
 
     if(other.target)                this.setTarget(other.target);
+    if(action === 'set_map')        return this.setMap(other.map);
     if(action === 'update_locker')  return this.updateLocker(other.locker);
     if(action === 'show_lockers')   return this.showLockerWindow(other.lockers, other.lockerId);
     if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId);
@@ -179,6 +179,10 @@ export class ColyseusGameService {
     if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
+  }
+
+  private setMap(map: any) {
+    this.clientGameState.setMap(map);
   }
 
   private updateLocker(updateLocker: Locker) {

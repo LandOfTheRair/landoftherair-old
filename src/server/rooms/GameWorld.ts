@@ -246,6 +246,8 @@ export class GameWorld extends Room<GameState> {
       return false;
     }
 
+    this.send(client, { action: 'set_map', map: this.state.map });
+
     const player = new Player(playerData);
     player.$$room = this;
     player.initServer();
