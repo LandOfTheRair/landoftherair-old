@@ -22,11 +22,11 @@
     max: 500
 
   leftHand:
-    - null
+    - none
     - Antanian Wooden Shield
 
   rightHand:
-    - null
+    - none
     - Antanian Shortsword
     - Antanian Longsword
     - Antanian Staff
@@ -42,7 +42,7 @@
       - Antanian Breastplate
 
     Robe1:
-      - null
+      - none
       - Antanian Cloak
 
   copyDrops:
