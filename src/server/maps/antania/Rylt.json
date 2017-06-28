@@ -1900,6 +1900,166 @@
                  "width":64,
                  "x":7360,
                  "y":1600
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":392,
+                 "name":"Cave Monster Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-cave"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8064,
+                 "y":1280
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":393,
+                 "name":"Cave Monster Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-cave"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8704,
+                 "y":1216
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":394,
+                 "name":"Cave Monster Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-cave"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8832,
+                 "y":640
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":395,
+                 "name":"Cave Monster Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-cave"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9344,
+                 "y":1024
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":396,
+                 "name":"Cave Monster Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-cave"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8768,
+                 "y":1920
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":397,
+                 "name":"Cave Monster Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-cave"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9088,
+                 "y":2368
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":398,
+                 "name":"Cave Monster Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-cave"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9408,
+                 "y":3584
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":399,
+                 "name":"Cave Monster Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-cave"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8512,
+                 "y":3584
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2221,7 +2381,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":392,
+ "nextobjectid":400,
  "orientation":"orthogonal",
  "properties":
     {
