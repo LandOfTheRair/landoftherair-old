@@ -25,7 +25,6 @@ const DecorGids = {
   864: STONE_BRIDGE_DESC,
   865: STONE_BRIDGE_DESC,
   866: STONE_BRIDGE_DESC
-  
 };
 
 const SwimInfo = {
