@@ -889,12 +889,14 @@
                  "properties":
                     {
                      "lairName":"Tutorial Yeti",
+                     "randomWalkRadius":5,
                      "respawnRate":30,
                      "script":"global\/lair"
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
+                     "randomWalkRadius":"int",
                      "respawnRate":"int",
                      "script":"string"
                     },

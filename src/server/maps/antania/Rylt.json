@@ -1461,11 +1461,13 @@
                  "properties":
                     {
                      "lairName":"Rylt Werebear",
+                     "randomWalkRadius":5,
                      "script":"global\/lair"
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
+                     "randomWalkRadius":"int",
                      "script":"string"
                     },
                  "rotation":0,
