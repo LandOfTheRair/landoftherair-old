@@ -3,6 +3,7 @@
   width: 100%;
   height: 226px;
   overflow-y: auto;
+  word-wrap: break-word;
 
   &.window-size-xlarge {
     height: 606px;
