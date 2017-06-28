@@ -33,6 +33,7 @@ export class Poison extends SpellEffect {
 
     this.effectInfo = { damage, caster: caster.uuid };
     target.applyEffect(this);
+    this.effectMessage(caster, `You poisoned ${target.name}!`);
   }
 
   effectStart(char: Character) {

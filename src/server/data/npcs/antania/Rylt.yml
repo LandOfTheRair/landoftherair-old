@@ -105,6 +105,7 @@
   name: deer
   sprite: 205
   alignment: Good
+  allegiance: None
   hostility: OnHit
   stats: 8
   skillLevels:
