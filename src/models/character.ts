@@ -98,6 +98,7 @@ export class Stats {
 
   magicalResist = 0;
   physicalResist = 0;
+  necroticResist = 0;
   energyResist = 0;
   waterResist = 0;
   fireResist = 0;

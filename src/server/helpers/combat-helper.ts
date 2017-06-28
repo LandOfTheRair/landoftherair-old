@@ -253,6 +253,12 @@ export class CombatHelper {
     const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
     damage -= damageReduced;
 
+    // non-physical attacks are magical
+    if(damageClass !== 'physical') {
+      const magicReduction = defender.getTotalStat('magicalResist');
+      damage -= magicReduction;
+    }
+
     if(damage < 0) return 0;
 
     defender.hp.sub(damage);
