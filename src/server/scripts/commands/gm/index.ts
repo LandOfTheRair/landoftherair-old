@@ -2,6 +2,7 @@
 export * from './GMCreateGold';
 export * from './GMCreateItem';
 export * from './GMDuplicateItem';
+export * from './GMExamine';
 export * from './GMForgeItem';
 export * from './GMGainSkill';
 export * from './GMGainXP';

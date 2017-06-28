@@ -1,6 +1,14 @@
 
+- name: Leather Ring
+  stats:
+    armorClass: 1
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 1
+
 - name: Antanian Ring
   stats:
+    armorClass: 2
     defense: 1
   sprite: 215
   desc: "a simple gold ring"

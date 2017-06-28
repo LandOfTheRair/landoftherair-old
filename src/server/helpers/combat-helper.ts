@@ -259,8 +259,6 @@ export class CombatHelper {
       damage -= magicReduction;
     }
 
-    if(damage < 0) return 0;
-
     defender.hp.sub(damage);
 
     defender.sendClientMessage({ message: `${damageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' });
@@ -269,6 +267,8 @@ export class CombatHelper {
       defender.sendClientMessage({ message: `You died!`, subClass: 'combat other kill' });
       defender.die();
     }
+
+    if(damage < 0) return 0;
   }
 
   static dealDamage(
@@ -292,7 +292,7 @@ export class CombatHelper {
         damage -= magicReduction;
       }
 
-      if(damage < 0) return 0;
+      if(damage < 0) damage = 0;
     }
 
     const absDmg = Math.abs(damage);

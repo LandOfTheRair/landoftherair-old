@@ -27,7 +27,7 @@ export class MagicMissile extends SpellEffect {
       effect: this,
       skillRef,
       atkMsg: `You fling magic missiles at ${target.name}.`,
-      defMsg: `${target.name} hit you with magic missiles!`,
+      defMsg: `${caster.name} hit you with magic missiles!`,
       damage,
       damageClass: 'energy'
     });

@@ -3,9 +3,9 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../models/player';
 import { ItemCreator } from '../../../helpers/item-creator';
 
-export class GMKill extends Command {
+export class GMExamine extends Command {
 
-  public name = '@kill';
+  public name = '@examine';
   public format = 'Target';
 
   async execute(player: Player, { room, gameState, args }) {
@@ -16,9 +16,7 @@ export class GMKill extends Command {
 
     const target = possTargets[0];
     if(!target) return false;
-    if(target.hostility === 'Never') return player.sendClientMessage('That target is not killable.');
 
-    target.hp.toMinimum();
-    target.die(player);
+    player.sendClientMessage(JSON.stringify(target.toJSON()))
   }
 }
