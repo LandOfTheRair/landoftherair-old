@@ -4,6 +4,7 @@ import { range } from 'lodash';
 const WEAPON_RACK_DESC = 'You are standing near a rack of weapons. They look very pointy.';
 const ARMOR_STATUE_DESC = 'You are standing near a suit of armor.';
 const LOCKER_DESC = 'You are standing near a wardrobe. Every time you touch it, it feels warm and strangely familiar.';
+const STONE_BRIDGE_DESC = 'You are standing on a bridge made of stone.';
 
 const DecorGids = {
   204: WEAPON_RACK_DESC,
@@ -20,6 +21,11 @@ const DecorGids = {
   217: LOCKER_DESC,
   218: LOCKER_DESC,
   219: LOCKER_DESC,
+
+  864: STONE_BRIDGE_DESC,
+  865: STONE_BRIDGE_DESC,
+  866: STONE_BRIDGE_DESC
+  
 };
 
 const SwimInfo = {
