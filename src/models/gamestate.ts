@@ -1,5 +1,5 @@
 
-import { reject, filter, extend, find, pull, size } from 'lodash';
+import { reject, filter, extend, find, pull, size, pick } from 'lodash';
 
 import { Player } from './player';
 
@@ -264,12 +264,23 @@ export class GameState {
     return this.map.properties.maxSkill;
   }
 
+  cleanNPCs() {
+    return this.mapNPCs.map(npc => pick(npc, [
+      'agro', 'uuid', 'name',
+      'hostility', 'alignment', 'allegiance', 'allegianceReputation',
+      'dir', 'sprite',
+      'leftHand', 'rightHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2',
+      'hp',
+      'x', 'y'
+    ]));
+  }
+
   toJSON() {
     return {
       map: this.map,
       mapData: this.mapData,
       mapName: this.mapName,
-      mapNPCs: this.mapNPCs,
+      mapNPCs: this.cleanNPCs(),
       players: this.players,
       groundItems: this.groundItems
     };
