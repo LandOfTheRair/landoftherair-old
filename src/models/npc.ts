@@ -123,13 +123,15 @@ export class NPC extends Character {
       return;
     }
 
-    this.$$room.dropCorpseItems(this.$$corpseRef);
+    if(this.$$corpseRef) {
+      this.$$room.dropCorpseItems(this.$$corpseRef);
+      this.$$room.removeItemFromGround(this.$$corpseRef);
 
-    if(this.$$corpseRef.$heldBy) {
-      this.$$room.corpseCheck(this.$$room.state.findPlayer(this.$$corpseRef.$heldBy));
+      if(this.$$corpseRef.$heldBy) {
+        this.$$room.corpseCheck(this.$$room.state.findPlayer(this.$$corpseRef.$heldBy));
+      }
     }
 
-    this.$$room.removeItemFromGround(this.$$corpseRef);
     this.spawner.removeNPC(this);
   }
 }
