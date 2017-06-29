@@ -42,6 +42,7 @@ export class CombatHelper {
       attackerWeapon = attacker.rightHand
                     || attacker.gear.Hands
                     || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands',
+                         damageMin: 1, damageMax: 1, damageBase: 1,
                          isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
     }
 
@@ -85,8 +86,9 @@ export class CombatHelper {
       accuracy: attacker.getTotalStat('accuracy'),
       dex: attacker.getTotalStat('dex'),
       str: attacker.getTotalStat('str'),
-      str4: attacker.getTotalStat('str') / 4,
-      level: Math.max(1, attacker.level / Classes[attacker.baseClass || 'Undecided'].combatDivisor),
+      str4: Math.floor(attacker.getTotalStat('str') / 4),
+      divisor: Classes[attacker.baseClass || 'Undecided'].combatDivisor,
+      level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatDivisor),
       damageMin: attackerWeapon.minDamage,
       damageMax: attackerWeapon.maxDamage,
       damageBase: attackerWeapon.baseDamage
@@ -97,11 +99,11 @@ export class CombatHelper {
       defense: defender.getTotalStat('defense'),
       agi: defender.getTotalStat('agi'),
       dex: defender.getTotalStat('dex'),
-      dex4: defender.getTotalStat('dex') / 4,
+      dex4: Math.floor(defender.getTotalStat('dex') / 4),
       armorClass: defender.getTotalStat('armorClass'),
       shieldAC: defenderShield ? defenderShield.stats.armorClass : 0,
       shieldDefense: defenderShield ? defenderShield.stats.defense : 0,
-      level: Math.max(1, defender.level / Classes[defender.baseClass || 'Undecided'].combatDivisor)
+      level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatDivisor)
     };
 
     attackerWeapon.loseCondition(1, () => attacker.recalculateStats());
@@ -177,12 +179,12 @@ export class CombatHelper {
       }
     }
 
-    const damageLeft = Math.floor(attackerScope.skill + attackerScope.level);
+    const damageLeft = Math.floor(attackerScope.skill);
     const damageMax = random(attackerScope.damageMin, attackerScope.damageMax);
-    const damageRight = Math.floor(attackerScope.str + damageMax);
+    const damageRight = Math.floor(attackerScope.str + attackerScope.level + damageMax);
 
-    let damage = +dice.roll(`${damageLeft}d${damageRight}`) + attackerScope.damageBase;
-
+    let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}`) / attackerScope.divisor) + attackerScope.damageBase;
+    
     let damageType = 'was a successful strike';
 
     if(attackerScope.damageMin !== attackerScope.damageMax) {
@@ -316,12 +318,12 @@ export class CombatHelper {
       defender.addAgro(attacker, damage);
     } else {
       if(attacker) {
-        defender.sendClientMessageToRadius({ message: `${defender.name} was killed by ${attacker.name}!`, subClass: 'combat self kill' });
+        defender.sendClientMessageToRadius({ message: `${defender.name} was killed by ${attacker.name}!`, subClass: 'combat self kill' }, 5);
         defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
         defender.die(attacker);
         attacker.kill(defender);
       } else {
-        defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' });
+        defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' }, 5);
         defender.sendClientMessage({ message: `You were killed!`, subClass: 'combat other kill' });
         defender.die(attacker);
       }

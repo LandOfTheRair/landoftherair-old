@@ -53,7 +53,7 @@ class NPCLoader {
       'Wilderness': ['Underground', 'Enemy'],
       'Underground': ['Wilderness', 'Enemy'],
       'Pirates': ['Adventurers', 'Townsfolk', 'Enemy'],
-      'Enemy': ['None', 'Royalty', 'Townsfolk', 'Adventurers', 'Wilderness', 'Underground', 'Pirates']
+      'Enemy': ['Royalty', 'Townsfolk', 'Adventurers', 'Wilderness', 'Underground', 'Pirates']
     };
 
     antiReps[npc.allegiance].forEach(antiRep => npc.allegianceReputation[antiRep] = -1);
