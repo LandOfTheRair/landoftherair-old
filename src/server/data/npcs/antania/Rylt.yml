@@ -116,6 +116,8 @@
     Armor: Deer Robe
     Hands: Basic Claws
 
+  skillOnKill: 3
+
   usableSkills:
     - Bite
 
@@ -137,6 +139,8 @@
   skillLevels:
     Martial: 7
   level: 4
+
+  skillOnKill: 50
 
   gear:
     Armor: Weredeer Robe
@@ -164,6 +168,8 @@
   skillLevels:
     Martial: 5
   level: 3
+
+  skillOnKill: 10
 
   gold:
     min: 10
@@ -195,6 +201,8 @@
   skillLevels:
     Martial: 7
   level: 5
+
+  skillOnKill: 15
 
   gold:
     min: 40
@@ -230,6 +238,8 @@
   skillLevels:
     Martial: 10
   level: 7
+
+  skillOnKill: 75
 
   gear:
     Armor: Rylt Werebear Fur
@@ -271,6 +281,8 @@
   skillLevels:
     Martial: 10
   level: 7
+
+  skillOnKill: 25
 
   gold:
     min: 40
@@ -317,6 +329,8 @@
     Conjuration: 5
 
   level: 7
+
+  skillOnKill: 20
 
   gold:
     min: 40
@@ -388,6 +402,8 @@
     Staff: 2
 
   level: 3
+
+  skillOnKill: 15
 
   gold:
     min: 100
@@ -502,6 +518,8 @@
 
   level: 5
 
+  skillOnKill: 25
+
   gold:
     min: 500
     max: 700
@@ -576,6 +594,8 @@
 
   level: 7
 
+  skillOnKill: 50
+
   gold:
     min: 1500
     max: 1700
@@ -633,3 +653,155 @@
       chance: 10
     - drop: 'gear.Feet'
       chance: 10
+
+
+- npcId: Rylt Renegade Prisoner
+  name: prisoner
+  hostility: Always
+  sprite: [630, 635, 645, 650]
+  alignment: Evil
+  stats: 5
+  skillLevels:
+    Mace: 1
+    Longsword: 1
+    Shortsword: 1
+    Axe: 1
+    Dagger: 1
+    Staff: 1
+
+  level: 1
+  skillOnKill: 5
+
+  gold:
+    min: 30
+    max: 65
+
+  hp:
+    min: 50
+    max: 100
+
+  giveXp:
+    min: 75
+    max: 125
+
+  rightHand:
+    - Antanian Staff
+    - Antanian Dagger
+    - Antanian Longsword
+    - Antanian Mace
+    - Antanian Axe
+    - Antanian Shortsword
+  leftHand:
+    - result: none
+      chance: 4
+    - result: Antanian Wooden Shield
+      chance: 1
+
+  gear:
+    Ring1:
+      - result: none
+        chance: 9
+      - result: Leather Ring
+        chance: 2
+      - result: Antanian Ring
+        chance: 1
+      - result: Identify Ring
+        chance: 1
+    Armor:
+      - result: Antanian Tunic
+        chance: 9
+      - result: Antanian Studded Tunic
+        chance: 4
+      - result: Rylt Renegade Breastplate
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Head:
+      - result: none
+        chance: 10
+      - result: Antanian Helm
+        chance: 2
+    Hands:
+      - result: none
+        chance: 8
+      - result: Antanian Leather Gloves
+        chance: 1
+    Feet:
+      - result: none
+        chance: 7
+      - result: Antanian Leather Boots
+        chance: 1
+    Neck:
+      - result: none
+        chance: 10
+      - result: Antanian Amulet
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1
+
+  drops:
+    - result: Rylt Renegade Book
+      chance: 1
+      maxChance: 300
+
+- npcId: Rylt Prison Guard
+  name: guard
+  allegiance: 'None'
+  stats: 10
+  level: 10
+
+  skillLevels:
+    polearm: 7
+
+  allegianceReputation:
+    Enemy: -1
+
+  skillOnKill: 50
+
+  sprite: 625
+
+  hp:
+    min: 5000
+    max: 7000
+
+  gold:
+    min: 500
+    max: 1000
+
+  giveXp:
+    min: 1000
+    max: 2000
+
+  rightHand:
+    - Antanian Halberd
+
+  gear:
+    Armor:
+      - Antanian Breastplate
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
