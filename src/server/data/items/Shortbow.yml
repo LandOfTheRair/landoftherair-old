@@ -2,7 +2,7 @@
   stats:
     accuracy: 3
   desc: "a wooden shortbow"
-  baseDamage: 2
+  baseDamage: 7
   minDamage: 1
   maxDamage: 3
   type: Ranged

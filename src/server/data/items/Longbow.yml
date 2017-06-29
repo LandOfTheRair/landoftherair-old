@@ -2,7 +2,7 @@
   stats:
     accuracy: 1
   desc: "a wooden longbow"
-  baseDamage: 1
+  baseDamage: 6
   minDamage: 1
   maxDamage: 4
   type: Ranged

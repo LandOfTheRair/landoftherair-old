@@ -3,7 +3,7 @@
     accuracy: 5
   desc: "an iron dagger"
   isSackable: true
-  baseDamage: 2
+  baseDamage: 5
   minDamage: 1
   maxDamage: 2
   type: Dagger
@@ -16,7 +16,7 @@
     offense: 1
   desc: "an iron dagger engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   isSackable: true
-  baseDamage: 3
+  baseDamage: 7
   minDamage: 1
   maxDamage: 2
   type: Dagger

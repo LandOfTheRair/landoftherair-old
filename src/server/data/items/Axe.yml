@@ -1,6 +1,6 @@
 - name: Antanian Axe
   desc: "an iron axe"
-  baseDamage: 3
+  baseDamage: 5
   minDamage: 1
   maxDamage: 3
   type: Axe
@@ -12,7 +12,7 @@
     accuracy: 3
     offense: 1
   desc: "an iron axe engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 4
+  baseDamage: 8
   minDamage: 1
   maxDamage: 3
   type: Axe

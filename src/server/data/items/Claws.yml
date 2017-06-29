@@ -1,5 +1,5 @@
 - name: Basic Claws
-  baseDamage: 1
+  baseDamage: 3
   minDamage: 1
   maxDamage: 2
   sprite: -1

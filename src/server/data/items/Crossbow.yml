@@ -3,7 +3,7 @@
     accuracy: 1
     offense: 1
   desc: "a wooden crossbow"
-  baseDamage: 1
+  baseDamage: 5
   minDamage: 1
   maxDamage: 2
   type: Ranged
