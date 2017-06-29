@@ -219,7 +219,7 @@ export class Player extends Character {
 
   sellItem(item: Item) {
     const value = this.sellValue(item);
-    this.addGold(value);
+    this.gainGold(value);
     item._buybackValue = value;
 
     this.buyback.push(item);
@@ -252,7 +252,7 @@ export class Player extends Character {
     if(amount > this.banks[region]) amount = this.banks[region];
 
     this.banks[region] -= amount;
-    this.addGold(amount);
+    this.gainGold(amount);
     return amount;
   }
 

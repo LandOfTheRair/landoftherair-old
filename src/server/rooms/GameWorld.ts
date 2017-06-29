@@ -552,7 +552,7 @@ export class GameWorld extends Room<GameState> {
 
     corpse.searchItems.forEach(item => {
       if(searcher && item.itemClass === 'Coin') {
-        searcher.addGold(item.value);
+        searcher.gainGold(item.value);
         searcher.sendClientMessage(`You loot ${item.value} gold coins from the corpse.`);
 
       } else {

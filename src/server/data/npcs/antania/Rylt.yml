@@ -205,6 +205,10 @@
 
   tansFor: Rylt Bear Fur
 
+  drops:
+    - result: Antanian Bear Meat
+      chance: 30
+
 - npcId: Rylt Werebear
   name: werebear
   sprite: 210
@@ -232,6 +236,16 @@
   drops:
     - result: Werebear Claws
       chance: -1
+    - result: Antanian Bear Meat
+      chance: -1
+    - result: Antanian Bear Meat
+      chance: -1
+    - result: Antanian Bear Meat
+      chance: -1
+    - result: Antanian Bear Meat
+      chance: -1
+    - result: Antanian Bear Meat
+      chance: -1
 
 - npcId: Rylt Rockgolem
   name: rockgolem
@@ -257,6 +271,11 @@
 
   gear:
     Hands: Rylt Rockgolem Gloves
+    Armor:
+      - none
+      - Antanian Tunic
+      - Antanian Studded Tunic
+      - Antanian Cloak
 
   drops:
     - result: Antanian Leather Gloves
@@ -265,6 +284,12 @@
     - result: Antanian Leather Boots
       chance: 20
 
+    - result: Antanian Golem Brain
+      chance: 20
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
 
 - npcId: Rylt Cave Apprentice
   name: apprentice

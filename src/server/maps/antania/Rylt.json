@@ -1430,6 +1430,46 @@
                  "width":64,
                  "x":2944,
                  "y":1856
+                }, 
+                {
+                 "gid":2564,
+                 "height":64,
+                 "id":400,
+                 "name":"Ranger Bear",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/ranger"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2624,
+                 "y":5184
+                }, 
+                {
+                 "gid":2604,
+                 "height":64,
+                 "id":401,
+                 "name":"Rocky",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/rocky"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9664,
+                 "y":448
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2381,7 +2421,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":400,
+ "nextobjectid":402,
  "orientation":"orthogonal",
  "properties":
     {

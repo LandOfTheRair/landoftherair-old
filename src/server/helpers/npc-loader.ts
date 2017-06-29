@@ -25,8 +25,8 @@ export class NPCLoader {
     npc.vendorItems = await Promise.all(items.map(item => this.loadItem(item)));
   }
 
-  static checkPlayerHeldItem(player: Player, itemName: string) {
-    return player.hasHeldItem(itemName);
+  static checkPlayerHeldItem(player: Player, itemName: string, hand: 'left'|'right' = 'right') {
+    return player.hasHeldItem(itemName, hand);
   }
 
   static takePlayerItem(player: Player, itemName: string, hand: 'left'|'right' = 'right') {
@@ -43,5 +43,21 @@ export class NPCLoader {
 
   static givePlayerEffect(player: Player, effectName: string, { potency, duration }: any = {}) {
     player.applyEffect(new Effects[effectName]({ name: effectName, potency, duration }));
+  }
+
+  static getItemsFromPlayerSackByName(player: Player, name) {
+    const indexes = [];
+
+    for(let i = 0; i < player.sack.length; i++) {
+      const item = player.sack[i];
+      if(!item || item.name !== name) continue;
+      indexes.push(i);
+    }
+
+    return indexes;
+  }
+
+  static takeItemsFromPlayerSack(player: Player, sackIndexes = []) {
+    sackIndexes.reverse().forEach(index => player.takeItemFromSack(index));
   }
 }

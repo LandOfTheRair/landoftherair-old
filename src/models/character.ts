@@ -397,7 +397,7 @@ export class Character {
 
   addItemToSack(item: Item) {
     if(item.itemClass === 'Coin') {
-      this.addGold(item.value);
+      this.gainGold(item.value);
       return;
     }
     this.itemCheck(item);
@@ -435,7 +435,7 @@ export class Character {
     return item;
   }
 
-  addGold(gold: number) {
+  gainGold(gold: number) {
     if(gold <= 0) return;
     this.gold += gold;
   }

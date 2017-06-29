@@ -87,7 +87,7 @@ class ItemLoader {
       item.baseDamage = 1;
     }
 
-    if(item.itemClass === 'Bottle') {
+    if(item.itemClass === 'Bottle' || item.itemClass === 'Food') {
       item.ounces = item.ounces || 1;
     }
 
