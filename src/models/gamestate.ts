@@ -145,7 +145,6 @@ export class GameState {
 
 
     const regionObj = minBy(regionObjs, 'width');
-    
     let regionDesc = '';
 
     if(regionObj && regionObj.properties.desc) {
