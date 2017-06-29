@@ -1,0 +1,4 @@
+- name: Antanian Golem Brain
+  sprite: 64
+  desc: "a fresh brain ripped straight from a rockgolem"
+  value: 100

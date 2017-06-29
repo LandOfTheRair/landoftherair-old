@@ -124,3 +124,11 @@
     name: TrueSight
     duration: 100
   value: 200
+
+- name: Bear Meat Antidote
+  desc: "a small flask filled with liquid made of bear meat"
+  extendedDesc: "a flask of Antidote"
+  sprite: 142
+  effect:
+    name: Antidote
+  value: 1000

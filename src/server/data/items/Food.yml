@@ -1,0 +1,7 @@
+- name: Antanian Bear Meat
+  sprite: 932
+  desc: "a fresh chunk of bear meat from an Antanian bear"
+  value: 100
+  effect:
+    name: ExactHeal
+    potency: 100

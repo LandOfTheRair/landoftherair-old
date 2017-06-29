@@ -13,6 +13,8 @@ export * from './MinorCHA';
 export * from './MinorHP';
 export * from './MinorMP';
 
+export * from './Antidote';
+
 export * from './TrueSight';
 
 export * from './Afflict';

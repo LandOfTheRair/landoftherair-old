@@ -262,7 +262,7 @@ export class ItemComponent implements OnInit {
     if(this.item.itemClass !== 'Coin'
     && this.item.itemClass !== 'Corpse') scopes.push('wardrobe');
 
-    if(this.item.itemClass === 'Bottle'
+    if(this.item.itemClass === 'Bottle' || this.item.itemClass === 'Food'
     && (this.context === 'Sack'
       || this.context === 'Ground'
       || this.context === 'Right'

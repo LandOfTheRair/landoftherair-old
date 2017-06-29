@@ -55,7 +55,7 @@ export class CommandExecutor {
       return;
     }
 
-    if(startsWith(command, '~')) {
+    if(startsWith(command, '~') || startsWith(command, '@')) {
       return this.executeCommand(player, command, args);
     } else {
       player.queueAction({ command, args: args.args });
