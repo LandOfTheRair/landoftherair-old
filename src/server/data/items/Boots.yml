@@ -1,8 +1,19 @@
 - name: Antanian Leather Boots
   stats:
-    defense: 1
     accuracy: 3
   minDamage: 1
+  maxDamage: 3
+  baseDamage: 3
+  sprite: 232
+  desc: "a pair of leather boots"
+  value: 50
+
+- name: Rylt Renegade Leather Boots
+  stats:
+    defense: 1
+    offense: 1
+    accuracy: 4
+  minDamage: 3
   maxDamage: 3
   baseDamage: 3
   sprite: 232

@@ -1,7 +1,15 @@
 - name: Antanian Helm
   stats:
     armorClass: 2
+  sprite: 235
+  desc: "a simple iron helm"
+  value: 100
+
+- name: Rylt Renegade Helm
+  stats:
+    armorClass: 3
     defense: 1
+    offense: 1
   sprite: 235
   desc: "a simple iron helm"
   value: 100

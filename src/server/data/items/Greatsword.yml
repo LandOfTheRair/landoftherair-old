@@ -6,3 +6,15 @@
   type: Twohanded
   value: 150
   sprite: 198
+
+- name: Rylt Renegade Greatsword
+  stats:
+    offense: 1
+    accuracy: 2
+  desc: "an iron greatsword engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  baseDamage: 4
+  minDamage: 1
+  maxDamage: 5
+  type: Twohanded
+  value: 150
+  sprite: 198

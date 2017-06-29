@@ -102,7 +102,7 @@ export class CombatHelper {
       dex4: Math.floor(defender.getTotalStat('dex') / 4),
       armorClass: defender.getTotalStat('armorClass'),
       shieldAC: defenderShield ? defenderShield.stats.armorClass : 0,
-      shieldDefense: defenderShield ? defenderShield.stats.defense : 0,
+      shieldDefense: defenderShield ? defenderShield.stats.defense || 0 : 0,
       level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatDivisor)
     };
 
@@ -184,7 +184,7 @@ export class CombatHelper {
     const damageRight = Math.floor(attackerScope.str + attackerScope.level + damageMax);
 
     let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}`) / attackerScope.divisor) + attackerScope.damageBase;
-    
+
     let damageType = 'was a successful strike';
 
     if(attackerScope.damageMin !== attackerScope.damageMax) {
@@ -287,6 +287,10 @@ export class CombatHelper {
     if(!isHeal) {
       const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
       damage -= damageReduced;
+
+      if(damageReduced > 0 && attacker) {
+        attacker.sendClientMessage({ message: `Your attack is mangled by a magical force!`, subClass: `combat self blocked`, target: defender.uuid });
+      }
 
       // non-physical attacks are magical
       if(damageClass !== 'physical') {

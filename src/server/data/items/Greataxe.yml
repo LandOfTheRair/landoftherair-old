@@ -1,8 +1,19 @@
 - name: Antanian Greataxe
-  stats:
-    offense: 2
   desc: "an iron greataxe"
   baseDamage: 3
+  minDamage: 2
+  maxDamage: 5
+  type: Axe
+  secondaryType: Twohanded
+  value: 150
+  sprite: 453
+
+- name: Rylt Renegade Greataxe
+  stats:
+    offense: 2
+    accuracy: 2
+  desc: "an iron greataxe engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  baseDamage: 4
   minDamage: 2
   maxDamage: 5
   type: Axe

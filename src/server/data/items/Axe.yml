@@ -1,8 +1,18 @@
 - name: Antanian Axe
-  stats:
-    offense: 1
   desc: "an iron axe"
   baseDamage: 3
+  minDamage: 1
+  maxDamage: 3
+  type: Axe
+  value: 85
+  sprite: 165
+
+- name: Rylt Renegade Axe
+  stats:
+    accuracy: 3
+    offense: 1
+  desc: "an iron axe engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  baseDamage: 4
   minDamage: 1
   maxDamage: 3
   type: Axe

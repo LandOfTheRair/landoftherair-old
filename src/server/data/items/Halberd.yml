@@ -3,9 +3,21 @@
   desc: "an iron-tipped halberd"
   stats:
     armorClass: 1
+    accuracy: 3
+  baseDamage: 2
+  minDamage: 2
+  maxDamage: 5
+  type: Polearm
+  value: 145
+  sprite: 230
+
+- name: Rylt Renegade Halberd
+  desc: "an iron-tipped halberd engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  stats:
+    armorClass: 2
     offense: 1
     accuracy: 5
-  baseDamage: 2
+  baseDamage: 3
   minDamage: 2
   maxDamage: 5
   type: Polearm

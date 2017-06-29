@@ -353,6 +353,11 @@
         chance: 4
       - result: Cave Apprentice Robe
         chance: 2
+    Wrists:
+      - result: none
+        chance: 5
+      - result: Antanian Bracers
+        chance: 1
 
   usableSkills:
     - MagicMissile
@@ -364,3 +369,254 @@
       chance: -1
     - drop: 'gear.Neck'
       chance: -1
+    - drop: 'gear.Wrists'
+      chance: -1
+
+- npcId: Rylt Renegade
+  name: renegade
+  hostility: Always
+  sprite: [630, 635, 645, 650]
+  alignment: Evil
+  stats: 5
+  skillLevels:
+    Mace: 2
+    Longsword: 2
+    Axe: 2
+    Dagger: 2
+    Staff: 2
+
+  level: 3
+
+  gold:
+    min: 100
+    max: 200
+
+  hp:
+    min: 200
+    max: 300
+
+  giveXp:
+    min: 150
+    max: 250
+
+  rightHand:
+    - Antanian Staff
+    - Antanian Dagger
+    - Antanian Longsword
+    - Antanian Mace
+    - Antanian Axe
+  leftHand:
+    - result: none
+      chance: 2
+    - result: Antanian Wooden Shield
+      chance: 4
+    - result: Antanian Bubble Shield
+      chance: 1
+
+  gear:
+    Ring1:
+      - result: none
+        chance: 9
+      - result: Leather Ring
+        chance: 2
+      - result: Antanian Ring
+        chance: 1
+      - result: Identify Ring
+        chance: 1
+    Armor:
+      - result: Antanian Tunic
+        chance: 1
+      - result: Antanian Studded Tunic
+        chance: 2
+      - result: Antanian Ringmail Tunic
+        chance: 3
+      - result: Antanian Breastplate
+        chance: 4
+      - result: Rylt Renegade Breastplate
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Head:
+      - result: none
+        chance: 3
+      - result: Antanian Helm
+        chance: 2
+    Hands:
+      - result: none
+        chance: 3
+      - result: Antanian Leather Gloves
+        chance: 1
+    Feet:
+      - result: none
+        chance: 3
+      - result: Antanian Leather Boots
+        chance: 1
+    Neck:
+      - result: none
+        chance: 5
+      - result: Antanian Amulet
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1
+
+- npcId: Rylt Renegade Leader
+  name: leader
+  hostility: Always
+  sprite: 640
+  alignment: Evil
+  stats: 12
+  skillLevels:
+    Mace: 6
+    Longsword: 6
+    Axe: 6
+    Dagger: 6
+    Staff: 6
+
+  level: 5
+
+  gold:
+    min: 500
+    max: 700
+
+  hp:
+    min: 400
+    max: 600
+
+  giveXp:
+    min: 350
+    max: 550
+
+  rightHand:
+    - Rylt Renegade Staff
+    - Rylt Renegade Dagger
+    - Rylt Renegade Longsword
+    - Rylt Renegade Mace
+    - Rylt Renegade Axe
+  leftHand: Rylt Renegade Iron Shield
+
+  gear:
+    Ring1: Identify Ring
+    Armor: Rylt Renegade Breastplate
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Head: Antanian Helm
+    Hands: Antanian Leather Gloves
+    Feet: Antanian Leather Boots
+    Neck: Antanian Amulet
+
+  drops:
+    - result: Antanian Constitution Potion
+      chance: 30
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: 50
+    - drop: 'gear.Head'
+      chance: 20
+    - drop: 'gear.Hands'
+      chance: 20
+    - drop: 'gear.Neck'
+      chance: 20
+    - drop: 'gear.Feet'
+      chance: 20
+
+- npcId: Rylt Renegade Commander
+  name: commander
+  hostility: Always
+  sprite: 590
+  alignment: Evil
+  stats: 16
+  skillLevels:
+    Polearm: 8
+    Axe: 8
+    Mace: 8
+    TwoHanded: 8
+
+  level: 7
+
+  gold:
+    min: 1500
+    max: 1700
+
+  hp:
+    min: 1000
+    max: 1600
+
+  giveXp:
+    min: 850
+    max: 1050
+
+  rightHand:
+    - Rylt Renegade Greataxe
+    - Rylt Renegade Greatmace
+    - Rylt Renegade Greatsword
+    - Rylt Renegade Halberd
+
+  gear:
+    Ring1: Identify Ring
+    Armor: Rylt Renegade Breastplate
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Rylt Renegade Cloak
+        chance: 4
+    Head: Rylt Renegade Helm
+    Hands: Rylt Renegade Leather Gloves
+    Feet: Rylt Renegade Leather Boots
+    Waist: Rylt Renegade Sash
+
+  drops:
+    - result: Antanian Constitution Potion
+      chance: 50
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: 10
+    - drop: 'gear.Hands'
+      chance: 10
+    - drop: 'gear.Waist'
+      chance: 10
+    - drop: 'gear.Feet'
+      chance: 10
