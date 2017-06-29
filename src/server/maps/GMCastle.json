@@ -342,6 +342,30 @@
                  "width":64,
                  "x":2112,
                  "y":2304
+                }, 
+                {
+                 "gid":2559,
+                 "height":64,
+                 "id":213,
+                 "name":"Smith",
+                 "properties":
+                    {
+                     "costPerThousand":5,
+                     "repairsUpToCondition":100000,
+                     "script":"global\/smith"
+                    },
+                 "propertytypes":
+                    {
+                     "costPerThousand":"int",
+                     "repairsUpToCondition":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1984,
+                 "y":2304
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -369,7 +393,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":212,
+ "nextobjectid":214,
  "orientation":"orthogonal",
  "properties":
     {
