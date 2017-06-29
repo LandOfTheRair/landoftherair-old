@@ -120,8 +120,8 @@
     - Bite
 
   hp:
-    min: 100
-    max: 200
+    min: 50
+    max: 100
 
   giveXp:
     min: 10
@@ -170,8 +170,8 @@
     max: 20
 
   hp:
-    min: 250
-    max: 400
+    min: 200
+    max: 300
 
   giveXp:
     min: 100
@@ -201,8 +201,8 @@
     max: 90
 
   hp:
-    min: 550
-    max: 700
+    min: 400
+    max: 600
 
   giveXp:
     min: 200
@@ -277,8 +277,8 @@
     max: 90
 
   hp:
-    min: 950
-    max: 1300
+    min: 700
+    max: 900
 
   giveXp:
     min: 500

@@ -1,6 +1,6 @@
-import { NPC } from '../../../../../models/npc';
-import { NPCLoader } from '../../../../helpers/npc-loader';
-import { SmithResponses } from '../../common-responses';
+import { NPC } from '../../../../models/npc';
+import { NPCLoader } from '../../../helpers/npc-loader';
+import { SmithResponses } from '../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
