@@ -7,6 +7,10 @@ import { invert } from 'lodash';
 export const TrueSightMap = {
   62: 1076,
   63: 1075,
+
+  78: 1087,
+  79: 1086,
+
   111: 1100,
   112: 1101
 };
