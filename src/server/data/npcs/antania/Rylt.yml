@@ -482,6 +482,11 @@
     - drop: 'gear.Feet'
       chance: -1
 
+  drops:
+    - result: Rylt Renegade Book
+      chance: 1
+      maxChance: 500
+
 - npcId: Rylt Renegade Leader
   name: leader
   hostility: Always
@@ -533,6 +538,9 @@
   drops:
     - result: Antanian Constitution Potion
       chance: 30
+    - result: Rylt Renegade Book
+      chance: 1
+      maxChance: 450
 
   copyDrops:
     - drop: 'rightHand'
@@ -602,6 +610,9 @@
   drops:
     - result: Antanian Constitution Potion
       chance: 50
+    - result: Rylt Renegade Book
+      chance: 1
+      maxChance: 400
 
   copyDrops:
     - drop: 'rightHand'
