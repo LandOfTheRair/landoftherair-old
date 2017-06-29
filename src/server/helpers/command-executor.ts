@@ -13,6 +13,11 @@ Object.keys(Commands).forEach(cmd => {
 
   let names = command.name;
 
+  // a monster skill has no name
+  if(!command.name) {
+    skillHash[cmd.toLowerCase()] = command;
+  }
+
   if(!isArray(command.name)) {
     names = [command.name];
   }

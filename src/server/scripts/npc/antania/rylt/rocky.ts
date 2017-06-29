@@ -8,7 +8,7 @@ export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
   npc.rightHand = await NPCLoader.loadItem(GOLEM_ROCK);
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Breastplate');
+  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
