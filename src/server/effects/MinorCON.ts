@@ -8,7 +8,7 @@ export class MinorCON extends Effect {
       return this.effectMessage(char, 'The fluid was tasteless.');
     }
 
-    if(char.stats.hp < 100) {
+    if(!(<any>this).ignoreHPBoost && char.stats.hp < 100) {
       char.stats.hp += 3;
     }
 

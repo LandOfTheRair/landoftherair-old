@@ -11,12 +11,16 @@ export class GMExamine extends Command {
   async execute(player: Player, { room, gameState, args }) {
     if(!player.isGM) return;
 
+    if(!args && player.rightHand) {
+      player.sendClientMessage(JSON.stringify(player.rightHand.toJSON()));
+    }
+
     const possTargets = room.getPossibleMessageTargets(player, args);
     if(!possTargets.length) return player.sendClientMessage('You do not see that person.');
 
     const target = possTargets[0];
     if(!target) return false;
 
-    player.sendClientMessage(JSON.stringify(target.toJSON()))
+    player.sendClientMessage(JSON.stringify(target.toJSON()));
   }
 }

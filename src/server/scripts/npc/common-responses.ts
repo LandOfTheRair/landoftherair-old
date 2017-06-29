@@ -165,6 +165,8 @@ export const AlchemistResponses = (npc: NPC) => {
 
       let itemsRemoved = 0;
 
+      const indexes = [];
+
       player.sack.forEach((checkItem, i) => {
         if(checkItem.name !== item.name) return;
         if(checkItem.ounces + item.ounces > npc.alchOz) return;
@@ -173,10 +175,12 @@ export const AlchemistResponses = (npc: NPC) => {
         if(npc.alchCost > cost) return;
 
         player.loseGold(cost);
-        player.takeItemFromSack(i);
+        indexes.push(i);
         item.ounces += checkItem.ounces;
         itemsRemoved++;
       });
+
+      indexes.reverse().forEach(index => player.takeItemFromSack(index));
 
       if(itemsRemoved === 0) return 'I was not able to combine any bottles.';
 

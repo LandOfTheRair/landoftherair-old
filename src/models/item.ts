@@ -1,7 +1,6 @@
 
-import { extend, omitBy, includes, without } from 'lodash';
+import { extend, omitBy, includes, without, isNumber } from 'lodash';
 import * as uuid from 'uuid/v4';
-import { Player } from './player';
 import { Character } from './character';
 
 import * as Effects from '../server/effects';
@@ -233,7 +232,7 @@ export class Item {
 
   use(char: Character) {
     if(!this.canUse(char)) return false;
-    if(this.effect) {
+    if(this.effect && (isNumber(this.ounces) ? this.ounces > 0 : true)) {
       if(!Effects[this.effect.name]) {
         Logger.error(new Error(`Error: Effect ${this.effect.name} does not exist.`));
         return false;

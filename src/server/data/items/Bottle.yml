@@ -116,6 +116,16 @@
     potency: 5
   value: 150000
 
+- name: Bradley Constitution Potion
+  desc: "a small bottle filled with crimson fluid, etched with the number II. It smells like cherries"
+  extendedDesc: "a potion of constitution"
+  sprite: 153
+  effect:
+    name: MinorCON
+    potency: 1
+    ignoreHPBoost: true
+  value: 500
+
 - name: TrueSight Potion
   desc: "a small bottle covered with eyes"
   extendedDesc: "a potion of TrueSight"

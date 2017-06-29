@@ -28,14 +28,8 @@ export const responses = (npc: NPC) => {
         let total = 150;
         NPCLoader.takePlayerItem(player, BEAR_MEAT, 'left');
 
-        const indexes = [];
-
-        for(let i = 0; i < player.sack.length; i++) {
-          const item = player.sack[i];
-          if(!item || item.name !== BEAR_MEAT) continue;
-          total += 150;
-          indexes.push(i);
-        }
+        const indexes = NPCLoader.getItemsFromPlayerSackByName(player, BEAR_MEAT);
+        total += indexes.length * 150;
 
         indexes.reverse().forEach(index => player.takeItemFromSack(index));
 

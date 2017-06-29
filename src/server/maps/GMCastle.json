@@ -303,7 +303,7 @@
                  "gid":3134,
                  "height":64,
                  "id":196,
-                 "name":"MinorAlchemist",
+                 "name":"MinorPotionVendor",
                  "properties":
                     {
                      "script":"gm\/minoralchemist"
@@ -317,6 +317,30 @@
                  "visible":true,
                  "width":64,
                  "x":2240,
+                 "y":2304
+                }, 
+                {
+                 "gid":3089,
+                 "height":64,
+                 "id":211,
+                 "name":"Alchemist",
+                 "properties":
+                    {
+                     "alchCost":50,
+                     "alchOz":1000,
+                     "script":"global\/alchemist"
+                    },
+                 "propertytypes":
+                    {
+                     "alchCost":"int",
+                     "alchOz":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2112,
                  "y":2304
                 }],
          "opacity":1,
@@ -345,7 +369,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":211,
+ "nextobjectid":212,
  "orientation":"orthogonal",
  "properties":
     {
