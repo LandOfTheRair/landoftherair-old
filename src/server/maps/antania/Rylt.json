@@ -1204,7 +1204,7 @@
                     {
                      "costPerThousand":5,
                      "repairsUpToCondition":20000,
-                     "script":"antania\/rylt\/smith"
+                     "script":"global\/smith"
                     },
                  "propertytypes":
                     {
@@ -2752,14 +2752,90 @@
                  "width":512,
                  "x":5056,
                  "y":6208
+                }, 
+                {
+                 "height":448,
+                 "id":419,
+                 "name":"Renegade Commander",
+                 "properties":
+                    {
+                     "desc":"You feel an overwhelming sense of dread, the renegade commander must be nearby."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1536,
+                 "x":5312,
+                 "y":9280
+                }, 
+                {
+                 "height":1728,
+                 "id":421,
+                 "name":"Renegade Camp",
+                 "properties":
+                    {
+                     "desc":"You find yourself in the central renegade camp."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":2496,
+                 "x":7296,
+                 "y":7424
+                }, 
+                {
+                 "height":320,
+                 "id":422,
+                 "name":"Renegade Leader",
+                 "properties":
+                    {
+                     "desc":"You see one of the renegade leaders, brandishing his weapon."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":8256,
+                 "y":9280
+                }, 
+                {
+                 "height":384,
+                 "id":423,
+                 "name":"Renegade Leader",
+                 "properties":
+                    {
+                     "desc":"You see one of the renegade leaders, brandishing his weapon."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":9344,
+                 "y":9152
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
- "nextobjectid":418,
+ "nextobjectid":425,
  "orientation":"orthogonal",
  "properties":
     {
