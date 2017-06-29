@@ -36,7 +36,7 @@ export class MerchantToSack extends Command {
       const newItem = new Item(item);
       newItem.regenerateUUID();
 
-      player.addItemToSack(item);
+      player.addItemToSack(newItem);
     }
   }
 

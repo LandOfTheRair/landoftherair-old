@@ -63,9 +63,9 @@
   level: 20
 
   skillLevels:
-    twohanded: 20
-    polearm: 20
-    mace: 20
+    twohanded: 10
+    polearm: 10
+    mace: 10
 
   allegianceReputation:
     Enemy: -1

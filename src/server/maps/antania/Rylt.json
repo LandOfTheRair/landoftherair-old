@@ -1248,6 +1248,14 @@
                  "height":64,
                  "id":222,
                  "name":"Bradley",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/bradley"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
