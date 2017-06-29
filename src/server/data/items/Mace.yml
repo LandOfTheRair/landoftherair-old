@@ -1,9 +1,20 @@
 - name: Antanian Mace
   stats:
     accuracy: 4
-    offense: 2
   desc: "an iron mace"
   baseDamage: 2
+  minDamage: 1
+  maxDamage: 3
+  type: Mace
+  value: 105
+  sprite: 204
+
+- name: Rylt Renegade Mace
+  stats:
+    accuracy: 6
+    offense: 1
+  desc: "an iron mace engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  baseDamage: 3
   minDamage: 1
   maxDamage: 3
   type: Mace

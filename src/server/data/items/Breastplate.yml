@@ -2,7 +2,15 @@
 - name: Antanian Breastplate
   stats:
     armorClass: 5
+  sprite: 210
+  desc: "a simple iron breastplate"
+  value: 500
+
+- name: Rylt Renegade Breastplate
+  stats:
+    armorClass: 7
     defense: 1
+    physicalResist: 10
   sprite: 210
   desc: "a simple iron breastplate"
   value: 500

@@ -1,8 +1,34 @@
 - name: Antanian Wooden Shield
   stats:
-    defense: 1
     armorClass: 2
   desc: "a wooden shield"
   type: Mace
   value: 200
   sprite: 327
+
+- name: Antanian Bubble Shield
+  stats:
+    armorClass: 4
+  desc: "an wooden shield set with a circle of iron"
+  type: Mace
+  value: 400
+  sprite: 328
+
+- name: Antanian Iron Shield
+  stats:
+    armorClass: 6
+  desc: "a wrought iron shield"
+  type: Mace
+  value: 600
+  sprite: 329
+
+- name: Rylt Renegade Iron Shield
+  stats:
+    defense: 1
+    armorClass: 8
+  desc: "a wrought iron shield engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  type: Mace
+  value: 800
+  sprite: 329
+
+

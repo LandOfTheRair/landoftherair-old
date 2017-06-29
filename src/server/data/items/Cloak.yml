@@ -1,7 +1,15 @@
 - name: Antanian Cloak
   stats:
     armorClass: 1
+  desc: "a woolen cloak"
+  value: 1
+  sprite: 211
+
+- name: Rylt Renegade Cloak
+  stats:
+    armorClass: 1
     defense: 1
+    offense: 1
   desc: "a woolen cloak"
   value: 1
   sprite: 211

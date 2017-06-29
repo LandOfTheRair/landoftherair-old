@@ -6,3 +6,15 @@
   type: Onehanded
   value: 115
   sprite: 197
+
+- name: Rylt Renegade Longsword
+  desc: "an iron longsword engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  stats:
+    accuracy: 2
+    offense: 1
+  baseDamage: 3
+  minDamage: 3
+  maxDamage: 4
+  type: Onehanded
+  value: 115
+  sprite: 197

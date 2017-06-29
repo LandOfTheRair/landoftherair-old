@@ -1,8 +1,19 @@
 - name: Antanian Leather Gloves
   stats:
-    defense: 1
     accuracy: 3
   baseDamage: 1
+  minDamage: 1
+  maxDamage: 2
+  sprite: 233
+  desc: "a pair of leather gloves"
+  value: 50
+
+- name: Rylt Renegade Leather Gloves
+  stats:
+    defense: 1
+    offense: 1
+    accuracy: 4
+  baseDamage: 3
   minDamage: 1
   maxDamage: 2
   sprite: 233

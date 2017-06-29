@@ -1,6 +1,6 @@
 - name: Antanian Bracers
   stats:
-    defense: 1
+    armorClass: 1
   sprite: 234
   desc: "a pair of gold bracers"
   value: 100

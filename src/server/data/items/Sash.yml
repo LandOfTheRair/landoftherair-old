@@ -1,7 +1,16 @@
 
 - name: Antanian Sash
   stats:
+    armorClass: 1
+  sprite: 236
+  desc: "a simple silk sash"
+  value: 150
+
+- name: Rylt Renegade Sash
+  stats:
+    armorClass: 2
     defense: 1
+    offense: 1
   sprite: 236
   desc: "a simple silk sash"
   value: 150
