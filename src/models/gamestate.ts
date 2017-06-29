@@ -1,5 +1,5 @@
 
-import { reject, filter, extend, find, pull, size, pick } from 'lodash';
+import { reject, filter, extend, find, pull, size, pick, minBy } from 'lodash';
 
 import { Player } from './player';
 
@@ -132,17 +132,20 @@ export class GameState {
       player.swimLevel = 0;
     }
 
-    const regionObj = find(this.map.layers[MapLayer.RegionDescriptions].objects, reg => {
+    const regionObjs = filter(this.map.layers[MapLayer.RegionDescriptions].objects, reg => {
       const x = (reg.x / 64);
       const y = (reg.y / 64);
       const width = reg.width / 64;
       const height = reg.height / 64;
-      return player.x > x
+      return player.x >= x
           && player.x < x + width
-          && player.y > y
+          && player.y >= y
           && player.y < y + height;
     });
 
+
+    const regionObj = minBy(regionObjs, 'width');
+    
     let regionDesc = '';
 
     if(regionObj && regionObj.properties.desc) {

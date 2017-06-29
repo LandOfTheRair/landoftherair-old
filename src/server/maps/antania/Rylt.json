@@ -2828,6 +2828,25 @@
                  "width":320,
                  "x":9344,
                  "y":9152
+                }, 
+                {
+                 "height":64,
+                 "id":425,
+                 "name":"Scarecrow Passage",
+                 "properties":
+                    {
+                     "desc":"You step over the scarecrow, and see a hidden hole in the ground."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9472,
+                 "y":8128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2835,7 +2854,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":425,
+ "nextobjectid":426,
  "orientation":"orthogonal",
  "properties":
     {
