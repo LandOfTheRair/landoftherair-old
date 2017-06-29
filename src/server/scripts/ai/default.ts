@@ -38,9 +38,6 @@ export const tick = (npc: NPC) => {
         skill = 'Throw';
       }
       chosenSkill = CommandExecutor.checkIfCanUseSkill(skill, npc, highestAgro);
-      if(skill === 'EnergyMissile') {
-        console.log(skill, chosenSkill, npc.name);
-      }
     });
 
 

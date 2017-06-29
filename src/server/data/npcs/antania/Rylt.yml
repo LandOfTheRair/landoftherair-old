@@ -116,6 +116,9 @@
     Armor: Deer Robe
     Hands: Basic Claws
 
+  usableSkills:
+    - Bite
+
   hp:
     min: 100
     max: 200
@@ -138,6 +141,9 @@
   gear:
     Armor: Weredeer Robe
     Hands: Werebear Claws
+
+  usableSkills:
+    - Bite
 
   hp:
     min: 1000
@@ -175,6 +181,9 @@
     Armor: Rylt Fur
     Hands: Basic Claws
 
+  usableSkills:
+    - Bite
+
   tansFor: Rylt Fur
 
 - npcId: Rylt Bear
@@ -205,6 +214,9 @@
 
   tansFor: Rylt Bear Fur
 
+  usableSkills:
+    - Bite
+
   drops:
     - result: Antanian Bear Meat
       chance: 30
@@ -232,6 +244,9 @@
     max: 2000
 
   tansFor: Rylt Werebear Fur
+
+  usableSkills:
+    - Bite
 
   drops:
     - result: Werebear Claws
