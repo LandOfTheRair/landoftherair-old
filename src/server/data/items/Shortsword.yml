@@ -1,6 +1,6 @@
 - name: Antanian Shortsword
   desc: "an iron shortsword"
-  baseDamage: 1
+  baseDamage: 7
   minDamage: 1
   maxDamage: 3
   type: Shortsword

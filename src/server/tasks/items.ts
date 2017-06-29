@@ -74,6 +74,10 @@ class ItemLoader {
       item.attackRange = 1;
     }
 
+    if(item.itemClass === 'Twohanded' || item.secondaryType === 'Twohanded') {
+      item.twoHanded = true;
+    }
+
     if(includes(['Shortbow', 'Longbow'], item.itemClass)) {
       item.twoHanded = true;
     }

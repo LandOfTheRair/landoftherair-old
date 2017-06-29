@@ -1,6 +1,6 @@
 - name: Antanian Longsword
   desc: "an iron longsword"
-  baseDamage: 2
+  baseDamage: 6
   minDamage: 3
   maxDamage: 4
   type: Onehanded
@@ -12,7 +12,7 @@
   stats:
     accuracy: 2
     offense: 1
-  baseDamage: 3
+  baseDamage: 8
   minDamage: 3
   maxDamage: 4
   type: Onehanded

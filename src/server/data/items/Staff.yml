@@ -1,6 +1,6 @@
 - name: Antanian Staff
   desc: "a wooden staff"
-  baseDamage: 1
+  baseDamage: 4
   minDamage: 1
   maxDamage: 1
   type: Staff
@@ -12,7 +12,7 @@
   stats:
     offense: 1
     accuracy: 3
-  baseDamage: 2
+  baseDamage: 6
   minDamage: 1
   maxDamage: 2
   type: Staff

@@ -2,7 +2,7 @@
   stats:
     accuracy: 4
   desc: "an iron mace"
-  baseDamage: 2
+  baseDamage: 4
   minDamage: 1
   maxDamage: 3
   type: Mace
@@ -14,7 +14,7 @@
     accuracy: 6
     offense: 1
   desc: "an iron mace engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 3
+  baseDamage: 7
   minDamage: 1
   maxDamage: 3
   type: Mace

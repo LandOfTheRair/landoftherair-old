@@ -1,6 +1,6 @@
 - name: Antanian Greatsword
   desc: "an iron greatsword"
-  baseDamage: 3
+  baseDamage: 7
   minDamage: 1
   maxDamage: 5
   type: Twohanded
@@ -12,7 +12,7 @@
     offense: 1
     accuracy: 2
   desc: "an iron greatsword engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 4
+  baseDamage: 9
   minDamage: 1
   maxDamage: 5
   type: Twohanded

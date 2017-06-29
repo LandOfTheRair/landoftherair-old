@@ -4,7 +4,7 @@
   stats:
     armorClass: 1
     accuracy: 3
-  baseDamage: 2
+  baseDamage: 6
   minDamage: 2
   maxDamage: 5
   type: Polearm
@@ -17,7 +17,7 @@
     armorClass: 2
     offense: 1
     accuracy: 5
-  baseDamage: 3
+  baseDamage: 9
   minDamage: 2
   maxDamage: 5
   type: Polearm

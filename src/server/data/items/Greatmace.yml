@@ -1,6 +1,6 @@
 - name: Antanian Greatmace
   desc: "an iron greatmace"
-  baseDamage: 3
+  baseDamage: 8
   minDamage: 2
   maxDamage: 5
   type: Mace
@@ -13,7 +13,7 @@
     offense: 1
     accuracy: 2
   desc: "an iron greatmace engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 4
+  baseDamage: 10
   minDamage: 2
   maxDamage: 5
   type: Mace
