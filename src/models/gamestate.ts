@@ -62,6 +62,14 @@ export class GameState {
     this.players = reject(this.players, p => p.username === username);
   }
 
+  resetFOV(player) {
+    Object.keys(player.$fov).forEach(x => {
+      Object.keys(player.$fov[x]).forEach(y => {
+        player.$fov[x][y] = false;
+      });
+    });
+  }
+
   calculateFOV(player) {
     const affected = {};
 
