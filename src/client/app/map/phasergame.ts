@@ -375,6 +375,11 @@ export class Game {
     });
   }
 
+  public cacheMap(mapData) {
+    if(!mapData) return;
+    this.g.load.tiledmap(cacheKey(this.clientGameState.mapName, 'tiledmap'), null, mapData, (<any>window).Phaser.Tilemap.TILED_JSON);
+  }
+
   preload() {
     this.g.add.plugin(new TiledPlugin(this.g, this.g.stage));
 
@@ -383,6 +388,8 @@ export class Game {
 
     // remove unused tileset to prevent warnings since things on a layer that uses this tileset are handled manually
     loadMap.tilesets.length = 3;
+
+    this.cacheMap(loadMap);
 
     this.g.load.tiledmap(cacheKey(this.clientGameState.mapName, 'tiledmap'), null, loadMap, (<any>window).Phaser.Tilemap.TILED_JSON);
 
