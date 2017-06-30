@@ -42,7 +42,7 @@ export class CombatHelper {
       attackerWeapon = attacker.rightHand
                     || attacker.gear.Hands
                     || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands',
-                         damageMin: 1, damageMax: 1, damageBase: 1,
+                         minDamage: 1, maxDamage: 1, baseDamage: 1,
                          isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
     }
 
