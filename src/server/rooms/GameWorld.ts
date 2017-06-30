@@ -139,7 +139,7 @@ export class GameWorld extends Room<GameState> {
       overName = name;
       overClass = subClass;
       overTarget = target;
-      overDir = dirFrom
+      overDir = dirFrom;
 
       if(overClass) {
         grouping = overClass.split(' ')[0];
