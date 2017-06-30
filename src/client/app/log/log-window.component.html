@@ -18,6 +18,7 @@
          [class.hidden]="message.grouping !== 'always' && !filters[message.grouping]"
          [ngClass]="['font-size-'+fontSize]"
          *ngFor="let message of clientGameState.logMessages">
+      <span *ngIf="message.dirFrom">From the {{ message.dirFrom }} you hear </span>
       <strong *ngIf="message.name">{{ message.name }}: </strong>{{ message.message }}
     </div>
   </div>
