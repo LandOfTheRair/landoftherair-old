@@ -93,7 +93,6 @@ export class GameWorld extends Room<GameState> {
   }
 
   savePlayer(player: Player) {
-    console.log('saveplayer');
     if(player.$$doNotSave) return;
 
     if(player._id) {
