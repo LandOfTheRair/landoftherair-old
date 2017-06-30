@@ -2,13 +2,13 @@
 <div class="message-container-container" [ngClass]="['window-size-' + windowSize]">
 
   <div class="filter-buttons d-flex justify-content-around">
-    <button class="btn btn-sm btn-info no-border-radius" btnCheckbox [(ngModel)]="filters.env">
+    <button class="btn btn-sm btn-info no-border-radius" btnCheckbox [(ngModel)]="filters.env" (click)="saveFilters()">
       Environment [{{ filters.env ? 'ON' : 'OFF'}}]
     </button>
-    <div class="btn btn-sm btn-info no-border-radius" btnCheckbox [(ngModel)]="filters.combat">
+    <div class="btn btn-sm btn-info no-border-radius" btnCheckbox [(ngModel)]="filters.combat" (click)="saveFilters()">
       Combat [{{ filters.combat ? 'ON' : 'OFF'}}]
     </div>
-    <div class="btn btn-sm btn-info no-border-radius" btnCheckbox [(ngModel)]="filters.chatter">
+    <div class="btn btn-sm btn-info no-border-radius" btnCheckbox [(ngModel)]="filters.chatter" (click)="saveFilters()">
       Chatter [{{ filters.chatter ? 'ON' : 'OFF'}}]
     </div>
   </div>
