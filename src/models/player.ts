@@ -256,7 +256,7 @@ export class Player extends Character {
     return amount;
   }
 
-  sendClientMessage(message) {
+  sendClientMessage(message): void {
     this.$$room.sendPlayerLogMessage(this, message);
   }
 

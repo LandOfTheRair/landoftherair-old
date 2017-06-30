@@ -13,11 +13,7 @@ export class LeftToBelt extends Command {
     const item = player.leftHand;
     if(!item) return false;
 
-    if(!item.isBeltable) return player.sendClientMessage('That item is not beltable.');
-
-    if(player.fullBelt()) return player.sendClientMessage('Your belt is full.');
-
-    player.addItemToBelt(item);
+    if(!player.addItemToBelt(item)) return;
     player.setLeftHand(null);
   }
 

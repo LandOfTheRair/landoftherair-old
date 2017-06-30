@@ -23,7 +23,7 @@ import * as Classes from '../classes';
 import { Character } from '../../models/character';
 import { ItemCreator } from '../helpers/item-creator';
 import { Item } from '../../models/item';
-import { Locker } from '../../models/locker';
+import { Locker } from '../../models/container/locker';
 
 const TickRates = {
   // tick players every second

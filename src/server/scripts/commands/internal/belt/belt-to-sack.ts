@@ -11,19 +11,16 @@ export class BeltToSack extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const slot = +args;
-    if(isUndefined(slot)) return false;
 
-    const item = player.belt[slot];
+    if(!this.checkPlayerEmptyHand(player)) return;
+
+    const item = player.belt.getItemFromSlot(slot);
     if(!item) return false;
 
-    if(!item.isSackable) return player.sendClientMessage('That item is not sackable.');
+    const added = this.addItemToContainer(player, player.sack, item);
+    if(!added) return;
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-
-    if(player.fullSack()) return player.sendClientMessage('Your sack is full.');
-
-    player.addItemToSack(item);
-    player.takeItemFromBelt(slot);
+    player.belt.takeItemFromSlot(slot);
   }
 
 }

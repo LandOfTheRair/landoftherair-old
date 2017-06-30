@@ -14,25 +14,19 @@ export class LockerToEquip extends Command {
     const [slotStr, lockerId] = args.split(' ');
     const slot = +slotStr;
 
-    if(isUndefined(slot)) return false;
-
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-
-    // check if player standing on locker and region is same as room region
-    const interactable = find(gameState.map.layers[MapLayer.Interactables].objects, { x: player.x * 64, y: (player.y + 1) * 64, type: 'Locker' });
-
-    if(!interactable) return player.sendClientMessage('There is no locker there.');
+    if(!this.checkPlayerEmptyHand(player)) return;
+    if(!this.findLocker(player)) return;
 
     const locker = await room.loadLocker(player, lockerId);
     if(!locker) return false;
 
-    const item = locker.items[slot];
+    const item = locker.getItemFromSlot(slot);
     if(!item) return false;
 
     if(!player.canEquip(item)) return player.sendClientMessage('You cannot equip that item.');
 
     player.equip(item);
-    locker.takeItemFromLocker(slot);
+    locker.takeItemFromSlot(slot);
     room.updateLocker(player, locker);
   }
 

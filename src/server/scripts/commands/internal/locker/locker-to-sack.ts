@@ -14,30 +14,17 @@ export class LockerToSack extends Command {
     const [slotId, lockerId] = args.split(' ');
 
     const slot = +slotId;
-    if(isUndefined(slot)) return false;
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-
-    // check if player standing on locker and region is same as room region
-    const interactable = find(gameState.map.layers[MapLayer.Interactables].objects, { x: player.x * 64, y: (player.y + 1) * 64, type: 'Locker' });
-
-    if(!interactable) return player.sendClientMessage('There is no locker there.');
+    if(!this.checkPlayerEmptyHand(player)) return;
+    if(!this.findLocker(player)) return;
 
     const locker = await room.loadLocker(player, lockerId);
     if(!locker) return false;
 
-    const item = locker.items[slot];
-    if(!item) return false;
+    const item = locker.takeItemFromSlot(slot);
+    if(!item) return;
 
-    if(!item.isSackable) return player.sendClientMessage('That item is not sackable.');
-
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-
-    if(player.fullSack()) return player.sendClientMessage('Your sack is full.');
-
-    player.addItemToSack(item);
-
-    locker.takeItemFromLocker(slot);
+    if(!player.addItemToSack(item)) return;
     room.updateLocker(player, locker);
   }
 

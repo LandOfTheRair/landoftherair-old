@@ -11,16 +11,14 @@ export class SackToGround extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const slot = +args;
-    if(isUndefined(slot)) return false;
 
-    const item = player.sack[slot];
-    if(!item) return false;
+    if(!this.checkPlayerEmptyHand(player)) return;
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
+    const item = player.sack.takeItemFromSlot(slot);
+    if(!item) return;
 
     room.addItemToGround(player, item);
     room.showGroundWindow(player);
-    player.takeItemFromSack(slot);
   }
 
 }

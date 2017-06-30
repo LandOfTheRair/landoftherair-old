@@ -14,19 +14,10 @@ export class GroundToBelt extends Command {
     if(splitArgs.length < 2) return false;
 
     const [itemType, itemId] = splitArgs;
-    const ground = gameState.getGroundItems(player.x, player.y);
-    if(!ground[itemType]) return player.sendClientMessage('You do not see that item.');
+    const item = this.getItemFromGround(player, itemType, itemId);
+    if(!item) return;
 
-    const item = find(ground[itemType], { uuid: itemId });
-    if(!item) return player.sendClientMessage('You do not see that item.');
-
-    if(!item.isBeltable) return player.sendClientMessage('That item is not beltable.');
-
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-
-    if(player.fullBelt()) return player.sendClientMessage('Your belt is full.');
-
-    player.addItemToBelt(item);
+    if(!player.addItemToBelt(item)) return;
     room.removeItemFromGround(item);
   }
 

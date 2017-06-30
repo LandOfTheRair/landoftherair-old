@@ -2,9 +2,9 @@
 <div class="p-1 item-container d-flex" droppable dropScope="belt"(onDrop)="colyseusGame.buildDropAction($event, 'Belt')">
   <div *ngFor="let slot of slots"
        class="item-slot item-background">
-    <app-item *ngIf="player.belt[slot]"
+    <app-item *ngIf="player.belt.items[slot]"
               [size]="size"
-              [item]="player.belt[slot]"
+              [item]="player.belt.items[slot]"
               [showDesc]="true"
               context="Belt"
               [contextSlot]="slot"></app-item>

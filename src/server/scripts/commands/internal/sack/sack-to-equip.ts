@@ -13,14 +13,15 @@ export class SackToEquip extends Command {
     const slot = +args;
     if(isUndefined(slot)) return false;
 
-    const item = player.sack[slot];
+    if(!this.checkPlayerEmptyHand(player)) return;
+
+    const item = player.sack.getItemFromSlot(slot);
     if(!item) return false;
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
     if(!player.canEquip(item)) return player.sendClientMessage('You cannot equip that item.');
 
     player.equip(item);
-    player.takeItemFromSack(slot);
+    player.sack.takeItemFromSlot(slot);
   }
 
 }

@@ -14,6 +14,8 @@ export class BuybackToBelt extends Command {
 
     const [containerUUID, slot] = args.split(' ');
 
+    if(!this.checkPlayerEmptyHand(player)) return;
+
     const container = room.state.findNPC(containerUUID);
     if(!container) return player.sendClientMessage('That person is not here.');
 
@@ -22,14 +24,12 @@ export class BuybackToBelt extends Command {
 
     if(player.gold < item._buybackValue) return player.sendClientMessage('You do not have enough gold for that.');
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
+    const newItem = new Item(item);
+
+    if(!player.addItemToBelt(newItem)) return;
 
     player.buyItemBack(slot);
     player.loseGold(item._buybackValue);
-
-    const newItem = new Item(item);
-
-    player.addItemToBelt(newItem);
   }
 
 }

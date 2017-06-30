@@ -16,14 +16,8 @@ export class EquipToSack extends Command {
     const item = player.gear[slot];
     if(!item) return false;
 
-    if(!item.isSackable) return player.sendClientMessage('That item is not sackable.');
-
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-
-    if(player.fullSack()) return player.sendClientMessage('Your sack is full.');
-
+    if(!player.addItemToSack(item)) return;
     player.unequip(slot);
-    player.addItemToSack(item);
   }
 
 }

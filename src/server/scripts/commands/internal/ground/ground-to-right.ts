@@ -13,17 +13,13 @@ export class GroundToRight extends Command {
     const splitArgs = args.split(' ');
     if(splitArgs.length < 2) return false;
 
+    if(!this.checkPlayerEmptyHand(player)) return;
+
     const [itemType, itemId] = splitArgs;
-    const ground = gameState.getGroundItems(player.x, player.y);
-    if(!ground[itemType]) return player.sendClientMessage('You do not see that item.');
+    const item = this.getItemFromGround(player, itemType, itemId);
+    if(!item) return;
 
-    const item = find(ground[itemType], { uuid: itemId });
-    if(!item) return player.sendClientMessage('You do not see that item.');
-
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-    if(player.rightHand && !player.leftHand) {
-      player.setLeftHand(player.rightHand);
-    }
+    this.trySwapRightToLeft(player);
 
     player.setRightHand(item);
     room.removeItemFromGround(item);

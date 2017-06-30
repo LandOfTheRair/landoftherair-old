@@ -14,24 +14,21 @@ export class MerchantToLeft extends Command {
 
     const [containerUUID, itemUUID] = args.split(' ');
 
-    const container = room.state.findNPC(containerUUID);
-    if(!container) return player.sendClientMessage('That person is not here.');
+    if(!this.checkPlayerEmptyHand(player)) return;
 
-    const item = find(container.vendorItems, { uuid: itemUUID });
-    if(!item) return player.sendClientMessage('You do not see that item.');
+    if(!this.checkMerchantDistance(player, containerUUID)) return false;
+
+    const item = this.checkMerchantItems(player, containerUUID, itemUUID);
+    if(!item) return;
 
     if(player.gold < item.value) return player.sendClientMessage('You do not have enough gold for that.');
-
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     player.loseGold(item.value);
 
     const newItem = new Item(item);
     newItem.regenerateUUID();
 
-    if(player.leftHand && !player.rightHand) {
-      player.setRightHand(player.leftHand);
-    }
+    this.trySwapLeftToRight(player);
 
     player.setLeftHand(newItem);
   }

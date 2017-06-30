@@ -5,7 +5,7 @@ import * as swal from 'sweetalert2';
 import { find, includes, findIndex, extend } from 'lodash';
 import { Player } from '../../models/player';
 import { Item } from '../../models/item';
-import { Locker } from '../../models/locker';
+import { Locker } from '../../models/container/locker';
 
 @Injectable()
 export class ColyseusGameService {
