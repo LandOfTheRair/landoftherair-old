@@ -59,6 +59,11 @@ export class Game {
     this.initPromises();
   }
 
+  public reset() {
+    this.visibleNPCUUIDHash = {};
+    this.visibleItemUUIDHash = {};
+  }
+
   initPromises() {
     this.canCreate = new Promise(resolve => this.resolveCanCreate = resolve);
     this.canUpdate = new Promise(resolve => this.resolveCanUpdate = resolve);
