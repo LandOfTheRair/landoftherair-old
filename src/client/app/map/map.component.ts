@@ -46,7 +46,6 @@ export class MapComponent implements OnInit, OnDestroy {
     this.start$ = this.clientGameState.setMap$.subscribe((map: any) => {
       if(this.started && this.phaser) {
         this.game.reset();
-        this.game.cacheMap(this.clientGameState.map);
         this.game.initPromises();
         this.phaser.state.start(this.phaser.state.current);
       }
