@@ -208,7 +208,7 @@ export class GameWorld extends Room<GameState> {
     player.x = x;
     player.y = y;
 
-    this.state.resetPlayerStatus(player);
+    this.state.resetPlayerStatus(player, true);
 
     if(newMap && player.map !== newMap) {
       player.map = newMap;

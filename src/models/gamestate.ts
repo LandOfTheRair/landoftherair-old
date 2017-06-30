@@ -118,7 +118,7 @@ export class GameState {
     });
   }
 
-  resetPlayerStatus(player: Player) {
+  resetPlayerStatus(player: Player, ignoreMessages = false) {
     this.calculateFOV(player);
 
     const mapLayers = this.map.layers;
@@ -132,6 +132,8 @@ export class GameState {
     } else {
       player.swimLevel = 0;
     }
+
+    if(ignoreMessages) return;
 
     const regionObjs = filter(this.map.layers[MapLayer.RegionDescriptions].objects, reg => {
       const x = (reg.x / 64);
