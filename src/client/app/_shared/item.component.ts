@@ -23,10 +23,14 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
     }
     
     .item-container.small {
+      max-height: 48px;
+      max-width: 48px;
       transform: scale(0.75, 0.75) translate(-15%, -15%);
     }
     
-    .item-container.xsmall {      
+    .item-container.xsmall {   
+      max-height: 32px;
+      max-width: 32px;   
       transform: scale(0.5, 0.5) translate(-50%, -50%);
     }
 
