@@ -130,15 +130,21 @@ export class GameWorld extends Room<GameState> {
     let overClass = '';
     let overTarget = '';
 
+    let grouping = 'always';
+
     if(isObject(messageData)) {
       const { message, name, subClass, target } = messageData;
       overMessage = message;
       overName = name;
       overClass = subClass;
       overTarget = target;
+
+      if(overClass) {
+        grouping = overClass.split(' ')[0];
+      }
     }
 
-    this.send(client, { action: 'log_message', name: overName, message: overMessage, subClass: overClass, target: overTarget });
+    this.send(client, { action: 'log_message', name: overName, message: overMessage, subClass: overClass, target: overTarget, grouping });
   }
 
   showGroundWindow(player: Player) {

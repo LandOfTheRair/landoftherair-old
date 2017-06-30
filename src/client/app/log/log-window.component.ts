@@ -1,12 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ClientGameState } from '../clientgamestate';
+
+import { LocalStorage } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-log-window',
   templateUrl: './log-window.component.html',
   styleUrls: ['./log-window.component.scss']
 })
-export class LogWindowComponent {
+export class LogWindowComponent implements OnInit {
 
   @Input()
   public clientGameState: ClientGameState = new ClientGameState({});
@@ -17,6 +19,11 @@ export class LogWindowComponent {
   @Input()
   public fontSize;
 
-  constructor() { }
+  @LocalStorage()
+  public filters;
+
+  ngOnInit() {
+    if(!this.filters) this.filters = { combat: true, env: true, chatter: true };
+  }
 
 }

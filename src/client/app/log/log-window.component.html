@@ -1,6 +1,24 @@
 
-<div class="p-1 message-container" [ngClass]="['window-size-' + windowSize]" appNgxAutoScroll lockYOffset="30">
-  <div class="message {{ message.subClass }}" [ngClass]="['font-size-'+fontSize]" *ngFor="let message of clientGameState.logMessages">
-    <strong *ngIf="message.name">{{ message.name }}: </strong>{{ message.message }}
+<div class="message-container-container" [ngClass]="['window-size-' + windowSize]">
+
+  <div class="filter-buttons d-flex justify-content-around">
+    <button class="btn btn-sm btn-info no-border-radius" btnCheckbox [(ngModel)]="filters.env">
+      Environment [{{ filters.env ? 'ON' : 'OFF'}}]
+    </button>
+    <div class="btn btn-sm btn-info no-border-radius" btnCheckbox [(ngModel)]="filters.combat">
+      Combat [{{ filters.combat ? 'ON' : 'OFF'}}]
+    </div>
+    <div class="btn btn-sm btn-info no-border-radius" btnCheckbox [(ngModel)]="filters.chatter">
+      Chatter [{{ filters.chatter ? 'ON' : 'OFF'}}]
+    </div>
+  </div>
+
+  <div class="p-1 message-container" appNgxAutoScroll lockYOffset="30">
+    <div class="message {{ message.subClass }}"
+         [class.hidden]="message.grouping !== 'always' && !filters[message.grouping]"
+         [ngClass]="['font-size-'+fontSize]"
+         *ngFor="let message of clientGameState.logMessages">
+      <strong *ngIf="message.name">{{ message.name }}: </strong>{{ message.message }}
+    </div>
   </div>
 </div>
