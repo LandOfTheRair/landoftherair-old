@@ -86,10 +86,10 @@ export class GameState {
   }
 
   private checkTargetForHostility(me: NPC, target: Character): boolean {
+    if(me.agro[target.uuid]) return true;
+    if(me.allegianceReputation[target.allegiance] <= 0) return true;
     if(me.hostility === 'Always') return true;
     if(me.alignment === 'Evil' && (target.alignment === 'Neutral' || target.alignment === 'Good')) return true;
-    if(me.allegianceReputation[target.allegiance] <= 0) return true;
-    if(me.agro[target.uuid]) return true;
     return false;
   }
 
@@ -97,6 +97,9 @@ export class GameState {
     return filter((<any>this.players).concat(this.mapNPCs), char => {
       // no hitting dead people
       if(char.isDead()) return false;
+
+      // if they can't attack, they're not worth fighting
+      if(char.hostility === 'Never') return false;
 
       // they have to be visible
       const inRadius = char.x > me.x - radius
@@ -106,13 +109,10 @@ export class GameState {
 
       if(!inRadius) return false;
 
+      if(this.checkTargetForHostility(me, char)) return true;
+
       // no reason to attack my own people
       if(me.allegiance === char.allegiance) return false;
-
-      // if they can't attack, they're not worth fighting
-      if(char.hostility === 'Never') return false;
-
-      if(this.checkTargetForHostility(me, char)) return true;
 
       return false;
     });

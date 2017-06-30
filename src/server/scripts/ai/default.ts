@@ -37,7 +37,6 @@ export const tick = (npc: NPC) => {
       chosenSkill = CommandExecutor.checkIfCanUseSkill(skill, npc, highestAgro);
     });
 
-
     // use a skill that can hit the target
     if(chosenSkill) {
       let opts = {};
