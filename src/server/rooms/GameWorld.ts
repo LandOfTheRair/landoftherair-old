@@ -215,6 +215,7 @@ export class GameWorld extends Room<GameState> {
       this.prePlayerMapLeave(player);
       this.savePlayer(player);
       player.$$doNotSave = true;
+      this.state.resetFOV(player);
       this.send(client, { action: 'change_map', map: newMap });
     }
   }
