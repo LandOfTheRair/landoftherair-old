@@ -93,6 +93,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   savePlayer(player: Player) {
+    console.log('saveplayer');
     if(player.$$doNotSave) return;
 
     if(player._id) {
@@ -270,6 +271,9 @@ export class GameWorld extends Room<GameState> {
   }
 
   onLeave(client) {
+    const player = this.state.findPlayer(client.username);
+    this.prePlayerMapLeave(player);
+    this.savePlayer(player);
     this.state.removePlayer(client.username);
   }
 
