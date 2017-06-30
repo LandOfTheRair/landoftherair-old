@@ -26,4 +26,9 @@ export class LogWindowComponent implements OnInit {
     if(!this.filters) this.filters = { combat: true, env: true, chatter: true };
   }
 
+  // trigger ngx-webstorage
+  saveFilters() {
+    this.filters = this.filters;
+  }
+
 }
