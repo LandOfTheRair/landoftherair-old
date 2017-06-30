@@ -11,18 +11,15 @@ export class SackToLeft extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const slot = +args;
-    if(isUndefined(slot)) return false;
 
-    const item = player.sack[slot];
+    if(!this.checkPlayerEmptyHand(player)) return;
+
+    const item = player.sack.takeItemFromSlot(slot);
     if(!item) return false;
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-    if(player.leftHand && !player.rightHand) {
-      player.setRightHand(player.leftHand);
-    }
+    this.trySwapLeftToRight(player);
 
     player.setLeftHand(item);
-    player.takeItemFromSack(slot);
   }
 
 }

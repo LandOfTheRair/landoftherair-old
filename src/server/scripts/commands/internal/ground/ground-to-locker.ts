@@ -15,30 +15,22 @@ export class GroundToLocker extends Command {
     if(splitArgs.length < 3) return false;
 
     const [itemType, itemId, lockerId] = splitArgs;
-    const ground = gameState.getGroundItems(player.x, player.y);
-    if(!ground[itemType]) return player.sendClientMessage('You do not see that item.');
+    const item = this.getItemFromGround(player, itemType, itemId);
+    if(!item) return;
 
-    const item = find(ground[itemType], { uuid: itemId });
-    if(!item) return player.sendClientMessage('You do not see that item.');
+    if(!this.checkPlayerEmptyHand(player)) return;
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-
-    // check if player standing on locker and region is same as room region
-    const interactable = find(gameState.map.layers[MapLayer.Interactables].objects, { x: player.x * 64, y: (player.y + 1) * 64, type: 'Locker' });
-
-    if(!interactable) return player.sendClientMessage('There is no locker there.');
+    if(!this.findLocker(player)) return;
 
     const locker = await room.loadLocker(player, lockerId);
-    if(!locker) return false;
+    if(!locker) return;
 
-    if(!locker.canAccept(item)) return player.sendClientMessage('That item is not lockerable.');
+    if(!this.addItemToContainer(player, locker, item)) return;
 
-    if(locker.isFull()) return player.sendClientMessage('That locker is full.');
-
-    locker.putItemInLocker(item);
     player.setRightHand(null);
     room.updateLocker(player, locker);
     room.removeItemFromGround(item);
+
   }
 
 }

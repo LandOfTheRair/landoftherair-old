@@ -16,17 +16,16 @@ export class MerchantToSack extends Command {
     quantity = Math.round(+quantity);
     if(quantity < 0) return false;
 
-    const container = room.state.findNPC(containerUUID);
-    if(!container) return player.sendClientMessage('That person is not here.');
+    if(!this.checkPlayerEmptyHand(player)) return;
 
-    const item = find(container.vendorItems, { uuid: itemUUID });
-    if(!item) return player.sendClientMessage('You do not see that item.');
+    if(!this.checkMerchantDistance(player, containerUUID)) return false;
+
+    const item = this.checkMerchantItems(player, containerUUID, itemUUID);
+    if(!item) return;
 
     if(!item.isSackable) return player.sendClientMessage('That item is not sackable, cheater.');
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-
-    const maxQuantity = Math.min(quantity, player.sackSize() - player.sack.length);
+    const maxQuantity = Math.min(quantity, player.sack.size - player.sack.items.length);
 
     for(let i = 0; i < maxQuantity; i++) {
       if(player.gold < item.value) return player.sendClientMessage('You do not have enough gold for that.');

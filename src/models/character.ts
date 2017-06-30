@@ -11,6 +11,8 @@ import * as Classes from '../server/classes';
 import { Effect } from '../server/base/Effect';
 import * as Effects from '../server/effects';
 import { Logger } from '../server/logger';
+import { Sack } from './container/sack';
+import { Belt } from './container/belt';
 
 export type Allegiance =
   'None'
@@ -151,8 +153,8 @@ export class Character {
 
   baseClass: CharacterClass = 'Undecided';
 
-  sack: Item[] = [];
-  belt: Item[] = [];
+  sack: Sack = new Sack({ size: this.sackSize });
+  belt: Belt = new Belt({ size: this.beltSize });
 
   effects: Effect[] = [];
 
@@ -173,6 +175,14 @@ export class Character {
   alignment: Alignment = 'Neutral';
   allegianceReputation: any = {};
 
+  get sackSize() {
+    return MaxSizes.Sack;
+  }
+
+  get beltSize() {
+    return MaxSizes.Belt;
+  }
+
   getSprite() {
     return 0;
   }
@@ -187,11 +197,11 @@ export class Character {
   }
 
   initSack() {
-    this.sack = this.sack.map(item => new Item(item));
+    this.sack = new Sack(this.sack);
   }
 
   initBelt() {
-    this.belt = this.belt.map(item => new Item(item));
+    this.belt = new Belt(this.belt);
   }
 
   initHands() {
@@ -350,6 +360,7 @@ export class Character {
   }
 
   equip(item: Item) {
+    if(!this.canEquip(item)) return false;
     const slot = this.getItemSlotToEquipIn(item);
     if(!slot) return false;
 
@@ -383,56 +394,31 @@ export class Character {
     this.recalculateStats();
   }
 
-  private fixSack() {
-    this.sack = compact(this.sack);
-  }
-
-  sackSize() {
-    return MaxSizes.Sack;
-  }
-
-  fullSack() {
-    return this.sack.length >= this.sackSize();
-  }
-
   addItemToSack(item: Item) {
     if(item.itemClass === 'Coin') {
       this.gainGold(item.value);
-      return;
+      return true;
     }
+
+    const result = this.sack.addItem(item);
+    if(result) {
+      this.sendClientMessage(result);
+      return false;
+    }
+
     this.itemCheck(item);
-    this.sack.push(item);
-  }
-
-  takeItemFromSack(slot: number) {
-    const item = this.sack[slot];
-    pull(this.sack, item);
-    this.fixSack();
-    return item;
-  }
-
-  private fixBelt() {
-    this.belt = compact(this.belt);
-  }
-
-  beltSize() {
-    return MaxSizes.Belt;
-  }
-
-  fullBelt() {
-    return this.belt.length >= this.beltSize();
+    return true;
   }
 
   addItemToBelt(item: Item) {
-    this.itemCheck(item);
-    this.belt.push(item);
-  }
+    const result = this.belt.addItem(item);
+    if(result) {
+      this.sendClientMessage(result);
+      return false;
+    }
 
-  takeItemFromBelt(slot: number) {
-    const item = this.belt[slot];
-    pull(this.belt, item);
-    this.fixBelt();
-    return item;
+    this.itemCheck(item);
+    return true;
   }
 
   gainGold(gold: number) {

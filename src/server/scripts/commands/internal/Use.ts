@@ -26,17 +26,17 @@ export class Use extends Command {
 
     switch(context) {
       case 'Sack': {
-        const item = player.sack[+slot];
+        const item = player.sack.getItemFromSlot(+slot);
         func(item);
         useItemInHand(slotName);
-        player.takeItemFromSack(slot);
+        player.sack.takeItemFromSlot(+slot);
         return;
       }
 
       case 'Belt': {
-        const item = player.belt[+slot];
+        const item = player.belt.getItemFromSlot(+slot);
         func(item);
-        player.takeItemFromBelt(slot);
+        player.belt.takeItemFromSlot(+slot);
         useItemInHand(slotName);
         return;
       }

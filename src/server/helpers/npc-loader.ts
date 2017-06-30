@@ -48,8 +48,8 @@ export class NPCLoader {
   static getItemsFromPlayerSackByName(player: Player, name) {
     const indexes = [];
 
-    for(let i = 0; i < player.sack.length; i++) {
-      const item = player.sack[i];
+    for(let i = 0; i < player.sack.items.length; i++) {
+      const item = player.sack.items[i];
       if(!item || item.name !== name) continue;
       indexes.push(i);
     }
@@ -58,6 +58,6 @@ export class NPCLoader {
   }
 
   static takeItemsFromPlayerSack(player: Player, sackIndexes = []) {
-    sackIndexes.reverse().forEach(index => player.takeItemFromSack(index));
+    player.sack.takeItemFromSlots(sackIndexes);
   }
 }

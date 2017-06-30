@@ -13,17 +13,16 @@ export class SackToMerchant extends Command {
 
     const [slot, merchantUUID] = args.split(' ');
 
+    if(!this.checkPlayerEmptyHand(player)) return false;
+
     const container = room.state.findNPC(merchantUUID);
     if(!container) return player.sendClientMessage('That person is not here.');
     if(container.distFrom(player) > 2) return player.sendClientMessage('That person is too far away.');
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-
-    const item = player.sack[+slot];
+    const item = player.sack.takeItemFromSlot(slot);
     if(!item) return false;
 
     player.sellItem(item);
-    player.takeItemFromSack(slot);
   }
 
 }

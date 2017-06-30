@@ -16,14 +16,8 @@ export class EquipToBelt extends Command {
     const item = player.gear[slot];
     if(!item) return false;
 
-    if(!item.isBeltable) return player.sendClientMessage('That item is not beltable.');
-
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-
-    if(player.fullBelt()) return player.sendClientMessage('Your belt is full.');
-
+    if(!player.addItemToBelt(item)) return;
     player.unequip(slot);
-    player.addItemToBelt(item);
   }
 
 }

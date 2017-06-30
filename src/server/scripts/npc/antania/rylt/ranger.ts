@@ -31,7 +31,7 @@ export const responses = (npc: NPC) => {
         const indexes = NPCLoader.getItemsFromPlayerSackByName(player, BEAR_MEAT);
         total += indexes.length * 150;
 
-        indexes.reverse().forEach(index => player.takeItemFromSack(index));
+        NPCLoader.takeItemsFromPlayerSack(player, indexes);
 
         player.gainGold(total);
         return `Thanks, ${player.name}! Here is ${total.toLocaleString()} gold for your efforts.`;

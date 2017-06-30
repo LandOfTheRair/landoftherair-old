@@ -108,15 +108,17 @@ export class Spawner {
     }
 
     if(npcData.sack) {
-      npcData.sack = await Promise.all(npcData.sack.map(async itemName => {
+      const items = await Promise.all(npcData.sack.map(async itemName => {
         return await NPCLoader.loadItem(itemName);
       }));
+      npcData.sack = { items };
     }
 
     if(npcData.belt) {
-      npcData.belt = await Promise.all(npcData.belt.map(async itemName => {
+      const items = await Promise.all(npcData.belt.map(async itemName => {
         return await NPCLoader.loadItem(itemName);
       }));
+      npcData.belt = { items };
     }
 
     npcData.x = random(this.x - this.spawnRadius, this.x + this.spawnRadius);

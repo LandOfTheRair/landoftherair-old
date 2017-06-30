@@ -13,16 +13,13 @@ export class GroundToPotion extends Command {
     const splitArgs = args.split(' ');
     if(splitArgs.length < 2) return false;
 
-    const [itemType, itemId] = splitArgs;
-    const ground = gameState.getGroundItems(player.x, player.y);
-    if(!ground[itemType]) return player.sendClientMessage('You do not see that item.');
+    if(!this.checkPlayerEmptyHand(player)) return;
 
-    const item = find(ground[itemType], { uuid: itemId });
-    if(!item) return player.sendClientMessage('You do not see that item.');
+    const [itemType, itemId] = splitArgs;
+    const item = this.getItemFromGround(player, itemType, itemId);
+    if(!item) return;
 
     if(item.itemClass !== 'Bottle') return player.sendClientMessage('That item is not a bottle.');
-
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
 

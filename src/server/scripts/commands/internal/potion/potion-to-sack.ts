@@ -13,16 +13,9 @@ export class PotionToSack extends Command {
   async execute(player: Player, { room, gameState, args }) {
     if(!player.potionHand) return false;
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-    if(player.leftHand && !player.rightHand) {
-      player.setRightHand(player.leftHand);
-    }
+    if(!this.checkPlayerEmptyHand(player)) return false;
 
-    if(!player.potionHand.isSackable) return player.sendClientMessage('That item is not sackable.');
-
-    if(player.fullSack()) return player.sendClientMessage('Your sack is full.');
-
-    player.addItemToSack(player.potionHand);
+    if(!player.addItemToSack(player.potionHand)) return;
     player.setPotionHand(null);
   }
 

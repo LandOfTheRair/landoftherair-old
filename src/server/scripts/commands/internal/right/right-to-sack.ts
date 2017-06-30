@@ -13,11 +13,7 @@ export class RightToSack extends Command {
     const item = player.rightHand;
     if(!item) return false;
 
-    if(!item.isSackable) return player.sendClientMessage('That item is not sackable.');
-
-    if(player.fullSack()) return player.sendClientMessage('Your sack is full.');
-
-    player.addItemToSack(item);
+    if(!player.addItemToSack(item)) return;
     player.setRightHand(null);
   }
 

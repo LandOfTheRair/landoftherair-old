@@ -13,17 +13,14 @@ export class BeltToMerchant extends Command {
 
     const [slot, merchantUUID] = args.split(' ');
 
-    const container = room.state.findNPC(merchantUUID);
-    if(!container) return player.sendClientMessage('That person is not here.');
-    if(container.distFrom(player) > 2) return player.sendClientMessage('That person is too far away.');
+    if(!this.checkPlayerEmptyHand(player)) return false;
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
+    if(!this.checkMerchantDistance(player, merchantUUID)) return false;
 
-    const item = player.belt[+slot];
+    const item = player.belt.takeItemFromSlot(slot);
     if(!item) return false;
 
     player.sellItem(item);
-    player.takeItemFromBelt(slot);
   }
 
 }
