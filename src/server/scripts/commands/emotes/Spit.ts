@@ -22,6 +22,6 @@ export class Spit extends Command {
 
     player.sendClientMessage('You spit!');
     player.sendClientMessageToRadius(`${player.name} spits!`, 4, [player.uuid]);
-    
+
   }
 }
