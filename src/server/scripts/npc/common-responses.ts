@@ -121,7 +121,7 @@ export const RandomlyShouts = (npc: NPC, responses: string[] = []) => {
       ticks = 0;
 
       const msgObject = { name: npc.name, message: sample(responses), subClass: 'chatter' };
-      npc.sendClientMessageToRadius(msgObject, 4);
+      npc.sendClientMessageToRadius(msgObject, 8);
     }
   }};
 };

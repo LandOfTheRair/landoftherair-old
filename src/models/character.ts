@@ -431,25 +431,32 @@ export class Character {
     if(this.gold <= 0) this.gold = 0;
   }
 
-  setDirBasedOnXYDiff(x, y) {
+  getDirBasedOnDiff(x, y): string {
 
     const checkX = Math.abs(x);
     const checkY = Math.abs(y);
 
     if(checkX >= checkY) {
       if(x > 0) {
-        this.dir = 'E';
+        return 'East';
       } else if(x < 0) {
-        this.dir = 'W';
+        return 'West';
       }
 
     } else if(checkY > checkX) {
       if(y > 0) {
-        this.dir = 'S';
+        return 'South';
       } else if(y < 0) {
-        this.dir = 'N';
+        return 'North';
       }
     }
+
+    return 'South';
+  }
+
+  setDirBasedOnXYDiff(x, y) {
+    if(x === 0 && y === 0) return;
+    this.dir = <Direction>this.getDirBasedOnDiff(x, y).substring(0, 1);
   }
 
   canSee(x, y): boolean {
@@ -669,7 +676,15 @@ export class Character {
   sendClientMessageToRadius(message, radius = 0, except = []) {
     const sendMessage = isString(message) ? { message, subClass: 'chatter' } : message;
     this.$$room.state.getPlayersInRange(this.x, this.y, radius, except).forEach(p => {
-      p.sendClientMessage(sendMessage);
+
+      // outta range, generate a "you heard X in the Y dir" message
+      if(radius > 4 && this.distFrom(p) > 4) {
+        const dirFrom = this.getDirBasedOnDiff(this.x - p.x, this.y - p.y);
+        sendMessage.dirFrom = dirFrom.toLowerCase();
+        p.sendClientMessage(sendMessage);
+      } else {
+        p.sendClientMessage(sendMessage);
+      }
     });
   }
 
