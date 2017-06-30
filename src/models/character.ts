@@ -666,8 +666,8 @@ export class Character {
   }
 
   sendClientMessage(message) {}
-  sendClientMessageToRadius(message, radius = 0) {
-    this.$$room.state.getPlayersInRange(this.x, this.y, radius).forEach(p => {
+  sendClientMessageToRadius(message, radius = 0, except = []) {
+    this.$$room.state.getPlayersInRange(this.x, this.y, radius, except).forEach(p => {
       p.sendClientMessage(message);
     });
   }
@@ -716,7 +716,11 @@ export class Character {
     this.agro[char.uuid] = this.agro[char.uuid] || 0;
     this.agro[char.uuid] += value;
 
-    if(this.agro[char.uuid] <= 0) delete this.agro[char.uuid];
+    if(this.agro[char.uuid] <= 0) this.removeAgro(char);
+  }
+
+  removeAgro(char: Character) {
+    delete this.agro[char.uuid];
   }
 
   changeRep(allegiance: Allegiance, modifier) {

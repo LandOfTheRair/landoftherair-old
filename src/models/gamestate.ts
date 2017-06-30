@@ -1,5 +1,5 @@
 
-import { reject, filter, extend, find, pull, size, pick, minBy } from 'lodash';
+import { reject, filter, extend, find, pull, size, pick, minBy, includes } from 'lodash';
 
 import { Player } from './player';
 
@@ -75,12 +75,13 @@ export class GameState {
     player.$fov = affected;
   }
 
-  getPlayersInRange(x, y, radius) {
+  getPlayersInRange(x, y, radius, except = []) {
     return reject(this.players, p => {
       return p.x < x - radius
           || p.x > x + radius
           || p.y < y - radius
-          || p.y > y + radius;
+          || p.y > y + radius
+          || includes(except, p.uuid);
     });
   }
 

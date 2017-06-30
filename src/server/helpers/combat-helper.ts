@@ -322,12 +322,14 @@ export class CombatHelper {
       defender.addAgro(attacker, damage);
     } else {
       if(attacker) {
-        defender.sendClientMessageToRadius({ message: `${defender.name} was killed by ${attacker.name}!`, subClass: 'combat self kill' }, 5);
+        defender.sendClientMessageToRadius({
+          message: `${defender.name} was killed by ${attacker.name}!`, subClass: 'combat self kill' }, 5, [defender.uuid]
+        );
         defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
         defender.die(attacker);
         attacker.kill(defender);
       } else {
-        defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' }, 5);
+        defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' }, 5, [defender.uuid]);
         defender.sendClientMessage({ message: `You were killed!`, subClass: 'combat other kill' });
         defender.die(attacker);
       }
