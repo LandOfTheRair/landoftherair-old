@@ -177,7 +177,7 @@ export class GameState {
 
     if(hasNewRegion) {
       player.$$lastRegion = regionDesc;
-      player.sendClientMessage(regionDesc);
+      player.sendClientMessage({ message: regionDesc, subClass: 'env' });
 
     } else if(!regionDesc) {
       player.$$lastRegion = '';
@@ -186,7 +186,7 @@ export class GameState {
 
     if(!hasNewRegion && desc !== player.$$lastDesc) {
       player.$$lastDesc = desc;
-      player.sendClientMessage(desc);
+      player.sendClientMessage({ message: desc, subClass: 'env' });
     }
   }
 

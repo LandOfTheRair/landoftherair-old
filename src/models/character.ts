@@ -1,5 +1,5 @@
 
-import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize, startsWith, isUndefined, clone } from 'lodash';
+import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize, startsWith, isUndefined, clone, isString } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
@@ -667,8 +667,9 @@ export class Character {
 
   sendClientMessage(message) {}
   sendClientMessageToRadius(message, radius = 0, except = []) {
+    const sendMessage = isString(message) ? { message, subClass: 'chatter' } : message;
     this.$$room.state.getPlayersInRange(this.x, this.y, radius, except).forEach(p => {
-      p.sendClientMessage(message);
+      p.sendClientMessage(sendMessage);
     });
   }
 

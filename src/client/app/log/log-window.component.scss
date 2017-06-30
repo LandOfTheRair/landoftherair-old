@@ -1,65 +1,80 @@
 
-.message-container {
+.message-container-container {
   width: 100%;
-  height: 226px;
-  overflow-y: auto;
-  word-wrap: break-word;
+  padding-top: 0 !important;
 
-  &.window-size-xlarge {
-    height: 606px;
-  }
+  .message-container {
+    overflow-y: auto;
+    word-wrap: break-word;
+    position: relative;
 
-  &.window-size-large {
-    height: 426px;
-  }
+    height: 200px;
 
-  &.window-size-small {
-    height: 166px;
-  }
-
-  &.window-size-xsmall {
-    height: 106px;
-  }
-
-  .message {
-    font-size: 0.8rem;
-
-    &.font-size-xlarge {
-      font-size: 1.1rem;
+    &.window-size-xlarge {
+      height: 580px;
     }
 
-    &.font-size-large {
-      font-size: 0.9rem;
+    &.window-size-large {
+      height: 400px;
     }
 
-    &.font-size-small {
-      font-size: 0.7rem;
+    &.window-size-small {
+      height: 140px;
     }
 
-    &.font-size-xsmall {
-      font-size: 0.5rem;
+    &.window-size-xsmall {
+      height: 86px;
     }
 
-    &.combat {
-      &.self {
-        color: #00a;
+    .filter-buttons {
+      width: 100%;
+      position: sticky;
+      top: -1px;
+      left: 0;
+      right: 1px;
+    }
+
+    .message {
+      font-size: 0.8rem;
+
+      &.font-size-xlarge {
+        font-size: 1.1rem;
       }
 
-      &.other.miss, &.other.block {
-        color: #aaa;
+      &.font-size-large {
+        font-size: 0.9rem;
       }
 
-      &.other.hit {
-        color: #b20;
+      &.font-size-small {
+        font-size: 0.7rem;
       }
 
-      &.heal {
-        color: #080;
+      &.font-size-xsmall {
+        font-size: 0.5rem;
       }
 
-      &.kill {
-        font-weight: bold;
+      &.combat {
+        &.self {
+          color: #00a;
+        }
+
+        &.other.miss, &.other.block {
+          color: #aaa;
+        }
+
+        &.other.hit {
+          color: #b20;
+        }
+
+        &.heal {
+          color: #080;
+        }
+
+        &.kill {
+          font-weight: bold;
+        }
       }
     }
   }
+
 }
