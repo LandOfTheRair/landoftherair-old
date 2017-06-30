@@ -40,6 +40,7 @@ class Database {
 
         this.$players = client.collection('players');
         this.$players.ensureIndex({ username: 1, charSlot: 1 });
+        this.$players.ensureIndex({ username: 1, map: 1, charSlot: 1 });
 
         this.$items = client.collection('items');
         this.$items.ensureIndex({ name: 1 }, { unique: true });
