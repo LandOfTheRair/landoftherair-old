@@ -48,6 +48,11 @@ export class Game {
   public interactCallback = (x, y) => {};
 
   constructor(private clientGameState: ClientGameState, player) {
+    this.player = player;
+    this.initPromises();
+  }
+
+  public reset() {
     if(this.itemsOnGround) {
       this.itemsOnGround.destroy();
     }
@@ -55,11 +60,6 @@ export class Game {
       this.visibleNPCs.destroy();
     }
 
-    this.player = player;
-    this.initPromises();
-  }
-
-  public reset() {
     this.visibleNPCUUIDHash = {};
     this.visibleItemUUIDHash = {};
   }
