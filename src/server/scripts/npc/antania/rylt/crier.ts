@@ -24,7 +24,9 @@ export const responses = (npc: NPC) => {
     'The Smith can repair your broken and breaking gear!',
     'Beware the werecreatures!',
     'Werebear claws are prized by martial artists!',
-    'The skin of deer is great at repelling magic!'
+    'The skin of deer is great at repelling magic!',
+    'The Last Chance Prison is filled with rebellious infidels!',
+    'There are tales of a renegade who collects books!'
   ]);
 
 };
