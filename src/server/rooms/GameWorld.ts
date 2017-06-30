@@ -435,7 +435,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   getPossibleMessageTargets(player: Player, findStr: string) {
-    const allTargets = this.state.mapNPCs;
+    const allTargets = (<any>this.state.mapNPCs).concat(this.state.players);
     const possTargets = allTargets.filter(target => {
       if(target.isDead()) return;
 
