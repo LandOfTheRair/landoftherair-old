@@ -104,7 +104,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authService.scheduleRenewal();
-    (<any>window).auth = this.authService;
 
     if(!this.minimized) this.minimized = {};
     this.colyseus.init();
