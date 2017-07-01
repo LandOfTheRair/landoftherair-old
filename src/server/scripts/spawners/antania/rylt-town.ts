@@ -11,12 +11,12 @@ const paths = [
   '6-S 34-E 6-N 34-W'
 ];
 
-export class RyltTownMonsterSpawner extends Spawner {
+export class RyltTownSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 30,
-      initialSpawn: 5,
+      respawnRate: 15,
+      initialSpawn: 3,
       maxCreatures: 15,
       spawnRadius: 0,
       randomWalkRadius: 0,
