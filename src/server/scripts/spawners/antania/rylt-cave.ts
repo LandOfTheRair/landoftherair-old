@@ -10,8 +10,8 @@ export class RyltCaveMonsterSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 60,
-      initialSpawn: 3,
+      respawnRate: 15,
+      initialSpawn: 2,
       maxCreatures: 7,
       spawnRadius: 1,
       randomWalkRadius: 15,
