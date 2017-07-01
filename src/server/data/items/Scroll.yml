@@ -1,0 +1,5 @@
+- name: Scribe Scroll
+  sprite: 224
+  desc: "an empty scroll"
+  value: 100
+

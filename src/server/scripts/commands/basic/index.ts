@@ -5,3 +5,4 @@ export * from './ShowStats';
 export * from './OpenDoor';
 export * from './UpStairs';
 export * from './ClimbUp';
+export * from './Write';
