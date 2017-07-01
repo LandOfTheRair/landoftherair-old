@@ -8,6 +8,7 @@ import { MacroService, Macro } from './macros.service';
 import * as macicons from '../macicons/macicons.json';
 
 import { includes, isNull } from 'lodash';
+import { AuthService } from './auth.service';
 
 type Size = 'normal' | 'small' | 'xsmall';
 type XSizeMax = 'max' | 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
@@ -97,9 +98,13 @@ export class AppComponent implements OnInit {
     return this.colyseus.game.inGame;
   }
 
-  constructor(public colyseus: ColyseusService, public macroService: MacroService) {}
+  constructor(public colyseus: ColyseusService, public macroService: MacroService, public authService: AuthService) {}
 
   ngOnInit() {
+    this.authService.handleAuthentication();
+    this.authService.scheduleRenewal();
+    (<any>window).auth = this.authService;
+
     if(!this.minimized) this.minimized = {};
     this.colyseus.init();
 

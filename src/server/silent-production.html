@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.auth0.com/js/auth0/8.7/auth0.min.js"></script>
+  <script>
+    var webAuth = new auth0.WebAuth({
+      domain: 'landoftherair.auth0.com',
+      clientID: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
+      scope: 'openid profile',
+      responseType: 'token id_token',
+      redirectUri: 'https://rair.land',
+      audience: 'https://landoftherair.auth0.com/auth/'
+    });
+  </script>
+  <script>
+    webAuth.parseHash(window.location.hash, function (err, response) {
+      parent.postMessage(err || response, 'https://rair.land');
+    });
+  </script>
+</head>
+<body></body>
+</html>

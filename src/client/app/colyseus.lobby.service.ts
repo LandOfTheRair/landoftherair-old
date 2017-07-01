@@ -51,7 +51,7 @@ export class ColyseusLobbyService {
   }
 
   private loginThenEmit() {
-    this.auth.login().then(() => this.emitUserId());
+    this.auth.login().then(() => this.sendUserId());
   }
 
   private emitUserId() {
@@ -63,9 +63,18 @@ export class ColyseusLobbyService {
   }
 
   private sendUserId() {
-    if(localStorage.getItem('user_id') && localStorage.getItem('id_token')) {
+    const hasIdToken = localStorage.getItem('id_token');
+    const hasUserId = localStorage.getItem('user_id');
+    console.log(hasUserId, hasIdToken);
+
+    if(hasUserId && hasIdToken) {
+      console.log('EMIT');
       this.emitUserId();
+    } else if(hasIdToken) {
+      console.log('GET THEN EMIT');
+      this.auth.getProfile(() => this.emitUserId());
     } else {
+      console.log('LOGIN');
       this.loginThenEmit();
     }
   }
@@ -107,7 +116,7 @@ export class ColyseusLobbyService {
     if(error) {
 
       if(error === 'error_invalid_token') {
-        // alert('Your token was invalid. Refresh and try again.');
+        console.log('INVALID TOKEN');
         this.loginThenEmit();
         return;
       }

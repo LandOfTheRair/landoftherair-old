@@ -3,6 +3,7 @@ import * as colyseus from 'colyseus';
 import * as http from 'http';
 import * as express from 'express';
 import * as cors from 'cors';
+import * as staticFile from 'connect-static-file';
 
 import * as Rooms from './rooms';
 
@@ -19,6 +20,8 @@ class GameAPI {
     this.isReady = new Promise(resolve => {
       const app = express();
       app.use(cors());
+      app.use('/silent-dev', staticFile(`${__dirname}/silent-dev.html`));
+      app.use('/silent-production', staticFile(`${__dirname}/silent-production.html`));
       app.use('/maps', express.static(require('path').join(__dirname, 'maps')));
       const port = process.env.PORT || 3303;
 

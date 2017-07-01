@@ -88,10 +88,12 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private verifyToken(token): boolean {
+    console.log(token);
     try {
       jwt.verify(token, AUTH0_SECRET, { algorithms: ['HS256'] });
       return true;
     } catch(e) {
+      console.error(e);
       return false;
     }
   }
