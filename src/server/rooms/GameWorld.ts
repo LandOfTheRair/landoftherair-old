@@ -25,16 +25,18 @@ import { ItemCreator } from '../helpers/item-creator';
 import { Item } from '../../models/item';
 import { Locker } from '../../models/container/locker';
 
+const TICK_DIVISOR = 2;
+
 const TickRates = {
   // tick players every second
-  PlayerAction: 45,
+  PlayerAction: TICK_DIVISOR,
 
   // npc actions every
-  NPCAction: 60,
+  NPCAction: TICK_DIVISOR,
 
   // tick spawners every half-second
-  SpawnerTick: 60,
-  PlayerSave: 360
+  SpawnerTick: TICK_DIVISOR,
+  PlayerSave: 30 * TICK_DIVISOR
 };
 
 export class GameWorld extends Room<GameState> {
@@ -81,8 +83,8 @@ export class GameWorld extends Room<GameState> {
 
     this.allMapNames = opts.allMapNames;
 
-    this.setPatchRate(1000 / 480);
-    this.setSimulationInterval(this.tick.bind(this), 1000 / 60);
+    this.setPatchRate(1000 / TICK_DIVISOR);
+    this.setSimulationInterval(this.tick.bind(this), 1000 / TICK_DIVISOR);
     this.setState(new GameState({
       players: [],
       map: cloneDeep(require(opts.mapPath)),
