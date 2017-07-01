@@ -20,6 +20,6 @@ export const environment = {
     domain: 'landoftherair.auth0.com',
     client: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
     callbackUrl: 'http://localhost:4200',
-    apiUrl: 'https://landoftherair.auth0.com/auth/'
+    apiUrl: 'authidentifier'
   }
 };

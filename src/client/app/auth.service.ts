@@ -1,20 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import Auth0Lock from 'auth0-lock';
-import * as auth0 from 'auth0-js';
+import auth0 from 'auth0-js';
 
 import { environment } from '../environments/environment';
-
-const lockOptions = {
-  // autoclose: true,
-  oidcConformant: true,
-  auth: {
-    audience: environment.auth0.apiUrl,
-    params: {
-      scope: 'openid'
-    }
-  }
-};
 
 @Injectable()
 export class AuthService {
@@ -30,81 +18,43 @@ export class AuthService {
     scope: 'openid profile'
   });
 
-  public login() {
+  isReady: Promise<any>;
+  private resolveReady: any;
 
-    const lock = new Auth0Lock(environment.auth0.client, environment.auth0.domain, lockOptions);
-
-    lock.on('authorization_error', (error) => {
-      lock.show({
-        flashMessage: {
-          type: 'error',
-          text: error.error_description
-        }
-      });
-    });
-
-    return new Promise((resolve, reject) => {
-
-      lock.on('authenticated', (authResult) => {
-
-        if(authResult.error) {
-          return reject(authResult.error);
-        }
-
-        lock.getUserInfo(authResult.accessToken, (error, profile) => {
-          if(error) {
-            return reject(error);
-          }
-
-          this.setSession(authResult, profile);
-
-          resolve();
-        });
-      });
-
-      lock.show();
-    });
+  constructor() {
+    this.isReady = new Promise(resolve => this.resolveReady = resolve);
   }
 
+  public login() {
+    this.auth0.authorize();
+  }
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
+      if(authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-      } else if (err) {
-        console.log(err);
+      } else if(err) {
+        console.error(err);
       }
+
+      this.resolveReady(authResult);
     });
   }
 
-  public getProfile(cb): void {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
-      throw new Error('Access token must exist to fetch profile');
-    }
-
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
-      this.setSession(null, profile);
-      cb(err, profile);
-    });
-  }
-
-  private setSession(authResult?, profile?): void {
+  private setSession(authResult?): void {
 
     if(authResult) {
       // Set the time that the access token will expire at
       const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + Date.now());
 
-      console.log(authResult);
-
       localStorage.setItem('access_token', authResult.accessToken);
       localStorage.setItem('id_token', authResult.idToken);
       localStorage.setItem('expires_at', expiresAt);
-    }
 
-    if(profile) {
-      localStorage.setItem('user_id', profile.user_id);
+      if(authResult.idTokenPayload && authResult.idTokenPayload.sub) {
+        localStorage.setItem('user_id', authResult.idTokenPayload.sub);
+      }
     }
 
     this.scheduleRenewal();
