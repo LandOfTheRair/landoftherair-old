@@ -1,22 +1,34 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import Auth0Lock from 'auth0-lock';
+import * as auth0 from 'auth0-js';
 
 import { environment } from '../environments/environment';
 
 const lockOptions = {
-  autoclose: true,
+  // autoclose: true,
+  oidcConformant: true,
   auth: {
-    redirect: false,
+    audience: environment.auth0.apiUrl,
     params: {
-      scope: 'openid offline_access',
-      access_type: 'offline',
-      device: 'idlelands'
+      scope: 'openid'
     }
   }
 };
 
 @Injectable()
 export class AuthService {
+
+  refreshSubscription: any;
+
+  auth0 = new auth0.WebAuth({
+    clientID: environment.auth0.client,
+    domain: environment.auth0.domain,
+    responseType: 'token id_token',
+    audience: environment.auth0.apiUrl,
+    redirectUri: environment.auth0.callbackUrl,
+    scope: 'openid profile'
+  });
 
   public login() {
 
@@ -54,16 +66,48 @@ export class AuthService {
     });
   }
 
-  private setSession(authResult, profile): void {
-    // Set the time that the access token will expire at
-    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + Date.now());
 
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
-    localStorage.setItem('user_id', profile.user_id);
+  public handleAuthentication(): void {
+    this.auth0.parseHash((err, authResult) => {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        window.location.hash = '';
+        this.setSession(authResult);
+      } else if (err) {
+        console.log(err);
+      }
+    });
+  }
 
-    // this.scheduleRenewal();
+  public getProfile(cb): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access token must exist to fetch profile');
+    }
+
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      this.setSession(null, profile);
+      cb(err, profile);
+    });
+  }
+
+  private setSession(authResult?, profile?): void {
+
+    if(authResult) {
+      // Set the time that the access token will expire at
+      const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + Date.now());
+
+      console.log(authResult);
+
+      localStorage.setItem('access_token', authResult.accessToken);
+      localStorage.setItem('id_token', authResult.idToken);
+      localStorage.setItem('expires_at', expiresAt);
+    }
+
+    if(profile) {
+      localStorage.setItem('user_id', profile.user_id);
+    }
+
+    this.scheduleRenewal();
   }
 
   public logout(): void {
@@ -72,7 +116,7 @@ export class AuthService {
     localStorage.removeItem('expires_at');
     localStorage.removeItem('user_id');
 
-    // this.unscheduleRenewal();
+    this.unscheduleRenewal();
   }
 
   public isAuthenticated(): boolean {
@@ -80,17 +124,15 @@ export class AuthService {
     return Date.now() < expiresAt;
   }
 
-  /*
   public renewToken() {
     this.auth0.renewAuth({
       audience: environment.auth0.apiUrl,
-      redirectUri: 'http://localhost:3001/silent',
+      redirectUri: `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/silent-${environment.client.silentExt}`,
       usePostMessage: true
     }, (err, result) => {
-      if (err) {
-        alert(`Could not get a new token using silent authentication (${err.error}).`);
+      if(err) {
+        console.error(err);
       } else {
-        alert(`Successfully renewed auth!`);
         this.setSession(result);
       }
     });
@@ -114,7 +156,7 @@ export class AuthService {
     // Once the delay time from above is
     // reached, get a new JWT and schedule
     // additional refreshes
-    source.subscribe(() => {
+    this.refreshSubscription = source.subscribe(() => {
       this.renewToken();
       this.scheduleRenewal();
     });
@@ -124,5 +166,4 @@ export class AuthService {
     if(!this.refreshSubscription) return;
     this.refreshSubscription.unsubscribe();
   }
-*/
 }

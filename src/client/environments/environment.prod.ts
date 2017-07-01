@@ -1,18 +1,20 @@
 export const environment = {
   production: true,
   server: {
-    domain: 'localhost',
-    protocol: 'http',
-    port: 3303,
+    domain: 'server.rair.land',
+    protocol: 'https',
+    port: 80,
   },
   client: {
-    domain: 'localhost',
-    protocol: 'http',
-    port: 4200
+    domain: 'rair.land',
+    protocol: 'https',
+    port: 80,
+    silentExt: 'production'
   },
   auth0: {
     domain: 'landoftherair.auth0.com',
     client: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
-    callbackUrl: 'http://localhost:4200',
+    callbackUrl: 'https://rair.land',
+    apiUrl: 'https://landoftherair.auth0.com/auth/'
   }
 };
