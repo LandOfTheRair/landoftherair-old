@@ -77,10 +77,10 @@ export class AuthService {
   public renewToken() {
     this.auth0.renewAuth({
       audience: environment.auth0.apiUrl,
-      redirectUri: `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/silent-${environment.client.silentExt}`,
+      redirectUri: `${environment.server.protocol}://${environment.server.domain}:${environment.server.port}/silent-${environment.server.silentExt}`,
       usePostMessage: true
     }, (err, result) => {
-      if(err) {
+      if(err || result.error) {
         console.error(err);
       } else {
         this.setSession(result);

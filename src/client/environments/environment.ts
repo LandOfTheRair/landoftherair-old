@@ -9,12 +9,12 @@ export const environment = {
     domain: 'localhost',
     protocol: 'http',
     port: 3303,
+    silentExt: 'dev'
   },
   client: {
     domain: 'localhost',
     protocol: 'http',
-    port: 4200,
-    silentExt: 'dev'
+    port: 4200
   },
   auth0: {
     domain: 'landoftherair.auth0.com',
