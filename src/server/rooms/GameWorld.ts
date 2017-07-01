@@ -50,9 +50,7 @@ export class GameWorld extends Room<GameState> {
     map: []
   };
 
-  private ticks = {
-    Player: 0
-  };
+  private ticks = 0;
 
   get mapRegion() {
     return this.state.map.properties.region;
@@ -477,24 +475,27 @@ export class GameWorld extends Room<GameState> {
   }
 
   tick() {
-    this.ticks.Player++;
+    this.ticks++;
 
     // tick players every second or so
-    if(this.ticks.Player % TickRates.PlayerAction === 0) {
+    if(this.ticks % TickRates.PlayerAction === 0) {
       this.state.tickPlayers();
     }
 
-    if(this.ticks.Player % TickRates.NPCAction === 0) {
+    if(this.ticks % TickRates.NPCAction === 0) {
       this.spawners.forEach(spawner => spawner.npcTick());
     }
 
-    // save players every minute or so
-    if(this.ticks.Player % TickRates.PlayerSave === 0) {
-      this.state.players.forEach(player => this.savePlayer(player));
+    if(this.ticks % TickRates.SpawnerTick === 0) {
+      this.spawners.forEach(spawner => spawner.tick());
     }
 
-    if(this.ticks.Player % TickRates.SpawnerTick === 0) {
-      this.spawners.forEach(spawner => spawner.tick());
+    // save players every minute or so
+    if(this.ticks % TickRates.PlayerSave === 0) {
+      this.state.players.forEach(player => this.savePlayer(player));
+
+      // reset ticks
+      this.ticks = 0;
     }
 
   }
