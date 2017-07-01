@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 import auth0 from 'auth0-js';
 
 import { environment } from '../environments/environment';
@@ -93,15 +93,13 @@ export class AuthService {
 
     const expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
 
-    const source = Observable.of(expiresAt).flatMap(
-      expiresAt => {
+    const source = Observable.of(expiresAt).flatMap((expiresAtTime) => {
+      const now = Date.now();
 
-        const now = Date.now();
-
-        // Use the delay in a timer to
-        // run the refresh at the proper time
-        return Observable.timer(Math.max(1, expiresAt - now));
-      });
+      // Use the delay in a timer to
+      // run the refresh at the proper time
+      return Observable.timer(Math.max(1, expiresAtTime - now));
+    });
 
     // Once the delay time from above is
     // reached, get a new JWT and schedule
