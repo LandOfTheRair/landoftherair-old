@@ -98,10 +98,11 @@ export class AppComponent implements OnInit {
     return this.colyseus.game.inGame;
   }
 
-  constructor(public colyseus: ColyseusService, public macroService: MacroService, public authService: AuthService) {}
+  constructor(public colyseus: ColyseusService, public macroService: MacroService, public authService: AuthService) {
+    this.authService.handleAuthentication();
+  }
 
   ngOnInit() {
-    this.authService.handleAuthentication();
     this.authService.scheduleRenewal();
     (<any>window).auth = this.authService;
 
