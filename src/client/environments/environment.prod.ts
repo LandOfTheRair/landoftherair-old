@@ -4,12 +4,12 @@ export const environment = {
     domain: 'server.rair.land',
     protocol: 'https',
     port: 80,
+    silentExt: 'production'
   },
   client: {
     domain: 'rair.land',
     protocol: 'https',
-    port: 80,
-    silentExt: 'production'
+    port: 80
   },
   auth0: {
     domain: 'landoftherair.auth0.com',

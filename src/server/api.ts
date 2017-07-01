@@ -37,7 +37,7 @@ class GameAPI {
           const mapName = path.basename(file, path.extname(file));
           allMapNames[mapName] = true;
           gameServer.register(mapName, Rooms.GameWorld, { mapName, mapPath: file, allMapNames });
-        })
+        });
       });
 
       server.listen(port);
