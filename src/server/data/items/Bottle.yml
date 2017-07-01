@@ -126,6 +126,11 @@
     ignoreHPBoost: true
   value: 500
 
+- name: Ink Vial
+  desc: "a small vial filled with ink"
+  sprite: 899
+  value: 500
+
 - name: TrueSight Potion
   desc: "a small bottle covered with eyes"
   extendedDesc: "a potion of TrueSight"

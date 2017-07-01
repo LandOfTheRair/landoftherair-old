@@ -7,7 +7,9 @@ export const setup = async (npc: NPC) => {
 
   const vendorItems = [
     'Mend Bottle',
-    'Instant Heal Bottle'
+    'Instant Heal Bottle',
+    'Scribe Scroll',
+    'Ink Vial'
   ];
 
   NPCLoader.loadVendorItems(npc, vendorItems);

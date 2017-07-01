@@ -220,7 +220,7 @@ export class Item {
   }
 
   canUse(char: Character) {
-    return this.effect && this.hasCondition() && this.isOwnedBy(char);
+    return (this.effect || this.ounces > 0) && this.hasCondition() && this.isOwnedBy(char);
   }
 
   // < 0 means it lasts forever
