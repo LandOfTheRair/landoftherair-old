@@ -1,0 +1,244 @@
+
+- npcId: Rylt Rockgolem
+  name: rockgolem
+  hostility: Always
+  sprite: 75
+  alignment: Evil
+  stats: 15
+  skillLevels:
+    Martial: 7
+  level: 7
+
+  skillOnKill: 25
+
+  gold:
+    min: 40
+    max: 90
+
+  hp:
+    min: 700
+    max: 900
+
+  giveXp:
+    min: 500
+    max: 725
+
+  gear:
+    Hands: Rylt Rockgolem Gloves
+    Armor:
+      - none
+      - Antanian Tunic
+      - Antanian Studded Tunic
+      - Antanian Cloak
+
+  drops:
+    - result: Antanian Leather Gloves
+      chance: 20
+
+    - result: Antanian Leather Boots
+      chance: 20
+
+    - result: Antanian Golem Brain
+      chance: 20
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+
+  spawnMessage: "the sound of rocks grinding together"
+
+- npcId: Rylt Cave Apprentice
+  name: apprentice
+  hostility: Always
+  sprite: 545
+  alignment: Evil
+  stats: 20
+  skillLevels:
+    Wand: 5
+    Conjuration: 5
+
+  level: 7
+
+  skillOnKill: 20
+
+  gold:
+    min: 40
+    max: 90
+
+  hp:
+    min: 500
+    max: 600
+
+  mp:
+    min: 1000
+    max: 1500
+
+  giveXp:
+    min: 300
+    max: 425
+
+  gear:
+    rightHand:
+      - Antanian Staff
+      - Antanian Shortsword
+    Armor: Antanian Tunic
+    Neck:
+      - result: none
+        chance: 4
+      - result: Rylt Apprentice Regen Amulet
+        chance: 1
+    Ring1:
+      - none
+      - Antanian Ring
+      - Identify Ring
+    Robe1:
+      - result: none
+        chance: 4
+      - result: Antanian Cloak
+        chance: 4
+      - result: Cave Apprentice Robe
+        chance: 2
+    Wrists:
+      - result: none
+        chance: 5
+      - result: Antanian Bracers
+        chance: 1
+
+  usableSkills:
+    - MagicMissile
+
+  copyDrops:
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Wrists'
+      chance: -1
+
+
+- npcId: Saraxa
+  name: Saraxa
+  allegiance: 'None'
+  hostility: 'Always'
+  alignment: 'Evil'
+  stats:
+    int: 15
+    dex: 10
+    str: 10
+    con: 10
+    agi: 10
+    luk: 5
+  level: 15
+
+  skillLevels:
+    Wand: 7
+    Conjuration: 10
+
+  allegianceReputation:
+    Enemy: -1
+
+  skillOnKill: 50
+
+  sprite: 545
+
+  hp:
+    min: 20000
+    max: 22000
+
+  gold:
+    min: 5000
+    max: 10000
+
+  giveXp:
+    min: 10000
+    max: 20000
+
+  rightHand:
+    - Cave Shaman Wand
+
+  gear:
+    rightHand:
+      - Cave Shaman Wand
+    Armor: Rylt Renegade Breastplate
+    Neck: Saraxa Regen Amulet
+    Ring1:
+      - none
+      - Antanian Ring
+      - Identify Ring
+    Robe1: Saraxa Robe
+
+  usableSkills:
+    - MagicMissile
+
+  copyDrops:
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+
+  combatMessages:
+    - "Ah, Rocky, do be a dear and take care of our guests!"
+    - "Those who trespass in my cave must pay the price!"
+    - "You shall not interfere with our plans!"
+
+- npcId: Saraxa Rocky
+  name: Rocky
+  hostility: Always
+  sprite: 75
+  alignment: Evil
+  stats: 15
+  skillLevels:
+    Martial: 7
+  level: 9
+
+  skillOnKill: 100
+
+  gold:
+    min: 400
+    max: 900
+
+  hp:
+    min: 2500
+    max: 3000
+
+  giveXp:
+    min: 2500
+    max: 2725
+
+  gear:
+    Hands: Rylt Rockgolem Gloves
+    Armor:
+      - none
+      - Antanian Tunic
+      - Antanian Studded Tunic
+      - Antanian Cloak
+
+  drops:
+    - result: Antanian Leather Gloves
+      chance: 20
+
+    - result: Antanian Leather Boots
+      chance: 20
+
+    - result: Antanian Golem Brain
+      chance: -1
+
+    - result: Antanian Golem Brain
+      chance: -1
+
+    - result: Antanian Golem Brain
+      chance: -1
+
+    - result: Antanian Golem Brain
+      chance: -1
+
+    - result: Antanian Golem Brain
+      chance: -1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
