@@ -47,6 +47,7 @@ export class NPC extends Character {
 
   leashMessage: string;
   spawnMessage: string;
+  combatMessages: string[];
 
   init() {
     if(!this.uuid) this.uuid = uuid();
