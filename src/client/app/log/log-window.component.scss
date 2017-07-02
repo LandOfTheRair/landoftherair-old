@@ -53,6 +53,10 @@
         font-size: 0.5rem;
       }
 
+      &.loot {
+        font-weight: bold;
+      }
+
       &.combat {
         &.self {
           color: #00a;

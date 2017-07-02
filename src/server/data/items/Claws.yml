@@ -22,6 +22,7 @@
     chance: 20
 
   binds: true
+  tellsBind: true
 
   requirements:
     level: 5

@@ -135,6 +135,7 @@ export class Item {
   attackRange = 0;
   returnsOnThrow: boolean;
   binds: boolean;
+  tellsBind: boolean;
 
   searchItems: Item[];
   tansFor: string;

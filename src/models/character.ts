@@ -338,6 +338,14 @@ export class Character {
     if(item.itemClass === 'Corpse') return;
     if(item.binds && !item.owner) {
       item.setOwner(this);
+      
+      if(item.tellsBind) {
+        this.sendClientMessageToRadius({
+          message: `${this.name} has looted ${item.desc}.`,
+          subClass: 'always loot'
+        }, 4);
+      }
+
       this.sendClientMessage(`The ${item.itemClass.toLowerCase()} feels momentarily warm to the touch as it molds to fit your grasp.`);
     }
   }
