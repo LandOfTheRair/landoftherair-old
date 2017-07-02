@@ -99,10 +99,14 @@ export class ColyseusGameService {
       this.clientGameState.removePlayer(+playerId);
     });
 
-    this.worldRoom.state.listen('players/:id/:attribute', 'replace', (entityId, attribute, value) => {
-      if(!includes(['x', 'y', 'dir', 'swimLevel'], attribute)) return;
-      this.clientGameState.updatePlayer(+entityId, attribute, value);
-    });
+    const locDirChange = (attr, entityId, value) => {
+      this.clientGameState.updatePlayer(+entityId, attr, value);
+    };
+
+    this.worldRoom.state.listen('players/:id/x', 'replace', locDirChange.bind(this, 'x'));
+    this.worldRoom.state.listen('players/:id/y', 'replace', locDirChange.bind(this, 'y'));
+    this.worldRoom.state.listen('players/:id/dir', 'replace', locDirChange.bind(this, 'dir'));
+    this.worldRoom.state.listen('players/:id/swimLevel', 'replace', locDirChange.bind(this, 'swimLevel'));
 
     this.worldRoom.state.listen('players/:id/effects/:effect', 'add', (entityId, effect, value) => {
       this.clientGameState.updatePlayerEffect(+entityId, effect, value);
