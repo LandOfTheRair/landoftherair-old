@@ -1,0 +1,102 @@
+
+- npcId: Rylt Townee
+  allegiance: 'None'
+  stats: 15
+  skillLevels: 5
+  level: 10
+
+  skillOnKill: 15
+
+  sprite: [580, 595, 610, 615]
+
+  hp:
+    min: 5000
+    max: 7000
+
+  gold:
+    min: 0
+    max: 100
+
+  giveXp:
+    min: 300
+    max: 500
+
+  leftHand:
+    - none
+    - Antanian Wooden Shield
+
+  rightHand:
+    - none
+    - Antanian Shortsword
+    - Antanian Longsword
+    - Antanian Staff
+    - Antanian Dagger
+    - Antanian Crossbow
+
+  gear:
+    Armor:
+      - Antanian Tunic
+      - Antanian Studded Tunic
+      - Antanian Scalemail Tunic
+      - Antanian Ringmail Tunic
+      - Antanian Breastplate
+
+    Robe1:
+      - none
+      - Antanian Cloak
+
+  copyDrops:
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+
+
+- npcId: Rylt Guard
+  name: guard
+  allegiance: 'None'
+  stats: 30
+  level: 20
+
+  skillLevels:
+    twohanded: 10
+    polearm: 10
+    mace: 10
+
+  allegianceReputation:
+    Enemy: -1
+
+  skillOnKill: 50
+
+  sprite: 625
+
+  hp:
+    min: 15000
+    max: 17000
+
+  gold:
+    min: 0
+    max: 100
+
+  giveXp:
+    min: 3000
+    max: 5000
+
+  rightHand:
+    - Antanian Halberd
+    - Antanian Greatsword
+    - Antanian Greatmace
+
+  gear:
+    Armor:
+      - Antanian Breastplate
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1

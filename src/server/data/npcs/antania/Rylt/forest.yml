@@ -1,0 +1,177 @@
+
+
+- npcId: Rylt Deer
+  name: deer
+  sprite: 205
+  alignment: Good
+  allegiance: None
+  hostility: OnHit
+  stats: 3
+  skillLevels:
+    Martial: 3
+  level: 2
+
+  gear:
+    Armor: Deer Robe
+    Hands: Basic Claws
+
+  skillOnKill: 3
+
+  usableSkills:
+    - WeakBite
+
+  hp:
+    min: 50
+    max: 100
+
+  giveXp:
+    min: 10
+    max: 50
+
+  tansFor: Deer Robe
+
+- npcId: Rylt Weredeer
+  name: weredeer
+  sprite: 205
+  hostility: Always
+  stats: 15
+  skillLevels:
+    Martial: 7
+  level: 4
+
+  skillOnKill: 50
+
+  gear:
+    Armor: Weredeer Robe
+    Hands: Werebear Claws
+
+  usableSkills:
+    - WeakBite
+
+  hp:
+    min: 1000
+    max: 2000
+
+  giveXp:
+    min: 400
+    max: 500
+
+  tansFor: Weredeer Robe
+
+- npcId: Rylt Wolf
+  name: wolf
+  hostility: Always
+  sprite: 215
+  alignment: Evil
+  stats: 5
+  skillLevels:
+    Martial: 4
+  level: 3
+
+  skillOnKill: 10
+
+  gold:
+    min: 10
+    max: 20
+
+  hp:
+    min: 200
+    max: 300
+
+  giveXp:
+    min: 100
+    max: 125
+
+  gear:
+    Armor: Rylt Fur
+    Hands: Basic Claws
+
+  usableSkills:
+    - WeakBite
+
+  tansFor: Rylt Fur
+
+- npcId: Rylt Bear
+  name: bear
+  hostility: Always
+  sprite: 210
+  alignment: Evil
+  stats: 7
+  skillLevels:
+    Martial: 5
+  level: 5
+
+  skillOnKill: 15
+
+  gold:
+    min: 40
+    max: 90
+
+  hp:
+    min: 400
+    max: 600
+
+  giveXp:
+    min: 200
+    max: 325
+
+  gear:
+    Armor: Rylt Bear Fur
+    Hands: Basic Claws
+
+  tansFor: Rylt Bear Fur
+
+  usableSkills:
+    - WeakBite
+
+  drops:
+    - result: Antanian Bear Meat
+      chance: 30
+
+  spawnMessage: "a deep roar"
+
+- npcId: Rylt Werebear
+  name: werebear
+  sprite: 210
+  hostility: Always
+  alignment: Evil
+  stats: 20
+  skillLevels:
+    Martial: 7
+  level: 7
+
+  skillOnKill: 75
+
+  gear:
+    Armor: Rylt Werebear Fur
+    Hands: Werebear Claws
+
+  hp:
+    min: 2000
+    max: 3000
+
+  giveXp:
+    min: 1500
+    max: 2000
+
+  tansFor: Rylt Werebear Fur
+
+  usableSkills:
+    - WeakBite
+
+  drops:
+    - result: Werebear Claws
+      chance: -1
+    - result: Antanian Bear Meat
+      chance: -1
+    - result: Antanian Bear Meat
+      chance: -1
+    - result: Antanian Bear Meat
+      chance: -1
+    - result: Antanian Bear Meat
+      chance: -1
+    - result: Antanian Bear Meat
+      chance: -1
+
+  spawnMessage: "a guttural roar"
+  leashMessage: "a guttural roar"
