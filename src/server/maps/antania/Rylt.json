@@ -4742,6 +4742,58 @@
                  "width":64,
                  "x":896,
                  "y":7040
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":625,
+                 "name":"Saraxa Spawner",
+                 "properties":
+                    {
+                     "lairName":"Saraxa",
+                     "randomWalkRadius":20,
+                     "respawnRate":3600,
+                     "script":"global\/lair"
+                    },
+                 "propertytypes":
+                    {
+                     "lairName":"string",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9216,
+                 "y":5824
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":626,
+                 "name":"Saraxa-Rocky Spawner",
+                 "properties":
+                    {
+                     "lairName":"Saraxa Rocky",
+                     "randomWalkRadius":20,
+                     "respawnRate":1200,
+                     "script":"global\/lair"
+                    },
+                 "propertytypes":
+                    {
+                     "lairName":"string",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9024,
+                 "y":5824
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5329,7 +5381,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":625,
+ "nextobjectid":627,
  "orientation":"orthogonal",
  "properties":
     {

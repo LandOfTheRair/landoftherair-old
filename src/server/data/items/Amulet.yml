@@ -12,3 +12,11 @@
   sprite: 319
   desc: "an amulet crafted from many pearls"
   value: 500
+
+- name: Saraxa Regen Amulet
+  stats:
+    mpregen: 10
+    defense: 2
+  sprite: 319
+  desc: "an amulet crafted from many pearls and engraved with the markings of a shaman"
+  value: 1000
