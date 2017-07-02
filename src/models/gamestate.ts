@@ -103,6 +103,10 @@ export class GameState {
 
   getPossibleTargetsFor(me: NPC, radius) {
     return filter((<any>this.players).concat(this.mapNPCs), char => {
+
+      // no hitting myself
+      if(me === char) return false;
+
       // no hitting dead people
       if(char.isDead()) return false;
 
