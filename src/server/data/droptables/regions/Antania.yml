@@ -42,3 +42,15 @@
 - name: Antanian Magic Potion
   chance: 1
   maxChance: 25000
+
+- name: Antanian Lore Scroll 1
+  chance: 1
+  maxChance: 500
+
+- name: Antanian Lore Scroll 2
+  chance: 1
+  maxChance: 500
+
+- name: Antanian Lore Scroll 3
+  chance: 1
+  maxChance: 500

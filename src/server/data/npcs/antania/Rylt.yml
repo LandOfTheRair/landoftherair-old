@@ -238,7 +238,7 @@
   alignment: Evil
   stats: 20
   skillLevels:
-    Martial: 10
+    Martial: 7
   level: 7
 
   skillOnKill: 75
@@ -284,7 +284,7 @@
   alignment: Evil
   stats: 15
   skillLevels:
-    Martial: 10
+    Martial: 7
   level: 7
 
   skillOnKill: 25
@@ -779,12 +779,9 @@
   level: 10
 
   skillLevels:
-    polearm: 7
+    polearm: 4
 
-  allegianceReputation:
-    Enemy: -1
-
-  skillOnKill: 50
+  skillOnKill: 150
 
   sprite: 625
 
@@ -810,5 +807,118 @@
   copyDrops:
     - drop: 'rightHand'
       chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+
+
+- npcId: Saraxa
+  name: Saraxa
+  allegiance: 'None'
+  stats: 20
+  level: 15
+
+  skillLevels:
+    Wand: 7
+    Conjuration: 7
+
+  allegianceReputation:
+    Enemy: -1
+
+  skillOnKill: 50
+
+  sprite: 545
+
+  hp:
+    min: 20000
+    max: 22000
+
+  gold:
+    min: 5000
+    max: 10000
+
+  giveXp:
+    min: 10000
+    max: 20000
+
+  rightHand:
+    - Cave Shaman Wand
+
+  gear:
+    rightHand:
+      - Cave Shaman Wand
+    Armor: Rylt Renegade Breastplate
+    Neck: Saraxa Regen Amulet
+    Ring1:
+      - none
+      - Antanian Ring
+      - Identify Ring
+    Robe1: Saraxa Robe
+
+  usableSkills:
+    - MagicMissile
+
+  copyDrops:
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+
+- npcId: Saraxa Rocky
+  name: Rocky
+  hostility: Always
+  sprite: 75
+  alignment: Evil
+  stats: 15
+  skillLevels:
+    Martial: 7
+  level: 9
+
+  skillOnKill: 100
+
+  gold:
+    min: 400
+    max: 900
+
+  hp:
+    min: 2500
+    max: 3000
+
+  giveXp:
+    min: 2500
+    max: 2725
+
+  gear:
+    Hands: Rylt Rockgolem Gloves
+    Armor:
+      - none
+      - Antanian Tunic
+      - Antanian Studded Tunic
+      - Antanian Cloak
+
+  drops:
+    - result: Antanian Leather Gloves
+      chance: 20
+
+    - result: Antanian Leather Boots
+      chance: 20
+
+    - result: Antanian Golem Brain
+      chance: -1
+
+    - result: Antanian Golem Brain
+      chance: -1
+
+    - result: Antanian Golem Brain
+      chance: -1
+
+    - result: Antanian Golem Brain
+      chance: -1
+
+    - result: Antanian Golem Brain
+      chance: -1
+
+  copyDrops:
     - drop: 'gear.Armor'
       chance: -1
