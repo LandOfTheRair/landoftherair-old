@@ -153,9 +153,13 @@ export class Spawner {
     npc.hostility = npcData.hostility;
     npc.spawner = this;
     npc.$$room = this.room;
+
+    npc.sendSpawnMessage();
+
     this.assignPath(npc);
     this.addNPC(npc);
     npc.recalculateStats();
+
     npc.hp.toMaximum();
     npc.mp.toMaximum();
 

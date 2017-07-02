@@ -132,6 +132,8 @@ export const tick = (npc: NPC) => {
       npc.agro = {};
     }
 
+    npc.sendLeashMessage();
+
     // if we had a path, re-assign a path
     if(npc.path && npc.path.length > 0) {
       npc.spawner.assignPath(npc);

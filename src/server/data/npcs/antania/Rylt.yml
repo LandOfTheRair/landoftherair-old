@@ -229,6 +229,8 @@
     - result: Antanian Bear Meat
       chance: 30
 
+  spawnMessage: "a deep roar"
+
 - npcId: Rylt Werebear
   name: werebear
   sprite: 210
@@ -271,6 +273,9 @@
       chance: -1
     - result: Antanian Bear Meat
       chance: -1
+
+  spawnMessage: "a guttural roar"
+  leashMessage: "a guttural roar"
 
 - npcId: Rylt Rockgolem
   name: rockgolem
@@ -317,6 +322,8 @@
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
+
+  spawnMessage: "the sound of rocks grinding together"
 
 - npcId: Rylt Cave Apprentice
   name: apprentice
