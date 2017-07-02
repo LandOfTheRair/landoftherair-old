@@ -338,7 +338,6 @@ export class Character {
     if(item.itemClass === 'Corpse') return;
     if(item.binds && !item.owner) {
       item.setOwner(this);
-      
       if(item.tellsBind) {
         this.sendClientMessageToRadius({
           message: `${this.name} has looted ${item.desc}.`,
