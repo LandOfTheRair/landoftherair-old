@@ -23,6 +23,7 @@
     defense: 1
     magicalResist: 10
     energyResist: 10
+    mpregen: 2
   desc: "a red robe with a shimmering gold trim"
   value: 400
   sprite: 488
@@ -34,6 +35,7 @@
     magicalResist: 30
     energyResist: 20
     necroticResist: 20
+    mpregen: 5
   desc: "a red robe with a shimmering gold trim engraved with the markings of a shaman"
   value: 1400
   sprite: 488
