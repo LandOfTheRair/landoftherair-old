@@ -9,6 +9,7 @@
 - name: Rylt Apprentice Regen Amulet
   stats:
     mpregen: 3
+  binds: true
   sprite: 319
   desc: "an amulet crafted from many pearls"
   value: 500
@@ -17,6 +18,8 @@
   stats:
     mpregen: 10
     defense: 2
+  binds: true
+  tellsBind: true
   sprite: 319
   desc: "an amulet crafted from many pearls and engraved with the markings of a shaman"
   value: 1000
