@@ -814,6 +814,8 @@
 - npcId: Saraxa
   name: Saraxa
   allegiance: 'None'
+  hostility: 'Always'
+  alignment: 'Evil'
   stats: 20
   level: 15
 
@@ -864,6 +866,11 @@
       chance: -1
     - drop: 'gear.Neck'
       chance: -1
+
+  combatMessages:
+    - "Ah, Rocky, do be a dear and take care of our guests!"
+    - "Those who trespass in my cave must pay the price!"
+    - "You shall not interfere with our plans!"
 
 - npcId: Saraxa Rocky
   name: Rocky
