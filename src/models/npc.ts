@@ -45,6 +45,9 @@ export class NPC extends Character {
 
   usableSkills: string[];
 
+  leashMessage: string;
+  spawnMessage: string;
+
   init() {
     if(!this.uuid) this.uuid = uuid();
     this.recalculateStats();
@@ -133,5 +136,15 @@ export class NPC extends Character {
     }
 
     this.spawner.removeNPC(this);
+  }
+
+  sendLeashMessage() {
+    if(!this.leashMessage) return;
+    this.sendClientMessageToRadius(`You hear ${this.leashMessage}.`, 8);
+  }
+
+  sendSpawnMessage() {
+    if(!this.spawnMessage) return;
+    this.sendClientMessageToRadius(`You hear ${this.spawnMessage}.`, 8);
   }
 }
