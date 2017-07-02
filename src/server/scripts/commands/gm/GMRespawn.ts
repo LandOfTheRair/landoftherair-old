@@ -17,5 +17,6 @@ export class GMRespawn extends Command {
     if(!spawner) return player.sendClientMessage('That lair does not exist.');
 
     spawner.createNPC();
+    spawner.currentTick = 0;
   }
 }

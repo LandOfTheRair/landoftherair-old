@@ -20,6 +20,7 @@ class Database {
   public $regionDrops: any;
   public $mapGroundItems: any;
   public $characterLockers: any;
+  public $mapBossTimers: any;
 
   private client: MongoClient;
 
@@ -56,6 +57,9 @@ class Database {
 
         this.$mapGroundItems = client.collection('mapgrounditems');
         this.$mapGroundItems.ensureIndex({ mapName: 1 }, { unique: true });
+
+        this.$mapBossTimers = client.collection('mapbosstimers');
+        this.$mapBossTimers.ensureIndex({ mapName: 1 }, { unique: true });
 
         this.$characterLockers = client.collection('characterLockers');
         this.$characterLockers.ensureIndex({ username: 1, charSlot: 1, region: 1, lockerId: 1 }, { unique: true });

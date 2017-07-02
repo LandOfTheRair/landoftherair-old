@@ -1,5 +1,5 @@
 
-import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get } from 'lodash';
+import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter } from 'lodash';
 
 import * as scheduler from 'node-schedule';
 
@@ -319,18 +319,33 @@ export class GameWorld extends Room<GameState> {
     CommandExecutor.executeCommand(player, data.command, data);
   }
 
-  // TODO retrieve boss timers
-  onInit() {
+  async onInit() {
+    const timerData = await this.loadBossTimers();
+    const spawnerTimers = timerData ? timerData.spawners : [];
+
     this.loadNPCsFromMap();
-    this.loadSpawners();
+    this.loadSpawners(spawnerTimers);
     this.loadDropTables();
     this.loadGround();
     this.watchForItemDecay();
   }
 
-  // TODO store boss timers
   onDispose() {
     this.saveGround();
+    this.saveBossTimers();
+  }
+
+  async loadBossTimers() {
+    return DB.$mapBossTimers.findOne({ mapName: this.state.mapName });
+  }
+
+  saveBossTimers() {
+    const spawners = this.spawners.filter(spawner => spawner.shouldSerialize && spawner.currentTick > 0);
+    const saveSpawners = spawners.map(spawner => ({ x: spawner.x, y: spawner.y, currentTick: spawner.currentTick }));
+
+    if(saveSpawners.length > 0) {
+      DB.$mapBossTimers.update({ mapName: this.state.mapName }, { $set: { spawners: saveSpawners } }, { upsert: true });
+    }
   }
 
   async loadGround() {
@@ -431,13 +446,23 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
-  loadSpawners() {
+  loadSpawners(timerData: any[]) {
     const spawners = this.state.map.layers[MapLayer.Spawners].objects;
 
     spawners.forEach(spawnerData => {
       const spawner = require(`${__dirname}/../scripts/spawners/${spawnerData.properties.script}`);
       const spawnerProto = spawner[Object.keys(spawner)[0]];
-      this.spawners.push(new spawnerProto(this, { map: this.state.mapName, x: spawnerData.x, y: spawnerData.y }, spawnerData.properties));
+      const properties = spawnerData.properties;
+      const spawnerX = spawnerData.x / 64;
+      const spawnerY = (spawnerData.y / 64) - 1;
+      const spawnerOldData = find(timerData, { x: spawnerX, y: spawnerY });
+
+      if(spawnerOldData) {
+        properties.currentTick = spawnerOldData.currentTick;
+      }
+
+      const spawnerObject = new spawnerProto(this, { map: this.state.mapName, x: spawnerX, y: spawnerY }, properties);
+      this.spawners.push(spawnerObject);
     });
   }
 

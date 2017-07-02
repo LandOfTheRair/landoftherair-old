@@ -2,7 +2,7 @@
 import { NPCLoader } from '../helpers/npc-loader';
 import { LootTable } from 'lootastic';
 
-import { sample, random, extend, isNumber, isString, pull, min } from 'lodash';
+import { sample, random, extend, isNumber, isString, pull, min, every } from 'lodash';
 import { NPC } from '../../models/npc';
 import { Logger } from '../logger';
 
@@ -37,7 +37,6 @@ export class Spawner {
 
   alwaysSpawn: boolean;
 
-  // TODO use this for lair respawn timer storage
   shouldSerialize: boolean;
 
   requireDeadToRespawn = false;
@@ -49,12 +48,14 @@ export class Spawner {
   constructor(private room, { x, y, map }, spawnOpts) {
     extend(this, spawnOpts);
 
-    this.x = x / 64;
-    this.y = (y / 64) - 1;
+    this.x = x;
+    this.y = y;
     this.map = map;
 
-    for(let i = 0; i < this.initialSpawn; i++) {
-      this.createNPC();
+    if(this.currentTick === 0) {
+      for(let i = 0; i < this.initialSpawn; i++) {
+        this.createNPC();
+      }
     }
   }
 
@@ -194,7 +195,7 @@ export class Spawner {
     if(!this.isActive()) return;
 
     if(this.requireDeadToRespawn) {
-      if(this.npcs.length === 0) this.currentTick++;
+      if(this.npcs.length === 0 || every(this.npcs, npc => npc.isDead())) this.currentTick++;
     } else {
       this.currentTick++;
     }
