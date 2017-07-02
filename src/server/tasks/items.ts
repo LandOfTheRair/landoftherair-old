@@ -1,5 +1,9 @@
 
-import { SkillClassNames } from '../../models/character';
+import { reject, difference } from 'lodash';
+
+import { SkillClassNames, Stats } from '../../models/character';
+import * as Classes from '../classes';
+
 require('dotenv').config({ silent: true });
 
 import { DB } from '../database';
@@ -100,15 +104,35 @@ class ItemLoader {
   }
 
   static validateItem(item: Item): boolean {
-    if(!item.name)                            { console.error(`ERROR: ${JSON.stringify(item)} has no name!`); return false; }
-    if(!item.desc)                            { console.error(`ERROR: ${item.name} has no description!`); return false; }
-    if(!item.sprite)                          { console.error(`ERROR: ${item.name} has no sprite!`); return false; }
-    if(!includes(ValidItemTypes, item.type))  { console.error(`ERROR: ${item.name} has an invalid item type!`); return false; }
+    let hasBad = false;
+
+    if(!item.name)                            { console.error(`ERROR: ${JSON.stringify(item)} has no name!`); hasBad = true; }
+    if(!item.desc)                            { console.error(`ERROR: ${item.name} has no description!`); hasBad = true; }
+    if(!item.sprite)                          { console.error(`ERROR: ${item.name} has no sprite!`); hasBad = true; }
+    if(!includes(ValidItemTypes, item.type))  { console.error(`ERROR: ${item.name} has an invalid item type!`); hasBad = true; }
+
+    if(item.requirements && item.requirements.class) {
+      const invalidClasses = reject(item.requirements.class, testClass => Classes[testClass]);
+      if(invalidClasses.length > 0) {
+        console.error(`ERROR: ${item.name} has invalid class requirements: ${invalidClasses.join(', ')}`);
+        hasBad = true;
+      }
+    }
+
+    if(item.stats) {
+      const statsTest = new Stats();
+      const invalidStats = difference(Object.keys(item.stats), Object.keys(statsTest));
+      if(invalidStats.length > 0) {
+        console.error(`ERROR: ${item.name} has invalid stats: ${invalidStats.join(', ')}`);
+        hasBad = true;
+      }
+    }
+
+    if(hasBad) {
+      throw new Error('Invalid item. Stopping.');
+    }
 
     return true;
-
-    // TODO validate class requirements against real classes
-    // TODO validate stats against real stats
   }
 
 }
