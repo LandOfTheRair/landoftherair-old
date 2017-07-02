@@ -8,7 +8,7 @@ import { Character } from '../../../../../models/character';
 import { Poison as CastEffect } from '../../../../effects/Poison';
 import { CombatHelper } from '../../../../helpers/combat-helper';
 
-export class Bite extends Skill {
+export class WeakBite extends Skill {
 
   name = '';
   execute() {}
@@ -22,7 +22,7 @@ export class Bite extends Skill {
       attackerDamageMessage: '',
       defenderDamageMessage: `${user.name} bit you!`
     });
-    const effect = new CastEffect({ potency: 5, duration: 10 });
+    const effect = new CastEffect({ potency: 0, duration: 10 });
     effect.cast(user, target, this);
   }
 

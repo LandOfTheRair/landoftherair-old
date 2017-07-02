@@ -96,6 +96,7 @@ export class GameState {
   private checkTargetForHostility(me: NPC, target: Character): boolean {
     if(me.agro[target.uuid]) return true;
     if(me.allegianceReputation[target.allegiance] <= 0) return true;
+    if(me.allegiance === target.allegiance) return false;
     if(me.hostility === 'Always') return true;
     if(me.alignment === 'Evil' && (target.alignment === 'Neutral' || target.alignment === 'Good')) return true;
     return false;
@@ -122,9 +123,6 @@ export class GameState {
       if(!inRadius) return false;
 
       if(this.checkTargetForHostility(me, char)) return true;
-
-      // no reason to attack my own people
-      if(me.allegiance === char.allegiance) return false;
 
       return false;
     });
