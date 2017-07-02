@@ -120,9 +120,8 @@
 
 - npcId: Saraxa
   name: Saraxa
-  allegiance: 'None'
-  hostility: 'Always'
-  alignment: 'Evil'
+  hostility: Always
+  alignment: Evil
   stats:
     int: 15
     dex: 10
@@ -188,8 +187,8 @@
 - npcId: Saraxa Rocky
   name: Rocky
   hostility: Always
-  sprite: 75
   alignment: Evil
+  sprite: 75
   stats: 15
   skillLevels:
     Martial: 7
