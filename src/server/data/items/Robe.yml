@@ -31,9 +31,9 @@
   stats:
     armorClass: 3
     defense: 2
-    magicalResist: 50
-    energyResist: 50
-    necroticResist: 50
+    magicalResist: 30
+    energyResist: 20
+    necroticResist: 20
   desc: "a red robe with a shimmering gold trim engraved with the markings of a shaman"
   value: 1400
   sprite: 488
