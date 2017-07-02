@@ -1,5 +1,5 @@
 - name: Cave Shaman Wand
-  desc: "an blue wand"
+  desc: "a blue wand engraved with the markings of a shaman"
   baseDamage: 1
   minDamage: 1
   maxDamage: 1
@@ -7,6 +7,8 @@
     name: MagicMissile
     potency: 5
     chance: 33
+  binds: true
+  tellsBind: true
   type: Wand
   value: 1500
   sprite: 281
