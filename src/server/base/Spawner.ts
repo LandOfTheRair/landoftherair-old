@@ -10,7 +10,7 @@ export class Spawner {
 
   x: number;
   y: number;
-  map: number;
+  map: string;
 
   currentTick = 0;
 
