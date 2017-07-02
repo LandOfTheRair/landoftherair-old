@@ -52,6 +52,10 @@ export class GameWorld extends Room<GameState> {
 
   private ticks = 0;
 
+  get allSpawners() {
+    return this.spawners;
+  }
+
   get mapRegion() {
     return this.state.map.properties.region;
   }
