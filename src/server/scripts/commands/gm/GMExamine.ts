@@ -13,6 +13,7 @@ export class GMExamine extends Command {
 
     if(!args && player.rightHand) {
       player.sendClientMessage(JSON.stringify(player.rightHand.toJSON()));
+      return;
     }
 
     const possTargets = room.getPossibleMessageTargets(player, args);
