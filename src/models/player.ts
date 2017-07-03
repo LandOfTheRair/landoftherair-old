@@ -260,6 +260,10 @@ export class Player extends Character {
     this.$$room.sendPlayerLogMessage(this, message);
   }
 
+  receiveMessage(from: Character, message) {
+    this.sendClientMessage({ name: `[private] ${from.name}`, message });
+  }
+
   queueAction({ command, args }) {
     this.$$actionQueue.push({ command, args });
     if(this.$$actionQueue.length > 20) this.$$actionQueue.length = 20;
