@@ -67,6 +67,8 @@ export class NpcsComponent {
   public doAction(npc: NPC) {
     if(npc.hostility === 'Never') {
       this.colyseusGame.sendCommandString(`${npc.uuid}, hello`);
+    } else if((<any>npc).username && !this.colyseusGame.currentCommand) {
+      this.colyseusGame.currentCommand = `${npc.uuid}, `;
     } else {
       this.colyseusGame.sendCommandString(this.macroService.activeMacro.macro, npc.uuid);
     }

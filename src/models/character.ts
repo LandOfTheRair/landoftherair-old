@@ -750,4 +750,6 @@ export class Character {
     this.allegianceReputation[allegiance] = this.allegianceReputation[allegiance] || 0;
     this.allegianceReputation[allegiance] += modifier;
   }
+
+  receiveMessage(from, message) {}
 }
