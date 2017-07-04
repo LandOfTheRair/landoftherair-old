@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 
 import { NPC } from '../../models/npc';
+import { Item } from '../../models/item';
 
 export class ClientGameState {
   players: Player[] = [];
@@ -93,6 +94,34 @@ export class ClientGameState {
   updatePlayer(playerIndex, attr, val) {
     this.players[playerIndex][attr] = val;
     this._updatePlayerAtIndex(playerIndex);
+  }
+
+  private __updatePlayerAttribute(playerIndex, attr, key, val) {
+    this.players[playerIndex][attr][key] = val;
+  }
+
+  updatePlayerAgro(playerIndex, attr, val) {
+    this.__updatePlayerAttribute(playerIndex, 'agro', attr, val);
+  }
+
+  updatePlayerHP(playerIndex, key, val) {
+    this.__updatePlayerAttribute(playerIndex, 'hp', key, val);
+  }
+
+  updatePlayerHand(playerIndex, hand, item) {
+    this.players[playerIndex][hand] = item;
+  }
+
+  updatePlayerGearItem(playerIndex, slot, item) {
+    this.__updatePlayerAttribute(playerIndex, 'gear', slot, item);
+  }
+
+  updatePlayerHandItem(playerIndex, hand, attr, value) {
+    this.players[playerIndex][hand] = this.players[playerIndex][hand] || {};
+    this.__updatePlayerAttribute(playerIndex, hand, attr, value);
+
+    // this is bad, but this function is only called when hand swapping happens and there's an item in both hands, so whatever
+    this.players[playerIndex][hand] = new Item(this.players[playerIndex][hand]);
   }
 
   removePlayer(playerIndex) {

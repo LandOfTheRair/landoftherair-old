@@ -60,7 +60,11 @@ export class NpcsComponent {
     const me = this.colyseusGame.character;
 
     if(npc.hostility === 'Never') return 'friendly';
-    if(npc.hostility === 'Always' || npc.agro[me.uuid] || me.agro[npc.uuid] || npc.allegianceReputation[me.allegiance] <= 0) return 'angry';
+
+    if(npc.hostility === 'Always'
+    || npc.agro[me.uuid]
+    || me.agro[npc.uuid]
+    || npc.allegianceReputation[me.allegiance] <= 0) return 'angry';
     return 'neutral';
   }
 
