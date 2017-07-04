@@ -8,21 +8,8 @@ import { Item } from './item';
 import { NPC } from './npc';
 import { Character } from './character';
 import { GetGidDescription, GetSwimLevel } from '../server/gidmetadata/descriptions';
-
-export const MapLayer = {
-  Terrain: 0,
-  Floors: 1,
-  Fluids: 2,
-  Foliage: 3,
-  Walls: 4,
-  Decor: 5,
-  DenseDecor: 6,
-  OpaqueDecor: 7,
-  Interactables: 8,
-  NPCs: 9,
-  Spawners: 10,
-  RegionDescriptions: 11
-};
+import { CombatHelper } from '../server/helpers/combat-helper';
+import { MapLayer } from './maplayer';
 
 export class GameState {
   players: Player[] = [];
@@ -242,7 +229,15 @@ export class GameState {
   }
 
   tickPlayers() {
-    this.players.forEach(p => p.tick());
+    this.players.forEach(p => {
+      p.tick();
+
+      if(p.swimLevel > 0) {
+        const hpPercentLost = p.swimLevel * 4;
+        const hpLost = Math.floor(p.hp.maximum * (hpPercentLost / 100));
+        CombatHelper.dealOnesidedDamage(this, { damage: hpLost, damageClass: p.$$swimElement || 'water', damageMessage: 'You are drowning!' });
+      }
+    });
   }
 
   constructor(opts) {

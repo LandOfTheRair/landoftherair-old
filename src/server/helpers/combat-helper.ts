@@ -7,7 +7,6 @@ import * as Classes from '../classes';
 import * as Effects from '../effects';
 
 import * as dice from 'dice.js';
-import { Logger } from '../logger';
 
 export type DamageType =
   'Physical'
@@ -213,16 +212,10 @@ export class CombatHelper {
 
     if(attackerWeapon.effect) {
       const applyEffect = Effects[attackerWeapon.effect.name];
-
-      if(!applyEffect) {
-        Logger.error(new Error(`Effect ${attackerWeapon.effect.name} does not exist.`));
-      } else {
-
-        const chance = attackerWeapon.effect.chance || 100;
-        if(+dice.roll('1d100') <= chance) {
-          const effect = new applyEffect(attackerWeapon.effect);
-          effect.cast(attacker, defender);
-        }
+      const chance = attackerWeapon.effect.chance || 100;
+      if(+dice.roll('1d100') <= chance) {
+        const effect = new applyEffect(attackerWeapon.effect);
+        effect.cast(attacker, defender);
       }
     }
 

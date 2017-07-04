@@ -4,13 +4,12 @@ import * as RestrictedNumber from 'restricted-number';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
 } from './item';
-import { MapLayer } from './gamestate';
+import { MapLayer } from './maplayer';
 import { environment } from '../client/environments/environment';
 
 import * as Classes from '../server/classes';
 import { Effect } from '../server/base/Effect';
 import * as Effects from '../server/effects';
-import { Logger } from '../server/logger';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
 
@@ -613,11 +612,6 @@ export class Character {
 
   _gainSkill(type, skillGained) {
     type = type.toLowerCase();
-
-    if(isUndefined(this.skills[type])) {
-      Logger.error(new Error(`Skill type ${type} is invalid.`));
-      return;
-    }
 
     this.skills[type] += skillGained;
 

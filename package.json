@@ -69,6 +69,7 @@
     "phaser-tiled": "^2.0.4",
     "recursive-readdir": "^2.2.1",
     "restricted-number": "^1.1.0",
+    "rollbar": "^2.1.0",
     "rxjs": "^5.1.0",
     "sweetalert2": "^6.6.4",
     "uuid": "^3.0.1",

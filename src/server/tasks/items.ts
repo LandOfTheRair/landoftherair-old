@@ -3,6 +3,7 @@ import { reject, difference } from 'lodash';
 
 import { SkillClassNames, Stats } from '../../models/character';
 import * as Classes from '../classes';
+import * as Effects from '../effects';
 
 require('dotenv').config({ silent: true });
 
@@ -126,6 +127,11 @@ class ItemLoader {
         console.error(`ERROR: ${item.name} has invalid stats: ${invalidStats.join(', ')}`);
         hasBad = true;
       }
+    }
+
+    if(item.effect && !Effects[item.effect.name] && !item.effect.uses) {
+      console.error(`ERROR: ${item.name} has an invalid effect: ${item.effect.name}`);
+      hasBad = true;
     }
 
     if(hasBad) {

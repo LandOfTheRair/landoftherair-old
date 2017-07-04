@@ -9,7 +9,8 @@ import { LootRoller, LootFunctions, LootTable } from 'lootastic';
 import { species } from 'fantastical';
 
 import { Room } from 'colyseus';
-import { GameState, MapLayer } from '../../models/gamestate';
+import { GameState } from '../../models/gamestate';
+import { MapLayer } from '../../models/maplayer';
 
 import { DB } from '../database';
 import { Player } from '../../models/player';

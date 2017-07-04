@@ -4,7 +4,6 @@ import { omit, flatten, random } from 'lodash';
 import { Character, Direction } from './character';
 import { Item } from './item';
 import * as uuid from 'uuid/v4';
-import { Logger } from '../server/logger';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 
@@ -122,11 +121,6 @@ export class NPC extends Character {
   }
 
   restore() {
-    if(!this.spawner) {
-      Logger.error(new Error(`Error: ${this.name} @ ${this.x},${this.y} on ${this.map} tried to respawn without having a spawner.`));
-      return;
-    }
-
     if(this.$$corpseRef) {
       this.$$room.dropCorpseItems(this.$$corpseRef);
       this.$$room.removeItemFromGround(this.$$corpseRef);

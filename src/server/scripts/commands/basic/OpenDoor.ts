@@ -1,7 +1,7 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../models/player';
-import { MapLayer } from '../../../../models/gamestate';
+import { MapLayer } from '../../../../models/maplayer';
 import { find, includes } from 'lodash';
 
 export class OpenDoor extends Command {
