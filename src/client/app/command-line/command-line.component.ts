@@ -20,6 +20,9 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   @LocalStorage()
   public lastCommands: string[];
 
+  @LocalStorage()
+  public isSay: boolean;
+
   private listener: any;
   private sendListener: any;
 
@@ -55,6 +58,12 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
   sendCommand() {
     if(!this.colyseusGame.currentCommand || !this.colyseusGame.currentCommand.trim()) return;
+
+    if(this.isSay) {
+      this.colyseusGame.sendCommandString(`~say ${this.colyseusGame.currentCommand}`);
+      this.colyseusGame.currentCommand = '';
+      return;
+    }
 
     this.curIndex = -1;
 
