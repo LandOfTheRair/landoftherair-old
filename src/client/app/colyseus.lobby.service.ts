@@ -42,7 +42,8 @@ export class ColyseusLobbyService {
     });
 
     room.state.listen('accounts/:id', 'remove', (accountId: string, value: any) => {
-      this.lobbyState.removeAccount(value);
+      console.log('value', value, accountId);
+      this.lobbyState.removeAccountAtPosition(+accountId);
     });
 
     room.onData.add((data) => {

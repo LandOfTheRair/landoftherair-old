@@ -2,7 +2,7 @@
 import { Account } from './account';
 import { Message } from './message';
 
-import { reject, find } from 'lodash';
+import * as _ from 'lodash';
 
 export class LobbyState {
   accounts: Account[] = [];
@@ -24,14 +24,27 @@ export class LobbyState {
   }
 
   findAccount(userId: string) {
-    return find(this.accounts, { userId });
+    return _.find(this.accounts, { userId });
   }
 
   addAccount(account: Account) {
     this.accounts.push(account);
+
+    this.sortAccounts();
   }
 
-  removeAccount(userId: string) {
-    this.accounts = reject(this.accounts, account => account.userId === userId);
+  sortAccounts() {
+    this.accounts = _(this.accounts)
+      .sortBy('isGM')
+      .sortBy('username')
+      .value();
+  }
+
+  removeAccount(username: string) {
+    this.accounts = _.reject(this.accounts, account => account.username === username);
+  }
+
+  removeAccountAtPosition(position: number) {
+    this.accounts = this.accounts.splice(position, 1);
   }
 }

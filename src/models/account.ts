@@ -18,7 +18,8 @@ export class Account {
 
   toJSON() {
     return {
-      username: this.username
+      username: this.username,
+      isGM: this.isGM
     };
   }
 }

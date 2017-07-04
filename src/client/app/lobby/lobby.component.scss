@@ -1,4 +1,28 @@
 
+.user-list {
+  border-right: 1px solid #000;
+  overflow-y: auto;
+
+  .user {
+
+    overflow: hidden;
+
+    .user-marking {
+
+      &.gm {
+        width: 10px;
+        height: 10px;
+        border: 1px solid #000;
+        border-radius: 50%;
+        background: purple;
+        background: linear-gradient(135deg, #ad3486 0%,#4100db 50%,#bdf3fd 100%);
+        display: inline-block;
+      }
+
+    }
+  }
+}
+
 .chat-area {
   height: calc(100% - 38px);
   max-height: 350px;
@@ -9,7 +33,6 @@
     flex-direction: row;
 
     .account {
-      min-width: 150px;
       text-align: right;
       margin-right: 10px;
       font-weight: bold;
