@@ -7,7 +7,7 @@
     "start": "npm-run-all --parallel start:*",
     "start:server:plain": "ts-node src/server/index.ts",
     "start:server": "nodemon --ignore \"*.json\" --exec \"ts-node \" -- \"src/server/index.ts\"",
-    "start:client": "ng serve",
+    "start:client": "ng serve -o --host 0.0.0.0 --disable-host-check",
     "build": "ng build",
     "build:prod": "ng build --environment=prod --target=production",
     "lint": "ng lint",
@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/seiyria/kod-prototype#readme",
   "dependencies": {
+    "@angular/cli": "^1.2.0",
     "@angular/common": "^4.1.3",
     "@angular/compiler": "^4.1.3",
     "@angular/core": "^4.1.3",
@@ -74,7 +75,6 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.6",
     "@angular/compiler-cli": "^4.1.3",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
@@ -85,6 +85,7 @@
     "tslint": "~4.5.0",
     "typescript": "2.3.3",
     "webfont": "^7.1.4",
+    "webpack": "^3.0.0",
     "yamljs": "^0.2.10"
   }
 }
