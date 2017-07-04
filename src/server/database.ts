@@ -21,6 +21,7 @@ class Database {
   public $mapGroundItems: any;
   public $characterLockers: any;
   public $mapBossTimers: any;
+  public $lobbySettings: any;
 
   private client: MongoClient;
 
@@ -63,6 +64,8 @@ class Database {
 
         this.$characterLockers = client.collection('characterLockers');
         this.$characterLockers.ensureIndex({ username: 1, charSlot: 1, region: 1, lockerId: 1 }, { unique: true });
+
+        this.$lobbySettings = client.collection('lobbySettings');
 
         resolve();
       });

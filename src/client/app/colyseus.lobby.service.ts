@@ -31,6 +31,9 @@ export class ColyseusLobbyService {
 
     room.onUpdate.addOnce((state) => {
       this.lobbyState = new LobbyState(state);
+      if(this.lobbyState.motd) {
+        this.lobbyState.addMessage({ account: '<System>', message: this.lobbyState.motd });
+      }
     });
 
     room.state.listen('messages/:id', 'add', (messageId: string, value: any) => {
@@ -152,6 +155,8 @@ export class ColyseusLobbyService {
   }
 
   public sendMessage(message) {
+    if(message.startsWith('/') && this.doCommand(message)) return;
+
     this.client.send({ message });
   }
 
@@ -167,5 +172,30 @@ export class ColyseusLobbyService {
 
   public playCharacter(charSlot) {
     this.client.send({ action: 'play', charSlot });
+  }
+
+  public doCommand(string): boolean {
+    const command = string.split(' ')[0];
+    const args = string.substring(string.indexOf(' ')).trim();
+
+    if(command === '/motd') {
+      this.setMOTD(args);
+      return true;
+    }
+
+    if(command === '/resetmotd') {
+      this.resetMOTD();
+      return true;
+    }
+
+    return false;
+  }
+
+  public setMOTD(newMOTD) {
+    this.client.send({ action: 'motd_set', motd: newMOTD });
+  }
+
+  public resetMOTD() {
+    this.client.send({ action: 'motd_set', motd: '' });
   }
 }
