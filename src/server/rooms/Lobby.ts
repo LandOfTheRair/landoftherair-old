@@ -23,7 +23,8 @@ export class Lobby extends Room<LobbyState> {
 
     this.setPatchRate(1000 / 20);
     this.autoDispose = false;
-    this.setState(new LobbyState({ accounts: [], messages: [] }));
+
+    this.setState(new LobbyState({ accounts: [], messages: [], motd: '' }));
   }
 
   private async getAccount(userId): Promise<Account> {
@@ -219,6 +220,22 @@ export class Lobby extends Room<LobbyState> {
     return DB.$players.findOne({ username, charSlot });
   }
 
+  private saveSettings() {
+    DB.$lobbySettings.update({ lobby: 1 }, { $set: { motd: this.state.motd }}, { upsert: 1 });
+  }
+
+  private async loadSettings() {
+    const settings = await DB.$lobbySettings.findOne({ lobby: 1 });
+
+    if(settings) {
+      this.state.motd = settings.motd;
+    } else {
+      DB.$lobbySettings.insert({ lobby: 1 });
+    }
+
+    return settings;
+  }
+
   private async playCharacter(client, { charSlot }) {
     const character = await this.getCharacter(client.username, charSlot);
 
@@ -260,6 +277,22 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'play')      return this.playCharacter(client, data);
     if(data.action === 'create')    return this.createCharacter(client, data);
     if(data.action === 'logout')    return this.logout(client);
+    if(data.action === 'motd_set')  return this.setMOTD(client, data);
+  }
+
+  broadcastMOTD() {
+    this.state.addMessage({ account: '<System>', message: this.state.motd });
+  }
+
+  setMOTD(client, data) {
+    const account = this.state.findAccount(client.userId);
+    if(account && !account.isGM) return;
+
+    this.state.motd = data.motd;
+    if(this.state.motd) {
+      this.broadcastMOTD();
+    }
+    this.saveSettings();
   }
 
   onDispose() {}

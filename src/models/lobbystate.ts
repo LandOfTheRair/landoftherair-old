@@ -7,10 +7,12 @@ import * as _ from 'lodash';
 export class LobbyState {
   accounts: Account[] = [];
   messages: Message[] = [];
+  motd: string;
 
-  constructor({ accounts = [], messages = [] }) {
+  constructor({ accounts = [], messages = [], motd = '' }) {
     this.accounts = accounts;
     this.messages = messages;
+    this.motd = motd;
   }
 
   addMessage(message: Message) {
