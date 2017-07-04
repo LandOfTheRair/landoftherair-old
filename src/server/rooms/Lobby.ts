@@ -241,7 +241,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   onLeave(client) {
-    this.state.removeAccount(client.userId);
+    this.state.removeAccount(client.username);
   }
 
   onMessage(client, data) {

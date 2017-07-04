@@ -1,21 +1,39 @@
 
 <div class="container p-0">
 
-  <div class="chat-area p-0" appNgxAutoScroll lockYOffset="30">
-    <div class="message" *ngFor="let message of lobbyState.messages">
-      <span class="account">[{{ message.account }}]</span>
-      <span class="message">{{ message.message }}</span>
-    </div>
-  </div>
+  <div class="container row h-100 p-0 m-0 w-100">
 
-  <div class="input-area row m-0">
-    <div class="col p-0">
-      <input class="form-control no-border-radius" placeholder="Type a message here..." type="text" [(ngModel)]="chatText" (keyup.enter)="sendMessage()" />
+    <div class="col-3 p-0 m-0">
+
+      <div class="user-list h-100 pl-1">
+        <div class="user" *ngFor="let user of lobbyState.accounts">
+          <span class="user-marking" [class.gm]="user.isGM"></span>
+          <span class="user-name">{{ user.username }}</span>
+        </div>
+      </div>
+
     </div>
-    <div class="col-2 p-0">
-      <button class="btn btn-primary form-control no-border-radius"
-              (click)="lobby.colyseus.isConnected && sendMessage()"
-              [disabled]="!lobby.colyseus.isConnected">Send</button>
+
+    <div class="col-9 p-0 m-0">
+
+      <div class="chat-area p-0" appNgxAutoScroll lockYOffset="30">
+        <div class="message pl-1" *ngFor="let message of lobbyState.messages">
+          <span class="account">[{{ message.account }}]</span>
+          <span class="message">{{ message.message }}</span>
+        </div>
+      </div>
+
+      <div class="input-area row m-0">
+        <div class="col p-0">
+          <input class="form-control no-border-radius" placeholder="Type a message here..." type="text" [(ngModel)]="chatText" (keyup.enter)="sendMessage()" />
+        </div>
+        <div class="col-2 p-0">
+          <button class="btn btn-primary form-control no-border-radius"
+                  (click)="lobby.colyseus.isConnected && sendMessage()"
+                  [disabled]="!lobby.colyseus.isConnected">Send</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
