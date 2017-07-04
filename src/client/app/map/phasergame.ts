@@ -70,7 +70,6 @@ export class Game {
   }
 
   async createPlayer(player: Player) {
-    console.log('create', player);
     if(!this.g.add) return;
     await this.canCreate;
 
