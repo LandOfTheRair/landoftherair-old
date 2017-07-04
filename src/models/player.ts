@@ -3,7 +3,6 @@ import { Character, MaxSizes, AllNormalGearSlots } from './character';
 import { Item } from './item';
 
 import { compact, pull, random, isArray, get, find } from 'lodash';
-import { CombatHelper } from '../server/helpers/combat-helper';
 
 export class Player extends Character {
   _id?: any;
@@ -271,12 +270,6 @@ export class Player extends Character {
 
   tick() {
     super.tick();
-
-    if(this.swimLevel > 0) {
-      const hpPercentLost = this.swimLevel * 4;
-      const hpLost = Math.floor(this.hp.maximum * (hpPercentLost / 100));
-      CombatHelper.dealOnesidedDamage(this, { damage: hpLost, damageClass: this.$$swimElement || 'water', damageMessage: 'You are drowning!' });
-    }
 
     if(!this.$$actionQueue) return;
     const nextAction = this.$$actionQueue.shift();

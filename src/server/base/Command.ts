@@ -1,9 +1,9 @@
 
 import { Player } from '../../models/player';
 import { set, startsWith, find } from 'lodash';
-import { MapLayer } from '../../models/gamestate';
 import { Item } from '../../models/item';
 import { Container } from '../../models/container/container';
+import { MapLayer } from '../../models/maplayer';
 
 export abstract class Command {
 

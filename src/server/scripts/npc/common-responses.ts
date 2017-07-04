@@ -37,6 +37,12 @@ export const TannerResponses = (npc: NPC) => {
 };
 
 export const PeddlerResponses = (npc: NPC) => {
+
+  if(!npc.peddleItem || !npc.peddleCost) {
+    Logger.error(new Error(`Peddler at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid peddleItem/peddleCost`));
+    return;
+  }
+
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
@@ -58,6 +64,12 @@ export const PeddlerResponses = (npc: NPC) => {
 };
 
 export const SmithResponses = (npc: NPC) => {
+
+  if(!npc.costPerThousand || !npc.repairsUpToCondition) {
+    Logger.error(new Error(`Smith at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid costPerThousand/repairsUpToCondition`));
+    return;
+  }
+
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
@@ -147,6 +159,11 @@ export const RecallerResponses = (npc: NPC) => {
 
 export const AlchemistResponses = (npc: NPC) => {
 
+  if(!npc.alchCost || !npc.alchOz) {
+    Logger.error(new Error(`Alchemist at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid alchCost/alchOz!`));
+    return;
+  }
+
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
@@ -231,6 +248,12 @@ export const BankResponses = (npc: NPC) => {
 };
 
 export const VendorResponses = (npc: NPC) => {
+
+  if(npc.vendorItems.length === 0) {
+    Logger.error(new Error(`Vendor at ${npc.x}, ${npc.y} - ${npc.map} does not have any vendorItems!`));
+    return;
+  }
+
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
@@ -254,6 +277,11 @@ export const VendorResponses = (npc: NPC) => {
 };
 
 export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
+
+  if(!npc.maxSkillTrain || !npc.trainSkills || !npc.classTrain || !npc.maxLevelUpLevel) {
+    Logger.error(new Error(`Trainer at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid maxSkillTrain/trainSkills/classTrain/maxLevelUpLevel`));
+    return;
+  }
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])

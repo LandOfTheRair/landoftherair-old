@@ -3,7 +3,7 @@ import { find } from 'lodash';
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../models/player';
-import { MapLayer } from '../../../../models/gamestate';
+import { MapLayer } from '../../../../models/maplayer';
 
 import { CommandExecutor } from '../../../helpers/command-executor';
 

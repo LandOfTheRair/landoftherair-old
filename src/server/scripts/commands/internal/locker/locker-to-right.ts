@@ -3,7 +3,6 @@ import { find, isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../models/player';
-import { MapLayer } from '../../../../../models/gamestate';
 
 export class LockerToRight extends Command {
 

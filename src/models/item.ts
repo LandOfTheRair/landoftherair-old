@@ -4,7 +4,6 @@ import * as uuid from 'uuid/v4';
 import { Character } from './character';
 
 import * as Effects from '../server/effects';
-import { Logger } from '../server/logger';
 
 export const ValidItemTypes = [
   'Mace', 'Axe', 'Dagger', 'Wand', 'Onehanded', 'Twohanded', 'Polearm', 'Ranged',
@@ -234,11 +233,6 @@ export class Item {
   use(char: Character) {
     if(!this.canUse(char)) return false;
     if(this.effect && (isNumber(this.ounces) ? this.ounces > 0 : true)) {
-      if(!Effects[this.effect.name]) {
-        Logger.error(new Error(`Error: Effect ${this.effect.name} does not exist.`));
-        return false;
-      }
-
       char.applyEffect(new Effects[this.effect.name](this.effect));
     }
 

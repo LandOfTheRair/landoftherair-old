@@ -10,7 +10,7 @@ import { Player } from '../../../models/player';
 import { Sex, Direction, Allegiance } from '../../../models/character';
 import { Item } from '../../../models/item';
 import { TrueSightMap, TrueSightMapReversed } from './phaserconversionmaps';
-import { MapLayer } from '../../../models/gamestate';
+import { MapLayer } from '../../../models/maplayer';
 
 const cacheKey = TiledPlugin.utils.cacheKey;
 
