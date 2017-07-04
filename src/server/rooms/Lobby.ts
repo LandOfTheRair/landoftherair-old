@@ -271,13 +271,14 @@ export class Lobby extends Room<LobbyState> {
       return;
     }
 
-    if(data.userId && data.idToken) return this.tryLogin(client, data);
-    if(data.message)                return this.sendMessage(client, data.message);
-    if(data.characterCreator)       return this.viewCharacter(client, data);
+    if(data.action === 'alert')     return this.broadcastAlert(client, data);
     if(data.action === 'play')      return this.playCharacter(client, data);
     if(data.action === 'create')    return this.createCharacter(client, data);
     if(data.action === 'logout')    return this.logout(client);
     if(data.action === 'motd_set')  return this.setMOTD(client, data);
+    if(data.userId && data.idToken) return this.tryLogin(client, data);
+    if(data.message)                return this.sendMessage(client, data.message);
+    if(data.characterCreator)       return this.viewCharacter(client, data);
   }
 
   broadcastMOTD() {
@@ -293,6 +294,13 @@ export class Lobby extends Room<LobbyState> {
       this.broadcastMOTD();
     }
     this.saveSettings();
+  }
+
+  broadcastAlert(client, data) {
+    const account = this.state.findAccount(client.userId);
+    if(account && !account.isGM) return;
+
+    this.broadcast({ action: 'alert', sender: account.username, message: data.message });
   }
 
   onDispose() {}

@@ -136,6 +136,7 @@ export class ColyseusLobbyService {
       return;
     }
 
+    if(action === 'alert')          return this.popupAlert({ sender: other.sender, message: other.message });
     if(action === 'need_user_id')   return this.sendUserId();
     if(action === 'need_user_name') return this.getUserName();
     if(action === 'set_account')    return this.setAccount(other.account);
@@ -188,6 +189,11 @@ export class ColyseusLobbyService {
       return true;
     }
 
+    if(command === '/alert') {
+      this.broadcastAlert(args);
+      return true;
+    }
+
     return false;
   }
 
@@ -197,5 +203,17 @@ export class ColyseusLobbyService {
 
   public resetMOTD() {
     this.client.send({ action: 'motd_set', motd: '' });
+  }
+
+  public broadcastAlert(message) {
+    this.client.send({ action: 'alert', message });
+  }
+
+  public popupAlert({ sender, message }) {
+    (<any>swal)({
+      titleText: `GM Alert from ${sender}`,
+      text: message,
+      type: 'info'
+    });
   }
 }
