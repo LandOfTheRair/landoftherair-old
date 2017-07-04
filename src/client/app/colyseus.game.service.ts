@@ -59,7 +59,6 @@ export class ColyseusGameService {
     this.quit();
 
     this.joinRoom(this.character.map);
-
   }
 
   private joinRoom(room) {
@@ -99,14 +98,54 @@ export class ColyseusGameService {
       this.clientGameState.removePlayer(+playerId);
     });
 
-    const locDirChange = (attr, entityId, value) => {
+    const updateSpecificAttr = (attr, entityId, value) => {
       this.clientGameState.updatePlayer(+entityId, attr, value);
     };
 
-    this.worldRoom.state.listen('players/:id/x', 'replace', locDirChange.bind(this, 'x'));
-    this.worldRoom.state.listen('players/:id/y', 'replace', locDirChange.bind(this, 'y'));
-    this.worldRoom.state.listen('players/:id/dir', 'replace', locDirChange.bind(this, 'dir'));
-    this.worldRoom.state.listen('players/:id/swimLevel', 'replace', locDirChange.bind(this, 'swimLevel'));
+    const updateAgro = (entityId, player, value) => {
+      this.clientGameState.updatePlayerAgro(+entityId, player, value);
+    };
+
+    const updateHP = (entityId, key, value) => {
+      this.clientGameState.updatePlayerHP(+entityId, key, value);
+    };
+
+    const updateHand = (hand, entityId, value) => {
+      this.clientGameState.updatePlayerHand(+entityId, hand, value);
+    };
+
+    const updateHandItem = (hand, entityId, attr, value) => {
+      this.clientGameState.updatePlayerHandItem(+entityId, hand, attr, value);
+    };
+
+    const updateGearItem = (slot, entityId, value) => {
+      this.clientGameState.updatePlayerGearItem(+entityId, slot, value);
+    };
+
+    this.worldRoom.state.listen('players/:id/x', 'replace', updateSpecificAttr.bind(this, 'x'));
+    this.worldRoom.state.listen('players/:id/y', 'replace', updateSpecificAttr.bind(this, 'y'));
+    this.worldRoom.state.listen('players/:id/dir', 'replace', updateSpecificAttr.bind(this, 'dir'));
+    this.worldRoom.state.listen('players/:id/swimLevel', 'replace', updateSpecificAttr.bind(this, 'swimLevel'));
+
+    this.worldRoom.state.listen('players/:id/agro/:player', 'add', updateAgro);
+    this.worldRoom.state.listen('players/:id/agro/:player', 'replace', updateAgro);
+    this.worldRoom.state.listen('players/:id/agro/:player', 'remove', updateAgro);
+
+    this.worldRoom.state.listen('players/:id/hp/:key', 'replace', updateHP);
+    this.worldRoom.state.listen('players/:id/hp/:key', 'replace', updateHP);
+
+    this.worldRoom.state.listen('players/:id/leftHand', 'replace', updateHand.bind(this, 'leftHand'));
+    this.worldRoom.state.listen('players/:id/rightHand', 'replace', updateHand.bind(this, 'rightHand'));
+
+    this.worldRoom.state.listen('players/:id/gear/Armor', 'replace', updateGearItem.bind(this, 'Armor'));
+    this.worldRoom.state.listen('players/:id/gear/Robe1', 'replace', updateGearItem.bind(this, 'Robe1'));
+    this.worldRoom.state.listen('players/:id/gear/Robe2', 'replace', updateGearItem.bind(this, 'Robe2'));
+
+    this.worldRoom.state.listen('players/:id/leftHand/:attr', 'add', updateHandItem.bind(this, 'leftHand'));
+    this.worldRoom.state.listen('players/:id/rightHand/:attr', 'add', updateHandItem.bind(this, 'rightHand'));
+
+    this.worldRoom.state.listen('players/:id/leftHand/:attr', 'replace', updateHandItem.bind(this, 'leftHand'));
+    this.worldRoom.state.listen('players/:id/rightHand/:attr', 'replace', updateHandItem.bind(this, 'rightHand'));
 
     this.worldRoom.state.listen('players/:id/effects/:effect', 'add', (entityId, effect, value) => {
       this.clientGameState.updatePlayerEffect(+entityId, effect, value);

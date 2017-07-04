@@ -348,16 +348,20 @@ export class Character {
     }
   }
 
-  setLeftHand(item: Item) {
+  setLeftHand(item: Item, recalc = true) {
     this.leftHand = item;
     this.itemCheck(item);
-    this.recalculateStats();
+    if(recalc) {
+      this.recalculateStats();
+    }
   }
 
-  setRightHand(item: Item) {
+  setRightHand(item: Item, recalc = true) {
     this.rightHand = item;
     this.itemCheck(item);
-    this.recalculateStats();
+    if(recalc) {
+      this.recalculateStats();
+    }
   }
 
   setPotionHand(item: Item) {
