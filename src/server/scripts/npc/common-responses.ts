@@ -38,14 +38,14 @@ export const TannerResponses = (npc: NPC) => {
 
 export const PeddlerResponses = (npc: NPC) => {
 
-  if(!npc.peddleItem || !npc.peddleCost) {
-    Logger.error(new Error(`Peddler at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid peddleItem/peddleCost`));
-    return;
-  }
-
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(!npc.peddleItem || !npc.peddleCost) {
+        Logger.error(new Error(`Peddler at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid peddleItem/peddleCost`));
+        return;
+      }
+
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
       if(player.rightHand) return 'Please empty your right hand!';
@@ -65,14 +65,14 @@ export const PeddlerResponses = (npc: NPC) => {
 
 export const SmithResponses = (npc: NPC) => {
 
-  if(!npc.costPerThousand || !npc.repairsUpToCondition) {
-    Logger.error(new Error(`Smith at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid costPerThousand/repairsUpToCondition`));
-    return;
-  }
-
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(!npc.costPerThousand || !npc.repairsUpToCondition) {
+        Logger.error(new Error(`Smith at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid costPerThousand/repairsUpToCondition`));
+        return;
+      }
+
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
       if(player.rightHand) {
@@ -159,14 +159,14 @@ export const RecallerResponses = (npc: NPC) => {
 
 export const AlchemistResponses = (npc: NPC) => {
 
-  if(!npc.alchCost || !npc.alchOz) {
-    Logger.error(new Error(`Alchemist at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid alchCost/alchOz!`));
-    return;
-  }
-
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(!npc.alchCost || !npc.alchOz) {
+        Logger.error(new Error(`Alchemist at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid alchCost/alchOz!`));
+        return;
+      }
+
       if(npc.distFrom(player) > 2) return 'Please move closer.';
       return `Hello, ${player.name}! You can tell me COMBINE while holding a bottle in your right hand to mix together that with other bottles of the same type in your sack. I can combine up to ${npc.alchOz}oz into one bottle. It will cost ${npc.alchCost} gold per ounce to do this.`;
     });
@@ -249,14 +249,14 @@ export const BankResponses = (npc: NPC) => {
 
 export const VendorResponses = (npc: NPC) => {
 
-  if(npc.vendorItems.length === 0) {
-    Logger.error(new Error(`Vendor at ${npc.x}, ${npc.y} - ${npc.map} does not have any vendorItems!`));
-    return;
-  }
-
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(npc.vendorItems.length === 0) {
+        Logger.error(new Error(`Vendor at ${npc.x}, ${npc.y} - ${npc.map} does not have any vendorItems!`));
+        return;
+      }
+
       if(npc.distFrom(player) > 2) return 'Please move closer.';
       npc.$$room.showShopWindow(player, npc);
       return `Greetings ${player.name}! Please view my wares.`;
@@ -278,14 +278,14 @@ export const VendorResponses = (npc: NPC) => {
 
 export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
-  if(!npc.maxSkillTrain || !npc.trainSkills || !npc.classTrain || !npc.maxLevelUpLevel) {
-    Logger.error(new Error(`Trainer at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid maxSkillTrain/trainSkills/classTrain/maxLevelUpLevel`));
-    return;
-  }
-
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(!npc.maxSkillTrain || !npc.trainSkills || !npc.classTrain || !npc.maxLevelUpLevel) {
+        Logger.error(new Error(`Trainer at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid maxSkillTrain/trainSkills/classTrain/maxLevelUpLevel`));
+        return;
+      }
+
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       npc.$$room.showTrainerWindow(player, npc);
       return `Hail, ${player.name}! If you want to try to level up, TRAIN with me. Alternatively, I can let you know how your combat skills are progressing if you want to ASSESS them! You can also JOIN the ${npc.classTrain} profession if you haven't chosen one already!`;

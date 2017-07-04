@@ -20,6 +20,10 @@ export class Logger {
   static error(error: string|Error, payload?) {
     console.error(this._formatMessage(error));
 
+    if((<Error>error).stack) {
+      console.error((<Error>error).stack);
+    }
+
     if(rollbarToken) {
       if(payload) {
         rollbar.handleErrorWithPayloadData(error, payload);
