@@ -1,7 +1,10 @@
-<input class="no-border-radius form-control"
-       #cmdEntry
-       [(ngModel)]="colyseusGame.currentCommand"
-       (keyup.arrowup)="prevCommand($event)"
-       (keyup.arrowdown)="nextCommand($event)"
-       (keyup.enter)="sendCommand()"
-       placeholder="Type a command here..." />
+<div class="row w-100">
+  <button class="btn btn-primary no-border-radius col-sm-2" (click)="isSay = !isSay">{{ isSay ? 'Say' : 'Cmd'}}:</button>
+  <input class="no-border-radius form-control col-sm-10"
+         #cmdEntry
+         [(ngModel)]="colyseusGame.currentCommand"
+         (keyup.arrowup)="prevCommand($event)"
+         (keyup.arrowdown)="nextCommand($event)"
+         (keyup.enter)="sendCommand()"
+         placeholder="Type a command here..." />
+</div>

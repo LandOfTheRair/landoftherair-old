@@ -3,6 +3,7 @@ export * from './ClearCommands';
 export * from './Interact';
 export * from './Look';
 export * from './Move';
+export * from './Say';
 export * from './Talk';
 export * from './Restore';
 export * from './Search';
