@@ -70,17 +70,22 @@ export class Game {
   }
 
   async createPlayer(player: Player) {
+    console.log('create', player);
     if(!this.g.add) return;
     await this.canCreate;
 
-    const sprite = this.getPlayerSprite(player);
     if(player.username === this.player.username) {
+      if(this.playerSprite) return;
+
+      // duplicated code so we don't dupe the sprite
+      const sprite = this.getPlayerSprite(player);
       this.player = player;
       this.playerSprite = sprite;
       this.truesightCheck();
       this.resolveCanUpdate(sprite);
 
     } else {
+      const sprite = this.getPlayerSprite(player);
       this.otherPlayerSprites.push(sprite);
     }
   }
