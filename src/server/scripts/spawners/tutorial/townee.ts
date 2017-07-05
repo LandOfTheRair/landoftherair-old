@@ -1,5 +1,5 @@
 
-import { Spawner } from '../../../base/spawner';
+import { Spawner } from '../../../base/Spawner';
 
 const paths = [
   '23-E 16-S 23-W 16-N',
