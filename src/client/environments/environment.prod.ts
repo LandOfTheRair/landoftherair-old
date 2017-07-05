@@ -7,7 +7,7 @@ export const environment = {
     silentExt: 'production'
   },
   client: {
-    domain: 'rair.land',
+    domain: 'play.rair.land',
     protocol: 'https',
     port: 80
   },
@@ -15,6 +15,6 @@ export const environment = {
     domain: 'landoftherair.auth0.com',
     client: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
     callbackUrl: 'https://rair.land',
-    apiUrl: 'https://landoftherair.auth0.com/auth/'
+    apiUrl: 'authidentifier'
   }
 };
