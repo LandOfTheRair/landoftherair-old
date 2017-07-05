@@ -19,7 +19,7 @@
 
     <div class="col-9 p-0 m-0">
 
-      <div class="chat-area p-0" appNgxAutoScroll lockYOffset="30">
+      <div class="chat-area p-0 h-100" appNgxAutoScroll lockYOffset="30">
         <div class="message pl-1" *ngFor="let message of lobby.lobbyState.messages">
           <span class="timestamp">[{{ message.timestamp | date:'hh:mm'}}]</span>
           <span class="account">{{ message.account }}:</span>
