@@ -15,9 +15,6 @@ export class CharacterSelectComponent implements OnInit {
   @ViewChild('charModal')
   public charModal;
 
-  @Input()
-  public lobbyState: LobbyState = new LobbyState({});
-
   public charSlots: any[];
 
   @LocalStorage()

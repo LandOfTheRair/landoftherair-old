@@ -11,6 +11,7 @@ export class Account {
   maxCharacters = 4;
 
   isGM = false;
+  inGame = -1;
 
   constructor(opts) {
     extend(this, opts);
@@ -19,6 +20,7 @@ export class Account {
   toJSON() {
     return {
       username: this.username,
+      inGame: this.inGame,
       isGM: this.isGM
     };
   }

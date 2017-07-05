@@ -343,6 +343,10 @@ export class ColyseusGameService {
     if(!this.worldRoom) return;
     this.worldRoom.leave();
     delete this.worldRoom;
+
+    if(this.colyseus && this.colyseus.lobby) {
+      this.colyseus.lobby.quit();
+    }
   }
 
   public buildDropAction({ dragData }, choice) {

@@ -2,17 +2,35 @@
 import { Account } from './account';
 import { Message } from './message';
 
-import * as _ from 'lodash';
+import { BehaviorSubject } from 'rxjs';
+
+import { find, reject, pullAt, extend } from 'lodash';
 
 export class LobbyState {
   accounts: Account[] = [];
   messages: Message[] = [];
   motd: string;
 
+  account$ = new BehaviorSubject<Account[]>([]);
+  inGame = {};
+
   constructor({ accounts = [], messages = [], motd = '' }) {
     this.accounts = accounts;
     this.messages = messages;
     this.motd = motd;
+  }
+
+  syncTo(state: LobbyState) {
+    const oldAccLength = this.accounts.length;
+    extend(this, state);
+
+    if(this.accounts.length !== oldAccLength) {
+      this.account$.next(this.accounts);
+    }
+
+    this.accounts.forEach(account => {
+      this.inGame[account.username] = account.inGame;
+    });
   }
 
   addMessage(message: Message) {
@@ -26,27 +44,31 @@ export class LobbyState {
   }
 
   findAccount(userId: string) {
-    return _.find(this.accounts, { userId });
+    return find(this.accounts, { userId });
   }
 
   addAccount(account: Account) {
     this.accounts.push(account);
-
-    this.sortAccounts();
-  }
-
-  sortAccounts() {
-    this.accounts = _(this.accounts)
-      .sortBy('isGM')
-      .sortBy('username')
-      .value();
+    this.account$.next(this.accounts);
   }
 
   removeAccount(username: string) {
-    this.accounts = _.reject(this.accounts, account => account.username === username);
+    this.accounts = reject(this.accounts, account => account.username === username);
+    this.account$.next(this.accounts);
   }
 
   removeAccountAtPosition(position: number) {
-    this.accounts = this.accounts.splice(position, 1);
+    console.log(this.accounts, position);
+
+    pullAt(this.accounts, [position]);
+    this.account$.next(this.accounts);
+  }
+
+  toJSON() {
+    return {
+      accounts: this.accounts,
+      messages: this.messages,
+      motd: this.motd
+    };
   }
 }
