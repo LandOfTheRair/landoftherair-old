@@ -72,6 +72,7 @@
     "rollbar": "^2.1.0",
     "rxjs": "^5.1.0",
     "sweetalert2": "^6.6.4",
+    "ts-node": "^2.0.0",
     "uuid": "^3.0.1",
     "zone.js": "^0.8.4"
   },
@@ -82,7 +83,6 @@
     "codelyzer": "~2.0.0",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
-    "ts-node": "^2.0.0",
     "tslint": "~4.5.0",
     "typescript": "2.3.3",
     "webfont": "^7.1.4",
