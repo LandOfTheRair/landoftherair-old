@@ -18,7 +18,7 @@ import { Player } from '../../models/player';
 import { CommandExecutor } from '../helpers/command-executor';
 import { NPC } from '../../models/npc';
 import { Logger } from '../logger';
-import { Spawner } from '../base/spawner';
+import { Spawner } from '../base/Spawner';
 
 import * as Classes from '../classes';
 import { Character } from '../../models/character';
