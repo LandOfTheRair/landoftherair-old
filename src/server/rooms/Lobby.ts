@@ -142,6 +142,7 @@ export class Lobby extends Room<LobbyState> {
 
     account.characterNames[charSlot] = character.name;
     this.updateAccount(account);
+    account.inGame = -1;
 
     this.send(client, { action: 'set_account', account });
 
