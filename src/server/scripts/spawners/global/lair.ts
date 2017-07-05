@@ -1,5 +1,5 @@
 
-import { Spawner } from '../../../base/spawner';
+import { Spawner } from '../../../base/Spawner';
 import { extend } from 'lodash';
 
 export class LairSpawner extends Spawner {
