@@ -1,6 +1,8 @@
 
 import { extend } from 'lodash';
 
+export type Status = 'Available' | 'AFK';
+
 export class Account {
   _id?: any;
 
@@ -12,6 +14,7 @@ export class Account {
 
   isGM = false;
   inGame = -1;
+  status: Status = 'Available';
 
   constructor(opts) {
     extend(this, opts);
@@ -20,6 +23,7 @@ export class Account {
   toJSON() {
     return {
       username: this.username,
+      status: this.status,
       inGame: this.inGame,
       isGM: this.isGM
     };

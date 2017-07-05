@@ -6,7 +6,7 @@ import { Player } from '../../models/player';
 
 import { CharacterCreator } from '../helpers/character-creator';
 
-import { truncate, pick, sampleSize } from 'lodash';
+import { truncate, pick, sampleSize, includes } from 'lodash';
 
 import { DB } from '../database';
 
@@ -303,6 +303,7 @@ export class Lobby extends Room<LobbyState> {
       return;
     }
 
+    if(data.action === 'status')    return this.changeStatus(client, data.status);
     if(data.action === 'alert')     return this.broadcastAlert(client, data);
     if(data.action === 'play')      return this.playCharacter(client, data);
     if(data.action === 'create')    return this.createCharacter(client, data);
@@ -334,6 +335,16 @@ export class Lobby extends Room<LobbyState> {
     if(account && !account.isGM) return;
 
     this.broadcast({ action: 'alert', sender: account.username, message: data.message });
+  }
+
+  changeStatus(client, newStatus) {
+    if(!includes(['Available', 'AFK'], newStatus)) return;
+
+    const account = this.state.findAccount(client.userId);
+    if(!account) return;
+
+    account.status = newStatus;
+    this.send(client, { action: 'set_account', account });
   }
 
   onDispose() {}

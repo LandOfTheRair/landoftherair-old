@@ -13,6 +13,7 @@ export class LobbyState {
 
   account$ = new BehaviorSubject<Account[]>([]);
   inGame = {};
+  status = {};
 
   constructor({ accounts = [], messages = [], motd = '' }) {
     this.accounts = accounts;
@@ -30,6 +31,7 @@ export class LobbyState {
 
     this.accounts.forEach(account => {
       this.inGame[account.username] = account.inGame;
+      this.status[account.username] = account.status;
     });
   }
 

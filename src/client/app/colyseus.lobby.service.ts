@@ -206,4 +206,8 @@ export class ColyseusLobbyService {
       type: 'info'
     });
   }
+
+  public changeStatus(status) {
+    this.client.send({ action: 'status', status });
+  }
 }
