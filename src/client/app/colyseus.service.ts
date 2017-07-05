@@ -27,7 +27,7 @@ export class ColyseusService {
   }
 
   private initClient() {
-    this.client = new Colyseus.Client(`ws://${environment.server.domain}:${environment.server.port}`);
+    this.client = new Colyseus.Client(`${environment.server.wsProtocol}://${environment.server.domain}:${environment.server.port}`);
 
     this.client.onOpen.add(() => {
       this._isConnected = true;
