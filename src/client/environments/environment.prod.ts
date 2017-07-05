@@ -15,7 +15,7 @@ export const environment = {
   auth0: {
     domain: 'landoftherair.auth0.com',
     client: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
-    callbackUrl: 'https://rair.land',
+    callbackUrl: 'https://play.rair.land',
     apiUrl: 'authidentifier'
   }
 };
