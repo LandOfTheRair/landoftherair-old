@@ -7,6 +7,8 @@ import { AuthService } from './auth.service';
 import { LobbyState } from '../../models/lobbystate';
 import { Account } from '../../models/account';
 
+import { extend } from 'lodash';
+
 @Injectable()
 export class ColyseusLobbyService {
 
@@ -29,24 +31,8 @@ export class ColyseusLobbyService {
 
     const room = this.client.join('Lobby');
 
-    room.onUpdate.addOnce((state) => {
-      this.lobbyState = new LobbyState(state);
-      if(this.lobbyState.motd) {
-        this.lobbyState.addMessage({ account: '<System>', message: this.lobbyState.motd });
-      }
-    });
-
-    room.state.listen('messages/:id', 'add', (messageId: string, value: any) => {
-      this.lobbyState.addMessage(value);
-    });
-
-    room.state.listen('accounts/:id', 'add', (accountId: string, value: any) => {
-      this.lobbyState.addAccount(value);
-    });
-
-    room.state.listen('accounts/:id', 'remove', (accountId: string, value: any) => {
-      console.log('value', value, accountId);
-      this.lobbyState.removeAccountAtPosition(+accountId);
+    room.onUpdate.add((state) => {
+      this.lobbyState.syncTo(state);
     });
 
     room.onData.add((data) => {
@@ -195,6 +181,10 @@ export class ColyseusLobbyService {
     }
 
     return false;
+  }
+
+  public quit() {
+    this.client.send({ action: 'quit' });
   }
 
   public setMOTD(newMOTD) {

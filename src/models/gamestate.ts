@@ -235,7 +235,7 @@ export class GameState {
       if(p.swimLevel > 0) {
         const hpPercentLost = p.swimLevel * 4;
         const hpLost = Math.floor(p.hp.maximum * (hpPercentLost / 100));
-        CombatHelper.dealOnesidedDamage(this, { damage: hpLost, damageClass: p.$$swimElement || 'water', damageMessage: 'You are drowning!' });
+        CombatHelper.dealOnesidedDamage(p, { damage: hpLost, damageClass: p.$$swimElement || 'water', damageMessage: 'You are drowning!', suppressIfNegative: true });
       }
     });
   }

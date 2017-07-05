@@ -261,7 +261,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   async onJoin(client, options) {
-    const playerData = await DB.$players.findOne({ username: client.username, map: this.state.mapName, charSlot: options.charSlot });
+    const playerData = await DB.$players.findOne({ username: client.username, map: this.state.mapName, charSlot: options.charSlot, inGame: { $ne: true } });
 
     if(!playerData) {
       this.send(client, { error: 'invalid_char', prettyErrorName: 'Invalid Character Data', prettyErrorDesc: 'No idea how this happened!' });
@@ -275,6 +275,9 @@ export class GameWorld extends Room<GameState> {
     player.initServer();
     this.setUpClassFor(player);
     this.state.addPlayer(player);
+
+    player.inGame = true;
+    this.savePlayer(player);
 
     if(this.state.mapName === 'Tutorial' && !player.respawnPoint) {
       player.respawnPoint = { x: 14, y: 14, map: 'Tutorial' };
@@ -291,8 +294,14 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
-  onLeave(client) {
+  leaveGameAndSave(player: Player) {
+    return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: { inGame: false } });
+  }
+
+  async onLeave(client) {
     const player = this.state.findPlayer(client.username);
+    player.inGame = false;
+    await this.leaveGameAndSave(player);
     this.prePlayerMapLeave(player);
     this.savePlayer(player);
     this.state.removePlayer(client.username);

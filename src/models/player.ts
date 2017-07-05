@@ -12,6 +12,8 @@ export class Player extends Character {
   charSlot: number;
   isGM: boolean;
 
+  inGame: boolean;
+
   buyback: Item[];
 
   private learnedSpells: any;

@@ -242,21 +242,29 @@ export class CombatHelper {
     this.dealDamage(attacker, attacked, { damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg });
   }
 
-  static dealOnesidedDamage(defender, { damage, damageClass, damageMessage }) {
+  static dealOnesidedDamage(defender, { damage, damageClass, damageMessage, suppressIfNegative }) {
     if(defender.isDead()) return;
 
-    const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
-    damage -= damageReduced;
+    const isHeal = damage < 0;
 
-    // non-physical attacks are magical
-    if(damageClass !== 'physical') {
-      const magicReduction = defender.getTotalStat('magicalResist');
-      damage -= magicReduction;
+    if(!isHeal) {
+      const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
+      damage -= damageReduced;
+
+      // non-physical attacks are magical
+      if(damageClass !== 'physical') {
+        const magicReduction = defender.getTotalStat('magicalResist');
+        damage -= magicReduction;
+      }
     }
+
+    if(!isHeal && damage < 0) damage = 0;
 
     defender.hp.sub(damage);
 
-    defender.sendClientMessage({ message: `${damageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' });
+    if((damage <= 0 && !suppressIfNegative) || damage > 0) {
+      defender.sendClientMessage({ message: `${damageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' });
+    }
 
     if(defender.isDead()) {
       defender.sendClientMessage({ message: `You died!`, subClass: 'combat other kill' });

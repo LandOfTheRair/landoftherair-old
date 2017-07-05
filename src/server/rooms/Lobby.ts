@@ -21,10 +21,17 @@ export class Lobby extends Room<LobbyState> {
   constructor(opts) {
     super(opts);
 
-    this.setPatchRate(1000 / 20);
+    this.setPatchRate(500);
     this.autoDispose = false;
 
     this.setState(new LobbyState({ accounts: [], messages: [], motd: '' }));
+
+    this.onInit();
+  }
+
+  onInit() {
+    this.loadSettings();
+    DB.$players.update({}, { $set: { inGame: -1 } }, { multi: true });
   }
 
   private async getAccount(userId): Promise<Account> {
@@ -37,6 +44,7 @@ export class Lobby extends Room<LobbyState> {
 
   private updateAccount(account: Account) {
     delete account._id;
+    delete account.inGame;
 
     return DB.$accounts.update({ userId: account.userId }, { $set: account });
   }
@@ -53,7 +61,15 @@ export class Lobby extends Room<LobbyState> {
 
   private async tryLogin(client, { userId, username }) {
 
-    // TODO check if account logged in, if so, fail here
+    const checkAccount = this.state.findAccount(userId);
+    if(checkAccount) {
+      this.send(client, {
+        error: 'already_logged_in',
+        prettyErrorName: 'Account Already Logged In',
+        prettyErrorDesc: 'Please log out from other locations first.'
+      });
+      return;
+    }
 
     let account = await this.getAccount(userId);
 
@@ -82,6 +98,12 @@ export class Lobby extends Room<LobbyState> {
 
     this.state.addAccount(account);
     this.send(client, { action: 'set_account', account });
+  }
+
+  quit(client) {
+    const account = this.state.findAccount(client.userId);
+    if(!account) return;
+    account.inGame = -1;
   }
 
   private logout(client) {
@@ -217,7 +239,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private getCharacter(username, charSlot) {
-    return DB.$players.findOne({ username, charSlot });
+    return DB.$players.findOne({ username, charSlot, inGame: { $ne: true } });
   }
 
   private saveSettings() {
@@ -237,18 +259,28 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private async playCharacter(client, { charSlot }) {
+    const account = this.state.findAccount(client.userId);
+    if(account && account.inGame >= 0) {
+      this.send(client, {
+        error: 'already_in_game',
+        prettyErrorName: 'Already In Game',
+        prettyErrorDesc: 'You are already in game. If you actually are not in game, give this a few seconds or refresh the page.'
+      });
+      return;
+    }
+
     const character = await this.getCharacter(client.username, charSlot);
 
     if(!character) {
       this.send(client, {
         error: 'no_character',
         prettyErrorName: 'No Character',
-        prettyErrorDesc: 'There is no character in this slot. Please create one.'
+        prettyErrorDesc: 'There is no character in this slot (or it is already in-game). Please create one.'
       });
       return;
     }
 
-    // TODO set in game flag, check, fail if necessary
+    account.inGame = charSlot;
 
     this.send(client, { action: 'start_game', character });
   }
@@ -275,6 +307,7 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'play')      return this.playCharacter(client, data);
     if(data.action === 'create')    return this.createCharacter(client, data);
     if(data.action === 'logout')    return this.logout(client);
+    if(data.action === 'quit')      return this.quit(client);
     if(data.action === 'motd_set')  return this.setMOTD(client, data);
     if(data.userId && data.idToken) return this.tryLogin(client, data);
     if(data.message)                return this.sendMessage(client, data.message);
