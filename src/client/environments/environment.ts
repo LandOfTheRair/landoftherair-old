@@ -8,6 +8,7 @@ export const environment = {
   server: {
     domain: 'localhost',
     protocol: 'http',
+    wsProtocol: 'ws',
     port: 3303,
     silentExt: 'dev'
   },

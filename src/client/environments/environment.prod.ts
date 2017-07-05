@@ -3,6 +3,7 @@ export const environment = {
   server: {
     domain: 'server.rair.land',
     protocol: 'https',
+    wsProtocol: 'wss',
     port: 80,
     silentExt: 'production'
   },
