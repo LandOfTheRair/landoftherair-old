@@ -25,7 +25,7 @@
     "type": "git",
     "url": "git+https://github.com/seiyria/kod-prototype.git"
   },
-  "author": "",
+  "author": "Kyle Kemp <kyle@seiyria.com>",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/seiyria/kod-prototype/issues"
