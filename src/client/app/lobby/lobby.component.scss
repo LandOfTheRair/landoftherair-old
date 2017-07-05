@@ -7,6 +7,12 @@
 
     overflow: hidden;
 
+    .user-name {
+      &.afk {
+         color: #888;
+      }
+    }
+
     .user-marking {
 
       &.gm {
@@ -21,6 +27,10 @@
 
     }
   }
+}
+
+.big-row {
+  height: calc(100% - 38px);
 }
 
 .chat-area {
@@ -39,6 +49,10 @@
       font-weight: bold;
     }
   }
+}
+
+.status-selector-area {
+  border-right: 1px solid #000;
 }
 
 .input-area {

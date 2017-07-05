@@ -1,14 +1,14 @@
 
 <div class="container p-0">
 
-  <div class="container row h-100 p-0 m-0 w-100">
+  <div class="container row big-row p-0 m-0 w-100">
 
     <div class="col-3 p-0 m-0">
 
       <div class="user-list h-100 pl-1">
         <div class="user" *ngFor="let user of displayAccounts">
           <span class="user-marking" [class.gm]="user.isGM"></span>
-          <span class="user-name">{{ user.username }}</span>
+          <span class="user-name" [class.afk]="lobby.lobbyState.status[user.username] === 'AFK'">{{ user.username }}</span>
           <span class="user-ingame float-right" *ngIf="lobby.lobbyState.inGame[user.username] >= 0">
             <img src="assets/in-game.png" height="16" width="16" />
           </span>
@@ -27,6 +27,31 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <div class="container row p-0 m-0 w-100">
+
+    <div class="col-3 p-0 m-0">
+      <div class="status-selector-area">
+        <div class="btn-group w-100" dropdown container="body">
+
+          <button class="btn form-control no-border-radius dropdown-toggle"
+                  dropdownToggle
+                  type="button"
+                  [class.btn-success]="lobby.myAccount.status === 'Available'"
+                  [class.btn-secondary]="lobby.myAccount.status === 'AFK'"
+                  [disabled]="!lobby.colyseus.isConnected">{{ lobby.myAccount.status }} <span class="caret"></span></button>
+
+          <ul *dropdownMenu class="dropdown-menu">
+            <li role="menuitem"><a class="dropdown-item" href="#" (click)="lobby.changeStatus('Available')">Available</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#" (click)="lobby.changeStatus('AFK')">AFK</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-9 p-0 m-0">
       <div class="input-area row m-0">
         <div class="col p-0">
           <input class="form-control no-border-radius" placeholder="Type a message here..." type="text" [(ngModel)]="chatText" (keyup.enter)="sendMessage()" />
@@ -39,6 +64,7 @@
       </div>
 
     </div>
+
   </div>
 
 </div>
