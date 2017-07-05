@@ -73,6 +73,7 @@
     "rxjs": "^5.1.0",
     "sweetalert2": "^6.6.4",
     "ts-node": "^2.1.2",
+    "typescript": "2.3.3",
     "uuid": "^3.0.1",
     "zone.js": "^0.8.4"
   },
@@ -84,7 +85,6 @@
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "tslint": "~4.5.0",
-    "typescript": "2.3.3",
     "webfont": "^7.1.4",
     "webpack": "^3.0.0",
     "yamljs": "^0.2.10"
