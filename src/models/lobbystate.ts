@@ -2,7 +2,7 @@
 import { Account } from './account';
 import { Message } from './message';
 
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { find, reject, pullAt, extend } from 'lodash';
 
