@@ -5,7 +5,8 @@ import { SkillClassNames, Stats } from '../../models/character';
 import * as Classes from '../classes';
 import * as Effects from '../effects';
 
-require('dotenv').config({ silent: true });
+const argv = require('minimist')(process.argv.slice(2));
+require('dotenv').config({ silent: true, path: argv.prod ? '.env.prod' : '.env' });
 
 import { DB } from '../database';
 
