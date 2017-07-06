@@ -223,8 +223,8 @@ export class GameState {
   }
 
   getGroundItems(x, y) {
-    if(!this.groundItems[x]) return {};
-    if(!this.groundItems[x][y]) return {};
+    if(!this.groundItems[x]) this.groundItems[x] = {};
+    if(!this.groundItems[x][y]) this.groundItems[x][y] = {};
     return this.groundItems[x][y];
   }
 
