@@ -211,12 +211,7 @@ export class CombatHelper {
     if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
 
     if(attackerWeapon.effect) {
-      const applyEffect = Effects[attackerWeapon.effect.name];
-      const chance = attackerWeapon.effect.chance || 100;
-      if(+dice.roll('1d100') <= chance) {
-        const effect = new applyEffect(attackerWeapon.effect);
-        effect.cast(attacker, defender);
-      }
+      this.tryApplyEffect(attacker, defender, attackerWeapon.effect);
     }
 
     if(damage <= 0) {
@@ -224,6 +219,19 @@ export class CombatHelper {
     }
 
     return { damage, dealtBy: attackerWeapon.itemClass.toLowerCase(), damageType };
+  }
+
+  static tryApplyEffect(attacker, defender, effect) {
+    const applyEffect = Effects[effect.name];
+    if(!applyEffect) return;
+
+    const chance = effect.chance || 100;
+    if(+dice.roll('1d100') > chance) return;
+
+    const appEffect = new applyEffect(effect);
+    if(!appEffect.cast) return;
+
+    appEffect.cast(attacker, defender);
   }
 
   static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass }: any = {}) {

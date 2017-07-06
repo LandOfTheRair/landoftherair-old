@@ -7,7 +7,7 @@ const TAKWIN_GIFT = 'Takwin Shield';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem(TONWIN_GIFT);
+  npc.rightHand = await NPCLoader.loadItem(TAKWIN_GIFT);
   npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
