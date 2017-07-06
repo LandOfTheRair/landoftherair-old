@@ -372,7 +372,6 @@
 
   gear:
     Armor: Rylt Renegade Breastplate
-    Robe1: Antanian Cloak
     Waist: Tonwin Sash
 
   copyDrops:
@@ -382,7 +381,7 @@
       chance: -1
     - drop: 'gear.Armor'
       chance: -1
-    - drop: 'gear.Robe1'
+    - drop: 'gear.Waist'
       chance: -1
 
   drops:
