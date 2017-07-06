@@ -22,10 +22,10 @@ export const TannerResponses = (npc: NPC) => {
 
       ground.Corpse.forEach(corpse => {
         const corpseNPC = npc.$$room.state.findNPC(corpse.npcUUID);
-        corpseNPC.restore();
-        if(!corpseNPC.tansFor) return;
+        if(corpseNPC) corpseNPC.restore();
+        if(!corpse.tansFor) return;
 
-        NPCLoader.loadItem(corpseNPC.tansFor)
+        NPCLoader.loadItem(corpse.tansFor)
           .then(item => {
             item.setOwner(player);
             npc.$$room.addItemToGround(npc, item);

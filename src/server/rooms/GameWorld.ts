@@ -601,6 +601,7 @@ export class GameWorld extends Room<GameState> {
     const corpse = await ItemCreator.getItemByName('Corpse');
     corpse.sprite = target.sprite + 4;
     corpse.searchItems = searchItems;
+    corpse.tansFor = (<any>target).tansFor;
     corpse.desc = `the corpse of a ${target.name}`;
 
     this.addItemToGround(target, corpse);
