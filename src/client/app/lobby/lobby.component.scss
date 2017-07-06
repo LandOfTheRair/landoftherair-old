@@ -45,6 +45,10 @@
     display: flex;
     flex-direction: row;
 
+    .timestamp {
+      min-width: 60px;
+    }
+
     .account {
       text-align: right;
       margin-right: 5px;
