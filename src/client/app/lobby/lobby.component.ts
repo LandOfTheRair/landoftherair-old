@@ -36,8 +36,8 @@ export class LobbyComponent implements OnInit, OnDestroy {
 
   sortAndSetAccounts(accounts: Account[]) {
     this.displayAccounts = _(accounts)
-      .sortBy('isGM')
       .sortBy(acc => acc.username.toLowerCase())
+      .sortBy('isGM')
       .value();
   }
 
