@@ -363,6 +363,8 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(player.baseClass !== npc.classTrain) return 'I have nothing to teach you.';
 
+      if(!skills) return 'I have no skills to teach you.';
+
       const learnCost = npc.maxSkillTrain * 100;
       if(player.gold < learnCost) return `I require ${learnCost} gold for my teaching.`;
 
