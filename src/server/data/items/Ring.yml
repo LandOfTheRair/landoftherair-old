@@ -22,3 +22,10 @@
     name: Identify
     uses: 10
     potency: 1
+
+  - name: Terwin Ring
+    stats:
+      cha: 1
+    sprite: 30
+    desc: "a gold ring with a sparkly red gem set in the center"
+    value: 1000

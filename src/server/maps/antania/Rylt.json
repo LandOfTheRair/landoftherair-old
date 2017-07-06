@@ -1342,6 +1342,234 @@
                  "width":64,
                  "x":1152,
                  "y":2240
+                }, 
+                {
+                 "gid":2272,
+                 "height":64,
+                 "id":631,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
+                 "y":1920
+                }, 
+                {
+                 "gid":2274,
+                 "height":64,
+                 "id":633,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":960,
+                 "y":1792
+                }, 
+                {
+                 "gid":2274,
+                 "height":64,
+                 "id":634,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1088,
+                 "y":1536
+                }, 
+                {
+                 "gid":2275,
+                 "height":64,
+                 "id":635,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1216,
+                 "y":1856
+                }, 
+                {
+                 "gid":2275,
+                 "height":64,
+                 "id":636,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":960,
+                 "y":1600
+                }, 
+                {
+                 "gid":2275,
+                 "height":64,
+                 "id":637,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1920,
+                 "y":1536
+                }, 
+                {
+                 "gid":2273,
+                 "height":64,
+                 "id":638,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1216,
+                 "y":1664
+                }, 
+                {
+                 "gid":2273,
+                 "height":64,
+                 "id":639,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1600,
+                 "y":1792
+                }, 
+                {
+                 "gid":2273,
+                 "height":64,
+                 "id":640,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1600,
+                 "y":1536
+                }, 
+                {
+                 "gid":2271,
+                 "height":64,
+                 "id":641,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1728,
+                 "y":1664
+                }, 
+                {
+                 "gid":2271,
+                 "height":64,
+                 "id":642,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1472,
+                 "y":2048
+                }, 
+                {
+                 "gid":2272,
+                 "height":64,
+                 "id":643,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
+                 "y":1472
+                }, 
+                {
+                 "gid":2272,
+                 "height":64,
+                 "id":644,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1408,
+                 "y":1792
+                }, 
+                {
+                 "gid":2272,
+                 "height":64,
+                 "id":645,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1024,
+                 "y":1920
+                }, 
+                {
+                 "gid":2315,
+                 "height":64,
+                 "id":646,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1536,
+                 "y":1664
+                }, 
+                {
+                 "gid":2313,
+                 "height":64,
+                 "id":647,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1152,
+                 "y":1728
+                }, 
+                {
+                 "gid":2312,
+                 "height":64,
+                 "id":648,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
+                 "y":2048
+                }, 
+                {
+                 "gid":2311,
+                 "height":64,
+                 "id":649,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":960,
+                 "y":1536
+                }, 
+                {
+                 "gid":2310,
+                 "height":64,
+                 "id":650,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1792,
+                 "y":1536
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2958,8 +3186,20 @@
                  "height":64,
                  "id":585,
                  "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"Rylt",
+                     "teleportX":18,
+                     "teleportY":80
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
                  "rotation":0,
-                 "type":"",
+                 "type":"Teleport",
                  "visible":true,
                  "width":64,
                  "x":1280,
@@ -2970,8 +3210,22 @@
                  "height":64,
                  "id":586,
                  "name":"",
+                 "properties":
+                    {
+                     "requireHeld":"Rylt Guard Key Enchanted",
+                     "teleportMap":"Rylt",
+                     "teleportX":20,
+                     "teleportY":80
+                    },
+                 "propertytypes":
+                    {
+                     "requireHeld":"string",
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
                  "rotation":0,
-                 "type":"",
+                 "type":"Teleport",
                  "visible":true,
                  "width":64,
                  "x":448,
@@ -3412,6 +3666,14 @@
                  "height":64,
                  "id":601,
                  "name":"Terwin",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/terwin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -3424,6 +3686,14 @@
                  "height":64,
                  "id":603,
                  "name":"Telwin",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/telwin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -3436,6 +3706,14 @@
                  "height":64,
                  "id":604,
                  "name":"Takwin",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/takwin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -4646,51 +4924,11 @@
                 {
                  "gid":2347,
                  "height":64,
-                 "id":619,
-                 "name":"Prison Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt-prison"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":704,
-                 "y":5504
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":620,
-                 "name":"Prison Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt-prison"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":640,
-                 "y":4864
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
                  "id":621,
-                 "name":"Prison Spawner",
+                 "name":"Prison Rebel Spawner",
                  "properties":
                     {
-                     "script":"antania\/rylt-prison"
+                     "script":"antania\/rylt-prison-rebel"
                     },
                  "propertytypes":
                     {
@@ -4702,26 +4940,6 @@
                  "width":64,
                  "x":896,
                  "y":4544
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":622,
-                 "name":"Prison Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt-prison"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":512,
-                 "y":3072
                 }, 
                 {
                  "gid":2347,
@@ -4793,6 +5011,250 @@
                  "visible":true,
                  "width":64,
                  "x":9024,
+                 "y":5824
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":627,
+                 "name":"Tonwin Spawner",
+                 "properties":
+                    {
+                     "lairName":"Tonwin",
+                     "randomWalkRadius":15,
+                     "script":"global\/lair"
+                    },
+                 "propertytypes":
+                    {
+                     "lairName":"string",
+                     "randomWalkRadius":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
+                 "y":1664
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":651,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":640,
+                 "y":4992
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":652,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":704,
+                 "y":5504
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":653,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":448,
+                 "y":3776
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":654,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1152,
+                 "y":4032
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":655,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1280,
+                 "y":3520
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":656,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
+                 "y":2752
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":657,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":704,
+                 "y":2112
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":658,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":512,
+                 "y":3072
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":659,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":384,
+                 "y":6208
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":660,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":384,
+                 "y":7360
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":661,
+                 "name":"Prison Rebel Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt-prison-rebel"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
                  "y":5824
                 }],
          "opacity":1,
@@ -5381,7 +5843,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":627,
+ "nextobjectid":662,
  "orientation":"orthogonal",
  "properties":
     {
@@ -5396,6 +5858,7 @@
      "region":"string"
     },
  "renderorder":"right-down",
+ "tiledversion":"1.0.2",
  "tileheight":64,
  "tilesets":[
         {
@@ -7232,6 +7695,6 @@
         }],
  "tilewidth":64,
  "type":"map",
- "version":"1.0.0",
+ "version":1,
  "width":158
 }

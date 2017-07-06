@@ -3,3 +3,13 @@
   desc: "a silver key inscribed with the word FREEDOM"
   sprite: 357
   value: 1
+
+- name: Rylt Guard Key
+  desc: "a silver key with DO NOT LOSE - T??WIN hastily inscribed onto it"
+  sprite: 357
+  value: 1
+
+- name: Rylt Guard Key Enchanted
+  desc: "a silver key with DO NOT LOSE - TONWIN hastily inscribed onto it"
+  sprite: 357
+  value: 1

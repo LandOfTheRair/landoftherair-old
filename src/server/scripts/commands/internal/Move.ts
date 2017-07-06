@@ -95,8 +95,10 @@ export class Move extends Command {
   }
 
   private handleTeleport(room, player, obj) {
-    const { teleportX, teleportY, teleportMap } = obj.properties;
+    const { teleportX, teleportY, teleportMap, requireHeld } = obj.properties;
+    if(requireHeld && !player.hasHeldItem(requireHeld)) return;
     room.teleport(player, { x: teleportX, y: teleportY, newMap: teleportMap });
+    player.sendClientMessage('Your surroundings shift.');
   }
 
   private handleLocker(room, player, obj) {

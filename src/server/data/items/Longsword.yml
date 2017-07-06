@@ -18,3 +18,17 @@
   type: Onehanded
   value: 115
   sprite: 197
+
+- name: Tonwin Sword
+  desc: "a steel longsword inscribed with the markings of the renegade overseers"
+  stats:
+    accuracy: 5
+    offense: 2
+  baseDamage: 15
+  minDamage: 1
+  maxDamage: 2
+  type: Onehanded
+  binds: true
+  tellsBind: true
+  sprite: 323
+  value: 2500
