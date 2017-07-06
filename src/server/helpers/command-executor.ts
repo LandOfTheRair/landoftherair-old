@@ -40,6 +40,8 @@ export class CommandExecutor {
 
   static queueCommand(player: Player, command: string, args: any) {
 
+    if(!player) return;
+
     const wasSuccess = this._queueCommand(player, command, args);
 
     // explicit check
