@@ -1,5 +1,5 @@
-
-require('dotenv').config({ silent: true });
+const argv = require('minimist')(process.argv.slice(2));
+require('dotenv').config({ silent: true, path: argv.prod ? '.env.prod' : '.env' });
 
 import { DB } from '../database';
 
@@ -13,7 +13,7 @@ class DropsLoader {
 
   static loadAllRegions() {
     DB.isReady.then(async () => {
-      await DB.$npcs.remove({}, { multi: true });
+      await DB.$regionDrops.remove({}, { multi: true });
 
       recurse(`${__dirname}/../data/droptables/regions`).then(files => {
         const filePromises = files.map(file => {
@@ -37,11 +37,10 @@ class DropsLoader {
 
   static loadAllMaps() {
     DB.isReady.then(async () => {
-      await DB.$npcs.remove({}, { multi: true });
+      await DB.$mapDrops.remove({}, { multi: true });
 
       recurse(`${__dirname}/../data/droptables/maps`).then(files => {
         const filePromises = files.map(file => {
-          console.log(file);
           const droptable = YAML.load(file);
           const fileName = path.basename(file, path.extname(file));
           console.log(`Inserting Map ${fileName}`);
