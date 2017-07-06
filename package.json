@@ -21,7 +21,7 @@
     "task:macros:data": "ts-node src/server/tasks/macroiconnames.ts",
     "task:macros:meta": "ts-node src/server/tasks/macrometadata.ts",
     "task:macros:font": "webfont -f macicons -t css -d src/client/macicons src/client/assets/icons/*.svg",
-    "runseed:prod": "npm-run-all seed:* -- --prod"
+    "runseed:prod": "npm-run-all \"seed:* -- --prod\""
   },
   "repository": {
     "type": "git",
