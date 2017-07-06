@@ -33,6 +33,10 @@ export class ColyseusService {
       this._isConnected = true;
     });
 
+    this.client.onError.add((e) => {
+      console.error(e);
+    });
+
     this.client.onClose.add(() => {
       this.game.quit();
       this._isConnected = false;
