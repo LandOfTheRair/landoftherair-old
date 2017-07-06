@@ -157,14 +157,6 @@ export class Player extends Character {
     }
   }
 
-  dropHands() {
-    // TODO drop hands
-  }
-
-  strip({ x, y }, spread = 0) {
-    // TODO get stripp't
-  }
-
   restore(force = false) {
     if(force) {
       this.sendClientMessage('You feel a churning sensation.');
