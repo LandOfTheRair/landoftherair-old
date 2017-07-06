@@ -750,4 +750,48 @@ export class Character {
   }
 
   receiveMessage(from, message) {}
+
+
+  dropHands() {
+    if(this.rightHand) {
+      this.$$room.addItemToGround(this, this.rightHand);
+      this.setRightHand(null);
+    }
+
+    if(this.leftHand) {
+      this.$$room.addItemToGround(this, this.leftHand);
+      this.setLeftHand(null);
+    }
+  }
+
+  strip({ x, y }, spread = 0) {
+    this.dropHands();
+
+    const pickSlot = () => ({ x: random(x - spread, x + spread), y: random(y - spread, y + spread) });
+
+    Object.keys(this.gear).forEach(gearSlot => {
+      const item = this.gear[gearSlot];
+      if(!item) return;
+
+      const point = pickSlot();
+      this.$$room.addItemToGround(point, item);
+      this.unequip(gearSlot);
+    });
+
+    for(let i = 0; i < this.sack.items.length; i++) {
+      const item = this.sack.takeItemFromSlot(i);
+      if(!item) continue;
+
+      const point = pickSlot();
+      this.$$room.addItemToGround(point, item);
+    }
+
+    for(let i = 0; i < this.belt.items.length; i++) {
+      const item = this.belt.takeItemFromSlot(i);
+      if(!item) continue;
+
+      const point = pickSlot();
+      this.$$room.addItemToGround(point, item);
+    }
+  }
 }
