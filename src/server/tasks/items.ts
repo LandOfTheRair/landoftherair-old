@@ -78,13 +78,13 @@ class ItemLoader {
       item.isSackable = true;
     }
 
-    if(item.itemClass === 'Halberd') {
+    if(item.type === 'Polearm') {
       item.isBeltable = false;
       item.twoHanded = true;
       item.attackRange = 1;
     }
 
-    if(item.itemClass === 'Twohanded' || item.secondaryType === 'Twohanded') {
+    if(item.type === 'Twohanded' || item.secondaryType === 'Twohanded') {
       item.twoHanded = true;
     }
 
