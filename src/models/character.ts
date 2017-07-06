@@ -1,5 +1,5 @@
 
-import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize, startsWith, isUndefined, clone, isString } from 'lodash';
+import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize, startsWith, isUndefined, clone, isString, random } from 'lodash';
 import * as RestrictedNumber from 'restricted-number';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
