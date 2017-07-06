@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 import { LobbyState } from '../../models/lobbystate';
 import { Account } from '../../models/account';
 
+import { Observable } from 'rxjs/Observable';
 import { extend } from 'lodash';
 
 @Injectable()
@@ -24,6 +25,7 @@ export class ColyseusLobbyService {
     this.colyseus = colyseus;
     this.client = client;
     this.initLobby();
+    this.startHeartbeat();
   }
 
   private initLobby() {
@@ -209,5 +211,12 @@ export class ColyseusLobbyService {
 
   public changeStatus(status) {
     this.client.send({ action: 'status', status });
+  }
+
+  public startHeartbeat() {
+    const source = Observable.interval(20000);
+    source.subscribe(() => {
+      this.client.send({ action: 'heartbeat' });
+    });
   }
 }
