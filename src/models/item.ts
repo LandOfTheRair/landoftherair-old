@@ -157,6 +157,21 @@ export class Item {
     this.uuid = uuid();
   }
 
+  usesString(): string {
+    if(!this.effect || !this.effect.uses || this.effect.uses < 0) return '';
+    const uses = this.effect.uses;
+
+    if(uses < 3)    return 'looks brittle';
+    if(uses < 9)    return 'looks cracked';
+    if(uses < 20)   return 'looks normal';
+    if(uses < 50)   return 'looks energetic';
+    if(uses < 100)  return 'crackles with power';
+
+    return 'is flawlessly vibrant';
+
+    // the item <x>
+  }
+
   conditionString(): string {
     if(this.condition <= 0)     return 'broken';
     if(this.condition <= 5000)  return 'tattered';
@@ -180,6 +195,8 @@ export class Item {
     }
 
     const fluidText = this.ounces > 0 ? `It is filled with ${this.ounces}oz of fluid. ` : '';
+    let usesText = this.usesString();
+    usesText = usesText ? `The item ${usesText}. ` : '';
 
     const sense1Text = senseLevel > 0 && this.extendedDesc ? `This item is ${this.extendedDesc}. ` : '';
     let sense1AfterText = '';
@@ -195,7 +212,7 @@ export class Item {
 
     const levelText = this.requirements && this.requirements.level ? `You must be level ${this.requirements.level} to use this item. ` : '';
 
-    return `You are looking at ${this.desc}. ${sense1Text}${sense1AfterText}${sense2Text}${fluidText}${levelText}The item is in ${this.conditionString()} condition. ${ownedText}`;
+    return `You are looking at ${this.desc}. ${sense1Text}${sense1AfterText}${sense2Text}${usesText}${fluidText}${levelText}The item is in ${this.conditionString()} condition. ${ownedText}`;
   }
 
   isRobe() {
