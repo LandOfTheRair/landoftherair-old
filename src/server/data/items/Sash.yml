@@ -14,3 +14,14 @@
   sprite: 236
   desc: "a simple silk sash"
   value: 150
+
+- name: Tonwin Sash
+  stats:
+    armorClass: 4
+    defense: 2
+    offense: 2
+  sprite: 475
+  desc: "a sash with the image of a sword sewn into it"
+  binds: true
+  tellsBind: true
+  value: 3500

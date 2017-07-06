@@ -74,6 +74,10 @@ class ItemLoader {
       if(isUndefined(item.isSackable))  item.isSackable = false;
     }
 
+    if(item.itemClass === 'Tunic') {
+      item.isSackable = true;
+    }
+
     if(item.itemClass === 'Halberd') {
       item.isBeltable = false;
       item.twoHanded = true;

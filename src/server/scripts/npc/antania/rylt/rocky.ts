@@ -1,6 +1,5 @@
 import { NPC } from '../../../../../models/npc';
 import { NPCLoader } from '../../../../helpers/npc-loader';
-import { SmithResponses } from '../../common-responses';
 
 const GOLEM_ROCK = 'Antanian Golem Brain';
 

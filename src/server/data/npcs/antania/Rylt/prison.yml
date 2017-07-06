@@ -147,3 +147,239 @@
       chance: -1
     - drop: 'gear.Armor'
       chance: -1
+
+- npcId: Rylt Renegade Rebel
+  name: rebel
+  hostility: Always
+  sprite: [630, 635, 645, 650]
+  alignment: Evil
+  stats: 10
+  skillLevels:
+    Longsword: 3
+    Axe: 3
+    Dagger: 3
+
+  level: 7
+  skillOnKill: 20
+
+  gold:
+    min: 150
+    max: 250
+
+  hp:
+    min: 3000
+    max: 4000
+
+  giveXp:
+    min: 500
+    max: 1000
+
+  rightHand:
+    - Rylt Renegade Longsword
+    - Rylt Renegade Axe
+    - Rylt Renegade Staff
+  leftHand:
+    - result: none
+      chance: 8
+    - result: Antanian Wooden Shield
+      chance: 4
+    - result: Rylt Renegade Iron Shield
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Antanian Tunic
+        chance: 9
+      - result: Antanian Studded Tunic
+        chance: 4
+      - result: Rylt Renegade Breastplate
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Head:
+      - result: none
+        chance: 10
+      - result: Antanian Helm
+        chance: 2
+    Hands:
+      - result: none
+        chance: 8
+      - result: Antanian Leather Gloves
+        chance: 1
+    Feet:
+      - result: none
+        chance: 7
+      - result: Antanian Leather Boots
+        chance: 1
+    Neck:
+      - result: none
+        chance: 10
+      - result: Antanian Amulet
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1
+
+  drops:
+    - result: Rylt Renegade Book
+      chance: 1
+      maxChance: 200
+
+- npcId: Rylt Renegade Mage Rebel
+  name: rebel
+  hostility: Always
+  sprite: 545
+  alignment: Evil
+  stats: 10
+  skillLevels:
+    Shortsword: 2
+    Conjuration: 4
+
+  level: 7
+  skillOnKill: 25
+
+  gold:
+    min: 150
+    max: 250
+
+  hp:
+    min: 1000
+    max: 2000
+
+  mp:
+    min: 500
+    max: 600
+
+  giveXp:
+    min: 600
+    max: 1100
+
+  rightHand: Antanian Shortsword
+
+  gear:
+    Armor: Antanian Tunic
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+
+  usableSkills:
+    - MagicMissile
+
+  drops:
+    - result: Rylt Renegade Book
+      chance: 1
+      maxChance: 200
+
+- npcId: Rylt Renegade Healer Rebel
+  name: rebel
+  hostility: Always
+  sprite: 550
+  alignment: Evil
+  stats: 10
+  skillLevels:
+    Mace: 2
+    Restoration: 4
+
+  level: 7
+  skillOnKill: 25
+
+  gold:
+    min: 150
+    max: 250
+
+  hp:
+    min: 1000
+    max: 2000
+
+  mp:
+    min: 500
+    max: 600
+
+  giveXp:
+    min: 600
+    max: 1100
+
+  rightHand: Rylt Renegade Mace
+
+  usableSkills:
+    - Afflict
+
+  gear:
+    Armor: Antanian Tunic
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+
+  drops:
+    - result: Rylt Renegade Book
+      chance: 1
+      maxChance: 200
+
+- npcId: Tonwin
+  name: Tonwin
+  hostility: Always
+  sprite: 5
+  alignment: Evil
+  stats: 15
+  skillLevels: 7
+
+  level: 17
+  skillOnKill: 200
+
+  gold:
+    min: 4000
+    max: 6000
+
+  hp:
+    min: 30000
+    max: 32000
+
+  giveXp:
+    min: 15000
+    max: 25000
+
+  rightHand: Tonwin Sword
+  leftHand: Rylt Renegade Iron Shield
+
+  gear:
+    Armor: Rylt Renegade Breastplate
+    Robe1: Antanian Cloak
+    Waist: Tonwin Sash
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+
+  drops:
+    - result: Rylt Renegade Book
+      chance: -1
