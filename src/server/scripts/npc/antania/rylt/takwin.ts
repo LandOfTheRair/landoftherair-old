@@ -2,7 +2,7 @@ import { NPC } from '../../../../../models/npc';
 import { NPCLoader } from '../../../../helpers/npc-loader';
 
 const TONWIN_SWORD = 'Tonwin Sword';
-const TONWIN_GIFT = 'Takwin Shield';
+const TAKWIN_GIFT = 'Takwin Shield';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
