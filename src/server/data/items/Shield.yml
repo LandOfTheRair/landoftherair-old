@@ -31,4 +31,13 @@
   value: 800
   sprite: 329
 
+- name: Takwin Shield
+  stats:
+    defense: 2
+    armorClass: 10
+  desc: "a highly reflective shield emblazoned with the emblem of the renegades"
+  type: Mace
+  value: 1500
+  sprite: 330
+
 
