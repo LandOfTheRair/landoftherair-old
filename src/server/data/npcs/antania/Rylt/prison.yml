@@ -362,6 +362,11 @@
     min: 15000
     max: 25000
 
+  combatMessages:
+    - "Did my filthy brothers put you up to this?"
+    - "Turn around now before it's too late!"
+    - "You will be slain for your insolence!"
+
   rightHand: Tonwin Sword
   leftHand: Rylt Renegade Iron Shield
 
