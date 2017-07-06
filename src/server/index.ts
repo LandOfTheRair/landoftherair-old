@@ -3,6 +3,7 @@ require('dotenv').config({ silent: true });
 
 import { DB } from './database';
 import { API } from './api';
+import { Logger } from './logger';
 
 if(!process.env.AUTH0_SECRET) {
   console.log('No env.AUTH0_SECRET. Set one.');
@@ -14,5 +15,9 @@ Promise.all([DB.isReady, API.isReady]).then(() => {
 });
 
 process.on('unhandledRejection', e => {
-  console.error(e);
+  Logger.error(e);
+});
+
+process.on('uncaughtException', e => {
+  Logger.error(e);
 });
