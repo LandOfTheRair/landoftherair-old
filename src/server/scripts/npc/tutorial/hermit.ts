@@ -22,7 +22,7 @@ export const responses = (npc: NPC) => {
         return `Ah, thank you ${player.name}! I see you've brought me the skull of the feared yeti. Here, you can have this key. Now go out into the world and do great things!`;
       }
 
-      return `Hello and welcome to The Land of the Rair, ${player.name}! It looks like you're stuck in here with me. But fret not, I can HELP you!`;
+      return `Hello and welcome to The Land of the Rair, ${player.name}! It looks like you're stuck in here with me. But fret not, I can HELP you! [Hint: You can talk with NPCs by saying their name, comma, then what you want to ask about. For example, in command mode, say "her, help"]`;
     });
 
   npc.parser.addCommand('help')
