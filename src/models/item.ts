@@ -212,7 +212,10 @@ export class Item {
 
     const levelText = this.requirements && this.requirements.level ? `You must be level ${this.requirements.level} to use this item. ` : '';
 
-    return `You are looking at ${this.desc}. ${sense1Text}${sense1AfterText}${sense2Text}${usesText}${fluidText}${levelText}The item is in ${this.conditionString()} condition. ${ownedText}`;
+    const baseText = `You are looking at ${this.desc}. `;
+    const conditionText = `The item is in ${this.conditionString()} condition. `;
+
+    return `${baseText}${sense1Text}${sense1AfterText}${sense2Text}${usesText}${fluidText}${levelText}${conditionText}${ownedText}`;
   }
 
   isRobe() {
