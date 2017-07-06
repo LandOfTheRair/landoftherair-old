@@ -7,6 +7,10 @@
 
     overflow: hidden;
 
+    .user-ingame {
+      margin-right: 10px;
+    }
+
     .user-name {
       &.afk {
          color: #888;
