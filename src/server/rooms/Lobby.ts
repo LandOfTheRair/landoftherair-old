@@ -304,6 +304,7 @@ export class Lobby extends Room<LobbyState> {
       return;
     }
 
+    if(data.action === 'heartbeat') return;
     if(data.action === 'status')    return this.changeStatus(client, data.status);
     if(data.action === 'alert')     return this.broadcastAlert(client, data);
     if(data.action === 'play')      return this.playCharacter(client, data);
