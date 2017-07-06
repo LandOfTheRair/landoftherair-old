@@ -1,4 +1,4 @@
-# Land of the Rair [![Build Status](https://travis-ci.org/seiyria/landoftherair.svg?branch=master)](https://travis-ci.org/seiyria/landoftherair)
+# Land of the Rair [![Build Status](https://travis-ci.org/LandOfTheRair/landoftherair.svg?branch=master)](https://travis-ci.org/LandOfTheRair/landoftherair)
 
 A prototype MORPG.
 
