@@ -22,7 +22,13 @@ export const responses = (npc: NPC) => {
         return `Ah, thank you ${player.name}! I see you've brought me the skull of the feared yeti. Here, you can have this key. Now go out into the world and do great things!`;
       }
 
-      return `Hello and welcome to The Land of the Rair, ${player.name}! It looks like you're stuck in here with me. But fret not! If you kill the nearby YETI and bring me his SKULL, I can give you a KEY to let you out of here.`;
+      return `Hello and welcome to The Land of the Rair, ${player.name}! It looks like you're stuck in here with me. But fret not, I can HELP you!`;
+    });
+
+  npc.parser.addCommand('help')
+    .set('syntax', ['help'])
+    .set('logic', (args, { player }) => {
+      return `Yes, I can help you, and you can help me. If you kill the nearby YETI and bring me his SKULL, I can give you a KEY to let you out of here.`;
     });
 
   npc.parser.addCommand('yeti')
