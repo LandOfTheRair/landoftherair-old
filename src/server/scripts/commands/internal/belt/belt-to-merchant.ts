@@ -13,9 +13,9 @@ export class BeltToMerchant extends Command {
 
     const [slot, merchantUUID] = args.split(' ');
 
-    if(!this.checkPlayerEmptyHand(player)) return false;
+    if(!this.checkPlayerEmptyHand(player)) return;
 
-    if(!this.checkMerchantDistance(player, merchantUUID)) return false;
+    if(!this.checkMerchantDistance(player, merchantUUID)) return;
 
     const item = player.belt.takeItemFromSlot(slot);
     if(!item) return false;
