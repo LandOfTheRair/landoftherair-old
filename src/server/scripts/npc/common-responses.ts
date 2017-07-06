@@ -23,6 +23,7 @@ export const TannerResponses = (npc: NPC) => {
       ground.Corpse.forEach(corpse => {
         const corpseNPC = npc.$$room.state.findNPC(corpse.npcUUID);
         if(corpseNPC) corpseNPC.restore();
+        else          npc.$$room.removeItemFromGround(corpse);
         if(!corpse.tansFor) return;
 
         NPCLoader.loadItem(corpse.tansFor)
