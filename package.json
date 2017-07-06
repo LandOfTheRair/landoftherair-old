@@ -1,5 +1,5 @@
 {
-  "name": "kod-prototype",
+  "name": "landoftherair",
   "version": "1.0.0",
   "description": "a prototype morpg",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "build": "ng build",
     "build:prod": "ng build --environment=prod --target=production",
     "lint": "ng lint",
-    "test": "npm run lint && npm run build:prod",
+    "test": "npm run lint && npm run build:prod && npm run task:seed",
     "setup": "npm-run-all task:*",
     "seed:items": "ts-node src/server/tasks/items.ts",
     "seed:npcs": "ts-node src/server/tasks/npcs.ts",

@@ -1,4 +1,10 @@
 language: node_js
 
+services:
+  - mongodb
+
+env:
+  MONGODB_URI: mongodb://localhost:27017/rair
+
 node_js:
   - "7.3.0"
