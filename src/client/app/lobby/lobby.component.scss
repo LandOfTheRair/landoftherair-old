@@ -37,7 +37,12 @@
   height: calc(100% - 38px);
 }
 
+.motd-area {
+  border-bottom: 1px solid #000;
+}
+
 .chat-area {
+  min-height: 350px;
   max-height: 350px;
   overflow-y: auto;
 
