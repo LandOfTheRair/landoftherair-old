@@ -2,7 +2,7 @@
 import { Character, MaxSizes, AllNormalGearSlots } from './character';
 import { Item } from './item';
 
-import { compact, pull, random, isArray, get, find } from 'lodash';
+import { compact, pull, random, isArray, get, find, includes, reject } from 'lodash';
 
 export class Player extends Character {
   _id?: any;
@@ -102,6 +102,8 @@ export class Player extends Character {
     if(!this.$$flaggedSkills || !this.$$flaggedSkills.length) return;
     const [primary, secondary] = this.$$flaggedSkills;
     const skillGain = target.skillOnKill;
+
+    this.$$actionQueue = reject(this.$$actionQueue, ({ args }) => includes(args, target.uuid));
 
     if(secondary) {
       this.gainSkill(primary, skillGain * 0.75);
