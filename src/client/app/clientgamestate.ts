@@ -41,6 +41,10 @@ export class ClientGameState {
     this.initFOV();
   }
 
+  grabOldUpdates(mapData) {
+    Object.keys(mapData.openDoors).forEach(doorId => this.updates.openDoors.push(doorId));
+  }
+
   setMap(map) {
     this.map = map;
     this.setMap$.next(map);
