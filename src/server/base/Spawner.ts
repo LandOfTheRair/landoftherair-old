@@ -45,6 +45,8 @@ export class Spawner {
 
   $$slowTicks = 0;
 
+  $$isStayingSlow = false;
+
   constructor(private room, { x, y, map }, spawnOpts) {
     extend(this, spawnOpts);
 
@@ -207,6 +209,9 @@ export class Spawner {
 
     if(this.shouldSlowDown(this.getDistsForPlayers())) {
       this.$$slowTicks = 4;
+      this.$$isStayingSlow = true;
+    } else {
+      this.$$isStayingSlow = false;
     }
 
     if(this.currentTick > this.respawnRate
@@ -218,7 +223,15 @@ export class Spawner {
   }
 
   npcTick() {
-    this.npcs.forEach(npc => npc.tick());
+    this.npcs.forEach(npc => {
+      npc.tick();
+
+      if(npc.hostility === 'Never') return;
+
+      if(!this.$$isStayingSlow) {
+        npc.$$room.state.calculateFOV(npc);
+      }
+    });
   }
 
 }

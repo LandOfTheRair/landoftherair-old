@@ -164,6 +164,7 @@ export class Character {
 
   swimLevel: number;
 
+  $fov: any;
   $$map: any;
   $$deathTicks: number;
   $$room: any;
@@ -469,7 +470,10 @@ export class Character {
     this.dir = <Direction>this.getDirBasedOnDiff(x, y).substring(0, 1);
   }
 
-  canSee(x, y): boolean {
+  canSee(xOffset, yOffset) {
+    if(!this.$fov) return false;
+    if(!this.$fov[xOffset]) return false;
+    if(!this.$fov[xOffset][yOffset]) return false;
     return true;
   }
 
@@ -680,7 +684,7 @@ export class Character {
   sendClientMessage(message) {}
   sendClientMessageToRadius(message, radius = 0, except = []) {
     const sendMessage = isString(message) ? { message, subClass: 'chatter' } : message;
-    this.$$room.state.getPlayersInRange(this.x, this.y, radius, except).forEach(p => {
+    this.$$room.state.getPlayersInRange(this, radius, except).forEach(p => {
 
       // outta range, generate a "you heard X in the Y dir" message
       if(radius > 4 && this.distFrom(p) > 5) {

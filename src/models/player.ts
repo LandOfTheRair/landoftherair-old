@@ -20,7 +20,6 @@ export class Player extends Character {
 
   banks: any;
 
-  $fov: any;
   $$doNotSave: boolean;
   $$actionQueue;
   $$flaggedSkills;
@@ -92,12 +91,6 @@ export class Player extends Character {
       }
     }
     return false;
-  }
-
-  canSee(x, y) {
-    if(!this.$fov[x]) return false;
-    if(!this.$fov[x][y]) return false;
-    return true;
   }
 
   flagSkill(skills) {
