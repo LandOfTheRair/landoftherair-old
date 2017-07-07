@@ -153,7 +153,8 @@ export class Player extends Character {
   restore(force = false) {
     if(force) {
       this.sendClientMessage('You feel a churning sensation.');
-      // TODO take stats
+      if(this.stats.str > 5 && random(1, 5) === 1) this.stats.str--;
+      if(this.stats.agi > 5 && random(1, 5) === 1) this.stats.agi--;
     }
 
     this.hp.set(1);
