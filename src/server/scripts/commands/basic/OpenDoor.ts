@@ -39,7 +39,7 @@ export class OpenDoor extends Command {
     player.sendClientMessage(door.isOpen ? 'You close the door.' : 'You open the door.');
     gameState.toggleDoor(door);
 
-    gameState.getPlayersInRange(targetX, targetY, 3).forEach(p => gameState.calculateFOV(p));
+    gameState.getPlayersInRange({ x: targetX, y: targetY }, 3).forEach(p => gameState.calculateFOV(p));
   }
 
 }

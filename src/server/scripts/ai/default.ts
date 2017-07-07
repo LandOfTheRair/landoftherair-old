@@ -11,7 +11,6 @@ export const tick = (npc: NPC) => {
   let diffX = 0;
   let diffY = 0;
 
-  // TODO calculate fov so you dont target things behind walls
   const targetsInRange = npc.$$room.state.getPossibleTargetsFor(npc, 5);
 
   let highestAgro = maxBy(targetsInRange, char => npc.agro[char.uuid]);

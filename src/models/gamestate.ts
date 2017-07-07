@@ -70,8 +70,18 @@ export class GameState {
     player.$fov = affected;
   }
 
-  getPlayersInRange(x, y, radius, except = []) {
+  getPlayersInRange(ref, radius, except = []) {
+
+    const { x, y } = ref;
+
     return reject(this.players, p => {
+
+      if(ref.$fov) {
+        const offsetX = p.x - x;
+        const offsetY = p.y - y;
+        if(!ref.canSee(offsetX, offsetY)) return true;
+      }
+
       return p.x < x - radius
           || p.x > x + radius
           || p.y < y - radius
@@ -108,6 +118,12 @@ export class GameState {
         && char.y < me.y + radius;
 
       if(!inRadius) return false;
+
+      if(me.$fov) {
+        const offsetX = char.x - me.x;
+        const offsetY = char.y - me.y;
+        if(!me.canSee(offsetX, offsetY)) return false;
+      }
 
       if(this.checkTargetForHostility(me, char)) return true;
 
