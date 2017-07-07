@@ -27,7 +27,7 @@
         <div class="message pl-1" *ngFor="let message of lobby.lobbyState.messages">
           <span class="timestamp">[{{ message.timestamp | date:'hh:mm'}}]</span>
           <span class="account">{{ message.account }}:</span>
-          <span class="message">{{ message.message }}</span>
+          <span class="message" [innerHTML]="message.message | linkify"></span>
         </div>
       </div>
 

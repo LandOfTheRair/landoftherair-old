@@ -49,6 +49,7 @@ import { TrainerComponent } from './trainer/trainer.component';
 import { ShopComponent } from './shop/shop.component';
 import { BankComponent } from './bank/bank.component';
 import { LockersComponent } from './lockers/lockers.component';
+import { LinkifyPipe } from './_shared/linkify.pipe';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -56,6 +57,8 @@ import { LockersComponent } from './lockers/lockers.component';
   declarations: [
     AppComponent,
     LobbyComponent,
+
+    LinkifyPipe,
 
     DraggableWindowDirective,
     NgxAutoScrollDirective,
@@ -85,7 +88,7 @@ import { LockersComponent } from './lockers/lockers.component';
     TrainerComponent,
     ShopComponent,
     BankComponent,
-    LockersComponent,
+    LockersComponent
   ],
   imports: [
     BrowserModule,
