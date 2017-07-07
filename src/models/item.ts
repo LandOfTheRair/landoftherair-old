@@ -87,15 +87,6 @@ export const EquippableItemClasses = HeadClasses
 export const EquippableItemClassesWithWeapons = EquippableItemClasses
   .concat(WeaponClasses);
 
-/* TODO Eventually:
-
-  - items that have an xp value, xp max, level, value, level max, and stat growth per item level
-  - items that can only grow by killing certain mobs
-  - items that have stats that grow based on the player level
-  - items that have random stats assigned to them
-  - items that boost skills
- */
-
 export class ItemRequirements {
   level?: number;
   class?: string[];
