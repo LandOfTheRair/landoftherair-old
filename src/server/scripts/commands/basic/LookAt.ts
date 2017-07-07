@@ -37,7 +37,7 @@ export class LookAt extends Command {
       handDesc = leftDesc || rightDesc;
     }
 
-    const description = `You are looking at a being named ${target.name}. ${target.name} is of ${target.alignment.toLowerCase()} alignment. ${target.name} is wearing ${chestDesc} and holding ${handDesc}.`;
+    const description = `You are looking at a being named ${target.name}. ${target.name} is of ${(target.alignment || 'unknown').toLowerCase()} alignment. ${target.name} is wearing ${chestDesc} and holding ${handDesc}.`;
 
     player.sendClientMessage(description);
   }
