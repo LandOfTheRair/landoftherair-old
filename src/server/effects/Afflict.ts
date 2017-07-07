@@ -27,7 +27,7 @@ export class Afflict extends SpellEffect {
       effect: this,
       skillRef,
       atkMsg: `You afflict ${target.name}.`,
-      defMsg: `${target.name} hit you with an affliction!`,
+      defMsg: `${caster.name} hit you with an affliction!`,
       damage,
       damageClass: 'necrotic'
     });
