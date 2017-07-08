@@ -53,6 +53,8 @@ export class NPC extends Character {
   $$stripRadius: number;
   $$stripOnSpawner: boolean;
 
+  $$lastResponse: string;
+
   init() {
     if(!this.uuid) this.uuid = uuid();
     this.recalculateStats();
