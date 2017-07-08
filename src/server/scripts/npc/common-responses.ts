@@ -141,7 +141,17 @@ export const RandomlyShouts = (npc: NPC, responses: string[] = []) => {
     if(ticks >= 5) {
       ticks = 0;
 
-      const msgObject = { name: npc.name, message: sample(responses), subClass: 'chatter' };
+      let response = sample(responses);
+
+      if(responses.length > 1 && response === npc.$$lastResponse) {
+        do {
+          response = sample(responses);
+        } while(response === npc.$$lastResponse);
+      }
+
+      npc.$$lastResponse = response;
+
+      const msgObject = { name: npc.name, message: response, subClass: 'chatter' };
       npc.sendClientMessageToRadius(msgObject, 8);
     }
   }};
