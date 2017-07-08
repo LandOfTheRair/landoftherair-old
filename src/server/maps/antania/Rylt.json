@@ -3321,7 +3321,7 @@
                  "properties":
                     {
                      "alchCost":50,
-                     "alchOz":5,
+                     "alchOz":10,
                      "script":"global\/alchemist"
                     },
                  "propertytypes":
