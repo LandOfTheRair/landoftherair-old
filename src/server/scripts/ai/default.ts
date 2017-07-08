@@ -22,6 +22,8 @@ export const tick = (npc: NPC) => {
   // we have a target
   if(highestAgro) {
 
+    npc.$$pathDisrupted = true;
+
     if(npc.combatMessages && random(1, 10) === 1) {
       const msgObject = { name: npc.name, message: sample(npc.combatMessages), subClass: 'chatter' };
       npc.sendClientMessageToRadius(msgObject, 5);
@@ -87,7 +89,8 @@ export const tick = (npc: NPC) => {
 
   // we have a path
   } else if(npc.path && npc.path.length > 0) {
-    if(size(npc.agro) > 0) {
+    if(npc.$$pathDisrupted) {
+      npc.$$pathDisrupted = false;
       npc.agro = {};
       npc.x = npc.spawner.x;
       npc.y = npc.spawner.y;
