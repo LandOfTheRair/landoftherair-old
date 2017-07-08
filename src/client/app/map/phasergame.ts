@@ -76,7 +76,6 @@ export class Game {
   async createPlayer(player: Player) {
     if(!this.g.add) return;
     await this.canCreate;
-    
     if(player.username === this.player.username) {
       if(this.playerSprite) return;
 
