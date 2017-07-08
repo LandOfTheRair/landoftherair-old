@@ -135,9 +135,6 @@
     Wand: 7
     Conjuration: 10
 
-  allegianceReputation:
-    Enemy: -1
-
   skillOnKill: 50
 
   sprite: 545
