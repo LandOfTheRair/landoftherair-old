@@ -22,6 +22,12 @@ First, create a [`.env`](https://www.npmjs.com/package/dotenv) file in the root.
 
 ## Setup
 
+For initial setup, run this:
+
+* `npm run setup`
+
+For subsequent updates and specific changes, you can run these instead:
+
 * `npm run task:items` - this will populate the database with items
 * `npm run task:npcs`  - this will populate the database with npc data
 * `npm run task:drops` - this will populate the database with drop table data
@@ -63,7 +69,12 @@ Some commands are hidden and don't really need to be used by players, but should
 
 * `@gold <num>` - create <num> gold on your tile
 * `@item <item name>` - create a particular item on your tile
-* `@xp <xp>` - gain <xp> XP
+* `@itemdupe` - copy your right hand to your left hand
+* `@examine <nothing|npcish>` - if `npcish` is specified, will examine an npc. Otherwise, it'll examine your right hand item
+* `@itemforge propsish` - create an item using props syntax, for example: `sprite=1 type=Hammer stats.str=1`
 * `@skill <skillname> <xpgain>` - gain `xpgain` skill for `skillname`
+* `@xp <xp>` - gain <xp> XP
 * `@kill <target>` - will instantly kill `target`
-* `@teleport <x> <y> [map]` - teleport to X,Y, and if map is specified, you'll also change maps.
+* `@itemmod propsish` - modify your rightHand item based on props specified, for example: `ounces=10`
+* `@respawn lairname` - respawn `lairname` on the current map
+* `@teleport <x> <y> [map]` - teleport to X,Y, and if map is specified, you'll also change maps
