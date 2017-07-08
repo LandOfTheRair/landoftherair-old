@@ -48,6 +48,8 @@ export class NPC extends Character {
   spawnMessage: string;
   combatMessages: string[];
 
+  $$pathDisrupted: boolean;
+
   init() {
     if(!this.uuid) this.uuid = uuid();
     this.recalculateStats();
