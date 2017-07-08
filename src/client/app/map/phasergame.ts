@@ -25,6 +25,7 @@ export class Game {
 
   private itemsOnGround: any;
   private visibleNPCs: any;
+  private otherPlayerSprites: any;
 
   private isRenderingTruesight: boolean;
 
@@ -36,8 +37,6 @@ export class Game {
   };
 
   private visibleSprites = {};
-
-  private otherPlayerSprites = [];
 
   public canCreate: Promise<any>;
   public canUpdate: Promise<any>;
@@ -56,8 +55,13 @@ export class Game {
     if(this.itemsOnGround) {
       this.itemsOnGround.destroy();
     }
+
     if(this.visibleNPCs) {
       this.visibleNPCs.destroy();
+    }
+
+    if(this.otherPlayerSprites) {
+      this.otherPlayerSprites.destroy();
     }
 
     this.visibleNPCUUIDHash = {};
@@ -72,7 +76,7 @@ export class Game {
   async createPlayer(player: Player) {
     if(!this.g.add) return;
     await this.canCreate;
-
+    
     if(player.username === this.player.username) {
       if(this.playerSprite) return;
 
@@ -85,24 +89,21 @@ export class Game {
 
     } else {
       const sprite = this.getPlayerSprite(player);
-      this.otherPlayerSprites.push(sprite);
+      this.otherPlayerSprites.add(sprite);
     }
   }
 
   async updatePlayer(player: Player) {
-    await this.canCreate;
+    await this.canUpdate;
 
     if(this.player.username === player.username) {
       this.player = player;
       this.truesightCheck();
       this.updatePlayerSprite(this.playerSprite, player);
     } else {
-      const sprite = find(this.otherPlayerSprites, { username: player.username });
-      if(!sprite) {
-        this.createPlayer(player);
-      } else {
-        this.updatePlayerSprite(sprite, player);
-      }
+      const sprite = find(this.otherPlayerSprites.children, { username: player.username });
+      if(!sprite) return;
+      this.updatePlayerSprite(sprite, player);
     }
   }
 
@@ -112,10 +113,9 @@ export class Game {
       delete this.playerSprite;
 
     } else {
-      const oldSprite = find(this.otherPlayerSprites, { username: player.username });
+      const oldSprite = find(this.otherPlayerSprites.children, { username: player.username });
       if(!oldSprite) return;
       oldSprite.destroy();
-      remove(this.otherPlayerSprites, sprite => sprite.username === player.username);
     }
   }
 
@@ -439,6 +439,7 @@ export class Game {
 
     this.itemsOnGround = this.g.add.group();
     this.visibleNPCs = this.g.add.group();
+    this.otherPlayerSprites = this.g.add.group();
 
     this.setupPhaser();
   }
@@ -476,7 +477,8 @@ export class Game {
     if(this.playerSprite) {
       this.playerSprite.destroy();
     }
-    this.otherPlayerSprites.forEach(sprite => sprite.destroy());
+    this.otherPlayerSprites.destroy();
     this.itemsOnGround.destroy();
+    this.visibleNPCs.destroy();
   }
 }

@@ -86,7 +86,7 @@ export class GameWorld extends Room<GameState> {
 
     this.allMapNames = opts.allMapNames;
 
-    this.setPatchRate(1000 / TICK_DIVISOR);
+    this.setPatchRate(500 / TICK_DIVISOR);
     this.setSimulationInterval(this.tick.bind(this), 1000 / TICK_DIVISOR);
     this.setState(new GameState({
       players: [],
@@ -300,11 +300,11 @@ export class GameWorld extends Room<GameState> {
 
   async onLeave(client) {
     const player = this.state.findPlayer(client.username);
+    this.state.removePlayer(client.username);
     player.inGame = false;
     await this.leaveGameAndSave(player);
     this.prePlayerMapLeave(player);
     this.savePlayer(player);
-    this.state.removePlayer(client.username);
   }
 
   onMessage(client, data) {
