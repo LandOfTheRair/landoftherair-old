@@ -1,5 +1,5 @@
 
-import { extend, remove, find } from 'lodash';
+import { extend, remove, find, differenceBy } from 'lodash';
 
 import { Player } from '../../models/player';
 
@@ -76,10 +76,26 @@ export class ClientGameState {
     this.initFOV(fov);
   }
 
+  setPlayers(players) {
+    const addPlayers = differenceBy(players, this.players, 'username');
+    const delPlayers = differenceBy(this.players, players, 'username');
+
+    if(addPlayers.length > 0 || delPlayers.length > 0) {
+      this.players = players.map(x => new Player(x));
+    }
+
+    addPlayers.forEach(p => this.addPlayer(p));
+    delPlayers.forEach(p => this.removePlayer(p));
+  }
+
   addPlayer(playerRef) {
     const player = new Player(playerRef);
-    this.players.push(player);
     this.createPlayer$.next(player);
+  }
+
+  removePlayer(playerRef) {
+    const player = new Player(playerRef);
+    this.removePlayer$.next(player);
   }
 
   findPlayer(username) {
@@ -126,13 +142,6 @@ export class ClientGameState {
 
     // this is bad, but this function is only called when hand swapping happens and there's an item in both hands, so whatever
     this.players[playerIndex][hand] = new Item(this.players[playerIndex][hand]);
-  }
-
-  removePlayer(playerIndex) {
-    const player = this.players[playerIndex];
-    this.removePlayer$.next(player);
-
-    remove(this.players, (p, i) => i === playerIndex);
   }
 
   removeAllPlayers() {

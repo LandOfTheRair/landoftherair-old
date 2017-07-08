@@ -70,12 +70,7 @@ export class ColyseusGameService {
 
     this.worldRoom.onUpdate.addOnce((state) => {
       this.clientGameState.mapName = state.mapName;
-      this.clientGameState.setMapData(state.mapData);
       this.clientGameState.grabOldUpdates(state.mapData);
-
-      state.players.forEach(p => {
-        this.clientGameState.addPlayer(p);
-      });
 
       this.changingMap = false;
     });
@@ -84,19 +79,12 @@ export class ColyseusGameService {
       this.clientGameState.setGroundItems(state.groundItems);
       this.clientGameState.setMapData(state.mapData);
       this.clientGameState.setMapNPCs(state.mapNPCs);
+      this.clientGameState.setPlayers(state.players);
       this.setCharacter(find(state.players, { username: this.colyseus.username }));
     });
 
     this.worldRoom.onData.add((data) => {
       this.interceptGameCommand(data);
-    });
-
-    this.worldRoom.state.listen('players/:id', 'add', (playerId: string, value: any) => {
-      this.clientGameState.addPlayer(value);
-    });
-
-    this.worldRoom.state.listen('players/:id', 'remove', (playerId: string|number) => {
-      this.clientGameState.removePlayer(+playerId);
     });
 
     const updateSpecificAttr = (attr, entityId, value) => {
