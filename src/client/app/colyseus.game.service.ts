@@ -404,7 +404,7 @@ export class ColyseusGameService {
       return;
     }
 
-    if(choice === 'M' && this.showShop && includes(['Sack', 'Belt', 'Left', 'Right'], context)) {
+    if(choice === 'M' && this.showShop && includes(['Sack', 'Belt', 'Left', 'Right', 'Potion'], context)) {
       if(!args) {
         args = this.showShop.uuid;
       } else {
