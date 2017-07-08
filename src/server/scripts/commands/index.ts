@@ -5,3 +5,4 @@ export * from './emotes';
 export * from './gm';
 export * from './internal';
 export * from './skills';
+export * from './directions';
