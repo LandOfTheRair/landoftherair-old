@@ -8,7 +8,7 @@ export class Mage extends BaseClass {
 
   static becomeClass(character: Character) {
     super.becomeClass(character);
-    
+
     if(!character.stats.mp) {
       character.stats.mp = 30;
       character.recalculateStats();
