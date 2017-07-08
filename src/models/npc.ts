@@ -49,6 +49,9 @@ export class NPC extends Character {
   combatMessages: string[];
 
   $$pathDisrupted: boolean;
+  $$shouldStrip: boolean;
+  $$stripRadius: number;
+  $$stripOnSpawner: boolean;
 
   init() {
     if(!this.uuid) this.uuid = uuid();
@@ -106,6 +109,12 @@ export class NPC extends Character {
 
   canDie() {
     return super.canDie() && this.hostility !== 'Never';
+  }
+
+  kill(dead) {
+    if(this.$$shouldStrip) {
+      dead.strip(this.$$stripOnSpawner ? this.spawner : this, this.$$stripRadius);
+    }
   }
 
   die(killer) {

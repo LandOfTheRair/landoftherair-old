@@ -43,6 +43,10 @@ export class Spawner {
 
   canSlowDown = true;
 
+  shouldStrip = false;
+  stripRadius = 0;
+  stripOnSpawner = true;
+
   $$slowTicks = 0;
 
   $$isStayingSlow = false;
@@ -156,6 +160,9 @@ export class Spawner {
     npc.hostility = npcData.hostility;
     npc.spawner = this;
     npc.$$room = this.room;
+    npc.$$shouldStrip = this.shouldStrip;
+    npc.$$stripRadius = this.stripRadius;
+    npc.$$stripOnSpawner = this.stripOnSpawner;
 
     npc.sendSpawnMessage();
 

@@ -3980,13 +3980,15 @@
                     {
                      "lairName":"Rylt Werebear",
                      "randomWalkRadius":5,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "stripRadius":1
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
-                     "script":"string"
+                     "script":"string",
+                     "stripRadius":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -4104,13 +4106,15 @@
                     {
                      "lairName":"Rylt Weredeer",
                      "randomWalkRadius":5,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "shouldStrip":false
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -4128,13 +4132,15 @@
                     {
                      "lairName":"Rylt Weredeer",
                      "randomWalkRadius":5,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "shouldStrip":false
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -4154,7 +4160,8 @@
                      "lairName":"Rylt Weredeer",
                      "maxSpawn":3,
                      "randomWalkRadius":5,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "shouldStrip":false
                     },
                  "propertytypes":
                     {
@@ -4162,7 +4169,8 @@
                      "lairName":"string",
                      "maxSpawn":"int",
                      "randomWalkRadius":"int",
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -4361,14 +4369,16 @@
                      "lairName":"Rylt Renegade Leader",
                      "randomWalkRadius":5,
                      "respawnRate":1200,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "shouldStrip":false
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -4387,14 +4397,16 @@
                      "lairName":"Rylt Renegade Leader",
                      "randomWalkRadius":5,
                      "respawnRate":1200,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "shouldStrip":false
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -4413,14 +4425,16 @@
                      "lairName":"Rylt Renegade Leader",
                      "randomWalkRadius":15,
                      "respawnRate":600,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "shouldStrip":false
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -4439,14 +4453,16 @@
                      "lairName":"Rylt Renegade Leader",
                      "randomWalkRadius":15,
                      "respawnRate":600,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "shouldStrip":false
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -4465,14 +4481,16 @@
                      "lairName":"Rylt Renegade Commander",
                      "randomWalkRadius":15,
                      "respawnRate":3600,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "stripRadius":1
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
-                     "script":"string"
+                     "script":"string",
+                     "stripRadius":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -4971,14 +4989,16 @@
                      "lairName":"Saraxa",
                      "randomWalkRadius":20,
                      "respawnRate":3600,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "stripRadius":1
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
-                     "script":"string"
+                     "script":"string",
+                     "stripRadius":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -4997,14 +5017,16 @@
                      "lairName":"Saraxa Rocky",
                      "randomWalkRadius":20,
                      "respawnRate":1200,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "shouldStrip":false
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -5022,13 +5044,15 @@
                     {
                      "lairName":"Tonwin",
                      "randomWalkRadius":15,
-                     "script":"global\/lair"
+                     "script":"global\/lair",
+                     "stripRadius":1
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
-                     "script":"string"
+                     "script":"string",
+                     "stripRadius":"int"
                     },
                  "rotation":0,
                  "type":"",
