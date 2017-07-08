@@ -19,9 +19,7 @@ export class Drink extends Command {
   execute(player: Player, { room, gameState, args }) {
     const item = player.potionHand;
     if(!item) return player.sendClientMessage('You do not have a potion to drink!');
-
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full!');
-
+    
     player.useItem('potionHand');
   }
 
