@@ -589,8 +589,7 @@ export class GameWorld extends Room<GameState> {
     const allItems: Item[] = await Promise.all(itemPromises);
 
     if(npc.gold) {
-      const gold = await ItemCreator.getItemByName('Gold Coin');
-      gold.value = npc.gold;
+      const gold = await ItemCreator.getGold(npc.gold);
       allItems.push(gold);
     }
 

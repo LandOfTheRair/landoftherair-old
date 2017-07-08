@@ -755,7 +755,6 @@ export class Character {
 
   receiveMessage(from, message) {}
 
-
   dropHands() {
     if(this.rightHand) {
       this.$$room.addItemToGround(this, this.rightHand);
@@ -771,7 +770,13 @@ export class Character {
   strip({ x, y }, spread = 0) {
     this.dropHands();
 
+    this.sendClientMessage('You feel an overwhelming heat as your equipment disappears from your body!');
+
     const pickSlot = () => ({ x: random(x - spread, x + spread), y: random(y - spread, y + spread) });
+
+    if(this.gold > 0) {
+
+    }
 
     Object.keys(this.gear).forEach(gearSlot => {
       const item = this.gear[gearSlot];
@@ -782,7 +787,7 @@ export class Character {
       this.unequip(gearSlot);
     });
 
-    for(let i = 0; i < this.sack.items.length; i++) {
+    for(let i = this.sack.items.length; i > 0; i--) {
       const item = this.sack.takeItemFromSlot(i);
       if(!item) continue;
 
@@ -790,7 +795,7 @@ export class Character {
       this.$$room.addItemToGround(point, item);
     }
 
-    for(let i = 0; i < this.belt.items.length; i++) {
+    for(let i = this.belt.items.length; i > 0; i--) {
       const item = this.belt.takeItemFromSlot(i);
       if(!item) continue;
 

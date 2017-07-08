@@ -11,4 +11,9 @@ export class ItemCreator {
     });
   }
 
+  static async getGold(value: number): Promise<Item> {
+    const item = await this.getItemByName('Gold Coin');
+    item.value = value;
+    return item;
+  }
 }
