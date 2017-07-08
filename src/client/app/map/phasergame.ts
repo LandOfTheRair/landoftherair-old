@@ -16,7 +16,6 @@ const cacheKey = TiledPlugin.utils.cacheKey;
 
 export class Game {
 
-  private player: Player;
   private playerSprite: any;
   private map: any;
 
@@ -46,8 +45,7 @@ export class Game {
   public moveCallback = (x, y) => {};
   public interactCallback = (x, y) => {};
 
-  constructor(private clientGameState: ClientGameState, player) {
-    this.player = player;
+  constructor(private clientGameState: ClientGameState, public colyseus, private player: Player) {
     this.initPromises();
   }
 
@@ -388,6 +386,23 @@ export class Game {
     this.g.load.tiledmap(cacheKey(this.clientGameState.mapName, 'tiledmap'), null, mapData, (<any>window).Phaser.Tilemap.TILED_JSON);
   }
 
+  public updateDoors() {
+    this.clientGameState.updates.openDoors.forEach((doorId, i) => {
+      const door = this.clientGameState.mapData.openDoors[doorId];
+      if(!door) return;
+
+      const doorSprite = find(this.groups.Interactables.children, { x: door.x, y: door.y });
+      if(!doorSprite) return;
+
+      if(door.isOpen) doorSprite.frame += 1;
+      else            doorSprite.frame -= 1;
+
+      this.clientGameState.updates.openDoors[i] = null;
+    });
+
+    this.clientGameState.updates.openDoors = compact(this.clientGameState.updates.openDoors);
+  }
+
   preload() {
     this.g.add.plugin(new TiledPlugin(this.g, this.g.stage));
 
@@ -444,26 +459,15 @@ export class Game {
   }
 
   update() {
-    if(!this.player) return;
+    if(!this.player || !this.colyseus.game._inGame) return;
 
     // center on player mid
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
 
+    console.log(this.player.x, this.player.y);
+
     if(this.clientGameState.updates.openDoors.length > 0) {
-      this.clientGameState.updates.openDoors.forEach((doorId, i) => {
-        const door = this.clientGameState.mapData.openDoors[doorId];
-        if(!door) return;
-
-        const doorSprite = find(this.groups.Interactables.children, { x: door.x, y: door.y });
-        if(!doorSprite) return;
-
-        if(door.isOpen) doorSprite.frame += 1;
-        else            doorSprite.frame -= 1;
-
-        this.clientGameState.updates.openDoors[i] = null;
-      });
-
-      this.clientGameState.updates.openDoors = compact(this.clientGameState.updates.openDoors);
+      this.updateDoors();
     }
 
     this.removeOldItemSprites(this.player.x, this.player.y);

@@ -44,11 +44,13 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.start$ = this.clientGameState.setMap$.subscribe((map: any) => {
+
       if(this.started && this.phaser) {
         this.game.reset();
         this.game.initPromises();
         this.phaser.state.start(this.phaser.state.current);
       }
+
       if(!map || !map.layers || this.started) return;
 
       this.started = true;
@@ -57,9 +59,10 @@ export class MapComponent implements OnInit, OnDestroy {
       // 9x9, tiles are 64x64
       const boxSize = 9 * 64;
 
-      this.game = new Game(this.clientGameState, this.currentPlayer);
+      this.game = new Game(this.clientGameState, this.colyseus, this.currentPlayer);
       this.game.moveCallback = (x, y) => this.colyseus.game.doMove(x, y);
       this.game.interactCallback = (x, y) => this.colyseus.game.doInteract(x, y);
+
       const config = {
         width: boxSize, height: boxSize,
         multiTexture: true, renderer: (<any>window).Phaser.AUTO,
