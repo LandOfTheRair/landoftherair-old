@@ -19,14 +19,7 @@ export class CoinToRight extends Command {
       player.setLeftHand(player.rightHand);
     }
 
-    let item;
-    try {
-      item = await ItemCreator.getItemByName('Gold Coin');
-      item.value = value;
-    } catch(e) {
-      player.sendClientMessage(`Warning: "Gold Coin" does not exist.`);
-      return;
-    }
+    const item = await ItemCreator.getGold(value);
 
     player.setRightHand(item);
     player.loseGold(value);

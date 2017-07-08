@@ -14,15 +14,8 @@ export class GMCreateGold extends Command {
     const value = +args;
     if(!value) return false;
 
-    let item;
-    try {
-      item = await ItemCreator.getItemByName('Gold Coin');
-    } catch(e) {
-      player.sendClientMessage(`Warning: "Gold Coin" does not exist.`);
-      return;
-    }
+    const item = await ItemCreator.getGold(value);
 
-    item.value = value;
     room.addItemToGround(player, item);
   }
 }

@@ -15,14 +15,7 @@ export class CoinToGround extends Command {
     if(value <= 0 || value > player.gold || isNaN(value)) return false;
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
-    let item;
-    try {
-      item = await ItemCreator.getItemByName('Gold Coin');
-      item.value = value;
-    } catch(e) {
-      player.sendClientMessage(`Warning: "Gold Coin" does not exist.`);
-      return;
-    }
+    const item = await ItemCreator.getGold(value);
 
     room.addItemToGround(player, item);
     room.showGroundWindow(player);
