@@ -41,6 +41,15 @@ export class Game {
   public canUpdate: Promise<any>;
   private resolveCanCreate;
   private resolveCanUpdate;
+  private canCreateBool: boolean;
+  private canUpdateBool: boolean;
+
+  public get shouldRender() {
+    if(!this.g || !this.g.camera || !this.playerSprite) return false;
+
+    const point = this.g.camera.position;
+    return point.x !== 0 && point.y !== 0;
+  }
 
   public moveCallback = (x, y) => {};
   public interactCallback = (x, y) => {};
@@ -64,6 +73,9 @@ export class Game {
 
     this.visibleNPCUUIDHash = {};
     this.visibleItemUUIDHash = {};
+
+    this.canCreateBool = false;
+    this.canUpdateBool = false;
   }
 
   initPromises() {
@@ -74,6 +86,7 @@ export class Game {
   async createPlayer(player: Player) {
     if(!this.g.add) return;
     await this.canCreate;
+
     if(player.username === this.player.username) {
       if(this.playerSprite) return;
 
@@ -82,6 +95,7 @@ export class Game {
       this.player = player;
       this.playerSprite = sprite;
       this.truesightCheck();
+      this.canUpdateBool = true;
       this.resolveCanUpdate(sprite);
 
     } else {
@@ -450,6 +464,7 @@ export class Game {
     });
 
     this.resolveCanCreate();
+    this.canCreateBool = true;
 
     this.itemsOnGround = this.g.add.group();
     this.visibleNPCs = this.g.add.group();
@@ -463,8 +478,6 @@ export class Game {
 
     // center on player mid
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
-
-    console.log(this.player.x, this.player.y);
 
     if(this.clientGameState.updates.openDoors.length > 0) {
       this.updateDoors();
