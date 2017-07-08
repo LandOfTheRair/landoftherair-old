@@ -8,9 +8,12 @@ export class Healer extends BaseClass {
 
   static becomeClass(character: Character) {
     super.becomeClass(character);
-    character.stats.mp = 30;
-    character.recalculateStats();
-    character._gainSkill(SkillClassNames.Restoration, character.calcSkillXP(1));
+
+    if(!character.stats.mp) {
+      character.stats.mp = 30;
+      character.recalculateStats();
+      character._gainSkill(SkillClassNames.Restoration, character.calcSkillXP(1));
+    }
   }
 
   static gainLevelStats(character: Character) {
