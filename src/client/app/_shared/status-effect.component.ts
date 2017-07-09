@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
     .status-effect {
       position: relative;
       display: flex;
-      justify-content: center;
+      text-align: center;
       
       max-width: 38px;
       max-height: 38px;
@@ -20,6 +20,8 @@ import { Component, Input } from '@angular/core';
       top: 0;
       font-size: 0.8rem;
       font-weight: bold;
+      text-align: center;
+      width: 100%;
     }
   `],
   template: `
