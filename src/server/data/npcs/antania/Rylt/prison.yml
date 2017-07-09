@@ -124,8 +124,8 @@
   sprite: 625
 
   hp:
-    min: 5000
-    max: 7000
+    min: 2500
+    max: 3000
 
   gold:
     min: 500
@@ -167,12 +167,12 @@
     max: 250
 
   hp:
-    min: 3000
-    max: 4000
+    min: 1000
+    max: 1200
 
   giveXp:
     min: 500
-    max: 1000
+    max: 700
 
   rightHand:
     - Rylt Renegade Longsword
@@ -261,8 +261,8 @@
     max: 250
 
   hp:
-    min: 1000
-    max: 2000
+    min: 700
+    max: 900
 
   mp:
     min: 500
@@ -310,7 +310,7 @@
 
   hp:
     min: 1000
-    max: 2000
+    max: 1200
 
   mp:
     min: 500
