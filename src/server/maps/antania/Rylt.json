@@ -2838,6 +2838,14 @@
                  "height":64,
                  "id":547,
                  "name":"",
+                 "properties":
+                    {
+                     "requireHeld":"Rylt Guard Key"
+                    },
+                 "propertytypes":
+                    {
+                     "requireHeld":"string"
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
