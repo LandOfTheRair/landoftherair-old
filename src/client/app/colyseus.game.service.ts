@@ -182,6 +182,8 @@ export class ColyseusGameService {
   }
 
   private logMessage({ name, message, subClass, grouping, dirFrom }: any) {
+    const isZero = includes(message, '[0') && includes(message, 'damage]');
+    if(isZero && JSON.parse(localStorage.getItem('ng2-webstorage|suppresszerodamage'))) return;
     this.clientGameState.addLogMessage({ name, message, subClass, grouping, dirFrom });
   }
 
