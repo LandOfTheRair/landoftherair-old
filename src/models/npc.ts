@@ -23,7 +23,6 @@ export class NPC extends Character {
   parser: any;
   spawner?: any;
   path?: any[];
-  ai?: any;
 
   bankId: string;
   branchId: string;
@@ -57,11 +56,12 @@ export class NPC extends Character {
 
   init() {
     if(!this.uuid) this.uuid = uuid();
+    this.initAI();
     this.recalculateStats();
   }
 
   toJSON() {
-    return omit(super.toJSON(), ['script', 'parser', 'spawner', 'ai', 'path']);
+    return omit(super.toJSON(), ['script', 'parser', 'spawner', '$$ai', 'path']);
   }
 
   receiveMessage(player, message) {
@@ -98,8 +98,8 @@ export class NPC extends Character {
   tick() {
     super.tick();
 
-    if(this.ai) {
-      this.ai.tick(this);
+    if(this.$$ai && this.$$ai.tick) {
+      this.$$ai.tick.dispatch(this);
     }
   }
 

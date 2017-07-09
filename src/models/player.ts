@@ -269,7 +269,7 @@ export class Player extends Character {
   }
 
   addAgro(char: Character, value) {
-    if(!char || (<any>char).ai) return;
+    if(!char || (char.$$ai && char.$$ai.tick)) return;
     super.addAgro(char, value);
   }
 

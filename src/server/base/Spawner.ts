@@ -5,6 +5,7 @@ import { LootTable } from 'lootastic';
 import { sample, random, extend, isNumber, isString, pull, min, every } from 'lodash';
 import { NPC } from '../../models/npc';
 import { Logger } from '../logger';
+import { RandomlyShouts } from '../scripts/npc/common-responses';
 
 export class Spawner {
 
@@ -132,9 +133,6 @@ export class Spawner {
     npcData.y = random(this.y - this.spawnRadius, this.y + this.spawnRadius);
     npcData.map = this.map;
 
-    const ai = sample(this.npcAISettings) || 'default';
-    npcData.ai = require(`../scripts/ai/${ai}`);
-
     if(!npcData.name) {
       npcData.name = this.room.determineNPCName(npcData);
     }
@@ -154,6 +152,14 @@ export class Spawner {
     }
 
     const npc = new NPC(npcData);
+
+    const ai = sample(this.npcAISettings) || 'default';
+    const { tick } = require(`../scripts/ai/${ai}`);
+    if(tick) npc.$$ai.tick.add(tick);
+
+    if(npc.combatMessages) {
+      RandomlyShouts(npc, npc.combatMessages);
+    }
 
     npc.allegiance = npcData.allegiance;
     npc.alignment = npcData.alignment;
