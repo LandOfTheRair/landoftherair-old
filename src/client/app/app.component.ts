@@ -90,6 +90,9 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public autoHideLobby: boolean;
 
+  @LocalStorage()
+  public suppressZeroDamage: boolean;
+
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
   }
