@@ -23,7 +23,15 @@ export class CombatHelper {
   static resolveThrow(attacker, defender, hand, item) {
     if(item.returnsOnThrow) return;
     attacker[`set${capitalize(hand)}Hand`](null);
-    defender.$$room.addItemToGround(defender, item);
+
+    if(item.itemClass === 'Bottle') {
+      defender.sendClientMessageToRadius({
+        message: `You hear the sound of glass shattering!`, subClass: 'combat' }, 5
+      );
+
+    } else {
+      defender.$$room.addItemToGround(defender, item);
+    }
   }
 
   static physicalAttack(attacker: Character, defender: Character, opts: any = {}) {
