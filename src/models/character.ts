@@ -787,7 +787,16 @@ export class Character {
     const pickSlot = () => ({ x: random(x - spread, x + spread), y: random(y - spread, y + spread) });
 
     if(this.gold > 0) {
+      const gold = new Item({
+        name: 'Gold Coin',
+        sprite: 212,
+        value: this.gold,
+        isBeltable: false,
+        desc: 'gold coins'
+      });
 
+      this.$$room.addItemToGround(pickSlot(), gold);
+      this.gold = 0;
     }
 
     Object.keys(this.gear).forEach(gearSlot => {
@@ -799,7 +808,7 @@ export class Character {
       this.unequip(gearSlot);
     });
 
-    for(let i = this.sack.items.length; i > 0; i--) {
+    for(let i = this.sack.items.length; i >= 0; i--) {
       const item = this.sack.takeItemFromSlot(i);
       if(!item) continue;
 
@@ -807,7 +816,7 @@ export class Character {
       this.$$room.addItemToGround(point, item);
     }
 
-    for(let i = this.belt.items.length; i > 0; i--) {
+    for(let i = this.belt.items.length; i >= 0; i--) {
       const item = this.belt.takeItemFromSlot(i);
       if(!item) continue;
 
