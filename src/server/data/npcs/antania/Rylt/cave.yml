@@ -55,7 +55,7 @@
   stats: 20
   skillLevels:
     Wand: 5
-    Conjuration: 5
+    Conjuration: 3
 
   level: 7
 
@@ -133,7 +133,7 @@
 
   skillLevels:
     Wand: 7
-    Conjuration: 10
+    Conjuration: 5
 
   skillOnKill: 50
 
@@ -142,6 +142,10 @@
   hp:
     min: 20000
     max: 22000
+
+  mp:
+    min: 2000
+    max: 2200
 
   gold:
     min: 5000
