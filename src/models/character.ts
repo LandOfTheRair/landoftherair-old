@@ -1,9 +1,13 @@
 
-import { omitBy, merge, find, includes, compact, pull, values, floor, capitalize, startsWith, isUndefined, clone, isString, random } from 'lodash';
-import * as RestrictedNumber from 'restricted-number';
+import {
+  omitBy, merge, find, includes, compact, pull, values, floor,
+  capitalize, startsWith, isUndefined, clone, isString, random
+} from 'lodash';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
 } from './item';
+import * as RestrictedNumber from 'restricted-number';
+import { Signal } from 'signals.js';
 import { MapLayer } from './maplayer';
 import { environment } from '../client/environments/environment';
 
@@ -170,6 +174,8 @@ export class Character {
   $$room: any;
   $$corpseRef: Item;
 
+  $$ai: any;
+
   sprite: number;
 
   alignment: Alignment = 'Neutral';
@@ -189,6 +195,12 @@ export class Character {
 
   getTotalStat(stat) {
     return this.totalStats[stat] || 0;
+  }
+
+  initAI() {
+    this.$$ai = {
+      tick: new Signal()
+    };
   }
 
   initHpMp() {

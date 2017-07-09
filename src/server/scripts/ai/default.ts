@@ -24,11 +24,6 @@ export const tick = (npc: NPC) => {
 
     npc.$$pathDisrupted = true;
 
-    if(npc.combatMessages && random(1, 10) === 1) {
-      const msgObject = { name: npc.name, message: sample(npc.combatMessages), subClass: 'chatter' };
-      npc.sendClientMessageToRadius(msgObject, 5);
-    }
-
     const attemptSkills = sampleSize(npc.usableSkills, 3);
     let chosenSkill = null;
 

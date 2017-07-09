@@ -1,6 +1,6 @@
 
 import { NPC } from '../../../models/npc';
-import { includes, capitalize, sample, get } from 'lodash';
+import { includes, capitalize, sample, get, random } from 'lodash';
 import { Logger } from '../../logger';
 import { AllNormalGearSlots } from '../../../models/character';
 import { Item } from '../../../models/item';
@@ -134,11 +134,13 @@ export const SmithResponses = (npc: NPC) => {
 
 export const RandomlyShouts = (npc: NPC, responses: string[] = []) => {
   let ticks = 0;
+  let nextTick = random(5, 10);
 
-  npc.ai = { tick: () => {
+  npc.$$ai.tick.add(() => {
     ticks++;
 
-    if(ticks >= 5) {
+    if(ticks >= nextTick) {
+      nextTick = random(5, 10);
       ticks = 0;
 
       let response = sample(responses);
@@ -154,7 +156,7 @@ export const RandomlyShouts = (npc: NPC, responses: string[] = []) => {
       const msgObject = { name: npc.name, message: response, subClass: 'chatter' };
       npc.sendClientMessageToRadius(msgObject, 8);
     }
-  }};
+  });
 };
 
 export const CrierResponses = (npc: NPC) => {
