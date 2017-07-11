@@ -27,7 +27,7 @@ export class Effect {
     this.effectTick(char);
 
     this.duration--;
-    if(this.duration <= 0) {
+    if(!this.effectInfo.isPermanent && this.duration <= 0) {
       char.unapplyEffect(this);
       this.effectEnd(char);
     }
