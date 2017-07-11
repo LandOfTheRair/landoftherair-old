@@ -11,6 +11,8 @@ import { Signal } from 'signals.js';
 import { MapLayer } from './maplayer';
 import { environment } from '../client/environments/environment';
 
+import { HideReductionPercents } from '../server/helpers/hide-reductions';
+
 import * as Classes from '../server/classes';
 import { Effect } from '../server/base/Effect';
 import * as Effects from '../server/effects';
@@ -100,6 +102,9 @@ export class Stats {
   accuracy = 0;
   offense = 0;
   defense = 0;
+
+  hideLevel = 0;
+  seeHideLevel = 0;
 
   magicalResist = 0;
   physicalResist = 0;
@@ -337,6 +342,14 @@ export class Character {
 
     if(this.leftHand && this.leftHand.stats && canGetBonusFromItemInHand(this.leftHand))    addStatsForItem(this.leftHand);
     if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
+
+    this.effects.forEach(effect => {
+      if(!effect.effectInfo || !effect.effectInfo.stats) return;
+
+      Object.keys(effect.effectInfo.stats).forEach(stat => {
+        this.totalStats[stat] += effect.effectInfo.stats[stat];
+      });
+    });
 
     this.hp.maximum = Math.max(1, this.getTotalStat('hp'));
     this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
@@ -823,5 +836,26 @@ export class Character {
       const point = pickSlot();
       this.$$room.addItemToGround(point, item);
     }
+  }
+
+  hideLevel(): number {
+
+    const casterThiefSkill = this.calcSkillLevel(SkillClassNames.Thievery);
+    const casterAgi = this.getTotalStat('agi');
+    const casterLevel = this.level;
+    const casterIsThiefMod = this.baseClass === 'Thief' ? 3 : 1;
+
+    const hideLevel = (casterThiefSkill + casterAgi + casterLevel) * casterIsThiefMod;
+
+    const leftHandClass = this.leftHand ? this.leftHand.itemClass : '';
+    const rightHandClass = this.rightHand ? this.rightHand.itemClass : '';
+
+    const reductionPercent = (HideReductionPercents[leftHandClass] || 0) + (HideReductionPercents[rightHandClass] || 0);
+
+    return hideLevel - (hideLevel * reductionPercent / 100);
+  }
+
+  canHide(): boolean {
+    return true;
   }
 }
