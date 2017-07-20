@@ -1,6 +1,9 @@
 # Land of the Rair [![Build Status](https://travis-ci.org/LandOfTheRair/landoftherair.svg?branch=master)](https://travis-ci.org/LandOfTheRair/landoftherair)
 
-A prototype MORPG.
+A prototype MORPG inspired by MUDs of olde.
+
+## Contributor Disclaimer
+While I appreciate contributions, consider that all contributions, significant or otherwise, cannot be compensated for at this time. 
 
 ## Requirements
 
