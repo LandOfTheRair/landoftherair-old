@@ -11,6 +11,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { Ng2DragDropModule } from 'ng2-drag-drop';
 import { ColorPickerModule } from 'ngx-color-picker';
 
 import { AppComponent } from './app.component';
@@ -95,6 +96,7 @@ import { LinkifyPipe } from './_shared/linkify.pipe';
     HttpModule,
 
     ColorPickerModule,
+    Ng2DragDropModule,
     Ng2Webstorage.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
