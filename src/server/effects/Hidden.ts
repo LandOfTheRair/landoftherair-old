@@ -30,8 +30,9 @@ export class Hidden extends SpellEffect {
   }
 
   effectTick(char: Character) {
-    // todo check if char is still in valid hide conditions
+    if(char.canHide()) return;
 
+    char.unapplyEffect(this);
   }
 
   effectEnd(char: Character) {

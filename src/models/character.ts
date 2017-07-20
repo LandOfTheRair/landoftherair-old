@@ -839,7 +839,6 @@ export class Character {
   }
 
   hideLevel(): number {
-
     const casterThiefSkill = this.calcSkillLevel(SkillClassNames.Thievery);
     const casterAgi = this.getTotalStat('agi');
     const casterLevel = this.level;
