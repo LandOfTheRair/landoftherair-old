@@ -129,6 +129,8 @@ export class AppComponent implements OnInit {
     if(isNull(this.showEquipment))     this.showEquipment = true;
     if(isNull(this.showCommandLine))   this.showCommandLine = true;
 
+    if(isNull(this.autoHideLobby))     this.autoHideLobby = true;
+
     this.theme = 'Light';
   }
 
