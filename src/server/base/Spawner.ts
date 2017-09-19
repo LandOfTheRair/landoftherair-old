@@ -47,6 +47,8 @@ export class Spawner {
   shouldStrip = false;
   stripRadius = 0;
   stripOnSpawner = true;
+  stripX: number;
+  stripY: number;
 
   $$slowTicks = 0;
 
@@ -169,6 +171,8 @@ export class Spawner {
     npc.$$shouldStrip = this.shouldStrip;
     npc.$$stripRadius = this.stripRadius;
     npc.$$stripOnSpawner = this.stripOnSpawner;
+    npc.$$stripX = this.stripX;
+    npc.$$stripY = this.stripY;
 
     npc.sendSpawnMessage();
 
