@@ -95,7 +95,8 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
     }
   `],
   template: `    
-    <div class="item-container" [ngClass]="[size]"
+    <div class="item-container" 
+         [ngClass]="[size]"
          [isDisabled]="!showDesc" 
          triggers="dblclick:mouseleave" 
          [dragScope]="scopes"
