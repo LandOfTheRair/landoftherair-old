@@ -52,6 +52,7 @@
   hostility: Always
   sprite: 545
   alignment: Evil
+  baseClass: Mage
   stats: 20
   skillLevels:
     Wand: 5
@@ -122,6 +123,7 @@
   name: Saraxa
   hostility: Always
   alignment: Evil
+  baseClass: Mage
   stats:
     int: 15
     dex: 10
@@ -189,6 +191,7 @@
   name: Rocky
   hostility: Always
   alignment: Evil
+  baseClass: Warrior
   sprite: 75
   stats: 15
   skillLevels:
