@@ -61,6 +61,7 @@
   allegiance: 'None'
   stats: 30
   level: 20
+  baseClass: Warrior
 
   skillLevels:
     twohanded: 10
