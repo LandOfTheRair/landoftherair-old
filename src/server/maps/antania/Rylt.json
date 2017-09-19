@@ -4998,7 +4998,9 @@
                      "randomWalkRadius":20,
                      "respawnRate":3600,
                      "script":"global\/lair",
-                     "stripRadius":1
+                     "stripRadius":1,
+                     "stripX":135,
+                     "stripY":87
                     },
                  "propertytypes":
                     {
@@ -5006,7 +5008,9 @@
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
                      "script":"string",
-                     "stripRadius":"int"
+                     "stripRadius":"int",
+                     "stripX":"int",
+                     "stripY":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -5053,14 +5057,18 @@
                      "lairName":"Tonwin",
                      "randomWalkRadius":15,
                      "script":"global\/lair",
-                     "stripRadius":1
+                     "stripRadius":0,
+                     "stripX":18,
+                     "stripY":36
                     },
                  "propertytypes":
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "script":"string",
-                     "stripRadius":"int"
+                     "stripRadius":"int",
+                     "stripX":"int",
+                     "stripY":"int"
                     },
                  "rotation":0,
                  "type":"",
