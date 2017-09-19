@@ -8,9 +8,9 @@ const rollbarToken = process.env.ROLLBAR_TOKEN;
 if(rollbarToken) {
   rollbar = new Rollbar({
     accessToken: rollbarToken,
-    handleUncaughtExceptions: true,
-    handleUnhandledRejections: true
-  })
+    captureUncaught: true,
+    captureUnhandledRejections: true
+  });
 }
 
 export class Logger {
