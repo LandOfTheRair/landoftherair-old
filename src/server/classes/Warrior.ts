@@ -3,7 +3,8 @@ import { BaseClass } from '../base/BaseClass';
 import { Character } from '../../models/character';
 
 export class Warrior extends BaseClass {
-  static combatDivisor = 3;
+  static combatDamageMultiplier = 1.5;
+  static combatLevelDivisor = 3;
   static willDivisor = 4;
 
   static becomeClass(character: Character) {

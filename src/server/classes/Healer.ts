@@ -3,7 +3,8 @@ import { BaseClass } from '../base/BaseClass';
 import { Character, SkillClassNames } from '../../models/character';
 
 export class Healer extends BaseClass {
-  static combatDivisor = 5;
+  static combatDamageMultiplier = 1;
+  static combatLevelDivisor = 5;
   static willDivisor = 3;
 
   static becomeClass(character: Character) {

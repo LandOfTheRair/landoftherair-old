@@ -3,7 +3,8 @@ import { BaseClass } from '../base/BaseClass';
 import { Character, SkillClassNames } from '../../models/character';
 
 export class Mage extends BaseClass {
-  static combatDivisor = 6;
+  static combatDamageMultiplier = 0.85;
+  static combatLevelDivisor = 5;
   static willDivisor = 3;
 
   static becomeClass(character: Character) {

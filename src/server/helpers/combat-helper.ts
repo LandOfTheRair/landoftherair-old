@@ -94,8 +94,8 @@ export class CombatHelper {
       dex: attacker.getTotalStat('dex'),
       str: attacker.getTotalStat('str'),
       str4: Math.floor(attacker.getTotalStat('str') / 4),
-      divisor: Classes[attacker.baseClass || 'Undecided'].combatDivisor,
-      level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatDivisor),
+      multiplier: Classes[attacker.baseClass || 'Undecided'].combatDamageMultiplier,
+      level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatLevelDivisor),
       damageMin: attackerWeapon.minDamage,
       damageMax: attackerWeapon.maxDamage,
       damageBase: attackerWeapon.baseDamage
@@ -110,7 +110,7 @@ export class CombatHelper {
       armorClass: defender.getTotalStat('armorClass'),
       shieldAC: defenderShield ? defenderShield.stats.armorClass : 0,
       shieldDefense: defenderShield ? defenderShield.stats.defense || 0 : 0,
-      level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatDivisor)
+      level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor)
     };
 
     attackerWeapon.loseCondition(1, () => attacker.recalculateStats());
@@ -190,7 +190,7 @@ export class CombatHelper {
     const damageMax = random(attackerScope.damageMin, attackerScope.damageMax);
     const damageRight = Math.floor(attackerScope.str + attackerScope.level + damageMax);
 
-    let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}`) / attackerScope.divisor) + attackerScope.damageBase;
+    let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}`) * attackerScope.multiplier) + attackerScope.damageBase;
 
     let damageType = 'was a successful strike';
 
