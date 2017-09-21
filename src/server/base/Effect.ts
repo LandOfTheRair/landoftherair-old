@@ -8,6 +8,11 @@ export const Maxes = {
   Minor: 15
 };
 
+class EffectInfo {
+  damage?: number;
+  caster: string;
+}
+
 export class Effect {
 
   name = '';
@@ -16,7 +21,7 @@ export class Effect {
   potency = 0;
   stats = {};
 
-  effectInfo: any = {};
+  effectInfo: EffectInfo = { caster: '' };
 
   constructor(opts) {
     extend(this, opts);

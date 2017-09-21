@@ -47,7 +47,11 @@ const HealingMagic = [
   'Unpracticed',
   'Mender of Wounds',
   'Inflictor of Wounds',
-  'Seer of Truth'
+  'Seer of Truth',
+  'Cleanser of Veins',
+  'Poisoner of Veins',
+  'Protector from Necrosis',
+  'Restorer of Life'
 ];
 
 const ElementalMagic = [
