@@ -709,6 +709,10 @@ export class Character {
     });
   }
 
+  isPlayer() {
+    return false;
+  }
+
   tick() {
     if(this.isDead()) {
       if(this.$$corpseRef && this.$$corpseRef.$heldBy) {

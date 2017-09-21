@@ -113,6 +113,10 @@ export class Player extends Character {
     }
   }
 
+  isPlayer() {
+    return true;
+  }
+
   die(killer) {
     super.die(killer);
 
