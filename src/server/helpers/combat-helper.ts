@@ -296,7 +296,7 @@ export class CombatHelper {
     { damage, damageClass, attackerDamageMessage, defenderDamageMessage }
   ) {
 
-    if(defender.isDead()) return;
+    if(defender.isDead() || (<any>defender).hostility === 'Never') return;
 
     const isHeal = damage < 0;
 

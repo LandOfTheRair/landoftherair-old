@@ -607,6 +607,7 @@ export class GameWorld extends Room<GameState> {
 
     target.$$corpseRef = corpse;
     (<any>corpse).npcUUID = target.uuid;
+    corpse.$$isPlayerCorpse = target.isPlayer();
   }
 
   dropCorpseItems(corpse: Item, searcher?: Player) {
