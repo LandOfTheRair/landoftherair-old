@@ -21,6 +21,7 @@ export const TannerResponses = (npc: NPC) => {
       if(!ground.Corpse || !ground.Corpse.length) return 'There are no corpses here!';
 
       ground.Corpse.forEach(corpse => {
+        if(corpse.$$isPlayerCorpse) return;
         const corpseNPC = npc.$$room.state.findNPC(corpse.npcUUID);
         if(corpseNPC) corpseNPC.restore();
         else          npc.$$room.removeItemFromGround(corpse);

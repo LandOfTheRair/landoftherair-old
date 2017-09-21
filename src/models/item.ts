@@ -133,7 +133,8 @@ export class Item {
   x: number;
   y: number;
 
-  $heldBy;
+  $heldBy: any;
+  $$isPlayerCorpse: boolean;
 
   effect: any;
 
