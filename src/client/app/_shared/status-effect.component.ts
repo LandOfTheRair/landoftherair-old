@@ -22,6 +22,8 @@ import { Component, Input } from '@angular/core';
       font-weight: bold;
       text-align: center;
       width: 100%;
+      z-index: 20;
+      text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;  
     }
   `],
   template: `
@@ -29,6 +31,7 @@ import { Component, Input } from '@angular/core';
         <div class="status-remaining">{{ effect.duration }}</div>
         <app-icon bgColor="transparent"
                   [fgColor]="effect.iconData.color"
+                  [bgColor]="effect.iconData.bgColor"
                   [name]="effect.iconData.name"
                   size="small"
                   container="body"
