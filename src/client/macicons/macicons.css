@@ -52,11 +52,11 @@
 }
 
 .macicons-acorn::before {
-    content: "\ea03";
+    content: "\ea04";
 }
 
 .macicons-ages::before {
-    content: "\ea04";
+    content: "\ea03";
 }
 
 .macicons-air-zigzag::before {
@@ -92,15 +92,15 @@
 }
 
 .macicons-angry-eyes::before {
-    content: "\ea0d";
+    content: "\ea0f";
 }
 
 .macicons-ankh::before {
-    content: "\ea0e";
+    content: "\ea0d";
 }
 
 .macicons-anvil-impact::before {
-    content: "\ea0f";
+    content: "\ea0e";
 }
 
 .macicons-anvil::before {
@@ -116,15 +116,15 @@
 }
 
 .macicons-armor-vest::before {
-    content: "\ea14";
+    content: "\ea15";
 }
 
 .macicons-arrow-cluster::before {
-    content: "\ea13";
+    content: "\ea14";
 }
 
 .macicons-arrow-flights::before {
-    content: "\ea15";
+    content: "\ea13";
 }
 
 .macicons-arrow-scope::before {
@@ -152,11 +152,11 @@
 }
 
 .macicons-astronaut-helmet::before {
-    content: "\ea1d";
+    content: "\ea1c";
 }
 
 .macicons-at-sea::before {
-    content: "\ea1c";
+    content: "\ea1d";
 }
 
 .macicons-atlas::before {
@@ -192,11 +192,11 @@
 }
 
 .macicons-axe-swing::before {
-    content: "\ea27";
+    content: "\ea26";
 }
 
 .macicons-back-forth::before {
-    content: "\ea26";
+    content: "\ea27";
 }
 
 .macicons-back-pain::before {
@@ -208,15 +208,15 @@
 }
 
 .macicons-backup::before {
-    content: "\ea2c";
-}
-
-.macicons-ball-glow::before {
     content: "\ea2a";
 }
 
-.macicons-ballista::before {
+.macicons-ball-glow::before {
     content: "\ea2b";
+}
+
+.macicons-ballista::before {
+    content: "\ea2c";
 }
 
 .macicons-bandage-roll::before {
@@ -372,11 +372,11 @@
 }
 
 .macicons-bleeding-eye::before {
-    content: "\ea53";
+    content: "\ea54";
 }
 
 .macicons-bleeding-heart::before {
-    content: "\ea54";
+    content: "\ea53";
 }
 
 .macicons-bleeding-wound::before {
@@ -404,27 +404,27 @@
 }
 
 .macicons-bolas::before {
-    content: "\ea5b";
-}
-
-.macicons-bolt-eye::before {
-    content: "\ea5c";
-}
-
-.macicons-bolt-shield::before {
-    content: "\ea5d";
-}
-
-.macicons-bolt-spell-cast::before {
     content: "\ea5e";
 }
 
+.macicons-bolt-eye::before {
+    content: "\ea5b";
+}
+
+.macicons-bolt-shield::before {
+    content: "\ea5c";
+}
+
+.macicons-bolt-spell-cast::before {
+    content: "\ea5d";
+}
+
 .macicons-bone-knife::before {
-    content: "\ea5f";
+    content: "\ea60";
 }
 
 .macicons-book-aura::before {
-    content: "\ea60";
+    content: "\ea5f";
 }
 
 .macicons-book-cover-2::before {
@@ -448,11 +448,11 @@
 }
 
 .macicons-boomerang::before {
-    content: "\ea67";
+    content: "\ea66";
 }
 
 .macicons-bordered-shield::before {
-    content: "\ea66";
+    content: "\ea67";
 }
 
 .macicons-boss-key::before {
@@ -592,19 +592,19 @@
 }
 
 .macicons-burning-meteor::before {
-    content: "\ea8a";
-}
-
-.macicons-burning-passion::before {
     content: "\ea8b";
 }
 
+.macicons-burning-passion::before {
+    content: "\ea8a";
+}
+
 .macicons-burning-round-shot::before {
-    content: "\ea8c";
+    content: "\ea8d";
 }
 
 .macicons-burning-skull::before {
-    content: "\ea8d";
+    content: "\ea8c";
 }
 
 .macicons-burning-tree::before {
@@ -660,11 +660,11 @@
 }
 
 .macicons-cauldron-2::before {
-    content: "\ea9c";
+    content: "\ea9b";
 }
 
 .macicons-cauldron::before {
-    content: "\ea9b";
+    content: "\ea9c";
 }
 
 .macicons-celebration-fire::before {
@@ -788,11 +788,11 @@
 }
 
 .macicons-cross-mark::before {
-    content: "\eabc";
+    content: "\eabb";
 }
 
 .macicons-cross-shield::before {
-    content: "\eabb";
+    content: "\eabc";
 }
 
 .macicons-crossbow::before {
@@ -848,7 +848,7 @@
 }
 
 .macicons-crystal-growth::before {
-    content: "\eacc";
+    content: "\eaca";
 }
 
 .macicons-crystal-shine::before {
@@ -856,7 +856,7 @@
 }
 
 .macicons-crystal-wand::before {
-    content: "\eaca";
+    content: "\eacc";
 }
 
 .macicons-crystalize::before {
@@ -900,11 +900,11 @@
 }
 
 .macicons-dark-squad::before {
-    content: "\ead8";
+    content: "\ead7";
 }
 
 .macicons-dart::before {
-    content: "\ead7";
+    content: "\ead8";
 }
 
 .macicons-dead-eye::before {
@@ -980,11 +980,11 @@
 }
 
 .macicons-double-shot::before {
-    content: "\eaec";
+    content: "\eaeb";
 }
 
 .macicons-dove::before {
-    content: "\eaeb";
+    content: "\eaec";
 }
 
 .macicons-dragon-breath::before {
@@ -1008,11 +1008,11 @@
 }
 
 .macicons-dripping-goo::before {
-    content: "\eaf2";
+    content: "\eaf3";
 }
 
 .macicons-dripping-knife::before {
-    content: "\eaf3";
+    content: "\eaf2";
 }
 
 .macicons-dripping-sword::before {
@@ -1056,11 +1056,11 @@
 }
 
 .macicons-earth-spit::before {
-    content: "\eaff";
+    content: "\eafe";
 }
 
 .macicons-echo-ripples::before {
-    content: "\eafe";
+    content: "\eaff";
 }
 
 .macicons-eclipse-flare::before {
@@ -1068,11 +1068,11 @@
 }
 
 .macicons-eclipse::before {
-    content: "\eb02";
+    content: "\eb01";
 }
 
 .macicons-edged-shield::before {
-    content: "\eb01";
+    content: "\eb02";
 }
 
 .macicons-egg-defense::before {
@@ -1200,11 +1200,11 @@
 }
 
 .macicons-falling-ovoid::before {
-    content: "\eb22";
+    content: "\eb23";
 }
 
 .macicons-falling-rocks::before {
-    content: "\eb23";
+    content: "\eb22";
 }
 
 .macicons-fangs::before {
@@ -1216,15 +1216,15 @@
 }
 
 .macicons-fire-bomb::before {
-    content: "\eb26";
+    content: "\eb27";
 }
 
 .macicons-fire-bottle::before {
-    content: "\eb28";
+    content: "\eb26";
 }
 
 .macicons-fire-bowl::before {
-    content: "\eb27";
+    content: "\eb28";
 }
 
 .macicons-fire-breath::before {
@@ -1312,15 +1312,15 @@
 }
 
 .macicons-flaming-sheet::before {
-    content: "\eb40";
-}
-
-.macicons-flaming-trident::before {
     content: "\eb3e";
 }
 
-.macicons-flanged-mace::before {
+.macicons-flaming-trident::before {
     content: "\eb3f";
+}
+
+.macicons-flanged-mace::before {
+    content: "\eb40";
 }
 
 .macicons-flat-hammer::before {
@@ -1392,11 +1392,11 @@
 }
 
 .macicons-ghost-ally::before {
-    content: "\eb53";
+    content: "\eb52";
 }
 
 .macicons-ghost::before {
-    content: "\eb52";
+    content: "\eb53";
 }
 
 .macicons-gift-of-knowledge::before {
@@ -1420,11 +1420,11 @@
 }
 
 .macicons-goo-explosion::before {
-    content: "\eb5a";
+    content: "\eb59";
 }
 
 .macicons-goo-spurt::before {
-    content: "\eb59";
+    content: "\eb5a";
 }
 
 .macicons-gooey-eyed-sun::before {
@@ -1580,15 +1580,15 @@
 }
 
 .macicons-ice-bomb::before {
-    content: "\eb82";
+    content: "\eb81";
 }
 
 .macicons-ice-golem::before {
-    content: "\eb83";
+    content: "\eb82";
 }
 
 .macicons-ice-shield::before {
-    content: "\eb81";
+    content: "\eb85";
 }
 
 .macicons-ice-spear::before {
@@ -1596,7 +1596,7 @@
 }
 
 .macicons-ice-spell-cast::before {
-    content: "\eb85";
+    content: "\eb83";
 }
 
 .macicons-icicles-fence::before {
@@ -1620,11 +1620,11 @@
 }
 
 .macicons-incense::before {
-    content: "\eb8b";
+    content: "\eb8c";
 }
 
 .macicons-incoming-rocket::before {
-    content: "\eb8c";
+    content: "\eb8b";
 }
 
 .macicons-infested-mass::before {
@@ -1656,19 +1656,19 @@
 }
 
 .macicons-ion-cannon-blast::before {
-    content: "\eb95";
-}
-
-.macicons-iron-cross::before {
     content: "\eb94";
 }
 
+.macicons-iron-cross::before {
+    content: "\eb95";
+}
+
 .macicons-jeweled-chalice::before {
-    content: "\eb97";
+    content: "\eb96";
 }
 
 .macicons-journey::before {
-    content: "\eb96";
+    content: "\eb97";
 }
 
 .macicons-juggler::before {
@@ -1712,19 +1712,19 @@
 }
 
 .macicons-knockout::before {
-    content: "\eba3";
+    content: "\eba2";
 }
 
 .macicons-kusarigama::before {
-    content: "\eba4";
+    content: "\eba3";
 }
 
 .macicons-ladder::before {
-    content: "\eba5";
+    content: "\eba4";
 }
 
 .macicons-lamellar::before {
-    content: "\eba2";
+    content: "\eba5";
 }
 
 .macicons-lantern-flame::before {
@@ -1764,11 +1764,11 @@
 }
 
 .macicons-leg-armor::before {
-    content: "\ebaf";
+    content: "\ebb0";
 }
 
 .macicons-letter-bomb::before {
-    content: "\ebb0";
+    content: "\ebaf";
 }
 
 .macicons-lift::before {
@@ -1776,11 +1776,11 @@
 }
 
 .macicons-light-sabers::before {
-    content: "\ebb3";
+    content: "\ebb2";
 }
 
 .macicons-light-thorny-triskelion::before {
-    content: "\ebb2";
+    content: "\ebb3";
 }
 
 .macicons-lightning-arc::before {
@@ -1860,11 +1860,11 @@
 }
 
 .macicons-logging::before {
-    content: "\ebc8";
+    content: "\ebc7";
 }
 
 .macicons-look-at::before {
-    content: "\ebc7";
+    content: "\ebc8";
 }
 
 .macicons-lotus-flower::before {
@@ -1996,11 +1996,11 @@
 }
 
 .macicons-missile-swarm::before {
-    content: "\ebea";
+    content: "\ebe9";
 }
 
 .macicons-moebius-star::before {
-    content: "\ebe9";
+    content: "\ebea";
 }
 
 .macicons-molecule::before {
@@ -2060,19 +2060,19 @@
 }
 
 .macicons-overdrive::before {
-    content: "\ebfb";
-}
-
-.macicons-owl::before {
-    content: "\ebfa";
-}
-
-.macicons-padlock::before {
     content: "\ebf9";
 }
 
-.macicons-person::before {
+.macicons-owl::before {
+    content: "\ebfb";
+}
+
+.macicons-padlock::before {
     content: "\ebfc";
+}
+
+.macicons-person::before {
+    content: "\ebfa";
 }
 
 .macicons-pierced-body::before {
@@ -2096,27 +2096,27 @@
 }
 
 .macicons-pocket-bow::before {
-    content: "\ec02";
-}
-
-.macicons-pointing::before {
-    content: "\ec04";
-}
-
-.macicons-pointy-hat::before {
-    content: "\ec05";
-}
-
-.macicons-pointy-sword::before {
     content: "\ec03";
 }
 
+.macicons-pointing::before {
+    content: "\ec02";
+}
+
+.macicons-pointy-hat::before {
+    content: "\ec04";
+}
+
+.macicons-pointy-sword::before {
+    content: "\ec05";
+}
+
 .macicons-poison-bottle::before {
-    content: "\ec06";
+    content: "\ec07";
 }
 
 .macicons-poison-gas::before {
-    content: "\ec07";
+    content: "\ec06";
 }
 
 .macicons-portal::before {
@@ -2148,11 +2148,11 @@
 }
 
 .macicons-profit::before {
-    content: "\ec10";
+    content: "\ec0f";
 }
 
 .macicons-psychic-waves::before {
-    content: "\ec0f";
+    content: "\ec10";
 }
 
 .macicons-pulse::before {
@@ -2232,19 +2232,19 @@
 }
 
 .macicons-rose::before {
-    content: "\ec24";
-}
-
-.macicons-rune-sword::before {
     content: "\ec25";
 }
 
+.macicons-rune-sword::before {
+    content: "\ec24";
+}
+
 .macicons-running-ninja::before {
-    content: "\ec26";
+    content: "\ec27";
 }
 
 .macicons-saber-slash::before {
-    content: "\ec27";
+    content: "\ec26";
 }
 
 .macicons-sabers-choc::before {
@@ -2288,11 +2288,11 @@
 }
 
 .macicons-shard-sword::before {
-    content: "\ec33";
+    content: "\ec32";
 }
 
 .macicons-sharp-axe::before {
-    content: "\ec32";
+    content: "\ec33";
 }
 
 .macicons-sharp-halberd::before {
@@ -2340,11 +2340,11 @@
 }
 
 .macicons-skull-shield::before {
-    content: "\ec40";
+    content: "\ec3f";
 }
 
 .macicons-skull-staff::before {
-    content: "\ec3f";
+    content: "\ec40";
 }
 
 .macicons-slap::before {
@@ -2448,11 +2448,11 @@
 }
 
 .macicons-star-sattelites::before {
-    content: "\ec5b";
+    content: "\ec5a";
 }
 
 .macicons-star-swirl::before {
-    content: "\ec5a";
+    content: "\ec5b";
 }
 
 .macicons-stars-stack::before {
@@ -2508,11 +2508,11 @@
 }
 
 .macicons-striking-splinter::before {
-    content: "\ec6a";
+    content: "\ec69";
 }
 
 .macicons-striped-sword::before {
-    content: "\ec69";
+    content: "\ec6a";
 }
 
 .macicons-strong::before {
@@ -2544,19 +2544,19 @@
 }
 
 .macicons-surrounded-shield::before {
-    content: "\ec74";
-}
-
-.macicons-suspicious::before {
     content: "\ec72";
 }
 
+.macicons-suspicious::before {
+    content: "\ec74";
+}
+
 .macicons-swap-bag::before {
-    content: "\ec73";
+    content: "\ec75";
 }
 
 .macicons-swirl-ring::before {
-    content: "\ec75";
+    content: "\ec73";
 }
 
 .macicons-swirl-string::before {
@@ -2692,11 +2692,11 @@
 }
 
 .macicons-turd::before {
-    content: "\ec97";
+    content: "\ec98";
 }
 
 .macicons-twister::before {
-    content: "\ec98";
+    content: "\ec97";
 }
 
 .macicons-two-shadows::before {
@@ -2712,19 +2712,19 @@
 }
 
 .macicons-unfriendly-fire::before {
-    content: "\ec9d";
-}
-
-.macicons-unlocking::before {
     content: "\ec9c";
 }
 
+.macicons-unlocking::before {
+    content: "\ec9d";
+}
+
 .macicons-unstable-orb::before {
-    content: "\ec9f";
+    content: "\ec9e";
 }
 
 .macicons-unstable-projectile::before {
-    content: "\ec9e";
+    content: "\ec9f";
 }
 
 .macicons-usable::before {
@@ -2776,11 +2776,11 @@
 }
 
 .macicons-wing-cloak::before {
-    content: "\ecac";
+    content: "\ecad";
 }
 
 .macicons-winged-arrow::before {
-    content: "\ecad";
+    content: "\ecac";
 }
 
 .macicons-winged-sword::before {

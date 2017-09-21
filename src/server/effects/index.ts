@@ -21,3 +21,5 @@ export * from './Afflict';
 export * from './MagicMissile';
 
 export * from './Poison';
+
+export * from './BarNecro';

@@ -46,21 +46,21 @@
             "requiresLearn": false
         },
         {
-            "name": "Drink",
-            "macro": "~drink",
-            "icon": "potion-ball",
-            "color": "#2020B2",
-            "mode": "autoActivate",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Clear Buffer",
             "macro": "~clear",
             "icon": "ultrasound",
             "color": "#000000",
             "mode": "autoActivate",
             "key": "ESCAPE",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Drink",
+            "macro": "~drink",
+            "icon": "potion-ball",
+            "color": "#2020B2",
+            "mode": "autoActivate",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -119,10 +119,46 @@
             "requiresLearn": true
         },
         {
+            "name": "Antidote",
+            "macro": "antidote",
+            "icon": "miracle-medecine",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarNecro",
+            "macro": "barnecro",
+            "icon": "rosa-shield",
+            "color": "#1b390e",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Cure",
             "macro": "cure",
             "icon": "tentacle-heart",
             "color": "#080",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Poison",
+            "macro": "poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "TrueSight",
+            "macro": "truesight",
+            "icon": "all-seeing-eye",
+            "color": "#00a",
             "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
@@ -142,15 +178,6 @@
             "icon": "missile-swarm",
             "color": "#0059bd",
             "mode": "lockActivation",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "TrueSight",
-            "macro": "truesight",
-            "icon": "all-seeing-eye",
-            "color": "#00a",
-            "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
         }
