@@ -77,10 +77,13 @@ export class CombatHelper {
     if(!defenderArmor && defender.gear.Robe1 && defender.gear.Robe1.hasCondition()) defenderArmor = defender.gear.Robe1;
     if(!defenderArmor && defender.gear.Armor && defender.gear.Armor.hasCondition()) defenderArmor = defender.gear.Armor;
 
-    if(!defenderArmor) defenderArmor = { hasCondition: () => true, isOwnedBy: (x) => true, loseCondition: (x, y) => {} };
+    if(!defenderArmor) defenderArmor = { hasCondition: () => true,
+                                         isOwnedBy: (x) => true,
+                                         loseCondition: (x, y) => {},
+                                         conditionACModifier: () => 0 };
 
     const defenderBlocker = defender.rightHand
-                        || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands',
+                        || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands', conditionACModifier: () => 0,
                              hasCondition: () => true, isOwnedBy: (x) => true, loseCondition: (x, y) => {} };
 
     const defenderShield = defender.leftHand && this.isShield(defender.leftHand)
@@ -101,13 +104,15 @@ export class CombatHelper {
       damageBase: attackerWeapon.baseDamage
     };
 
+    const defenderACBoost = defenderArmor.conditionACModifier() + (defenderShield ? defenderShield.conditionACModifier() : 0);
+
     const defenderScope = {
       skill: defender.calcSkillLevel(defenderBlocker.type),
       defense: defender.getTotalStat('defense'),
       agi: defender.getTotalStat('agi'),
       dex: defender.getTotalStat('dex'),
       dex4: Math.floor(defender.getTotalStat('dex') / 4),
-      armorClass: defender.getTotalStat('armorClass'),
+      armorClass: defender.getTotalStat('armorClass') + defenderACBoost,
       shieldAC: defenderShield ? defenderShield.stats.armorClass : 0,
       shieldDefense: defenderShield ? defenderShield.stats.defense || 0 : 0,
       level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor)
