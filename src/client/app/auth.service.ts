@@ -107,11 +107,17 @@ export class AuthService {
     this.refreshSubscription = source.subscribe(() => {
       this.renewToken();
       this.scheduleRenewal();
+      this.cleanUpIframes();
     });
   }
 
   public unscheduleRenewal() {
     if(!this.refreshSubscription) return;
     this.refreshSubscription.unsubscribe();
+  }
+
+  private cleanUpIframes() {
+    const elements = document.getElementsByTagName('iframe');
+    while (elements[0]) elements[0].parentNode.removeChild(elements[0]);
   }
 }
