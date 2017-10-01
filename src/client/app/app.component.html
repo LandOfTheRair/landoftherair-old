@@ -68,6 +68,12 @@
   </div>
 </nav>
 
+<div *ngIf="!colyseus.isConnected" class="m-5 d-flex justify-content-center align-content-center h-100">
+  <div class="alert alert-warning">
+    The game client could not connect to the server. The game may be down for maintenance.
+  </div>
+</div>
+
 <div class="window lobby game-window"
      appDraggableWindow="true"
      [windowHandle]="lobbyDrag"
