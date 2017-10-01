@@ -96,7 +96,7 @@ import { LinkifyPipe } from './_shared/linkify.pipe';
     HttpModule,
 
     ColorPickerModule,
-    Ng2DragDropModule,
+    Ng2DragDropModule.forRoot(),
     Ng2Webstorage.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
