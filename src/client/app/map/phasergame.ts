@@ -44,6 +44,8 @@ export class Game {
   private canCreateBool: boolean;
   private canUpdateBool: boolean;
 
+  private blockUpdates: boolean;
+
   public get shouldRender() {
     if(!this.g || !this.g.camera || !this.playerSprite) return false;
 
@@ -56,9 +58,17 @@ export class Game {
 
   constructor(private clientGameState: ClientGameState, public colyseus, private player: Player) {
     this.initPromises();
+
+    // reset any time inGame is set to true
+    this.colyseus.game.inGame$.subscribe(inGame => {
+      if(!inGame) return;
+      this.reset();
+    });
   }
 
   public reset() {
+    this.blockUpdates = true;
+
     if(this.itemsOnGround) {
       this.itemsOnGround.destroy();
     }
@@ -442,6 +452,7 @@ export class Game {
   }
 
   create() {
+    this.blockUpdates = false;
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 
     const decorFirstGid = this.map.tilesets[2].firstgid;
@@ -474,7 +485,7 @@ export class Game {
   }
 
   update() {
-    if(!this.player || !this.colyseus.game._inGame) return;
+    if(!this.player || !this.colyseus.game._inGame || this.blockUpdates) return;
 
     // center on player mid
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
