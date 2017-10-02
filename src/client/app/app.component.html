@@ -80,7 +80,7 @@
      defaultX="576"
      defaultY="55"
      [class.minimized]="minimized['lobby']"
-     [class.hidden]="!loggedIn || !colyseus.username || (inGame && autoHideLobby)">
+     [class.hidden]="!loggedIn || !colyseus.username || !colyseus.isConnected || (inGame && autoHideLobby)">
   <div class="window-header text-center" #lobbyDrag>
     Lobby Chat ({{ colyseus.lobby.lobbyState.accounts.length }} Online)
     <app-minimize-button (click)="minimize('lobby')"></app-minimize-button>
@@ -96,7 +96,7 @@
      windowName="chararacterSelect"
      defaultX="0"
      defaultY="55"
-     [class.hidden]="!loggedIn || inGame || !colyseus.username">
+     [class.hidden]="!loggedIn || inGame || !colyseus.username || !colyseus.isConnected">
   <div class="window-header text-center" #characterSelectDrag>Character Select</div>
   <div class="window-body">
     <app-character-select></app-character-select>
