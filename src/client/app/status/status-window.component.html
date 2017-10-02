@@ -14,15 +14,17 @@
   <div class="col-4 p-0">
     <div class="row m-0">
       <div class="col-6 p-0">
-        <div class="btn btn-outline-danger no-border-radius" disabled tooltip="HP">{{ colyseusGame.character.hp.__current }}/{{ colyseusGame.character.hp.maximum }}</div>
+        <div class="btn btn-outline-danger no-border-radius px-0" disabled tooltip="HP">
+          {{ colyseusGame.character.hp.__current }}/{{ colyseusGame.character.hp.maximum }}
+        </div>
       </div>
       <div class="col-6 p-0">
-        <div class="btn btn-outline-primary no-border-radius" disabled tooltip="MP">{{ colyseusGame.character.mp.__current }}/{{ colyseusGame.character.mp.maximum }}</div>
+        <div class="btn btn-outline-primary no-border-radius px-0" disabled tooltip="MP">{{ colyseusGame.character.mp.__current }}/{{ colyseusGame.character.mp.maximum }}</div>
       </div>
     </div>
     <div class="row m-0">
       <div class="col-12 p-0">
-        <div class="btn btn-outline-success no-border-radius" disabled [tooltip]="'EXP: Level ' + colyseusGame.character.level">{{ colyseusGame.character.exp | number }}</div>
+        <div class="btn btn-outline-success no-border-radius px-0" disabled [tooltip]="'EXP: Level ' + colyseusGame.character.level">{{ colyseusGame.character.exp | number }}</div>
       </div>
     </div>
   </div>
