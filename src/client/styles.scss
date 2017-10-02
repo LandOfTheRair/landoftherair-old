@@ -1,4 +1,29 @@
 
+// FONT SPECIFIC ADJUSTMENTS
+@font-face {
+  font-family: 'Fantasy';
+  src: url('assets/fonts/dumbledor.ttf');
+}
+
+@font-face {
+  font-family: 'FantasyWide';
+  src: url('assets/fonts/dumbledor-wide.ttf');
+}
+
+*:not(.macicons) {
+  font-family: 'Fantasy', cursive !important;
+}
+
+.window-header {
+  font-family: 'FantasyWide', cursive !important;
+  font-weight: bold;
+
+  & > * {
+    font-family: 'FantasyWide', cursive !important;
+  }
+}
+// END FONT SPECIFIC ADJUSTMENTS
+
 .color-picker {
   left: 15px !important;
 }
