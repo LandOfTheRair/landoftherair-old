@@ -42,7 +42,7 @@ export class Poison extends Skill {
 
   use(user: Character, target: Character, baseEffect = {}) {
     const effect = new CastEffect(baseEffect);
-    effect.cast(user, target);
+    effect.cast(user, target, this);
   }
 
 }
