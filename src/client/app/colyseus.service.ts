@@ -4,7 +4,7 @@ import { environment } from '../environments/environment';
 import * as Colyseus from 'colyseus.js';
 import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
-import { Subject } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ColyseusService {
