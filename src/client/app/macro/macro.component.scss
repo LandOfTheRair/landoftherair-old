@@ -1,0 +1,25 @@
+
+.macro-container {
+  margin: 3px;
+  box-shadow: 1px 0 5px 3px #ccc;
+
+  user-select: none;
+
+  min-width: 48px;
+  max-width: 48px;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  background-color: #ccc;
+
+  &.has-macro:not(.disable-effects) {
+    &.active {
+      box-shadow: 1px 0 5px 3px #0a0;
+    }
+
+    &:active:not(.active) {
+      box-shadow: 1px 0 5px 3px #555;
+    }
+  }
+}
