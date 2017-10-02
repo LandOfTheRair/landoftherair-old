@@ -23,7 +23,8 @@ import { Component, Input } from '@angular/core';
       text-align: center;
       width: 100%;
       z-index: 20;
-      text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;  
+      text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; 
+      color: #000;
     }
   `],
   template: `
