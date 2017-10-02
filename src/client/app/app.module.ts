@@ -9,6 +9,7 @@ import { DraggableWindowDirective } from './draggable.directive';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
@@ -50,6 +51,7 @@ import { ShopComponent } from './shop/shop.component';
 import { BankComponent } from './bank/bank.component';
 import { LockersComponent } from './lockers/lockers.component';
 import { LinkifyPipe } from './_shared/linkify.pipe';
+import { MacroComponent } from './macro/macro.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -88,7 +90,8 @@ import { LinkifyPipe } from './_shared/linkify.pipe';
     TrainerComponent,
     ShopComponent,
     BankComponent,
-    LockersComponent
+    LockersComponent,
+    MacroComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +102,7 @@ import { LinkifyPipe } from './_shared/linkify.pipe';
     Ng2DragDropModule.forRoot(),
     Ng2Webstorage.forRoot(),
     BsDropdownModule.forRoot(),
+    PopoverModule.forRoot(),
     ModalModule.forRoot(),
     ButtonsModule.forRoot(),
     TooltipModule.forRoot()
