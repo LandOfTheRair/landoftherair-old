@@ -5,8 +5,14 @@ import { Skill } from '../base/Skill';
 
 export class Antidote extends Effect {
 
-  cast(caster: Character, target: Character) {
+  cast(caster: Character, target: Character, skillRef?: Skill) {
     if(!this.potency) this.potency = caster.calcSkillLevel(SkillClassNames.Restoration);
+
+    const skillGained = 7 - this.potency;
+    if(skillRef && skillGained > 0) {
+      caster.gainSkill(SkillClassNames.Restoration, skillGained);
+    }
+
     target.applyEffect(this);
   }
 
