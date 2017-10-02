@@ -1,5 +1,5 @@
 
-import { reject, filter, extend, find, pull, size, pick, minBy, includes } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes } from 'lodash';
 
 import { Player } from './player';
 
@@ -236,6 +236,16 @@ export class GameState {
 
     delete item.x;
     delete item.y;
+  }
+
+  serializableGroundItems() {
+    const groundItems = cloneDeep(this.groundItems);
+    Object.keys(groundItems).forEach(x => {
+      Object.keys(groundItems[x]).forEach(y => {
+        delete groundItems[x][y].Corpse;
+      });
+    });
+    return groundItems;
   }
 
   getGroundItems(x, y) {
