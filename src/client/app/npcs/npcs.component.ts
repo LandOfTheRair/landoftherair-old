@@ -73,6 +73,9 @@ export class NpcsComponent {
       this.colyseusGame.sendCommandString(`${npc.uuid}, hello`);
     } else if((<any>npc).username && !this.colyseusGame.currentCommand) {
       this.colyseusGame.currentCommand = `${npc.uuid}, `;
+    } else if(this.colyseusGame.currentCommand) {
+      this.colyseusGame.sendCommandString(this.colyseusGame.currentCommand, npc.uuid);
+      this.colyseusGame.currentCommand = '';
     } else {
       this.colyseusGame.sendCommandString(this.macroService.activeMacro.macro, npc.uuid);
     }
