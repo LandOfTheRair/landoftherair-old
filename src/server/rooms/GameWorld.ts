@@ -370,7 +370,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   async saveGround() {
-    DB.$mapGroundItems.update({ mapName: this.state.mapName }, { $set: { groundItems: this.state.groundItems } }, { upsert: true });
+    DB.$mapGroundItems.update({ mapName: this.state.mapName }, { $set: { groundItems: this.state.serializableGroundItems() } }, { upsert: true });
   }
 
   checkIfAnyItemsAreExpired(groundItems) {
