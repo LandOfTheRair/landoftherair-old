@@ -16,3 +16,13 @@
   max-height: 570px;
   overflow-y: auto;
 }
+
+.activate-inner-on-hover {
+  .show-on-hover {
+    display: none;
+  }
+
+  &:hover .show-on-hover {
+    display: block;
+  }
+}

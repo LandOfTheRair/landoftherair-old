@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorage } from 'ngx-webstorage';
 
 import { ColyseusGameService } from '../colyseus.game.service';
 
@@ -58,6 +57,8 @@ export class MacroBarsComponent implements OnInit {
   }
 
   public operateOnMacro(macro: Macro) {
+    if(!macro) return;
+
     if(macro.lockActivation) {
       this.setSelectedMacro(macro.name);
       return;

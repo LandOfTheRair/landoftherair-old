@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
   <a class="navbar-brand" href="#">
     <span>Land of the Rair</span>
@@ -116,7 +115,8 @@
     <app-close-button (click)="colyseus.game.quit()"></app-close-button>
   </div>
   <div class="window-body">
-    <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character" [class.hidden]="colyseus.game.isChangingMap"></app-map>
+    <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character"
+             [class.hidden]="colyseus.game.isChangingMap"></app-map>
   </div>
 </div>
 
@@ -180,7 +180,8 @@
     Log
   </div>
   <div class="window-body">
-    <app-log-window [clientGameState]="colyseus.game.clientGameState" [windowSize]="logWindowSize" [fontSize]="logFontSize"></app-log-window>
+    <app-log-window [clientGameState]="colyseus.game.clientGameState" [windowSize]="logWindowSize"
+                    [fontSize]="logFontSize"></app-log-window>
   </div>
 </div>
 
@@ -364,7 +365,8 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #options="bs-modal" tabindex="-1" (onShow)="optionsModalVisible = true" (onHide)="optionsModalVisible = false">
+<div class="modal fade" bsModal #options="bs-modal" tabindex="-1" (onShow)="optionsModalVisible = true"
+     (onHide)="optionsModalVisible = false">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -467,27 +469,6 @@
           <div class="col text-center"><h4>UI Options</h4></div>
         </div>
 
-        <div class="row mb-1">
-          <div class="col-3 text-right font-weight-bold">Active Macros</div>
-          <div class="col-3">
-            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[0]" (change)="macroService.saveMacros()">
-              <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
-            </select>
-          </div>
-          <div class="col-3">
-            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[1]" (change)="macroService.saveMacros()">
-              <option [value]="null">None</option>
-              <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
-            </select>
-          </div>
-          <div class="col-3">
-            <select class="form-control" [(ngModel)]="macroService.visibleMacroGroups[2]" (change)="macroService.saveMacros()">
-              <option [value]="null">None</option>
-              <option *ngFor="let macroGroup of macroService.allMacroGroupNames()" [value]="macroGroup">{{ macroGroup }}</option>
-            </select>
-          </div>
-        </div>
-
         <div class="row">
           <div class="col-3 text-right font-weight-bold">Theme</div>
           <div class="col form-check">
@@ -501,7 +482,7 @@
         <div class="row">
           <div class="col offset-3 form-check">
             <label class="form-check-label" for="rightClickSend">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="rightClickSend" id="rightClickSend" />
+              <input type="checkbox" class="form-check-input" [(ngModel)]="rightClickSend" id="rightClickSend"/>
               Right-click to send command line
             </label>
           </div>
@@ -510,7 +491,7 @@
         <div class="row">
           <div class="col offset-3 form-check">
             <label class="form-check-label" for="autoHideLobby">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="autoHideLobby" id="autoHideLobby" />
+              <input type="checkbox" class="form-check-input" [(ngModel)]="autoHideLobby" id="autoHideLobby"/>
               Hide lobby while game is open
             </label>
           </div>
@@ -519,7 +500,7 @@
         <div class="row">
           <div class="col offset-3 form-check">
             <label class="form-check-label" for="suppressZeroDamage">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="suppressZeroDamage" id="suppressZeroDamage" />
+              <input type="checkbox" class="form-check-input" [(ngModel)]="suppressZeroDamage" id="suppressZeroDamage"/>
               Suppress 0-damage messages
             </label>
           </div>
@@ -530,7 +511,8 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #macros="bs-modal" tabindex="-1" (onShow)="showMacroModal()" (onHide)="macroModalVisible = false">
+<div class="modal fade" bsModal #macros="bs-modal" tabindex="-1" (onShow)="showMacroModal()"
+     (onHide)="macroModalVisible = false">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -554,9 +536,13 @@
           </div>
           <div class="col-4">
             <button class="btn btn-info btn-sm"
-                    *ngIf="!macroService.allMacros[macro].isSystem" (click)="editMacro(macroService.allMacros[macro])">Edit</button>
+                    *ngIf="!macroService.allMacros[macro].isSystem" (click)="editMacro(macroService.allMacros[macro])">
+              Edit
+            </button>
             <button class="btn btn-danger btn-sm"
-                    *ngIf="!macroService.allMacros[macro].isSystem" (click)="deleteMacro(macroService.allMacros[macro])">Remove</button>
+                    *ngIf="!macroService.allMacros[macro].isSystem"
+                    (click)="deleteMacro(macroService.allMacros[macro])">Remove
+            </button>
           </div>
         </div>
       </div>
@@ -569,7 +555,8 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #viewMacro="bs-modal" tabindex="-1" (onShow)="macroEditModalVisible = true" (onHide)="macroEditModalVisible = false">
+<div class="modal fade" bsModal #viewMacro="bs-modal" tabindex="-1" (onShow)="macroEditModalVisible = true"
+     (onHide)="macroEditModalVisible = false">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -585,42 +572,47 @@
         <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Name</div>
           <div class="col-9">
-            <input class="form-control" [(ngModel)]="currentlyEditingMacro.name" placeholder="Enter your macro name" />
+            <input class="form-control" [(ngModel)]="currentlyEditingMacro.name" placeholder="Enter your macro name"/>
           </div>
         </div>
 
         <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Macro</div>
           <div class="col-9">
-            <textarea class="form-control" rows="3" [(ngModel)]="currentlyEditingMacro.macro" placeholder="Enter your macro command. Separate multiple commands with semicolons"></textarea>
+            <textarea class="form-control" rows="3" [(ngModel)]="currentlyEditingMacro.macro"
+                      placeholder="Enter your macro command. Separate multiple commands with semicolons"></textarea>
           </div>
         </div>
 
         <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Key</div>
           <div class="col-3">
-            <input class="form-control" [(ngModel)]="currentlyEditingMacro.key" (keydown)="setMacroKey($event)" placeholder="Press Key" />
+            <input class="form-control" [(ngModel)]="currentlyEditingMacro.key" (keydown)="setMacroKey($event)"
+                   placeholder="Press Key"/>
           </div>
           <div class="col-2">
             <button class="btn"
                     [class.btn-secondary]="!currentlyEditingMacro.modifiers.shift"
                     [class.btn-success]="currentlyEditingMacro.modifiers.shift"
                     btnCheckbox
-                    [(ngModel)]="currentlyEditingMacro.modifiers.shift">Shift</button>
+                    [(ngModel)]="currentlyEditingMacro.modifiers.shift">Shift
+            </button>
           </div>
           <div class="col-2">
             <button class="btn"
                     [class.btn-secondary]="!currentlyEditingMacro.modifiers.ctrl"
                     [class.btn-success]="currentlyEditingMacro.modifiers.ctrl"
                     btnCheckbox
-                    [(ngModel)]="currentlyEditingMacro.modifiers.ctrl">Ctrl</button>
+                    [(ngModel)]="currentlyEditingMacro.modifiers.ctrl">Ctrl
+            </button>
           </div>
           <div class="col-2">
             <button class="btn"
                     [class.btn-secondary]="!currentlyEditingMacro.modifiers.alt"
                     [class.btn-success]="currentlyEditingMacro.modifiers.alt"
                     btnCheckbox
-                    [(ngModel)]="currentlyEditingMacro.modifiers.alt">Alt</button>
+                    [(ngModel)]="currentlyEditingMacro.modifiers.alt">Alt
+            </button>
           </div>
         </div>
 
@@ -632,19 +624,22 @@
                     [class.btn-success]="currentlyEditingMacro.clickToTarget"
                     (click)="changeMacroMode('clickToTarget')"
                     tooltip="Clicking this macro will let you click an npc target"
-            >Need Target</button>
+            >Need Target
+            </button>
             <button class="btn"
                     [class.btn-secondary]="!currentlyEditingMacro.autoActivate"
                     [class.btn-success]="currentlyEditingMacro.autoActivate"
                     (click)="changeMacroMode('autoActivate')"
                     tooltip="Clicking this macro will fire it instantly"
-            >Instant</button>
+            >Instant
+            </button>
             <button class="btn"
                     [class.btn-secondary]="!currentlyEditingMacro.lockActivation"
                     [class.btn-success]="currentlyEditingMacro.lockActivation"
                     (click)="changeMacroMode('lockActivation')"
                     tooltip="Clicking this macro will make it your default click action (similar to Attack)"
-            >Locked</button>
+            >Locked
+            </button>
           </div>
         </div>
 
@@ -676,7 +671,7 @@
                 <button class="btn btn-info btn-sm" (click)="changePage(currentIconPage-1)">&lt;</button>
               </div>
               <div class="col-6 text-center">Page {{ currentIconPage+1 }}</div>
-              <div class="col-3">
+              <div class="col-3 text-right">
                 <button class="btn btn-info btn-sm" (click)="changePage(currentIconPage+1)">&gt;</button>
               </div>
             </div>
@@ -703,8 +698,9 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #macroGroups="bs-modal" tabindex="-1" (onShow)="macroGroupModalVisible = true" (onHide)="macroGroupModalVisible = false">
-  <div class="modal-dialog">
+<div class="modal fade" bsModal #macroGroups="bs-modal" tabindex="-1" (onShow)="macroGroupModalVisible = true"
+     (onHide)="macroGroupModalVisible = false">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
       <div class="modal-header">
@@ -715,33 +711,103 @@
       </div>
 
       <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macroGroupModalVisible">
-        <div class="row">
-          <div class="col-6">
-            <ul class="nav nav-pills flex-column">
-              <li class="nav-item" *ngFor="let macroGroup of macroService.allMacroGroupNames()">
-                <a class="nav-link" (click)="currentMacroGroup = macroGroup" [class.active]="currentMacroGroup === macroGroup">{{ macroGroup }}</a>
-              </li>
-            </ul>
+
+        <div class="row mb-1">
+          <h4 class="text-center w-100">Active Macro Groups</h4>
+        </div>
+
+        <div class="row pb-1 activate-inner-on-hover"
+             [class.mb-5]="last"
+             *ngFor="let group of macroService.visibleMacroGroups; let last = last; let first = first; let index = index">
+
+          <div class="col-3" [class.hidden]="!group">
+            <div class="text-center font-weight-bold">{{ group }} (#{{ index + 1 }})</div>
+            <div class="text-center show-on-hover">
+              <button class="btn btn-warning btn-sm" *ngIf="!first" (click)="removeActiveGroup(index)">Remove</button>
+            </div>
           </div>
-          <div class="col-6">
-            <div class="row mr-1" *ngFor="let macro of macroArray">
-              <select [(ngModel)]="macroService.allMacroGroups[currentMacroGroup][macro]"
-                      class="form-control"
-                      (change)="macroService.saveMacros()"
-                      [disabled]="currentMacroGroup === 'default'"
-                      placeholder="Select a macro">
-                <option *ngFor="let macro of macroService.allUsableMacros" [value]="macro.name">{{ macro.name }}</option>
-              </select>
+
+          <div class="col-9 d-flex flex-row" *ngIf="group">
+            <div class="macrobar-item" *ngFor="let macroIdx of macroArray">
+
+              <app-macro
+                [macroRef]="macroService.allMacroGroups[group][macroIdx]"
+                disableEffects="true"
+              ></app-macro>
+
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="removeMacroGroup()" *ngIf="currentMacroGroup !== 'default'">Remove Current Group</button>
-        <button type="button" class="btn btn-primary" (click)="addMacroGroup()">New Macro Group</button>
-        <button type="button" class="btn btn-secondary" (click)="macroGroups.hide()">Close</button>
+        <div class="row mb-1">
+          <h4 class="text-center w-100">All Macro Groups</h4>
+        </div>
+
+        <div class="row pb-1 activate-inner-on-hover"
+             [class.mb-3]="last"
+             *ngFor="let group of macroService.iterableMacroGroups; let last = last">
+
+          <div class="col-3">
+            <div class="text-center font-weight-bold">{{ group.key }}</div>
+            <div class="text-center show-on-hover">
+              <button class="btn btn-primary btn-sm" (click)="makeActiveGroup(group.key, 0)">1</button>
+              <button class="btn btn-primary btn-sm" (click)="makeActiveGroup(group.key, 1)">2</button>
+              <button class="btn btn-primary btn-sm" (click)="makeActiveGroup(group.key, 2)">3</button>
+              <button class="btn btn-danger btn-sm" *ngIf="group.key !== 'default'" (click)="deleteGroup(group.key)">
+                Delete
+              </button>
+            </div>
+          </div>
+
+          <div class="col-9 d-flex flex-row">
+            <div class="macrobar-item" *ngFor="let macroIdx of macroArray">
+
+              <app-macro
+                (click)="resetVariablesForMacroPopover(group.key, macroIdx)"
+                [popover]="macroSelectorPopover"
+                container="body"
+                containerClass="macro-popover"
+                outsideClick="true"
+                [triggers]="group.key === 'default' ? '' : 'click'"
+                [macroRef]="macroService.allMacroGroups[group.key][macroIdx]"
+                disableEffects="true"
+              ></app-macro>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="addMacroGroup()">New Macro Group</button>
+          <button type="button" class="btn btn-secondary" (click)="macroGroups.hide()">Close</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #macroSelectorPopover>
+
+  <div class="row px-1 mb-2">
+    <div class="col-3">
+      <button class="btn btn-info btn-sm" (click)="changeMacroPage(currentMacroPage-1)">&lt;</button>
+    </div>
+    <div class="col-6 text-center">Page {{ currentMacroPage+1 }}</div>
+    <div class="col-3 text-right">
+      <button class="btn btn-info btn-sm" (click)="changeMacroPage(currentMacroPage+1)">&gt;</button>
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap flex-row">
+
+    <app-icon *ngFor="let macro of currentMacrosInPage"
+              class="m-1"
+              [name]="macroService.allMacros[macro].icon"
+              [bgColor]="macroService.allMacros[macro].background || '#ccc'"
+              [fgColor]="macroService.allMacros[macro].foreground"
+              [tooltip]="macroService.allMacros[macro].name"
+              (click)="selectMacroForSpot(macro)"
+              size="nsmall"></app-icon>
+  </div>
+
+</ng-template>
