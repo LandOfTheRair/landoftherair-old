@@ -10,8 +10,8 @@
   sprite: [580, 595, 610, 615]
 
   hp:
-    min: 5000
-    max: 7000
+    min: 500
+    max: 700
 
   gold:
     min: 0
@@ -76,8 +76,8 @@
   sprite: 625
 
   hp:
-    min: 15000
-    max: 17000
+    min: 2500
+    max: 4000
 
   gold:
     min: 0
