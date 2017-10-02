@@ -20,6 +20,7 @@ class FloatingBox {
     el.style.border = '1px solid #000';
     el.style.pointerEvents = 'none';
     el.style.transition = 'all 7s ease 0s';
+    el.style.letterSpacing = '2px';
     el.innerText = `${this.value > 0 ? '+' : ''}${this.value.toLocaleString()}`;
     element.appendChild(el);
 
