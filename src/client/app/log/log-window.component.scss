@@ -36,6 +36,7 @@
 
     .message {
       font-size: 0.9rem;
+      letter-spacing: 1px;
 
       &.font-size-xlarge {
         font-size: 1.3rem;
@@ -77,6 +78,10 @@
         &.kill {
           font-weight: bold;
         }
+      }
+
+      strong {
+        letter-spacing: 2px;
       }
     }
   }

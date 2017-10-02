@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
       font-size: 1.1rem;
       padding-top: 0.11rem;
       padding-bottom: 0.11rem;
+      height: 26px;
     }`
   ]
 })

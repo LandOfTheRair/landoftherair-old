@@ -22,7 +22,6 @@
       "tsconfig": "tsconfig.app.json",
       "prefix": "app",
       "styles": [
-        "../../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../../node_modules/sweetalert2/dist/sweetalert2.css",
         "../../node_modules/ng2-drag-drop/style.css",
         "macicons/macicons.css",
