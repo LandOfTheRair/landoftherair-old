@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-expand-lg navbar-light bg-faded">
   <a class="navbar-brand" href="#">
     <span>Land of the Rair</span>
     <span *ngIf="colyseus.lobby.myAccount.username">- {{ colyseus.lobby.myAccount.username }}</span>
@@ -68,7 +68,7 @@
 </nav>
 
 <div *ngIf="!colyseus.isConnected" class="m-5 d-flex justify-content-center align-content-center h-100">
-  <div class="alert alert-warning">
+  <div class="alert alert-warning connection-warning">
     The game client could not connect to the server. The game may be down for maintenance.
   </div>
 </div>
@@ -380,7 +380,7 @@
           <div class="col text-center"><h4>UI Window Sizes</h4></div>
         </div>
 
-        <div class="row">
+        <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Sack Icons</div>
           <div class="col">
             <div class="btn-group">
@@ -391,7 +391,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Belt Icons</div>
           <div class="col">
             <div class="btn-group">
@@ -402,7 +402,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Equipment Icons</div>
           <div class="col">
             <div class="btn-group">
@@ -413,7 +413,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Ground Icons</div>
           <div class="col">
             <div class="btn-group">
@@ -424,7 +424,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Log Font Size</div>
           <div class="col">
             <div class="btn-group">
@@ -437,7 +437,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Log Window Size</div>
           <div class="col">
             <div class="btn-group">
@@ -451,7 +451,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">NPC Window Size</div>
           <div class="col">
             <div class="btn-group">
@@ -465,7 +465,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row mt-2">
           <div class="col text-center"><h4>UI Options</h4></div>
         </div>
 
@@ -480,7 +480,7 @@
         </div>
 
         <div class="row">
-          <div class="col offset-3 form-check">
+          <div class="col-9 ml-auto form-check">
             <label class="form-check-label" for="rightClickSend">
               <input type="checkbox" class="form-check-input" [(ngModel)]="rightClickSend" id="rightClickSend"/>
               Right-click to send command line
@@ -489,7 +489,7 @@
         </div>
 
         <div class="row">
-          <div class="col offset-3 form-check">
+          <div class="col-9 ml-auto form-check">
             <label class="form-check-label" for="autoHideLobby">
               <input type="checkbox" class="form-check-input" [(ngModel)]="autoHideLobby" id="autoHideLobby"/>
               Hide lobby while game is open
@@ -498,7 +498,7 @@
         </div>
 
         <div class="row">
-          <div class="col offset-3 form-check">
+          <div class="col-9 ml-auto form-check">
             <label class="form-check-label" for="suppressZeroDamage">
               <input type="checkbox" class="form-check-input" [(ngModel)]="suppressZeroDamage" id="suppressZeroDamage"/>
               Suppress 0-damage messages
@@ -665,7 +665,7 @@
         </div>
 
         <div class="row">
-          <div class="col-6 offset-6">
+          <div class="col-6 ml-auto">
             <div class="row p-0">
               <div class="col-3">
                 <button class="btn btn-info btn-sm" (click)="changePage(currentIconPage-1)">&lt;</button>
