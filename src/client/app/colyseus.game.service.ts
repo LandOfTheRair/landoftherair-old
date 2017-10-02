@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { ClientGameState } from './clientgamestate';
 import * as swal from 'sweetalert2';
 
+import { Subject } from 'rxjs/Subject';
+
 import { find, includes, findIndex, extend } from 'lodash';
 import { Player } from '../../models/player';
 import { Item } from '../../models/item';
@@ -33,7 +35,7 @@ export class ColyseusGameService {
 
   public currentCommand = '';
 
-  constructor() {}
+  public inGame$ = new Subject();
 
   init(colyseus, client, character) {
     this.colyseus = colyseus;
@@ -152,12 +154,14 @@ export class ColyseusGameService {
     this.worldRoom.state.listen('mapData/openDoors/:id/isOpen', 'replace', updateDoor);
 
     this.worldRoom.onJoin.add(() => {
+      this.inGame$.next(true);
       this._inGame = true;
     });
 
     this.worldRoom.onLeave.add(() => {
       this.clientGameState.removeAllPlayers();
       if(this.changingMap) return;
+      this.inGame$.next(false);
       this._inGame = false;
     });
 
