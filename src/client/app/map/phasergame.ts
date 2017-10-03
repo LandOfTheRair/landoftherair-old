@@ -99,7 +99,6 @@ export class Game {
 
   private playSfx(sfx: string) {
     const convertSfx = SFXMap[sfx];
-    console.log(sfx, convertSfx, this.sfxs);
 
     if(!this.sfxs[convertSfx] || !this.sfxs[convertSfx].isDecoded) return;
 

@@ -232,7 +232,6 @@ export class ColyseusGameService {
     if(isZero && this.localStorage.retrieve('suppressZeroDamage')) return;
     this.clientGameState.addLogMessage({ name, message, subClass, grouping, dirFrom });
 
-    console.log(subClass, this.overrideNoSfx);
     if(!this.overrideNoSfx) {
       this.sfx$.next(subClass);
     }
