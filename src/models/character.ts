@@ -180,12 +180,18 @@ export class Character {
   $$room: any;
   $$corpseRef: Item;
 
+  combatTicks = 0;
+
   $$ai: any;
 
   sprite: number;
 
   alignment: Alignment = 'Neutral';
   allegianceReputation: any = {};
+
+  get isInCombat() {
+    return this.combatTicks > 0;
+  }
 
   get sackSize() {
     return MaxSizes.Sack;
@@ -251,7 +257,7 @@ export class Character {
 
   toJSON() {
     return omitBy(this, (value, key) => {
-      if(key === '$fov') return false;
+      if(key === '$fov' || key === 'battleTicks' || key === 'bgmSetting') return false;
       if(!Object.getOwnPropertyDescriptor(this, key)) return true;
       if(startsWith(key, '$$')) return true;
       if(key === '_id') return true;

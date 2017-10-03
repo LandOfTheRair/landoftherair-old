@@ -148,17 +148,18 @@ export class GameState {
 
     if(ignoreMessages) return;
 
-    const regionObjs = filter(this.map.layers[MapLayer.RegionDescriptions].objects, reg => {
+    const findMe = (reg) => {
       const x = (reg.x / 64);
       const y = (reg.y / 64);
       const width = reg.width / 64;
       const height = reg.height / 64;
       return player.x >= x
-          && player.x < x + width
-          && player.y >= y
-          && player.y < y + height;
-    });
+        && player.x < x + width
+        && player.y >= y
+        && player.y < y + height;
+    };
 
+    const regionObjs = filter(this.map.layers[MapLayer.RegionDescriptions].objects, reg => findMe(reg));
 
     const regionObj = minBy(regionObjs, 'width');
     let regionDesc = '';
@@ -179,6 +180,9 @@ export class GameState {
     const desc = intDesc || swimDesc || foliageDesc || floorDesc || terrainDesc;
 
     const hasNewRegion = regionDesc && regionDesc !== player.$$lastRegion;
+
+    const bgmObj = filter(this.map.layers[MapLayer.BackgroundMusic].objects, reg => findMe(reg))[0];
+    player.bgmSetting = bgmObj ? bgmObj.name : 'wilderness';
 
     if(hasNewRegion) {
       player.$$lastRegion = regionDesc;
