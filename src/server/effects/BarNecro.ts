@@ -20,11 +20,15 @@ export class BarNecro extends SpellEffect {
 
     if(!this.duration) this.duration = 10 * caster.calcSkillLevel(SkillClassNames.Restoration);
 
+    if(caster !== target) {
+      this.casterEffectMessage(caster, `You cast BarNecro on ${target.name}.`);
+    }
+
     target.applyEffect(this);
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'Your body builds a temporary resistance to the dark arts.');
+    this.targetEffectMessage(char, 'Your body builds a temporary resistance to the dark arts.');
     char.gainStat('necroticResist', this.potency * this.potencyMultiplier);
     char.recalculateStats();
   }
