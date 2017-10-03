@@ -70,6 +70,14 @@ Some commands are hidden and don't really need to be used by players, but should
 
 #### GM Commands
 
+As a GM, you get access to several commands in the lobby:
+
+* `/motd <motd>` - set the MOTD in the lobby
+* `/resetmotd` - unset the MOTD
+* `/alert <msg>` - alert every player with a certain message (very annoying!)
+
+You also get access to some commands in-game:
+
 * `@gold <num>` - create <num> gold on your tile
 * `@item <item name>` - create a particular item on your tile
 * `@itemdupe` - copy your right hand to your left hand
