@@ -8,6 +8,7 @@ import { find, includes, findIndex, extend } from 'lodash';
 import { Player } from '../../models/player';
 import { Item } from '../../models/item';
 import { Locker } from '../../models/container/locker';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Injectable()
 export class ColyseusGameService {
@@ -36,6 +37,19 @@ export class ColyseusGameService {
   public currentCommand = '';
 
   public inGame$ = new Subject();
+  public bgm$ = new Subject();
+
+  private overrideNoBgm: boolean;
+
+  constructor(private localStorage: LocalStorageService) {
+
+    this.overrideNoBgm = !this.localStorage.retrieve('playBackgroundMusic');
+
+    this.localStorage.observe('playBackgroundMusic')
+      .subscribe(shouldPlayBgm => {
+        this.overrideNoBgm = !shouldPlayBgm;
+      });
+  }
 
   init(colyseus, client, character) {
     this.colyseus = colyseus;
@@ -180,10 +194,24 @@ export class ColyseusGameService {
     if(!character) return;
     this.character = new Player(character);
 
+    // update fov
     if(this.character.$fov) {
       this.setFOV(this.character.$fov);
     }
 
+    // set bgm for the game (considering options)
+    if(this.overrideNoBgm) {
+      this.bgm$.next('');
+
+    } else {
+      if(this.character.combatTicks > 0) {
+        this.bgm$.next('combat');
+      } else {
+        this.bgm$.next(this.character.bgmSetting);
+      }
+    }
+
+    // update hp/xp/etc for floating boxes
     this.clientGameState.playerBoxes$.next(this.character);
   }
 
@@ -193,7 +221,7 @@ export class ColyseusGameService {
 
   private logMessage({ name, message, subClass, grouping, dirFrom }: any) {
     const isZero = includes(message, '[0') && includes(message, 'damage]');
-    if(isZero && JSON.parse(localStorage.getItem('ng2-webstorage|suppresszerodamage'))) return;
+    if(isZero && this.localStorage.retrieve('suppressZeroDamage')) return;
     this.clientGameState.addLogMessage({ name, message, subClass, grouping, dirFrom });
   }
 
