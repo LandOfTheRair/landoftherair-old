@@ -46,6 +46,15 @@ export class Game {
 
   private blockUpdates: boolean;
 
+  private isBgmReady: boolean;
+  private currentBgm: string;
+  private bgms = {
+    wilderness: null,
+    combat: null,
+    town: null,
+    dungeon: null
+  };
+
   public get shouldRender() {
     if(!this.g || !this.g.camera || !this.playerSprite) return false;
 
@@ -61,12 +70,39 @@ export class Game {
 
     // reset any time inGame is set to true
     this.colyseus.game.inGame$.subscribe(inGame => {
-      if(!inGame) return;
+      if(!inGame) {
+        this.updateBgm('');
+        return;
+      }
+
       this.reset();
+    });
+
+    this.colyseus.game.bgm$.subscribe(nextBgm => {
+      this.updateBgm(nextBgm);
     });
   }
 
+  private updateBgm(newBgm: string) {
+    if(!newBgm && this.currentBgm) {
+      this.bgms[this.currentBgm].stop();
+      this.currentBgm = '';
+      return;
+    }
+
+    if(!this.isBgmReady || newBgm === this.currentBgm) return;
+
+    if(this.currentBgm) {
+      this.bgms[this.currentBgm].stop();
+    }
+
+    this.currentBgm = newBgm;
+    this.bgms[this.currentBgm].loopFull();
+
+  }
+
   public reset() {
+    this.updateBgm('');
     this.blockUpdates = true;
 
     if(this.itemsOnGround) {
@@ -448,6 +484,13 @@ export class Game {
     this.g.load.spritesheet('Creatures', `${this.assetUrl}/creatures.png`, 64, 64);
     this.g.load.spritesheet('Items', `${this.assetUrl}/items.png`, 64, 64);
 
+    if(!this.isBgmReady) {
+      this.g.load.audio('bgm-combat', `${this.assetUrl}/bgm/combat.mp3`);
+      this.g.load.audio('bgm-town', `${this.assetUrl}/bgm/town.mp3`);
+      this.g.load.audio('bgm-dungeon', `${this.assetUrl}/bgm/dungeon.mp3`);
+      this.g.load.audio('bgm-wilderness', `${this.assetUrl}/bgm/wilderness.mp3`);
+    }
+
     this.g.game.renderer.setTexturePriority(['Terrain', 'Walls', 'Decor', 'Creatures', 'Items']);
   }
 
@@ -456,6 +499,19 @@ export class Game {
       e.preventDefault();
       return false;
     };
+
+    if(!this.isBgmReady) {
+      this.bgms.combat = this.g.add.audio('bgm-combat');
+      this.bgms.town = this.g.add.audio('bgm-town');
+      this.bgms.dungeon = this.g.add.audio('bgm-dungeon');
+      this.bgms.wilderness = this.g.add.audio('bgm-wilderness');
+
+      this.g.game.sound.setDecodedCallback([
+        this.bgms.combat, this.bgms.town, this.bgms.dungeon, this.bgms.wilderness
+      ], () => {
+        this.isBgmReady = true;
+      });
+    }
 
     this.blockUpdates = false;
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
