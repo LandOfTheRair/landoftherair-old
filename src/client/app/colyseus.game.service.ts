@@ -38,16 +38,24 @@ export class ColyseusGameService {
 
   public inGame$ = new Subject();
   public bgm$ = new Subject();
+  public sfx$ = new Subject();
 
   private overrideNoBgm: boolean;
+  private overrideNoSfx: boolean;
 
   constructor(private localStorage: LocalStorageService) {
 
     this.overrideNoBgm = !this.localStorage.retrieve('playBackgroundMusic');
+    this.overrideNoSfx = !this.localStorage.retrieve('playSoundEffects');
 
     this.localStorage.observe('playBackgroundMusic')
       .subscribe(shouldPlayBgm => {
         this.overrideNoBgm = !shouldPlayBgm;
+      });
+
+    this.localStorage.observe('playSoundEffects')
+      .subscribe(shouldPlaySfx => {
+        this.overrideNoSfx = !shouldPlaySfx;
       });
   }
 
@@ -223,6 +231,11 @@ export class ColyseusGameService {
     const isZero = includes(message, '[0') && includes(message, 'damage]');
     if(isZero && this.localStorage.retrieve('suppressZeroDamage')) return;
     this.clientGameState.addLogMessage({ name, message, subClass, grouping, dirFrom });
+
+    console.log(subClass, this.overrideNoSfx);
+    if(!this.overrideNoSfx) {
+      this.sfx$.next(subClass);
+    }
   }
 
   private setTarget(target: string) {

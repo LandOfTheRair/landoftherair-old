@@ -11,6 +11,10 @@ export class Antidote extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
+    if(caster !== target) {
+      this.casterEffectMessage(caster, `You cast Antidote on ${target.name}.`);
+    }
+
     target.applyEffect(this);
   }
 

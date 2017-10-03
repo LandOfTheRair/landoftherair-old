@@ -1,7 +1,7 @@
 
 import * as TiledPlugin from 'phaser-tiled';
 
-import { find, remove, compact, difference } from 'lodash';
+import { find, remove, compact, difference, values } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
 
@@ -13,6 +13,21 @@ import { TrueSightMap, TrueSightMapReversed } from './phaserconversionmaps';
 import { MapLayer } from '../../../models/maplayer';
 
 const cacheKey = TiledPlugin.utils.cacheKey;
+
+const SFXMap = {
+  'combat self block armor': 'combat-block-armor',
+  'combat self block weapon': 'combat-block-weapon',
+  'combat self miss': 'combat-miss',
+  'combat other kill': 'combat-die',
+  'combat self kill': 'combat-kill',
+  'combat self hit magic': 'combat-hit-spell',
+  'combat self hit melee': 'combat-hit-melee',
+  'spell buff give': 'spell-buff',
+  'spell buff get': 'spell-buff'
+};
+
+const bgms = ['combat', 'town', 'dungeon', 'wilderness'];
+const sfxs = values(SFXMap);
 
 export class Game {
 
@@ -46,14 +61,9 @@ export class Game {
 
   private blockUpdates: boolean;
 
-  private isBgmReady: boolean;
   private currentBgm: string;
-  private bgms = {
-    wilderness: null,
-    combat: null,
-    town: null,
-    dungeon: null
-  };
+  private bgms = {};
+  private sfxs = {};
 
   public get shouldRender() {
     if(!this.g || !this.g.camera || !this.playerSprite) return false;
@@ -81,6 +91,19 @@ export class Game {
     this.colyseus.game.bgm$.subscribe(nextBgm => {
       this.updateBgm(nextBgm);
     });
+
+    this.colyseus.game.sfx$.subscribe(nextSfx => {
+      this.playSfx(nextSfx);
+    });
+  }
+
+  private playSfx(sfx: string) {
+    const convertSfx = SFXMap[sfx];
+    console.log(sfx, convertSfx, this.sfxs);
+
+    if(!this.sfxs[convertSfx] || !this.sfxs[convertSfx].isDecoded) return;
+
+    this.sfxs[convertSfx].play();
   }
 
   private updateBgm(newBgm: string) {
@@ -90,14 +113,16 @@ export class Game {
       return;
     }
 
-    if(!this.isBgmReady || newBgm === this.currentBgm) return;
+    if(newBgm === this.currentBgm) return;
 
     if(this.currentBgm) {
       this.bgms[this.currentBgm].stop();
     }
 
-    this.currentBgm = newBgm;
-    this.bgms[this.currentBgm].loopFull();
+    if(this.bgms[newBgm] && this.bgms[newBgm].isDecoded) {
+      this.currentBgm = newBgm;
+      this.bgms[this.currentBgm].loopFull();
+    }
 
   }
 
@@ -484,12 +509,13 @@ export class Game {
     this.g.load.spritesheet('Creatures', `${this.assetUrl}/creatures.png`, 64, 64);
     this.g.load.spritesheet('Items', `${this.assetUrl}/items.png`, 64, 64);
 
-    if(!this.isBgmReady) {
-      this.g.load.audio('bgm-combat', `${this.assetUrl}/bgm/combat.mp3`);
-      this.g.load.audio('bgm-town', `${this.assetUrl}/bgm/town.mp3`);
-      this.g.load.audio('bgm-dungeon', `${this.assetUrl}/bgm/dungeon.mp3`);
-      this.g.load.audio('bgm-wilderness', `${this.assetUrl}/bgm/wilderness.mp3`);
-    }
+    bgms.forEach(bgm => {
+      this.g.load.audio(`bgm-${bgm}`, `${this.assetUrl}/bgm/${bgm}.mp3`);
+    });
+
+    sfxs.forEach(sfx => {
+      this.g.load.audio(`sfx-${sfx}`, `${this.assetUrl}/sfx/${sfx}.mp3`);
+    });
 
     this.g.game.renderer.setTexturePriority(['Terrain', 'Walls', 'Decor', 'Creatures', 'Items']);
   }
@@ -500,18 +526,13 @@ export class Game {
       return false;
     };
 
-    if(!this.isBgmReady) {
-      this.bgms.combat = this.g.add.audio('bgm-combat');
-      this.bgms.town = this.g.add.audio('bgm-town');
-      this.bgms.dungeon = this.g.add.audio('bgm-dungeon');
-      this.bgms.wilderness = this.g.add.audio('bgm-wilderness');
+    bgms.forEach(bgm => {
+      this.bgms[bgm] = this.g.add.audio(`bgm-${bgm}`);
+    });
 
-      this.g.game.sound.setDecodedCallback([
-        this.bgms.combat, this.bgms.town, this.bgms.dungeon, this.bgms.wilderness
-      ], () => {
-        this.isBgmReady = true;
-      });
-    }
+    sfxs.forEach(sfx => {
+      this.sfxs[sfx] = this.g.add.audio(`sfx-${sfx}`);
+    });
 
     this.blockUpdates = false;
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);

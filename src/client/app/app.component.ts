@@ -114,6 +114,9 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public playBackgroundMusic: boolean;
 
+  @LocalStorage()
+  public playSoundEffects: boolean;
+
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
   }
@@ -158,6 +161,7 @@ export class AppComponent implements OnInit {
     if(isNull(this.autoHideLobby))        this.autoHideLobby = true;
 
     if(isNull(this.playBackgroundMusic))  this.playBackgroundMusic = true;
+    if(isNull(this.playSoundEffects))     this.playSoundEffects = true;
 
     this.theme = 'Light';
   }
