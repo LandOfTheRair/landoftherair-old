@@ -16,6 +16,10 @@ export class TrueSight extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
+    if(caster !== target) {
+      this.casterEffectMessage(caster, `You cast TrueSight on ${target.name}.`);
+    }
+
     const usedSkill = this.skillFlag(caster);
     const durationMult = caster.baseClass === 'Healer' ? 20 : 10;
     if(!this.duration) this.duration = caster.calcSkillLevel(usedSkill) * durationMult;
@@ -23,7 +27,7 @@ export class TrueSight extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'Your vision expands to see other planes of existence.');
+    this.targetEffectMessage(char, 'Your vision expands to see other planes of existence.');
   }
 
   effectEnd(char: Character) {
