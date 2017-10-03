@@ -1036,8 +1036,29 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"BackgroundMusic",
+         "objects":[
+                {
+                 "height":1216,
+                 "id":209,
+                 "name":"town",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1664,
+                 "x":448,
+                 "y":1408
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":209,
+ "nextobjectid":210,
  "orientation":"orthogonal",
  "properties":
     {
