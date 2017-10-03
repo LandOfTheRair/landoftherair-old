@@ -110,6 +110,12 @@ export class Stats {
   iceResist = 0;
 }
 
+export type StatName =
+  'str' | 'dex' | 'con' | 'int' | 'wis' | 'wil' | 'luk' | 'cha' | 'con'
+| 'move' | 'hpregen' | 'mpregen' | 'hp' | 'mp'
+| 'armorClass' | 'accuracy' | 'offense' | 'defense'
+| 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist';
+
 export const MaxSizes = {
   Belt: 5,
   Sack: 25,
@@ -308,8 +314,13 @@ export class Character {
     return slot;
   }
 
-  loseStat(stat, value = 1) {
-    this.stats[stat] = Math.max(this.stats[stat] - value, 1);
+  gainStat(stat: StatName, value = 1) {
+    this.stats[stat] = Math.max(this.stats[stat] + value, 0);
+    this.recalculateStats();
+  }
+
+  loseStat(stat: StatName, value = 1) {
+    this.stats[stat] = Math.max(this.stats[stat] - value, 0);
     this.recalculateStats();
   }
 
