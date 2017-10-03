@@ -61,13 +61,14 @@ popover-container {
   }
 }
 
-.modal-content, popover-container, .popover-content {
-  background-color: $window-background-color;
-  color: #fff;
+.modal-content, popover-container, .popover-content, .swal2-modal, .swal2-title, .swal2-content {
+  background-color: $window-background-color !important;
+  color: #fff !important;
 
   input, textarea {
     border-color: #fff;
   }
+
 }
 
 .navbar a:not(.navbar-brand) {
