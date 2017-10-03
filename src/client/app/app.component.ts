@@ -111,6 +111,12 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public suppressZeroDamage: boolean;
 
+  @LocalStorage()
+  public playBackgroundMusic: boolean;
+
+  @LocalStorage()
+  public playSoundEffects: boolean;
+
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
   }
@@ -147,12 +153,15 @@ export class AppComponent implements OnInit {
       this[`${opt}Size`] = 'normal';
     });
 
-    if(isNull(this.showInventoryBelt)) this.showInventoryBelt = true;
-    if(isNull(this.showInventorySack)) this.showInventorySack = true;
-    if(isNull(this.showEquipment))     this.showEquipment = true;
-    if(isNull(this.showCommandLine))   this.showCommandLine = true;
+    if(isNull(this.showInventoryBelt))    this.showInventoryBelt = true;
+    if(isNull(this.showInventorySack))    this.showInventorySack = true;
+    if(isNull(this.showEquipment))        this.showEquipment = true;
+    if(isNull(this.showCommandLine))      this.showCommandLine = true;
 
-    if(isNull(this.autoHideLobby))     this.autoHideLobby = true;
+    if(isNull(this.autoHideLobby))        this.autoHideLobby = true;
+
+    if(isNull(this.playBackgroundMusic))  this.playBackgroundMusic = true;
+    if(isNull(this.playSoundEffects))     this.playSoundEffects = true;
 
     this.theme = 'Light';
   }

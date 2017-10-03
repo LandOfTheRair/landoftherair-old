@@ -40,6 +40,9 @@ export class CombatHelper {
 
     if(defender.isDead() || attacker.isDead()) return { isDead: true };
 
+    attacker.combatTicks = 10;
+    defender.combatTicks = 10;
+
     let attackerWeapon: Item;
 
     if(isThrow) {
@@ -249,6 +252,9 @@ export class CombatHelper {
 
   static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass }: any = {}) {
 
+    attacker.combatTicks = 10;
+    attacked.combatTicks = 10;
+
     if(skillRef) {
       attacker.flagSkill(skillRef.flagSkills);
     }
@@ -327,13 +333,14 @@ export class CombatHelper {
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;
 
     const otherClass = isHeal ? 'heal' : 'hit';
+    const damageType = damageClass === 'physical' ? 'melee' : 'magic';
 
     if(attackerDamageMessage && attacker) {
-      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat self ${otherClass}`, target: defender.uuid });
+      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat self ${otherClass} ${damageType}`, target: defender.uuid });
     }
 
     if(defenderDamageMessage && attacker !== defender) {
-      defender.sendClientMessage({ message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat other ${otherClass}` });
+      defender.sendClientMessage({ message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat other ${otherClass} ${damageType}` });
     }
 
     defender.hp.sub(damage);
