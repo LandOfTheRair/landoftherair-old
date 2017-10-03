@@ -42,7 +42,7 @@ export class Effect {
   effectStart(char: Character) {}
   effectEnd(char: Character) {}
 
-  effectMessage(char: Character, message: string) {
+  effectMessage(char: Character, message: string|any) {
     if(!char) return;
     char.sendClientMessage(message);
   }
@@ -55,6 +55,14 @@ export class SpellEffect extends Effect {
 
   maxSkillForSkillGain = 0;
   skillFlag: Function;
+
+  casterEffectMessage(char: Character, message: string) {
+    super.effectMessage(char, { message, subClass: 'spell buff give' });
+  }
+
+  targetEffectMessage(char: Character, message: string) {
+    super.effectMessage(char, { message, subClass: 'spell buff get' });
+  }
 
   setPotencyAndGainSkill(caster: Character, skillRef?: Skill) {
     if(this.skillFlag) {
