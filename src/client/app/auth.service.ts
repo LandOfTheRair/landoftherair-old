@@ -84,6 +84,7 @@ export class AuthService {
         console.error(err);
       } else {
         this.setSession(result);
+        this.cleanUpIframes();
       }
     });
   }
@@ -107,7 +108,6 @@ export class AuthService {
     this.refreshSubscription = source.subscribe(() => {
       this.renewToken();
       this.scheduleRenewal();
-      this.cleanUpIframes();
     });
   }
 
