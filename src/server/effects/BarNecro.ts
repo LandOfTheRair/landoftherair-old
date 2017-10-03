@@ -12,8 +12,8 @@ export class BarNecro extends SpellEffect {
   };
 
   maxSkillForSkillGain = 7;
-  skillFlag = () => SkillClassNames.Restoration;
   potencyMultiplier = 20;
+  skillFlag = () => SkillClassNames.Restoration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
