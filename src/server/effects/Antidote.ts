@@ -1,17 +1,15 @@
 
-import { Effect, Maxes } from '../base/Effect';
+import { SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../models/character';
 import { Skill } from '../base/Skill';
 
-export class Antidote extends Effect {
+export class Antidote extends SpellEffect {
+
+  maxSkillForSkillGain = 7;
+  skillFlag = () => SkillClassNames.Restoration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    if(!this.potency) this.potency = caster.calcSkillLevel(SkillClassNames.Restoration);
-
-    const skillGained = 7 - this.potency;
-    if(skillRef && skillGained > 0) {
-      caster.gainSkill(SkillClassNames.Restoration, skillGained);
-    }
+    this.setPotencyAndGainSkill(caster, skillRef);
 
     target.applyEffect(this);
   }

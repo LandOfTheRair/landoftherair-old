@@ -24,22 +24,11 @@ export class Antidote extends Skill {
   range = () => 5;
 
   execute(user: Character, { gameState, args, effect }) {
-    const range = this.range();
 
-    let target = user;
+    const target = this.getTarget(user, args, true);
+    if(!target) return;
 
-    if(args) {
-      const possTargets = user.$$room.getPossibleMessageTargets(user, args);
-      target = possTargets[0];
-      if(!target) return user.sendClientMessage('You do not see that person.');
-
-      if(target.distFrom(user) > range) return user.sendClientMessage('That target is too far away!');
-    }
-
-    const cost = this.mpCost();
-
-    if(!effect && user.mp.getValue() < cost) return user.sendClientMessage('You do not have enough MP!');
-    user.mp.sub(cost);
+    if(!this.tryToConsumeMP(user, effect)) return;
 
     this.use(user, target, effect);
   }

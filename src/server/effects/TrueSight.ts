@@ -1,16 +1,22 @@
 
-import { Effect, Maxes } from '../base/Effect';
+import { Effect, Maxes, SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../models/character';
+import { Skill } from '../base/Skill';
 
-export class TrueSight extends Effect {
+export class TrueSight extends SpellEffect {
 
   iconData = {
     name: 'all-seeing-eye',
     color: '#00a'
   };
 
-  cast(caster: Character, target: Character) {
-    const usedSkill = caster.baseClass === 'Healer' ? SkillClassNames.Restoration : SkillClassNames.Conjuration;
+  maxSkillForSkillGain = 7;
+  skillFlag = (caster) => caster.baseClass === 'Healer' ? SkillClassNames.Restoration : SkillClassNames.Conjuration;
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.setPotencyAndGainSkill(caster, skillRef);
+
+    const usedSkill = this.skillFlag(caster);
     const durationMult = caster.baseClass === 'Healer' ? 20 : 10;
     if(!this.duration) this.duration = caster.calcSkillLevel(usedSkill) * durationMult;
     target.applyEffect(this);

@@ -34,10 +34,7 @@ export class MagicMissile extends Skill {
 
     if(target.distFrom(user) > range) return user.sendClientMessage('That target is too far away!');
 
-    const cost = this.mpCost();
-
-    if(!effect && user.mp.getValue() < cost) return user.sendClientMessage('You do not have enough MP!');
-    user.mp.sub(cost);
+    if(!this.tryToConsumeMP(user, effect)) return;
 
     this.use(user, target, effect);
   }

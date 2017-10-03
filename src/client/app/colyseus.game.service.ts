@@ -45,6 +45,12 @@ export class ColyseusGameService {
     this.clientGameState.loadPlayer$.next();
 
     this.initGame();
+
+    document.addEventListener('contextmenu', (event) => {
+      if(!this._inGame) return;
+      event.preventDefault();
+      return false;
+    });
   }
 
   get isChangingMap() {
