@@ -24,10 +24,7 @@ export class Revive extends Skill {
   range = () => 0;
 
   execute(user: Character, { gameState, args, effect }) {
-    const cost = this.mpCost();
-
-    if(!effect && user.mp.getValue() < cost) return user.sendClientMessage('You do not have enough MP!');
-    user.mp.sub(cost);
+    if(!this.tryToConsumeMP(user, effect)) return;
 
     const targets = user.$$room.state.getPlayersInRange(user, 0, [user]).filter(target => target.dir === 'C');
     const target = targets[0];

@@ -452,6 +452,11 @@ export class Game {
   }
 
   create() {
+    this.g.game.canvas.oncontextmenu = (e) => {
+      e.preventDefault();
+      return false;
+    };
+
     this.blockUpdates = false;
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 

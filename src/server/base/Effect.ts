@@ -51,5 +51,29 @@ export class Effect {
 export class SpellEffect extends Effect {
   flagSkills = [];
 
+  potencyMultiplier = 0;
+
+  maxSkillForSkillGain = 0;
+  skillFlag: Function;
+
+  setPotencyAndGainSkill(caster: Character, skillRef?: Skill) {
+    if(this.skillFlag) {
+
+      const flaggedSkill = this.skillFlag(caster);
+
+      this.potency = caster.calcSkillLevel(flaggedSkill);
+
+      const skillGained = this.maxSkillForSkillGain - this.potency;
+
+      if(skillRef && skillGained > 0) {
+        caster.gainSkill(flaggedSkill, skillGained);
+      }
+
+    } else {
+      this.potency = 1;
+    }
+
+  }
+
   cast(caster: Character, target: Character, skillRef: Skill) {}
 }

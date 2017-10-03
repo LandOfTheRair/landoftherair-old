@@ -25,10 +25,7 @@ export class Identify extends Skill {
   execute(user: Character, { gameState, args, effect }) {
     if(!user.rightHand) return user.sendClientMessage('You need to have something in your right hand to identify it.');
 
-    const cost = this.mpCost();
-
-    if(!effect && user.mp.getValue() < cost) return user.sendClientMessage('You do not have enough MP!');
-    user.mp.sub(cost);
+    if(!this.tryToConsumeMP(user, effect)) return;
 
     this.use(user, effect);
   }
