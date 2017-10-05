@@ -1,45 +1,49 @@
 <div class="p-1 char-container align-content-start">
   <div class="vertical-center w-100 background-text" *ngIf="visibleNPCS().length === 0">You don't see anything.</div>
-  <div class="char-card-container" *ngFor="let npc of visibleNPCS()">
+  <div class="char-card-container" *ngFor="let npc of visibleNPCS(); let i = index">
 
-    <div class="char-left-container">
+    <div class="char-card" *ngIf="npc">
+      <div class="char-left-container">
 
-      <div class="char-health d-flex justify-content-center" [ngClass]="[barClass(npc)]">
-        <app-life-heart [target]="npc"></app-life-heart>
+        <div class="char-health d-flex justify-content-center" [ngClass]="[barClass(npc)]">
+          <app-life-heart [target]="npc"></app-life-heart>
+        </div>
+
+        <div class="char-direction vertical-center">
+          {{ directionTo(npc) }}
+        </div>
       </div>
 
-      <div class="char-direction vertical-center">
-        {{ directionTo(npc) }}
-      </div>
-    </div>
+      <div class="char-middle" (click)="doAction(npc, $event, i)">
 
-    <div class="char-card" (click)="doAction(npc, $event)">
+        <div class="char-target" *ngIf="npc.uuid === colyseusGame.currentTarget">
+          <div class="outer circle"></div>
+          <div class="middle circle"></div>
+          <div class="inner circle"></div>
+          <div class="innermost circle"></div>
+        </div>
 
-      <div class="char-target" *ngIf="npc.uuid === colyseusGame.currentTarget">
-        <div class="outer circle"></div>
-        <div class="middle circle"></div>
-        <div class="inner circle"></div>
-        <div class="innermost circle"></div>
-      </div>
+        <div class="char-title" [ngClass]="[barClass(npc)]">
+          <div class="char-name">
+            {{ npc.name }}
+          </div>
 
-      <div class="char-title" [ngClass]="[barClass(npc)]">
-        <div class="char-name">
-          {{ npc.name }}
+        </div>
+
+        <div class="char-gear">
+          <div class="gear-item right">
+            <app-item size="xsmall" [showDesc]="false" [item]="npc.rightHand" *ngIf="npc.rightHand"></app-item>
+          </div>
+          <div class="gear-item armor">
+            <app-item size="xsmall" [showDesc]="false" [item]="npcArmorItem(npc)" *ngIf="npcArmorItem(npc)"></app-item>
+          </div>
+          <div class="gear-item left">
+            <app-item size="xsmall" [showDesc]="false" [item]="npc.leftHand" *ngIf="npc.leftHand"></app-item>
+          </div>
         </div>
 
       </div>
 
-      <div class="char-gear">
-        <div class="gear-item right">
-          <app-item size="xsmall" [showDesc]="false" [item]="npc.rightHand" *ngIf="npc.rightHand"></app-item>
-        </div>
-        <div class="gear-item armor">
-          <app-item size="xsmall" [showDesc]="false" [item]="npcArmorItem(npc)" *ngIf="npcArmorItem(npc)"></app-item>
-        </div>
-        <div class="gear-item left">
-          <app-item size="xsmall" [showDesc]="false" [item]="npc.leftHand" *ngIf="npc.leftHand"></app-item>
-        </div>
-      </div>
     </div>
   </div>
 </div>
