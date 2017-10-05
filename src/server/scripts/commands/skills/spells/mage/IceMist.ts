@@ -3,30 +3,28 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../models/character';
-import { MagicMissile as CastEffect } from '../../../../../effects/MagicMissile';
+import { IceMist as CastEffect } from '../../../../../effects/IceMist';
 
-export class MagicMissile extends Skill {
+export class IceMist extends Skill {
 
-  public name = 'magicmissile';
+  public name = 'icemist';
   public format = 'Target';
 
   static macroMetadata = {
-    name: 'MagicMissile',
-    macro: 'magicmissile',
-    icon: 'missile-swarm',
-    color: '#0059bd',
-    mode: 'lockActivation'
+    name: 'IceMist',
+    macro: 'icemist',
+    icon: 'kaleidoscope-pearls',
+    color: '#000080',
+    mode: 'clickToTarget'
   };
 
   flagSkills = [SkillClassNames.Conjuration];
 
-  mpCost = () => 5;
+  mpCost = () => 40;
   range = () => 5;
 
   execute(user: Character, { gameState, args, effect }) {
-    if(!args) return false;
-
-    const target = this.getTarget(user, args);
+    const target = this.getTarget(user, args, true);
     if(!target) return;
 
     if(!this.tryToConsumeMP(user, effect)) return;

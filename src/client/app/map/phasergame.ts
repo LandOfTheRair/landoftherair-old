@@ -50,6 +50,8 @@ export class Game {
     Interactables: {}
   };
 
+  private vfx: any;
+
   private visibleSprites = {};
 
   public canCreate: Promise<any>;
@@ -95,6 +97,21 @@ export class Game {
     this.colyseus.game.sfx$.subscribe(nextSfx => {
       this.playSfx(nextSfx);
     });
+
+    this.colyseus.game.vfx$.subscribe(nextVfx => {
+      this.drawVfx(nextVfx);
+    })
+  }
+
+  private drawVfx({ effect, tiles }) {
+    tiles.forEach(({ x, y }) => {
+      const sprite = this.g.add.sprite(x * 64, y * 64, 'Effects', effect);
+      this.vfx.add(sprite);
+
+      setTimeout(() => {
+        sprite.destroy();
+      }, 2000);
+    })
   }
 
   private playSfx(sfx: string) {
@@ -139,6 +156,10 @@ export class Game {
 
     if(this.otherPlayerSprites) {
       this.otherPlayerSprites.destroy();
+    }
+
+    if(this.vfx) {
+      this.vfx.destroy();
     }
 
     this.visibleNPCUUIDHash = {};
@@ -507,6 +528,7 @@ export class Game {
     this.g.load.spritesheet('Swimming', `${this.assetUrl}/swimming.png`, 64, 64);
     this.g.load.spritesheet('Creatures', `${this.assetUrl}/creatures.png`, 64, 64);
     this.g.load.spritesheet('Items', `${this.assetUrl}/items.png`, 64, 64);
+    this.g.load.spritesheet('Effects', `${this.assetUrl}/effects.png`, 64, 64);
 
     bgms.forEach(bgm => {
       this.g.load.audio(`bgm-${bgm}`, `${this.assetUrl}/bgm/${bgm}.mp3`);
@@ -559,6 +581,7 @@ export class Game {
     this.canCreateBool = true;
 
     this.itemsOnGround = this.g.add.group();
+    this.vfx = this.g.add.group();
     this.visibleNPCs = this.g.add.group();
     this.otherPlayerSprites = this.g.add.group();
 
@@ -585,6 +608,7 @@ export class Game {
     if(this.playerSprite) {
       this.playerSprite.destroy();
     }
+    this.vfx.destroy();
     this.otherPlayerSprites.destroy();
     this.itemsOnGround.destroy();
     this.visibleNPCs.destroy();

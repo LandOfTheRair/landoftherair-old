@@ -42,6 +42,8 @@ export class ColyseusGameService {
   public bgm$ = new Subject();
   public sfx$ = new Subject();
 
+  public vfx$ = new Subject();
+
   private overrideNoBgm: boolean;
   private overrideNoSfx: boolean;
 
@@ -258,6 +260,7 @@ export class ColyseusGameService {
     }
 
     if(other.target)                this.setTarget(other.target);
+    if(action === 'draw_effect_r')  return this.drawEffectRadius(other);
     if(action === 'set_map')        return this.setMap(other.map);
     if(action === 'update_locker')  return this.updateLocker(other.locker);
     if(action === 'show_lockers')   return this.showLockerWindow(other.lockers, other.lockerId);
@@ -268,6 +271,22 @@ export class ColyseusGameService {
     if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
+  }
+
+  private drawEffect(effect: number, tiles: any[]) {
+    this.vfx$.next({ effect, tiles });
+  }
+
+  private drawEffectRadius({ effect, center, radius }: any) {
+    const tiles = [];
+
+    for(let x = center.x - radius; x <= center.x + radius; x++) {
+      for(let y = center.y - radius; y <= center.y + radius; y++) {
+        tiles.push({ x, y });
+      }
+    }
+
+    this.drawEffect(effect, tiles);
   }
 
   private setMap(map: any) {

@@ -252,10 +252,13 @@ export class CombatHelper {
 
   static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass }: any = {}) {
 
-    attacker.combatTicks = 10;
+    if(attacker) {
+      attacker.combatTicks = 10;
+    }
+
     attacked.combatTicks = 10;
 
-    if(skillRef) {
+    if(skillRef && attacker) {
       attacker.flagSkill(skillRef.flagSkills);
     }
 
@@ -316,7 +319,7 @@ export class CombatHelper {
       const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
       damage -= damageReduced;
 
-      if(damageReduced > 0 && attacker) {
+      if(damageReduced > 0 && attacker && attacker !== defender) {
         attacker.sendClientMessage({ message: `Your attack is mangled by a magical force!`, subClass: `combat self blocked`, target: defender.uuid });
       }
 
@@ -336,7 +339,10 @@ export class CombatHelper {
     const damageType = damageClass === 'physical' ? 'melee' : 'magic';
 
     if(attackerDamageMessage && attacker) {
-      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat self ${otherClass} ${damageType}`, target: defender.uuid });
+
+      const secondaryClass = attacker !== defender ? 'self' : 'other';
+
+      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat ${secondaryClass} ${otherClass} ${damageType}`, target: defender.uuid });
     }
 
     if(defenderDamageMessage && attacker !== defender) {

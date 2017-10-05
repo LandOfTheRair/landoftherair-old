@@ -28,19 +28,19 @@
             "requiresLearn": false
         },
         {
-            "name": "Stairs",
-            "macro": "up",
-            "icon": "3d-stairs",
-            "color": "#404040",
+            "name": "Show Stats",
+            "macro": "show_stats",
+            "icon": "checklist",
+            "color": "#000000",
             "mode": "autoActivate",
             "isSystem": true,
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show_stats",
-            "icon": "checklist",
-            "color": "#000000",
+            "name": "Stairs",
+            "macro": "up",
+            "icon": "3d-stairs",
+            "color": "#404040",
             "mode": "autoActivate",
             "isSystem": true,
             "requiresLearn": false
@@ -164,11 +164,56 @@
             "requiresLearn": true
         },
         {
+            "name": "BarFire",
+            "macro": "barfire",
+            "icon": "rosa-shield",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFrost",
+            "macro": "barfrost",
+            "icon": "rosa-shield",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarWater",
+            "macro": "barwater",
+            "icon": "rosa-shield",
+            "color": "#208aec",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "FireMist",
+            "macro": "firemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Identify",
             "macro": "identify",
             "icon": "uncertainty",
             "color": "#665600",
             "mode": "autoActivate",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "IceMist",
+            "macro": "icemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#000080",
+            "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
         },

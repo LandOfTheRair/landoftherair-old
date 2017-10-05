@@ -24,7 +24,7 @@ export class Afflict extends SpellEffect {
     CombatHelper.magicalAttack(caster, target, {
       effect: this,
       skillRef,
-      atkMsg: `You afflict ${target.name}.`,
+      atkMsg: `You afflict ${target.name}!`,
       defMsg: `${caster.name} hit you with an affliction!`,
       damage,
       damageClass: 'necrotic'
