@@ -5,7 +5,7 @@
     <div *ngFor="let y of colyseus.game.clientGameState.fovArray"
          class="fog"
          [style.left]="((x+4)*64)+'px'"
-         [style.top]="(((y+4)*64)+28)+'px'"
+         [style.top]="(((y+4)*64))+'px'"
          [class.hidden]="game && game.shouldRender && colyseus.game.clientGameState.fov[x] && colyseus.game.clientGameState.fov[x][y]"
     ></div>
   </div>
