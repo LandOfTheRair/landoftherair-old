@@ -115,6 +115,9 @@ export class AppComponent implements OnInit {
   public showActiveTarget: boolean;
 
   @LocalStorage()
+  public pinLastTarget: boolean;
+
+  @LocalStorage()
   public playBackgroundMusic: boolean;
 
   @LocalStorage()
@@ -158,7 +161,7 @@ export class AppComponent implements OnInit {
 
     const defaultOptions = [
       'showInventoryBelt', 'showInventorySack', 'showEquipment', 'showCommandLine',
-      'showActiveTarget',
+      'showActiveTarget', 'pinLastTarget',
       'autoHideLobby',
       'playBackgroundMusic', 'playSoundEffects'
     ];
