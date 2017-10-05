@@ -105,8 +105,8 @@ export class Stats {
   offense = 0;
   defense = 0;
 
-  hideLevel = 0;
-  seeHideLevel = 0;
+  stealth = 0;
+  perception = 0;
 
   magicalResist = 0;
   physicalResist = 0;
