@@ -27,6 +27,8 @@ export class Player extends Character {
   $$lastRegion: string;
   $$swimElement: string;
 
+  bgmSetting: 'town' | 'dungeon' | 'wilderness';
+
   respawnPoint: { x: number, y: number, map: string };
 
   init() {
@@ -113,11 +115,16 @@ export class Player extends Character {
     }
   }
 
+  isPlayer() {
+    return true;
+  }
+
   die(killer) {
     super.die(killer);
 
     // 5 minutes to restore
     this.$$deathTicks = 360 * 5;
+    this.combatTicks = 0;
 
     if(killer) {
       const myCon = this.getTotalStat('con');
@@ -260,6 +267,8 @@ export class Player extends Character {
 
   tick() {
     super.tick();
+
+    if(this.isInCombat) this.combatTicks--;
 
     if(!this.$$actionQueue) return;
     const nextAction = this.$$actionQueue.shift();

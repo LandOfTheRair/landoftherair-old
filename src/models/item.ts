@@ -133,7 +133,8 @@ export class Item {
   x: number;
   y: number;
 
-  $heldBy;
+  $heldBy: any;
+  $$isPlayerCorpse: boolean;
 
   effect: any;
 
@@ -172,6 +173,17 @@ export class Item {
     if(this.condition <= 40000) return 'mint';
     if(this.condition <= 50000) return 'above mint';
     return 'perfect';
+  }
+
+  conditionACModifier(): number {
+    if(this.condition <= 0)     return -3;
+    if(this.condition <= 5000)  return -2;
+    if(this.condition <= 10000) return -1;
+    if(this.condition <= 20000) return 0;
+    if(this.condition <= 30000) return 1;
+    if(this.condition <= 40000) return 2;
+    if(this.condition <= 50000) return 3;
+    return 4;
   }
 
   setOwner(player: Character) {

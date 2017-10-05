@@ -26,18 +26,10 @@ export class MagicMissile extends Skill {
   execute(user: Character, { gameState, args, effect }) {
     if(!args) return false;
 
-    const range = this.range();
+    const target = this.getTarget(user, args);
+    if(!target) return;
 
-    const possTargets = user.$$room.getPossibleMessageTargets(user, args);
-    const target = possTargets[0];
-    if(!target) return user.sendClientMessage('You do not see that person.');
-
-    if(target.distFrom(user) > range) return user.sendClientMessage('That target is too far away!');
-
-    const cost = this.mpCost();
-
-    if(!effect && user.mp.getValue() < cost) return user.sendClientMessage('You do not have enough MP!');
-    user.mp.sub(cost);
+    if(!this.tryToConsumeMP(user, effect)) return;
 
     this.use(user, target, effect);
   }

@@ -1,5 +1,5 @@
 
-import { reject, filter, extend, find, pull, size, pick, minBy, includes } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes } from 'lodash';
 
 import { Player } from './player';
 
@@ -21,6 +21,10 @@ export class GameState {
   groundItems: any = {};
 
   fov: Mrpas;
+
+  get allPossibleTargets(): Character[] {
+    return (<any>this.players).concat(this.mapNPCs);
+  }
 
   addNPC(npc: NPC) {
     npc.$$map = this.map;
@@ -70,11 +74,11 @@ export class GameState {
     player.$fov = affected;
   }
 
-  getPlayersInRange(ref, radius, except = []) {
+  private getInRange(arr: Character[], ref, radius, except: string[] = []) {
 
     const { x, y } = ref;
 
-    return reject(this.players, p => {
+    return reject(arr, p => {
 
       if(ref.$fov) {
         const offsetX = p.x - x;
@@ -83,11 +87,19 @@ export class GameState {
       }
 
       return p.x < x - radius
-          || p.x > x + radius
-          || p.y < y - radius
-          || p.y > y + radius
-          || includes(except, p.uuid);
+        || p.x > x + radius
+        || p.y < y - radius
+        || p.y > y + radius
+        || includes(except, p.uuid);
     });
+  }
+
+  getPlayersInRange(ref, radius, except: string[] = []) {
+    return this.getInRange(this.players, ref, radius, except);
+  }
+
+  getAllInRange(ref, radius, except: string[] = []) {
+    return this.getInRange(this.allPossibleTargets, ref, radius, except);
   }
 
   private checkTargetForHostility(me: NPC, target: Character): boolean {
@@ -100,7 +112,7 @@ export class GameState {
   }
 
   getPossibleTargetsFor(me: NPC, radius) {
-    return filter((<any>this.players).concat(this.mapNPCs), char => {
+    return filter(this.allPossibleTargets, char => {
 
       // no hitting myself
       if(me === char) return false;
@@ -148,17 +160,18 @@ export class GameState {
 
     if(ignoreMessages) return;
 
-    const regionObjs = filter(this.map.layers[MapLayer.RegionDescriptions].objects, reg => {
+    const findMe = (reg) => {
       const x = (reg.x / 64);
       const y = (reg.y / 64);
       const width = reg.width / 64;
       const height = reg.height / 64;
       return player.x >= x
-          && player.x < x + width
-          && player.y >= y
-          && player.y < y + height;
-    });
+        && player.x < x + width
+        && player.y >= y
+        && player.y < y + height;
+    };
 
+    const regionObjs = filter(this.map.layers[MapLayer.RegionDescriptions].objects, reg => findMe(reg));
 
     const regionObj = minBy(regionObjs, 'width');
     let regionDesc = '';
@@ -179,6 +192,9 @@ export class GameState {
     const desc = intDesc || swimDesc || foliageDesc || floorDesc || terrainDesc;
 
     const hasNewRegion = regionDesc && regionDesc !== player.$$lastRegion;
+
+    const bgmObj = filter(this.map.layers[MapLayer.BackgroundMusic].objects, reg => findMe(reg))[0];
+    player.bgmSetting = bgmObj ? bgmObj.name : 'wilderness';
 
     if(hasNewRegion) {
       player.$$lastRegion = regionDesc;
@@ -236,6 +252,16 @@ export class GameState {
 
     delete item.x;
     delete item.y;
+  }
+
+  serializableGroundItems() {
+    const groundItems = cloneDeep(this.groundItems);
+    Object.keys(groundItems).forEach(x => {
+      Object.keys(groundItems[x]).forEach(y => {
+        delete groundItems[x][y].Corpse;
+      });
+    });
+    return groundItems;
   }
 
   getGroundItems(x, y) {
@@ -298,7 +324,8 @@ export class GameState {
         'dir', 'sprite',
         'leftHand', 'rightHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2',
         'hp',
-        'x', 'y'
+        'x', 'y',
+        'effects'
       ]);
       if(!baseObj.gear) baseObj.gear = {};
       return baseObj;

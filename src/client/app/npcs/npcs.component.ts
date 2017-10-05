@@ -1,18 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { compact } from 'lodash';
+import { compact, find, pull } from 'lodash';
 import { NPC } from '../../../models/npc';
 import { MacroService } from '../macros.service';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-npcs',
   templateUrl: './npcs.component.html',
   styleUrls: ['./npcs.component.scss']
 })
-export class NpcsComponent {
+export class NpcsComponent implements OnInit, OnDestroy {
 
-  constructor(private colyseusGame: ColyseusGameService, private macroService: MacroService) { }
+  private pinOption$: any;
+
+  private shouldPin: boolean;
+
+  private pinUUID: string;
+  private pinPos: number;
+
+  constructor(
+    private colyseusGame: ColyseusGameService,
+    private macroService: MacroService,
+    private localStorage: LocalStorageService
+  ) { }
+
+  ngOnInit() {
+    this.pinOption$ = this.localStorage.observe('pinLastTarget')
+      .subscribe((value) => {
+        this.shouldPin = value;
+      });
+  }
+
+  ngOnDestroy() {
+    this.pinOption$.unsubscribe();
+  }
 
   public visibleNPCS() {
     const fov = this.colyseusGame.character.$fov;
@@ -21,7 +44,7 @@ export class NpcsComponent {
     if(!fov) return [];
     const me = this.colyseusGame.character;
 
-    return compact(npcs.map(npc => {
+    const unsorted = compact(npcs.map(npc => {
       if((<any>npc).username === me.username) return false;
       if(npc.dir === 'C') return false;
       const diffX = npc.x - me.x;
@@ -31,6 +54,27 @@ export class NpcsComponent {
       if(!fov[diffX][diffY]) return false;
       return npc;
     }));
+
+    if(!this.pinUUID || !this.shouldPin) return unsorted;
+
+    const npc = find(unsorted, { uuid: this.pinUUID });
+    if(!npc) return unsorted;
+
+    pull(unsorted, npc);
+
+    if(this.pinPos > unsorted.length) {
+      const difference = this.pinPos - unsorted.length;
+      if(difference > 0) {
+        for(let i = 0; i < difference; i++) {
+          unsorted.push(null);
+        }
+      }
+      unsorted.push(npc);
+    } else {
+      unsorted.splice(this.pinPos, 0, npc);
+    }
+
+    return unsorted;
   }
 
   public npcArmorItem(npc: NPC) {
@@ -57,22 +101,25 @@ export class NpcsComponent {
   }
 
   public barClass(npc: NPC) {
-    const me = this.colyseusGame.character;
-
-    if(npc.hostility === 'Never') return 'friendly';
-
-    if(npc.hostility === 'Always'
-    || npc.agro[me.uuid]
-    || me.agro[npc.uuid]
-    || npc.allegianceReputation[me.allegiance] <= 0) return 'angry';
-    return 'neutral';
+    return this.colyseusGame.hostilityLevelFor(npc);
   }
 
-  public doAction(npc: NPC) {
+  public doAction(npc: NPC, $event, index) {
+
+    // always set target, but if you hold ctrl, don't do anything else
+    this.colyseusGame.clientGameState.activeTarget = npc;
+    if($event.ctrlKey) return;
+
+    this.pinUUID = npc.uuid;
+    this.pinPos = index;
+
     if(npc.hostility === 'Never') {
       this.colyseusGame.sendCommandString(`${npc.uuid}, hello`);
     } else if((<any>npc).username && !this.colyseusGame.currentCommand) {
       this.colyseusGame.currentCommand = `${npc.uuid}, `;
+    } else if(this.colyseusGame.currentCommand) {
+      this.colyseusGame.sendCommandString(this.colyseusGame.currentCommand, npc.uuid);
+      this.colyseusGame.currentCommand = '';
     } else {
       this.colyseusGame.sendCommandString(this.macroService.activeMacro.macro, npc.uuid);
     }

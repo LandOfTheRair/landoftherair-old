@@ -1,6 +1,9 @@
 # Land of the Rair [![Build Status](https://travis-ci.org/LandOfTheRair/landoftherair.svg?branch=master)](https://travis-ci.org/LandOfTheRair/landoftherair)
 
-A prototype MORPG.
+A prototype MORPG inspired by MUDs of olde.
+
+## Contributor Disclaimer
+While I appreciate contributions, consider that all contributions, significant or otherwise, cannot be compensated for at this time. 
 
 ## Requirements
 
@@ -66,6 +69,14 @@ Some commands are hidden and don't really need to be used by players, but should
 * `~~pos` - get your current x, y, and map.
 
 #### GM Commands
+
+As a GM, you get access to several commands in the lobby:
+
+* `/motd <motd>` - set the MOTD in the lobby
+* `/resetmotd` - unset the MOTD
+* `/alert <msg>` - alert every player with a certain message (very annoying!)
+
+You also get access to some commands in-game:
 
 * `@gold <num>` - create <num> gold on your tile
 * `@item <item name>` - create a particular item on your tile

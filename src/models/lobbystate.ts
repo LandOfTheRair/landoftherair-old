@@ -60,8 +60,6 @@ export class LobbyState {
   }
 
   removeAccountAtPosition(position: number) {
-    console.log(this.accounts, position);
-
     pullAt(this.accounts, [position]);
     this.account$.next(this.accounts);
   }

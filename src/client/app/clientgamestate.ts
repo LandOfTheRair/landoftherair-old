@@ -1,5 +1,5 @@
 
-import { extend, remove, find, differenceBy } from 'lodash';
+import { extend, remove, find, differenceBy, compact } from 'lodash';
 
 import { Player } from '../../models/player';
 
@@ -8,6 +8,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { NPC } from '../../models/npc';
 import { Item } from '../../models/item';
+import { Character } from '../../models/character';
 
 export class ClientGameState {
   players: Player[] = [];
@@ -16,6 +17,8 @@ export class ClientGameState {
   mapData: any = { openDoors: {} };
   mapNPCs: NPC[] = [];
   fov: any = {};
+
+  _activeTarget: Character;
 
   groundItems: any = {};
 
@@ -35,6 +38,18 @@ export class ClientGameState {
   updates = {
     openDoors: []
   };
+
+  get allCharacters(): Character[] {
+    return (<Character[]>this.mapNPCs).concat(this.players);
+  }
+
+  get activeTarget() {
+    return this._activeTarget;
+  }
+
+  set activeTarget(target) {
+    this._activeTarget = target;
+  }
 
   constructor(opts) {
     extend(this, opts);
@@ -108,6 +123,12 @@ export class ClientGameState {
 
   updatePlayerEffect(playerIndex, effectIndex, effect) {
     this.players[playerIndex].effects[effectIndex] = effect;
+    this.players[playerIndex].effects = compact(this.players[playerIndex].effects);
+    this._updatePlayerAtIndex(playerIndex);
+  }
+
+  updatePlayerEffectDuration(playerIndex, effectIndex, duration) {
+    this.players[playerIndex].effects[effectIndex].duration = duration;
     this._updatePlayerAtIndex(playerIndex);
   }
 

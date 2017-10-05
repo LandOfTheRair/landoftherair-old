@@ -1,7 +1,7 @@
 
 import * as TiledPlugin from 'phaser-tiled';
 
-import { find, remove, compact, difference } from 'lodash';
+import { find, remove, compact, difference, values } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
 
@@ -13,6 +13,21 @@ import { TrueSightMap, TrueSightMapReversed } from './phaserconversionmaps';
 import { MapLayer } from '../../../models/maplayer';
 
 const cacheKey = TiledPlugin.utils.cacheKey;
+
+const SFXMap = {
+  'combat self block armor': 'combat-block-armor',
+  'combat self block weapon': 'combat-block-weapon',
+  'combat self miss': 'combat-miss',
+  'combat other kill': 'combat-die',
+  'combat self kill': 'combat-kill',
+  'combat self hit magic': 'combat-hit-spell',
+  'combat self hit melee': 'combat-hit-melee',
+  'spell buff give': 'spell-buff',
+  'spell buff get': 'spell-buff'
+};
+
+const bgms = ['combat', 'town', 'dungeon', 'wilderness'];
+const sfxs = values(SFXMap);
 
 export class Game {
 
@@ -35,6 +50,8 @@ export class Game {
     Interactables: {}
   };
 
+  private vfx: any;
+
   private visibleSprites = {};
 
   public canCreate: Promise<any>;
@@ -43,6 +60,12 @@ export class Game {
   private resolveCanUpdate;
   private canCreateBool: boolean;
   private canUpdateBool: boolean;
+
+  private blockUpdates: boolean;
+
+  private currentBgm: string;
+  private bgms = {};
+  private sfxs = {};
 
   public get shouldRender() {
     if(!this.g || !this.g.camera || !this.playerSprite) return false;
@@ -56,9 +79,73 @@ export class Game {
 
   constructor(private clientGameState: ClientGameState, public colyseus, private player: Player) {
     this.initPromises();
+
+    // reset any time inGame is set to true
+    this.colyseus.game.inGame$.subscribe(inGame => {
+      if(!inGame) {
+        this.updateBgm('');
+        return;
+      }
+
+      this.reset();
+    });
+
+    this.colyseus.game.bgm$.subscribe(nextBgm => {
+      this.updateBgm(nextBgm);
+    });
+
+    this.colyseus.game.sfx$.subscribe(nextSfx => {
+      this.playSfx(nextSfx);
+    });
+
+    this.colyseus.game.vfx$.subscribe(nextVfx => {
+      this.drawVfx(nextVfx);
+    })
+  }
+
+  private drawVfx({ effect, tiles }) {
+    tiles.forEach(({ x, y }) => {
+      const sprite = this.g.add.sprite(x * 64, y * 64, 'Effects', effect);
+      this.vfx.add(sprite);
+
+      setTimeout(() => {
+        sprite.destroy();
+      }, 2000);
+    })
+  }
+
+  private playSfx(sfx: string) {
+    const convertSfx = SFXMap[sfx];
+
+    if(!this.sfxs[convertSfx] || !this.sfxs[convertSfx].isDecoded) return;
+
+    this.sfxs[convertSfx].play();
+  }
+
+  private updateBgm(newBgm: string) {
+    if(!newBgm && this.currentBgm) {
+      this.bgms[this.currentBgm].stop();
+      this.currentBgm = '';
+      return;
+    }
+
+    if(newBgm === this.currentBgm) return;
+
+    if(this.currentBgm) {
+      this.bgms[this.currentBgm].stop();
+    }
+
+    if(this.bgms[newBgm] && this.bgms[newBgm].isDecoded) {
+      this.currentBgm = newBgm;
+      this.bgms[this.currentBgm].loopFull();
+    }
+
   }
 
   public reset() {
+    this.updateBgm('');
+    this.blockUpdates = true;
+
     if(this.itemsOnGround) {
       this.itemsOnGround.destroy();
     }
@@ -69,6 +156,10 @@ export class Game {
 
     if(this.otherPlayerSprites) {
       this.otherPlayerSprites.destroy();
+    }
+
+    if(this.vfx) {
+      this.vfx.destroy();
     }
 
     this.visibleNPCUUIDHash = {};
@@ -437,11 +528,34 @@ export class Game {
     this.g.load.spritesheet('Swimming', `${this.assetUrl}/swimming.png`, 64, 64);
     this.g.load.spritesheet('Creatures', `${this.assetUrl}/creatures.png`, 64, 64);
     this.g.load.spritesheet('Items', `${this.assetUrl}/items.png`, 64, 64);
+    this.g.load.spritesheet('Effects', `${this.assetUrl}/effects.png`, 64, 64);
+
+    bgms.forEach(bgm => {
+      this.g.load.audio(`bgm-${bgm}`, `${this.assetUrl}/bgm/${bgm}.mp3`);
+    });
+
+    sfxs.forEach(sfx => {
+      this.g.load.audio(`sfx-${sfx}`, `${this.assetUrl}/sfx/${sfx}.mp3`);
+    });
 
     this.g.game.renderer.setTexturePriority(['Terrain', 'Walls', 'Decor', 'Creatures', 'Items']);
   }
 
   create() {
+    this.g.game.canvas.oncontextmenu = (e) => {
+      e.preventDefault();
+      return false;
+    };
+
+    bgms.forEach(bgm => {
+      this.bgms[bgm] = this.g.add.audio(`bgm-${bgm}`);
+    });
+
+    sfxs.forEach(sfx => {
+      this.sfxs[sfx] = this.g.add.audio(`sfx-${sfx}`);
+    });
+
+    this.blockUpdates = false;
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 
     const decorFirstGid = this.map.tilesets[2].firstgid;
@@ -467,6 +581,7 @@ export class Game {
     this.canCreateBool = true;
 
     this.itemsOnGround = this.g.add.group();
+    this.vfx = this.g.add.group();
     this.visibleNPCs = this.g.add.group();
     this.otherPlayerSprites = this.g.add.group();
 
@@ -474,7 +589,7 @@ export class Game {
   }
 
   update() {
-    if(!this.player || !this.colyseus.game._inGame) return;
+    if(!this.player || !this.colyseus.game._inGame || this.blockUpdates) return;
 
     // center on player mid
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
@@ -493,6 +608,7 @@ export class Game {
     if(this.playerSprite) {
       this.playerSprite.destroy();
     }
+    this.vfx.destroy();
     this.otherPlayerSprites.destroy();
     this.itemsOnGround.destroy();
     this.visibleNPCs.destroy();

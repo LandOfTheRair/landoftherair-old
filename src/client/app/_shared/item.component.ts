@@ -47,7 +47,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
       position: absolute;
       color: #000;
       text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       z-index: 560;
     }
     
@@ -95,7 +95,8 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
     }
   `],
   template: `    
-    <div class="item-container" [ngClass]="[size]"
+    <div class="item-container" 
+         [ngClass]="[size]"
          [isDisabled]="!showDesc" 
          triggers="dblclick:mouseleave" 
          [dragScope]="scopes"

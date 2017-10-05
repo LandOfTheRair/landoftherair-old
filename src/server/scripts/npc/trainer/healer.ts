@@ -6,7 +6,11 @@ import { SkillClassNames } from '../../../../models/character';
 const learnedSkills = { Restoration: {
   1: ['Cure'],
   2: ['Afflict'],
-  3: ['TrueSight']
+  3: ['TrueSight'],
+  4: ['Antidote'],
+  5: ['Poison'],
+  6: ['BarNecro'],
+  7: ['Revive']
 } };
 
 export const setup = async (npc: NPC) => {

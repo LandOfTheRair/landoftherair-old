@@ -21,7 +21,7 @@ export class Hidden extends SpellEffect {
     }
 
     this.duration = -1;
-    this.effectInfo = { isPermanent: true, stats: { hideLevel: caster.hideLevel() } };
+    this.effectInfo = { isPermanent: true, caster: caster.uuid, stats: { hideLevel: caster.hideLevel() } };
     caster.applyEffect(this);
   }
 

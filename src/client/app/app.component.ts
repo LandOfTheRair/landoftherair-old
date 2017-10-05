@@ -25,12 +25,30 @@ export class AppComponent implements OnInit {
   @ViewChild('viewMacro')
   public viewMacroModal;
 
+  @ViewChild('macroGroups')
+  public macroGroupsModal;
+
+  @ViewChild('options')
+  public optionsModal;
+
+  @ViewChild('macros')
+  public macrosModal;
+
+  // general utility w/ macros
+  public macroArray = Array(10).fill(null).map((x, i) => i);
+
+  // editing a new macro
   private oldMacro: Macro;
   public currentlyEditingMacro: Macro = new Macro();
   public currentIconPage = 0;
   public currentIconsInPage = [];
-  public currentMacroGroup = 'default';
-  public macroArray = Array(10).fill(null).map((x, i) => i);
+
+  // editing macro groups
+  public currentlySelectedMacroForMacroGroup: Macro = new Macro();
+  public currentMacroPage = 0;
+  public currentMacrosInPage = [];
+  public currentMacroGroupForEditor: string;
+  public currentMacroIdxForEditor: number;
 
   public optionsModalVisible = false;
   public macroModalVisible = false;
@@ -93,6 +111,18 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public suppressZeroDamage: boolean;
 
+  @LocalStorage()
+  public showActiveTarget: boolean;
+
+  @LocalStorage()
+  public pinLastTarget: boolean;
+
+  @LocalStorage()
+  public playBackgroundMusic: boolean;
+
+  @LocalStorage()
+  public playSoundEffects: boolean;
+
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
   }
@@ -111,11 +141,16 @@ export class AppComponent implements OnInit {
     if(!this.minimized) this.minimized = {};
     this.colyseus.init();
 
-    this.initDefaultOptions();
+    this.colyseus.isConnected$.subscribe((isConnected) => {
+      if(isConnected) return;
 
-    this.colyseus.game.clientGameState.loadPlayer$.subscribe(() => {
-      this.currentMacroGroup = 'default';
+      this.viewMacroModal.hide();
+      this.macroGroupsModal.hide();
+      this.optionsModal.hide();
+      this.macrosModal.hide();
     });
+
+    this.initDefaultOptions();
   }
 
   initDefaultOptions() {
@@ -124,10 +159,16 @@ export class AppComponent implements OnInit {
       this[`${opt}Size`] = 'normal';
     });
 
-    if(isNull(this.showInventoryBelt)) this.showInventoryBelt = true;
-    if(isNull(this.showInventorySack)) this.showInventorySack = true;
-    if(isNull(this.showEquipment))     this.showEquipment = true;
-    if(isNull(this.showCommandLine))   this.showCommandLine = true;
+    const defaultOptions = [
+      'showInventoryBelt', 'showInventorySack', 'showEquipment', 'showCommandLine',
+      'showActiveTarget', 'pinLastTarget',
+      'autoHideLobby',
+      'playBackgroundMusic', 'playSoundEffects'
+    ];
+
+    defaultOptions.forEach(opt => {
+      if(isNull(this[opt])) this[opt] = true;
+    });
 
     this.theme = 'Light';
   }
@@ -173,22 +214,17 @@ export class AppComponent implements OnInit {
   addMacroGroup() {
     (<any>swal)({
       titleText: 'Name your macro group.',
-      text: 'It must be between 2 and 20 characters.',
+      text: 'It must be between 2 and 10 characters.',
       input: 'text',
       preConfirm: (name) => {
         return new Promise((resolve, reject) => {
-          if(name.length < 2 || name.length > 20) reject('Group name is not the right size');
+          if(name.length < 2 || name.length > 10) reject('Group name is not the right size');
           resolve();
         });
       }
     }).then(name => {
       this.macroService.addMacroGroup(name);
     }).catch(() => {});
-  }
-
-  removeMacroGroup() {
-    this.macroService.removeMacroGroup(this.currentMacroGroup);
-    this.currentMacroGroup = 'default';
   }
 
   setMacroKey($event) {
@@ -234,5 +270,46 @@ export class AppComponent implements OnInit {
   showMacroModal() {
     this.macroModalVisible = true;
     this.macroService.resetUsableMacros();
+  }
+
+  makeActiveGroup(groupName: string, slot: number) {
+    this.macroService.visibleMacroGroups[slot] = groupName;
+    this.macroService.saveMacros();
+  }
+
+  removeActiveGroup(slot: number) {
+    if(slot < 1) return;
+    this.macroService.visibleMacroGroups[slot] = null;
+    this.macroService.saveMacros();
+  }
+
+  deleteGroup(groupName: string) {
+    (<any>swal)({
+      titleText: 'Delete Macro Group',
+      text: `Are you sure you want to remove the group "${groupName}"? This action is not reversible.`
+    }).then(() => {
+      this.macroService.removeMacroGroup(groupName);
+    }).catch(() => {});
+  }
+
+  resetVariablesForMacroPopover(groupName, idx) {
+    this.changeMacroPage(0);
+    this.currentMacroGroupForEditor = groupName;
+    this.currentMacroIdxForEditor = idx;
+  }
+
+  changeMacroPage(newPage) {
+    if(newPage < 0) return;
+    const pageSize = 45;
+    const allMacros = this.macroService.allMacroNames();
+    const maxPage = Math.floor(allMacros.length / pageSize);
+    if(newPage > maxPage) return;
+    this.currentMacroPage = newPage;
+    const page = this.currentMacroPage * pageSize;
+    this.currentMacrosInPage = allMacros.slice(page, page + pageSize);
+  }
+
+  selectMacroForSpot(macroName: string) {
+    this.macroService.updateMacroGroup(this.currentMacroGroupForEditor, this.currentMacroIdxForEditor, macroName);
   }
 }

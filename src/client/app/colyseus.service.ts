@@ -4,12 +4,14 @@ import { environment } from '../environments/environment';
 import * as Colyseus from 'colyseus.js';
 import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ColyseusService {
 
   client: any;
   private _isConnected = false;
+  public isConnected$ = new Subject();
 
   constructor(public lobby: ColyseusLobbyService, public game: ColyseusGameService) {}
 
@@ -31,6 +33,7 @@ export class ColyseusService {
 
     this.client.onOpen.add(() => {
       this._isConnected = true;
+      this.isConnected$.next(true);
     });
 
     this.client.onError.add((e) => {
@@ -40,6 +43,7 @@ export class ColyseusService {
     this.client.onClose.add(() => {
       this.game.quit();
       this._isConnected = false;
+      this.isConnected$.next(false);
     });
   }
 
