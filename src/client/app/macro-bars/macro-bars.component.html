@@ -9,20 +9,14 @@
         </div>
       </div>
 
-      <div class="macro-container"
-           *ngFor="let macroIdx of macroArray"
-           [class.active]="macroService.allMacroGroups[group][macroIdx] === selectedMacro">
+      <div class="macrobar-item" *ngFor="let macroIdx of macroArray">
 
-        <div class="macro"
-             *ngIf="macroService.allMacroGroups[group][macroIdx] && macroService.allMacros[macroService.allMacroGroups[group][macroIdx]]"
-             (click)="operateOnMacro(macroService.allMacros[macroService.allMacroGroups[group][macroIdx]])"
-             [tooltip]="macroService.allMacros[macroService.allMacroGroups[group][macroIdx]].name">
+        <app-macro
+          (click)="operateOnMacro(macroService.allMacros[macroService.allMacroGroups[group][macroIdx]])"
+          [macroRef]="macroService.allMacroGroups[group][macroIdx]"
+          [isActive]="macroService.allMacroGroups[group][macroIdx] === selectedMacro"
+        ></app-macro>
 
-          <app-icon [name]="macroService.allMacros[macroService.allMacroGroups[group][macroIdx]].icon"
-                    [bgColor]="macroService.allMacros[macroService.allMacroGroups[group][macroIdx]].background || '#ccc'"
-                    [fgColor]="macroService.allMacros[macroService.allMacroGroups[group][macroIdx]].foreground"
-                    size="normal"></app-icon>
-        </div>
       </div>
     </div>
   </div>

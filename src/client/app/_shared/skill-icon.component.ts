@@ -40,7 +40,7 @@ const tooltips = {
 @Component({
   selector: 'app-skill-icon',
   template: `
-    <app-icon [name]="icon" [tooltip]="tooltip"></app-icon>
+    <app-icon [name]="icon" [tooltip]="tooltip" container="body" bgColor="transparent"></app-icon>
   `
 })
 export class SkillIconComponent {

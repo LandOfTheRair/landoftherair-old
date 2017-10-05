@@ -146,4 +146,5 @@
   sprite: 142
   effect:
     name: Antidote
+    potency: 10
   value: 1000

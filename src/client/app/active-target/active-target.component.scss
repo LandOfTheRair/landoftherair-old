@@ -1,0 +1,36 @@
+
+:host {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 600;
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.target-name, .progress-bar {
+  color: #fff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.target-name {
+  text-align: center;
+}
+
+.target-health, .target-status {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.effect-container {
+  width: 32px;
+  height: 40px;
+  margin: 4px;
+  background-color: #ccc;
+  pointer-events: auto;
+}

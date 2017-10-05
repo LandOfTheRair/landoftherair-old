@@ -23,3 +23,11 @@ export * from './Afflict';
 export * from './MagicMissile';
 
 export * from './Poison';
+
+export * from './BarFire';
+export * from './BarFrost';
+export * from './BarNecro';
+export * from './BarWater';
+
+export * from './FireMist';
+export * from './IceMist';

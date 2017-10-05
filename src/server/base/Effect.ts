@@ -8,6 +8,13 @@ export const Maxes = {
   Minor: 15
 };
 
+class EffectInfo {
+  damage?: number;
+  caster: string;
+  isPermanent?: boolean;
+  stats?: any;
+}
+
 export class Effect {
 
   name = '';
@@ -16,7 +23,7 @@ export class Effect {
   potency = 0;
   stats = {};
 
-  effectInfo: any = {};
+  effectInfo: EffectInfo = { caster: '' };
 
   constructor(opts) {
     extend(this, opts);
@@ -37,7 +44,7 @@ export class Effect {
   effectStart(char: Character) {}
   effectEnd(char: Character) {}
 
-  effectMessage(char: Character, message: string) {
+  effectMessage(char: Character, message: string|any) {
     if(!char) return;
     char.sendClientMessage(message);
   }
@@ -45,6 +52,38 @@ export class Effect {
 
 export class SpellEffect extends Effect {
   flagSkills = [];
+
+  potencyMultiplier = 0;
+
+  maxSkillForSkillGain = 0;
+  skillFlag: Function;
+
+  casterEffectMessage(char: Character, message: string) {
+    super.effectMessage(char, { message, subClass: 'spell buff give' });
+  }
+
+  targetEffectMessage(char: Character, message: string) {
+    super.effectMessage(char, { message, subClass: 'spell buff get' });
+  }
+
+  setPotencyAndGainSkill(caster: Character, skillRef?: Skill) {
+    if(this.skillFlag) {
+
+      const flaggedSkill = this.skillFlag(caster);
+
+      this.potency = caster.calcSkillLevel(flaggedSkill);
+
+      const skillGained = this.maxSkillForSkillGain - this.potency;
+
+      if(skillRef && skillGained > 0) {
+        caster.gainSkill(flaggedSkill, skillGained);
+      }
+
+    } else {
+      this.potency = 1;
+    }
+
+  }
 
   cast(caster: Character, target: Character, skillRef: Skill) {}
 }

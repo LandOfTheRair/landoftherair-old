@@ -1,10 +1,16 @@
 
-import * as rollbar from 'rollbar';
+import * as Rollbar from 'rollbar';
+
+let rollbar = null;
 
 const rollbarToken = process.env.ROLLBAR_TOKEN;
 
 if(rollbarToken) {
-  rollbar.init(rollbarToken);
+  rollbar = new Rollbar({
+    accessToken: rollbarToken,
+    captureUncaught: true,
+    captureUnhandledRejections: true
+  });
 }
 
 export class Logger {
@@ -26,9 +32,9 @@ export class Logger {
 
     if(rollbarToken) {
       if(payload) {
-        rollbar.handleErrorWithPayloadData(error, payload);
+        rollbar.error(error, null, payload);
       } else {
-        rollbar.handleError(error);
+        rollbar.error(error);
       }
     }
   }

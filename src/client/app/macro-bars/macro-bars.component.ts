@@ -58,6 +58,8 @@ export class MacroBarsComponent implements OnInit {
   }
 
   public operateOnMacro(macro: Macro) {
+    if(!macro) return;
+
     if(macro.lockActivation) {
       this.setSelectedMacro(macro.name);
       return;

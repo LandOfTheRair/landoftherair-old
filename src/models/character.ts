@@ -18,6 +18,8 @@ import { Effect } from '../server/base/Effect';
 import * as Effects from '../server/effects';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
+import { GameWorld } from '../server/rooms/GameWorld';
+import { VisualEffect } from '../server/gidmetadata/visual-effects';
 
 export type Allegiance =
   'None'
@@ -115,6 +117,12 @@ export class Stats {
   iceResist = 0;
 }
 
+export type StatName =
+  'str' | 'dex' | 'con' | 'int' | 'wis' | 'wil' | 'luk' | 'cha' | 'con'
+| 'move' | 'hpregen' | 'mpregen' | 'hp' | 'mp'
+| 'armorClass' | 'accuracy' | 'offense' | 'defense'
+| 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist';
+
 export const MaxSizes = {
   Belt: 5,
   Sack: 25,
@@ -176,8 +184,10 @@ export class Character {
   $fov: any;
   $$map: any;
   $$deathTicks: number;
-  $$room: any;
+  $$room: GameWorld;
   $$corpseRef: Item;
+
+  combatTicks = 0;
 
   $$ai: any;
 
@@ -185,6 +195,10 @@ export class Character {
 
   alignment: Alignment = 'Neutral';
   allegianceReputation: any = {};
+
+  get isInCombat() {
+    return this.combatTicks > 0;
+  }
 
   get sackSize() {
     return MaxSizes.Sack;
@@ -250,7 +264,7 @@ export class Character {
 
   toJSON() {
     return omitBy(this, (value, key) => {
-      if(key === '$fov') return false;
+      if(key === '$fov' || key === 'battleTicks' || key === 'bgmSetting') return false;
       if(!Object.getOwnPropertyDescriptor(this, key)) return true;
       if(startsWith(key, '$$')) return true;
       if(key === '_id') return true;
@@ -313,8 +327,13 @@ export class Character {
     return slot;
   }
 
-  loseStat(stat, value = 1) {
-    this.stats[stat] = Math.max(this.stats[stat] - value, 1);
+  gainStat(stat: StatName, value = 1) {
+    this.stats[stat] = Math.max(this.stats[stat] + value, 0);
+    this.recalculateStats();
+  }
+
+  loseStat(stat: StatName, value = 1) {
+    this.stats[stat] = Math.max(this.stats[stat] - value, 0);
     this.recalculateStats();
   }
 
@@ -720,6 +739,17 @@ export class Character {
         p.sendClientMessage(sendMessage);
       }
     });
+  }
+
+  drawEffectInRadius(effectName: VisualEffect, center: any, effectRadius = 0, drawRadius = 0) {
+    this.$$room.state.getPlayersInRange(this, drawRadius).forEach(p => {
+      p.$$room.drawEffect(p, { x: center.x, y: center.y }, effectName, effectRadius);
+
+    });
+  }
+
+  isPlayer() {
+    return false;
   }
 
   tick() {

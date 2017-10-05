@@ -2,10 +2,15 @@ import { Injectable } from '@angular/core';
 import { ClientGameState } from './clientgamestate';
 import * as swal from 'sweetalert2';
 
+import { Subject } from 'rxjs/Subject';
+
 import { find, includes, findIndex, extend } from 'lodash';
 import { Player } from '../../models/player';
 import { Item } from '../../models/item';
 import { Locker } from '../../models/container/locker';
+import { LocalStorageService } from 'ngx-webstorage';
+import { Character } from '../../models/character';
+import { NPC } from '../../models/npc';
 
 @Injectable()
 export class ColyseusGameService {
@@ -33,7 +38,30 @@ export class ColyseusGameService {
 
   public currentCommand = '';
 
-  constructor() {}
+  public inGame$ = new Subject();
+  public bgm$ = new Subject();
+  public sfx$ = new Subject();
+
+  public vfx$ = new Subject();
+
+  private overrideNoBgm: boolean;
+  private overrideNoSfx: boolean;
+
+  constructor(private localStorage: LocalStorageService) {
+
+    this.overrideNoBgm = !this.localStorage.retrieve('playBackgroundMusic');
+    this.overrideNoSfx = !this.localStorage.retrieve('playSoundEffects');
+
+    this.localStorage.observe('playBackgroundMusic')
+      .subscribe(shouldPlayBgm => {
+        this.overrideNoBgm = !shouldPlayBgm;
+      });
+
+    this.localStorage.observe('playSoundEffects')
+      .subscribe(shouldPlaySfx => {
+        this.overrideNoSfx = !shouldPlaySfx;
+      });
+  }
 
   init(colyseus, client, character) {
     this.colyseus = colyseus;
@@ -43,6 +71,12 @@ export class ColyseusGameService {
     this.clientGameState.loadPlayer$.next();
 
     this.initGame();
+
+    document.addEventListener('contextmenu', (event) => {
+      if(!this._inGame) return;
+      event.preventDefault();
+      return false;
+    });
   }
 
   get isChangingMap() {
@@ -140,6 +174,10 @@ export class ColyseusGameService {
       this.clientGameState.updatePlayerEffect(+entityId, effect, value);
     });
 
+    this.worldRoom.state.listen('players/:id/effects/:effect/duration', 'replace', (entityId, effect, value) => {
+      this.clientGameState.updatePlayerEffectDuration(+entityId, effect, value);
+    });
+
     this.worldRoom.state.listen('players/:id/effects/:effect', 'remove', (entityId, effect) => {
       this.clientGameState.updatePlayerEffect(+entityId, effect, null);
     });
@@ -152,12 +190,14 @@ export class ColyseusGameService {
     this.worldRoom.state.listen('mapData/openDoors/:id/isOpen', 'replace', updateDoor);
 
     this.worldRoom.onJoin.add(() => {
+      this.inGame$.next(true);
       this._inGame = true;
     });
 
     this.worldRoom.onLeave.add(() => {
       this.clientGameState.removeAllPlayers();
       if(this.changingMap) return;
+      this.inGame$.next(false);
       this._inGame = false;
     });
 
@@ -170,10 +210,24 @@ export class ColyseusGameService {
     if(!character) return;
     this.character = new Player(character);
 
+    // update fov
     if(this.character.$fov) {
       this.setFOV(this.character.$fov);
     }
 
+    // set bgm for the game (considering options)
+    if(this.overrideNoBgm) {
+      this.bgm$.next('');
+
+    } else {
+      if(this.character.combatTicks > 0) {
+        this.bgm$.next('combat');
+      } else {
+        this.bgm$.next(this.character.bgmSetting);
+      }
+    }
+
+    // update hp/xp/etc for floating boxes
     this.clientGameState.playerBoxes$.next(this.character);
   }
 
@@ -183,8 +237,12 @@ export class ColyseusGameService {
 
   private logMessage({ name, message, subClass, grouping, dirFrom }: any) {
     const isZero = includes(message, '[0') && includes(message, 'damage]');
-    if(isZero && JSON.parse(localStorage.getItem('ng2-webstorage|suppresszerodamage'))) return;
+    if(isZero && this.localStorage.retrieve('suppressZeroDamage')) return;
     this.clientGameState.addLogMessage({ name, message, subClass, grouping, dirFrom });
+
+    if(!this.overrideNoSfx) {
+      this.sfx$.next(subClass);
+    }
   }
 
   private setTarget(target: string) {
@@ -202,6 +260,7 @@ export class ColyseusGameService {
     }
 
     if(other.target)                this.setTarget(other.target);
+    if(action === 'draw_effect_r')  return this.drawEffectRadius(other);
     if(action === 'set_map')        return this.setMap(other.map);
     if(action === 'update_locker')  return this.updateLocker(other.locker);
     if(action === 'show_lockers')   return this.showLockerWindow(other.lockers, other.lockerId);
@@ -212,6 +271,22 @@ export class ColyseusGameService {
     if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
+  }
+
+  private drawEffect(effect: number, tiles: any[]) {
+    this.vfx$.next({ effect, tiles });
+  }
+
+  private drawEffectRadius({ effect, center, radius }: any) {
+    const tiles = [];
+
+    for(let x = center.x - radius; x <= center.x + radius; x++) {
+      for(let y = center.y - radius; y <= center.y + radius; y++) {
+        tiles.push({ x, y });
+      }
+    }
+
+    this.drawEffect(effect, tiles);
   }
 
   private setMap(map: any) {
@@ -431,5 +506,23 @@ export class ColyseusGameService {
 
   public buildUseAction(item: Item, context: string, contextSlot: string|number) {
     this.sendRawCommand('~use', `${context} ${contextSlot || -1} ${item.itemClass} ${item.uuid}`);
+  }
+
+  public hostilityLevelFor(compare: Character) {
+    const me = this.character;
+
+    if(compare.agro[me.uuid]
+    || me.agro[compare.uuid]) return 'hostile';
+
+    const hostility = (<NPC>compare).hostility;
+
+    if(!hostility) return 'neutral';
+
+    if(hostility === 'Never') return 'friendly';
+
+    if(hostility === 'Always'
+    || compare.allegianceReputation[me.allegiance] <= 0) return 'hostile';
+
+    return 'neutral';
   }
 }

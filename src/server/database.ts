@@ -32,7 +32,7 @@ class Database {
         if(err) {
           return reject(err);
         }
-
+        
         Logger.log('MongoDB Connected');
 
         this.client = client;

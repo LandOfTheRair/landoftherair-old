@@ -12,19 +12,17 @@ export class Poison extends SpellEffect {
     color: '#0a0'
   };
 
+  maxSkillForSkillGain = 7;
+  skillFlag = () => SkillClassNames.Restoration;
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
-    if(!this.potency) this.potency = caster.calcSkillLevel(SkillClassNames.Restoration);
+    this.setPotencyAndGainSkill(caster, skillRef);
 
     let mult = 0.15;
     if(this.potency > 0)  mult = 0.35;
     if(this.potency > 11) mult = 1;
     if(this.potency > 21) mult = 3;
-
-    const skillGained = 7 - this.potency;
-    if(skillRef && skillGained > 0) {
-      caster.gainSkill(SkillClassNames.Restoration, skillGained);
-    }
 
     const wisCheck = Math.max(1, Math.floor(mult * caster.getTotalStat('wis')));
     const damage = +dice.roll(`${this.potency || 1}d${wisCheck}`);

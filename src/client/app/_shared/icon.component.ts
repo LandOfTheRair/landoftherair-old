@@ -17,6 +17,17 @@ import { environment } from '../../environments/environment';
       font-size: 300%;
     }
     
+    .mac-container.nsmall {
+      min-width: 40px;
+      max-width: 40px;
+      min-height: 40px;
+      max-height: 40px;
+    }
+    
+    .mac-container.nsmall .macicons {
+      font-size: 250%;
+    }
+    
     .mac-container.small {
       min-width: 32px;
       max-width: 32px;
@@ -51,7 +62,7 @@ export class IconComponent {
   public name = 'undecided';
 
   @Input()
-  public size: 'normal' | 'small' | 'xsmall' = 'normal';
+  public size: 'normal' | 'nsmall' | 'small' | 'xsmall' = 'normal';
 
   @Input()
   public bgColor = 'white';

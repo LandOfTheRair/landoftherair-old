@@ -84,6 +84,7 @@ export class AuthService {
         console.error(err);
       } else {
         this.setSession(result);
+        this.cleanUpIframes();
       }
     });
   }
@@ -113,5 +114,12 @@ export class AuthService {
   public unscheduleRenewal() {
     if(!this.refreshSubscription) return;
     this.refreshSubscription.unsubscribe();
+  }
+
+  private cleanUpIframes() {
+    setTimeout(() => {
+      const elements = document.getElementsByTagName('iframe');
+      while (elements[0]) elements[0].parentNode.removeChild(elements[0]);
+    }, 1000);
   }
 }

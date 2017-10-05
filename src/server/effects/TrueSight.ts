@@ -1,23 +1,37 @@
 
-import { Effect, Maxes } from '../base/Effect';
+import { Effect, Maxes, SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../models/character';
+import { Skill } from '../base/Skill';
 
-export class TrueSight extends Effect {
+export class TrueSight extends SpellEffect {
 
   iconData = {
     name: 'all-seeing-eye',
     color: '#00a'
   };
 
-  cast(caster: Character, target: Character) {
-    const usedSkill = caster.baseClass === 'Healer' ? SkillClassNames.Restoration : SkillClassNames.Conjuration;
+  maxSkillForSkillGain = 7;
+  skillFlag = (caster) => {
+    if(caster.baseClass === 'Healer') return SkillClassNames.Restoration;
+    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
+    return SkillClassNames.Thievery;
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.setPotencyAndGainSkill(caster, skillRef);
+
+    if(caster !== target) {
+      this.casterEffectMessage(caster, `You cast TrueSight on ${target.name}.`);
+    }
+
+    const usedSkill = this.skillFlag(caster);
     const durationMult = caster.baseClass === 'Healer' ? 20 : 10;
     if(!this.duration) this.duration = caster.calcSkillLevel(usedSkill) * durationMult;
     target.applyEffect(this);
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'Your vision expands to see other planes of existence.');
+    this.targetEffectMessage(char, 'Your vision expands to see other planes of existence.');
   }
 
   effectEnd(char: Character) {

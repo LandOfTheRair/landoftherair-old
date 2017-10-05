@@ -35,22 +35,23 @@
     }
 
     .message {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
 
       &.font-size-xlarge {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
       }
 
       &.font-size-large {
-        font-size: 0.9rem;
+        font-size: 1.1rem;
       }
 
       &.font-size-small {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
       }
 
       &.font-size-xsmall {
-        font-size: 0.5rem;
+        font-size: 0.7rem;
       }
 
       &.loot {
@@ -67,7 +68,7 @@
         }
 
         &.other.hit {
-          color: #b20;
+          color: #ff5a35;
         }
 
         &.heal {
@@ -77,6 +78,10 @@
         &.kill {
           font-weight: bold;
         }
+      }
+
+      strong {
+        letter-spacing: 2px;
       }
     }
   }

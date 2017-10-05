@@ -22,13 +22,17 @@ import { Component, Input } from '@angular/core';
       font-weight: bold;
       text-align: center;
       width: 100%;
+      z-index: 20;
+      text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; 
+      color: #000;
     }
   `],
   template: `
-      <div class="status-effect" *ngIf="effect.iconData">
+      <div class="status-effect" *ngIf="effect && effect.iconData">
         <div class="status-remaining" *ngIf="effect.duration > 0">{{ effect.duration }}</div>
-        <app-icon [bgColor]="effect.iconData.backgroundColor || 'transparent'"
+        <app-icon [bgColor]="effect.iconData.backgroundColor || transparent"
                   [fgColor]="effect.iconData.color"
+                  [bgColor]="effect.iconData.bgColor"
                   [name]="effect.iconData.name"
                   size="small"
                   container="body"

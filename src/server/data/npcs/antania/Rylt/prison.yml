@@ -22,8 +22,8 @@
     max: 65
 
   hp:
-    min: 50
-    max: 100
+    min: 30
+    max: 70
 
   giveXp:
     min: 75
@@ -115,6 +115,7 @@
   allegiance: 'None'
   stats: 10
   level: 10
+  baseClass: Warrior
 
   skillLevels:
     polearm: 4
@@ -246,6 +247,7 @@
 - npcId: Rylt Renegade Mage Rebel
   name: rebel
   hostility: Always
+  baseClass: Mage
   sprite: 545
   alignment: Evil
   stats: 10
@@ -293,6 +295,7 @@
 
 - npcId: Rylt Renegade Healer Rebel
   name: rebel
+  baseClass: Healer
   hostility: Always
   sprite: 550
   alignment: Evil
@@ -342,6 +345,7 @@
 - npcId: Tonwin
   name: Tonwin
   hostility: Always
+  baseClass: Warrior
   sprite: 5
   alignment: Evil
   stats: 15

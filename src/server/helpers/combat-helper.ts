@@ -40,6 +40,9 @@ export class CombatHelper {
 
     if(defender.isDead() || attacker.isDead()) return { isDead: true };
 
+    attacker.combatTicks = 10;
+    defender.combatTicks = 10;
+
     let attackerWeapon: Item;
 
     if(isThrow) {
@@ -77,10 +80,13 @@ export class CombatHelper {
     if(!defenderArmor && defender.gear.Robe1 && defender.gear.Robe1.hasCondition()) defenderArmor = defender.gear.Robe1;
     if(!defenderArmor && defender.gear.Armor && defender.gear.Armor.hasCondition()) defenderArmor = defender.gear.Armor;
 
-    if(!defenderArmor) defenderArmor = { hasCondition: () => true, isOwnedBy: (x) => true, loseCondition: (x, y) => {} };
+    if(!defenderArmor) defenderArmor = { hasCondition: () => true,
+                                         isOwnedBy: (x) => true,
+                                         loseCondition: (x, y) => {},
+                                         conditionACModifier: () => 0 };
 
     const defenderBlocker = defender.rightHand
-                        || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands',
+                        || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands', conditionACModifier: () => 0,
                              hasCondition: () => true, isOwnedBy: (x) => true, loseCondition: (x, y) => {} };
 
     const defenderShield = defender.leftHand && this.isShield(defender.leftHand)
@@ -94,12 +100,14 @@ export class CombatHelper {
       dex: attacker.getTotalStat('dex'),
       str: attacker.getTotalStat('str'),
       str4: Math.floor(attacker.getTotalStat('str') / 4),
-      divisor: Classes[attacker.baseClass || 'Undecided'].combatDivisor,
-      level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatDivisor),
+      multiplier: Classes[attacker.baseClass || 'Undecided'].combatDamageMultiplier,
+      level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatLevelDivisor),
       damageMin: attackerWeapon.minDamage,
       damageMax: attackerWeapon.maxDamage,
       damageBase: attackerWeapon.baseDamage
     };
+
+    const defenderACBoost = defenderArmor.conditionACModifier() + (defenderShield ? defenderShield.conditionACModifier() : 0);
 
     const defenderScope = {
       skill: defender.calcSkillLevel(defenderBlocker.type),
@@ -107,10 +115,10 @@ export class CombatHelper {
       agi: defender.getTotalStat('agi'),
       dex: defender.getTotalStat('dex'),
       dex4: Math.floor(defender.getTotalStat('dex') / 4),
-      armorClass: defender.getTotalStat('armorClass'),
+      armorClass: defender.getTotalStat('armorClass') + defenderACBoost,
       shieldAC: defenderShield ? defenderShield.stats.armorClass : 0,
       shieldDefense: defenderShield ? defenderShield.stats.defense || 0 : 0,
-      level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatDivisor)
+      level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor)
     };
 
     attackerWeapon.loseCondition(1, () => attacker.recalculateStats());
@@ -190,7 +198,7 @@ export class CombatHelper {
     const damageMax = random(attackerScope.damageMin, attackerScope.damageMax);
     const damageRight = Math.floor(attackerScope.str + attackerScope.level + damageMax);
 
-    let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}`) / attackerScope.divisor) + attackerScope.damageBase;
+    let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}`) * attackerScope.multiplier) + attackerScope.damageBase;
 
     let damageType = 'was a successful strike';
 
@@ -244,7 +252,13 @@ export class CombatHelper {
 
   static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass }: any = {}) {
 
-    if(skillRef) {
+    if(attacker) {
+      attacker.combatTicks = 10;
+    }
+
+    attacked.combatTicks = 10;
+
+    if(skillRef && attacker) {
       attacker.flagSkill(skillRef.flagSkills);
     }
 
@@ -296,7 +310,7 @@ export class CombatHelper {
     { damage, damageClass, attackerDamageMessage, defenderDamageMessage }
   ) {
 
-    if(defender.isDead()) return;
+    if(defender.isDead() || (<any>defender).hostility === 'Never') return;
 
     const isHeal = damage < 0;
 
@@ -305,7 +319,7 @@ export class CombatHelper {
       const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
       damage -= damageReduced;
 
-      if(damageReduced > 0 && attacker) {
+      if(damageReduced > 0 && attacker && attacker !== defender) {
         attacker.sendClientMessage({ message: `Your attack is mangled by a magical force!`, subClass: `combat self blocked`, target: defender.uuid });
       }
 
@@ -322,13 +336,17 @@ export class CombatHelper {
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;
 
     const otherClass = isHeal ? 'heal' : 'hit';
+    const damageType = damageClass === 'physical' ? 'melee' : 'magic';
 
     if(attackerDamageMessage && attacker) {
-      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat self ${otherClass}`, target: defender.uuid });
+
+      const secondaryClass = attacker !== defender ? 'self' : 'other';
+
+      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat ${secondaryClass} ${otherClass} ${damageType}`, target: defender.uuid });
     }
 
     if(defenderDamageMessage && attacker !== defender) {
-      defender.sendClientMessage({ message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat other ${otherClass}` });
+      defender.sendClientMessage({ message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat other ${otherClass} ${damageType}` });
     }
 
     defender.hp.sub(damage);

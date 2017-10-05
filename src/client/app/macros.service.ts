@@ -45,6 +45,8 @@ export class MacroService {
 
   public allMacroGroups: any = {};
 
+  public iterableMacroGroups: any[] = [];
+
   public allUsableMacros: Macro[] = [];
 
   public hasLoaded = false;
@@ -170,18 +172,21 @@ export class MacroService {
     this.storeForCharacter('visibleMacroGroups', this.visibleMacroGroups);
     this.storeForCharacter('allMacroGroups', this.allMacroGroups);
     this.resetUsableMacros();
+    this.resetIterableMacroGroups();
     this.updateMacroKeys();
   }
 
   public addMacroGroup(name) {
     this.allMacroGroups[name] = [];
     this.saveMacros();
+    this.resetIterableMacroGroups();
   }
 
   public removeMacroGroup(name) {
     if(name === 'default') return;
     delete this.allMacroGroups[name];
     this.saveMacros();
+    this.resetIterableMacroGroups();
   }
 
   public loadMacros() {
@@ -191,6 +196,7 @@ export class MacroService {
 
     _.extend(this.allMacros, this.customMacros);
     this.resetUsableMacros();
+    this.resetIterableMacroGroups();
     this.updateMacroKeys();
   }
 
@@ -198,12 +204,17 @@ export class MacroService {
     return this.allUsableMacros.map(x => x.name);
   }
 
-  public allMacroGroupNames() {
-    return Object.keys(this.allMacroGroups).sort();
-  }
-
   public macroExists(name) {
     return this.allMacros[name];
+  }
+
+  public updateMacroGroup(macroGroup: string, macroIdx: number, newMacro: string) {
+    this.allMacroGroups[macroGroup][macroIdx] = newMacro;
+    this.saveMacros();
+  }
+
+  private resetIterableMacroGroups() {
+    this.iterableMacroGroups = Object.keys(this.allMacroGroups).map(key => ({ key, group: this.allMacroGroups[key] }));
   }
 
   public resetUsableMacros() {
