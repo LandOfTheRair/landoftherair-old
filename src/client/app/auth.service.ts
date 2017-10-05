@@ -117,7 +117,9 @@ export class AuthService {
   }
 
   private cleanUpIframes() {
-    const elements = document.getElementsByTagName('iframe');
-    while (elements[0]) elements[0].parentNode.removeChild(elements[0]);
+    setTimeout(() => {
+      const elements = document.getElementsByTagName('iframe');
+      while (elements[0]) elements[0].parentNode.removeChild(elements[0]);
+    }, 1000);
   }
 }
