@@ -7,9 +7,6 @@ import { BarNecro as CastEffect } from '../../../../../effects/BarNecro';
 
 export class BarNecro extends Skill {
 
-  public name = 'barnecro';
-  public format = 'Target';
-
   static macroMetadata = {
     name: 'BarNecro',
     macro: 'barnecro',
@@ -17,6 +14,9 @@ export class BarNecro extends Skill {
     color: '#1b390e',
     mode: 'clickToTarget'
   };
+
+  public name = 'barnecro';
+  public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];
 

@@ -7,11 +7,6 @@ import { CombatHelper } from '../../../../helpers/combat-helper';
 
 export class Mug extends Skill {
 
-  public name = 'mug';
-  public format = 'Target';
-
-  requiresLearn = false;
-
   static macroMetadata = {
     name: 'Mug',
     macro: 'mug',
@@ -19,6 +14,11 @@ export class Mug extends Skill {
     color: '#530000',
     mode: 'lockActivation'
   };
+
+  public name = 'mug';
+  public format = 'Target';
+
+  requiresLearn = false;
 
   execute(user: Character, { gameState }) {
     this.use(user);

@@ -6,8 +6,6 @@ import { compact, endsWith } from 'lodash';
 
 export class Search extends Look {
 
-  public name = '~search';
-
   static macroMetadata = {
     name: 'Search',
     macro: '~search',
@@ -15,6 +13,8 @@ export class Search extends Look {
     color: '#665600',
     mode: 'autoActivate'
   };
+
+  public name = '~search';
 
   execute(player: Player, { room, gameState, args }) {
     const items = gameState.getGroundItems(player.x, player.y);

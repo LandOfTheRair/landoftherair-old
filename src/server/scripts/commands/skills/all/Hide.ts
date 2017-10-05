@@ -7,11 +7,6 @@ import { Hidden as CastEffect } from '../../../../effects/Hidden';
 
 export class Hide extends Skill {
 
-  public name = 'hide';
-  public format = '';
-
-  requiresLearn = false;
-
   static macroMetadata = {
     name: 'Hide',
     macro: 'hide',
@@ -20,6 +15,11 @@ export class Hide extends Skill {
     backgroundColor: '#000000',
     mode: 'autoActivate'
   };
+
+  public name = 'hide';
+  public format = '';
+
+  requiresLearn = false;
 
   execute(user: Character, { gameState }) {
     this.use(user);

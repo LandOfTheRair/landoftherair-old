@@ -13,7 +13,7 @@ export class GMRespawn extends Command {
     if(!player.isGM) return;
     if(!args) return false;
 
-    const spawner = find(room.allSpawners, spawner => includes(spawner.npcIds, args));
+    const spawner = find(room.allSpawners, checkSpawner => includes(checkSpawner.npcIds, args));
     if(!spawner) return player.sendClientMessage('That lair does not exist.');
 
     spawner.createNPC();

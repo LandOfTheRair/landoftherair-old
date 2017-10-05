@@ -7,8 +7,6 @@ import { TrueSight as CastEffect } from '../../../../../effects/TrueSight';
 
 export class TrueSight extends Skill {
 
-  public name = 'truesight';
-
   static macroMetadata = {
     name: 'TrueSight',
     macro: 'truesight',
@@ -16,6 +14,8 @@ export class TrueSight extends Skill {
     color: '#00a',
     mode: 'clickToTarget'
   };
+
+  public name = 'truesight';
 
   flagSkills = [SkillClassNames.Conjuration];
 

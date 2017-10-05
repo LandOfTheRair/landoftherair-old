@@ -7,9 +7,6 @@ import { Revive as CastEffect } from '../../../../../effects/Revive';
 
 export class Revive extends Skill {
 
-  public name = 'revive';
-  public format = '';
-
   static macroMetadata = {
     name: 'Revive',
     macro: 'revive',
@@ -17,6 +14,9 @@ export class Revive extends Skill {
     color: '#080',
     mode: 'autoActivate'
   };
+
+  public name = 'revive';
+  public format = '';
 
   flagSkills = [SkillClassNames.Restoration];
 

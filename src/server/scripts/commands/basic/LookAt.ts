@@ -4,9 +4,6 @@ import { Player } from '../../../../models/player';
 
 export class LookAt extends Command {
 
-  public name = 'look_at';
-  public format = 'TARGET';
-
   static macroMetadata = {
     name: 'Look At',
     macro: 'look_at',
@@ -14,6 +11,9 @@ export class LookAt extends Command {
     color: '#8A6948',
     mode: 'clickToTarget'
   };
+
+  public name = 'look_at';
+  public format = 'TARGET';
 
   execute(player: Player, { room, args }) {
     if(!args) return false;
@@ -37,7 +37,10 @@ export class LookAt extends Command {
       handDesc = leftDesc || rightDesc;
     }
 
-    const description = `You are looking at a being named ${target.name}. ${target.name} is of ${(target.alignment || 'unknown').toLowerCase()} alignment. ${target.name} is wearing ${chestDesc} and holding ${handDesc}.`;
+    const description = `
+    You are looking at a being named ${target.name}. 
+    ${target.name} is of ${(target.alignment || 'unknown').toLowerCase()} alignment. 
+    ${target.name} is wearing ${chestDesc} and holding ${handDesc}.`;
 
     player.sendClientMessage(description);
   }

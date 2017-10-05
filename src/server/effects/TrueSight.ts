@@ -15,7 +15,7 @@ export class TrueSight extends SpellEffect {
     if(caster.baseClass === 'Healer') return SkillClassNames.Restoration;
     if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
     return SkillClassNames.Thievery;
-  };
+  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

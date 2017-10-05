@@ -53,13 +53,15 @@ export class Move extends Command {
     const denseCheck = denseObjects.concat(interactables);
 
     const getNumStepsSuccessful = (trySteps) => {
-      for(var i = 0; i < trySteps.length; i++) {
+      let i = 0;
+
+      for(i; i < trySteps.length; i++) {
         const step = trySteps[i];
         const nextTileLoc = ((player.y + step.y) * gameState.map.width) + (player.x + step.x);
         const nextTile = denseTiles[nextTileLoc];
 
         if(nextTile === 0) {
-          const object = find(denseCheck, { x: (player.x + step.x)*64, y: (player.y + step.y + 1)*64 });
+          const object = find(denseCheck, { x: (player.x + step.x) * 64, y: (player.y + step.y + 1) * 64 });
           if(object && object.density) {
             break;
           }

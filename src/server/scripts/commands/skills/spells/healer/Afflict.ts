@@ -7,9 +7,6 @@ import { Afflict as CastEffect } from '../../../../../effects/Afflict';
 
 export class Afflict extends Skill {
 
-  public name = 'afflict';
-  public format = 'Target';
-
   static macroMetadata = {
     name: 'Afflict',
     macro: 'afflict',
@@ -17,6 +14,9 @@ export class Afflict extends Skill {
     color: '#bd5900',
     mode: 'lockActivation'
   };
+
+  public name = 'afflict';
+  public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];
 

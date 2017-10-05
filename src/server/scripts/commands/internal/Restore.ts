@@ -6,8 +6,6 @@ import { Player } from '../../../../models/player';
 
 export class Restore extends Command {
 
-  public name = 'restore';
-
   static macroMetadata = {
     name: 'Restore',
     macro: 'restore',
@@ -15,6 +13,8 @@ export class Restore extends Command {
     color: '#8A6948',
     mode: 'autoActivate'
   };
+
+  public name = 'restore';
 
   execute(player: Player, { room, gameState, args }) {
     if(!player.isDead()) return;

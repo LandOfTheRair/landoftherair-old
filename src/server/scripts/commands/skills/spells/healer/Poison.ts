@@ -7,9 +7,6 @@ import { Poison as CastEffect } from '../../../../../effects/Poison';
 
 export class Poison extends Skill {
 
-  public name = 'poison';
-  public format = 'Target';
-
   static macroMetadata = {
     name: 'Poison',
     macro: 'poison',
@@ -17,6 +14,9 @@ export class Poison extends Skill {
     color: '#0a0',
     mode: 'clickToTarget'
   };
+
+  public name = 'poison';
+  public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];
 

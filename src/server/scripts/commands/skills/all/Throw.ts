@@ -7,11 +7,6 @@ import { CombatHelper } from '../../../../helpers/combat-helper';
 
 export class Throw extends Skill {
 
-  public name = 'throw';
-  public format = 'Hand Target';
-
-  requiresLearn = false;
-
   static macroMetadata = {
     name: 'Throw',
     macro: 'throw right',
@@ -20,14 +15,19 @@ export class Throw extends Skill {
     mode: 'lockActivation'
   };
 
+  public name = 'throw';
+  public format = 'Hand Target';
+
+  requiresLearn = false;
+
   range = (attacker: Character) => {
     return 5;
-  };
+  }
 
   execute(user: Character, { gameState, args }) {
     if(!args) return false;
 
-    let [hand, targetId] = args.split(' ');
+    const [handCheck, targetId] = args.split(' ');
     if(!targetId) return false;
 
     const possTargets = user.$$room.getPossibleMessageTargets(user, targetId);
@@ -36,7 +36,7 @@ export class Throw extends Skill {
 
     if(target.distFrom(user) > this.range(user)) return user.sendClientMessage('That target is too far away!');
 
-    hand = hand.toLowerCase();
+    const hand = handCheck.toLowerCase();
     if(hand !== 'left' && hand !== 'right') return false;
     if(!user[`${hand}Hand`]) return user.sendClientMessage('You do not have anything to throw in that hand!');
 
@@ -44,7 +44,7 @@ export class Throw extends Skill {
   }
 
   use(user: Character, target: Character, opts: any = {}) {
-    let { throwHand } = opts;
+    const { throwHand } = opts;
     CombatHelper.physicalAttack(user, target, { isThrow: true, throwHand });
   }
 

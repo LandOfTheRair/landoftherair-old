@@ -6,8 +6,6 @@ import { Player } from '../../../../models/player';
 
 export class ClearCommands extends Command {
 
-  public name = '~clear';
-
   static macroMetadata = {
     name: 'Clear Buffer',
     macro: '~clear',
@@ -16,6 +14,8 @@ export class ClearCommands extends Command {
     mode: 'autoActivate',
     key: 'ESCAPE'
   };
+
+  public name = '~clear';
 
   execute(player: Player, { room, gameState, args }) {
     player.$$actionQueue = [];

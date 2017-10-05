@@ -12,8 +12,8 @@ export class MerchantToBelt extends Command {
 
   execute(player: Player, { room, gameState, args }) {
 
-    let [containerUUID, itemUUID, quantity] = args.split(' ');
-    quantity = Math.round(+quantity);
+    const [containerUUID, itemUUID, quantityCheck] = args.split(' ');
+    const quantity = Math.round(+quantityCheck);
     if(quantity < 0) return false;
 
     if(!this.checkPlayerEmptyHand(player)) return;

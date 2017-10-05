@@ -6,8 +6,6 @@ import { Player } from '../../../../models/player';
 
 export class Drink extends Command {
 
-  public name = '~drink';
-
   static macroMetadata = {
     name: 'Drink',
     macro: '~drink',
@@ -16,10 +14,12 @@ export class Drink extends Command {
     mode: 'autoActivate'
   };
 
+  public name = '~drink';
+
   execute(player: Player, { room, gameState, args }) {
     const item = player.potionHand;
     if(!item) return player.sendClientMessage('You do not have a potion to drink!');
-    
+
     player.useItem('potionHand');
   }
 

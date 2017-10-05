@@ -7,9 +7,6 @@ import { BarFire as CastEffect } from '../../../../../effects/BarFire';
 
 export class BarFire extends Skill {
 
-  public name = 'barfire';
-  public format = 'Target';
-
   static macroMetadata = {
     name: 'BarFire',
     macro: 'barfire',
@@ -17,6 +14,9 @@ export class BarFire extends Skill {
     color: '#DC143C',
     mode: 'clickToTarget'
   };
+
+  public name = 'barfire';
+  public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];
 

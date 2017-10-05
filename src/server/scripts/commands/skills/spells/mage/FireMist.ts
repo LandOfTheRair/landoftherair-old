@@ -7,9 +7,6 @@ import { FireMist as CastEffect } from '../../../../../effects/FireMist';
 
 export class FireMist extends Skill {
 
-  public name = 'firemist';
-  public format = 'Target';
-
   static macroMetadata = {
     name: 'FireMist',
     macro: 'firemist',
@@ -17,6 +14,9 @@ export class FireMist extends Skill {
     color: '#DC143C',
     mode: 'clickToTarget'
   };
+
+  public name = 'firemist';
+  public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];
 

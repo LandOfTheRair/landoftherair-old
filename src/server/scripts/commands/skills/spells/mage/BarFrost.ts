@@ -7,9 +7,6 @@ import { BarFrost as CastEffect } from '../../../../../effects/BarFrost';
 
 export class BarFrost extends Skill {
 
-  public name = 'barfrost';
-  public format = 'Target';
-
   static macroMetadata = {
     name: 'BarFrost',
     macro: 'barfrost',
@@ -17,6 +14,9 @@ export class BarFrost extends Skill {
     color: '#000080',
     mode: 'clickToTarget'
   };
+
+  public name = 'barfrost';
+  public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];
 

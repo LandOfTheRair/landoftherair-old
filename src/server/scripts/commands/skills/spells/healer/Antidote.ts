@@ -7,9 +7,6 @@ import { Antidote as CastEffect } from '../../../../../effects/Antidote';
 
 export class Antidote extends Skill {
 
-  public name = 'antidote';
-  public format = 'Target';
-
   static macroMetadata = {
     name: 'Antidote',
     macro: 'antidote',
@@ -17,6 +14,9 @@ export class Antidote extends Skill {
     color: '#0a0',
     mode: 'clickToTarget'
   };
+
+  public name = 'antidote';
+  public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];
 
