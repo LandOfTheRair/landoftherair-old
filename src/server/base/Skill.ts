@@ -25,12 +25,20 @@ export abstract class Skill extends Command {
 
     const mpCost = this.mpCost();
 
-    if(user.mp.getValue() < mpCost) {
+    if(user.baseClass === 'Thief') {
+      if(user.hp.getValue() < mpCost) {
+        user.sendClientMessage('You do not have enough HP!');
+        return false;
+      }
+
+    } else if(user.mp.getValue() < mpCost) {
       user.sendClientMessage('You do not have enough MP!');
       return false;
     }
 
-    if(mpCost > 0) {
+    if(user.baseClass === 'Thief') {
+      user.hp.sub(mpCost);
+    } else if(mpCost > 0) {
       user.mp.sub(mpCost);
     }
 
