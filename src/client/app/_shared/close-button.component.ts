@@ -9,6 +9,8 @@ import { Component } from '@angular/core';
       padding-top: 0.11rem;
       padding-bottom: 0.11rem;
       height: 26px;
+      min-width: 30px;
+      margin-right: -1px;
     }`
   ]
 })

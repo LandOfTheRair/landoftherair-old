@@ -6,7 +6,11 @@ import { SkillClassNames } from '../../../../models/character';
 const learnedSkills = { Conjuration: {
   1: ['MagicMissile'],
   2: ['Identify'],
-  3: ['TrueSight']
+  3: ['TrueSight'],
+  4: ['BarFire', 'BarFrost'],
+  5: ['BarWater'],
+  6: ['FireMist'],
+  7: ['IceMist']
 } };
 
 export const setup = async (npc: NPC) => {

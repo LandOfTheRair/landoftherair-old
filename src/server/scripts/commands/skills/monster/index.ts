@@ -1,1 +1,1 @@
-export * from './Bite';
+export * from './WeakBite';

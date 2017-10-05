@@ -58,7 +58,11 @@ const ElementalMagic = [
   'Unpracticed',
   'Flinger of Energy',
   'Identifier of Items',
-  'Seer of Truth'
+  'Seer of Truth',
+  'Elemental Protector',
+  'Protector of Breath',
+  'Flinger of Fire',
+  'Flinger of Frost'
 ];
 
 const Martial = [

@@ -16,6 +16,8 @@ import { Effect } from '../server/base/Effect';
 import * as Effects from '../server/effects';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
+import { GameWorld } from '../server/rooms/GameWorld';
+import { VisualEffect } from '../server/gidmetadata/visual-effects';
 
 export type Allegiance =
   'None'
@@ -177,7 +179,7 @@ export class Character {
   $fov: any;
   $$map: any;
   $$deathTicks: number;
-  $$room: any;
+  $$room: GameWorld;
   $$corpseRef: Item;
 
   combatTicks = 0;
@@ -723,6 +725,13 @@ export class Character {
       } else {
         p.sendClientMessage(sendMessage);
       }
+    });
+  }
+
+  drawEffectInRadius(effectName: VisualEffect, center: any, effectRadius = 0, drawRadius = 0) {
+    this.$$room.state.getPlayersInRange(this, drawRadius).forEach(p => {
+      p.$$room.drawEffect(p, { x: center.x, y: center.y }, effectName, effectRadius);
+
     });
   }
 

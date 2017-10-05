@@ -25,6 +25,7 @@ import { Character } from '../../models/character';
 import { ItemCreator } from '../helpers/item-creator';
 import { Item } from '../../models/item';
 import { Locker } from '../../models/container/locker';
+import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
 const TICK_DIVISOR = 2;
 
@@ -493,7 +494,7 @@ export class GameWorld extends Room<GameState> {
     return species[func](sample(['male', 'female']));
   }
 
-  getPossibleMessageTargets(player: Player, findStr: string) {
+  getPossibleMessageTargets(player: Character, findStr: string) {
     const allTargets = (<any>this.state.mapNPCs).concat(this.state.players);
     const possTargets = allTargets.filter(target => {
       if(target.isDead()) return;
@@ -657,5 +658,11 @@ export class GameWorld extends Room<GameState> {
     if(interactable && interactable.type === 'Door') {
       player.teleportToRespawnPoint();
     }
+  }
+
+  drawEffect(player: Player, center: any, effect: VisualEffect, radius = 0) {
+    const client = this.findClient(player);
+    const effectId = VISUAL_EFFECTS[effect];
+    this.send(client, { action: 'draw_effect_r', effect: effectId, center, radius });
   }
 }

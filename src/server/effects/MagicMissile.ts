@@ -24,7 +24,7 @@ export class MagicMissile extends SpellEffect {
     CombatHelper.magicalAttack(caster, target, {
       effect: this,
       skillRef,
-      atkMsg: `You fling magic missiles at ${target.name}.`,
+      atkMsg: `You fling magic missiles at ${target.name}!`,
       defMsg: `${caster.name} hit you with magic missiles!`,
       damage,
       damageClass: 'energy'

@@ -22,6 +22,10 @@ export class GameState {
 
   fov: Mrpas;
 
+  get allPossibleTargets(): Character[] {
+    return (<any>this.players).concat(this.mapNPCs);
+  }
+
   addNPC(npc: NPC) {
     npc.$$map = this.map;
     this.mapNPCs.push(npc);
@@ -70,11 +74,11 @@ export class GameState {
     player.$fov = affected;
   }
 
-  getPlayersInRange(ref, radius, except = []) {
+  private getInRange(arr: Character[], ref, radius, except: string[] = []) {
 
     const { x, y } = ref;
 
-    return reject(this.players, p => {
+    return reject(arr, p => {
 
       if(ref.$fov) {
         const offsetX = p.x - x;
@@ -83,11 +87,19 @@ export class GameState {
       }
 
       return p.x < x - radius
-          || p.x > x + radius
-          || p.y < y - radius
-          || p.y > y + radius
-          || includes(except, p.uuid);
+        || p.x > x + radius
+        || p.y < y - radius
+        || p.y > y + radius
+        || includes(except, p.uuid);
     });
+  }
+
+  getPlayersInRange(ref, radius, except: string[] = []) {
+    return this.getInRange(this.players, ref, radius, except);
+  }
+
+  getAllInRange(ref, radius, except: string[] = []) {
+    return this.getInRange(this.allPossibleTargets, ref, radius, except);
   }
 
   private checkTargetForHostility(me: NPC, target: Character): boolean {
@@ -100,7 +112,7 @@ export class GameState {
   }
 
   getPossibleTargetsFor(me: NPC, radius) {
-    return filter((<any>this.players).concat(this.mapNPCs), char => {
+    return filter(this.allPossibleTargets, char => {
 
       // no hitting myself
       if(me === char) return false;
