@@ -1,5 +1,5 @@
 
-import { extend, remove, find, differenceBy } from 'lodash';
+import { extend, remove, find, differenceBy, compact } from 'lodash';
 
 import { Player } from '../../models/player';
 
@@ -123,6 +123,7 @@ export class ClientGameState {
 
   updatePlayerEffect(playerIndex, effectIndex, effect) {
     this.players[playerIndex].effects[effectIndex] = effect;
+    this.players[playerIndex].effects = compact(this.players[playerIndex].effects);
     this._updatePlayerAtIndex(playerIndex);
   }
 
