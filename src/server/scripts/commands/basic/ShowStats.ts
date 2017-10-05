@@ -4,8 +4,6 @@ import { Player } from '../../../../models/player';
 
 export class ShowStats extends Command {
 
-  public name = 'show_stats';
-
   static macroMetadata = {
     name: 'Show Stats',
     macro: 'show_stats',
@@ -13,6 +11,8 @@ export class ShowStats extends Command {
     color: '#000000',
     mode: 'autoActivate'
   };
+
+  public name = 'show_stats';
 
   execute(player: Player, { room, args }) {
     player.sendClientMessage(`You are ${player.name}, the ${player.alignment} level ${player.level} ${player.baseClass}.`);

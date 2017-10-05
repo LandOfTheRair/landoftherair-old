@@ -7,9 +7,6 @@ import { Cure as CastEffect } from '../../../../../effects/Cure';
 
 export class Cure extends Skill {
 
-  public name = 'cure';
-  public format = 'Target';
-
   static macroMetadata = {
     name: 'Cure',
     macro: 'cure',
@@ -17,6 +14,9 @@ export class Cure extends Skill {
     color: '#080',
     mode: 'clickToTarget'
   };
+
+  public name = 'cure';
+  public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];
 

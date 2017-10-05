@@ -15,7 +15,7 @@ export class OpenDoor extends Command {
     let { x, y } = player.getXYFromDir(args);
 
     if(includes(args, ' ')) {
-      [x, y] = args.split(' ').map(x => +x);
+      [x, y] = args.split(' ').map(z => +z);
     }
 
     const map = gameState.map;

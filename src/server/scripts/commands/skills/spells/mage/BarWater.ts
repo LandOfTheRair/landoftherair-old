@@ -7,9 +7,6 @@ import { BarWater as CastEffect } from '../../../../../effects/BarWater';
 
 export class BarWater extends Skill {
 
-  public name = 'barwater';
-  public format = 'Target';
-
   static macroMetadata = {
     name: 'BarWater',
     macro: 'barwater',
@@ -17,6 +14,9 @@ export class BarWater extends Skill {
     color: '#208aec',
     mode: 'clickToTarget'
   };
+
+  public name = 'barwater';
+  public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];
 

@@ -7,8 +7,6 @@ import { MagicMissile as CastEffect } from '../../../../../effects/MagicMissile'
 
 export class Identify extends Skill {
 
-  public name = 'identify';
-
   static macroMetadata = {
     name: 'Identify',
     macro: 'identify',
@@ -16,6 +14,8 @@ export class Identify extends Skill {
     color: '#665600',
     mode: 'autoActivate'
   };
+
+  public name = 'identify';
 
   flagSkills = [SkillClassNames.Conjuration];
 

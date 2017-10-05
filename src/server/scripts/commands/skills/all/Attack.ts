@@ -7,10 +7,6 @@ import { CombatHelper } from '../../../../helpers/combat-helper';
 
 export class Attack extends Skill {
 
-  public name = 'attack';
-
-  requiresLearn = false;
-
   static macroMetadata = {
     name: 'Attack',
     macro: 'attack',
@@ -19,6 +15,10 @@ export class Attack extends Skill {
     mode: 'lockActivation'
   };
 
+  public name = 'attack';
+
+  requiresLearn = false;
+
   range = (attacker: Character) => {
     const weapon = attacker.rightHand;
     if(!weapon) return 0;
@@ -26,7 +26,7 @@ export class Attack extends Skill {
     if(weapon.twoHanded && attacker.leftHand) return -1;
 
     return weapon.attackRange;
-  };
+  }
 
   execute(user: Character, { gameState, args }) {
     if(!args) return false;

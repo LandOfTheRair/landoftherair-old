@@ -342,11 +342,18 @@ export class CombatHelper {
 
       const secondaryClass = attacker !== defender ? 'self' : 'other';
 
-      attacker.sendClientMessage({ message: `${attackerDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat ${secondaryClass} ${otherClass} ${damageType}`, target: defender.uuid });
+      attacker.sendClientMessage({
+        message: `${attackerDamageMessage} [${absDmg} ${dmgString}]`,
+        subClass: `combat ${secondaryClass} ${otherClass} ${damageType}`,
+        target: defender.uuid
+      });
     }
 
     if(defenderDamageMessage && attacker !== defender) {
-      defender.sendClientMessage({ message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`, subClass: `combat other ${otherClass} ${damageType}` });
+      defender.sendClientMessage({
+        message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`,
+        subClass: `combat other ${otherClass} ${damageType}`
+      });
     }
 
     defender.hp.sub(damage);

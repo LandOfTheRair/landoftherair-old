@@ -100,7 +100,7 @@ export class Game {
 
     this.colyseus.game.vfx$.subscribe(nextVfx => {
       this.drawVfx(nextVfx);
-    })
+    });
   }
 
   private drawVfx({ effect, tiles }) {
@@ -111,7 +111,7 @@ export class Game {
       setTimeout(() => {
         sprite.destroy();
       }, 2000);
-    })
+    });
   }
 
   private playSfx(sfx: string) {

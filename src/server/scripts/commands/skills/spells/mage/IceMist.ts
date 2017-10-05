@@ -7,9 +7,6 @@ import { IceMist as CastEffect } from '../../../../../effects/IceMist';
 
 export class IceMist extends Skill {
 
-  public name = 'icemist';
-  public format = 'Target';
-
   static macroMetadata = {
     name: 'IceMist',
     macro: 'icemist',
@@ -17,6 +14,9 @@ export class IceMist extends Skill {
     color: '#000080',
     mode: 'clickToTarget'
   };
+
+  public name = 'icemist';
+  public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];
 

@@ -11,8 +11,8 @@ export class Use extends Command {
   execute(player: Player, { room, gameState, args }) {
     const [context, slot, itemType, itemId] = args.split(' ');
 
-    const useItemInHand = (slot) => {
-      player.useItem(slot);
+    const useItemInHand = (itemSlot) => {
+      player.useItem(itemSlot);
     };
 
     if(context === 'Left') return useItemInHand('leftHand');

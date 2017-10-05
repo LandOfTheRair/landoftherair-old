@@ -6,8 +6,6 @@ import { find, includes } from 'lodash';
 
 export class ClimbUp extends Command {
 
-  public name = ['climbup', 'climbdown'];
-
   static macroMetadata = {
     name: 'Climb',
     macro: 'climbup',
@@ -16,10 +14,13 @@ export class ClimbUp extends Command {
     mode: 'autoActivate'
   };
 
+  public name = ['climbup', 'climbdown'];
+
   execute(player: Player, { room, gameState, args }) {
 
     const stairs = find(gameState.map.layers[MapLayer.Interactables].objects, item => {
-      return includes(['ClimbUp', 'ClimbDown'], item.type) && item.x/64 === player.x && (item.y/64)-1 === player.y;
+      return includes(['ClimbUp', 'ClimbDown'], item.type)
+          && item.x / 64 === player.x && (item.y / 64) - 1 === player.y;
     });
 
     if(!stairs) return player.sendClientMessage('There are no grips here.');

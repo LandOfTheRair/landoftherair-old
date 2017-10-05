@@ -6,8 +6,6 @@ import { compact, endsWith } from 'lodash';
 
 export class Look extends Command {
 
-  public name = '~look';
-
   static macroMetadata = {
     name: 'Look At Ground',
     macro: '~look',
@@ -15,6 +13,8 @@ export class Look extends Command {
     color: '#665600',
     mode: 'autoActivate'
   };
+
+  public name = '~look';
 
   protected getStringForNum(num) {
     if(num === 1) return 'a';

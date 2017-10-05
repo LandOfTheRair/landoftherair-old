@@ -102,7 +102,9 @@ export const SmithResponses = (npc: NPC) => {
         return `Thank you, ${player.name}! I've repaired your item for ${cost.toLocaleString()} gold.`;
       }
 
-      return `Hello, ${player.name}! I am a Smith. I can repair your weapons and armor - just hold them in your right hand! Or, you can tell me REPAIRALL and I will repair what you're holding and what you're wearing.`;
+      return `Hello, ${player.name}! 
+      I am a Smith. I can repair your weapons and armor - just hold them in your right hand! 
+      Or, you can tell me REPAIRALL and I will repair what you're holding and what you're wearing.`;
     });
 
   npc.parser.addCommand('repairall')
@@ -190,7 +192,10 @@ export const AlchemistResponses = (npc: NPC) => {
       }
 
       if(npc.distFrom(player) > 2) return 'Please move closer.';
-      return `Hello, ${player.name}! You can tell me COMBINE while holding a bottle in your right hand to mix together that with other bottles of the same type in your sack. I can combine up to ${npc.alchOz}oz into one bottle. It will cost ${npc.alchCost} gold per ounce to do this.`;
+      return `Hello, ${player.name}! 
+      You can tell me COMBINE while holding a bottle in your right hand to 
+      mix together that with other bottles of the same type in your sack. 
+      I can combine up to ${npc.alchOz}oz into one bottle. It will cost ${npc.alchCost} gold per ounce to do this.`;
     });
 
   npc.parser.addCommand('combine')
@@ -310,7 +315,10 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       npc.$$room.showTrainerWindow(player, npc);
-      return `Hail, ${player.name}! If you want to try to level up, TRAIN with me. Alternatively, I can let you know how your combat skills are progressing if you want to ASSESS them! You can also JOIN the ${npc.classTrain} profession if you haven't chosen one already!`;
+      return `Hail, ${player.name}! 
+      If you want to try to level up, TRAIN with me. 
+      Alternatively, I can let you know how your combat skills are progressing if you want to ASSESS them! 
+      You can also JOIN the ${npc.classTrain} profession if you haven't chosen one already!`;
     });
 
   npc.parser.addCommand('assess')
@@ -340,7 +348,7 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
       const normalizedCurrent = skillValue - prevLevel;
       const normalizedMax = nextLevel - prevLevel;
 
-      const percentWay = Math.max(0, (normalizedCurrent/normalizedMax * 100)).toFixed(3);
+      const percentWay = Math.max(0, (normalizedCurrent / normalizedMax * 100)).toFixed(3);
 
       return `You are ${percentWay}% on your way towards the next level of ${skill.toUpperCase()} proficiency.`;
     });
@@ -365,7 +373,7 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       player.loseGold(trainCost);
 
-      return `You have gained ${newLevel-level} experience levels.`;
+      return `You have gained ${newLevel - level} experience levels.`;
     });
 
   npc.parser.addCommand('join')
