@@ -312,7 +312,8 @@ export class GameState {
         'dir', 'sprite',
         'leftHand', 'rightHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2',
         'hp',
-        'x', 'y'
+        'x', 'y',
+        'effects'
       ]);
       if(!baseObj.gear) baseObj.gear = {};
       return baseObj;
