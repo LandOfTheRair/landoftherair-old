@@ -9,6 +9,8 @@ import { Player } from '../../models/player';
 import { Item } from '../../models/item';
 import { Locker } from '../../models/container/locker';
 import { LocalStorageService } from 'ngx-webstorage';
+import { Character } from '../../models/character';
+import { NPC } from '../../models/npc';
 
 @Injectable()
 export class ColyseusGameService {
@@ -168,6 +170,10 @@ export class ColyseusGameService {
 
     this.worldRoom.state.listen('players/:id/effects/:effect', 'add', (entityId, effect, value) => {
       this.clientGameState.updatePlayerEffect(+entityId, effect, value);
+    });
+
+    this.worldRoom.state.listen('players/:id/effects/:effect/duration', 'replace', (entityId, effect, value) => {
+      this.clientGameState.updatePlayerEffectDuration(+entityId, effect, value);
     });
 
     this.worldRoom.state.listen('players/:id/effects/:effect', 'remove', (entityId, effect) => {
@@ -481,5 +487,23 @@ export class ColyseusGameService {
 
   public buildUseAction(item: Item, context: string, contextSlot: string|number) {
     this.sendRawCommand('~use', `${context} ${contextSlot || -1} ${item.itemClass} ${item.uuid}`);
+  }
+
+  public hostilityLevelFor(compare: Character) {
+    const me = this.character;
+
+    if(compare.agro[me.uuid]
+    || me.agro[compare.uuid]) return 'hostile';
+
+    const hostility = (<NPC>compare).hostility;
+
+    if(!hostility) return 'neutral';
+
+    if(hostility === 'Never') return 'friendly';
+
+    if(hostility === 'Always'
+    || compare.allegianceReputation[me.allegiance] <= 0) return 'hostile';
+
+    return 'neutral';
   }
 }
