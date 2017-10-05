@@ -57,18 +57,15 @@ export class NpcsComponent {
   }
 
   public barClass(npc: NPC) {
-    const me = this.colyseusGame.character;
-
-    if(npc.hostility === 'Never') return 'friendly';
-
-    if(npc.hostility === 'Always'
-    || npc.agro[me.uuid]
-    || me.agro[npc.uuid]
-    || npc.allegianceReputation[me.allegiance] <= 0) return 'angry';
-    return 'neutral';
+    return this.colyseusGame.hostilityLevelFor(npc);
   }
 
-  public doAction(npc: NPC) {
+  public doAction(npc: NPC, $event) {
+
+    // always set target, but if you hold ctrl, don't do anything else
+    this.colyseusGame.clientGameState.activeTarget = npc;
+    if($event.ctrlKey) return;
+
     if(npc.hostility === 'Never') {
       this.colyseusGame.sendCommandString(`${npc.uuid}, hello`);
     } else if((<any>npc).username && !this.colyseusGame.currentCommand) {

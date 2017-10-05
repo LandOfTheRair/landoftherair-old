@@ -52,6 +52,7 @@ import { BankComponent } from './bank/bank.component';
 import { LockersComponent } from './lockers/lockers.component';
 import { LinkifyPipe } from './_shared/linkify.pipe';
 import { MacroComponent } from './macro/macro.component';
+import { ActiveTargetComponent } from './active-target/active-target.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -91,7 +92,8 @@ import { MacroComponent } from './macro/macro.component';
     ShopComponent,
     BankComponent,
     LockersComponent,
-    MacroComponent
+    MacroComponent,
+    ActiveTargetComponent
   ],
   imports: [
     BrowserModule,

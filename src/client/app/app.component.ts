@@ -112,6 +112,9 @@ export class AppComponent implements OnInit {
   public suppressZeroDamage: boolean;
 
   @LocalStorage()
+  public showActiveTarget: boolean;
+
+  @LocalStorage()
   public playBackgroundMusic: boolean;
 
   @LocalStorage()
@@ -153,15 +156,16 @@ export class AppComponent implements OnInit {
       this[`${opt}Size`] = 'normal';
     });
 
-    if(isNull(this.showInventoryBelt))    this.showInventoryBelt = true;
-    if(isNull(this.showInventorySack))    this.showInventorySack = true;
-    if(isNull(this.showEquipment))        this.showEquipment = true;
-    if(isNull(this.showCommandLine))      this.showCommandLine = true;
+    const defaultOptions = [
+      'showInventoryBelt', 'showInventorySack', 'showEquipment', 'showCommandLine',
+      'showActiveTarget',
+      'autoHideLobby',
+      'playBackgroundMusic', 'playSoundEffects'
+    ];
 
-    if(isNull(this.autoHideLobby))        this.autoHideLobby = true;
-
-    if(isNull(this.playBackgroundMusic))  this.playBackgroundMusic = true;
-    if(isNull(this.playSoundEffects))     this.playSoundEffects = true;
+    defaultOptions.forEach(opt => {
+      if(isNull(this[opt])) this[opt] = true;
+    });
 
     this.theme = 'Light';
   }

@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="char-card" (click)="doAction(npc)">
+    <div class="char-card" (click)="doAction(npc, $event)">
 
       <div class="char-target" *ngIf="npc.uuid === colyseusGame.currentTarget">
         <div class="outer circle"></div>

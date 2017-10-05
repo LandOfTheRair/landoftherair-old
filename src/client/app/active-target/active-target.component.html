@@ -1,0 +1,14 @@
+
+<div *ngIf="shouldShowBox">
+  <div class="target-name">{{ target.name }} ({{ hostility }})</div>
+  <div class="target-health">
+    <div class="progress">
+      <div class="progress-bar bg-danger" [style.width]="targetHealth + '%'">{{ targetHealth }}%</div>
+    </div>
+  </div>
+  <div class="target-status">
+    <div *ngFor="let effect of target.effects" class="effect-container">
+      <app-status-effect [effect]="effect"></app-status-effect>
+    </div>
+  </div>
+</div>
