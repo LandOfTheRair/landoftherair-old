@@ -11,6 +11,10 @@ export class StatsWindowComponent {
   @Input()
   public currentPlayer: Player = new Player({});
 
+  get stats(): any {
+    return (<any>this.currentPlayer).totalStats;
+  }
+
   constructor() { }
 
 }
