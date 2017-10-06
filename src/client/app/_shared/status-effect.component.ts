@@ -30,9 +30,8 @@ import { Component, Input } from '@angular/core';
   template: `
       <div class="status-effect" *ngIf="effect && effect.iconData">
         <div class="status-remaining" *ngIf="effect.duration > 0">{{ effect.duration }}</div>
-        <app-icon [bgColor]="effect.iconData.backgroundColor || transparent"
-                  [fgColor]="effect.iconData.color"
-                  [bgColor]="effect.iconData.bgColor"
+        <app-icon [fgColor]="effect.iconData.color"
+                  [bgColor]="effect.iconData.bgColor || 'transparent'"
                   [name]="effect.iconData.name"
                   size="small"
                   container="body"

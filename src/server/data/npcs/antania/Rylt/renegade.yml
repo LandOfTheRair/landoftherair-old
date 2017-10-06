@@ -205,6 +205,8 @@
 
   level: 7
 
+  perception: 50
+
   skillOnKill: 50
 
   gold:

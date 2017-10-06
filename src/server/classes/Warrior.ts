@@ -13,7 +13,6 @@ export class Warrior extends BaseClass {
 
   static gainLevelStats(character: Character) {
     super.gainLevelStats(character);
-    character.stats.hp += this.rollDie(`2df([con] / 3) + f([con] / 3)`, character);
-    character.recalculateStats();
+    character.gainBaseStat('hp', this.rollDie(`2df([con] / 3) + f([con] / 3)`, character));
   }
 }

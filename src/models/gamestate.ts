@@ -22,6 +22,10 @@ export class GameState {
 
   fov: Mrpas;
 
+  get maxSkill() {
+    return this.map.properties.maxSkill;
+  }
+
   get allPossibleTargets(): Character[] {
     return (<any>this.players).concat(this.mapNPCs);
   }
@@ -136,6 +140,8 @@ export class GameState {
         const offsetY = char.y - me.y;
         if(!me.canSee(offsetX, offsetY)) return false;
       }
+
+      if(!me.canSeeThroughStealthOf(char)) return false;
 
       if(this.checkTargetForHostility(me, char)) return true;
 
@@ -282,6 +288,29 @@ export class GameState {
     });
   }
 
+  cleanNPCs() {
+    return this.mapNPCs.map(npc => {
+      const baseObj = pick(npc, [
+        'agro', 'uuid', 'name',
+        'hostility', 'alignment', 'allegiance', 'allegianceReputation',
+        'dir', 'sprite',
+        'leftHand', 'rightHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2',
+        'hp',
+        'x', 'y',
+        'effects',
+        'totalStats.stealth'
+      ]);
+      if(!baseObj.gear) baseObj.gear = {};
+      return baseObj;
+    });
+  }
+
+  checkIfDenseWall(x: number, y: number) {
+    const adjustedY = y * this.map.width;
+    return this.map.layers[MapLayer.Walls].data[x + adjustedY]
+        || this.map.layers[MapLayer.Foliage].data[x + adjustedY];
+  }
+
   constructor(opts) {
     extend(this, opts);
 
@@ -309,26 +338,6 @@ export class GameState {
         return !object || (object && !object.opacity);
       }
       return false;
-    });
-  }
-
-  get maxSkill() {
-    return this.map.properties.maxSkill;
-  }
-
-  cleanNPCs() {
-    return this.mapNPCs.map(npc => {
-      const baseObj = pick(npc, [
-        'agro', 'uuid', 'name',
-        'hostility', 'alignment', 'allegiance', 'allegianceReputation',
-        'dir', 'sprite',
-        'leftHand', 'rightHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2',
-        'hp',
-        'x', 'y',
-        'effects'
-      ]);
-      if(!baseObj.gear) baseObj.gear = {};
-      return baseObj;
     });
   }
 

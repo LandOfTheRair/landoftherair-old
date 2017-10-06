@@ -11,31 +11,32 @@ export class Hidden extends SpellEffect {
     bgColor: '#000'
   };
 
+  maxSkillForSkillGain = 5;
+  skillFlag = () => SkillClassNames.Thievery;
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
-
-    const casterThiefSkill = caster.calcSkillLevel(SkillClassNames.Thievery);
-
-    const skillGained = 5 - casterThiefSkill;
-    if(skillRef && skillGained > 0) {
-      caster.gainSkill(SkillClassNames.Thievery, skillGained);
-    }
+    this.setPotencyAndGainSkill(caster, skillRef);
 
     this.duration = -1;
-    this.effectInfo = { isPermanent: true, caster: caster.uuid, stats: { hideLevel: caster.hideLevel() } };
+    this.potency = caster.hideLevel();
+    this.effectInfo = { isPermanent: true, caster: caster.uuid };
     caster.applyEffect(this);
   }
 
   effectStart(char: Character) {
     this.effectMessage(char, 'You step into the shadows.');
+    char.gainStat('stealth', this.potency);
   }
 
   effectTick(char: Character) {
-    if(char.canHide()) return;
+    if(char.isNearWall()) return;
 
+    this.effectEnd(char);
     char.unapplyEffect(this);
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'You are no longer hidden!');
+    char.loseStat('stealth', this.potency);
   }
 }

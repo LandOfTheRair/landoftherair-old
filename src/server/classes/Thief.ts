@@ -13,7 +13,6 @@ export class Thief extends BaseClass {
 
   static gainLevelStats(character: Character) {
     super.gainLevelStats(character);
-    character.stats.hp += this.rollDie(`1df([con] / 3) + f([con] / 2)`, character);
-    character.recalculateStats();
+    character.gainBaseStat('hp', this.rollDie(`1df([con] / 3) + f([con] / 2)`, character));
   }
 }

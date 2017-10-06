@@ -182,6 +182,10 @@ export class ColyseusGameService {
       this.clientGameState.updatePlayerEffect(+entityId, effect, null);
     });
 
+    this.worldRoom.state.listen('players/:id/totalStats/stealth', 'replace', (entityId, value) => {
+      this.clientGameState.updatePlayerStealth(entityId, value);
+    });
+
     const updateDoor = (doorId) => {
       this.clientGameState.updates.openDoors.push(doorId);
     };
@@ -238,6 +242,7 @@ export class ColyseusGameService {
   private logMessage({ name, message, subClass, grouping, dirFrom }: any) {
     const isZero = includes(message, '[0') && includes(message, 'damage]');
     if(isZero && this.localStorage.retrieve('suppressZeroDamage')) return;
+    if(!grouping || grouping === 'spell') grouping = 'always';
     this.clientGameState.addLogMessage({ name, message, subClass, grouping, dirFrom });
 
     if(!this.overrideNoSfx) {

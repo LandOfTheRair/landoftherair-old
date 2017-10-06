@@ -503,6 +503,7 @@ export class GameWorld extends Room<GameState> {
       const diffY = target.y - player.y;
 
       if(!player.canSee(diffX, diffY)) return false;
+      if(!player.canSeeThroughStealthOf(target)) return false;
 
       return target.uuid === findStr || startsWith(target.name.toLowerCase(), findStr.toLowerCase());
     });

@@ -326,6 +326,10 @@ export class Game {
     if(frame) {
       sprite.frame = frame;
     }
+
+    if(player.username !== this.player.username) {
+      sprite.visible = this.player.canSeeThroughStealthOf(player);
+    }
   }
 
   private toggleTruesightForWalls(set: boolean) {
@@ -608,9 +612,17 @@ export class Game {
     if(this.playerSprite) {
       this.playerSprite.destroy();
     }
-    this.vfx.destroy();
-    this.otherPlayerSprites.destroy();
-    this.itemsOnGround.destroy();
-    this.visibleNPCs.destroy();
+    if(this.vfx) {
+      this.vfx.destroy();
+    }
+    if(this.otherPlayerSprites) {
+      this.otherPlayerSprites.destroy();
+    }
+    if(this.itemsOnGround) {
+      this.itemsOnGround.destroy();
+    }
+    if(this.visibleNPCs) {
+      this.visibleNPCs.destroy();
+    }
   }
 }

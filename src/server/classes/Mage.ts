@@ -10,17 +10,15 @@ export class Mage extends BaseClass {
   static becomeClass(character: Character) {
     super.becomeClass(character);
 
-    if(!character.stats.mp) {
-      character.stats.mp = 30;
-      character.recalculateStats();
+    if(!character.getBaseStat('mp')) {
+      character.gainBaseStat('mp', 30);
       character._gainSkill(SkillClassNames.Conjuration, character.calcSkillXP(1));
     }
   }
 
   static gainLevelStats(character: Character) {
     super.gainLevelStats(character);
-    character.stats.hp += this.rollDie(`1d[con]`, character);
-    character.stats.mp += this.rollDie(`2d[int] + f([int] / 5)`, character);
-    character.recalculateStats();
+    character.gainBaseStat('hp', this.rollDie(`1d[con]`, character));
+    character.gainBaseStat('mp', this.rollDie(`2d[int] + f([int] / 5)`, character));
   }
 }

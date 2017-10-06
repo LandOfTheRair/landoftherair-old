@@ -351,6 +351,8 @@
   stats: 15
   skillLevels: 7
 
+  perception: 150
+
   level: 17
   skillOnKill: 200
 

@@ -1,7 +1,7 @@
 
 import { includes, random, capitalize } from 'lodash';
 
-import { Character, SkillClassNames } from '../../models/character';
+import { Character, SkillClassNames, StatName } from '../../models/character';
 import { ShieldClasses, Item } from '../../models/item';
 import * as Classes from '../classes';
 import * as Effects from '../effects';
@@ -316,7 +316,7 @@ export class CombatHelper {
 
     // if not healing, check for damage resist
     if(!isHeal) {
-      const damageReduced = defender.getTotalStat(`${damageClass}Resist`);
+      const damageReduced = defender.getTotalStat(<StatName>`${damageClass}Resist`);
       damage -= damageReduced;
 
       if(damageReduced > 0 && attacker && attacker !== defender) {

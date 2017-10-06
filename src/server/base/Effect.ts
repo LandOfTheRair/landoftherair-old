@@ -12,7 +12,6 @@ class EffectInfo {
   damage?: number;
   caster: string;
   isPermanent?: boolean;
-  stats?: any;
 }
 
 export class Effect {
@@ -20,8 +19,7 @@ export class Effect {
   name = '';
   iconData = {};
   duration = 0;
-  potency = 0;
-  stats = {};
+  protected potency = 0;
 
   effectInfo: EffectInfo = { caster: '' };
 

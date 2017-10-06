@@ -4,16 +4,15 @@ import { Character } from '../../models/character';
 
 export class MinorCON extends Effect {
   effectStart(char: Character) {
-    if(char.stats.con >= Maxes.Minor) {
+    if(char.getBaseStat('con') >= Maxes.Minor) {
       return this.effectMessage(char, 'The fluid was tasteless.');
     }
 
-    if(!(<any>this).ignoreHPBoost && char.stats.hp < 100) {
-      char.stats.hp += 3;
+    if(!(<any>this).ignoreHPBoost && char.getBaseStat('hp') < 100) {
+      char.gainBaseStat('hp', 3);
     }
 
-    char.stats.con += this.potency;
-    char.recalculateStats();
+    char.gainBaseStat('con', this.potency);
     this.effectMessage(char, 'Your stomach feels stronger!');
   }
 }

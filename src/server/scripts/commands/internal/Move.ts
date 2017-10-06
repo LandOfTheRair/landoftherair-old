@@ -10,8 +10,9 @@ export class Move extends Command {
   public name = '~move';
 
   execute(player: Player, { room, gameState, x, y }) {
-    x = Math.max(Math.min(x, player.stats.move), -player.stats.move);
-    y = Math.max(Math.min(y, player.stats.move), -player.stats.move);
+    const moveRate = player.getBaseStat('move');
+    x = Math.max(Math.min(x, moveRate), -moveRate);
+    y = Math.max(Math.min(y, moveRate), -moveRate);
 
     const checkX = Math.abs(x);
     const checkY = Math.abs(y);

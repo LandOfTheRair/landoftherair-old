@@ -25,6 +25,7 @@ export class Throw extends Skill {
   }
 
   execute(user: Character, { gameState, args }) {
+
     if(!args) return false;
 
     const [handCheck, targetId] = args.split(' ');

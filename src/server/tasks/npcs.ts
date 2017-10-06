@@ -104,6 +104,11 @@ class NPCLoader {
         npc.stats[stat] = statValue;
       });
     }
+
+    if(npc.perception) {
+      npc.stats.perception = npc.perception;
+      delete npc.perception;
+    }
   }
 
   static validateItem(npc: any): boolean {
