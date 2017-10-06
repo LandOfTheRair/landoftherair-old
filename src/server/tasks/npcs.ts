@@ -67,7 +67,7 @@ class NPCLoader {
     return Math.pow(2, level) * 100;
   }
 
-  static conditionallyAddInformation(npc: NPC) {
+  static conditionallyAddInformation(npc: any) {
     if(!npc.allegiance) npc.allegiance = 'Enemy';
 
     if(!npc.usableSkills) npc.usableSkills = [];
