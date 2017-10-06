@@ -47,6 +47,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
     const unsorted = compact(npcs.map(npc => {
       if((<any>npc).username === me.username) return false;
       if(npc.dir === 'C') return false;
+      if(!me.canSeeThroughStealthOf(npc)) return false;
       const diffX = npc.x - me.x;
       const diffY = npc.y - me.y;
 

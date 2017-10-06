@@ -70,7 +70,7 @@ export class ClientGameState {
   }
 
   setMapNPCs(data) {
-    this.mapNPCs = data;
+    this.mapNPCs = data.map(npc => new Character(npc));
   }
 
   setGroundItems(data) {
@@ -124,6 +124,11 @@ export class ClientGameState {
   updatePlayerEffect(playerIndex, effectIndex, effect) {
     this.players[playerIndex].effects[effectIndex] = effect;
     this.players[playerIndex].effects = compact(this.players[playerIndex].effects);
+    this._updatePlayerAtIndex(playerIndex);
+  }
+
+  updatePlayerStealth(playerIndex, stealth) {
+    (<any>this.players[playerIndex]).totalStats.stealth = stealth;
     this._updatePlayerAtIndex(playerIndex);
   }
 

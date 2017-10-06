@@ -133,6 +133,8 @@
     luk: 5
   level: 15
 
+  perception: 120
+
   skillLevels:
     Wand: 7
     Conjuration: 5
@@ -197,6 +199,8 @@
   skillLevels:
     Martial: 7
   level: 9
+
+  perception: 50
 
   skillOnKill: 100
 

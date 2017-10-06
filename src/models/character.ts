@@ -81,46 +81,47 @@ export class Skills {
 }
 
 export class Stats {
-  str = 0;
-  dex = 0;
-  agi = 0;
+  str? = 0;
+  dex? = 0;
+  agi? = 0;
 
-  int = 0;
-  wis = 0;
-  wil = 0;
+  int? = 0;
+  wis? = 0;
+  wil? = 0;
 
-  luk = 0;
-  cha = 0;
-  con = 0;
+  luk? = 0;
+  cha? = 0;
+  con? = 0;
 
-  move = 3;
-  hpregen = 1;
-  mpregen = 1;
+  move? = 3;
+  hpregen? = 1;
+  mpregen? = 1;
 
-  hp = 100;
-  mp = 0;
+  hp? = 100;
+  mp? = 0;
 
-  armorClass = 0;
-  accuracy = 0;
-  offense = 0;
-  defense = 0;
+  armorClass? = 0;
+  accuracy? = 0;
+  offense? = 0;
+  defense? = 0;
 
-  stealth = 0;
-  perception = 0;
+  stealth? = 0;
+  perception? = 0;
 
-  magicalResist = 0;
-  physicalResist = 0;
-  necroticResist = 0;
-  energyResist = 0;
-  waterResist = 0;
-  fireResist = 0;
-  iceResist = 0;
+  magicalResist? = 0;
+  physicalResist? = 0;
+  necroticResist? = 0;
+  energyResist? = 0;
+  waterResist? = 0;
+  fireResist? = 0;
+  iceResist? = 0;
 }
 
 export type StatName =
-  'str' | 'dex' | 'con' | 'int' | 'wis' | 'wil' | 'luk' | 'cha' | 'con'
+  'str' | 'dex' | 'agi' | 'int' | 'wis' | 'wil' | 'luk' | 'cha' | 'con'
 | 'move' | 'hpregen' | 'mpregen' | 'hp' | 'mp'
 | 'armorClass' | 'accuracy' | 'offense' | 'defense'
+| 'stealth' | 'perception'
 | 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist';
 
 export const MaxSizes = {
@@ -145,10 +146,17 @@ export class Character {
 
   gold = 0;
 
-  stats: Stats = new Stats();
-  private totalStats: Stats = new Stats();
+  protected stats: Stats = new Stats();
 
-  private skills: Skills = new Skills();
+  // we don't want to initialize this because of side effects from default values
+  protected additionalStats: Stats = {};
+  protected totalStats: Stats = new Stats();
+
+  protected skills: Skills = new Skills();
+
+  get baseStats(): Stats {
+    return clone(this.stats);
+  }
 
   get allSkills() {
     return clone(this.skills);
@@ -212,8 +220,12 @@ export class Character {
     return 0;
   }
 
-  getTotalStat(stat) {
+  getTotalStat(stat: StatName) {
     return this.totalStats[stat] || 0;
+  }
+
+  getBaseStat(stat: StatName) {
+    return this.stats[stat] || 0;
   }
 
   initAI() {
@@ -328,16 +340,23 @@ export class Character {
   }
 
   gainStat(stat: StatName, value = 1) {
-    this.stats[stat] = Math.max(this.stats[stat] + value, 0);
+    this.additionalStats[stat] = (this.additionalStats[stat] || 0) + value;
     this.recalculateStats();
   }
 
   loseStat(stat: StatName, value = 1) {
-    this.stats[stat] = Math.max(this.stats[stat] - value, 0);
+    this.additionalStats[stat] = (this.additionalStats[stat] || 0) - value;
+    this.recalculateStats();
+  }
+
+  gainBaseStat(stat: StatName, value = 1) {
+    this.stats[stat] += value;
     this.recalculateStats();
   }
 
   recalculateStats() {
+    this.totalStats = {};
+
     const allGear = compact(values(this.gear));
 
     const canGetBonusFromItemInHand = (item) => {
@@ -346,6 +365,10 @@ export class Character {
 
     Object.keys(this.stats).forEach(stat => {
       this.totalStats[stat] = this.stats[stat];
+    });
+
+    Object.keys(this.additionalStats).forEach(stat => {
+      this.totalStats[stat] += this.additionalStats[stat];
     });
 
     const addStatsForItem = (item) => {
@@ -362,19 +385,17 @@ export class Character {
     if(this.leftHand && this.leftHand.stats && canGetBonusFromItemInHand(this.leftHand))    addStatsForItem(this.leftHand);
     if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
 
-    this.effects.forEach(effect => {
-      if(!effect.effectInfo || !effect.effectInfo.stats) return;
-
-      Object.keys(effect.effectInfo.stats).forEach(stat => {
-        this.totalStats[stat] += effect.effectInfo.stats[stat];
-      });
-    });
-
     this.hp.maximum = Math.max(1, this.getTotalStat('hp'));
     this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
 
     this.mp.maximum = Math.max(0, this.getTotalStat('mp'));
     this.mp.__current = Math.min(this.mp.__current, this.mp.maximum);
+
+    if(this.totalStats.stealth > 0) {
+      this.totalStats.stealth -= this.hidePenalty();
+    }
+
+    this.totalStats.perception += this.perceptionLevel();
   }
 
   itemCheck(item: Item) {
@@ -589,6 +610,16 @@ export class Character {
     return this.hp.atMinimum();
   }
 
+  clearEffects() {
+    this.effects.forEach(effect => this.unapplyEffect(effect, true));
+    this.effects = [];
+  }
+
+  resetAdditionalStats() {
+    this.additionalStats = {};
+    this.recalculateStats();
+  }
+
   die(killer?: Character) {
     this.dir = 'C';
     this.effects = [];
@@ -686,17 +717,20 @@ export class Character {
   applyEffect(effect: Effect) {
     const existingEffect = this.hasEffect(effect.name);
     if(existingEffect) {
-      this.unapplyEffect(effect);
+      this.unapplyEffect(effect, true);
     }
 
-    if(effect.duration > 0) {
+    if(effect.duration > 0 || (effect.effectInfo && effect.effectInfo.isPermanent)) {
       this.effects.push(effect);
     }
 
     effect.effectStart(this);
   }
 
-  unapplyEffect(effect: Effect) {
+  unapplyEffect(effect: Effect, prematurelyEnd = false) {
+    if(prematurelyEnd) {
+      effect.effectEnd(this);
+    }
     this.effects = this.effects.filter(eff => eff.name !== effect.name);
   }
 
@@ -869,22 +903,59 @@ export class Character {
   }
 
   hideLevel(): number {
-    const casterThiefSkill = this.calcSkillLevel(SkillClassNames.Thievery);
-    const casterAgi = this.getTotalStat('agi');
+    const isThief = this.baseClass === 'Thief';
+    const thiefLevel = this.calcSkillLevel(SkillClassNames.Thievery);
+    const casterThiefSkill = thiefLevel * (isThief ? 2 : 1);
+    const casterAgi = this.getTotalStat('agi') / (isThief ? 2 : 3);
     const casterLevel = this.level;
-    const casterIsThiefMod = this.baseClass === 'Thief' ? 3 : 1;
 
-    const hideLevel = (casterThiefSkill + casterAgi + casterLevel) * casterIsThiefMod;
+    const hideBoost = isThief ? Math.floor(thiefLevel / 5) * 10 : 0;
 
+    const hideLevel = (casterThiefSkill + casterAgi + casterLevel + hideBoost);
+    return Math.floor(hideLevel);
+  }
+
+  hidePenalty(): number {
     const leftHandClass = this.leftHand ? this.leftHand.itemClass : '';
     const rightHandClass = this.rightHand ? this.rightHand.itemClass : '';
 
     const reductionPercent = (HideReductionPercents[leftHandClass] || 0) + (HideReductionPercents[rightHandClass] || 0);
 
-    return hideLevel - (hideLevel * reductionPercent / 100);
+    const stealth = this.getTotalStat('stealth');
+    return Math.floor(stealth * (reductionPercent / 100));
+  }
+
+  perceptionLevel(): number {
+    const isThief = this.baseClass === 'Thief';
+
+    const thiefLevel = this.calcSkillLevel(SkillClassNames.Thievery);
+    const dex = this.getTotalStat('dex');
+    const casterLevel = this.level;
+
+    const thiefTotal = (thiefLevel + dex) * (isThief ? 1.5 : 1);
+    const normalTotal = casterLevel * 2;
+
+    return thiefTotal + normalTotal;
+  }
+
+  canSeeThroughStealthOf(char: Character) {
+    return this.getTotalStat('perception') >= char.getTotalStat('stealth');
   }
 
   canHide(): boolean {
+    if(this.hasEffect('Hidden')) return false;
+    if(this.hp.ltePercent(90)) return false;
+    if(!this.isNearWall()) return false;
     return true;
+  }
+
+  isNearWall(): boolean {
+    for(let x = this.x - 1; x <= this.x + 1; x++) {
+      for(let y = this.y - 1; y <= this.y + 1; y++) {
+        const tile = this.$$room.state.checkIfDenseWall(x, y);
+        if(tile) return true;
+      }
+    }
+    return false;
   }
 }

@@ -10,17 +10,15 @@ export class Healer extends BaseClass {
   static becomeClass(character: Character) {
     super.becomeClass(character);
 
-    if(!character.stats.mp) {
-      character.stats.mp = 30;
-      character.recalculateStats();
+    if(!character.getBaseStat('mp')) {
+      character.gainBaseStat('mp', 30);
       character._gainSkill(SkillClassNames.Restoration, character.calcSkillXP(1));
     }
   }
 
   static gainLevelStats(character: Character) {
     super.gainLevelStats(character);
-    character.stats.hp += this.rollDie(`f([con] / 5)d3 + f([con] / 3)`, character);
-    character.stats.mp += this.rollDie(`1d[wis] + f([wis] / 3)`, character);
-    character.recalculateStats();
+    character.gainBaseStat('hp', this.rollDie(`f([con] / 5)d3 + f([con] / 3)`, character));
+    character.gainBaseStat('mp', this.rollDie(`1d[wis] + f([wis] / 3)`, character));
   }
 }

@@ -4,12 +4,11 @@ import { Character } from '../../models/character';
 
 export class MinorLUK extends Effect {
   effectStart(char: Character) {
-    if(char.stats.luk >= Maxes.Minor) {
+    if(char.getBaseStat('luk') >= Maxes.Minor) {
       return this.effectMessage(char, 'The fluid was tasteless.');
     }
 
-    char.stats.luk += this.potency;
-    char.recalculateStats();
+    char.gainBaseStat('luk', this.potency);
     this.effectMessage(char, 'Your drink had a four-leaf clover in it!');
   }
 }

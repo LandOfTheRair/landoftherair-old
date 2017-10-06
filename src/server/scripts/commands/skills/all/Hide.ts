@@ -12,7 +12,7 @@ export class Hide extends Skill {
     macro: 'hide',
     icon: 'hidden',
     color: '#cccccc',
-    backgroundColor: '#000000',
+    bgColor: '#000000',
     mode: 'autoActivate'
   };
 
@@ -26,6 +26,7 @@ export class Hide extends Skill {
   }
 
   use(user: Character) {
+    if(user.hasEffect('Hidden')) return user.sendClientMessage('You are already hidden!');
     if(!user.canHide()) return user.sendClientMessage('You were unable to hide.');
 
     const effect = new CastEffect({});

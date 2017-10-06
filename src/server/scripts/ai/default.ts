@@ -17,7 +17,8 @@ export const tick = (npc: NPC) => {
   if(!highestAgro) highestAgro = sample(targetsInRange);
 
   // do movement
-  const numSteps = random(0, Math.min(npc.stats.move, npc.path ? npc.path.length : npc.stats.move));
+  const moveRate = npc.getTotalStat('move');
+  const numSteps = random(0, Math.min(moveRate, npc.path ? npc.path.length : moveRate));
 
   // we have a target
   if(highestAgro) {
@@ -51,10 +52,10 @@ export const tick = (npc: NPC) => {
       const oldY = npc.y;
 
       const steps = [];
-      let stepdiffX = clamp(highestAgro.x - npc.x, -npc.stats.move, npc.stats.move);
-      let stepdiffY = clamp(highestAgro.y - npc.y, -npc.stats.move, npc.stats.move);
+      let stepdiffX = clamp(highestAgro.x - npc.x, -moveRate, moveRate);
+      let stepdiffY = clamp(highestAgro.y - npc.y, -moveRate, moveRate);
 
-      for(let curStep = 0; curStep < npc.stats.move; curStep++) {
+      for(let curStep = 0; curStep < moveRate; curStep++) {
         const step = { x: 0, y: 0 };
 
         if(stepdiffX < 0) {

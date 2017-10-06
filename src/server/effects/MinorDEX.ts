@@ -4,12 +4,11 @@ import { Character } from '../../models/character';
 
 export class MinorDEX extends Effect {
   effectStart(char: Character) {
-    if(char.stats.dex >= Maxes.Minor) {
+    if(char.getBaseStat('dex') >= Maxes.Minor) {
       return this.effectMessage(char, 'The fluid was tasteless.');
     }
 
-    char.stats.dex += this.potency;
-    char.recalculateStats();
+    char.gainBaseStat('dex', this.potency);
     this.effectMessage(char, 'Your eyes feel sharper!');
   }
 }

@@ -30,12 +30,10 @@ export class BarNecro extends SpellEffect {
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'Your body builds a temporary resistance to the dark arts.');
     char.gainStat('necroticResist', this.potency * this.potencyMultiplier);
-    char.recalculateStats();
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your dark arts resistance fades.');
     char.loseStat('necroticResist', this.potency * this.potencyMultiplier);
-    char.recalculateStats();
   }
 }
