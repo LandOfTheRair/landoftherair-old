@@ -885,7 +885,7 @@ export class Character {
       this.unequip(gearSlot);
     });
 
-    for(let i = this.sack.items.length; i >= 0; i--) {
+    for(let i = this.sack.allItems.length; i >= 0; i--) {
       const item = this.sack.takeItemFromSlot(i);
       if(!item) continue;
 
@@ -893,7 +893,7 @@ export class Character {
       this.$$room.addItemToGround(point, item);
     }
 
-    for(let i = this.belt.items.length; i >= 0; i--) {
+    for(let i = this.belt.allItems.length; i >= 0; i--) {
       const item = this.belt.takeItemFromSlot(i);
       if(!item) continue;
 
@@ -902,7 +902,7 @@ export class Character {
     }
   }
 
-  hideLevel(): number {
+  stealthLevel(): number {
     const isThief = this.baseClass === 'Thief';
     const thiefLevel = this.calcSkillLevel(SkillClassNames.Thievery);
     const casterThiefSkill = thiefLevel * (isThief ? 2 : 1);
