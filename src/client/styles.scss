@@ -4,12 +4,12 @@
 // FONT SPECIFIC ADJUSTMENTS
 @font-face {
   font-family: 'Fantasy';
-  src: url('assets/fonts/dumbledor.ttf');
+  src: url('assets/fonts/dumbledor.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'FantasyWide';
-  src: url('assets/fonts/dumbledor-wide.ttf');
+  src: url('assets/fonts/dumbledor-wide.ttf') format('truetype');
 }
 
 *:not(.macicons) {
