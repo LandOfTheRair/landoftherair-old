@@ -532,7 +532,7 @@ export class Game {
       loadingText.setText('Loading...');
     });
 
-    this.g.load.onFileComplete.add((progress, cacheKey, success, totalLoaded, totalFiles) => {
+    this.g.load.onFileComplete.add((progress, cacheKeyForLoaded, success, totalLoaded, totalFiles) => {
       loadingText.setText(`Loading... ${progress}% complete (${totalLoaded}/${totalFiles})`);
     });
 
