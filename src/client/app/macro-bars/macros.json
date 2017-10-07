@@ -110,11 +110,20 @@
             "requiresLearn": false
         },
         {
+            "name": "Charge",
+            "macro": "charge",
+            "icon": "running-ninja",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Hide",
             "macro": "hide",
             "icon": "hidden",
             "color": "#cccccc",
-            "backgroundColor": "#000000",
+            "bgColor": "#000000",
             "mode": "autoActivate",
             "isSystem": true,
             "requiresLearn": false
@@ -165,19 +174,19 @@
             "requiresLearn": true
         },
         {
-            "name": "Cure",
-            "macro": "cure",
-            "icon": "tentacle-heart",
-            "color": "#080",
+            "name": "BarNecro",
+            "macro": "barnecro",
+            "icon": "rosa-shield",
+            "color": "#1b390e",
             "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
         },
         {
-            "name": "BarNecro",
-            "macro": "barnecro",
-            "icon": "rosa-shield",
-            "color": "#1b390e",
+            "name": "Cure",
+            "macro": "cure",
+            "icon": "tentacle-heart",
+            "color": "#080",
             "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
@@ -201,10 +210,10 @@
             "requiresLearn": true
         },
         {
-            "name": "BarFrost",
-            "macro": "barfrost",
-            "icon": "rosa-shield",
-            "color": "#000080",
+            "name": "TrueSight",
+            "macro": "truesight",
+            "icon": "all-seeing-eye",
+            "color": "#00a",
             "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
@@ -228,15 +237,6 @@
             "requiresLearn": true
         },
         {
-            "name": "FireMist",
-            "macro": "firemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "IceMist",
             "macro": "icemist",
             "icon": "kaleidoscope-pearls",
@@ -255,20 +255,29 @@
             "requiresLearn": true
         },
         {
+            "name": "FireMist",
+            "macro": "firemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFrost",
+            "macro": "barfrost",
+            "icon": "rosa-shield",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "MagicMissile",
             "macro": "magicmissile",
             "icon": "missile-swarm",
             "color": "#0059bd",
             "mode": "lockActivation",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "TrueSight",
-            "macro": "truesight",
-            "icon": "all-seeing-eye",
-            "color": "#00a",
-            "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
         }

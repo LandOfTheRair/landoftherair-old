@@ -25,13 +25,13 @@ export class MacroBarsComponent implements OnInit {
 
   createDefaultMacros() {
 
-    (<any>macros).allMeta.forEach(({ name, macro, icon, mode, color, backgroundColor, key, isSystem, requiresLearn }) => {
+    (<any>macros).allMeta.forEach(({ name, macro, icon, mode, color, bgColor, key, isSystem, requiresLearn }) => {
       const macroObject = new Macro();
       macroObject.name = name;
       macroObject.macro = macro;
       macroObject.icon = icon;
       macroObject.foreground = color;
-      macroObject.background = backgroundColor;
+      macroObject.background = bgColor;
       macroObject[mode] = true;
       macroObject.key = key;
       macroObject.isSystem = isSystem;
