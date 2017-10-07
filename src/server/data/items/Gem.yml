@@ -1,4 +1,29 @@
-- name: Antanian Gem
+- name: Antanian Purple Gem
   desc: "a small, purple gem"
   value: 300
   sprite: 213
+
+- name: Antanian Small Green Gem
+  desc: "a small, green gem"
+  value: 500
+  sprite: 242
+
+- name: Antanian Big Green Gem
+  desc: "a big, green gem"
+  value: 1500
+  sprite: 243
+
+- name: Antanian Small Red Gem
+  desc: "a small, red gem"
+  value: 700
+  sprite: 244
+
+- name: Antanian Big Red Gem
+  desc: "a big, red gem"
+  value: 2000
+  sprite: 245
+
+- name: Antanian Diamond
+  desc: "a roughly-cut diamond"
+  value: 5000
+  sprite: 247

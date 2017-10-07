@@ -541,6 +541,10 @@ export class GameWorld extends Room<GameState> {
 
   }
 
+  private async getAllLoot() {
+
+  }
+
   async calculateLootDrops(npc: NPC, killer: Character) {
     const tables = [];
     const bonus = killer.getTotalStat('luk');

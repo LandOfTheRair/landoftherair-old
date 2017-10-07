@@ -14,9 +14,34 @@
   desc: "a simple gold ring"
   value: 150
 
+- name: Antanian Defense Ring
+  stats:
+    armorClass: 2
+    defense: 3
+  sprite: 240
+  desc: "a gold ring set with a green gem"
+  value: 500
+
+- name: Antanian Offense Ring
+  stats:
+    offense: 3
+  binds: true
+  sprite: 241
+  desc: "a gold ring set with a blue gem"
+  value: 600
+
+- name: Antanian Combat Ring
+  stats:
+    defense: 3
+    offense: 3
+  binds: true
+  sprite: 267
+  desc: "a gold ring set with a blue gem with a shield etched into it"
+  value: 1500
+
 - name: Identify Ring
   sprite: 239
-  desc: "a silver ring with a blue gem set in the center"
+  desc: "a silver ring set with a blue gem"
   value: 100
   effect:
     name: Identify
@@ -26,6 +51,7 @@
 - name: Terwin Ring
   stats:
     cha: 1
+  binds: true
   sprite: 30
   desc: "a gold ring with a sparkly red gem set in the center"
   value: 1000
