@@ -18,9 +18,9 @@ export class Steal extends Skill {
   public name = 'steal';
   public format = 'Target';
 
-  range = () => 0
-
   requiresLearn = false;
+
+  range = () => 0;
 
   execute(user: Character, { gameState, args }) {
     if(!args) return false;
