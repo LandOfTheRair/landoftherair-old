@@ -242,7 +242,7 @@ export class ColyseusGameService {
   private logMessage({ name, message, subClass, grouping, dirFrom }: any) {
     const isZero = (includes(message, '[0') && includes(message, 'damage]'))
                 || (includes(message, 'misses!'))
-                || (includes(message, 'blocked by your armor!'));
+                || (includes(message, 'blocked by your'));
     if(isZero && this.localStorage.retrieve('suppressZeroDamage')) return;
     if(!grouping || grouping === 'spell') grouping = 'always';
     this.clientGameState.addLogMessage({ name, message, subClass, grouping, dirFrom });
