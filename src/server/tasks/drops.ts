@@ -11,10 +11,11 @@ import { includes, flatten, isUndefined, isNumber } from 'lodash';
 
 class DropsLoader {
 
-  static loadAllRegions() {
-    DB.isReady.then(async () => {
-      await DB.$regionDrops.remove({}, { multi: true });
+  static async loadAllRegions() {
+    await DB.isReady;
+    await DB.$regionDrops.remove({}, { multi: true });
 
+    return new Promise(resolve => {
       recurse(`${__dirname}/../data/droptables/regions`).then(files => {
         const filePromises = files.map(file => {
           const droptable = YAML.load(file);
@@ -28,16 +29,18 @@ class DropsLoader {
         });
 
         Promise.all(flatten(filePromises)).then(() => {
-          console.log('Done');
-          process.exit(0);
+          console.log('Regions - Done');
+          resolve();
         });
       });
     });
   }
 
-  static loadAllMaps() {
-    DB.isReady.then(async () => {
-      await DB.$mapDrops.remove({}, { multi: true });
+  static async loadAllMaps() {
+    await DB.isReady;
+    await DB.$mapDrops.remove({}, { multi: true });
+
+    return new Promise(resolve => {
 
       recurse(`${__dirname}/../data/droptables/maps`).then(files => {
         const filePromises = files.map(file => {
@@ -52,8 +55,8 @@ class DropsLoader {
         });
 
         Promise.all(flatten(filePromises)).then(() => {
-          console.log('Done');
-          process.exit(0);
+          console.log('Maps - Done');
+          resolve();
         });
       });
     });
@@ -61,5 +64,7 @@ class DropsLoader {
 
 }
 
-DropsLoader.loadAllRegions();
-DropsLoader.loadAllMaps();
+Promise.all([DropsLoader.loadAllRegions(), DropsLoader.loadAllMaps()])
+  .then(() => {
+    process.exit(0);
+  });
