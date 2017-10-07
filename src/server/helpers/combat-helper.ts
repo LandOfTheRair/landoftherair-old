@@ -36,7 +36,7 @@ export class CombatHelper {
 
   static physicalAttack(attacker: Character, defender: Character, opts: any = {}) {
 
-    const { isThrow, throwHand, isBackstab } = opts;
+    const { isThrow, throwHand, isBackstab, isMug } = opts;
 
     if(defender.isDead() || attacker.isDead()) return { isDead: true };
 
@@ -209,6 +209,15 @@ export class CombatHelper {
       damage = Math.floor(damage * bonusMultiplier);
     }
 
+    if(isMug) {
+      const thiefSkill = attacker.calcSkillLevel(SkillClassNames.Thievery);
+      const reductionFactor = 1 - Math.max(
+        0.5,
+        0.9 - (attacker.baseClass === 'Thief' ? Math.floor(thiefSkill / 5) / 10 : 0)
+      );
+      damage = Math.floor(damage * reductionFactor);
+    }
+
     let damageType = 'was a successful strike';
 
     if(attackerScope.damageMin !== attackerScope.damageMax) {
@@ -243,7 +252,7 @@ export class CombatHelper {
       return { noDamage: true };
     }
 
-    return { damage, dealtBy: attackerWeapon.itemClass.toLowerCase(), damageType };
+    return { hit: true, damage, dealtBy: attackerWeapon.itemClass.toLowerCase(), damageType };
   }
 
   static tryApplyEffect(attacker, defender, effect) {
