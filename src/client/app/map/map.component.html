@@ -1,6 +1,6 @@
 <div id="map" #mapElement droppable dropScope="mapground" (onDrop)="colyseus.game.buildDropAction($event, 'Ground')"></div>
 
-<div *ngIf="colyseus.game.clientGameState.fov">
+<div *ngIf="colyseus.game.clientGameState.fov" [class.hidden]="game && !game.isLoaded">
   <div *ngFor="let x of colyseus.game.clientGameState.fovArray">
     <div *ngFor="let y of colyseus.game.clientGameState.fovArray"
          class="fog"

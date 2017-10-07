@@ -17,6 +17,9 @@ export class CharacterSelectComponent implements OnInit {
 
   public charSlots: any[];
 
+  @Input()
+  public resourcesLoaded: boolean;
+
   @LocalStorage()
   public curSlot;
 
