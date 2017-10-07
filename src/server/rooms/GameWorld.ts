@@ -205,7 +205,7 @@ export class GameWorld extends Room<GameState> {
   saveLocker(player: Player, locker: Locker) {
     return DB.$characterLockers.update(
       { username: player.username, charSlot: player.charSlot, regionId: locker.regionId, lockerId: locker.lockerId },
-      { $set: { lockerName: locker.lockerName, items: locker.items } }
+      { $set: { lockerName: locker.lockerName, items: locker.allItems } }
     );
   }
 
@@ -541,13 +541,8 @@ export class GameWorld extends Room<GameState> {
 
   }
 
-  private async getAllLoot() {
-
-  }
-
-  async calculateLootDrops(npc: NPC, killer: Character) {
+  private async getAllLoot(npc: NPC, bonus = 0, sackOnly = false) {
     const tables = [];
-    const bonus = killer.getTotalStat('luk');
 
     if(this.dropTables.map.length > 0) {
       tables.push({
@@ -594,12 +589,20 @@ export class GameWorld extends Room<GameState> {
     const itemPromises: Array<Promise<Item>> = items.map(itemName => ItemCreator.getItemByName(itemName));
     const allItems: Item[] = await Promise.all(itemPromises);
 
+    return allItems;
+  }
+
+  async calculateLootDrops(npc: NPC, killer: Character) {
+    const bonus = killer.getTotalStat('luk');
+
+    const allItems = await this.getAllLoot(npc, bonus);
+
     if(npc.gold) {
       const gold = await ItemCreator.getGold(npc.gold);
       allItems.push(gold);
     }
 
-    this.createCorpse(npc, allItems);
+    this.createCorpse(npc, allItems.concat(npc.sack.allItems));
   }
 
   async createCorpse(target: Character, searchItems) {
