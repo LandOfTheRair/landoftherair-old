@@ -1,5 +1,5 @@
 
-import { extend, compact } from 'lodash';
+import { extend, compact, findIndex, sample } from 'lodash';
 
 import { Item } from '../item';
 
@@ -46,6 +46,15 @@ export class Container {
     this.items[slot] = null;
     this.fix();
     return item;
+  }
+
+  randomItem() {
+    return sample(this.items);
+  }
+
+  takeItem(item: Item) {
+    const index = findIndex(this.items, x => x === item);
+    this.takeItemFromSlot(index);
   }
 
   takeItemFromSlots(slots: number[]) {

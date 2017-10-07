@@ -48,8 +48,8 @@ export class NPCLoader {
   static getItemsFromPlayerSackByName(player: Player, name) {
     const indexes = [];
 
-    for(let i = 0; i < player.sack.items.length; i++) {
-      const item = player.sack.items[i];
+    for(let i = 0; i < player.sack.allItems.length; i++) {
+      const item = player.sack.allItems[i];
       if(!item || item.name !== name) continue;
       indexes.push(i);
     }

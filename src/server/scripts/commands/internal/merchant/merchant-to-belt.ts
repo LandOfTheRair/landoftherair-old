@@ -25,7 +25,7 @@ export class MerchantToBelt extends Command {
 
     if(!item.isBeltable) return player.sendClientMessage('That item is not beltable, cheater.');
 
-    const maxQuantity = Math.min(quantity, player.belt.size - player.belt.items.length);
+    const maxQuantity = Math.min(quantity, player.belt.size - player.belt.allItems.length);
 
     for(let i = 0; i < maxQuantity; i++) {
       if(player.gold < item.value) return player.sendClientMessage('You do not have enough gold for that.');

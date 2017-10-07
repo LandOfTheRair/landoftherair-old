@@ -25,7 +25,7 @@ export class MerchantToSack extends Command {
 
     if(!item.isSackable) return player.sendClientMessage('That item is not sackable, cheater.');
 
-    const maxQuantity = Math.min(quantity, player.sack.size - player.sack.items.length);
+    const maxQuantity = Math.min(quantity, player.sack.size - player.sack.allItems.length);
 
     for(let i = 0; i < maxQuantity; i++) {
       if(player.gold < item.value) return player.sendClientMessage('You do not have enough gold for that.');

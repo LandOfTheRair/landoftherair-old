@@ -62,7 +62,8 @@ export class CombatHelper {
 
     attacker.flagSkill(flagSkills);
 
-    if(isThrow) flagSkills[1] = SkillClassNames.Throwing;
+    if(isThrow)    flagSkills[1] = SkillClassNames.Throwing;
+    if(isBackstab) flagSkills[1] = SkillClassNames.Thievery;
 
     if(!attackerWeapon.isOwnedBy(attacker) || !attackerWeapon.hasCondition()) {
       if(!isThrow || (isThrow && attackerWeapon.returnsOnThrow)) {

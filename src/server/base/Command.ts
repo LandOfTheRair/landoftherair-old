@@ -50,6 +50,13 @@ export abstract class Command {
     }
   }
 
+  getEmptyHand(player) {
+    if(player.rightHand && player.leftHand) return '';
+    if(player.rightHand) return 'LeftHand';
+    if(player.leftHand) return 'RightHand';
+    return 'RightHand';
+  }
+
   addItemToContainer(player, container: Container, item: Item) {
     const didFail = container.addItem(item);
     if(didFail) return player.sendClientMessage(didFail);
