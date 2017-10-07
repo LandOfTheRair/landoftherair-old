@@ -78,9 +78,9 @@ export abstract class Skill extends Command {
 
     if(target.sack.allItems.length === 0 && target.gold <= 0) return user.sendClientMessage('You can\'t seem to find anything to take!');
 
-    const gainThiefSkill = (user, skillGained) => {
+    const gainThiefSkill = (gainer, skillGained) => {
       if(skillGained <= 0) return;
-      user.gainSkill(SkillClassNames.Thievery, skillGained);
+      gainer.gainSkill(SkillClassNames.Thievery, skillGained);
     };
 
     const mySkill = user.calcSkillLevel(SkillClassNames.Thievery) * (user.baseClass === 'Thief' ? 3 : 1.5);
