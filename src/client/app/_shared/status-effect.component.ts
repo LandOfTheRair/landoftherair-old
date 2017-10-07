@@ -25,6 +25,7 @@ import { Component, Input } from '@angular/core';
       z-index: 20;
       text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; 
       color: #000;
+      user-select: none;
     }
   `],
   template: `
