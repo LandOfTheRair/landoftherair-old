@@ -1,4 +1,80 @@
 
+# basic bottles
+- name: Mend Bottle
+  chance: 1
+  maxChance: 20
+
+- name: Instant Heal Bottle
+  chance: 1
+  maxChance: 50
+
+- name: TrueSight Potion
+  chance: 1
+  maxChance: 200
+
+- name: Weak BarNecro Potion
+  chance: 1
+  maxChance: 200
+
+- name: Weak BarFire Potion
+  chance: 1
+  maxChance: 200
+
+- name: Weak BarWater Potion
+  chance: 1
+  maxChance: 200
+
+- name: Weak BarFrost Potion
+  chance: 1
+  maxChance: 200
+
+# gems
+- name: Antanian Gem
+  chance: 1
+  maxChance: 30
+
+- name: Antanian Small Green Gem
+  chance: 1
+  maxChance: 70
+
+- name: Antanian Big Green Gem
+  chance: 1
+  maxChance: 150
+
+- name: Antanian Small Red Gem
+  chance: 1
+  maxChance: 90
+
+- name: Antanian Big Red Gem
+  chance: 1
+  maxChance: 170
+
+- name: Antanian Diamond
+  chance: 1
+  maxChance: 500
+
+# rings
+- name: Leather Ring
+  chance: 1
+  maxChance: 30
+
+- name: Antanian Ring
+  chance: 1
+  maxChance: 50
+
+- name: Antanian Defense Ring
+  chance: 1
+  maxChance: 100
+
+- name: Antanian Offense Ring
+  chance: 1
+  maxChance: 150
+
+- name: Antanian Combat Ring
+  chance: 1
+  maxChance: 500
+
+# special bottles
 - name: Antanian Strength Potion
   chance: 1
   maxChance: 10000
