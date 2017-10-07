@@ -54,8 +54,8 @@ export class Mug extends Skill {
   }
 
   use(user: Character, target: Character) {
-    let xDiff = target.x - user.x;
-    let yDiff = target.y - user.y;
+    const xDiff = target.x - user.x;
+    const yDiff = target.y - user.y;
 
     MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff });
 
