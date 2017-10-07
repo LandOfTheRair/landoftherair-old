@@ -8,6 +8,7 @@
     max-width: 35px;
     max-height: 54px;
     padding-top: 12px;
+    user-select: none;
 
     .text-rotated {
       transform: rotate(-90deg);
