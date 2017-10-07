@@ -36,7 +36,7 @@ export class CombatHelper {
 
   static physicalAttack(attacker: Character, defender: Character, opts: any = {}) {
 
-    const { isThrow, throwHand } = opts;
+    const { isThrow, throwHand, isBackstab } = opts;
 
     if(defender.isDead() || attacker.isDead()) return { isDead: true };
 
@@ -201,6 +201,12 @@ export class CombatHelper {
     const damageRight = Math.floor(attackerScope.str + attackerScope.level + damageMax);
 
     let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}`) * attackerScope.multiplier) + attackerScope.damageBase;
+
+    if(isBackstab) {
+      const thiefSkill = attacker.calcSkillLevel(SkillClassNames.Thievery);
+      const bonusMultiplier = attacker.baseClass === 'Thief' ? 2 + Math.floor(thiefSkill / 5) : 1.5;
+      damage = Math.floor(damage * bonusMultiplier);
+    }
 
     let damageType = 'was a successful strike';
 
