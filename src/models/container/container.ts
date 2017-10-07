@@ -7,7 +7,11 @@ export class Container {
 
   public size: number;
 
-  public items: Item[] = [];
+  private items: Item[] = [];
+
+  public get allItems() {
+    return this.items;
+  }
 
   constructor({ size }) {
     this.size = size;
