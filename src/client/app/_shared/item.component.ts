@@ -41,6 +41,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
       z-index: 550;
       position: absolute;
       top: 0;
+      pointer-events: none;
     }
     
     .count, .value, .ounces {
