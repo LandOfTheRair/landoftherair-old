@@ -160,7 +160,7 @@
     potency: 100
   value: 500
 
-- name: Weak BarIce Potion
+- name: Weak BarFrost Potion
   desc: "a small white bottle. The bottle chills your hand"
   extendedDesc: "a potion of BarFrost"
   sprite: 251

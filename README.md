@@ -82,7 +82,7 @@ You also get access to some commands in-game:
 * `@gold <num>` - create <num> gold on your tile
 * `@item <item name>` - create a particular item on your tile
 * `@itemdupe` - copy your right hand to your left hand
-* `@examine <nothing|npcish>` - if `npcish` is specified, will examine an npc. Otherwise, it'll examine your right hand item
+* `@examine <nothing|npcish> <nothing|prop>` - if `npcish` is specified, will examine an npc (if `prop` is specified, it will print only that prop). Otherwise, it'll examine your right hand item
 * `@itemforge propsish` - create an item using props syntax, for example: `sprite=1 type=Hammer stats.str=1`
 * `@skill <skillname> <xpgain>` - gain `xpgain` skill for `skillname`
 * `@xp <xp>` - gain <xp> XP

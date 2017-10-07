@@ -34,12 +34,15 @@
   drops:
     - result: Antanian Leather Gloves
       chance: 20
+      maxChance: 100
 
     - result: Antanian Leather Boots
       chance: 20
+      maxChance: 100
 
     - result: Antanian Golem Brain
       chance: 20
+      maxChance: 100
 
   copyDrops:
     - drop: 'gear.Armor'
@@ -227,9 +230,11 @@
   drops:
     - result: Antanian Leather Gloves
       chance: 20
+      maxChance: 100
 
     - result: Antanian Leather Boots
       chance: 20
+      maxChance: 100
 
     - result: Antanian Golem Brain
       chance: -1

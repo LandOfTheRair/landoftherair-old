@@ -1,12 +1,12 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../models/player';
-import { ItemCreator } from '../../../helpers/item-creator';
+import { get } from 'lodash';
 
 export class GMExamine extends Command {
 
   public name = '@examine';
-  public format = 'Target';
+  public format = 'Target? Prop?';
 
   async execute(player: Player, { room, gameState, args }) {
     if(!player.isGM) return;
@@ -16,12 +16,18 @@ export class GMExamine extends Command {
       return;
     }
 
-    const possTargets = room.getPossibleMessageTargets(player, args);
+    const [npcish, prop] = args.split(' ');
+    const possTargets = room.getPossibleMessageTargets(player, npcish);
     if(!possTargets.length) return player.sendClientMessage('You do not see that person.');
 
     const target = possTargets[0];
     if(!target) return false;
 
-    player.sendClientMessage(JSON.stringify(target.toJSON()));
+    let targetJSON = target.toJSON();
+    if(prop) {
+      targetJSON = get(targetJSON, prop);
+    }
+
+    player.sendClientMessage(JSON.stringify(targetJSON));
   }
 }

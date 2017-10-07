@@ -167,6 +167,7 @@
   drops:
     - result: Antanian Constitution Potion
       chance: 30
+      maxChance: 100
     - result: Rylt Renegade Book
       chance: 1
       maxChance: 450
@@ -243,6 +244,7 @@
   drops:
     - result: Antanian Constitution Potion
       chance: 50
+      maxChance: 100
     - result: Rylt Renegade Book
       chance: 1
       maxChance: 400

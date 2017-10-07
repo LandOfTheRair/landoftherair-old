@@ -117,18 +117,22 @@ export class Spawner {
       }));
     }
 
+    let sackItems = [];
+
     if(npcData.sack) {
       const items = await Promise.all(npcData.sack.map(async itemName => {
         return await NPCLoader.loadItem(itemName);
       }));
-      npcData.sack = { items };
+      sackItems = items;
     }
+
+    let beltItems = [];
 
     if(npcData.belt) {
       const items = await Promise.all(npcData.belt.map(async itemName => {
         return await NPCLoader.loadItem(itemName);
       }));
-      npcData.belt = { items };
+      beltItems = items;
     }
 
     npcData.x = random(this.x - this.spawnRadius, this.x + this.spawnRadius);
@@ -154,6 +158,12 @@ export class Spawner {
     }
 
     const npc = new NPC(npcData);
+
+    const additionalSackItems = await this.room.getAllLoot(npc, 0, true);
+    sackItems.push(...additionalSackItems);
+
+    beltItems.forEach(item => npc.belt.addItem(item));
+    sackItems.forEach(item => npc.sack.addItem(item));
 
     const ai = sample(this.npcAISettings) || 'default';
     const { tick } = require(`../scripts/ai/${ai}`);
