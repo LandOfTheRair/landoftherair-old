@@ -67,6 +67,8 @@ export class Game {
   private bgms = {};
   private sfxs = {};
 
+  public isLoaded: boolean;
+
   public get shouldRender() {
     if(!this.g || !this.g.camera || !this.playerSprite) return false;
 
@@ -188,6 +190,7 @@ export class Game {
       this.truesightCheck();
       this.canUpdateBool = true;
       this.resolveCanUpdate(sprite);
+      this.isLoaded = true;
 
     } else {
       const sprite = this.getPlayerSprite(player);
@@ -512,7 +515,35 @@ export class Game {
     this.clientGameState.updates.openDoors = compact(this.clientGameState.updates.openDoors);
   }
 
+  public setupLoadingListeners() {
+
+    const textStyle = {
+      fill: '#fff',
+      font: '32px Fantasy',
+      align: 'center'
+    };
+
+    const loadingText = this.g.add.text(this.g.world.centerX, this.g.world.centerY, 'Loading...', textStyle);
+    loadingText.anchor.set(0.5, 0);
+
+    loadingText.bringToTop();
+
+    this.g.load.onLoadStart.add(() => {
+      loadingText.setText('Loading...');
+    });
+
+    this.g.load.onFileComplete.add((progress, cacheKey, success, totalLoaded, totalFiles) => {
+      loadingText.setText(`Loading... ${progress}% complete (${totalLoaded}/${totalFiles})`);
+    });
+
+    this.g.load.onLoadComplete.add(() => {
+      loadingText.destroy();
+    });
+  }
+
   preload() {
+    this.isLoaded = false;
+
     this.g.add.plugin(new TiledPlugin(this.g, this.g.stage));
 
     const loadMap = this.clientGameState.map;
@@ -543,6 +574,8 @@ export class Game {
     });
 
     this.g.game.renderer.setTexturePriority(['Terrain', 'Walls', 'Decor', 'Creatures', 'Items']);
+
+    this.setupLoadingListeners();
   }
 
   create() {

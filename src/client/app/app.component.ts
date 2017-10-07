@@ -131,6 +131,16 @@ export class AppComponent implements OnInit {
     return this.colyseus.game.inGame;
   }
 
+  get preloadImageAssets(): string[] {
+    return ['decor', 'walls', 'items', 'creatures', 'swimming', 'terrain',  'effects'];
+  }
+
+  private imagesLoaded = 0;
+
+  get resourcesLoaded() {
+    return this.imagesLoaded >= this.preloadImageAssets.length;
+  }
+
   constructor(public colyseus: ColyseusService, public macroService: MacroService, public authService: AuthService) {
     this.authService.handleAuthentication();
   }
@@ -151,6 +161,11 @@ export class AppComponent implements OnInit {
     });
 
     this.initDefaultOptions();
+  }
+
+  imageLoaded() {
+    this.imagesLoaded++;
+    // TODO increment and check and enable buttons (a global "loaded" state) when all iamges have loaded
   }
 
   initDefaultOptions() {

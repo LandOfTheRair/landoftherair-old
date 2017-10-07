@@ -99,7 +99,7 @@
      [class.hidden]="!loggedIn || inGame || !colyseus.username || !colyseus.isConnected">
   <div class="window-header text-center" #characterSelectDrag>Character Select</div>
   <div class="window-body">
-    <app-character-select></app-character-select>
+    <app-character-select [resourcesLoaded]="resourcesLoaded"></app-character-select>
   </div>
 </div>
 
@@ -852,3 +852,5 @@
   </div>
 
 </ng-template>
+
+<img *ngFor="let asset of preloadImageAssets" class="hidden" [src]="'assets/' + asset + '.png'" (load)="imageLoaded()" />

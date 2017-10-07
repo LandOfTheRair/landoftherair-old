@@ -5,10 +5,13 @@
       {{ lobby.myAccount.characterNames[i] || 'New Character' }}
     </label>
   </div>
-  <div class="row">
-    <button class="col no-border-radius btn btn-warning" (click)="charModal.show()" [disabled]="!lobby.colyseus.isConnected">Create</button>
+  <div class="row" [tooltip]="resourcesLoaded ? '' : 'Some resources are loading. To create a better experience, you have to wait for them to finish before starting the game.'">
+    <button class="col no-border-radius btn btn-warning"
+            (click)="charModal.show()"
+            [disabled]="!lobby.colyseus.isConnected">Create</button>
     <button class="col no-border-radius btn btn-primary"
-            (click)="playCharacter()" [disabled]="!lobby.myAccount.characterNames[curSlot] || !lobby.colyseus.isConnected">Play</button>
+            (click)="playCharacter()"
+            [disabled]="!lobby.myAccount.characterNames[curSlot] || !lobby.colyseus.isConnected || !resourcesLoaded">{{ resourcesLoaded ? 'Play' : 'Loading...' }}</button>
   </div>
 </div>
 
