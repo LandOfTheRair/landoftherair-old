@@ -109,6 +109,9 @@ export class AppComponent implements OnInit {
   public autoHideLobby: boolean;
 
   @LocalStorage()
+  public lockWindowPositions: boolean;
+
+  @LocalStorage()
   public suppressZeroDamage: boolean;
 
   @LocalStorage()

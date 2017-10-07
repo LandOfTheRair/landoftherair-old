@@ -74,7 +74,7 @@
 </div>
 
 <div class="window lobby game-window"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="lobbyDrag"
      windowName="lobby"
      defaultX="576"
@@ -91,7 +91,7 @@
 </div>
 
 <div class="window character-select"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="characterSelectDrag"
      windowName="chararacterSelect"
      defaultX="0"
@@ -104,7 +104,7 @@
 </div>
 
 <div class="window map"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="mapDrag"
      windowName="map"
      defaultX="389"
@@ -122,7 +122,7 @@
 </div>
 
 <div class="window stats above-game-window"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="statsDrag"
      windowName="stats"
      defaultX="670"
@@ -138,7 +138,7 @@
 </div>
 
 <div class="window skills above-game-window"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="skillsDrag"
      windowName="skills"
      defaultX="670"
@@ -154,7 +154,7 @@
 </div>
 
 <div class="window command-line game-window"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="commandLine"
      windowName="commandLine"
      defaultX="389"
@@ -170,8 +170,8 @@
 </div>
 
 <div class="window log-window game-window"
+     [appDraggableWindow]="!lockWindowPositions"
      [ngClass]="[logWindowSize]"
-     appDraggableWindow="true"
      [windowHandle]="logWindow"
      windowName="logWindow"
      defaultX="3"
@@ -187,7 +187,7 @@
 </div>
 
 <div class="window status-window game-window"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="statusWindow"
      windowName="statusWindow"
      defaultX="389"
@@ -204,8 +204,8 @@
 </div>
 
 <div class="window ground-window game-window"
+     [appDraggableWindow]="!lockWindowPositions"
      [ngClass]="[groundSize]"
-     appDraggableWindow="true"
      [windowHandle]="groundWindow"
      windowName="groundWindow"
      defaultX="3"
@@ -221,8 +221,8 @@
 </div>
 
 <div class="window inventory-sack-window game-window"
+     [appDraggableWindow]="!lockWindowPositions"
      [ngClass]="[sackSize]"
-     appDraggableWindow="true"
      [windowHandle]="sackWindow"
      windowName="sackWindow"
      defaultX="966"
@@ -238,8 +238,8 @@
 </div>
 
 <div class="window inventory-belt-window game-window"
+     [appDraggableWindow]="!lockWindowPositions"
      [ngClass]="[beltSize]"
-     appDraggableWindow="true"
      [windowHandle]="beltWindow"
      windowName="beltWindow"
      defaultX="966"
@@ -255,8 +255,8 @@
 </div>
 
 <div class="window equipment-window game-window"
+     [appDraggableWindow]="!lockWindowPositions"
      [ngClass]="[equipmentSize]"
-     appDraggableWindow="true"
      [windowHandle]="equipmentWindow"
      windowName="equipmentWindow"
      defaultX="966"
@@ -272,8 +272,8 @@
 </div>
 
 <div class="window npc-window game-window"
+     [appDraggableWindow]="!lockWindowPositions"
      [ngClass]="[npcWindowSize]"
-     appDraggableWindow="true"
      [windowHandle]="npcWindow"
      windowName="npcWindow"
      defaultX="3"
@@ -288,7 +288,7 @@
 </div>
 
 <div class="window macro-bars game-window"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="macroBars"
      windowName="macroBars"
      defaultX="389"
@@ -303,7 +303,7 @@
 </div>
 
 <div class="window trainer above-game-window"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="trainerDrag"
      windowName="trainer"
      defaultX="670"
@@ -319,7 +319,7 @@
 </div>
 
 <div class="window shop above-game-window"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="shopDrag"
      windowName="shop"
      defaultX="670"
@@ -335,7 +335,7 @@
 </div>
 
 <div class="window bank above-game-window"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="bankDrag"
      windowName="bank"
      defaultX="670"
@@ -351,7 +351,7 @@
 </div>
 
 <div class="window locker above-game-window"
-     appDraggableWindow="true"
+     [appDraggableWindow]="!lockWindowPositions"
      [windowHandle]="lockerDrag"
      windowName="locker"
      defaultX="670"
@@ -494,6 +494,15 @@
             <label class="form-check-label" for="autoHideLobby">
               <input type="checkbox" class="form-check-input" [(ngModel)]="autoHideLobby" id="autoHideLobby"/>
               Hide lobby while game is open
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-9 ml-auto form-check">
+            <label class="form-check-label" for="lockWindowPositions">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="lockWindowPositions" id="lockWindowPositions"/>
+              Lock All Window Positions
             </label>
           </div>
         </div>
