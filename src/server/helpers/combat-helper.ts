@@ -134,8 +134,10 @@ export class CombatHelper {
     const attackerDodgeRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`);
     const defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`);
 
+    const isOnSameTile = attacker.x === defender.x && attacker.y === defender.y;
+
     const dodgeRoll = random(defenderDodgeRoll, attackerDodgeRoll);
-    if(dodgeRoll < 0) {
+    if(dodgeRoll < 0 || !isOnSameTile) {
       attacker.sendClientMessage({ message: `You miss!`, subClass: 'combat self miss', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} misses!`, subClass: 'combat other miss' });
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);

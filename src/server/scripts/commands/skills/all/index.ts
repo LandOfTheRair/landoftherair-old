@@ -1,4 +1,5 @@
 export * from './Attack';
+export * from './Charge';
 export * from './Throw';
 
 export * from './Backstab';
