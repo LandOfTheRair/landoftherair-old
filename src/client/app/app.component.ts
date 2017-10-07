@@ -138,7 +138,11 @@ export class AppComponent implements OnInit {
   private imagesLoaded = 0;
 
   get resourcesLoaded() {
-    return this.imagesLoaded >= this.preloadImageAssets.length;
+    return {
+      done: this.imagesLoaded >= this.preloadImageAssets.length,
+      current: this.imagesLoaded,
+      total: this.preloadImageAssets.length
+    };
   }
 
   constructor(public colyseus: ColyseusService, public macroService: MacroService, public authService: AuthService) {

@@ -11,7 +11,7 @@
             [disabled]="!lobby.colyseus.isConnected">Create</button>
     <button class="col no-border-radius btn btn-primary"
             (click)="playCharacter()"
-            [disabled]="!lobby.myAccount.characterNames[curSlot] || !lobby.colyseus.isConnected || !resourcesLoaded">{{ resourcesLoaded ? 'Play' : 'Loading...' }}</button>
+            [disabled]="!lobby.myAccount.characterNames[curSlot] || !lobby.colyseus.isConnected || !resourcesLoaded.done">{{ resourcesLoaded.done ? 'Play' : 'Loading... (' + resourcesLoaded.current + '/' + resourcesLoaded.total + ')' }}</button>
   </div>
 </div>
 
