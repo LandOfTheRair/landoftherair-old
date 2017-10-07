@@ -127,6 +127,7 @@
   drops:
     - result: Antanian Bear Meat
       chance: 30
+      maxChance: 100
 
   spawnMessage: "a deep roar"
 

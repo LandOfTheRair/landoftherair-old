@@ -408,9 +408,9 @@ export class GameWorld extends Room<GameState> {
   }
 
   async loadDropTables() {
-    this.dropTables.map = await DB.$mapDrops.findOne({ mapName: this.state.mapName }).drops || [];
+    this.dropTables.map = (await DB.$mapDrops.findOne({ mapName: this.state.mapName })).drops || [];
     if(this.mapRegion) {
-      this.dropTables.region = await DB.$regionDrops.findOne({ regionName: this.mapRegion }).drops || [];
+      this.dropTables.region = (await DB.$regionDrops.findOne({ regionName: this.mapRegion })).drops || [];
     }
   }
 
@@ -541,7 +541,7 @@ export class GameWorld extends Room<GameState> {
 
   }
 
-  private async getAllLoot(npc: NPC, bonus = 0, sackOnly = false) {
+  private async getAllLoot(npc: NPC, bonus = 0, sackOnly = false): Promise<Item[]> {
     const tables = [];
 
     if(this.dropTables.map.length > 0) {
@@ -568,7 +568,7 @@ export class GameWorld extends Room<GameState> {
       });
     }
 
-    if(npc.copyDrops && npc.copyDrops.length > 0) {
+    if(!sackOnly && npc.copyDrops && npc.copyDrops.length > 0) {
       const drops = compact(npc.copyDrops.map(({ drop, chance }) => {
         const item = get(npc, drop);
         if(!item) return null;
@@ -602,7 +602,7 @@ export class GameWorld extends Room<GameState> {
       allItems.push(gold);
     }
 
-    this.createCorpse(npc, allItems.concat(npc.sack.allItems));
+    this.createCorpse(npc, allItems);
   }
 
   async createCorpse(target: Character, searchItems) {

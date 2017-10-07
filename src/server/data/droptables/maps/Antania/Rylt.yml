@@ -1,8 +1,8 @@
 
-- name: Rylt Blueflower
+- result: Rylt Blueflower
   chance: 1
   maxChance: 100
 
-- name: Bear Meat Antidote
+- result: Bear Meat Antidote
   chance: 1
   maxChance: 200

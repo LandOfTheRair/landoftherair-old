@@ -1,132 +1,132 @@
 
 # basic bottles
-- name: Mend Bottle
+- result: Mend Bottle
   chance: 1
   maxChance: 20
 
-- name: Instant Heal Bottle
+- result: Instant Heal Bottle
   chance: 1
   maxChance: 50
 
-- name: TrueSight Potion
+- result: TrueSight Potion
   chance: 1
   maxChance: 200
 
-- name: Weak BarNecro Potion
+- result: Weak BarNecro Potion
   chance: 1
   maxChance: 200
 
-- name: Weak BarFire Potion
+- result: Weak BarFire Potion
   chance: 1
   maxChance: 200
 
-- name: Weak BarWater Potion
+- result: Weak BarWater Potion
   chance: 1
   maxChance: 200
 
-- name: Weak BarFrost Potion
+- result: Weak BarFrost Potion
   chance: 1
   maxChance: 200
 
 # gems
-- name: Antanian Gem
+- result: Antanian Purple Gem
   chance: 1
   maxChance: 30
 
-- name: Antanian Small Green Gem
+- result: Antanian Small Green Gem
   chance: 1
   maxChance: 70
 
-- name: Antanian Big Green Gem
+- result: Antanian Big Green Gem
   chance: 1
   maxChance: 150
 
-- name: Antanian Small Red Gem
+- result: Antanian Small Red Gem
   chance: 1
   maxChance: 90
 
-- name: Antanian Big Red Gem
+- result: Antanian Big Red Gem
   chance: 1
   maxChance: 170
 
-- name: Antanian Diamond
+- result: Antanian Diamond
   chance: 1
   maxChance: 500
 
 # rings
-- name: Leather Ring
+- result: Leather Ring
   chance: 1
   maxChance: 30
 
-- name: Antanian Ring
+- result: Antanian Ring
   chance: 1
   maxChance: 50
 
-- name: Antanian Defense Ring
+- result: Antanian Defense Ring
   chance: 1
   maxChance: 100
 
-- name: Antanian Offense Ring
+- result: Antanian Offense Ring
   chance: 1
   maxChance: 150
 
-- name: Antanian Combat Ring
+- result: Antanian Combat Ring
   chance: 1
   maxChance: 500
 
 # special bottles
-- name: Antanian Strength Potion
+- result: Antanian Strength Potion
   chance: 1
   maxChance: 10000
 
-- name: Antanian Agility Potion
+- result: Antanian Agility Potion
   chance: 1
   maxChance: 5000
 
-- name: Antanian Dexterity Potion
+- result: Antanian Dexterity Potion
   chance: 1
   maxChance: 75000
 
-- name: Antanian Intelligence Potion
+- result: Antanian Intelligence Potion
   chance: 1
   maxChance: 11000
 
-- name: Antanian Wisdom Potion
+- result: Antanian Wisdom Potion
   chance: 1
   maxChance: 11000
 
-- name: Antanian Willpower Potion
+- result: Antanian Willpower Potion
   chance: 1
   maxChance: 50000
 
-- name: Antanian Constitution Potion
+- result: Antanian Constitution Potion
   chance: 1
   maxChance: 500
 
-- name: Antanian Luck Potion
+- result: Antanian Luck Potion
   chance: 1
   maxChance: 100000
 
-- name: Antanian Charisma Potion
+- result: Antanian Charisma Potion
   chance: 1
   maxChance: 100000
 
-- name: Antanian Health Potion
+- result: Antanian Health Potion
   chance: 1
   maxChance: 4000
 
-- name: Antanian Magic Potion
+- result: Antanian Magic Potion
   chance: 1
   maxChance: 25000
 
-- name: Antanian Lore Scroll 1
+- result: Antanian Lore Scroll 1
   chance: 1
   maxChance: 500
 
-- name: Antanian Lore Scroll 2
+- result: Antanian Lore Scroll 2
   chance: 1
   maxChance: 500
 
-- name: Antanian Lore Scroll 3
+- result: Antanian Lore Scroll 3
   chance: 1
   maxChance: 500
