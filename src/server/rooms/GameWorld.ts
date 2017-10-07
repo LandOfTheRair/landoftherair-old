@@ -408,9 +408,9 @@ export class GameWorld extends Room<GameState> {
   }
 
   async loadDropTables() {
-    this.dropTables.map = (await DB.$mapDrops.findOne({ mapName: this.state.mapName })).drops || [];
+    this.dropTables.map = (await DB.$mapDrops.findOne({ mapName: this.state.mapName }) || {}).drops || [];
     if(this.mapRegion) {
-      this.dropTables.region = (await DB.$regionDrops.findOne({ regionName: this.mapRegion })).drops || [];
+      this.dropTables.region = (await DB.$regionDrops.findOne({ regionName: this.mapRegion }) || {}).drops || [];
     }
   }
 
