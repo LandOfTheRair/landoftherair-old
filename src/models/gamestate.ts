@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce } from 'lodash';
 
 import { Player } from './player';
 
@@ -341,12 +341,19 @@ export class GameState {
     });
   }
 
+  get playerHash() {
+    return reduce(this.players, (prev, p) => {
+      prev[p.username] = p;
+      return prev;
+    }, {});
+  }
+
   toJSON() {
     return {
       mapData: this.mapData,
       mapName: this.mapName,
       mapNPCs: this.cleanNPCs(),
-      players: this.players,
+      players: this.playerHash,
       groundItems: this.groundItems
     };
   }
