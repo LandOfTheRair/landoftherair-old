@@ -1,5 +1,5 @@
 
-import { extend, remove, find, differenceBy, compact } from 'lodash';
+import { extend, remove, find, differenceBy, compact, values } from 'lodash';
 
 import { Player } from '../../models/player';
 
@@ -11,7 +11,7 @@ import { Item } from '../../models/item';
 import { Character } from '../../models/character';
 
 export class ClientGameState {
-  players: Player[] = [];
+  private playerHash: { [key: string]: Player } = {};
   map: any = {};
   mapName = '';
   mapData: any = { openDoors: {} };
@@ -38,6 +38,10 @@ export class ClientGameState {
   updates = {
     openDoors: []
   };
+
+  get players() {
+    return values(this.playerHash);
+  }
 
   get allCharacters(): Character[] {
     return (<Character[]>this.mapNPCs).concat(this.players);
@@ -92,11 +96,11 @@ export class ClientGameState {
   }
 
   setPlayers(players) {
-    const addPlayers = differenceBy(players, this.players, 'username');
-    const delPlayers = differenceBy(this.players, players, 'username');
+    const addPlayers = differenceBy(players, this.playerHash, 'username');
+    const delPlayers = differenceBy(this.playerHash, players, 'username');
 
     if(addPlayers.length > 0 || delPlayers.length > 0) {
-      this.players = players.map(x => new Player(x));
+      this.playerHash = players.map(x => new Player(x));
     }
 
     addPlayers.forEach(p => this.addPlayer(p));
@@ -114,36 +118,36 @@ export class ClientGameState {
   }
 
   findPlayer(username) {
-    return find(this.players, { username });
+    return find(this.playerHash, { username });
   }
 
   _updatePlayerAtIndex(playerIndex) {
-    this.updatePlayer$.next(this.players[playerIndex]);
+    this.updatePlayer$.next(this.playerHash[playerIndex]);
   }
 
   updatePlayerEffect(playerIndex, effectIndex, effect) {
-    this.players[playerIndex].effects[effectIndex] = effect;
-    this.players[playerIndex].effects = compact(this.players[playerIndex].effects);
+    this.playerHash[playerIndex].effects[effectIndex] = effect;
+    this.playerHash[playerIndex].effects = compact(this.playerHash[playerIndex].effects);
     this._updatePlayerAtIndex(playerIndex);
   }
 
   updatePlayerStealth(playerIndex, stealth) {
-    (<any>this.players[playerIndex]).totalStats.stealth = stealth;
+    (<any>this.playerHash[playerIndex]).totalStats.stealth = stealth;
     this._updatePlayerAtIndex(playerIndex);
   }
 
   updatePlayerEffectDuration(playerIndex, effectIndex, duration) {
-    this.players[playerIndex].effects[effectIndex].duration = duration;
+    this.playerHash[playerIndex].effects[effectIndex].duration = duration;
     this._updatePlayerAtIndex(playerIndex);
   }
 
   updatePlayer(playerIndex, attr, val) {
-    this.players[playerIndex][attr] = val;
+    this.playerHash[playerIndex][attr] = val;
     this._updatePlayerAtIndex(playerIndex);
   }
 
   private __updatePlayerAttribute(playerIndex, attr, key, val) {
-    this.players[playerIndex][attr][key] = val;
+    this.playerHash[playerIndex][attr][key] = val;
   }
 
   updatePlayerAgro(playerIndex, attr, val) {
@@ -155,7 +159,7 @@ export class ClientGameState {
   }
 
   updatePlayerHand(playerIndex, hand, item) {
-    this.players[playerIndex][hand] = item;
+    this.playerHash[playerIndex][hand] = item;
   }
 
   updatePlayerGearItem(playerIndex, slot, item) {
@@ -163,19 +167,19 @@ export class ClientGameState {
   }
 
   updatePlayerHandItem(playerIndex, hand, attr, value) {
-    this.players[playerIndex][hand] = this.players[playerIndex][hand] || {};
+    this.playerHash[playerIndex][hand] = this.playerHash[playerIndex][hand] || {};
     this.__updatePlayerAttribute(playerIndex, hand, attr, value);
 
     // this is bad, but this function is only called when hand swapping happens and there's an item in both hands, so whatever
-    this.players[playerIndex][hand] = new Item(this.players[playerIndex][hand]);
+    this.playerHash[playerIndex][hand] = new Item(this.playerHash[playerIndex][hand]);
   }
 
   removeAllPlayers() {
-    this.players.forEach((p) => {
+    values(this.playerHash).forEach((p) => {
       this.removePlayer$.next(p);
     });
 
-    this.players = [];
+    this.playerHash = {};
   }
 
   addLogMessage(message) {
