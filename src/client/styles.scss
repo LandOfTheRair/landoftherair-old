@@ -192,6 +192,10 @@ bs-dropdown-container {
   max-width: 464px !important;
 }
 
+bs-modal-backdrop {
+  z-index: 4090 !important;
+}
+
 .swal2-container, bs-dropdown-container, bs-tooltip-container, .modal, .sh-context--container  {
   z-index: 5000 !important;
 }
