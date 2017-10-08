@@ -10,6 +10,9 @@
         <a class="nav-link" href="#" dropdownToggle>Game {{ colyseus.isConnected ? '' : '(Disconnected)' }}</a>
 
         <ul *dropdownMenu class="dropdown-menu">
+          <li *ngIf="inGame">
+            <a class="dropdown-item" (click)="colyseus.game.quit()">Quit To Lobby</a>
+          </li>
           <li>
             <a class="dropdown-item" (click)="colyseus.lobby.logout()">Logout</a>
           </li>
