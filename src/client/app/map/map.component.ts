@@ -46,6 +46,7 @@ export class MapComponent implements OnInit, OnDestroy {
     this.start$ = this.clientGameState.setMap$.subscribe((map: any) => {
 
       if(this.started && this.phaser) {
+        this.game.reset();
         this.game.initPromises();
         this.phaser.state.start(this.phaser.state.current);
       }
@@ -71,18 +72,23 @@ export class MapComponent implements OnInit, OnDestroy {
 
       this.phaser = new (<any>window).Phaser.Game(config);
 
-      this.create$ = this.clientGameState.createPlayer$.subscribe(() => {
-        this.game.canCreate.then(() => {
+      this.create$ = this.clientGameState.createPlayer$.subscribe(async (addPlayer) => {
+        await this.game.canCreate;
+
+        if(!this.game.isLoaded) {
           this.clientGameState.players.forEach(player => {
             this.game.createPlayer(player);
           });
-        });
+        } else {
+          this.game.createPlayer(addPlayer);
+        }
+
       });
 
-      this.update$ = this.clientGameState.updatePlayer$.subscribe((player) => {
-        this.game.canUpdate.then(() => {
-          this.game.updatePlayer(player);
-        });
+      this.update$ = this.clientGameState.updatePlayer$.subscribe(async (player) => {
+        await this.game.canUpdate;
+
+        this.game.updatePlayer(player);
       });
 
       this.remove$ = this.clientGameState.removePlayer$.subscribe((player) => {
