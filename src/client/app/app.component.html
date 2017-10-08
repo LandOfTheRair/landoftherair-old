@@ -67,303 +67,307 @@
   </div>
 </nav>
 
-<div *ngIf="!colyseus.isConnected" class="m-5 d-flex justify-content-center align-content-center h-100">
-  <div class="alert alert-warning connection-warning">
-    The game client could not connect to the server. The game may be down for maintenance. Refresh the page to attempt to reconnect.
-  </div>
-</div>
+<div class="body-container" [class.option-overflow]="true">
 
-<div class="window lobby game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="lobbyDrag"
-     windowName="lobby"
-     defaultX="576"
-     defaultY="55"
-     [class.minimized]="minimized['lobby']"
-     [class.hidden]="!loggedIn || !colyseus.username || !colyseus.isConnected || (inGame && autoHideLobby)">
-  <div class="window-header text-center" #lobbyDrag>
-    Lobby Chat ({{ colyseus.lobby.lobbyState.accounts.length }} Online)
-    <app-minimize-button (click)="minimize('lobby')"></app-minimize-button>
+  <div *ngIf="!colyseus.isConnected" class="m-5 d-flex justify-content-center align-content-center h-100">
+    <div class="alert alert-warning connection-warning">
+      The game client could not connect to the server. The game may be down for maintenance. Refresh the page to attempt to reconnect.
+    </div>
   </div>
-  <div class="window-body" [class.hidden]="minimized['lobby']">
-    <app-lobby></app-lobby>
-  </div>
-</div>
 
-<div class="window character-select"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="characterSelectDrag"
-     windowName="chararacterSelect"
-     defaultX="0"
-     defaultY="55"
-     [class.hidden]="!loggedIn || inGame || !colyseus.username || !colyseus.isConnected">
-  <div class="window-header text-center" #characterSelectDrag>Character Select</div>
-  <div class="window-body">
-    <app-character-select [resourcesLoaded]="resourcesLoaded"></app-character-select>
+  <div class="window lobby game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="lobbyDrag"
+       windowName="lobby"
+       defaultX="576"
+       defaultY="55"
+       [class.minimized]="minimized['lobby']"
+       [class.hidden]="!loggedIn || !colyseus.username || !colyseus.isConnected || (inGame && autoHideLobby)">
+    <div class="window-header text-center" #lobbyDrag>
+      Lobby Chat ({{ colyseus.lobby.lobbyState.accounts.length }} Online)
+      <app-minimize-button (click)="minimize('lobby')"></app-minimize-button>
+    </div>
+    <div class="window-body" [class.hidden]="minimized['lobby']">
+      <app-lobby></app-lobby>
+    </div>
   </div>
-</div>
 
-<div class="window map"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="mapDrag"
-     windowName="map"
-     defaultX="389"
-     defaultY="56"
-     [class.hidden]="!inGame">
-  <div class="window-header text-center" #mapDrag>
-    World
-    <app-close-button (click)="colyseus.game.quit()"></app-close-button>
+  <div class="window character-select"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="characterSelectDrag"
+       windowName="chararacterSelect"
+       defaultX="0"
+       defaultY="55"
+       [class.hidden]="!loggedIn || inGame || !colyseus.username || !colyseus.isConnected">
+    <div class="window-header text-center" #characterSelectDrag>Character Select</div>
+    <div class="window-body">
+      <app-character-select [resourcesLoaded]="resourcesLoaded"></app-character-select>
+    </div>
   </div>
-  <div class="window-body">
-    <app-active-target *ngIf="showActiveTarget"></app-active-target>
-    <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character"
-             [class.hidden]="colyseus.game.isChangingMap"></app-map>
-  </div>
-</div>
 
-<div class="window stats above-game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="statsDrag"
-     windowName="stats"
-     defaultX="670"
-     defaultY="120"
-     *ngIf="inGame && showStatsWindow">
-  <div class="window-header text-center" #statsDrag>
-    Stats
-    <app-close-button (click)="showStatsWindow = false"></app-close-button>
+  <div class="window map"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="mapDrag"
+       windowName="map"
+       defaultX="389"
+       defaultY="56"
+       [class.hidden]="!inGame">
+    <div class="window-header text-center" #mapDrag>
+      World
+      <app-close-button (click)="colyseus.game.quit()"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-active-target *ngIf="showActiveTarget"></app-active-target>
+      <app-map [clientGameState]="colyseus.game.clientGameState" [currentPlayer]="colyseus.game.character"
+               [class.hidden]="colyseus.game.isChangingMap"></app-map>
+    </div>
   </div>
-  <div class="window-body">
-    <app-stats-window [currentPlayer]="colyseus.game.character"></app-stats-window>
-  </div>
-</div>
 
-<div class="window skills above-game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="skillsDrag"
-     windowName="skills"
-     defaultX="670"
-     defaultY="120"
-     *ngIf="inGame && showSkillsWindow">
-  <div class="window-header text-center" #skillsDrag>
-    Skills
-    <app-close-button (click)="showSkillsWindow = false"></app-close-button>
+  <div class="window stats above-game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="statsDrag"
+       windowName="stats"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && showStatsWindow">
+    <div class="window-header text-center" #statsDrag>
+      Stats
+      <app-close-button (click)="showStatsWindow = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-stats-window [currentPlayer]="colyseus.game.character"></app-stats-window>
+    </div>
   </div>
-  <div class="window-body">
-    <app-skills-window [currentPlayer]="colyseus.game.character"></app-skills-window>
-  </div>
-</div>
 
-<div class="window command-line game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="commandLine"
-     windowName="commandLine"
-     defaultX="389"
-     defaultY="848"
-     *ngIf="inGame && showCommandLine">
-  <div class="window-header text-center" #commandLine>
-    Command Line
-    <app-close-button (click)="showCommandLine = false"></app-close-button>
+  <div class="window skills above-game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="skillsDrag"
+       windowName="skills"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && showSkillsWindow">
+    <div class="window-header text-center" #skillsDrag>
+      Skills
+      <app-close-button (click)="showSkillsWindow = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-skills-window [currentPlayer]="colyseus.game.character"></app-skills-window>
+    </div>
   </div>
-  <div class="window-body">
-    <app-command-line [rightClickSend]="rightClickSend"></app-command-line>
-  </div>
-</div>
 
-<div class="window log-window game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [ngClass]="[logWindowSize]"
-     [windowHandle]="logWindow"
-     windowName="logWindow"
-     defaultX="3"
-     defaultY="365"
-     *ngIf="inGame">
-  <div class="window-header text-center" #logWindow>
-    Log
+  <div class="window command-line game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="commandLine"
+       windowName="commandLine"
+       defaultX="389"
+       defaultY="848"
+       *ngIf="inGame && showCommandLine">
+    <div class="window-header text-center" #commandLine>
+      Command Line
+      <app-close-button (click)="showCommandLine = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-command-line [rightClickSend]="rightClickSend"></app-command-line>
+    </div>
   </div>
-  <div class="window-body">
-    <app-log-window [clientGameState]="colyseus.game.clientGameState" [windowSize]="logWindowSize"
-                    [fontSize]="logFontSize"></app-log-window>
-  </div>
-</div>
 
-<div class="window status-window game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="statusWindow"
-     windowName="statusWindow"
-     defaultX="389"
-     defaultY="743"
-     [class.minimized]="minimized['status']"
-     *ngIf="inGame">
-  <div class="window-header text-center" #statusWindow>
-    <app-character-tagline [player]="colyseus.game.character"></app-character-tagline>
-    <app-minimize-button (click)="minimize('status')"></app-minimize-button>
+  <div class="window log-window game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [ngClass]="[logWindowSize]"
+       [windowHandle]="logWindow"
+       windowName="logWindow"
+       defaultX="3"
+       defaultY="365"
+       *ngIf="inGame">
+    <div class="window-header text-center" #logWindow>
+      Log
+    </div>
+    <div class="window-body">
+      <app-log-window [clientGameState]="colyseus.game.clientGameState" [windowSize]="logWindowSize"
+                      [fontSize]="logFontSize"></app-log-window>
+    </div>
   </div>
-  <div class="window-body" [class.hidden]="minimized['status']">
-    <app-status-window></app-status-window>
-  </div>
-</div>
 
-<div class="window ground-window game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [ngClass]="[groundSize]"
-     [windowHandle]="groundWindow"
-     windowName="groundWindow"
-     defaultX="3"
-     defaultY="619"
-     *ngIf="inGame && colyseus.game.showGround">
-  <div class="window-header text-center" #groundWindow>
-    Ground
-    <app-close-button (click)="colyseus.game.showGround = false"></app-close-button>
+  <div class="window status-window game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="statusWindow"
+       windowName="statusWindow"
+       defaultX="389"
+       defaultY="743"
+       [class.minimized]="minimized['status']"
+       *ngIf="inGame">
+    <div class="window-header text-center" #statusWindow>
+      <app-character-tagline [player]="colyseus.game.character"></app-character-tagline>
+      <app-minimize-button (click)="minimize('status')"></app-minimize-button>
+    </div>
+    <div class="window-body" [class.hidden]="minimized['status']">
+      <app-status-window></app-status-window>
+    </div>
   </div>
-  <div class="window-body">
-    <app-ground [size]="groundSize"></app-ground>
-  </div>
-</div>
 
-<div class="window inventory-sack-window game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [ngClass]="[sackSize]"
-     [windowHandle]="sackWindow"
-     windowName="sackWindow"
-     defaultX="966"
-     defaultY="538"
-     *ngIf="inGame && showInventorySack">
-  <div class="window-header text-center" #sackWindow>
-    Inventory - Sack
-    <app-close-button (click)="showInventorySack = false"></app-close-button>
+  <div class="window ground-window game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [ngClass]="[groundSize]"
+       [windowHandle]="groundWindow"
+       windowName="groundWindow"
+       defaultX="3"
+       defaultY="619"
+       *ngIf="inGame && colyseus.game.showGround">
+    <div class="window-header text-center" #groundWindow>
+      Ground
+      <app-close-button (click)="colyseus.game.showGround = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-ground [size]="groundSize"></app-ground>
+    </div>
   </div>
-  <div class="window-body">
-    <app-inventory-sack [size]="sackSize" [player]="colyseus.game.character"></app-inventory-sack>
-  </div>
-</div>
 
-<div class="window inventory-belt-window game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [ngClass]="[beltSize]"
-     [windowHandle]="beltWindow"
-     windowName="beltWindow"
-     defaultX="966"
-     defaultY="433"
-     *ngIf="inGame && showInventoryBelt">
-  <div class="window-header text-center" #beltWindow>
-    Inventory - Belt
-    <app-close-button (click)="showInventoryBelt = false"></app-close-button>
+  <div class="window inventory-sack-window game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [ngClass]="[sackSize]"
+       [windowHandle]="sackWindow"
+       windowName="sackWindow"
+       defaultX="966"
+       defaultY="538"
+       *ngIf="inGame && showInventorySack">
+    <div class="window-header text-center" #sackWindow>
+      Inventory - Sack
+      <app-close-button (click)="showInventorySack = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-inventory-sack [size]="sackSize" [player]="colyseus.game.character"></app-inventory-sack>
+    </div>
   </div>
-  <div class="window-body">
-    <app-inventory-belt [size]="beltSize" [player]="colyseus.game.character"></app-inventory-belt>
-  </div>
-</div>
 
-<div class="window equipment-window game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [ngClass]="[equipmentSize]"
-     [windowHandle]="equipmentWindow"
-     windowName="equipmentWindow"
-     defaultX="966"
-     defaultY="56"
-     *ngIf="inGame && showEquipment">
-  <div class="window-header text-center" #equipmentWindow>
-    Equipment
-    <app-close-button (click)="showEquipment = false"></app-close-button>
+  <div class="window inventory-belt-window game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [ngClass]="[beltSize]"
+       [windowHandle]="beltWindow"
+       windowName="beltWindow"
+       defaultX="966"
+       defaultY="433"
+       *ngIf="inGame && showInventoryBelt">
+    <div class="window-header text-center" #beltWindow>
+      Inventory - Belt
+      <app-close-button (click)="showInventoryBelt = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-inventory-belt [size]="beltSize" [player]="colyseus.game.character"></app-inventory-belt>
+    </div>
   </div>
-  <div class="window-body">
-    <app-equipment [player]="colyseus.game.character" [size]="equipmentSize"></app-equipment>
-  </div>
-</div>
 
-<div class="window npc-window game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [ngClass]="[npcWindowSize]"
-     [windowHandle]="npcWindow"
-     windowName="npcWindow"
-     defaultX="3"
-     defaultY="56"
-     *ngIf="inGame">
-  <div class="window-header text-center" #npcWindow>
-    NPCs
+  <div class="window equipment-window game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [ngClass]="[equipmentSize]"
+       [windowHandle]="equipmentWindow"
+       windowName="equipmentWindow"
+       defaultX="966"
+       defaultY="56"
+       *ngIf="inGame && showEquipment">
+    <div class="window-header text-center" #equipmentWindow>
+      Equipment
+      <app-close-button (click)="showEquipment = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-equipment [player]="colyseus.game.character" [size]="equipmentSize"></app-equipment>
+    </div>
   </div>
-  <div class="window-body">
-    <app-npcs></app-npcs>
-  </div>
-</div>
 
-<div class="window macro-bars game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="macroBars"
-     windowName="macroBars"
-     defaultX="389"
-     defaultY="661"
-     *ngIf="inGame">
-  <div class="window-header text-center" #macroBars>
-    Macros
+  <div class="window npc-window game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [ngClass]="[npcWindowSize]"
+       [windowHandle]="npcWindow"
+       windowName="npcWindow"
+       defaultX="3"
+       defaultY="56"
+       *ngIf="inGame">
+    <div class="window-header text-center" #npcWindow>
+      NPCs
+    </div>
+    <div class="window-body">
+      <app-npcs></app-npcs>
+    </div>
   </div>
-  <div class="window-body">
-    <app-macro-bars></app-macro-bars>
-  </div>
-</div>
 
-<div class="window trainer above-game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="trainerDrag"
-     windowName="trainer"
-     defaultX="670"
-     defaultY="120"
-     *ngIf="inGame && colyseus.game.showTrainer.uuid">
-  <div class="window-header text-center" #trainerDrag>
-    {{ colyseus.game.showTrainer.classTrain }} Guide
-    <app-close-button (click)="colyseus.game.showTrainer = {}"></app-close-button>
+  <div class="window macro-bars game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="macroBars"
+       windowName="macroBars"
+       defaultX="389"
+       defaultY="661"
+       *ngIf="inGame">
+    <div class="window-header text-center" #macroBars>
+      Macros
+    </div>
+    <div class="window-body">
+      <app-macro-bars></app-macro-bars>
+    </div>
   </div>
-  <div class="window-body">
-    <app-trainer></app-trainer>
-  </div>
-</div>
 
-<div class="window shop above-game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="shopDrag"
-     windowName="shop"
-     defaultX="670"
-     defaultY="120"
-     *ngIf="inGame && colyseus.game.showShop.uuid">
-  <div class="window-header text-center" #shopDrag>
-    Shop
-    <app-close-button (click)="colyseus.game.showShop = {}"></app-close-button>
+  <div class="window trainer above-game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="trainerDrag"
+       windowName="trainer"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && colyseus.game.showTrainer.uuid">
+    <div class="window-header text-center" #trainerDrag>
+      {{ colyseus.game.showTrainer.classTrain }} Guide
+      <app-close-button (click)="colyseus.game.showTrainer = {}"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-trainer></app-trainer>
+    </div>
   </div>
-  <div class="window-body">
-    <app-shop></app-shop>
-  </div>
-</div>
 
-<div class="window bank above-game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="bankDrag"
-     windowName="bank"
-     defaultX="670"
-     defaultY="120"
-     *ngIf="inGame && colyseus.game.showBank.uuid">
-  <div class="window-header text-center" #bankDrag>
-    {{ colyseus.game.showBank.bankId }} Bank
-    <app-close-button (click)="colyseus.game.showBank = {}"></app-close-button>
+  <div class="window shop above-game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="shopDrag"
+       windowName="shop"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && colyseus.game.showShop.uuid">
+    <div class="window-header text-center" #shopDrag>
+      Shop
+      <app-close-button (click)="colyseus.game.showShop = {}"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-shop></app-shop>
+    </div>
   </div>
-  <div class="window-body">
-    <app-bank></app-bank>
-  </div>
-</div>
 
-<div class="window locker above-game-window"
-     [appDraggableWindow]="!lockWindowPositions"
-     [windowHandle]="lockerDrag"
-     windowName="locker"
-     defaultX="670"
-     defaultY="120"
-     *ngIf="inGame && colyseus.game.showLocker.length > 0">
-  <div class="window-header text-center" #lockerDrag>
-    {{ colyseus.game.showLocker[0].regionId }} Region Wardrobe
-    <app-close-button (click)="colyseus.game.showLocker = []"></app-close-button>
+  <div class="window bank above-game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="bankDrag"
+       windowName="bank"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && colyseus.game.showBank.uuid">
+    <div class="window-header text-center" #bankDrag>
+      {{ colyseus.game.showBank.bankId }} Bank
+      <app-close-button (click)="colyseus.game.showBank = {}"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-bank></app-bank>
+    </div>
   </div>
-  <div class="window-body">
-    <app-lockers></app-lockers>
+
+  <div class="window locker above-game-window"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="lockerDrag"
+       windowName="locker"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && colyseus.game.showLocker.length > 0">
+    <div class="window-header text-center" #lockerDrag>
+      {{ colyseus.game.showLocker[0].regionId }} Region Wardrobe
+      <app-close-button (click)="colyseus.game.showLocker = []"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-lockers></app-lockers>
+    </div>
   </div>
+
 </div>
 
 <div class="modal fade" bsModal #options="bs-modal" tabindex="-1" (onShow)="optionsModalVisible = true"

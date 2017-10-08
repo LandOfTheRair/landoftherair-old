@@ -36,8 +36,13 @@ $window-border-color: #49200e;
 
 body {
   background: $window-background-gradient;
+  background-attachment: fixed;
+  overflow: visible;
   height: 100vh;
-  overflow: hidden;
+}
+
+.body-container {
+  height: calc(100vh - 56px);
 }
 
 .window {
