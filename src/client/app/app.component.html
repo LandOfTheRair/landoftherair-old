@@ -77,6 +77,8 @@
 
   <!-- LOBBY WINDOWS -->
   <div class="window lobby game-window"
+       [class.active-window]="activeWindow === 'lobby'"
+       (click)="activeWindow = 'lobby'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="lobbyDrag"
        windowName="lobby"
