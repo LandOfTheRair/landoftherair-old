@@ -75,6 +75,7 @@
     </div>
   </div>
 
+  <!-- LOBBY WINDOWS -->
   <div class="window lobby game-window"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="lobbyDrag"
@@ -105,7 +106,10 @@
     </div>
   </div>
 
+  <!-- GAME WINDOWS -->
   <div class="window map"
+       [class.active-window]="activeWindow === 'map'"
+       (click)="activeWindow = 'map'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="mapDrag"
        windowName="map"
@@ -124,6 +128,8 @@
   </div>
 
   <div class="window stats above-game-window"
+       [class.active-window]="activeWindow === 'stats'"
+       (click)="activeWindow = 'stats'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="statsDrag"
        windowName="stats"
@@ -140,6 +146,8 @@
   </div>
 
   <div class="window skills above-game-window"
+       [class.active-window]="activeWindow === 'skills'"
+       (click)="activeWindow = 'skills'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="skillsDrag"
        windowName="skills"
@@ -156,6 +164,8 @@
   </div>
 
   <div class="window command-line game-window"
+       [class.active-window]="activeWindow === 'cmd'"
+       (click)="activeWindow = 'cmd'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="commandLine"
        windowName="commandLine"
@@ -172,6 +182,8 @@
   </div>
 
   <div class="window log-window game-window"
+       [class.active-window]="activeWindow === 'log'"
+       (click)="activeWindow = 'log'"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[logWindowSize]"
        [windowHandle]="logWindow"
@@ -189,6 +201,8 @@
   </div>
 
   <div class="window status-window game-window"
+       [class.active-window]="activeWindow === 'status'"
+       (click)="activeWindow = 'status'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="statusWindow"
        windowName="statusWindow"
@@ -206,6 +220,8 @@
   </div>
 
   <div class="window ground-window game-window"
+       [class.active-window]="activeWindow === 'ground'"
+       (click)="activeWindow = 'ground'"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[groundSize]"
        [windowHandle]="groundWindow"
@@ -223,6 +239,8 @@
   </div>
 
   <div class="window inventory-sack-window game-window"
+       [class.active-window]="activeWindow === 'sack'"
+       (click)="activeWindow = 'sack'"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[sackSize]"
        [windowHandle]="sackWindow"
@@ -240,6 +258,8 @@
   </div>
 
   <div class="window inventory-belt-window game-window"
+       [class.active-window]="activeWindow === 'belt'"
+       (click)="activeWindow = 'belt'"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[beltSize]"
        [windowHandle]="beltWindow"
@@ -257,6 +277,8 @@
   </div>
 
   <div class="window equipment-window game-window"
+       [class.active-window]="activeWindow === 'equipment'"
+       (click)="activeWindow = 'equipment'"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[equipmentSize]"
        [windowHandle]="equipmentWindow"
@@ -274,6 +296,8 @@
   </div>
 
   <div class="window npc-window game-window"
+       [class.active-window]="activeWindow === 'npcs'"
+       (click)="activeWindow = 'npcs'"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[npcWindowSize]"
        [windowHandle]="npcWindow"
@@ -290,6 +314,8 @@
   </div>
 
   <div class="window macro-bars game-window"
+       [class.active-window]="activeWindow === 'macros'"
+       (click)="activeWindow = 'macros'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="macroBars"
        windowName="macroBars"
@@ -305,6 +331,8 @@
   </div>
 
   <div class="window trainer above-game-window"
+       [class.active-window]="activeWindow === 'trainer'"
+       (click)="activeWindow = 'trainer'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="trainerDrag"
        windowName="trainer"
@@ -321,6 +349,8 @@
   </div>
 
   <div class="window shop above-game-window"
+       [class.active-window]="activeWindow === 'shop'"
+       (click)="activeWindow = 'shop'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="shopDrag"
        windowName="shop"
@@ -337,6 +367,8 @@
   </div>
 
   <div class="window bank above-game-window"
+       [class.active-window]="activeWindow === 'bank'"
+       (click)="activeWindow = 'bank'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="bankDrag"
        windowName="bank"
@@ -353,6 +385,8 @@
   </div>
 
   <div class="window locker above-game-window"
+       [class.active-window]="activeWindow === 'locker'"
+       (click)="activeWindow = 'locker'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="lockerDrag"
        windowName="locker"
