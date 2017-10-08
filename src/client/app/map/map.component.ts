@@ -60,8 +60,6 @@ export class MapComponent implements OnInit, OnDestroy {
       const boxSize = 9 * 64;
 
       this.game = new Game(this.clientGameState, this.colyseus, this.currentPlayer);
-      this.game.moveCallback = (x, y) => this.colyseus.game.doMove(x, y);
-      this.game.interactCallback = (x, y) => this.colyseus.game.doInteract(x, y);
 
       const config = {
         width: boxSize, height: boxSize,
