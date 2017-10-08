@@ -46,6 +46,15 @@ body {
 }
 
 .window {
+
+  &.active-window {
+    z-index: 2000 !important;
+
+    .window-header {
+      background-color: darken($window-background-color, 20%);
+    }
+  }
+
   .window-header {
     background-color: $window-background-color;
     border: 1px $window-border-style $window-background-color;

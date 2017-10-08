@@ -56,6 +56,9 @@ export class AppComponent implements OnInit {
   public macroGroupModalVisible = false;
 
   @LocalStorage()
+  public activeWindow: string;
+
+  @LocalStorage()
   public minimized;
 
   // window visibility

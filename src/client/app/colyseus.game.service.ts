@@ -300,6 +300,10 @@ export class ColyseusGameService {
     this.clientGameState.setMap(map);
   }
 
+  private updateActiveWindowForGameWindow(window: string) {
+    this.localStorage.store('activeWindow', window);
+  }
+
   private updateLocker(updateLocker: Locker) {
     const locker = find(this.showLocker, { lockerId: updateLocker.lockerId });
     extend(locker, updateLocker);
@@ -307,19 +311,23 @@ export class ColyseusGameService {
 
   private showLockerWindow(lockers, lockerId) {
     this.showLocker = lockers;
+    this.updateActiveWindowForGameWindow('locker');
     this.activeLockerNumber = findIndex(lockers, { lockerId });
   }
 
   private showBankWindow(uuid, bankId) {
     this.showBank = { uuid, bankId };
+    this.updateActiveWindowForGameWindow('bank');
   }
 
   private showShopWindow(vendorItems, uuid) {
     this.showShop = { vendorItems, uuid };
+    this.updateActiveWindowForGameWindow('shop');
   }
 
   private showTrainerWindow(classTrain, trainSkills, uuid) {
     this.showTrainer = { classTrain, trainSkills, uuid };
+    this.updateActiveWindowForGameWindow('trainer');
   }
 
   public assessSkill(skill) {
