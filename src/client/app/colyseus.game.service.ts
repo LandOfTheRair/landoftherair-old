@@ -122,27 +122,27 @@ export class ColyseusGameService {
     });
 
     const updateSpecificAttr = (attr, entityId, value) => {
-      this.clientGameState.updatePlayer(+entityId, attr, value);
+      this.clientGameState.updatePlayer(entityId, attr, value);
     };
 
     const updateAgro = (entityId, player, value) => {
-      this.clientGameState.updatePlayerAgro(+entityId, player, value);
+      this.clientGameState.updatePlayerAgro(entityId, player, value);
     };
 
     const updateHP = (entityId, key, value) => {
-      this.clientGameState.updatePlayerHP(+entityId, key, value);
+      this.clientGameState.updatePlayerHP(entityId, key, value);
     };
 
     const updateHand = (hand, entityId, value) => {
-      this.clientGameState.updatePlayerHand(+entityId, hand, value);
+      this.clientGameState.updatePlayerHand(entityId, hand, value);
     };
 
     const updateHandItem = (hand, entityId, attr, value) => {
-      this.clientGameState.updatePlayerHandItem(+entityId, hand, attr, value);
+      this.clientGameState.updatePlayerHandItem(entityId, hand, attr, value);
     };
 
     const updateGearItem = (slot, entityId, value) => {
-      this.clientGameState.updatePlayerGearItem(+entityId, slot, value);
+      this.clientGameState.updatePlayerGearItem(entityId, slot, value);
     };
 
     this.worldRoom.state.listen('players/:id/x', 'replace', updateSpecificAttr.bind(this, 'x'));
@@ -171,15 +171,15 @@ export class ColyseusGameService {
     this.worldRoom.state.listen('players/:id/rightHand/:attr', 'replace', updateHandItem.bind(this, 'rightHand'));
 
     this.worldRoom.state.listen('players/:id/effects/:effect', 'add', (entityId, effect, value) => {
-      this.clientGameState.updatePlayerEffect(+entityId, effect, value);
+      this.clientGameState.updatePlayerEffect(entityId, effect, value);
     });
 
     this.worldRoom.state.listen('players/:id/effects/:effect/duration', 'replace', (entityId, effect, value) => {
-      this.clientGameState.updatePlayerEffectDuration(+entityId, effect, value);
+      this.clientGameState.updatePlayerEffectDuration(entityId, effect, value);
     });
 
     this.worldRoom.state.listen('players/:id/effects/:effect', 'remove', (entityId, effect) => {
-      this.clientGameState.updatePlayerEffect(+entityId, effect, null);
+      this.clientGameState.updatePlayerEffect(entityId, effect, null);
     });
 
     this.worldRoom.state.listen('players/:id/totalStats/stealth', 'replace', (entityId, value) => {

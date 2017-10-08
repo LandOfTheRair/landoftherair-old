@@ -96,32 +96,36 @@ export class ClientGameState {
   }
 
   setPlayers(players) {
-    const addPlayers = differenceBy(players, this.playerHash, 'username');
-    const delPlayers = differenceBy(this.playerHash, players, 'username');
+    const newList = Object.keys(players);
+    const oldList = Object.keys(this.playerHash);
 
+    const addPlayers = differenceBy(newList, oldList);
+    const delPlayers = differenceBy(oldList, newList);
+    
     if(addPlayers.length > 0 || delPlayers.length > 0) {
-      this.playerHash = players.map(x => new Player(x));
+      newList.forEach(playerUsername => {
+        this.playerHash[playerUsername] = new Player(players[playerUsername]);
+      });
     }
 
-    addPlayers.forEach(p => this.addPlayer(p));
-    delPlayers.forEach(p => this.removePlayer(p));
+    addPlayers.forEach(p => this.addPlayer(this.playerHash[p]));
+    delPlayers.forEach(p => this.removePlayer(this.playerHash[p]));
   }
 
-  addPlayer(playerRef) {
-    const player = new Player(playerRef);
+  private addPlayer(player: Player) {
     this.createPlayer$.next(player);
   }
 
-  removePlayer(playerRef) {
-    const player = new Player(playerRef);
+  private removePlayer(player: Player) {
+    delete this.playerHash[player.username];
     this.removePlayer$.next(player);
   }
 
   findPlayer(username) {
-    return find(this.playerHash, { username });
+    return this.playerHash[username];
   }
 
-  _updatePlayerAtIndex(playerIndex) {
+  private _updatePlayerAtIndex(playerIndex) {
     this.updatePlayer$.next(this.playerHash[playerIndex]);
   }
 
