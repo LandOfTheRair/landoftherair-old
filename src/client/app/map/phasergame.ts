@@ -37,9 +37,13 @@ export class Game {
   private visibleNPCUUIDHash = {};
   private visibleItemUUIDHash = {};
 
+  private visibleSprites = {};
+
+  // groups
   private itemsOnGround: any;
   private visibleNPCs: any;
   private otherPlayerSprites: any;
+  private vfx: any;
 
   private isRenderingTruesight: boolean;
 
@@ -50,10 +54,7 @@ export class Game {
     Interactables: {}
   };
 
-  private vfx: any;
-
-  private visibleSprites = {};
-
+  // lots of stuff needed for init
   public canCreate: Promise<any>;
   public canUpdate: Promise<any>;
   private resolveCanCreate;
