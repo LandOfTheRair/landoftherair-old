@@ -144,7 +144,7 @@ export class Game {
 
   }
 
-  public reset() {
+  public reset(resetBools = true) {
     this.updateBgm('');
     this.blockUpdates = true;
 
@@ -166,9 +166,12 @@ export class Game {
 
     this.visibleNPCUUIDHash = {};
     this.visibleItemUUIDHash = {};
+    this.visibleSprites = {};
 
-    this.canCreateBool = false;
-    this.canUpdateBool = false;
+    if(resetBools) {
+      this.canCreateBool = false;
+      this.canUpdateBool = false;
+    }
   }
 
   initPromises() {
@@ -472,6 +475,7 @@ export class Game {
     sprite.itemClass = item.itemClass;
     sprite.uuid = item.uuid;
     this.visibleItemUUIDHash[sprite.uuid] = sprite;
+
     this.itemsOnGround.add(sprite);
   }
 
@@ -642,20 +646,6 @@ export class Game {
   }
 
   destroy() {
-    if(this.playerSprite) {
-      this.playerSprite.destroy();
-    }
-    if(this.vfx) {
-      this.vfx.destroy();
-    }
-    if(this.otherPlayerSprites) {
-      this.otherPlayerSprites.destroy();
-    }
-    if(this.itemsOnGround) {
-      this.itemsOnGround.destroy();
-    }
-    if(this.visibleNPCs) {
-      this.visibleNPCs.destroy();
-    }
+    this.reset();
   }
 }
