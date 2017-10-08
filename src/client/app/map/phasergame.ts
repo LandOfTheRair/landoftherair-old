@@ -36,8 +36,8 @@ export class Game {
 
   private visibleNPCUUIDHash = {};
   private visibleItemUUIDHash = {};
-
   private visibleSprites = {};
+  private playerSpriteHash = {};
 
   // groups
   private itemsOnGround: any;
@@ -59,8 +59,6 @@ export class Game {
   public canUpdate: Promise<any>;
   private resolveCanCreate;
   private resolveCanUpdate;
-  private canCreateBool: boolean;
-  private canUpdateBool: boolean;
 
   private blockUpdates: boolean;
 
@@ -145,7 +143,7 @@ export class Game {
 
   }
 
-  public reset(resetBools = true) {
+  public reset() {
     this.updateBgm('');
     this.blockUpdates = true;
 
@@ -168,11 +166,7 @@ export class Game {
     this.visibleNPCUUIDHash = {};
     this.visibleItemUUIDHash = {};
     this.visibleSprites = {};
-
-    if(resetBools) {
-      this.canCreateBool = false;
-      this.canUpdateBool = false;
-    }
+    this.playerSpriteHash = {};
   }
 
   initPromises() {
@@ -192,12 +186,13 @@ export class Game {
       this.player = player;
       this.playerSprite = sprite;
       this.truesightCheck();
-      this.canUpdateBool = true;
       this.resolveCanUpdate(sprite);
       this.isLoaded = true;
 
     } else {
+      if(this.playerSpriteHash[player.username]) return;
       const sprite = this.getPlayerSprite(player);
+      this.playerSpriteHash[player.username] = sprite;
       this.otherPlayerSprites.add(sprite);
     }
   }
@@ -210,7 +205,7 @@ export class Game {
       this.truesightCheck();
       this.updatePlayerSprite(this.playerSprite, player);
     } else {
-      const sprite = find(this.otherPlayerSprites.children, { username: player.username });
+      const sprite = this.playerSpriteHash[player.username];
       if(!sprite) return;
       this.updatePlayerSprite(sprite, player);
     }
@@ -222,9 +217,11 @@ export class Game {
       delete this.playerSprite;
 
     } else {
-      const oldSprite = find(this.otherPlayerSprites.children, { username: player.username });
+      if(!this.otherPlayerSprites) return;
+      const oldSprite = this.playerSpriteHash[player.username];
       if(!oldSprite) return;
       oldSprite.destroy();
+      delete this.playerSpriteHash[player.username];
     }
   }
 
@@ -367,7 +364,9 @@ export class Game {
 
   private setupPhaser() {
     this.g.stage.disableVisibilityChange = true;
+
     this.g.inputEnabled = true;
+
     this.g.input.onDown.add(({ worldX, worldY }) => {
 
       const xCoord = Math.floor(worldX / 64);
@@ -394,6 +393,11 @@ export class Game {
 
       this.moveCallback(xDiff, yDiff);
     });
+
+    this.g.game.canvas.oncontextmenu = (e) => {
+      e.preventDefault();
+      return false;
+    };
   }
 
   private canCreateItemSpriteAt(x, y) {
@@ -546,13 +550,25 @@ export class Game {
     });
   }
 
+  private createLayers() {
+    ['Decor', 'DenseDecor', 'OpaqueDecor', 'Interactables'].forEach((layer) => {
+      this.groups[layer] = this.g.add.group();
+    });
+
+    this.itemsOnGround = this.g.add.group();
+    this.vfx = this.g.add.group();
+    this.visibleNPCs = this.g.add.group();
+    this.otherPlayerSprites = this.g.add.group();
+  }
+
   preload() {
+    this.setupPhaser();
+
     this.isLoaded = false;
 
     this.g.add.plugin(new TiledPlugin(this.g, this.g.stage));
 
     const loadMap = this.clientGameState.map;
-    if(!loadMap) return;
 
     // remove unused tileset to prevent warnings since things on a layer that uses this tileset are handled manually
     loadMap.tilesets.length = 3;
@@ -584,11 +600,6 @@ export class Game {
   }
 
   create() {
-    this.g.game.canvas.oncontextmenu = (e) => {
-      e.preventDefault();
-      return false;
-    };
-
     bgms.forEach(bgm => {
       this.bgms[bgm] = this.g.add.audio(`bgm-${bgm}`);
     });
@@ -598,7 +609,11 @@ export class Game {
     });
 
     this.blockUpdates = false;
+
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
+
+    this.createLayers();
+    this.resolveCanCreate();
 
     const decorFirstGid = this.map.tilesets[2].firstgid;
     const wallFirstGid = this.map.tilesets[1].firstgid;
@@ -615,19 +630,10 @@ export class Game {
     };
 
     ['Decor', 'DenseDecor', 'OpaqueDecor', 'Interactables'].forEach((layer, index) => {
-      this.groups[layer] = this.g.add.group();
       parseLayer(this.map.objects[index]);
     });
 
-    this.resolveCanCreate();
-    this.canCreateBool = true;
-
-    this.itemsOnGround = this.g.add.group();
-    this.vfx = this.g.add.group();
-    this.visibleNPCs = this.g.add.group();
-    this.otherPlayerSprites = this.g.add.group();
-
-    this.setupPhaser();
+    this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
   }
 
   update() {
