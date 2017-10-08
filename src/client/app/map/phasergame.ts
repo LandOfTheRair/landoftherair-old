@@ -75,7 +75,6 @@ export class Game {
     return point.x !== 0 && point.y !== 0;
   }
 
-  public moveCallback = (x, y) => {};
   public interactCallback = (x, y) => {};
 
   constructor(private clientGameState: ClientGameState, public colyseus, private player: Player) {
@@ -385,13 +384,13 @@ export class Game {
       if(possibleInteractable) {
         // check if it's within "interact" range
         if(Math.abs(xDiff) < 2 && Math.abs(yDiff) < 2) {
-          this.interactCallback(xDiff, yDiff);
+          this.colyseus.game.doInteract(xDiff, yDiff);
         }
       }
 
       if(xDiff === 0 && yDiff === 0) return;
 
-      this.moveCallback(xDiff, yDiff);
+      this.colyseus.game.doMove(xDiff, yDiff);
     });
 
     this.g.game.canvas.oncontextmenu = (e) => {
@@ -632,8 +631,6 @@ export class Game {
     ['Decor', 'DenseDecor', 'OpaqueDecor', 'Interactables'].forEach((layer, index) => {
       parseLayer(this.map.objects[index]);
     });
-
-    this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
   }
 
   update() {
