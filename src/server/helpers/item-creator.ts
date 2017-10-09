@@ -11,6 +11,11 @@ export class ItemCreator {
     });
   }
 
+  static searchItems(name: string): Promise<Item> {
+    const regex = new RegExp(`.*${name}.*`, 'i');
+    return DB.$items.find({ name: regex }).toArray();
+  }
+
   static async getGold(value: number): Promise<Item> {
     const item = await this.getItemByName('Gold Coin');
     item.value = value;
