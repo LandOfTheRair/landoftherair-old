@@ -45,6 +45,7 @@
   min-height: 350px;
   max-height: 350px;
   overflow-y: auto;
+  overflow-x: hidden;
 
   .message {
     display: flex;
@@ -52,7 +53,7 @@
     font-size: 1.3rem;
 
     .timestamp {
-      min-width: 60px;
+      min-width: 80px;
     }
 
     .account {

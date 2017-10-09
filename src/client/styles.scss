@@ -203,3 +203,11 @@ bs-modal-backdrop {
 popover-container {
   z-index: 5100 !important;
 }
+
+a {
+  color: #00254d;
+
+  &:hover {
+    color: lighten(#00254d, 20%);
+  }
+}
