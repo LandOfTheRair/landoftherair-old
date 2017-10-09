@@ -4,12 +4,26 @@
 // FONT SPECIFIC ADJUSTMENTS
 @font-face {
   font-family: 'Fantasy';
-  src: url('assets/fonts/dumbledor.ttf') format('truetype');
+  src: url('assets/fonts/Dumbledor2.eot');
+  src: url('assets/fonts/Dumbledor2.eot?#iefix') format('embedded-opentype'),
+       url('assets/fonts/Dumbledor2.woff2') format('woff2'),
+       url('assets/fonts/Dumbledor2.woff') format('woff'),
+       url('assets/fonts/Dumbledor2.ttf') format('truetype'),
+       url('assets/fonts/Dumbledor2.svg#Dumbledor2') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'FantasyWide';
-  src: url('assets/fonts/dumbledor-wide.ttf') format('truetype');
+  src: url('assets/fonts/Dumbledor2Wide.eot');
+  src: url('assets/fonts/Dumbledor2Wide.eot?#iefix') format('embedded-opentype'),
+       url('assets/fonts/Dumbledor2Wide.woff2') format('woff2'),
+       url('assets/fonts/Dumbledor2Wide.woff') format('woff'),
+       url('assets/fonts/Dumbledor2Wide.ttf') format('truetype'),
+       url('assets/fonts/Dumbledor2Wide.svg#Dumbledor2Wide') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 *:not(.macicons) {
