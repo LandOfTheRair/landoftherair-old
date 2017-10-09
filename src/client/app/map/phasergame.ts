@@ -68,11 +68,13 @@ export class Game {
 
   public isLoaded: boolean;
 
+  private frames = 0;
+
   public get shouldRender() {
     if(!this.g || !this.g.camera || !this.playerSprite) return false;
 
     const point = this.g.camera.position;
-    return point.x !== 0 && point.y !== 0;
+    return point.x !== 0 && point.y !== 0 && this.frames >= 20;
   }
 
   constructor(private clientGameState: ClientGameState, public colyseus, private player: Player) {
@@ -164,6 +166,8 @@ export class Game {
     this.visibleItemUUIDHash = {};
     this.visibleSprites = {};
     this.playerSpriteHash = {};
+
+    this.frames = 0;
   }
 
   initPromises() {
@@ -636,6 +640,10 @@ export class Game {
 
     // center on player mid
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
+
+    if(this.frames < 20) {
+      this.frames++;
+    }
 
     if(this.clientGameState.updates.openDoors.length > 0) {
       this.updateDoors();
