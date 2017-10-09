@@ -75,8 +75,6 @@ export class Game {
     return point.x !== 0 && point.y !== 0;
   }
 
-  public interactCallback = (x, y) => {};
-
   constructor(private clientGameState: ClientGameState, public colyseus, private player: Player) {
     this.initPromises();
 
