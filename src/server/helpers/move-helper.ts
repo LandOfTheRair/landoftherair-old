@@ -94,14 +94,14 @@ export class MoveHelper {
     }
   }
 
-  private static  handleTeleport(room, player, obj) {
+  private static handleTeleport(room, player, obj) {
     const { teleportX, teleportY, teleportMap, requireHeld } = obj.properties;
     if(requireHeld && !player.hasHeldItem(requireHeld)) return;
     room.teleport(player, { x: teleportX, y: teleportY, newMap: teleportMap });
     player.sendClientMessage('Your surroundings shift.');
   }
 
-  private static  handleLocker(room, player, obj) {
+  private static handleLocker(room, player, obj) {
     const { lockerId } = obj.properties;
     room.openLocker(player, obj.name, lockerId);
   }
