@@ -391,7 +391,7 @@ export class ColyseusGameService {
       argsIndex = 2;
     }
 
-    let args = arr.length > argsIndex ? cmd.substring(cmd.indexOf(arr[argsIndex])).trim() : '';
+    const args = arr.length > argsIndex ? cmd.substring(cmd.indexOf(arr[argsIndex])).trim() : '';
 
     return [command, args];
   }
