@@ -75,7 +75,7 @@ export class CommandExecutor {
     if(!cmd) return false;
 
     const spell = command.split(' ')[1];
-    const hasLearned = player.hasLearned(spell);
+    const hasLearned = player.hasLearned(spell || '');
     if(cmd.requiresLearn && !hasLearned) return player.sendClientMessage('You do not know that spell!');
 
     if(hasLearned.effect) args.effect = hasLearned.effect;
