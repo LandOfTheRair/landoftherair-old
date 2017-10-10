@@ -285,6 +285,7 @@
 
   usableSkills:
     - MagicMissile
+    - IceMist
 
   drops:
     - result: Rylt Renegade Book
@@ -325,6 +326,7 @@
 
   usableSkills:
     - Afflict
+    - Poison
 
   gear:
     Armor: Antanian Tunic

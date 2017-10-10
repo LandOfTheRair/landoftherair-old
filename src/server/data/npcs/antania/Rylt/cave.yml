@@ -178,6 +178,8 @@
 
   usableSkills:
     - MagicMissile
+    - FireMist
+    - IceMist
 
   copyDrops:
     - drop: 'gear.Robe1'

@@ -114,6 +114,108 @@
       chance: 1
       maxChance: 500
 
+
+- npcId: Rylt Renegade Mage
+  name: renegade
+  hostility: Always
+  baseClass: Mage
+  sprite: 545
+  alignment: Evil
+  stats: 10
+  skillLevels:
+    Shortsword: 2
+    Conjuration: 4
+
+  level: 4
+  skillOnKill: 25
+
+  gold:
+    min: 150
+    max: 250
+
+  hp:
+    min: 300
+    max: 350
+
+  mp:
+    min: 500
+    max: 600
+
+  giveXp:
+    min: 600
+    max: 1100
+
+  rightHand:
+    - Rylt Renegade Staff
+
+  gear:
+    Armor: Antanian Tunic
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+
+  usableSkills:
+    - MagicMissile
+    - FireMist
+
+  drops:
+    - result: Rylt Renegade Book
+      chance: 1
+      maxChance: 200
+
+- npcId: Rylt Renegade Healer
+  name: renegade
+  baseClass: Healer
+  hostility: Always
+  sprite: 550
+  alignment: Evil
+  stats: 10
+  skillLevels:
+    Mace: 2
+    Restoration: 4
+
+  level: 4
+  skillOnKill: 25
+
+  gold:
+    min: 150
+    max: 250
+
+  hp:
+    min: 400
+    max: 450
+
+  mp:
+    min: 500
+    max: 600
+
+  giveXp:
+    min: 600
+    max: 1100
+
+  rightHand: Rylt Renegade Mace
+
+  usableSkills:
+    - Afflict
+    - Poison
+
+  gear:
+    Armor: Antanian Tunic
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+
+  drops:
+    - result: Rylt Renegade Book
+      chance: 1
+      maxChance: 200
+
 - npcId: Rylt Renegade Leader
   name: leader
   hostility: Always

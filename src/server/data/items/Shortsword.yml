@@ -6,3 +6,15 @@
   type: Shortsword
   value: 85
   sprite: 195
+
+- name: Antanian Shortsword
+  desc: "an iron shortsword engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  stats:
+    offense: 1
+    accuracy: 3
+  baseDamage: 9
+  minDamage: 2
+  maxDamage: 3
+  type: Shortsword
+  value: 105
+  sprite: 195
