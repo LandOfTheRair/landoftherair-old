@@ -7,7 +7,7 @@
   value: 85
   sprite: 195
 
-- name: Antanian Shortsword
+- name: Rylt Renegade Shortsword
   desc: "an iron shortsword engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   stats:
     offense: 1
