@@ -80,6 +80,9 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public showEquipment: boolean;
 
+  @LocalStorage()
+  public showParty: boolean;
+
   // options
   @LocalStorage()
   public sackSize: Size;

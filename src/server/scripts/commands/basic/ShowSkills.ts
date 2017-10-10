@@ -6,13 +6,13 @@ export class ShowSkills extends Command {
 
   static macroMetadata = {
     name: 'Show Skills',
-    macro: 'show_skills',
+    macro: 'show skills',
     icon: 'checklist',
     color: '#000000',
     mode: 'autoActivate'
   };
 
-  public name = 'show_skills';
+  public name = 'show skills';
 
   execute(player: Player, { room, args }) {
     player.sendClientMessage(`You are ${player.name}, the ${player.alignment} level ${player.level} ${player.baseClass}.`);

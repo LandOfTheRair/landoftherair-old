@@ -67,10 +67,16 @@ class Database {
 
         this.$lobbySettings = client.collection('lobbySettings');
 
+        this.clearStaleData();
+
         resolve();
       });
 
     });
+  }
+
+  clearStaleData() {
+    this.$players.update({}, { $set: { partyName: '' } }, { multi: true });
   }
 }
 

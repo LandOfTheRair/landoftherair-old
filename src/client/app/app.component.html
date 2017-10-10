@@ -45,6 +45,9 @@
             <a class="dropdown-item" (click)="showEquipment = !showEquipment">Equipment</a>
           </li>
           <li>
+            <a class="dropdown-item" (click)="showParty = !showParty">Party</a>
+          </li>
+          <li>
             <a class="dropdown-item" (click)="options.show()">Options</a>
           </li>
         </ul>
@@ -404,6 +407,24 @@
     </div>
     <div class="window-body">
       <app-lockers></app-lockers>
+    </div>
+  </div>
+
+  <div class="window party above-game-window"
+       [class.active-window]="activeWindow === 'party'"
+       (click)="activeWindow = 'party'"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="partyDrag"
+       windowName="party"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && showParty">
+    <div class="window-header text-center" #partyDrag>
+      Party: {{ colyseus.game.character.partyName || '(no party)' }}
+      <app-close-button (click)="showParty = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-party></app-party>
     </div>
   </div>
 
