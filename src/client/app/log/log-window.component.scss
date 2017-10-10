@@ -60,19 +60,19 @@
 
       &.combat {
         &.self {
-          color: #00a;
+          color: #fb5555;
         }
 
         &.other.miss, &.other.block {
-          color: #aaa;
+          color: #ccc;
         }
 
         &.other.hit {
-          color: #ff5a35;
+          color: #0f0;
         }
 
         &.heal {
-          color: #080;
+          color: #0f0;
         }
 
         &.kill {
