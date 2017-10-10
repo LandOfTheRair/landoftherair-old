@@ -9,7 +9,7 @@ import { ColyseusGameService } from '../colyseus.game.service';
 export class PartyComponent {
 
   constructor(
-    private colyseusGame: ColyseusGameService
+    public colyseusGame: ColyseusGameService
   ) { }
 
   locationFor(character) {
