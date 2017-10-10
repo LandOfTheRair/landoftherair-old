@@ -914,8 +914,8 @@ export class Character {
   stealthLevel(): number {
     const isThief = this.baseClass === 'Thief';
     const thiefLevel = this.calcSkillLevel(SkillClassNames.Thievery);
-    const casterThiefSkill = thiefLevel * (isThief ? 2 : 1);
-    const casterAgi = this.getTotalStat('agi') / (isThief ? 2 : 3);
+    const casterThiefSkill = thiefLevel * (isThief ? 1.5 : 1);
+    const casterAgi = this.getTotalStat('agi') / (isThief ? 1.5 : 3);
     const casterLevel = this.level;
 
     const hideBoost = isThief ? Math.floor(thiefLevel / 5) * 10 : 0;
@@ -942,13 +942,21 @@ export class Character {
     const casterLevel = this.level;
 
     const thiefTotal = (thiefLevel + dex) * (isThief ? 1.5 : 1);
-    const normalTotal = casterLevel * 2;
+    const normalTotal = casterLevel * 3;
 
     return thiefTotal + normalTotal;
   }
 
   canSeeThroughStealthOf(char: Character) {
-    return this.getTotalStat('perception') >= char.getTotalStat('stealth');
+
+    // +1 so we don't zero out stealth on tile
+    const distFactor = Math.floor(this.distFrom(char) + 1);
+    const otherStealth = char.getTotalStat('stealth');
+    const thiefMultPerTile = char.baseClass === 'Thief' ? 1.05 : 0.75;
+
+    const totalStealth = Math.floor(distFactor * otherStealth * thiefMultPerTile);
+
+    return this.getTotalStat('perception') >= totalStealth;
   }
 
   canHide(): boolean {
