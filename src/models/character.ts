@@ -711,7 +711,11 @@ export class Character {
   }
 
   calcSkillLevel(type) {
-    return Math.floor(Math.pow((this.skills[type.toLowerCase()] || 0) / 100, 1 / 2));
+    const skillValue = this.skills[type.toLowerCase()] || 0;
+    if(skillValue === 0) return 0;
+
+    const value = Math.log(skillValue / 100) / Math.log(2);
+    return Math.floor(value);
   }
 
   calcSkillXP(level: number) {

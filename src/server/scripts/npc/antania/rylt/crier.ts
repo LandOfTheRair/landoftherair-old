@@ -26,7 +26,8 @@ export const responses = (npc: NPC) => {
     'Werebear claws are prized by martial artists!',
     'The skin of deer is great at repelling magic!',
     'The Last Chance Prison is filled with rebellious infidels!',
-    'There are tales of a renegade who collects books!'
+    'There are tales of a renegade who collects books!',
+    'Try asking the Healer to RECALL you!'
   ]);
 
 };
