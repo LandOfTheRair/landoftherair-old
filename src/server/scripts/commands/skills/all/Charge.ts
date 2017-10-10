@@ -35,7 +35,7 @@ export class Charge extends Skill {
     const weapon = user.rightHand;
     if(!weapon) return user.sendClientMessage('You need a weapon in your hand to charge!');
 
-    const userSkill = user.calcSkillLevel(weapon.itemClass);
+    const userSkill = user.calcSkillLevel(weapon.type);
     if(userSkill < 7) return user.sendClientMessage('You are not skilled enough to do that!');
 
     const range = this.range(user);
@@ -56,7 +56,7 @@ export class Charge extends Skill {
 
     MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff });
 
-    CombatHelper.physicalAttack(user, target);
+    CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
   }
 
 }

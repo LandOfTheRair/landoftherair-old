@@ -308,7 +308,8 @@
 
   level: 7
 
-  perception: 50
+  otherStats:
+    perception: 50
 
   skillOnKill: 50
 

@@ -46,7 +46,7 @@ export class Throw extends Skill {
 
   use(user: Character, target: Character, opts: any = {}) {
     const { throwHand } = opts;
-    CombatHelper.physicalAttack(user, target, { isThrow: true, throwHand });
+    CombatHelper.physicalAttack(user, target, { isThrow: true, throwHand, attackRange: this.range(user) });
   }
 
 }

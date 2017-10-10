@@ -140,6 +140,11 @@ export class ClientGameState {
     this._updatePlayerAtIndex(playerIndex);
   }
 
+  updatePlayerPerception(playerIndex, perception) {
+    (<any>this.playerHash[playerIndex]).totalStats.perception = perception;
+    this._updatePlayerAtIndex(playerIndex);
+  }
+
   updatePlayerEffectDuration(playerIndex, effectIndex, duration) {
     this.playerHash[playerIndex].effects[effectIndex].duration = duration;
     this._updatePlayerAtIndex(playerIndex);

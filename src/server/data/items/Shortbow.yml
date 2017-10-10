@@ -8,3 +8,14 @@
   type: Ranged
   value: 95
   sprite: 199
+
+- name: Rylt Renegade Shortbow
+  stats:
+    accuracy: 5
+  desc: "a wooden shortbow engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  baseDamage: 9
+  minDamage: 2
+  maxDamage: 4
+  type: Ranged
+  value: 195
+  sprite: 199
