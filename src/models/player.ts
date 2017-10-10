@@ -3,6 +3,7 @@ import { Character, MaxSizes, AllNormalGearSlots } from './character';
 import { Item } from './item';
 
 import { compact, pull, random, isArray, get, find, includes, reject } from 'lodash';
+import { Party } from './party';
 
 export class Player extends Character {
   _id?: any;
@@ -30,6 +31,12 @@ export class Player extends Character {
   bgmSetting: 'town' | 'dungeon' | 'wilderness';
 
   respawnPoint: { x: number, y: number, map: string };
+
+  partyName: string;
+
+  get party(): Party {
+    return this.$$room.partyManager.getPartyByName(this.partyName);
+  }
 
   init() {
     this.initBelt();
@@ -101,17 +108,34 @@ export class Player extends Character {
   }
 
   kill(target: Character) {
+    this.$$actionQueue = reject(this.$$actionQueue, ({ args }) => includes(args, target.uuid));
+
+    const skillGain = target.skillOnKill;
+    this.gainSkillFromKills(skillGain);
+
+  }
+
+  gainSkillFromKills(skillGain: number) {
     if(!this.$$flaggedSkills || !this.$$flaggedSkills.length) return;
     const [primary, secondary] = this.$$flaggedSkills;
-    const skillGain = target.skillOnKill;
-
-    this.$$actionQueue = reject(this.$$actionQueue, ({ args }) => includes(args, target.uuid));
 
     if(secondary) {
       this.gainSkill(primary, skillGain * 0.75);
       this.gainSkill(secondary, skillGain * 0.25);
     } else {
       this.gainSkill(primary, skillGain);
+    }
+
+    if(this.party) {
+      this.$$room.shareSkillWithParty(this, skillGain);
+    }
+  }
+
+  gainExpFromKills(xpGain: number) {
+    super.gainExpFromKills(xpGain);
+
+    if(this.party) {
+      this.$$room.shareExpWithParty(this, xpGain);
     }
   }
 
@@ -268,6 +292,8 @@ export class Player extends Character {
   tick() {
     super.tick();
 
+    this.$$room.partyManager.updateMember(this);
+
     if(this.isInCombat) this.combatTicks--;
 
     if(!this.$$actionQueue) return;
@@ -291,4 +317,5 @@ export class Player extends Character {
     return (this.hasHeldItem(item1, 'right') && this.hasHeldItem(item2, 'left'))
         || (this.hasHeldItem(item2, 'right') && this.hasHeldItem(item1, 'left'));
   }
+
 }

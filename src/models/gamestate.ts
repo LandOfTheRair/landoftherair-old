@@ -344,6 +344,7 @@ export class GameState {
   get playerHash() {
     return reduce(this.players, (prev, p) => {
       prev[p.username] = p;
+      p._party = p.party;
       return prev;
     }, {});
   }

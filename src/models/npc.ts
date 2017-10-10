@@ -130,7 +130,7 @@ export class NPC extends Character {
 
     if(killer) {
       killer.changeRep(this.allegiance, -this.repMod);
-      killer.gainExp(random(giveXp.min, giveXp.max));
+      killer.gainExpFromKills(random(giveXp.min, giveXp.max));
 
       this.$$room.calculateLootDrops(this, killer);
     }

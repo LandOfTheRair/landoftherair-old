@@ -83,22 +83,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
   }
 
   public directionTo(npc: NPC) {
-    const me = this.colyseusGame.character;
-    const diffX = npc.x - me.x;
-    const diffY = npc.y - me.y;
-
-    if(diffX < 0 && diffY > 0) return '↙';
-    if(diffX > 0 && diffY < 0) return '↗';
-    if(diffX > 0 && diffY > 0) return '↘';
-    if(diffX < 0 && diffY < 0) return '↖';
-
-    if(diffX > 0)              return '→';
-    if(diffY > 0)              return '↓';
-
-    if(diffX < 0)              return '←';
-    if(diffY < 0)              return '↑';
-
-    return '✧';
+    return this.colyseusGame.directionTo(npc);
   }
 
   public barClass(npc: NPC) {

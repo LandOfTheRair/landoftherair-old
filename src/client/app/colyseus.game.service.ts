@@ -377,6 +377,25 @@ export class ColyseusGameService {
     this.sendAction({ command, args });
   }
 
+  private parseCommand(cmd: string) {
+
+    const arr = cmd.split(' ');
+    const multiPrefixes = ['party', 'look', 'show', 'climb'];
+
+    let argsIndex = 1;
+
+    let command = arr[0];
+
+    if(includes(multiPrefixes, command)) {
+      command = `${arr[0]} ${arr[1]}`;
+      argsIndex = 2;
+    }
+
+    let args = arr.length > argsIndex ? cmd.substring(cmd.indexOf(arr[argsIndex])).trim() : '';
+
+    return [command, args];
+  }
+
   public sendCommandString(str: string, target?: string) {
     str.split(';').forEach(cmd => {
       cmd = cmd.trim();
@@ -388,9 +407,7 @@ export class ColyseusGameService {
         command = '~talk';
         args = cmd;
       } else {
-        const arr = cmd.split(' ');
-        command = arr[0];
-        args = arr.length > 1 ? cmd.substring(cmd.indexOf(' ')).trim() : '';
+        [command, args] = this.parseCommand(cmd);
       }
 
       if(target) {
@@ -539,5 +556,34 @@ export class ColyseusGameService {
     || compare.allegianceReputation[me.allegiance] <= 0) return 'hostile';
 
     return 'neutral';
+  }
+
+  public directionTo(char: Character) {
+    const me = this.character;
+    const diffX = char.x - me.x;
+    const diffY = char.y - me.y;
+
+    if(diffX < 0 && diffY > 0) return '↙';
+    if(diffX > 0 && diffY < 0) return '↗';
+    if(diffX > 0 && diffY > 0) return '↘';
+    if(diffX < 0 && diffY < 0) return '↖';
+
+    if(diffX > 0)              return '→';
+    if(diffY > 0)              return '↓';
+
+    if(diffX < 0)              return '←';
+    if(diffY < 0)              return '↑';
+
+    return '✧';
+  }
+
+  public distanceTo(char: Character): number {
+    const me = this.character;
+    return Math.floor(
+      Math.sqrt(
+        Math.pow(char.x - me.x, 2) +
+        Math.pow(char.y - me.y, 2)
+      )
+    );
   }
 }

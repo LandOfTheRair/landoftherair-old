@@ -33,7 +33,7 @@ export class Look extends Command {
     const numTypes = Object.keys(items);
 
     const typesWithNames = compact(numTypes.sort().map(itemType => {
-      if(itemType === 'Coin') return `${items.Coin[0].value} ${items.Coin[0].name.toLowerCase()}${items.Coin[0].value > 1 ? 's' : ''}`;
+      if(itemType === 'Coin' && items.Coin[0]) return `${items.Coin[0].value} ${items.Coin[0].name.toLowerCase()}${items.Coin[0].value > 1 ? 's' : ''}`;
       const len = items[itemType].length;
       if(len === 0) return '';
       const str = this.getStringForNum(len);

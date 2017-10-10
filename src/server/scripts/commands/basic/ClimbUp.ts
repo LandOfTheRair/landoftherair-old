@@ -8,13 +8,13 @@ export class ClimbUp extends Command {
 
   static macroMetadata = {
     name: 'Climb',
-    macro: 'climbup',
+    macro: 'climb up',
     icon: 'ladder',
     color: '#D2691E',
     mode: 'autoActivate'
   };
 
-  public name = ['climbup', 'climbdown'];
+  public name = ['climb up', 'climb down'];
 
   execute(player: Player, { room, gameState, args }) {
 

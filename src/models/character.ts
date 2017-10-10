@@ -655,6 +655,10 @@ export class Character {
     }
   }
 
+  gainExpFromKills(xp: number) {
+    this.gainExp(xp);
+  }
+
   tryLevelUp(maxLevel = 0) {
     do {
       if(this.level >= maxLevel) break;

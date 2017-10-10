@@ -1,0 +1,27 @@
+<table class="table table-striped table-sm mb-0">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Profession</th>
+    <th>Level</th>
+    <th>HP</th>
+    <th>MP</th>
+    <th class="text-center">Location</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="colyseusGame.character._party">
+  <tr *ngFor="let char of colyseusGame.character._party.members">
+    <td>{{ char.name }}</td>
+    <td>{{ char.baseClass }}</td>
+    <td>{{ char.level }}</td>
+    <td>{{ char.hpPercent }}%</td>
+    <td>{{ char.mpPercent || 0 }}%</td>
+    <td class="text-center">{{ locationFor(char) }}</td>
+  </tr>
+  </tbody>
+  <tbody *ngIf="!colyseusGame.character._party">
+  <tr>
+    <td colspan="6" class="text-center">You do not have a party.</td>
+  </tr>
+  </tbody>
+</table>

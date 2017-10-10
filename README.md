@@ -9,6 +9,7 @@ While I appreciate contributions, consider that all contributions, significant o
 
 * Node.js (recommended: 8.0.0+)
 * MongoDB (recommended: 3.4.4+)
+* Redis (or a hosted redis service, like Redis Lab)
 
 ## Install
 
@@ -22,6 +23,7 @@ First, create a [`.env`](https://www.npmjs.com/package/dotenv) file in the root.
 
 * `MONGODB_URI` - the URI that leads to a mongodb instance
 * `AUTH0_SECRET` - Auth0 server secret
+* `REDIS_URL` - a URI that leads to a redis cache
 
 ## Setup
 

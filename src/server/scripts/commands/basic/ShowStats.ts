@@ -7,13 +7,13 @@ export class ShowStats extends Command {
 
   static macroMetadata = {
     name: 'Show Stats',
-    macro: 'show_stats',
+    macro: 'show stats',
     icon: 'checklist',
     color: '#000000',
     mode: 'autoActivate'
   };
 
-  public name = 'show_stats';
+  public name = 'show stats';
 
   execute(player: Player, { room, args }) {
     player.sendClientMessage(`You are ${player.name}, the ${player.alignment} level ${player.level} ${player.baseClass}.`);

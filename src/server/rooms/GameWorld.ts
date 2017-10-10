@@ -27,6 +27,8 @@ import { Item } from '../../models/item';
 import { Locker } from '../../models/container/locker';
 import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
+import { PartyManager } from '../helpers/party-manager';
+
 const TICK_DIVISOR = 2;
 
 const TickRates = {
@@ -53,6 +55,8 @@ export class GameWorld extends Room<GameState> {
   };
 
   private ticks = 0;
+
+  public partyManager: PartyManager;
 
   get allSpawners() {
     return this.spawners;
@@ -98,7 +102,7 @@ export class GameWorld extends Room<GameState> {
     this.onInit();
   }
 
-  savePlayer(player: Player) {
+  private savePlayer(player: Player) {
     if(player.$$doNotSave) return;
 
     if(player._id) {
@@ -107,6 +111,7 @@ export class GameWorld extends Room<GameState> {
 
     const savePlayer = player.toJSON();
     delete savePlayer.$fov;
+    delete savePlayer._party;
 
     if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
       savePlayer.leftHand = null;
@@ -119,7 +124,16 @@ export class GameWorld extends Room<GameState> {
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }
 
-  findClient(player: Player) {
+  public sendMessageToUsernames(usernames: string[], message: string|any) {
+    usernames.forEach(username => {
+      const client = find(this.clients, { username });
+      if(!client) return;
+
+      this.sendClientLogMessage(client, message);
+    });
+  }
+
+  private findClient(player: Player) {
     return find(this.clients, { username: player.username });
   }
 
@@ -202,14 +216,14 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'update_locker', locker });
   }
 
-  saveLocker(player: Player, locker: Locker) {
+  private saveLocker(player: Player, locker: Locker) {
     return DB.$characterLockers.update(
       { username: player.username, charSlot: player.charSlot, regionId: locker.regionId, lockerId: locker.lockerId },
       { $set: { lockerName: locker.lockerName, items: locker.allItems } }
     );
   }
 
-  async openLocker(player: Player, lockerName, lockerId) {
+  private async openLocker(player: Player, lockerName, lockerId) {
     const regionId = this.mapRegion;
 
     await this.createLockerIfNotExist(player, regionId, lockerName, lockerId);
@@ -285,7 +299,7 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
-  prePlayerMapLeave(player: Player) {
+  private prePlayerMapLeave(player: Player) {
     this.corpseCheck(player);
     this.restoreCheck(player);
     this.doorCheck(player);
@@ -295,7 +309,7 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
-  leaveGameAndSave(player: Player) {
+  private leaveGameAndSave(player: Player) {
     return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: { inGame: false } });
   }
 
@@ -303,6 +317,12 @@ export class GameWorld extends Room<GameState> {
     const player = this.state.findPlayer(client.username);
     this.state.removePlayer(client.username);
     player.inGame = false;
+
+    // do not leave party if you're teleporting between maps
+    if(!player.$$doNotSave && player.partyName) {
+      this.partyManager.leaveParty(player);
+    }
+
     await this.leaveGameAndSave(player);
     this.prePlayerMapLeave(player);
     this.savePlayer(player);
@@ -330,7 +350,7 @@ export class GameWorld extends Room<GameState> {
     CommandExecutor.executeCommand(player, data.command, data);
   }
 
-  async onInit() {
+  private async onInit() {
     const timerData = await this.loadBossTimers();
     const spawnerTimers = timerData ? timerData.spawners : [];
 
@@ -339,18 +359,25 @@ export class GameWorld extends Room<GameState> {
     this.loadDropTables();
     this.loadGround();
     this.watchForItemDecay();
+
+    this.initPartyManager();
   }
 
   onDispose() {
     this.saveGround();
     this.saveBossTimers();
+    this.partyManager.stopEmitting();
   }
 
-  async loadBossTimers() {
+  private initPartyManager() {
+    this.partyManager = new PartyManager(this);
+  }
+
+  private async loadBossTimers() {
     return DB.$mapBossTimers.findOne({ mapName: this.state.mapName });
   }
 
-  saveBossTimers() {
+  private saveBossTimers() {
     const spawners = this.spawners.filter(spawner => spawner.shouldSerialize && spawner.currentTick > 0);
     const saveSpawners = spawners.map(spawner => ({ x: spawner.x, y: spawner.y, currentTick: spawner.currentTick }));
 
@@ -359,7 +386,7 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
-  async loadGround() {
+  private async loadGround() {
     let obj = await DB.$mapGroundItems.findOne({ mapName: this.state.mapName });
     if(!obj) obj = {};
     const groundItems = obj.groundItems || {};
@@ -374,7 +401,7 @@ export class GameWorld extends Room<GameState> {
     DB.$mapGroundItems.update({ mapName: this.state.mapName }, { $set: { groundItems: this.state.serializableGroundItems() } }, { upsert: true });
   }
 
-  checkIfAnyItemsAreExpired(groundItems) {
+  private checkIfAnyItemsAreExpired(groundItems) {
     Object.keys(groundItems).forEach(x => {
       Object.keys(groundItems[x]).forEach(y => {
         Object.keys(groundItems[x][y]).forEach(itemClass => {
@@ -384,7 +411,7 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
-  watchForItemDecay() {
+  private watchForItemDecay() {
     const rule = new scheduler.RecurrenceRule();
     rule.minute = this.decayChecksMinutes;
 
@@ -393,28 +420,28 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
-  removeItemExpiry(item: Item) {
+  private removeItemExpiry(item: Item) {
     delete item.expiresAt;
   }
 
-  setItemExpiry(item: Item) {
+  private setItemExpiry(item: Item) {
     const expiry = new Date();
     expiry.setHours(expiry.getHours() + this.decayRateHours);
     item.expiresAt = expiry.getTime();
   }
 
-  hasItemExpired(item: Item) {
+  private hasItemExpired(item: Item) {
     return Date.now() > item.expiresAt;
   }
 
-  async loadDropTables() {
+  private async loadDropTables() {
     this.dropTables.map = (await DB.$mapDrops.findOne({ mapName: this.state.mapName }) || {}).drops || [];
     if(this.mapRegion) {
       this.dropTables.region = (await DB.$regionDrops.findOne({ regionName: this.mapRegion }) || {}).drops || [];
     }
   }
 
-  loadNPCsFromMap() {
+  private loadNPCsFromMap() {
     const npcs = this.state.map.layers[MapLayer.NPCs].objects;
 
     if(npcs.length === 0) return;
@@ -457,7 +484,7 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
-  loadSpawners(timerData: any[]) {
+  private loadSpawners(timerData: any[]) {
     const spawners = this.state.map.layers[MapLayer.Spawners].objects;
 
     spawners.forEach(spawnerData => {
@@ -477,7 +504,7 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
-  determineNPCName(npc: NPC) {
+  private determineNPCName(npc: NPC) {
     let func = 'human';
 
     switch(npc.allegiance) {
@@ -511,11 +538,11 @@ export class GameWorld extends Room<GameState> {
     return possTargets;
   }
 
-  setUpClassFor(char: Character) {
+  private setUpClassFor(char: Character) {
     Classes[char.baseClass || 'Undecided'].becomeClass(char);
   }
 
-  tick() {
+  private tick() {
     this.ticks++;
 
     // tick players every second or so
@@ -605,7 +632,7 @@ export class GameWorld extends Room<GameState> {
     this.createCorpse(npc, allItems);
   }
 
-  async createCorpse(target: Character, searchItems) {
+  private async createCorpse(target: Character, searchItems) {
     const corpse = await ItemCreator.getItemByName('Corpse');
     corpse.sprite = target.sprite + 4;
     corpse.searchItems = searchItems;
@@ -635,7 +662,7 @@ export class GameWorld extends Room<GameState> {
     corpse.searchItems = null;
   }
 
-  corpseCheck(player) {
+  public corpseCheck(player) {
 
     let item = null;
 
@@ -655,12 +682,12 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
-  restoreCheck(player) {
+  private restoreCheck(player) {
     if(!player.isDead()) return;
     player.restore(false);
   }
 
-  doorCheck(player) {
+  private doorCheck(player) {
     const interactables = this.state.map.layers[MapLayer.Interactables].objects;
     const interactable = find(interactables, { x: (player.x) * 64, y: (player.y + 1) * 64 });
     if(interactable && interactable.type === 'Door') {
@@ -672,5 +699,55 @@ export class GameWorld extends Room<GameState> {
     const client = this.findClient(player);
     const effectId = VISUAL_EFFECTS[effect];
     this.send(client, { action: 'draw_effect_r', effect: effectId, center, radius });
+  }
+
+  public shareExpWithParty(player: Player, exp: number) {
+    const party = player.party;
+
+    const members = party.allMembers;
+
+    if(members.length > 4) {
+      exp = exp * 0.75;
+    }
+
+    if(members.length > 7) {
+      exp = exp * 0.75;
+    }
+
+    exp = Math.floor(exp);
+
+    members.forEach(({ username }) => {
+      if(username === player.username) return;
+
+      const partyMember = this.state.findPlayer(username);
+      if(player.distFrom(partyMember) > 7) return;
+
+        partyMember.gainExp(exp);
+    });
+  }
+
+  public shareSkillWithParty(player: Player, skill: number) {
+    const party = player.party;
+
+    const members = party.allMembers;
+
+    if(members.length > 4) {
+      skill = skill * 0.75;
+    }
+
+    if(members.length > 7) {
+      skill = skill * 0.75;
+    }
+
+    skill = Math.floor(skill);
+
+    members.forEach(({ username }) => {
+      if(username === player.username) return;
+
+      const partyMember = this.state.findPlayer(username);
+      if(player.distFrom(partyMember) > 7) return;
+
+      partyMember.gainSkill(skill);
+    });
   }
 }
