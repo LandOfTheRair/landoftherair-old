@@ -3,7 +3,7 @@
 
 // FONT SPECIFIC ADJUSTMENTS
 @font-face {
-  font-family: 'Fantasy';
+  font-family: 'ActualFantasy';
   src: url('assets/fonts/Dumbledor2.eot');
   src: url('assets/fonts/Dumbledor2.eot?#iefix') format('embedded-opentype'),
        url('assets/fonts/Dumbledor2.woff2') format('woff2'),
@@ -15,7 +15,7 @@
 }
 
 @font-face {
-  font-family: 'FantasyWide';
+  font-family: 'ActualFantasyWide';
   src: url('assets/fonts/Dumbledor2Wide.eot');
   src: url('assets/fonts/Dumbledor2Wide.eot?#iefix') format('embedded-opentype'),
        url('assets/fonts/Dumbledor2Wide.woff2') format('woff2'),
@@ -27,12 +27,12 @@
 }
 
 *:not(.macicons) {
-  font-family: 'Fantasy', cursive !important;
+  font-family: 'ActualFantasy', cursive !important;
   letter-spacing: 0.5px;
 }
 
 .window-header {
-  font-family: 'FantasyWide', cursive !important;
+  font-family: 'ActualFantasyWide', cursive !important;
   font-weight: bold;
 
   & > * {
