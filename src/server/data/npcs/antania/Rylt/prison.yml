@@ -57,8 +57,6 @@
         chance: 9
       - result: Antanian Studded Tunic
         chance: 4
-      - result: Rylt Renegade Breastplate
-        chance: 1
     Robe1:
       - result: none
         chance: 2
