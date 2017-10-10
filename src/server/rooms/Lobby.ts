@@ -164,7 +164,9 @@ export class Lobby extends Room<LobbyState> {
 
     await this.giveCharacterBasicGearAndSkills(player);
 
-    DB.$players.insert(player);
+    const savePlayer = player.toJSON();
+
+    DB.$players.insert(savePlayer);
   }
 
   private async giveCharacterBasicGearAndSkills(player: Player) {
