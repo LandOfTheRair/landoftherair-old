@@ -712,10 +712,11 @@ export class Character {
 
   calcSkillLevel(type) {
     const skillValue = this.skills[type.toLowerCase()] || 0;
-    if(skillValue === 0) return 0;
+    if(skillValue < 100) return 0;
+    if(skillValue < 200) return 1;
 
     const value = Math.log(skillValue / 100) / Math.log(2);
-    return Math.floor(value);
+    return 1 + Math.floor(value);
   }
 
   calcSkillXP(level: number) {
