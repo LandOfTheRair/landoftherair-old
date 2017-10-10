@@ -391,7 +391,8 @@ export class ColyseusGameService {
       argsIndex = 2;
     }
 
-    const args = arr.length > argsIndex ? cmd.substring(cmd.indexOf(arr[argsIndex])).trim() : '';
+    // factor in the space because otherwise indexOf can do funky things.
+    const args = arr.length > argsIndex ? cmd.substring(cmd.indexOf(' ' + arr[argsIndex])).trim() : '';
 
     return [command, args];
   }
