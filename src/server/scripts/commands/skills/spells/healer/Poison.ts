@@ -9,13 +9,13 @@ export class Poison extends Skill {
 
   static macroMetadata = {
     name: 'Poison',
-    macro: 'poison',
+    macro: 'cast poison',
     icon: 'poison-gas',
     color: '#0a0',
     mode: 'clickToTarget'
   };
 
-  public name = 'poison';
+  public name = 'cast poison';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];

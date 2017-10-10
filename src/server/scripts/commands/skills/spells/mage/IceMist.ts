@@ -9,13 +9,13 @@ export class IceMist extends Skill {
 
   static macroMetadata = {
     name: 'IceMist',
-    macro: 'icemist',
+    macro: 'cast icemist',
     icon: 'kaleidoscope-pearls',
     color: '#000080',
     mode: 'clickToTarget'
   };
 
-  public name = 'icemist';
+  public name = 'cast icemist';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];

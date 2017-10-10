@@ -9,13 +9,13 @@ export class Antidote extends Skill {
 
   static macroMetadata = {
     name: 'Antidote',
-    macro: 'antidote',
+    macro: 'cast antidote',
     icon: 'miracle-medecine',
     color: '#0a0',
     mode: 'clickToTarget'
   };
 
-  public name = 'antidote';
+  public name = 'cast antidote';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];

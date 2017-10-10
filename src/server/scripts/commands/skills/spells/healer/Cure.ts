@@ -9,13 +9,13 @@ export class Cure extends Skill {
 
   static macroMetadata = {
     name: 'Cure',
-    macro: 'cure',
+    macro: 'cast cure',
     icon: 'tentacle-heart',
     color: '#080',
     mode: 'clickToTarget'
   };
 
-  public name = 'cure';
+  public name = 'cast cure';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];

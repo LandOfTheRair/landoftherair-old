@@ -9,13 +9,13 @@ export class BarNecro extends Skill {
 
   static macroMetadata = {
     name: 'BarNecro',
-    macro: 'barnecro',
+    macro: 'cast barnecro',
     icon: 'rosa-shield',
     color: '#1b390e',
     mode: 'clickToTarget'
   };
 
-  public name = 'barnecro';
+  public name = 'cast barnecro';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];

@@ -9,13 +9,13 @@ export class Afflict extends Skill {
 
   static macroMetadata = {
     name: 'Afflict',
-    macro: 'afflict',
+    macro: 'cast afflict',
     icon: 'bolas',
     color: '#bd5900',
     mode: 'lockActivation'
   };
 
-  public name = 'afflict';
+  public name = 'cast afflict';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];

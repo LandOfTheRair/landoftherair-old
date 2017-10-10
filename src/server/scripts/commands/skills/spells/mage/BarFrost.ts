@@ -9,13 +9,13 @@ export class BarFrost extends Skill {
 
   static macroMetadata = {
     name: 'BarFrost',
-    macro: 'barfrost',
+    macro: 'cast barfrost',
     icon: 'rosa-shield',
     color: '#000080',
     mode: 'clickToTarget'
   };
 
-  public name = 'barfrost';
+  public name = 'cast barfrost';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];

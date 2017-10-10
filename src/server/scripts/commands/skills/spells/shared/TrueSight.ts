@@ -9,13 +9,13 @@ export class TrueSight extends Skill {
 
   static macroMetadata = {
     name: 'TrueSight',
-    macro: 'truesight',
+    macro: 'cast truesight',
     icon: 'all-seeing-eye',
     color: '#00a',
     mode: 'clickToTarget'
   };
 
-  public name = 'truesight';
+  public name = 'cast truesight';
 
   flagSkills = [SkillClassNames.Conjuration];
 

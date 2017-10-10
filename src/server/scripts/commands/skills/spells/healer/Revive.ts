@@ -9,13 +9,13 @@ export class Revive extends Skill {
 
   static macroMetadata = {
     name: 'Revive',
-    macro: 'revive',
+    macro: 'cast revive',
     icon: 'quicksand',
     color: '#080',
     mode: 'autoActivate'
   };
 
-  public name = 'revive';
+  public name = 'cast revive';
   public format = '';
 
   flagSkills = [SkillClassNames.Restoration];
