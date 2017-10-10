@@ -342,16 +342,14 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       if(skillLevel >= maxAssessSkill) return 'You are too advanced for my teachings.';
 
-      const nextLevel = skillLevel === 0 ? 100 : player.calcSkillXP(skillLevel + 1);
-      const prevLevel = skillLevel === 0 ? 0 : player.calcSkillXP(skillLevel);
+      const nextLevel = skillLevel === 0 ? 100 : player.calcSkillXP(skillLevel);
+      const prevLevel = skillLevel === 0 ? 0 : player.calcSkillXP(skillLevel - 1);
 
       const normalizedCurrent = skillValue - prevLevel;
       const normalizedMax = nextLevel - prevLevel;
 
       const percentWay = Math.max(0, (normalizedCurrent / normalizedMax * 100)).toFixed(3);
-
-      console.log(nextLevel, prevLevel, skillLevel, normalizedCurrent, normalizedMax, percentWay);
-
+      
       return `You are ${percentWay}% on your way towards the next level of ${skill.toUpperCase()} proficiency.`;
     });
 
