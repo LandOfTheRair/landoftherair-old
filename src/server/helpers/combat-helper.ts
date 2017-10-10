@@ -36,7 +36,7 @@ export class CombatHelper {
 
   static physicalAttack(attacker: Character, defender: Character, opts: any = {}) {
 
-    const { isThrow, throwHand, isBackstab, isMug } = opts;
+    const { isThrow, throwHand, isBackstab, isMug, attackRange } = opts;
 
     if(defender.isDead() || attacker.isDead()) return { isDead: true };
 
@@ -136,10 +136,11 @@ export class CombatHelper {
     const attackerDodgeRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`);
     const defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`);
 
-    const isOnSameTile = attacker.x === defender.x && attacker.y === defender.y;
+    const attackDistance = attackRange ? attackRange : 0;
+    const distBetween = attacker.distFrom(defender);
 
     const dodgeRoll = random(defenderDodgeRoll, attackerDodgeRoll);
-    if(dodgeRoll < 0 || !isOnSameTile) {
+    if(dodgeRoll < 0 || attackDistance <= distBetween) {
       attacker.sendClientMessage({ message: `You miss!`, subClass: 'combat self miss', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} misses!`, subClass: 'combat other miss' });
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);

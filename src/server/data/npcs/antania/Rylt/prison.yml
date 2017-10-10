@@ -242,6 +242,92 @@
       chance: 1
       maxChance: 200
 
+
+- npcId: Rylt Renegade Rebel Thief
+  name: rebel
+  hostility: Always
+  sprite: [630, 635, 645, 650]
+  alignment: Evil
+  stats: 15
+
+  otherStats:
+    stealth: 50
+    perception: 50
+    offense: 5
+
+  skillLevels:
+    Throwing: 5
+    Ranged: 5
+    Dagger: 5
+
+  level: 7
+  skillOnKill: 20
+
+  gold:
+    min: 250
+    max: 350
+
+  hp:
+    min: 800
+    max: 950
+
+  giveXp:
+    min: 600
+    max: 800
+
+  rightHand:
+    - Antanian Returning Dagger
+    - Rylt Renegade Shortbow
+
+  gear:
+    Armor: Antanian Tunic
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Head:
+      - result: none
+        chance: 10
+      - result: Antanian Helm
+        chance: 2
+    Hands:
+      - result: none
+        chance: 8
+      - result: Antanian Leather Gloves
+        chance: 1
+    Feet:
+      - result: none
+        chance: 7
+      - result: Antanian Leather Boots
+        chance: 1
+    Neck:
+      - result: none
+        chance: 10
+      - result: Antanian Amulet
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1
+
+  drops:
+    - result: Rylt Renegade Book
+      chance: 1
+      maxChance: 200
+
 - npcId: Rylt Renegade Mage Rebel
   name: rebel
   hostility: Always
@@ -351,7 +437,8 @@
   stats: 15
   skillLevels: 7
 
-  perception: 150
+  otherStats:
+    perception: 150
 
   level: 17
   skillOnKill: 200

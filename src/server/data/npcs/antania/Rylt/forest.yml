@@ -141,7 +141,8 @@
     Martial: 7
   level: 7
 
-  perception: 50
+  otherStats:
+    perception: 50
 
   skillOnKill: 75
 

@@ -710,13 +710,17 @@ export class Character {
     return curLevel < this.$$room.state.maxSkill;
   }
 
-  calcSkillLevel(type) {
+  private _calcSkillLevel(type) {
     const skillValue = this.skills[type.toLowerCase()] || 0;
     if(skillValue < 100) return 0;
     if(skillValue < 200) return 1;
 
     const value = Math.log(skillValue / 100) / Math.log(2);
     return 1 + Math.floor(value);
+  }
+
+  calcSkillLevel(type) {
+    return this._calcSkillLevel(type);
   }
 
   calcSkillXP(level: number) {
@@ -944,7 +948,7 @@ export class Character {
     const thiefTotal = (thiefLevel + dex) * (isThief ? 1.5 : 1);
     const normalTotal = casterLevel * 3;
 
-    return thiefTotal + normalTotal;
+    return Math.floor(thiefTotal + normalTotal);
   }
 
   canSeeThroughStealthOf(char: Character) {

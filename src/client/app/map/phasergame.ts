@@ -438,16 +438,18 @@ export class Game {
         return;
       }
 
-      const currentSprite = find(this.visibleNPCs.children, { uuid: npc.uuid });
+      const currentSprite = this.visibleNPCUUIDHash[npc.uuid];
       if(currentSprite) {
         currentSprite.x = npc.x * 64;
         currentSprite.y = npc.y * 64;
         currentSprite.frame = npc.sprite + this.getSpriteOffsetForDirection(npc.dir);
+        currentSprite.visible = this.player.canSeeThroughStealthOf(npc);
         return;
       }
 
       const sprite = this.g.add.sprite(npc.x * 64, npc.y * 64, 'Creatures', npc.sprite);
       sprite.uuid = npc.uuid;
+      sprite.visible = this.player.canSeeThroughStealthOf(npc);
       this.visibleNPCUUIDHash[npc.uuid] = sprite;
       this.visibleNPCs.add(sprite);
     });

@@ -2,7 +2,7 @@
 import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
-import { Character } from '../../../../../models/character';
+import { Character, SkillClassNames } from '../../../../../models/character';
 import { CombatHelper } from '../../../../helpers/combat-helper';
 import { MoveHelper } from '../../../../helpers/move-helper';
 
@@ -38,7 +38,7 @@ export class Backstab extends Skill {
     const weapon = user.rightHand;
     if(!weapon) return user.sendClientMessage('You need a weapon in your hand to backstab!');
 
-    const userSkill = user.calcSkillLevel(weapon.itemClass);
+    const userSkill = user.calcSkillLevel(SkillClassNames.Thievery);
     if(userSkill < 3) return user.sendClientMessage('You are not skilled enough to do that!');
 
     const range = this.range(user);
@@ -60,7 +60,7 @@ export class Backstab extends Skill {
 
     MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff });
 
-    CombatHelper.physicalAttack(user, target, { isBackstab: true });
+    CombatHelper.physicalAttack(user, target, { isBackstab: true, attackRange: this.range(user) });
   }
 
 }

@@ -186,6 +186,10 @@ export class ColyseusGameService {
       this.clientGameState.updatePlayerStealth(entityId, value);
     });
 
+    this.worldRoom.state.listen('players/:id/totalStats/perception', 'replace', (entityId, value) => {
+      this.clientGameState.updatePlayerPerception(entityId, value);
+    });
+
     const updateDoor = (doorId) => {
       this.clientGameState.updates.openDoors.push(doorId);
     };

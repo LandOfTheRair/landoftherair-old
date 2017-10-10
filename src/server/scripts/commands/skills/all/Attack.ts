@@ -44,7 +44,7 @@ export class Attack extends Skill {
   }
 
   use(user: Character, target: Character) {
-    CombatHelper.physicalAttack(user, target);
+    CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
   }
 
 }

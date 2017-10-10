@@ -7,7 +7,7 @@ import { DB } from '../database';
 import * as YAML from 'yamljs';
 import * as recurse from 'recursive-readdir';
 
-import { includes, flatten, isUndefined, isNumber, size } from 'lodash';
+import { includes, flatten, isUndefined, isNumber, size, extend } from 'lodash';
 
 import { Stats, Skills } from '../../models/character';
 
@@ -105,9 +105,9 @@ class NPCLoader {
       });
     }
 
-    if(npc.perception) {
-      npc.stats.perception = npc.perception;
-      delete npc.perception;
+    if(npc.otherStats) {
+      extend(npc.stats, npc.otherStats);
+      delete npc.otherStats;
     }
   }
 
