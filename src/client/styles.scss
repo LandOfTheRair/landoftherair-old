@@ -44,7 +44,8 @@
 // THEME SPECIFIC ADJUSTMENTS
 
 $window-background-gradient: linear-gradient(135deg, #f0b7a1 0%, #8c3310 175px, #752201 85%, #bf6e4e 100%);
-$window-background-color: #834e36;
+$window-background-color: #333;
+$window-text-color: #fff;
 $window-border-style: ridge;
 $window-border-color: #49200e;
 
@@ -72,12 +73,12 @@ body {
   .window-header {
     background-color: $window-background-color;
     border: 1px $window-border-style $window-background-color;
-    color: #ccc;
+    color: $window-text-color;
   }
 
   .window-body {
     background-color: $window-background-color;
-    color: #fff;
+    color: $window-text-color;
     position: relative;
   }
 }
