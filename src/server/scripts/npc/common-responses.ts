@@ -350,6 +350,8 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       const percentWay = Math.max(0, (normalizedCurrent / normalizedMax * 100)).toFixed(3);
 
+      console.log(nextLevel, prevLevel, skillLevel, normalizedCurrent, normalizedMax, percentWay);
+
       return `You are ${percentWay}% on your way towards the next level of ${skill.toUpperCase()} proficiency.`;
     });
 
