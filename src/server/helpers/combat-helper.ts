@@ -94,8 +94,9 @@ export class CombatHelper {
                          ? defender.leftHand
                          : null;
 
+    // skill + 1 because skill 0 is awful
     const attackerScope = {
-      skill: attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type),
+      skill: attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type) + 1,
       offense: attacker.getTotalStat('offense'),
       accuracy: attacker.getTotalStat('accuracy'),
       dex: attacker.getTotalStat('dex'),
@@ -111,7 +112,7 @@ export class CombatHelper {
     const defenderACBoost = defenderArmor.conditionACModifier() + (defenderShield ? defenderShield.conditionACModifier() : 0);
 
     const defenderScope = {
-      skill: defender.calcSkillLevel(defenderBlocker.type),
+      skill: defender.calcSkillLevel(defenderBlocker.type) + 1,
       defense: defender.getTotalStat('defense'),
       agi: defender.getTotalStat('agi'),
       dex: defender.getTotalStat('dex'),
