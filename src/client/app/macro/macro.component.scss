@@ -15,11 +15,11 @@
 
   &.has-macro:not(.disable-effects) {
     &.active {
-      box-shadow: 1px 0 5px 3px #0a0;
+      box-shadow: 1px 0 5px 3px #000;
     }
 
     &:active:not(.active) {
-      box-shadow: 1px 0 5px 3px #555;
+      box-shadow: 1px 0 5px 3px #000;
     }
   }
 }
