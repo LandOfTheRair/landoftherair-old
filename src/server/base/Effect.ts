@@ -69,7 +69,7 @@ export class SpellEffect extends Effect {
 
       const flaggedSkill = this.skillFlag(caster);
 
-      this.potency = caster.calcSkillLevel(flaggedSkill);
+      this.potency = caster.calcSkillLevel(flaggedSkill) + 1;
 
       const skillGained = this.maxSkillForSkillGain - this.potency;
 
