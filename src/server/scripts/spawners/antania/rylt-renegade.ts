@@ -2,7 +2,9 @@
 import { Spawner } from '../../../base/Spawner';
 
 const npcIds = [
-  'Rylt Renegade'
+  'Rylt Renegade',
+  'Rylt Renegade Mage',
+  'Rylt Renegade Healer'
 ];
 
 export class RyltRenegadeMonsterSpawner extends Spawner {
