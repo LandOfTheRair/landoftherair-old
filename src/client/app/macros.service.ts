@@ -32,6 +32,8 @@ export class Macro {
 
   constructor(opts = {}) {
     _.extend(this, opts);
+    if(!this.foreground) this.foreground = '#000';
+    if(!this.background) this.background = '#ccc';
   }
 }
 
@@ -231,5 +233,6 @@ export class MacroService {
       .sortBy('isSystem')
       .sortBy('requiresLearn')
       .value();
+
   }
 }

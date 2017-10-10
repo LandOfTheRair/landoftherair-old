@@ -7,7 +7,7 @@ import { MacroService, Macro } from './macros.service';
 
 import * as macicons from '../macicons/macicons.json';
 
-import { includes, isNull } from 'lodash';
+import { includes, isNull, cloneDeep } from 'lodash';
 import { AuthService } from './auth.service';
 
 type Size = 'normal' | 'small' | 'xsmall';
@@ -223,6 +223,17 @@ export class AppComponent implements OnInit {
     this.viewMacroModal.show();
 
     this.findPage(macro.icon);
+  }
+
+  copyMacro(macro) {
+    const myMacro = cloneDeep(macro);
+    myMacro.name = `${myMacro.name} (copy)`;
+    delete myMacro.isSystem;
+    delete myMacro.requiresLearn;
+    this.currentlyEditingMacro = new Macro(myMacro);
+    this.viewMacroModal.show();
+
+    this.findPage(myMacro.icon);
   }
 
   deleteMacro(macro) {

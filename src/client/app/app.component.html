@@ -638,7 +638,7 @@
       </div>
 
       <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macroModalVisible">
-        <div class="row mb-1" *ngFor="let macro of macroService.allMacroNames()">
+        <div class="row mb-1 activate-inner-on-hover" *ngFor="let macro of macroService.allMacroNames()">
           <div class="col-2">
             <app-icon [name]="macroService.allMacros[macro].icon"
                       [bgColor]="macroService.allMacros[macro].background || '#ccc'"
@@ -649,14 +649,20 @@
             {{ macro }}
           </div>
           <div class="col-4">
-            <button class="btn btn-info btn-sm"
-                    *ngIf="!macroService.allMacros[macro].isSystem" (click)="editMacro(macroService.allMacros[macro])">
-              Edit
-            </button>
-            <button class="btn btn-danger btn-sm"
-                    *ngIf="!macroService.allMacros[macro].isSystem"
-                    (click)="deleteMacro(macroService.allMacros[macro])">Remove
-            </button>
+            <div class="show-on-hover">
+              <button class="btn btn-info btn-sm"
+                      *ngIf="!macroService.allMacros[macro].isSystem" (click)="editMacro(macroService.allMacros[macro])">
+                Edit
+              </button>
+              <button class="btn btn-info btn-sm"
+                      *ngIf="macroService.allMacros[macro].isSystem" (click)="copyMacro(macroService.allMacros[macro])">
+                Copy
+              </button>
+              <button class="btn btn-danger btn-sm"
+                      *ngIf="!macroService.allMacros[macro].isSystem"
+                      (click)="deleteMacro(macroService.allMacros[macro])">Remove
+              </button>
+            </div>
           </div>
         </div>
       </div>
