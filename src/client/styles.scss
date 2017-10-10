@@ -187,19 +187,20 @@ bs-dropdown-container {
 
 .drag-over-border {
   border: none !important;
-  outline: 2px dashed green !important;
+  outline: 3px dashed green !important;
   outline-offset: -2px;
 }
 
 .drag-hint-border {
   border: none !important;
-  outline: 2px dashed orange;
+  outline: 3px dashed blue;
+  background-color: rgba(0, 0, 255, 0.2);
   outline-offset: -2px;
 }
 
 .drag-border {
   border: none !important;
-  outline: 2px dashed red;
+  outline: 3px dashed red;
 }
 
 .macro-popover {
