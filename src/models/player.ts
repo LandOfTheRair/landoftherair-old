@@ -35,7 +35,7 @@ export class Player extends Character {
   partyName: string;
 
   get party(): Party {
-    return this.$$room.partyManager.getPartyByName(this.partyName);
+    return this.$$room ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
   }
 
   init() {
