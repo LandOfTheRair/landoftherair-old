@@ -1,4 +1,9 @@
 
+- name: Lockpick
+  desc: "a key designed for picking locks"
+  sprite: 363
+  value: 100
+
 - name: Tutorial Key
   desc: "a silver key inscribed with the word FREEDOM"
   sprite: 357

@@ -3,6 +3,7 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../models/player';
 import { MapLayer } from '../../../../models/maplayer';
 import { find, includes } from 'lodash';
+import { SkillClassNames } from '../../../../models/character';
 
 export class OpenDoor extends Command {
 
@@ -31,10 +32,38 @@ export class OpenDoor extends Command {
       return;
     }
 
+    door.properties = door.properties || {};
+    const { requireLockpick, skillRequired, requireHeld } = door.properties;
+
     if(!door.isOpen
-      && door.properties
-      && door.properties.requireHeld
-      && !player.hasHeldItem(door.properties.requireHeld)) return player.sendClientMessage('The door is locked.');
+    && (requireLockpick || requireHeld)) {
+
+      let shouldOpen = false;
+
+      if(requireHeld
+      && player.hasHeldItem(door.properties.requireHeld)) shouldOpen = true;
+
+      if(requireLockpick
+        && skillRequired
+        && player.baseClass === 'Thief'
+        && player.hasHeldItem('Lockpick', 'right')) {
+
+        const playerSkill = player.calcSkillLevel(SkillClassNames.Thievery);
+
+        if(playerSkill < skillRequired) {
+          return player.sendClientMessage('You are not skilled enough to pick this lock.');
+        }
+
+        player.sendClientMessage('You successfully picked the lock!');
+        player.setRightHand(null);
+
+        shouldOpen = true;
+      }
+
+      if(!shouldOpen) {
+        return player.sendClientMessage('The door is locked.');
+      }
+    }
 
     player.sendClientMessage(door.isOpen ? 'You close the door.' : 'You open the door.');
     gameState.toggleDoor(door);

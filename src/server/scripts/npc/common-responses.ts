@@ -274,7 +274,7 @@ export const BankResponses = (npc: NPC) => {
     });
 };
 
-export const VendorResponses = (npc: NPC) => {
+export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
@@ -282,6 +282,10 @@ export const VendorResponses = (npc: NPC) => {
       if(npc.vendorItems.length === 0) {
         Logger.error(new Error(`Vendor at ${npc.x}, ${npc.y} - ${npc.map} does not have any vendorItems!`));
         return;
+      }
+
+      if(classRestriction && player.baseClass !== classRestriction) {
+        return 'I have nothing to say to you.';
       }
 
       if(npc.distFrom(player) > 2) return 'Please move closer.';
