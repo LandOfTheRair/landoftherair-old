@@ -48,7 +48,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
       position: absolute;
       color: #000;
       text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       z-index: 560;
     }
     

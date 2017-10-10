@@ -39,7 +39,7 @@ export class Backstab extends Skill {
     if(!weapon) return user.sendClientMessage('You need a weapon in your hand to backstab!');
 
     const userSkill = user.calcSkillLevel(weapon.itemClass);
-    if(userSkill < 7) return user.sendClientMessage('You are not skilled enough to do that!');
+    if(userSkill < 3) return user.sendClientMessage('You are not skilled enough to do that!');
 
     const range = this.range(user);
     if(range === -1) return user.sendClientMessage('You need to have your left hand empty to use that weapon!');
