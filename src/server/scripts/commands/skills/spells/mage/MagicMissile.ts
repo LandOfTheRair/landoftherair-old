@@ -9,13 +9,13 @@ export class MagicMissile extends Skill {
 
   static macroMetadata = {
     name: 'MagicMissile',
-    macro: 'magicmissile',
+    macro: 'cast magicmissile',
     icon: 'missile-swarm',
     color: '#0059bd',
     mode: 'lockActivation'
   };
 
-  public name = 'magicmissile';
+  public name = 'cast magicmissile';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];

@@ -9,13 +9,13 @@ export class BarFire extends Skill {
 
   static macroMetadata = {
     name: 'BarFire',
-    macro: 'barfire',
+    macro: 'cast barfire',
     icon: 'rosa-shield',
     color: '#DC143C',
     mode: 'clickToTarget'
   };
 
-  public name = 'barfire';
+  public name = 'cast barfire';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];

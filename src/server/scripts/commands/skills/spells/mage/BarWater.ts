@@ -9,13 +9,13 @@ export class BarWater extends Skill {
 
   static macroMetadata = {
     name: 'BarWater',
-    macro: 'barwater',
+    macro: 'cast barwater',
     icon: 'rosa-shield',
     color: '#208aec',
     mode: 'clickToTarget'
   };
 
-  public name = 'barwater';
+  public name = 'cast barwater';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];

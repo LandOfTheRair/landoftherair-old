@@ -9,13 +9,13 @@ export class Identify extends Skill {
 
   static macroMetadata = {
     name: 'Identify',
-    macro: 'identify',
+    macro: 'cast identify',
     icon: 'uncertainty',
     color: '#665600',
     mode: 'autoActivate'
   };
 
-  public name = 'identify';
+  public name = 'cast identify';
 
   flagSkills = [SkillClassNames.Conjuration];
 

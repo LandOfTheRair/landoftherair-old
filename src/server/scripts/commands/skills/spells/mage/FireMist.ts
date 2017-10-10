@@ -9,13 +9,13 @@ export class FireMist extends Skill {
 
   static macroMetadata = {
     name: 'FireMist',
-    macro: 'firemist',
+    macro: 'cast firemist',
     icon: 'kaleidoscope-pearls',
     color: '#DC143C',
     mode: 'clickToTarget'
   };
 
-  public name = 'firemist';
+  public name = 'cast firemist';
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];
