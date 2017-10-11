@@ -2,6 +2,7 @@
 import { Character } from '../../models/character';
 import { extend } from 'lodash';
 import { Skill } from './Skill';
+import { CombatHelper } from '../helpers/combat-helper';
 
 export const Maxes = {
   Lesser: 10,
@@ -65,6 +66,10 @@ export class SpellEffect extends Effect {
   }
 
   setPotencyAndGainSkill(caster: Character, skillRef?: Skill) {
+
+    // called from something like a trap
+    if(!caster || !caster.calcSkillLevel) return;
+
     if(this.skillFlag) {
 
       const flaggedSkill = this.skillFlag(caster);
@@ -81,6 +86,21 @@ export class SpellEffect extends Effect {
       this.potency = 1;
     }
 
+  }
+
+  magicalAttack(caster, ref, opts: any = {}) {
+    opts.effect = this;
+
+    // trap casters do not have uuid
+    if(!caster.uuid) caster = ref;
+
+    CombatHelper.magicalAttack(caster, ref, opts);
+  }
+
+  getCasterStat(caster, stat) {
+    if((<any>this).casterRef) return (<any>this).casterRef.casterStats[stat];
+
+    return caster.getTotalStat(stat);
   }
 
   cast(caster: Character, target: Character, skillRef: Skill) {}

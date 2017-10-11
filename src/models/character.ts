@@ -158,6 +158,10 @@ export class Character {
     return clone(this.stats);
   }
 
+  get sumStats(): Stats {
+    return clone(this.totalStats);
+  }
+
   get allSkills() {
     return clone(this.skills);
   }

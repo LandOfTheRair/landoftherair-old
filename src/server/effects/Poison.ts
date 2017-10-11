@@ -24,7 +24,7 @@ export class Poison extends SpellEffect {
     if(this.potency > 11) mult = 1;
     if(this.potency > 21) mult = 3;
 
-    const wisCheck = Math.max(1, Math.floor(mult * caster.getTotalStat('wis')));
+    const wisCheck = Math.max(1, Math.floor(mult * this.getCasterStat(caster, 'wis')));
     const damage = +dice.roll(`${this.potency || 1}d${wisCheck}`);
 
     this.duration = this.duration || +dice.roll(`${this.potency}d5`);

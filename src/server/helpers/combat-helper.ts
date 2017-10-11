@@ -358,7 +358,7 @@ export class CombatHelper {
     const otherClass = isHeal ? 'heal' : 'hit';
     const damageType = damageClass === 'physical' ? 'melee' : 'magic';
 
-    if(attackerDamageMessage && attacker) {
+    if(attackerDamageMessage && (<any>attacker).username) {
 
       const secondaryClass = attacker !== defender ? 'self' : 'other';
 
@@ -380,7 +380,7 @@ export class CombatHelper {
 
     const wasFatal = defender.isDead();
 
-    if(!wasFatal) {
+    if(!wasFatal && (defender !== attacker)) {
       defender.addAgro(attacker, damage);
     } else {
       if(attacker) {
@@ -389,7 +389,11 @@ export class CombatHelper {
         );
         defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
         defender.die(attacker);
-        attacker.kill(defender);
+
+        if((<any>attacker).username) {
+          attacker.kill(defender);
+        }
+
       } else {
         defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' }, 5, [defender.uuid]);
         defender.sendClientMessage({ message: `You were killed!`, subClass: 'combat other kill' });
