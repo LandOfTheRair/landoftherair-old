@@ -114,6 +114,7 @@ export class ColyseusGameService {
       this.clientGameState.setMapData(state.mapData);
       this.clientGameState.setMapNPCs(state.mapNPCs);
       this.clientGameState.setPlayers(state.players);
+      this.clientGameState.setEnvironmentalObjects(state.environmentalObjects);
       this.setCharacter(find(state.players, { username: this.colyseus.username }));
     });
 

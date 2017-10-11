@@ -25,7 +25,7 @@ export class OpenDoor extends Command {
     const targetX = (player.x + x);
     const targetY = (player.y + y + 1);
 
-    const door = find(interactables, { x: targetX * 64, y: targetY * 64 });
+    const door = find(interactables, { x: targetX * 64, y: targetY * 64, type: 'Door' });
 
     if(!door) {
       player.sendClientMessage('There is no door there.');

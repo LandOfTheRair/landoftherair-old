@@ -29,6 +29,10 @@ const SFXMap = {
 const bgms = ['combat', 'town', 'dungeon', 'wilderness'];
 const sfxs = values(SFXMap);
 
+const ENVIRONMENTAL_OBJECT_GID_HASH = {
+  Trap: { gid: 334, image: 'Items' }
+};
+
 export class Game {
 
   private playerSprite: any;
@@ -38,9 +42,11 @@ export class Game {
   private visibleItemUUIDHash = {};
   private visibleSprites = {};
   private playerSpriteHash = {};
+  private environmentalObjectHash = {};
 
   // groups
   private itemsOnGround: any;
+  private otherEnvironmentalObjects: any;
   private visibleNPCs: any;
   private otherPlayerSprites: any;
   private vfx: any;
@@ -150,6 +156,10 @@ export class Game {
       this.itemsOnGround.destroy();
     }
 
+    if(this.otherEnvironmentalObjects) {
+      this.otherEnvironmentalObjects.destroy();
+    }
+
     if(this.visibleNPCs) {
       this.visibleNPCs.destroy();
     }
@@ -166,6 +176,7 @@ export class Game {
     this.visibleItemUUIDHash = {};
     this.visibleSprites = {};
     this.playerSpriteHash = {};
+    this.environmentalObjectHash = {};
 
     this.frames = 0;
   }
@@ -559,9 +570,53 @@ export class Game {
     });
 
     this.itemsOnGround = this.g.add.group();
+    this.otherEnvironmentalObjects = this.g.add.group();
     this.vfx = this.g.add.group();
     this.visibleNPCs = this.g.add.group();
     this.otherPlayerSprites = this.g.add.group();
+  }
+
+  private drawEnvironmentalObjects(centerX, centerY) {
+    const removeTimestamps = [];
+
+    const foundTimestamps = {};
+
+    this.clientGameState.environmentalObjects.forEach(obj => {
+      if(!obj.properties || !obj.properties.timestamp) return;
+
+      foundTimestamps[obj.properties.timestamp] = true;
+
+      if(this.notInRange(centerX, centerY, obj.x / 64, obj.y / 64)) {
+        removeTimestamps.push(obj.properties.timestamp);
+        return;
+      }
+
+      if(this.environmentalObjectHash[obj.properties.timestamp]) return;
+
+      if(this.player.getTotalStat('perception') < obj.properties.setStealth
+      && obj.properties.caster.username !== this.player.username) return;
+
+      const spriteInfo = ENVIRONMENTAL_OBJECT_GID_HASH[obj.type];
+      const sprite = this.g.add.sprite(obj.x, obj.y - 64, spriteInfo.image, spriteInfo.gid);
+      this.otherEnvironmentalObjects.add(sprite);
+      this.environmentalObjectHash[obj.properties.timestamp] = sprite;
+    });
+
+    const existingTimestamps = Object.keys(foundTimestamps);
+    const allTimestamps = Object.keys(this.environmentalObjectHash);
+
+    const otherRemoveTimestamps = difference(allTimestamps, existingTimestamps);
+
+    removeTimestamps.concat(otherRemoveTimestamps).forEach(timestamp => {
+      const sprite = this.environmentalObjectHash[timestamp];
+      if(!sprite) return;
+      delete this.environmentalObjectHash[timestamp];
+      sprite.destroy();
+    });
+
+    // this.otherEnvironmentalObjects
+    // obj.timestamp
+    // if no timestamp, console.warn and ignore
   }
 
   preload() {
@@ -655,6 +710,7 @@ export class Game {
     this.showItemSprites(this.player.x, this.player.y);
 
     this.showNPCSprites(this.player.x, this.player.y);
+    this.drawEnvironmentalObjects(this.player.x, this.player.y);
   }
 
   destroy() {

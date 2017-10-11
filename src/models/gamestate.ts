@@ -22,6 +22,8 @@ export class GameState {
 
   fov: Mrpas;
 
+  environmentalObjects: any[] = [];
+
   get maxSkill() {
     return this.map.properties.maxSkill;
   }
@@ -51,14 +53,21 @@ export class GameState {
 
   addInteractable(obj: any) {
     this.map.layers[MapLayer.Interactables].objects.push(obj);
+    this.environmentalObjects.push(obj);
   }
 
-  getInteractable(x: number, y: number, useOffset = true) {
-    return find(this.map.layers[MapLayer.Interactables].objects, { x: x * 64, y: (y + (useOffset ? 1 : 0)) * 64 });
+  getInteractable(x: number, y: number, useOffset = true, typeFilter?: string) {
+    const findObj: any = { x: x * 64, y: (y + (useOffset ? 1 : 0)) * 64 };
+
+    if(typeFilter) findObj.type = typeFilter;
+
+    return find(this.map.layers[MapLayer.Interactables].objects, findObj);
   }
 
   removeInteractable(obj: any) {
-    pull(this.map.layers[MapLayer.Interactables].objects, obj);
+    const check = x => x === obj;
+    this.map.layers[MapLayer.Interactables].objects = reject(this.map.layers[MapLayer.Interactables].objects, check);
+    this.environmentalObjects = reject(this.environmentalObjects, check);
   }
 
   findPlayer(username) {
@@ -367,7 +376,8 @@ export class GameState {
       mapName: this.mapName,
       mapNPCs: this.cleanNPCs(),
       players: this.playerHash,
-      groundItems: this.groundItems
+      groundItems: this.groundItems,
+      environmentalObjects: this.environmentalObjects
     };
   }
 }
