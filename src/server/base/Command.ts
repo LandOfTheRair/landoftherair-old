@@ -92,7 +92,14 @@ export abstract class Command {
     return locker;
   }
 
-  getItemFromGround(player, itemClass, itemId) {
+  getItemsFromGround(player, itemClass): Item[] {
+    const ground = player.$$room.state.getGroundItems(player.x, player.y);
+    const items = ground[itemClass];
+    if(!items) return player.sendClientMessage('You do not see that item.');
+    return items;
+  }
+
+  getItemFromGround(player, itemClass, itemId): Item {
     const ground = player.$$room.state.getGroundItems(player.x, player.y);
     const item = find(ground[itemClass], { uuid: itemId });
     if(!item) return player.sendClientMessage('You do not see that item.');
