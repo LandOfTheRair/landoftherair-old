@@ -1,12 +1,8 @@
 
-import { startsWith } from 'lodash';
-
-import * as dice from 'dice.js';
+import { startsWith, find } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../models/character';
-import { Poison as CastEffect } from '../../../../effects/Poison';
-import { CombatHelper } from '../../../../helpers/combat-helper';
 
 export class SetTrap extends Skill {
 
@@ -15,11 +11,15 @@ export class SetTrap extends Skill {
   range = () => 0;
 
   canUse(user: Character, target: Character) {
-    return true;
+    const trap = find(user.sack.allItems, { itemClass: 'Trap' });
+    return !!trap;
   }
 
   use(user: Character, target: Character) {
-
+    const trap = find(user.sack.allItems, { itemClass: 'Trap' });
+    if(user.$$room.placeTrap(user.x, user.y, user, trap)) {
+      user.sack.takeItem(trap);
+    }
   }
 
 }
