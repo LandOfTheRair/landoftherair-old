@@ -3,6 +3,7 @@ export * from './Charge';
 export * from './Throw';
 
 export * from './Backstab';
+export * from './Disarm';
 export * from './Hide';
 export * from './Mug';
 export * from './Reveal';
