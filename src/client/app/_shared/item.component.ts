@@ -99,7 +99,8 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
     <div class="item-container" 
          [ngClass]="[size]"
          [isDisabled]="!showDesc" 
-         triggers="dblclick:mouseleave" 
+         triggers="hover focus"
+         tooltipPopupDelay="1000"
          [dragScope]="scopes"
          draggable 
          container="body"
