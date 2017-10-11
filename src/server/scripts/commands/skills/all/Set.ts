@@ -29,8 +29,8 @@ export class Set extends Skill {
     const targetX = user.x + xSet;
     const targetY = user.y + ySet;
 
-    const interactable = user.$$room.state.getInteractable(targetX, targetY);
-    if(interactable && interactable.type === 'Trap') return user.sendClientMessage('There is already a trap there!');
+    const interactable = user.$$room.state.getInteractable(targetX, targetY, true, 'Trap');
+    if(interactable) return user.sendClientMessage('There is already a trap there!');
 
     this.use(user, { x: targetX, y: targetY });
   }
@@ -39,27 +39,8 @@ export class Set extends Skill {
     const trap = user.rightHand;
     user.setRightHand(null);
 
-    const statCopy = user.sumStats;
-
-    const trapInteractable = {
-      x: x * 64,
-      y: (y + 1) * 64,
-      type: 'Trap',
-      properties: {
-        effect: trap.effect,
-        caster: {
-          name: user.name,
-          username: (<any>user).username,
-          casterStats: statCopy
-        },
-        setSkill: user.calcSkillLevel(SkillClassNames.Thievery),
-        setStealth: user.getTotalStat('stealth'),
-        timestamp: Date.now()
-      }
-    };
-
     user.gainSkill(SkillClassNames.Thievery, 3);
-    user.$$room.state.addInteractable(trapInteractable);
+    user.$$room.placeTrap(x, y, user, trap);
     user.sendClientMessage(`You set the ${trap.effect.name} trap.`);
   }
 

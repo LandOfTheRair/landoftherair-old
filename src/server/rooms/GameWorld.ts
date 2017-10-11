@@ -22,7 +22,7 @@ import { Spawner } from '../base/Spawner';
 
 import * as Classes from '../classes';
 import * as Effects from '../effects';
-import { Character } from '../../models/character';
+import { Character, SkillClassNames } from '../../models/character';
 import { ItemCreator } from '../helpers/item-creator';
 import { Item } from '../../models/item';
 import { Locker } from '../../models/container/locker';
@@ -704,6 +704,35 @@ export class GameWorld extends Room<GameState> {
     effectRef.casterRef = caster;
 
     effectRef.cast(target, target);
+  }
+
+  public placeTrap(x, y, user: Character, trap): boolean {
+
+    const interactable = user.$$room.state.getInteractable(x, y, true, 'Trap');
+    if(interactable) return false;
+
+    const statCopy = user.sumStats;
+
+    const trapInteractable = {
+      x: x * 64,
+      y: (y + 1) * 64,
+      type: 'Trap',
+      properties: {
+        effect: trap.effect,
+        caster: {
+          name: user.name,
+          username: (<any>user).username,
+          casterStats: statCopy
+        },
+        setSkill: user.calcSkillLevel(SkillClassNames.Thievery),
+        setStealth: user.getTotalStat('stealth'),
+        timestamp: Date.now()
+      }
+    };
+
+    user.$$room.state.addInteractable(trapInteractable);
+
+    return true;
   }
 
   public drawEffect(player: Player, center: any, effect: VisualEffect, radius = 0) {

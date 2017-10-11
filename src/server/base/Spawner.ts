@@ -2,7 +2,7 @@
 import { NPCLoader } from '../helpers/npc-loader';
 import { LootTable } from 'lootastic';
 
-import { sample, random, extend, isNumber, isString, pull, min, every } from 'lodash';
+import { sample, random, extend, isNumber, isString, pull, min, every, compact } from 'lodash';
 import { NPC } from '../../models/npc';
 import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
@@ -72,6 +72,18 @@ export class Spawner {
     return true;
   }
 
+  private shouldLoadItem(itemName: string|any) {
+    if(isString(itemName)) return { name: itemName };
+
+    if(itemName.chance && itemName.name) {
+      if(itemName.chance < 0) return { name: itemName.name };
+
+      if(random(0, 100) <= itemName.chance) return { name: itemName.name };
+    }
+
+    return null;
+  }
+
   private async chooseItemFrom(choices: string[]|any[]) {
     if(!choices) return null;
     if(isString(choices)) return NPCLoader.loadItem(choices);
@@ -121,18 +133,22 @@ export class Spawner {
 
     if(npcData.sack) {
       const items = await Promise.all(npcData.sack.map(async itemName => {
-        return await NPCLoader.loadItem(itemName);
+        const { name } = this.shouldLoadItem(itemName);
+        if(!name) return null;
+        return await NPCLoader.loadItem(name);
       }));
-      sackItems = items;
+      sackItems = compact(items);
     }
 
     let beltItems = [];
 
     if(npcData.belt) {
       const items = await Promise.all(npcData.belt.map(async itemName => {
-        return await NPCLoader.loadItem(itemName);
+        const { name } = this.shouldLoadItem(itemName);
+        if(!name) return null;
+        return await NPCLoader.loadItem(name);
       }));
-      beltItems = items;
+      beltItems = compact(items);
     }
 
     npcData.x = random(this.x - this.spawnRadius, this.x + this.spawnRadius);

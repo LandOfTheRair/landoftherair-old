@@ -6,7 +6,7 @@
     potency: 5
     levelRequirement: 3
     skillRequirement: 3
-  value: 300
+  value: 1500
 
 - name: Antanian IceMist Thief Trap
   sprite: 334
@@ -16,4 +16,34 @@
     potency: 5
     levelRequirement: 3
     skillRequirement: 3
-  value: 300
+  value: 1500
+
+- name: Antanian Poison Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Poison"
+  effect:
+    name: Poison
+    potency: 5
+    levelRequirement: 3
+    skillRequirement: 3
+  value: 1000
+
+- name: Antanian Afflict Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Afflict"
+  effect:
+    name: Afflict
+    potency: 7
+    levelRequirement: 3
+    skillRequirement: 3
+  value: 1000
+
+- name: Antanian MagicMissile Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell MagicMissile"
+  effect:
+    name: MagicMissile
+    potency: 7
+    levelRequirement: 3
+    skillRequirement: 3
+  value: 1000

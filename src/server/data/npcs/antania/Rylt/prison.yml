@@ -328,6 +328,18 @@
     - drop: 'gear.Feet'
       chance: -1
 
+  sack:
+    - name: Antanian FireMist Thief Trap
+      chance: 10
+    - name: Antanian IceMist Thief Trap
+      chance: 10
+    - name: Antanian Poison Thief Trap
+      chance: 10
+    - name: Antanian MagicMissile Thief Trap
+      chance: 10
+    - name: Antanian Afflict Thief Trap
+      chance: 10
+
   drops:
     - result: Rylt Renegade Book
       chance: 1
