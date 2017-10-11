@@ -140,7 +140,7 @@ export class CombatHelper {
     const distBetween = attacker.distFrom(defender);
 
     const dodgeRoll = random(defenderDodgeRoll, attackerDodgeRoll);
-    
+
     if(dodgeRoll < 0 || attackDistance < distBetween) {
       attacker.sendClientMessage({ message: `You miss!`, subClass: 'combat self miss', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} misses!`, subClass: 'combat other miss' });
@@ -381,8 +381,10 @@ export class CombatHelper {
 
     const wasFatal = defender.isDead();
 
-    if(!wasFatal && (defender !== attacker)) {
-      defender.addAgro(attacker, damage);
+    if(!wasFatal) {
+      if(defender !== attacker) {
+        defender.addAgro(attacker, damage);
+      }
     } else {
       if(attacker) {
         defender.sendClientMessageToRadius({
