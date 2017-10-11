@@ -270,8 +270,10 @@ export class GameState {
   }
 
   removeItemFromGround(item: Item) {
-    const ground = this.getGroundItems(item.x, item.y)[item.itemClass];
-    pull(ground, item);
+    // initalize array if not exist
+    this.getGroundItems(item.x, item.y)[item.itemClass];
+
+    this.groundItems[item.x][item.y][item.itemClass] = reject(this.groundItems[item.x][item.y][item.itemClass], i => i.uuid === item.uuid);
 
     if(size(this.groundItems[item.x][item.y][item.itemClass]) === 0) delete this.groundItems[item.x][item.y][item.itemClass];
     if(size(this.groundItems[item.x][item.y]) === 0) delete this.groundItems[item.x][item.y];

@@ -189,7 +189,7 @@ export class ItemComponent implements OnInit {
   ];
 
   get displayOnly(): boolean {
-    return this.context === 'GroundGroup' || !this.context;
+    return !this.context;
   }
 
   get isEquippable(): boolean {

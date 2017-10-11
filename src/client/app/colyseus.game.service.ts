@@ -467,6 +467,9 @@ export class ColyseusGameService {
     if(context === 'Ground') {
       args = `${item.itemClass} ${item.uuid}`;
 
+    } else if(context === 'GroundGroup') {
+      args = `${item.itemClass}`;
+
     } else if(includes(['Sack', 'Belt', 'Equipment'], context)) {
       args = `${contextSlot}`;
 
