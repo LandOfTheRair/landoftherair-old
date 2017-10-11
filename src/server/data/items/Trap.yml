@@ -1,0 +1,9 @@
+- name: Antanian FireMist Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell FireMist"
+  effect:
+    name: FireMist
+    potency: 5
+    levelRequirement: 3
+    skillRequirement: 3
+  value: 300

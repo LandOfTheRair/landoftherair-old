@@ -49,6 +49,18 @@ export class GameState {
     this.resetPlayerStatus(player);
   }
 
+  addInteractable(obj: any) {
+    this.map.layers[MapLayer.Interactables].objects.push(obj);
+  }
+
+  getInteractable(x: number, y: number) {
+    return find(this.map.layers[MapLayer.Interactables].objects, { x: x * 64, y: (y + 1) * 64 });
+  }
+
+  removeInteractable(obj: any) {
+    pull(this.map.layers[MapLayer.Interactables].objects, obj);
+  }
+
   findPlayer(username) {
     return find(this.players, { username });
   }

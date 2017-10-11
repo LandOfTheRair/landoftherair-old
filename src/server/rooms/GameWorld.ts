@@ -21,6 +21,7 @@ import { Logger } from '../logger';
 import { Spawner } from '../base/Spawner';
 
 import * as Classes from '../classes';
+import * as Effects from '../effects';
 import { Character } from '../../models/character';
 import { ItemCreator } from '../helpers/item-creator';
 import { Item } from '../../models/item';
@@ -28,6 +29,7 @@ import { Locker } from '../../models/container/locker';
 import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
 import { PartyManager } from '../helpers/party-manager';
+import { Effect } from '../base/Effect';
 
 const TICK_DIVISOR = 2;
 
@@ -688,14 +690,23 @@ export class GameWorld extends Room<GameState> {
   }
 
   private doorCheck(player) {
-    const interactables = this.state.map.layers[MapLayer.Interactables].objects;
-    const interactable = find(interactables, { x: (player.x) * 64, y: (player.y + 1) * 64 });
+    const interactable = this.state.getInteractable(player.x, player.y);
     if(interactable && interactable.type === 'Door') {
       player.teleportToRespawnPoint();
     }
   }
 
-  drawEffect(player: Player, center: any, effect: VisualEffect, radius = 0) {
+  public castEffectFromTrap(target: Character, obj: any) {
+    if(!obj || !obj.properties || !obj.properties.effect) return;
+
+    const { effect, caster } = obj.properties;
+    const effectRef = new Effects[effect.name](effect);
+    (<any>effect).casterRef = caster;
+
+    effectRef.cast(target, target);
+  }
+
+  public drawEffect(player: Player, center: any, effect: VisualEffect, radius = 0) {
     const client = this.findClient(player);
     const effectId = VISUAL_EFFECTS[effect];
     this.send(client, { action: 'draw_effect_r', effect: effectId, center, radius });

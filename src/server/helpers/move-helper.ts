@@ -80,17 +80,18 @@ export class MoveHelper {
 
     gameState.resetPlayerStatus(player);
 
-    const interactable = find(gameState.map.layers[MapLayer.Interactables].objects, { x: player.x * 64, y: (player.y + 1) * 64 });
+    const interactable = room.state.getInteractable(player.x, player.y);
+
     if(interactable) {
       this.handleInteractable(room, player, interactable);
     }
   }
 
-
   private static handleInteractable(room, player, obj) {
     switch(obj.type) {
       case 'Teleport': return this.handleTeleport(room, player, obj);
       case 'Locker':   return this.handleLocker(room, player, obj);
+      case 'Trap':     return this.handleTrap(room, player, obj);
     }
   }
 
@@ -104,5 +105,11 @@ export class MoveHelper {
   private static handleLocker(room, player, obj) {
     const { lockerId } = obj.properties;
     room.openLocker(player, obj.name, lockerId);
+  }
+
+  private static handleTrap(room, player, obj) {
+    room.state.removeInteractable(obj);
+    room.castEffectFromTrap(player, obj);
+    player.sendClientMessage('You\'ve activated a trap!');
   }
 }

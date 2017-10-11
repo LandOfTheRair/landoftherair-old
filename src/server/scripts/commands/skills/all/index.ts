@@ -6,4 +6,5 @@ export * from './Backstab';
 export * from './Hide';
 export * from './Mug';
 export * from './Reveal';
+export * from './Set';
 export * from './Steal';
