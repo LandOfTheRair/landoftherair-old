@@ -37,7 +37,7 @@ export class Set extends Skill {
 
   use(user: Character, { x, y } = { x: 0, y: 0 }) {
     const trap = user.rightHand;
-    // user.setRightHand(null);
+    user.setRightHand(null);
 
     const statCopy = user.sumStats;
 
