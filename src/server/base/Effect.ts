@@ -23,6 +23,7 @@ export class Effect {
   protected potency = 0;
 
   effectInfo: EffectInfo = { caster: '' };
+  casterRef: any;
 
   constructor(opts) {
     extend(this, opts);
@@ -68,7 +69,7 @@ export class SpellEffect extends Effect {
   setPotencyAndGainSkill(caster: Character, skillRef?: Skill) {
 
     // called from something like a trap
-    if(!caster || !caster.calcSkillLevel) return;
+    if(this.casterRef) return;
 
     if(this.skillFlag) {
 
@@ -98,7 +99,7 @@ export class SpellEffect extends Effect {
   }
 
   getCasterStat(caster, stat) {
-    if((<any>this).casterRef) return (<any>this).casterRef.casterStats[stat];
+    if(this.casterRef) return this.casterRef.casterStats[stat];
 
     return caster.getTotalStat(stat);
   }

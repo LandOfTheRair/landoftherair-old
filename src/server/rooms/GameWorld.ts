@@ -524,7 +524,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   getPossibleMessageTargets(player: Character, findStr: string) {
-    const allTargets = (<any>this.state.mapNPCs).concat(this.state.players);
+    const allTargets = this.state.allPossibleTargets;
     const possTargets = allTargets.filter(target => {
       if(target.isDead()) return;
 
@@ -701,7 +701,7 @@ export class GameWorld extends Room<GameState> {
 
     const { effect, caster } = obj.properties;
     const effectRef = new Effects[effect.name](effect);
-    (<any>effect).casterRef = caster;
+    effect.casterRef = caster;
 
     effectRef.cast(target, target);
   }
