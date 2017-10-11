@@ -523,7 +523,7 @@ export class ColyseusGameService {
               resolve();
             });
           }
-        })
+        });
 
         if(result.dismiss) {
           if(result.dismiss === 'cancel') {

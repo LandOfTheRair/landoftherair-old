@@ -21,6 +21,7 @@ export class PotionToMerchant extends Command {
 
     const item = player.potionHand;
     if(!item) return false;
+    if(!item.isOwnedBy(player)) return player.sendClientMessage('That is not yours!');
 
     player.setPotionHand(null);
     player.sellItem(item);
