@@ -250,6 +250,11 @@
   alignment: Evil
   stats: 15
 
+  baseClass: Thief
+
+  usableSkills:
+    - SetTrap
+
   otherStats:
     stealth: 50
     perception: 50

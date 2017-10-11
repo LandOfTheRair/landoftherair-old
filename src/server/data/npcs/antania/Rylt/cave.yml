@@ -4,9 +4,9 @@
   hostility: Always
   sprite: 75
   alignment: Evil
-  stats: 15
+  stats: 10
   skillLevels:
-    Martial: 7
+    Martial: 4
   level: 7
 
   skillOnKill: 25

@@ -593,7 +593,7 @@ export class Character {
     if(this.y > this.$$map.height) this.y = this.$$map.height;
 
     const potentialTrap = this.$$room.state.getInteractable(this.x, this.y, true, 'Trap');
-    if(potentialTrap) {
+    if(potentialTrap && potentialTrap.properties && potentialTrap.properties.effect) {
       this.$$room.state.removeInteractable(potentialTrap);
       this.$$room.castEffectFromTrap(this, potentialTrap);
     }

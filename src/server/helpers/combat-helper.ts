@@ -154,7 +154,7 @@ export class CombatHelper {
     const attackerACRoll = Math.max(1, +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`) - defenderScope.armorClass);
     const defenderACRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderBlockRightSide}`);
 
-    const acRoll = random(attackerACRoll, defenderACRoll);
+    const acRoll = random(defenderACRoll, attackerACRoll);
     if(acRoll < 0) {
       attacker.sendClientMessage({ message: `You were blocked by armor!`, subClass: 'combat self block armor', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} was blocked by your armor!`, subClass: 'combat other block armor' });

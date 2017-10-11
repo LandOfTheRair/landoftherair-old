@@ -7,3 +7,13 @@
     levelRequirement: 3
     skillRequirement: 3
   value: 300
+
+- name: Antanian IceMist Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell IceMist"
+  effect:
+    name: IceMist
+    potency: 5
+    levelRequirement: 3
+    skillRequirement: 3
+  value: 300

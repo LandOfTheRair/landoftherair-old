@@ -59,6 +59,8 @@ export class NPC extends Character {
   init() {
     if(!this.uuid) this.uuid = uuid();
     this.initAI();
+    this.initSack();
+    this.initBelt();
     this.recalculateStats();
   }
 
