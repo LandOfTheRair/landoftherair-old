@@ -21,6 +21,7 @@ export class SackToMerchant extends Command {
 
     const item = player.sack.takeItemFromSlot(slot);
     if(!item) return false;
+    if(!item.isOwnedBy(player)) return player.sendClientMessage('That is not yours!');
 
     player.sellItem(item);
   }
