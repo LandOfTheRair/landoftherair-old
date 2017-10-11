@@ -53,8 +53,8 @@ export class GameState {
     this.map.layers[MapLayer.Interactables].objects.push(obj);
   }
 
-  getInteractable(x: number, y: number) {
-    return find(this.map.layers[MapLayer.Interactables].objects, { x: x * 64, y: (y + 1) * 64 });
+  getInteractable(x: number, y: number, useOffset = true) {
+    return find(this.map.layers[MapLayer.Interactables].objects, { x: x * 64, y: (y + (useOffset ? 1 : 0)) * 64 });
   }
 
   removeInteractable(obj: any) {

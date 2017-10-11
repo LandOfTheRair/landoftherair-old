@@ -18,10 +18,8 @@ export class ClimbUp extends Command {
 
   execute(player: Player, { room, gameState, args }) {
 
-    const stairs = find(gameState.map.layers[MapLayer.Interactables].objects, item => {
-      return includes(['ClimbUp', 'ClimbDown'], item.type)
-          && item.x / 64 === player.x && (item.y / 64) - 1 === player.y;
-    });
+    const interactable = player.$$room.state.getInteractable(player.x, player.y);
+    const stairs = interactable && includes(['ClimbUp', 'ClimbDown'], interactable.type) ? interactable : null;
 
     if(!stairs) return player.sendClientMessage('There are no grips here.');
 
