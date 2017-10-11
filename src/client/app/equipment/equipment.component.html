@@ -2,7 +2,7 @@
 
   <!-- top row (gold, helm, neck) -->
   <div class="item-slot item-background" droppable dropScope="coin" (onDrop)="colyseusGame.buildDropAction($event, 'Sack')">
-    <app-item [size]="size" [item]="{ sprite: 212, value: player.gold, itemClass: 'Coin' }" showValue="true" context="Coin"></app-item>
+    <app-item [size]="size" [item]="{ sprite: 212, value: player.gold, itemClass: 'Coin', desc: 'gold coins' }" showValue="true" context="Coin"></app-item>
   </div>
 
   <div class="item-slot item-background"
