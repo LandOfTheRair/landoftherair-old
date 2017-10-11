@@ -19,7 +19,7 @@ export class PartyGive extends Command {
     const target = possTargets[0];
     if(!target) return player.sendClientMessage('You do not see that person.');
 
-    if(target.partyName !== player.partyName) return player.sendClientMessage(`${target.name} is not in your party!`);
+    if((<Player>target).partyName !== player.partyName) return player.sendClientMessage(`${target.name} is not in your party!`);
 
     room.partyManager.changeLeader(player, target);
   }
