@@ -15,9 +15,7 @@ export class Interact extends Command {
     // can't interact from >1 tile away
     if(Math.abs(x) > 1 || Math.abs(y) > 1) return;
 
-    const interactables = gameState.map.layers[MapLayer.Interactables].objects;
-    const interactable = find(interactables, { x: (player.x + x) * 64, y: (player.y + y + 1) * 64 });
-
+    const interactable = player.$$room.state.getInteractable(player.x + x, player.y + y);
     if(!interactable) return;
 
     let cmdInfo = {};
