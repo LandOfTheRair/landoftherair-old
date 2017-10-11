@@ -130,6 +130,10 @@ export const SmithResponses = (npc: NPC) => {
         item.condition = myCondition;
       });
 
+      if(totalCosts === 0) {
+        return `You are not wearing any items in need of repair.`;
+      }
+
       return `Thank you, ${player.name}! I've done what I can. You've spent ${totalCosts.toLocaleString()} gold.`;
     });
 
