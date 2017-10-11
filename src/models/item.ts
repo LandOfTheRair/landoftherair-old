@@ -1,7 +1,7 @@
 
 import { extend, omitBy, includes, without, isNumber } from 'lodash';
 import * as uuid from 'uuid/v4';
-import { Character } from './character';
+import { Character, SkillClassNames } from './character';
 
 import * as Effects from '../server/effects';
 
@@ -193,8 +193,8 @@ export class Item {
   descTextFor(player: Character, senseLevel = 0) {
     let ownedText = '';
     if(this.owner) {
-      if(this.owner === (<any>player).username) ownedText = 'This item belongs to you.';
-      else                                      ownedText = 'This item does NOT belong to you.';
+      if(this.owner === (<any>player).username) ownedText = 'This item belongs to you. ';
+      else                                      ownedText = 'This item does NOT belong to you. ';
     }
 
     const fluidText = this.ounces > 0 ? `It is filled with ${this.ounces}oz of fluid. ` : '';
@@ -203,7 +203,7 @@ export class Item {
 
     const sense1Text = senseLevel > 0 && this.extendedDesc ? `This item is ${this.extendedDesc}. ` : '';
     let sense1AfterText = '';
-    if(senseLevel > 0 && this.stats.offense > 0 || this.stats.defense > 0) {
+    if(senseLevel > 0 && (this.stats.offense > 0 || this.stats.defense > 0)) {
       sense1AfterText = `The combat adds are ${this.stats.offense || 0}/${this.stats.defense || 0}. `;
     }
 
@@ -218,7 +218,10 @@ export class Item {
     const baseText = `You are looking at ${this.desc}. `;
     const conditionText = `The item is in ${this.conditionString()} condition. `;
 
-    return `${baseText}${sense1Text}${sense1AfterText}${sense2Text}${usesText}${fluidText}${levelText}${conditionText}${ownedText}`;
+    const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
+    const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';
+
+    return `${baseText}${sense1Text}${sense1AfterText}${sense2Text}${usesText}${fluidText}${levelText}${conditionText}${ownedText}${appraiseText}`;
   }
 
   isRobe() {

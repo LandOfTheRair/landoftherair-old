@@ -28,7 +28,10 @@ export class MerchantToSack extends Command {
     const maxQuantity = Math.min(quantity, player.sack.size - player.sack.allItems.length);
 
     for(let i = 0; i < maxQuantity; i++) {
-      if(player.gold < item.value) return player.sendClientMessage('You do not have enough gold for that.');
+      if(player.gold < item.value) {
+        if(i === 0) player.sendClientMessage('You do not have enough gold for that.');
+        return;
+      }
 
       player.loseGold(item.value);
 

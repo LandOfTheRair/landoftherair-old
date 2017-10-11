@@ -76,7 +76,7 @@
     "rollbar": "^2.1.0",
     "rxjs": "^5.1.0",
     "signals.js": "^1.0.1-alpha.3",
-    "sweetalert2": "^6.6.4",
+    "sweetalert2": "^6.10.2",
     "ts-node": "^2.1.2",
     "typescript": "2.3.3",
     "uuid": "^3.0.1",
