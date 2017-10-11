@@ -459,7 +459,7 @@ export class ColyseusGameService {
     this.buildAction(item, { context, contextSlot, count, containerUUID }, choice.substring(0, 1));
   }
 
-  public buildAction(item, { context, contextSlot, count, containerUUID }, choice) {
+  public async buildAction(item, { context, contextSlot, count, containerUUID }, choice) {
     const cmd = `~${context.substring(0, 1)}t${choice}`;
 
     let args = '';
@@ -472,46 +472,69 @@ export class ColyseusGameService {
 
     } else if(context === 'Coin') {
 
-      (<any>swal)({
+      const result = await (<any>swal)({
         titleText: 'Take Gold From Stash',
         input: 'number',
         inputValue: 1,
         inputAttributes: {
           min: 0,
-          max: count
+          max: this.character.gold
         },
+        showCancelButton: true,
+        cancelButtonText: 'Max',
+        cancelButtonColor: '#3085d6',
+        useRejections: false,
         preConfirm: (val) => {
           return new Promise((resolve, reject) => {
-            if(val < 0 || val > count) return reject('You do not have that much gold!');
+            if(val < 0) return reject('You do not have that much gold!');
             resolve();
           });
         }
-      }).then(amount => {
-        args = amount;
+      });
+
+      if(result.dismiss) {
+        if(result.dismiss === 'cancel') {
+          args = '' + this.character.gold;
+          this.sendRawCommand(cmd, args);
+        }
+      } else {
+        args = '' + Math.round(Math.min(this.character.gold, result));
         this.sendRawCommand(cmd, args);
-      }).catch(() => {});
+      }
 
       return;
 
     } else if(context === 'Merchant') {
       if(choice === 'S' || choice === 'B') {
-        (<any>swal)({
+        const result = await (<any>swal)({
           titleText: 'How Many Items?',
           input: 'number',
           inputValue: 1,
           inputAttributes: {
             min: 0
           },
+          showCancelButton: true,
+          cancelButtonText: 'Max',
+          cancelButtonColor: '#3085d6',
+          useRejections: false,
           preConfirm: (val) => {
             return new Promise((resolve, reject) => {
               if(val < 0) return reject('Invalid amount');
               resolve();
             });
           }
-        }).then(amount => {
-          args = `${containerUUID} ${item.uuid} ${amount}`;
+        })
+
+        if(result.dismiss) {
+          if(result.dismiss === 'cancel') {
+            args = `${containerUUID} ${item.uuid} 500`;
+            this.sendRawCommand(cmd, args);
+          }
+        } else {
+          args = `${containerUUID} ${item.uuid} ${result}`;
           this.sendRawCommand(cmd, args);
-        }).catch(() => {});
+        }
+
       } else {
         args = `${containerUUID} ${item.uuid} 1`;
         this.sendRawCommand(cmd, args);
