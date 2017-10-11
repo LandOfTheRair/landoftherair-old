@@ -140,7 +140,8 @@ export class CombatHelper {
     const distBetween = attacker.distFrom(defender);
 
     const dodgeRoll = random(defenderDodgeRoll, attackerDodgeRoll);
-    if(dodgeRoll < 0 || attackDistance <= distBetween) {
+    
+    if(dodgeRoll < 0 || attackDistance < distBetween) {
       attacker.sendClientMessage({ message: `You miss!`, subClass: 'combat self miss', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} misses!`, subClass: 'combat other miss' });
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
