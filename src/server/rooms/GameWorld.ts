@@ -701,7 +701,7 @@ export class GameWorld extends Room<GameState> {
 
     const { effect, caster } = obj.properties;
     const effectRef = new Effects[effect.name](effect);
-    effect.casterRef = caster;
+    effectRef.casterRef = caster;
 
     effectRef.cast(target, target);
   }

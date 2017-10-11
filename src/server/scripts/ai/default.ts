@@ -93,14 +93,17 @@ export const tick = (npc: NPC) => {
       npc.spawner.assignPath(npc);
     }
 
+    const steps = [];
+
     for(let i = 0; i < numSteps; i++) {
       const step = npc.path.shift();
-      npc.x += step.x;
-      npc.y += step.y;
-
       diffX += step.x;
       diffY += step.y;
+
+      steps.push(step);
     }
+
+    npc.takeSequenceOfSteps(steps);
 
     if(!npc.path.length) {
       npc.spawner.assignPath(npc);
