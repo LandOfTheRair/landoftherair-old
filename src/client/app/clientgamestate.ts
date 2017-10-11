@@ -39,6 +39,8 @@ export class ClientGameState {
     openDoors: []
   };
 
+  environmentalObjects: any[] = [];
+
   get players() {
     return values(this.playerHash);
   }
@@ -79,6 +81,10 @@ export class ClientGameState {
 
   setGroundItems(data) {
     this.groundItems = data;
+  }
+
+  setEnvironmentalObjects(data) {
+    this.environmentalObjects = data;
   }
 
   initFOV(fov?) {

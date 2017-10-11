@@ -18,7 +18,7 @@ export class UpStairs extends Command {
 
   execute(player: Player, { room, gameState, args }) {
 
-    const interactable = player.$$room.state.getInteractable(player.x, player.y);
+    const interactable = player.$$room.state.getInteractable(player.x, player.y, true);
     const stairs = interactable && includes(['StairsUp', 'StairsDown'], interactable.type) ? interactable : null;
 
     if(!stairs) return player.sendClientMessage('There are no stairs here.');

@@ -49,9 +49,12 @@ export class Set extends Skill {
         effect: trap.effect,
         caster: {
           name: user.name,
+          username: (<any>user).username,
           casterStats: statCopy
         },
-        setSkill: user.calcSkillLevel(SkillClassNames.Thievery)
+        setSkill: user.calcSkillLevel(SkillClassNames.Thievery),
+        setStealth: user.getTotalStat('stealth'),
+        timestamp: Date.now()
       }
     };
 
