@@ -9,7 +9,6 @@ import {
 import * as RestrictedNumber from 'restricted-number';
 import { Signal } from 'signals.js';
 import { MapLayer } from './maplayer';
-import { environment } from '../client/environments/environment';
 
 import { HideReductionPercents } from '../server/helpers/hide-reductions';
 
@@ -634,12 +633,7 @@ export class Character {
     this.dir = 'C';
     this.effects = [];
 
-    // 3 minutes to rot
-    if(environment.production) {
-      this.$$deathTicks = 60 * 3;
-    } else {
-      this.$$deathTicks = 6 * 3;
-    }
+    this.$$deathTicks = 60 * 3;
   }
 
   restore(force = false) {}
