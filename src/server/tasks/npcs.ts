@@ -17,30 +17,29 @@ import * as Classes from '../classes';
 
 class NPCLoader {
 
-  static loadAllNPCs() {
-    DB.isReady.then(async () => {
-      await DB.$npcs.remove({}, { multi: true });
+  static async loadAllNPCs() {
+    await DB.isReady;
+    await DB.$npcs.remove({}, { multi: true });
 
-      recurse(`${__dirname}/../data/npcs`).then(files => {
-        const filePromises = files.map(file => {
-          const npcs = YAML.load(file);
+    recurse(`${__dirname}/../data/npcs`).then(files => {
+      const filePromises = files.map(file => {
+        const npcs = YAML.load(file);
 
-          const promises = npcs.map(npcData => {
-            this.conditionallyAddInformation(npcData);
-            this.assignReputations(npcData);
-            if(!this.validateItem(npcData)) return;
+        const promises = npcs.map(npcData => {
+          this.conditionallyAddInformation(npcData);
+          this.assignReputations(npcData);
+          if(!this.validateItem(npcData)) return;
 
-            console.log(`Inserting ${npcData.npcId}`);
-            return DB.$npcs.insert(npcData);
-          });
-
-          return promises;
+          console.log(`Inserting ${npcData.npcId}`);
+          return DB.$npcs.insert(npcData);
         });
 
-        Promise.all(flatten(filePromises)).then(() => {
-          console.log('Done');
-          process.exit(0);
-        });
+        return promises;
+      });
+
+      Promise.all(flatten(filePromises)).then(() => {
+        console.log('Done');
+        process.exit(0);
       });
     });
   }
