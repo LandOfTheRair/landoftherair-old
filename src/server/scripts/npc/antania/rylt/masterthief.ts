@@ -1,6 +1,5 @@
 import { NPC } from '../../../../../models/npc';
 import { NPCLoader } from '../../../../helpers/npc-loader';
-import { RandomlyShouts, CrierResponses } from '../../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';

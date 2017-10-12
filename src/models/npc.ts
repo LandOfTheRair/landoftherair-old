@@ -8,6 +8,7 @@ import * as uuid from 'uuid/v4';
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 
 export class NPC extends Character {
+  npcId: string;
   uuid: string;
 
   hostility: Hostility = 'OnHit';
@@ -24,17 +25,17 @@ export class NPC extends Character {
   spawner?: any;
   path?: any[];
 
-  bankId: string;
-  branchId: string;
+  bankId?: string;
+  branchId?: string;
 
-  alchOz: number;
-  alchCost: number;
+  alchOz?: number;
+  alchCost?: number;
 
-  costPerThousand: number;
-  repairsUpToCondition: number;
+  costPerThousand?: number;
+  repairsUpToCondition?: number;
 
-  peddleItem: string;
-  peddleCost: number;
+  peddleItem?: string;
+  peddleCost?: number;
 
   copyDrops: any[];
   drops: Item[];
