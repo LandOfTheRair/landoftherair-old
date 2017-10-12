@@ -81,7 +81,7 @@ export class Spawner {
       if(random(0, 100) <= itemName.chance) return { name: itemName.name };
     }
 
-    return null;
+    return { name: '' };
   }
 
   private async chooseItemFrom(choices: string[]|any[]) {
@@ -133,6 +133,7 @@ export class Spawner {
 
     if(npcData.sack) {
       const items = await Promise.all(npcData.sack.map(async itemName => {
+
         const { name } = this.shouldLoadItem(itemName);
         if(!name) return null;
         return await NPCLoader.loadItem(name);
