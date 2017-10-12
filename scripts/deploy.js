@@ -12,7 +12,7 @@ exec('git add -f dist', (e, stdout, stderr) => {
     process.exit(0);
   }
 
-  exec('git commit dist/* -m "evennode dist"', (e, stdout, stderr) => {
+  exec('git commit dist/models/* dist/server/* -m "dokku dist"', (e, stdout, stderr) => {
 
     console.log('Committed dist files');
 
@@ -22,7 +22,7 @@ exec('git add -f dist', (e, stdout, stderr) => {
       process.exit(0);
     }
 
-    exec('git push -f evennode master', (e, stdout, stderr) => {
+    exec('git push -f dokku master', (e, stdout, stderr) => {
 
       console.log('Pushed dist files');
 
