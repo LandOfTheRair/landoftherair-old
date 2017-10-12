@@ -4,6 +4,9 @@ import { Item } from './item';
 
 import { compact, pull, random, isArray, get, find, includes, reject } from 'lodash';
 import { Party } from './party';
+import { Quest } from '../server/base/Quest';
+
+import * as Quests from '../server/quests';
 
 export class Player extends Character {
   _id?: any;
@@ -33,6 +36,9 @@ export class Player extends Character {
   respawnPoint: { x: number, y: number, map: string };
 
   partyName: string;
+
+  private activeQuests: any = {};
+  private questProgress: any = {};
 
   get party(): Party {
     return this.$$room ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
@@ -109,6 +115,10 @@ export class Player extends Character {
 
   kill(target: Character) {
     this.$$actionQueue = reject(this.$$actionQueue, ({ args }) => includes(args, target.uuid));
+
+    if((<any>target).npcId) {
+      this.checkForQuestUpdates({ kill: (<any>target).npcId });
+    }
 
     const skillGain = target.skillOnKill;
     this.gainSkillFromKills(skillGain);
@@ -318,6 +328,45 @@ export class Player extends Character {
   hasHeldItems(item1: string, item2: string): boolean {
     return (this.hasHeldItem(item1, 'right') && this.hasHeldItem(item2, 'left'))
         || (this.hasHeldItem(item2, 'right') && this.hasHeldItem(item1, 'left'));
+  }
+
+  startQuest(quest: Quest) {
+    this.activeQuests[quest.name] = true;
+    this.setQuestData(quest, quest.initialData);
+  }
+
+  hasQuest(quest: Quest) {
+    return this.activeQuests[quest.name];
+  }
+
+  setQuestData(quest: Quest, data: any) {
+    this.questProgress[quest.name] = data;
+  }
+
+  getQuestData(quest: Quest) {
+    return this.questProgress[quest.name];
+  }
+
+  checkForQuestUpdates(questOpts = { kill: '' }) {
+
+    if(questOpts.kill) {
+      Object.keys(this.activeQuests).forEach(quest => {
+        const realQuest = Quests[quest];
+
+        const { type } = realQuest.requirements;
+        if(type !== 'kill') return;
+
+        if(realQuest.canUpdateProgress(this, questOpts)) {
+          realQuest.updateProgress(this, questOpts);
+        }
+      });
+    }
+
+  }
+
+  completeQuest(quest: Quest) {
+    delete this.questProgress[quest.name];
+    delete this.activeQuests[quest.name];
   }
 
 }
