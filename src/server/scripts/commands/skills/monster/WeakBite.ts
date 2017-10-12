@@ -22,7 +22,7 @@ export class WeakBite extends Skill {
       attackerDamageMessage: '',
       defenderDamageMessage: `${user.name} bit you!`
     });
-    const effect = new CastEffect({ potency: 0, duration: 10 });
+    const effect = new CastEffect({ potency: 2, duration: 10 });
     effect.cast(user, target, this);
   }
 
