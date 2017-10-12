@@ -9,6 +9,7 @@ import * as Rooms from './rooms';
 
 import * as recurse from 'recursive-readdir';
 import * as path from 'path';
+import * as processStats from 'process-stats';
 
 import { Logger } from './logger';
 
@@ -20,6 +21,9 @@ class GameAPI {
     this.isReady = new Promise(resolve => {
       const app = express();
       app.use(cors());
+      app.use('/', (req, res) => {
+        res.json(processStats());
+      });
       app.use('/silent-dev', staticFile(`${__dirname}/silent-dev.html`));
       app.use('/silent-production', staticFile(`${__dirname}/silent-production.html`));
       app.use('/maps', express.static(require('path').join(__dirname, 'maps')));
