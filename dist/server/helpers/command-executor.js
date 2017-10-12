@@ -1,0 +1,78 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Commands = require("../scripts/commands");
+const lodash_1 = require("lodash");
+const Skill_1 = require("../base/Skill");
+const commandHash = {};
+const skillHash = {};
+Object.keys(Commands).forEach(cmd => {
+    const command = new Commands[cmd];
+    let names = command.name;
+    // a monster skill has no name
+    if (!command.name) {
+        skillHash[cmd.toLowerCase()] = command;
+    }
+    if (!lodash_1.isArray(command.name)) {
+        names = [command.name];
+    }
+    names.forEach(name => {
+        commandHash[name] = command;
+        if (command instanceof Skill_1.Skill) {
+            skillHash[name] = command;
+        }
+    });
+});
+class CommandExecutor {
+    static checkIfCanUseSkill(skillName, user, target) {
+        const skill = skillHash[skillName.toLowerCase()];
+        if (!skill)
+            return false;
+        return skill.canUse(user, target) ? skill : null;
+    }
+    static queueCommand(player, command, args) {
+        if (!player)
+            return;
+        const wasSuccess = this._queueCommand(player, command, args);
+        // explicit check
+        if (wasSuccess === false) {
+            player.sendClientMessage(`Command "${command}" is invalid. Try again.`);
+        }
+    }
+    static _queueCommand(player, command, args) {
+        const cmd = commandHash[command];
+        if (!cmd)
+            return false;
+        // wat?
+        if (!player)
+            return;
+        if (command !== 'restore' && player.isDead()) {
+            player.sendClientMessage(`Your corpse can't do that.`);
+            return;
+        }
+        if (lodash_1.startsWith(command, '~') || lodash_1.startsWith(command, '@')) {
+            return this.executeCommand(player, command, args);
+        }
+        else {
+            player.queueAction({ command, args: args.args });
+            return true;
+        }
+    }
+    static executeCommand(player, command, args) {
+        const cmd = commandHash[command];
+        if (!cmd)
+            return false;
+        const spell = command.split(' ')[1];
+        const hasLearned = player.hasLearned(spell || '');
+        if (cmd.requiresLearn && !hasLearned)
+            return player.sendClientMessage('You do not know that spell!');
+        if (hasLearned.effect)
+            args.effect = hasLearned.effect;
+        const wasSuccess = cmd.execute(player, args);
+        if (wasSuccess === false) {
+            player.sendClientMessage(`Invalid format. Format: ${command} ${cmd.format}`);
+        }
+        return true;
+    }
+}
+exports.CommandExecutor = CommandExecutor;
+//# sourceMappingURL=command-executor.js.map
