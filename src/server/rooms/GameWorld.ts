@@ -534,10 +534,14 @@ export class GameWorld extends Room<GameState> {
       if(!player.canSee(diffX, diffY)) return false;
       if(!player.canSeeThroughStealthOf(target)) return false;
 
-      return target.uuid === findStr || startsWith(target.name.toLowerCase(), findStr.toLowerCase());
+      return this.doesTargetMatchSearch(target, findStr);
     });
 
     return possTargets;
+  }
+
+  public doesTargetMatchSearch(target: Character, findStr: string): boolean {
+    return target.uuid === findStr || startsWith(target.name.toLowerCase(), findStr.toLowerCase());
   }
 
   private setUpClassFor(char: Character) {

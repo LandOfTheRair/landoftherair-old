@@ -92,4 +92,5 @@ You also get access to some commands in-game:
 * `@itemmod propsish` - modify your rightHand item based on props specified, for example: `ounces=10`
 * `@respawn lairname` - respawn `lairname` on the current map
 * `@searchitems itemname` - search all the items for itemname
+* `@summon playerish` - summon any player who matches playerish
 * `@teleport <x> <y> [map]` - teleport to X,Y, and if map is specified, you'll also change maps
