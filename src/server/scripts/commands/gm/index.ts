@@ -8,6 +8,7 @@ export * from './GMGainSkill';
 export * from './GMGainXP';
 export * from './GMKill';
 export * from './GMModifyItem';
+export * from './GMModifyNPC';
 export * from './GMRespawn';
 export * from './GMSearchItems';
 export * from './GMSummon';
