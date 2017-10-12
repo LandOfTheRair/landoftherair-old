@@ -1,3 +1,4 @@
+
 const argv = require('minimist')(process.argv.slice(2));
 require('dotenv').config({ silent: true, path: argv.prod ? '.env.prod' : '.env' });
 
