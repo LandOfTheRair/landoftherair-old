@@ -1,13 +1,13 @@
 
-var { copy, emptyDirSync } = require('fs-extra');
+var { copy, removeSync } = require('fs-extra');
 
 var exec = require('child_process').exec;
 
-emptyDirSync('dist');
+removeSync('dist');
 
 exec('tsc', (e) => {
 
-  emptyDirSync('dist/client');
+  removeSync('dist/client');
 
   if(e) {
     console.error(e);

@@ -1,5 +1,5 @@
 
-var { emptyDirSync } = require('fs-extra');
+var { removeSync } = require('fs-extra');
 var exec = require('child_process').exec;
 
 exec('git add -f dist', (e, stdout, stderr) => {
@@ -42,7 +42,7 @@ exec('git add -f dist', (e, stdout, stderr) => {
           process.exit(0);
         }
 
-        emptyDirSync('dist');
+        removeSync('dist');
       });
     });
   });
