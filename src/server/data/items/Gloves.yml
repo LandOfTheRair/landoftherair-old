@@ -22,10 +22,9 @@
 
 - name: Rylt Rockgolem Gloves
   stats:
-    defense: 5
-    offense: 5
-    accuracy: 10
-  baseDamage: 10
+    defense: 2
+    offense: 2
+  baseDamage: 7
   minDamage: 1
   maxDamage: 4
   desc: "a pair of rocky gloves"
