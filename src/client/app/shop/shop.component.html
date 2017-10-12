@@ -33,4 +33,23 @@
     </div>
 
   </div>
+
+  <div class="row m-3 mb-3 p-0">
+    <h4 class="w-100 text-center">Sell From Sack</h4>
+
+    <div class="col-4 text-right vertical-center">
+      Sell all:
+    </div>
+
+    <div class="col-5">
+      <select class="form-control" [(ngModel)]="sellType" placeholder="Select Item Type...">
+        <option *ngFor="let itemType of allSackItemTypes">{{ itemType }}</option>
+      </select>
+    </div>
+
+    <div class="col-3 text-right">
+      <button class="btn btn-warning" [disabled]="!sellType" (click)="sellItemType()">Confirm</button>
+    </div>
+
+  </div>
 </div>

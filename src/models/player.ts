@@ -237,7 +237,7 @@ export class Player extends Character {
     return item;
   }
 
-  sellItem(item: Item) {
+  sellItem(item: Item): number {
     const value = this.sellValue(item);
     this.gainGold(value);
     item._buybackValue = value;
@@ -245,6 +245,8 @@ export class Player extends Character {
     this.buyback.push(item);
 
     if(this.buyback.length > this.buybackSize()) this.buyback.shift();
+
+    return value;
   }
 
   addBankMoney(region: string, amount: number) {

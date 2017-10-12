@@ -309,6 +309,37 @@ export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
 
       return `That item is worth about ${value.toLocaleString()} coins, but I'd only buy it for ${player.sellValue(player.rightHand).toLocaleString()} coins.`;
     });
+
+  npc.parser.addCommand('sell')
+    .set('syntax', ['sell <string:itemtype*>'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      const itemtype = args['itemtype*'].toLowerCase();
+
+      // sell all items matching item type (player.sellItem)
+
+      let sellValue = 0;
+
+      const allItems = player.sack.allItems.filter((item, i) => {
+        if(item.itemClass.toLowerCase() !== itemtype) return false;
+
+        const itemValue = player.sellValue(item);
+        if(itemValue <= 0) return false;
+
+        sellValue += itemValue;
+
+        return true;
+      });
+
+      if(allItems.length === 0) return 'You are not carrying any items of that type!';
+
+      allItems.forEach(item => {
+        player.sack.takeItem(item);
+      });
+
+      return `You sold me ${allItems.length} items for a grand total of ${sellValue.toLocaleString()} gold. Thank you!`;
+    });
+
 };
 
 export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {

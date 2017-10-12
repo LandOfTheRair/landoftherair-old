@@ -17,9 +17,11 @@ export class BeltToMerchant extends Command {
 
     if(!this.checkMerchantDistance(player, merchantUUID)) return;
 
+    const itemCheck = player.belt.getItemFromSlot(slot);
+    if(!itemCheck.isOwnedBy(player)) return player.sendClientMessage('That is not yours!');
+
     const item = player.belt.takeItemFromSlot(slot);
     if(!item) return false;
-    if(!item.isOwnedBy(player)) return player.sendClientMessage('That is not yours!');
 
     player.sellItem(item);
   }
