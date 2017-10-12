@@ -9,9 +9,10 @@ exec('git add -f dist', (e) => {
     process.exit(0);
   }
 
-  exec('git commit dist/* -m "evennode dist"', (e) => {
+  exec('git commit dist/* -m "evennode dist"', (e, stdout, stderr) => {
 
     if(e) {
+      console.log(stdout, stderr)
       console.error(e);
       process.exit(0);
     }

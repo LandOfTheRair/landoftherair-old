@@ -1,1 +1,0 @@
-{"version":3,"file":"ExactHeal.js","sourceRoot":"","sources":["../../../src/server/effects/ExactHeal.ts"],"names":[],"mappings":";;AACA,2CAAwC;AAGxC,eAAuB,SAAQ,eAAM;IACnC,WAAW,CAAC,IAAe;QACzB,IAAI,CAAC,EAAE,CAAC,GAAG,CAAC,IAAI,CAAC,OAAO,CAAC,CAAC;QAC1B,IAAI,CAAC,aAAa,CAAC,IAAI,EAAE,uBAAuB,CAAC,CAAC;IACpD,CAAC;CACF;AALD,8BAKC"}
