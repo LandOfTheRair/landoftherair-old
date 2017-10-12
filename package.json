@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm-run-all --parallel start:*",
     "start:server:plain": "ts-node src/server/index.ts",
+    "start:server:plain:debug": "ts-node --inspect src/server/index.ts",
     "start:server": "nodemon --ignore \"*.json\" --exec \"ts-node \" -- \"src/server/index.ts\"",
     "start:client": "ng serve -o --host 0.0.0.0 --disable-host-check",
     "build": "ng build",
