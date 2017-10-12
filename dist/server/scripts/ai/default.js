@@ -1,0 +1,123 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const command_executor_1 = require("../../helpers/command-executor");
+const lodash_1 = require("lodash");
+exports.tick = (npc) => {
+    if (npc.isDead())
+        return;
+    if (npc.hostility === 'Never')
+        return;
+    let diffX = 0;
+    let diffY = 0;
+    const targetsInRange = npc.$$room.state.getPossibleTargetsFor(npc, 5);
+    let highestAgro = lodash_1.maxBy(targetsInRange, char => npc.agro[char.uuid]);
+    if (!highestAgro)
+        highestAgro = lodash_1.sample(targetsInRange);
+    // do movement
+    const moveRate = npc.getTotalStat('move');
+    const numSteps = lodash_1.random(0, Math.min(moveRate, npc.path ? npc.path.length : moveRate));
+    // we have a target
+    if (highestAgro) {
+        npc.$$pathDisrupted = true;
+        const attemptSkills = lodash_1.sampleSize(npc.usableSkills, 3);
+        let chosenSkill = null;
+        let isThrowing = false;
+        attemptSkills.forEach(skill => {
+            if (chosenSkill)
+                return;
+            if (skill === 'Attack' && npc.rightHand && npc.rightHand.returnsOnThrow) {
+                isThrowing = true;
+                skill = 'Throw';
+            }
+            chosenSkill = command_executor_1.CommandExecutor.checkIfCanUseSkill(skill, npc, highestAgro);
+        });
+        // use a skill that can hit the target
+        if (chosenSkill) {
+            let opts = {};
+            if (isThrowing)
+                opts = { throwHand: 'right' };
+            chosenSkill.use(npc, highestAgro, opts);
+            // either move towards target
+        }
+        else {
+            const oldX = npc.x;
+            const oldY = npc.y;
+            const steps = [];
+            let stepdiffX = lodash_1.clamp(highestAgro.x - npc.x, -moveRate, moveRate);
+            let stepdiffY = lodash_1.clamp(highestAgro.y - npc.y, -moveRate, moveRate);
+            for (let curStep = 0; curStep < moveRate; curStep++) {
+                const step = { x: 0, y: 0 };
+                if (stepdiffX < 0) {
+                    step.x = -1;
+                    stepdiffX++;
+                }
+                else if (stepdiffX > 0) {
+                    step.x = 1;
+                    stepdiffX--;
+                }
+                if (stepdiffY < 0) {
+                    step.y = -1;
+                    stepdiffY++;
+                }
+                else if (stepdiffY > 0) {
+                    step.y = 1;
+                    stepdiffY--;
+                }
+                steps[curStep] = step;
+            }
+            npc.takeSequenceOfSteps(steps, true);
+            diffX = npc.x - oldX;
+            diffY = npc.y - oldY;
+        }
+        // we have a path
+    }
+    else if (npc.path && npc.path.length > 0) {
+        if (npc.$$pathDisrupted) {
+            npc.$$pathDisrupted = false;
+            npc.agro = {};
+            npc.x = npc.spawner.x;
+            npc.y = npc.spawner.y;
+            npc.spawner.assignPath(npc);
+        }
+        const steps = [];
+        for (let i = 0; i < numSteps; i++) {
+            const step = npc.path.shift();
+            diffX += step.x;
+            diffY += step.y;
+            steps.push(step);
+        }
+        npc.takeSequenceOfSteps(steps);
+        if (!npc.path.length) {
+            npc.spawner.assignPath(npc);
+        }
+        // we wander
+    }
+    else {
+        const oldX = npc.x;
+        const oldY = npc.y;
+        const steps = Array(numSteps).fill(null).map(() => ({ x: lodash_1.random(-1, 1), y: lodash_1.random(-1, 1) }));
+        npc.takeSequenceOfSteps(steps);
+        diffX = npc.x - oldX;
+        diffY = npc.y - oldY;
+    }
+    // change dir
+    npc.setDirBasedOnXYDiff(diffX, diffY);
+    // check if should leash
+    const distFrom = npc.distFrom(npc.spawner);
+    if (npc.spawner.leashRadius >= 0 && distFrom > npc.spawner.leashRadius) {
+        npc.x = npc.spawner.x;
+        npc.y = npc.spawner.y;
+        // chasing a player, probably - leash, fix hp, fix agro
+        if (distFrom > npc.spawner.leashRadius + 4) {
+            npc.hp.toMaximum();
+            npc.mp.toMaximum();
+            npc.agro = {};
+        }
+        npc.sendLeashMessage();
+        // if we had a path, re-assign a path
+        if (npc.path && npc.path.length > 0) {
+            npc.spawner.assignPath(npc);
+        }
+    }
+};
+//# sourceMappingURL=default.js.map
