@@ -22,33 +22,32 @@ import {
 
 class ItemLoader {
 
-  static loadAllItems() {
-    DB.isReady.then(async () => {
-      await DB.$items.remove({}, { multi: true });
+  static async loadAllItems() {
+    await DB.isReady;
+    await DB.$items.remove({}, { multi: true });
 
-      recurse(`${__dirname}/../data/items`).then(files => {
-        const filePromises = files.map(file => {
-          const fileName = path.basename(file, path.extname(file));
-          const itemsOfType = YAML.load(file);
+    recurse(`${__dirname}/../data/items`).then(files => {
+      const filePromises = files.map(file => {
+        const fileName = path.basename(file, path.extname(file));
+        const itemsOfType = YAML.load(file);
 
-          const promises = itemsOfType.map(itemData => {
-            itemData.itemClass = fileName;
-            itemData.type = itemData.type || SkillClassNames.Martial;
-            if(!itemData.stats) itemData.stats = {};
-            this.conditionallyAddInformation(itemData);
-            if(!this.validateItem(itemData)) return;
+        const promises = itemsOfType.map(itemData => {
+          itemData.itemClass = fileName;
+          itemData.type = itemData.type || SkillClassNames.Martial;
+          if(!itemData.stats) itemData.stats = {};
+          this.conditionallyAddInformation(itemData);
+          if(!this.validateItem(itemData)) return;
 
-            console.log(`Inserting ${itemData.name}`);
-            return DB.$items.insert(itemData);
-          });
-
-          return promises;
+          console.log(`Inserting ${itemData.name}`);
+          return DB.$items.insert(itemData);
         });
 
-        Promise.all(flatten(filePromises)).then(() => {
-          console.log('Done');
-          process.exit(0);
-        });
+        return promises;
+      });
+
+      Promise.all(flatten(filePromises)).then(() => {
+        console.log('Done');
+        process.exit(0);
       });
     });
   }
