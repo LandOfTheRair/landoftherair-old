@@ -6,7 +6,7 @@
   alignment: Evil
   stats: 10
   skillLevels:
-    Martial: 4
+    Martial: 3
   level: 7
 
   skillOnKill: 25
@@ -16,8 +16,8 @@
     max: 90
 
   hp:
-    min: 700
-    max: 900
+    min: 550
+    max: 750
 
   giveXp:
     min: 500

@@ -21,7 +21,6 @@
   stats:
     armorClass: 1
     defense: 1
-    magicalResist: 10
     energyResist: 10
     mpregen: 2
   binds: true
@@ -33,7 +32,7 @@
   stats:
     armorClass: 3
     defense: 2
-    magicalResist: 30
+    magicalResist: 5
     energyResist: 20
     necroticResist: 20
     mpregen: 5
