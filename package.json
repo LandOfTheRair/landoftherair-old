@@ -32,6 +32,9 @@
     "type": "git",
     "url": "git+https://github.com/seiyria/kod-prototype.git"
   },
+  "engines": {
+    "node": ">= 8.6.0"
+  },
   "author": "Kyle Kemp <kyle@seiyria.com>",
   "license": "GPL-3.0",
   "bugs": {
