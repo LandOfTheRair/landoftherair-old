@@ -5,9 +5,9 @@ var exec = require('child_process').exec;
 
 emptyDirSync('dist');
 
-exec('tsc', (e, stdout, stderr) => {
+exec('tsc', (e) => {
 
-  emptyDirSync('client');
+  emptyDirSync('dist/client');
 
   if(e) {
     console.error(e);
