@@ -16,7 +16,7 @@ exec('git add -f dist', (e) => {
       process.exit(0);
     }
 
-    exec('git push evennode master', (e) => {
+    exec('git push -f evennode master', (e) => {
 
       if(e) {
         console.error(e);
