@@ -17,7 +17,7 @@ export class KillRebels extends Quest {
     };
   }
 
-  public static get initialData() : any {
+  public static get initialData(): any {
     return clone({ kills: 0 });
   }
 
