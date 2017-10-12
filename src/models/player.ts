@@ -331,6 +331,9 @@ export class Player extends Character {
   }
 
   startQuest(quest: Quest) {
+
+    // can't start a quest you're already on
+    if(this.activeQuests[quest.name]) return;
     this.activeQuests[quest.name] = true;
     this.setQuestData(quest, quest.initialData);
   }
