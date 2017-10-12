@@ -83,7 +83,7 @@ export class SpellEffect extends Effect {
         caster.gainSkill(flaggedSkill, skillGained);
       }
 
-    } else {
+    } else if(!this.potency) {
       this.potency = 1;
     }
 
