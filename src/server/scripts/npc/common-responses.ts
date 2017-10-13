@@ -342,6 +342,49 @@ export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
 
 };
 
+export const EncrusterResponses = (npc: NPC) => {
+
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+      return `Hail, ${player.name}! I am the Encruster, and I can put magical gems into your weapons and armor. 
+      You can only set one gem at a time, and subsequent encrusts will replace the old gem.
+      It will cost a fair price - the value of the gem, some insurance for the item, and then a little bit for me.
+      If you would like to do this, hold the item in your right hand, the gem in your left, and tell me ENCRUST.`;
+    });
+
+  npc.parser.addCommand('encrust')
+    .set('syntax', ['encrust'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      if(!player.rightHand) return 'You must hold an item in your right hand!';
+      if(player.rightHand.itemClass === 'Corpse') return 'That would be disrespectful.';
+      if(!player.leftHand || player.leftHand.itemClass !== 'Gem') return 'You must hold a gem in your left hand!';
+
+      const cost = player.leftHand.value + player.rightHand.value + 500;
+
+      if(player.gold < cost) return `I require ${cost.toLocaleString()} gold for this transaction.`;
+
+      const prevEncrust = player.rightHand.encrust;
+
+      const nextEncrust = {
+        desc: player.leftHand.desc,
+        stats: player.leftHand.stats,
+        sprite: player.leftHand.sprite
+      };
+
+      player.loseGold(cost);
+      player.setLeftHand(null);
+
+      player.rightHand.encrust = nextEncrust;
+      const replaceText = prevEncrust ? ` This has replaced your ${prevEncrust.desc}.` : '';
+
+      return `I have set your ${player.rightHand.itemClass} with ${nextEncrust.desc}.${replaceText}`;
+    });
+};
+
 export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
   npc.parser.addCommand('hello')
@@ -375,7 +418,7 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
       const maxAssessSkill = npc.maxSkillTrain;
 
       const assessCost = maxAssessSkill * 50;
-      if(player.gold < assessCost) return `I require ${assessCost} gold for my assessment.`;
+      if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
       player.loseGold(assessCost);
 

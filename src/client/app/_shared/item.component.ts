@@ -94,6 +94,10 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
       position: absolute;
       top: 0;
     }
+    
+    .encrust {
+      transform: scale(0.65, 0.65) translate(45%, 45%);
+    }
   `],
   template: `    
     <div class="item-container" 
@@ -108,6 +112,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
          [dragData]="{ item: item, context: context, contextSlot: contextSlot, count: count, containerUUID: containerUUID }"
          [tooltip]="descText">
       <img [src]="imgUrl" [style.object-position]="spriteLocation" />
+      <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="item.encrust" />
       <div class="item-background" *ngIf="showBackground"></div>
       <div class="glow-container" [ngClass]="[glowColor]" *ngIf="showDesc"></div>
       <span class="count" *ngIf="realCount > 0">{{ realCount }}x</span>
@@ -222,6 +227,13 @@ export class ItemComponent implements OnInit {
     const divisor = this.item.itemClass === 'Corpse' ? 40 : 32;
     const y = Math.floor(this.item.sprite / divisor);
     const x = this.item.sprite % divisor;
+    return `-${x * 64}px -${y * 64}px`;
+  }
+
+  get encrustLocation() {
+    const divisor = 32;
+    const y = Math.floor(this.item.encrust.sprite / divisor);
+    const x = this.item.encrust.sprite % divisor;
     return `-${x * 64}px -${y * 64}px`;
   }
 

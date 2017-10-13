@@ -92,12 +92,20 @@ export class ItemRequirements {
   class?: string[];
 }
 
+export class Encrust {
+  desc: string;
+  sprite: number;
+  stats: any = {};
+}
+
 export class Item {
   name: string;
   desc: string;
   extendedDesc: string;
   sprite: number;
   itemClass: string;
+
+  encrust?: Encrust;
 
   uuid?: string;
 
@@ -215,7 +223,8 @@ export class Item {
 
     const levelText = this.requirements && this.requirements.level ? `You must be level ${this.requirements.level} to use this item. ` : '';
 
-    const baseText = `You are looking at ${this.desc}. `;
+    const encrustText = this.encrust ? ` set with ${this.encrust.desc}` : '';
+    const baseText = `You are looking at ${this.desc}${encrustText}. `;
     const conditionText = `The item is in ${this.conditionString()} condition. `;
 
     const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;

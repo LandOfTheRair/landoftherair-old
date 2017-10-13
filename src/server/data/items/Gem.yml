@@ -1,29 +1,42 @@
 - name: Antanian Purple Gem
-  desc: "a small, purple gem"
+  desc: "a small purple gem"
   value: 300
   sprite: 213
+  stats:
+    armorClass: 1
 
 - name: Antanian Small Green Gem
-  desc: "a small, green gem"
+  desc: "a small green gem"
   value: 500
   sprite: 242
+  stats:
+    hp: 10
 
 - name: Antanian Big Green Gem
-  desc: "a big, green gem"
+  desc: "a big green gem"
   value: 1500
   sprite: 243
+  stats:
+    defense: 1
 
 - name: Antanian Small Red Gem
-  desc: "a small, red gem"
+  desc: "a small red gem"
   value: 700
   sprite: 244
+  stats:
+    mp: 10
 
 - name: Antanian Big Red Gem
-  desc: "a big, red gem"
+  desc: "a big red gem"
   value: 2000
   sprite: 245
+  stats:
+    offense: 1
 
 - name: Antanian Diamond
   desc: "a roughly-cut diamond"
   value: 5000
   sprite: 247
+  stats:
+    offense: 1
+    defense: 1
