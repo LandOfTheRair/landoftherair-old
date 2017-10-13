@@ -136,9 +136,9 @@
   sprite: 210
   hostility: Always
   alignment: Evil
-  stats: 20
+  stats: 10
   skillLevels:
-    Martial: 7
+    Martial: 3
   level: 7
 
   otherStats:
@@ -151,8 +151,8 @@
     Hands: Werebear Claws
 
   hp:
-    min: 2000
-    max: 3000
+    min: 4000
+    max: 5000
 
   giveXp:
     min: 1500

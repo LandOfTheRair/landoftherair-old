@@ -299,12 +299,12 @@
   hostility: Always
   sprite: 590
   alignment: Evil
-  stats: 16
+  stats: 10
   skillLevels:
-    Polearm: 8
-    Axe: 8
-    Mace: 8
-    TwoHanded: 8
+    Polearm: 3
+    Axe: 3
+    Mace: 3
+    TwoHanded: 3
 
   level: 7
 
@@ -318,8 +318,8 @@
     max: 1700
 
   hp:
-    min: 1000
-    max: 1600
+    min: 5000
+    max: 6000
 
   giveXp:
     min: 850
