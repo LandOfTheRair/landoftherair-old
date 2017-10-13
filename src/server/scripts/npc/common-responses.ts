@@ -402,7 +402,7 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
       const trainCost = npc.maxLevelUpLevel * 200;
       if(player.gold < trainCost) return `I require ${trainCost} gold for my training.`;
 
-      if(level > npc.maxLevelUpLevel) return 'You are too advanced for my teachings.';
+      if(level >= npc.maxLevelUpLevel) return 'You are too advanced for my teachings.';
 
       player.tryLevelUp(npc.maxLevelUpLevel);
       const newLevel = player.level;
