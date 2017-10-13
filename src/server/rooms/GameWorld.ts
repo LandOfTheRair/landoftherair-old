@@ -380,8 +380,16 @@ export class GameWorld extends Room<GameState> {
   }
 
   private saveBossTimers() {
+
+    const timestamp = Date.now();
+
     const spawners = this.spawners.filter(spawner => spawner.shouldSerialize && spawner.currentTick > 0);
-    const saveSpawners = spawners.map(spawner => ({ x: spawner.x, y: spawner.y, currentTick: spawner.currentTick }));
+    const saveSpawners = spawners.map(spawner => ({
+      x: spawner.x,
+      y: spawner.y,
+      currentTick: spawner.currentTick,
+      timestamp
+    }));
 
     if(saveSpawners.length > 0) {
       DB.$mapBossTimers.update({ mapName: this.state.mapName }, { $set: { spawners: saveSpawners } }, { upsert: true });
@@ -494,6 +502,8 @@ export class GameWorld extends Room<GameState> {
   private loadSpawners(timerData: any[]) {
     const spawners = this.state.map.layers[MapLayer.Spawners].objects;
 
+    const now = Date.now();
+
     spawners.forEach(spawnerData => {
       const spawner = require(`${__dirname}/../scripts/spawners/${spawnerData.properties.script}`);
       const spawnerProto = spawner[Object.keys(spawner)[0]];
@@ -503,7 +513,8 @@ export class GameWorld extends Room<GameState> {
       const spawnerOldData = find(timerData, { x: spawnerX, y: spawnerY });
 
       if(spawnerOldData) {
-        properties.currentTick = spawnerOldData.currentTick;
+        const difference = Math.floor((now - spawnerOldData.timestamp) / 1000);
+        properties.currentTick = spawnerOldData.currentTick + difference;
       }
 
       const spawnerObject = new spawnerProto(this, { map: this.state.mapName, x: spawnerX, y: spawnerY }, properties);

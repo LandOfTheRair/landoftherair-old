@@ -5511,7 +5511,7 @@
                      "lairName":"Tonwin",
                      "randomWalkRadius":15,
                      "script":"global\/lair",
-                     "stripRadius":0,
+                     "stripRadius":1,
                      "stripX":21,
                      "stripY":35
                     },
