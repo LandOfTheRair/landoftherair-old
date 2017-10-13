@@ -6178,10 +6178,29 @@
                  "width":832,
                  "x":320,
                  "y":320
+                }, 
+                {
+                 "height":960,
+                 "id":722,
+                 "name":"Botanist Bog",
+                 "properties":
+                    {
+                     "desc":"You step into a manmade bog. The stench is overwhelming."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1536,
+                 "x":320,
+                 "y":8832
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -6367,11 +6386,11 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
- "nextobjectid":722,
+ "nextobjectid":723,
  "orientation":"orthogonal",
  "properties":
     {
