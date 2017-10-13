@@ -339,11 +339,6 @@ export class CombatHelper {
     if(!isHeal) {
       const damageReduced = defender.getTotalStat(<StatName>`${damageClass}Resist`);
       damage -= damageReduced;
-
-      if(damageReduced > 0 && attacker && attacker !== defender) {
-        attacker.sendClientMessage({ message: `Your attack is mangled by a magical force!`, subClass: `combat self blocked`, target: defender.uuid });
-      }
-
       // non-physical attacks are magical
       if(damageClass !== 'physical') {
         const magicReduction = defender.getTotalStat('magicalResist');
@@ -351,6 +346,14 @@ export class CombatHelper {
       }
 
       if(damage < 0) damage = 0;
+
+      if(damageReduced > 0 && damage !== 0 && attacker && attacker !== defender) {
+        attacker.sendClientMessage({ message: `Your attack is mangled by a magical force!`, subClass: `combat self blocked`, target: defender.uuid });
+      }
+
+      if(damage === 0) {
+        attacker.sendClientMessage({ message: `Your attack did no visible damage!`, subClass: `combat self blocked`, target: defender.uuid });
+      }
     }
 
     const absDmg = Math.abs(damage);
