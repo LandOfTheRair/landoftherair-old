@@ -443,6 +443,10 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
+  public addSpawner(spawner: Spawner) {
+    this.spawners.push(spawner);
+  }
+
   private loadNPCsFromMap() {
     const npcs = this.state.map.layers[MapLayer.NPCs].objects;
 
