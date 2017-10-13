@@ -428,7 +428,8 @@ export class GameWorld extends Room<GameState> {
 
   private setItemExpiry(item: Item) {
     const expiry = new Date();
-    expiry.setHours(expiry.getHours() + this.decayRateHours);
+    const hours = item.owner ? this.decayRateHours * 4 : this.decayRateHours;
+    expiry.setHours(expiry.getHours() + hours);
     item.expiresAt = expiry.getTime();
   }
 
