@@ -893,7 +893,10 @@ export class Character {
     const pickSlot = () => ({ x: random(x - spread, x + spread), y: random(y - spread, y + spread) });
 
     if(this.gold > 0) {
+
+      // can't use itemcreator because this is a shared model
       const gold = new Item({
+        itemClass: 'Coin',
         name: 'Gold Coin',
         sprite: 212,
         value: this.gold,
