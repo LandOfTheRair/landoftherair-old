@@ -380,10 +380,16 @@ export class Character {
       this.totalStats[stat] += classStats[stat];
     });
 
-    const addStatsForItem = (item) => {
+    const addStatsForItem = (item: Item) => {
       Object.keys(item.stats).forEach(stat => {
         this.totalStats[stat] += item.stats[stat];
       });
+
+      if(item.encrust) {
+        Object.keys(item.encrust.stats).forEach(stat => {
+          this.totalStats[stat] += item.encrust.stats[stat];
+        });
+      }
     };
 
     allGear.forEach(item => {
