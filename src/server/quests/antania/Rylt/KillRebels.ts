@@ -6,6 +6,7 @@ import { Player } from '../../../../models/player';
 
 export class KillRebels extends Quest {
 
+  public static isRepeatable = true;
   static killsRequired = 20;
 
   public static get requirements() {

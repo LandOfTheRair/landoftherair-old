@@ -3,6 +3,8 @@ import { Player } from '../../models/player';
 
 export class Quest {
 
+  isRepeatable: boolean;
+
   public get name(): string {
     return this.constructor.name;
   }

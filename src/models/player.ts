@@ -39,6 +39,7 @@ export class Player extends Character {
 
   private activeQuests: any = {};
   private questProgress: any = {};
+  private permanentQuestCompletion: any = {};
 
   get party(): Party {
     return this.$$room ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
@@ -332,14 +333,18 @@ export class Player extends Character {
 
   startQuest(quest: Quest) {
 
-    // can't start a quest you're already on
-    if(this.activeQuests[quest.name]) return;
+    // can't start a quest you're already on or have completed
+    if(this.hasQuest(quest) || this.hasPermanentCompletionFor(quest.name)) return;
     this.activeQuests[quest.name] = true;
     this.setQuestData(quest, quest.initialData);
   }
 
   hasQuest(quest: Quest) {
     return this.activeQuests[quest.name];
+  }
+
+  hasPermanentCompletionFor(questName: string) {
+    return this.permanentQuestCompletion[questName];
   }
 
   setQuestData(quest: Quest, data: any) {
@@ -367,7 +372,14 @@ export class Player extends Character {
 
   }
 
+  permanentlyCompleteQuest(questName: string) {
+    this.permanentQuestCompletion[questName] = true;
+  }
+
   completeQuest(quest: Quest) {
+    if(!quest.isRepeatable) {
+      this.permanentlyCompleteQuest(quest.name);
+    }
     delete this.questProgress[quest.name];
     delete this.activeQuests[quest.name];
   }
