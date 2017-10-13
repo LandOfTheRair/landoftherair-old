@@ -351,7 +351,8 @@ export const EncrusterResponses = (npc: NPC) => {
       return `Hail, ${player.name}! I am the Encruster, and I can put magical gems into your weapons and armor. 
       You can only set one gem at a time, and subsequent encrusts will replace the old gem.
       It will cost a fair price - the value of the gem, some insurance for the item, and then a little bit for me.
-      If you would like to do this, hold the item in your right hand, the gem in your left, and tell me ENCRUST.`;
+      If you would like to do this, hold the item in your right hand, the gem in your left, and tell me ENCRUST.
+      Beware - encrusting an item will bind it to you!`;
     });
 
   npc.parser.addCommand('encrust')
@@ -377,6 +378,7 @@ export const EncrusterResponses = (npc: NPC) => {
 
       player.loseGold(cost);
       player.setLeftHand(null);
+      player.rightHand.setOwner(player);
 
       player.rightHand.encrust = nextEncrust;
       const replaceText = prevEncrust ? ` This has replaced your ${prevEncrust.desc}.` : '';
