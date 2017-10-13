@@ -142,8 +142,8 @@
     max: 600
 
   giveXp:
-    min: 600
-    max: 1100
+    min: 200
+    max: 250
 
   rightHand:
     - Rylt Renegade Staff
@@ -193,8 +193,8 @@
     max: 600
 
   giveXp:
-    min: 600
-    max: 1100
+    min: 200
+    max: 250
 
   rightHand: Rylt Renegade Mace
 
@@ -242,7 +242,7 @@
     max: 600
 
   giveXp:
-    min: 350
+    min: 450
     max: 550
 
   rightHand:
