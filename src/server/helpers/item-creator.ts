@@ -11,7 +11,7 @@ export class ItemCreator {
     });
   }
 
-  static searchItems(name: string): Promise<Item> {
+  static searchItems(name: string): Promise<Item[]> {
     const regex = new RegExp(`.*${name}.*`, 'i');
     return DB.$items.find({ name: regex }).toArray();
   }

@@ -10,6 +10,11 @@ import * as Effects from '../effects';
 
 export class NPCLoader {
 
+  static searchNPCs(name: string): Promise<NPC[]> {
+    const regex = new RegExp(`.*${name}.*`, 'i');
+    return DB.$npcs.find({ $or: [{ npcId: regex }, { name: regex }] }).toArray();
+  }
+
   static loadNPCData(npcId) {
     return DB.$npcs.findOne({ npcId }).then(npc => {
       if(!npc) throw new Error(`NPC ${npcId} does not exist.`);

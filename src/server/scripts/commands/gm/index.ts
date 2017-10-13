@@ -11,5 +11,7 @@ export * from './GMModifyItem';
 export * from './GMModifyNPC';
 export * from './GMRespawn';
 export * from './GMSearchItems';
+export * from './GMSearchNPCs';
+export * from './GMSpawnNPC';
 export * from './GMSummon';
 export * from './GMTeleport';

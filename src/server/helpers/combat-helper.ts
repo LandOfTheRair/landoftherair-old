@@ -351,7 +351,7 @@ export class CombatHelper {
         attacker.sendClientMessage({ message: `Your attack is mangled by a magical force!`, subClass: `combat self blocked`, target: defender.uuid });
       }
 
-      if(damage === 0) {
+      if(attacker && attacker !== defender && damage === 0) {
         attacker.sendClientMessage({ message: `Your attack did no visible damage!`, subClass: `combat self blocked`, target: defender.uuid });
       }
     }
