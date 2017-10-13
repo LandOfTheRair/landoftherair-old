@@ -374,6 +374,12 @@ export class Character {
       this.totalStats[stat] += this.additionalStats[stat];
     });
 
+    const classStats = Classes[this.baseClass].calcBonusStatsForCharacter(this);
+
+    Object.keys(classStats).forEach(stat => {
+      this.totalStats[stat] += classStats[stat];
+    });
+
     const addStatsForItem = (item) => {
       Object.keys(item.stats).forEach(stat => {
         this.totalStats[stat] += item.stats[stat];

@@ -12,4 +12,8 @@ export class BaseClass {
 
   static gainLevelStats(character: Character) {
   }
+
+  static calcBonusStatsForCharacter(character: Character): any {
+    return {};
+  }
 }

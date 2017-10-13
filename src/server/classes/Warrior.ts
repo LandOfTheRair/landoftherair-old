@@ -15,4 +15,10 @@ export class Warrior extends BaseClass {
     super.gainLevelStats(character);
     character.gainBaseStat('hp', this.rollDie(`2df([con] / 3) + f([con] / 3)`, character));
   }
+
+  static calcBonusStatsForCharacter(character: Character): any {
+    const statLevel = Math.floor(character.level / 5);
+
+    return { offense: statLevel, defense: statLevel };
+  }
 }
