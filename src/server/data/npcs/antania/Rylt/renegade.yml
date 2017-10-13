@@ -223,11 +223,11 @@
   alignment: Evil
   stats: 12
   skillLevels:
-    Mace: 7
-    Longsword: 7
-    Axe: 7
-    Dagger: 7
-    Staff: 7
+    Mace: 2
+    Longsword: 2
+    Axe: 2
+    Dagger: 2
+    Staff: 2
 
   level: 5
 
