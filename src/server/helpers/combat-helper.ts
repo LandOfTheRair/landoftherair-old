@@ -396,7 +396,7 @@ export class CombatHelper {
         defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
         defender.die(attacker);
 
-        if((<any>attacker).username) {
+        if((<any>attacker).uuid) {
           attacker.kill(defender);
         }
 

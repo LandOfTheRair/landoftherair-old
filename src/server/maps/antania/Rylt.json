@@ -4435,6 +4435,7 @@
                      "lairName":"Rylt Werebear",
                      "randomWalkRadius":5,
                      "script":"global\/lair",
+                     "shouldStrip":true,
                      "stripRadius":1,
                      "stripX":77,
                      "stripY":95
@@ -4444,6 +4445,7 @@
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "script":"string",
+                     "shouldStrip":"bool",
                      "stripRadius":"int",
                      "stripX":"int",
                      "stripY":"int"
@@ -4940,6 +4942,7 @@
                      "randomWalkRadius":15,
                      "respawnRate":3600,
                      "script":"global\/lair",
+                     "shouldStrip":true,
                      "stripRadius":1,
                      "stripX":81,
                      "stripY":148
@@ -4950,6 +4953,7 @@
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
                      "script":"string",
+                     "shouldStrip":"bool",
                      "stripRadius":"int",
                      "stripX":"int",
                      "stripY":"int"
@@ -5452,6 +5456,7 @@
                      "randomWalkRadius":20,
                      "respawnRate":3600,
                      "script":"global\/lair",
+                     "shouldStrip":true,
                      "stripRadius":1,
                      "stripX":135,
                      "stripY":87
@@ -5462,6 +5467,7 @@
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
                      "script":"string",
+                     "shouldStrip":"bool",
                      "stripRadius":"int",
                      "stripX":"int",
                      "stripY":"int"
@@ -5511,6 +5517,7 @@
                      "lairName":"Tonwin",
                      "randomWalkRadius":15,
                      "script":"global\/lair",
+                     "shouldStrip":true,
                      "stripRadius":1,
                      "stripX":21,
                      "stripY":35
@@ -5520,6 +5527,7 @@
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "script":"string",
+                     "shouldStrip":"bool",
                      "stripRadius":"int",
                      "stripX":"int",
                      "stripY":"int"
