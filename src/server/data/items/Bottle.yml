@@ -5,7 +5,7 @@
   sprite: 107
   effect:
     name: ExactHeal
-    potency: 50
+    potency: 200
   value: 5
 
 - name: Instant Heal Bottle
@@ -14,7 +14,7 @@
   sprite: 260
   effect:
     name: ExactHeal
-    potency: 500
+    potency: 1000
   value: 500
 
 - name: Antanian Strength Potion
