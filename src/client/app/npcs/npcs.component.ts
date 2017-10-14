@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { compact, find, pull } from 'lodash';
+import { compact, find, pull, findIndex } from 'lodash';
 import { NPC } from '../../../models/npc';
 import { MacroService } from '../macros.service';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -59,7 +59,8 @@ export class NpcsComponent implements OnInit, OnDestroy {
     if(!this.pinUUID || !this.shouldPin) return unsorted;
 
     const npc = find(unsorted, { uuid: this.pinUUID });
-    if(!npc) return unsorted;
+    const index = findIndex(unsorted, npc);
+    if(!npc || index === this.pinPos) return unsorted;
 
     pull(unsorted, npc);
 
