@@ -1,4 +1,5 @@
 
+import { DB } from './database';
 import * as Rollbar from 'rollbar';
 
 let rollbar = null;
@@ -37,5 +38,14 @@ export class Logger {
         rollbar.error(error);
       }
     }
+  }
+
+  static db(message: string, map: string, extraData: any = {}) {
+    DB.$logs.insert({
+      createdAt: new Date(),
+      message,
+      map,
+      extraData
+    });
   }
 }
