@@ -101,6 +101,8 @@ You also get access to some commands in-game:
 * `@respawn lairname` - respawn `lairname` on the current map
 * `@searchitems itemname` - search all the items for itemname
 * `@searchnpcs npcname` - search all the items for npcname
+* `@updatemapsettings propsish` - set various map settings for the current map (xp, gold, skill mults). for a full listing of keys, see `server/helpers/settings-helper`
+* `@resetmapsettings` - reset map settings for the current map
 * `@spawnnpc npc.npcId="NPC Internal ID" spawner.*=*` - spawn a monster of the given id, with optional spawner props
 * `@summon playerish` - summon any player who matches playerish
 * `@teleport <x> <y> [map]` - teleport to X,Y, and if map is specified, you'll also change maps

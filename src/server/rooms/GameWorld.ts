@@ -1,5 +1,5 @@
 
-import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter } from 'lodash';
+import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter, clone } from 'lodash';
 
 import * as scheduler from 'node-schedule';
 
@@ -30,6 +30,7 @@ import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
 import { PartyManager } from '../helpers/party-manager';
 import { Effect } from '../base/Effect';
+import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings-helper';
 
 const TICK_DIVISOR = 2;
 
@@ -60,12 +61,18 @@ export class GameWorld extends Room<GameState> {
 
   public partyManager: PartyManager;
 
+  private gameSettings: GameSettings = clone(BASE_SETTINGS);
+
   get allSpawners() {
     return this.spawners;
   }
 
   get mapRegion() {
     return this.state.map.properties.region;
+  }
+
+  get mapName() {
+    return this.state.mapName;
   }
 
   get maxSkill() {
@@ -361,6 +368,7 @@ export class GameWorld extends Room<GameState> {
     this.loadDropTables();
     this.loadGround();
     this.watchForItemDecay();
+    this.loadGameSettings();
 
     this.initPartyManager();
   }
@@ -369,6 +377,10 @@ export class GameWorld extends Room<GameState> {
     this.saveGround();
     this.saveBossTimers();
     this.partyManager.stopEmitting();
+  }
+
+  public async loadGameSettings() {
+    this.gameSettings = await SettingsHelper.loadSettings(this.mapRegion, this.mapName);
   }
 
   private initPartyManager() {
@@ -659,7 +671,8 @@ export class GameWorld extends Room<GameState> {
     const allItems = await this.getAllLoot(npc, bonus);
 
     if(npc.gold) {
-      const gold = await ItemCreator.getGold(npc.gold);
+      const adjustedGold = this.calcAdjustedGoldGain(npc.gold);
+      const gold = await ItemCreator.getGold(adjustedGold);
       allItems.push(gold);
     }
 
@@ -821,5 +834,17 @@ export class GameWorld extends Room<GameState> {
 
       partyMember.gainSkill(skill);
     });
+  }
+
+  public calcAdjustedGoldGain(gold: number) {
+    return Math.floor(gold * this.gameSettings.goldMult);
+  }
+
+  public calcAdjustedSkillGain(skill: number) {
+    return Math.floor(skill * this.gameSettings.skillMult);
+  }
+
+  public calcAdjustedXPGain(xp: number) {
+    return Math.floor(xp * this.gameSettings.xpMult);
   }
 }

@@ -23,6 +23,7 @@ class Database {
   public $mapBossTimers: any;
   public $lobbySettings: any;
   public $logs: any;
+  public $gameSettings: any;
 
   private client: MongoClient;
 
@@ -70,6 +71,8 @@ class Database {
 
         this.$logs = client.collection('logs');
         this.$logs.ensureIndex({ createdAt: 1 }, { expireAfterSeconds: 3600 * 6 });
+
+        this.$gameSettings = client.collection('gamesettings');
 
         this.clearStaleData();
 
