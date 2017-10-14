@@ -21,11 +21,11 @@ export class GroundComponent implements OnInit, OnDestroy {
   public currentGround: any = {};
   private allGround: any = {};
 
-  constructor(public colyseusGame: ColyseusGameService) {}
-
   private oldX: number;
   private oldY: number;
   private player: any;
+
+  constructor(public colyseusGame: ColyseusGameService) {}
 
   private getCurrentGround(ground) {
     const player = this.player;
@@ -44,7 +44,7 @@ export class GroundComponent implements OnInit, OnDestroy {
     const oldItemTypes = Object.keys(myCurrentGround);
     const removeKeys = difference(newItemTypes, oldItemTypes).concat(difference(oldItemTypes, newItemTypes));
     removeKeys.forEach(key => delete myCurrentGround[key]);
-    
+
     newItemTypes.forEach(newItemType => {
       const addObject = differenceBy(myNewGround[newItemType], myCurrentGround[newItemType], 'uuid');
       const removeObjects = differenceBy(myCurrentGround[newItemType], myNewGround[newItemType], 'uuid');
