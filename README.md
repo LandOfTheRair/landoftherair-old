@@ -54,7 +54,7 @@ You only need to do this once; any time you create a character after being set a
 Some routes are enabled for debugging purposes and are otherwise unused. You can visit:
 
 * `/server` for server stats
-* `/logs` for server logs (log entries expire after 2h)
+* `/logs` for server logs (log entries expire after 6h)
 
 ### Commands
 
@@ -100,5 +100,7 @@ You also get access to some commands in-game:
 * `@npcmod npcish propsish` - modify the npc based on propsish
 * `@respawn lairname` - respawn `lairname` on the current map
 * `@searchitems itemname` - search all the items for itemname
+* `@searchnpcs npcname` - search all the items for npcname
+* `@spawnnpc npc.npcId="NPC Internal ID" spawner.*=*` - spawn a monster of the given id, with optional spawner props
 * `@summon playerish` - summon any player who matches playerish
 * `@teleport <x> <y> [map]` - teleport to X,Y, and if map is specified, you'll also change maps
