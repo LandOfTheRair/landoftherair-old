@@ -11,6 +11,7 @@ import * as recurse from 'recursive-readdir';
 import * as path from 'path';
 import * as processStats from 'process-stats';
 
+import { DB } from './database';
 import { Logger } from './logger';
 
 class GameAPI {
@@ -21,12 +22,22 @@ class GameAPI {
     this.isReady = new Promise(resolve => {
       const app = express();
       app.use(cors());
-      app.use('/', (req, res) => {
+
+      app.use('/logs', async (req, res) => {
+        const dbLogs = await DB.$logs.find().toArray();
+        res.json(dbLogs);
+      });
+
+      app.use('/server', (req, res) => {
         res.json(processStats());
       });
+
       app.use('/silent-dev', staticFile(`${__dirname}/silent-dev.html`));
+
       app.use('/silent-production', staticFile(`${__dirname}/silent-production.html`));
+
       app.use('/maps', express.static(require('path').join(__dirname, 'maps')));
+
       const port = process.env.PORT || 3303;
 
       const server = http.createServer(app);

@@ -49,6 +49,13 @@ db.players.update({ username: 'YOUR_ACCOUNT_NAME' }, { $set: { isGM: true } });
 
 You only need to do this once; any time you create a character after being set as a GM, that character will also be flagged.
 
+### Server Debug Routes
+
+Some routes are enabled for debugging purposes and are otherwise unused. You can visit:
+
+* `/server` for server stats
+* `/logs` for server logs (log entries expire after 2h)
+
 ### Commands
 
 Some commands are hidden and don't really need to be used by players, but should be used when testing out moderation features. Commands have varying prefixes, such as:

@@ -412,10 +412,22 @@ export class GameWorld extends Room<GameState> {
   }
 
   private checkIfAnyItemsAreExpired(groundItems) {
+    Logger.db(`Checking for expired items.`, this.state.mapName);
+
     Object.keys(groundItems).forEach(x => {
       Object.keys(groundItems[x]).forEach(y => {
         Object.keys(groundItems[x][y]).forEach(itemClass => {
-          groundItems[x][y][itemClass] = compact(groundItems[x][y][itemClass].map(i => this.hasItemExpired(i) ? null : new Item(i)));
+          groundItems[x][y][itemClass] = compact(groundItems[x][y][itemClass].map(i => {
+            const expired = this.hasItemExpired(i);
+
+            if(expired) {
+              const now = Date.now();
+              const delta = Math.floor((now - i.expiresAt) / 1000);
+              Logger.db(`Item ${i.name} has expired @ ${now} (delta: ${delta}sec).`, this.state.mapName, i);
+            }
+
+            return expired ? null : new Item(i);
+          }));
         });
       });
     });

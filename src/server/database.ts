@@ -22,6 +22,7 @@ class Database {
   public $characterLockers: any;
   public $mapBossTimers: any;
   public $lobbySettings: any;
+  public $logs: any;
 
   private client: MongoClient;
 
@@ -66,6 +67,9 @@ class Database {
         this.$characterLockers.ensureIndex({ username: 1, charSlot: 1, region: 1, lockerId: 1 }, { unique: true });
 
         this.$lobbySettings = client.collection('lobbySettings');
+
+        this.$logs = client.collection('logs');
+        this.$logs.ensureIndex({ createdAt: 1 }, { expireAfterSeconds: 7200 });
 
         this.clearStaleData();
 
