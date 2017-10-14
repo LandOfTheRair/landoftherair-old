@@ -74,7 +74,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
     } else {
       unsorted.splice(this.pinPos, 0, npc);
     }
-    
+
     return unsorted;
   }
 
