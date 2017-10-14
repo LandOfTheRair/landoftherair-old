@@ -130,15 +130,17 @@ export class Player extends Character {
     if(!this.$$flaggedSkills || !this.$$flaggedSkills.length) return;
     const [primary, secondary] = this.$$flaggedSkills;
 
+    const adjustedSkill = this.$$room.calcAdjustedSkillGain(skillGain);
+
     if(secondary) {
-      this.gainSkill(primary, skillGain * 0.75);
-      this.gainSkill(secondary, skillGain * 0.25);
+      this.gainSkill(primary, adjustedSkill * 0.75);
+      this.gainSkill(secondary, adjustedSkill * 0.25);
     } else {
-      this.gainSkill(primary, skillGain);
+      this.gainSkill(primary, adjustedSkill);
     }
 
     if(this.party) {
-      this.$$room.shareSkillWithParty(this, skillGain);
+      this.$$room.shareSkillWithParty(this, adjustedSkill);
     }
   }
 
