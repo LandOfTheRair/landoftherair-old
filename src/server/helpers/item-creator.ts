@@ -1,6 +1,6 @@
 
 import { DB } from '../database';
-import { Item } from '../../models/item';
+import { Item } from '../../shared/models/item';
 
 export class ItemCreator {
 

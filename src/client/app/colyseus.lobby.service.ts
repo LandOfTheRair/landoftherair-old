@@ -4,8 +4,8 @@ import * as swal from 'sweetalert2';
 
 import { AuthService } from './auth.service';
 
-import { LobbyState } from '../../models/lobbystate';
-import { Account } from '../../models/account';
+import { LobbyState } from '../../shared/models/lobbystate';
+import { Account } from '../../shared/models/account';
 
 import { Observable } from 'rxjs/Observable';
 import { extend } from 'lodash';

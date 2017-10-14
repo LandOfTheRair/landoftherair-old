@@ -1,6 +1,6 @@
 
 import { BaseClass } from '../base/BaseClass';
-import { Character } from '../../models/character';
+import { Character } from '../../shared/models/character';
 
 export class Thief extends BaseClass {
   static combatDamageMultiplier = 1.25;

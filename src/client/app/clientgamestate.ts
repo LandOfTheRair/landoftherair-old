@@ -1,14 +1,14 @@
 
 import { extend, remove, find, differenceBy, compact, values } from 'lodash';
 
-import { Player } from '../../models/player';
+import { Player } from '../../shared/models/player';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 
-import { NPC } from '../../models/npc';
-import { Item } from '../../models/item';
-import { Character } from '../../models/character';
+import { NPC } from '../../shared/models/npc';
+import { Item } from '../../shared/models/item';
+import { Character } from '../../shared/models/character';
 
 export class ClientGameState {
   private playerHash: { [key: string]: Player } = {};

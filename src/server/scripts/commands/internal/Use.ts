@@ -2,7 +2,7 @@
 import { startsWith, find } from 'lodash';
 
 import { Command } from '../../../base/Command';
-import { Player } from '../../../../models/player';
+import { Player } from '../../../../shared/models/player';
 
 export class Use extends Command {
 

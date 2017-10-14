@@ -1,6 +1,6 @@
 
-import { Character } from '../../models/character';
-import { MapLayer } from '../../models/maplayer';
+import { Character } from '../../shared/models/character';
+import { MapLayer } from '../../shared/models/maplayer';
 import { find } from 'lodash';
 
 export class MoveHelper {

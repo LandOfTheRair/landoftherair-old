@@ -1,6 +1,6 @@
 
 import { Command } from '../../../base/Command';
-import { Player } from '../../../../models/player';
+import { Player } from '../../../../shared/models/player';
 import { MoveHelper } from '../../../helpers/move-helper';
 
 export class Move extends Command {

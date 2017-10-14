@@ -1,5 +1,5 @@
 
-import { Character, SkillClassNames } from '../../models/character';
+import { Character, SkillClassNames } from '../../shared/models/character';
 import { Command } from './Command';
 import { ItemCreator } from '../helpers/item-creator';
 

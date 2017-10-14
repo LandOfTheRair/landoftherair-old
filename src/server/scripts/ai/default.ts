@@ -1,5 +1,5 @@
 
-import { NPC } from '../../../models/npc';
+import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
 import { random, sumBy, maxBy, sample, sampleSize, clamp, size } from 'lodash';
 

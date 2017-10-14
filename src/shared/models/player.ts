@@ -4,9 +4,9 @@ import { Item } from './item';
 
 import { compact, pull, random, isArray, get, find, includes, reject } from 'lodash';
 import { Party } from './party';
-import { Quest } from '../server/base/Quest';
+import { Quest } from '../../server/base/Quest';
 
-import * as Quests from '../server/quests';
+import * as Quests from '../../server/quests';
 
 export class Player extends Character {
   _id?: any;

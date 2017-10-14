@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { LobbyState } from '../../../models/lobbystate';
+import { LobbyState } from '../../../shared/models/lobbystate';
 import { ColyseusLobbyService } from '../colyseus.lobby.service';
-import { Account } from '../../../models/account';
+import { Account } from '../../../shared/models/account';
 
 import * as _ from 'lodash';
 

@@ -1,7 +1,7 @@
-import { NPC } from '../../../../models/npc';
+import { NPC } from '../../../../shared/models/npc';
 import { NPCLoader } from '../../../helpers/npc-loader';
 import { BaseClassTrainerResponses } from '../common-responses';
-import { SkillClassNames } from '../../../../models/character';
+import { SkillClassNames } from '../../../../shared/models/character';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';

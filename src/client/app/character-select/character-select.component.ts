@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ColyseusLobbyService } from '../colyseus.lobby.service';
-import { LobbyState } from '../../../models/lobbystate';
+import { LobbyState } from '../../../shared/models/lobbystate';
 
 import { truncate, capitalize } from 'lodash';
 import { LocalStorage } from 'ngx-webstorage';

@@ -1,5 +1,5 @@
 
-import { Player } from '../../models/player';
+import { Player } from '../../shared/models/player';
 
 export class Quest {
 

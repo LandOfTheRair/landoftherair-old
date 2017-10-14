@@ -1,6 +1,6 @@
 
 import { Skill } from '../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../models/character';
+import { Character, SkillClassNames } from '../../../../../shared/models/character';
 
 export class Disarm extends Skill {
 
@@ -33,7 +33,7 @@ export class Disarm extends Skill {
 
     const { setSkill, caster } = trap.properties;
     const mySkill = user.calcSkillLevel(SkillClassNames.Thievery);
-    
+
     if(caster.username !== (<any>user).username) {
       if(mySkill <= setSkill) return user.sendClientMessage('You are unable to disarm the trap.');
       user.gainSkill(SkillClassNames.Thievery, 3);

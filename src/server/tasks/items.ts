@@ -1,7 +1,7 @@
 
 import { reject, difference } from 'lodash';
 
-import { SkillClassNames, Stats } from '../../models/character';
+import { SkillClassNames, Stats } from '../../shared/models/character';
 import * as Classes from '../classes';
 import * as Effects from '../effects';
 
@@ -18,7 +18,7 @@ import { includes, flatten, isUndefined, capitalize } from 'lodash';
 
 import {
   Item, ValidItemTypes, WeaponClasses, ArmorClasses
-} from '../../models/item';
+} from '../../shared/models/item';
 
 class ItemLoader {
 

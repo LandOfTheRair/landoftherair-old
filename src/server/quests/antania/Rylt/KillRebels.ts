@@ -2,7 +2,7 @@
 import { clone, includes } from 'lodash';
 
 import { Quest } from '../../../base/Quest';
-import { Player } from '../../../../models/player';
+import { Player } from '../../../../shared/models/player';
 
 export class KillRebels extends Quest {
 

@@ -1,4 +1,4 @@
-import { NPC } from '../../../../../models/npc';
+import { NPC } from '../../../../../shared/models/npc';
 import { NPCLoader } from '../../../../helpers/npc-loader';
 import { RandomlyShouts, CrierResponses } from '../../common-responses';
 

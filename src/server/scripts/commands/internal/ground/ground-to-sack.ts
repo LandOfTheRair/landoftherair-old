@@ -2,7 +2,7 @@
 import { find, each } from 'lodash';
 
 import { Command } from '../../../../base/Command';
-import { Player } from '../../../../../models/player';
+import { Player } from '../../../../../shared/models/player';
 
 export class GroundToSack extends Command {
 

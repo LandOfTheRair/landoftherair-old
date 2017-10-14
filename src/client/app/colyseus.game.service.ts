@@ -5,12 +5,12 @@ import * as swal from 'sweetalert2';
 import { Subject } from 'rxjs/Subject';
 
 import { find, includes, findIndex, extend } from 'lodash';
-import { Player } from '../../models/player';
-import { Item } from '../../models/item';
-import { Locker } from '../../models/container/locker';
+import { Player } from '../../shared/models/player';
+import { Item } from '../../shared/models/item';
+import { Locker } from '../../shared/models/container/locker';
 import { LocalStorageService } from 'ngx-webstorage';
-import { Character } from '../../models/character';
-import { NPC } from '../../models/npc';
+import { Character } from '../../shared/models/character';
+import { NPC } from '../../shared/models/npc';
 
 @Injectable()
 export class ColyseusGameService {

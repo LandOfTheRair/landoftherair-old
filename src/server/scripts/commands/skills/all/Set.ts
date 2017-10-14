@@ -1,6 +1,6 @@
 
 import { Skill } from '../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../models/character';
+import { Character, SkillClassNames } from '../../../../../shared/models/character';
 
 export class Set extends Skill {
 

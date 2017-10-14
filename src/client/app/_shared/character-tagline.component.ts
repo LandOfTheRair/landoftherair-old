@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Player } from '../../../models/player';
+import { Player } from '../../../shared/models/player';
 
 @Component({
   selector: 'app-character-tagline',

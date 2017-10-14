@@ -1,6 +1,6 @@
 
 import { Effect, Maxes } from '../base/Effect';
-import { Character } from '../../models/character';
+import { Character } from '../../shared/models/character';
 
 export class MinorLUK extends Effect {
   effectStart(char: Character) {

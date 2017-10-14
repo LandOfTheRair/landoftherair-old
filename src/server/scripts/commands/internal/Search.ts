@@ -1,6 +1,6 @@
 
 import { Look } from './Look';
-import { Player } from '../../../../models/player';
+import { Player } from '../../../../shared/models/player';
 
 import { compact, endsWith } from 'lodash';
 

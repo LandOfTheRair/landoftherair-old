@@ -3,7 +3,7 @@ import { NPCLoader } from '../helpers/npc-loader';
 import { LootTable } from 'lootastic';
 
 import { sample, random, extend, isNumber, isString, pull, min, every, compact } from 'lodash';
-import { NPC } from '../../models/npc';
+import { NPC } from '../../shared/models/npc';
 import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
 

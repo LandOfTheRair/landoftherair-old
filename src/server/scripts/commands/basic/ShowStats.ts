@@ -1,7 +1,7 @@
 
 import { Command } from '../../../base/Command';
-import { Player } from '../../../../models/player';
-import { StatName } from '../../../../models/character';
+import { Player } from '../../../../shared/models/player';
+import { StatName } from '../../../../shared/models/character';
 
 export class ShowStats extends Command {
 

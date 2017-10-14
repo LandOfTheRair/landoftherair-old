@@ -9,9 +9,9 @@ import * as recurse from 'recursive-readdir';
 
 import { includes, flatten, isUndefined, isNumber, size, extend } from 'lodash';
 
-import { Stats, Skills } from '../../models/character';
+import { Stats, Skills } from '../../shared/models/character';
 
-import { NPC } from '../../models/npc';
+import { NPC } from '../../shared/models/npc';
 
 import * as Classes from '../classes';
 

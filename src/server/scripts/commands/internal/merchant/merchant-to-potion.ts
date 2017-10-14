@@ -2,8 +2,8 @@
 import { find } from 'lodash';
 
 import { Command } from '../../../../base/Command';
-import { Player } from '../../../../../models/player';
-import { Item } from '../../../../../models/item';
+import { Player } from '../../../../../shared/models/player';
+import { Item } from '../../../../../shared/models/item';
 
 export class MerchantToPotion extends Command {
 

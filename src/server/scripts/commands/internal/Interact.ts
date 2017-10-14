@@ -2,8 +2,8 @@
 import { find } from 'lodash';
 
 import { Command } from '../../../base/Command';
-import { Player } from '../../../../models/player';
-import { MapLayer } from '../../../../models/maplayer';
+import { Player } from '../../../../shared/models/player';
+import { MapLayer } from '../../../../shared/models/maplayer';
 
 import { CommandExecutor } from '../../../helpers/command-executor';
 

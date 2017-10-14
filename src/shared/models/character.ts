@@ -10,15 +10,15 @@ import * as RestrictedNumber from 'restricted-number';
 import { Signal } from 'signals.js';
 import { MapLayer } from './maplayer';
 
-import { HideReductionPercents } from '../server/helpers/hide-reductions';
+import { HideReductionPercents } from '../../server/helpers/hide-reductions';
 
-import * as Classes from '../server/classes';
-import { Effect } from '../server/base/Effect';
-import * as Effects from '../server/effects';
+import * as Classes from '../../server/classes';
+import { Effect } from '../../server/base/Effect';
+import * as Effects from '../../server/effects';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
-import { GameWorld } from '../server/rooms/GameWorld';
-import { VisualEffect } from '../server/gidmetadata/visual-effects';
+import { GameWorld } from '../../server/rooms/GameWorld';
+import { VisualEffect } from '../../server/gidmetadata/visual-effects';
 
 export type Allegiance =
   'None'

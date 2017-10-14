@@ -2,7 +2,7 @@
 import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../models/character';
+import { Character, SkillClassNames } from '../../../../../../shared/models/character';
 import { MagicMissile as CastEffect } from '../../../../../effects/MagicMissile';
 
 export class Identify extends Skill {

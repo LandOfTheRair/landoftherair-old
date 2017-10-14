@@ -7,8 +7,8 @@ import * as Mrpas from 'mrpas';
 import { Item } from './item';
 import { NPC } from './npc';
 import { Character } from './character';
-import { GetGidDescription, GetSwimLevel } from '../server/gidmetadata/descriptions';
-import { CombatHelper } from '../server/helpers/combat-helper';
+import { GetGidDescription, GetSwimLevel } from '../../server/gidmetadata/descriptions';
+import { CombatHelper } from '../../server/helpers/combat-helper';
 import { MapLayer } from './maplayer';
 
 export class GameState {
