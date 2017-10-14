@@ -104,6 +104,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
          [ngClass]="[size]"
          [isDisabled]="!showDesc" 
          triggers="dblclick:mouseleave"
+         placement="auto"
          [dragScope]="scopes"
          draggable 
          container="body"

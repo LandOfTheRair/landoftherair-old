@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { includes, pull } from 'lodash';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { includes, pull, difference, differenceBy, find, reject, pullAll } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 @Component({
@@ -7,30 +7,59 @@ import { ColyseusGameService } from '../colyseus.game.service';
   templateUrl: './ground.component.html',
   styleUrls: ['./ground.component.scss']
 })
-export class GroundComponent {
+export class GroundComponent implements OnInit, OnDestroy {
 
   @Input()
   public size;
 
+  private ground$: any;
+  private player$: any;
+
   public selectedType: string;
+
+  public itemTypes: string[] = [];
+  public currentGround: any = {};
+  private allGround: any = {};
 
   constructor(public colyseusGame: ColyseusGameService) {}
 
-  get player() {
-    return this.colyseusGame.character;
-  }
+  private oldX: number;
+  private oldY: number;
+  private player: any;
 
-  get currentGround() {
-    const ground = this.colyseusGame.clientGameState.groundItems;
+  private getCurrentGround(ground) {
     const player = this.player;
 
-    if(!ground[player.x]) return [];
-    if(!ground[player.x][player.y]) return [];
+    if(!ground[player.x]) ground[player.x] = {};
+    if(!ground[player.x][player.y]) ground[player.x][player.y] = {};
 
     return ground[player.x][player.y];
   }
 
-  get itemTypes() {
+  private setCurrentGround() {
+    const myNewGround = this.getCurrentGround(this.allGround);
+    const myCurrentGround = this.currentGround;
+
+    const newItemTypes = Object.keys(myNewGround);
+    const oldItemTypes = Object.keys(myCurrentGround);
+    const removeKeys = difference(newItemTypes, oldItemTypes).concat(difference(oldItemTypes, newItemTypes));
+    removeKeys.forEach(key => delete myCurrentGround[key]);
+    
+    newItemTypes.forEach(newItemType => {
+      const addObject = differenceBy(myNewGround[newItemType], myCurrentGround[newItemType], 'uuid');
+      const removeObjects = differenceBy(myCurrentGround[newItemType], myNewGround[newItemType], 'uuid');
+
+      addObject.forEach(addItem => {
+        myCurrentGround[newItemType] = myCurrentGround[newItemType] || [];
+        myCurrentGround[newItemType].push(addItem);
+      });
+
+      pullAll(myCurrentGround[newItemType], removeObjects);
+
+    });
+  }
+
+  get allItemTypes() {
     const ground = this.currentGround;
     let sorted = Object.keys(ground).sort();
     if(includes(sorted, 'Coin')) {
@@ -39,6 +68,37 @@ export class GroundComponent {
     }
     sorted = sorted.filter(type => ground[type].length > 0);
     return sorted;
+  }
+
+  private setGround(ground: any) {
+    this.allGround = ground;
+    this.updateGround();
+  }
+
+  private updatePlayer() {
+    this.player = this.colyseusGame.character;
+
+    if(this.player.x === this.oldX && this.player.y === this.oldY) return;
+    this.oldX = this.player.x;
+    this.oldY = this.player.y;
+    this.updateGround();
+
+  }
+
+  private updateGround() {
+    this.setCurrentGround();
+    this.itemTypes = this.allItemTypes;
+  }
+
+  ngOnInit() {
+    this.updatePlayer();
+    this.player$ = this.colyseusGame.clientGameState.playerBoxes$.subscribe(() => this.updatePlayer());
+    this.ground$ = this.colyseusGame.clientGameState.updateGround$.subscribe(ground => this.setGround(ground));
+  }
+
+  ngOnDestroy() {
+    this.player$.unsubscribe();
+    this.ground$.unsubscribe();
   }
 
 }
