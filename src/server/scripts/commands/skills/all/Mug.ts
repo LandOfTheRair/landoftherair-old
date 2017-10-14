@@ -2,7 +2,7 @@
 import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../models/character';
+import { Character, SkillClassNames } from '../../../../../shared/models/character';
 import { CombatHelper } from '../../../../helpers/combat-helper';
 import { MoveHelper } from '../../../../helpers/move-helper';
 

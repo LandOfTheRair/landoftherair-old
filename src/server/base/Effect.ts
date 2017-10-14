@@ -1,5 +1,5 @@
 
-import { Character } from '../../models/character';
+import { Character } from '../../shared/models/character';
 import { extend } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/combat-helper';

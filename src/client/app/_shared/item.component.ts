@@ -2,8 +2,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { environment } from '../../environments/environment';
-import { Item, WeaponClasses } from '../../../models/item';
-import { Player } from '../../../models/player';
+import { Item, WeaponClasses } from '../../../shared/models/item';
+import { Player } from '../../../shared/models/player';
 
 import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';

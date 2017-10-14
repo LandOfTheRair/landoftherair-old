@@ -2,9 +2,9 @@
 import { capitalize } from 'lodash';
 
 import { ItemCreator } from './item-creator';
-import { NPC } from '../../models/npc';
+import { NPC } from '../../shared/models/npc';
 import { DB } from '../database';
-import { Player } from '../../models/player';
+import { Player } from '../../shared/models/player';
 
 import * as Effects from '../effects';
 

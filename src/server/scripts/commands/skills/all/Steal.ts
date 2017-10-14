@@ -2,7 +2,7 @@
 import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
-import { Character } from '../../../../../models/character';
+import { Character } from '../../../../../shared/models/character';
 
 export class Steal extends Skill {
 

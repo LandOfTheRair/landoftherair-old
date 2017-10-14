@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../base/Effect';
-import { Character, SkillClassNames } from '../../models/character';
+import { Character, SkillClassNames } from '../../shared/models/character';
 import { Skill } from '../base/Skill';
 
 export class Revive extends SpellEffect {

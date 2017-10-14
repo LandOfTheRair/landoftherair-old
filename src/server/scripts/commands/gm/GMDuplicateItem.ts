@@ -1,8 +1,8 @@
 
 import { Command } from '../../../base/Command';
-import { Player } from '../../../../models/player';
+import { Player } from '../../../../shared/models/player';
 import { merge } from 'lodash';
-import { Item } from '../../../../models/item';
+import { Item } from '../../../../shared/models/item';
 
 export class GMDuplicateItem extends Command {
 

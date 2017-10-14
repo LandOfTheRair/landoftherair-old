@@ -1,8 +1,8 @@
 
 import { Room } from 'colyseus';
-import { LobbyState } from '../../models/lobbystate';
-import { Account } from '../../models/account';
-import { Player } from '../../models/player';
+import { LobbyState } from '../../shared/models/lobbystate';
+import { Account } from '../../shared/models/account';
+import { Player } from '../../shared/models/player';
 
 import { CharacterCreator } from '../helpers/character-creator';
 
@@ -12,7 +12,7 @@ import { DB } from '../database';
 
 import * as jwt from 'jsonwebtoken';
 import { ItemCreator } from '../helpers/item-creator';
-import { SkillClassNames } from '../../models/character';
+import { SkillClassNames } from '../../shared/models/character';
 
 const AUTH0_SECRET = process.env.AUTH0_SECRET;
 

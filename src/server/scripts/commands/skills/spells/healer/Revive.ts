@@ -2,7 +2,7 @@
 import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../models/character';
+import { Character, SkillClassNames } from '../../../../../../shared/models/character';
 import { Revive as CastEffect } from '../../../../../effects/Revive';
 
 export class Revive extends Skill {

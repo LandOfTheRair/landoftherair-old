@@ -1,6 +1,6 @@
 
 import { Effect, Maxes } from '../base/Effect';
-import { Character } from '../../models/character';
+import { Character } from '../../shared/models/character';
 
 export class MinorWIS extends Effect {
   effectStart(char: Character) {

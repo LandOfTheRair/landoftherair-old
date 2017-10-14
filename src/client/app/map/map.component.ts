@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input, OnDestroy } from '@angular/core';
 import { ClientGameState } from '../clientgamestate';
 
 import { Game } from './phasergame';
-import { Player } from '../../../models/player';
+import { Player } from '../../../shared/models/player';
 import { ColyseusService } from '../colyseus.service';
 
 import { HPBox, XPBox } from './floating-box';

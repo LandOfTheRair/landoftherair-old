@@ -9,23 +9,23 @@ import { LootRoller, LootFunctions, LootTable } from 'lootastic';
 import { species } from 'fantastical';
 
 import { Room } from 'colyseus';
-import { GameState } from '../../models/gamestate';
-import { MapLayer } from '../../models/maplayer';
+import { GameState } from '../../shared/models/gamestate';
+import { MapLayer } from '../../shared/models/maplayer';
 
 import { DB } from '../database';
-import { Player } from '../../models/player';
+import { Player } from '../../shared/models/player';
 
 import { CommandExecutor } from '../helpers/command-executor';
-import { NPC } from '../../models/npc';
+import { NPC } from '../../shared/models/npc';
 import { Logger } from '../logger';
 import { Spawner } from '../base/Spawner';
 
 import * as Classes from '../classes';
 import * as Effects from '../effects';
-import { Character, SkillClassNames } from '../../models/character';
+import { Character, SkillClassNames } from '../../shared/models/character';
 import { ItemCreator } from '../helpers/item-creator';
-import { Item } from '../../models/item';
-import { Locker } from '../../models/container/locker';
+import { Item } from '../../shared/models/item';
+import { Locker } from '../../shared/models/container/locker';
 import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
 import { PartyManager } from '../helpers/party-manager';

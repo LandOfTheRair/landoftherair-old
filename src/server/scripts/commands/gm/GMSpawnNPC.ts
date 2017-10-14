@@ -1,6 +1,6 @@
 
 import { Command } from '../../../base/Command';
-import { Player } from '../../../../models/player';
+import { Player } from '../../../../shared/models/player';
 import { merge } from 'lodash';
 import { Spawner } from '../../../base/Spawner';
 import { NPCLoader } from '../../../helpers/npc-loader';

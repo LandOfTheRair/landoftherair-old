@@ -1,9 +1,9 @@
 
-import { NPC } from '../../../models/npc';
+import { NPC } from '../../../shared/models/npc';
 import { includes, capitalize, sample, get, random } from 'lodash';
 import { Logger } from '../../logger';
-import { AllNormalGearSlots } from '../../../models/character';
-import { Item } from '../../../models/item';
+import { AllNormalGearSlots } from '../../../shared/models/character';
+import { Item } from '../../../shared/models/item';
 import { NPCLoader } from '../../helpers/npc-loader';
 
 export const TannerResponses = (npc: NPC) => {

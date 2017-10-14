@@ -1,7 +1,7 @@
 
 import * as NRP from 'node-redis-pubsub';
-import { Player } from '../../models/player';
-import { Party, PartyPlayer } from '../../models/party';
+import { Player } from '../../shared/models/player';
+import { Party, PartyPlayer } from '../../shared/models/party';
 import { GameWorld } from '../rooms/GameWorld';
 
 import { map, find, extend } from 'lodash';

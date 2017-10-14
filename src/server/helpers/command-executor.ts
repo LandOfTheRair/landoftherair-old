@@ -1,6 +1,6 @@
 
 import * as Commands from '../scripts/commands';
-import { Player } from '../../models/player';
+import { Player } from '../../shared/models/player';
 
 import { isArray, startsWith } from 'lodash';
 import { Skill } from '../base/Skill';

@@ -1,5 +1,5 @@
 
-import { Character } from '../../models/character';
+import { Character } from '../../shared/models/character';
 import * as dice from 'dice.js';
 
 export class BaseClass {

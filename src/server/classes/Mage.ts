@@ -1,6 +1,6 @@
 
 import { BaseClass } from '../base/BaseClass';
-import { Character, SkillClassNames } from '../../models/character';
+import { Character, SkillClassNames } from '../../shared/models/character';
 
 export class Mage extends BaseClass {
   static combatDamageMultiplier = 0.85;

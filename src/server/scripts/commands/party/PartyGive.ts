@@ -1,6 +1,6 @@
 
 import { Command } from '../../../base/Command';
-import { Player } from '../../../../models/player';
+import { Player } from '../../../../shared/models/player';
 import { find, includes } from 'lodash';
 
 export class PartyGive extends Command {

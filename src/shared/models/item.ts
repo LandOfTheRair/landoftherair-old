@@ -3,7 +3,7 @@ import { extend, omitBy, includes, without, isNumber } from 'lodash';
 import * as uuid from 'uuid/v4';
 import { Character, SkillClassNames } from './character';
 
-import * as Effects from '../server/effects';
+import * as Effects from '../../server/effects';
 
 export const ValidItemTypes = [
   'Mace', 'Axe', 'Dagger', 'Wand', 'Onehanded', 'Twohanded', 'Polearm', 'Ranged',

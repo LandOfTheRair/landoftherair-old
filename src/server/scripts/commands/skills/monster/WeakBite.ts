@@ -4,7 +4,7 @@ import { startsWith } from 'lodash';
 import * as dice from 'dice.js';
 
 import { Skill } from '../../../../base/Skill';
-import { Character } from '../../../../../models/character';
+import { Character } from '../../../../../shared/models/character';
 import { Poison as CastEffect } from '../../../../effects/Poison';
 import { CombatHelper } from '../../../../helpers/combat-helper';
 

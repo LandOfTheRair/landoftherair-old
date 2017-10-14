@@ -1,8 +1,8 @@
 
 import { includes, random, capitalize } from 'lodash';
 
-import { Character, SkillClassNames, StatName } from '../../models/character';
-import { ShieldClasses, Item } from '../../models/item';
+import { Character, SkillClassNames, StatName } from '../../shared/models/character';
+import { ShieldClasses, Item } from '../../shared/models/item';
 import * as Classes from '../classes';
 import * as Effects from '../effects';
 
