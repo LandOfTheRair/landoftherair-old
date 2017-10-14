@@ -69,7 +69,7 @@ class Database {
         this.$lobbySettings = client.collection('lobbySettings');
 
         this.$logs = client.collection('logs');
-        this.$logs.ensureIndex({ createdAt: 1 }, { expireAfterSeconds: 7200 });
+        this.$logs.ensureIndex({ createdAt: 1 }, { expireAfterSeconds: 3600 * 6 });
 
         this.clearStaleData();
 

@@ -23,6 +23,13 @@ class GameAPI {
       const app = express();
       app.use(cors());
 
+      app.use('/', (req, res) => {
+        res.json({
+          message: 'Welcome to the Land of the Rair API.',
+          readme: 'https://github.com/LandOfTheRair/landoftherair/blob/master/README.md#server-debug-routes'
+        })
+      });
+
       app.use('/logs', async (req, res) => {
         const dbLogs = await DB.$logs.find().toArray();
         res.json(dbLogs);
