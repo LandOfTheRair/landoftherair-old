@@ -33,6 +33,8 @@ export class ClientGameState {
 
   loadPlayer$   = new Subject<any>();
 
+  updateGround$ = new BehaviorSubject({});
+
   setMap$ = new BehaviorSubject({});
 
   updates = {
@@ -81,6 +83,7 @@ export class ClientGameState {
 
   setGroundItems(data) {
     this.groundItems = data;
+    this.updateGround$.next(data || {});
   }
 
   setEnvironmentalObjects(data) {
