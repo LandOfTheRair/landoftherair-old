@@ -3,6 +3,8 @@ import { Character, SkillClassNames } from '../../shared/models/character';
 import { MapLayer } from '../../shared/models/maplayer';
 import { find } from 'lodash';
 
+import * as Pathfinder from 'pathfinding';
+
 export class MoveHelper {
 
   static tryToOpenDoor(player: Character, door, { gameState }): boolean {
@@ -56,79 +58,72 @@ export class MoveHelper {
   static move(player: Character, { room, gameState, x, y }) {
 
     const moveRate = player.getBaseStat('move');
-    x = Math.max(Math.min(x, moveRate), -moveRate);
-    y = Math.max(Math.min(y, moveRate), -moveRate);
+    x = Math.max(Math.min(x, 4), -4);
+    y = Math.max(Math.min(y, 4), -4);
 
-    const checkX = Math.abs(x);
-    const checkY = Math.abs(y);
+    // const checkX = Math.abs(x);
+    // const checkY = Math.abs(y);
 
     const denseTiles = gameState.map.layers[MapLayer.Walls].data;
-    const maxTilesMoved = Math.max(checkX, checkY);
-    const steps = Array(maxTilesMoved).fill(null);
-
-    let tempX = x;
-    let tempY = y;
-
-    for(let curStep = 0; curStep < maxTilesMoved; curStep++) {
-
-      const step = { x: 0, y: 0 };
-
-      if(tempX < 0) {
-        step.x = -1;
-        tempX++;
-      } else if(tempX > 0) {
-        step.x = 1;
-        tempX--;
-      }
-
-      if(tempY < 0) {
-        step.y = -1;
-        tempY++;
-      } else if(tempY > 0) {
-        step.y = 1;
-        tempY--;
-      }
-
-      steps[curStep] = step;
-    }
-
-    const reverseSteps = steps.reverse();
     const denseObjects: any[] = gameState.map.layers[MapLayer.DenseDecor].objects;
     const interactables = gameState.map.layers[MapLayer.Interactables].objects;
-
     const denseCheck = denseObjects.concat(interactables);
 
-    const getNumStepsSuccessful = (trySteps) => {
-      let i = 0;
+    const grid = new Pathfinder.Grid(9, 9);
 
-      for(i; i < trySteps.length; i++) {
-        const step = trySteps[i];
-        const nextTileLoc = ((player.y + step.y) * gameState.map.width) + (player.x + step.x);
+    for(let gx = -4; gx <= 4; gx++) {
+      for(let gy = -4; gy <= 4; gy++) {
+
+        const nextTileLoc = ((player.y + gy) * gameState.map.width) + (player.x + gx);
         const nextTile = denseTiles[nextTileLoc];
 
-        if(nextTile === 0) {
-          const object = find(denseCheck, { x: (player.x + step.x) * 64, y: (player.y + step.y + 1) * 64 });
-          if(object && object.density) {
-            if(object.type === 'Door') {
-              if(!this.tryToOpenDoor(player, object, { gameState })) break;
-            } else {
-              break;
-            }
-          }
+        // dense tiles get set to false
+        if(nextTile !== 0) {
+          grid.setWalkableAt(gx + 4, gy + 4, false);
+
+        // non-dense tiles get checked for objects
         } else {
-          break;
+          const object = find(denseCheck, { x: (player.x + gx) * 64, y: (player.y + gy + 1) * 64 });
+          if(object && object.density && object.type !== 'Door') {
+            grid.setWalkableAt(gx + 4, gy + 4, false);
+          }
         }
+
       }
+    }
 
-      return i;
-    };
+    grid.setWalkableAt(x + 4, y + 4, true);
 
-    const normalStepsTaken = getNumStepsSuccessful(steps);
-    const reverseStepsTaken = getNumStepsSuccessful(reverseSteps);
+    /*
+    visual grid of walkable tiles in view:
 
-    const finalSteps = normalStepsTaken > reverseStepsTaken ? steps : reverseSteps;
+    console.log(grid.nodes.map(arr => {
+      return arr.map(x => x.walkable ? 1 : 0);
+    }));
+    */
 
-    player.takeSequenceOfSteps(finalSteps);
+    const astar = new Pathfinder.AStarFinder({
+      allowDiagonal: true,
+      dontCrossCorners: false
+    });
+
+    const finalPath = astar.findPath(4, 4, 4 + x, 4 + y, grid);
+    
+    const steps = finalPath.map(([x, y], idx) => {
+      if(idx === 0) return { x: 0, y: 0 };
+
+      const [prevX, prevY] = finalPath[idx - 1];
+      return { x: x - prevX, y: y - prevY };
+    });
+
+    // the first step is always our tile, we should ignore it.
+    steps.shift();
+
+    if(steps.length > moveRate) {
+      steps.length = moveRate;
+    }
+
+    player.takeSequenceOfSteps(steps);
     player.setDirBasedOnXYDiff(x, y);
 
     gameState.resetPlayerStatus(player);
