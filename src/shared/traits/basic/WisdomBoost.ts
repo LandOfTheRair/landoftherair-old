@@ -5,9 +5,9 @@ import { Player } from '../../models/player';
 export class WisdomBoost extends Trait {
 
   static increaseLevel = false;
-  static traitName: string = 'WisdomBoost';
+  static traitName = 'WisdomBoost';
   static description = 'Increase your wisdom by 1 point.';
-  static icon: string = 'embrassed-energy';
+  static icon = 'embrassed-energy';
 
   static tpCost = 10;
   static maxLevel = 15;

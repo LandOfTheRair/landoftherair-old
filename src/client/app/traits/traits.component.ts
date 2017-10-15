@@ -45,7 +45,7 @@ export class TraitsComponent implements OnInit {
   }
 
   public buy(traitName: string): void {
-    this.colyseusGame.sendRawCommand(`~trait`, `${this.realCategory} ${traitName}`)
+    this.colyseusGame.sendRawCommand(`~trait`, `${this.realCategory} ${traitName}`);
   }
 
 }

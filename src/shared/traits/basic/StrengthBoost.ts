@@ -5,9 +5,9 @@ import { Player } from '../../models/player';
 export class StrengthBoost extends Trait {
 
   static increaseLevel = false;
-  static traitName: string = 'StrengthBoost';
+  static traitName = 'StrengthBoost';
   static description = 'Increase your strength by 1 point.';
-  static icon: string = 'biceps';
+  static icon = 'biceps';
 
   static tpCost = 10;
   static maxLevel = 15;

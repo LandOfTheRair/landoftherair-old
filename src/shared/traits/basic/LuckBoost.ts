@@ -5,9 +5,9 @@ import { Player } from '../../models/player';
 export class LuckBoost extends Trait {
 
   static increaseLevel = false;
-  static traitName: string = 'LuckBoost';
+  static traitName = 'LuckBoost';
   static description = 'Increase your luck by 1 point.';
-  static icon: string = 'clover';
+  static icon = 'clover';
 
   static tpCost = 25;
   static maxLevel = 15;

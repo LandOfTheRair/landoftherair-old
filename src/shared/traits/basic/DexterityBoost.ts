@@ -5,9 +5,9 @@ import { Player } from '../../models/player';
 export class DexterityBoost extends Trait {
 
   static increaseLevel = false;
-  static traitName: string = 'DexterityBoost';
+  static traitName = 'DexterityBoost';
   static description = 'Increase your dexterity by 1 point.';
-  static icon: string = 'bowman';
+  static icon = 'bowman';
 
   static tpCost = 10;
   static maxLevel = 15;
