@@ -5,6 +5,7 @@ export * from './GMDuplicateItem';
 export * from './GMExamine';
 export * from './GMForgeItem';
 export * from './GMGainSkill';
+export * from './GMGainTraitPoints';
 export * from './GMGainXP';
 export * from './GMKill';
 export * from './GMModifyItem';

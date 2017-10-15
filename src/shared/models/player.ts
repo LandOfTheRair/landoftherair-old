@@ -2,7 +2,7 @@
 import { Character, MaxSizes, AllNormalGearSlots } from './character';
 import { Item } from './item';
 
-import { compact, pull, random, isArray, get, find, includes, reject } from 'lodash';
+import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith } from 'lodash';
 import { Party } from './party';
 import { Quest } from '../../server/base/Quest';
 
@@ -37,9 +37,15 @@ export class Player extends Character {
 
   partyName: string;
 
-  private activeQuests: any = {};
-  private questProgress: any = {};
-  private permanentQuestCompletion: any = {};
+  private activeQuests: any;
+  private questProgress: any;
+  private permanentQuestCompletion: any;
+
+  private traitPoints;
+  private traitPointTimer: number;
+  private traitLevels: any;
+
+  private $$lastCommandSent: string;
 
   get party(): Party {
     return this.$$room ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
@@ -167,7 +173,7 @@ export class Player extends Character {
       const myCon = this.getTotalStat('con');
       const myLuk = this.getTotalStat('luk');
 
-      if(!(killer instanceof Player)) {
+      if(!(killer instanceof Player) && random(1, 100) > this.getTraitLevel('DeathGrip')) {
         this.dropHands();
       }
 
@@ -337,30 +343,32 @@ export class Player extends Character {
 
     // can't start a quest you're already on or have completed
     if(this.hasQuest(quest) || this.hasPermanentCompletionFor(quest.name)) return;
+    this.activeQuests = this.activeQuests || {};
     this.activeQuests[quest.name] = true;
     this.setQuestData(quest, quest.initialData);
   }
 
-  hasQuest(quest: Quest) {
-    return this.activeQuests[quest.name];
+  hasQuest(quest: Quest): boolean {
+    return this.activeQuests ? this.activeQuests[quest.name] : false;
   }
 
-  hasPermanentCompletionFor(questName: string) {
-    return this.permanentQuestCompletion[questName];
+  hasPermanentCompletionFor(questName: string): boolean {
+    return this.permanentQuestCompletion ? this.permanentQuestCompletion[questName] : false;
   }
 
   setQuestData(quest: Quest, data: any) {
+    if(!this.questProgress) this.questProgress = {};
     this.questProgress[quest.name] = data;
   }
 
   getQuestData(quest: Quest) {
-    return this.questProgress[quest.name];
+    return this.questProgress ? this.questProgress[quest.name] : '';
   }
 
   checkForQuestUpdates(questOpts = { kill: '' }) {
 
     if(questOpts.kill) {
-      Object.keys(this.activeQuests).forEach(quest => {
+      Object.keys(this.activeQuests || {}).forEach(quest => {
         const realQuest = Quests[quest];
 
         const { type } = realQuest.requirements;
@@ -375,6 +383,7 @@ export class Player extends Character {
   }
 
   permanentlyCompleteQuest(questName: string) {
+    this.permanentQuestCompletion = this.permanentQuestCompletion || {};
     this.permanentQuestCompletion[questName] = true;
   }
 
@@ -384,6 +393,82 @@ export class Player extends Character {
     }
     delete this.questProgress[quest.name];
     delete this.activeQuests[quest.name];
+  }
+
+  public canGainTraitPoints(): boolean {
+    return this.traitPoints < 100;
+  }
+
+  public gainTraitPoints(tp = 0): void {
+    if(!this.traitPoints) this.traitPoints = 0;
+
+    if(!this.canGainTraitPoints()) return;
+
+    this.traitPoints += tp;
+    if(this.traitPoints < 0 || isNaN(this.traitPoints)) this.traitPoints = 0;
+  }
+
+  public hasTraitPoints(tp = 0): boolean {
+    return this.traitPoints >= tp;
+  }
+
+  public loseTraitPoints(tp = 1): void {
+    this.traitPoints -= tp;
+    if(this.traitPoints < 0 || isNaN(this.traitPoints)) this.traitPoints = 0;
+  }
+
+  public increaseTraitLevel(trait: string, reqBaseClass?: string): void {
+    this.traitLevels = this.traitLevels || {};
+    this.traitLevels[trait] = this.traitLevels[trait] || { level: 0, active: true, reqBaseClass };
+    this.traitLevels[trait].level++;
+  }
+
+  public getTraitLevel(trait: string): number {
+    if(!this.traitLevels || !this.isTraitActive(trait)) return 0;
+    return this.traitLevels[trait] ? this.traitLevels[trait].level : 0;
+  }
+
+  public isTraitActive(trait: string): boolean {
+
+    // haven't bought any traits, so no.
+    if(!this.traitLevels) return false;
+
+    const traitRef = this.traitLevels[trait];
+    if(!traitRef) return false;
+
+    // if my class doesn't match the trait name, the answer is no
+    if(traitRef.reqBaseClass && this.baseClass !== traitRef.reqBaseClass) return false;
+
+    // if it's active, yes
+    return traitRef ? traitRef.active : false;
+  }
+
+  public manageTraitPointPotentialGain(command: string): void {
+    if(startsWith(command, '~')) return;
+
+    if(!this.traitPointTimer || this.traitPointTimer <= 0) {
+      this.traitPointTimer = this.$$room.calcAdjustedTraitTimer(random(1200, 1500));
+    }
+
+    let timerReduction = 1;
+    if(this.$$lastCommandSent === command) timerReduction = 0.3;
+
+    this.traitPointTimer -= this.$$room.calcAdjustedTraitGain(timerReduction);
+
+    if(this.traitPointTimer <= 0 && this.canGainTraitPoints()) {
+      this.gainTraitPointWithMessage();
+    }
+  }
+
+  private gainTraitPointWithMessage() {
+    const messages = [
+      'You made an interesting observation.',
+      'You had a moment of self-realization.',
+      'You are suddenly more aware of your actions.'
+    ];
+
+    this.sendClientMessage(sample(messages));
+    this.gainTraitPoints(1);
   }
 
 }

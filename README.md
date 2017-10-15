@@ -94,6 +94,7 @@ You also get access to some commands in-game:
 * `@examine <nothing|npcish> <nothing|prop>` - if `npcish` is specified, will examine an npc (if `prop` is specified, it will print only that prop). Otherwise, it'll examine your right hand item
 * `@itemforge propsish` - create an item using props syntax, for example: `sprite=1 type=Hammer stats.str=1`
 * `@skill <skillname> <xpgain>` - gain `xpgain` skill for `skillname`
+* `@tp <tpgain>` - gain `tpgain` trait points
 * `@xp <xp>` - gain <xp> XP
 * `@kill <target>` - will instantly kill `target`
 * `@itemmod propsish` - modify your rightHand item based on props specified, for example: `ounces=10`

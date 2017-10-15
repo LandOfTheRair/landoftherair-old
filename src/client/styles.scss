@@ -101,6 +101,21 @@ popover-container {
 
 }
 
+.nav-tabs .nav-link {
+
+  &.active {
+    border-color: $window-text-color !important;
+  }
+
+  &:hover {
+    background-color: darken($window-background-color, 10%) !important;
+  }
+
+  border-bottom-color: $window-text-color !important;
+  background-color: $window-background-color !important;
+  color: $window-text-color !important;
+}
+
 .navbar a:not(.navbar-brand) {
   color: #ccc !important;
 }

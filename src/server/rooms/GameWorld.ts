@@ -345,6 +345,7 @@ export class GameWorld extends Room<GameState> {
     data.room = this;
     data.client = client;
 
+    player.manageTraitPointPotentialGain(data.command);
     CommandExecutor.queueCommand(player, data.command, data);
   }
 
@@ -846,5 +847,13 @@ export class GameWorld extends Room<GameState> {
 
   public calcAdjustedXPGain(xp: number) {
     return Math.floor(xp * this.gameSettings.xpMult);
+  }
+
+  public calcAdjustedTraitTimer(timerValue: number) {
+    return Math.floor(timerValue * this.gameSettings.traitTimerMult);
+  }
+
+  public calcAdjustedTraitGain(traitValue: number) {
+    return Math.floor(traitValue * this.gameSettings.traitGainMult);
   }
 }

@@ -5,6 +5,7 @@ export * from './Look';
 export * from './Move';
 export * from './Say';
 export * from './Talk';
+export * from './Trait';
 export * from './Restore';
 export * from './Search';
 export * from './Drink';

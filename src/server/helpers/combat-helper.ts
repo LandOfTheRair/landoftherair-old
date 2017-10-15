@@ -16,6 +16,18 @@ export type DamageType =
 
 export class CombatHelper {
 
+  static attemptToShadowSwap(char: Character) {
+    const shadowSwapLevel = char.getTraitLevel('ShadowSwap');
+    if(shadowSwapLevel === 0) return;
+    if(!char.isNearWall()) return;
+
+    if(random(1, 100) > shadowSwapLevel * 2) return;
+
+    const hidden = new Effects.Hidden({});
+    char.sendClientMessage('You swap places with your shadow!');
+    hidden.cast(char, char);
+  }
+
   static isShield(item) {
     return includes(ShieldClasses, item.itemClass);
   }
@@ -123,7 +135,8 @@ export class CombatHelper {
       level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor)
     };
 
-    attackerWeapon.loseCondition(1, () => attacker.recalculateStats());
+    const lostCondition = 1 - (attacker.getTraitLevel('CarefulTouch') * 0.05);
+    attackerWeapon.loseCondition(lostCondition, () => attacker.recalculateStats());
     defender.addAgro(attacker, 1);
 
     // try to dodge
@@ -176,7 +189,10 @@ export class CombatHelper {
       const itemTypeToLower = defenderBlocker.itemClass.toLowerCase();
       attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block weapon', target: defender.uuid });
       defender.sendClientMessage({ message: `${attacker.name} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block weapon' });
-      defenderBlocker.loseCondition(1, () => defender.recalculateStats());
+
+
+      const lostCondition = 1 - (defender.getTraitLevel('CarefulTouch') * 0.05);
+      defenderBlocker.loseCondition(lostCondition, () => defender.recalculateStats());
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { block: true, blockedBy: `a ${itemTypeToLower}` };
     }
@@ -194,7 +210,9 @@ export class CombatHelper {
         const itemTypeToLower = defenderShield.itemClass.toLowerCase();
         attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block shield', target: defender.uuid });
         defender.sendClientMessage({ message: `${attacker.name} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block shield' });
-        defenderShield.loseCondition(1, () => defender.recalculateStats());
+
+        const lostCondition = 1 - (defender.getTraitLevel('CarefulTouch') * 0.05);
+        defenderShield.loseCondition(lostCondition, () => defender.recalculateStats());
         if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
         return { block: true, blockedBy: `a ${itemTypeToLower}` };
       }
@@ -244,6 +262,8 @@ export class CombatHelper {
       attackerDamageMessage: `Your attack ${damageType}!`,
       defenderDamageMessage: msg
     });
+
+    this.attemptToShadowSwap(attacker);
 
     if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
 
@@ -334,6 +354,18 @@ export class CombatHelper {
     if(defender.isDead() || (<any>defender).hostility === 'Never') return;
 
     const isHeal = damage < 0;
+
+    if(attacker) {
+      let damageBoostPercent = 0;
+
+      switch(damageClass) {
+        case 'energy':    damageBoostPercent = attacker.getTraitLevel('MagicFocus') * 5; break;
+        case 'heal':      damageBoostPercent = attacker.getTraitLevel('HealingFocus') * 5; break;
+        case 'physical':  damageBoostPercent = attacker.getTraitLevel('ForcefulStrike') * 5; break;
+      }
+
+      damage = Math.floor(damage * (1 + (damageBoostPercent / 100)));
+    }
 
     // if not healing, check for damage resist
     if(!isHeal) {

@@ -400,6 +400,8 @@ export class Character {
     if(this.leftHand && this.leftHand.stats && canGetBonusFromItemInHand(this.leftHand))    addStatsForItem(this.leftHand);
     if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
 
+    this.adjustStatsForTraits();
+
     this.hp.maximum = Math.max(1, this.getTotalStat('hp'));
     this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
 
@@ -942,8 +944,9 @@ export class Character {
     const casterLevel = this.level;
 
     const hideBoost = isThief ? Math.floor(thiefLevel / 5) * 10 : 0;
+    const traitBoost = this.getTraitLevel('DarkerShadows') * 5;
 
-    const hideLevel = (casterThiefSkill + casterAgi + casterLevel + hideBoost);
+    const hideLevel = (casterThiefSkill + casterAgi + casterLevel + hideBoost + traitBoost);
     return Math.floor(hideLevel);
   }
 
@@ -951,7 +954,8 @@ export class Character {
     const leftHandClass = this.leftHand ? this.leftHand.itemClass : '';
     const rightHandClass = this.rightHand ? this.rightHand.itemClass : '';
 
-    const reductionPercent = (HideReductionPercents[leftHandClass] || 0) + (HideReductionPercents[rightHandClass] || 0);
+    let reductionPercent = (HideReductionPercents[leftHandClass] || 0) + (HideReductionPercents[rightHandClass] || 0);
+    reductionPercent = Math.max(0, reductionPercent - this.getTraitLevel('ShadowSheath'));
 
     const stealth = this.getTotalStat('stealth');
     return Math.floor(stealth * (reductionPercent / 100));
@@ -997,5 +1001,27 @@ export class Character {
       }
     }
     return false;
+  }
+
+  // implemented so npcs get the same check but it's 0 instead of a value
+  public getTraitLevel(trait: string): number {
+    return 0;
+  }
+
+  private adjustStatsForTraits(): void {
+
+    // combat traits
+    this.totalStats.armorClass += this.getTraitLevel('NaturalArmor');
+    this.totalStats.accuracy += this.getTraitLevel('EagleEye');
+    this.totalStats.defense += this.getTraitLevel('FunkyMoves');
+    this.totalStats.offense += this.getTraitLevel('SwordTricks');
+
+    // mage & healer traits
+    this.totalStats.mp += this.getTraitLevel('MagicBoost');
+    this.totalStats.mpregen += this.getTraitLevel('CalmMind');
+
+    // warrior
+    this.totalStats.offense += this.getTraitLevel('Swashbuckler');
+    this.totalStats.accuracy += this.getTraitLevel('Deadeye');
   }
 }

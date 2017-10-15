@@ -10,6 +10,7 @@ import { Ng2Webstorage } from 'ngx-webstorage';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
@@ -54,6 +55,7 @@ import { LinkifyPipe } from './_shared/linkify.pipe';
 import { MacroComponent } from './macro/macro.component';
 import { ActiveTargetComponent } from './active-target/active-target.component';
 import { PartyComponent } from './party/party.component';
+import { TraitsComponent } from './traits/traits.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -95,7 +97,8 @@ import { PartyComponent } from './party/party.component';
     LockersComponent,
     MacroComponent,
     ActiveTargetComponent,
-    PartyComponent
+    PartyComponent,
+    TraitsComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +112,8 @@ import { PartyComponent } from './party/party.component';
     PopoverModule.forRoot(),
     ModalModule.forRoot(),
     ButtonsModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [
     AuthService,
