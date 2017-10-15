@@ -12,7 +12,7 @@ exec('git add -f dist', (e, stdout, stderr) => {
     process.exit(0);
   }
 
-  exec('git commit dist/models/* dist/server/* -m "dokku dist"', (e, stdout, stderr) => {
+  exec('git commit dist/shared/* dist/server/* -m "dokku dist"', (e, stdout, stderr) => {
 
     console.log('Committed dist files');
 
