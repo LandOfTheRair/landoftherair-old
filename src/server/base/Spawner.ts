@@ -2,7 +2,7 @@
 import { NPCLoader } from '../helpers/npc-loader';
 import { LootTable } from 'lootastic';
 
-import { sample, random, extend, isNumber, isString, pull, min, every, compact } from 'lodash';
+import { sample, random, extend, isNumber, isString, pull, min, every, compact, some } from 'lodash';
 import { NPC } from '../../shared/models/npc';
 import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
@@ -277,6 +277,10 @@ export class Spawner {
         npc.$$room.state.calculateFOV(npc);
       }
     });
+  }
+
+  public hasAnyAlive(): boolean {
+    return some(this.npcs, npc => npc.hp.getValue() > 0);
   }
 
 }

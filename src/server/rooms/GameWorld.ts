@@ -400,7 +400,10 @@ export class GameWorld extends Room<GameState> {
 
     const timestamp = Date.now();
 
-    const spawners = this.spawners.filter(spawner => spawner.shouldSerialize && spawner.currentTick > 0);
+    const spawners = this.spawners.filter(spawner => {
+      return spawner.shouldSerialize && spawner.currentTick > 0 && !spawner.hasAnyAlive();
+    });
+    
     const saveSpawners = spawners.map(spawner => ({
       x: spawner.x,
       y: spawner.y,
