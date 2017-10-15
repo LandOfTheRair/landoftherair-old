@@ -47,8 +47,17 @@ export class CombatHelper {
   }
 
   static physicalAttack(attacker: Character, defender: Character, opts: any = {}) {
+    this.doPhysicalAttack(attacker, defender, opts);
 
-    const { isThrow, throwHand, isBackstab, isMug, attackRange } = opts;
+    if(attacker.leftHand && attacker.leftHand.offhand) {
+      opts = opts || {};
+      opts.isOffhand = true;
+      this.doPhysicalAttack(attacker, defender, opts);
+    }
+  }
+
+  private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
+    const { isThrow, throwHand, isBackstab, isMug, attackRange, isOffhand } = opts;
 
     if(defender.isDead() || attacker.isDead()) return { isDead: true };
 
@@ -59,6 +68,9 @@ export class CombatHelper {
 
     if(isThrow) {
       attackerWeapon = attacker[`${throwHand}Hand`];
+
+    } else if(isOffhand) {
+      attackerWeapon = attacker.leftHand;
 
     } else {
       attackerWeapon = attacker.rightHand
@@ -106,14 +118,16 @@ export class CombatHelper {
                          ? defender.leftHand
                          : null;
 
+    const offhandDivisor = isOffhand ? 3 : 1;
+
     // skill + 1 because skill 0 is awful
     const attackerScope = {
       skill: attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type) + 1,
-      offense: attacker.getTotalStat('offense'),
-      accuracy: attacker.getTotalStat('accuracy'),
-      dex: attacker.getTotalStat('dex'),
-      str: attacker.getTotalStat('str'),
-      str4: Math.floor(attacker.getTotalStat('str') / 4),
+      offense: Math.floor(attacker.getTotalStat('offense') / offhandDivisor),
+      accuracy: Math.floor(attacker.getTotalStat('accuracy') / offhandDivisor),
+      dex: Math.floor(attacker.getTotalStat('dex') / offhandDivisor),
+      str: Math.floor(attacker.getTotalStat('str') / offhandDivisor),
+      str4: Math.floor((attacker.getTotalStat('str') / 4) / offhandDivisor),
       multiplier: Classes[attacker.baseClass || 'Undecided'].combatDamageMultiplier,
       level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatLevelDivisor),
       damageMin: attackerWeapon.minDamage,
@@ -223,6 +237,10 @@ export class CombatHelper {
     const damageRight = Math.floor(attackerScope.str + attackerScope.level + damageMax);
 
     let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}`) * attackerScope.multiplier) + attackerScope.damageBase;
+    
+    if(isOffhand) {
+      damage = Math.floor(damage / offhandDivisor);
+    }
 
     if(isBackstab) {
       const thiefSkill = attacker.calcSkillLevel(SkillClassNames.Thievery);

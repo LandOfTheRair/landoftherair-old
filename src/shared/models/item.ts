@@ -131,6 +131,7 @@ export class Item {
   isSackable = true;
 
   attackRange = 0;
+  offhand: boolean;
   returnsOnThrow: boolean;
   binds: boolean;
   tellsBind: boolean;
