@@ -134,6 +134,8 @@ export const AllNormalGearSlots = [
   'gear.Head', 'gear.Neck', 'gear.Waist', 'gear.Wrists', 'gear.Hands', 'gear.Feet', 'gear.Ear'
 ];
 
+const SKILL_COEFFICIENT = 1.55;
+
 export class Character {
   name: string;
   agro: any = {};
@@ -733,7 +735,7 @@ export class Character {
     if(skillValue < 100) return 0;
     if(skillValue < 200) return 1;
 
-    const value = Math.log(skillValue / 100) / Math.log(2);
+    const value = Math.log(skillValue / 100) / Math.log(SKILL_COEFFICIENT);
     return 1 + Math.floor(value);
   }
 
@@ -742,7 +744,7 @@ export class Character {
   }
 
   calcSkillXP(level: number) {
-    return Math.pow(2, level) * 100;
+    return Math.floor(Math.pow(SKILL_COEFFICIENT, level) * 100);
   }
 
   applyEffect(effect: Effect) {
