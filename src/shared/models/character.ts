@@ -19,6 +19,7 @@ import { Sack } from './container/sack';
 import { Belt } from './container/belt';
 import { GameWorld } from '../../server/rooms/GameWorld';
 import { VisualEffect } from '../../server/gidmetadata/visual-effects';
+import { MoveHelper } from '../../server/helpers/move-helper';
 
 export type Allegiance =
   'None'
@@ -589,7 +590,11 @@ export class Character {
       if(nextTile === 0) {
         const object = find(denseCheck, { x: (this.x + step.x) * 64, y: (this.y + step.y + 1) * 64 });
         if(object && object.density) {
-          return;
+          if(object.type === 'Door') {
+            if(!MoveHelper.tryToOpenDoor(this, object, { gameState: this.$$room.state })) return;
+          } else {
+            return;
+          }
         }
       } else {
         return;
