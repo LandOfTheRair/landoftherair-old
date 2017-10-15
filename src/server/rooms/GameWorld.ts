@@ -342,6 +342,8 @@ export class GameWorld extends Room<GameState> {
     if(!data.command) return;
     const player = this.state.findPlayer(client.username);
 
+    if(!player) return;
+
     data.gameState = this.state;
     data.room = this;
     data.client = client;
