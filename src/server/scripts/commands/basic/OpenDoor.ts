@@ -33,7 +33,7 @@ export class OpenDoor extends Command {
       return;
     }
 
-    MoveHelper.tryToOpenDoor(player, door, { room, gameState, x: targetX, y: targetY });
+    MoveHelper.tryToOpenDoor(player, door, { gameState });
   }
 
 }
