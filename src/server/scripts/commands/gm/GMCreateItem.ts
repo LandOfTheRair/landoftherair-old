@@ -16,7 +16,7 @@ export class GMCreateItem extends Command {
 
     let item;
     try {
-      item = await ItemCreator.getItemByName(itemName);
+      item = await ItemCreator.getItemByName(itemName, player.$$room);
     } catch(e) {
       player.sendClientMessage(`Warning: item "${itemName}" does not exist.`);
       return;

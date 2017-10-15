@@ -1,5 +1,5 @@
 
-import { extend, omitBy, includes, without, isNumber } from 'lodash';
+import { extend, omitBy, includes, without, isNumber, size } from 'lodash';
 import * as uuid from 'uuid/v4';
 import { Character, SkillClassNames } from './character';
 
@@ -220,6 +220,10 @@ export class Item {
     if(senseLevel > 1 && this.effect && this.itemClass !== 'Bottle') {
       sense2Text = `This item has ${this.effect.uses ? 'castable' : 'on-contact'} ${this.effect.name}`;
       sense2Text = this.effect.potency ? `${sense2Text} with a potency of ${this.effect.potency}. ` : `${sense2Text}. `;
+    }
+
+    if(senseLevel > 1 && size(this.stats) > 0) {
+      sense2Text = `${sense2Text ? `${sense2Text} ` : ''}This item affects physical attributes! `;
     }
 
     const levelText = this.requirements && this.requirements.level ? `You must be level ${this.requirements.level} to use this item. ` : '';
