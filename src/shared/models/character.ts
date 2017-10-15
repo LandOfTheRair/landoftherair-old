@@ -771,6 +771,16 @@ export class Character {
     return find(this.effects, { name: effectName });
   }
 
+  hasHeldItem(item: string, hand: 'left'|'right' = 'right'): boolean {
+    const ref = this[`${hand}Hand`];
+    return (ref && ref.name === item && ref.isOwnedBy(this));
+  }
+
+  hasHeldItems(item1: string, item2: string): boolean {
+    return (this.hasHeldItem(item1, 'right') && this.hasHeldItem(item2, 'left'))
+      || (this.hasHeldItem(item2, 'right') && this.hasHeldItem(item1, 'left'));
+  }
+
   useItem(source: 'leftHand' | 'rightHand' | 'potionHand') {
     const item = this[source];
     if(!item || !item.use(this)) return;
