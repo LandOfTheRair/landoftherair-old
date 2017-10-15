@@ -29,7 +29,6 @@ import { Locker } from '../../shared/models/container/locker';
 import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
 import { PartyManager } from '../helpers/party-manager';
-import { Effect } from '../base/Effect';
 import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings-helper';
 
 const TICK_DIVISOR = 2;
@@ -62,6 +61,8 @@ export class GameWorld extends Room<GameState> {
   public partyManager: PartyManager;
 
   private gameSettings: GameSettings = clone(BASE_SETTINGS);
+
+  private itemGC: any;
 
   get allSpawners() {
     return this.spawners;
@@ -375,6 +376,9 @@ export class GameWorld extends Room<GameState> {
   }
 
   onDispose() {
+    if(this.itemGC) {
+      this.itemGC.cancel();
+    }
     this.saveGround();
     this.saveBossTimers();
     this.partyManager.stopEmitting();
@@ -450,7 +454,7 @@ export class GameWorld extends Room<GameState> {
     const rule = new scheduler.RecurrenceRule();
     rule.minute = this.decayChecksMinutes;
 
-    scheduler.scheduleJob(rule, () => {
+    this.itemGC = scheduler.scheduleJob(rule, () => {
       this.checkIfAnyItemsAreExpired(this.state.groundItems);
     });
   }
