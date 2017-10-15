@@ -108,12 +108,12 @@ export class MoveHelper {
     });
 
     const finalPath = astar.findPath(4, 4, 4 + x, 4 + y, grid);
-    
-    const steps = finalPath.map(([x, y], idx) => {
+
+    const steps = finalPath.map(([newX, newY], idx) => {
       if(idx === 0) return { x: 0, y: 0 };
 
       const [prevX, prevY] = finalPath[idx - 1];
-      return { x: x - prevX, y: y - prevY };
+      return { x: newX - prevX, y: newY - prevY };
     });
 
     // the first step is always our tile, we should ignore it.
