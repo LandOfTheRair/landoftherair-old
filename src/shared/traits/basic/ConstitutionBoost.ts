@@ -5,9 +5,9 @@ import { Player } from '../../models/player';
 export class ConstitutionBoost extends Trait {
 
   static increaseLevel = false;
-  static traitName: string = 'ConstitutionBoost';
+  static traitName = 'ConstitutionBoost';
   static description = 'Increase your constitution by 1 point.';
-  static icon: string = 'glass-heart';
+  static icon = 'glass-heart';
 
   static tpCost = 5;
   static maxLevel = 15;

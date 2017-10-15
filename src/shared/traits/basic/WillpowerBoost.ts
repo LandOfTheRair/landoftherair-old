@@ -5,9 +5,9 @@ import { Player } from '../../models/player';
 export class WillpowerBoost extends Trait {
 
   static increaseLevel = false;
-  static traitName: string = 'WillpowerBoost';
+  static traitName = 'WillpowerBoost';
   static description = 'Increase your willpower by 1 point.';
-  static icon: string = 'aura';
+  static icon = 'aura';
 
   static tpCost = 25;
   static maxLevel = 15;

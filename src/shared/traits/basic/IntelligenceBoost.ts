@@ -5,9 +5,9 @@ import { Player } from '../../models/player';
 export class IntelligenceBoost extends Trait {
 
   static increaseLevel = false;
-  static traitName: string = 'IntelligenceBoost';
+  static traitName = 'IntelligenceBoost';
   static description = 'Increase your intelligence by 1 point.';
-  static icon: string = 'bookmarklet';
+  static icon = 'bookmarklet';
 
   static tpCost = 10;
   static maxLevel = 15;

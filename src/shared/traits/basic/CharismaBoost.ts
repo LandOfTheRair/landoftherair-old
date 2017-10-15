@@ -5,9 +5,9 @@ import { Player } from '../../models/player';
 export class CharismaBoost extends Trait {
 
   static increaseLevel = false;
-  static traitName: string = 'CharismaBoost';
+  static traitName = 'CharismaBoost';
   static description = 'Increase your charisma by 1 point.';
-  static icon: string = 'rose';
+  static icon = 'rose';
 
   static tpCost = 25;
   static maxLevel = 15;

@@ -135,8 +135,8 @@ export class CombatHelper {
       level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor)
     };
 
-    const lostCondition = 1 - (attacker.getTraitLevel('CarefulTouch') * 0.05);
-    attackerWeapon.loseCondition(lostCondition, () => attacker.recalculateStats());
+    const lostAtkCondition = 1 - (attacker.getTraitLevel('CarefulTouch') * 0.05);
+    attackerWeapon.loseCondition(lostAtkCondition, () => attacker.recalculateStats());
     defender.addAgro(attacker, 1);
 
     // try to dodge

@@ -5,9 +5,9 @@ import { Player } from '../../models/player';
 export class AgilityBoost extends Trait {
 
   static increaseLevel = false;
-  static traitName: string = 'AgilityBoost';
+  static traitName = 'AgilityBoost';
   static description = 'Increase your agility by 1 point.';
-  static icon: string = 'sprint';
+  static icon = 'sprint';
 
   static tpCost = 10;
   static maxLevel = 15;
