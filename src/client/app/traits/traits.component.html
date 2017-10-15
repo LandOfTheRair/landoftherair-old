@@ -1,0 +1,36 @@
+
+<div class="p-1 item-container d-flex flex-wrap">
+
+  <tabset justified="true">
+    <tab *ngFor="let cat of traitCategories" [heading]="cat" (select)="this.activeTraitCategory = cat">
+
+      <div class="p-0 d-flex flex-wrap flex-row">
+        <div *ngFor="let trait of currentTraitSet; let i = index"
+             [tooltip]="trait.description"
+             container="body"
+             class="trait col-4 my-3 text-center">
+
+          <div class="trait-icon">
+            <app-icon [name]="trait.icon" bgColor="transparent"></app-icon>
+          </div>
+
+          <div>
+            {{ fixName(trait.name) }}
+          </div>
+
+          <div>
+            Cost: {{ trait.tpCost }} TP
+          </div>
+
+          <div>
+            <button class="btn btn-info"
+                    (click)="buy(trait.name)"
+                    [disabled]="!trait.canBuy(player)">Level {{ trait.currentLevel(player) }}/{{ trait.maxLevel }}</button>
+          </div>
+
+        </div>
+      </div>
+
+    </tab>
+  </tabset>
+</div>

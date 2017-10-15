@@ -27,25 +27,36 @@
 
         <ul *dropdownMenu class="dropdown-menu">
           <li>
-            <a class="dropdown-item" (click)="showStatsWindow = !showStatsWindow">Stats</a>
+            <a class="dropdown-item"
+               (click)="showStatsWindow = !showStatsWindow; activeWindow = 'stats'">Stats</a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="showSkillsWindow = !showSkillsWindow">Skills</a>
+            <a class="dropdown-item"
+               (click)="showSkillsWindow = !showSkillsWindow; activeWindow = 'skills'">Skills</a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="showCommandLine = !showCommandLine">Command Line</a>
+            <a class="dropdown-item"
+               (click)="showCommandLine = !showCommandLine; activeWindow = 'cmd'">Command Line</a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="showInventoryBelt = !showInventoryBelt">Belt</a>
+            <a class="dropdown-item"
+               (click)="showInventoryBelt = !showInventoryBelt; activeWindow = 'belt'">Belt</a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="showInventorySack = !showInventorySack">Sack</a>
+            <a class="dropdown-item"
+               (click)="showInventorySack = !showInventorySack; activeWindow = 'sack'">Sack</a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="showEquipment = !showEquipment">Equipment</a>
+            <a class="dropdown-item"
+               (click)="showEquipment = !showEquipment; activeWindow = 'equipment'">Equipment</a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="showParty = !showParty">Party</a>
+            <a class="dropdown-item"
+               (click)="showParty = !showParty; activeWindow = 'party'">Party</a>
+          </li>
+          <li>
+            <a class="dropdown-item"
+               (click)="showTraits = !showTraits; activeWindow = 'traits'">Traits</a>
           </li>
           <li>
             <a class="dropdown-item" (click)="options.show()">Options</a>
@@ -425,6 +436,24 @@
     </div>
     <div class="window-body">
       <app-party></app-party>
+    </div>
+  </div>
+
+  <div class="window traits above-game-window"
+       [class.active-window]="activeWindow === 'traits'"
+       (click)="activeWindow = 'traits'"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="traitsDrag"
+       windowName="traits"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && showTraits">
+    <div class="window-header text-center" #traitsDrag>
+      Traits ({{ colyseus.game.character.traitPoints || 0 }} TP)
+      <app-close-button (click)="showTraits = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-traits></app-traits>
     </div>
   </div>
 

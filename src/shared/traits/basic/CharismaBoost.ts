@@ -1,0 +1,28 @@
+
+import { Trait } from '../../models/trait';
+import { Player } from '../../models/player';
+
+export class CharismaBoost extends Trait {
+
+  static increaseLevel = false;
+  static traitName: string = 'CharismaBoost';
+  static description = 'Increase your charisma by 1 point.';
+  static icon: string = 'rose';
+
+  static tpCost = 25;
+  static maxLevel = 15;
+
+  static currentLevel(player: Player): number {
+    return player.baseStats.cha;
+  }
+
+  static canBuy(player: Player) {
+    return super.canBuy(player) && player.baseStats.cha < 15;
+  }
+
+  static buy(player: Player) {
+    super.buy(player);
+    player.gainBaseStat('cha');
+  }
+
+}

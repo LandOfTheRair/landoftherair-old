@@ -7,12 +7,16 @@ export class GameSettings {
   xpMult: number;
   skillMult: number;
   goldMult: number;
+  traitTimerMult: number;
+  traitGainMult: number;
 }
 
 export const BASE_SETTINGS: GameSettings = {
   xpMult: 1,
   skillMult: 1,
-  goldMult: 1
+  goldMult: 1,
+  traitTimerMult: 1,
+  traitGainMult: 1
 };
 
 export class SettingsHelper {

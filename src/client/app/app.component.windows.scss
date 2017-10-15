@@ -205,6 +205,13 @@
     z-index: 1000;
   }
 
+  &.traits {
+    min-width: 525px;
+    max-width: 525px;
+
+    z-index: 1000;
+  }
+
   position: absolute !important;
 
   border: 1px solid #000;
