@@ -6,13 +6,13 @@ import { Player } from './player';
 export class Trait {
 
   static baseClass: string;
-  static increaseLevel: boolean = true;
-  static traitName: string = 'Name';
-  static description: string = 'Description';
-  static icon: string = '';
+  static increaseLevel = true;
+  static traitName = 'Name';
+  static description = 'Description';
+  static icon = '';
 
-  static tpCost: number = 100;
-  static maxLevel: number = 0;
+  static tpCost = 100;
+  static maxLevel = 0;
 
   static currentLevel(player: Player): number {
     return player.getTraitLevel(this.traitName);
