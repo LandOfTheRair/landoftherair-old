@@ -9,6 +9,9 @@ export class GameSettings {
   goldMult: number;
   traitTimerMult: number;
   traitGainMult: number;
+  numberOfRandomStatsForItems: number;
+  randomStatMaxValue: number;
+  randomStatChance: number;
 }
 
 export const BASE_SETTINGS: GameSettings = {
@@ -16,7 +19,10 @@ export const BASE_SETTINGS: GameSettings = {
   skillMult: 1,
   goldMult: 1,
   traitTimerMult: 1,
-  traitGainMult: 1
+  traitGainMult: 1,
+  numberOfRandomStatsForItems: 0,
+  randomStatMaxValue: 0,
+  randomStatChance: 0
 };
 
 export class SettingsHelper {
@@ -42,7 +48,7 @@ export class SettingsHelper {
   }
 
   static isSettingValid(key: string): boolean {
-    return BASE_SETTINGS[key];
+    return BASE_SETTINGS.hasOwnProperty(key);
   }
 
 }

@@ -237,7 +237,7 @@ export class CombatHelper {
     const damageRight = Math.floor(attackerScope.str + attackerScope.level + damageMax);
 
     let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}`) * attackerScope.multiplier) + attackerScope.damageBase;
-    
+
     if(isOffhand) {
       damage = Math.floor(damage / offhandDivisor);
     }

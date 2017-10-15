@@ -669,7 +669,7 @@ export class GameWorld extends Room<GameState> {
 
     const items = LootRoller.rollTables(tables);
 
-    const itemPromises: Array<Promise<Item>> = items.map(itemName => ItemCreator.getItemByName(itemName));
+    const itemPromises: Array<Promise<Item>> = items.map(itemName => ItemCreator.getItemByName(itemName, this));
     const allItems: Item[] = await Promise.all(itemPromises);
 
     return allItems;
@@ -864,5 +864,13 @@ export class GameWorld extends Room<GameState> {
 
   public calcAdjustedTraitGain(traitValue: number) {
     return Math.floor(traitValue * this.gameSettings.traitGainMult);
+  }
+
+  public getRandomStatInformation() {
+    return {
+      numberOfRandomStatsForItems: this.gameSettings.numberOfRandomStatsForItems,
+      randomStatMaxValue: this.gameSettings.randomStatMaxValue,
+      randomStatChance: this.gameSettings.randomStatChance
+    };
   }
 }

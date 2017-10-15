@@ -3,6 +3,8 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { SettingsHelper } from '../../../helpers/settings-helper';
 
+import { size } from 'lodash';
+
 export class GMSettingsUpdate extends Command {
 
   public name = '@updatemapsettings';
@@ -20,6 +22,12 @@ export class GMSettingsUpdate extends Command {
       delete mergeObj[key];
       player.sendClientMessage(`Setting ${key} is invalid. Removing.`);
     });
+
+    Object.keys(mergeObj).forEach(key => {
+      player.sendClientMessage(`Setting ${key} to ${mergeObj[key]}.`);
+    });
+
+    if(size(mergeObj) === 0) return;
 
     await SettingsHelper.saveMapSettings(room.mapRegion, room.mapName, mergeObj);
     room.loadGameSettings();
