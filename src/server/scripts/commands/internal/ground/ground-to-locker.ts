@@ -26,7 +26,6 @@ export class GroundToLocker extends Command {
 
     if(!this.addItemToContainer(player, locker, item)) return;
 
-    player.setRightHand(null);
     room.updateLocker(player, locker);
     room.removeItemFromGround(item);
 
