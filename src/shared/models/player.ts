@@ -317,7 +317,7 @@ export class Player extends Character {
 
     if(this.isInCombat) this.combatTicks--;
 
-    if(!this.$$actionQueue) return;
+    if(!this.$$actionQueue || this.isUnableToAct()) return;
     const nextAction = this.$$actionQueue.shift();
     if(nextAction) {
       this.$$room.executeCommand(this, nextAction.command, nextAction.args);

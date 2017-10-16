@@ -71,7 +71,7 @@ export class SpellEffect extends Effect {
     // called from something like a trap
     if(this.casterRef) return;
 
-    if(this.skillFlag) {
+    if(this.skillFlag && skillRef) {
 
       const flaggedSkill = this.skillFlag(caster);
 

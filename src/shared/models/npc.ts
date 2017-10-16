@@ -103,6 +103,8 @@ export class NPC extends Character {
   tick() {
     super.tick();
 
+    if(this.isUnableToAct()) return;
+
     if(this.$$ai && this.$$ai.tick) {
       this.$$ai.tick.dispatch(this);
     }
