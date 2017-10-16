@@ -437,7 +437,7 @@ export class Player extends Character {
     if(startsWith(command, '~')) return;
 
     if(!this.traitPointTimer || this.traitPointTimer <= 0) {
-      this.traitPointTimer = this.$$room.calcAdjustedTraitTimer(random(1200, 1500));
+      this.traitPointTimer = this.$$room.calcAdjustedTraitTimer(random(200, 300));
     }
 
     let timerReduction = 1;
