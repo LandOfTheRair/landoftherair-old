@@ -248,7 +248,7 @@
   hostility: Always
   sprite: [630, 635, 645, 650]
   alignment: Evil
-  stats: 15
+  stats: 7
 
   baseClass: Thief
 
@@ -256,7 +256,7 @@
     - SetTrap
 
   otherStats:
-    stealth: 50
+    stealth: 30
     perception: 50
     offense: 5
 
@@ -265,7 +265,7 @@
     Ranged: 5
     Dagger: 5
 
-  level: 7
+  level: 6
   skillOnKill: 20
 
   gold:
