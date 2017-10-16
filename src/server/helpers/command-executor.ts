@@ -62,7 +62,11 @@ export class CommandExecutor {
       return;
     }
 
-    if(startsWith(command, '~') || startsWith(command, '@')) {
+    if(startsWith(command, '@')) {
+      return this.executeCommand(player, command, args);
+    }
+
+    if(startsWith(command, '~') && !player.isUnableToAct()) {
       return this.executeCommand(player, command, args);
     } else {
       player.queueAction({ command, args: args.args });

@@ -577,7 +577,7 @@ export class Character {
     }
   }
 
-  takeSequenceOfSteps(steps: any[], isChasing = false) {
+  takeSequenceOfSteps(steps: any[], isChasing = false, recalculateFOV = false) {
     const denseTiles = this.$$map.layers[MapLayer.Walls].data;
     const denseObjects: any[] = this.$$map.layers[MapLayer.DenseDecor].objects;
     const interactables = this.$$map.layers[MapLayer.Interactables].objects;
@@ -616,6 +616,10 @@ export class Character {
     if(potentialTrap && potentialTrap.properties && potentialTrap.properties.effect) {
       this.$$room.state.removeInteractable(potentialTrap);
       this.$$room.castEffectFromTrap(this, potentialTrap);
+    }
+
+    if(recalculateFOV) {
+      this.$$room.state.calculateFOV(this);
     }
   }
 
@@ -1040,5 +1044,9 @@ export class Character {
     // warrior
     this.totalStats.offense += this.getTraitLevel('Swashbuckler');
     this.totalStats.accuracy += this.getTraitLevel('Deadeye');
+  }
+
+  public isUnableToAct(): boolean {
+    return this.hasEffect('Stunned');
   }
 }

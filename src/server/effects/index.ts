@@ -23,6 +23,7 @@ export * from './Afflict';
 export * from './MagicMissile';
 
 export * from './Poison';
+export * from './Stunned';
 
 export * from './BarFire';
 export * from './BarFrost';

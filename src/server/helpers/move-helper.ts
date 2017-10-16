@@ -1,7 +1,7 @@
 
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { MapLayer } from '../../shared/models/maplayer';
-import { find } from 'lodash';
+import { find, isUndefined } from 'lodash';
 
 import * as Pathfinder from 'pathfinding';
 
@@ -56,6 +56,8 @@ export class MoveHelper {
   }
 
   static move(player: Character, { room, gameState, x, y }) {
+
+    if(isUndefined(x) || isUndefined(y)) return;
 
     const moveRate = player.getBaseStat('move');
     x = Math.max(Math.min(x, 4), -4);

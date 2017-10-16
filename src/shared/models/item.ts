@@ -126,6 +126,7 @@ export class Item {
   secondaryType: string;
 
   twoHanded = false;
+  proneChance = 0;
 
   isBeltable = false;
   isSackable = true;

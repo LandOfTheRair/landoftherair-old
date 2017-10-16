@@ -28,6 +28,20 @@ export class CombatHelper {
     hidden.cast(char, char);
   }
 
+  static attemptToStun(attacker: Character, weapon: Item, defender: Character) {
+    if(!weapon.proneChance) return;
+    if(random(1, 100) > weapon.proneChance) return;
+
+    defender.sendClientMessageToRadius(`${defender.name} was knocked down!`, 5);
+    defender.takeSequenceOfSteps([{ x: random(-1, 1), y: random(-1, 1) }], false, true);
+
+    // low chance of cstun
+    if(random(1, defender.getTotalStat('con')) > 3) return;
+
+    const stun = new Effects.Stunned({});
+    stun.cast(attacker, defender);
+  }
+
   static isShield(item) {
     return includes(ShieldClasses, item.itemClass);
   }
@@ -281,6 +295,7 @@ export class CombatHelper {
       defenderDamageMessage: msg
     });
 
+    this.attemptToStun(attacker, attackerWeapon, defender);
     this.attemptToShadowSwap(attacker);
 
     if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
