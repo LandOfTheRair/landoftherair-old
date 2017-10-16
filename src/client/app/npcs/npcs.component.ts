@@ -27,6 +27,8 @@ export class NpcsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.shouldPin = this.localStorage.retrieve('pinLastTarget');
+
     this.pinOption$ = this.localStorage.observe('pinLastTarget')
       .subscribe((value) => {
         this.shouldPin = value;
@@ -60,6 +62,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
 
     const npc = find(unsorted, { uuid: this.pinUUID });
     const index = findIndex(unsorted, npc);
+    
     if(!npc || index === this.pinPos) return unsorted;
 
     pull(unsorted, npc);
