@@ -122,7 +122,13 @@ export class NPC extends Character {
 
   kill(dead) {
     if(this.$$shouldStrip) {
-      const stripPoint = this.$$stripX && this.$$stripY ? { x: this.$$stripX, y: this.$$stripY } : this.spawner;
+
+      let stripPoint = this.spawner;
+
+      if(dead.isPlayer()) {
+        stripPoint = this.$$stripX && this.$$stripY ? { x: this.$$stripX, y: this.$$stripY } : this.spawner;
+      }
+
       dead.strip(this.$$stripOnSpawner ? stripPoint : this, this.$$stripRadius);
     }
   }
