@@ -20,18 +20,22 @@ export class MacroComponent {
   constructor(public macroService: MacroService) { }
 
   get background() {
-    return this.macroRef ? (this.macroService.allMacros[this.macroRef].background || '#ccc') : '#ccc';
+    if(!this.macroRef || !this.macroService.allMacros[this.macroRef]) return '#ccc';
+    return this.macroService.allMacros[this.macroRef].background || '#ccc';
   }
 
   get foreground() {
-    return this.macroRef ? this.macroService.allMacros[this.macroRef].foreground : '';
+    if(!this.macroRef || !this.macroService.allMacros[this.macroRef]) return '';
+    return this.macroService.allMacros[this.macroRef].foreground;
   }
 
   get iconName() {
-    return this.macroRef ? this.macroService.allMacros[this.macroRef].icon : '';
+    if(!this.macroRef || !this.macroService.allMacros[this.macroRef]) return '';
+    return this.macroService.allMacros[this.macroRef].icon;
   }
 
   get macroName() {
-    return this.macroRef ? this.macroService.allMacros[this.macroRef].name : '';
+    if(!this.macroRef || !this.macroService.allMacros[this.macroRef]) return '';
+    return this.macroService.allMacros[this.macroRef].name;
   }
 }
