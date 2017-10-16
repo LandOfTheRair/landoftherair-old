@@ -62,7 +62,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
 
     const npc = find(unsorted, { uuid: this.pinUUID });
     const index = findIndex(unsorted, npc);
-    
+
     if(!npc || index === this.pinPos) return unsorted;
 
     pull(unsorted, npc);
