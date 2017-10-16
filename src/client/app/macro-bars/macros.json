@@ -19,8 +19,8 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Skills",
-            "macro": "show skills",
+            "name": "Show Stats",
+            "macro": "show stats",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
@@ -28,8 +28,8 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show stats",
+            "name": "Show Skills",
+            "macro": "show skills",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
@@ -246,20 +246,20 @@
             "requiresLearn": true
         },
         {
-            "name": "IceMist",
-            "macro": "cast icemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Identify",
             "macro": "cast identify",
             "icon": "uncertainty",
             "color": "#665600",
             "mode": "autoActivate",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "IceMist",
+            "macro": "cast icemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#000080",
+            "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
         },
