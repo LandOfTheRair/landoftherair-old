@@ -36,8 +36,13 @@
   font-weight: bold;
 
   & > * {
-    font-family: 'FantasyWide', cursive !important;
+    font-family: 'ActualFantasyWide', cursive !important;
   }
+}
+
+.header {
+  font-family: 'ActualFantasyWide', cursive !important;
+  font-weight: bold;
 }
 // END FONT SPECIFIC ADJUSTMENTS
 
@@ -243,3 +248,15 @@ a {
   }
 }
 
+
+.progress {
+  position: relative;
+
+  .progress-bar-text {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: #000 !important;
+    text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+  }
+}

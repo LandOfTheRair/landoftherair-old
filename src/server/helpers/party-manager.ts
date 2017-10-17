@@ -67,6 +67,11 @@ export class PartyManager {
     return this.parties[name];
   }
 
+  // this is awful.
+  private delayedStatRecalculation(player: Player) {
+    setTimeout(() => player.recalculateStats(), 1000);
+  }
+
   private sendPartyMessage(partyName: string, message: string) {
     const party = this.parties[partyName];
     if(!party) return;
@@ -77,6 +82,7 @@ export class PartyManager {
   public createParty(leader: Player, partyName: string) {
     const leaderMember = new PartyPlayer(leader);
     leader.partyName = partyName;
+    this.delayedStatRecalculation(leader);
 
     this.redis.emit('party:create', { leader: leaderMember, partyName });
   }
@@ -90,6 +96,7 @@ export class PartyManager {
     if(!this.parties[partyName]) return;
 
     joiner.partyName = partyName;
+    this.delayedStatRecalculation(joiner);
 
     this.redis.emit('party:join', { joiner: member, partyName });
   }
@@ -106,6 +113,7 @@ export class PartyManager {
     const partyName = leaver.partyName;
 
     leaver.partyName = '';
+    leaver.recalculateStats();
 
     this.redis.emit('party:leave', { leaver: member, partyName });
   }
@@ -137,6 +145,7 @@ export class PartyManager {
 
     if(!this.parties[partyName] || !this.parties[partyName].isLeader(leader.username)) return;
     kickee.partyName = '';
+    kickee.recalculateStats();
 
     this.redis.emit('party:kick', { leader: member, kickee: kickeeMember, partyName });
   }

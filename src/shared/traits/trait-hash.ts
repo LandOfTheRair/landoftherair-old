@@ -5,6 +5,7 @@ import * as MageTraits from './mage';
 import * as HealerTraits from './healer';
 import * as WarriorTraits from './warrior';
 import * as ThiefTraits from './thief';
+import * as PartyTraits from './party';
 
 export const AllTraits = {
   Basic: BasicTraits,
@@ -12,5 +13,6 @@ export const AllTraits = {
   Mage: MageTraits,
   Healer: HealerTraits,
   Warrior: WarriorTraits,
-  Thief: ThiefTraits
+  Thief: ThiefTraits,
+  Party: PartyTraits
 };

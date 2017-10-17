@@ -203,6 +203,12 @@
     max-width: 525px;
 
     z-index: 1000;
+
+    .window-body {
+      & > app-party {
+        flex-direction: column;
+      }
+    }
   }
 
   &.traits {

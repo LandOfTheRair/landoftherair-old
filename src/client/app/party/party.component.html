@@ -25,3 +25,11 @@
   </tr>
   </tbody>
 </table>
+
+<h5 class="header mt-1 text-center">Party Points</h5>
+
+<div class="progress w-100">
+  <div class="progress-bar bg-success"
+       [style.width]="partyPointProgressPercent + '%'"></div>
+  <div class="progress-bar-text">{{ partyExpString }} ({{ partyPointProgressPercent }}%)</div>
+</div>

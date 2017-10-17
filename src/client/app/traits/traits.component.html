@@ -2,7 +2,7 @@
 <div class="p-1 item-container d-flex flex-wrap">
 
   <tabset justified="true">
-    <tab *ngFor="let cat of traitCategories" [heading]="cat" (select)="this.activeTraitCategory = cat">
+    <tab *ngFor="let cat of traitCategories" [heading]="cat" (select)="activeTraitCategory = cat">
 
       <div class="p-0 d-flex flex-wrap flex-row">
         <div *ngFor="let trait of currentTraitSet; let i = index"
@@ -19,7 +19,7 @@
           </div>
 
           <div>
-            Cost: {{ trait.tpCost }} TP
+            Cost: {{ trait.tpCost }} {{ activeTraitCategory === 'Party' ? 'PP' : 'TP' }}
           </div>
 
           <div>
