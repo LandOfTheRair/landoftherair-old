@@ -404,6 +404,7 @@ export class Character {
     if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
 
     this.adjustStatsForTraits();
+    this.adjustStatsForPartyAbilities();
 
     this.hp.maximum = Math.max(1, this.getTotalStat('hp'));
     this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
@@ -1044,6 +1045,19 @@ export class Character {
     // warrior
     this.totalStats.offense += this.getTraitLevel('Swashbuckler');
     this.totalStats.accuracy += this.getTraitLevel('Deadeye');
+  }
+
+  private adjustStatsForPartyAbilities(): void {
+    const party = (<any>this).party;
+    if(!party || !party.canApplyPartyAbilities) return;
+
+    this.totalStats.defense += this.getTraitLevel('PartyDefense');
+    this.totalStats.offense += this.getTraitLevel('PartyOffense');
+
+    this.totalStats.mp += this.getTraitLevel('PartyMana');
+    this.totalStats.hp += this.getTraitLevel('PartyHealth');
+    this.totalStats.mpregen += this.getTraitLevel('PartyManaRegeneration');
+    this.totalStats.hpregen += this.getTraitLevel('PartyHealthRegeneration');
   }
 
   public isUnableToAct(): boolean {

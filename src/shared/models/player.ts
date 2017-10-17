@@ -1,4 +1,6 @@
 
+import * as RestrictedNumber from 'restricted-number';
+
 import { Character, MaxSizes, AllNormalGearSlots } from './character';
 import { Item } from './item';
 
@@ -47,6 +49,9 @@ export class Player extends Character {
 
   private $$lastCommandSent: string;
 
+  private partyPoints: number;
+  private partyExp: RestrictedNumber;
+
   get party(): Party {
     return this.$$room ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
   }
@@ -69,6 +74,13 @@ export class Player extends Character {
     this.recalculateStats();
     this.uuid = this.username;
     this.$$actionQueue = [];
+    if(!this.partyExp || !this.partyExp.maximum) {
+      this.partyPoints = 0;
+      this.partyExp = new RestrictedNumber(0, 100, 0);
+
+    } else {
+      this.partyExp = new RestrictedNumber(0, this.partyExp.maximum, this.partyExp.__current);
+    }
   }
 
   learnSpell(skillName, conditional = false): boolean {
@@ -155,7 +167,37 @@ export class Player extends Character {
 
     if(this.party) {
       this.$$room.shareExpWithParty(this, xpGain);
+
+      this.gainPartyExp(xpGain);
     }
+  }
+
+  private gainPartyExp(baseExp: number) {
+    if(!this.party.canGainPartyPoints) return;
+
+    this.partyExp.add(Math.floor(baseExp / this.party.allMembers.length + 1));
+
+    this.checkToGainPartyPoints();
+  }
+
+  private checkToGainPartyPoints() {
+    if(this.partyPoints >= 100 || !this.partyExp.atMaximum()) return;
+
+    this.partyPoints = this.partyPoints || 0;
+    this.partyPoints++;
+    this.partyExp.toMinimum();
+
+    const prevMax = this.partyExp.maximum;
+    this.partyExp.maximum = Math.floor(100 + (prevMax * 1.0025));
+  }
+
+  public hasPartyPoints(pp = 0): boolean {
+    return this.partyPoints >= pp;
+  }
+
+  public losePartyPoints(pp = 0): void {
+    this.partyPoints -= pp;
+    if(this.partyPoints < 0 || isNaN(this.partyPoints)) this.partyPoints = 0;
   }
 
   isPlayer() {

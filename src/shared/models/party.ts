@@ -40,6 +40,14 @@ export class Party {
     return this.members[0];
   }
 
+  get canGainPartyPoints(): boolean {
+    return this.members.length > 2;
+  }
+
+  get canApplyPartyAbilities(): boolean {
+    return this.members.length > 2;
+  }
+
   get canBeDeleted(): boolean {
     return this.members.length === 0;
   }

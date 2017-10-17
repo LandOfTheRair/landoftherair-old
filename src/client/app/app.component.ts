@@ -181,7 +181,6 @@ export class AppComponent implements OnInit {
 
   imageLoaded() {
     this.imagesLoaded++;
-    // TODO increment and check and enable buttons (a global "loaded" state) when all iamges have loaded
   }
 
   initDefaultOptions() {

@@ -8,6 +8,14 @@ import { ColyseusGameService } from '../colyseus.game.service';
 })
 export class PartyComponent {
 
+  get partyPointProgressPercent() {
+    return (this.colyseusGame.character.partyExp.__current / this.colyseusGame.character.partyExp.maximum * 100).toFixed(2);
+  }
+
+  get partyExpString() {
+    return `${this.colyseusGame.character.partyExp.__current} / ${this.colyseusGame.character.partyExp.maximum}`;
+  }
+
   constructor(
     public colyseusGame: ColyseusGameService
   ) { }

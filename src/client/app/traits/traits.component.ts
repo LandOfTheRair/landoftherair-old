@@ -22,7 +22,7 @@ export class TraitsComponent implements OnInit {
   get traitCategories(): string[] {
     if(this.player.baseClass === 'Undecided') return ['Basic', 'Combat'];
 
-    return ['Basic', 'Combat', 'Class'];
+    return ['Basic', 'Combat', 'Class', 'Party'];
   }
 
   private get realCategory() {
