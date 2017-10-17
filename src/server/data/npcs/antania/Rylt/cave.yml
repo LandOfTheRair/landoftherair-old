@@ -112,6 +112,8 @@
     - MagicMissile
 
   copyDrops:
+    - drop: 'rightHand'
+      chance: -1
     - drop: 'gear.Robe1'
       chance: -1
     - drop: 'gear.Ring1'
@@ -167,8 +169,6 @@
     - Cave Shaman Wand
 
   gear:
-    rightHand:
-      - Cave Shaman Wand
     Armor: Antanian Tunic
     Neck: Saraxa Regen Amulet
     Ring1:
@@ -183,6 +183,8 @@
     - IceMist
 
   copyDrops:
+    - drop: 'rightHand'
+      chance: -1
     - drop: 'gear.Robe1'
       chance: -1
     - drop: 'gear.Ring1'
@@ -203,8 +205,8 @@
   sprite: 75
   stats: 15
   skillLevels:
-    Martial: 7
-  level: 9
+    Martial: 4
+  level: 7
 
   otherStats:
     perception: 50

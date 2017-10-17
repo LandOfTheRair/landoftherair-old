@@ -36,7 +36,7 @@
   hostility: Always
   stats: 15
   skillLevels:
-    Martial: 7
+    Martial: 3
   level: 4
 
   skillOnKill: 50
@@ -49,7 +49,7 @@
     - WeakBite
 
   hp:
-    min: 1000
+    min: 1700
     max: 2000
 
   giveXp:
