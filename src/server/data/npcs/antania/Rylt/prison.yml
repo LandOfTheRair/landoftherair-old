@@ -258,12 +258,11 @@
   otherStats:
     stealth: 30
     perception: 50
-    offense: 5
 
   skillLevels:
-    Throwing: 3
-    Ranged: 3
-    Dagger: 3
+    Throwing: 2
+    Ranged: 1
+    Dagger: 2
 
   level: 4
   skillOnKill: 20
@@ -351,12 +350,12 @@
   baseClass: Mage
   sprite: 545
   alignment: Evil
-  stats: 10
+  stats: 7
   skillLevels:
     Shortsword: 2
     Conjuration: 4
 
-  level: 7
+  level: 4
   skillOnKill: 25
 
   gold:
@@ -401,12 +400,12 @@
   hostility: Always
   sprite: 550
   alignment: Evil
-  stats: 10
+  stats: 7
   skillLevels:
     Mace: 2
     Restoration: 4
 
-  level: 7
+  level: 4
   skillOnKill: 25
 
   gold:
