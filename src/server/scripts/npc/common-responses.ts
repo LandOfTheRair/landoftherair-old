@@ -393,6 +393,7 @@ export const EncrusterResponses = (npc: NPC) => {
 
       player.rightHand.encrust = nextEncrust;
       const replaceText = prevEncrust ? ` This has replaced your ${prevEncrust.desc}.` : '';
+      player.recalculateStats();
 
       return `I have set your ${player.rightHand.itemClass} with ${nextEncrust.desc}.${replaceText}`;
     });
