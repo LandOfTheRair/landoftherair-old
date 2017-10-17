@@ -840,7 +840,7 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="saveMacro()">Save Macro</button>
+        <button type="button" class="btn btn-primary" [disabled]="invalidMacro()" (click)="saveMacro()">Save Macro</button>
         <button type="button" class="btn btn-secondary" (click)="viewMacro.hide()">Close</button>
       </div>
     </div>
