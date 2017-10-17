@@ -261,11 +261,11 @@
     offense: 5
 
   skillLevels:
-    Throwing: 5
-    Ranged: 5
-    Dagger: 5
+    Throwing: 3
+    Ranged: 3
+    Dagger: 3
 
-  level: 6
+  level: 4
   skillOnKill: 20
 
   gold:
