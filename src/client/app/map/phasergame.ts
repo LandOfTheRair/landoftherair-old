@@ -565,11 +565,14 @@ export class Game {
   }
 
   private createLayers() {
-    ['Decor', 'DenseDecor', 'OpaqueDecor', 'Interactables'].forEach((layer) => {
-      this.groups[layer] = this.g.add.group();
-    });
+    this.groups.Decor = this.g.add.group();
+    this.groups.DenseDecor = this.g.add.group();
+    this.groups.OpaqueDecor = this.g.add.group();
 
     this.itemsOnGround = this.g.add.group();
+
+    this.groups.Interactables = this.g.add.group();
+
     this.otherEnvironmentalObjects = this.g.add.group();
     this.vfx = this.g.add.group();
     this.visibleNPCs = this.g.add.group();
