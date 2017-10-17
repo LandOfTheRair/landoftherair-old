@@ -353,4 +353,14 @@ export class AppComponent implements OnInit {
   selectMacroForSpot(macroName: string) {
     this.macroService.updateMacroGroup(this.currentMacroGroupForEditor, this.currentMacroIdxForEditor, macroName);
   }
+
+  public invalidMacro() {
+    const macro = this.currentlyEditingMacro;
+
+    return !macro.name
+        || !macro.icon
+        || !macro.background
+        || !macro.foreground
+        || !macro.macro;
+  }
 }
