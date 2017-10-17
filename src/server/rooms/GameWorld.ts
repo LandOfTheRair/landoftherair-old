@@ -330,6 +330,8 @@ export class GameWorld extends Room<GameState> {
 
   async onLeave(client) {
     const player = this.state.findPlayer(client.username);
+    if(!player) return;
+
     this.state.removePlayer(client.username);
     player.inGame = false;
 
