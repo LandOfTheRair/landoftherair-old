@@ -74,6 +74,7 @@ export class Player extends Character {
     this.recalculateStats();
     this.uuid = this.username;
     this.$$actionQueue = [];
+    if(!this.traitPoints) this.traitPoints = 0;
     if(!this.partyExp || !this.partyExp.maximum) {
       this.partyPoints = 0;
       this.partyExp = new RestrictedNumber(0, 100, 0);
