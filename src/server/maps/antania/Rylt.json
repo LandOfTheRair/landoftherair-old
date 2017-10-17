@@ -3559,7 +3559,7 @@
                      "teleportY":"int"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"ClimbDown",
                  "visible":true,
                  "width":64,
                  "x":9088,
