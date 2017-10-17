@@ -58,7 +58,7 @@ const DESCS = [
   'You are standing in snow.',
   'You are swimming in deep water.',
   'You are standing in flowery grass.',
-  'You are standing knee-deep in weeds and bog flowers',
+  'You are standing knee-deep in weeds and bog flowers.',
   'You are standing on dirt.'
 ];
 
