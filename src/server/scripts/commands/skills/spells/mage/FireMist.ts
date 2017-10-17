@@ -15,7 +15,7 @@ export class FireMist extends Skill {
     mode: 'clickToTarget'
   };
 
-  public name = 'cast firemist';
+  public name = ['firemist', 'cast firemist'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];

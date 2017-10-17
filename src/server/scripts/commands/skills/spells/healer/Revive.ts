@@ -15,7 +15,7 @@ export class Revive extends Skill {
     mode: 'autoActivate'
   };
 
-  public name = 'cast revive';
+  public name = ['revive', 'cast revive'];
   public format = '';
 
   flagSkills = [SkillClassNames.Restoration];

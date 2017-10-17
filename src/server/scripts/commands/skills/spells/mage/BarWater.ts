@@ -15,7 +15,7 @@ export class BarWater extends Skill {
     mode: 'clickToTarget'
   };
 
-  public name = 'cast barwater';
+  public name = ['barwater', 'cast barwater'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];

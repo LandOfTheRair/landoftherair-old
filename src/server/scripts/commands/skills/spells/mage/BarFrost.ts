@@ -15,7 +15,7 @@ export class BarFrost extends Skill {
     mode: 'clickToTarget'
   };
 
-  public name = 'cast barfrost';
+  public name = ['barfrost', 'cast barfrost'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];

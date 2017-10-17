@@ -15,7 +15,7 @@ export class TrueSight extends Skill {
     mode: 'clickToTarget'
   };
 
-  public name = 'cast truesight';
+  public name = ['truesight', 'cast truesight'];
 
   flagSkills = [SkillClassNames.Conjuration];
 

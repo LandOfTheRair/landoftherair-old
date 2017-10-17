@@ -15,7 +15,7 @@ export class Afflict extends Skill {
     mode: 'lockActivation'
   };
 
-  public name = 'cast afflict';
+  public name = ['afflict', 'cast afflict'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];

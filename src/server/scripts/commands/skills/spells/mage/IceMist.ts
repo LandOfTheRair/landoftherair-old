@@ -15,7 +15,7 @@ export class IceMist extends Skill {
     mode: 'clickToTarget'
   };
 
-  public name = 'cast icemist';
+  public name = ['icemist', 'cast icemist'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];
