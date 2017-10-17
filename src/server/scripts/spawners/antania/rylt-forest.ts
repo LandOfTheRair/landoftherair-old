@@ -2,9 +2,9 @@
 import { Spawner } from '../../../base/Spawner';
 
 const npcIds = [
-  { chance: 4, result: 'Rylt Deer' },
-  { chance: 2, result: 'Rylt Wolf' },
-  { chance: 1, result: 'Rylt Bear' }
+  { chance: 1,  result: 'Rylt Deer' },
+  { chance: 10, result: 'Rylt Wolf' },
+  { chance: 8,  result: 'Rylt Bear' }
 ];
 
 export class RyltForestMonsterSpawner extends Spawner {
