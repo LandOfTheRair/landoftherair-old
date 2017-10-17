@@ -662,6 +662,7 @@ export class Character {
     this.$$deathTicks = 60 * 3;
   }
 
+  revive() {}
   restore(force = false) {}
 
   gainExp(xp: number) {

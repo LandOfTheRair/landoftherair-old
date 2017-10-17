@@ -27,7 +27,8 @@ export const responses = (npc: NPC) => {
     'The skin of deer is great at repelling magic!',
     'The Last Chance Prison is filled with rebellious infidels!',
     'There are tales of a renegade who collects books!',
-    'Try asking the Healer to RECALL you!'
+    'Try asking the Healer to RECALL you!',
+    'The Healer can REVIVE your comrades!'
   ]);
 
 };

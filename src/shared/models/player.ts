@@ -205,14 +205,17 @@ export class Player extends Character {
     return true;
   }
 
-  die(killer) {
+  async die(killer) {
     super.die(killer);
 
     // 5 minutes to restore
-    this.$$deathTicks = 360 * 5;
+    this.$$deathTicks = 6 * 5;
     this.combatTicks = 0;
 
-    if(killer) {
+    const corpse = await this.$$room.createCorpse(this);
+    corpse.sprite = this.getBaseSprite() + 4;
+
+    if(killer && !killer.isPlayer()) {
       const myCon = this.getTotalStat('con');
       const myLuk = this.getTotalStat('luk');
 
@@ -245,7 +248,20 @@ export class Player extends Character {
     }
   }
 
+  revive() {
+    if(this.$$corpseRef) {
+      this.$$room.removeCorpse(this.$$corpseRef);
+      delete this.$$corpseRef;
+    }
+    this.dir = 'S';
+  }
+
   restore(force = false) {
+    if(this.$$corpseRef) {
+      this.$$room.removeCorpse(this.$$corpseRef);
+      delete this.$$corpseRef;
+    }
+
     if(force) {
       this.sendClientMessage('You feel a churning sensation.');
       if(this.stats.str > 5 && random(1, 5) === 1) this.stats.str--;
@@ -261,8 +277,21 @@ export class Player extends Character {
     this.$$room.teleport(this, { newMap: this.respawnPoint.map, x: this.respawnPoint.x, y: this.respawnPoint.y });
   }
 
-  getSprite() {
-    return 725;
+  getBaseSprite() {
+    let choices: any = { Male: 725, Female: 675 };
+
+    switch(this.allegiance) {
+      case 'None':          { choices = { Male: 725, Female: 675 }; break; }
+      case 'Townsfolk':     { choices = { Male: 725, Female: 675 }; break; }
+
+      case 'Wilderness':    { choices = { Male: 730, Female: 680 }; break; }
+      case 'Royalty':       { choices = { Male: 735, Female: 685 }; break; }
+      case 'Adventurers':   { choices = { Male: 740, Female: 690 }; break; }
+      case 'Underground':   { choices = { Male: 745, Female: 695 }; break; }
+      case 'Pirates':       { choices = { Male: 750, Female: 700 }; break; }
+    }
+
+    return choices[this.sex];
   }
 
   itemCheck(item) {

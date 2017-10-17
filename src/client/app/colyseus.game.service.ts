@@ -572,7 +572,7 @@ export class ColyseusGameService {
     this.sendRawCommand('~use', `${context} ${contextSlot || -1} ${item.itemClass} ${item.uuid}`);
   }
 
-  public hostilityLevelFor(compare: Character) {
+  public hostilityLevelFor(compare: Character): 'hostile'|'neutral'|'friendly' {
     const me = this.character;
 
     if(compare.agro[me.uuid]

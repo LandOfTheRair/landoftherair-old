@@ -19,8 +19,8 @@ export class Revive extends SpellEffect {
 
     if(!target) return;
 
+    target.revive();
     target.hp.setToPercent(hpPercent);
     target.gainBaseStat('con', 1);
-    target.dir = 'S';
   }
 }
