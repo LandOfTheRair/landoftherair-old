@@ -53,7 +53,7 @@ export class Player extends Character {
   private partyExp: RestrictedNumber;
 
   get party(): Party {
-    return this.$$room ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
+    return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
   }
 
   init() {
