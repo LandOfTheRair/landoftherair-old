@@ -111,12 +111,12 @@
 - npcId: Rylt Prison Guard
   name: guard
   allegiance: 'None'
-  stats: 10
-  level: 10
+  stats: 5
+  level: 4
   baseClass: Warrior
 
   skillLevels:
-    polearm: 4
+    polearm: 2
 
   skillOnKill: 150
 
