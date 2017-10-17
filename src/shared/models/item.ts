@@ -143,8 +143,9 @@ export class Item {
   x: number;
   y: number;
 
-  $heldBy: any;
-  $$isPlayerCorpse: boolean;
+  $heldBy?: any;
+  $$isPlayerCorpse?: boolean;
+  $$playersHeardDeath?: string[];
 
   effect: any;
 

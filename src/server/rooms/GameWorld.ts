@@ -700,6 +700,7 @@ export class GameWorld extends Room<GameState> {
 
     target.$$corpseRef = corpse;
     (<any>corpse).npcUUID = target.uuid;
+    corpse.$$playersHeardDeath = this.state.getPlayersInRange(target, 6).map(x => x.username);
     corpse.$$isPlayerCorpse = target.isPlayer();
   }
 

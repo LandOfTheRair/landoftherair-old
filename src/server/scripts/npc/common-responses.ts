@@ -20,11 +20,20 @@ export const TannerResponses = (npc: NPC) => {
       const ground = npc.$$room.state.getGroundItems(npc.x, npc.y);
       if(!ground.Corpse || !ground.Corpse.length) return 'There are no corpses here!';
 
+      let errMessage = '';
+
       ground.Corpse.forEach(corpse => {
         if(corpse.$$isPlayerCorpse) return;
+
+        if(!includes(corpse.$$playersHeardDeath, player.username)) {
+          errMessage = 'You didn\'t have a hand in killing that!';
+          return;
+        }
+
         const corpseNPC = npc.$$room.state.findNPC(corpse.npcUUID);
         if(corpseNPC) corpseNPC.restore();
         else          npc.$$room.removeItemFromGround(corpse);
+
         if(!corpse.tansFor) return;
 
         NPCLoader.loadItem(corpse.tansFor)
@@ -33,6 +42,8 @@ export const TannerResponses = (npc: NPC) => {
             npc.$$room.addItemToGround(npc, item);
           });
       });
+
+      if(errMessage) return errMessage;
 
       return `Here you go, ${player.name}!`;
     });
