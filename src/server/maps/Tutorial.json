@@ -1064,13 +1064,17 @@
     {
      "itemExpirationHours":1,
      "maxSkill":3,
-     "region":"Tutorial"
+     "region":"Tutorial",
+     "respawnX":14,
+     "respawnY":14
     },
  "propertytypes":
     {
      "itemExpirationHours":"int",
      "maxSkill":"int",
-     "region":"string"
+     "region":"string",
+     "respawnX":"int",
+     "respawnY":"int"
     },
  "renderorder":"right-down",
  "tileheight":64,

@@ -686,7 +686,9 @@ export class Game {
 
     // center on player mid
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
+  }
 
+  render() {
     if(this.frames < 20) {
       this.frames++;
     }
