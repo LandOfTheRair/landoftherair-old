@@ -245,22 +245,8 @@ export class Game {
     return <any>this;
   }
 
-  getStartingSpriteForSex(allegiance: Allegiance, sex: Sex) {
-
-    let choices: any = { Male: 725, Female: 675 };
-
-    switch(allegiance) {
-      case 'None':          { choices = { Male: 725, Female: 675 }; break; }
-      case 'Townsfolk':     { choices = { Male: 725, Female: 675 }; break; }
-
-      case 'Wilderness':    { choices = { Male: 730, Female: 680 }; break; }
-      case 'Royalty':       { choices = { Male: 735, Female: 685 }; break; }
-      case 'Adventurers':   { choices = { Male: 740, Female: 690 }; break; }
-      case 'Underground':   { choices = { Male: 745, Female: 695 }; break; }
-      case 'Pirates':       { choices = { Male: 750, Female: 700 }; break; }
-    }
-
-    return choices[sex];
+  getStartingSpriteForSex(player: Player) {
+    return player.getBaseSprite();
   }
 
   getStartingSwimmingSpriteForSex(allegiance: Allegiance, sex: Sex) {
@@ -301,7 +287,7 @@ export class Game {
   }
 
   getPlayerSprite(player: Player) {
-    const spriteGender = this.getStartingSpriteForSex(player.allegiance, player.sex);
+    const spriteGender = this.getStartingSpriteForSex(player);
     const spriteDir = this.getSpriteOffsetForDirection(player.dir);
 
     const sprite = this.g.add.sprite(player.x * 64, player.y * 64, 'Creatures', spriteGender + spriteDir);
@@ -321,7 +307,7 @@ export class Game {
 
     // if player isn't swimming or player is dead
     if(!player.swimLevel || player.dir === 'C') {
-      const spriteGender = this.getStartingSpriteForSex(player.allegiance, player.sex);
+      const spriteGender = this.getStartingSpriteForSex(player);
       const spriteDir = this.getSpriteOffsetForDirection(player.dir);
       frame = spriteGender + spriteDir;
       key = 'Creatures';
@@ -344,7 +330,7 @@ export class Game {
     }
 
     if(player.username !== this.player.username) {
-      sprite.visible = this.player.canSeeThroughStealthOf(player);
+      sprite.visible = player.dir !== 'C' && this.player.canSeeThroughStealthOf(player);
     }
   }
 

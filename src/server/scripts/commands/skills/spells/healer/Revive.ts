@@ -26,7 +26,7 @@ export class Revive extends Skill {
   execute(user: Character, { gameState, args, effect }) {
     if(!this.tryToConsumeMP(user, effect)) return;
 
-    const targets = user.$$room.state.getPlayersInRange(user, 0, [user.uuid]).filter(target => target.dir === 'C');
+    const targets = user.$$room.state.getPlayersInRange(user, 0, [user.uuid]).filter(target => target.isDead());
     const target = targets[0];
 
     if(!target) return user.sendClientMessage('There is no one in need of revival here!');

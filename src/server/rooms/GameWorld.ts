@@ -323,6 +323,11 @@ export class GameWorld extends Room<GameState> {
     return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: { inGame: false } });
   }
 
+  private autoReviveAndUncorpse(player: Player) {
+    if(!player.isDead()) return;
+    player.restore(false);
+  }
+
   async onLeave(client) {
     const player = this.state.findPlayer(client.username);
     this.state.removePlayer(client.username);
@@ -332,6 +337,8 @@ export class GameWorld extends Room<GameState> {
     if(!player.$$doNotSave && player.partyName) {
       this.partyManager.leaveParty(player);
     }
+
+    this.autoReviveAndUncorpse(player);
 
     await this.leaveGameAndSave(player);
     this.prePlayerMapLeave(player);
@@ -689,19 +696,26 @@ export class GameWorld extends Room<GameState> {
     this.createCorpse(npc, allItems);
   }
 
-  private async createCorpse(target: Character, searchItems) {
+  public async createCorpse(target: Character, searchItems = []): Promise<Item> {
     const corpse = await ItemCreator.getItemByName('Corpse');
     corpse.sprite = target.sprite + 4;
     corpse.searchItems = searchItems;
-    corpse.tansFor = (<any>target).tansFor;
     corpse.desc = `the corpse of a ${target.name}`;
 
     this.addItemToGround(target, corpse);
 
+    const isPlayer = target.isPlayer();
+    corpse.$$isPlayerCorpse = isPlayer;
+
     target.$$corpseRef = corpse;
-    (<any>corpse).npcUUID = target.uuid;
-    corpse.$$playersHeardDeath = this.state.getPlayersInRange(target, 6).map(x => x.username);
-    corpse.$$isPlayerCorpse = target.isPlayer();
+
+    if(!isPlayer) {
+      corpse.tansFor = (<any>target).tansFor;
+      (<any>corpse).npcUUID = target.uuid;
+      corpse.$$playersHeardDeath = this.state.getPlayersInRange(target, 6).map(x => x.username);
+    }
+
+    return corpse;
   }
 
   dropCorpseItems(corpse: Item, searcher?: Player) {
@@ -720,16 +734,30 @@ export class GameWorld extends Room<GameState> {
     corpse.searchItems = null;
   }
 
-  public corpseCheck(player) {
+  removeCorpse(corpseRef: Item): void {
+    if(corpseRef.$heldBy) {
+      const player = this.state.findPlayer(corpseRef.$heldBy);
+      player.sendClientMessage('The corpse fizzles from your hand.');
+      this.corpseCheck(player, corpseRef);
+    }
+
+    this.removeItemFromGround(corpseRef);
+  }
+
+  public corpseCheck(player, specificCorpse?: Item) {
 
     let item = null;
 
-    if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
+    if(player.leftHand
+    && player.leftHand.itemClass === 'Corpse'
+    && (!specificCorpse || (specificCorpse && player.leftHand === specificCorpse) )) {
       item = player.leftHand;
       player.setLeftHand(null);
     }
 
-    if(player.rightHand && player.rightHand.itemClass === 'Corpse') {
+    if(player.rightHand
+    && player.rightHand.itemClass === 'Corpse'
+    && (!specificCorpse || (specificCorpse && player.rightHand === specificCorpse) )) {
       item = player.rightHand;
       player.setRightHand(null);
     }

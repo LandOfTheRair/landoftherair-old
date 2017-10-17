@@ -1,6 +1,6 @@
 import { NPC } from '../../../../shared/models/npc';
 import { NPCLoader } from '../../../helpers/npc-loader';
-import { BaseClassTrainerResponses, RecallerResponses } from '../common-responses';
+import { BaseClassTrainerResponses, RecallerResponses, ReviverResponses } from '../common-responses';
 import { SkillClassNames } from '../../../../shared/models/character';
 
 const learnedSkills = { Restoration: {
@@ -26,4 +26,5 @@ export const setup = async (npc: NPC) => {
 export const responses = (npc: NPC) => {
   BaseClassTrainerResponses(npc, learnedSkills);
   RecallerResponses(npc);
+  ReviverResponses(npc);
 };
