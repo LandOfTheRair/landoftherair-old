@@ -15,7 +15,7 @@ export class MagicMissile extends Skill {
     mode: 'lockActivation'
   };
 
-  public name = 'cast magicmissile';
+  public name = ['magicmissile', 'cast magicmissile'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];

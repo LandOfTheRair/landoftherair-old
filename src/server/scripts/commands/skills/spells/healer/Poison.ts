@@ -15,7 +15,7 @@ export class Poison extends Skill {
     mode: 'clickToTarget'
   };
 
-  public name = 'cast poison';
+  public name = ['poison', 'cast poison'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];

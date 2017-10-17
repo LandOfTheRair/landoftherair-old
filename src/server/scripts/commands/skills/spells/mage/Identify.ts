@@ -15,7 +15,7 @@ export class Identify extends Skill {
     mode: 'autoActivate'
   };
 
-  public name = 'cast identify';
+  public name = ['identify', 'cast identify'];
 
   flagSkills = [SkillClassNames.Conjuration];
 

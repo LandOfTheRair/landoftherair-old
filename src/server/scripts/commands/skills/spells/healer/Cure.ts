@@ -15,7 +15,7 @@ export class Cure extends Skill {
     mode: 'clickToTarget'
   };
 
-  public name = 'cast cure';
+  public name = ['cure', 'cast cure'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];

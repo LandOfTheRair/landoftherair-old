@@ -15,7 +15,7 @@ export class BarFire extends Skill {
     mode: 'clickToTarget'
   };
 
-  public name = 'cast barfire';
+  public name = ['barfire', 'cast barfire'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Conjuration];

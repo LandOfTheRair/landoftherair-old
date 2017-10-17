@@ -26,6 +26,7 @@ export const tick = (npc: NPC) => {
     npc.$$pathDisrupted = true;
 
     const attemptSkills = sampleSize(npc.usableSkills, 3);
+
     let chosenSkill = null;
 
     let isThrowing = false;

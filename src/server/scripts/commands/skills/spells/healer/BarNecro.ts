@@ -15,7 +15,7 @@ export class BarNecro extends Skill {
     mode: 'clickToTarget'
   };
 
-  public name = 'cast barnecro';
+  public name = ['barnecro', 'cast barnecro'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];

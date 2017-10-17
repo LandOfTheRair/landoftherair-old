@@ -15,7 +15,7 @@ export class Antidote extends Skill {
     mode: 'clickToTarget'
   };
 
-  public name = 'cast antidote';
+  public name = ['antidote', 'cast antidote'];
   public format = 'Target';
 
   flagSkills = [SkillClassNames.Restoration];
