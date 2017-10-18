@@ -17,6 +17,9 @@
   level: 1
   skillOnKill: 5
 
+  otherStats:
+    perception: 15
+
   gold:
     min: 30
     max: 65
@@ -118,6 +121,9 @@
   skillLevels:
     polearm: 2
 
+  otherStats:
+    perception: 25
+
   skillOnKill: 150
 
   sprite: 625
@@ -160,6 +166,9 @@
 
   level: 7
   skillOnKill: 20
+
+  otherStats:
+    perception: 35
 
   gold:
     min: 150
@@ -358,6 +367,9 @@
   level: 4
   skillOnKill: 25
 
+  otherStats:
+    perception: 35
+
   gold:
     min: 150
     max: 250
@@ -404,6 +416,9 @@
   skillLevels:
     Mace: 2
     Restoration: 4
+
+  otherStats:
+    perception: 35
 
   level: 4
   skillOnKill: 25

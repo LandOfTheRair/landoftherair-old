@@ -39,6 +39,9 @@
     Martial: 3
   level: 4
 
+  otherStats:
+    perception: 15
+
   skillOnKill: 50
 
   gear:
@@ -67,6 +70,9 @@
   skillLevels:
     Martial: 4
   level: 3
+
+  otherStats:
+    perception: 15
 
   skillOnKill: 10
 
@@ -100,6 +106,9 @@
   skillLevels:
     Martial: 5
   level: 5
+
+  otherStats:
+    perception: 15
 
   skillOnKill: 15
 
