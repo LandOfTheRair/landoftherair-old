@@ -123,6 +123,14 @@
     - drop: 'gear.Wrists'
       chance: -1
 
+  drops:
+    - result: Weak BarFire Potion
+      chance: 1
+      maxChance: 10
+
+    - result: Weak BarFrost Potion
+      chance: 1
+      maxChance: 10
 
 - npcId: Saraxa
   name: Saraxa
