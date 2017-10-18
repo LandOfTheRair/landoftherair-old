@@ -594,6 +594,85 @@
                  "width":64,
                  "x":2816,
                  "y":4096
+                }, 
+                {
+                 "gid":1501,
+                 "height":64,
+                 "id":948,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1408,
+                 "y":9728
+                }, 
+                {
+                 "gid":1501,
+                 "height":64,
+                 "id":949,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1536,
+                 "y":9728
+                }, 
+                {
+                 "gid":1501,
+                 "height":64,
+                 "id":951,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1664,
+                 "y":9728
+                }, 
+                {
+                 "gid":1504,
+                 "height":64,
+                 "id":952,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1408,
+                 "y":9856
+                }, 
+                {
+                 "gid":1504,
+                 "height":64,
+                 "id":953,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1536,
+                 "y":9856
+                }, 
+                {
+                 "height":192,
+                 "id":955,
+                 "name":"Sleep",
+                 "properties":
+                    {
+                     "desc":"This must be the only place comfortable enough to sleep in this village."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":1408,
+                 "y":9664
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1791,10 +1870,67 @@
                  "width":320,
                  "x":384,
                  "y":10432
+                }, 
+                {
+                 "height":576,
+                 "id":957,
+                 "name":"Border",
+                 "properties":
+                    {
+                     "desc":"You find yourself near the border of a clearly war-torn battlefield."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":3648,
+                 "x":192,
+                 "y":7680
+                }, 
+                {
+                 "height":576,
+                 "id":958,
+                 "name":"Border",
+                 "properties":
+                    {
+                     "desc":"You find yourself near the border of a clearly war-torn battlefield."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":3648,
+                 "x":256,
+                 "y":5056
+                }, 
+                {
+                 "height":2048,
+                 "id":959,
+                 "name":"No-Mans Land",
+                 "properties":
+                    {
+                     "desc":"You see around you a wasteland of bodies, some dead, some undead. No man comes out of here alive."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":3648,
+                 "x":256,
+                 "y":5632
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1841,7 +1977,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":948,
+ "nextobjectid":960,
  "orientation":"orthogonal",
  "properties":
     {
