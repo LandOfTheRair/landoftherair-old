@@ -755,6 +755,9 @@ export class Character {
   }
 
   calcSkillXP(level: number) {
+    if(level === 0) return 100;
+    if(level === 1) return 200;
+
     return Math.floor(Math.pow(SKILL_COEFFICIENT, level) * 100);
   }
 
@@ -1005,7 +1008,6 @@ export class Character {
     const thiefMultPerTile = char.baseClass === 'Thief' ? 0.2 : 0.05;
 
     const totalStealth = Math.floor(otherStealth + (otherStealth * distFactor * thiefMultPerTile));
-    
 
     return this.getTotalStat('perception') >= totalStealth;
   }
