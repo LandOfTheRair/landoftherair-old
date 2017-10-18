@@ -5,3 +5,11 @@
   effect:
     name: ExactHeal
     potency: 100
+
+- name: Yzalt Steffen Apple
+  sprite: 560
+  desc: "a ripe apple"
+  value: 100
+  effect:
+    name: ExactHeal
+    potency: 200
