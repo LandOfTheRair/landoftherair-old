@@ -64,15 +64,15 @@
 
 - result: Antanian Defense Ring
   chance: 1
-  maxChance: 100
+  maxChance: 200
 
 - result: Antanian Offense Ring
   chance: 1
-  maxChance: 150
+  maxChance: 250
 
 - result: Antanian Combat Ring
   chance: 1
-  maxChance: 500
+  maxChance: 1000
 
 # special bottles
 - result: Antanian Strength Potion
