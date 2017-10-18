@@ -3,3 +3,8 @@
   desc: "a deep blue flower"
   sprite: 740
   value: 10
+
+- name: Yzalt Bogweed
+  sprite: 560
+  desc: "a strand of bogweed"
+  value: 10
