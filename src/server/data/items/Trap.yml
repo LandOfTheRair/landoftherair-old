@@ -33,7 +33,7 @@
   desc: "a trap imbued with the spell Afflict"
   effect:
     name: Afflict
-    potency: 7
+    potency: 15
     levelRequirement: 3
     skillRequirement: 3
   value: 1000
@@ -43,7 +43,7 @@
   desc: "a trap imbued with the spell MagicMissile"
   effect:
     name: MagicMissile
-    potency: 7
+    potency: 15
     levelRequirement: 3
     skillRequirement: 3
   value: 1000

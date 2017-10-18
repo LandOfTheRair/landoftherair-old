@@ -11,6 +11,9 @@
 
   skillOnKill: 25
 
+  otherStats:
+    perception: 35
+
   gold:
     min: 40
     max: 90
@@ -62,6 +65,9 @@
     Conjuration: 3
 
   level: 7
+
+  otherStats:
+    perception: 45
 
   skillOnKill: 20
 
@@ -217,7 +223,7 @@
   level: 7
 
   otherStats:
-    perception: 50
+    perception: 80
 
   skillOnKill: 100
 

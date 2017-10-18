@@ -16,6 +16,9 @@
 
   skillOnKill: 15
 
+  otherStats:
+    perception: 35
+
   gold:
     min: 100
     max: 200
@@ -129,6 +132,9 @@
   level: 4
   skillOnKill: 25
 
+  otherStats:
+    perception: 45
+
   gold:
     min: 150
     max: 250
@@ -179,6 +185,9 @@
 
   level: 4
   skillOnKill: 25
+
+  otherStats:
+    perception: 45
 
   gold:
     min: 150
@@ -232,6 +241,9 @@
   level: 5
 
   skillOnKill: 25
+
+  otherStats:
+    perception: 55
 
   gold:
     min: 500
@@ -309,7 +321,7 @@
   level: 7
 
   otherStats:
-    perception: 50
+    perception: 75
 
   skillOnKill: 50
 
