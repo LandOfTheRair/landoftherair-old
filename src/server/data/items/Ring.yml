@@ -16,15 +16,15 @@
 
 - name: Antanian Defense Ring
   stats:
-    armorClass: 2
-    defense: 3
+    armorClass: 1
+    defense: 2
   sprite: 240
   desc: "a gold ring set with a green gem"
   value: 500
 
 - name: Antanian Offense Ring
   stats:
-    offense: 3
+    offense: 2
   binds: true
   sprite: 241
   desc: "a gold ring set with a blue gem"
@@ -32,8 +32,8 @@
 
 - name: Antanian Combat Ring
   stats:
-    defense: 3
-    offense: 3
+    defense: 2
+    offense: 2
   binds: true
   sprite: 267
   desc: "a gold ring set with a blue gem with a shield etched into it"
