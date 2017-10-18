@@ -31,27 +31,55 @@
 # gems
 - result: Antanian Purple Gem
   chance: 1
-  maxChance: 30
+  maxChance: 70
 
 - result: Antanian Small Green Gem
   chance: 1
-  maxChance: 70
+  maxChance: 150
 
 - result: Antanian Big Green Gem
   chance: 1
-  maxChance: 150
+  maxChance: 300
 
 - result: Antanian Small Red Gem
   chance: 1
-  maxChance: 90
+  maxChance: 150
 
 - result: Antanian Big Red Gem
   chance: 1
-  maxChance: 170
+  maxChance: 300
+
+- name: Antanian Emerald Chunk
+  chance: 1
+  maxChance: 750
 
 - result: Antanian Diamond
   chance: 1
-  maxChance: 500
+  maxChance: 2500
+
+- name: Antanian Raw Jade
+  chance: 1
+  maxChance: 1000
+
+- name: Antanian Carved Jade
+  chance: 1
+  maxChance: 1500
+
+- name: Antanian Polished Ruby
+  chance: 1
+  maxChance: 750
+
+- name: Antanian White Pearl
+  chance: 1
+  maxChance: 2000
+
+- name: Antanian Black Pearl
+  chance: 1
+  maxChance: 2000
+
+- name: Antanian Small Black Pearl
+  chance: 1
+  maxChance: 450
 
 # rings
 - result: Leather Ring
