@@ -1002,9 +1002,10 @@ export class Character {
     // +1 so we don't zero out stealth on tile
     const distFactor = Math.floor(this.distFrom(char) + 1);
     const otherStealth = char.getTotalStat('stealth');
-    const thiefMultPerTile = char.baseClass === 'Thief' ? 1.05 : 0.75;
+    const thiefMultPerTile = char.baseClass === 'Thief' ? 0.2 : 0.05;
 
-    const totalStealth = Math.floor(distFactor * otherStealth * thiefMultPerTile);
+    const totalStealth = Math.floor(otherStealth + (otherStealth * distFactor * thiefMultPerTile));
+    
 
     return this.getTotalStat('perception') >= totalStealth;
   }
