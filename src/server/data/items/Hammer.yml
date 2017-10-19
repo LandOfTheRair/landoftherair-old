@@ -6,3 +6,12 @@
   type: Mace
   value: 0
   sprite: 226
+
+- name: Antanian Hammer
+  desc: "a hammer used for hammering nails"
+  baseDamage: 3
+  maxDamage: 1
+  minDamage: 2
+  type: Mace
+  value: 100
+  sprite: 226

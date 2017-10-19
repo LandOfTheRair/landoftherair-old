@@ -45,7 +45,7 @@ export class Charge extends Skill {
     const possTargets = user.$$room.getPossibleMessageTargets(user, args);
     const target = possTargets[0];
     if(!target) return user.sendClientMessage('You do not see that person.');
-    
+
     this.use(user, target);
   }
 
