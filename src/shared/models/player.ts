@@ -209,40 +209,49 @@ export class Player extends Character {
     super.die(killer);
 
     // 5 minutes to restore
-    this.$$deathTicks = 6 * 5;
+    this.$$deathTicks = 60 * 5;
     this.combatTicks = 0;
 
     const corpse = await this.$$room.createCorpse(this);
     corpse.sprite = this.getBaseSprite() + 4;
 
-    if(killer && !killer.isPlayer()) {
-      const myCon = this.getTotalStat('con');
-      const myLuk = this.getTotalStat('luk');
+    const myCon = this.getTotalStat('con');
+    const myLuk = this.getTotalStat('luk');
 
-      if(!(killer instanceof Player) && random(1, 100) > this.getTraitLevel('DeathGrip')) {
+    if(myCon > 3) this.stats.con--;
+
+    if(myCon === 3) {
+      if(this.stats.hp > 10 && random(1, 5) === 1) {
+        this.stats.hp -= 2;
+      }
+
+      if(random(1, myLuk / 5) === 1) this.stats.con--;
+    }
+
+    if(myCon === 2) {
+      if(this.stats.hp > 10) this.stats.hp -= 2;
+      if(random(1, myLuk) === 1) this.stats.con--;
+    }
+
+    if(myCon === 1) {
+      if(this.stats.hp > 10) this.stats.hp -= 2;
+    }
+
+    if(killer && !killer.isPlayer()) {
+
+      if(random(1, 100) > this.getTraitLevel('DeathGrip')) {
         this.dropHands();
       }
 
-      if(myCon > 3) this.stats.con--;
-
       if(myCon === 3) {
-        if(this.stats.hp > 10 && random(1, 5) === 1) {
-          this.stats.hp -= 2;
-        }
-
         if(random(1, myLuk) === 1) this.strip(this);
-
-        if(random(1, myLuk / 5) === 1) this.stats.con--;
       }
 
       if(myCon === 2) {
-        if(this.stats.hp > 10) this.stats.hp -= 2;
         if(random(1, myLuk / 5) === 1) this.strip(this);
-        if(random(1, myLuk) === 1) this.stats.con--;
       }
 
       if(myCon === 1) {
-        if(this.stats.hp > 10) this.stats.hp -= 2;
         if(random(1, 2) === 1) this.strip(this);
       }
     }
