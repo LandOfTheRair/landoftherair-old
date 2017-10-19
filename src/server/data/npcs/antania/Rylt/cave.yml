@@ -103,9 +103,9 @@
       - Identify Ring
     Robe1:
       - result: none
-        chance: 4
+        chance: 14
       - result: Antanian Cloak
-        chance: 4
+        chance: 14
       - result: Cave Apprentice Robe
         chance: 2
     Wrists:
