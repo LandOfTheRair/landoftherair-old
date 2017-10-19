@@ -28,7 +28,7 @@ export const responses = (npc: NPC) => {
       }
 
 
-      return 'Bring me the blade coveted by the brothers three and I will restore neutrality unto thee!';
+      return 'I am Ralteun, the bastion of neutrality. Bring me the blade coveted by the brothers three and I will restore neutrality unto thee!';
     });
 
 };
