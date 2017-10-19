@@ -75,7 +75,7 @@ export const responses = (npc: NPC) => {
             player.setRightHand(item);
           });
 
-        return `Here ya go! Now go kill my brother and set me free!`;
+        return `Take our family heirloom, and I will take my freedom. You have my thanks.`;
       }
 
       return `I need proof of my brother's demise!`;
