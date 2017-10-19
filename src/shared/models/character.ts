@@ -1067,4 +1067,9 @@ export class Character {
   public isUnableToAct(): boolean {
     return this.hasEffect('Stunned');
   }
+
+  public changeAlignment(align: Alignment) {
+    this.alignment = align;
+    this.recalculateStats();
+  }
 }
