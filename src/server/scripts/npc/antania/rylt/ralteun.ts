@@ -5,6 +5,7 @@ const TONWIN_SWORD = 'Tonwin Sword';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.gainBaseStat('stealth', 20);
 
   npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
