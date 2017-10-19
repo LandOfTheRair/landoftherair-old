@@ -20,3 +20,15 @@
   type: Mace
   value: 105
   sprite: 204
+
+- name: Antanian Steffen Flail
+  stats:
+    accuracy: -2
+    offense: 3
+  desc: "a standard-issue 3-ball flail"
+  baseDamage: 1
+  minDamage: 3
+  maxDamage: 15
+  type: Mace
+  value: 401
+  sprite: 228

@@ -28,7 +28,7 @@
   isSackable: true
   baseDamage: 3
   minDamage: 1
-  maxDamage: 3
+  maxDamage: 7
   returnsOnThrow: true
   type: Dagger
   value: 500
@@ -37,7 +37,7 @@
 - name: Antanian Dualwielding Dagger
   desc: "a finely-made dagger with a blue hilt"
   isSackable: true
-  baseDamage: 3
+  baseDamage: 5
   minDamage: 1
   maxDamage: 3
   returnsOnThrow: true

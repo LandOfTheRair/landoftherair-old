@@ -248,9 +248,9 @@ export class CombatHelper {
 
     const damageLeft = Math.floor(attackerScope.skill);
     const damageMax = random(attackerScope.damageMin, attackerScope.damageMax);
-    const damageRight = Math.floor(attackerScope.str + attackerScope.level + damageMax);
+    const damageRight = Math.floor(attackerScope.str + attackerScope.level);
 
-    let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}`) * attackerScope.multiplier) + attackerScope.damageBase;
+    let damage = Math.floor((+dice.roll(`${damageLeft}d${damageRight}`) + damageMax) * attackerScope.multiplier) + attackerScope.damageBase;
 
     if(isOffhand) {
       damage = Math.floor(damage / offhandDivisor);

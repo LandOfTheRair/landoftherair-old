@@ -234,10 +234,12 @@ export class Item {
     const baseText = `You are looking at ${this.desc}${encrustText}. `;
     const conditionText = `The item is in ${this.conditionString()} condition. `;
 
+    const dualWieldText = this.offhand ? 'The item is lightweight enough to use in either hand. ' : '';
+
     const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
     const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';
 
-    return `${baseText}${sense1Text}${sense1AfterText}${sense2Text}${usesText}${fluidText}${levelText}${conditionText}${ownedText}${appraiseText}`;
+    return `${baseText}${sense1Text}${sense1AfterText}${sense2Text}${dualWieldText}${usesText}${fluidText}${levelText}${conditionText}${ownedText}${appraiseText}`;
   }
 
   isRobe() {
