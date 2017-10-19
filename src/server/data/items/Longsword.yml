@@ -32,3 +32,15 @@
   tellsBind: true
   sprite: 323
   value: 2500
+
+- name: Antanian Steffen Katana
+  desc: "a simple steel katana"
+  stats:
+    offense: 2
+    defense: 2
+  baseDamage: 10
+  minDamage: 1
+  maxDamage: 8
+  type: Onehanded
+  value: 378
+  sprite: 227

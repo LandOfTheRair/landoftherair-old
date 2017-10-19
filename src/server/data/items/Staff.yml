@@ -18,3 +18,15 @@
   type: Staff
   value: 65
   sprite: 196
+
+- name: Yzalt Heniz Staff
+  desc: "a wooden staff with a charged tip"
+  stats:
+    int: 1
+    mp: 10
+  baseDamage: 8
+  minDamage: 2
+  maxDamage: 3
+  type: Staff
+  value: 567
+  sprite: 280

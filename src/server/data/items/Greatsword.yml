@@ -18,3 +18,15 @@
   type: Twohanded
   value: 150
   sprite: 198
+
+- name: Antanian Steffen Nodachi
+  stats:
+    offense: 3
+    accuracy: -5
+  desc: "a large steel nodachi"
+  baseDamage: 17
+  minDamage: 1
+  maxDamage: 10
+  type: Twohanded
+  value: 560
+  sprite: 244
