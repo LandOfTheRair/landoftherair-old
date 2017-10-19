@@ -26,7 +26,7 @@ export class Backstab extends Skill {
 
     if(weapon.twoHanded && attacker.leftHand) return -1;
 
-    return weapon.attackRange + attacker.getTotalStat('move');
+    return weapon.attackRange;
   }
 
   execute(user: Character, { gameState, args }) {
@@ -47,8 +47,6 @@ export class Backstab extends Skill {
     const possTargets = user.$$room.getPossibleMessageTargets(user, args);
     const target = possTargets[0];
     if(!target) return user.sendClientMessage('You do not see that person.');
-
-    if(target.distFrom(user) > range) return user.sendClientMessage('That target is too far away!');
 
     user.unapplyEffect(hidden, true);
     this.use(user, target);
