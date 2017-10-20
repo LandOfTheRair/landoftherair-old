@@ -4,7 +4,7 @@ import { Character, SkillClassNames } from '../../shared/models/character';
 
 export class Healer extends BaseClass {
   static combatDamageMultiplier = 1;
-  static combatLevelDivisor = 5;
+  static combatLevelDivisor = 3;
   static willDivisor = 3;
 
   static becomeClass(character: Character) {

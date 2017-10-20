@@ -3,6 +3,7 @@
   baseDamage: 5
   minDamage: 1
   maxDamage: 3
+  damageRolls: 1
   type: Axe
   value: 85
   sprite: 165
@@ -15,6 +16,7 @@
   baseDamage: 8
   minDamage: 1
   maxDamage: 3
+  damageRolls: 1
   type: Axe
   value: 85
   sprite: 165

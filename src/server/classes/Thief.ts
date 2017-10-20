@@ -4,7 +4,7 @@ import { Character } from '../../shared/models/character';
 
 export class Thief extends BaseClass {
   static combatDamageMultiplier = 1.25;
-  static combatLevelDivisor = 4;
+  static combatLevelDivisor = 2.5;
   static willDivisor = 4;
 
   static becomeClass(character: Character) {

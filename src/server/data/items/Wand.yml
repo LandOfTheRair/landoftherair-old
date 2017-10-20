@@ -3,6 +3,7 @@
   baseDamage: 1
   minDamage: 1
   maxDamage: 1
+  damageRolls: 1
   effect:
     name: MagicMissile
     potency: 5
@@ -18,6 +19,7 @@
   baseDamage: 5
   minDamage: 1
   maxDamage: 7
+  damageRolls: 1
   effect:
     name: FireMist
     potency: 8
@@ -32,6 +34,7 @@
   baseDamage: 5
   minDamage: 1
   maxDamage: 7
+  damageRolls: 1
   effect:
     name: IceMist
     potency: 8

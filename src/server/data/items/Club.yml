@@ -7,6 +7,7 @@
   baseDamage: 1
   minDamage: 1
   maxDamage: 1
+  damageRolls: 1
   requirements:
     level: 2
   type: Mace

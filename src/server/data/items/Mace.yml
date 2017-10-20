@@ -5,6 +5,7 @@
   baseDamage: 4
   minDamage: 1
   maxDamage: 3
+  damageRolls: 1
   type: Mace
   value: 105
   sprite: 204
@@ -17,6 +18,7 @@
   baseDamage: 7
   minDamage: 1
   maxDamage: 3
+  damageRolls: 1
   type: Mace
   value: 105
   sprite: 204
@@ -29,6 +31,7 @@
   baseDamage: 1
   minDamage: 3
   maxDamage: 15
+  damageRolls: 2
   type: Mace
   value: 401
   sprite: 228

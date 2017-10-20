@@ -5,6 +5,7 @@
   baseDamage: 7
   minDamage: 1
   maxDamage: 3
+  damageRolls: 1
   type: Ranged
   value: 95
   sprite: 199
@@ -16,6 +17,7 @@
   baseDamage: 9
   minDamage: 2
   maxDamage: 4
+  damageRolls: 1
   type: Ranged
   value: 195
   sprite: 199
@@ -25,6 +27,7 @@
   baseDamage: 11
   minDamage: 3
   maxDamage: 6
+  damageRolls: 2
   effect:
     name: Poison
     potency: 7

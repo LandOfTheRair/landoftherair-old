@@ -3,6 +3,7 @@
   baseDamage: 4
   minDamage: 1
   maxDamage: 1
+  damageRolls: 1
   type: Staff
   value: 65
   sprite: 196
@@ -15,6 +16,7 @@
   baseDamage: 6
   minDamage: 1
   maxDamage: 2
+  damageRolls: 1
   type: Staff
   value: 65
   sprite: 196
@@ -27,6 +29,7 @@
   baseDamage: 8
   minDamage: 2
   maxDamage: 3
+  damageRolls: 2
   type: Staff
   value: 567
   sprite: 280

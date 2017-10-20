@@ -3,6 +3,7 @@
   baseDamage: 7
   minDamage: 1
   maxDamage: 5
+  damageRolls: 2
   type: Twohanded
   value: 150
   sprite: 198
@@ -15,6 +16,7 @@
   baseDamage: 9
   minDamage: 1
   maxDamage: 5
+  damageRolls: 2
   type: Twohanded
   value: 150
   sprite: 198
@@ -27,6 +29,7 @@
   baseDamage: 17
   minDamage: 1
   maxDamage: 10
+  damageRolls: 3
   type: Twohanded
   value: 560
   sprite: 244
