@@ -90,7 +90,7 @@ export class CombatHelper {
       attackerWeapon = attacker.rightHand
                     || attacker.gear.Hands
                     || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands',
-                         minDamage: 1, maxDamage: 1, baseDamage: 1,
+                         minDamage: 1, maxDamage: 1, baseDamage: 1, damageRolls: 1,
                          isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
     }
 
@@ -140,13 +140,15 @@ export class CombatHelper {
       offense: Math.floor(attacker.getTotalStat('offense') / offhandDivisor),
       accuracy: Math.floor(attacker.getTotalStat('accuracy') / offhandDivisor),
       dex: Math.floor(attacker.getTotalStat('dex') / offhandDivisor),
+      dex4: Math.floor((attacker.getTotalStat('dex') / 4) / offhandDivisor),
       str: Math.floor(attacker.getTotalStat('str') / offhandDivisor),
       str4: Math.floor((attacker.getTotalStat('str') / 4) / offhandDivisor),
       multiplier: Classes[attacker.baseClass || 'Undecided'].combatDamageMultiplier,
       level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatLevelDivisor),
       damageMin: attackerWeapon.minDamage,
       damageMax: attackerWeapon.maxDamage,
-      damageBase: attackerWeapon.baseDamage
+      damageBase: attackerWeapon.baseDamage,
+      damageRolls: attackerWeapon.damageRolls || 1
     };
 
     const defenderACBoost = defenderArmor.conditionACModifier() + (defenderShield ? defenderShield.conditionACModifier() : 0);
@@ -250,11 +252,11 @@ export class CombatHelper {
       }
     }
 
-    const damageLeft = Math.floor(attackerScope.skill);
-    const damageMax = random(attackerScope.damageMin, attackerScope.damageMax);
-    const damageRight = Math.floor(attackerScope.str + attackerScope.level);
+    const damageLeft = Math.floor(attackerScope.skill + attackerScope.damageRolls);
+    const damageMax = random(attackerScope.damageMin, attackerScope.damageMax) + attackerScope.damageBase;
+    const damageRight = Math.floor(attackerScope.str + attackerScope.level + attackerScope.dex4);
 
-    let damage = Math.floor((+dice.roll(`${damageLeft}d${damageRight}`) + damageMax) * attackerScope.multiplier) + attackerScope.damageBase;
+    let damage = Math.floor((+dice.roll(`${damageLeft}d${damageRight}`) + damageMax) * attackerScope.multiplier) ;
 
     if(isOffhand) {
       damage = Math.floor(damage / offhandDivisor);

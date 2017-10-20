@@ -4,6 +4,7 @@
   baseDamage: 1
   minDamage: 1
   maxDamage: 2
+  damageRolls: 1
   sprite: 233
   desc: "a pair of leather gloves"
   value: 50
@@ -16,6 +17,7 @@
   baseDamage: 3
   minDamage: 1
   maxDamage: 2
+  damageRolls: 1
   sprite: 233
   desc: "a pair of leather gloves"
   value: 50
@@ -27,6 +29,7 @@
   baseDamage: 7
   minDamage: 1
   maxDamage: 4
+  damageRolls: 1
   desc: "a pair of rocky gloves"
   sprite: -1
 
@@ -41,6 +44,7 @@
   baseDamage: 10
   minDamage: 3
   maxDamage: 5
+  damageRolls: 2
   desc: "a pair of golden knight gauntlets"
   sprite: 362
   binds: true
@@ -62,6 +66,7 @@
   baseDamage: 3
   minDamage: 5
   maxDamage: 7
+  damageRolls: 2
   effect:
     name: MagicMissile
     potency: 10

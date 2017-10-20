@@ -6,6 +6,7 @@
   baseDamage: 5
   minDamage: 1
   maxDamage: 2
+  damageRolls: 1
   type: Dagger
   value: 75
   sprite: 205
@@ -19,6 +20,7 @@
   baseDamage: 7
   minDamage: 1
   maxDamage: 2
+  damageRolls: 1
   type: Dagger
   value: 75
   sprite: 205
@@ -29,6 +31,7 @@
   baseDamage: 3
   minDamage: 1
   maxDamage: 7
+  damageRolls: 1
   returnsOnThrow: true
   type: Dagger
   value: 500
@@ -40,6 +43,7 @@
   baseDamage: 5
   minDamage: 1
   maxDamage: 3
+  damageRolls: 1
   returnsOnThrow: true
   offhand: true
   type: Dagger

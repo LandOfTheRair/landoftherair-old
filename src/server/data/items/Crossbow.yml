@@ -6,6 +6,7 @@
   baseDamage: 5
   minDamage: 1
   maxDamage: 2
+  damageRolls: 1
   type: Ranged
   value: 100
   sprite: 201

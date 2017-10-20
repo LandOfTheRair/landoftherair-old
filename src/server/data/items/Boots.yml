@@ -4,6 +4,7 @@
   minDamage: 1
   maxDamage: 3
   baseDamage: 3
+  damageRolls: 1
   sprite: 232
   desc: "a pair of leather boots"
   value: 50
@@ -16,6 +17,7 @@
   minDamage: 3
   maxDamage: 3
   baseDamage: 3
+  damageRolls: 1
   sprite: 232
   desc: "a pair of leather boots"
   value: 50
@@ -28,6 +30,7 @@
   minDamage: 6
   maxDamage: 1
   baseDamage: 9
+  damageRolls: 1
   sprite: 369
   desc: "a pair of black leather combat boots"
   value: 580
@@ -39,6 +42,7 @@
   minDamage: 4
   maxDamage: 5
   baseDamage: 5
+  damageRolls: 1
   sprite: 370
   desc: "a pair sharkskin boots that help you swim more easily"
   value: 250

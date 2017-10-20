@@ -112,6 +112,7 @@ export class Item {
   // username ref
   owner?: string;
 
+  damageRolls = 0;
   baseDamage = 0;
   minDamage = 0;
   maxDamage = 0;

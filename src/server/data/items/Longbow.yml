@@ -5,6 +5,7 @@
   baseDamage: 6
   minDamage: 1
   maxDamage: 4
+  damageRolls: 1
   type: Ranged
   secondaryType: Twohanded
   value: 110

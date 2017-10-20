@@ -3,6 +3,7 @@
   baseDamage: 7
   minDamage: 1
   maxDamage: 3
+  damageRolls: 1
   type: Shortsword
   value: 85
   sprite: 195
@@ -15,6 +16,7 @@
   baseDamage: 9
   minDamage: 2
   maxDamage: 3
+  damageRolls: 1
   type: Shortsword
   value: 105
   sprite: 195

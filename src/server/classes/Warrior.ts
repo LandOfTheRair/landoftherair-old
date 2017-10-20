@@ -4,7 +4,7 @@ import { Character } from '../../shared/models/character';
 
 export class Warrior extends BaseClass {
   static combatDamageMultiplier = 1.5;
-  static combatLevelDivisor = 3;
+  static combatLevelDivisor = 2;
   static willDivisor = 4;
 
   static becomeClass(character: Character) {
