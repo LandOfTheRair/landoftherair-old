@@ -14,5 +14,17 @@
       min: 1
       max: 3
   sprite: 284
+  binds: true
   desc: "a pair of shadow-dark bracers"
+  value: 650
+
+- name: Yzalt MagicResist Bracers
+  stats:
+    necroticResist: 30
+    energyResist: 30
+    fireResist: 30
+    iceResist: 30
+  sprite: 6
+  binds: true
+  desc: "a pair of bracers set with many magical gems"
   value: 650

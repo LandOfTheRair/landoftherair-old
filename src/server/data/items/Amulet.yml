@@ -36,3 +36,16 @@
   sprite: 489
   desc: "an amulet set with a jade dove"
   value: 1000
+
+- name: Yzalt Combat Amulet
+  randomStats:
+    offense:
+      min: 1
+      max: 3
+    defense:
+      min: 1
+      max: 3
+  binds: true
+  sprite: 491
+  desc: "an amulet set with a purple skull"
+  value: 1010

@@ -13,3 +13,39 @@
   sprite: 235
   desc: "a simple iron helm"
   value: 100
+
+- name: Antanian Combat Helm
+  stats:
+    armorClass: 5
+  randomStats:
+    defense:
+      min: 0
+      max: 1
+    offense:
+      min: 0
+      max: 1
+  sprite: 374
+  desc: "a large iron helm with a flared-out neck protector"
+  value: 200
+
+- name: Antanian Health Helm
+  stats:
+    armorClass: 3
+  randomStats:
+    hp:
+      min: 0
+      max: 65
+  sprite: 374
+  desc: "a large iron helm with a flared-out neck protector"
+  value: 244
+
+- name: Antanian Mana Helm
+  stats:
+    armorClass: 3
+  randomStats:
+    mp:
+      min: 0
+      max: 65
+  sprite: 374
+  desc: "a large iron helm with a flared-out neck protector"
+  value: 287

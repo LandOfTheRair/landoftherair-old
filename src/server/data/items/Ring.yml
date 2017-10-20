@@ -91,3 +91,12 @@
   sprite: 497
   desc: "a brass ring set with a pulsating blue gem"
   value: 1100
+
+- name: Yzalt Armor Ring
+  randomStats:
+    armorClass:
+      min: 3
+      max: 6
+  sprite: 266
+  binds: true
+  desc: "a gold ring plated with layers of silver"

@@ -31,9 +31,6 @@
     offense:
       min: 2
       max: 4
-    armorClass:
-      min: 2
-      max: 4
   sprite: 475
   desc: "a sash emblazoned with the glorious Steffen blade"
   binds: true
@@ -51,4 +48,20 @@
   desc: "a sash emblazoned with the glorious Heniz colors"
   binds: true
   value: 1600
+
+- name: Yzalt Basic Sash
+  randomStats:
+    defense:
+      min: 1
+      max: 3
+    offense:
+      min: 1
+      max: 3
+    armorClass:
+      min: 1
+      max: 5
+  sprite: 388
+  desc: "a rug fashioned into a sash"
+  binds: true
+  value: 678
 
