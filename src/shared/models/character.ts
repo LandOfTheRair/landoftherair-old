@@ -472,8 +472,9 @@ export class Character {
     if(!includes(EquippableItemClassesWithWeapons, item.itemClass)) return false;
     if(item.requirements) {
       if(item.requirements.level && this.level < item.requirements.level) return false;
-      if(item.requirements.class && !includes(item.requirements.class, this.baseClass)) return false;
+      if(item.requirements.profession && !includes(item.requirements.profession, this.baseClass)) return false;
     }
+
     return true;
   }
 

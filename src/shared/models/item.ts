@@ -89,7 +89,7 @@ export const EquippableItemClassesWithWeapons = EquippableItemClasses
 
 export class ItemRequirements {
   level?: number;
-  class?: string[];
+  profession?: string[];
 }
 
 export class Encrust {
@@ -253,6 +253,19 @@ export class Item {
 
   isOwnedBy(char: Character) {
     return !this.owner || this.owner && (<any>char).username === this.owner;
+  }
+
+  canUseInCombat(char: Character) {
+    const baseCondition = this.isOwnedBy(char) && this.hasCondition();
+    if(!this.requirements) return baseCondition;
+
+    let { level, profession } = this.requirements;
+    if(!level) level = 0;
+    if(!profession) profession = [char.baseClass];
+
+    return baseCondition
+        && level < char.level
+        && includes(profession, char.baseClass)
   }
 
   hasCondition() {

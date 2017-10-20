@@ -47,5 +47,5 @@
 
   requirements:
     level: 3
-    class:
+    profession:
       - "Mage"
