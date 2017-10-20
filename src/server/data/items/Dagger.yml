@@ -45,3 +45,4 @@
   type: Dagger
   value: 500
   sprite: 332
+  binds: true

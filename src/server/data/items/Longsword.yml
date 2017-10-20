@@ -44,3 +44,4 @@
   type: Onehanded
   value: 378
   sprite: 227
+  binds: true

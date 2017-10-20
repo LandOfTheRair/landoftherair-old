@@ -32,3 +32,4 @@
   type: Mace
   value: 401
   sprite: 228
+  binds: true

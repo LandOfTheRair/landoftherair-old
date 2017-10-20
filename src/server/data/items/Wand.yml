@@ -12,3 +12,31 @@
   type: Wand
   value: 1500
   sprite: 281
+
+- name: Heniz FireMist Wand
+  desc: "a blue wand engraved with the blazing Heniz runes"
+  baseDamage: 5
+  minDamage: 1
+  maxDamage: 7
+  effect:
+    name: FireMist
+    potency: 8
+    chance: 10
+  binds: true
+  type: Wand
+  value: 750
+  sprite: 281
+
+- name: Heniz IceMist Wand
+  desc: "a blue wand engraved with the frozen Heniz runes"
+  baseDamage: 5
+  minDamage: 1
+  maxDamage: 7
+  effect:
+    name: IceMist
+    potency: 8
+    chance: 10
+  binds: true
+  type: Wand
+  value: 750
+  sprite: 281
