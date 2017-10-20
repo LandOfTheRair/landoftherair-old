@@ -177,8 +177,12 @@ export class CombatHelper {
     const attackerDodgeRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`);
     const defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`);
 
-    const attackDistance = attackRange ? attackRange : 0;
+    let attackDistance = attackRange ? attackRange : 0;
     const distBetween = attacker.distFrom(defender);
+
+    if(isBackstab || isMug) {
+      attackDistance = 0;
+    }
 
     const dodgeRoll = random(defenderDodgeRoll, attackerDodgeRoll);
 
