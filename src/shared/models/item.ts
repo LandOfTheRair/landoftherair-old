@@ -265,7 +265,7 @@ export class Item {
 
     return baseCondition
         && level < char.level
-        && includes(profession, char.baseClass)
+        && includes(profession, char.baseClass);
   }
 
   hasCondition() {
