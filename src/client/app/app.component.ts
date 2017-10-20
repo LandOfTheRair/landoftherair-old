@@ -259,7 +259,8 @@ export class AppComponent implements OnInit {
       input: 'text',
       preConfirm: (name) => {
         return new Promise((resolve, reject) => {
-          if(name.length < 2 || name.length > 10) reject('Group name is not the right size');
+          if(name.length < 2 || name.length > 10) return reject('Group name is not the right size');
+          if(this.macroService.allMacroGroups[name]) return reject('You already have a group named that');
           resolve();
         });
       }
