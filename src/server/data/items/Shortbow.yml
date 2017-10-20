@@ -19,3 +19,16 @@
   type: Ranged
   value: 195
   sprite: 199
+
+- name: Heniz Poison Shortbow
+  desc: "a crudely-carved shortbow with poison tipped arrows"
+  baseDamage: 11
+  minDamage: 3
+  maxDamage: 6
+  effect:
+    name: Poison
+    potency: 7
+    chance: 75
+  type: Ranged
+  value: 195
+  sprite: 390

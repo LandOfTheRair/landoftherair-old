@@ -30,3 +30,4 @@
   type: Staff
   value: 567
   sprite: 280
+  binds: true

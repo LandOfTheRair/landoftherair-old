@@ -55,3 +55,39 @@
   sprite: 30
   desc: "a gold ring with a sparkly red gem set in the center"
   value: 1000
+
+- name: Steffen DamageResist Ring
+  randomStats:
+    physicalResist:
+      min: 5
+      max: 15
+  binds: true
+  sprite: 496
+  desc: "a black platinum ring set with a green gem which pulses with magical energy"
+  value: 1500
+
+- name: Steffen Mana Ring
+  randomStats:
+    mp:
+      min: 10
+      max: 50
+    defense:
+      min: 0
+      max: 2
+  binds: true
+  sprite: 495
+  desc: "a silver ring set with many glowing mana beads"
+  value: 1200
+
+- name: Heniz Intelligence Ring
+  randomStats:
+    int:
+      min: 1
+      max: 3
+    defense:
+      min: 0
+      max: 2
+  binds: true
+  sprite: 497
+  desc: "a brass ring set with a pulsating blue gem"
+  value: 1100

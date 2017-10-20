@@ -25,3 +25,30 @@
   binds: true
   tellsBind: true
   value: 3500
+
+- name: Steffen Offensive Sash
+  randomStats:
+    offense:
+      min: 2
+      max: 4
+    armorClass:
+      min: 2
+      max: 4
+  sprite: 475
+  desc: "a sash emblazoned with the glorious Steffen blade"
+  binds: true
+  value: 700
+
+- name: Heniz Agility Sash
+  randomStats:
+    defense:
+      min: 1
+      max: 3
+    agi:
+      min: 1
+      max: 3
+  sprite: 388
+  desc: "a sash emblazoned with the glorious Heniz colors"
+  binds: true
+  value: 1600
+

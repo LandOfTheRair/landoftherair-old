@@ -23,3 +23,16 @@
   sprite: 319
   desc: "an amulet crafted from many pearls and engraved with the markings of a shaman"
   value: 1000
+
+- name: Steffen Wisdom Amulet
+  randomStats:
+    wis:
+      min: 1
+      max: 3
+    defense:
+      min: 1
+      max: 2
+  binds: true
+  sprite: 489
+  desc: "an amulet set with a jade dove"
+  value: 1000

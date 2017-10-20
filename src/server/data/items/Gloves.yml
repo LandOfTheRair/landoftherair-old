@@ -29,3 +29,43 @@
   maxDamage: 4
   desc: "a pair of rocky gloves"
   sprite: -1
+
+- name: Steffen Strength Gloves
+  randomStats:
+    str:
+      min: 1
+      max: 3
+    offense:
+      min: 2
+      max: 4
+  baseDamage: 10
+  minDamage: 3
+  maxDamage: 5
+  desc: "a pair of golden knight gauntlets"
+  sprite: 362
+  binds: true
+
+- name: Heniz Battlemage Gloves
+  randomStats:
+    offense:
+      min: 1
+      max: 2
+    defense:
+      min: 2
+      max: 4
+    hp:
+      min: 10
+      max: 30
+    mp:
+      min: 10
+      max: 30
+  baseDamage: 3
+  minDamage: 5
+  maxDamage: 7
+  effect:
+    name: MagicMissile
+    potency: 10
+    chance: 5
+  desc: "a pair of dark gauntlets that emanate magic"
+  sprite: 461
+  binds: true

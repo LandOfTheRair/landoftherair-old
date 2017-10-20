@@ -30,3 +30,4 @@
   type: Twohanded
   value: 560
   sprite: 244
+  binds: true
