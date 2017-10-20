@@ -117,8 +117,8 @@ class ItemLoader {
     if(!item.sprite)                          { console.error(`ERROR: ${item.name} has no sprite!`); hasBad = true; }
     if(!includes(ValidItemTypes, item.type))  { console.error(`ERROR: ${item.name} has an invalid item type!`); hasBad = true; }
 
-    if(item.requirements && item.requirements.class) {
-      const invalidClasses = reject(item.requirements.class, testClass => Classes[testClass]);
+    if(item.requirements && item.requirements.profession) {
+      const invalidClasses = reject(item.requirements.profession, testClass => Classes[testClass]);
       if(invalidClasses.length > 0) {
         console.error(`ERROR: ${item.name} has invalid class requirements: ${invalidClasses.join(', ')}`);
         hasBad = true;

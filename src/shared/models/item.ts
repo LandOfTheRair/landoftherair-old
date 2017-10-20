@@ -277,7 +277,7 @@ export class Item {
     if(onBreak && this.condition <= 0) onBreak();
   }
 
-  canUse(char: Character) {
+  canUse(char: Character) {``
     return (this.effect || this.ounces > 0) && this.hasCondition() && this.isOwnedBy(char);
   }
 
