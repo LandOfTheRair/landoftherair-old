@@ -408,12 +408,16 @@
  "properties":
     {
      "maxSkill":40,
-     "region":"GMLand"
+     "region":"GMLand",
+     "respawnX":16,
+     "respawnY":16
     },
  "propertytypes":
     {
      "maxSkill":"int",
-     "region":"string"
+     "region":"string",
+     "respawnX":"int",
+     "respawnY":"int"
     },
  "renderorder":"right-down",
  "tileheight":64,
