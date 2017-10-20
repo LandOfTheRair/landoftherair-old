@@ -23,6 +23,8 @@ export class PartyComponent {
   locationFor(character) {
     if(character.username === this.colyseusGame.character.username) return '✧';
     if(character.map !== this.colyseusGame.character.map)           return character.map;
+    if(character.z > this.colyseusGame.character.z)                 return 'Above';
+    if(character.z < this.colyseusGame.character.z)                 return 'Below';
 
     const dir = this.colyseusGame.directionTo(character);
     const distance = this.colyseusGame.distanceTo(character);

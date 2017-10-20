@@ -24,7 +24,12 @@ export class ClimbUp extends Command {
     if(!stairs) return player.sendClientMessage('There are no grips here.');
 
     const { teleportMap, teleportX, teleportY } = stairs.properties;
-    room.teleport(player, { x: teleportX, y: teleportY, newMap: teleportMap });
+    room.teleport(player, {
+      x: teleportX,
+      y: teleportY,
+      newMap: teleportMap,
+      zChange: interactable.type === 'ClimbUp' ? 1 : -1
+    });
   }
 
 }

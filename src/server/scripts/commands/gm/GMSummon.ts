@@ -18,6 +18,7 @@ export class GMSummon extends Command {
       if(!room.doesTargetMatchSearch(checkTarget, args)) return;
       checkTarget.x = player.x;
       checkTarget.y = player.y;
+      checkTarget.z = player.z;
 
       room.state.calculateFOV(checkTarget);
     });
