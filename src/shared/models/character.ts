@@ -1002,7 +1002,7 @@ export class Character {
 
   canSeeThroughStealthOf(char: Character) {
 
-    if(!char.hasEffect('Hidden')) return true;
+    if(char.isPlayer() && !char.hasEffect('Hidden')) return true;
 
     // +1 so we don't zero out stealth on tile
     const distFactor = Math.floor(this.distFrom(char) + 1);
