@@ -49,3 +49,22 @@
   sprite: 374
   desc: "a large iron helm with a flared-out neck protector"
   value: 287
+
+- name: Steffen Crown
+  stats:
+    str: 1
+    agi: 1
+    dex: 1
+    con: 1
+    int: 1
+    wis: 1
+    wil: 1
+    luk: 1
+    cha: 1
+  sprite: 127
+  desc: "the regal crown of the Steffen"
+  value: 3600
+
+  requirements:
+    level: 7
+    alignment: Good
