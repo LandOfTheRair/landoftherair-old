@@ -1,11 +1,19 @@
 
 <div class="macro-group-container d-flex flex-wrap">
-  <div *ngFor="let group of macroService.visibleMacroGroups">
+  <div *ngFor="let group of macroService.visibleMacroGroups; let i = index">
     <div class="macro-group" *ngIf="macroService.allMacroGroups[group]">
 
       <div class="group-name">
+        <div class="arrow arrow-left" (click)="changeMacroGroup(i, -1)">
+          &#9664;
+        </div>
+
         <div class="text-rotated">
           {{ group }}
+        </div>
+
+        <div class="arrow arrow-right" (click)="changeMacroGroup(i, 1)">
+          &#9654;
         </div>
       </div>
 
