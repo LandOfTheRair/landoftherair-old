@@ -5,6 +5,8 @@ import { ColyseusGameService } from '../colyseus.game.service';
 import * as macros from './macros.json';
 import { MacroService, Macro } from '../macros.service';
 
+import { findIndex } from 'lodash';
+
 @Component({
   selector: 'app-macro-bars',
   templateUrl: './macro-bars.component.html',
@@ -71,6 +73,17 @@ export class MacroBarsComponent implements OnInit {
     }
 
     this.colyseusGame.currentCommand = macro.macro;
+  }
+
+  public changeMacroGroup(macroBarIndex, modifier = 0) {
+    const currentName = this.macroService.visibleMacroGroups[macroBarIndex];
+    const currentIndex = findIndex(this.macroService.iterableMacroGroups, { key: currentName });
+
+    let newIndex = currentIndex + modifier;
+    if(newIndex === -1) newIndex = this.macroService.iterableMacroGroups.length - 1;
+    if(newIndex === this.macroService.iterableMacroGroups.length) newIndex = 0;
+    
+    this.macroService.visibleMacroGroups[macroBarIndex] = this.macroService.iterableMacroGroups[newIndex].key;
   }
 
 }
