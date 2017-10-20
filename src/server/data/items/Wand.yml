@@ -29,6 +29,9 @@
   value: 750
   sprite: 281
 
+  requirements:
+    level: 5
+
 - name: Heniz IceMist Wand
   desc: "a blue wand engraved with the frozen Heniz runes"
   baseDamage: 5
@@ -43,3 +46,6 @@
   type: Wand
   value: 750
   sprite: 281
+
+  requirements:
+    level: 5

@@ -18,6 +18,9 @@
   desc: "a pair of shadow-dark bracers"
   value: 650
 
+  requirements:
+    level: 5
+
 - name: Yzalt MagicResist Bracers
   stats:
     necroticResist: 30
@@ -28,3 +31,6 @@
   binds: true
   desc: "a pair of bracers set with many magical gems"
   value: 650
+
+  requirements:
+    level: 5

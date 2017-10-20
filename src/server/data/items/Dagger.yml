@@ -50,3 +50,6 @@
   value: 500
   sprite: 332
   binds: true
+
+  requirements:
+    level: 5

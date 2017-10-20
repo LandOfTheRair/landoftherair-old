@@ -42,6 +42,9 @@
   value: 1400
   sprite: 488
 
+  requirements:
+    level: 5
+
 - name: Yzalt Straw Robe
   stats:
     armorClass: 2
@@ -56,3 +59,6 @@
   value: 934
   sprite: 486
   binds: true
+
+  requirements:
+    level: 5

@@ -35,3 +35,6 @@
   type: Ranged
   value: 195
   sprite: 390
+
+  requirements:
+    level: 5
