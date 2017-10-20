@@ -1,5 +1,5 @@
 
-import { Spawner } from '../../../base/Spawner';
+import { Spawner } from '../../../../base/Spawner';
 
 const npcIds = [
   'Rylt Renegade',
