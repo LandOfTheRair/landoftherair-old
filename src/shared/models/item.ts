@@ -1,7 +1,7 @@
 
 import { extend, omitBy, includes, without, isNumber, size } from 'lodash';
 import * as uuid from 'uuid/v4';
-import { Character, SkillClassNames } from './character';
+import { Alignment, Character, SkillClassNames } from './character';
 
 import * as Effects from '../../server/effects';
 
@@ -90,6 +90,7 @@ export const EquippableItemClassesWithWeapons = EquippableItemClasses
 export class ItemRequirements {
   level?: number;
   profession?: string[];
+  alignment?: Alignment;
 }
 
 export class Encrust {
@@ -259,12 +260,14 @@ export class Item {
     const baseCondition = this.isOwnedBy(char) && this.hasCondition();
     if(!this.requirements) return baseCondition;
 
-    let { level, profession } = this.requirements;
+    let { level, profession, alignment } = this.requirements;
     if(!level) level = 0;
     if(!profession) profession = [char.baseClass];
+    if(!alignment) alignment = char.alignment;
 
     return baseCondition
         && level < char.level
+        && alignment === char.alignment
         && includes(profession, char.baseClass);
   }
 
