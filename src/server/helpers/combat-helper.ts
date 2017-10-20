@@ -90,7 +90,8 @@ export class CombatHelper {
       attackerWeapon = attacker.rightHand
                     || attacker.gear.Hands
                     || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands',
-                         minDamage: 1, maxDamage: 1, baseDamage: 1, damageRolls: 1,
+                         minDamage: 1, maxDamage: 1, baseDamage: 1, damageRolls: 0,
+                         canUseInCombat: () => true,
                          isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
     }
 
@@ -103,7 +104,7 @@ export class CombatHelper {
     if(isThrow)    flagSkills[1] = SkillClassNames.Throwing;
     if(isBackstab) flagSkills[1] = SkillClassNames.Thievery;
 
-    if(!attackerWeapon.isOwnedBy(attacker) || !attackerWeapon.hasCondition()) {
+    if(attacker.rightHand && !attackerWeapon.canUseInCombat(attacker)) {
       if(!isThrow || (isThrow && attackerWeapon.returnsOnThrow)) {
         attacker.$$room.addItemToGround(attacker, attacker.rightHand);
         attacker.setRightHand(null);
