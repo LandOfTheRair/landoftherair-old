@@ -4,6 +4,7 @@ import { VendorResponses } from '../../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.allegiance = 'Pirates';
 
   const vendorItems = [
     'Antanian Tunic',
@@ -17,7 +18,7 @@ export const setup = async (npc: NPC) => {
 
   NPCLoader.loadVendorItems(npc, vendorItems);
 
-  npc.rightHand = await NPCLoader.loadItem('Antanian Longsword');
+  npc.rightHand = await NPCLoader.loadItem('Antanian Returning Dagger');
   npc.gear.Armor = await NPCLoader.loadItem('Antanian Scalemail Tunic');
 
   npc.recalculateStats();

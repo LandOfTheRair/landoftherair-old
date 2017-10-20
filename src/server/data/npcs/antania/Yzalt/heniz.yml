@@ -1,0 +1,108 @@
+
+- npcId: Heniz Townee
+  allegiance: Pirates
+  sprite: [580, 595, 610, 615]
+  alignment: Evil
+  stats: 10
+  skillLevels:
+    Longsword: 2
+    Axe: 2
+    Dagger: 2
+    Staff: 2
+
+  level: 7
+
+  skillOnKill: 25
+
+  otherStats:
+    perception: 35
+
+  gold:
+    min: 100
+    max: 200
+
+  hp:
+    min: 1500
+    max: 2000
+
+  giveXp:
+    min: 1500
+    max: 2500
+
+  rightHand:
+    - Antanian Staff
+    - Antanian Dagger
+    - Antanian Longsword
+    - Antanian Axe
+  leftHand:
+    - result: none
+      chance: 2
+    - result: Antanian Wooden Shield
+      chance: 4
+    - result: Antanian Bubble Shield
+      chance: 1
+
+  gear:
+    Ring1:
+      - result: none
+        chance: 9
+      - result: Leather Ring
+        chance: 2
+      - result: Antanian Ring
+        chance: 1
+      - result: Identify Ring
+        chance: 1
+    Armor:
+      - result: Antanian Tunic
+        chance: 1
+      - result: Antanian Studded Tunic
+        chance: 2
+      - result: Antanian Ringmail Tunic
+        chance: 3
+      - result: Antanian Breastplate
+        chance: 4
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Head:
+      - result: none
+        chance: 3
+      - result: Antanian Helm
+        chance: 2
+    Hands:
+      - result: none
+        chance: 3
+      - result: Antanian Leather Gloves
+        chance: 1
+    Feet:
+      - result: none
+        chance: 3
+      - result: Antanian Leather Boots
+        chance: 1
+    Neck:
+      - result: none
+        chance: 5
+      - result: Antanian Amulet
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1

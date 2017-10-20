@@ -300,6 +300,10 @@ export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
         return;
       }
 
+      if(npc.allegiance !== 'None') {
+        if(player.isHostileTo(npc.allegiance)) return 'I have nothing to say to your kind.';
+      }
+
       if(classRestriction && player.baseClass !== classRestriction) {
         return 'I have nothing to say to you.';
       }
@@ -314,6 +318,10 @@ export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
+      if(npc.allegiance !== 'None') {
+        if(player.isHostileTo(npc.allegiance)) return 'I have nothing to say to your kind.';
+      }
+
       if(!player.rightHand) return 'I cannot give you as value for your hand.';
 
       const value = player.rightHand.value;
@@ -327,6 +335,10 @@ export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
       const itemtype = args['itemtype*'].toLowerCase();
+
+      if(npc.allegiance !== 'None') {
+        if(player.isHostileTo(npc.allegiance)) return 'I have nothing to say to your kind.';
+      }
 
       // sell all items matching item type (player.sellItem)
 

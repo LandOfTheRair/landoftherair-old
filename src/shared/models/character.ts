@@ -570,10 +570,12 @@ export class Character {
       case 'E':  return { x: 1,   y: 0 };
       case 'S':  return { x: 0,   y: 1 };
       case 'W':  return { x: -1,  y: 0 };
-      case 'NW': return { x: -1,  y: 1 };
-      case 'NE': return { x: 1,   y: 1 };
-      case 'SW': return { x: -1,  y: -1 };
-      case 'SE': return { x: -1,  y: 1 };
+
+      case 'NW': return { x: -1,  y: -1 };
+      case 'NE': return { x: 1,   y: -1 };
+      case 'SW': return { x: -1,  y: 1 };
+      case 'SE': return { x: 1,  y: 1 };
+
       default:   return { x: 0,   y: 0 };
     }
   }
@@ -1075,5 +1077,20 @@ export class Character {
   public changeAlignment(align: Alignment) {
     this.alignment = align;
     this.recalculateStats();
+  }
+
+  public isHostileTo(faction: Allegiance) {
+    if(!this.allegianceReputation[faction]) return false;
+    return this.allegianceReputation[faction] <= -100;
+  }
+
+  public isFriendlyTo(faction: Allegiance) {
+    if(!this.allegianceReputation[faction]) return false;
+    return this.allegianceReputation[faction] >= 100;
+  }
+
+  public isNeutralTo(faction: Allegiance) {
+    if(!this.allegianceReputation[faction]) return true;
+    return !this.isHostileTo(faction) && !this.isFriendlyTo(faction);
   }
 }

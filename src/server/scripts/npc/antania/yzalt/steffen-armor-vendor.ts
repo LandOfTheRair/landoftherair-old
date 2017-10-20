@@ -4,6 +4,7 @@ import { VendorResponses } from '../../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.allegiance = 'Royalty';
 
   const vendorItems = [
     'Antanian Ringmail Tunic',

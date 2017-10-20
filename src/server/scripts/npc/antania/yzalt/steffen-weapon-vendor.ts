@@ -5,6 +5,7 @@ import { sample } from 'lodash';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.allegiance = 'Royalty';
 
   const vendorItems = [
     'Antanian Mace',

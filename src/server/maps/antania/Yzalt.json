@@ -636,25 +636,6 @@
                  "y":9856
                 }, 
                 {
-                 "height":192,
-                 "id":955,
-                 "name":"Sleep",
-                 "properties":
-                    {
-                     "desc":"This must be the only place comfortable enough to sleep in this village."
-                    },
-                 "propertytypes":
-                    {
-                     "desc":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":320,
-                 "x":1408,
-                 "y":9664
-                }, 
-                {
                  "gid":3099,
                  "height":64,
                  "id":1034,
@@ -877,44 +858,6 @@
                  "width":64,
                  "x":2880,
                  "y":1408
-                }, 
-                {
-                 "height":256,
-                 "id":1126,
-                 "name":"Regal",
-                 "properties":
-                    {
-                     "desc":"You see in front of you the Royal king of the Steffen. The atmosphere in the room is daunting."
-                    },
-                 "propertytypes":
-                    {
-                     "desc":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":320,
-                 "x":1536,
-                 "y":1152
-                }, 
-                {
-                 "height":256,
-                 "id":1136,
-                 "name":"Regal",
-                 "properties":
-                    {
-                     "desc":"This room smells slightly less pungent than the remainder of the surrounding bog, a sign that the leader of the Heniz resides here."
-                    },
-                 "propertytypes":
-                    {
-                     "desc":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":448,
-                 "x":3968,
-                 "y":11008
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2817,6 +2760,18 @@
                  "width":64,
                  "x":2752,
                  "y":2240
+                }, 
+                {
+                 "gid":2397,
+                 "height":64,
+                 "id":1144,
+                 "name":"",
+                 "rotation":0,
+                 "type":"Door",
+                 "visible":true,
+                 "width":64,
+                 "x":2240,
+                 "y":10624
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3413,7 +3368,27 @@
         {
          "draworder":"topdown",
          "name":"Spawners",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1139,
+                 "name":"Heniz Town Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/heniz-town"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1664,
+                 "y":10816
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -3765,10 +3740,67 @@
                  "width":256,
                  "x":2752,
                  "y":1536
+                }, 
+                {
+                 "height":192,
+                 "id":1138,
+                 "name":"Sleep",
+                 "properties":
+                    {
+                     "desc":"This must be the only place comfortable enough to sleep in this village."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":1408,
+                 "y":9664
+                }, 
+                {
+                 "height":256,
+                 "id":1140,
+                 "name":"Regal",
+                 "properties":
+                    {
+                     "desc":"This room smells slightly less pungent than the remainder of the surrounding bog, a sign that the leader of the Heniz resides here."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":3968,
+                 "y":11008
+                }, 
+                {
+                 "height":256,
+                 "id":1141,
+                 "name":"Regal",
+                 "properties":
+                    {
+                     "desc":"You see in front of you the Royal king of the Steffen. The atmosphere in the room is daunting."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":1536,
+                 "y":1152
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -3815,7 +3847,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1137,
+ "nextobjectid":1145,
  "orientation":"orthogonal",
  "properties":
     {
