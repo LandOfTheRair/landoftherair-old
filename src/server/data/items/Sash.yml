@@ -26,6 +26,9 @@
   tellsBind: true
   value: 3500
 
+  requirements:
+    level: 5
+
 - name: Steffen Offensive Sash
   randomStats:
     offense:
@@ -35,6 +38,9 @@
   desc: "a sash emblazoned with the glorious Steffen blade"
   binds: true
   value: 700
+
+  requirements:
+    level: 5
 
 - name: Heniz Agility Sash
   randomStats:
@@ -48,6 +54,11 @@
   desc: "a sash emblazoned with the glorious Heniz colors"
   binds: true
   value: 1600
+
+  requirements:
+    level: 7
+    profession:
+      - "Thief"
 
 - name: Yzalt Basic Sash
   randomStats:
@@ -64,4 +75,7 @@
   desc: "a rug fashioned into a sash"
   binds: true
   value: 678
+
+  requirements:
+    level: 5
 

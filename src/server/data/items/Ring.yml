@@ -66,6 +66,9 @@
   desc: "a black platinum ring set with a green gem which pulses with magical energy"
   value: 1500
 
+  requirements:
+    level: 5
+
 - name: Steffen Mana Ring
   randomStats:
     mp:
@@ -78,6 +81,9 @@
   sprite: 495
   desc: "a silver ring set with many glowing mana beads"
   value: 1200
+
+  requirements:
+    level: 5
 
 - name: Heniz Intelligence Ring
   randomStats:
@@ -92,6 +98,9 @@
   desc: "a brass ring set with a pulsating blue gem"
   value: 1100
 
+  requirements:
+    level: 5
+
 - name: Yzalt Armor Ring
   randomStats:
     armorClass:
@@ -100,3 +109,6 @@
   sprite: 266
   binds: true
   desc: "a gold ring plated with layers of silver"
+
+  requirements:
+    level: 5

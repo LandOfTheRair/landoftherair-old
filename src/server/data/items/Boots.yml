@@ -36,6 +36,9 @@
   value: 580
   binds: true
 
+  requirements:
+    level: 5
+
 - name: Antanian Swimming Boots
   stats:
     waterResist: 500

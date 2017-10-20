@@ -49,6 +49,9 @@
   sprite: 362
   binds: true
 
+  requirements:
+    level: 5
+
 - name: Heniz Battlemage Gloves
   randomStats:
     offense:
@@ -74,3 +77,8 @@
   desc: "a pair of dark gauntlets that emanate magic"
   sprite: 461
   binds: true
+
+  requirements:
+    level: 7
+    profession:
+      - "Mage"

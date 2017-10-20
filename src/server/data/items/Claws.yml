@@ -48,3 +48,6 @@
   desc: "a pair of razor sharp claws with defensive plating"
   sprite: 294
   binds: true
+
+  requirements:
+    level: 5

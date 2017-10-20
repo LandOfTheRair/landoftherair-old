@@ -36,6 +36,9 @@
   sprite: 323
   value: 2500
 
+  requirements:
+    level: 5
+
 - name: Antanian Steffen Katana
   desc: "a simple steel katana"
   stats:
@@ -49,3 +52,6 @@
   value: 378
   sprite: 227
   binds: true
+
+  requirements:
+    level: 5

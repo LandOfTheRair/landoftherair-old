@@ -24,6 +24,9 @@
   desc: "an amulet crafted from many pearls and engraved with the markings of a shaman"
   value: 1000
 
+  requirements:
+    level: 5
+
 - name: Steffen Wisdom Amulet
   randomStats:
     wis:
@@ -37,6 +40,11 @@
   desc: "an amulet set with a jade dove"
   value: 1000
 
+  requirements:
+    level: 7
+    profession:
+      - "Healer"
+
 - name: Yzalt Combat Amulet
   randomStats:
     offense:
@@ -49,3 +57,6 @@
   sprite: 491
   desc: "an amulet set with a purple skull"
   value: 1010
+
+  requirements:
+    level: 5
