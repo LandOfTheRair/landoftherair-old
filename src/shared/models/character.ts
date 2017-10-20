@@ -1016,7 +1016,9 @@ export class Character {
 
   canHide(): boolean {
     if(this.hasEffect('Hidden')) return false;
-    if(this.hp.ltePercent(90)) return false;
+
+    const hideHpPercent = this.baseClass === 'Thief' ? 70 : 90;
+    if(this.hp.ltePercent(hideHpPercent)) return false;
     if(!this.isNearWall()) return false;
     return true;
   }
