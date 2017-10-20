@@ -82,7 +82,7 @@ export class MacroBarsComponent implements OnInit {
     let newIndex = currentIndex + modifier;
     if(newIndex === -1) newIndex = this.macroService.iterableMacroGroups.length - 1;
     if(newIndex === this.macroService.iterableMacroGroups.length) newIndex = 0;
-    
+
     this.macroService.visibleMacroGroups[macroBarIndex] = this.macroService.iterableMacroGroups[newIndex].key;
   }
 

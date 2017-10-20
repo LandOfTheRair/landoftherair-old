@@ -18,6 +18,8 @@ export class Player extends Character {
   charSlot: number;
   isGM: boolean;
 
+  z: number;
+
   inGame: boolean;
 
   buyback: Item[];

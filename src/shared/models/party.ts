@@ -12,6 +12,7 @@ export class PartyPlayer {
   map: string;
   x: number;
   y: number;
+  z: number;
 
   constructor(player: Player) {
     this.name = player.name;
@@ -25,6 +26,7 @@ export class PartyPlayer {
     this.map = player.map;
     this.x = player.x;
     this.y = player.y;
+    this.z = player.z;
   }
 
 }

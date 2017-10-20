@@ -2185,7 +2185,7 @@
                  "gid":1593,
                  "height":64,
                  "id":983,
-                 "name":"",
+                 "name":"ClimbUp",
                  "properties":
                     {
                      "teleportMap":"Yzalt",
@@ -3847,7 +3847,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1145,
+ "nextobjectid":1146,
  "orientation":"orthogonal",
  "properties":
     {

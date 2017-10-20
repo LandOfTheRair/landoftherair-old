@@ -247,7 +247,7 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_lockers', lockers, lockerId });
   }
 
-  teleport(player, { newMap, x, y }) {
+  teleport(player, { newMap, x, y, zChange }) {
     const client = this.findClient(player);
 
     if(newMap && !this.allMapNames[newMap]) {
@@ -257,6 +257,10 @@ export class GameWorld extends Room<GameState> {
 
     player.x = x;
     player.y = y;
+
+    if(zChange) {
+      player.z += zChange;
+    }
 
     this.state.resetPlayerStatus(player, true);
 
@@ -301,6 +305,7 @@ export class GameWorld extends Room<GameState> {
 
     const player = new Player(playerData);
     player.$$room = this;
+    player.z = player.z || 0;
     player.initServer();
     this.setUpClassFor(player);
     this.state.addPlayer(player);
@@ -315,6 +320,7 @@ export class GameWorld extends Room<GameState> {
     this.corpseCheck(player);
     this.restoreCheck(player);
     this.doorCheck(player);
+    player.z = 0;
   }
 
   private leaveGameAndSave(player: Player) {
