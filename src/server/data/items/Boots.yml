@@ -19,3 +19,27 @@
   sprite: 232
   desc: "a pair of leather boots"
   value: 50
+
+- name: Yzalt Combat Boots
+  stats:
+    armorClass: 2
+    defense: 1
+    offense: 2
+  minDamage: 6
+  maxDamage: 1
+  baseDamage: 9
+  sprite: 369
+  desc: "a pair of black leather combat boots"
+  value: 580
+  binds: true
+
+- name: Antanian Swimming Boots
+  stats:
+    waterResist: 500
+  minDamage: 4
+  maxDamage: 5
+  baseDamage: 5
+  sprite: 370
+  desc: "a pair sharkskin boots that help you swim more easily"
+  value: 250
+  binds: true

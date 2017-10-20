@@ -26,3 +26,14 @@
   value: 760
   sprite: 321
   binds: true
+
+- name: Yzalt Fungus Cloak
+  stats:
+    armorClass: 2
+    stealth: 1
+    defense: 1
+    hpregen: 3
+  desc: "a woolen cloak stained green from the nearby fungus growing on it"
+  value: 679
+  sprite: 16
+  binds: true

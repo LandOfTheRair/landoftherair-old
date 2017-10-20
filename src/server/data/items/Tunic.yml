@@ -30,3 +30,14 @@
   desc: "a ringmail tunic"
   value: 100
   sprite: 208
+
+- name: Yzalt Fungus Ringmail Tunic
+  stats:
+    armorClass: 7
+    defense: 2
+    offense: 1
+    hpregen: 3
+  desc: "a ringmail tunic stained green from the nearby fungus growing on it"
+  value: 845
+  sprite: 9
+  binds: true
