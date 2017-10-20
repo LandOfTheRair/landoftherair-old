@@ -48,6 +48,8 @@ export class Backstab extends Skill {
     const target = possTargets[0];
     if(!target) return user.sendClientMessage('You do not see that person.');
 
+    if(target.canSeeThroughStealthOf(user)) return user.sendClientMessage('You do not have the element of surprise!');
+
     user.unapplyEffect(hidden, true);
     this.use(user, target);
   }
