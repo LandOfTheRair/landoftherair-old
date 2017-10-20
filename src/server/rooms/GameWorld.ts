@@ -96,6 +96,10 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.itemGarbageCollection || 60;
   }
 
+  get mapRespawnPoint() {
+    return { map: this.mapName, x: this.state.map.properties.respawnX, y: this.state.map.properties.respawnY };
+  }
+
   constructor(opts) {
     super(opts);
 
@@ -304,19 +308,13 @@ export class GameWorld extends Room<GameState> {
     player.inGame = true;
     this.savePlayer(player);
 
-    if(this.state.mapName === 'Tutorial' && !player.respawnPoint) {
-      player.respawnPoint = { x: 14, y: 14, map: 'Tutorial' };
-    }
+    player.respawnPoint = clone(this.mapRespawnPoint);
   }
 
   private prePlayerMapLeave(player: Player) {
     this.corpseCheck(player);
     this.restoreCheck(player);
     this.doorCheck(player);
-
-    if(this.state.mapName === 'Tutorial' && player.respawnPoint.map === 'Tutorial') {
-      player.respawnPoint = { x: 68, y: 13, map: 'Rylt' };
-    }
   }
 
   private leaveGameAndSave(player: Player) {
