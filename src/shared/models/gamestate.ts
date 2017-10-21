@@ -129,7 +129,9 @@ export class GameState {
 
   private checkTargetForHostility(me: NPC, target: Character): boolean {
     if(me.agro[target.uuid]) return true;
-    if(me.isHostileTo(target.allegiance)) return true;
+    if(me.hostility === 'Faction' && (
+         me.isHostileTo(target.allegiance)
+      || target.isHostileTo(me.allegiance))) return true;
     if(me.allegiance === target.allegiance) return false;
     if(me.hostility === 'Always') return true;
     if(me.alignment === 'Evil' && target.alignment === 'Good') return true;
