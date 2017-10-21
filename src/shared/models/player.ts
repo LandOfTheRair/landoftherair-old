@@ -1,7 +1,7 @@
 
 import * as RestrictedNumber from 'restricted-number';
 
-import { Character, MaxSizes, AllNormalGearSlots } from './character';
+import { Character, MaxSizes, AllNormalGearSlots, Allegiance } from './character';
 import { Item } from './item';
 
 import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith } from 'lodash';
@@ -172,6 +172,14 @@ export class Player extends Character {
       this.$$room.shareExpWithParty(this, xpGain);
 
       this.gainPartyExp(xpGain);
+    }
+  }
+
+  changeRep(allegiance: Allegiance, delta: number) {
+    super.changeRep(allegiance, delta);
+
+    if(this.party) {
+      this.$$room.shareRepWithParty(this, allegiance, delta);
     }
   }
 

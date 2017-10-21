@@ -22,7 +22,7 @@ import { Spawner } from '../base/Spawner';
 
 import * as Classes from '../classes';
 import * as Effects from '../effects';
-import { Character, SkillClassNames } from '../../shared/models/character';
+import { Allegiance, Character, SkillClassNames } from '../../shared/models/character';
 import { ItemCreator } from '../helpers/item-creator';
 import { Item } from '../../shared/models/item';
 import { Locker } from '../../shared/models/container/locker';
@@ -878,6 +878,21 @@ export class GameWorld extends Room<GameState> {
       if(player.distFrom(partyMember) > 7) return;
 
       partyMember.gainSkill(skill);
+    });
+  }
+
+  public shareRepWithParty(player: Player, allegiance: Allegiance, delta: number) {
+    const party = player.party;
+
+    const members = party.allMembers;
+
+    members.forEach(({ username }) => {
+      if(username === player.username) return;
+
+      const partyMember = this.state.findPlayer(username);
+      if(player.distFrom(partyMember) > 7) return;
+
+      partyMember.changeRep(allegiance, delta);
     });
   }
 

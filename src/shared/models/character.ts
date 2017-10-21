@@ -202,6 +202,7 @@ export class Character {
   $$corpseRef: Item;
 
   aquaticOnly: boolean;
+  avoidWater = true;
 
   combatTicks = 0;
 
