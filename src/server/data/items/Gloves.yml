@@ -22,17 +22,6 @@
   desc: "a pair of leather gloves"
   value: 50
 
-- name: Rylt Rockgolem Gloves
-  stats:
-    defense: 2
-    offense: 2
-  baseDamage: 7
-  minDamage: 1
-  maxDamage: 4
-  damageRolls: 1
-  desc: "a pair of rocky gloves"
-  sprite: -1
-
 - name: Steffen Strength Gloves
   randomStats:
     str:
@@ -82,3 +71,26 @@
     level: 7
     profession:
       - "Mage"
+
+
+- name: Rylt Rockgolem Gloves
+  stats:
+    defense: 2
+    offense: 2
+  baseDamage: 7
+  minDamage: 1
+  maxDamage: 4
+  damageRolls: 1
+  desc: "a pair of rocky gloves"
+  sprite: -1
+
+- name: Dolphin Gloves
+  stats:
+    defense: 2
+    offense: 2
+  baseDamage: 7
+  minDamage: 1
+  maxDamage: 4
+  damageRolls: 2
+  desc: "a pair of finny gloves"
+  sprite: -1
