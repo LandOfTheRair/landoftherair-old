@@ -1,7 +1,7 @@
 
 import { omit, flatten, random } from 'lodash';
 
-import { Character, Direction } from './character';
+import { Allegiance, Character, Direction } from './character';
 import { Item } from './item';
 import * as uuid from 'uuid/v4';
 
@@ -40,7 +40,7 @@ export class NPC extends Character {
   copyDrops: any[];
   drops: Item[];
   giveXp: any;
-  repMod: number;
+  repMod: Array<{ delta: number, allegiance: Allegiance }>;
 
   usableSkills: string[];
 
@@ -144,7 +144,10 @@ export class NPC extends Character {
     if(killer) {
 
       if(killer.username) {
-        killer.changeRep(this.allegiance, -this.repMod);
+        this.repMod.forEach(({ allegiance, delta }) => {
+          killer.changeRep(allegiance, delta);
+        });
+
         killer.gainExpFromKills(this.$$room.calcAdjustedXPGain(random(giveXp.min, giveXp.max)));
       }
 

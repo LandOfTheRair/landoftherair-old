@@ -73,7 +73,11 @@ class NPCLoader {
 
     if(!npc.skillOnKill) npc.skillOnKill = 1;
 
-    if(!npc.repMod) npc.repMod = 1;
+    if(!npc.repMod) npc.repMod = [];
+
+    if(npc.allegiance !== 'None') {
+      npc.repMod.push({ delta: -1, allegiance: npc.allegiance });
+    }
 
     npc.usableSkills.push('Attack');
 

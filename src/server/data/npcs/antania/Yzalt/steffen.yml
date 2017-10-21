@@ -32,6 +32,10 @@
     min: 750
     max: 850
 
+  repMod:
+    - allegiance: Pirates
+      delta: 1
+
   rightHand:
     - Antanian Mace
     - Antanian Greatmace
@@ -128,6 +132,10 @@
     min: 1750
     max: 1850
 
+  repMod:
+    - allegiance: Pirates
+      delta: 1
+
   rightHand:
     - result: Antanian Greatmace
       chance: 30
@@ -214,6 +222,10 @@
   giveXp:
     min: 1750
     max: 1850
+
+  repMod:
+    - allegiance: Pirates
+      delta: 1
 
   usableSkills:
     - Afflict
@@ -302,6 +314,10 @@
     min: 1950
     max: 2250
 
+  repMod:
+    - allegiance: Pirates
+      delta: 1
+
   rightHand:
     - result: Antanian Greatmace
       chance: 30
@@ -388,6 +404,10 @@
   giveXp:
     min: 1850
     max: 2150
+
+  repMod:
+    - allegiance: Pirates
+      delta: 1
 
   rightHand:
     - result: Antanian Mace
