@@ -10,7 +10,8 @@ const learnedSkills = { Conjuration: {
   4: ['BarFire', 'BarFrost'],
   5: ['BarWater'],
   6: ['FireMist'],
-  7: ['IceMist']
+  7: ['IceMist'],
+  8: ['Transmute']
 } };
 
 export const setup = async (npc: NPC) => {
