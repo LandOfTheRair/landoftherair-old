@@ -2185,7 +2185,7 @@
                  "gid":1593,
                  "height":64,
                  "id":983,
-                 "name":"ClimbUp",
+                 "name":"",
                  "properties":
                     {
                      "teleportMap":"Yzalt",
@@ -2199,7 +2199,7 @@
                      "teleportY":"int"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"ClimbUp",
                  "visible":true,
                  "width":64,
                  "x":4864,
@@ -3388,6 +3388,26 @@
                  "width":64,
                  "x":1664,
                  "y":10816
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1146,
+                 "name":"Yzalt Aquatic Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/aquatic"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3776,
+                 "y":10880
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3847,7 +3867,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1146,
+ "nextobjectid":1147,
  "orientation":"orthogonal",
  "properties":
     {

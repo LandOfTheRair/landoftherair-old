@@ -1,0 +1,59 @@
+
+- npcId: Antanian Dolphin
+  name: dolphin
+  alignment: Good
+  allegiance: None
+  hostility: OnHit
+  sprite: 165
+  stats: 1
+  level: 1
+
+  aquaticOnly: true
+  skillOnKill: 1
+
+  gold:
+    min: 10
+    max: 30
+
+  hp:
+    min: 100
+    max: 150
+
+  giveXp:
+    min: 50
+    max: 150
+
+  usableSkills:
+    - WeakBite
+
+  gear:
+    Hands: Dolphin Gloves
+
+- npcId: Antanian Shark
+  name: shark
+  hostility: Always
+  alignment: Evil
+  sprite: 160
+  stats: 10
+  level: 5
+
+  aquaticOnly: true
+  skillOnKill: 15
+
+  gold:
+    min: 10
+    max: 30
+
+  hp:
+    min: 500
+    max: 750
+
+  giveXp:
+    min: 250
+    max: 350
+
+  usableSkills:
+    - WeakBite
+
+  gear:
+    Hands: Dolphin Gloves

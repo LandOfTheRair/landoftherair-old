@@ -201,6 +201,8 @@ export class Character {
   $$room: GameWorld;
   $$corpseRef: Item;
 
+  aquaticOnly: boolean;
+
   combatTicks = 0;
 
   $$ai: any;
@@ -584,6 +586,7 @@ export class Character {
 
   takeSequenceOfSteps(steps: any[], isChasing = false, recalculateFOV = false) {
     const denseTiles = this.$$map.layers[MapLayer.Walls].data;
+    const fluidTiles = this.$$map.layers[MapLayer.Fluids].data;
     const denseObjects: any[] = this.$$map.layers[MapLayer.DenseDecor].objects;
     const interactables = this.$$map.layers[MapLayer.Interactables].objects;
     const denseCheck = denseObjects.concat(interactables);
@@ -591,6 +594,9 @@ export class Character {
     steps.forEach(step => {
       const nextTileLoc = ((this.y + step.y) * this.$$map.width) + (this.x + step.x);
       const nextTile = denseTiles[nextTileLoc];
+      const isNextTileFluid = fluidTiles[nextTileLoc] !== 0;
+
+      if(this.aquaticOnly && !isNextTileFluid) return;
 
       if(nextTile === 0) {
         const object = find(denseCheck, { x: (this.x + step.x) * 64, y: (this.y + step.y + 1) * 64 });
