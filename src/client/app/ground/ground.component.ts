@@ -57,6 +57,11 @@ export class GroundComponent implements OnInit, OnDestroy {
       pullAll(myCurrentGround[newItemType], removeObjects);
 
     });
+
+    if(myCurrentGround.Coin && myNewGround.Coin && myCurrentGround.Coin[0].value !== myNewGround.Coin[0].value) {
+      myCurrentGround.Coin = [];
+      myCurrentGround.Coin.push(...myNewGround.Coin);
+    }
   }
 
   get allItemTypes() {

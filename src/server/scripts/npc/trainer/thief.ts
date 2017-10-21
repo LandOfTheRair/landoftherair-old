@@ -5,7 +5,9 @@ import { SkillClassNames } from '../../../../shared/models/character';
 
 const learnedSkills = { Thievery: {
   2: ['Identify'],
-  3: ['TrueSight']
+  3: ['TrueSight'],
+  7: ['Transmute'],
+  10: ['Poison']
 } };
 
 export const setup = async (npc: NPC) => {
