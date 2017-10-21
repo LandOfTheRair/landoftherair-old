@@ -17,8 +17,6 @@ export class GMSpawnNPC extends Command {
 
     const mergeObj = this.getMergeObjectFromArgs(args);
 
-    console.log(mergeObj);
-
     /*
       - npc.npcId=""
       - spawner.* (adjust properties for the spawner
