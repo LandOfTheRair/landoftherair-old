@@ -11,6 +11,9 @@
   aquaticOnly: true
   skillOnKill: 1
 
+  otherStats:
+    waterResist: 5000
+
   gold:
     min: 10
     max: 30
@@ -37,6 +40,9 @@
   stats: 10
   level: 5
 
+  otherStats:
+    waterResist: 5000
+
   aquaticOnly: true
   skillOnKill: 15
 
@@ -57,3 +63,8 @@
 
   gear:
     Hands: Dolphin Gloves
+
+  drops:
+    - result: Antanian Swimming Boots
+      chance: 1
+      maxChance: 200
