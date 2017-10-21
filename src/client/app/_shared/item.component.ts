@@ -119,6 +119,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
       <span class="count" *ngIf="realCount > 0">{{ realCount }}x</span>
       <span class="ounces" *ngIf="showOunces && item.ounces > 0">{{ item.ounces }}oz</span>
       <span class="value" *ngIf="showValue">{{ item._buybackValue || item.value }}g</span>
+      <span class="value" *ngIf="item.succorInfo">{{ item.succorInfo.map }}</span>
     </div>
     
   `

@@ -247,7 +247,10 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_lockers', lockers, lockerId });
   }
 
-  teleport(player, { newMap, x, y, zChange }) {
+  teleport(player, opts: { newMap, x, y, zChange?, zSet? }) {
+
+    const { newMap, x, y, zChange, zSet } = opts;
+
     const client = this.findClient(player);
 
     if(newMap && !this.allMapNames[newMap]) {
@@ -260,6 +263,10 @@ export class GameWorld extends Room<GameState> {
 
     if(zChange) {
       player.z += zChange;
+    }
+
+    if(zSet) {
+      player.z = zSet;
     }
 
     this.state.resetPlayerStatus(player, true);
@@ -275,6 +282,8 @@ export class GameWorld extends Room<GameState> {
   }
 
   addItemToGround(ref, item) {
+    if(item.destroyOnDrop) return;
+
     if(item.itemClass !== 'Corpse') {
       this.setItemExpiry(item);
     }
