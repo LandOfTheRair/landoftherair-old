@@ -1,19 +1,19 @@
 
-- npcId: Heniz Townee
-  allegiance: Pirates
+- npcId: Steffen Townee
+  allegiance: Royalty
   sprite: [580, 595, 610, 615]
-  alignment: Evil
+  alignment: Good
   stats: 15
   skillLevels:
-    Longsword: 2
+    Polearm: 2
+    Mace: 2
     Axe: 2
-    Dagger: 2
-    Staff: 2
+    Twohanded: 2
 
   level: 7
 
   allegianceReputation:
-    Royalty: -101
+    Pirates: -101
 
   skillOnKill: 15
 
@@ -33,17 +33,11 @@
     max: 850
 
   rightHand:
-    - Antanian Staff
-    - Antanian Dagger
-    - Antanian Longsword
-    - Antanian Axe
-  leftHand:
-    - result: none
-      chance: 2
-    - result: Antanian Wooden Shield
-      chance: 4
-    - result: Antanian Bubble Shield
-      chance: 1
+    - Antanian Mace
+    - Antanian Greatmace
+    - Antanian Greataxe
+    - Antanian Greatsword
+    - Antanian Halberd
 
   gear:
     Ring1:
@@ -55,11 +49,7 @@
         chance: 1
       - result: Identify Ring
         chance: 1
-    Armor:
-      - result: Antanian Tunic
-        chance: 1
-      - result: Antanian Studded Tunic
-        chance: 2
+    Armor: Antanian Breastplate
     Robe1:
       - result: none
         chance: 2
@@ -106,26 +96,23 @@
     - drop: 'gear.Feet'
       chance: -1
 
-- npcId: Heniz Thief Defender
-  allegiance: Pirates
-  sprite: 585
-  alignment: Evil
-  baseClass: Thief
+- npcId: Steffen Warrior Defender
+  allegiance: Royalty
+  sprite: 590
+  alignment: Good
+  baseClass: Warrior
   stats: 15
   skillLevels:
-    Dagger: 3
+    Mace: 3
+    Onehanded: 3
+    Twohanded: 3
 
   level: 10
 
   allegianceReputation:
-    Royalty: -101
+    Pirates: -101
 
   skillOnKill: 25
-
-  otherStats:
-    fireResist: 100
-    iceResist: 100
-    perception: 45
 
   gold:
     min: 700
@@ -140,46 +127,44 @@
     max: 1850
 
   rightHand:
-    - result: Antanian Dagger
+    - result: Antanian Greatmace
       chance: 30
-    - result: Antanian Returning Dagger
-      chance: 10
-    - result: Antanian Dualwielding Dagger
-      chance: 1
-    - result: Steffen Poison Shortbow
-      chance: 1
-  leftHand:
-    - result: none
+    - result: Antanian Greataxe
       chance: 30
-    - result: Antanian Dualwielding Dagger
+    - result: Antanian Steffen Flail
+      chance: 1
+    - result: Antanian Steffen Katana
+      chance: 1
+    - result: Antanian Steffen Nodachi
       chance: 1
 
   gear:
-    Armor:
-      - result: Antanian Tunic
-        chance: 1
-      - result: Antanian Studded Tunic
-        chance: 2
+    Armor: Antanian Breastplate
     Robe1:
       - result: none
         chance: 2
       - result: Antanian Cloak
         chance: 4
-    Wrists:
+    Ring1:
       - result: none
         chance: 500
-      - result: Heniz Dexterity Bracers
+      - result: Steffen Mana Ring
         chance: 1
-    Waist:
+    Ring2:
       - result: none
         chance: 500
-      - result: Heniz Agility Sash
+      - result: Steffen Mana Ring
+        chance: 1
+    Neck:
+      - result: none
+        chance: 500
+      - result: Steffen Wisdom Amulet
         chance: 1
 
   combatMessages:
-    - "Remove yourselves from our home, Steffen fiends!"
-    - "You can't take our home away from us, you Steffen monsters!"
-    - "The Steffen never learn, do they?"
+    - "We will erase the infidels from our town!"
+    - "No Heniz will leave here unscathed!"
+    - "Come out, you shadow fiends!"
 
   copyDrops:
     - drop: 'rightHand'
@@ -190,35 +175,29 @@
       chance: -1
     - drop: 'gear.Robe1'
       chance: -1
-    - drop: 'gear.Wrists'
+    - drop: 'gear.Ring1'
       chance: -1
-    - drop: 'gear.Waist'
+    - drop: 'gear.Ring2'
+      chance: -1
+    - drop: 'gear.Neck'
       chance: -1
 
-- npcId: Heniz Mage Defender
-  allegiance: Pirates
-  sprite: 545
-  alignment: Evil
-  baseClass: Mage
+
+- npcId: Steffen Healer Defender
+  allegiance: Royalty
+  sprite: 550
+  alignment: Good
+  baseClass: Healer
   stats: 15
   skillLevels:
-    Staff: 3
-    Conjuration: 4
-    Wand: 3
-
-  otherStats:
-    fireResist: 100
-    iceResist: 100
+    Mace: 3
 
   level: 10
 
   allegianceReputation:
-    Royalty: -101
+    Pirates: -101
 
   skillOnKill: 25
-
-  otherStats:
-    perception: 45
 
   gold:
     min: 700
@@ -228,33 +207,18 @@
     min: 2500
     max: 3000
 
-  mp:
-    min: 3000
-    max: 3000
-
-  usableSkills:
-    - EnergyMissile
-
   giveXp:
     min: 1750
     max: 1850
 
   rightHand:
-    - result: Antanian Staff
+    - result: Antanian Mace
       chance: 30
-    - result: Yzalt Heniz Staff
-      chance: 1
-    - result: Heniz FireMist Wand
-      chance: 1
-    - result: Heniz IceMist Wand
+    - result: Antanian Steffen Flail
       chance: 1
 
   gear:
-    Armor:
-      - result: Antanian Tunic
-        chance: 1
-      - result: Antanian Studded Tunic
-        chance: 2
+    Armor: Antanian Breastplate
     Robe1:
       - result: none
         chance: 2
@@ -263,21 +227,28 @@
     Ring1:
       - result: none
         chance: 500
-      - result: Heniz Intelligence Ring
+      - result: Steffen DamageResist Ring
         chance: 1
-    Hands:
+    Ring2:
       - result: none
         chance: 500
-      - result: Heniz Battlemage Gloves
+      - result: Steffen DamageResist Ring
+        chance: 1
+    Waist:
+      - result: none
+        chance: 500
+      - result: Steffen Offensive Sash
         chance: 1
 
   combatMessages:
-    - "Remove yourselves from our home, Steffen fiends!"
-    - "You can't take our home away from us, you Steffen monsters!"
-    - "The Steffen never learn, do they?"
+    - "We will erase the infidels from our town!"
+    - "No Heniz will leave here unscathed!"
+    - "Come out, you shadow fiends!"
 
   copyDrops:
     - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
       chance: -1
     - drop: 'gear.Armor'
       chance: -1
@@ -285,5 +256,7 @@
       chance: -1
     - drop: 'gear.Ring1'
       chance: -1
-    - drop: 'gear.Hands'
+    - drop: 'gear.Ring2'
+      chance: -1
+    - drop: 'gear.Waist'
       chance: -1

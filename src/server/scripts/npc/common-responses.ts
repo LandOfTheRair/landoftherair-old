@@ -151,12 +151,14 @@ export const SmithResponses = (npc: NPC) => {
 
 };
 
-export const RandomlyShouts = (npc: NPC, responses: string[] = []) => {
+export const RandomlyShouts = (npc: NPC, responses: string[] = [], opts: any = { combatOnly: false }) => {
   let ticks = 0;
   let nextTick = random(5, 10);
 
   npc.$$ai.tick.add(() => {
     ticks++;
+
+    if(opts.combatOnly && npc.combatTicks <= 0) return;
 
     if(ticks >= nextTick) {
       nextTick = random(5, 10);

@@ -119,7 +119,11 @@ export class Spawner {
     npcData.sprite = this.chooseSpriteFrom(npcData.sprite);
 
     npcData.rightHand = await this.chooseItemFrom(npcData.rightHand);
-    npcData.leftHand = await this.chooseItemFrom(npcData.leftHand);
+
+    // prevent loading a left hand if your right hand requires 2h
+    if(!npcData.rightHand || (npcData.rightHand && !npcData.rightHand.twoHanded)) {
+      npcData.leftHand = await this.chooseItemFrom(npcData.leftHand);
+    }
 
     if(npcData.gear) {
       await Promise.all(Object.keys(npcData.gear).map(async slot => {
@@ -187,7 +191,7 @@ export class Spawner {
     if(tick) npc.$$ai.tick.add(tick);
 
     if(npc.combatMessages) {
-      RandomlyShouts(npc, npc.combatMessages);
+      RandomlyShouts(npc, npc.combatMessages, { combatOnly: true });
     }
 
     npc.allegiance = npcData.allegiance;

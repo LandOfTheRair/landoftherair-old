@@ -3408,6 +3408,226 @@
                  "width":64,
                  "x":3776,
                  "y":10880
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1147,
+                 "name":"Yzalt Aquatic Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/aquatic"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3520,
+                 "y":9728
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1148,
+                 "name":"Yzalt Aquatic Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/aquatic"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1280,
+                 "y":9280
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1149,
+                 "name":"Yzalt Aquatic Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/aquatic"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":768,
+                 "y":6720
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1150,
+                 "name":"Yzalt Aquatic Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/aquatic"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":448,
+                 "y":2944
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1151,
+                 "name":"Steffen Town Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/steffen-town"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
+                 "y":1024
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1152,
+                 "name":"Steffen Town Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/steffen-town"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2432,
+                 "y":1024
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1153,
+                 "name":"Steffen Town Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/steffen-town"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2496,
+                 "y":1600
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1154,
+                 "name":"Steffen Town Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/steffen-town"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1536,
+                 "y":1984
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1155,
+                 "name":"Steffen Town Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/steffen-town"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2624,
+                 "y":2240
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1156,
+                 "name":"Heniz Offense Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/heniz-offense-point"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1984,
+                 "y":2432
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1157,
+                 "name":"Steffen Defense Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/steffen-defense-point"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1984,
+                 "y":2112
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3867,10 +4087,12 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1147,
+ "nextobjectid":1158,
  "orientation":"orthogonal",
  "properties":
     {
+     "itemExpirationHours":1,
+     "itemGarbageCollection":15,
      "maxCreatures":500,
      "maxSkill":11,
      "region":"Antania",
@@ -3879,6 +4101,8 @@
     },
  "propertytypes":
     {
+     "itemExpirationHours":"int",
+     "itemGarbageCollection":"int",
      "maxCreatures":"int",
      "maxSkill":"int",
      "region":"string",
