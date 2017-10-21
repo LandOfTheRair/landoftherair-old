@@ -123,6 +123,8 @@ export class Spawner {
     // prevent loading a left hand if your right hand requires 2h
     if(!npcData.rightHand || (npcData.rightHand && !npcData.rightHand.twoHanded)) {
       npcData.leftHand = await this.chooseItemFrom(npcData.leftHand);
+    } else {
+      npcData.leftHand = null;
     }
 
     if(npcData.gear) {

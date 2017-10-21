@@ -9,6 +9,7 @@
     Axe: 2
     Dagger: 2
     Staff: 2
+    Bow: 2
 
   level: 7
 
@@ -37,6 +38,7 @@
     - Antanian Dagger
     - Antanian Longsword
     - Antanian Axe
+    - Antanian Shortbow
   leftHand:
     - result: none
       chance: 2
@@ -107,6 +109,8 @@
       chance: -1
 
 - npcId: Heniz Thief Defender
+  name: defender
+  hostility: Faction
   allegiance: Pirates
   sprite: 585
   alignment: Evil
@@ -196,6 +200,8 @@
       chance: -1
 
 - npcId: Heniz Mage Defender
+  name: defender
+  hostility: Faction
   allegiance: Pirates
   sprite: 545
   alignment: Evil
@@ -225,8 +231,8 @@
     max: 900
 
   hp:
-    min: 2500
-    max: 3000
+    min: 1500
+    max: 2000
 
   mp:
     min: 3000
@@ -274,6 +280,192 @@
   combatMessages:
     - "Remove yourselves from our home, Steffen fiends!"
     - "You can't take our home away from us, you Steffen monsters!"
+    - "The Steffen never learn, do they?"
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+
+- npcId: Heniz Thief Offender
+  name: assaulter
+  hostility: Faction
+  allegiance: Pirates
+  sprite: 585
+  alignment: Evil
+  baseClass: Thief
+  stats: 15
+  skillLevels:
+    Dagger: 4
+
+  level: 12
+
+  allegianceReputation:
+    Royalty: -101
+
+  skillOnKill: 25
+
+  otherStats:
+    fireResist: 100
+    iceResist: 100
+    perception: 45
+
+  gold:
+    min: 700
+    max: 900
+
+  hp:
+    min: 3500
+    max: 4000
+
+  giveXp:
+    min: 1950
+    max: 2150
+
+  rightHand:
+    - result: Antanian Dagger
+      chance: 30
+    - result: Antanian Returning Dagger
+      chance: 10
+    - result: Antanian Dualwielding Dagger
+      chance: 1
+    - result: Steffen Poison Shortbow
+      chance: 1
+  leftHand:
+    - result: none
+      chance: 30
+    - result: Antanian Dualwielding Dagger
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Antanian Tunic
+        chance: 1
+      - result: Antanian Studded Tunic
+        chance: 2
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Wrists:
+      - result: none
+        chance: 500
+      - result: Heniz Dexterity Bracers
+        chance: 1
+    Waist:
+      - result: none
+        chance: 500
+      - result: Heniz Agility Sash
+        chance: 1
+
+  combatMessages:
+    - "Remove yourselves from our land, Steffen fiends!"
+    - "We will conquer your town and displace your king!"
+    - "The Steffen never learn, do they?"
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Wrists'
+      chance: -1
+    - drop: 'gear.Waist'
+      chance: -1
+
+- npcId: Heniz Mage Offender
+  name: assaulter
+  hostility: Faction
+  allegiance: Pirates
+  sprite: 545
+  alignment: Evil
+  baseClass: Mage
+  stats: 15
+  skillLevels:
+    Staff: 4
+    Conjuration: 5
+    Wand: 4
+
+  otherStats:
+    fireResist: 100
+    iceResist: 100
+
+  level: 13
+
+  allegianceReputation:
+    Royalty: -101
+
+  skillOnKill: 25
+
+  otherStats:
+    perception: 45
+
+  gold:
+    min: 700
+    max: 900
+
+  hp:
+    min: 1500
+    max: 2000
+
+  mp:
+    min: 3000
+    max: 3000
+
+  usableSkills:
+    - MagicMissile
+
+  giveXp:
+    min: 1950
+    max: 2150
+
+  rightHand:
+    - result: Antanian Staff
+      chance: 30
+    - result: Yzalt Heniz Staff
+      chance: 1
+    - result: Heniz FireMist Wand
+      chance: 1
+    - result: Heniz IceMist Wand
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Antanian Tunic
+        chance: 1
+      - result: Antanian Studded Tunic
+        chance: 2
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Ring1:
+      - result: none
+        chance: 500
+      - result: Heniz Intelligence Ring
+        chance: 1
+    Hands:
+      - result: none
+        chance: 500
+      - result: Heniz Battlemage Gloves
+        chance: 1
+
+  combatMessages:
+    - "Remove yourselves from our land, Steffen fiends!"
+    - "We will conquer your town and displace your king!"
     - "The Steffen never learn, do they?"
 
   copyDrops:

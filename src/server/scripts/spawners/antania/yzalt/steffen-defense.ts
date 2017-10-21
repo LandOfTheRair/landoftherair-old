@@ -6,11 +6,11 @@ const npcIds = [
   'Steffen Healer Defender'
 ];
 
-export class SteffenDefensePointSpawner extends Spawner {
+export class SteffenDefenseSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 15,
+      respawnRate: 10,
       initialSpawn: 0,
       maxCreatures: 15,
       spawnRadius: 0,
@@ -22,7 +22,7 @@ export class SteffenDefensePointSpawner extends Spawner {
 
   isActive() {
     const minute = new Date().getMinutes();
-    return minute > 0 && minute < 30;
+    return minute > 0 && minute < 15;
   }
 
 }

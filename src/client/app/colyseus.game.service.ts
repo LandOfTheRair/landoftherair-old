@@ -584,8 +584,12 @@ export class ColyseusGameService {
 
     if(hostility === 'Never') return 'friendly';
 
-    if(hostility === 'Always'
-    || compare.allegianceReputation[me.allegiance] <= 0) return 'hostile';
+    if(hostility === 'Faction') {
+      if(compare.allegianceReputation[me.allegiance] < -100
+      || me.allegianceReputation[compare.allegiance] < -100) return 'hostile';
+    }
+
+    if(hostility === 'Always') return 'hostile';
 
     return 'neutral';
   }

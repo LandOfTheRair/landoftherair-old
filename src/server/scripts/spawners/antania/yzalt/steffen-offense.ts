@@ -2,11 +2,15 @@
 import { Spawner } from '../../../../base/Spawner';
 
 const npcIds = [
-  'Heniz Thief Defender',
-  'Heniz Mage Defender'
+  'Steffen Warrior Offender',
+  'Steffen Healer Offender'
 ];
 
-export class HenizOffensePointSpawner extends Spawner {
+const paths = [
+  '20-S 20-N'
+];
+
+export class SteffenOffenseSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
@@ -16,13 +20,14 @@ export class HenizOffensePointSpawner extends Spawner {
       spawnRadius: 0,
       randomWalkRadius: 15,
       leashRadius: 35,
-      npcIds
+      npcIds,
+      paths
     });
   }
 
   isActive() {
     const minute = new Date().getMinutes();
-    return minute > 0 && minute < 30;
+    return minute > 30 && minute < 45;
   }
 
 }

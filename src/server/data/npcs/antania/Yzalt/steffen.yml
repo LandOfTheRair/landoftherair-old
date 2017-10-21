@@ -97,7 +97,9 @@
       chance: -1
 
 - npcId: Steffen Warrior Defender
+  name: defender
   allegiance: Royalty
+  hostility: Faction
   sprite: 590
   alignment: Good
   baseClass: Warrior
@@ -184,6 +186,8 @@
 
 
 - npcId: Steffen Healer Defender
+  name: defender
+  hostility: Faction
   allegiance: Royalty
   sprite: 550
   alignment: Good
@@ -204,12 +208,16 @@
     max: 900
 
   hp:
-    min: 2500
-    max: 3000
+    min: 1500
+    max: 2000
 
   giveXp:
     min: 1750
     max: 1850
+
+  usableSkills:
+    - Afflict
+    - Poison
 
   rightHand:
     - result: Antanian Mace
@@ -243,6 +251,180 @@
   combatMessages:
     - "We will erase the infidels from our town!"
     - "No Heniz will leave here unscathed!"
+    - "Come out, you shadow fiends!"
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Ring2'
+      chance: -1
+    - drop: 'gear.Waist'
+      chance: -1
+
+
+- npcId: Steffen Warrior Offender
+  name: assaulter
+  hostility: Faction
+  allegiance: Royalty
+  sprite: 590
+  alignment: Good
+  baseClass: Warrior
+  stats: 15
+  skillLevels:
+    Mace: 4
+    Onehanded: 4
+    Twohanded: 4
+
+  level: 13
+
+  allegianceReputation:
+    Pirates: -101
+
+  skillOnKill: 25
+
+  gold:
+    min: 700
+    max: 900
+
+  hp:
+    min: 3500
+    max: 4000
+
+  giveXp:
+    min: 1950
+    max: 2250
+
+  rightHand:
+    - result: Antanian Greatmace
+      chance: 30
+    - result: Antanian Greataxe
+      chance: 30
+    - result: Antanian Steffen Flail
+      chance: 1
+    - result: Antanian Steffen Katana
+      chance: 1
+    - result: Antanian Steffen Nodachi
+      chance: 1
+
+  gear:
+    Armor: Antanian Breastplate
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Ring1:
+      - result: none
+        chance: 500
+      - result: Steffen Mana Ring
+        chance: 1
+    Ring2:
+      - result: none
+        chance: 500
+      - result: Steffen Mana Ring
+        chance: 1
+    Neck:
+      - result: none
+        chance: 500
+      - result: Steffen Wisdom Amulet
+        chance: 1
+
+  combatMessages:
+    - "We will erase the infidels from our continent!"
+    - "Down with the Heniz!"
+    - "Come out, you shadow fiends!"
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Ring2'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+
+
+- npcId: Steffen Healer Offender
+  name: assaulter
+  hostility: Faction
+  allegiance: Royalty
+  sprite: 550
+  alignment: Good
+  baseClass: Healer
+  stats: 15
+  skillLevels:
+    Mace: 4
+
+  level: 13
+
+  allegianceReputation:
+    Pirates: -101
+
+  skillOnKill: 25
+
+  gold:
+    min: 700
+    max: 900
+
+  hp:
+    min: 1500
+    max: 2000
+
+  giveXp:
+    min: 1850
+    max: 2150
+
+  rightHand:
+    - result: Antanian Mace
+      chance: 30
+    - result: Antanian Steffen Flail
+      chance: 1
+
+  usableSkills:
+    - Afflict
+    - Poison
+
+  gear:
+    Armor: Antanian Breastplate
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Ring1:
+      - result: none
+        chance: 500
+      - result: Steffen DamageResist Ring
+        chance: 1
+    Ring2:
+      - result: none
+        chance: 500
+      - result: Steffen DamageResist Ring
+        chance: 1
+    Waist:
+      - result: none
+        chance: 500
+      - result: Steffen Offensive Sash
+        chance: 1
+
+  combatMessages:
+    - "We will erase the infidels from our continent!"
+    - "Down with the Heniz!"
     - "Come out, you shadow fiends!"
 
   copyDrops:
