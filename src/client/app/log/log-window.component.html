@@ -1,5 +1,5 @@
 
-<div class="message-container-container" [ngClass]="['window-size-' + windowSize]">
+<div class="message-container-container">
 
   <div class="filter-buttons d-flex justify-content-around">
     <button class="btn btn-sm btn-info no-border-radius" btnCheckbox [(ngModel)]="filters.env" (click)="saveFilters()">
@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div class="p-1 message-container" appNgxAutoScroll lockYOffset="30">
+  <div class="p-1 message-container" [ngClass]="['window-size-' + windowSize]" appNgxAutoScroll lockYOffset="30">
     <div class="message {{ message.subClass }}"
          [class.hidden]="message.grouping !== 'always' && !filters[message.grouping]"
          [ngClass]="['font-size-'+fontSize]"
