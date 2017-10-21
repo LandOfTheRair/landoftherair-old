@@ -3,6 +3,7 @@
   sprite: 956
   desc: "a blob of spatial memories"
   value: 0
+  destroyOnDrop: true
 
 - name: Antanian Bear Meat
   sprite: 932

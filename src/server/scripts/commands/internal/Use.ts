@@ -20,7 +20,7 @@ export class Use extends Command {
 
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full!');
 
-    const emptyHand = player.leftHand ? 'Right' : 'Left';
+    const emptyHand = player.rightHand ? 'Left' : 'Right';
     const slotName = `${emptyHand.toLowerCase()}Hand`;
     const func = player[`set${emptyHand}Hand`].bind(player);
 
@@ -28,8 +28,8 @@ export class Use extends Command {
       case 'Sack': {
         const item = player.sack.getItemFromSlot(+slot);
         func(item);
-        useItemInHand(slotName);
         player.sack.takeItemFromSlot(+slot);
+        useItemInHand(slotName);
         return;
       }
 

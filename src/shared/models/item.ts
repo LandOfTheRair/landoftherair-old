@@ -151,6 +151,9 @@ export class Item {
 
   effect: any;
 
+  succorInfo: { map: string, x: number, y: number, z: number };
+  destroyOnDrop: boolean;
+
   expiresAt: number;
 
   constructor(opts) {
@@ -281,7 +284,7 @@ export class Item {
   }
 
   canUse(char: Character) {
-    return (this.effect || this.ounces > 0) && this.hasCondition() && this.isOwnedBy(char);
+    return (this.effect || this.succorInfo || this.ounces > 0) && this.hasCondition() && this.isOwnedBy(char);
   }
 
   // < 0 means it lasts forever

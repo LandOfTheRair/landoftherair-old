@@ -825,6 +825,18 @@ export class Character {
       this[source] = null;
       this.recalculateStats();
     }
+
+    if(item.succorInfo) {
+
+      this.sendClientMessage('You are whisked back to the place in your stored memories!');
+
+      this.$$room.teleport(this, {
+        x: item.succorInfo.x,
+        y: item.succorInfo.y,
+        newMap: item.succorInfo.map,
+        zSet: item.succorInfo.z
+      });
+    }
   }
 
   sendClientMessage(message) {}
