@@ -48,6 +48,15 @@
     uses: 10
     potency: 1
 
+- name: Succor Ring
+  sprite: 239
+  desc: "a silver ring set with a blue gem"
+  value: 100
+  effect:
+    name: Succor
+    uses: 10
+    potency: 1
+
 - name: Terwin Ring
   stats:
     cha: 1

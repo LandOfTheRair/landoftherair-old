@@ -40,7 +40,7 @@ export class Succor extends Skill {
 
     succor.setOwner(user);
     succor.desc = `a blob of spatial memories formed in the lands of ${user.map}`;
-    succor.ounces = Math.floor(skill / 5);
+    succor.ounces = Math.floor(skill / 5) || 1;
 
     succor.succorInfo = {
       map: user.map,

@@ -4240,6 +4240,30 @@
                  "width":64,
                  "x":1984,
                  "y":1152
+                }, 
+                {
+                 "gid":3134,
+                 "height":64,
+                 "id":754,
+                 "name":"",
+                 "properties":
+                    {
+                     "peddleCost":1000,
+                     "peddleItem":"Succor Ring",
+                     "script":"global\/peddler"
+                    },
+                 "propertytypes":
+                    {
+                     "peddleCost":"int",
+                     "peddleItem":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4672,
+                 "y":2688
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -6816,7 +6840,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":754,
+ "nextobjectid":755,
  "orientation":"orthogonal",
  "properties":
     {
