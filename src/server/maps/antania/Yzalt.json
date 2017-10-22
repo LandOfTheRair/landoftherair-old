@@ -636,26 +636,6 @@
                  "y":9856
                 }, 
                 {
-                 "gid":3099,
-                 "height":64,
-                 "id":1034,
-                 "name":"Encruster",
-                 "properties":
-                    {
-                     "script":"global\/encruster"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2880,
-                 "y":896
-                }, 
-                {
                  "gid":1709,
                  "height":64,
                  "id":1035,
@@ -3586,6 +3566,26 @@
                  "width":64,
                  "x":3008,
                  "y":1984
+                }, 
+                {
+                 "gid":3099,
+                 "height":64,
+                 "id":1190,
+                 "name":"Encruster",
+                 "properties":
+                    {
+                     "script":"global\/encruster"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2880,
+                 "y":896
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -4435,7 +4435,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1190,
+ "nextobjectid":1191,
  "orientation":"orthogonal",
  "properties":
     {

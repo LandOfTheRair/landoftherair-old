@@ -1,5 +1,5 @@
 
-import { includes, random, capitalize } from 'lodash';
+import { includes, random, capitalize, get } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../shared/models/character';
 import { ShieldClasses, Item } from '../../shared/models/item';
@@ -307,7 +307,13 @@ export class CombatHelper {
 
     if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
 
-    if(attackerWeapon.effect) {
+    const encrustEffect = get(attackerWeapon, 'encrust.stats.effect', null);
+
+    // encrusted effect takes priority if it exists
+    if(encrustEffect) {
+      this.tryApplyEffect(attacker, defender, encrustEffect);
+
+    } else if(attackerWeapon.effect) {
       this.tryApplyEffect(attacker, defender, attackerWeapon.effect);
     }
 

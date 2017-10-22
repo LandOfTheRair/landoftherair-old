@@ -206,6 +206,11 @@
     - drop: 'gear.Neck'
       chance: -1
 
+  drops:
+    - name: Antanian MagicMissile Black Pearl
+      chance: 1
+      maxChance: 20
+
   combatMessages:
     - "Ah, Rocky, do be a dear and take care of our guests!"
     - "Those who trespass in my cave must pay the price!"
