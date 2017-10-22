@@ -6,7 +6,8 @@
          class="fog"
          [style.left]="((x+4)*64)+'px'"
          [style.top]="(((y+4)*64))+'px'"
-         [class.hidden]="game && game.shouldRender && colyseus.game.clientGameState.fov[x] && colyseus.game.clientGameState.fov[x][y]"
+         [class.hidden]="shouldRenderXY(x, y)"
+         [class.faded]="shouldRenderXY(x, y) && canDarkSee(x, y)"
     ></div>
   </div>
 </div>

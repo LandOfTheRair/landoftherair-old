@@ -8,7 +8,9 @@ const learnedSkills = { Thievery: {
   3: ['TrueSight'],
   7: ['Transmute'],
   10: ['Poison'],
-  11: ['Disease']
+  11: ['Disease'],
+  14: ['Darkness'],
+  16: ['DarkVision']
 } };
 
 export const setup = async (npc: NPC) => {

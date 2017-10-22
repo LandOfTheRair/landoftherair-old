@@ -14,7 +14,10 @@ export class Poison extends SpellEffect {
   };
 
   maxSkillForSkillGain = 7;
-  skillFlag = () => SkillClassNames.Restoration;
+  skillFlag = (caster) => {
+    if(caster.baseClass === 'Healer')   return SkillClassNames.Restoration;
+    return SkillClassNames.Thievery;
+  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 

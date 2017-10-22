@@ -7,5 +7,10 @@
     z-index: 500;
     position: absolute;
     pointer-events: none;
+
+    &.faded {
+      opacity: 0.5 !important;
+      display: inline !important;
+    }
   }
 }

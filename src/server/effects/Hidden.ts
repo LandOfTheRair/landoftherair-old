@@ -30,7 +30,7 @@ export class Hidden extends SpellEffect {
   }
 
   effectTick(char: Character) {
-    if(char.isNearWall()) return;
+    if(char.isInDarkness() || char.isNearWall()) return;
 
     this.effectEnd(char);
     char.unapplyEffect(this);

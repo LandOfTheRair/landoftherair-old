@@ -115,6 +115,7 @@ export class ColyseusGameService {
       this.clientGameState.setMapNPCs(state.mapNPCs);
       this.clientGameState.setPlayers(state.players);
       this.clientGameState.setEnvironmentalObjects(state.environmentalObjects);
+      this.clientGameState.setDarkness(state.darkness);
       this.setCharacter(find(state.players, { username: this.colyseus.username }));
     });
 

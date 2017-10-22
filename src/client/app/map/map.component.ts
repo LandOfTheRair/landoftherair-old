@@ -127,4 +127,17 @@ export class MapComponent implements OnInit, OnDestroy {
     this.cleanCanvases();
   }
 
+  shouldRenderXY(x: number, y: number) {
+    return this.game
+        && this.game.shouldRender
+        && this.colyseus.game.clientGameState.fov[x]
+        && this.colyseus.game.clientGameState.fov[x][y];
+  }
+
+  canDarkSee(x: number, y: number) {
+    return this.clientGameState.darkness[x + this.currentPlayer.x]
+        && this.clientGameState.darkness[x + this.currentPlayer.x][y + this.currentPlayer.y]
+        && this.currentPlayer.hasEffect('DarkVision');
+  }
+
 }

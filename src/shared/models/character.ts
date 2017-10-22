@@ -858,7 +858,6 @@ export class Character {
   drawEffectInRadius(effectName: VisualEffect, center: any, effectRadius = 0, drawRadius = 0) {
     this.$$room.state.getPlayersInRange(this, drawRadius).forEach(p => {
       p.$$room.drawEffect(p, { x: center.x, y: center.y }, effectName, effectRadius);
-
     });
   }
 
@@ -1042,8 +1041,12 @@ export class Character {
 
     const hideHpPercent = this.baseClass === 'Thief' ? 70 : 90;
     if(this.hp.ltePercent(hideHpPercent)) return false;
-    if(!this.isNearWall()) return false;
+    if(!this.isNearWall() && !this.isInDarkness()) return false;
     return true;
+  }
+
+  isInDarkness(): boolean {
+    return this.$$room.state.isDarkAt(this.x, this.y);
   }
 
   isNearWall(): boolean {

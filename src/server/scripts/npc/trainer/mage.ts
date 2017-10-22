@@ -12,7 +12,9 @@ const learnedSkills = { Conjuration: {
   6: ['FireMist'],
   7: ['IceMist'],
   8: ['Transmute'],
-  9: ['EnergyWave']
+  9: ['EnergyWave'],
+  10: ['Darkness'],
+  11: ['DarkVision']
 } };
 
 export const setup = async (npc: NPC) => {

@@ -12,6 +12,7 @@ const learnedSkills = { Restoration: {
   6: ['BarNecro'],
   7: ['Revive'],
   8: ['Succor'],
+  9: ['Light'],
   10: ['Disease'],
   11: ['Stun']
 } };

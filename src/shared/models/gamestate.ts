@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get } from 'lodash';
 
 import { Player } from './player';
 
@@ -24,39 +24,41 @@ export class GameState {
 
   environmentalObjects: any[] = [];
 
-  get maxSkill() {
-    return this.map.properties.maxSkill;
+  darkness: any = {};
+
+  get maxSkill(): number {
+    return this.map.properties.maxSkill || 1;
   }
 
   get allPossibleTargets(): Character[] {
     return (<any>this.players).concat(this.mapNPCs);
   }
 
-  addNPC(npc: NPC) {
+  addNPC(npc: NPC): void {
     npc.$$map = this.map;
     this.mapNPCs.push(npc);
   }
 
-  findNPC(uuid: string) {
+  findNPC(uuid: string): NPC {
     return find(this.mapNPCs, { uuid });
   }
 
-  removeNPC(npc: NPC) {
+  removeNPC(npc: NPC): void {
     pull(this.mapNPCs, npc);
   }
 
-  addPlayer(player) {
+  addPlayer(player): void {
     player.$$map = this.map;
     this.players.push(player);
     this.resetPlayerStatus(player);
   }
 
-  addInteractable(obj: any) {
+  addInteractable(obj: any): void {
     this.map.layers[MapLayer.Interactables].objects.push(obj);
     this.environmentalObjects.push(obj);
   }
 
-  getInteractable(x: number, y: number, useOffset = true, typeFilter?: string) {
+  getInteractable(x: number, y: number, useOffset = true, typeFilter?: string): any {
     const findObj: any = { x: x * 64, y: (y + (useOffset ? 1 : 0)) * 64 };
 
     if(typeFilter) findObj.type = typeFilter;
@@ -64,21 +66,21 @@ export class GameState {
     return find(this.map.layers[MapLayer.Interactables].objects, findObj);
   }
 
-  removeInteractable(obj: any) {
+  removeInteractable(obj: any): void {
     const check = x => x === obj;
     this.map.layers[MapLayer.Interactables].objects = reject(this.map.layers[MapLayer.Interactables].objects, check);
     this.environmentalObjects = reject(this.environmentalObjects, check);
   }
 
-  findPlayer(username) {
+  findPlayer(username): Player {
     return find(this.players, { username });
   }
 
-  removePlayer(username) {
+  removePlayer(username): void {
     this.players = reject(this.players, p => p.username === username);
   }
 
-  resetFOV(player) {
+  resetFOV(player): void {
     Object.keys(player.$fov).forEach(x => {
       Object.keys(player.$fov[x]).forEach(y => {
         player.$fov[x][y] = false;
@@ -86,20 +88,32 @@ export class GameState {
     });
   }
 
-  calculateFOV(player) {
+  calculateFOV(player): void {
     const affected = {};
 
-    this.fov.compute(player.x, player.y, 4, (x, y) => {
-      return affected[x - player.x] && affected[x - player.x][y - player.y];
-    }, (x, y) => {
-      affected[x - player.x] = affected[x - player.x] || {};
-      affected[x - player.x][y - player.y] = true;
-    });
+    // darkness obscures all vision
+    if(this.isDarkAt(player.x, player.y) && !player.hasEffect('DarkVision')) {
+      for(let xx = player.x - 4; xx <= player.x + 4; xx++) {
+        for(let yy = player.y - 4; yy <= player.y + 4; yy++) {
+          affected[xx - player.x] = affected[xx - player.x] || {};
+          affected[xx - player.x][yy - player.y] = false;
+        }
+      }
+
+    // no dark, calculate fov
+    } else {
+      this.fov.compute(player.x, player.y, 4, (x, y) => {
+        return affected[x - player.x] && affected[x - player.x][y - player.y];
+      }, (x, y) => {
+        affected[x - player.x] = affected[x - player.x] || {};
+        affected[x - player.x][y - player.y] = true;
+      });
+    }
 
     player.$fov = affected;
   }
 
-  private getInRange(arr: Character[], ref, radius, except: string[] = []) {
+  private getInRange(arr: Character[], ref, radius, except: string[] = []): Character[] {
 
     const { x, y } = ref;
 
@@ -119,11 +133,11 @@ export class GameState {
     });
   }
 
-  getPlayersInRange(ref, radius, except: string[] = []) {
+  getPlayersInRange(ref, radius, except: string[] = []): Character[] {
     return this.getInRange(this.players, ref, radius, except);
   }
 
-  getAllInRange(ref, radius, except: string[] = []) {
+  getAllInRange(ref, radius, except: string[] = []): Character[] {
     return this.getInRange(this.allPossibleTargets, ref, radius, except);
   }
 
@@ -138,7 +152,7 @@ export class GameState {
     return false;
   }
 
-  getPossibleTargetsFor(me: NPC, radius) {
+  getPossibleTargetsFor(me: NPC, radius): Character[] {
     return filter(this.allPossibleTargets, char => {
 
       // no hitting myself
@@ -172,7 +186,7 @@ export class GameState {
     });
   }
 
-  resetPlayerStatus(player: Player, ignoreMessages = false) {
+  resetPlayerStatus(player: Player, ignoreMessages = false): void {
     this.calculateFOV(player);
 
     const mapLayers = this.map.layers;
@@ -240,7 +254,7 @@ export class GameState {
     }
   }
 
-  toggleDoor(door) {
+  toggleDoor(door): void {
     door.isOpen = !door.isOpen;
     door.opacity = !door.isOpen;
     door.density = !door.isOpen;
@@ -248,11 +262,11 @@ export class GameState {
     this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y - 64 };
   }
 
-  isItemValueStackable(item: Item) {
+  isItemValueStackable(item: Item): boolean {
     return item.itemClass === 'Coin';
   }
 
-  addItemToGround({ x, y }, item: Item) {
+  addItemToGround({ x, y }, item: Item): void {
     if(!item) return;
 
     item.x = x;
@@ -271,7 +285,7 @@ export class GameState {
     }
   }
 
-  removeItemFromGround(item: Item) {
+  removeItemFromGround(item: Item): void {
     // initalize array if not exist
     this.getGroundItems(item.x, item.y)[item.itemClass];
 
@@ -295,13 +309,13 @@ export class GameState {
     return groundItems;
   }
 
-  getGroundItems(x, y) {
+  getGroundItems(x, y): any {
     if(!this.groundItems[x]) this.groundItems[x] = {};
     if(!this.groundItems[x][y]) this.groundItems[x][y] = {};
     return this.groundItems[x][y];
   }
 
-  tickPlayers() {
+  tickPlayers(): void {
     this.players.forEach(p => {
       p.tick();
 
@@ -313,7 +327,7 @@ export class GameState {
     });
   }
 
-  cleanNPCs() {
+  cleanNPCs(): NPC[] {
     return this.mapNPCs.map(npc => {
       const baseObj = pick(npc, [
         'agro', 'uuid', 'name',
@@ -330,10 +344,52 @@ export class GameState {
     });
   }
 
-  checkIfDenseWall(x: number, y: number) {
+  checkIfDenseWall(x: number, y: number): boolean {
     const adjustedY = y * this.map.width;
     return this.map.layers[MapLayer.Walls].data[x + adjustedY]
         || this.map.layers[MapLayer.Foliage].data[x + adjustedY];
+  }
+
+  isDarkAt(x: number, y: number): boolean {
+    if(!this.darkness[x]) return false;
+    return this.darkness[x][y];
+  }
+
+  addDarkness(x: number, y: number, radius: number, timestamp: number): void {
+    for(let xx = x - radius; xx <= x + radius; xx++) {
+      for(let yy = y - radius; yy <= y + radius; yy++) {
+        this.darkness[xx] = this.darkness[xx] || {};
+
+        const currentValue = this.darkness[xx][yy];
+
+        // dont overwrite old, stronger darkness with new, weaker darkness
+        if(!currentValue || (currentValue && currentValue < timestamp)) {
+          this.darkness[xx][yy] = timestamp;
+
+          this.getPlayersInRange({ x, y }, 4).forEach(player => {
+            this.calculateFOV(player);
+          });
+        }
+      }
+    }
+  }
+
+  removeDarkness(x: number, y: number, radius: number, timestamp: number, force = false): void {
+    for(let xx = x - radius; xx <= x + radius; xx++) {
+      for(let yy = y - radius; yy <= y + radius; yy++) {
+        this.darkness[xx] = this.darkness[xx] || {};
+
+        // only remove my specific darkness
+        if(force || this.darkness[xx][yy] === timestamp) {
+          this.darkness[xx][yy] = false;
+
+          this.getPlayersInRange({ x, y }, 4).forEach(player => {
+            this.calculateFOV(player);
+          });
+        }
+
+      }
+    }
   }
 
   constructor(opts) {
@@ -381,7 +437,8 @@ export class GameState {
       mapNPCs: this.cleanNPCs(),
       players: this.playerHash,
       groundItems: this.groundItems,
-      environmentalObjects: this.environmentalObjects
+      environmentalObjects: this.environmentalObjects,
+      darkness: this.darkness
     };
   }
 }
