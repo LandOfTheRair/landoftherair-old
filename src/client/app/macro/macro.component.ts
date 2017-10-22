@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { MacroService } from '../macros.service';
 
+import { startCase } from 'lodash';
+
 @Component({
   selector: 'app-macro',
   templateUrl: './macro.component.html',
@@ -36,7 +38,7 @@ export class MacroComponent {
 
   get macroName() {
     if(!this.macroRef || !this.macroService.allMacros[this.macroRef]) return '';
-    return this.macroService.allMacros[this.macroRef].name;
+    return startCase(this.macroService.allMacros[this.macroRef].name);
   }
 
   get macroTooltip() {
