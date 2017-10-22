@@ -10,8 +10,17 @@ export class Talk extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const argArr = args.split(',');
+
+    if(argArr.length < 2) return;
+
     argArr[1] = argArr[1].trim();
-    const [findStr, message] = argArr;
+    const [findStrAndName, message] = argArr;
+
+    let findStr = findStrAndName;
+
+    if(startsWith(findStr, '~talk') || startsWith(findStr, '~say')) {
+      findStr = findStr.split(' ')[1].trim();
+    }
 
     const possTargets = room.getPossibleMessageTargets(player, findStr);
     const target = possTargets[0];
