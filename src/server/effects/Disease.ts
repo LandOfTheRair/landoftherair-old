@@ -12,7 +12,7 @@ export class Disease extends SpellEffect {
     color: '#0a0'
   };
 
-  maxSkillForSkillGain = 7;
+  maxSkillForSkillGain = 13;
   skillFlag = () => SkillClassNames.Restoration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
