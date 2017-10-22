@@ -27,6 +27,12 @@
   margin-right: 25%;
 }
 
+.target-status {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .effect-container {
   width: 32px;
   height: 40px;
