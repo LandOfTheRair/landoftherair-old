@@ -19,10 +19,10 @@ export class SackToMerchant extends Command {
     if(!container) return player.sendClientMessage('That person is not here.');
     if(container.distFrom(player) > 2) return player.sendClientMessage('That person is too far away.');
 
-    const itemCheck = player.sack.getItemFromSlot(slot);
+    const itemCheck = player.sack.getItemFromSlot(+slot);
     if(!itemCheck.isOwnedBy(player)) return player.sendClientMessage('That is not yours!');
 
-    const item = player.sack.takeItemFromSlot(slot);
+    const item = player.sack.takeItemFromSlot(+slot);
     if(!item) return false;
 
     player.sellItem(item);
