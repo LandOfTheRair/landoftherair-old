@@ -113,7 +113,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
          [dragData]="{ item: item, context: context, contextSlot: contextSlot, count: count, containerUUID: containerUUID }"
          [tooltip]="descText">
       <img [src]="imgUrl" [style.object-position]="spriteLocation" />
-      <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="item.encrust" />
+      <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="showEncrust && item.encrust" />
       <div class="item-background" *ngIf="showBackground"></div>
       <div class="glow-container" [ngClass]="[glowColor]" *ngIf="showDesc"></div>
       <span class="count" *ngIf="realCount > 0">{{ realCount }}x</span>
@@ -143,6 +143,9 @@ export class ItemComponent implements OnInit {
 
   @Input()
   public showBackground: boolean;
+
+  @Input()
+  public showEncrust = true;
 
   @Input()
   public context: MenuContext;
