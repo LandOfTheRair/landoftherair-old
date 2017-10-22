@@ -5,10 +5,10 @@ import { CombatHelper } from '../helpers/combat-helper';
 import { Skill } from '../base/Skill';
 import * as dice from 'dice.js';
 
-export class Poison extends SpellEffect {
+export class Disease extends SpellEffect {
 
   iconData = {
-    name: 'poison-gas',
+    name: 'death-juice',
     color: '#0a0'
   };
 
@@ -19,25 +19,26 @@ export class Poison extends SpellEffect {
 
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 0.15;
-    if(this.potency > 0)  mult = 0.35;
-    if(this.potency > 11) mult = 1;
-    if(this.potency > 21) mult = 3;
+    let mult = 2;
+    if(this.potency > 0)  mult = 3;
+    if(this.potency > 11) mult = 4;
+    if(this.potency > 21) mult = 5;
 
-    const wisCheck = Math.max(1, Math.floor(mult * this.getCasterStat(caster, 'wis')));
+    const calcMod = Math.max(1, this.getCasterStat(caster, 'wis') - target.getTotalStat('con'));
+
+    const wisCheck = Math.max(1, Math.floor(mult * calcMod));
     const damage = +dice.roll(`${this.potency || 1}d${wisCheck}`);
 
-    const durationAdjust = Math.floor(this.potency / 3);
-
-    this.duration = this.duration || +dice.roll(`${durationAdjust}d5`);
+    const durationAdjust = Math.floor(this.potency / 2);
+    this.duration = this.duration || +dice.roll(`${durationAdjust}d6`);
 
     this.effectInfo = { damage, caster: caster.uuid };
     target.applyEffect(this);
-    this.effectMessage(caster, `You poisoned ${target.name}!`);
+    this.effectMessage(caster, `You diseased ${target.name}!`);
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You were poisoned!');
+    this.effectMessage(char, 'You were diseased!');
   }
 
   effectTick(char: Character) {
@@ -45,7 +46,7 @@ export class Poison extends SpellEffect {
 
     CombatHelper.magicalAttack(caster, char, {
       effect: this,
-      defMsg: `You are poisoned!`,
+      defMsg: `You are diseased!`,
       damage: this.effectInfo.damage,
       damageClass: 'necrotic'
     });
@@ -53,6 +54,6 @@ export class Poison extends SpellEffect {
   }
 
   effectEnd(char: Character) {
-    this.effectMessage(char, 'Your body flushed the poison out.');
+    this.effectMessage(char, 'Your body recovered from the disease.');
   }
 }
