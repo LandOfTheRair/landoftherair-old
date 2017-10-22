@@ -5,7 +5,7 @@
   hostility: Always
   sprite: [630, 635, 645, 650]
   alignment: Evil
-  stats: 5
+  stats: 1
   skillLevels:
     Mace: 1
     Longsword: 1
@@ -15,7 +15,7 @@
     Staff: 1
 
   level: 1
-  skillOnKill: 5
+  skillOnKill: 2
 
   otherStats:
     perception: 15
