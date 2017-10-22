@@ -508,15 +508,15 @@ export class Game {
   }
 
   public updateDoors() {
-    this.clientGameState.updates.openDoors.forEach((doorId, i) => {
+     this.clientGameState.updates.openDoors.forEach((doorId, i) => {
       const door = this.clientGameState.mapData.openDoors[doorId];
       if(!door) return;
 
       const doorSprite = find(this.groups.Interactables.children, { x: door.x, y: door.y });
       if(!doorSprite) return;
 
-      if(door.isOpen) doorSprite.frame += 1;
-      else            doorSprite.frame -= 1;
+      if(door.isOpen) doorSprite.frame = doorSprite._baseFrame + 1;
+      else            doorSprite.frame = doorSprite._baseFrame;
 
       this.clientGameState.updates.openDoors[i] = null;
     });
@@ -672,6 +672,7 @@ export class Game {
         const tileSet = isWall ? 'Walls' : 'Decor';
 
         const sprite = this.g.add.sprite(obj.x, obj.y - 64, cacheKey(this.clientGameState.mapName, 'tileset', tileSet), obj.gid - firstGid);
+        sprite._baseFrame = sprite.frame;
         this.groups[layer.name].add(sprite);
       });
     };
@@ -693,7 +694,7 @@ export class Game {
       this.frames++;
     }
 
-    if(this.clientGameState.updates.openDoors.length > 0) {
+    if(this.clientGameState.updates.openDoors.length > 0 && this.frames >= 20) {
       this.updateDoors();
     }
 
