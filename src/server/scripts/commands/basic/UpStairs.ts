@@ -11,7 +11,8 @@ export class UpStairs extends Command {
     macro: 'up',
     icon: '3d-stairs',
     color: '#404040',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Go up or down stairs on this tile.'
   };
 
   public name = ['up', 'down'];

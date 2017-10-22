@@ -12,7 +12,8 @@ export class Revive extends Skill {
     macro: 'cast revive',
     icon: 'quicksand',
     color: '#080',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Revive a single player on your tile.'
   };
 
   public name = ['revive', 'cast revive'];

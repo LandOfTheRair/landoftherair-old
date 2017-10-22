@@ -12,7 +12,8 @@ export class IceMist extends Skill {
     macro: 'cast icemist',
     icon: 'kaleidoscope-pearls',
     color: '#000080',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Cast an area ice effect on a target (3x3).'
   };
 
   public name = ['icemist', 'cast icemist'];

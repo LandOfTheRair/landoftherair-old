@@ -12,7 +12,8 @@ export class ClearCommands extends Command {
     icon: 'ultrasound',
     color: '#000000',
     mode: 'autoActivate',
-    key: 'ESCAPE'
+    key: 'ESCAPE',
+    tooltipDesc: 'Clear the command buffer, negating all future commands.'
   };
 
   public name = '~clear';

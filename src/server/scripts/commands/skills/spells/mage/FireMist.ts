@@ -12,7 +12,8 @@ export class FireMist extends Skill {
     macro: 'cast firemist',
     icon: 'kaleidoscope-pearls',
     color: '#DC143C',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Cast an area fire effect on a target (3x3).'
   };
 
   public name = ['firemist', 'cast firemist'];

@@ -12,7 +12,8 @@ export class Transmute extends Skill {
     macro: 'cast transmute',
     icon: 'coins',
     color: '#665600',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Convert the items on your current tile into gold.'
   };
 
   public name = ['transmute', 'cast transmute'];

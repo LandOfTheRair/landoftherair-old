@@ -9,7 +9,8 @@ export class LookAt extends Command {
     macro: 'look at',
     icon: 'look-at',
     color: '#8A6948',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Look at a target, getting a full description of them and their gear.'
   };
 
   public name = 'look at';

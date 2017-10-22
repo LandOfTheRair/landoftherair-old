@@ -13,7 +13,8 @@ export class Mug extends Skill {
     macro: 'mug',
     icon: 'hooded-assassin',
     color: '#530000',
-    mode: 'lockActivation'
+    mode: 'lockActivation',
+    tooltipDesc: 'Mug your target, dealing damage and stealing from them.'
   };
 
   public name = 'mug';

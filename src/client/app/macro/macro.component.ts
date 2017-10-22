@@ -38,4 +38,9 @@ export class MacroComponent {
     if(!this.macroRef || !this.macroService.allMacros[this.macroRef]) return '';
     return this.macroService.allMacros[this.macroRef].name;
   }
+
+  get macroTooltip() {
+    if(!this.macroRef || !this.macroService.allMacros[this.macroRef]) return '';
+    return this.macroService.allMacros[this.macroRef].tooltipDesc;
+  }
 }

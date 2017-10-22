@@ -12,7 +12,8 @@ export class Stun extends Skill {
     macro: 'cast stun',
     icon: 'knockout',
     color: '#990',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Attempt to stun a single target.'
   };
 
   public name = ['stun', 'cast stun'];

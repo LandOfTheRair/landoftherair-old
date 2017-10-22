@@ -27,7 +27,7 @@ export class MacroBarsComponent implements OnInit {
 
   createDefaultMacros() {
 
-    (<any>macros).allMeta.forEach(({ name, macro, icon, mode, color, bgColor, key, isSystem, requiresLearn }) => {
+    (<any>macros).allMeta.forEach(({ name, macro, icon, mode, color, bgColor, key, isSystem, requiresLearn, tooltipDesc }) => {
       const macroObject = new Macro();
       macroObject.name = name;
       macroObject.macro = macro;
@@ -38,6 +38,7 @@ export class MacroBarsComponent implements OnInit {
       macroObject.key = key;
       macroObject.isSystem = isSystem;
       macroObject.requiresLearn = requiresLearn;
+      macroObject.tooltipDesc = tooltipDesc;
 
       this.macroService.allMacros[name] = macroObject;
     });

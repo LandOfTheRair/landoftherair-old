@@ -12,7 +12,8 @@ export class Afflict extends Skill {
     macro: 'cast afflict',
     icon: 'bolas',
     color: '#bd5900',
-    mode: 'lockActivation'
+    mode: 'lockActivation',
+    tooltipDesc: 'Inflict necrotic damage on a single target.'
   };
 
   public name = ['afflict', 'cast afflict'];

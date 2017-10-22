@@ -12,7 +12,8 @@ export class Cure extends Skill {
     macro: 'cast cure',
     icon: 'tentacle-heart',
     color: '#080',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Heal a single target.'
   };
 
   public name = ['cure', 'cast cure'];

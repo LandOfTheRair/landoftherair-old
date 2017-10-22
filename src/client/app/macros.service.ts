@@ -21,6 +21,8 @@ export class Macro {
   appendTargetToEachMacro = true;
   macro = '';
 
+  tooltipDesc: string;
+
   name: string;
   icon: string;
 

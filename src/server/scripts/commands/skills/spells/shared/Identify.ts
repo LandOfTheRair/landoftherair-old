@@ -12,7 +12,8 @@ export class Identify extends Skill {
     macro: 'cast identify',
     icon: 'uncertainty',
     color: '#665600',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Identify the attributes of the item in your right hand.'
   };
 
   public name = ['identify', 'cast identify'];

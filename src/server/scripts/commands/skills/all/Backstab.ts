@@ -13,7 +13,8 @@ export class Backstab extends Skill {
     macro: 'backstab',
     icon: 'backstab',
     color: '#530000',
-    mode: 'lockActivation'
+    mode: 'lockActivation',
+    tooltipDesc: 'Backstab your target from the shadows.'
   };
 
   public name = 'backstab';

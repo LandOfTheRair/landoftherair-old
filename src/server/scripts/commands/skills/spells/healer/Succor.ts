@@ -12,7 +12,8 @@ export class Succor extends Skill {
     macro: 'cast succor',
     icon: 'blackball',
     color: '#080',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Create a consumable that will let you return to your current location.'
   };
 
   public name = ['succor', 'cast succor'];

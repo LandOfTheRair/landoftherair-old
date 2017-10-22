@@ -12,7 +12,8 @@ export class Antidote extends Skill {
     macro: 'cast antidote',
     icon: 'miracle-medecine',
     color: '#0a0',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Cure poison on a single target.'
   };
 
   public name = ['antidote', 'cast antidote'];

@@ -92,18 +92,18 @@
             "requiresLearn": false
         },
         {
-            "name": "Attack",
-            "macro": "attack",
-            "icon": "blade-drag",
+            "name": "Backstab",
+            "macro": "backstab",
+            "icon": "backstab",
             "color": "#530000",
             "mode": "lockActivation",
             "isSystem": true,
             "requiresLearn": false
         },
         {
-            "name": "Backstab",
-            "macro": "backstab",
-            "icon": "backstab",
+            "name": "Attack",
+            "macro": "attack",
+            "icon": "blade-drag",
             "color": "#530000",
             "mode": "lockActivation",
             "isSystem": true,
@@ -161,6 +161,7 @@
             "icon": "bolas",
             "color": "#bd5900",
             "mode": "lockActivation",
+            "tooltipDesc": "Inflict necrotic damage on a single target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -170,6 +171,7 @@
             "icon": "miracle-medecine",
             "color": "#0a0",
             "mode": "clickToTarget",
+            "tooltipDesc": "Cure poison on a single target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -179,6 +181,7 @@
             "icon": "rosa-shield",
             "color": "#1b390e",
             "mode": "clickToTarget",
+            "tooltipDesc": "Shield necrotic damage for a single target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -188,6 +191,7 @@
             "icon": "tentacle-heart",
             "color": "#080",
             "mode": "clickToTarget",
+            "tooltipDesc": "Heal a single target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -197,6 +201,7 @@
             "icon": "quicksand",
             "color": "#080",
             "mode": "autoActivate",
+            "tooltipDesc": "Revive a single player on your tile.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -206,6 +211,7 @@
             "icon": "knockout",
             "color": "#990",
             "mode": "clickToTarget",
+            "tooltipDesc": "Attempt to stun a single target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -215,6 +221,7 @@
             "icon": "blackball",
             "color": "#080",
             "mode": "autoActivate",
+            "tooltipDesc": "Create a consumable that will let you return to your current location.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -224,6 +231,7 @@
             "icon": "rosa-shield",
             "color": "#DC143C",
             "mode": "clickToTarget",
+            "tooltipDesc": "Shield fire damage for a single target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -233,6 +241,7 @@
             "icon": "rosa-shield",
             "color": "#000080",
             "mode": "clickToTarget",
+            "tooltipDesc": "Shield frost damage for a single target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -242,6 +251,7 @@
             "icon": "rosa-shield",
             "color": "#208aec",
             "mode": "clickToTarget",
+            "tooltipDesc": "Shield water damage for a single target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -251,6 +261,7 @@
             "icon": "beams-aura",
             "color": "#000080",
             "mode": "autoActivate",
+            "tooltipDesc": "Cast an area energy effect from your location (5x5).",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -260,6 +271,7 @@
             "icon": "kaleidoscope-pearls",
             "color": "#DC143C",
             "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area fire effect on a target (3x3).",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -269,6 +281,7 @@
             "icon": "kaleidoscope-pearls",
             "color": "#000080",
             "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area ice effect on a target (3x3).",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -278,6 +291,7 @@
             "icon": "missile-swarm",
             "color": "#0059bd",
             "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -287,6 +301,7 @@
             "icon": "death-juice",
             "color": "#0a0",
             "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly disease on your target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -296,15 +311,7 @@
             "icon": "uncertainty",
             "color": "#665600",
             "mode": "autoActivate",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Poison",
-            "macro": "cast poison",
-            "icon": "poison-gas",
-            "color": "#0a0",
-            "mode": "clickToTarget",
+            "tooltipDesc": "Identify the attributes of the item in your right hand.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -314,6 +321,17 @@
             "icon": "coins",
             "color": "#665600",
             "mode": "autoActivate",
+            "tooltipDesc": "Convert the items on your current tile into gold.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Poison",
+            "macro": "cast poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly poison on your target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -323,6 +341,7 @@
             "icon": "all-seeing-eye",
             "color": "#00a",
             "mode": "clickToTarget",
+            "tooltipDesc": "See hidden walls and other hidden features.",
             "isSystem": true,
             "requiresLearn": true
         }

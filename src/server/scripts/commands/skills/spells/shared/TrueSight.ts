@@ -12,7 +12,8 @@ export class TrueSight extends Skill {
     macro: 'cast truesight',
     icon: 'all-seeing-eye',
     color: '#00a',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'See hidden walls and other hidden features.'
   };
 
   public name = ['truesight', 'cast truesight'];

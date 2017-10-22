@@ -13,7 +13,8 @@ export class Charge extends Skill {
     macro: 'charge',
     icon: 'running-ninja',
     color: '#530000',
-    mode: 'lockActivation'
+    mode: 'lockActivation',
+    tooltipDesc: 'Charge towards an enemy, attacking with the item in your right hand.'
   };
 
   public name = 'charge';

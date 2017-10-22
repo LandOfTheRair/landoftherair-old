@@ -12,7 +12,8 @@ export class MagicMissile extends Skill {
     macro: 'cast magicmissile',
     icon: 'missile-swarm',
     color: '#0059bd',
-    mode: 'lockActivation'
+    mode: 'lockActivation',
+    tooltipDesc: 'Inflict energy damage on a single target.'
   };
 
   public name = ['magicmissile', 'cast magicmissile'];

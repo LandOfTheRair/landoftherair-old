@@ -11,7 +11,8 @@ export class ClimbUp extends Command {
     macro: 'climb up',
     icon: 'ladder',
     color: '#D2691E',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Climb up or down on this tile.'
   };
 
   public name = ['climb up', 'climb down'];

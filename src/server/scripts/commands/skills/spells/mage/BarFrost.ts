@@ -12,7 +12,8 @@ export class BarFrost extends Skill {
     macro: 'cast barfrost',
     icon: 'rosa-shield',
     color: '#000080',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Shield frost damage for a single target.'
   };
 
   public name = ['barfrost', 'cast barfrost'];

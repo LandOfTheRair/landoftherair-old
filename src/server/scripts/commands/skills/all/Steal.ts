@@ -11,7 +11,8 @@ export class Steal extends Skill {
     macro: 'steal',
     icon: 'take-my-money',
     color: '#7F6B00',
-    mode: 'lockActivation'
+    mode: 'lockActivation',
+    tooltipDesc: 'Steal gold and items from your target.'
   };
 
   public name = 'steal';
