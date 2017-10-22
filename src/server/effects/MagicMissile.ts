@@ -12,8 +12,8 @@ export class MagicMissile extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 0.25;
-    if(this.potency > 0)  mult = 0.5;
+    let mult = 0.5;
+    if(this.potency > 0)  mult = 1;
     if(this.potency > 11) mult = 2;
     if(this.potency > 21) mult = 4;
 

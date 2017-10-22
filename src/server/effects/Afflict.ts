@@ -12,10 +12,10 @@ export class Afflict extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 0.15;
-    if(this.potency > 0)  mult = 0.35;
-    if(this.potency > 11) mult = 1;
-    if(this.potency > 21) mult = 3;
+    let mult = 0.45;
+    if(this.potency > 0)  mult = 1;
+    if(this.potency > 11) mult = 2.5;
+    if(this.potency > 21) mult = 4;
 
     const wisCheck = Math.floor(mult * this.getCasterStat(caster, 'wis'));
     const damage = +dice.roll(`${this.potency || 1}d${wisCheck}`);
