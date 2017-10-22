@@ -1,6 +1,8 @@
 
 import { Component, Input } from '@angular/core';
 
+import { startCase } from 'lodash';
+
 @Component({
   selector: 'app-status-effect',
   styles: [`
@@ -39,7 +41,7 @@ import { Component, Input } from '@angular/core';
                   [tooltip]="effectTooltipTemplate"></app-icon>
         
         <ng-template #effectTooltipTemplate>
-          <strong>{{ effect.name }}</strong><br>
+          <strong>{{ effectName }}</strong><br>
           {{ effect.iconData.tooltipDesc || '' }}
         </ng-template>
       </div>
@@ -49,4 +51,8 @@ export class StatusEffectComponent {
 
   @Input()
   public effect: any;
+
+  get effectName() {
+    return startCase(this.effect.name);
+  }
 }

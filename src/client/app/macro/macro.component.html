@@ -9,7 +9,7 @@
   </div>
 
   <ng-template #macroTooltipTemplate>
-    <strong>{{ macroName }}</strong><br>
+    <strong>{{ macroName || 'Empty' }}</strong><br>
     {{ macroTooltip }}
   </ng-template>
 
