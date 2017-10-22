@@ -23,6 +23,10 @@ export class Darkness extends Skill {
   mpCost = () => 25;
   range = () => 5;
 
+  canUse(user: Character, target: Character) {
+    return !target.isInDarkness();
+  }
+
   execute(user: Character, { gameState, args, effect }) {
 
     const target = this.getTarget(user, args, true);

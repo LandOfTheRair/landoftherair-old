@@ -460,6 +460,23 @@ export class Character {
     this.potionHand = item;
   }
 
+  tryToCastEquippedEffects() {
+    AllNormalGearSlots.forEach(slot => {
+
+      // doesnt count if they're in hand
+      if(!includes(slot, 'gear')) return;
+
+      const item = get(this, slot);
+
+      if(item && item.effect && item.effect.autocast) {
+        const effect = new Effects[item.effect.name]();
+        effect.duration = -1;
+        effect.effectInfo.isPermanent = true;
+        this.applyEffect(effect);
+      }
+    });
+  }
+
   equip(item: Item) {
     if(!this.canEquip(item)) return false;
     const slot = this.getItemSlotToEquipIn(item);

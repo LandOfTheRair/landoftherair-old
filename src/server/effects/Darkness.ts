@@ -12,7 +12,7 @@ export class Darkness extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    // skill - 7 in minutes
+    // skill - 7 in quarter-minutes
     const duration = this.potency - 7;
 
     target.$$room.createDarkness(target.x, target.y, 1, duration);

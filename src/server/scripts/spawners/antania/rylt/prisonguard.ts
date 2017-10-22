@@ -9,7 +9,7 @@ export class RyltPrisonGuardSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 900,
+      respawnRate: 30,
       initialSpawn: 5,
       maxCreatures: 5,
       spawnRadius: 3,

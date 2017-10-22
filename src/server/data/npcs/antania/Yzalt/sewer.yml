@@ -1,0 +1,43 @@
+- npcId: Yzalt Sewer Rat
+  name: sewer rat
+  hostility: Always
+  sprite: 310
+  alignment: Evil
+  stats: 7
+  skillLevels:
+    Martial: 3
+    Conjuration: 7
+
+  level: 6
+
+  skillOnKill: 15
+
+  gold:
+    min: 200
+    max: 350
+
+  hp:
+    min: 800
+    max: 1000
+
+  mp:
+    min: 300
+    max: 500
+
+  giveXp:
+    min: 700
+    max: 925
+
+  gear:
+    Armor: Yzalt SewerRat Fur
+    Head: DarkVision Helm
+    Hands: Basic Claws
+
+  tansFor: Yzalt SewerRat Fur
+
+  usableSkills:
+    - PoisonBiteMedium
+    - DiseaseBiteWeak
+    - Darkness
+
+  spawnMessage: "the sound of water being skittered around in"

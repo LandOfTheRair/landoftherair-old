@@ -4332,8 +4332,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6464,
-                 "y":5120
+                 "x":6656,
+                 "y":4928
                 }, 
                 {
                  "gid":2347,
@@ -4392,8 +4392,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4288,
-                 "y":5248
+                 "x":3904,
+                 "y":5440
                 }, 
                 {
                  "gid":2347,
@@ -4412,8 +4412,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":5376,
-                 "y":5056
+                 "x":4992,
+                 "y":5184
                 }, 
                 {
                  "gid":2347,
@@ -4452,8 +4452,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6592,
-                 "y":6144
+                 "x":6528,
+                 "y":6656
                 }, 
                 {
                  "gid":2347,
@@ -4492,7 +4492,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6272,
+                 "x":5824,
                  "y":7104
                 }, 
                 {
@@ -4604,7 +4604,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":5248,
+                 "x":4928,
                  "y":7424
                 }, 
                 {
@@ -4624,8 +4624,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":8768,
-                 "y":6464
+                 "x":8896,
+                 "y":6528
                 }, 
                 {
                  "gid":2347,
@@ -5807,27 +5807,7 @@
                  "visible":true,
                  "width":64,
                  "x":384,
-                 "y":6208
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":660,
-                 "name":"Prison Rebel Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison-rebel"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":384,
-                 "y":7360
+                 "y":6976
                 }, 
                 {
                  "gid":2347,
@@ -5866,8 +5846,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4672,
-                 "y":4864
+                 "x":4480,
+                 "y":4992
                 }, 
                 {
                  "gid":2347,
@@ -5946,8 +5926,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":8000,
-                 "y":6080
+                 "x":8128,
+                 "y":5888
                 }, 
                 {
                  "gid":2347,

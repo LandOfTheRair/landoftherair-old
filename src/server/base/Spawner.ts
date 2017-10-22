@@ -207,6 +207,8 @@ export class Spawner {
     npc.$$stripX = this.stripX;
     npc.$$stripY = this.stripY;
 
+    npc.tryToCastEquippedEffects();
+
     npc.sendSpawnMessage();
 
     this.assignPath(npc);
