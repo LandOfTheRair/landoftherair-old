@@ -65,7 +65,10 @@ export class ClientGameState {
   }
 
   grabOldUpdates(mapData) {
-    Object.keys(mapData.openDoors).forEach(doorId => this.updates.openDoors.push(doorId));
+    Object.keys(mapData.openDoors).forEach(doorId => {
+      if(!mapData.openDoors[doorId].isOpen) return;
+      this.updates.openDoors.push(doorId);
+    });
   }
 
   setMap(map) {
