@@ -33,6 +33,7 @@ export * from './BarWater';
 
 export * from './FireMist';
 export * from './IceMist';
+export * from './EnergyWave';
 
 export * from './Cure';
 export * from './Revive';
