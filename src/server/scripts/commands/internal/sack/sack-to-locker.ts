@@ -21,6 +21,7 @@ export class SackToLocker extends Command {
     if(!locker) return;
 
     const item = player.sack.getItemFromSlot(+slot);
+    if(!item) return;
 
     if(!this.addItemToContainer(player, locker, item)) return;
 
