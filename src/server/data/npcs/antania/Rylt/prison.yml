@@ -266,7 +266,7 @@
 
   otherStats:
     stealth: 30
-    perception: 50
+    perception: 40
 
   skillLevels:
     Throwing: 2
@@ -362,7 +362,7 @@
   stats: 7
   skillLevels:
     Shortsword: 2
-    Conjuration: 4
+    Conjuration: 1
 
   level: 4
   skillOnKill: 25
@@ -415,7 +415,7 @@
   stats: 7
   skillLevels:
     Mace: 2
-    Restoration: 4
+    Restoration: 1
 
   otherStats:
     perception: 35
