@@ -1,5 +1,8 @@
 <div class="row w-100 ml-0">
-  <button class="btn btn-primary no-border-radius col-sm-2" (click)="isSay = !isSay">{{ isSay ? 'Say' : 'Cmd'}}:</button>
+  <button class="btn no-border-radius col-sm-2"
+          [class.btn-primary]="!isSay"
+          [class.btn-success]="isSay"
+          (click)="isSay = !isSay">{{ isSay ? 'Say' : 'Cmd'}}:</button>
   <input class="no-border-radius form-control col-sm-10"
          #cmdEntry
          [(ngModel)]="colyseusGame.currentCommand"
