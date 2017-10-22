@@ -22,6 +22,7 @@ export * from './TrueSight';
 export * from './Afflict';
 export * from './MagicMissile';
 
+export * from './Disease';
 export * from './Poison';
 export * from './Stunned';
 
@@ -32,3 +33,8 @@ export * from './BarWater';
 
 export * from './FireMist';
 export * from './IceMist';
+
+export * from './Cure';
+export * from './Revive';
+
+// Transmute cannot be in here

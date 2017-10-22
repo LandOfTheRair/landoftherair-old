@@ -19,8 +19,8 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Skills",
-            "macro": "show skills",
+            "name": "Show Stats",
+            "macro": "show stats",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
@@ -28,8 +28,8 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show stats",
+            "name": "Show Skills",
+            "macro": "show skills",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
@@ -165,15 +165,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Antidote",
-            "macro": "cast antidote",
-            "icon": "miracle-medecine",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "BarNecro",
             "macro": "cast barnecro",
             "icon": "rosa-shield",
@@ -183,28 +174,19 @@
             "requiresLearn": true
         },
         {
+            "name": "Antidote",
+            "macro": "cast antidote",
+            "icon": "miracle-medecine",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Cure",
             "macro": "cast cure",
             "icon": "tentacle-heart",
             "color": "#080",
-            "mode": "clickToTarget",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Disease",
-            "macro": "cast disease",
-            "icon": "death-juice",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Poison",
-            "macro": "cast poison",
-            "icon": "poison-gas",
-            "color": "#0a0",
             "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
@@ -228,28 +210,10 @@
             "requiresLearn": true
         },
         {
-            "name": "Identify",
-            "macro": "cast identify",
-            "icon": "uncertainty",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Transmute",
-            "macro": "cast transmute",
-            "icon": "coins",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "TrueSight",
-            "macro": "cast truesight",
-            "icon": "all-seeing-eye",
-            "color": "#00a",
+            "name": "Stun",
+            "macro": "cast stun",
+            "icon": "knockout",
+            "color": "#990",
             "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
@@ -305,6 +269,51 @@
             "icon": "missile-swarm",
             "color": "#0059bd",
             "mode": "lockActivation",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disease",
+            "macro": "cast disease",
+            "icon": "death-juice",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Identify",
+            "macro": "cast identify",
+            "icon": "uncertainty",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Poison",
+            "macro": "cast poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Transmute",
+            "macro": "cast transmute",
+            "icon": "coins",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "TrueSight",
+            "macro": "cast truesight",
+            "icon": "all-seeing-eye",
+            "color": "#00a",
+            "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
         }

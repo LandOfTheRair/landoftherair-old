@@ -2,6 +2,7 @@
 import { SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { Skill } from '../base/Skill';
+import { RecentlyStunned } from './RecentlyStunned';
 
 export class Stunned extends SpellEffect {
 
@@ -16,14 +17,20 @@ export class Stunned extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
+    if(target.hasEffect('RecentlyStunned')) {
+      return this.effectMessage(caster, `${target.name} resisted your stun!`);
+    }
+
     // physical attack
     if(!skillRef) {
       this.duration = 3;
 
     // cast via spell
     } else {
-      // check if skill > wil, if so, stun for skill - will rounds
-      // bosses need an exceptionally high will (15+)
+      const targetWil = target.getTotalStat('wil');
+      if(targetWil > this.potency) return this.effectMessage(caster, `${target.name} resisted your stun!`);
+
+      this.duration = Math.max(7, this.potency - targetWil);
     }
 
     target.applyEffect(this);
@@ -34,6 +41,8 @@ export class Stunned extends SpellEffect {
   }
 
   effectEnd(char: Character) {
+    const recentlyStunned = new RecentlyStunned({});
+    recentlyStunned.cast(char, char);
     this.effectMessage(char, 'You are no longer stunned.');
   }
 }
