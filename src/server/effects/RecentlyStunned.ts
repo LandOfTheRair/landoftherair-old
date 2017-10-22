@@ -7,7 +7,8 @@ export class RecentlyStunned extends SpellEffect {
 
   iconData = {
     name: 'knockout',
-    color: '#a00'
+    color: '#a00',
+    tooltipDesc: 'Recently stunned and cannot be stunned for a period.'
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {

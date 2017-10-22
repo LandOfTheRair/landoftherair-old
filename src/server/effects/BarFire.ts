@@ -8,7 +8,8 @@ export class BarFire extends SpellEffect {
   iconData = {
     name: 'rosa-shield',
     bgColor: '#DC143C',
-    color: '#fff'
+    color: '#fff',
+    tooltipDesc: 'Negate some fire damage.'
   };
 
   maxSkillForSkillGain = 7;

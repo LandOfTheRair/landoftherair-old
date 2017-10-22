@@ -8,7 +8,8 @@ export class Stunned extends SpellEffect {
 
   iconData = {
     name: 'knockout',
-    color: '#990'
+    color: '#990',
+    tooltipDesc: 'Stunned and unable to act.'
   };
 
   maxSkillForSkillGain = 9;

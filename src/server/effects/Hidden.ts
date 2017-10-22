@@ -8,7 +8,8 @@ export class Hidden extends SpellEffect {
   iconData = {
     name: 'hidden',
     color: '#ccc',
-    bgColor: '#000'
+    bgColor: '#000',
+    tooltipDesc: 'Hidden in the shadows, ready to pounce.'
   };
 
   maxSkillForSkillGain = 5;

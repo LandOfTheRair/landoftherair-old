@@ -8,7 +8,8 @@ export class BarFrost extends SpellEffect {
   iconData = {
     name: 'rosa-shield',
     bgColor: '#000080',
-    color: '#fff'
+    color: '#fff',
+    tooltipDesc: 'Negate some ice damage.'
   };
 
   maxSkillForSkillGain = 7;
