@@ -8,7 +8,8 @@ export class BarWater extends SpellEffect {
   iconData = {
     name: 'rosa-shield',
     bgColor: '#208aec',
-    color: '#fff'
+    color: '#fff',
+    tooltipDesc: 'Negate some water damage.'
   };
 
   maxSkillForSkillGain = 7;

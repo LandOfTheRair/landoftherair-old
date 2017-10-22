@@ -7,7 +7,8 @@ export class TrueSight extends SpellEffect {
 
   iconData = {
     name: 'all-seeing-eye',
-    color: '#00a'
+    color: '#00a',
+    tooltipDesc: 'Seeing other planes of existence.'
   };
 
   maxSkillForSkillGain = 7;

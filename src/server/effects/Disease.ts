@@ -9,7 +9,8 @@ export class Disease extends SpellEffect {
 
   iconData = {
     name: 'death-juice',
-    color: '#0a0'
+    color: '#0a0',
+    tooltipDesc: 'Constantly receiving necrotic damage.'
   };
 
   maxSkillForSkillGain = 13;

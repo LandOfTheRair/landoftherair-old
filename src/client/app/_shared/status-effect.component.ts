@@ -36,7 +36,12 @@ import { Component, Input } from '@angular/core';
                   [name]="effect.iconData.name"
                   size="small"
                   container="body"
-                  [tooltip]="effect.name"></app-icon>
+                  [tooltip]="effectTooltipTemplate"></app-icon>
+        
+        <ng-template #effectTooltipTemplate>
+          <strong>{{ effect.name }}</strong><br>
+          {{ effect.iconData.tooltipDesc || '' }}
+        </ng-template>
       </div>
   `
 })

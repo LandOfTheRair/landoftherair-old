@@ -8,7 +8,8 @@ export class BarNecro extends SpellEffect {
   iconData = {
     name: 'rosa-shield',
     bgColor: '#1b390e',
-    color: '#fff'
+    color: '#fff',
+    tooltipDesc: 'Negate some necrotic damage.'
   };
 
   maxSkillForSkillGain = 7;

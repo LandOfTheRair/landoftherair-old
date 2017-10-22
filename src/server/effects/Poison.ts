@@ -9,7 +9,8 @@ export class Poison extends SpellEffect {
 
   iconData = {
     name: 'poison-gas',
-    color: '#0a0'
+    color: '#0a0',
+    tooltipDesc: 'Constantly receiving necrotic damage.'
   };
 
   maxSkillForSkillGain = 7;
