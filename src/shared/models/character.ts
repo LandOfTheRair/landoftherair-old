@@ -827,16 +827,19 @@ export class Character {
     }
 
     if(item.succorInfo) {
-
-      this.sendClientMessage('You are whisked back to the place in your stored memories!');
-
-      this.$$room.teleport(this, {
-        x: item.succorInfo.x,
-        y: item.succorInfo.y,
-        newMap: item.succorInfo.map,
-        zSet: item.succorInfo.z
-      });
+      this.doSuccor(item.succorInfo);
     }
+  }
+
+  doSuccor(succorInfo) {
+    this.sendClientMessage('You are whisked back to the place in your stored memories!');
+
+    this.$$room.teleport(this, {
+      x: succorInfo.x,
+      y: succorInfo.y,
+      newMap: succorInfo.map,
+      zSet: succorInfo.z
+    });
   }
 
   sendClientMessage(message) {}
