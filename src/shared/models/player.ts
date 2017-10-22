@@ -9,6 +9,7 @@ import { Party } from './party';
 import { Quest } from '../../server/base/Quest';
 
 import * as Quests from '../../server/quests';
+import { LowCON } from '../../server/effects/LowCON';
 
 export class Player extends Character {
   _id?: any;
@@ -225,10 +226,15 @@ export class Player extends Character {
     const corpse = await this.$$room.createCorpse(this);
     corpse.sprite = this.getBaseSprite() + 4;
 
-    const myCon = this.getTotalStat('con');
+    const myCon = this.getBaseStat('con');
     const myLuk = this.getTotalStat('luk');
 
     if(myCon > 3) this.stats.con--;
+
+    if(this.getBaseStat('con') <= 3) {
+      const lowCon = new LowCON({});
+      lowCon.cast(this, this);
+    }
 
     if(myCon === 3) {
       if(this.stats.hp > 10 && random(1, 5) === 1) {
