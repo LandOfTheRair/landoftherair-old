@@ -13,7 +13,7 @@ export class FireMist extends Skill {
     icon: 'kaleidoscope-pearls',
     color: '#DC143C',
     mode: 'clickToTarget',
-    tooltipDesc: 'Cast an area fire effect on a target (3x3).'
+    tooltipDesc: 'Cast an area fire effect on a target (3x3). Cost: 40 MP'
   };
 
   public name = ['firemist', 'cast firemist'];

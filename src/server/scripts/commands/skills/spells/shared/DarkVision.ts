@@ -13,7 +13,7 @@ export class DarkVision extends Skill {
     icon: 'angry-eyes',
     color: '#000',
     mode: 'clickToTarget',
-    tooltipDesc: 'See in the darkness.'
+    tooltipDesc: 'See in the darkness. Cost: 25 MP'
   };
 
   public name = ['darkvision', 'cast darkvision'];

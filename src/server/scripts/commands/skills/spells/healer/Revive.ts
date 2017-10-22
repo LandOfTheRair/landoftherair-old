@@ -13,7 +13,7 @@ export class Revive extends Skill {
     icon: 'quicksand',
     color: '#080',
     mode: 'autoActivate',
-    tooltipDesc: 'Revive a single player on your tile.'
+    tooltipDesc: 'Revive a single player on your tile. Cost: 50 MP'
   };
 
   public name = ['revive', 'cast revive'];

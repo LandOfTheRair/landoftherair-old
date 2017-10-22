@@ -13,7 +13,7 @@ export class Light extends Skill {
     icon: 'candle-light',
     color: '#aa0',
     mode: 'clickToTarget',
-    tooltipDesc: 'Clear darkness near the target (3x3).'
+    tooltipDesc: 'Clear darkness near the target (3x3). Cost: 25 MP'
   };
 
   public name = ['light', 'cast light'];

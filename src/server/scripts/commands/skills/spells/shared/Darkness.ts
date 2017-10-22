@@ -13,7 +13,7 @@ export class Darkness extends Skill {
     icon: 'dust-cloud',
     color: '#000',
     mode: 'clickToTarget',
-    tooltipDesc: 'Drop an area darkness effect on the target (3x3).'
+    tooltipDesc: 'Drop an area darkness effect on the target (3x3). Cost: 25 MP'
   };
 
   public name = ['darkness', 'cast darkness'];

@@ -1,22 +1,22 @@
 {
     "allMeta": [
         {
-            "name": "Climb",
-            "macro": "climb up",
-            "icon": "ladder",
-            "color": "#D2691E",
-            "mode": "autoActivate",
-            "tooltipDesc": "Climb up or down on this tile.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Look At",
             "macro": "look at",
             "icon": "look-at",
             "color": "#8A6948",
             "mode": "clickToTarget",
             "tooltipDesc": "Look at a target, getting a full description of them and their gear.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Climb",
+            "macro": "climb up",
+            "icon": "ladder",
+            "color": "#D2691E",
+            "mode": "autoActivate",
+            "tooltipDesc": "Climb up or down on this tile.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -51,23 +51,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Clear Buffer",
-            "macro": "~clear",
-            "icon": "ultrasound",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "key": "ESCAPE",
-            "tooltipDesc": "Clear the command buffer, negating all future commands.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Drink",
             "macro": "~drink",
             "icon": "potion-ball",
             "color": "#2020B2",
             "mode": "autoActivate",
             "tooltipDesc": "Drink a potion from your potion slot.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Restore",
+            "macro": "restore",
+            "icon": "quicksand",
+            "color": "#8A6948",
+            "mode": "autoActivate",
+            "tooltipDesc": "Revive and go back to a respawn point.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -82,12 +81,13 @@
             "requiresLearn": false
         },
         {
-            "name": "Restore",
-            "macro": "restore",
-            "icon": "quicksand",
-            "color": "#8A6948",
+            "name": "Clear Buffer",
+            "macro": "~clear",
+            "icon": "ultrasound",
+            "color": "#000000",
             "mode": "autoActivate",
-            "tooltipDesc": "Revive and go back to a respawn point.",
+            "key": "ESCAPE",
+            "tooltipDesc": "Clear the command buffer, negating all future commands.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -112,6 +112,16 @@
             "requiresLearn": false
         },
         {
+            "name": "Backstab",
+            "macro": "backstab",
+            "icon": "backstab",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Backstab your target from the shadows.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Charge",
             "macro": "charge",
             "icon": "running-ninja",
@@ -129,16 +139,6 @@
             "bgColor": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "Hide in the shadows.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Backstab",
-            "macro": "backstab",
-            "icon": "backstab",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Backstab your target from the shadows.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -178,7 +178,7 @@
             "icon": "bolas",
             "color": "#bd5900",
             "mode": "lockActivation",
-            "tooltipDesc": "Inflict necrotic damage on a single target.",
+            "tooltipDesc": "Inflict necrotic damage on a single target. Cost: 10 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -188,7 +188,7 @@
             "icon": "miracle-medecine",
             "color": "#0a0",
             "mode": "clickToTarget",
-            "tooltipDesc": "Cure poison on a single target.",
+            "tooltipDesc": "Cure poison on a single target. Cost: 10 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -198,7 +198,7 @@
             "icon": "rosa-shield",
             "color": "#1b390e",
             "mode": "clickToTarget",
-            "tooltipDesc": "Shield necrotic damage for a single target.",
+            "tooltipDesc": "Shield necrotic damage for a single target. Cost: 40 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -208,7 +208,7 @@
             "icon": "tentacle-heart",
             "color": "#080",
             "mode": "clickToTarget",
-            "tooltipDesc": "Heal a single target.",
+            "tooltipDesc": "Heal a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -218,7 +218,7 @@
             "icon": "candle-light",
             "color": "#aa0",
             "mode": "clickToTarget",
-            "tooltipDesc": "Clear darkness near the target (3x3).",
+            "tooltipDesc": "Clear darkness near the target (3x3). Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -228,17 +228,7 @@
             "icon": "quicksand",
             "color": "#080",
             "mode": "autoActivate",
-            "tooltipDesc": "Revive a single player on your tile.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Succor",
-            "macro": "cast succor",
-            "icon": "blackball",
-            "color": "#080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Create a consumable that will let you return to your current location.",
+            "tooltipDesc": "Revive a single player on your tile. Cost: 50 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -248,77 +238,17 @@
             "icon": "knockout",
             "color": "#990",
             "mode": "clickToTarget",
-            "tooltipDesc": "Attempt to stun a single target.",
+            "tooltipDesc": "Attempt to stun a single target. Cost: 40 MP",
             "isSystem": true,
             "requiresLearn": true
         },
         {
-            "name": "BarFire",
-            "macro": "cast barfire",
-            "icon": "rosa-shield",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield fire damage for a single target.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "BarFrost",
-            "macro": "cast barfrost",
-            "icon": "rosa-shield",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield frost damage for a single target.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "EnergyWave",
-            "macro": "cast energywave",
-            "icon": "beams-aura",
-            "color": "#000080",
+            "name": "Succor",
+            "macro": "cast succor",
+            "icon": "blackball",
+            "color": "#080",
             "mode": "autoActivate",
-            "tooltipDesc": "Cast an area energy effect from your location (5x5).",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "FireMist",
-            "macro": "cast firemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area fire effect on a target (3x3).",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "IceMist",
-            "macro": "cast icemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area ice effect on a target (3x3).",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MagicMissile",
-            "macro": "cast magicmissile",
-            "icon": "missile-swarm",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "BarWater",
-            "macro": "cast barwater",
-            "icon": "rosa-shield",
-            "color": "#208aec",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield water damage for a single target.",
+            "tooltipDesc": "Create a consumable that will let you return to your current location. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -328,17 +258,7 @@
             "icon": "dust-cloud",
             "color": "#000",
             "mode": "clickToTarget",
-            "tooltipDesc": "Drop an area darkness effect on the target (3x3).",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "DarkVision",
-            "macro": "cast darkvision",
-            "icon": "angry-eyes",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See in the darkness.",
+            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -348,7 +268,17 @@
             "icon": "death-juice",
             "color": "#0a0",
             "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly disease on your target.",
+            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "DarkVision",
+            "macro": "cast darkvision",
+            "icon": "angry-eyes",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See in the darkness. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -358,7 +288,7 @@
             "icon": "uncertainty",
             "color": "#665600",
             "mode": "autoActivate",
-            "tooltipDesc": "Identify the attributes of the item in your right hand.",
+            "tooltipDesc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -368,7 +298,7 @@
             "icon": "poison-gas",
             "color": "#0a0",
             "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly poison on your target.",
+            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -378,7 +308,7 @@
             "icon": "coins",
             "color": "#665600",
             "mode": "autoActivate",
-            "tooltipDesc": "Convert the items on your current tile into gold.",
+            "tooltipDesc": "Convert the items on your current tile into gold. Cost: 15 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -388,7 +318,77 @@
             "icon": "all-seeing-eye",
             "color": "#00a",
             "mode": "clickToTarget",
-            "tooltipDesc": "See hidden walls and other hidden features.",
+            "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFrost",
+            "macro": "cast barfrost",
+            "icon": "rosa-shield",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFire",
+            "macro": "cast barfire",
+            "icon": "rosa-shield",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield fire damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarWater",
+            "macro": "cast barwater",
+            "icon": "rosa-shield",
+            "color": "#208aec",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield water damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EnergyWave",
+            "macro": "cast energywave",
+            "icon": "beams-aura",
+            "color": "#000080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 80 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "FireMist",
+            "macro": "cast firemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 40 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "IceMist",
+            "macro": "cast icemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 40 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MagicMissile",
+            "macro": "cast magicmissile",
+            "icon": "missile-swarm",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         }

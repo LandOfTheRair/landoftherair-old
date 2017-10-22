@@ -13,7 +13,7 @@ export class BarFrost extends Skill {
     icon: 'rosa-shield',
     color: '#000080',
     mode: 'clickToTarget',
-    tooltipDesc: 'Shield frost damage for a single target.'
+    tooltipDesc: 'Shield frost damage for a single target. Cost: 20 MP'
   };
 
   public name = ['barfrost', 'cast barfrost'];

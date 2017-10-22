@@ -13,7 +13,7 @@ export class BarWater extends Skill {
     icon: 'rosa-shield',
     color: '#208aec',
     mode: 'clickToTarget',
-    tooltipDesc: 'Shield water damage for a single target.'
+    tooltipDesc: 'Shield water damage for a single target. Cost: 20 MP'
   };
 
   public name = ['barwater', 'cast barwater'];

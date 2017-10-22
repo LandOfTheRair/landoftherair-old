@@ -13,7 +13,7 @@ export class Stun extends Skill {
     icon: 'knockout',
     color: '#990',
     mode: 'clickToTarget',
-    tooltipDesc: 'Attempt to stun a single target.'
+    tooltipDesc: 'Attempt to stun a single target. Cost: 40 MP'
   };
 
   public name = ['stun', 'cast stun'];
