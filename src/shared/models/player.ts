@@ -175,10 +175,10 @@ export class Player extends Character {
     }
   }
 
-  changeRep(allegiance: Allegiance, delta: number) {
+  changeRep(allegiance: Allegiance, delta: number, noPartyShare: boolean = false) {
     super.changeRep(allegiance, delta);
 
-    if(this.party) {
+    if(!noPartyShare && this.party) {
       this.$$room.shareRepWithParty(this, allegiance, delta);
     }
   }

@@ -901,7 +901,7 @@ export class GameWorld extends Room<GameState> {
       const partyMember = this.state.findPlayer(username);
       if(player.distFrom(partyMember) > 7) return;
 
-      partyMember.changeRep(allegiance, delta);
+      partyMember.changeRep(allegiance, delta, true);
     });
   }
 
