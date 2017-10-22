@@ -68,3 +68,11 @@
   requirements:
     level: 7
     alignment: Good
+
+- name: DarkVision Helm
+  effect:
+    name: DarkVision
+    autocast: true
+  sprite: 373
+  desc: "a glow in the dark helmet with eyes that let you see in the dark"
+  value: 3500
