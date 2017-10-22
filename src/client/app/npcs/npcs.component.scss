@@ -132,6 +132,8 @@
             font-size: 0.9rem;
             letter-spacing: 1.5px;
             overflow: hidden;
+            white-space: nowrap;
+            text-overflow: clip;
             max-width: 96px;
             line-height: 16px;
             min-height: 17px;
