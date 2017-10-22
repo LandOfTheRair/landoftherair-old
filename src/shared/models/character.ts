@@ -1,7 +1,8 @@
 
 import {
   omitBy, merge, find, includes, compact, pull, values, floor,
-  capitalize, startsWith, isUndefined, clone, isString, random
+  capitalize, startsWith, isUndefined, clone, isString, random,
+  get
 } from 'lodash';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
@@ -467,7 +468,30 @@ export class Character {
     this.gear[slot] = item;
     this.recalculateStats();
     this.itemCheck(item);
+
+    if(item.effect && item.effect.autocast) {
+      const effect = new Effects[item.effect.name]();
+      effect.duration = -1;
+      effect.effectInfo.isPermanent = true;
+      this.applyEffect(effect);
+    }
+
     return true;
+  }
+
+  unequip(slot: string) {
+    const item = this.gear[slot];
+
+    this.gear[slot] = null;
+
+    if(item.effect && item.effect.autocast) {
+      const effect = this.hasEffect(item.effect.name);
+      if(effect) {
+        this.unapplyEffect(effect, true);
+      }
+    }
+
+    this.recalculateStats();
   }
 
   private checkCanEquipWithoutGearCheck(item: Item) {
@@ -489,11 +513,6 @@ export class Character {
     const slot = this.getItemSlotToEquipIn(item);
     if(!slot || this.gear[slot]) return false;
     return true;
-  }
-
-  unequip(slot: string) {
-    this.gear[slot] = null;
-    this.recalculateStats();
   }
 
   addItemToSack(item: Item) {
@@ -774,11 +793,16 @@ export class Character {
 
   applyEffect(effect: Effect) {
     const existingEffect = this.hasEffect(effect.name);
+
+    const oldPermanency = get(existingEffect, 'effectInfo.isPermanent', false);
+    const newPermanency = get(effect, 'effectInfo.isPermanent', false);
+
     if(existingEffect) {
+      if(oldPermanency && !newPermanency) return;
       this.unapplyEffect(effect, true);
     }
 
-    if(effect.duration > 0 || (effect.effectInfo && effect.effectInfo.isPermanent)) {
+    if(effect.duration > 0 || newPermanency) {
       this.effects.push(effect);
     }
 
