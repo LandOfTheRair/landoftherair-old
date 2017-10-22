@@ -13,7 +13,7 @@ export class MagicMissile extends Skill {
     icon: 'missile-swarm',
     color: '#0059bd',
     mode: 'lockActivation',
-    tooltipDesc: 'Inflict energy damage on a single target.'
+    tooltipDesc: 'Inflict energy damage on a single target. Cost: 5 MP'
   };
 
   public name = ['magicmissile', 'cast magicmissile'];

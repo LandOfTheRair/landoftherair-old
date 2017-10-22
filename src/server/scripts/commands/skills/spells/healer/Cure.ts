@@ -13,7 +13,7 @@ export class Cure extends Skill {
     icon: 'tentacle-heart',
     color: '#080',
     mode: 'clickToTarget',
-    tooltipDesc: 'Heal a single target.'
+    tooltipDesc: 'Heal a single target. Cost: 5 MP'
   };
 
   public name = ['cure', 'cast cure'];

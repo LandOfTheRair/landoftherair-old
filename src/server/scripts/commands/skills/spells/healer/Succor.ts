@@ -13,7 +13,7 @@ export class Succor extends Skill {
     icon: 'blackball',
     color: '#080',
     mode: 'autoActivate',
-    tooltipDesc: 'Create a consumable that will let you return to your current location.'
+    tooltipDesc: 'Create a consumable that will let you return to your current location. Cost: 25 MP'
   };
 
   public name = ['succor', 'cast succor'];

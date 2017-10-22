@@ -13,7 +13,7 @@ export class Identify extends Skill {
     icon: 'uncertainty',
     color: '#665600',
     mode: 'autoActivate',
-    tooltipDesc: 'Identify the attributes of the item in your right hand.'
+    tooltipDesc: 'Identify the attributes of the item in your right hand. Cost: 15 MP'
   };
 
   public name = ['identify', 'cast identify'];

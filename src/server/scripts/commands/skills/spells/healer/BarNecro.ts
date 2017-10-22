@@ -13,7 +13,7 @@ export class BarNecro extends Skill {
     icon: 'rosa-shield',
     color: '#1b390e',
     mode: 'clickToTarget',
-    tooltipDesc: 'Shield necrotic damage for a single target.'
+    tooltipDesc: 'Shield necrotic damage for a single target. Cost: 40 MP'
   };
 
   public name = ['barnecro', 'cast barnecro'];

@@ -13,7 +13,7 @@ export class Poison extends Skill {
     icon: 'poison-gas',
     color: '#0a0',
     mode: 'clickToTarget',
-    tooltipDesc: 'Inflict a deadly poison on your target.'
+    tooltipDesc: 'Inflict a deadly poison on your target. Cost: 15 MP'
   };
 
   public name = ['poison', 'cast poison'];

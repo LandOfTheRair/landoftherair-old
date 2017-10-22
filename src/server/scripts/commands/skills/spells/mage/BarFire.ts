@@ -13,7 +13,7 @@ export class BarFire extends Skill {
     icon: 'rosa-shield',
     color: '#DC143C',
     mode: 'clickToTarget',
-    tooltipDesc: 'Shield fire damage for a single target.'
+    tooltipDesc: 'Shield fire damage for a single target. Cost: 20 MP'
   };
 
   public name = ['barfire', 'cast barfire'];

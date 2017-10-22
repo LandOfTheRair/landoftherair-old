@@ -13,7 +13,7 @@ export class Disease extends Skill {
     icon: 'death-juice',
     color: '#0a0',
     mode: 'clickToTarget',
-    tooltipDesc: 'Inflict a deadly disease on your target.'
+    tooltipDesc: 'Inflict a deadly disease on your target. Cost: 30 MP'
   };
 
   public name = ['disease', 'cast disease'];

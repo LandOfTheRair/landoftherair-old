@@ -13,7 +13,7 @@ export class Antidote extends Skill {
     icon: 'miracle-medecine',
     color: '#0a0',
     mode: 'clickToTarget',
-    tooltipDesc: 'Cure poison on a single target.'
+    tooltipDesc: 'Cure poison on a single target. Cost: 10 MP'
   };
 
   public name = ['antidote', 'cast antidote'];
