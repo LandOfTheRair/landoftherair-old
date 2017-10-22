@@ -14,7 +14,7 @@ export class SackToGround extends Command {
 
     if(!this.checkPlayerEmptyHand(player)) return;
 
-    const item = player.sack.takeItemFromSlot(slot);
+    const item = player.sack.takeItemFromSlot(+slot);
     if(!item) return;
 
     room.addItemToGround(player, item);

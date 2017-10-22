@@ -14,7 +14,7 @@ export class SackToLeft extends Command {
 
     if(!this.checkPlayerEmptyHand(player)) return;
 
-    const item = player.sack.takeItemFromSlot(slot);
+    const item = player.sack.takeItemFromSlot(+slot);
     if(!item) return false;
 
     this.trySwapLeftToRight(player);
