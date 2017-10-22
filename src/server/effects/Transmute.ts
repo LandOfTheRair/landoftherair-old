@@ -7,7 +7,11 @@ import { ItemCreator } from '../helpers/item-creator';
 export class Transmute extends SpellEffect {
 
   maxSkillForSkillGain = 11;
-  skillFlag = () => SkillClassNames.Conjuration;
+
+  skillFlag = (caster) => {
+    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
+    return SkillClassNames.Thievery;
+  }
 
   async cast(caster: Character, target: Character, skillRef?: Skill) {
 

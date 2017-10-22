@@ -17,6 +17,7 @@ export class ClientGameState {
   mapData: any = { openDoors: {} };
   mapNPCs: NPC[] = [];
   fov: any = {};
+  darkness: any = {};
 
   _activeTarget: Character;
 
@@ -91,6 +92,10 @@ export class ClientGameState {
 
   setEnvironmentalObjects(data) {
     this.environmentalObjects = data;
+  }
+
+  setDarkness(data) {
+    this.darkness = data;
   }
 
   initFOV(fov?) {

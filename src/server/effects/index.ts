@@ -18,6 +18,7 @@ export * from './Hidden';
 
 export * from './Antidote';
 
+export * from './DarkVision';
 export * from './TrueSight';
 
 export * from './Afflict';
@@ -38,5 +39,8 @@ export * from './EnergyWave';
 
 export * from './Cure';
 export * from './Revive';
+
+export * from './Darkness';
+export * from './Light';
 
 // Transmute cannot be in here

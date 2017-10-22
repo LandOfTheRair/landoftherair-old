@@ -1,5 +1,5 @@
 
-import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter, clone } from 'lodash';
+import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter, clone, pull } from 'lodash';
 
 import * as scheduler from 'node-schedule';
 
@@ -63,6 +63,8 @@ export class GameWorld extends Room<GameState> {
   private gameSettings: GameSettings = clone(BASE_SETTINGS);
 
   private itemGC: any;
+
+  private clearTimers: any[] = [];
 
   get allSpawners() {
     return this.spawners;
@@ -403,6 +405,9 @@ export class GameWorld extends Room<GameState> {
     if(this.itemGC) {
       this.itemGC.cancel();
     }
+
+    this.clearTimers.forEach(timer => clearTimeout(timer));
+
     this.saveGround();
     this.saveBossTimers();
     this.partyManager.stopEmitting();
@@ -475,6 +480,23 @@ export class GameWorld extends Room<GameState> {
         });
       });
     });
+  }
+
+  public createDarkness(startX: number, startY: number, radius: number, durationInMinutes: number): void {
+    const darkTimestamp = Date.now();
+
+    const timer = setTimeout(() => {
+      this.state.removeDarkness(startX, startY, radius, darkTimestamp);
+      pull(this.clearTimers, timer);
+    }, durationInMinutes * 1000 * 15);
+
+    this.state.addDarkness(startX, startY, radius, darkTimestamp);
+
+    this.clearTimers.push(timer);
+  }
+
+  public removeDarkness(startX: number, startY: number, radius: number) {
+    this.state.removeDarkness(startX, startY, radius, 0, true);
   }
 
   private watchForItemDecay() {
@@ -727,7 +749,7 @@ export class GameWorld extends Room<GameState> {
     if(!isPlayer) {
       corpse.tansFor = (<any>target).tansFor;
       (<any>corpse).npcUUID = target.uuid;
-      corpse.$$playersHeardDeath = this.state.getPlayersInRange(target, 6).map(x => x.username);
+      corpse.$$playersHeardDeath = this.state.getPlayersInRange(target, 6).map(x => (<Player>x).username);
     }
 
     return corpse;
@@ -834,8 +856,8 @@ export class GameWorld extends Room<GameState> {
     return true;
   }
 
-  public drawEffect(player: Player, center: any, effect: VisualEffect, radius = 0) {
-    const client = this.findClient(player);
+  public drawEffect(player: Character, center: any, effect: VisualEffect, radius = 0) {
+    const client = this.findClient(<Player>player);
     const effectId = VISUAL_EFFECTS[effect];
     this.send(client, { action: 'draw_effect_r', effect: effectId, center, radius });
   }
