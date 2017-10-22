@@ -399,7 +399,8 @@ export class Player extends Character {
   }
 
   receiveMessage(from: Character, message) {
-    this.sendClientMessage({ name: `[private] ${from.name}`, message });
+    from.sendClientMessage({ name: `[>>> private: ${this.name}]`, message });
+    this.sendClientMessage({ name: `[<<< private: ${from.name}]`, message });
   }
 
   queueAction({ command, args }) {
