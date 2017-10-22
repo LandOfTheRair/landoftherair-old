@@ -12,7 +12,8 @@ export class BarFire extends Skill {
     macro: 'cast barfire',
     icon: 'rosa-shield',
     color: '#DC143C',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Shield fire damage for a single target.'
   };
 
   public name = ['barfire', 'cast barfire'];

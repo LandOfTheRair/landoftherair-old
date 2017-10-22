@@ -12,7 +12,8 @@ export class BarNecro extends Skill {
     macro: 'cast barnecro',
     icon: 'rosa-shield',
     color: '#1b390e',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Shield necrotic damage for a single target.'
   };
 
   public name = ['barnecro', 'cast barnecro'];

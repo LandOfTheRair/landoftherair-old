@@ -11,7 +11,8 @@ export class Look extends Command {
     macro: '~look',
     icon: 'semi-closed-eye',
     color: '#665600',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Look at the ground without searching containers.'
   };
 
   public name = '~look';

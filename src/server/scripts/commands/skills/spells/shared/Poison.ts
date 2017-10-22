@@ -12,7 +12,8 @@ export class Poison extends Skill {
     macro: 'cast poison',
     icon: 'poison-gas',
     color: '#0a0',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Inflict a deadly poison on your target.'
   };
 
   public name = ['poison', 'cast poison'];

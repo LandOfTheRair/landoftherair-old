@@ -13,7 +13,8 @@ export class Hide extends Skill {
     icon: 'hidden',
     color: '#cccccc',
     bgColor: '#000000',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Hide in the shadows.'
   };
 
   public name = 'hide';

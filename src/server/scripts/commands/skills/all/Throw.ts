@@ -12,7 +12,8 @@ export class Throw extends Skill {
     macro: 'throw right',
     icon: 'thrown-spear',
     color: '#530000',
-    mode: 'lockActivation'
+    mode: 'lockActivation',
+    tooltipDesc: 'Throw an item at a target.'
   };
 
   public name = 'throw';

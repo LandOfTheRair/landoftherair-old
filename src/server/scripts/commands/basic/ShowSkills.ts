@@ -9,7 +9,8 @@ export class ShowSkills extends Command {
     macro: 'show skills',
     icon: 'checklist',
     color: '#000000',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'See all of your skills and skill levels in text form.'
   };
 
   public name = 'show skills';

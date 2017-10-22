@@ -11,7 +11,8 @@ export class Drink extends Command {
     macro: '~drink',
     icon: 'potion-ball',
     color: '#2020B2',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Drink a potion from your potion slot.'
   };
 
   public name = '~drink';

@@ -12,7 +12,8 @@ export class EnergyWave extends Skill {
     macro: 'cast energywave',
     icon: 'beams-aura',
     color: '#000080',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Cast an area energy effect from your location (5x5).'
   };
 
   public name = ['energywave', 'cast energywave'];

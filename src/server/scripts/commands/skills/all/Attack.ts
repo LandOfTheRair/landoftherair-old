@@ -12,7 +12,8 @@ export class Attack extends Skill {
     macro: 'attack',
     icon: 'blade-drag',
     color: '#530000',
-    mode: 'lockActivation'
+    mode: 'lockActivation',
+    tooltipDesc: 'Physically attack a target with the item in your right hand.'
   };
 
   public name = 'attack';

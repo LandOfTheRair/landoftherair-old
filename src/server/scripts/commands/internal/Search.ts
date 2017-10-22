@@ -11,7 +11,8 @@ export class Search extends Look {
     macro: '~search',
     icon: 'cash',
     color: '#665600',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Look at the ground and search containers for items.'
   };
 
   public name = '~search';

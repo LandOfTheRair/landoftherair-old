@@ -21,7 +21,7 @@ export class EnergyWave extends SpellEffect {
 
     target.sendClientMessageToRadius({ message: `You see a wave of energy pulse outwards from ${target.name}.`, subClass: 'combat magic' }, 5, [caster.uuid]);
 
-    const attacked = target.$$room.state.getAllInRange(target, 3, [caster.uuid]);
+    const attacked = target.$$room.state.getAllInRange(target, 2, [caster.uuid]);
 
     attacked.forEach(refTarget => {
       const damage = +dice.roll(`${this.potency || 1}d${intCheck}`);

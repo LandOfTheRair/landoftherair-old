@@ -12,7 +12,8 @@ export class BarWater extends Skill {
     macro: 'cast barwater',
     icon: 'rosa-shield',
     color: '#208aec',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Shield water damage for a single target.'
   };
 
   public name = ['barwater', 'cast barwater'];

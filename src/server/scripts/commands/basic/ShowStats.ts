@@ -10,7 +10,8 @@ export class ShowStats extends Command {
     macro: 'show stats',
     icon: 'checklist',
     color: '#000000',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'See all of your stats and their base level in text form.'
   };
 
   public name = 'show stats';

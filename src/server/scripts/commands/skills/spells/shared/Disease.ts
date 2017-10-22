@@ -12,7 +12,8 @@ export class Disease extends Skill {
     macro: 'cast disease',
     icon: 'death-juice',
     color: '#0a0',
-    mode: 'clickToTarget'
+    mode: 'clickToTarget',
+    tooltipDesc: 'Inflict a deadly disease on your target.'
   };
 
   public name = ['disease', 'cast disease'];

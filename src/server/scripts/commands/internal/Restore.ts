@@ -11,7 +11,8 @@ export class Restore extends Command {
     macro: 'restore',
     icon: 'quicksand',
     color: '#8A6948',
-    mode: 'autoActivate'
+    mode: 'autoActivate',
+    tooltipDesc: 'Revive and go back to a respawn point.'
   };
 
   public name = 'restore';
