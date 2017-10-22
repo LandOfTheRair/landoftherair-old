@@ -1,5 +1,6 @@
 
 import * as RestrictedNumber from 'restricted-number';
+import * as Effects from '../../server/effects';
 
 import { Character, MaxSizes, AllNormalGearSlots, Allegiance } from './character';
 import { Item } from './item';
@@ -292,6 +293,20 @@ export class Player extends Character {
       if(this.stats.str > 5 && random(1, 5) === 1) this.stats.str--;
       if(this.stats.agi > 5 && random(1, 5) === 1) this.stats.agi--;
     }
+
+
+    AllNormalGearSlots.forEach(slot => {
+      if(!includes(slot, 'gear')) return;
+
+      const item = get(this, slot);
+
+      if(item && item.effect && item.effect.autocast) {
+        const effect = new Effects[item.effect.name]();
+        effect.duration = -1;
+        effect.effectInfo.isPermanent = true;
+        this.applyEffect(effect);
+      }
+    });
 
     this.hp.set(1);
     this.dir = 'S';
