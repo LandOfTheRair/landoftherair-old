@@ -27,7 +27,7 @@
     max: 150
 
   usableSkills:
-    - WeakBite
+    - PoisonBiteWeak
 
   gear:
     Hands: Dolphin Gloves
@@ -59,7 +59,7 @@
     max: 350
 
   usableSkills:
-    - WeakBite
+    - PoisonBiteWeak
 
   gear:
     Hands: Dolphin Gloves

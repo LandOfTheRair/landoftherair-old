@@ -7,6 +7,15 @@
   desc: "a pair of sharp claws"
   value: 0
 
+- name: Medium Claws
+  baseDamage: 3
+  minDamage: 1
+  maxDamage: 2
+  damageRolls: 2
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0
+
 - name: Werebear Claws
   baseDamage: 7
   minDamage: 3

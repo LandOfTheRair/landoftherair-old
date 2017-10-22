@@ -1,3 +1,4 @@
 
 export * from './SetTrap';
-export * from './WeakBite';
+export * from './PoisonBiteWeak';
+export * from './PoisonBiteMedium';

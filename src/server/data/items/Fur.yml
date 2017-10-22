@@ -30,4 +30,14 @@
   value: 1000
   sprite: 218
 
+- name: Yzalt SewerRat Fur
+  desc: "a grossly warm and pungent coat of rat fur tanned from a sewer rat"
+  stats:
+    armorClass: 7
+    perception: 5
+    stealth: -5
+
+  value: 200
+  sprite: 352
+
 
