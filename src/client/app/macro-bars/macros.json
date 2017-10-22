@@ -6,6 +6,7 @@
             "icon": "ladder",
             "color": "#D2691E",
             "mode": "autoActivate",
+            "tooltipDesc": "Climb up or down on this tile.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -15,6 +16,7 @@
             "icon": "look-at",
             "color": "#8A6948",
             "mode": "clickToTarget",
+            "tooltipDesc": "Look at a target, getting a full description of them and their gear.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -24,6 +26,7 @@
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
+            "tooltipDesc": "See all of your skills and skill levels in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -33,6 +36,7 @@
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
+            "tooltipDesc": "See all of your stats and their base level in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -42,6 +46,7 @@
             "icon": "3d-stairs",
             "color": "#404040",
             "mode": "autoActivate",
+            "tooltipDesc": "Go up or down stairs on this tile.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -52,6 +57,7 @@
             "color": "#000000",
             "mode": "autoActivate",
             "key": "ESCAPE",
+            "tooltipDesc": "Clear the command buffer, negating all future commands.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -61,6 +67,7 @@
             "icon": "potion-ball",
             "color": "#2020B2",
             "mode": "autoActivate",
+            "tooltipDesc": "Drink a potion from your potion slot.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -70,6 +77,7 @@
             "icon": "semi-closed-eye",
             "color": "#665600",
             "mode": "autoActivate",
+            "tooltipDesc": "Look at the ground without searching containers.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -79,6 +87,7 @@
             "icon": "quicksand",
             "color": "#8A6948",
             "mode": "autoActivate",
+            "tooltipDesc": "Revive and go back to a respawn point.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -88,15 +97,7 @@
             "icon": "cash",
             "color": "#665600",
             "mode": "autoActivate",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Backstab",
-            "macro": "backstab",
-            "icon": "backstab",
-            "color": "#530000",
-            "mode": "lockActivation",
+            "tooltipDesc": "Look at the ground and search containers for items.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -106,6 +107,17 @@
             "icon": "blade-drag",
             "color": "#530000",
             "mode": "lockActivation",
+            "tooltipDesc": "Physically attack a target with the item in your right hand.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Backstab",
+            "macro": "backstab",
+            "icon": "backstab",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Backstab your target from the shadows.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -115,6 +127,7 @@
             "icon": "running-ninja",
             "color": "#530000",
             "mode": "lockActivation",
+            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -125,6 +138,7 @@
             "color": "#cccccc",
             "bgColor": "#000000",
             "mode": "autoActivate",
+            "tooltipDesc": "Hide in the shadows.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -134,6 +148,7 @@
             "icon": "hooded-assassin",
             "color": "#530000",
             "mode": "lockActivation",
+            "tooltipDesc": "Mug your target, dealing damage and stealing from them.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -143,6 +158,7 @@
             "icon": "take-my-money",
             "color": "#7F6B00",
             "mode": "lockActivation",
+            "tooltipDesc": "Steal gold and items from your target.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -152,6 +168,7 @@
             "icon": "thrown-spear",
             "color": "#530000",
             "mode": "lockActivation",
+            "tooltipDesc": "Throw an item at a target.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -176,22 +193,22 @@
             "requiresLearn": true
         },
         {
-            "name": "BarNecro",
-            "macro": "cast barnecro",
-            "icon": "rosa-shield",
-            "color": "#1b390e",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield necrotic damage for a single target.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Cure",
             "macro": "cast cure",
             "icon": "tentacle-heart",
             "color": "#080",
             "mode": "clickToTarget",
             "tooltipDesc": "Heal a single target.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarNecro",
+            "macro": "cast barnecro",
+            "icon": "rosa-shield",
+            "color": "#1b390e",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield necrotic damage for a single target.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -222,6 +239,56 @@
             "color": "#080",
             "mode": "autoActivate",
             "tooltipDesc": "Create a consumable that will let you return to your current location.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disease",
+            "macro": "cast disease",
+            "icon": "death-juice",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly disease on your target.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Identify",
+            "macro": "cast identify",
+            "icon": "uncertainty",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "tooltipDesc": "Identify the attributes of the item in your right hand.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Poison",
+            "macro": "cast poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly poison on your target.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Transmute",
+            "macro": "cast transmute",
+            "icon": "coins",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "tooltipDesc": "Convert the items on your current tile into gold.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "TrueSight",
+            "macro": "cast truesight",
+            "icon": "all-seeing-eye",
+            "color": "#00a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See hidden walls and other hidden features.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -292,56 +359,6 @@
             "color": "#0059bd",
             "mode": "lockActivation",
             "tooltipDesc": "Inflict energy damage on a single target.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Disease",
-            "macro": "cast disease",
-            "icon": "death-juice",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly disease on your target.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Identify",
-            "macro": "cast identify",
-            "icon": "uncertainty",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "tooltipDesc": "Identify the attributes of the item in your right hand.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Transmute",
-            "macro": "cast transmute",
-            "icon": "coins",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "tooltipDesc": "Convert the items on your current tile into gold.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Poison",
-            "macro": "cast poison",
-            "icon": "poison-gas",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly poison on your target.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "TrueSight",
-            "macro": "cast truesight",
-            "icon": "all-seeing-eye",
-            "color": "#00a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See hidden walls and other hidden features.",
             "isSystem": true,
             "requiresLearn": true
         }
