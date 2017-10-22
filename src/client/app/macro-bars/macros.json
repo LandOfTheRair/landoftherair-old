@@ -19,8 +19,8 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show stats",
+            "name": "Show Skills",
+            "macro": "show skills",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
@@ -28,8 +28,8 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Skills",
-            "macro": "show skills",
+            "name": "Show Stats",
+            "macro": "show stats",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
@@ -165,19 +165,19 @@
             "requiresLearn": true
         },
         {
-            "name": "BarNecro",
-            "macro": "cast barnecro",
-            "icon": "rosa-shield",
-            "color": "#1b390e",
+            "name": "Antidote",
+            "macro": "cast antidote",
+            "icon": "miracle-medecine",
+            "color": "#0a0",
             "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
         },
         {
-            "name": "Antidote",
-            "macro": "cast antidote",
-            "icon": "miracle-medecine",
-            "color": "#0a0",
+            "name": "BarNecro",
+            "macro": "cast barnecro",
+            "icon": "rosa-shield",
+            "color": "#1b390e",
             "mode": "clickToTarget",
             "isSystem": true,
             "requiresLearn": true
@@ -201,20 +201,20 @@
             "requiresLearn": true
         },
         {
-            "name": "Succor",
-            "macro": "cast succor",
-            "icon": "blackball",
-            "color": "#080",
-            "mode": "autoActivate",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Stun",
             "macro": "cast stun",
             "icon": "knockout",
             "color": "#990",
             "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Succor",
+            "macro": "cast succor",
+            "icon": "blackball",
+            "color": "#080",
+            "mode": "autoActivate",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -242,6 +242,15 @@
             "icon": "rosa-shield",
             "color": "#208aec",
             "mode": "clickToTarget",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EnergyWave",
+            "macro": "cast energywave",
+            "icon": "beams-aura",
+            "color": "#000080",
+            "mode": "autoActivate",
             "isSystem": true,
             "requiresLearn": true
         },
