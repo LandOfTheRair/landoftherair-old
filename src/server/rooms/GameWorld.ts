@@ -284,7 +284,15 @@ export class GameWorld extends Room<GameState> {
   }
 
   addItemToGround(ref, item) {
-    if(item.destroyOnDrop) return;
+    if(item.destroyOnDrop) {
+
+      // legacy code for legacy players :P
+      if(item.name === 'Succor Blob' && item.succorInfo && ref.isPlayer && ref.isPlayer()) {
+        ref.doSuccor(item.succorInfo);
+      }
+
+      return;
+    }
 
     if(item.itemClass !== 'Corpse') {
       this.setItemExpiry(item);
