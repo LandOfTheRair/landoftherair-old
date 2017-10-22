@@ -19,7 +19,7 @@ export class BarFire extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    if(!this.duration) this.duration = 10 * caster.calcSkillLevel(SkillClassNames.Conjuration);
+    if(!this.duration) this.duration = 100 * caster.calcSkillLevel(SkillClassNames.Conjuration);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, `You cast BarFire on ${target.name}.`);
