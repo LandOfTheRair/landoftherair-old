@@ -189,7 +189,6 @@ export class Game {
   }
 
   private createPlayer(player: Player) {
-    console.log('creating sprite for', player.username);
     if(this.isSamePlayer(player.username)) {
       if(this.playerSprite) return;
 
