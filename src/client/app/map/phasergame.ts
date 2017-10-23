@@ -681,6 +681,18 @@ export class Game {
 
         const sprite = this.g.add.sprite(obj.x, obj.y - 64, cacheKey(this.clientGameState.mapName, 'tileset', tileSet), obj.gid - firstGid);
         sprite._baseFrame = sprite.frame;
+
+        if(obj.type === 'StairsUp' || obj.type === 'StairsDown') {
+          sprite.inputEnabled = true;
+
+          sprite.events.onInputDown.add(() => {
+            if(this.player.x !== sprite.x / 64 || this.player.y !== sprite.y / 64) return;
+
+            this.colyseus.game.currentCommand = obj.type === 'StairsUp' ? 'up' : 'down';
+
+          });
+        }
+
         this.groups[layer.name].add(sprite);
       });
     };
