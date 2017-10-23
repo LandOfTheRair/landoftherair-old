@@ -223,6 +223,8 @@ export class Player extends Character {
     this.$$deathTicks = 60 * 5;
     this.combatTicks = 0;
 
+    this.$$actionQueue = [];
+
     const corpse = await this.$$room.createCorpse(this);
     corpse.sprite = this.getBaseSprite() + 4;
 
