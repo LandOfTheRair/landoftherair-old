@@ -6,13 +6,13 @@
   sprite: 545
   alignment: Evil
   baseClass: Mage
-  stats: 15
+  stats: 10
   skillLevels:
-    Staff: 3
-    Conjuration: 4
-    Wand: 3
+    Staff: 2
+    Conjuration: 2
+    Wand: 2
 
-  level: 13
+  level: 10
 
   allegianceReputation:
     Royalty: -101
@@ -94,11 +94,11 @@
   sprite: 585
   alignment: Evil
   baseClass: Thief
-  stats: 15
+  stats: 10
   skillLevels:
-    Dagger: 3
+    Dagger: 2
 
-  level: 12
+  level: 10
 
   allegianceReputation:
     Royalty: -101
@@ -179,13 +179,13 @@
   sprite: 590
   alignment: Good
   baseClass: Warrior
-  stats: 15
+  stats: 10
   skillLevels:
-    Mace: 3
-    Onehanded: 3
-    Twohanded: 3
+    Mace: 2
+    Onehanded: 2
+    Twohanded: 2
 
-  level: 13
+  level: 10
 
   allegianceReputation:
     Pirates: -101
@@ -269,11 +269,11 @@
   sprite: 550
   alignment: Good
   baseClass: Healer
-  stats: 15
+  stats: 10
   skillLevels:
-    Mace: 3
+    Mace: 2
 
-  level: 13
+  level: 10
 
   allegianceReputation:
     Pirates: -101
@@ -360,7 +360,7 @@
     Wand: 3
     Dagger: 3
 
-  level: 10
+  level: 7
 
   allegianceReputation:
     Pirates: -101
