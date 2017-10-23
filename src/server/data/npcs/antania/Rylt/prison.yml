@@ -153,6 +153,11 @@
     - drop: 'gear.Armor'
       chance: -1
 
+  drops:
+    - result: Rylt Guard Key
+      chance: 1
+      maxChance: 7
+
 - npcId: Rylt Renegade Rebel
   name: rebel
   hostility: Always
