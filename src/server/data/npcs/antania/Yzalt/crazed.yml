@@ -1,0 +1,428 @@
+
+- npcId: Crazed Heniz Mage
+  name: crazed mage
+  hostility: Always
+  allegiance: Pirates
+  sprite: 545
+  alignment: Evil
+  baseClass: Mage
+  stats: 15
+  skillLevels:
+    Staff: 3
+    Conjuration: 4
+    Wand: 3
+
+  level: 13
+
+  allegianceReputation:
+    Royalty: -101
+
+  skillOnKill: 25
+
+  gold:
+    min: 700
+    max: 900
+
+  hp:
+    min: 1900
+    max: 2200
+
+  mp:
+    min: 3000
+    max: 3000
+
+  usableSkills:
+    - MagicMissile
+    - EnergyBlast
+
+  giveXp:
+    min: 2350
+    max: 2650
+
+  repMod:
+    - allegiance: Royalty
+      delta: 1
+
+  rightHand:
+    - result: Antanian Staff
+      chance: 30
+    - result: Yzalt Heniz Staff
+      chance: 1
+    - result: Heniz FireMist Wand
+      chance: 1
+    - result: Heniz IceMist Wand
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Antanian Tunic
+        chance: 1
+      - result: Antanian Studded Tunic
+        chance: 2
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Ring1:
+      - result: none
+        chance: 500
+      - result: Heniz Intelligence Ring
+        chance: 1
+    Hands:
+      - result: none
+        chance: 500
+      - result: Heniz Battlemage Gloves
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+
+- npcId: Crazed Heniz Thief
+  name: crazed thief
+  hostility: Always
+  allegiance: Pirates
+  sprite: 585
+  alignment: Evil
+  baseClass: Thief
+  stats: 15
+  skillLevels:
+    Dagger: 3
+
+  level: 12
+
+  allegianceReputation:
+    Royalty: -101
+
+  skillOnKill: 25
+
+  gold:
+    min: 1200
+    max: 1500
+
+  hp:
+    min: 3900
+    max: 4300
+
+  giveXp:
+    min: 2350
+    max: 2550
+
+  repMod:
+    - allegiance: Royalty
+      delta: 1
+
+  rightHand:
+    - result: Antanian Dagger
+      chance: 30
+    - result: Antanian Returning Dagger
+      chance: 10
+    - result: Antanian Dualwielding Dagger
+      chance: 1
+    - result: Heniz Poison Shortbow
+      chance: 1
+  leftHand:
+    - result: none
+      chance: 30
+    - result: Antanian Dualwielding Dagger
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Antanian Tunic
+        chance: 1
+      - result: Antanian Studded Tunic
+        chance: 2
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Wrists:
+      - result: none
+        chance: 500
+      - result: Heniz Dexterity Bracers
+        chance: 1
+    Waist:
+      - result: none
+        chance: 500
+      - result: Heniz Agility Sash
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Wrists'
+      chance: -1
+    - drop: 'gear.Waist'
+      chance: -1
+
+- npcId: Crazed Steffen Warrior
+  name: crazed warrior
+  hostility: Always
+  allegiance: Royalty
+  sprite: 590
+  alignment: Good
+  baseClass: Warrior
+  stats: 15
+  skillLevels:
+    Mace: 3
+    Onehanded: 3
+    Twohanded: 3
+
+  level: 13
+
+  allegianceReputation:
+    Pirates: -101
+
+  skillOnKill: 25
+
+  gold:
+    min: 400
+    max: 500
+
+  hp:
+    min: 2500
+    max: 2800
+
+  giveXp:
+    min: 1950
+    max: 2250
+
+  usableSkills:
+    - Charge
+
+  repMod:
+    - allegiance: Pirates
+      delta: 1
+
+  rightHand:
+    - result: Antanian Greatmace
+      chance: 30
+    - result: Antanian Greataxe
+      chance: 30
+    - result: Antanian Steffen Flail
+      chance: 1
+    - result: Antanian Steffen Katana
+      chance: 1
+    - result: Antanian Steffen Nodachi
+      chance: 1
+
+  gear:
+    Armor: Antanian Breastplate
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Ring1:
+      - result: none
+        chance: 500
+      - result: Steffen Mana Ring
+        chance: 1
+    Ring2:
+      - result: none
+        chance: 500
+      - result: Steffen Mana Ring
+        chance: 1
+    Neck:
+      - result: none
+        chance: 500
+      - result: Steffen Wisdom Amulet
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Ring2'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+
+- npcId: Crazed Steffen Healer
+  name: crazed healer
+  hostility: Always
+  allegiance: Royalty
+  sprite: 550
+  alignment: Good
+  baseClass: Healer
+  stats: 15
+  skillLevels:
+    Mace: 3
+
+  level: 13
+
+  allegianceReputation:
+    Pirates: -101
+
+  skillOnKill: 25
+
+  gold:
+    min: 900
+    max: 1100
+
+  hp:
+    min: 1500
+    max: 1600
+
+  giveXp:
+    min: 2150
+    max: 2450
+
+  repMod:
+    - allegiance: Pirates
+      delta: 1
+
+  rightHand:
+    - result: Antanian Mace
+      chance: 30
+    - result: Antanian Steffen Flail
+      chance: 1
+
+  usableSkills:
+    - Afflict
+    - Poison
+    - Disease
+
+  gear:
+    Armor: Antanian Breastplate
+    Robe1:
+      - result: none
+        chance: 2
+      - result: Antanian Cloak
+        chance: 4
+    Ring1:
+      - result: none
+        chance: 500
+      - result: Steffen DamageResist Ring
+        chance: 1
+    Ring2:
+      - result: none
+        chance: 500
+      - result: Steffen DamageResist Ring
+        chance: 1
+    Waist:
+      - result: none
+        chance: 500
+      - result: Steffen Offensive Sash
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Ring2'
+      chance: -1
+    - drop: 'gear.Waist'
+      chance: -1
+
+
+- npcId: Crazed Mummy
+  name: crazed mummy
+  hostility: Always
+  sprite: 155
+  stats: 10
+  skillLevels:
+    Mace: 3
+    Onehanded: 3
+    Twohanded: 3
+    Staff: 3
+    Wand: 3
+    Dagger: 3
+
+  level: 10
+
+  allegianceReputation:
+    Pirates: -101
+    Royalty: -101
+
+  skillOnKill: 25
+
+  gold:
+    min: 400
+    max: 500
+
+  hp:
+    min: 1500
+    max: 1800
+
+  giveXp:
+    min: 1950
+    max: 2250
+
+  repMod:
+    - allegiance: Pirates
+      delta: 1
+    - allegiance: Royalty
+      delta: 1
+
+  rightHand:
+    - result: Antanian Greatmace
+      chance: 30
+    - result: Antanian Greataxe
+      chance: 30
+    - result: Antanian Dagger
+      chance: 30
+    - result: Antanian Staff
+      chance: 30
+    - result: Antanian Returning Dagger
+      chance: 10
+    - result: Antanian Steffen Flail
+      chance: 1
+    - result: Antanian Steffen Katana
+      chance: 1
+    - result: Antanian Steffen Nodachi
+      chance: 1
+    - result: Yzalt Heniz Staff
+      chance: 1
+    - result: Heniz FireMist Wand
+      chance: 1
+    - result: Heniz IceMist Wand
+      chance: 1
+    - result: Antanian Dualwielding Dagger
+      chance: 1
+    - result: Heniz Poison Shortbow
+      chance: 1
+
+  gear:
+    Robe1:
+      - result: Yzalt Mummy Cloak
+        chance: 2
+      - result: Antanian Cloak
+        chance: 10
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
