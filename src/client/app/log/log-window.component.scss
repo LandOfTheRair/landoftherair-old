@@ -60,7 +60,7 @@
 
       &.combat {
         &.self {
-          color: #fb5555;
+          color: #0f0;
         }
 
         &.other.miss, &.other.block {
@@ -68,7 +68,7 @@
         }
 
         &.other.hit {
-          color: #0f0;
+          color: #fb5555;
         }
 
         &.heal {
