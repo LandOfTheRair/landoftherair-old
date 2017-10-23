@@ -1,0 +1,38 @@
+
+- npcId: Yzalt Rockgolem
+  name: rockgolem
+  hostility: Always
+  sprite: 75
+  alignment: Evil
+  stats: 8
+  skillLevels:
+    Martial: 2
+  level: 5
+
+  skillOnKill: 15
+
+  gold:
+    min: 90
+    max: 190
+
+  hp:
+    min: 750
+    max: 950
+
+  giveXp:
+    min: 550
+    max: 775
+
+  gear:
+    Hands: Rylt Rockgolem Gloves
+    Armor:
+      - none
+      - Antanian Tunic
+      - Antanian Studded Tunic
+      - Antanian Cloak
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+
+  spawnMessage: "the sound of rocks grinding together"

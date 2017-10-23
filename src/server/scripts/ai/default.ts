@@ -46,7 +46,6 @@ export const tick = (npc: NPC) => {
       if(isThrowing) opts = { throwHand: 'right' };
       chosenSkill.use(npc, highestAgro, opts);
 
-
     // either move towards target
     } else {
       const oldX = npc.x;

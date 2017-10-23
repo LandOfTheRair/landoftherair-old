@@ -79,7 +79,9 @@ class NPCLoader {
       npc.repMod.push({ delta: -1, allegiance: npc.allegiance });
     }
 
-    npc.usableSkills.push('Attack');
+    if(!includes(npc.usableSkills, 'Charge')) {
+      npc.usableSkills.push('Attack');
+    }
 
     if(!npc.level) npc.level = 1;
 

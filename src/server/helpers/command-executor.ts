@@ -32,6 +32,7 @@ Object.keys(Commands).forEach(cmd => {
 
 export class CommandExecutor {
 
+  // NPC ONLY
   static checkIfCanUseSkill(skillName, user, target) {
     const skill = skillHash[skillName.toLowerCase()];
     if(!skill) return false;
