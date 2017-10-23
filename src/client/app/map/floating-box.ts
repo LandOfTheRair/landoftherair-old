@@ -3,6 +3,7 @@ type Side = 'left' | 'right';
 
 class FloatingBox {
   private el;
+  private isRemoved: boolean;
 
   constructor(private value: number, private side: Side, private color: string) {}
 
@@ -35,7 +36,14 @@ class FloatingBox {
       { transform: 'translateY(-548px)' }
     ], { duration: 7000 });
 
-    animation.onfinish = () => this.el.parentNode.removeChild(this.el);
+    animation.onfinish = () => this.clearSelf();
+  }
+
+  clearSelf() {
+    if(this.isRemoved) return;
+
+    this.isRemoved = true;
+    this.el.parentNode.removeChild(this.el);
   }
 }
 
