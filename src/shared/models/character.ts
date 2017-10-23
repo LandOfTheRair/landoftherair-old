@@ -693,7 +693,7 @@ export class Character {
   }
 
   clearEffects() {
-    this.effects.forEach(effect => this.unapplyEffect(effect, true));
+    this.effects.forEach(effect => this.unapplyEffect(effect, true, true));
     this.effects = [];
   }
 

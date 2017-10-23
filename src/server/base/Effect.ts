@@ -47,7 +47,6 @@ export class Effect {
   effectEnd(char: Character) {}
 
   effectMessage(char: Character, message: string|any) {
-    console.log(message, this.shouldNotShowMessage)
     if(!char || this.shouldNotShowMessage) return;
     char.sendClientMessage(message);
   }
