@@ -43,9 +43,13 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
+    const allBoxes = [];
+
     this.start$ = this.clientGameState.setMap$.subscribe((map: any) => {
 
       if(this.started && this.phaser) {
+        allBoxes.forEach(box => box.clearSelf());
         this.game.reset();
         this.phaser.state.start(this.phaser.state.current);
       }
@@ -93,17 +97,22 @@ export class MapComponent implements OnInit, OnDestroy {
 
       this.boxes$ = this.clientGameState.playerBoxes$.subscribe(player => {
         if(player.username !== this.currentPlayer.username || player.name !== this.currentPlayer.name) return;
-        const hpDifference = player.hp.__current - this.currentPlayer.hp.__current;
-        const xpDifference = player.exp - this.currentPlayer.exp;
 
-        if(hpDifference !== 0) {
-          const box = new HPBox(hpDifference);
-          box.init(this.mapContainer.nativeElement);
-        }
+        if(this.game.isLoaded) {
+          const hpDifference = player.hp.__current - this.currentPlayer.hp.__current;
+          const xpDifference = player.exp - this.currentPlayer.exp;
 
-        if(xpDifference !== 0) {
-          const box = new XPBox(xpDifference);
-          box.init(this.mapContainer.nativeElement);
+          if(hpDifference !== 0) {
+            const box = new HPBox(hpDifference);
+            box.init(this.mapContainer.nativeElement);
+            allBoxes.push(box);
+          }
+
+          if(xpDifference !== 0) {
+            const box = new XPBox(xpDifference);
+            box.init(this.mapContainer.nativeElement);
+            allBoxes.push(box);
+          }
         }
 
         this.currentPlayer = player;
