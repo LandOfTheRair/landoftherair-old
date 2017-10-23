@@ -62,7 +62,7 @@
   stats: 20
   skillLevels:
     Wand: 5
-    Conjuration: 3
+    Conjuration: 2
 
   level: 7
 
@@ -156,8 +156,8 @@
     perception: 120
 
   skillLevels:
-    Wand: 7
-    Conjuration: 5
+    Wand: 3
+    Conjuration: 3
 
   skillOnKill: 50
 
