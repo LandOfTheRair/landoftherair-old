@@ -33,8 +33,7 @@ export class BarNecro extends SpellEffect {
     char.gainStat('necroticResist', this.potency * this.potencyMultiplier);
   }
 
-  effectEnd(char: Character, opts = { message: true }) {
-    super.effectEnd(char, opts);
+  effectEnd(char: Character) {
     this.effectMessage(char, 'Your dark arts resistance fades.');
     char.loseStat('necroticResist', this.potency * this.potencyMultiplier);
   }

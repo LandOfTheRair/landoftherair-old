@@ -25,7 +25,7 @@ export class Effect {
   effectInfo: EffectInfo = { caster: '' };
   casterRef: any;
 
-  private shouldShowMessage: boolean;
+  public shouldNotShowMessage;
 
   constructor(opts) {
     extend(this, opts);
@@ -44,12 +44,11 @@ export class Effect {
 
   effectTick(char: Character) {}
   effectStart(char: Character) {}
-  effectEnd(char: Character, opts = { message: true }) {
-    this.shouldShowMessage = opts.message;
-  }
+  effectEnd(char: Character) {}
 
   effectMessage(char: Character, message: string|any) {
-    if(!char || !this.shouldShowMessage) return;
+    console.log(message, this.shouldNotShowMessage)
+    if(!char || this.shouldNotShowMessage) return;
     char.sendClientMessage(message);
   }
 }

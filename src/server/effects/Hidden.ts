@@ -36,8 +36,7 @@ export class Hidden extends SpellEffect {
     char.unapplyEffect(this);
   }
 
-  effectEnd(char: Character, opts = { message: true }) {
-    super.effectEnd(char, opts);
+  effectEnd(char: Character) {
     this.effectMessage(char, 'You are no longer hidden!');
     char.loseStat('stealth', this.potency);
   }

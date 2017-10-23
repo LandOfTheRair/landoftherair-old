@@ -815,8 +815,11 @@ export class Character {
     const newPermanency = get(effect, 'effectInfo.isPermanent', false);
 
     if(existingEffect) {
-      if(oldPermanency && !newPermanency) return;
-      this.unapplyEffect(effect, true);
+      if(oldPermanency && !newPermanency) {
+        this.sendClientMessage(`A new casting of ${effect.name} refused to take hold.`);
+        return;
+      }
+      this.unapplyEffect(existingEffect, true, true);
     }
 
     if(effect.duration > 0 || newPermanency) {
@@ -826,9 +829,10 @@ export class Character {
     effect.effectStart(this);
   }
 
-  unapplyEffect(effect: Effect, prematurelyEnd = false) {
+  unapplyEffect(effect: Effect, prematurelyEnd = false, hideMessage = false) {
     if(prematurelyEnd) {
-      effect.effectEnd(this, { message: false });
+      effect.shouldNotShowMessage = hideMessage;
+      effect.effectEnd(this);
     }
     this.effects = this.effects.filter(eff => eff.name !== effect.name);
   }

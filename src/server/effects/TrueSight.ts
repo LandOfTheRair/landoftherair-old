@@ -35,8 +35,7 @@ export class TrueSight extends SpellEffect {
     this.targetEffectMessage(char, 'Your vision expands to see other planes of existence.');
   }
 
-  effectEnd(char: Character, opts = { message: true }) {
-    super.effectEnd(char, opts);
+  effectEnd(char: Character) {
     this.effectMessage(char, 'Your vision returns to normal.');
   }
 }
