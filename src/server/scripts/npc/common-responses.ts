@@ -446,7 +446,7 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       const maxAssessSkill = npc.maxSkillTrain;
 
-      const assessCost = maxAssessSkill * 50;
+      const assessCost = maxAssessSkill * 10;
       if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
       player.loseGold(assessCost);
