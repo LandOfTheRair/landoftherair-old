@@ -265,7 +265,7 @@
     - SetTrap
 
   otherStats:
-    stealth: 30
+    stealth: 20
     perception: 40
 
   skillLevels:
