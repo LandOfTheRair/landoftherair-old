@@ -41,8 +41,7 @@ export class Stunned extends SpellEffect {
     this.effectMessage(char, 'You are stunned!');
   }
 
-  effectEnd(char: Character, opts = { message: true }) {
-    super.effectEnd(char, opts);
+  effectEnd(char: Character) {
     const recentlyStunned = new RecentlyStunned({});
     recentlyStunned.cast(char, char);
     this.effectMessage(char, 'You are no longer stunned.');
