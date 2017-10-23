@@ -28,7 +28,9 @@ export const responses = (npc: NPC) => {
     'The Last Chance Prison is filled with rebellious infidels!',
     'There are tales of a renegade who collects books!',
     'Try asking the Healer to RECALL you!',
-    'The Healer can REVIVE your comrades!'
+    'The Healer can REVIVE your comrades!',
+    'Rumors speak of a wandering Botanist with beneficial abilities!',
+    'The bog to the southwest can take you to the land of conflict!'
   ]);
 
 };
