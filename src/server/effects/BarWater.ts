@@ -33,7 +33,8 @@ export class BarWater extends SpellEffect {
     char.gainStat('waterResist', this.potency * this.potencyMultiplier);
   }
 
-  effectEnd(char: Character) {
+  effectEnd(char: Character, opts = { message: true }) {
+    super.effectEnd(char, opts);
     this.effectMessage(char, 'Your water resistance fades.');
     char.loseStat('waterResist', this.potency * this.potencyMultiplier);
   }

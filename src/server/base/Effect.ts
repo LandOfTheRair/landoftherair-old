@@ -25,6 +25,8 @@ export class Effect {
   effectInfo: EffectInfo = { caster: '' };
   casterRef: any;
 
+  private shouldShowMessage: boolean;
+
   constructor(opts) {
     extend(this, opts);
     if(!this.name) this.name = this.constructor.name;
@@ -42,10 +44,12 @@ export class Effect {
 
   effectTick(char: Character) {}
   effectStart(char: Character) {}
-  effectEnd(char: Character) {}
+  effectEnd(char: Character, opts = { message: true }) {
+    this.shouldShowMessage = opts.message;
+  }
 
   effectMessage(char: Character, message: string|any) {
-    if(!char) return;
+    if(!char || !this.shouldShowMessage) return;
     char.sendClientMessage(message);
   }
 }

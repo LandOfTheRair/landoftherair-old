@@ -36,7 +36,8 @@ export class DarkVision extends SpellEffect {
     this.targetEffectMessage(char, 'You can see in the dark!');
   }
 
-  effectEnd(char: Character) {
+  effectEnd(char: Character, opts = { message: true }) {
+    super.effectEnd(char, opts);
     this.effectMessage(char, 'Your vision returns to normal.');
   }
 }
