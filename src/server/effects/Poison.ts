@@ -56,7 +56,8 @@ export class Poison extends SpellEffect {
 
   }
 
-  effectEnd(char: Character) {
+  effectEnd(char: Character, opts = { message: true }) {
+    super.effectEnd(char, opts);
     this.effectMessage(char, 'Your body flushed the poison out.');
   }
 }

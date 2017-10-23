@@ -704,7 +704,7 @@ export class Character {
 
   die(killer?: Character) {
     this.dir = 'C';
-    this.effects = [];
+    this.clearEffects();
 
     this.$$deathTicks = 60 * 3;
   }
@@ -828,7 +828,7 @@ export class Character {
 
   unapplyEffect(effect: Effect, prematurelyEnd = false) {
     if(prematurelyEnd) {
-      effect.effectEnd(this);
+      effect.effectEnd(this, { message: false });
     }
     this.effects = this.effects.filter(eff => eff.name !== effect.name);
   }

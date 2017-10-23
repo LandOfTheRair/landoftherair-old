@@ -33,7 +33,8 @@ export class BarFire extends SpellEffect {
     char.gainStat('fireResist', this.potency * this.potencyMultiplier);
   }
 
-  effectEnd(char: Character) {
+  effectEnd(char: Character, opts = { message: true }) {
+    super.effectEnd(char, opts);
     this.effectMessage(char, 'Your flame resistance fades.');
     char.loseStat('fireResist', this.potency * this.potencyMultiplier);
   }
