@@ -110,6 +110,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
          container="body"
          [dragEnabled]="!displayOnly"
          (mouseenter)="determineScopes()"
+         (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
          [dragData]="{ item: item, context: context, contextSlot: contextSlot, count: count, containerUUID: containerUUID }"
          [tooltip]="descText">
       <img [src]="imgUrl" [style.object-position]="spriteLocation" />
@@ -301,6 +302,32 @@ export class ItemComponent implements OnInit {
     && this.context !== 'Equipment') scopes.push('use');
 
     this.scopes = scopes;
+  }
+
+  automaticallyTakeActionBasedOnOpenWindows() {
+
+    if(this.colyseusGame.showShop) {
+      if(this.context === 'Sack' || this.context === 'Belt') {
+        this.doColyseusMoveAction('M');
+      }
+
+      if(this.context === 'Merchant' || this.context === 'Obtainagain') {
+        if(this.item.isSackable) {
+          this.doColyseusMoveAction('S');
+        }
+      }
+    }
+
+    if(this.colyseusGame.showLocker) {
+      if(this.context === 'Wardrobe') {
+        if(this.item.isSackable) {
+          this.doColyseusMoveAction('S');
+        }
+      } else {
+        this.doColyseusMoveAction('W');
+      }
+    }
+
   }
 
 }
