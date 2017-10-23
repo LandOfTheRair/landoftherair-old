@@ -37,8 +37,6 @@ export class Drink extends Command {
       return;
     }
 
-    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full!');
-
     const itemIndex = findLastIndex(player.sack.allItems, (item) => {
       if(!item.effect) return false;
       return item.effect.name === 'ExactHeal';
@@ -46,18 +44,10 @@ export class Drink extends Command {
 
     if(itemIndex === -1) return player.sendClientMessage('You have no potions to drink!');
 
-    const emptyHand = player.rightHand ? 'Left' : 'Right';
-    const slotName = `${emptyHand.toLowerCase()}Hand`;
-    const func = player[`set${emptyHand}Hand`].bind(player);
-
-    const useItemInHand = (itemSlot) => {
-      player.useItem(itemSlot);
-    };
-
     const item = player.sack.getItemFromSlot(itemIndex);
-    func(item);
+    player.setPotionHand(item);
     player.sack.takeItemFromSlot(itemIndex);
-    useItemInHand(slotName);
+    player.useItem('potionHand');
   }
 
 }
