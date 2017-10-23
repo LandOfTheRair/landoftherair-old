@@ -33,7 +33,6 @@ export class DarkVision extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    console.log('DV START', this.shouldNotShowMessage)
     this.targetEffectMessage(char, 'You can see in the dark!');
   }
 
