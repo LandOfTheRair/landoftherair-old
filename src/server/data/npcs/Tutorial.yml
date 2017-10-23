@@ -82,8 +82,8 @@
   hostility: Always
   sprite: 215
   alignment: Evil
-  stats: 5
-  level: 2
+  stats: 3
+  level: 1
 
   gold:
     min: 10
@@ -107,7 +107,7 @@
   name: yeti
   hostility: Always
   sprite: 220
-  stats: 7
+  stats: 5
   level: 2
 
   skillOnKill: 30

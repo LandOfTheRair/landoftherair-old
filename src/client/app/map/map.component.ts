@@ -47,7 +47,6 @@ export class MapComponent implements OnInit, OnDestroy {
 
       if(this.started && this.phaser) {
         this.game.reset();
-        this.game.initPromises();
         this.phaser.state.start(this.phaser.state.current);
       }
 
@@ -71,21 +70,22 @@ export class MapComponent implements OnInit, OnDestroy {
       this.phaser = new (<any>window).Phaser.Game(config);
 
       this.create$ = this.clientGameState.createPlayer$.subscribe(async (addPlayer) => {
-        await this.game.canCreate;
+
+        if(this.game.isSamePlayer(addPlayer.username)) {
+          this.game.setPlayer(addPlayer);
+        }
 
         if(!this.game.isLoaded) {
           this.clientGameState.players.forEach(player => {
-            this.game.createPlayer(player);
+            this.game.createPlayerShell(player);
           });
         } else {
-          this.game.createPlayer(addPlayer);
+          this.game.createPlayerShell(addPlayer);
         }
 
       });
 
       this.update$ = this.clientGameState.updatePlayer$.subscribe(async (player) => {
-        await this.game.canUpdate;
-
         this.game.updatePlayer(player);
       });
 

@@ -60,40 +60,32 @@ export class Game {
     Interactables: {}
   };
 
-  // lots of stuff needed for init
-  public canCreate: Promise<any>;
-  public canUpdate: Promise<any>;
-  private resolveCanCreate;
-  private resolveCanUpdate;
-
-  private blockUpdates: boolean;
+  private playersNeedingCreation: Player[] = [];
 
   private currentBgm: string;
   private bgms = {};
   private sfxs = {};
 
   public isLoaded: boolean;
-
-  private frames = 0;
+  private hasFlashed: boolean;
 
   public get shouldRender() {
     if(!this.g || !this.g.camera || !this.playerSprite) return false;
 
     const point = this.g.camera.position;
-    return point.x !== 0 && point.y !== 0 && this.frames >= 20;
+    return point.x !== 0 && point.y !== 0;
   }
 
   constructor(private clientGameState: ClientGameState, public colyseus, private player: Player) {
-    this.initPromises();
 
     // reset any time inGame is set to true
     this.colyseus.game.inGame$.subscribe(inGame => {
+      this.reset();
+
       if(!inGame) {
         this.updateBgm('');
         return;
       }
-
-      this.reset();
     });
 
     this.colyseus.game.bgm$.subscribe(nextBgm => {
@@ -107,6 +99,14 @@ export class Game {
     this.colyseus.game.vfx$.subscribe(nextVfx => {
       this.drawVfx(nextVfx);
     });
+  }
+
+  public isSamePlayer(username: string) {
+    return username === this.player.username;
+  }
+
+  public setPlayer(player: Player) {
+    this.player = player;
   }
 
   private drawVfx({ effect, tiles }) {
@@ -150,7 +150,8 @@ export class Game {
 
   public reset() {
     this.updateBgm('');
-    this.blockUpdates = true;
+    this.g.lockRender = true;
+    this.hasFlashed = false;
 
     if(this.itemsOnGround) {
       this.itemsOnGround.destroy();
@@ -177,20 +178,19 @@ export class Game {
     this.visibleSprites = {};
     this.playerSpriteHash = {};
     this.environmentalObjectHash = {};
-
-    this.frames = 0;
   }
 
-  initPromises() {
-    this.canCreate = new Promise(resolve => this.resolveCanCreate = resolve);
-    this.canUpdate = new Promise(resolve => this.resolveCanUpdate = resolve);
+  private focusCameraOnPlayer() {
+    this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
   }
 
-  async createPlayer(player: Player) {
-    if(!this.g.add) return;
-    await this.canCreate;
+  public createPlayerShell(player: Player) {
+    this.playersNeedingCreation.push(player);
+  }
 
-    if(player.username === this.player.username) {
+  private createPlayer(player: Player) {
+    console.log('creating sprite for', player.username);
+    if(this.isSamePlayer(player.username)) {
       if(this.playerSprite) return;
 
       // duplicated code so we don't dupe the sprite
@@ -198,7 +198,6 @@ export class Game {
       this.player = player;
       this.playerSprite = sprite;
       this.truesightCheck();
-      this.resolveCanUpdate(sprite);
       this.isLoaded = true;
 
     } else {
@@ -209,10 +208,10 @@ export class Game {
     }
   }
 
-  async updatePlayer(player: Player) {
-    await this.canUpdate;
+  updatePlayer(player: Player) {
+    if(this.isSamePlayer(player.username)) {
+      if(!this.playerSprite) return;
 
-    if(this.player.username === player.username) {
       this.player = player;
       this.truesightCheck();
       this.updatePlayerSprite(this.playerSprite, player);
@@ -224,7 +223,8 @@ export class Game {
   }
 
   removePlayer(player: Player) {
-    if(this.player.username === player.username && this.playerSprite) {
+    if(this.isSamePlayer(player.username)) {
+      if(!this.playerSprite) return;
       this.playerSprite.destroy();
       delete this.playerSprite;
 
@@ -602,13 +602,19 @@ export class Game {
       delete this.environmentalObjectHash[timestamp];
       sprite.destroy();
     });
+  }
 
-    // this.otherEnvironmentalObjects
-    // obj.timestamp
-    // if no timestamp, console.warn and ignore
+  private createNewPlayers() {
+    this.playersNeedingCreation.forEach(player => {
+      this.createPlayer(player);
+    });
+
+    this.playersNeedingCreation = [];
   }
 
   preload() {
+    this.g.lockRender = false;
+
     this.setupPhaser();
 
     this.isLoaded = false;
@@ -647,6 +653,7 @@ export class Game {
   }
 
   create() {
+
     bgms.forEach(bgm => {
       this.bgms[bgm] = this.g.add.audio(`bgm-${bgm}`);
     });
@@ -655,12 +662,10 @@ export class Game {
       this.sfxs[sfx] = this.g.add.audio(`sfx-${sfx}`);
     });
 
-    this.blockUpdates = false;
-
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 
     this.createLayers();
-    this.resolveCanCreate();
+    this.createPlayer(this.player);
 
     const decorFirstGid = this.map.tilesets[2].firstgid;
     const wallFirstGid = this.map.tilesets[1].firstgid;
@@ -680,23 +685,31 @@ export class Game {
     ['Decor', 'DenseDecor', 'OpaqueDecor', 'Interactables'].forEach((layer, index) => {
       parseLayer(this.map.objects[index]);
     });
+
+    this.g.camera.fade('#000', 1);
   }
 
   update() {
-    if(!this.player || !this.colyseus.game._inGame || this.blockUpdates) return;
+    if(!this.colyseus.game._inGame) return;
 
     // center on player mid
-    this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
+    this.focusCameraOnPlayer();
   }
 
   render() {
-    if(this.frames < 20) {
-      this.frames++;
+    if(!this.colyseus.game._inGame) return;
+
+    if(!this.hasFlashed) {
+      this.hasFlashed = true;
+
+      this.g.camera.flash('#000', 500);
     }
 
-    if(this.clientGameState.updates.openDoors.length > 0 && this.frames >= 20) {
+    if(this.clientGameState.updates.openDoors.length > 0) {
       this.updateDoors();
     }
+
+    this.createNewPlayers();
 
     this.removeOldItemSprites(this.player.x, this.player.y);
     this.showItemSprites(this.player.x, this.player.y);
