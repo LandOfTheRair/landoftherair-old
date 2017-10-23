@@ -197,7 +197,6 @@ export class Game {
       this.player = player;
       this.playerSprite = sprite;
       this.truesightCheck();
-      this.isLoaded = true;
 
     } else {
       if(this.playerSpriteHash[player.username]) return;
@@ -215,8 +214,11 @@ export class Game {
       this.truesightCheck();
       this.updatePlayerSprite(this.playerSprite, player);
     } else {
-      const sprite = this.playerSpriteHash[player.username];
-      if(!sprite) return;
+      let sprite = this.playerSpriteHash[player.username];
+      if(!sprite) {
+        this.createPlayer(player);
+        sprite = this.playerSpriteHash[player.username];
+      }
       this.updatePlayerSprite(sprite, player);
     }
   }
@@ -365,6 +367,8 @@ export class Game {
     this.g.inputEnabled = true;
 
     this.g.input.onDown.add(({ worldX, worldY }) => {
+
+      if(!this.map) return;
 
       const xCoord = Math.floor(worldX / 64);
       const yCoord = Math.floor(worldY / 64);
@@ -702,6 +706,7 @@ export class Game {
       this.hasFlashed = true;
 
       this.g.camera.flash('#000', 500);
+      this.isLoaded = true;
     }
 
     if(this.clientGameState.updates.openDoors.length > 0) {

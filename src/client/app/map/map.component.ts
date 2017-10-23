@@ -69,23 +69,21 @@ export class MapComponent implements OnInit, OnDestroy {
 
       this.phaser = new (<any>window).Phaser.Game(config);
 
-      this.create$ = this.clientGameState.createPlayer$.subscribe(async (addPlayer) => {
+      this.create$ = this.clientGameState.createPlayer$.subscribe((addPlayer) => {
 
         if(this.game.isSamePlayer(addPlayer.username)) {
           this.game.setPlayer(addPlayer);
         }
 
-        if(!this.game.isLoaded) {
-          this.clientGameState.players.forEach(player => {
-            this.game.createPlayerShell(player);
-          });
-        } else {
-          this.game.createPlayerShell(addPlayer);
-        }
+        this.clientGameState.players.forEach(player => {
+          this.game.createPlayerShell(player);
+        });
 
       });
 
-      this.update$ = this.clientGameState.updatePlayer$.subscribe(async (player) => {
+      this.update$ = this.clientGameState.updatePlayer$.subscribe((player) => {
+        if(!this.game.isLoaded) return;
+
         this.game.updatePlayer(player);
       });
 
