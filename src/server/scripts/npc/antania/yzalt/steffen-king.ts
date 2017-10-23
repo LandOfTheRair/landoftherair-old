@@ -5,7 +5,7 @@ import { DarkVision } from '../../../../effects/DarkVision';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
-  npc.allegiance = 'Pirates';
+  npc.allegiance = 'Royalty';
 
   npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
