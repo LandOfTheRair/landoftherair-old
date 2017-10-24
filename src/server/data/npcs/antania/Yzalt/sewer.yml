@@ -33,6 +33,15 @@
     Head: DarkVision Helm
     Hands: Basic Claws
 
+    Robe1:
+      - result: Yzalt Straw Robe
+        chance: 1
+        maxChance: 20
+
+  copyDrops:
+    - drop: 'gear.Robe1'
+      chance: -1
+
   tansFor: Yzalt SewerRat Fur
 
   usableSkills:

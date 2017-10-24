@@ -350,7 +350,6 @@
     - drop: 'gear.Waist'
       chance: -1
 
-
 - npcId: Crazed Mummy
   name: crazed mummy
   hostility: Always
@@ -419,14 +418,555 @@
       chance: 1
 
   gear:
+    Armor:
+      - result: Yzalt Fungus Ringmail Tunic
+        chance: 1
+      - result: none
+        chance: 100
     Robe1:
+      - result: Yzalt Fungus Cloak
+        chance: 1
       - result: Yzalt Mummy Cloak
-        chance: 2
+        chance: 20
       - result: Antanian Cloak
-        chance: 10
+        chance: 100
 
   copyDrops:
     - drop: 'rightHand'
       chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
     - drop: 'gear.Robe1'
+      chance: -1
+
+- npcId: Insane Heniz Mage
+  name: insane mage
+  hostility: Always
+  sprite: 545
+  baseClass: Mage
+  stats: 13
+  otherStats:
+    int: 17
+  skillLevels:
+    Staff: 2
+    Conjuration: 2
+    Wand: 2
+
+  level: 12
+
+  skillOnKill: 25
+
+  gold:
+    min: 500
+    max: 700
+
+  hp:
+    min: 2900
+    max: 3200
+
+  mp:
+    min: 3000
+    max: 3000
+
+  usableSkills:
+    - MagicMissile
+    - EnergyBlast
+    - IceMist
+    - FireMist
+
+  giveXp:
+    min: 2650
+    max: 2950
+
+  rightHand:
+    - result: Antanian Staff
+      chance: 30
+    - result: Yzalt Heniz Staff
+      chance: 1
+    - result: Heniz FireMist Wand
+      chance: 1
+    - result: Heniz IceMist Wand
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Yzalt Fungus Ringmail Tunic
+        chance: 1
+      - result: Antanian Tunic
+        chance: 20
+      - result: Antanian Studded Tunic
+        chance: 30
+    Robe1:
+      - result: Yzalt Fungus Cloak
+        chance: 1
+      - result: none
+        chance: 20
+      - result: Antanian Cloak
+        chance: 40
+    Ring1:
+      - result: none
+        chance: 200
+      - result: Heniz Intelligence Ring
+        chance: 1
+    Ring2:
+      - result: none
+        chance: 200
+      - result: Yzalt Armor Ring
+        chance: 1
+    Head:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Helm
+        chance: 1
+      - result: Yzalt Mana Helm
+        chance: 1
+      - result: Yzalt Health Helm
+        chance: 1
+    Neck:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Amulet
+        chance: 1
+    Feet:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Boots
+        chance: 1
+    Hands:
+      - result: none
+        chance: 200
+      - result: Yzalt Defensive Claws
+        chance: 1
+      - result: Heniz Battlemage Gloves
+        chance: 1
+    Wrists:
+      - result: None
+        chance: 200
+      - result: Yzalt MagicResist Bracers
+        chance: 1
+      - result: Heniz Dexterity Bracers
+        chance: 1
+    Waist:
+      - result: none
+        chance: 500
+      - result: Yzalt Basic Sash
+        chance: 20
+      - result: Heniz Agility Sash
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Ring2'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+    - drop: 'gear.Wrists'
+      chance: -1
+    - drop: 'gear.Waist'
+      chance: -1
+
+- npcId: Insane Heniz Thief
+  name: insane thief
+  hostility: Always
+  sprite: 585
+  alignment: Evil
+  baseClass: Thief
+  stats: 14
+  skillLevels:
+    Dagger: 2
+
+  otherStats:
+    stealth: 25
+
+  level: 12
+
+  skillOnKill: 25
+
+  gold:
+    min: 700
+    max: 900
+
+  hp:
+    min: 4300
+    max: 4800
+
+  giveXp:
+    min: 2550
+    max: 2750
+
+  repMod:
+    - allegiance: Royalty
+      delta: 1
+
+  rightHand:
+    - result: Antanian Dagger
+      chance: 30
+    - result: Antanian Returning Dagger
+      chance: 10
+    - result: Antanian Dualwielding Dagger
+      chance: 1
+    - result: Heniz Poison Shortbow
+      chance: 1
+  leftHand:
+    - result: none
+      chance: 30
+    - result: Antanian Dualwielding Dagger
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Yzalt Fungus Ringmail Tunic
+        chance: 1
+      - result: Antanian Tunic
+        chance: 20
+      - result: Antanian Studded Tunic
+        chance: 30
+    Robe1:
+      - result: Yzalt Fungus Cloak
+        chance: 1
+      - result: none
+        chance: 20
+      - result: Antanian Cloak
+        chance: 40
+    Ring1:
+      - result: none
+        chance: 200
+      - result: Yzalt Armor Ring
+        chance: 1
+    Ring2:
+      - result: none
+        chance: 200
+      - result: Yzalt Armor Ring
+        chance: 1
+    Head:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Helm
+        chance: 1
+      - result: Yzalt Mana Helm
+        chance: 1
+      - result: Yzalt Health Helm
+        chance: 1
+    Neck:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Amulet
+        chance: 1
+    Feet:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Boots
+        chance: 1
+    Hands:
+      - result: none
+        chance: 200
+      - result: Yzalt Defensive Claws
+        chance: 1
+    Wrists:
+      - result: None
+        chance: 200
+      - result: Yzalt MagicResist Bracers
+        chance: 1
+      - result: Heniz Dexterity Bracers
+        chance: 1
+    Waist:
+      - result: none
+        chance: 500
+      - result: Yzalt Basic Sash
+        chance: 20
+      - result: Heniz Agility Sash
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Ring2'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+    - drop: 'gear.Wrists'
+      chance: -1
+    - drop: 'gear.Waist'
+      chance: -1
+
+- npcId: Insane Steffen Warrior
+  name: insane warrior
+  hostility: Always
+  sprite: 590
+  baseClass: Warrior
+  stats: 14
+  skillLevels:
+    Mace: 2
+    Onehanded: 2
+    Twohanded: 2
+
+  level: 12
+
+  skillOnKill: 25
+
+  gold:
+    min: 400
+    max: 600
+
+  hp:
+    min: 3500
+    max: 3800
+
+  giveXp:
+    min: 2350
+    max: 2550
+
+  usableSkills:
+    - Charge
+
+  rightHand:
+    - result: Antanian Greatmace
+      chance: 30
+    - result: Antanian Greataxe
+      chance: 30
+    - result: Antanian Steffen Flail
+      chance: 1
+    - result: Antanian Steffen Katana
+      chance: 1
+    - result: Antanian Steffen Nodachi
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Yzalt Fungus Ringmail Tunic
+        chance: 1
+      - result: Antanian Breastplate
+        chance: 20
+    Robe1:
+      - result: Yzalt Fungus Cloak
+        chance: 1
+      - result: none
+        chance: 20
+      - result: Antanian Cloak
+        chance: 40
+    Ring1:
+      - result: none
+        chance: 200
+      - result: Steffen Mana Ring
+        chance: 1
+    Ring2:
+      - result: none
+        chance: 200
+      - result: Yzalt Armor Ring
+        chance: 1
+    Head:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Helm
+        chance: 1
+      - result: Yzalt Mana Helm
+        chance: 1
+      - result: Yzalt Health Helm
+        chance: 1
+    Neck:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Amulet
+        chance: 1
+      - result: Steffen Wisdom Amulet
+        chance: 1
+    Feet:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Boots
+        chance: 1
+    Hands:
+      - result: none
+        chance: 200
+      - result: Yzalt Defensive Claws
+        chance: 1
+    Wrists:
+      - result: None
+        chance: 200
+      - result: Yzalt MagicResist Bracers
+        chance: 1
+    Waist:
+      - result: none
+        chance: 500
+      - result: Yzalt Basic Sash
+        chance: 20
+      - result: Steffen Offensive Sash
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Ring2'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+    - drop: 'gear.Wrists'
+      chance: -1
+    - drop: 'gear.Waist'
+      chance: -1
+
+- npcId: Insane Steffen Healer
+  name: insane healer
+  hostility: Always
+  sprite: 550
+  stats: 13
+  otherStats:
+    wis: 17
+  skillLevels:
+    Mace: 3
+
+  level: 12
+
+  skillOnKill: 25
+
+  gold:
+    min: 150
+    max: 350
+
+  hp:
+    min: 2500
+    max: 2600
+
+  giveXp:
+    min: 2450
+    max: 2850
+
+  rightHand:
+    - result: Antanian Mace
+      chance: 30
+    - result: Antanian Steffen Flail
+      chance: 1
+
+  usableSkills:
+    - Afflict
+    - Poison
+    - Disease
+
+  gear:
+    Armor:
+      - result: Yzalt Fungus Ringmail Tunic
+        chance: 1
+      - result: Antanian Breastplate
+        chance: 20
+    Robe1:
+      - result: Yzalt Fungus Cloak
+        chance: 1
+      - result: none
+        chance: 20
+      - result: Antanian Cloak
+        chance: 40
+    Ring1:
+      - result: none
+        chance: 200
+      - result: Steffen DamageResist Ring
+        chance: 1
+    Ring2:
+      - result: none
+        chance: 200
+      - result: Yzalt Armor Ring
+        chance: 1
+    Head:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Helm
+        chance: 1
+      - result: Yzalt Mana Helm
+        chance: 1
+      - result: Yzalt Health Helm
+        chance: 1
+    Neck:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Amulet
+        chance: 1
+    Feet:
+      - result: none
+        chance: 200
+      - result: Yzalt Combat Boots
+        chance: 1
+    Hands:
+      - result: none
+        chance: 200
+      - result: Yzalt Defensive Claws
+        chance: 1
+    Wrists:
+      - result: None
+        chance: 200
+      - result: Yzalt MagicResist Bracers
+        chance: 1
+    Waist:
+      - result: none
+        chance: 500
+      - result: Yzalt Basic Sash
+        chance: 20
+      - result: Steffen Offensive Sash
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Ring1'
+      chance: -1
+    - drop: 'gear.Ring2'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+    - drop: 'gear.Wrists'
+      chance: -1
+    - drop: 'gear.Waist'
       chance: -1
