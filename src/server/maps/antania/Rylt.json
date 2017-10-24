@@ -6819,8 +6819,276 @@
          "visible":false,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"Succorport",
+         "objects":[
+                {
+                 "height":896,
+                 "id":755,
+                 "name":"Raletun's Hideout",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":960,
+                 "x":320,
+                 "y":320
+                }, 
+                {
+                 "height":448,
+                 "id":756,
+                 "name":"Readagade's Study",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1152,
+                 "x":1344,
+                 "y":320
+                }, 
+                {
+                 "height":128,
+                 "id":757,
+                 "name":"Readagade's Study",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":640,
+                 "x":1600,
+                 "y":768
+                }, 
+                {
+                 "height":320,
+                 "id":758,
+                 "name":"Raletun's Hideout",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":960,
+                 "x":1280,
+                 "y":896
+                }, 
+                {
+                 "height":2432,
+                 "id":759,
+                 "name":"Rylt Town",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":2816,
+                 "x":2880,
+                 "y":704
+                }, 
+                {
+                 "height":1024,
+                 "id":760,
+                 "name":"Spooky Clearing",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1024,
+                 "x":4800,
+                 "y":5952
+                }, 
+                {
+                 "height":2560,
+                 "id":761,
+                 "name":"Renegade Camp",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":2496,
+                 "x":7296,
+                 "y":7232
+                }, 
+                {
+                 "height":512,
+                 "id":762,
+                 "name":"Renegade Leader Hut",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":2240,
+                 "x":5056,
+                 "y":9280
+                }, 
+                {
+                 "height":896,
+                 "id":763,
+                 "name":"Rylt Bog",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1536,
+                 "x":320,
+                 "y":8896
+                }, 
+                {
+                 "height":4288,
+                 "id":765,
+                 "name":"Rylt Prison",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1536,
+                 "x":320,
+                 "y":4352
+                }, 
+                {
+                 "height":2560,
+                 "id":766,
+                 "name":"Rylt Prison",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":1856,
+                 "y":6080
+                }, 
+                {
+                 "height":1088,
+                 "id":767,
+                 "name":"Rylt Prison",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":2304,
+                 "y":6720
+                }, 
+                {
+                 "height":640,
+                 "id":768,
+                 "name":"Bear's Fort",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":704,
+                 "x":2368,
+                 "y":4864
+                }, 
+                {
+                 "height":1216,
+                 "id":769,
+                 "name":"Weredeer Forest",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":2304,
+                 "x":2432,
+                 "y":8576
+                }, 
+                {
+                 "height":4160,
+                 "id":770,
+                 "name":"Rylt Cave",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1344,
+                 "x":8448,
+                 "y":320
+                }, 
+                {
+                 "height":1344,
+                 "id":771,
+                 "name":"Rylt Cave",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1152,
+                 "x":7296,
+                 "y":704
+                }, 
+                {
+                 "height":3392,
+                 "id":772,
+                 "name":"Rylt Cave",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":832,
+                 "x":7616,
+                 "y":2048
+                }, 
+                {
+                 "height":768,
+                 "id":773,
+                 "name":"Saraxa's Enclave",
+                 "properties":
+                    {
+                     "restrictSuccor":true
+                    },
+                 "propertytypes":
+                    {
+                     "restrictSuccor":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1408,
+                 "x":8448,
+                 "y":5312
+                }, 
+                {
+                 "height":832,
+                 "id":774,
+                 "name":"Ancient Dragon Cage",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1408,
+                 "x":8448,
+                 "y":4480
+                }, 
+                {
+                 "height":320,
+                 "id":775,
+                 "name":"Saraxa's Retreat",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":9344,
+                 "y":6080
+                }, 
+                {
+                 "height":576,
+                 "id":776,
+                 "name":"Tonwin's Lair",
+                 "properties":
+                    {
+                     "restrictSuccor":true
+                    },
+                 "propertytypes":
+                    {
+                     "restrictSuccor":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1216,
+                 "x":832,
+                 "y":1344
+                }, 
+                {
+                 "height":2368,
+                 "id":777,
+                 "name":"Rylt Catacombs",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1280,
+                 "x":320,
+                 "y":1920
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":755,
+ "nextobjectid":778,
  "orientation":"orthogonal",
  "properties":
     {

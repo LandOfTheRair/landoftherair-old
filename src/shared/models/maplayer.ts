@@ -12,5 +12,6 @@ export const MapLayer = {
   NPCs: 9,
   Spawners: 10,
   RegionDescriptions: 11,
-  BackgroundMusic: 12
+  BackgroundMusic: 12,
+  Succorport: 13
 };
