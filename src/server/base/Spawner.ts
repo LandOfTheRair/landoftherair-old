@@ -129,9 +129,13 @@ export class Spawner {
 
     if(npcData.gear) {
       await Promise.all(Object.keys(npcData.gear).map(async slot => {
-        const item = await this.chooseItemFrom(npcData.gear[slot]);
-        npcData.gear[slot] = item;
-        return item;
+        try {
+          const item = await this.chooseItemFrom(npcData.gear[slot]);
+          npcData.gear[slot] = item;
+          return item;
+        } catch(e) {
+          Logger.error(new Error(`Could not load item ${name} for ${npcData.name}.`));
+        }
       }));
     }
 
@@ -142,7 +146,13 @@ export class Spawner {
 
         const { name } = this.shouldLoadItem(itemName);
         if(!name) return null;
-        return await NPCLoader.loadItem(name);
+
+        try {
+          return await NPCLoader.loadItem(name);
+        } catch(e) {
+          Logger.error(new Error(`Could not load item ${name} for ${npcData.name}.`));
+        }
+
       }));
       sackItems = compact(items);
     }
@@ -153,7 +163,13 @@ export class Spawner {
       const items = await Promise.all(npcData.belt.map(async itemName => {
         const { name } = this.shouldLoadItem(itemName);
         if(!name) return null;
-        return await NPCLoader.loadItem(name);
+
+        try {
+          return await NPCLoader.loadItem(name);
+        } catch(e) {
+          Logger.error(new Error(`Could not load item ${name} for ${npcData.name}.`));
+        }
+
       }));
       beltItems = compact(items);
     }

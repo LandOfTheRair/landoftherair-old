@@ -50,3 +50,68 @@
     - Darkness
 
   spawnMessage: "the sound of water being skittered around in"
+
+- npcId: Yzalt Sewer RatGuard
+  name: ratguard
+  hostility: Always
+  sprite: 310
+  alignment: Evil
+  stats: 13
+  skillLevels:
+    Conjuration: 8
+    Martial: 2
+    Axe: 2
+
+  level: 8
+
+  skillOnKill: 35
+
+  gold:
+    min: 200
+    max: 350
+
+  hp:
+    min: 4500
+    max: 5000
+
+  mp:
+    min: 300
+    max: 500
+
+  giveXp:
+    min: 3000
+    max: 3425
+
+  rightHand: Yzalt RatGuard Axe
+
+  gear:
+    Armor: Yzalt RatGuard Fur
+    Head: DarkVision Helm
+    Hands: Basic Claws
+
+    Robe1:
+      - result: none
+        chance: 20
+      - result: Yzalt Straw Robe
+        chance: 5
+      - result: Yzalt Fungus Robe
+        chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+
+  drops:
+    - result: Yzalt Sewer Key
+      chance: -1
+
+  tansFor: Yzalt RatGuard Fur
+
+  usableSkills:
+    - PoisonBiteMedium
+    - DiseaseBiteWeak
+    - Darkness
+
+  spawnMessage: "the sound of water being splashed around in"

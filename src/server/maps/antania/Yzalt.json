@@ -2646,6 +2646,18 @@
                  "height":64,
                  "id":1004,
                  "name":"",
+                 "properties":
+                    {
+                     "requireHeld":"Yzalt Sewer Key",
+                     "requireLockpick":true,
+                     "skillRequired":9
+                    },
+                 "propertytypes":
+                    {
+                     "requireHeld":"string",
+                     "requireLockpick":"bool",
+                     "skillRequired":"int"
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -5228,6 +5240,26 @@
                  "width":64,
                  "x":5568,
                  "y":9920
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1279,
+                 "name":"Sewer RatGuard Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/sewer-ratguard"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4864,
+                 "y":1536
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5822,11 +5854,11 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextobjectid":1279,
+ "nextobjectid":1280,
  "orientation":"orthogonal",
  "properties":
     {

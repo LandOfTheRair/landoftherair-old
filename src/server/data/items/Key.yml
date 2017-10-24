@@ -18,3 +18,8 @@
   desc: "a silver key with DO NOT LOSE - TONWIN hastily inscribed onto it"
   sprite: 357
   value: 1
+
+- name: Yzalt Sewer Key
+  desc: "a silver key that reeks like sewage"
+  sprite: 357
+  value: 1
