@@ -6824,6 +6824,8 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "itemExpirationHours":1,
+     "itemGarbageCollection":15,
      "maxCreatures":500,
      "maxSkill":7,
      "region":"Antania",
@@ -6832,6 +6834,8 @@
     },
  "propertytypes":
     {
+     "itemExpirationHours":"int",
+     "itemGarbageCollection":"int",
      "maxCreatures":"int",
      "maxSkill":"int",
      "region":"string",
