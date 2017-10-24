@@ -63,7 +63,10 @@ class NPCLoader {
   }
 
   static skillXPFromLevel(level: number) {
-    return Math.pow(2, level) * 100;
+    if(level === 0) return 100;
+    if(level === 1) return 200;
+
+    return Math.floor(Math.pow(1.55, level) * 100);
   }
 
   static conditionallyAddInformation(npc: any) {

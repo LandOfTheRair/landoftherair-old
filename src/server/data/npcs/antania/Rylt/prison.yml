@@ -119,7 +119,7 @@
   baseClass: Warrior
 
   skillLevels:
-    polearm: 2
+    polearm: 3
 
   otherStats:
     perception: 25
@@ -165,9 +165,9 @@
   alignment: Evil
   stats: 10
   skillLevels:
-    Longsword: 3
-    Axe: 3
-    Dagger: 3
+    Longsword: 4
+    Axe: 4
+    Dagger: 4
 
   level: 7
   skillOnKill: 20
@@ -274,9 +274,9 @@
     perception: 40
 
   skillLevels:
-    Throwing: 2
-    Ranged: 1
-    Dagger: 2
+    Throwing: 3
+    Ranged: 2
+    Dagger: 3
 
   level: 4
   skillOnKill: 20
@@ -366,8 +366,8 @@
   alignment: Evil
   stats: 7
   skillLevels:
-    Shortsword: 2
-    Conjuration: 1
+    Shortsword: 3
+    Conjuration: 2
 
   level: 4
   skillOnKill: 25
@@ -419,8 +419,8 @@
   alignment: Evil
   stats: 7
   skillLevels:
-    Mace: 2
-    Restoration: 1
+    Mace: 3
+    Restoration: 2
 
   otherStats:
     perception: 35
@@ -471,7 +471,7 @@
   sprite: 5
   alignment: Evil
   stats: 15
-  skillLevels: 3
+  skillLevels: 4
 
   otherStats:
     perception: 150

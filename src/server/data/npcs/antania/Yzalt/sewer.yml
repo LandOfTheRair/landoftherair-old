@@ -5,7 +5,7 @@
   alignment: Evil
   stats: 7
   skillLevels:
-    Martial: 3
+    Martial: 4
     Conjuration: 7
 
   level: 6
@@ -59,8 +59,8 @@
   stats: 13
   skillLevels:
     Conjuration: 8
-    Martial: 2
-    Axe: 2
+    Martial: 3
+    Axe: 3
 
   level: 8
 

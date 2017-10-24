@@ -6,7 +6,7 @@
   alignment: Evil
   stats: 7
   skillLevels:
-    Martial: 2
+    Martial: 3
   level: 4
 
   skillOnKill: 25
@@ -61,8 +61,9 @@
   baseClass: Mage
   stats: 20
   skillLevels:
-    Wand: 5
-    Conjuration: 2
+    Staff: 2
+    Wand: 3
+    Conjuration: 3
 
   level: 7
 
@@ -156,8 +157,8 @@
     perception: 120
 
   skillLevels:
-    Wand: 3
-    Conjuration: 3
+    Wand: 4
+    Conjuration: 4
 
   skillOnKill: 50
 

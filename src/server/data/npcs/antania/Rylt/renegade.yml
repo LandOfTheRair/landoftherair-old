@@ -6,11 +6,11 @@
   alignment: Evil
   stats: 5
   skillLevels:
-    Mace: 2
-    Longsword: 2
-    Axe: 2
-    Dagger: 2
-    Staff: 2
+    Mace: 3
+    Longsword: 3
+    Axe: 3
+    Dagger: 3
+    Staff: 3
 
   level: 3
 
@@ -126,8 +126,8 @@
   alignment: Evil
   stats: 10
   skillLevels:
-    Shortsword: 2
-    Conjuration: 4
+    Shortsword: 3
+    Conjuration: 5
 
   level: 4
   skillOnKill: 25
@@ -180,8 +180,8 @@
   alignment: Evil
   stats: 10
   skillLevels:
-    Mace: 2
-    Restoration: 4
+    Mace: 3
+    Restoration: 5
 
   level: 4
   skillOnKill: 25
@@ -232,11 +232,11 @@
   alignment: Evil
   stats: 12
   skillLevels:
-    Mace: 2
-    Longsword: 2
-    Axe: 2
-    Dagger: 2
-    Staff: 2
+    Mace: 3
+    Longsword: 3
+    Axe: 3
+    Dagger: 3
+    Staff: 3
 
   level: 5
 
@@ -313,10 +313,10 @@
   alignment: Evil
   stats: 10
   skillLevels:
-    Polearm: 3
-    Axe: 3
-    Mace: 3
-    TwoHanded: 3
+    Polearm: 4
+    Axe: 4
+    Mace: 4
+    TwoHanded: 4
 
   level: 7
 
