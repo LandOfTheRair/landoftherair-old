@@ -36,6 +36,8 @@ export class ColyseusGameService {
 
   private changingMap: boolean;
 
+  public lastCommands: string[];
+
   public currentCommand = '';
 
   public inGame$ = new Subject();
@@ -61,6 +63,8 @@ export class ColyseusGameService {
       .subscribe(shouldPlaySfx => {
         this.overrideNoSfx = !shouldPlaySfx;
       });
+
+    this.lastCommands = this.localStorage.retrieve('lastCommands');
   }
 
   init(colyseus, client, character) {
@@ -403,9 +407,24 @@ export class ColyseusGameService {
     return [command, args];
   }
 
+  public doCommand(command) {
+
+    this.lastCommands.unshift(command);
+    if(this.lastCommands.length > 20) this.lastCommands.length = 20;
+
+    // trigger ngx-webstorage writes
+    this.localStorage.store('lastCommands', this.lastCommands);
+  }
+
   public sendCommandString(str: string, target?: string) {
     str.split(';').forEach(cmd => {
       cmd = cmd.trim();
+
+      if(cmd === '.' && this.lastCommands[0]) {
+        cmd = this.lastCommands[0];
+      } else {
+        this.doCommand(cmd);
+      }
 
       let command = '';
       let args = '';

@@ -18,9 +18,6 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   public cmdEntryInput;
 
   @LocalStorage()
-  public lastCommands: string[];
-
-  @LocalStorage()
   public isSay: boolean;
 
   private listener: any;
@@ -47,8 +44,6 @@ export class CommandLineComponent implements OnInit, OnDestroy {
     };
 
     document.addEventListener('contextmenu', this.sendListener);
-
-    if(!this.lastCommands) this.lastCommands = [];
   }
 
   ngOnDestroy() {
@@ -67,8 +62,8 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
     this.curIndex = -1;
 
-    if(this.colyseusGame.currentCommand === '.' && this.lastCommands[0]) {
-      this.colyseusGame.sendCommandString(this.lastCommands[0]);
+    if(this.colyseusGame.currentCommand === '.' && this.colyseusGame.lastCommands[0]) {
+      this.colyseusGame.sendCommandString(this.colyseusGame.lastCommands[0]);
       this.colyseusGame.currentCommand = '';
       return;
     }
@@ -76,10 +71,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
     this.colyseusGame.sendCommandString(this.colyseusGame.currentCommand);
 
     if(this.colyseusGame.currentCommand !== '.') {
-      this.lastCommands.unshift(this.colyseusGame.currentCommand);
-      if(this.lastCommands.length > 20) this.lastCommands.length = 20;
-      // trigger ngx-webstorage writes
-      this.lastCommands = this.lastCommands;
+      this.colyseusGame.doCommand(this.colyseusGame.currentCommand);
     }
 
     this.colyseusGame.currentCommand = '';
@@ -87,13 +79,13 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
   setCommandFromIndex() {
     if(this.curIndex === -1) this.colyseusGame.currentCommand = '';
-    if(!this.lastCommands[this.curIndex]) return;
-    this.colyseusGame.currentCommand = this.lastCommands[this.curIndex];
+    if(!this.colyseusGame.lastCommands[this.curIndex]) return;
+    this.colyseusGame.currentCommand = this.colyseusGame.lastCommands[this.curIndex];
   }
 
   prevCommand($event) {
     $event.preventDefault();
-    if(this.curIndex >= this.lastCommands.length) return;
+    if(this.curIndex >= this.colyseusGame.lastCommands.length) return;
     this.curIndex++;
     this.setCommandFromIndex();
   }
