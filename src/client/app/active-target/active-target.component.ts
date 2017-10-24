@@ -48,12 +48,20 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
     this.colyseusGame.clientGameState.activeTarget = target;
   }
 
-  // clear active target if we get >=5 spaces away
+  // clear active target if we get >=5 spaces away or they go behind a wall
   distanceCheckAndClearTarget(player) {
     if(!this.target) return;
 
-    if(player.distFrom(this.target) < 5) return;
-    this.colyseusGame.clientGameState.activeTarget = null;
+    const clear = () => {
+      this.colyseusGame.clientGameState.activeTarget = null;
+    };
+
+    const xDiff = this.target.x - player.x;
+    const yDiff = this.target.y - player.y;
+    
+    if(!player.$fov[xDiff]) return clear();
+    if(!player.$fov[xDiff][yDiff]) return clear();
+
   }
 
 }
