@@ -4833,10 +4833,10 @@
                  "gid":2347,
                  "height":64,
                  "id":1235,
-                 "name":"Crazed Heniz Spawner",
+                 "name":"Insane Spawner",
                  "properties":
                     {
-                     "script":"antania\/yzalt\/crazed-heniz"
+                     "script":"antania\/yzalt\/insane"
                     },
                  "propertytypes":
                     {
@@ -4848,226 +4848,6 @@
                  "width":64,
                  "x":4672,
                  "y":5184
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1236,
-                 "name":"Crazed Heniz Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-heniz"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5760,
-                 "y":6336
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1237,
-                 "name":"Crazed Heniz Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-heniz"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4672,
-                 "y":6912
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1238,
-                 "name":"Crazed Heniz Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-heniz"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5184,
-                 "y":7680
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1239,
-                 "name":"Crazed Heniz Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-heniz"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5760,
-                 "y":8320
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1240,
-                 "name":"Crazed Heniz Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-heniz"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5248,
-                 "y":9344
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1241,
-                 "name":"Crazed Steffen Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-steffen"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4736,
-                 "y":7552
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1242,
-                 "name":"Crazed Steffen Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-steffen"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5504,
-                 "y":6976
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1243,
-                 "name":"Crazed Steffen Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-steffen"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5120,
-                 "y":8320
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1244,
-                 "name":"Crazed Steffen Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-steffen"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5568,
-                 "y":9664
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1245,
-                 "name":"Crazed Steffen Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-steffen"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4416,
-                 "y":6336
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1246,
-                 "name":"Crazed Steffen Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/yzalt\/crazed-steffen"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5504,
-                 "y":5440
                 }, 
                 {
                  "gid":2347,
@@ -5228,6 +5008,226 @@
                  "width":64,
                  "x":5568,
                  "y":10304
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1255,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5568,
+                 "y":5440
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1256,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5760,
+                 "y":6400
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1257,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4416,
+                 "y":6336
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1258,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5504,
+                 "y":6976
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1259,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4672,
+                 "y":6912
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1260,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4736,
+                 "y":7552
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1261,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5184,
+                 "y":7680
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1262,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5184,
+                 "y":8384
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1264,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5760,
+                 "y":8320
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1265,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5248,
+                 "y":9344
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1266,
+                 "name":"Insane Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/insane"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5568,
+                 "y":9920
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5687,7 +5687,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1255,
+ "nextobjectid":1267,
  "orientation":"orthogonal",
  "properties":
     {
