@@ -1,6 +1,6 @@
 
 <div *ngIf="shouldShowBox">
-  <div class="target-name">{{ target.name }} ({{ hostility }})</div>
+  <div class="target-name">{{ dirString }} {{ target.name }} ({{ hostility }})</div>
   <div class="target-health">
     <div class="progress">
       <div class="progress-bar bg-danger" [style.width]="targetHealth + '%'"></div>

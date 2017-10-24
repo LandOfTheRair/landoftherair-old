@@ -12,6 +12,8 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
 
   player$: any;
 
+  public dirString: string;
+
   get target() {
     return this.colyseusGame.clientGameState.activeTarget;
   }
@@ -46,6 +48,7 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
 
     const target = find(this.colyseusGame.clientGameState.allCharacters, { uuid: this.target.uuid });
     this.colyseusGame.clientGameState.activeTarget = target;
+    this.dirString = this.colyseusGame.directionTo(target);
   }
 
   // clear active target if we get >=5 spaces away or they go behind a wall
@@ -58,7 +61,7 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
 
     const xDiff = this.target.x - player.x;
     const yDiff = this.target.y - player.y;
-    
+
     if(!player.$fov[xDiff]) return clear();
     if(!player.$fov[xDiff][yDiff]) return clear();
 
