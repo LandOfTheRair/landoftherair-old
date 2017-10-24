@@ -136,8 +136,8 @@
     perception: 45
 
   gold:
-    min: 700
-    max: 900
+    min: 50
+    max: 200
 
   hp:
     min: 2500
@@ -235,8 +235,8 @@
     perception: 45
 
   gold:
-    min: 700
-    max: 900
+    min: 50
+    max: 200
 
   hp:
     min: 1500
@@ -330,8 +330,8 @@
     perception: 45
 
   gold:
-    min: 700
-    max: 900
+    min: 50
+    max: 200
 
   hp:
     min: 3500
@@ -429,8 +429,8 @@
     perception: 45
 
   gold:
-    min: 700
-    max: 900
+    min: 50
+    max: 200
 
   hp:
     min: 1500

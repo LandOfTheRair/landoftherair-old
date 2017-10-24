@@ -10,8 +10,8 @@
 - name: Weredeer Robe
   stats:
     armorClass: 2
-    energyResist: 60
-    necroticResist: 20
+    energyResist: 45
+    necroticResist: 15
     defense: 2
   desc: "a silver robe made from the hide of a weredeer"
   value: 1000

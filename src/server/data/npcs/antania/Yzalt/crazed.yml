@@ -7,6 +7,8 @@
   alignment: Evil
   baseClass: Mage
   stats: 10
+  otherStats:
+    int: 15
   skillLevels:
     Staff: 2
     Conjuration: 2
@@ -20,8 +22,8 @@
   skillOnKill: 25
 
   gold:
-    min: 700
-    max: 900
+    min: 400
+    max: 600
 
   hp:
     min: 1900
@@ -106,8 +108,8 @@
   skillOnKill: 25
 
   gold:
-    min: 1200
-    max: 1500
+    min: 500
+    max: 900
 
   hp:
     min: 3900
@@ -193,8 +195,8 @@
   skillOnKill: 25
 
   gold:
-    min: 400
-    max: 500
+    min: 200
+    max: 400
 
   hp:
     min: 2500
@@ -270,6 +272,8 @@
   alignment: Good
   baseClass: Healer
   stats: 10
+  otherStats:
+    wis: 15
   skillLevels:
     Mace: 2
 
@@ -281,8 +285,8 @@
   skillOnKill: 25
 
   gold:
-    min: 900
-    max: 1100
+    min: 100
+    max: 300
 
   hp:
     min: 1500
@@ -369,8 +373,8 @@
   skillOnKill: 25
 
   gold:
-    min: 400
-    max: 500
+    min: 100
+    max: 200
 
   hp:
     min: 1500
