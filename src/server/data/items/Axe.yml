@@ -20,3 +20,17 @@
   type: Axe
   value: 85
   sprite: 165
+
+- name: Yzalt RatGuard Axe
+  stats:
+    offense: 1
+    defense: 1
+  desc: "a crudely stone axe with many clawmarks on the shaft"
+  baseDamage: 12
+  minDamage: 1
+  maxDamage: 7
+  damageRolls: 2
+  type: Axe
+  value: 385
+  sprite: 52
+  binds: true

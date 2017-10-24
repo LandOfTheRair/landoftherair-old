@@ -3,7 +3,6 @@
   name: rockgolem
   hostility: Always
   sprite: 75
-  alignment: Evil
   stats: 8
   skillLevels:
     Martial: 2

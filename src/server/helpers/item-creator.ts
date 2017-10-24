@@ -41,11 +41,12 @@ export class ItemCreator {
     return potentialItem;
   }
 
-  static getItemByName(name: string, room?: GameWorld): Promise<Item> {
-    return DB.$items.findOne({ name }).then(item => {
-      if(!item) throw new Error(`Item ${name} does not exist.`);
-      return this.rollStatsForItem(new Item(item), room);
-    });
+  static async getItemByName(name: string, room?: GameWorld): Promise<Item> {
+
+    const item = await DB.$items.findOne({ name });
+
+    if(!item) throw new Error(`Item ${name} does not exist.`);
+    return this.rollStatsForItem(new Item(item), room);
   }
 
   static searchItems(name: string): Promise<Item[]> {

@@ -40,4 +40,14 @@
   value: 200
   sprite: 352
 
+- name: Yzalt RatGuard Fur
+  desc: "a grossly warm and pungent coat of rat fur tanned from a ratguard"
+  stats:
+    armorClass: 10
+    perception: 7
+    stealth: -7
+    offense: 1
+    defense: 1
 
+  value: 700
+  sprite: 352

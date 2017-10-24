@@ -22,7 +22,7 @@
   sprite: 196
 
 - name: Yzalt Heniz Staff
-  desc: "a wooden staff with a charged tip"
+  desc: "a wooden staff with a tip made for charging magical energies through it"
   stats:
     int: 1
     mp: 10
@@ -32,7 +32,7 @@
   damageRolls: 2
   type: Staff
   value: 567
-  sprite: 280
+  sprite: 326
   binds: true
 
   requirements:
