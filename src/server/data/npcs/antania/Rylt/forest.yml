@@ -8,7 +8,7 @@
   hostility: OnHit
   stats: 3
   skillLevels:
-    Martial: 3
+    Martial: 4
   level: 2
 
   gear:
@@ -36,7 +36,7 @@
   hostility: Always
   stats: 15
   skillLevels:
-    Martial: 3
+    Martial: 4
   level: 4
 
   otherStats:
@@ -68,7 +68,7 @@
   alignment: Evil
   stats: 5
   skillLevels:
-    Martial: 4
+    Martial: 5
   level: 3
 
   otherStats:
@@ -104,7 +104,7 @@
   alignment: Evil
   stats: 7
   skillLevels:
-    Martial: 3
+    Martial: 4
   level: 5
 
   otherStats:
@@ -147,7 +147,7 @@
   alignment: Evil
   stats: 10
   skillLevels:
-    Martial: 3
+    Martial: 4
   level: 7
 
   otherStats:

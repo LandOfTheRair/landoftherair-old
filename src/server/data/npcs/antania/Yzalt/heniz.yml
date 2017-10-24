@@ -5,11 +5,11 @@
   alignment: Evil
   stats: 15
   skillLevels:
-    Longsword: 2
-    Axe: 2
-    Dagger: 2
-    Staff: 2
-    Bow: 2
+    Longsword: 3
+    Axe: 3
+    Dagger: 3
+    Staff: 3
+    Bow: 3
 
   level: 7
 
@@ -121,7 +121,7 @@
   baseClass: Thief
   stats: 15
   skillLevels:
-    Dagger: 3
+    Dagger: 4
 
   level: 10
 
@@ -216,9 +216,9 @@
   baseClass: Mage
   stats: 15
   skillLevels:
-    Staff: 3
-    Conjuration: 4
-    Wand: 3
+    Staff: 4
+    Conjuration: 5
+    Wand: 4
 
   otherStats:
     fireResist: 100
@@ -315,7 +315,7 @@
   baseClass: Thief
   stats: 15
   skillLevels:
-    Dagger: 4
+    Dagger: 5
 
   level: 12
 
@@ -410,9 +410,9 @@
   baseClass: Mage
   stats: 15
   skillLevels:
-    Staff: 4
+    Staff: 5
     Conjuration: 5
-    Wand: 4
+    Wand: 5
 
   otherStats:
     fireResist: 100

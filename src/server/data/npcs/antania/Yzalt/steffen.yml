@@ -5,10 +5,10 @@
   alignment: Good
   stats: 15
   skillLevels:
-    Polearm: 2
-    Mace: 2
-    Axe: 2
-    Twohanded: 2
+    Polearm: 3
+    Mace: 3
+    Axe: 3
+    Twohanded: 3
 
   level: 7
 
@@ -109,9 +109,9 @@
   baseClass: Warrior
   stats: 15
   skillLevels:
-    Mace: 3
-    Onehanded: 3
-    Twohanded: 3
+    Mace: 4
+    Onehanded: 4
+    Twohanded: 4
 
   level: 10
 
@@ -202,7 +202,7 @@
   baseClass: Healer
   stats: 15
   skillLevels:
-    Mace: 3
+    Mace: 4
 
   level: 10
 
@@ -291,9 +291,9 @@
   baseClass: Warrior
   stats: 15
   skillLevels:
-    Mace: 4
-    Onehanded: 4
-    Twohanded: 4
+    Mace: 5
+    Onehanded: 5
+    Twohanded: 5
 
   level: 13
 
@@ -384,7 +384,7 @@
   baseClass: Healer
   stats: 15
   skillLevels:
-    Mace: 4
+    Mace: 5
 
   level: 13
 

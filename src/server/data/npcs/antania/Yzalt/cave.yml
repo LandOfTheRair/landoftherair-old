@@ -5,7 +5,7 @@
   sprite: 75
   stats: 8
   skillLevels:
-    Martial: 2
+    Martial: 3
   level: 5
 
   skillOnKill: 15

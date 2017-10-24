@@ -10,9 +10,9 @@
   otherStats:
     int: 15
   skillLevels:
-    Staff: 2
-    Conjuration: 2
-    Wand: 2
+    Staff: 3
+    Conjuration: 3
+    Wand: 3
 
   level: 10
 
@@ -98,7 +98,7 @@
   baseClass: Thief
   stats: 10
   skillLevels:
-    Dagger: 2
+    Dagger: 3
 
   level: 10
 
@@ -183,9 +183,9 @@
   baseClass: Warrior
   stats: 10
   skillLevels:
-    Mace: 2
-    Onehanded: 2
-    Twohanded: 2
+    Mace: 3
+    Onehanded: 3
+    Twohanded: 3
 
   level: 10
 
@@ -275,7 +275,7 @@
   otherStats:
     wis: 15
   skillLevels:
-    Mace: 2
+    Mace: 3
 
   level: 10
 
@@ -356,12 +356,12 @@
   sprite: 155
   stats: 10
   skillLevels:
-    Mace: 3
-    Onehanded: 3
-    Twohanded: 3
-    Staff: 3
-    Wand: 3
-    Dagger: 3
+    Mace: 4
+    Onehanded: 4
+    Twohanded: 4
+    Staff: 4
+    Wand: 4
+    Dagger: 4
 
   level: 7
 
@@ -448,9 +448,9 @@
   otherStats:
     int: 17
   skillLevels:
-    Staff: 2
-    Conjuration: 2
-    Wand: 2
+    Staff: 3
+    Conjuration: 3
+    Wand: 3
 
   level: 12
 
@@ -588,7 +588,7 @@
   baseClass: Thief
   stats: 14
   skillLevels:
-    Dagger: 2
+    Dagger: 3
 
   otherStats:
     stealth: 25
@@ -725,9 +725,9 @@
   baseClass: Warrior
   stats: 14
   skillLevels:
-    Mace: 2
-    Onehanded: 2
-    Twohanded: 2
+    Mace: 3
+    Onehanded: 3
+    Twohanded: 3
 
   level: 12
 
@@ -856,7 +856,7 @@
   otherStats:
     wis: 17
   skillLevels:
-    Mace: 3
+    Mace: 4
 
   level: 12
 
