@@ -21,7 +21,7 @@
     perception: 35
 
   gold:
-    min: 100
+    min: 50
     max: 200
 
   hp:
@@ -121,8 +121,8 @@
   skillOnKill: 25
 
   gold:
-    min: 700
-    max: 900
+    min: 50
+    max: 200
 
   hp:
     min: 2500
@@ -212,8 +212,8 @@
   skillOnKill: 25
 
   gold:
-    min: 700
-    max: 900
+    min: 50
+    max: 200
 
   hp:
     min: 1500
@@ -303,8 +303,8 @@
   skillOnKill: 25
 
   gold:
-    min: 700
-    max: 900
+    min: 50
+    max: 200
 
   hp:
     min: 3500
