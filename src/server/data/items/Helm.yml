@@ -14,7 +14,7 @@
   desc: "a simple iron helm"
   value: 100
 
-- name: Antanian Combat Helm
+- name: Yzalt Combat Helm
   stats:
     armorClass: 5
   randomStats:
@@ -28,7 +28,7 @@
   desc: "a large iron helm with a flared-out neck protector"
   value: 200
 
-- name: Antanian Health Helm
+- name: Yzalt Health Helm
   stats:
     armorClass: 3
   randomStats:
@@ -39,7 +39,7 @@
   desc: "a large iron helm with a flared-out neck protector"
   value: 244
 
-- name: Antanian Mana Helm
+- name: Yzalt Mana Helm
   stats:
     armorClass: 3
   randomStats:
