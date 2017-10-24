@@ -18,14 +18,21 @@ export class LockerToPotion extends Command {
     const locker = await room.loadLocker(player, lockerId);
     if(!locker) return false;
 
+    const isLockerUnlocked = await room.lockLocker(player, lockerId);
+    if(!isLockerUnlocked) return false;
+
     const item = locker.getItemFromSlot(+slotId);
-    if(!item) return;
+    if(!item) {
+      room.unlockLocker(player, lockerId);
+      return;
+    }
 
     if(item.itemClass !== 'Bottle') return player.sendClientMessage('That item is not a bottle.');
 
     locker.takeItemFromSlot(+slotId);
     player.setPotionHand(item);
     room.updateLocker(player, locker);
+    room.unlockLocker(player, lockerId);
   }
 
 }

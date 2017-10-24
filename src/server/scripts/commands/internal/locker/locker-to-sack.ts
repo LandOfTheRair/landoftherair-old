@@ -20,11 +20,22 @@ export class LockerToSack extends Command {
     const locker = await room.loadLocker(player, lockerId);
     if(!locker) return false;
 
-    const item = locker.takeItemFromSlot(slot);
-    if(!item) return;
+    const isLockerUnlocked = await room.lockLocker(player, lockerId);
+    if(!isLockerUnlocked) return false;
 
-    if(!player.addItemToSack(item)) return;
+    const item = locker.takeItemFromSlot(slot);
+    if(!item) {
+      room.unlockLocker(player, lockerId);
+      return;
+    }
+
+    if(!player.addItemToSack(item)) {
+      room.unlockLocker(player, lockerId);
+      return;
+    }
+
     room.updateLocker(player, locker);
+    room.unlockLocker(player, lockerId);
   }
 
 }
