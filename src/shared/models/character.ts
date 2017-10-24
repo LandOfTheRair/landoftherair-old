@@ -1017,7 +1017,7 @@ export class Character {
 
     for(let i = this.sack.allItems.length; i >= 0; i--) {
       const item = this.sack.takeItemFromSlot(i);
-      if(!item) continue;
+      if(!item || item.succorInfo) continue;
 
       const point = pickSlot();
       this.$$room.addItemToGround(point, item);
