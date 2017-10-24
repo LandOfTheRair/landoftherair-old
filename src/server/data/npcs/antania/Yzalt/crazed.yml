@@ -540,7 +540,7 @@
       - result: Heniz Battlemage Gloves
         chance: 1
     Wrists:
-      - result: None
+      - result: none
         chance: 200
       - result: Yzalt MagicResist Bracers
         chance: 1
@@ -678,7 +678,7 @@
       - result: Yzalt Defensive Claws
         chance: 1
     Wrists:
-      - result: None
+      - result: none
         chance: 200
       - result: Yzalt MagicResist Bracers
         chance: 1
@@ -810,7 +810,7 @@
       - result: Yzalt Defensive Claws
         chance: 1
     Wrists:
-      - result: None
+      - result: none
         chance: 200
       - result: Yzalt MagicResist Bracers
         chance: 1
@@ -933,7 +933,7 @@
       - result: Yzalt Defensive Claws
         chance: 1
     Wrists:
-      - result: None
+      - result: none
         chance: 200
       - result: Yzalt MagicResist Bracers
         chance: 1
