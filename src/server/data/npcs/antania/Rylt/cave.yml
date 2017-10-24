@@ -208,7 +208,7 @@
       chance: -1
 
   drops:
-    - name: Antanian MagicMissile Black Pearl
+    - result: Antanian MagicMissile Black Pearl
       chance: 1
       maxChance: 20
 

@@ -7,7 +7,7 @@ import { DB } from '../database';
 import * as YAML from 'yamljs';
 import * as recurse from 'recursive-readdir';
 
-import { includes, flatten, isUndefined, isNumber, size, extend } from 'lodash';
+import { includes, flatten, isUndefined, isNumber, size, extend, get, isString, isArray } from 'lodash';
 
 import { Stats, Skills } from '../../shared/models/character';
 
@@ -19,28 +19,46 @@ class NPCLoader {
 
   static async loadAllNPCs() {
     await DB.isReady;
-    await DB.$npcs.remove({}, { multi: true });
 
-    recurse(`${__dirname}/../data/npcs`).then(files => {
+    recurse(`${__dirname}/../data/npcs`).then(async files => {
       const filePromises = files.map(file => {
         const npcs = YAML.load(file);
 
         const promises = npcs.map(npcData => {
-          this.conditionallyAddInformation(npcData);
-          this.assignReputations(npcData);
-          if(!this.validateItem(npcData)) return;
-
-          console.log(`Inserting ${npcData.npcId}`);
-          return DB.$npcs.insert(npcData);
+          return new Promise((resolve, reject) => {
+            this.conditionallyAddInformation(npcData);
+            this.assignReputations(npcData);
+            if(!this.validateItem(npcData)) return reject(new Error(`${npcData.npcId} failed validation.`));
+            return resolve(npcData);
+          })
         });
 
         return promises;
       });
 
-      Promise.all(flatten(filePromises)).then(() => {
-        console.log('Done');
-        process.exit(0);
-      });
+      try {
+        const allNPCData = await Promise.all(flatten(filePromises));
+
+        console.log('Validated all NPCs.');
+
+        await DB.$npcs.remove({}, { multi: true });
+
+        console.log('Removed old NPCs.');
+
+        const allNPCDataPromises = allNPCData.map((npcData: any) => {
+          return DB.$npcs.insert(npcData);
+        });
+
+        await Promise.all(flatten(allNPCDataPromises));
+
+        console.log('Inserted all NPCs.');
+
+      } catch(e) {
+        process.exit(-1);
+      }
+
+      console.log('Done');
+      process.exit(0);
     });
   }
 
@@ -122,6 +140,48 @@ class NPCLoader {
   static validateItem(npc: any): boolean {
     if(!npc.npcId) { console.error(`ERROR: ${JSON.stringify(npc)} has no npcId!`); return false; }
     if(npc.baseClass && !Classes[npc.baseClass]) { console.error(`ERROR: ${npc.npcId} has an invalid baseClass ${npc.baseClass}!`); return false; }
+
+    const validateKeys = [
+      'rightHand', 'leftHand',
+      'gear.Armor', 'gear.Robe1', 'gear.Robe2', 'gear.Feet', 'gear.Hands',
+      'gear.Ring1', 'gear.Ring2', 'gear.Wrists', 'gear.Waist', 'gear.Ear',
+      'gear.Head', 'gear.Neck',
+      'copyDrops', 'drops'
+    ];
+
+    for(let i = 0; i < validateKeys.length; i++) {
+      const val = get(npc, validateKeys[i]);
+
+      // no val is fine
+      if(!val) continue;
+
+      // string val is fine
+      if(isString(val)) continue;
+
+      if(isArray(val)) {
+        for(let v = 0; v < val.length; v++) {
+          const currentCheckDrop = val[v];
+          // string val is fine
+          if(isString(currentCheckDrop)) continue;
+
+          if(!currentCheckDrop.result && validateKeys[i] !== 'copyDrops') {
+            console.error(`ERROR: ${npc.npcId} has an invalid drop config ${validateKeys[i]}[${v}] - no result!`);
+            return false;
+          }
+
+          if(!currentCheckDrop.drop && validateKeys[i] === 'copyDrops') {
+            console.error(`ERROR: ${npc.npcId} has an invalid drop config ${validateKeys[i]}[${v}] - no drop!`);
+            return false;
+          }
+
+          if(!currentCheckDrop.chance) {
+            console.error(`ERROR: ${npc.npcId} has an invalid drop config ${validateKeys[i]}[${v}] - no chance!`);
+            return false;
+          }
+        }
+      }
+    }
+
     return true;
 
   }
