@@ -788,6 +788,7 @@ export class GameWorld extends Room<GameState> {
     corpse.sprite = target.sprite + 4;
     corpse.searchItems = searchItems;
     corpse.desc = `the corpse of a ${target.name}`;
+    corpse.name = `${target.name} corpse`;
 
     this.addItemToGround(target, corpse);
 
