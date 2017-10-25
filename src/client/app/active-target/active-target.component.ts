@@ -62,6 +62,7 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
     const xDiff = this.target.x - player.x;
     const yDiff = this.target.y - player.y;
 
+    if(!player.$fov) return clear();
     if(!player.$fov[xDiff]) return clear();
     if(!player.$fov[xDiff][yDiff]) return clear();
 
