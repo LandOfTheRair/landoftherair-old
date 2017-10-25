@@ -1,0 +1,5 @@
+- name: Steffen LostChild Doll
+  sprite: 354
+  desc: "a small childrens doll"
+  value: 0
+  destroyOnDrop: true

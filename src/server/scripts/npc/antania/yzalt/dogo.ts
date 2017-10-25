@@ -1,7 +1,7 @@
 import { NPC } from '../../../../../shared/models/npc';
 import { NPCLoader } from '../../../../helpers/npc-loader';
 
-const TONWIN_SWORD = 'Tonwin Sword';
+const CHILD_DOLL = 'Steffen LostChild Doll';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
@@ -18,18 +18,37 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
-      if(player.alignment === 'Neutral') return 'You are already a disciple of neutrality!';
+      if(player.alignment === 'Good') return 'You are already a disciple of good!';
 
-      if(NPCLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
-        NPCLoader.takePlayerItem(player, TONWIN_SWORD);
+      let lostChild = null;
+      npc.$$room.state.getAllInRange(npc, 0).forEach((possibleTarget: NPC) => {
+        if(possibleTarget.npcId === 'Steffen LostChild')
+        lostChild = possibleTarget;
+      });
 
-        player.changeAlignment('Neutral');
+      if(lostChild && NPCLoader.checkPlayerHeldItemEitherHand(player, CHILD_DOLL)) {
+        NPCLoader.takePlayerItemFromEitherHand(player, CHILD_DOLL);
 
-        return 'You have demonstrated steadfast neutrality in the face of temptation. Upon you, I have bestowed the gift of neutrality. Use it wisely.';
+        player.changeAlignment('Good');
+
+        const msgObject = { name: npc.name, message: `Thank you, ${player.name}!`, subClass: 'chatter' };
+        npc.sendClientMessageToRadius(msgObject, 8);
+        lostChild.spawner.removeNPC(lostChild);
+
+        return 'You have helped a child return home this day. Truly, you are deserving of the mark of good.';
       }
 
+      if(player.rightHand) {
+        if(player.rightHand.name === CHILD_DOLL) return 'Yes, bring to me the lost child!';
+        return 'Empty your right hand if you wish to embark on the search for good!';
+      }
 
-      return 'I am Ralteun, the bastion of neutrality. Bring me the blade coveted by the brothers three and I will restore neutrality unto thee!';
+      NPCLoader.loadItem(CHILD_DOLL)
+        .then(item => {
+          player.setRightHand(item);
+        });
+
+      return 'I am Dogo, the bastion of good. Bring to me a child in need. That will be your good deed.';
     });
 
 };

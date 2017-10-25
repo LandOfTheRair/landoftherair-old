@@ -30,12 +30,23 @@ export class NPCLoader {
     npc.vendorItems = await Promise.all(items.map(item => this.loadItem(item)));
   }
 
+  static checkPlayerHeldItemEitherHand(player: Player, itemName: string) {
+    return player.hasHeldItem(itemName, 'right') || player.hasHeldItem(itemName, 'left');
+  }
+
+  static takePlayerItemFromEitherHand(player: Player, itemName: string) {
+    if(this.takePlayerItem(player, itemName, 'right')) return;
+    this.takePlayerItem(player, itemName, 'left');
+  }
+
   static checkPlayerHeldItem(player: Player, itemName: string, hand: 'left'|'right' = 'right') {
     return player.hasHeldItem(itemName, hand);
   }
 
-  static takePlayerItem(player: Player, itemName: string, hand: 'left'|'right' = 'right') {
+  static takePlayerItem(player: Player, itemName: string, hand: 'left'|'right' = 'right'): boolean {
+    if(player[`${hand}Hand`].name !== itemName) return false;
     player[`set${capitalize(hand)}Hand`](null);
+    return true;
   }
 
   static async givePlayerItem(player: Player, itemName: string, hand: 'left'|'right' = 'right', setOwner = true) {

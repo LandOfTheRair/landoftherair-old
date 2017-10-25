@@ -95,6 +95,10 @@ class ItemLoader {
       if(isUndefined(item.isSackable))  item.isSackable = false;
     }
 
+    if(item.itemClass === 'Twig') {
+      item.type = 'Staff';
+    }
+
     if(item.itemClass === 'Tunic') {
       item.isSackable = true;
     }

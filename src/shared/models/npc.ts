@@ -56,6 +56,7 @@ export class NPC extends Character {
   $$stripY: number;
 
   $$lastResponse: string;
+  $$following: boolean;
 
   init() {
     if(!this.uuid) this.uuid = uuid();
@@ -114,6 +115,7 @@ export class NPC extends Character {
 
   isValidStep({ x, y }) {
     if(!this.spawner) return true;
+    if(this.$$following) return true;
     if(this.spawner.randomWalkRadius > 0 && this.distFrom(this.spawner, { x, y }) > this.spawner.randomWalkRadius) return false;
     return true;
   }

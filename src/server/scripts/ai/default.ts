@@ -128,6 +128,9 @@ export const tick = (npc: NPC) => {
   const distFrom = npc.distFrom(npc.spawner);
 
   if(npc.spawner.leashRadius >= 0 && distFrom > npc.spawner.leashRadius) {
+
+    npc.sendLeashMessage();
+
     npc.x = npc.spawner.x;
     npc.y = npc.spawner.y;
 
@@ -137,8 +140,6 @@ export const tick = (npc: NPC) => {
       npc.mp.toMaximum();
       npc.agro = {};
     }
-
-    npc.sendLeashMessage();
 
     // if we had a path, re-assign a path
     if(npc.path && npc.path.length > 0) {
