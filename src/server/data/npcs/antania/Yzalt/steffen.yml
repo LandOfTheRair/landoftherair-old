@@ -29,6 +29,42 @@
   gear:
     Armor: Antanian Tunic
 
+- npcId: Steffen LostChild
+  name: lost child
+  allegiance: Royalty
+  sprite: 60
+  alignment: Good
+  stats: 1
+  skillLevels: 1
+
+  level: 1
+
+  skillOnKill: 1
+
+  otherStats:
+    move: 2
+
+  gold:
+    min: 1
+    max: 5
+
+  hp:
+    min: 1
+    max: 1
+
+  giveXp:
+    min: 1
+    max: 10
+
+  repMod:
+    - allegiance: Royalty
+      delta: -10
+
+  gear:
+    Armor: Antanian Tunic
+
+  leashMessage: "the lost child say: Mama says I shouldn't go into these woods.."
+
 - npcId: Steffen Townee
   allegiance: Royalty
   sprite: [580, 595, 610, 615]

@@ -890,8 +890,8 @@ export class Character {
   sendClientMessage(message) {}
   sendClientMessageToRadius(message, radius = 0, except = []) {
     const sendMessage = isString(message) ? { message, subClass: 'chatter' } : message;
-    this.$$room.state.getPlayersInRange(this, radius, except).forEach(p => {
 
+    this.$$room.state.getPlayersInRange(this, radius, except).forEach(p => {
       // outta range, generate a "you heard X in the Y dir" message
       if(radius > 4 && this.distFrom(p) > 5) {
         const dirFrom = this.getDirBasedOnDiff(this.x - p.x, this.y - p.y);

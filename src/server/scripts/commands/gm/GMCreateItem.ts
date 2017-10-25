@@ -22,6 +22,11 @@ export class GMCreateItem extends Command {
       return;
     }
 
+    if(!player.rightHand) {
+      player.setRightHand(item);
+      return;
+    }
+
     room.addItemToGround(player, item);
   }
 }

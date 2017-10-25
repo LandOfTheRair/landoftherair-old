@@ -94,7 +94,7 @@
         chance: 20
       - result: Yzalt Straw Robe
         chance: 5
-      - result: Yzalt Fungus Robe
+      - result: Yzalt Fungus Cloak
         chance: 1
 
   copyDrops:
