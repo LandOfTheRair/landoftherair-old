@@ -1,7 +1,7 @@
 
 import * as TiledPlugin from 'phaser-tiled';
 
-import { find, remove, compact, difference, values } from 'lodash';
+import { find, remove, compact, difference, values, includes } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
 
@@ -477,7 +477,7 @@ export class Game {
       }
     }
 
-    const isCorpse = item.name === 'Corpse';
+    const isCorpse = includes(item.name.toLowerCase(), 'corpse');
     const sprite = this.g.add.sprite(x * 64, y * 64, isCorpse ? 'Creatures' : 'Items', item.sprite);
     this.visibleSprites[x][y][item.itemClass] = sprite;
     sprite.itemClass = item.itemClass;
