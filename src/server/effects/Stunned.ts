@@ -22,6 +22,8 @@ export class Stunned extends SpellEffect {
       return this.effectMessage(caster, `${target.name} resisted your stun!`);
     }
 
+    target.addAgro(caster, 30);
+
     // physical attack
     if(!skillRef) {
       this.duration = 3;
@@ -33,7 +35,6 @@ export class Stunned extends SpellEffect {
 
       this.duration = Math.max(7, this.potency - targetWil);
     }
-
     target.applyEffect(this);
   }
 
