@@ -1,3 +1,33 @@
+- npcId: Heniz Child
+  name: child
+  allegiance: Pirates
+  sprite: 60
+  alignment: Evil
+  stats: 1
+  skillLevels: 1
+
+  level: 1
+
+  skillOnKill: 1
+
+  gold:
+    min: 1
+    max: 5
+
+  hp:
+    min: 1
+    max: 1
+
+  giveXp:
+    min: 1
+    max: 10
+
+  repMod:
+    - allegiance: Pirates
+      delta: -10
+
+  gear:
+    Armor: Antanian Tunic
 
 - npcId: Heniz Townee
   allegiance: Pirates
