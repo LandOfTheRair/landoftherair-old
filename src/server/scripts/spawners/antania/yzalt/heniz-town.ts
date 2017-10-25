@@ -2,7 +2,8 @@
 import { Spawner } from '../../../../base/Spawner';
 
 const npcIds = [
-  'Heniz Townee'
+  { chance: 5,  result: 'Heniz Townee' },
+  { chance: 1,  result: 'Heniz Child' }
 ];
 
 const paths = [
