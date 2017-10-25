@@ -8,6 +8,16 @@
     potency: 200
   value: 5
 
+- name: Mend Bottle (5oz)
+  desc: "a small bottle filled with fizzy purple liquid"
+  extendedDesc: "a mending potion"
+  sprite: 107
+  ounces: 5
+  effect:
+    name: ExactHeal
+    potency: 200
+  value: 30
+
 - name: Instant Heal Bottle
   desc: "a small bottle labeled Instant Heal"
   extendedDesc: "a healing potion"
@@ -16,6 +26,16 @@
     name: ExactHeal
     potency: 1000
   value: 500
+
+- name: Instant Heal Bottle (5oz)
+  desc: "a small bottle labeled Instant Heal"
+  extendedDesc: "a healing potion"
+  sprite: 260
+  ounces: 5
+  effect:
+    name: ExactHeal
+    potency: 1000
+  value: 3000
 
 - name: Antanian Strength Potion
   desc: "a small bottle filled with brown fluid. It smells like a tree"
