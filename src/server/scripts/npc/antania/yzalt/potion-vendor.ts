@@ -8,7 +8,9 @@ export const setup = async (npc: NPC) => {
 
   const vendorItems = [
     'Mend Bottle',
+    'Mend Bottle (5oz)',
     'Instant Heal Bottle',
+    'Instant Heal Bottle (5oz)',
     'Scribe Scroll',
     'Ink Vial',
     'Bradley Constitution Potion',
