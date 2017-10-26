@@ -306,27 +306,34 @@ export class ItemComponent implements OnInit {
 
   automaticallyTakeActionBasedOnOpenWindows() {
 
-    if(this.colyseusGame.showShop) {
+    if(this.colyseusGame.showShop.uuid) {
+
       if(this.context === 'Sack' || this.context === 'Belt') {
         this.doColyseusMoveAction('M');
-      }
+        return;
 
-      if(this.context === 'Merchant' || this.context === 'Obtainagain') {
+      } else if(this.context === 'Merchant' || this.context === 'Obtainagain') {
         if(this.item.isSackable) {
           this.doColyseusMoveAction('S');
+          return;
         }
       }
+
     }
 
-    if(this.colyseusGame.showLocker) {
+    if(this.colyseusGame.showLocker.length) {
       if(this.context === 'Wardrobe') {
         if(this.item.isSackable) {
           this.doColyseusMoveAction('S');
+          return;
         }
       } else {
         this.doColyseusMoveAction('W');
+        return;
       }
     }
+
+    this.doColyseusMoveAction('G');
 
   }
 
