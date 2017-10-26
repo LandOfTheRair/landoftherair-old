@@ -36,6 +36,8 @@ export class Player extends Character {
   $$lastRegion: string;
   $$swimElement: string;
 
+  $$locker: any;
+
   bgmSetting: 'town' | 'dungeon' | 'wilderness';
 
   respawnPoint: { x: number, y: number, map: string };
@@ -561,6 +563,11 @@ export class Player extends Character {
 
     this.sendClientMessage(sample(messages));
     this.gainTraitPoints(1);
+  }
+
+  takeSequenceOfSteps(steps, isChasing, recalculateFOV) {
+    super.takeSequenceOfSteps(steps, isChasing, recalculateFOV);
+    this.$$locker = null;
   }
 
 }
