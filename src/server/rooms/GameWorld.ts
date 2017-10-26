@@ -222,8 +222,14 @@ export class GameWorld extends Room<GameState> {
   }
 
   async loadLocker(player: Player, lockerId): Promise<Locker> {
-    return DB.$characterLockers.findOne({ username: player.username, charSlot: player.charSlot, regionId: this.mapRegion, lockerId })
+    if(player.$$locker) {
+      return await player.$$locker;
+    }
+
+    player.$$locker = DB.$characterLockers.findOne({ username: player.username, charSlot: player.charSlot, regionId: this.mapRegion, lockerId })
       .then(lock => lock && lock.lockerId ? new Locker(lock) : null);
+
+    return player.$$locker;
   }
 
   updateLocker(player: Player, locker: Locker) {
