@@ -222,50 +222,8 @@ export class GameWorld extends Room<GameState> {
   }
 
   async loadLocker(player: Player, lockerId): Promise<Locker> {
-
-    const searchCriteria = {
-      username: player.username,
-      charSlot: player.charSlot,
-      regionId: this.mapRegion,
-      lockerId,
-      locked: { $exists: false }
-    };
-
-    const locker = await DB.$characterLockers.findOne(searchCriteria);
-
-    if(!locker || !lockerId) return null;
-
-    return new Locker(locker);
-  }
-
-  async lockLocker(player: Player, lockerId): Promise<boolean> {
-
-    const searchCriteria = {
-      username: player.username,
-      charSlot: player.charSlot,
-      regionId: this.mapRegion,
-      lockerId,
-      locked: { $exists: false }
-    };
-
-    const locker = await DB.$characterLockers.findOneAndUpdate(searchCriteria, { $set: { locked: true } });
-
-    if(!locker) return false;
-
-    return true;
-  }
-
-  unlockLocker(player: Player, lockerId): void {
-
-    const searchCriteria = {
-      username: player.username,
-      charSlot: player.charSlot,
-      regionId: this.mapRegion,
-      lockerId,
-      locked: { $exists: true }
-    };
-
-    DB.$characterLockers.findOneAndUpdate(searchCriteria, { $unset: { locked: '' }});
+    return DB.$characterLockers.findOne({ username: player.username, charSlot: player.charSlot, regionId: this.mapRegion, lockerId })
+      .then(lock => lock && lock.lockerId ? new Locker(lock) : null);
   }
 
   updateLocker(player: Player, locker: Locker) {
