@@ -192,11 +192,9 @@ export class GameState {
 
       if(!inRadius) return false;
 
-      if(me.$fov) {
-        const offsetX = char.x - me.x;
-        const offsetY = char.y - me.y;
-        if(!me.canSee(offsetX, offsetY)) return false;
-      }
+      const offsetX = char.x - me.x;
+      const offsetY = char.y - me.y;
+      if(!me.canSee(offsetX, offsetY)) return false;
 
       if(!me.canSeeThroughStealthOf(char)) return false;
 
