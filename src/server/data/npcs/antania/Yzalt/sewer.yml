@@ -3,12 +3,12 @@
   hostility: Always
   sprite: 310
   alignment: Evil
-  stats: 7
+  stats: 9
   skillLevels:
-    Martial: 4
+    Martial: 5
     Conjuration: 7
 
-  level: 6
+  level: 7
 
   skillOnKill: 15
 
@@ -59,8 +59,8 @@
   stats: 13
   skillLevels:
     Conjuration: 8
-    Martial: 3
-    Axe: 3
+    Martial: 5
+    Axe: 4
 
   level: 8
 
