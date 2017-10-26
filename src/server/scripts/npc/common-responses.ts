@@ -230,7 +230,9 @@ export const AlchemistResponses = (npc: NPC) => {
       const indexes = [];
 
       player.sack.items.forEach((checkItem, i) => {
-        if(checkItem.name !== item.name) return;
+        if(!checkItem.effect) return;
+        if(checkItem.effect.name !== item.effect.name) return;
+        if(checkItem.effect.potency !== item.effect.potency) return;
         if(checkItem.ounces + item.ounces > npc.alchOz) return;
 
         const cost = checkItem.ounces * npc.alchCost;
