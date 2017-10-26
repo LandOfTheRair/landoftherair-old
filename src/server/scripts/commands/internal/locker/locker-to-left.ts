@@ -18,20 +18,13 @@ export class LockerToLeft extends Command {
     const locker = await room.loadLocker(player, lockerId);
     if(!locker) return false;
 
-    const isLockerUnlocked = await room.lockLocker(player, lockerId);
-    if(!isLockerUnlocked) return false;
-
     const item = locker.takeItemFromSlot(+slotId);
-    if(!item) {
-      room.unlockLocker(player, lockerId);
-      return;
-    }
+    if(!item) return;
 
     this.trySwapLeftToRight(player);
 
     player.setLeftHand(item);
     room.updateLocker(player, locker);
-    room.unlockLocker(player, lockerId);
   }
 
 }

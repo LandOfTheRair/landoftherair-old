@@ -20,21 +20,11 @@ export class LockerToBelt extends Command {
     const locker = await room.loadLocker(player, lockerId);
     if(!locker) return false;
 
-    const isLockerUnlocked = await room.lockLocker(player, lockerId);
-    if(!isLockerUnlocked) return false;
-
     const item = locker.takeItemFromSlot(slot);
-    if(!item) {
-      room.unlockLocker(player, lockerId);
-      return;
-    }
+    if(!item) return;
 
-    if(!player.addItemToBelt(item)) {
-      room.unlockLocker(player, lockerId);
-      return;
-    }
+    if(!player.addItemToBelt(item)) return;
     room.updateLocker(player, locker);
-    room.unlockLocker(player, lockerId);
   }
 
 }

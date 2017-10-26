@@ -19,24 +19,14 @@ export class LockerToEquip extends Command {
     const locker = await room.loadLocker(player, lockerId);
     if(!locker) return false;
 
-    const isLockerUnlocked = await room.lockLocker(player, lockerId);
-    if(!isLockerUnlocked) return false;
-
     const item = locker.getItemFromSlot(slot);
-    if(!item) {
-      room.unlockLocker(player, lockerId);
-      return;
-    }
+    if(!item) return false;
 
-    if(!player.canEquip(item)) {
-      room.unlockLocker(player, lockerId);
-      return player.sendClientMessage('You cannot equip that item.');
-    }
+    if(!player.canEquip(item)) return player.sendClientMessage('You cannot equip that item.');
 
     player.equip(item);
     locker.takeItemFromSlot(slot);
     room.updateLocker(player, locker);
-    room.unlockLocker(player, lockerId);
   }
 
 }
