@@ -58,13 +58,13 @@ export class CommandExecutor {
     // wat?
     if(!player) return;
 
+    if(startsWith(command, '@') || startsWith(command, '~~')) {
+      return this.executeCommand(player, command, args);
+    }
+
     if(command !== 'restore' && player.isDead()) {
       player.sendClientMessage(`Your corpse can't do that.`);
       return;
-    }
-
-    if(startsWith(command, '@')) {
-      return this.executeCommand(player, command, args);
     }
 
     if(startsWith(command, '~') && !player.isUnableToAct()) {
