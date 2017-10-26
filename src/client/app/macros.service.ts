@@ -61,9 +61,12 @@ export class MacroService {
 
   public macroSubscription: any;
 
+  private macroListener: any;
+
   constructor(private localStorage: LocalStorageService, private colyseusGame: ColyseusGameService) {
-    this.colyseusGame.clientGameState.loadPlayer$.subscribe(() => {
-      this.init();
+    this.colyseusGame.inGame$.subscribe((inGame) => {
+      if(inGame) this.init();
+      else       this.uninit();
     });
   }
 
@@ -76,12 +79,16 @@ export class MacroService {
     this.hasLoaded = true;
   }
 
+  uninit() {
+    document.removeEventListener('keydown', this.macroListener);
+  }
+
   get activeMacro(): Macro {
     return this.allMacros[this.currentlySelectedMacro];
   }
 
   private watchForMacros() {
-    document.addEventListener('keydown', (ev) => {
+    this.macroListener = (ev) => {
       let builtMacro = '';
       if(ev.altKey) builtMacro = 'ALT+';
       if(ev.ctrlKey) builtMacro = `${builtMacro}CTRL+`;
@@ -103,7 +110,9 @@ export class MacroService {
         this.colyseusGame.currentCommand = macroText;
 
       }
-    });
+    };
+
+    document.addEventListener('keydown', this.macroListener);
   }
 
   public retrieveForCharacter(key) {
