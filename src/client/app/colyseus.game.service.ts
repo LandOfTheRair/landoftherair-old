@@ -64,7 +64,7 @@ export class ColyseusGameService {
         this.overrideNoSfx = !shouldPlaySfx;
       });
 
-    this.lastCommands = this.localStorage.retrieve('lastCommands');
+    this.lastCommands = this.localStorage.retrieve('lastCommands') || [];
   }
 
   init(colyseus, client, character) {

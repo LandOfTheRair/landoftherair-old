@@ -1,5 +1,5 @@
 
-import { capitalize } from 'lodash';
+import { capitalize, isString } from 'lodash';
 
 import { ItemCreator } from './item-creator';
 import { NPC } from '../../shared/models/npc';
@@ -26,8 +26,23 @@ export class NPCLoader {
     return ItemCreator.getItemByName(item);
   }
 
-  static async loadVendorItems(npc: NPC, items: string[]) {
-    npc.vendorItems = await Promise.all(items.map(item => this.loadItem(item)));
+  private static async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>) {
+    npc.vendorItems = await Promise.all(items.map(async ({ name, valueMult }) => {
+      const item = await this.loadItem(name);
+
+      item.value = Math.floor((valueMult || 1) * item.value);
+
+      return item;
+    }));
+  }
+
+  static async loadVendorItems(npc: NPC, items: any[]) {
+    items = items.map(item => {
+      if(isString(item)) return { name: item, valueMult: 1 };
+      return item;
+    });
+
+    return this._loadVendorItems(npc, items);
   }
 
   static checkPlayerHeldItemEitherHand(player: Player, itemName: string) {
