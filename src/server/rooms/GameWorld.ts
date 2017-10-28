@@ -66,6 +66,8 @@ export class GameWorld extends Room<GameState> {
 
   private clearTimers: any[] = [];
 
+  private usernameClientPlayerHash = {};
+
   get allSpawners() {
     return this.spawners;
   }
@@ -142,7 +144,8 @@ export class GameWorld extends Room<GameState> {
 
   public sendMessageToUsernames(usernames: string[], message: string|any) {
     usernames.forEach(username => {
-      const client = find(this.clients, { username });
+      const usernameObj = { username };
+      const client = this.findClient(<Player>usernameObj);
       if(!client) return;
 
       this.sendClientLogMessage(client, message);
@@ -150,7 +153,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   private findClient(player: Player) {
-    return find(this.clients, { username: player.username });
+    return get(this.usernameClientPlayerHash, [player.username, 'client']);
   }
 
   sendPlayerLogMessage(player: Player, messageData) {
@@ -339,6 +342,8 @@ export class GameWorld extends Room<GameState> {
     this.savePlayer(player);
 
     player.respawnPoint = clone(this.mapRespawnPoint);
+
+    this.usernameClientPlayerHash[client.username] = { client };
   }
 
   private prePlayerMapLeave(player: Player) {
@@ -358,6 +363,8 @@ export class GameWorld extends Room<GameState> {
   }
 
   async onLeave(client) {
+    delete this.usernameClientPlayerHash[client.username];
+
     const player = this.state.findPlayer(client.username);
     if(!player) return;
 
@@ -887,7 +894,7 @@ export class GameWorld extends Room<GameState> {
       action: 'update_pos',
       x: player.x,
       y: player.y,
-      dir: player.dir, 
+      dir: player.dir,
       swimLevel: player.swimLevel,
       fov: player.$fov
     });

@@ -13,6 +13,8 @@ import { MapLayer } from './maplayer';
 
 export class GameState {
   players: Player[] = [];
+  maintainedPlayerHash: any = {};
+
   map: any = {};
   mapName = '';
   mapData: any = { openDoors: {} };
@@ -69,6 +71,7 @@ export class GameState {
 
   addPlayer(player): void {
     player.$$map = this.map;
+    this.maintainedPlayerHash[player.username] = player;
     this.players.push(player);
     this.resetPlayerStatus(player);
   }
@@ -93,10 +96,11 @@ export class GameState {
   }
 
   findPlayer(username): Player {
-    return find(this.players, { username });
+    return this.maintainedPlayerHash[username];
   }
 
   removePlayer(username): void {
+    delete this.maintainedPlayerHash[username];
     this.players = reject(this.players, p => p.username === username);
   }
 
