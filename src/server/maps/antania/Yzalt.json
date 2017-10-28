@@ -3630,6 +3630,26 @@
                  "width":64,
                  "x":2880,
                  "y":896
+                }, 
+                {
+                 "gid":3089,
+                 "height":64,
+                 "id":1284,
+                 "name":"Protra",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/secret-potion-vendor"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4672,
+                 "y":2944
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5938,7 +5958,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1284,
+ "nextobjectid":1285,
  "orientation":"orthogonal",
  "properties":
     {

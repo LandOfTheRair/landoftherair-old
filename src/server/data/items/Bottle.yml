@@ -157,7 +157,7 @@
   sprite: 254
   effect:
     name: TrueSight
-    duration: 100
+    duration: 600
   value: 200
 
 - name: Weak BarNecro Potion
@@ -166,7 +166,7 @@
   sprite: 251
   effect:
     name: BarNecro
-    duration: 200
+    duration: 900
     potency: 100
   value: 500
 
@@ -176,7 +176,7 @@
   sprite: 251
   effect:
     name: BarFire
-    duration: 200
+    duration: 900
     potency: 100
   value: 500
 
@@ -186,7 +186,7 @@
   sprite: 251
   effect:
     name: BarFrost
-    duration: 200
+    duration: 900
     potency: 100
   value: 500
 
@@ -196,7 +196,7 @@
   sprite: 251
   effect:
     name: BarWater
-    duration: 200
+    duration: 900
     potency: 100
   value: 500
 
