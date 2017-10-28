@@ -219,12 +219,12 @@ export class AppComponent implements OnInit {
   private watchOptions() {
 
     const adjustFont = (noFantasy: boolean) => {
-      const func = noFantasy ? 'addClass': 'removeClass';
+      const func = noFantasy ? 'addClass' : 'removeClass';
       this.renderer[func](document.body, 'no-fantasy');
     };
 
     const adjustTheme = (theme: string) => {
-      const func = theme === 'Light' ? 'addClass': 'removeClass';
+      const func = theme === 'Light' ? 'addClass' : 'removeClass';
       this.renderer[func](document.body, 'light-theme');
     };
 
