@@ -288,6 +288,15 @@ export class ColyseusGameService {
     if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
+    if(action === 'update_pos')     return this.updatePos(other.x, other.y, other.dir, other.swimLevel, other.fov);
+  }
+
+  private updatePos(x: number, y: number, dir, swimLevel: number, fov) {
+    this.clientGameState.updatePlayer(this.character.username, 'x', x);
+    this.clientGameState.updatePlayer(this.character.username, 'y', y);
+    this.clientGameState.updatePlayer(this.character.username, 'dir', dir);
+    this.clientGameState.updatePlayer(this.character.username, 'swimLevel', swimLevel);
+    this.clientGameState.setFOV(fov);
   }
 
   private drawEffect(effect: number, tiles: any[]) {
