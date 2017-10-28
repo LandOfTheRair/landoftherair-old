@@ -31,6 +31,17 @@ body.light-theme {
     }
   }
 
+  .message.combat {
+    &.other.block, &.other.miss {
+      color: #666 !important;
+    }
+
+    &.self, &.heal {
+      color: #070 !important;
+    }
+  }
+
+
   popover-container {
     padding: 0 !important;
 
