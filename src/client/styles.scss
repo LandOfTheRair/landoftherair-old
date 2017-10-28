@@ -78,113 +78,23 @@ body.no-fantasy {
 // THEME SPECIFIC ADJUSTMENTS
 
 $window-background-gradient: linear-gradient(135deg, #f0b7a1 0%, #8c3310 175px, #752201 85%, #bf6e4e 100%);
-$window-background-color: #444;
-$window-header-background-color: #333;
-$window-header-dark-background-color: #111;
-$window-text-color: #fff;
-$window-border-style: ridge;
-$window-border-color: #49200e;
 
 body {
   background: $window-background-gradient;
   background-attachment: fixed;
   overflow: visible;
   height: 100vh;
+
+  .navbar a:not(.navbar-brand) {
+    color: #ccc !important;
+  }
 }
+
+@import './styles.body.dark';
+@import './styles.body.light';
 
 .body-container {
   height: calc(100vh - 56px);
-}
-
-.window {
-
-  &.active-window {
-    z-index: 1050 !important;
-
-    .window-header {
-      background-color: darken($window-background-color, 20%);
-    }
-  }
-
-  .window-header {
-    background-color: $window-header-background-color;
-    border: 1px $window-border-style $window-background-color;
-    color: $window-text-color;
-  }
-
-  .window-body {
-    background-color: $window-background-color;
-    color: $window-text-color;
-    position: relative;
-  }
-}
-
-popover-container {
-  padding: 0 !important;
-
-  .popover-content {
-    padding: 5px !important;
-  }
-}
-
-.modal-content, popover-container, .popover-content, .swal2-modal, .swal2-title, .swal2-content {
-  background-color: $window-background-color !important;
-  color: #fff !important;
-
-  input, textarea {
-    border-color: #fff;
-  }
-
-}
-
-.nav-tabs .nav-link {
-
-  &.active {
-    border-color: $window-text-color !important;
-  }
-
-  &:hover {
-    background-color: darken($window-background-color, 10%) !important;
-  }
-
-  border-bottom-color: $window-text-color !important;
-  background-color: $window-background-color !important;
-  color: $window-text-color !important;
-}
-
-.navbar a:not(.navbar-brand) {
-  color: #ccc !important;
-}
-
-input, textarea, select {
-  background-color: $window-background-color !important;
-  color: #ccc !important;
-}
-
-.dropdown-menu {
-  background-color: $window-background-color !important;
-  color: #ccc !important;
-
-  .dropdown-item {
-
-    &:active, &:hover {
-      background-color: lighten($window-background-color, 20%);
-    }
-  }
-}
-
-bs-dropdown-container {
-  z-index: 1000;
-  float: left;
-  min-width: 10rem;
-  font-size: 1rem;
-  background-clip: padding-box;
-  background-color: #fff;
-  border-radius: 0.25rem;
-
-  .dropdown-menu {
-    display: block;
-  }
 }
 
 // END THEME SPECIFIC ADJUSTMENTS
