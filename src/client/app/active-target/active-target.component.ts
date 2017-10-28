@@ -59,6 +59,8 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
       this.colyseusGame.clientGameState.activeTarget = null;
     };
 
+    if(this.target.isDead()) return clear();
+
     const xDiff = this.target.x - player.x;
     const yDiff = this.target.y - player.y;
 
