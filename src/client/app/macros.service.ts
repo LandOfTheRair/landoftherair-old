@@ -63,6 +63,8 @@ export class MacroService {
 
   private macroListener: any;
 
+  private loadMutex: boolean;
+
   constructor(private localStorage: LocalStorageService, private colyseusGame: ColyseusGameService) {
     this.colyseusGame.inGame$.subscribe((inGame) => {
       if(inGame) this.init();
@@ -71,15 +73,22 @@ export class MacroService {
   }
 
   init() {
+    if(this.loadMutex) return;
+    this.loadMutex = true;
+
     this.hasLoaded = false;
     this.allMacros = {};
     this.loadMacros();
     this.watchActiveMacro();
     this.watchForMacros();
     this.hasLoaded = true;
+
+
   }
 
   uninit() {
+    if(!this.loadMutex) return;
+    this.loadMutex = false;
     document.removeEventListener('keydown', this.macroListener);
   }
 
