@@ -9,6 +9,8 @@ export class Move extends Command {
 
   execute(player: Player, { room, gameState, x, y }) {
     MoveHelper.move(player, { room, gameState, x, y });
+
+    player.$$room.updatePos(player);
   }
 
 }
