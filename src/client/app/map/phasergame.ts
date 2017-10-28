@@ -178,6 +178,8 @@ export class Game {
     this.visibleSprites = {};
     this.playerSpriteHash = {};
     this.environmentalObjectHash = {};
+
+    this.isRenderingTruesight = false;
   }
 
   private focusCameraOnPlayer() {
@@ -196,7 +198,6 @@ export class Game {
       const sprite = this.getPlayerSprite(player);
       this.player = player;
       this.playerSprite = sprite;
-      this.truesightCheck();
 
     } else {
       if(this.playerSpriteHash[player.username]) return;
@@ -211,8 +212,8 @@ export class Game {
       if(!this.playerSprite) return;
 
       this.player = player;
-      this.truesightCheck();
       this.updatePlayerSprite(this.playerSprite, player);
+      this.truesightCheck();
     } else {
       let sprite = this.playerSpriteHash[player.username];
       if(!sprite) {

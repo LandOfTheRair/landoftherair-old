@@ -5280,6 +5280,66 @@
                  "width":64,
                  "x":4288,
                  "y":640
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1281,
+                 "name":"Sewer Rat Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/sewer-rat"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4800,
+                 "y":1856
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1282,
+                 "name":"Sewer Rat Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/sewer-rat"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4416,
+                 "y":1216
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1283,
+                 "name":"Sewer Rat Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/yzalt\/sewer-rat"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5248,
+                 "y":1408
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5878,7 +5938,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1281,
+ "nextobjectid":1284,
  "orientation":"orthogonal",
  "properties":
     {
