@@ -163,6 +163,7 @@ export class ClientGameState {
   }
 
   updatePlayerEffectDuration(playerIndex, effectIndex, duration) {
+    if(!this.playerHash[playerIndex].effects[effectIndex]) return;
     this.playerHash[playerIndex].effects[effectIndex].duration = duration;
     this._updatePlayerAtIndex(playerIndex);
   }
