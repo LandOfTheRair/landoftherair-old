@@ -55,7 +55,7 @@ export class MoveHelper {
     return true;
   }
 
-  static move(player: Character, { room, gameState, x, y }) {
+  static move(player: Character, { room, gameState, x, y }, isChasing = false) {
 
     if(isUndefined(x) || isUndefined(y)) return;
 
@@ -125,15 +125,17 @@ export class MoveHelper {
       steps.length = moveRate;
     }
 
-    player.takeSequenceOfSteps(steps);
+    player.takeSequenceOfSteps(steps, isChasing);
     player.setDirBasedOnXYDiff(x, y);
 
-    gameState.resetPlayerStatus(player);
+    if(player.isPlayer()) {
+      gameState.resetPlayerStatus(player);
 
-    const interactable = room.state.getInteractable(player.x, player.y);
+      const interactable = room.state.getInteractable(player.x, player.y);
 
-    if(interactable) {
-      this.handleInteractable(room, player, interactable);
+      if(interactable) {
+        this.handleInteractable(room, player, interactable);
+      }
     }
   }
 
