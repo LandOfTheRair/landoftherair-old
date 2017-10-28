@@ -32,7 +32,7 @@
   damageRolls: 3
   type: Twohanded
   value: 560
-  sprite: 244
+  sprite: 308
   binds: true
 
   requirements:
