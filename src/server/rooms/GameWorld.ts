@@ -736,6 +736,11 @@ export class GameWorld extends Room<GameState> {
   async calculateLootDrops(npc: NPC, killer: Character) {
     const bonus = killer.getTotalStat('luk');
 
+    if(!killer.isPlayer()) {
+      this.createCorpse(npc, []);
+      return;
+    }
+
     const allItems = await this.getAllLoot(npc, bonus);
 
     if(npc.gold) {
@@ -744,7 +749,6 @@ export class GameWorld extends Room<GameState> {
       allItems.push(gold);
     }
 
-    this.createCorpse(npc, allItems);
   }
 
   public async createCorpse(target: Character, searchItems = []): Promise<Item> {
