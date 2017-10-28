@@ -211,7 +211,9 @@ export class AppComponent implements OnInit {
       if(isNull(this[opt])) this[opt] = true;
     });
 
-    this.theme = 'Dark';
+    if(isNull(this.theme)) {
+      this.theme = 'Dark';
+    }
   }
 
   private watchOptions() {
@@ -221,10 +223,19 @@ export class AppComponent implements OnInit {
       this.renderer[func](document.body, 'no-fantasy');
     };
 
+    const adjustTheme = (theme: string) => {
+      const func = theme === 'Light' ? 'addClass': 'removeClass';
+      this.renderer[func](document.body, 'light-theme');
+    };
+
     adjustFont(this.localStorage.retrieve('noFantasy'));
+    adjustTheme(this.localStorage.retrieve('theme'));
 
     this.localStorage.observe('noFantasy')
       .subscribe(noFantasy => adjustFont(noFantasy));
+
+    this.localStorage.observe('theme')
+      .subscribe(theme => adjustTheme(theme));
   }
 
   minimize(window: string) {

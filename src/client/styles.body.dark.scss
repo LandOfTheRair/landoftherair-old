@@ -1,0 +1,97 @@
+
+$window-background-color: #444;
+$window-header-background-color: #333;
+$window-text-color: #fff;
+$window-placeholder-color: #ccc;
+$window-border-style: ridge;
+$window-border-color: #49200e;
+
+body {
+  .window {
+
+    &.active-window {
+      z-index: 1050 !important;
+
+      .window-header {
+        background-color: darken($window-background-color, 20%);
+      }
+    }
+
+    .window-header {
+      background-color: $window-header-background-color;
+      border: 1px $window-border-style $window-background-color;
+      color: $window-text-color;
+    }
+
+    .window-body {
+      background-color: $window-background-color;
+      color: $window-text-color;
+      position: relative;
+    }
+  }
+
+  popover-container {
+    padding: 0 !important;
+
+    .popover-content {
+      padding: 5px !important;
+    }
+  }
+
+  .modal-content, popover-container, .popover-content, .swal2-modal, .swal2-title, .swal2-content {
+    background-color: $window-background-color !important;
+    color: $window-text-color !important;
+
+    input, textarea {
+      border-color: $window-text-color;
+    }
+
+  }
+
+  .nav-tabs .nav-link {
+
+    &.active {
+      border-color: $window-text-color !important;
+    }
+
+    &:hover {
+      background-color: darken($window-background-color, 10%) !important;
+    }
+
+    border-bottom-color: $window-text-color !important;
+    background-color: $window-background-color !important;
+    color: $window-text-color !important;
+  }
+
+  input, textarea, select {
+    background-color: $window-background-color !important;
+    color: $window-placeholder-color !important;
+  }
+
+  .dropdown-menu {
+    background-color: $window-background-color !important;
+    color: $window-placeholder-color !important;
+
+    .dropdown-item {
+
+      &:active, &:hover {
+        background-color: lighten($window-background-color, 20%);
+      }
+    }
+  }
+
+  bs-dropdown-container {
+    z-index: 1000;
+    float: left;
+    min-width: 10rem;
+    font-size: 1rem;
+    background-clip: padding-box;
+    background-color: #fff;
+    border-radius: 0.25rem;
+
+    .dropdown-menu {
+      display: block;
+    }
+  }
+
+}
