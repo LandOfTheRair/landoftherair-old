@@ -602,6 +602,15 @@
 
         <div class="row">
           <div class="col-9 ml-auto form-check">
+            <label class="form-check-label" for="noFantasy">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="noFantasy" id="noFantasy"/>
+              Turn Off Fantasy Font
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-9 ml-auto form-check">
             <label class="form-check-label" for="suppressZeroDamage">
               <input type="checkbox" class="form-check-input" [(ngModel)]="suppressZeroDamage" id="suppressZeroDamage"/>
               Suppress 0-damage messages

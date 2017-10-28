@@ -26,24 +26,53 @@
   font-style: normal;
 }
 
-*:not(.macicons) {
-  font-family: 'ActualFantasy', cursive !important;
-  letter-spacing: 0.5px;
+body:not(.no-fantasy) {
+
+  *:not(.macicons) {
+    font-family: 'ActualFantasy', cursive !important;
+    letter-spacing: 0.5px;
+  }
+
+  .window-header {
+    font-family: 'ActualFantasyWide', cursive !important;
+    font-weight: bold;
+
+    & > * {
+      font-family: 'ActualFantasyWide', cursive !important;
+    }
+  }
+
+  .header {
+    font-family: 'ActualFantasyWide', cursive !important;
+    font-weight: bold;
+  }
+
 }
 
-.window-header {
-  font-family: 'ActualFantasyWide', cursive !important;
-  font-weight: bold;
+body.no-fantasy {
+  font-family: 'Roboto', sans-serif;
 
-  & > * {
-    font-family: 'ActualFantasyWide', cursive !important;
+  .message-container .message {
+    letter-spacing: 0 !important;
+  }
+
+  .char-card .char-name {
+    letter-spacing: 0 !important;
+  }
+
+  .item-container {
+    .value, .ounces, .count {
+      font-size: 0.7rem !important;
+    }
+  }
+
+  .chat-area {
+    .message {
+      font-size: 1rem !important;
+    }
   }
 }
 
-.header {
-  font-family: 'ActualFantasyWide', cursive !important;
-  font-weight: bold;
-}
 // END FONT SPECIFIC ADJUSTMENTS
 
 // THEME SPECIFIC ADJUSTMENTS

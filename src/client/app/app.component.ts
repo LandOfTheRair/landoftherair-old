@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ColyseusService } from './colyseus.service';
 
 import * as swal from 'sweetalert2';
-import { LocalStorage } from 'ngx-webstorage';
+import { LocalStorage, LocalStorageService } from 'ngx-webstorage';
 import { MacroService, Macro } from './macros.service';
 
 import * as macicons from '../macicons/macicons.json';
@@ -121,6 +121,9 @@ export class AppComponent implements OnInit {
   public lockWindowPositions: boolean;
 
   @LocalStorage()
+  public noFantasy: boolean;
+
+  @LocalStorage()
   public suppressZeroDamage: boolean;
 
   @LocalStorage()
@@ -157,7 +160,13 @@ export class AppComponent implements OnInit {
     };
   }
 
-  constructor(public colyseus: ColyseusService, public macroService: MacroService, public authService: AuthService) {
+  constructor(
+    public colyseus: ColyseusService,
+    public macroService: MacroService,
+    public authService: AuthService,
+    private localStorage: LocalStorageService,
+    private renderer: Renderer2
+  ) {
     this.authService.handleAuthentication();
   }
 
@@ -177,13 +186,15 @@ export class AppComponent implements OnInit {
     });
 
     this.initDefaultOptions();
+
+    this.watchOptions();
   }
 
   imageLoaded() {
     this.imagesLoaded++;
   }
 
-  initDefaultOptions() {
+  private initDefaultOptions() {
     ['sack', 'belt', 'equipment', 'ground', 'logFont', 'logWindow', 'npcWindow'].forEach(opt => {
       if(this[`${opt}Size`]) return;
       this[`${opt}Size`] = 'normal';
@@ -200,7 +211,20 @@ export class AppComponent implements OnInit {
       if(isNull(this[opt])) this[opt] = true;
     });
 
-    this.theme = 'Light';
+    this.theme = 'Dark';
+  }
+
+  private watchOptions() {
+
+    const adjustFont = (noFantasy: boolean) => {
+      const func = noFantasy ? 'addClass': 'removeClass';
+      this.renderer[func](document.body, 'no-fantasy');
+    };
+
+    adjustFont(this.localStorage.retrieve('noFantasy'));
+
+    this.localStorage.observe('noFantasy')
+      .subscribe(noFantasy => adjustFont(noFantasy));
   }
 
   minimize(window: string) {
