@@ -58,7 +58,7 @@ export class Charge extends Skill {
     const xDiff = target.x - user.x;
     const yDiff = target.y - user.y;
 
-    MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff });
+    MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff }, true);
 
     CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
   }
