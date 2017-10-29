@@ -106,7 +106,7 @@ export class Game {
       this.player.dir = dir;
       this.player.swimLevel = swimLevel;
       this.focusCameraOnPlayer();
-    })
+    });
   }
 
   public isSamePlayer(username: string) {
