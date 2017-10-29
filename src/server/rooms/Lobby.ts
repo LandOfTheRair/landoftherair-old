@@ -311,6 +311,7 @@ export class Lobby extends Room<LobbyState> {
     }
 
     if(data.action === 'heartbeat') return;
+    if(data.action === 'ping')      return this.pong(client);
     if(data.action === 'status')    return this.changeStatus(client, data.status);
     if(data.action === 'alert')     return this.broadcastAlert(client, data);
     if(data.action === 'play')      return this.playCharacter(client, data);
@@ -321,6 +322,10 @@ export class Lobby extends Room<LobbyState> {
     if(data.userId && data.idToken) return this.tryLogin(client, data);
     if(data.message)                return this.sendMessage(client, data.message);
     if(data.characterCreator)       return this.viewCharacter(client, data);
+  }
+
+  private pong(client) {
+    this.send(client, { action: 'pong' });
   }
 
   broadcastMOTD() {
