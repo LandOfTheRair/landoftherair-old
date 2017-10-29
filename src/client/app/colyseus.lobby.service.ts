@@ -129,7 +129,6 @@ export class ColyseusLobbyService {
       return;
     }
 
-    if(action === 'pong')           return console.log('pong');
     if(action === 'alert')          return this.popupAlert({ sender: other.sender, message: other.message });
     if(action === 'need_user_id')   return this.sendUserId();
     if(action === 'need_user_name') return this.getUserName();
@@ -220,10 +219,9 @@ export class ColyseusLobbyService {
   }
 
   public startHeartbeat() {
-    console.log('ping');
-    const source = Observable.interval(30000);
+    const source = Observable.interval(20000);
     source.subscribe(() => {
-      this.room.send({ action: 'ping' });
+      this.room.send({ action: 'heartbeat' });
     });
   }
 }
