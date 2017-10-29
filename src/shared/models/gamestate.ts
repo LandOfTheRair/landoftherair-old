@@ -10,18 +10,34 @@ import { Character } from './character';
 import { GetGidDescription, GetSwimLevel } from '../../server/gidmetadata/descriptions';
 import { CombatHelper } from '../../server/helpers/combat-helper';
 import { MapLayer } from './maplayer';
+import { nonenumerable } from 'nonenumerable';
 
 export class GameState {
-  players: Player[] = [];
-  maintainedPlayerHash: any = {};
 
+  @nonenumerable
+  private players: Player[] = [];
+
+  @nonenumerable
+  private maintainedPlayerHash: any = {};
+
+  @nonenumerable
+  private playerClientIdHash: any = {};
+
+  private playerHash: any = {};
+
+  @nonenumerable
   map: any = {};
   mapName = '';
   mapData: any = { openDoors: {} };
+
+  @nonenumerable
+  _mapNPCs: NPC[] = [];
+
   mapNPCs: NPC[] = [];
 
   groundItems: any = {};
 
+  @nonenumerable
   fov: Mrpas;
 
   environmentalObjects: any[] = [];
@@ -41,7 +57,54 @@ export class GameState {
   }
 
   get allPossibleTargets(): Character[] {
-    return (<any>this.players).concat(this.mapNPCs);
+    return (<any>this.players).concat(this._mapNPCs);
+  }
+
+  get allPlayers(): Player[] {
+    return this.players;
+  }
+
+  constructor(opts) {
+    extend(this, opts);
+
+    const denseLayer = this.map.layers[MapLayer.Walls].data;
+    const opaqueObjects = this.map.layers[MapLayer.OpaqueDecor].objects;
+    opaqueObjects.forEach(obj => obj.opacity = 1);
+
+    const denseObjects = this.map.layers[MapLayer.DenseDecor].objects;
+    denseObjects.forEach(obj => obj.density = 1);
+
+    const interactables = this.map.layers[MapLayer.Interactables].objects;
+    interactables.forEach(obj => {
+      if(obj.type === 'Door') {
+        obj.opacity = 1;
+        obj.density = 1;
+      }
+    });
+
+    const checkObjects = opaqueObjects.concat(interactables);
+
+    this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
+      const tile = denseLayer[(y * this.map.width) + x];
+      if(tile === 0) {
+        const object = find(checkObjects, { x: x * 64, y: (y + 1) * 64 });
+        return !object || (object && !object.opacity);
+      }
+      return false;
+    });
+  }
+
+  tick() {
+    this.mapNPCs = this.cleanNPCs();
+    this.playerHash = this.createPlayerHash();
+  }
+
+  private createPlayerHash() {
+    return reduce(this.players, (prev, p) => {
+      prev[p.username] = p.toJSON();
+      p._party = p.party ? p.party.toJSON() : null;
+      return prev;
+    }, {});
   }
 
   isSuccorRestricted(player: Player): boolean {
@@ -58,22 +121,38 @@ export class GameState {
 
   addNPC(npc: NPC): void {
     npc.$$map = this.map;
-    this.mapNPCs.push(npc);
+    this._mapNPCs.push(npc);
   }
 
   findNPC(uuid: string): NPC {
-    return find(this.mapNPCs, { uuid });
+    return find(this._mapNPCs, { uuid });
   }
 
   removeNPC(npc: NPC): void {
-    pull(this.mapNPCs, npc);
+    pull(this._mapNPCs, npc);
   }
 
-  addPlayer(player): void {
+  addPlayer(player, clientId: string): void {
     player.$$map = this.map;
     this.maintainedPlayerHash[player.username] = player;
+    this.playerClientIdHash[clientId] = player;
     this.players.push(player);
     this.resetPlayerStatus(player);
+  }
+
+  findPlayer(username): Player {
+    return this.maintainedPlayerHash[username];
+  }
+
+  findPlayerByClientId(clientId): Player {
+    return this.playerClientIdHash[clientId];
+  }
+
+  removePlayer(clientId): void {
+    const playerRef = this.findPlayerByClientId(clientId);
+    delete this.maintainedPlayerHash[playerRef.username];
+    delete this.playerClientIdHash[clientId];
+    this.players = reject(this.players, p => p.username === playerRef.username);
   }
 
   addInteractable(obj: any): void {
@@ -93,15 +172,6 @@ export class GameState {
     const check = x => x === obj;
     this.map.layers[MapLayer.Interactables].objects = reject(this.map.layers[MapLayer.Interactables].objects, check);
     this.environmentalObjects = reject(this.environmentalObjects, check);
-  }
-
-  findPlayer(username): Player {
-    return this.maintainedPlayerHash[username];
-  }
-
-  removePlayer(username): void {
-    delete this.maintainedPlayerHash[username];
-    this.players = reject(this.players, p => p.username === username);
   }
 
   resetFOV(player): void {
@@ -350,7 +420,7 @@ export class GameState {
   }
 
   cleanNPCs(): NPC[] {
-    return this.mapNPCs.map(npc => {
+    return this._mapNPCs.map(npc => {
       const baseObj = pick(npc, [
         'agro', 'uuid', 'name',
         'hostility', 'alignment', 'allegiance', 'allegianceReputation',
@@ -388,8 +458,9 @@ export class GameState {
         if(!currentValue || (currentValue && currentValue < timestamp)) {
           this.darkness[xx][yy] = timestamp;
 
-          this.getPlayersInRange({ x, y }, 4).forEach(player => {
+          this.getPlayersInRange({ x, y }, 4).forEach((player: Player) => {
             this.calculateFOV(player);
+            player.$$room.updateFOV(player);
           });
         }
       }
@@ -405,62 +476,13 @@ export class GameState {
         if(force || this.darkness[xx][yy] === timestamp) {
           this.darkness[xx][yy] = false;
 
-          this.getPlayersInRange({ x, y }, 4).forEach(player => {
+          this.getPlayersInRange({ x, y }, 4).forEach((player: Player) => {
             this.calculateFOV(player);
+            player.$$room.updateFOV(player);
           });
         }
 
       }
     }
-  }
-
-  constructor(opts) {
-    extend(this, opts);
-
-    const denseLayer = this.map.layers[MapLayer.Walls].data;
-    const opaqueObjects = this.map.layers[MapLayer.OpaqueDecor].objects;
-    opaqueObjects.forEach(obj => obj.opacity = 1);
-
-    const denseObjects = this.map.layers[MapLayer.DenseDecor].objects;
-    denseObjects.forEach(obj => obj.density = 1);
-
-    const interactables = this.map.layers[MapLayer.Interactables].objects;
-    interactables.forEach(obj => {
-      if(obj.type === 'Door') {
-        obj.opacity = 1;
-        obj.density = 1;
-      }
-    });
-
-    const checkObjects = opaqueObjects.concat(interactables);
-
-    this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
-      const tile = denseLayer[(y * this.map.width) + x];
-      if(tile === 0) {
-        const object = find(checkObjects, { x: x * 64, y: (y + 1) * 64 });
-        return !object || (object && !object.opacity);
-      }
-      return false;
-    });
-  }
-
-  get playerHash() {
-    return reduce(this.players, (prev, p) => {
-      prev[p.username] = p;
-      p._party = p.party;
-      return prev;
-    }, {});
-  }
-
-  toJSON() {
-    return {
-      mapData: this.mapData,
-      mapName: this.mapName,
-      mapNPCs: this.cleanNPCs(),
-      players: this.playerHash,
-      groundItems: this.groundItems,
-      environmentalObjects: this.environmentalObjects,
-      darkness: this.darkness
-    };
   }
 }

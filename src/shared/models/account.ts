@@ -5,6 +5,7 @@ export type Status = 'Available' | 'AFK';
 
 export class Account {
   _id?: any;
+  colyseusId?: string;
 
   createdAt: number;
   userId: string;
