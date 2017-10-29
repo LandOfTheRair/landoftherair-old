@@ -41,6 +41,10 @@ export class ColyseusLobbyService {
     this.room.onData.add((data) => {
       this.interceptLobbyCommand(data);
     });
+
+    this.room.onError.add((e) => {
+      alert(e);
+    });
   }
 
   private loginThenEmit() {
