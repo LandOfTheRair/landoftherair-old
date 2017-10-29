@@ -51,7 +51,10 @@ export class MoveHelper {
     x /= 64;
     y /= 64;
 
-    gameState.getPlayersInRange({ x, y }, 3).forEach(p => gameState.calculateFOV(p));
+    gameState.getPlayersInRange({ x, y }, 3).forEach(p => {
+      gameState.calculateFOV(p);
+      p.$$room.updateFOV(p);
+    });
     return true;
   }
 

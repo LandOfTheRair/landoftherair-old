@@ -30,6 +30,7 @@ import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
 import { PartyManager } from '../helpers/party-manager';
 import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings-helper';
+import { Account } from '../../shared/models/account';
 
 const TICK_DIVISOR = 2;
 
@@ -66,7 +67,7 @@ export class GameWorld extends Room<GameState> {
 
   private clearTimers: any[] = [];
 
-  private usernameClientPlayerHash = {};
+  private usernameClientHash = {};
 
   get allSpawners() {
     return this.spawners;
@@ -89,7 +90,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   get canSpawnCreatures() {
-    return this.state.mapNPCs.length < this.maxCreatures;
+    return this.state._mapNPCs.length < this.maxCreatures;
   }
 
   get decayRateHours() {
@@ -102,22 +103,6 @@ export class GameWorld extends Room<GameState> {
 
   get mapRespawnPoint() {
     return { map: this.mapName, x: this.state.map.properties.respawnX, y: this.state.map.properties.respawnY };
-  }
-
-  constructor(opts) {
-    super(opts);
-
-    this.allMapNames = opts.allMapNames;
-
-    this.setPatchRate(500 / TICK_DIVISOR);
-    this.setSimulationInterval(this.tick.bind(this), 1000 / TICK_DIVISOR);
-    this.setState(new GameState({
-      players: [],
-      map: cloneDeep(require(opts.mapPath)),
-      mapName: opts.mapName
-    }));
-
-    this.onInit();
   }
 
   private savePlayer(player: Player) {
@@ -153,7 +138,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   private findClient(player: Player) {
-    return get(this.usernameClientPlayerHash, [player.username, 'client']);
+    return get(this.usernameClientHash, [player.username, 'client']);
   }
 
   sendPlayerLogMessage(player: Player, messageData) {
@@ -258,6 +243,13 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_lockers', lockers, lockerId });
   }
 
+  setPlayerXY(player, x, y) {
+    player.x = x;
+    player.y = y;
+    this.state.calculateFOV(player);
+    this.updatePos(player);
+  }
+
   teleport(player, opts: { newMap, x, y, zChange?, zSet? }) {
 
     const { newMap, x, y, zChange, zSet } = opts;
@@ -269,8 +261,7 @@ export class GameWorld extends Room<GameState> {
       return;
     }
 
-    player.x = x;
-    player.y = y;
+    this.setPlayerXY(player, x, y);
 
     if(zChange) {
       player.z += zChange;
@@ -315,14 +306,20 @@ export class GameWorld extends Room<GameState> {
     this.state.removeItemFromGround(item);
   }
 
-  // TODO check if player is in this map, return false if not - also, modify this to take a promise? - also fail if in game already
-  requestJoin(opts) {
-    // console.log('req', opts);
-    return true;
-  }
-
   async onJoin(client, options) {
-    const playerData = await DB.$players.findOne({ username: client.username, map: this.state.mapName, charSlot: options.charSlot, inGame: { $ne: true } });
+    const { charSlot, username } = options;
+
+    const account = await this.getAccount(username);
+    if(!account || account.colyseusId !== client.id) {
+      this.send(client, {
+        error: 'error_invalid_token',
+        prettyErrorName: 'Invalid Session Id',
+        prettyErrorDesc: 'You\'re either trying to say you\'re someone else, or your token is bad. To set this right, refresh the page.'
+      });
+      return false;
+    }
+
+    const playerData = await DB.$players.findOne({ username, map: this.state.mapName, charSlot, inGame: { $ne: true } });
 
     if(!playerData) {
       this.send(client, { error: 'invalid_char', prettyErrorName: 'Invalid Character Data', prettyErrorDesc: 'No idea how this happened!' });
@@ -336,14 +333,24 @@ export class GameWorld extends Room<GameState> {
     player.z = player.z || 0;
     player.initServer();
     this.setUpClassFor(player);
-    this.state.addPlayer(player);
+    this.state.addPlayer(player, client.id);
 
     player.inGame = true;
     this.savePlayer(player);
 
     player.respawnPoint = clone(this.mapRespawnPoint);
 
-    this.usernameClientPlayerHash[client.username] = { client };
+    this.usernameClientHash[player.username] = { client };
+
+    this.setPlayerXY(player, player.x, player.y);
+  }
+
+  private async getAccount(username): Promise<Account> {
+    return DB.$accounts.findOne({ username })
+      .then(data => {
+        if(data) return new Account(data);
+        return null;
+      });
   }
 
   private prePlayerMapLeave(player: Player) {
@@ -363,12 +370,12 @@ export class GameWorld extends Room<GameState> {
   }
 
   async onLeave(client) {
-    delete this.usernameClientPlayerHash[client.username];
-
-    const player = this.state.findPlayer(client.username);
+    const player = this.state.findPlayerByClientId(client.id);
     if(!player) return;
 
-    this.state.removePlayer(client.username);
+    delete this.usernameClientHash[player.username];
+
+    this.state.removePlayer(client.id);
     player.inGame = false;
 
     // do not leave party if you're teleporting between maps
@@ -385,7 +392,7 @@ export class GameWorld extends Room<GameState> {
 
   onMessage(client, data) {
     if(!data.command) return;
-    const player = this.state.findPlayer(client.username);
+    const player = this.state.findPlayerByClientId(client.id);
 
     if(!player) return;
 
@@ -408,7 +415,18 @@ export class GameWorld extends Room<GameState> {
     CommandExecutor.executeCommand(player, data.command, data);
   }
 
-  private async onInit() {
+  async onInit(opts) {
+
+    this.allMapNames = opts.allMapNames;
+
+    this.setPatchRate(500 / TICK_DIVISOR);
+    this.setSimulationInterval(this.tick.bind(this), 1000 / TICK_DIVISOR);
+    this.setState(new GameState({
+      players: [],
+      map: cloneDeep(require(opts.mapPath)),
+      mapName: opts.mapName
+    }));
+
     const timerData = await this.loadBossTimers();
     const spawnerTimers = timerData ? timerData.spawners : [];
 
@@ -420,6 +438,8 @@ export class GameWorld extends Room<GameState> {
     this.loadGameSettings();
 
     this.initPartyManager();
+
+    this.state.tick();
   }
 
   onDispose() {
@@ -666,6 +686,8 @@ export class GameWorld extends Room<GameState> {
   private tick() {
     this.ticks++;
 
+    this.state.tick();
+
     // tick players every second or so
     if(this.ticks % TickRates.PlayerAction === 0) {
       this.state.tickPlayers();
@@ -681,7 +703,7 @@ export class GameWorld extends Room<GameState> {
 
     // save players every minute or so
     if(this.ticks % TickRates.PlayerSave === 0) {
-      this.state.players.forEach(player => this.savePlayer(player));
+      this.state.allPlayers.forEach(player => this.savePlayer(player));
 
       // reset ticks
       this.ticks = 0;
@@ -885,18 +907,32 @@ export class GameWorld extends Room<GameState> {
 
   public drawEffect(player: Character, center: any, effect: VisualEffect, radius = 0) {
     const client = this.findClient(<Player>player);
+    if(!client) return;
+
     const effectId = VISUAL_EFFECTS[effect];
     this.send(client, { action: 'draw_effect_r', effect: effectId, center, radius });
   }
 
   public updatePos(player: Player) {
     const client = this.findClient(player);
+    if(!client) return;
+
     this.send(client, {
       action: 'update_pos',
       x: player.x,
       y: player.y,
       dir: player.dir,
       swimLevel: player.swimLevel,
+      fov: player.$fov
+    });
+  }
+
+  public updateFOV(player: Player) {
+    const client = this.findClient(player);
+    if(!client) return;
+
+    this.send(client, {
+      action: 'update_fov',
       fov: player.$fov
     });
   }

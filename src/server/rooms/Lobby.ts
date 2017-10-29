@@ -18,18 +18,15 @@ const AUTH0_SECRET = process.env.AUTH0_SECRET;
 
 export class Lobby extends Room<LobbyState> {
 
-  constructor(opts) {
-    super(opts);
+  auth0: any;
 
-    this.setPatchRate(500);
+  onInit(opts) {
+
+    this.setPatchRate(250);
     this.autoDispose = false;
 
     this.setState(new LobbyState({ accounts: [], messages: [], motd: '' }));
 
-    this.onInit();
-  }
-
-  onInit() {
     this.loadSettings();
     DB.$players.update({}, { $set: { inGame: -1 } }, { multi: true });
   }
@@ -96,6 +93,9 @@ export class Lobby extends Room<LobbyState> {
     client.userId = account.userId;
     client.username = account.username;
 
+    account.colyseusId = client.id;
+    this.updateAccount(account);
+
     this.state.addAccount(account);
     this.send(client, { action: 'set_account', account });
   }
@@ -117,6 +117,10 @@ export class Lobby extends Room<LobbyState> {
     } catch(e) {
       return false;
     }
+  }
+
+  private extractIdFromToken(token): any {
+    return jwt.verify(token, AUTH0_SECRET, { algorithms: ['HS256'] });
   }
 
   private sendMessage(client, message) {
