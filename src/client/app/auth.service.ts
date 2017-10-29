@@ -4,6 +4,8 @@ import auth0 from 'auth0-js';
 
 import { environment } from '../environments/environment';
 
+import { startsWith } from 'lodash';
+
 @Injectable()
 export class AuthService {
 
@@ -91,6 +93,7 @@ export class AuthService {
 
   public scheduleRenewal() {
     if(!this.isAuthenticated()) return;
+    this.clearOldNonces();
 
     const expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
 
@@ -107,6 +110,7 @@ export class AuthService {
     // additional refreshes
     this.refreshSubscription = source.subscribe(() => {
       this.renewToken();
+      this.clearOldNonces();
       this.scheduleRenewal();
     });
   }
@@ -121,5 +125,12 @@ export class AuthService {
       const elements = document.getElementsByTagName('iframe');
       while (elements[0]) elements[0].parentNode.removeChild(elements[0]);
     }, 1000);
+  }
+
+  private clearOldNonces() {
+    Object.keys(localStorage).forEach(key => {
+      if(!startsWith(key, 'com.auth0.auth')) return;
+      localStorage.removeItem(key);
+    });
   }
 }
