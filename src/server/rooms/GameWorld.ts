@@ -756,6 +756,7 @@ export class GameWorld extends Room<GameState> {
       allItems.push(gold);
     }
 
+    this.createCorpse(npc, allItems);
   }
 
   public async createCorpse(target: Character, searchItems = []): Promise<Item> {
