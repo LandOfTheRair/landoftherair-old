@@ -22,8 +22,6 @@ import { GameWorld } from '../../server/rooms/GameWorld';
 import { VisualEffect } from '../../server/gidmetadata/visual-effects';
 import { MoveHelper } from '../../server/helpers/move-helper';
 
-import { nonenumerable } from 'nonenumerable';
-
 export type Allegiance =
   'None'
 | 'Pirates'
@@ -672,7 +670,9 @@ export class Character {
       this.$$room.castEffectFromTrap(this, potentialTrap);
     }
 
+    // player only
     if(recalculateFOV) {
+      this.$$room.setPlayerXY(this, this.x, this.y);
       this.$$room.state.calculateFOV(this);
     }
   }
@@ -923,8 +923,14 @@ export class Character {
     if(this.isDead()) {
       if(this.$$corpseRef && this.$$corpseRef.$heldBy) {
         const holder = this.$$room.state.findPlayer(this.$$corpseRef.$heldBy);
-        this.x = holder.x;
-        this.y = holder.y;
+
+        if(this.isPlayer()) {
+          this.$$room.setPlayerXY(this, holder.x, holder.y);
+
+        } else {
+          this.x = holder.x;
+          this.y = holder.y;
+        }
       }
 
       if(this.$$deathTicks > 0) {

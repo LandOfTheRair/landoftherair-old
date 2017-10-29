@@ -65,6 +65,10 @@ export class ClientGameState {
     this.initFOV();
   }
 
+  modifyDoor(doorChange) {
+    this.updates.openDoors.push(doorChange.path.id);
+  }
+
   grabOldUpdates(mapData) {
     Object.keys(mapData.openDoors).forEach(doorId => {
       if(!mapData.openDoors[doorId].isOpen) return;
@@ -146,34 +150,58 @@ export class ClientGameState {
     this.updatePlayer$.next(this.playerHash[playerIndex]);
   }
 
-  updatePlayerEffect(playerIndex, effectIndex, effect) {
-    this.playerHash[playerIndex].effects[effectIndex] = effect;
-    this.playerHash[playerIndex].effects = compact(this.playerHash[playerIndex].effects);
+  updatePlayerEffect(change) {
+    const playerIndex = change.path.id;
+    const effectIndex = change.path.effect;
+    const attr = change.path.attr;
+    const effect = change.value;
+
+    if(!this.playerHash[playerIndex]) return;
+
+    const effectRef = this.playerHash[playerIndex].effects;
+
+    if(change.operation === 'remove') {
+      effectRef[effectIndex] = null;
+      this.playerHash[playerIndex].effects = compact(effectRef);
+      return;
+    }
+
+    if(change.operation === 'add') {
+      effectRef[effectIndex] = effectRef[effectIndex] || (<any>{});
+      effectRef[effectIndex][attr] = effect;
+    }
+
+    if(change.operation === 'replace' && effectRef[effectIndex]) {
+      effectRef[effectIndex][attr] = effect;
+      if(effectRef[effectIndex].duration <= 0 && !effectRef[effectIndex].effectInfo.isPermanent) {
+        effectRef[effectIndex] = null;
+        this.playerHash[playerIndex].effects = compact(effectRef);
+      }
+    }
+
     this._updatePlayerAtIndex(playerIndex);
   }
 
   updatePlayerStealth(playerIndex, stealth) {
+    if(!this.playerHash[playerIndex]) return;
     (<any>this.playerHash[playerIndex]).totalStats.stealth = stealth;
     this._updatePlayerAtIndex(playerIndex);
   }
 
   updatePlayerPerception(playerIndex, perception) {
+    if(!this.playerHash[playerIndex]) return;
     (<any>this.playerHash[playerIndex]).totalStats.perception = perception;
     this._updatePlayerAtIndex(playerIndex);
   }
 
-  updatePlayerEffectDuration(playerIndex, effectIndex, duration) {
-    if(!this.playerHash[playerIndex].effects[effectIndex]) return;
-    this.playerHash[playerIndex].effects[effectIndex].duration = duration;
-    this._updatePlayerAtIndex(playerIndex);
-  }
-
   updatePlayer(playerIndex, attr, val) {
+    if(!this.playerHash[playerIndex]) return;
     this.playerHash[playerIndex][attr] = val;
     this._updatePlayerAtIndex(playerIndex);
   }
 
   private __updatePlayerAttribute(playerIndex, attr, key, val) {
+    if(!this.playerHash[playerIndex]) return;
     this.playerHash[playerIndex][attr][key] = val;
   }
 
@@ -186,14 +214,17 @@ export class ClientGameState {
   }
 
   updatePlayerHand(playerIndex, hand, item) {
+    if(!this.playerHash[playerIndex]) return;
     this.playerHash[playerIndex][hand] = item;
   }
 
   updatePlayerGearItem(playerIndex, slot, item) {
+    if(!this.playerHash[playerIndex]) return;
     this.__updatePlayerAttribute(playerIndex, 'gear', slot, item);
   }
 
   updatePlayerHandItem(playerIndex, hand, attr, value) {
+    if(!this.playerHash[playerIndex]) return;
     this.playerHash[playerIndex][hand] = this.playerHash[playerIndex][hand] || {};
     this.__updatePlayerAttribute(playerIndex, hand, attr, value);
 

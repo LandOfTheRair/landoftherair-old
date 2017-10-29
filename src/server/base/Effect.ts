@@ -35,7 +35,7 @@ export class Effect {
   tick(char: Character) {
     this.effectTick(char);
 
-    this.duration--;
+    if(this.duration > 0) this.duration--;
     if(!this.effectInfo.isPermanent && this.duration <= 0) {
       char.unapplyEffect(this);
       this.effectEnd(char);

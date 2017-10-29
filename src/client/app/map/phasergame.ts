@@ -99,6 +99,14 @@ export class Game {
     this.colyseus.game.vfx$.subscribe(nextVfx => {
       this.drawVfx(nextVfx);
     });
+
+    this.colyseus.game.myLoc$.subscribe(({ x, y, dir, swimLevel }) => {
+      this.player.x = x;
+      this.player.y = y;
+      this.player.dir = dir;
+      this.player.swimLevel = swimLevel;
+      this.focusCameraOnPlayer();
+    })
   }
 
   public isSamePlayer(username: string) {
@@ -183,6 +191,7 @@ export class Game {
   }
 
   private focusCameraOnPlayer() {
+    if(!this.g || !this.g.camera) return;
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
   }
 

@@ -15,10 +15,15 @@ import { nonenumerable } from 'nonenumerable';
 export class GameState {
 
   @nonenumerable
-  players: Player[] = [];
+  private players: Player[] = [];
 
   @nonenumerable
-  maintainedPlayerHash: any = {};
+  private maintainedPlayerHash: any = {};
+
+  @nonenumerable
+  private playerClientIdHash: any = {};
+
+  private playerHash: any = {};
 
   @nonenumerable
   map: any = {};
@@ -26,6 +31,8 @@ export class GameState {
   mapData: any = { openDoors: {} };
 
   @nonenumerable
+  _mapNPCs: NPC[] = [];
+
   mapNPCs: NPC[] = [];
 
   groundItems: any = {};
@@ -50,26 +57,15 @@ export class GameState {
   }
 
   get allPossibleTargets(): Character[] {
-    return (<any>this.players).concat(this.mapNPCs);
+    return (<any>this.players).concat(this._mapNPCs);
   }
 
-  get playerHash() {
-    return reduce(this.players, (prev, p) => {
-      prev[p.username] = p;
-      p._party = p.party;
-      return prev;
-    }, {});
-  }
-
-  get cleanedNPCs() {
-    return this.cleanNPCs();
+  get allPlayers(): Player[] {
+    return this.players;
   }
 
   constructor(opts) {
     extend(this, opts);
-
-    Object.defineProperty(this, 'playerHash', { enumerable: true });
-    Object.defineProperty(this, 'cleanedNPCs', { enumerable: true });
 
     const denseLayer = this.map.layers[MapLayer.Walls].data;
     const opaqueObjects = this.map.layers[MapLayer.OpaqueDecor].objects;
@@ -98,6 +94,19 @@ export class GameState {
     });
   }
 
+  tick() {
+    this.mapNPCs = this.cleanNPCs();
+    this.playerHash = this.createPlayerHash();
+  }
+
+  private createPlayerHash() {
+    return reduce(this.players, (prev, p) => {
+      prev[p.username] = p.toJSON();
+      p._party = p.party ? p.party.toJSON() : null;
+      return prev;
+    }, {});
+  }
+
   isSuccorRestricted(player: Player): boolean {
     const succorRegion = filter(this.map.layers[MapLayer.Succorport].objects, reg => this.isInRegion(player, reg))[0];
 
@@ -112,22 +121,38 @@ export class GameState {
 
   addNPC(npc: NPC): void {
     npc.$$map = this.map;
-    this.mapNPCs.push(npc);
+    this._mapNPCs.push(npc);
   }
 
   findNPC(uuid: string): NPC {
-    return find(this.mapNPCs, { uuid });
+    return find(this._mapNPCs, { uuid });
   }
 
   removeNPC(npc: NPC): void {
-    pull(this.mapNPCs, npc);
+    pull(this._mapNPCs, npc);
   }
 
-  addPlayer(player): void {
+  addPlayer(player, clientId: string): void {
     player.$$map = this.map;
     this.maintainedPlayerHash[player.username] = player;
+    this.playerClientIdHash[clientId] = player;
     this.players.push(player);
     this.resetPlayerStatus(player);
+  }
+
+  findPlayer(username): Player {
+    return this.maintainedPlayerHash[username];
+  }
+
+  findPlayerByClientId(clientId): Player {
+    return this.playerClientIdHash[clientId];
+  }
+
+  removePlayer(clientId): void {
+    const playerRef = this.findPlayerByClientId(clientId);
+    delete this.maintainedPlayerHash[playerRef.username];
+    delete this.playerClientIdHash[clientId];
+    this.players = reject(this.players, p => p.username === playerRef.username);
   }
 
   addInteractable(obj: any): void {
@@ -147,15 +172,6 @@ export class GameState {
     const check = x => x === obj;
     this.map.layers[MapLayer.Interactables].objects = reject(this.map.layers[MapLayer.Interactables].objects, check);
     this.environmentalObjects = reject(this.environmentalObjects, check);
-  }
-
-  findPlayer(username): Player {
-    return this.maintainedPlayerHash[username];
-  }
-
-  removePlayer(username): void {
-    delete this.maintainedPlayerHash[username];
-    this.players = reject(this.players, p => p.username === username);
   }
 
   resetFOV(player): void {
@@ -404,7 +420,7 @@ export class GameState {
   }
 
   cleanNPCs(): NPC[] {
-    return this.mapNPCs.map(npc => {
+    return this._mapNPCs.map(npc => {
       const baseObj = pick(npc, [
         'agro', 'uuid', 'name',
         'hostility', 'alignment', 'allegiance', 'allegianceReputation',
@@ -442,8 +458,9 @@ export class GameState {
         if(!currentValue || (currentValue && currentValue < timestamp)) {
           this.darkness[xx][yy] = timestamp;
 
-          this.getPlayersInRange({ x, y }, 4).forEach(player => {
+          this.getPlayersInRange({ x, y }, 4).forEach((player: Player) => {
             this.calculateFOV(player);
+            player.$$room.updateFOV(player);
           });
         }
       }
@@ -459,8 +476,9 @@ export class GameState {
         if(force || this.darkness[xx][yy] === timestamp) {
           this.darkness[xx][yy] = false;
 
-          this.getPlayersInRange({ x, y }, 4).forEach(player => {
+          this.getPlayersInRange({ x, y }, 4).forEach((player: Player) => {
             this.calculateFOV(player);
+            player.$$room.updateFOV(player);
           });
         }
 

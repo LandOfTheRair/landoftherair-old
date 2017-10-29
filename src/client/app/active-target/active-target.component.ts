@@ -47,6 +47,8 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
     if(!this.target) return;
 
     const target = find(this.colyseusGame.clientGameState.allCharacters, { uuid: this.target.uuid });
+    if(!target) return;
+
     this.colyseusGame.clientGameState.activeTarget = target;
     this.dirString = this.colyseusGame.directionTo(target);
   }
