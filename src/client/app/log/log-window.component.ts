@@ -31,4 +31,11 @@ export class LogWindowComponent implements OnInit {
     this.filters = this.filters;
   }
 
+  formatMessage(message: any) {
+    if(message.dirFrom && message.message.toLowerCase().startsWith('you hear')) {
+      return message.message.substring(8);
+    }
+    return message.message;
+  }
+
 }

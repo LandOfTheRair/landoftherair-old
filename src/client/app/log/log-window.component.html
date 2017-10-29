@@ -19,7 +19,7 @@
          [ngClass]="['font-size-'+fontSize]"
          *ngFor="let message of clientGameState.logMessages">
       <span *ngIf="message.dirFrom">From the {{ message.dirFrom }} you hear </span>
-      <strong *ngIf="message.name">{{ message.name }}: </strong>{{ message.message }}
+      <strong *ngIf="message.name">{{ message.name }}: </strong>{{ formatMessage(message) }}
     </div>
   </div>
 </div>
