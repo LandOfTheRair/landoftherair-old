@@ -10,18 +10,27 @@ import { Character } from './character';
 import { GetGidDescription, GetSwimLevel } from '../../server/gidmetadata/descriptions';
 import { CombatHelper } from '../../server/helpers/combat-helper';
 import { MapLayer } from './maplayer';
+import { nonenumerable } from 'nonenumerable';
 
 export class GameState {
+
+  @nonenumerable
   players: Player[] = [];
+
+  @nonenumerable
   maintainedPlayerHash: any = {};
 
+  @nonenumerable
   map: any = {};
   mapName = '';
   mapData: any = { openDoors: {} };
+
+  @nonenumerable
   mapNPCs: NPC[] = [];
 
   groundItems: any = {};
 
+  @nonenumerable
   fov: Mrpas;
 
   environmentalObjects: any[] = [];
@@ -42,6 +51,51 @@ export class GameState {
 
   get allPossibleTargets(): Character[] {
     return (<any>this.players).concat(this.mapNPCs);
+  }
+
+  get playerHash() {
+    return reduce(this.players, (prev, p) => {
+      prev[p.username] = p;
+      p._party = p.party;
+      return prev;
+    }, {});
+  }
+
+  get cleanedNPCs() {
+    return this.cleanNPCs();
+  }
+
+  constructor(opts) {
+    extend(this, opts);
+
+    Object.defineProperty(this, 'playerHash', { enumerable: true });
+    Object.defineProperty(this, 'cleanedNPCs', { enumerable: true });
+
+    const denseLayer = this.map.layers[MapLayer.Walls].data;
+    const opaqueObjects = this.map.layers[MapLayer.OpaqueDecor].objects;
+    opaqueObjects.forEach(obj => obj.opacity = 1);
+
+    const denseObjects = this.map.layers[MapLayer.DenseDecor].objects;
+    denseObjects.forEach(obj => obj.density = 1);
+
+    const interactables = this.map.layers[MapLayer.Interactables].objects;
+    interactables.forEach(obj => {
+      if(obj.type === 'Door') {
+        obj.opacity = 1;
+        obj.density = 1;
+      }
+    });
+
+    const checkObjects = opaqueObjects.concat(interactables);
+
+    this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
+      const tile = denseLayer[(y * this.map.width) + x];
+      if(tile === 0) {
+        const object = find(checkObjects, { x: x * 64, y: (y + 1) * 64 });
+        return !object || (object && !object.opacity);
+      }
+      return false;
+    });
   }
 
   isSuccorRestricted(player: Player): boolean {
@@ -412,55 +466,5 @@ export class GameState {
 
       }
     }
-  }
-
-  constructor(opts) {
-    extend(this, opts);
-
-    const denseLayer = this.map.layers[MapLayer.Walls].data;
-    const opaqueObjects = this.map.layers[MapLayer.OpaqueDecor].objects;
-    opaqueObjects.forEach(obj => obj.opacity = 1);
-
-    const denseObjects = this.map.layers[MapLayer.DenseDecor].objects;
-    denseObjects.forEach(obj => obj.density = 1);
-
-    const interactables = this.map.layers[MapLayer.Interactables].objects;
-    interactables.forEach(obj => {
-      if(obj.type === 'Door') {
-        obj.opacity = 1;
-        obj.density = 1;
-      }
-    });
-
-    const checkObjects = opaqueObjects.concat(interactables);
-
-    this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
-      const tile = denseLayer[(y * this.map.width) + x];
-      if(tile === 0) {
-        const object = find(checkObjects, { x: x * 64, y: (y + 1) * 64 });
-        return !object || (object && !object.opacity);
-      }
-      return false;
-    });
-  }
-
-  get playerHash() {
-    return reduce(this.players, (prev, p) => {
-      prev[p.username] = p;
-      p._party = p.party;
-      return prev;
-    }, {});
-  }
-
-  toJSON() {
-    return {
-      mapData: this.mapData,
-      mapName: this.mapName,
-      mapNPCs: this.cleanNPCs(),
-      players: this.playerHash,
-      groundItems: this.groundItems,
-      environmentalObjects: this.environmentalObjects,
-      darkness: this.darkness
-    };
   }
 }

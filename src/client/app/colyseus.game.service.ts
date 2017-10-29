@@ -107,6 +107,7 @@ export class ColyseusGameService {
     this.worldRoom = this.client.join(room, { charSlot: this.character.charSlot });
 
     this.worldRoom.onUpdate.addOnce((state) => {
+      console.log(state)
       this.clientGameState.mapName = state.mapName;
       this.clientGameState.grabOldUpdates(state.mapData);
 
@@ -114,6 +115,7 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onUpdate.add((state) => {
+      console.log(state)
       this.clientGameState.setGroundItems(state.groundItems);
       this.clientGameState.setMapData(state.mapData);
       this.clientGameState.setMapNPCs(state.mapNPCs);
@@ -124,84 +126,84 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onData.add((data) => {
+      console.log('d',data)
       this.interceptGameCommand(data);
     });
 
-    const updateSpecificAttr = (attr, entityId, value) => {
-      this.clientGameState.updatePlayer(entityId, attr, value);
+    const updateSpecificAttr = (attr, change) => {
+      this.clientGameState.updatePlayer(change.path.id, change.path.attr, change.value);
     };
 
-    const updateAgro = (entityId, player, value) => {
-      this.clientGameState.updatePlayerAgro(entityId, player, value);
+    const updateAgro = (entityId, change) => {
+      this.clientGameState.updatePlayerAgro(change.path.id, change.path.player, change.value);
     };
 
-    const updateHP = (entityId, key, value) => {
-      this.clientGameState.updatePlayerHP(entityId, key, value);
+    const updateHP = (change) => {
+      this.clientGameState.updatePlayerHP(change.path.id, change.path.key, change.value);
     };
 
-    const updateHand = (hand, entityId, value) => {
-      this.clientGameState.updatePlayerHand(entityId, hand, value);
+    const updateHand = (hand, change) => {
+      this.clientGameState.updatePlayerHand(change.path.id, hand, change.value);
     };
 
-    const updateHandItem = (hand, entityId, attr, value) => {
-      this.clientGameState.updatePlayerHandItem(entityId, hand, attr, value);
+    const updateHandItem = (hand, change) => {
+      this.clientGameState.updatePlayerHandItem(change.path.id, hand, change.path.attr, change.value);
     };
 
-    const updateGearItem = (slot, entityId, value) => {
-      this.clientGameState.updatePlayerGearItem(entityId, slot, value);
+    const updateGearItem = (slot, change) => {
+      this.clientGameState.updatePlayerGearItem(change.path.id, slot, change.value);
     };
 
-    this.worldRoom.state.listen('players/:id/x', 'replace', updateSpecificAttr.bind(this, 'x'));
-    this.worldRoom.state.listen('players/:id/y', 'replace', updateSpecificAttr.bind(this, 'y'));
-    this.worldRoom.state.listen('players/:id/dir', 'replace', updateSpecificAttr.bind(this, 'dir'));
-    this.worldRoom.state.listen('players/:id/swimLevel', 'replace', updateSpecificAttr.bind(this, 'swimLevel'));
+    this.worldRoom.listen('players/:id/x', updateSpecificAttr.bind(this, 'x'));
+    this.worldRoom.listen('players/:id/y', updateSpecificAttr.bind(this, 'y'));
+    this.worldRoom.listen('players/:id/dir', updateSpecificAttr.bind(this, 'dir'));
+    this.worldRoom.listen('players/:id/swimLevel', updateSpecificAttr.bind(this, 'swimLevel'));
 
-    this.worldRoom.state.listen('players/:id/agro/:player', 'add', updateAgro);
-    this.worldRoom.state.listen('players/:id/agro/:player', 'replace', updateAgro);
-    this.worldRoom.state.listen('players/:id/agro/:player', 'remove', updateAgro);
+    this.worldRoom.listen('players/:id/agro/:player', updateAgro);
 
-    this.worldRoom.state.listen('players/:id/hp/:key', 'replace', updateHP);
-    this.worldRoom.state.listen('players/:id/hp/:key', 'replace', updateHP);
+    this.worldRoom.listen('players/:id/hp/:key', updateHP);
 
-    this.worldRoom.state.listen('players/:id/leftHand', 'replace', updateHand.bind(this, 'leftHand'));
-    this.worldRoom.state.listen('players/:id/rightHand', 'replace', updateHand.bind(this, 'rightHand'));
+    this.worldRoom.listen('players/:id/leftHand', updateHand.bind(this, 'leftHand'));
+    this.worldRoom.listen('players/:id/rightHand', updateHand.bind(this, 'rightHand'));
 
-    this.worldRoom.state.listen('players/:id/gear/Armor', 'replace', updateGearItem.bind(this, 'Armor'));
-    this.worldRoom.state.listen('players/:id/gear/Robe1', 'replace', updateGearItem.bind(this, 'Robe1'));
-    this.worldRoom.state.listen('players/:id/gear/Robe2', 'replace', updateGearItem.bind(this, 'Robe2'));
+    this.worldRoom.listen('players/:id/gear/Armor', updateGearItem.bind(this, 'Armor'));
+    this.worldRoom.listen('players/:id/gear/Robe1', updateGearItem.bind(this, 'Robe1'));
+    this.worldRoom.listen('players/:id/gear/Robe2', updateGearItem.bind(this, 'Robe2'));
 
-    this.worldRoom.state.listen('players/:id/leftHand/:attr', 'add', updateHandItem.bind(this, 'leftHand'));
-    this.worldRoom.state.listen('players/:id/rightHand/:attr', 'add', updateHandItem.bind(this, 'rightHand'));
+    this.worldRoom.listen('players/:id/leftHand/:attr', updateHandItem.bind(this, 'leftHand'));
+    this.worldRoom.listen('players/:id/rightHand/:attr', updateHandItem.bind(this, 'rightHand'));
 
-    this.worldRoom.state.listen('players/:id/leftHand/:attr', 'replace', updateHandItem.bind(this, 'leftHand'));
-    this.worldRoom.state.listen('players/:id/rightHand/:attr', 'replace', updateHandItem.bind(this, 'rightHand'));
+    this.worldRoom.listen('players/:id/leftHand/:attr', updateHandItem.bind(this, 'leftHand'));
+    this.worldRoom.listen('players/:id/rightHand/:attr', updateHandItem.bind(this, 'rightHand'));
 
-    this.worldRoom.state.listen('players/:id/effects/:effect', 'add', (entityId, effect, value) => {
-      this.clientGameState.updatePlayerEffect(entityId, effect, value);
+    this.worldRoom.listen('players/:id/effects/:effect', (change) => {
+      this.clientGameState.updatePlayerEffect(change.path.id, change.path.effect, change.value);
     });
 
-    this.worldRoom.state.listen('players/:id/effects/:effect/duration', 'replace', (entityId, effect, value) => {
-      this.clientGameState.updatePlayerEffectDuration(entityId, effect, value);
+    this.worldRoom.listen('players/:id/effects/:effect/duration', (change) => {
+      this.clientGameState.updatePlayerEffectDuration(change.path.id, change.path.effect, change.value);
     });
 
-    this.worldRoom.state.listen('players/:id/effects/:effect', 'remove', (entityId, effect) => {
+    /*
+    this.worldRoom.listen('players/:id/effects/:effect', (entityId, effect) => {
       this.clientGameState.updatePlayerEffect(entityId, effect, null);
     });
+    */
 
-    this.worldRoom.state.listen('players/:id/totalStats/stealth', 'replace', (entityId, value) => {
-      this.clientGameState.updatePlayerStealth(entityId, value);
+    this.worldRoom.listen('players/:id/totalStats/stealth', (change) => {
+      this.clientGameState.updatePlayerStealth(change.path.id, change.value);
     });
 
-    this.worldRoom.state.listen('players/:id/totalStats/perception', 'replace', (entityId, value) => {
-      this.clientGameState.updatePlayerPerception(entityId, value);
+    this.worldRoom.listen('players/:id/totalStats/perception', (change) => {
+      this.clientGameState.updatePlayerPerception(change.path.id, change.value);
     });
 
-    const updateDoor = (doorId) => {
-      this.clientGameState.updates.openDoors.push(doorId);
+    const updateDoor = (change) => {
+      this.clientGameState.updates.openDoors.push(change.path.doorId);
     };
 
-    this.worldRoom.state.listen('mapData/openDoors/:id', 'add', updateDoor);
-    this.worldRoom.state.listen('mapData/openDoors/:id/isOpen', 'replace', updateDoor);
+    this.worldRoom.listen('mapData/openDoors/:id', 'add', updateDoor);
+    this.worldRoom.listen('mapData/openDoors/:id/isOpen', 'replace', updateDoor);
 
     this.worldRoom.onJoin.add(() => {
       this.inGame$.next(true);
@@ -389,7 +391,7 @@ export class ColyseusGameService {
   }
 
   private sendAction(data) {
-    this.client.send(data);
+    this.worldRoom.send(data);
   }
 
   public sendRawCommand(command: string, args: string) {

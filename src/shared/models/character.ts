@@ -22,6 +22,8 @@ import { GameWorld } from '../../server/rooms/GameWorld';
 import { VisualEffect } from '../../server/gidmetadata/visual-effects';
 import { MoveHelper } from '../../server/helpers/move-helper';
 
+import { nonenumerable } from 'nonenumerable';
+
 export type Allegiance =
   'None'
 | 'Pirates'
@@ -197,9 +199,13 @@ export class Character {
   swimLevel: number;
 
   $fov: any;
+
   $$map: any;
+
   $$deathTicks: number;
+
   $$room: GameWorld;
+
   $$corpseRef: Item;
 
   aquaticOnly: boolean;
