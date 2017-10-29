@@ -54,6 +54,10 @@ body.no-fantasy {
 
   .message-container .message {
     letter-spacing: 0 !important;
+
+    strong {
+      letter-spacing: 0.5px !important;
+    }
   }
 
   .char-card .char-name {
@@ -67,6 +71,7 @@ body.no-fantasy {
     }
   }
 
+  // lobby
   .chat-area {
     .message {
       font-size: 1rem !important;
