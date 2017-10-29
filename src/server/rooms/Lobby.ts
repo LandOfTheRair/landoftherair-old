@@ -18,18 +18,13 @@ const AUTH0_SECRET = process.env.AUTH0_SECRET;
 
 export class Lobby extends Room<LobbyState> {
 
-  constructor(opts) {
-    super(opts);
+  onInit(opts) {
 
     this.setPatchRate(500);
     this.autoDispose = false;
 
     this.setState(new LobbyState({ accounts: [], messages: [], motd: '' }));
 
-    this.onInit();
-  }
-
-  onInit() {
     this.loadSettings();
     DB.$players.update({}, { $set: { inGame: -1 } }, { multi: true });
   }

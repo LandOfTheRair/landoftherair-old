@@ -15,6 +15,7 @@ export class ColyseusLobbyService {
 
   client: any;
   colyseus: any;
+  room: any;
   lobbyState: LobbyState = new LobbyState({});
   myAccount: Account = new Account({});
   myCharacter: any = { name: '' };
@@ -31,13 +32,13 @@ export class ColyseusLobbyService {
   private initLobby() {
     if(!this.client) throw new Error('Client not intialized; cannot initialize lobby connection.');
 
-    const room = this.client.join('Lobby');
+    this.room = this.client.join('Lobby');
 
-    room.onUpdate.add((state) => {
+    this.room.onUpdate.add((state) => {
       this.lobbyState.syncTo(state);
     });
 
-    room.onData.add((data) => {
+    this.room.onData.add((data) => {
       this.interceptLobbyCommand(data);
     });
   }
@@ -51,7 +52,7 @@ export class ColyseusLobbyService {
     const idToken = localStorage.getItem('access_token');
     const username = localStorage.getItem('user_name');
 
-    this.client.send({ userId, idToken, username });
+    this.room.send({ userId, idToken, username });
   }
 
   private async sendUserId() {
@@ -134,7 +135,7 @@ export class ColyseusLobbyService {
 
   private logout() {
     this.auth.logout();
-    this.client.send({ action: 'logout' });
+    this.room.send({ action: 'logout' });
 
     window.location.reload();
   }
@@ -146,21 +147,21 @@ export class ColyseusLobbyService {
   public sendMessage(message) {
     if(message.startsWith('/') && this.doCommand(message)) return;
 
-    this.client.send({ message });
+    this.room.send({ message });
   }
 
   public getCharacterCreatorCharacter() {
     const opts = this.myCharacter;
     opts.characterCreator = true;
-    this.client.send(opts);
+    this.room.send(opts);
   }
 
   public createCharacter(charSlot) {
-    this.client.send({ action: 'create', charSlot, character: this.myCharacter });
+    this.room.send({ action: 'create', charSlot, character: this.myCharacter });
   }
 
   public playCharacter(charSlot) {
-    this.client.send({ action: 'play', charSlot });
+    this.room.send({ action: 'play', charSlot });
   }
 
   public doCommand(string): boolean {
@@ -186,19 +187,19 @@ export class ColyseusLobbyService {
   }
 
   public quit() {
-    this.client.send({ action: 'quit' });
+    this.room.send({ action: 'quit' });
   }
 
   public setMOTD(newMOTD) {
-    this.client.send({ action: 'motd_set', motd: newMOTD });
+    this.room.send({ action: 'motd_set', motd: newMOTD });
   }
 
   public resetMOTD() {
-    this.client.send({ action: 'motd_set', motd: '' });
+    this.room.send({ action: 'motd_set', motd: '' });
   }
 
   public broadcastAlert(message) {
-    this.client.send({ action: 'alert', message });
+    this.room.send({ action: 'alert', message });
   }
 
   public popupAlert({ sender, message }) {
@@ -210,13 +211,13 @@ export class ColyseusLobbyService {
   }
 
   public changeStatus(status) {
-    this.client.send({ action: 'status', status });
+    this.room.send({ action: 'status', status });
   }
 
   public startHeartbeat() {
     const source = Observable.interval(20000);
     source.subscribe(() => {
-      this.client.send({ action: 'heartbeat' });
+      this.room.send({ action: 'heartbeat' });
     });
   }
 }

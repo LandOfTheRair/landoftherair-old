@@ -104,22 +104,6 @@ export class GameWorld extends Room<GameState> {
     return { map: this.mapName, x: this.state.map.properties.respawnX, y: this.state.map.properties.respawnY };
   }
 
-  constructor(opts) {
-    super(opts);
-
-    this.allMapNames = opts.allMapNames;
-
-    this.setPatchRate(500 / TICK_DIVISOR);
-    this.setSimulationInterval(this.tick.bind(this), 1000 / TICK_DIVISOR);
-    this.setState(new GameState({
-      players: [],
-      map: cloneDeep(require(opts.mapPath)),
-      mapName: opts.mapName
-    }));
-
-    this.onInit();
-  }
-
   private savePlayer(player: Player) {
     if(player.$$doNotSave) return;
 
@@ -408,7 +392,18 @@ export class GameWorld extends Room<GameState> {
     CommandExecutor.executeCommand(player, data.command, data);
   }
 
-  private async onInit() {
+  async onInit(opts) {
+
+    this.allMapNames = opts.allMapNames;
+
+    this.setPatchRate(500 / TICK_DIVISOR);
+    this.setSimulationInterval(this.tick.bind(this), 1000 / TICK_DIVISOR);
+    this.setState(new GameState({
+      players: [],
+      map: cloneDeep(require(opts.mapPath)),
+      mapName: opts.mapName
+    }));
+
     const timerData = await this.loadBossTimers();
     const spawnerTimers = timerData ? timerData.spawners : [];
 

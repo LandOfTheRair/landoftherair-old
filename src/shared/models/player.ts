@@ -10,6 +10,7 @@ import { Quest } from '../../server/base/Quest';
 
 import * as Quests from '../../server/quests';
 import { LowCON } from '../../server/effects/LowCON';
+import { nonenumerable } from 'nonenumerable';
 
 export class Player extends Character {
   _id?: any;
@@ -30,10 +31,15 @@ export class Player extends Character {
   banks: any;
 
   $$doNotSave: boolean;
+
   $$actionQueue;
+
   $$flaggedSkills;
+
   $$lastDesc: string;
+
   $$lastRegion: string;
+
   $$swimElement: string;
 
   $$locker: any;

@@ -4,6 +4,7 @@ import { Message } from './message';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
+import { nonenumerable } from 'nonenumerable';
 import { find, reject, pullAt, extend } from 'lodash';
 
 export class LobbyState {
@@ -11,8 +12,13 @@ export class LobbyState {
   messages: Message[] = [];
   motd: string;
 
+  @nonenumerable
   account$ = new BehaviorSubject<Account[]>([]);
+
+  @nonenumerable
   inGame = {};
+
+  @nonenumerable
   status = {};
 
   constructor({ accounts = [], messages = [], motd = '' }) {
@@ -62,13 +68,5 @@ export class LobbyState {
   removeAccountAtPosition(position: number) {
     pullAt(this.accounts, [position]);
     this.account$.next(this.accounts);
-  }
-
-  toJSON() {
-    return {
-      accounts: this.accounts,
-      messages: this.messages,
-      motd: this.motd
-    };
   }
 }
