@@ -6477,7 +6477,7 @@
                  "y":4992
                 }, 
                 {
-                 "height":704,
+                 "height":448,
                  "id":494,
                  "name":"Renegade Reader",
                  "properties":
@@ -6627,10 +6627,67 @@
                  "width":1536,
                  "x":320,
                  "y":8832
+                }, 
+                {
+                 "height":192,
+                 "id":779,
+                 "name":"Renegade Reader",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a strange place beneath the renegade cornfield. There is one person here in the corner, reading books."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":576,
+                 "x":1664,
+                 "y":704
+                }, 
+                {
+                 "height":512,
+                 "id":780,
+                 "name":"",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a submerged cave area."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":1152,
+                 "y":704
+                }, 
+                {
+                 "height":192,
+                 "id":781,
+                 "name":"",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a submerged cave area."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":640,
+                 "x":1472,
+                 "y":1024
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -7095,11 +7152,11 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextobjectid":779,
+ "nextobjectid":782,
  "orientation":"orthogonal",
  "properties":
     {
