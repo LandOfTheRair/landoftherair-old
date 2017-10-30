@@ -32,6 +32,8 @@ class Database {
 
       MongoClient.connect(DB_URI, (err, client) => {
         if(err) {
+          console.error(err);
+          process.exit(0);
           return reject(err);
         }
 

@@ -219,6 +219,7 @@ export class ColyseusGameService {
     this.character.y = y;
     this.character.dir = dir;
     this.character.swimLevel = swimLevel;
+    this.character.$fov = this.clientGameState.fov;
 
     this.clientGameState.updatePlayer(this.character.username, 'x', x);
     this.clientGameState.updatePlayer(this.character.username, 'y', y);
@@ -306,8 +307,9 @@ export class ColyseusGameService {
   }
 
   private updatePos(x: number, y: number, dir, swimLevel: number, fov) {
-    this.syncCharacterAttributes(x, y, dir, swimLevel);
     this.clientGameState.setFOV(fov);
+
+    this.syncCharacterAttributes(x, y, dir, swimLevel);
   }
 
   private drawEffect(effect: number, tiles: any[]) {
@@ -429,6 +431,8 @@ export class ColyseusGameService {
 
   public doCommand(command) {
 
+    if(this.lastCommands[0] === command) return;
+
     this.lastCommands.unshift(command);
     if(this.lastCommands.length > 20) this.lastCommands.length = 20;
 
@@ -442,7 +446,7 @@ export class ColyseusGameService {
 
       if(cmd === '.' && this.lastCommands[0]) {
         cmd = this.lastCommands[0];
-      } else {
+      } else if(!includes(cmd, ', hello')) {
         this.doCommand(cmd);
       }
 

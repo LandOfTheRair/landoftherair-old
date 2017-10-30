@@ -410,6 +410,10 @@ export class Player extends Character {
     this.$$room.sendPlayerLogMessage(this, message);
   }
 
+  sendQuestMessage(quest: Quest, message: string): void {
+    this.sendClientMessage(`Quest >>> ${message}`);
+  }
+
   receiveMessage(from: Character, message) {
     from.sendClientMessage({ name: `[>>> private: ${this.name}]`, message });
     this.sendClientMessage({ name: `[<<< private: ${from.name}]`, message });
@@ -462,7 +466,7 @@ export class Player extends Character {
   }
 
   getQuestData(quest: Quest) {
-    return this.questProgress ? this.questProgress[quest.name] : '';
+    return this.questProgress ? this.questProgress[quest.name] : null;
   }
 
   checkForQuestUpdates(questOpts = { kill: '' }) {

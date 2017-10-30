@@ -57,5 +57,8 @@
     fireResist: 40
     iceResist: 40
 
+  requirements:
+    level: 5
+
   value: 700
   sprite: 352
