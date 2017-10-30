@@ -30,7 +30,7 @@
 
   gear:
     Armor: Yzalt SewerRat Fur
-    Head: DarkVision Helm
+    Head: Enemy DarkVision Helm
     Hands: Basic Claws
 
     Robe1:
@@ -86,7 +86,7 @@
 
   gear:
     Armor: Yzalt RatGuard Fur
-    Head: DarkVision Helm
+    Head: Enemy DarkVision Helm
     Hands: Basic Claws
 
     Robe1:

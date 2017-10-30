@@ -4,7 +4,6 @@ import { omit, flatten, random } from 'lodash';
 import { Allegiance, Character, Direction } from './character';
 import { Item } from './item';
 import * as uuid from 'uuid/v4';
-import { nonenumerable } from 'nonenumerable';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 

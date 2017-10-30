@@ -2,6 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { ItemCreator } from '../../../helpers/item-creator';
+import { CombatHelper } from '../../../helpers/combat-helper';
 
 export class GMKill extends Command {
 
@@ -18,7 +19,11 @@ export class GMKill extends Command {
     if(!target) return false;
     if(target.hostility === 'Never') return player.sendClientMessage('That target is not killable.');
 
-    target.hp.toMinimum();
-    target.die(player);
+    CombatHelper.dealDamage(player, target, {
+      defenderDamageMessage: `${player.name} forced your insides outside.`,
+      attackerDamageMessage: `You GM-killed ${target.name}.`,
+      damage: target.hp.maximum,
+      damageClass: 'gm'
+    });
   }
 }

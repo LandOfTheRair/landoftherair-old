@@ -49,6 +49,10 @@ export class NPCLoader {
     return player.hasHeldItem(itemName, 'right') || player.hasHeldItem(itemName, 'left');
   }
 
+  static checkPlayerHeldItemBothHands(player: Player, itemName: string) {
+    return player.hasHeldItem(itemName, 'right') && player.hasHeldItem(itemName, 'left');
+  }
+
   static takePlayerItemFromEitherHand(player: Player, itemName: string) {
     if(this.takePlayerItem(player, itemName, 'right')) return;
     this.takePlayerItem(player, itemName, 'left');

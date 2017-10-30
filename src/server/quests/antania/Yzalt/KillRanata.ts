@@ -4,16 +4,16 @@ import { clone, includes } from 'lodash';
 import { Quest } from '../../../base/Quest';
 import { Player } from '../../../../shared/models/player';
 
-export class KillRebels extends Quest {
+export class KillRanata extends Quest {
 
   public static isRepeatable = true;
-  static killsRequired = 20;
+  static killsRequired = 1;
 
   public static get requirements() {
     return {
       type: 'kill',
       npcIds: [
-        'Rylt Renegade Prisoner'
+        'Ranata'
       ]
     };
   }
@@ -33,7 +33,7 @@ export class KillRebels extends Quest {
     structure.kills = kills + 1;
 
     if(structure.kills <= this.killsRequired) {
-      player.sendQuestMessage(this, `You have killed ${structure.kills}/${this.killsRequired} prisoners.`);
+      player.sendQuestMessage(this, `You have killed Ranata ${structure.kills}/${this.killsRequired}.`);
     }
 
     player.setQuestData(this, structure);
@@ -46,9 +46,7 @@ export class KillRebels extends Quest {
   }
 
   public static incompleteText(player: Player): string {
-    const { kills } = player.getQuestData(this);
-
-    return `By my records, you have to kill ${this.killsRequired - kills} prisoners yet!`;
+    return `I see you haven't taken care of Ranata yet. What are you doing here?`;
   }
 
   public static completeFor(player: Player): void {
@@ -57,7 +55,7 @@ export class KillRebels extends Quest {
   }
 
   public static givePlayerRewards(player: Player): void {
-    player.gainGold(2000);
-    player.gainExp(500);
+    player.gainGold(5000);
+    player.gainExp(20000);
   }
 }

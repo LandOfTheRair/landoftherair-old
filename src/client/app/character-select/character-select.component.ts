@@ -4,6 +4,7 @@ import { LobbyState } from '../../../shared/models/lobbystate';
 
 import { truncate, capitalize } from 'lodash';
 import { LocalStorage } from 'ngx-webstorage';
+import { ColyseusGameService } from '../colyseus.game.service';
 
 @Component({
   selector: 'app-character-select',
@@ -25,7 +26,7 @@ export class CharacterSelectComponent implements OnInit {
 
   public confirmOverwrite: boolean;
 
-  constructor(public lobby: ColyseusLobbyService) { }
+  constructor(public lobby: ColyseusLobbyService, public game: ColyseusGameService) { }
 
   ngOnInit() {
     if(!this.curSlot) this.curSlot = 0;

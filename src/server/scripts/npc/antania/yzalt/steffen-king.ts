@@ -1,6 +1,5 @@
 import { NPC } from '../../../../../shared/models/npc';
 import { NPCLoader } from '../../../../helpers/npc-loader';
-import { VendorResponses } from '../../common-responses';
 import { DarkVision } from '../../../../effects/DarkVision';
 
 export const setup = async (npc: NPC) => {

@@ -8,10 +8,10 @@
   <div class="row" [tooltip]="resourcesLoaded ? '' : 'Some resources are loading. To create a better experience, you have to wait for them to finish before starting the game.'">
     <button class="col no-border-radius btn btn-warning"
             (click)="charModal.show()"
-            [disabled]="!lobby.colyseus.isConnected">Create</button>
+            [disabled]="!lobby.colyseus.isConnected || game.inGame">Create</button>
     <button class="col no-border-radius btn btn-primary"
             (click)="playCharacter()"
-            [disabled]="!lobby.myAccount.characterNames[curSlot] || !lobby.colyseus.isConnected || !resourcesLoaded.done">{{ resourcesLoaded.done ? 'Play' : 'Loading... (' + resourcesLoaded.current + '/' + resourcesLoaded.total + ')' }}</button>
+            [disabled]="!lobby.myAccount.characterNames[curSlot] || !lobby.colyseus.isConnected || !resourcesLoaded.done || game.inGame">{{ resourcesLoaded.done ? 'Play' : 'Loading... (' + resourcesLoaded.current + '/' + resourcesLoaded.total + ')' }}</button>
   </div>
 </div>
 

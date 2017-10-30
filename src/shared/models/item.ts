@@ -241,10 +241,12 @@ export class Item {
 
     const dualWieldText = this.offhand ? 'The item is lightweight enough to use in either hand. ' : '';
 
+    const alignmentText = this.requirements && this.requirements.alignment ? `This item is ${this.requirements.alignment}. ` : '';
+
     const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
     const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';
 
-    return `${baseText}${sense1Text}${sense1AfterText}${sense2Text}${dualWieldText}${usesText}${fluidText}${levelText}${conditionText}${ownedText}${appraiseText}`;
+    return `${baseText}${sense1Text}${sense1AfterText}${sense2Text}${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}${conditionText}${ownedText}${appraiseText}`;
   }
 
   isRobe() {
