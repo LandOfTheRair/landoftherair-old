@@ -3750,40 +3750,6 @@
                  "y":8704
                 }, 
                 {
-                 "gid":2347,
-                 "height":64,
-                 "id":1409,
-                 "name":"Ranata Spawner",
-                 "properties":
-                    {
-                     "lairName":"Ranata",
-                     "randomWalkRadius":10,
-                     "respawnRate":3600,
-                     "script":"global\/lair",
-                     "shouldStrip":true,
-                     "stripRadius":1,
-                     "stripX":90,
-                     "stripY":170
-                    },
-                 "propertytypes":
-                    {
-                     "lairName":"string",
-                     "randomWalkRadius":"int",
-                     "respawnRate":"int",
-                     "script":"string",
-                     "shouldStrip":"bool",
-                     "stripRadius":"int",
-                     "stripX":"int",
-                     "stripY":"int"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5184,
-                 "y":11264
-                }, 
-                {
                  "gid":2390,
                  "height":64,
                  "id":1410,
@@ -6270,6 +6236,40 @@
                  "width":64,
                  "x":5248,
                  "y":1408
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":1412,
+                 "name":"Ranata Spawner",
+                 "properties":
+                    {
+                     "lairName":"Ranata",
+                     "randomWalkRadius":10,
+                     "respawnRate":3600,
+                     "script":"global\/lair",
+                     "shouldStrip":true,
+                     "stripRadius":1,
+                     "stripX":90,
+                     "stripY":170
+                    },
+                 "propertytypes":
+                    {
+                     "lairName":"string",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string",
+                     "shouldStrip":"bool",
+                     "stripRadius":"int",
+                     "stripX":"int",
+                     "stripY":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5184,
+                 "y":11264
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7005,7 +7005,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -7246,7 +7246,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1412,
+ "nextobjectid":1413,
  "orientation":"orthogonal",
  "properties":
     {

@@ -62,3 +62,21 @@
 
   requirements:
     level: 5
+
+- name: Ranata Robe
+  stats:
+    stealth: 10
+    perception: 10
+    defense: 1
+    offense: 1
+    hpregen: 3
+    mpregen: 3
+    fireResist: 30
+    iceResist: 30
+  desc: "a shimmering black robe sewn with golden string"
+  value: 1400
+  sprite: 376
+  binds: true
+
+  requirements:
+    level: 9

@@ -999,7 +999,8 @@
     min: 50000
     max: 55000
 
-  rightHand: Antanian Mace
+  rightHand: Ranata Longbow
+  leftHand: Antanian Iron Shield
 
   usableSkills:
     - Afflict
@@ -1007,16 +1008,37 @@
     - Disease
     - MagicMissile
     - Darkness
+    - Charge
 
   gear:
-    Armor:
-      - result: Yzalt Fungus Ringmail Tunic
-        chance: 1
-      - result: Antanian Breastplate
-        chance: 20
+    Armor: Yzalt Fungus Ringmail Tunic
+    Robe1: Ranata Robe
+    Head: Enemy DarkVision Helm
+    Ear: Antanian Earring
+
+  dropPool:
+    choose: 2
+    items:
+      - Steffen Offensive Sash
+      - Yzalt Basic Sash
+      - Yzalt MagicResist Bracers
+      - Heniz Dexterity Bracers
+      - Yzalt Defensive Claws
+      - Yzalt Combat Boots
+      - Yzalt Combat Amulet
+      - Yzalt Armor Ring
+      - Steffen DamageResist Ring
+      - Heniz Intelligence Ring
+      - Heniz Battlemage Gloves
+      - Steffen Mana Ring
+      - Steffen Wisdom Amulet
 
   copyDrops:
     - drop: 'rightHand'
       chance: -1
     - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Ear'
+      chance: -1
+    - drop: 'gear.Robe1'
       chance: -1
