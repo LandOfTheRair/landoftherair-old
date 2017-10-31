@@ -123,13 +123,17 @@ class ItemLoader {
     }
 
     if(item.itemClass === 'Shield') {
-      if(!item.stats.accuracy) item.stats.accuracy = 1;
-      item.baseDamage = 1;
+      if(!item.stats.accuracy) item.stats.accuracy = 0;
     }
 
     if(item.itemClass === 'Bottle' || item.itemClass === 'Food') {
       item.ounces = item.ounces || 1;
     }
+
+    if(!item.baseDamage) item.baseDamage = 1;
+    if(!item.maxDamage) item.maxDamage = 1;
+    if(!item.minDamage) item.minDamage = 1;
+    if(!item.damageRolls) item.damageRolls = 1;
 
     item.type = capitalize(item.type);
     if(item.secondaryType) item.secondaryType = capitalize(item.secondaryType);

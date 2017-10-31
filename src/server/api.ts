@@ -14,6 +14,9 @@ import * as processStats from 'process-stats';
 import { DB } from './database';
 import { Logger } from './logger';
 
+import { drawNormal as drawNormalArmor } from './tasks/analysis/_armor';
+import { drawNormal as drawNormalWeapon, drawSpecial as drawSpecialWeapon } from './tasks/analysis/_weapons';
+
 class GameAPI {
 
   public isReady: Promise<any>;
@@ -30,6 +33,11 @@ class GameAPI {
 
       app.use('/server', (req, res) => {
         res.json(processStats());
+      });
+
+      app.use('/item-stats', async (req, res) => {
+        const statStrings = await Promise.all([drawNormalArmor(), drawNormalWeapon(), drawSpecialWeapon()]);
+        res.send(statStrings.map(x => `<pre>${x}</pre>`).join(''))
       });
 
       app.use('/silent-dev', staticFile(`${__dirname}/silent-dev.html`));
