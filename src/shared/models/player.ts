@@ -443,7 +443,7 @@ export class Player extends Character {
     super.addAgro(char, value);
   }
 
-  startQuest(quest: Quest) {
+  startQuest(quest) {
 
     // can't start a quest you're already on or have completed
     if(this.hasQuest(quest) || this.hasPermanentCompletionFor(quest.name)) return;
@@ -492,7 +492,8 @@ export class Player extends Character {
   }
 
   completeQuest(quest: Quest) {
-    if(!quest.isRepeatable) {
+    const data = this.getQuestData(quest);
+    if(!data.isRepeatable) {
       this.permanentlyCompleteQuest(quest.name);
     }
     delete this.questProgress[quest.name];

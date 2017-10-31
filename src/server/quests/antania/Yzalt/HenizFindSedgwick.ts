@@ -15,7 +15,7 @@ export class HenizFindSedgwick extends Quest {
   }
 
   public static get initialData(): any {
-    return clone({ keyword: '', foundSedgwick: false });
+    return clone({ keyword: '', foundSedgwick: false, isRepeatable: false });
   }
 
   public static canUpdateProgress(player: Player, questOpts: any = {}): boolean {
