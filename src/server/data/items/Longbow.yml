@@ -10,3 +10,25 @@
   secondaryType: Twohanded
   value: 110
   sprite: 200
+
+- name: Ranata Longbow
+  stats:
+    offense: 2
+
+  effect:
+    name: MagicMissile
+    potency: 10
+    chance: 5
+
+  desc: "a crystal longbow, glowing with dark magic"
+  baseDamage: 15
+  minDamage: 5
+  maxDamage: 10
+  damageRolls: 2
+  type: Ranged
+  secondaryType: Twohanded
+  value: 2300
+  sprite: 445
+
+  requirements:
+    level: 9

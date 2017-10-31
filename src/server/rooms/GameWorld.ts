@@ -738,6 +738,17 @@ export class GameWorld extends Room<GameState> {
       });
     }
 
+    if(npc.dropPool) {
+      const { items, choose } = npc.dropPool;
+      if(choose > 0 && items.length > 0) {
+        tables.push({
+          table: new LootTable(items, bonus),
+          func: LootFunctions.WithoutReplacement,
+          args: choose
+        });
+      }
+    }
+
     if(!sackOnly && npc.copyDrops && npc.copyDrops.length > 0) {
       const drops = compact(npc.copyDrops.map(({ drop, chance }) => {
         const item = get(npc, drop);

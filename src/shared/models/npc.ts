@@ -39,6 +39,7 @@ export class NPC extends Character {
 
   copyDrops: any[];
   drops: Item[];
+  dropPool: { items: Item[], choose: number };
   giveXp: any;
   repMod: Array<{ delta: number, allegiance: Allegiance }>;
 
