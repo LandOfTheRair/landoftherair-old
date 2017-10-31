@@ -452,7 +452,7 @@
     Conjuration: 3
     Wand: 3
 
-  level: 12
+  level: 8
 
   skillOnKill: 25
 
@@ -593,7 +593,7 @@
   otherStats:
     stealth: 25
 
-  level: 12
+  level: 8
 
   skillOnKill: 25
 
@@ -729,7 +729,7 @@
     Onehanded: 3
     Twohanded: 3
 
-  level: 12
+  level: 8
 
   skillOnKill: 25
 
@@ -858,7 +858,7 @@
   skillLevels:
     Mace: 4
 
-  level: 12
+  level: 8
 
   skillOnKill: 25
 
@@ -969,4 +969,54 @@
     - drop: 'gear.Wrists'
       chance: -1
     - drop: 'gear.Waist'
+      chance: -1
+
+
+- npcId: Ranata
+  name: Ranata
+  hostility: Always
+  sprite: 480
+  stats: 13
+  skillLevels: 3
+
+  level: 10
+
+  skillOnKill: 100
+
+  gold:
+    min: 2500
+    max: 3000
+
+  hp:
+    min: 25000
+    max: 30000
+
+  mp:
+    min: 1000
+    max: 1000
+
+  giveXp:
+    min: 50000
+    max: 55000
+
+  rightHand: Antanian Mace
+
+  usableSkills:
+    - Afflict
+    - Poison
+    - Disease
+    - MagicMissile
+    - Darkness
+
+  gear:
+    Armor:
+      - result: Yzalt Fungus Ringmail Tunic
+        chance: 1
+      - result: Antanian Breastplate
+        chance: 20
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
       chance: -1

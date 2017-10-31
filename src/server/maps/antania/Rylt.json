@@ -4524,6 +4524,7 @@
                     {
                      "lairName":"Rylt Werebear",
                      "randomWalkRadius":5,
+                     "respawnRate":1800,
                      "script":"global\/lair",
                      "shouldStrip":true,
                      "stripRadius":1,
@@ -4534,6 +4535,7 @@
                     {
                      "lairName":"string",
                      "randomWalkRadius":"int",
+                     "respawnRate":"int",
                      "script":"string",
                      "shouldStrip":"bool",
                      "stripRadius":"int",
@@ -6687,7 +6689,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
