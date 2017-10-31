@@ -3,6 +3,7 @@ import { NPCLoader } from '../../../../helpers/npc-loader';
 
 import { values } from 'lodash';
 import { HenizFindSedgwick } from '../../../../quests/antania/Yzalt/HenizFindSedgwick';
+import { SteffenFindSedgwick } from '../../../../quests/antania/Yzalt/SteffenFindSedgwick';
 
 const RANATA_KEY = 'Ranata\'s Key';
 
@@ -75,7 +76,26 @@ export const responses = (npc: NPC) => {
 
       return `It's sad - Ranata and I go way back, but he must be stopped.
         There isn't any secret magic like I told Ergorat, but there is this key.
-        Ranata gave it to me as a sign of trust.`
+        Ranata gave it to me as a sign of trust - I pray he's too far gone to know what hit him.`;
+    });
+
+  npc.parser.addCommand('friend')
+    .set('syntax', ['friend'])
+    .set('logic', (args, { player }) => {
+
+      if(player.hasPermanentCompletionFor('SteffenFindSedgwick')
+        || !SteffenFindSedgwick.isComplete(player)) return 'What about my friend?';
+
+      if(player.rightHand) return 'Please empty your right hand.';
+
+      NPCLoader.loadItem(RANATA_KEY)
+        .then(item => {
+          player.setRightHand(item);
+        });
+
+      return `Well, I suppose it's no surprise, but at least now I'll know what happens to him.
+      Down in the madhouse, no one's ever been down there but me, once, and that's when it wasn't called the madhouse.
+      Ranata entrusted this key to me just in case he were to go insane like his experiments, now I hope you'll do what I couldn't all these years.`
     });
 
   npc.parser.addCommand('password')
@@ -84,6 +104,14 @@ export const responses = (npc: NPC) => {
       const password = values(args)[0];
 
       const henizProgress = player.getQuestData(HenizFindSedgwick);
+      const steffenProgress = player.getQuestData(SteffenFindSedgwick);
+
+      if(steffenProgress) {
+        if(steffenProgress.keyword !== password) return 'Huh? What is that supposed to mean?';
+
+        SteffenFindSedgwick.updateProgress(player, { foundSedgwick: true });
+        return `So even Kranton wants to take care of my FRIEND? I'd heard rumblings from the Heniz, but it seems like they're united under this one threat...`;
+      }
 
       if(henizProgress) {
         if(henizProgress.keyword !== password) return 'Huh? What is that supposed to mean?';

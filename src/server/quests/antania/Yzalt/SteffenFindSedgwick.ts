@@ -4,7 +4,7 @@ import { clone, includes } from 'lodash';
 import { Quest } from '../../../base/Quest';
 import { Player } from '../../../../shared/models/player';
 
-export class HenizFindSedgwick extends Quest {
+export class SteffenFindSedgwick extends Quest {
 
   public static isRepeatable = false;
 

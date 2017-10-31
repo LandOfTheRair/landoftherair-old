@@ -1000,7 +1000,6 @@
     max: 55000
 
   rightHand: Ranata Longbow
-  leftHand: Antanian Iron Shield
 
   usableSkills:
     - Afflict
@@ -1036,9 +1035,12 @@
   copyDrops:
     - drop: 'rightHand'
       chance: -1
-    - drop: 'leftHand'
-      chance: -1
     - drop: 'gear.Ear'
       chance: -1
     - drop: 'gear.Robe1'
       chance: -1
+
+  combatMessages:
+    - "WHO INTRUDES UPON MY HOME?"
+    - "RAWWWWWWWRGH!"
+    - "WHERE... SEDGWICK?"

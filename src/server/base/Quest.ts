@@ -3,13 +3,13 @@ import { Player } from '../../shared/models/player';
 
 export class Quest {
 
-  isRepeatable: boolean;
+  static isRepeatable: boolean;
 
   public get name(): string {
     return this.constructor.name;
   }
 
-  public get initialData(): any {
+  public static get initialData(): any {
     return {};
   }
 
@@ -27,7 +27,10 @@ export class Quest {
     return '';
   }
 
-  public static completeFor(player: Player): void {}
+  public static completeFor(player: Player): void {
+    this.givePlayerRewards(player);
+    player.completeQuest(this);
+  }
 
   public static givePlayerRewards(player: Player): void {}
 }
