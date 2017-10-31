@@ -6,7 +6,6 @@ import { Player } from '../../../../shared/models/player';
 
 export class KillRanata extends Quest {
 
-  public static isRepeatable = true;
   static killsRequired = 1;
 
   public static get requirements() {
@@ -19,7 +18,7 @@ export class KillRanata extends Quest {
   }
 
   public static get initialData(): any {
-    return clone({ kills: 0 });
+    return clone({ kills: 0, isRepeatable: true });
   }
 
   public static canUpdateProgress(player: Player, questOpts: any = {}): boolean {

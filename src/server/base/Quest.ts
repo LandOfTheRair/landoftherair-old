@@ -3,14 +3,12 @@ import { Player } from '../../shared/models/player';
 
 export class Quest {
 
-  static isRepeatable: boolean;
-
   public get name(): string {
     return this.constructor.name;
   }
 
   public static get initialData(): any {
-    return {};
+    return { isRepeatable: false };
   }
 
   public static canUpdateProgress(player: Player, questOpts: any = {}): boolean {

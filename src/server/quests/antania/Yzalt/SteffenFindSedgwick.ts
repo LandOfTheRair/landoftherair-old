@@ -6,8 +6,6 @@ import { Player } from '../../../../shared/models/player';
 
 export class SteffenFindSedgwick extends Quest {
 
-  public static isRepeatable = false;
-
   public static get requirements() {
     return {
       type: 'search'
@@ -15,7 +13,7 @@ export class SteffenFindSedgwick extends Quest {
   }
 
   public static get initialData(): any {
-    return clone({ keyword: '', foundSedgwick: false });
+    return clone({ keyword: '', foundSedgwick: false, isRepeatable: false });
   }
 
   public static canUpdateProgress(player: Player, questOpts: any = {}): boolean {
