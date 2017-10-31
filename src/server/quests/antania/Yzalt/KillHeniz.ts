@@ -4,7 +4,7 @@ import { clone, includes } from 'lodash';
 import { Quest } from '../../../base/Quest';
 import { Player } from '../../../../shared/models/player';
 
-export class KillSteffen extends Quest {
+export class KillHeniz extends Quest {
 
   public static isRepeatable = true;
   static killsRequired = 25;
@@ -13,11 +13,11 @@ export class KillSteffen extends Quest {
     return {
       type: 'kill',
       npcIds: [
-        'Steffen Townee',
-        'Steffen Warrior Defender',
-        'Steffen Healer Defender',
-        'Steffen Warrior Offender',
-        'Steffen Healer Offender'
+        'Heniz Townee',
+        'Heniz Warrior Defender',
+        'Heniz Healer Defender',
+        'Heniz Warrior Offender',
+        'Heniz Healer Offender'
       ]
     };
   }
@@ -37,7 +37,7 @@ export class KillSteffen extends Quest {
     structure.kills = kills + 1;
 
     if(structure.kills <= this.killsRequired) {
-      player.sendQuestMessage(this, `You have killed ${structure.kills}/${this.killsRequired} Steffen.`);
+      player.sendQuestMessage(this, `You have killed ${structure.kills}/${this.killsRequired} Heniz.`);
     }
 
     player.setQuestData(this, structure);
@@ -52,12 +52,17 @@ export class KillSteffen extends Quest {
   public static incompleteText(player: Player): string {
     const { kills } = player.getQuestData(this);
 
-    return `You're not done yet. You have to kill ${this.killsRequired - kills} Steffen still!`;
+    return `You're not done yet. You have to kill ${this.killsRequired - kills} Heniz still!`;
+  }
+
+  public static completeFor(player: Player): void {
+    this.givePlayerRewards(player);
+    player.completeQuest(this);
   }
 
   public static givePlayerRewards(player: Player): void {
     player.gainGold(1000);
     player.gainExp(1000);
-    player.changeRep('Pirates', 100, true);
+    player.changeRep('Royalty', 100, true);
   }
 }

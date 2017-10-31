@@ -49,11 +49,6 @@ export class KillRanata extends Quest {
     return `I see you haven't taken care of Ranata yet. What are you doing here?`;
   }
 
-  public static completeFor(player: Player): void {
-    this.givePlayerRewards(player);
-    player.completeQuest(this);
-  }
-
   public static givePlayerRewards(player: Player): void {
     player.gainGold(5000);
     player.gainExp(20000);
