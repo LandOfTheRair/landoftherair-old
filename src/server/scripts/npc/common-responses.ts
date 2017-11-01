@@ -360,8 +360,9 @@ export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
       });
 
       if(allItems.length === 0) return 'You are not carrying any items of that type!';
-
+      
       allItems.forEach(item => {
+        player.sellItem(item);
         player.sack.takeItem(item);
       });
 
