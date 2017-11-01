@@ -1096,12 +1096,20 @@ export class Character {
     return this.getTotalStat('perception') >= totalStealth;
   }
 
-  canHide(): boolean {
-    if(this.hasEffect('Hidden')) return false;
+  canHide(): boolean|string {
+    if(this.hasEffect('Hidden')) return 'You are already hidden!';
 
     const hideHpPercent = this.baseClass === 'Thief' ? 70 : 90;
-    if(this.hp.ltePercent(hideHpPercent)) return false;
-    if(!this.isNearWall() && !this.isInDarkness()) return false;
+    if(this.hp.ltePercent(hideHpPercent)) return 'You are too injured to hide!';
+
+    const nearWall = this.isNearWall();
+    const inDark = this.isInDarkness();
+
+    if(!nearWall && !inDark) {
+      if(!nearWall) return 'You are not near a wall!';
+      if(!inDark) return 'There are no shadows here to hide in!';
+    }
+
     return true;
   }
 
