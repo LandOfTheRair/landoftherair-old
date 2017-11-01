@@ -1,5 +1,5 @@
 
-import { startsWith } from 'lodash';
+import { startsWith, isString } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
@@ -27,8 +27,8 @@ export class Hide extends Skill {
   }
 
   use(user: Character) {
-    if(user.hasEffect('Hidden')) return user.sendClientMessage('You are already hidden!');
-    if(!user.canHide()) return user.sendClientMessage('You were unable to hide.');
+    const hideReason = user.canHide();
+    if(isString(hideReason)) return user.sendClientMessage(hideReason);
 
     const effect = new CastEffect({});
     effect.cast(user, user, this);
