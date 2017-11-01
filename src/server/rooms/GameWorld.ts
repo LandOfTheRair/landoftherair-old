@@ -924,8 +924,10 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'draw_effect_r', effect: effectId, center, radius });
   }
 
-  public updatePos(player: Player) {
-    const client = this.findClient(player);
+  public updatePos(player: Character) {
+    if(!player.isPlayer()) return;
+
+    const client = this.findClient(<Player>player);
     if(!client) return;
 
     this.send(client, {

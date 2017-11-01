@@ -60,6 +60,8 @@ export class Charge extends Skill {
 
     MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff }, true);
 
+    user.$$room.updatePos(user);
+
     CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
   }
 
