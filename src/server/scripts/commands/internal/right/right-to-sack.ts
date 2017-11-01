@@ -11,7 +11,7 @@ export class RightToSack extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const item = player.rightHand;
-    if(!item) return false;
+    if(!item) return;
 
     if(!player.addItemToSack(item)) return;
     player.setRightHand(null);

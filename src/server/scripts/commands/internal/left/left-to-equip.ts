@@ -10,11 +10,11 @@ export class LeftToEquip extends Command {
   public format = 'ItemSlot';
 
   execute(player: Player, { room, gameState, args }) {
+    const item = player.leftHand;
+    if(!item) return;
+
     const slot = +args;
     if(isUndefined(slot)) return false;
-
-    const item = player.leftHand;
-    if(!item) return false;
 
     if(!player.canEquip(item)) return player.sendClientMessage('You cannot equip that item.');
 
