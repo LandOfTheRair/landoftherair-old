@@ -11,7 +11,7 @@ export class RightToLocker extends Command {
 
   async execute(player: Player, { room, gameState, args }) {
     const item = player.rightHand;
-    if(!item) return false;
+    if(!item) return;
 
     if(!this.findLocker(player)) return;
 

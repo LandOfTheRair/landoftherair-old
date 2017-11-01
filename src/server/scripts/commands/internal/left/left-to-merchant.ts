@@ -12,7 +12,7 @@ export class LeftToMerchant extends Command {
   execute(player: Player, { room, gameState, args }) {
     const item = player.leftHand;
 
-    if(!item) return false;
+    if(!item) return;
     if(!item.isOwnedBy(player)) return player.sendClientMessage('That is not yours!');
 
     if(!this.checkMerchantDistance(player, args)) return;

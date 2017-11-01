@@ -11,7 +11,7 @@ export class RightToPotion extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const right = player.rightHand;
-    if(!right) return false;
+    if(!right) return;
     if(right.itemClass !== 'Bottle') return player.sendClientMessage('That item is not a bottle.');
 
     if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');

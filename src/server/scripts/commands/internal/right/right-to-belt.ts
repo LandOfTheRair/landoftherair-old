@@ -11,7 +11,7 @@ export class RightToBelt extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const item = player.rightHand;
-    if(!item) return false;
+    if(!item) return;
 
     if(!player.addItemToBelt(item)) return;
     player.setRightHand(null);
