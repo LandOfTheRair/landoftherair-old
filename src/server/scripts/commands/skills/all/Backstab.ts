@@ -60,6 +60,7 @@ export class Backstab extends Skill {
     const yDiff = target.y - user.y;
 
     MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff }, true);
+    user.$$room.updatePos(user);
 
     CombatHelper.physicalAttack(user, target, { isBackstab: true, attackRange: this.range(user) });
   }

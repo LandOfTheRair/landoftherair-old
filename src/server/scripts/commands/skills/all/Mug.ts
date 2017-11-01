@@ -57,6 +57,7 @@ export class Mug extends Skill {
     const yDiff = target.y - user.y;
 
     MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff }, true);
+    user.$$room.updatePos(user);
 
     const res = CombatHelper.physicalAttack(user, target, { isMug: true, attackRange: this.range(user) });
 
