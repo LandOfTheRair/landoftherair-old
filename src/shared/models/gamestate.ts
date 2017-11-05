@@ -42,7 +42,7 @@ export class GameState {
 
   environmentalObjects: any[] = [];
 
-  darkness: any = {};
+  private darkness: any = {};
 
   get formattedMap() {
     const map = cloneDeep(this.map);
@@ -456,20 +456,27 @@ export class GameState {
   }
 
   isDarkAt(x: number, y: number): boolean {
-    if(!this.darkness[x]) return false;
-    return this.darkness[x][y];
+    const xKey = `x${x}`;
+    const yKey = `y${y}`;
+
+    if(!this.darkness[xKey]) return false;
+    return this.darkness[xKey][yKey];
   }
 
   addDarkness(x: number, y: number, radius: number, timestamp: number): void {
     for(let xx = x - radius; xx <= x + radius; xx++) {
       for(let yy = y - radius; yy <= y + radius; yy++) {
-        this.darkness[xx] = this.darkness[xx] || {};
 
-        const currentValue = this.darkness[xx][yy];
+        const xKey = `x${xx}`;
+        const yKey = `y${yy}`;
+
+        this.darkness[xKey] = this.darkness[xKey] || {};
+
+        const currentValue = this.darkness[xKey][yKey];
 
         // dont overwrite old, stronger darkness with new, weaker darkness
         if(!currentValue || (currentValue && currentValue < timestamp)) {
-          this.darkness[xx][yy] = timestamp;
+          this.darkness[xKey][yKey] = timestamp;
 
           this.getPlayersInRange({ x, y }, 4).forEach((player: Player) => {
             this.calculateFOV(player);
@@ -483,11 +490,15 @@ export class GameState {
   removeDarkness(x: number, y: number, radius: number, timestamp: number, force = false): void {
     for(let xx = x - radius; xx <= x + radius; xx++) {
       for(let yy = y - radius; yy <= y + radius; yy++) {
-        this.darkness[xx] = this.darkness[xx] || {};
+
+        const xKey = `x${xx}`;
+        const ykey = `y${yy}`;
+
+        this.darkness[xKey] = this.darkness[xKey] || {};
 
         // only remove my specific darkness
-        if(force || this.darkness[xx][yy] === timestamp) {
-          this.darkness[xx][yy] = false;
+        if(force || this.darkness[xKey][ykey] === timestamp) {
+          this.darkness[xKey][ykey] = false;
 
           this.getPlayersInRange({ x, y }, 4).forEach((player: Player) => {
             this.calculateFOV(player);

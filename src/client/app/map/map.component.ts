@@ -138,8 +138,8 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   canDarkSee(x: number, y: number) {
-    return this.clientGameState.darkness[x + this.currentPlayer.x]
-        && this.clientGameState.darkness[x + this.currentPlayer.x][y + this.currentPlayer.y]
+    return this.clientGameState.darkness['x' + (x + this.currentPlayer.x)]
+        && this.clientGameState.darkness['x' + (x + this.currentPlayer.x)]['y' + (y + this.currentPlayer.y)]
         && this.currentPlayer.hasEffect('DarkVision');
   }
 
