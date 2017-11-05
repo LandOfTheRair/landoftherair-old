@@ -11,11 +11,13 @@ import { Item } from '../../shared/models/item';
 import { Character } from '../../shared/models/character';
 
 export class ClientGameState {
+  fovArray = Array(9).fill(null).map((x, i) => i - 4);
+
   private playerHash: { [key: string]: Player } = {};
   map: any = {};
   mapName = '';
   mapData: any = { openDoors: {} };
-  mapNPCs: NPC[] = [];
+  mapNPCs: { [key: string]: NPC } = {};
   fov: any = {};
   darkness: any = {};
 
@@ -25,7 +27,11 @@ export class ClientGameState {
 
   logMessages: string[] = [];
 
-  fovArray = Array(9).fill(null).map((x, i) => i - 4);
+  environmentalObjects: any[] = [];
+
+  updates = {
+    openDoors: []
+  };
 
   createPlayer$ = new Subject<Player>();
   updatePlayer$ = new Subject<Player>();
@@ -38,18 +44,12 @@ export class ClientGameState {
 
   setMap$ = new BehaviorSubject({});
 
-  updates = {
-    openDoors: []
-  };
-
-  environmentalObjects: any[] = [];
-
   get players() {
     return values(this.playerHash);
   }
 
   get allCharacters(): Character[] {
-    return (<Character[]>this.mapNPCs).concat(this.players);
+    return (<Character[]>values(this.mapNPCs)).concat(this.players);
   }
 
   get activeTarget() {
@@ -86,7 +86,8 @@ export class ClientGameState {
   }
 
   setMapNPCs(data) {
-    this.mapNPCs = map(data, npc => new Character(npc));
+    Object.keys(data).forEach(uuid => data[uuid] = new Character(data[uuid]));
+    this.mapNPCs = data;
   }
 
   setGroundItems(data) {
@@ -248,5 +249,15 @@ export class ClientGameState {
 
   reset() {
     this.logMessages = [];
+    this.playerHash = {};
+    this.map = {};
+    this.mapName = '';
+    this.mapData = { openDoors: {} };
+    this.fov = {};
+    this.darkness = {};
+    this._activeTarget = null;
+    this.groundItems = {};
+    this.environmentalObjects = [];
+    this.updates = { openDoors: [] };
   }
 }
