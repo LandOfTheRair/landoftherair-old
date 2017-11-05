@@ -4,6 +4,7 @@ import { Player } from '../../shared/models/player';
 
 import { isArray, startsWith } from 'lodash';
 import { Skill } from '../base/Skill';
+import { Command } from '../base/Command';
 
 const commandHash = {};
 const skillHash = {};
@@ -52,7 +53,7 @@ export class CommandExecutor {
   }
 
   static _queueCommand(player: Player, command: string, args: any) {
-    const cmd = commandHash[command];
+    const cmd: Command = commandHash[command];
     if(!cmd) return false;
 
     // wat?
@@ -76,7 +77,7 @@ export class CommandExecutor {
   }
 
   static executeCommand(player: Player, command: string, args: any) {
-    const cmd = commandHash[command];
+    const cmd: Command = commandHash[command];
     if(!cmd) return false;
 
     const spell = command.split(' ')[1];
