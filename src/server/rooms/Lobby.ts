@@ -98,6 +98,7 @@ export class Lobby extends Room<LobbyState> {
 
     this.state.addAccount(account);
     this.send(client, { action: 'set_account', account });
+    this.send(client, { action: 'set_characters', characters: account.characterNames });
   }
 
   quit(client) {

@@ -1,7 +1,7 @@
 
 import * as TiledPlugin from 'phaser-tiled';
 
-import { find, remove, compact, difference, values, includes } from 'lodash';
+import { find, remove, compact, difference, values, includes, forEach } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
 
@@ -442,7 +442,7 @@ export class Game {
   private showNPCSprites(centerX, centerY) {
     const removeUUIDs = [];
 
-    this.clientGameState.mapNPCs.forEach(npc => {
+    forEach(this.clientGameState.mapNPCs, npc => {
       if(this.notInRange(centerX, centerY, npc.x, npc.y) || npc.dir === 'C') {
         removeUUIDs.push(npc.uuid);
         return;

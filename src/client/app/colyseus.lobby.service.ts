@@ -103,7 +103,11 @@ export class ColyseusLobbyService {
   }
 
   private setAccount(account) {
-    this.myAccount = account;
+    extend(this.myAccount, account);
+  }
+
+  private setCharacters(characterNames: string[]) {
+    this.myAccount.characterNames = characterNames || [];
   }
 
   private setCharacter(character) {
@@ -137,6 +141,7 @@ export class ColyseusLobbyService {
     if(action === 'need_user_name') return this.getUserName();
     if(action === 'set_account')    return this.setAccount(other.account);
     if(action === 'set_character')  return this.setCharacter(other.character);
+    if(action === 'set_characters') return this.setCharacters(other.characters);
     if(action === 'start_game')     return this.startGame(other.character);
   }
 
