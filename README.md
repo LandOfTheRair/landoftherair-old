@@ -8,6 +8,7 @@ While I appreciate contributions, consider that all contributions, significant o
 ## Requirements
 
 * Node.js (recommended: 8.0.0+)
+* npm (needed: 5.x+)
 * MongoDB (recommended: 3.4.4+)
 * Redis (or a hosted redis service, like Redis Lab)
 
