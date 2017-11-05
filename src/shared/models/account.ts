@@ -16,7 +16,6 @@ export class Account {
   @nonenumerable
   userId: string;
 
-  @nonenumerable
   characterNames: string[] = [];
 
   @nonenumerable
