@@ -425,11 +425,14 @@ export class Game {
   private showItemSprites(centerX, centerY) {
     for(let x = centerX - 4; x <= centerX + 4; x++) {
 
-      const itemPatchX = this.clientGameState.groundItems[x];
+      const xKey = `x${x}`;
+      const itemPatchX = this.clientGameState.groundItems[xKey];
       if(!itemPatchX) continue;
 
       for(let y = centerY - 4; y <= centerY + 4; y++) {
-        const itemPatchY = this.clientGameState.groundItems[x][y];
+
+        const yKey = `y${y}`;
+        const itemPatchY = this.clientGameState.groundItems[xKey][yKey];
         if(!itemPatchY) continue;
 
         Object.keys(itemPatchY).forEach(itemType => {
@@ -506,7 +509,10 @@ export class Game {
       const x = sprite.x / 64;
       const y = sprite.y / 64;
 
-      let ground = this.clientGameState.groundItems[x] ? this.clientGameState.groundItems[x][y] : null;
+      const xKey = `x${x}`;
+      const yKey = `y${y}`;
+
+      let ground = this.clientGameState.groundItems[xKey] ? this.clientGameState.groundItems[xKey][yKey] : null;
       ground = ground || {};
 
       const myGround = ground[sprite.itemClass];

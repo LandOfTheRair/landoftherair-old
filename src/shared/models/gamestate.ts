@@ -366,11 +366,14 @@ export class GameState {
     item.x = x;
     item.y = y;
 
-    this.groundItems[x] = this.groundItems[x] || {};
-    this.groundItems[x][y] = this.groundItems[x][y] || {};
-    this.groundItems[x][y][item.itemClass] = this.groundItems[x][y][item.itemClass] || [];
+    const xKey = `x${x}`;
+    const yKey = `y${y}`;
 
-    const typeList = this.groundItems[x][y][item.itemClass];
+    this.groundItems[xKey] = this.groundItems[xKey] || {};
+    this.groundItems[xKey][yKey] = this.groundItems[xKey][yKey] || {};
+    this.groundItems[xKey][yKey][item.itemClass] = this.groundItems[xKey][yKey][item.itemClass] || [];
+
+    const typeList = this.groundItems[xKey][yKey][item.itemClass];
 
     if(this.isItemValueStackable(item) && typeList[0]) {
       typeList[0].value += item.value;
@@ -380,14 +383,17 @@ export class GameState {
   }
 
   removeItemFromGround(item: Item): void {
+    const xKey = `x${item.x}`;
+    const yKey = `y${item.y}`;
+
     // initalize array if not exist
-    this.getGroundItems(item.x, item.y)[item.itemClass];
+    this.getGroundItems(item.x, item.y);
 
-    this.groundItems[item.x][item.y][item.itemClass] = reject(this.groundItems[item.x][item.y][item.itemClass], i => i.uuid === item.uuid);
+    this.groundItems[xKey][yKey][item.itemClass] = reject(this.groundItems[xKey][yKey][item.itemClass], i => i.uuid === item.uuid);
 
-    if(size(this.groundItems[item.x][item.y][item.itemClass]) === 0) delete this.groundItems[item.x][item.y][item.itemClass];
-    if(size(this.groundItems[item.x][item.y]) === 0) delete this.groundItems[item.x][item.y];
-    if(size(this.groundItems[item.x]) === 0) delete this.groundItems[item.x];
+    if(size(this.groundItems[xKey][yKey][item.itemClass]) === 0) delete this.groundItems[xKey][yKey][item.itemClass];
+    if(size(this.groundItems[xKey][yKey]) === 0) delete this.groundItems[xKey][yKey];
+    if(size(this.groundItems[xKey]) === 0) delete this.groundItems[xKey];
 
     delete item.x;
     delete item.y;
@@ -404,9 +410,13 @@ export class GameState {
   }
 
   getGroundItems(x, y): any {
-    if(!this.groundItems[x]) this.groundItems[x] = {};
-    if(!this.groundItems[x][y]) this.groundItems[x][y] = {};
-    return this.groundItems[x][y];
+
+    const xKey = `x${x}`;
+    const yKey = `y${y}`;
+
+    if(!this.groundItems[xKey]) this.groundItems[xKey] = {};
+    if(!this.groundItems[xKey][yKey]) this.groundItems[xKey][yKey] = {};
+    return this.groundItems[xKey][yKey];
   }
 
   tickPlayers(): void {

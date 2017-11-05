@@ -30,10 +30,13 @@ export class GroundComponent implements OnInit, OnDestroy {
   private getCurrentGround(ground) {
     const player = this.player;
 
-    if(!ground[player.x]) ground[player.x] = {};
-    if(!ground[player.x][player.y]) ground[player.x][player.y] = {};
+    const xKey = `x${player.x}`;
+    const yKey = `y${player.y}`;
 
-    return ground[player.x][player.y];
+    if(!ground[xKey]) ground[xKey] = {};
+    if(!ground[xKey][yKey]) ground[xKey][yKey] = {};
+
+    return ground[xKey][yKey];
   }
 
   private setCurrentGround() {
