@@ -549,7 +549,7 @@ export class Game {
       align: 'center'
     };
 
-    const loadingText = this.g.add.text(this.g.world.centerX, this.g.world.centerY, 'Loading...', textStyle);
+    const loadingText = this.g.add.text(288, 288, 'Loading...', textStyle);
     loadingText.anchor.set(0.5, 0);
     loadingText.fixedToCamera = true;
 
