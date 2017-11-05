@@ -8,7 +8,6 @@ export class Account {
   @nonenumerable
   _id?: any;
 
-  @nonenumerable
   colyseusId?: string;
 
   @nonenumerable
