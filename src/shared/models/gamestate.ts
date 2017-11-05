@@ -103,7 +103,7 @@ export class GameState {
 
   private createPlayerHash() {
     return reduce(this.players, (prev, p) => {
-      prev[p.username] = p.toJSON();
+      prev[p.username] = p;
       p._party = p.party ? p.party.toJSON() : null;
       return prev;
     }, {});
@@ -177,9 +177,9 @@ export class GameState {
   }
 
   resetFOV(player): void {
-    Object.keys(player.$fov).forEach(x => {
-      Object.keys(player.$fov[x]).forEach(y => {
-        player.$fov[x][y] = false;
+    Object.keys(player.fov).forEach(x => {
+      Object.keys(player.fov[x]).forEach(y => {
+        player.fov[x][y] = false;
       });
     });
   }
@@ -206,7 +206,7 @@ export class GameState {
       });
     }
 
-    player.$fov = affected;
+    player.fov = affected;
   }
 
   private getInRange(arr: Character[], ref, radius, except: string[] = []): Character[] {
@@ -215,7 +215,7 @@ export class GameState {
 
     return reject(arr, p => {
 
-      if(ref.$fov) {
+      if(ref.fov) {
         const offsetX = p.x - x;
         const offsetY = p.y - y;
         if(!ref.canSee(offsetX, offsetY)) return true;

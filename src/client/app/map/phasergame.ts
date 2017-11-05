@@ -157,7 +157,6 @@ export class Game {
   }
 
   public reset() {
-    console.log('reset');
     this.updateBgm('');
     this.g.lockRender = true;
     this.hasFlashed = false;
