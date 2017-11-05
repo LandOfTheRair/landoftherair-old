@@ -76,7 +76,11 @@ export class Game {
     return point.x !== 0 && point.y !== 0;
   }
 
-  constructor(private clientGameState: ClientGameState, public colyseus, private player: Player) {
+  private get player() {
+    return this.clientGameState.currentPlayer;
+  }
+
+  constructor(private clientGameState: ClientGameState, public colyseus) {
 
     // reset any time inGame is set to true
     this.colyseus.game.inGame$.subscribe(inGame => {
@@ -111,10 +115,6 @@ export class Game {
 
   public isSamePlayer(username: string) {
     return username === this.player.username;
-  }
-
-  public setPlayer(player: Player) {
-    this.player = player;
   }
 
   private drawVfx({ effect, tiles }) {
@@ -161,6 +161,10 @@ export class Game {
     this.g.lockRender = true;
     this.hasFlashed = false;
 
+    if(this.playerSprite) {
+      this.playerSprite.destroy();
+    }
+
     if(this.itemsOnGround) {
       this.itemsOnGround.destroy();
     }
@@ -191,7 +195,7 @@ export class Game {
   }
 
   private focusCameraOnPlayer() {
-    if(!this.g || !this.g.camera) return;
+    if(!this.g || !this.g.camera || !this.player) return;
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
   }
 
@@ -200,12 +204,13 @@ export class Game {
   }
 
   private createPlayer(player: Player) {
+    if(!player) return;
+
     if(this.isSamePlayer(player.username)) {
       if(this.playerSprite) return;
 
       // duplicated code so we don't dupe the sprite
       const sprite = this.getPlayerSprite(player);
-      this.player = player;
       this.playerSprite = sprite;
 
     } else {
@@ -220,7 +225,6 @@ export class Game {
     if(this.isSamePlayer(player.username)) {
       if(!this.playerSprite) return;
 
-      this.player = player;
       this.updatePlayerSprite(this.playerSprite, player);
       this.truesightCheck();
     } else {
@@ -547,6 +551,7 @@ export class Game {
 
     const loadingText = this.g.add.text(this.g.world.centerX, this.g.world.centerY, 'Loading...', textStyle);
     loadingText.anchor.set(0.5, 0);
+    loadingText.fixedToCamera = true;
 
     loadingText.bringToTop();
 
@@ -715,14 +720,14 @@ export class Game {
   }
 
   update() {
-    if(!this.colyseus.game._inGame) return;
+    if(!this.colyseus.game._inGame || !this.player) return;
 
     // center on player mid
     this.focusCameraOnPlayer();
   }
 
   render() {
-    if(!this.colyseus.game._inGame) return;
+    if(!this.colyseus.game._inGame || !this.player) return;
 
     if(!this.hasFlashed) {
       this.hasFlashed = true;

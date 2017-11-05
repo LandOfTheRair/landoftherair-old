@@ -17,12 +17,6 @@ export class MapComponent implements OnInit, OnDestroy {
   @ViewChild('mapElement')
   public mapContainer;
 
-  @Input()
-  public currentPlayer: Player = new Player({});
-
-  @Input()
-  public clientGameState: ClientGameState = new ClientGameState({});
-
   private phaser: any;
   private game: Game;
 
@@ -34,6 +28,14 @@ export class MapComponent implements OnInit, OnDestroy {
   boxes$:  any;
 
   started: boolean;
+
+  private get clientGameState() {
+    return this.colyseus.game.clientGameState;
+  }
+
+  private get currentPlayer(): Player {
+    return this.clientGameState.currentPlayer;
+  }
 
   constructor(public colyseus: ColyseusService) {}
 
@@ -62,7 +64,7 @@ export class MapComponent implements OnInit, OnDestroy {
       // 9x9, tiles are 64x64
       const boxSize = 9 * 64;
 
-      this.game = new Game(this.clientGameState, this.colyseus, this.currentPlayer);
+      this.game = new Game(this.clientGameState, this.colyseus);
 
       const config = {
         width: boxSize, height: boxSize,
@@ -74,10 +76,6 @@ export class MapComponent implements OnInit, OnDestroy {
       this.phaser = new (<any>window).Phaser.Game(config);
 
       this.create$ = this.clientGameState.createPlayer$.subscribe((addPlayer) => {
-
-        if(this.game.isSamePlayer(addPlayer.username)) {
-          this.game.setPlayer(addPlayer);
-        }
 
         this.clientGameState.players.forEach(player => {
           this.game.createPlayerShell(player);
@@ -114,8 +112,6 @@ export class MapComponent implements OnInit, OnDestroy {
             allBoxes.push(box);
           }
         }
-
-        this.currentPlayer = player;
       });
     });
   }
