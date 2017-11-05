@@ -98,7 +98,7 @@ export class GameState {
     this.mapNPCs = this.cleanNPCs();
     this.playerHash = this.createPlayerHash();
 
-    // require('fs').writeFileSync(__dirname + '/FAIL.log', JSON.stringify(this, null, 4), 'utf-8');
+    require('fs').writeFileSync(__dirname + '/FAIL.log', JSON.stringify(this, null, 4), 'utf-8');
   }
 
   private createPlayerHash() {
