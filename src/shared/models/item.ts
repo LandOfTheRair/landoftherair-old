@@ -4,6 +4,7 @@ import * as uuid from 'uuid/v4';
 import { Alignment, Character, SkillClassNames } from './character';
 
 import * as Effects from '../../server/effects';
+import { nonenumerable } from 'nonenumerable';
 
 export const ValidItemTypes = [
   'Mace', 'Axe', 'Dagger', 'Wand', 'Onehanded', 'Twohanded', 'Polearm', 'Ranged',
@@ -100,6 +101,9 @@ export class Encrust {
 }
 
 export class Item {
+  @nonenumerable
+  _id: any;
+
   name: string;
   desc: string;
   extendedDesc: string;
@@ -139,14 +143,22 @@ export class Item {
   binds: boolean;
   tellsBind: boolean;
 
+  @nonenumerable
   searchItems: Item[];
+
+  @nonenumerable
   tansFor: string;
 
   x: number;
   y: number;
 
+  @nonenumerable
   $heldBy?: any;
+
+  @nonenumerable
   $$isPlayerCorpse?: boolean;
+
+  @nonenumerable
   $$playersHeardDeath?: string[];
 
   effect: any;
@@ -303,13 +315,5 @@ export class Item {
     }
 
     return true;
-  }
-
-  toJSON() {
-    return omitBy(this, (value, key) => {
-      if(!Object.getOwnPropertyDescriptor(this, key)) return true;
-      if(key === '_id' || key === '$heldBy') return true;
-      return false;
-    });
   }
 }
