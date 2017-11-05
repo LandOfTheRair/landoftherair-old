@@ -12,7 +12,7 @@ export class GMExamine extends Command {
     if(!player.isGM) return;
 
     if(!args && player.rightHand) {
-      player.sendClientMessage(JSON.stringify(player.rightHand.toJSON()));
+      player.sendClientMessage(JSON.stringify(player.rightHand));
       return;
     }
 
