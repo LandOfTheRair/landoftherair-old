@@ -100,7 +100,7 @@ export class ColyseusGameService {
     if (!this.client) throw new Error('Client not intialized; cannot initialize game connection.');
 
     this.unshowWindows();
-
+    
     this.joinRoom(this.character.map);
   }
 

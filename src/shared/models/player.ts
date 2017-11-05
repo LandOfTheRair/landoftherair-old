@@ -13,11 +13,17 @@ import { LowCON } from '../../server/effects/LowCON';
 import { nonenumerable } from 'nonenumerable';
 
 export class Player extends Character {
+  @nonenumerable
   _id?: any;
 
+  @nonenumerable
   createdAt: number;
   username: string;
+
+  @nonenumerable
   charSlot: number;
+
+  @nonenumerable
   isGM: boolean;
 
   z: number;
@@ -28,20 +34,28 @@ export class Player extends Character {
 
   private learnedSpells: any;
 
+  @nonenumerable
   banks: any;
 
+  @nonenumerable
   $$doNotSave: boolean;
 
+  @nonenumerable
   $$actionQueue;
 
+  @nonenumerable
   $$flaggedSkills;
 
+  @nonenumerable
   $$lastDesc: string;
 
+  @nonenumerable
   $$lastRegion: string;
 
+  @nonenumerable
   $$swimElement: string;
 
+  @nonenumerable
   $$locker: any;
 
   bgmSetting: 'town' | 'dungeon' | 'wilderness';
@@ -50,14 +64,22 @@ export class Player extends Character {
 
   partyName: string;
 
+  @nonenumerable
   private activeQuests: any;
+
+  @nonenumerable
   private questProgress: any;
+
+  @nonenumerable
   private permanentQuestCompletion: any;
 
   private traitPoints;
+
+  @nonenumerable
   private traitPointTimer: number;
   private traitLevels: any;
 
+  @nonenumerable
   private $$lastCommandSent: string;
 
   private partyPoints: number;
