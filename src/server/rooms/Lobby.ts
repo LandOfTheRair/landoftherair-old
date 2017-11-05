@@ -299,6 +299,8 @@ export class Lobby extends Room<LobbyState> {
 
   onLeave(client) {
     this.state.removeAccount(client.username);
+
+    DB.$players.update({ username: client.username }, { $set: { inGame: -1 } }, { multi: true });
   }
 
   onMessage(client, data) {
