@@ -10,15 +10,12 @@ export class Account {
 
   colyseusId?: string;
 
-  @nonenumerable
   createdAt: number;
 
-  @nonenumerable
   userId: string;
 
   characterNames: string[] = [];
 
-  @nonenumerable
   maxCharacters = 4;
 
   username: string;
