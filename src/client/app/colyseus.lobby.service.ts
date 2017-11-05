@@ -25,8 +25,11 @@ export class ColyseusLobbyService {
   init(colyseus, client) {
     this.colyseus = colyseus;
     this.client = client;
-    this.initLobby();
-    this.startHeartbeat();
+
+    this.client.onOpen.add(() => {
+      this.initLobby();
+      this.startHeartbeat();
+    });
   }
 
   private initLobby() {
