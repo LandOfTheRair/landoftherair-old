@@ -97,6 +97,9 @@ export class Lobby extends Room<LobbyState> {
     this.updateAccount(account);
 
     this.state.addAccount(account);
+
+    DB.$players.update({ username: client.username }, { $set: { inGame: -1 } }, { multi: true });
+
     this.send(client, { action: 'set_account', account });
     this.send(client, { action: 'set_characters', characters: account.characterNames });
   }
