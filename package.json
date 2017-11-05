@@ -80,7 +80,7 @@
     "ngx-webstorage": "^1.8.0",
     "node-redis-pubsub": "^1.0.3",
     "node-schedule": "^1.2.3",
-    "nonenumerable": "^1.0.1",
+    "nonenumerable": "^1.1.0",
     "pathfinding": "^0.4.18",
     "phaser-ce": "^2.8.0",
     "phaser-tiled": "^2.0.4",
