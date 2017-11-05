@@ -682,7 +682,7 @@ export class Game {
     });
 
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
-    
+
     this.createLayers();
     this.createPlayer(this.player);
 
