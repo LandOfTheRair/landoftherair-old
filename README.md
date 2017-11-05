@@ -77,6 +77,7 @@ Some commands are hidden and don't really need to be used by players, but should
 
 * `~~pos` - get your current x, y, and map.
 * `~~reset` - reset your buffs and additionalStats
+* `~~mobs` - count the number of mobs in the world
 
 #### GM Commands
 
