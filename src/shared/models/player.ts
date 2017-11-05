@@ -28,6 +28,7 @@ export class Player extends Character {
 
   z: number;
 
+  @nonenumerable
   inGame: boolean;
 
   buyback: Item[];
@@ -60,6 +61,7 @@ export class Player extends Character {
 
   bgmSetting: 'town' | 'dungeon' | 'wilderness';
 
+  @nonenumerable
   respawnPoint: { x: number, y: number, map: string };
 
   partyName: string;
