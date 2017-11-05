@@ -124,8 +124,6 @@ export class GameWorld extends Room<GameState> {
       savePlayer.rightHand = null;
     }
 
-    console.log(savePlayer.username, savePlayer.charSlot);
-
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }
 

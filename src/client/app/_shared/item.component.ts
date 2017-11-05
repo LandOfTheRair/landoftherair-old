@@ -96,7 +96,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
     }
     
     .encrust {
-      transform: scale(0.65, 0.65) translate(45%, 45%);
+      transform: scale(0.65, 0.65) translate(45%, -45%);
     }
   `],
   template: `    
@@ -333,7 +333,9 @@ export class ItemComponent implements OnInit {
       }
     }
 
-    this.doColyseusMoveAction('G');
+    if(this.context !== 'Ground') {
+      this.doColyseusMoveAction('G');
+    }
 
   }
 
