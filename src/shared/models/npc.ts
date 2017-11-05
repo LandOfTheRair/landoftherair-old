@@ -67,10 +67,6 @@ export class NPC extends Character {
     this.recalculateStats();
   }
 
-  toJSON() {
-    return omit(super.toJSON(), ['script', 'parser', 'spawner', '$$ai', 'path']);
-  }
-
   receiveMessage(player, message) {
     if(!this.parser) return;
 

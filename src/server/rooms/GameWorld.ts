@@ -112,8 +112,8 @@ export class GameWorld extends Room<GameState> {
       delete player._id;
     }
 
-    const savePlayer = player.toJSON();
-    delete savePlayer.$fov;
+    const savePlayer = player.toSaveObject();
+    delete savePlayer.fov;
     delete savePlayer._party;
 
     if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
@@ -123,6 +123,8 @@ export class GameWorld extends Room<GameState> {
     if(player.rightHand && player.rightHand.itemClass === 'Corpse') {
       savePlayer.rightHand = null;
     }
+
+    console.log(savePlayer.username, savePlayer.charSlot);
 
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }
@@ -936,7 +938,7 @@ export class GameWorld extends Room<GameState> {
       y: player.y,
       dir: player.dir,
       swimLevel: player.swimLevel,
-      fov: player.$fov
+      fov: player.fov
     });
   }
 
@@ -946,7 +948,7 @@ export class GameWorld extends Room<GameState> {
 
     this.send(client, {
       action: 'update_fov',
-      fov: player.$fov
+      fov: player.fov
     });
   }
 

@@ -100,7 +100,7 @@ export class ColyseusGameService {
     if (!this.client) throw new Error('Client not intialized; cannot initialize game connection.');
 
     this.unshowWindows();
-    
+
     this.joinRoom(this.character.map);
   }
 
@@ -220,7 +220,7 @@ export class ColyseusGameService {
     this.character.y = y;
     this.character.dir = dir;
     this.character.swimLevel = swimLevel;
-    this.character.$fov = this.clientGameState.fov;
+    this.character.fov = this.clientGameState.fov;
 
     this.clientGameState.updatePlayer(this.character.username, 'x', x);
     this.clientGameState.updatePlayer(this.character.username, 'y', y);

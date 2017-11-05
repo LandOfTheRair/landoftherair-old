@@ -172,7 +172,7 @@ export class Lobby extends Room<LobbyState> {
 
     await this.giveCharacterBasicGearAndSkills(player);
 
-    const savePlayer = player.toJSON();
+    const savePlayer = player.toSaveObject();
 
     DB.$players.insert(savePlayer);
   }

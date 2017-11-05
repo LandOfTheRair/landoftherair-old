@@ -13,7 +13,7 @@ import { Character } from '../../shared/models/character';
 export class ClientGameState {
   fovArray = Array(9).fill(null).map((x, i) => i - 4);
 
-  currentPlayer: Player;
+  currentPlayer: any;
 
   private playerHash: { [key: string]: Player } = {};
   map: any = {};

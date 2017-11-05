@@ -2,7 +2,7 @@
 import {
   omitBy, merge, find, includes, compact, pull, values, floor,
   capitalize, startsWith, isUndefined, clone, isString, random,
-  get
+  get, reject, pick
 } from 'lodash';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
@@ -18,9 +18,9 @@ import { Effect } from '../../server/base/Effect';
 import * as Effects from '../../server/effects';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
-import { GameWorld } from '../../server/rooms/GameWorld';
 import { VisualEffect } from '../../server/gidmetadata/visual-effects';
 import { MoveHelper } from '../../server/helpers/move-helper';
+import { nonenumerable } from 'nonenumerable';
 
 export type Allegiance =
   'None'
@@ -152,6 +152,7 @@ export class Character {
   protected stats: Stats = new Stats();
 
   // we don't want to initialize this because of side effects from default values
+  @nonenumerable
   protected additionalStats: Stats = {};
   protected totalStats: Stats = new Stats();
 
@@ -196,21 +197,30 @@ export class Character {
 
   swimLevel: number;
 
-  $fov: any;
+  @nonenumerable
+  fov: any;
 
+  @nonenumerable
   $$map: any;
 
+  @nonenumerable
   $$deathTicks: number;
 
-  $$room: GameWorld;
+  @nonenumerable
+  $$room: any;
 
+  @nonenumerable
   $$corpseRef: Item;
 
+  @nonenumerable
   aquaticOnly: boolean;
+
+  @nonenumerable
   avoidWater = true;
 
   combatTicks = 0;
 
+  @nonenumerable
   $$ai: any;
 
   sprite: number;
@@ -288,14 +298,18 @@ export class Character {
   init() {}
   initServer() {}
 
-  toJSON() {
-    return omitBy(this, (value, key) => {
-      if(key === '$fov' || key === 'battleTicks' || key === 'bgmSetting') return false;
-      if(!Object.getOwnPropertyDescriptor(this, key)) return true;
-      if(startsWith(key, '$$')) return true;
+  toSaveObject() {
+    let keys = reject(Object.getOwnPropertyNames(this), key => {
       if(key === '_id') return true;
+      if(startsWith(key, '$$')) return true;
+      if(key === '$fov' || key === 'avoidWater' || key === 'bgmSetting') return false;
       return false;
     });
+
+    // fix the $-prefixed non-enumerable attrs
+    keys = keys.map(key => startsWith(key, '$') ? key.substring(1) : key);
+
+    return pick(this, keys);
   }
 
   hasEmptyHand() {
@@ -602,9 +616,9 @@ export class Character {
   }
 
   canSee(xOffset, yOffset) {
-    if(!this.$fov) return false;
-    if(!this.$fov[xOffset]) return false;
-    if(!this.$fov[xOffset][yOffset]) return false;
+    if(!this.fov) return false;
+    if(!this.fov[xOffset]) return false;
+    if(!this.fov[xOffset][yOffset]) return false;
     return true;
   }
 
