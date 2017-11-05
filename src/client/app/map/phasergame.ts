@@ -157,6 +157,7 @@ export class Game {
   }
 
   public reset() {
+    console.log('reset');
     this.updateBgm('');
     this.g.lockRender = true;
     this.hasFlashed = false;
@@ -207,7 +208,7 @@ export class Game {
     if(!player) return;
 
     if(this.isSamePlayer(player.username)) {
-      if(this.playerSprite) return;
+      if(this.playerSprite) this.playerSprite.destroy();
 
       // duplicated code so we don't dupe the sprite
       const sprite = this.getPlayerSprite(player);
@@ -681,9 +682,12 @@ export class Game {
     });
 
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
-
+    
     this.createLayers();
     this.createPlayer(this.player);
+
+    // probably an early exit
+    if(this.map.tilesets.length === 0) return;
 
     const decorFirstGid = this.map.tilesets[2].firstgid;
     const wallFirstGid = this.map.tilesets[1].firstgid;
