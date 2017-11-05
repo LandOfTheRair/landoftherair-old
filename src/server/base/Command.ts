@@ -10,6 +10,7 @@ export abstract class Command {
   static macroMetadata: any = {};
   abstract name: string|string[];
   format = '';
+  requiresLearn: boolean;
 
   abstract execute(player: Player, args);
 

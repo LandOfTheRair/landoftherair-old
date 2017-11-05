@@ -402,6 +402,7 @@ export class ColyseusGameService {
   }
 
   private sendAction(data) {
+    data.t = Date.now();
     this.worldRoom.send(data);
   }
 
