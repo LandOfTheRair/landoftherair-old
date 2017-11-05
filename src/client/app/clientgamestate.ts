@@ -1,5 +1,5 @@
 
-import { extend, remove, find, differenceBy, compact, values } from 'lodash';
+import { extend, remove, find, differenceBy, compact, values, map } from 'lodash';
 
 import { Player } from '../../shared/models/player';
 
@@ -86,7 +86,7 @@ export class ClientGameState {
   }
 
   setMapNPCs(data) {
-    this.mapNPCs = data.map(npc => new Character(npc));
+    this.mapNPCs = map(data, npc => new Character(npc));
   }
 
   setGroundItems(data) {

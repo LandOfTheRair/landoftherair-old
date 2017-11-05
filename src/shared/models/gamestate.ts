@@ -33,7 +33,7 @@ export class GameState {
   @nonenumerable
   _mapNPCs: NPC[] = [];
 
-  mapNPCs: NPC[] = [];
+  mapNPCs: any = {};
 
   groundItems: any = {};
 
@@ -97,6 +97,8 @@ export class GameState {
   tick() {
     this.mapNPCs = this.cleanNPCs();
     this.playerHash = this.createPlayerHash();
+
+    // require('fs').writeFileSync(__dirname + '/FAIL.log', JSON.stringify(this, null, 4), 'utf-8');
   }
 
   private createPlayerHash() {
@@ -419,8 +421,8 @@ export class GameState {
     });
   }
 
-  cleanNPCs(): NPC[] {
-    return this._mapNPCs.map(npc => {
+  cleanNPCs() {
+    return this._mapNPCs.reduce((prev, npc) => {
       const baseObj = pick(npc, [
         'agro', 'uuid', 'name',
         'hostility', 'alignment', 'allegiance', 'allegianceReputation',
@@ -432,8 +434,9 @@ export class GameState {
         'totalStats.stealth'
       ]);
       if(!baseObj.gear) baseObj.gear = {};
-      return baseObj;
-    });
+      prev[baseObj.uuid] = baseObj;
+      return prev;
+    }, {});
   }
 
   checkIfDenseWall(x: number, y: number): boolean {
