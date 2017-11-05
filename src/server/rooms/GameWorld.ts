@@ -108,10 +108,6 @@ export class GameWorld extends Room<GameState> {
   private savePlayer(player: Player) {
     if(player.$$doNotSave) return;
 
-    if(player._id) {
-      delete player._id;
-    }
-
     const savePlayer = player.toSaveObject();
     delete savePlayer.fov;
     delete savePlayer._party;

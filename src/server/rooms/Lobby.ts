@@ -40,7 +40,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private updateAccount(account: Account) {
-    delete account._id;
+    // delete account._id;
     delete account.inGame;
 
     return DB.$accounts.update({ userId: account.userId }, { $set: account });
