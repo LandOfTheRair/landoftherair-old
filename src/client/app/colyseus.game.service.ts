@@ -18,7 +18,6 @@ export class ColyseusGameService {
   client: any;
   colyseus: any;
   clientGameState: ClientGameState = new ClientGameState({});
-  character: any;
 
   worldRoom: any;
 
@@ -50,6 +49,10 @@ export class ColyseusGameService {
 
   private overrideNoBgm: boolean;
   private overrideNoSfx: boolean;
+
+  get character() {
+    return this.clientGameState.currentPlayer;
+  }
 
   constructor(private localStorage: LocalStorageService) {
 
@@ -96,15 +99,13 @@ export class ColyseusGameService {
   private initGame() {
     if (!this.client) throw new Error('Client not intialized; cannot initialize game connection.');
 
-    this.quit();
+    this.unshowWindows();
 
     this.joinRoom(this.character.map);
   }
 
   private joinRoom(room) {
-    if(this.worldRoom) {
-      this.worldRoom.leave();
-    }
+    this.resetRoom();
 
     this.worldRoom = this.client.join(room, {
       charSlot: this.character.charSlot,
@@ -234,7 +235,7 @@ export class ColyseusGameService {
 
     const hasOldCharacter = this.character;
 
-    this.character = new Player(character);
+    this.clientGameState.setPlayer(new Player(character));
 
     if(hasOldCharacter) {
       const { x, y, dir, swimLevel } = hasOldCharacter;
@@ -485,13 +486,17 @@ export class ColyseusGameService {
     this.sendAction({ command: '~interact', x, y });
   }
 
+  private resetRoom() {
+    if(!this.worldRoom) return;
+    this.worldRoom.leave();
+    delete this.worldRoom;
+  }
+
   public quit() {
     this.unshowWindows();
     this.clientGameState.reset();
 
-    if(!this.worldRoom) return;
-    this.worldRoom.leave();
-    delete this.worldRoom;
+    this.resetRoom();
 
     if(this.colyseus && this.colyseus.lobby) {
       this.colyseus.lobby.quit();

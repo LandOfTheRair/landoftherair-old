@@ -13,6 +13,8 @@ import { Character } from '../../shared/models/character';
 export class ClientGameState {
   fovArray = Array(9).fill(null).map((x, i) => i - 4);
 
+  currentPlayer: Player;
+
   private playerHash: { [key: string]: Player } = {};
   map: any = {};
   mapName = '';
@@ -74,6 +76,10 @@ export class ClientGameState {
       if(!mapData.openDoors[doorId].isOpen) return;
       this.updates.openDoors.push(doorId);
     });
+  }
+
+  setPlayer(player: Player) {
+    this.currentPlayer = player;
   }
 
   setMap(map) {
@@ -259,5 +265,6 @@ export class ClientGameState {
     this.groundItems = {};
     this.environmentalObjects = [];
     this.updates = { openDoors: [] };
+    this.currentPlayer = null;
   }
 }
