@@ -318,7 +318,7 @@ export class Player extends Character {
   restore(force = false) {
     if(this.$$corpseRef) {
       this.$$room.removeCorpse(this.$$corpseRef);
-      delete this.$$corpseRef;
+      this.$$corpseRef = null;
     }
 
     if(force) {
