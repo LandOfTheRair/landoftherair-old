@@ -109,8 +109,8 @@ export class GameWorld extends Room<GameState> {
     if(player.$$doNotSave) return;
 
     const savePlayer = player.toSaveObject();
-    delete savePlayer.fov;
-    delete savePlayer._party;
+    savePlayer.fov = null;
+    savePlayer._party = null;
 
     if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
       savePlayer.leftHand = null;
@@ -293,7 +293,7 @@ export class GameWorld extends Room<GameState> {
     if(item.itemClass !== 'Corpse') {
       this.setItemExpiry(item);
     }
-    delete item.$heldBy;
+    item.$heldBy = null;
     this.state.addItemToGround(ref, item);
   }
 
@@ -856,7 +856,7 @@ export class GameWorld extends Room<GameState> {
     }
 
     if(item) {
-      delete item.$heldBy;
+      item.$heldBy = null;
       this.addItemToGround(player, item);
     }
   }
