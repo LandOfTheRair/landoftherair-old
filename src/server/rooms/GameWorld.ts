@@ -412,7 +412,6 @@ export class GameWorld extends Room<GameState> {
   }
 
   async onInit(opts) {
-
     this.allMapNames = opts.allMapNames;
 
     this.setPatchRate(500 / TICK_DIVISOR);
