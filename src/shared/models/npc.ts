@@ -4,6 +4,7 @@ import { omit, flatten, random } from 'lodash';
 import { Allegiance, Character, Direction } from './character';
 import { Item } from './item';
 import * as uuid from 'uuid/v4';
+import { CharacterHelper } from '../../server/helpers/character-helper';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 
@@ -130,7 +131,7 @@ export class NPC extends Character {
         stripPoint = this.$$stripX && this.$$stripY ? { x: this.$$stripX, y: this.$$stripY } : this.spawner;
       }
 
-      dead.strip(this.$$stripOnSpawner ? stripPoint : this, this.$$stripRadius);
+      CharacterHelper.strip(dead, this.$$stripOnSpawner ? stripPoint : this, this.$$stripRadius);
     }
   }
 
