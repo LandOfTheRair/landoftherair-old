@@ -3,6 +3,7 @@ import { SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { Skill } from '../base/Skill';
 import * as dice from 'dice.js';
+import { MessageHelper } from '../helpers/message-helper';
 
 export class FireMist extends SpellEffect {
 
@@ -21,7 +22,7 @@ export class FireMist extends SpellEffect {
 
     target.sendClientMessageToRadius({ message: 'You hear a soft sizzling noise.', subClass: 'combat magic' }, 10);
 
-    target.drawEffectInRadius('FIRE_MIST', target, 1, 6);
+    MessageHelper.drawEffectInRadius(target, 'FIRE_MIST', target, 1, 6);
 
     const attacked = target.$$room.state.getAllInRange(target, 1);
 

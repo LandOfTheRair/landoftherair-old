@@ -21,6 +21,8 @@ import { Belt } from './container/belt';
 import { VisualEffect } from '../../server/gidmetadata/visual-effects';
 import { MoveHelper } from '../../server/helpers/move-helper';
 import { nonenumerable } from 'nonenumerable';
+import { CharacterHelper } from '../../server/helpers/character-helper';
+import { MessageHelper } from '../../server/helpers/message-helper';
 
 export type Allegiance =
   'None'
@@ -238,10 +240,6 @@ export class Character {
 
   get beltSize() {
     return MaxSizes.Belt;
-  }
-
-  getSprite() {
-    return 0;
   }
 
   getTotalStat(stat: StatName) {
@@ -478,6 +476,14 @@ export class Character {
     this.potionHand = item;
   }
 
+  private checkAndCreatePermanentEffect(item: Item) {
+    if(!item && !item.effect && !item.effect.autocast) return;
+    const effect = new Effects[item.effect.name]();
+    effect.duration = -1;
+    effect.effectInfo.isPermanent = true;
+    this.applyEffect(effect);
+  }
+
   tryToCastEquippedEffects() {
     AllNormalGearSlots.forEach(slot => {
 
@@ -485,13 +491,7 @@ export class Character {
       if(!includes(slot, 'gear')) return;
 
       const item = get(this, slot);
-
-      if(item && item.effect && item.effect.autocast) {
-        const effect = new Effects[item.effect.name]();
-        effect.duration = -1;
-        effect.effectInfo.isPermanent = true;
-        this.applyEffect(effect);
-      }
+      this.checkAndCreatePermanentEffect(item);
     });
   }
 
@@ -503,13 +503,7 @@ export class Character {
     this.gear[slot] = item;
     this.recalculateStats();
     this.itemCheck(item);
-
-    if(item.effect && item.effect.autocast) {
-      const effect = new Effects[item.effect.name]();
-      effect.duration = -1;
-      effect.effectInfo.isPermanent = true;
-      this.applyEffect(effect);
-    }
+    this.checkAndCreatePermanentEffect(item);
 
     return true;
   }
@@ -907,26 +901,14 @@ export class Character {
     });
   }
 
-  sendClientMessage(message) {}
-  sendClientMessageToRadius(message, radius = 0, except = []) {
-    const sendMessage = isString(message) ? { message, subClass: 'chatter' } : message;
+  receiveMessage(from, message) {}
 
-    this.$$room.state.getPlayersInRange(this, radius, except).forEach(p => {
-      // outta range, generate a "you heard X in the Y dir" message
-      if(radius > 4 && this.distFrom(p) > 5) {
-        const dirFrom = this.getDirBasedOnDiff(this.x - p.x, this.y - p.y);
-        sendMessage.dirFrom = dirFrom.toLowerCase();
-        p.sendClientMessage(sendMessage);
-      } else {
-        p.sendClientMessage(sendMessage);
-      }
-    });
+  sendClientMessage(message) {
+    MessageHelper.sendClientMessage(this, message);
   }
 
-  drawEffectInRadius(effectName: VisualEffect, center: any, effectRadius = 0, drawRadius = 0) {
-    this.$$room.state.getPlayersInRange(this, drawRadius).forEach(p => {
-      p.$$room.drawEffect(p, { x: center.x, y: center.y }, effectName, effectRadius);
-    });
+  sendClientMessageToRadius(message, radius = 0, except = []) {
+    MessageHelper.sendClientMessageToRadius(this, message, radius, except);
   }
 
   isPlayer() {
@@ -935,25 +917,7 @@ export class Character {
 
   tick() {
     if(this.isDead()) {
-      if(this.$$corpseRef && this.$$corpseRef.$heldBy) {
-        const holder = this.$$room.state.findPlayer(this.$$corpseRef.$heldBy);
-
-        if(this.isPlayer()) {
-          this.$$room.setPlayerXY(this, holder.x, holder.y);
-
-        } else {
-          this.x = holder.x;
-          this.y = holder.y;
-        }
-      }
-
-      if(this.$$deathTicks > 0) {
-        this.$$deathTicks--;
-        if(this.$$deathTicks <= 0) {
-          this.restore(true);
-        }
-      }
-
+      CharacterHelper.handleDeadCharacter(this);
       return;
     }
 
@@ -993,69 +957,6 @@ export class Character {
   changeRep(allegiance: Allegiance, modifier) {
     this.allegianceReputation[allegiance] = this.allegianceReputation[allegiance] || 0;
     this.allegianceReputation[allegiance] += modifier;
-  }
-
-  receiveMessage(from, message) {}
-
-  dropHands() {
-    if(this.rightHand) {
-      this.$$room.addItemToGround(this, this.rightHand);
-      this.setRightHand(null);
-    }
-
-    if(this.leftHand) {
-      this.$$room.addItemToGround(this, this.leftHand);
-      this.setLeftHand(null);
-    }
-  }
-
-  strip({ x, y }, spread = 0) {
-    this.dropHands();
-
-    this.sendClientMessage('You feel an overwhelming heat as your equipment disappears from your body!');
-
-    const pickSlot = () => ({ x: random(x - spread, x + spread), y: random(y - spread, y + spread) });
-
-    if(this.gold > 0) {
-
-      // can't use itemcreator because this is a shared model
-      const gold = new Item({
-        itemClass: 'Coin',
-        name: 'Gold Coin',
-        sprite: 212,
-        value: this.gold,
-        isBeltable: false,
-        desc: 'gold coins'
-      });
-
-      this.$$room.addItemToGround(pickSlot(), gold);
-      this.gold = 0;
-    }
-
-    Object.keys(this.gear).forEach(gearSlot => {
-      const item = this.gear[gearSlot];
-      if(!item) return;
-
-      const point = pickSlot();
-      this.$$room.addItemToGround(point, item);
-      this.unequip(gearSlot);
-    });
-
-    for(let i = this.sack.allItems.length; i >= 0; i--) {
-      const item = this.sack.takeItemFromSlot(i);
-      if(!item || item.succorInfo) continue;
-
-      const point = pickSlot();
-      this.$$room.addItemToGround(point, item);
-    }
-
-    for(let i = this.belt.allItems.length; i >= 0; i--) {
-      const item = this.belt.takeItemFromSlot(i);
-      if(!item) continue;
-
-      const point = pickSlot();
-      this.$$room.addItemToGround(point, item);
-    }
   }
 
   stealthLevel(): number {
@@ -1108,37 +1009,6 @@ export class Character {
     const totalStealth = Math.floor(otherStealth + (otherStealth * distFactor * thiefMultPerTile));
 
     return this.getTotalStat('perception') >= totalStealth;
-  }
-
-  canHide(): boolean|string {
-    if(this.hasEffect('Hidden')) return 'You are already hidden!';
-
-    const hideHpPercent = this.baseClass === 'Thief' ? 70 : 90;
-    if(this.hp.ltePercent(hideHpPercent)) return 'You are too injured to hide!';
-
-    const nearWall = this.isNearWall();
-    const inDark = this.isInDarkness();
-
-    if(!nearWall && !inDark) {
-      if(!nearWall) return 'You are not near a wall!';
-      if(!inDark) return 'There are no shadows here to hide in!';
-    }
-
-    return true;
-  }
-
-  isInDarkness(): boolean {
-    return this.$$room.state.isDarkAt(this.x, this.y);
-  }
-
-  isNearWall(): boolean {
-    for(let x = this.x - 1; x <= this.x + 1; x++) {
-      for(let y = this.y - 1; y <= this.y + 1; y++) {
-        const tile = this.$$room.state.checkIfDenseWall(x, y);
-        if(tile) return true;
-      }
-    }
-    return false;
   }
 
   // implemented so npcs get the same check but it's 0 instead of a value

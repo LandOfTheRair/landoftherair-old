@@ -11,6 +11,7 @@ import { Quest } from '../../server/base/Quest';
 import * as Quests from '../../server/quests';
 import { LowCON } from '../../server/effects/LowCON';
 import { nonenumerable } from 'nonenumerable';
+import { CharacterHelper } from '../../server/helpers/character-helper';
 
 export class Player extends Character {
   @nonenumerable
@@ -290,19 +291,19 @@ export class Player extends Character {
     if(killer && !killer.isPlayer()) {
 
       if(random(1, 100) > this.getTraitLevel('DeathGrip')) {
-        this.dropHands();
+        CharacterHelper.dropHands(this);
       }
 
       if(myCon === 3) {
-        if(random(1, myLuk) === 1) this.strip(this);
+        if(random(1, myLuk) === 1) CharacterHelper.strip(this, this);
       }
 
       if(myCon === 2) {
-        if(random(1, myLuk / 5) === 1) this.strip(this);
+        if(random(1, myLuk / 5) === 1) CharacterHelper.strip(this, this);
       }
 
       if(myCon === 1) {
-        if(random(1, 2) === 1) this.strip(this);
+        if(random(1, 2) === 1) CharacterHelper.strip(this, this);
       }
     }
   }
@@ -428,10 +429,6 @@ export class Player extends Character {
     this.banks[region] -= amount;
     this.gainGold(amount);
     return amount;
-  }
-
-  sendClientMessage(message): void {
-    this.$$room.sendPlayerLogMessage(this, message);
   }
 
   sendQuestMessage(quest: Quest, message: string): void {

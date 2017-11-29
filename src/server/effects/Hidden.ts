@@ -2,6 +2,7 @@
 import { SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { Skill } from '../base/Skill';
+import { CharacterHelper } from '../helpers/character-helper';
 
 export class Hidden extends SpellEffect {
 
@@ -30,7 +31,7 @@ export class Hidden extends SpellEffect {
   }
 
   effectTick(char: Character) {
-    if(char.isInDarkness() || char.isNearWall()) return;
+    if(CharacterHelper.isInDarkness(char) || CharacterHelper.isNearWall(char)) return;
 
     this.effectEnd(char);
     char.unapplyEffect(this);

@@ -4,6 +4,7 @@ import { startsWith, isString } from 'lodash';
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { Hidden as CastEffect } from '../../../../effects/Hidden';
+import { CharacterHelper } from '../../../../helpers/character-helper';
 
 export class Hide extends Skill {
 
@@ -27,7 +28,7 @@ export class Hide extends Skill {
   }
 
   use(user: Character) {
-    const hideReason = user.canHide();
+    const hideReason = CharacterHelper.canHide(user);
     if(isString(hideReason)) return user.sendClientMessage(hideReason);
 
     const effect = new CastEffect({});

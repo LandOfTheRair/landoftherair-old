@@ -4,6 +4,7 @@ import { startsWith } from 'lodash';
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
 import { Darkness as CastEffect } from '../../../../../effects/Darkness';
+import { CharacterHelper } from '../../../../../helpers/character-helper';
 
 export class Darkness extends Skill {
 
@@ -24,7 +25,7 @@ export class Darkness extends Skill {
   range = () => 5;
 
   canUse(user: Character, target: Character) {
-    return !target.isInDarkness();
+    return !CharacterHelper.isInDarkness(target);
   }
 
   execute(user: Character, { gameState, args, effect }) {

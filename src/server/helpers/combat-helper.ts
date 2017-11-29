@@ -7,6 +7,7 @@ import * as Classes from '../classes';
 import * as Effects from '../effects';
 
 import * as dice from 'dice.js';
+import { CharacterHelper } from './character-helper';
 
 export type DamageType =
   'Physical'
@@ -19,7 +20,7 @@ export class CombatHelper {
   static attemptToShadowSwap(char: Character) {
     const shadowSwapLevel = char.getTraitLevel('ShadowSwap');
     if(shadowSwapLevel === 0) return;
-    if(!char.isNearWall()) return;
+    if(!CharacterHelper.isNearWall(char)) return;
 
     if(random(1, 100) > shadowSwapLevel * 2) return;
 
