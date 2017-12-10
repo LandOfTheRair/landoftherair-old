@@ -74,7 +74,7 @@
     "mingy": "^0.2.7",
     "mongodb": "^2.2.27",
     "mrpas": "^1.2.1",
-    "ng2-drag-drop": "^2.9.2",
+    "ng-drag-drop": "^4.0.0",
     "ngx-bootstrap": "2.0.0-beta.6",
     "ngx-color-picker": "^4.0.3",
     "ngx-webstorage": "^1.8.0",
