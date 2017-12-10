@@ -477,7 +477,7 @@ export class Character {
   }
 
   private checkAndCreatePermanentEffect(item: Item) {
-    if(!item && !item.effect && !item.effect.autocast) return;
+    if(!item || !item.effect || !item.effect.autocast || !item.effect.name) return;
     const effect = new Effects[item.effect.name]();
     effect.duration = -1;
     effect.effectInfo.isPermanent = true;
