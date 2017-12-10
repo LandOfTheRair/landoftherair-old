@@ -33,9 +33,9 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
   constructor(private colyseusGame: ColyseusGameService) { }
 
   ngOnInit() {
-    this.player$ = this.colyseusGame.clientGameState.playerBoxes$.subscribe(player => {
+    this.player$ = this.colyseusGame.clientGameState.playerBoxes$.subscribe(({ newPlayer }) => {
       this.verifyAndUpdateTarget();
-      this.distanceCheckAndClearTarget(player);
+      this.distanceCheckAndClearTarget(newPlayer);
     });
   }
 
