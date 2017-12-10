@@ -4,7 +4,7 @@ import * as RestrictedNumber from 'restricted-number';
 import { Character, MaxSizes, AllNormalGearSlots, Allegiance } from './character';
 import { Item } from './item';
 
-import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith } from 'lodash';
+import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith, extend } from 'lodash';
 import { Party } from './party';
 import { Quest } from '../../server/base/Quest';
 
@@ -12,6 +12,8 @@ import * as Quests from '../../server/quests';
 import { LowCON } from '../../server/effects/LowCON';
 import { nonenumerable } from 'nonenumerable';
 import { CharacterHelper } from '../../server/helpers/character-helper';
+
+import { AllTraits } from '../../shared/traits/trait-hash';
 
 export class Player extends Character {
   @nonenumerable
@@ -543,15 +545,30 @@ export class Player extends Character {
     if(this.traitPoints < 0 || isNaN(this.traitPoints)) this.traitPoints = 0;
   }
 
-  public increaseTraitLevel(trait: string, reqBaseClass?: string): void {
+  public increaseTraitLevel(trait: string, reqBaseClass?: string, extra = {}): void {
     this.traitLevels = this.traitLevels || {};
-    this.traitLevels[trait] = this.traitLevels[trait] || { level: 0, active: true, reqBaseClass };
+    this.traitLevels[trait] = this.traitLevels[trait] || { level: 0, active: true };
+    this.traitLevels[trait].reqBaseClass = reqBaseClass;
+    extend(this.traitLevels[trait], extra);
     this.traitLevels[trait].level++;
   }
 
   public getTraitLevel(trait: string): number {
-    if(!this.traitLevels || !this.isTraitActive(trait)) return 0;
+    if(!this.traitLevels || !this.isTraitActive(trait) || !this.isTraitInEffect(trait)) return 0;
     return this.traitLevels[trait] ? this.traitLevels[trait].level : 0;
+  }
+
+  public isTraitInEffect(trait: string): boolean {
+    if(!this.traitLevels) return false;
+
+    const traitRef = this.traitLevels[trait];
+    if(!traitRef) return false;
+
+    // check if is active, defaults to true
+    const { category, name } = traitRef;
+    if(!category || !name) return true;
+
+    return AllTraits[category][name].currentlyInEffect(this);
   }
 
   public isTraitActive(trait: string): boolean {
