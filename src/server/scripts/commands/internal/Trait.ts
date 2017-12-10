@@ -21,7 +21,7 @@ export class Trait extends Command {
 
     if(!trait.canBuy(player)) return player.sendClientMessage('You cannot buy that trait.');
 
-    trait.buy(player);
+    trait.buy(player, { category, name });
   }
 
 }
