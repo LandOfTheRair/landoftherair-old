@@ -23,7 +23,7 @@
       "prefix": "app",
       "styles": [
         "../../node_modules/sweetalert2/dist/sweetalert2.css",
-        "../../node_modules/ng2-drag-drop/style.css",
+        "../../node_modules/ng-drag-drop/style.css",
         "macicons/macicons.css",
         "styles.scss"
       ],

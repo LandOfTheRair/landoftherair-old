@@ -13,7 +13,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { Ng2DragDropModule } from 'ng2-drag-drop';
+import { NgDragDropModule } from 'ng-drag-drop';
 import { ColorPickerModule } from 'ngx-color-picker';
 
 import { AppComponent } from './app.component';
@@ -106,7 +106,7 @@ import { TraitsComponent } from './traits/traits.component';
     HttpModule,
 
     ColorPickerModule,
-    Ng2DragDropModule.forRoot(),
+    NgDragDropModule.forRoot(),
     Ng2Webstorage.forRoot(),
     BsDropdownModule.forRoot(),
     PopoverModule.forRoot(),

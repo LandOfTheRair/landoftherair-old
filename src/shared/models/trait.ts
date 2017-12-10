@@ -23,7 +23,7 @@ export class Trait {
     return player.getTraitLevel(this.traitName) < this.maxLevel && player.hasTraitPoints(this.tpCost);
   }
 
-  static buy(player: Player, extra): void {
+  static buy(player: Player, extra?): void {
     player.loseTraitPoints(this.tpCost);
     if(this.increaseLevel) player.increaseTraitLevel(this.traitName, this.baseClass, extra);
     player.sendClientMessage(`Your personality has expanded with knowledge of "${startCase(this.traitName)}"!`);
