@@ -49,14 +49,21 @@ import { environment } from '../../environments/environment';
     .mac-container.xsmall .macicons {
       font-size: 110%;
     }
+    
+    .mac-container.round {
+      border-radius: 50%;
+    }
   `],
   template: `
-    <div class="mac-container vertical-center" [ngClass]="[size]" [style.background-color]="bgColor">
+    <div class="mac-container vertical-center" [ngClass]="[size]" [class.round]="round" [style.background-color]="bgColor">
       <span class="macicons" [ngClass]="['macicons-'+name]" container="body" [style.color]="fgColor"></span>
     </div>
   `
 })
 export class IconComponent {
+
+  @Input()
+  public round: boolean;
 
   @Input()
   public name = 'undecided';

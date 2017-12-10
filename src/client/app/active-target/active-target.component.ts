@@ -30,6 +30,10 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
     return this.colyseusGame.hostilityLevelFor(this.target);
   }
 
+  get isDifficult() {
+    return this.target.level > this.colyseusGame.character.level + 5;
+  }
+
   constructor(private colyseusGame: ColyseusGameService) { }
 
   ngOnInit() {

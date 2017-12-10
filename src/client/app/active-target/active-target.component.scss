@@ -12,16 +12,32 @@
   flex-direction: column;
 }
 
-.target-name, .progress-bar {
-  color: #fff;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+.target-name, .target-health {
+  margin-top: 5px;
+}
+
+.target-name, .progress-bar, .progress-bar-text {
+  color: #fff !important;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
 }
 
 .target-name {
-  text-align: center;
+  .dir {
+    display: inline-block;
+    width: 25px !important;
+  }
+
+  .difficulty {
+    float: right;
+    text-shadow: none;
+  }
 }
 
-.target-health, .target-status {
+.progress-bar-text {
+  font-weight: bold;
+}
+
+.target-health, .target-status, .target-name {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
