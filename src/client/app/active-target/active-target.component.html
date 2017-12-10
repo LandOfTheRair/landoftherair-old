@@ -1,6 +1,12 @@
 
 <div *ngIf="shouldShowBox">
-  <div class="target-name">{{ dirString }} {{ target.name }} ({{ hostility }})</div>
+  <div class="target-name">
+    <span class="dir">{{ dirString }}</span>
+    <span>{{ target.name }} ({{ hostility }})</span>
+    <span class="difficulty" *ngIf="isDifficult" tooltip="This target might present some difficulty.">
+      <app-icon name="crowned-skull" size="xsmall" round="true"></app-icon>
+    </span>
+  </div>
   <div class="target-health">
     <div class="progress">
       <div class="progress-bar bg-danger" [style.width]="targetHealth + '%'"></div>
