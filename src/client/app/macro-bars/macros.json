@@ -1,16 +1,6 @@
 {
     "allMeta": [
         {
-            "name": "Look At",
-            "macro": "look at",
-            "icon": "look-at",
-            "color": "#8A6948",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Look at a target, getting a full description of them and their gear.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Climb",
             "macro": "climb up",
             "icon": "ladder",
@@ -21,12 +11,12 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Skills",
-            "macro": "show skills",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your skills and skill levels in text form.",
+            "name": "Look At",
+            "macro": "look at",
+            "icon": "look-at",
+            "color": "#8A6948",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Look at a target, getting a full description of them and their gear.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -51,32 +41,12 @@
             "requiresLearn": false
         },
         {
-            "name": "Drink",
-            "macro": "~drink",
-            "icon": "potion-ball",
-            "color": "#2020B2",
+            "name": "Show Skills",
+            "macro": "show skills",
+            "icon": "checklist",
+            "color": "#000000",
             "mode": "autoActivate",
-            "tooltipDesc": "Drink a potion from your potion slot.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Restore",
-            "macro": "restore",
-            "icon": "quicksand",
-            "color": "#8A6948",
-            "mode": "autoActivate",
-            "tooltipDesc": "Revive and go back to a respawn point.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Look At Ground",
-            "macro": "~look",
-            "icon": "semi-closed-eye",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "tooltipDesc": "Look at the ground without searching containers.",
+            "tooltipDesc": "See all of your skills and skill levels in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -92,12 +62,52 @@
             "requiresLearn": false
         },
         {
+            "name": "Drink",
+            "macro": "~drink",
+            "icon": "potion-ball",
+            "color": "#2020B2",
+            "mode": "autoActivate",
+            "tooltipDesc": "Drink a potion from your potion slot.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Look At Ground",
+            "macro": "~look",
+            "icon": "semi-closed-eye",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "tooltipDesc": "Look at the ground without searching containers.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Restore",
+            "macro": "restore",
+            "icon": "quicksand",
+            "color": "#8A6948",
+            "mode": "autoActivate",
+            "tooltipDesc": "Revive and go back to a respawn point.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Search",
             "macro": "~search",
             "icon": "cash",
             "color": "#665600",
             "mode": "autoActivate",
             "tooltipDesc": "Look at the ground and search containers for items.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Charge",
+            "macro": "charge",
+            "icon": "running-ninja",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -118,16 +128,6 @@
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Backstab your target from the shadows.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Charge",
-            "macro": "charge",
-            "icon": "running-ninja",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -171,6 +171,76 @@
             "tooltipDesc": "Throw an item at a target.",
             "isSystem": true,
             "requiresLearn": false
+        },
+        {
+            "name": "BarFire",
+            "macro": "cast barfire",
+            "icon": "rosa-shield",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield fire damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFrost",
+            "macro": "cast barfrost",
+            "icon": "rosa-shield",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarWater",
+            "macro": "cast barwater",
+            "icon": "rosa-shield",
+            "color": "#208aec",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield water damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "FireMist",
+            "macro": "cast firemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 40 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EnergyWave",
+            "macro": "cast energywave",
+            "icon": "beams-aura",
+            "color": "#000080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 80 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "IceMist",
+            "macro": "cast icemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 40 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MagicMissile",
+            "macro": "cast magicmissile",
+            "icon": "missile-swarm",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
+            "isSystem": true,
+            "requiresLearn": true
         },
         {
             "name": "Afflict",
@@ -233,22 +303,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Stun",
-            "macro": "cast stun",
-            "icon": "knockout",
-            "color": "#990",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Attempt to stun a single target. Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Succor",
             "macro": "cast succor",
             "icon": "blackball",
             "color": "#080",
             "mode": "autoActivate",
             "tooltipDesc": "Create a consumable that will let you return to your current location. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Stun",
+            "macro": "cast stun",
+            "icon": "knockout",
+            "color": "#990",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Attempt to stun a single target. Cost: 40 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -263,22 +333,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Disease",
-            "macro": "cast disease",
-            "icon": "death-juice",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "DarkVision",
             "macro": "cast darkvision",
             "icon": "angry-eyes",
             "color": "#000",
             "mode": "clickToTarget",
             "tooltipDesc": "See in the darkness. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disease",
+            "macro": "cast disease",
+            "icon": "death-juice",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -293,16 +363,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Poison",
-            "macro": "cast poison",
-            "icon": "poison-gas",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Transmute",
             "macro": "cast transmute",
             "icon": "coins",
@@ -313,82 +373,22 @@
             "requiresLearn": true
         },
         {
+            "name": "Poison",
+            "macro": "cast poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "TrueSight",
             "macro": "cast truesight",
             "icon": "all-seeing-eye",
             "color": "#00a",
             "mode": "clickToTarget",
             "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "BarFrost",
-            "macro": "cast barfrost",
-            "icon": "rosa-shield",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "BarFire",
-            "macro": "cast barfire",
-            "icon": "rosa-shield",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield fire damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "BarWater",
-            "macro": "cast barwater",
-            "icon": "rosa-shield",
-            "color": "#208aec",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield water damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "EnergyWave",
-            "macro": "cast energywave",
-            "icon": "beams-aura",
-            "color": "#000080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 80 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "FireMist",
-            "macro": "cast firemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "IceMist",
-            "macro": "cast icemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MagicMissile",
-            "macro": "cast magicmissile",
-            "icon": "missile-swarm",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         }
