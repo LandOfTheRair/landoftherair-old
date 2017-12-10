@@ -38,7 +38,7 @@ export class ClientGameState {
   createPlayer$ = new Subject<Player>();
   updatePlayer$ = new Subject<Player>();
   removePlayer$ = new Subject<Player>();
-  playerBoxes$  = new Subject<Player>();
+  playerBoxes$  = new Subject<{ newPlayer: Player, oldPlayer: Player }>();
 
   loadPlayer$   = new Subject<any>();
 

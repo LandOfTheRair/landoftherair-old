@@ -257,7 +257,7 @@ export class ColyseusGameService {
     }
 
     // update hp/xp/etc for floating boxes
-    this.clientGameState.playerBoxes$.next(this.character);
+    this.clientGameState.playerBoxes$.next({ newPlayer: this.character, oldPlayer: hasOldCharacter });
   }
 
   private logMessage({ name, message, subClass, grouping, dirFrom }: any) {

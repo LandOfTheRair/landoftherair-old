@@ -93,24 +93,22 @@ export class MapComponent implements OnInit, OnDestroy {
         this.game.removePlayer(player);
       });
 
-      this.boxes$ = this.clientGameState.playerBoxes$.subscribe(player => {
-        if(player.username !== this.currentPlayer.username || player.name !== this.currentPlayer.name) return;
+      this.boxes$ = this.clientGameState.playerBoxes$.subscribe(({ newPlayer, oldPlayer }) => {
+        if(!this.game.isLoaded || !newPlayer || !oldPlayer) return;
 
-        if(this.game.isLoaded) {
-          const hpDifference = player.hp.__current - this.currentPlayer.hp.__current;
-          const xpDifference = player.exp - this.currentPlayer.exp;
+        const hpDifference = newPlayer.hp.__current - oldPlayer.hp.__current;
+        const xpDifference = newPlayer.exp - oldPlayer.exp;
 
-          if(hpDifference !== 0) {
-            const box = new HPBox(hpDifference);
-            box.init(this.mapContainer.nativeElement);
-            allBoxes.push(box);
-          }
+        if(hpDifference !== 0) {
+          const box = new HPBox(hpDifference);
+          box.init(this.mapContainer.nativeElement);
+          allBoxes.push(box);
+        }
 
-          if(xpDifference !== 0) {
-            const box = new XPBox(xpDifference);
-            box.init(this.mapContainer.nativeElement);
-            allBoxes.push(box);
-          }
+        if(xpDifference !== 0) {
+          const box = new XPBox(xpDifference);
+          box.init(this.mapContainer.nativeElement);
+          allBoxes.push(box);
         }
       });
     });
