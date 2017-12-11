@@ -26,6 +26,8 @@ process.on('uncaughtException', e => {
   Logger.error(e);
 });
 
+DB.init();
+
 const port = process.env.PORT || 3303;
 
 const gameServer = new colyseus.ClusterServer({});

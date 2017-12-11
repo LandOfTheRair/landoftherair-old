@@ -18,7 +18,7 @@ import * as Classes from '../classes';
 class NPCLoader {
 
   static async loadAllNPCs() {
-    await DB.isReady;
+    await DB.init();
 
     recurse(`${__dirname}/../data/npcs`).then(async files => {
       const filePromises = files.map(file => {

@@ -13,7 +13,7 @@ import { includes, flatten, isUndefined, isNumber } from 'lodash';
 class DropsLoader {
 
   static async loadAllRegions() {
-    await DB.isReady;
+    await DB.init();
     await DB.$regionDrops.remove({}, { multi: true });
 
     return new Promise(resolve => {
@@ -38,7 +38,7 @@ class DropsLoader {
   }
 
   static async loadAllMaps() {
-    await DB.isReady;
+    await DB.init();
     await DB.$mapDrops.remove({}, { multi: true });
 
     return new Promise(resolve => {
