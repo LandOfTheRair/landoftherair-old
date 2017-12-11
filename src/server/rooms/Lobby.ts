@@ -6,15 +6,11 @@ import { Player } from '../../shared/models/player';
 
 import { CharacterCreator } from '../helpers/character-creator';
 
-import { truncate, pick, sampleSize, includes } from 'lodash';
+import { truncate, pick, includes } from 'lodash';
 
 import { DB } from '../database';
 
-import * as jwt from 'jsonwebtoken';
-import { ItemCreator } from '../helpers/item-creator';
-import { SkillClassNames } from '../../shared/models/character';
-
-const AUTH0_SECRET = process.env.AUTH0_SECRET;
+import { JWTHelper } from '../helpers/jwt-helper';
 
 export class Lobby extends Room<LobbyState> {
 
@@ -114,19 +110,6 @@ export class Lobby extends Room<LobbyState> {
     this.state.removeAccount(client.userId);
   }
 
-  private verifyToken(token): boolean {
-    try {
-      jwt.verify(token, AUTH0_SECRET, { algorithms: ['HS256'] });
-      return true;
-    } catch(e) {
-      return false;
-    }
-  }
-
-  private extractIdFromToken(token): any {
-    return jwt.verify(token, AUTH0_SECRET, { algorithms: ['HS256'] });
-  }
-
   private sendMessage(client, message) {
     if(!client.username || !client.userId) return;
     message = truncate(message, { length: 500, omission: '[truncated]' });
@@ -170,83 +153,11 @@ export class Lobby extends Room<LobbyState> {
       isGM: account.isGM
     });
 
-    await this.giveCharacterBasicGearAndSkills(player);
+    await CharacterCreator.giveCharacterBasicGearAndSkills(player);
 
     const savePlayer = player.toSaveObject();
 
     DB.$players.insert(savePlayer);
-  }
-
-  private async giveCharacterBasicGearAndSkills(player: Player) {
-    let skill2 = '';
-    sampleSize([
-      SkillClassNames.OneHanded, SkillClassNames.TwoHanded, SkillClassNames.Shortsword,
-      SkillClassNames.Staff, SkillClassNames.Dagger, SkillClassNames.Mace, SkillClassNames.Axe
-    ], 4).forEach(skill => {
-      player._gainSkill(skill, player.calcSkillXP(1));
-    });
-
-    let body = '';
-    let mainhand = '';
-
-    switch(player.allegiance) {
-      case 'None': {
-        mainhand = 'Antanian Dagger';
-        body = 'Antanian Studded Tunic';
-        skill2 = SkillClassNames.Dagger;
-        break;
-      }
-
-      case 'Pirates': {
-        mainhand = 'Antanian Axe';
-        body = 'Antanian Tunic';
-        skill2 = SkillClassNames.Axe;
-        break;
-      }
-
-      case 'Townsfolk': {
-        mainhand = 'Antanian Greatsword';
-        body = 'Antanian Ringmail Tunic';
-        skill2 = SkillClassNames.TwoHanded;
-        break;
-      }
-
-      case 'Royalty': {
-        mainhand = 'Antanian Mace';
-        body = 'Antanian Tunic';
-        skill2 = SkillClassNames.Mace;
-        break;
-
-      }
-
-      case 'Adventurers': {
-        mainhand = 'Antanian Longsword';
-        body = 'Antanian Studded Tunic';
-        skill2 = SkillClassNames.OneHanded;
-        break;
-
-      }
-
-      case 'Wilderness': {
-        mainhand = 'Antanian Staff';
-        body = 'Antanian Studded Tunic';
-        skill2 = SkillClassNames.Staff;
-        break;
-
-      }
-
-      case 'Underground': {
-        mainhand = 'Antanian Shortsword';
-        body = 'Antanian Tunic';
-        skill2 = SkillClassNames.Shortsword;
-        break;
-      }
-    }
-
-    player.gear.Armor = await ItemCreator.getItemByName(body);
-    player.rightHand = await ItemCreator.getItemByName(mainhand);
-    player._gainSkill(skill2, player.calcSkillXP(2));
-
   }
 
   private getCharacter(username, charSlot) {
@@ -307,7 +218,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   onMessage(client, data) {
-    if(data.idToken && !this.verifyToken(data.idToken)) {
+    if(data.idToken && !JWTHelper.verifyToken(data.idToken)) {
       this.send(client, {
         error: 'error_invalid_token',
         prettyErrorName: 'Invalid Auth Token',
