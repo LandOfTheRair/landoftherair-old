@@ -64,6 +64,7 @@ class ItemLoader {
         console.log('Inserted all items.');
 
       } catch(e) {
+        console.error(e);
         process.exit(-1);
       }
 
