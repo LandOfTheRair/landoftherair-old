@@ -1,5 +1,8 @@
 
-import { includes, truncate, capitalize } from 'lodash';
+import { includes, truncate, capitalize, sampleSize } from 'lodash';
+import { Player } from '../../shared/models/player';
+import { ItemCreator } from './item-creator';
+import { SkillClassNames } from '../../shared/models/character';
 
 export class CharacterCreator {
 
@@ -77,5 +80,77 @@ export class CharacterCreator {
     });
 
     return char;
+  }
+
+  public static async giveCharacterBasicGearAndSkills(player: Player) {
+    let skill2 = '';
+    sampleSize([
+      SkillClassNames.OneHanded, SkillClassNames.TwoHanded, SkillClassNames.Shortsword,
+      SkillClassNames.Staff, SkillClassNames.Dagger, SkillClassNames.Mace, SkillClassNames.Axe
+    ], 4).forEach(skill => {
+      player._gainSkill(skill, player.calcSkillXP(1));
+    });
+
+    let body = '';
+    let mainhand = '';
+
+    switch(player.allegiance) {
+      case 'None': {
+        mainhand = 'Antanian Dagger';
+        body = 'Antanian Studded Tunic';
+        skill2 = SkillClassNames.Dagger;
+        break;
+      }
+
+      case 'Pirates': {
+        mainhand = 'Antanian Axe';
+        body = 'Antanian Tunic';
+        skill2 = SkillClassNames.Axe;
+        break;
+      }
+
+      case 'Townsfolk': {
+        mainhand = 'Antanian Greatsword';
+        body = 'Antanian Ringmail Tunic';
+        skill2 = SkillClassNames.TwoHanded;
+        break;
+      }
+
+      case 'Royalty': {
+        mainhand = 'Antanian Mace';
+        body = 'Antanian Tunic';
+        skill2 = SkillClassNames.Mace;
+        break;
+
+      }
+
+      case 'Adventurers': {
+        mainhand = 'Antanian Longsword';
+        body = 'Antanian Studded Tunic';
+        skill2 = SkillClassNames.OneHanded;
+        break;
+
+      }
+
+      case 'Wilderness': {
+        mainhand = 'Antanian Staff';
+        body = 'Antanian Studded Tunic';
+        skill2 = SkillClassNames.Staff;
+        break;
+
+      }
+
+      case 'Underground': {
+        mainhand = 'Antanian Shortsword';
+        body = 'Antanian Tunic';
+        skill2 = SkillClassNames.Shortsword;
+        break;
+      }
+    }
+
+    player.gear.Armor = await ItemCreator.getItemByName(body);
+    player.rightHand = await ItemCreator.getItemByName(mainhand);
+    player._gainSkill(skill2, player.calcSkillXP(2));
+
   }
 }
