@@ -6872,6 +6872,61 @@
                  "width":448,
                  "x":7552,
                  "y":896
+                }, 
+                {
+                 "height":1024,
+                 "id":782,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1024,
+                 "x":256,
+                 "y":256
+                }, 
+                {
+                 "height":576,
+                 "id":783,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":256,
+                 "x":1280,
+                 "y":704
+                }, 
+                {
+                 "height":256,
+                 "id":784,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":576,
+                 "x":1536,
+                 "y":1024
+                }, 
+                {
+                 "height":704,
+                 "id":785,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":768,
+                 "x":1600,
+                 "y":256
+                }, 
+                {
+                 "height":384,
+                 "id":786,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":256,
+                 "x":1344,
+                 "y":256
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7158,7 +7213,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":782,
+ "nextobjectid":787,
  "orientation":"orthogonal",
  "properties":
     {
