@@ -43,6 +43,17 @@ exec('git add -f dist', (e, stdout, stderr) => {
         }
 
         removeSync('dist');
+
+        exec('npm run runseed:prod', (e, stdout, stderr) => {
+
+          console.log('Seeded prod DB');
+
+          if(e) {
+            console.log(stdout, stderr);
+            console.error(e);
+            process.exit(0);
+          }
+        });
       });
     });
   });
