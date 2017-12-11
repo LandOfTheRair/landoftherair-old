@@ -16,7 +16,7 @@ export class MessageHelper {
     const charRegion = char.$$room.state.getSuccorRegion(char);
 
     char.$$room.state.getPlayersInRange(char, radius, except).forEach(p => {
-      
+
       if(char.$$room.state.getSuccorRegion(p) !== charRegion) return;
 
       // outta range, generate a "you heard X in the Y dir" message

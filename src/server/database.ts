@@ -78,7 +78,7 @@ class Database {
 
         this.clearStaleData();
 
-        resolve();
+        resolve(this.client);
       });
 
     });
