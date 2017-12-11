@@ -23,7 +23,7 @@ import {
 class ItemLoader {
 
   static async loadAllItems() {
-    await DB.isReady;
+    await DB.init();
 
     recurse(`${__dirname}/../data/items`).then(async files => {
       const filePromises = files.map(file => {

@@ -10,8 +10,6 @@ if(!DB_URI) {
 
 class Database {
 
-  public isReady: Promise<any>;
-
   public $accounts: any;
   public $players: any;
   public $items: any;
@@ -27,53 +25,51 @@ class Database {
 
   private client: MongoClient;
 
-  constructor() {
-    this.client = new MongoClient();
+  async init() {
+    try {
+      this.client = await MongoClient.connect(DB_URI);
+    } catch(err) {
+      console.error(err);
+      process.exit(0);
+    }
 
-    this.isReady = this.client.connect(DB_URI, (err, client) => {
-      if(err) {
-        console.error(err);
-        process.exit(0);
-      }
+    this.$accounts = this.client.collection('accounts');
+    this.$accounts.ensureIndex({ userId: 1 });
+    this.$accounts.ensureIndex({ username: 1 }, { unique: true });
 
-      this.$accounts = client.collection('accounts');
-      this.$accounts.ensureIndex({ userId: 1 });
-      this.$accounts.ensureIndex({ username: 1 }, { unique: true });
+    this.$players = this.client.collection('players');
+    this.$players.ensureIndex({ username: 1, charSlot: 1 });
+    this.$players.ensureIndex({ username: 1, map: 1, charSlot: 1 });
 
-      this.$players = client.collection('players');
-      this.$players.ensureIndex({ username: 1, charSlot: 1 });
-      this.$players.ensureIndex({ username: 1, map: 1, charSlot: 1 });
+    this.$items = this.client.collection('items');
+    this.$items.ensureIndex({ name: 1 }, { unique: true });
 
-      this.$items = client.collection('items');
-      this.$items.ensureIndex({ name: 1 }, { unique: true });
+    this.$npcs = this.client.collection('npcs');
+    this.$npcs.ensureIndex({ npcId: 1 }, { unique: true });
 
-      this.$npcs = client.collection('npcs');
-      this.$npcs.ensureIndex({ npcId: 1 }, { unique: true });
+    this.$mapDrops = this.client.collection('mapdrops');
+    this.$mapDrops.ensureIndex({ mapName: 1 }, { unique: true });
 
-      this.$mapDrops = client.collection('mapdrops');
-      this.$mapDrops.ensureIndex({ mapName: 1 }, { unique: true });
+    this.$regionDrops = this.client.collection('regiondrops');
+    this.$regionDrops.ensureIndex({ regionName: 1 }, { unique: true });
 
-      this.$regionDrops = client.collection('regiondrops');
-      this.$regionDrops.ensureIndex({ regionName: 1 }, { unique: true });
+    this.$mapGroundItems = this.client.collection('mapgrounditems');
+    this.$mapGroundItems.ensureIndex({ mapName: 1 }, { unique: true });
 
-      this.$mapGroundItems = client.collection('mapgrounditems');
-      this.$mapGroundItems.ensureIndex({ mapName: 1 }, { unique: true });
+    this.$mapBossTimers = this.client.collection('mapbosstimers');
+    this.$mapBossTimers.ensureIndex({ mapName: 1 }, { unique: true });
 
-      this.$mapBossTimers = client.collection('mapbosstimers');
-      this.$mapBossTimers.ensureIndex({ mapName: 1 }, { unique: true });
+    this.$characterLockers = this.client.collection('characterLockers');
+    this.$characterLockers.ensureIndex({ username: 1, charSlot: 1, region: 1, lockerId: 1 }, { unique: true });
 
-      this.$characterLockers = client.collection('characterLockers');
-      this.$characterLockers.ensureIndex({ username: 1, charSlot: 1, region: 1, lockerId: 1 }, { unique: true });
+    this.$lobbySettings = this.client.collection('lobbySettings');
 
-      this.$lobbySettings = client.collection('lobbySettings');
+    this.$logs = this.client.collection('logs');
+    this.$logs.ensureIndex({ createdAt: 1 }, { expireAfterSeconds: 3600 * 6 });
 
-      this.$logs = client.collection('logs');
-      this.$logs.ensureIndex({ createdAt: 1 }, { expireAfterSeconds: 3600 * 6 });
+    this.$gameSettings = this.client.collection('gamesettings');
 
-      this.$gameSettings = client.collection('gamesettings');
-
-      this.clearStaleData();
-    });
+    this.clearStaleData();
   }
 
   clearStaleData() {
