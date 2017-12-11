@@ -23,7 +23,6 @@ export class Player extends Character {
   createdAt: number;
   username: string;
 
-  @nonenumerable
   charSlot: number;
 
   @nonenumerable
