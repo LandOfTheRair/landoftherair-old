@@ -54,6 +54,7 @@ class NPCLoader {
         console.log('Inserted all NPCs.');
 
       } catch(e) {
+        console.error(e);
         process.exit(-1);
       }
 
