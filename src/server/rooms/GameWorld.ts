@@ -105,7 +105,7 @@ export class GameWorld extends Room<GameState> {
     return { map: this.mapName, x: this.state.map.properties.respawnX, y: this.state.map.properties.respawnY };
   }
 
-  private savePlayer(player: Player) {
+  private async savePlayer(player: Player) {
     if(player.$$doNotSave) return;
 
     const savePlayer = player.toSaveObject();
@@ -246,7 +246,7 @@ export class GameWorld extends Room<GameState> {
     this.updatePos(player);
   }
 
-  teleport(player, opts: { newMap, x, y, zChange?, zSet? }) {
+  async teleport(player, opts: { newMap, x, y, zChange?, zSet? }) {
 
     const { newMap, x, y, zChange, zSet } = opts;
 
@@ -272,7 +272,7 @@ export class GameWorld extends Room<GameState> {
     if(newMap && player.map !== newMap) {
       player.map = newMap;
       this.prePlayerMapLeave(player);
-      this.savePlayer(player);
+      await this.savePlayer(player);
       player.$$doNotSave = true;
       this.state.resetFOV(player);
       this.send(client, { action: 'change_map', map: newMap });
