@@ -53,7 +53,5 @@ if(cluster.isMaster) {
     });
   });
 
-  DB.isReady.then(() => {
-    gameServer.attach({ server: api.expressApp });
-  });
+  gameServer.attach({ server: api.expressApp });
 }

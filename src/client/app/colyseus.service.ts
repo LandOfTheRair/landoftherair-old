@@ -38,6 +38,7 @@ export class ColyseusService {
 
     this.client.onError.add((e) => {
       console.error(e);
+      location.reload();
     });
 
     this.client.onClose.add(() => {
