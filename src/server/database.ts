@@ -30,7 +30,7 @@ class Database {
   constructor() {
     this.client = new MongoClient();
 
-    this.client.connect(DB_URI, (err, client) => {
+    this.isReady = this.client.connect(DB_URI, (err, client) => {
       if(err) {
         console.error(err);
         process.exit(0);
