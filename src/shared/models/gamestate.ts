@@ -29,7 +29,12 @@ export class GameState {
   private deepstream: any;
 
   @nonenumerable
-  private deepstreamRecords: any = {};
+  private deepstreamRecords: any = {
+    ground: null,
+    npcVolatile: {},
+    npcData: {},
+    npcHash: null
+  };
 
   @nonenumerable
   map: any = {};
@@ -39,7 +44,11 @@ export class GameState {
   @nonenumerable
   _mapNPCs: NPC[] = [];
 
+  @nonenumerable
   mapNPCs: any = {};
+
+  @nonenumerable
+  npcExistHash: any = {};
 
   @nonenumerable
   groundItems: any = {};
@@ -78,9 +87,12 @@ export class GameState {
   }
 
   private initDeepstream() {
-    this.deepstream.login({ map: this.mapName });
+    this.deepstream.login({ map: this.mapName, token: process.env.DEEPSTREAM_TOKEN });
     this.deepstreamRecords.groundItems = this.deepstream.record.getRecord(`${this.mapName}/groundItems`);
     this.deepstreamRecords.groundItems.set({});
+
+    this.deepstreamRecords.npcHash = this.deepstream.record.getRecord(`${this.mapName}/npcHash`);
+    this.deepstreamRecords.npcHash.set({});
   }
 
   private initFov() {
@@ -112,7 +124,7 @@ export class GameState {
   }
 
   tick() {
-    this.mapNPCs = this.cleanNPCs();
+    // this.mapNPCs = this.cleanNPCs();
     this.playerHash = this.createPlayerHash();
   }
 
@@ -136,17 +148,56 @@ export class GameState {
     return succorRegion ? succorRegion.name : 'the wilderness';
   }
 
+  private trimNPC(npc: NPC): any {
+    const baseObj = pick(npc, [
+      'agro', 'uuid', 'name',
+      'hostility', 'alignment', 'allegiance', 'allegianceReputation',
+      'dir', 'sprite',
+      'leftHand', 'rightHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2',
+      'hp', 'level',
+      'x', 'y', 'z',
+      'effects',
+      'totalStats.stealth'
+    ]);
+    if(!baseObj.gear) baseObj.gear = {};
+    return baseObj;
+  }
+
   addNPC(npc: NPC): void {
     npc.$$map = this.map;
     this._mapNPCs.push(npc);
+    this.mapNPCs[npc.uuid] = npc;
+
+    this.deepstreamRecords.npcData[npc.uuid] = this.deepstream.record.getRecord(`${this.mapName}/npcData/${npc.uuid}`);
+    this.deepstreamRecords.npcData[npc.uuid].set(this.trimNPC(npc));
+
+    this.deepstreamRecords.npcVolatile[npc.uuid] = this.deepstream.record.getRecord(`${this.mapName}/npcVolatile/${npc.uuid}`);
+    this.updateNPCLocation(npc);
+
+    this.npcExistHash[npc.uuid] = true;
+    this.updateNPCExistHash();
   }
 
   findNPC(uuid: string): NPC {
-    return find(this._mapNPCs, { uuid });
+    return this.mapNPCs[uuid];
   }
 
   removeNPC(npc: NPC): void {
     pull(this._mapNPCs, npc);
+    delete this.mapNPCs[npc.uuid];
+    delete this.npcExistHash[npc.uuid];
+    this.deepstreamRecords.npcData[npc.uuid].delete();
+    this.deepstreamRecords.npcVolatile[npc.uuid].delete();
+    this.updateNPCExistHash();
+  }
+
+  updateNPCLocation(char: Character): void {
+    if(!this.deepstreamRecords.npcVolatile[char.uuid]) return;
+    this.deepstreamRecords.npcVolatile[char.uuid].set({ x: char.x, y: char.y, hp: char.hp });
+  }
+
+  updateNPCExistHash(): void {
+    this.deepstreamRecords.npcHash.set(this.npcExistHash);
   }
 
   addPlayer(player, clientId: string): void {
@@ -457,24 +508,6 @@ export class GameState {
         CombatHelper.dealOnesidedDamage(p, { damage: hpLost, damageClass: p.$$swimElement || 'water', damageMessage: 'You are drowning!', suppressIfNegative: true });
       }
     });
-  }
-
-  cleanNPCs() {
-    return this._mapNPCs.reduce((prev, npc) => {
-      const baseObj = pick(npc, [
-        'agro', 'uuid', 'name',
-        'hostility', 'alignment', 'allegiance', 'allegianceReputation',
-        'dir', 'sprite',
-        'leftHand', 'rightHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2',
-        'hp', 'level',
-        'x', 'y', 'z',
-        'effects',
-        'totalStats.stealth'
-      ]);
-      if(!baseObj.gear) baseObj.gear = {};
-      prev[baseObj.uuid] = baseObj;
-      return prev;
-    }, {});
   }
 
   checkIfDenseWall(x: number, y: number): boolean {

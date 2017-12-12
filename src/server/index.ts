@@ -3,6 +3,7 @@ require('dotenv').config({ silent: true });
 
 import { DB } from './database';
 import { GameAPI } from './api';
+import { DeepstreamCleaner } from './deepstream-cleaner';
 import { Logger } from './logger';
 
 import * as colyseus from 'colyseus';
@@ -26,6 +27,7 @@ process.on('uncaughtException', e => {
   Logger.error(e);
 });
 
+DeepstreamCleaner.init();
 DB.init();
 
 const port = process.env.PORT || 3303;

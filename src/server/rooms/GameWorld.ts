@@ -31,8 +31,9 @@ import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 import { PartyManager } from '../helpers/party-manager';
 import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings-helper';
 import { Account } from '../../shared/models/account';
+import { DeepstreamCleaner } from '../deepstream-cleaner';
 
-const TICK_DIVISOR = 2;
+const TICK_DIVISOR = 1;
 
 const TickRates = {
   // tick players every second
@@ -68,6 +69,8 @@ export class GameWorld extends Room<GameState> {
   private clearTimers: any[] = [];
 
   private usernameClientHash = {};
+
+  private deepstream: any;
 
   get allSpawners() {
     return this.spawners;
@@ -414,13 +417,15 @@ export class GameWorld extends Room<GameState> {
   async onInit(opts) {
     this.allMapNames = opts.allMapNames;
 
-    this.setPatchRate(500 / TICK_DIVISOR);
+    this.deepstream = Deepstream(process.env.DEEPSTREAM_URL);
+
+    this.setPatchRate(1000 / TICK_DIVISOR);
     this.setSimulationInterval(this.tick.bind(this), 1000 / TICK_DIVISOR);
     this.setState(new GameState({
       players: [],
       map: cloneDeep(require(opts.mapPath)),
       mapName: opts.mapName,
-      deepstream: Deepstream(process.env.DEEPSTREAM_URL)
+      deepstream: this.deepstream
     }));
 
     const timerData = await this.loadBossTimers();
@@ -448,6 +453,8 @@ export class GameWorld extends Room<GameState> {
     this.saveGround();
     this.saveBossTimers();
     this.partyManager.stopEmitting();
+
+    DeepstreamCleaner.cleanMap(this.mapName, this.deepstream);
   }
 
   public async loadGameSettings() {

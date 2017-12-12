@@ -117,6 +117,7 @@ export class ColyseusGameService {
     });
 
     this.initDeepstreamForRoom(room);
+    this.clientGameState.setMapNPCs(this.deepstream.allNPCsHash);
 
     this.worldRoom.onUpdate.addOnce((state) => {
       this.clientGameState.mapName = state.mapName;
@@ -125,9 +126,12 @@ export class ColyseusGameService {
       this.changingMap = false;
     });
 
+    let lastTimestamp = 0;
     this.worldRoom.onUpdate.add((state) => {
+      const now = Date.now();
+      console.log('update', now - lastTimestamp + 'ms');
+      lastTimestamp = now;
       this.clientGameState.setMapData(state.mapData || {});
-      this.clientGameState.setMapNPCs(state.mapNPCs || []);
       this.clientGameState.setPlayers(state.playerHash);
       this.clientGameState.setEnvironmentalObjects(state.environmentalObjects || []);
       this.clientGameState.setDarkness(state.darkness || {});
@@ -228,7 +232,7 @@ export class ColyseusGameService {
     };
 
     // this.deepstream.ground.whenReady(record => updateGround(record.get()));
-    this.deepstream.ground.subscribe(data => updateGround(data), true);
+    this.deepstream.ground$.subscribe(data => updateGround(data));
   }
 
   private syncCharacterAttributes(x, y, dir, swimLevel) {
