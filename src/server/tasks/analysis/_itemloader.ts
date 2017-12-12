@@ -18,7 +18,7 @@ export class ItemLoader {
   ];
 
   static async loadAllItems(itemClasses: string[] = []) {
-    await DB.isReady;
+    await DB.init();
 
     return DB.$items.find({ sprite: { $ne: -1 }, itemClass: { $in: itemClasses } }).toArray();
   }
