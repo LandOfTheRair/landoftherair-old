@@ -4,7 +4,7 @@ serverName: UUID
 auth:
   type: http
   options:
-    endpointUrl: ${DEEPSTREAM_AUTH_URL}
+    endpointUrl: https://wt-kyle-seiyria_com-0.run.webtask.io/landoftherair-auth
     permittedStatusCodes: [200]
     requestTimeout: 5000
 
