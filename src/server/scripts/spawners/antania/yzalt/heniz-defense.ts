@@ -12,7 +12,7 @@ export class HenizDefenseSpawner extends Spawner {
     super(room, opts, {
       respawnRate: 10,
       initialSpawn: 0,
-      maxCreatures: 15,
+      maxCreatures: 5,
       spawnRadius: 0,
       randomWalkRadius: 15,
       leashRadius: 35,

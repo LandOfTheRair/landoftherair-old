@@ -92,7 +92,7 @@ export class ClientGameState {
   }
 
   setMapNPCs(data) {
-    Object.keys(data).forEach(uuid => data[uuid] = new Character(data[uuid]));
+    // Object.keys(data).forEach(uuid => data[uuid] = new Character(data[uuid]));
     this.mapNPCs = data;
   }
 
