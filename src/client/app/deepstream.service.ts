@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { environment } from '../environments/environment';
 
 import { Character } from '../../shared/models/character';
@@ -23,9 +23,11 @@ export class DeepstreamService {
   public allNPCsHash: any = {};
   public ground$ = new BehaviorSubject<any>({});
 
-  constructor() {
+  constructor(private zone: NgZone) {
     this.ds = Deepstream(environment.deepstream.url);
     this.ds.login();
+
+    this.ds.on('error', e => {});
   }
 
   private updateNPCList(data: any) {
@@ -36,8 +38,10 @@ export class DeepstreamService {
     const newNPCs = difference(newNPCList, currentNPCList);
     const delNPCs = difference(currentNPCList, newNPCList);
 
-    newNPCs.forEach(npcId => this.addNPC(npcId));
-    delNPCs.forEach(npcId => this.delNPC(npcId));
+    this.zone.runOutsideAngular(() => {
+      newNPCs.forEach(npcId => this.addNPC(npcId));
+      delNPCs.forEach(npcId => this.delNPC(npcId));
+    });
 
     this.currentNPCHash = data;
   }
@@ -82,8 +86,13 @@ export class DeepstreamService {
   }
 
   private delNPC(npcId: string) {
-    this.npcData[npcId].discard();
-    this.npcVolatile[npcId].discard();
+    try {
+      this.npcData[npcId].discard();
+    } catch(e) {}
+
+    try {
+      this.npcVolatile[npcId].discard();
+    } catch(e) {}
   }
 
 }
