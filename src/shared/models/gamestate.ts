@@ -26,6 +26,12 @@ export class GameState {
   private playerHash: any = {};
 
   @nonenumerable
+  private deepstream: any;
+
+  @nonenumerable
+  private deepstreamRecords: any = {};
+
+  @nonenumerable
   map: any = {};
   mapName = '';
   mapData: any = { openDoors: {} };
@@ -35,6 +41,7 @@ export class GameState {
 
   mapNPCs: any = {};
 
+  @nonenumerable
   groundItems: any = {};
 
   @nonenumerable
@@ -66,7 +73,17 @@ export class GameState {
 
   constructor(opts) {
     extend(this, opts);
+    this.initFov();
+    this.initDeepstream();
+  }
 
+  private initDeepstream() {
+    this.deepstream.login({ map: this.mapName });
+    this.deepstreamRecords.groundItems = this.deepstream.record.getRecord(`${this.mapName}/groundItems`);
+    this.deepstreamRecords.groundItems.set({});
+  }
+
+  private initFov() {
     const denseLayer = this.map.layers[MapLayer.Walls].data;
     const opaqueObjects = this.map.layers[MapLayer.OpaqueDecor].objects;
     opaqueObjects.forEach(obj => obj.opacity = 1);
@@ -378,6 +395,8 @@ export class GameState {
     } else {
       typeList.push(item);
     }
+
+    this.updateGroundItems();
   }
 
   removeItemFromGround(item: Item): void {
@@ -395,6 +414,17 @@ export class GameState {
 
     delete item.x;
     delete item.y;
+
+    this.updateGroundItems();
+  }
+
+  setGround(ground: any): void {
+    this.groundItems = ground;
+    this.updateGroundItems();
+  }
+
+  updateGroundItems(): void {
+    this.deepstreamRecords.groundItems.set(this.groundItems);
   }
 
   serializableGroundItems() {
