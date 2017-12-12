@@ -50,6 +50,10 @@ export class ColyseusGameService {
   private overrideNoBgm: boolean;
   private overrideNoSfx: boolean;
 
+  get deepstream() {
+    return this.colyseus.deepstream;
+  }
+
   get character() {
     return this.clientGameState.currentPlayer;
   }
@@ -112,6 +116,8 @@ export class ColyseusGameService {
       username: this.colyseus.username
     });
 
+    this.initDeepstreamForRoom(room);
+
     this.worldRoom.onUpdate.addOnce((state) => {
       this.clientGameState.mapName = state.mapName;
       this.clientGameState.grabOldUpdates(state.mapData);
@@ -120,7 +126,6 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onUpdate.add((state) => {
-      this.clientGameState.setGroundItems(state.groundItems || {});
       this.clientGameState.setMapData(state.mapData || {});
       this.clientGameState.setMapNPCs(state.mapNPCs || []);
       this.clientGameState.setPlayers(state.playerHash);
@@ -213,6 +218,17 @@ export class ColyseusGameService {
     this.worldRoom.onError.add((e) => {
       alert(e);
     });
+  }
+
+  private initDeepstreamForRoom(room: string) {
+    this.deepstream.init(room);
+
+    const updateGround = (ground) => {
+      this.clientGameState.setGroundItems(ground || {});
+    };
+
+    // this.deepstream.ground.whenReady(record => updateGround(record.get()));
+    this.deepstream.ground.subscribe(data => updateGround(data), true);
   }
 
   private syncCharacterAttributes(x, y, dir, swimLevel) {
@@ -488,6 +504,7 @@ export class ColyseusGameService {
 
   private resetRoom() {
     if(!this.worldRoom) return;
+    this.colyseus.deepstream.uninit();
     this.worldRoom.leave();
     delete this.worldRoom;
   }

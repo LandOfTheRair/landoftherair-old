@@ -22,5 +22,8 @@ export const environment = {
     client: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
     callbackUrl: 'http://localhost:4200',
     apiUrl: 'authidentifier'
+  },
+  deepstream: {
+    url: 'ws://127.0.0.1:6020/deepstream'
   }
 };

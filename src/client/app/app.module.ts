@@ -22,6 +22,7 @@ import { AuthService } from './auth.service';
 import { ColyseusService } from './colyseus.service';
 import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
+import { DeepstreamService } from './deepstream.service';
 import { MacroService } from './macros.service';
 
 import { CloseButtonComponent } from './_shared/close-button.component';
@@ -120,6 +121,7 @@ import { TraitsComponent } from './traits/traits.component';
     ColyseusService,
     ColyseusLobbyService,
     ColyseusGameService,
+    DeepstreamService,
     MacroService
   ],
   bootstrap: [AppComponent]

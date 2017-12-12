@@ -5,6 +5,7 @@ import * as Colyseus from 'colyseus.js';
 import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
 import { Subject } from 'rxjs/Subject';
+import { DeepstreamService } from './deepstream.service';
 
 @Injectable()
 export class ColyseusService {
@@ -13,7 +14,11 @@ export class ColyseusService {
   private _isConnected = false;
   public isConnected$ = new Subject();
 
-  constructor(public lobby: ColyseusLobbyService, public game: ColyseusGameService) {}
+  constructor(
+    public lobby: ColyseusLobbyService,
+    public game: ColyseusGameService,
+    public deepstream: DeepstreamService
+  ) {}
 
   init() {
     this.initClient();

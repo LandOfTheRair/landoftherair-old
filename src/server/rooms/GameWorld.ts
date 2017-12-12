@@ -1,6 +1,6 @@
 
 import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter, clone, pull } from 'lodash';
-
+import * as Deepstream from 'deepstream.io-client-js';
 import * as scheduler from 'node-schedule';
 
 import { Parser } from 'mingy';
@@ -419,7 +419,8 @@ export class GameWorld extends Room<GameState> {
     this.setState(new GameState({
       players: [],
       map: cloneDeep(require(opts.mapPath)),
-      mapName: opts.mapName
+      mapName: opts.mapName,
+      deepstream: Deepstream(process.env.DEEPSTREAM_URL)
     }));
 
     const timerData = await this.loadBossTimers();
@@ -488,7 +489,8 @@ export class GameWorld extends Room<GameState> {
 
     this.checkIfAnyItemsAreExpired(groundItems);
 
-    this.state.groundItems = groundItems;
+    this.state.setGround(groundItems);
+
     DB.$mapGroundItems.remove({ mapName: this.state.mapName });
   }
 
