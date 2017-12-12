@@ -1,0 +1,16 @@
+
+serverName: UUID
+
+auth:
+  type: http
+  options:
+    endpointUrl: ${DEEPSTREAM_AUTH_URL}
+    permittedStatusCodes: [200]
+    requestTimeout: 5000
+
+permission:
+  type: config
+  options:
+    path: ./ds.permissions.yml
+    maxRuleIterations: 3
+    cacheEvaluationInerval: 60000

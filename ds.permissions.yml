@@ -1,0 +1,23 @@
+
+presence:
+  "*":
+    allow: false
+
+record:
+  "*":
+    create: "user.data.hasAuthority"
+    write: "user.data.hasAuthority"
+    delete: "user.data.hasAuthority"
+    read: true
+    listen: true
+
+event:
+  "*":
+    publish: false
+    subscribe: false
+    listen: false
+
+rpc:
+  "*":
+    provide: false
+    request: false

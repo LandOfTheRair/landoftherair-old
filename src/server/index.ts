@@ -27,7 +27,6 @@ process.on('uncaughtException', e => {
   Logger.error(e);
 });
 
-DeepstreamCleaner.init();
 DB.init();
 
 const port = process.env.PORT || 3303;
@@ -35,6 +34,7 @@ const port = process.env.PORT || 3303;
 const gameServer = new colyseus.ClusterServer({});
 
 if(cluster.isMaster) {
+  DeepstreamCleaner.init();
   gameServer.listen(port);
   Logger.log(`[Master] Started server on port ${port}`);
 
