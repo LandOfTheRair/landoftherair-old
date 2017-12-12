@@ -428,6 +428,8 @@ export class GameWorld extends Room<GameState> {
       deepstream: this.deepstream
     }));
 
+    this.deepstream.login({ name: this.mapName, token: process.env.DEEPSTREAM_TOKEN });
+
     const timerData = await this.loadBossTimers();
     const spawnerTimers = timerData ? timerData.spawners : [];
 

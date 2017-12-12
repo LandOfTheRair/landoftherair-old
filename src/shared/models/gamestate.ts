@@ -87,7 +87,6 @@ export class GameState {
   }
 
   private initDeepstream() {
-    this.deepstream.login({ map: this.mapName, token: process.env.DEEPSTREAM_TOKEN });
     this.deepstreamRecords.groundItems = this.deepstream.record.getRecord(`${this.mapName}/groundItems`);
     this.deepstreamRecords.groundItems.set({});
 
