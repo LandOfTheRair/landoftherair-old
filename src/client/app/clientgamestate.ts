@@ -83,6 +83,7 @@ export class ClientGameState {
   }
 
   setMap(map) {
+    console.log('set');
     this.map = map;
     this.setMap$.next(map);
   }
@@ -254,6 +255,7 @@ export class ClientGameState {
   }
 
   reset() {
+    console.log('reset');
     this.logMessages = [];
     this.playerHash = {};
     this.map = {};
