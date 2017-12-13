@@ -71,12 +71,6 @@
     &.max {
       min-height: calc(100% - 56px);
       max-height: calc(100% - 56px);
-
-      .message-container {
-        min-height: calc(100% - 56px - 28px);
-        height: initial;
-        max-height: calc(100% - 56px - 28px);
-      }
     }
   }
 
