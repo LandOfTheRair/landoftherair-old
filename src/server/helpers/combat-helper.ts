@@ -488,6 +488,8 @@ export class CombatHelper {
       }
     }
 
+    defender.$$room.state.updateNPCVolatile(defender);
+
     return damage;
 
   }

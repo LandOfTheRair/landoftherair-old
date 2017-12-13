@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild, Input, OnDestroy } from '@angular/core';
-import { ClientGameState } from '../clientgamestate';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 
 import { Game } from './phasergame';
 import { Player } from '../../../shared/models/player';

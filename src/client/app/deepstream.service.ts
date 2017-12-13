@@ -69,21 +69,25 @@ export class DeepstreamService {
   private addNPC(npcId: string) {
     this.npcData[npcId] = this.ds.record.getRecord(`${this.mapName}/npcData/${npcId}`);
     this.npcData[npcId].subscribe(data => {
-
       this.allNPCsHash[npcId] = new Character(data);
+    }, true);
 
-      // this data has to be populated before we edit it
-      this.npcVolatile[npcId] = this.ds.record.getRecord(`${this.mapName}/npcVolatile/${npcId}`);
-      this.npcVolatile[npcId].subscribe(({ hp, x, y }) => {
+    // this data has to be populated before we edit it
+    this.npcVolatile[npcId] = this.ds.record.getRecord(`${this.mapName}/npcVolatile/${npcId}`);
+    this.npcVolatile[npcId].subscribe(({ hp, x, y, dir }) => {
 
-        const npc = this.allNPCsHash[npcId];
-        if(!npc) return;
+      const npc = this.allNPCsHash[npcId];
+      if(!npc) return;
 
-        npc.x = x;
-        npc.y = y;
-        npc.hp.__current = hp.__current;
-      }, true);
+      if(!hp) {
+        this.delNPC(npcId);
+        return;
+      }
 
+      npc.x = x;
+      npc.y = y;
+      npc.dir = dir;
+      npc.hp.__current = hp.__current;
     }, true);
   }
 

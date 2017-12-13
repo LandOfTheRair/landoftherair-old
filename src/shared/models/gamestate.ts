@@ -171,7 +171,7 @@ export class GameState {
     this.deepstreamRecords.npcData[npc.uuid].set(this.trimNPC(npc));
 
     this.deepstreamRecords.npcVolatile[npc.uuid] = this.deepstream.record.getRecord(`${this.mapName}/npcVolatile/${npc.uuid}`);
-    this.updateNPCLocation(npc);
+    this.updateNPCVolatile(npc);
 
     this.npcExistHash[npc.uuid] = true;
     this.updateNPCExistHash();
@@ -185,14 +185,17 @@ export class GameState {
     pull(this._mapNPCs, npc);
     delete this.mapNPCs[npc.uuid];
     delete this.npcExistHash[npc.uuid];
+    this.deepstreamRecords.npcData[npc.uuid].set({});
+    this.deepstreamRecords.npcVolatile[npc.uuid].set({});
+
     this.deepstreamRecords.npcData[npc.uuid].delete();
     this.deepstreamRecords.npcVolatile[npc.uuid].delete();
     this.updateNPCExistHash();
   }
 
-  updateNPCLocation(char: Character): void {
+  updateNPCVolatile(char: Character): void {
     if(!this.deepstreamRecords.npcVolatile[char.uuid]) return;
-    this.deepstreamRecords.npcVolatile[char.uuid].set({ x: char.x, y: char.y, hp: char.hp });
+    this.deepstreamRecords.npcVolatile[char.uuid].set({ x: char.x, y: char.y, hp: char.hp, dir: char.dir });
   }
 
   updateNPCExistHash(): void {

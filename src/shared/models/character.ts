@@ -671,7 +671,7 @@ export class Character {
     if(this.x > this.$$map.width)  this.x = this.$$map.width;
     if(this.y > this.$$map.height) this.y = this.$$map.height;
 
-    this.$$room.state.updateNPCLocation(this);
+    this.$$room.state.updateNPCVolatile(this);
 
     const potentialTrap = this.$$room.state.getInteractable(this.x, this.y, true, 'Trap');
     if(potentialTrap && potentialTrap.properties && potentialTrap.properties.effect) {
