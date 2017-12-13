@@ -33,18 +33,20 @@ import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings
 import { Account } from '../../shared/models/account';
 import { DeepstreamCleaner } from '../deepstream-cleaner';
 
-const TICK_DIVISOR = 1;
+const TICK_TIMER = 500;
 
-const TickRates = {
-  // tick players every second
-  PlayerAction: TICK_DIVISOR,
+const TickRatesPerTimer = {
+  // tick players every half-second
+  PlayerAction: 1,
 
-  // npc actions every 2 seconds
-  NPCAction: TICK_DIVISOR * 2,
+  // npc actions every 1.5 seconds
+  NPCAction: 3,
 
-  // tick spawners every half-second
-  SpawnerTick: TICK_DIVISOR,
-  PlayerSave: 30 * TICK_DIVISOR
+  // tick spawners every second
+  SpawnerTick: 2,
+
+  // save players every minute
+  PlayerSave: 120
 };
 
 export class GameWorld extends Room<GameState> {
@@ -419,8 +421,8 @@ export class GameWorld extends Room<GameState> {
 
     this.deepstream = Deepstream(process.env.DEEPSTREAM_URL);
 
-    this.setPatchRate(1000 / TICK_DIVISOR);
-    this.setSimulationInterval(this.tick.bind(this), 1000 / TICK_DIVISOR);
+    this.setPatchRate(TICK_TIMER);
+    this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
     this.setState(new GameState({
       players: [],
       map: cloneDeep(require(opts.mapPath)),
@@ -695,20 +697,20 @@ export class GameWorld extends Room<GameState> {
     this.state.tick();
 
     // tick players every second or so
-    if(this.ticks % TickRates.PlayerAction === 0) {
+    if((this.ticks % TickRatesPerTimer.PlayerAction) === 0) {
       this.state.tickPlayers();
     }
 
-    if(this.ticks % TickRates.NPCAction === 0) {
+    if((this.ticks % TickRatesPerTimer.NPCAction) === 0) {
       this.spawners.forEach(spawner => spawner.npcTick());
     }
 
-    if(this.ticks % TickRates.SpawnerTick === 0) {
+    if((this.ticks % TickRatesPerTimer.SpawnerTick) === 0) {
       this.spawners.forEach(spawner => spawner.tick());
     }
 
     // save players every minute or so
-    if(this.ticks % TickRates.PlayerSave === 0) {
+    if((this.ticks % TickRatesPerTimer.PlayerSave) === 0) {
       this.state.allPlayers.forEach(player => this.savePlayer(player));
 
       // reset ticks
