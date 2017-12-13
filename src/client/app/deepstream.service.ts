@@ -74,7 +74,7 @@ export class DeepstreamService {
 
     // this data has to be populated before we edit it
     this.npcVolatile[npcId] = this.ds.record.getRecord(`${this.mapName}/npcVolatile/${npcId}`);
-    this.npcVolatile[npcId].subscribe(({ hp, x, y, dir }) => {
+    this.npcVolatile[npcId].subscribe(({ hp, x, y, dir, agro, effects }) => {
 
       const npc = this.allNPCsHash[npcId];
       if(!npc) return;
@@ -87,6 +87,8 @@ export class DeepstreamService {
       npc.x = x;
       npc.y = y;
       npc.dir = dir;
+      npc.agro = agro;
+      npc.effects = effects || [];
       npc.hp.__current = hp.__current;
     }, true);
   }
