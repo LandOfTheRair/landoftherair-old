@@ -77,6 +77,8 @@ export class DeepstreamService {
       this.npcVolatile[npcId].subscribe(({ hp, x, y }) => {
 
         const npc = this.allNPCsHash[npcId];
+        if(!npc) return;
+        
         npc.x = x;
         npc.y = y;
         npc.hp.__current = hp.__current;
