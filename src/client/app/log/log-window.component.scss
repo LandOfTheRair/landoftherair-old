@@ -10,6 +10,12 @@
 
     height: 200px;
 
+    &.window-size-max {
+      min-height: calc(100% - 56px - 28px) !important;
+      height: initial;
+      max-height: calc(100% - 56px - 28px) !important;
+    }
+
     &.window-size-xlarge {
       height: 580px;
     }
