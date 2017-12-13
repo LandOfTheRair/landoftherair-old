@@ -593,7 +593,7 @@ export class GameWorld extends Room<GameState> {
 
     this.spawners.push(normalNPCSpawner);
 
-    npcs.forEach(npcData => {
+    npcs.forEach(async npcData => {
       const data = npcData.properties || {};
       data.name = npcData.name || this.determineNPCName(npcData);
       data.sprite = npcData.gid - this.state.map.tilesets[3].firstgid;
@@ -607,7 +607,7 @@ export class GameWorld extends Room<GameState> {
       try {
         if(npc.script) {
           const { setup, responses } = require(`${__dirname}/../scripts/npc/${npc.script}`);
-          setup(npc);
+          await setup(npc);
 
           if(npc.hostility === 'Never') {
             npc.parser = new Parser();
