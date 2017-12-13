@@ -97,7 +97,7 @@ export class ColyseusGameService {
   }
 
   get inGame() {
-    return this._inGame && this.worldRoom;
+    return this._inGame && this.worldRoom && this.clientGameState.map.type;
   }
 
   private initGame() {

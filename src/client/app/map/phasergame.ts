@@ -645,6 +645,8 @@ export class Game {
 
     this.g.add.plugin(new TiledPlugin(this.g, this.g.stage));
 
+    console.log(this.clientGameState.map)
+
     const loadMap = this.clientGameState.map;
 
     // remove unused tileset to prevent warnings since things on a layer that uses this tileset are handled manually
