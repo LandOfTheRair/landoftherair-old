@@ -61,7 +61,7 @@ export class DeepstreamService {
     if(this.ground) this.ground.discard();
     if(this.npcHash) this.npcHash.discard();
 
-    Object.keys(this.npcData).forEach(npcId => {
+    Object.keys(this.currentNPCHash || {}).forEach(npcId => {
       this.delNPC(npcId);
     });
   }
@@ -78,7 +78,7 @@ export class DeepstreamService {
 
         const npc = this.allNPCsHash[npcId];
         if(!npc) return;
-        
+
         npc.x = x;
         npc.y = y;
         npc.hp.__current = hp.__current;
@@ -88,6 +88,8 @@ export class DeepstreamService {
   }
 
   private delNPC(npcId: string) {
+    delete this.allNPCsHash[npcId];
+
     try {
       this.npcData[npcId].discard();
     } catch(e) {}
