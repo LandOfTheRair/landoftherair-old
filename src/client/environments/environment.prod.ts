@@ -19,6 +19,6 @@ export const environment = {
     apiUrl: 'authidentifier'
   },
   deepstream: {
-    url: 'wss://deepstream.rair.land:6020/deepstream'
+    url: 'wss://deepstream.rair.land'
   }
 };
