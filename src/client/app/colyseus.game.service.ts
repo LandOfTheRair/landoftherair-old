@@ -126,11 +126,7 @@ export class ColyseusGameService {
       this.changingMap = false;
     });
 
-    let lastTimestamp = 0;
     this.worldRoom.onUpdate.add((state) => {
-      const now = Date.now();
-      console.log('update', now - lastTimestamp + 'ms');
-      lastTimestamp = now;
       this.clientGameState.setMapData(state.mapData || {});
       this.clientGameState.setPlayers(state.playerHash);
       this.clientGameState.setEnvironmentalObjects(state.environmentalObjects || []);
