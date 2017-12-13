@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, NgZone } from '@angular/core';
 
 import { Game } from './phasergame';
 import { Player } from '../../../shared/models/player';
@@ -36,7 +36,7 @@ export class MapComponent implements OnInit, OnDestroy {
     return this.clientGameState.currentPlayer;
   }
 
-  constructor(public colyseus: ColyseusService) {}
+  constructor(public colyseus: ColyseusService, public zone: NgZone) {}
 
   private cleanCanvases() {
     const elements = document.getElementsByTagName('canvas');
@@ -44,6 +44,13 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
+    this.zone.runOutsideAngular(() => {
+      this.initGame();
+    });
+  }
+
+  private initGame() {
 
     const allBoxes = [];
 
@@ -121,7 +128,7 @@ export class MapComponent implements OnInit, OnDestroy {
     if(this.remove$) this.remove$.unsubscribe();
     if(this.boxes$)  this.boxes$.unsubscribe();
 
-    this.game.destroy();
+    this.game.reset();
     this.phaser.destroy();
 
     this.cleanCanvases();

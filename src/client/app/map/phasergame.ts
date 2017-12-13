@@ -644,7 +644,7 @@ export class Game {
     this.isLoaded = false;
 
     this.g.add.plugin(new TiledPlugin(this.g, this.g.stage));
-    
+
     const loadMap = this.clientGameState.map;
 
     // remove unused tileset to prevent warnings since things on a layer that uses this tileset are handled manually
@@ -756,9 +756,5 @@ export class Game {
 
     this.showNPCSprites(this.player.x, this.player.y);
     this.drawEnvironmentalObjects(this.player.x, this.player.y);
-  }
-
-  destroy() {
-    this.reset();
   }
 }
