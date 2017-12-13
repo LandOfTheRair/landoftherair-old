@@ -390,6 +390,11 @@ export class AppComponent implements OnInit {
     this.macroService.updateMacroGroup(this.currentMacroGroupForEditor, this.currentMacroIdxForEditor, macroName);
   }
 
+  unsetMacro(groupName: string, macroIndex: number) {
+    if(groupName === 'default') return;
+    this.macroService.updateMacroGroup(groupName, macroIndex, null);
+  }
+
   public invalidMacro() {
     const macro = this.currentlyEditingMacro;
 
