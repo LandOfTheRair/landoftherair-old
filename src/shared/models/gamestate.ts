@@ -195,7 +195,7 @@ export class GameState {
 
   updateNPCVolatile(char: Character): void {
     if(!this.deepstreamRecords.npcVolatile[char.uuid]) return;
-    this.deepstreamRecords.npcVolatile[char.uuid].set({ x: char.x, y: char.y, hp: char.hp, dir: char.dir });
+    this.deepstreamRecords.npcVolatile[char.uuid].set({ x: char.x, y: char.y, hp: char.hp, dir: char.dir, agro: char.agro, effects: char.effects });
   }
 
   updateNPCExistHash(): void {
