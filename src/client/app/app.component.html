@@ -898,7 +898,7 @@
 
         <div class="row mb-1">
           <h4 class="text-center w-100">All Macro Groups</h4>
-          <h6 class="text-center w-100 font-italic">(you can't edit the default group; make a new one)</h6>
+          <h6 class="text-center w-100 font-italic">you can't edit the default group; make a new one<br>right click to remove macro</h6>
         </div>
 
         <div class="row pb-1 activate-inner-on-hover"
@@ -922,6 +922,7 @@
 
               <app-macro
                 (click)="resetVariablesForMacroPopover(group.key, macroIdx)"
+                (contextmenu)="unsetMacro(group.key, macroIdx)"
                 [popover]="macroSelectorPopover"
                 container="body"
                 containerClass="macro-popover"
