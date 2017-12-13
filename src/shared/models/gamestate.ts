@@ -14,6 +14,8 @@ import { nonenumerable } from 'nonenumerable';
 
 export class GameState {
 
+  public timestamp: number = 0;
+
   @nonenumerable
   private players: Player[] = [];
 
@@ -123,7 +125,7 @@ export class GameState {
   }
 
   tick() {
-    // this.mapNPCs = this.cleanNPCs();
+    this.timestamp = Date.now();
     this.playerHash = this.createPlayerHash();
   }
 
