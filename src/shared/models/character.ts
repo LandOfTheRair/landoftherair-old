@@ -850,6 +850,8 @@ export class Character {
       effect.effectEnd(this);
     }
     this.effects = this.effects.filter(eff => eff.name !== effect.name);
+
+    this.$$room.state.updateNPCVolatile(this);
   }
 
   hasEffect(effectName) {
