@@ -27,7 +27,8 @@ export class ClientGameState {
 
   groundItems: any = {};
 
-  logMessages: string[] = [];
+  private logMessages: any[] = [];
+  public logMessages$ = new Subject<any>();
 
   environmentalObjects: any[] = [];
 
@@ -248,9 +249,19 @@ export class ClientGameState {
   }
 
   addLogMessage(message) {
-    this.logMessages.push(message);
+    message.message = this.formatMessage(message);
 
+    this.logMessages.push(message);
     if(this.logMessages.length > 500) this.logMessages.shift();
+
+    this.logMessages$.next(this.logMessages);
+  }
+
+  private formatMessage(message: any) {
+    if(message.dirFrom && message.message.toLowerCase().startsWith('you hear')) {
+      return message.message.substring(8);
+    }
+    return message.message;
   }
 
   reset() {

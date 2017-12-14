@@ -17,9 +17,8 @@
     <div class="message {{ message.subClass }}"
          [class.hidden]="message.grouping !== 'always' && !filters[message.grouping]"
          [ngClass]="['font-size-'+fontSize]"
-         *ngFor="let message of clientGameState.logMessages">
-      <span *ngIf="message.dirFrom">From the {{ message.dirFrom }} you hear </span>
-      <strong *ngIf="message.name">{{ message.name }}: </strong>{{ formatMessage(message) }}
+         *ngFor="let message of clientGameState.logMessages$ | async">
+      <app-log-message [message]="message"></app-log-message>
     </div>
   </div>
 </div>
