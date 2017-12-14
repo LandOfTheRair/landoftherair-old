@@ -33,6 +33,7 @@ import { ItemComponent } from './_shared/item.component';
 import { IconComponent } from './_shared/icon.component';
 import { SkillIconComponent } from './_shared/skill-icon.component';
 import { StatusEffectComponent } from './_shared/status-effect.component';
+import { LogMessageComponent } from './_shared/log-message.component';
 
 import { LobbyComponent } from './lobby/lobby.component';
 import { CharacterSelectComponent } from './character-select/character-select.component';
@@ -83,6 +84,7 @@ import { TraitsComponent } from './traits/traits.component';
     IconComponent,
     SkillIconComponent,
     StatusEffectComponent,
+    LogMessageComponent,
 
     LogWindowComponent,
     StatusWindowComponent,
