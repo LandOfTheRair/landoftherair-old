@@ -173,11 +173,9 @@ export class GameState {
     this.mapNPCs[npc.uuid] = npc;
 
     this.deepstreamRecords.npcData.set(npc.uuid, this.trimNPC(npc));
-
-    this.updateNPCVolatile(npc);
-
     this.npcExistHash[npc.uuid] = true;
     this.updateNPCExistHash();
+    this.updateNPCVolatile(npc);
   }
 
   findNPC(uuid: string): NPC {
@@ -195,7 +193,7 @@ export class GameState {
   }
 
   updateNPCVolatile(char: Character): void {
-    if(char.isPlayer()) return;
+    if(!this.npcExistHash[char.uuid]) return;
     this.deepstreamRecords.npcVolatile.set(char.uuid, { x: char.x, y: char.y, hp: char.hp, dir: char.dir, agro: char.agro, effects: char.effects });
   }
 
