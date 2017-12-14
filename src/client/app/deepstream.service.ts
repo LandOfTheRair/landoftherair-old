@@ -17,8 +17,11 @@ export class DeepstreamService {
   private ground: any;
   private npcHash: any;
   private currentNPCHash: any = {};
-  private npcData: any = {};
-  private npcVolatile: any = {};
+  private npcData: any;
+  private npcVolatile: any;
+
+  private npcDataSubs: any = {};
+  private npcVolatileSubs: any = {};
 
   public allNPCsHash: any = {};
   public ground$ = new BehaviorSubject<any>({});
@@ -31,7 +34,6 @@ export class DeepstreamService {
   }
 
   private updateNPCList(data: any) {
-
     const currentNPCList = Object.keys(this.currentNPCHash);
     const newNPCList = Object.keys(data);
 
@@ -52,6 +54,9 @@ export class DeepstreamService {
     this.ground = this.ds.record.getRecord(`${mapName}/groundItems`);
     this.ground.subscribe(data => this.ground$.next(data), true);
 
+    this.npcData = this.ds.record.getRecord(`${mapName}/npcData`);
+    this.npcVolatile = this.ds.record.getRecord(`${mapName}/npcVolatile`);
+
     this.npcHash = this.ds.record.getRecord(`${mapName}/npcHash`);
     this.npcHash.subscribe(debounce(this.updateNPCList.bind(this), 500), true);
   }
@@ -59,23 +64,23 @@ export class DeepstreamService {
   uninit() {
     this.mapName = '';
     if(this.ground) this.ground.discard();
-    if(this.npcHash) this.npcHash.discard();
+    if(this.npcData) this.npcData.discard();
+    if(this.npcVolatile) this.npcVolatile.discard();
 
     Object.keys(this.currentNPCHash || {}).forEach(npcId => {
       this.delNPC(npcId);
     });
+
+    this.currentNPCHash = {};
   }
 
   private addNPC(npcId: string) {
-    this.npcData[npcId] = this.ds.record.getRecord(`${this.mapName}/npcData/${npcId}`);
-    this.npcData[npcId].subscribe(data => {
+
+    this.npcDataSubs[npcId] = this.npcData.subscribe(npcId, (data) => {
       this.allNPCsHash[npcId] = new Character(data);
     }, true);
 
-    // this data has to be populated before we edit it
-    this.npcVolatile[npcId] = this.ds.record.getRecord(`${this.mapName}/npcVolatile/${npcId}`);
-    this.npcVolatile[npcId].subscribe(({ hp, x, y, dir, agro, effects }) => {
-
+    this.npcVolatileSubs[npcId] = this.npcVolatile.subscribe(npcId, ({ hp, x, y, dir, agro, effects }) => {
       const npc = this.allNPCsHash[npcId];
       if(!npc) return;
 
@@ -97,11 +102,11 @@ export class DeepstreamService {
     delete this.allNPCsHash[npcId];
 
     try {
-      this.npcData[npcId].discard();
+      this.npcData.unsubscribe(npcId);
     } catch(e) {}
 
     try {
-      this.npcVolatile[npcId].discard();
+      this.npcVolatile.unsubscribe(npcId);
     } catch(e) {}
   }
 
