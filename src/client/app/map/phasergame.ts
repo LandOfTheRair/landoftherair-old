@@ -191,6 +191,12 @@ export class Game {
     this.playerSpriteHash = {};
     this.environmentalObjectHash = {};
 
+    Object.keys(this.bgms).forEach(bgm => {
+      this.bgms[bgm].destroy();
+    });
+
+    this.bgms = {};
+
     this.isRenderingTruesight = false;
   }
 
