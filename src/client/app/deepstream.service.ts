@@ -77,10 +77,15 @@ export class DeepstreamService {
   private addNPC(npcId: string) {
 
     this.npcDataSubs[npcId] = this.npcData.subscribe(npcId, (data) => {
+      if(!data) return;
       this.allNPCsHash[npcId] = new Character(data);
     }, true);
 
-    this.npcVolatileSubs[npcId] = this.npcVolatile.subscribe(npcId, ({ hp, x, y, dir, agro, effects }) => {
+    this.npcVolatileSubs[npcId] = this.npcVolatile.subscribe(npcId, (data) => {
+      if(!data) return;
+
+      const { hp, x, y, dir, agro, effects } = data;
+
       const npc = this.allNPCsHash[npcId];
       if(!npc) return;
 
