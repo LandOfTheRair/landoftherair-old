@@ -20,16 +20,9 @@ export class DeepstreamCleaner {
   static cleanMap(mapName: string, ds: any) {
 
     ds.record.getRecord(`${mapName}/groundItems`).set({});
+    ds.record.getRecord(`${mapName}/npcHash`).set({});
+    ds.record.getRecord(`${mapName}/npcData`).set({});
+    ds.record.getRecord(`${mapName}/npcVolatile`).set({});
 
-    ds.record.getRecord(`${mapName}/npcHash`).whenReady(record => {
-      const npcs = Object.keys(record.get());
-
-      npcs.forEach(npcId => {
-        ds.record.getRecord(`${mapName}/npcData/${npcId}`).delete();
-        ds.record.getRecord(`${mapName}/npcVolatile/${npcId}`).delete();
-      });
-
-      record.set({});
-    });
   }
 }
