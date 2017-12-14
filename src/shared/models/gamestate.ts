@@ -188,12 +188,11 @@ export class GameState {
     pull(this._mapNPCs, npc);
     delete this.mapNPCs[npc.uuid];
     delete this.npcExistHash[npc.uuid];
-    this.deepstreamRecords.npcData.set({});
-    this.deepstreamRecords.npcVolatile.set({});
-
-    this.deepstreamRecords.npcData.delete();
-    this.deepstreamRecords.npcVolatile.delete();
     this.updateNPCExistHash();
+    
+    this.deepstreamRecords.npcData.set(npc.uuid, undefined);
+    this.deepstreamRecords.npcVolatile.set(npc.uuid, undefined);
+
   }
 
   updateNPCVolatile(char: Character): void {
