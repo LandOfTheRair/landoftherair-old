@@ -45,6 +45,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    // TODO do this in the game service too
     this.zone.runOutsideAngular(() => {
       this.initGame();
     });
