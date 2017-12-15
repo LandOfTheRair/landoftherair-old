@@ -2,7 +2,7 @@
 import * as Commands from '../scripts/commands';
 import { Player } from '../../shared/models/player';
 
-import { isArray, startsWith } from 'lodash';
+import { isArray, startsWith, includes } from 'lodash';
 import { Skill } from '../base/Skill';
 import { Command } from '../base/Command';
 
@@ -63,7 +63,9 @@ export class CommandExecutor {
       return this.executeCommand(player, command, args);
     }
 
-    if(command !== 'restore' && player.isDead()) {
+    const allowedDeadCommands = ['restore', '~look'];
+
+    if(!includes(allowedDeadCommands, command) && player.isDead()) {
       player.sendClientMessage(`Your corpse can't do that.`);
       return;
     }

@@ -802,9 +802,9 @@ export class GameWorld extends Room<GameState> {
     this.createCorpse(npc, allItems);
   }
 
-  public async createCorpse(target: Character, searchItems = []): Promise<Item> {
+  public async createCorpse(target: Character, searchItems = [], customSprite = 0): Promise<Item> {
     const corpse = await ItemCreator.getItemByName('Corpse');
-    corpse.sprite = target.sprite + 4;
+    corpse.sprite = customSprite || target.sprite + 4;
     corpse.searchItems = searchItems;
     corpse.desc = `the corpse of a ${target.name}`;
     corpse.name = `${target.name} corpse`;

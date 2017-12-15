@@ -104,11 +104,7 @@ export class Game {
       this.drawVfx(nextVfx);
     });
 
-    this.colyseus.game.myLoc$.subscribe(({ x, y, dir, swimLevel }) => {
-      this.player.x = x;
-      this.player.y = y;
-      this.player.dir = dir;
-      this.player.swimLevel = swimLevel;
+    this.colyseus.game.myLoc$.subscribe(({ dir }) => {
       this.focusCameraOnPlayer();
     });
   }
@@ -500,7 +496,7 @@ export class Game {
       }
     }
 
-    const isCorpse = includes(item.name.toLowerCase(), 'corpse');
+    const isCorpse = item.itemClass === 'Corpse';
     const sprite = this.g.add.sprite(x * 64, y * 64, isCorpse ? 'Creatures' : 'Items', item.sprite);
     this.visibleSprites[x][y][item.itemClass] = sprite;
     sprite.itemClass = item.itemClass;
