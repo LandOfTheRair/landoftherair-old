@@ -323,9 +323,6 @@ export class Game {
 
   updatePlayerSprite(sprite, player: Player) {
 
-    // TODO For some reason it gets reset to W here instead of staying C - also, king sprite shows up as corpse sprite for no reason?
-    console.log(player.dir, player.name)
-
     let frame = 0;
     let key = '';
 
