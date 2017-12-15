@@ -14,6 +14,8 @@ import { nonenumerable } from 'nonenumerable';
 
 export class GameState {
 
+  public isDisposing: boolean;
+
   @nonenumerable
   private players: Player[] = [];
 
@@ -172,7 +174,7 @@ export class GameState {
     this._mapNPCs.push(npc);
     this.mapNPCs[npc.uuid] = npc;
 
-    this.deepstreamRecords.npcData.set(npc.uuid, this.trimNPC(npc));
+    if(!this.isDisposing) this.deepstreamRecords.npcData.set(npc.uuid, this.trimNPC(npc));
     this.npcExistHash[npc.uuid] = true;
     this.updateNPCExistHash();
     this.updateNPCVolatile(npc);
@@ -188,16 +190,19 @@ export class GameState {
     delete this.npcExistHash[npc.uuid];
     this.updateNPCExistHash();
 
-    this.deepstreamRecords.npcData.set(npc.uuid, undefined);
-    this.deepstreamRecords.npcVolatile.set(npc.uuid, undefined);
+    if(!this.isDisposing) {
+      this.deepstreamRecords.npcData.set(npc.uuid, undefined);
+      this.deepstreamRecords.npcVolatile.set(npc.uuid, undefined);
+    }
   }
 
   updateNPCVolatile(char: Character): void {
-    if(!this.npcExistHash[char.uuid]) return;
+    if(!this.npcExistHash[char.uuid] || this.isDisposing) return;
     this.deepstreamRecords.npcVolatile.set(char.uuid, { x: char.x, y: char.y, hp: char.hp, dir: char.dir, agro: char.agro, effects: char.effects });
   }
 
   updateNPCExistHash(): void {
+    if(this.isDisposing) return;
     this.deepstreamRecords.npcHash.set(this.npcExistHash);
   }
 
@@ -476,6 +481,7 @@ export class GameState {
   }
 
   updateGroundItems(): void {
+    if(this.isDisposing) return;
     this.deepstreamRecords.groundItems.set(this.groundItems);
   }
 
