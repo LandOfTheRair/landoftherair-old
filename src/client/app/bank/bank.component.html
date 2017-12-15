@@ -7,11 +7,11 @@
           <h4 class="w-100">Bank Teller</h4>
         </div>
       </div>
-
+      
       <div class="row mb-2">
         <div class="col">
           <div class="w-100">Welcome to the {{ colyseusGame.showBank.bankId }} National Bank.</div>
-          <div class="w-100">You have {{ colyseusGame.character.banks[colyseusGame.showBank.bankId] | number }} gold on deposit here.</div>
+          <div class="w-100">You have {{ currentBankGold | number }} gold on deposit here.</div>
         </div>
       </div>
 

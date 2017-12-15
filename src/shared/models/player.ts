@@ -37,7 +37,6 @@ export class Player extends Character {
 
   private learnedSpells: any;
 
-  @nonenumerable
   banks: any;
 
   @nonenumerable
