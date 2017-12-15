@@ -259,8 +259,7 @@ export class Player extends Character {
 
     this.$$actionQueue = [];
 
-    const corpse = await this.$$room.createCorpse(this);
-    corpse.sprite = this.getBaseSprite() + 4;
+    const corpse = await this.$$room.createCorpse(this, [], this.getBaseSprite() + 4);
 
     const myCon = this.getBaseStat('con');
     const myLuk = this.getTotalStat('luk');

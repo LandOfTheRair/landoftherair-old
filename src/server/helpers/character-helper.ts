@@ -99,6 +99,8 @@ export class CharacterHelper {
 
   static handleDeadCharacter(char: Character) {
 
+    char.dir = 'C';
+
     if(char.$$corpseRef && char.$$corpseRef.$heldBy) {
       const holder = char.$$room.state.findPlayer(char.$$corpseRef.$heldBy);
 

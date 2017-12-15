@@ -257,9 +257,9 @@ export class ColyseusGameService {
 
     if(hasOldCharacter) {
       const { x, y, dir, swimLevel } = hasOldCharacter;
-      this.syncCharacterAttributes(x, y, dir, swimLevel);
+      this.syncCharacterAttributes(x, y, character.dir === 'C' ? 'C' : dir, swimLevel);
     } else {
-      this.myLoc$.next({ x: this.character.x, y: this.character.y });
+      this.myLoc$.next({ x: this.character.x, y: this.character.y, dir: this.character.dir });
     }
 
     // set bgm for the game (considering options)
@@ -327,7 +327,6 @@ export class ColyseusGameService {
 
   private updatePos(x: number, y: number, dir, swimLevel: number, fov) {
     this.clientGameState.setFOV(fov);
-
     this.syncCharacterAttributes(x, y, dir, swimLevel);
   }
 
