@@ -933,7 +933,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   public updatePos(player: Character) {
-    if(!player.isPlayer()) return;
+    if(player.isPlayer && !player.isPlayer()) return;
 
     const client = this.findClient(<Player>player);
     if(!client) return;
