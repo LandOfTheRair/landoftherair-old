@@ -448,6 +448,8 @@ export class GameWorld extends Room<GameState> {
   }
 
   onDispose() {
+    this.state.isDisposing = true;
+
     if(this.itemGC) {
       this.itemGC.cancel();
     }
