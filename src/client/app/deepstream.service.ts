@@ -5,11 +5,17 @@ import { Character } from '../../shared/models/character';
 
 import { debounce, difference, extend } from 'lodash';
 
+import * as swal from 'sweetalert2';
 import * as Deepstream from 'deepstream.io-client-js';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class DeepstreamService {
+
+  private _isConnected: boolean;
+  public get isConnected(): boolean {
+    return this._isConnected;
+  }
 
   private ds: any;
   private mapName: string;
@@ -28,9 +34,17 @@ export class DeepstreamService {
 
   constructor(private zone: NgZone) {
     this.ds = Deepstream(environment.deepstream.url);
-    this.ds.login();
+    this.ds.login({}, (success) => {
+      this._isConnected = success;
 
-    this.ds.on('error', e => {});
+      if(!success) {
+        this.errorMessage();
+      }
+    });
+
+    this.ds.on('error', e => {
+      console.error('[DEEPSTREAM_ERROR]', e);
+    });
   }
 
   private updateNPCList(data: any) {
@@ -72,6 +86,14 @@ export class DeepstreamService {
     });
 
     this.currentNPCHash = {};
+  }
+
+  private errorMessage() {
+    (<any>swal)({
+      titleText: 'Could Not Connect To Sync Server',
+      text: 'For some reason, the game could not connect to the sync server.',
+      type: 'error'
+    });
   }
 
   private addNPC(npcId: string) {
