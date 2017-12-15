@@ -33,20 +33,20 @@ import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings
 import { Account } from '../../shared/models/account';
 import { DeepstreamCleaner } from '../deepstream-cleaner';
 
-const TICK_TIMER = 500;
+const TICK_TIMER = 1000;
 
 const TickRatesPerTimer = {
-  // tick players every half-second
+  // tick players every second
   PlayerAction: 1,
 
   // npc actions every second-and-a-half
-  NPCAction: 3,
+  NPCAction: 1.5,
 
   // tick spawners every 3 seconds
-  SpawnerTick: 6,
+  SpawnerTick: 3,
 
   // save players every minute
-  PlayerSave: 120
+  PlayerSave: 60
 };
 
 export class GameWorld extends Room<GameState> {
