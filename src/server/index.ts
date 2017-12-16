@@ -13,6 +13,7 @@ import * as Rooms from './rooms';
 import * as recurse from 'recursive-readdir';
 import * as path from 'path';
 import * as cluster from 'cluster';
+import * as http from 'http';
 
 if(!process.env.AUTH0_SECRET) {
   console.log('No env.AUTH0_SECRET. Set one.');
@@ -31,19 +32,17 @@ DB.init();
 
 const port = process.env.PORT || 3303;
 
-const gameServer = new colyseus.ClusterServer({});
-
-if(cluster.isMaster) {
-  DeepstreamCleaner.init();
-  gameServer.listen(port);
-  Logger.log(`[Master] Started server on port ${port}`);
-
-  gameServer.fork();
-
-} else {
-  Logger.log(`[Child] Started child process ${process.pid}`);
+if(process.argv[2] === '--single-core') {
 
   const api = new GameAPI();
+
+  const server = http.createServer(api.expressApp);
+
+  const gameServer = new colyseus.Server({ server });
+
+  DeepstreamCleaner.init();
+  Logger.log(`[Single] Started server on port ${port}`);
+
 
   gameServer.register('Lobby', Rooms.Lobby);
 
@@ -57,5 +56,36 @@ if(cluster.isMaster) {
     });
   });
 
-  gameServer.attach({ server: api.expressApp });
+  server.listen(port);
+
+} else {
+
+  const gameServer = new colyseus.ClusterServer({});
+
+  if(cluster.isMaster) {
+    DeepstreamCleaner.init();
+    gameServer.listen(port);
+    Logger.log(`[Master] Started server on port ${port}`);
+
+    gameServer.fork();
+
+  } else {
+    Logger.log(`[Child] Started child process ${process.pid}`);
+
+    const api = new GameAPI();
+
+    gameServer.register('Lobby', Rooms.Lobby);
+
+    const allMapNames = {};
+
+    recurse(`${__dirname}/maps`).then(files => {
+      files.forEach(file => {
+        const mapName = path.basename(file, path.extname(file));
+        allMapNames[mapName] = true;
+        gameServer.register(mapName, Rooms.GameWorld, { mapName, mapPath: file, allMapNames });
+      });
+    });
+
+    gameServer.attach({ server: api.expressApp });
+  }
 }

@@ -8,6 +8,7 @@
     "start:server:plain": "ts-node src/server/index.ts",
     "start:server:plain:debug": "ts-node --inspect src/server/index.ts",
     "start:server": "nodemon --ignore \"client/\" --ignore \"dist/*\" --ignore \"*.json\" --exec \"ts-node \" -- \"src/server/index.ts\"",
+    "start:server:debug": "nodemon --ignore \"client/\" --ignore \"dist/*\" --ignore \"*.json\" --exec \"ts-node --inspect \" -- \"src/server/index.ts\" --single-core",
     "start:client": "ng serve -o --host 0.0.0.0 --disable-host-check",
     "start:deepstream": "deepstream start --config ds.config.yml",
     "build": "ng build",
