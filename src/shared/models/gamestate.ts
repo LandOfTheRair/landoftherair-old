@@ -132,6 +132,20 @@ export class GameState {
 
   tick() {
     this.playerHash = this.createPlayerHash();
+
+    // tick effects for every player and npc
+    this.tickAllEffects();
+  }
+
+  private tickAllEffects() {
+    this._mapNPCs.forEach(npc => {
+      npc.effects.forEach(eff => eff.tick(npc));
+      this.updateNPCVolatile(npc);
+    });
+
+    this.players.forEach(player => {
+      player.effects.forEach(eff => eff.tick(player));
+    });
   }
 
   private createPlayerHash() {

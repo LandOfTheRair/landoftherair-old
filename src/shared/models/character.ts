@@ -850,8 +850,6 @@ export class Character {
       effect.effectEnd(this);
     }
     this.effects = this.effects.filter(eff => eff.name !== effect.name);
-
-    this.$$room.state.updateNPCVolatile(this);
   }
 
   hasEffect(effectName) {
@@ -929,8 +927,6 @@ export class Character {
 
     this.hp.add(hpRegen);
     this.mp.add(mpRegen);
-
-    this.effects.forEach(eff => eff.tick(this));
   }
 
   distFrom(point, vector?) {
