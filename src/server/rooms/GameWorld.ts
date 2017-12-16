@@ -890,6 +890,8 @@ export class GameWorld extends Room<GameState> {
   public castEffectFromTrap(target: Character, obj: any) {
     if(!obj || !obj.properties || !obj.properties.effect) return;
 
+    target.sendClientMessage('You\'ve triggered a trap!');
+
     const { effect, caster } = obj.properties;
     const effectRef = new Effects[effect.name](effect);
     effectRef.casterRef = caster;
