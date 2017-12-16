@@ -12,14 +12,22 @@
   </div>
 
   <div class="col-4 p-0">
-    <div class="row m-0">
+    <div class="row m-0 needs-min-height">
       <div class="col-6 p-0">
-        <div class="btn btn-danger no-border-radius px-0" disabled tooltip="HP">
-          {{ colyseusGame.character.hp.__current }}/{{ colyseusGame.character.hp.maximum }}
+
+        <div class="progress" tooltip="HP" [class.critical]="healthPercent < 20">
+          <div class="progress-bar bg-danger" [style.width]="healthPercent + '%'"></div>
+          <div class="progress-bar-text">{{ colyseusGame.character.hp.__current }}/{{ colyseusGame.character.hp.maximum }}</div>
         </div>
+
       </div>
       <div class="col-6 p-0">
-        <div class="btn btn-primary no-border-radius px-0" disabled tooltip="MP">{{ colyseusGame.character.mp.__current }}/{{ colyseusGame.character.mp.maximum }}</div>
+
+        <div class="progress" tooltip="MP">
+          <div class="progress-bar bg-primary" [style.width]="magicPercent + '%'"></div>
+          <div class="progress-bar-text">{{ colyseusGame.character.mp.__current }}/{{ colyseusGame.character.mp.maximum }}</div>
+        </div>
+
       </div>
     </div>
     <div class="row m-0">
