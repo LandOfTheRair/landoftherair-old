@@ -34,7 +34,7 @@ export class FireMist extends SpellEffect {
       this.magicalAttack(caster, refTarget, {
         skillRef,
         atkMsg: `You engulf ${atkName} in a flaming mist!`,
-        defMsg: `${refTarget.name} engulfed you in a flaming mist!`,
+        defMsg: `${caster.name} engulfed you in a flaming mist!`,
         damage,
         damageClass: 'fire'
       });
