@@ -13,3 +13,45 @@
   margin: 4px;
   margin-top: -4px;
 }
+
+.needs-min-height {
+  min-height: 36px;
+}
+
+.progress {
+
+  height: 100%;
+  border-radius: 0;
+  font-size: 1rem;
+
+  .progress-bar-text {
+    user-select: none;
+    top: 6.5px;
+    color: #fff !important;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+  }
+
+  &.critical {
+
+    z-index: 50;
+    margin-top: 2px;
+    height: 33px !important;
+
+    .progress-bar-text {
+      top: 4.5px !important;
+    }
+
+    @keyframes glow {
+      0% {
+        outline: 5px solid rgba(255, 0, 0, 0.6);
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.2), inset 0 0 5px rgba(255, 0, 0, 0.1), 0 2px 0 #000;
+      }
+      100% {
+        outline: 3px solid rgba(0, 0, 0, 0.6);
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.6), inset 0 0 5px rgba(255, 0, 0, 0.4), 0 2px 0 #000;
+      }
+    }
+
+    animation: glow 800ms ease-out infinite alternate;
+  }
+}
