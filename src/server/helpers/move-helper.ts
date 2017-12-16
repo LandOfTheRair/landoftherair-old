@@ -164,7 +164,7 @@ export class MoveHelper {
 
   private static handleTrap(room, player, obj) {
     room.state.removeInteractable(obj);
+    player.sendClientMessage('You\'ve triggered a trap!');
     room.castEffectFromTrap(player, obj);
-    player.sendClientMessage('You\'ve activated a trap!');
   }
 }
