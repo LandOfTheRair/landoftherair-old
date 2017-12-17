@@ -258,12 +258,12 @@ export class Player extends Character {
 
     this.$$actionQueue = [];
 
-    const corpse = await this.$$room.createCorpse(this, [], this.getBaseSprite() + 4);
+    await this.$$room.createCorpse(this, [], this.getBaseSprite() + 4);
 
     const myCon = this.getBaseStat('con');
     const myLuk = this.getTotalStat('luk');
 
-    if(myCon > 3) this.stats.con--;
+    if(myCon > 3) this.loseBaseStat('con', -1);
 
     if(this.getBaseStat('con') <= 3) {
       const lowCon = new LowCON({});
@@ -272,19 +272,19 @@ export class Player extends Character {
 
     if(myCon === 3) {
       if(this.stats.hp > 10 && random(1, 5) === 1) {
-        this.stats.hp -= 2;
+        this.loseBaseStat('hp', -2);
       }
 
-      if(random(1, myLuk / 5) === 1) this.stats.con--;
+      if(random(1, myLuk / 5) === 1) this.loseBaseStat('con', -1);
     }
 
     if(myCon === 2) {
-      if(this.stats.hp > 10) this.stats.hp -= 2;
-      if(random(1, myLuk) === 1) this.stats.con--;
+      if(this.stats.hp > 10) this.loseBaseStat('hp', -2);
+      if(random(1, myLuk) === 1) this.loseBaseStat('con', -1);
     }
 
     if(myCon === 1) {
-      if(this.stats.hp > 10) this.stats.hp -= 2;
+      if(this.stats.hp > 10) this.loseBaseStat('hp', -2);
     }
 
     if(killer && !killer.isPlayer()) {
