@@ -15,6 +15,8 @@ export class StatusWindowComponent {
   }
 
   get magicPercent(): number {
+    // show full bar even if 0/0
+    if(this.colyseusGame.character.mp.maximum === 0) return 100;
     return this.colyseusGame.character.mp.__current / this.colyseusGame.character.mp.maximum * 100;
   }
 }
