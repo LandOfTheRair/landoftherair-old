@@ -10,6 +10,7 @@ import { Quest } from '../../server/base/Quest';
 
 import * as Quests from '../../server/quests';
 import { LowCON } from '../../server/effects/LowCON';
+import { Dead } from '../../server/effects/Dead';
 import { nonenumerable } from 'nonenumerable';
 import { CharacterHelper } from '../../server/helpers/character-helper';
 
@@ -255,6 +256,10 @@ export class Player extends Character {
     // 5 minutes to restore
     this.$$deathTicks = 60 * 5;
     this.combatTicks = 0;
+
+    const dead = new Dead({});
+    dead.cast(this, this);
+    dead.duration = this.$$deathTicks;
 
     this.$$actionQueue = [];
 
