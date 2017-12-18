@@ -238,8 +238,8 @@
     max: 900
 
   hp:
-    min: 2500
-    max: 3000
+    min: 4500
+    max: 5000
 
   giveXp:
     min: 2500
