@@ -65,6 +65,13 @@ export class MacroService {
 
   private loadMutex: boolean;
 
+  private shouldIgnoreKeybinds: Function;
+
+  public set ignoreFunction(func: Function) {
+    if(this.shouldIgnoreKeybinds) return;
+    this.shouldIgnoreKeybinds = func;
+  }
+
   constructor(private localStorage: LocalStorageService, private colyseusGame: ColyseusGameService) {
     this.colyseusGame.inGame$.subscribe((inGame) => {
       if(inGame) this.init();
@@ -98,6 +105,8 @@ export class MacroService {
 
   private watchForMacros() {
     this.macroListener = (ev) => {
+      if(this.shouldIgnoreKeybinds()) return;
+
       let builtMacro = '';
       if(ev.altKey) builtMacro = 'ALT+';
       if(ev.ctrlKey) builtMacro = `${builtMacro}CTRL+`;
