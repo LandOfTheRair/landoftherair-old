@@ -151,7 +151,7 @@ export class GameState {
   private createPlayerHash() {
     return reduce(this.players, (prev, p) => {
       prev[p.username] = p;
-      p._party = p.party ? p.party.toJSON() : null;
+      p._party = p.party ? p.party : null;
       return prev;
     }, {});
   }
