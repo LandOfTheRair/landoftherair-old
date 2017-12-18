@@ -58,8 +58,12 @@
             <a class="dropdown-item"
                (click)="showTraits = !showTraits; activeWindow = 'traits'">Traits</a>
           </li>
+          <li class="divider dropdown-divider"></li>
           <li>
             <a class="dropdown-item" (click)="options.show()">Options</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="cleanupWindows()">Clean Up Windows</a>
           </li>
         </ul>
 
@@ -98,8 +102,9 @@
        (click)="activeWindow = 'lobby'"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="lobbyDrag"
+       [windowLocation]="windowLocations.Lobby"
        windowName="lobby"
-       defaultX="576"
+       defaultX="299"
        defaultY="55"
        [class.minimized]="minimized['lobby']"
        [class.hidden]="!loggedIn || !colyseus.username || !colyseus.isConnected || (inGame && autoHideLobby)">
@@ -116,6 +121,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="characterSelectDrag"
        windowName="chararacterSelect"
+       [windowLocation]="windowLocations.CharacterSelect"
        defaultX="0"
        defaultY="55"
        [class.hidden]="!loggedIn || inGame || !colyseus.username || !colyseus.isConnected">
@@ -132,6 +138,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="mapDrag"
        windowName="map"
+       [windowLocation]="windowLocations.Map"
        defaultX="389"
        defaultY="56"
        *ngIf="inGame">
@@ -151,6 +158,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="statsDrag"
        windowName="stats"
+       [windowLocation]="windowLocations.Stats"
        defaultX="670"
        defaultY="120"
        *ngIf="inGame && showStatsWindow">
@@ -169,6 +177,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="skillsDrag"
        windowName="skills"
+       [windowLocation]="windowLocations.Skills"
        defaultX="670"
        defaultY="120"
        *ngIf="inGame && showSkillsWindow">
@@ -187,6 +196,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="commandLine"
        windowName="commandLine"
+       [windowLocation]="windowLocations.CommandLine"
        defaultX="389"
        defaultY="848"
        *ngIf="inGame && showCommandLine">
@@ -206,6 +216,7 @@
        [ngClass]="[logWindowSize]"
        [windowHandle]="logWindow"
        windowName="logWindow"
+       [windowLocation]="windowLocations.Log"
        defaultX="3"
        defaultY="365"
        *ngIf="inGame">
@@ -224,6 +235,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="statusWindow"
        windowName="statusWindow"
+       [windowLocation]="windowLocations.Status"
        defaultX="389"
        defaultY="743"
        [class.minimized]="minimized['status']"
@@ -244,6 +256,7 @@
        [ngClass]="[groundSize]"
        [windowHandle]="groundWindow"
        windowName="groundWindow"
+       [windowLocation]="windowLocations.Ground"
        defaultX="3"
        defaultY="619"
        *ngIf="inGame && colyseus.game.showGround">
@@ -263,6 +276,7 @@
        [ngClass]="[sackSize]"
        [windowHandle]="sackWindow"
        windowName="sackWindow"
+       [windowLocation]="windowLocations.Sack"
        defaultX="966"
        defaultY="538"
        *ngIf="inGame && showInventorySack">
@@ -282,6 +296,7 @@
        [ngClass]="[beltSize]"
        [windowHandle]="beltWindow"
        windowName="beltWindow"
+       [windowLocation]="windowLocations.Belt"
        defaultX="966"
        defaultY="433"
        *ngIf="inGame && showInventoryBelt">
@@ -301,6 +316,7 @@
        [ngClass]="[equipmentSize]"
        [windowHandle]="equipmentWindow"
        windowName="equipmentWindow"
+       [windowLocation]="windowLocations.Equipment"
        defaultX="966"
        defaultY="56"
        *ngIf="inGame && showEquipment">
@@ -320,6 +336,7 @@
        [ngClass]="[npcWindowSize]"
        [windowHandle]="npcWindow"
        windowName="npcWindow"
+       [windowLocation]="windowLocations.NPCs"
        defaultX="3"
        defaultY="56"
        *ngIf="inGame">
@@ -337,6 +354,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="macroBars"
        windowName="macroBars"
+       [windowLocation]="windowLocations.Macros"
        defaultX="389"
        defaultY="661"
        *ngIf="inGame">
@@ -354,6 +372,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="trainerDrag"
        windowName="trainer"
+       [windowLocation]="windowLocations.Trainer"
        defaultX="670"
        defaultY="120"
        *ngIf="inGame && colyseus.game.showTrainer.uuid">
@@ -372,6 +391,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="shopDrag"
        windowName="shop"
+       [windowLocation]="windowLocations.Shop"
        defaultX="670"
        defaultY="120"
        *ngIf="inGame && colyseus.game.showShop.uuid">
@@ -390,6 +410,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="bankDrag"
        windowName="bank"
+       [windowLocation]="windowLocations.Bank"
        defaultX="670"
        defaultY="120"
        *ngIf="inGame && colyseus.game.showBank.uuid">
@@ -408,6 +429,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="lockerDrag"
        windowName="locker"
+       [windowLocation]="windowLocations.Locker"
        defaultX="670"
        defaultY="120"
        *ngIf="inGame && colyseus.game.showLocker.length > 0">
@@ -426,6 +448,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="partyDrag"
        windowName="party"
+       [windowLocation]="windowLocations.Party"
        defaultX="670"
        defaultY="120"
        *ngIf="inGame && showParty">
@@ -444,6 +467,7 @@
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="traitsDrag"
        windowName="traits"
+       [windowLocation]="windowLocations.Traits"
        defaultX="670"
        defaultY="120"
        *ngIf="inGame && showTraits">

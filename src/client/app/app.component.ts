@@ -138,6 +138,29 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public playSoundEffects: boolean;
 
+  public windowLocations: any = {
+    Lobby: null,
+    CharacterSelect: null,
+    Map: null,
+    Stats: null,
+    Skills: null,
+    CommandLine: null,
+    Log: null,
+    Status: null,
+    Ground: null,
+    Sack: null,
+    Belt: null,
+    Equipment: null,
+    NPCs: null,
+    Macros: null,
+    Trainer: null,
+    Shop: null,
+    Bank: null,
+    Locker: null,
+    Party: null,
+    Traits: null
+  };
+
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
   }
@@ -403,5 +426,13 @@ export class AppComponent implements OnInit {
         || !macro.background
         || !macro.foreground
         || !macro.macro;
+  }
+
+  public cleanupWindows() {
+    this.lockWindowPositions = false;
+
+    Object.keys(this.windowLocations).forEach((key, index) => {
+      this.windowLocations[key] = { x: index * 20, y: 56 };
+    });
   }
 }
