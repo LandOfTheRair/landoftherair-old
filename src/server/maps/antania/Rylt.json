@@ -6030,6 +6030,106 @@
                  "width":64,
                  "x":832,
                  "y":9344
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":787,
+                 "name":"Town Random Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/town-random"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4224,
+                 "y":2112
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":788,
+                 "name":"Town Random Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/town-random"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4352,
+                 "y":2560
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":789,
+                 "name":"Town Random Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/town-random"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4160,
+                 "y":1408
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":790,
+                 "name":"Town Random Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/town-random"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5312,
+                 "y":2304
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":791,
+                 "name":"Town Random Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/town-random"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3264,
+                 "y":2752
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7213,7 +7313,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":787,
+ "nextobjectid":792,
  "orientation":"orthogonal",
  "properties":
     {
