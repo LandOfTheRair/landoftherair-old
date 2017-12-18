@@ -129,8 +129,11 @@ export abstract class Skill extends Command {
 
     }
 
-    const skillGained = baseStealRoll > 100 ? 1 : Math.floor((100 - baseStealRoll) / 5);
-    gainThiefSkill(user, skillGained);
+    if(user.level < target.level + 3) {
+      const skillGained = baseStealRoll > 100 ? 1 : Math.floor((100 - baseStealRoll) / 5);
+      gainThiefSkill(user, skillGained);
+    }
+
   }
 
 }
