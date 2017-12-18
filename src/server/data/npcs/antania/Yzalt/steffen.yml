@@ -81,7 +81,7 @@
   allegianceReputation:
     Pirates: -101
 
-  skillOnKill: 15
+  skillOnKill: 5
 
   otherStats:
     perception: 35
@@ -184,7 +184,7 @@
   allegianceReputation:
     Pirates: -101
 
-  skillOnKill: 25
+  skillOnKill: 8
 
   gold:
     min: 50
@@ -275,7 +275,7 @@
   allegianceReputation:
     Pirates: -101
 
-  skillOnKill: 25
+  skillOnKill: 8
 
   gold:
     min: 50
@@ -366,7 +366,7 @@
   allegianceReputation:
     Pirates: -101
 
-  skillOnKill: 25
+  skillOnKill: 8
 
   gold:
     min: 50
@@ -457,7 +457,7 @@
   allegianceReputation:
     Pirates: -101
 
-  skillOnKill: 25
+  skillOnKill: 8
 
   gold:
     min: 700

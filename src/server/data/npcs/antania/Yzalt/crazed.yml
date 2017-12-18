@@ -19,7 +19,7 @@
   allegianceReputation:
     Royalty: -101
 
-  skillOnKill: 25
+  skillOnKill: 11
 
   gold:
     min: 400
@@ -105,7 +105,7 @@
   allegianceReputation:
     Royalty: -101
 
-  skillOnKill: 25
+  skillOnKill: 11
 
   gold:
     min: 500
@@ -192,7 +192,7 @@
   allegianceReputation:
     Pirates: -101
 
-  skillOnKill: 25
+  skillOnKill: 11
 
   gold:
     min: 200
@@ -282,7 +282,7 @@
   allegianceReputation:
     Pirates: -101
 
-  skillOnKill: 25
+  skillOnKill: 11
 
   gold:
     min: 100
@@ -369,7 +369,7 @@
     Pirates: -101
     Royalty: -101
 
-  skillOnKill: 25
+  skillOnKill: 9
 
   gold:
     min: 100
@@ -454,7 +454,7 @@
 
   level: 8
 
-  skillOnKill: 25
+  skillOnKill: 15
 
   gold:
     min: 500
@@ -595,7 +595,7 @@
 
   level: 8
 
-  skillOnKill: 25
+  skillOnKill: 15
 
   gold:
     min: 700
@@ -731,7 +731,7 @@
 
   level: 8
 
-  skillOnKill: 25
+  skillOnKill: 15
 
   gold:
     min: 400
@@ -860,7 +860,7 @@
 
   level: 8
 
-  skillOnKill: 25
+  skillOnKill: 15
 
   gold:
     min: 150
@@ -981,7 +981,7 @@
 
   level: 10
 
-  skillOnKill: 100
+  skillOnKill: 25
 
   gold:
     min: 2500

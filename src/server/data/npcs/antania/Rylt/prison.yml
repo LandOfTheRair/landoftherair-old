@@ -124,7 +124,7 @@
   otherStats:
     perception: 25
 
-  skillOnKill: 150
+  skillOnKill: 20
 
   sprite: 625
 
@@ -170,7 +170,7 @@
     Dagger: 4
 
   level: 7
-  skillOnKill: 20
+  skillOnKill: 6
 
   otherStats:
     perception: 35
@@ -279,7 +279,7 @@
     Dagger: 3
 
   level: 4
-  skillOnKill: 20
+  skillOnKill: 6
 
   gold:
     min: 250
@@ -370,7 +370,7 @@
     Conjuration: 2
 
   level: 4
-  skillOnKill: 25
+  skillOnKill: 7
 
   otherStats:
     perception: 35
@@ -426,7 +426,7 @@
     perception: 35
 
   level: 4
-  skillOnKill: 25
+  skillOnKill: 7
 
   gold:
     min: 150
@@ -477,7 +477,7 @@
     perception: 150
 
   level: 17
-  skillOnKill: 200
+  skillOnKill: 100
 
   gold:
     min: 4000

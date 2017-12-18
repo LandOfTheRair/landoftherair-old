@@ -44,7 +44,7 @@
     waterResist: 5000
 
   aquaticOnly: true
-  skillOnKill: 15
+  skillOnKill: 3
 
   gold:
     min: 10

@@ -8,7 +8,7 @@
     Martial: 3
   level: 5
 
-  skillOnKill: 15
+  skillOnKill: 9
 
   gold:
     min: 90
