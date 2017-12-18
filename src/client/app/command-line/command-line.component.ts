@@ -3,6 +3,7 @@ import { LocalStorage } from 'ngx-webstorage';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 import { environment } from '../../environments/environment';
+import { MacroService } from '../macros.service';
 
 @Component({
   selector: 'app-command-line',
@@ -25,11 +26,12 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
   private curIndex = -1;
 
-  constructor(public colyseusGame: ColyseusGameService) {}
+  constructor(public colyseusGame: ColyseusGameService, public macroService: MacroService) {}
 
   ngOnInit() {
-    this.listener = () => {
+    this.listener = (ev) => {
       if(document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+      if(this.macroService.hasMacroMatching(ev.key)) return;
       this.cmdEntryInput.nativeElement.focus();
     };
 

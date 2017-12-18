@@ -89,8 +89,6 @@ export class MacroService {
     this.watchActiveMacro();
     this.watchForMacros();
     this.hasLoaded = true;
-
-
   }
 
   uninit() {
@@ -101,6 +99,10 @@ export class MacroService {
 
   get activeMacro(): Macro {
     return this.allMacros[this.currentlySelectedMacro];
+  }
+
+  public hasMacroMatching(key: string) {
+    return this.macroMap[key.toUpperCase()];
   }
 
   private watchForMacros() {
