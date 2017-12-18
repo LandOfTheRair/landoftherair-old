@@ -790,6 +790,26 @@
                  "width":64,
                  "x":1216,
                  "y":1600
+                }, 
+                {
+                 "gid":3099,
+                 "height":64,
+                 "id":211,
+                 "name":"Encruster",
+                 "properties":
+                    {
+                     "script":"tutorial\/encruster"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1728,
+                 "y":1856
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1033,7 +1053,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1054,7 +1074,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1064,11 +1084,11 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextobjectid":210,
+ "nextobjectid":212,
  "orientation":"orthogonal",
  "properties":
     {

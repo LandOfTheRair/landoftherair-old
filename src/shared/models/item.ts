@@ -98,6 +98,7 @@ export class Encrust {
   desc: string;
   sprite: number;
   stats: any = {};
+  value: number;
 }
 
 export class Item {
