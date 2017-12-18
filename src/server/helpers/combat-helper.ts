@@ -138,6 +138,8 @@ export class CombatHelper {
 
     const offhandDivisor = isOffhand ? 3 : 1;
 
+    const attackerName = defender.canSeeThroughStealthOf(attacker) ? attacker.name : 'somebody';
+
     // skill + 1 because skill 0 is awful
     const attackerScope = {
       skill: attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type) + 1,
@@ -194,7 +196,7 @@ export class CombatHelper {
 
     if(dodgeRoll < 0 || attackDistance < distBetween) {
       attacker.sendClientMessage({ message: `You miss!`, subClass: 'combat self miss', target: defender.uuid });
-      defender.sendClientMessage({ message: `${attacker.name} misses!`, subClass: 'combat other miss' });
+      defender.sendClientMessage({ message: `${attackerName} misses!`, subClass: 'combat other miss' });
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { dodge: true };
     }
@@ -208,7 +210,7 @@ export class CombatHelper {
     const acRoll = random(defenderACRoll, attackerACRoll);
     if(acRoll < 0) {
       attacker.sendClientMessage({ message: `You were blocked by armor!`, subClass: 'combat self block armor', target: defender.uuid });
-      defender.sendClientMessage({ message: `${attacker.name} was blocked by your armor!`, subClass: 'combat other block armor' });
+      defender.sendClientMessage({ message: `${attackerName} was blocked by your armor!`, subClass: 'combat other block armor' });
       defenderArmor.loseCondition(1, () => defender.recalculateStats());
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { block: true, blockedBy: 'armor' };
@@ -226,7 +228,7 @@ export class CombatHelper {
     if(weaponBlockRoll < 0 && defenderBlocker.isOwnedBy(defender) && defenderBlocker.hasCondition()) {
       const itemTypeToLower = defenderBlocker.itemClass.toLowerCase();
       attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block weapon', target: defender.uuid });
-      defender.sendClientMessage({ message: `${attacker.name} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block weapon' });
+      defender.sendClientMessage({ message: `${attackerName} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block weapon' });
 
 
       const lostCondition = 1 - (defender.getTraitLevel('CarefulTouch') * 0.05);
@@ -247,7 +249,7 @@ export class CombatHelper {
       if(shieldBlockRoll < 0) {
         const itemTypeToLower = defenderShield.itemClass.toLowerCase();
         attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block shield', target: defender.uuid });
-        defender.sendClientMessage({ message: `${attacker.name} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block shield' });
+        defender.sendClientMessage({ message: `${attackerName} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block shield' });
 
         const lostCondition = 1 - (defender.getTraitLevel('CarefulTouch') * 0.05);
         defenderShield.loseCondition(lostCondition, () => defender.recalculateStats());
@@ -291,11 +293,11 @@ export class CombatHelper {
     let msg = '';
 
     if(attacker.rightHand) {
-      msg = `${attacker.name} hits with a ${attackerWeapon.itemClass.toLowerCase()}!`;
+      msg = `${attackerName} hits with a ${attackerWeapon.itemClass.toLowerCase()}!`;
     } else if(attackerWeapon.itemClass === 'Claws') {
-      msg = `${attacker.name} claws you!`;
+      msg = `${attackerName} claws you!`;
     } else {
-      msg = `${attacker.name} punches you!`;
+      msg = `${attackerName} punches you!`;
     }
 
     damage = this.dealDamage(attacker, defender, {
