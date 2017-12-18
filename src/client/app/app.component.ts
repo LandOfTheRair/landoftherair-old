@@ -198,13 +198,13 @@ export class AppComponent implements OnInit {
       || this.macroGroupsModal.isShown
       || this.macrosModal.isShown
       || this.optionsModal.isShown) return true;
-      
+
       if(this.colyseus.game.showBank) return true;
 
       if(this.activeWindow === 'cmd') return true;
 
       return false;
-    }
+    };
   }
 
   ngOnInit() {
