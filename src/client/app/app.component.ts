@@ -161,6 +161,8 @@ export class AppComponent implements OnInit {
     Traits: null
   };
 
+  public newMessages = 0;
+
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
   }
@@ -220,6 +222,11 @@ export class AppComponent implements OnInit {
       this.macroGroupsModal.hide();
       this.optionsModal.hide();
       this.macrosModal.hide();
+    });
+
+    this.colyseus.lobby.lobbyState.newMessage$.subscribe((numNewMessages) => {
+      if(this.activeWindow === 'lobby') return;
+      this.newMessages += numNewMessages;
     });
 
     this.initDefaultOptions();
@@ -452,5 +459,9 @@ export class AppComponent implements OnInit {
 
   setActiveWindow(win: string) {
     this.activeWindow = win;
+
+    if(win === 'lobby') {
+      this.newMessages = 0;
+    }
   }
 }
