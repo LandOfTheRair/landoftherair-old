@@ -76,7 +76,10 @@ export abstract class Skill extends Command {
 
   async facilitateSteal(user: Character, target: Character) {
 
-    if(target.sack.allItems.length === 0 && target.gold <= 0) return user.sendClientMessage('You can\'t seem to find anything to take!');
+    if(target.sack.allItems.length === 0 && target.gold <= 0) {
+      user.sendClientMessage('You can\'t seem to find anything to take!');
+      return;
+    }
 
     const gainThiefSkill = (gainer, skillGained) => {
       if(skillGained <= 0) return;
@@ -93,7 +96,10 @@ export abstract class Skill extends Command {
     if(target.gold > 0) {
       if(random(0, stealRoll) < 30) {
         gainThiefSkill(user, 1);
-        return user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
+        target.addAgro(user, 1);
+        user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
+        target.sendClientMessage({ message: `${user.name} just tried to steal from you!`, target: user.uuid });
+        return;
       }
 
       const fuzzedSkill = random(Math.max(mySkill - 3, 1), mySkill + 5);
@@ -117,7 +123,10 @@ export abstract class Skill extends Command {
     } else if(target.sack.allItems.length > 0) {
       if(random(0, stealRoll) < 60) {
         gainThiefSkill(user, 1);
-        return user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
+        target.addAgro(user, 1);
+        user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
+        target.sendClientMessage({ message: `${user.name} just tried to steal from you!`, target: user.uuid });
+        return;
       }
 
       const item = target.sack.randomItem();
