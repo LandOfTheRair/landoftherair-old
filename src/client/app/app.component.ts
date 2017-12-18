@@ -133,6 +133,9 @@ export class AppComponent implements OnInit {
   public pinLastTarget: boolean;
 
   @LocalStorage()
+  public sortNPCsByDistance: boolean;
+
+  @LocalStorage()
   public playBackgroundMusic: boolean;
 
   @LocalStorage()

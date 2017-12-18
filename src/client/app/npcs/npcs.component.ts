@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { compact, find, pull, findIndex } from 'lodash';
+import { compact, find, pull, findIndex, sortBy } from 'lodash';
 import { NPC } from '../../../shared/models/npc';
 import { MacroService } from '../macros.service';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -46,7 +46,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
     if(!fov) return [];
     const me = this.colyseusGame.character;
 
-    const unsorted = compact(npcs.map(npc => {
+    let unsorted = compact(npcs.map(npc => {
       if((<any>npc).username === me.username) return false;
       if(npc.dir === 'C') return false;
       if(!me.canSeeThroughStealthOf(npc)) return false;
@@ -57,6 +57,10 @@ export class NpcsComponent implements OnInit, OnDestroy {
       if(!fov[diffX][diffY]) return false;
       return npc;
     }));
+
+    if(this.localStorage.retrieve('sortNPCsByDistance')) {
+      unsorted = sortBy(unsorted, npc => npc.distFrom(me));
+    }
 
     if(!this.pinUUID || !this.shouldPin) return unsorted;
 
