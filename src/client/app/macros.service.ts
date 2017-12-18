@@ -73,9 +73,17 @@ export class MacroService {
   }
 
   constructor(private localStorage: LocalStorageService, private colyseusGame: ColyseusGameService) {
+    this.watchGameObservables();
+  }
+
+  private watchGameObservables() {
     this.colyseusGame.inGame$.subscribe((inGame) => {
       if(inGame) this.init();
       else       this.uninit();
+    });
+
+    this.colyseusGame.gameCommand$.subscribe(({ action }) => {
+      if(action === 'update_macros') this.resetUsableMacros();
     });
   }
 

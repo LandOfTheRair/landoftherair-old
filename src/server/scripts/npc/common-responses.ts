@@ -532,6 +532,7 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       if(learnedSkills.length === 0) return 'I cannot currently teach you anything new.';
 
+      player.$$room.resetMacros(player);
       player.loseGold(learnCost);
 
       return `You have learned the abilities: ${learnedSkills.join(', ')}.`;
