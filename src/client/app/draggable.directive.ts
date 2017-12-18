@@ -36,6 +36,14 @@ export class DraggableWindowDirective implements OnInit {
   @Input()
   public defaultY: number;
 
+  @Input()
+  public set windowLocation(data) {
+    if(!data) return;
+
+    const { x, y } = data;
+    this.setElementCoords(y, x);
+  }
+
   constructor(public element: ElementRef) {}
 
   ngOnInit() {
