@@ -3,7 +3,7 @@
   desc: "a trap imbued with the spell FireMist"
   effect:
     name: FireMist
-    potency: 5
+    potency: 10
     levelRequirement: 3
     skillRequirement: 3
   value: 1500
@@ -13,7 +13,7 @@
   desc: "a trap imbued with the spell IceMist"
   effect:
     name: IceMist
-    potency: 5
+    potency: 10
     levelRequirement: 3
     skillRequirement: 3
   value: 1500
@@ -23,7 +23,7 @@
   desc: "a trap imbued with the spell Poison"
   effect:
     name: Poison
-    potency: 5
+    potency: 10
     levelRequirement: 3
     skillRequirement: 3
   value: 1000
@@ -33,7 +33,7 @@
   desc: "a trap imbued with the spell Afflict"
   effect:
     name: Afflict
-    potency: 15
+    potency: 10
     levelRequirement: 3
     skillRequirement: 3
   value: 1000
@@ -43,7 +43,7 @@
   desc: "a trap imbued with the spell MagicMissile"
   effect:
     name: MagicMissile
-    potency: 15
+    potency: 10
     levelRequirement: 3
     skillRequirement: 3
   value: 1000
