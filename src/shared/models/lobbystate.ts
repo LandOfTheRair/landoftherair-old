@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { nonenumerable } from 'nonenumerable';
 import { find, reject, pullAt, extend } from 'lodash';
+import { Subject } from 'rxjs/Subject';
 
 export class LobbyState {
   accounts: Account[] = [];
@@ -14,6 +15,9 @@ export class LobbyState {
 
   @nonenumerable
   account$ = new BehaviorSubject<Account[]>([]);
+
+  @nonenumerable
+  newMessage$ = new Subject<number>();
 
   @nonenumerable
   inGame = {};
@@ -29,10 +33,15 @@ export class LobbyState {
 
   syncTo(state: LobbyState) {
     const oldAccLength = this.accounts.length;
+    const oldMessagesLength = this.messages.length;
     extend(this, state);
 
     if(this.accounts.length !== oldAccLength) {
       this.account$.next(this.accounts);
+    }
+
+    if(oldMessagesLength !== 0 && this.messages.length !== oldMessagesLength) {
+      this.newMessage$.next(this.messages.length - oldMessagesLength);
     }
 
     this.accounts.forEach(account => {

@@ -110,6 +110,7 @@
        [class.hidden]="!loggedIn || !colyseus.username || !colyseus.isConnected || (inGame && autoHideLobby)">
     <div class="window-header text-center" #lobbyDrag>
       Lobby Chat ({{ colyseus.lobby.lobbyState.accounts.length }} Online)
+      <em *ngIf="newMessages > 0"> *{{ newMessages }} new message<span *ngIf="newMessages > 1">s</span>!</em>
       <app-minimize-button (click)="minimize('lobby')"></app-minimize-button>
     </div>
     <div class="window-body" [class.hidden]="minimized['lobby']">
