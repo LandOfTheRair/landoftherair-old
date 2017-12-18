@@ -13,6 +13,7 @@ export * from './MinorCHA';
 export * from './MinorHP';
 export * from './MinorMP';
 
+export * from './Dead';
 export * from './LowCON';
 export * from './Hidden';
 
