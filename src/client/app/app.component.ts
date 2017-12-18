@@ -199,7 +199,7 @@ export class AppComponent implements OnInit {
       || this.macrosModal.isShown
       || this.optionsModal.isShown) return true;
 
-      if(this.colyseus.game.showBank) return true;
+      if(this.colyseus.game.showBank.bankId) return true;
 
       if(this.activeWindow === 'cmd') return true;
 
