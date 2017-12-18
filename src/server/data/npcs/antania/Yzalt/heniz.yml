@@ -46,7 +46,7 @@
   allegianceReputation:
     Royalty: -101
 
-  skillOnKill: 15
+  skillOnKill: 5
 
   otherStats:
     perception: 35
@@ -158,7 +158,7 @@
   allegianceReputation:
     Royalty: -101
 
-  skillOnKill: 25
+  skillOnKill: 8
 
   otherStats:
     fireResist: 100
@@ -259,7 +259,7 @@
   allegianceReputation:
     Royalty: -101
 
-  skillOnKill: 25
+  skillOnKill: 8
 
   otherStats:
     perception: 45
@@ -352,7 +352,7 @@
   allegianceReputation:
     Royalty: -101
 
-  skillOnKill: 25
+  skillOnKill: 8
 
   otherStats:
     fireResist: 100
@@ -453,7 +453,7 @@
   allegianceReputation:
     Royalty: -101
 
-  skillOnKill: 25
+  skillOnKill: 8
 
   otherStats:
     perception: 45

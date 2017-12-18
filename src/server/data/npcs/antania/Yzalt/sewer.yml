@@ -10,7 +10,7 @@
 
   level: 7
 
-  skillOnKill: 15
+  skillOnKill: 5
 
   gold:
     min: 200
@@ -64,7 +64,7 @@
 
   level: 8
 
-  skillOnKill: 35
+  skillOnKill: 18
 
   gold:
     min: 200

@@ -9,7 +9,7 @@
     Martial: 3
   level: 4
 
-  skillOnKill: 25
+  skillOnKill: 5
 
   otherStats:
     perception: 35
@@ -70,7 +70,7 @@
   otherStats:
     perception: 40
 
-  skillOnKill: 20
+  skillOnKill: 4
 
   gold:
     min: 40
@@ -160,7 +160,7 @@
     Wand: 4
     Conjuration: 4
 
-  skillOnKill: 50
+  skillOnKill: 25
 
   sprite: 545
 
@@ -231,7 +231,7 @@
   otherStats:
     perception: 80
 
-  skillOnKill: 100
+  skillOnKill: 25
 
   gold:
     min: 400

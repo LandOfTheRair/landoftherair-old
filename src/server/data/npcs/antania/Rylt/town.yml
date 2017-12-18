@@ -5,7 +5,7 @@
   skillLevels: 5
   level: 10
 
-  skillOnKill: 15
+  skillOnKill: 1
 
   sprite: [580, 595, 610, 615]
 
@@ -71,7 +71,7 @@
   allegianceReputation:
     Enemy: -1
 
-  skillOnKill: 50
+  skillOnKill: 5
 
   sprite: 625
 

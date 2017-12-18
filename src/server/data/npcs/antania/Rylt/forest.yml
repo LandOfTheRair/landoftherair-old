@@ -42,7 +42,7 @@
   otherStats:
     perception: 15
 
-  skillOnKill: 50
+  skillOnKill: 25
 
   gear:
     Armor: Weredeer Robe
@@ -74,7 +74,7 @@
   otherStats:
     perception: 15
 
-  skillOnKill: 10
+  skillOnKill: 4
 
   gold:
     min: 10
@@ -110,7 +110,7 @@
   otherStats:
     perception: 15
 
-  skillOnKill: 15
+  skillOnKill: 5
 
   gold:
     min: 40
@@ -153,7 +153,7 @@
   otherStats:
     perception: 50
 
-  skillOnKill: 75
+  skillOnKill: 25
 
   gear:
     Armor: Rylt Werebear Fur

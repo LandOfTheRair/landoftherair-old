@@ -14,7 +14,7 @@
 
   level: 3
 
-  skillOnKill: 15
+  skillOnKill: 4
 
   otherStats:
     perception: 35
@@ -130,7 +130,7 @@
     Conjuration: 5
 
   level: 4
-  skillOnKill: 25
+  skillOnKill: 5
 
   otherStats:
     perception: 45
@@ -184,7 +184,7 @@
     Restoration: 5
 
   level: 4
-  skillOnKill: 25
+  skillOnKill: 5
 
   otherStats:
     perception: 45
@@ -240,7 +240,7 @@
 
   level: 5
 
-  skillOnKill: 25
+  skillOnKill: 5
 
   otherStats:
     perception: 55

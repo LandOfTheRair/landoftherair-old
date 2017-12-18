@@ -5,7 +5,7 @@
   stats: 10
   level: 1
 
-  skillOnKill: 50
+  skillOnKill: 1
 
   sprite: [580, 595, 610, 615]
 
