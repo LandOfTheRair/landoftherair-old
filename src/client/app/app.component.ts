@@ -191,6 +191,20 @@ export class AppComponent implements OnInit {
     private renderer: Renderer2
   ) {
     this.authService.handleAuthentication();
+    this.macroService.ignoreFunction = () => {
+
+      // no macros when modals are up
+      if(this.viewMacroModal.isShown
+      || this.macroGroupsModal.isShown
+      || this.macrosModal.isShown
+      || this.optionsModal.isShown) return true;
+      
+      if(this.colyseus.game.showBank) return true;
+
+      if(this.activeWindow === 'cmd') return true;
+
+      return false;
+    }
   }
 
   ngOnInit() {
