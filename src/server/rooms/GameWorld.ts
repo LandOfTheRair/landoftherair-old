@@ -962,6 +962,15 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
+  public resetMacros(player: Player) {
+    const client = this.findClient(player);
+    if(!client) return;
+
+    this.send(client, {
+      action: 'update_macros'
+    });
+  }
+
   public shareExpWithParty(player: Player, exp: number) {
     const party = player.party;
 

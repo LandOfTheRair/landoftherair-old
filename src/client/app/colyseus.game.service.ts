@@ -39,6 +39,7 @@ export class ColyseusGameService {
 
   public currentCommand = '';
 
+  public gameCommand$ = new Subject();
   public inGame$ = new Subject();
   public bgm$ = new Subject();
   public sfx$ = new Subject();
@@ -58,7 +59,10 @@ export class ColyseusGameService {
     return this.clientGameState.currentPlayer;
   }
 
-  constructor(private localStorage: LocalStorageService, private zone: NgZone) {
+  constructor(
+    private localStorage: LocalStorageService,
+    private zone: NgZone
+  ) {
 
     this.overrideNoBgm = !this.localStorage.retrieve('playBackgroundMusic');
     this.overrideNoSfx = !this.localStorage.retrieve('playSoundEffects');
@@ -305,6 +309,8 @@ export class ColyseusGameService {
       return;
     }
 
+    this.gameCommand$.next({ action, ...other });
+
     if(other.target)                this.setTarget(other.target);
     if(action === 'draw_effect_r')  return this.drawEffectRadius(other);
     if(action === 'set_map')        return this.setMap(other.map);
@@ -319,6 +325,10 @@ export class ColyseusGameService {
     if(action === 'set_character')  return this.setCharacter(other.character);
     if(action === 'update_pos')     return this.updatePos(other.x, other.y, other.dir, other.swimLevel, other.fov);
     if(action === 'update_fov')     return this.updateFOV(other.fov);
+  }
+
+  private updateMacros() {
+    // this.macroService.resetUsableMacros();
   }
 
   private updateFOV(fov) {
