@@ -321,6 +321,8 @@ export class Player extends Character {
   }
 
   restore(force = false) {
+    if(!this.isDead()) return;
+
     if(this.$$corpseRef) {
       this.$$room.removeCorpse(this.$$corpseRef);
       this.$$corpseRef = null;

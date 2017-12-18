@@ -12,16 +12,19 @@ export class Dead extends SpellEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-
-    this.duration = -1;
+    this.duration = 300;
     this.effectInfo = { isPermanent: true, caster: caster.uuid };
     caster.applyEffect(this);
   }
 
   effectTick(char: Character) {
-    if(char.isDead()) return;
+    if(char.isDead()) {
+      if(this.duration > 0 && this.duration % 60 === 45) this.effectMessage(char, 'Use the restore macro to come back to life!');
+      return;
+    }
 
     this.effectEnd(char);
     char.unapplyEffect(this);
+    char.restore(true);
   }
 }
