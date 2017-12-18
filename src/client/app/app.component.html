@@ -99,7 +99,7 @@
   <!-- LOBBY WINDOWS -->
   <div class="window lobby game-window"
        [class.active-window]="activeWindow === 'lobby'"
-       (click)="activeWindow = 'lobby'"
+       (click)="setActiveWindow('lobby')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="lobbyDrag"
        [windowLocation]="windowLocations.Lobby"
@@ -134,7 +134,7 @@
   <!-- GAME WINDOWS -->
   <div class="window map"
        [class.active-window]="activeWindow === 'map'"
-       (click)="activeWindow = 'map'"
+       (click)="setActiveWindow('map')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="mapDrag"
        windowName="map"
@@ -154,7 +154,7 @@
 
   <div class="window stats above-game-window"
        [class.active-window]="activeWindow === 'stats'"
-       (click)="activeWindow = 'stats'"
+       (click)="setActiveWindow('stats')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="statsDrag"
        windowName="stats"
@@ -173,7 +173,7 @@
 
   <div class="window skills above-game-window"
        [class.active-window]="activeWindow === 'skills'"
-       (click)="activeWindow = 'skills'"
+       (click)="setActiveWindow('skills')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="skillsDrag"
        windowName="skills"
@@ -192,7 +192,7 @@
 
   <div class="window command-line game-window"
        [class.active-window]="activeWindow === 'cmd'"
-       (click)="activeWindow = 'cmd'"
+       (click)="setActiveWindow('cmd')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="commandLine"
        windowName="commandLine"
@@ -211,7 +211,7 @@
 
   <div class="window log-window game-window"
        [class.active-window]="activeWindow === 'log'"
-       (click)="activeWindow = 'log'"
+       (click)="setActiveWindow('log')"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[logWindowSize]"
        [windowHandle]="logWindow"
@@ -231,7 +231,7 @@
 
   <div class="window status-window game-window"
        [class.active-window]="activeWindow === 'status'"
-       (click)="activeWindow = 'status'"
+       (click)="setActiveWindow('status')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="statusWindow"
        windowName="statusWindow"
@@ -251,7 +251,7 @@
 
   <div class="window ground-window game-window"
        [class.active-window]="activeWindow === 'ground'"
-       (click)="activeWindow = 'ground'"
+       (click)="setActiveWindow('ground')"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[groundSize]"
        [windowHandle]="groundWindow"
@@ -271,7 +271,7 @@
 
   <div class="window inventory-sack-window game-window"
        [class.active-window]="activeWindow === 'sack'"
-       (click)="activeWindow = 'sack'"
+       (click)="setActiveWindow('sack')"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[sackSize]"
        [windowHandle]="sackWindow"
@@ -291,7 +291,7 @@
 
   <div class="window inventory-belt-window game-window"
        [class.active-window]="activeWindow === 'belt'"
-       (click)="activeWindow = 'belt'"
+       (click)="setActiveWindow('belt')"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[beltSize]"
        [windowHandle]="beltWindow"
@@ -311,7 +311,7 @@
 
   <div class="window equipment-window game-window"
        [class.active-window]="activeWindow === 'equipment'"
-       (click)="activeWindow = 'equipment'"
+       (click)="setActiveWindow('equipment')"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[equipmentSize]"
        [windowHandle]="equipmentWindow"
@@ -331,7 +331,7 @@
 
   <div class="window npc-window game-window"
        [class.active-window]="activeWindow === 'npcs'"
-       (click)="activeWindow = 'npcs'"
+       (click)="setActiveWindow('npcs')"
        [appDraggableWindow]="!lockWindowPositions"
        [ngClass]="[npcWindowSize]"
        [windowHandle]="npcWindow"
@@ -350,7 +350,7 @@
 
   <div class="window macro-bars game-window"
        [class.active-window]="activeWindow === 'macros'"
-       (click)="activeWindow = 'macros'"
+       (click)="setActiveWindow('macros')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="macroBars"
        windowName="macroBars"
@@ -368,7 +368,7 @@
 
   <div class="window trainer above-game-window"
        [class.active-window]="activeWindow === 'trainer'"
-       (click)="activeWindow = 'trainer'"
+       (click)="setActiveWindow('trainer')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="trainerDrag"
        windowName="trainer"
@@ -387,7 +387,7 @@
 
   <div class="window shop above-game-window"
        [class.active-window]="activeWindow === 'shop'"
-       (click)="activeWindow = 'shop'"
+       (click)="setActiveWindow('shop')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="shopDrag"
        windowName="shop"
@@ -406,7 +406,7 @@
 
   <div class="window bank above-game-window"
        [class.active-window]="activeWindow === 'bank'"
-       (click)="activeWindow = 'bank'"
+       (click)="setActiveWindow('bank')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="bankDrag"
        windowName="bank"
@@ -425,7 +425,7 @@
 
   <div class="window locker above-game-window"
        [class.active-window]="activeWindow === 'locker'"
-       (click)="activeWindow = 'locker'"
+       (click)="setActiveWindow('locker')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="lockerDrag"
        windowName="locker"
@@ -444,7 +444,7 @@
 
   <div class="window party above-game-window"
        [class.active-window]="activeWindow === 'party'"
-       (click)="activeWindow = 'party'"
+       (click)="setActiveWindow('party')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="partyDrag"
        windowName="party"
@@ -463,7 +463,7 @@
 
   <div class="window traits above-game-window"
        [class.active-window]="activeWindow === 'traits'"
-       (click)="activeWindow = 'traits'"
+       (click)="setActiveWindow('traits')"
        [appDraggableWindow]="!lockWindowPositions"
        [windowHandle]="traitsDrag"
        windowName="traits"
