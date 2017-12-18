@@ -449,4 +449,8 @@ export class AppComponent implements OnInit {
       this.windowLocations[key] = { x: index * 20, y: 56 };
     });
   }
+
+  setActiveWindow(win: string) {
+    this.activeWindow = win;
+  }
 }
