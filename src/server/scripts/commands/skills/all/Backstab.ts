@@ -14,7 +14,7 @@ export class Backstab extends Skill {
     icon: 'backstab',
     color: '#530000',
     mode: 'lockActivation',
-    tooltipDesc: 'Backstab your target from the shadows.'
+    tooltipDesc: 'Backstab your target from the shadows. Requires Thievery skill 3.'
   };
 
   public name = 'backstab';

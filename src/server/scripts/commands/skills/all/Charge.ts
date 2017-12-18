@@ -14,7 +14,7 @@ export class Charge extends Skill {
     icon: 'running-ninja',
     color: '#530000',
     mode: 'lockActivation',
-    tooltipDesc: 'Charge towards an enemy, attacking with the item in your right hand.'
+    tooltipDesc: 'Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 3 (Warrior) or weapon skill 7 (Other).'
   };
 
   public name = 'charge';

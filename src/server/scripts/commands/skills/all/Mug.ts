@@ -14,7 +14,7 @@ export class Mug extends Skill {
     icon: 'hooded-assassin',
     color: '#530000',
     mode: 'lockActivation',
-    tooltipDesc: 'Mug your target, dealing damage and stealing from them.'
+    tooltipDesc: 'Mug your target, dealing damage and stealing from them. Requires Thievery skill 7.'
   };
 
   public name = 'mug';
