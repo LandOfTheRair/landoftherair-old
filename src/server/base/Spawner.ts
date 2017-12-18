@@ -276,7 +276,7 @@ export class Spawner {
     }
 
     if(this.shouldSlowDown(this.getDistsForPlayers())) {
-      this.$$slowTicks = 4;
+      this.$$slowTicks = 2;
       this.$$isStayingSlow = true;
     } else {
       this.$$isStayingSlow = false;
