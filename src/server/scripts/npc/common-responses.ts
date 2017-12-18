@@ -360,7 +360,7 @@ export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
       });
 
       if(allItems.length === 0) return 'You are not carrying any items of that type!';
-      
+
       allItems.forEach(item => {
         player.sellItem(item);
         player.sack.takeItem(item);
@@ -391,7 +391,9 @@ export const EncrusterResponses = (npc: NPC) => {
 
       if(!player.rightHand) return 'You must hold an item in your right hand!';
       if(player.rightHand.itemClass === 'Corpse') return 'That would be disrespectful.';
+      if(!player.rightHand.isOwnedBy(player)) return 'That item does not belong to you!';
       if(!player.leftHand || player.leftHand.itemClass !== 'Gem') return 'You must hold a gem in your left hand!';
+      if(!player.leftHand.isOwnedBy(player)) return 'That gem does not belong to you!';
 
       const cost = player.leftHand.value + player.rightHand.value + 500;
 
@@ -402,8 +404,13 @@ export const EncrusterResponses = (npc: NPC) => {
       const nextEncrust = {
         desc: player.leftHand.desc,
         stats: player.leftHand.stats,
-        sprite: player.leftHand.sprite
+        sprite: player.leftHand.sprite,
+        value: player.leftHand.value
       };
+
+      const prevValue = get(prevEncrust, 'value', 0);
+      player.rightHand.value -= prevValue;
+      player.rightHand.value += nextEncrust.value;
 
       player.loseGold(cost);
       player.setLeftHand(null);
