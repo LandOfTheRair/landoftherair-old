@@ -7,57 +7,6 @@ import * as Pathfinder from 'pathfinding';
 
 export class MoveHelper {
 
-  static tryToOpenDoor(player: Character, door, { gameState }): boolean {
-    door.properties = door.properties || {};
-    const { requireLockpick, skillRequired, requireHeld } = door.properties;
-
-    if(!door.isOpen
-      && (requireLockpick || requireHeld)) {
-
-      let shouldOpen = false;
-
-      if(requireHeld
-        && player.hasHeldItem(door.properties.requireHeld)) shouldOpen = true;
-
-      if(requireLockpick
-        && skillRequired
-        && player.baseClass === 'Thief'
-        && player.hasHeldItem('Lockpick', 'right')) {
-
-        const playerSkill = player.calcSkillLevel(SkillClassNames.Thievery);
-
-        if(playerSkill < skillRequired) {
-          player.sendClientMessage('You are not skilled enough to pick this lock.');
-          return false;
-        }
-
-        player.sendClientMessage('You successfully picked the lock!');
-        player.setRightHand(null);
-
-        shouldOpen = true;
-      }
-
-      if(!shouldOpen) {
-        player.sendClientMessage('The door is locked.');
-        return false;
-      }
-    }
-
-    player.sendClientMessage(door.isOpen ? 'You close the door.' : 'You open the door.');
-    gameState.toggleDoor(door);
-
-    let { x, y } = door;
-
-    x /= 64;
-    y /= 64;
-
-    gameState.getPlayersInRange({ x, y }, 3).forEach(p => {
-      gameState.calculateFOV(p);
-      p.$$room.updateFOV(p);
-    });
-    return true;
-  }
-
   static move(player: Character, { room, gameState, x, y }, isChasing = false) {
 
     if(isUndefined(x) || isUndefined(y)) return;
@@ -142,6 +91,57 @@ export class MoveHelper {
     }
   }
 
+  static tryToOpenDoor(player: Character, door, { gameState }): boolean {
+    door.properties = door.properties || {};
+    const { requireLockpick, skillRequired, requireHeld } = door.properties;
+
+    if(!door.isOpen
+      && (requireLockpick || requireHeld)) {
+
+      let shouldOpen = false;
+
+      if(requireHeld
+        && player.hasHeldItem(door.properties.requireHeld)) shouldOpen = true;
+
+      if(requireLockpick
+        && skillRequired
+        && player.baseClass === 'Thief'
+        && player.hasHeldItem('Lockpick', 'right')) {
+
+        const playerSkill = player.calcSkillLevel(SkillClassNames.Thievery);
+
+        if(playerSkill < skillRequired) {
+          player.sendClientMessage('You are not skilled enough to pick this lock.');
+          return false;
+        }
+
+        player.sendClientMessage('You successfully picked the lock!');
+        player.setRightHand(null);
+
+        shouldOpen = true;
+      }
+
+      if(!shouldOpen) {
+        player.sendClientMessage('The door is locked.');
+        return false;
+      }
+    }
+
+    player.sendClientMessage(door.isOpen ? 'You close the door.' : 'You open the door.');
+    gameState.toggleDoor(door);
+
+    let { x, y } = door;
+
+    x /= 64;
+    y /= 64;
+
+    gameState.getPlayersInRange({ x, y }, 3).forEach(p => {
+      gameState.calculateFOV(p);
+      p.$$room.updateFOV(p);
+    });
+    return true;
+  }
+
   private static handleInteractable(room, player, obj) {
     switch(obj.type) {
       case 'Teleport': return this.handleTeleport(room, player, obj);
@@ -151,8 +151,33 @@ export class MoveHelper {
   }
 
   private static handleTeleport(room, player, obj) {
-    const { teleportX, teleportY, teleportMap, requireHeld } = obj.properties;
+    const { teleportX, teleportY, teleportMap, requireHeld, requireQuest, requireQuestProgress, requireQuestComplete } = obj.properties;
+
+    // check if player has a held item
     if(requireHeld && !player.hasHeldItem(requireHeld)) return;
+
+    // check if player has a quest (and the corresponding quest progress, if necessary)
+    if(requireQuest) {
+
+      // if the player has permanent completion for it, they can always get through
+      if(!player.hasPermanentCompletionFor(requireQuest)) {
+
+        // but if not, we check if we need a certain quest progress
+        if(requireQuestProgress) {
+          const questData = player.getQuestData({ name: requireQuest });
+          if(!questData || !questData[requireQuestProgress]) return;
+        }
+
+        // then we check if they have the quest
+        if(!player.hasQuest({ name: requireQuest })) return;
+      }
+    }
+
+    // check if player has completed quest
+    if(requireQuestComplete) {
+      if(!player.hasPermanentCompletionFor(requireQuestComplete)) return;
+    }
+
     room.teleport(player, { x: teleportX, y: teleportY, newMap: teleportMap });
     player.sendClientMessage('Your surroundings shift.');
   }
