@@ -9,21 +9,21 @@ ItemLoader.loadAllItems(
     .concat(ItemLoader.OTHER_TYPES)
 ).then(items => {
   const sprites = _(items)
-    .map('sprite')
-    .uniq()
-    .sortBy()
+    .map(({ sprite, name, desc }) => ({ sprite, name, desc, pos: sprite % 32 }))
+    .uniqBy('sprite')
+    .sortBy('sprite')
     .value();
 
-  const sortedSprites = [];
+  const sortedSprites = {};
 
-  const numRows = Math.floor(sprites[sprites.length - 1] / 32);
+  const numRows = Math.floor(sprites[sprites.length - 1].sprite / 32);
 
   for(let i = 0; i <= numRows; i++) {
     sortedSprites[i] = [];
   }
 
   for(let i = 0; i < sprites.length; i++) {
-    sortedSprites[Math.floor(sprites[i] / 32)].push(sprites[i]);
+    sortedSprites[Math.floor(sprites[i].sprite / 32)].push(sprites[i]);
   }
 
   require('fs').writeFileSync('allsprites.json', JSON.stringify(sortedSprites, null, 4));
