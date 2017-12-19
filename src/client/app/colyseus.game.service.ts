@@ -538,7 +538,10 @@ export class ColyseusGameService {
   }
 
   public async buildAction(item, { context, contextSlot, count, containerUUID }, choice) {
-    const cmd = `~${context.substring(0, 1)}t${choice}`;
+    const subContext = context.substring(0, 1);
+    const cmd = `~${subContext}t${choice}`;
+
+    if(subContext === choice) return;
 
     let args = '';
 
