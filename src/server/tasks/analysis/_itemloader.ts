@@ -17,6 +17,10 @@ export class ItemLoader {
     'Ring', 'Robe', 'Sash', 'Shield', 'Tunic'
   ];
 
+  static OTHER_TYPES: string[] = [
+    'Book', 'Bottle', 'Coin', 'Corpse', 'Flower', 'Food', 'Gem', 'Key', 'Rock', 'Scroll', 'Skull', 'Trap', 'Twig'
+  ];
+
   static async loadAllItems(itemClasses: string[] = []) {
     await DB.init();
 
