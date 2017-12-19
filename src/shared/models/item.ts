@@ -230,7 +230,7 @@ export class Item {
 
   descTextFor(player: Character, senseLevel = 0) {
 
-    const starText = Array(Math.max(this.quality - 2, 0)).fill('★').join('');
+    const starText = this.quality - 2 > 0 ? Array(this.quality - 2).fill('★').join('') : '';
 
     let ownedText = '';
     if(this.owner) {
