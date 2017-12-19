@@ -456,7 +456,7 @@ export class AppComponent implements OnInit {
     this.lockWindowPositions = false;
 
     Object.keys(this.windowLocations).forEach((key, index) => {
-      this.windowLocations[key] = { x: index * 20, y: 56 };
+      this.windowLocations[key] = { x: index * 30, y: index * 56 };
     });
   }
 
