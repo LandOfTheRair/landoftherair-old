@@ -101,6 +101,14 @@ export class Encrust {
   value: number;
 }
 
+export enum Quality {
+  POOR = 1,
+  BELOW_AVERAGE = 2,
+  AVERAGE = 3,
+  ABOVE_AVERAGE = 4,
+  PERFECT = 5
+}
+
 export class Item {
   @nonenumerable
   _id: any;
@@ -112,6 +120,7 @@ export class Item {
   itemClass: string;
 
   encrust?: Encrust;
+  quality?: Quality;
 
   uuid?: string;
 
@@ -220,6 +229,9 @@ export class Item {
   }
 
   descTextFor(player: Character, senseLevel = 0) {
+
+    const starText = Array(this.quality || 3).fill('★').join('');
+
     let ownedText = '';
     if(this.owner) {
       if(this.owner === (<any>player).username) ownedText = 'This item belongs to you. ';
@@ -259,7 +271,7 @@ export class Item {
     const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
     const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';
 
-    return `${baseText}${sense1Text}${sense1AfterText}${sense2Text}${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}${conditionText}${ownedText}${appraiseText}`;
+    return `${starText} ${baseText}${sense1Text}${sense1AfterText}${sense2Text}${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}${conditionText}${ownedText}${appraiseText}`;
   }
 
   isRobe() {
