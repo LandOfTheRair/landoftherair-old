@@ -40,9 +40,9 @@
 - name: Antanian Dualwielding Dagger
   desc: "a finely-made dagger with a blue hilt"
   isSackable: true
-  baseDamage: 5
-  minDamage: 1
-  maxDamage: 3
+  baseDamage: 10
+  minDamage: 3
+  maxDamage: 6
   damageRolls: 1
   returnsOnThrow: true
   offhand: true
