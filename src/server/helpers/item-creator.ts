@@ -1,9 +1,9 @@
 
 import { DB } from '../database';
-import { Item } from '../../shared/models/item';
+import { Item, Quality } from '../../shared/models/item';
 import { GameWorld } from '../rooms/GameWorld';
 
-import { random, sampleSize } from 'lodash';
+import { random, sampleSize, sum } from 'lodash';
 
 const randomStats = ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'con', 'cha', 'luk', 'offense', 'defense', 'armorClass'];
 
@@ -13,16 +13,32 @@ export class ItemCreator {
 
     if(potentialItem.randomStats) {
       potentialItem.stats = potentialItem.stats || {};
-      Object.keys(potentialItem.randomStats).forEach(randomStat => {
-        potentialItem.stats[randomStat] = potentialItem.stats[randomStat] || 0;
 
+      const allRandomStats = Object.keys(potentialItem.randomStats);
+
+      const percentileValues = [];
+
+      allRandomStats.forEach(randomStat => {
         const { min, max } = potentialItem.randomStats[randomStat];
         const rolled = random(min, max);
 
-        if(isNaN(rolled) || rolled === 0) return;
+        if(isNaN(rolled)) return;
 
+        potentialItem.stats[randomStat] = potentialItem.stats[randomStat] || 0;
         potentialItem.stats[randomStat] += rolled;
+
+        let percentileRank = +(((rolled) / (max)) / 0.25).toFixed(0);
+        if(percentileRank === 0) percentileRank = 1;
+
+        percentileRank -= 1;
+
+        percentileValues.push(rolled === max ? Quality.PERFECT : percentileRank);
       });
+
+      if(percentileValues.length > 0) {
+        const overallQuality = Math.max(1, Math.floor(sum(percentileValues) / percentileValues.length));
+        potentialItem.quality = overallQuality;
+      }
     }
 
     if(room) {

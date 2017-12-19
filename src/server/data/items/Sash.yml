@@ -71,7 +71,7 @@
     armorClass:
       min: 1
       max: 5
-  sprite: 388
+  sprite: 293
   desc: "a rug fashioned into a sash"
   binds: true
   value: 678
