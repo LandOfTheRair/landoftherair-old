@@ -79,6 +79,7 @@ export class DeepstreamService {
     this.mapName = '';
     if(this.ground) this.ground.discard();
     if(this.npcData) this.npcData.discard();
+    if(this.npcHash) this.npcHash.discard();
     if(this.npcVolatile) this.npcVolatile.discard();
 
     Object.keys(this.currentNPCHash || {}).forEach(npcId => {
