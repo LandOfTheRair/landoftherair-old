@@ -271,7 +271,9 @@ export class Item {
     const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
     const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';
 
-    return `${starText} ${baseText}${sense1Text}${sense1AfterText}${sense2Text}${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}${conditionText}${ownedText}${appraiseText}`;
+    return `${starText} ${baseText}${sense1Text}${sense1AfterText}${sense2Text}
+    ${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}
+    ${conditionText}${ownedText}${appraiseText}`;
   }
 
   isRobe() {
