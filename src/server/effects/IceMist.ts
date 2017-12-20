@@ -31,7 +31,7 @@ export class IceMist extends SpellEffect {
 
       const atkName = refTarget === caster ? 'yourself' : refTarget.name;
 
-      this.magicalAttack(caster, target, {
+      this.magicalAttack(caster, refTarget, {
         skillRef,
         atkMsg: `You engulf ${atkName} in a chilling mist!`,
         defMsg: `${caster.name} engulfed you in a chilling mist!`,

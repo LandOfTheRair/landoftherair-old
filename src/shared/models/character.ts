@@ -1052,7 +1052,10 @@ export class Character {
   }
 
   public isUnableToAct(): boolean {
-    return this.hasEffect('Stunned');
+    const frozen = this.hasEffect('Frosted');
+    const stunned = this.hasEffect('Stunned');
+
+    return get(frozen || {}, 'effectInfo.isFrozen', false) || stunned;
   }
 
   public changeAlignment(align: Alignment) {

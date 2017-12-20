@@ -13,6 +13,7 @@ class EffectInfo {
   damage?: number;
   caster: string;
   isPermanent?: boolean;
+  isFrozen?: boolean;
 }
 
 export class Effect {

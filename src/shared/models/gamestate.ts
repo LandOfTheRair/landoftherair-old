@@ -131,10 +131,12 @@ export class GameState {
   }
 
   tick() {
-    this.playerHash = this.createPlayerHash();
-
     // tick effects for every player and npc
     this.tickAllEffects();
+  }
+
+  resetPlayerHash() {
+    this.playerHash = this.createPlayerHash();
   }
 
   private tickAllEffects() {
@@ -526,6 +528,7 @@ export class GameState {
   }
 
   tickPlayers(): void {
+
     this.players.forEach(p => {
       p.tick();
 
@@ -535,6 +538,8 @@ export class GameState {
         CombatHelper.dealOnesidedDamage(p, { damage: hpLost, damageClass: p.$$swimElement || 'water', damageMessage: 'You are drowning!', suppressIfNegative: true });
       }
     });
+
+    this.resetPlayerHash();
   }
 
   checkIfDenseWall(x: number, y: number): boolean {

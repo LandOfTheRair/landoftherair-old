@@ -12,6 +12,7 @@ import { CharacterHelper } from './character-helper';
 export type DamageType =
   'Physical'
 | 'Fire'
+| 'Ice'
 | 'Water'
 | 'Energy';
 
@@ -502,7 +503,8 @@ export class CombatHelper {
     if(!attacker) return 0;
 
     switch(damageClass) {
-      case 'fire': return attacker.getTraitLevel('ForgedFire');
+      case 'fire':  return attacker.getTraitLevel('ForgedFire');
+      case 'ice':   return attacker.getTraitLevel('FrostedTouch');
     }
 
     return 0;
@@ -512,7 +514,8 @@ export class CombatHelper {
     if(!attacker) return 0;
 
     switch(damageClass) {
-      case 'fire': return 0.1 * attacker.getTraitLevel('ForgedFire');
+      case 'fire':  return 0.1 * attacker.getTraitLevel('ForgedFire');
+      case 'ice':   return 0.1 * attacker.getTraitLevel('FrostedTouch');
     }
 
     return 0;
@@ -521,6 +524,7 @@ export class CombatHelper {
   private static getElementalDebuff(damageClass: DamageType): string[] {
     switch(damageClass.toLowerCase()) {
       case 'fire': return ['BuildupHeat', 'Burning', 'RecentlyBurned'];
+      case 'ice': return ['BuildupChill', 'Frosted', 'RecentlyFrosted'];
     }
 
     return [];
