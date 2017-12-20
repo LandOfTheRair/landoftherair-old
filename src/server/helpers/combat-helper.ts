@@ -301,6 +301,8 @@ export class CombatHelper {
       msg = `${attackerName} punches you!`;
     }
 
+    damage -= defenderScope.armorClass;
+
     damage = this.dealDamage(attacker, defender, {
       damage,
       damageClass: 'physical',
