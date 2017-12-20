@@ -2,6 +2,42 @@
 import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
 import { random, sumBy, maxBy, sample, sampleSize, clamp, size } from 'lodash';
+import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
+
+const checkGroundForItems = (npc: NPC) => {
+  if(npc.rightHand && npc.leftHand) return;
+
+  const ground = npc.$$room.state.getGroundItems(npc.x, npc.y);
+
+  if(npc.$$hadRightHandAtSpawn && !npc.rightHand && (!npc.leftHand || !npc.leftHand.twoHanded)) {
+    WeaponClasses.forEach(itemClass => {
+      if(itemClass === 'Shield') return;
+
+      const items = ground[itemClass];
+      if(!items || !items.length) return;
+
+      items.forEach(item => {
+        if(npc.rightHand || !item.isOwnedBy(npc)) return;
+        npc.setRightHand(item);
+        npc.$$room.removeItemFromGround(item);
+      });
+    });
+  }
+
+  if(!npc.leftHand && (!npc.rightHand || !npc.rightHand.twoHanded)) {
+    ShieldClasses.forEach(itemClass => {
+      const items = ground[itemClass];
+      if(!items || !items.length) return;
+
+      items.forEach(item => {
+        if(npc.leftHand || !item.isOwnedBy(npc)) return;
+        npc.setLeftHand(item);
+        npc.$$room.removeItemFromGround(item);
+      });
+    });
+  }
+
+};
 
 export const tick = (npc: NPC) => {
 
@@ -19,6 +55,10 @@ export const tick = (npc: NPC) => {
   // do movement
   const moveRate = npc.getTotalStat('move');
   const numSteps = random(0, Math.min(moveRate, npc.path ? npc.path.length : moveRate));
+
+  if(random(0, 10) === 0) {
+    checkGroundForItems(npc);
+  }
 
   // we have a target
   if(highestAgro) {
