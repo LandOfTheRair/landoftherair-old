@@ -32,6 +32,7 @@ import { startCase } from 'lodash';
   `],
   template: `
       <div class="status-effect" *ngIf="effect && effect.iconData">
+        <div class="status-remaining" *ngIf="effect.buildupCur > 0">{{ buildupPercent }}%</div>
         <div class="status-remaining" *ngIf="effect.duration > 0">{{ effect.duration }}</div>
         <app-icon [fgColor]="effect.iconData.color"
                   [bgColor]="effect.iconData.bgColor || 'transparent'"
@@ -52,7 +53,11 @@ export class StatusEffectComponent {
   @Input()
   public effect: any;
 
-  get effectName() {
+  get effectName(): number {
     return startCase(this.effect.name);
+  }
+
+  get buildupPercent(): number {
+    return Math.min(100, Math.floor(this.effect.buildupCur / this.effect.buildupMax * 100));
   }
 }
