@@ -8,8 +8,6 @@
   minDamage: 1
   maxDamage: 1
   damageRolls: 1
-  requirements:
-    level: 2
   type: Mace
   value: 200
   sprite: 238

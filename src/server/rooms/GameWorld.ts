@@ -761,6 +761,7 @@ export class GameWorld extends Room<GameState> {
 
     if(!sackOnly && npc.copyDrops && npc.copyDrops.length > 0) {
       const drops = compact(npc.copyDrops.map(({ drop, chance }) => {
+        if(drop === 'rightHand' || drop === 'leftHand') return;
         const item = get(npc, drop);
         if(!item) return null;
         return { result: item.name, chance };
@@ -780,6 +781,8 @@ export class GameWorld extends Room<GameState> {
     const itemPromises: Array<Promise<Item>> = items.map(itemName => ItemCreator.getItemByName(itemName, this));
     const allItems: Item[] = await Promise.all(itemPromises);
 
+    if(npc.rightHand) allItems.push(npc.rightHand);
+    if(npc.leftHand) allItems.push(npc.leftHand);
     return allItems;
   }
 

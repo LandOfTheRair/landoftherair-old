@@ -59,6 +59,7 @@ export class NPC extends Character {
 
   $$lastResponse: string;
   $$following: boolean;
+  $$hadRightHandAtSpawn: boolean;
 
   init() {
     if(!this.uuid) this.uuid = uuid();
@@ -66,6 +67,8 @@ export class NPC extends Character {
     this.initSack();
     this.initBelt();
     this.recalculateStats();
+
+    this.$$hadRightHandAtSpawn = !!this.rightHand;
   }
 
   receiveMessage(player, message) {
