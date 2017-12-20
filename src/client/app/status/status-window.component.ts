@@ -19,4 +19,9 @@ export class StatusWindowComponent {
     if(this.colyseusGame.character.mp.maximum === 0) return 100;
     return this.colyseusGame.character.mp.__current / this.colyseusGame.character.mp.maximum * 100;
   }
+
+  get xpPercent(): number {
+    const neededXp = this.colyseusGame.character.calcLevelXP(this.colyseusGame.character.level + 1);
+    return Math.min(100, this.colyseusGame.character.exp / neededXp * 100);
+  }
 }
