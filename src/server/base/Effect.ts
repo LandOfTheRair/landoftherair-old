@@ -108,3 +108,25 @@ export class SpellEffect extends Effect {
 
   cast(caster: Character, target: Character, skillRef: Skill) {}
 }
+
+export class BuildupEffect extends SpellEffect {
+  public buildupCur = 0;
+  public buildupMax = 10;
+  public buildupDamage = 0;
+  public decayRate = 1;
+
+  effectTick(char: Character) {
+    if(this.buildupCur >= this.buildupMax) {
+      this.buildupProc(char);
+      char.unapplyEffect(this);
+    }
+
+    this.buildupCur -= Math.max(0.1, this.decayRate);
+
+    if(this.buildupCur <= 0) {
+      char.unapplyEffect(this);
+    }
+  }
+
+  buildupProc(char: Character) {}
+}

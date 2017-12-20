@@ -44,5 +44,9 @@ export * from './Revive';
 export * from './Darkness';
 export * from './Light';
 
+export * from './BuildupHeat';
+export * from './Burning';
+export * from './RecentlyBurned';
+
 export * from './RecentlyStunned';
 // Transmute cannot be in here

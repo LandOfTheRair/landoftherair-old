@@ -439,6 +439,8 @@ export class CombatHelper {
       }
     }
 
+    this.doElementalDebuffing(attacker, defender, damageClass, damage);
+
     const absDmg = Math.abs(damage);
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;
 
@@ -494,5 +496,59 @@ export class CombatHelper {
 
     return damage;
 
+  }
+
+  private static elementalBoostValue(attacker: Character, damageClass): number {
+    if(!attacker) return 0;
+
+    switch(damageClass) {
+      case 'fire': return attacker.getTraitLevel('ForgedFire');
+    }
+
+    return 0;
+  }
+
+  private static elementalDecayRateValue(attacker: Character, damageClass): number {
+    if(!attacker) return 0;
+
+    switch(damageClass) {
+      case 'fire': return 0.1 * attacker.getTraitLevel('ForgedFire');
+    }
+
+    return 0;
+  }
+
+  private static getElementalDebuff(damageClass: DamageType): string[] {
+    switch(damageClass.toLowerCase()) {
+      case 'fire': return ['BuildupHeat', 'Burning', 'RecentlyBurned'];
+    }
+
+    return [];
+  }
+
+  private static doElementalDebuffing(attacker: Character, defender: Character, damageClass: DamageType, damage: number) {
+    if(!attacker || damage <= 0) return;
+
+    const [debuff, activeDebuff, recentDebuff] = this.getElementalDebuff(damageClass);
+    if(!debuff) return;
+
+    if(defender.hasEffect(activeDebuff) || defender.hasEffect(recentDebuff)) return;
+
+    let targetEffect = defender.hasEffect(debuff);
+    const bonusIncrease = this.elementalBoostValue(attacker, damageClass);
+    const debuffIncrease = 3 + bonusIncrease;
+
+    if(!targetEffect) {
+      const buildupMax = 10 + defender.level;
+
+      targetEffect = new Effects[debuff]({});
+      targetEffect.buildupMax = buildupMax;
+      targetEffect.buildupCur = bonusIncrease;
+      targetEffect.decayRate -= this.elementalDecayRateValue(attacker, damageClass);
+      targetEffect.cast(defender, defender);
+    }
+
+    targetEffect.buildupCur += debuffIncrease;
+    targetEffect.buildupDamage += damage;
   }
 }
