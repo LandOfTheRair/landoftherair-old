@@ -27,7 +27,6 @@ export * from './MagicMissile';
 
 export * from './Disease';
 export * from './Poison';
-export * from './Stunned';
 
 export * from './BarFire';
 export * from './BarFrost';
@@ -48,5 +47,10 @@ export * from './BuildupHeat';
 export * from './Burning';
 export * from './RecentlyBurned';
 
+export * from './BuildupChill';
+export * from './Frosted';
+export * from './RecentlyFrosted';
+
+export * from './Stunned';
 export * from './RecentlyStunned';
 // Transmute cannot be in here

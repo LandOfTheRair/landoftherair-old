@@ -33,20 +33,20 @@ import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings
 import { Account } from '../../shared/models/account';
 import { DeepstreamCleaner } from '../deepstream-cleaner';
 
-const TICK_TIMER = 1000;
+const TICK_TIMER = 500;
 
 const TickRatesPerTimer = {
-  // tick players every second
-  PlayerAction: 1,
 
-  // npc actions every second-and-a-half
-  NPCAction: 1.5,
+  BuffTick: 2,
+
+  // tick players every second
+  CharacterAction: 2,
 
   // tick spawners every second
-  SpawnerTick: 1,
+  SpawnerTick: 2,
 
   // save players every minute
-  PlayerSave: 60
+  PlayerSave: 120
 };
 
 export class GameWorld extends Room<GameState> {
@@ -421,7 +421,7 @@ export class GameWorld extends Room<GameState> {
 
     this.deepstream = Deepstream(process.env.DEEPSTREAM_URL);
 
-    this.setPatchRate(TICK_TIMER);
+    this.setPatchRate(1000);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
     this.setState(new GameState({
       players: [],
@@ -696,15 +696,13 @@ export class GameWorld extends Room<GameState> {
   private tick() {
     this.ticks++;
 
-    this.state.tick();
-
-    // tick players every second or so
-    if((this.ticks % TickRatesPerTimer.PlayerAction) === 0) {
+    if((this.ticks % TickRatesPerTimer.CharacterAction) === 0) {
       this.state.tickPlayers();
+      this.spawners.forEach(spawner => spawner.npcTick());
     }
 
-    if((this.ticks % TickRatesPerTimer.NPCAction) === 0) {
-      this.spawners.forEach(spawner => spawner.npcTick());
+    if((this.ticks % TickRatesPerTimer.BuffTick) === 0) {
+      this.state.tick();
     }
 
     if((this.ticks % TickRatesPerTimer.SpawnerTick) === 0) {
