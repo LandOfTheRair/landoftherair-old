@@ -6,7 +6,7 @@ import * as Deepstream from 'deepstream.io-client-js';
 export class DeepstreamCleaner {
   static async init() {
     const ds = Deepstream(process.env.DEEPSTREAM_URL);
-    ds.login({ name: 'Cleaner Service', token: process.env.DEEPSTREAM_TOKEN });
+    ds.login({ map: 'Cleaner Service', token: process.env.DEEPSTREAM_TOKEN });
 
     const files = await recurse(`${__dirname}/maps`);
 

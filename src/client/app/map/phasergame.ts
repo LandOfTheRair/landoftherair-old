@@ -191,7 +191,12 @@ export class Game {
       this.bgms[bgm].destroy();
     });
 
+    Object.keys(this.sfxs).forEach(sfx => {
+      this.sfxs[sfx].destroy();
+    });
+
     this.bgms = {};
+    this.sfxs = {};
 
     this.isRenderingTruesight = false;
   }

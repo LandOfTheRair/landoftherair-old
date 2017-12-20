@@ -727,7 +727,7 @@ export class Character {
     this.dir = 'C';
     this.clearEffects();
 
-    this.$$deathTicks = 60 * 3;
+    this.$$deathTicks = 60;
   }
 
   revive() {}

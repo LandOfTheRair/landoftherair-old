@@ -42,8 +42,8 @@ const TickRatesPerTimer = {
   // npc actions every second-and-a-half
   NPCAction: 1.5,
 
-  // tick spawners every 3 seconds
-  SpawnerTick: 3,
+  // tick spawners every second
+  SpawnerTick: 1,
 
   // save players every minute
   PlayerSave: 60

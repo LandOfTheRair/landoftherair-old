@@ -128,9 +128,10 @@
   gear:
     Head: Tutorial Yeti Skull
 
-  drops:
-    - result: Tutorial Yeti Club
+  copyDrops:
+    - drop: 'rightHand'
       chance: -1
 
+  drops:
     - result: Tutorial Yeti Skull
       chance: -1

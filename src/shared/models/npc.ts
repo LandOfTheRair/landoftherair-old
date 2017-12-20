@@ -177,4 +177,14 @@ export class NPC extends Character {
     if(!this.spawnMessage) return;
     this.sendClientMessageToRadius(`You hear ${this.spawnMessage}.`, 8);
   }
+
+  setRightHand(item: Item) {
+    super.setRightHand(item);
+    this.$$room.state.syncNPC(this);
+  }
+
+  setLeftHand(item: Item) {
+    super.setLeftHand(item);
+    this.$$room.state.syncNPC(this);
+  }
 }
