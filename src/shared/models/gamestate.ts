@@ -188,7 +188,7 @@ export class GameState {
     this._mapNPCs.push(npc);
     this.mapNPCs[npc.uuid] = npc;
 
-    if(!this.isDisposing) this.deepstreamRecords.npcData.set(npc.uuid, this.trimNPC(npc));
+    this.syncNPC(npc);
     this.npcExistHash[npc.uuid] = true;
     this.updateNPCExistHash();
     this.updateNPCVolatile(npc);
@@ -202,12 +202,18 @@ export class GameState {
     pull(this._mapNPCs, npc);
     delete this.mapNPCs[npc.uuid];
     delete this.npcExistHash[npc.uuid];
-    this.updateNPCExistHash();
+
+    // for some reason, syncing this breaks _everything_
+    // this.updateNPCExistHash();
 
     if(!this.isDisposing) {
       this.deepstreamRecords.npcData.set(npc.uuid, undefined);
       this.deepstreamRecords.npcVolatile.set(npc.uuid, undefined);
     }
+  }
+
+  syncNPC(npc: NPC) {
+    if(!this.isDisposing) this.deepstreamRecords.npcData.set(npc.uuid, this.trimNPC(npc));
   }
 
   updateNPCVolatile(char: Character): void {

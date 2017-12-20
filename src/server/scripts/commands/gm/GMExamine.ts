@@ -23,7 +23,7 @@ export class GMExamine extends Command {
     const target = possTargets[0];
     if(!target) return false;
 
-    let targetJSON = target.toJSON();
+    let targetJSON = target.toJSON ? target.toJSON() : target;
     if(prop) {
       targetJSON = get(targetJSON, prop);
     }

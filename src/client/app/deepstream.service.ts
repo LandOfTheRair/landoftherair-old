@@ -32,7 +32,7 @@ export class DeepstreamService {
   public allNPCsHash: any = {};
   public ground$ = new BehaviorSubject<any>({});
 
-  constructor(private zone: NgZone) {
+  constructor() {
     this.ds = Deepstream(environment.deepstream.url);
     this.ds.login({}, (success) => {
       this._isConnected = success;
@@ -54,10 +54,8 @@ export class DeepstreamService {
     const newNPCs = difference(newNPCList, currentNPCList);
     const delNPCs = difference(currentNPCList, newNPCList);
 
-    this.zone.runOutsideAngular(() => {
-      newNPCs.forEach(npcId => this.addNPC(npcId));
-      delNPCs.forEach(npcId => this.delNPC(npcId));
-    });
+    newNPCs.forEach(npcId => this.addNPC(npcId));
+    delNPCs.forEach(npcId => this.delNPC(npcId));
 
     this.currentNPCHash = data;
   }
@@ -101,16 +99,17 @@ export class DeepstreamService {
 
     this.npcDataSubs[npcId] = this.npcData.subscribe(npcId, (data) => {
       if(!data) return;
+
       this.allNPCsHash[npcId] = new Character(data);
     }, true);
 
     this.npcVolatileSubs[npcId] = this.npcVolatile.subscribe(npcId, (data) => {
       if(!data) return;
 
-      const { hp, x, y, dir, agro, effects } = data;
-
       const npc = this.allNPCsHash[npcId];
       if(!npc) return;
+
+      const { hp, x, y, dir, agro, effects } = data;
 
       if(!hp) {
         this.delNPC(npcId);
