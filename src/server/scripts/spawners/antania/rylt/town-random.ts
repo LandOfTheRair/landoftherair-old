@@ -2,7 +2,6 @@
 import { Spawner } from '../../../../base/Spawner';
 
 const npcIds = [
-  'Rylt Guard',
   'Rylt Townee'
 ];
 
