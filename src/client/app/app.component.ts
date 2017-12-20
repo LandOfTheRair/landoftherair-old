@@ -206,7 +206,7 @@ export class AppComponent implements OnInit {
 
       if(this.colyseus.game.showBank.bankId) return true;
 
-      if(this.activeWindow === 'cmd') return true;
+      if(this.activeWindow === 'cmd' || this.activeWindow === 'lobby') return true;
 
       return false;
     };
