@@ -12,6 +12,8 @@ export class LockerToPotion extends Command {
   async execute(player: Player, { room, gameState, args }) {
     const [slotId, lockerId] = args.split(' ');
 
+    if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
+
     if(!this.checkPlayerEmptyHand(player)) return;
     if(!this.findLocker(player)) return;
 
