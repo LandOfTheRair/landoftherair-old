@@ -27,6 +27,8 @@
 
 - name: Antanian Returning Dagger
   desc: "a small iron dagger that vibrates strangely"
+  stats:
+    accuracy: 5
   isSackable: true
   baseDamage: 3
   minDamage: 1
@@ -39,6 +41,8 @@
 
 - name: Antanian Dualwielding Dagger
   desc: "a finely-made dagger with a blue hilt"
+  stats:
+    accuracy: 5
   isSackable: true
   baseDamage: 10
   minDamage: 3
