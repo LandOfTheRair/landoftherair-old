@@ -43,7 +43,7 @@ export class DeepstreamService {
     });
 
     this.ds.on('error', e => {
-      console.error('[DEEPSTREAM_ERROR]', e);
+      console.error(e);
     });
   }
 
