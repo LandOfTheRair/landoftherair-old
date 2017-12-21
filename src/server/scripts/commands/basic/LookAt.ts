@@ -1,6 +1,7 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
+import { MessageHelper } from '../../../helpers/message-helper';
 
 export class LookAt extends Command {
 
@@ -19,7 +20,7 @@ export class LookAt extends Command {
   execute(player: Player, { room, args }) {
     if(!args) return false;
 
-    const possTargets = room.getPossibleMessageTargets(player, args);
+    const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
     const target = possTargets[0];
     if(!target) return player.sendClientMessage('You do not see that person.');
 

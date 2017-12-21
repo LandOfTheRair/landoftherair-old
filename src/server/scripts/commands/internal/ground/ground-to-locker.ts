@@ -3,6 +3,7 @@ import { find } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
+import { LockerHelper } from '../../../../helpers/locker-helper';
 
 export class GroundToLocker extends Command {
 
@@ -21,7 +22,7 @@ export class GroundToLocker extends Command {
 
     if(!this.findLocker(player)) return;
 
-    const locker = await room.loadLocker(player, lockerId);
+    const locker = await LockerHelper.loadLocker(player, lockerId);
     if(!locker) return;
 
     if(!this.addItemToContainer(player, locker, item)) return;

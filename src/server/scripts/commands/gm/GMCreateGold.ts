@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { ItemCreator } from '../../../helpers/item-creator';
 
 export class GMCreateGold extends Command {
 
@@ -14,7 +13,7 @@ export class GMCreateGold extends Command {
     const value = +args;
     if(!value) return false;
 
-    const item = await ItemCreator.getGold(value);
+    const item = await player.$$room.itemCreator.getGold(value);
 
     room.addItemToGround(player, item);
   }

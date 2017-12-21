@@ -3,7 +3,6 @@ import { find, isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
-import { ItemCreator } from '../../../../helpers/item-creator';
 
 export class CoinToLeft extends Command {
 
@@ -19,7 +18,7 @@ export class CoinToLeft extends Command {
       player.setRightHand(player.leftHand);
     }
 
-    const item = await ItemCreator.getGold(value);
+    const item = await player.$$room.itemCreator.getGold(value);
 
     player.setLeftHand(item);
     player.loseGold(value);

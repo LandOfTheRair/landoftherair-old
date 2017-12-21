@@ -5,6 +5,7 @@ import { Allegiance, Character, Direction } from './character';
 import { Item } from './item';
 import * as uuid from 'uuid/v4';
 import { CharacterHelper } from '../../server/helpers/character-helper';
+import { DeathHelper } from '../../server/helpers/death-helper';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 
@@ -154,7 +155,7 @@ export class NPC extends Character {
         killer.gainExpFromKills(this.$$room.calcAdjustedXPGain(random(giveXp.min, giveXp.max)));
       }
 
-      this.$$room.calculateLootDrops(this, killer);
+      DeathHelper.calculateLootDrops(this, killer);
     }
   }
 
@@ -164,7 +165,7 @@ export class NPC extends Character {
       this.$$room.removeItemFromGround(this.$$corpseRef);
 
       if(this.$$corpseRef.$heldBy) {
-        this.$$room.corpseCheck(this.$$room.state.findPlayer(this.$$corpseRef.$heldBy));
+        DeathHelper.corpseCheck(this.$$room.state.findPlayer(this.$$corpseRef.$heldBy));
       }
     }
 

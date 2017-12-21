@@ -11,15 +11,20 @@ import { truncate, pick, includes } from 'lodash';
 import { DB } from '../database';
 
 import { JWTHelper } from '../helpers/jwt-helper';
+import { ItemCreator } from '../helpers/item-creator';
 
 export class Lobby extends Room<LobbyState> {
 
   auth0: any;
 
+  private itemCreator: ItemCreator;
+
   onInit(opts) {
 
     this.setPatchRate(250);
     this.autoDispose = false;
+
+    this.itemCreator = new ItemCreator();
 
     this.setState(new LobbyState({ accounts: [], messages: [], motd: '' }));
 
@@ -153,7 +158,7 @@ export class Lobby extends Room<LobbyState> {
       isGM: account.isGM
     });
 
-    await CharacterCreator.giveCharacterBasicGearAndSkills(player);
+    await CharacterCreator.giveCharacterBasicGearAndSkills(player, this.itemCreator);
 
     const savePlayer = player.toSaveObject();
 

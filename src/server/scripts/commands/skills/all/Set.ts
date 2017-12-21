@@ -1,6 +1,7 @@
 
 import { Skill } from '../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../shared/models/character';
+import { TrapHelper } from '../../../../helpers/trap-helper';
 
 export class Set extends Skill {
 
@@ -40,7 +41,7 @@ export class Set extends Skill {
     user.setRightHand(null);
 
     user.gainSkill(SkillClassNames.Thievery, 3);
-    user.$$room.placeTrap(x, y, user, trap);
+    TrapHelper.placeTrap(x, y, user, trap);
     user.sendClientMessage(`You set the ${trap.effect.name} trap.`);
   }
 

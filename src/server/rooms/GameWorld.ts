@@ -1,12 +1,8 @@
 
 import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter, clone, pull } from 'lodash';
 import * as Deepstream from 'deepstream.io-client-js';
-import * as scheduler from 'node-schedule';
 
 import { Parser } from 'mingy';
-
-import { LootRoller, LootFunctions, LootTable } from 'lootastic';
-import { species } from 'fantastical';
 
 import { Room } from 'colyseus';
 import { GameState } from '../../shared/models/gamestate';
@@ -20,9 +16,7 @@ import { NPC } from '../../shared/models/npc';
 import { Logger } from '../logger';
 import { Spawner } from '../base/Spawner';
 
-import * as Classes from '../classes';
-import * as Effects from '../effects';
-import { Allegiance, Character, SkillClassNames } from '../../shared/models/character';
+import { Character } from '../../shared/models/character';
 import { ItemCreator } from '../helpers/item-creator';
 import { Item } from '../../shared/models/item';
 import { Locker } from '../../shared/models/container/locker';
@@ -30,8 +24,14 @@ import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
 import { PartyManager } from '../helpers/party-manager';
 import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings-helper';
-import { Account } from '../../shared/models/account';
 import { DeepstreamCleaner } from '../deepstream-cleaner';
+import { MessageHelper } from '../helpers/message-helper';
+import { NPCLoader } from '../helpers/npc-loader';
+import { AccountHelper } from '../helpers/account-helper';
+import { DeathHelper } from '../helpers/death-helper';
+import { CharacterHelper } from '../helpers/character-helper';
+import { GroundHelper } from '../helpers/ground-helper';
+import { LockerHelper } from '../helpers/locker-helper';
 
 const TICK_TIMER = 500;
 
@@ -74,6 +74,8 @@ export class GameWorld extends Room<GameState> {
 
   private deepstream: any;
 
+  private itemCreator: ItemCreator;
+
   get allSpawners() {
     return this.spawners;
   }
@@ -108,6 +110,89 @@ export class GameWorld extends Room<GameState> {
 
   get mapRespawnPoint() {
     return { map: this.mapName, x: this.state.map.properties.respawnX, y: this.state.map.properties.respawnY };
+  }
+
+  async onInit(opts) {
+    this.allMapNames = opts.allMapNames;
+
+    this.itemCreator = new ItemCreator();
+
+    this.deepstream = Deepstream(process.env.DEEPSTREAM_URL);
+
+    this.setPatchRate(1000);
+    this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
+    this.setState(new GameState({
+      players: [],
+      map: cloneDeep(require(opts.mapPath)),
+      mapName: opts.mapName,
+      deepstream: this.deepstream
+    }));
+
+    this.deepstream.login({ map: this.mapName, token: process.env.DEEPSTREAM_TOKEN });
+
+    const timerData = await this.loadBossTimers();
+    const spawnerTimers = timerData ? timerData.spawners : [];
+
+    this.loadNPCsFromMap();
+    this.loadSpawners(spawnerTimers);
+    this.loadDropTables();
+    this.loadGameSettings();
+
+    this.initGround();
+    this.initPartyManager();
+
+    this.state.tick();
+  }
+
+  onDispose() {
+    this.state.isDisposing = true;
+
+    if(this.itemGC) {
+      this.itemGC.cancel();
+    }
+
+    this.clearTimers.forEach(timer => clearTimeout(timer));
+
+    GroundHelper.saveGround(this);
+    this.saveBossTimers();
+    this.partyManager.stopEmitting();
+
+    DeepstreamCleaner.cleanMap(this.mapName, this.deepstream);
+  }
+
+  async onLeave(client) {
+    const player = this.state.findPlayerByClientId(client.id);
+    if(!player) return;
+
+    delete this.usernameClientHash[player.username];
+
+    this.state.removePlayer(client.id);
+    player.inGame = false;
+
+    // do not leave party if you're teleporting between maps
+    if(!player.$$doNotSave && player.partyName) {
+      this.partyManager.leaveParty(player);
+    }
+
+    DeathHelper.autoReviveAndUncorpse(player);
+
+    await this.leaveGameAndSave(player);
+    this.prePlayerMapLeave(player);
+    this.savePlayer(player);
+  }
+
+  onMessage(client, data) {
+    if(!data.command) return;
+    const player = this.state.findPlayerByClientId(client.id);
+
+    if(!player) return;
+
+    data.gameState = this.state;
+    data.room = this;
+    data.client = client;
+
+    player.manageTraitPointPotentialGain(data.command);
+    CommandExecutor.queueCommand(player, data.command, data);
   }
 
   private async savePlayer(player: Player) {
@@ -202,46 +287,15 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_bank', uuid: npc.uuid, bankId: npc.bankId });
   }
 
-  private async createLockerIfNotExist(player, regionId, lockerName, lockerId) {
-    return DB.$characterLockers.update(
-      { username: player.username, charSlot: player.charSlot, regionId, lockerId },
-      { $setOnInsert: { items: [] }, $set: { lockerName } },
-      { upsert: true }
-    );
-  }
-
-  async loadLocker(player: Player, lockerId): Promise<Locker> {
-    if(player.$$locker) {
-      return await player.$$locker;
-    }
-
-    player.$$locker = DB.$characterLockers.findOne({ username: player.username, charSlot: player.charSlot, regionId: this.mapRegion, lockerId })
-      .then(lock => lock && lock.lockerId ? new Locker(lock) : null);
-
-    return player.$$locker;
+  showLockerWindow(player: Player, lockers, lockerId) {
+    const client = this.findClient(player);
+    this.send(client, { action: 'show_lockers', lockers, lockerId });
   }
 
   updateLocker(player: Player, locker: Locker) {
-    const client = this.findClient(player);
-    this.saveLocker(player, locker);
+    LockerHelper.saveLocker(player, locker);
+    const client = player.$$room.findClient(player);
     this.send(client, { action: 'update_locker', locker });
-  }
-
-  private saveLocker(player: Player, locker: Locker) {
-    return DB.$characterLockers.update(
-      { username: player.username, charSlot: player.charSlot, regionId: locker.regionId, lockerId: locker.lockerId },
-      { $set: { lockerName: locker.lockerName, items: locker.allItems } }
-    );
-  }
-
-  private async openLocker(player: Player, lockerName, lockerId) {
-    const regionId = this.mapRegion;
-
-    await this.createLockerIfNotExist(player, regionId, lockerName, lockerId);
-    const lockers = await DB.$characterLockers.find({ username: player.username, charSlot: player.charSlot, regionId }).toArray();
-
-    const client = this.findClient(player);
-    this.send(client, { action: 'show_lockers', lockers, lockerId });
   }
 
   setPlayerXY(player, x, y) {
@@ -296,21 +350,22 @@ export class GameWorld extends Room<GameState> {
     }
 
     if(item.itemClass !== 'Corpse') {
-      this.setItemExpiry(item);
+      this.itemCreator.setItemExpiry(item, item.owner ? this.decayRateHours * 4 : this.decayRateHours);
     }
+
     item.$heldBy = null;
     this.state.addItemToGround(ref, item);
   }
 
   removeItemFromGround(item) {
-    this.removeItemExpiry(item);
+    this.itemCreator.removeItemExpiry(item);
     this.state.removeItemFromGround(item);
   }
 
   async onJoin(client, options) {
     const { charSlot, username } = options;
 
-    const account = await this.getAccount(username);
+    const account = await AccountHelper.getAccount(username);
     if(!account || account.colyseusId !== client.id) {
       this.send(client, {
         error: 'error_invalid_token',
@@ -333,7 +388,7 @@ export class GameWorld extends Room<GameState> {
     player.$$room = this;
     player.z = player.z || 0;
     player.initServer();
-    this.setUpClassFor(player);
+    CharacterHelper.setUpClassFor(player);
     this.state.addPlayer(player, client.id);
 
     player.inGame = true;
@@ -346,63 +401,15 @@ export class GameWorld extends Room<GameState> {
     this.setPlayerXY(player, player.x, player.y);
   }
 
-  private async getAccount(username): Promise<Account> {
-    return DB.$accounts.findOne({ username })
-      .then(data => {
-        if(data) return new Account(data);
-        return null;
-      });
-  }
-
   private prePlayerMapLeave(player: Player) {
-    this.corpseCheck(player);
-    this.restoreCheck(player);
+    DeathHelper.corpseCheck(player);
+    DeathHelper.autoReviveAndUncorpse(player);
     this.doorCheck(player);
     player.z = 0;
   }
 
   private leaveGameAndSave(player: Player) {
     return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: { inGame: false } });
-  }
-
-  private autoReviveAndUncorpse(player: Player) {
-    if(!player.isDead()) return;
-    player.restore(false);
-  }
-
-  async onLeave(client) {
-    const player = this.state.findPlayerByClientId(client.id);
-    if(!player) return;
-
-    delete this.usernameClientHash[player.username];
-
-    this.state.removePlayer(client.id);
-    player.inGame = false;
-
-    // do not leave party if you're teleporting between maps
-    if(!player.$$doNotSave && player.partyName) {
-      this.partyManager.leaveParty(player);
-    }
-
-    this.autoReviveAndUncorpse(player);
-
-    await this.leaveGameAndSave(player);
-    this.prePlayerMapLeave(player);
-    this.savePlayer(player);
-  }
-
-  onMessage(client, data) {
-    if(!data.command) return;
-    const player = this.state.findPlayerByClientId(client.id);
-
-    if(!player) return;
-
-    data.gameState = this.state;
-    data.room = this;
-    data.client = client;
-
-    player.manageTraitPointPotentialGain(data.command);
-    CommandExecutor.queueCommand(player, data.command, data);
   }
 
   executeCommand(player: Player, command, args: string) {
@@ -416,55 +423,13 @@ export class GameWorld extends Room<GameState> {
     CommandExecutor.executeCommand(player, data.command, data);
   }
 
-  async onInit(opts) {
-    this.allMapNames = opts.allMapNames;
-
-    this.deepstream = Deepstream(process.env.DEEPSTREAM_URL);
-
-    this.setPatchRate(1000);
-    this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
-    this.setState(new GameState({
-      players: [],
-      map: cloneDeep(require(opts.mapPath)),
-      mapName: opts.mapName,
-      deepstream: this.deepstream
-    }));
-
-    this.deepstream.login({ map: this.mapName, token: process.env.DEEPSTREAM_TOKEN });
-
-    const timerData = await this.loadBossTimers();
-    const spawnerTimers = timerData ? timerData.spawners : [];
-
-    this.loadNPCsFromMap();
-    this.loadSpawners(spawnerTimers);
-    this.loadDropTables();
-    this.loadGround();
-    this.watchForItemDecay();
-    this.loadGameSettings();
-
-    this.initPartyManager();
-
-    this.state.tick();
-  }
-
-  onDispose() {
-    this.state.isDisposing = true;
-
-    if(this.itemGC) {
-      this.itemGC.cancel();
-    }
-
-    this.clearTimers.forEach(timer => clearTimeout(timer));
-
-    this.saveGround();
-    this.saveBossTimers();
-    this.partyManager.stopEmitting();
-
-    DeepstreamCleaner.cleanMap(this.mapName, this.deepstream);
-  }
-
   public async loadGameSettings() {
     this.gameSettings = await SettingsHelper.loadSettings(this.mapRegion, this.mapName);
+  }
+
+  private initGround() {
+    GroundHelper.loadGround(this);
+    this.itemGC = GroundHelper.watchForItemDecay(this);
   }
 
   private initPartyManager() {
@@ -495,44 +460,6 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
-  private async loadGround() {
-    let obj = await DB.$mapGroundItems.findOne({ mapName: this.state.mapName });
-    if(!obj) obj = {};
-    const groundItems = obj.groundItems || {};
-
-    this.checkIfAnyItemsAreExpired(groundItems);
-
-    this.state.setGround(groundItems);
-
-    DB.$mapGroundItems.remove({ mapName: this.state.mapName });
-  }
-
-  async saveGround() {
-    DB.$mapGroundItems.update({ mapName: this.state.mapName }, { $set: { groundItems: this.state.serializableGroundItems() } }, { upsert: true });
-  }
-
-  private checkIfAnyItemsAreExpired(groundItems) {
-    Logger.db(`Checking for expired items.`, this.state.mapName);
-
-    Object.keys(groundItems).forEach(x => {
-      Object.keys(groundItems[x]).forEach(y => {
-        Object.keys(groundItems[x][y]).forEach(itemClass => {
-          groundItems[x][y][itemClass] = compact(groundItems[x][y][itemClass].map(i => {
-            const expired = this.hasItemExpired(i);
-
-            if(expired) {
-              const now = Date.now();
-              const delta = Math.floor((now - i.expiresAt) / 1000);
-              Logger.db(`Item ${i.name} has expired @ ${now} (delta: ${delta}sec).`, this.state.mapName, i);
-            }
-
-            return expired ? null : new Item(i);
-          }));
-        });
-      });
-    });
-  }
-
   public createDarkness(startX: number, startY: number, radius: number, durationInMinutes: number): void {
     const darkTimestamp = Date.now();
 
@@ -548,30 +475,6 @@ export class GameWorld extends Room<GameState> {
 
   public removeDarkness(startX: number, startY: number, radius: number) {
     this.state.removeDarkness(startX, startY, radius, 0, true);
-  }
-
-  private watchForItemDecay() {
-    const rule = new scheduler.RecurrenceRule();
-    rule.minute = this.decayChecksMinutes;
-
-    this.itemGC = scheduler.scheduleJob(rule, () => {
-      this.checkIfAnyItemsAreExpired(this.state.groundItems);
-    });
-  }
-
-  private removeItemExpiry(item: Item) {
-    delete item.expiresAt;
-  }
-
-  private setItemExpiry(item: Item) {
-    const expiry = new Date();
-    const hours = item.owner ? this.decayRateHours * 4 : this.decayRateHours;
-    expiry.setHours(expiry.getHours() + hours);
-    item.expiresAt = expiry.getTime();
-  }
-
-  private hasItemExpired(item: Item) {
-    return Date.now() > item.expiresAt;
   }
 
   private async loadDropTables() {
@@ -599,14 +502,14 @@ export class GameWorld extends Room<GameState> {
 
     npcs.forEach(async npcData => {
       const data = npcData.properties || {};
-      data.name = npcData.name || this.determineNPCName(npcData);
+      data.name = npcData.name || NPCLoader.determineNPCName(npcData);
       data.sprite = npcData.gid - this.state.map.tilesets[3].firstgid;
       data.x = npcData.x / 64;
       data.y = (npcData.y / 64) - 1;
       const npc = new NPC(data);
       npc.$$room = this;
 
-      this.setUpClassFor(npc);
+      CharacterHelper.setUpClassFor(npc);
 
       try {
         if(npc.script) {
@@ -622,7 +525,7 @@ export class GameWorld extends Room<GameState> {
         Logger.error(e);
       }
 
-      if(!npc.name) this.determineNPCName(npc);
+      if(!npc.name) NPCLoader.determineNPCName(npc);
 
       normalNPCSpawner.addNPC(npc);
     });
@@ -651,48 +554,6 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
-  private determineNPCName(npc: NPC) {
-    let func = 'human';
-
-    switch(npc.allegiance) {
-      case 'None': func = 'human'; break;
-      case 'Pirates': func = 'dwarf'; break;
-      case 'Townsfolk': func = 'human'; break;
-      case 'Royalty': func = sample(['elf', 'highelf']); break;
-      case 'Adventurers': func = 'human'; break;
-      case 'Wilderness': func = sample(['fairy', 'highfairy']); break;
-      case 'Underground': func = sample(['goblin', 'orc', 'ogre']); break;
-    }
-
-    if(func === 'human') return species[func]({ allowMultipleNames: false });
-    return species[func](sample(['male', 'female']));
-  }
-
-  getPossibleMessageTargets(player: Character, findStr: string) {
-    const allTargets = this.state.allPossibleTargets;
-    const possTargets = allTargets.filter(target => {
-      if(target.isDead()) return;
-
-      const diffX = target.x - player.x;
-      const diffY = target.y - player.y;
-
-      if(!player.canSee(diffX, diffY)) return false;
-      if(!player.canSeeThroughStealthOf(target)) return false;
-
-      return this.doesTargetMatchSearch(target, findStr);
-    });
-
-    return possTargets;
-  }
-
-  public doesTargetMatchSearch(target: Character, findStr: string): boolean {
-    return target.uuid === findStr || startsWith(target.name.toLowerCase(), findStr.toLowerCase());
-  }
-
-  private setUpClassFor(char: Character) {
-    Classes[char.baseClass || 'Undecided'].becomeClass(char);
-  }
-
   private tick() {
     this.ticks++;
 
@@ -719,113 +580,6 @@ export class GameWorld extends Room<GameState> {
 
   }
 
-  private async getAllLoot(npc: NPC, bonus = 0, sackOnly = false): Promise<Item[]> {
-    const tables = [];
-
-    if(this.dropTables.map.length > 0) {
-      tables.push({
-        table: new LootTable(this.dropTables.map, bonus),
-        func: LootFunctions.EachItem,
-        args: 0
-      });
-    }
-
-    if(this.dropTables.region.length > 0) {
-      tables.push({
-        table: new LootTable(this.dropTables.region, bonus),
-        func: LootFunctions.EachItem,
-        args: 0
-      });
-    }
-
-    if(npc.drops && npc.drops.length > 0) {
-      tables.push({
-        table: new LootTable(npc.drops, bonus),
-        func: LootFunctions.EachItem,
-        args: 0
-      });
-    }
-
-    if(npc.dropPool) {
-      const { items, choose } = npc.dropPool;
-      if(choose > 0 && items.length > 0) {
-        tables.push({
-          table: new LootTable(items, bonus),
-          func: LootFunctions.WithoutReplacement,
-          args: choose
-        });
-      }
-    }
-
-    if(!sackOnly && npc.copyDrops && npc.copyDrops.length > 0) {
-      const drops = compact(npc.copyDrops.map(({ drop, chance }) => {
-        if(drop === 'rightHand' || drop === 'leftHand') return;
-        const item = get(npc, drop);
-        if(!item) return null;
-        return { result: item.name, chance };
-      }));
-
-      if(drops.length > 0) {
-        tables.push({
-          table: new LootTable(drops, bonus),
-          func: LootFunctions.EachItem,
-          args: 0
-        });
-      }
-    }
-
-    const items = LootRoller.rollTables(tables);
-
-    const itemPromises: Array<Promise<Item>> = items.map(itemName => ItemCreator.getItemByName(itemName, this));
-    const allItems: Item[] = await Promise.all(itemPromises);
-
-    if(npc.rightHand) allItems.push(npc.rightHand);
-    if(npc.leftHand) allItems.push(npc.leftHand);
-    return allItems;
-  }
-
-  async calculateLootDrops(npc: NPC, killer: Character) {
-    const bonus = killer.getTotalStat('luk');
-
-    if(!killer.isPlayer()) {
-      this.createCorpse(npc, []);
-      return;
-    }
-
-    const allItems = await this.getAllLoot(npc, bonus);
-
-    if(npc.gold) {
-      const adjustedGold = this.calcAdjustedGoldGain(npc.gold);
-      const gold = await ItemCreator.getGold(adjustedGold);
-      allItems.push(gold);
-    }
-
-    this.createCorpse(npc, allItems);
-  }
-
-  public async createCorpse(target: Character, searchItems = [], customSprite = 0): Promise<Item> {
-    const corpse = await ItemCreator.getItemByName('Corpse');
-    corpse.sprite = customSprite || target.sprite + 4;
-    corpse.searchItems = searchItems;
-    corpse.desc = `the corpse of a ${target.name}`;
-    corpse.name = `${target.name} corpse`;
-
-    this.addItemToGround(target, corpse);
-
-    const isPlayer = target.isPlayer();
-    corpse.$$isPlayerCorpse = isPlayer;
-
-    target.$$corpseRef = corpse;
-
-    if(!isPlayer) {
-      corpse.tansFor = (<any>target).tansFor;
-      (<any>corpse).npcUUID = target.uuid;
-      corpse.$$playersHeardDeath = this.state.getPlayersInRange(target, 6).map(x => (<Player>x).username);
-    }
-
-    return corpse;
-  }
-
   dropCorpseItems(corpse: Item, searcher?: Player) {
     if(!corpse || !corpse.searchItems) return;
 
@@ -846,39 +600,10 @@ export class GameWorld extends Room<GameState> {
     if(corpseRef.$heldBy) {
       const player = this.state.findPlayer(corpseRef.$heldBy);
       player.sendClientMessage('The corpse fizzles from your hand.');
-      this.corpseCheck(player, corpseRef);
+      DeathHelper.corpseCheck(player, corpseRef);
     }
 
     this.removeItemFromGround(corpseRef);
-  }
-
-  public corpseCheck(player, specificCorpse?: Item) {
-
-    let item = null;
-
-    if(player.leftHand
-    && player.leftHand.itemClass === 'Corpse'
-    && (!specificCorpse || (specificCorpse && player.leftHand === specificCorpse) )) {
-      item = player.leftHand;
-      player.setLeftHand(null);
-    }
-
-    if(player.rightHand
-    && player.rightHand.itemClass === 'Corpse'
-    && (!specificCorpse || (specificCorpse && player.rightHand === specificCorpse) )) {
-      item = player.rightHand;
-      player.setRightHand(null);
-    }
-
-    if(item) {
-      item.$heldBy = null;
-      this.addItemToGround(player, item);
-    }
-  }
-
-  private restoreCheck(player) {
-    if(!player.isDead()) return;
-    player.restore(false);
   }
 
   private doorCheck(player) {
@@ -886,47 +611,6 @@ export class GameWorld extends Room<GameState> {
     if(interactable && interactable.type === 'Door') {
       player.teleportToRespawnPoint();
     }
-  }
-
-  public castEffectFromTrap(target: Character, obj: any) {
-    if(!obj || !obj.properties || !obj.properties.effect) return;
-
-    target.sendClientMessage('You\'ve triggered a trap!');
-
-    const { effect, caster } = obj.properties;
-    const effectRef = new Effects[effect.name](effect);
-    effectRef.casterRef = caster;
-
-    effectRef.cast(target, target);
-  }
-
-  public placeTrap(x, y, user: Character, trap): boolean {
-
-    const interactable = user.$$room.state.getInteractable(x, y, true, 'Trap');
-    if(interactable) return false;
-
-    const statCopy = user.sumStats;
-
-    const trapInteractable = {
-      x: x * 64,
-      y: (y + 1) * 64,
-      type: 'Trap',
-      properties: {
-        effect: trap.effect,
-        caster: {
-          name: user.name,
-          username: (<any>user).username,
-          casterStats: statCopy
-        },
-        setSkill: user.calcSkillLevel(SkillClassNames.Thievery),
-        setStealth: user.getTotalStat('stealth'),
-        timestamp: Date.now()
-      }
-    };
-
-    user.$$room.state.addInteractable(trapInteractable);
-
-    return true;
   }
 
   public drawEffect(player: Character, center: any, effect: VisualEffect, radius = 0) {
@@ -969,71 +653,6 @@ export class GameWorld extends Room<GameState> {
 
     this.send(client, {
       action: 'update_macros'
-    });
-  }
-
-  public shareExpWithParty(player: Player, exp: number) {
-    const party = player.party;
-
-    const members = party.allMembers;
-
-    if(members.length > 4) {
-      exp = exp * 0.75;
-    }
-
-    if(members.length > 7) {
-      exp = exp * 0.75;
-    }
-
-    exp = Math.floor(exp);
-
-    members.forEach(({ username }) => {
-      if(username === player.username) return;
-
-      const partyMember = this.state.findPlayer(username);
-      if(player.distFrom(partyMember) > 7) return;
-
-        partyMember.gainExp(exp);
-    });
-  }
-
-  public shareSkillWithParty(player: Player, skill: number) {
-    const party = player.party;
-
-    const members = party.allMembers;
-
-    if(members.length > 4) {
-      skill = skill * 0.75;
-    }
-
-    if(members.length > 7) {
-      skill = skill * 0.75;
-    }
-
-    skill = Math.floor(skill);
-
-    members.forEach(({ username }) => {
-      if(username === player.username) return;
-
-      const partyMember = this.state.findPlayer(username);
-      if(player.distFrom(partyMember) > 7) return;
-
-      partyMember.gainSkill(skill);
-    });
-  }
-
-  public shareRepWithParty(player: Player, allegiance: Allegiance, delta: number) {
-    const party = player.party;
-
-    const members = party.allMembers;
-
-    members.forEach(({ username }) => {
-      if(username === player.username) return;
-
-      const partyMember = this.state.findPlayer(username);
-      if(player.distFrom(partyMember) > 7) return;
-
-      partyMember.changeRep(allegiance, delta, true);
     });
   }
 

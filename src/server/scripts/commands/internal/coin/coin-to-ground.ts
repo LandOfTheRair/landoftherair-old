@@ -3,7 +3,6 @@ import { find, isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
-import { ItemCreator } from '../../../../helpers/item-creator';
 
 export class CoinToGround extends Command {
 
@@ -15,7 +14,7 @@ export class CoinToGround extends Command {
     if(value <= 0 || value > player.gold || isNaN(value)) return false;
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
-    const item = await ItemCreator.getGold(value);
+    const item = await player.$$room.itemCreator.getGold(value);
 
     room.addItemToGround(player, item);
     room.showGroundWindow(player);

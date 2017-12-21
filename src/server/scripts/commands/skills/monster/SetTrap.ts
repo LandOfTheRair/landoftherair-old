@@ -3,6 +3,7 @@ import { startsWith, find } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
+import { TrapHelper } from '../../../../helpers/trap-helper';
 
 export class SetTrap extends Skill {
 
@@ -17,7 +18,7 @@ export class SetTrap extends Skill {
 
   use(user: Character, target: Character) {
     const trap = find(user.sack.allItems, { itemClass: 'Trap' });
-    if(user.$$room.placeTrap(user.x, user.y, user, trap)) {
+    if(TrapHelper.placeTrap(user.x, user.y, user, trap)) {
       user.sack.takeItem(trap);
     }
   }

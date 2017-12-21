@@ -15,6 +15,8 @@ import { nonenumerable } from 'nonenumerable';
 import { CharacterHelper } from '../../server/helpers/character-helper';
 
 import { AllTraits } from '../../shared/traits/trait-hash';
+import { DeathHelper } from '../../server/helpers/death-helper';
+import { PartyHelper } from '../../server/helpers/party-helper';
 
 export class Player extends Character {
   @nonenumerable
@@ -198,7 +200,7 @@ export class Player extends Character {
     }
 
     if(this.party) {
-      this.$$room.shareSkillWithParty(this, adjustedSkill);
+      PartyHelper.shareSkillWithParty(this, adjustedSkill);
     }
   }
 
@@ -206,7 +208,7 @@ export class Player extends Character {
     super.gainExpFromKills(xpGain);
 
     if(this.party) {
-      this.$$room.shareExpWithParty(this, xpGain);
+      PartyHelper.shareExpWithParty(this, xpGain);
 
       this.gainPartyExp(xpGain);
     }
@@ -216,7 +218,7 @@ export class Player extends Character {
     super.changeRep(allegiance, delta);
 
     if(!noPartyShare && this.party) {
-      this.$$room.shareRepWithParty(this, allegiance, delta);
+      PartyHelper.shareRepWithParty(this, allegiance, delta);
     }
   }
 
@@ -267,7 +269,7 @@ export class Player extends Character {
 
     this.$$actionQueue = [];
 
-    await this.$$room.createCorpse(this, [], this.getBaseSprite() + 4);
+    await DeathHelper.createCorpse(this, [], this.getBaseSprite() + 4);
 
     const myCon = this.getBaseStat('con');
     const myLuk = this.getTotalStat('luk');

@@ -5,6 +5,7 @@ import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { CombatHelper } from '../../../../helpers/combat-helper';
 import { MoveHelper } from '../../../../helpers/move-helper';
+import { MessageHelper } from '../../../../helpers/message-helper';
 
 export class Charge extends Skill {
 
@@ -47,7 +48,7 @@ export class Charge extends Skill {
     const range = this.range(user);
     if(range === -1) return user.sendClientMessage('You need to have your left hand empty to use that weapon!');
 
-    const possTargets = user.$$room.getPossibleMessageTargets(user, args);
+    const possTargets = MessageHelper.getPossibleMessageTargets(user, args);
     const target = possTargets[0];
     if(!target) return user.sendClientMessage('You do not see that person.');
 

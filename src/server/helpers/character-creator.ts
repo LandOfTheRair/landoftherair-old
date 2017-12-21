@@ -82,7 +82,7 @@ export class CharacterCreator {
     return char;
   }
 
-  public static async giveCharacterBasicGearAndSkills(player: Player) {
+  public static async giveCharacterBasicGearAndSkills(player: Player, itemCreator: ItemCreator) {
     let skill2 = '';
     sampleSize([
       SkillClassNames.OneHanded, SkillClassNames.TwoHanded, SkillClassNames.Shortsword,
@@ -148,8 +148,8 @@ export class CharacterCreator {
       }
     }
 
-    player.gear.Armor = await ItemCreator.getItemByName(body);
-    player.rightHand = await ItemCreator.getItemByName(mainhand);
+    player.gear.Armor = await itemCreator.getItemByName(body);
+    player.rightHand = await itemCreator.getItemByName(mainhand);
     player._gainSkill(skill2, player.calcSkillXP(2));
 
   }

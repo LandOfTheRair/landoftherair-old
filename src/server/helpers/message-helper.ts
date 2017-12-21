@@ -1,5 +1,5 @@
 
-import { isString } from 'lodash';
+import { isString, startsWith } from 'lodash';
 import { Character } from '../../shared/models/character';
 import { VisualEffect } from '../gidmetadata/visual-effects';
 
@@ -34,5 +34,26 @@ export class MessageHelper {
     char.$$room.state.getPlayersInRange(char, drawRadius).forEach(p => {
       p.$$room.drawEffect(p, { x: center.x, y: center.y }, effectName, effectRadius);
     });
+  }
+
+  static getPossibleMessageTargets(player: Character, findStr: string): any[] {
+    const allTargets = player.$$room.state.allPossibleTargets;
+    const possTargets = allTargets.filter(target => {
+      if(target.isDead()) return;
+
+      const diffX = target.x - player.x;
+      const diffY = target.y - player.y;
+
+      if(!player.canSee(diffX, diffY)) return false;
+      if(!player.canSeeThroughStealthOf(target)) return false;
+
+      return this.doesTargetMatchSearch(target, findStr);
+    });
+
+    return possTargets;
+  }
+
+  static doesTargetMatchSearch(target: Character, findStr: string): boolean {
+    return target.uuid === findStr || startsWith(target.name.toLowerCase(), findStr.toLowerCase());
   }
 }

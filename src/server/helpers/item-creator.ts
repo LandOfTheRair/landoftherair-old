@@ -9,7 +9,7 @@ const randomStats = ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'con', 'cha', 'lu
 
 export class ItemCreator {
 
-  private static rollStatsForItem(potentialItem, room?: GameWorld): Item {
+  private rollStatsForItem(potentialItem, room?: GameWorld): Item {
 
     if(potentialItem.randomStats) {
       potentialItem.stats = potentialItem.stats || {};
@@ -55,7 +55,7 @@ export class ItemCreator {
     return potentialItem;
   }
 
-  static async getItemByName(name: string, room?: GameWorld): Promise<Item> {
+  async getItemByName(name: string, room?: GameWorld): Promise<Item> {
 
     const item = await DB.$items.findOne({ name });
 
@@ -63,14 +63,28 @@ export class ItemCreator {
     return this.rollStatsForItem(new Item(item), room);
   }
 
-  static searchItems(name: string): Promise<Item[]> {
+  searchItems(name: string): Promise<Item[]> {
     const regex = new RegExp(`.*${name}.*`, 'i');
     return DB.$items.find({ name: regex }).toArray();
   }
 
-  static async getGold(value: number): Promise<Item> {
+  async getGold(value: number): Promise<Item> {
     const item = await this.getItemByName('Gold Coin');
     item.value = value;
     return item;
+  }
+
+  setItemExpiry(item: Item, hours = 1) {
+    const expiry = new Date();
+    expiry.setHours(expiry.getHours() + hours);
+    item.expiresAt = expiry.getTime();
+  }
+
+  removeItemExpiry(item: Item) {
+    delete item.expiresAt;
+  }
+
+  hasItemExpired(item: Item) {
+    return Date.now() > item.expiresAt;
   }
 }

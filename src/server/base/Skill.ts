@@ -1,9 +1,9 @@
 
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { Command } from './Command';
-import { ItemCreator } from '../helpers/item-creator';
 
 import { isFunction, random } from 'lodash';
+import { MessageHelper } from '../helpers/message-helper';
 
 export abstract class Skill extends Command {
 
@@ -55,7 +55,7 @@ export abstract class Skill extends Command {
     }
 
     if(args) {
-      const possTargets = user.$$room.getPossibleMessageTargets(user, args);
+      const possTargets = MessageHelper.getPossibleMessageTargets(user, args);
       target = possTargets[0];
     }
 
@@ -114,7 +114,7 @@ export abstract class Skill extends Command {
       );
 
       target.gold -= stolenGold;
-      const item = await ItemCreator.getGold(stolenGold);
+      const item = await user.$$room.itemCreator.getGold(stolenGold);
       const handName = this.getEmptyHand(user);
 
       user[`set${handName}`](item);

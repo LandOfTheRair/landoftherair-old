@@ -2,6 +2,7 @@
 import { Character } from '../../shared/models/character';
 import { random } from 'lodash';
 import { Item } from '../../shared/models/item';
+import * as Classes from '../classes';
 
 export class CharacterHelper {
 
@@ -119,5 +120,9 @@ export class CharacterHelper {
         char.restore(true);
       }
     }
+  }
+
+  static setUpClassFor(char: Character) {
+    Classes[char.baseClass || 'Undecided'].becomeClass(char);
   }
 }

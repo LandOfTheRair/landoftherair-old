@@ -4,6 +4,7 @@ import { startsWith } from 'lodash';
 import { Skill } from '../../../base/Skill';
 import { Character } from '../../../../shared/models/character';
 import { MoveHelper } from '../../../helpers/move-helper';
+import { MessageHelper } from '../../../helpers/message-helper';
 
 export class Chase extends Skill {
 
@@ -25,7 +26,7 @@ export class Chase extends Skill {
   execute(user: Character, { args }) {
     if(!args) return false;
 
-    const possTargets = user.$$room.getPossibleMessageTargets(user, args);
+    const possTargets = MessageHelper.getPossibleMessageTargets(user, args);
     const target = possTargets[0];
     if(!target) return user.sendClientMessage('You do not see that person.');
 

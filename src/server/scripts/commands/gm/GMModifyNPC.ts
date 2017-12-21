@@ -2,6 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { merge } from 'lodash';
+import { MessageHelper } from '../../../helpers/message-helper';
 
 export class GMModifyNPC extends Command {
 
@@ -12,7 +13,7 @@ export class GMModifyNPC extends Command {
     if(!player.isGM) return;
 
     const [npcish, props] = args.split(' ', 2);
-    const possTargets = room.getPossibleMessageTargets(player, npcish);
+    const possTargets = MessageHelper.getPossibleMessageTargets(player, npcish);
     if(!possTargets.length) return player.sendClientMessage('You do not see that person.');
 
     const target = possTargets[0];
