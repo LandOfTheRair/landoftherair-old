@@ -42,7 +42,7 @@ export class AssetService {
   }
 
   get effectsUrl(): string {
-    return this.customURLs.effects || `${this.assetUrl}/effects.png`
+    return this.customURLs.effects || `${this.assetUrl}/effects.png`;
   }
 
   get customKeys(): string[] {
