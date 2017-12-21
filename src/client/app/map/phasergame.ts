@@ -5,7 +5,6 @@ import { find, remove, compact, difference, values, includes, forEach } from 'lo
 
 import { ClientGameState } from '../clientgamestate';
 
-import { environment } from '../../environments/environment';
 import { Player } from '../../../shared/models/player';
 import { Sex, Direction, Allegiance } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
@@ -80,7 +79,7 @@ export class Game {
     return this.clientGameState.currentPlayer;
   }
 
-  constructor(private clientGameState: ClientGameState, public colyseus) {
+  constructor(private clientGameState: ClientGameState, private assetService, public colyseus) {
 
     // reset any time inGame is set to true
     this.colyseus.game.inGame$.subscribe(inGame => {
@@ -257,10 +256,6 @@ export class Game {
       oldSprite.destroy();
       delete this.playerSpriteHash[player.username];
     }
-  }
-
-  get assetUrl() {
-    return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets`;
   }
 
   get g(): any {
@@ -661,21 +656,21 @@ export class Game {
 
     this.g.load.tiledmap(cacheKey(this.clientGameState.mapName, 'tiledmap'), null, loadMap, (<any>window).Phaser.Tilemap.TILED_JSON);
 
-    this.g.load.image(cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'), `${this.assetUrl}/terrain.png`, 64, 64);
-    this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Walls'), `${this.assetUrl}/walls.png`, 64, 64);
-    this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Decor'), `${this.assetUrl}/decor.png`, 64, 64);
+    this.g.load.image(cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'), this.assetService.terrainUrl, 64, 64);
+    this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Walls'), this.assetService.wallsUrl, 64, 64);
+    this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Decor'), this.assetService.decorUrl, 64, 64);
 
-    this.g.load.spritesheet('Swimming', `${this.assetUrl}/swimming.png`, 64, 64);
-    this.g.load.spritesheet('Creatures', `${this.assetUrl}/creatures.png`, 64, 64);
-    this.g.load.spritesheet('Items', `${this.assetUrl}/items.png`, 64, 64);
-    this.g.load.spritesheet('Effects', `${this.assetUrl}/effects.png`, 64, 64);
+    this.g.load.spritesheet('Swimming', this.assetService.swimmingUrl, 64, 64);
+    this.g.load.spritesheet('Creatures', this.assetService.creaturesUrl, 64, 64);
+    this.g.load.spritesheet('Items', this.assetService.itemsUrl, 64, 64);
+    this.g.load.spritesheet('Effects', this.assetService.effectsUrl, 64, 64);
 
     bgms.forEach(bgm => {
-      this.g.load.audio(`bgm-${bgm}`, `${this.assetUrl}/bgm/${bgm}.mp3`);
+      this.g.load.audio(`bgm-${bgm}`, `${this.assetService.assetUrl}/bgm/${bgm}.mp3`);
     });
 
     sfxs.forEach(sfx => {
-      this.g.load.audio(`sfx-${sfx}`, `${this.assetUrl}/sfx/${sfx}.mp3`);
+      this.g.load.audio(`sfx-${sfx}`, `${this.assetService.assetUrl}/sfx/${sfx}.mp3`);
     });
 
     this.g.game.renderer.setTexturePriority(['Terrain', 'Walls', 'Decor', 'Creatures', 'Items']);

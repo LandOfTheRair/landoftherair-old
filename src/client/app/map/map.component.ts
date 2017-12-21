@@ -5,6 +5,7 @@ import { Player } from '../../../shared/models/player';
 import { ColyseusService } from '../colyseus.service';
 
 import { HPBox, XPBox } from './floating-box';
+import { AssetService } from '../asset.service';
 
 @Component({
   selector: 'app-map',
@@ -36,7 +37,7 @@ export class MapComponent implements OnInit, OnDestroy {
     return this.clientGameState.currentPlayer;
   }
 
-  constructor(public colyseus: ColyseusService, public zone: NgZone) {}
+  constructor(private assetService: AssetService, public colyseus: ColyseusService, public zone: NgZone) {}
 
   private cleanCanvases() {
     const elements = document.getElementsByTagName('canvas');
@@ -69,7 +70,7 @@ export class MapComponent implements OnInit, OnDestroy {
       // 9x9, tiles are 64x64
       const boxSize = 9 * 64;
 
-      this.game = new Game(this.clientGameState, this.colyseus);
+      this.game = new Game(this.clientGameState, this.assetService, this.colyseus);
 
       const config = {
         width: boxSize, height: boxSize,

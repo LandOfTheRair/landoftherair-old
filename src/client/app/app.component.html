@@ -21,48 +21,51 @@
       </li>
     </ul>
 
-    <ul class="navbar-nav" *ngIf="inGame">
+    <ul class="navbar-nav">
       <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
         <a class="nav-link" href="#" dropdownToggle>Windows</a>
 
         <ul *dropdownMenu class="dropdown-menu">
-          <li>
+          <li *ngIf="inGame">
             <a class="dropdown-item"
                (click)="showStatsWindow = !showStatsWindow; activeWindow = 'stats'">Stats</a>
           </li>
-          <li>
+          <li *ngIf="inGame">
             <a class="dropdown-item"
                (click)="showSkillsWindow = !showSkillsWindow; activeWindow = 'skills'">Skills</a>
           </li>
-          <li>
+          <li *ngIf="inGame">
             <a class="dropdown-item"
                (click)="showCommandLine = !showCommandLine; activeWindow = 'cmd'">Command Line</a>
           </li>
-          <li>
+          <li *ngIf="inGame">
             <a class="dropdown-item"
                (click)="showInventoryBelt = !showInventoryBelt; activeWindow = 'belt'">Belt</a>
           </li>
-          <li>
+          <li *ngIf="inGame">
             <a class="dropdown-item"
                (click)="showInventorySack = !showInventorySack; activeWindow = 'sack'">Sack</a>
           </li>
-          <li>
+          <li *ngIf="inGame">
             <a class="dropdown-item"
                (click)="showEquipment = !showEquipment; activeWindow = 'equipment'">Equipment</a>
           </li>
-          <li>
+          <li *ngIf="inGame">
             <a class="dropdown-item"
                (click)="showParty = !showParty; activeWindow = 'party'">Party</a>
           </li>
-          <li>
+          <li *ngIf="inGame">
             <a class="dropdown-item"
                (click)="showTraits = !showTraits; activeWindow = 'traits'">Traits</a>
           </li>
-          <li class="divider dropdown-divider"></li>
+          <li class="divider dropdown-divider" *ngIf="inGame"></li>
           <li>
             <a class="dropdown-item" (click)="options.show()">Options</a>
           </li>
           <li>
+            <a class="dropdown-item" (click)="debugOptions.show()">Debug Options</a>
+          </li>
+          <li *ngIf="inGame">
             <a class="dropdown-item" (click)="cleanupWindows()">Clean Up Windows</a>
           </li>
         </ul>
@@ -483,8 +486,7 @@
 
 </div>
 
-<div class="modal fade" bsModal #options="bs-modal" tabindex="-1" (onShow)="optionsModalVisible = true"
-     (onHide)="optionsModalVisible = false">
+<div class="modal fade" bsModal #options="bs-modal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -493,7 +495,7 @@
           <span>&times;</span>
         </button>
       </div>
-      <div class="modal-body" *ngIf="optionsModalVisible">
+      <div class="modal-body" *ngIf="options.isShown">
         <div class="row">
           <div class="col text-center"><h4>UI Window Sizes</h4></div>
         </div>
@@ -697,8 +699,7 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #macros="bs-modal" tabindex="-1" (onShow)="showMacroModal()"
-     (onHide)="macroModalVisible = false">
+<div class="modal fade" bsModal #macros="bs-modal" tabindex="-1" (onShow)="showMacroModal()">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -709,7 +710,7 @@
         </button>
       </div>
 
-      <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macroModalVisible">
+      <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macros.isShown">
         <div class="row mb-1 activate-inner-on-hover" *ngFor="let macro of macroService.allMacroNames()">
           <div class="col-2">
             <app-icon [name]="macroService.allMacros[macro].icon"
@@ -740,15 +741,17 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="addMacro()">New Macro</button>
-        <button type="button" class="btn btn-secondary" (click)="macros.hide()">Close</button>
+        <button type="button" class="btn btn-info" (click)="macros.hide(); macroGroups.show()">To Macro Groups</button>
+        <div>
+          <button type="button" class="btn btn-primary" (click)="addMacro()">New Macro</button>
+          <button type="button" class="btn btn-secondary" (click)="macros.hide()">Close</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" bsModal #viewMacro="bs-modal" tabindex="-1" (onShow)="macroEditModalVisible = true"
-     (onHide)="macroEditModalVisible = false">
+<div class="modal fade" bsModal #viewMacro="bs-modal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -759,7 +762,7 @@
         </button>
       </div>
 
-      <div class="modal-body" *ngIf="macroEditModalVisible">
+      <div class="modal-body" *ngIf="viewMacro.isShown">
 
         <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Name</div>
@@ -883,15 +886,17 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" [disabled]="invalidMacro()" (click)="saveMacro()">Save Macro</button>
-        <button type="button" class="btn btn-secondary" (click)="viewMacro.hide()">Close</button>
+        <div></div>
+        <div>
+          <button type="button" class="btn btn-primary" [disabled]="invalidMacro()" (click)="saveMacro()">Save Macro</button>
+          <button type="button" class="btn btn-secondary" (click)="viewMacro.hide()">Close</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" bsModal #macroGroups="bs-modal" tabindex="-1" (onShow)="macroGroupModalVisible = true"
-     (onHide)="macroGroupModalVisible = false">
+<div class="modal fade" bsModal #macroGroups="bs-modal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
@@ -902,7 +907,7 @@
         </button>
       </div>
 
-      <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macroGroupModalVisible">
+      <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macroGroups.isShown">
 
         <div class="row mb-1">
           <h4 class="text-center w-100">Active Macro Groups</h4>
@@ -972,9 +977,45 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="addMacroGroup()">New Macro Group</button>
-          <button type="button" class="btn btn-secondary" (click)="macroGroups.hide()">Close</button>
+          <button type="button" class="btn btn-info" (click)="macroGroups.hide(); macros.show()">To Macros</button>
+          <div>
+            <button type="button" class="btn btn-primary" (click)="addMacroGroup()">New Macro Group</button>
+            <button type="button" class="btn btn-secondary" (click)="macroGroups.hide()">Close</button>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" bsModal #debugOptions="bs-modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">Debug Options</h3>
+        <button type="button" class="close pull-right" (click)="debugOptions.hide()">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body" *ngIf="debugOptions.isShown">
+        <strong>Be careful, modifying these settings can break your game.</strong>
+
+        <div class="row px-3 mt-3" *ngFor="let key of assetService.customKeys">
+          <h6>{{ key }} url</h6>
+          <input type="text"
+                 class="form-control"
+                 [placeholder]="assetService[key + 'Url']"
+                 [(ngModel)]="assetService.customURLs[key]"
+                 (change)="assetService.updateURLs()" />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div></div>
+        <button type="button" class="btn btn-warning" (click)="applyDebug()">Apply</button>
       </div>
     </div>
   </div>
@@ -1006,4 +1047,4 @@
 
 </ng-template>
 
-<img *ngFor="let asset of preloadImageAssets" class="hidden" [src]="'assets/' + asset + '.png'" (load)="imageLoaded()" />
+<img *ngFor="let asset of assetService.preloadAssets" class="hidden" [src]="asset" (load)="imageLoaded()" />
