@@ -20,7 +20,7 @@ export class BuildupChill extends BuildupEffect {
 
   buildupProc(char: Character) {
     const frozen = new Frosted({});
-    frozen.duration = 10;
+    frozen.duration = 15;
     frozen.cast(char, char);
   }
 }
