@@ -39,7 +39,7 @@ const checkGroundForItems = (npc: NPC) => {
 
 };
 
-export const tick = (npc: NPC) => {
+export const tick = (npc: NPC, canMove: boolean) => {
 
   if(npc.isDead()) return;
   if(npc.hostility === 'Never') return;
@@ -87,7 +87,7 @@ export const tick = (npc: NPC) => {
       chosenSkill.use(npc, highestAgro, opts);
 
     // either move towards target
-    } else {
+    } else if(canMove) {
       const oldX = npc.x;
       const oldY = npc.y;
 
@@ -124,7 +124,7 @@ export const tick = (npc: NPC) => {
     }
 
   // we have a path
-  } else if(npc.path && npc.path.length > 0) {
+  } else if(canMove && npc.path && npc.path.length > 0) {
     if(npc.$$pathDisrupted) {
       npc.$$pathDisrupted = false;
       npc.agro = {};
@@ -150,7 +150,7 @@ export const tick = (npc: NPC) => {
     }
 
   // we wander
-  } else {
+  } else if(canMove) {
     const oldX = npc.x;
     const oldY = npc.y;
     const steps = Array(numSteps).fill(null).map(() => ({ x: random(-1, 1), y: random(-1, 1) }));

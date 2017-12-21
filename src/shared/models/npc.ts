@@ -102,7 +102,7 @@ export class NPC extends Character {
     }));
   }
 
-  tick() {
+  tick(canMove?: boolean) {
     super.tick();
 
     if(this.isInCombat) this.combatTicks--;
@@ -110,7 +110,7 @@ export class NPC extends Character {
     if(this.isUnableToAct()) return;
 
     if(this.$$ai && this.$$ai.tick) {
-      this.$$ai.tick.dispatch(this);
+      this.$$ai.tick.dispatch(this, canMove);
     }
   }
 

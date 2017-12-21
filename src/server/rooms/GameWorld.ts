@@ -40,7 +40,7 @@ const TickRatesPerTimer = {
   BuffTick: 2,
 
   // tick players every second
-  CharacterAction: 3,
+  CharacterAction: 2,
 
   // tick spawners every second
   SpawnerTick: 2,
@@ -698,7 +698,7 @@ export class GameWorld extends Room<GameState> {
 
     if((this.ticks % TickRatesPerTimer.CharacterAction) === 0) {
       this.state.tickPlayers();
-      this.spawners.forEach(spawner => spawner.npcTick());
+      this.spawners.forEach(spawner => spawner.npcTick(this.ticks % 4 === 0));
     }
 
     if((this.ticks % TickRatesPerTimer.BuffTick) === 0) {
