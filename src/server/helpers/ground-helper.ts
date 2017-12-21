@@ -44,7 +44,7 @@ export class GroundHelper {
     if(!obj) obj = {};
     const groundItems = obj.groundItems || {};
 
-    GroundHelper.checkIfAnyItemsAreExpired(this);
+    GroundHelper.checkIfAnyItemsAreExpired(room);
 
     room.state.setGround(groundItems);
 
