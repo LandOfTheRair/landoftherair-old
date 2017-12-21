@@ -70,6 +70,7 @@ export class CombatHelper {
     if(throwCheck && get(attacker.leftHand, 'offhand')) {
       opts = opts || {};
       opts.isOffhand = true;
+      opts.throwHand = 'left';
       this.doPhysicalAttack(attacker, defender, opts);
     }
   }
@@ -103,10 +104,10 @@ export class CombatHelper {
     flagSkills[0] = attackerWeapon.type;
     if(attackerWeapon.secondaryType) flagSkills[1] = attackerWeapon.secondaryType;
 
-    attacker.flagSkill(flagSkills);
-
     if(isThrow)    flagSkills[1] = SkillClassNames.Throwing;
     if(isBackstab) flagSkills[1] = SkillClassNames.Thievery;
+
+    attacker.flagSkill(flagSkills);
 
     if(attacker.rightHand && !attackerWeapon.canUseInCombat(attacker)) {
       if(!isThrow || (isThrow && attackerWeapon.returnsOnThrow)) {
@@ -284,13 +285,6 @@ export class CombatHelper {
       damage = Math.floor(damage * reductionFactor);
     }
 
-    let damageType = 'was a successful strike';
-
-    if(attackerScope.damageMin !== attackerScope.damageMax) {
-      if(attackerScope.damageMin === damageMax) damageType = 'was a grazing blow';
-      if(attackerScope.damageMax === damageMax) damageType = 'left a grievous wound';
-    }
-
     let msg = '';
 
     if(attacker.rightHand) {
@@ -301,12 +295,22 @@ export class CombatHelper {
       msg = `${attackerName} punches you!`;
     }
 
-    damage -= defenderScope.armorClass;
+    if(damage > 0) {
+      damage -= defenderScope.armorClass;
+      damage = Math.max(0, damage);
+    }
+
+    let damageType = 'was a successful strike';
+
+    if(attackerScope.damageMin !== attackerScope.damageMax) {
+      if(attackerScope.damageMin === damageMax) damageType = 'was a grazing blow';
+      if(attackerScope.damageMax === damageMax) damageType = 'left a grievous wound';
+    }
 
     damage = this.dealDamage(attacker, defender, {
       damage,
       damageClass: 'physical',
-      attackerDamageMessage: `Your attack ${damageType}!`,
+      attackerDamageMessage: damage > 0 ? `Your attack ${damageType}!` : '',
       defenderDamageMessage: msg
     });
 
