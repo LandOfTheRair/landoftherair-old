@@ -17,7 +17,7 @@ const checkGroundForItems = (npc: NPC) => {
       if(!items || !items.length) return;
 
       items.forEach(item => {
-        if(npc.rightHand || !item || !item.isOwnedBy(npc)) return;
+        if(npc.rightHand || !item.isOwnedBy || !item.isOwnedBy(npc)) return;
         npc.setRightHand(item);
         npc.$$room.removeItemFromGround(item);
       });
@@ -30,7 +30,7 @@ const checkGroundForItems = (npc: NPC) => {
       if(!items || !items.length) return;
 
       items.forEach(item => {
-        if(npc.leftHand || !item || !item.isOwnedBy(npc)) return;
+        if(npc.leftHand || !item.isOwnedBy || !item.isOwnedBy(npc)) return;
         npc.setLeftHand(item);
         npc.$$room.removeItemFromGround(item);
       });
