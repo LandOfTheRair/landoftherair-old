@@ -40,7 +40,7 @@ const TickRatesPerTimer = {
   BuffTick: 2,
 
   // tick players every second
-  CharacterAction: 2,
+  CharacterAction: 3,
 
   // tick spawners every second
   SpawnerTick: 2,
