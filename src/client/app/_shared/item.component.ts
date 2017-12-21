@@ -1,12 +1,12 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 
-import { environment } from '../../environments/environment';
 import { Item, WeaponClasses } from '../../../shared/models/item';
 import { Player } from '../../../shared/models/player';
 
 import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
+import { AssetService } from '../asset.service';
 
 export type MenuContext = 'Sack' | 'Belt' | 'Ground'
                         | 'GroundGroup' | 'Equipment' | 'Left'
@@ -216,9 +216,10 @@ export class ItemComponent implements OnInit {
 
   get imgUrl() {
     if(this.item.itemClass === 'Corpse') {
-      return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets/creatures.png`;
+      return this.assetService.creaturesUrl;
     }
-    return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets/items.png`;
+
+    return this.assetService.itemsUrl;
   }
 
   get glowColor() {
@@ -247,7 +248,7 @@ export class ItemComponent implements OnInit {
     return item.descTextFor(this.player);
   }
 
-  constructor(private colyseusGame: ColyseusGameService) {}
+  constructor(private colyseusGame: ColyseusGameService, private assetService: AssetService) {}
 
   ngOnInit() {
     this.item = new Item(this.item);

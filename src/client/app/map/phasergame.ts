@@ -640,6 +640,7 @@ export class Game {
 
   preload() {
     this.g.lockRender = false;
+    this.g.load.crossOrigin = 'anonymous';
 
     this.setupPhaser();
 
