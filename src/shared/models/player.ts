@@ -89,6 +89,8 @@ export class Player extends Character {
   private partyPoints: number;
   private partyExp: RestrictedNumber;
 
+  private lastDeathLocation: any;
+
   get party(): Party {
     return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
   }
@@ -252,6 +254,8 @@ export class Player extends Character {
 
   async die(killer) {
     super.die(killer);
+
+    this.lastDeathLocation = { x: this.x, y: this.y };
 
     // 5 minutes to restore
     this.$$deathTicks = 60 * 5;
