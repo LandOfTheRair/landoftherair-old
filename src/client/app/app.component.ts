@@ -187,7 +187,7 @@ export class AppComponent implements OnInit {
     public colyseus: ColyseusService,
     public macroService: MacroService,
     public authService: AuthService,
-    private assetService: AssetService,
+    public assetService: AssetService,
     private localStorage: LocalStorageService,
     private renderer: Renderer2
   ) {
