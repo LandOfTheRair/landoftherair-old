@@ -5,6 +5,7 @@ import { find, isUndefined } from 'lodash';
 
 import * as Pathfinder from 'pathfinding';
 import { TrapHelper } from './trap-helper';
+import { LockerHelper } from './locker-helper';
 
 export class MoveHelper {
 
@@ -185,7 +186,7 @@ export class MoveHelper {
 
   private static handleLocker(room, player, obj) {
     const { lockerId } = obj.properties;
-    room.openLocker(player, obj.name, lockerId);
+    LockerHelper.openLocker(player, obj.name, lockerId);
   }
 
   private static handleTrap(room, player, obj) {
