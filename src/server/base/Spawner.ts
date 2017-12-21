@@ -291,16 +291,16 @@ export class Spawner {
     }
   }
 
-  npcTick() {
+  npcTick(canMove: boolean) {
     this.npcs.forEach(npc => {
       if(npc.hostility === 'Never') {
-        npc.tick();
+        npc.tick(canMove);
         return;
       }
 
       if(this.$$isStayingSlow) return;
 
-      npc.tick();
+      npc.tick(canMove);
       npc.$$room.state.calculateFOV(npc);
     });
   }
