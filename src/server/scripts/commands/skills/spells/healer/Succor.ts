@@ -3,7 +3,6 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { ItemCreator } from '../../../../../helpers/item-creator';
 import { Player } from '../../../../../../shared/models/player';
 
 export class Succor extends Skill {
@@ -43,7 +42,7 @@ export class Succor extends Skill {
 
     user.sendClientMessage('You channel your memories of this place into a ball of magical energy.');
 
-    const succor = await ItemCreator.getItemByName('Succor Blob');
+    const succor = await user.$$room.itemCreator.getItemByName('Succor Blob');
 
     const succorRegion = user.$$room.state.getSuccorRegion(<Player>user);
 

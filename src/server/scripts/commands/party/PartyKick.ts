@@ -2,6 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { find, includes } from 'lodash';
+import { MessageHelper } from '../../../helpers/message-helper';
 
 export class PartyKick extends Command {
 
@@ -15,7 +16,7 @@ export class PartyKick extends Command {
 
     if(!party.isLeader(player.username)) return player.sendClientMessage('You aren\'t the party leader!');
 
-    const possTargets = player.$$room.getPossibleMessageTargets(player, args);
+    const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
     const target = possTargets[0];
     if(!target) return player.sendClientMessage('You do not see that person.');
 

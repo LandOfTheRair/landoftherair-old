@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { ItemCreator } from '../../../helpers/item-creator';
 
 export class GMCreateItem extends Command {
 
@@ -16,7 +15,7 @@ export class GMCreateItem extends Command {
 
     let item;
     try {
-      item = await ItemCreator.getItemByName(itemName, player.$$room);
+      item = await player.$$room.itemCreator.getItemByName(itemName, player.$$room);
     } catch(e) {
       player.sendClientMessage(`Warning: item "${itemName}" does not exist.`);
       return;

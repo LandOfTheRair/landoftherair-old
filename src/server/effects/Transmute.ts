@@ -2,7 +2,6 @@
 import { SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { Skill } from '../base/Skill';
-import { ItemCreator } from '../helpers/item-creator';
 
 export class Transmute extends SpellEffect {
 
@@ -44,7 +43,7 @@ export class Transmute extends SpellEffect {
 
     caster.sendClientMessageToRadius('You hear metal coins clinking together.', 4);
 
-    const gold = await ItemCreator.getGold(Math.floor(runningTotal));
+    const gold = await caster.$$room.itemCreator.getGold(Math.floor(runningTotal));
     caster.$$room.addItemToGround(caster, gold);
   }
 }

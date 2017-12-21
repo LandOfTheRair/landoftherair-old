@@ -4,6 +4,7 @@ import { MapLayer } from '../../shared/models/maplayer';
 import { find, isUndefined } from 'lodash';
 
 import * as Pathfinder from 'pathfinding';
+import { TrapHelper } from './trap-helper';
 
 export class MoveHelper {
 
@@ -190,6 +191,6 @@ export class MoveHelper {
   private static handleTrap(room, player, obj) {
     room.state.removeInteractable(obj);
     player.sendClientMessage('You\'ve triggered a trap!');
-    room.castEffectFromTrap(player, obj);
+    TrapHelper.castEffectFromTrap(player, obj);
   }
 }

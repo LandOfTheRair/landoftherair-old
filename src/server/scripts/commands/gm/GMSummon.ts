@@ -2,6 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { ItemCreator } from '../../../helpers/item-creator';
+import { MessageHelper } from '../../../helpers/message-helper';
 
 export class GMSummon extends Command {
 
@@ -15,7 +16,7 @@ export class GMSummon extends Command {
     if(!playerName) return false;
 
     room.state.players.forEach(checkTarget => {
-      if(!room.doesTargetMatchSearch(checkTarget, args)) return;
+      if(!MessageHelper.doesTargetMatchSearch(checkTarget, args)) return;
       room.setPlayerXY(checkTarget, player.x, player.y);
       checkTarget.z = player.z;
     });

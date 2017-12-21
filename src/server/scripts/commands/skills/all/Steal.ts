@@ -3,6 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
+import { MessageHelper } from '../../../../helpers/message-helper';
 
 export class Steal extends Skill {
 
@@ -27,7 +28,7 @@ export class Steal extends Skill {
 
     if(!this.checkPlayerEmptyHand(user)) return;
 
-    const possTargets = user.$$room.getPossibleMessageTargets(user, args);
+    const possTargets = MessageHelper.getPossibleMessageTargets(user, args);
     const target = possTargets[0];
     if(!target) return user.sendClientMessage('You do not see that person.');
 

@@ -23,6 +23,7 @@ import { MoveHelper } from '../../server/helpers/move-helper';
 import { nonenumerable } from 'nonenumerable';
 import { CharacterHelper } from '../../server/helpers/character-helper';
 import { MessageHelper } from '../../server/helpers/message-helper';
+import { TrapHelper } from '../../server/helpers/trap-helper';
 
 export type Allegiance =
   'None'
@@ -682,7 +683,7 @@ export class Character {
     const potentialTrap = this.$$room.state.getInteractable(this.x, this.y, true, 'Trap');
     if(potentialTrap && potentialTrap.properties && potentialTrap.properties.effect) {
       this.$$room.state.removeInteractable(potentialTrap);
-      this.$$room.castEffectFromTrap(this, potentialTrap);
+      TrapHelper.castEffectFromTrap(this, potentialTrap);
     }
 
     // player only

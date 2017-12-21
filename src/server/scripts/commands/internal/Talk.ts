@@ -3,6 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
+import { MessageHelper } from '../../../helpers/message-helper';
 
 export class Talk extends Command {
 
@@ -22,7 +23,7 @@ export class Talk extends Command {
       findStr = findStr.split(' ')[1].trim();
     }
 
-    const possTargets = room.getPossibleMessageTargets(player, findStr);
+    const possTargets = MessageHelper.getPossibleMessageTargets(player, findStr);
     const target = possTargets[0];
     if(!target) return player.sendClientMessage('You do not see that person.');
 

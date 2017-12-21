@@ -3,6 +3,7 @@ import { find, isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
+import { LockerHelper } from '../../../../helpers/locker-helper';
 
 export class LockerToPotion extends Command {
 
@@ -17,7 +18,7 @@ export class LockerToPotion extends Command {
     if(!this.checkPlayerEmptyHand(player)) return;
     if(!this.findLocker(player)) return;
 
-    const locker = await room.loadLocker(player, lockerId);
+    const locker = await LockerHelper.loadLocker(player, lockerId);
     if(!locker) return false;
 
     const item = locker.getItemFromSlot(+slotId);

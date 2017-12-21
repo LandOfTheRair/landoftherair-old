@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { ItemCreator } from '../../../helpers/item-creator';
 
 export class GMSearchItems extends Command {
 
@@ -16,7 +15,7 @@ export class GMSearchItems extends Command {
 
     let items;
     try {
-      items = await ItemCreator.searchItems(itemName);
+      items = await player.$$room.itemCreator.searchItems(itemName);
     } catch(e) {
       return;
     }

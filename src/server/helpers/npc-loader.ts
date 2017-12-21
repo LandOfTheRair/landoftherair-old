@@ -1,5 +1,6 @@
 
-import { capitalize, isString } from 'lodash';
+import { species } from 'fantastical';
+import { capitalize, isString, sample } from 'lodash';
 
 import { ItemCreator } from './item-creator';
 import { NPC } from '../../shared/models/npc';
@@ -9,6 +10,8 @@ import { Player } from '../../shared/models/player';
 import * as Effects from '../effects';
 
 export class NPCLoader {
+
+  static itemCreator = new ItemCreator();
 
   static searchNPCs(name: string): Promise<NPC[]> {
     const regex = new RegExp(`.*${name}.*`, 'i');
@@ -22,8 +25,25 @@ export class NPCLoader {
     });
   }
 
+  static determineNPCName(npc: NPC) {
+    let func = 'human';
+
+    switch(npc.allegiance) {
+      case 'None': func = 'human'; break;
+      case 'Pirates': func = 'dwarf'; break;
+      case 'Townsfolk': func = 'human'; break;
+      case 'Royalty': func = sample(['elf', 'highelf']); break;
+      case 'Adventurers': func = 'human'; break;
+      case 'Wilderness': func = sample(['fairy', 'highfairy']); break;
+      case 'Underground': func = sample(['goblin', 'orc', 'ogre']); break;
+    }
+
+    if(func === 'human') return species[func]({ allowMultipleNames: false });
+    return species[func](sample(['male', 'female']));
+  }
+
   static loadItem(item) {
-    return ItemCreator.getItemByName(item);
+    return this.itemCreator.getItemByName(item);
   }
 
   private static async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>) {

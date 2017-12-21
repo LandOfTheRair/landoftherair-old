@@ -2,6 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { get } from 'lodash';
+import { MessageHelper } from '../../../helpers/message-helper';
 
 export class GMExamine extends Command {
 
@@ -17,7 +18,7 @@ export class GMExamine extends Command {
     }
 
     const [npcish, prop] = args.split(' ');
-    const possTargets = room.getPossibleMessageTargets(player, npcish);
+    const possTargets = MessageHelper.getPossibleMessageTargets(player, npcish);
     if(!possTargets.length) return player.sendClientMessage('You do not see that person.');
 
     const target = possTargets[0];
