@@ -25,7 +25,6 @@ import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 import { PartyManager } from '../helpers/party-manager';
 import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings-helper';
 import { DeepstreamCleaner } from '../deepstream-cleaner';
-import { MessageHelper } from '../helpers/message-helper';
 import { NPCLoader } from '../helpers/npc-loader';
 import { AccountHelper } from '../helpers/account-helper';
 import { DeathHelper } from '../helpers/death-helper';
@@ -290,6 +289,10 @@ export class GameWorld extends Room<GameState> {
   showLockerWindow(player: Player, lockers, lockerId) {
     const client = this.findClient(player);
     this.send(client, { action: 'show_lockers', lockers, lockerId });
+  }
+
+  openLocker(player: Player, lockerName, lockerId) {
+    LockerHelper.openLocker(player, lockerName, lockerId);
   }
 
   updateLocker(player: Player, locker: Locker) {

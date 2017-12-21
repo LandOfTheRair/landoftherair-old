@@ -186,7 +186,7 @@ export class MoveHelper {
 
   private static handleLocker(room, player, obj) {
     const { lockerId } = obj.properties;
-    LockerHelper.openLocker(player, obj.name, lockerId);
+    room.openLocker(player, obj.name, lockerId);
   }
 
   private static handleTrap(room, player, obj) {
