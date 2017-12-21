@@ -13,7 +13,7 @@ export class LockerHelper {
     );
   }
 
-  private static async openLocker(player: Player, lockerName, lockerId) {
+  static async openLocker(player: Player, lockerName, lockerId) {
     const regionId = player.$$room.mapRegion;
 
     await this.createLockerIfNotExist(player, regionId, lockerName, lockerId);
