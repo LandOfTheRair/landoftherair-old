@@ -9,6 +9,7 @@ import * as macicons from '../macicons/macicons.json';
 
 import { includes, isNull, cloneDeep } from 'lodash';
 import { AuthService } from './auth.service';
+import { AssetService } from './asset.service';
 
 type Size = 'normal' | 'small' | 'xsmall';
 type XSizeMax = 'max' | 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
@@ -34,6 +35,9 @@ export class AppComponent implements OnInit {
   @ViewChild('macros')
   public macrosModal;
 
+  @ViewChild('debugOptions')
+  public debugOptionsModal;
+
   // general utility w/ macros
   public macroArray = Array(10).fill(null).map((x, i) => i);
 
@@ -49,11 +53,6 @@ export class AppComponent implements OnInit {
   public currentMacrosInPage = [];
   public currentMacroGroupForEditor: string;
   public currentMacroIdxForEditor: number;
-
-  public optionsModalVisible = false;
-  public macroModalVisible = false;
-  public macroEditModalVisible = false;
-  public macroGroupModalVisible = false;
 
   @LocalStorage()
   public activeWindow: string;
@@ -174,17 +173,13 @@ export class AppComponent implements OnInit {
     return this.colyseus.game.inGame;
   }
 
-  get preloadImageAssets(): string[] {
-    return ['decor', 'walls', 'items', 'creatures', 'swimming', 'terrain',  'effects'];
-  }
-
   private imagesLoaded = 0;
 
   get resourcesLoaded() {
     return {
-      done: this.imagesLoaded >= this.preloadImageAssets.length,
+      done: this.imagesLoaded >= this.assetService.preloadAssets.length,
       current: this.imagesLoaded,
-      total: this.preloadImageAssets.length
+      total: this.assetService.preloadAssets.length
     };
   }
 
@@ -192,6 +187,7 @@ export class AppComponent implements OnInit {
     public colyseus: ColyseusService,
     public macroService: MacroService,
     public authService: AuthService,
+    private assetService: AssetService,
     private localStorage: LocalStorageService,
     private renderer: Renderer2
   ) {
@@ -392,7 +388,6 @@ export class AppComponent implements OnInit {
   }
 
   showMacroModal() {
-    this.macroModalVisible = true;
     this.macroService.resetUsableMacros();
   }
 
@@ -466,5 +461,9 @@ export class AppComponent implements OnInit {
     if(win === 'lobby') {
       this.newMessages = 0;
     }
+  }
+
+  applyDebug() {
+    location.reload();
   }
 }

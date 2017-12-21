@@ -58,6 +58,7 @@ import { MacroComponent } from './macro/macro.component';
 import { ActiveTargetComponent } from './active-target/active-target.component';
 import { PartyComponent } from './party/party.component';
 import { TraitsComponent } from './traits/traits.component';
+import { AssetService } from './asset.service';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -124,7 +125,8 @@ import { TraitsComponent } from './traits/traits.component';
     ColyseusLobbyService,
     ColyseusGameService,
     DeepstreamService,
-    MacroService
+    MacroService,
+    AssetService
   ],
   bootstrap: [AppComponent]
 })
