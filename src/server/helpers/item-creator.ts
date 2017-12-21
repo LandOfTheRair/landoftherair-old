@@ -28,7 +28,7 @@ export class ItemCreator {
         potentialItem.stats[randomStat] += rolled;
 
         let percentileRank = +(((rolled) / (max)) / 0.25).toFixed(0);
-        if(percentileRank === 0) percentileRank = 1;
+        if(percentileRank <= 0) percentileRank = 1;
 
         percentileRank -= 1;
 
