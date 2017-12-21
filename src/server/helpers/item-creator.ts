@@ -29,7 +29,7 @@ export class ItemCreator {
 
         let percentileRank = +(((rolled) / (max)) / 0.25).toFixed(0);
         if(percentileRank <= 0) percentileRank = 1;
-        
+
         percentileValues.push(rolled === max ? Quality.PERFECT : percentileRank);
       });
 
