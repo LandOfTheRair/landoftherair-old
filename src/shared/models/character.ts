@@ -537,6 +537,11 @@ export class Character {
       if(item.requirements.level && this.level < item.requirements.level) return false;
       if(item.requirements.profession && !includes(item.requirements.profession, this.baseClass)) return false;
       if(item.requirements.alignment && this.alignment !== item.requirements.alignment) return false;
+      if(item.requirements.skill) {
+        const { name, level } = item.requirements.skill;
+        const myLevel = this.calcSkillLevel(name);
+        if(myLevel < level) return false;
+      }
     }
 
     return true;

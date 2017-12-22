@@ -1,5 +1,5 @@
 
-import { reject, difference } from 'lodash';
+import { reject, difference, values } from 'lodash';
 
 import { SkillClassNames, Stats } from '../../shared/models/character';
 import * as Classes from '../classes';
@@ -19,6 +19,8 @@ import { includes, flatten, isUndefined, capitalize } from 'lodash';
 import {
   Item, ValidItemTypes, WeaponClasses, ArmorClasses
 } from '../../shared/models/item';
+
+const ValidSkillNames = values(SkillClassNames);
 
 class ItemLoader {
 
@@ -152,6 +154,19 @@ class ItemLoader {
       const invalidClasses = reject(item.requirements.profession, testClass => Classes[testClass]);
       if(invalidClasses.length > 0) {
         console.error(`ERROR: ${item.name} has invalid class requirements: ${invalidClasses.join(', ')}`);
+        hasBad = true;
+      }
+    }
+
+    if(item.requirements && item.requirements.skill) {
+      const { name, level } = item.requirements.skill;
+      if(!name || !level || level < 0) {
+        console.error(`ERROR: ${item.name} needs a name and a level for requirements`);
+        hasBad = true;
+      }
+
+      if(!includes(ValidSkillNames, name)) {
+        console.error(`ERROR: ${item.name} has an invalid skill type ${name}`);
         hasBad = true;
       }
     }

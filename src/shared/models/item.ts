@@ -92,6 +92,7 @@ export class ItemRequirements {
   level?: number;
   profession?: string[];
   alignment?: Alignment;
+  skill?: { name: string, level: number };
 }
 
 export class Encrust {
@@ -268,11 +269,13 @@ export class Item {
 
     const alignmentText = this.requirements && this.requirements.alignment ? `This item is ${this.requirements.alignment}. ` : '';
 
+    const skillText = this.requirements && this.requirements.skill ? `This item requires ${this.requirements.skill.name} level ${this.requirements.skill.level}. ` : '';
+
     const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
     const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';
 
     return `${starText} ${baseText}${sense1Text}${sense1AfterText}${sense2Text}
-    ${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}
+    ${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}${skillText}
     ${conditionText}${ownedText}${appraiseText}`;
   }
 
@@ -292,14 +295,16 @@ export class Item {
     const baseCondition = this.isOwnedBy(char) && this.hasCondition();
     if(!this.requirements) return baseCondition;
 
-    let { level, profession, alignment } = this.requirements;
+    let { level, profession, alignment, skill } = this.requirements;
     if(!level) level = 0;
     if(!profession) profession = [char.baseClass];
     if(!alignment) alignment = char.alignment;
+    if(!skill) skill = { name: 'Martial', level: -1 };
 
     return baseCondition
         && level < char.level
         && alignment === char.alignment
+        && char.calcSkillLevel(skill.name) >= skill.level
         && includes(profession, char.baseClass);
   }
 
