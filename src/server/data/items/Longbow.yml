@@ -20,6 +20,10 @@
     potency: 10
     chance: 5
 
+  trait:
+    name: NecroticFocus
+    level: 1
+
   desc: "a crystal longbow, glowing with dark magic"
   baseDamage: 15
   minDamage: 5

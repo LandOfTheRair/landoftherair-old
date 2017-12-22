@@ -26,6 +26,9 @@
   stats:
     accuracy: 5
     offense: 2
+  trait:
+    name: SwordTricks
+    level: 1
   baseDamage: 15
   minDamage: 1
   maxDamage: 2

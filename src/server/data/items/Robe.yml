@@ -36,6 +36,9 @@
     energyResist: 20
     necroticResist: 20
     mpregen: 5
+  trait:
+    name: MagicFocus
+    level: 1
   binds: true
   tellsBind: true
   desc: "a red robe with a shimmering gold trim engraved with the markings of a shaman"
