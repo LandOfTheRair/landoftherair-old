@@ -387,14 +387,14 @@ export class Character {
     this.recalculateStats();
   }
 
+  canGetBonusFromItemInHand = (item) => {
+    return this.checkCanEquipWithoutGearCheck(item) && includes(GivesBonusInHandItemClasses, item.itemClass);
+  }
+
   recalculateStats() {
     this.totalStats = {};
 
     const allGear = compact(values(this.gear));
-
-    const canGetBonusFromItemInHand = (item) => {
-      return this.checkCanEquipWithoutGearCheck(item) && includes(GivesBonusInHandItemClasses, item.itemClass);
-    };
 
     Object.keys(this.stats).forEach(stat => {
       this.totalStats[stat] = this.stats[stat];
@@ -427,8 +427,8 @@ export class Character {
       addStatsForItem(item);
     });
 
-    if(this.leftHand && this.leftHand.stats && canGetBonusFromItemInHand(this.leftHand))    addStatsForItem(this.leftHand);
-    if(this.rightHand && this.rightHand.stats && canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
+    if(this.leftHand && this.leftHand.stats && this.canGetBonusFromItemInHand(this.leftHand))    addStatsForItem(this.leftHand);
+    if(this.rightHand && this.rightHand.stats && this.canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
 
     this.adjustStatsForTraits();
     this.adjustStatsForPartyAbilities();

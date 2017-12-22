@@ -575,7 +575,10 @@ export class Player extends Character {
   }
 
   private get traitableGear(): Item[] {
-    return compact([this.leftHand, this.rightHand].concat(values(this.gear)));
+    const baseValue = values(this.gear);
+    if(this.canGetBonusFromItemInHand(this.leftHand)) baseValue.push(this.leftHand);
+    if(this.canGetBonusFromItemInHand(this.rightHand)) baseValue.push(this.rightHand);
+    return compact(baseValue);
   }
 
   public getBaseTraitLevel(trait: string): number {
