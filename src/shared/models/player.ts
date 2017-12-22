@@ -4,7 +4,7 @@ import * as RestrictedNumber from 'restricted-number';
 import { Character, MaxSizes, AllNormalGearSlots, Allegiance } from './character';
 import { Item } from './item';
 
-import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith, extend, values } from 'lodash';
+import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith, extend, values, isUndefined } from 'lodash';
 import { Party } from './party';
 import { Quest } from '../../server/base/Quest';
 
@@ -14,9 +14,10 @@ import { Dead } from '../../server/effects/Dead';
 import { nonenumerable } from 'nonenumerable';
 import { CharacterHelper } from '../../server/helpers/character-helper';
 
-import { AllTraits } from '../../shared/traits/trait-hash';
+import { AllTraits } from '../traits/trait-hash';
 import { DeathHelper } from '../../server/helpers/death-helper';
 import { PartyHelper } from '../../server/helpers/party-helper';
+import { Malnourished } from '../../server/effects/Malnourished';
 
 export class Player extends Character {
   @nonenumerable
@@ -93,6 +94,8 @@ export class Player extends Character {
 
   private lastDeathLocation: any;
 
+  public $$hungerTicks: number;
+
   get party(): Party {
     return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
   }
@@ -115,6 +118,7 @@ export class Player extends Character {
     this.recalculateStats();
     this.uuid = this.username;
     this.$$actionQueue = [];
+    if(isUndefined(this.$$hungerTicks)) this.$$hungerTicks = 3600 * 6;
     if(!this.traitPoints) this.traitPoints = 0;
     if(!this.partyExp || !this.partyExp.maximum) {
       this.partyPoints = 0;
@@ -463,6 +467,13 @@ export class Player extends Character {
     this.$$room.partyManager.updateMember(this);
 
     if(this.isInCombat) this.combatTicks--;
+
+    this.$$hungerTicks--;
+
+    if(this.$$hungerTicks <= 0 && !this.hasEffect('Malnourished')) {
+      const malnourished = new Malnourished({});
+      malnourished.cast(this, this);
+    }
 
     if(!this.$$actionQueue || this.isUnableToAct()) return;
     const nextAction = this.$$actionQueue.shift();
