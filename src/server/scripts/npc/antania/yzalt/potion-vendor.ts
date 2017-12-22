@@ -13,7 +13,11 @@ export const setup = async (npc: NPC) => {
     'Instant Heal Bottle (5oz)',
     'Scribe Scroll',
     'Ink Vial',
-    'Bradley Constitution Potion',
+    'Antanian Slice of Bread',
+    'Antanian Loaf of Bread',
+    'Antanian Bottle of Water',
+    'Antanian Pint of Water',
+    'Bradley Constitution Potion'
   ];
 
   NPCLoader.loadVendorItems(npc, vendorItems);
