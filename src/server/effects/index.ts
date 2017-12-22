@@ -1,5 +1,7 @@
 
 export * from './ExactHeal';
+export * from './Nourishment';
+export * from './Malnourished';
 
 export * from './MinorSTR';
 export * from './MinorDEX';

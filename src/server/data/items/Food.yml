@@ -10,14 +10,44 @@
   desc: "a fresh chunk of bear meat from an Antanian bear"
   value: 100
   effect:
-    name: ExactHeal
-    potency: 100
+    name: Nourishment
+    tooltip: "+1 STR"
+    message: "The beat meat is tender!"
+    stats:
+      str: 1
+    duration: 10800
 
 - name: Yzalt Steffen Apple
   sprite: 560
   desc: "a ripe apple"
   value: 100
   effect:
-    name: ExactHeal
-    potency: 200
+    name: Nourishment
+    tooltip: "+1 INT"
+    message: "The apple is delicious!"
+    stats:
+      int: 1
+    duration: 3600
 
+- name: Antanian Bread
+  sprite: 610
+  desc: "a freshly baked slice of bread"
+  value: 50
+  effect:
+    name: Nourishment
+    tooltip: "+3 HP Regen"
+    stats:
+      hpregen: 3
+    duration: 21600
+
+- name: Antanian Loaf of Bread
+  sprite: 610
+  desc: "a freshly baked loaf of bread"
+  value: 500
+  ounces: 12
+  effect:
+    name: Nourishment
+    tooltip: "+3 HP Regen"
+    stats:
+      hpregen: 3
+    duration: 21600
