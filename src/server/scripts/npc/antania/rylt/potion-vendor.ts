@@ -11,7 +11,11 @@ export const setup = async (npc: NPC) => {
     'Instant Heal Bottle',
     'Instant Heal Bottle (5oz)',
     'Scribe Scroll',
-    'Ink Vial'
+    'Ink Vial',
+    'Antanian Slice of Bread',
+    'Antanian Loaf of Bread',
+    'Antanian Bottle of Water',
+    'Antanian Pint of Water'
   ];
 
   NPCLoader.loadVendorItems(npc, vendorItems);

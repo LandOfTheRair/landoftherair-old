@@ -29,7 +29,7 @@
       int: 1
     duration: 3600
 
-- name: Antanian Bread
+- name: Antanian Slice of Bread
   sprite: 610
   desc: "a freshly baked slice of bread"
   value: 50
