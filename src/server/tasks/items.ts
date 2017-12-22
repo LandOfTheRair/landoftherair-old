@@ -171,6 +171,14 @@ class ItemLoader {
       }
     }
 
+    if(item.trait) {
+      const { name, level } = item.trait;
+      if(!name || !level || level < 0) {
+        console.error(`ERROR: ${item.name} needs a name and a level for trait`);
+        hasBad = true;
+      }
+    }
+
     if(item.stats) {
       const statsTest = new Stats();
       const invalidStats = difference(Object.keys(item.stats), Object.keys(statsTest));

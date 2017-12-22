@@ -15,12 +15,12 @@ export class Trait {
   static maxLevel = 0;
 
   static currentLevel(player: Player): number {
-    return player.getTraitLevel(this.traitName);
+    return player.getBaseTraitLevel(this.traitName);
   }
 
   static canBuy(player: Player): boolean {
     if(this.baseClass && player.baseClass !== this.baseClass) return false;
-    return player.getTraitLevel(this.traitName) < this.maxLevel && player.hasTraitPoints(this.tpCost);
+    return player.getBaseTraitLevel(this.traitName) < this.maxLevel && player.hasTraitPoints(this.tpCost);
   }
 
   static buy(player: Player, extra?): void {

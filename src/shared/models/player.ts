@@ -4,7 +4,7 @@ import * as RestrictedNumber from 'restricted-number';
 import { Character, MaxSizes, AllNormalGearSlots, Allegiance } from './character';
 import { Item } from './item';
 
-import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith, extend } from 'lodash';
+import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith, extend, values } from 'lodash';
 import { Party } from './party';
 import { Quest } from '../../server/base/Quest';
 
@@ -563,9 +563,19 @@ export class Player extends Character {
     this.traitLevels[trait].level++;
   }
 
-  public getTraitLevel(trait: string): number {
+  private get traitableGear(): Item[] {
+    return compact([this.leftHand, this.rightHand].concat(values(this.gear)));
+  }
+
+  public getBaseTraitLevel(trait: string): number {
     if(!this.traitLevels || !this.isTraitActive(trait) || !this.isTraitInEffect(trait)) return 0;
     return this.traitLevels[trait] ? this.traitLevels[trait].level : 0;
+  }
+
+  public getTraitLevel(trait: string): number {
+    if(!this.traitLevels || !this.isTraitActive(trait) || !this.isTraitInEffect(trait)) return 0;
+    const baseValue = this.traitableGear.reduce((prev, cur) => prev + (cur.trait && cur.trait.name === trait ? cur.trait.level : 0), 0);
+    return baseValue + this.getBaseTraitLevel(trait);
   }
 
   public isTraitInEffect(trait: string): boolean {

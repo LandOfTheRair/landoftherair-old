@@ -418,6 +418,7 @@ export class CombatHelper {
 
       switch(damageClass) {
         case 'energy':    damageBoostPercent = attacker.getTraitLevel('MagicFocus') * 5; break;
+        case 'necrotic':  damageBoostPercent = attacker.getTraitLevel('NecroticFocus') * 5; break;
         case 'heal':      damageBoostPercent = attacker.getTraitLevel('HealingFocus') * 5; break;
         case 'physical':  damageBoostPercent = attacker.getTraitLevel('ForcefulStrike') * 5; break;
       }

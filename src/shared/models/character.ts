@@ -1023,6 +1023,10 @@ export class Character {
   }
 
   // implemented so npcs get the same check but it's 0 instead of a value
+  public getBaseTraitLevel(trait: string): number {
+    return 0;
+  }
+
   public getTraitLevel(trait: string): number {
     return 0;
   }
@@ -1034,6 +1038,8 @@ export class Character {
     this.totalStats.accuracy += this.getTraitLevel('EagleEye');
     this.totalStats.defense += this.getTraitLevel('FunkyMoves');
     this.totalStats.offense += this.getTraitLevel('SwordTricks');
+
+    console.log(this.getTraitLevel('FunkyMoves'));
 
     // mage & healer traits
     this.totalStats.mp += this.getTraitLevel('MagicBoost');
