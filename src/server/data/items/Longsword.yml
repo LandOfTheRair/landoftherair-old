@@ -22,6 +22,7 @@
   sprite: 197
 
 - name: Tonwin Sword
+  quality: 5
   desc: "a steel longsword inscribed with the markings of the renegade overseers"
   stats:
     accuracy: 5

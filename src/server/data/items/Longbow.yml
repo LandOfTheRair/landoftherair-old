@@ -12,6 +12,7 @@
   sprite: 200
 
 - name: Ranata Longbow
+  quality: 5
   stats:
     offense: 2
 
