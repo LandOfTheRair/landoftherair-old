@@ -51,7 +51,11 @@ const HealingMagic = [
   'Cleanser of Veins',
   'Poisoner of Veins',
   'Protector from Necrosis',
-  'Restorer of Life'
+  'Restorer of Life',
+  'Traveler of the Void',
+  'Restorer of Light',
+  'Inflictor of Plague',
+  'Mind Interrupter'
 ];
 
 const ElementalMagic = [
@@ -62,7 +66,11 @@ const ElementalMagic = [
   'Elemental Protector',
   'Protector of Breath',
   'Flinger of Fire',
-  'Flinger of Frost'
+  'Flinger of Frost',
+  'Seeker of Gold',
+  'Blaster of Energy',
+  'Bringer of Darkness',
+  'Seer of Darkness'
 ];
 
 const Martial = [
