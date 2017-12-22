@@ -15,6 +15,7 @@
   value: 500
 
 - name: Saraxa Regen Amulet
+  quality: 5
   stats:
     mpregen: 10
     defense: 2

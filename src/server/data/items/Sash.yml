@@ -16,6 +16,7 @@
   value: 150
 
 - name: Tonwin Sash
+  quality: 5
   stats:
     armorClass: 4
     defense: 2

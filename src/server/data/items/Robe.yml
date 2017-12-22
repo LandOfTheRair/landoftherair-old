@@ -29,6 +29,7 @@
   sprite: 488
 
 - name: Saraxa Robe
+  quality: 5
   stats:
     armorClass: 3
     defense: 2
@@ -67,6 +68,7 @@
     level: 5
 
 - name: Ranata Robe
+  quality: 5
   stats:
     stealth: 10
     perception: 10
