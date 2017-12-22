@@ -13,6 +13,10 @@ export class Container {
     return this.items;
   }
 
+  public get hasItems(): boolean {
+    return this.items.length > 0;
+  }
+
   constructor({ size }) {
     this.size = size;
   }

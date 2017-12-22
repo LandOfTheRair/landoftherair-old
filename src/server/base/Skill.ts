@@ -93,12 +93,14 @@ export abstract class Skill extends Command {
     const baseStealRoll = (myStealth / yourPerception) * 100;
     const stealRoll = random(baseStealRoll - 10, baseStealRoll + 10);
 
+    const userName = target.canSeeThroughStealthOf(user) ? user.name : 'somebody';
+
     if(target.gold > 0) {
       if(random(0, stealRoll) < 30) {
         gainThiefSkill(user, 1);
         target.addAgro(user, 1);
         user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
-        target.sendClientMessage({ message: `${user.name} just tried to steal from you!`, target: user.uuid });
+        target.sendClientMessage({ message: `${userName} just tried to steal from you!`, target: user.uuid });
         return;
       }
 
@@ -125,7 +127,7 @@ export abstract class Skill extends Command {
         gainThiefSkill(user, 1);
         target.addAgro(user, 1);
         user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
-        target.sendClientMessage({ message: `${user.name} just tried to steal from you!`, target: user.uuid });
+        target.sendClientMessage({ message: `${userName} just tried to steal from you!`, target: user.uuid });
         return;
       }
 
