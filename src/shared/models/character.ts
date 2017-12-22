@@ -1039,8 +1039,6 @@ export class Character {
     this.totalStats.defense += this.getTraitLevel('FunkyMoves');
     this.totalStats.offense += this.getTraitLevel('SwordTricks');
 
-    console.log(this.getTraitLevel('FunkyMoves'));
-
     // mage & healer traits
     this.totalStats.mp += this.getTraitLevel('MagicBoost');
     this.totalStats.mpregen += this.getTraitLevel('CalmMind');
