@@ -6,7 +6,7 @@ import { Player } from '../../../../shared/models/player';
 
 export class Use extends Command {
 
-  public name = '~use';
+  public name = ['~use', 'use', 'eat', 'drink', 'consume'];
 
   execute(player: Player, { room, gameState, args }) {
     const [context, slot, itemType, itemId] = args.split(' ');
@@ -15,8 +15,8 @@ export class Use extends Command {
       player.useItem(itemSlot);
     };
 
-    if(context === 'Left') return useItemInHand('leftHand');
-    if(context === 'Right') return useItemInHand('rightHand');
+    if(context.toLowerCase() === 'left') return useItemInHand('leftHand');
+    if(context.toLowerCase() === 'right') return useItemInHand('rightHand');
 
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full!');
 

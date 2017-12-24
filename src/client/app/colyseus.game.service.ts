@@ -678,7 +678,7 @@ export class ColyseusGameService {
     this.sendRawCommand(cmd, `${args.trim()} ${postargs}`.trim());
   }
 
-  public buildUseAction(item: Item, context: string, contextSlot: string|number) {
+  public buildUseAction(item: Item, context: string, contextSlot?: string|number) {
     this.sendRawCommand('~use', `${context} ${contextSlot || -1} ${item.itemClass} ${item.uuid}`);
   }
 

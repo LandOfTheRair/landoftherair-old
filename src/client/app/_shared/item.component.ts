@@ -316,7 +316,10 @@ export class ItemComponent implements OnInit {
       }
     }
 
-    if(this.context !== 'Ground') {
+    if(this.item.canUse(this.colyseusGame.character) && (this.context === 'Right' || this.context === 'Left')) {
+      this.colyseusGame.buildUseAction(this.item, this.context);
+
+    } else if(this.context !== 'Ground') {
       this.doColyseusMoveAction('G');
     }
 
