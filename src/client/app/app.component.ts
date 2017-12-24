@@ -68,6 +68,9 @@ export class AppComponent implements OnInit {
   public showSkillsWindow: boolean;
 
   @LocalStorage()
+  public showTradeSkillsWindow: boolean;
+
+  @LocalStorage()
   public showCommandLine: boolean;
 
   @LocalStorage()
@@ -146,6 +149,7 @@ export class AppComponent implements OnInit {
     Map: null,
     Stats: null,
     Skills: null,
+    TradeSkills: null,
     CommandLine: null,
     Log: null,
     Status: null,
@@ -160,7 +164,8 @@ export class AppComponent implements OnInit {
     Bank: null,
     Locker: null,
     Party: null,
-    Traits: null
+    Traits: null,
+    TradeskillAlchemy: null
   };
 
   public newMessages = 0;

@@ -13,6 +13,7 @@ class Database {
   public $accounts: any;
   public $players: any;
   public $items: any;
+  public $recipes: any;
   public $npcs: any;
   public $mapDrops: any;
   public $regionDrops: any;
@@ -43,6 +44,8 @@ class Database {
 
     this.$items = this.client.collection('items');
     this.$items.ensureIndex({ name: 1 }, { unique: true });
+
+    this.$recipes = this.client.collection('recipes');
 
     this.$npcs = this.client.collection('npcs');
     this.$npcs.ensureIndex({ npcId: 1 }, { unique: true });

@@ -24,6 +24,7 @@ import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
 import { DeepstreamService } from './deepstream.service';
 import { MacroService } from './macros.service';
+import { AssetService } from './asset.service';
 
 import { CloseButtonComponent } from './_shared/close-button.component';
 import { MinimizeButtonComponent } from './_shared/minimize-button.component';
@@ -40,6 +41,7 @@ import { CharacterSelectComponent } from './character-select/character-select.co
 import { MapComponent } from './map/map.component';
 import { StatsWindowComponent } from './stats/stats-window.component';
 import { SkillsWindowComponent } from './skills/skills-window.component';
+import { TradeSkillsWindowComponent } from './tradeskills/tradeskills-window.component';
 import { CommandLineComponent } from './command-line/command-line.component';
 import { LogWindowComponent } from './log/log-window.component';
 import { StatusWindowComponent } from './status/status-window.component';
@@ -58,7 +60,8 @@ import { MacroComponent } from './macro/macro.component';
 import { ActiveTargetComponent } from './active-target/active-target.component';
 import { PartyComponent } from './party/party.component';
 import { TraitsComponent } from './traits/traits.component';
-import { AssetService } from './asset.service';
+
+import { TradeskillAlchemyComponent } from './tradeskill-alchemy/tradeskill-alchemy.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -76,6 +79,7 @@ import { AssetService } from './asset.service';
     MapComponent,
     StatsWindowComponent,
     SkillsWindowComponent,
+    TradeSkillsWindowComponent,
     CommandLineComponent,
     CloseButtonComponent,
     MinimizeButtonComponent,
@@ -102,7 +106,9 @@ import { AssetService } from './asset.service';
     MacroComponent,
     ActiveTargetComponent,
     PartyComponent,
-    TraitsComponent
+    TraitsComponent,
+
+    TradeskillAlchemyComponent
   ],
   imports: [
     BrowserModule,

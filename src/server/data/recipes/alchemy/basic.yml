@@ -1,0 +1,61 @@
+
+- item: Antanian Fungus Bread
+  skillGained: 5
+  maxSkillForGains: 3
+  xpGained: 100
+  ingredients:
+    - Antanian Bottle of Water
+    - Antanian Slice of Bread
+
+- item: Antanian Fungus Loaf
+  skillGained: 5
+  maxSkillForGains: 3
+  xpGained: 150
+  ingredients:
+    - Antanian Pint of Water
+    - Antanian Loaf of Bread
+
+- item: Bear Meat Antidote (10oz)
+  skillGained: 10
+  maxSkillForGains: 4
+  xpGained: 300
+  ingredients:
+    - Bear Meat Antidote
+    - Bear Meat
+    - Rylt Blueflower
+    - Antanian Pint of Water
+
+- item: Weak BarWater Potion (10oz)
+  skillGained: 5
+  maxSkillForGains: 4
+  xpGained: 150
+  ingredients:
+    - Rylt Blueflower
+    - Antanian Pint of Water
+
+- item: Weak BarFire Potion (10oz)
+  skillGained: 5
+  maxSkillForGains: 4
+  xpGained: 150
+  ingredients:
+    - Rylt Blueflower
+    - Yzalt Steffen Apple
+    - Antanian Pint of Water
+
+- item: Weak BarFrost Potion (10oz)
+  skillGained: 5
+  maxSkillForGains: 4
+  xpGained: 150
+  ingredients:
+    - Yzalt Bogweed
+    - Antanian Pint of Water
+    - Yzalt Steffen Apple
+
+- item: Weak BarNecro Potion (10oz)
+  skillGained: 5
+  maxSkillForGains: 4
+  xpGained: 150
+  ingredients:
+    - Rylt Blueflower
+    - Yzalt Bogweed
+    - Antanian Pint of Water

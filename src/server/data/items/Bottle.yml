@@ -180,10 +180,32 @@
     potency: 100
   value: 500
 
+- name: Weak BarFire Potion (10oz)
+  desc: "a small white bottle. It feels warm to the touch"
+  extendedDesc: "a potion of BarFire"
+  sprite: 251
+  ounces: 10
+  effect:
+    name: BarFire
+    duration: 900
+    potency: 100
+  value: 500
+
 - name: Weak BarFrost Potion
   desc: "a small white bottle. The bottle chills your hand"
   extendedDesc: "a potion of BarFrost"
   sprite: 251
+  effect:
+    name: BarFrost
+    duration: 900
+    potency: 100
+  value: 500
+
+- name: Weak BarFrost Potion (10oz)
+  desc: "a small white bottle. The bottle chills your hand"
+  extendedDesc: "a potion of BarFrost"
+  sprite: 251
+  ounces: 10
   effect:
     name: BarFrost
     duration: 900
@@ -200,6 +222,17 @@
     potency: 100
   value: 500
 
+- name: Weak BarWater Potion (10oz)
+  desc: "a small white bottle. The liquid in it seems unnaturally buoyant"
+  extendedDesc: "a potion of BarWater"
+  sprite: 251
+  ounces: 10
+  effect:
+    name: BarWater
+    duration: 900
+    potency: 100
+  value: 500
+
 - name: Bear Meat Antidote
   desc: "a small flask filled with liquid made of bear meat"
   extendedDesc: "a flask of Antidote"
@@ -208,6 +241,16 @@
     name: Antidote
     potency: 10
   value: 1000
+
+- name: Bear Meat Antidote (10oz)
+  desc: "a small flask filled with liquid made of bear meat"
+  extendedDesc: "a flask of Antidote"
+  sprite: 142
+  ounces: 10
+  effect:
+    name: Antidote
+    potency: 10
+  value: 2000
 
 - name: Antanian Bottle of Water
   sprite: 38

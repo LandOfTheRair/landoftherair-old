@@ -23,6 +23,7 @@
     "seed:items": "ts-node src/server/tasks/items.ts",
     "seed:npcs": "ts-node src/server/tasks/npcs.ts",
     "seed:drops": "ts-node src/server/tasks/drops.ts",
+    "seed:recipes": "ts-node src/server/tasks/recipes.ts",
     "task:seed": "npm-run-all seed:*",
     "task:macros": "npm-run-all task:macros:*",
     "task:macros:data": "ts-node src/server/tasks/macroiconnames.ts",
@@ -32,7 +33,11 @@
     "task:analysis": "npm-run-all analyze:*",
     "analyze:weapons": "ts-node src/server/tasks/analysis/weapons",
     "analyze:armor": "ts-node src/server/tasks/analysis/armor",
-    "runseed:prod": "npm-run-all \"seed:* -- --prod\""
+    "runseed:prod": "npm-run-all \"seed:* -- --prod\"",
+    "bump:patch": "npm version patch -m \"Patch release %s\"",
+    "bump:minor": "npm version minor -m \"Minor release %s\"",
+    "bump:major": "npm version major -m \"Major release %s\"",
+    "changelog": "gh-change-gen --owner landoftherair --repo landoftherair --labels enhancement,bug"
   },
   "repository": {
     "type": "git",

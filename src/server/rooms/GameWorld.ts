@@ -286,6 +286,11 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_bank', uuid: npc.uuid, bankId: npc.bankId });
   }
 
+  showAlchemyWindow(player: Player, npc: NPC) {
+    const client = this.findClient(player);
+    this.send(client, { action: 'show_alchemy', uuid: npc.uuid });
+  }
+
   showLockerWindow(player: Player, lockers, lockerId) {
     const client = this.findClient(player);
     this.send(client, { action: 'show_lockers', lockers, lockerId });

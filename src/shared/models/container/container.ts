@@ -1,13 +1,13 @@
 
-import { extend, compact, findIndex, sample } from 'lodash';
+import { extend, compact, findIndex, sample, isUndefined } from 'lodash';
 
 import { Item } from '../item';
 
 export class Container {
 
   public size: number;
-
-  private items: Item[] = [];
+  protected autoFix = true;
+  protected items: Item[] = [];
 
   public get allItems() {
     return this.items;
@@ -22,7 +22,7 @@ export class Container {
   }
 
   initItems() {
-    this.items = this.items.map(item => new Item(item));
+    this.items = this.items.map(item => item ? new Item(item) : null);
   }
 
   isFull() {
@@ -30,13 +30,20 @@ export class Container {
   }
 
   fix() {
+    if(!this.autoFix) return;
     this.items = compact(this.items);
   }
 
-  addItem(item: Item): string {
-    if(!this.canAccept(item)) return `That item does not fit properly in your ${this.constructor.name.toLowerCase()}.`;
-    if(this.isFull()) return `Your ${this.constructor.name.toLowerCase()} is full.`;
-    this.items.push(item);
+  addItem(item: Item, index?: number): string {
+    if(!this.canAccept(item, index)) return `That item does not fit properly in your ${this.constructor.name.toLowerCase()}.`;
+    if(this.isFull() && isUndefined(index)) return `Your ${this.constructor.name.toLowerCase()} is full.`;
+    if(index) {
+      if(this.items[index]) return 'There is already something there.';
+      if(index < 0 || index > this.size) return 'Container does not match that size.';
+      this.items[index] = item;
+    } else {
+      this.items.push(item);
+    }
   }
 
   getItemFromSlot(slot: number): Item {
@@ -65,7 +72,7 @@ export class Container {
     slots.reverse().forEach(index => this.takeItemFromSlot(index));
   }
 
-  canAccept(item: Item) {
+  canAccept(item: Item, index?: number) {
     return item.itemClass !== 'Corpse' && item.itemClass !== 'Coin';
   }
 }

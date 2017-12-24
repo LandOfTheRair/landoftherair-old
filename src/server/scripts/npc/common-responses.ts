@@ -213,7 +213,8 @@ export const AlchemistResponses = (npc: NPC) => {
       return `Hello, ${player.name}! 
       You can tell me COMBINE while holding a bottle in your right hand to 
       mix together that with other bottles of the same type in your sack. 
-      I can combine up to ${npc.alchOz}oz into one bottle. It will cost ${npc.alchCost} gold per ounce to do this.`;
+      I can combine up to ${npc.alchOz}oz into one bottle. It will cost ${npc.alchCost} gold per ounce to do this.
+      You can also tell me ALCHEMY to practice on your own!`;
     });
 
   npc.parser.addCommand('combine')
@@ -249,6 +250,13 @@ export const AlchemistResponses = (npc: NPC) => {
       if(itemsRemoved === 0) return 'I was not able to combine any bottles.';
 
       return `I've taken ${itemsRemoved} bottles from your sack and combined them with the item in your hand. Enjoy!`;
+    });
+
+  npc.parser.addCommand('alchemy')
+    .set('syntax', ['alchemy'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+      npc.$$room.showAlchemyWindow(player, npc);
     });
 };
 

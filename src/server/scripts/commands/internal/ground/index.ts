@@ -5,3 +5,4 @@ export * from './ground-to-right';
 export * from './ground-to-equip';
 export * from './ground-to-potion';
 export * from './ground-to-locker';
+export * from './ground-to-tradeskill';

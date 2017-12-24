@@ -1,0 +1,15 @@
+
+.item-slot {
+  margin: 5px;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.left-side, .right-side {
+  display: flex;
+  justify-content: center;
+}

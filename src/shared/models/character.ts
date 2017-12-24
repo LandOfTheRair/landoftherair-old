@@ -63,10 +63,14 @@ export const SkillClassNames = {
   Thievery: 'Thievery',
   Wand: 'Wand',
   Conjuration: 'Conjuration',
-  Restoration: 'Restoration'
+  Restoration: 'Restoration',
+
+  Alchemy: 'Alchemy'
 };
 
 export class Skills {
+
+  // combat skills
   mace = 0;
   axe = 0;
   dagger = 0;
@@ -82,6 +86,9 @@ export class Skills {
   wand = 0;
   conjuration = 0;
   restoration = 0;
+
+  // trade skills
+  alchemy = 0;
 }
 
 export class Stats {
@@ -387,7 +394,7 @@ export class Character {
     this.recalculateStats();
   }
 
-  canGetBonusFromItemInHand = (item) => {
+  canGetBonusFromItemInHand(item) {
     return this.checkCanEquipWithoutGearCheck(item) && includes(GivesBonusInHandItemClasses, item.itemClass);
   }
 
@@ -794,7 +801,7 @@ export class Character {
   }
 
   isValidSkill(type) {
-    return includes(ValidItemTypes, type);
+    return includes(ValidItemTypes, type) || SkillClassNames[type];
   }
 
   gainSkill(type, skillGained = 1) {

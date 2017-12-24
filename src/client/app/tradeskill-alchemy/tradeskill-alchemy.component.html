@@ -1,0 +1,48 @@
+
+<div class="d-flex flex-column p-1 w-100">
+
+  <div class="row">
+    <div class="col col-8 text-center">
+      <h3>Ingredients</h3>
+    </div>
+
+    <div class="col col-4 text-center">
+      <h3>Result</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-8 left-side">
+      <div class="item-slot item-background"
+           *ngFor="let slot of slots"
+           droppable
+           dropScope="alchemy"
+           (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Alchemy:'+slot)">
+        <app-item size="normal"
+                  *ngIf="player.tradeSkillContainers.alchemy.items[slot]"
+                  [item]="player.tradeSkillContainers.alchemy.items[slot]"
+                  [contextSlot]="slot"
+                  [containerUUID]="colyseusGame.showAlchemy.uuid"
+                  context="Tradeskill:Alchemy"></app-item>
+      </div>
+    </div>
+
+    <div class="col col-4 right-side">
+      <div class="item-slot item-background">
+        <app-item size="normal"
+                  *ngIf="player.tradeSkillContainers.alchemy.items[8]"
+                  [item]="player.tradeSkillContainers.alchemy.items[8]"
+                  contextSlot="8"
+                  [containerUUID]="colyseusGame.showAlchemy.uuid"
+                  context="Tradeskill:Alchemy"></app-item>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col col-8 text-center">
+      <button class="btn btn-primary" (click)="alchemize()" [disabled]="disabled">Alchemize</button>
+    </div>
+  </div>
+
+</div>

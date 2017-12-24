@@ -48,7 +48,7 @@ export class CommandExecutor {
 
     // explicit check
     if(wasSuccess === false) {
-      player.sendClientMessage(`Command "${command}" is invalid. Try again.`);
+      player.sendClientMessage(`Command "${command}" is invalid.`);
     }
   }
 

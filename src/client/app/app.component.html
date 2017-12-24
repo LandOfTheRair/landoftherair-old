@@ -36,6 +36,10 @@
           </li>
           <li *ngIf="inGame">
             <a class="dropdown-item"
+               (click)="showTradeSkillsWindow = !showTradeSkillsWindow; activeWindow = 'tradeSkills'">Trade Skills</a>
+          </li>
+          <li *ngIf="inGame">
+            <a class="dropdown-item"
                (click)="showCommandLine = !showCommandLine; activeWindow = 'cmd'">Command Line</a>
           </li>
           <li *ngIf="inGame">
@@ -191,6 +195,25 @@
     </div>
     <div class="window-body">
       <app-skills-window [currentPlayer]="colyseus.game.character"></app-skills-window>
+    </div>
+  </div>
+
+  <div class="window skills above-game-window"
+       [class.active-window]="activeWindow === 'tradeSkills'"
+       (click)="setActiveWindow('tradeSkills')"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="tradeSkillsDrag"
+       windowName="tradeSkills"
+       [windowLocation]="windowLocations.TradeSkills"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && showTradeSkillsWindow">
+    <div class="window-header text-center" #tradeSkillsDrag>
+      Trade Skills
+      <app-close-button (click)="showTradeSkillsWindow = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-tradeskills-window [currentPlayer]="colyseus.game.character"></app-tradeskills-window>
     </div>
   </div>
 
@@ -481,6 +504,25 @@
     </div>
     <div class="window-body">
       <app-traits></app-traits>
+    </div>
+  </div>
+
+  <div class="window trade-skill alchemy above-game-window"
+       [class.active-window]="activeWindow === 'tradeskillAlchemy'"
+       (click)="setActiveWindow('tradeskillAlchemy')"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="tradeskillAlchemyDrag"
+       windowName="tradeskillAlchemy"
+       [windowLocation]="windowLocations.TradeskillAlchemy"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && colyseus.game.showAlchemy.uuid">
+    <div class="window-header text-center" #tradeskillAlchemyDrag>
+      Alchemy
+      <app-close-button (click)="colyseus.game.showAlchemy = {}"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-tradeskill-alchemy></app-tradeskill-alchemy>
     </div>
   </div>
 

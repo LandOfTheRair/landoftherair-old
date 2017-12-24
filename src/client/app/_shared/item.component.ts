@@ -8,10 +8,12 @@ import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { AssetService } from '../asset.service';
 
+const POSSIBLE_TRADESKILL_SCOPES = ['Alchemy'];
+
 export type MenuContext = 'Sack' | 'Belt' | 'Ground'
                         | 'GroundGroup' | 'Equipment' | 'Left'
                         | 'Right' | 'Coin' | 'Merchant'
-                        | 'Obtainagain' | 'Wardrobe';
+                        | 'Obtainagain' | 'Wardrobe' | 'Tradeskill';
 
 @Component({
   selector: 'app-item',
@@ -161,43 +163,6 @@ export class ItemComponent implements OnInit {
 
   public scopes: string[] = [];
 
-  public menuOptions = [
-    { label: 'Sense',         },
-    { label: 'Consume',       },
-    { label: 'Enchant',       },
-    { label: 'Imbue',         },
-
-    { label: 'Equip',         visible: () => this.context !== 'Equipment'
-                                          && this.context !== 'GroundGroup'
-                                          && (!this.item.owner || this.item.owner === this.player.username)
-                                          && this.isEquippable,
-                              execute: () => this.doColyseusMoveAction('E') },
-
-    { label: 'To Right Hand', visible: () => this.context === 'Left' || !this.player.rightHand,
-                              execute: () => this.doColyseusMoveAction('R')  },
-
-    { label: 'To Left Hand',  visible: () => this.context === 'Right' || !this.player.leftHand,
-                              execute: () => this.doColyseusMoveAction('L')  },
-
-    { label: 'To Ground',     visible: () => this.context !== 'Ground'
-                                          && this.context !== 'GroundGroup',
-                              execute: () => this.doColyseusMoveAction('G')  },
-
-    { label: 'To Sack',       visible: () => this.context !== 'Sack'
-                                          && this.context !== 'Coin'
-                                          && this.item.isSackable,
-                              execute: () => this.doColyseusMoveAction('S')  },
-
-    { label: 'To Belt',       visible: () => this.context !== 'Belt'
-                                          && this.item.isBeltable,
-                              execute: () => this.doColyseusMoveAction('B')  },
-
-    { label: 'Use',           visible: () => this.item.canUse && this.item.canUse(this.player)
-                                          && this.context !== 'Ground'
-                                          && this.context !== 'Equipment',
-                              execute: () => this.doColyseusUseAction()  }
-  ];
-
   get displayOnly(): boolean {
     return !this.context;
   }
@@ -255,7 +220,12 @@ export class ItemComponent implements OnInit {
   }
 
   doColyseusMoveAction(choice) {
-    this.colyseusGame.buildAction(this.item, { context: this.context, count: this.count, contextSlot: this.contextSlot, containerUUID: this.containerUUID }, choice);
+    this.colyseusGame.buildAction(this.item, {
+      context: this.context,
+      count: this.count,
+      contextSlot: this.contextSlot,
+      containerUUID: this.containerUUID
+    }, choice);
   }
 
   doColyseusUseAction() {
@@ -264,6 +234,7 @@ export class ItemComponent implements OnInit {
 
   determineScopes() {
     const scopes = [];
+
     if(this.context !== 'Obtainagain' && this.context !== 'Merchant') {
       scopes.push('ground', 'mapground');
 
@@ -275,7 +246,9 @@ export class ItemComponent implements OnInit {
       scopes.push('right', 'left');
     }
 
-    if(this.item.itemClass === 'Coin') scopes.push('coin');
+    if(this.item.itemClass === 'Coin') {
+      scopes.push('coin');
+    }
 
     if(this.item.itemClass !== 'Coin'
     && this.item.itemClass !== 'Corpse'
@@ -284,9 +257,19 @@ export class ItemComponent implements OnInit {
     && this.context !== 'Ground') scopes.push('merchant');
 
     if(this.item.itemClass !== 'Coin'
-    && this.item.itemClass !== 'Corpse') scopes.push('wardrobe');
+    && this.item.itemClass !== 'Corpse') {
+      scopes.push('wardrobe');
 
-    if(this.item.itemClass === 'Bottle' || this.item.itemClass === 'Food'
+      if(this.context !== 'GroundGroup') {
+        POSSIBLE_TRADESKILL_SCOPES.forEach(skill => {
+          if(this.colyseusGame[`show${skill}`].uuid) {
+            scopes.push(skill.toLowerCase());
+          }
+        });
+      }
+    }
+
+    if(this.item.itemClass === 'Bottle'
     && (this.context === 'Sack'
       || this.context === 'Ground'
       || this.context === 'Right'

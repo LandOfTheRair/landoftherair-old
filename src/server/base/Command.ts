@@ -58,8 +58,9 @@ export abstract class Command {
     return 'RightHand';
   }
 
-  addItemToContainer(player, container: Container, item: Item) {
-    const didFail = container.addItem(item);
+  addItemToContainer(player, container: Container, item: Item, index?: number) {
+    if(!container) return player.sendClientMessage('Bad container name.');
+    const didFail = container.addItem(item, index);
     if(didFail) return player.sendClientMessage(didFail);
     return true;
   }

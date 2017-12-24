@@ -28,6 +28,8 @@ export class ColyseusGameService {
   showShop: any = {};
   showBank: any = {};
 
+  showAlchemy: any = {};
+
   showLocker: Locker[] = [];
   activeLockerNumber: number;
 
@@ -319,6 +321,7 @@ export class ColyseusGameService {
     if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId);
     if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid);
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
+    if(action === 'show_alchemy')   return this.showAlchemyWindow(other.uuid);
     if(action === 'show_ground')    return this.showGroundWindow();
     if(action === 'change_map')     return this.changeMap(other.map);
     if(action === 'log_message')    return this.logMessage(other);
@@ -388,6 +391,11 @@ export class ColyseusGameService {
   private showTrainerWindow(classTrain, trainSkills, uuid) {
     this.showTrainer = { classTrain, trainSkills, uuid };
     this.updateActiveWindowForGameWindow('trainer');
+  }
+
+  private showAlchemyWindow(uuid) {
+    this.showAlchemy = { uuid };
+    this.updateActiveWindowForGameWindow('tradeskillAlchemy');
   }
 
   public assessSkill(skill) {
@@ -502,6 +510,7 @@ export class ColyseusGameService {
     this.showShop = {};
     this.showBank = {};
     this.showLocker = [];
+    this.showAlchemy = {};
   }
 
   public doMove(x, y) {
@@ -534,16 +543,36 @@ export class ColyseusGameService {
   public buildDropAction({ dragData }, choice) {
     const { context, contextSlot, count, containerUUID, item } = dragData;
     if(context.substring(0, 1) === choice.substring(0, 1)) return;
-    this.buildAction(item, { context, contextSlot, count, containerUUID }, choice.substring(0, 1));
+    this.buildAction(item, { context, contextSlot, count, containerUUID }, choice);
   }
 
   public async buildAction(item, { context, contextSlot, count, containerUUID }, choice) {
-    const subContext = context.substring(0, 1);
-    const cmd = `~${subContext}t${choice}`;
+    const contextStr = context.substring(0, 1);
+    const choiceStr = choice.substring(0, 1);
+    const cmd = `~${contextStr}t${choiceStr}`;
 
-    if(subContext === choice) return;
+    if(contextStr === choiceStr) return;
 
     let args = '';
+    let postargs = '';
+
+    const splitpostargs = choice.split(':');
+
+    // TO a tradeskill container
+    if(splitpostargs.length === 3) {
+      const [t, skill, slot] = splitpostargs;
+      if(!this['show' + skill]) return;
+      postargs = `${skill.toLowerCase()} ${slot} ${this['show' + skill].uuid}`.trim();
+    }
+
+    const splitcontextargs = context.split(':');
+
+    // FROM a tradeskill container
+    if(splitcontextargs.length === 2) {
+      const [t, skill] = splitcontextargs;
+      if(!this['show' + skill]) return;
+      postargs = `${skill.toLowerCase()} ${contextSlot} ${this['show' + skill].uuid}`.trim();
+    }
 
     if(context === 'Ground') {
       args = `${item.itemClass} ${item.uuid}`;
@@ -589,7 +618,7 @@ export class ColyseusGameService {
       return;
 
     } else if(context === 'Merchant') {
-      if(choice === 'S' || choice === 'B') {
+      if(choiceStr === 'S' || choiceStr === 'B') {
         const result = await (<any>swal)({
           titleText: 'How Many Items?',
           input: 'number',
@@ -626,7 +655,7 @@ export class ColyseusGameService {
       return;
     }
 
-    if(choice === 'M' && this.showShop && includes(['Sack', 'Belt', 'Left', 'Right', 'Potion'], context)) {
+    if(choiceStr === 'M' && this.showShop && includes(['Sack', 'Belt', 'Left', 'Right', 'Potion'], context)) {
       if(!args) {
         args = this.showShop.uuid;
       } else {
@@ -638,7 +667,7 @@ export class ColyseusGameService {
       args = `${this.showShop.uuid} ${contextSlot}`;
     }
 
-    if(choice === 'W') {
+    if(choiceStr === 'W') {
       args = `${args} ${this.showLocker[this.activeLockerNumber].lockerId}`;
     }
 
@@ -646,7 +675,7 @@ export class ColyseusGameService {
       args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].lockerId}`;
     }
 
-    this.sendRawCommand(cmd, args.trim());
+    this.sendRawCommand(cmd, `${args.trim()} ${postargs}`.trim());
   }
 
   public buildUseAction(item: Item, context: string, contextSlot: string|number) {

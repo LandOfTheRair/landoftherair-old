@@ -212,6 +212,17 @@
     z-index: 1000;
   }
 
+  &.trade-skill {
+    min-width: 525px;
+    max-width: 525px;
+
+    z-index: 1000;
+
+    &.alchemy {
+      min-height: 300px;
+    }
+  }
+
   position: absolute !important;
 
   border: 1px solid #000;

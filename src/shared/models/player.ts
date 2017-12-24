@@ -18,6 +18,7 @@ import { AllTraits } from '../traits/trait-hash';
 import { DeathHelper } from '../../server/helpers/death-helper';
 import { PartyHelper } from '../../server/helpers/party-helper';
 import { Malnourished } from '../../server/effects/Malnourished';
+import { AlchemyContainer } from './container/tradeskills/alchemy';
 
 export class Player extends Character {
   @nonenumerable
@@ -96,6 +97,8 @@ export class Player extends Character {
 
   public $$hungerTicks: number;
 
+  public tradeSkillContainers: { alchemy?: AlchemyContainer };
+
   get party(): Party {
     return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
   }
@@ -105,7 +108,13 @@ export class Player extends Character {
     this.initSack();
     this.initGear();
     this.initHands();
+    this.initTradeskills();
     this.initBuyback();
+  }
+
+  initTradeskills() {
+    this.tradeSkillContainers = this.tradeSkillContainers || {};
+    this.tradeSkillContainers.alchemy = new AlchemyContainer(this.tradeSkillContainers.alchemy);
   }
 
   initBuyback() {
@@ -576,8 +585,8 @@ export class Player extends Character {
 
   private get traitableGear(): Item[] {
     const baseValue = values(this.gear);
-    if(this.canGetBonusFromItemInHand(this.leftHand)) baseValue.push(this.leftHand);
-    if(this.canGetBonusFromItemInHand(this.rightHand)) baseValue.push(this.rightHand);
+    if(this.leftHand && this.canGetBonusFromItemInHand(this.leftHand)) baseValue.push(this.leftHand);
+    if(this.rightHand && this.canGetBonusFromItemInHand(this.rightHand)) baseValue.push(this.rightHand);
     return compact(baseValue);
   }
 

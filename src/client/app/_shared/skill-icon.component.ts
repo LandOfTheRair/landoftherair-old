@@ -16,12 +16,15 @@ const hash = {
   Thievery: 'two-shadows',
   Wand: 'orb-wand',
   Restoration: 'ankh',
-  Conjuration: 'enlightenment'
+  Conjuration: 'enlightenment',
+
+  Alchemy: 'drink-me',
+  Unknown: 'uncertainty'
 };
 
 const tooltips = {
   Onehanded: 'One-Handed Swords',
-  Twohanded: 'Two-Handed Swords',
+  Twohanded: 'Two-Handed Weapons',
   Shortsword: 'Shortswords',
   Staff: 'Staves',
   Polearm: 'Polearms',
@@ -34,7 +37,11 @@ const tooltips = {
   Thievery: 'Thievery',
   Wand: 'Magical Weapons',
   Restoration: 'Restoration Magic',
-  Conjuration: 'Conjuration Magic'
+  Conjuration: 'Conjuration Magic',
+
+  Alchemy: 'Alchemy',
+
+  Unknown: 'Unknown'
 };
 
 @Component({
