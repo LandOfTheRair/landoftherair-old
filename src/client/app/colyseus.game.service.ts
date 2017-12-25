@@ -22,6 +22,7 @@ export class ColyseusGameService {
   worldRoom: any;
 
   _inGame: boolean;
+  _joiningGame: boolean;
 
   showGround: boolean;
   showTrainer: any = {};
@@ -115,6 +116,8 @@ export class ColyseusGameService {
   }
 
   private joinRoom(room) {
+    this._joiningGame = true;
+
     this.zone.runOutsideAngular(() => {
       this.resetRoom();
 
@@ -220,6 +223,7 @@ export class ColyseusGameService {
         if(this.changingMap) return;
         this.inGame$.next(false);
         this._inGame = false;
+        this._joiningGame = false;
       });
 
       this.worldRoom.onError.add((e) => {

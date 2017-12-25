@@ -99,7 +99,7 @@ export class Lobby extends Room<LobbyState> {
 
     this.state.addAccount(account);
 
-    DB.$players.update({ username: client.username }, { $set: { inGame: -1 } }, { multi: true });
+    await DB.$players.update({ username: client.username }, { $set: { inGame: -1 } }, { multi: true });
 
     this.send(client, { action: 'set_account', account });
     this.send(client, { action: 'set_characters', characters: account.characterNames });
@@ -218,7 +218,6 @@ export class Lobby extends Room<LobbyState> {
 
   onLeave(client) {
     this.state.removeAccount(client.username);
-
     DB.$players.update({ username: client.username }, { $set: { inGame: -1 } }, { multi: true });
   }
 

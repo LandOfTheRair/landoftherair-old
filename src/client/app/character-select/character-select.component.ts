@@ -26,6 +26,13 @@ export class CharacterSelectComponent implements OnInit {
 
   public confirmOverwrite: boolean;
 
+  public get statusString(): string {
+    if(!this.resourcesLoaded.done) return 'Loading... (' + this.resourcesLoaded.current + '/' + this.resourcesLoaded.total + ')';
+    if(this.game._joiningGame) return 'Joining...';
+
+    return 'Play';
+  }
+
   constructor(public lobby: ColyseusLobbyService, public game: ColyseusGameService) { }
 
   ngOnInit() {
