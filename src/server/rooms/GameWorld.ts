@@ -361,7 +361,7 @@ export class GameWorld extends Room<GameState> {
       this.itemCreator.setItemExpiry(item, item.owner ? this.decayRateHours * 4 : this.decayRateHours);
     }
 
-    item.$heldBy = null;
+    delete item.$heldBy;
     this.state.addItemToGround(ref, item);
   }
 

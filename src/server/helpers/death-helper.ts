@@ -35,7 +35,7 @@ export class DeathHelper {
     }
 
     if(item) {
-      item.$heldBy = null;
+      delete item.$heldBy;
       player.$$room.addItemToGround(player, item);
     }
   }
