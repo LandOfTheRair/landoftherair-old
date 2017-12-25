@@ -6,7 +6,7 @@ import { Player } from '../../shared/models/player';
 
 import { CharacterCreator } from '../helpers/character-creator';
 
-import { truncate, pick, includes } from 'lodash';
+import { truncate, pick, includes, find } from 'lodash';
 
 import { DB } from '../database';
 
@@ -61,12 +61,20 @@ export class Lobby extends Room<LobbyState> {
 
     const checkAccount = this.state.findAccount(userId);
     if(checkAccount) {
-      this.send(client, {
-        error: 'already_logged_in',
-        prettyErrorName: 'Account Already Logged In',
-        prettyErrorDesc: 'Please log out from other locations first.'
-      });
-      return;
+      this.removeUsername(username);
+
+      const oldClient = find(this.clients, { userId });
+      if(oldClient) {
+        this.send(oldClient, {
+          error: 'someone_kicked_you',
+          prettyErrorName: 'Someone Kicked You',
+          prettyErrorDesc: 'You have been forcibly logged out from this location.'
+        });
+
+        this.send(oldClient, { action: 'force_logout' });
+
+      } 
+
     }
 
     let account = await this.getAccount(userId);
@@ -188,6 +196,7 @@ export class Lobby extends Room<LobbyState> {
   private async playCharacter(client, { charSlot }) {
     const account = this.state.findAccount(client.userId);
     if(account && account.inGame >= 0) {
+
       this.send(client, {
         error: 'already_in_game',
         prettyErrorName: 'Already In Game',
@@ -217,8 +226,12 @@ export class Lobby extends Room<LobbyState> {
   }
 
   onLeave(client) {
-    this.state.removeAccount(client.username);
-    DB.$players.update({ username: client.username }, { $set: { inGame: -1 } }, { multi: true });
+    this.removeUsername(client.username);
+  }
+
+  removeUsername(username) {
+    this.state.removeAccount(username);
+    DB.$players.update({ username }, { $set: { inGame: -1 } }, { multi: true });
   }
 
   onMessage(client, data) {

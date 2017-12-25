@@ -143,11 +143,22 @@ export class ColyseusLobbyService {
     if(action === 'set_character')  return this.setCharacter(other.character);
     if(action === 'set_characters') return this.setCharacters(other.characters);
     if(action === 'start_game')     return this.startGame(other.character);
+    if(action === 'force_logout')   return this.forceLogout();
+  }
+
+  private forceLogout() {
+    this.colyseus.game.quit();
+    this.room.leave();
+    this.quit();
+    this.room.send({ action: 'logout' });
+    this.auth.logout();
+
+    window.location.reload();
   }
 
   private logout() {
-    this.auth.logout();
     this.room.send({ action: 'logout' });
+    this.auth.logout();
 
     window.location.reload();
   }
