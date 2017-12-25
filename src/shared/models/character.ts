@@ -538,6 +538,7 @@ export class Character {
   }
 
   private checkCanEquipWithoutGearCheck(item: Item) {
+    if(!item) return false;
     if(!item.hasCondition()) return false;
     if(!includes(EquippableItemClassesWithWeapons, item.itemClass)) return false;
     if(item.requirements) {
@@ -555,6 +556,7 @@ export class Character {
   }
 
   canEquip(item: Item) {
+    if(!item) return false;
     if(!item.isOwnedBy(this)) return false;
     if(!this.checkCanEquipWithoutGearCheck(item)) return false;
 
@@ -877,7 +879,7 @@ export class Character {
 
   hasHeldItem(item: string, hand: 'left'|'right' = 'right'): boolean {
     const ref = this[`${hand}Hand`];
-    return (ref && ref.name === item && ref.isOwnedBy(this));
+    return (ref && ref.name === item && ref.isOwnedBy && ref.isOwnedBy(this));
   }
 
   hasHeldItems(item1: string, item2: string): boolean {
