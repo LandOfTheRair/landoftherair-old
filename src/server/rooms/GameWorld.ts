@@ -604,6 +604,22 @@ export class GameWorld extends Room<GameState> {
     corpse.searchItems = null;
   }
 
+  dropChestItems(chest: any, searcher?: Player) {
+    if(!chest || !chest.searchItems) return;
+
+    chest.searchItems.forEach(item => {
+      if(searcher && item.itemClass === 'Coin') {
+        searcher.gainGold(item.value);
+        searcher.sendClientMessage(`You loot ${item.value} gold coins from the chest.`);
+
+      } else {
+        this.addItemToGround({ x: chest.x / 64, y: (chest.y / 64) - 1 }, item);
+      }
+    });
+
+    chest.searchItems = null;
+  }
+
   removeCorpse(corpseRef: Item): void {
     if(corpseRef.$heldBy) {
       const player = this.state.findPlayer(corpseRef.$heldBy);

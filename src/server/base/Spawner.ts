@@ -7,6 +7,7 @@ import { NPC } from '../../shared/models/npc';
 import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
 import { DeathHelper } from '../helpers/death-helper';
+import { LootHelper } from '../helpers/loot-helper';
 
 export class Spawner {
 
@@ -200,7 +201,7 @@ export class Spawner {
     const npc = new NPC(npcData);
     npc.$$room = this.room;
 
-    const additionalSackItems = await DeathHelper.getAllLoot(npc, 0, true);
+    const additionalSackItems = await LootHelper.getAllLoot(npc, 0, true);
     sackItems.push(...additionalSackItems);
 
     beltItems.forEach(item => npc.belt.addItem(item));

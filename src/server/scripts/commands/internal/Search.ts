@@ -26,6 +26,12 @@ export class Search extends Look {
       });
     }
 
+    const chest = gameState.findChest(player.x, player.y);
+
+    if(chest) {
+      room.dropChestItems(chest, player);
+    }
+
     super.execute(player, { room, gameState, args });
   }
 

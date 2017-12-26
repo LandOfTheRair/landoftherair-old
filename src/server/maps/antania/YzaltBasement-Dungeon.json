@@ -112,6 +112,42 @@
                  "width":64,
                  "x":384,
                  "y":448
+                }, 
+                {
+                 "gid":1729,
+                 "height":64,
+                 "id":1443,
+                 "name":"Chest 1",
+                 "rotation":0,
+                 "type":"TreasureChest",
+                 "visible":true,
+                 "width":64,
+                 "x":512,
+                 "y":448
+                }, 
+                {
+                 "gid":1729,
+                 "height":64,
+                 "id":1445,
+                 "name":"Chest 2",
+                 "rotation":0,
+                 "type":"TreasureChest",
+                 "visible":true,
+                 "width":64,
+                 "x":576,
+                 "y":448
+                }, 
+                {
+                 "gid":1729,
+                 "height":64,
+                 "id":1446,
+                 "name":"Chest 3",
+                 "rotation":0,
+                 "type":"TreasureChest",
+                 "visible":true,
+                 "width":64,
+                 "x":640,
+                 "y":448
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -169,7 +205,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1443,
+ "nextobjectid":1447,
  "orientation":"orthogonal",
  "properties":
     {
@@ -182,7 +218,8 @@
      "maxSkill":11,
      "region":"Antania",
      "respawnX":6,
-     "respawnY":6
+     "respawnY":6,
+     "script":"antania\/yzalt\/yzaltbasement-dungeon"
     },
  "propertytypes":
     {
@@ -195,7 +232,8 @@
      "maxSkill":"int",
      "region":"string",
      "respawnX":"int",
-     "respawnY":"int"
+     "respawnY":"int",
+     "script":"string"
     },
  "renderorder":"right-down",
  "tileheight":64,

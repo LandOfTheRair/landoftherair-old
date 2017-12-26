@@ -264,6 +264,10 @@ export class GameState {
     return find(this.map.layers[MapLayer.Interactables].objects, findObj);
   }
 
+  getInteractableByName(name: string) {
+    return find(this.map.layers[MapLayer.Interactables].objects, { name });
+  }
+
   removeInteractable(obj: any): void {
     const check = x => x === obj;
     this.map.layers[MapLayer.Interactables].objects = reject(this.map.layers[MapLayer.Interactables].objects, check);
@@ -531,6 +535,13 @@ export class GameState {
     if(!this.groundItems[xKey]) this.groundItems[xKey] = {};
     if(!this.groundItems[xKey][yKey]) this.groundItems[xKey][yKey] = {};
     return this.groundItems[xKey][yKey];
+  }
+
+  findChest(x, y): any {
+    const chest = this.getInteractable(x, y, true,'TreasureChest');
+    if(!chest) return null;
+
+    return chest;
   }
 
   tickPlayers(): void {

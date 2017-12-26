@@ -40,7 +40,9 @@ export class GroundHelper {
   }
 
   static async loadGround(room) {
-    let obj = await DB.$mapGroundItems.findOne({ mapName: room.state.mapName });
+    const opts: any = { mapName: room.state.mapName };
+    if(room.partyOwner) opts.party = room.partyOwner;
+    let obj = await DB.$mapGroundItems.findOne(opts);
     if(!obj) obj = {};
     const groundItems = obj.groundItems || {};
 
@@ -52,7 +54,9 @@ export class GroundHelper {
   }
 
   static async saveGround(room) {
-    DB.$mapGroundItems.update({ mapName: room.state.mapName }, { $set: { groundItems: room.state.serializableGroundItems() } }, { upsert: true });
+    const opts: any = { mapName: room.state.mapName };
+    if(room.partyOwner) opts.party = room.partyOwner;
+    DB.$mapGroundItems.update(opts, { $set: { groundItems: room.state.serializableGroundItems() } }, { upsert: true });
   }
 
 }
