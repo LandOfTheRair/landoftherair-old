@@ -141,9 +141,14 @@ export class NPC extends Character {
 
   die(killer) {
     super.die(killer);
+
     if(!this.spawner) return false;
 
     const giveXp = this.giveXp || { min: 1, max: 10 };
+
+    if(this.$$ai && this.$$ai.death) {
+      this.$$ai.death.dispatch(this, killer);
+    }
 
     if(killer) {
 

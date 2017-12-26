@@ -57,7 +57,8 @@ class Database {
     this.$regionDrops.ensureIndex({ regionName: 1 }, { unique: true });
 
     this.$mapGroundItems = this.client.collection('mapgrounditems');
-    this.$mapGroundItems.ensureIndex({ mapName: 1 }, { unique: true });
+    this.$mapGroundItems.ensureIndex({ mapName: 1, party: 1 }, { unique: true });
+    this.$mapGroundItems.ensureIndex({ updatedAt: 1 }, { expireAfterSeconds: 3600 * 24 });
 
     this.$mapBossTimers = this.client.collection('mapbosstimers');
     this.$mapBossTimers.ensureIndex({ mapName: 1 }, { unique: true });

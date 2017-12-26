@@ -22,3 +22,21 @@
   secondaryType: Twohanded
   value: 150
   sprite: 453
+
+- name: Sedgwick's Greataxe
+  type: Axe
+  secondaryType: Twohanded
+  desc: "a heavy, metal-tipped greataxe stained with the blood of the land"
+  stats:
+    armorClass: 0
+    accuracy: 2
+    offense: 4
+    defense: 0
+  baseDamage: 18
+  minDamage: 4
+  maxDamage: 10
+  damageRolls: 3
+  binds: true
+  tellsBind: true
+  sprite: 301
+  value: 2500

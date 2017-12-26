@@ -56,7 +56,7 @@ export class GroundHelper {
   static async saveGround(room) {
     const opts: any = { mapName: room.state.mapName };
     if(room.partyOwner) opts.party = room.partyOwner;
-    DB.$mapGroundItems.update(opts, { $set: { groundItems: room.state.serializableGroundItems() } }, { upsert: true });
+    DB.$mapGroundItems.update(opts, { $set: { groundItems: room.state.serializableGroundItems(), updatedAt: new Date() } }, { upsert: true });
   }
 
 }

@@ -260,7 +260,8 @@ export class Character {
 
   initAI() {
     this.$$ai = {
-      tick: new Signal()
+      tick: new Signal(),
+      death: new Signal()
     };
   }
 

@@ -6,6 +6,7 @@
   sprite: 900
   desc: "a golden earring"
   value: 1000
+  binds: true
 
   requirements:
     level: 9

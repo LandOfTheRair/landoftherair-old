@@ -29,10 +29,4 @@ export const setup = async (room) => {
   const chest1 = room.state.getInteractableByName('Chest 1');
   chest1.searchItems = await LootHelper.getItemsFromTables(lootTables, room);
 
-  const chest2 = room.state.getInteractableByName('Chest 2');
-  chest2.searchItems = await LootHelper.getItemsFromTables(lootTables, room);
-
-  const chest3 = room.state.getInteractableByName('Chest 3');
-  chest3.searchItems = await LootHelper.getItemsFromTables(lootTables, room);
-
 };

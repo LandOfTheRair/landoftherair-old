@@ -987,7 +987,6 @@
     - drop: 'gear.Waist'
       chance: -1
 
-
 - npcId: Ranata
   name: Ranata
   hostility: Always
@@ -1060,3 +1059,68 @@
     - "WHO INTRUDES UPON MY HOME?"
     - "RAWWWWWWWRGH!"
     - "WHERE... SEDGWICK?"
+
+
+- npcId: Crazed Sedgwick
+  name: Crazed Sedgwick
+  hostility: Always
+  sprite: 480
+  stats: 16
+  skillLevels: 4
+
+  level: 15
+
+  skillOnKill: 25
+
+  gold:
+    min: 5500
+    max: 6000
+
+  hp:
+    min: 100000
+    max: 100000
+
+  mp:
+    min: 1000
+    max: 1000
+
+  giveXp:
+    min: 70000
+    max: 75000
+
+  rightHand: Sedgwick's Greataxe
+
+  usableSkills:
+    - Darkness
+    - Charge
+
+  gear:
+    Armor: Yzalt Fungus Ringmail Tunic
+    Robe1: Ranata Robe
+    Head: Enemy DarkVision Helm
+    Ear: Antanian Earring
+
+  dropPool:
+    choose: 1
+    items:
+      - Yzalt Basic Sash
+      - Yzalt MagicResist Bracers
+      - Yzalt Defensive Claws
+      - Yzalt Combat Boots
+      - Yzalt Combat Amulet
+      - Yzalt Armor Ring
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Ear'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+
+  combatMessages:
+    - "WHY YOU HERE"
+    - "WHY I HERE"
+    - "WHERE HOME?"
+    - "KILLLLLLLLLLLLL"
+    - "FOR THE KING!"

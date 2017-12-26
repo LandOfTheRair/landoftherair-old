@@ -95,8 +95,12 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.maxCreatures || 0;
   }
 
+  get disableCreatureSpawn() {
+    return this.state.map.properties.disableCreatureRespawn;
+  }
+
   get canSpawnCreatures() {
-    return this.state._mapNPCs.length < this.maxCreatures;
+    return !this.disableCreatureSpawn && this.state._mapNPCs.length < this.maxCreatures;
   }
 
   get decayRateHours() {
@@ -108,7 +112,15 @@ export class GameWorld extends Room<GameState> {
   }
 
   get mapRespawnPoint() {
-    return { map: this.mapName, x: this.state.map.properties.respawnX, y: this.state.map.properties.respawnY };
+    return {
+      map: this.state.map.properties.respawnMap || this.mapName,
+      x: this.state.map.properties.respawnX,
+      y: this.state.map.properties.respawnY
+    };
+  }
+
+  get script() {
+    return this.state.map.properties.script;
   }
 
   async onInit(opts) {
@@ -141,6 +153,11 @@ export class GameWorld extends Room<GameState> {
     this.initPartyManager();
 
     this.state.tick();
+
+    if(this.script) {
+      const { setup } = require(__dirname + '/../scripts/rooms/' + this.script);
+      setup(this);
+    }
   }
 
   onDispose() {

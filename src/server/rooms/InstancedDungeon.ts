@@ -10,19 +10,6 @@ export class InstancedDungeon extends GameWorld {
     return { kickMap, kickX, kickY };
   }
 
-  get script() {
-    return this.state.map.properties.script;
-  }
-
-  async onInit(opts) {
-    await super.onInit(opts);
-
-    if(this.script) {
-      const { setup } = require(__dirname + '/../scripts/rooms/' + this.script);
-      setup(this);
-    }
-  }
-
   async onJoin(client, options): Promise<boolean> {
     await super.onJoin(client, options);
 

@@ -2,11 +2,10 @@
 import { NPCLoader } from '../helpers/npc-loader';
 import { LootTable } from 'lootastic';
 
-import { sample, random, extend, isNumber, isString, pull, min, every, compact, some } from 'lodash';
+import { sample, random, extend, isNumber, isString, pull, min, every, compact, some, isArray } from 'lodash';
 import { NPC } from '../../shared/models/npc';
 import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
-import { DeathHelper } from '../helpers/death-helper';
 import { LootHelper } from '../helpers/loot-helper';
 
 export class Spawner {
@@ -62,6 +61,9 @@ export class Spawner {
     this.x = x;
     this.y = y;
     this.map = map;
+
+    // if a room disables creature spawn, it wants them all to spawn at once
+    if(room.disableCreatureSpawn) this.currentTick = 0;
 
     if(this.currentTick === 0) {
       for(let i = 0; i < this.initialSpawn; i++) {
@@ -207,9 +209,16 @@ export class Spawner {
     beltItems.forEach(item => npc.belt.addItem(item));
     sackItems.forEach(item => npc.sack.addItem(item));
 
-    const ai = sample(this.npcAISettings) || 'default';
-    const { tick } = require(`../scripts/ai/${ai}`);
+    let ai = 'default';
+    if(this.npcAISettings) {
+      let aiSettings: any = this.npcAISettings;
+      if(!isArray(aiSettings)) aiSettings = [aiSettings];
+      ai = sample(aiSettings);
+    }
+
+    const { tick, death } = require(`../scripts/ai/${ai}`);
     if(tick) npc.$$ai.tick.add(tick);
+    if(death) npc.$$ai.death.add(death);
 
     if(npc.combatMessages) {
       RandomlyShouts(npc, npc.combatMessages, { combatOnly: true });
