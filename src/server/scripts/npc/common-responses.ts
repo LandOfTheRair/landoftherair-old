@@ -6,6 +6,7 @@ import { AllNormalGearSlots } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
 import { NPCLoader } from '../../helpers/npc-loader';
 import { Revive } from '../../effects/Revive';
+import { LearnAlchemy } from '../../quests/antania/Rylt/LearnAlchemy';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -209,12 +210,35 @@ export const AlchemistResponses = (npc: NPC) => {
         return;
       }
 
+      let lastLine = 'You can also tell me ALCHEMY to practice on your own!';
+
+      const isQuestComplete = player.hasPermanentCompletionFor('LearnAlchemy');
+
+      if(player.hasQuest(LearnAlchemy) && !isQuestComplete) {
+
+        if(NPCLoader.checkPlayerHeldItemEitherHand(player, 'Antanian Fungus Bread')) {
+          LearnAlchemy.updateProgress(player);
+        }
+
+        if(LearnAlchemy.isComplete(player)) {
+          LearnAlchemy.completeFor(player);
+
+          return 'Congratulations! You\'re now a budding alchemist. Go forth and find some new recipes!';
+        }
+
+        return LearnAlchemy.incompleteText(player);
+
+      } else if(!isQuestComplete) {
+        lastLine = 'If you would like, you can LEARN how to do Alchemy from me!';
+
+      }
+
       if(npc.distFrom(player) > 2) return 'Please move closer.';
       return `Hello, ${player.name}! 
       You can tell me COMBINE while holding a bottle in your right hand to 
       mix together that with other bottles of the same type in your sack. 
       I can combine up to ${npc.alchOz}oz into one bottle. It will cost ${npc.alchCost} gold per ounce to do this.
-      You can also tell me ALCHEMY to practice on your own!`;
+      ${lastLine}`;
     });
 
   npc.parser.addCommand('combine')
@@ -257,6 +281,18 @@ export const AlchemistResponses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       npc.$$room.showAlchemyWindow(player, npc);
+    });
+
+  npc.parser.addCommand('learn')
+    .set('syntax', ['learn'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      if(player.hasPermanentCompletionFor('LearnAlchemy')) return 'I have already taught you the way of the bottle!';
+
+      player.startQuest(LearnAlchemy);
+
+      return 'Great! I love teaching new alchemists. To start, go get a bottle of water and bread. Come back, and tell me you want to practice ALCHEMY. Then, just mix the two items together!';
     });
 };
 
