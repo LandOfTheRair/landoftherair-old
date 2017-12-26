@@ -136,7 +136,8 @@ export class GameWorld extends Room<GameState> {
       players: [],
       map: cloneDeep(require(opts.mapPath)),
       mapName: opts.mapName,
-      deepstream: this.deepstream
+      deepstream: this.deepstream,
+      createdId: opts.party
     }));
 
     this.deepstream.login({ map: this.mapName, token: process.env.DEEPSTREAM_TOKEN });
@@ -174,6 +175,45 @@ export class GameWorld extends Room<GameState> {
     this.partyManager.stopEmitting();
 
     DeepstreamCleaner.cleanMap(this.mapName, this.deepstream);
+  }
+
+  async onJoin(client, options) {
+    const { charSlot, username } = options;
+
+    const account = await AccountHelper.getAccount(username);
+    if(!account || account.colyseusId !== client.id) {
+      this.send(client, {
+        error: 'error_invalid_token',
+        prettyErrorName: 'Invalid Session Id',
+        prettyErrorDesc: 'You\'re either trying to say you\'re someone else, or your token is bad. To set this right, refresh the page.'
+      });
+      return false;
+    }
+
+    const playerData = await DB.$players.findOne({ username, map: this.mapName, charSlot, inGame: { $ne: true } });
+
+    if(!playerData) {
+      this.send(client, { error: 'invalid_char', prettyErrorName: 'Invalid Character Data', prettyErrorDesc: 'No idea how this happened!' });
+      return false;
+    }
+
+    this.send(client, { action: 'set_map', map: this.state.formattedMap });
+
+    const player = new Player(playerData);
+    player.$$room = this;
+    player.z = player.z || 0;
+    player.initServer();
+    CharacterHelper.setUpClassFor(player);
+    this.state.addPlayer(player, client.id);
+
+    player.inGame = true;
+    this.savePlayer(player);
+
+    player.respawnPoint = clone(this.mapRespawnPoint);
+
+    this.usernameClientHash[player.username] = { client };
+
+    this.setPlayerXY(player, player.x, player.y);
   }
 
   async onLeave(client) {
@@ -389,45 +429,6 @@ export class GameWorld extends Room<GameState> {
   removeItemFromGround(item) {
     this.itemCreator.removeItemExpiry(item);
     this.state.removeItemFromGround(item);
-  }
-
-  async onJoin(client, options) {
-    const { charSlot, username } = options;
-
-    const account = await AccountHelper.getAccount(username);
-    if(!account || account.colyseusId !== client.id) {
-      this.send(client, {
-        error: 'error_invalid_token',
-        prettyErrorName: 'Invalid Session Id',
-        prettyErrorDesc: 'You\'re either trying to say you\'re someone else, or your token is bad. To set this right, refresh the page.'
-      });
-      return false;
-    }
-
-    const playerData = await DB.$players.findOne({ username, map: this.state.mapName, charSlot, inGame: { $ne: true } });
-
-    if(!playerData) {
-      this.send(client, { error: 'invalid_char', prettyErrorName: 'Invalid Character Data', prettyErrorDesc: 'No idea how this happened!' });
-      return false;
-    }
-
-    this.send(client, { action: 'set_map', map: this.state.formattedMap });
-
-    const player = new Player(playerData);
-    player.$$room = this;
-    player.z = player.z || 0;
-    player.initServer();
-    CharacterHelper.setUpClassFor(player);
-    this.state.addPlayer(player, client.id);
-
-    player.inGame = true;
-    this.savePlayer(player);
-
-    player.respawnPoint = clone(this.mapRespawnPoint);
-
-    this.usernameClientHash[player.username] = { client };
-
-    this.setPlayerXY(player, player.x, player.y);
   }
 
   private prePlayerMapLeave(player: Player) {

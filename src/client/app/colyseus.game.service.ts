@@ -127,12 +127,12 @@ export class ColyseusGameService {
         party
       });
 
-      this.initDeepstreamForRoom(room);
-      this.clientGameState.setMapNPCs(this.deepstream.allNPCsHash);
-
       this.worldRoom.onUpdate.addOnce((state) => {
         this.clientGameState.mapName = state.mapName;
         this.clientGameState.grabOldUpdates(state.mapData);
+
+        this.initDeepstreamForRoom(room, state.createdId);
+        this.clientGameState.setMapNPCs(this.deepstream.allNPCsHash);
 
         this.changingMap = false;
       });
@@ -233,8 +233,8 @@ export class ColyseusGameService {
     });
   }
 
-  private initDeepstreamForRoom(room: string) {
-    this.deepstream.init(room);
+  private initDeepstreamForRoom(room: string, id?: string|number) {
+    this.deepstream.init(room, id);
 
     const updateGround = (ground) => {
       this.clientGameState.setGroundItems(ground || {});

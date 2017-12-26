@@ -42,6 +42,7 @@ export class GroundHelper {
   static async loadGround(room) {
     const opts: any = { mapName: room.state.mapName };
     if(room.partyOwner) opts.party = room.partyOwner;
+
     let obj = await DB.$mapGroundItems.findOne(opts);
     if(!obj) obj = {};
     const groundItems = obj.groundItems || {};
@@ -50,7 +51,7 @@ export class GroundHelper {
 
     room.state.setGround(groundItems);
 
-    DB.$mapGroundItems.remove({ mapName: room.state.mapName });
+    DB.$mapGroundItems.remove(opts);
   }
 
   static async saveGround(room) {

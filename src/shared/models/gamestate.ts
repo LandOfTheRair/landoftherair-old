@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, endsWith } from 'lodash';
 
 import { Player } from './player';
 
@@ -58,6 +58,8 @@ export class GameState {
   @nonenumerable
   fov: Mrpas;
 
+  private createdId: string|number;
+
   environmentalObjects: any[] = [];
 
   private darkness: any = {};
@@ -89,16 +91,18 @@ export class GameState {
   }
 
   private initDeepstream() {
-    this.deepstreamRecords.groundItems = this.deepstream.record.getRecord(`${this.mapName}/groundItems`);
+    const recordPath = this.createdId && endsWith(this.mapName, '-Dungeon') ? `${this.mapName}-${this.createdId}` : this.mapName;
+    
+    this.deepstreamRecords.groundItems = this.deepstream.record.getRecord(`${recordPath}/groundItems`);
     this.deepstreamRecords.groundItems.set({});
 
-    this.deepstreamRecords.npcHash = this.deepstream.record.getRecord(`${this.mapName}/npcHash`);
+    this.deepstreamRecords.npcHash = this.deepstream.record.getRecord(`${recordPath}/npcHash`);
     this.deepstreamRecords.npcHash.set({});
 
-    this.deepstreamRecords.npcData = this.deepstream.record.getRecord(`${this.mapName}/npcData`);
+    this.deepstreamRecords.npcData = this.deepstream.record.getRecord(`${recordPath}/npcData`);
     this.deepstreamRecords.npcData.set({});
 
-    this.deepstreamRecords.npcVolatile = this.deepstream.record.getRecord(`${this.mapName}/npcVolatile`);
+    this.deepstreamRecords.npcVolatile = this.deepstream.record.getRecord(`${recordPath}/npcVolatile`);
     this.deepstreamRecords.npcVolatile.set({});
   }
 

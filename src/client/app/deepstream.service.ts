@@ -1,9 +1,9 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 
 import { Character } from '../../shared/models/character';
 
-import { debounce, difference, extend } from 'lodash';
+import { debounce, difference, extend, endsWith } from 'lodash';
 
 import * as swal from 'sweetalert2';
 import * as Deepstream from 'deepstream.io-client-js';
@@ -19,6 +19,7 @@ export class DeepstreamService {
 
   private ds: any;
   private mapName: string;
+  private mapId: string|number;
 
   private ground: any;
   private npcHash: any;
@@ -60,21 +61,28 @@ export class DeepstreamService {
     this.currentNPCHash = data;
   }
 
-  init(mapName: string) {
+  init(mapName: string, mapId?: string|number) {
     this.mapName = mapName;
+    this.mapId = mapId;
 
-    this.ground = this.ds.record.getRecord(`${mapName}/groundItems`);
+    const subPath = this.mapId && endsWith(this.mapName, 'Dungeon') ? `${this.mapName}-${this.mapId}` : this.mapName;
+
+    // prevent loading deepstream records that dont have a party id, but should
+    if(subPath === this.mapName && endsWith(this.mapName, '-Dungeon')) return;
+
+    this.ground = this.ds.record.getRecord(`${subPath}/groundItems`);
     this.ground.subscribe(data => this.ground$.next(data), true);
 
-    this.npcData = this.ds.record.getRecord(`${mapName}/npcData`);
-    this.npcVolatile = this.ds.record.getRecord(`${mapName}/npcVolatile`);
+    this.npcData = this.ds.record.getRecord(`${subPath}/npcData`);
+    this.npcVolatile = this.ds.record.getRecord(`${subPath}/npcVolatile`);
 
-    this.npcHash = this.ds.record.getRecord(`${mapName}/npcHash`);
+    this.npcHash = this.ds.record.getRecord(`${subPath}/npcHash`);
     this.npcHash.subscribe(debounce(this.updateNPCList.bind(this), 500), true);
   }
 
   uninit() {
     this.mapName = '';
+    this.mapId = '';
     if(this.ground) this.ground.discard();
     if(this.npcData) this.npcData.discard();
     if(this.npcHash) this.npcHash.discard();
