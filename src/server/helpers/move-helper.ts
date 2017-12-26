@@ -153,7 +153,9 @@ export class MoveHelper {
   }
 
   private static handleTeleport(room, player, obj) {
-    const { teleportX, teleportY, teleportMap, requireHeld, requireQuest, requireQuestProgress, requireQuestComplete } = obj.properties;
+    const { teleportX, teleportY, teleportMap, requireHeld, requireQuest, requireQuestProgress, requireQuestComplete, requireParty } = obj.properties;
+
+    if(requireParty && !player.party) return player.sendClientMessage('You must gather your party before venturing forth.');
 
     // check if player has a held item
     if(requireHeld && !player.hasHeldItem(requireHeld)) return;

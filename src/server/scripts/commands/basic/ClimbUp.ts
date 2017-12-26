@@ -24,7 +24,10 @@ export class ClimbUp extends Command {
 
     if(!stairs) return player.sendClientMessage('There are no grips here.');
 
-    const { teleportMap, teleportX, teleportY } = stairs.properties;
+    const { teleportMap, teleportX, teleportY, requireParty } = stairs.properties;
+
+    if(requireParty && !player.party) return player.sendClientMessage('You must gather your party before venturing forth.');
+
     room.teleport(player, {
       x: teleportX,
       y: teleportY,

@@ -115,7 +115,7 @@ export class ColyseusGameService {
     this.joinRoom(this.character.map);
   }
 
-  private joinRoom(room) {
+  private joinRoom(room, party?: string) {
     this._joiningGame = true;
 
     this.zone.runOutsideAngular(() => {
@@ -123,7 +123,8 @@ export class ColyseusGameService {
 
       this.worldRoom = this.client.join(room, {
         charSlot: this.character.charSlot,
-        username: this.colyseus.username
+        username: this.colyseus.username,
+        party
       });
 
       this.initDeepstreamForRoom(room);
@@ -327,7 +328,7 @@ export class ColyseusGameService {
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
     if(action === 'show_alchemy')   return this.showAlchemyWindow(other.uuid);
     if(action === 'show_ground')    return this.showGroundWindow();
-    if(action === 'change_map')     return this.changeMap(other.map);
+    if(action === 'change_map')     return this.changeMap(other.map, other.party);
     if(action === 'log_message')    return this.logMessage(other);
     if(action === 'set_character')  return this.setCharacter(other.character);
     if(action === 'update_pos')     return this.updatePos(other.x, other.y, other.dir, other.swimLevel, other.fov);
@@ -432,9 +433,9 @@ export class ColyseusGameService {
     this.sendCommandString(`${this.showBank.uuid}, deposit ${amount}`);
   }
 
-  private changeMap(map) {
+  private changeMap(map, party) {
     this.changingMap = true;
-    this.joinRoom(map);
+    this.joinRoom(map, party);
   }
 
   private showGroundWindow() {

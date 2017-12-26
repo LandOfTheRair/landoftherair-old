@@ -512,6 +512,12 @@ export class GameState {
     Object.keys(groundItems).forEach(x => {
       Object.keys(groundItems[x]).forEach(y => {
         delete groundItems[x][y].Corpse;
+
+        Object.keys(groundItems[x][y]).forEach(cat => {
+          groundItems[x][y][cat].forEach(item => {
+            delete item.$heldBy;
+          });
+        });
       });
     });
     return groundItems;

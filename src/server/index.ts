@@ -6,6 +6,8 @@ import { GameAPI } from './api';
 import { DeepstreamCleaner } from './deepstream-cleaner';
 import { Logger } from './logger';
 
+import { includes } from 'lodash';
+
 import * as colyseus from 'colyseus';
 
 import * as Rooms from './rooms';
@@ -52,7 +54,8 @@ if(process.argv[2] === '--single-core') {
     files.forEach(file => {
       const mapName = path.basename(file, path.extname(file));
       allMapNames[mapName] = true;
-      gameServer.register(mapName, Rooms.GameWorld, { mapName, mapPath: file, allMapNames });
+      const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
+      gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
     });
   });
 
@@ -82,7 +85,8 @@ if(process.argv[2] === '--single-core') {
       files.forEach(file => {
         const mapName = path.basename(file, path.extname(file));
         allMapNames[mapName] = true;
-        gameServer.register(mapName, Rooms.GameWorld, { mapName, mapPath: file, allMapNames });
+        const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
+        gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
       });
     });
 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
+import { startCase } from 'lodash';
+
 @Component({
   selector: 'app-party',
   templateUrl: './party.component.html',
@@ -22,7 +24,9 @@ export class PartyComponent {
 
   locationFor(character) {
     if(character.username === this.colyseusGame.character.username) return '✧';
-    if(character.map !== this.colyseusGame.character.map)           return character.map;
+    if(character.map !== this.colyseusGame.character.map)           {
+      return startCase(character.map).split('Dungeon').join('(Dungeon)');
+    }
     if(character.z > this.colyseusGame.character.z)                 return 'Above';
     if(character.z < this.colyseusGame.character.z)                 return 'Below';
 

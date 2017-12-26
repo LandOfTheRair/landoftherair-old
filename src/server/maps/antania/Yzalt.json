@@ -3952,6 +3952,32 @@
                  "width":64,
                  "x":5760,
                  "y":10752
+                }, 
+                {
+                 "gid":1763,
+                 "height":64,
+                 "id":1442,
+                 "name":"",
+                 "properties":
+                    {
+                     "requireParty":true,
+                     "teleportMap":"YzaltBasement-Dungeon",
+                     "teleportX":6,
+                     "teleportY":6
+                    },
+                 "propertytypes":
+                    {
+                     "requireParty":"bool",
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsDown",
+                 "visible":true,
+                 "width":64,
+                 "x":1536,
+                 "y":1216
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7518,7 +7544,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1441,
+ "nextobjectid":1443,
  "orientation":"orthogonal",
  "properties":
     {

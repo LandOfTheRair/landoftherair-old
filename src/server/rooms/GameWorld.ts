@@ -342,7 +342,7 @@ export class GameWorld extends Room<GameState> {
       await this.savePlayer(player);
       player.$$doNotSave = true;
       this.state.resetFOV(player);
-      this.send(client, { action: 'change_map', map: newMap });
+      this.send(client, { action: 'change_map', map: newMap, party: player.partyName });
     }
   }
 
@@ -361,7 +361,7 @@ export class GameWorld extends Room<GameState> {
       this.itemCreator.setItemExpiry(item, item.owner ? this.decayRateHours * 4 : this.decayRateHours);
     }
 
-    delete item.$heldBy;
+    item.$heldBy = null;
     this.state.addItemToGround(ref, item);
   }
 
