@@ -1,5 +1,5 @@
 
-import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter, clone, pull } from 'lodash';
+import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter, clone, pull, extend } from 'lodash';
 import * as Deepstream from 'deepstream.io-client-js';
 
 import { Parser } from 'mingy';
@@ -211,12 +211,14 @@ export class GameWorld extends Room<GameState> {
     CommandExecutor.queueCommand(player, data.command, data);
   }
 
-  private async savePlayer(player: Player) {
+  private async savePlayer(player: Player, extraOpts = {}) {
     if(player.$$doNotSave) return;
 
     const savePlayer = player.toSaveObject();
     savePlayer.fov = null;
     savePlayer._party = null;
+
+    extend(savePlayer, extraOpts);
 
     if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
       savePlayer.leftHand = null;
@@ -341,7 +343,9 @@ export class GameWorld extends Room<GameState> {
       return;
     }
 
-    this.setPlayerXY(player, x, y);
+    if(!newMap || player.map === newMap) {
+      this.setPlayerXY(player, x, y);
+    }
 
     if(zChange) {
       player.z += zChange;
@@ -356,7 +360,7 @@ export class GameWorld extends Room<GameState> {
     if(newMap && player.map !== newMap) {
       player.map = newMap;
       this.prePlayerMapLeave(player);
-      await this.savePlayer(player);
+      await this.savePlayer(player, { x, y });
       player.$$doNotSave = true;
       this.state.resetFOV(player);
       this.send(client, { action: 'change_map', map: newMap, party: player.partyName });
