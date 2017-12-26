@@ -503,6 +503,13 @@ export class GameState {
 
   setGround(ground: any): void {
     this.groundItems = ground;
+    Object.keys(this.groundItems).forEach(x => {
+      Object.keys(this.groundItems[x]).forEach(y => {
+        Object.keys(this.groundItems[x][y]).forEach(itemClass => {
+          this.groundItems[x][y][itemClass] = this.groundItems[x][y][itemClass].map(i => new Item(i));
+        });
+      });
+    });
     this.updateGroundItems();
   }
 
