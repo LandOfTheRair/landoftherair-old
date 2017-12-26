@@ -22,6 +22,8 @@ export class Steal extends Skill {
   requiresLearn = false;
 
   canUse(user: Character, target: Character) {
+    if(!this.checkPlayerEmptyHand(user)) return false;
+
     return (!user.leftHand || (!user.rightHand || !user.rightHand.twoHanded))
       && target.sack.hasItems
       && user.distFrom(target) === 0;

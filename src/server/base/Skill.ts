@@ -115,9 +115,11 @@ export abstract class Skill extends Command {
         )
       );
 
+      const handName = this.getEmptyHand(user);
+      if(!handName) return;
+
       target.gold -= stolenGold;
       const item = await user.$$room.itemCreator.getGold(stolenGold);
-      const handName = this.getEmptyHand(user);
 
       user[`set${handName}`](item);
       user.sendClientMessage({ message: `You stole ${stolenGold} gold from ${target.name}!`, target: target.uuid });
@@ -131,9 +133,11 @@ export abstract class Skill extends Command {
         return;
       }
 
+      const handName = this.getEmptyHand(user);
+      if(!handName) return;
+
       const item = target.sack.randomItem();
       target.sack.takeItem(item);
-      const handName = this.getEmptyHand(user);
       user[`set${handName}`](item);
 
       user.sendClientMessage({ message: `You stole a ${item.itemClass.toLowerCase()} from ${target.name}!`, target: target.uuid });
