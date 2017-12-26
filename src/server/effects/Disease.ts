@@ -28,6 +28,8 @@ export class Disease extends SpellEffect {
     if(this.potency > 11) mult = 4;
     if(this.potency > 21) mult = 5;
 
+    if(caster.baseClass === 'Thief') mult = Math.floor(mult * 1.5);
+
     const calcMod = Math.max(1, this.getCasterStat(caster, 'wis') - target.getTotalStat('con'));
 
     const wisCheck = Math.max(1, Math.floor(mult * calcMod));

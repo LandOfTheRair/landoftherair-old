@@ -28,6 +28,8 @@ export class Poison extends SpellEffect {
     if(this.potency > 11) mult = 1;
     if(this.potency > 21) mult = 3;
 
+    if(caster.baseClass === 'Thief') mult = Math.floor(mult * 1.5);
+
     const wisCheck = Math.max(1, Math.floor(mult * this.getCasterStat(caster, 'wis')));
     const damage = +dice.roll(`${this.potency || 1}d${wisCheck}`);
 
