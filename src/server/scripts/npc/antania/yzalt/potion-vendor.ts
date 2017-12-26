@@ -4,7 +4,6 @@ import { VendorResponses } from '../../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
-  npc.allegiance = 'Pirates';
 
   const vendorItems = [
     'Mend Bottle',
