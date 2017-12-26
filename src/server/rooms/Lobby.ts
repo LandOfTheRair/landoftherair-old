@@ -12,12 +12,14 @@ import { DB } from '../database';
 
 import { JWTHelper } from '../helpers/jwt-helper';
 import { ItemCreator } from '../helpers/item-creator';
+import { PartyArbiter } from '../helpers/party-arbiter';
 
 export class Lobby extends Room<LobbyState> {
 
   auth0: any;
 
   private itemCreator: ItemCreator;
+  private partyArbiter: PartyArbiter;
 
   onInit(opts) {
 
@@ -25,6 +27,7 @@ export class Lobby extends Room<LobbyState> {
     this.autoDispose = false;
 
     this.itemCreator = new ItemCreator();
+    this.partyArbiter = new PartyArbiter();
 
     this.setState(new LobbyState({ accounts: [], messages: [], motd: '' }));
 
@@ -73,7 +76,7 @@ export class Lobby extends Room<LobbyState> {
 
         this.send(oldClient, { action: 'force_logout' });
 
-      } 
+      }
 
     }
 
