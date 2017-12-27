@@ -11,6 +11,7 @@ export class EquipToGround extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const slot = args;
+    if(this.isAccessingLocker(player)) return;
     if(isUndefined(slot)) return false;
 
     const item = player.gear[slot];

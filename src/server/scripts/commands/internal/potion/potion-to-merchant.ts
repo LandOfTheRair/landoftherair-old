@@ -10,6 +10,7 @@ export class PotionToMerchant extends Command {
   public format = 'MerchantUUID';
 
   execute(player: Player, { room, gameState, args }) {
+    if(this.isAccessingLocker(player)) return;
 
     const merchantUUID = args;
 

@@ -14,6 +14,7 @@ export class GroundToTradeskill extends Command {
 
     const [itemType, itemId, tsSlot, tsDestSlot, alchUUID] = splitArgs;
 
+    if(this.isAccessingLocker(player)) return;
     if(!itemType || !itemId || !tsSlot || isUndefined(tsDestSlot) || !alchUUID) return false;
 
     const container = room.state.findNPC(alchUUID);

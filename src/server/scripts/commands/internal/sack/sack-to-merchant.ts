@@ -10,6 +10,7 @@ export class SackToMerchant extends Command {
   public format = 'Slot MerchantUUID';
 
   execute(player: Player, { room, gameState, args }) {
+    if(this.isAccessingLocker(player)) return;
 
     const [slot, merchantUUID] = args.split(' ');
 

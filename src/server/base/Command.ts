@@ -107,4 +107,16 @@ export abstract class Command {
     if(!item) return player.sendClientMessage('You do not see that item.');
     return item;
   }
+
+  accessLocker(player: Player) {
+    player.$$isAccessingLocker = true;
+  }
+
+  unaccessLocker(player: Player) {
+    player.$$isAccessingLocker = false;
+  }
+
+  isAccessingLocker(player: Player) {
+    return player.$$isAccessingLocker;
+  }
 }

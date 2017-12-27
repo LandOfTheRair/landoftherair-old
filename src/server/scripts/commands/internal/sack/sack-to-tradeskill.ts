@@ -10,6 +10,7 @@ export class SackToTradeskill extends Command {
   public format = 'ItemSlot TradeskillSlot TradeskillDestSlot AlchUUID';
 
   execute(player: Player, { room, gameState, args }) {
+    if(this.isAccessingLocker(player)) return;
     const [sackSlot, tsSlot, tsDestSlot, alchUUID] = args.split(' ');
     if(isUndefined(sackSlot) || !tsSlot || isUndefined(tsDestSlot) || !alchUUID) return false;
 

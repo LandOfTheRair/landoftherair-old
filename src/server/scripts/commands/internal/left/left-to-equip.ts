@@ -11,6 +11,7 @@ export class LeftToEquip extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const item = player.leftHand;
+    if(this.isAccessingLocker(player)) return;
     if(!item) return;
 
     const slot = +args;

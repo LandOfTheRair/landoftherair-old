@@ -10,6 +10,7 @@ export class RightToLeft extends Command {
   public format = '';
 
   execute(player: Player, { room, gameState, args }) {
+    if(this.isAccessingLocker(player)) return;
     const left = player.leftHand;
     const right = player.rightHand;
 

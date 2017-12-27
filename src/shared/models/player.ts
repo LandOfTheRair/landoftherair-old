@@ -96,6 +96,7 @@ export class Player extends Character {
   private lastDeathLocation: any;
 
   public $$hungerTicks: number;
+  public $$isAccessingLocker: boolean;
 
   public tradeSkillContainers: { alchemy?: AlchemyContainer };
 

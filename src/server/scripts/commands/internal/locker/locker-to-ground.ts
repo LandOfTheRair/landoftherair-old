@@ -11,20 +11,23 @@ export class LockerToGround extends Command {
   public format = 'ItemSlot LockerID';
 
   async execute(player: Player, { room, gameState, args }) {
+    if(this.isAccessingLocker(player)) return;
     const [slotId, lockerId] = args.split(' ');
 
     if(!this.checkPlayerEmptyHand(player)) return;
-    if(!this.findLocker(player)) return;
+    this.accessLocker(player);
+    if(!this.findLocker(player)) return this.unaccessLocker(player);
 
     const locker = await LockerHelper.loadLocker(player, lockerId);
-    if(!locker) return false;
+    if(!locker) return this.unaccessLocker(player);
 
     const item = locker.takeItemFromSlot(+slotId);
-    if(!item) return;
+    if(!item) return this.unaccessLocker(player);
 
     room.addItemToGround(player, item);
     room.showGroundWindow(player);
     room.updateLocker(player, locker);
+    this.unaccessLocker(player);
   }
 
 }

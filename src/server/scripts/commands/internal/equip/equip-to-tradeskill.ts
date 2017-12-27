@@ -11,6 +11,7 @@ export class EquipToTradeskill extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const [slot, tsSlot, tsDestSlot, alchUUID] = args.split(' ');
+    if(this.isAccessingLocker(player)) return;
     if(!slot || !tsSlot || isUndefined(tsDestSlot) || !alchUUID) return false;
 
     const container = room.state.findNPC(alchUUID);

@@ -11,23 +11,27 @@ export class SackToLocker extends Command {
   public format = 'Slot LockerID';
 
   async execute(player: Player, { room, gameState, args }) {
+    if(this.isAccessingLocker(player)) return;
 
     const [slot, lockerId] = args.split(' ');
 
     if(!this.checkPlayerEmptyHand(player)) return;
 
-    if(!this.findLocker(player)) return;
+    this.accessLocker(player);
+
+    if(!this.findLocker(player)) return this.unaccessLocker(player);
 
     const locker = await LockerHelper.loadLocker(player, lockerId);
-    if(!locker) return;
+    if(!locker) return this.unaccessLocker(player);
 
     const item = player.sack.getItemFromSlot(+slot);
-    if(!item) return;
+    if(!item) return this.unaccessLocker(player);
 
-    if(!this.addItemToContainer(player, locker, item)) return;
+    if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player);
 
     player.sack.takeItemFromSlot(+slot);
     room.updateLocker(player, locker);
+    this.unaccessLocker(player);
   }
 
 }

@@ -11,23 +11,29 @@ export class LockerToEquip extends Command {
   public format = 'ItemSlot LockerID';
 
   async execute(player: Player, { room, gameState, args }) {
+    if(this.isAccessingLocker(player)) return;
     const [slotStr, lockerId] = args.split(' ');
     const slot = +slotStr;
 
     if(!this.checkPlayerEmptyHand(player)) return;
-    if(!this.findLocker(player)) return;
+    this.accessLocker(player);
+    if(!this.findLocker(player)) return this.unaccessLocker(player);
 
     const locker = await LockerHelper.loadLocker(player, lockerId);
-    if(!locker) return false;
+    if(!locker) return this.unaccessLocker(player);
 
     const item = locker.getItemFromSlot(slot);
-    if(!item) return false;
+    if(!item) return this.unaccessLocker(player);
 
-    if(!player.canEquip(item)) return player.sendClientMessage('You cannot equip that item.');
+    if(!player.canEquip(item)) {
+      this.unaccessLocker(player);
+      return player.sendClientMessage('You cannot equip that item.');
+    }
 
     player.equip(item);
     locker.takeItemFromSlot(slot);
     room.updateLocker(player, locker);
+    this.unaccessLocker(player);
   }
 
 }

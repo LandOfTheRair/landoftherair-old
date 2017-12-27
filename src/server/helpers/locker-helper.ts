@@ -31,7 +31,8 @@ export class LockerHelper {
 
   static async loadLocker(player: Player, lockerId): Promise<Locker> {
     if(player.$$locker) {
-      return await player.$$locker;
+      const locker = await player.$$locker;
+      if(player.$$locker.lockerId === lockerId) return locker;
     }
 
     player.$$locker = DB.$characterLockers.findOne({ username: player.username, charSlot: player.charSlot, regionId: player.$$room.mapRegion, lockerId })

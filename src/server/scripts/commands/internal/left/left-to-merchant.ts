@@ -12,6 +12,7 @@ export class LeftToMerchant extends Command {
   execute(player: Player, { room, gameState, args }) {
     const item = player.leftHand;
 
+    if(this.isAccessingLocker(player)) return;
     if(!item) return;
     if(!item.isOwnedBy(player)) return player.sendClientMessage('That is not yours!');
 

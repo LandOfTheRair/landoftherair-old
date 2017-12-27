@@ -11,6 +11,7 @@ export class GroundToRight extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const splitArgs = args.split(' ');
+    if(this.isAccessingLocker(player)) return;
     if(splitArgs.length < 1) return false;
 
     if(!this.checkPlayerEmptyHand(player)) return;

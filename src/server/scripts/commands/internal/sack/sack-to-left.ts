@@ -10,6 +10,7 @@ export class SackToLeft extends Command {
   public format = 'ItemSlot';
 
   execute(player: Player, { room, gameState, args }) {
+    if(this.isAccessingLocker(player)) return;
     const slot = +args;
 
     if(!this.checkPlayerEmptyHand(player)) return;

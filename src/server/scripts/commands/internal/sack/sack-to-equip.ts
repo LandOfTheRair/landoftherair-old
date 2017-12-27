@@ -10,6 +10,7 @@ export class SackToEquip extends Command {
   public format = 'ItemSlot';
 
   execute(player: Player, { room, gameState, args }) {
+    if(this.isAccessingLocker(player)) return;
     const slot = +args;
     if(isUndefined(slot)) return false;
 

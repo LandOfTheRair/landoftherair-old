@@ -14,19 +14,22 @@ export class BeltToLocker extends Command {
 
     const [slot, lockerId] = args.split(' ');
 
+    if(this.isAccessingLocker(player)) return;
     if(!this.checkPlayerEmptyHand(player)) return;
 
-    if(!this.findLocker(player)) return;
+    this.accessLocker(player);
+    if(!this.findLocker(player)) return this.unaccessLocker(player);
 
     const locker = await LockerHelper.loadLocker(player, lockerId);
-    if(!locker) return;
+    if(!locker) return this.unaccessLocker(player);
 
     const item = player.belt.getItemFromSlot(slot);
 
-    if(!this.addItemToContainer(player, locker, item)) return;
+    if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player);
 
     player.belt.takeItemFromSlot(slot);
     room.updateLocker(player, locker);
+    this.unaccessLocker(player);
   }
 
 }

@@ -40,11 +40,11 @@ export class CommandExecutor {
     return skill.canUse(user, target) ? skill : null;
   }
 
-  static queueCommand(player: Player, command: string, args: any) {
+  static async queueCommand(player: Player, command: string, args: any) {
 
     if(!player) return;
 
-    const wasSuccess = this._queueCommand(player, command, args);
+    const wasSuccess = await this._queueCommand(player, command, args);
 
     // explicit check
     if(wasSuccess === false) {
@@ -52,7 +52,7 @@ export class CommandExecutor {
     }
   }
 
-  static _queueCommand(player: Player, command: string, args: any) {
+  static async _queueCommand(player: Player, command: string, args: any) {
     const cmd: Command = commandHash[command];
     if(!cmd) return false;
 
@@ -71,14 +71,14 @@ export class CommandExecutor {
     }
 
     if(startsWith(command, '~') && !player.isUnableToAct()) {
-      return this.executeCommand(player, command, args);
+      return await this.executeCommand(player, command, args);
     } else {
       player.queueAction({ command, args: args.args });
       return true;
     }
   }
 
-  static executeCommand(player: Player, command: string, args: any) {
+  static async executeCommand(player: Player, command: string, args: any) {
     const cmd: Command = commandHash[command];
     if(!cmd) return false;
 
@@ -88,7 +88,7 @@ export class CommandExecutor {
 
     if(hasLearned.effect) args.effect = hasLearned.effect;
 
-    const wasSuccess = cmd.execute(player, args);
+    const wasSuccess = await cmd.execute(player, args);
     if(wasSuccess === false) {
       player.sendClientMessage(`Invalid format. Format: ${command} ${cmd.format}`);
     }

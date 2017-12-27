@@ -12,6 +12,7 @@ export class BeltToRight extends Command {
   execute(player: Player, { room, gameState, args }) {
     const slot = +args;
 
+    if(this.isAccessingLocker(player)) return;
     if(!this.checkPlayerEmptyHand(player)) return;
 
     const item = player.belt.takeItemFromSlot(slot);

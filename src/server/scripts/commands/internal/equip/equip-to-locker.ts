@@ -12,6 +12,7 @@ export class EquipToLocker extends Command {
 
   async execute(player: Player, { room, gameState, args }) {
     const [slot, lockerId] = args.split(' ');
+    if(this.isAccessingLocker(player)) return;
     if(isUndefined(slot)) return false;
 
     const item = player.gear[slot];
@@ -19,16 +20,18 @@ export class EquipToLocker extends Command {
 
     if(!this.checkPlayerEmptyHand(player)) return;
 
-    if(!this.findLocker(player)) return;
+    this.accessLocker(player);
+
+    if(!this.findLocker(player)) return this.unaccessLocker(player);
 
     const locker = await LockerHelper.loadLocker(player, lockerId);
-    if(!locker) return;
+    if(!locker) return this.unaccessLocker(player);
 
-    if(!this.addItemToContainer(player, locker, item)) return;
+    if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player);
 
     player.unequip(slot);
     room.updateLocker(player, locker);
-
+    this.unaccessLocker(player);
   }
 
 }

@@ -10,6 +10,7 @@ export class RightToEquip extends Command {
   public format = 'ItemSlot';
 
   execute(player: Player, { room, gameState, args }) {
+    if(this.isAccessingLocker(player)) return;
 
     const item = player.rightHand;
     if(!item) return;

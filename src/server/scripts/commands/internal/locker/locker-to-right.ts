@@ -13,19 +13,22 @@ export class LockerToRight extends Command {
   async execute(player: Player, { room, gameState, args }) {
     const [slotId, lockerId] = args.split(' ');
 
+    if(this.isAccessingLocker(player)) return;
     if(!this.checkPlayerEmptyHand(player)) return;
-    if(!this.findLocker(player)) return;
+    this.accessLocker(player);
+    if(!this.findLocker(player)) return this.unaccessLocker(player);
 
     const locker = await LockerHelper.loadLocker(player, lockerId);
-    if(!locker) return false;
+    if(!locker) return this.unaccessLocker(player);
 
     const item = locker.takeItemFromSlot(+slotId);
-    if(!item) return;
+    if(!item) return this.unaccessLocker(player);
 
     this.trySwapRightToLeft(player);
 
     player.setRightHand(item);
     room.updateLocker(player, locker);
+    this.unaccessLocker(player);
   }
 
 }

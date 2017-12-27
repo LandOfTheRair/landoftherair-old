@@ -11,18 +11,24 @@ export class RightToLocker extends Command {
   public format = 'LockerID';
 
   async execute(player: Player, { room, gameState, args }) {
+
+    if(this.isAccessingLocker(player)) return;
+
     const item = player.rightHand;
     if(!item) return;
 
-    if(!this.findLocker(player)) return;
+    this.accessLocker(player);
+
+    if(!this.findLocker(player)) return this.unaccessLocker(player);
 
     const locker = await LockerHelper.loadLocker(player, args);
-    if(!locker) return;
+    if(!locker) return this.unaccessLocker(player);
 
-    if(!this.addItemToContainer(player, locker, item)) return;
+    if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player);
 
     player.setRightHand(null);
     room.updateLocker(player, locker);
+    this.unaccessLocker(player);
   }
 
 }

@@ -11,6 +11,7 @@ export class LeftToPotion extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     const left = player.leftHand;
+    if(this.isAccessingLocker(player)) return;
     if(!left) return;
 
     if(left.itemClass !== 'Bottle') return player.sendClientMessage('That item is not a bottle.');
