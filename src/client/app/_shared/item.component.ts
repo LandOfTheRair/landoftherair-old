@@ -79,15 +79,42 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
     }
     
     .glow-yellow {
-      box-shadow: inset 0 0 14px #f60;
+      animation: glow-yellow 800ms ease-out infinite alternate;
     }
     
     .glow-red {
-      box-shadow: inset 0 0 14px #f00;
+      animation: glow-red 400ms ease-out infinite alternate;
     }
     
     .glow-black {
-      box-shadow: inset 0 0 14px #000;
+      animation: glow-black 200ms ease-out infinite alternate;
+    }
+
+    @keyframes glow-yellow {
+      0% {
+        box-shadow: inset 0 0 10px #f60;
+      }
+      100% {
+        box-shadow: inset 0 0 15px #f60;
+      }
+    }
+
+    @keyframes glow-red {
+      0% {
+        box-shadow: inset 0 0 15px #f00;
+      }
+      100% {
+        box-shadow: inset 0 0 20px #f00;
+      }
+    }
+
+    @keyframes glow-black {
+      0% {
+        box-shadow: inset 0 0 20px #000;
+      }
+      100% {
+        box-shadow: inset 0 0 30px #000;
+      }
     }
     
     .item-background {
