@@ -604,6 +604,7 @@ export class GameWorld extends Room<GameState> {
     if((this.ticks % TickRatesPerTimer.PlayerSave) === 0) {
       this.state.allPlayers.forEach(player => this.savePlayer(player));
 
+      GroundHelper.saveGround(this);
       // reset ticks
       this.ticks = 0;
     }
