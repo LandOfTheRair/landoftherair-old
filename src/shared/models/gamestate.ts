@@ -92,7 +92,7 @@ export class GameState {
 
   private initDeepstream() {
     const recordPath = this.createdId && endsWith(this.mapName, '-Dungeon') ? `${this.mapName}-${this.createdId}` : this.mapName;
-    
+
     this.deepstreamRecords.groundItems = this.deepstream.record.getRecord(`${recordPath}/groundItems`);
     this.deepstreamRecords.groundItems.set({});
 
@@ -289,10 +289,12 @@ export class GameState {
   calculateFOV(player): void {
     const affected = {};
 
+    const dist = player.isPlayer() ? 5 : 4;
+
     // darkness obscures all vision
     if(this.isDarkAt(player.x, player.y) && !player.hasEffect('DarkVision')) {
-      for(let xx = player.x - 4; xx <= player.x + 4; xx++) {
-        for(let yy = player.y - 4; yy <= player.y + 4; yy++) {
+      for(let xx = player.x - dist; xx <= player.x + dist; xx++) {
+        for(let yy = player.y - dist; yy <= player.y + dist; yy++) {
           affected[xx - player.x] = affected[xx - player.x] || {};
           affected[xx - player.x][yy - player.y] = false;
         }
@@ -300,7 +302,7 @@ export class GameState {
 
     // no dark, calculate fov
     } else {
-      this.fov.compute(player.x, player.y, 4, (x, y) => {
+      this.fov.compute(player.x, player.y, dist, (x, y) => {
         return affected[x - player.x] && affected[x - player.x][y - player.y];
       }, (x, y) => {
         affected[x - player.x] = affected[x - player.x] || {};

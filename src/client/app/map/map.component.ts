@@ -7,6 +7,9 @@ import { ColyseusService } from '../colyseus.service';
 import { HPBox, XPBox } from './floating-box';
 import { AssetService } from '../asset.service';
 
+import { get, isUndefined } from 'lodash';
+import { MapLayer } from '../../../shared/models/maplayer';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -35,6 +38,10 @@ export class MapComponent implements OnInit, OnDestroy {
 
   private get currentPlayer(): Player {
     return this.clientGameState.currentPlayer;
+  }
+
+  private get map(): any {
+    return this.clientGameState.map;
   }
 
   constructor(private assetService: AssetService, public colyseus: ColyseusService, public zone: NgZone) {}
@@ -134,11 +141,23 @@ export class MapComponent implements OnInit, OnDestroy {
     this.cleanCanvases();
   }
 
+  isThereAWallAt(checkX: number, checkY: number) {
+    const map = this.map;
+    const { width, layers } = map;
+    const { x, y } = this.currentPlayer;
+
+    return layers[MapLayer.Walls].data[(width * (checkY + y)) + x + checkX];
+  }
+
   shouldRenderXY(x: number, y: number) {
+
+    const val = get(this.colyseus.game.clientGameState.fov, [x, y]);
+
+    // if(isUndefined(val)) return fal;
+
     return this.game
         && this.game.shouldRender
-        && this.colyseus.game.clientGameState.fov[x]
-        && this.colyseus.game.clientGameState.fov[x][y];
+        && val;
   }
 
   canDarkSee(x: number, y: number) {

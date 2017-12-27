@@ -111,10 +111,10 @@ export class ClientGameState {
   }
 
   initFOV(fov?) {
-    for(let x = -4; x <= 4; x++) {
+    for(let x = -5; x <= 5; x++) {
       this.fov[x] = this.fov[x] || {};
 
-      for(let y = -4; y <= 4; y++) {
+      for(let y = -5; y <= 5; y++) {
         this.fov[x][y] = !!(fov && fov[x] && fov[x][y]);
       }
     }

@@ -1,4 +1,8 @@
 
+$left-gradient: linear-gradient(to right, #000 0%, #000 37%, transparent 38%, transparent 100%);
+$right-gradient: linear-gradient(to right, transparent 0%, transparent 64%, #000 65%, #000 100%);
+$bottom-gradient: linear-gradient(to bottom, transparent 0%, transparent 29%, #000 30%, #000 100%);
+
 :host {
   .fog {
     width: 64px;
@@ -8,9 +12,24 @@
     position: absolute;
     pointer-events: none;
 
+    &.faded, &.left-half, &.right-half, &.bottom-half {
+      display: inline !important;
+    }
+
     &.faded {
       opacity: 0.5 !important;
-      display: inline !important;
+    }
+
+    &.left-half {
+      background: $left-gradient;
+    }
+
+    &.right-half {
+      background: $right-gradient;
+    }
+
+    &.bottom-half {
+      background: $bottom-gradient;
     }
   }
 }
