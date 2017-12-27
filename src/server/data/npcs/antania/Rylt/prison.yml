@@ -471,13 +471,13 @@
   baseClass: Warrior
   sprite: 5
   alignment: Evil
-  stats: 15
+  stats: 12
   skillLevels: 4
 
   otherStats:
     perception: 150
 
-  level: 17
+  level: 13
   skillOnKill: 100
 
   gold:
@@ -486,7 +486,7 @@
 
   hp:
     min: 30000
-    max: 32000
+    max: 32000+
 
   giveXp:
     min: 15000
