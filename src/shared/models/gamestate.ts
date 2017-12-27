@@ -289,7 +289,7 @@ export class GameState {
   calculateFOV(player): void {
     const affected = {};
 
-    const dist = player.isPlayer() ? 5 : 4;
+    const dist = 4;
 
     // darkness obscures all vision
     if(this.isDarkAt(player.x, player.y) && !player.hasEffect('DarkVision')) {
