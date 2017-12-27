@@ -1,7 +1,7 @@
 
 import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
-import { random, sumBy, maxBy, sample, sampleSize, clamp, size } from 'lodash';
+import { random, sumBy, maxBy, sample, sampleSize, clamp, size, includes } from 'lodash';
 import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
 
 const checkGroundForItems = (npc: NPC) => {
@@ -73,10 +73,16 @@ export const tick = (npc: NPC, canMove: boolean) => {
 
     attemptSkills.forEach(skill => {
       if(chosenSkill) return;
+
+      if(npc.getAttackDamage(highestAgro, skill) === 0) {
+        skill = includes(npc.usableSkills, 'Charge') ? 'Charge' : 'Attack';
+      }
+
       if(skill === 'Attack' && npc.rightHand && npc.rightHand.returnsOnThrow) {
         isThrowing = true;
         skill = 'Throw';
       }
+
       chosenSkill = CommandExecutor.checkIfCanUseSkill(skill, npc, highestAgro);
     });
 

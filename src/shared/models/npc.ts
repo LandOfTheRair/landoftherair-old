@@ -1,5 +1,5 @@
 
-import { omit, flatten, random } from 'lodash';
+import { omit, flatten, random, set, get } from 'lodash';
 
 import { Allegiance, Character, Direction } from './character';
 import { Item } from './item';
@@ -61,6 +61,7 @@ export class NPC extends Character {
   $$lastResponse: string;
   $$following: boolean;
   $$hadRightHandAtSpawn: boolean;
+  private $$targetDamageDone = {};
 
   init() {
     if(!this.uuid) this.uuid = uuid();
@@ -195,5 +196,13 @@ export class NPC extends Character {
   setLeftHand(item: Item) {
     super.setLeftHand(item);
     this.$$room.state.syncNPC(this);
+  }
+
+  registerAttackDamage(char: Character, attack: string, damage: number) {
+    set(this, ['$$targetDamageDone', char.uuid, attack], damage);
+  }
+
+  getAttackDamage(char: Character, attack: string) {
+    return get(this, ['$$targetDamageDone', char.uuid, attack], -1);
   }
 }

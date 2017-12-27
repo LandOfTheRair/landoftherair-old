@@ -128,6 +128,7 @@
   skillLevels:
     Shortsword: 3
     Conjuration: 5
+    Staff: 4
 
   level: 4
   skillOnKill: 5
@@ -151,8 +152,7 @@
     min: 200
     max: 250
 
-  rightHand:
-    - Rylt Renegade Staff
+  rightHand: Rylt Renegade Staff
 
   gear:
     Armor: Antanian Tunic

@@ -8,6 +8,7 @@ import * as Effects from '../effects';
 
 import * as dice from 'dice.js';
 import { CharacterHelper } from './character-helper';
+import { NPC } from '../../shared/models/npc';
 
 export type DamageType =
   'Physical'
@@ -373,7 +374,12 @@ export class CombatHelper {
       damage -= Math.floor(damage / willDivisor);
     }
 
-    this.dealDamage(attacker, attacked, { damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg });
+    const totalDamage = this.dealDamage(attacker, attacked, { damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg });
+
+    if(!attacker.isPlayer()) {
+      (<NPC>attacker).registerAttackDamage(attacked, effect.name, totalDamage);
+      console.log(attacker.name, attacked.name, effect.name, totalDamage);
+    }
   }
 
   static dealOnesidedDamage(defender, { damage, damageClass, damageMessage, suppressIfNegative }) {
@@ -412,7 +418,7 @@ export class CombatHelper {
     attacker: Character,
     defender: Character,
     { damage, damageClass, attackerDamageMessage, defenderDamageMessage }
-  ) {
+  ): number {
 
     if(defender.isDead() || (<any>defender).hostility === 'Never') return;
 
