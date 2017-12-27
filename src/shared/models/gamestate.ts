@@ -341,6 +341,11 @@ export class GameState {
     return this.getInRange(this.allPossibleTargets, ref, radius, except);
   }
 
+  getAllHostilesInRange(ref: Character, radius): Character[] {
+    const targets = this.getInRange(this.allPossibleTargets, ref, radius, this.players.map(p => p.uuid));
+    return filter(targets, target => this.checkTargetForHostility(target, ref));
+  }
+
   private checkTargetForHostility(me: NPC, target: Character): boolean {
     if(me.agro[target.uuid]) return true;
     if(me.hostility === 'Faction' && (

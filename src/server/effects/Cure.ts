@@ -20,6 +20,10 @@ export class Cure extends SpellEffect {
     const wisCheck = Math.floor(mult * this.getCasterStat(caster, 'wis'));
     const damage = -+dice.roll(`${this.potency || 1}d${wisCheck}`);
 
+    caster.$$room.state.getAllHostilesInRange(caster, 4).forEach(mon => {
+      mon.addAgro(caster, Math.abs(damage / 10));
+    });
+
     this.magicalAttack(caster, target, {
       skillRef,
       atkMsg: `You heal ${target.name}.`,
