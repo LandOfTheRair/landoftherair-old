@@ -730,8 +730,11 @@ export class Character {
   }
 
   clearEffects() {
-    this.effects.forEach(effect => this.unapplyEffect(effect, true, true));
-    this.effects = [];
+    const noClear = ['Nourishment', 'Malnourished'];
+    this.effects.forEach(effect => {
+      if(includes(noClear, effect.name)) return;
+      this.unapplyEffect(effect, true, true);
+    });
   }
 
   resetAdditionalStats() {
@@ -947,7 +950,7 @@ export class Character {
     const hpRegen = this.getTotalStat('hpregen');
     const mpRegen = this.getTotalStat('mpregen');
 
-    this.hp.add(hpRegen);
+    if(this.hp.__current + hpRegen > 0) this.hp.add(hpRegen);
     this.mp.add(mpRegen);
   }
 

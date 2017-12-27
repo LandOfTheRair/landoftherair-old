@@ -42,7 +42,7 @@ export class Malnourished extends SpellEffect {
     this.effectMessage(char, 'Your body feels better.');
 
     Object.keys(this.stats || {}).forEach(stat => {
-      char.gainStat(<StatName>stat, -this.stats[stat]);
+      char.loseStat(<StatName>stat, this.stats[stat]);
     });
   }
 }
