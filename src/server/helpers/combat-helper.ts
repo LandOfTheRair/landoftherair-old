@@ -52,9 +52,14 @@ export class CombatHelper {
     if(item.returnsOnThrow) return;
     attacker[`set${capitalize(hand)}Hand`](null);
 
-    if(item.itemClass === 'Bottle') {
+    const breakTypes = {
+      Bottle: `You hear the sound of glass shattering!`,
+      Trap: `You hear a mechanical snap and see parts fly all over!`
+    };
+
+    if(breakTypes[item.itemClass]) {
       defender.sendClientMessageToRadius({
-        message: `You hear the sound of glass shattering!`, subClass: 'combat' }, 5
+        message: breakTypes[item.itemClass], subClass: 'combat' }, 5
       );
 
     } else {
