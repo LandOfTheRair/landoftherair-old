@@ -486,7 +486,7 @@
 
   hp:
     min: 30000
-    max: 32000+
+    max: 32000
 
   giveXp:
     min: 15000
