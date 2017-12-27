@@ -1,9 +1,9 @@
 
 <div class="container">
   <div class="row" *ngFor="let charSlot of charSlots; let i = index">
-    <label class="col btn btn-info no-border-radius m-0" [class.active]="i === curSlot" [(ngModel)]="curSlot" [btnRadio]="i">
+    <button class="col btn btn-info no-border-radius m-0" [class.active]="i === curSlot" [disabled]="game._joiningGame" (click)="curSlot = i" [btnRadio]="i">
       {{ lobby.myAccount.characterNames[i] || 'New Character' }}
-    </label>
+    </button>
   </div>
   <div class="row" [tooltip]="resourcesLoaded ? '' : 'Some resources are loading. To create a better experience, you have to wait for them to finish before starting the game.'">
     <button class="col no-border-radius btn btn-warning"
