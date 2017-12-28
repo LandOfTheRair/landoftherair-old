@@ -25,7 +25,12 @@ export class MerchantToSack extends Command {
 
     if(!item.isSackable) return player.sendClientMessage('That item is not sackable, cheater.');
 
-    const maxQuantity = Math.min(quantity, player.sack.size - player.sack.allItems.length);
+    let maxQuantity = Math.min(quantity, player.sack.size - player.sack.allItems.length);
+
+    if(item.daily) {
+      if(!player.canBuyDailyItem(item)) return player.sendClientMessage('Sorry, that\'s sold out at the moment. Check back tomorrow!');
+      maxQuantity = 1;
+    }
 
     for(let i = 0; i < maxQuantity; i++) {
       if(player.gold < item.value) {
@@ -34,6 +39,8 @@ export class MerchantToSack extends Command {
       }
 
       player.loseGold(item.value);
+
+      if(item.daily) player.buyDailyItem(item);
 
       const newItem = new Item(item);
       newItem.regenerateUUID();

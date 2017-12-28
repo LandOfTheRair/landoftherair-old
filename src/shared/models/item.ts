@@ -184,6 +184,8 @@ export class Item {
   containedItems?: Array<{ chance: number, result: string }>;
   expiresAt: number;
 
+  daily?: boolean;
+
   constructor(opts) {
     extend(this, opts);
     if(!this.uuid) this.uuid = uuid();

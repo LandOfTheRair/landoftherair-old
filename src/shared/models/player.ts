@@ -100,6 +100,8 @@ export class Player extends Character {
 
   public tradeSkillContainers: { alchemy?: AlchemyContainer };
 
+  public daily: any;
+
   get party(): Party {
     return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
   }
@@ -137,6 +139,8 @@ export class Player extends Character {
     } else {
       this.partyExp = new RestrictedNumber(0, this.partyExp.maximum, this.partyExp.__current);
     }
+    if(isUndefined(this.daily)) this.daily = {};
+    if(isUndefined(this.daily.item)) this.daily.item = {};
   }
 
   learnSpell(skillName, conditional = false): boolean {
@@ -661,6 +665,27 @@ export class Player extends Character {
   takeSequenceOfSteps(steps, isChasing, recalculateFOV) {
     super.takeSequenceOfSteps(steps, isChasing, recalculateFOV);
     this.$$locker = null;
+  }
+
+  private canDailyActivate(checkTimestamp: number) {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    yesterday.setHours(18, 0, 0, 0);
+
+    return checkTimestamp < yesterday.getTime();
+  }
+
+  public canBuyDailyItem(item: Item): boolean {
+    if(!item.daily) throw new Error('Attempting to buy item as a daily item ' + JSON.stringify(item));
+
+    if(!this.daily.item[item.uuid]) return true;
+    if(this.canDailyActivate(this.daily.item[item.uuid])) return true;
+
+    return false;
+  }
+
+  public buyDailyItem(item: Item) {
+    this.daily.item[item.uuid] = Date.now();
   }
 
 }

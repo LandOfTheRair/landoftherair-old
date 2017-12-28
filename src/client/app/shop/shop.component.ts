@@ -29,4 +29,12 @@ export class ShopComponent {
     this.colyseusGame.sendCommandString(`${this.colyseusGame.showShop.uuid}, sell ${this.sellType}`);
   }
 
+  public overriddenValueDisplay(slot): number|string {
+    const item = this.colyseusGame.showShop.vendorItems[slot];
+    if(!item.daily) return item.value;
+
+    if(!this.colyseusGame.character.canBuyDailyItem(item)) return 'SOLD OUT';
+    return item.value;
+  }
+
 }

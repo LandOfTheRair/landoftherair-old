@@ -25,12 +25,22 @@ export class MerchantToBelt extends Command {
 
     if(!item.isBeltable) return player.sendClientMessage('That item is not beltable, cheater.');
 
-    const maxQuantity = Math.min(quantity, player.belt.size - player.belt.allItems.length);
+    let maxQuantity = Math.min(quantity, player.belt.size - player.belt.allItems.length);
+
+    if(item.daily) {
+      if(!player.canBuyDailyItem(item)) return player.sendClientMessage('Sorry, that\'s sold out at the moment. Check back tomorrow!');
+      maxQuantity = 1;
+    }
 
     for(let i = 0; i < maxQuantity; i++) {
-      if(player.gold < item.value) return player.sendClientMessage('You do not have enough gold for that.');
+      if(player.gold < item.value) {
+        if(i === 0) player.sendClientMessage('You do not have enough gold for that.');
+        return;
+      }
 
       player.loseGold(item.value);
+
+      if(item.daily) player.buyDailyItem(item);
 
       const newItem = new Item(item);
       newItem.regenerateUUID();

@@ -4264,6 +4264,26 @@
                  "width":64,
                  "x":4736,
                  "y":2688
+                }, 
+                {
+                 "gid":3089,
+                 "height":64,
+                 "id":792,
+                 "name":"Gemmos",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/gift-vendor"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4352,
+                 "y":2688
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7313,7 +7333,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":792,
+ "nextobjectid":793,
  "orientation":"orthogonal",
  "properties":
     {

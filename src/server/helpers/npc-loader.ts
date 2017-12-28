@@ -1,6 +1,6 @@
 
 import { species } from 'fantastical';
-import { capitalize, isString, sample } from 'lodash';
+import { capitalize, isString, sample, kebabCase } from 'lodash';
 
 import { ItemCreator } from './item-creator';
 import { NPC } from '../../shared/models/npc';
@@ -47,13 +47,19 @@ export class NPCLoader {
   }
 
   private static async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>) {
-    npc.vendorItems = await Promise.all(items.map(async ({ name, valueMult }) => {
+    npc.vendorItems = npc.vendorItems || [];
+
+    const loadedItems = await Promise.all(items.map(async ({ name, valueMult }) => {
       const item = await this.loadItem(name);
 
       item.value = Math.floor((valueMult || 1) * item.value);
 
       return item;
     }));
+
+    npc.vendorItems.push(...loadedItems);
+
+    return loadedItems;
   }
 
   static async loadVendorItems(npc: NPC, items: any[]) {
@@ -63,6 +69,22 @@ export class NPCLoader {
     });
 
     return this._loadVendorItems(npc, items);
+  }
+
+  static async loadDailyVendorItems(npc: NPC, items: any[]) {
+    items = items.map(item => {
+      if(isString(item)) return { name: item, valueMult: 1 };
+      return item;
+    });
+
+    const dailyItems = await this._loadVendorItems(npc, items);
+
+    dailyItems.forEach((item, i) => {
+      item.uuid = kebabCase(`${npc.name}-${item.name}-${i}`);
+      item.daily = true;
+    });
+
+    return dailyItems;
   }
 
   static checkPlayerHeldItemEitherHand(player: Player, itemName: string) {
