@@ -20,7 +20,7 @@ export type DamageType =
 export class CombatHelper {
 
   static attemptToShadowSwap(char: Character) {
-    const shadowSwapLevel = char.getTraitLevel('ShadowSwap');
+    const shadowSwapLevel = char.getTraitLevelAndUsageModifier('ShadowSwap');
     if(shadowSwapLevel === 0) return;
     if(!CharacterHelper.isNearWall(char)) return;
 
@@ -179,7 +179,7 @@ export class CombatHelper {
       level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor)
     };
 
-    const lostAtkCondition = 1 - (attacker.getTraitLevel('CarefulTouch') * 0.05);
+    const lostAtkCondition = 1 - (attacker.getTraitLevelAndUsageModifier('CarefulTouch'));
     attackerWeapon.loseCondition(lostAtkCondition, () => attacker.recalculateStats());
     defender.addAgro(attacker, 1);
 
@@ -243,7 +243,7 @@ export class CombatHelper {
       defender.sendClientMessage({ message: `${attackerName} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block weapon' });
 
 
-      const lostCondition = 1 - (defender.getTraitLevel('CarefulTouch') * 0.05);
+      const lostCondition = 1 - (defender.getTraitLevelAndUsageModifier('CarefulTouch'));
       defenderBlocker.loseCondition(lostCondition, () => defender.recalculateStats());
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { block: true, blockedBy: `a ${itemTypeToLower}` };
@@ -264,7 +264,7 @@ export class CombatHelper {
         attacker.sendClientMessage({ message: `You were blocked by a ${itemTypeToLower}!`, subClass: 'combat self block shield', target: defender.uuid });
         defender.sendClientMessage({ message: `${attackerName} was blocked by your ${itemTypeToLower}!`, subClass: 'combat other block shield' });
 
-        const lostCondition = 1 - (defender.getTraitLevel('CarefulTouch') * 0.05);
+        const lostCondition = 1 - (defender.getTraitLevelAndUsageModifier('CarefulTouch'));
         defenderShield.loseCondition(lostCondition, () => defender.recalculateStats());
         if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
         return { block: true, blockedBy: `a ${itemTypeToLower}` };
@@ -443,10 +443,10 @@ export class CombatHelper {
       let damageBoostPercent = 0;
 
       switch(damageClass) {
-        case 'energy':    damageBoostPercent = attacker.getTraitLevel('MagicFocus') * 5; break;
-        case 'necrotic':  damageBoostPercent = attacker.getTraitLevel('NecroticFocus') * 5; break;
-        case 'heal':      damageBoostPercent = attacker.getTraitLevel('HealingFocus') * 5; break;
-        case 'physical':  damageBoostPercent = attacker.getTraitLevel('ForcefulStrike') * 5; break;
+        case 'energy':    damageBoostPercent = attacker.getTraitLevelAndUsageModifier('MagicFocus'); break;
+        case 'necrotic':  damageBoostPercent = attacker.getTraitLevelAndUsageModifier('NecroticFocus'); break;
+        case 'heal':      damageBoostPercent = attacker.getTraitLevelAndUsageModifier('HealingFocus'); break;
+        case 'physical':  damageBoostPercent = attacker.getTraitLevelAndUsageModifier('ForcefulStrike'); break;
       }
 
       damage = Math.floor(damage * (1 + (damageBoostPercent / 100)));
@@ -536,8 +536,8 @@ export class CombatHelper {
     if(!attacker) return 0;
 
     switch(damageClass) {
-      case 'fire':  return attacker.getTraitLevel('ForgedFire');
-      case 'ice':   return attacker.getTraitLevel('FrostedTouch');
+      case 'fire':  return attacker.getTraitLevelAndUsageModifier('ForgedFire');
+      case 'ice':   return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
     }
 
     return 0;
@@ -547,8 +547,8 @@ export class CombatHelper {
     if(!attacker) return 0;
 
     switch(damageClass) {
-      case 'fire':  return 0.1 * attacker.getTraitLevel('ForgedFire');
-      case 'ice':   return 0.1 * attacker.getTraitLevel('FrostedTouch');
+      case 'fire':  return attacker.getTraitLevelAndUsageModifier('ForgedFire');
+      case 'ice':   return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
     }
 
     return 0;
@@ -573,10 +573,10 @@ export class CombatHelper {
 
     let targetEffect = defender.hasEffect(debuff);
     const bonusIncrease = this.elementalBoostValue(attacker, damageClass);
-    const debuffIncrease = 3 + bonusIncrease;
+    const debuffIncrease = 30 + bonusIncrease;
 
     if(!targetEffect) {
-      const buildupMax = 10 + defender.level;
+      const buildupMax = 100 + (10 * defender.level);
 
       targetEffect = new Effects[debuff]({});
       targetEffect.buildupMax = buildupMax;

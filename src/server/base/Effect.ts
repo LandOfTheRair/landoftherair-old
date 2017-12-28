@@ -112,9 +112,9 @@ export class SpellEffect extends Effect {
 
 export class BuildupEffect extends SpellEffect {
   public buildupCur = 0;
-  public buildupMax = 10;
+  public buildupMax = 100;
   public buildupDamage = 0;
-  public decayRate = 1;
+  public decayRate = 10;
 
   effectTick(char: Character) {
     if(this.buildupCur >= this.buildupMax) {
@@ -122,7 +122,7 @@ export class BuildupEffect extends SpellEffect {
       char.unapplyEffect(this);
     }
 
-    this.buildupCur -= Math.max(0.1, this.decayRate);
+    this.buildupCur -= Math.max(1, this.decayRate);
 
     if(this.buildupCur <= 0) {
       char.unapplyEffect(this);

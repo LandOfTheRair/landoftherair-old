@@ -1040,8 +1040,25 @@ export class Character {
     return 0;
   }
 
-  public getTraitLevel(trait: string): number {
+  protected getTraitLevel(trait: string): number {
     return 0;
+  }
+
+  public getTraitLevelAndUsageModifier(trait: string): number {
+    const level = this.getTraitLevel(trait);
+
+    switch(trait) {
+      case 'ShadowSwap':      return level;
+      case 'ForgedFire':      return level;
+      case 'FrostedTouch':    return level;
+      case 'CarefulTouch':    return level * 0.05;
+      case 'MagicFocus':      return level * 5;
+      case 'NecroticFocus':   return level * 5;
+      case 'HealingFocus':    return level * 5;
+      case 'ForcefulStrike':  return level * 5;
+
+      default: return 0;
+    }
   }
 
   private adjustStatsForTraits(): void {
