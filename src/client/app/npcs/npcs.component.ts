@@ -86,18 +86,6 @@ export class NpcsComponent implements OnInit, OnDestroy {
     return unsorted;
   }
 
-  public npcArmorItem(npc: NPC) {
-    return npc.gear.Robe2 || npc.gear.Robe1 || npc.gear.Armor;
-  }
-
-  public directionTo(npc: NPC) {
-    return this.colyseusGame.directionTo(npc);
-  }
-
-  public barClass(npc: NPC) {
-    return this.colyseusGame.hostilityLevelFor(npc);
-  }
-
   public doAction(npc: NPC, $event, index) {
 
     // always set target, but if you hold ctrl, don't do anything else

@@ -32,6 +32,9 @@ import { CharacterHelper } from '../helpers/character-helper';
 import { GroundHelper } from '../helpers/ground-helper';
 import { LockerHelper } from '../helpers/locker-helper';
 
+export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
+| 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon';
+
 const TICK_TIMER = 500;
 
 const TickRatesPerTimer = {
@@ -661,11 +664,22 @@ export class GameWorld extends Room<GameState> {
   }
 
   public drawEffect(player: Character, center: any, effect: VisualEffect, radius = 0) {
+    if(!player.isPlayer()) return;
+
     const client = this.findClient(<Player>player);
     if(!client) return;
 
     const effectId = VISUAL_EFFECTS[effect];
     this.send(client, { action: 'draw_effect_r', effect: effectId, center, radius });
+  }
+
+  public combatEffect(player: Character, effect: CombatEffect, enemyUUID: string) {
+    if(!player.isPlayer()) return;
+
+    const client = this.findClient(<Player>player);
+    if(!client) return;
+
+    this.send(client, { action: 'draw_effect_c', effect, enemyUUID });
   }
 
   public updatePos(player: Character) {

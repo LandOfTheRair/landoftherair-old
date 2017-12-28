@@ -45,9 +45,9 @@ export class ColyseusGameService {
   public gameCommand$ = new Subject();
   public inGame$ = new Subject();
   public bgm$ = new Subject();
-  public sfx$ = new Subject();
-
-  public vfx$ = new Subject();
+  public sfx$ = new Subject(); // sound
+  public vfx$ = new Subject(); // spell effects
+  public cfx$ = new Subject(); // combat effects
 
   public myLoc$ = new Subject();
 
@@ -320,6 +320,7 @@ export class ColyseusGameService {
 
     if(other.target)                this.setTarget(other.target);
     if(action === 'draw_effect_r')  return this.drawEffectRadius(other);
+    if(action === 'draw_effect_c')  return this.drawCombatEffect(other);
     if(action === 'set_map')        return this.setMap(other.map);
     if(action === 'update_locker')  return this.updateLocker(other.locker);
     if(action === 'show_lockers')   return this.showLockerWindow(other.lockers, other.lockerId);
@@ -335,8 +336,8 @@ export class ColyseusGameService {
     if(action === 'update_fov')     return this.updateFOV(other.fov);
   }
 
-  private updateMacros() {
-    // this.macroService.resetUsableMacros();
+  private drawCombatEffect(data) {
+    this.cfx$.next(data);
   }
 
   private updateFOV(fov) {
