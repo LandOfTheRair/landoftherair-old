@@ -897,7 +897,7 @@ export class Character {
 
     let remove = false;
 
-    if(item.ounces === 0) {
+    if(item.itemClass === 'Bottle' && item.ounces === 0) {
       this.sendClientMessage('The bottle was empty.');
       remove = true;
 

@@ -57,6 +57,8 @@ export class ItemCreator {
 
   async getItemByName(name: string, room?: GameWorld): Promise<Item> {
 
+    if(name === 'none') return Promise.resolve(null);
+
     const item = await DB.$items.findOne({ name });
 
     if(!item) throw new Error(`Item ${name} does not exist.`);

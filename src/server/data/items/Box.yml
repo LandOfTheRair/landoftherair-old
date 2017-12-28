@@ -1,0 +1,35 @@
+
+- name: Antanian Gem RNG Box
+  desc: "a gift box wrapped with multi-colored wrapping paper, tied with a golden bow"
+  extendedDesc: "a gem container"
+  sprite: 586
+  value: 10000
+  containedItems:
+    - result: none
+      chance: 1
+    - result: Antanian Purple Gem
+      chance: 45
+    - result: Antanian Small Green Gem
+      chance: 60
+    - result: Antanian Big Green Gem
+      chance: 30
+    - result: Antanian Small Red Gem
+      chance: 60
+    - result: Antanian Big Red Gem
+      chance: 30
+    - result: Antanian Diamond
+      chance: 5
+    - result: Antanian Emerald Chunk
+      chance: 15
+    - result: Antanian Raw Jade
+      chance: 30
+    - result: Antanian Carved Jade
+      chance: 45
+    - result: Antanian Polished Ruby
+      chance: 15
+    - result: Antanian White Pearl
+      chance: 10
+    - result: Antanian Black Pearl
+      chance: 10
+    - result: Antanian Small Black Pearl
+      chance: 45

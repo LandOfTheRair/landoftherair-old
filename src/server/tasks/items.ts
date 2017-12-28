@@ -193,6 +193,11 @@ class ItemLoader {
       hasBad = true;
     }
 
+    if(item.itemClass === 'Box' && (!item.containedItems || item.containedItems.length === 0)) {
+      console.error(`ERROR: ${item.name} is a box but the contents aren't valid`);
+      hasBad = true;
+    }
+
     if(hasBad) {
       throw new Error('Invalid item. Stopping.');
     }

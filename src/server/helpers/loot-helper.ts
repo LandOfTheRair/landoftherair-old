@@ -70,6 +70,14 @@ export class LootHelper {
     return rolledItems;
   }
 
+  public static async rollSingleTable(rollArray: Array<{ chance: number, result: string }>, room) {
+    return this.getItemsFromTables([{
+      table: new LootTable(rollArray, 0),
+      func: LootFunctions.WithoutReplacement,
+      args: 1
+    }], room);
+  }
+
   public static async getItemsFromTables(tables: any[], room) {
 
     const items = LootRoller.rollTables(tables);

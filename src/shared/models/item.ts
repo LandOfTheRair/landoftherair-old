@@ -1,11 +1,12 @@
 
-import { extend, omitBy, includes, without, isNumber, size, startCase } from 'lodash';
+import { extend, omitBy, includes, without, isNumber, size, startCase, sample } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import * as uuid from 'uuid/v4';
 import { Alignment, Character, SkillClassNames } from './character';
 
 import * as Effects from '../../server/effects';
 import { nonenumerable } from 'nonenumerable';
+import { LootHelper } from '../../server/helpers/loot-helper';
 
 export const ValidItemTypes = [
   'Mace', 'Axe', 'Dagger', 'Wand', 'Onehanded', 'Twohanded', 'Polearm', 'Ranged',
@@ -180,6 +181,7 @@ export class Item {
   succorInfo: { map: string, x: number, y: number, z: number };
   destroyOnDrop: boolean;
 
+  containedItems?: Array<{ chance: number, result: string }>;
   expiresAt: number;
 
   constructor(opts) {
@@ -323,20 +325,34 @@ export class Item {
   }
 
   canUse(char: Character) {
-    return (this.effect || this.succorInfo || this.ounces > 0) && this.hasCondition() && this.isOwnedBy(char);
+    return (this.itemClass === 'Box' || this.effect || this.succorInfo || this.ounces > 0) && this.hasCondition() && this.isOwnedBy(char);
   }
 
   // < 0 means it lasts forever
-  castAndTryBreak() {
+  castAndTryBreak(): boolean {
     if(this.effect.uses < 0) return false;
     this.effect.uses--;
     return this.effect.uses === 0;
   }
 
-  use(char: Character) {
+  use(char: Character): boolean {
     if(!this.canUse(char)) return false;
     if(this.effect && (isNumber(this.ounces) ? this.ounces > 0 : true)) {
       char.applyEffect(new Effects[this.effect.name](this.effect));
+    }
+    if(this.itemClass === 'Box') {
+      const hand = char.rightHand === this ? 'RightHand' : 'LeftHand';
+      LootHelper.rollSingleTable(this.containedItems, char.$$room).then(items => {
+        const setItem = items[0];
+        char[`set${hand}`](setItem);
+
+        if(setItem) {
+          char.sendClientMessage(`You got ${setItem.desc} from the box!`);
+        } else {
+          char.sendClientMessage(`The box was empty!`);
+        }
+
+      });
     }
 
     return true;
