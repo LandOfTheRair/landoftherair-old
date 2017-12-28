@@ -376,7 +376,7 @@ export class CombatHelper {
 
     const totalDamage = this.dealDamage(attacker, attacked, { damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg });
 
-    if(!attacker.isPlayer()) {
+    if(attacker && !attacker.isPlayer()) {
       (<NPC>attacker).registerAttackDamage(attacked, effect.name, totalDamage);
       console.log(attacker.name, attacked.name, effect.name, totalDamage);
     }
