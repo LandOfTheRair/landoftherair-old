@@ -596,7 +596,7 @@ export class Player extends Character {
     return this.traitLevels[trait] ? this.traitLevels[trait].level : 0;
   }
 
-  protected getTraitLevel(trait: string): number {
+  public getTraitLevel(trait: string): number {
     if(!this.traitLevels || !this.isTraitActive(trait) || !this.isTraitInEffect(trait)) return 0;
     const baseValue = this.traitableGear.reduce((prev, cur) => prev + (cur.trait && cur.trait.name === trait ? cur.trait.level : 0), 0);
     return baseValue + this.getBaseTraitLevel(trait);

@@ -1040,7 +1040,7 @@ export class Character {
     return 0;
   }
 
-  protected getTraitLevel(trait: string): number {
+  public getTraitLevel(trait: string): number {
     return 0;
   }
 
