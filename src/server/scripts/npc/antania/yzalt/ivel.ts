@@ -22,19 +22,17 @@ export const responses = (npc: NPC) => {
       if(player.alignment === 'Evil') return 'You are already a disciple of evil!';
 
       if((NPCLoader.checkPlayerHeldItem(player, DEER_CORPSE, 'right')
-        || NPCLoader.checkPlayerHeldItem(player, DEER_CORPSE, 'left'))
-        && (NPCLoader.checkPlayerHeldItem(player, DOLPHIN_CORPSE, 'right')
-        || NPCLoader.checkPlayerHeldItem(player, DOLPHIN_CORPSE, 'left'))) {
+        || NPCLoader.checkPlayerHeldItem(player, DEER_CORPSE, 'left'))) {
 
-        NPCLoader.takePlayerItem(player, '', 'right');
-        NPCLoader.takePlayerItem(player, '', 'left');
+        NPCLoader.takePlayerItem(player, DEER_CORPSE, 'right');
+        NPCLoader.takePlayerItem(player, DEER_CORPSE, 'left');
 
         player.changeAlignment('Evil');
 
         return 'You have clearly demonstrated how cruel you can be! Welcome to the brotherhood of Evil.';
       }
 
-      return 'I am Ivel, the bastion of evil. Prove your worth to me by bringing to me the corpse of a deer and the corpse of a dolphin!';
+      return 'I am Ivel, the bastion of evil. Prove your worth to me by bringing to me the corpse of a pure forest animal!';
     });
 
 };
