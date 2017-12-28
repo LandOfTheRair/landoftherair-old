@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="row" *ngFor="let charSlot of charSlots; let i = index">
-    <button class="col btn btn-info no-border-radius m-0" [class.active]="i === curSlot" [disabled]="game._joiningGame" (click)="curSlot = i" [btnRadio]="i">
+    <button class="col btn btn-info no-border-radius m-0" [class.active]="i === curSlot" [disabled]="game._joiningGame" (click)="curSlot = i">
       {{ lobby.myAccount.characterNames[i] || 'New Character' }}
     </button>
   </div>
