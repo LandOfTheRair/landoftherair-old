@@ -1,5 +1,5 @@
 
-import { extend, remove, find, differenceBy, compact, values, map } from 'lodash';
+import { extend, remove, find, differenceBy, compact, values, map, filter } from 'lodash';
 
 import { Player } from '../../shared/models/player';
 
@@ -9,6 +9,7 @@ import { Subject } from 'rxjs/Subject';
 import { NPC } from '../../shared/models/npc';
 import { Item } from '../../shared/models/item';
 import { Character } from '../../shared/models/character';
+import { MapLayer } from '../../shared/models/maplayer';
 
 export class ClientGameState {
   fovArray = Array(9).fill(null).map((x, i) => i - 4);
@@ -22,6 +23,7 @@ export class ClientGameState {
   mapNPCs: { [key: string]: NPC } = {};
   fov: any = {};
   darkness: any = {};
+  secretWallHash: any = {};
 
   _activeTarget: Character;
 
@@ -85,7 +87,17 @@ export class ClientGameState {
 
   setMap(map) {
     this.map = map;
+    this.findSecretWalls();
     this.setMap$.next(map);
+  }
+
+  private findSecretWalls() {
+    const allPossibleLayers = this.map.layers[MapLayer.OpaqueDecor].objects;
+    const secretWalls = filter(allPossibleLayers, { type: 'SecretWall' });
+    secretWalls.forEach(({ x, y }) => {
+      this.secretWallHash[x / 64] = this.secretWallHash[x / 64] || {};
+      this.secretWallHash[x / 64][(y / 64) - 1] = true;
+    });
   }
 
   setMapData(data) {

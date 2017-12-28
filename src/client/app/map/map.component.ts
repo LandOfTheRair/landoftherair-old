@@ -146,7 +146,12 @@ export class MapComponent implements OnInit, OnDestroy {
     const { width, layers } = map;
     const { x, y } = this.currentPlayer;
 
-    return layers[MapLayer.Walls].data[(width * (checkY + y)) + x + checkX];
+    const totalX = x + checkX;
+    const totalY = y + checkY;
+
+    const hasSecretWall = get(this.clientGameState.secretWallHash, [totalX, totalY]);
+
+    return hasSecretWall || layers[MapLayer.Walls].data[(width * totalY) + totalX];
   }
 
   shouldRenderXY(x: number, y: number) {
