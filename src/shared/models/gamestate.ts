@@ -58,6 +58,9 @@ export class GameState {
   @nonenumerable
   fov: Mrpas;
 
+  @nonenumerable
+  private secretWallHash = {};
+
   private createdId: string|number;
 
   environmentalObjects: any[] = [];
@@ -88,6 +91,16 @@ export class GameState {
     extend(this, opts);
     this.initFov();
     this.initDeepstream();
+    this.findSecretWalls();
+  }
+
+  private findSecretWalls() {
+    const allPossibleLayers = this.map.layers[MapLayer.OpaqueDecor].objects;
+    const secretWalls = filter(allPossibleLayers, { type: 'SecretWall' });
+    secretWalls.forEach(({ x, y }) => {
+      this.secretWallHash[x / 64] = this.secretWallHash[x / 64] || {};
+      this.secretWallHash[x / 64][(y / 64) - 1] = true;
+    });
   }
 
   private initDeepstream() {
@@ -583,6 +596,11 @@ export class GameState {
         || this.map.layers[MapLayer.Foliage].data[x + adjustedY];
   }
 
+  checkIfCanPutDarknessAt(x: number, y: number): boolean {
+    const adjustedY = y * this.map.width;
+    return !(this.map.layers[MapLayer.Walls].data[x + adjustedY] || get(this.secretWallHash, [x, y]));
+  }
+
   isDarkAt(x: number, y: number): boolean {
     const xKey = `x${x}`;
     const yKey = `y${y}`;
@@ -594,6 +612,8 @@ export class GameState {
   addDarkness(x: number, y: number, radius: number, timestamp: number): void {
     for(let xx = x - radius; xx <= x + radius; xx++) {
       for(let yy = y - radius; yy <= y + radius; yy++) {
+
+        if(!this.checkIfCanPutDarknessAt(xx, yy)) continue;
 
         const xKey = `x${xx}`;
         const yKey = `y${yy}`;
