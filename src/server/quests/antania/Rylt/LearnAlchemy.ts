@@ -47,5 +47,6 @@ export class LearnAlchemy extends Quest {
   public static givePlayerRewards(player: Player): void {
     player.gainExp(500);
     player.gainSkill(SkillClassNames.Alchemy, 50);
+    player.sendClientMessage('You got 500 XP and progress towards your Alchemy skill!');
   }
 }
