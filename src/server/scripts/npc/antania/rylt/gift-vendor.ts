@@ -10,6 +10,8 @@ export const setup = async (npc: NPC) => {
   ];
 
   const dailyItems = [
+    'Antanian Daily Gem RNG Box',
+    'Antanian Daily Gem RNG Box',
     'Antanian Daily Gem RNG Box'
   ];
 
