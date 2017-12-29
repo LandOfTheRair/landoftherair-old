@@ -32,7 +32,7 @@ export class PartyPlayer {
 }
 
 export class Party {
-  private members: PartyPlayer[] = [];
+  public members: PartyPlayer[] = [];
 
   get name(): string {
     return this.partyName;
@@ -56,10 +56,6 @@ export class Party {
 
   get averageLevel(): number {
     return Math.floor(sumBy(this.members, 'level') / this.members.length);
-  }
-
-  get allMembers(): PartyPlayer[] {
-    return this.members;
   }
 
   constructor(leader: PartyPlayer, private partyName: string) {

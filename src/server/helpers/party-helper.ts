@@ -7,8 +7,8 @@ export class PartyHelper {
   static shareRepWithParty(player: Player, allegiance: Allegiance, delta: number) {
     const party = player.party;
 
-    const members = party.allMembers;
-
+    const members = party.members;
+    
     members.forEach(({ username }) => {
       if(username === player.username) return;
 
@@ -22,7 +22,7 @@ export class PartyHelper {
   static shareSkillWithParty(player: Player, skill: number) {
     const party = player.party;
 
-    const members = party.allMembers;
+    const members = party.members;
 
     if(members.length > 4) {
       skill = skill * 0.75;
@@ -47,7 +47,7 @@ export class PartyHelper {
   static shareExpWithParty(player: Player, exp: number) {
     const party = player.party;
 
-    const members = party.allMembers;
+    const members = party.members;
 
     if(members.length > 4) {
       exp = exp * 0.75;
