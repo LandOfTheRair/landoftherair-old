@@ -76,7 +76,7 @@ export class PartyManager {
     const party = this.parties[partyName];
     if(!party) return;
 
-    this.room.sendMessageToUsernames(map(party.allMembers, 'username'), message);
+    this.room.sendMessageToUsernames(map(party.members, 'username'), message);
   }
 
   public createParty(leader: Player, partyName: string) {
@@ -184,7 +184,7 @@ export class PartyManager {
     const party = this.parties[partyName];
     if(!party) return;
 
-    const memberRef = find(party.allMembers, { username: member.username });
+    const memberRef = find(party.members, { username: member.username });
     extend(memberRef, member);
   }
 

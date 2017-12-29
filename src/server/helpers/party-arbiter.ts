@@ -1,8 +1,6 @@
 
 import * as NRP from 'node-redis-pubsub';
-import { Player } from '../../shared/models/player';
 import { Party, PartyPlayer } from '../../shared/models/party';
-import { GameWorld } from '../rooms/GameWorld';
 
 import { map, find, extend } from 'lodash';
 
@@ -99,7 +97,7 @@ export class PartyArbiter {
     const party = this.parties[partyName];
     if(!party) return;
 
-    const memberRef = find(party.allMembers, { username: member.username });
+    const memberRef = find(party.members, { username: member.username });
     extend(memberRef, member);
   }
 
