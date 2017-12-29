@@ -14,6 +14,7 @@ export class DailyKillRebels extends Quest {
       type: 'kill',
       npcIds: [
         'Rylt Renegade Rebel',
+        'Rylt Renegade Weak Rebel',
         'Rylt Renegade Rebel Thief',
         'Rylt Renegade Mage Rebel',
         'Rylt Renegade Healer Rebel'

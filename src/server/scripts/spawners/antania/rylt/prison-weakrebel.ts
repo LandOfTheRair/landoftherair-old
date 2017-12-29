@@ -2,19 +2,19 @@
 import { Spawner } from '../../../../base/Spawner';
 
 const npcIds = [
-  'Rylt Renegade Prisoner'
+  'Rylt Renegade Weak Rebel'
 ];
 
-export class RyltPrisonMonsterSpawner extends Spawner {
+export class RyltPrisonWeakRebelSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
       respawnRate: 20,
-      initialSpawn: 1,
+      initialSpawn: 2,
       maxCreatures: 3,
       spawnRadius: 0,
-      randomWalkRadius: 25,
-      leashRadius: 35,
+      randomWalkRadius: 15,
+      leashRadius: 25,
       npcIds
     });
   }

@@ -39,7 +39,7 @@ export const responses = (npc: NPC) => {
       }
 
       player.startQuest(questToday);
-      
+
       return `Hello, ${player.name}! Our troubles seem to change daily here in Rylt. Can you help us out today by killing some ${allQuestModifiers[questTodayIndex]}?`;
     });
 
