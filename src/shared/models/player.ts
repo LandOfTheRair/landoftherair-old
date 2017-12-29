@@ -504,7 +504,7 @@ export class Player extends Character {
   startQuest(quest) {
 
     // can't start a quest you're already on or have completed
-    if(this.hasQuest(quest) || this.hasPermanentCompletionFor(quest.name)) return;
+    if(this.hasQuest(quest) || (!quest.isRepeatable && this.hasPermanentCompletionFor(quest.name))) return;
     this.activeQuests = this.activeQuests || {};
     this.activeQuests[quest.name] = true;
     this.setQuestData(quest, quest.initialData);
