@@ -19,25 +19,14 @@ export class LobbyComponent implements OnInit, OnDestroy {
   public accounts$: any;
   public displayAccounts: Account[] = [];
 
-  private eventListener: any;
-
   constructor(public lobby: ColyseusLobbyService) { }
 
   ngOnInit() {
     this.accounts$ = this.lobby.lobbyState.account$.subscribe(accounts => this.sortAndSetAccounts(accounts));
-
-    this.eventListener = (ev) => {
-      if(this.lobby.colyseus.active)
-      if(document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
-      this.chatInput.nativeElement.focus();
-    };
-
-    document.addEventListener('keydown', this.eventListener);
   }
 
   ngOnDestroy() {
     this.accounts$.unsubscribe();
-    document.removeEventListener(this.eventListener);
   }
 
   sendMessage() {
