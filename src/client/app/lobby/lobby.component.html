@@ -58,7 +58,7 @@
     <div class="col-9 p-0 m-0">
       <div class="input-area row m-0">
         <div class="col p-0">
-          <input class="form-control no-border-radius" placeholder="Type a message here..." type="text" [(ngModel)]="chatText" (keyup.enter)="sendMessage()" />
+          <input class="form-control no-border-radius" #chatInput placeholder="Type a message here..." type="text" [(ngModel)]="chatText" (keyup.enter)="sendMessage()" />
         </div>
         <div class="col-2 p-0">
           <button class="btn btn-primary form-control no-border-radius"

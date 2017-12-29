@@ -468,7 +468,7 @@ export class AppComponent implements OnInit {
       this.newMessages = 0;
     }
 
-    if(win !== 'cmd') {
+    if(win !== 'cmd' && win !== 'lobby') {
       (<HTMLElement>document.activeElement).blur();
     }
   }
