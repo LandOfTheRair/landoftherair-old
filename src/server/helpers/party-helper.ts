@@ -8,7 +8,7 @@ export class PartyHelper {
     const party = player.party;
 
     const members = party.members;
-    
+
     members.forEach(({ username }) => {
       if(username === player.username) return;
 

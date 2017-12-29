@@ -243,7 +243,7 @@ export class Player extends Character {
   private gainPartyExp(baseExp: number) {
     if(!this.party.canGainPartyPoints) return;
 
-    this.partyExp.add(Math.floor(baseExp / this.party.allMembers.length + 1));
+    this.partyExp.add(Math.floor(baseExp / this.party.members.length + 1));
 
     this.checkToGainPartyPoints();
   }
