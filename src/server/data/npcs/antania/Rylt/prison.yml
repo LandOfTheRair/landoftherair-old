@@ -261,7 +261,7 @@
       maxChance: 200
 
 - npcId: Rylt Renegade Rebel
-  name: rebel
+  name: rioter
   hostility: Always
   sprite: [630, 635, 645, 650]
   alignment: Evil
@@ -360,7 +360,7 @@
 
 
 - npcId: Rylt Renegade Rebel Thief
-  name: rebel
+  name: rioter
   hostility: Always
   sprite: [630, 635, 645, 650]
   alignment: Evil
@@ -462,7 +462,7 @@
       maxChance: 200
 
 - npcId: Rylt Renegade Mage Rebel
-  name: rebel
+  name: rioter
   hostility: Always
   baseClass: Mage
   sprite: 545
@@ -515,7 +515,7 @@
       maxChance: 200
 
 - npcId: Rylt Renegade Healer Rebel
-  name: rebel
+  name: rioter
   baseClass: Healer
   hostility: Always
   sprite: 550
