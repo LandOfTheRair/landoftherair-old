@@ -141,6 +141,7 @@ export class Player extends Character {
     }
     if(isUndefined(this.daily)) this.daily = {};
     if(isUndefined(this.daily.item)) this.daily.item = {};
+    if(isUndefined(this.daily.quest)) this.daily.quest = {};
   }
 
   learnSpell(skillName, conditional = false): boolean {
@@ -559,6 +560,10 @@ export class Player extends Character {
     if(!data.isRepeatable) {
       this.permanentlyCompleteQuest(quest.name);
     }
+    this.removeQuest(quest);
+  }
+
+  removeQuest(quest: Quest) {
     delete this.questProgress[quest.name];
     delete this.activeQuests[quest.name];
   }
@@ -567,10 +572,10 @@ export class Player extends Character {
     return this.traitPoints < 100;
   }
 
-  public gainTraitPoints(tp = 0): void {
+  public gainTraitPoints(tp = 0, overMax = false): void {
     if(!this.traitPoints) this.traitPoints = 0;
 
-    if(!this.canGainTraitPoints()) return;
+    if(!overMax && !this.canGainTraitPoints()) return;
 
     this.traitPoints += tp;
     if(this.traitPoints < 0 || isNaN(this.traitPoints)) this.traitPoints = 0;
@@ -687,6 +692,14 @@ export class Player extends Character {
     if(this.canDailyActivate(this.daily.item[item.uuid])) return true;
 
     return false;
+  }
+
+  public canDoDailyQuest(key: string): boolean {
+    return this.canDailyActivate(this.daily.quest[key] || 0);
+  }
+
+  public completeDailyQuest(key: string): void {
+    this.daily.quest[key] = Date.now();
   }
 
   public buyDailyItem(item: Item) {
