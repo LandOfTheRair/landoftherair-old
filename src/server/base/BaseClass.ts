@@ -7,7 +7,7 @@ export class BaseClass {
   }
 
   static rollDie(roll: string, character: Character) {
-    return +dice.roll(roll, character.baseStats);
+    return +dice.roll(roll, character.sumStats);
   }
 
   static gainLevelStats(character: Character) {
