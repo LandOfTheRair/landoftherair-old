@@ -439,7 +439,6 @@ export class AppComponent implements OnInit {
   }
 
   unsetMacro(groupName: string, macroIndex: number) {
-    if(groupName === 'default') return;
     this.macroService.updateMacroGroup(groupName, macroIndex, null);
   }
 

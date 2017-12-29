@@ -46,13 +46,17 @@ export class MacroBarsComponent implements OnInit {
 
     if(!this.macroService.allMacroGroups) this.macroService.allMacroGroups = {};
     // this is manual because there will be more default macros but not all of them get added to group
-    this.macroService.allMacroGroups.default = ['Attack', 'Search', 'Drink', 'Stairs', 'Climb', 'Restore'];
+    if(!this.macroService.allMacroGroups.default) this.resetDefaultMacros();
 
     if(!this.selectedMacro) {
       this.setSelectedMacro('Attack');
     }
 
     this.macroService.saveMacros();
+  }
+
+  private resetDefaultMacros() {
+    this.macroService.allMacroGroups.default = ['Attack', 'Search', 'Drink', 'Stairs', 'Climb', 'Restore'];
   }
 
   public setSelectedMacro(macro) {
