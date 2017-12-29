@@ -1904,26 +1904,6 @@
                  "y":8448
                 }, 
                 {
-                 "gid":2347,
-                 "height":64,
-                 "id":820,
-                 "name":"Town Random Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/town-random"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4800,
-                 "y":1792
-                }, 
-                {
                  "gid":2464,
                  "height":64,
                  "id":885,
@@ -6146,6 +6126,26 @@
                  "width":64,
                  "x":3264,
                  "y":2752
+                }, 
+                {
+                 "gid":2347,
+                 "height":64,
+                 "id":970,
+                 "name":"Town Random Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/town-random"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4672,
+                 "y":2624
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -6272,31 +6272,12 @@
                  "y":2368
                 }, 
                 {
-                 "height":320,
-                 "id":358,
-                 "name":"Armor",
-                 "properties":
-                    {
-                     "desc":"You find yourself in a small armor shop, displays hanging off of the walls wherever possible."
-                    },
-                 "propertytypes":
-                    {
-                     "desc":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":256,
-                 "x":4544,
-                 "y":1856
-                }, 
-                {
-                 "height":576,
+                 "height":768,
                  "id":359,
                  "name":"Weapons",
                  "properties":
                     {
-                     "desc":"You find a vendor of weapons tucked away in the corner of the building."
+                     "desc":"You find yourself in the commerce center of Rylt. Weapons, armor, and various utilities can be found here."
                     },
                  "propertytypes":
                     {
@@ -6305,9 +6286,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":192,
-                 "x":4864,
-                 "y":1920
+                 "width":576,
+                 "x":4416,
+                 "y":2304
                 }, 
                 {
                  "height":64,
@@ -6838,7 +6819,7 @@
                  "type":"",
                  "visible":true,
                  "width":448,
-                 "x":4096,
+                 "x":3904,
                  "y":2432
                 }],
          "opacity":1,
@@ -7367,7 +7348,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":970,
+ "nextobjectid":971,
  "orientation":"orthogonal",
  "properties":
     {
