@@ -19,7 +19,7 @@ export class GroundToLocker extends Command {
     const item = this.getItemFromGround(player, itemType, itemId);
     if(!item) return;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     this.accessLocker(player);
 

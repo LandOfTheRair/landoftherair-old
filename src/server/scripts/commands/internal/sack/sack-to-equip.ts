@@ -14,7 +14,7 @@ export class SackToEquip extends Command {
     const slot = +args;
     if(isUndefined(slot)) return false;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     const item = player.sack.getItemFromSlot(slot);
     if(!item) return false;

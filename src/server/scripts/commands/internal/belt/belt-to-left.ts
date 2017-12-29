@@ -13,7 +13,7 @@ export class BeltToLeft extends Command {
     const slot = +args;
 
     if(this.isAccessingLocker(player)) return;
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     const item = player.belt.takeItemFromSlot(slot);
     if(!item) return false;

@@ -15,7 +15,7 @@ export class BeltToLocker extends Command {
     const [slot, lockerId] = args.split(' ');
 
     if(this.isAccessingLocker(player)) return;
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     this.accessLocker(player);
     if(!this.findLocker(player)) return this.unaccessLocker(player);

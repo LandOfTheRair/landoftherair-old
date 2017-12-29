@@ -14,7 +14,7 @@ export class SackToMerchant extends Command {
 
     const [slot, merchantUUID] = args.split(' ');
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     const container = room.state.findNPC(merchantUUID);
     if(!container) return player.sendClientMessage('That person is not here.');

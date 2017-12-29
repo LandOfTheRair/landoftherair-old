@@ -14,7 +14,7 @@ export class PotionToLeft extends Command {
     if(this.isAccessingLocker(player)) return;
     if(!player.potionHand) return false;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     this.trySwapLeftToRight(player);
 

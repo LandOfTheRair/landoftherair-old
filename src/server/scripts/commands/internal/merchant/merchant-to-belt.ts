@@ -16,7 +16,7 @@ export class MerchantToBelt extends Command {
     const quantity = Math.round(+quantityCheck);
     if(quantity < 0) return false;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     if(!this.checkMerchantDistance(player, containerUUID)) return;
 

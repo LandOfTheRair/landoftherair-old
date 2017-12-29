@@ -13,7 +13,7 @@ export class SackToPotion extends Command {
     if(this.isAccessingLocker(player)) return;
     const slot = +args;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
 

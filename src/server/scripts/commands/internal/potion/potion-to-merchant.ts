@@ -14,7 +14,7 @@ export class PotionToMerchant extends Command {
 
     const merchantUUID = args;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     const container = room.state.findNPC(merchantUUID);
     if(!container) return player.sendClientMessage('That person is not here.');

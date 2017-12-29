@@ -14,7 +14,7 @@ export class GroundToLeft extends Command {
     if(this.isAccessingLocker(player)) return;
     if(splitArgs.length < 1) return false;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     const [itemType, itemId] = splitArgs;
 

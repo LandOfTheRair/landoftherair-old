@@ -14,7 +14,7 @@ export class MerchantToRight extends Command {
 
     const [containerUUID, itemUUID] = args.split(' ');
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     if(!this.checkMerchantDistance(player, containerUUID)) return;
 

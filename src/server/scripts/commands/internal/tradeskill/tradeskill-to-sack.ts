@@ -16,7 +16,7 @@ export class TradeskillToSack extends Command {
     const container = room.state.findNPC(alchUUID);
     if(!container) return player.sendClientMessage('That person is not here.');
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     const item = player.tradeSkillContainers[tsSlot].getItemFromSlot(+tsSrcSlot);
     if(!item) return false;

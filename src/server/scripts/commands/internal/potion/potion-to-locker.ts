@@ -18,7 +18,7 @@ export class PotionToLocker extends Command {
 
     if(!item) return;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     this.accessLocker(player);
 

@@ -20,7 +20,7 @@ export class GroundToTradeskill extends Command {
     const container = room.state.findNPC(alchUUID);
     if(!container) return player.sendClientMessage('That person is not here.');
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     const item = this.getItemFromGround(player, itemType, itemId);
     if(!item) return false;

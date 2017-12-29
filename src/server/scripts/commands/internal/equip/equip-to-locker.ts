@@ -18,7 +18,7 @@ export class EquipToLocker extends Command {
     const item = player.gear[slot];
     if(!item) return false;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     this.accessLocker(player);
 

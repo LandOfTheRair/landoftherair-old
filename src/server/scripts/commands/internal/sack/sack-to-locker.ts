@@ -15,7 +15,7 @@ export class SackToLocker extends Command {
 
     const [slot, lockerId] = args.split(' ');
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     this.accessLocker(player);
 

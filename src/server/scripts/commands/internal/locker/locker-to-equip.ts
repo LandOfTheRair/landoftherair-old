@@ -15,7 +15,7 @@ export class LockerToEquip extends Command {
     const [slotStr, lockerId] = args.split(' ');
     const slot = +slotStr;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
     this.accessLocker(player);
     if(!this.findLocker(player)) return this.unaccessLocker(player);
 

@@ -14,7 +14,7 @@ export class BuybackToSack extends Command {
 
     const [containerUUID, slot] = args.split(' ');
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     const container = room.state.findNPC(containerUUID);
     if(!container) return player.sendClientMessage('That person is not here.');

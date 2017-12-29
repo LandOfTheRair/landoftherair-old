@@ -14,7 +14,7 @@ export class LockerToGround extends Command {
     if(this.isAccessingLocker(player)) return;
     const [slotId, lockerId] = args.split(' ');
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
     this.accessLocker(player);
     if(!this.findLocker(player)) return this.unaccessLocker(player);
 

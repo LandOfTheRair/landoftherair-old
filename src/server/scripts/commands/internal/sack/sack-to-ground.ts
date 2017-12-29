@@ -13,7 +13,7 @@ export class SackToGround extends Command {
     if(this.isAccessingLocker(player)) return;
     const slot = +args;
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     const item = player.sack.takeItemFromSlot(slot);
     if(!item) return;

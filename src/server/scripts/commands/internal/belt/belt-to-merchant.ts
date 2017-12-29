@@ -14,7 +14,7 @@ export class BeltToMerchant extends Command {
     const [slot, merchantUUID] = args.split(' ');
 
     if(this.isAccessingLocker(player)) return;
-    if(!this.checkPlayerEmptyHand(player)) return;
+
 
     if(!this.checkMerchantDistance(player, merchantUUID)) return;
 

@@ -16,7 +16,7 @@ export class LockerToPotion extends Command {
     if(this.isAccessingLocker(player)) return;
     if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
 
-    if(!this.checkPlayerEmptyHand(player)) return;
+
     this.accessLocker(player);
     if(!this.findLocker(player)) return this.unaccessLocker(player);
 

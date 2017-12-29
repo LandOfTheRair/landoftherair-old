@@ -14,7 +14,7 @@ export class LockerToRight extends Command {
     const [slotId, lockerId] = args.split(' ');
 
     if(this.isAccessingLocker(player)) return;
-    if(!this.checkPlayerEmptyHand(player)) return;
+
     this.accessLocker(player);
     if(!this.findLocker(player)) return this.unaccessLocker(player);
 
