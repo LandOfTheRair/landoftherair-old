@@ -532,6 +532,7 @@ export class Player extends Character {
     if(questOpts.kill) {
       Object.keys(this.activeQuests || {}).forEach(quest => {
         const realQuest = Quests[quest];
+        if(!realQuest) return;
 
         const { type } = realQuest.requirements;
         if(type !== 'kill') return;
@@ -540,6 +541,10 @@ export class Player extends Character {
           realQuest.updateProgress(this, questOpts);
         }
       });
+
+      if(this.party) {
+        PartyHelper.shareKillsWithParty(this, questOpts);
+      }
     }
 
   }

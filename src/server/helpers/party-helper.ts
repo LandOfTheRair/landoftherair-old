@@ -71,4 +71,20 @@ export class PartyHelper {
       partyMember.gainExp(exp);
     });
   }
+
+  static shareKillsWithParty(player: Player, questOpts) {
+    const party = player.party;
+
+    const members = party.members;
+
+    members.forEach(({ username }) => {
+      if(username === player.username) return;
+
+      const partyMember = player.$$room.state.findPlayer(username);
+
+      if(!partyMember || player.distFrom(partyMember) > 7) return;
+
+      partyMember.checkForQuestUpdates(questOpts);
+    });
+  }
 }
