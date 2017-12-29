@@ -601,3 +601,17 @@ export const ReviverResponses = (npc: NPC) => {
       return `Done!`;
     });
 };
+
+export const DiplomatResponses = (npc: NPC) => {
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+      const factions = ['Pirates', 'Townsfolk', 'Royalty', 'Adventurers', 'Wilderness', 'Underground'];
+
+      const factionStrings = factions.map(faction => {
+        return `The ${faction} regards you as ${player.allegianceAlignmentString(faction)}. (${player.allegianceReputation[faction] || 0})`;
+      });
+
+      return [`Greetings, ${player.name}! I can sense your social standings with the various factions of the land:`].concat(factionStrings).join('|||');
+    });
+};

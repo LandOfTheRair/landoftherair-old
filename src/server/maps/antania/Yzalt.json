@@ -4784,6 +4784,26 @@
                  "width":64,
                  "x":2304,
                  "y":2112
+                }, 
+                {
+                 "gid":3129,
+                 "height":64,
+                 "id":1443,
+                 "name":"Diplomat",
+                 "properties":
+                    {
+                     "script":"global\/diplomat"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2816,
+                 "y":4672
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7544,7 +7564,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1443,
+ "nextobjectid":1444,
  "orientation":"orthogonal",
  "properties":
     {

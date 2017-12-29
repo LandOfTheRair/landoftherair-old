@@ -1117,4 +1117,10 @@ export class Character {
     if(!this.allegianceReputation[faction]) return true;
     return !this.isHostileTo(faction) && !this.isFriendlyTo(faction);
   }
+
+  public allegianceAlignmentString(faction: Allegiance): string {
+    if(this.isNeutralTo(faction)) return 'neutral';
+    if(this.isFriendlyTo(faction)) return 'friendly';
+    if(this.isHostileTo(faction)) return 'hostile';
+  }
 }

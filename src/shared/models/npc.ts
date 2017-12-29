@@ -1,5 +1,5 @@
 
-import { omit, flatten, random, set, get } from 'lodash';
+import { omit, flatten, random, set, get, isArray } from 'lodash';
 
 import { Allegiance, Character, Direction } from './character';
 import { Item } from './item';
@@ -77,11 +77,14 @@ export class NPC extends Character {
     if(!this.parser) return;
 
     this.parser.setEnv('player', player);
-    const output = this.parser.parse(message);
+    let output = this.parser.parse(message);
     if(!output || output === 'undefined') return;
 
     this.setDirRelativeTo(player);
-    player.sendClientMessage({ name: this.name, message: output });
+    output = output.split('|||');
+    output.forEach(outputMessage => {
+      player.sendClientMessage({ name: this.name, message: outputMessage });
+    });
   }
 
   setDirRelativeTo(char: Character) {
