@@ -13,7 +13,8 @@ export class PartyHelper {
       if(username === player.username) return;
 
       const partyMember = player.$$room.state.findPlayer(username);
-      if(player.distFrom(partyMember) > 7) return;
+
+      if(!partyMember || player.distFrom(partyMember) > 7) return;
 
       partyMember.changeRep(allegiance, delta, true);
     });
@@ -38,7 +39,8 @@ export class PartyHelper {
       if(username === player.username) return;
 
       const partyMember = player.$$room.state.findPlayer(username);
-      if(player.distFrom(partyMember) > 7) return;
+
+      if(!partyMember || player.distFrom(partyMember) > 7) return;
 
       partyMember.gainSkill(skill);
     });
@@ -63,7 +65,8 @@ export class PartyHelper {
       if(username === player.username) return;
 
       const partyMember = player.$$room.state.findPlayer(username);
-      if(player.distFrom(partyMember) > 7) return;
+
+      if(!partyMember || player.distFrom(partyMember) > 7) return;
 
       partyMember.gainExp(exp);
     });
