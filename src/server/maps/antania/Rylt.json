@@ -3011,7 +3011,7 @@
                  "id":948,
                  "name":"",
                  "rotation":0,
-                 "type":"",
+                 "type":"SecretWall",
                  "visible":true,
                  "width":64,
                  "x":3520,
@@ -6220,46 +6220,6 @@
                 {
                  "gid":2347,
                  "height":64,
-                 "id":606,
-                 "name":"Prison Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":576,
-                 "y":8000
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":607,
-                 "name":"Prison Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":384,
-                 "y":7680
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
                  "id":608,
                  "name":"Prison Spawner",
                  "properties":
@@ -6340,46 +6300,6 @@
                 {
                  "gid":2347,
                  "height":64,
-                 "id":612,
-                 "name":"Prison Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2112,
-                 "y":7296
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":613,
-                 "name":"Prison Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1920,
-                 "y":7104
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
                  "id":614,
                  "name":"Prison Spawner",
                  "properties":
@@ -6396,26 +6316,6 @@
                  "width":64,
                  "x":1984,
                  "y":8000
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":615,
-                 "name":"Prison Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1792,
-                 "y":6848
                 }, 
                 {
                  "gid":2347,
@@ -6648,28 +6548,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":384,
-                 "y":3648
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":654,
-                 "name":"Prison Rebel Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison-rebel"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":960,
-                 "y":3456
+                 "x":448,
+                 "y":3584
                 }, 
                 {
                  "gid":2347,
@@ -6688,8 +6568,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1280,
-                 "y":3392
+                 "x":1216,
+                 "y":3584
                 }, 
                 {
                  "gid":2347,
@@ -7330,26 +7210,6 @@
                 {
                  "gid":2347,
                  "height":64,
-                 "id":1088,
-                 "name":"Prison Weak Rebel Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison-weakrebel"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":768,
-                 "y":2304
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
                  "id":1089,
                  "name":"Prison Weak Rebel Spawner",
                  "properties":
@@ -7370,66 +7230,6 @@
                 {
                  "gid":2347,
                  "height":64,
-                 "id":1090,
-                 "name":"Prison Weak Rebel Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison-weakrebel"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":384,
-                 "y":1984
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1091,
-                 "name":"Prison Weak Rebel Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison-weakrebel"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":384,
-                 "y":1472
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
-                 "id":1092,
-                 "name":"Prison Weak Rebel Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/rylt\/prison-weakrebel"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1024,
-                 "y":1280
-                }, 
-                {
-                 "gid":2347,
-                 "height":64,
                  "id":1093,
                  "name":"Prison Weak Rebel Spawner",
                  "properties":
@@ -7444,7 +7244,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1088,
+                 "x":832,
                  "y":1856
                 }, 
                 {
@@ -7544,8 +7344,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":512,
-                 "y":1664
+                 "x":448,
+                 "y":1728
                 }, 
                 {
                  "gid":2347,
