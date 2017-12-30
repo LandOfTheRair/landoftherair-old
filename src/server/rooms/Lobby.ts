@@ -142,6 +142,8 @@ export class Lobby extends Room<LobbyState> {
     character = CharacterCreator.getCustomizedCharacter(character);
 
     const account = this.state.findAccount(client.userId);
+    if(!account) return;
+
     const oldPlayerName = account.characterNames[charSlot];
     if(oldPlayerName) {
       DB.$players.remove({ username: client.username, charSlot });
@@ -198,6 +200,8 @@ export class Lobby extends Room<LobbyState> {
 
   private async playCharacter(client, { charSlot }) {
     const account = this.state.findAccount(client.userId);
+    if(!account) return;
+
     if(account && account.inGame >= 0) {
 
       this.send(client, {
