@@ -196,8 +196,13 @@ export class Player extends Character {
   kill(target: Character) {
     this.$$actionQueue = reject(this.$$actionQueue, ({ args }) => includes(args, target.uuid));
 
-    if((<any>target).npcId) {
-      this.checkForQuestUpdates({ kill: (<any>target).npcId });
+    const npcId = (<any>target).npcId;
+    if(npcId) {
+      this.checkForQuestUpdates({ kill: npcId });
+
+      if(this.party) {
+        PartyHelper.shareKillsWithParty(this, { kill: npcId });
+      }
     }
 
     const skillGain = target.skillOnKill;
@@ -542,10 +547,6 @@ export class Player extends Character {
           realQuest.updateProgress(this, questOpts);
         }
       });
-
-      if(this.party) {
-        PartyHelper.shareKillsWithParty(this, questOpts);
-      }
     }
 
   }
