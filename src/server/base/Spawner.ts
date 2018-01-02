@@ -239,11 +239,11 @@ export class Spawner {
     npc.sendSpawnMessage();
 
     this.assignPath(npc);
-    this.addNPC(npc);
     npc.recalculateStats();
 
     npc.hp.toMaximum();
     npc.mp.toMaximum();
+    this.addNPC(npc);
 
     return npc;
   }
