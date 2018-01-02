@@ -973,7 +973,7 @@ export class Character {
 
     const agroAdd = (uuid, val) => {
       this.agro[uuid] = this.agro[uuid] || 0;
-      this.agro[uuid] += value;
+      this.agro[uuid] += val;
       if(this.agro[uuid] <= 0) this.removeAgroUUID(char.uuid);
     };
 
