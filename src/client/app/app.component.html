@@ -526,6 +526,25 @@
     </div>
   </div>
 
+  <div class="window trade-skill spellforging above-game-window"
+       [class.active-window]="activeWindow === 'tradeskillSpellforging'"
+       (click)="setActiveWindow('tradeskillSpellforging')"
+       [appDraggableWindow]="!lockWindowPositions"
+       [windowHandle]="tradeskillSpellforgingDrag"
+       windowName="tradeskillSpellforging"
+       [windowLocation]="windowLocations.TradeskillSpellforging"
+       defaultX="670"
+       defaultY="120"
+       *ngIf="inGame && colyseus.game.showSpellforging.uuid">
+    <div class="window-header text-center" #tradeskillSpellforgingDrag>
+      Spellforging
+      <app-close-button (click)="colyseus.game.showSpellforging = {}"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-tradeskill-spellforging></app-tradeskill-spellforging>
+    </div>
+  </div>
+
 </div>
 
 <div class="modal fade" bsModal #options="bs-modal" tabindex="-1">

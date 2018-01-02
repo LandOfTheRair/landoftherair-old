@@ -51,6 +51,6 @@ export class KillRanata extends Quest {
   public static givePlayerRewards(player: Player): void {
     player.gainGold(5000);
     player.gainExp(20000);
-    player.sendClientMessage('You got 20,000 XP and 5,000 gold!');
+    player.sendClientMessage('You received 20,000 XP and 5,000 gold!');
   }
 }

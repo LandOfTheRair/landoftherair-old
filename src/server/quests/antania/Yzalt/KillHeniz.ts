@@ -63,6 +63,6 @@ export class KillHeniz extends Quest {
     player.gainGold(1000);
     player.gainExp(1000);
     player.changeRep('Royalty', 100, true);
-    player.sendClientMessage('You got 1,000 XP, 1,000 gold, and Royalty faction reputation!');
+    player.sendClientMessage('You received 1,000 XP, 1,000 gold, and Royalty faction reputation!');
   }
 }

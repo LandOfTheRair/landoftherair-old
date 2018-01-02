@@ -12,6 +12,8 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Character } from '../../shared/models/character';
 import { NPC } from '../../shared/models/npc';
 
+export const VALID_TRADESKILLS = ['Alchemy', 'Spellforging'];
+
 @Injectable()
 export class ColyseusGameService {
 
@@ -30,6 +32,7 @@ export class ColyseusGameService {
   showBank: any = {};
 
   showAlchemy: any = {};
+  showSpellforging: any = {};
 
   showLocker: Locker[] = [];
   activeLockerNumber: number;
@@ -327,7 +330,7 @@ export class ColyseusGameService {
     if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId);
     if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid);
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
-    if(action === 'show_alchemy')   return this.showAlchemyWindow(other.uuid);
+    if(action === 'show_ts')        return this.showTradeskillWindow(other.tradeskill, other.uuid);
     if(action === 'show_ground')    return this.showGroundWindow();
     if(action === 'change_map')     return this.changeMap(other.map, other.party);
     if(action === 'log_message')    return this.logMessage(other);
@@ -399,9 +402,11 @@ export class ColyseusGameService {
     this.updateActiveWindowForGameWindow('trainer');
   }
 
-  private showAlchemyWindow(uuid) {
-    this.showAlchemy = { uuid };
-    this.updateActiveWindowForGameWindow('tradeskillAlchemy');
+  private showTradeskillWindow(tradeskill, uuid) {
+    if(!this[`show${tradeskill}`]) return;
+
+    this[`show${tradeskill}`] = { uuid };
+    this.updateActiveWindowForGameWindow(`tradeskill${tradeskill}`);
   }
 
   public assessSkill(skill) {
@@ -516,7 +521,10 @@ export class ColyseusGameService {
     this.showShop = {};
     this.showBank = {};
     this.showLocker = [];
-    this.showAlchemy = {};
+
+    VALID_TRADESKILLS.forEach(tradeskill => {
+      this[`show${tradeskill}`] = {};
+    });
   }
 
   public doMove(x, y) {

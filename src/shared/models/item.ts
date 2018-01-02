@@ -158,6 +158,8 @@ export class Item {
 
   trait?: { name: string, level: number };
 
+  enchantLevel: number;
+
   @nonenumerable
   searchItems: Item[];
 
@@ -266,7 +268,7 @@ export class Item {
       sense2Text = `${sense2Text ? `${sense2Text} ` : ''}This item affects physical attributes! `;
     }
 
-    const traitText = this.trait ? `This item bestows the ability ${startCase(this.trait.name)} ${toRoman(this.trait.level)}. ` : '';
+    const traitText = this.trait && !includes(this.name, 'Rune Scroll') && senseLevel > 1 ? `This item bestows the ability ${startCase(this.trait.name)} ${toRoman(this.trait.level)}. ` : '';
 
     const levelText = this.requirements && this.requirements.level ? `You must be level ${this.requirements.level} to use this item. ` : '';
 

@@ -4,6 +4,7 @@ import { reject, difference, values } from 'lodash';
 import { SkillClassNames, Stats } from '../../shared/models/character';
 import * as Classes from '../classes';
 import * as Effects from '../effects';
+import { AllTraits } from '../../shared/traits/trait-hash';
 
 const argv = require('minimist')(process.argv.slice(2));
 require('dotenv').config({ silent: true, path: argv.prod ? '.env.prod' : '.env' });
@@ -196,6 +197,18 @@ class ItemLoader {
     if(item.itemClass === 'Box' && (!item.containedItems || item.containedItems.length === 0)) {
       console.error(`ERROR: ${item.name} is a box but the contents aren't valid`);
       hasBad = true;
+    }
+
+    if(item.trait) {
+      let found = false;
+      Object.keys(AllTraits).forEach(traitCat => {
+        if(AllTraits[traitCat][item.trait.name]) found = true;
+      });
+
+      if(!found) {
+        console.error(`ERROR: ${item.name} has a bad trait ${item.trait.name}`);
+        hasBad = true;
+      }
     }
 
     if(hasBad) {

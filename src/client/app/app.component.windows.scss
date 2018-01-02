@@ -218,8 +218,13 @@
 
     z-index: 1000;
 
-    &.alchemy {
+    &.alchemy, &.spellforging {
       min-height: 300px;
+    }
+
+    &.spellforging {
+      min-width: 630px;
+      max-width: 630px;
     }
   }
 

@@ -1,5 +1,5 @@
 
-import { extend, compact, findIndex, sample, isUndefined } from 'lodash';
+import { extend, compact, findIndex, sample, isUndefined, isNumber } from 'lodash';
 
 import { Item } from '../item';
 
@@ -37,7 +37,7 @@ export class Container {
   addItem(item: Item, index?: number): string {
     if(!this.canAccept(item, index)) return `That item does not fit properly in your ${this.constructor.name.toLowerCase()}.`;
     if(this.isFull() && isUndefined(index)) return `Your ${this.constructor.name.toLowerCase()} is full.`;
-    if(index) {
+    if(isNumber(index)) {
       if(this.items[index]) return 'There is already something there.';
       if(index < 0 || index > this.size) return 'Container does not match that size.';
       this.items[index] = item;

@@ -1,7 +1,7 @@
 
 import { Trait } from '../../models/trait';
 
-export class MagicFocus extends Trait {
+export class NecroticFocus extends Trait {
 
   static baseClass = 'Healer';
   static traitName = 'NecroticFocus';

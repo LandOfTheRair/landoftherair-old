@@ -19,6 +19,7 @@ import { DeathHelper } from '../../server/helpers/death-helper';
 import { PartyHelper } from '../../server/helpers/party-helper';
 import { Malnourished } from '../../server/effects/Malnourished';
 import { AlchemyContainer } from './container/tradeskills/alchemy';
+import { SpellforgingContainer } from './container/tradeskills/spellforging';
 
 export class Player extends Character {
   @nonenumerable
@@ -98,7 +99,7 @@ export class Player extends Character {
   public $$hungerTicks: number;
   public $$isAccessingLocker: boolean;
 
-  public tradeSkillContainers: { alchemy?: AlchemyContainer };
+  public tradeSkillContainers: { alchemy?: AlchemyContainer, spellforging?: SpellforgingContainer };
 
   public daily: any;
 
@@ -118,6 +119,7 @@ export class Player extends Character {
   initTradeskills() {
     this.tradeSkillContainers = this.tradeSkillContainers || {};
     this.tradeSkillContainers.alchemy = new AlchemyContainer(this.tradeSkillContainers.alchemy);
+    this.tradeSkillContainers.spellforging = new SpellforgingContainer(this.tradeSkillContainers.spellforging);
   }
 
   initBuyback() {

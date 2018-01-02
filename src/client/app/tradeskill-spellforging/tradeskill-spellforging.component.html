@@ -1,0 +1,96 @@
+
+<div class="d-flex flex-column p-1 w-100">
+
+  <div class="row">
+    <div class="col col-3 text-center">
+      <h3>Subject</h3>
+    </div>
+
+    <div class="col col-3 text-center">
+      <h3>Reagent</h3>
+    </div>
+
+    <div class="col col-3 text-center">
+      <h3>Result</h3>
+    </div>
+
+    <div class="col col-3 text-center">
+      <h3>Dust</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-3 item-row">
+      <div class="item-slot item-background"
+           droppable
+           dropScope="spellforging"
+           (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Spellforging:0')">
+        <app-item size="normal"
+                  *ngIf="player.tradeSkillContainers.spellforging.items[0]"
+                  [item]="player.tradeSkillContainers.spellforging.items[0]"
+                  contextSlot="0"
+                  [containerUUID]="colyseusGame.showSpellforging.uuid"
+                  context="Tradeskill:Spellforging"></app-item>
+      </div>
+    </div>
+
+    <div class="col col-3 item-row">
+      <div class="item-slot item-background"
+           droppable
+           dropScope="spellforging"
+           (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Spellforging:1')">
+        <app-item size="normal"
+                  *ngIf="player.tradeSkillContainers.spellforging.items[1]"
+                  [item]="player.tradeSkillContainers.spellforging.items[1]"
+                  contextSlot="1"
+                  [containerUUID]="colyseusGame.showSpellforging.uuid"
+                  context="Tradeskill:Spellforging"></app-item>
+      </div>
+    </div>
+
+    <div class="col col-3 item-row">
+      <div class="item-slot item-background">
+        <app-item size="normal"
+                  *ngIf="player.tradeSkillContainers.spellforging.items[2]"
+                  [item]="player.tradeSkillContainers.spellforging.items[2]"
+                  contextSlot="2"
+                  [containerUUID]="colyseusGame.showSpellforging.uuid"
+                  context="Tradeskill:Spellforging"></app-item>
+      </div>
+    </div>
+
+    <div class="col col-3">
+      <table class="table table-sm">
+        <tr *ngFor="let brick of brickTypes">
+          <td>{{ brick }}</td>
+          <td>{{ dustValue(brick) | number }}</td>
+          <td><button class="btn btn-primary btn-sm" [disabled]="!canBuyBrick(brick)" (click)="forge(brick)">Brick</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col col-3 text-center">
+      <button class="btn btn-warning" [disabled]="disenchantDisabled" (click)="disenchant()">Disenchant</button>
+    </div>
+    <div class="col col-3 text-center">
+      <button class="btn btn-primary" [disabled]="enchantDisabled" (click)="enchant()">Enchant</button>
+    </div>
+    <div class="col col-3"></div>
+    <div class="col col-3"></div>
+  </div>
+
+  <div class="row mt-3" *ngIf="showInfo">
+    <div class="col text-center" [class.text-danger]="successChance <= 25">
+      Chance of success: {{ successChance }}% (Item is currently +{{ player.tradeSkillContainers.spellforging.modifyItem.enchantLevel || 0 }})
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col text-center text-warning" *ngIf="hasWarning">
+      Warning: {{ formatTrait(player.tradeSkillContainers.spellforging.modifyItem) }} will be overwritten by {{ formatTrait(player.tradeSkillContainers.spellforging.reagent) }}!
+    </div>
+  </div>
+
+</div>

@@ -52,7 +52,7 @@ export class DailyKillRenegades extends Quest {
   public static incompleteText(player: Player): string {
     const { kills } = player.getQuestData(this);
 
-    return `By my records, you have to kill ${this.killsRequired - kills} renegades yet!`;
+    return `Thanks for offering your help. You have to kill ${this.killsRequired - kills} more renegades.`;
   }
 
   public static completeFor(player: Player): void {
@@ -64,6 +64,6 @@ export class DailyKillRenegades extends Quest {
     player.gainGold(2000);
     player.gainExp(500);
     player.gainTraitPoints(5, true);
-    player.sendClientMessage('You got 500 XP 2,000 gold, and 5 TP!');
+    player.sendClientMessage('You received 500 XP 2,000 gold, and 5 TP!');
   }
 }

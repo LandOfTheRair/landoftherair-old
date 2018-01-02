@@ -63,6 +63,7 @@ import { PartyComponent } from './party/party.component';
 import { TraitsComponent } from './traits/traits.component';
 
 import { TradeskillAlchemyComponent } from './tradeskill-alchemy/tradeskill-alchemy.component';
+import { TradeskillSpellforgingComponent } from './tradeskill-spellforging/tradeskill-spellforging.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -110,7 +111,8 @@ import { TradeskillAlchemyComponent } from './tradeskill-alchemy/tradeskill-alch
     PartyComponent,
     TraitsComponent,
 
-    TradeskillAlchemyComponent
+    TradeskillAlchemyComponent,
+    TradeskillSpellforgingComponent
   ],
   imports: [
     BrowserModule,

@@ -31,6 +31,6 @@ export class Trait {
   }
 
   static currentlyInEffect(player: Player): boolean {
-    return true;
+    return !this.baseClass || player.baseClass === this.baseClass;
   }
 }

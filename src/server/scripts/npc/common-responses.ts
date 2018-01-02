@@ -615,3 +615,15 @@ export const DiplomatResponses = (npc: NPC) => {
       return [`Greetings, ${player.name}! I can sense your social standings with the various factions of the land:`].concat(factionStrings).join('|||');
     });
 };
+
+export const SpellforgingResponses = (npc: NPC) => {
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(player.calcSkillLevel('Conjuration') < 1) return 'You are not skilled enough to Spellforge.';
+      npc.$$room.showSpellforgingWindow(player, npc);
+
+      return 'Greetings, fellow conjurer. I am a master enchanter who can help you learn the higher conjuration arts.';
+    });
+};

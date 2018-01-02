@@ -3,6 +3,7 @@
   desc: "an empty scroll"
   value: 100
 
+# Lore Scrolls
 - name: Antanian Lore Scroll 1
   sprite: 224
   desc: "a scroll saying: \"Tonwin, the plan is going according to plan. The Renegades are performing beautifully. -S\""
@@ -21,4 +22,160 @@
 - name: Antanian Recipe Scroll 1
   sprite: 224
   desc: "a scroll saying: \"Recipe: Gills Potion - 1 Blueflower, 1 glass of water - stir\""
+  value: 1
+
+# Rune Scrolls
+- name: Rune Scroll - Careful Touch I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Careful Touch I\""
+  trait:
+    name: CarefulTouch
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Death Grip I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Death Grip I\""
+  trait:
+    name: DeathGrip
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Eagle Eye I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Eagle Eye I\""
+  trait:
+    name: EagleEye
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Funky Moves I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Funky Moves I\""
+  trait:
+    name: FunkyMoves
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Natural Armor I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Natural Armor I\""
+  trait:
+    name: NaturalArmor
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Sword Tricks I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Sword Tricks I\""
+  trait:
+    name: SwordTricks
+    level: 1
+  value: 1
+
+# Shared Rune Scrolls
+- name: Rune Scroll - Magic Focus I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Magic Focus I\""
+  trait:
+    name: MagicFocus
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Calm Mind I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Calm Mind I\""
+  trait:
+    name: CalmMind
+    level: 1
+  value: 1
+
+# Healer Rune Scrolls
+- name: Rune Scroll - Healing Focus I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Healing Focus I\""
+  trait:
+    name: HealingFocus
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Necrotic Focus I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Necrotic Focus I\""
+  trait:
+    name: NecroticFocus
+    level: 1
+  value: 1
+
+# Mage Rune Scrolls
+- name: Rune Scroll - Forged Fire I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Forged Fire I\""
+  trait:
+    name: ForgedFire
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Frosted Touch I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Frosted Touch I\""
+  trait:
+    name: FrostedTouch
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Magic Boost I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Magic Boost I\""
+  trait:
+    name: MagicBoost
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Darker Shadows I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Darker Shadows I\""
+  trait:
+    name: DarkerShadows
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Shadow Sheath I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Shadow Sheath I\""
+  trait:
+    name: ShadowSheath
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Shadow Swap I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Shadow Swap I\""
+  trait:
+    name: ShadowSwap
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Deadeye I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Deadeye I\""
+  trait:
+    name: Deadeye
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Forceful Strike I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Forceful Strike I\""
+  trait:
+    name: ForcefulStrike
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Swashbuckler I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Swashbuckler I\""
+  trait:
+    name: Swashbuckler
+    level: 1
   value: 1

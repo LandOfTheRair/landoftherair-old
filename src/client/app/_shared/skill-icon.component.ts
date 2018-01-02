@@ -18,7 +18,8 @@ const hash = {
   Restoration: 'ankh',
   Conjuration: 'enlightenment',
 
-  Alchemy: 'drink-me',
+  Alchemy: 'apothecary',
+  Spellforging: 'spell-book',
   Unknown: 'uncertainty'
 };
 
@@ -40,6 +41,7 @@ const tooltips = {
   Conjuration: 'Conjuration Magic',
 
   Alchemy: 'Alchemy',
+  Spellforging: 'Spellforging',
 
   Unknown: 'Unknown'
 };

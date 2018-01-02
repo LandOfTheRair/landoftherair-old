@@ -165,7 +165,8 @@ export class AppComponent implements OnInit {
     Locker: null,
     Party: null,
     Traits: null,
-    TradeskillAlchemy: null
+    TradeskillAlchemy: null,
+    TradeskillSpellforging: null
   };
 
   public newMessages = 0;

@@ -1966,6 +1966,66 @@
                  "width":64,
                  "x":4800,
                  "y":3008
+                }, 
+                {
+                 "gid":1830,
+                 "height":64,
+                 "id":1445,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2944,
+                 "y":4160
+                }, 
+                {
+                 "gid":1553,
+                 "height":64,
+                 "id":1447,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2944,
+                 "y":4032
+                }, 
+                {
+                 "gid":1681,
+                 "height":64,
+                 "id":1448,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2752,
+                 "y":3968
+                }, 
+                {
+                 "gid":2198,
+                 "height":64,
+                 "id":1449,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2752,
+                 "y":4096
+                }, 
+                {
+                 "gid":1719,
+                 "height":64,
+                 "id":1450,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2752,
+                 "y":4160
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -4804,6 +4864,26 @@
                  "width":64,
                  "x":2816,
                  "y":4672
+                }, 
+                {
+                 "gid":2539,
+                 "height":64,
+                 "id":1444,
+                 "name":"Zarn",
+                 "properties":
+                    {
+                     "script":"global\/spellforger"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2816,
+                 "y":4096
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7564,7 +7644,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1444,
+ "nextobjectid":1451,
  "orientation":"orthogonal",
  "properties":
     {

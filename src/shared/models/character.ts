@@ -65,7 +65,8 @@ export const SkillClassNames = {
   Conjuration: 'Conjuration',
   Restoration: 'Restoration',
 
-  Alchemy: 'Alchemy'
+  Alchemy: 'Alchemy',
+  Spellforging: 'Spellforging'
 };
 
 export class Skills {
@@ -89,6 +90,7 @@ export class Skills {
 
   // trade skills
   alchemy = 0;
+  spellforging = 0;
 }
 
 export class Stats {
@@ -831,7 +833,7 @@ export class Character {
   private _calcSkillLevel(type) {
     const skillValue = this.skills[type.toLowerCase()] || 0;
     if(skillValue < 100) return 0;
-    if(skillValue < 200) return 1;
+    // if(skillValue < 200) return 1;
 
     const value = Math.log(skillValue / 100) / Math.log(SKILL_COEFFICIENT);
     return 1 + Math.floor(value);
@@ -843,7 +845,7 @@ export class Character {
 
   calcSkillXP(level: number) {
     if(level === 0) return 100;
-    if(level === 1) return 200;
+    // if(level === 1) return 200;
 
     return Math.floor(Math.pow(SKILL_COEFFICIENT, level) * 100);
   }
@@ -1048,16 +1050,16 @@ export class Character {
     const level = this.getTraitLevel(trait);
 
     switch(trait) {
-      case 'ShadowSwap':      return level;
+      case 'ShadowSwap':      return Math.max(100, level * 2);
       case 'ForgedFire':      return level;
       case 'FrostedTouch':    return level;
-      case 'CarefulTouch':    return level * 0.05;
+      case 'CarefulTouch':    return Math.min(0.95, level * 0.05);
       case 'MagicFocus':      return level * 5;
       case 'NecroticFocus':   return level * 5;
       case 'HealingFocus':    return level * 5;
       case 'ForcefulStrike':  return level * 5;
 
-      default: return 0;
+      default: return level;
     }
   }
 

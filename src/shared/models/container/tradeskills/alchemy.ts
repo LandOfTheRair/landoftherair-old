@@ -33,6 +33,6 @@ export class AlchemyContainer extends Container {
   }
 
   canAccept(item, index?: number) {
-    return index !== 8 && super.canAccept(item);
+    return index >= 0 && index < 8 && super.canAccept(item);
   }
 }

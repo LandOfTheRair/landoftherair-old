@@ -24,7 +24,7 @@ export class CombatHelper {
     if(shadowSwapLevel === 0) return;
     if(!CharacterHelper.isNearWall(char)) return;
 
-    if(random(1, 100) > shadowSwapLevel * 2) return;
+    if(random(1, 100) > shadowSwapLevel) return;
 
     const hidden = new Effects.Hidden({});
     char.sendClientMessage('You swap places with your shadow!');

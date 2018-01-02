@@ -8,7 +8,7 @@ import { includes } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { AssetService } from '../asset.service';
 
-const POSSIBLE_TRADESKILL_SCOPES = ['Alchemy'];
+const POSSIBLE_TRADESKILL_SCOPES = ['Alchemy', 'Spellforging'];
 
 export type MenuContext = 'Sack' | 'Belt' | 'Ground'
                         | 'GroundGroup' | 'Equipment' | 'Left'
