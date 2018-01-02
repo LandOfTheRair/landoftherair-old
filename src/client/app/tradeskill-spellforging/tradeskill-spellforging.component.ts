@@ -11,7 +11,7 @@ import { SpellforgingHelper } from '../../../server/helpers/spellforging-helper'
   templateUrl: './tradeskill-spellforging.component.html',
   styleUrls: ['./tradeskill-spellforging.component.scss']
 })
-export class TradeskillSpellforgingComponent{
+export class TradeskillSpellforgingComponent {
 
   get player() {
     return this.colyseusGame.character;
