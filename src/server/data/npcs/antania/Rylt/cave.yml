@@ -191,7 +191,9 @@
       - none
       - Antanian Ring
       - Identify Ring
-    Robe1: Saraxa Robe
+
+    Robe1: FireIce Prot Robe 100
+    Robe2: Saraxa Robe
 
   usableSkills:
     - MagicMissile
@@ -201,7 +203,7 @@
   copyDrops:
     - drop: 'rightHand'
       chance: -1
-    - drop: 'gear.Robe1'
+    - drop: 'gear.Robe2'
       chance: -1
     - drop: 'gear.Ring1'
       chance: -1

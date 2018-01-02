@@ -498,6 +498,8 @@
 
   gear:
     Armor: Antanian Tunic
+    Robe1: FireIce Prot Robe 100
+    Robe2: Antanian Cloak
 
   copyDrops:
     - drop: 'rightHand'

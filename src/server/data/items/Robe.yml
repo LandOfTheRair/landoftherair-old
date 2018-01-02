@@ -85,3 +85,10 @@
 
   requirements:
     level: 9
+
+- name: FireIce Prot Robe 100
+  stats:
+    fireResist: 100
+    iceResist: 100
+  desc: "a robe made of insulating material"
+  sprite: 211

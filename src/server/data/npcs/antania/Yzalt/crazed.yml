@@ -61,11 +61,8 @@
         chance: 1
       - result: Antanian Studded Tunic
         chance: 2
-    Robe1:
-      - result: none
-        chance: 2
-      - result: Antanian Cloak
-        chance: 4
+    Robe1: FireIce Prot Robe 100
+    Robe2: Antanian Cloak
     Ring1:
       - result: none
         chance: 500
@@ -82,7 +79,7 @@
       chance: -1
     - drop: 'gear.Armor'
       chance: -1
-    - drop: 'gear.Robe1'
+    - drop: 'gear.Robe2'
       chance: -1
     - drop: 'gear.Ring1'
       chance: -1
@@ -317,11 +314,8 @@
 
   gear:
     Armor: Antanian Breastplate
-    Robe1:
-      - result: none
-        chance: 2
-      - result: Antanian Cloak
-        chance: 4
+    Robe1: FireIce Prot Robe 100
+    Robe2: Antanian Cloak
     Ring1:
       - result: none
         chance: 500
@@ -345,7 +339,7 @@
       chance: -1
     - drop: 'gear.Armor'
       chance: -1
-    - drop: 'gear.Robe1'
+    - drop: 'gear.Robe2'
       chance: -1
     - drop: 'gear.Ring1'
       chance: -1
@@ -500,11 +494,10 @@
         chance: 20
       - result: Antanian Studded Tunic
         chance: 30
-    Robe1:
+    Robe1: FireIce Prot Robe 100
+    Robe2:
       - result: Yzalt Fungus Cloak
         chance: 1
-      - result: none
-        chance: 20
       - result: Antanian Cloak
         chance: 40
     Ring1:
@@ -565,7 +558,7 @@
       chance: -1
     - drop: 'gear.Armor'
       chance: -1
-    - drop: 'gear.Robe1'
+    - drop: 'gear.Robe2'
       chance: -1
     - drop: 'gear.Ring1'
       chance: -1
@@ -915,11 +908,10 @@
         chance: 1
       - result: Antanian Breastplate
         chance: 20
-    Robe1:
+    Robe1: FireIce Prot Robe 100
+    Robe2:
       - result: Yzalt Fungus Cloak
         chance: 1
-      - result: none
-        chance: 20
       - result: Antanian Cloak
         chance: 40
     Ring1:
@@ -976,7 +968,7 @@
       chance: -1
     - drop: 'gear.Armor'
       chance: -1
-    - drop: 'gear.Robe1'
+    - drop: 'gear.Robe2'
       chance: -1
     - drop: 'gear.Ring1'
       chance: -1
