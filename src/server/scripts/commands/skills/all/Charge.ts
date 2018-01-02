@@ -42,7 +42,7 @@ export class Charge extends Skill {
     if(!weapon) return user.sendClientMessage('You need a weapon in your hand to charge!');
 
     const userSkill = user.calcSkillLevel(weapon.type);
-    const requiredSkill = user.baseClass === 'Warrior' ? 5 : 10;
+    const requiredSkill = user.baseClass === 'Warrior' ? 7 : 11;
     if(userSkill < requiredSkill) return user.sendClientMessage('You are not skilled enough to do that!');
 
     const range = this.range(user);

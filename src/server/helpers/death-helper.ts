@@ -55,7 +55,7 @@ export class DeathHelper {
     if(!isPlayer) {
       corpse.tansFor = (<any>target).tansFor;
       (<any>corpse).npcUUID = target.uuid;
-      corpse.$$playersHeardDeath = target.$$room.state.getPlayersInRange(target, 6).map(x => (<Player>x).username);
+      corpse.$$playersHeardDeath = target.$$room.state.getPlayersInRange(target, 7).map(x => (<Player>x).username);
     }
 
     return corpse;
