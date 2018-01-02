@@ -296,7 +296,7 @@ export class Spawner {
     if(this.currentTick > this.respawnRate
     && this.respawnRate > 0
     && this.npcs.length < this.maxCreatures
-    && (this.alwaysSpawn || this.room.canSpawnCreatures)) {
+    && (this.alwaysSpawn || (this.room.canSpawnCreatures && !this.$$isStayingSlow))) {
       this.currentTick = 0;
       this.createNPC();
     }
