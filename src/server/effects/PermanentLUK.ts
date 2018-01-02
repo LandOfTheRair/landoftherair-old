@@ -2,13 +2,13 @@
 import { Effect, Maxes } from '../base/Effect';
 import { Character } from '../../shared/models/character';
 
-export class MinorCHA extends Effect {
+export class PermanentLUK extends Effect {
   effectStart(char: Character) {
-    if(char.getBaseStat('cha') >= Maxes.Minor) {
+    if(char.getBaseStat('luk') >= Maxes[this.tier]) {
       return this.effectMessage(char, 'The fluid was tasteless.');
     }
 
-    char.gainBaseStat('cha', this.potency);
-    this.effectMessage(char, 'You feel better-looking!');
+    char.gainBaseStat('luk', this.potency);
+    this.effectMessage(char, 'Your drink had a four-leaf clover in it!');
   }
 }

@@ -2,11 +2,11 @@
 import { Effect, Maxes } from '../base/Effect';
 import { Character } from '../../shared/models/character';
 
-export class MinorWIS extends Effect {
+export class PermanentINT extends Effect {
   effectStart(char: Character) {
-    const canGainMP = char.baseClass === 'Healer' && char.getBaseStat('mp') < 200;
+    const canGainMP = char.baseClass === 'Mage' && char.getBaseStat('mp') < 200;
 
-    if(char.getBaseStat('wis') >= Maxes.Minor && !canGainMP) {
+    if(char.getBaseStat('int') >= Maxes[this.tier] && !canGainMP) {
       return this.effectMessage(char, 'The fluid was tasteless.');
     }
 
@@ -14,8 +14,8 @@ export class MinorWIS extends Effect {
       char.gainBaseStat('mp', 2);
     }
 
-    char.gainBaseStat('wis', this.potency);
+    char.gainBaseStat('int', this.potency);
     char.recalculateStats();
-    this.effectMessage(char, 'You feel like you can make better decisions!');
+    this.effectMessage(char, 'Your head is swimming with knowledge!');
   }
 }

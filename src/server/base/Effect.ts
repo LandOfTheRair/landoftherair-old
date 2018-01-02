@@ -6,6 +6,7 @@ import { CombatHelper } from '../helpers/combat-helper';
 
 export const Maxes = {
   Lesser: 10,
+  Bradley: 13,
   Minor: 15
 };
 
@@ -21,6 +22,7 @@ export class Effect {
   name = '';
   iconData = {};
   duration = 0;
+  protected tier: string;
   protected potency = 0;
 
   effectInfo: EffectInfo = { caster: '' };

@@ -2,9 +2,9 @@
 import { Effect, Maxes } from '../base/Effect';
 import { Character } from '../../shared/models/character';
 
-export class MinorCON extends Effect {
+export class PermanentCON extends Effect {
   effectStart(char: Character) {
-    if(char.getBaseStat('con') >= Maxes.Minor) {
+    if(char.getBaseStat('con') >= Maxes[this.tier]) {
       return this.effectMessage(char, 'The fluid was tasteless.');
     }
 

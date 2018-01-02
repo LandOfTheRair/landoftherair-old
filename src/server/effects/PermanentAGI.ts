@@ -2,9 +2,9 @@
 import { Effect, Maxes } from '../base/Effect';
 import { Character } from '../../shared/models/character';
 
-export class MinorAGI extends Effect {
+export class PermanentAGI extends Effect {
   effectStart(char: Character) {
-    if(char.getBaseStat('agi') >= Maxes.Minor) {
+    if(char.getBaseStat('agi') >= Maxes[this.tier]) {
       return this.effectMessage(char, 'The fluid was tasteless.');
     }
 

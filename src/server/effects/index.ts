@@ -3,15 +3,15 @@ export * from './ExactHeal';
 export * from './Nourishment';
 export * from './Malnourished';
 
-export * from './MinorSTR';
-export * from './MinorDEX';
-export * from './MinorAGI';
-export * from './MinorINT';
-export * from './MinorWIS';
-export * from './MinorWIL';
-export * from './MinorCON';
-export * from './MinorLUK';
-export * from './MinorCHA';
+export * from './PermanentSTR';
+export * from './PermanentDEX';
+export * from './PermanentAGI';
+export * from './PermanentINT';
+export * from './PermanentWIS';
+export * from './PermanentWIL';
+export * from './PermanentCON';
+export * from './PermanentLUK';
+export * from './PermanentCHA';
 export * from './MinorHP';
 export * from './MinorMP';
 

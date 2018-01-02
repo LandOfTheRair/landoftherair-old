@@ -42,7 +42,8 @@
   extendedDesc: "a potion of strength"
   sprite: 151
   effect:
-    name: MinorSTR
+    name: PermanentSTR
+    tier: Minor
     potency: 1
   value: 5000
 
@@ -51,7 +52,8 @@
   extendedDesc: "a potion of agility"
   sprite: 157
   effect:
-    name: MinorAGI
+    name: PermanentAGI
+    tier: Minor
     potency: 1
   value: 2000
 
@@ -60,7 +62,8 @@
   extendedDesc: "a potion of dexterity"
   sprite: 150
   effect:
-    name: MinorDEX
+    name: PermanentDEX
+    tier: Minor
     potency: 1
   value: 3500
 
@@ -69,7 +72,8 @@
   extendedDesc: "a potion of intelligence"
   sprite: 158
   effect:
-    name: MinorINT
+    name: PermanentINT
+    tier: Minor
     potency: 1
   value: 5000
 
@@ -78,7 +82,8 @@
   extendedDesc: "a potion of wisdom"
   sprite: 156
   effect:
-    name: MinorWIS
+    name: PermanentWIS
+    tier: Minor
     potency: 1
   value: 3000
 
@@ -87,7 +92,8 @@
   extendedDesc: "a potion of willpower"
   sprite: 154
   effect:
-    name: MinorWIL
+    name: PermanentWIL
+    tier: Minor
     potency: 1
   value: 10000
 
@@ -96,7 +102,8 @@
   extendedDesc: "a potion of constitution"
   sprite: 153
   effect:
-    name: MinorCON
+    name: PermanentCON
+    tier: Minor
     potency: 1
   value: 10000
 
@@ -105,7 +112,8 @@
   extendedDesc: "a potion of luck"
   sprite: 152
   effect:
-    name: MinorLUK
+    name: PermanentLUK
+    tier: Minor
     potency: 1
   value: 100000
 
@@ -114,7 +122,8 @@
   extendedDesc: "a potion of charisma"
   sprite: 155
   effect:
-    name: MinorCHA
+    name: PermanentCHA
+    tier: Minor
     potency: 1
   value: 200000
 
@@ -141,7 +150,8 @@
   extendedDesc: "a potion of constitution"
   sprite: 153
   effect:
-    name: MinorCON
+    name: PermanentCON
+    tier: Bradley
     potency: 1
     ignoreHPBoost: true
   value: 500
