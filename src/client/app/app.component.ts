@@ -209,7 +209,7 @@ export class AppComponent implements OnInit {
       if(this.colyseus.game.showBank.bankId) return true;
 
       if(document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return true;
-      if(this.activeWindow === 'cmd' || this.activeWindow === 'lobby') return true;
+      if(this.activeWindow === 'cmd' || this.activeWindow === 'lobby' || this.activeWindow === 'bank') return true;
 
       return false;
     };
