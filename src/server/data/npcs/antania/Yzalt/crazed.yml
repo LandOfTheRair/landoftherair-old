@@ -10,9 +10,9 @@
   otherStats:
     int: 15
   skillLevels:
-    Staff: 3
-    Conjuration: 3
-    Wand: 3
+    Staff: 2
+    Conjuration: 2
+    Wand: 2
 
   level: 10
 
@@ -98,7 +98,10 @@
   baseClass: Thief
   stats: 10
   skillLevels:
-    Dagger: 3
+    Dagger: 2
+    Ranged: 2
+    Throwing: 2
+    Thievery: 2
 
   level: 10
 
@@ -183,9 +186,9 @@
   baseClass: Warrior
   stats: 10
   skillLevels:
-    Mace: 3
-    Onehanded: 3
-    Twohanded: 3
+    Mace: 2
+    Onehanded: 2
+    Twohanded: 2
 
   level: 10
 
@@ -275,7 +278,8 @@
   otherStats:
     wis: 15
   skillLevels:
-    Mace: 3
+    Mace: 2
+    Restoration: 2
 
   level: 10
 
@@ -356,12 +360,12 @@
   sprite: 155
   stats: 10
   skillLevels:
-    Mace: 4
-    Onehanded: 4
-    Twohanded: 4
-    Staff: 4
-    Wand: 4
-    Dagger: 4
+    Mace: 2
+    Onehanded: 2
+    Twohanded: 2
+    Staff: 2
+    Wand: 2
+    Dagger: 2
 
   level: 7
 
@@ -475,8 +479,8 @@
     - FireMist
 
   giveXp:
-    min: 2650
-    max: 2950
+    min: 3950
+    max: 4150
 
   rightHand:
     - result: Antanian Staff
@@ -589,6 +593,9 @@
   stats: 14
   skillLevels:
     Dagger: 3
+    Ranged: 3
+    Throwing: 3
+    Thievery: 3
 
   otherStats:
     stealth: 25
@@ -610,8 +617,8 @@
     max: 4800
 
   giveXp:
-    min: 2550
-    max: 2750
+    min: 3950
+    max: 4150
 
   repMod:
     - allegiance: Royalty
@@ -758,8 +765,8 @@
     max: 3800
 
   giveXp:
-    min: 2350
-    max: 2550
+    min: 3950
+    max: 4150
 
   usableSkills:
     - Charge
@@ -872,7 +879,8 @@
   otherStats:
     wis: 17
   skillLevels:
-    Mace: 4
+    Mace: 3
+    Restoration: 3
 
   level: 8
 
@@ -887,8 +895,8 @@
     max: 2600
 
   giveXp:
-    min: 2450
-    max: 2850
+    min: 3950
+    max: 4150
 
   rightHand:
     - result: Antanian Mace
