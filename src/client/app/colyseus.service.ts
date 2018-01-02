@@ -42,8 +42,10 @@ export class ColyseusService {
     });
 
     this.client.onError.add((e) => {
+      if(!e) return;
       console.error(e);
       location.reload();
+
     });
 
     this.client.onClose.add(() => {
