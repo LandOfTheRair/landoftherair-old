@@ -970,14 +970,31 @@ export class Character {
 
   addAgro(char: Character, value) {
     if(!char) return;
-    this.agro[char.uuid] = this.agro[char.uuid] || 0;
-    this.agro[char.uuid] += value;
 
-    if(this.agro[char.uuid] <= 0) this.removeAgro(char);
+    const agroAdd = (uuid, val) => {
+      this.agro[uuid] = this.agro[uuid] || 0;
+      this.agro[uuid] += value;
+      if(this.agro[uuid] <= 0) this.removeAgroUUID(char.uuid);
+    };
+
+    agroAdd(char.uuid, value);
+
+    if(char.isPlayer()) {
+      const party = (<any>char).party;
+      if(party) {
+        party.members.forEach(({ username }) => {
+          agroAdd(username, 1);
+        });
+      }
+    }
   }
 
   removeAgro(char: Character) {
-    delete this.agro[char.uuid];
+    this.removeAgroUUID(char.uuid);
+  }
+
+  private removeAgroUUID(charUUID: string) {
+    delete this.agro[charUUID];
   }
 
   changeRep(allegiance: Allegiance, modifier) {
