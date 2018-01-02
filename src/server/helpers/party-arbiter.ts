@@ -43,11 +43,6 @@ export class PartyArbiter {
       this._redisUpdateMember(member, partyName);
     });
 
-    this.redis.on('party:sync', ({ parties, roomName }) => {
-      if('Arbiter' === roomName) return;
-      this.parties = parties;
-    });
-
     this.redis.on('party:requestsync', ({ roomName }) => {
       if('Arbiter' === roomName) return;
       this.redis.emit('party:sync', { parties: this.parties, roomName: 'Arbiter' });
@@ -55,12 +50,9 @@ export class PartyArbiter {
 
   }
 
-  public stopEmitting() {
-    this.redis.quit();
-  }
-
   private _redisCreateParty(leader: PartyPlayer, partyName: string) {
-    this.parties[partyName] = new Party(leader, partyName);
+    this.parties[partyName] = new Party();
+    this.parties[partyName].init(leader, partyName);
   }
 
   private _redisJoinParty(joiner: PartyPlayer, partyName: string) {

@@ -46,13 +46,11 @@ export class PartyManager {
     });
 
     this.redis.on('party:sync', ({ parties, roomName }) => {
-      if(this.room.roomName === roomName) return;
-      this.parties = parties;
-    });
-
-    this.redis.on('party:requestsync', ({ roomName }) => {
-      if(this.room.roomName === roomName) return;
-      this.redis.emit('party:sync', { parties: this.parties, roomName: this.room.roomName });
+      if(roomName !== 'Arbiter') return;
+      this.parties = {};
+      Object.keys(parties).forEach(partyName => {
+        this.parties[partyName] = new Party(parties[partyName]);
+      });
     });
 
     this.redis.emit('party:requestsync', { roomName: this.room.roomName });
@@ -88,7 +86,8 @@ export class PartyManager {
   }
 
   private _redisCreateParty(leader: PartyPlayer, partyName: string) {
-    this.parties[partyName] = new Party(leader, partyName);
+    this.parties[partyName] = new Party();
+    this.parties[partyName].init(leader, partyName);
   }
 
   public joinParty(joiner: Player, partyName: string) {

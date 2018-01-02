@@ -1,5 +1,5 @@
 
-import { sumBy, reject, find, pull } from 'lodash';
+import { sumBy, reject, find, pull, extend } from 'lodash';
 import { Player } from './player';
 
 export class PartyPlayer {
@@ -33,6 +33,7 @@ export class PartyPlayer {
 
 export class Party {
   public members: PartyPlayer[] = [];
+  private partyName: string;
 
   get name(): string {
     return this.partyName;
@@ -58,8 +59,13 @@ export class Party {
     return Math.floor(sumBy(this.members, 'level') / this.members.length);
   }
 
-  constructor(leader: PartyPlayer, private partyName: string) {
+  constructor(opts?) {
+    extend(this, opts);
+  }
+
+  init(leader: PartyPlayer, partyName: string) {
     this.members = [leader];
+    this.partyName = partyName;
   }
 
   public isLeader(username: string): boolean {
