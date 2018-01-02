@@ -2,7 +2,7 @@
   desc: "a blue wand engraved with the markings of a shaman"
   baseDamage: 1
   minDamage: 1
-  maxDamage: 1
+  maxDamage: 8
   damageRolls: 1
   effect:
     name: MagicMissile
@@ -18,7 +18,7 @@
   desc: "a blue wand engraved with the blazing Heniz runes"
   baseDamage: 5
   minDamage: 1
-  maxDamage: 7
+  maxDamage: 14
   damageRolls: 1
   effect:
     name: FireMist
@@ -36,7 +36,7 @@
   desc: "a blue wand engraved with the frozen Heniz runes"
   baseDamage: 5
   minDamage: 1
-  maxDamage: 7
+  maxDamage: 14
   damageRolls: 1
   effect:
     name: IceMist
