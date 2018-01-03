@@ -250,6 +250,9 @@ export class GameWorld extends Room<GameState> {
     data.room = this;
     data.client = client;
 
+    data.command = (data.command || '').trim();
+    data.args = (data.args || '').trim().split('  ').join(' ');
+
     player.manageTraitPointPotentialGain(data.command);
     CommandExecutor.queueCommand(player, data.command, data);
   }
