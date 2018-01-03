@@ -344,8 +344,11 @@ export class Item {
   use(char: Character): boolean {
     if(!this.canUse(char)) return false;
     if(this.effect && (isNumber(this.ounces) ? this.ounces > 0 : true)) {
+      // swallow effects that don't exist
+      if(!Effects[this.effect.name]) return true;
       char.applyEffect(new Effects[this.effect.name](this.effect));
     }
+
     if(this.itemClass === 'Box') {
       const hand = char.rightHand === this ? 'RightHand' : 'LeftHand';
       LootHelper.rollSingleTable(this.containedItems, char.$$room).then(items => {
