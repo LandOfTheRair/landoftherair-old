@@ -450,6 +450,7 @@ export class ColyseusGameService {
 
   private sendAction(data) {
     data.t = Date.now();
+    if(data.args) data.args = data.args.trim().split('  ').join(' ');
     this.worldRoom.send(data);
   }
 
@@ -524,7 +525,7 @@ export class ColyseusGameService {
           return this[key].uuid;
         }).join(' ');
       }
-      
+
       this.sendAction({ command, args });
     });
   }
