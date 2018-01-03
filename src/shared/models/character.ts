@@ -979,9 +979,9 @@ export class Character {
 
     agroAdd(char.uuid, value);
 
-    if(char.isPlayer()) {
+    if(char.isPlayer() && value > 0) {
       const party = (<any>char).party;
-      if(party) {
+      if(party && (<any>this).partyName !== (<any>char).partyName) {
         party.members.forEach(({ username }) => {
           agroAdd(username, 1);
         });
