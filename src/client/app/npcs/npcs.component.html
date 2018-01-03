@@ -1,6 +1,6 @@
 <div class="p-1 char-container align-content-start">
-  <div class="vertical-center w-100 background-text" *ngIf="visibleNPCS().length === 0">You don't see anything.</div>
-  <div class="char-card-container" *ngFor="let npc of visibleNPCS(); let i = index">
+  <div class="vertical-center w-100 background-text" *ngIf="visibleNPCList.length === 0">You don't see anything.</div>
+  <div class="char-card-container" *ngFor="let npc of visibleNPCList; let i = index">
     <app-npc-card [npc]="npc" *ngIf="npc" (click)="doAction(npc, $event, i)"></app-npc-card>
   </div>
 </div>

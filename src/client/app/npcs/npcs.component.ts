@@ -5,6 +5,7 @@ import { compact, find, pull, findIndex, sortBy } from 'lodash';
 import { NPC } from '../../../shared/models/npc';
 import { MacroService } from '../macros.service';
 import { LocalStorageService } from 'ngx-webstorage';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-npcs',
@@ -20,6 +21,11 @@ export class NpcsComponent implements OnInit, OnDestroy {
   private pinUUID: string;
   private pinPos: number;
 
+  public visibleNPCList: NPC[] = [];
+
+  private move$;
+  private timer$;
+
   constructor(
     private colyseusGame: ColyseusGameService,
     private macroService: MacroService,
@@ -33,13 +39,24 @@ export class NpcsComponent implements OnInit, OnDestroy {
       .subscribe((value) => {
         this.shouldPin = value;
       });
+
+    this.timer$ = Observable.timer(0, 500)
+      .subscribe(() => this.updateNPCList());
+
+    this.move$ = this.colyseusGame.myLoc$.subscribe(() => this.updateNPCList());
   }
 
   ngOnDestroy() {
     this.pinOption$.unsubscribe();
+    this.timer$.unsubscribe();
+    this.move$.unsubscribe();
   }
 
-  public visibleNPCS() {
+  private updateNPCList() {
+    this.visibleNPCList = this.visibleNPCS();
+  }
+
+  private visibleNPCS() {
     const fov = this.colyseusGame.character.fov;
     const npcs: any[] = this.colyseusGame.clientGameState.allCharacters;
 
