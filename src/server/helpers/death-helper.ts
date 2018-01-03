@@ -57,7 +57,7 @@ export class DeathHelper {
       (<any>corpse).npcUUID = target.uuid;
       corpse.$$playersHeardDeath = target.$$room.state.getPlayersInRange(target, 7, [], false).map(x => (<Player>x).username);
     }
-    
+
     return corpse;
   }
 

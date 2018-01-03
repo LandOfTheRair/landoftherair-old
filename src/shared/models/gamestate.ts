@@ -321,6 +321,16 @@ export class GameState {
         affected[x - player.x] = affected[x - player.x] || {};
         affected[x - player.x][y - player.y] = true;
       });
+
+      if(!player.hasEffect('DarkVision')) {
+        for(let xx = player.x - dist; xx <= player.x + dist; xx++) {
+          for(let yy = player.y - dist; yy <= player.y + dist; yy++) {
+            if(!this.isDarkAt(xx, yy)) continue;
+            affected[xx - player.x] = affected[xx - player.x] || {};
+            affected[xx - player.x][yy - player.y] = false;
+          }
+        }
+      }
     }
 
     player.fov = affected;
