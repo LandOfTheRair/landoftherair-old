@@ -58,4 +58,4 @@ export * from './RecentlyStunned';
 
 export * from './Identify';
 export * from './Succor';
-// Transmute cannot be in here
+export * from './Transmute';

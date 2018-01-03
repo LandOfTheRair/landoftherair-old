@@ -129,6 +129,15 @@
     uses: 10
     potency: 1
 
+- name: Transmute Ring
+  sprite: 239
+  desc: "a silver ring set with a blue gem"
+  value: 100
+  effect:
+    name: Transmute
+    uses: 10
+    potency: 1
+
 - name: Succor Ring
   sprite: 239
   desc: "a silver ring set with a blue gem"
