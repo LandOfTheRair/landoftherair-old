@@ -165,6 +165,8 @@ test('All Interactables have valid properties', t => {
       }
 
       if(interactable.type === 'Door') {
+        if(!interactable.properties) return;
+        
         const { requireHeld, requireLockpick, skillRequired } = interactable.properties;
 
         if(requireLockpick) {
