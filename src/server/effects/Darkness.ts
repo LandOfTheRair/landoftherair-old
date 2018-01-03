@@ -7,7 +7,10 @@ import * as dice from 'dice.js';
 export class Darkness extends SpellEffect {
 
   maxSkillForSkillGain = 11;
-  skillFlag = () => SkillClassNames.Conjuration;
+  skillFlag = (caster) => {
+    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
+    return SkillClassNames.Thievery;
+  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

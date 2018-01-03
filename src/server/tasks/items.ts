@@ -189,12 +189,13 @@ class ItemLoader {
       }
     }
 
+    // having potency = it's castable
     if(item.effect && !Effects[item.effect.name]) {
       console.error(`ERROR: ${item.name} has an invalid effect name: ${item.effect.name}`);
       hasBad = true;
     }
 
-    if(item.effect && !Effects[item.effect.name] && !item.effect.uses) {
+    if(item.effect && !Effects[item.effect.name] && (!item.effect.uses || !item.effect.potency)) {
       console.error(`ERROR: ${item.name} has an invalid effect: ${JSON.stringify(item.effect)}`);
       hasBad = true;
     }

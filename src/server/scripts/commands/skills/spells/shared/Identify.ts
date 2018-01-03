@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { MagicMissile as CastEffect } from '../../../../../effects/MagicMissile';
+import { Identify as CastEffect } from '../../../../../effects/Identify';
 
 export class Identify extends Skill {
 
@@ -34,7 +34,9 @@ export class Identify extends Skill {
   use(user: Character, baseEffect = { potency: 0 }) {
     let potency = 1;
     if(user.baseClass === 'Mage') potency += 1;
-    user.sendClientMessage(user.rightHand.descTextFor(user, potency));
+
+    const effect = new CastEffect({ potency });
+    effect.cast(user, user);
   }
 
 }
