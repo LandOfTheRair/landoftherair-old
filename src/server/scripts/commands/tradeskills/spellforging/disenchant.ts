@@ -22,6 +22,8 @@ export class Disenchant extends Command {
     if(container.result) return player.sendClientMessage('You need to remove your previous result first.');
     if(!container.modifyItem) return player.sendClientMessage('You can\'t disenchant nothing.');
 
+    if(!container.modifyItem.isOwnedBy(player)) return player.sendClientMessage('You can\'t disenchant someone elses items!');
+
     if(!SpellforgingHelper.canDisenchant(container.modifyItem)) return player.sendClientMessage('You can\'t disenchant that.');
 
     const message = await SpellforgingHelper.disenchant(player);
