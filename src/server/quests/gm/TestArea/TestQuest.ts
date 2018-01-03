@@ -34,7 +34,7 @@ export class TestQuest extends Quest {
   public static isComplete(player: Player): boolean {
     const { canComplete } = player.getQuestData(this);
 
-    return canComplete
+    return canComplete;
   }
 
   public static incompleteText(player: Player): string {
