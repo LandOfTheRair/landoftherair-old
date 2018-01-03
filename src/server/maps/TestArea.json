@@ -417,11 +417,15 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "region":"TestArea"
+     "region":"GMLand",
+     "respawnX":16,
+     "respawnY":16
     },
  "propertytypes":
     {
-     "region":"string"
+     "region":"string",
+     "respawnX":"int",
+     "respawnY":"int"
     },
  "renderorder":"right-down",
  "tileheight":64,
