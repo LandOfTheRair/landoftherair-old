@@ -55,7 +55,7 @@ export abstract class Skill extends Command {
     }
 
     if(args) {
-      const possTargets = MessageHelper.getPossibleMessageTargets(user, args);
+      const possTargets = MessageHelper.getPossibleMessageTargets(user, args.trim());
       target = possTargets[0];
     }
 
