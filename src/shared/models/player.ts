@@ -345,9 +345,11 @@ export class Player extends Character {
   }
 
   revive() {
+    if(!this.isDead()) return;
+
     if(this.$$corpseRef) {
       this.$$room.removeCorpse(this.$$corpseRef);
-      delete this.$$corpseRef;
+      this.$$corpseRef = null;
     }
     this.dir = 'S';
   }
