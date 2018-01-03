@@ -326,7 +326,7 @@ export class Player extends Character {
 
     if(killer && !killer.isPlayer()) {
 
-      if(random(1, 100) > this.getTraitLevel('DeathGrip')) {
+      if(random(1, 100) > this.getTraitLevelAndUsageModifier('DeathGrip')) {
         CharacterHelper.dropHands(this);
       }
 

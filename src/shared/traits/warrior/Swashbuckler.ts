@@ -13,7 +13,7 @@ export class Swashbuckler extends Trait {
   static maxLevel = 10;
 
   static canBuy(player: Player): boolean {
-    return super.canBuy(player) && player.getTraitLevel('SwordTricks') === 5;
+    return super.canBuy(player) && player.getBaseTraitLevel('SwordTricks') === 5;
   }
 
 }

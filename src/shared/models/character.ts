@@ -1010,7 +1010,7 @@ export class Character {
     const casterLevel = this.level;
 
     const hideBoost = isThief ? Math.floor(thiefLevel / 5) * 10 : 0;
-    const traitBoost = this.getTraitLevel('DarkerShadows') * 5;
+    const traitBoost = this.getTraitLevelAndUsageModifier('DarkerShadows');
 
     const hideLevel = (casterThiefSkill + casterAgi + casterLevel + hideBoost + traitBoost);
     return Math.floor(hideLevel);
@@ -1021,7 +1021,7 @@ export class Character {
     const rightHandClass = this.rightHand ? this.rightHand.itemClass : '';
 
     let reductionPercent = (HideReductionPercents[leftHandClass] || 0) + (HideReductionPercents[rightHandClass] || 0);
-    reductionPercent = Math.max(0, reductionPercent - this.getTraitLevel('ShadowSheath'));
+    reductionPercent = Math.max(0, reductionPercent - this.getTraitLevelAndUsageModifier('ShadowSheath'));
 
     const stealth = this.getTotalStat('stealth');
     return Math.floor(stealth * (reductionPercent / 100));
@@ -1067,6 +1067,9 @@ export class Character {
     const level = this.getTraitLevel(trait);
 
     switch(trait) {
+      case 'DarkerShadows':   return level * 5;
+      case 'ShadowSheath':    return level;
+      case 'DeathGrip':       return Math.min(100, level);
       case 'ShadowSwap':      return Math.min(100, level * 2);
       case 'ForgedFire':      return level;
       case 'FrostedTouch':    return level;
