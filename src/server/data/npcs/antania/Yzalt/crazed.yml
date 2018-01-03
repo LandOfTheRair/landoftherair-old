@@ -2,7 +2,6 @@
 - npcId: Crazed Heniz Mage
   name: crazed mage
   hostility: Always
-  allegiance: Pirates
   sprite: 545
   alignment: Evil
   baseClass: Mage
@@ -44,6 +43,8 @@
   repMod:
     - allegiance: Royalty
       delta: 1
+    - allegiance: Pirates
+      delta: -1
 
   rightHand:
     - result: Antanian Staff
@@ -89,7 +90,6 @@
 - npcId: Crazed Heniz Thief
   name: crazed thief
   hostility: Always
-  allegiance: Pirates
   sprite: 585
   alignment: Evil
   baseClass: Thief
@@ -122,6 +122,8 @@
   repMod:
     - allegiance: Royalty
       delta: 1
+    - allegiance: Pirates
+      delta: -1
 
   rightHand:
     - result: Antanian Dagger
@@ -177,7 +179,6 @@
 - npcId: Crazed Steffen Warrior
   name: crazed warrior
   hostility: Always
-  allegiance: Royalty
   sprite: 590
   alignment: Good
   baseClass: Warrior
@@ -212,6 +213,8 @@
   repMod:
     - allegiance: Pirates
       delta: 1
+    - allegiance: Royalty
+      delta: -1
 
   rightHand:
     - result: Antanian Greatmace
@@ -267,7 +270,6 @@
 - npcId: Crazed Steffen Healer
   name: crazed healer
   hostility: Always
-  allegiance: Royalty
   sprite: 550
   alignment: Good
   baseClass: Healer
@@ -300,6 +302,8 @@
   repMod:
     - allegiance: Pirates
       delta: 1
+    - allegiance: Royalty
+      delta: -1
 
   rightHand:
     - result: Antanian Mace

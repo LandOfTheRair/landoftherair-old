@@ -970,6 +970,7 @@ export class Character {
 
   addAgro(char: Character, value) {
     if(!char) return;
+    if(char.allegiance === this.allegiance) return;
 
     const agroAdd = (uuid, val) => {
       this.agro[uuid] = this.agro[uuid] || 0;
