@@ -302,13 +302,37 @@
                 {
                  "gid":1428,
                  "height":64,
-                 "id":173,
+                 "id":215,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":64,
                  "x":1536,
+                 "y":2304
+                }, 
+                {
+                 "gid":1396,
+                 "height":64,
+                 "id":216,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1472,
+                 "y":2304
+                }, 
+                {
+                 "gid":1456,
+                 "height":64,
+                 "id":217,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1600,
                  "y":2304
                 }],
          "opacity":1,
@@ -540,30 +564,6 @@
                  "width":64,
                  "x":896,
                  "y":512
-                }, 
-                {
-                 "gid":1396,
-                 "height":64,
-                 "id":170,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1472,
-                 "y":2304
-                }, 
-                {
-                 "gid":1456,
-                 "height":64,
-                 "id":171,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1600,
-                 "y":2304
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1088,7 +1088,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":212,
+ "nextobjectid":218,
  "orientation":"orthogonal",
  "properties":
     {

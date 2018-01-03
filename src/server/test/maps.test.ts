@@ -147,7 +147,7 @@ test('All Interactables have valid properties', t => {
     intObjects.forEach(interactable => {
 
       if(!interactable.type) {
-        t.fail(`Interactable ${JSON.stringify(interactable)} has no type!`);
+        t.fail(`Interactable (${map._name}) ${JSON.stringify(interactable)} has no type!`);
         return;
       }
 
@@ -166,7 +166,7 @@ test('All Interactables have valid properties', t => {
 
       if(interactable.type === 'Door') {
         if(!interactable.properties) return;
-        
+
         const { requireHeld, requireLockpick, skillRequired } = interactable.properties;
 
         if(requireLockpick) {
