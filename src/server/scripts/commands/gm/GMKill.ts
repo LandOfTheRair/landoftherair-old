@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { ItemCreator } from '../../../helpers/item-creator';
 import { CombatHelper } from '../../../helpers/combat-helper';
 import { MessageHelper } from '../../../helpers/message-helper';
 

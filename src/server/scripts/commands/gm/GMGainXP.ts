@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { ItemCreator } from '../../../helpers/item-creator';
 
 export class GMGainXP extends Command {
 
