@@ -270,7 +270,7 @@ export class Item {
 
     const traitText = this.trait
                     && !includes(this.name, 'Rune Scroll')
-                    && senseLevel > 1 ? `This item bestows the ability ${startCase(this.trait.name)} ${toRoman(this.trait.level)}. ` : '';
+                    && senseLevel > 0 ? `This item bestows the ability ${startCase(this.trait.name)} ${toRoman(this.trait.level)}. ` : '';
 
     const levelText = this.requirements && this.requirements.level ? `You must be level ${this.requirements.level} to use this item. ` : '';
 
