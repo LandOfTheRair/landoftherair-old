@@ -49,7 +49,7 @@ export class MessageHelper {
 
       return this.doesTargetMatchSearch(target, findStr);
     });
-
+    
     return possTargets;
   }
 
