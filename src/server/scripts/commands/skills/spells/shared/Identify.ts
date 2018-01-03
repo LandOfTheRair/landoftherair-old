@@ -32,7 +32,8 @@ export class Identify extends Skill {
   }
 
   use(user: Character, baseEffect = { potency: 0 }) {
-    const potency = 1 + Math.floor(baseEffect.potency || user.calcSkillLevel(SkillClassNames.Conjuration) / 10);
+    let potency = 1;
+    if(user.baseClass === 'Mage') potency += 1;
     user.sendClientMessage(user.rightHand.descTextFor(user, potency));
   }
 
