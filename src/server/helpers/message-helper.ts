@@ -37,6 +37,8 @@ export class MessageHelper {
   }
 
   static getPossibleMessageTargets(player: Character, findStr: string): any[] {
+    findStr = findStr.trim();
+
     const allTargets = player.$$room.state.allPossibleTargets;
     const possTargets = allTargets.filter(target => {
       if(target.isDead()) return;
