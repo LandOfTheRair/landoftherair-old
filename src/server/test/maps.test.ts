@@ -139,3 +139,39 @@ test('All NPCs have valid properties', t => {
     });
   });
 });
+
+// interactables layer tests
+test('All Interactables have valid properties', t => {
+  allMaps.forEach(map => {
+    const intObjects = map.layers[MapLayer.Interactables].objects;
+    intObjects.forEach(interactable => {
+
+      if(!interactable.type) {
+        t.fail(`Interactable ${JSON.stringify(interactable)} has no type!`);
+        return;
+      }
+
+      if(interactable.type === 'Locker') {
+        t.truthy(interactable.name, tagFor(map, 'name'));
+        t.truthy(interactable.properties.lockerId, tagFor(map, 'lockerId'));
+      }
+
+      if(includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport'], interactable.type)) {
+        const { teleportMap, teleportX, teleportY } = interactable.properties;
+        t.truthy(teleportMap, tagFor(map, 'teleportmap'));
+        t.truthy(teleportX, tagFor(map, 'teleportx'));
+        t.truthy(teleportY, tagFor(map, 'teleporty'));
+        t.true(isInBounds(teleportMap, teleportX, teleportY), tagFor(map, 'teleportbounds'));
+      }
+
+      if(interactable.type === 'Door') {
+        const { requireHeld, requireLockpick, skillRequired } = interactable.properties;
+
+        if(requireLockpick) {
+          t.truthy(skillRequired, tagFor(map, 'skillrequired'));
+        }
+      }
+
+    });
+  });
+});
