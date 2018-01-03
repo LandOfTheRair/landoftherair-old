@@ -31,6 +31,7 @@ class RecipeLoader {
           itemData.recipeType = fileName;
 
           return new Promise((resolve, reject) => {
+            this.addItemData(itemData);
             if(!this.validateItem(itemData)) return reject(new Error(`${itemData.name} failed validation.`));
             return resolve(itemData);
           });
@@ -67,6 +68,10 @@ class RecipeLoader {
         process.exit(0);
       });
     });
+  }
+
+  static addItemData(recipe): void {
+    if(!recipe.requiredSkill) recipe.requiredSkill = 0;
   }
 
   static validateItem(recipe): boolean {

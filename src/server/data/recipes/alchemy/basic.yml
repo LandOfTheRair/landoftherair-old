@@ -18,6 +18,7 @@
 - item: Bear Meat Antidote (10oz)
   skillGained: 10
   maxSkillForGains: 4
+  requiredSkill: 1
   xpGained: 300
   ingredients:
     - Bear Meat Antidote

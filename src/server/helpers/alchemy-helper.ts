@@ -9,9 +9,14 @@ import { DB } from '../database';
 export class AlchemyHelper {
   static async alchemize(player: Player): Promise<Item> {
     const reagents = player.tradeSkillContainers.alchemy.reagents;
+    const playerSkill = player.calcSkillLevel(SkillClassNames.Alchemy);
 
     const reagentNames = compact(reagents.map(x => x ? x.name : null));
-    const recipeMatch = await DB.$recipes.findOne({ recipeType: 'alchemy', ingredients: { $all: reagentNames } });
+    const recipeMatch = await DB.$recipes.findOne({
+      recipeType: 'alchemy',
+      ingredients: { $all: reagentNames },
+      requiredSkill: { $lte: playerSkill }
+    });
 
     let returnedItem = null;
 
@@ -21,7 +26,7 @@ export class AlchemyHelper {
 
       player.gainExp(xpGained);
 
-      if(player.calcSkillLevel(SkillClassNames.Alchemy) < maxSkillForGains) {
+      if(playerSkill < maxSkillForGains) {
         player.gainSkill(SkillClassNames.Alchemy, skillGained);
       }
 
