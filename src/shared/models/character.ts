@@ -1067,7 +1067,7 @@ export class Character {
     const level = this.getTraitLevel(trait);
 
     switch(trait) {
-      case 'ShadowSwap':      return Math.max(100, level * 2);
+      case 'ShadowSwap':      return Math.min(100, level * 2);
       case 'ForgedFire':      return level;
       case 'FrostedTouch':    return level;
       case 'CarefulTouch':    return Math.min(0.95, level * 0.05);
