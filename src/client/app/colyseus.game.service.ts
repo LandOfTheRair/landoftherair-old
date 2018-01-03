@@ -4,7 +4,7 @@ import * as swal from 'sweetalert2';
 
 import { Subject } from 'rxjs/Subject';
 
-import { find, includes, findIndex, extend } from 'lodash';
+import { find, includes, findIndex, extend, startsWith, capitalize } from 'lodash';
 import { Player } from '../../shared/models/player';
 import { Item } from '../../shared/models/item';
 import { Locker } from '../../shared/models/container/locker';
@@ -512,7 +512,20 @@ export class ColyseusGameService {
         args = `${args} ${target}`;
       }
 
-      this.sendAction({ command, args: args.trim() });
+      // format $ outgoing for easier macroing
+      if(includes(args, '$')) {
+        const splargs = args.trim().split(' ');
+        args = splargs.map(x => {
+          if(!startsWith(x, '$')) return x;
+
+          const key = `show${capitalize(x.substring(1))}`;
+          if(!this[key] || !this[key].uuid) return x;
+
+          return this[key].uuid;
+        }).join(' ');
+      }
+      
+      this.sendAction({ command, args });
     });
   }
 
