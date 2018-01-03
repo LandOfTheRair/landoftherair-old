@@ -326,13 +326,13 @@ export class GameState {
     player.fov = affected;
   }
 
-  private getInRange(arr: Character[], ref, radius, except: string[] = []): Character[] {
+  private getInRange(arr: Character[], ref, radius, except: string[] = [], useSight = true): Character[] {
 
     const { x, y } = ref;
 
     return reject(arr, p => {
 
-      if(ref.fov) {
+      if(ref.fov && useSight) {
         const offsetX = p.x - x;
         const offsetY = p.y - y;
         if(!ref.canSee(offsetX, offsetY)) return true;
@@ -346,12 +346,12 @@ export class GameState {
     });
   }
 
-  getPlayersInRange(ref, radius, except: string[] = []): Character[] {
-    return this.getInRange(this.players, ref, radius, except);
+  getPlayersInRange(ref, radius, except: string[] = [], useSight = true): Character[] {
+    return this.getInRange(this.players, ref, radius, except, useSight);
   }
 
-  getAllInRange(ref, radius, except: string[] = []): Character[] {
-    return this.getInRange(this.allPossibleTargets, ref, radius, except);
+  getAllInRange(ref, radius, except: string[] = [], useSight = true): Character[] {
+    return this.getInRange(this.allPossibleTargets, ref, radius, except, useSight);
   }
 
   getAllHostilesInRange(ref: Character, radius): Character[] {
