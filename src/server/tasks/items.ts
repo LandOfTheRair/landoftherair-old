@@ -189,7 +189,7 @@ class ItemLoader {
       }
     }
 
-    if(item.effect && !Effects[item.effect.name] && !item.effect.uses) {
+    if(item.effect && (!Effects[item.effect.name] || !item.effect.uses)) {
       console.error(`ERROR: ${item.name} has an invalid effect: ${item.effect.name}`);
       hasBad = true;
     }
