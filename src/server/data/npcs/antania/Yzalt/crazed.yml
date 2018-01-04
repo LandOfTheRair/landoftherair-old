@@ -1069,8 +1069,8 @@
   name: Crazed Sedgwick
   hostility: Always
   sprite: 480
-  stats: 16
-  skillLevels: 4
+  stats: 13
+  skillLevels: 3
 
   level: 15
 
