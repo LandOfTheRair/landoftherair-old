@@ -83,6 +83,7 @@
     "linkifyjs": "^2.1.4",
     "lodash": "^4.17.4",
     "lootastic": "^1.0.2",
+    "luxon": "^0.2.11",
     "mingy": "^0.2.7",
     "mongodb": "^2.2.27",
     "mrpas": "^1.2.1",

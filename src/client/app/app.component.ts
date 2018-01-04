@@ -7,9 +7,11 @@ import { MacroService, Macro } from './macros.service';
 
 import * as macicons from '../macicons/macicons.json';
 
+import { DateTime } from 'luxon';
 import { includes, isNull, cloneDeep } from 'lodash';
 import { AuthService } from './auth.service';
 import { AssetService } from './asset.service';
+import { Observable } from 'rxjs/Observable';
 
 type Size = 'normal' | 'small' | 'xsmall';
 type XSizeMax = 'max' | 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
@@ -189,6 +191,10 @@ export class AppComponent implements OnInit {
     };
   }
 
+  public resetTimestamp: number;
+  public nowTimestamp: number;
+  public timestampDisplay: string;
+
   constructor(
     public colyseus: ColyseusService,
     public macroService: MacroService,
@@ -238,6 +244,32 @@ export class AppComponent implements OnInit {
     this.initDefaultOptions();
 
     this.watchOptions();
+
+    this.watchResetTime();
+  }
+
+  private watchResetTime() {
+
+    const setResetTimestamp = () => {
+      this.resetTimestamp = +DateTime.fromObject({ zone: 'utc', hour: 12 }).plus({ days: 1 });
+    };
+
+    const formatTimestring = () => {
+      const diff = (this.resetTimestamp - this.nowTimestamp) / 1000;
+      const hours = Math.floor((diff / 60) / 60) % 60;
+      const minutes = Math.floor((diff / 60)) % 60;
+      this.timestampDisplay = `${hours > 0 ? hours + 'h' : ''}${minutes}m`;
+    };
+
+    setResetTimestamp();
+    formatTimestring();
+
+    Observable.timer(0, 60000)
+      .subscribe(() => {
+        this.nowTimestamp = +DateTime.fromObject({ zone: 'utc' });
+        if(this.nowTimestamp > this.resetTimestamp) setResetTimestamp();
+        formatTimestring();
+      });
   }
 
   imageLoaded() {
