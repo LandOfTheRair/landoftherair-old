@@ -1,6 +1,6 @@
 
 import { Character } from '../../shared/models/character';
-import { random } from 'lodash';
+import { random, cloneDeep } from 'lodash';
 import { Item } from '../../shared/models/item';
 import * as Classes from '../classes';
 
@@ -106,7 +106,9 @@ export class CharacterHelper {
       const holder = char.$$room.state.findPlayer(char.$$corpseRef.$heldBy);
 
       if(char.isPlayer()) {
-        char.$$room.setPlayerXY(this, holder.x, holder.y);
+        char.$$room.setPlayerXY(char, holder.x, holder.y);
+        char.fov = cloneDeep(holder.fov);
+        char.$$room.updateFOV(char);
 
       } else {
         char.x = holder.x;
