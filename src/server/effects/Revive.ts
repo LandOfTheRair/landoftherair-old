@@ -21,6 +21,7 @@ export class Revive extends SpellEffect {
 
     target.revive();
     target.hp.setToPercent(hpPercent);
+    target.hp.__current = Math.round(target.hp.__current);
     target.gainBaseStat('con', 1);
   }
 }

@@ -323,7 +323,7 @@ export class Game {
     let key = '';
 
     // if player isn't swimming or player is dead
-    if(!player.swimLevel || player.dir === 'C') {
+    if(!player.swimLevel || (player.dir === 'C' && player.hp.__current === 0)) {
       const spriteGender = this.getStartingSpriteForSex(player);
       const spriteDir = this.getSpriteOffsetForDirection(player.dir);
       frame = spriteGender + spriteDir;

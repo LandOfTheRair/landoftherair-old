@@ -248,6 +248,9 @@ export class ColyseusGameService {
   }
 
   private syncCharacterAttributes(x, y, dir, swimLevel) {
+    if(dir === 'C') {
+      dir = this.character.hp.__current === 0 ? 'C' : 'S';
+    }
     this.character.x = x;
     this.character.y = y;
     this.character.dir = dir;
@@ -271,7 +274,7 @@ export class ColyseusGameService {
 
     if(hasOldCharacter) {
       const { x, y, dir, swimLevel } = hasOldCharacter;
-      this.syncCharacterAttributes(x, y, character.dir === 'C' ? 'C' : dir, swimLevel);
+      this.syncCharacterAttributes(x, y, dir, swimLevel);
     } else {
       this.myLoc$.next({ x: this.character.x, y: this.character.y, dir: this.character.dir });
     }
@@ -524,7 +527,7 @@ export class ColyseusGameService {
           return this[key].uuid;
         }).join(' ');
       }
-      
+
       this.sendAction({ command, args });
     });
   }
