@@ -388,7 +388,7 @@ export class CombatHelper {
 
     const totalDamage = this.dealDamage(attacker, attacked, { damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg });
 
-    if(attacker && !attacker.isPlayer()) {
+    if(attacker && !attacker.isPlayer() && effect) {
       (<NPC>attacker).registerAttackDamage(attacked, effect.name, totalDamage);
     }
 
