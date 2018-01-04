@@ -35,17 +35,26 @@ export const tick = (npc: NPC, canMove) => {
 
   if(!trigger75 && npc.hp.ltePercent(75)) {
     trigger75 = true;
-    blast(npc);
+
+    setTimeout(() => {
+      blast(npc);
+    }, 2000);
   }
 
   if(!trigger50 && npc.hp.ltePercent(50)) {
     trigger50 = true;
-    blast(npc);
+
+    setTimeout(() => {
+      blast(npc);
+    }, 2000);
   }
 
   if(!trigger25 && npc.hp.ltePercent(25)) {
     trigger25 = true;
-    blast(npc);
+
+    setTimeout(() => {
+      blast(npc);
+    }, 2000);
   }
 };
 
