@@ -1018,6 +1018,8 @@
               <button class="btn btn-primary btn-sm" (click)="makeActiveGroup(group.key, 0)">1</button>
               <button class="btn btn-primary btn-sm" (click)="makeActiveGroup(group.key, 1)">2</button>
               <button class="btn btn-primary btn-sm" (click)="makeActiveGroup(group.key, 2)">3</button>
+
+              <button class="btn btn-warning btn-sm" *ngIf="group.key === 'default'" (click)="resetDefaultGroup()">Reset</button>
               <button class="btn btn-danger btn-sm" *ngIf="group.key !== 'default'" (click)="deleteGroup(group.key)">
                 Delete
               </button>

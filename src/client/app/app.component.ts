@@ -444,9 +444,18 @@ export class AppComponent implements OnInit {
   deleteGroup(groupName: string) {
     (<any>swal)({
       titleText: 'Delete Macro Group',
-      text: `Are you sure you want to remove the group "${groupName}"? This action is not reversible.`
+      text: `Are you sure you want to remove the group "${groupName}"? This action cannot be undone.`
     }).then(() => {
       this.macroService.removeMacroGroup(groupName);
+    }).catch(() => {});
+  }
+
+  resetDefaultGroup() {
+    (<any>swal)({
+      titleText: 'Reset Default Macro Group',
+      text: `Are you sure you want to reset the default macro group? This action cannot be undone.`
+    }).then(() => {
+      this.macroService.resetDefaultMacros();
     }).catch(() => {});
   }
 

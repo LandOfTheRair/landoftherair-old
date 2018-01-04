@@ -274,4 +274,8 @@ export class MacroService {
       .value();
 
   }
+
+  public resetDefaultMacros() {
+    this.allMacroGroups.default = ['Attack', 'Search', 'Drink', 'Stairs', 'Climb', 'Restore'];
+  }
 }
