@@ -475,7 +475,7 @@ export class CombatHelper {
 
     this.doElementalDebuffing(attacker, defender, damageClass, damage);
 
-    const absDmg = Math.abs(damage);
+    const absDmg = Math.round(Math.abs(damage));
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;
 
     const otherClass = isHeal ? 'heal' : 'hit';
