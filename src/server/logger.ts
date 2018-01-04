@@ -1,5 +1,6 @@
 
 import { DB } from './database';
+import { DateTime } from 'luxon';
 import * as Rollbar from 'rollbar';
 
 let rollbar = null;
@@ -17,7 +18,7 @@ if(rollbarToken) {
 export class Logger {
 
   static _formatMessage( message) {
-    return `[${new Date()}] ${message}`;
+    return `[${DateTime.local()}] ${message}`;
   }
 
   static log(msg: string) {
