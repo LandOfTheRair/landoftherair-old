@@ -44,11 +44,11 @@ export class Party {
   }
 
   get canGainPartyPoints(): boolean {
-    return this.members.length > 2;
+    return this.members.length > 1;
   }
 
   get canApplyPartyAbilities(): boolean {
-    return this.members.length > 2;
+    return this.members.length > 1;
   }
 
   get canBeDeleted(): boolean {
