@@ -388,6 +388,7 @@ export class GameWorld extends Room<GameState> {
     const { newMap, x, y, zChange, zSet } = opts;
 
     const client = this.findClient(player);
+    if(!client) return;
 
     if(newMap && !this.allMapNames[newMap]) {
       this.sendClientLogMessage(client, `Warning: map "${newMap}" does not exist.`);

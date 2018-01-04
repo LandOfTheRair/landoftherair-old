@@ -12,10 +12,10 @@ export class Cure extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 1;
-    if(this.potency > 0)  mult = 2;
-    if(this.potency > 11) mult = 6;
-    if(this.potency > 21) mult = 10;
+    let mult = 2;
+    if(this.potency > 0)  mult = 4;
+    if(this.potency > 11) mult = 12;
+    if(this.potency > 21) mult = 20;
 
     const wisCheck = Math.floor(mult * this.getCasterStat(caster, 'wis'));
     const damage = -+dice.roll(`${this.potency || 1}d${wisCheck}`);
