@@ -43,8 +43,7 @@ export class PartyArbiter {
       this._redisUpdateMember(member, partyName);
     });
 
-    this.redis.on('party:requestsync', ({ roomName }) => {
-      if('Arbiter' === roomName) return;
+    this.redis.on('party:requestsync', () => {
       this.redis.emit('party:sync', { parties: this.parties, roomName: 'Arbiter' });
     });
 

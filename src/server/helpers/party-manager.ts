@@ -45,15 +45,14 @@ export class PartyManager {
       this._redisUpdateMember(member, partyName);
     });
 
-    this.redis.on('party:sync', ({ parties, roomName }) => {
-      if(roomName !== 'Arbiter') return;
+    this.redis.on('party:sync', ({ parties }) => {
       this.parties = {};
       Object.keys(parties).forEach(partyName => {
         this.parties[partyName] = new Party(parties[partyName]);
       });
     });
 
-    this.redis.emit('party:requestsync', { roomName: this.room.roomName });
+    this.redis.emit('party:requestsync');
 
   }
 
