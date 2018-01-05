@@ -636,10 +636,11 @@ export const HPDocResponses = (npc: NPC) => {
   }
 
   const hpTiers = {
-    Mage:     [100, 375],
-    Thief:    [100, 425],
-    Healer:   [100, 400],
-    Warrior:  [100, 450]
+    Mage:       [100, 375],
+    Thief:      [100, 425],
+    Healer:     [100, 400],
+    Warrior:    [100, 450],
+    Undecided:  [100, 200]
   };
 
   const hpNormalizers = [100, 200];
