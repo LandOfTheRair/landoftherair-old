@@ -35,8 +35,8 @@ export class Disease extends SpellEffect {
     const wisCheck = Math.max(1, Math.floor(mult * calcMod));
     const damage = +dice.roll(`${this.potency || 1}d${wisCheck}`);
 
-    const durationAdjust = Math.floor(this.potency / 2);
-    this.duration = this.duration || +dice.roll(`${durationAdjust}d6`);
+    const durationAdjust = this.potency;
+    this.duration = this.duration || +dice.roll(`${durationAdjust}d4`);
 
     this.effectInfo = { damage, caster: caster.uuid };
     target.applyEffect(this);

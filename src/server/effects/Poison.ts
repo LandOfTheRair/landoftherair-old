@@ -23,17 +23,17 @@ export class Poison extends SpellEffect {
 
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 0.15;
-    if(this.potency > 0)  mult = 0.35;
-    if(this.potency > 11) mult = 1;
-    if(this.potency > 21) mult = 3;
+    let mult = 0.75;
+    if(this.potency > 0)  mult = 1.5;
+    if(this.potency > 11) mult = 3;
+    if(this.potency > 21) mult = 5;
 
     if(caster.baseClass === 'Thief') mult = Math.floor(mult * 1.5);
 
     const wisCheck = Math.max(1, Math.floor(mult * this.getCasterStat(caster, 'wis')));
     const damage = +dice.roll(`${this.potency || 1}d${wisCheck}`);
 
-    const durationAdjust = Math.floor(this.potency / 3);
+    const durationAdjust = Math.floor(this.potency / 2);
 
     this.duration = this.duration || +dice.roll(`${durationAdjust}d5`);
 
