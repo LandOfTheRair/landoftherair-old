@@ -10,3 +10,11 @@
 
   requirements:
     level: 9
+
+- name: Enemy DarkVision Earring
+  effect:
+    name: DarkVision
+    autocast: true
+  sprite: -1
+  desc: "a golden earring"
+  value: 1000
