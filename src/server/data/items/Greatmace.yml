@@ -14,7 +14,7 @@
     offense: 1
     accuracy: 2
   desc: "an iron greatmace engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 10
+  baseDamage: 7
   minDamage: 2
   maxDamage: 5
   damageRolls: 2

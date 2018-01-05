@@ -25,12 +25,12 @@
 
 - name: Antanian Steffen Flail
   stats:
-    accuracy: -2
+    accuracy: -4
     offense: 3
   desc: "a standard-issue 3-ball flail"
   baseDamage: 1
   minDamage: 3
-  maxDamage: 15
+  maxDamage: 10
   damageRolls: 2
   type: Mace
   value: 401
