@@ -256,8 +256,10 @@ export class AppComponent implements OnInit {
 
     const formatTimestring = () => {
       const diff = (this.resetTimestamp - this.nowTimestamp) / 1000;
-      const hours = Math.floor((diff / 60) / 60) % 60;
+      let hours = Math.floor((diff / 60) / 60) % 60;
       const minutes = Math.floor((diff / 60)) % 60;
+
+      if(hours > 24) hours -= 24;
       this.timestampDisplay = `${hours > 0 ? hours + 'h' : ''}${minutes}m`;
     };
 
