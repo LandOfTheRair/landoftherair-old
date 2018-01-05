@@ -11,7 +11,7 @@ const blast = (npc: NPC) => {
   const players = npc.$$room.state.getPlayersInRange(npc, 7);
 
   players.forEach(player => {
-    if(player.x === 20 && player.y === 5) {
+    if(player.x === 21 && player.y === 6) {
       player.sendClientMessage('A magical barrier protects you from Sedgwick\'s magic!');
       return;
     }
