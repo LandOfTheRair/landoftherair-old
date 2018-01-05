@@ -3120,6 +3120,102 @@
                  "width":64,
                  "x":1024,
                  "y":4992
+                }, 
+                {
+                 "gid":3059,
+                 "height":64,
+                 "id":1856,
+                 "name":"",
+                 "properties":
+                    {
+                     "maxLevelUpLevel":18,
+                     "maxSkillTrain":15,
+                     "script":"trainer\/thief"
+                    },
+                 "propertytypes":
+                    {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1600,
+                 "y":5184
+                }, 
+                {
+                 "gid":3044,
+                 "height":64,
+                 "id":1857,
+                 "name":"",
+                 "properties":
+                    {
+                     "maxLevelUpLevel":18,
+                     "maxSkillTrain":15,
+                     "script":"trainer\/mage"
+                    },
+                 "propertytypes":
+                    {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
+                 "y":4992
+                }, 
+                {
+                 "gid":3039,
+                 "height":64,
+                 "id":1858,
+                 "name":"",
+                 "properties":
+                    {
+                     "maxLevelUpLevel":18,
+                     "maxSkillTrain":15,
+                     "script":"trainer\/warrior"
+                    },
+                 "propertytypes":
+                    {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1664,
+                 "y":4928
+                }, 
+                {
+                 "gid":3049,
+                 "height":64,
+                 "id":1859,
+                 "name":"",
+                 "properties":
+                    {
+                     "maxLevelUpLevel":18,
+                     "maxSkillTrain":15,
+                     "script":"trainer\/healer"
+                    },
+                 "propertytypes":
+                    {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
+                 "y":4928
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3149,7 +3245,7 @@
                  "visible":true,
                  "width":64,
                  "x":2176,
-                 "y":4992
+                 "y":5248
                 }, 
                 {
                  "gid":2347,
@@ -3169,7 +3265,7 @@
                  "visible":true,
                  "width":64,
                  "x":384,
-                 "y":4992
+                 "y":4608
                 }, 
                 {
                  "gid":2347,
@@ -3178,7 +3274,7 @@
                  "name":"Forest Deer Spawner",
                  "properties":
                     {
-                     "script":"antania\/rylt\/forest-deer"
+                     "script":"antania\/towerofselen\/forest-deer"
                     },
                  "propertytypes":
                     {
@@ -3188,8 +3284,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":896,
-                 "y":4608
+                 "x":1920,
+                 "y":4928
                 }, 
                 {
                  "gid":2347,
@@ -3198,7 +3294,7 @@
                  "name":"Forest Deer Spawner",
                  "properties":
                     {
-                     "script":"antania\/rylt\/forest-deer"
+                     "script":"antania\/towerofselen\/forest-deer"
                     },
                  "propertytypes":
                     {
@@ -3208,8 +3304,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1856,
-                 "y":5440
+                 "x":704,
+                 "y":5056
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3247,7 +3343,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1856,
+ "nextobjectid":1860,
  "orientation":"orthogonal",
  "properties":
     {

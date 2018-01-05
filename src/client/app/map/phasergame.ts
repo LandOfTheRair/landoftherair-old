@@ -51,6 +51,7 @@ export class Game {
   private vfx: any;
 
   private isRenderingTruesight: boolean;
+  private isRenderingEagleEye: boolean;
 
   private groups: any = {
     Decor: {},
@@ -233,6 +234,7 @@ export class Game {
 
       this.updatePlayerSprite(this.playerSprite, player);
       this.truesightCheck();
+      this.eagleeyeCheck();
     } else {
       let sprite = this.playerSpriteHash[player.username];
       if(!sprite) {
@@ -373,6 +375,16 @@ export class Game {
     }
   }
 
+  private eagleeyeCheck() {
+    if(this.isRenderingEagleEye && !this.player.hasEffect('EagleEye')) {
+      this.isRenderingEagleEye = false;
+
+    } else if(!this.isRenderingEagleEye && this.player.hasEffect('EagleEye')) {
+      this.isRenderingEagleEye = true;
+
+    }
+  }
+
   private notInRange(centerX, centerY, x, y) {
     return x < centerX - 4 || x > centerX + 4 || y < centerY - 4 || y > centerY + 4;
   }
@@ -421,7 +433,7 @@ export class Game {
     const tileCheck = (y * this.clientGameState.map.width) + x;
     const fluid = this.clientGameState.map.layers[MapLayer.Fluids].data;
     const foliage = this.clientGameState.map.layers[MapLayer.Foliage].data;
-    return !fluid[tileCheck] && !foliage[tileCheck];
+    return this.isRenderingEagleEye || (!fluid[tileCheck] && !foliage[tileCheck]);
   }
 
   private showItemSprites(centerX, centerY) {

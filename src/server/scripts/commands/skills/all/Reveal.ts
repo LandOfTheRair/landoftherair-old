@@ -17,8 +17,11 @@ export class Reveal extends Skill {
 
   use(user: Character) {
     const hidden = user.hasEffect('Hidden');
-    if(!hidden) return user.sendClientMessage('You are not hidden!');
-    user.unapplyEffect(hidden, true);
+    const shadowMeld = user.hasEffect('ShadowMeld');
+    if(!hidden && !shadowMeld) return user.sendClientMessage('You are not hidden!');
+
+    if(hidden)      user.unapplyEffect(hidden, true);
+    if(shadowMeld)  user.unapplyEffect(shadowMeld, true);
   }
 
 }

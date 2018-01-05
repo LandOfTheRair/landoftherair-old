@@ -163,22 +163,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Steal",
-            "macro": "steal",
-            "icon": "take-my-money",
-            "color": "#7F6B00",
-            "mode": "lockActivation",
-            "tooltipDesc": "Steal gold and items from your target.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Throw",
             "macro": "throw right",
             "icon": "thrown-spear",
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Throw an item at a target.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Steal",
+            "macro": "steal",
+            "icon": "take-my-money",
+            "color": "#7F6B00",
+            "mode": "lockActivation",
+            "tooltipDesc": "Steal gold and items from your target.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -399,6 +399,26 @@
             "color": "#00a",
             "mode": "clickToTarget",
             "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EagleEye",
+            "macro": "cast eagleeye",
+            "icon": "dead-eye",
+            "color": "#f00",
+            "mode": "autoActivate",
+            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowMeld",
+            "macro": "cast shadowmeld",
+            "icon": "hidden",
+            "color": "#00c",
+            "mode": "autoActivate",
+            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
             "isSystem": true,
             "requiresLearn": true
         }

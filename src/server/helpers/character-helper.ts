@@ -8,6 +8,7 @@ export class CharacterHelper {
 
   static canHide(char: Character): boolean|string {
     if(char.hasEffect('Hidden')) return 'You are already hidden!';
+    if(char.hasEffect('ShadowMeld')) return 'You are already melded with the shadows!';
 
     const hideHpPercent = char.baseClass === 'Thief' ? 70 : 90;
     if(char.hp.ltePercent(hideHpPercent)) return 'You are too injured to hide!';

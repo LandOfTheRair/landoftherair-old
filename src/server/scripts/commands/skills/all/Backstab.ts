@@ -35,7 +35,8 @@ export class Backstab extends Skill {
     if(!args) return false;
 
     const hidden = user.hasEffect('Hidden');
-    if(!hidden) return user.sendClientMessage('You are not hidden!');
+    const shadowMeld = user.hasEffect('ShadowMeld');
+    if(!hidden && !shadowMeld) return user.sendClientMessage('You are not hidden!');
 
     const weapon = user.rightHand;
     if(!weapon) return user.sendClientMessage('You need a weapon in your hand to backstab!');
@@ -52,7 +53,8 @@ export class Backstab extends Skill {
 
     if(target.canSeeThroughStealthOf(user)) return user.sendClientMessage('You do not have the element of surprise!');
 
-    user.unapplyEffect(hidden, true);
+    if(hidden)      user.unapplyEffect(hidden, true);
+    if(shadowMeld)  user.unapplyEffect(shadowMeld, true);
     this.use(user, target);
   }
 

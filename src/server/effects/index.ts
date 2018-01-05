@@ -45,6 +45,9 @@ export * from './Revive';
 export * from './Darkness';
 export * from './Light';
 
+export * from './ShadowMeld';
+export * from './EagleEye';
+
 export * from './BuildupHeat';
 export * from './Burning';
 export * from './RecentlyBurned';
