@@ -122,7 +122,7 @@
 
 - name: Identify Ring
   sprite: 239
-  desc: "a silver ring set with a blue gem"
+  desc: "a silver ring set with a crystallized blue eye"
   value: 100
   effect:
     name: Identify
@@ -131,7 +131,7 @@
 
 - name: Transmute Ring
   sprite: 239
-  desc: "a silver ring set with a blue gem"
+  desc: "a silver ring set with a blue coin"
   value: 100
   effect:
     name: Transmute
@@ -140,7 +140,7 @@
 
 - name: Succor Ring
   sprite: 239
-  desc: "a silver ring set with a blue gem"
+  desc: "a silver ring set with ancient blue wood"
   value: 100
   effect:
     name: Succor
