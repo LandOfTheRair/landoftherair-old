@@ -52,7 +52,7 @@ export class PartyManager {
       });
     });
 
-    this.redis.emit('party:requestsync');
+    this.redis.emit('party:requestsync', {});
 
   }
 
