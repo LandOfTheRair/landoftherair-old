@@ -18,8 +18,6 @@ export class Transmute extends Skill {
 
   public name = ['transmute', 'cast transmute'];
 
-  flagSkills = [SkillClassNames.Conjuration];
-
   mpCost = () => 15;
   range = () => 0;
 

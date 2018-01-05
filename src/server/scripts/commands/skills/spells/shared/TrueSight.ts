@@ -18,8 +18,6 @@ export class TrueSight extends Skill {
 
   public name = ['truesight', 'cast truesight'];
 
-  flagSkills = [SkillClassNames.Conjuration];
-
   mpCost = () => 25;
   range = () => 5;
 

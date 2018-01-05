@@ -96,6 +96,8 @@ export class SpellEffect extends Effect {
 
   magicalAttack(caster, ref, opts: any = {}) {
     opts.effect = this;
+    opts.skillRef = opts.skillRef || {};
+    opts.skillRef.flagSkills = this.skillFlag(caster);
 
     // trap casters do not have uuid
     if(!caster.uuid) caster = ref;

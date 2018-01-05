@@ -19,8 +19,6 @@ export class EnergyWave extends Skill {
   public name = ['energywave', 'cast energywave'];
   public format = '';
 
-  flagSkills = [SkillClassNames.Conjuration];
-
   mpCost = () => 80;
   range = () => 5;
 

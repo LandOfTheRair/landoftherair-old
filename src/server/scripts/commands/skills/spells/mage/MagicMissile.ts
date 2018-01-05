@@ -19,8 +19,6 @@ export class MagicMissile extends Skill {
   public name = ['magicmissile', 'cast magicmissile'];
   public format = 'Target';
 
-  flagSkills = [SkillClassNames.Conjuration];
-
   mpCost = () => 5;
   range = () => 5;
 

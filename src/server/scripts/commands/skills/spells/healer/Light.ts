@@ -18,8 +18,6 @@ export class Light extends Skill {
 
   public name = ['light', 'cast light'];
 
-  flagSkills = [SkillClassNames.Restoration];
-
   mpCost = () => 25;
   range = () => 5;
 

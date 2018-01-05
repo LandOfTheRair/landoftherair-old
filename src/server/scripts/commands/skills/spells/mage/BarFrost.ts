@@ -19,8 +19,6 @@ export class BarFrost extends Skill {
   public name = ['barfrost', 'cast barfrost'];
   public format = 'Target';
 
-  flagSkills = [SkillClassNames.Conjuration];
-
   mpCost = () => 20;
   range = () => 5;
 

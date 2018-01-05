@@ -19,8 +19,6 @@ export class Poison extends Skill {
   public name = ['poison', 'cast poison'];
   public format = 'Target';
 
-  flagSkills = [SkillClassNames.Restoration];
-
   mpCost = () => 15;
   range = () => 5;
 

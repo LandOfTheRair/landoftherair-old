@@ -19,8 +19,6 @@ export class Darkness extends Skill {
 
   public name = ['darkness', 'cast darkness'];
 
-  flagSkills = [SkillClassNames.Conjuration];
-
   mpCost = () => 25;
   range = () => 5;
 

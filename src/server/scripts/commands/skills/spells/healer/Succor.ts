@@ -19,8 +19,6 @@ export class Succor extends Skill {
   public name = ['succor', 'cast succor'];
   public format = '';
 
-  flagSkills = [SkillClassNames.Restoration];
-
   mpCost = () => 25;
   range = () => 0;
 

@@ -19,8 +19,6 @@ export class BarNecro extends Skill {
   public name = ['barnecro', 'cast barnecro'];
   public format = 'Target';
 
-  flagSkills = [SkillClassNames.Restoration];
-
   mpCost = () => 40;
   range = () => 5;
 

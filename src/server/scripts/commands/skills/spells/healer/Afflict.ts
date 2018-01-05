@@ -19,8 +19,6 @@ export class Afflict extends Skill {
   public name = ['afflict', 'cast afflict'];
   public format = 'Target';
 
-  flagSkills = [SkillClassNames.Restoration];
-
   mpCost = () => 10;
   range = () => 5;
 

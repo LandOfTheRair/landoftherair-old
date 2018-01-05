@@ -19,8 +19,6 @@ export class Stun extends Skill {
   public name = ['stun', 'cast stun'];
   public format = 'Target';
 
-  flagSkills = [SkillClassNames.Restoration];
-
   mpCost = () => 40;
   range = () => 5;
 

@@ -19,8 +19,6 @@ export class Cure extends Skill {
   public name = ['cure', 'cast cure'];
   public format = 'Target';
 
-  flagSkills = [SkillClassNames.Restoration];
-
   mpCost = () => 5;
   range = () => 5;
 

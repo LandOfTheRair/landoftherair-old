@@ -19,8 +19,6 @@ export class BarFire extends Skill {
   public name = ['barfire', 'cast barfire'];
   public format = 'Target';
 
-  flagSkills = [SkillClassNames.Conjuration];
-
   mpCost = () => 20;
   range = () => 5;
 

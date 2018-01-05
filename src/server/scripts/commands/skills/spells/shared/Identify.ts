@@ -18,8 +18,6 @@ export class Identify extends Skill {
 
   public name = ['identify', 'cast identify'];
 
-  flagSkills = [SkillClassNames.Conjuration];
-
   mpCost = () => 15;
   range = () => 0;
 

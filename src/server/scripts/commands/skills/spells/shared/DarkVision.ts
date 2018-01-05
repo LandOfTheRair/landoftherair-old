@@ -18,8 +18,6 @@ export class DarkVision extends Skill {
 
   public name = ['darkvision', 'cast darkvision'];
 
-  flagSkills = [SkillClassNames.Conjuration];
-
   mpCost = () => 25;
   range = () => 5;
 

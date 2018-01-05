@@ -19,8 +19,6 @@ export class Antidote extends Skill {
   public name = ['antidote', 'cast antidote'];
   public format = 'Target';
 
-  flagSkills = [SkillClassNames.Restoration];
-
   mpCost = () => 10;
   range = () => 5;
 

@@ -19,8 +19,6 @@ export class FireMist extends Skill {
   public name = ['firemist', 'cast firemist'];
   public format = 'Target';
 
-  flagSkills = [SkillClassNames.Conjuration];
-
   mpCost = () => 40;
   range = () => 5;
 

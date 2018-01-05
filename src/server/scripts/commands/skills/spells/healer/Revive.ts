@@ -19,8 +19,6 @@ export class Revive extends Skill {
   public name = ['revive', 'cast revive'];
   public format = '';
 
-  flagSkills = [SkillClassNames.Restoration];
-
   mpCost = () => 50;
   range = () => 0;
 
