@@ -306,8 +306,7 @@ export const BankResponses = (npc: NPC) => {
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
-      player.addBankMoney(npc.bankId, 0);
-      npc.$$room.showBankWindow(player, npc);
+      player.$$room.openBank(player, npc);
       return `Greetings ${player.name}! Welcome to the ${npc.bankId} National Bank, ${npc.branchId} branch. You can WITHDRAW or DEPOSIT your coins here!`;
     });
 
@@ -318,10 +317,10 @@ export const BankResponses = (npc: NPC) => {
 
       const amount = +args.amount;
       const region = npc.bankId;
-      const res = player.addBankMoney(region, amount);
+      const res = player.$$room.depositBankMoney(player, region, amount);
       if(res === false) return 'That amount of gold is not valid.';
       if(res === 0) return 'What, do you think you\'re funny? Get out of line, there are other people to service!';
-      return `Thank you, you have deposited ${res.toLocaleString()} gold into the ${region} National Bank. Your new balance is ${player.banks[region].toLocaleString()} gold.`;
+      return `Thank you, you have deposited ${res.toLocaleString()} gold into the ${region} National Bank. Your new balance is ${player.$$banks[region].toLocaleString()} gold.`;
     });
 
   npc.parser.addCommand('withdraw')
@@ -331,10 +330,10 @@ export const BankResponses = (npc: NPC) => {
 
       const amount = +args.amount;
       const region = npc.bankId;
-      const res = player.loseBankMoney(region, amount);
+      const res = player.$$room.withdrawBankMoney(player, region, amount);
       if(res === false) return 'That amount of gold is not valid.';
       if(res === 0) return 'Hey, do I look like a charity to you? Get lost!';
-      return `Thank you, you have withdrawn ${res.toLocaleString()} gold into the ${region} National Bank. Your new balance is ${player.banks[region].toLocaleString()} gold.`;
+      return `Thank you, you have withdrawn ${res.toLocaleString()} gold into the ${region} National Bank. Your new balance is ${player.$$banks[region].toLocaleString()} gold.`;
     });
 };
 

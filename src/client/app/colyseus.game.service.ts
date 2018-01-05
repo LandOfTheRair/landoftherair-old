@@ -330,7 +330,7 @@ export class ColyseusGameService {
     if(action === 'set_map')        return this.setMap(other.map);
     if(action === 'update_locker')  return this.updateLocker(other.locker);
     if(action === 'show_lockers')   return this.showLockerWindow(other.lockers, other.lockerId);
-    if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId);
+    if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId, other.banks);
     if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid);
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
     if(action === 'show_ts')        return this.showTradeskillWindow(other.tradeskill, other.uuid);
@@ -390,8 +390,12 @@ export class ColyseusGameService {
     this.activeLockerNumber = findIndex(lockers, { lockerId });
   }
 
-  private showBankWindow(uuid, bankId) {
-    this.showBank = { uuid, bankId };
+  private showBankWindow(uuid, bankId, banks) {
+    if(!uuid && !bankId && banks) {
+      this.showBank.banks = banks;
+    } else {
+      this.showBank = { uuid, bankId, banks };
+    }
     this.updateActiveWindowForGameWindow('bank');
   }
 

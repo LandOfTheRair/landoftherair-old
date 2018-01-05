@@ -13,11 +13,11 @@ export class BankComponent {
   constructor(public colyseusGame: ColyseusGameService) { }
 
   get allBanks() {
-    return Object.keys(this.colyseusGame.character.banks || {}).sort();
+    return Object.keys(this.colyseusGame.showBank.banks || {}).sort();
   }
 
   get currentBankGold(): number {
-    return this.colyseusGame.character.banks ? this.colyseusGame.character.banks[this.colyseusGame.showBank.bankId] : 0;
+    return this.colyseusGame.showBank.banks ? this.colyseusGame.showBank.banks[this.colyseusGame.showBank.bankId] : 0;
   }
 
 }

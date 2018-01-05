@@ -23,6 +23,7 @@ class Database {
   public $lobbySettings: any;
   public $logs: any;
   public $gameSettings: any;
+  public $banks: any;
 
   private client: MongoClient;
 
@@ -72,6 +73,9 @@ class Database {
     this.$logs.ensureIndex({ createdAt: 1 }, { expireAfterSeconds: 3600 * 6 });
 
     this.$gameSettings = this.client.collection('gamesettings');
+
+    this.$banks = this.client.collection('banks');
+    this.$banks.ensureIndex({ username: 1 });
 
     this.clearStaleData();
   }

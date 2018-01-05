@@ -4,14 +4,14 @@
     <div class="col-6">
       <div class="row mb-1">
         <div class="col">
-          <h4 class="w-100">Bank Teller</h4>
+          <h4 class="w-100 text-center">Bank Teller</h4>
         </div>
       </div>
-      
+
       <div class="row mb-2">
         <div class="col">
-          <div class="w-100">Welcome to the {{ colyseusGame.showBank.bankId }} National Bank.</div>
-          <div class="w-100">You have {{ currentBankGold | number }} gold on deposit here.</div>
+          <div class="w-100 text-center">Welcome to the {{ colyseusGame.showBank.bankId }} National Bank.</div>
+          <div class="w-100 text-center">You have {{ currentBankGold | number }} gold on deposit here.</div>
         </div>
       </div>
 
@@ -23,30 +23,33 @@
 
       <div class="row mb-1">
         <div class="col-6">
-          <button class="btn btn-primary" (click)="colyseusGame.withdraw(bankNumber)">Withdraw</button>
+          <button class="btn btn-primary btn-block" (click)="colyseusGame.withdraw(bankNumber)">Withdraw</button>
         </div>
         <div class="col-6">
-          <button class="btn btn-primary" (click)="colyseusGame.deposit(bankNumber)">Deposit</button>
+          <button class="btn btn-primary btn-block" (click)="colyseusGame.deposit(bankNumber)">Deposit</button>
         </div>
       </div>
 
       <div class="row mb-1">
         <div class="col-6">
-          <button class="btn btn-primary" (click)="colyseusGame.withdraw(colyseusGame.character.banks[colyseusGame.showBank.bankId])">Withdraw All</button>
+          <button class="btn btn-primary btn-block" (click)="colyseusGame.withdraw(colyseusGame.showBank.banks[colyseusGame.showBank.bankId])">Withdraw All</button>
         </div>
         <div class="col-6">
-          <button class="btn btn-primary" (click)="colyseusGame.deposit(colyseusGame.character.gold)">Deposit All</button>
+          <button class="btn btn-primary btn-block" (click)="colyseusGame.deposit(colyseusGame.character.gold)">Deposit All</button>
         </div>
       </div>
 
     </div>
 
     <div class="col-6 d-flex flex-wrap flex-column">
-      <h4 class="w-100">Balances</h4>
+      <h4 class="w-100 text-center">Balances</h4>
 
-      <ul>
-        <li *ngFor="let bank of allBanks"><strong>{{ bank }}</strong> - {{ colyseusGame.character.banks[bank] | number }} gold</li>
-      </ul>
+      <table class="table table-sm table-striped">
+        <tr *ngFor="let bank of allBanks">
+          <td class="text-right"><strong>{{ bank }}</strong></td>
+          <td>{{ (colyseusGame.showBank.banks[bank] || 0) | number }} gold</td>
+        </tr>
+      </table>
     </div>
 
   </div>

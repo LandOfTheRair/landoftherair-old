@@ -31,6 +31,7 @@ import { DeathHelper } from '../helpers/death-helper';
 import { CharacterHelper } from '../helpers/character-helper';
 import { GroundHelper } from '../helpers/ground-helper';
 import { LockerHelper } from '../helpers/locker-helper';
+import { BankHelper } from '../helpers/bank-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon';
@@ -346,9 +347,9 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_shop', vendorItems: npc.vendorItems, uuid: npc.uuid });
   }
 
-  showBankWindow(player: Player, npc: NPC) {
+  showBankWindow(player: Player, npc: NPC, banks: any) {
     const client = this.findClient(player);
-    this.send(client, { action: 'show_bank', uuid: npc.uuid, bankId: npc.bankId });
+    this.send(client, { action: 'show_bank', uuid: get(npc || {}, 'uuid'), bankId: get(npc || {}, 'bankId'), banks });
   }
 
   showAlchemyWindow(player: Player, npc: NPC) {
@@ -374,6 +375,50 @@ export class GameWorld extends Room<GameState> {
     LockerHelper.saveLocker(player, locker);
     const client = player.$$room.findClient(player);
     this.send(client, { action: 'update_locker', locker });
+  }
+
+  async openBank(player: Player, npc: NPC) {
+    const banks = await BankHelper.openBank(player, npc);
+    player.$$banks = banks;
+    this.showBankWindow(player, npc, player.$$banks);
+  }
+
+  depositBankMoney(player: Player, region: string, amount: number) {
+    if(!player.$$banks) return false;
+
+    amount = Math.round(+amount);
+    if(isNaN(amount)) return false;
+
+    if(amount < 0) return false;
+    if(amount > player.gold) amount = player.gold;
+
+    player.$$banks = player.$$banks || {};
+    player.$$banks[region] = player.$$banks[region] || 0;
+    player.$$banks[region] += amount;
+
+    player.loseGold(amount);
+
+    BankHelper.saveBank(player);
+    this.showBankWindow(player, null, player.$$banks);
+    return amount;
+  }
+
+  withdrawBankMoney(player: Player, region: string, amount: number) {
+    if(!player.$$banks) return false;
+
+    amount = Math.round(+amount);
+    if(isNaN(amount)) return false;
+    if(amount < 0) return false;
+    player.$$banks = player.$$banks || {};
+    player.$$banks[region] = player.$$banks[region] || 0;
+
+    if(amount > player.$$banks[region]) amount = player.$$banks[region];
+
+    player.$$banks[region] -= amount;
+    player.gainGold(amount);
+    BankHelper.saveBank(player);
+    this.showBankWindow(player, null, player.$$banks);
+    return amount;
   }
 
   setPlayerXY(player, x, y) {

@@ -44,8 +44,6 @@ export class Player extends Character {
 
   private learnedSpells: any;
 
-  banks: any;
-
   @nonenumerable
   $$doNotSave: boolean;
 
@@ -66,6 +64,9 @@ export class Player extends Character {
 
   @nonenumerable
   $$locker: any;
+
+  @nonenumerable
+  $$banks: any;
 
   bgmSetting: 'town' | 'dungeon' | 'wilderness';
 
@@ -441,35 +442,6 @@ export class Player extends Character {
     if(this.buyback.length > this.buybackSize()) this.buyback.shift();
 
     return value;
-  }
-
-  addBankMoney(region: string, amount: number) {
-    amount = Math.round(+amount);
-    if(isNaN(amount)) return false;
-
-    if(amount < 0) return false;
-    if(amount > this.gold) amount = this.gold;
-
-    this.banks = this.banks || {};
-    this.banks[region] = this.banks[region] || 0;
-    this.banks[region] += amount;
-
-    this.loseGold(amount);
-    return amount;
-  }
-
-  loseBankMoney(region, amount) {
-    amount = Math.round(+amount);
-    if(isNaN(amount)) return false;
-    if(amount < 0) return false;
-    this.banks = this.banks || {};
-    this.banks[region] = this.banks[region] || 0;
-
-    if(amount > this.banks[region]) amount = this.banks[region];
-
-    this.banks[region] -= amount;
-    this.gainGold(amount);
-    return amount;
   }
 
   sendQuestMessage(quest: Quest, message: string): void {
