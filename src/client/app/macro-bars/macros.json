@@ -21,16 +21,6 @@
             "requiresLearn": false
         },
         {
-            "name": "Look At",
-            "macro": "look at",
-            "icon": "look-at",
-            "color": "#8A6948",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Look at a target, getting a full description of them and their gear.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Show Skills",
             "macro": "show skills",
             "icon": "checklist",
@@ -47,6 +37,16 @@
             "color": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "See all of your stats and their base level in text form.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Look At",
+            "macro": "look at",
+            "icon": "look-at",
+            "color": "#8A6948",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Look at a target, getting a full description of them and their gear.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -163,22 +163,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Throw",
-            "macro": "throw right",
-            "icon": "thrown-spear",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Throw an item at a target.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Steal",
             "macro": "steal",
             "icon": "take-my-money",
             "color": "#7F6B00",
             "mode": "lockActivation",
             "tooltipDesc": "Steal gold and items from your target.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Throw",
+            "macro": "throw right",
+            "icon": "thrown-spear",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Throw an item at a target.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -203,12 +203,32 @@
             "requiresLearn": true
         },
         {
+            "name": "Augury",
+            "macro": "cast augury",
+            "icon": "dove",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Use the winds to divine the location of your target. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "BarNecro",
             "macro": "cast barnecro",
             "icon": "rosa-shield",
             "color": "#1b390e",
             "mode": "clickToTarget",
             "tooltipDesc": "Shield necrotic damage for a single target. Cost: 40 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Autoheal",
+            "macro": "cast autoheal",
+            "icon": "self-love",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Automatically healing when health gets too low. Cost: 50 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -243,6 +263,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Regen",
+            "macro": "cast regen",
+            "icon": "star-swirl",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Stun",
             "macro": "cast stun",
             "icon": "knockout",
@@ -273,22 +303,22 @@
             "requiresLearn": true
         },
         {
-            "name": "BarFrost",
-            "macro": "cast barfrost",
-            "icon": "rosa-shield",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "BarWater",
             "macro": "cast barwater",
             "icon": "rosa-shield",
             "color": "#208aec",
             "mode": "clickToTarget",
             "tooltipDesc": "Shield water damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFrost",
+            "macro": "cast barfrost",
+            "icon": "rosa-shield",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -313,22 +343,22 @@
             "requiresLearn": true
         },
         {
-            "name": "IceMist",
-            "macro": "cast icemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "MagicMissile",
             "macro": "cast magicmissile",
             "icon": "missile-swarm",
             "color": "#0059bd",
             "mode": "lockActivation",
             "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "IceMist",
+            "macro": "cast icemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 40 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -379,6 +409,16 @@
             "color": "#0a0",
             "mode": "clickToTarget",
             "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Push",
+            "macro": "cast push",
+            "icon": "air-zigzag",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },

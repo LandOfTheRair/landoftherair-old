@@ -39,7 +39,9 @@ export * from './FireMist';
 export * from './IceMist';
 export * from './EnergyWave';
 
+export * from './Autoheal';
 export * from './Cure';
+export * from './Regen';
 export * from './Revive';
 
 export * from './Darkness';
@@ -59,6 +61,8 @@ export * from './RecentlyFrosted';
 export * from './Stunned';
 export * from './RecentlyStunned';
 
+export * from './Augury';
 export * from './Identify';
 export * from './Succor';
 export * from './Transmute';
+export * from './Push';

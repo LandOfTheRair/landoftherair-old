@@ -53,6 +53,15 @@ export class MessageHelper {
     return possTargets;
   }
 
+  static getPossibleAuguryTargets(player: Character, findStr: string): any[] {
+    const allTargets = player.$$room.state.allPossibleTargets;
+    const possTargets = allTargets.filter(target => {
+      return this.doesTargetMatchSearch(target, findStr);
+    });
+
+    return possTargets;
+  }
+
   static doesTargetMatchSearch(target: Character, findStr: string): boolean {
     return target.uuid === findStr || startsWith(target.name.toLowerCase(), findStr.toLowerCase());
   }

@@ -11,7 +11,7 @@ export class EagleEye extends SpellEffect {
     tooltipDesc: 'Seeing through the trees and waters.'
   };
 
-  maxSkillForSkillGain = 7;
+  maxSkillForSkillGain = 15;
   skillFlag = () => SkillClassNames.Thievery;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {

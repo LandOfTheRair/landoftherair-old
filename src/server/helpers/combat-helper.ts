@@ -35,8 +35,8 @@ export class CombatHelper {
     if(!weapon.proneChance) return;
     if(random(1, 100) > weapon.proneChance) return;
 
-    defender.sendClientMessageToRadius(`${defender.name} was knocked down!`, 5);
-    defender.takeSequenceOfSteps([{ x: random(-1, 1), y: random(-1, 1) }], false, true);
+    const push = new Effects.Push({ potency: 10 });
+    push.cast(attacker, defender);
 
     // low chance of cstun
     if(random(1, defender.getTotalStat('con')) > 3) return;
@@ -381,7 +381,7 @@ export class CombatHelper {
 
     const willCheck = +dice.roll('1d500') <= attacked.getTotalStat('wil');
 
-    if(willCheck) {
+    if(willCheck && damage > 0) {
       const willDivisor = Classes[attacked.baseClass || 'Undecided'].willDivisor;
       damage -= Math.floor(damage / willDivisor);
     }
@@ -492,7 +492,7 @@ export class CombatHelper {
       });
     }
 
-    if(defenderDamageMessage && attacker !== defender) {
+    if(defenderDamageMessage && (<any>defender).username && attacker !== defender) {
       defender.sendClientMessage({
         message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat other ${otherClass} ${damageType}`

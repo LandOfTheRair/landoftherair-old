@@ -14,7 +14,11 @@ const learnedSkills = { Restoration: {
   8: ['Succor'],
   9: ['Light'],
   10: ['Disease'],
-  11: ['Stun']
+  11: ['Stun'],
+  12: ['Push'],
+  13: ['Regen'],
+  14: ['Augury'],
+  15: ['Autoheal']
 } };
 
 export const setup = async (npc: NPC) => {
