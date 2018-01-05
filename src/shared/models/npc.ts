@@ -39,6 +39,8 @@ export class NPC extends Character {
   peddleItem?: string;
   peddleCost?: number;
 
+  hpTier?: number;
+
   copyDrops: any[];
   drops: Item[];
   dropPool: { items: Item[], choose: number };

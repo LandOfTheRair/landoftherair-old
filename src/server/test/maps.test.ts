@@ -127,6 +127,10 @@ test('All NPCs have valid properties', t => {
           t.truthy(npc.properties.peddleItem, tagFor(map, 'peddleItem'));
           break;
         }
+        case 'global/hpdoc': {
+          t.truthy(npc.properties.hpTier, tagFor(map, 'hpTier'));
+          break;
+        }
         case 'trainer/healer':
         case 'trainer/thief':
         case 'trainer/warrior':

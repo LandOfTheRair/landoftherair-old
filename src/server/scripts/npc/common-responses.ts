@@ -627,3 +627,92 @@ export const SpellforgingResponses = (npc: NPC) => {
       return 'Greetings, fellow conjurer. I am a master enchanter who can help you learn the higher conjuration arts.';
     });
 };
+
+export const HPDocResponses = (npc: NPC) => {
+
+  if(!npc.hpTier) {
+    Logger.error(new Error(`HPDoc at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid hpTier`));
+    return;
+  }
+
+  const hpTiers = {
+    Mage:     [100, 375],
+    Thief:    [100, 425],
+    Healer:   [100, 400],
+    Warrior:  [100, 450]
+  };
+
+  const hpNormalizers = [100, 200];
+
+  const hpCosts = [
+    { min: 100,  max: 500 },
+    { min: 5000, max: 15000 }
+  ];
+
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Closer move.';
+
+      return `${player.name}, greet! Am exiled scientist of Rys descent. Taught forbidden arts of increase life force. Interest? Hold gold, say TEACH.`;
+    });
+
+  npc.parser.addCommand('teach')
+    .set('syntax', ['teach'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Closer move.';
+
+      const playerBaseHp = player.getBaseStat('hp');
+      const maxHpForTier = hpTiers[player.baseClass][npc.hpTier];
+
+      if(playerBaseHp > maxHpForTier) return 'Too powerful! No help!';
+      if(!NPCLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
+
+      const calcRequiredGoldForNextHP = () => {
+
+        const normal = hpNormalizers[npc.hpTier];
+
+        const curHp = player.getBaseStat('hp');
+
+        // every cha past 7 is +1% discount
+        const discountPercent = Math.min(50, player.getTotalStat('cha') - 7);
+        const percentThere = Math.max(0.01, (curHp - normal) / (maxHpForTier - normal));
+
+        const { min, max } = hpCosts[npc.hpTier];
+
+        const totalCost = min + ((max - min) * percentThere);
+        const totalDiscount = (totalCost * discountPercent / 100);
+
+        return Math.max(min, Math.round(totalCost - totalDiscount));
+      };
+
+      let cost = calcRequiredGoldForNextHP();
+      let totalHPGained = 0;
+      let totalAvailable = player.rightHand.value;
+      let totalCost = 0;
+
+      if(cost > totalAvailable) return `Need ${cost} gold for life force!`;
+
+      while(cost > 0 && cost <= totalAvailable) {
+        totalAvailable -= cost;
+        totalCost += cost;
+        totalHPGained++;
+        player.gainBaseStat('hp', 1);
+
+        if(player.getBaseStat('hp') >= maxHpForTier) {
+          cost = -1;
+        } else {
+          cost = calcRequiredGoldForNextHP();
+        }
+      }
+
+      if(totalAvailable === 0) {
+        totalAvailable = 1;
+        totalCost -= 1;
+      }
+
+      player.rightHand.value = totalAvailable;
+
+      return `Gained ${totalHPGained} life forces! Cost ${totalCost.toLocaleString()} gold!`;
+    });
+};
