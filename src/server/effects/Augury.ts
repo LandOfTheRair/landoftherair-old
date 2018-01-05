@@ -24,7 +24,7 @@ export class Augury extends SpellEffect {
     if(target.hp.ltePercent(25))  return 'is nearing death';
     if(target.hp.ltePercent(50))  return 'has taken some damage';
     if(target.hp.ltePercent(75))  return 'is in pain';
-    return 'looks a bit ruffled up'
+    return 'looks a bit ruffled up';
   }
 
   async cast(caster: Character, target: Character, skillRef?: Skill) {
