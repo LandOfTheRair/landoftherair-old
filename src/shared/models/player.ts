@@ -4,6 +4,7 @@ import * as RestrictedNumber from 'restricted-number';
 import { Character, MaxSizes, AllNormalGearSlots, Allegiance } from './character';
 import { Item } from './item';
 
+import { DateTime } from 'luxon';
 import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith, extend, values, isUndefined } from 'lodash';
 import { Party } from './party';
 import { Quest } from '../../server/base/Quest';
@@ -683,11 +684,12 @@ export class Player extends Character {
   }
 
   private canDailyActivate(checkTimestamp: number) {
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    yesterday.setHours(18, 0, 0, 0);
+    let theoreticalResetTime = DateTime.fromObject({ zone: 'utc', hour: 12 });
+    if(+theoreticalResetTime < DateTime.fromObject({ zone: 'utc' })) {
+      theoreticalResetTime = theoreticalResetTime.plus({ days: 1 });
+    }
 
-    return checkTimestamp < yesterday.getTime();
+    return checkTimestamp < +theoreticalResetTime;
   }
 
   public canBuyDailyItem(item: Item): boolean {

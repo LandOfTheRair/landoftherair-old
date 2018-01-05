@@ -251,7 +251,12 @@ export class AppComponent implements OnInit {
   private watchResetTime() {
 
     const setResetTimestamp = () => {
-      this.resetTimestamp = +DateTime.fromObject({ zone: 'utc', hour: 12 }).plus({ days: 1 });
+      let theoreticalResetTime = DateTime.fromObject({ zone: 'utc', hour: 12 });
+      if(+theoreticalResetTime < DateTime.fromObject({ zone: 'utc' })) {
+        theoreticalResetTime = theoreticalResetTime.plus({ days: 1 });
+      }
+
+      this.resetTimestamp = +theoreticalResetTime;
     };
 
     const formatTimestring = () => {
@@ -259,7 +264,6 @@ export class AppComponent implements OnInit {
       let hours = Math.floor((diff / 60) / 60) % 60;
       const minutes = Math.floor((diff / 60)) % 60;
 
-      if(hours > 24) hours -= 24;
       this.timestampDisplay = `${hours > 0 ? hours + 'h' : ''}${minutes}m`;
     };
 
