@@ -36,6 +36,7 @@
   minDamage: 4
   maxDamage: 10
   damageRolls: 3
+  proneChance: 8
   binds: true
   tellsBind: true
   sprite: 301
