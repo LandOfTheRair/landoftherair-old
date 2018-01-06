@@ -181,7 +181,7 @@
   stats: 10
   skillLevels:
     Mace: 3
-    Restoration: 5
+    Restoration: 3
 
   level: 4
   skillOnKill: 5

@@ -93,7 +93,7 @@ export class GameState {
     this.initDeepstream();
     this.findSecretWalls();
   }
-  
+
   public cleanup() {
     this.cleanDeepstreamRecords();
   }

@@ -268,7 +268,8 @@
   baseClass: Healer
   stats: 15
   skillLevels:
-    Mace: 4
+    Mace: 3
+    Restoration: 3
 
   level: 10
 
@@ -450,7 +451,8 @@
   baseClass: Healer
   stats: 15
   skillLevels:
-    Mace: 5
+    Mace: 3
+    Restoration: 3
 
   level: 13
 
