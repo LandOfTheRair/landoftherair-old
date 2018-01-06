@@ -23,10 +23,10 @@ export class Disease extends SpellEffect {
 
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 2;
-    if(this.potency > 0)  mult = 3;
-    if(this.potency > 11) mult = 4;
-    if(this.potency > 21) mult = 5;
+    let mult = 1.5;
+    if(this.potency > 0)  mult = 2;
+    if(this.potency > 11) mult = 3;
+    if(this.potency > 21) mult = 4;
 
     if(caster.baseClass === 'Thief') mult = Math.floor(mult * 1.5);
 

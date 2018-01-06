@@ -25,8 +25,7 @@ export class Malnourished extends SpellEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
-    this.duration = -1;
-    this.effectInfo = { isPermanent: true, caster: caster.uuid };
+    this.flagPermanent(caster.uuid);
     caster.applyEffect(this);
   }
 

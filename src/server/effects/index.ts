@@ -68,3 +68,7 @@ export * from './Identify';
 export * from './Succor';
 export * from './Transmute';
 export * from './Push';
+
+export * from './ParryStance';
+export * from './RageStance';
+export * from './TauntStance';

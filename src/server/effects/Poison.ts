@@ -24,9 +24,9 @@ export class Poison extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     let mult = 0.75;
-    if(this.potency > 0)  mult = 1.5;
-    if(this.potency > 11) mult = 3;
-    if(this.potency > 21) mult = 5;
+    if(this.potency > 0)  mult = 1.25;
+    if(this.potency > 11) mult = 1.75;
+    if(this.potency > 21) mult = 2.5;
 
     if(caster.baseClass === 'Thief') mult = Math.floor(mult * 1.5);
 

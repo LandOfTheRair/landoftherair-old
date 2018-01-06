@@ -31,6 +31,7 @@ export class Macro {
 
   isSystem: boolean;
   requiresLearn: boolean;
+  requiresBaseClass: boolean;
 
   constructor(opts = {}) {
     _.extend(this, opts);
@@ -267,6 +268,10 @@ export class MacroService {
           return !learnedSpells[x.name.toLowerCase()];
         }
         return false;
+      })
+      .filter(x => {
+        if(!x.requiresBaseClass) return true;
+        return x.requiresBaseClass === this.colyseusGame.character.baseClass;
       })
       .sortBy('name')
       .sortBy('isSystem')

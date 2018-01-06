@@ -1,6 +1,6 @@
 
 import { Character } from '../../shared/models/character';
-import { extend } from 'lodash';
+import { extend, includes } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/combat-helper';
 
@@ -33,6 +33,11 @@ export class Effect {
   constructor(opts) {
     extend(this, opts);
     if(!this.name) this.name = this.constructor.name;
+  }
+
+  protected flagPermanent(casterUUID: string) {
+    this.duration = -1;
+    this.effectInfo = { isPermanent: true, caster: casterUUID };
   }
 
   tick(char: Character) {
@@ -112,6 +117,40 @@ export class SpellEffect extends Effect {
   }
 
   cast(caster: Character, target: Character, skillRef: Skill) {}
+}
+
+export class StanceEffect extends Effect {
+
+  public weaponClass: string;
+
+  protected skillRequired: number;
+
+  static isValid(char: Character, weaponClass: string, skillRequired: number): boolean {
+    const item = char.rightHand;
+    if(!item || item.itemClass === 'Martial') return false;
+    if(item.itemClass !== weaponClass) return false;
+    if(item.twoHanded && char.leftHand) return false;
+    if(char.calcSkillLevel(item.itemClass) < skillRequired) return false;
+    return true;
+  }
+
+  cast(char: Character, target: Character, skillRef?: Skill) {
+    this.weaponClass = char.rightHand.itemClass;
+
+    // only one stance can be active at a time
+    char.effects.forEach(eff => {
+      if(!includes(eff.constructor.name, 'Stance')) return;
+      char.unapplyEffect(eff, true);
+    });
+  }
+
+  tick(char: Character) {
+    super.tick(char);
+
+    if(!StanceEffect.isValid(char, this.weaponClass, this.skillRequired)) {
+      char.unapplyEffect(this, true);
+    }
+  }
 }
 
 export class BuildupEffect extends SpellEffect {

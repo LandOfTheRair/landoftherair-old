@@ -253,7 +253,7 @@ export class Character {
   }
 
   getTotalStat(stat: StatName) {
-    return this.totalStats[stat] || 0;
+    return Math.max(0, this.totalStats[stat] || 0);
   }
 
   getBaseStat(stat: StatName) {

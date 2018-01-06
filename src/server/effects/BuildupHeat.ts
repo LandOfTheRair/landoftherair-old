@@ -13,8 +13,7 @@ export class BuildupHeat extends BuildupEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = -1;
-    this.effectInfo = { isPermanent: true, caster: '' };
+    this.flagPermanent('');
     target.applyEffect(this);
   }
 
