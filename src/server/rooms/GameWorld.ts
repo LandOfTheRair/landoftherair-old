@@ -146,12 +146,6 @@ export class GameWorld extends Room<GameState> {
     const finishLoad = async () => {
       if(opts.skipMostOfLoad) return;
 
-      this.broadcast({
-        action: 'init_ds',
-        room: this.mapName,
-        createdId: opts.party
-      });
-
       const timerData = await this.loadBossTimers();
       const spawnerTimers = timerData ? timerData.spawners : [];
 
@@ -183,8 +177,15 @@ export class GameWorld extends Room<GameState> {
         });
         return;
       }
-      finishLoad();
+
+      this.broadcast({
+        action: 'init_ds',
+        room: this.mapName,
+        createdId: opts.party
+      });
     });
+    
+    finishLoad();
   }
 
   onDispose() {

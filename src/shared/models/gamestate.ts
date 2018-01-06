@@ -123,13 +123,6 @@ export class GameState {
     this.deepstreamRecords.npcHash.set({});
     this.deepstreamRecords.npcData.set({});
     this.deepstreamRecords.npcVolatile.set({});
-
-    if(doDelete) {
-      this.deepstreamRecords.groundItems.delete();
-      this.deepstreamRecords.npcHash.delete();
-      this.deepstreamRecords.npcData.delete();
-      this.deepstreamRecords.npcVolatile.delete();
-    }
   }
 
   private initFov() {
