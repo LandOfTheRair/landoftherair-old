@@ -95,7 +95,7 @@ export class GameState {
   }
 
   public cleanup() {
-    this.cleanDeepstreamRecords();
+    this.cleanDeepstreamRecords(true);
   }
 
   private findSecretWalls() {
@@ -118,11 +118,18 @@ export class GameState {
     this.cleanDeepstreamRecords();
   }
 
-  private cleanDeepstreamRecords() {
+  private cleanDeepstreamRecords(doDelete?) {
     this.deepstreamRecords.groundItems.set({});
     this.deepstreamRecords.npcHash.set({});
     this.deepstreamRecords.npcData.set({});
     this.deepstreamRecords.npcVolatile.set({});
+
+    if(doDelete) {
+      this.deepstreamRecords.groundItems.delete();
+      this.deepstreamRecords.npcHash.delete();
+      this.deepstreamRecords.npcData.delete();
+      this.deepstreamRecords.npcVolatile.delete();
+    }
   }
 
   private initFov() {

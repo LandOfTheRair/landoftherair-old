@@ -146,6 +146,12 @@ export class GameWorld extends Room<GameState> {
     const finishLoad = async () => {
       if(opts.skipMostOfLoad) return;
 
+      this.broadcast({
+        action: 'init_ds',
+        room: this.mapName,
+        createdId: opts.party
+      });
+
       const timerData = await this.loadBossTimers();
       const spawnerTimers = timerData ? timerData.spawners : [];
 

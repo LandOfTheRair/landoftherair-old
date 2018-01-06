@@ -134,7 +134,6 @@ export class ColyseusGameService {
         this.clientGameState.mapName = state.mapName;
         this.clientGameState.grabOldUpdates(state.mapData);
 
-        this.initDeepstreamForRoom(room, state.createdId);
         this.clientGameState.setMapNPCs(this.deepstream.allNPCsHash);
 
         this.changingMap = false;
@@ -340,6 +339,11 @@ export class ColyseusGameService {
     if(action === 'set_character')  return this.setCharacter(other.character);
     if(action === 'update_pos')     return this.updatePos(other.x, other.y, other.dir, other.swimLevel, other.fov);
     if(action === 'update_fov')     return this.updateFOV(other.fov);
+    if(action === 'init_ds')        return this.initDeepstream(other.room, other.createdId);
+  }
+
+  private initDeepstream(room: string, createdId: string) {
+    this.initDeepstreamForRoom(room, createdId);
   }
 
   private drawCombatEffect(data) {

@@ -396,7 +396,7 @@ export class Game {
 
     this.g.input.onDown.add(({ worldX, worldY }) => {
 
-      if(!this.map) return;
+      if(!this.map || !this.map.objects) return;
 
       const xCoord = Math.floor(worldX / 64);
       const yCoord = Math.floor(worldY / 64);
