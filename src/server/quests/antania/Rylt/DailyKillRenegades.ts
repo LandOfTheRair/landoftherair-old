@@ -15,7 +15,7 @@ export class DailyKillRenegades extends Quest {
       npcIds: [
         'Rylt Renegade',
         'Rylt Renegade Healer',
-        'Rylt Renegade Mage ',
+        'Rylt Renegade Mage',
         'Rylt Renegade Leader',
         'Rylt Renegade Commander'
       ]
