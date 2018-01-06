@@ -655,13 +655,13 @@ export class Player extends Character {
     this.$$locker = null;
   }
 
-  private canDailyActivate(checkTimestamp: number) {
+  private canDailyActivate(checkTimestamp: number): boolean {
     let theoreticalResetTime = DateTime.fromObject({ zone: 'utc', hour: 12 });
     if(+theoreticalResetTime < DateTime.fromObject({ zone: 'utc' })) {
       theoreticalResetTime = theoreticalResetTime.plus({ days: 1 });
     }
-
-    return checkTimestamp < +theoreticalResetTime;
+    
+    return checkTimestamp > +theoreticalResetTime;
   }
 
   public canBuyDailyItem(item: Item): boolean {
@@ -678,11 +678,11 @@ export class Player extends Character {
   }
 
   public completeDailyQuest(key: string): void {
-    this.daily.quest[key] = Date.now();
+    this.daily.quest[key] = +DateTime.fromObject({ zone: 'utc' });
   }
 
   public buyDailyItem(item: Item) {
-    this.daily.item[item.uuid] = Date.now();
+    this.daily.item[item.uuid] = +DateTime.fromObject({ zone: 'utc' });
   }
 
 }
