@@ -169,7 +169,14 @@ export class GameWorld extends Room<GameState> {
     };
 
     this.deepstream.login({ map: this.mapName, token: process.env.DEEPSTREAM_TOKEN }, (success) => {
-      if(!success) return;
+      if(!success) {
+        this.broadcast({
+          error: 'error_invalid_world',
+          prettyErrorName: 'Invalid World',
+          prettyErrorDesc: 'This world did not initialize correctly and will not work correctly. Please exit and rejoin it ASAP.'
+        });
+        return;
+      }
       finishLoad();
     });
   }
