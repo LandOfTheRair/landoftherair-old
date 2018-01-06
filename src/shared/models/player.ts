@@ -660,7 +660,7 @@ export class Player extends Character {
     if(+theoreticalResetTime < DateTime.fromObject({ zone: 'utc' })) {
       theoreticalResetTime = theoreticalResetTime.plus({ days: 1 });
     }
-    
+
     return checkTimestamp > +theoreticalResetTime;
   }
 
@@ -674,7 +674,7 @@ export class Player extends Character {
   }
 
   public canDoDailyQuest(key: string): boolean {
-    return this.canDailyActivate(this.daily.quest[key] || 0);
+    return !this.daily.quest[key] || this.canDailyActivate(this.daily.quest[key]);
   }
 
   public completeDailyQuest(key: string): void {
