@@ -14,6 +14,10 @@ export class InstancedDungeon extends GameWorld {
   async onInit(options): Promise<void> {
     if(options.party) {
       this.partyOwner = options.party;
+
+      // no party in an instanced dungeon means you probably quit in it
+    } else {
+      options.skipMostOfLoad = true;
     }
 
     await super.onInit(options);

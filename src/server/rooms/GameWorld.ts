@@ -146,22 +146,27 @@ export class GameWorld extends Room<GameState> {
 
     this.deepstream.login({ map: this.mapName, token: process.env.DEEPSTREAM_TOKEN });
 
-    const timerData = await this.loadBossTimers();
-    const spawnerTimers = timerData ? timerData.spawners : [];
+    if(!opts.skipMostOfLoad) {
+      const timerData = await this.loadBossTimers();
+      const spawnerTimers = timerData ? timerData.spawners : [];
 
-    this.loadNPCsFromMap();
-    this.loadSpawners(spawnerTimers);
-    this.loadDropTables();
-    this.loadGameSettings();
+      setTimeout(() => {
+        this.loadNPCsFromMap();
+        this.loadSpawners(spawnerTimers);
+        this.loadDropTables();
+      }, 0);
 
-    this.initGround();
-    this.initPartyManager();
+      this.loadGameSettings();
 
-    this.state.tick();
+      this.initGround();
+      this.initPartyManager();
 
-    if(this.script) {
-      const { setup } = require(__dirname + '/../scripts/rooms/' + this.script);
-      setup(this);
+      this.state.tick();
+
+      if(this.script) {
+        const { setup } = require(__dirname + '/../scripts/rooms/' + this.script);
+        setup(this);
+      }
     }
   }
 
@@ -176,7 +181,9 @@ export class GameWorld extends Room<GameState> {
 
     GroundHelper.saveGround(this);
     this.saveBossTimers();
-    this.partyManager.stopEmitting();
+    if(this.partyManager) {
+      this.partyManager.stopEmitting();
+    }
 
     this.state.cleanup();
   }
