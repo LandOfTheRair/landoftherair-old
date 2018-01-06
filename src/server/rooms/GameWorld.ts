@@ -24,7 +24,6 @@ import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
 import { PartyManager } from '../helpers/party-manager';
 import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings-helper';
-import { DeepstreamCleaner } from '../deepstream-cleaner';
 import { NPCLoader } from '../helpers/npc-loader';
 import { AccountHelper } from '../helpers/account-helper';
 import { DeathHelper } from '../helpers/death-helper';
@@ -144,9 +143,9 @@ export class GameWorld extends Room<GameState> {
       createdId: opts.party
     }));
 
-    this.deepstream.login({ map: this.mapName, token: process.env.DEEPSTREAM_TOKEN });
+    const finishLoad = async () => {
+      if(opts.skipMostOfLoad) return;
 
-    if(!opts.skipMostOfLoad) {
       const timerData = await this.loadBossTimers();
       const spawnerTimers = timerData ? timerData.spawners : [];
 
@@ -167,7 +166,12 @@ export class GameWorld extends Room<GameState> {
         const { setup } = require(__dirname + '/../scripts/rooms/' + this.script);
         setup(this);
       }
-    }
+    };
+
+    this.deepstream.login({ map: this.mapName, token: process.env.DEEPSTREAM_TOKEN }, (success) => {
+      if(!success) return;
+      finishLoad();
+    });
   }
 
   onDispose() {

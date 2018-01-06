@@ -114,7 +114,7 @@ export class GameState {
     this.deepstreamRecords.npcHash = this.deepstream.record.getRecord(`${recordPath}/npcHash`);
     this.deepstreamRecords.npcData = this.deepstream.record.getRecord(`${recordPath}/npcData`);
     this.deepstreamRecords.npcVolatile = this.deepstream.record.getRecord(`${recordPath}/npcVolatile`);
-
+    
     this.cleanDeepstreamRecords();
   }
 
