@@ -59,20 +59,21 @@ export class Container {
     return item;
   }
 
-  randomItem() {
+  randomItem(): Item {
     return sample(this.items);
   }
 
-  takeItem(item: Item) {
+  takeItem(item: Item): void {
     const index = findIndex(this.items, x => x === item);
     this.takeItemFromSlot(index);
   }
 
-  takeItemFromSlots(slots: number[]) {
+  takeItemFromSlots(slots: number[]): void {
     slots.reverse().forEach(index => this.takeItemFromSlot(index));
   }
 
-  canAccept(item: Item, index?: number) {
+  canAccept(item: Item, index?: number): boolean {
+    if(!item) return false;
     return item.itemClass !== 'Corpse' && item.itemClass !== 'Coin';
   }
 }
