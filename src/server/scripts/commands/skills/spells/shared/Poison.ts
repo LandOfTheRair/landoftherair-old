@@ -27,6 +27,8 @@ export class Poison extends Skill {
     const target = this.getTarget(user, args);
     if(!target) return;
 
+    if(target === user) return;
+
     if(!this.tryToConsumeMP(user, effect)) return;
 
     this.use(user, target, effect);

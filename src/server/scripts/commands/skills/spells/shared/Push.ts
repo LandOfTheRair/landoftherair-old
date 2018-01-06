@@ -26,6 +26,8 @@ export class Push extends Skill {
     const target = this.getTarget(user, args, true);
     if(!target) return;
 
+    if(target === user) return;
+
     if(!this.tryToConsumeMP(user, effect)) return;
 
     this.use(user, target);
