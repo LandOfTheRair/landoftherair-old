@@ -178,7 +178,7 @@ export class GameWorld extends Room<GameState> {
     this.saveBossTimers();
     this.partyManager.stopEmitting();
 
-    DeepstreamCleaner.cleanMap(this.mapName, this.deepstream);
+    this.state.cleanup();
   }
 
   async onJoin(client, options) {

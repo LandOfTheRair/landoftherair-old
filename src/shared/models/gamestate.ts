@@ -93,6 +93,10 @@ export class GameState {
     this.initDeepstream();
     this.findSecretWalls();
   }
+  
+  public cleanup() {
+    this.cleanDeepstreamRecords();
+  }
 
   private findSecretWalls() {
     const allPossibleLayers = this.map.layers[MapLayer.OpaqueDecor].objects;
@@ -107,15 +111,17 @@ export class GameState {
     const recordPath = this.createdId && endsWith(this.mapName, '-Dungeon') ? `${this.mapName}-${this.createdId}` : this.mapName;
 
     this.deepstreamRecords.groundItems = this.deepstream.record.getRecord(`${recordPath}/groundItems`);
-    this.deepstreamRecords.groundItems.set({});
-
     this.deepstreamRecords.npcHash = this.deepstream.record.getRecord(`${recordPath}/npcHash`);
-    this.deepstreamRecords.npcHash.set({});
-
     this.deepstreamRecords.npcData = this.deepstream.record.getRecord(`${recordPath}/npcData`);
-    this.deepstreamRecords.npcData.set({});
-
     this.deepstreamRecords.npcVolatile = this.deepstream.record.getRecord(`${recordPath}/npcVolatile`);
+
+    this.cleanDeepstreamRecords();
+  }
+
+  private cleanDeepstreamRecords() {
+    this.deepstreamRecords.groundItems.set({});
+    this.deepstreamRecords.npcHash.set({});
+    this.deepstreamRecords.npcData.set({});
     this.deepstreamRecords.npcVolatile.set({});
   }
 
