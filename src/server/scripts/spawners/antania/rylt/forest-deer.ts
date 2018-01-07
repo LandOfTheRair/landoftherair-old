@@ -12,7 +12,7 @@ export class RyltForestDeerSpawner extends Spawner {
       respawnRate: 10,
       initialSpawn: 2,
       maxCreatures: 3,
-      spawnRadius: 3,
+      spawnRadius: 2,
       randomWalkRadius: 20,
       leashRadius: 25,
       npcIds

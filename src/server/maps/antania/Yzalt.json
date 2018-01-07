@@ -5792,7 +5792,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":3648,
+                 "x":3584,
                  "y":1536
                 }, 
                 {
@@ -5852,8 +5852,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":3904,
-                 "y":8960
+                 "x":3776,
+                 "y":8832
                 }, 
                 {
                  "gid":2347,
@@ -7667,6 +7667,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
+ "tiledversion":"1.0.3",
  "tileheight":64,
  "tilesets":[
         {
@@ -9503,6 +9504,6 @@
         }],
  "tilewidth":64,
  "type":"map",
- "version":"1.0.0",
+ "version":1,
  "width":98
 }
