@@ -147,6 +147,7 @@ export class CombatHelper {
     const offhandDivisor = isOffhand ? 3 : 1;
 
     const attackerName = defender.canSeeThroughStealthOf(attacker) ? attacker.name : 'somebody';
+    const attackerDamageRolls = defender.getTotalStat('weaponDamageRolls');
 
     // skill + 1 because skill 0 is awful
     const attackerScope = {
@@ -162,9 +163,10 @@ export class CombatHelper {
       damageMin: attackerWeapon.minDamage,
       damageMax: attackerWeapon.maxDamage,
       damageBase: attackerWeapon.baseDamage,
-      damageRolls: attackerWeapon.damageRolls || 1
+      damageRolls: Math.max(1, (attackerWeapon.damageRolls || 1) - attackerDamageRolls)
     };
 
+    const defenderWeaponAC = defender.getTotalStat('weaponArmorClass');
     const defenderACBoost = defenderArmor.conditionACModifier() + (defenderShield ? defenderShield.conditionACModifier() : 0);
 
     const defenderScope = {
@@ -227,7 +229,7 @@ export class CombatHelper {
     }
 
     // try to block with weapon
-    const attackerWeaponShieldBlockRightSide = Math.floor(attackerScope.str4 + attackerScope.dex + attackerScope.skill);
+    const attackerWeaponShieldBlockRightSide = Math.floor(attackerScope.str4 + attackerScope.dex + attackerScope.skill) - defenderWeaponAC;
     const defenderWeaponBlockLeftSide = 1;
     const defenderWeaponBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.skill);
 

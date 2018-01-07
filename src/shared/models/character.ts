@@ -113,6 +113,7 @@ export class Stats {
   hp? = 100;
   mp? = 0;
 
+  weaponArmorClass? = 0;
   armorClass? = 0;
   accuracy? = 0;
   offense? = 0;
@@ -133,7 +134,7 @@ export class Stats {
 export type StatName =
   'str' | 'dex' | 'agi' | 'int' | 'wis' | 'wil' | 'luk' | 'cha' | 'con'
 | 'move' | 'hpregen' | 'mpregen' | 'hp' | 'mp'
-| 'armorClass' | 'accuracy' | 'offense' | 'defense'
+| 'armorClass' | 'accuracy' | 'offense' | 'defense' | 'weaponArmorClass' | 'weaponDamageRolls'
 | 'stealth' | 'perception'
 | 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist';
 
@@ -382,8 +383,7 @@ export class Character {
   }
 
   loseStat(stat: StatName, value = 1) {
-    this.additionalStats[stat] = (this.additionalStats[stat] || 0) - value;
-    this.recalculateStats();
+    this.gainStat(stat, -value);
   }
 
   gainBaseStat(stat: StatName, value = 1) {
@@ -830,7 +830,7 @@ export class Character {
     return curLevel < this.$$room.state.maxSkill;
   }
 
-  private _calcSkillLevel(type) {
+  private _calcSkillLevel(type: string) {
     const skillValue = this.skills[type.toLowerCase()] || 0;
     if(skillValue < 100) return 0;
     // if(skillValue < 200) return 1;
@@ -839,7 +839,7 @@ export class Character {
     return 1 + Math.floor(value);
   }
 
-  calcSkillLevel(type) {
+  calcSkillLevel(type: string) {
     return this._calcSkillLevel(type);
   }
 

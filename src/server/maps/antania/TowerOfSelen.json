@@ -3103,7 +3103,7 @@
                  "gid":3294,
                  "height":64,
                  "id":1853,
-                 "name":"Aychpoc",
+                 "name":"Aychpo'c",
                  "properties":
                     {
                      "hpTier":1,
@@ -3216,6 +3216,26 @@
                  "width":64,
                  "x":1344,
                  "y":4928
+                }, 
+                {
+                 "gid":3099,
+                 "height":64,
+                 "id":1860,
+                 "name":"Approks",
+                 "properties":
+                    {
+                     "script":"global\/appraiser"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":960,
+                 "y":5184
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3343,7 +3363,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1860,
+ "nextobjectid":1861,
  "orientation":"orthogonal",
  "properties":
     {

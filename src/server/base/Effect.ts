@@ -126,6 +126,7 @@ export class StanceEffect extends Effect {
   protected skillRequired: number;
 
   static isValid(char: Character, weaponClass: string, skillRequired: number): boolean {
+    if(char.baseClass !== 'Warrior') return false;
     const item = char.rightHand;
     if(!item || item.itemClass === 'Martial') return false;
     if(item.itemClass !== weaponClass) return false;
@@ -134,14 +135,19 @@ export class StanceEffect extends Effect {
     return true;
   }
 
-  cast(char: Character, target: Character, skillRef?: Skill) {
+  cast(char: Character, target: Character, skillRef?: Skill): boolean {
     this.weaponClass = char.rightHand.itemClass;
+
+    let foundSelf = false;
 
     // only one stance can be active at a time
     char.effects.forEach(eff => {
       if(!includes(eff.constructor.name, 'Stance')) return;
       char.unapplyEffect(eff, true);
+      if(eff.constructor.name === this.constructor.name) foundSelf = true;
     });
+
+    return foundSelf;
   }
 
   tick(char: Character) {

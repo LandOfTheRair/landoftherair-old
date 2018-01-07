@@ -184,7 +184,7 @@ export class GameWorld extends Room<GameState> {
         createdId: opts.party
       });
     });
-    
+
     finishLoad();
   }
 
