@@ -13,8 +13,8 @@ export class Afflict extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     let mult = 1;
-    if(this.potency > 0)  mult = 2.5;
-    if(this.potency > 11) mult = 3.5;
+    if(this.potency > 0)  mult = 2.75;
+    if(this.potency > 11) mult = 3.75;
     if(this.potency > 21) mult = 4;
 
     const wisCheck = Math.floor(mult * this.getCasterStat(caster, 'wis'));

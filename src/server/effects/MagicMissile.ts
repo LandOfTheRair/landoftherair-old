@@ -13,7 +13,7 @@ export class MagicMissile extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     let mult = 1;
-    if(this.potency > 0)  mult = 2;
+    if(this.potency > 0)  mult = 3;
     if(this.potency > 11) mult = 4;
     if(this.potency > 21) mult = 6;
 

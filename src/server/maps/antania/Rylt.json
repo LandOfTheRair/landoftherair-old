@@ -8730,6 +8730,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
+ "tiledversion":"1.0.3",
  "tileheight":64,
  "tilesets":[
         {
@@ -10566,6 +10567,6 @@
         }],
  "tilewidth":64,
  "type":"map",
- "version":"1.0.0",
+ "version":1,
  "width":158
 }
