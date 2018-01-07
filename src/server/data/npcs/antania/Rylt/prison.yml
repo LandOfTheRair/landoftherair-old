@@ -576,7 +576,7 @@
   sprite: 5
   alignment: Evil
   stats: 12
-  skillLevels: 4
+  skillLevels: 2
 
   otherStats:
     perception: 150
