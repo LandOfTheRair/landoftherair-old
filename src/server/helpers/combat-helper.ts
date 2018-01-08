@@ -35,7 +35,7 @@ export class CombatHelper {
     if(!weapon.proneChance) return;
     if(random(1, 100) > weapon.proneChance) return;
 
-    const push = new Effects.Push({ potency: 10 });
+    const push = new Effects.Push({ potency: attacker.level });
     push.cast(attacker, defender);
 
     // low chance of cstun
