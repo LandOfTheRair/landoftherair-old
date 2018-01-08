@@ -668,7 +668,7 @@ export class Player extends Character {
 
   public canBuyDailyItem(item: Item): boolean {
     if(!item.daily) throw new Error('Attempting to buy item as a daily item ' + JSON.stringify(item));
-    
+
     if(!this.daily.item[item.uuid]) return true;
     if(this.canDailyActivate(this.daily.item[item.uuid])) return true;
 

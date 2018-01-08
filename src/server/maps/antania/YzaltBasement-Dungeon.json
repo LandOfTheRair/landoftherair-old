@@ -90,7 +90,7 @@
          "name":"Interactables",
          "objects":[
                 {
-                 "gid":1761,
+                 "gid":1777,
                  "height":64,
                  "id":1442,
                  "name":"",
@@ -114,7 +114,7 @@
                  "y":448
                 }, 
                 {
-                 "gid":1729,
+                 "gid":1745,
                  "height":64,
                  "id":1443,
                  "name":"Chest 1",
@@ -126,7 +126,7 @@
                  "y":512
                 }, 
                 {
-                 "gid":2390,
+                 "gid":2406,
                  "height":64,
                  "id":1447,
                  "name":"Chest Door",
@@ -148,7 +148,7 @@
                  "y":704
                 }, 
                 {
-                 "gid":2368,
+                 "gid":2384,
                  "height":64,
                  "id":1448,
                  "name":"",
@@ -192,7 +192,7 @@
          "name":"Spawners",
          "objects":[
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1449,
                  "name":"Crazed Sedgwick Spawner",
@@ -230,7 +230,7 @@
                  "y":512
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1458,
                  "name":"Sewer Rat Spawner",
@@ -250,7 +250,7 @@
                  "y":512
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1459,
                  "name":"Sewer Rat Spawner",
@@ -270,7 +270,7 @@
                  "y":1152
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1460,
                  "name":"Sewer Rat Spawner",
@@ -290,7 +290,7 @@
                  "y":2624
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1461,
                  "name":"Sewer Rat Spawner",
@@ -310,7 +310,7 @@
                  "y":1920
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1462,
                  "name":"Insane Spawner",
@@ -330,7 +330,7 @@
                  "y":1856
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1464,
                  "name":"Insane Spawner",
@@ -350,7 +350,7 @@
                  "y":1600
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1465,
                  "name":"Insane Spawner",
@@ -370,7 +370,7 @@
                  "y":2240
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1466,
                  "name":"Insane Spawner",
@@ -390,7 +390,7 @@
                  "y":1856
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1467,
                  "name":"Insane Spawner",
@@ -410,7 +410,7 @@
                  "y":1408
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1468,
                  "name":"Insane Spawner",
@@ -430,7 +430,7 @@
                  "y":1664
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1469,
                  "name":"Insane Spawner",
@@ -450,7 +450,7 @@
                  "y":2432
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1470,
                  "name":"Insane Spawner",
@@ -470,7 +470,7 @@
                  "y":2432
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1471,
                  "name":"Insane Spawner",
@@ -490,7 +490,7 @@
                  "y":2688
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1472,
                  "name":"Insane Spawner",
@@ -510,7 +510,7 @@
                  "y":2048
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1473,
                  "name":"Insane Spawner",
@@ -530,7 +530,7 @@
                  "y":1216
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1474,
                  "name":"Insane Spawner",
@@ -550,7 +550,7 @@
                  "y":1088
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1475,
                  "name":"Insane Spawner",
@@ -570,7 +570,7 @@
                  "y":1024
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1476,
                  "name":"Insane Spawner",
@@ -590,7 +590,7 @@
                  "y":896
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1477,
                  "name":"Insane Spawner",
@@ -610,7 +610,7 @@
                  "y":512
                 }, 
                 {
-                 "gid":2347,
+                 "gid":2363,
                  "height":64,
                  "id":1478,
                  "name":"Insane Spawner",
@@ -757,7 +757,7 @@
  "properties":
     {
      "disableCreatureRespawn":true,
-     "itemExpirationHours":1,
+     "itemExpirationHours":0.5,
      "itemGarbageCollection":15,
      "kickMap":"Yzalt",
      "kickX":24,
@@ -773,7 +773,7 @@
  "propertytypes":
     {
      "disableCreatureRespawn":"bool",
-     "itemExpirationHours":"int",
+     "itemExpirationHours":"float",
      "itemGarbageCollection":"int",
      "kickMap":"string",
      "kickX":"int",
@@ -2022,18 +2022,18 @@
          "columns":16,
          "firstgid":961,
          "image":"..\/..\/..\/client\/assets\/walls.png",
-         "imageheight":1408,
+         "imageheight":1472,
          "imagewidth":1024,
          "margin":0,
          "name":"Walls",
          "spacing":0,
-         "tilecount":352,
+         "tilecount":368,
          "tileheight":64,
          "tilewidth":64
         }, 
         {
          "columns":32,
-         "firstgid":1313,
+         "firstgid":1329,
          "image":"..\/..\/..\/client\/assets\/decor.png",
          "imageheight":2432,
          "imagewidth":2048,
@@ -2610,7 +2610,7 @@
         }, 
         {
          "columns":40,
-         "firstgid":2529,
+         "firstgid":2545,
          "image":"..\/..\/..\/client\/assets\/creatures.png",
          "imageheight":2944,
          "imagewidth":2560,
