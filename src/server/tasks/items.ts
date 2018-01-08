@@ -1,5 +1,5 @@
 
-import { reject, difference, values } from 'lodash';
+import { reject, difference, values, isArray } from 'lodash';
 
 import { SkillClassNames, Stats } from '../../shared/models/character';
 import * as Classes from '../classes';
@@ -208,7 +208,13 @@ class ItemLoader {
     if(item.trait) {
       let found = false;
       Object.keys(AllTraits).forEach(traitCat => {
-        if(AllTraits[traitCat][item.trait.name]) found = true;
+        if(isArray(item.trait.name)) {
+          (<any>item.trait.name).forEach(traitName => {
+            if(AllTraits[traitCat][traitName]) found = true;
+          })
+        } else {
+          if(AllTraits[traitCat][item.trait.name]) found = true;
+        }
       });
 
       if(!found) {

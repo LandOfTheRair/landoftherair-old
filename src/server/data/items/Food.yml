@@ -86,6 +86,7 @@
 
 - name: Tower Spider Egg
   sprite: 72
+  desc: "a broken spider egg from a war torn spider"
   value: 10
   effect:
     name: Nourishment
