@@ -41,6 +41,8 @@ export class Steal extends Skill {
     const target = possTargets[0];
     if(!target) return user.sendClientMessage('You do not see that person.');
 
+    if(target === user) return;
+
     if(target.distFrom(user) > this.range()) return user.sendClientMessage('That target is too far away!');
 
     this.use(user, target);

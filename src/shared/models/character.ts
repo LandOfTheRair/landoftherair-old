@@ -762,10 +762,16 @@ export class Character {
   gainExp(xp: number) {
     if(this.isDead()) return;
 
+    const prevXp = this.exp;
+
     this.exp += xp;
 
     if(this.exp <= 100) {
       this.exp = 100;
+    }
+
+    if(isNaN(this.exp)) {
+      this.exp = prevXp;
     }
 
     if(xp < 0) {
@@ -825,9 +831,11 @@ export class Character {
   _gainSkill(type, skillGained) {
     type = type.toLowerCase();
 
+    const prevVal = this.skills[type];
+
     this.skills[type] += skillGained;
 
-    if(this.skills[type] <= 0 || isNaN(this.skills[type])) this.skills[type] = 0;
+    if(this.skills[type] <= 0 || isNaN(this.skills[type])) this.skills[type] = prevVal;
   }
 
   canGainSkill(type) {

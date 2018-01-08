@@ -37,6 +37,8 @@ export class Throw extends Skill {
     const target = possTargets[0];
     if(!target) return user.sendClientMessage('You do not see that person.');
 
+    if(target === user) return;
+
     if(target.distFrom(user) > this.range(user)) return user.sendClientMessage('That target is too far away!');
 
     const hand = handCheck.toLowerCase();

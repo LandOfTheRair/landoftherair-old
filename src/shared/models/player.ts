@@ -217,8 +217,10 @@ export class Player extends Character {
   gainSkillFromKills(skillGain: number) {
     if(!this.$$flaggedSkills || !this.$$flaggedSkills.length) return;
     const [primary, secondary] = this.$$flaggedSkills;
+    if(!primary) return;
 
     const adjustedSkill = this.$$room.calcAdjustedSkillGain(skillGain);
+    if(isNaN(adjustedSkill) || adjustedSkill <= 0) return;
 
     if(secondary) {
       this.gainSkill(primary, adjustedSkill * 0.75);

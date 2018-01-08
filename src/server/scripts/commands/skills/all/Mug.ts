@@ -50,6 +50,8 @@ export class Mug extends Skill {
     const target = possTargets[0];
     if(!target) return user.sendClientMessage('You do not see that person.');
 
+    if(target === user) return;
+
     this.use(user, target);
   }
 
