@@ -1,0 +1,233 @@
+
+- npcId: Tower Goblin
+  name: goblin
+  hostility: Always
+  sprite: 120
+  alignment: Evil
+  stats: 13
+  skillLevels: 4
+  level: 12
+
+  skillOnKill: 25
+
+  otherStats:
+    perception: 35
+
+  gold:
+    min: 500
+    max: 600
+
+  hp:
+    min: 3550
+    max: 3750
+
+  giveXp:
+    min: 6500
+    max: 7500
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand:
+    - result: Tower Dagger Weak
+      chance: 5
+    - result: Tower Broadsword Weak
+      chance: 10
+    - result: Tower Greatsword Weak
+      chance: 10
+
+  rightHand:
+    - result: none
+      chance: 5
+    - result: Tower Shield Weak
+      chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+- npcId: Tower Goblin Thief
+  name: sneakgoblin
+  hostility: Always
+  baseClass: Thief
+  sprite: 120
+  alignment: Evil
+  stats: 10
+  skillLevels: 3
+  level: 10
+
+  skillOnKill: 25
+
+  otherStats:
+    perception: 55
+
+  gold:
+    min: 800
+    max: 900
+
+  hp:
+    min: 3050
+    max: 3250
+
+  giveXp:
+    min: 6000
+    max: 6500
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand:
+    - result: Tower Dagger Weak
+      chance: 30
+    - result: Tower Longbow Weak
+      chance: 30
+    - result: Tower Dagger Strong
+      chance: 1
+    - result: Tower Longbow Strong
+      chance: 1
+
+  leftHand:
+    - result: none
+      chance: 100
+    - result: Tower Dagger Weak
+      chance: 10
+    - result: Tower Dagger Strong
+      chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  usableSkills:
+    - SetTrap
+    - Steal
+    - Darkness
+
+  sack:
+    - name: Antanian FireMist Thief Trap
+      chance: 10
+    - name: Antanian IceMist Thief Trap
+      chance: 10
+    - name: Antanian Poison Thief Trap
+      chance: 10
+    - name: Antanian MagicMissile Thief Trap
+      chance: 10
+    - name: Antanian Afflict Thief Trap
+      chance: 10
+
+- npcId: Tower Hobgoblin
+  name: hobgoblin
+  hostility: Always
+  baseClass: Warrior
+  sprite: 130
+  alignment: Evil
+  stats: 15
+  skillLevels: 4
+  level: 15
+
+  skillOnKill: 45
+
+  otherStats:
+    perception: 55
+
+  gold:
+    min: 800
+    max: 900
+
+  hp:
+    min: 7550
+    max: 7950
+
+  giveXp:
+    min: 9500
+    max: 10500
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand:
+    - result: Tower Broadsword Strong
+      chance: 10
+    - result: Tower Greatsword Strong
+      chance: 10
+
+  leftHand:
+    - result: none
+      chance: 5
+    - result: Tower Shield Strong
+      chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  spawnMessage: "the indecipherable blabbering of goblins"

@@ -1,0 +1,20 @@
+
+- name: Tower Spear Weak
+  desc: "a sharp spike made of a riyan metal sat atop a wooden pole"
+  baseDamage: 18
+  minDamage: 3
+  maxDamage: 6
+  damageRolls: 2
+  type: Staff
+  value: 650
+  sprite: 160
+
+- name: Tower Spear Strong
+  desc: "a sharp spike made of a riyan metal sat atop a wooden pole"
+  baseDamage: 21
+  minDamage: 6
+  maxDamage: 9
+  damageRolls: 3
+  type: Staff
+  value: 650
+  sprite: 160

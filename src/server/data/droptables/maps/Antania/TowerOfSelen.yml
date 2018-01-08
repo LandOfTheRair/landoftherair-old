@@ -1,0 +1,56 @@
+
+- result: Tower Goblood
+  chance: 1
+  maxChance: 100
+
+- result: Tower Mage Gem
+  chance: 1
+  maxChance: 2500
+
+- result: Tower Healer Gem
+  chance: 1
+  maxChance: 2500
+
+- result: Tower Warrior Gem
+  chance: 1
+  maxChance: 2500
+  
+- result: Tower Thief Gem
+  chance: 1
+  maxChance: 2500
+  
+- result: Tower Mage Earring
+  chance: 1
+  maxChance: 3500
+  
+- result: Tower Healer Earring
+  chance: 1
+  maxChance: 3500
+  
+- result: Tower Warrior Earring
+  chance: 1
+  maxChance: 3500
+  
+- result: Tower Thief Earring
+  chance: 1
+  maxChance: 3500
+
+- result: Tower Offense Boots
+  chance: 1
+  maxChance: 3000
+
+- result: Tower Defense Boots
+  chance: 1
+  maxChance: 3000
+
+- result: Tower Offense Saucer
+  chance: 1
+  maxChance: 500
+
+- result: Tower Defense Saucer
+  chance: 1
+  maxChance: 500
+
+- result: Tower Vitals Saucer
+  chance: 1
+  maxChance: 600

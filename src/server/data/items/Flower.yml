@@ -8,3 +8,8 @@
   sprite: 742
   desc: "a strand of bogweed"
   value: 10
+
+- name: Tower Goblood
+  sprite: 736
+  desc: "a vine of goblood"
+  value: 20

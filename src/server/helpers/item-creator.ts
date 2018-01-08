@@ -3,13 +3,23 @@ import { DB } from '../database';
 import { Item, Quality } from '../../shared/models/item';
 import { GameWorld } from '../rooms/GameWorld';
 
-import { random, sampleSize, sum } from 'lodash';
+import { random, sampleSize, sum, sample, isArray, isNumber } from 'lodash';
 
 const randomStats = ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'con', 'cha', 'luk', 'offense', 'defense', 'armorClass'];
 
 export class ItemCreator {
 
   private rollStatsForItem(potentialItem, room?: GameWorld): Item {
+
+    if(potentialItem.trait) {
+      if(isArray(potentialItem.trait.name)) {
+        potentialItem.trait.name = sample(potentialItem.trait.name);
+      }
+      if(!isNumber(potentialItem.trait.level)) {
+        const { min, max } = potentialItem.trait.level;
+        potentialItem.trait.level = random(min, max);
+      }
+    }
 
     if(potentialItem.randomStats) {
       potentialItem.stats = potentialItem.stats || {};

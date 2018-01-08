@@ -276,8 +276,9 @@ export class CombatHelper {
     const damageLeft = Math.floor(attackerScope.skill + attackerScope.damageRolls);
     const damageMax = random(attackerScope.damageMin, attackerScope.damageMax) + attackerScope.damageBase;
     const damageRight = Math.floor(attackerScope.str + attackerScope.level + attackerScope.dex4);
+    const damageBoost = attacker.getTotalStat('physicalDamageBoost');
 
-    let damage = Math.floor((+dice.roll(`${damageLeft}d${damageRight}`) + damageMax) * attackerScope.multiplier) ;
+    let damage = Math.floor((+dice.roll(`${damageLeft}d${damageRight}`) + damageMax) * attackerScope.multiplier) + damageBoost;
 
     if(isOffhand) {
       damage = Math.floor(damage / offhandDivisor);
@@ -452,6 +453,7 @@ export class CombatHelper {
       }
 
       damage = Math.floor(damage * (1 + (damageBoostPercent / 100)));
+      damage += attacker.getTotalStat('magicalDamageBoost');
     }
 
     // if not healing, check for damage resist
@@ -472,6 +474,12 @@ export class CombatHelper {
 
       if(attacker && attacker !== defender && damage === 0) {
         attacker.sendClientMessage({ message: `Your attack did no visible damage!`, subClass: `combat self blocked`, target: defender.uuid });
+      }
+
+    // if healing, add some boost
+    } else {
+      if(attacker) {
+        damage -= attacker.getTotalStat('healingBoost');
       }
     }
 

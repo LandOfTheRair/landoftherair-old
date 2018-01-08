@@ -1,0 +1,75 @@
+
+
+- npcId: Tower Warg
+  name: warg
+  hostility: Always
+  sprite: 405
+  alignment: Evil
+  stats: 13
+  skillLevels: 4
+  level: 11
+
+  skillOnKill:  20
+
+  otherStats:
+    perception: 15
+
+  gold:
+    min: 150
+    max: 300
+
+  hp:
+    min: 1950
+    max: 2350
+
+  giveXp:
+    min: 2000
+    max: 3000
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor: Tower Warg Leather
+    Hands: Medium Claws
+
+  usableSkills:
+    - PoisonBiteMedium
+
+  tansFor: Tower Warg Leather
+
+
+- npcId: Tower Warspider
+  name: warspider
+  hostility: Always
+  sprite: 840
+  alignment: Evil
+  stats: 9
+  skillLevels: 4
+  level: 12
+
+  skillOnKill:  20
+
+  otherStats:
+    perception: 15
+
+  gold:
+    min: 250
+    max: 400
+
+  hp:
+    min: 2250
+    max: 2550
+
+  giveXp:
+    min: 2300
+    max: 3300
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Hands: Medium Claws
+
+  drops:
+    - result: Tower Spider Egg
+      chance: 20
+
+  usableSkills:
+    - ChillBiteMedium

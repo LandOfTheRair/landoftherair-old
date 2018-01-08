@@ -1,0 +1,257 @@
+
+- npcId: Tower Orc
+  name: orc
+  hostility: Always
+  sprite: 110
+  alignment: Evil
+  baseClass: Mage
+  stats: 13
+  skillLevels: 4
+  level: 13
+
+  skillOnKill: 30
+
+  otherStats:
+    perception: 45
+
+  gold:
+    min: 550
+    max: 700
+
+  hp:
+    min: 3950
+    max: 4350
+
+  giveXp:
+    min: 7000
+    max: 8000
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor:
+      - result: Tower Trash Breastplate
+        chance: 20
+      - result: Tower Breastplate
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand:
+    - result: Tower Spear Weak
+      chance: 10
+    - result: Tower Halberd Weak
+      chance: 3
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+
+- npcId: Tower Orc Healer
+  name: orc shaman
+  hostility: Always
+  baseClass: Healer
+  sprite: 110
+  alignment: Evil
+  stats: 6
+  skillLevels: 4
+  level: 13
+
+  skillOnKill: 30
+
+  otherStats:
+    perception: 45
+
+  gold:
+    min: 550
+    max: 700
+
+  hp:
+    min: 3950
+    max: 4350
+
+  giveXp:
+    min: 7000
+    max: 8000
+
+  usableSkills:
+    - Afflict
+    - Poison
+    - Disease
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor: 
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand: Tower Hammer Weak
+
+  leftHand:
+    - result: none
+      chance: 5
+    - result: Tower Shield Weak
+      chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+- npcId: Tower Orc Mage
+  name: orc caster
+  hostility: Always
+  sprite: 110
+  alignment: Evil
+  stats: 6
+  skillLevels: 4
+  level: 13
+
+  skillOnKill: 30
+
+  otherStats:
+    perception: 45
+
+  gold:
+    min: 550
+    max: 700
+
+  hp:
+    min: 3950
+    max: 4350
+
+  giveXp:
+    min: 7000
+    max: 8000
+
+  usableSkills:
+    - MagicMissile
+    - Push
+
+  gear:
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand: Tower Spear Weak
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+
+- npcId: Tower Orc Warlord
+  name: orc warlord
+  hostility: Always
+  sprite: 110
+  alignment: Evil
+  stats: 14
+  skillLevels: 4
+  level: 15
+
+  skillOnKill: 35
+
+  otherStats:
+    perception: 55
+
+  gold:
+    min: 1550
+    max: 1700
+
+  hp:
+    min: 15000
+    max: 20000
+
+  giveXp:
+    min: 15000
+    max: 18000
+
+  gear:
+    Armor:
+      - result: Tower Trash Breastplate
+        chance: 20
+      - result: Tower Breastplate
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 50
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand:
+    - Tower Spear Strong
+    - Tower Hammer Strong
+    - Tower Longbow Strong
+    - Tower Dagger Strong
+    - Tower Broadsword Strong
+    - Tower Halberd Strong
+
+  leftHand: Tower Shield Strong
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  spawnMessage: "the rallying warcry of the orcs"

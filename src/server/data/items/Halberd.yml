@@ -26,6 +26,40 @@
   value: 145
   sprite: 230
 
+- name: Tower Halberd Weak
+  desc: "a riyan halberd"
+  stats:
+    armorClass: 2
+    weaponArmorClass: 2
+    offense: 3
+  baseDamage: 15
+  minDamage: 2
+  maxDamage: 15
+  damageRolls: 4
+  type: Polearm
+  value: 1451
+  sprite: 164
+
+  requirements: 
+    level: 12
+
+- name: Tower Halberd Strong
+  desc: "a riyan halberd"
+  stats:
+    armorClass: 2
+    weaponArmorClass: 2
+    offense: 3
+  baseDamage: 15
+  minDamage: 2
+  maxDamage: 15
+  damageRolls: 5
+  type: Polearm
+  value: 1451
+  sprite: 164
+
+  requirements: 
+    level: 12
+
 - name: Battlemage Halberd
   desc: "a halberd symbolizing the yin and yang of the Magus"
   baseDamage: 100

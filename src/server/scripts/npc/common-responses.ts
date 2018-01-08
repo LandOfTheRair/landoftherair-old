@@ -642,6 +642,8 @@ export const HPDocResponses = (npc: NPC) => {
     Undecided:  [100, 200]
   };
 
+  const levelTiers = [0, 13];
+
   const hpNormalizers = [100, 200];
 
   const hpCosts = [
@@ -661,6 +663,9 @@ export const HPDocResponses = (npc: NPC) => {
     .set('syntax', ['teach'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Closer move.';
+
+      const levelTier = levelTiers[npc.hpTier];
+      if(player.level < levelTier) return 'Not experience enough for teach!';
 
       const playerBaseHp = player.getBaseStat('hp');
       const maxHpForTier = hpTiers[player.baseClass][npc.hpTier];

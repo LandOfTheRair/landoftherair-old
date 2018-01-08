@@ -37,3 +37,37 @@
 
   requirements:
     level: 5
+
+- name: Tower Greatsword Weak
+  stats:
+    offense: 6
+    accuracy: -9
+  desc: "a large riyan greatsword"
+  baseDamage: 25
+  minDamage: 1
+  maxDamage: 15
+  damageRolls: 4
+  type: Twohanded
+  value: 1560
+  sprite: 163
+  binds: true
+
+  requirements:
+    level: 12
+
+- name: Tower Greatsword Strong
+  stats:
+    offense: 6
+    accuracy: -9
+  desc: "a large riyan greatsword"
+  baseDamage: 25
+  minDamage: 1
+  maxDamage: 15
+  damageRolls: 5
+  type: Twohanded
+  value: 1560
+  sprite: 163
+  binds: true
+
+  requirements:
+    level: 12

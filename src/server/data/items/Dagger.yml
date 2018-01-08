@@ -57,3 +57,39 @@
 
   requirements:
     level: 5
+
+- name: Tower Dagger Weak
+  desc: "a small dagger made of a riyan metal"
+  stats:
+    accuracy: 15
+  isSackable: true
+  baseDamage: 10
+  minDamage: 3
+  maxDamage: 6
+  damageRolls: 3
+  returnsOnThrow: true
+  offhand: true
+  type: Dagger
+  value: 1500
+  sprite: 163
+
+  requirements:
+    level: 12
+
+- name: Tower Dagger Strong
+  desc: "a small dagger made of a riyan metal"
+  stats:
+    accuracy: 15
+  isSackable: true
+  baseDamage: 10
+  minDamage: 3
+  maxDamage: 6
+  damageRolls: 4
+  returnsOnThrow: true
+  offhand: true
+  type: Dagger
+  value: 1500
+  sprite: 163
+
+  requirements:
+    level: 12

@@ -1,6 +1,7 @@
 
 export const HideReductionPercents = {
   Axe: 3,
+  Broadsword: 5,
   Crossbow: 3,
   Dagger: 1,
   Greataxe: 10,
@@ -15,5 +16,6 @@ export const HideReductionPercents = {
   Shortbow: 4,
   Shortsword: 1,
   Staff: 5,
+  Spear: 5,
   Wand: 1
 };

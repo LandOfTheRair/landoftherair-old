@@ -41,3 +41,20 @@
   value: 845
   sprite: 9
   binds: true
+
+- name: Tower Trash Tunic
+  stats:
+    armorClass: 7
+  desc: "a leather tunic"
+  value: 200
+  sprite: 206
+
+- name: Tower Bone Tunic
+  stats:
+    armorClass: 12
+    defense: 2
+  requirements:
+    level: 10
+  desc: "a plain tunic reinforced with shards of bone"
+  value: 350
+  sprite: 10

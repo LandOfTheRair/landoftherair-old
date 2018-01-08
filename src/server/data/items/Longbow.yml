@@ -37,3 +37,35 @@
 
   requirements:
     level: 9
+
+- name: Tower Longbow Weak
+  stats:
+    accuracy: 3
+  desc: "a longbow made of a riyan wood"
+  baseDamage: 24
+  minDamage: 3
+  maxDamage: 12
+  damageRolls: 4
+  type: Ranged
+  secondaryType: Twohanded
+  value: 1110
+  sprite: 167
+
+  requirements:
+    level: 12
+
+- name: Tower Longbow Strong
+  stats:
+    accuracy: 3
+  desc: "a longbow made of a riyan wood"
+  baseDamage: 24
+  minDamage: 3
+  maxDamage: 12
+  damageRolls: 5
+  type: Ranged
+  secondaryType: Twohanded
+  value: 1110
+  sprite: 167
+
+  requirements:
+    level: 12

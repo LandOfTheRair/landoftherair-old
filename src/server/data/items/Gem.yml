@@ -102,3 +102,39 @@
       name: MagicMissile
       potency: 5
       chance: 10
+
+- name: Tower Thief Gem
+  desc: "a slight black pearl bathed in shadows"
+  value: 6000
+  sprite: 315
+  stats:
+    stealth: 2
+    physicalDamageBoost: 3
+    perception: -1
+
+- name: Tower Warrior Gem
+  desc: "a crimson gem forged by the intense pressure of combat"
+  value: 6000
+  sprite: 245
+  stats:
+    offense: 1
+    defense: 1
+    armorClass: -1
+
+- name: Tower Healer Gem
+  desc: "an emerald gem bathed in a faint amber glow"
+  value: 6000
+  sprite: 243
+  stats:
+    healingBoost: 5
+    defense: 1
+    offense: -1
+
+- name: Tower Mage Gem
+  desc: "a violet gem pulsating with magical energy"
+  value: 6000
+  sprite: 213
+  stats:
+    magicalDamageBoost: 3
+    defense: 1
+    offense: -1

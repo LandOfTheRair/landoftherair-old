@@ -92,3 +92,24 @@
     iceResist: 100
   desc: "a robe made of insulating material"
   sprite: 211
+
+- name: Tower Prot Robe
+  randomStats:
+    offense:
+      min: 0
+      max: 1
+    defense:
+      min: 0
+      max: 1
+  stats:
+    fireResist: 50
+    iceResist: 50
+    energyResist: 50
+    necroticResist: 50
+  desc: "a insulatory robe made of decaying skins of several animals"
+  value: 1700
+  sprite: 927
+  binds: true
+
+  requirements:
+    level: 12

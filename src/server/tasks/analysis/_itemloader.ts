@@ -7,9 +7,9 @@ import { DB } from '../../database';
 export class ItemLoader {
 
   static WEAPON_TYPES: string[] = [
-    'Axe', 'Claws', 'Club', 'Crossbow', 'Dagger', 'Gloves', 'Greataxe', 'Greatmace', 'Greatsword',
+    'Axe', 'Broadsword', 'Claws', 'Club', 'Crossbow', 'Dagger', 'Gloves', 'Greataxe', 'Greatmace', 'Greatsword',
     'Halberd', 'Hammer', 'Longbow', 'Longsword', 'Mace', 'Shield', 'Shortbow', 'Shortsword',
-    'Staff', 'Wand'
+    'Spear', 'Staff', 'Wand'
   ];
 
   static ARMOR_TYPES: string[] = [

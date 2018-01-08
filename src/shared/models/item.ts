@@ -14,8 +14,8 @@ export const ValidItemTypes = [
 ];
 
 export const WeaponClasses = [
-  'Axe', 'Crossbow', 'Dagger', 'Club', 'Crossbow', 'Greataxe', 'Greatmace', 'Greatsword', 'Halberd', 'Longbow',
-  'Longsword', 'Mace', 'Shield', 'Shortbow', 'Shortsword', 'Staff', 'Wand'
+  'Axe', 'Broadsword', 'Crossbow', 'Dagger', 'Club', 'Crossbow', 'Greataxe', 'Greatmace', 'Greatsword', 'Halberd', 'Longbow',
+  'Longsword', 'Mace', 'Shield', 'Shortbow', 'Shortsword', 'Spear', 'Staff', 'Wand'
 ];
 
 export const ShieldClasses = [

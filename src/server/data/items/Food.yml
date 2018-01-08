@@ -83,3 +83,15 @@
       str: 1
       wil: 1
     duration: 42200
+
+- name: Tower Spider Egg
+  sprite: 72
+  value: 10
+  effect:
+    name: Nourishment
+    tooltip: "+1 STR, +1 DEX, +1 AGI"
+    stats:
+      str: 1
+      dex: 1
+      agi: 1
+    duration: 3600

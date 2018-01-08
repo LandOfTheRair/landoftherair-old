@@ -58,7 +58,20 @@
     iceResist: 40
 
   requirements:
-    level: 5
+    level: 9
 
   value: 700
   sprite: 352
+
+- name: Tower Warg Leather
+  desc: "the hardened leather of a combat warg"
+  stats:
+    armorClass: 12
+    fireResist: 80
+    iceResist: 80
+
+  requirements:
+    level: 11
+
+  value: 1600
+  sprite: 217

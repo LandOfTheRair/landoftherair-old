@@ -8,7 +8,7 @@ import { Character } from '../../../../../shared/models/character';
 import { Poison as CastEffect } from '../../../../effects/Poison';
 import { CombatHelper } from '../../../../helpers/combat-helper';
 
-export class PoisonBiteMedium extends Skill {
+export class ChillBiteMedium extends Skill {
 
   name = '';
   execute() {}
@@ -18,11 +18,11 @@ export class PoisonBiteMedium extends Skill {
     const damage = +dice.roll(`4d${user.getTotalStat('str')}`);
     CombatHelper.dealDamage(user, target, {
       damage,
-      damageClass: 'physical',
+      damageClass: 'ice',
       attackerDamageMessage: '',
-      defenderDamageMessage: `${user.name} bit you!`
+      defenderDamageMessage: `${user.name} sunk cold fangs into you!`
     });
-    const effect = new CastEffect({ potency: 10, duration: 10 });
+    const effect = new CastEffect({ potency: 4, duration: 10 });
     effect.cast(user, target, this);
   }
 

@@ -122,6 +122,10 @@ export class Stats {
   stealth? = 0;
   perception? = 0;
 
+  physicalDamageBoost? = 0;
+  magicalDamageBoost? = 0;
+  healingBoost? = 0;
+
   magicalResist? = 0;
   physicalResist? = 0;
   necroticResist? = 0;
@@ -136,6 +140,7 @@ export type StatName =
 | 'move' | 'hpregen' | 'mpregen' | 'hp' | 'mp'
 | 'armorClass' | 'accuracy' | 'offense' | 'defense' | 'weaponArmorClass' | 'weaponDamageRolls'
 | 'stealth' | 'perception'
+| 'magicalDamageBoost' | 'physicalDamageBoost' | 'healingBoost'
 | 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist';
 
 export const MaxSizes = {

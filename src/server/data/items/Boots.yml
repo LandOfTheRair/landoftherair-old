@@ -39,6 +39,44 @@
   requirements:
     level: 5
 
+- name: Tower Offense Boots
+  stats:
+    armorClass: 2
+  randomStats: 
+    offense:
+      min: 3
+      max: 5
+  minDamage: 1
+  maxDamage: 6
+  baseDamage: 15
+  damageRolls: 2
+  sprite: 369
+  desc: "a pair of rugged combat boots"
+  value: 980
+  binds: true
+
+  requirements:
+    level: 12
+
+- name: Tower Defense Boots
+  stats:
+    armorClass: 4
+  randomStats: 
+    defense:
+      min: 3
+      max: 5
+  minDamage: 1
+  maxDamage: 6
+  baseDamage: 15
+  damageRolls: 1
+  sprite: 372
+  desc: "a pair of spongy, springy boots that allows you to move more quickly"
+  value: 980
+  binds: true
+
+  requirements:
+    level: 12
+
 - name: Antanian Swimming Boots
   stats:
     waterResist: 500

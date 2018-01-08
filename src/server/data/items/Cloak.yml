@@ -37,3 +37,15 @@
   value: 679
   sprite: 16
   binds: true
+
+- name: Tower Trash Cloak
+  stats:
+    armorClass: 5
+    defense: 1
+    offense: 1
+  desc: "a woolen cloak"
+  value: 10
+  sprite: 211
+
+  requirements:
+    level: 10

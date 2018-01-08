@@ -15,6 +15,24 @@
   desc: "a simple iron breastplate engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   value: 500
 
+- name: Tower Trash Breastplate
+  stats:
+    armorClass: 9
+  sprite: 148
+  desc: "an iron breastplate with strange marks etched into it"
+  requirements:
+    level: 10
+  value: 2500
+
+- name: Tower Breastplate
+  stats:
+    armorClass: 15
+  sprite: 148
+  desc: "a pure white breastplate with strange marks etched into it"
+  requirements:
+    level: 12
+  value: 2500
+
 - name: Battlemage Armor
   sprite: 133
   desc: "a breastplate symbolizing the yin and yang of the Magus"
