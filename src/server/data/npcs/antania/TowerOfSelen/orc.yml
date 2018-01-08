@@ -7,7 +7,7 @@
   baseClass: Mage
   stats: 13
   skillLevels: 4
-  level: 13
+  level: 14
 
   skillOnKill: 30
 
@@ -68,7 +68,7 @@
   alignment: Evil
   stats: 6
   skillLevels: 4
-  level: 13
+  level: 14
 
   skillOnKill: 30
 
@@ -137,7 +137,7 @@
   alignment: Evil
   stats: 6
   skillLevels: 4
-  level: 13
+  level: 14
 
   skillOnKill: 30
 
