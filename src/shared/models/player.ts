@@ -659,16 +659,16 @@ export class Player extends Character {
 
   private canDailyActivate(checkTimestamp: number): boolean {
     let theoreticalResetTime = DateTime.fromObject({ zone: 'utc', hour: 12 });
-    if(+theoreticalResetTime < DateTime.fromObject({ zone: 'utc' })) {
+    if(+theoreticalResetTime > DateTime.fromObject({ zone: 'utc' })) {
       theoreticalResetTime = theoreticalResetTime.plus({ days: 1 });
     }
 
-    return checkTimestamp > +theoreticalResetTime;
+    return checkTimestamp < +theoreticalResetTime;
   }
 
   public canBuyDailyItem(item: Item): boolean {
     if(!item.daily) throw new Error('Attempting to buy item as a daily item ' + JSON.stringify(item));
-
+    
     if(!this.daily.item[item.uuid]) return true;
     if(this.canDailyActivate(this.daily.item[item.uuid])) return true;
 
