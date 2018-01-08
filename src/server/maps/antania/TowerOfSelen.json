@@ -4032,6 +4032,54 @@
                  "width":64,
                  "x":1280,
                  "y":2944
+                }, 
+                {
+                 "gid":1779,
+                 "height":64,
+                 "id":1966,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"TowerOfSelen",
+                     "teleportX":20,
+                     "teleportY":78
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsDown",
+                 "visible":true,
+                 "width":64,
+                 "x":1280,
+                 "y":3072
+                }, 
+                {
+                 "gid":1777,
+                 "height":64,
+                 "id":1967,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"TowerOfSelen",
+                     "teleportX":20,
+                     "teleportY":47
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsUp",
+                 "visible":true,
+                 "width":64,
+                 "x":1280,
+                 "y":5056
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -4248,54 +4296,6 @@
                  "width":64,
                  "x":576,
                  "y":2624
-                }, 
-                {
-                 "gid":1779,
-                 "height":64,
-                 "id":1960,
-                 "name":"",
-                 "properties":
-                    {
-                     "teleportMap":"TowerOfSelen",
-                     "teleportX":20,
-                     "teleportY":78
-                    },
-                 "propertytypes":
-                    {
-                     "teleportMap":"string",
-                     "teleportX":"int",
-                     "teleportY":"int"
-                    },
-                 "rotation":0,
-                 "type":"StairsDown",
-                 "visible":true,
-                 "width":64,
-                 "x":1280,
-                 "y":3072
-                }, 
-                {
-                 "gid":1777,
-                 "height":64,
-                 "id":1961,
-                 "name":"",
-                 "properties":
-                    {
-                     "teleportMap":"TowerOfSelen",
-                     "teleportX":20,
-                     "teleportY":47
-                    },
-                 "propertytypes":
-                    {
-                     "teleportMap":"string",
-                     "teleportX":"int",
-                     "teleportY":"int"
-                    },
-                 "rotation":0,
-                 "type":"StairsUp",
-                 "visible":true,
-                 "width":64,
-                 "x":1280,
-                 "y":5056
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -4423,7 +4423,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1966,
+ "nextobjectid":1968,
  "orientation":"orthogonal",
  "properties":
     {
