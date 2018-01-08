@@ -56,6 +56,9 @@ export class GameState {
   groundItems: any = {};
 
   @nonenumerable
+  simpleGroundItems: any = {};
+
+  @nonenumerable
   fov: Mrpas;
 
   @nonenumerable
@@ -511,12 +514,19 @@ export class GameState {
     this.groundItems[xKey][yKey] = this.groundItems[xKey][yKey] || {};
     this.groundItems[xKey][yKey][item.itemClass] = this.groundItems[xKey][yKey][item.itemClass] || [];
 
+    this.simpleGroundItems[xKey] = this.simpleGroundItems[xKey] || {};
+    this.simpleGroundItems[xKey][yKey] = this.simpleGroundItems[xKey][yKey] || {};
+    this.simpleGroundItems[xKey][yKey][item.itemClass] = this.simpleGroundItems[xKey][yKey][item.itemClass] || [];
+
     const typeList = this.groundItems[xKey][yKey][item.itemClass];
+    const simpleTypeList = this.simpleGroundItems[xKey][yKey][item.itemClass];
 
     if(this.isItemValueStackable(item) && typeList[0]) {
       typeList[0].value += item.value;
+      simpleTypeList[0].value += item.value;
     } else {
       typeList.push(item);
+      simpleTypeList.push(this.simplifyItem(item));
     }
 
     this.updateGroundItems();
@@ -535,6 +545,12 @@ export class GameState {
     if(size(this.groundItems[xKey][yKey]) === 0) delete this.groundItems[xKey][yKey];
     if(size(this.groundItems[xKey]) === 0) delete this.groundItems[xKey];
 
+    this.simpleGroundItems[xKey][yKey][item.itemClass] = reject(this.simpleGroundItems[xKey][yKey][item.itemClass], i => i.uuid === item.uuid);
+
+    if(size(this.simpleGroundItems[xKey][yKey][item.itemClass]) === 0) delete this.simpleGroundItems[xKey][yKey][item.itemClass];
+    if(size(this.simpleGroundItems[xKey][yKey]) === 0) delete this.simpleGroundItems[xKey][yKey];
+    if(size(this.simpleGroundItems[xKey]) === 0) delete this.simpleGroundItems[xKey];
+
     delete item.x;
     delete item.y;
 
@@ -544,18 +560,30 @@ export class GameState {
   setGround(ground: any): void {
     this.groundItems = ground;
     Object.keys(this.groundItems).forEach(x => {
+
+      this.simpleGroundItems[x] = this.simpleGroundItems[x] || {};
+
       Object.keys(this.groundItems[x]).forEach(y => {
+
+        this.simpleGroundItems[x][y] = this.simpleGroundItems[x][y] || {};
+
         Object.keys(this.groundItems[x][y]).forEach(itemClass => {
           this.groundItems[x][y][itemClass] = this.groundItems[x][y][itemClass].map(i => new Item(i));
+          this.simpleGroundItems[x][y][itemClass] = this.groundItems[x][y][itemClass].map(i => this.simplifyItem(i));
         });
       });
     });
+
     this.updateGroundItems();
   }
 
   updateGroundItems(): void {
     if(this.isDisposing) return;
-    this.deepstreamRecords.groundItems.set(this.groundItems);
+    this.deepstreamRecords.groundItems.set(this.simpleGroundItems);
+  }
+
+  private simplifyItem(item: Item): any {
+    return pick(item, ['uuid', 'desc', 'sprite', 'itemClass', 'owner', 'quality', 'value', 'ounces']);
   }
 
   serializableGroundItems() {
