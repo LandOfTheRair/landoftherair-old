@@ -19,8 +19,8 @@
     max: 300
 
   hp:
-    min: 1950
-    max: 2350
+    min: 4950
+    max: 6350
 
   giveXp:
     min: 2000
@@ -56,8 +56,8 @@
     max: 400
 
   hp:
-    min: 2250
-    max: 2550
+    min: 6250
+    max: 6550
 
   giveXp:
     min: 2300

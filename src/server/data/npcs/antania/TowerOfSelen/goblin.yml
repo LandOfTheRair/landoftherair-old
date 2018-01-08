@@ -18,8 +18,8 @@
     max: 600
 
   hp:
-    min: 3550
-    max: 3750
+    min: 6550
+    max: 6750
 
   giveXp:
     min: 6500
@@ -89,8 +89,8 @@
     max: 900
 
   hp:
-    min: 3050
-    max: 3250
+    min: 9050
+    max: 9250
 
   giveXp:
     min: 6000
@@ -181,8 +181,8 @@
     max: 900
 
   hp:
-    min: 7550
-    max: 7950
+    min: 25550
+    max: 25950
 
   giveXp:
     min: 9500
