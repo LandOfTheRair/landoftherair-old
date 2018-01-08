@@ -40,7 +40,7 @@
   value: 1451
   sprite: 164
 
-  requirements: 
+  requirements:
     level: 12
 
 - name: Tower Halberd Strong
@@ -57,29 +57,5 @@
   value: 1451
   sprite: 164
 
-  requirements: 
-    level: 12
-
-- name: Battlemage Halberd
-  desc: "a halberd symbolizing the yin and yang of the Magus"
-  baseDamage: 100
-  minDamage: 1
-  maxDamage: 2
-  damageRolls: 2
-  value: 10000
-  sprite: 135
-  type: Polearm
-  stats:
-    agi: 3
-    armorClass: 2
-    offense: 3
-    accuracy: 10
-  randomStats:
-    str:
-      min: 1
-      max: 3
-
   requirements:
-    level: 3
-    profession:
-      - "Mage"
+    level: 12

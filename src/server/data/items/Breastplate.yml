@@ -32,18 +32,3 @@
   requirements:
     level: 12
   value: 2500
-
-- name: Battlemage Armor
-  sprite: 133
-  desc: "a breastplate symbolizing the yin and yang of the Magus"
-  value: 10000
-  stats:
-    str: 10
-    int: 10
-    hpregen: 5
-    armorClass: 10
-    defense: 2
-  requirements:
-    level: 3
-    class:
-      - "Mage"

@@ -18,7 +18,7 @@
     name:
       - DarkerShadows
       - ShadowSheath
-    level: 
+    level:
       min: 1
       max: 3
   sprite: 900
@@ -28,6 +28,8 @@
 
   requirements:
     level: 13
+    class:
+      - "Thief"
 
 - name: Tower Warrior Earring
   stats:
@@ -36,7 +38,7 @@
     name:
       - ForcefulStrike
       - Swashbuckler
-    level: 
+    level:
       min: 1
       max: 3
   sprite: 900
@@ -46,6 +48,8 @@
 
   requirements:
     level: 13
+    class:
+      - "Warrior"
 
 - name: Tower Mage Earring
   stats:
@@ -54,7 +58,7 @@
     name:
       - ForgedFire
       - FrostedTouch
-    level: 
+    level:
       min: 1
       max: 3
   sprite: 900
@@ -64,6 +68,8 @@
 
   requirements:
     level: 13
+    class:
+      - "Mage"
 
 - name: Tower Healer Earring
   stats:
@@ -72,7 +78,7 @@
     name:
       - HealingFocus
       - NecroticFocus
-    level: 
+    level:
       min: 1
       max: 3
   sprite: 900
@@ -82,6 +88,8 @@
 
   requirements:
     level: 13
+    class:
+      - "Healer"
 
 - name: Enemy DarkVision Earring
   effect:
