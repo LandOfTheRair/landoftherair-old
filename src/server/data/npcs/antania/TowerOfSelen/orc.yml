@@ -2,7 +2,7 @@
 - npcId: Tower Orc
   name: orc
   hostility: Always
-  sprite: 110
+  sprite: 70
   alignment: Evil
   baseClass: Mage
   stats: 13
@@ -64,7 +64,7 @@
   name: orc shaman
   hostility: Always
   baseClass: Healer
-  sprite: 110
+  sprite: 70
   alignment: Evil
   stats: 6
   skillLevels: 4
@@ -133,7 +133,7 @@
 - npcId: Tower Orc Mage
   name: orc caster
   hostility: Always
-  sprite: 110
+  sprite: 70
   alignment: Evil
   stats: 6
   skillLevels: 4
@@ -192,7 +192,7 @@
 - npcId: Tower Orc Warlord
   name: orc warlord
   hostility: Always
-  sprite: 110
+  sprite: 70
   alignment: Evil
   stats: 14
   skillLevels: 4

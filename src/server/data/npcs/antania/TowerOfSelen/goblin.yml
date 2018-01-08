@@ -2,7 +2,7 @@
 - npcId: Tower Goblin
   name: goblin
   hostility: Always
-  sprite: 120
+  sprite: 80
   alignment: Evil
   stats: 13
   skillLevels: 4
@@ -73,7 +73,7 @@
   name: sneakgoblin
   hostility: Always
   baseClass: Thief
-  sprite: 120
+  sprite: 80
   alignment: Evil
   stats: 10
   skillLevels: 3
@@ -165,7 +165,7 @@
   name: hobgoblin
   hostility: Always
   baseClass: Warrior
-  sprite: 130
+  sprite: 90
   alignment: Evil
   stats: 15
   skillLevels: 4
