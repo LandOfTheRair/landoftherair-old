@@ -33,7 +33,7 @@ export class Push extends SpellEffect {
 
     if(random(0, 100) < successChance) {
       if(!predetermined) caster.sendClientMessage(`${target.name} resisted your push!`);
-      return
+      return;
     }
 
     target.sendClientMessageToRadius(`${target.name} was knocked down!`, 5);
