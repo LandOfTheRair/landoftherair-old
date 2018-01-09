@@ -171,19 +171,19 @@
   value: 200
 
 - name: DarkVision Potion
-  desc: "a small bottle covered with glow-in-the-dark eyes"
+  desc: "a small dark bottle covered with glow-in-the-dark eyes"
   extendedDesc: "a potion of DarkVision"
-  sprite: 254
+  sprite: 957
   effect:
     name: DarkVision
     duration: 1200
   value: 200
 
 - name: DarkVision Potion (10oz)
-  desc: "a small bottle covered with glow-in-the-dark eyes"
+  desc: "a small dark bottle covered with glow-in-the-dark eyes"
   extendedDesc: "a potion of DarkVision"
   ounces: 10
-  sprite: 254
+  sprite: 957
   effect:
     name: DarkVision
     duration: 1200
