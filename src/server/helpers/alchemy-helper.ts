@@ -1,5 +1,5 @@
 
-import { compact } from 'lodash';
+import { compact, get } from 'lodash';
 
 import { SkillClassNames } from '../../shared/models/character';
 import { Player } from '../../shared/models/player';
@@ -23,6 +23,11 @@ export class AlchemyHelper {
     if(recipeMatch) {
       const { item, skillGained, maxSkillForGains, xpGained } = recipeMatch;
       returnedItem = await player.$$room.itemCreator.getItemByName(item, player.$$room);
+
+      const baseEffectValue = get(returnedItem, 'effect.duration');
+      if(baseEffectValue && baseEffectValue > 0 && playerSkill > 0) {
+        returnedItem.effect.duration += Math.floor(baseEffectValue * 0.1 * playerSkill);
+      }
 
       player.gainExp(xpGained);
 
