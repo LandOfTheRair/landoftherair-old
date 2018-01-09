@@ -71,7 +71,7 @@
   offhand: true
   type: Dagger
   value: 1500
-  sprite: 163
+  sprite: 162
 
   requirements:
     level: 12
@@ -89,7 +89,7 @@
   offhand: true
   type: Dagger
   value: 1500
-  sprite: 163
+  sprite: 162
 
   requirements:
     level: 12

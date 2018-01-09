@@ -3,7 +3,7 @@
 - npcId: Tower Warg
   name: warg
   hostility: Always
-  sprite: 365
+  sprite: 405
   alignment: Evil
   stats: 13
   skillLevels: 4
