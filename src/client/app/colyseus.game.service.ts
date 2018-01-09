@@ -134,7 +134,7 @@ export class ColyseusGameService {
         this.clientGameState.mapName = state.mapName;
         this.clientGameState.grabOldUpdates(state.mapData);
         this.initDeepstream(state.mapName, state.createdId);
-        this.clientGameState.setMapNPCs(this.deepstream.allNPCsHash);
+        this.clientGameState.setMapNPCs(this.deepstream.allNPCsHash || {});
 
         this.changingMap = false;
       });
