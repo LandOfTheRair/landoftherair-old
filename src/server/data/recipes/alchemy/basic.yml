@@ -60,3 +60,12 @@
     - Rylt Blueflower
     - Yzalt Bogweed
     - Antanian Pint of Water
+
+- item: DarkVision Potion (10oz)
+  skillGained: 10
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Tower Goblood
+    - Antanian Pint of Water

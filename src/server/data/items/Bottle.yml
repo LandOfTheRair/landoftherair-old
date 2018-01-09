@@ -170,6 +170,15 @@
     duration: 600
   value: 200
 
+- name: DarkVision Potion
+  desc: "a small bottle covered with glow-in-the-dark eyes"
+  extendedDesc: "a potion of DarkVision"
+  sprite: 254
+  effect:
+    name: DarkVision
+    duration: 1200
+  value: 200
+
 - name: Weak BarNecro Potion
   desc: "a small white bottle. It smells putrid"
   extendedDesc: "a potion of BarNecro"
