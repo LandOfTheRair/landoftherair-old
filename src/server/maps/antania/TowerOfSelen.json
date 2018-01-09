@@ -586,46 +586,6 @@
                  "width":64,
                  "x":1280,
                  "y":5888
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2187,
-                 "name":"Hobgoblin Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/goblin"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2816,
-                 "y":1728
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2188,
-                 "name":"Hobgoblin Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/goblin"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4480,
-                 "y":512
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5092,166 +5052,6 @@
                  "width":64,
                  "x":5568,
                  "y":768
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2176,
-                 "name":"War Animals Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/war-animals"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5824,
-                 "y":3008
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2177,
-                 "name":"War Animals Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/war-animals"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6208,
-                 "y":3008
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2178,
-                 "name":"War Animals Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/war-animals"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6464,
-                 "y":5504
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2179,
-                 "name":"War Animals Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/war-animals"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5568,
-                 "y":4608
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2180,
-                 "name":"War Animals Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/war-animals"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6464,
-                 "y":4608
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2181,
-                 "name":"War Animals Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/war-animals"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5568,
-                 "y":5504
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2219,
-                 "name":"War Animals Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/war-animals"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1216,
-                 "y":1152
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2220,
-                 "name":"War Animals Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/war-animals"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":512,
-                 "y":576
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -6438,6 +6238,206 @@
                  "width":64,
                  "x":2048,
                  "y":1728
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2224,
+                 "name":"War Animals Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/war-animals"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1216,
+                 "y":1152
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2225,
+                 "name":"War Animals Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/war-animals"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":512,
+                 "y":576
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2228,
+                 "name":"War Animals Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/war-animals"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6208,
+                 "y":3008
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2229,
+                 "name":"War Animals Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/war-animals"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5824,
+                 "y":3008
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2230,
+                 "name":"War Animals Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/war-animals"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6464,
+                 "y":5504
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2231,
+                 "name":"War Animals Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/war-animals"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5568,
+                 "y":4608
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2232,
+                 "name":"War Animals Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/war-animals"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5568,
+                 "y":5504
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2233,
+                 "name":"War Animals Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/war-animals"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6464,
+                 "y":4608
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2234,
+                 "name":"Hobgoblin Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/goblin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4480,
+                 "y":512
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2235,
+                 "name":"Hobgoblin Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/goblin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2816,
+                 "y":1728
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -6475,7 +6475,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2224,
+ "nextobjectid":2236,
  "orientation":"orthogonal",
  "properties":
     {
