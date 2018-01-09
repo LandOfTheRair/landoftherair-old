@@ -564,30 +564,6 @@
                  "y":512
                 }, 
                 {
-                 "gid":1713,
-                 "height":64,
-                 "id":2027,
-                 "name":"Portal",
-                 "properties":
-                    {
-                     "teleportMap":"Yzalt",
-                     "teleportX":60,
-                     "teleportY":3
-                    },
-                 "propertytypes":
-                    {
-                     "teleportMap":"string",
-                     "teleportX":"int",
-                     "teleportY":"int"
-                    },
-                 "rotation":0,
-                 "type":"Teleport",
-                 "visible":true,
-                 "width":64,
-                 "x":1280,
-                 "y":5888
-                }, 
-                {
                  "gid":2206,
                  "height":64,
                  "id":2236,
@@ -5052,6 +5028,30 @@
                  "width":64,
                  "x":5568,
                  "y":768
+                }, 
+                {
+                 "gid":1713,
+                 "height":64,
+                 "id":2241,
+                 "name":"Portal",
+                 "properties":
+                    {
+                     "teleportMap":"Yzalt",
+                     "teleportX":60,
+                     "teleportY":3
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":64,
+                 "x":1280,
+                 "y":5888
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -6475,7 +6475,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2241,
+ "nextobjectid":2242,
  "orientation":"orthogonal",
  "properties":
     {
