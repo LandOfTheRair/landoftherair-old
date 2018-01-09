@@ -115,7 +115,7 @@ class ItemLoader {
 
     if(item.type === 'Twohanded' || item.secondaryType === 'Twohanded') {
       item.twoHanded = true;
-      if(!item.proneChance) item.proneChance = 5;
+      if(!item.proneChance && item.type !== 'Ranged') item.proneChance = 5;
     }
 
     if(includes(['Shortbow', 'Longbow'], item.itemClass)) {
