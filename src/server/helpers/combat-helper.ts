@@ -2,7 +2,7 @@
 import { includes, random, capitalize, get } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../shared/models/character';
-import { ShieldClasses, Item } from '../../shared/models/item';
+import { ShieldClasses, Item, MagicCutArmorClasses } from '../../shared/models/item';
 import * as Classes from '../classes';
 import * as Effects from '../effects';
 
@@ -387,6 +387,14 @@ export class CombatHelper {
     if(willCheck && damage > 0) {
       const willDivisor = Classes[attacked.baseClass || 'Undecided'].willDivisor;
       damage -= Math.floor(damage / willDivisor);
+    }
+
+    if(attacker) {
+      const armorClass = get(attacker, 'gear.Armor.itemClass');
+      if(includes(MagicCutArmorClasses, armorClass)) {
+        damage = Math.floor(damage / 2);
+        attacker.sendClientMessage('You feel as if your armor hinders your magic casting!');
+      }
     }
 
     const totalDamage = this.dealDamage(attacker, attacked, { damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg });

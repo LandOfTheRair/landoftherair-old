@@ -23,7 +23,7 @@ export const ShieldClasses = [
 ];
 
 export const ArmorClasses = [
-  'Tunic', 'Breastplate', 'Fur'
+  'Tunic', 'Breastplate', 'Fur', 'Fullplate'
 ];
 
 export const RobeClasses = [
@@ -73,6 +73,8 @@ RingClasses.forEach(t => EquipHash[t] = 'Ring');
 FeetClasses.forEach(t => EquipHash[t] = 'Feet');
 HandsClasses.forEach(t => EquipHash[t] = 'Hands');
 EarClasses.forEach(t => EquipHash[t] = 'Ear');
+
+export const MagicCutArmorClasses = ['Breastplate', 'Fullplate'];
 
 export const GivesBonusInHandItemClasses = WeaponClasses.concat(NeckClasses);
 

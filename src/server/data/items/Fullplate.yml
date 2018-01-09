@@ -1,0 +1,5 @@
+
+- name: Test Fullplate
+  sprite: 363
+  desc: "a red fullplate made of interleaved dragon scales"
+  value: 500
