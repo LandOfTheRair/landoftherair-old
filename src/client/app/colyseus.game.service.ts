@@ -339,6 +339,7 @@ export class ColyseusGameService {
     if(action === 'set_character')  return this.setCharacter(other.character);
     if(action === 'update_pos')     return this.updatePos(other.x, other.y, other.dir, other.swimLevel, other.fov);
     if(action === 'update_fov')     return this.updateFOV(other.fov);
+    if(action === 'init_ds')        return this.initDeepstream(other.room, other.createdId);
   }
 
   private initDeepstream(room: string, createdId: string) {

@@ -177,6 +177,12 @@ export class GameWorld extends Room<GameState> {
         });
         return;
       }
+
+      this.broadcast({
+        action: 'init_ds',
+        room: this.mapName,
+        createdId: opts.party
+      });
     });
 
     finishLoad();
