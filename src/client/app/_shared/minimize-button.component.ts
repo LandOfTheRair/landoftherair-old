@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-minimize-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<button class="no-border-radius btn btn-warning btn-sm float-right">_</button>`,
   styles: [
     `button {

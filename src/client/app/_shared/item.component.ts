@@ -1,5 +1,5 @@
 
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 import { Item, WeaponClasses } from '../../../shared/models/item';
 import { Player } from '../../../shared/models/player';
@@ -17,6 +17,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
 
 @Component({
   selector: 'app-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`    
     .item-container {
       position: relative;

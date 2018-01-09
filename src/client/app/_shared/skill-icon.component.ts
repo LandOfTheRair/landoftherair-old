@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 const hash = {
   Onehanded: 'katana',
@@ -48,6 +48,7 @@ const tooltips = {
 
 @Component({
   selector: 'app-skill-icon',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-icon [name]="icon" [tooltip]="tooltip" container="body" bgColor="transparent"></app-icon>
   `

@@ -1,9 +1,10 @@
 
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-icon',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
     .mac-container {
       min-width: 48px;
