@@ -24,6 +24,7 @@ import { nonenumerable } from 'nonenumerable';
 import { CharacterHelper } from '../../server/helpers/character-helper';
 import { MessageHelper } from '../../server/helpers/message-helper';
 import { TrapHelper } from '../../server/helpers/trap-helper';
+import { SkillHelper } from '../../server/helpers/skill-helper';
 
 export type Allegiance =
   'None'
@@ -153,8 +154,6 @@ export const AllNormalGearSlots = [
   'rightHand', 'leftHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2', 'gear.Ring1', 'gear.Ring2',
   'gear.Head', 'gear.Neck', 'gear.Waist', 'gear.Wrists', 'gear.Hands', 'gear.Feet', 'gear.Ear'
 ];
-
-const SKILL_COEFFICIENT = 1.55;
 
 export class Character {
   name: string;
@@ -846,24 +845,8 @@ export class Character {
     return curLevel < this.$$room.state.maxSkill;
   }
 
-  private _calcSkillLevel(type: string) {
-    const skillValue = this.skills[type.toLowerCase()] || 0;
-    if(skillValue < 100) return 0;
-    // if(skillValue < 200) return 1;
-
-    const value = Math.log(skillValue / 100) / Math.log(SKILL_COEFFICIENT);
-    return 1 + Math.floor(value);
-  }
-
   calcSkillLevel(type: string) {
-    return this._calcSkillLevel(type);
-  }
-
-  calcSkillXP(level: number) {
-    if(level === 0) return 100;
-    // if(level === 1) return 200;
-
-    return Math.floor(Math.pow(SKILL_COEFFICIENT, level) * 100);
+    return SkillHelper.calcSkillLevel(this, type);
   }
 
   applyEffect(effect: Effect) {

@@ -2,11 +2,12 @@
 import { NPC } from '../../../shared/models/npc';
 import { includes, capitalize, sample, get, random } from 'lodash';
 import { Logger } from '../../logger';
-import { AllNormalGearSlots } from '../../../shared/models/character';
+import { AllNormalGearSlots, SkillClassNames } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
 import { NPCLoader } from '../../helpers/npc-loader';
 import { Revive } from '../../effects/Revive';
 import { LearnAlchemy } from '../../quests/antania/Rylt/LearnAlchemy';
+import { SkillHelper } from '../../helpers/skill-helper';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -210,7 +211,7 @@ export const AlchemistResponses = (npc: NPC) => {
         return;
       }
 
-      let lastLine = 'You can also tell me ALCHEMY to practice on your own!';
+      let lastLine = 'You can also tell me ALCHEMY to practice on your own and I can ASSESS your progress!';
 
       const isQuestComplete = player.hasPermanentCompletionFor('LearnAlchemy');
 
@@ -293,6 +294,20 @@ export const AlchemistResponses = (npc: NPC) => {
       player.startQuest(LearnAlchemy);
 
       return 'Great! I love teaching new alchemists. To start, go get a bottle of water and bread. Come back, and tell me you want to practice ALCHEMY. Then, just mix the two items together!';
+    });
+
+  npc.parser.addCommand('assess')
+    .set('syntax', ['assess'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      const assessCost = 50;
+      if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
+
+      player.loseGold(assessCost);
+
+      const percentWay = SkillHelper.assess(player, SkillClassNames.Alchemy);
+      return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Alchemy.toUpperCase()} proficiency.`;
     });
 };
 
@@ -494,7 +509,6 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       if(!includes(npc.trainSkills, capitalize(skill))) return 'I cannot teach you anything about this.';
 
-      const skillValue = player.skills[skill] || 0;
       const skillLevel = player.calcSkillLevel(skill);
 
       const maxAssessSkill = npc.maxSkillTrain;
@@ -506,13 +520,7 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       if(skillLevel >= maxAssessSkill) return 'You are too advanced for my teachings.';
 
-      const nextLevel = skillLevel === 0 ? 100 : player.calcSkillXP(skillLevel);
-      const prevLevel = skillLevel === 0 ? 0 : player.calcSkillXP(skillLevel - 1);
-
-      const normalizedCurrent = skillValue - prevLevel;
-      const normalizedMax = nextLevel - prevLevel;
-
-      const percentWay = Math.max(0, (normalizedCurrent / normalizedMax * 100)).toFixed(3);
+      const percentWay = SkillHelper.assess(player, skill);
       return `You are ${percentWay}% on your way towards the next level of ${skill.toUpperCase()} proficiency.`;
     });
 
@@ -623,7 +631,21 @@ export const SpellforgingResponses = (npc: NPC) => {
       if(player.calcSkillLevel('Conjuration') < 1) return 'You are not skilled enough to Spellforge.';
       npc.$$room.showSpellforgingWindow(player, npc);
 
-      return 'Greetings, fellow conjurer. I am a master enchanter who can help you learn the higher conjuration arts.';
+      return 'Greetings, fellow conjurer. I am a master enchanter who can help you learn the higher conjuration arts and ASSESS your progress.';
+    });
+
+  npc.parser.addCommand('assess')
+    .set('syntax', ['assess'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      const assessCost = 50;
+      if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
+
+      player.loseGold(assessCost);
+
+      const percentWay = SkillHelper.assess(player, SkillClassNames.Spellforging);
+      return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Spellforging.toUpperCase()} proficiency.`;
     });
 };
 
