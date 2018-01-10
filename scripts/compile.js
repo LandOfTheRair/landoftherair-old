@@ -11,7 +11,7 @@ exec('tsc', (e) => {
 
   if(e) {
     console.error(e);
-    process.exit(0);
+    process.exit(-1);
   }
 
   var copySilentDev =   copy('src/server/silent-dev.html', 'dist/server/silent-dev.html');

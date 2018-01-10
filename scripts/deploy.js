@@ -9,7 +9,7 @@ exec('git add -f dist', (e, stdout, stderr) => {
   if(e) {
     console.log(stdout, stderr);
     console.error(e);
-    process.exit(0);
+    process.exit(-1);
   }
 
   exec('git commit dist/shared/* dist/server/* -m "dokku dist"', (e, stdout, stderr) => {
@@ -19,7 +19,7 @@ exec('git add -f dist', (e, stdout, stderr) => {
     if(e) {
       console.log(stdout, stderr);
       console.error(e);
-      process.exit(0);
+      process.exit(-1);
     }
 
     exec('git push -f dokku master', (e, stdout, stderr) => {
@@ -29,7 +29,7 @@ exec('git add -f dist', (e, stdout, stderr) => {
       if(e) {
         console.log(stdout, stderr);
         console.error(e);
-        process.exit(0);
+        process.exit(-1);
       }
 
       exec('git reset --hard HEAD~1', (e, stdout, stderr) => {
@@ -39,7 +39,7 @@ exec('git add -f dist', (e, stdout, stderr) => {
         if(e) {
           console.log(stdout, stderr);
           console.error(e);
-          process.exit(0);
+          process.exit(-1);
         }
 
         removeSync('dist');
@@ -51,7 +51,7 @@ exec('git add -f dist', (e, stdout, stderr) => {
           if(e) {
             console.log(stdout, stderr);
             console.error(e);
-            process.exit(0);
+            process.exit(-1);
           }
         });
       });
