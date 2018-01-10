@@ -583,7 +583,7 @@ export class GameState {
   }
 
   private simplifyItem(item: Item): any {
-    return pick(item, ['uuid', 'desc', 'sprite', 'itemClass', 'owner', 'quality', 'value', 'ounces']);
+    return pick(item, ['uuid', 'desc', 'sprite', 'itemClass', 'owner', 'quality', 'value', 'ounces', 'isSackable', 'isBeltable']);
   }
 
   serializableGroundItems() {
