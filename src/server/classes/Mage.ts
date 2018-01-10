@@ -1,6 +1,7 @@
 
 import { BaseClass } from '../base/BaseClass';
 import { Character, SkillClassNames } from '../../shared/models/character';
+import { SkillHelper } from '../helpers/skill-helper';
 
 export class Mage extends BaseClass {
   static combatDamageMultiplier = 0.85;
@@ -12,7 +13,7 @@ export class Mage extends BaseClass {
 
     if(!character.getBaseStat('mp')) {
       character.gainBaseStat('mp', 30);
-      character._gainSkill(SkillClassNames.Conjuration, character.calcSkillXP(1));
+      character._gainSkill(SkillClassNames.Conjuration, SkillHelper.calcSkillXP(1));
     }
   }
 

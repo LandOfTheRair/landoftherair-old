@@ -1,6 +1,7 @@
 
 import { BaseClass } from '../base/BaseClass';
 import { Character, SkillClassNames } from '../../shared/models/character';
+import { SkillHelper } from '../helpers/skill-helper';
 
 export class Healer extends BaseClass {
   static combatDamageMultiplier = 1;
@@ -12,7 +13,7 @@ export class Healer extends BaseClass {
 
     if(!character.getBaseStat('mp')) {
       character.gainBaseStat('mp', 30);
-      character._gainSkill(SkillClassNames.Restoration, character.calcSkillXP(1));
+      character._gainSkill(SkillClassNames.Restoration, SkillHelper.calcSkillXP(1));
     }
   }
 

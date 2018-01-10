@@ -3,6 +3,7 @@ import { includes, truncate, capitalize, sampleSize } from 'lodash';
 import { Player } from '../../shared/models/player';
 import { ItemCreator } from './item-creator';
 import { SkillClassNames } from '../../shared/models/character';
+import { SkillHelper } from './skill-helper';
 
 export class CharacterCreator {
 
@@ -150,7 +151,7 @@ export class CharacterCreator {
 
     player.gear.Armor = await itemCreator.getItemByName(body);
     player.rightHand = await itemCreator.getItemByName(mainhand);
-    player._gainSkill(skill2, player.calcSkillXP(2));
+    player._gainSkill(skill2, SkillHelper.calcSkillXP(2));
 
   }
 }
