@@ -89,7 +89,7 @@ export class CharacterCreator {
       SkillClassNames.OneHanded, SkillClassNames.TwoHanded, SkillClassNames.Shortsword,
       SkillClassNames.Staff, SkillClassNames.Dagger, SkillClassNames.Mace, SkillClassNames.Axe
     ], 4).forEach(skill => {
-      player._gainSkill(skill, player.calcSkillXP(1));
+      player._gainSkill(skill, SkillHelper.calcSkillXP(1));
     });
 
     let body = '';
