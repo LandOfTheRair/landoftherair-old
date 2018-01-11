@@ -14,7 +14,7 @@ export class AlchemyHelper {
     const reagentNames = compact(reagents.map(x => x ? x.name : null));
     const recipeMatch = await DB.$recipes.findOne({
       recipeType: 'alchemy',
-      ingredients: { $all: reagentNames },
+      ingredients: { $all: reagentNames, $size: reagentNames.length },
       requiredSkill: { $lte: playerSkill }
     });
 
