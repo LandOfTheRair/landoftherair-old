@@ -69,3 +69,24 @@
   ingredients:
     - Tower Goblood
     - Antanian Pint of Water
+
+- item: Weak Regen Potion
+  skillGained: 10
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Tower Goblood
+    - Instant Heal Bottle
+    - Antanian Pint of Water
+
+- item: Weak Regen Potion (5oz)
+  skillGained: 10
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Tower Goblood
+    - Instant Heal Bottle (5oz)
+    - Antanian Pint of Water
+

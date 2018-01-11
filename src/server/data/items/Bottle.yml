@@ -305,3 +305,24 @@
     stats:
       mpregen: 3
     duration: 10800
+
+- name: Weak Regen Potion
+  desc: "a small bottle labeled Instant Heal, filled with purple liquid"
+  extendedDesc: "a potion of Regen"
+  sprite: 959
+  effect:
+    name: Regen
+    duration: 10
+    potency: 7
+  value: 500
+
+- name: Weak Regen Potion (5oz)
+  desc: "a small bottle labeled Instant Heal, filled with purple liquid"
+  extendedDesc: "a potion of Regen"
+  sprite: 959
+  ounces: 5
+  effect:
+    name: Regen
+    duration: 10
+    potency: 7
+  value: 500
