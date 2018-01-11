@@ -199,6 +199,17 @@
     potency: 100
   value: 500
 
+- name: Weak BarNecro Potion (10oz)
+  desc: "a small white bottle. It smells putrid"
+  extendedDesc: "a potion of BarNecro"
+  sprite: 251
+  ounces: 10
+  effect:
+    name: BarNecro
+    duration: 900
+    potency: 100
+  value: 500
+
 - name: Weak BarFire Potion
   desc: "a small white bottle. It feels warm to the touch"
   extendedDesc: "a potion of BarFire"
