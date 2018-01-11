@@ -3,7 +3,6 @@ require('dotenv').config({ silent: true });
 
 import { DB } from './database';
 import { GameAPI } from './api';
-import { DeepstreamCleaner } from './deepstream-cleaner';
 import { Logger } from './logger';
 
 import { includes } from 'lodash';
@@ -42,7 +41,6 @@ if(process.argv[2] === '--single-core') {
 
   const gameServer = new colyseus.Server({ server });
 
-  DeepstreamCleaner.init();
   Logger.log(`[Single] Started server on port ${port}`);
 
 
@@ -66,7 +64,6 @@ if(process.argv[2] === '--single-core') {
   const gameServer = new colyseus.ClusterServer({});
 
   if(cluster.isMaster) {
-    DeepstreamCleaner.init();
     gameServer.listen(port);
     Logger.log(`[Master] Started server on port ${port}`);
 

@@ -1,6 +1,5 @@
 
 import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter, clone, pull, extend } from 'lodash';
-import * as Deepstream from 'deepstream.io-client-js';
 
 import { Parser } from 'mingy';
 
@@ -74,8 +73,6 @@ export class GameWorld extends Room<GameState> {
 
   private usernameClientHash = {};
 
-  private deepstream: any;
-
   private itemCreator: ItemCreator;
 
   get allSpawners() {
@@ -131,15 +128,12 @@ export class GameWorld extends Room<GameState> {
 
     this.itemCreator = new ItemCreator();
 
-    this.deepstream = Deepstream(process.env.DEEPSTREAM_URL);
-
     this.setPatchRate(1000);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
     this.setState(new GameState({
       players: [],
       map: cloneDeep(require(opts.mapPath)),
       mapName: opts.mapName,
-      deepstream: this.deepstream,
       createdId: opts.party
     }));
 
@@ -168,23 +162,6 @@ export class GameWorld extends Room<GameState> {
       }
     };
 
-    this.deepstream.login({ map: this.mapName, token: process.env.DEEPSTREAM_TOKEN }, (success) => {
-      if(!success) {
-        this.broadcast({
-          error: 'error_invalid_world',
-          prettyErrorName: 'Invalid World',
-          prettyErrorDesc: 'This world did not initialize correctly and will not work correctly. Please exit and rejoin it ASAP.'
-        });
-        return;
-      }
-
-      this.broadcast({
-        action: 'init_ds',
-        room: this.mapName,
-        createdId: opts.party
-      });
-    });
-
     finishLoad();
   }
 
@@ -202,8 +179,6 @@ export class GameWorld extends Room<GameState> {
     if(this.partyManager) {
       this.partyManager.stopEmitting();
     }
-
-    this.state.cleanup();
   }
 
   async onJoin(client, options) {
@@ -243,6 +218,9 @@ export class GameWorld extends Room<GameState> {
     this.usernameClientHash[player.username] = { client };
 
     this.setPlayerXY(player, player.x, player.y);
+
+    this.send(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
+    this.send(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
   }
 
   async onLeave(client) {
@@ -281,6 +259,24 @@ export class GameWorld extends Room<GameState> {
 
     player.manageTraitPointPotentialGain(data.command);
     CommandExecutor.queueCommand(player, data.command, data);
+  }
+
+  public addNPC(npc: NPC) {
+    this.state.addNPC(npc);
+
+    this.broadcast({
+      action: 'add_npc',
+      npc: this.state.trimmedNPCs[npc.uuid]
+    });
+  }
+
+  public removeNPC(npc: NPC) {
+    this.state.removeNPC(npc);
+
+    this.broadcast({
+      action: 'removeNPC',
+      npcUUID: npc.uuid
+    });
   }
 
   private async savePlayer(player: Player, extraOpts = {}) {
@@ -506,11 +502,16 @@ export class GameWorld extends Room<GameState> {
 
     item.$heldBy = null;
     this.state.addItemToGround(ref, item);
+
+    this.broadcast({ action: 'add_gitem', x: ref.x, y: ref.y, item: this.state.simplifyItem(item) });
   }
 
   removeItemFromGround(item) {
+    const { x, y } = item;
     this.itemCreator.removeItemExpiry(item);
     this.state.removeItemFromGround(item);
+
+    this.broadcast({ action: 'remove_gitem', x, y, item: this.state.simplifyItem(item) });
   }
 
   private prePlayerMapLeave(player: Player) {

@@ -11,6 +11,7 @@ import { GetGidDescription, GetSwimLevel } from '../../server/gidmetadata/descri
 import { CombatHelper } from '../../server/helpers/combat-helper';
 import { MapLayer } from './maplayer';
 import { nonenumerable } from 'nonenumerable';
+import { LootHelper } from '../../server/helpers/loot-helper';
 
 export class GameState {
 
@@ -28,17 +29,6 @@ export class GameState {
   private playerHash: any = {};
 
   @nonenumerable
-  private deepstream: any;
-
-  @nonenumerable
-  private deepstreamRecords: any = {
-    ground: null,
-    npcVolatile: null,
-    npcData: null,
-    npcHash: null
-  };
-
-  @nonenumerable
   map: any = {};
   mapName = '';
   mapData: any = { openDoors: {} };
@@ -48,9 +38,6 @@ export class GameState {
 
   @nonenumerable
   mapNPCs: any = {};
-
-  @nonenumerable
-  npcExistHash: any = {};
 
   @nonenumerable
   groundItems: any = {};
@@ -69,6 +56,11 @@ export class GameState {
   environmentalObjects: any[] = [];
 
   private darkness: any = {};
+
+  @nonenumerable
+  public trimmedNPCs: any = {};
+
+  private npcVolatile: any = {};
 
   get formattedMap() {
     const map = cloneDeep(this.map);
@@ -93,12 +85,7 @@ export class GameState {
   constructor(opts) {
     extend(this, opts);
     this.initFov();
-    this.initDeepstream();
     this.findSecretWalls();
-  }
-
-  public cleanup() {
-    this.cleanDeepstreamRecords(true);
   }
 
   private findSecretWalls() {
@@ -108,24 +95,6 @@ export class GameState {
       this.secretWallHash[x / 64] = this.secretWallHash[x / 64] || {};
       this.secretWallHash[x / 64][(y / 64) - 1] = true;
     });
-  }
-
-  private initDeepstream() {
-    const recordPath = this.createdId && endsWith(this.mapName, '-Dungeon') ? `${this.mapName}-${this.createdId}` : this.mapName;
-
-    this.deepstreamRecords.groundItems = this.deepstream.record.getRecord(`${recordPath}/groundItems`);
-    this.deepstreamRecords.npcHash = this.deepstream.record.getRecord(`${recordPath}/npcHash`);
-    this.deepstreamRecords.npcData = this.deepstream.record.getRecord(`${recordPath}/npcData`);
-    this.deepstreamRecords.npcVolatile = this.deepstream.record.getRecord(`${recordPath}/npcVolatile`);
-
-    this.cleanDeepstreamRecords();
-  }
-
-  private cleanDeepstreamRecords(doDelete?) {
-    this.deepstreamRecords.groundItems.set({});
-    this.deepstreamRecords.npcHash.set({});
-    this.deepstreamRecords.npcData.set({});
-    this.deepstreamRecords.npcVolatile.set({});
   }
 
   private initFov() {
@@ -215,10 +184,8 @@ export class GameState {
     npc.$$map = this.map;
     this._mapNPCs.push(npc);
     this.mapNPCs[npc.uuid] = npc;
+    this.trimmedNPCs[npc.uuid] = this.trimNPC(npc);
 
-    this.syncNPC(npc);
-    this.npcExistHash[npc.uuid] = true;
-    this.updateNPCExistHash();
     this.updateNPCVolatile(npc);
   }
 
@@ -229,29 +196,16 @@ export class GameState {
   removeNPC(npc: NPC): void {
     pull(this._mapNPCs, npc);
     delete this.mapNPCs[npc.uuid];
-    delete this.npcExistHash[npc.uuid];
-
-    // for some reason, syncing this breaks _everything_
-    // this.updateNPCExistHash();
+    delete this.trimmedNPCs[npc.uuid];
 
     if(!this.isDisposing) {
-      this.deepstreamRecords.npcData.set(npc.uuid, undefined);
-      this.deepstreamRecords.npcVolatile.set(npc.uuid, undefined);
+      delete this.npcVolatile[npc.uuid];
     }
   }
 
-  syncNPC(npc: NPC) {
-    if(!this.isDisposing) this.deepstreamRecords.npcData.set(npc.uuid, this.trimNPC(npc));
-  }
-
   updateNPCVolatile(char: Character): void {
-    if(!this.npcExistHash[char.uuid] || this.isDisposing) return;
-    this.deepstreamRecords.npcVolatile.set(char.uuid, { x: char.x, y: char.y, hp: char.hp, dir: char.dir, agro: char.agro, effects: char.effects });
-  }
-
-  updateNPCExistHash(): void {
-    if(this.isDisposing) return;
-    this.deepstreamRecords.npcHash.set(this.npcExistHash);
+    if(!this.mapNPCs[char.uuid] || this.isDisposing) return;
+    this.npcVolatile[char.uuid] = { x: char.x, y: char.y, hp: char.hp, dir: char.dir, agro: char.agro, effects: char.effects };
   }
 
   addPlayer(player, clientId: string): void {
@@ -497,10 +451,6 @@ export class GameState {
     this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y - 64 };
   }
 
-  isItemValueStackable(item: Item): boolean {
-    return item.itemClass === 'Coin';
-  }
-
   addItemToGround({ x, y }, item: Item): void {
     if(!item) return;
 
@@ -521,15 +471,13 @@ export class GameState {
     const typeList = this.groundItems[xKey][yKey][item.itemClass];
     const simpleTypeList = this.simpleGroundItems[xKey][yKey][item.itemClass];
 
-    if(this.isItemValueStackable(item) && typeList[0]) {
+    if(LootHelper.isItemValueStackable(item) && typeList[0]) {
       typeList[0].value += item.value;
       simpleTypeList[0].value += item.value;
     } else {
       typeList.push(item);
       simpleTypeList.push(this.simplifyItem(item));
     }
-
-    this.updateGroundItems();
   }
 
   removeItemFromGround(item: Item): void {
@@ -555,8 +503,6 @@ export class GameState {
 
     delete item.x;
     delete item.y;
-
-    this.updateGroundItems();
   }
 
   setGround(ground: any): void {
@@ -575,16 +521,9 @@ export class GameState {
         });
       });
     });
-
-    this.updateGroundItems();
   }
 
-  updateGroundItems(): void {
-    if(this.isDisposing) return;
-    this.deepstreamRecords.groundItems.set(this.simpleGroundItems);
-  }
-
-  private simplifyItem(item: Item): any {
+  public simplifyItem(item: Item): any {
     return pick(item, ['uuid', 'desc', 'sprite', 'itemClass', 'owner', 'quality', 'value', 'ounces', 'isSackable', 'isBeltable']);
   }
 

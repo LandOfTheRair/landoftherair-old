@@ -11,7 +11,7 @@
             [disabled]="!lobby.colyseus.isConnected || game.inGame || game._joiningGame">Create</button>
     <button class="col no-border-radius btn btn-primary"
             (click)="playCharacter()"
-            [disabled]="!lobby.colyseus.deepstream.isConnected || !lobby.myAccount.characterNames[curSlot] || !lobby.colyseus.isConnected || !resourcesLoaded.done || game.inGame || game._joiningGame">{{ statusString }}</button>
+            [disabled]="!lobby.myAccount.characterNames[curSlot] || !lobby.colyseus.isConnected || !resourcesLoaded.done || game.inGame || game._joiningGame">{{ statusString }}</button>
   </div>
 </div>
 

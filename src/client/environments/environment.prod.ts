@@ -17,8 +17,5 @@ export const environment = {
     client: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
     callbackUrl: 'https://play.rair.land',
     apiUrl: 'authidentifier'
-  },
-  deepstream: {
-    url: 'wss://deepstream.rair.land'
   }
 };

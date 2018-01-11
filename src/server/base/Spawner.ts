@@ -250,12 +250,12 @@ export class Spawner {
 
   addNPC(npc: NPC) {
     this.npcs.push(npc);
-    this.room.state.addNPC(npc);
+    this.room.addNPC(npc);
   }
 
   removeNPC(npc: NPC) {
     pull(this.npcs, npc);
-    this.room.state.removeNPC(npc);
+    this.room.removeNPC(npc);
   }
 
   assignPath(npc: NPC) {

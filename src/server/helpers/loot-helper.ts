@@ -8,6 +8,10 @@ import { LootRoller, LootFunctions, LootTable } from 'lootastic';
 
 export class LootHelper {
 
+  static isItemValueStackable(item: Item): boolean {
+    return item.itemClass === 'Coin';
+  }
+
   static async getAllLoot(npc: NPC, bonus = 0, sackOnly = false): Promise<Item[]> {
     const tables = [];
 

@@ -1,15 +1,15 @@
 
-import { extend, remove, find, differenceBy, compact, values, map, filter } from 'lodash';
+import { extend, merge, remove, find, differenceBy, compact, values, map, filter, reject, size } from 'lodash';
 
 import { Player } from '../../shared/models/player';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 
-import { NPC } from '../../shared/models/npc';
 import { Item } from '../../shared/models/item';
 import { Character } from '../../shared/models/character';
 import { MapLayer } from '../../shared/models/maplayer';
+import { LootHelper } from '../../server/helpers/loot-helper';
 
 export class ClientGameState {
   fovArray = Array(9).fill(null).map((x, i) => i - 4);
@@ -20,7 +20,7 @@ export class ClientGameState {
   map: any = {};
   mapName = '';
   mapData: any = { openDoors: {} };
-  mapNPCs: { [key: string]: NPC } = {};
+  mapNPCs: { [key: string]: Character } = {};
   fov: any = {};
   darkness: any = {};
   secretWallHash: any = {};
@@ -91,6 +91,12 @@ export class ClientGameState {
     this.setMap$.next(map);
   }
 
+  setNPCVolatile(npcVolatile) {
+    Object.keys(npcVolatile).forEach(npcUUID => {
+      merge(this.mapNPCs[npcUUID], npcVolatile[npcUUID]);
+    });
+  }
+
   private findSecretWalls() {
     const allPossibleLayers = this.map.layers[MapLayer.OpaqueDecor].objects;
     const secretWalls = filter(allPossibleLayers, { type: 'SecretWall' });
@@ -104,14 +110,62 @@ export class ClientGameState {
     this.mapData = data;
   }
 
+  addNPC(npc) {
+    this.mapNPCs[npc.uuid] = new Character(npc);
+  }
+
+  removeNPC(npcUUID: string) {
+    delete this.mapNPCs[npcUUID];
+  }
+
   setMapNPCs(data) {
-    // Object.keys(data).forEach(uuid => data[uuid] = new Character(data[uuid]));
+    Object.keys(data).forEach(uuid => data[uuid] = new Character(data[uuid]));
     this.mapNPCs = data;
+  }
+
+  addGroundItem(x: number, y: number, item: Item) {
+    const xKey = `x${x}`;
+    const yKey = `y${y}`;
+
+    this.groundItems[xKey] = this.groundItems[xKey] || {};
+    this.groundItems[xKey][yKey] = this.groundItems[xKey][yKey] || {};
+    this.groundItems[xKey][yKey][item.itemClass] = this.groundItems[xKey][yKey][item.itemClass] || [];
+
+    const typeList = this.groundItems[xKey][yKey][item.itemClass];
+
+    if(LootHelper.isItemValueStackable(item) && typeList[0]) {
+      typeList[0].value += item.value;
+    } else {
+      typeList.push(item);
+    }
+
+    this.updateGroundItems();
+  }
+
+  removeGroundItem(x: number, y: number, item: Item) {
+    const xKey = `x${x}`;
+    const yKey = `y${y}`;
+
+    this.groundItems[xKey] = this.groundItems[xKey] || {};
+    this.groundItems[xKey][yKey] = this.groundItems[xKey][yKey] || {};
+    this.groundItems[xKey][yKey][item.itemClass] = this.groundItems[xKey][yKey][item.itemClass] || [];
+
+    this.groundItems[xKey][yKey][item.itemClass] = reject(this.groundItems[xKey][yKey][item.itemClass], i => i.uuid === item.uuid);
+
+    if(size(this.groundItems[xKey][yKey][item.itemClass]) === 0) delete this.groundItems[xKey][yKey][item.itemClass];
+    if(size(this.groundItems[xKey][yKey]) === 0) delete this.groundItems[xKey][yKey];
+    if(size(this.groundItems[xKey]) === 0) delete this.groundItems[xKey];
+
+    this.updateGroundItems();
   }
 
   setGroundItems(data) {
     this.groundItems = data;
-    this.updateGround$.next(data || {});
+    this.updateGroundItems();
+  }
+
+  private updateGroundItems() {
+    this.updateGround$.next(this.groundItems || {});
   }
 
   setEnvironmentalObjects(data) {
