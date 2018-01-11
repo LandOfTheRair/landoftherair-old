@@ -533,6 +533,8 @@ export class GameState {
   }
 
   removeItemFromGround(item: Item): void {
+    if(!item.x || !item.y) return;
+
     const xKey = `x${item.x}`;
     const yKey = `y${item.y}`;
 
