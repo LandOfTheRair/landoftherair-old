@@ -6,6 +6,8 @@ import { Player } from '../../../../shared/models/player';
 
 export class SteffenFindSedgwick extends Quest {
 
+  public static isRepeatable = false;
+
   public static get requirements() {
     return {
       type: 'search'
