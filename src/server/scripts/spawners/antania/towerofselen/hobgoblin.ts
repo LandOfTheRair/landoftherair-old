@@ -9,7 +9,7 @@ export class TowerHoboblinSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 60,
+      respawnRate: 90,
       initialSpawn: 1,
       maxCreatures: 3,
       spawnRadius: 1,

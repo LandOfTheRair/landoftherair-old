@@ -9,7 +9,7 @@ export class TowerOrcWarlordSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 120,
+      respawnRate: 180,
       initialSpawn: 1,
       maxCreatures: 1,
       spawnRadius: 1,

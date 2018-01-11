@@ -10,7 +10,7 @@ export class TowerWarAnimalsSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 20,
+      respawnRate: 30,
       initialSpawn: 2,
       maxCreatures: 5,
       spawnRadius: 1,
