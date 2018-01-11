@@ -496,11 +496,11 @@ export class Player extends Character {
   }
 
   hasQuest(quest: Quest): boolean {
-    return this.activeQuests ? this.activeQuests[quest.name] : false;
+    return get(this.activeQuests, quest.name, false);
   }
 
   hasPermanentCompletionFor(questName: string): boolean {
-    return this.permanentQuestCompletion ? this.permanentQuestCompletion[questName] : false;
+    return get(this.permanentQuestCompletion, questName, false);
   }
 
   setQuestData(quest: Quest, data: any) {
