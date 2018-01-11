@@ -4,6 +4,7 @@ import { NPCLoader } from '../../../../helpers/npc-loader';
 import { values } from 'lodash';
 import { HenizFindSedgwick } from '../../../../quests/antania/Yzalt/HenizFindSedgwick';
 import { SteffenFindSedgwick } from '../../../../quests/antania/Yzalt/SteffenFindSedgwick';
+import { KillRanata } from '../../../../quests/antania/Yzalt/KillRanata';
 
 const RANATA_KEY = 'Ranata\'s Key';
 
@@ -65,7 +66,7 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
 
 
-      if(!player.hasQuest('KillRanata')) {
+      if(!player.hasQuest(KillRanata)) {
         if(player.hasPermanentCompletionFor('HenizFindSedgwick') || !SteffenFindSedgwick.isComplete(player)) return 'Why are you bringing Ranata up?';
       }
 
@@ -85,7 +86,7 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['friend'])
     .set('logic', (args, { player }) => {
 
-      if(!player.hasQuest('KillRanata')) {
+      if(!player.hasQuest(KillRanata)) {
         if(player.hasPermanentCompletionFor('SteffenFindSedgwick') || !SteffenFindSedgwick.isComplete(player)) return 'What about my friend?';
       }
 
