@@ -61,7 +61,7 @@ export class Charge extends Skill {
     const xDiff = target.x - user.x;
     const yDiff = target.y - user.y;
 
-    user.gainSkill(user.rightHand ? user.rightHand.itemClass : 'Martial', 1);
+    if(user.baseClass === 'Warrior') user.gainSkill(user.rightHand ? user.rightHand.itemClass : 'Martial', 1);
 
     MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff }, true);
 

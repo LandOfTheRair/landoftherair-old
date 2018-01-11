@@ -48,7 +48,7 @@ export class Attack extends Skill {
   }
 
   use(user: Character, target: Character) {
-    user.gainSkill(user.rightHand ? user.rightHand.itemClass : 'Martial', 1);
+    if(user.baseClass === 'Warrior') user.gainSkill(user.rightHand ? user.rightHand.itemClass : 'Martial', 1);
     CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
   }
 
