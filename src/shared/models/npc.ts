@@ -195,12 +195,12 @@ export class NPC extends Character {
 
   setRightHand(item: Item) {
     super.setRightHand(item);
-    this.$$room.state.syncNPC(this);
+    this.$$room.syncNPC(this);
   }
 
   setLeftHand(item: Item) {
     super.setLeftHand(item);
-    this.$$room.state.syncNPC(this);
+    this.$$room.syncNPC(this);
   }
 
   registerAttackDamage(char: Character, attack: string, damage: number) {

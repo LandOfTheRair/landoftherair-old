@@ -189,6 +189,11 @@ export class GameState {
     this.updateNPCVolatile(npc);
   }
 
+  syncNPC(npc: NPC): void {
+    if(!this.trimmedNPCs[npc.uuid]) return;
+    this.trimmedNPCs[npc.uuid] = this.trimNPC(npc);
+  }
+
   findNPC(uuid: string): NPC {
     return this.mapNPCs[uuid];
   }

@@ -270,6 +270,15 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
+  public syncNPC(npc: NPC) {
+    this.state.syncNPC(npc);
+
+    this.broadcast({
+      action: 'add_npc',
+      npc: this.state.trimmedNPCs[npc.uuid]
+    });
+  }
+
   public removeNPC(npc: NPC) {
     this.state.removeNPC(npc);
 
