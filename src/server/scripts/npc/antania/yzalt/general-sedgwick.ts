@@ -64,10 +64,10 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['ranata'])
     .set('logic', (args, { player }) => {
 
-      if(
-        !player.hasQuest('KillRanata')
-        && (player.hasPermanentCompletionFor('HenizFindSedgwick') || !HenizFindSedgwick.isComplete(player))
-      ) return 'Why are you bringing Ranata up?';
+
+      if(!player.hasQuest('KillRanata')) {
+        if(player.hasPermanentCompletionFor('HenizFindSedgwick') || !SteffenFindSedgwick.isComplete(player)) return 'Why are you bringing Ranata up?';
+      }
 
       if(player.rightHand) return 'Please empty your right hand.';
 
@@ -85,10 +85,9 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['friend'])
     .set('logic', (args, { player }) => {
 
-      if(
-        !player.hasQuest('KillRanata')
-        && (player.hasPermanentCompletionFor('SteffenFindSedgwick') || !SteffenFindSedgwick.isComplete(player))
-      ) return 'What about my friend?';
+      if(!player.hasQuest('KillRanata')) {
+        if(player.hasPermanentCompletionFor('SteffenFindSedgwick') || !SteffenFindSedgwick.isComplete(player)) return 'What about my friend?';
+      }
 
       if(player.rightHand) return 'Please empty your right hand.';
 
