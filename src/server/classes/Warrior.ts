@@ -18,7 +18,8 @@ export class Warrior extends BaseClass {
 
   static calcBonusStatsForCharacter(character: Character): any {
     const statLevel = Math.floor(character.level / 5);
+    const weaponAC = Math.floor(character.level / 2);
 
-    return { offense: statLevel, defense: statLevel };
+    return { offense: statLevel, defense: statLevel, weaponArmorClass: weaponAC };
   }
 }
