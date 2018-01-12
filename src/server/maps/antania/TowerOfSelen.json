@@ -5602,26 +5602,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":2186,
-                 "name":"Hobgoblin Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/goblin"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2880,
-                 "y":3584
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":2189,
                  "name":"Goblin Spawner",
                  "properties":
@@ -5922,46 +5902,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":2206,
-                 "name":"Goblin Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/goblin"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4416,
-                 "y":1728
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2207,
-                 "name":"Goblin Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/goblin"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2880,
-                 "y":512
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":2208,
                  "name":"Goblin Spawner",
                  "properties":
@@ -6182,26 +6122,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":2221,
-                 "name":"Goblin Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/goblin"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2048,
-                 "y":576
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":2222,
                  "name":"Goblin Spawner",
                  "properties":
@@ -6406,7 +6326,7 @@
                  "name":"Hobgoblin Spawner",
                  "properties":
                     {
-                     "script":"antania\/towerofselen\/goblin"
+                     "script":"antania\/towerofselen\/hobgoblin"
                     },
                  "propertytypes":
                     {
@@ -6426,7 +6346,7 @@
                  "name":"Hobgoblin Spawner",
                  "properties":
                     {
-                     "script":"antania\/towerofselen\/goblin"
+                     "script":"antania\/towerofselen\/hobgoblin"
                     },
                  "propertytypes":
                     {
@@ -6438,6 +6358,86 @@
                  "width":64,
                  "x":2816,
                  "y":1728
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2242,
+                 "name":"Hobgoblin Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/hobgoblin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4480,
+                 "y":1728
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2243,
+                 "name":"Hobgoblin Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/hobgoblin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2816,
+                 "y":512
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2244,
+                 "name":"Hobgoblin Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/hobgoblin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2048,
+                 "y":576
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2245,
+                 "name":"Hobgoblin Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/hobgoblin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2880,
+                 "y":3584
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -6475,7 +6475,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2242,
+ "nextobjectid":2246,
  "orientation":"orthogonal",
  "properties":
     {
