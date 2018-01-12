@@ -5,7 +5,7 @@ import * as recurse from 'recursive-readdir';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { includes } from 'lodash';
+import { includes, find } from 'lodash';
 
 import { MapLayer } from '../../shared/models/maplayer';
 
@@ -178,6 +178,43 @@ test('All Interactables have valid properties', t => {
         }
       }
 
+    });
+  });
+});
+
+test('All 2-way Teleports are bi-directional', t => {
+  allMaps.forEach(map => {
+    const intObjects = map.layers[MapLayer.Interactables].objects;
+    intObjects.forEach(interactable => {
+      if(!includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport'], interactable.type)) return;
+
+      const myX = interactable.x / 64;
+      const myY = (interactable.y / 64) - 1;
+      const { teleportX, teleportY, teleportMap } = interactable.properties;
+      const checkObjs = allMapNames[teleportMap].layers[MapLayer.Interactables].objects;
+
+      const checkRef = find(checkObjs, { x: teleportX * 64, y: (teleportY + 1) * 64 });
+
+      // one-way teleport
+      if(!checkRef && interactable.type === 'Teleport') return;
+
+      // not a valid return point
+      if(!includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport'], checkRef.type)) return;
+
+      const checkX = checkRef.x / 64;
+      const checkY = (checkRef.y / 64) - 1;
+
+      const checkTPX = checkRef.properties.teleportX;
+      const checkTPY = checkRef.properties.teleportY;
+
+      const myTag = `source-${interactable.type}-${myX},${myY}-to-${checkRef.type}-${checkX},${checkY} (${interactable.name || 'no name'})`;
+      const checkTag = `dest-${checkRef.type}-${checkX},${checkY}-from-${interactable.type}-${myX},${myY} (${checkRef.name || 'no name'})`;
+
+      t.is(teleportX, checkX, tagFor(map, 'teleport-source-x', myTag));
+      t.is(teleportY, checkY, tagFor(map, 'teleport-source-y', myTag));
+
+      t.is(checkTPX, myX, tagFor(map, 'teleport-dest-x', checkTag));
+      t.is(checkTPY, myY, tagFor(map, 'teleport-dest-y', checkTag));
     });
   });
 });

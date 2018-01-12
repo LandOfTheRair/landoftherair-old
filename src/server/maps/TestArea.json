@@ -146,7 +146,7 @@
                     {
                      "teleportMap":"TestArea",
                      "teleportX":32,
-                     "teleportY":36
+                     "teleportY":39
                     },
                  "propertytypes":
                     {
@@ -159,7 +159,7 @@
                  "visible":true,
                  "width":64,
                  "x":1920,
-                 "y":2368
+                 "y":2560
                 }, 
                 {
                  "gid":1777,
@@ -170,7 +170,7 @@
                     {
                      "teleportMap":"TestArea",
                      "teleportX":30,
-                     "teleportY":36
+                     "teleportY":39
                     },
                  "propertytypes":
                     {
@@ -183,7 +183,7 @@
                  "visible":true,
                  "width":64,
                  "x":2048,
-                 "y":2368
+                 "y":2560
                 }, 
                 {
                  "gid":2384,

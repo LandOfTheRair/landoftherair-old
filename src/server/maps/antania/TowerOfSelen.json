@@ -4457,7 +4457,7 @@
                  "gid":1777,
                  "height":64,
                  "id":1984,
-                 "name":"",
+                 "name":"ToRoof",
                  "properties":
                     {
                      "teleportMap":"TowerOfSelen",
@@ -4480,32 +4480,8 @@
                 {
                  "gid":1779,
                  "height":64,
-                 "id":1985,
-                 "name":"",
-                 "properties":
-                    {
-                     "teleportMap":"TowerOfSelen",
-                     "teleportX":71,
-                     "teleportY":57
-                    },
-                 "propertytypes":
-                    {
-                     "teleportMap":"string",
-                     "teleportX":"int",
-                     "teleportY":"int"
-                    },
-                 "rotation":0,
-                 "type":"StairsDown",
-                 "visible":true,
-                 "width":64,
-                 "x":6272,
-                 "y":1856
-                }, 
-                {
-                 "gid":1779,
-                 "height":64,
                  "id":1986,
-                 "name":"",
+                 "name":"ToTower",
                  "properties":
                     {
                      "teleportMap":"TowerOfSelen",
