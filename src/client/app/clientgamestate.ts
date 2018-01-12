@@ -340,6 +340,7 @@ export class ClientGameState {
     this.fov = {};
     this.darkness = {};
     this._activeTarget = null;
+    this.mapNPCs = {};
     this.groundItems = {};
     this.environmentalObjects = [];
     this.updates = { openDoors: [] };
