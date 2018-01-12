@@ -701,6 +701,8 @@ export class Game {
       this.sfxs[sfx] = this.g.add.audio(`sfx-${sfx}`);
     });
 
+    if(!this.clientGameState.mapName) return;
+
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 
     this.createLayers();
