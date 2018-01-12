@@ -93,6 +93,7 @@ export class ClientGameState {
 
   setNPCVolatile(npcVolatile) {
     Object.keys(npcVolatile).forEach(npcUUID => {
+      if(!this.mapNPCs[npcUUID]) return;
       merge(this.mapNPCs[npcUUID], npcVolatile[npcUUID]);
       this.mapNPCs[npcUUID].effects = npcVolatile[npcUUID].effects;
     });
