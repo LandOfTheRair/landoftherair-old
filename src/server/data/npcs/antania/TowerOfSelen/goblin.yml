@@ -167,8 +167,8 @@
   baseClass: Warrior
   sprite: 90
   alignment: Evil
-  stats: 15
-  skillLevels: 4
+  stats: 13
+  skillLevels: 3
   level: 15
 
   skillOnKill: 45
