@@ -36,6 +36,8 @@
     defense:
       min: 1
       max: 2
+  stats:
+    mpregen: 5
   binds: true
   sprite: 489
   desc: "an amulet set with a jade dove"
