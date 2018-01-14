@@ -17,3 +17,38 @@
   type: Mace
   value: 100
   sprite: 226
+
+
+- name: Tower Hammer Weak
+  stats:
+    accuracy: -3
+    offense: 4
+  desc: "a hammer made of riyan metal and wood"
+  baseDamage: 21
+  minDamage: 3
+  maxDamage: 9
+  damageRolls: 3
+  type: Mace
+  value: 1401
+  sprite: 45
+  binds: true
+
+  requirements:
+    level: 12
+
+- name: Tower Hammer Strong
+  stats:
+    accuracy: -3
+    offense: 4
+  desc: "a hammer made of riyan metal and wood"
+  baseDamage: 21
+  minDamage: 3
+  maxDamage: 9
+  damageRolls: 4
+  type: Mace
+  value: 1401
+  sprite: 45
+  binds: true
+
+  requirements:
+    level: 14
