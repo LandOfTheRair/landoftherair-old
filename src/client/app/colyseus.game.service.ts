@@ -4,7 +4,7 @@ import * as swal from 'sweetalert2';
 
 import { Subject } from 'rxjs/Subject';
 
-import { find, includes, findIndex, extend, startsWith, capitalize } from 'lodash';
+import { find, includes, findIndex, extend, startsWith, capitalize, isNumber } from 'lodash';
 import { Player } from '../../shared/models/player';
 import { Item } from '../../shared/models/item';
 import { Locker } from '../../shared/models/container/locker';
@@ -725,7 +725,7 @@ export class ColyseusGameService {
   }
 
   public buildUseAction(item: Item, context: string, contextSlot?: string|number) {
-    this.sendRawCommand('~use', `${context} ${contextSlot || -1} ${item.itemClass} ${item.uuid}`);
+    this.sendRawCommand('~use', `${context} ${isNumber(contextSlot) ? contextSlot : -1} ${item.itemClass} ${item.uuid}`);
   }
 
   public hostilityLevelFor(compare: Character): 'hostile'|'neutral'|'friendly' {
