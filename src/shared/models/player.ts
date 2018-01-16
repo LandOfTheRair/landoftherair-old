@@ -509,7 +509,7 @@ export class Player extends Character {
   }
 
   getQuestData(quest: Quest) {
-    if(!this.questProgress || !this.hasQuest(quest)) return null;
+    if(!this.questProgress || !this.hasQuest(quest)) return {};
     return this.questProgress[quest.name] || {};
   }
 
