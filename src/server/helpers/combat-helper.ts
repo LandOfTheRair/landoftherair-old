@@ -147,7 +147,7 @@ export class CombatHelper {
     const offhandDivisor = isOffhand ? 3 : 1;
 
     const attackerName = defender.canSeeThroughStealthOf(attacker) ? attacker.name : 'somebody';
-    const attackerDamageRolls = defender.getTotalStat('weaponDamageRolls');
+    const attackerDamageRolls = attacker.getTotalStat('weaponDamageRolls');
 
     // skill + 1 because skill 0 is awful
     const attackerScope = {
