@@ -25,7 +25,7 @@ export class TauntStance extends Skill {
 
     const item = user.rightHand;
     if(!item) return user.sendClientMessage('You need a weapon to taunt!');
-    if(!CastEffect.isValid(user, item.itemClass, CastEffect.skillRequired)) return user.sendClientMessage('You cannot taunt with that weapon.');
+    if(!CastEffect.isValid(user, item.type, CastEffect.skillRequired)) return user.sendClientMessage('You cannot taunt with that weapon.');
 
     this.use(user);
   }
