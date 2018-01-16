@@ -800,6 +800,7 @@ export class Character {
           this.highestLevel = this.level;
           this.gainLevelStats();
         }
+        break;
       } else {
         break;
       }
