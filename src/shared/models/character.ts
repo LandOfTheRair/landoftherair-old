@@ -114,6 +114,7 @@ export class Stats {
   hp? = 100;
   mp? = 0;
 
+  weaponDamageRolls? = 0;
   weaponArmorClass? = 0;
   armorClass? = 0;
   accuracy? = 0;
