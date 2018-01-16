@@ -31,6 +31,9 @@ export class DarkVision extends SpellEffect {
     target.applyEffect(this);
 
     target.$$room.state.calculateFOV(target);
+    if(target.isPlayer()) {
+      target.$$room.updateFOV(target);
+    }
   }
 
   effectStart(char: Character) {
