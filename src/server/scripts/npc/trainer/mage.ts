@@ -11,7 +11,7 @@ const learnedSkills = { Conjuration: {
   5: ['BarWater'],
   6: ['FireMist'],
   7: ['IceMist'],
-  8: ['Transmute'],
+  8: ['Transmute', 'MagicBolt'],
   9: ['EnergyWave'],
   10: ['Darkness'],
   11: ['DarkVision'],

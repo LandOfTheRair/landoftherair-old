@@ -26,6 +26,7 @@ export * from './TrueSight';
 
 export * from './Afflict';
 export * from './MagicMissile';
+export * from './MagicBolt';
 
 export * from './Disease';
 export * from './Poison';
