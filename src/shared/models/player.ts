@@ -413,12 +413,6 @@ export class Player extends Character {
     }
   }
 
-  sellValue(item) {
-    // every cha after 10 increases the sale value by ~2%
-    const valueMod = 10 - ((this.getTotalStat('cha') - 10) / 5);
-    return Math.max(1, Math.floor(item.value / valueMod));
-  }
-
   buybackSize() {
     return MaxSizes.Buyback;
   }

@@ -35,7 +35,7 @@ export class Transmute extends SpellEffect {
         // items with an owner are not transmuteable either
         if(item.owner) return;
 
-        const value = item.value * valuePercent / 100;
+        const value = caster.sellValue(item) * valuePercent / 100;
         runningTotal += Math.max(value, 1);
         caster.$$room.state.removeItemFromGround(item);
       });

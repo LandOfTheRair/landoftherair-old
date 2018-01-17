@@ -327,6 +327,12 @@ export class Character {
     return pick(this, keys);
   }
 
+  sellValue(item) {
+    // every cha after 10 increases the sale value by ~2%
+    const valueMod = 10 - ((this.getTotalStat('cha') - 10) / 5);
+    return Math.max(1, Math.floor(item.value / valueMod));
+  }
+
   hasEmptyHand() {
     return !this.leftHand || !this.rightHand;
   }
