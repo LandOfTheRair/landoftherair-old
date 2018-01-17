@@ -12,14 +12,14 @@ export class EnergyWave extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 0.15;
-    if(this.potency > 0)  mult = 0.3;
-    if(this.potency > 11) mult = 0.45;
-    if(this.potency > 21) mult = 0.6;
+    let mult = 0.5;
+    if(this.potency > 0)  mult = 1.5;
+    if(this.potency > 11) mult = 2.5;
+    if(this.potency > 21) mult = 3.5;
 
     const intCheck = Math.floor(mult * this.getCasterStat(caster, 'int'));
 
-    target.sendClientMessageToRadius({ message: `You see a wave of energy pulse outwards from ${target.name}.`, subClass: 'combat magic' }, 5, [caster.uuid]);
+    target.sendClientMessageToRadius({ message: `You feel a wave of energy pulse outwards from ${target.name}.`, subClass: 'combat magic' }, 5, [caster.uuid]);
 
     const attacked = target.$$room.state.getAllInRange(target, 2, [caster.uuid]);
 

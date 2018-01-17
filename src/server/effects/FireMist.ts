@@ -14,9 +14,9 @@ export class FireMist extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     let mult = 0.5;
-    if(this.potency > 0)  mult = 1;
-    if(this.potency > 11) mult = 1.5;
-    if(this.potency > 21) mult = 2;
+    if(this.potency > 0)  mult = 2;
+    if(this.potency > 11) mult = 2.5;
+    if(this.potency > 21) mult = 3;
 
     const intCheck = Math.floor(mult * this.getCasterStat(caster, 'int'));
 

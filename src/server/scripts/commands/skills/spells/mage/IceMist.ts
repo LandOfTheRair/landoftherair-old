@@ -13,13 +13,13 @@ export class IceMist extends Skill {
     icon: 'kaleidoscope-pearls',
     color: '#000080',
     mode: 'clickToTarget',
-    tooltipDesc: 'Cast an area ice effect on a target (3x3). Cost: 40 MP'
+    tooltipDesc: 'Cast an area ice effect on a target (3x3). Cost: 35 MP'
   };
 
   public name = ['icemist', 'cast icemist'];
   public format = 'Target';
 
-  mpCost = () => 40;
+  mpCost = () => 35;
   range = () => 5;
 
   execute(user: Character, { gameState, args, effect }) {

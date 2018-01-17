@@ -13,13 +13,13 @@ export class EnergyWave extends Skill {
     icon: 'beams-aura',
     color: '#000080',
     mode: 'autoActivate',
-    tooltipDesc: 'Cast an area energy effect from your location (5x5). Cost: 80 MP'
+    tooltipDesc: 'Cast an area energy effect from your location (5x5). Cost: 40 MP'
   };
 
   public name = ['energywave', 'cast energywave'];
   public format = '';
 
-  mpCost = () => 80;
+  mpCost = () => 40;
   range = () => 5;
 
   execute(user: Character, { gameState, args, effect }) {
