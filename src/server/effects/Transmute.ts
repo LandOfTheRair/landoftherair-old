@@ -16,10 +16,10 @@ export class Transmute extends SpellEffect {
 
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let valuePercent = 30;
-    if(this.potency > 0)  valuePercent = 40;
-    if(this.potency > 11) valuePercent = 50;
-    if(this.potency > 21) valuePercent = 60;
+    let valuePercent = 10;
+    if(this.potency > 0)  valuePercent = 20;
+    if(this.potency > 11) valuePercent = 30;
+    if(this.potency > 21) valuePercent = 40;
 
     if(caster.baseClass === 'Thief') valuePercent = Math.floor(valuePercent * 1.5);
 
