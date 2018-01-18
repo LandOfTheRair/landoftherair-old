@@ -21,12 +21,12 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show stats",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your stats and their base level in text form.",
+            "name": "Look At",
+            "macro": "look at",
+            "icon": "look-at",
+            "color": "#8A6948",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Look at a target, getting a full description of them and their gear.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -41,12 +41,12 @@
             "requiresLearn": false
         },
         {
-            "name": "Look At",
-            "macro": "look at",
-            "icon": "look-at",
-            "color": "#8A6948",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Look at a target, getting a full description of them and their gear.",
+            "name": "Show Stats",
+            "macro": "show stats",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your stats and their base level in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -112,32 +112,12 @@
             "requiresLearn": false
         },
         {
-            "name": "Attack",
-            "macro": "attack",
-            "icon": "blade-drag",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Physically attack a target with the item in your right hand.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Backstab",
             "macro": "backstab",
             "icon": "backstab",
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Backstab your target from the shadows. Requires Thievery skill 3.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Charge",
-            "macro": "charge",
-            "icon": "running-ninja",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 3 (Warrior) or weapon skill 7 (Other).",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -153,12 +133,32 @@
             "requiresLearn": false
         },
         {
+            "name": "Charge",
+            "macro": "charge",
+            "icon": "running-ninja",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Mug",
             "macro": "mug",
             "icon": "hooded-assassin",
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Mug your target, dealing damage and stealing from them. Requires Thievery skill 7.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Attack",
+            "macro": "attack",
+            "icon": "blade-drag",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Physically attack a target with the item in your right hand.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -213,16 +213,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Autoheal",
-            "macro": "cast autoheal",
-            "icon": "self-love",
-            "color": "#00c",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Automatically healing when health gets too low. Cost: 50 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "BarNecro",
             "macro": "cast barnecro",
             "icon": "rosa-shield",
@@ -233,12 +223,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Cure",
-            "macro": "cast cure",
-            "icon": "tentacle-heart",
-            "color": "#080",
+            "name": "Autoheal",
+            "macro": "cast autoheal",
+            "icon": "self-love",
+            "color": "#00c",
             "mode": "clickToTarget",
-            "tooltipDesc": "Heal a single target. Cost: 5 MP",
+            "tooltipDesc": "Automatically healing when health gets too low. Cost: 50 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -273,12 +263,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Stun",
-            "macro": "cast stun",
-            "icon": "knockout",
-            "color": "#990",
+            "name": "Cure",
+            "macro": "cast cure",
+            "icon": "tentacle-heart",
+            "color": "#080",
             "mode": "clickToTarget",
-            "tooltipDesc": "Attempt to stun a single target. Cost: 40 MP",
+            "tooltipDesc": "Heal a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -293,12 +283,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Absorption",
-            "macro": "cast absorption",
-            "icon": "magic-swirl",
-            "color": "#a0a",
+            "name": "Stun",
+            "macro": "cast stun",
+            "icon": "knockout",
+            "color": "#990",
             "mode": "clickToTarget",
-            "tooltipDesc": "Absorb all types of magic. Cost: 100 MP",
+            "tooltipDesc": "Attempt to stun a single target. Cost: 40 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -313,6 +303,26 @@
             "requiresLearn": true
         },
         {
+            "name": "EnergyWave",
+            "macro": "cast energywave",
+            "icon": "beams-aura",
+            "color": "#000080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 40 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Absorption",
+            "macro": "cast absorption",
+            "icon": "magic-swirl",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Absorb all types of magic. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "BarWater",
             "macro": "cast barwater",
             "icon": "rosa-shield",
@@ -323,22 +333,22 @@
             "requiresLearn": true
         },
         {
-            "name": "EnergyWave",
-            "macro": "cast energywave",
-            "icon": "beams-aura",
-            "color": "#000080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 80 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "FireMist",
             "macro": "cast firemist",
             "icon": "kaleidoscope-pearls",
             "color": "#DC143C",
             "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 40 MP",
+            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 35 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MagicBolt",
+            "macro": "cast bolt",
+            "icon": "burning-dot",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 10 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -348,7 +358,7 @@
             "icon": "kaleidoscope-pearls",
             "color": "#000080",
             "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 40 MP",
+            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -383,6 +393,39 @@
             "requiresLearn": true
         },
         {
+            "name": "Rage Stance",
+            "macro": "stance rage",
+            "icon": "swords-power",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 14 (Warrior).",
+            "requiresBaseClass": "Warrior",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Parry Stance",
+            "macro": "stance parry",
+            "icon": "surrounded-shield",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more defensive, but lose offensive power. Requires weapon skill 13 (Warrior).",
+            "requiresBaseClass": "Warrior",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Taunt Stance",
+            "macro": "stance taunt",
+            "icon": "enrage",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more boisterous, taunting foes but losing offense and defense. Requires weapon skill 15 (Warrior).",
+            "requiresBaseClass": "Warrior",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Darkness",
             "macro": "cast darkness",
             "icon": "dust-cloud",
@@ -393,22 +436,22 @@
             "requiresLearn": true
         },
         {
-            "name": "DarkVision",
-            "macro": "cast darkvision",
-            "icon": "angry-eyes",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See in the darkness. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Disease",
             "macro": "cast disease",
             "icon": "death-juice",
             "color": "#0a0",
             "mode": "clickToTarget",
             "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "DarkVision",
+            "macro": "cast darkvision",
+            "icon": "angry-eyes",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See in the darkness. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -481,39 +524,6 @@
             "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
             "isSystem": true,
             "requiresLearn": true
-        },
-        {
-            "name": "Parry Stance",
-            "macro": "stance parry",
-            "icon": "surrounded-shield",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more defensive, but lose offensive power. Requires weapon skill 13 (Warrior).",
-            "requiresBaseClass": "Warrior",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Rage Stance",
-            "macro": "stance rage",
-            "icon": "swords-power",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 14 (Warrior).",
-            "requiresBaseClass": "Warrior",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Taunt Stance",
-            "macro": "stance taunt",
-            "icon": "enrage",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more boisterous, taunting foes but losing offense and defense. Requires weapon skill 15 (Warrior).",
-            "requiresBaseClass": "Warrior",
-            "isSystem": true,
-            "requiresLearn": false
         }
     ]
 }
