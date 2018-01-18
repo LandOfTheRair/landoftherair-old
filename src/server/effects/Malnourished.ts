@@ -6,17 +6,6 @@ import { Player } from '../../shared/models/player';
 
 export class Malnourished extends SpellEffect {
 
-  stats = {
-    hpregen: -1,
-    mpregen: -1,
-    str: -1,
-    dex: -1,
-    agi: -1,
-    int: -1,
-    wis: -1,
-    wil: -1
-  };
-
   iconData = {
     name: 'meal',
     color: '#f00',
@@ -32,16 +21,38 @@ export class Malnourished extends SpellEffect {
   effectStart(char: Player) {
     this.effectMessage(char, 'You feel like your body is wasting away.');
 
-    Object.keys(this.stats || {}).forEach(stat => {
-      char.gainStat(<StatName>stat, this.stats[stat]);
+    const stats = {
+      hpregen: 1,
+      mpregen: 1,
+      str: 1,
+      dex: 1,
+      agi: 1,
+      int: 1,
+      wis: 1,
+      wil: 1
+    };
+
+    Object.keys(stats).forEach(stat => {
+      char.loseStat(<StatName>stat, stats[stat]);
     });
   }
 
   effectEnd(char: Player) {
     this.effectMessage(char, 'Your body feels better.');
 
-    Object.keys(this.stats || {}).forEach(stat => {
-      char.loseStat(<StatName>stat, this.stats[stat]);
+    const stats = {
+      hpregen: 1,
+      mpregen: 1,
+      str: 1,
+      dex: 1,
+      agi: 1,
+      int: 1,
+      wis: 1,
+      wil: 1
+    };
+
+    Object.keys(stats).forEach(stat => {
+      char.gainStat(<StatName>stat, stats[stat]);
     });
   }
 }
