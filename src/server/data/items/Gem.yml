@@ -3,14 +3,14 @@
   value: 300
   sprite: 213
   stats:
-    armorClass: 1
+    armorClass: 2
 
 - name: Antanian Small Green Gem
   desc: "a small green gem"
   value: 500
   sprite: 242
   stats:
-    hp: 10
+    hp: 15
 
 - name: Antanian Big Green Gem
   desc: "a big green gem"
@@ -24,7 +24,7 @@
   value: 700
   sprite: 244
   stats:
-    mp: 10
+    mp: 15
 
 - name: Antanian Big Red Gem
   desc: "a big red gem"
@@ -38,10 +38,10 @@
   value: 5000
   sprite: 247
   stats:
-    hp: 5
-    mp: 5
-    perception: 1
-    physicalResist: 1
+    hp: 7
+    mp: 7
+    perception: 2
+    physicalResist: 2
     magicalResist: 1
 
 - name: Antanian Emerald Chunk
@@ -49,7 +49,7 @@
   value: 2500
   sprite: 246
   stats:
-    physicalResist: 4
+    physicalResist: 3
 
 - name: Antanian Raw Jade
   desc: "a chunk of raw jade"
@@ -70,7 +70,7 @@
   value: 1200
   sprite: 312
   stats:
-    magicalResist: 4
+    magicalResist: 3
 
 - name: Antanian White Pearl
   desc: "a large white pearl"
@@ -91,7 +91,7 @@
   value: 3500
   sprite: 315
   stats:
-    accuracy: 1
+    accuracy: 3
 
 - name: Antanian MagicMissile Black Pearl
   desc: "a small black pearl radiating with magical energy"
@@ -126,7 +126,7 @@
   value: 6000
   sprite: 243
   stats:
-    healingBoost: 5
+    healingBoost: 10
     defense: 1
     offense: -1
 
@@ -135,6 +135,6 @@
   value: 6000
   sprite: 213
   stats:
-    magicalDamageBoost: 3
+    magicalDamageBoost: 4
     defense: 1
     offense: -1
