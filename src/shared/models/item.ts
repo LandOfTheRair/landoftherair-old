@@ -352,8 +352,13 @@ export class Item {
     }
 
     if(this.itemClass === 'Box') {
+      if(this.containedItems.length === 0) return false;
+
+      const containedItems = this.containedItems;
+      this.containedItems = [];
+
       const hand = char.rightHand === this ? 'RightHand' : 'LeftHand';
-      LootHelper.rollSingleTable(this.containedItems, char.$$room).then(items => {
+      LootHelper.rollSingleTable(containedItems, char.$$room).then(items => {
         const setItem = items[0];
         char[`set${hand}`](setItem);
 
