@@ -408,8 +408,11 @@ export class Character {
     this.recalculateStats();
   }
 
-  canGetBonusFromItemInHand(item) {
-    return this.checkCanEquipWithoutGearCheck(item) && includes(GivesBonusInHandItemClasses, item.itemClass);
+  canGetBonusFromItemInHand(item): boolean {
+    if(item.itemClass === 'Shield' && this.rightHand === item) return false;
+
+    return this.checkCanEquipWithoutGearCheck(item)
+        && includes(GivesBonusInHandItemClasses, item.itemClass);
   }
 
   recalculateStats() {
