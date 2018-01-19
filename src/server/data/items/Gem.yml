@@ -19,6 +19,9 @@
   stats:
     defense: 1
 
+  requirements:
+    level: 4
+
 - name: Antanian Small Red Gem
   desc: "a small red gem"
   value: 700
@@ -32,6 +35,9 @@
   sprite: 245
   stats:
     offense: 1
+
+  requirements:
+    level: 4
 
 - name: Antanian Diamond
   desc: "a roughly-cut diamond"
@@ -51,12 +57,18 @@
   stats:
     physicalResist: 3
 
+  requirements:
+    level: 7
+
 - name: Antanian Raw Jade
   desc: "a chunk of raw jade"
   value: 1500
   sprite: 310
   stats:
     con: 1
+
+  requirements:
+    level: 7
 
 - name: Antanian Carved Jade
   desc: "a chunk of jade finely-carved into the shape of a scarab"
@@ -71,6 +83,9 @@
   sprite: 312
   stats:
     magicalResist: 3
+
+  requirements:
+    level: 7
 
 - name: Antanian White Pearl
   desc: "a large white pearl"
@@ -103,14 +118,20 @@
       potency: 5
       chance: 10
 
+  requirements:
+    level: 5
+
 - name: Tower Thief Gem
   desc: "a slight black pearl bathed in shadows"
   value: 6000
   sprite: 315
   stats:
     stealth: 2
-    physicalDamageBoost: 3
+    physicalDamageBoost: 4
     perception: -1
+
+  requirements:
+    level: 11
 
 - name: Tower Warrior Gem
   desc: "a crimson gem forged by the intense pressure of combat"
@@ -121,6 +142,9 @@
     defense: 1
     armorClass: -1
 
+  requirements:
+    level: 11
+
 - name: Tower Healer Gem
   desc: "an emerald gem bathed in a faint amber glow"
   value: 6000
@@ -130,6 +154,9 @@
     defense: 1
     offense: -1
 
+  requirements:
+    level: 11
+
 - name: Tower Mage Gem
   desc: "a violet gem pulsating with magical energy"
   value: 6000
@@ -138,3 +165,6 @@
     magicalDamageBoost: 4
     defense: 1
     offense: -1
+
+  requirements:
+    level: 11

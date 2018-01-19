@@ -452,6 +452,7 @@ export const EncrusterResponses = (npc: NPC) => {
       if(!player.rightHand.isOwnedBy(player)) return 'That item does not belong to you!';
       if(!player.leftHand || player.leftHand.itemClass !== 'Gem') return 'You must hold a gem in your left hand!';
       if(!player.leftHand.isOwnedBy(player)) return 'That gem does not belong to you!';
+      if(!player.leftHand.canUseInCombat(player)) return 'You cannot use that gem!';
 
       const cost = player.leftHand.value + player.rightHand.value + 500;
 
