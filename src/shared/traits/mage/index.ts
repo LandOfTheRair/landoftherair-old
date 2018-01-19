@@ -2,5 +2,5 @@
 export * from './CalmMind';
 export * from './ForgedFire';
 export * from './FrostedTouch';
-export * from './MagicBoost';
+export * from './ManaPool';
 export * from './MagicFocus';

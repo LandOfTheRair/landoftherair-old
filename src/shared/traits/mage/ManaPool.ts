@@ -1,10 +1,10 @@
 
 import { Trait } from '../../models/trait';
 
-export class MagicBoost extends Trait {
+export class ManaPool extends Trait {
 
-  static baseClass = 'Healer';
-  static traitName = 'MagicBoost';
+  static baseClass = 'Mage';
+  static traitName = 'ManaPool';
   static description = 'Gain additional mana.';
   static icon = 'drink-me';
 

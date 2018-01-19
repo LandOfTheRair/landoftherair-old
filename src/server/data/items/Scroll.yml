@@ -126,9 +126,9 @@
 
 - name: Rune Scroll - Magic Boost I
   sprite: 681
-  desc: "a runic scroll imbued with the empowerment \"Magic Boost I\""
+  desc: "a runic scroll imbued with the empowerment \"Mana Pool I\""
   trait:
-    name: MagicBoost
+    name: ManaPool
     level: 1
   value: 1
 

@@ -1103,7 +1103,7 @@ export class Character {
     this.totalStats.offense += this.getTraitLevel('SwordTricks');
 
     // mage & healer traits
-    this.totalStats.mp += this.getTraitLevel('MagicBoost');
+    this.totalStats.mp += this.getTraitLevel('ManaPool');
     this.totalStats.mpregen += this.getTraitLevel('CalmMind');
 
     // warrior

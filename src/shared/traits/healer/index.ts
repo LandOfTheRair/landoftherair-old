@@ -1,5 +1,5 @@
 
 export * from './CalmMind';
-export * from './MagicBoost';
+export * from './ManaPool';
 export * from './HealingFocus';
 export * from './NecroticFocus';
