@@ -26,7 +26,7 @@ export class Nourishment extends SpellEffect {
 
     const isMalnourished = char.hasEffect('Malnourished');
     if(isMalnourished) {
-      char.unapplyEffect(isMalnourished);
+      char.unapplyEffect(isMalnourished, true);
     }
 
     char.$$hungerTicks = this.duration + (3600 * 6);
