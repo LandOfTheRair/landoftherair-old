@@ -82,7 +82,6 @@ export class SpellEffect extends Effect {
     if(this.casterRef) return;
 
     if(this.skillFlag && skillRef) {
-
       const flaggedSkill = this.skillFlag(caster);
 
       this.potency = caster.calcSkillLevel(flaggedSkill) + 1;
@@ -101,8 +100,9 @@ export class SpellEffect extends Effect {
 
   magicalAttack(caster, ref, opts: any = {}) {
     opts.effect = this;
-    opts.skillRef = opts.skillRef || {};
-    opts.skillRef.flagSkills = this.skillFlag(caster);
+    if(opts.skillRef) {
+      opts.skillRef.flagSkills = this.skillFlag(caster);
+    }
 
     // trap casters do not have uuid
     if(!caster.uuid) caster = ref;
