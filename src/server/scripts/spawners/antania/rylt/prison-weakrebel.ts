@@ -11,7 +11,7 @@ export class RyltPrisonWeakRebelSpawner extends Spawner {
     super(room, opts, {
       respawnRate: 20,
       initialSpawn: 2,
-      maxCreatures: 3,
+      maxCreatures: 4,
       spawnRadius: 0,
       randomWalkRadius: 15,
       leashRadius: 25,

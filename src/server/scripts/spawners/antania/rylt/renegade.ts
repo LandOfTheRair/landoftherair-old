@@ -12,7 +12,7 @@ export class RyltRenegadeMonsterSpawner extends Spawner {
   constructor(room, opts) {
     super(room, opts, {
       respawnRate: 45,
-      initialSpawn: 1,
+      initialSpawn: 2,
       maxCreatures: 6,
       spawnRadius: 1,
       randomWalkRadius: 25,
