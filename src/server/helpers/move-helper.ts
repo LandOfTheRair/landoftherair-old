@@ -158,7 +158,7 @@ export class MoveHelper {
     if(requireParty && !player.party) return player.sendClientMessage('You must gather your party before venturing forth.');
 
     // check if player has a held item
-    if(requireHeld && !player.hasHeldItem(requireHeld)) return;
+    if(requireHeld && !player.hasHeldItem(requireHeld, 'left') && !player.hasHeldItem(requireHeld, 'right')) return;
 
     // check if player has a quest (and the corresponding quest progress, if necessary)
     if(requireQuest) {
