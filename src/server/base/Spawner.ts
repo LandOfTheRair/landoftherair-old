@@ -309,7 +309,12 @@ export class Spawner {
         return;
       }
 
-      if(this.$$isStayingSlow) return;
+      if(this.$$isStayingSlow) {
+        if(npc.isDead()) {
+          npc.tick();
+        }
+        return;
+      }
 
       npc.tick(canMove);
       npc.$$room.state.calculateFOV(npc);
