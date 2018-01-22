@@ -47,7 +47,9 @@ export class MacroBarsComponent implements OnInit {
 
     if(!this.macroService.allMacroGroups) this.macroService.allMacroGroups = {};
     // this is manual because there will be more default macros but not all of them get added to group
-    if(!this.macroService.allMacroGroups.default) this.macroService.resetDefaultMacros();
+    if(!this.macroService.allMacroGroups.default || this.macroService.allMacroGroups.default.length === 0) {
+      this.macroService.resetDefaultMacros();
+    }
 
     if(!this.selectedMacro) {
       this.setSelectedMacro('Attack');
