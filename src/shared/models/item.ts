@@ -317,7 +317,7 @@ export class Item {
     if(!skill) skill = { name: 'Martial', level: -1 };
 
     return baseCondition
-        && level < char.level
+        && level <= char.level
         && alignment === char.alignment
         && char.calcSkillLevel(skill.name) >= skill.level
         && includes(profession, char.baseClass);
