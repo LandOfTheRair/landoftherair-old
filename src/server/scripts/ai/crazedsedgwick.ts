@@ -6,9 +6,9 @@ import { CombatHelper } from '../../helpers/combat-helper';
 
 const blast = (npc: NPC) => {
   const msgObject = { name: npc.name, message: `HIYAAAAAAAAAH! Take THIS!`, subClass: 'chatter' };
-  npc.sendClientMessageToRadius(msgObject, 6);
+  npc.sendClientMessageToRadius(msgObject, 10);
 
-  const players = npc.$$room.state.getPlayersInRange(npc, 7);
+  const players = npc.$$room.state.getPlayersInRange(npc, 10);
 
   players.forEach(player => {
     if(player.x === 21 && player.y === 6) {
@@ -60,8 +60,8 @@ export const tick = (npc: NPC, canMove) => {
 
 export const death = (npc: NPC, killer: Character) => {
   const msgObject = { name: npc.name, message: `Curse you, ${killer.name}! Curse you to your grave!`, subClass: 'chatter' };
-  npc.sendClientMessageToRadius(msgObject, 6);
-  npc.sendClientMessageToRadius('You hear a lock click in the distance.', 6);
+  npc.sendClientMessageToRadius(msgObject, 50);
+  npc.sendClientMessageToRadius('You hear a lock click in the distance.', 50);
 
   npc.$$room.state.getInteractableByName('Chest Door').properties.requireLockpick = false;
 };
