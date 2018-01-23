@@ -174,6 +174,7 @@ export class ColyseusGameService {
       this.worldRoom.listen('playerHash/:id/y', updateSpecificAttr.bind(this, 'y'));
       this.worldRoom.listen('playerHash/:id/dir', updateSpecificAttr.bind(this, 'dir'));
       this.worldRoom.listen('playerHash/:id/swimLevel', updateSpecificAttr.bind(this, 'swimLevel'));
+      this.worldRoom.listen('playerHash/:id/partyName', updateSpecificAttr.bind(this, 'partyName'));
 
       this.worldRoom.listen('playerHash/:id/agro/:player', updateAgro);
 
@@ -730,6 +731,8 @@ export class ColyseusGameService {
 
   public hostilityLevelFor(compare: Character): 'hostile'|'neutral'|'friendly' {
     const me = this.character;
+
+    if(me.partyName && me.partyName === (<Player>compare).partyName) return 'neutral';
 
     if(compare.agro[me.uuid]
     || me.agro[compare.uuid]) return 'hostile';
