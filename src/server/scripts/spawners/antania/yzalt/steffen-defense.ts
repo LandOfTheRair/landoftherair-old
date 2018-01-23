@@ -22,7 +22,7 @@ export class SteffenDefenseSpawner extends Spawner {
 
   isActive() {
     const minute = new Date().getMinutes();
-    return minute > 0 && minute < 15;
+    return (minute >= 0 && minute <= 15) || (minute >= 30 && minute <= 45);
   }
 
 }

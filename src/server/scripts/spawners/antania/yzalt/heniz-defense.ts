@@ -22,7 +22,7 @@ export class HenizDefenseSpawner extends Spawner {
 
   isActive() {
     const minute = new Date().getMinutes();
-    return minute > 30 && minute < 45;
+    return (minute >= 15 && minute <= 30) || (minute >= 45 && minute <= 59);
   }
 
 }
