@@ -105,7 +105,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('password')
     .set('syntax', '<string:password*>')
     .set('logic', (args, { player }) => {
-      const password = values(args)[0];
+      const password = (values(args)[0] || '').trim();
 
       const henizProgress = player.getQuestData(HenizFindSedgwick);
       const steffenProgress = player.getQuestData(SteffenFindSedgwick);
@@ -118,7 +118,7 @@ export const responses = (npc: NPC) => {
       }
 
       if(henizProgress) {
-        if(henizProgress.keyword !== password) return 'Huh? What is that supposed to mean?';
+        if(henizProgress.keyword !== password) return 'What nonsense are you spouting?';
 
         HenizFindSedgwick.updateProgress(player, { foundSedgwick: true });
         return `Ah, you\'ve spoken with Ergorat. That was a phrase we used to communicate secretly, back when we were, you know, on the same side.
