@@ -348,23 +348,26 @@ export class Player extends Character {
     }
   }
 
-  revive() {
-    if(!this.isDead()) return;
+  private reviveHandler() {
 
     if(this.$$corpseRef) {
       this.$$room.removeCorpse(this.$$corpseRef);
       this.$$corpseRef = null;
     }
+
     this.dir = 'S';
+
+    this.tryToCastEquippedEffects();
+  }
+
+  revive() {
+    if(!this.isDead()) return;
+
+    this.reviveHandler();
   }
 
   restore(force = false) {
     if(!this.isDead()) return;
-
-    if(this.$$corpseRef) {
-      this.$$room.removeCorpse(this.$$corpseRef);
-      this.$$corpseRef = null;
-    }
 
     if(force) {
       this.sendClientMessage('You feel a churning sensation.');
@@ -372,10 +375,8 @@ export class Player extends Character {
       if(this.stats.agi > 5 && random(1, 5) === 1) this.stats.agi--;
     }
 
-    this.tryToCastEquippedEffects();
-
     this.hp.set(1);
-    this.dir = 'S';
+    this.reviveHandler();
     this.teleportToRespawnPoint();
   }
 
