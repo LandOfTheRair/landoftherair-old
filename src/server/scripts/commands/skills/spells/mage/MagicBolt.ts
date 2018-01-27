@@ -9,7 +9,7 @@ export class MagicBolt extends Skill {
 
   static macroMetadata = {
     name: 'MagicBolt',
-    macro: 'cast bolt',
+    macro: 'cast magicbolt',
     icon: 'burning-dot',
     color: '#0059bd',
     mode: 'lockActivation',
