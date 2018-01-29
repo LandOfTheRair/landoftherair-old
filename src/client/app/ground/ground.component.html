@@ -10,6 +10,7 @@
         [size]="size"
         [showValue]="currentGround[type][0].itemClass === 'Coin'"
         [item]="currentGround[type][0]"
+        [overrideValue]="currentGround[type][0].itemClass === 'Coin' ? currentGround[type][0].value + 'g' : 0"
         [count]="currentGround[type][0].itemClass === 'Coin' ? 0 : currentGround[type].length"
         (click)="selectedType = type"></app-item>
     </div>
@@ -22,6 +23,7 @@
               [item]="item"
               [size]="size"
               [showValue]="item.itemClass === 'Coin'"
+              [overrideValue]="item.itemClass === 'Coin' ? item.value + 'g' : 0"
               [showOunces]="true"
               [showBackground]="true"
               [showDesc]="true"></app-item>

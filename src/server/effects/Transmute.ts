@@ -37,7 +37,7 @@ export class Transmute extends SpellEffect {
 
         const value = caster.sellValue(item) * valuePercent / 100;
         runningTotal += Math.max(value, 1);
-        caster.$$room.state.removeItemFromGround(item);
+        caster.$$room.removeItemFromGround(item);
       });
     });
 
