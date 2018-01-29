@@ -288,12 +288,17 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
-  private async savePlayer(player: Player, extraOpts = {}) {
+  private async savePlayer(player: Player, extraOpts: any = {}) {
     if(player.$$doNotSave) return;
 
     const savePlayer = player.toSaveObject();
     savePlayer.fov = null;
     savePlayer._party = null;
+
+    // cross-map teleport
+    if(extraOpts.x && extraOpts.y) {
+      savePlayer.inGame = false;
+    }
 
     extend(savePlayer, extraOpts);
 
@@ -487,7 +492,7 @@ export class GameWorld extends Room<GameState> {
     if(newMap && player.map !== newMap) {
       player.map = newMap;
       this.prePlayerMapLeave(player);
-      await this.savePlayer(player, { x, y });
+      await this.savePlayer(player, { x, y, map: newMap });
       player.$$doNotSave = true;
       this.state.resetFOV(player);
       this.send(client, { action: 'change_map', map: newMap, party: player.partyName });

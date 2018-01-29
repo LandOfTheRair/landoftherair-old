@@ -574,6 +574,8 @@ export class ColyseusGameService {
     if(!this.worldRoom) return;
     this.worldRoom.leave();
     delete this.worldRoom;
+
+    this.clientGameState.mapchangeReset();
   }
 
   public quit() {

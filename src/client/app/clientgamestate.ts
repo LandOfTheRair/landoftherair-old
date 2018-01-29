@@ -334,17 +334,22 @@ export class ClientGameState {
 
   reset() {
     this.logMessages = [];
-    this.playerHash = {};
     this.map = {};
     this.mapName = '';
-    this.mapData = { openDoors: {} };
-    this.fov = {};
-    this.darkness = {};
-    this._activeTarget = null;
-    this.mapNPCs = {};
-    this.groundItems = {};
-    this.environmentalObjects = [];
     this.updates = { openDoors: [] };
     this.currentPlayer = null;
+
+    this.mapchangeReset();
+  }
+
+  mapchangeReset() {
+    this.darkness = {};
+    this.groundItems = {};
+    this._activeTarget = null;
+    this.mapNPCs = {};
+    this.environmentalObjects = [];
+    this.fov = {};
+    this.mapData = { openDoors: {} };
+    this.playerHash = {};
   }
 }
