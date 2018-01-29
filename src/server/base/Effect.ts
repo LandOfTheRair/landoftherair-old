@@ -128,15 +128,15 @@ export class StanceEffect extends Effect {
   static isValid(char: Character, weaponClass: string, skillRequired: number): boolean {
     if(char.baseClass !== 'Warrior') return false;
     const item = char.rightHand;
-    if(!item || item.itemClass === 'Martial') return false;
-    if(item.itemClass !== weaponClass) return false;
+    if(!item || item.type === 'Martial') return false;
+    if(item.type !== weaponClass) return false;
     if(item.twoHanded && char.leftHand) return false;
-    if(char.calcSkillLevel(item.itemClass) < skillRequired) return false;
+    if(char.calcSkillLevel(item.type) < skillRequired) return false;
     return true;
   }
 
   cast(char: Character, target: Character, skillRef?: Skill): boolean {
-    this.weaponClass = char.rightHand.itemClass;
+    this.weaponClass = char.rightHand.type;
 
     let foundSelf = false;
 

@@ -112,12 +112,32 @@
             "requiresLearn": false
         },
         {
+            "name": "Attack",
+            "macro": "attack",
+            "icon": "blade-drag",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Physically attack a target with the item in your right hand.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Backstab",
             "macro": "backstab",
             "icon": "backstab",
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Backstab your target from the shadows. Requires Thievery skill 3.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Charge",
+            "macro": "charge",
+            "icon": "running-ninja",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -133,32 +153,12 @@
             "requiresLearn": false
         },
         {
-            "name": "Charge",
-            "macro": "charge",
-            "icon": "running-ninja",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Mug",
             "macro": "mug",
             "icon": "hooded-assassin",
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Mug your target, dealing damage and stealing from them. Requires Thievery skill 7.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Attack",
-            "macro": "attack",
-            "icon": "blade-drag",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Physically attack a target with the item in your right hand.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -213,6 +213,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Autoheal",
+            "macro": "cast autoheal",
+            "icon": "self-love",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Automatically healing when health gets too low. Cost: 50 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "BarNecro",
             "macro": "cast barnecro",
             "icon": "rosa-shield",
@@ -223,12 +233,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Autoheal",
-            "macro": "cast autoheal",
-            "icon": "self-love",
-            "color": "#00c",
+            "name": "Cure",
+            "macro": "cast cure",
+            "icon": "tentacle-heart",
+            "color": "#080",
             "mode": "clickToTarget",
-            "tooltipDesc": "Automatically healing when health gets too low. Cost: 50 MP",
+            "tooltipDesc": "Heal a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -263,12 +273,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Cure",
-            "macro": "cast cure",
-            "icon": "tentacle-heart",
-            "color": "#080",
+            "name": "Stun",
+            "macro": "cast stun",
+            "icon": "knockout",
+            "color": "#990",
             "mode": "clickToTarget",
-            "tooltipDesc": "Heal a single target. Cost: 5 MP",
+            "tooltipDesc": "Attempt to stun a single target. Cost: 40 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -283,12 +293,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Stun",
-            "macro": "cast stun",
-            "icon": "knockout",
-            "color": "#990",
+            "name": "Absorption",
+            "macro": "cast absorption",
+            "icon": "magic-swirl",
+            "color": "#a0a",
             "mode": "clickToTarget",
-            "tooltipDesc": "Attempt to stun a single target. Cost: 40 MP",
+            "tooltipDesc": "Absorb all types of magic. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -303,22 +313,12 @@
             "requiresLearn": true
         },
         {
-            "name": "EnergyWave",
-            "macro": "cast energywave",
-            "icon": "beams-aura",
+            "name": "BarFrost",
+            "macro": "cast barfrost",
+            "icon": "rosa-shield",
             "color": "#000080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Absorption",
-            "macro": "cast absorption",
-            "icon": "magic-swirl",
-            "color": "#a0a",
             "mode": "clickToTarget",
-            "tooltipDesc": "Absorb all types of magic. Cost: 100 MP",
+            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -333,6 +333,16 @@
             "requiresLearn": true
         },
         {
+            "name": "EnergyWave",
+            "macro": "cast energywave",
+            "icon": "beams-aura",
+            "color": "#000080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 40 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "FireMist",
             "macro": "cast firemist",
             "icon": "kaleidoscope-pearls",
@@ -343,8 +353,18 @@
             "requiresLearn": true
         },
         {
+            "name": "MagicMissile",
+            "macro": "cast magicmissile",
+            "icon": "missile-swarm",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "MagicBolt",
-            "macro": "cast bolt",
+            "macro": "cast magicbolt",
             "icon": "burning-dot",
             "color": "#0059bd",
             "mode": "lockActivation",
@@ -363,75 +383,12 @@
             "requiresLearn": true
         },
         {
-            "name": "BarFrost",
-            "macro": "cast barfrost",
-            "icon": "rosa-shield",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MagicMissile",
-            "macro": "cast magicmissile",
-            "icon": "missile-swarm",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Magic Shield",
             "macro": "cast magicshield",
             "icon": "vibrating-shield",
             "color": "#a0a",
             "mode": "clickToTarget",
             "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Rage Stance",
-            "macro": "stance rage",
-            "icon": "swords-power",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 14 (Warrior).",
-            "requiresBaseClass": "Warrior",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Parry Stance",
-            "macro": "stance parry",
-            "icon": "surrounded-shield",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more defensive, but lose offensive power. Requires weapon skill 13 (Warrior).",
-            "requiresBaseClass": "Warrior",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Taunt Stance",
-            "macro": "stance taunt",
-            "icon": "enrage",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more boisterous, taunting foes but losing offense and defense. Requires weapon skill 15 (Warrior).",
-            "requiresBaseClass": "Warrior",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Darkness",
-            "macro": "cast darkness",
-            "icon": "dust-cloud",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -452,6 +409,16 @@
             "color": "#000",
             "mode": "clickToTarget",
             "tooltipDesc": "See in the darkness. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Darkness",
+            "macro": "cast darkness",
+            "icon": "dust-cloud",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -524,6 +491,39 @@
             "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
             "isSystem": true,
             "requiresLearn": true
+        },
+        {
+            "name": "Parry Stance",
+            "macro": "stance parry",
+            "icon": "surrounded-shield",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more defensive, but lose offensive power. Requires weapon skill 13 (Warrior).",
+            "requiresBaseClass": "Warrior",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Rage Stance",
+            "macro": "stance rage",
+            "icon": "swords-power",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 14 (Warrior).",
+            "requiresBaseClass": "Warrior",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Taunt Stance",
+            "macro": "stance taunt",
+            "icon": "enrage",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more boisterous, taunting foes but losing offense and defense. Requires weapon skill 15 (Warrior).",
+            "requiresBaseClass": "Warrior",
+            "isSystem": true,
+            "requiresLearn": false
         }
     ]
 }
