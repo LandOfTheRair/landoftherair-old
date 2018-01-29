@@ -163,7 +163,7 @@ export class CombatHelper {
       damageMin: attackerWeapon.minDamage,
       damageMax: attackerWeapon.maxDamage,
       damageBase: attackerWeapon.baseDamage,
-      damageRolls: Math.max(1, (attackerWeapon.damageRolls || 1) - attackerDamageRolls)
+      damageRolls: Math.max(1, (attackerWeapon.damageRolls || 1) + attackerDamageRolls)
     };
 
     const defenderWeaponAC = defender.getTotalStat('weaponArmorClass');
