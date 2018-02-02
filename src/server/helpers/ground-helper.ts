@@ -30,6 +30,7 @@ export class GroundHelper {
               const now = Date.now();
               const delta = Math.floor((now - i.expiresAt) / 1000);
               Logger.db(`Item ${i.name} has expired @ ${now} (delta: ${delta}sec).`, room.state.mapName, i);
+              room.removeItemFromGround(i);
             }
 
             return expired ? null : new Item(i);
