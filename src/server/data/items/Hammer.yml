@@ -18,7 +18,6 @@
   value: 100
   sprite: 226
 
-
 - name: Tower Hammer Weak
   stats:
     accuracy: -3
