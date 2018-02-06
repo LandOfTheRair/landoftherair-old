@@ -48,6 +48,10 @@ export class SpellforgingContainer extends Container {
     this.items[1] = null;
   }
 
+  clearIngredient() {
+    this.items[1] = null;
+  }
+
   canAccept(item, index?: number) {
     if(index < 0) return false;
     if(index >= 2) return false;

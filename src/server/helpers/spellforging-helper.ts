@@ -79,7 +79,10 @@ export class SpellforgingHelper {
     const item = container.modifyItem;
     const reagent = container.reagent;
 
-    if(random(1, 100) > this.successPercent(player)) return false;
+    if(random(1, 100) > this.successPercent(player)) {
+      container.clearIngredient();
+      return false;
+    }
 
     if(reagent.itemClass === 'Rock') {
       item.enchantLevel = item.enchantLevel || 0;
