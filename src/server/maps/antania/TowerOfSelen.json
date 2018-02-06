@@ -6090,26 +6090,6 @@
                  "y":5888
                 }, 
                 {
-                 "gid":2363,
-                 "height":64,
-                 "id":2248,
-                 "name":"Town Guard Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/town-guard"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2880,
-                 "y":1664
-                }, 
-                {
                  "gid":2406,
                  "height":64,
                  "id":2249,
@@ -7586,6 +7566,26 @@
                  "width":64,
                  "x":2880,
                  "y":5632
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2394,
+                 "name":"Town Guard Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/town-guard"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2880,
+                 "y":1664
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -8022,7 +8022,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2394,
+ "nextobjectid":2395,
  "orientation":"orthogonal",
  "properties":
     {
