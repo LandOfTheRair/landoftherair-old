@@ -324,6 +324,7 @@ export class Lobby extends Room<LobbyState> {
     try {
       await this.discord.login(process.env.DISCORD_SECRET);
       this.discordChannel = this.discord.channels.get(process.env.DISCORD_CHANNEL);
+      this.state.discordConnected = true;
     } catch(e) {
       console.error(e);
       return;

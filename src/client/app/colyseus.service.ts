@@ -57,6 +57,10 @@ export class ColyseusService {
     return this._isConnected;
   }
 
+  get isDiscordConnected() {
+    return this.lobby.lobbyState.discordConnected;
+  }
+
   get username() {
     return this.lobby.myAccount.username;
   }

@@ -12,6 +12,7 @@ export class LobbyState {
   accounts: Account[] = [];
   messages: Message[] = [];
   motd: string;
+  discordConnected: boolean;
 
   @nonenumerable
   account$ = new BehaviorSubject<Account[]>([]);

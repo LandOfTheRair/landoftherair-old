@@ -122,7 +122,7 @@
        [class.minimized]="minimized['lobby']"
        [class.hidden]="!loggedIn || !colyseus.username || !colyseus.isConnected || (inGame && autoHideLobby)">
     <div class="window-header text-center" #lobbyDrag>
-      Lobby Chat ({{ colyseus.lobby.lobbyState.accounts.length }} Online)
+      Lobby Chat ({{ colyseus.lobby.lobbyState.accounts.length }} Online<span *ngIf="colyseus.isDiscordConnected"> - Discord Connected</span>)
       <em *ngIf="newMessages > 0"> *{{ newMessages }} new message<span *ngIf="newMessages > 1">s</span>!</em>
       <app-minimize-button (click)="minimize('lobby')"></app-minimize-button>
     </div>
