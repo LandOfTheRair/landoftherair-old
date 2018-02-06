@@ -1,4 +1,6 @@
 
+import * as Discord from 'discord.js';
+
 import { Room } from 'colyseus';
 import { LobbyState } from '../../shared/models/lobbystate';
 import { Account } from '../../shared/models/account';
@@ -21,6 +23,9 @@ export class Lobby extends Room<LobbyState> {
   private itemCreator: ItemCreator;
   private partyArbiter: PartyArbiter;
 
+  private discord: Discord.Client;
+  private discordChannel: Discord.Channel;
+
   onInit(opts) {
 
     this.setPatchRate(250);
@@ -33,6 +38,8 @@ export class Lobby extends Room<LobbyState> {
 
     this.loadSettings();
     DB.$players.update({}, { $set: { inGame: -1 } }, { multi: true });
+
+    this.startDiscord();
   }
 
   private async getAccount(userId): Promise<Account> {
@@ -128,10 +135,23 @@ export class Lobby extends Room<LobbyState> {
 
   private sendMessage(client, message) {
     if(!client.username || !client.userId) return;
-    message = truncate(message, { length: 500, omission: '[truncated]' });
-    if(!message || !message.trim()) return;
 
-    this.state.addMessage({ account: client.username, message });
+    this.addMessage({ account: client.username, message }, 'player');
+  }
+
+  private fixTextMessage(message: string): string {
+    return truncate(message, { length: 500, omission: '[truncated]' }).trim();
+  }
+
+  private addMessage({ account, message }, source: 'player'|'discord') {
+    message = this.fixTextMessage(message);
+    if(!message) return;
+
+    this.state.addMessage({ account, message });
+
+    if(source !== 'discord') {
+      this.sendDiscordMessage(account, message);
+    }
   }
 
   private viewCharacter(client, data) {
@@ -298,4 +318,27 @@ export class Lobby extends Room<LobbyState> {
 
   onDispose() {}
 
+  private async startDiscord() {
+    this.discord = new Discord.Client();
+
+    try {
+      await this.discord.login(process.env.DISCORD_SECRET);
+      this.discordChannel = this.discord.channels.get(process.env.DISCORD_CHANNEL);
+    } catch(e) {
+      console.error(e);
+      return;
+    }
+
+    this.discord.on('message', ({ content, channel, author }) => {
+      if(channel.id !== process.env.DISCORD_CHANNEL || author.username === 'LandOfTheRairLobby') return;
+
+      this.addMessage({ message: content, account: `ᐎ ${author.username}` }, 'discord');
+    });
+
+  }
+
+  private sendDiscordMessage(username: string, message: string) {
+    if(!this.discordChannel) return;
+    (<any>this.discordChannel).send(`${username}: ${message}`);
+  }
 }
