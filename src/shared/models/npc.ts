@@ -180,7 +180,9 @@ export class NPC extends Character {
       }
     }
 
-    this.spawner.removeNPC(this);
+    if(this.spawner) {
+      this.spawner.removeNPC(this);
+    }
   }
 
   sendLeashMessage() {

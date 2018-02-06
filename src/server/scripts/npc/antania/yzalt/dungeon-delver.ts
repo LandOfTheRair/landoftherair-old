@@ -128,6 +128,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(player.rightHand && includes(allItems, player.rightHand.name)) {
         return itemFuncs[player.rightHand.name](player);

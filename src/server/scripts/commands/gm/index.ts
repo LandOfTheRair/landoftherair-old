@@ -18,3 +18,4 @@ export * from './GMSettingsUpdate';
 export * from './GMSpawnNPC';
 export * from './GMSummon';
 export * from './GMTeleport';
+export * from './GMTeleportTo';

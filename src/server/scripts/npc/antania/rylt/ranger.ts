@@ -15,13 +15,15 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
       return `Greetings, adventurer. I am the ranger who collects bear meat. You see, I really like bear meat. It was my destiny to collect it. If you can bring me some bear meat, we can help each other. You can SELL it to me, I can UPGRADE your gear, or I can give you an ANTIDOTE to help you with the local wildlife.`;
     });
 
   npc.parser.addCommand('sell')
     .set('syntax', ['sell'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(NPCLoader.checkPlayerHeldItem(player, BEAR_MEAT, 'left')) {
 
@@ -43,7 +45,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('upgrade')
     .set('syntax', ['upgrade'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       const REQUIRED_MEATS = 4;
 
@@ -65,7 +67,7 @@ export const responses = (npc: NPC) => {
         right.stats.offense += 1;
         player.recalculateStats();
 
-        return `Thanks, ${player.name}! I've upgraded your item. And thanks for the meat, heheh.`;
+        return `Thanks, ${player.name}! I've upgraded your ${player.rightHand.itemClass.toLowerCase()}. And thanks for the meat, I'm going to have a good dinner tonight!`;
       }
 
       return `Hold one meat in your left hand, and I'll take that one plus four from your sack. Hold a piece of gear with no offensive adds in your right hand, and it will help you better in combat!`;
@@ -74,7 +76,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('antidote')
     .set('syntax', ['antidote'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(NPCLoader.checkPlayerHeldItem(player, BEAR_MEAT, 'left')) {
 

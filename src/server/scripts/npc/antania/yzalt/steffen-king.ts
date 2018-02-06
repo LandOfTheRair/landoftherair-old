@@ -24,6 +24,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(player.alignment !== 'Good') return 'You are not gleaming with goodness. Remove yourself from my sight.';
       if(player.isHostileTo(npc.allegiance)) return 'Our people do not mesh with your kind.';

@@ -105,7 +105,7 @@ export class NPCLoader {
   }
 
   static takePlayerItem(player: Player, itemName: string, hand: 'left'|'right' = 'right'): boolean {
-    if(player[`${hand}Hand`].name !== itemName) return false;
+    if(!player[`${hand}Hand`] || player[`${hand}Hand`].name !== itemName) return false;
     player[`set${capitalize(hand)}Hand`](null);
     return true;
   }

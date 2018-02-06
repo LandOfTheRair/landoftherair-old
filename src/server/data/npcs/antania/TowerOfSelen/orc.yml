@@ -244,6 +244,10 @@
 
   leftHand: Tower Shield Strong
 
+  drops:
+    - result: Warlord's Key
+      chance: -1
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1

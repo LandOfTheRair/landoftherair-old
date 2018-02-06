@@ -14,23 +14,23 @@
 - result: Tower Warrior Gem
   chance: 1
   maxChance: 2500
-  
+
 - result: Tower Thief Gem
   chance: 1
   maxChance: 2500
-  
+
 - result: Tower Mage Earring
   chance: 1
   maxChance: 3500
-  
+
 - result: Tower Healer Earring
   chance: 1
   maxChance: 3500
-  
+
 - result: Tower Warrior Earring
   chance: 1
   maxChance: 3500
-  
+
 - result: Tower Thief Earring
   chance: 1
   maxChance: 3500
@@ -54,3 +54,7 @@
 - result: Tower Vitals Saucer
   chance: 1
   maxChance: 600
+
+- result: Tower Titanium Chunk
+  chance: 1
+  maxChance: 300

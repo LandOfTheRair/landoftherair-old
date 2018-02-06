@@ -18,35 +18,35 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `Hello, I'm Terwin. Traitor to the crown, betrayer of brothers, you know, whatever. I just want to get OUT of here.`;
     });
 
   npc.parser.addCommand('out')
     .set('syntax', ['out'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `Yes, my brother TONWIN trapped me here. He's the real TRAITOR, if ya ask me.`;
     });
 
   npc.parser.addCommand('traitor')
     .set('syntax', ['traitor'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `TONWIN branded all three of his brothers as traitors. It's scary how a system designed to protect can be perverted so badly.`;
     });
 
   npc.parser.addCommand('tonwin')
     .set('syntax', ['tonwin'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `You could say that I hate my brother. If you bring me PROOF of his death, I can reward you. You'll need my HELP to get to him, though.`;
     });
 
   npc.parser.addCommand('help')
     .set('syntax', ['help'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(NPCLoader.checkPlayerHeldItem(player, GUARD_KEY)) {
         NPCLoader.takePlayerItem(player, GUARD_KEY);
@@ -65,7 +65,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('proof')
     .set('syntax', ['proof'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(NPCLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
         NPCLoader.takePlayerItem(player, TONWIN_SWORD);

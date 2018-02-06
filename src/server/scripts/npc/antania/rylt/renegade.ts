@@ -1,6 +1,5 @@
 import { NPC } from '../../../../../shared/models/npc';
 import { NPCLoader } from '../../../../helpers/npc-loader';
-import { SmithResponses } from '../../common-responses';
 
 const RENEGADE_BOOK = 'Rylt Renegade Book';
 
@@ -16,11 +15,14 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
       if(NPCLoader.checkPlayerHeldItem(player, RENEGADE_BOOK)) {
         NPCLoader.takePlayerItem(player, RENEGADE_BOOK);
 
         NPCLoader.loadItem('Antanian Health Potion')
           .then(item => {
+            item.binds = true;
             player.setRightHand(item);
           });
 

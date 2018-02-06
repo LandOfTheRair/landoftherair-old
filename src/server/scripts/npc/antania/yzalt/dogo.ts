@@ -16,7 +16,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(player.alignment === 'Good') return 'You are already a disciple of good!';
 

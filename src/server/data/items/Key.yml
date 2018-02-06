@@ -3,28 +3,40 @@
   desc: "a key designed for picking locks"
   sprite: 363
   value: 100
+  binds: true
 
 - name: Tutorial Key
   desc: "a silver key inscribed with the word FREEDOM"
   sprite: 357
   value: 1
+  binds: true
 
 - name: Rylt Guard Key
   desc: "a silver key with DO NOT LOSE - T??WIN hastily inscribed onto it"
   sprite: 357
   value: 1
+  binds: true
 
 - name: Rylt Guard Key Enchanted
   desc: "a silver key with DO NOT LOSE - TONWIN hastily inscribed onto it"
   sprite: 357
   value: 1
+  binds: true
 
 - name: Yzalt Sewer Key
   desc: "a silver key that reeks like sewage"
   sprite: 357
   value: 1
+  binds: true
 
 - name: Ranata's Key
   desc: "a silver key with many clawmarks in it"
   sprite: 357
   value: 1
+  binds: true
+
+- name: Warlord's Key
+  desc: "a black key of orcish design"
+  sprite: 363
+  value: 1
+  binds: true

@@ -15,6 +15,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(player.hasQuest(KillSteffen)) {
         if(KillSteffen.isComplete(player)) {
@@ -33,6 +34,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('help')
     .set('syntax', ['help'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `Yes, ${player.name}, I could use your help. You see, we are at war with the Steffen in the north. 
       While our crazed brethren are a problem, the more pressing matter is the Steffen that attack our camp.
       I would like you to help our local defenders out. You could also join our assaulters in attacking their town.
@@ -42,6 +44,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('yes')
     .set('syntax', ['yes'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       player.startQuest(KillSteffen);
 

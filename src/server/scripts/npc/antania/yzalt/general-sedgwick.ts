@@ -21,6 +21,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `Well met, ${player.name}! You might have been led to believe that I perished in the war. As you can see, that's not true.
       To be honest, I was exiled. I threatened to expose the war, and this is the price I paid.
       I have a bed, water, food, and a coffin for when I finally die down here.
@@ -29,7 +30,8 @@ export const responses = (npc: NPC) => {
 
   npc.parser.addCommand('truth')
     .set('syntax', ['truth'])
-    .set('logic', () => {
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `The truth. Yes, the truth. Let's see here. In the not-so-distant future, the Heniz and Steffen were one. 
       A valiant, noble kin. It seems like forever ago now. Then the magical FRUIT started growing.
       Oh boy, was it growing. Before we knew it, it was everywhere nearest the castle.
@@ -38,7 +40,8 @@ export const responses = (npc: NPC) => {
 
   npc.parser.addCommand('fruit')
     .set('syntax', ['fruit'])
-    .set('logic', () => {
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `Those damned, magical apples. No matter what anyone tells you, the WAR happened because of them. 
       They bestowed gifts of powerful magic, but they slowly wore on the sanity of the person eating them. 
       I think the NAMELESS were trying to experiment on us. 
@@ -47,7 +50,8 @@ export const responses = (npc: NPC) => {
 
   npc.parser.addCommand('war')
     .set('syntax', ['war'])
-    .set('logic', () => {
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `The fruit tasted too good. The effects were too great. 
       What is now the Heniz was formed because of their dedication to the dark arts. 
       They stole apples -- too many apples. They craved the knowledge.
@@ -57,7 +61,8 @@ export const responses = (npc: NPC) => {
 
   npc.parser.addCommand('nameless')
     .set('syntax', ['nameless'])
-    .set('logic', () => {
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `Yes, the Nameless. A strange group, they were. Their feet never touched the ground, and they spoke with their minds. They said they had come bearing gifts, and to plant the seeds they had given us in our land, promising prosperity for ages to come. We know nothing of where they came from, and where they went to, just that our society is forever ruined because of them.`;
     });
 
@@ -65,6 +70,7 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['ranata'])
     .set('logic', (args, { player }) => {
 
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(!player.hasQuest(KillRanata)) {
         if(player.hasPermanentCompletionFor('HenizFindSedgwick') || !SteffenFindSedgwick.isComplete(player)) return 'Why are you bringing Ranata up?';
@@ -85,6 +91,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('friend')
     .set('syntax', ['friend'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(!player.hasQuest(KillRanata)) {
         if(player.hasPermanentCompletionFor('SteffenFindSedgwick') || !SteffenFindSedgwick.isComplete(player)) return 'What about my friend?';
@@ -105,6 +112,8 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('password')
     .set('syntax', '<string:password*>')
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
       const password = (values(args)[0] || '').trim();
 
       const henizProgress = player.getQuestData(HenizFindSedgwick);

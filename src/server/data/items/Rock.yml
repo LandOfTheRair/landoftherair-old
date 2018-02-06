@@ -1,6 +1,7 @@
 - name: Antanian Golem Brain
   sprite: 64
   desc: "a fresh brain ripped straight from a rockgolem"
+  binds: true
   value: 100
 
 - name: Enchanting Brick - Enos
@@ -12,3 +13,9 @@
   sprite: 683
   desc: "a shimmering magical brick, overflowing with magical power originating from the rift"
   value: 100
+
+- name: Tower Titanium Chunk
+  sprite: 68
+  desc: "a chunk of raw titanium"
+  binds: true
+  value: 3500

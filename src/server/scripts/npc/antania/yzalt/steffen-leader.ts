@@ -15,6 +15,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(player.hasQuest(KillHeniz)) {
         if(KillHeniz.isComplete(player)) {
@@ -33,6 +34,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('help')
     .set('syntax', ['help'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `Yes, ${player.name}, you can help us greatly - we're at war with the Heniz in the south. 
       They attack our town repeatedly, and our citizens are starting to panic.
       I would like you to help our local defenders out. You could also join our assaulters in attacking their camp.
@@ -42,6 +44,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('yes')
     .set('syntax', ['yes'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       player.startQuest(KillHeniz);
 

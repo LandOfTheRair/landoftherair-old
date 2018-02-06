@@ -16,35 +16,35 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `I'm Takwin, but if you're here, you probably already knew that. Telwin is the only one who knows the way here -- he did DESIGN these prisons, after all.`;
     });
 
   npc.parser.addCommand('design')
     .set('syntax', ['design'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `Telwin is a master architect. I've seen his tribute, his altar, and I've seen what lies beneath here. Whatever it is, it must have POSSESSED Tonwin -- I don't think he could have betrayed us by himself.`;
     });
 
   npc.parser.addCommand('possessed')
     .set('syntax', ['possessed'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `Possessed is the word I would use. Some spirit or ghost or whatever they're called came out of the Altar. It gave Tonwin a murderous look in his eye -- I've never seen anything like it. I'm afraid he must be STOPPED.`;
     });
 
   npc.parser.addCommand('stopped')
     .set('syntax', ['stopped'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `The only way to stop him is to kill him. I wish there were another way. If you can bring me PROOF of his death, I can impart our family memento unto you.`;
     });
 
   npc.parser.addCommand('proof')
     .set('syntax', ['proof'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(NPCLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
         NPCLoader.takePlayerItem(player, TONWIN_SWORD);

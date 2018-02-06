@@ -88,6 +88,7 @@
   sprite: 72
   desc: "a broken spider egg from a war torn spider"
   value: 10
+  binds: true
   effect:
     name: Nourishment
     tooltip: "+1 STR, +1 DEX, +1 AGI"

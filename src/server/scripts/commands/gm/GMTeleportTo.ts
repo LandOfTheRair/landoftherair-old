@@ -3,12 +3,12 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { MessageHelper } from '../../../helpers/message-helper';
 
-export class GMSummon extends Command {
+export class GMTeleportTo extends Command {
 
-  public name = '@summon';
-  public format = 'PlayerName';
+  public name = '@teleportto';
+  public format = 'Charish';
 
-  async execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, gameState, args }) {
     if(!player.isGM) return;
 
     const playerName = args;
@@ -16,19 +16,17 @@ export class GMSummon extends Command {
 
     let found = false;
 
-    room.state.players.forEach(checkTarget => {
+    room.state.allPossibleTargets.forEach(checkTarget => {
       if(found || !MessageHelper.doesTargetMatchSearch(checkTarget, args)) return;
-      room.setPlayerXY(checkTarget, player.x, player.y);
+      room.setPlayerXY(player, checkTarget.x, checkTarget.y);
       checkTarget.z = player.z;
-
       found = true;
 
-      player.sendClientMessage(`Summoning ${checkTarget.name}...`);
+      player.sendClientMessage(`Teleporting to ${checkTarget.name} @ ${checkTarget.x},${checkTarget.y}...`);
     });
 
     if(!found) {
       player.sendClientMessage(`No target matches "${playerName}"`);
     }
-
   }
 }

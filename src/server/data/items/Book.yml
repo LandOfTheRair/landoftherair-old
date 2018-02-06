@@ -2,3 +2,4 @@
   sprite: 406
   desc: "a very well-written novel about renegades and, er, other 'things'"
   value: 1
+  binds: true
