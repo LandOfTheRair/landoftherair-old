@@ -447,12 +447,20 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "itemExpirationHours":0.05,
+     "itemGarbageCollection":1,
+     "maxCreatures":500,
+     "maxSkill":11,
      "region":"GMLand",
      "respawnX":16,
      "respawnY":16
     },
  "propertytypes":
     {
+     "itemExpirationHours":"float",
+     "itemGarbageCollection":"int",
+     "maxCreatures":"int",
+     "maxSkill":"int",
      "region":"string",
      "respawnX":"int",
      "respawnY":"int"

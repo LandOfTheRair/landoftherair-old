@@ -106,7 +106,9 @@ export class Spawner {
 
   async createNPC() {
     if(!this.npcIds || this.npcIds.length === 0) {
-      Logger.error(`No valid npcIds for spawner ${this.constructor.name} at ${this.x}, ${this.y} on ${this.map}`);
+      if(this.x !== 0 && this.y !== 0) {
+        Logger.error(`No valid npcIds for spawner ${this.constructor.name} at ${this.x}, ${this.y} on ${this.map}`);
+      }
       return;
     }
 
