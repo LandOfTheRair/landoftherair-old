@@ -35,7 +35,6 @@ export class Container {
   }
 
   addItem(item: Item, index?: number): string {
-    console.log(this, index);
     const containerName = startCase(this.constructor.name).toLowerCase();
     if(!this.canAccept(item, index)) return `That item does not fit properly in that slot of your ${containerName}.`;
     if(this.isFull() && isUndefined(index)) return `Your ${containerName} is full.`;
