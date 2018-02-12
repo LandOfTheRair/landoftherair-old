@@ -13,7 +13,6 @@
     "start:client": "ng serve -o --host 0.0.0.0 --disable-host-check",
     "build": "ng build",
     "build:prod": "ng build --aot --environment=prod --output-hashing=all --sourcemaps --extract-css --named-chunks=false --extract-licenses",
-    "build:prod:netlify": "npm run task:macros:meta && npm run build:prod",
     "deploy": "npm run test:local && npm run prod:server && npm run prod:deploy",
     "prod:server": "node scripts/compile",
     "prod:deploy": "node scripts/deploy",
