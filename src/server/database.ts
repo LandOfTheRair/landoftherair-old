@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 import { Logger } from './logger';
 
 const DB_URI = process.env.MONGODB_URI;
-if(!DB_URI) {
+if(!DB_URI && !process.env.NO_MONGO) {
   Logger.error('No env.MONGODB_URI set. Set one.');
   process.exit(0);
 }
