@@ -5,3 +5,4 @@ export * from './tradeskill-to-left';
 export * from './tradeskill-to-potion';
 export * from './tradeskill-to-right';
 export * from './tradeskill-to-sack';
+export * from './tradeskill-to-tradeskill';

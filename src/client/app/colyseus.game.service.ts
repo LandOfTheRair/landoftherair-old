@@ -589,9 +589,17 @@ export class ColyseusGameService {
     }
   }
 
+  private canMoveBetweenContainers(context: string, choice: string): boolean {
+    const contextStr = context.substring(0, 1);
+    const choiceStr = choice.substring(0, 1);
+    if(contextStr === choiceStr && contextStr !== 'T') return false;
+
+    return true;
+  }
+
   public buildDropAction({ dragData }, choice) {
     const { context, contextSlot, count, containerUUID, item } = dragData;
-    if(context.substring(0, 1) === choice.substring(0, 1)) return;
+
     this.buildAction(item, { context, contextSlot, count, containerUUID }, choice);
   }
 
@@ -600,7 +608,8 @@ export class ColyseusGameService {
     const choiceStr = choice.substring(0, 1);
     const cmd = `~${contextStr}t${choiceStr}`;
 
-    if(contextStr === choiceStr) return;
+    // tradeskill containers can be dragged around amongst themselves
+    if(!this.canMoveBetweenContainers(context, choice)) return;
 
     let args = '';
     let postargs = '';
@@ -621,6 +630,14 @@ export class ColyseusGameService {
       const [t, skill] = splitcontextargs;
       if(!this['show' + skill]) return;
       postargs = `${skill.toLowerCase()} ${contextSlot} ${this['show' + skill].uuid}`.trim();
+    }
+
+    // INSIDE a tradeskill container
+    if(splitpostargs.length === 3 && splitcontextargs.length === 2) {
+      const [t1, skill1] = splitcontextargs;
+      const [t2, skill2, slot2] = splitpostargs;
+
+      postargs = `${skill1.toLowerCase()} ${contextSlot} ${this['show' + skill1].uuid} ${slot2}`.trim();
     }
 
     if(context === 'Ground') {
