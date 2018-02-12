@@ -508,6 +508,12 @@ export class Player extends Character {
     return this.questProgress[quest.name] || {};
   }
 
+  cancelNonPermanentQuest(quest: Quest) {
+    if(!this.questProgress || !this.hasQuest(quest)) return;
+    delete this.questProgress[quest.name];
+    delete this.activeQuests[quest.name];
+  }
+
   checkForQuestUpdates(questOpts = { kill: '' }) {
 
     if(questOpts.kill) {

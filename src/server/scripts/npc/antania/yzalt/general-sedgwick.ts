@@ -73,7 +73,7 @@ export const responses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(!player.hasQuest(KillRanata)) {
-        if(player.hasPermanentCompletionFor('HenizFindSedgwick') || !SteffenFindSedgwick.isComplete(player)) return 'Why are you bringing Ranata up?';
+        if(player.hasPermanentCompletionFor('HenizFindSedgwick') || !HenizFindSedgwick.isComplete(player)) return 'Why are you bringing Ranata up?';
       }
 
       if(player.rightHand) return 'Please empty your right hand.';
@@ -119,14 +119,14 @@ export const responses = (npc: NPC) => {
       const henizProgress = player.getQuestData(HenizFindSedgwick);
       const steffenProgress = player.getQuestData(SteffenFindSedgwick);
 
-      if(steffenProgress) {
+      if(steffenProgress && steffenProgress.keyword) {
         if(steffenProgress.keyword !== password) return 'Huh? What is that supposed to mean?';
 
         SteffenFindSedgwick.updateProgress(player, { foundSedgwick: true });
         return `So even Kranton wants to take care of my FRIEND? I'd heard rumblings from the Heniz, but it seems like they're united under this one threat...`;
       }
 
-      if(henizProgress) {
+      if(henizProgress && henizProgress.keyword) {
         if(henizProgress.keyword !== password) return 'What nonsense are you spouting?';
 
         HenizFindSedgwick.updateProgress(player, { foundSedgwick: true });
@@ -134,7 +134,7 @@ export const responses = (npc: NPC) => {
         So, he wants RANATA taken care of?`;
       }
 
-      return 'Huh? What is that supposed to mean?';
+      return 'Huh? Yes, that is indeed a word...?';
     });
 
 };

@@ -4,6 +4,7 @@ import { HenizFindSedgwick } from '../../../../quests/antania/Yzalt/HenizFindSed
 
 import { sample } from 'lodash';
 import { KillRanata } from '../../../../quests/antania/Yzalt/KillRanata';
+import { SteffenFindSedgwick } from '../../../../quests/antania/Yzalt/SteffenFindSedgwick';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
@@ -81,6 +82,7 @@ export const responses = (npc: NPC) => {
       if(!player.isFriendlyTo(npc.allegiance)) return 'Who are you? I only speak with known heroes of our people.';
 
       player.startQuest(HenizFindSedgwick);
+      player.cancelNonPermanentQuest(SteffenFindSedgwick);
 
       const keyword = sample(allKeywords);
       HenizFindSedgwick.updateProgress(player, { keyword });
