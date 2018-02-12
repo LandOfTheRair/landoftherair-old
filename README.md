@@ -25,7 +25,6 @@ First, create a [`.env`](https://www.npmjs.com/package/dotenv) file in the root.
 * `MONGODB_URI` - the URI that leads to a mongodb instance
 * `AUTH0_SECRET` - Auth0 server secret
 * `REDIS_URL` - a URI that leads to a redis cache
-* `DEEPSTREAM_URL` - a URI that points to a Deepstream instance
 
 ## Setup
 
