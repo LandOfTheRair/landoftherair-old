@@ -44,16 +44,6 @@ For subsequent updates and specific changes, you can run these instead:
 * `npm run task:drops` - this will populate the database with drop table data
 * `npm run task:macros`- this will generate the macro icon metadata. If you add new icons, please only take from [my repository](http://seiyria.com/gameicons-font/).
 
-### Deepstream 
-
-You'll need to set up a web task somewhere on http://webtask.io with the contents of `src/auth/deepstream.auth.js`. You'll then need to create a token (any random string will do) and set that as your `DEEPSTREAM_TOKEN` env variable as well as your `SERVER_TOKEN` secret on the webtask. Afterwards, you can start your Deepstream server using:
-
-```
-DEEPSTREAM_AUTH_URL=yoururl npm run start:deepstream
-```
-
-You will need Deepstream running for most of the game to work.
-
 ## Making Yourself a GM
 
 If you want to do any debugging, you'll need to make yourself a GM. To do that, you'll want to set your account to be a GM. Open up a mongo shell or run this query through an external tool:
