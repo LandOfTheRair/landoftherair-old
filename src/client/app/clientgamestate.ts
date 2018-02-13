@@ -345,6 +345,7 @@ export class ClientGameState {
   mapchangeReset() {
     this.darkness = {};
     this.groundItems = {};
+    this.updateGround$.next({});
     this._activeTarget = null;
     this.mapNPCs = {};
     this.environmentalObjects = [];
