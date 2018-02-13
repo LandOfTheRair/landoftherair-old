@@ -190,6 +190,7 @@ popover-container {
 }
 
 a {
+  cursor: pointer;
   color: lighten(#00254d, 40%);
 
   &:hover {
