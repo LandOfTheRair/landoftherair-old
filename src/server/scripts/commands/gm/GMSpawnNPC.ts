@@ -2,7 +2,6 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { merge } from 'lodash';
-import { Spawner } from '../../../base/Spawner';
 import { NPCLoader } from '../../../helpers/npc-loader';
 
 export class GMSpawnNPC extends Command {
@@ -32,7 +31,8 @@ export class GMSpawnNPC extends Command {
       randomWalkRadius: 10,
       leashRadius: 50,
       shouldStrip: false,
-      stripOnSpawner: true
+      stripOnSpawner: true,
+      removeWhenNoNPCs: true
     };
 
     const defaultNpc = {
@@ -51,8 +51,7 @@ export class GMSpawnNPC extends Command {
 
     spawnerOpts.npcIds = [npcId];
 
-    const spawner = new Spawner(room, player, spawnerOpts);
-    room.addSpawner(spawner);
+    player.$$room.createSpawner(spawnerOpts, player);
 
   }
 }

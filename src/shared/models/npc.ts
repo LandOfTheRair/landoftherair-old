@@ -6,6 +6,7 @@ import { Item } from './item';
 import * as uuid from 'uuid/v4';
 import { CharacterHelper } from '../../server/helpers/character-helper';
 import { DeathHelper } from '../../server/helpers/death-helper';
+import { Player } from './player';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 
@@ -133,6 +134,10 @@ export class NPC extends Character {
   }
 
   kill(dead) {
+    if(this.$$owner) {
+      this.$$owner.kill(dead, { isPetKill: true });
+    }
+
     if(this.$$shouldStrip) {
 
       let stripPoint = this.spawner;
@@ -145,18 +150,25 @@ export class NPC extends Character {
     }
   }
 
-  die(killer) {
-    super.die(killer);
+  die(killer, silent = false) {
+    super.die(killer, silent);
+
+    if(silent) return;
 
     if(!this.spawner) return false;
-
-    const giveXp = this.giveXp || { min: 1, max: 10 };
 
     if(this.$$ai && this.$$ai.death) {
       this.$$ai.death.dispatch(this, killer);
     }
 
     if(killer) {
+
+      const giveXp = this.giveXp || { min: 1, max: 10 };
+
+      if(killer.$$owner) {
+        killer.$$owner.gainExpFromKills(this.$$room.calcAdjustedXPGain(random(giveXp.min, giveXp.max)));
+        return false;
+      }
 
       if(killer.username) {
         this.repMod.forEach(({ allegiance, delta }) => {

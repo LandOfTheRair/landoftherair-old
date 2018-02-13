@@ -21,6 +21,7 @@ import { PartyHelper } from '../../server/helpers/party-helper';
 import { Malnourished } from '../../server/effects/Malnourished';
 import { AlchemyContainer } from './container/tradeskills/alchemy';
 import { SpellforgingContainer } from './container/tradeskills/spellforging';
+import { NPC } from './npc';
 
 export class Player extends Character {
   @nonenumerable
@@ -197,7 +198,7 @@ export class Player extends Character {
     this.$$flaggedSkills = skills;
   }
 
-  kill(target: Character) {
+  kill(target: Character, opts: { isPetKill } = { isPetKill: false }) {
     this.$$actionQueue = reject(this.$$actionQueue, ({ args }) => includes(args, target.uuid));
 
     const npcId = (<any>target).npcId;
@@ -209,8 +210,10 @@ export class Player extends Character {
       }
     }
 
-    const skillGain = target.skillOnKill;
-    this.gainSkillFromKills(skillGain);
+    if(!opts.isPetKill) {
+      const skillGain = target.skillOnKill;
+      this.gainSkillFromKills(skillGain);
+    }
 
   }
 

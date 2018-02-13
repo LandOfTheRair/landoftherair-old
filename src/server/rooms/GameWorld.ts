@@ -283,7 +283,7 @@ export class GameWorld extends Room<GameState> {
     this.state.removeNPC(npc);
 
     this.broadcast({
-      action: 'removeNPC',
+      action: 'remove_npc',
       npcUUID: npc.uuid
     });
   }
@@ -611,8 +611,17 @@ export class GameWorld extends Room<GameState> {
     }
   }
 
+  public createSpawner(spawnerOpts, locRef) {
+    const spawner = new Spawner(this, locRef, spawnerOpts);
+    this.addSpawner(spawner);
+  }
+
   public addSpawner(spawner: Spawner) {
     this.spawners.push(spawner);
+  }
+
+  public removeSpawner(spawner: Spawner) {
+    pull(this.spawners, spawner);
   }
 
   private loadNPCsFromMap() {

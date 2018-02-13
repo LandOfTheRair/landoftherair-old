@@ -18,7 +18,6 @@ import { Effect } from '../../server/base/Effect';
 import * as Effects from '../../server/effects';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
-import { VisualEffect } from '../../server/gidmetadata/visual-effects';
 import { MoveHelper } from '../../server/helpers/move-helper';
 import { nonenumerable } from 'nonenumerable';
 import { CharacterHelper } from '../../server/helpers/character-helper';
@@ -245,6 +244,12 @@ export class Character {
 
   alignment: Alignment = 'Neutral';
   allegianceReputation: any = {};
+
+  @nonenumerable
+  public $$pet: Character;
+
+  @nonenumerable
+  public $$owner: Character;
 
   get isInCombat() {
     return this.combatTicks > 0;
@@ -737,7 +742,7 @@ export class Character {
     Classes[this.baseClass].becomeClass(this);
   }
 
-  kill(dead: Character) {}
+  kill(dead: Character, opts: { isPetKill: boolean } = { isPetKill: false }) {}
 
   flagSkill(skills) {}
 
@@ -758,11 +763,17 @@ export class Character {
     this.recalculateStats();
   }
 
-  die(killer?: Character) {
+  die(killer?: Character, silent = false) {
     this.dir = 'C';
     this.clearEffects();
 
     this.$$deathTicks = 60;
+
+    if(silent) {
+      this.hp.toMinimum();
+      this.$$deathTicks = 5;
+      this.$$owner.$$pet = null;
+    }
   }
 
   revive() {}

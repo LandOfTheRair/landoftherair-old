@@ -253,22 +253,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Regen",
-            "macro": "cast regen",
-            "icon": "star-swirl",
-            "color": "#00c",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Revive",
             "macro": "cast revive",
             "icon": "quicksand",
             "color": "#080",
             "mode": "autoActivate",
             "tooltipDesc": "Revive a single player on your tile. Cost: 50 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Regen",
+            "macro": "cast regen",
+            "icon": "star-swirl",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -323,6 +323,16 @@
             "requiresLearn": true
         },
         {
+            "name": "EnergyWave",
+            "macro": "cast energywave",
+            "icon": "beams-aura",
+            "color": "#000080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 40 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "BarWater",
             "macro": "cast barwater",
             "icon": "rosa-shield",
@@ -333,12 +343,12 @@
             "requiresLearn": true
         },
         {
-            "name": "EnergyWave",
-            "macro": "cast energywave",
-            "icon": "beams-aura",
-            "color": "#000080",
+            "name": "FindFamiliar",
+            "macro": "cast findfamiliar",
+            "icon": "eagle-emblem",
+            "color": "#0aa",
             "mode": "autoActivate",
-            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 40 MP",
+            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -353,12 +363,12 @@
             "requiresLearn": true
         },
         {
-            "name": "MagicMissile",
-            "macro": "cast magicmissile",
-            "icon": "missile-swarm",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
+            "name": "IceMist",
+            "macro": "cast icemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -373,12 +383,12 @@
             "requiresLearn": true
         },
         {
-            "name": "IceMist",
-            "macro": "cast icemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
+            "name": "MagicMissile",
+            "macro": "cast magicmissile",
+            "icon": "missile-swarm",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -393,12 +403,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Disease",
-            "macro": "cast disease",
-            "icon": "death-juice",
-            "color": "#0a0",
+            "name": "Darkness",
+            "macro": "cast darkness",
+            "icon": "dust-cloud",
+            "color": "#000",
             "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
+            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -413,12 +423,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Darkness",
-            "macro": "cast darkness",
-            "icon": "dust-cloud",
-            "color": "#000",
+            "name": "Disease",
+            "macro": "cast disease",
+            "icon": "death-juice",
+            "color": "#0a0",
             "mode": "clickToTarget",
-            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
+            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -443,16 +453,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Push",
-            "macro": "cast push",
-            "icon": "air-zigzag",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Transmute",
             "macro": "cast transmute",
             "icon": "coins",
@@ -469,6 +469,16 @@
             "color": "#00a",
             "mode": "clickToTarget",
             "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Push",
+            "macro": "cast push",
+            "icon": "air-zigzag",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },

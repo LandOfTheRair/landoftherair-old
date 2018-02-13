@@ -119,6 +119,19 @@ export class SpellEffect extends Effect {
   cast(caster: Character, target: Character, skillRef: Skill) {}
 }
 
+export class ChanneledSpellEffect extends SpellEffect {
+
+  cast(char: Character, target: Character, skillRef?: Skill) {
+
+    // only one stance can be active at a time
+    char.effects.forEach(eff => {
+      if(!includes(eff.constructor.name, 'Channel')) return;
+      char.unapplyEffect(eff, true);
+    });
+
+  }
+}
+
 export class StanceEffect extends Effect {
 
   public weaponClass: string;

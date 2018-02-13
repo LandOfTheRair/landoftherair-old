@@ -55,6 +55,9 @@ export class Spawner {
 
   $$isStayingSlow = false;
 
+  removeWhenNoNPCs = false;
+  npcCreateCallback: Function;
+
   constructor(private room, { x, y, map }, spawnOpts) {
     extend(this, spawnOpts);
 
@@ -104,11 +107,12 @@ export class Spawner {
     return sample(choices);
   }
 
-  async createNPC() {
+  async createNPC(): Promise<void> {
     if(!this.npcIds || this.npcIds.length === 0) {
       if(this.x !== 0 && this.y !== 0) {
         Logger.error(`No valid npcIds for spawner ${this.constructor.name} at ${this.x}, ${this.y} on ${this.map}`);
       }
+      this.removeSelf();
       return;
     }
 
@@ -241,13 +245,17 @@ export class Spawner {
     npc.sendSpawnMessage();
 
     this.assignPath(npc);
+
+    // post-creation processing
+    if(this.npcCreateCallback) {
+      this.npcCreateCallback(npc);
+    }
+
     npc.recalculateStats();
 
     npc.hp.toMaximum();
     npc.mp.toMaximum();
     this.addNPC(npc);
-
-    return npc;
   }
 
   addNPC(npc: NPC) {
@@ -325,6 +333,10 @@ export class Spawner {
 
   public hasAnyAlive(): boolean {
     return some(this.npcs, npc => npc.hp.getValue() > 0);
+  }
+
+  private removeSelf() {
+    this.room.removeSpawner(this);
   }
 
 }
