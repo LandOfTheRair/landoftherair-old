@@ -80,6 +80,8 @@ export class ColyseusGameService {
       });
 
     this.lastCommands = this.localStorage.retrieve('lastCommands') || [];
+
+    (<any>window).sendCommand = this.sendCommandString.bind(this);
   }
 
   init(colyseus, client, character) {
