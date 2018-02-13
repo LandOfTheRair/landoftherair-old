@@ -395,7 +395,6 @@ export class CombatHelper {
       const armorClass = get(attacker, 'gear.Armor.itemClass');
       if(includes(MagicCutArmorClasses, armorClass)) {
         damage = Math.floor(damage / 2);
-        attacker.sendClientMessage('You feel as if your armor hinders your magic casting!');
       }
     }
 

@@ -855,7 +855,7 @@ export class Character {
 
   _gainSkill(type, skillGained) {
     type = type.toLowerCase();
-    
+
     const prevVal = this.skills[type];
 
     this.skills[type] += skillGained;

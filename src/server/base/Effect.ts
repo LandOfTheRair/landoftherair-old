@@ -1,8 +1,9 @@
 
 import { Character } from '../../shared/models/character';
-import { extend, includes } from 'lodash';
+import { extend, includes, get } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/combat-helper';
+import { MagicCutArmorClasses } from '../../shared/models/item';
 
 export const Maxes = {
   Lesser: 10,
@@ -85,6 +86,12 @@ export class SpellEffect extends Effect {
       const flaggedSkill = this.skillFlag(caster);
 
       this.potency = caster.calcSkillLevel(flaggedSkill) + 1;
+
+      const armorClass = get(caster, 'gear.Armor.itemClass');
+      if(includes(MagicCutArmorClasses, armorClass)) {
+        caster.sendClientMessage('Your armor exhausts you as you try to cast your spell!');
+        this.potency = Math.floor(this.potency / 2);
+      }
 
       const canGainSkill = this.potency <= this.maxSkillForSkillGain;
 
