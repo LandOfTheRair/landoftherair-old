@@ -808,6 +808,10 @@ export class Character {
 
   gainExpFromKills(xp: number) {
     this.gainExp(xp);
+
+    if(this.$$owner) {
+      this.$$owner.gainExpFromKills(xp);
+    }
   }
 
   tryLevelUp(maxLevel = 0) {
@@ -851,7 +855,7 @@ export class Character {
 
   _gainSkill(type, skillGained) {
     type = type.toLowerCase();
-
+    
     const prevVal = this.skills[type];
 
     this.skills[type] += skillGained;
