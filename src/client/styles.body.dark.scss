@@ -52,10 +52,11 @@ body {
 
     &.active {
       border-color: $window-text-color !important;
+      background-color: darken($window-background-color, 10%) !important;
     }
 
     &:hover {
-      background-color: darken($window-background-color, 10%) !important;
+      background-color: darken($window-background-color, 15%) !important;
     }
 
     border-bottom-color: $window-text-color !important;

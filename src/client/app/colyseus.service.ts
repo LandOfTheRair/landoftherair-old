@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 
 import * as Colyseus from 'colyseus.js';
+import { isUndefined } from 'lodash';
 import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
 import { Subject } from 'rxjs/Subject';
@@ -66,6 +67,10 @@ export class ColyseusService {
   }
 
   get isSubscribed(): boolean {
-    return this.lobby.lobbyState.subTier[this.lobby.myAccount.username] > 0;
+    const baseVal = this.lobby.lobbyState.subTier[this.lobby.myAccount.username];
+
+    // not really correct, but it keeps the message at bay
+    if(isUndefined(baseVal)) return true;
+    return baseVal > 0;
   }
 }

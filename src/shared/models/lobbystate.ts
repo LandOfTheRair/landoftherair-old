@@ -14,6 +14,8 @@ export class LobbyState {
   motd: string;
   discordConnected: boolean;
 
+  silverPurchases: any[] = [];
+
   @nonenumerable
   account$ = new BehaviorSubject<Account[]>([]);
 

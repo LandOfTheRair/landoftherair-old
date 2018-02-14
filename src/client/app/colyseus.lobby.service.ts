@@ -5,10 +5,10 @@ import * as swal from 'sweetalert2';
 import { AuthService } from './auth.service';
 
 import { LobbyState } from '../../shared/models/lobbystate';
-import { Account } from '../../shared/models/account';
+import { Account, SilverPurchase } from '../../shared/models/account';
 
 import { Observable } from 'rxjs/Observable';
-import { extend } from 'lodash';
+import { merge } from 'lodash';
 
 @Injectable()
 export class ColyseusLobbyService {
@@ -39,6 +39,7 @@ export class ColyseusLobbyService {
 
     this.room.onUpdate.add((state) => {
       this.lobbyState.syncTo(state);
+      this.setAccount(this.lobbyState.findAccountByUsername(this.myAccount.username));
     });
 
     this.room.onData.add((data) => {
@@ -103,7 +104,7 @@ export class ColyseusLobbyService {
   }
 
   private setAccount(account) {
-    extend(this.myAccount, account);
+    merge(this.myAccount, account);
   }
 
   private setCharacters(characterNames: string[]) {
@@ -156,7 +157,7 @@ export class ColyseusLobbyService {
     window.location.reload();
   }
 
-  private logout() {
+  public logout() {
     this.room.send({ action: 'logout' });
     this.auth.logout();
 
@@ -185,6 +186,10 @@ export class ColyseusLobbyService {
 
   public playCharacter(charSlot) {
     this.room.send({ action: 'play', charSlot });
+  }
+
+  public buySilverItem(key: SilverPurchase) {
+    this.room.send({ action: 'purchase', item: key });
   }
 
   public doCommand(string): boolean {
@@ -216,7 +221,21 @@ export class ColyseusLobbyService {
       return true;
     }
 
+    if(command === '/silver') {
+      this.giveSilver(args);
+      return true;
+    }
+
     return false;
+  }
+
+  public giveSilver(args) {
+    const silverGiven = +args.substring(0, args.indexOf(' '));
+    const target = args.substring(args.indexOf(' ') + 1);
+
+    if(!silverGiven || !target) return;
+
+    this.room.send({ action: 'silver', account: target, silver: silverGiven });
   }
 
   public doSubscribe(args) {

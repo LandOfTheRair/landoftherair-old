@@ -1,14 +1,51 @@
 
+import { get, find } from 'lodash';
+
 import { AccountHelper } from './account-helper';
-import { Account, SubscriptionTier } from '../../shared/models/account';
+import { Account, SilverPurchase, SubscriptionTier } from '../../shared/models/account';
 import { Player } from '../../shared/models/player';
 
 const SUBSCRIPTION_TIER_MULTIPLER = 5;
 const BASE_ACTION_QUEUE_SIZE = 20;
 const ACTION_QUEUE_MULTIPLIER = 2;
 
+class SilverPurchaseItem {
+  name: string;
+  desc: string;
+  icon: string;
+  maxPurchases: number;
+  key: SilverPurchase;
+  cost: number;
+  fgColor: string;
+  discount?: number;
+  postBuy?: (account: Account) => void;
+}
+
+export const AllSilverPurchases: SilverPurchaseItem[] = [
+  {
+    name: 'Bigger Potion Stacks',
+    desc: 'Increase your Alchemist potion max by 5.',
+    icon: 'potion-ball',
+    fgColor: '#00a',
+    maxPurchases: 5,
+    key: 'MorePotions',
+    cost: 300
+  },
+  {
+    name: 'More Characters',
+    desc: 'Add another character slot to your account. Perfect for hording items.',
+    icon: 'ages',
+    fgColor: '#000',
+    maxPurchases: 6,
+    key: 'MoreCharacters',
+    cost: 1000,
+    postBuy: (account: Account) => account.maxCharacters++
+  }
+];
+
 export class SubscriptionHelper {
 
+  // account management
   public static async subscribe(account: Account): Promise<Account> {
     account.subscriptionTier = SubscriptionTier.BASIC_SUBSCRIPTION;
     await AccountHelper.saveAccount(account);
@@ -31,6 +68,31 @@ export class SubscriptionHelper {
     return account;
   }
 
+  public static async giveSilver(account: Account, silver = 0): Promise<Account> {
+    account.silver = Math.max(0, (account.silver || 0) + silver);
+    await AccountHelper.saveAccount(account);
+    return account;
+  }
+
+  public static async purchaseWithSilver(account: Account, purchase: SilverPurchase): Promise<boolean> {
+    const purchaseItem = find(AllSilverPurchases, { key: purchase });
+    const curPurchaseTier = this.getSilverPurchase(account, purchase);
+
+    if(!purchaseItem) return false;
+    if(curPurchaseTier >= purchaseItem.maxPurchases) return false;
+    if(account.silver < purchaseItem.cost) return false;
+    if(account.inGame >= 0) return false;
+
+    account.silver -= purchaseItem.cost;
+    account.silverPurchases[purchase] = account.silverPurchases[purchase] || 0;
+    account.silverPurchases[purchase]++;
+
+    purchaseItem.postBuy(account);
+
+    await AccountHelper.saveAccount(account);
+    return true;
+  }
+
   public static async checkAccountForExpiration(account: Account): Promise<Account> {
     const now = Date.now();
     if(now >= account.trialEnds) account.subscriptionTier = SubscriptionTier.NO_SUBSCRIPTION;
@@ -38,8 +100,18 @@ export class SubscriptionHelper {
     return account;
   }
 
+  // checker functions
   public static isGM(player: Player): boolean {
     return player.$$account.isGM;
+  }
+
+  public static isSubscribed(player: Player): boolean {
+    return this.subscriptionTier(player) > 0;
+  }
+
+  // silver related functions
+  private static getSilverPurchase(account: Account, purchase: SilverPurchase): number {
+    return get(account, `silverPurchases.${purchase}`, 0);
   }
 
   // the max tier is 10
@@ -52,10 +124,6 @@ export class SubscriptionHelper {
   private static subscriptionTierMultiplier(player: Player): number {
     const tier = Math.min(10, this.subscriptionTier(player));
     return (tier * SUBSCRIPTION_TIER_MULTIPLER) / 100;
-  }
-
-  public static isSubscribed(player: Player): boolean {
-    return this.subscriptionTier(player) > 0;
   }
 
   // SUBSCRIBER BENEFIT: +(TIER * 5)% XP
@@ -91,7 +159,7 @@ export class SubscriptionHelper {
 
   // SUBSCRIBER BENEFIT: +(TIER) POTION OZ
   public static calcPotionMaxSize(player: Player, basePotionSize: number): number {
-    return basePotionSize + this.subscriptionTier(player);
+    return basePotionSize + this.subscriptionTier(player) + (this.getSilverPurchase(player.$$account, 'MorePotions') * 5);
   }
 
   // SUBSCRIBER BENEFIT: +(TIER * 1000) POTION OZ

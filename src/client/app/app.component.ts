@@ -8,10 +8,11 @@ import { MacroService, Macro } from './macros.service';
 import * as macicons from '../macicons/macicons.json';
 
 import { DateTime } from 'luxon';
-import { includes, isNull, cloneDeep } from 'lodash';
+import { includes, isNull, cloneDeep, get } from 'lodash';
 import { AuthService } from './auth.service';
 import { AssetService } from './asset.service';
 import { Observable } from 'rxjs/Observable';
+import { SilverPurchase } from '../../shared/models/account';
 
 type Size = 'normal' | 'small' | 'xsmall';
 type XSizeMax = 'max' | 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
@@ -195,6 +196,12 @@ export class AppComponent implements OnInit {
   public nowTimestamp: number;
   public timestampDisplay: string;
 
+  public silverPricePoints = [
+    { price: 5.00,  silver: 500 },
+    { price: 10.00, silver: 1100 },
+    { price: 20.00, silver: 2500 }
+  ];
+
   constructor(
     public colyseus: ColyseusService,
     public macroService: MacroService,
@@ -246,6 +253,19 @@ export class AppComponent implements OnInit {
     this.watchOptions();
 
     this.watchResetTime();
+  }
+
+  logout() {
+    (<any>swal)({
+      titleText: `Log Out`,
+      text: `Are you sure you want to log out?`,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, logout!'
+    }).then(() => {
+      this.colyseus.lobby.logout()
+
+    }).catch(() => {});
   }
 
   private watchResetTime() {
@@ -450,7 +470,10 @@ export class AppComponent implements OnInit {
   deleteGroup(groupName: string) {
     (<any>swal)({
       titleText: 'Delete Macro Group',
-      text: `Are you sure you want to remove the group "${groupName}"? This action cannot be undone.`
+      text: `Are you sure you want to remove the group "${groupName}"? This action cannot be undone.`,
+      showCancelButton: true,
+      confirmButtonText: 'Yes, remove it!',
+      type: 'warning'
     }).then(() => {
       this.macroService.removeMacroGroup(groupName);
     }).catch(() => {});
@@ -459,7 +482,10 @@ export class AppComponent implements OnInit {
   resetDefaultGroup() {
     (<any>swal)({
       titleText: 'Reset Default Macro Group',
-      text: `Are you sure you want to reset the default macro group? This action cannot be undone.`
+      text: `Are you sure you want to reset the default macro group? This action cannot be undone.`,
+      showCancelButton: true,
+      confirmButtonText: 'Yes, reset it!',
+      type: 'warning'
     }).then(() => {
       this.macroService.resetDefaultMacros();
     }).catch(() => {});
@@ -522,5 +548,26 @@ export class AppComponent implements OnInit {
 
   applyDebug() {
     location.reload();
+  }
+
+  getNumSilverItemPurchased(key: SilverPurchase) {
+    return get(this.colyseus.lobby.myAccount, `silverPurchases.${key}`, 0);
+  }
+
+  unableToPurchase(purchaseItem): boolean {
+    return this.getNumSilverItemPurchased(purchaseItem.key) === purchaseItem.maxPurchases || purchaseItem.cost > this.colyseus.lobby.myAccount.silver;
+  }
+
+  doItemPurchase(purchaseItem) {
+    (<any>swal)({
+      titleText: `Purchase "${purchaseItem.name}"`,
+      text: `Are you sure you want to purchase "${purchaseItem.name}"? It will cost ${purchaseItem.cost.toLocaleString()} silver, leaving you with ${(this.colyseus.lobby.myAccount.silver - purchaseItem.cost).toLocaleString()} silver.`,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, buy it!'
+    }).then(() => {
+      this.colyseus.lobby.buySilverItem(purchaseItem.key);
+
+    }).catch(() => {});
   }
 }

@@ -16,8 +16,6 @@ export class CharacterSelectComponent implements OnInit {
   @ViewChild('charModal')
   public charModal;
 
-  public charSlots: any[];
-
   @Input()
   public resourcesLoaded: any;
 
@@ -33,11 +31,14 @@ export class CharacterSelectComponent implements OnInit {
     return 'Play';
   }
 
+  public get charSlots(): number[] {
+    return Array(this.lobby.myAccount.maxCharacters).fill(0);
+  }
+
   constructor(public lobby: ColyseusLobbyService, public game: ColyseusGameService) { }
 
   ngOnInit() {
     if(!this.curSlot) this.curSlot = 0;
-    this.charSlots = Array(this.lobby.myAccount.maxCharacters).fill(0);
   }
 
   getCharacter() {

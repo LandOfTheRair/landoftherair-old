@@ -702,7 +702,14 @@ export class Player extends Character {
   }
 
   _gainSkill(type, skillGained) {
-    super._gainSkill(type, this.$$room.subscriptionHelper.modifySkillGainForSubscription(this, skillGained));
+    let val = skillGained;
+
+    // fix for character creation
+    if(this.$$room) {
+      val = this.$$room.subscriptionHelper.modifySkillGainForSubscription(this, skillGained)
+    }
+
+    super._gainSkill(type, val);
   }
 
 }

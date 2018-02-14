@@ -1,6 +1,6 @@
 
 import { nonenumerable } from 'nonenumerable';
-import { extend } from 'lodash';
+import { merge } from 'lodash';
 
 export type Status = 'Available' | 'AFK';
 
@@ -10,29 +10,40 @@ export enum SubscriptionTier {
   BASIC_SUBSCRIPTION = 5
 }
 
+export type SilverPurchase = 'MorePotions' | 'MoreCharacters';
+
 export class Account {
   @nonenumerable
   _id?: any;
 
+  // internal stuff
   colyseusId?: string;
-
   createdAt: number;
-
   userId: string;
+
+  // lobby display stuff
+  username: string;
+  isGM = false;
+  inGame = -1;
+  status: Status = 'Available';
 
   characterNames: string[] = [];
 
   maxCharacters = 4;
 
-  username: string;
-  isGM = false;
-  inGame = -1;
-  status: Status = 'Available';
+  // subscription
   subscriptionTier: SubscriptionTier = SubscriptionTier.NO_SUBSCRIPTION;
   trialEnds: number;
   hasDoneTrial: boolean;
 
+  silver: number;
+  lastInGameSilverGrab: number = 0;
+  silverPurchases: { [key: string]: number } = {
+    MorePotions: 0,
+    MoreCharacters: 0
+  };
+
   constructor(opts) {
-    extend(this, opts);
+    merge(this, opts);
   }
 }

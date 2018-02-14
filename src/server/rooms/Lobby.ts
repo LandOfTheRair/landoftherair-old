@@ -16,7 +16,8 @@ import { JWTHelper } from '../helpers/jwt-helper';
 import { ItemCreator } from '../helpers/item-creator';
 import { PartyArbiter } from '../helpers/party-arbiter';
 import { AccountHelper } from '../helpers/account-helper';
-import { SubscriptionHelper } from '../helpers/subscription-helper';
+import { AllSilverPurchases, SubscriptionHelper } from '../helpers/subscription-helper';
+import { Logger } from '../logger';
 
 export class Lobby extends Room<LobbyState> {
 
@@ -40,6 +41,8 @@ export class Lobby extends Room<LobbyState> {
 
     this.loadSettings();
     DB.$players.update({}, { $set: { inGame: -1 } }, { multi: true });
+
+    this.state.silverPurchases = AllSilverPurchases;
 
     this.startDiscord();
   }
@@ -148,6 +151,16 @@ export class Lobby extends Room<LobbyState> {
 
     const account = this.state.findAccount(client.userId);
     if(!account) return;
+
+    charSlot = Math.round(+charSlot);
+    if(charSlot < 0 || charSlot > account.maxCharacters) {
+      this.send(client, {
+        error: 'invalid_char_slot',
+        prettyErrorName: 'Invalid Character Slot',
+        prettyErrorDesc: 'That character slot is not valid for character creation. Try again!'
+      });
+      return;
+    }
 
     const oldPlayerName = account.characterNames[charSlot];
     if(oldPlayerName) {
@@ -264,12 +277,41 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'motd_set')  return this.setMOTD(client, data);
     if(data.action === 'sub')       return this.handleSubscription(client, data);
     if(data.action === 'unsub')     return this.handleUnsubscription(client, data);
+    if(data.action === 'silver')    return this.giveSilver(client, data);
+    if(data.action === 'purchase')  return this.purchase(client, data.item);
     if(data.userId && data.idToken) return this.tryLogin(client, data);
     if(data.message)                return this.sendMessage(client, data.message);
     if(data.characterCreator)       return this.viewCharacter(client, data);
   }
 
-  async handleSubscription(client, data) {
+  private async purchase(client, key) {
+    const account = this.state.findAccount(client.userId);
+    if(!account) return;
+
+    const wasSuccess = await SubscriptionHelper.purchaseWithSilver(account, key);
+    if(!wasSuccess) {
+      this.send(client, {
+        error: 'couldnt_purchase',
+        prettyErrorName: 'Purchase Failed',
+        prettyErrorDesc: 'The purchase didn\'t go through. Either you don\'t have enough silver, or something else went wrong. If this problem persists, contact a GM..'
+      });
+    }
+  }
+
+  private async giveSilver(client, data) {
+    const gmAccount = this.state.findAccount(client.userId);
+    if(!gmAccount || !gmAccount.isGM) return;
+
+    const { account, silver } = data;
+    if(!account || !silver) return;
+
+    const targetAccount = this.state.findAccountByUsername(account);
+    if(!targetAccount) return;
+
+    SubscriptionHelper.giveSilver(targetAccount, silver);
+  }
+
+  private async handleSubscription(client, data) {
     const gmAccount = this.state.findAccount(client.userId);
     if(!gmAccount || !gmAccount.isGM) return;
 
@@ -284,7 +326,7 @@ export class Lobby extends Room<LobbyState> {
     SubscriptionHelper.startTrial(targetAccount, period);
   }
 
-  handleUnsubscription(client, data) {
+  private handleUnsubscription(client, data) {
     const gmAccount = this.state.findAccount(client.userId);
     if(!gmAccount || !gmAccount.isGM) return;
 
@@ -296,11 +338,11 @@ export class Lobby extends Room<LobbyState> {
     SubscriptionHelper.unsubscribe(targetAccount);
   }
 
-  broadcastMOTD() {
+  private broadcastMOTD() {
     this.state.addMessage({ account: '<System>', message: this.state.motd });
   }
 
-  setMOTD(client, data) {
+  private setMOTD(client, data) {
     const gmAccount = this.state.findAccount(client.userId);
     if(!gmAccount || !gmAccount.isGM) return;
 
@@ -311,14 +353,14 @@ export class Lobby extends Room<LobbyState> {
     this.saveSettings();
   }
 
-  broadcastAlert(client, data) {
+  private broadcastAlert(client, data) {
     const gmAccount = this.state.findAccount(client.userId);
     if(!gmAccount || !gmAccount.isGM) return;
 
     this.broadcast({ action: 'alert', sender: gmAccount.username, message: data.message });
   }
 
-  changeStatus(client, newStatus) {
+  private changeStatus(client, newStatus) {
     if(!includes(['Available', 'AFK'], newStatus)) return;
 
     const account = this.state.findAccount(client.userId);
@@ -338,7 +380,7 @@ export class Lobby extends Room<LobbyState> {
       this.discordChannel = this.discord.channels.get(process.env.DISCORD_CHANNEL);
       this.state.discordConnected = true;
     } catch(e) {
-      console.error(e);
+      Logger.error(e);
       return;
     }
 
