@@ -15,6 +15,8 @@ import { DB } from '../database';
 import { JWTHelper } from '../helpers/jwt-helper';
 import { ItemCreator } from '../helpers/item-creator';
 import { PartyArbiter } from '../helpers/party-arbiter';
+import { AccountHelper } from '../helpers/account-helper';
+import { SubscriptionHelper } from '../helpers/subscription-helper';
 
 export class Lobby extends Room<LobbyState> {
 
@@ -42,28 +44,9 @@ export class Lobby extends Room<LobbyState> {
     this.startDiscord();
   }
 
-  private async getAccount(userId): Promise<Account> {
-    return DB.$accounts.findOne({ userId })
-      .then(data => {
-        if(data) return new Account(data);
-        return null;
-      });
-  }
-
-  private updateAccount(account: Account) {
-    // delete account._id;
-    delete account.inGame;
-
-    return DB.$accounts.update({ userId: account.userId }, { $set: account });
-  }
-
-  private async saveAccount(account: Account) {
-    return DB.$accounts.insert(account);
-  }
-
   private async createAccount({ userId, username }): Promise<Account> {
     const account: Account = new Account({ userId, username, createdAt: Date.now(), characterNames: [], maxCharacters: 4 });
-    await this.saveAccount(account);
+    await AccountHelper.createAccount(account);
     return account;
   }
 
@@ -87,7 +70,7 @@ export class Lobby extends Room<LobbyState> {
 
     }
 
-    let account = await this.getAccount(userId);
+    let account = await AccountHelper.getAccountById(userId);
 
     if(!account) {
       if(!username) {
@@ -109,11 +92,13 @@ export class Lobby extends Room<LobbyState> {
 
     if(!account || !account.username || !account.userId) return;
 
+    await SubscriptionHelper.checkAccountForExpiration(account);
+
     client.userId = account.userId;
     client.username = account.username;
 
     account.colyseusId = client.id;
-    this.updateAccount(account);
+    AccountHelper.saveAccount(account);
 
     this.state.addAccount(account);
 
@@ -170,7 +155,7 @@ export class Lobby extends Room<LobbyState> {
     }
 
     account.characterNames[charSlot] = character.name;
-    this.updateAccount(account);
+    AccountHelper.saveAccount(account);
     account.inGame = -1;
 
     this.send(client, { action: 'set_account', account });
@@ -186,9 +171,7 @@ export class Lobby extends Room<LobbyState> {
       createdAt: Date.now(),
       charSlot,
       stats, sex, name, allegiance, gold,
-      x: 14, y: 14, map: 'Tutorial',
-
-      isGM: account.isGM
+      x: 14, y: 14, map: 'Tutorial'
     });
 
     await CharacterCreator.giveCharacterBasicGearAndSkills(player, this.itemCreator);
@@ -279,9 +262,38 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'logout')    return this.logout(client);
     if(data.action === 'quit')      return this.quit(client);
     if(data.action === 'motd_set')  return this.setMOTD(client, data);
+    if(data.action === 'sub')       return this.handleSubscription(client, data);
+    if(data.action === 'unsub')     return this.handleUnsubscription(client, data);
     if(data.userId && data.idToken) return this.tryLogin(client, data);
     if(data.message)                return this.sendMessage(client, data.message);
     if(data.characterCreator)       return this.viewCharacter(client, data);
+  }
+
+  async handleSubscription(client, data) {
+    const gmAccount = this.state.findAccount(client.userId);
+    if(!gmAccount || !gmAccount.isGM) return;
+
+    let { account, period } = data;
+
+    if(!account) return;
+    if(!period) period = 30;
+
+    const targetAccount = this.state.findAccountByUsername(account);
+    if(!targetAccount) return;
+
+    SubscriptionHelper.startTrial(targetAccount, period);
+  }
+
+  handleUnsubscription(client, data) {
+    const gmAccount = this.state.findAccount(client.userId);
+    if(!gmAccount || !gmAccount.isGM) return;
+
+    const { account } = data;
+
+    const targetAccount = this.state.findAccountByUsername(account);
+    if(!targetAccount) return;
+
+    SubscriptionHelper.unsubscribe(targetAccount);
   }
 
   broadcastMOTD() {
@@ -289,8 +301,8 @@ export class Lobby extends Room<LobbyState> {
   }
 
   setMOTD(client, data) {
-    const account = this.state.findAccount(client.userId);
-    if(account && !account.isGM) return;
+    const gmAccount = this.state.findAccount(client.userId);
+    if(!gmAccount || !gmAccount.isGM) return;
 
     this.state.motd = data.motd;
     if(this.state.motd) {
@@ -300,10 +312,10 @@ export class Lobby extends Room<LobbyState> {
   }
 
   broadcastAlert(client, data) {
-    const account = this.state.findAccount(client.userId);
-    if(account && !account.isGM) return;
+    const gmAccount = this.state.findAccount(client.userId);
+    if(!gmAccount || !gmAccount.isGM) return;
 
-    this.broadcast({ action: 'alert', sender: account.username, message: data.message });
+    this.broadcast({ action: 'alert', sender: gmAccount.username, message: data.message });
   }
 
   changeStatus(client, newStatus) {

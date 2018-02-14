@@ -714,6 +714,8 @@ export class Game {
     const decorFirstGid = this.map.tilesets[2].firstgid;
     const wallFirstGid = this.map.tilesets[1].firstgid;
 
+    const isPlayerSub = this.colyseus.isSubscribed;
+
     const parseLayer = (layer) => {
       layer.objects.forEach(obj => {
         const isWall = obj.gid < decorFirstGid;
@@ -735,6 +737,12 @@ export class Game {
         }
 
         this.groups[layer.name].add(sprite);
+
+        if(layer.name === 'Interactables') {
+          if(obj.properties && obj.properties.subscriberOnly) {
+            sprite.visible = isPlayerSub;
+          }
+        }
       });
     };
 

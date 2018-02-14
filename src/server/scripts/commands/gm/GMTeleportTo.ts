@@ -2,6 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { MessageHelper } from '../../../helpers/message-helper';
+import { SubscriptionHelper } from '../../../helpers/subscription-helper';
 
 export class GMTeleportTo extends Command {
 
@@ -9,7 +10,7 @@ export class GMTeleportTo extends Command {
   public format = 'Charish';
 
   execute(player: Player, { room, gameState, args }) {
-    if(!player.isGM) return;
+    if(!SubscriptionHelper.isGM(player)) return;
 
     const playerName = args;
     if(!playerName) return false;

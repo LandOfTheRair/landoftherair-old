@@ -28,7 +28,7 @@ export class GameAPI {
 
     app.use('/item-stats', async (req, res) => {
       const statStrings = await Promise.all([drawNormalArmor(), drawNormalWeapon(), drawSpecialWeapon()]);
-      res.send(statStrings.map(x => `<pre>${x}</pre>`).join(''))
+      res.send(statStrings.map(x => `<pre>${x}</pre>`).join(''));
     });
 
     app.use('/silent-dev', staticFile(`${__dirname}/silent-dev.html`));

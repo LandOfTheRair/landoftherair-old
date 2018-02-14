@@ -3,6 +3,7 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { get } from 'lodash';
 import { MessageHelper } from '../../../helpers/message-helper';
+import { SubscriptionHelper } from '../../../helpers/subscription-helper';
 
 export class GMExamine extends Command {
 
@@ -10,7 +11,7 @@ export class GMExamine extends Command {
   public format = 'Target? Prop?';
 
   async execute(player: Player, { room, gameState, args }) {
-    if(!player.isGM) return;
+    if(!SubscriptionHelper.isGM(player)) return;
 
     if(!args && player.rightHand) {
       player.sendClientMessage(JSON.stringify(player.rightHand));

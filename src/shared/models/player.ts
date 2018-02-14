@@ -1,6 +1,7 @@
 
 import * as RestrictedNumber from 'restricted-number';
 
+import { Account } from './account';
 import { Character, MaxSizes, AllNormalGearSlots, Allegiance } from './character';
 import { Item } from './item';
 
@@ -21,7 +22,6 @@ import { PartyHelper } from '../../server/helpers/party-helper';
 import { Malnourished } from '../../server/effects/Malnourished';
 import { AlchemyContainer } from './container/tradeskills/alchemy';
 import { SpellforgingContainer } from './container/tradeskills/spellforging';
-import { NPC } from './npc';
 
 export class Player extends Character {
   @nonenumerable
@@ -32,9 +32,6 @@ export class Player extends Character {
   username: string;
 
   charSlot: number;
-
-  @nonenumerable
-  isGM: boolean;
 
   z: number;
 
@@ -105,6 +102,9 @@ export class Player extends Character {
   public tradeSkillContainers: { alchemy?: AlchemyContainer, spellforging?: SpellforgingContainer };
 
   public daily: any;
+
+  @nonenumerable
+  public $$account: Account;
 
   get party(): Party {
     return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
@@ -258,7 +258,9 @@ export class Player extends Character {
   private gainPartyExp(baseExp: number) {
     if(!this.party.canGainPartyPoints) return;
 
-    this.partyExp.add(Math.floor(baseExp / this.party.members.length + 1));
+    const basePartyExpGain = Math.floor(baseExp / this.party.members.length + 1);
+    const modifiedPartyExpGain = this.$$room.subscriptionHelper.modifyPartyXPGainForSubscription(this, basePartyExpGain);
+    this.partyExp.add(modifiedPartyExpGain);
 
     this.checkToGainPartyPoints();
   }
@@ -455,7 +457,8 @@ export class Player extends Character {
 
   queueAction({ command, args }) {
     this.$$actionQueue.push({ command, args });
-    if(this.$$actionQueue.length > 20) this.$$actionQueue.length = 20;
+    const aqSize = this.$$room.subscriptionHelper.calcActionQueueSize(this);
+    if(this.$$actionQueue.length > aqSize) this.$$actionQueue.length = aqSize;
   }
 
   tick() {
@@ -630,10 +633,12 @@ export class Player extends Character {
   }
 
   public manageTraitPointPotentialGain(command: string): void {
-    if(startsWith(command, '~')) return;
+    if(startsWith(command, '~') || startsWith(command, '@')) return;
 
     if(!this.traitPointTimer || this.traitPointTimer <= 0) {
-      this.traitPointTimer = this.$$room.calcAdjustedTraitTimer(random(200, 300));
+      const baseTraitPointTimer = random(300, 400);
+      const adjustedTraitPointTimer = this.$$room.subscriptionHelper.modifyTraitPointTimerForSubscription(this, baseTraitPointTimer);
+      this.traitPointTimer = this.$$room.calcAdjustedTraitTimer(adjustedTraitPointTimer);
     }
 
     let timerReduction = 1;
@@ -690,6 +695,14 @@ export class Player extends Character {
 
   public buyDailyItem(item: Item) {
     this.daily.item[item.uuid] = +DateTime.fromObject({ zone: 'utc' });
+  }
+
+  gainExp(xpGain: number) {
+    super.gainExp(this.$$room.subscriptionHelper.modifyXPGainForSubscription(this, xpGain));
+  }
+
+  _gainSkill(type, skillGained) {
+    super._gainSkill(type, this.$$room.subscriptionHelper.modifySkillGainForSubscription(this, skillGained));
   }
 
 }

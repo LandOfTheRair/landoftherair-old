@@ -837,8 +837,10 @@ export class Character {
   }
 
   calcLevelXP(level: number) {
+    const pre20XP = Math.pow(2, level - 1) * 1000;
+
     if(level <= 20) {
-      return Math.pow(2, level - 1) * 1000;
+      return pre20XP;
     }
 
     return 99999999999999999999999 * level;

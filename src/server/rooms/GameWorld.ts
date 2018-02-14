@@ -30,6 +30,7 @@ import { CharacterHelper } from '../helpers/character-helper';
 import { GroundHelper } from '../helpers/ground-helper';
 import { LockerHelper } from '../helpers/locker-helper';
 import { BankHelper } from '../helpers/bank-helper';
+import { SubscriptionHelper } from '../helpers/subscription-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon';
@@ -123,6 +124,10 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.script;
   }
 
+  get subscriptionHelper(): SubscriptionHelper {
+    return SubscriptionHelper;
+  }
+
   async onInit(opts) {
     this.allMapNames = opts.allMapNames;
 
@@ -184,7 +189,8 @@ export class GameWorld extends Room<GameState> {
   async onJoin(client, options) {
     const { charSlot, username } = options;
 
-    const account = await AccountHelper.getAccount(username);
+    const account = await AccountHelper.getAccountByUsername(username);
+
     if(!account || account.colyseusId !== client.id) {
       this.send(client, {
         error: 'error_invalid_token',
@@ -204,6 +210,7 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'set_map', map: this.state.formattedMap });
 
     const player = new Player(playerData);
+    player.$$account = account;
     player.$$room = this;
     player.z = player.z || 0;
     player.initServer();

@@ -206,7 +206,31 @@ export class ColyseusLobbyService {
       return true;
     }
 
+    if(command === '/subscribe') {
+      this.doSubscribe(args);
+      return true;
+    }
+
+    if(command === '/unsubscribe') {
+      this.doUnsubscribe(args);
+      return true;
+    }
+
     return false;
+  }
+
+  public doSubscribe(args) {
+    const splitArgs = args.split(' ');
+    if(splitArgs.length === 1) {
+      this.room.send({ action: 'sub', account: args });
+      return;
+    }
+
+    this.room.send({ action: 'sub', account: splitArgs[0], period: +splitArgs[1] });
+  }
+
+  public doUnsubscribe(args) {
+    this.room.send({ action: 'unsub', account: args });
   }
 
   public quit() {

@@ -100,10 +100,11 @@ export const SmithResponses = (npc: NPC) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
       if(player.rightHand) {
-        const myCondition = npc.repairsUpToCondition || 20000;
+        const maxCondition = player.$$room.subscriptionHelper.calcMaxSmithRepair(player, npc.repairsUpToCondition || 20000);
+
         const cpt = npc.costPerThousand || 1;
 
-        const missingCondition = myCondition - player.rightHand.condition;
+        const missingCondition = maxCondition - player.rightHand.condition;
         if(missingCondition < 0) return 'That item is already beyond my capabilities!';
 
         const cost = Math.floor(missingCondition / 1000 * cpt);
@@ -112,7 +113,7 @@ export const SmithResponses = (npc: NPC) => {
         if(player.gold < cost) return `You need ${cost.toLocaleString()} gold to repair that item.`;
 
         player.loseGold(cost);
-        player.rightHand.condition = myCondition;
+        player.rightHand.condition = maxCondition;
         return `Thank you, ${player.name}! I've repaired your item for ${cost.toLocaleString()} gold.`;
       }
 
@@ -126,22 +127,22 @@ export const SmithResponses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
-      const myCondition = npc.repairsUpToCondition || 20000;
+      const maxCondition = player.$$room.subscriptionHelper.calcMaxSmithRepair(player, npc.repairsUpToCondition || 20000);
       const cpt = npc.costPerThousand || 1;
 
       let totalCosts = 0;
 
       AllNormalGearSlots.forEach(slot => {
         const item = get(player, slot);
-        if(!item || item.condition > myCondition) return;
+        if(!item || item.condition > maxCondition) return;
 
-        const cost = Math.floor((myCondition - item.condition) / 1000 * cpt);
+        const cost = Math.floor((maxCondition - item.condition) / 1000 * cpt);
         if(cost === 0 || cost > player.gold) return;
 
         totalCosts += cost;
 
         player.loseGold(cost);
-        item.condition = myCondition;
+        item.condition = maxCondition;
       });
 
       if(totalCosts === 0) {
@@ -234,11 +235,13 @@ export const AlchemistResponses = (npc: NPC) => {
 
       }
 
+      const maxOz = player.$$room.subscriptionHelper.calcPotionMaxSize(player, npc.alchOz);
+
       if(npc.distFrom(player) > 2) return 'Please move closer.';
       return `Hello, ${player.name}! 
       You can tell me COMBINE while holding a bottle in your right hand to 
       mix together that with other bottles of the same type in your sack. 
-      I can combine up to ${npc.alchOz}oz into one bottle. It will cost ${npc.alchCost} gold per ounce to do this.
+      I can combine up to ${maxOz}oz into one bottle. It will cost ${npc.alchCost} gold per ounce to do this.
       ${lastLine}`;
     });
 
@@ -247,9 +250,11 @@ export const AlchemistResponses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
+      const maxOz = player.$$room.subscriptionHelper.calcPotionMaxSize(player, npc.alchOz);
+
       const item = player.rightHand;
       if(!item || item.itemClass !== 'Bottle') return 'You are not holding a bottle.';
-      if(item.ounces >= npc.alchOz) return 'That bottle is already too full for me.';
+      if(item.ounces >= maxOz) return 'That bottle is already too full for me.';
 
       let itemsRemoved = 0;
 
@@ -259,7 +264,7 @@ export const AlchemistResponses = (npc: NPC) => {
         if(!checkItem.effect) return;
         if(checkItem.effect.name !== item.effect.name) return;
         if(checkItem.effect.potency !== item.effect.potency) return;
-        if(checkItem.ounces + item.ounces > npc.alchOz) return;
+        if(checkItem.ounces + item.ounces > maxOz) return;
 
         const cost = checkItem.ounces * npc.alchCost;
         if(npc.alchCost > cost) return;
@@ -545,7 +550,7 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       player.loseGold(trainCost);
 
-      return `You have gained ${newLevel - level} experience levels.`;
+      return `You have gained ${newLevel - level} experience level.`;
     });
 
   npc.parser.addCommand('join')
@@ -650,6 +655,25 @@ export const SpellforgingResponses = (npc: NPC) => {
     });
 };
 
+
+const calcRequiredGoldForNextHPMP = (player, maxForTier: number, normalizer: number, costsAtTier: { min, max }) => {
+
+  const normal = normalizer;
+
+  const curHp = player.getBaseStat('hp');
+
+  // every cha past 7 is +1% discount
+  const discountPercent = Math.min(50, player.getTotalStat('cha') - 7);
+  const percentThere = Math.max(0.01, (curHp - normal) / (maxForTier - normal));
+
+  const { min, max } = costsAtTier;
+
+  const totalCost = min + ((max - min) * percentThere);
+  const totalDiscount = (totalCost * discountPercent / 100);
+
+  return player.$$room.subscriptionHelper.modifyDocPrice(player, Math.max(min, Math.round(totalCost - totalDiscount)));
+};
+
 export const HPDocResponses = (npc: NPC) => {
 
   if(!npc.hpTier) {
@@ -658,20 +682,21 @@ export const HPDocResponses = (npc: NPC) => {
   }
 
   const hpTiers = {
-    Mage:       [100, 375],
-    Thief:      [100, 425],
-    Healer:     [100, 400],
-    Warrior:    [100, 450],
-    Undecided:  [100, 200]
+    Mage:       [100, 375, 600],
+    Thief:      [100, 425, 700],
+    Healer:     [100, 400, 650],
+    Warrior:    [100, 450, 800],
+    Undecided:  [100, 200, 300]
   };
 
-  const levelTiers = [0, 13];
+  const levelTiers = [0, 13, 25];
 
-  const hpNormalizers = [100, 200];
+  const hpNormalizers = [100, 200, 300];
 
   const hpCosts = [
-    { min: 100,  max: 500 },
-    { min: 5000, max: 15000 }
+    { min: 100,     max: 500 },
+    { min: 5000,    max: 15000 },
+    { min: 100000,  max: 1000000 }
   ];
 
   npc.parser.addCommand('hello')
@@ -696,30 +721,12 @@ export const HPDocResponses = (npc: NPC) => {
       if(playerBaseHp > maxHpForTier) return 'Too powerful! No help!';
       if(!NPCLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
 
-      const calcRequiredGoldForNextHP = () => {
-
-        const normal = hpNormalizers[npc.hpTier];
-
-        const curHp = player.getBaseStat('hp');
-
-        // every cha past 7 is +1% discount
-        const discountPercent = Math.min(50, player.getTotalStat('cha') - 7);
-        const percentThere = Math.max(0.01, (curHp - normal) / (maxHpForTier - normal));
-
-        const { min, max } = hpCosts[npc.hpTier];
-
-        const totalCost = min + ((max - min) * percentThere);
-        const totalDiscount = (totalCost * discountPercent / 100);
-
-        return Math.max(min, Math.round(totalCost - totalDiscount));
-      };
-
-      let cost = calcRequiredGoldForNextHP();
+      let cost = calcRequiredGoldForNextHPMP(player, maxHpForTier, hpNormalizers[npc.hpTier], hpCosts[npc.hpTier]);
       let totalHPGained = 0;
       let totalAvailable = player.rightHand.value;
       let totalCost = 0;
 
-      if(cost > totalAvailable) return `Need ${cost} gold for life force!`;
+      if(cost > totalAvailable) return `Need ${cost.toLocaleString()} gold for life force!`;
 
       while(cost > 0 && cost <= totalAvailable) {
         totalAvailable -= cost;
@@ -730,7 +737,7 @@ export const HPDocResponses = (npc: NPC) => {
         if(player.getBaseStat('hp') >= maxHpForTier) {
           cost = -1;
         } else {
-          cost = calcRequiredGoldForNextHP();
+          cost = calcRequiredGoldForNextHPMP(player, maxHpForTier, hpNormalizers[npc.hpTier], hpCosts[npc.hpTier]);
         }
       }
 
@@ -742,5 +749,83 @@ export const HPDocResponses = (npc: NPC) => {
       player.rightHand.value = totalAvailable;
 
       return `Gained ${totalHPGained} life forces! Cost ${totalCost.toLocaleString()} gold!`;
+    });
+};
+
+export const MPDocResponses = (npc: NPC) => {
+
+  if(!npc.mpTier) {
+    Logger.error(new Error(`MPDoc at ${npc.x}, ${npc.y} - ${npc.map} does not have a valid mpTier`));
+    return;
+  }
+
+  const mpTiers = {
+    Mage:       [0, 0, 1000],
+    Thief:      [0, 0, 0],
+    Healer:     [0, 0, 900],
+    Warrior:    [0, 0, 0],
+    Undecided:  [0, 0, 0]
+  };
+
+  const levelTiers = [0, 13, 25];
+
+  const mpNormalizers = [100, 200, 300];
+
+  const mpCosts = [
+    { min: 100,     max: 500 },
+    { min: 25000,   max: 45000 },
+    { min: 500000,  max: 5000000 }
+  ];
+
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Closer move.';
+
+      return `${player.name}, greet! Am exiled scientist of Rys descent. Taught forbidden arts of increase magic force. Interest? Hold gold, say TEACH.`;
+    });
+
+  npc.parser.addCommand('teach')
+    .set('syntax', ['teach'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Closer move.';
+
+      const levelTier = levelTiers[npc.hpTier];
+      if(player.level < levelTier) return 'Not experience enough for teach!';
+
+      const playerBaseHp = player.getBaseStat('hp');
+      const maxHpForTier = mpTiers[player.baseClass][npc.hpTier];
+
+      if(playerBaseHp > maxHpForTier) return 'Too powerful! No help!';
+      if(!NPCLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
+
+      let cost = calcRequiredGoldForNextHPMP(player, maxHpForTier, mpNormalizers[npc.hpTier], mpCosts[npc.hpTier]);
+      let totalHPGained = 0;
+      let totalAvailable = player.rightHand.value;
+      let totalCost = 0;
+
+      if(cost > totalAvailable) return `Need ${cost.toLocaleString()} gold for magic force!`;
+
+      while(cost > 0 && cost <= totalAvailable) {
+        totalAvailable -= cost;
+        totalCost += cost;
+        totalHPGained++;
+        player.gainBaseStat('hp', 1);
+
+        if(player.getBaseStat('hp') >= maxHpForTier) {
+          cost = -1;
+        } else {
+          cost = calcRequiredGoldForNextHPMP(player, maxHpForTier, mpNormalizers[npc.hpTier], mpCosts[npc.hpTier]);
+        }
+      }
+
+      if(totalAvailable === 0) {
+        totalAvailable = 1;
+        totalCost -= 1;
+      }
+
+      player.rightHand.value = totalAvailable;
+
+      return `Gained ${totalHPGained} magic forces! Cost ${totalCost.toLocaleString()} gold!`;
     });
 };

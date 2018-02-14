@@ -6,7 +6,6 @@ import { Item } from './item';
 import * as uuid from 'uuid/v4';
 import { CharacterHelper } from '../../server/helpers/character-helper';
 import { DeathHelper } from '../../server/helpers/death-helper';
-import { Player } from './player';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 
@@ -41,6 +40,7 @@ export class NPC extends Character {
   peddleCost?: number;
 
   hpTier?: number;
+  mpTier?: number;
 
   copyDrops: any[];
   drops: Item[];

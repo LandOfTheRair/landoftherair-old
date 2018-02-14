@@ -4,6 +4,7 @@ import { Player } from '../../../../shared/models/player';
 import { SettingsHelper } from '../../../helpers/settings-helper';
 
 import { size } from 'lodash';
+import { SubscriptionHelper } from '../../../helpers/subscription-helper';
 
 export class GMSettingsUpdate extends Command {
 
@@ -11,7 +12,7 @@ export class GMSettingsUpdate extends Command {
   public format = 'Propsish...';
 
   async execute(player: Player, { room, gameState, args }) {
-    if(!player.isGM) return;
+    if(!SubscriptionHelper.isGM(player)) return;
     if(!args) return false;
 
     const mergeObj = this.getMergeObjectFromArgs(args);

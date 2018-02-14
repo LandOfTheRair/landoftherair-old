@@ -4074,6 +4074,58 @@
                  "width":64,
                  "x":3840,
                  "y":384
+                }, 
+                {
+                 "gid":1777,
+                 "height":64,
+                 "id":1453,
+                 "name":"",
+                 "properties":
+                    {
+                     "subscriberOnly":true,
+                     "teleportMap":"SubscriberCastle",
+                     "teleportX":11,
+                     "teleportY":32
+                    },
+                 "propertytypes":
+                    {
+                     "subscriberOnly":"bool",
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsUp",
+                 "visible":true,
+                 "width":64,
+                 "x":3072,
+                 "y":704
+                }, 
+                {
+                 "gid":1777,
+                 "height":64,
+                 "id":1454,
+                 "name":"",
+                 "properties":
+                    {
+                     "subscriberOnly":true,
+                     "teleportMap":"SubscriberCastle",
+                     "teleportX":11,
+                     "teleportY":34
+                    },
+                 "propertytypes":
+                    {
+                     "subscriberOnly":"bool",
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsUp",
+                 "visible":true,
+                 "width":64,
+                 "x":320,
+                 "y":9728
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7680,7 +7732,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1453,
+ "nextobjectid":1455,
  "orientation":"orthogonal",
  "properties":
     {

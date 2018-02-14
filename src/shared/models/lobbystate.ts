@@ -26,6 +26,9 @@ export class LobbyState {
   @nonenumerable
   status = {};
 
+  @nonenumerable
+  subTier = {};
+
   constructor({ accounts = [], messages = [], motd = '' }) {
     this.accounts = accounts;
     this.messages = messages;
@@ -48,6 +51,7 @@ export class LobbyState {
     this.accounts.forEach(account => {
       this.inGame[account.username] = account.inGame;
       this.status[account.username] = account.status;
+      this.subTier[account.username] = account.isGM ? 10 : account.subscriptionTier;
     });
   }
 
@@ -63,6 +67,10 @@ export class LobbyState {
 
   findAccount(userId: string) {
     return find(this.accounts, { userId });
+  }
+
+  findAccountByUsername(username: string) {
+    return find(this.accounts, { username });
   }
 
   addAccount(account: Account) {

@@ -64,4 +64,8 @@ export class ColyseusService {
   get username() {
     return this.lobby.myAccount.username;
   }
+
+  get isSubscribed(): boolean {
+    return this.lobby.lobbyState.subTier[this.lobby.myAccount.username] > 0;
+  }
 }

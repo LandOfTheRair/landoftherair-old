@@ -2,6 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { SettingsHelper } from '../../../helpers/settings-helper';
+import { SubscriptionHelper } from '../../../helpers/subscription-helper';
 
 export class GMSettingsReset extends Command {
 
@@ -9,7 +10,7 @@ export class GMSettingsReset extends Command {
   public format = '';
 
   async execute(player: Player, { room, gameState, args }) {
-    if(!player.isGM) return;
+    if(!SubscriptionHelper.isGM(player)) return;
 
     await SettingsHelper.resetMapSettings(room.mapRegion, room.mapName);
     room.loadGameSettings();

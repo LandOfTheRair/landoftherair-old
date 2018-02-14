@@ -18,15 +18,20 @@
     }
 
     .user-marking {
+      width: 10px;
+      height: 10px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      display: inline-block;
 
       &.gm {
-        width: 10px;
-        height: 10px;
-        border: 1px solid #000;
-        border-radius: 50%;
         background: purple;
-        background: linear-gradient(135deg, #ad3486 0%,#4100db 50%,#bdf3fd 100%);
-        display: inline-block;
+        background: linear-gradient(135deg, #ad3486 0%, #4100db 50%, #bdf3fd 100%);
+      }
+
+      &.sub {
+        background: purple;
+        background: linear-gradient(135deg, #9f8914 0%, #3e370e 50%, #ffd700 100%);
       }
 
     }
