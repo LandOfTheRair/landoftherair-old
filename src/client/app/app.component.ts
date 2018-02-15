@@ -562,7 +562,9 @@ export class AppComponent implements OnInit {
   doItemPurchase(purchaseItem) {
     (<any>swal)({
       titleText: `Purchase "${purchaseItem.name}"`,
-      text: `Are you sure you want to purchase "${purchaseItem.name}"? It will cost ${purchaseItem.cost.toLocaleString()} silver, leaving you with ${(this.colyseus.lobby.myAccount.silver - purchaseItem.cost).toLocaleString()} silver.`,
+      text: `Are you sure you want to purchase "${purchaseItem.name}"? 
+      It will cost ${purchaseItem.cost.toLocaleString()} silver, leaving you with 
+      ${(this.colyseus.lobby.myAccount.silver - purchaseItem.cost).toLocaleString()} silver.`,
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, buy it!'
