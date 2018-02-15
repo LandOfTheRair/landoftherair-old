@@ -209,9 +209,10 @@ export class GameWorld extends Room<GameState> {
 
     this.send(client, { action: 'set_map', map: this.state.formattedMap });
 
+    // needs to be available when player.init() is called
+    playerData.$$account = account;
+    playerData.$$room = this;
     const player = new Player(playerData);
-    player.$$account = account;
-    player.$$room = this;
     player.z = player.z || 0;
     player.initServer();
     CharacterHelper.setUpClassFor(player);

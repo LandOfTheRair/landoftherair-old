@@ -111,12 +111,19 @@ export class Player extends Character {
   }
 
   init() {
+    this.loadAccountBonuses();
     this.initBelt();
     this.initSack();
     this.initGear();
     this.initHands();
     this.initTradeskills();
     this.initBuyback();
+  }
+
+  private loadAccountBonuses() {
+    if(!this.$$room) return;
+    this.sack.size = this.sackSize + this.$$room.subscriptionHelper.bonusSackSlots(this);
+    this.belt.size = this.beltSize + this.$$room.subscriptionHelper.bonusBeltSlots(this);
   }
 
   initTradeskills() {
@@ -706,7 +713,7 @@ export class Player extends Character {
 
     // fix for character creation
     if(this.$$room) {
-      val = this.$$room.subscriptionHelper.modifySkillGainForSubscription(this, skillGained)
+      val = this.$$room.subscriptionHelper.modifySkillGainForSubscription(this, skillGained);
     }
 
     super._gainSkill(type, val);

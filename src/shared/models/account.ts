@@ -10,7 +10,9 @@ export enum SubscriptionTier {
   BASIC_SUBSCRIPTION = 5
 }
 
-export type SilverPurchase = 'MorePotions' | 'MoreCharacters';
+export type SilverPurchase =
+  'MorePotions' | 'MoreCharacters'
+| 'BiggerBelt' | 'BiggerSack';
 
 export class Account {
   @nonenumerable
@@ -37,10 +39,12 @@ export class Account {
   hasDoneTrial: boolean;
 
   silver: number;
-  lastInGameSilverGrab: number = 0;
+  lastInGameSilverGrab = 0;
   silverPurchases: { [key: string]: number } = {
     MorePotions: 0,
-    MoreCharacters: 0
+    MoreCharacters: 0,
+    BiggerBelt: 0,
+    BiggerSack: 0
   };
 
   constructor(opts) {

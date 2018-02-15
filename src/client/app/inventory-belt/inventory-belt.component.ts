@@ -10,19 +10,20 @@ import { ColyseusGameService } from '../colyseus.game.service';
 export class InventoryBeltComponent {
 
   @Input()
-  public player: Player = new Player({});
-
-  @Input()
   public size;
 
-  public slots = [];
+  get player(): Player {
+    return this.colyseusGame.character;
+  }
 
   get maxSize() {
-    return 5;
+    return this.player.belt.size;
   }
 
-  constructor(public colyseusGame: ColyseusGameService) {
-    this.slots = Array(this.maxSize).fill(null).map((v, i) => i);
+  get slots(): number[] {
+    return Array(this.maxSize).fill(null).map((v, i) => i);
   }
+
+  constructor(public colyseusGame: ColyseusGameService) {}
 
 }

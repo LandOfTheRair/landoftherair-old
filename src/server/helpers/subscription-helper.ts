@@ -40,6 +40,24 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     key: 'MoreCharacters',
     cost: 1000,
     postBuy: (account: Account) => account.maxCharacters++
+  },
+  {
+    name: 'Bigger Sack',
+    desc: 'Add 5 slots to your sack (for all characters). Got space?',
+    icon: 'swap-bag',
+    fgColor: '#060',
+    maxPurchases: 1,
+    key: 'BiggerSack',
+    cost: 1500
+  },
+  {
+    name: 'Bigger Belt',
+    desc: 'Add 5 slots to your belt (for all characters). Weapon-holics rejoice.',
+    icon: 'battle-gear',
+    fgColor: '#a00',
+    maxPurchases: 1,
+    key: 'BiggerBelt',
+    cost: 1500
   }
 ];
 
@@ -87,7 +105,7 @@ export class SubscriptionHelper {
     account.silverPurchases[purchase] = account.silverPurchases[purchase] || 0;
     account.silverPurchases[purchase]++;
 
-    purchaseItem.postBuy(account);
+    if(purchaseItem.postBuy) purchaseItem.postBuy(account);
 
     await AccountHelper.saveAccount(account);
     return true;
@@ -170,6 +188,14 @@ export class SubscriptionHelper {
   // SUBSCRIBER BENEFIT: -(TIER * 5)% HP/MP DOC COST
   public static modifyDocPrice(player: Player, basePrice: number): number {
     return Math.max(1, Math.floor(basePrice - (basePrice * this.subscriptionTierMultiplier(player))));
+  }
+
+  public static bonusSackSlots(player: Player): number {
+    return this.getSilverPurchase(player.$$account, 'BiggerSack') * 5;
+  }
+
+  public static bonusBeltSlots(player: Player): number {
+    return this.getSilverPurchase(player.$$account, 'BiggerBelt') * 5;
   }
 
 }

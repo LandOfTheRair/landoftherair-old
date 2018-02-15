@@ -263,7 +263,7 @@ export class AppComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Yes, logout!'
     }).then(() => {
-      this.colyseus.lobby.logout()
+      this.colyseus.lobby.logout();
 
     }).catch(() => {});
   }
@@ -555,7 +555,8 @@ export class AppComponent implements OnInit {
   }
 
   unableToPurchase(purchaseItem): boolean {
-    return this.getNumSilverItemPurchased(purchaseItem.key) === purchaseItem.maxPurchases || purchaseItem.cost > this.colyseus.lobby.myAccount.silver;
+    return this.getNumSilverItemPurchased(purchaseItem.key) === purchaseItem.maxPurchases
+        || purchaseItem.cost > this.colyseus.lobby.myAccount.silver;
   }
 
   doItemPurchase(purchaseItem) {
