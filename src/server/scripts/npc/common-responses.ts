@@ -790,17 +790,17 @@ export const MPDocResponses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Closer move.';
 
-      const levelTier = levelTiers[npc.hpTier];
+      const levelTier = levelTiers[npc.mpTier];
       if(player.level < levelTier) return 'Not experience enough for teach!';
 
-      const playerBaseHp = player.getBaseStat('hp');
-      const maxHpForTier = mpTiers[player.baseClass][npc.hpTier];
+      const playerBaseMp = player.getBaseStat('mp');
+      const maxMpForTier = mpTiers[player.baseClass][npc.mpTier];
 
-      if(playerBaseHp > maxHpForTier) return 'Too powerful! No help!';
+      if(playerBaseMp > maxMpForTier) return 'Too powerful! No help!';
       if(!NPCLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
 
-      let cost = calcRequiredGoldForNextHPMP(player, maxHpForTier, mpNormalizers[npc.hpTier], mpCosts[npc.hpTier]);
-      let totalHPGained = 0;
+      let cost = calcRequiredGoldForNextHPMP(player, maxMpForTier, mpNormalizers[npc.mpTier], mpCosts[npc.mpTier]);
+      let totalMPGained = 0;
       let totalAvailable = player.rightHand.value;
       let totalCost = 0;
 
@@ -809,13 +809,13 @@ export const MPDocResponses = (npc: NPC) => {
       while(cost > 0 && cost <= totalAvailable) {
         totalAvailable -= cost;
         totalCost += cost;
-        totalHPGained++;
-        player.gainBaseStat('hp', 1);
+        totalMPGained++;
+        player.gainBaseStat('mp', 1);
 
-        if(player.getBaseStat('hp') >= maxHpForTier) {
+        if(player.getBaseStat('mp') >= maxMpForTier) {
           cost = -1;
         } else {
-          cost = calcRequiredGoldForNextHPMP(player, maxHpForTier, mpNormalizers[npc.hpTier], mpCosts[npc.hpTier]);
+          cost = calcRequiredGoldForNextHPMP(player, maxMpForTier, mpNormalizers[npc.mpTier], mpCosts[npc.mpTier]);
         }
       }
 
@@ -826,6 +826,6 @@ export const MPDocResponses = (npc: NPC) => {
 
       player.rightHand.value = totalAvailable;
 
-      return `Gained ${totalHPGained} magic forces! Cost ${totalCost.toLocaleString()} gold!`;
+      return `Gained ${totalMPGained} magic forces! Cost ${totalCost.toLocaleString()} gold!`;
     });
 };
