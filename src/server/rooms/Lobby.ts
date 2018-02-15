@@ -387,7 +387,7 @@ export class Lobby extends Room<LobbyState> {
     this.discord.on('message', ({ content, channel, author }) => {
       if(channel.id !== process.env.DISCORD_CHANNEL || author.username === 'LandOfTheRairLobby') return;
 
-      this.addMessage({ message: content, account: `ᐎ ${author.username}` }, 'discord');
+      this.addMessage({ message: content, account: `ᐎ${author.username}` }, 'discord');
     });
 
   }

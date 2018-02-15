@@ -2874,6 +2874,26 @@
                  "width":64,
                  "x":2176,
                  "y":1536
+                }, 
+                {
+                 "gid":2555,
+                 "height":64,
+                 "id":433,
+                 "name":"Zarn",
+                 "properties":
+                    {
+                     "script":"global\/spellforger"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1856,
+                 "y":2304
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2951,6 +2971,63 @@
                  "width":64,
                  "x":704,
                  "y":2048
+                }, 
+                {
+                 "height":64,
+                 "id":434,
+                 "name":"Heniz Town",
+                 "properties":
+                    {
+                     "desc":"You see a sign near the stairs that reads \"Heniz Town\"."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":704,
+                 "y":2176
+                }, 
+                {
+                 "height":64,
+                 "id":435,
+                 "name":"Tower Town",
+                 "properties":
+                    {
+                     "desc":"You see a sign near the stairs that reads \"Tower Town\"."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":704,
+                 "y":1920
+                }, 
+                {
+                 "height":64,
+                 "id":436,
+                 "name":"Rylt Town",
+                 "properties":
+                    {
+                     "desc":"You see a sign near the stairs that reads \"Rylt Town\"."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":704,
+                 "y":2304
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3008,11 +3085,11 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":433,
+ "nextobjectid":437,
  "orientation":"orthogonal",
  "properties":
     {
-     "maxSkill":1,
+     "maxSkill":10,
      "region":"SubscriberLand",
      "respawnX":15,
      "respawnY":39
