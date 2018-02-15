@@ -18,6 +18,11 @@ import { PartyArbiter } from '../helpers/party-arbiter';
 import { AccountHelper } from '../helpers/account-helper';
 import { AllSilverPurchases, SubscriptionHelper } from '../helpers/subscription-helper';
 import { Logger } from '../logger';
+import { BonusArbiter } from '../helpers/bonus-arbiter';
+import { MessageHelper } from '../helpers/message-helper';
+
+const DISCORD_WATCHER_ROLE_NAME = process.env.DISCORD_WATCHER_ROLE || 'Event Watcher';
+const DISCORD_BOT_NAME = process.env.DISCORD_BOT_NAME || 'LandOfTheRairLobby';
 
 export class Lobby extends Room<LobbyState> {
 
@@ -25,9 +30,12 @@ export class Lobby extends Room<LobbyState> {
 
   private itemCreator: ItemCreator;
   private partyArbiter: PartyArbiter;
+  private bonusArbiter: BonusArbiter;
 
   private discord: Discord.Client;
-  private discordChannel: Discord.Channel;
+  private discordGuild: Discord.Guild;
+  private discordChannel: Discord.GroupDMChannel;
+  private discordBotChannel: Discord.GroupDMChannel;
 
   onInit(opts) {
 
@@ -36,6 +44,7 @@ export class Lobby extends Room<LobbyState> {
 
     this.itemCreator = new ItemCreator();
     this.partyArbiter = new PartyArbiter();
+    this.bonusArbiter = new BonusArbiter();
 
     this.setState(new LobbyState({ accounts: [], messages: [], motd: '' }));
 
@@ -199,14 +208,18 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private saveSettings() {
-    DB.$lobbySettings.update({ lobby: 1 }, { $set: { motd: this.state.motd }}, { upsert: 1 });
+    DB.$lobbySettings.update({ lobby: 1 }, { $set: {
+      motd: this.state.motd,
+      bonus: this.bonusArbiter.allBonusData
+    }}, { upsert: 1 });
   }
 
   private async loadSettings() {
     const settings = await DB.$lobbySettings.findOne({ lobby: 1 });
 
     if(settings) {
-      this.state.motd = settings.motd;
+      this.state.motd = settings.motd || '';
+      if(settings.bonus) this.bonusArbiter.manuallyUpdateBonusSettings(settings.bonus);
     } else {
       DB.$lobbySettings.insert({ lobby: 1 });
     }
@@ -279,9 +292,28 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'unsub')     return this.handleUnsubscription(client, data);
     if(data.action === 'silver')    return this.giveSilver(client, data);
     if(data.action === 'purchase')  return this.purchase(client, data.item);
+    if(data.action === 'festival')  return this.adjustFestival(client, data.args);
     if(data.userId && data.idToken) return this.tryLogin(client, data);
     if(data.message)                return this.sendMessage(client, data.message);
     if(data.characterCreator)       return this.viewCharacter(client, data);
+  }
+
+  private adjustFestival(client, args: string) {
+    const gmAccount = this.state.findAccount(client.userId);
+    if(!gmAccount || !gmAccount.isGM) return;
+
+    const festivalData = MessageHelper.getMergeObjectFromArgs(args);
+    const resultFestivalData = this.bonusArbiter.manuallyUpdateBonusSettings(festivalData);
+
+    const keys = Object.keys(resultFestivalData);
+    if(keys.length === 0) return;
+
+    const festivalStr = keys.map(key => `${key}=${resultFestivalData[key]}`).join(', ');
+    const message = `GM ${gmAccount.username} has changed the following global game settings: ${festivalStr}`;
+
+    this.addSystemMessage(message);
+    this.sendDiscordEventNotification(message);
+    this.saveSettings();
   }
 
   private async purchase(client, key) {
@@ -338,8 +370,12 @@ export class Lobby extends Room<LobbyState> {
     SubscriptionHelper.unsubscribe(targetAccount);
   }
 
+  private addSystemMessage(message: string) {
+    this.state.addMessage({ account: '<System>', message });
+  }
+
   private broadcastMOTD() {
-    this.state.addMessage({ account: '<System>', message: this.state.motd });
+    this.addSystemMessage(this.state.motd);
   }
 
   private setMOTD(client, data) {
@@ -372,28 +408,66 @@ export class Lobby extends Room<LobbyState> {
 
   onDispose() {}
 
+  // discord is optional
   private async startDiscord() {
+    if(!process.env.DISCORD_SECRET) return;
+
     this.discord = new Discord.Client();
 
     try {
       await this.discord.login(process.env.DISCORD_SECRET);
-      this.discordChannel = this.discord.channels.get(process.env.DISCORD_CHANNEL);
+      this.discordGuild = this.discord.guilds.get(process.env.DISCORD_GUILD);
+      this.discordChannel = <Discord.GroupDMChannel>this.discord.channels.get(process.env.DISCORD_CHANNEL);
+      this.discordBotChannel = <Discord.GroupDMChannel>this.discord.channels.get(process.env.DISCORD_BOT_CHANNEL);
       this.state.discordConnected = true;
     } catch(e) {
       Logger.error(e);
       return;
     }
 
-    this.discord.on('message', ({ content, channel, author }) => {
-      if(channel.id !== process.env.DISCORD_CHANNEL || author.username === 'LandOfTheRairLobby') return;
-
-      this.addMessage({ message: content, account: `ᐎ${author.username}` }, 'discord');
+    this.discord.on('message', ({ content, channel, author, member }) => {
+      if(channel.id === this.discordChannel.id) this.parseLobbyMessage({ content, author });
+      if(channel.id === this.discordBotChannel.id) this.parseBotMessage({ content, channel, member });
     });
 
   }
 
+  private parseBotMessage({ content, channel, member }) {
+    if(content !== '!events') return;
+
+    // too lazy to do a permissions check
+    try {
+      const watcherRole = this.discordGuild.roles.find('name', DISCORD_WATCHER_ROLE_NAME);
+      const hasRole = member.roles.get(watcherRole.id);
+
+      if(hasRole) {
+        member.removeRole(watcherRole);
+        channel.send(`${member}, you are **no longer watching** events. You will no longer receive event notifications.`)
+      } else {
+        member.addRole(watcherRole);
+        channel.send(`${member}, you are assigned the role ${DISCORD_WATCHER_ROLE_NAME}. You will be notified when something cool happens.`);
+      }
+
+    } catch(e) {
+      console.error(e);
+    }
+  }
+
+  private parseLobbyMessage({ content, author }) {
+    if(author.username === DISCORD_BOT_NAME) return;
+
+    this.addMessage({ message: content, account: `ᐎ${author.username}` }, 'discord');
+  }
+
   private sendDiscordMessage(username: string, message: string) {
     if(!this.discordChannel) return;
-    (<any>this.discordChannel).send(`${username}: ${message}`);
+    this.discordChannel.send(`${username}: ${message}`);
+  }
+
+  private sendDiscordEventNotification(message: string) {
+    if(!this.discordChannel) return;
+
+    const role = this.discordGuild.roles.find('name', DISCORD_WATCHER_ROLE_NAME);
+    this.discordChannel.send(`${role}, ${message}`);
   }
 }

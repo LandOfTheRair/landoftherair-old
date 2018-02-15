@@ -1,9 +1,10 @@
 
 import { Player } from '../../shared/models/player';
-import { set, startsWith, find } from 'lodash';
+import { startsWith, find } from 'lodash';
 import { Item } from '../../shared/models/item';
 import { Container } from '../../shared/models/container/container';
 import { MapLayer } from '../../shared/models/maplayer';
+import { MessageHelper } from '../helpers/message-helper';
 
 export abstract class Command {
 
@@ -15,28 +16,7 @@ export abstract class Command {
   abstract execute(player: Player, args);
 
   getMergeObjectFromArgs(args) {
-    const matches = args.match(/(?:[^\s"']+|['"][^'"]*["'])+/g);
-
-    const mergeObj = matches.reduce((obj, prop) => {
-      const propData = prop.split('=');
-      const key = propData[0];
-      let val = propData[1];
-
-      if(!val) return obj;
-
-      val = val.trim();
-
-      if(!isNaN(+val)) {
-        val = +val;
-      } else if(startsWith(val, '"')) {
-        val = val.substring(1, val.length - 1);
-      }
-
-      set(obj, key.trim(), val);
-      return obj;
-    }, {});
-
-    return mergeObj;
+    return MessageHelper.getMergeObjectFromArgs(args);
   }
 
   trySwapLeftToRight(player) {

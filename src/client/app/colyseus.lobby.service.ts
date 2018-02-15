@@ -226,7 +226,16 @@ export class ColyseusLobbyService {
       return true;
     }
 
+    if(command === '/festival') {
+      this.startFestival(args);
+      return true;
+    }
+
     return false;
+  }
+
+  public startFestival(args) {
+    this.room.send({ action: 'festival', args });
   }
 
   public giveSilver(args) {

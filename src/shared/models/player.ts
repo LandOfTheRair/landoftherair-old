@@ -266,7 +266,8 @@ export class Player extends Character {
     if(!this.party.canGainPartyPoints) return;
 
     const basePartyExpGain = Math.floor(baseExp / this.party.members.length + 1);
-    const modifiedPartyExpGain = this.$$room.subscriptionHelper.modifyPartyXPGainForSubscription(this, basePartyExpGain);
+    const roomModifiedPartyExpGain = this.$$room.calcAdjustedPartyXPGain(basePartyExpGain);
+    const modifiedPartyExpGain = this.$$room.subscriptionHelper.modifyPartyXPGainForSubscription(this, roomModifiedPartyExpGain);
     this.partyExp.add(modifiedPartyExpGain);
 
     this.checkToGainPartyPoints();

@@ -1,5 +1,5 @@
 
-import { isString, startsWith } from 'lodash';
+import { isString, startsWith, set } from 'lodash';
 import { Character } from '../../shared/models/character';
 import { VisualEffect } from '../gidmetadata/visual-effects';
 
@@ -64,5 +64,30 @@ export class MessageHelper {
 
   static doesTargetMatchSearch(target: Character, findStr: string): boolean {
     return target.uuid === findStr || startsWith(target.name.toLowerCase(), findStr.toLowerCase());
+  }
+
+  static getMergeObjectFromArgs(args) {
+    const matches = args.match(/(?:[^\s"']+|['"][^'"]*["'])+/g);
+
+    const mergeObj = matches.reduce((obj, prop) => {
+      const propData = prop.split('=');
+      const key = propData[0];
+      let val = propData[1];
+
+      if(!val) return obj;
+
+      val = val.trim();
+
+      if(!isNaN(+val)) {
+        val = +val;
+      } else if(startsWith(val, '"')) {
+        val = val.substring(1, val.length - 1);
+      }
+
+      set(obj, key.trim(), val);
+      return obj;
+    }, {});
+
+    return mergeObj;
   }
 }

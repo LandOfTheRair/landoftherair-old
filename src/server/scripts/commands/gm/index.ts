@@ -13,8 +13,6 @@ export * from './GMModifyNPC';
 export * from './GMRespawn';
 export * from './GMSearchItems';
 export * from './GMSearchNPCs';
-export * from './GMSettingsReset';
-export * from './GMSettingsUpdate';
 export * from './GMSpawnNPC';
 export * from './GMSummon';
 export * from './GMTeleport';

@@ -22,7 +22,7 @@ import { Locker } from '../../shared/models/container/locker';
 import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
 import { PartyManager } from '../helpers/party-manager';
-import { BASE_SETTINGS, GameSettings, SettingsHelper } from '../helpers/settings-helper';
+import { BonusHelper } from '../helpers/bonus-helper';
 import { NPCLoader } from '../helpers/npc-loader';
 import { AccountHelper } from '../helpers/account-helper';
 import { DeathHelper } from '../helpers/death-helper';
@@ -66,7 +66,7 @@ export class GameWorld extends Room<GameState> {
 
   public partyManager: PartyManager;
 
-  private gameSettings: GameSettings = clone(BASE_SETTINGS);
+  private bonusHelper: BonusHelper;
 
   private itemGC: any;
 
@@ -154,10 +154,9 @@ export class GameWorld extends Room<GameState> {
         this.loadDropTables();
       }, 0);
 
-      this.loadGameSettings();
-
       this.initGround();
       this.initPartyManager();
+      this.initBonusHelper();
 
       this.state.tick();
 
@@ -558,10 +557,6 @@ export class GameWorld extends Room<GameState> {
     CommandExecutor.executeCommand(player, data.command, data);
   }
 
-  public async loadGameSettings() {
-    this.gameSettings = await SettingsHelper.loadSettings(this.mapRegion, this.mapName);
-  }
-
   private initGround() {
     GroundHelper.loadGround(this);
     this.itemGC = GroundHelper.watchForItemDecay(this);
@@ -569,6 +564,10 @@ export class GameWorld extends Room<GameState> {
 
   private initPartyManager() {
     this.partyManager = new PartyManager(this);
+  }
+
+  private initBonusHelper() {
+    this.bonusHelper = new BonusHelper(this);
   }
 
   private async loadBossTimers() {
@@ -829,30 +828,34 @@ export class GameWorld extends Room<GameState> {
   }
 
   public calcAdjustedGoldGain(gold: number) {
-    return Math.floor(gold * this.gameSettings.goldMult);
+    return Math.floor(gold * this.bonusHelper.settings.goldMult);
   }
 
   public calcAdjustedSkillGain(skill: number) {
-    return Math.floor(skill * this.gameSettings.skillMult);
+    return Math.floor(skill * this.bonusHelper.settings.skillMult);
   }
 
   public calcAdjustedXPGain(xp: number) {
-    return Math.floor(xp * this.gameSettings.xpMult);
+    return Math.floor(xp * this.bonusHelper.settings.xpMult);
   }
 
   public calcAdjustedTraitTimer(timerValue: number) {
-    return Math.floor(timerValue * this.gameSettings.traitTimerMult);
+    return Math.floor(timerValue * this.bonusHelper.settings.traitTimerMult);
   }
 
   public calcAdjustedTraitGain(traitValue: number) {
-    return Math.floor(traitValue * this.gameSettings.traitGainMult);
+    return Math.floor(traitValue * this.bonusHelper.settings.traitGainMult);
+  }
+
+  public calcAdjustedPartyXPGain(xpGain: number) {
+    return Math.floor(xpGain * this.bonusHelper.settings.partyXPMult);
   }
 
   public getRandomStatInformation() {
     return {
-      numberOfRandomStatsForItems: this.gameSettings.numberOfRandomStatsForItems,
-      randomStatMaxValue: this.gameSettings.randomStatMaxValue,
-      randomStatChance: this.gameSettings.randomStatChance
+      numberOfRandomStatsForItems: this.bonusHelper.settings.numberOfRandomStatsForItems,
+      randomStatMaxValue: this.bonusHelper.settings.randomStatMaxValue,
+      randomStatChance: this.bonusHelper.settings.randomStatChance
     };
   }
 }
