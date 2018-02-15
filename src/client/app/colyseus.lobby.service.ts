@@ -233,19 +233,18 @@ export class ColyseusLobbyService {
     const silverGiven = +args.substring(0, args.indexOf(' '));
     const target = args.substring(args.indexOf(' ') + 1);
 
-    if(!silverGiven || !target) return;
+    if(!silverGiven || silverGiven < 0 || !target) return;
 
     this.room.send({ action: 'silver', account: target, silver: silverGiven });
   }
 
   public doSubscribe(args) {
-    const splitArgs = args.split(' ');
-    if(splitArgs.length === 1) {
-      this.room.send({ action: 'sub', account: args });
-      return;
-    }
+    const subDays = +args.substring(0, args.indexOf(' '));
+    const target = args.substring(args.indexOf(' ') + 1);
 
-    this.room.send({ action: 'sub', account: splitArgs[0], period: +splitArgs[1] });
+    if(isNaN(subDays) || !subDays || subDays < 0) return;
+
+    this.room.send({ action: 'sub', account: target, period: subDays });
   }
 
   public doUnsubscribe(args) {

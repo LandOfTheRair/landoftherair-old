@@ -92,8 +92,9 @@ As a GM, you get access to several commands in the lobby:
 * `/motd <motd>` - set the MOTD in the lobby
 * `/resetmotd` - unset the MOTD
 * `/alert <msg>` - alert every player with a certain message (very annoying!)
-* `/subscribe <account> [period=30]` - set the account on a trial subscription lasting for `period` days
+* `/subscribe <period> <account>` - set the account on a trial subscription lasting for `period` days
 * `/unsubscribe <account>` - remove the accounts subscription
+* `/silver <silver> <account>` - give `silver` silver to the target account
 
 You also get access to some commands in-game:
 
