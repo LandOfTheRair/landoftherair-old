@@ -233,7 +233,7 @@ export class ColyseusLobbyService {
     const silverGiven = +args.substring(0, args.indexOf(' '));
     const target = args.substring(args.indexOf(' ') + 1);
 
-    if(!silverGiven || silverGiven < 0 || !target) return;
+    if(isNaN(silverGiven) || !silverGiven || silverGiven < 0 || !target) return;
 
     this.room.send({ action: 'silver', account: target, silver: silverGiven });
   }
@@ -242,7 +242,7 @@ export class ColyseusLobbyService {
     const subDays = +args.substring(0, args.indexOf(' '));
     const target = args.substring(args.indexOf(' ') + 1);
 
-    if(isNaN(subDays) || !subDays || subDays < 0) return;
+    if(isNaN(subDays) || !subDays || subDays < 0 || !target) return;
 
     this.room.send({ action: 'sub', account: target, period: subDays });
   }
