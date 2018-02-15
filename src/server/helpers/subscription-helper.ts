@@ -4,6 +4,7 @@ import { get, find } from 'lodash';
 import { AccountHelper } from './account-helper';
 import { Account, SilverPurchase, SubscriptionTier } from '../../shared/models/account';
 import { Player } from '../../shared/models/player';
+import { Lobby } from '../rooms/Lobby';
 
 const SUBSCRIPTION_TIER_MULTIPLER = 5;
 const BASE_ACTION_QUEUE_SIZE = 20;
@@ -18,10 +19,54 @@ class SilverPurchaseItem {
   cost: number;
   fgColor: string;
   discount?: number;
-  postBuy?: (account: Account) => void;
+  postBuy?: (account: Account, lobby?: Lobby) => void;
 }
 
 export const AllSilverPurchases: SilverPurchaseItem[] = [
+
+  // festivals
+  {
+    name: 'Festival: XP Gain +100%',
+    desc: 'Gain +100% XP for 6 hours. Additional purchases increase duration, not bonus.',
+    icon: 'two-shadows',
+    fgColor: '#0a0',
+    maxPurchases: 99999,
+    key: 'FestivalXP',
+    cost: 100,
+    postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'xpMult', 6)
+  },
+  {
+    name: 'Festival: Skill Gain +100%',
+    desc: 'Gain Skill +100% faster for 6 hours. Additional purchases increase duration, not bonus.',
+    icon: 'two-shadows',
+    fgColor: '#a00',
+    maxPurchases: 99999,
+    key: 'FestivalSkill',
+    cost: 100,
+    postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'skillMult', 6)
+  },
+  {
+    name: 'Festival: Gold Gain +100%',
+    desc: 'Get +100% more gold per kill for 6 hours. Additional purchases increase duration, not bonus.',
+    icon: 'two-shadows',
+    fgColor: '#aa0',
+    maxPurchases: 99999,
+    key: 'FestivalGold',
+    cost: 75,
+    postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'goldMult', 6)
+  },
+  {
+    name: 'Festival: Trait Gain +100%',
+    desc: 'Gain Traits +100% faster for 6 hours. Additional purchases increase duration, not bonus.',
+    icon: 'two-shadows',
+    fgColor: '#0aa',
+    maxPurchases: 99999,
+    key: 'FestivalTrait',
+    cost: 125,
+    postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'traitGainMult', 6)
+  },
+
+  // multi purchases
   {
     name: 'Bigger Potion Stacks',
     desc: 'Increase your Alchemist potion max by 5.',
@@ -41,6 +86,8 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     cost: 1000,
     postBuy: (account: Account) => account.maxCharacters++
   },
+
+  // one time purchases
   {
     name: 'Bigger Sack',
     desc: 'Add 5 slots to your sack (for all characters). Got space?',
@@ -92,7 +139,7 @@ export class SubscriptionHelper {
     return account;
   }
 
-  public static async purchaseWithSilver(account: Account, purchase: SilverPurchase): Promise<boolean> {
+  public static async purchaseWithSilver(account: Account, purchase: SilverPurchase, lobbyInstance: Lobby): Promise<boolean> {
     const purchaseItem = find(AllSilverPurchases, { key: purchase });
     const curPurchaseTier = this.getSilverPurchase(account, purchase);
 
@@ -105,7 +152,7 @@ export class SubscriptionHelper {
     account.silverPurchases[purchase] = account.silverPurchases[purchase] || 0;
     account.silverPurchases[purchase]++;
 
-    if(purchaseItem.postBuy) purchaseItem.postBuy(account);
+    if(purchaseItem.postBuy) purchaseItem.postBuy(account, lobbyInstance);
 
     await AccountHelper.saveAccount(account);
     return true;

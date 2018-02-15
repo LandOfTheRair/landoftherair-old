@@ -25,11 +25,15 @@ export class GMExamine extends Command {
     const target = possTargets[0];
     if(!target) return false;
 
-    let targetJSON = target.toJSON ? target.toJSON() : target;
+    let targetJSON = target.toSaveObject ? target.toSaveObject() : target;
     if(prop) {
       targetJSON = get(targetJSON, prop);
     }
 
-    player.sendClientMessage(JSON.stringify(targetJSON));
+    try {
+      player.sendClientMessage(JSON.stringify(targetJSON));
+    } catch(e) {
+      player.sendClientMessage('Examine failed, be more specific?');
+    }
   }
 }

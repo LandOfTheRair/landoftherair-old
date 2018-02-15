@@ -164,9 +164,10 @@ export class NPC extends Character {
     if(killer) {
 
       const giveXp = this.giveXp || { min: 1, max: 10 };
+      const givenXp = random(giveXp.min, giveXp.max);
 
       if(killer.$$owner) {
-        killer.$$owner.gainExpFromKills(this.$$room.calcAdjustedXPGain(random(giveXp.min, giveXp.max)));
+        killer.$$owner.gainExpFromKills(this.$$room.calcAdjustedXPGain(givenXp));
         return false;
       }
 
@@ -175,7 +176,7 @@ export class NPC extends Character {
           killer.changeRep(allegiance, delta);
         });
 
-        killer.gainExpFromKills(this.$$room.calcAdjustedXPGain(random(giveXp.min, giveXp.max)));
+        killer.gainExpFromKills(this.$$room.calcAdjustedXPGain(givenXp));
       }
 
       DeathHelper.calculateLootDrops(this, killer);

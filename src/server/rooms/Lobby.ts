@@ -44,7 +44,7 @@ export class Lobby extends Room<LobbyState> {
 
     this.itemCreator = new ItemCreator();
     this.partyArbiter = new PartyArbiter();
-    this.bonusArbiter = new BonusArbiter();
+    this.bonusArbiter = new BonusArbiter(this);
 
     this.setState(new LobbyState({ accounts: [], messages: [], motd: '' }));
 
@@ -207,10 +207,11 @@ export class Lobby extends Room<LobbyState> {
     return DB.$players.findOne({ username, charSlot, inGame: { $ne: true } });
   }
 
-  private saveSettings() {
+  public saveSettings() {
     DB.$lobbySettings.update({ lobby: 1 }, { $set: {
       motd: this.state.motd,
-      bonus: this.bonusArbiter.allBonusData
+      bonus: this.bonusArbiter.allBonusData,
+      bonusHours: this.bonusArbiter.boughtBonusHours
     }}, { upsert: 1 });
   }
 
@@ -220,6 +221,7 @@ export class Lobby extends Room<LobbyState> {
     if(settings) {
       this.state.motd = settings.motd || '';
       if(settings.bonus) this.bonusArbiter.manuallyUpdateBonusSettings(settings.bonus);
+      if(settings.bonusHours) this.bonusArbiter.manuallyUpdateBonusHours(settings.bonusHours);
     } else {
       DB.$lobbySettings.insert({ lobby: 1 });
     }
@@ -320,7 +322,7 @@ export class Lobby extends Room<LobbyState> {
     const account = this.state.findAccount(client.userId);
     if(!account) return;
 
-    const wasSuccess = await SubscriptionHelper.purchaseWithSilver(account, key);
+    const wasSuccess = await SubscriptionHelper.purchaseWithSilver(account, key, this);
     if(!wasSuccess) {
       this.send(client, {
         error: 'couldnt_purchase',
@@ -328,6 +330,16 @@ export class Lobby extends Room<LobbyState> {
         prettyErrorDesc: 'The purchase didn\'t go through. Either you don\'t have enough silver, or something else went wrong. If this problem persists, contact a GM..'
       });
     }
+  }
+
+  public updateFestivalTime(account: Account, key: 'xpMult'|'skillMult'|'traitGainMult'|'goldMult', hours = 6): void {
+
+    this.bonusArbiter.manuallyUpdateBonusHours({ [key]: hours });
+    this.saveSettings();
+
+    const hoursRemaining = this.bonusArbiter.boughtBonusHours[key];
+
+    this.sendDiscordEventNotification(`${account.username} just bought ${hours} hours of ${key} +100%! There are ${hoursRemaining} hours left of the bonus.`);
   }
 
   private async giveSilver(client, data) {
