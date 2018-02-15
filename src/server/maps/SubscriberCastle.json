@@ -2700,26 +2700,6 @@
                  "y":1216
                 }, 
                 {
-                 "gid":3150,
-                 "height":64,
-                 "id":196,
-                 "name":"MinorPotionVendor",
-                 "properties":
-                    {
-                     "script":"gm\/minoralchemist"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2240,
-                 "y":2304
-                }, 
-                {
                  "gid":3105,
                  "height":64,
                  "id":211,

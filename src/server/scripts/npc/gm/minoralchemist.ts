@@ -21,7 +21,7 @@ export const setup = async (npc: NPC) => {
 
   NPCLoader.loadVendorItems(npc, vendorItems);
 
-  npc.gear.Armor = await NPCLoader.loadItem('Battlemage Armor');
+  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
