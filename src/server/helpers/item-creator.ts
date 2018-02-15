@@ -51,7 +51,7 @@ export class ItemCreator {
 
     if(room) {
       const { numberOfRandomStatsForItems, randomStatMaxValue, randomStatChance } = room.getRandomStatInformation();
-      if(numberOfRandomStatsForItems > 0 && randomStatMaxValue > 0 && random(1, 100000) <= randomStatChance) {
+      if(numberOfRandomStatsForItems > 0 && randomStatMaxValue > 0 && random(1, 1000000) <= randomStatChance) {
         const chosenStats = sampleSize(randomStats, numberOfRandomStatsForItems);
 
         chosenStats.forEach(stat => {
