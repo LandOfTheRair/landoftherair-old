@@ -140,7 +140,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground'
          [dragEnabled]="!displayOnly"
          (mouseenter)="determineScopes()"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
-         [dragData]="{ item: item, context: context, contextSlot: contextSlot, count: count, containerUUID: containerUUID }"
+         [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID }"
          [tooltip]="descText">
       <img [src]="imgUrl" [style.object-position]="spriteLocation" />
       <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="showEncrust && item.encrust" />
