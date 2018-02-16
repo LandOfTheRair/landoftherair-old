@@ -38,6 +38,10 @@ body {
     }
   }
 
+  .swal2-success-circular-line-left, .swal2-success-circular-line-right, .swal2-success-fix {
+    background-color: $window-background-color !important;
+  }
+
   .modal-content, popover-container, .popover-content, .swal2-modal, .swal2-title, .swal2-content {
     background-color: $window-background-color !important;
     color: $window-text-color !important;

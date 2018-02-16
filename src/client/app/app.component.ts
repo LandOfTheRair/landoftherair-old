@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { StripeCheckoutLoader, StripeCheckoutHandler } from 'ng-stripe-checkout';
 import { ColyseusService } from './colyseus.service';
 
 import * as swal from 'sweetalert2';
@@ -13,6 +14,8 @@ import { AuthService } from './auth.service';
 import { AssetService } from './asset.service';
 import { Observable } from 'rxjs/Observable';
 import { SilverPurchase } from '../../shared/models/account';
+
+import { environment } from '../environments/environment';
 
 type Size = 'normal' | 'small' | 'xsmall';
 type XSizeMax = 'max' | 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
@@ -196,11 +199,12 @@ export class AppComponent implements OnInit {
   public nowTimestamp: number;
   public timestampDisplay: string;
 
-  public silverPricePoints = [
-    { price: 5.00,  silver: 500 },
-    { price: 10.00, silver: 1100 },
-    { price: 20.00, silver: 2500 }
-  ];
+  get stripeKey(): string {
+    return environment.stripe.key;
+  }
+
+  private stripeCheckoutHandler: StripeCheckoutHandler;
+  private currentlyBuyingItem: any;
 
   constructor(
     public colyseus: ColyseusService,
@@ -208,7 +212,8 @@ export class AppComponent implements OnInit {
     public authService: AuthService,
     public assetService: AssetService,
     private localStorage: LocalStorageService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private stripeCheckoutLoader: StripeCheckoutLoader
   ) {
     this.authService.handleAuthentication();
     this.macroService.ignoreFunction = () => {
@@ -573,4 +578,34 @@ export class AppComponent implements OnInit {
 
     }).catch(() => {});
   }
+
+  ngAfterViewInit() {
+    (<any>this).stripeCheckoutLoader.createHandler({
+      key: this.stripeKey,
+      name: 'Land of the Rair',
+      allowRememberMe: true,
+      zipCode: true,
+      billingAddress: true,
+      currency: 'USD',
+      image: 'https://play.rair.land/android-chrome-512x512.png',
+      token: (token) => {
+        this.colyseus.lobby.buySilver({ token, item: this.currentlyBuyingItem });
+      }
+    }).then((handler: StripeCheckoutHandler) => {
+      this.stripeCheckoutHandler = handler;
+    });
+  }
+
+  startPayment(item) {
+    if(!this.stripeCheckoutHandler) return;
+
+    this.currentlyBuyingItem = item;
+
+    this.stripeCheckoutHandler.open({
+      amount: item.price,
+      email: this.colyseus.lobby.myAccount.email,
+      description: item.silver ? `${item.silver.toLocaleString()} Silver` : `${item.duration} Month Subscription`
+    });
+  }
+
 }

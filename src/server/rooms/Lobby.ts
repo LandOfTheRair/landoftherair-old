@@ -16,7 +16,7 @@ import { JWTHelper } from '../helpers/jwt-helper';
 import { ItemCreator } from '../helpers/item-creator';
 import { PartyArbiter } from '../helpers/party-arbiter';
 import { AccountHelper } from '../helpers/account-helper';
-import { AllSilverPurchases, SubscriptionHelper } from '../helpers/subscription-helper';
+import { AllSilverPurchases, SilverBuyTiers, SubscriptionHelper } from '../helpers/subscription-helper';
 import { Logger } from '../logger';
 import { BonusArbiter } from '../helpers/bonus-arbiter';
 import { MessageHelper } from '../helpers/message-helper';
@@ -52,6 +52,7 @@ export class Lobby extends Room<LobbyState> {
     DB.$players.update({}, { $set: { inGame: -1 } }, { multi: true });
 
     this.state.silverPurchases = AllSilverPurchases;
+    this.state.silverPrices = SilverBuyTiers;
 
     this.startDiscord();
   }
@@ -311,9 +312,42 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'silver')          return this.giveSilver(client, data);
     if(data.action === 'purchase')        return this.purchase(client, data.item);
     if(data.action === 'festival')        return this.adjustFestival(client, data.args);
+    if(data.action === 'rmbuy')           return this.rmBuy(client, data.purchaseInfo);
     if(data.userId && data.accessToken)   return this.tryLogin(client, data);
     if(data.message)                      return this.sendMessage(client, data.message);
     if(data.characterCreator)             return this.viewCharacter(client, data);
+  }
+
+  private async rmBuy(client, purchaseInfo) {
+    const account = this.state.findAccount(client.userId);
+    if(!account) return;
+
+    try {
+      await SubscriptionHelper.buyWithStripe(account, purchaseInfo);
+
+      if(purchaseInfo.item.duration) {
+        this.send(client, {
+          error: 'success_stripe',
+          popupType: 'success',
+          prettyErrorName: 'Stripe Success',
+          prettyErrorDesc: `Payment successful. Thanks for your support! You are now a ${purchaseInfo.item.duration}-month subscriber to Land of the Rair! You also now have ${account.silver.toLocaleString()} silver!`
+        });
+
+      } else {
+        this.send(client, {
+          error: 'success_stripe',
+          popupType: 'success',
+          prettyErrorName: 'Stripe Success',
+          prettyErrorDesc: `Payment successful. Thanks for your support! You now have ${account.silver.toLocaleString()} silver!`
+        });
+      }
+    } catch(e) {
+      this.send(client, {
+        error: 'error_stripe',
+        prettyErrorName: 'Stripe Error',
+        prettyErrorDesc: e.message
+      });
+    }
   }
 
   private adjustFestival(client, args: string) {

@@ -15,6 +15,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { StripeCheckoutModule } from 'ng-stripe-checkout';
 
 import { AppComponent } from './app.component';
 
@@ -126,7 +127,9 @@ import { TradeskillSpellforgingComponent } from './tradeskill-spellforging/trade
     ModalModule.forRoot(),
     ButtonsModule.forRoot(),
     TooltipModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+
+    StripeCheckoutModule
   ],
   providers: [
     AuthService,

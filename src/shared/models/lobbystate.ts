@@ -15,6 +15,7 @@ export class LobbyState {
   discordConnected: boolean;
 
   silverPurchases: any[] = [];
+  silverPrices: { micro: any[], sub: any[] } = { micro: [], sub: [] };
 
   @nonenumerable
   account$ = new BehaviorSubject<Account[]>([]);

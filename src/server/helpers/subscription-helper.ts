@@ -1,5 +1,6 @@
 
-import { get, find } from 'lodash';
+import { get, find, includes } from 'lodash';
+import * as stripe from 'stripe';
 
 import { AccountHelper } from './account-helper';
 import { Account, SilverPurchase, SubscriptionTier } from '../../shared/models/account';
@@ -9,6 +10,8 @@ import { Lobby } from '../rooms/Lobby';
 const SUBSCRIPTION_TIER_MULTIPLER = 5;
 const BASE_ACTION_QUEUE_SIZE = 20;
 const ACTION_QUEUE_MULTIPLIER = 2;
+
+const Stripe = stripe(process.env.STRIPE_TOKEN);
 
 class SilverPurchaseItem {
   name: string;
@@ -22,9 +25,19 @@ class SilverPurchaseItem {
   postBuy?: (account: Account, lobby?: Lobby) => void;
 }
 
-export const SilverBuyTiers = [
+export const SilverBuyTiers = {
+  micro: [
+    { key: 'micro-sm', price: 499,  silver: 500,  percentOverAverage: 0 },
+    { key: 'micro-md', price: 999,  silver: 1100, percentOverAverage: 10 },
+    { key: 'micro-lg', price: 1999, silver: 2500, percentOverAverage: 25 }
+  ],
+  sub: [
+    { key: 'sub-1m',   price: 699,  duration: 1,  percentOverAverage: 0 },
+    { key: 'sub-3m',   price: 2099, duration: 3,  percentOverAverage: 0 },
+    { key: 'sub-12m',  price: 6999, duration: 12, percentOverAverage: 2 }
+  ]
+};
 
-];
 
 export const AllSilverPurchases: SilverPurchaseItem[] = [
 
@@ -114,10 +127,71 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
 
 export class SubscriptionHelper {
 
+  public static async buyWithStripe(account: Account, purchaseInfo) {
+    if(!process.env.STRIPE_TOKEN) throw new Error('Stripe is not configured');
+
+    if(!purchaseInfo) return;
+    const { token, item } = purchaseInfo;
+
+    if(!item || !token) throw new Error('No item or no valid token');
+
+    // subscription
+    if(includes(item.key, 'sub')) {
+      const purchaseItem = find(SilverBuyTiers.sub, { key: item.key });
+      if(!purchaseItem) throw new Error('Invalid purchase item');
+
+      // monthly
+      try {
+        const customer = await Stripe.customers.create({
+          email: account.email
+        });
+
+        const source = await Stripe.customers.createSource(customer.id, {
+          source: token.id
+        });
+
+        await Stripe.charges.create({
+          amount: purchaseItem.price,
+          currency: 'usd',
+          customer: source.customer
+        });
+
+        await this.subscribe(account, purchaseItem.duration);
+      } catch(e) {
+        throw e;
+      }
+
+    // microtransaction
+    } else {
+      const purchaseItem = find(SilverBuyTiers.micro, { key: item.key });
+      if(!purchaseItem) throw new Error('Invalid purchase item');
+
+      try {
+        const customer = await Stripe.customers.create({
+          email: account.email
+        });
+
+        const source = await Stripe.customers.createSource(customer.id, {
+          source: token.id
+        });
+
+        await Stripe.charges.create({
+          amount: purchaseItem.price,
+          currency: 'usd',
+          customer: source.customer
+        });
+
+        await this.giveSilver(account, purchaseItem.silver);
+      } catch(e) {
+        throw e;
+      }
+    }
+  }
+
   // account management
-  public static async subscribe(account: Account): Promise<Account> {
-    account.subscriptionTier = SubscriptionTier.BASIC_SUBSCRIPTION;
-    await AccountHelper.saveAccount(account);
+  public static async subscribe(account: Account, months: number): Promise<Account> {
+    await this.startTrial(account, months * 30, SubscriptionTier.BASIC_SUBSCRIPTION);
+    await this.giveSilver(account, months * 500);
     return account;
   }
 
@@ -127,12 +201,12 @@ export class SubscriptionHelper {
     return account;
   }
 
-  public static async startTrial(account: Account, expirationDays = 30): Promise<Account> {
+  public static async startTrial(account: Account, expirationDays = 30, tier = SubscriptionTier.TRIAL_SUBSCRIPTION): Promise<Account> {
     const date = new Date();
     date.setDate(date.getDate() + expirationDays);
     account.trialEnds = date.getTime();
-    account.hasDoneTrial = true;
-    account.subscriptionTier = SubscriptionTier.TRIAL_SUBSCRIPTION;
+    account.hasDoneTrial = tier <= 1;
+    account.subscriptionTier = tier;
     await AccountHelper.saveAccount(account);
     return account;
   }
@@ -164,7 +238,12 @@ export class SubscriptionHelper {
 
   public static async checkAccountForExpiration(account: Account): Promise<Account> {
     const now = Date.now();
-    if(now >= account.trialEnds) account.subscriptionTier = SubscriptionTier.NO_SUBSCRIPTION;
+    if(now >= account.trialEnds) {
+      if(account.subscriptionTier === SubscriptionTier.TRIAL_SUBSCRIPTION) {
+        account.subscriptionTier = SubscriptionTier.NO_SUBSCRIPTION;
+      }
+      account.trialEnds = 0;
+    }
     await AccountHelper.saveAccount(account);
     return account;
   }

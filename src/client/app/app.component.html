@@ -6,11 +6,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
-      <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
+      <li class="nav-item" dropdown container="body">
         <a class="nav-link" href="#" dropdownToggle>Game {{ colyseus.isConnected ? '' : '(Disconnected)' }}</a>
 
         <ul *dropdownMenu class="dropdown-menu">
-          <li *ngIf="!inGame">
+          <li *ngIf="!inGame && colyseus.lobby.myAccount.username">
             <a class="dropdown-item" (click)="silverModal.show()">Manage Silver</a>
           </li>
           <li *ngIf="inGame">
@@ -25,7 +25,7 @@
     </ul>
 
     <ul class="navbar-nav">
-      <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
+      <li class="nav-item" *ngIf="colyseus.lobby.myAccount.username" dropdown container="body">
         <a class="nav-link" href="#" dropdownToggle>Windows</a>
 
         <ul *dropdownMenu class="dropdown-menu">
@@ -1106,7 +1106,7 @@
       <div class="modal-body" *ngIf="silverModal.isShown">
 
         <div class="top-container">
-          <img src="http://rair.land/img/coin.png" width="64" height="64" /> You have {{ colyseus.lobby.myAccount.silver | number }} silver.
+          <img src="http://rair.land/img/coin.png" width="64" height="64" /> You have {{ (colyseus.lobby.myAccount.silver || 0) | number }} silver.
         </div>
 
         <tabset justified="true">
@@ -1124,9 +1124,22 @@
 
             <div class="row mt-3">
               <div class="col-md-6">
-                <h4 class="text-center">Once-off</h4>
+                <h4 class="text-center">Just Silver</h4>
 
-                {{ silverPricePoints | json }}
+                <p class="text-center">These are just one-time payments to get some silver. You can see the silver cost of what you want in the "Spend Silver" tab.</p>
+
+                <div *ngFor="let pricePoint of colyseus.lobby.lobbyState.silverPrices.micro" class="mt-3 row">
+                  <div class="col-md-2 text-right">
+                    <img src="http://rair.land/img/coin.png" width="64" height="64" />
+                  </div>
+                  <div class="col-md-10 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-primary btn-block" (click)="startPayment(pricePoint)">
+                      Buy {{ pricePoint.silver | number }} silver for {{ pricePoint.price / 100 | number }}
+                      <span *ngIf="pricePoint.percentOverAverage">(+{{ pricePoint.percentOverAverage }}% more!)</span>
+                    </button>
+                  </div>
+                </div>
+
               </div>
 
               <div class="col-md-6">
@@ -1136,9 +1149,22 @@
                   <a href="http://rair.land/docs/subscriber-benefits/" target="_blank">Click this link to see all the awesome perks of subscribing!</a>
                 </div>
 
-                <div class="mt-3">6.99/mo</div>
+                <div class="text-center mt-3" *ngIf="colyseus.lobby.myAccount.subscriptionTier <= 1">If you're interested in trying before buying, contact a GM to set up a trial subscription. The trial will last 30 days, but you can always go back to playing for free.</div>
 
-                <div class="text-center mt-3">If you're interested in trying before buying, contact a GM to set up a trial subscription. The trial will last 30 days, but you can always go back to playing for free.</div>
+                <div class="mt-3" *ngIf="colyseus.lobby.myAccount.subscriptionTier <= 1">
+
+                  <div *ngFor="let pricePoint of colyseus.lobby.lobbyState.silverPrices.sub" class="mt-3">
+                    <button class="btn btn-success btn-block" (click)="startPayment(pricePoint)">
+                      Subscribe for {{ pricePoint.duration }} months for {{ pricePoint.price / 100 | number }}
+                      <span *ngIf="pricePoint.percentOverAverage">({{ pricePoint.percentOverAverage }} free months!)</span>
+                    </button>
+                  </div>
+
+                </div>
+
+                <div class="mt-3 text-center" *ngIf="colyseus.lobby.myAccount.subscriptionTier > 1">
+                  You have an active subscription that will end on {{ colyseus.lobby.myAccount.trialEnds | date:'medium' }}! Thanks!
+                </div>
               </div>
             </div>
 
@@ -1208,7 +1234,7 @@
 <img *ngFor="let asset of assetService.preloadAssets" class="hidden" [src]="asset" (load)="imageLoaded()" />
 
 <div class="bottom-subscriber-reminder" *ngIf="!colyseus.isSubscribed">
-  You're not currently subscribed. Please consider subscribing or buying silver to help keep the lights on (Game > Manage Silver)! Want to know what you get for subscribing?
+  You're not currently subscribed. Please consider <a (click)="silverModal.show()">subscribing or buying silver</a> to help keep the lights on! Want to know what you get for subscribing?
   <br>
   <a href="http://rair.land/docs/subscriber-benefits/" target="_blank">Click this link to see all the awesome perks of subscribing!</a>
 </div>

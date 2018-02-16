@@ -42,7 +42,6 @@ export class Account {
   hasDoneTrial: boolean;
 
   silver: number;
-  lastInGameSilverGrab = 0;
   silverPurchases: { [key: string]: number } = {
     MorePotions: 0,
     MoreCharacters: 0,

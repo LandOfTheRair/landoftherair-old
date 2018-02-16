@@ -132,7 +132,7 @@ export class ColyseusLobbyService {
       (<any>swal)({
         titleText: other.prettyErrorName,
         text: other.prettyErrorDesc,
-        type: 'error'
+        type: other.popupType || 'error'
       });
 
       return;
@@ -191,6 +191,14 @@ export class ColyseusLobbyService {
 
   public buySilverItem(key: SilverPurchase) {
     this.room.send({ action: 'purchase', item: key });
+  }
+
+  public buySilver(purchaseInfo) {
+    this.room.send({ action: 'rmbuy', purchaseInfo });
+  }
+
+  public doStripeUnsubscribe() {
+    this.room.send({ action: 'rmunsub' });
   }
 
   public doCommand(string): boolean {
