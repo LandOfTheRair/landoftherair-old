@@ -239,9 +239,7 @@ export class SubscriptionHelper {
   public static async checkAccountForExpiration(account: Account): Promise<Account> {
     const now = Date.now();
     if(now >= account.trialEnds) {
-      if(account.subscriptionTier === SubscriptionTier.TRIAL_SUBSCRIPTION) {
-        account.subscriptionTier = SubscriptionTier.NO_SUBSCRIPTION;
-      }
+      account.subscriptionTier = SubscriptionTier.NO_SUBSCRIPTION;
       account.trialEnds = 0;
     }
     await AccountHelper.saveAccount(account);
