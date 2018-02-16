@@ -1,5 +1,5 @@
 
-import { Effect, Maxes } from '../base/Effect';
+import { Effect } from '../base/Effect';
 import { Character } from '../../shared/models/character';
 
 export class MinorMP extends Effect {

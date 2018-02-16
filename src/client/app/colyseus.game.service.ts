@@ -600,12 +600,12 @@ export class ColyseusGameService {
   }
 
   public buildDropAction({ dragData }, choice) {
-    const { context, contextSlot, count, containerUUID, item } = dragData;
+    const { context, contextSlot, containerUUID, item } = dragData;
 
-    this.buildAction(item, { context, contextSlot, count, containerUUID }, choice);
+    this.buildAction(item, { context, contextSlot, containerUUID }, choice);
   }
 
-  public async buildAction(item, { context, contextSlot, count, containerUUID }, choice) {
+  public async buildAction(item, { context, contextSlot, containerUUID }, choice) {
     const contextStr = context.substring(0, 1);
     const choiceStr = choice.substring(0, 1);
     const cmd = `~${contextStr}t${choiceStr}`;
@@ -620,7 +620,7 @@ export class ColyseusGameService {
 
     // TO a tradeskill container
     if(splitpostargs.length === 3) {
-      const [t, skill, slot] = splitpostargs;
+      const [, skill, slot] = splitpostargs;
       if(!this['show' + skill]) return;
       postargs = `${skill.toLowerCase()} ${slot} ${this['show' + skill].uuid}`.trim();
     }
@@ -629,15 +629,15 @@ export class ColyseusGameService {
 
     // FROM a tradeskill container
     if(splitcontextargs.length === 2) {
-      const [t, skill] = splitcontextargs;
+      const [, skill] = splitcontextargs;
       if(!this['show' + skill]) return;
       postargs = `${skill.toLowerCase()} ${contextSlot} ${this['show' + skill].uuid}`.trim();
     }
 
     // INSIDE a tradeskill container
     if(splitpostargs.length === 3 && splitcontextargs.length === 2) {
-      const [t1, skill1] = splitcontextargs;
-      const [t2, skill2, slot2] = splitpostargs;
+      const [, skill1] = splitcontextargs;
+      const [, , slot2] = splitpostargs;
 
       postargs = `${skill1.toLowerCase()} ${contextSlot} ${this['show' + skill1].uuid} ${slot2}`.trim();
     }

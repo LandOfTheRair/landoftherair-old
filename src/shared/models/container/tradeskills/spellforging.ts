@@ -1,5 +1,5 @@
 
-import { extend, compact, clone, includes } from 'lodash';
+import { extend, clone, includes } from 'lodash';
 
 import { Item } from '../../item';
 import { Container } from '../container';

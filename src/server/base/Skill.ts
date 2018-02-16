@@ -2,7 +2,7 @@
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { Command } from './Command';
 
-import { isFunction, random } from 'lodash';
+import { random } from 'lodash';
 import { MessageHelper } from '../helpers/message-helper';
 
 export abstract class Skill extends Command {

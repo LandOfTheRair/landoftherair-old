@@ -1,5 +1,5 @@
 
-import { extend, omitBy, includes, without, isNumber, size, startCase, sample } from 'lodash';
+import { extend, includes, isNumber, size, startCase } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import * as uuid from 'uuid/v4';
 import { Alignment, Character, SkillClassNames } from './character';

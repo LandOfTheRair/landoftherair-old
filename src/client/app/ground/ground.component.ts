@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { includes, pull, difference, differenceBy, find, reject, pullAll } from 'lodash';
+import { includes, pull, difference, differenceBy, pullAll } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 @Component({

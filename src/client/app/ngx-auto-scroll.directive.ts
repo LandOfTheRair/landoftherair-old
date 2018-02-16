@@ -13,6 +13,7 @@ export class NgxAutoScrollDirective implements AfterContentInit, OnDestroy {
 
   constructor(element: ElementRef) {
     this.nativeElement = element.nativeElement;
+    this.scrollHandler();
   }
 
   public getObserveAttributes(): boolean {

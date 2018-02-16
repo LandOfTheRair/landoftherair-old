@@ -5,7 +5,6 @@ import { find, isUndefined } from 'lodash';
 
 import * as Pathfinder from 'pathfinding';
 import { TrapHelper } from './trap-helper';
-import { LockerHelper } from './locker-helper';
 
 export class MoveHelper {
 

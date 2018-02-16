@@ -1,8 +1,7 @@
 
 import { SpellEffect } from '../base/Effect';
-import { Character, SkillClassNames, StatName } from '../../shared/models/character';
+import { Character, StatName } from '../../shared/models/character';
 import { Skill } from '../base/Skill';
-import { CharacterHelper } from '../helpers/character-helper';
 import { Player } from '../../shared/models/player';
 
 export class Nourishment extends SpellEffect {

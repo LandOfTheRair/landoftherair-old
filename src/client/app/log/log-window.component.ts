@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ClientGameState } from '../clientgamestate';
 
 import { LocalStorage } from 'ngx-webstorage';
 import { ColyseusService } from '../colyseus.service';

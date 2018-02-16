@@ -1,5 +1,5 @@
 
-import { omit, flatten, random, set, get, isArray } from 'lodash';
+import { flatten, random, set, get } from 'lodash';
 
 import { Allegiance, Character, Direction } from './character';
 import { Item } from './item';
@@ -219,6 +219,7 @@ export class NPC extends Character {
   }
 
   registerAttackDamage(char: Character, attack: string, damage: number) {
+    this.$$targetDamageDone = this.$$targetDamageDone || {};
     set(this, ['$$targetDamageDone', char.uuid, attack], damage);
   }
 

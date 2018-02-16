@@ -1,6 +1,6 @@
 
 import { StanceEffect } from '../base/Effect';
-import { Character, SkillClassNames } from '../../shared/models/character';
+import { Character } from '../../shared/models/character';
 import { Skill } from '../base/Skill';
 import { MessageHelper } from '../helpers/message-helper';
 import { GenderHelper } from '../helpers/gender-helper';

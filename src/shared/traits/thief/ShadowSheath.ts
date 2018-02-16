@@ -1,6 +1,5 @@
 
 import { Trait } from '../../models/trait';
-import { Player } from '../../models/player';
 
 export class ShadowSheath extends Trait {
 

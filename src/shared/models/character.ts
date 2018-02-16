@@ -1,8 +1,7 @@
 
 import {
-  omitBy, merge, find, includes, compact, pull, values, floor,
-  capitalize, startsWith, isUndefined, clone, isString, random,
-  get, reject, pick
+  merge, find, includes, compact, values,
+  startsWith, clone, get, reject, pick
 } from 'lodash';
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes

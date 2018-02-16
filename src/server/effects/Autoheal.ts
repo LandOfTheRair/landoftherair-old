@@ -3,7 +3,6 @@ import { SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { CombatHelper } from '../helpers/combat-helper';
 import { Skill } from '../base/Skill';
-import * as dice from 'dice.js';
 
 export class Autoheal extends SpellEffect {
 

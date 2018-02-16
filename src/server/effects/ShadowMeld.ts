@@ -2,7 +2,6 @@
 import { SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { Skill } from '../base/Skill';
-import { CharacterHelper } from '../helpers/character-helper';
 
 export class ShadowMeld extends SpellEffect {
 

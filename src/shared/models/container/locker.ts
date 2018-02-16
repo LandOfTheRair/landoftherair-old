@@ -1,7 +1,6 @@
 
-import { extend, compact } from 'lodash';
+import { extend } from 'lodash';
 
-import { Item } from '../item';
 import { Container } from './container';
 
 export class Locker extends Container {

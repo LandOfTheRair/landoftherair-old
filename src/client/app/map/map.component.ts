@@ -7,7 +7,7 @@ import { ColyseusService } from '../colyseus.service';
 import { HPBox, XPBox } from './floating-box';
 import { AssetService } from '../asset.service';
 
-import { get, isUndefined } from 'lodash';
+import { get } from 'lodash';
 import { MapLayer } from '../../../shared/models/maplayer';
 
 @Component({

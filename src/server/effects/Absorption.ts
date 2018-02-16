@@ -1,5 +1,5 @@
 
-import { Effect, SpellEffect } from '../base/Effect';
+import { SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { Skill } from '../base/Skill';
 

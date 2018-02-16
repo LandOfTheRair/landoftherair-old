@@ -1,5 +1,5 @@
 
-import { extend, merge, remove, find, differenceBy, compact, values, map, filter, reject, size } from 'lodash';
+import { extend, merge, differenceBy, compact, values, filter, reject, size } from 'lodash';
 
 import { Player } from '../../shared/models/player';
 

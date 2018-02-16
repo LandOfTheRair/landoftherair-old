@@ -1,5 +1,5 @@
 
-import { startCase, extend, compact, findIndex, sample, isUndefined, isNumber } from 'lodash';
+import { startCase, compact, findIndex, sample, isUndefined, isNumber } from 'lodash';
 
 import { Item } from '../item';
 

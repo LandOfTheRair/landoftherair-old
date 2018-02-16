@@ -1,7 +1,7 @@
 
 import * as TiledPlugin from 'phaser-tiled';
 
-import { find, remove, compact, difference, values, includes, forEach } from 'lodash';
+import { find, compact, difference, values, forEach } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
 
@@ -104,7 +104,7 @@ export class Game {
       this.drawVfx(nextVfx);
     });
 
-    this.colyseus.game.myLoc$.subscribe(({ dir }) => {
+    this.colyseus.game.myLoc$.subscribe(() => {
       this.focusCameraOnPlayer();
     });
   }
