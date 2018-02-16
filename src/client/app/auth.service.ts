@@ -17,7 +17,7 @@ export class AuthService {
     responseType: 'token id_token',
     audience: environment.auth0.apiUrl,
     redirectUri: environment.auth0.callbackUrl,
-    scope: 'openid profile'
+    scope: 'openid email profile'
   });
 
   isReady: Promise<any>;

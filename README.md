@@ -26,6 +26,10 @@ First, create a [`.env`](https://www.npmjs.com/package/dotenv) file in the root.
 * `AUTH0_SECRET` - Auth0 server secret
 * `REDIS_URL` - a URI that leads to a redis cache
 
+If you want strict validation of users (ie, if you're doing anything sensitive like taking payments), set these values:
+
+* `AUTH0_JWKS_URI` - the URI that leads to the Auth0 JWKS JSON file
+
 If you want to test Discord integration, you can also add:
 
 * `DISCORD_SECRET` - the discord secret for your discord bot
@@ -34,6 +38,10 @@ If you want to test Discord integration, you can also add:
 * `DISCORD_CHANNEL` - the id of the channel for your discord bot to talk in
 * `DISCORD_BOT_CHANNEL` - the id of the channel for your discord bot to listen for commands in
 * `DISCORD_BOT_NAME` - the name of the bot as it was set up (default: "LandOfTheRairLobby")
+
+If you want to test Stripe, you need to add:
+
+* `STRIPE_TOKEN` - the Stripe secret key
 
 Also, your bot will need a role that can assign roles.
 

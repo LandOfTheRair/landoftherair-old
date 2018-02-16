@@ -23,6 +23,8 @@ export class Account {
   colyseusId?: string;
   createdAt: number;
   userId: string;
+  email: string;
+  emailVerified: boolean;
 
   // lobby display stuff
   username: string;

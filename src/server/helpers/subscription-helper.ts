@@ -22,6 +22,10 @@ class SilverPurchaseItem {
   postBuy?: (account: Account, lobby?: Lobby) => void;
 }
 
+export const SilverBuyTiers = [
+
+];
+
 export const AllSilverPurchases: SilverPurchaseItem[] = [
 
   // festivals

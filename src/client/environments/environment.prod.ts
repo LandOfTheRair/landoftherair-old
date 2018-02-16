@@ -17,5 +17,8 @@ export const environment = {
     client: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
     callbackUrl: 'https://play.rair.land',
     apiUrl: 'authidentifier'
+  },
+  stripe: {
+    key: 'pk_live_dHe4YokXv14cVzmj38NYbqVU'
   }
 };

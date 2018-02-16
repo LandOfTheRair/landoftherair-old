@@ -57,16 +57,17 @@ export class ColyseusLobbyService {
 
   private emitUserId() {
     const userId = localStorage.getItem('user_id');
-    const idToken = localStorage.getItem('access_token');
+    const idToken = localStorage.getItem('id_token');
+    const accessToken = localStorage.getItem('access_token');
     const username = localStorage.getItem('user_name');
 
-    this.room.send({ userId, idToken, username });
+    this.room.send({ userId, idToken, accessToken, username });
   }
 
   private async sendUserId() {
     await this.auth.isReady;
 
-    const hasIdToken = localStorage.getItem('access_token');
+    const hasIdToken = localStorage.getItem('id_token');
     const hasUserId = localStorage.getItem('user_id');
 
     if(hasUserId && hasIdToken) {

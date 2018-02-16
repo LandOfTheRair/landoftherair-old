@@ -22,5 +22,8 @@ export const environment = {
     client: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
     callbackUrl: 'http://localhost:4200',
     apiUrl: 'authidentifier'
+  },
+  stripe: {
+    key: 'pk_test_TNxhxgcsao9B4ouQwRXeUnmm'
   }
 };

@@ -62,7 +62,20 @@ export class Lobby extends Room<LobbyState> {
     return account;
   }
 
-  private async tryLogin(client, { userId, username }) {
+  private async tryLogin(client, { userId, username, idToken }) {
+
+    if(process.env.AUTH0_JWKS_URI) {
+      const isValidRS256Token = await JWTHelper.verifyRS256Token(idToken);
+
+      if(!isValidRS256Token) {
+        this.send(client, {
+          error: 'error_invalid_token',
+          prettyErrorName: 'Invalid Auth Token',
+          prettyErrorDesc: 'Stop hacking.'
+        });
+        return;
+      }
+    }
 
     const checkAccount = this.state.findAccount(userId);
     if(checkAccount) {
@@ -106,6 +119,9 @@ export class Lobby extends Room<LobbyState> {
 
     await SubscriptionHelper.checkAccountForExpiration(account);
 
+    const { email, emailVerified } = JWTHelper.extractEmailAndVerifiedStatusFromToken(idToken);
+    account.email = email;
+    account.emailVerified = emailVerified;
     client.userId = account.userId;
     client.username = account.username;
 
@@ -273,7 +289,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   onMessage(client, data) {
-    if(data.idToken && !JWTHelper.verifyToken(data.idToken)) {
+    if(data.accessToken && !JWTHelper.verifyToken(data.accessToken)) {
       this.send(client, {
         error: 'error_invalid_token',
         prettyErrorName: 'Invalid Auth Token',
@@ -282,22 +298,22 @@ export class Lobby extends Room<LobbyState> {
       return;
     }
 
-    if(data.action === 'heartbeat') return;
-    if(data.action === 'status')    return this.changeStatus(client, data.status);
-    if(data.action === 'alert')     return this.broadcastAlert(client, data);
-    if(data.action === 'play')      return this.playCharacter(client, data);
-    if(data.action === 'create')    return this.createCharacter(client, data);
-    if(data.action === 'logout')    return this.logout(client);
-    if(data.action === 'quit')      return this.quit(client);
-    if(data.action === 'motd_set')  return this.setMOTD(client, data);
-    if(data.action === 'sub')       return this.handleSubscription(client, data);
-    if(data.action === 'unsub')     return this.handleUnsubscription(client, data);
-    if(data.action === 'silver')    return this.giveSilver(client, data);
-    if(data.action === 'purchase')  return this.purchase(client, data.item);
-    if(data.action === 'festival')  return this.adjustFestival(client, data.args);
-    if(data.userId && data.idToken) return this.tryLogin(client, data);
-    if(data.message)                return this.sendMessage(client, data.message);
-    if(data.characterCreator)       return this.viewCharacter(client, data);
+    if(data.action === 'heartbeat')       return;
+    if(data.action === 'status')          return this.changeStatus(client, data.status);
+    if(data.action === 'alert')           return this.broadcastAlert(client, data);
+    if(data.action === 'play')            return this.playCharacter(client, data);
+    if(data.action === 'create')          return this.createCharacter(client, data);
+    if(data.action === 'logout')          return this.logout(client);
+    if(data.action === 'quit')            return this.quit(client);
+    if(data.action === 'motd_set')        return this.setMOTD(client, data);
+    if(data.action === 'sub')             return this.handleSubscription(client, data);
+    if(data.action === 'unsub')           return this.handleUnsubscription(client, data);
+    if(data.action === 'silver')          return this.giveSilver(client, data);
+    if(data.action === 'purchase')        return this.purchase(client, data.item);
+    if(data.action === 'festival')        return this.adjustFestival(client, data.args);
+    if(data.userId && data.accessToken)   return this.tryLogin(client, data);
+    if(data.message)                      return this.sendMessage(client, data.message);
+    if(data.characterCreator)             return this.viewCharacter(client, data);
   }
 
   private adjustFestival(client, args: string) {
