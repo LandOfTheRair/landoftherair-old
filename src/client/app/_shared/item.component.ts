@@ -253,7 +253,6 @@ export class ItemComponent implements OnInit {
   doColyseusMoveAction(choice) {
     this.colyseusGame.buildAction(this.item, {
       context: this.context,
-      count: this.count,
       contextSlot: this.contextSlot,
       containerUUID: this.containerUUID
     }, choice);
