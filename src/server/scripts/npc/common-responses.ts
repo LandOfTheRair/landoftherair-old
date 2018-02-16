@@ -279,6 +279,8 @@ export const AlchemistResponses = (npc: NPC) => {
 
       if(itemsRemoved === 0) return 'I was not able to combine any bottles.';
 
+      item.setOwner(player);
+
       return `I've taken ${itemsRemoved} bottles from your sack and combined them with the item in your hand. Enjoy!`;
     });
 
