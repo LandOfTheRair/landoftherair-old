@@ -13,7 +13,7 @@ export class MagicShield extends SpellEffect {
   };
 
   maxSkillForSkillGain = 15;
-  potencyMultiplier = 4;
+  potencyMultiplier = 3;
   skillFlag = () => SkillClassNames.Conjuration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
