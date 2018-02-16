@@ -225,11 +225,16 @@ export class Lobby extends Room<LobbyState> {
   }
 
   public saveSettings() {
+    this.updateStateBonusInfo();
     DB.$lobbySettings.update({ lobby: 1 }, { $set: {
       motd: this.state.motd,
       bonus: this.bonusArbiter.allBonusData,
       bonusHours: this.bonusArbiter.boughtBonusHours
     }}, { upsert: 1 });
+  }
+
+  private updateStateBonusInfo() {
+    this.state.bonusInfo = { bonus: this.bonusArbiter.allBonusData, bonusHours: this.bonusArbiter.boughtBonusHours };
   }
 
   private async loadSettings() {
@@ -243,6 +248,7 @@ export class Lobby extends Room<LobbyState> {
       DB.$lobbySettings.insert({ lobby: 1 });
     }
 
+    this.updateStateBonusInfo();
     return settings;
   }
 

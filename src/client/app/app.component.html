@@ -10,6 +10,9 @@
         <a class="nav-link" href="#" dropdownToggle>Game {{ colyseus.isConnected ? '' : '(Disconnected)' }}</a>
 
         <ul *dropdownMenu class="dropdown-menu">
+          <li *ngIf="colyseus.lobby.myAccount.username">
+            <a class="dropdown-item" (click)="gameSettings.show()">Current Events</a>
+          </li>
           <li *ngIf="!inGame && colyseus.lobby.myAccount.username">
             <a class="dropdown-item" (click)="silverModal.show()">Manage Silver</a>
           </li>
@@ -1200,6 +1203,49 @@
       <div class="modal-footer">
         <div></div>
         <button type="button" class="btn btn-warning" (click)="silverModal.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #gameSettings="bs-modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">Current Events</h3>
+        <button type="button" class="close pull-right" (click)="gameSettings.hide()">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body" *ngIf="gameSettings.isShown">
+        <div class="row" *ngIf="colyseus.lobby.lobbyState.bonusInfo as bonusData">
+          <div class="col-6">
+            <h5>Base Multipliers</h5>
+            <div>XP Multiplier: {{ bonusData.bonus.xpMult * 100 }}%</div>
+            <div>Gold Multiplier: {{ bonusData.bonus.goldMult * 100 }}%</div>
+            <div>Skill Multiplier: {{ bonusData.bonus.skillMult * 100 }}%</div>
+            <div>Trait Gain Multiplier: {{ bonusData.bonus.traitGainMult * 100 }}%</div>
+          </div>
+          <div class="col-6">
+            <h5>Bonus Festivals</h5>
+            <div *ngIf="bonusData.bonusHours.xpMult">+100% XP ({{ bonusData.bonusHours.xpMult }} hours)</div>
+            <div *ngIf="bonusData.bonusHours.goldMult">+100% Gold ({{ bonusData.bonusHours.goldMult }} hours)</div>
+            <div *ngIf="bonusData.bonusHours.skillMult">+100% Skill ({{ bonusData.bonusHours.skillMult }} hours)</div>
+            <div *ngIf="bonusData.bonusHours.traitGainMult">+100% Trait Gain ({{ bonusData.bonusHours.traitGainMult }} hours)</div>
+
+            <div *ngIf="!bonusData.bonusHours.xpMult
+                     && !bonusData.bonusHours.goldMult
+                     && !bonusData.bonusHours.skillMult
+                     && !bonusData.bonusHours.traitGainMult">None. You should start one!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div></div>
+        <button type="button" class="btn btn-default" (click)="gameSettings.hide()">Close</button>
       </div>
     </div>
   </div>

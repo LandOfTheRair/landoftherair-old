@@ -17,6 +17,8 @@ export class LobbyState {
   silverPurchases: any[] = [];
   silverPrices: { micro: any[], sub: any[] } = { micro: [], sub: [] };
 
+  bonusInfo: any = {};
+
   @nonenumerable
   account$ = new BehaviorSubject<Account[]>([]);
 
