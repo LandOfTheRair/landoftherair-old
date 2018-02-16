@@ -644,7 +644,7 @@ export class Player extends Character {
     if(startsWith(command, '~') || startsWith(command, '@')) return;
 
     if(!this.traitPointTimer || this.traitPointTimer <= 0) {
-      const baseTraitPointTimer = random(300, 400);
+      const baseTraitPointTimer = random(900, 1200);
       const adjustedTraitPointTimer = this.$$room.subscriptionHelper.modifyTraitPointTimerForSubscription(this, baseTraitPointTimer);
       this.traitPointTimer = this.$$room.calcAdjustedTraitTimer(adjustedTraitPointTimer);
     }
@@ -652,7 +652,11 @@ export class Player extends Character {
     let timerReduction = 1;
     if(this.$$lastCommandSent === command) timerReduction = 0.3;
 
-    this.traitPointTimer -= this.$$room.calcAdjustedTraitGain(timerReduction);
+    this.$$lastCommandSent = command;
+
+    timerReduction = this.$$room.calcAdjustedTraitGain(timerReduction);
+
+    this.traitPointTimer -= timerReduction;
 
     if(this.traitPointTimer <= 0 && this.canGainTraitPoints()) {
       this.gainTraitPointWithMessage();

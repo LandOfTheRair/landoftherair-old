@@ -1,0 +1,14 @@
+- npcId: Training Dummy
+  name: training dummy
+  sprite: 280
+  alignment: Neutral
+  stats: 1
+  level: 1
+
+  hp:
+    min: 1000000
+    max: 1000000
+
+  giveXp:
+    min: 0
+    max: 0

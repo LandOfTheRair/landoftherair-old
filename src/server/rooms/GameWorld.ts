@@ -264,7 +264,6 @@ export class GameWorld extends Room<GameState> {
     data.command = (data.command || '').trim();
     data.args = (data.args || '').trim().split('  ').join(' ');
 
-    player.manageTraitPointPotentialGain(data.command);
     CommandExecutor.queueCommand(player, data.command, data);
   }
 
@@ -843,8 +842,9 @@ export class GameWorld extends Room<GameState> {
     return Math.floor(timerValue * this.bonusHelper.settings.traitTimerMult);
   }
 
+  // no rounding here
   public calcAdjustedTraitGain(traitValue: number) {
-    return Math.floor(traitValue * this.bonusHelper.settings.traitGainMult);
+    return traitValue * this.bonusHelper.settings.traitGainMult;
   }
 
   public calcAdjustedPartyXPGain(xpGain: number) {

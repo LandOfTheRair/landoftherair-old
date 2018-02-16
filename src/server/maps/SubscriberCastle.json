@@ -2884,7 +2884,27 @@
         {
          "draworder":"topdown",
          "name":"Spawners",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":439,
+                 "name":"Dummy Spawner",
+                 "properties":
+                    {
+                     "script":"global\/dummy"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2304,
+                 "y":2304
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -3065,10 +3085,11 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":437,
+ "nextobjectid":440,
  "orientation":"orthogonal",
  "properties":
     {
+     "maxCreatures":5,
      "maxSkill":10,
      "region":"SubscriberLand",
      "respawnX":15,
@@ -3076,6 +3097,7 @@
     },
  "propertytypes":
     {
+     "maxCreatures":"int",
      "maxSkill":"int",
      "region":"string",
      "respawnX":"int",

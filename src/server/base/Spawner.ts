@@ -222,9 +222,10 @@ export class Spawner {
       ai = sample(aiSettings);
     }
 
-    const { tick, death } = require(`../scripts/ai/${ai}`);
+    const { tick, death, damage } = require(`../scripts/ai/${ai}`);
     if(tick) npc.$$ai.tick.add(tick);
     if(death) npc.$$ai.death.add(death);
+    if(damage) npc.$$ai.damage.add(damage);
 
     if(npc.combatMessages) {
       RandomlyShouts(npc, npc.combatMessages, { combatOnly: true });
