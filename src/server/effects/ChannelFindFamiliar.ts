@@ -111,6 +111,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
         npc.allegiance = char.allegiance;
         npc.alignment = char.alignment;
         npc.hostility = 'Faction';
+        npc.level = char.level;
 
         npc.name = `pet ${npc.name}`;
 
