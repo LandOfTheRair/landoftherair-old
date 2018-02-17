@@ -122,6 +122,15 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     maxPurchases: 1,
     key: 'BiggerBelt',
     cost: 1500
+  },
+  {
+    name: 'Shared Wardrobes',
+    desc: 'An extra 15 storage slots in an account-wide shared wardrobe. Accessible on any character, from any other wardrobe location.',
+    icon: 'locked-box',
+    fgColor: '#a0a',
+    maxPurchases: 1,
+    key: 'SharedLockers',
+    cost: 2000
   }
 ];
 
@@ -256,7 +265,7 @@ export class SubscriptionHelper {
   }
 
   // silver related functions
-  private static getSilverPurchase(account: Account, purchase: SilverPurchase): number {
+  public static getSilverPurchase(account: Account, purchase: SilverPurchase): number {
     return get(account, `silverPurchases.${purchase}`, 0);
   }
 

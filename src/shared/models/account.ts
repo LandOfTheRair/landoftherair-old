@@ -13,6 +13,7 @@ export enum SubscriptionTier {
 export type SilverPurchase =
   'MorePotions' | 'MoreCharacters'
 | 'BiggerBelt' | 'BiggerSack'
+| 'SharedLockers'
 | 'FestivalXP' | 'FestivalSkill' | 'FestivalGold' | 'FestivalTrait';
 
 export class Account {
@@ -46,7 +47,8 @@ export class Account {
     MorePotions: 0,
     MoreCharacters: 0,
     BiggerBelt: 0,
-    BiggerSack: 0
+    BiggerSack: 0,
+    SharedLockers: 0
   };
 
   constructor(opts) {

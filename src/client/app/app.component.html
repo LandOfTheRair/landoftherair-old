@@ -473,7 +473,7 @@
        defaultY="120"
        *ngIf="inGame && colyseus.game.showLocker.length > 0">
     <div class="window-header text-center" #lockerDrag>
-      {{ colyseus.game.showLocker[0].regionId }} Region Wardrobe
+      {{ colyseus.game.showLocker[colyseus.game.activeLockerNumber].regionId }} Region Wardrobe
       <app-close-button (click)="colyseus.game.showLocker = []"></app-close-button>
     </div>
     <div class="window-body">
