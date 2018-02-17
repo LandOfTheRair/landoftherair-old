@@ -69,7 +69,7 @@ export const responses = (npc: NPC) => {
 
       return `Greetings, Heniz-kin! I am the elder of the Heniz, Ergorat. 
       You've become quite well-acclimated with our kind recently, so I have a favor to ask of you.
-      Are you interested in furthering our fruitful relationship?`;
+      Are you interested in furthering our fruitful relationship? Tell me YES, I think I can trust you.`;
     });
 
   npc.parser.addCommand('yes')

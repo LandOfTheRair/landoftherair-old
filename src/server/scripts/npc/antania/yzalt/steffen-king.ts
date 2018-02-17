@@ -66,7 +66,7 @@ export const responses = (npc: NPC) => {
       return `Greetings, champion! 
       I am King Kranton, ruler of the Steffen - but you already knew that, didn't you? Ohohoho. 
       Let's get to the point, I need you to find our informant, Sedgwick.
-      Will you help me?`;
+      You will help me, YES?`;
     });
 
   npc.parser.addCommand('yes')
