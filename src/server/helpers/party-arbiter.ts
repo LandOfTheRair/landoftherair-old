@@ -2,17 +2,17 @@
 import { Party, PartyPlayer } from '../../shared/models/party';
 
 import { map, find, extend } from 'lodash';
-import { Redis } from '../redis';
+import { Lobby } from '../rooms/Lobby';
 
 export class PartyArbiter {
 
   private parties: { [key: string]: Party } = {};
 
   private get redis() {
-    return Redis.client;
+    return this.room.redisClient;
   }
 
-  constructor() {
+  constructor(private room: Lobby) {
     this.initListeners();
   }
 

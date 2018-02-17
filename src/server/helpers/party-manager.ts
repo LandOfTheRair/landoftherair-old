@@ -4,14 +4,13 @@ import { Party, PartyPlayer } from '../../shared/models/party';
 import { GameWorld } from '../rooms/GameWorld';
 
 import { map, find, extend } from 'lodash';
-import { Redis } from '../redis';
 
 export class PartyManager {
 
   private parties: { [key: string]: Party } = {};
 
   private get redis() {
-    return Redis.client;
+    return this.room.redisClient;
   }
 
   constructor(private room: GameWorld) {

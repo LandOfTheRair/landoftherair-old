@@ -6,6 +6,7 @@ import { LobbyState } from '../../shared/models/lobbystate';
 import { Account } from '../../shared/models/account';
 import { Player } from '../../shared/models/player';
 
+import { Redis } from '../redis';
 import { CharacterCreator } from '../helpers/character-creator';
 
 import { truncate, pick, includes, find } from 'lodash';
@@ -37,13 +38,19 @@ export class Lobby extends Room<LobbyState> {
   private discordChannel: Discord.GroupDMChannel;
   private discordBotChannel: Discord.GroupDMChannel;
 
+  private redis: Redis;
+  public get redisClient() {
+    return this.redis.client;
+  }
+
   onInit(opts) {
+    this.redis = new Redis();
 
     this.setPatchRate(250);
     this.autoDispose = false;
 
     this.itemCreator = new ItemCreator();
-    this.partyArbiter = new PartyArbiter();
+    this.partyArbiter = new PartyArbiter(this);
     this.bonusArbiter = new BonusArbiter(this);
 
     this.setState(new LobbyState({ accounts: [], messages: [], motd: '' }));

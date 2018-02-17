@@ -1,6 +1,4 @@
 
-import { Redis } from '../redis';
-
 import * as scheduler from 'node-schedule';
 
 import { map, find, extend, clone } from 'lodash';
@@ -8,10 +6,6 @@ import { GameSettings } from './bonus-helper';
 import { Lobby } from '../rooms/Lobby';
 
 export class BonusArbiter {
-
-  private get redis() {
-    return Redis.client;
-  }
 
   private bonusSyncData: GameSettings = {
     xpMult: 1, goldMult: 1, skillMult: 1, partyXPMult: 1,
@@ -43,7 +37,11 @@ export class BonusArbiter {
     return clone(this.boughtBonusHoursRemaining);
   }
 
-  constructor(private lobby: Lobby) {
+  private get redis() {
+    return this.room.redisClient;
+  }
+
+  constructor(private room: Lobby) {
     this.initListeners();
     this.initTimers();
   }
@@ -64,7 +62,7 @@ export class BonusArbiter {
       this.bonusTimers[key] = scheduler.scheduleJob(rule, () => {
         this.boughtBonusHoursRemaining[key]--;
 
-        this.lobby.saveSettings();
+        this.room.saveSettings();
 
         if(this.boughtBonusHoursRemaining[key] <= 0) {
           this.boughtBonusHoursRemaining[key] = 0;

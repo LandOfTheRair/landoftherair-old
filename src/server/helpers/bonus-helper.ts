@@ -33,7 +33,7 @@ export class BonusHelper {
   public settings: GameSettings = BASE_SETTINGS;
 
   private get redis() {
-    return Redis.client;
+    return this.room.redisClient;
   }
 
   constructor(private room: GameWorld) {

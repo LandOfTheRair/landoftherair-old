@@ -8,7 +8,7 @@ if(!REDIS_URL) {
   process.exit(0);
 }
 
-class RedisWrapper {
+export class Redis {
 
   private _client: NRP;
 
@@ -16,11 +16,17 @@ class RedisWrapper {
     return this._client;
   }
 
-  async init() {
+  constructor() {
+    this.init();
+  }
+
+  private async init() {
     if(this._client) throw new Error('Cannot re-init Redis');
     this._client = new NRP({ url: REDIS_URL });
+
+    this._client.on('error', (e) => {
+      Logger.error(e);
+    });
   }
 
 }
-
-export const Redis = new RedisWrapper();

@@ -8,6 +8,7 @@ import { GameState } from '../../shared/models/gamestate';
 import { MapLayer } from '../../shared/models/maplayer';
 
 import { DB } from '../database';
+import { Redis } from '../redis';
 import { Player } from '../../shared/models/player';
 
 import { CommandExecutor } from '../helpers/command-executor';
@@ -128,7 +129,14 @@ export class GameWorld extends Room<GameState> {
     return SubscriptionHelper;
   }
 
+  private redis: Redis;
+  public get redisClient() {
+    return this.redis.client;
+  }
+
   async onInit(opts) {
+    this.redis = new Redis();
+
     this.allMapNames = opts.allMapNames;
 
     this.itemCreator = new ItemCreator();
@@ -294,8 +302,8 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
-  private async savePlayer(player: Player, extraOpts: any = {}) {
-    if(player.$$doNotSave) return;
+  private async savePlayer(player: Player, extraOpts: any = {}, forceSave = false) {
+    if(!forceSave && player.$$doNotSave) return;
 
     const savePlayer = player.toSaveObject();
     savePlayer.fov = null;
@@ -497,9 +505,9 @@ export class GameWorld extends Room<GameState> {
 
     if(newMap && player.map !== newMap) {
       player.map = newMap;
-      this.prePlayerMapLeave(player);
-      await this.savePlayer(player, { x, y, map: newMap });
       player.$$doNotSave = true;
+      this.prePlayerMapLeave(player);
+      await this.savePlayer(player, { x, y, map: newMap }, true);
       this.state.resetFOV(player);
       this.send(client, { action: 'change_map', map: newMap, party: player.partyName });
     }

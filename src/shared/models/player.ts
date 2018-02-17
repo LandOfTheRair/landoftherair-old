@@ -472,7 +472,7 @@ export class Player extends Character {
   tick() {
     super.tick();
 
-    if(this.$$room.partyManager) this.$$room.partyManager.updateMember(this);
+    if(this.$$room.partyManager && this.partyName) this.$$room.partyManager.updateMember(this);
 
     if(this.isInCombat) this.combatTicks--;
 
