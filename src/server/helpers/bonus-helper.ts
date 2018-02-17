@@ -1,8 +1,8 @@
 
-import * as NRP from 'node-redis-pubsub';
 import { clone, extend } from 'lodash';
 
 import { GameWorld } from '../rooms/GameWorld';
+import { Redis } from '../redis';
 
 export interface GameSettings {
   xpMult: number;
@@ -28,15 +28,15 @@ const BASE_SETTINGS: GameSettings = {
   randomStatChance: 0
 };
 
-const redisUrl = process.env.REDIS_URL;
-
 export class BonusHelper {
 
   public settings: GameSettings = BASE_SETTINGS;
-  private redis: NRP;
+
+  private get redis() {
+    return Redis.client;
+  }
 
   constructor(private room: GameWorld) {
-    this.redis = new NRP({ url: redisUrl });
 
     this.initListeners();
   }

@@ -1,7 +1,9 @@
 
+
 require('dotenv').config({ silent: true });
 
 import { DB } from './database';
+import { Redis } from './redis';
 import { GameAPI } from './api';
 import { Logger } from './logger';
 
@@ -30,6 +32,7 @@ process.on('uncaughtException', e => {
 });
 
 DB.init();
+Redis.init();
 
 const port = process.env.PORT || 3303;
 

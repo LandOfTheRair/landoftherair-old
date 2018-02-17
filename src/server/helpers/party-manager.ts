@@ -1,20 +1,20 @@
 
-import * as NRP from 'node-redis-pubsub';
 import { Player } from '../../shared/models/player';
 import { Party, PartyPlayer } from '../../shared/models/party';
 import { GameWorld } from '../rooms/GameWorld';
 
 import { map, find, extend } from 'lodash';
-
-const redisUrl = process.env.REDIS_URL;
+import { Redis } from '../redis';
 
 export class PartyManager {
 
   private parties: { [key: string]: Party } = {};
-  private redis: NRP;
+
+  private get redis() {
+    return Redis.client;
+  }
 
   constructor(private room: GameWorld) {
-    this.redis = new NRP({ url: redisUrl });
 
     this.initListeners();
   }

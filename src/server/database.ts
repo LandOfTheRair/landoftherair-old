@@ -28,6 +28,8 @@ class Database {
   private client: MongoClient;
 
   async init() {
+    if(this.client) throw new Error('Cannot re-init Mongo');
+
     try {
       this.client = await MongoClient.connect(DB_URI);
     } catch(err) {

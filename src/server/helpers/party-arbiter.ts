@@ -1,19 +1,18 @@
 
-import * as NRP from 'node-redis-pubsub';
 import { Party, PartyPlayer } from '../../shared/models/party';
 
 import { map, find, extend } from 'lodash';
-
-const redisUrl = process.env.REDIS_URL;
+import { Redis } from '../redis';
 
 export class PartyArbiter {
 
   private parties: { [key: string]: Party } = {};
-  private redis: NRP;
+
+  private get redis() {
+    return Redis.client;
+  }
 
   constructor() {
-    this.redis = new NRP({ url: redisUrl });
-
     this.initListeners();
   }
 

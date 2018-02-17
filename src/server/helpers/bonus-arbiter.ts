@@ -1,16 +1,17 @@
 
-import * as NRP from 'node-redis-pubsub';
+import { Redis } from '../redis';
+
 import * as scheduler from 'node-schedule';
 
 import { map, find, extend, clone } from 'lodash';
 import { GameSettings } from './bonus-helper';
 import { Lobby } from '../rooms/Lobby';
 
-const redisUrl = process.env.REDIS_URL;
-
 export class BonusArbiter {
 
-  private redis: NRP;
+  private get redis() {
+    return Redis.client;
+  }
 
   private bonusSyncData: GameSettings = {
     xpMult: 1, goldMult: 1, skillMult: 1, partyXPMult: 1,
@@ -43,8 +44,6 @@ export class BonusArbiter {
   }
 
   constructor(private lobby: Lobby) {
-    this.redis = new NRP({ url: redisUrl });
-
     this.initListeners();
     this.initTimers();
   }
