@@ -649,8 +649,8 @@ export class Player extends Character {
       this.traitPointTimer = this.$$room.calcAdjustedTraitTimer(adjustedTraitPointTimer);
     }
 
-    let timerReduction = 1;
-    if(this.$$lastCommandSent === command) timerReduction = 0.3;
+    let timerReduction = 2;
+    if(this.$$lastCommandSent === command) timerReduction = 1;
 
     this.$$lastCommandSent = command;
 
