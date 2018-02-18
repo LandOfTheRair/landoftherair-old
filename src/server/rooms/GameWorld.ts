@@ -67,16 +67,15 @@ export class GameWorld extends Room<GameState> {
   private ticks = 0;
 
   public partyManager: PartyManager;
-
   private bonusHelper: BonusHelper;
+  private groundHelper: GroundHelper;
+  public itemCreator: ItemCreator;
 
   private itemGC: any;
 
   private clearTimers: any[] = [];
 
   private usernameClientHash = {};
-
-  private itemCreator: ItemCreator;
 
   get allSpawners() {
     return this.spawners;
@@ -114,6 +113,10 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.itemGarbageCollection || 60;
   }
 
+  get maxItemsOnGround() {
+    return this.state.map.properties.maxItemsOnGround || 1000;
+  }
+
   get mapRespawnPoint() {
     return {
       map: this.state.map.properties.respawnMap || this.mapName,
@@ -141,6 +144,7 @@ export class GameWorld extends Room<GameState> {
     this.allMapNames = opts.allMapNames;
 
     this.itemCreator = new ItemCreator();
+    this.groundHelper = new GroundHelper(this);
 
     this.setPatchRate(1000);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
@@ -187,7 +191,7 @@ export class GameWorld extends Room<GameState> {
 
     this.clearTimers.forEach(timer => clearTimeout(timer));
 
-    GroundHelper.saveGround(this);
+    this.groundHelper.saveGround();
     this.saveBossTimers();
     if(this.partyManager) {
       this.partyManager.stopEmitting();
@@ -533,13 +537,21 @@ export class GameWorld extends Room<GameState> {
 
     item.$heldBy = null;
     this.state.addItemToGround(ref, item);
+    this.groundHelper.addItemToGround(ref, item);
 
     this.broadcast({ action: 'add_gitem', x: ref.x, y: ref.y, item: this.state.simplifyItem(item) });
   }
 
-  removeItemFromGround(item) {
+  removeItemFromGround(item, fromGH = false) {
     const { x, y } = item;
-    this.itemCreator.removeItemExpiry(item);
+
+    // inf loop protection - only do this if it wasn't called from the ground helper
+    if(!fromGH) {
+      // only need to remove expiry from real items, which will not be the case if called here
+      this.itemCreator.removeItemExpiry(item);
+      this.groundHelper.removeItemFromGround(item, true);
+    }
+
     this.state.removeItemFromGround(item);
 
     this.broadcast({ action: 'remove_gitem', x, y, item: this.state.simplifyItem(item) });
@@ -568,8 +580,8 @@ export class GameWorld extends Room<GameState> {
   }
 
   private initGround() {
-    GroundHelper.loadGround(this);
-    this.itemGC = GroundHelper.watchForItemDecay(this);
+    this.groundHelper.loadGround();
+    this.itemGC = this.groundHelper.watchForItemDecay();
   }
 
   private initPartyManager() {
@@ -727,7 +739,7 @@ export class GameWorld extends Room<GameState> {
     if((this.ticks % TickRatesPerTimer.PlayerSave) === 0) {
       this.state.allPlayers.forEach(player => this.savePlayer(player));
 
-      GroundHelper.saveGround(this);
+      this.groundHelper.saveGround();
       // reset ticks
       this.ticks = 0;
     }

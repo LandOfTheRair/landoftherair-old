@@ -3,34 +3,65 @@ import * as scheduler from 'node-schedule';
 import { Logger } from '../logger';
 import { Item } from '../../shared/models/item';
 
-import { compact } from 'lodash';
+import { compact, reject } from 'lodash';
 import { DB } from '../database';
+import { GameWorld } from '../rooms/GameWorld';
 
 export class GroundHelper {
-  static watchForItemDecay(room): any {
+
+  private itemGCArray: any = [];
+
+  constructor(private room: GameWorld) {}
+
+  addItemToGround(ref, item: Item) {
+    this.itemGCArray.push({
+      uuid: item.uuid,
+      itemClass: item.itemClass,
+      x: ref.x,
+      y: ref.y
+    });
+
+    while(this.itemGCArray.length > this.room.maxItemsOnGround) {
+      const item = this.itemGCArray.shift();
+      this.removeItemFromGround(item);
+    }
+  }
+
+  removeItemFromGround(item, fromGW = false) {
+
+    // inf loop protection not called from the game world, called as part of the gc above
+    if(!fromGW) {
+      this.room.removeItemFromGround(item, true);
+      return;
+    }
+
+    this.itemGCArray = reject(this.itemGCArray, checkItem => checkItem.uuid === item.uuid);
+  }
+
+  watchForItemDecay(): any {
     const rule = new scheduler.RecurrenceRule();
-    rule.minute = room.decayChecksMinutes;
+    rule.minute = this.room.decayChecksMinutes;
 
     return scheduler.scheduleJob(rule, () => {
-      this.checkIfAnyItemsAreExpired(room);
+      this.checkIfAnyItemsAreExpired();
     });
   }
 
-  static checkIfAnyItemsAreExpired(room) {
-    const groundItems = room.state.groundItems;
-    Logger.db(`Checking for expired items.`, room.state.mapName);
+  checkIfAnyItemsAreExpired() {
+    const groundItems = this.room.state.groundItems;
+    Logger.db(`Checking for expired items.`, this.room.state.mapName);
 
     Object.keys(groundItems).forEach(x => {
       Object.keys(groundItems[x]).forEach(y => {
         Object.keys(groundItems[x][y]).forEach(itemClass => {
           groundItems[x][y][itemClass] = compact(groundItems[x][y][itemClass].map(i => {
-            const expired = room.itemCreator.hasItemExpired(i);
+            const expired = this.room.itemCreator.hasItemExpired(i);
 
             if(expired) {
               const now = Date.now();
               const delta = Math.floor((now - i.expiresAt) / 1000);
-              Logger.db(`Item ${i.name} has expired @ ${now} (delta: ${delta}sec).`, room.state.mapName, i);
-              room.removeItemFromGround(i);
+              Logger.db(`Item ${i.name} has expired @ ${now} (delta: ${delta}sec).`, this.room.state.mapName, i);
+              this.room.removeItemFromGround(i);
             }
 
             return expired ? null : new Item(i);
@@ -40,25 +71,36 @@ export class GroundHelper {
     });
   }
 
-  static async loadGround(room) {
-    const opts: any = { mapName: room.state.mapName };
-    if(room.partyOwner) opts.party = room.partyOwner;
+  async loadGround() {
+    const opts: any = { mapName: this.room.state.mapName };
+    if((<any>this.room).partyOwner) opts.party = (<any>this.room).partyOwner;
 
     let obj = await DB.$mapGroundItems.findOne(opts);
     if(!obj) obj = {};
     const groundItems = obj.groundItems || {};
 
-    GroundHelper.checkIfAnyItemsAreExpired(room);
+    this.checkIfAnyItemsAreExpired();
 
-    room.state.setGround(groundItems);
+    this.room.state.setGround(groundItems);
+
+    // load existing items onto the ground
+    Object.keys(groundItems).forEach(x => {
+      Object.keys(groundItems[x]).forEach(y => {
+        Object.keys(groundItems[x][y]).forEach(cat => {
+          groundItems[x][y][cat].forEach(item => {
+            this.addItemToGround(item, item);
+          });
+        });
+      });
+    });
 
     DB.$mapGroundItems.remove(opts);
   }
 
-  static async saveGround(room) {
-    const opts: any = { mapName: room.state.mapName };
-    if(room.partyOwner) opts.party = room.partyOwner;
-    DB.$mapGroundItems.update(opts, { $set: { groundItems: room.state.serializableGroundItems(), updatedAt: new Date() } }, { upsert: true });
+  async saveGround() {
+    const opts: any = { mapName: this.room.state.mapName };
+    if((<any>this.room).partyOwner) opts.party = (<any>this.room).partyOwner;
+    DB.$mapGroundItems.update(opts, { $set: { groundItems: this.room.state.serializableGroundItems(), updatedAt: new Date() } }, { upsert: true });
   }
 
 }

@@ -8737,8 +8737,8 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "itemExpirationHours":1,
-     "itemGarbageCollection":15,
+     "itemExpirationHours":6,
+     "itemGarbageCollection":30,
      "maxCreatures":700,
      "maxSkill":7,
      "region":"Antania",
