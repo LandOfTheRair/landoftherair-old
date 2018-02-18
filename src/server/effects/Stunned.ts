@@ -26,7 +26,7 @@ export class Stunned extends SpellEffect {
 
     // physical attack
     if(!skillRef) {
-      this.duration = 3;
+      this.duration = this.duration || 3;
 
     // cast via spell
     } else {

@@ -693,12 +693,14 @@ export class Character {
     }
   }
 
-  takeSequenceOfSteps(steps: any[], isChasing = false, recalculateFOV = false) {
+  takeSequenceOfSteps(steps: any[], isChasing = false, recalculateFOV = false): boolean {
     const denseTiles = this.$$map.layers[MapLayer.Walls].data;
     const fluidTiles = this.$$map.layers[MapLayer.Fluids].data;
     const denseObjects: any[] = this.$$map.layers[MapLayer.DenseDecor].objects;
     const interactables = this.$$map.layers[MapLayer.Interactables].objects;
     const denseCheck = denseObjects.concat(interactables);
+
+    let successfulStepsNoDensity = true;
 
     steps.forEach(step => {
       const nextTileLoc = ((this.y + step.y) * this.$$map.width) + (this.x + step.x);
@@ -711,12 +713,17 @@ export class Character {
         const object = find(denseCheck, { x: (this.x + step.x) * 64, y: (this.y + step.y + 1) * 64 });
         if(object && object.density) {
           if(object.type === 'Door') {
-            if(!MoveHelper.tryToOpenDoor(this, object, { gameState: this.$$room.state })) return;
+            if(!MoveHelper.tryToOpenDoor(this, object, { gameState: this.$$room.state })) {
+              successfulStepsNoDensity = false;
+              return;
+            }
           } else {
+            successfulStepsNoDensity = false;
             return;
           }
         }
       } else {
+        successfulStepsNoDensity = false;
         return;
       }
 
@@ -744,6 +751,8 @@ export class Character {
       this.$$room.setPlayerXY(this, this.x, this.y);
       this.$$room.state.calculateFOV(this);
     }
+
+    return successfulStepsNoDensity;
   }
 
   isValidStep(step) {

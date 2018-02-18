@@ -3,6 +3,7 @@ import { SpellEffect } from '../base/Effect';
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { Skill } from '../base/Skill';
 import { random, clamp } from 'lodash';
+import { Stunned } from './Stunned';
 
 export class Push extends SpellEffect {
 
@@ -36,7 +37,44 @@ export class Push extends SpellEffect {
       return;
     }
 
-    target.sendClientMessageToRadius(`${target.name} was knocked down!`, 5);
-    target.takeSequenceOfSteps([{ x: random(-1, 1), y: random(-1, 1) }], false, true);
+    let x = 0;
+    let y = 0;
+
+    if(target.x > caster.x) {
+      x = 1;
+
+    } else if(target.x < caster.x) {
+      x = -1;
+    }
+
+    if(target.y > caster.y) {
+      y = 1;
+
+    } else if(target.y < caster.y) {
+      y = -1;
+    }
+
+    if(x === 0 && y === 0) {
+      x = random(-1, 1);
+      y = random(-1, 1);
+    }
+
+    // first, try to push them in a direction
+    let didFirstPushWork = target.takeSequenceOfSteps([{ x, y }], false, true);
+    let didSecondPushWork = false;
+
+    // then, try to push them randomly if the first fails
+    if(!didFirstPushWork) {
+      didSecondPushWork = target.takeSequenceOfSteps([{ x: random(-1, 1), y: random(-1, 1) }], false, true);
+    }
+
+    if(didFirstPushWork || didSecondPushWork) {
+      target.sendClientMessageToRadius(`${target.name} was knocked down!`, 5);
+    } else {
+      target.sendClientMessageToRadius(`${target.name} was knocked over!`, 5);
+
+      const stunned = new Stunned({ duration: 1, potency: 1 });
+      stunned.cast(caster, target);
+    }
   }
 }
