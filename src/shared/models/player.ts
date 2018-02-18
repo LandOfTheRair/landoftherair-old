@@ -680,8 +680,8 @@ export class Player extends Character {
   }
 
   takeSequenceOfSteps(steps, isChasing, recalculateFOV) {
-    super.takeSequenceOfSteps(steps, isChasing, recalculateFOV);
     this.$$locker = null;
+    return super.takeSequenceOfSteps(steps, isChasing, recalculateFOV);
   }
 
   private canDailyActivate(checkTimestamp: number): boolean {
