@@ -142,15 +142,6 @@ export class Player extends Character {
     this.buyback = this.buyback.map(item => new Item(item));
   }
 
-  initPouch() {
-    super.initPouch();
-
-    if(this.$$room) {
-      this.pouch.resetItems();
-      this.$$room.loadPlayerPouch(this);
-    }
-  }
-
   initServer() {
     this.initEffects();
     this.recalculateStats();

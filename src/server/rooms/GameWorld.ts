@@ -873,8 +873,4 @@ export class GameWorld extends Room<GameState> {
   public savePlayerPouch(player: Player) {
     PouchHelper.savePouch(player);
   }
-
-  public loadPlayerPouch(player: Player) {
-    PouchHelper.loadPouch(player);
-  }
 }

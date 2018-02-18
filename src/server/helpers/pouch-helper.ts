@@ -3,7 +3,6 @@ import { startsWith } from 'lodash';
 
 import { DB } from '../database';
 import { Player } from '../../shared/models/player';
-import { Pouch } from '../../shared/models/container/pouch';
 
 export class PouchHelper {
   static async savePouch(player: Player) {
@@ -18,14 +17,5 @@ export class PouchHelper {
       { $set: { pouch: player.pouch } },
       { multi: true }
     );
-  }
-
-  static async loadPouch(player: Player) {
-    const data = await DB.$characterPouches.findOne({ username: player.username });
-    if(!data) return;
-
-    const { pouch } = data;
-
-    player.pouch = new Pouch(pouch);
   }
 }
