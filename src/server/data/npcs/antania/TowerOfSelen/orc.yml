@@ -247,6 +247,12 @@
   drops:
     - result: Warlord's Key
       chance: -1
+    - result: Tower FireMist Black Pearl
+      chance: 1
+      maxChance: 100
+    - result: Tower IceMist Black Pearl
+      chance: 1
+      maxChance: 100
 
   copyDrops:
     - drop: 'gear.Armor'

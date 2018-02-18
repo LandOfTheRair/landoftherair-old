@@ -168,3 +168,29 @@
 
   requirements:
     level: 11
+
+- name: Tower FireMist Black Pearl
+  desc: "a small black pearl radiating with heat"
+  value: 3000
+  sprite: 315
+  stats:
+    effect:
+      name: FireMist
+      potency: 10
+      chance: 10
+
+  requirements:
+    level: 11
+
+- name: Tower IceMist Black Pearl
+  desc: "a small black pearl with a thin layer of frost on it"
+  value: 3000
+  sprite: 315
+  stats:
+    effect:
+      name: IceMist
+      potency: 10
+      chance: 10
+
+  requirements:
+    level: 11
