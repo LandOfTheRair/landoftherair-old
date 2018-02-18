@@ -7,7 +7,7 @@ import { TrapHelper } from '../../../../helpers/trap-helper';
 
 export class SetTrap extends Skill {
 
-  name = '';
+  name = 'settrap';
   execute() {}
   range = () => 0;
 

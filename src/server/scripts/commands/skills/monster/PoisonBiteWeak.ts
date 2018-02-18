@@ -10,7 +10,7 @@ import { CombatHelper } from '../../../../helpers/combat-helper';
 
 export class PoisonBiteWeak extends Skill {
 
-  name = '';
+  name = 'poisonbiteweak';
   execute() {}
   range = () => 0;
 

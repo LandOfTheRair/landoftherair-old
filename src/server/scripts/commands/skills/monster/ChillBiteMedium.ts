@@ -10,7 +10,7 @@ import { CombatHelper } from '../../../../helpers/combat-helper';
 
 export class ChillBiteMedium extends Skill {
 
-  name = '';
+  name = 'chillbitemedium';
   execute() {}
   range = () => 0;
 
