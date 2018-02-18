@@ -60,7 +60,7 @@ export class Push extends SpellEffect {
     }
 
     // first, try to push them in a direction
-    let didFirstPushWork = target.takeSequenceOfSteps([{ x, y }], false, true);
+    const didFirstPushWork = target.takeSequenceOfSteps([{ x, y }], false, true);
     let didSecondPushWork = false;
 
     // then, try to push them randomly if the first fails
