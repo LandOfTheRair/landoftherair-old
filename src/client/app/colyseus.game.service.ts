@@ -648,7 +648,7 @@ export class ColyseusGameService {
     } else if(context === 'GroundGroup') {
       args = `${item.itemClass}`;
 
-    } else if(includes(['Sack', 'Belt', 'Equipment'], context)) {
+    } else if(includes(['Sack', 'Belt', 'Equipment', 'DemiMagicPouch'], context)) {
       args = `${contextSlot}`;
 
     } else if(context === 'Coin') {
@@ -723,7 +723,7 @@ export class ColyseusGameService {
       return;
     }
 
-    if(choiceStr === 'M' && this.showShop && includes(['Sack', 'Belt', 'Left', 'Right', 'Potion'], context)) {
+    if(choiceStr === 'M' && this.showShop && includes(['Sack', 'Belt', 'DemiMagicPouch', 'Left', 'Right', 'Potion'], context)) {
       if(!args) {
         args = this.showShop.uuid;
       } else {

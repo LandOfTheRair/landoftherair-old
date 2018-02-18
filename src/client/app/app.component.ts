@@ -86,6 +86,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   public showInventoryBelt: boolean;
 
   @LocalStorage()
+  public showInventoryPouch: boolean;
+
+  @LocalStorage()
   public showEquipment: boolean;
 
   @LocalStorage()
@@ -100,6 +103,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @LocalStorage()
   public beltSize: Size;
+
+  @LocalStorage()
+  public pouchSize: Size;
 
   @LocalStorage()
   public equipmentSize: Size;
@@ -162,6 +168,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     Ground: null,
     Sack: null,
     Belt: null,
+    Pouch: null,
     Equipment: null,
     NPCs: null,
     Macros: null,
@@ -183,6 +190,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   get inGame() {
     return this.colyseus.game.inGame;
+  }
+
+  get hasPouch(): boolean {
+    return get(this.colyseus.lobby.myAccount, 'silverPurchases.MagicPouch', 0) > 0;
   }
 
   private imagesLoaded = 0;
@@ -308,13 +319,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   private initDefaultOptions() {
-    ['sack', 'belt', 'equipment', 'ground', 'logFont', 'logWindow', 'npcWindow'].forEach(opt => {
+    ['sack', 'belt', 'pouch', 'equipment', 'ground', 'logFont', 'logWindow', 'npcWindow'].forEach(opt => {
       if(this[`${opt}Size`]) return;
       this[`${opt}Size`] = 'normal';
     });
 
     const defaultOptions = [
-      'showInventoryBelt', 'showInventorySack', 'showEquipment', 'showCommandLine',
+      'showInventoryBelt', 'showInventoryPouch', 'showInventorySack', 'showEquipment', 'showCommandLine',
       'showActiveTarget', 'pinLastTarget',
       'autoHideLobby',
       'playBackgroundMusic', 'playSoundEffects'

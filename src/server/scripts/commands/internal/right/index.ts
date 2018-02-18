@@ -5,5 +5,6 @@ export * from './right-to-left';
 export * from './right-to-equip';
 export * from './right-to-merchant';
 export * from './right-to-potion';
+export * from './right-to-pouch';
 export * from './right-to-locker';
 export * from './right-to-tradeskill';

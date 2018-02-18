@@ -114,6 +114,7 @@ export class Player extends Character {
     this.loadAccountBonuses();
     this.initBelt();
     this.initSack();
+    this.initPouch();
     this.initGear();
     this.initHands();
     this.initTradeskills();
@@ -124,6 +125,10 @@ export class Player extends Character {
     if(!this.$$room) return;
     this.sack.size = this.sackSize + this.$$room.subscriptionHelper.bonusSackSlots(this);
     this.belt.size = this.beltSize + this.$$room.subscriptionHelper.bonusBeltSlots(this);
+
+    if(this.pouch) {
+      this.pouch.size = this.$$room.subscriptionHelper.bonusPouchSlots(this);
+    }
   }
 
   initTradeskills() {

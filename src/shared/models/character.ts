@@ -17,6 +17,7 @@ import { Effect } from '../../server/base/Effect';
 import * as Effects from '../../server/effects';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
+import { Pouch } from './container/pouch';
 import { MoveHelper } from '../../server/helpers/move-helper';
 import { nonenumerable } from 'nonenumerable';
 import { CharacterHelper } from '../../server/helpers/character-helper';
@@ -203,6 +204,7 @@ export class Character {
 
   sack: Sack = new Sack({ size: this.sackSize });
   belt: Belt = new Belt({ size: this.beltSize });
+  pouch: Pouch = new Pouch({ size: 0 });
 
   effects: Effect[] = [];
 
@@ -289,6 +291,10 @@ export class Character {
 
   initBelt() {
     this.belt = new Belt(this.belt);
+  }
+
+  initPouch() {
+    this.pouch = new Pouch(this.pouch);
   }
 
   initHands() {
@@ -594,6 +600,17 @@ export class Character {
     }
 
     const result = this.sack.addItem(item);
+    if(result) {
+      this.sendClientMessage(result);
+      return false;
+    }
+
+    this.itemCheck(item);
+    return true;
+  }
+
+  addItemToPouch(item: Item) {
+    const result = this.pouch.addItem(item);
     if(result) {
       this.sendClientMessage(result);
       return false;

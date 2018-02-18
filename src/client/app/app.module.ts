@@ -64,6 +64,7 @@ import { TraitsComponent } from './traits/traits.component';
 
 import { TradeskillAlchemyComponent } from './tradeskill-alchemy/tradeskill-alchemy.component';
 import { TradeskillSpellforgingComponent } from './tradeskill-spellforging/tradeskill-spellforging.component';
+import { InventoryPouchComponent } from './inventory-pouch/inventory-pouch.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -99,6 +100,7 @@ import { TradeskillSpellforgingComponent } from './tradeskill-spellforging/trade
     GroundComponent,
     InventorySackComponent,
     InventoryBeltComponent,
+    InventoryPouchComponent,
     EquipmentComponent,
     NpcsComponent,
     MacroBarsComponent,

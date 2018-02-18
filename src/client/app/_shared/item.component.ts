@@ -10,7 +10,7 @@ import { AssetService } from '../asset.service';
 
 const POSSIBLE_TRADESKILL_SCOPES = ['Alchemy', 'Spellforging'];
 
-export type MenuContext = 'Sack' | 'Belt' | 'Ground'
+export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
                         | 'GroundGroup' | 'Equipment' | 'Left'
                         | 'Right' | 'Coin' | 'Merchant'
                         | 'Obtainagain' | 'Wardrobe' | 'Tradeskill';
@@ -301,13 +301,14 @@ export class ItemComponent implements OnInit {
 
     if(this.item.itemClass === 'Bottle'
     && (this.context === 'Sack'
+      || this.context === 'DemiMagicPouch'
       || this.context === 'Ground'
       || this.context === 'Right'
       || this.context === 'Left')) {
       scopes.push('potion');
     }
 
-    if(this.item.isSackable) scopes.push('sack');
+    if(this.item.isSackable) scopes.push('sack', 'demimagicpouch');
     if(this.item.isBeltable) scopes.push('belt');
 
     if(this.item.canUse && this.item.canUse(this.player)
@@ -321,7 +322,7 @@ export class ItemComponent implements OnInit {
 
     if(this.colyseusGame.showShop.uuid) {
 
-      if(this.context === 'Sack' || this.context === 'Belt') {
+      if(this.context === 'Sack' || this.context === 'Belt' || this.context === 'DemiMagicPouch') {
         this.doColyseusMoveAction('M');
         return;
 

@@ -4,5 +4,6 @@ export * from './belt-to-left';
 export * from './belt-to-right';
 export * from './belt-to-equip';
 export * from './belt-to-merchant';
+export * from './belt-to-pouch';
 export * from './belt-to-locker';
 export * from './belt-to-tradeskill';

@@ -52,6 +52,10 @@
             <a class="dropdown-item"
                (click)="showInventoryBelt = !showInventoryBelt; activeWindow = 'belt'">Belt</a>
           </li>
+          <li *ngIf="inGame && hasPouch">
+            <a class="dropdown-item"
+               (click)="showInventoryPouch = !showInventoryPouch; activeWindow = 'pouch'">Pouch</a>
+          </li>
           <li *ngIf="inGame">
             <a class="dropdown-item"
                (click)="showInventorySack = !showInventorySack; activeWindow = 'sack'">Sack</a>
@@ -348,6 +352,26 @@
     </div>
   </div>
 
+  <div class="window inventory-pouch-window game-window"
+       [class.active-window]="activeWindow === 'pouch'"
+       (click)="setActiveWindow('pouch')"
+       [appDraggableWindow]="!lockWindowPositions"
+       [ngClass]="[pouchSize]"
+       [windowHandle]="pouchWindow"
+       windowName="pouchWindow"
+       [windowLocation]="windowLocations.Pouch"
+       defaultX="966"
+       defaultY="433"
+       *ngIf="inGame && showInventoryPouch && hasPouch">
+    <div class="window-header text-center" #pouchWindow>
+      Inventory - Demi-Magic Pouch
+      <app-close-button (click)="showInventoryPouch = false"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-inventory-pouch [size]="pouchSize"></app-inventory-pouch>
+    </div>
+  </div>
+
   <div class="window equipment-window game-window"
        [class.active-window]="activeWindow === 'equipment'"
        (click)="setActiveWindow('equipment')"
@@ -591,6 +615,17 @@
               <label class="btn btn-info" [(ngModel)]="beltSize" btnRadio="normal">Normal</label>
               <label class="btn btn-info" [(ngModel)]="beltSize" btnRadio="small">Small</label>
               <label class="btn btn-info" [(ngModel)]="beltSize" btnRadio="xsmall">Miniature</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-1" *ngIf="hasPouch">
+          <div class="col-3 text-right font-weight-bold">Pouch Icons</div>
+          <div class="col">
+            <div class="btn-group">
+              <label class="btn btn-info" [(ngModel)]="pouchSize" btnRadio="normal">Normal</label>
+              <label class="btn btn-info" [(ngModel)]="pouchSize" btnRadio="small">Small</label>
+              <label class="btn btn-info" [(ngModel)]="pouchSize" btnRadio="xsmall">Miniature</label>
             </div>
           </div>
         </div>

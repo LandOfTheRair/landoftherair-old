@@ -131,6 +131,15 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     maxPurchases: 1,
     key: 'SharedLockers',
     cost: 2000
+  },
+  {
+    name: 'Demi-Magic Pouch',
+    desc: 'A magical, 5-slot pouch carried around simultaneously by all of your characters. It\'s strip-safe too. Weird, right?',
+    icon: 'knapsack',
+    fgColor: '#a0a',
+    maxPurchases: 1,
+    key: 'MagicPouch',
+    cost: 2000
   }
 ];
 
@@ -333,6 +342,10 @@ export class SubscriptionHelper {
 
   public static bonusBeltSlots(player: Player): number {
     return this.getSilverPurchase(player.$$account, 'BiggerBelt') * 5;
+  }
+
+  public static bonusPouchSlots(player: Player): number {
+    return this.getSilverPurchase(player.$$account, 'MagicPouch') * 5;
   }
 
 }

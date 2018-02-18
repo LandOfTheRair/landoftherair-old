@@ -5,5 +5,6 @@ export * from './sack-to-right';
 export * from './sack-to-equip';
 export * from './sack-to-merchant';
 export * from './sack-to-potion';
+export * from './sack-to-pouch';
 export * from './sack-to-locker';
 export * from './sack-to-tradeskill';

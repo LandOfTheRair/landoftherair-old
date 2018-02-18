@@ -5,3 +5,4 @@ export * from './locker-to-belt';
 export * from './locker-to-sack';
 export * from './locker-to-equip';
 export * from './locker-to-potion';
+export * from './locker-to-pouch';
