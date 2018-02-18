@@ -32,6 +32,7 @@ import { GroundHelper } from '../helpers/ground-helper';
 import { LockerHelper } from '../helpers/locker-helper';
 import { BankHelper } from '../helpers/bank-helper';
 import { SubscriptionHelper } from '../helpers/subscription-helper';
+import { PouchHelper } from '../helpers/pouch-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon';
@@ -323,6 +324,8 @@ export class GameWorld extends Room<GameState> {
     if(player.rightHand && player.rightHand.itemClass === 'Corpse') {
       savePlayer.rightHand = null;
     }
+
+    this.savePlayerPouch(savePlayer);
 
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }
@@ -865,5 +868,13 @@ export class GameWorld extends Room<GameState> {
       randomStatMaxValue: this.bonusHelper.settings.randomStatMaxValue,
       randomStatChance: this.bonusHelper.settings.randomStatChance
     };
+  }
+
+  public savePlayerPouch(player: Player) {
+    PouchHelper.savePouch(player);
+  }
+
+  public loadPlayerPouch(player: Player) {
+    PouchHelper.loadPouch(player);
   }
 }

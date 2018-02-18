@@ -13,4 +13,8 @@ export class Pouch extends Container {
   canAccept(item) {
     return item.isSackable && super.canAccept(item);
   }
+
+  resetItems() {
+    this.items = [];
+  }
 }
