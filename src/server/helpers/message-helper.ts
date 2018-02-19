@@ -3,11 +3,29 @@ import { isString, startsWith, set } from 'lodash';
 import { Character } from '../../shared/models/character';
 import { VisualEffect } from '../gidmetadata/visual-effects';
 
+import * as Filter from 'bad-words';
+const filter = new Filter();
+
+filter.removeWords('screw', 'sadist', 'crap', 'knob', 'knobs', 'turd');
+
 export class MessageHelper {
+
+  static hasProfanity(message: string): boolean {
+    return filter.isProfane(message);
+  }
+
+  static cleanMessage(message: any): string {
+    if(message.message) {
+      message.message = filter.clean(message.message);
+      return message;
+    }
+
+    return filter.clean(message);
+  }
 
   static sendClientMessage(char: Character, message) {
     if(!char.isPlayer()) return;
-    char.$$room.sendPlayerLogMessage(char, message);
+    char.$$room.sendPlayerLogMessage(char, this.cleanMessage(message));
   }
 
   static sendClientMessageToRadius(char: Character, message, radius = 0, except = []) {

@@ -79,7 +79,8 @@ export class Lobby extends Room<LobbyState> {
         this.send(client, {
           error: 'error_invalid_token',
           prettyErrorName: 'Invalid Auth Token',
-          prettyErrorDesc: 'Stop hacking.'
+          prettyErrorDesc: 'Stop hacking.',
+          clearLoginData: true
         });
         return;
       }
@@ -111,13 +112,25 @@ export class Lobby extends Room<LobbyState> {
         return;
 
       } else {
+
+        if(MessageHelper.hasProfanity(username)) {
+          this.send(client, {
+            error: 'too_profane',
+            prettyErrorName: 'Account Name Contains Profanity',
+            prettyErrorDesc: 'If you believe your name should be allowed please contact an admin - the filters aren\'t perfect.',
+            clearLoginData: true
+          });
+          return;
+        }
+
         try {
           account = await this.createAccount({ userId, username });
         } catch(e) {
           this.send(client, {
             error: 'account_exists',
             prettyErrorName: 'Account Already Exists',
-            prettyErrorDesc: 'Please choose a unique username.'
+            prettyErrorDesc: 'Please choose a unique username.',
+            clearLoginData: true
           });
         }
       }
@@ -161,7 +174,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private fixTextMessage(message: string): string {
-    return truncate(message, { length: 500, omission: '[truncated]' }).trim();
+    return MessageHelper.cleanMessage(truncate(message, { length: 500, omission: '[truncated]' }).trim());
   }
 
   private addMessage({ account, message }, source: 'player'|'discord') {

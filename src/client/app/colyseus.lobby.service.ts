@@ -133,6 +133,11 @@ export class ColyseusLobbyService {
         titleText: other.prettyErrorName,
         text: other.prettyErrorDesc,
         type: other.popupType || 'error'
+      }).then(() => {
+        if(other.clearLoginData) {
+          localStorage.removeItem('user_name');
+          this.getUserName(true);
+        }
       });
 
       return;
@@ -195,10 +200,6 @@ export class ColyseusLobbyService {
 
   public buySilver(purchaseInfo) {
     this.room.send({ action: 'rmbuy', purchaseInfo });
-  }
-
-  public doStripeUnsubscribe() {
-    this.room.send({ action: 'rmunsub' });
   }
 
   public doCommand(string): boolean {
