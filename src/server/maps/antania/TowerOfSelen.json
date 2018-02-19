@@ -5250,6 +5250,18 @@
                  "width":64,
                  "x":320,
                  "y":3776
+                }, 
+                {
+                 "gid":2427,
+                 "height":64,
+                 "id":2427,
+                 "name":"",
+                 "rotation":0,
+                 "type":"Door",
+                 "visible":true,
+                 "width":64,
+                 "x":5568,
+                 "y":768
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5524,6 +5536,28 @@
                  "width":64,
                  "x":896,
                  "y":4608
+                }, 
+                {
+                 "gid":3310,
+                 "height":64,
+                 "id":2425,
+                 "name":"Aychp'oc",
+                 "properties":
+                    {
+                     "hpTier":1,
+                     "script":"global\/hpdoc"
+                    },
+                 "propertytypes":
+                    {
+                     "hpTier":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5376,
+                 "y":640
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7233,7 +7267,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2425,
+ "nextobjectid":2428,
  "orientation":"orthogonal",
  "properties":
     {
