@@ -7,6 +7,7 @@ import { CensorSensor, CensorTier } from 'censor-sensor';
 
 const censor = new CensorSensor();
 censor.disableTier(CensorTier.CommonProfanity);
+censor.disableTier(CensorTier.PossiblyOffensive);
 
 export class MessageHelper {
 
