@@ -13,6 +13,11 @@ import { MapLayer } from './maplayer';
 import { nonenumerable } from 'nonenumerable';
 import { LootHelper } from '../../server/helpers/loot-helper';
 
+enum TilesWithNoFOVUpdate {
+  Empty = 0,
+  Air = 2386
+}
+
 export class GameState {
 
   public isDisposing: boolean;
@@ -67,6 +72,14 @@ export class GameState {
     map.layers.length = 10;
     delete map.properties;
     delete map.propertytypes;
+
+    const mapWallTiles = map.layers[MapLayer.Walls].data;
+
+    // clear air tiles that are on the wall layer because they're see-through
+    for(let i = 0; i < mapWallTiles.length; i++) {
+      if(mapWallTiles[i] === TilesWithNoFOVUpdate.Air) mapWallTiles[i] = TilesWithNoFOVUpdate.Empty;
+    }
+
     return map;
   }
 
@@ -117,7 +130,7 @@ export class GameState {
 
     this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
       const tile = denseLayer[(y * this.map.width) + x];
-      if(tile === 0) {
+      if(tile === TilesWithNoFOVUpdate.Empty || tile === TilesWithNoFOVUpdate.Air) {
         const object = find(checkObjects, { x: x * 64, y: (y + 1) * 64 });
         return !object || (object && !object.opacity);
       }

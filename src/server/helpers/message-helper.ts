@@ -6,7 +6,8 @@ import { VisualEffect } from '../gidmetadata/visual-effects';
 import * as Filter from 'bad-words';
 const filter = new Filter();
 
-filter.removeWords('screw', 'sadist', 'crap', 'knob', 'knobs', 'turd');
+// this library is bad and filters out words that contain other words
+filter.removeWords('screw', 'sadist', 'crap', 'knob', 'knobs', 'turd', 'hell', 'ass', 'tit', 'butt');
 
 export class MessageHelper {
 

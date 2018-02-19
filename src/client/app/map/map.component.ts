@@ -10,6 +10,11 @@ import { AssetService } from '../asset.service';
 import { get } from 'lodash';
 import { MapLayer } from '../../../shared/models/maplayer';
 
+enum TilesWithNoFOVUpdate {
+  Empty = 0,
+  Air = 2386
+}
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -151,7 +156,9 @@ export class MapComponent implements OnInit, OnDestroy {
 
     const hasSecretWall = get(this.clientGameState.secretWallHash, [totalX, totalY]);
 
-    return hasSecretWall || layers[MapLayer.Walls].data[(width * totalY) + totalX];
+    const wallLayerTile = layers[MapLayer.Walls].data[(width * totalY) + totalX];
+
+    return hasSecretWall || (wallLayerTile !== TilesWithNoFOVUpdate.Empty && wallLayerTile !== TilesWithNoFOVUpdate.Air);
   }
 
   shouldRenderXY(x: number, y: number) {
