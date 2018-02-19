@@ -8,6 +8,7 @@ import { DB } from './database';
 
 import { drawNormal as drawNormalArmor } from './tasks/analysis/_armor';
 import { drawNormal as drawNormalWeapon, drawSpecial as drawSpecialWeapon } from './tasks/analysis/_weapons';
+import { drawPremium } from './tasks/analysis/_premium';
 
 export class GameAPI {
 
@@ -29,6 +30,11 @@ export class GameAPI {
     app.use('/item-stats', async (req, res) => {
       const statStrings = await Promise.all([drawNormalArmor(), drawNormalWeapon(), drawSpecialWeapon()]);
       res.send(statStrings.map(x => `<pre>${x}</pre>`).join(''));
+    });
+
+    app.use('/premium-stats', async (req, res) => {
+      const premium = await drawPremium();
+      res.send(`<pre>${premium}</pre>`);
     });
 
     app.use('/silent-dev', staticFile(`${__dirname}/silent-dev.html`));

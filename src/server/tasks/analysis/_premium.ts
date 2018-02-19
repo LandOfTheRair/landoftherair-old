@@ -8,8 +8,6 @@ import { get, some } from 'lodash';
 import * as CLITable from 'cli-table';
 
 export const drawPremium = async () => {
-  await DB.init();
-
   const allAccounts = await DB.$accounts.find({}, { silver: 1, silverPurchases: 1 }).toArray();
 
   const avgHash = {};
