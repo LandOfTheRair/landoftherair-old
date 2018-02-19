@@ -36,6 +36,7 @@
     "task:analysis": "npm-run-all analyze:*",
     "analyze:weapons": "ts-node src/server/tasks/analysis/weapons",
     "analyze:armor": "ts-node src/server/tasks/analysis/armor",
+    "analyze:premium": "ts-node src/server/tasks/analysis/premium",
     "runseed:prod": "npm-run-all \"seed:* -- --prod\"",
     "bump:patch": "npm version patch -m \"Patch release %s\"",
     "bump:minor": "npm version minor -m \"Minor release %s\"",
