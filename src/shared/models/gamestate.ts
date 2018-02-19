@@ -456,7 +456,8 @@ export class GameState {
     this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y - 64 };
   }
 
-  addItemToGround({ x, y }, item: Item): void {
+  // returns the stacked item if the item stacked
+  addItemToGround({ x, y }, item: Item): Item {
     if(!item) return;
 
     item.x = x;
@@ -479,10 +480,13 @@ export class GameState {
     if(LootHelper.isItemValueStackable(item) && typeList[0]) {
       typeList[0].value += item.value;
       simpleTypeList[0].value += item.value;
+      return typeList[0];
     } else {
       typeList.push(item);
       simpleTypeList.push(this.simplifyItem(item));
     }
+
+    return null;
   }
 
   removeItemFromGround(item: Item): void {

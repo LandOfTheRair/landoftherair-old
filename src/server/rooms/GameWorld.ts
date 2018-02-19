@@ -536,8 +536,8 @@ export class GameWorld extends Room<GameState> {
     }
 
     item.$heldBy = null;
-    this.state.addItemToGround(ref, item);
-    this.groundHelper.addItemToGround(ref, item);
+    const stackedItem = this.state.addItemToGround(ref, item);
+    this.groundHelper.addItemToGround(ref, item, stackedItem);
 
     this.broadcast({ action: 'add_gitem', x: ref.x, y: ref.y, item: this.state.simplifyItem(item) });
   }

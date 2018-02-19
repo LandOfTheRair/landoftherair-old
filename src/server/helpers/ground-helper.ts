@@ -3,7 +3,7 @@ import * as scheduler from 'node-schedule';
 import { Logger } from '../logger';
 import { Item } from '../../shared/models/item';
 
-import { compact, reject } from 'lodash';
+import { compact, reject, find } from 'lodash';
 import { DB } from '../database';
 import { GameWorld } from '../rooms/GameWorld';
 
@@ -13,10 +13,19 @@ export class GroundHelper {
 
   constructor(private room: GameWorld) {}
 
-  addItemToGround(ref, item: Item) {
+  addItemToGround(ref, item: Item, previouslyStackedItem = null) {
+
+    let baseItem = item;
+
+    if(previouslyStackedItem) {
+      const item = find(this.itemGCArray, { uuid: previouslyStackedItem.uuid });
+      this.removeItemFromGround(item, true);
+      baseItem = previouslyStackedItem;
+    }
+
     this.itemGCArray.push({
-      uuid: item.uuid,
-      itemClass: item.itemClass,
+      uuid: baseItem.uuid,
+      itemClass: baseItem.itemClass,
       x: ref.x,
       y: ref.y
     });
