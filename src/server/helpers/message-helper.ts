@@ -3,25 +3,24 @@ import { isString, startsWith, set } from 'lodash';
 import { Character } from '../../shared/models/character';
 import { VisualEffect } from '../gidmetadata/visual-effects';
 
-import * as Filter from 'bad-words';
-const filter = new Filter();
+import { CensorSensor, CensorTier } from 'censor-sensor';
 
-// this library is bad and filters out words that contain other words
-filter.removeWords('screw', 'sadist', 'crap', 'knob', 'knobs', 'turd', 'hell', 'ass', 'tit', 'butt');
+const censor = new CensorSensor();
+censor.disableTier(CensorTier.CommonProfanity);
 
 export class MessageHelper {
 
-  static hasProfanity(message: string): boolean {
-    return filter.isProfane(message);
+  static hasAnyPossibleProfanity(message: string): boolean {
+    return censor.isProfaneIsh(message.split(' ').join(''));
   }
 
   static cleanMessage(message: any): string {
     if(message.message) {
-      message.message = filter.clean(message.message);
+      message.message = censor.cleanProfanity(message.message);
       return message;
     }
 
-    return filter.clean(message);
+    return censor.cleanProfanity(message);
   }
 
   static sendClientMessage(char: Character, message) {

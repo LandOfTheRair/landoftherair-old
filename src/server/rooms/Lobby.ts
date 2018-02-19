@@ -113,7 +113,7 @@ export class Lobby extends Room<LobbyState> {
 
       } else {
 
-        if(MessageHelper.hasProfanity(username)) {
+        if(MessageHelper.hasAnyPossibleProfanity(username)) {
           this.send(client, {
             error: 'too_profane',
             prettyErrorName: 'Account Name Contains Profanity',
