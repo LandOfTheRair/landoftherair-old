@@ -8,17 +8,12 @@ export class MagicBolt extends SpellEffect {
 
   maxSkillForSkillGain = 30;
   skillFlag = () => SkillClassNames.Conjuration;
+  skillMults = [[0, 2], [11, 4], [21, 6]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 1;
-    if(this.potency > 0)  mult = 2;
-    if(this.potency > 11) mult = 4;
-    if(this.potency > 21) mult = 6;
-
-    const intCheck = Math.floor(mult * this.getCasterStat(caster, 'int'));
-    const damage = +dice.roll(`${this.potency || 1}d${intCheck}`);
+    const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
     this.magicalAttack(caster, target, {
       skillRef,

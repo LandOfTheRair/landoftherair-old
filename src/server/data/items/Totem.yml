@@ -1,0 +1,15 @@
+- name: Test Totem
+  desc: "a test totem, made for testing"
+  baseDamage: 1
+  minDamage: 1
+  maxDamage: 8
+  damageRolls: 1
+  effect:
+    name: Poison
+    potency: 5
+    chance: 33
+  binds: true
+  tellsBind: true
+  type: Wand
+  value: 1500
+  sprite: 732

@@ -18,20 +18,19 @@ export class Poison extends SpellEffect {
     if(caster.baseClass === 'Healer')   return SkillClassNames.Restoration;
     return SkillClassNames.Thievery;
   }
+  skillMults = [[0, 1], [11, 1.25], [21, 2.5]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 0.75;
-    if(this.potency > 0)  mult = 1;
-    if(this.potency > 11) mult = 1.25;
-    if(this.potency > 21) mult = 2.5;
+    let mult = this.getMultiplier();
 
     if(caster.baseClass === 'Thief') mult = Math.floor(mult * 1.5);
 
-    const wisCheck = Math.max(1, Math.floor(mult * this.getCasterStat(caster, 'wis')));
-    const damage = +dice.roll(`${this.potency || 1}d${wisCheck}`);
+    const wisCheck = this.getTotalDamageDieSize(caster);
+    const totalPotency = this.getTotalDamageRolls(caster);
+    const damage = +dice.roll(`${totalPotency}d${wisCheck}`);
 
     const durationAdjust = Math.floor(this.potency / 2);
 

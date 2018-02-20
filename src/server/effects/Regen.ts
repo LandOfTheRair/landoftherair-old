@@ -15,6 +15,7 @@ export class Regen extends SpellEffect {
 
   maxSkillForSkillGain = 15;
   skillFlag = (caster) => SkillClassNames.Restoration;
+  skillMults = [[0, 0.5], [11, 1], [21, 2]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
@@ -24,13 +25,7 @@ export class Regen extends SpellEffect {
       this.effectMessage(caster, `You are regenerating ${target.name}!`);
     }
 
-    let mult = 0.25;
-    if(this.potency > 0)  mult = 0.5;
-    if(this.potency > 11) mult = 1;
-    if(this.potency > 21) mult = 2;
-
-    const wisCheck = Math.floor(mult * this.getCasterStat(caster, 'wis'));
-    const damage = -+dice.roll(`${this.potency || 1}d${wisCheck}`);
+    const damage = -+dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
     this.duration = this.duration || 10;
 

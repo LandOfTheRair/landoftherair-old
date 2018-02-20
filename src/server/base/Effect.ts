@@ -68,6 +68,7 @@ export class SpellEffect extends Effect {
 
   maxSkillForSkillGain = 0;
   skillFlag: Function;
+  skillMults: Array<number[]>;
 
   casterEffectMessage(char: Character, message: string) {
     super.effectMessage(char, { message, subClass: 'spell buff give' });
@@ -103,6 +104,44 @@ export class SpellEffect extends Effect {
       this.potency = 1;
     }
 
+  }
+
+  getMultiplier(): number {
+    let retMult = 0;
+
+    this.skillMults.forEach(([skill, mult]) => {
+      if(this.potency > skill) retMult = mult;
+    });
+
+    return retMult;
+  }
+
+  getCoreStat(caster: Character): number {
+    let base = 0;
+
+    if(caster.baseClass === 'Healer') base = this.getCasterStat(caster, 'wis');
+    else                              base = this.getCasterStat(caster, 'int');
+
+    return Math.max(1, base);
+  }
+
+  getTotalDamageDieSize(caster: Character): number {
+    return Math.floor(this.getMultiplier() * this.getCoreStat(caster));
+  }
+
+  getTotalDamageRolls(caster: Character): number {
+    let base = this.potency || 1;
+
+    // check based on type, they're both technically wands
+    if(caster.baseClass === 'Mage' && get(caster, 'rightHand.type') === 'Wand') {
+      base += get(caster, 'rightHand.damageRolls', 0);
+    }
+
+    if(caster.baseClass === 'Healer' && get(caster, 'rightHand.type') === 'Totem') {
+      base += get(caster, 'rightHand.damageRolls', 0);
+    }
+
+    return base
   }
 
   magicalAttack(caster, ref, opts: any = {}) {

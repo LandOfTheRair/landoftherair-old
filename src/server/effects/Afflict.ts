@@ -8,17 +8,12 @@ export class Afflict extends SpellEffect {
 
   maxSkillForSkillGain = 30;
   skillFlag = () => SkillClassNames.Restoration;
+  skillMults = [[0, 2.75], [11, 3.75], [21, 4]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 1;
-    if(this.potency > 0)  mult = 2.75;
-    if(this.potency > 11) mult = 3.75;
-    if(this.potency > 21) mult = 4;
-
-    const wisCheck = Math.floor(mult * this.getCasterStat(caster, 'wis'));
-    const damage = +dice.roll(`${this.potency || 1}d${wisCheck}`);
+    const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
     this.magicalAttack(caster, target, {
       skillRef,

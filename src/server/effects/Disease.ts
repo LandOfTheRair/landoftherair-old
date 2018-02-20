@@ -18,25 +18,23 @@ export class Disease extends SpellEffect {
     if(caster.baseClass === 'Healer')   return SkillClassNames.Restoration;
     return SkillClassNames.Thievery;
   }
+  skillMults = [[0, 2], [11, 3], [21, 4]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    let mult = 1.5;
-    if(this.potency > 0)  mult = 2;
-    if(this.potency > 11) mult = 3;
-    if(this.potency > 21) mult = 4;
+    let mult = this.getMultiplier();
 
     if(caster.baseClass === 'Thief') mult = Math.floor(mult * 1.5);
 
     const calcMod = Math.max(1, this.getCasterStat(caster, 'wis') - target.getTotalStat('con'));
 
     const wisCheck = Math.max(1, Math.floor(mult * calcMod));
-    const damage = +dice.roll(`${this.potency || 1}d${wisCheck}`);
+    const totalPotency = this.getTotalDamageRolls(caster);
+    const damage = +dice.roll(`${totalPotency}d${wisCheck}`);
 
-    const durationAdjust = this.potency;
-    this.duration = this.duration || +dice.roll(`${durationAdjust}d4`);
+    this.duration = this.duration || +dice.roll(`${totalPotency}d4`);
 
     this.effectInfo = { damage, caster: caster.uuid };
     target.applyEffect(this);
