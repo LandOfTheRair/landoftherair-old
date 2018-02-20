@@ -18,6 +18,7 @@ export class Attack extends Skill {
   };
 
   public name = 'attack';
+  public format = 'Target';
 
   requiresLearn = false;
 

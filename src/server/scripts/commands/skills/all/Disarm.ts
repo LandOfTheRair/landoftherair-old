@@ -5,6 +5,7 @@ import { Character, SkillClassNames } from '../../../../../shared/models/charact
 export class Disarm extends Skill {
 
   public name = 'disarm';
+  public format = 'Dir';
 
   requiresLearn = false;
 

@@ -182,7 +182,7 @@
     max: 20000
 
   rightHand:
-    - Cave Shaman Wand
+    - Saraxa Wand
 
   gear:
     Armor: Antanian Tunic
@@ -212,6 +212,9 @@
 
   drops:
     - result: Antanian MagicMissile Black Pearl
+      chance: 1
+      maxChance: 20
+    - result: Saraxa's Key
       chance: 1
       maxChance: 20
 

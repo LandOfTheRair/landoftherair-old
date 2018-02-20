@@ -121,6 +121,19 @@
   requirements:
     level: 5
 
+- name: Antanian MagicBolt Black Pearl
+  desc: "a small black pearl overflowing with magical energy"
+  value: 3000
+  sprite: 315
+  stats:
+    effect:
+      name: MagicBolt
+      potency: 7
+      chance: 10
+
+  requirements:
+    level: 15
+
 - name: Tower Thief Gem
   desc: "a slight black pearl bathed in shadows"
   value: 6000

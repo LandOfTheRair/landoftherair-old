@@ -657,7 +657,7 @@ export class GameWorld extends Room<GameState> {
     const npcs = this.state.map.layers[MapLayer.NPCs].objects;
 
     if(npcs.length === 0) return;
-    const normalNPCSpawner = new Spawner(this, { x: 0, y: 0, map: this.state.mapName }, {
+    const normalNPCSpawner = new Spawner(this, { x: 0, y: 0, map: this.state.mapName, name: 'NPC Green Spawner' }, {
       leashRadius: -1
     });
 
@@ -714,7 +714,7 @@ export class GameWorld extends Room<GameState> {
         properties.currentTick = spawnerOldData.currentTick + difference;
       }
 
-      const spawnerObject = new spawnerProto(this, { map: this.state.mapName, x: spawnerX, y: spawnerY }, properties);
+      const spawnerObject = new spawnerProto(this, { map: this.state.mapName, x: spawnerX, y: spawnerY, name: spawnerData.name }, properties);
       this.spawners.push(spawnerObject);
     });
   }
@@ -884,5 +884,13 @@ export class GameWorld extends Room<GameState> {
 
   public savePlayerPouch(player: Player) {
     PouchHelper.savePouch(player);
+  }
+
+  public getInteractableByName(name: string) {
+    return this.state.getInteractableByName(name);
+  }
+
+  public getSpawnerByName(name: string): Spawner {
+    return find(this.spawners, { name });
   }
 }

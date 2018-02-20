@@ -63,3 +63,25 @@
 
   requirements:
     level: 5
+
+- name: Crazed Saraxa Amulet
+  quality: 5
+  stats:
+    int: 1
+    wis: 1
+    defense: 3
+    magicalDamageBoost: 20
+    healingBoost: 30
+    mp: 50
+  binds: true
+  tellsBind: true
+  sprite: 318
+  desc: "an amulet set with a polished gem made of refined crimson ether"
+  value: 3000
+
+  trait:
+    name: MagicFocus
+    level: 3
+
+  requirements:
+    level: 15

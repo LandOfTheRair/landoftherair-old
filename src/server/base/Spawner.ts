@@ -13,6 +13,7 @@ export class Spawner {
   x: number;
   y: number;
   map: string;
+  name: string;
 
   currentTick = 0;
 
@@ -57,13 +58,15 @@ export class Spawner {
 
   removeWhenNoNPCs = false;
   npcCreateCallback: Function;
+  shouldBeActive = true;
 
-  constructor(private room, { x, y, map }, spawnOpts) {
+  constructor(private room, { x, y, map, name }, spawnOpts) {
     extend(this, spawnOpts);
 
     this.x = x;
     this.y = y;
     this.map = map;
+    this.name = name;
 
     // if a room disables creature spawn, it wants them all to spawn at once
     if(room.disableCreatureSpawn) this.currentTick = 0;
@@ -76,7 +79,7 @@ export class Spawner {
   }
 
   isActive() {
-    return true;
+    return this.shouldBeActive;
   }
 
   private shouldLoadItem(itemName: string|any) {
@@ -107,7 +110,7 @@ export class Spawner {
     return sample(choices);
   }
 
-  async createNPC(): Promise<void> {
+  async createNPC(): Promise<NPC> {
     if(!this.npcIds || this.npcIds.length === 0) {
       if(this.x !== 0 && this.y !== 0) {
         Logger.error(`No valid npcIds for spawner ${this.constructor.name} at ${this.x}, ${this.y} on ${this.map}`);
@@ -116,8 +119,13 @@ export class Spawner {
       return;
     }
 
-    const npcChooser = new LootTable(this.npcIds);
-    const chosenNPC = npcChooser.chooseWithReplacement(1)[0];
+    let chosenNPC = '';
+    if(this.npcIds.length === 1) {
+      chosenNPC = this.npcIds[0];
+    } else {
+      const npcChooser = new LootTable(this.npcIds);
+      chosenNPC = npcChooser.chooseWithReplacement(1)[0];
+    }
 
     const npcData = await NPCLoader.loadNPCData(chosenNPC);
 
@@ -257,6 +265,8 @@ export class Spawner {
     npc.hp.toMaximum();
     npc.mp.toMaximum();
     this.addNPC(npc);
+
+    return npc;
   }
 
   addNPC(npc: NPC) {

@@ -17,12 +17,13 @@ export class RageStance extends StanceEffect {
     tooltipDesc: 'Stance. Acting offensively.'
   };
 
-  skillFlag = (char) => char.rightHand ? char.rightHand.itemClass : 'Martial';
+  skillFlag = (char) => char.rightHand ? char.rightHand.type : 'Martial';
 
   cast(caster: Character, target: Character, skillRef?: Skill): boolean {
     const foundSelf = super.cast(caster, target, skillRef);
     if(foundSelf) return foundSelf;
     this.flagPermanent(caster.uuid);
+    this.potency = caster.calcSkillLevel(caster.rightHand.type);
     caster.applyEffect(this);
   }
 
@@ -35,7 +36,7 @@ export class RageStance extends StanceEffect {
 
     char.gainStat('offense', Math.floor(this.potency / 2));
     char.gainStat('accuracy', Math.floor(this.potency / 2));
-    char.gainStat('weaponDamageRolls', Math.floor(this.potency / 5));
+    char.gainStat('weaponDamageRolls', Math.floor(this.potency / 2));
   }
 
   effectEnd(char: Character) {
@@ -47,6 +48,6 @@ export class RageStance extends StanceEffect {
 
     char.loseStat('offense', Math.floor(this.potency / 2));
     char.loseStat('accuracy', Math.floor(this.potency / 2));
-    char.loseStat('weaponDamageRolls', Math.floor(this.potency / 5));
+    char.loseStat('weaponDamageRolls', Math.floor(this.potency / 2));
   }
 }

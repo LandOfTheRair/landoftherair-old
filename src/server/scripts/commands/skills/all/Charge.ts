@@ -19,6 +19,7 @@ export class Charge extends Skill {
   };
 
   public name = 'charge';
+  public format = 'Target';
 
   requiresLearn = false;
 

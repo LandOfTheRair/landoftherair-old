@@ -17,12 +17,13 @@ export class TauntStance extends StanceEffect {
     tooltipDesc: 'Stance. Taunting foes.'
   };
 
-  skillFlag = (char) => char.rightHand ? char.rightHand.itemClass : 'Martial';
+  skillFlag = (char) => char.rightHand ? char.rightHand.type : 'Martial';
 
   cast(caster: Character, target: Character, skillRef?: Skill): boolean {
     const foundSelf = super.cast(caster, target, skillRef);
     if(foundSelf) return foundSelf;
     this.flagPermanent(caster.uuid);
+    this.potency = caster.calcSkillLevel(caster.rightHand.type);
     caster.applyEffect(this);
   }
 

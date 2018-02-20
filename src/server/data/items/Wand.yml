@@ -1,4 +1,4 @@
-- name: Cave Shaman Wand
+- name: Saraxa Wand
   desc: "a blue wand engraved with the markings of a shaman"
   baseDamage: 1
   minDamage: 1
@@ -49,3 +49,19 @@
 
   requirements:
     level: 5
+
+- name: Crazed Saraxa Wand
+  desc: "a crimson wand stained from over-exposure to ether mist"
+  baseDamage: 1
+  minDamage: 1
+  maxDamage: 15
+  damageRolls: 2
+  effect:
+    name: MagicBolt
+    potency: 10
+    chance: 10
+  binds: true
+  tellsBind: true
+  type: Wand
+  value: 2500
+  sprite: 961

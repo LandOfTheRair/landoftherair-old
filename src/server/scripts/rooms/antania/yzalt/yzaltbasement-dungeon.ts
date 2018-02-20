@@ -26,7 +26,7 @@ export const setup = async (room) => {
     args: 1
   }];
 
-  const chest1 = room.state.getInteractableByName('Chest 1');
+  const chest1 = room.getInteractableByName('Chest 1');
   chest1.searchItems = await LootHelper.getItemsFromTables(lootTables, room);
 
 };

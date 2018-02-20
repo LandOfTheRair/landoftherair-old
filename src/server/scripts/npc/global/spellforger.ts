@@ -5,7 +5,7 @@ import { SpellforgingResponses } from '../common-responses';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
   npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
-  npc.rightHand = await NPCLoader.loadItem('Cave Shaman Wand');
+  npc.rightHand = await NPCLoader.loadItem('Saraxa Wand');
 };
 
 export const responses = (npc: NPC) => {

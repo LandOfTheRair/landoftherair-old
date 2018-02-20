@@ -93,6 +93,13 @@
   desc: "a robe made of insulating material"
   sprite: 211
 
+- name: FireIce Prot Robe 500
+  stats:
+    fireResist: 500
+    iceResist: 500
+  desc: "a robe made of insulating material"
+  sprite: 211
+
 - name: Tower Prot Robe
   randomStats:
     offense:
@@ -113,3 +120,26 @@
 
   requirements:
     level: 12
+
+- name: Crazed Saraxa Robe
+  quality: 5
+  stats:
+    armorClass: 6
+    defense: 3
+    physicalResist: 10
+    magicalResist: 25
+    energyResist: 50
+    necroticResist: 50
+    mpregen: 10
+    hpregen: 2
+  trait:
+    name: MagicFocus
+    level: 3
+  binds: true
+  tellsBind: true
+  desc: "a gold-trimmed robe stained crimson from ether mist"
+  value: 7891
+  sprite: 488
+
+  requirements:
+    level: 15

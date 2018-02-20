@@ -8,7 +8,7 @@ import { MessageHelper } from '../helpers/message-helper';
 export class FireMist extends SpellEffect {
 
   maxSkillForSkillGain = 7;
-  skillMults = [[0, 2], [11, 2.5], [21, 3]];
+  skillMults = [[0, 3], [11, 4], [21, 5]];
   skillFlag = () => SkillClassNames.Conjuration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {

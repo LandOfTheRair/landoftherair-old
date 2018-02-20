@@ -19,6 +19,7 @@ export class Backstab extends Skill {
   };
 
   public name = 'backstab';
+  public format = 'Target';
 
   requiresLearn = false;
 
