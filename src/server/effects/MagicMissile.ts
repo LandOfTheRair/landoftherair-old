@@ -7,8 +7,8 @@ import * as dice from 'dice.js';
 export class MagicMissile extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillFlag = () => SkillClassNames.Conjuration;
   skillMults = [[0, 1], [11, 2.5], [21, 3]];
+  skillFlag = () => SkillClassNames.Conjuration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

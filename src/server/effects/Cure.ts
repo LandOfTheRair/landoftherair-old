@@ -7,8 +7,8 @@ import * as dice from 'dice.js';
 export class Cure extends SpellEffect {
 
   maxSkillForSkillGain = 7;
-  skillFlag = () => SkillClassNames.Restoration;
   skillMults = [[0, 4], [11, 6], [21, 10]];
+  skillFlag = () => SkillClassNames.Restoration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

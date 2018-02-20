@@ -14,8 +14,8 @@ export class Regen extends SpellEffect {
   };
 
   maxSkillForSkillGain = 15;
-  skillFlag = (caster) => SkillClassNames.Restoration;
   skillMults = [[0, 0.5], [11, 1], [21, 2]];
+  skillFlag = (caster) => SkillClassNames.Restoration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 

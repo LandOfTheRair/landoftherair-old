@@ -8,8 +8,8 @@ import { MessageHelper } from '../helpers/message-helper';
 export class IceMist extends SpellEffect {
 
   maxSkillForSkillGain = 7;
-  skillFlag = () => SkillClassNames.Conjuration;
   skillMults = [[0, 2], [11, 2.5], [21, 3]];
+  skillFlag = () => SkillClassNames.Conjuration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

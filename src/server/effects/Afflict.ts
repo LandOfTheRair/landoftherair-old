@@ -7,8 +7,8 @@ import * as dice from 'dice.js';
 export class Afflict extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillFlag = () => SkillClassNames.Restoration;
   skillMults = [[0, 2.75], [11, 3.75], [21, 4]];
+  skillFlag = () => SkillClassNames.Restoration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

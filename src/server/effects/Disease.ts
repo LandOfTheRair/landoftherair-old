@@ -14,11 +14,11 @@ export class Disease extends SpellEffect {
   };
 
   maxSkillForSkillGain = 13;
+  skillMults = [[0, 2], [11, 3], [21, 4]];
   skillFlag = (caster) => {
     if(caster.baseClass === 'Healer')   return SkillClassNames.Restoration;
     return SkillClassNames.Thievery;
   }
-  skillMults = [[0, 2], [11, 3], [21, 4]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 

@@ -141,7 +141,7 @@ export class SpellEffect extends Effect {
       base += get(caster, 'rightHand.damageRolls', 0);
     }
 
-    return base
+    return base;
   }
 
   magicalAttack(caster, ref, opts: any = {}) {

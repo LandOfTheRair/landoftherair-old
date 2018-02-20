@@ -14,11 +14,11 @@ export class Poison extends SpellEffect {
   };
 
   maxSkillForSkillGain = 7;
+  skillMults = [[0, 1], [11, 1.25], [21, 2.5]];
   skillFlag = (caster) => {
     if(caster.baseClass === 'Healer')   return SkillClassNames.Restoration;
     return SkillClassNames.Thievery;
   }
-  skillMults = [[0, 1], [11, 1.25], [21, 2.5]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
