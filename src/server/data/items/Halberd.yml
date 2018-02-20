@@ -39,6 +39,7 @@
   type: Polearm
   value: 1451
   sprite: 164
+  binds: true
 
   requirements:
     level: 12
@@ -56,6 +57,7 @@
   type: Polearm
   value: 1451
   sprite: 164
+  binds: true
 
   requirements:
     level: 14
