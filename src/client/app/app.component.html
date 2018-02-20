@@ -392,6 +392,25 @@
     </div>
   </div>
 
+  <div class="window equipment-viewonly-window game-window"
+       [class.active-window]="colyseus.game.currentViewTarget"
+       [appDraggableWindow]="!lockWindowPositions"
+       [ngClass]="[equipmentSize]"
+       [windowHandle]="equipmentViewOnlyWindow"
+       windowName="equipmentViewOnlyWindow"
+       [windowLocation]="windowLocations.EquipmentViewOnly"
+       defaultX="666"
+       defaultY="56"
+       *ngIf="inGame && colyseus.game.currentViewTarget">
+    <div class="window-header text-center" #equipmentViewOnlyWindow>
+      {{ colyseus.game.currentViewTarget.name }}'s Equipment
+      <app-close-button (click)="colyseus.game.currentViewTarget = null"></app-close-button>
+    </div>
+    <div class="window-body">
+      <app-equipment-viewonly [player]="colyseus.game.currentViewTarget" [size]="equipmentSize"></app-equipment-viewonly>
+    </div>
+  </div>
+
   <div class="window npc-window game-window"
        [class.active-window]="activeWindow === 'npcs'"
        (click)="setActiveWindow('npcs')"

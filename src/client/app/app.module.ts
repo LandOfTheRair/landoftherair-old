@@ -50,6 +50,7 @@ import { GroundComponent } from './ground/ground.component';
 import { InventorySackComponent } from './inventory-sack/inventory-sack.component';
 import { InventoryBeltComponent } from './inventory-belt/inventory-belt.component';
 import { EquipmentComponent } from './equipment/equipment.component';
+import { EquipmentViewOnlyComponent } from './equipment-viewonly/equipment-viewonly.component';
 import { NpcsComponent } from './npcs/npcs.component';
 import { MacroBarsComponent } from './macro-bars/macro-bars.component';
 import { TrainerComponent } from './trainer/trainer.component';
@@ -102,6 +103,7 @@ import { InventoryPouchComponent } from './inventory-pouch/inventory-pouch.compo
     InventoryBeltComponent,
     InventoryPouchComponent,
     EquipmentComponent,
+    EquipmentViewOnlyComponent,
     NpcsComponent,
     MacroBarsComponent,
     TrainerComponent,

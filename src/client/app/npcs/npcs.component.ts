@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { compact, find, pull, findIndex, sortBy } from 'lodash';
+import { compact, find, pull, findIndex, sortBy, cloneDeep } from 'lodash';
 import { NPC } from '../../../shared/models/npc';
 import { MacroService } from '../macros.service';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -125,6 +125,11 @@ export class NpcsComponent implements OnInit, OnDestroy {
     } else {
       this.colyseusGame.sendCommandString(this.macroService.activeMacro.macro, npc.uuid);
     }
+  }
+
+  public tryViewEquipment(target) {
+    if(!target.isPlayer()) return;
+    this.colyseusGame.currentViewTarget = cloneDeep(target);
   }
 
 }

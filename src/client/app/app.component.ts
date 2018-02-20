@@ -170,6 +170,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     Belt: null,
     Pouch: null,
     Equipment: null,
+    EquipmentViewOnly: null,
     NPCs: null,
     Macros: null,
     Trainer: null,

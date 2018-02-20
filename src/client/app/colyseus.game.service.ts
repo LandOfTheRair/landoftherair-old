@@ -57,6 +57,8 @@ export class ColyseusGameService {
   private overrideNoBgm: boolean;
   private overrideNoSfx: boolean;
 
+  public currentViewTarget: any;
+
   get character() {
     return this.clientGameState.currentPlayer;
   }
