@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { Autoheal as CastEffect } from '../../../../../effects/Autoheal';
+import { Autoheal as CastEffect } from '../../../../../effects/buffs/Autoheal';
 
 export class Autoheal extends Skill {
 

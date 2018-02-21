@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { BarWater as CastEffect } from '../../../../../effects/BarWater';
+import { BarWater as CastEffect } from '../../../../../effects/buffs/BarWater';
 
 export class BarWater extends Skill {
 

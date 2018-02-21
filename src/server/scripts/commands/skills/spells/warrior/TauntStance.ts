@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { TauntStance as CastEffect } from '../../../../../effects/TauntStance';
+import { TauntStance as CastEffect } from '../../../../../effects/stances/TauntStance';
 
 export class TauntStance extends Skill {
 

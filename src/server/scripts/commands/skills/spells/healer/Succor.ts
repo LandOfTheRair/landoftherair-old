@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { Succor as CastEffect } from '../../../../../effects/Succor';
+import { Succor as CastEffect } from '../../../../../effects/misc/Succor';
 
 export class Succor extends Skill {
 

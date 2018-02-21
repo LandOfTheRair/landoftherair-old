@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { TrueSight as CastEffect } from '../../../../../effects/TrueSight';
+import { TrueSight as CastEffect } from '../../../../../effects/buffs/TrueSight';
 
 export class TrueSight extends Skill {
 

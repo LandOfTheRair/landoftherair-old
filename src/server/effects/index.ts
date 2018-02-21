@@ -1,79 +1,79 @@
 
-export * from './ExactHeal';
-export * from './Nourishment';
-export * from './Malnourished';
+export * from './items/ExactHeal';
+export * from './buffs/Nourishment';
+export * from './antibuffs/Malnourished';
 
-export * from './PermanentSTR';
-export * from './PermanentDEX';
-export * from './PermanentAGI';
-export * from './PermanentINT';
-export * from './PermanentWIS';
-export * from './PermanentWIL';
-export * from './PermanentCON';
-export * from './PermanentLUK';
-export * from './PermanentCHA';
-export * from './MinorHP';
-export * from './MinorMP';
+export * from './items/PermanentSTR';
+export * from './items/PermanentDEX';
+export * from './items/PermanentAGI';
+export * from './items/PermanentINT';
+export * from './items/PermanentWIS';
+export * from './items/PermanentWIL';
+export * from './items/PermanentCON';
+export * from './items/PermanentLUK';
+export * from './items/PermanentCHA';
+export * from './items/MinorHP';
+export * from './items/MinorMP';
 
-export * from './Dead';
-export * from './LowCON';
-export * from './Hidden';
+export * from './special/Dead';
+export * from './special/LowCON';
+export * from './misc/Hidden';
 
-export * from './Antidote';
+export * from './cures/Antidote';
 
-export * from './DarkVision';
-export * from './TrueSight';
+export * from './buffs/DarkVision';
+export * from './buffs/TrueSight';
 
-export * from './Afflict';
-export * from './MagicMissile';
-export * from './MagicBolt';
+export * from './damagers/Afflict';
+export * from './damagers/MagicMissile';
+export * from './damagers/MagicBolt';
 
-export * from './Disease';
-export * from './Poison';
+export * from './dots/Disease';
+export * from './dots/Poison';
 
-export * from './BarFire';
-export * from './BarFrost';
-export * from './BarNecro';
-export * from './BarWater';
-export * from './Absorption';
-export * from './MagicShield';
+export * from './buffs/BarFire';
+export * from './buffs/BarFrost';
+export * from './buffs/BarNecro';
+export * from './buffs/BarWater';
+export * from './buffs/Absorption';
+export * from './buffs/MagicShield';
 
-export * from './FireMist';
-export * from './IceMist';
-export * from './EnergyWave';
+export * from './damagers/FireMist';
+export * from './damagers/IceMist';
+export * from './damagers/EnergyWave';
 
-export * from './Autoheal';
-export * from './Cure';
-export * from './Regen';
-export * from './Revive';
+export * from './buffs/Autoheal';
+export * from './cures/Cure';
+export * from './cures/Regen';
+export * from './cures/Revive';
 
-export * from './Darkness';
-export * from './Light';
+export * from './misc/Darkness';
+export * from './misc/Light';
 
-export * from './ShadowMeld';
-export * from './EagleEye';
+export * from './buffs/ShadowMeld';
+export * from './buffs/EagleEye';
 
-export * from './BuildupHeat';
-export * from './Burning';
-export * from './RecentlyBurned';
+export * from './buildups/BuildupHeat';
+export * from './bursts/Burning';
+export * from './recents/RecentlyBurned';
 
-export * from './BuildupChill';
-export * from './Frosted';
-export * from './RecentlyFrosted';
+export * from './buildups/BuildupChill';
+export * from './bursts/Frosted';
+export * from './recents/RecentlyFrosted';
 
-export * from './Stunned';
-export * from './RecentlyStunned';
+export * from './antibuffs/Stunned';
+export * from './recents/RecentlyStunned';
 
-export * from './Augury';
-export * from './Identify';
-export * from './Succor';
-export * from './Transmute';
-export * from './Push';
+export * from './misc/Augury';
+export * from './misc/Identify';
+export * from './misc/Succor';
+export * from './misc/Transmute';
+export * from './misc/Push';
 
-export * from './ParryStance';
-export * from './RageStance';
-export * from './TauntStance';
+export * from './stances/ParryStance';
+export * from './stances/RageStance';
+export * from './stances/TauntStance';
 
-export * from './ActivePet';
-export * from './SummonedPet';
-export * from './ChannelFindFamiliar';
+export * from './special/ActivePet';
+export * from './special/SummonedPet';
+export * from './channels/ChannelFindFamiliar';

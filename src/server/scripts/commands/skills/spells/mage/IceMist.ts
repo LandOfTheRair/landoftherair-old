@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { IceMist as CastEffect } from '../../../../../effects/IceMist';
+import { IceMist as CastEffect } from '../../../../../effects/damagers/IceMist';
 
 export class IceMist extends Skill {
 

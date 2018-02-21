@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { ParryStance as CastEffect } from '../../../../../effects/ParryStance';
+import { ParryStance as CastEffect } from '../../../../../effects/stances/ParryStance';
 
 export class ParryStance extends Skill {
 

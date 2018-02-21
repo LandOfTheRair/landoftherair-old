@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { MagicShield as CastEffect } from '../../../../../effects/MagicShield';
+import { MagicShield as CastEffect } from '../../../../../effects/buffs/MagicShield';
 
 export class MagicShield extends Skill {
 

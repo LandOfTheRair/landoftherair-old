@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { RageStance as CastEffect } from '../../../../../effects/RageStance';
+import { RageStance as CastEffect } from '../../../../../effects/stances/RageStance';
 
 export class RageStance extends Skill {
 

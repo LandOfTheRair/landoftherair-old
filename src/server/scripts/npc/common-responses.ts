@@ -5,7 +5,7 @@ import { Logger } from '../../logger';
 import { AllNormalGearSlots, SkillClassNames } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
 import { NPCLoader } from '../../helpers/npc-loader';
-import { Revive } from '../../effects/Revive';
+import { Revive } from '../../effects/cures/Revive';
 import { LearnAlchemy } from '../../quests/antania/Rylt/LearnAlchemy';
 import { SkillHelper } from '../../helpers/skill-helper';
 

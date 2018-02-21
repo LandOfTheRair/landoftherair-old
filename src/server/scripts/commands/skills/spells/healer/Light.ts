@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { Light as CastEffect } from '../../../../../effects/Light';
+import { Light as CastEffect } from '../../../../../effects/misc/Light';
 
 export class Light extends Skill {
 

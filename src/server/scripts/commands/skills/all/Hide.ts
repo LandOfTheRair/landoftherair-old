@@ -3,7 +3,7 @@ import { startsWith, isString } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
-import { Hidden as CastEffect } from '../../../../effects/Hidden';
+import { Hidden as CastEffect } from '../../../../effects/misc/Hidden';
 import { CharacterHelper } from '../../../../helpers/character-helper';
 
 export class Hide extends Skill {

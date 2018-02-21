@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { BarNecro as CastEffect } from '../../../../../effects/BarNecro';
+import { BarNecro as CastEffect } from '../../../../../effects/buffs/BarNecro';
 
 export class BarNecro extends Skill {
 

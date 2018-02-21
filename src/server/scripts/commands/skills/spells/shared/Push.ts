@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { Push as CastEffect } from '../../../../../effects/Push';
+import { Push as CastEffect } from '../../../../../effects/misc/Push';
 
 export class Push extends Skill {
 

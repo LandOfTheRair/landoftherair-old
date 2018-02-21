@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { Augury as CastEffect } from '../../../../../effects/Augury';
+import { Augury as CastEffect } from '../../../../../effects/misc/Augury';
 import { MessageHelper } from '../../../../../helpers/message-helper';
 
 export class Augury extends Skill {

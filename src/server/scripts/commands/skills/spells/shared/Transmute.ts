@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { Transmute as CastEffect } from '../../../../../effects/Transmute';
+import { Transmute as CastEffect } from '../../../../../effects/misc/Transmute';
 
 export class Transmute extends Skill {
 

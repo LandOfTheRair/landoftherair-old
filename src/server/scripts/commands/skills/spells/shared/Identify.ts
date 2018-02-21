@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { Identify as CastEffect } from '../../../../../effects/Identify';
+import { Identify as CastEffect } from '../../../../../effects/misc/Identify';
 
 export class Identify extends Skill {
 

@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { Regen as CastEffect } from '../../../../../effects/Regen';
+import { Regen as CastEffect } from '../../../../../effects/cures/Regen';
 
 export class Regen extends Skill {
 

@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { BarFrost as CastEffect } from '../../../../../effects/BarFrost';
+import { BarFrost as CastEffect } from '../../../../../effects/buffs/BarFrost';
 
 export class BarFrost extends Skill {
 

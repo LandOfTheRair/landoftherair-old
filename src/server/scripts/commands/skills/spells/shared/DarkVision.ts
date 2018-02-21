@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { DarkVision as CastEffect } from '../../../../../effects/DarkVision';
+import { DarkVision as CastEffect } from '../../../../../effects/buffs/DarkVision';
 
 export class DarkVision extends Skill {
 

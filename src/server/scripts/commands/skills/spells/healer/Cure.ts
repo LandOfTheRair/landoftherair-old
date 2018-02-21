@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { Cure as CastEffect } from '../../../../../effects/Cure';
+import { Cure as CastEffect } from '../../../../../effects/cures/Cure';
 
 export class Cure extends Skill {
 

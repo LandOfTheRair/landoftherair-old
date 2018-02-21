@@ -1,6 +1,6 @@
 import { NPC } from '../../../../../shared/models/npc';
 import { NPCLoader } from '../../../../helpers/npc-loader';
-import { DarkVision } from '../../../../effects/DarkVision';
+import { DarkVision } from '../../../../effects/buffs/DarkVision';
 
 import { includes } from 'lodash';
 

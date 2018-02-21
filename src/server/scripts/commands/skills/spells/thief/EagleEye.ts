@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { EagleEye as CastEffect } from '../../../../../effects/EagleEye';
+import { EagleEye as CastEffect } from '../../../../../effects/buffs/EagleEye';
 
 export class EagleEye extends Skill {
 

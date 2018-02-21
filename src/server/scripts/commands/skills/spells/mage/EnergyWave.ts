@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { EnergyWave as CastEffect } from '../../../../../effects/EnergyWave';
+import { EnergyWave as CastEffect } from '../../../../../effects/damagers/EnergyWave';
 
 export class EnergyWave extends Skill {
 

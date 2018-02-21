@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { Absorption as CastEffect } from '../../../../../effects/Absorption';
+import { Absorption as CastEffect } from '../../../../../effects/buffs/Absorption';
 
 export class Absorption extends Skill {
 

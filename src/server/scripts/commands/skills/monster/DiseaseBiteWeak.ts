@@ -5,7 +5,7 @@ import * as dice from 'dice.js';
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
-import { Disease as CastEffect } from '../../../../effects/Disease';
+import { Disease as CastEffect } from '../../../../effects/dots/Disease';
 import { CombatHelper } from '../../../../helpers/combat-helper';
 
 export class DiseaseBiteWeak extends Skill {

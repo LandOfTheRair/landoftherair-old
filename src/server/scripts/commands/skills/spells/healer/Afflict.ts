@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../../shared/models/character';
-import { Afflict as CastEffect } from '../../../../../effects/Afflict';
+import { Afflict as CastEffect } from '../../../../../effects/damagers/Afflict';
 
 export class Afflict extends Skill {
 

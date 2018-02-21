@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { ShadowMeld as CastEffect } from '../../../../../effects/ShadowMeld';
+import { ShadowMeld as CastEffect } from '../../../../../effects/buffs/ShadowMeld';
 
 export class ShadowMeld extends Skill {
 
