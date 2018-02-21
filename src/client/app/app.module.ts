@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -67,6 +68,8 @@ import { TradeskillAlchemyComponent } from './tradeskill-alchemy/tradeskill-alch
 import { TradeskillSpellforgingComponent } from './tradeskill-spellforging/tradeskill-spellforging.component';
 import { InventoryPouchComponent } from './inventory-pouch/inventory-pouch.component';
 
+import { environment } from '../environments/environment';
+
 (<any>window).PhaserGlobal = { hideBanner: true };
 
 @NgModule({
@@ -120,6 +123,9 @@ import { InventoryPouchComponent } from './inventory-pouch/inventory-pouch.compo
   ],
   imports: [
     BrowserModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {
+      enabled: environment.production
+    }),
     FormsModule,
     HttpModule,
 
