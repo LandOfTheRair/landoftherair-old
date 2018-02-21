@@ -22,6 +22,8 @@ export class SkillHelper {
   }
 
   static assess(player: Player, skill: string): string {
+    skill = skill.toLowerCase();
+
     const skillValue = player.allSkills[skill] || 0;
     const skillLevel = player.calcSkillLevel(skill);
 
