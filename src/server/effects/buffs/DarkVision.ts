@@ -28,6 +28,7 @@ export class DarkVision extends SpellEffect {
     const usedSkill = this.skillFlag(caster);
     const durationMult = caster.baseClass === 'Mage' ? 100 : 50;
     if(!this.duration) this.duration = caster.calcSkillLevel(usedSkill) * durationMult;
+    this.updateDurationBasedOnTraits(caster);
     target.applyEffect(this);
 
     target.$$room.state.calculateFOV(target);

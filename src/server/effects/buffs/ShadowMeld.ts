@@ -19,6 +19,7 @@ export class ShadowMeld extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     this.duration = 2 * caster.calcSkillLevel(SkillClassNames.Thievery);
+    this.updateDurationBasedOnTraits(caster);
     this.potency = caster.stealthLevel();
     caster.applyEffect(this);
   }

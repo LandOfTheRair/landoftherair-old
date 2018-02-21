@@ -28,6 +28,7 @@ export class Regen extends SpellEffect {
     const damage = -+dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
     this.duration = this.duration || 10;
+    this.updateDurationBasedOnTraits(caster);
 
     this.effectInfo = { damage, caster: caster.uuid };
     target.applyEffect(this);

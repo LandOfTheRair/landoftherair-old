@@ -29,7 +29,7 @@ export abstract class Skill extends Command {
       baseCost -= Math.floor(baseCost * (traitReductionLevel / 50));
       baseCost = Math.max(baseCost, 1);
     }
-    
+
     return baseCost;
   }
 

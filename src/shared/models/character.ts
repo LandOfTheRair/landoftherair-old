@@ -1116,17 +1116,18 @@ export class Character {
     const level = this.getTraitLevel(trait);
 
     switch(trait) {
-      case 'DarkerShadows':   return level * 5;
-      case 'ShadowSheath':    return level;
-      case 'DeathGrip':       return Math.min(100, level);
-      case 'ShadowSwap':      return Math.min(100, level * 2);
-      case 'ForgedFire':      return level;
-      case 'FrostedTouch':    return level;
-      case 'CarefulTouch':    return Math.min(0.95, level * 0.05);
-      case 'MagicFocus':      return level * 5;
-      case 'NecroticFocus':   return level * 5;
-      case 'HealingFocus':    return level * 5;
-      case 'ForcefulStrike':  return level * 5;
+      case 'DarkerShadows':       return level * 5;
+      case 'ShadowSheath':        return level;
+      case 'DeathGrip':           return Math.min(100, level);
+      case 'ShadowSwap':          return Math.min(100, level * 2);
+      case 'ForgedFire':          return level;
+      case 'FrostedTouch':        return level;
+      case 'CarefulTouch':        return Math.min(0.95, level * 0.05);
+      case 'EffectiveSupporter':  return (level * 10) / 100;
+      case 'MagicFocus':          return level * 5;
+      case 'NecroticFocus':       return level * 5;
+      case 'HealingFocus':        return level * 5;
+      case 'ForcefulStrike':      return level * 5;
 
       default: return level;
     }

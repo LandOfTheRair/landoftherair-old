@@ -144,6 +144,14 @@ export class SpellEffect extends Effect {
     return base;
   }
 
+  updateDurationBasedOnTraits(caster: Character): void {
+    let durationMultiplierBonus = 0;
+
+    durationMultiplierBonus += caster.getTraitLevelAndUsageModifier('EffectiveSupporter');
+
+    this.duration += Math.floor(this.duration * durationMultiplierBonus);
+  }
+
   magicalAttack(caster, ref, opts: any = {}) {
     opts.effect = this;
     if(opts.skillRef) {

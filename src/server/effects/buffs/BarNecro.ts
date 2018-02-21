@@ -20,6 +20,7 @@ export class BarNecro extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     if(!this.duration) this.duration = 100 * caster.calcSkillLevel(SkillClassNames.Restoration);
+    this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, `You cast BarNecro on ${target.name}.`);

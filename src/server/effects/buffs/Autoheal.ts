@@ -9,7 +9,7 @@ export class Autoheal extends SpellEffect {
   iconData = {
     name: 'self-love',
     color: '#00a',
-    tooltipDesc: 'Constantly restoring health.'
+    tooltipDesc: 'Restoring a lot of health when it goes lower than the threshold.'
   };
 
   maxSkillForSkillGain = 15;
@@ -23,14 +23,9 @@ export class Autoheal extends SpellEffect {
       this.effectMessage(caster, `You cast autoheal on ${target.name}!`);
     }
 
-    let mult = 0.25;
-    if(this.potency > 0)  mult = 0.5;
-    if(this.potency > 11) mult = 1;
-    if(this.potency > 21) mult = 2;
+    const wisCheck = this.getCoreStat(caster);
 
-    const wisCheck = Math.floor(mult * this.getCasterStat(caster, 'wis'));
-
-    this.duration = this.duration || mult * wisCheck * caster.calcSkillLevel(SkillClassNames.Restoration);
+    this.duration = this.duration || wisCheck * caster.calcSkillLevel(SkillClassNames.Restoration);
 
     this.effectInfo = { damage: 0, caster: caster.uuid };
     target.applyEffect(this);

@@ -20,6 +20,7 @@ export class BarWater extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     if(!this.duration) this.duration = 100 * caster.calcSkillLevel(SkillClassNames.Conjuration);
+    this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, `You cast BarWater on ${target.name}.`);

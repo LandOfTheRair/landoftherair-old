@@ -24,6 +24,7 @@ export class EagleEye extends SpellEffect {
     this.potency = Math.floor(this.potency / 2);
 
     if(!this.duration) this.duration = this.potency * 30;
+    this.updateDurationBasedOnTraits(caster);
 
     target.applyEffect(this);
   }

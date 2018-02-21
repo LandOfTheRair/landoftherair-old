@@ -30,6 +30,7 @@ export class TrueSight extends SpellEffect {
     const durationMult = caster.baseClass === 'Healer' ? 30 : 15;
     this.potency = caster.calcSkillLevel(usedSkill) * (caster.baseClass === 'Healer' ? 2 : 1);
     if(!this.duration) this.duration = caster.calcSkillLevel(usedSkill) * durationMult;
+    this.updateDurationBasedOnTraits(caster);
     target.applyEffect(this);
   }
 
