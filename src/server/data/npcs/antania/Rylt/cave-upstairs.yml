@@ -64,13 +64,14 @@
       chance: -1
     - drop: 'gear.Ring1'
       chance: -1
-    - drop: 'gear.Neck'
-      chance: -1
 
   drops:
     - result: Antanian MagicBolt Black Pearl
       chance: 1
       maxChance: 20
+    - result: Crazed Saraxa Amulet
+      chance: 1
+      maxChance: 5
 
   combatMessages:
     - "CAVE EXPERIMENTS... SUCCESS"
