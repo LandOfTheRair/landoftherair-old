@@ -90,6 +90,14 @@
     level: 1
   value: 1
 
+- name: Rune Scroll - Mana Pool I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Mana Pool I\""
+  trait:
+    name: ManaPool
+    level: 1
+  value: 1
+
 # Healer Rune Scrolls
 - name: Rune Scroll - Healing Focus I
   sprite: 681
@@ -104,6 +112,14 @@
   desc: "a runic scroll imbued with the empowerment \"Necrotic Focus I\""
   trait:
     name: NecroticFocus
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Totem Specialty I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Totem Specialty I\""
+  trait:
+    name: TotemSpecialty
     level: 1
   value: 1
 
@@ -124,14 +140,15 @@
     level: 1
   value: 1
 
-- name: Rune Scroll - Magic Boost I
+- name: Rune Scroll - Wand Specialty I
   sprite: 681
-  desc: "a runic scroll imbued with the empowerment \"Mana Pool I\""
+  desc: "a runic scroll imbued with the empowerment \"Wand Specialty I\""
   trait:
-    name: ManaPool
+    name: WandSpecialty
     level: 1
   value: 1
 
+# Thief Rune Scrolls
 - name: Rune Scroll - Darker Shadows I
   sprite: 681
   desc: "a runic scroll imbued with the empowerment \"Darker Shadows I\""

@@ -8,6 +8,9 @@
     name: Poison
     potency: 5
     chance: 33
+  trait:
+    name: TotemSpecialty
+    level: 1
   binds: true
   tellsBind: true
   type: Wand

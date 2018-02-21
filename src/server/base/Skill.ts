@@ -2,7 +2,7 @@
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { Command } from './Command';
 
-import { random } from 'lodash';
+import { random, get } from 'lodash';
 import { MessageHelper } from '../helpers/message-helper';
 
 export abstract class Skill extends Command {
@@ -12,6 +12,26 @@ export abstract class Skill extends Command {
   mpCost = (caster?: Character) => 0;
   hpCost = (caster?: Character) => 0;
   range = (caster?: Character) => 0;
+
+  modifiedMPCost(caster: Character, baseCost: number): number {
+
+    let traitReductionLevel = 0;
+
+    if(caster.baseClass === 'Mage' && get(caster, 'rightHand.type') === 'Wand') {
+      traitReductionLevel = caster.getTraitLevel('WandSpecialty');
+    }
+
+    if(caster.baseClass === 'Healer' && get(caster, 'rightHand.type') === 'Totem') {
+      traitReductionLevel = caster.getTraitLevel('TotemSpecialty');
+    }
+
+    if(traitReductionLevel > 0) {
+      baseCost -= Math.floor(baseCost * (traitReductionLevel / 50));
+      baseCost = Math.max(baseCost, 1);
+    }
+    
+    return baseCost;
+  }
 
   canUse(user: Character, target: Character): boolean {
     if(user.mp.lessThan(this.mpCost(user))) return false;
@@ -24,7 +44,7 @@ export abstract class Skill extends Command {
 
     if(effect) return true;
 
-    const mpCost = this.mpCost();
+    const mpCost = this.modifiedMPCost(user, this.mpCost());
 
     if(user.baseClass === 'Thief') {
       if(user.hp.getValue() < mpCost) {

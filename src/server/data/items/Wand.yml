@@ -8,6 +8,9 @@
     name: MagicMissile
     potency: 5
     chance: 33
+  trait:
+    name: WandSpecialty
+    level: 2
   binds: true
   tellsBind: true
   type: Wand
@@ -24,6 +27,9 @@
     name: FireMist
     potency: 8
     chance: 10
+  trait:
+    name: WandSpecialty
+    level: 1
   binds: true
   type: Wand
   value: 750
@@ -42,6 +48,9 @@
     name: IceMist
     potency: 8
     chance: 10
+  trait:
+    name: WandSpecialty
+    level: 1
   binds: true
   type: Wand
   value: 750
@@ -60,6 +69,9 @@
     name: MagicBolt
     potency: 10
     chance: 10
+  trait:
+    name: WandSpecialty
+    level: 3
   binds: true
   tellsBind: true
   type: Wand
