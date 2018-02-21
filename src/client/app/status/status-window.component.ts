@@ -21,7 +21,8 @@ export class StatusWindowComponent {
   }
 
   get xpPercent(): number {
+    const baseXp = this.colyseusGame.character.calcLevelXP(this.colyseusGame.character.level);
     const neededXp = this.colyseusGame.character.calcLevelXP(this.colyseusGame.character.level + 1);
-    return Math.min(100, this.colyseusGame.character.exp / neededXp * 100);
+    return Math.min(100, (this.colyseusGame.character.exp - baseXp) / (neededXp - baseXp) * 100);
   }
 }
