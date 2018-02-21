@@ -67,3 +67,95 @@
       chance: 1
     - result: Antanian Small Black Pearl
       chance: 1
+
+- name: Antanian Daily General Rune Scroll RNG Box
+  desc: "a thin, blue gift box wrapped with a red bow. A card near it says \"EVERYBODY\""
+  extendedDesc: "a rune scroll container"
+  sprite: 584
+  value: 20000
+  binds: true
+  containedItems:
+    - result: Rune Scroll - Careful Touch I
+      chance: 1
+    - result: Rune Scroll - Death Grip I
+      chance: 1
+    - result: Rune Scroll - Eagle Eye I
+      chance: 1
+    - result: Rune Scroll - Funky Moves I
+      chance: 1
+    - result: Rune Scroll - Natural Armor I
+      chance: 1
+    - result: Rune Scroll - Sword Tricks I
+      chance: 1
+
+- name: Antanian Daily Healer Rune Scroll RNG Box
+  desc: "a thin, blue gift box wrapped with a red bow. A card near it says \"HEALER\""
+  extendedDesc: "a rune scroll container"
+  sprite: 584
+  value: 40000
+  binds: true
+  containedItems:
+    - result: Rune Scroll - Calm Mind I
+      chance: 1
+    - result: Rune Scroll - Mana Pool I
+      chance: 1
+    - result: Rune Scroll - Healing Focus I
+      chance: 1
+    - result: Rune Scroll - Necrotic Focus I
+      chance: 1
+    - result: Rune Scroll - Totem Specialty I
+      chance: 1
+    - result: Rune Scroll - Effective Supporter I
+      chance: 1
+
+- name: Antanian Daily Mage Rune Scroll RNG Box
+  desc: "a thin, blue gift box wrapped with a red bow. A card near it says \"MAGE\""
+  extendedDesc: "a rune scroll container"
+  sprite: 584
+  value: 40000
+  binds: true
+  containedItems:
+    - result: Rune Scroll - Magic Focus I
+      chance: 1
+    - result: Rune Scroll - Calm Mind I
+      chance: 1
+    - result: Rune Scroll - Mana Pool I
+      chance: 1
+    - result: Rune Scroll - Forged Fire I
+      chance: 1
+    - result: Rune Scroll - Frosted Touch I
+      chance: 1
+    - result: Rune Scroll - Wand Specialty I
+      chance: 1
+
+- name: Antanian Daily Thief Rune Scroll RNG Box
+  desc: "a thin, blue gift box wrapped with a red bow. A card near it says \"THIEF\""
+  extendedDesc: "a rune scroll container"
+  sprite: 584
+  value: 40000
+  binds: true
+  containedItems:
+    - result: Rune Scroll - Darker Shadows I
+      chance: 1
+    - result: Rune Scroll - Shadow Sheath I
+      chance: 1
+    - result: Rune Scroll - Shadow Swap I
+      chance: 1
+    - result: Rune Scroll - Philosophers Stone I
+      chance: 1
+    - result: Rune Scroll - Shadow Daggers I
+      chance: 1
+
+- name: Antanian Daily Warrior Rune Scroll RNG Box
+  desc: "a thin, blue gift box wrapped with a red bow. A card near it says \"WARRIOR\""
+  extendedDesc: "a rune scroll container"
+  sprite: 584
+  value: 40000
+  binds: true
+  containedItems:
+    - result: Rune Scroll - Deadeye I
+      chance: 1
+    - result: Rune Scroll - Forceful Strike I
+      chance: 1
+    - result: Rune Scroll - Swashbuckler I
+      chance: 1

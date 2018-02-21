@@ -74,14 +74,6 @@
   value: 1
 
 # Shared Rune Scrolls
-- name: Rune Scroll - Magic Focus I
-  sprite: 681
-  desc: "a runic scroll imbued with the empowerment \"Magic Focus I\""
-  trait:
-    name: MagicFocus
-    level: 1
-  value: 1
-
 - name: Rune Scroll - Calm Mind I
   sprite: 681
   desc: "a runic scroll imbued with the empowerment \"Calm Mind I\""
@@ -132,6 +124,14 @@
   value: 1
 
 # Mage Rune Scrolls
+- name: Rune Scroll - Magic Focus I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Magic Focus I\""
+  trait:
+    name: MagicFocus
+    level: 1
+  value: 1
+
 - name: Rune Scroll - Forged Fire I
   sprite: 681
   desc: "a runic scroll imbued with the empowerment \"Forged Fire I\""
