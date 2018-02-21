@@ -270,6 +270,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.watchOptions();
 
     this.watchResetTime();
+
+    this.preloadAssets();
+  }
+
+  private preloadAssets() {
+    this.assetService.preloadAssets.forEach(asset => {
+      const preload = document.createElement('link');
+      preload.href = asset;
+      preload.rel = 'prefetch';
+      (<any>preload).as = 'image';
+      preload.onload = () => this.imageLoaded();
+      document.head.appendChild(preload);
+    });
   }
 
   logout() {
