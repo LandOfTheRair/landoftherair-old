@@ -24,6 +24,7 @@ import { CharacterHelper } from '../../server/helpers/character-helper';
 import { MessageHelper } from '../../server/helpers/message-helper';
 import { TrapHelper } from '../../server/helpers/trap-helper';
 import { SkillHelper } from '../../server/helpers/skill-helper';
+import { XPHelper } from '../../server/helpers/xp-helper';
 
 export type Allegiance =
   'None'
@@ -863,13 +864,7 @@ export class Character {
   }
 
   calcLevelXP(level: number) {
-    const pre20XP = Math.pow(2, level - 1) * 1000;
-
-    if(level <= 20) {
-      return pre20XP;
-    }
-
-    return 99999999999999999999999 * level;
+    return XPHelper.calcLevelXP(level);
   }
 
   isValidSkill(type) {
