@@ -29,7 +29,13 @@ exec('git add -f dist', (e, stdout, stderr) => {
       if(e) {
         console.log(stdout, stderr);
         console.error(e);
-        process.exit(-1);
+
+        exec('git reset --hard HEAD~1', (e, stdout, stderr) => {
+          console.log('Reset dist files');
+          process.exit(-1);
+        });
+        return;
+
       }
 
       exec('git reset --hard HEAD~1', (e, stdout, stderr) => {
