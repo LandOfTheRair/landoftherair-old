@@ -25,7 +25,7 @@ export class Transmute extends SpellEffect {
       valuePercent = Math.floor(valuePercent * 1.5);
       valuePercent += caster.getTraitLevelAndUsageModifier('PhilosophersStone');
     }
-    
+
     const groundItems = target.$$room.state.getGroundItems(target.x, target.y);
 
     let runningTotal = 0;

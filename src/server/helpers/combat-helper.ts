@@ -82,7 +82,19 @@ export class CombatHelper {
   }
 
   private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
-    const { isThrow, throwHand, isBackstab, isMug, attackRange, isOffhand } = opts;
+    const { isThrow, throwHand, isMug, attackRange, isOffhand } = opts;
+    let { isBackstab } = opts;
+
+    if(!isBackstab) {
+      const procChance = attacker.getTraitLevelAndUsageModifier('ShadowDaggers');
+      if(random(1, 100) <= procChance) {
+        defender.sendClientMessage({
+          message: `Your shadow daggers unsheathe themselves and attempt to strike ${defender.name}!`,
+          subClass: 'combat other hit'
+        });
+        isBackstab = true;
+      }
+    }
 
     if(defender.isDead() || attacker.isDead()) return { isDead: true };
 
@@ -286,7 +298,7 @@ export class CombatHelper {
 
     if(isBackstab) {
       const thiefSkill = attacker.calcSkillLevel(SkillClassNames.Thievery);
-      const bonusMultiplier = attacker.baseClass === 'Thief' ? 2 + Math.floor(thiefSkill / 5) : 1.5;
+      const bonusMultiplier = attacker.baseClass === 'Thief' ? 1 + Math.floor(thiefSkill / 8) : 1.5;
       damage = Math.floor(damage * bonusMultiplier);
     }
 

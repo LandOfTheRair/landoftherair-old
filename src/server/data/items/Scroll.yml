@@ -189,6 +189,14 @@
     level: 1
   value: 1
 
+- name: Rune Scroll - Shadow Daggers I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Shadow Daggers I\""
+  trait:
+    name: ShadowDaggers
+    level: 1
+  value: 1
+
 # Warrior Rune Scrolls
 - name: Rune Scroll - Deadeye I
   sprite: 681

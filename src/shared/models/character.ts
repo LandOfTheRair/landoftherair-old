@@ -1121,6 +1121,7 @@ export class Character {
       case 'PhilosophersStone':   return level * 10;
       case 'DeathGrip':           return Math.min(100, level);
       case 'ShadowSwap':          return Math.min(100, level * 2);
+      case 'ShadowDaggers':       return level;
       case 'ForgedFire':          return level;
       case 'FrostedTouch':        return level;
       case 'CarefulTouch':        return Math.min(0.95, level * 0.05);
