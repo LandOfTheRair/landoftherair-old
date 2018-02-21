@@ -49,7 +49,7 @@
   damageRolls: 4
   type: Twohanded
   value: 1560
-  sprite: 163
+  sprite: 43
   binds: true
 
   requirements:
@@ -66,7 +66,7 @@
   damageRolls: 5
   type: Twohanded
   value: 1560
-  sprite: 163
+  sprite: 43
   binds: true
 
   requirements:

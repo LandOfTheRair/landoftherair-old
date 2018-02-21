@@ -12,7 +12,7 @@
   damageRolls: 3
   type: Onehanded
   value: 1378
-  sprite: 166
+  sprite: 46
   binds: true
 
   requirements:
@@ -31,7 +31,7 @@
   damageRolls: 4
   type: Onehanded
   value: 1378
-  sprite: 166
+  sprite: 46
   binds: true
 
   requirements:

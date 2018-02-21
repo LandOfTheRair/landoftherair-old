@@ -7,7 +7,7 @@
   damageRolls: 2
   type: Staff
   value: 650
-  sprite: 160
+  sprite: 51
 
   requirements:
     level: 12
@@ -20,7 +20,7 @@
   damageRolls: 3
   type: Staff
   value: 650
-  sprite: 160
+  sprite: 51
 
   requirements:
     level: 14

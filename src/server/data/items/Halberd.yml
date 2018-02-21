@@ -38,7 +38,7 @@
   damageRolls: 4
   type: Polearm
   value: 1451
-  sprite: 164
+  sprite: 44
   binds: true
 
   requirements:
@@ -56,7 +56,7 @@
   damageRolls: 5
   type: Polearm
   value: 1451
-  sprite: 164
+  sprite: 44
   binds: true
 
   requirements:
