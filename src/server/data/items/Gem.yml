@@ -139,8 +139,8 @@
   value: 6000
   sprite: 315
   stats:
-    stealth: 2
-    physicalDamageBoost: 4
+    stealth: 3
+    physicalDamageBoost: 10
     perception: -1
 
   requirements:
@@ -163,7 +163,7 @@
   value: 6000
   sprite: 243
   stats:
-    healingBoost: 10
+    healingBoost: 15
     defense: 1
     offense: -1
 
@@ -175,7 +175,7 @@
   value: 6000
   sprite: 213
   stats:
-    magicalDamageBoost: 4
+    magicalDamageBoost: 15
     defense: 1
     offense: -1
 
