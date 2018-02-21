@@ -21,8 +21,6 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "prefix": "app",
-      "serviceWorker": true,
-      "showCircularDependencies": false,
       "styles": [
         "../../node_modules/sweetalert2/dist/sweetalert2.css",
         "../../node_modules/ng-drag-drop/style.css",
@@ -48,7 +46,6 @@
   ],
   "defaults": {
     "styleExt": "scss",
-    "component": {
-    }
+    "component": {}
   }
 }
