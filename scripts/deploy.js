@@ -22,7 +22,7 @@ exec('git add -f dist', (e, stdout, stderr) => {
       process.exit(-1);
     }
 
-    exec('git push -f dokku master', (e, stdout, stderr) => {
+    exec('git push -f dokku master --no-verify', (e, stdout, stderr) => {
 
       console.log('Pushed dist files');
 
