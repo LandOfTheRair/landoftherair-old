@@ -1118,6 +1118,7 @@ export class Character {
     switch(trait) {
       case 'DarkerShadows':       return level * 5;
       case 'ShadowSheath':        return level;
+      case 'PhilosophersStone':   return level * 10;
       case 'DeathGrip':           return Math.min(100, level);
       case 'ShadowSwap':          return Math.min(100, level * 2);
       case 'ForgedFire':          return level;

@@ -21,8 +21,11 @@ export class Transmute extends SpellEffect {
     if(this.potency > 11) valuePercent = 30;
     if(this.potency > 21) valuePercent = 40;
 
-    if(caster.baseClass === 'Thief') valuePercent = Math.floor(valuePercent * 1.5);
-
+    if(caster.baseClass === 'Thief') {
+      valuePercent = Math.floor(valuePercent * 1.5);
+      valuePercent += caster.getTraitLevelAndUsageModifier('PhilosophersStone');
+    }
+    
     const groundItems = target.$$room.state.getGroundItems(target.x, target.y);
 
     let runningTotal = 0;
