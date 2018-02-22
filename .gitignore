@@ -66,3 +66,5 @@ nbproject/
 
 dist
 allsprites.json
+
+src/client/environments/_vars.ts

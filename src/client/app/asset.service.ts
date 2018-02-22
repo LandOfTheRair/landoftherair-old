@@ -18,31 +18,31 @@ export class AssetService {
   }
 
   get terrainUrl(): string {
-    return this.customURLs.terrain || `${this.assetUrl}/terrain.png`;
+    return this.customURLs.terrain || `${this.assetUrl}/terrain.png?c=${environment.assetHashes.terrain}`;
   }
 
   get wallsUrl(): string {
-    return this.customURLs.walls || `${this.assetUrl}/walls.png`;
+    return this.customURLs.walls || `${this.assetUrl}/walls.png?c=${environment.assetHashes.walls}`;
   }
 
   get decorUrl(): string {
-    return this.customURLs.decor || `${this.assetUrl}/decor.png`;
+    return this.customURLs.decor || `${this.assetUrl}/decor.png?c=${environment.assetHashes.decor}`;
   }
 
   get swimmingUrl(): string {
-    return this.customURLs.swimming || `${this.assetUrl}/swimming.png`;
+    return this.customURLs.swimming || `${this.assetUrl}/swimming.png?c=${environment.assetHashes.swimming}`;
   }
 
   get creaturesUrl(): string {
-    return this.customURLs.creatures || `${this.assetUrl}/creatures.png`;
+    return this.customURLs.creatures || `${this.assetUrl}/creatures.png?c=${environment.assetHashes.creatures}`;
   }
 
   get itemsUrl(): string {
-    return this.customURLs.items || `${this.assetUrl}/items.png`;
+    return this.customURLs.items || `${this.assetUrl}/items.png?c=${environment.assetHashes.items}`;
   }
 
   get effectsUrl(): string {
-    return this.customURLs.effects || `${this.assetUrl}/effects.png`;
+    return this.customURLs.effects || `${this.assetUrl}/effects.png?c=${environment.assetHashes.effects}`;
   }
 
   get customKeys(): string[] {

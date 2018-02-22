@@ -25,5 +25,14 @@ export const environment = {
   },
   stripe: {
     key: 'pk_test_TNxhxgcsao9B4ouQwRXeUnmm'
+  },
+  assetHashes: {
+    creatures: 0,
+    decor: 0,
+    effects: 0,
+    items: 0,
+    swimming: 0,
+    terrain: 0,
+    walls: 0
   }
 };

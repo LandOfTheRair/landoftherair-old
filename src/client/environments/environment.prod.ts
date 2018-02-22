@@ -1,3 +1,6 @@
+
+import { BUILDVARS } from './_vars';
+
 export const environment = {
   production: true,
   server: {
@@ -20,5 +23,6 @@ export const environment = {
   },
   stripe: {
     key: 'pk_live_dHe4YokXv14cVzmj38NYbqVU'
-  }
+  },
+  assetHashes: BUILDVARS
 };
