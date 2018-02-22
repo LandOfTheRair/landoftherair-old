@@ -21,7 +21,10 @@ export class AccountHelper {
   }
 
   static async saveAccount(account: Account) {
-    delete account.inGame;
-    return DB.$accounts.update({ userId: account.userId }, { $set: account });
+    return DB.$accounts.update({ userId: account.userId }, { $set: account.toSaveObject() });
+  }
+
+  static async doesDiscordTagExist(discordTag: string): Promise<boolean> {
+    return DB.$accounts.findOne({ discordTag });
   }
 }

@@ -108,10 +108,6 @@ export class ColyseusLobbyService {
     merge(this.myAccount, account);
   }
 
-  private setCharacters(characterNames: string[]) {
-    this.myAccount.characterNames = characterNames || [];
-  }
-
   private setCharacter(character) {
     this.myCharacter = character;
   }
@@ -148,7 +144,6 @@ export class ColyseusLobbyService {
     if(action === 'need_user_name') return this.getUserName();
     if(action === 'set_account')    return this.setAccount(other.account);
     if(action === 'set_character')  return this.setCharacter(other.character);
-    if(action === 'set_characters') return this.setCharacters(other.characters);
     if(action === 'start_game')     return this.startGame(other.character);
     if(action === 'force_logout')   return this.forceLogout();
   }
@@ -200,6 +195,10 @@ export class ColyseusLobbyService {
 
   public buySilver(purchaseInfo) {
     this.room.send({ action: 'rmbuy', purchaseInfo });
+  }
+
+  public updateDiscordTag(newTag: string) {
+    this.room.send({ action: 'discord_tag', newTag });
   }
 
   public doCommand(string): boolean {

@@ -199,6 +199,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   private imagesLoaded = 0;
 
+  public updateDiscordTag: string;
+
   get resourcesLoaded() {
     return {
       done: this.imagesLoaded >= this.assetService.preloadAssets.length,
@@ -644,6 +646,15 @@ export class AppComponent implements OnInit, AfterViewInit {
       email: this.colyseus.lobby.myAccount.email,
       description: item.silver ? `${item.silver.toLocaleString()} Silver` : `${item.duration} Month Subscription`
     });
+  }
+
+  updateMyStoredTag() {
+    this.updateDiscordTag = this.colyseus.lobby.myAccount.discordTag;
+  }
+
+  tryUpdateDiscordTag() {
+    const tag = this.updateDiscordTag;
+    this.colyseus.lobby.updateDiscordTag(tag);
   }
 
 }

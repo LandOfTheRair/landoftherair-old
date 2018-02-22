@@ -130,6 +130,7 @@ export class Lobby extends Room<LobbyState> {
     if(!account || !account.username || !account.userId) return;
 
     await SubscriptionHelper.checkAccountForExpiration(account);
+    DiscordHelper.activateTag(account, account.discordTag);
 
     const { email, emailVerified } = JWTHelper.extractEmailAndVerifiedStatusFromToken(idToken);
     account.email = email;
@@ -144,8 +145,8 @@ export class Lobby extends Room<LobbyState> {
 
     await DB.$players.update({ username: client.username }, { $set: { inGame: -1 } }, { multi: true });
 
-    this.send(client, { action: 'set_account', account });
-    this.send(client, { action: 'set_characters', characters: account.characterNames });
+    this.send(client, { action: 'set_account', account: account.toSaveObject() });
+    this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
   }
 
@@ -153,6 +154,7 @@ export class Lobby extends Room<LobbyState> {
     const account = this.state.findAccount(client.userId);
     if(!account) return;
     account.inGame = -1;
+    this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
   }
 
@@ -210,7 +212,7 @@ export class Lobby extends Room<LobbyState> {
     AccountHelper.saveAccount(account);
     account.inGame = -1;
 
-    this.send(client, { action: 'set_account', account });
+    this.send(client, { action: 'set_account', account: account.toSaveObject() });
 
     const stats = pick(character, ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'con', 'luk', 'cha']);
     const name = character.name;
@@ -293,6 +295,7 @@ export class Lobby extends Room<LobbyState> {
     account.inGame = charSlot;
 
     this.send(client, { action: 'start_game', character });
+    this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
   }
 
@@ -302,6 +305,12 @@ export class Lobby extends Room<LobbyState> {
 
   onLeave(client) {
     this.removeUsername(client.username);
+    this.state.updateHashes();
+    this.updateDiscordLobbyChannelUserCount();
+  }
+
+  onDispose() {
+    this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
   }
 
@@ -334,9 +343,63 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'purchase')        return this.purchase(client, data.item);
     if(data.action === 'festival')        return this.adjustFestival(client, data.args);
     if(data.action === 'rmbuy')           return this.rmBuy(client, data.purchaseInfo);
+    if(data.action === 'discord_tag')     return this.trySetDiscordTag(client, data.newTag);
     if(data.userId && data.accessToken)   return this.tryLogin(client, data);
     if(data.message)                      return this.sendMessage(client, data.message);
     if(data.characterCreator)             return this.viewCharacter(client, data);
+  }
+
+  private async trySetDiscordTag(client, newTag: string) {
+    const account = this.state.findAccount(client.userId);
+    if(!account) return;
+
+    if(newTag === account.discordTag) return;
+
+    if(!newTag) {
+      DiscordHelper.updateUserTag(account, account.discordTag, null);
+      account.discordTag = null;
+      AccountHelper.saveAccount(account);
+
+      this.send(client, {
+        error: 'discord_tag_unset',
+        popupType: 'success',
+        prettyErrorName: 'Tag Unset',
+        prettyErrorDesc: `Discord tag unset! Your roles have all been removed.`
+      });
+
+      return;
+    }
+
+    const doesExist = await AccountHelper.doesDiscordTagExist(newTag);
+    if(doesExist) {
+      this.send(client, {
+        error: 'discord_tag_in_use',
+        prettyErrorName: 'Tag In Use',
+        prettyErrorDesc: `Discord tag already in use by another user. Please select a unique discord tag.`
+      });
+      return;
+    }
+
+    const didWork = DiscordHelper.updateUserTag(account, account.discordTag, newTag);
+    if(!didWork) {
+      this.send(client, {
+        error: 'discord_tag_not_valid',
+        prettyErrorName: 'Tag Not Valid',
+        prettyErrorDesc: `Discord tag not valid. Please verify that you've entered it correctly.`
+      });
+      return;
+    }
+
+    account.discordTag = newTag;
+    AccountHelper.saveAccount(account);
+
+    this.send(client, {
+      error: 'discord_tag_valid',
+      popupType: 'success',
+      prettyErrorName: 'Tag Set',
+      prettyErrorDesc: `Discord tag set! You will now be marked as verified, and if you are a subscriber, you'll get access to the subscriber-only channel.`
+    });
+    return;
   }
 
   private async rmBuy(client, purchaseInfo) {
@@ -369,6 +432,8 @@ export class Lobby extends Room<LobbyState> {
         prettyErrorDesc: e.message
       });
     }
+
+    this.send(client, { action: 'set_account', account: account.toSaveObject() });
   }
 
   private adjustFestival(client, args: string) {
@@ -398,9 +463,11 @@ export class Lobby extends Room<LobbyState> {
       this.send(client, {
         error: 'couldnt_purchase',
         prettyErrorName: 'Purchase Failed',
-        prettyErrorDesc: 'The purchase didn\'t go through. Either you don\'t have enough silver, or something else went wrong. If this problem persists, contact a GM..'
+        prettyErrorDesc: 'The purchase didn\'t go through. Either you don\'t have enough silver, or something else went wrong. If this problem persists, contact a GM.'
       });
     }
+
+    this.send(client, { action: 'set_account', account: account.toSaveObject() });
   }
 
   public updateFestivalTime(account: Account, key: 'xpMult'|'skillMult'|'traitGainMult'|'goldMult', hours = 6): void {
@@ -438,10 +505,11 @@ export class Lobby extends Room<LobbyState> {
     const targetAccount = this.state.findAccountByUsername(account);
     if(!targetAccount) return;
 
-    SubscriptionHelper.startTrial(targetAccount, period);
+    await SubscriptionHelper.startTrial(targetAccount, period);
+    this.state.updateHashes();
   }
 
-  private handleUnsubscription(client, data) {
+  private async handleUnsubscription(client, data) {
     const gmAccount = this.state.findAccount(client.userId);
     if(!gmAccount || !gmAccount.isGM) return;
 
@@ -450,7 +518,8 @@ export class Lobby extends Room<LobbyState> {
     const targetAccount = this.state.findAccountByUsername(account);
     if(!targetAccount) return;
 
-    SubscriptionHelper.unsubscribe(targetAccount);
+    await SubscriptionHelper.unsubscribe(targetAccount);
+    this.state.updateHashes();
   }
 
   private addSystemMessage(message: string) {
@@ -486,10 +555,8 @@ export class Lobby extends Room<LobbyState> {
     if(!account) return;
 
     account.status = newStatus;
-    this.send(client, { action: 'set_account', account });
+    this.state.updateHashes();
   }
-
-  onDispose() {}
 
   // discord is optional
   private async startDiscord() {

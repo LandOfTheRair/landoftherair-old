@@ -1,8 +1,11 @@
 
 import * as Discord from 'discord.js';
 import { Logger } from '../logger';
+import { Account } from '../../shared/models/account';
 
 const DISCORD_WATCHER_ROLE_NAME = process.env.DISCORD_WATCHER_ROLE || 'Event Watcher';
+const DISCORD_VERIFIED_ROLE_NAME = process.env.DISCORD_VERIFIED_ROLE || 'Verified';
+const DISCORD_SUBSCRIBER_ROLE_NAME = process.env.DISCORD_SUBSCRIBER_ROLE || 'Subscriber';
 const DISCORD_BOT_NAME = process.env.DISCORD_BOT_NAME || 'LandOfTheRairLobby';
 
 export class DiscordHelper {
@@ -82,5 +85,49 @@ export class DiscordHelper {
     if(!DiscordHelper.discordChannel) return;
 
     (<any>DiscordHelper.discordChannel).setTopic(`${newUserCount} user(s) in lobby, ${inGameCount} player(s) in game`);
+  }
+
+  public static updateUserTag(account: Account, oldTag: string, newTag: string): boolean {
+    if(oldTag) DiscordHelper.deactivateTag(account, oldTag);
+    if(newTag) return DiscordHelper.activateTag(account, newTag);
+
+    return false;
+  }
+
+  private static getUserByTag(tag: string): Discord.GuildMember {
+    const user = this.discord.users.find(u => `${u.username}#${u.discriminator}` === tag);
+    if(!user) return null;
+
+    const guildMember = this.discordGuild.members.find('id', user.id);
+    return guildMember;
+  }
+
+  public static deactivateTag(account: Account, oldTag: string) {
+
+    const guildMember = this.getUserByTag(oldTag);
+    if(!guildMember) return;
+
+    [
+      DISCORD_VERIFIED_ROLE_NAME,
+      DISCORD_SUBSCRIBER_ROLE_NAME
+    ].forEach(role => {
+      guildMember.removeRole(this.discordGuild.roles.find('name', role));
+    });
+  }
+
+  public static activateTag(account: Account, newTag: string): boolean {
+
+    const guildMember = this.getUserByTag(newTag);
+    if(!guildMember) return false;
+
+    guildMember.addRole(this.discordGuild.roles.find('name', DISCORD_VERIFIED_ROLE_NAME));
+
+    if(account.subscriptionTier > 0) {
+      guildMember.addRole(this.discordGuild.roles.find('name', DISCORD_SUBSCRIBER_ROLE_NAME));
+    } else {
+      guildMember.removeRole(this.discordGuild.roles.find('name', DISCORD_SUBSCRIBER_ROLE_NAME));
+    }
+
+    return true;
   }
 }

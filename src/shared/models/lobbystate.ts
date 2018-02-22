@@ -25,13 +25,10 @@ export class LobbyState {
   @nonenumerable
   newMessage$ = new Subject<number>();
 
-  @nonenumerable
   inGame = {};
 
-  @nonenumerable
   status = {};
 
-  @nonenumerable
   subTier = {};
 
   constructor({ accounts = [], messages = [], motd = '' }) {
@@ -52,7 +49,9 @@ export class LobbyState {
     if(oldMessagesLength !== 0 && this.messages.length !== oldMessagesLength) {
       this.newMessage$.next(this.messages.length - oldMessagesLength);
     }
+  }
 
+  updateHashes() {
     this.accounts.forEach(account => {
       this.inGame[account.username] = account.inGame;
       this.status[account.username] = account.status;

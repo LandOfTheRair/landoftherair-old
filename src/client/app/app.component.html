@@ -11,6 +11,9 @@
 
         <ul *dropdownMenu class="dropdown-menu">
           <li *ngIf="colyseus.lobby.myAccount.username">
+            <a class="dropdown-item" (click)="myAccount.show()">My Account</a>
+          </li>
+          <li *ngIf="colyseus.lobby.myAccount.username">
             <a class="dropdown-item" (click)="gameSettings.show()">Current Events</a>
           </li>
           <li *ngIf="!inGame && colyseus.lobby.myAccount.username">
@@ -1300,6 +1303,50 @@
       <div class="modal-footer">
         <div></div>
         <button type="button" class="btn btn-default" (click)="gameSettings.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #myAccount="bs-modal" tabindex="-1" (onShow)="updateMyStoredTag()">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">My Account</h3>
+        <button type="button" class="close pull-right" (click)="myAccount.hide()">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body" *ngIf="myAccount.isShown">
+        <div class="row mt-3">
+          <div class="col-4 text-right font-weight-bold">Created</div>
+          <div class="col-8">{{ colyseus.lobby.myAccount.createdAt | date:'medium' }}</div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-4 text-right font-weight-bold">Email</div>
+          <div class="col-8">{{ colyseus.lobby.myAccount.email }}</div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-4 text-right font-weight-bold">Discord Tag</div>
+          <div class="col-8">
+            <div class="input-group mb-3">
+              <input class="form-control" [(ngModel)]="updateDiscordTag" placeholder="DiscordTag#0000" />
+              <div class="input-group-append">
+                <button class="btn btn-outline-primary no-border-radius-left" type="button" (click)="tryUpdateDiscordTag()">Update</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div></div>
+        <button type="button" class="btn btn-default" (click)="myAccount.hide()">Close</button>
       </div>
     </div>
   </div>

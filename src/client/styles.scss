@@ -117,6 +117,11 @@ body {
   border-radius: 0;
 }
 
+.no-border-radius-left {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
 .vertical-center {
   display: flex;
   align-items: center;
@@ -187,6 +192,10 @@ bs-modal-backdrop {
 
 popover-container {
   z-index: 5100 !important;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
