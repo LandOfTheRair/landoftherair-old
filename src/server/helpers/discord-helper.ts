@@ -89,7 +89,7 @@ export class DiscordHelper {
 
   public static updateUserTag(account: Account, oldTag: string, newTag: string): boolean {
     if(!this.discord) return;
-    
+
     if(oldTag) DiscordHelper.deactivateTag(account, oldTag);
     if(newTag) return DiscordHelper.activateTag(account, newTag);
 
