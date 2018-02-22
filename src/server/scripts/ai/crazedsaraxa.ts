@@ -47,6 +47,11 @@ const spawnAcolyte = async (npc: NPC, spawnId: number) => {
   const npcSpawner = npc.$$room.getSpawnerByName(`Acolyte Spawner ${spawnId}`);
   const acolyte = await npcSpawner.createNPC();
 
+  const rockySpawner = npc.$$room.getSpawnerByName('Crazed Saraxa Rocky Spawner');
+  if(!rockySpawner.hasAnyAlive()) {
+    rockySpawner.createNPC();
+  }
+
   if(!npc.hasEffect('AcolyteOverseer')) {
     const buff = new AcolyteOverseer({});
     buff.cast(npc);
