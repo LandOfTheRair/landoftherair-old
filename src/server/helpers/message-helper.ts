@@ -17,11 +17,11 @@ export class MessageHelper {
 
   static cleanMessage(message: any): string {
     if(message.message) {
-      message.message = censor.cleanProfanity(message.message);
+      message.message = censor.cleanProfanity(message.message || '');
       return message;
     }
 
-    return censor.cleanProfanity(message);
+    return censor.cleanProfanity(message || '');
   }
 
   static sendClientMessage(char: Character, message) {
