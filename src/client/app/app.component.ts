@@ -276,13 +276,26 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   private preloadAssets() {
     this.assetService.preloadAssets.forEach(asset => {
-      const preload = document.createElement('link');
-      preload.href = asset;
-      preload.rel = 'prefetch';
-      (<any>preload).as = 'image';
-      preload.onload = () => this.imageLoaded();
-      document.head.appendChild(preload);
+
+      // normally, fuck browser detection, but only chrome does this right???
+      if(includes(navigator.userAgent.toLowerCase())) {
+        const preload = document.createElement('link');
+        preload.href = asset;
+        preload.rel = 'prefetch';
+        (<any>preload).as = 'image';
+        preload.onload = () => this.imageLoaded();
+        document.head.appendChild(preload);
+
+      } else {
+        const img = document.createElement('img');
+        img.src = asset;
+        img.onload = () => this.imageLoaded();
+        img.classList.add('hidden');
+        document.body.appendChild(img);
+      }
+
     });
+
   }
 
   logout() {
