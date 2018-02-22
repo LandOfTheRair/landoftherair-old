@@ -8,7 +8,7 @@ import { ClientGameState } from '../clientgamestate';
 import { Player } from '../../../shared/models/player';
 import { Sex, Direction, Allegiance } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
-import { TrueSightMap, TrueSightMapReversed } from './phaserconversionmaps';
+import { TrueSightMap, TrueSightMapReversed, VerticalDoorGids } from './phaserconversionmaps';
 import { MapLayer } from '../../../shared/models/maplayer';
 
 const cacheKey = TiledPlugin.utils.cacheKey;
@@ -555,6 +555,10 @@ export class Game {
       if(door.isOpen) doorSprite.frame = doorSprite._baseFrame + 1;
       else            doorSprite.frame = doorSprite._baseFrame;
 
+      if(doorSprite._doorTopSprite) {
+        doorSprite._doorTopSprite.visible = door.isOpen;
+      }
+
       this.clientGameState.updates.openDoors[i] = null;
     });
 
@@ -589,6 +593,7 @@ export class Game {
   }
 
   private createLayers() {
+    
     this.groups.Decor = this.g.add.group();
     this.groups.DenseDecor = this.g.add.group();
     this.groups.OpaqueDecor = this.g.add.group();
@@ -734,6 +739,12 @@ export class Game {
             this.colyseus.game.currentCommand = obj.type === 'StairsUp' ? 'up' : 'down';
 
           });
+        }
+
+        if(obj.type === 'Door' && VerticalDoorGids[sprite._baseFrame]) {
+          const doorTopSprite = this.g.add.sprite(obj.x, obj.y - 128, cacheKey(this.clientGameState.mapName, 'tileset', tileSet), obj.gid - firstGid + 2);
+          doorTopSprite.visible = false;
+          sprite._doorTopSprite = doorTopSprite;
         }
 
         this.groups[layer.name].add(sprite);
