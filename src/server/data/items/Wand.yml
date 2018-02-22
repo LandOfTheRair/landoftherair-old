@@ -60,6 +60,7 @@
     level: 5
 
 - name: Crazed Saraxa Wand
+  quality: 5
   desc: "a crimson wand stained from over-exposure to ether mist"
   baseDamage: 1
   minDamage: 1
