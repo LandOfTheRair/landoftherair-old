@@ -89,8 +89,7 @@ export class Account {
       'colyseusId', 'createdAt', 'userId', 'email',
       'emailVerified', 'username', 'isGM', 'status',
       'characterNames', 'maxCharacters', 'subscriptionTier', 'trialEnds', 'hasDoneTrial',
-      'silver',' silverPurchases',
-
+      'silver', 'silverPurchases',
       'discordTag'
     ]);
 
