@@ -88,6 +88,8 @@ export class DiscordHelper {
   }
 
   public static updateUserTag(account: Account, oldTag: string, newTag: string): boolean {
+    if(!this.discord) return;
+    
     if(oldTag) DiscordHelper.deactivateTag(account, oldTag);
     if(newTag) return DiscordHelper.activateTag(account, newTag);
 
@@ -95,6 +97,8 @@ export class DiscordHelper {
   }
 
   private static getUserByTag(tag: string): Discord.GuildMember {
+    if(!this.discord) return null;
+
     const user = this.discord.users.find(u => `${u.username}#${u.discriminator}` === tag);
     if(!user) return null;
 
@@ -103,6 +107,7 @@ export class DiscordHelper {
   }
 
   public static deactivateTag(account: Account, oldTag: string) {
+    if(!this.discord) return;
 
     const guildMember = this.getUserByTag(oldTag);
     if(!guildMember) return;
@@ -116,6 +121,7 @@ export class DiscordHelper {
   }
 
   public static activateTag(account: Account, newTag: string): boolean {
+    if(!this.discord) return;
 
     const guildMember = this.getUserByTag(newTag);
     if(!guildMember) return false;
