@@ -16,10 +16,9 @@ import { ItemCreator } from '../helpers/item-creator';
 import { PartyArbiter } from '../helpers/party-arbiter';
 import { AccountHelper } from '../helpers/account-helper';
 import { AllSilverPurchases, SilverBuyTiers, SubscriptionHelper } from '../helpers/subscription-helper';
-import { Logger } from '../logger';
 import { BonusArbiter } from '../helpers/bonus-arbiter';
 import { MessageHelper } from '../helpers/message-helper';
-import { DiscordHelper } from 'server/helpers/discord-helper';
+import { DiscordHelper } from '../helpers/discord-helper';
 
 export class Lobby extends Room<LobbyState> {
 
@@ -34,7 +33,7 @@ export class Lobby extends Room<LobbyState> {
     return this.redis.client;
   }
 
-  onInit(opts) {
+  async onInit(opts) {
     this.redis = new Redis();
 
     this.setPatchRate(250);
@@ -52,7 +51,8 @@ export class Lobby extends Room<LobbyState> {
     this.state.silverPurchases = AllSilverPurchases;
     this.state.silverPrices = SilverBuyTiers;
 
-    this.startDiscord();
+    await this.startDiscord();
+    this.updateDiscordLobbyChannelUserCount();
   }
 
   private async createAccount({ userId, username }): Promise<Account> {
@@ -153,6 +153,7 @@ export class Lobby extends Room<LobbyState> {
     const account = this.state.findAccount(client.userId);
     if(!account) return;
     account.inGame = -1;
+    this.updateDiscordLobbyChannelUserCount();
   }
 
   private logout(client) {
@@ -292,6 +293,7 @@ export class Lobby extends Room<LobbyState> {
     account.inGame = charSlot;
 
     this.send(client, { action: 'start_game', character });
+    this.updateDiscordLobbyChannelUserCount();
   }
 
   onJoin(client, options) {
@@ -509,6 +511,6 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private updateDiscordLobbyChannelUserCount() {
-    DiscordHelper.updateUserCount(this.state.accounts.length);
+    DiscordHelper.updateUserCount(this.state.accounts.length, this.state.accounts.filter(acc => acc.inGame >= 0).length);
   }
 }

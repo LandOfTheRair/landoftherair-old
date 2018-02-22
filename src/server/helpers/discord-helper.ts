@@ -78,9 +78,9 @@ export class DiscordHelper {
     DiscordHelper.discordChannel.send(`${role}, ${message}`);
   }
 
-  public static updateUserCount(newUserCount: number) {
+  public static updateUserCount(newUserCount: number, inGameCount: number) {
     if(!DiscordHelper.discordChannel) return;
 
-    (<any>DiscordHelper.discordChannel).setTopic(`${newUserCount} users in lobby`);
+    (<any>DiscordHelper.discordChannel).setTopic(`${newUserCount} user(s) in lobby, ${inGameCount} player(s) in game`);
   }
 }
