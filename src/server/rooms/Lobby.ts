@@ -62,7 +62,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private async tryLogin(client, { userId, username, idToken }) {
-
+    
     if(process.env.AUTH0_JWKS_URI) {
       const isValidRS256Token = await JWTHelper.verifyRS256Token(idToken);
 

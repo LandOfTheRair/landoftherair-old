@@ -17,7 +17,7 @@ export class AccountHelper {
   }
 
   static async createAccount(account: Account) {
-    return DB.$accounts.insert(account);
+    return DB.$accounts.insert(account.toSaveObject());
   }
 
   static async saveAccount(account: Account) {
