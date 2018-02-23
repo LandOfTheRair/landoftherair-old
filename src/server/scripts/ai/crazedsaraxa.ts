@@ -13,7 +13,7 @@ class AcolyteOverseer extends SpellEffect {
     name: 'ages',
     bgColor: '#a06',
     color: '#fff',
-    tooltipDesc: 'Receiving 2% healing per acolyte every 5 seconds.'
+    tooltipDesc: 'Receiving 4% healing per acolyte every 5 seconds.'
   };
 
   private ticks: number = 0;
@@ -29,7 +29,7 @@ class AcolyteOverseer extends SpellEffect {
     const livingAcolytes = filter(acolytes, ac => ac && !ac.isDead());
     if(livingAcolytes.length > 0) {
       if(this.ticks % 5 !== 0) return;
-      char.hp.add(char.hp.maximum * 0.02 * livingAcolytes.length);
+      char.hp.add(char.hp.maximum * 0.04 * livingAcolytes.length);
       return;
     }
 
