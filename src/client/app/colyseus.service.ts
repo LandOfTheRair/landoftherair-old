@@ -49,7 +49,7 @@ export class ColyseusService {
     stats:                      { x: 389,  y: 96 },
     skills:                     { x: 389,  y: 96 },
     tradeSkills:                { x: 389,  y: 96 },
-    commandLine:                { x: 389,  y: 848 },
+    commandLine:                { x: 389,  y: 844 },
     log:                        { x: 3,    y: 365 },
     status:                     { x: 389,  y: 743 },
     ground:                     { x: 3,    y: 625 },

@@ -67,12 +67,14 @@ import { TraitsComponent } from './traits/traits.component';
 import { TradeskillAlchemyComponent } from './tradeskill-alchemy/tradeskill-alchemy.component';
 import { TradeskillSpellforgingComponent } from './tradeskill-spellforging/tradeskill-spellforging.component';
 import { InventoryPouchComponent } from './inventory-pouch/inventory-pouch.component';
+import { NavbarComponent } from './app.navbar.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     LobbyComponent,
 
     LinkifyPipe,

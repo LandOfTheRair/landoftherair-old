@@ -68,6 +68,10 @@
     max-width: 387px;
     min-width: 387px;
 
+    &.small {
+      font-size: 100% !important;
+    }
+
     &.max {
       min-height: calc(100% - 56px);
       max-height: calc(100% - 56px);
@@ -136,6 +140,10 @@
   &.npcs {
     max-width: 387px;
     min-width: 387px;
+
+    &.small {
+      font-size: 100% !important;
+    }
 
     &.max {
       min-height: calc(100% - 56px);

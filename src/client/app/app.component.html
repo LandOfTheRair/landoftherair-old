@@ -1,118 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-faded">
-  <a class="navbar-brand" href="#">
-    <span>Land of the Rair</span>
-    <span *ngIf="colyseus.lobby.myAccount.username">- {{ colyseus.lobby.myAccount.username }}</span>
-  </a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <li class="nav-item" dropdown container="body">
-        <a class="nav-link" href="#" dropdownToggle>Game {{ colyseus.isConnected ? '' : '(Disconnected)' }}</a>
-
-        <ul *dropdownMenu class="dropdown-menu">
-          <li *ngIf="colyseus.lobby.myAccount.username">
-            <a class="dropdown-item" (click)="myAccount.show()">My Account</a>
-          </li>
-          <li *ngIf="colyseus.lobby.myAccount.username">
-            <a class="dropdown-item" (click)="gameSettings.show()">Current Events</a>
-          </li>
-          <li *ngIf="!inGame && colyseus.lobby.myAccount.username">
-            <a class="dropdown-item" (click)="silverModal.show()">Manage Silver</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item" (click)="colyseus.game.quit()">Quit To Lobby</a>
-          </li>
-          <li>
-            <a class="dropdown-item" (click)="logout()">Logout</a>
-          </li>
-        </ul>
-
-      </li>
-    </ul>
-
-    <ul class="navbar-nav">
-      <li class="nav-item" *ngIf="colyseus.lobby.myAccount.username" dropdown container="body">
-        <a class="nav-link" href="#" dropdownToggle>Windows</a>
-
-        <ul *dropdownMenu class="dropdown-menu">
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showStatsWindow = !showStatsWindow; activeWindow = 'stats'">Stats</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showSkillsWindow = !showSkillsWindow; activeWindow = 'skills'">Skills</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showTradeSkillsWindow = !showTradeSkillsWindow; activeWindow = 'tradeSkills'">Trade Skills</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showCommandLine = !showCommandLine; activeWindow = 'cmd'">Command Line</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showInventoryBelt = !showInventoryBelt; activeWindow = 'belt'">Belt</a>
-          </li>
-          <li *ngIf="inGame && hasPouch">
-            <a class="dropdown-item"
-               (click)="showInventoryPouch = !showInventoryPouch; activeWindow = 'pouch'">Pouch</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showInventorySack = !showInventorySack; activeWindow = 'sack'">Sack</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showEquipment = !showEquipment; activeWindow = 'equipment'">Equipment</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showParty = !showParty; activeWindow = 'party'">Party</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showTraits = !showTraits; activeWindow = 'traits'">Traits</a>
-          </li>
-          <li class="divider dropdown-divider" *ngIf="inGame"></li>
-          <li>
-            <a class="dropdown-item" (click)="options.show()">Options</a>
-          </li>
-          <li>
-            <a class="dropdown-item" (click)="debugOptions.show()">Debug Options</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item" (click)="cleanupWindows()">Clean Up Windows</a>
-          </li>
-        </ul>
-
-      </li>
-    </ul>
-
-    <ul class="navbar-nav mr-auto" *ngIf="inGame">
-      <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
-        <a class="nav-link" href="#" dropdownToggle>Macros</a>
-
-        <ul *dropdownMenu class="dropdown-menu">
-          <li>
-            <a class="dropdown-item" (click)="macros.show()">Macros</a>
-          </li>
-          <li>
-            <a class="dropdown-item" (click)="macroGroups.show()">Macro Groups</a>
-          </li>
-        </ul>
-
-      </li>
-    </ul>
-
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Daily Reset in {{ timestampDisplay }}</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<app-navbar [myAccount]="myAccount"
+            [gameSettings]="gameSettings"
+            [silverModal]="silverModal"
+            [options]="options"
+            [debugOptions]="debugOptions"
+            [macros]="macros"
+            [macroGroups]="macroGroups"
+            (openWindow)="menuOpenWindow($event)"
+            (cleanup)="cleanupWindows()"
+></app-navbar>
 
 <div class="body-container">
 
