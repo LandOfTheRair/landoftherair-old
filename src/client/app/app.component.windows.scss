@@ -59,7 +59,7 @@
     max-width: 578px;
   }
 
-  &.macro-bars {
+  &.macros {
     min-width: 578px;
     max-width: 578px;
   }
@@ -118,7 +118,7 @@
     }
   }
 
-  &.sack, &.belt, &.pouch, &.equipment, &.equipment-viewonly {
+  &.sack, &.belt, &.pouch, &.equipment, &.equipment-view-only {
     min-width: 351px;
     max-width: 351px;
 
@@ -133,36 +133,13 @@
     }
   }
 
-  &.npc-window {
+  &.npcs {
     max-width: 387px;
     min-width: 387px;
-
-    min-height: 310px;
-    max-height: 310px;
 
     &.max {
       min-height: calc(100% - 56px);
       max-height: calc(100% - 56px);
-    }
-
-    &.xlarge {
-      min-height: 526px;
-      max-height: 526px;
-    }
-
-    &.large {
-      min-height: 418px;
-      max-height: 418px;
-    }
-
-    &.small {
-      min-height: 202px;
-      max-height: 202px;
-    }
-
-    &.xsmall {
-      min-height: 94px;
-      max-height: 94px;
     }
   }
 
@@ -212,7 +189,7 @@
     z-index: 1000;
   }
 
-  &.trade-skill {
+  &.tradeskill {
     min-width: 525px;
     max-width: 525px;
 

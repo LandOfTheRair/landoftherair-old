@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 import { compact, find, pull, findIndex, sortBy, cloneDeep } from 'lodash';
@@ -13,6 +13,9 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./npcs.component.scss']
 })
 export class NpcsComponent implements OnInit, OnDestroy {
+
+  @Input()
+  public windowSize;
 
   private pinOption$: any;
 
