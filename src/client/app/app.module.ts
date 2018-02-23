@@ -35,6 +35,7 @@ import { IconComponent } from './_shared/icon.component';
 import { SkillIconComponent } from './_shared/skill-icon.component';
 import { StatusEffectComponent } from './_shared/status-effect.component';
 import { LogMessageComponent } from './_shared/log-message.component';
+import { WindowComponent } from './_shared/window.component';
 import { NpcCardComponent } from './npcs/npccard.component';
 
 import { LobbyComponent } from './lobby/lobby.component';
@@ -94,6 +95,7 @@ import { InventoryPouchComponent } from './inventory-pouch/inventory-pouch.compo
     SkillIconComponent,
     StatusEffectComponent,
     LogMessageComponent,
+    WindowComponent,
     NpcCardComponent,
 
     LogWindowComponent,

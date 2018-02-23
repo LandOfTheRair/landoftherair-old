@@ -64,7 +64,7 @@
     max-width: 578px;
   }
 
-  &.log-window {
+  &.log {
     max-width: 387px;
     min-width: 387px;
 
@@ -74,7 +74,7 @@
     }
   }
 
-  &.status-window {
+  &.status {
     min-width: 578px;
 
     .window-body {
@@ -83,7 +83,7 @@
     }
   }
 
-  &.ground-window {
+  &.ground {
     min-width: 387px;
     max-width: 387px;
 
@@ -118,7 +118,7 @@
     }
   }
 
-  &.inventory-sack-window, &.inventory-belt-window, &.inventory-pouch-window, &.equipment-window, &.equipment-viewonly-window {
+  &.sack, &.belt, &.pouch, &.equipment, &.equipment-viewonly {
     min-width: 351px;
     max-width: 351px;
 
