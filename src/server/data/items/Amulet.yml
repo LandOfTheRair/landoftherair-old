@@ -70,8 +70,8 @@
     int: 1
     wis: 1
     defense: 3
-    magicalDamageBoost: 50
-    healingBoost: 75
+    magicalDamageBoost: 40
+    healingBoost: 65
     mp: 50
   binds: true
   tellsBind: true
@@ -81,7 +81,7 @@
 
   trait:
     name: MagicFocus
-    level: 3
+    level: 2
 
   requirements:
     level: 15
