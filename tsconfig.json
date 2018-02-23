@@ -23,7 +23,6 @@
   "exclude": [
     "node_modules",
     "dist",
-    "client",
-    "src/client/environments/_vars.ts"
+    "client"
   ]
 }

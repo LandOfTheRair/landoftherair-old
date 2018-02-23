@@ -41,7 +41,10 @@
   ],
   "lint": [
     {
-      "project": "src/client/tsconfig.app.json"
+      "project": "src/client/tsconfig.app.json",
+      "exclude": [
+        "**/*/_vars.ts"
+      ]
     }
   ],
   "defaults": {
