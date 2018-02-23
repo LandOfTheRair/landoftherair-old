@@ -8,11 +8,9 @@ import { MacroService, Macro } from './macros.service';
 
 import * as macicons from '../macicons/macicons.json';
 
-import { DateTime } from 'luxon';
 import { includes, isNull, cloneDeep, get } from 'lodash';
 import { AuthService } from './auth.service';
 import { AssetService } from './asset.service';
-import { Observable } from 'rxjs/Observable';
 import { SilverPurchase } from '../../shared/models/account';
 
 import { environment } from '../environments/environment';
@@ -155,35 +153,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   @LocalStorage()
   public playSoundEffects: boolean;
 
-  public windowLocations: any = {
-    Lobby: null,
-    CharacterSelect: null,
-    Map: null,
-    Stats: null,
-    Skills: null,
-    TradeSkills: null,
-    CommandLine: null,
-    Log: null,
-    Status: null,
-    Ground: null,
-    Sack: null,
-    Belt: null,
-    Pouch: null,
-    Equipment: null,
-    EquipmentViewOnly: null,
-    NPCs: null,
-    Macros: null,
-    Trainer: null,
-    Shop: null,
-    Bank: null,
-    Locker: null,
-    Party: null,
-    Traits: null,
-    TradeskillAlchemy: null,
-    TradeskillSpellforging: null
-  };
-
   public newMessages = 0;
+
+  get windowLocations() {
+    return this.colyseus.windowLocations;
+  }
 
   get loggedIn() {
     return this.colyseus.lobby.myAccount;
@@ -208,10 +182,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       total: this.assetService.preloadAssets.length
     };
   }
-
-  public resetTimestamp: number;
-  public nowTimestamp: number;
-  public timestampDisplay: string;
 
   get stripeKey(): string {
     return environment.stripe.key;
@@ -271,8 +241,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.watchOptions();
 
-    this.watchResetTime();
-
     this.preloadAssets();
   }
 
@@ -298,49 +266,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     });
 
-  }
-
-  logout() {
-    (<any>swal)({
-      titleText: `Log Out`,
-      text: `Are you sure you want to log out?`,
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, logout!'
-    }).then(() => {
-      this.colyseus.lobby.logout();
-
-    }).catch(() => {});
-  }
-
-  private watchResetTime() {
-
-    const setResetTimestamp = () => {
-      let theoreticalResetTime = DateTime.fromObject({ zone: 'utc', hour: 12 });
-      if(+theoreticalResetTime < DateTime.fromObject({ zone: 'utc' })) {
-        theoreticalResetTime = theoreticalResetTime.plus({ days: 1 });
-      }
-
-      this.resetTimestamp = +theoreticalResetTime;
-    };
-
-    const formatTimestring = () => {
-      const diff = (this.resetTimestamp - this.nowTimestamp) / 1000;
-      const hours = Math.floor((diff / 60) / 60) % 60;
-      const minutes = Math.floor((diff / 60)) % 60;
-
-      this.timestampDisplay = `${hours > 0 ? hours + 'h' : ''}${minutes}m`;
-    };
-
-    setResetTimestamp();
-    formatTimestring();
-
-    Observable.timer(0, 60000)
-      .subscribe(() => {
-        this.nowTimestamp = +DateTime.fromObject({ zone: 'utc' });
-        if(this.nowTimestamp > this.resetTimestamp) setResetTimestamp();
-        formatTimestring();
-      });
   }
 
   imageLoaded() {
@@ -574,8 +499,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   public cleanupWindows() {
     this.lockWindowPositions = false;
 
-    Object.keys(this.windowLocations).forEach((key, index) => {
-      this.windowLocations[key] = { x: index * 30, y: index * 56 };
+    Object.keys(this.windowLocations).forEach((key) => {
+      this.windowLocations[key] = this.colyseus.defaultWindowLocations[key];
+    });
+  }
+
+  menuOpenWindow({ window, key }) {
+    this[key] = !this[key];
+
+    setTimeout(() => {
+      this.setActiveWindow(window);
     });
   }
 
@@ -586,7 +519,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.newMessages = 0;
     }
 
-    if(win !== 'cmd' && win !== 'lobby') {
+    if(win !== 'commandLine' && win !== 'lobby') {
       (<HTMLElement>document.activeElement).blur();
     }
   }

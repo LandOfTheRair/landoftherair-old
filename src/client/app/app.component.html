@@ -1,118 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-faded">
-  <a class="navbar-brand" href="#">
-    <span>Land of the Rair</span>
-    <span *ngIf="colyseus.lobby.myAccount.username">- {{ colyseus.lobby.myAccount.username }}</span>
-  </a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <li class="nav-item" dropdown container="body">
-        <a class="nav-link" href="#" dropdownToggle>Game {{ colyseus.isConnected ? '' : '(Disconnected)' }}</a>
-
-        <ul *dropdownMenu class="dropdown-menu">
-          <li *ngIf="colyseus.lobby.myAccount.username">
-            <a class="dropdown-item" (click)="myAccount.show()">My Account</a>
-          </li>
-          <li *ngIf="colyseus.lobby.myAccount.username">
-            <a class="dropdown-item" (click)="gameSettings.show()">Current Events</a>
-          </li>
-          <li *ngIf="!inGame && colyseus.lobby.myAccount.username">
-            <a class="dropdown-item" (click)="silverModal.show()">Manage Silver</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item" (click)="colyseus.game.quit()">Quit To Lobby</a>
-          </li>
-          <li>
-            <a class="dropdown-item" (click)="logout()">Logout</a>
-          </li>
-        </ul>
-
-      </li>
-    </ul>
-
-    <ul class="navbar-nav">
-      <li class="nav-item" *ngIf="colyseus.lobby.myAccount.username" dropdown container="body">
-        <a class="nav-link" href="#" dropdownToggle>Windows</a>
-
-        <ul *dropdownMenu class="dropdown-menu">
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showStatsWindow = !showStatsWindow; activeWindow = 'stats'">Stats</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showSkillsWindow = !showSkillsWindow; activeWindow = 'skills'">Skills</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showTradeSkillsWindow = !showTradeSkillsWindow; activeWindow = 'tradeSkills'">Trade Skills</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showCommandLine = !showCommandLine; activeWindow = 'cmd'">Command Line</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showInventoryBelt = !showInventoryBelt; activeWindow = 'belt'">Belt</a>
-          </li>
-          <li *ngIf="inGame && hasPouch">
-            <a class="dropdown-item"
-               (click)="showInventoryPouch = !showInventoryPouch; activeWindow = 'pouch'">Pouch</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showInventorySack = !showInventorySack; activeWindow = 'sack'">Sack</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showEquipment = !showEquipment; activeWindow = 'equipment'">Equipment</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showParty = !showParty; activeWindow = 'party'">Party</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item"
-               (click)="showTraits = !showTraits; activeWindow = 'traits'">Traits</a>
-          </li>
-          <li class="divider dropdown-divider" *ngIf="inGame"></li>
-          <li>
-            <a class="dropdown-item" (click)="options.show()">Options</a>
-          </li>
-          <li>
-            <a class="dropdown-item" (click)="debugOptions.show()">Debug Options</a>
-          </li>
-          <li *ngIf="inGame">
-            <a class="dropdown-item" (click)="cleanupWindows()">Clean Up Windows</a>
-          </li>
-        </ul>
-
-      </li>
-    </ul>
-
-    <ul class="navbar-nav mr-auto" *ngIf="inGame">
-      <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
-        <a class="nav-link" href="#" dropdownToggle>Macros</a>
-
-        <ul *dropdownMenu class="dropdown-menu">
-          <li>
-            <a class="dropdown-item" (click)="macros.show()">Macros</a>
-          </li>
-          <li>
-            <a class="dropdown-item" (click)="macroGroups.show()">Macro Groups</a>
-          </li>
-        </ul>
-
-      </li>
-    </ul>
-
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Daily Reset in {{ timestampDisplay }}</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<app-navbar [myAccount]="myAccount"
+            [gameSettings]="gameSettings"
+            [silverModal]="silverModal"
+            [options]="options"
+            [debugOptions]="debugOptions"
+            [macros]="macros"
+            [macroGroups]="macroGroups"
+            (openWindow)="menuOpenWindow($event)"
+            (cleanup)="cleanupWindows()"
+></app-navbar>
 
 <div class="body-container">
 
@@ -123,485 +18,450 @@
   </div>
 
   <!-- LOBBY WINDOWS -->
-  <div class="window lobby game-window"
-       [class.active-window]="activeWindow === 'lobby'"
-       (click)="setActiveWindow('lobby')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="lobbyDrag"
-       [windowLocation]="windowLocations.Lobby"
-       windowName="lobby"
-       defaultX="299"
-       defaultY="55"
-       [class.minimized]="minimized['lobby']"
-       [class.hidden]="!loggedIn || !colyseus.username || !colyseus.isConnected || (inGame && autoHideLobby)">
-    <div class="window-header text-center" #lobbyDrag>
-      Lobby Chat ({{ colyseus.lobby.lobbyState.accounts.length }} Online<span *ngIf="colyseus.isDiscordConnected"> - Discord Connected</span>)
-      <em *ngIf="newMessages > 0"> *{{ newMessages }} new message<span *ngIf="newMessages > 1">s</span>!</em>
-      <app-minimize-button (click)="minimize('lobby')"></app-minimize-button>
-    </div>
-    <div class="window-body" [class.hidden]="minimized['lobby']">
-      <app-lobby></app-lobby>
-    </div>
-  </div>
+  <app-window windowName="characterSelect"
+              [hidden]="!loggedIn || inGame || !colyseus.username || !colyseus.isConnected"
+              [headTemplate]="charSelectHead"
+              [bodyTemplate]="charSelectBody"
+  ></app-window>
 
-  <div class="window character-select"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="characterSelectDrag"
-       windowName="chararacterSelect"
-       [windowLocation]="windowLocations.CharacterSelect"
-       defaultX="0"
-       defaultY="55"
-       [class.hidden]="!loggedIn || inGame || !colyseus.username || !colyseus.isConnected">
-    <div class="window-header text-center" #characterSelectDrag>Character Select</div>
-    <div class="window-body">
-      <app-character-select [resourcesLoaded]="resourcesLoaded"></app-character-select>
-    </div>
-  </div>
+  <ng-template #charSelectHead>
+    Character Select
+  </ng-template>
+
+  <ng-template #charSelectBody>
+    <app-character-select [resourcesLoaded]="resourcesLoaded"></app-character-select>
+  </ng-template>
+
+  <app-window windowName="lobby"
+              otherWindowClasses="game-window"
+              (active)="setActiveWindow($event)"
+              [hidden]="!loggedIn || !colyseus.username || !colyseus.isConnected || (inGame && autoHideLobby)"
+              [canMinimize]="true"
+              (minimize)="minimize($event)"
+              [minimized]="minimized.lobby"
+              [headTemplate]="lobbyHead"
+              [bodyTemplate]="lobbyBody"
+  ></app-window>
+
+  <ng-template #lobbyHead>
+    Lobby Chat ({{ colyseus.lobby.lobbyState.accounts.length }} Online<span *ngIf="colyseus.isDiscordConnected"> - Discord Connected</span>)
+    <em *ngIf="newMessages > 0"> *{{ newMessages }} new message<span *ngIf="newMessages > 1">s</span>!</em>
+  </ng-template>
+
+  <ng-template #lobbyBody>
+    <app-lobby></app-lobby>
+  </ng-template>
 
   <!-- GAME WINDOWS -->
-  <div class="window map"
-       [class.active-window]="activeWindow === 'map'"
-       (click)="setActiveWindow('map')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="mapDrag"
-       windowName="map"
-       [windowLocation]="windowLocations.Map"
-       defaultX="389"
-       defaultY="56"
-       *ngIf="inGame">
-    <div class="window-header text-center" #mapDrag>
-      World
-      <app-close-button (click)="colyseus.game.quit()"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-active-target *ngIf="showActiveTarget"></app-active-target>
-      <app-map [class.hidden]="colyseus.game.isChangingMap"></app-map>
-    </div>
-  </div>
+  <app-window *ngIf="inGame"
+              windowName="map"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.quit()"
+              [headTemplate]="mapHead"
+              [bodyTemplate]="mapBody"
+  ></app-window>
 
-  <div class="window stats above-game-window"
-       [class.active-window]="activeWindow === 'stats'"
-       (click)="setActiveWindow('stats')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="statsDrag"
-       windowName="stats"
-       [windowLocation]="windowLocations.Stats"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && showStatsWindow">
-    <div class="window-header text-center" #statsDrag>
-      Stats
-      <app-close-button (click)="showStatsWindow = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-stats-window [currentPlayer]="colyseus.game.character"></app-stats-window>
-    </div>
-  </div>
+  <ng-template #mapHead>
+    World
+  </ng-template>
 
-  <div class="window skills above-game-window"
-       [class.active-window]="activeWindow === 'skills'"
-       (click)="setActiveWindow('skills')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="skillsDrag"
-       windowName="skills"
-       [windowLocation]="windowLocations.Skills"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && showSkillsWindow">
-    <div class="window-header text-center" #skillsDrag>
-      Skills
-      <app-close-button (click)="showSkillsWindow = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-skills-window [currentPlayer]="colyseus.game.character"></app-skills-window>
-    </div>
-  </div>
+  <ng-template #mapBody>
+    <app-active-target *ngIf="showActiveTarget"></app-active-target>
+    <app-map [class.hidden]="colyseus.game.isChangingMap"></app-map>
+  </ng-template>
 
-  <div class="window skills above-game-window"
-       [class.active-window]="activeWindow === 'tradeSkills'"
-       (click)="setActiveWindow('tradeSkills')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="tradeSkillsDrag"
-       windowName="tradeSkills"
-       [windowLocation]="windowLocations.TradeSkills"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && showTradeSkillsWindow">
-    <div class="window-header text-center" #tradeSkillsDrag>
-      Trade Skills
-      <app-close-button (click)="showTradeSkillsWindow = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-tradeskills-window [currentPlayer]="colyseus.game.character"></app-tradeskills-window>
-    </div>
-  </div>
+  <app-window *ngIf="inGame && showStatsWindow"
+              windowName="stats"
+              otherWindowClasses="above-game-window"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showStatsWindow = false"
+              [headTemplate]="statsHead"
+              [bodyTemplate]="statsBody"
+  ></app-window>
 
-  <div class="window command-line game-window"
-       [class.active-window]="activeWindow === 'cmd'"
-       (click)="setActiveWindow('cmd')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="commandLine"
-       windowName="commandLine"
-       [windowLocation]="windowLocations.CommandLine"
-       defaultX="389"
-       defaultY="848"
-       *ngIf="inGame && showCommandLine">
-    <div class="window-header text-center" #commandLine>
-      Command Line
-      <app-close-button (click)="showCommandLine = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-command-line [rightClickSend]="rightClickSend"></app-command-line>
-    </div>
-  </div>
+  <ng-template #statsHead>
+    Stats
+  </ng-template>
 
-  <div class="window log-window game-window"
-       [class.active-window]="activeWindow === 'log'"
-       (click)="setActiveWindow('log')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [ngClass]="[logWindowSize]"
-       [windowHandle]="logWindow"
-       windowName="logWindow"
-       [windowLocation]="windowLocations.Log"
-       defaultX="3"
-       defaultY="365"
-       *ngIf="inGame">
-    <div class="window-header text-center" #logWindow>
-      Log
-    </div>
-    <div class="window-body">
-      <app-log-window [windowSize]="logWindowSize"
-                      [fontSize]="logFontSize"></app-log-window>
-    </div>
-  </div>
+  <ng-template #statsBody>
+    <app-stats-window [currentPlayer]="colyseus.game.character"></app-stats-window>
+  </ng-template>
 
-  <div class="window status-window game-window"
-       [class.active-window]="activeWindow === 'status'"
-       (click)="setActiveWindow('status')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="statusWindow"
-       windowName="statusWindow"
-       [windowLocation]="windowLocations.Status"
-       defaultX="389"
-       defaultY="743"
-       [class.minimized]="minimized['status']"
-       *ngIf="inGame">
-    <div class="window-header text-center" #statusWindow>
-      <app-character-tagline [player]="colyseus.game.character"></app-character-tagline>
-      <app-minimize-button (click)="minimize('status')"></app-minimize-button>
-    </div>
-    <div class="window-body" [class.hidden]="minimized['status']">
-      <app-status-window></app-status-window>
-    </div>
-  </div>
+  <app-window *ngIf="inGame && showSkillsWindow"
+              windowName="skills"
+              otherWindowClasses="above-game-window"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showSkillsWindow = false"
+              [headTemplate]="skillsHead"
+              [bodyTemplate]="skillsBody"
+  ></app-window>
 
-  <div class="window ground-window game-window"
-       [class.active-window]="activeWindow === 'ground'"
-       (click)="setActiveWindow('ground')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [ngClass]="[groundSize]"
-       [windowHandle]="groundWindow"
-       windowName="groundWindow"
-       [windowLocation]="windowLocations.Ground"
-       defaultX="3"
-       defaultY="625"
-       *ngIf="inGame && colyseus.game.showGround">
-    <div class="window-header text-center" #groundWindow>
-      Ground
-      <app-close-button (click)="colyseus.game.showGround = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-ground [size]="groundSize"></app-ground>
-    </div>
-  </div>
+  <ng-template #skillsHead>
+    Skills
+  </ng-template>
 
-  <div class="window inventory-sack-window game-window"
-       [class.active-window]="activeWindow === 'sack'"
-       (click)="setActiveWindow('sack')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [ngClass]="[sackSize]"
-       [windowHandle]="sackWindow"
-       windowName="sackWindow"
-       [windowLocation]="windowLocations.Sack"
-       defaultX="966"
-       defaultY="538"
-       *ngIf="inGame && showInventorySack">
-    <div class="window-header text-center" #sackWindow>
-      Inventory - Sack
-      <app-close-button (click)="showInventorySack = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-inventory-sack [size]="sackSize"></app-inventory-sack>
-    </div>
-  </div>
+  <ng-template #skillsBody>
+    <app-skills-window [currentPlayer]="colyseus.game.character"></app-skills-window>
+  </ng-template>
 
-  <div class="window inventory-belt-window game-window"
-       [class.active-window]="activeWindow === 'belt'"
-       (click)="setActiveWindow('belt')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [ngClass]="[beltSize]"
-       [windowHandle]="beltWindow"
-       windowName="beltWindow"
-       [windowLocation]="windowLocations.Belt"
-       defaultX="966"
-       defaultY="433"
-       *ngIf="inGame && showInventoryBelt">
-    <div class="window-header text-center" #beltWindow>
-      Inventory - Belt
-      <app-close-button (click)="showInventoryBelt = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-inventory-belt [size]="beltSize"></app-inventory-belt>
-    </div>
-  </div>
+  <app-window *ngIf="inGame && showTradeSkillsWindow"
+              windowName="tradeSkills"
+              otherWindowClasses="above-game-window"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showTradeSkillsWindow = false"
+              [headTemplate]="tradeSkillsHead"
+              [bodyTemplate]="tradeSkillsBody"
+  ></app-window>
 
-  <div class="window inventory-pouch-window game-window"
-       [class.active-window]="activeWindow === 'pouch'"
-       (click)="setActiveWindow('pouch')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [ngClass]="[pouchSize]"
-       [windowHandle]="pouchWindow"
-       windowName="pouchWindow"
-       [windowLocation]="windowLocations.Pouch"
-       defaultX="966"
-       defaultY="433"
-       *ngIf="inGame && showInventoryPouch && hasPouch">
-    <div class="window-header text-center" #pouchWindow>
-      Inventory - Demi-Magic Pouch
-      <app-close-button (click)="showInventoryPouch = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-inventory-pouch [size]="pouchSize"></app-inventory-pouch>
-    </div>
-  </div>
+  <ng-template #tradeSkillsHead>
+    Trade Skills
+  </ng-template>
 
-  <div class="window equipment-window game-window"
-       [class.active-window]="activeWindow === 'equipment'"
-       (click)="setActiveWindow('equipment')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [ngClass]="[equipmentSize]"
-       [windowHandle]="equipmentWindow"
-       windowName="equipmentWindow"
-       [windowLocation]="windowLocations.Equipment"
-       defaultX="966"
-       defaultY="56"
-       *ngIf="inGame && showEquipment">
-    <div class="window-header text-center" #equipmentWindow>
-      Equipment
-      <app-close-button (click)="showEquipment = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-equipment [player]="colyseus.game.character" [size]="equipmentSize"></app-equipment>
-    </div>
-  </div>
+  <ng-template #tradeSkillsBody>
+    <app-tradeskills-window [currentPlayer]="colyseus.game.character"></app-tradeskills-window>
+  </ng-template>
 
-  <div class="window equipment-viewonly-window game-window"
-       [class.active-window]="colyseus.game.currentViewTarget"
-       [appDraggableWindow]="!lockWindowPositions"
-       [ngClass]="[equipmentSize]"
-       [windowHandle]="equipmentViewOnlyWindow"
-       windowName="equipmentViewOnlyWindow"
-       [windowLocation]="windowLocations.EquipmentViewOnly"
-       defaultX="666"
-       defaultY="56"
-       *ngIf="inGame && colyseus.game.currentViewTarget">
-    <div class="window-header text-center" #equipmentViewOnlyWindow>
-      {{ colyseus.game.currentViewTarget.name }}'s Equipment
-      <app-close-button (click)="colyseus.game.currentViewTarget = null"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-equipment-viewonly [player]="colyseus.game.currentViewTarget" [size]="equipmentSize"></app-equipment-viewonly>
-    </div>
-  </div>
+  <app-window *ngIf="inGame && showCommandLine"
+              windowName="commandLine"
+              otherWindowClasses="above-game-window"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showCommandLine = false"
+              [headTemplate]="commandLineHead"
+              [bodyTemplate]="commandLineBody"
+  ></app-window>
 
-  <div class="window npc-window game-window"
-       [class.active-window]="activeWindow === 'npcs'"
-       (click)="setActiveWindow('npcs')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [ngClass]="[npcWindowSize]"
-       [windowHandle]="npcWindow"
-       windowName="npcWindow"
-       [windowLocation]="windowLocations.NPCs"
-       defaultX="3"
-       defaultY="56"
-       *ngIf="inGame">
-    <div class="window-header text-center" #npcWindow>
-      NPCs
-    </div>
-    <div class="window-body">
-      <app-npcs></app-npcs>
-    </div>
-  </div>
+  <ng-template #commandLineHead>
+    Command Line
+  </ng-template>
 
-  <div class="window macro-bars game-window"
-       [class.active-window]="activeWindow === 'macros'"
-       (click)="setActiveWindow('macros')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="macroBars"
-       windowName="macroBars"
-       [windowLocation]="windowLocations.Macros"
-       defaultX="389"
-       defaultY="661"
-       *ngIf="inGame">
-    <div class="window-header text-center" #macroBars>
-      Macros
-    </div>
-    <div class="window-body">
-      <app-macro-bars></app-macro-bars>
-    </div>
-  </div>
+  <ng-template #commandLineBody>
+    <app-command-line [rightClickSend]="rightClickSend"></app-command-line>
+  </ng-template>
 
-  <div class="window trainer above-game-window"
-       [class.active-window]="activeWindow === 'trainer'"
-       (click)="setActiveWindow('trainer')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="trainerDrag"
-       windowName="trainer"
-       [windowLocation]="windowLocations.Trainer"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && colyseus.game.showTrainer.uuid">
-    <div class="window-header text-center" #trainerDrag>
-      {{ colyseus.game.showTrainer.classTrain }} Guide
-      <app-close-button (click)="colyseus.game.showTrainer = {}"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-trainer></app-trainer>
-    </div>
-  </div>
+  <app-window *ngIf="inGame"
+              windowName="log"
+              [otherWindowClasses]="'above-game-window ' + logWindowSize"
+              (active)="setActiveWindow($event)"
+              [headTemplate]="logHead"
+              [bodyTemplate]="logBody"
+  ></app-window>
 
-  <div class="window shop above-game-window"
-       [class.active-window]="activeWindow === 'shop'"
-       (click)="setActiveWindow('shop')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="shopDrag"
-       windowName="shop"
-       [windowLocation]="windowLocations.Shop"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && colyseus.game.showShop.uuid">
-    <div class="window-header text-center" #shopDrag>
-      Shop
-      <app-close-button (click)="colyseus.game.showShop = {}"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-shop></app-shop>
-    </div>
-  </div>
+  <ng-template #logHead>
+    Log
+  </ng-template>
 
-  <div class="window bank above-game-window"
-       [class.active-window]="activeWindow === 'bank'"
-       (click)="setActiveWindow('bank')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="bankDrag"
-       windowName="bank"
-       [windowLocation]="windowLocations.Bank"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && colyseus.game.showBank.uuid">
-    <div class="window-header text-center" #bankDrag>
-      {{ colyseus.game.showBank.bankId }} Bank
-      <app-close-button (click)="colyseus.game.showBank = {}"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-bank></app-bank>
-    </div>
-  </div>
+  <ng-template #logBody>
+    <app-log-window [windowSize]="logWindowSize"
+                    [fontSize]="logFontSize"></app-log-window>
+  </ng-template>
 
-  <div class="window locker above-game-window"
-       [class.active-window]="activeWindow === 'locker'"
-       (click)="setActiveWindow('locker')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="lockerDrag"
-       windowName="locker"
-       [windowLocation]="windowLocations.Locker"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && colyseus.game.showLocker.length > 0">
-    <div class="window-header text-center" #lockerDrag>
-      {{ colyseus.game.showLocker[colyseus.game.activeLockerNumber].regionId }} Region Wardrobe
-      <app-close-button (click)="colyseus.game.showLocker = []"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-lockers></app-lockers>
-    </div>
-  </div>
+  <app-window *ngIf="inGame"
+              windowName="status"
+              otherWindowClasses="above-game-window"
+              (active)="setActiveWindow($event)"
+              [canMinimize]="true"
+              (minimize)="minimize($event)"
+              [minimized]="minimized.status"
+              [headTemplate]="statusHead"
+              [bodyTemplate]="statusBody"
+  ></app-window>
 
-  <div class="window party above-game-window"
-       [class.active-window]="activeWindow === 'party'"
-       (click)="setActiveWindow('party')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="partyDrag"
-       windowName="party"
-       [windowLocation]="windowLocations.Party"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && showParty">
-    <div class="window-header text-center" #partyDrag>
-      Party: {{ colyseus.game.character.partyName || '(no party)' }}
-      <app-close-button (click)="showParty = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-party></app-party>
-    </div>
-  </div>
+  <ng-template #statusHead>
+    <app-character-tagline [player]="colyseus.game.character"></app-character-tagline>
+  </ng-template>
 
-  <div class="window traits above-game-window"
-       [class.active-window]="activeWindow === 'traits'"
-       (click)="setActiveWindow('traits')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="traitsDrag"
-       windowName="traits"
-       [windowLocation]="windowLocations.Traits"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && showTraits">
-    <div class="window-header text-center" #traitsDrag>
-      Traits ({{ colyseus.game.character.traitPoints || 0 }} Trait Points, {{ colyseus.game.character.partyPoints || 0}} Party Points)
-      <app-close-button (click)="showTraits = false"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-traits></app-traits>
-    </div>
-  </div>
+  <ng-template #statusBody>
+    <app-status-window></app-status-window>
+  </ng-template>
 
-  <div class="window trade-skill alchemy above-game-window"
-       [class.active-window]="activeWindow === 'tradeskillAlchemy'"
-       (click)="setActiveWindow('tradeskillAlchemy')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="tradeskillAlchemyDrag"
-       windowName="tradeskillAlchemy"
-       [windowLocation]="windowLocations.TradeskillAlchemy"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && colyseus.game.showAlchemy.uuid">
-    <div class="window-header text-center" #tradeskillAlchemyDrag>
-      Alchemy
-      <app-close-button (click)="colyseus.game.showAlchemy = {}"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-tradeskill-alchemy></app-tradeskill-alchemy>
-    </div>
-  </div>
+  <app-window *ngIf="inGame && colyseus.game.showGround"
+              windowName="ground"
+              [otherWindowClasses]="'game-window ' + groundSize"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.showGround = false"
+              [headTemplate]="groundHead"
+              [bodyTemplate]="groundBody"
+  ></app-window>
 
-  <div class="window trade-skill spellforging above-game-window"
-       [class.active-window]="activeWindow === 'tradeskillSpellforging'"
-       (click)="setActiveWindow('tradeskillSpellforging')"
-       [appDraggableWindow]="!lockWindowPositions"
-       [windowHandle]="tradeskillSpellforgingDrag"
-       windowName="tradeskillSpellforging"
-       [windowLocation]="windowLocations.TradeskillSpellforging"
-       defaultX="670"
-       defaultY="120"
-       *ngIf="inGame && colyseus.game.showSpellforging.uuid">
-    <div class="window-header text-center" #tradeskillSpellforgingDrag>
-      Spellforging
-      <app-close-button (click)="colyseus.game.showSpellforging = {}"></app-close-button>
-    </div>
-    <div class="window-body">
-      <app-tradeskill-spellforging></app-tradeskill-spellforging>
-    </div>
-  </div>
+  <ng-template #groundHead>
+    Ground
+  </ng-template>
+
+  <ng-template #groundBody>
+    <app-ground [size]="groundSize"></app-ground>
+  </ng-template>
+
+  <app-window *ngIf="inGame && showInventorySack"
+              windowName="sack"
+              [otherWindowClasses]="'game-window ' + sackSize"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showInventorySack = false"
+              [headTemplate]="sackHead"
+              [bodyTemplate]="sackBody"
+  ></app-window>
+
+  <ng-template #sackHead>
+    Inventory - Sack
+  </ng-template>
+
+  <ng-template #sackBody>
+    <app-inventory-sack [size]="sackSize"></app-inventory-sack>
+  </ng-template>
+
+  <app-window *ngIf="inGame && showInventoryBelt"
+              windowName="belt"
+              [otherWindowClasses]="'game-window ' + beltSize"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showInventoryBelt = false"
+              [headTemplate]="beltHead"
+              [bodyTemplate]="beltBody"
+  ></app-window>
+
+  <ng-template #beltHead>
+    Inventory - Belt
+  </ng-template>
+
+  <ng-template #beltBody>
+    <app-inventory-belt [size]="beltSize"></app-inventory-belt>
+  </ng-template>
+
+  <app-window *ngIf="inGame && showInventoryPouch && hasPouch"
+              windowName="pouch"
+              [otherWindowClasses]="'game-window ' + pouchSize"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showInventoryPouch = false"
+              [headTemplate]="pouchHead"
+              [bodyTemplate]="pouchBody"
+  ></app-window>
+
+  <ng-template #pouchHead>
+    Inventory - Demi-Magic Pouch
+  </ng-template>
+
+  <ng-template #pouchBody>
+    <app-inventory-pouch [size]="pouchSize"></app-inventory-pouch>
+  </ng-template>
+
+  <app-window *ngIf="inGame && showEquipment"
+              windowName="equipment"
+              [otherWindowClasses]="'game-window ' + equipmentSize"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showEquipment = false"
+              [headTemplate]="equipmentHead"
+              [bodyTemplate]="equipmentBody"
+  ></app-window>
+
+  <ng-template #equipmentHead>
+    Equipment
+  </ng-template>
+
+  <ng-template #equipmentBody>
+    <app-equipment [player]="colyseus.game.character" [size]="equipmentSize"></app-equipment>
+  </ng-template>
+
+  <app-window *ngIf="inGame && colyseus.game.currentViewTarget"
+              windowName="equipmentViewOnly"
+              [otherWindowClasses]="'game-window ' + equipmentSize"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.currentViewTarget = null"
+              [headTemplate]="equipmentViewOnlyHead"
+              [bodyTemplate]="equipmentViewOnlyBody"
+  ></app-window>
+
+  <ng-template #equipmentViewOnlyHead>
+    {{ colyseus.game.currentViewTarget ? colyseus.game.currentViewTarget.name : 'Loading' }}'s Equipment
+  </ng-template>
+
+  <ng-template #equipmentViewOnlyBody>
+    <app-equipment-viewonly *ngIf="colyseus.game.currentViewTarget" [player]="colyseus.game.currentViewTarget" [size]="equipmentSize"></app-equipment-viewonly>
+  </ng-template>
+
+  <app-window *ngIf="inGame"
+              windowName="npcs"
+              [otherWindowClasses]="'game-window ' + npcWindowSize"
+              (active)="setActiveWindow($event)"
+              [headTemplate]="npcsHead"
+              [bodyTemplate]="npcsBody"
+  ></app-window>
+
+  <ng-template #npcsHead>
+    Characters In View
+  </ng-template>
+
+  <ng-template #npcsBody>
+    <app-npcs [windowSize]="npcWindowSize"></app-npcs>
+  </ng-template>
+
+  <app-window *ngIf="inGame"
+              windowName="macros"
+              [otherWindowClasses]="'game-window'"
+              (active)="setActiveWindow($event)"
+              [headTemplate]="macrosHead"
+              [bodyTemplate]="macrosBody"
+  ></app-window>
+
+  <ng-template #macrosHead>
+    Macros
+  </ng-template>
+
+  <ng-template #macrosBody>
+    <app-macro-bars></app-macro-bars>
+  </ng-template>
+
+  <app-window *ngIf="inGame && colyseus.game.showTrainer.uuid"
+              windowName="trainer"
+              [otherWindowClasses]="'above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.showTrainer = {}"
+              [headTemplate]="trainerHead"
+              [bodyTemplate]="trainerBody"
+  ></app-window>
+
+  <ng-template #trainerHead>
+    {{ colyseus.game.showTrainer.classTrain }} Guide
+  </ng-template>
+
+  <ng-template #trainerBody>
+    <app-trainer></app-trainer>
+  </ng-template>
+
+  <app-window *ngIf="inGame && colyseus.game.showShop.uuid"
+              windowName="shop"
+              [otherWindowClasses]="'above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.showShop = {}"
+              [headTemplate]="shopHead"
+              [bodyTemplate]="shopBody"
+  ></app-window>
+
+  <ng-template #shopHead>
+    Shop
+  </ng-template>
+
+  <ng-template #shopBody>
+    <app-shop></app-shop>
+  </ng-template>
+
+  <app-window *ngIf="inGame && colyseus.game.showBank.uuid"
+              windowName="bank"
+              [otherWindowClasses]="'above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.showBank = {}"
+              [headTemplate]="bankHead"
+              [bodyTemplate]="bankBody"
+  ></app-window>
+
+  <ng-template #bankHead>
+    {{ colyseus.game.showBank.bankId }} Bank
+  </ng-template>
+
+  <ng-template #bankBody>
+    <app-bank></app-bank>
+  </ng-template>
+
+  <app-window *ngIf="inGame && colyseus.game.showLocker.length > 0"
+              windowName="locker"
+              [otherWindowClasses]="'above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.showLocker = []"
+              [headTemplate]="lockerHead"
+              [bodyTemplate]="lockerBody"
+  ></app-window>
+
+  <ng-template #lockerHead>
+    {{ colyseus.game.activeLockerNumber ? colyseus.game.showLocker[colyseus.game.activeLockerNumber].regionId : '' }} Region Wardrobe
+  </ng-template>
+
+  <ng-template #lockerBody>
+    <app-lockers></app-lockers>
+  </ng-template>
+
+  <app-window *ngIf="inGame && showParty"
+              windowName="party"
+              [otherWindowClasses]="'above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showParty = false"
+              [headTemplate]="partyHead"
+              [bodyTemplate]="partyBody"
+  ></app-window>
+
+  <ng-template #partyHead>
+    Party: {{ colyseus.game.character.partyName || '(no party)' }}
+  </ng-template>
+
+  <ng-template #partyBody>
+    <app-party></app-party>
+  </ng-template>
+
+  <app-window *ngIf="inGame && showTraits"
+              windowName="traits"
+              [otherWindowClasses]="'above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showTraits = false"
+              [headTemplate]="traitsHead"
+              [bodyTemplate]="traitsBody"
+  ></app-window>
+
+  <ng-template #traitsHead>
+    Traits ({{ colyseus.game.character.traitPoints || 0 }} Trait Points, {{ colyseus.game.character.partyPoints || 0}} Party Points)
+  </ng-template>
+
+  <ng-template #traitsBody>
+    <app-traits></app-traits>
+  </ng-template>
+
+  <app-window *ngIf="inGame && colyseus.game.showAlchemy.uuid"
+              windowName="tradeskillAlchemy"
+              [otherWindowClasses]="'tradeskill alchemy above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.showAlchemy = {}"
+              [headTemplate]="tradeskillAlchemyHead"
+              [bodyTemplate]="tradeskillAlchemyBody"
+  ></app-window>
+
+  <ng-template #tradeskillAlchemyHead>
+    Tradeskill - Alchemy
+  </ng-template>
+
+  <ng-template #tradeskillAlchemyBody>
+    <app-tradeskill-alchemy></app-tradeskill-alchemy>
+  </ng-template>
+
+  <app-window *ngIf="inGame && colyseus.game.showSpellforging.uuid"
+              windowName="tradeskillSpellforging"
+              [otherWindowClasses]="'tradeskill spellforging above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.showSpellforging = {}"
+              [headTemplate]="tradeskillSpellforgingHead"
+              [bodyTemplate]="tradeskillSpellforgingBody"
+  ></app-window>
+
+  <ng-template #tradeskillSpellforgingHead>
+    Tradeskill - Spellforging
+  </ng-template>
+
+  <ng-template #tradeskillSpellforgingBody>
+    <app-tradeskill-spellforging></app-tradeskill-spellforging>
+  </ng-template>
 
 </div>
 

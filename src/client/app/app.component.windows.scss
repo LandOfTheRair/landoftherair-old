@@ -59,14 +59,18 @@
     max-width: 578px;
   }
 
-  &.macro-bars {
+  &.macros {
     min-width: 578px;
     max-width: 578px;
   }
 
-  &.log-window {
+  &.log {
     max-width: 387px;
     min-width: 387px;
+
+    &.small {
+      font-size: 100% !important;
+    }
 
     &.max {
       min-height: calc(100% - 56px);
@@ -74,7 +78,7 @@
     }
   }
 
-  &.status-window {
+  &.status {
     min-width: 578px;
 
     .window-body {
@@ -83,7 +87,7 @@
     }
   }
 
-  &.ground-window {
+  &.ground {
     min-width: 387px;
     max-width: 387px;
 
@@ -118,7 +122,7 @@
     }
   }
 
-  &.inventory-sack-window, &.inventory-belt-window, &.inventory-pouch-window, &.equipment-window, &.equipment-viewonly-window {
+  &.sack, &.belt, &.pouch, &.equipment, &.equipment-view-only {
     min-width: 351px;
     max-width: 351px;
 
@@ -133,36 +137,17 @@
     }
   }
 
-  &.npc-window {
+  &.npcs {
     max-width: 387px;
     min-width: 387px;
 
-    min-height: 310px;
-    max-height: 310px;
+    &.small {
+      font-size: 100% !important;
+    }
 
     &.max {
       min-height: calc(100% - 56px);
       max-height: calc(100% - 56px);
-    }
-
-    &.xlarge {
-      min-height: 526px;
-      max-height: 526px;
-    }
-
-    &.large {
-      min-height: 418px;
-      max-height: 418px;
-    }
-
-    &.small {
-      min-height: 202px;
-      max-height: 202px;
-    }
-
-    &.xsmall {
-      min-height: 94px;
-      max-height: 94px;
     }
   }
 
@@ -212,7 +197,7 @@
     z-index: 1000;
   }
 
-  &.trade-skill {
+  &.tradeskill {
     min-width: 525px;
     max-width: 525px;
 
