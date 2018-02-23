@@ -155,35 +155,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   @LocalStorage()
   public playSoundEffects: boolean;
 
-  public windowLocations: any = {
-    lobby: null,
-    characterSelect: null,
-    map: null,
-    stats: null,
-    skills: null,
-    tradeSkills: null,
-    commandLine: null,
-    log: null,
-    status: null,
-    ground: null,
-    sack: null,
-    belt: null,
-    pouch: null,
-    equipment: null,
-    equipmentViewOnly: null,
-    npcs: null,
-    macros: null,
-    trainer: null,
-    shop: null,
-    bank: null,
-    locker: null,
-    party: null,
-    traits: null,
-    tradeskillAlchemy: null,
-    tradeskillSpellforging: null
-  };
-
   public newMessages = 0;
+
+  get windowLocations() {
+    return this.colyseus.windowLocations;
+  }
 
   get loggedIn() {
     return this.colyseus.lobby.myAccount;

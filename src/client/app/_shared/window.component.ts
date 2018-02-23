@@ -1,6 +1,9 @@
-import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef } from '@angular/core';
 
 import { kebabCase } from 'lodash';
+import { ColyseusService } from '../colyseus.service';
+import { LocalStorageService } from 'ngx-webstorage';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-window',
@@ -10,12 +13,12 @@ import { kebabCase } from 'lodash';
          [class.active-window]="isActive"
          [ngClass]="[windowClassName, otherWindowClasses]"
          (click)="active.emit(windowName)"
-         [appDraggableWindow]="windowDraggable"
+         [appDraggableWindow]="canDrag"
          [windowHandle]="windowDrag"
          [windowName]="windowName"
-         [windowLocation]="windowLocation.location"
-         [defaultX]="windowLocation.defaultX"
-         [defaultY]="windowLocation.defaultY"
+         [windowLocation]="windowLocation"
+         [defaultX]="defaultPos.x"
+         [defaultY]="defaultPos.y"
          [class.minimized]="minimized"
          [class.hidden]="hidden">
       <div class="window-header text-center" #windowDrag>
@@ -29,7 +32,7 @@ import { kebabCase } from 'lodash';
     </div>
   `
 })
-export class WindowComponent {
+export class WindowComponent implements OnInit, OnDestroy {
 
   @Output()
   public active = new EventEmitter();
@@ -48,15 +51,6 @@ export class WindowComponent {
 
   @Input()
   public otherWindowClasses = '';
-
-  @Input()
-  public windowDraggable: boolean = true;
-
-  @Input()
-  public windowLocation: { location: any, defaultX: number, defaultY: number } = { location: {}, defaultX: 0, defaultY: 0 };
-
-  @Input()
-  public isActive: boolean;
 
   @Input()
   public hidden: boolean;
@@ -78,5 +72,37 @@ export class WindowComponent {
 
   public get windowClassName(): string {
     return kebabCase(this.windowName);
+  }
+
+  public get windowLocation() {
+    return this.colyseus.windowLocations[this.windowName];
+  }
+
+  public get defaultPos(): { x: number, y: number } {
+    return this.colyseus.defaultWindowLocations[this.windowName];
+  }
+
+  private canDrag$: Subscription;
+  private canDrag = true;
+
+  public isActive$: Subscription;
+  private isActive = false;
+
+  constructor(
+    public colyseus: ColyseusService,
+    private localStorage: LocalStorageService
+  ) {}
+
+  ngOnInit() {
+    this.canDrag$ = this.localStorage.observe('lockWindowPositions')
+      .subscribe(val => this.canDrag = !val);
+
+    this.isActive$ = this.localStorage.observe('activeWindow')
+      .subscribe(val => this.isActive = val === this.windowName);
+  }
+
+  ngOnDestroy() {
+    this.canDrag$.unsubscribe();
+    this.isActive$.unsubscribe();
   }
 }
