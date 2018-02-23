@@ -14,7 +14,7 @@ export class AssetService {
   }
 
   get assetUrl(): string {
-    return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets`;
+    return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets/spritesheets`;
   }
 
   get terrainUrl(): string {

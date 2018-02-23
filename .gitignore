@@ -68,3 +68,4 @@ dist
 allsprites.json
 
 src/client/environments/_vars.ts
+src/client/assets/spritesheets

@@ -7,7 +7,7 @@ const files = ['creatures', 'decor', 'effects', 'items', 'swimming', 'terrain', 
 const md5hash = {};
 
 files.forEach(file => {
-  const md5 = md5file.sync(`${__dirname}/../src/client/assets/${file}.png`);
+  const md5 = md5file.sync(`${__dirname}/../src/client/assets/spritesheets/${file}.png`);
   md5hash[file] = md5;
 });
 
