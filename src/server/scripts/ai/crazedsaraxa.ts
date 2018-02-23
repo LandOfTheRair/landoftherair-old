@@ -76,7 +76,7 @@ export const tick = (npc: NPC, canMove) => {
   if(npc.hp.gtePercent(65)) trigger50 = false;
   if(npc.hp.gtePercent(40)) trigger25 = false;
 
-  if(!trigger75 && npc.hp.ltePercent(75)) {
+  if(!trigger75 && npc.hp.lessThanPercent(75)) {
     trigger75 = true;
 
     setTimeout(() => {
@@ -84,7 +84,7 @@ export const tick = (npc: NPC, canMove) => {
     }, 2000);
   }
 
-  if(!trigger50 && npc.hp.ltePercent(50)) {
+  if(!trigger50 && npc.hp.lessThanPercent(50)) {
     trigger50 = true;
 
     setTimeout(() => {
@@ -92,7 +92,7 @@ export const tick = (npc: NPC, canMove) => {
     }, 2000);
   }
 
-  if(!trigger25 && npc.hp.ltePercent(25)) {
+  if(!trigger25 && npc.hp.lessThanPercent(25)) {
     trigger25 = true;
 
     setTimeout(() => {
