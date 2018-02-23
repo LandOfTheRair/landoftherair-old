@@ -83,10 +83,10 @@ export class WindowComponent implements OnInit, OnDestroy {
   }
 
   private canDrag$: Subscription;
-  private canDrag = true;
+  public canDrag = true;
 
-  public isActive$: Subscription;
-  private isActive = false;
+  private isActive$: Subscription;
+  public isActive = false;
 
   constructor(
     public colyseus: ColyseusService,
