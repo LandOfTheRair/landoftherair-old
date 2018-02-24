@@ -5558,50 +5558,6 @@
                  "width":64,
                  "x":5376,
                  "y":640
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2428,
-                 "name":"Flower Spawner",
-                 "properties":
-                    {
-                     "resourceName":"Tower Goblood Plant",
-                     "script":"global\/single-resource"
-                    },
-                 "propertytypes":
-                    {
-                     "resourceName":"string",
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2048,
-                 "y":4224
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2429,
-                 "name":"Flower Spawner",
-                 "properties":
-                    {
-                     "resourceName":"Tower Goblood Plant",
-                     "script":"global\/single-resource"
-                    },
-                 "propertytypes":
-                    {
-                     "resourceName":"string",
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2240,
-                 "y":5696
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -6732,6 +6688,50 @@
                  "width":64,
                  "x":2880,
                  "y":1664
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2433,
+                 "name":"Flower Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Tower Goblood Plant",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2240,
+                 "y":5696
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2434,
+                 "name":"Flower Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Tower Goblood Plant",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2048,
+                 "y":4224
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7311,7 +7311,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2431,
+ "nextobjectid":2435,
  "orientation":"orthogonal",
  "properties":
     {
