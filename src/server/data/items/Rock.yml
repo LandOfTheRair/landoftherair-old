@@ -102,4 +102,11 @@
   value: 55000
 
 - name: Armor Mold
+  sprite: 996
+  desc: "a mold of armor"
+  value: 1000
+
 - name: Weapon Mold
+  sprite: 695
+  desc: "a mold of a weapon"
+  value: 1000
