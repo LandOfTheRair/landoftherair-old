@@ -14,12 +14,16 @@ export class BarFire extends SpellEffect {
 
   maxSkillForSkillGain = 7;
   potencyMultiplier = 20;
-  skillFlag = () => SkillClassNames.Conjuration;
+  skillFlag = (caster) => {
+    if(caster.baseClass === 'Healer') return SkillClassNames.Restoration;
+    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
+    return SkillClassNames.Thievery;
+  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    if(!this.duration) this.duration = 100 * caster.calcSkillLevel(SkillClassNames.Conjuration);
+    if(!this.duration) this.duration = 100 * caster.calcSkillLevel(this.skillFlag(caster));
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
