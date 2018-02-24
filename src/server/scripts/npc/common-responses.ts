@@ -8,6 +8,7 @@ import { NPCLoader } from '../../helpers/npc-loader';
 import { Revive } from '../../effects/cures/Revive';
 import { LearnAlchemy } from '../../quests/antania/Rylt/LearnAlchemy';
 import { SkillHelper } from '../../helpers/skill-helper';
+import { SpellforgingHelper } from '../../helpers/spellforging-helper';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -157,6 +158,7 @@ export const SmithResponses = (npc: NPC) => {
     .set('syntax', ['metalwork'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(player.baseClass !== 'Warrior') return 'Only Warriors can engage in Metalworking!';
       npc.$$room.showMetalworkingWindow(player, npc);
     });
 
@@ -682,7 +684,7 @@ export const SpellforgingResponses = (npc: NPC) => {
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      if(player.calcSkillLevel('Conjuration') < 1) return 'You are not skilled enough to Spellforge.';
+      if(!SpellforgingHelper.canSpellforge(player)) return 'You are not skilled enough to Spellforge.';
       npc.$$room.showSpellforgingWindow(player, npc);
 
       return 'Greetings, fellow conjurer. I am a master enchanter who can help you learn the higher conjuration arts and ASSESS your progress.';

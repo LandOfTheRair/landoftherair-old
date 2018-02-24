@@ -24,20 +24,36 @@ export class MetalworkingContainer extends Container {
     this.initItems();
   }
 
-  get modifyItem(): Item {
+  get craftItem(): Item {
     return this.items[0];
   }
 
-  get reagent(): Item {
+  get craftReagent(): Item {
     return this.items[1];
   }
 
-  get result(): Item {
+  get craftResult(): Item {
     return this.items[2];
   }
 
-  set result(item: Item) {
+  set craftResult(item: Item) {
     this.items[2] = item;
+  }
+
+  get upgradeItem(): Item {
+    return this.items[3];
+  }
+
+  get upgradeReagent(): Item {
+    return this.items[4];
+  }
+
+  get upgradeResult(): Item {
+    return this.items[5];
+  }
+
+  set upgradeResult(item: Item) {
+    this.items[5] = item;
   }
 
   gainOre(oreType: string, number = 1) {

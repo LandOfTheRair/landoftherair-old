@@ -14,35 +14,35 @@ export class AssetService {
   }
 
   get assetUrl(): string {
-    return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets/spritesheets`;
+    return `${environment.client.protocol}://${environment.client.domain}:${environment.client.port}/assets`;
   }
 
   get terrainUrl(): string {
-    return this.customURLs.terrain || `${this.assetUrl}/terrain.png?c=${environment.assetHashes.terrain}`;
+    return this.customURLs.terrain || `${this.assetUrl}/spritesheets/terrain.png?c=${environment.assetHashes.terrain}`;
   }
 
   get wallsUrl(): string {
-    return this.customURLs.walls || `${this.assetUrl}/walls.png?c=${environment.assetHashes.walls}`;
+    return this.customURLs.walls || `${this.assetUrl}/spritesheets/walls.png?c=${environment.assetHashes.walls}`;
   }
 
   get decorUrl(): string {
-    return this.customURLs.decor || `${this.assetUrl}/decor.png?c=${environment.assetHashes.decor}`;
+    return this.customURLs.decor || `${this.assetUrl}/spritesheets/decor.png?c=${environment.assetHashes.decor}`;
   }
 
   get swimmingUrl(): string {
-    return this.customURLs.swimming || `${this.assetUrl}/swimming.png?c=${environment.assetHashes.swimming}`;
+    return this.customURLs.swimming || `${this.assetUrl}/spritesheets/swimming.png?c=${environment.assetHashes.swimming}`;
   }
 
   get creaturesUrl(): string {
-    return this.customURLs.creatures || `${this.assetUrl}/creatures.png?c=${environment.assetHashes.creatures}`;
+    return this.customURLs.creatures || `${this.assetUrl}/spritesheets/creatures.png?c=${environment.assetHashes.creatures}`;
   }
 
   get itemsUrl(): string {
-    return this.customURLs.items || `${this.assetUrl}/items.png?c=${environment.assetHashes.items}`;
+    return this.customURLs.items || `${this.assetUrl}/spritesheets/items.png?c=${environment.assetHashes.items}`;
   }
 
   get effectsUrl(): string {
-    return this.customURLs.effects || `${this.assetUrl}/effects.png?c=${environment.assetHashes.effects}`;
+    return this.customURLs.effects || `${this.assetUrl}/spritesheets/effects.png?c=${environment.assetHashes.effects}`;
   }
 
   get customKeys(): string[] {

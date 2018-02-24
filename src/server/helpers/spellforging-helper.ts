@@ -7,6 +7,10 @@ import { SkillClassNames } from '../../shared/models/character';
 
 export class SpellforgingHelper {
 
+  static canSpellforge(player: Player): boolean {
+    return player.calcSkillLevel(SkillClassNames.Conjuration) >= 1
+  }
+
   static canDisenchant(item: Item): boolean {
     return includes(EquippableItemClassesWithWeapons, item.itemClass);
   }
