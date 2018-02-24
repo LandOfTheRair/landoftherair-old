@@ -11,7 +11,7 @@
     defense: 1
     offense: 1
   sprite: 235
-  desc: "a simple iron helm"
+  desc: "a simple iron helm engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   value: 100
 
 - name: Yzalt Combat Helm

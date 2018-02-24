@@ -19,7 +19,7 @@
   maxDamage: 2
   damageRolls: 1
   sprite: 233
-  desc: "a pair of leather gloves"
+  desc: "a pair of leather gloves engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   value: 50
 
 - name: Steffen Strength Gloves
