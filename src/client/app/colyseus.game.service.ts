@@ -12,7 +12,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Character } from '../../shared/models/character';
 import { NPC } from '../../shared/models/npc';
 
-export const VALID_TRADESKILLS = ['Alchemy', 'Spellforging', 'Metalforging'];
+export const VALID_TRADESKILLS = ['Alchemy', 'Spellforging', 'Metalworking'];
 
 @Injectable()
 export class ColyseusGameService {
@@ -33,7 +33,7 @@ export class ColyseusGameService {
 
   showAlchemy: any = {};
   showSpellforging: any = {};
-  showMetalforging: any = {};
+  showMetalworking: any = {};
 
   showLocker: Locker[] = [];
   activeLockerNumber: number;

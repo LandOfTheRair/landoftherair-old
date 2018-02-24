@@ -418,9 +418,9 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_ts', tradeskill: 'Spellforging', uuid: npc.uuid });
   }
 
-  showMetalforgingWindow(player: Player, npc: NPC) {
+  showMetalworkingWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
-    this.send(client, { action: 'show_ts', tradeskill: 'Metalforging', uuid: npc.uuid });
+    this.send(client, { action: 'show_ts', tradeskill: 'Metalworking', uuid: npc.uuid });
   }
 
   showLockerWindow(player: Player, lockers, lockerId) {

@@ -119,7 +119,8 @@ export const SmithResponses = (npc: NPC) => {
 
       return `Hello, ${player.name}! 
       I am a Smith. I can repair your weapons and armor - just hold them in your right hand! 
-      Or, you can tell me REPAIRALL and I will repair what you're holding and what you're wearing.`;
+      Or, you can tell me REPAIRALL and I will repair what you're holding and what you're wearing.
+      You can also METALWORK with me and I can ASSESS your progress!`;
     });
 
   npc.parser.addCommand('repairall')
@@ -152,6 +153,26 @@ export const SmithResponses = (npc: NPC) => {
       return `Thank you, ${player.name}! I've done what I can. You've spent ${totalCosts.toLocaleString()} gold.`;
     });
 
+  npc.parser.addCommand('metalwork')
+    .set('syntax', ['metalwork'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+      npc.$$room.showMetalworkingWindow(player, npc);
+    });
+
+  npc.parser.addCommand('assess')
+  .set('syntax', ['assess'])
+  .set('logic', (args, { player }) => {
+    if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+    const assessCost = 50;
+    if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
+
+    player.loseGold(assessCost);
+
+    const percentWay = SkillHelper.assess(player, SkillClassNames.Metalworking);
+    return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Metalworking.toUpperCase()} proficiency.`;
+  });
 };
 
 export const RandomlyShouts = (npc: NPC, responses: string[] = [], opts: any = { combatOnly: false }) => {

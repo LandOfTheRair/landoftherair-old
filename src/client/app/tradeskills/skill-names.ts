@@ -54,7 +54,7 @@ const skills = {
     '4th Renowned Enchanter',
     'Legendary Enchanter'
   ],
-  metalforging: [
+  metalworking: [
     'Unpracticed',
     'Smasher of Rocks',
     'Novice Molder',
