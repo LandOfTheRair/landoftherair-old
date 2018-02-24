@@ -120,7 +120,7 @@ export const SmithResponses = (npc: NPC) => {
       return `Hello, ${player.name}! 
       I am a Smith. I can repair your weapons and armor - just hold them in your right hand! 
       Or, you can tell me REPAIRALL and I will repair what you're holding and what you're wearing.
-      You can also METALWORK with me and I can ASSESS your progress!`;
+      You can also METALWORK here, I can COLLECT your ore, and I can ASSESS your progress!`;
     });
 
   npc.parser.addCommand('repairall')
@@ -161,18 +161,43 @@ export const SmithResponses = (npc: NPC) => {
     });
 
   npc.parser.addCommand('assess')
-  .set('syntax', ['assess'])
-  .set('logic', (args, { player }) => {
-    if(npc.distFrom(player) > 0) return 'Please move closer.';
+    .set('syntax', ['assess'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-    const assessCost = 50;
-    if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
+      const assessCost = 50;
+      if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
-    player.loseGold(assessCost);
+      player.loseGold(assessCost);
 
-    const percentWay = SkillHelper.assess(player, SkillClassNames.Metalworking);
-    return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Metalworking.toUpperCase()} proficiency.`;
-  });
+      const percentWay = SkillHelper.assess(player, SkillClassNames.Metalworking);
+      return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Metalworking.toUpperCase()} proficiency.`;
+    });
+
+  npc.parser.addCommand('ore')
+    .set('syntax', ['ore'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      const indexes = NPCLoader.getItemsFromPlayerSackByName(player, 'Ore');
+      if(indexes.length === 0) return 'You don\'t have any ore!';
+
+      const allOre = NPCLoader.takeItemsFromPlayerSack(player, indexes);
+
+      const [copper, silver, gold] = [
+        allOre.reduce((prev, item) => prev + includes(item.name, 'Copper') ? item.ounces : 0, 0),
+        allOre.reduce((prev, item) => prev + includes(item.name, 'Silver') ? item.ounces : 0, 0),
+        allOre.reduce((prev, item) => prev + includes(item.name, 'Gold') ? item.ounces : 0, 0)
+      ];
+
+      const copperString = copper > 0 ? `${copper} copper` : '';
+      const silverString = silver > 0 ? `${silver} silver` : '';
+      const goldString   = gold   > 0 ? `${gold} gold` : '';
+
+      const resultString = [copperString, silverString, goldString].join(', ');
+
+      return `Thanks, ${player.name}! You've gained ${resultString}!`;
+    });
 };
 
 export const RandomlyShouts = (npc: NPC, responses: string[] = [], opts: any = { combatOnly: false }) => {

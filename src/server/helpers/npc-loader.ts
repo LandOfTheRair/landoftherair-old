@@ -1,6 +1,6 @@
 
 import { species } from 'fantastical';
-import { capitalize, isString, sample, kebabCase } from 'lodash';
+import { capitalize, isString, sample, kebabCase, includes } from 'lodash';
 
 import { ItemCreator } from './item-creator';
 import { NPC } from '../../shared/models/npc';
@@ -122,19 +122,27 @@ export class NPCLoader {
     player.applyEffect(new Effects[effectName]({ name: effectName, potency, duration }));
   }
 
-  static getItemsFromPlayerSackByName(player: Player, name) {
+  static getItemsFromPlayerSackByName(player: Player, name, partial = false) {
     const indexes = [];
 
     for(let i = 0; i < player.sack.allItems.length; i++) {
       const item = player.sack.allItems[i];
-      if(!item || item.name !== name) continue;
+
+      if(!item) continue;
+
+      if(partial) {
+        if(!includes(item.name, name)) continue;
+      } else {
+        if(item.name !== name) continue;
+      }
+      
       indexes.push(i);
     }
 
     return indexes;
   }
 
-  static takeItemsFromPlayerSack(player: Player, sackIndexes = []) {
-    player.sack.takeItemFromSlots(sackIndexes);
+  static takeItemsFromPlayerSack(player: Player, sackIndexes = []): Item[] {
+    return player.sack.takeItemFromSlots(sackIndexes);
   }
 }

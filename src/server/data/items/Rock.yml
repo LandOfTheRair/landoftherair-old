@@ -32,6 +32,21 @@
   ounces: 5
   value: 500
 
+- name: Copper Ingot (Pillars)
+  sprite: 996
+  desc: "a copper ingot inscribed with ancient pillars"
+  value: 11000
+
+- name: Copper Ingot (Infinity)
+  sprite: 997
+  desc: "a copper ingot inscribed with the symbol of infinity"
+  value: 11000
+
+- name: Copper Ingot (Hourglass)
+  sprite: 998
+  desc: "a copper ingot inscribed with an hourglass"
+  value: 11000
+
 - name: Silver Ore (Small)
   sprite: 614
   desc: "silver ore"
@@ -44,6 +59,21 @@
   ounces: 5
   value: 1500
 
+- name: Silver Ingot (Pillars)
+  sprite: 999
+  desc: "a silver ingot inscribed with ancient pillars"
+  value: 33000
+
+- name: Silver Ingot (Infinity)
+  sprite: 1000
+  desc: "a silver ingot inscribed with the symbol of infinity"
+  value: 33000
+
+- name: Silver Ingot (Hourglass)
+  sprite: 1001
+  desc: "a silver ingot inscribed with an hourglass"
+  value: 33000
+
 - name: Gold Ore (Small)
   sprite: 950
   desc: "gold ore"
@@ -52,7 +82,24 @@
 
 - name: Gold Ore (Large)
   sprite: 951
-  desc: "gold  ore"
+  desc: "gold ore"
   ounces: 5
   value: 2500
 
+- name: Gold Ingot (Pillars)
+  sprite: 408
+  desc: "a gold ingot inscribed with ancient pillars"
+  value: 55000
+
+- name: Gold Ingot (Infinity)
+  sprite: 408
+  desc: "a gold ingot inscribed with the symbol of infinity"
+  value: 55000
+
+- name: Gold Ingot (Hourglass)
+  sprite: 408
+  desc: "a gold ingot inscribed with an hourglass"
+  value: 55000
+
+- name: Armor Mold
+- name: Weapon Mold
