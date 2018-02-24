@@ -29,7 +29,7 @@ export class Forge extends Command {
 
     container.gainDust(lowerDustType, -100);
 
-    await SpellforgingHelper.createBrickFor(player, capitalize(lowerDustType));
+    await SpellforgingHelper.createBrickFor(player, lowerDustType);
 
     player.sendClientMessage(`You forged an ${capitalize(lowerDustType)} brick!`);
   }

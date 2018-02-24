@@ -33,7 +33,8 @@ export class TradeskillMetalworkingComponent {
 
   get showInfo(): boolean {
     const item = this.player.tradeSkillContainers.metalworking.upgradeItem;
-    return item;
+    const reagent = this.player.tradeSkillContainers.metalworking.upgradeReagent;
+    return item && reagent;
   }
 
   constructor(public colyseusGame: ColyseusGameService) { }

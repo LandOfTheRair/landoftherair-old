@@ -92,12 +92,12 @@
   value: 55000
 
 - name: Gold Ingot (Infinity)
-  sprite: 408
+  sprite: 409
   desc: "a gold ingot inscribed with the symbol of infinity"
   value: 55000
 
 - name: Gold Ingot (Hourglass)
-  sprite: 408
+  sprite: 410
   desc: "a gold ingot inscribed with an hourglass"
   value: 55000
 

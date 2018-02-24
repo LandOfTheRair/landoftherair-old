@@ -1,6 +1,6 @@
 
 import { NPC } from '../../../shared/models/npc';
-import { includes, capitalize, sample, get, random } from 'lodash';
+import { includes, capitalize, sample, get, random, compact } from 'lodash';
 import { Logger } from '../../logger';
 import { AllNormalGearSlots, SkillClassNames } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
@@ -9,6 +9,7 @@ import { Revive } from '../../effects/cures/Revive';
 import { LearnAlchemy } from '../../quests/antania/Rylt/LearnAlchemy';
 import { SkillHelper } from '../../helpers/skill-helper';
 import { SpellforgingHelper } from '../../helpers/spellforging-helper';
+import { MetalworkingHelper } from '../../helpers/metalworking-helper';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -158,7 +159,7 @@ export const SmithResponses = (npc: NPC) => {
     .set('syntax', ['metalwork'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      if(player.baseClass !== 'Warrior') return 'Only Warriors can engage in Metalworking!';
+      if(!MetalworkingHelper.canMetalwork(player)) return 'Only Warriors can engage in Metalworking!';
       npc.$$room.showMetalworkingWindow(player, npc);
     });
 
@@ -181,22 +182,26 @@ export const SmithResponses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      const indexes = NPCLoader.getItemsFromPlayerSackByName(player, 'Ore');
+      const indexes = NPCLoader.getItemsFromPlayerSackByName(player, ' Ore ', true);
       if(indexes.length === 0) return 'You don\'t have any ore!';
 
       const allOre = NPCLoader.takeItemsFromPlayerSack(player, indexes);
 
       const [copper, silver, gold] = [
-        allOre.reduce((prev, item) => prev + includes(item.name, 'Copper') ? item.ounces : 0, 0),
-        allOre.reduce((prev, item) => prev + includes(item.name, 'Silver') ? item.ounces : 0, 0),
-        allOre.reduce((prev, item) => prev + includes(item.name, 'Gold') ? item.ounces : 0, 0)
+        allOre.reduce((prev, item) => prev + (includes(item.name, 'Copper') ? item.ounces : 0), 0),
+        allOre.reduce((prev, item) => prev + (includes(item.name, 'Silver') ? item.ounces : 0), 0),
+        allOre.reduce((prev, item) => prev + (includes(item.name, 'Gold') ? item.ounces : 0), 0)
       ];
 
-      const copperString = copper > 0 ? `${copper} copper` : '';
-      const silverString = silver > 0 ? `${silver} silver` : '';
-      const goldString   = gold   > 0 ? `${gold} gold` : '';
+      player.tradeSkillContainers.metalworking.gainOre('copper', copper);
+      player.tradeSkillContainers.metalworking.gainOre('silver', silver);
+      player.tradeSkillContainers.metalworking.gainOre('gold', gold);
 
-      const resultString = [copperString, silverString, goldString].join(', ');
+      const copperString = copper > 0 ? `${copper} copper ore` : '';
+      const silverString = silver > 0 ? `${silver} silver ore` : '';
+      const goldString   = gold   > 0 ? `${gold} gold ore` : '';
+
+      const resultString = compact([copperString, silverString, goldString]).join(', ');
 
       return `Thanks, ${player.name}! You've gained ${resultString}!`;
     });
