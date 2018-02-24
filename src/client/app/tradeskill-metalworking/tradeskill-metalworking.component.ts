@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { capitalize, startCase } from 'lodash';
-import { toRoman } from 'roman-numerals';
-import { Item } from '../../../shared/models/item';
+import { capitalize } from 'lodash';
 import { MetalworkingHelper } from '../../../server/helpers/metalworking-helper';
 
 @Component({

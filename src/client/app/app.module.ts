@@ -24,7 +24,7 @@ import { ColyseusService } from './colyseus.service';
 import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
 import { MacroService } from './macros.service';
-import { AssetService } from './asset.service'
+import { AssetService } from './asset.service';
 
 import { NavbarComponent } from './app.navbar.component';
 
