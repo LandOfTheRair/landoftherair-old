@@ -2,7 +2,7 @@
 import { NPC } from '../../shared/models/npc';
 import { Item } from '../../shared/models/item';
 
-import { compact, get, isNumber, random } from 'lodash';
+import { compact, get, random } from 'lodash';
 
 import { LootRoller, LootFunctions, LootTable } from 'lootastic';
 
