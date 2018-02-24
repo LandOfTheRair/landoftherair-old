@@ -2,7 +2,7 @@
 import { includes, random, capitalize, get } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../shared/models/character';
-import { ShieldClasses, Item, MagicCutArmorClasses } from '../../shared/models/item';
+import { ShieldClasses, Item, MagicCutArmorClasses, WeaponClasses } from '../../shared/models/item';
 import * as Classes from '../classes';
 import * as Effects from '../effects';
 
@@ -79,6 +79,44 @@ export class CombatHelper {
       opts.throwHand = 'left';
       this.doPhysicalAttack(attacker, defender, opts);
     }
+  }
+
+  private static calcDurabilityDamageDoneBasedOnDefender(item: Item, attacker: Character, defender: Character, baseDamage: number): number {
+    if(!defender.isNaturalResource) return baseDamage;
+
+    if(item.itemClass === 'Bottle') {
+      attacker.sendClientMessage('Your bottle is in critical condition!');
+      return item.condition;
+    }
+
+    attacker.sendClientMessage(`You strain your ${item.itemClass.toLowerCase()} from striking the ${defender.name}!`);
+
+    let modifier = 1;
+    const classMultiplier = attacker.baseClass === 'Warrior' ? 50 : 100;
+
+    if(defender.isOreVein) {
+      if(item.type !== 'Mace') modifier = 2;
+    } else {
+      if(item.type === 'Mace' || item.type === 'Staff') modifier = 2;
+    }
+
+    return classMultiplier * baseDamage * modifier;
+  }
+
+  private static calcDamageDoneBasedOnDefender(item: Item, attacker: Character, defender: Character, baseDamage: number, criticality: number): number {
+    if(!defender.isNaturalResource) return baseDamage;
+
+    if(!includes(WeaponClasses, item.itemClass)) return 0;
+
+    if(defender.isOreVein) {
+      if(item.type === 'Mace') criticality += 1;
+    } else {
+      if(item.type !== 'Mace' && item.type !== 'Staff') criticality += 1;
+    }
+
+    if(attacker.baseClass === 'Warrior') criticality += 1;
+
+    return criticality;
   }
 
   private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
@@ -194,7 +232,8 @@ export class CombatHelper {
     };
 
     const lostAtkCondition = 1 - (attacker.getTraitLevelAndUsageModifier('CarefulTouch'));
-    attackerWeapon.loseCondition(lostAtkCondition, () => attacker.recalculateStats());
+    const totalConditionDamageDone = this.calcDurabilityDamageDoneBasedOnDefender(attackerWeapon, attacker, defender, lostAtkCondition);
+    attackerWeapon.loseCondition(totalConditionDamageDone, () => attacker.recalculateStats());
     defender.addAgro(attacker, 1);
 
     // try to dodge
@@ -205,7 +244,9 @@ export class CombatHelper {
     const defenderDodgeRightSide = Math.floor(defenderScope.dex4 + defenderScope.agi + defenderScope.level);
 
     const attackerDodgeRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`);
-    const defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`);
+    let defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`);
+
+    if(defender.isNaturalResource) defenderDodgeRoll = 0;
 
     let attackDistance = attackRange ? attackRange : 0;
     const distBetween = attacker.distFrom(defender);
@@ -228,7 +269,9 @@ export class CombatHelper {
     const defenderBlockRightSide = Math.floor(defenderScope.level);
 
     const attackerACRoll = Math.max(1, +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`) - defenderScope.armorClass);
-    const defenderACRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderBlockRightSide}`);
+    let defenderACRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderBlockRightSide}`);
+
+    if(defender.isNaturalResource) defenderACRoll = 0;
 
     const acRoll = random(defenderACRoll, attackerACRoll);
     if(acRoll < 0) {
@@ -246,9 +289,11 @@ export class CombatHelper {
     const defenderWeaponBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.skill);
 
     const attackerWeaponBlockRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerWeaponShieldBlockRightSide}`);
-    const defenderWeaponBlockRoll = -+dice.roll(`${defenderWeaponBlockLeftSide}d${defenderWeaponBlockRightSide}`);
+    let defenderWeaponBlockRoll = -+dice.roll(`${defenderWeaponBlockLeftSide}d${defenderWeaponBlockRightSide}`);
 
-    const weaponBlockRoll = random(attackerWeaponBlockRoll, defenderWeaponBlockRoll);
+    if(defender.isNaturalResource) defenderWeaponBlockRoll = 0;
+
+    const weaponBlockRoll = random(defenderWeaponBlockRoll, attackerWeaponBlockRoll);
     if(weaponBlockRoll < 0 && defenderBlocker.isOwnedBy(defender) && defenderBlocker.hasCondition()) {
       attacker.$$room.combatEffect(attacker, 'block-weapon', defender.uuid);
 
@@ -327,18 +372,23 @@ export class CombatHelper {
     }
 
     let damageType = 'was a successful strike';
+    let criticality = 1;
 
     if(attackerScope.damageMin === damageMax) {
       damageType = 'was a grazing blow';
+      criticality = 0;
       attacker.$$room.combatEffect(attacker, 'hit-min', defender.uuid);
 
     } else if(attackerScope.damageMax === damageMax) {
       damageType = 'left a grievous wound';
+      criticality = 2;
       attacker.$$room.combatEffect(attacker, 'hit-max', defender.uuid);
 
     } else {
       attacker.$$room.combatEffect(attacker, 'hit-mid', defender.uuid);
     }
+
+    damage = this.calcDamageDoneBasedOnDefender(attackerWeapon, attacker, defender, damage, criticality);
 
     damage = this.dealDamage(attacker, defender, {
       damage,
@@ -410,6 +460,7 @@ export class CombatHelper {
       }
     }
 
+    damage = attacked.isNaturalResource ? 0 : damage;
     const totalDamage = this.dealDamage(attacker, attacked, { damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg });
 
     if(attacker && !attacker.isPlayer() && effect) {
@@ -461,6 +512,8 @@ export class CombatHelper {
 
     if(defender.isDead() || (<any>defender).hostility === 'Never') return;
 
+    const baseDamage = damage;
+
     const isHeal = damage < 0;
 
     if(attacker) {
@@ -506,6 +559,8 @@ export class CombatHelper {
 
     this.doElementalDebuffing(attacker, defender, damageClass, damage);
 
+    if(defender.isNaturalResource) damage = baseDamage;
+
     const absDmg = Math.round(Math.abs(damage));
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;
 
@@ -541,8 +596,9 @@ export class CombatHelper {
       }
     } else {
       if(attacker) {
+        const killMethod = defender.isNaturalResource ? 'smashed' : 'killed';
         defender.sendClientMessageToRadius({
-          message: `${defender.name} was killed by ${attacker.name}!`, subClass: 'combat self kill' }, 5, [defender.uuid]
+          message: `${defender.name} was ${killMethod} by ${attacker.name}!`, subClass: 'combat self kill' }, 5, [defender.uuid]
         );
         defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
         defender.die(attacker);

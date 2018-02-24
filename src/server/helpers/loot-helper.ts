@@ -2,7 +2,7 @@
 import { NPC } from '../../shared/models/npc';
 import { Item } from '../../shared/models/item';
 
-import { compact, get } from 'lodash';
+import { compact, get, isNumber, random } from 'lodash';
 
 import { LootRoller, LootFunctions, LootTable } from 'lootastic';
 
@@ -15,7 +15,9 @@ export class LootHelper {
   static async getAllLoot(npc: NPC, bonus = 0, sackOnly = false): Promise<Item[]> {
     const tables = [];
 
-    if(npc.$$room.dropTables.map.length > 0) {
+    const isNaturalResource = npc.isNaturalResource;
+
+    if(!isNaturalResource && npc.$$room.dropTables.map.length > 0) {
       tables.push({
         table: new LootTable(npc.$$room.dropTables.map, bonus),
         func: LootFunctions.EachItem,
@@ -23,7 +25,7 @@ export class LootHelper {
       });
     }
 
-    if(npc.$$room.dropTables.region.length > 0) {
+    if(!isNaturalResource && npc.$$room.dropTables.region.length > 0) {
       tables.push({
         table: new LootTable(npc.$$room.dropTables.region, bonus),
         func: LootFunctions.EachItem,
@@ -40,12 +42,15 @@ export class LootHelper {
     }
 
     if(npc.dropPool) {
-      const { items, choose } = npc.dropPool;
-      if(choose > 0 && items.length > 0) {
+      const { items, choose, replace } = npc.dropPool;
+
+      const numChoices = random(choose.min, choose.max);
+
+      if(numChoices > 0 && items.length > 0) {
         tables.push({
           table: new LootTable(items, bonus),
-          func: LootFunctions.WithoutReplacement,
-          args: choose
+          func: replace ? LootFunctions.WithReplacement : LootFunctions.WithoutReplacement,
+          args: numChoices
         });
       }
     }

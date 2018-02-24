@@ -44,7 +44,7 @@ export class NPC extends Character {
 
   copyDrops: any[];
   drops: Item[];
-  dropPool: { items: Item[], choose: number };
+  dropPool: { items: Item[], choose: { min: number, max: number }, replace?: boolean };
   giveXp: any;
   repMod: Array<{ delta: number, allegiance: Allegiance }>;
 
@@ -65,6 +65,10 @@ export class NPC extends Character {
   $$following: boolean;
   $$hadRightHandAtSpawn: boolean;
   private $$targetDamageDone = {};
+
+  get dropsCorpse(): boolean {
+    return !this.isNaturalResource;
+  }
 
   init() {
     if(!this.uuid) this.uuid = uuid();

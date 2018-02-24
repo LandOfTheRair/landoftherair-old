@@ -1,0 +1,113 @@
+
+
+- npcId: Basic Gold Vein
+  name: gold vein
+  hostility: OnHit
+  allegiance: NaturalResource
+  sprite: 1835
+  alignment: Neutral
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  skillOnKill: 1
+
+  hp:
+    min: 6
+    max: 10
+
+  giveXp:
+    min: 100
+    max: 150
+
+  gear:
+    Armor: Gold Ore (Small)
+
+  dropPool:
+    replace: true
+    choose:
+      min: 1
+      max: 3
+    items:
+      - result: Gold Ore (Small)
+        chance: 20
+      - result: Gold Ore (Large)
+        chance: 1
+
+  drops:
+    - result: Antanian Purple Gem
+      chance: 1
+      maxChance: 200
+    - result: Antanian Small Green Gem
+      chance: 1
+      maxChance: 200
+    - result: Antanian Small Red Gem
+      chance: 1
+      maxChance: 200
+    - result: Antanian Diamond
+      chance: 1
+      maxChance: 200
+    - result: Antanian Small Black Pearl
+      chance: 1
+      maxChance: 200
+
+  spawnMessage: "a spontaneous eruption of gold"
+
+- npcId: Rich Gold Vein
+  name: rich gold vein
+  hostility: OnHit
+  allegiance: NaturalResource
+  sprite: 1835
+  alignment: Neutral
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  skillOnKill: 1
+
+  gold:
+    min: 0
+    max: 0
+
+  hp:
+    min: 10
+    max: 15
+
+  giveXp:
+    min: 100
+    max: 150
+
+  gear:
+    Armor: Gold Ore (Large)
+
+  dropPool:
+    replace: true
+    choose:
+      min: 2
+      max: 3
+    items:
+      - result: Gold Ore (Small)
+        chance: 5
+      - result: Gold Ore (Large)
+        chance: 1
+
+  drops:
+    - result: Gold Ore (Large)
+      chance: -1
+    - result: Antanian Purple Gem
+      chance: 1
+      maxChance: 200
+    - result: Antanian Small Green Gem
+      chance: 1
+      maxChance: 200
+    - result: Antanian Small Red Gem
+      chance: 1
+      maxChance: 200
+    - result: Antanian Diamond
+      chance: 1
+      maxChance: 200
+    - result: Antanian Small Black Pearl
+      chance: 1
+      maxChance: 200
+
+  spawnMessage: "a spontaneous eruption of gold"

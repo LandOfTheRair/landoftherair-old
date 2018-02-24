@@ -53,6 +53,36 @@ const skills = {
     '3rd Renowned Enchanter',
     '4th Renowned Enchanter',
     'Legendary Enchanter'
+  ],
+  metalforging: [
+    'Unpracticed',
+    'Smasher of Rocks',
+    'Novice Molder',
+    'Learned Molder',
+    'Skilled Molder',
+    'Master Molder',
+    'Novice Smelter',
+    'Learned Smelter',
+    'Skilled Smelter',
+    'Master Smelter',
+    'Novice Forger',
+    'Skilled Forger',
+    'Proficient Forger',
+    'Astute Forger',
+    'Adept Forger',
+    '1st Prodigious Forger',
+    '2nd Prodigious Forger',
+    '3rd Prodigious Forger',
+    '4th Prodigious Forger',
+    '1st Master Forger',
+    '2nd Master Forger',
+    '3rd Master Forger',
+    '4th Master Forger',
+    '1st Renowned Forger',
+    '2nd Renowned Forger',
+    '3rd Renowned Forger',
+    '4th Renowned Forger',
+    'Legendary Forger'
   ]
 };
 

@@ -19,3 +19,40 @@
   desc: "a chunk of raw titanium"
   binds: true
   value: 3500
+
+- name: Copper Ore (Small)
+  sprite: 993
+  desc: "copper ore"
+  ounces: 1
+  value: 100
+
+- name: Copper Ore (Large)
+  sprite: 994
+  desc: "copper ore"
+  ounces: 5
+  value: 500
+
+- name: Silver Ore (Small)
+  sprite: 614
+  desc: "silver ore"
+  ounces: 1
+  value: 300
+
+- name: Silver Ore (Large)
+  sprite: 615
+  desc: "silver ore"
+  ounces: 5
+  value: 1500
+
+- name: Gold Ore (Small)
+  sprite: 950
+  desc: "gold ore"
+  ounces: 1
+  value: 500
+
+- name: Gold Ore (Large)
+  sprite: 951
+  desc: "gold  ore"
+  ounces: 5
+  value: 2500
+

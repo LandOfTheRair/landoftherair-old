@@ -1044,7 +1044,9 @@
     Ear: Antanian Earring
 
   dropPool:
-    choose: 2
+    choose:
+      min: 1
+      max: 1
     items:
       - Steffen Offensive Sash
       - Yzalt Basic Sash
@@ -1113,7 +1115,9 @@
     Ear: Antanian Earring
 
   dropPool:
-    choose: 1
+    choose:
+      min: 1
+      max: 1
     items:
       - Yzalt Basic Sash
       - Yzalt MagicResist Bracers

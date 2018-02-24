@@ -61,12 +61,11 @@ export class DeathHelper {
     return corpse;
   }
 
-
   static async calculateLootDrops(npc: NPC, killer: Character) {
     const bonus = killer.getTotalStat('luk');
 
     if(!killer.isPlayer()) {
-      this.createCorpse(npc, []);
+      if(npc.dropsCorpse) this.createCorpse(npc, []);
       return;
     }
 
@@ -78,6 +77,20 @@ export class DeathHelper {
       allItems.push(gold);
     }
 
-    this.createCorpse(npc, allItems);
+    if(npc.dropsCorpse) {
+      this.createCorpse(npc, allItems);
+
+    } else if(allItems.length > 0) {
+
+      if(npc.isNaturalResource) {
+        if(npc.isOreVein) {
+          killer.sendClientMessage(`Something falls out of the rubble.`);
+        } else {
+          killer.sendClientMessage(`Something falls to the ground`);
+        }
+      }
+
+      allItems.forEach(item => npc.$$room.addItemToGround(npc, item));
+    }
   }
 }
