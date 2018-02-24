@@ -8,6 +8,7 @@ import { DB } from '../database';
 import { Player } from '../../shared/models/player';
 
 import * as Effects from '../effects';
+import { Item } from '../../shared/models/item';
 
 export class NPCLoader {
 
@@ -135,7 +136,7 @@ export class NPCLoader {
       } else {
         if(item.name !== name) continue;
       }
-      
+
       indexes.push(i);
     }
 
