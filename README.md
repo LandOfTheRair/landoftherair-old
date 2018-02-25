@@ -121,6 +121,7 @@ As a GM, you get access to several commands in the lobby:
 
 You also get access to some commands in-game:
 
+* `@allegiance <allegiance>` - change your allegiance to `allegiance`. If `GM` is specified, then you will be non-hostle to everything, and they will be non-hostile to you
 * `@gold <num>` - create <num> gold on your tile
 * `@item <item name>` - create a particular item on your tile
 * `@itemdupe` - copy your right hand to your left hand

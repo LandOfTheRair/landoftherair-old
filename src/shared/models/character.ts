@@ -35,7 +35,8 @@ export type Allegiance =
 | 'Wilderness'
 | 'Underground'
 | 'Enemy'
-| 'NaturalResource';
+| 'NaturalResource'
+| 'GM';
 
 export type Sex = 'Male' | 'Female';
 

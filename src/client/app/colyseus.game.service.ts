@@ -756,6 +756,7 @@ export class ColyseusGameService {
   public hostilityLevelFor(compare: Character): 'hostile'|'neutral'|'friendly' {
     const me = this.character;
 
+    if(me.allegiance === 'GM') return 'neutral';
     if(compare.isNaturalResource) return 'neutral';
 
     if(me.partyName && me.partyName === (<Player>compare).partyName) return 'neutral';
