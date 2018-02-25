@@ -24,9 +24,9 @@ export class MessageHelper {
     return censor.cleanProfanity(message || '');
   }
 
-  static sendClientMessage(char: Character, message) {
+  static sendClientMessage(char: Character, message, rootCharacter?: Character) {
     if(!char.isPlayer()) return;
-    char.$$room.sendPlayerLogMessage(char, this.cleanMessage(message));
+    char.$$room.sendPlayerLogMessage(char, this.cleanMessage(message), rootCharacter);
   }
 
   static sendClientMessageToRadius(char: Character, message, radius = 0, except = []) {

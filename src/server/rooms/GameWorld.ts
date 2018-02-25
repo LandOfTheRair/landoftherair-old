@@ -348,13 +348,13 @@ export class GameWorld extends Room<GameState> {
     return get(this.usernameClientHash, [player.username, 'client']);
   }
 
-  sendPlayerLogMessage(player: Player, messageData) {
+  sendPlayerLogMessage(player: Player, messageData, rootCharacter?: Character) {
     const client = this.findClient(player);
     if(!client) return;
-    this.sendClientLogMessage(client, messageData);
+    this.sendClientLogMessage(client, messageData, rootCharacter);
   }
 
-  sendClientLogMessage(client, messageData) {
+  sendClientLogMessage(client, messageData, rootCharacter?: Character) {
 
     let overMessage = messageData;
     let overName = '';
@@ -376,6 +376,8 @@ export class GameWorld extends Room<GameState> {
         grouping = overClass.split(' ')[0];
       }
     }
+
+    if(rootCharacter) overName = `as ${rootCharacter.name}`;
 
     this.send(client, {
       action: 'log_message',

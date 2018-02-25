@@ -246,6 +246,8 @@ export class Character {
   @nonenumerable
   $$ai: any;
 
+  $$interceptor: Character;
+
   sprite: number;
 
   alignment: Alignment = 'Neutral';
@@ -994,6 +996,10 @@ export class Character {
 
   sendClientMessage(message) {
     MessageHelper.sendClientMessage(this, message);
+
+    if(this.$$interceptor) {
+      MessageHelper.sendClientMessage(this.$$interceptor, message, this);
+    }
   }
 
   sendClientMessageToRadius(message, radius = 0, except = []) {

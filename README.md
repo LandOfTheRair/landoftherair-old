@@ -130,6 +130,7 @@ You also get access to some commands in-game:
 * `@skill <skillname> <xpgain>` - gain `xpgain` skill for `skillname`
 * `@tp <tpgain>` - gain `tpgain` trait points
 * `@xp <xp>` - gain <xp> XP
+* `@intercept <target>` - you will see log messages as this target (as well as your own).
 * `@kill <target>` - will instantly kill `target`
 * `@itemmod propsish` - modify your rightHand item based on props specified, for example: `ounces=10`
 * `@npcmod npcish propsish` - modify the npc based on propsish

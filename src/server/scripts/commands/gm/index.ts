@@ -8,6 +8,7 @@ export * from './GMForgeItem';
 export * from './GMGainSkill';
 export * from './GMGainTraitPoints';
 export * from './GMGainXP';
+export * from './GMIntercept';
 export * from './GMKill';
 export * from './GMModifyItem';
 export * from './GMModifyNPC';
