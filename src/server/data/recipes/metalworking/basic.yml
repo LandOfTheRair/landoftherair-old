@@ -1,0 +1,45 @@
+
+- item: Ether Fullplate
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Breastplate
+    - Ether Scale
+
+- item: Ether Fullplate II
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 3
+  xpGained: 600
+  ingredients:
+    - Ether Fullplate
+    - Ether Scale
+
+- item: Ether Scaleplate
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Scalemail Tunic
+    - Ether Scale
+
+- item: Ether Scaleplate II
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 3
+  xpGained: 600
+  ingredients:
+    - Ether Scaleplate
+    - Ether Scale
+
+- item: Ether Broadsword
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Longsword
+    - Ether Scale

@@ -122,7 +122,7 @@ export const SmithResponses = (npc: NPC) => {
       return `Hello, ${player.name}! 
       I am a Smith. I can repair your weapons and armor - just hold them in your right hand! 
       Or, you can tell me REPAIRALL and I will repair what you're holding and what you're wearing.
-      You can also METALWORK here, I can COLLECT your ore, and I can ASSESS your progress!`;
+      You can also METALWORK here, I can COLLECT your ore, I can ASSESS your progress, and I can FORGE your items!`;
     });
 
   npc.parser.addCommand('repairall')
@@ -204,6 +204,24 @@ export const SmithResponses = (npc: NPC) => {
       const resultString = compact([copperString, silverString, goldString]).join(', ');
 
       return `Thanks, ${player.name}! You've gained ${resultString}!`;
+    });
+
+  npc.parser.addCommand('forge')
+    .set('syntax', ['forge'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      const left = player.leftHand;
+      const right = player.rightHand;
+
+      if(!left
+      || !right
+      || !includes(right.name, 'Mold')
+      || !includes(left.name, 'Ingot')) return 'You need to hold an armor or weapon mold in your right hand, and an ingot in your left!';
+
+      MetalworkingHelper.forgeItem(player);
+
+      return 'Your forge was successful!';
     });
 };
 
@@ -508,6 +526,7 @@ export const EncrusterResponses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(!player.rightHand) return 'You must hold an item in your right hand!';
+      if(player.rightHand.itemClass === 'Rock') return 'Hey! I put rocks in items, not other rocks.';
       if(player.rightHand.itemClass === 'Corpse') return 'That would be disrespectful.';
       if(!player.rightHand.isOwnedBy(player)) return 'That item does not belong to you!';
       if(!player.leftHand || player.leftHand.itemClass !== 'Gem') return 'You must hold a gem in your left hand!';

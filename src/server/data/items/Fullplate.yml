@@ -1,5 +1,20 @@
 
-- name: Test Fullplate
-  sprite: 363
-  desc: "a red fullplate made of interleaved dragon scales"
-  value: 500
+- name: Ether Fullplate
+  sprite: 383
+  stats:
+    armorClass: 20
+    fireResist: 50
+    iceResist: 50
+  desc: "a red fullplate made of refined ether"
+  binds: true
+  value: 5000
+
+- name: Ether Fullplate II
+  sprite: 524
+  stats:
+    armorClass: 25
+    fireResist: 100
+    iceResist: 100
+  desc: "a red fullplate, twice refined, forged with ether"
+  binds: true
+  value: 15000

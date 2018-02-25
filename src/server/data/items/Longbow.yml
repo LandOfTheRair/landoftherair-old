@@ -14,22 +14,22 @@
 - name: Ranata Longbow
   quality: 5
   stats:
-    offense: 2
+    offense: 3
 
   effect:
-    name: MagicMissile
-    potency: 10
-    chance: 5
+    name: Darkness
+    potency: 20
+    chance: 100
 
   trait:
-    name: NecroticFocus
+    name: ShadowDaggers
     level: 1
 
   desc: "a crystal longbow, glowing with dark magic"
-  baseDamage: 15
-  minDamage: 5
-  maxDamage: 10
-  damageRolls: 2
+  baseDamage: 20
+  minDamage: 10
+  maxDamage: 15
+  damageRolls: 3
   type: Ranged
   secondaryType: Twohanded
   value: 2300

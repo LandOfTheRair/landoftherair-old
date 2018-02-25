@@ -24,17 +24,19 @@ export class TradeskillMetalworkingComponent {
   }
 
   get craftDisabled(): boolean {
-    return false;
+    const item = this.player.tradeSkillContainers.metalworking.craftItem;
+    const reagent = this.player.tradeSkillContainers.metalworking.craftReagent;
+    return !item || !reagent;
   }
 
   get upgradeDisabled(): boolean {
-    return false;
+    const item = this.player.tradeSkillContainers.metalworking.upgradeItem;
+    const reagent = this.player.tradeSkillContainers.metalworking.upgradeReagent;
+    return !item || !reagent;
   }
 
   get showInfo(): boolean {
-    const item = this.player.tradeSkillContainers.metalworking.upgradeItem;
-    const reagent = this.player.tradeSkillContainers.metalworking.upgradeReagent;
-    return item && reagent;
+    return !this.upgradeDisabled;
   }
 
   constructor(public colyseusGame: ColyseusGameService) { }

@@ -1,0 +1,20 @@
+
+- name: Ether Scaleplate
+  sprite: 273
+  stats:
+    armorClass: 15
+    fireResist: 150
+    iceResist: 150
+  desc: "a bright red scaleplate made of refined ether"
+  binds: true
+  value: 5000
+
+- name: Ether Scaleplate II
+  sprite: 270
+  stats:
+    armorClass: 10
+    fireResist: 200
+    iceResist: 200
+  desc: "a bright red scaleplate, twice refined, forged with ether"
+  binds: true
+  value: 15000

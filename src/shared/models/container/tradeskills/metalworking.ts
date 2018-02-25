@@ -1,7 +1,7 @@
 
 import { extend, clone, includes } from 'lodash';
 
-import { Item, ArmorClasses } from '../../item';
+import { Item, ArmorClasses, WeaponClasses } from '../../item';
 import { Container } from '../container';
 
 export class MetalworkingContainer extends Container {
@@ -82,15 +82,14 @@ export class MetalworkingContainer extends Container {
     if(index < 0 || index === 2 || index >= 5) return false;
 
     // index === 0 = main slot armor (tunic or breastplate)
-    if(index === 0 && item.itemClass !== 'Tunic' && item.itemClass !== 'Breastplate') return false;
 
     // index === 1 = upgrade component (scale, etc)
     if(index === 1 && item.itemClass !== 'Scale') return false;
 
     // index === 2 = mold output
 
-    // index === 3 = main slot armor (any)
-    if(index === 3 && !includes(ArmorClasses, item.itemClass)) return false;
+    // index === 3 = main slot armor (any) or weapon (any)
+    if(index === 3 && !includes(ArmorClasses, item.itemClass) && !includes(WeaponClasses, item.itemClass)) return false;
 
     // index === 4 = upgrade component (ingot or fur)
     if(index === 4 && !includes(item.name, 'Ingot') && item.itemClass !== 'Fur') return false;

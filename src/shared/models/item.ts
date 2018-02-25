@@ -14,7 +14,7 @@ export const ValidItemTypes = [
 ];
 
 export const WeaponClasses = [
-  'Axe', 'Broadsword', 'Crossbow', 'Dagger', 'Club', 'Crossbow', 'Greataxe', 'Greatmace', 'Greatsword', 'Hammer', 'Halberd', 'Longbow',
+  'Axe', 'Broadsword', 'Crossbow', 'Dagger', 'Club', 'Greataxe', 'Greatmace', 'Greatsword', 'Hammer', 'Halberd', 'Longbow',
   'Longsword', 'Mace', 'Shield', 'Shortbow', 'Shortsword', 'Spear', 'Staff', 'Wand'
 ];
 
@@ -23,7 +23,7 @@ export const ShieldClasses = [
 ];
 
 export const ArmorClasses = [
-  'Tunic', 'Breastplate', 'Fur', 'Fullplate'
+  'Tunic', 'Breastplate', 'Fur', 'Fullplate', 'Scaleplate'
 ];
 
 export const RobeClasses = [
@@ -100,6 +100,7 @@ export class ItemRequirements {
 }
 
 export class Encrust {
+  name?: string;
   desc: string;
   sprite: number;
   stats: any = {};
@@ -276,7 +277,7 @@ export class Item {
 
     const levelText = this.requirements && this.requirements.level ? `You must be level ${this.requirements.level} to use this item. ` : '';
 
-    const encrustText = this.encrust ? ` set with ${this.encrust.desc}` : '';
+    const encrustText = this.encrust && this.encrust.desc ? ` set with ${this.encrust.desc}` : '';
     const ozText = this.itemClass !== 'Bottle' && this.ounces > 0 ? `${this.ounces}oz of ` : '';
     const baseText = `You are looking at ${ozText}${this.desc}${encrustText}. `;
     const conditionText = `The item is in ${this.conditionString()} condition. `;
