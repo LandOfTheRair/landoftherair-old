@@ -5,7 +5,7 @@ export class CalmMind extends Trait {
 
   static baseClass = 'Healer';
   static traitName = 'CalmMind';
-  static description = 'Regenerate mana faster.';
+  static description = 'Gain +1 to your mana regeneration per point.';
   static icon = 'psychic-waves';
 
   static tpCost = 10;

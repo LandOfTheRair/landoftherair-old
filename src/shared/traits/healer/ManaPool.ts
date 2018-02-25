@@ -5,7 +5,7 @@ export class ManaPool extends Trait {
 
   static baseClass = 'Healer';
   static traitName = 'ManaPool';
-  static description = 'Gain additional mana.';
+  static description = 'Gain +1 additional mana per point.';
   static icon = 'drink-me';
 
   static tpCost = 1;

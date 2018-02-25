@@ -6,7 +6,7 @@ export class Swashbuckler extends Trait {
 
   static baseClass = 'Warrior';
   static traitName = 'Swashbuckler';
-  static description = 'Further enhance your sword craft, strengthening your offense. Requires [Sword Tricks] Level 5';
+  static description = 'Further enhance your sword craft, strengthening your offense by 1 per point. Requires [Sword Tricks] Level 5';
   static icon = 'sword-clash';
 
   static tpCost = 20;
