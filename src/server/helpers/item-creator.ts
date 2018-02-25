@@ -92,7 +92,7 @@ export class ItemCreator {
 
   setItemExpiry(item: Item, hours = 1) {
     const expiry = new Date();
-    expiry.setHours(expiry.getHours() + hours);
+    expiry.setMinutes(expiry.getMinutes() + (hours * 60));
     item.expiresAt = expiry.getTime();
   }
 
