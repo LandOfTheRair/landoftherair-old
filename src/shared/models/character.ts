@@ -327,7 +327,11 @@ export class Character {
   }
 
   initEffects() {
-    this.effects = this.effects.map(x => new Effects[x.name](x));
+    this.effects = this.effects.map(x => {
+      const eff = new Effects[x.name](x);
+      eff.iconData = x.iconData;
+      return eff;
+    });
   }
 
   constructor(opts) {

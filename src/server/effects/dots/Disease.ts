@@ -43,6 +43,8 @@ export class Disease extends SpellEffect {
 
   effectStart(char: Character) {
     this.effectMessage(char, 'You were diseased!');
+
+    this.iconData.tooltipDesc = `Constantly receiving ${Math.abs(this.effectInfo.damage)} necrotic damage.`;
   }
 
   effectTick(char: Character) {

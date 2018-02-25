@@ -9,7 +9,7 @@ export class Absorption extends SpellEffect {
     name: 'magic-swirl',
     bgColor: '#a0a',
     color: '#fff',
-    tooltipDesc: 'Negate some magic damage.'
+    tooltipDesc: 'Negates some magic damage.'
   };
 
   maxSkillForSkillGain = 15;
@@ -32,6 +32,8 @@ export class Absorption extends SpellEffect {
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'Your body builds a temporary resistance to magic.');
     char.gainStat('magicalResist', this.potency * this.potencyMultiplier);
+
+    this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} magic damage.`;
   }
 
   effectEnd(char: Character) {

@@ -43,6 +43,8 @@ export class Poison extends SpellEffect {
 
   effectStart(char: Character) {
     this.effectMessage(char, 'You were poisoned!');
+
+    this.iconData.tooltipDesc = `Constantly receiving ${Math.abs(this.effectInfo.damage)} necrotic damage.`;
   }
 
   effectTick(char: Character) {

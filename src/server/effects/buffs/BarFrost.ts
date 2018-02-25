@@ -36,6 +36,8 @@ export class BarFrost extends SpellEffect {
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'Your body builds a temporary resistance to frost.');
     char.gainStat('iceResist', this.potency * this.potencyMultiplier);
+
+    this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} ice damage.`;
   }
 
   effectEnd(char: Character) {

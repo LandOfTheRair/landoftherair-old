@@ -36,6 +36,8 @@ export class Regen extends SpellEffect {
 
   effectStart(char: Character) {
     this.effectMessage(char, 'Your body begins to repair itself more quickly!');
+
+    this.iconData.tooltipDesc = `Constantly restoring ${Math.abs(this.effectInfo.damage)} health.`;
   }
 
   effectTick(char: Character) {

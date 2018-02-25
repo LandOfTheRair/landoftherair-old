@@ -33,6 +33,8 @@ export class EagleEye extends SpellEffect {
     this.targetEffectMessage(char, 'Your vision expands to see through the trees and beneath the waters.');
     char.gainStat('perception', this.potency);
     char.gainStat('accuracy', this.potency);
+
+    this.iconData.tooltipDesc = `Seeing through the trees and waters. +${this.potency} perception/accuracy.`;
   }
 
   effectEnd(char: Character) {
