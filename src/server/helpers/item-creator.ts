@@ -75,6 +75,10 @@ export class ItemCreator {
     return this.rollStatsForItem(new Item(item), room);
   }
 
+  async getRecipe(query: any): Promise<any> {
+    return DB.$recipes.findOne(query);
+  }
+
   searchItems(name: string): Promise<Item[]> {
     const regex = new RegExp(`.*${name}.*`, 'i');
     return DB.$items.find({ name: regex }).toArray();

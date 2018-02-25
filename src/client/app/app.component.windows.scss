@@ -203,13 +203,19 @@
 
     z-index: 1000;
 
-    &.alchemy, &.spellforging {
+    &.alchemy, &.spellforging, &.metalworking {
       min-height: 300px;
     }
 
     &.spellforging {
       min-width: 700px;
       max-width: 700px;
+    }
+
+    &.metalworking {
+      min-width: 700px;
+      max-width: 700px;
+      min-height: 400px;
     }
   }
 

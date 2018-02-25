@@ -19,7 +19,7 @@
   baseDamage: 3
   damageRolls: 1
   sprite: 232
-  desc: "a pair of leather boots"
+  desc: "a pair of leather boots engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   value: 50
 
 - name: Yzalt Combat Boots
@@ -42,7 +42,7 @@
 - name: Tower Offense Boots
   stats:
     armorClass: 2
-  randomStats: 
+  randomStats:
     offense:
       min: 3
       max: 5
@@ -61,7 +61,7 @@
 - name: Tower Defense Boots
   stats:
     armorClass: 4
-  randomStats: 
+  randomStats:
     defense:
       min: 3
       max: 5

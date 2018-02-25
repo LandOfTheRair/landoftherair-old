@@ -34,7 +34,8 @@ export type Allegiance =
 | 'Adventurers'
 | 'Wilderness'
 | 'Underground'
-| 'Enemy';
+| 'Enemy'
+| 'NaturalResource';
 
 export type Sex = 'Male' | 'Female';
 
@@ -67,7 +68,8 @@ export const SkillClassNames = {
   Restoration: 'Restoration',
 
   Alchemy: 'Alchemy',
-  Spellforging: 'Spellforging'
+  Spellforging: 'Spellforging',
+  Metalworking: 'Metalworking'
 };
 
 export class Skills {
@@ -92,6 +94,7 @@ export class Skills {
   // trade skills
   alchemy = 0;
   spellforging = 0;
+  metalworking = 0;
 }
 
 export class Stats {
@@ -263,6 +266,14 @@ export class Character {
 
   get beltSize() {
     return MaxSizes.Belt;
+  }
+
+  get isNaturalResource(): boolean {
+    return this.allegiance === 'NaturalResource';
+  }
+
+  get isOreVein(): boolean {
+    return this.isNaturalResource && includes(this.name, 'vein');
   }
 
   getTotalStat(stat: StatName) {
@@ -992,6 +1003,8 @@ export class Character {
   }
 
   tick() {
+    if(this.isNaturalResource) return;
+
     if(this.isDead()) {
       CharacterHelper.handleDeadCharacter(this);
       return;

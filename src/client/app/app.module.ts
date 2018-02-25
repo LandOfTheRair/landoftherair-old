@@ -26,6 +26,8 @@ import { ColyseusGameService } from './colyseus.game.service';
 import { MacroService } from './macros.service';
 import { AssetService } from './asset.service';
 
+import { NavbarComponent } from './app.navbar.component';
+
 import { CloseButtonComponent } from './_shared/close-button.component';
 import { MinimizeButtonComponent } from './_shared/minimize-button.component';
 import { PlayerTaglineComponent } from './_shared/character-tagline.component';
@@ -50,6 +52,7 @@ import { StatusWindowComponent } from './status/status-window.component';
 import { GroundComponent } from './ground/ground.component';
 import { InventorySackComponent } from './inventory-sack/inventory-sack.component';
 import { InventoryBeltComponent } from './inventory-belt/inventory-belt.component';
+import { InventoryPouchComponent } from './inventory-pouch/inventory-pouch.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { EquipmentViewOnlyComponent } from './equipment-viewonly/equipment-viewonly.component';
 import { NpcsComponent } from './npcs/npcs.component';
@@ -66,8 +69,7 @@ import { TraitsComponent } from './traits/traits.component';
 
 import { TradeskillAlchemyComponent } from './tradeskill-alchemy/tradeskill-alchemy.component';
 import { TradeskillSpellforgingComponent } from './tradeskill-spellforging/tradeskill-spellforging.component';
-import { InventoryPouchComponent } from './inventory-pouch/inventory-pouch.component';
-import { NavbarComponent } from './app.navbar.component';
+import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/tradeskill-metalworking.component';
 
 (<any>window).PhaserGlobal = { hideBanner: true };
 
@@ -120,7 +122,8 @@ import { NavbarComponent } from './app.navbar.component';
     TraitsComponent,
 
     TradeskillAlchemyComponent,
-    TradeskillSpellforgingComponent
+    TradeskillSpellforgingComponent,
+    TradeskillMetalworkingComponent
   ],
   imports: [
     BrowserModule,

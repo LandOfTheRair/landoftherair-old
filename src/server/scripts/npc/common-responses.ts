@@ -1,6 +1,6 @@
 
 import { NPC } from '../../../shared/models/npc';
-import { includes, capitalize, sample, get, random } from 'lodash';
+import { includes, capitalize, sample, get, random, compact } from 'lodash';
 import { Logger } from '../../logger';
 import { AllNormalGearSlots, SkillClassNames } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
@@ -8,6 +8,8 @@ import { NPCLoader } from '../../helpers/npc-loader';
 import { Revive } from '../../effects/cures/Revive';
 import { LearnAlchemy } from '../../quests/antania/Rylt/LearnAlchemy';
 import { SkillHelper } from '../../helpers/skill-helper';
+import { SpellforgingHelper } from '../../helpers/spellforging-helper';
+import { MetalworkingHelper } from '../../helpers/metalworking-helper';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -119,7 +121,8 @@ export const SmithResponses = (npc: NPC) => {
 
       return `Hello, ${player.name}! 
       I am a Smith. I can repair your weapons and armor - just hold them in your right hand! 
-      Or, you can tell me REPAIRALL and I will repair what you're holding and what you're wearing.`;
+      Or, you can tell me REPAIRALL and I will repair what you're holding and what you're wearing.
+      You can also METALWORK here, I can COLLECT your ore, I can ASSESS your progress, and I can FORGE your items!`;
     });
 
   npc.parser.addCommand('repairall')
@@ -152,6 +155,74 @@ export const SmithResponses = (npc: NPC) => {
       return `Thank you, ${player.name}! I've done what I can. You've spent ${totalCosts.toLocaleString()} gold.`;
     });
 
+  npc.parser.addCommand('metalwork')
+    .set('syntax', ['metalwork'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(!MetalworkingHelper.canMetalwork(player)) return 'Only Warriors can engage in Metalworking!';
+      npc.$$room.showMetalworkingWindow(player, npc);
+    });
+
+  npc.parser.addCommand('assess')
+    .set('syntax', ['assess'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      const assessCost = 50;
+      if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
+
+      player.loseGold(assessCost);
+
+      const percentWay = SkillHelper.assess(player, SkillClassNames.Metalworking);
+      return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Metalworking.toUpperCase()} proficiency.`;
+    });
+
+  npc.parser.addCommand('ore')
+    .set('syntax', ['ore'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      const indexes = NPCLoader.getItemsFromPlayerSackByName(player, ' Ore ', true);
+      if(indexes.length === 0) return 'You don\'t have any ore!';
+
+      const allOre = NPCLoader.takeItemsFromPlayerSack(player, indexes);
+
+      const [copper, silver, gold] = [
+        allOre.reduce((prev, item) => prev + (includes(item.name, 'Copper') ? item.ounces : 0), 0),
+        allOre.reduce((prev, item) => prev + (includes(item.name, 'Silver') ? item.ounces : 0), 0),
+        allOre.reduce((prev, item) => prev + (includes(item.name, 'Gold') ? item.ounces : 0), 0)
+      ];
+
+      player.tradeSkillContainers.metalworking.gainOre('copper', copper);
+      player.tradeSkillContainers.metalworking.gainOre('silver', silver);
+      player.tradeSkillContainers.metalworking.gainOre('gold', gold);
+
+      const copperString = copper > 0 ? `${copper} copper ore` : '';
+      const silverString = silver > 0 ? `${silver} silver ore` : '';
+      const goldString   = gold   > 0 ? `${gold} gold ore` : '';
+
+      const resultString = compact([copperString, silverString, goldString]).join(', ');
+
+      return `Thanks, ${player.name}! You've gained ${resultString}!`;
+    });
+
+  npc.parser.addCommand('forge')
+    .set('syntax', ['forge'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      const left = player.leftHand;
+      const right = player.rightHand;
+
+      if(!left
+      || !right
+      || !includes(right.name, 'Mold')
+      || !includes(left.name, 'Ingot')) return 'You need to hold an armor or weapon mold in your right hand, and an ingot in your left!';
+
+      MetalworkingHelper.forgeItem(player);
+
+      return 'Your forge was successful!';
+    });
 };
 
 export const RandomlyShouts = (npc: NPC, responses: string[] = [], opts: any = { combatOnly: false }) => {
@@ -455,6 +526,7 @@ export const EncrusterResponses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(!player.rightHand) return 'You must hold an item in your right hand!';
+      if(player.rightHand.itemClass === 'Rock') return 'Hey! I put rocks in items, not other rocks.';
       if(player.rightHand.itemClass === 'Corpse') return 'That would be disrespectful.';
       if(!player.rightHand.isOwnedBy(player)) return 'That item does not belong to you!';
       if(!player.leftHand || player.leftHand.itemClass !== 'Gem') return 'You must hold a gem in your left hand!';
@@ -636,7 +708,7 @@ export const SpellforgingResponses = (npc: NPC) => {
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      if(player.calcSkillLevel('Conjuration') < 1) return 'You are not skilled enough to Spellforge.';
+      if(!SpellforgingHelper.canSpellforge(player)) return 'You are not skilled enough to Spellforge.';
       npc.$$room.showSpellforgingWindow(player, npc);
 
       return 'Greetings, fellow conjurer. I am a master enchanter who can help you learn the higher conjuration arts and ASSESS your progress.';

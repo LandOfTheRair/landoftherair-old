@@ -4,7 +4,6 @@ import { compact, get } from 'lodash';
 import { SkillClassNames } from '../../shared/models/character';
 import { Player } from '../../shared/models/player';
 import { Item } from '../../shared/models/item';
-import { DB } from '../database';
 
 export class AlchemyHelper {
   static async alchemize(player: Player): Promise<Item> {
@@ -12,7 +11,7 @@ export class AlchemyHelper {
     const playerSkill = player.calcSkillLevel(SkillClassNames.Alchemy);
 
     const reagentNames = compact(reagents.map(x => x ? x.name : null));
-    const recipeMatch = await DB.$recipes.findOne({
+    const recipeMatch = await player.$$room.itemCreator.getRecipe({
       recipeType: 'alchemy',
       ingredients: { $all: reagentNames, $size: reagentNames.length },
       requiredSkill: { $lte: playerSkill }

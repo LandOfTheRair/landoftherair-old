@@ -463,6 +463,24 @@
     <app-tradeskill-spellforging></app-tradeskill-spellforging>
   </ng-template>
 
+  <app-window *ngIf="inGame && colyseus.game.showMetalworking.uuid"
+              windowName="tradeskillMetalworking"
+              [otherWindowClasses]="'tradeskill metalworking above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.showMetalworking = {}"
+              [headTemplate]="tradeskillMetalworkingHead"
+              [bodyTemplate]="tradeskillMetalworkingBody"
+  ></app-window>
+
+  <ng-template #tradeskillMetalworkingHead>
+    Tradeskill - Metalworking
+  </ng-template>
+
+  <ng-template #tradeskillMetalworkingBody>
+    <app-tradeskill-metalworking></app-tradeskill-metalworking>
+  </ng-template>
+
 </div>
 
 <div class="modal fade" bsModal #options="bs-modal" tabindex="-1">

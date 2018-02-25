@@ -1005,7 +1005,7 @@
   hostility: Always
   sprite: 480
   stats: 13
-  skillLevels: 3
+  skillLevels: 4
 
   level: 10
 
@@ -1016,8 +1016,8 @@
     max: 3000
 
   hp:
-    min: 100000
-    max: 150000
+    min: 200000
+    max: 250000
 
   mp:
     min: 1000
@@ -1033,8 +1033,6 @@
     - Afflict
     - Poison
     - Disease
-    - MagicMissile
-    - Darkness
     - Charge
 
   gear:
@@ -1044,7 +1042,9 @@
     Ear: Antanian Earring
 
   dropPool:
-    choose: 2
+    choose:
+      min: 1
+      max: 1
     items:
       - Steffen Offensive Sash
       - Yzalt Basic Sash
@@ -1113,7 +1113,9 @@
     Ear: Antanian Earring
 
   dropPool:
-    choose: 1
+    choose:
+      min: 1
+      max: 1
     items:
       - Yzalt Basic Sash
       - Yzalt MagicResist Bracers

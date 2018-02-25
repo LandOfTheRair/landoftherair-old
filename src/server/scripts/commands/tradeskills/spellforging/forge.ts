@@ -12,7 +12,7 @@ export class Forge extends Command {
 
   async execute(player: Player, { room, gameState, args }) {
     if(!args) return false;
-    if(player.calcSkillLevel('Conjuration') < 1) return player.sendClientMessage('You are not skilled enough to Spellforge.');
+    if(!SpellforgingHelper.canSpellforge(player)) return player.sendClientMessage('You are not skilled enough to Spellforge.');
 
     const [enchUUID, dustType] = args.split(' ');
 
@@ -29,7 +29,7 @@ export class Forge extends Command {
 
     container.gainDust(lowerDustType, -100);
 
-    await SpellforgingHelper.createBrickFor(player, capitalize(lowerDustType));
+    await SpellforgingHelper.createBrickFor(player, lowerDustType);
 
     player.sendClientMessage(`You forged an ${capitalize(lowerDustType)} brick!`);
   }

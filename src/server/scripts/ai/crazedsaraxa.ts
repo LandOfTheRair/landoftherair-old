@@ -67,7 +67,7 @@ let trigger75 = false;
 let trigger50 = false;
 let trigger25 = false;
 
-export const tick = (npc: NPC, canMove) => {
+export const tick = async (npc: NPC, canMove) => {
 
   defaultTick(npc, canMove);
 
@@ -79,25 +79,19 @@ export const tick = (npc: NPC, canMove) => {
   if(!trigger75 && npc.hp.lessThanPercent(75)) {
     trigger75 = true;
 
-    setTimeout(() => {
-      spawnAcolyte(npc, 1);
-    }, 2000);
+    await spawnAcolyte(npc, 1);
   }
 
   if(!trigger50 && npc.hp.lessThanPercent(50)) {
     trigger50 = true;
 
-    setTimeout(() => {
-      spawnAcolyte(npc, 2);
-    }, 2000);
+    await spawnAcolyte(npc, 2);
   }
 
   if(!trigger25 && npc.hp.lessThanPercent(25)) {
     trigger25 = true;
 
-    setTimeout(() => {
-      spawnAcolyte(npc, 3);
-    }, 2000);
+    await spawnAcolyte(npc, 3);
   }
 };
 

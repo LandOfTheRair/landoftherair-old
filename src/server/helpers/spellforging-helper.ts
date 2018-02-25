@@ -2,10 +2,14 @@
 import { Player } from '../../shared/models/player';
 import { Item, EquippableItemClassesWithWeapons } from '../../shared/models/item';
 
-import { includes, random, clone, clamp } from 'lodash';
+import { includes, random, clone, clamp, capitalize } from 'lodash';
 import { SkillClassNames } from '../../shared/models/character';
 
 export class SpellforgingHelper {
+
+  static canSpellforge(player: Player): boolean {
+    return player.calcSkillLevel(SkillClassNames.Conjuration) >= 1;
+  }
 
   static canDisenchant(item: Item): boolean {
     return includes(EquippableItemClassesWithWeapons, item.itemClass);
@@ -125,6 +129,7 @@ export class SpellforgingHelper {
   }
 
   static async createBrickFor(player: Player, type: string): Promise<void> {
+    type = capitalize(type);
     const brick = await player.$$room.itemCreator.getItemByName(`Enchanting Brick - ${type}`);
     player.tradeSkillContainers.spellforging.result = brick;
 

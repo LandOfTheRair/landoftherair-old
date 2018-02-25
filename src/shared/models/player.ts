@@ -22,6 +22,7 @@ import { PartyHelper } from '../../server/helpers/party-helper';
 import { Malnourished } from '../../server/effects/antibuffs/Malnourished';
 import { AlchemyContainer } from './container/tradeskills/alchemy';
 import { SpellforgingContainer } from './container/tradeskills/spellforging';
+import { MetalworkingContainer } from './container/tradeskills/metalworking';
 
 export class Player extends Character {
   @nonenumerable
@@ -99,7 +100,11 @@ export class Player extends Character {
   public $$hungerTicks: number;
   public $$isAccessingLocker: boolean;
 
-  public tradeSkillContainers: { alchemy?: AlchemyContainer, spellforging?: SpellforgingContainer };
+  public tradeSkillContainers: { 
+    alchemy?: AlchemyContainer, 
+    spellforging?: SpellforgingContainer,
+    metalworking?: MetalworkingContainer
+  };
 
   public daily: any;
 
@@ -135,6 +140,7 @@ export class Player extends Character {
     this.tradeSkillContainers = this.tradeSkillContainers || {};
     this.tradeSkillContainers.alchemy = new AlchemyContainer(this.tradeSkillContainers.alchemy);
     this.tradeSkillContainers.spellforging = new SpellforgingContainer(this.tradeSkillContainers.spellforging);
+    this.tradeSkillContainers.metalworking = new MetalworkingContainer(this.tradeSkillContainers.metalworking);
   }
 
   initBuyback() {

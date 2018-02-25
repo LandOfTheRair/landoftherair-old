@@ -36,3 +36,22 @@
 
   requirements:
     level: 14
+
+- name: Ether Broadsword
+  desc: "a broadsword forged from ether"
+  stats:
+    weaponArmorClass: 8
+    accuracy: 4
+    offense: 3
+    defense: 3
+  baseDamage: 20
+  minDamage: 1
+  maxDamage: 40
+  damageRolls: 4
+  type: Onehanded
+  value: 2345
+  sprite: 46
+  binds: true
+
+  requirements:
+    level: 15

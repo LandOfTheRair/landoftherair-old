@@ -1,0 +1,100 @@
+
+- npcId: Rylt Flowerbush
+  name: flower bush
+  hostility: OnHit
+  allegiance: NaturalResource
+  sprite: 835
+  alignment: Neutral
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  skillOnKill: 1
+
+  hp:
+    min: 1
+    max: 1
+
+  giveXp:
+    min: 50
+    max: 100
+
+  drops:
+    - result: Rylt Blueflower
+      chance: 1
+      maxChance: 15
+
+- npcId: Yzalt Apple Tree
+  name: apple bush
+  hostility: OnHit
+  allegiance: NaturalResource
+  sprite: 840
+  alignment: Neutral
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  skillOnKill: 1
+
+  hp:
+    min: 1
+    max: 1
+
+  giveXp:
+    min: 50
+    max: 100
+
+  drops:
+    - result: Yzalt Steffen Apple
+      chance: 1
+      maxChance: 15
+
+- npcId: Yzalt Bogweed Bush
+  name: bogweeds
+  hostility: OnHit
+  allegiance: NaturalResource
+  sprite: 830
+  alignment: Neutral
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  skillOnKill: 1
+
+  hp:
+    min: 1
+    max: 1
+
+  giveXp:
+    min: 50
+    max: 100
+
+  drops:
+    - result: Yzalt Bogweed
+      chance: 1
+      maxChance: 15
+
+- npcId: Tower Goblood Plant
+  name: flora
+  hostility: OnHit
+  allegiance: NaturalResource
+  sprite: 850
+  alignment: Neutral
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  skillOnKill: 1
+
+  hp:
+    min: 1
+    max: 1
+
+  giveXp:
+    min: 50
+    max: 100
+
+  drops:
+    - result: Tower Goblood
+      chance: 1
+      maxChance: 10

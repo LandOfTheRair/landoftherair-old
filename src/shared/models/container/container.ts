@@ -64,13 +64,13 @@ export class Container {
     return sample(this.items);
   }
 
-  takeItem(item: Item): void {
+  takeItem(item: Item): Item {
     const index = findIndex(this.items, x => x === item);
-    this.takeItemFromSlot(index);
+    return this.takeItemFromSlot(index);
   }
 
-  takeItemFromSlots(slots: number[]): void {
-    slots.reverse().forEach(index => this.takeItemFromSlot(index));
+  takeItemFromSlots(slots: number[]): Item[] {
+    return slots.reverse().map(index => this.takeItemFromSlot(index));
   }
 
   canAccept(item: Item, index?: number): boolean {

@@ -271,18 +271,6 @@
     - result: Antanian Golem Brain
       chance: -1
 
-    - result: Antanian Golem Brain
-      chance: -1
-
-    - result: Antanian Golem Brain
-      chance: -1
-
-    - result: Antanian Golem Brain
-      chance: -1
-
-    - result: Antanian Golem Brain
-      chance: -1
-
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1

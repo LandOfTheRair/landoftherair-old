@@ -39,7 +39,8 @@ export class ColyseusService {
     party: null,
     traits: null,
     tradeskillAlchemy: null,
-    tradeskillSpellforging: null
+    tradeskillSpellforging: null,
+    tradeskillMetalworking: null
   };
 
   public defaultWindowLocations = {
@@ -67,7 +68,8 @@ export class ColyseusService {
     party:                      { x: 670,  y: 120 },
     traits:                     { x: 670,  y: 120 },
     tradeskillAlchemy:          { x: 670,  y: 120 },
-    tradeskillSpellforging:     { x: 670,  y: 120 }
+    tradeskillSpellforging:     { x: 670,  y: 120 },
+    tradeskillMetalworking:     { x: 670,  y: 120 }
   };
 
   constructor(

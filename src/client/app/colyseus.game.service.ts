@@ -12,7 +12,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Character } from '../../shared/models/character';
 import { NPC } from '../../shared/models/npc';
 
-export const VALID_TRADESKILLS = ['Alchemy', 'Spellforging'];
+export const VALID_TRADESKILLS = ['Alchemy', 'Spellforging', 'Metalworking'];
 
 @Injectable()
 export class ColyseusGameService {
@@ -33,6 +33,7 @@ export class ColyseusGameService {
 
   showAlchemy: any = {};
   showSpellforging: any = {};
+  showMetalworking: any = {};
 
   showLocker: Locker[] = [];
   activeLockerNumber: number;
@@ -754,6 +755,8 @@ export class ColyseusGameService {
 
   public hostilityLevelFor(compare: Character): 'hostile'|'neutral'|'friendly' {
     const me = this.character;
+
+    if(compare.isNaturalResource) return 'neutral';
 
     if(me.partyName && me.partyName === (<Player>compare).partyName) return 'neutral';
 
