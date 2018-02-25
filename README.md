@@ -132,6 +132,7 @@ You also get access to some commands in-game:
 * `@kill <target>` - will instantly kill `target`
 * `@itemmod propsish` - modify your rightHand item based on props specified, for example: `ounces=10`
 * `@npcmod npcish propsish` - modify the npc based on propsish
+* `@partyjoin partyname` - automatically join `partyname` if it exists, regardless of leader visibility
 * `@respawn lairname` - respawn `lairname` on the current map
 * `@searchitems itemname` - search all the items for itemname
 * `@searchnpcs npcname` - search all the items for npcname

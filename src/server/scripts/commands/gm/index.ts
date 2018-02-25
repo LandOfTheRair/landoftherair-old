@@ -10,6 +10,7 @@ export * from './GMGainXP';
 export * from './GMKill';
 export * from './GMModifyItem';
 export * from './GMModifyNPC';
+export * from './GMPartyJoin';
 export * from './GMRespawn';
 export * from './GMSearchItems';
 export * from './GMSearchNPCs';
