@@ -26,8 +26,8 @@
   sprite: 545
 
   hp:
-    min: 500000
-    max: 500000
+    min: 1000000
+    max: 1000000
 
   mp:
     min: 25000
@@ -54,7 +54,6 @@
 
   usableSkills:
     - Charge
-    - MagicMissile
     - Darkness
 
   copyDrops:
@@ -115,34 +114,6 @@
       - Antanian Studded Tunic
       - Antanian Cloak
 
-  drops:
-    - result: Antanian Leather Gloves
-      chance: 20
-      maxChance: 100
-
-    - result: Antanian Leather Boots
-      chance: 20
-      maxChance: 100
-
-    - result: Antanian Golem Brain
-      chance: -1
-
-    - result: Antanian Golem Brain
-      chance: -1
-
-    - result: Antanian Golem Brain
-      chance: -1
-
-    - result: Antanian Golem Brain
-      chance: -1
-
-    - result: Antanian Golem Brain
-      chance: -1
-
-  copyDrops:
-    - drop: 'gear.Armor'
-      chance: -1
-
 - npcId: Crazed Saraxa Acolyte
   name: crazed acolyte
   hostility: Always
@@ -154,22 +125,21 @@
   otherStats:
     perception: 50
 
-  skillLevels: 5
+  skillLevels: 4
   skillOnKill: 5
 
   sprite: 545
 
+  usableSkills:
+    - MagicBolt
+
   hp:
-    min: 25000
-    max: 25000
+    min: 40000
+    max: 40000
 
   mp:
     min: 25000
     max: 25000
-
-  gold:
-    min: 100
-    max: 200
 
   giveXp:
     min: 300
@@ -177,7 +147,3 @@
 
   gear:
     Armor: Antanian Tunic
-
-  copyDrops:
-    - drop: 'gear.Armor'
-      chance: -1
