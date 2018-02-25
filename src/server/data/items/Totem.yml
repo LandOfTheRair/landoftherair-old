@@ -1,11 +1,11 @@
-- name: Test Totem
-  desc: "a test totem, made for testing"
+- name: Ranata Totem
+  desc: "a wooden totem with a hand carved into it"
   baseDamage: 1
   minDamage: 1
   maxDamage: 8
   damageRolls: 1
   effect:
-    name: Poison
+    name: Afflict
     potency: 5
     chance: 33
   trait:
@@ -15,4 +15,4 @@
   tellsBind: true
   type: Wand
   value: 1500
-  sprite: 732
+  sprite: 459
