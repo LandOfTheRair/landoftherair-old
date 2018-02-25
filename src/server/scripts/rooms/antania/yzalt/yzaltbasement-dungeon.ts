@@ -28,8 +28,7 @@ export const setup = async (room) => {
 
   const chest1 = room.getInteractableByName('Chest 1');
   chest1.searchItems = [
-    await LootHelper.getItemsFromTables(lootTables, room),
-    await room.itemCreator.getItemByName('Ether Scale', room)
+    await LootHelper.getItemsFromTables(lootTables, room)
   ];
 
 };
