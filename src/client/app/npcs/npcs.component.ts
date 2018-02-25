@@ -130,9 +130,23 @@ export class NpcsComponent implements OnInit, OnDestroy {
     }
   }
 
+  public doAltAction(target) {
+    if(target.isPlayer()) {
+      this.tryViewEquipment(target);
+      return;
+    }
+
+    this.trySendAltAction(target);
+  }
+
   public tryViewEquipment(target) {
-    if(!target.isPlayer()) return;
     this.colyseusGame.currentViewTarget = cloneDeep(target);
+  }
+
+  public trySendAltAction(target) {
+    if(target.name === 'Alchemist') this.colyseusGame.sendCommandString('Alchemist, alchemy');
+    if(target.name === 'Smith')     this.colyseusGame.sendCommandString('Smith, metalwork');
+    if(target.name === 'Zarn')      this.colyseusGame.sendCommandString('Zarn, spellforge');
   }
 
 }

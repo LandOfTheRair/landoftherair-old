@@ -708,10 +708,16 @@ export const SpellforgingResponses = (npc: NPC) => {
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(!SpellforgingHelper.canSpellforge(player)) return 'You are not able to Spellforge.';
+
+      return 'Greetings, fellow conjurer. I am a master enchanter who can help you learn to SPELLFORGE and ASSESS your progress.';
+    });
+  npc.parser.addCommand('spellforge')
+    .set('syntax', ['spellforge'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(!SpellforgingHelper.canSpellforge(player)) return 'You are not skilled enough to Spellforge.';
       npc.$$room.showSpellforgingWindow(player, npc);
-
-      return 'Greetings, fellow conjurer. I am a master enchanter who can help you learn the higher conjuration arts and ASSESS your progress.';
     });
 
   npc.parser.addCommand('assess')
