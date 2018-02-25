@@ -526,6 +526,10 @@ export class GameWorld extends Room<GameState> {
   }
 
   addItemToGround(ref, item) {
+    // invalid items *do* not belong on the ground. fumbling f.ex. gloves is fine, they'll be a potato til they respawn
+    // but graphical glitches are a no no!
+    if(item.sprite < 0) return;
+
     if(item.destroyOnDrop) {
 
       // legacy code for legacy players :P
