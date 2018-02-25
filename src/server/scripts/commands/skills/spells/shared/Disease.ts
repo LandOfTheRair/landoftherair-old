@@ -22,6 +22,10 @@ export class Disease extends Skill {
   mpCost = () => 30;
   range = () => 5;
 
+  canUse(user: Character, target: Character) {
+    return !target.hasEffect('Disease');
+  }
+
   execute(user: Character, { gameState, args, effect }) {
 
     const target = this.getTarget(user, args);

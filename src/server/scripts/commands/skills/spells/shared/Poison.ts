@@ -22,6 +22,10 @@ export class Poison extends Skill {
   mpCost = () => 15;
   range = () => 5;
 
+  canUse(user: Character, target: Character) {
+    return !target.hasEffect('Poison');
+  }
+
   execute(user: Character, { gameState, args, effect }) {
 
     const target = this.getTarget(user, args);
