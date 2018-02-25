@@ -12,6 +12,7 @@
     con: 10
     agi: 10
     luk: 10
+    wil: 15
   level: 20
 
   otherStats:
