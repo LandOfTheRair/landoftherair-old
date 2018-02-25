@@ -75,6 +75,8 @@ export const tick = (npc: NPC) => {
 };
 
 export const damage = (npc: NPC, { damage, attacker }) => {
+  if(!attacker) return;
+
   const playerUsername = attacker.username;
   if(!playerUsername) return;
 

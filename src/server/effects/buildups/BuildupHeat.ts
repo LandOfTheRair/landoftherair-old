@@ -13,7 +13,7 @@ export class BuildupHeat extends BuildupEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.flagPermanent('');
+    this.flagPermanent(caster.uuid);
     target.applyEffect(this);
   }
 
@@ -21,6 +21,7 @@ export class BuildupHeat extends BuildupEffect {
     const burning = new Burning({});
     burning.duration = 10;
     burning.cast(char, char);
+    burning.effectInfo.caster = this.effectInfo.caster;
 
     burning.effectInfo.damage = Math.floor(this.buildupDamage / 20);
   }

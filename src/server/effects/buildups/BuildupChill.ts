@@ -13,7 +13,7 @@ export class BuildupChill extends BuildupEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.flagPermanent('');
+    this.flagPermanent(caster.uuid);
     target.applyEffect(this);
   }
 
@@ -21,5 +21,6 @@ export class BuildupChill extends BuildupEffect {
     const frozen = new Frosted({});
     frozen.duration = 10;
     frozen.cast(char, char);
+    frozen.effectInfo.caster = this.effectInfo.caster;
   }
 }

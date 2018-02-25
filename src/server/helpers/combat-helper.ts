@@ -670,7 +670,7 @@ export class CombatHelper {
       targetEffect.buildupMax = buildupMax;
       targetEffect.buildupCur = bonusIncrease;
       targetEffect.decayRate -= this.elementalDecayRateValue(attacker, damageClass);
-      targetEffect.cast(defender, defender);
+      targetEffect.cast(attacker, defender);
     }
 
     targetEffect.buildupCur += debuffIncrease;
