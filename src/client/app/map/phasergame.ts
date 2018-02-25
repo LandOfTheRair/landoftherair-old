@@ -114,6 +114,8 @@ export class Game {
   }
 
   private drawVfx({ effect, tiles }) {
+    if(!this.vfx) return;
+    
     tiles.forEach(({ x, y }) => {
       const sprite = this.g.add.sprite(x * 64, y * 64, 'Effects', effect);
       this.vfx.add(sprite);
@@ -593,7 +595,7 @@ export class Game {
   }
 
   private createLayers() {
-    
+
     this.groups.Decor = this.g.add.group();
     this.groups.DenseDecor = this.g.add.group();
     this.groups.OpaqueDecor = this.g.add.group();
