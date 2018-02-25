@@ -14,6 +14,10 @@ export class ChillBiteMedium extends Skill {
   execute() {}
   range = () => 0;
 
+  canUse(user: Character, target: Character) {
+    return !target.hasEffect('Frosted');
+  }
+
   use(user: Character, target: Character) {
     const damage = +dice.roll(`4d${user.getTotalStat('str')}`);
     CombatHelper.dealDamage(user, target, {

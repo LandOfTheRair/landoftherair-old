@@ -14,6 +14,10 @@ export class PoisonBiteWeak extends Skill {
   execute() {}
   range = () => 0;
 
+  canUse(user: Character, target: Character) {
+    return !target.hasEffect('Poison');
+  }
+
   use(user: Character, target: Character) {
     const damage = +dice.roll(`2d${user.getTotalStat('str')}`);
     CombatHelper.dealDamage(user, target, {
