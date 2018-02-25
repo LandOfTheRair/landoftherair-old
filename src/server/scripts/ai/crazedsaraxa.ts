@@ -67,9 +67,11 @@ let trigger75 = false;
 let trigger50 = false;
 let trigger25 = false;
 
-export const tick = async (npc: NPC, canMove) => {
-
+export const tick = (npc: NPC, canMove) => {
   defaultTick(npc, canMove);
+};
+
+export const mechanicTick = async (npc: NPC) => {
 
   // oh yes, these acolytes can respawn
   if(npc.hp.gtePercent(90)) trigger75 = false;

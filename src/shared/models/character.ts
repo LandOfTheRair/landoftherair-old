@@ -287,6 +287,7 @@ export class Character {
   initAI() {
     this.$$ai = {
       tick: new Signal(),
+      mechanicTick: new Signal(),
       death: new Signal(),
       damage: new Signal()
     };

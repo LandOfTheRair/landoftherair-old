@@ -117,6 +117,10 @@ export class NPC extends Character {
   tick(canMove?: boolean) {
     super.tick();
 
+    if(this.$$ai && this.$$ai.mechanicTick) {
+      this.$$ai.mechanicTick.dispatch(this);
+    }
+
     if(this.isInCombat) this.combatTicks--;
 
     if(this.isUnableToAct()) return;

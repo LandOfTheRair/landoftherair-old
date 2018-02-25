@@ -30,9 +30,10 @@ let trigger50 = false;
 let trigger25 = false;
 
 export const tick = (npc: NPC, canMove) => {
-
   defaultTick(npc, canMove);
+};
 
+export const mechanicTick = (npc: NPC) => {
   if(!trigger75 && npc.hp.ltePercent(75)) {
     trigger75 = true;
 
