@@ -1,6 +1,4 @@
 export * from './Absorption';
-export * from './BarFire';
-export * from './BarFrost';
 export * from './BarWater';
 export * from './EnergyWave';
 export * from './FindFamiliar';

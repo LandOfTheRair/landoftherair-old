@@ -27,6 +27,8 @@ export class BarNecro extends Skill {
     const target = this.getTarget(user, args, true);
     if(!target) return;
 
+    if(!this.isValidBuffTarget(user, target)) return user.sendClientMessage('You cannot target that person with this spell.');
+
     if(!this.tryToConsumeMP(user, effect)) return;
 
     this.use(user, target, effect);

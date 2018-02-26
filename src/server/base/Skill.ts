@@ -40,6 +40,10 @@ export abstract class Skill extends Command {
     return true;
   }
 
+  isValidBuffTarget(user: Character, target: Character): boolean {
+    return target.isPlayer() || !user.$$room.state.checkTargetForHostility(user, target);
+  }
+
   tryToConsumeMP(user: Character, effect): boolean {
 
     if(effect) return true;

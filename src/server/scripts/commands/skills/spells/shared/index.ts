@@ -8,5 +8,7 @@ export * from './DarkVision';
 export * from './Identify';
 export * from './Transmute';
 export * from './TrueSight';
+export * from './BarFire';
+export * from './BarFrost';
 
 export * from './Push';

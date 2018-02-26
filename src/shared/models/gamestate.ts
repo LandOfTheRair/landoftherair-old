@@ -352,7 +352,7 @@ export class GameState {
 
   private checkTargetForHostility(me: NPC, target: Character): boolean {
     if(target.allegiance === 'NaturalResource' || target.allegiance === 'GM') return false;
-    if(me.agro[target.uuid]) return true;
+    if(me.agro[target.uuid] || target.agro[me.uuid]) return true;
     if(me.hostility === 'Faction' && (
          me.isHostileTo(target.allegiance)
       || target.isHostileTo(me.allegiance))) return true;
