@@ -23,8 +23,8 @@ import { Subscription } from 'rxjs/Subscription';
          [class.hidden]="hidden">
       <div class="window-header text-center" #windowDrag>
         <ng-template [ngTemplateOutlet]="headTemplate"></ng-template>
-        <app-minimize-button *ngIf="canMinimize" (click)="minimize.emit(windowName)"></app-minimize-button>
         <app-close-button *ngIf="canClose" (click)="close.emit(windowName)"></app-close-button>
+        <app-minimize-button *ngIf="canMinimize" (click)="minimize.emit(windowName)"></app-minimize-button>
       </div>
       <div class="window-body" [class.hidden]="minimized">
         <ng-template [ngTemplateOutlet]="bodyTemplate"></ng-template>

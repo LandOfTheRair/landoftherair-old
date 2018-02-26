@@ -77,6 +77,9 @@
               (active)="setActiveWindow($event)"
               [canClose]="true"
               (close)="showStatsWindow = false"
+              [canMinimize]="true"
+              (minimize)="minimize($event)"
+              [minimized]="minimized.stats"
               [headTemplate]="statsHead"
               [bodyTemplate]="statsBody"
   ></app-window>
@@ -95,6 +98,9 @@
               (active)="setActiveWindow($event)"
               [canClose]="true"
               (close)="showSkillsWindow = false"
+              [canMinimize]="true"
+              (minimize)="minimize($event)"
+              [minimized]="minimized.skills"
               [headTemplate]="skillsHead"
               [bodyTemplate]="skillsBody"
   ></app-window>
@@ -113,6 +119,9 @@
               (active)="setActiveWindow($event)"
               [canClose]="true"
               (close)="showTradeSkillsWindow = false"
+              [canMinimize]="true"
+              (minimize)="minimize($event)"
+              [minimized]="minimized.tradeSkills"
               [headTemplate]="tradeSkillsHead"
               [bodyTemplate]="tradeSkillsBody"
   ></app-window>
