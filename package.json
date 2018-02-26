@@ -12,6 +12,7 @@
     "start:server:debug": "nodemon --ignore \"client/\" --ignore \"dist/*\" --ignore \"*.json\" --exec \"ts-node --inspect \" -- \"src/server/index.ts\" --single-core",
     "start:client": "ng serve -o --host 0.0.0.0 --disable-host-check",
     "build": "ng build",
+    "build:netlify": "npm run postinstall && npm run build:prod",
     "prebuild:prod": "node scripts/prebuild-client",
     "build:prod": "ng build --aot --environment=prod --vendor-chunk=true --output-hashing=all --sourcemaps --extract-css --extract-licenses",
     "deploy": "npm run test:local && npm run prod:server && npm run prod:deploy",
