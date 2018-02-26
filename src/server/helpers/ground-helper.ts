@@ -88,8 +88,6 @@ export class GroundHelper {
     if(!obj) obj = {};
     const groundItems = obj.groundItems || {};
 
-    this.checkIfAnyItemsAreExpired();
-
     this.room.state.setGround(groundItems);
 
     // load existing items onto the ground
@@ -102,6 +100,8 @@ export class GroundHelper {
         });
       });
     });
+
+    this.checkIfAnyItemsAreExpired();
 
     DB.$mapGroundItems.remove(opts);
   }
