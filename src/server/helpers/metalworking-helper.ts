@@ -7,7 +7,7 @@ import { ArmorClasses, Item } from '../../shared/models/item';
 const ingotCraftBuffs = {
   'Copper Ingot (Pillars)': {
     weapon: { str: 2 },
-    armor:  { dex: 1, physicalResist: 10 }
+    armor:  { mitigation: 5 }
   },
   'Silver Ingot (Hourglass)': {
     weapon: { weaponArmorClass: 7 },
@@ -22,7 +22,7 @@ const ingotCraftBuffs = {
 const ingotUpgradeBuffs = {
   'Copper Ingot (Pillars)': {
     weapon: { physicalDamageBoost: 25 },
-    armor:  { physicalResist: 5 }
+    armor:  { mitigation: 1 }
   },
   'Silver Ingot (Hourglass)': {
     weapon: { weaponArmorClass: 2 },
