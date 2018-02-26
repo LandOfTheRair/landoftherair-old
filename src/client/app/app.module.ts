@@ -16,6 +16,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { StripeCheckoutModule } from 'ng-stripe-checkout';
+import { ResizableModule } from 'angular-resizable-element';
 
 import { AppComponent } from './app.component';
 
@@ -25,6 +26,7 @@ import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
 import { MacroService } from './macros.service';
 import { AssetService } from './asset.service';
+import { WindowManagerService } from './windowmanager.service';
 
 import { NavbarComponent } from './app.navbar.component';
 
@@ -130,6 +132,7 @@ import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/trade
     FormsModule,
     HttpModule,
 
+    ResizableModule,
     ColorPickerModule,
     NgDragDropModule.forRoot(),
     Ng2Webstorage.forRoot(),
@@ -148,7 +151,8 @@ import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/trade
     ColyseusLobbyService,
     ColyseusGameService,
     MacroService,
-    AssetService
+    AssetService,
+    WindowManagerService
   ],
   bootstrap: [AppComponent]
 })

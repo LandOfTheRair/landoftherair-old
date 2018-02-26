@@ -1,15 +1,22 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef } from '@angular/core';
 
 import { kebabCase } from 'lodash';
-import { ColyseusService } from '../colyseus.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Subscription } from 'rxjs/Subscription';
+import { WindowManagerService } from '../windowmanager.service';
 
 @Component({
   selector: 'app-window',
   styleUrls: ['../app.component.windows.scss'],
   template: `
     <div class="window"
+         mwlResizable
+         [resizeEdges]="windowLocation.resizeEdges"
+         [resizeSnapGrid]="windowLocation.resizeSnapGrid"
+         (resizing)="resize($event)"
+         [validateResize]="validateResize"
+         [style.width]="windowLocation.width + 'px'"
+         [style.height]="windowLocation.height ? windowLocation.height + 'px' : ''"
          [class.active-window]="isActive"
          [ngClass]="[windowClassName, otherWindowClasses]"
          (click)="active.emit(windowName)"
@@ -75,11 +82,11 @@ export class WindowComponent implements OnInit, OnDestroy {
   }
 
   public get windowLocation() {
-    return this.colyseus.windowLocations[this.windowName];
+    return this.windowManager.getWindow(this.windowName);
   }
 
   public get defaultPos(): { x: number, y: number } {
-    return this.colyseus.defaultWindowLocations[this.windowName];
+    return this.windowManager.getWindowDefault(this.windowName);
   }
 
   private canDrag$: Subscription;
@@ -89,7 +96,7 @@ export class WindowComponent implements OnInit, OnDestroy {
   public isActive = false;
 
   constructor(
-    public colyseus: ColyseusService,
+    public windowManager: WindowManagerService,
     private localStorage: LocalStorageService
   ) {}
 
@@ -101,10 +108,22 @@ export class WindowComponent implements OnInit, OnDestroy {
     this.isActive = this.localStorage.retrieve('activeWindow') === this.windowName;
     this.isActive$ = this.localStorage.observe('activeWindow')
       .subscribe(val => this.isActive = val === this.windowName);
+
+    // ??? why
+    this.validateResize = this.validateResize.bind(this);
   }
 
   ngOnDestroy() {
     this.canDrag$.unsubscribe();
     this.isActive$.unsubscribe();
+  }
+
+  public validateResize($event) {
+    console.log('validate', this.canDrag, this.windowName, $event)
+    return this.canDrag;
+  }
+
+  public resize($event) {
+    this.windowManager.updateWindow(this.windowName, { width: $event.rectangle.width, height: $event.rectangle.height });
   }
 }

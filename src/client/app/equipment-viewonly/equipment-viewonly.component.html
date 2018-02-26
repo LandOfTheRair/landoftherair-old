@@ -4,17 +4,17 @@
   <div class="item-slot"></div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Ear">Earring</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Ear">Earring</span>
     <app-item [size]="size" [item]="player.gear.Ear" *ngIf="player.gear.Ear"></app-item>
   </div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Head">Helm</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Head">Helm</span>
     <app-item [size]="size" [item]="player.gear.Head" *ngIf="player.gear.Head"></app-item>
   </div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Neck">Amulet</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Neck">Amulet</span>
     <app-item [size]="size" [item]="player.gear.Neck" *ngIf="player.gear.Neck"></app-item>
   </div>
 
@@ -22,7 +22,7 @@
 
   <!-- next row (sash, bracers) -->
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Waist">Sash</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Waist">Sash</span>
     <app-item [size]="size" [item]="player.gear.Waist" *ngIf="player.gear.Waist"></app-item>
   </div>
 
@@ -31,18 +31,18 @@
   <div class="item-slot"></div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Wrists">Bracers</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Wrists">Bracers</span>
     <app-item [size]="size" [item]="player.gear.Wrists" *ngIf="player.gear.Wrists"></app-item>
   </div>
 
   <!-- next row (ring, lefthand, righthand, ring) -->
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Ring1">Ring</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Ring1">Ring</span>
     <app-item [size]="size" [item]="player.gear.Ring1" *ngIf="player.gear.Ring1"></app-item>
   </div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.rightHand">Right Hand</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.rightHand">Right Hand</span>
     <app-item [size]="size"
               [item]="player.rightHand"
               *ngIf="player.rightHand"></app-item>
@@ -51,20 +51,20 @@
   <div class="item-slot"></div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.leftHand">Left Hand</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.leftHand">Left Hand</span>
     <app-item [size]="size"
               [item]="player.leftHand"
               *ngIf="player.leftHand"></app-item>
   </div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Ring2">Ring</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Ring2">Ring</span>
     <app-item [size]="size" [item]="player.gear.Ring2" *ngIf="player.gear.Ring2"></app-item>
   </div>
 
   <!-- next row (gloves, boots) -->
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Hands">Gloves</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Hands">Gloves</span>
     <app-item [size]="size" [item]="player.gear.Hands" *ngIf="player.gear.Hands"></app-item>
   </div>
 
@@ -73,28 +73,28 @@
   <div class="item-slot"></div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Feet">Boots</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Feet">Boots</span>
     <app-item [size]="size" [item]="player.gear.Feet" *ngIf="player.gear.Feet"></app-item>
   </div>
 
   <!-- last row (potion, armor, robe, robe) -->
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.potionHand">Potion</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.potionHand">Potion</span>
     <app-item [size]="size" [item]="player.potionHand" *ngIf="player.potionHand"></app-item>
   </div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Armor">Armor</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Armor">Armor</span>
     <app-item [size]="size" [item]="player.gear.Armor" *ngIf="player.gear.Armor"></app-item>
   </div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Robe1">Robe</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Robe1">Robe</span>
     <app-item [size]="size" [item]="player.gear.Robe1" *ngIf="player.gear.Robe1"></app-item>
   </div>
 
   <div class="item-slot item-background">
-    <span class="item-slot-bg-text" *ngIf="!player.gear.Robe2">Robe</span>
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Robe2">Robe</span>
     <app-item [size]="size" [item]="player.gear.Robe2" *ngIf="player.gear.Robe2"></app-item>
   </div>
   <div class="item-slot"></div>

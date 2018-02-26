@@ -1,4 +1,8 @@
 
+:host, .message-container-container {
+  height: 100%;
+}
+
 .message-container-container {
   width: 100%;
   padding-top: 0 !important;
@@ -8,29 +12,7 @@
     word-wrap: break-word;
     position: relative;
 
-    height: 200px;
-
-    &.window-size-max {
-      min-height: calc(100% - 56px - 28px) !important;
-      height: initial;
-      max-height: calc(100% - 56px - 28px) !important;
-    }
-
-    &.window-size-xlarge {
-      height: 580px;
-    }
-
-    &.window-size-large {
-      height: 400px;
-    }
-
-    &.window-size-small {
-      height: 140px;
-    }
-
-    &.window-size-xsmall {
-      height: 86px;
-    }
+    height: calc(100% - 31px);
 
     .filter-buttons {
       width: 100%;

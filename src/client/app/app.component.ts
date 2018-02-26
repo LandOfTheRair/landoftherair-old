@@ -14,6 +14,7 @@ import { AssetService } from './asset.service';
 import { SilverPurchase } from '../../shared/models/account';
 
 import { environment } from '../environments/environment';
+import { WindowManagerService } from './windowmanager.service';
 
 type Size = 'normal' | 'small' | 'xsmall';
 type XSizeMax = 'max' | 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
@@ -159,7 +160,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public newMessages = 0;
 
   get windowLocations() {
-    return this.colyseus.windowLocations;
+    return this.windowManager.windowLocations;
   }
 
   get loggedIn() {
@@ -198,6 +199,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     public macroService: MacroService,
     public authService: AuthService,
     public assetService: AssetService,
+    public windowManager: WindowManagerService,
     private localStorage: LocalStorageService,
     private renderer: Renderer2,
     private stripeCheckoutLoader: StripeCheckoutLoader
@@ -516,7 +518,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.lockWindowPositions = false;
 
     Object.keys(this.windowLocations).forEach((key) => {
-      this.windowLocations[key] = this.colyseus.defaultWindowLocations[key];
+      this.windowLocations[key] = this.windowManager.defaultWindowLocations[key];
     });
   }
 

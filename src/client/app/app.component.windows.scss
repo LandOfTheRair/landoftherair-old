@@ -20,10 +20,8 @@
   }
 
   &.lobby {
-    min-height: 400px;
-    min-width: 900px;
-
-    max-width: 900px;
+    min-height: 150px;
+    min-width: 300px;
 
     z-index: 1000;
   }
@@ -132,6 +130,10 @@
   &.sack, &.belt, &.pouch, &.equipment, &.equipment-view-only {
     min-width: 351px;
     max-width: 351px;
+
+    &.small {
+      font-size: 100% !important;
+    }
 
     &.small {
       min-width: 271px;

@@ -1,6 +1,7 @@
 import { Directive, Input, ElementRef, HostListener, OnInit } from '@angular/core';
 
 import { isUndefined } from 'lodash';
+import { WindowManagerService } from './windowmanager.service';
 
 @Directive({
   selector: '[appDraggableWindow]'
@@ -44,7 +45,10 @@ export class DraggableWindowDirective implements OnInit {
     this.setElementCoords(y, x);
   }
 
-  constructor(public element: ElementRef) {}
+  constructor(
+    public windowManager: WindowManagerService,
+    public element: ElementRef
+  ) {}
 
   ngOnInit() {
     // css changes
@@ -59,20 +63,20 @@ export class DraggableWindowDirective implements OnInit {
   }
 
   private loadCoordinates() {
-    const coordinates = JSON.parse(localStorage.getItem(`window-${this.windowName}`));
+    const coordinates = this.windowManager.getWindow(this.windowName);
     if(!coordinates && !isUndefined(this.defaultY) && !isUndefined(this.defaultX)) {
       this.setElementCoords(this.defaultY, this.defaultX);
     } else {
-      const { top, left } = coordinates;
-      if(isUndefined(top) || isUndefined(left)) return;
-      this.setElementCoords(top, left);
+      const { x, y } = coordinates;
+      if(isUndefined(y) || isUndefined(x)) return;
+      this.setElementCoords(y, x);
     }
   }
 
   private saveCoordinates(top, left) {
     if(!this.windowName) return;
 
-    localStorage.setItem(`window-${this.windowName}`, JSON.stringify({ top, left }));
+    this.windowManager.updateWindow(this.windowName, { x: left, y: top });
   }
 
   private setElementCoords(top, left) {

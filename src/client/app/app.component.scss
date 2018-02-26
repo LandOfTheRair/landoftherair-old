@@ -71,5 +71,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &.small {
+      font-size: 75%;
+    }
+
+    &.xsmall {
+      font-size: 50%;
+    }
   }
 }

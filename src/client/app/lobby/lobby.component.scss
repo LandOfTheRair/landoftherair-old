@@ -1,4 +1,13 @@
 
+:host, .lobby-container {
+  height: 100%;
+}
+
+.lobby-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .user-list {
   border-right: 1px solid #000;
   overflow-y: auto;
@@ -47,10 +56,10 @@
 }
 
 .chat-area {
-  min-height: 350px;
-  max-height: 350px;
   overflow-y: auto;
   overflow-x: hidden;
+
+  height: calc(100% - 25px);
 
   .message {
     display: flex;

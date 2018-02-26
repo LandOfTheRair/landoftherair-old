@@ -1,4 +1,8 @@
 
+:host, .char-container {
+  height: 100%;
+}
+
 .char-container {
   display: flex;
   flex-direction: row;
@@ -8,35 +12,6 @@
   overflow-y: auto;
   overflow-x: hidden;
   user-select: none;
-
-  min-height: 310px;
-  max-height: 310px;
-
-  &.window-size-max {
-    min-height: calc(100% - 56px - 28px) !important;
-    height: initial;
-    max-height: calc(100% - 56px - 28px) !important;
-  }
-
-  &.window-size-xlarge {
-    min-height: 526px;
-    max-height: 526px;
-  }
-
-  &.window-size-large {
-    min-height: 418px;
-    max-height: 418px;
-  }
-
-  &.window-size-small {
-    min-height: 202px;
-    max-height: 202px;
-  }
-
-  &.window-size-xsmall {
-    min-height: 94px;
-    max-height: 94px;
-  }
 
   .char-card-container {
     display: flex;
