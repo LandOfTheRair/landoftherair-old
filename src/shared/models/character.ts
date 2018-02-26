@@ -497,7 +497,7 @@ export class Character {
     if(this.totalStats.stealth > 0) {
       this.totalStats.stealth -= this.hidePenalty();
     }
-    
+
     this.totalStats.perception += this.perceptionLevel();
   }
 
@@ -1080,7 +1080,7 @@ export class Character {
     const isThief = this.baseClass === 'Thief';
     const thiefLevel = this.calcSkillLevel(SkillClassNames.Thievery);
     const casterThiefSkill = thiefLevel * (isThief ? 1.5 : 1) * 5;
-    const casterAgi = this.getTotalStat('agi') * (isThief ? 10 : 7);
+    const casterAgi = this.getTotalStat('agi') * (isThief ? 5 : 3);
     const casterLevel = this.level;
 
     const hideBoost = isThief ? Math.floor(thiefLevel / 5) * 10 : 0;
@@ -1105,11 +1105,11 @@ export class Character {
     const isThief = this.baseClass === 'Thief';
 
     const thiefLevel = this.calcSkillLevel(SkillClassNames.Thievery);
-    const dex = this.getTotalStat('dex');
+    const dex = this.getTotalStat('dex') * 2;
     const casterLevel = this.level;
 
-    const thiefTotal = (thiefLevel + dex) * (isThief ? 1.5 : 1);
-    const normalTotal = casterLevel * 3;
+    const thiefTotal = (thiefLevel + dex) * (isThief ? 4.5 : 2);
+    const normalTotal = casterLevel * 6;
 
     return Math.floor(thiefTotal + normalTotal);
   }
