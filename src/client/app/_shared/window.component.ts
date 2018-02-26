@@ -11,12 +11,12 @@ import { WindowManagerService } from '../windowmanager.service';
   template: `
     <div class="window"
          mwlResizable
-         [resizeEdges]="windowLocation.resizeEdges"
+         [resizeEdges]="minimized ? {} : windowLocation.resizeEdges"
          [resizeSnapGrid]="windowLocation.resizeSnapGrid"
          (resizing)="resize($event)"
          [validateResize]="validateResize"
          [style.width]="windowLocation.width + 'px'"
-         [style.height]="windowLocation.height ? windowLocation.height + 'px' : ''"
+         [style.height]="windowLocation.height && !minimized ? windowLocation.height + 'px' : ''"
          [class.active-window]="isActive"
          [ngClass]="[windowClassName, otherWindowClasses]"
          (click)="active.emit(windowName)"

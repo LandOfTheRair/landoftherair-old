@@ -13,7 +13,7 @@ interface WindowProps {
 }
 
 const WindowDefaults: { [key: string]: WindowProps } = {
-  lobby:                      { x: 299,  y: 55,  width: 400,  height: 900,
+  lobby:                      { x: 299,  y: 55,  width: 900,  height: 400,
                                 canResize: true, resizeEdges: { right: true, bottom: true } },
   characterSelect:            { x: 0,    y: 55,  width: 300 },
   map:                        { x: 389,  y: 56 },
