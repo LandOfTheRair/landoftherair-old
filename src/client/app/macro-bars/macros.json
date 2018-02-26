@@ -1,22 +1,22 @@
 {
     "allMeta": [
         {
-            "name": "Chase",
-            "macro": "chase",
-            "icon": "hooded-figure",
-            "color": "#000000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Move towards a target.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Climb",
             "macro": "climb up",
             "icon": "ladder",
             "color": "#D2691E",
             "mode": "autoActivate",
             "tooltipDesc": "Climb up or down on this tile.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Chase",
+            "macro": "chase",
+            "icon": "hooded-figure",
+            "color": "#000000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Move towards a target.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -41,22 +41,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show stats",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your stats and their base level in text form.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Stairs",
             "macro": "up",
             "icon": "3d-stairs",
             "color": "#404040",
             "mode": "autoActivate",
             "tooltipDesc": "Go up or down stairs on this tile.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Show Stats",
+            "macro": "show stats",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your stats and their base level in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -263,22 +263,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Stun",
-            "macro": "cast stun",
-            "icon": "knockout",
-            "color": "#990",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Attempt to stun a single target. Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Revive",
             "macro": "cast revive",
             "icon": "quicksand",
             "color": "#080",
             "mode": "autoActivate",
             "tooltipDesc": "Revive a single player on your tile. Cost: 50 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Stun",
+            "macro": "cast stun",
+            "icon": "knockout",
+            "color": "#990",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Attempt to stun a single target. Cost: 40 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -343,12 +343,12 @@
             "requiresLearn": true
         },
         {
-            "name": "FindFamiliar",
-            "macro": "cast findfamiliar",
-            "icon": "eagle-emblem",
-            "color": "#0aa",
-            "mode": "autoActivate",
-            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
+            "name": "FireMist",
+            "macro": "cast firemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 35 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -363,12 +363,22 @@
             "requiresLearn": true
         },
         {
-            "name": "FireMist",
-            "macro": "cast firemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 35 MP",
+            "name": "FindFamiliar",
+            "macro": "cast findfamiliar",
+            "icon": "eagle-emblem",
+            "color": "#0aa",
+            "mode": "autoActivate",
+            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MagicMissile",
+            "macro": "cast magicmissile",
+            "icon": "missile-swarm",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -389,16 +399,6 @@
             "color": "#a0a",
             "mode": "clickToTarget",
             "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MagicMissile",
-            "macro": "cast magicmissile",
-            "icon": "missile-swarm",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         },

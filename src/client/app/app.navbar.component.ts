@@ -65,22 +65,6 @@ import { ColyseusService } from './colyseus.service';
               </li>
               <li *ngIf="inGame">
                 <a class="dropdown-item"
-                   (click)="openWindow.emit({ key: 'showInventoryBelt', window: 'belt' })">Belt</a>
-              </li>
-              <li *ngIf="inGame && hasPouch">
-                <a class="dropdown-item"
-                   (click)="openWindow.emit({ key: 'showInventoryPouch', window: 'pouch' })">Pouch</a>
-              </li>
-              <li *ngIf="inGame">
-                <a class="dropdown-item"
-                   (click)="openWindow.emit({ key: 'showInventorySack', window: 'sack' })">Sack</a>
-              </li>
-              <li *ngIf="inGame">
-                <a class="dropdown-item"
-                   (click)="openWindow.emit({ key: 'showEquipment', window: 'equipment' })">Equipment</a>
-              </li>
-              <li *ngIf="inGame">
-                <a class="dropdown-item"
                    (click)="openWindow.emit({ key: 'showParty', window: 'party' })">Party</a>
               </li>
               <li *ngIf="inGame">
@@ -115,6 +99,29 @@ import { ColyseusService } from './colyseus.service';
               </li>
             </ul>
 
+          </li>
+        </ul>
+
+        <ul class="navbar-nav mr-auto ml-auto" *ngIf="inGame">
+          <li class="nav-item" tooltip="Toggle Sack" placement="auto">
+            <a class="nav-link" (click)="openWindow.emit({ key: 'showInventorySack', window: 'sack' })">
+              <app-icon name="swap-bag" size="small" fgColor="#ccc" bgColor="transparent"></app-icon>
+            </a>
+          </li>
+          <li class="nav-item" tooltip="Toggle Belt" placement="auto">
+            <a class="nav-link" (click)="openWindow.emit({ key: 'showInventoryBelt', window: 'belt' })">
+              <app-icon name="belt" size="small" fgColor="#ccc" bgColor="transparent"></app-icon>
+            </a>
+          </li>
+          <li class="nav-item" tooltip="Toggle Pouch" placement="auto" *ngIf="hasPouch">
+            <a class="nav-link" (click)="openWindow.emit({ key: 'showInventoryPouch', window: 'pouch' })">
+              <app-icon name="knapsack" size="small" fgColor="#ccc" bgColor="transparent"></app-icon>
+            </a>
+          </li>
+          <li class="nav-item" tooltip="Toggle Equipment" placement="auto">
+            <a class="nav-link" (click)="openWindow.emit({ key: 'showEquipment', window: 'equipment' })">
+              <app-icon name="battle-gear" size="small" fgColor="#ccc" bgColor="transparent"></app-icon>
+            </a>
           </li>
         </ul>
 
