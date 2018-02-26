@@ -4,7 +4,6 @@ import { Character } from '../../../shared/models/character';
 
 export class PermanentCON extends Effect {
   effectStart(char: Character) {
-    console.log(this.tier, char.name, this.potency);
     if(char.getBaseStat('con') >= Maxes[this.tier]) {
       return this.effectMessage(char, 'The fluid was tasteless.');
     }
