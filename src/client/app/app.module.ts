@@ -7,12 +7,14 @@ import { NgxAutoScrollDirective } from './ngx-auto-scroll.directive';
 import { DraggableWindowDirective } from './draggable.directive';
 
 import { Ng2Webstorage } from 'ngx-webstorage';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ButtonsModule } from 'ngx-bootstrap/buttons';
-import { PopoverModule } from 'ngx-bootstrap/popover';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {
+  TooltipModule,
+  ButtonsModule,
+  PopoverModule,
+  TabsModule,
+  ModalModule,
+  BsDropdownModule
+} from 'ngx-bootstrap';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { StripeCheckoutModule } from 'ng-stripe-checkout';
