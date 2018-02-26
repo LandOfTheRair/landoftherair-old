@@ -177,8 +177,8 @@ export const SmithResponses = (npc: NPC) => {
       return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Metalworking.toUpperCase()} proficiency.`;
     });
 
-  npc.parser.addCommand('ore')
-    .set('syntax', ['ore'])
+  npc.parser.addCommand('collect')
+    .set('syntax', ['collect'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
