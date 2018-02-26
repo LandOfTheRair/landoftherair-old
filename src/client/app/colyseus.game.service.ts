@@ -764,7 +764,8 @@ export class ColyseusGameService {
     if(compare.agro[me.uuid]
     || me.agro[compare.uuid]) return 'hostile';
 
-    if(me.alignment === 'Good' && compare.alignment === 'Evil') return 'hostile';
+    if((me.alignment === 'Good' && compare.alignment === 'Evil')
+    || (me.alignment === 'Evil' && compare.alignment === 'Good')) return 'hostile';
 
     const hostility = (<NPC>compare).hostility;
 
