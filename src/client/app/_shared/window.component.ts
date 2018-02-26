@@ -94,9 +94,11 @@ export class WindowComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.canDrag = !this.localStorage.retrieve('lockWindowPositions');
     this.canDrag$ = this.localStorage.observe('lockWindowPositions')
       .subscribe(val => this.canDrag = !val);
 
+    this.isActive = this.localStorage.retrieve('activeWindow') === this.windowName;
     this.isActive$ = this.localStorage.observe('activeWindow')
       .subscribe(val => this.isActive = val === this.windowName);
   }
