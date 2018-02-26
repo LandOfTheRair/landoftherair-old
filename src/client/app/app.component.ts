@@ -251,7 +251,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   private createUninitListener() {
     if(!environment.production) return;
-    
+
     window.onbeforeunload = (e) => {
       const message = 'Are you sure you want to quit? If you\'re in game, you might want to exit to lobby first!';
 
