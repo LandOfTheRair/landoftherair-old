@@ -9,13 +9,13 @@
     - Ether Scale
 
 - item: Ether Fullplate II
-  skillGained: 20
+  skillGained: 50
   maxSkillForGains: 7
   requiredSkill: 3
   xpGained: 600
   ingredients:
     - Ether Fullplate
-    - Ether Scale
+    - Ether Scale (Refined)
 
 - item: Ether Scaleplate
   skillGained: 20
@@ -27,19 +27,19 @@
     - Ether Scale
 
 - item: Ether Scaleplate II
-  skillGained: 20
+  skillGained: 50
   maxSkillForGains: 7
   requiredSkill: 3
   xpGained: 600
   ingredients:
     - Ether Scaleplate
-    - Ether Scale
+    - Ether Scale (Refined)
 
 - item: Ether Broadsword
-  skillGained: 20
+  skillGained: 50
   maxSkillForGains: 7
   requiredSkill: 1
   xpGained: 600
   ingredients:
     - Antanian Longsword
-    - Ether Scale
+    - Ether Scale (Refined)

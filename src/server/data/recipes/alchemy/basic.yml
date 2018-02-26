@@ -90,3 +90,15 @@
     - Instant Heal Bottle (5oz)
     - Antanian Pint of Water
 
+- item: Ether Scale (Refined)
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 3
+  xpGained: 2000
+  ingredients:
+    - Ether Scale
+    - Ether Scale
+    - Ether Scale
+    - Ether Scale
+    - Ether Scale
+
