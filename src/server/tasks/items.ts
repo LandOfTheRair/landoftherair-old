@@ -97,6 +97,14 @@ class ItemLoader {
     if(this.isArmor(item)) {
       if(isUndefined(item.isBeltable))  item.isBeltable = false;
       if(isUndefined(item.isSackable))  item.isSackable = false;
+
+      if(includes(['Tunic', 'Scaleplate'], item.itemClass)) {
+        item.stats.mitigation = 10;
+      }
+
+      if(includes(['Breastplate', 'Fullplate'], item.itemClass)) {
+        item.stats.mitigation = 25;
+      }
     }
 
     if(item.itemClass === 'Twig') {

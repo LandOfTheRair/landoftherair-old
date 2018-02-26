@@ -132,6 +132,7 @@ export class Stats {
   magicalDamageBoost? = 0;
   healingBoost? = 0;
 
+  mitigation? = 0;
   magicalResist? = 0;
   physicalResist? = 0;
   necroticResist? = 0;
@@ -144,7 +145,7 @@ export class Stats {
 export type StatName =
   'str' | 'dex' | 'agi' | 'int' | 'wis' | 'wil' | 'luk' | 'cha' | 'con'
 | 'move' | 'hpregen' | 'mpregen' | 'hp' | 'mp'
-| 'armorClass' | 'accuracy' | 'offense' | 'defense' | 'weaponArmorClass' | 'weaponDamageRolls'
+| 'armorClass' | 'accuracy' | 'offense' | 'defense' | 'weaponArmorClass' | 'weaponDamageRolls' | 'mitigation'
 | 'stealth' | 'perception'
 | 'magicalDamageBoost' | 'physicalDamageBoost' | 'healingBoost'
 | 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist';

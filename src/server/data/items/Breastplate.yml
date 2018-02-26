@@ -10,7 +10,7 @@
   stats:
     armorClass: 7
     defense: 1
-    physicalResist: 10
+    physicalResist: 3
   sprite: 210
   desc: "a simple iron breastplate engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   value: 500

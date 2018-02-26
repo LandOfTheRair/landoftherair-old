@@ -32,6 +32,7 @@ export class ParryStance extends StanceEffect {
 
     char.gainStat('weaponArmorClass', this.potency);
     char.gainStat('defense', Math.floor(this.potency / 4));
+    char.gainStat('mitigation', Math.floor(this.potency / 8));
 
     char.loseStat('offense', Math.floor(this.potency / 2));
     char.loseStat('accuracy', Math.floor(this.potency / 2));
@@ -43,6 +44,7 @@ export class ParryStance extends StanceEffect {
 
     char.loseStat('weaponArmorClass', this.potency);
     char.loseStat('defense', Math.floor(this.potency / 4));
+    char.loseStat('mitigation', Math.floor(this.potency / 8));
 
     char.gainStat('offense', Math.floor(this.potency / 2));
     char.gainStat('accuracy', Math.floor(this.potency / 2));

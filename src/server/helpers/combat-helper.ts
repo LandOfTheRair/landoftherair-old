@@ -1,5 +1,5 @@
 
-import { includes, random, capitalize, get } from 'lodash';
+import { includes, random, capitalize, get, clamp } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../shared/models/character';
 import { ShieldClasses, Item, MagicCutArmorClasses, WeaponClasses } from '../../shared/models/item';
@@ -210,6 +210,7 @@ export class CombatHelper {
       str4: Math.floor((attacker.getTotalStat('str') / 4) / offhandDivisor),
       multiplier: Classes[attacker.baseClass || 'Undecided'].combatDamageMultiplier,
       level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatLevelDivisor),
+      realLevel: attacker.level,
       damageMin: attackerWeapon.minDamage,
       damageMax: attackerWeapon.maxDamage,
       damageBase: attackerWeapon.baseDamage,
@@ -228,7 +229,9 @@ export class CombatHelper {
       armorClass: defender.getTotalStat('armorClass') + defenderACBoost,
       shieldAC: defenderShield ? defenderShield.stats.armorClass : 0,
       shieldDefense: defenderShield ? defenderShield.stats.defense || 0 : 0,
-      level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor)
+      level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor),
+      realLevel: defender.level,
+      mitigation: defender.getTotalStat('mitigation')
     };
 
     const lostAtkCondition = 1 - (attacker.getTraitLevelAndUsageModifier('CarefulTouch'));
@@ -367,8 +370,10 @@ export class CombatHelper {
     }
 
     if(damage > 0) {
-      damage -= defenderScope.armorClass;
-      damage = Math.max(0, damage);
+      const levelDifferenceModifier = clamp(attackerScope.realLevel - defenderScope.realLevel, -10, 10) * 5;
+      const mitigationModifier = defenderScope.mitigation - (defenderScope.mitigation * (levelDifferenceModifier / 100));
+      const mitigatedDamage = Math.floor(damage * (mitigationModifier / 100));
+      damage -= mitigatedDamage;
     }
 
     let damageType = 'was a successful strike';

@@ -47,7 +47,7 @@
     hp: 7
     mp: 7
     perception: 2
-    physicalResist: 2
+    physicalResist: 1
     magicalResist: 1
 
 - name: Antanian Emerald Chunk
@@ -55,7 +55,7 @@
   value: 2500
   sprite: 246
   stats:
-    physicalResist: 3
+    physicalResist: 2
 
   requirements:
     level: 7

@@ -126,7 +126,6 @@
   stats:
     armorClass: 6
     defense: 3
-    physicalResist: 10
     magicalResist: 20
     energyResist: 30
     necroticResist: 30
