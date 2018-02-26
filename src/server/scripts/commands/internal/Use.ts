@@ -41,6 +41,14 @@ export class Use extends Command {
         return;
       }
 
+      case 'DemiMagicPouch': {
+        const item = player.pouch.getItemFromSlot(+slot);
+        func(item);
+        player.pouch.takeItemFromSlot(+slot);
+        useItemInHand(slotName);
+        return;
+      }
+
       case 'Ground': {
         const ground = gameState.getGroundItems(player.x, player.y);
         if(!ground[itemType]) return player.sendClientMessage('You do not see that item.');
