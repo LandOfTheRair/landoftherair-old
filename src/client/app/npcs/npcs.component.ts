@@ -18,8 +18,11 @@ export class NpcsComponent implements OnInit, OnDestroy {
   public windowSize;
 
   private pinOption$: any;
-
   private shouldPin: boolean;
+  private sortFriendly$: any;
+  private shouldSortFriendly: boolean;
+  private sortDistance$: any;
+  private shouldSortDistance: boolean;
 
   private pinUUID: string;
   private pinPos: number;
@@ -43,6 +46,20 @@ export class NpcsComponent implements OnInit, OnDestroy {
         this.shouldPin = value;
       });
 
+    this.shouldSortFriendly = this.localStorage.retrieve('shouldSortFriendly');
+
+    this.sortFriendly$ = this.localStorage.observe('shouldSortFriendly')
+      .subscribe((value) => {
+        this.shouldSortFriendly = value;
+      });
+
+    this.shouldSortDistance = this.localStorage.retrieve('sortNPCsByDistance');
+
+    this.sortDistance$ = this.localStorage.observe('sortNPCsByDistance')
+      .subscribe((value) => {
+        this.shouldSortDistance = value;
+      });
+
     this.timer$ = Observable.timer(0, 500)
       .subscribe(() => this.updateNPCList());
 
@@ -51,6 +68,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.pinOption$.unsubscribe();
+    this.sortFriendly$.unsubscribe();
     this.timer$.unsubscribe();
     this.move$.unsubscribe();
   }
@@ -78,8 +96,13 @@ export class NpcsComponent implements OnInit, OnDestroy {
       return npc;
     }));
 
-    if(this.localStorage.retrieve('sortNPCsByDistance')) {
+    if(this.shouldSortDistance) {
       unsorted = sortBy(unsorted, npc => npc.distFrom(me));
+    }
+
+    if(this.shouldSortFriendly) {
+      const sortOrder = { neutral: 0, friendly: 1, hostile: 2 };
+      unsorted = sortBy(unsorted, npc => sortOrder[this.colyseusGame.hostilityLevelFor(npc)]);
     }
 
     if(!this.pinUUID || !this.shouldPin) return unsorted;

@@ -145,6 +145,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   public pinLastTarget: boolean;
 
   @LocalStorage()
+  public shouldSortFriendly: boolean;
+
+  @LocalStorage()
   public sortNPCsByDistance: boolean;
 
   @LocalStorage()
