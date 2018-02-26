@@ -30,7 +30,7 @@ export class Stunned extends SpellEffect {
 
     // cast via spell
     } else {
-      const targetWil = target.getTotalStat('wil');
+      const targetWil = target.getTotalStat('wil') - caster.getTraitLevelAndUsageModifier('IrresistibleStuns');
       if(targetWil > this.potency) return this.effectMessage(caster, `${target.name} resisted your stun!`);
 
       this.duration = Math.max(7, this.potency - targetWil);

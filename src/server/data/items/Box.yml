@@ -107,6 +107,8 @@
       chance: 1
     - result: Rune Scroll - Effective Supporter I
       chance: 1
+    - result: Rune Scroll - Irresistible Stuns I
+      chance: 1
 
 - name: Antanian Daily Mage Rune Scroll RNG Box
   desc: "a thin, blue gift box wrapped with a red bow. A card near it says \"MAGE\""

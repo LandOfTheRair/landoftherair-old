@@ -29,7 +29,7 @@ const reset = (username) => {
   delete tenSecDamageTotals[username];
 };
 
-export const tick = (npc: NPC) => {
+export const mechanicTick = (npc: NPC) => {
 
   // reset agro every tick
   npc.agro = {};
