@@ -3,10 +3,13 @@ import { cloneDeep, extend } from 'lodash';
 import { LocalStorageService } from 'ngx-webstorage';
 
 interface WindowProps {
-  x?: number, y?: number, width?: number, height?: number,
-  canResize?: boolean,
-  resizeEdges?: { left?: boolean, right?: boolean, top?: boolean, bottom?: boolean },
-  resizeSnapGrid?: { left?: number, right?: number, top?: number, bottom?: number }
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  canResize?: boolean;
+  resizeEdges?: { left?: boolean, right?: boolean, top?: boolean, bottom?: boolean };
+  resizeSnapGrid?: { left?: number, right?: number, top?: number, bottom?: number };
 }
 
 const WindowDefaults: { [key: string]: WindowProps } = {

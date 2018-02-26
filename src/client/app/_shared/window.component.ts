@@ -118,8 +118,7 @@ export class WindowComponent implements OnInit, OnDestroy {
     this.isActive$.unsubscribe();
   }
 
-  public validateResize($event) {
-    console.log('validate', this.canDrag, this.windowName, $event)
+  public validateResize() {
     return this.canDrag;
   }
 
