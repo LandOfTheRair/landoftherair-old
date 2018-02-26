@@ -68,7 +68,7 @@
   alignment: Evil
   stats: 5
   skillLevels:
-    Martial: 2
+    Martial: 1
   level: 3
 
   otherStats:
@@ -104,7 +104,7 @@
   alignment: Evil
   stats: 7
   skillLevels:
-    Martial: 2
+    Martial: 1
   level: 5
 
   otherStats:
