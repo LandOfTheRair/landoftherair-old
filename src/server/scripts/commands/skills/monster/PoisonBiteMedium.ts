@@ -15,7 +15,7 @@ export class PoisonBiteMedium extends Skill {
   range = () => 0;
 
   canUse(user: Character, target: Character) {
-    return !target.hasEffect('Poison');
+    return user.distFrom(target) <= this.range() && !target.hasEffect('Poison');
   }
 
   use(user: Character, target: Character) {
