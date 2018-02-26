@@ -133,11 +133,11 @@ export class SpellEffect extends Effect {
     let base = this.potency || 1;
 
     // check based on type, they're both technically wands
-    if(caster.baseClass === 'Mage' && get(caster, 'rightHand.type') === 'Wand') {
+    if(caster.baseClass === 'Mage' && get(caster, 'rightHand.itemClass') === 'Wand') {
       base += get(caster, 'rightHand.damageRolls', 0);
     }
 
-    if(caster.baseClass === 'Healer' && get(caster, 'rightHand.type') === 'Totem') {
+    if(caster.baseClass === 'Healer' && get(caster, 'rightHand.itemClass') === 'Totem') {
       base += get(caster, 'rightHand.damageRolls', 0);
     }
 
