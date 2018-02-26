@@ -245,6 +245,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.watchOptions();
 
     this.preloadAssets();
+
+    this.createUninitListener();
+  }
+
+  private createUninitListener() {
+    if(!environment.production) return;
+    
+    window.onbeforeunload = (e) => {
+      const message = 'Are you sure you want to quit? If you\'re in game, you might want to exit to lobby first!';
+
+      e.returnValue = message;
+      return message;
+    };
   }
 
   private preloadAssets() {
