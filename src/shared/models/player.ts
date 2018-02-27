@@ -6,7 +6,7 @@ import { Character, MaxSizes, AllNormalGearSlots, Allegiance } from './character
 import { Item } from './item';
 
 import { DateTime } from 'luxon';
-import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith, extend, values, isUndefined } from 'lodash';
+import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith, extend, values, isUndefined, cloneDeep } from 'lodash';
 import { Party } from './party';
 import { Quest } from '../../server/base/Quest';
 
@@ -100,8 +100,8 @@ export class Player extends Character {
   public $$hungerTicks: number;
   public $$isAccessingLocker: boolean;
 
-  public tradeSkillContainers: { 
-    alchemy?: AlchemyContainer, 
+  public tradeSkillContainers: {
+    alchemy?: AlchemyContainer,
     spellforging?: SpellforgingContainer,
     metalworking?: MetalworkingContainer
   };
@@ -113,6 +113,10 @@ export class Player extends Character {
 
   get party(): Party {
     return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
+  }
+
+  get allTraitLevels() {
+    return cloneDeep(this.traitLevels);
   }
 
   init() {
@@ -288,11 +292,15 @@ export class Player extends Character {
     if(this.partyPoints >= 100 || !this.partyExp.atMaximum()) return;
 
     this.partyPoints = this.partyPoints || 0;
-    this.partyPoints++;
+    this.gainPartyPoints(1);
     this.partyExp.toMinimum();
 
     const prevMax = this.partyExp.maximum;
     this.partyExp.maximum = Math.floor(100 + (prevMax * 1.0025));
+  }
+
+  public gainPartyPoints(pp = 1): void {
+    this.partyPoints += pp;
   }
 
   public hasPartyPoints(pp = 0): boolean {
@@ -595,6 +603,11 @@ export class Player extends Character {
   public loseTraitPoints(tp = 1): void {
     this.traitPoints -= tp;
     if(this.traitPoints < 0 || isNaN(this.traitPoints)) this.traitPoints = 0;
+  }
+
+  public decreaseTraitLevel(trait: string, levelsLost: number) {
+    this.traitLevels[trait].level -= levelsLost;
+    if(this.traitLevels[trait].level <= 0) this.traitLevels[trait].level = 0;
   }
 
   public increaseTraitLevel(trait: string, reqBaseClass?: string, extra = {}): void {

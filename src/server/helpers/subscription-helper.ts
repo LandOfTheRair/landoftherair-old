@@ -279,6 +279,8 @@ export class SubscriptionHelper {
 
   // silver related functions
   public static getSilverPurchase(account: Account, purchase: SilverPurchase): number {
+    if(account.isTester) return 1;
+
     return get(account, `silverPurchases.${purchase}`, 0);
   }
 

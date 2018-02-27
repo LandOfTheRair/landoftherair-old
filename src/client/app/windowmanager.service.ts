@@ -111,7 +111,13 @@ export class WindowManagerService {
     if(!this.windowLocations[window]) return;
 
     const { x, y, width, height } = this.windowLocations[window];
-    this.localStorage.store(`window-${window}`, { x, y, width, height });
+    const saveValue: any = { x, y };
+
+    if(this.defaultWindowLocations[window].height) {
+      saveValue.width = width;
+      saveValue.height = height;
+    }
+    this.localStorage.store(`window-${window}`, saveValue);
   }
 
 }
