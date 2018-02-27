@@ -376,9 +376,21 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'rmbuy')           return this.rmBuy(client, data.purchaseInfo);
     if(data.action === 'discord_tag')     return this.trySetDiscordTag(client, data.newTag);
     if(data.action === 'mute')            return this.toggleMute(client, data.args);
+    if(data.action === 'tester')          return this.toggleTester(client, data.args);
     if(data.userId && data.accessToken)   return this.tryLogin(client, data);
     if(data.message)                      return this.sendMessage(client, data.message);
     if(data.characterCreator)             return this.viewCharacter(client, data);
+  }
+
+  private toggleTester(client, account: string) {
+    const gmAccount = this.state.findAccount(client.userId);
+    if(!gmAccount || !gmAccount.isGM) return;
+
+    const targetAccount = this.state.findAccountByUsername(account);
+    if(!targetAccount) return;
+
+    targetAccount.isTester = !targetAccount.isTester;
+    AccountHelper.saveAccount(targetAccount);
   }
 
   private toggleMute(client, account: string) {

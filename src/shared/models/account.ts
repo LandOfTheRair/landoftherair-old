@@ -39,6 +39,8 @@ export class Account {
   // lobby display stuff
   username: string;
 
+  isTester = false;
+
   @nonenumerable
   isGM = false;
 
@@ -95,7 +97,7 @@ export class Account {
   public toSaveObject() {
     const baseObj = pick(this, [
       'colyseusId', 'createdAt', 'userId', 'email',
-      'emailVerified', 'username', 'isGM', 'status',
+      'emailVerified', 'username', 'isGM', 'status', 'isTester',
       'characterNames', 'maxCharacters', 'subscriptionTier', 'trialEnds', 'hasDoneTrial',
       'silver', 'silverPurchases',
       'discordTag',

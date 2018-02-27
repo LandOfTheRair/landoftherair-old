@@ -269,6 +269,10 @@ export class SubscriptionHelper {
     return player.$$account.isGM;
   }
 
+  public static isTester(player: Player): boolean {
+    return player.$$account.isTester;
+  }
+
   public static isSubscribed(player: Player): boolean {
     return this.subscriptionTier(player) > 0;
   }
@@ -281,6 +285,7 @@ export class SubscriptionHelper {
   // the max tier is 10
   private static subscriptionTier(player: Player): number {
     if(this.isGM(player)) return 10;
+    if(this.isTester(player)) return 1;
     return player.$$account.subscriptionTier;
   }
 
