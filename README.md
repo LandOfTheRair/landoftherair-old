@@ -92,16 +92,22 @@ Some commands are hidden and don't really need to be used by players, but should
 
 * `~` - an internal command used by the UI
 * `~~` - a debugging command for players
-* `@` - a command for GMs.
+* `^` - a command for testers (and GMs)
+* `@` - a command for GMs
 
 #### Internal Commands
 
-* `~look` - look at the ground (only used by `~search`)
-* `~use` - use an item
-* `~search` - search corpses on the ground, then look.
+* `~clear` - clear the command buffer
+* `~drink` - drink a potion from your potion slot
 * `~interact` - called when clicking on something interactable
+* `~look` - look at the ground (only used by `~search`)
 * `~move` - called when clicking on the map to move
+* `~restore` - be dead no more
+* `~say` - talk to other players nearby
+* `~search` - search corpses on the ground, then look
 * `~talk` - called automatically when doing `xxx, message` - will trigger appropriate dialog for an npc if it has any
+* `~trait` - buy traits
+* `~use` - use an item
 
 #### Debugging Commands
 
