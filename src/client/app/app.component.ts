@@ -255,12 +255,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     if(!environment.production) return;
     if(!this.authService.isAuthenticated) return;
 
+    /*
     window.onbeforeunload = (e) => {
       const message = 'Are you sure you want to quit? If you\'re in game, you might want to exit to lobby first!';
 
       e.returnValue = message;
       return message;
     };
+    */
   }
 
   private preloadAssets() {
