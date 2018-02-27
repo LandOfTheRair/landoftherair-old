@@ -116,6 +116,8 @@ export class ColyseusGameService {
 
     this.unshowWindows();
 
+    console.log(this.character, this.character.map);
+
     this.joinRoom(this.character.map);
   }
 
