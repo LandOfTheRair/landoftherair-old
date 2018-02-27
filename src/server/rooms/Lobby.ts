@@ -20,6 +20,9 @@ import { BonusArbiter } from '../helpers/bonus-arbiter';
 import { MessageHelper } from '../helpers/message-helper';
 import { DiscordHelper } from '../helpers/discord-helper';
 
+const CHAT_SPAM_DELAY = 1000;
+const MAX_SPAM_MESSAGES = 5;
+
 export class Lobby extends Room<LobbyState> {
 
   auth0: any;
@@ -62,7 +65,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private async tryLogin(client, { userId, username, idToken }) {
-    
+
     if(process.env.AUTH0_JWKS_URI) {
       const isValidRS256Token = await JWTHelper.verifyRS256Token(idToken);
 
@@ -175,6 +178,34 @@ export class Lobby extends Room<LobbyState> {
   private addMessage({ account, message }, source: 'player'|'discord') {
     message = this.fixTextMessage(message);
     if(!message) return;
+
+    const accountRef = this.state.findAccountByUsername(account);
+
+    if(source !== 'discord' && !accountRef.isGM) {
+      const timestamp = Date.now();
+
+      // set the last message if not set
+      if(!accountRef.lastSentMessage) accountRef.lastSentMessage = timestamp;
+
+      // verify spam messages is num
+      if(!accountRef.spamMessages) accountRef.spamMessages = 0;
+
+      // either increment it if they're talking too much, or decrement it
+      if(timestamp - accountRef.lastSentMessage < CHAT_SPAM_DELAY) accountRef.spamMessages++;
+      else                                                      accountRef.spamMessages = Math.max(accountRef.spamMessages - 1, 0);
+
+      // if they've finally gone over, mute em
+      if(accountRef.spamMessages > MAX_SPAM_MESSAGES) {
+        accountRef.isMuted = true;
+        accountRef.spamMessages = 0;
+        AccountHelper.saveAccount(accountRef);
+      }
+
+      // reset their timestamp
+      accountRef.lastSentMessage = timestamp;
+    }
+
+    if(accountRef.isMuted) return;
 
     this.state.addMessage({ account, message });
 
@@ -344,9 +375,21 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'festival')        return this.adjustFestival(client, data.args);
     if(data.action === 'rmbuy')           return this.rmBuy(client, data.purchaseInfo);
     if(data.action === 'discord_tag')     return this.trySetDiscordTag(client, data.newTag);
+    if(data.action === 'mute')            return this.toggleMute(client, data.args);
     if(data.userId && data.accessToken)   return this.tryLogin(client, data);
     if(data.message)                      return this.sendMessage(client, data.message);
     if(data.characterCreator)             return this.viewCharacter(client, data);
+  }
+
+  private toggleMute(client, account: string) {
+    const gmAccount = this.state.findAccount(client.userId);
+    if(!gmAccount || !gmAccount.isGM) return;
+
+    const targetAccount = this.state.findAccountByUsername(account);
+    if(!targetAccount) return;
+
+    targetAccount.isMuted = !targetAccount.isMuted;
+    AccountHelper.saveAccount(targetAccount);
   }
 
   private async trySetDiscordTag(client, newTag: string) {

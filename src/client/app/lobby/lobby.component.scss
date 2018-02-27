@@ -39,8 +39,13 @@
       }
 
       &.sub {
-        background: purple;
+        background: #9f8914;
         background: linear-gradient(135deg, #9f8914 0%, #3e370e 50%, #ffd700 100%);
+      }
+
+      &.muted {
+        background: gray;
+        background: linear-gradient(135deg, #ccc 0%, #555 50%, #eee 100%);
       }
 
     }
@@ -60,6 +65,7 @@
   overflow-x: hidden;
 
   height: calc(100% - 25px);
+  max-height: calc(100% - 25px);
 
   .message {
     display: flex;

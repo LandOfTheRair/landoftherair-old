@@ -113,7 +113,7 @@ export class DraggableWindowDirective implements OnInit {
   }
 
   @HostListener('touchstart', ['$event'])
-  onTouchStart(event: TouchEvent) {
+  onTouchStart(event) {
     this.md = true;
     this.topStart = event.changedTouches[0].clientY - this.element.nativeElement.style.top.replace('px', '');
     this.leftStart = event.changedTouches[0].clientX - this.element.nativeElement.style.left.replace('px', '');
@@ -126,7 +126,7 @@ export class DraggableWindowDirective implements OnInit {
   }
 
   @HostListener('document:touchmove', ['$event'])
-  onTouchMove(event: TouchEvent) {
+  onTouchMove(event) {
     if(this.md && this._allowDrag) {
       this.setElementCoords(event.changedTouches[0].clientY - this.topStart, event.changedTouches[0].clientX - this.leftStart);
     }

@@ -10,6 +10,7 @@ export class Say extends Command {
 
   execute(player: Player, { room, gameState, args }) {
     if(!args) return false;
+    if(player.$$account.isMuted) return;
     player.sendClientMessageToRadius({ name: player.name, message: args }, 6);
   }
 

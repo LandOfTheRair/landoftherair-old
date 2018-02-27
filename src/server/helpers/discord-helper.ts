@@ -5,6 +5,7 @@ import { Account } from '../../shared/models/account';
 
 const DISCORD_WATCHER_ROLE_NAME = process.env.DISCORD_WATCHER_ROLE || 'Event Watcher';
 const DISCORD_VERIFIED_ROLE_NAME = process.env.DISCORD_VERIFIED_ROLE || 'Verified';
+const DISCORD_MUTED_ROLE_NAME = process.env.DISCORD_MUTED_ROLE || 'Muted';
 const DISCORD_SUBSCRIBER_ROLE_NAME = process.env.DISCORD_SUBSCRIBER_ROLE || 'Subscriber';
 const DISCORD_BOT_NAME = process.env.DISCORD_BOT_NAME || 'LandOfTheRairLobby';
 
@@ -114,7 +115,8 @@ export class DiscordHelper {
 
     [
       DISCORD_VERIFIED_ROLE_NAME,
-      DISCORD_SUBSCRIBER_ROLE_NAME
+      DISCORD_SUBSCRIBER_ROLE_NAME,
+      DISCORD_MUTED_ROLE_NAME
     ].forEach(role => {
       guildMember.removeRole(this.discordGuild.roles.find('name', role));
     });
@@ -127,6 +129,10 @@ export class DiscordHelper {
     if(!guildMember) return false;
 
     guildMember.addRole(this.discordGuild.roles.find('name', DISCORD_VERIFIED_ROLE_NAME));
+
+    if(account.isMuted) {
+      guildMember.addRole(this.discordGuild.roles.find('name', DISCORD_MUTED_ROLE_NAME));
+    }
 
     if(account.subscriptionTier > 0) {
       guildMember.addRole(this.discordGuild.roles.find('name', DISCORD_SUBSCRIBER_ROLE_NAME));

@@ -42,6 +42,14 @@ export class Account {
   @nonenumerable
   isGM = false;
 
+  isMuted = false;
+
+  @nonenumerable
+  spamMessages = 0;
+
+  @nonenumerable
+  lastMessage: number;
+
   @nonenumerable
   inGame = -1;
 
@@ -90,7 +98,8 @@ export class Account {
       'emailVerified', 'username', 'isGM', 'status',
       'characterNames', 'maxCharacters', 'subscriptionTier', 'trialEnds', 'hasDoneTrial',
       'silver', 'silverPurchases',
-      'discordTag'
+      'discordTag',
+      'isMuted'
     ]);
 
     // ???

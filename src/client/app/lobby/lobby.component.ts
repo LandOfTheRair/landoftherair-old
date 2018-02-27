@@ -46,6 +46,8 @@ export class LobbyComponent implements OnInit, OnDestroy {
   getMarkingClass(account: Account) {
     const myTier = this.lobby.lobbyState.subTier[account.username];
 
+    if(account.isMuted)           return 'muted';
+
     if(myTier === 10)             return 'gm';
     if(myTier)                    return 'sub';
     return '';

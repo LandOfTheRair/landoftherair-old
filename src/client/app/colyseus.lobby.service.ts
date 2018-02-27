@@ -240,7 +240,16 @@ export class ColyseusLobbyService {
       return true;
     }
 
+    if(command === '/mute') {
+      this.mute(args);
+      return true;
+    }
+
     return false;
+  }
+
+  public mute(args) {
+    this.room.send({ action: 'mute', args });
   }
 
   public startFestival(args) {
