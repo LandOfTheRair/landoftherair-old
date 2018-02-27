@@ -139,7 +139,6 @@ export class GameWorld extends Room<GameState> {
   }
 
   async onInit(opts) {
-    console.log('init', opts);
     this.redis = new Redis();
 
     this.allMapNames = opts.allMapNames;
@@ -181,7 +180,6 @@ export class GameWorld extends Room<GameState> {
     };
 
     finishLoad();
-    console.log('init done');
   }
 
   onDispose() {
@@ -201,11 +199,9 @@ export class GameWorld extends Room<GameState> {
   }
 
   async onJoin(client, options) {
-    console.log('join', options);
     const { charSlot, username } = options;
 
     const account = await AccountHelper.getAccountByUsername(username);
-    console.log('acc', account)
 
     if(!account || account.colyseusId !== client.id) {
       this.send(client, {
