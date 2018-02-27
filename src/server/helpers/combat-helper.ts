@@ -333,6 +333,8 @@ export class CombatHelper {
       }
     }
 
+    // TODO scrap "damage min" and "damage max" and make them damagerollsmin, damagerollsmax (adjust seed scripts too).
+    // TODO add a "drop rolls below" property for some cases (maybe for now, warriors only always hit in the top 50% of their weapon. thieves top 75%)
     const damageLeft = Math.floor(attackerScope.skill + attackerScope.damageRolls);
     const damageMax = random(attackerScope.damageMin, attackerScope.damageMax) + attackerScope.damageBase;
     const damageRight = Math.floor(attackerScope.str + attackerScope.level);
@@ -371,7 +373,7 @@ export class CombatHelper {
 
     if(damage > 0) {
       const levelDifferenceModifier = clamp(attackerScope.realLevel - defenderScope.realLevel, -10, 10) * 5;
-      const mitigationModifier = Math.max(75, defenderScope.mitigation - (defenderScope.mitigation * (levelDifferenceModifier / 100)));
+      const mitigationModifier = Math.min(75, defenderScope.mitigation - (defenderScope.mitigation * (levelDifferenceModifier / 100)));
       const mitigatedDamage = Math.floor(damage * (mitigationModifier / 100));
       damage -= mitigatedDamage;
     }
