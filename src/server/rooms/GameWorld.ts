@@ -212,10 +212,15 @@ export class GameWorld extends Room<GameState> {
       return false;
     }
 
-    const playerData = await DB.$players.findOne({ username, map: this.mapName, charSlot, inGame: { $ne: true } });
+    const playerData = await DB.$players.findOne({ username, map: this.mapName, charSlot });
 
     if(!playerData) {
       this.send(client, { error: 'invalid_char', prettyErrorName: 'Invalid Character Data', prettyErrorDesc: 'No idea how this happened!' });
+      return false;
+    }
+
+    if(playerData.inGame) {
+      this.send(client, { error: 'already_in_game', prettyErrorName: 'Already In Game', prettyErrorDesc: 'You are already in game! Maybe you hit join too fast?' });
       return false;
     }
 

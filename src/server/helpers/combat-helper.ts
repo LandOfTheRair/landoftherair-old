@@ -269,7 +269,7 @@ export class CombatHelper {
     }
 
     // try to block with armor
-    const defenderBlockRightSide = Math.floor(defenderScope.level + defenderScope.armorClass + defenderScope.dex4);
+    const defenderBlockRightSide = Math.floor(defenderScope.level + defenderScope.armorClass);
 
     const attackerACRoll = Math.max(1, +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`) - defenderScope.armorClass);
     let defenderACRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderBlockRightSide}`);
