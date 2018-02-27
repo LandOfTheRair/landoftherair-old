@@ -2,10 +2,7 @@
   stats:
     accuracy: 1
   desc: "a wooden longbow"
-  baseDamage: 6
-  minDamage: 1
-  maxDamage: 4
-  damageRolls: 1
+  tier: 1
   type: Ranged
   secondaryType: Twohanded
   value: 110
@@ -26,10 +23,7 @@
     level: 1
 
   desc: "a crystal longbow, glowing with dark magic"
-  baseDamage: 20
-  minDamage: 10
-  maxDamage: 15
-  damageRolls: 3
+  tier: 2
   type: Ranged
   secondaryType: Twohanded
   value: 2300
@@ -42,10 +36,7 @@
   stats:
     accuracy: 3
   desc: "a longbow made of a riyan wood"
-  baseDamage: 24
-  minDamage: 3
-  maxDamage: 12
-  damageRolls: 4
+  tier: 3
   type: Ranged
   secondaryType: Twohanded
   value: 1110
@@ -58,10 +49,7 @@
   stats:
     accuracy: 3
   desc: "a longbow made of a riyan wood"
-  baseDamage: 24
-  minDamage: 3
-  maxDamage: 12
-  damageRolls: 5
+  tier: 4
   type: Ranged
   secondaryType: Twohanded
   value: 1110

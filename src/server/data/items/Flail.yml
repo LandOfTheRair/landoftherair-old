@@ -1,0 +1,14 @@
+
+- name: Antanian Steffen Flail
+  stats:
+    accuracy: -4
+    offense: 3
+  desc: "a standard-issue 3-ball flail"
+  tier: 2
+  type: Mace
+  value: 401
+  sprite: 228
+  binds: true
+
+  requirements:
+    level: 5

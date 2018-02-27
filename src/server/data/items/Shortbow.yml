@@ -2,10 +2,7 @@
   stats:
     accuracy: 3
   desc: "a wooden shortbow"
-  baseDamage: 7
-  minDamage: 1
-  maxDamage: 3
-  damageRolls: 1
+  tier: 1
   type: Ranged
   value: 95
   sprite: 199
@@ -14,20 +11,14 @@
   stats:
     accuracy: 5
   desc: "a wooden shortbow engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 9
-  minDamage: 2
-  maxDamage: 4
-  damageRolls: 1
+  tier: 1
   type: Ranged
   value: 195
   sprite: 199
 
 - name: Heniz Poison Shortbow
   desc: "a crudely-carved shortbow with poison tipped arrows"
-  baseDamage: 11
-  minDamage: 3
-  maxDamage: 6
-  damageRolls: 2
+  tier: 2
   effect:
     name: Poison
     potency: 7

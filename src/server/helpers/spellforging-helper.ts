@@ -92,10 +92,6 @@ export class SpellforgingHelper {
       item.enchantLevel = item.enchantLevel || 0;
       item.enchantLevel++;
 
-      item.baseDamage += 2;
-      item.minDamage += 2;
-      item.maxDamage += 2;
-
       item.stats.accuracy = item.stats.accuracy || 0;
       item.stats.accuracy += 2;
 
@@ -106,10 +102,7 @@ export class SpellforgingHelper {
       item.stats.defense++;
 
       if(includes(reagent.name, 'Owts')) {
-        item.damageRolls = item.damageRolls || 0;
-        item.damageRolls++;
-
-        item.baseDamage += 3;
+        item.tier += 1;
       }
 
       container.result = item;

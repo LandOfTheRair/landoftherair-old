@@ -1,9 +1,6 @@
 - name: Antanian Axe
   desc: "an iron axe"
-  baseDamage: 5
-  minDamage: 1
-  maxDamage: 3
-  damageRolls: 1
+  tier: 1
   type: Axe
   value: 85
   sprite: 165
@@ -13,10 +10,7 @@
     accuracy: 3
     offense: 1
   desc: "an iron axe engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 8
-  minDamage: 1
-  maxDamage: 3
-  damageRolls: 1
+  tier: 1
   type: Axe
   value: 85
   sprite: 165
@@ -26,10 +20,7 @@
     offense: 1
     defense: 1
   desc: "a crudely stone axe with many clawmarks on the shaft"
-  baseDamage: 12
-  minDamage: 1
-  maxDamage: 7
-  damageRolls: 2
+  tier: 2
   type: Axe
   value: 385
   sprite: 52

@@ -4,10 +4,7 @@
   stats:
     armorClass: 1
     accuracy: 3
-  baseDamage: 6
-  minDamage: 2
-  maxDamage: 5
-  damageRolls: 2
+  tier: 1
   type: Polearm
   value: 145
   sprite: 230
@@ -18,10 +15,7 @@
     armorClass: 2
     offense: 1
     accuracy: 5
-  baseDamage: 9
-  minDamage: 2
-  maxDamage: 5
-  damageRolls: 2
+  tier: 1
   type: Polearm
   value: 145
   sprite: 230
@@ -32,10 +26,7 @@
     armorClass: 2
     weaponArmorClass: 2
     offense: 3
-  baseDamage: 15
-  minDamage: 2
-  maxDamage: 15
-  damageRolls: 4
+  tier: 3
   type: Polearm
   value: 1451
   sprite: 44
@@ -50,10 +41,7 @@
     armorClass: 2
     weaponArmorClass: 2
     offense: 3
-  baseDamage: 15
-  minDamage: 2
-  maxDamage: 15
-  damageRolls: 5
+  tier: 4
   type: Polearm
   value: 1451
   sprite: 44

@@ -134,11 +134,11 @@ export class SpellEffect extends Effect {
 
     // check based on type, they're both technically wands
     if(caster.baseClass === 'Mage' && get(caster, 'rightHand.itemClass') === 'Wand') {
-      base += get(caster, 'rightHand.damageRolls', 0);
+      base += get(caster, 'rightHand.tier', 0);
     }
 
     if(caster.baseClass === 'Healer' && get(caster, 'rightHand.itemClass') === 'Totem') {
-      base += get(caster, 'rightHand.damageRolls', 0);
+      base += get(caster, 'rightHand.tier', 0);
     }
 
     return base;

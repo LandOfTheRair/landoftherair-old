@@ -1,9 +1,6 @@
 - name: Saraxa Wand
   desc: "a blue wand engraved with the markings of a shaman"
-  baseDamage: 1
-  minDamage: 1
-  maxDamage: 8
-  damageRolls: 1
+  tier: 1
   effect:
     name: MagicMissile
     potency: 5
@@ -19,10 +16,7 @@
 
 - name: Heniz FireMist Wand
   desc: "a blue wand engraved with the blazing Heniz runes"
-  baseDamage: 5
-  minDamage: 1
-  maxDamage: 14
-  damageRolls: 1
+  tier: 1
   effect:
     name: FireMist
     potency: 8
@@ -40,10 +34,7 @@
 
 - name: Heniz IceMist Wand
   desc: "a blue wand engraved with the frozen Heniz runes"
-  baseDamage: 5
-  minDamage: 1
-  maxDamage: 14
-  damageRolls: 1
+  tier: 1
   effect:
     name: IceMist
     potency: 8
@@ -62,10 +53,7 @@
 - name: Crazed Saraxa Wand
   quality: 5
   desc: "a crimson wand stained from over-exposure to ether mist"
-  baseDamage: 1
-  minDamage: 1
-  maxDamage: 15
-  damageRolls: 2
+  tier: 2
   effect:
     name: MagicBolt
     potency: 10

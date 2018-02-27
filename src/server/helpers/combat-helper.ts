@@ -17,7 +17,64 @@ export type DamageType =
 | 'Water'
 | 'Energy';
 
+export const BaseItemStatsPerTier = {
+  Axe:                  { base: 2, min: 0, max: 2, weakChance: 10, damageBonus: 0 },
+  Broadsword:           { base: 2, min: 0, max: 2, weakChance: 5,  damageBonus: 5 },
+  Claws:                { base: 3, min: 0, max: 1, weakChance: 10, damageBonus: 0 },
+  Club:                 { base: 1, min: 0, max: 1, weakChance: 10, damageBonus: 10 },
+  Crossbow:             { base: 0, min: 0, max: 3, weakChance: 10, damageBonus: 10 },
+  Dagger:               { base: 1, min: 0, max: 1, weakChance: 10, damageBonus: 15 },
+  Flail:                { base: 0, min: 1, max: 4, weakChance: 10, damageBonus: 0 },
+  Gloves:               { base: 1, min: 0, max: 2, weakChance: 10, damageBonus: 5 },
+  Hands:                { base: 1, min: 0, max: 2, weakChance: 10, damageBonus: 5 },
+  Greataxe:             { base: 3, min: 0, max: 3, weakChance: 10, damageBonus: 0 },
+  Greatmace:            { base: 3, min: 0, max: 3, weakChance: 10, damageBonus: 0 },
+  Greatsword:           { base: 1, min: 1, max: 4, weakChance: 10, damageBonus: 0 },
+  Halberd:              { base: 1, min: 0, max: 4, weakChance: 10, damageBonus: 0 },
+  Hammer:               { base: 1, min: 0, max: 1, weakChance: 20, damageBonus: 15 },
+  Longbow:              { base: 3, min: 1, max: 3, weakChance: 10, damageBonus: 0 },
+  Longsword:            { base: 2, min: 1, max: 2, weakChance: 15, damageBonus: 5 },
+  Mace:                 { base: 2, min: 0, max: 2, weakChance: 10, damageBonus: 10 },
+  Shield:               { base: 0, min: 0, max: 0, weakChance: 10, damageBonus: 0 },
+  Shortbow:             { base: 3, min: 1, max: 2, weakChance: 10, damageBonus: 0 },
+  Shortsword:           { base: 1, min: 1, max: 2, weakChance: 15, damageBonus: 10 },
+  Spear:                { base: 1, min: 0, max: 3, weakChance: 10, damageBonus: 0 },
+  Staff:                { base: 0, min: 0, max: 2, weakChance: 20, damageBonus: 0 },
+  Totem:                { base: 1, min: 0, max: 1, weakChance: 30, damageBonus: 0 },
+  Wand:                 { base: 1, min: 0, max: 1, weakChance: 30, damageBonus: 0 }
+};
+
 export class CombatHelper {
+
+  static determineWeaponInformation(item: Item, baseRolls = 0) {
+    if(!BaseItemStatsPerTier[item.itemClass]) {
+      throw new Error(`${item.itemClass} has no item stats per tier!`);
+    }
+
+    const tier = item.tier || 0;
+    const { base, min, max, weakChance, damageBonus } = BaseItemStatsPerTier[item.itemClass];
+
+    let damageRolls = baseRolls;
+    const minTier = min * tier;
+    const maxTier = max * tier;
+    const baseTier = base * tier;
+
+    // try to flub
+    const didFlub = random(0, 100) <= weakChance;
+
+    const bonusRolls = didFlub ? minTier : random(minTier, maxTier);
+
+    damageRolls += bonusRolls;
+
+    // check if weak or strong hit
+    const isWeak = min !== max && didFlub;
+    const isStrong = min !== max && bonusRolls === maxTier;
+
+    // add base tier damage if no flub
+    if(!didFlub) damageRolls += baseTier;
+
+    return { damageRolls, damageBonus: damageBonus * tier, isWeak, isStrong };
+  }
 
   static attemptToShadowSwap(char: Character) {
     const shadowSwapLevel = char.getTraitLevelAndUsageModifier('ShadowSwap');
@@ -150,8 +207,8 @@ export class CombatHelper {
     } else {
       attackerWeapon = attacker.rightHand
                     || attacker.gear.Hands
-                    || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands',
-                         minDamage: 1, maxDamage: 1, baseDamage: 1, damageRolls: 0,
+                    || { type: SkillClassNames.Martial, itemClass: 'Hands', name: 'hands',
+                         tier: 1,
                          canUseInCombat: () => true,
                          isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
     }
@@ -187,7 +244,7 @@ export class CombatHelper {
                                          conditionACModifier: () => 0 };
 
     const defenderBlocker = defender.rightHand
-                        || { type: SkillClassNames.Martial, itemClass: 'Gloves', name: 'hands', conditionACModifier: () => 0,
+                        || { type: SkillClassNames.Martial, itemClass: 'Hands', name: 'hands', conditionACModifier: () => 0,
                              hasCondition: () => true, isOwnedBy: (x) => true, loseCondition: (x, y) => {} };
 
     const defenderShield = defender.leftHand && this.isShield(defender.leftHand)
@@ -199,22 +256,23 @@ export class CombatHelper {
     const attackerName = defender.canSeeThroughStealthOf(attacker) ? attacker.name : 'somebody';
     const attackerDamageRolls = attacker.getTotalStat('weaponDamageRolls');
 
+    const { damageRolls, damageBonus, isWeak, isStrong } = this.determineWeaponInformation(attackerWeapon, attackerDamageRolls);
+
     // skill + 1 because skill 0 is awful
+    const calcSkill = attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type) + 1;
+
     const attackerScope = {
-      skill: attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type) + 1,
+      skill: calcSkill,
+      skill4: Math.floor(calcSkill / 4),
       offense: Math.floor(attacker.getTotalStat('offense') / offhandDivisor),
       accuracy: Math.floor(attacker.getTotalStat('accuracy') / offhandDivisor),
       dex: Math.floor(attacker.getTotalStat('dex') / offhandDivisor),
       dex4: Math.floor((attacker.getTotalStat('dex') / 4) / offhandDivisor),
       str: Math.floor(attacker.getTotalStat('str') / offhandDivisor),
       str4: Math.floor((attacker.getTotalStat('str') / 4) / offhandDivisor),
-      multiplier: Classes[attacker.baseClass || 'Undecided'].combatDamageMultiplier,
       level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatLevelDivisor),
       realLevel: attacker.level,
-      damageMin: attackerWeapon.minDamage,
-      damageMax: attackerWeapon.maxDamage,
-      damageBase: attackerWeapon.baseDamage,
-      damageRolls: Math.max(1, (attackerWeapon.damageRolls || 1) + attackerDamageRolls)
+      damageRolls: Math.max(1, damageRolls)
     };
 
     const defenderWeaponAC = defender.getTotalStat('weaponArmorClass');
@@ -333,14 +391,16 @@ export class CombatHelper {
       }
     }
 
-    // TODO scrap "damage min" and "damage max" and make them damagerollsmin, damagerollsmax (adjust seed scripts too).
-    // TODO add a "drop rolls below" property for some cases (maybe for now, warriors only always hit in the top 50% of their weapon. thieves top 75%)
-    const damageLeft = Math.floor(attackerScope.skill + attackerScope.damageRolls);
-    const damageMax = random(attackerScope.damageMin, attackerScope.damageMax) + attackerScope.damageBase;
-    const damageRight = Math.floor(attackerScope.str + attackerScope.level);
-    const damageBoost = attacker.getTotalStat('physicalDamageBoost');
+    const damageLeft = attackerScope.damageRolls + attackerScope.skill4;
+    const damageRight = Math.floor(attackerScope.str + attackerScope.level + attackerScope.skill);
+    const damageBoost = attacker.getTotalStat('physicalDamageBoost') + damageBonus;
 
-    let damage = Math.floor((+dice.roll(`${damageLeft}d${damageRight}`) + damageMax) * attackerScope.multiplier) + damageBoost;
+    // thieves get +25% to the bottom damage range, warriors get +50%
+    let damageRollMinimum = 1;
+    if(attacker.baseClass === 'Thief') damageRollMinimum = Math.floor(damageRight * 0.25);
+    if(attacker.baseClass === 'Warrior') damageRollMinimum = Math.floor(damageRight * 0.5);
+
+    let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}..${damageRollMinimum}`)) + damageBoost;
 
     if(isOffhand) {
       damage = Math.floor(damage / offhandDivisor);
@@ -381,12 +441,12 @@ export class CombatHelper {
     let damageType = 'was a successful strike';
     let criticality = 1;
 
-    if(attackerScope.damageMin === damageMax) {
+    if(isWeak) {
       damageType = 'was a grazing blow';
       criticality = 0;
       attacker.$$room.combatEffect(attacker, 'hit-min', defender.uuid);
 
-    } else if(attackerScope.damageMax === damageMax) {
+    } else if(isStrong) {
       damageType = 'left a grievous wound';
       criticality = 2;
       attacker.$$room.combatEffect(attacker, 'hit-max', defender.uuid);

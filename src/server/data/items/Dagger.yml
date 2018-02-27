@@ -3,10 +3,7 @@
     accuracy: 5
   desc: "an iron dagger"
   isSackable: true
-  baseDamage: 5
-  minDamage: 1
-  maxDamage: 2
-  damageRolls: 1
+  tier: 1
   type: Dagger
   value: 75
   sprite: 205
@@ -17,10 +14,7 @@
     offense: 1
   desc: "an iron dagger engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   isSackable: true
-  baseDamage: 7
-  minDamage: 1
-  maxDamage: 2
-  damageRolls: 1
+  tier: 1
   type: Dagger
   value: 75
   sprite: 205
@@ -30,10 +24,7 @@
   stats:
     accuracy: 5
   isSackable: true
-  baseDamage: 3
-  minDamage: 1
-  maxDamage: 7
-  damageRolls: 1
+  tier: 2
   returnsOnThrow: true
   type: Dagger
   value: 500
@@ -44,10 +35,7 @@
   stats:
     accuracy: 5
   isSackable: true
-  baseDamage: 10
-  minDamage: 3
-  maxDamage: 6
-  damageRolls: 1
+  tier: 2
   returnsOnThrow: true
   offhand: true
   type: Dagger
@@ -63,10 +51,7 @@
   stats:
     accuracy: 15
   isSackable: true
-  baseDamage: 10
-  minDamage: 3
-  maxDamage: 6
-  damageRolls: 3
+  tier: 3
   returnsOnThrow: true
   offhand: true
   type: Dagger
@@ -81,10 +66,7 @@
   stats:
     accuracy: 15
   isSackable: true
-  baseDamage: 10
-  minDamage: 3
-  maxDamage: 6
-  damageRolls: 4
+  tier: 4
   returnsOnThrow: true
   offhand: true
   type: Dagger

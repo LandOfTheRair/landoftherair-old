@@ -6,10 +6,7 @@
     accuracy: 3
     offense: 2
     defense: 2
-  baseDamage: 10
-  minDamage: 1
-  maxDamage: 30
-  damageRolls: 3
+  tier: 3
   type: Onehanded
   value: 1378
   sprite: 46
@@ -25,10 +22,7 @@
     accuracy: 3
     offense: 2
     defense: 2
-  baseDamage: 10
-  minDamage: 1
-  maxDamage: 30
-  damageRolls: 4
+  tier: 4
   type: Onehanded
   value: 1378
   sprite: 46
@@ -44,10 +38,7 @@
     accuracy: 4
     offense: 3
     defense: 3
-  baseDamage: 20
-  minDamage: 1
-  maxDamage: 40
-  damageRolls: 4
+  tier: 5
   type: Onehanded
   value: 2345
   sprite: 46

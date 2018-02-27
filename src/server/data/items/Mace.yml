@@ -2,10 +2,7 @@
   stats:
     accuracy: 4
   desc: "an iron mace"
-  baseDamage: 4
-  minDamage: 1
-  maxDamage: 3
-  damageRolls: 1
+  tier: 1
   type: Mace
   value: 105
   sprite: 204
@@ -15,27 +12,7 @@
     accuracy: 6
     offense: 1
   desc: "an iron mace engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 7
-  minDamage: 1
-  maxDamage: 3
-  damageRolls: 1
+  tier: 1
   type: Mace
   value: 105
   sprite: 204
-
-- name: Antanian Steffen Flail
-  stats:
-    accuracy: -4
-    offense: 3
-  desc: "a standard-issue 3-ball flail"
-  baseDamage: 1
-  minDamage: 3
-  maxDamage: 10
-  damageRolls: 2
-  type: Mace
-  value: 401
-  sprite: 228
-  binds: true
-
-  requirements:
-    level: 5

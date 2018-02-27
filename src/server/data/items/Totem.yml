@@ -1,9 +1,6 @@
 - name: Ranata Totem
   desc: "a wooden totem with a hand carved into it"
-  baseDamage: 1
-  minDamage: 1
-  maxDamage: 8
-  damageRolls: 1
+  tier: 1
   effect:
     name: Afflict
     potency: 5

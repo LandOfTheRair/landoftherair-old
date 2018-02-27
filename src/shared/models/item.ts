@@ -14,7 +14,7 @@ export const ValidItemTypes = [
 ];
 
 export const WeaponClasses = [
-  'Axe', 'Broadsword', 'Crossbow', 'Dagger', 'Club', 'Greataxe', 'Greatmace', 'Greatsword', 'Hammer', 'Halberd', 'Longbow',
+  'Axe', 'Broadsword', 'Crossbow', 'Dagger', 'Club', 'Flail', 'Greataxe', 'Greatmace', 'Greatsword', 'Hammer', 'Halberd', 'Longbow',
   'Longsword', 'Mace', 'Shield', 'Shortbow', 'Shortsword', 'Spear', 'Staff', 'Totem', 'Wand'
 ];
 
@@ -133,10 +133,7 @@ export class Item {
   // username ref
   owner?: string;
 
-  damageRolls = 0;
-  baseDamage = 0;
-  minDamage = 0;
-  maxDamage = 0;
+  tier = 0;
 
   ounces = 0;
   value = 0;

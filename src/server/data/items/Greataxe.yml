@@ -1,9 +1,6 @@
 - name: Antanian Greataxe
   desc: "an iron greataxe"
-  baseDamage: 9
-  minDamage: 2
-  maxDamage: 5
-  damageRolls: 2
+  tier: 1
   type: Axe
   secondaryType: Twohanded
   value: 150
@@ -14,10 +11,7 @@
     offense: 2
     accuracy: 2
   desc: "an iron greataxe engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 11
-  minDamage: 2
-  maxDamage: 5
-  damageRolls: 2
+  tier: 1
   type: Axe
   secondaryType: Twohanded
   value: 150
@@ -32,10 +26,7 @@
     accuracy: 2
     offense: 4
     defense: 0
-  baseDamage: 18
-  minDamage: 4
-  maxDamage: 10
-  damageRolls: 3
+  tier: 3
   proneChance: 8
   binds: true
   tellsBind: true

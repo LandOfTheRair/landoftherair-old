@@ -1,9 +1,6 @@
 - name: Antanian Greatsword
   desc: "an iron greatsword"
-  baseDamage: 7
-  minDamage: 1
-  maxDamage: 5
-  damageRolls: 2
+  tier: 1
   type: Twohanded
   value: 150
   sprite: 198
@@ -13,10 +10,7 @@
     offense: 1
     accuracy: 2
   desc: "an iron greatsword engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 9
-  minDamage: 1
-  maxDamage: 5
-  damageRolls: 2
+  tier: 1
   type: Twohanded
   value: 150
   sprite: 198
@@ -26,10 +20,7 @@
     offense: 3
     accuracy: -5
   desc: "a large steel nodachi"
-  baseDamage: 17
-  minDamage: 1
-  maxDamage: 10
-  damageRolls: 3
+  tier: 2
   type: Twohanded
   value: 560
   sprite: 308
@@ -43,10 +34,7 @@
     offense: 6
     accuracy: -9
   desc: "a large riyan greatsword"
-  baseDamage: 25
-  minDamage: 1
-  maxDamage: 15
-  damageRolls: 4
+  tier: 3
   type: Twohanded
   value: 1560
   sprite: 43
@@ -60,10 +48,7 @@
     offense: 6
     accuracy: -9
   desc: "a large riyan greatsword"
-  baseDamage: 25
-  minDamage: 1
-  maxDamage: 15
-  damageRolls: 5
+  tier: 4
   type: Twohanded
   value: 1560
   sprite: 43

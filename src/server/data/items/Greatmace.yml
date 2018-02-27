@@ -1,9 +1,6 @@
 - name: Antanian Greatmace
   desc: "an iron greatmace"
-  baseDamage: 8
-  minDamage: 2
-  maxDamage: 5
-  damageRolls: 2
+  tier: 1
   type: Mace
   secondaryType: Twohanded
   value: 150
@@ -14,10 +11,7 @@
     offense: 1
     accuracy: 2
   desc: "an iron greatmace engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
-  baseDamage: 7
-  minDamage: 2
-  maxDamage: 5
-  damageRolls: 2
+  tier: 1
   type: Mace
   secondaryType: Twohanded
   value: 150

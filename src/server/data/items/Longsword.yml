@@ -1,9 +1,6 @@
 - name: Antanian Longsword
   desc: "an iron longsword"
-  baseDamage: 6
-  minDamage: 3
-  maxDamage: 4
-  damageRolls: 1
+  tier: 1
   type: Onehanded
   value: 115
   sprite: 197
@@ -13,10 +10,7 @@
   stats:
     accuracy: 2
     offense: 1
-  baseDamage: 8
-  minDamage: 3
-  maxDamage: 4
-  damageRolls: 1
+  tier: 1
   type: Onehanded
   value: 115
   sprite: 197
@@ -30,10 +24,7 @@
   trait:
     name: SwordTricks
     level: 1
-  baseDamage: 15
-  minDamage: 1
-  maxDamage: 2
-  damageRolls: 2
+  tier: 2
   type: Onehanded
   binds: true
   tellsBind: true
@@ -48,10 +39,7 @@
   stats:
     offense: 2
     defense: 2
-  baseDamage: 10
-  minDamage: 1
-  maxDamage: 8
-  damageRolls: 2
+  tier: 2
   type: Onehanded
   value: 378
   sprite: 227

@@ -90,8 +90,6 @@ class ItemLoader {
     if(this.isWeapon(item)) {
       if(isUndefined(item.isBeltable))  item.isBeltable = true;
       if(isUndefined(item.isSackable))  item.isSackable = false;
-
-      if(!item.maxDamage) item.maxDamage = item.baseDamage;
     }
 
     if(this.isArmor(item)) {
@@ -141,11 +139,6 @@ class ItemLoader {
     if(item.itemClass === 'Bottle' || item.itemClass === 'Food') {
       item.ounces = item.ounces || 1;
     }
-
-    if(!item.baseDamage) item.baseDamage = 1;
-    if(!item.maxDamage) item.maxDamage = 1;
-    if(!item.minDamage) item.minDamage = 1;
-    if(!item.damageRolls) item.damageRolls = 1;
 
     item.type = capitalize(item.type);
     if(item.secondaryType) item.secondaryType = capitalize(item.secondaryType);
