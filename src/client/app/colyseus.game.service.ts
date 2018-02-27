@@ -131,7 +131,6 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onUpdate.addOnce((state) => {
-      console.log('addonce', state);
       this.clientGameState.mapName = state.mapName;
       this.clientGameState.grabOldUpdates(state.mapData);
 
@@ -139,7 +138,6 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onUpdate.add((state) => {
-      console.log('update', state);
       this.clientGameState.setMapData(state.mapData || {});
       this.clientGameState.setPlayers(state.playerHash);
       this.clientGameState.setEnvironmentalObjects(state.environmentalObjects || []);
@@ -149,7 +147,6 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onData.add((data) => {
-      console.log('data', data);
       this.interceptGameCommand(data);
     });
 
@@ -220,13 +217,11 @@ export class ColyseusGameService {
     this.worldRoom.listen('mapData/openDoors/:id/isOpen', updateDoor);
 
     this.worldRoom.onJoin.add(() => {
-      console.log('join');
       this.inGame$.next(true);
       this._inGame = true;
     });
 
     this.worldRoom.onLeave.add(() => {
-      console.log('leave');
       this.clientGameState.removeAllPlayers();
       if(this.changingMap) return;
       this.inGame$.next(false);
