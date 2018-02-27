@@ -335,7 +335,7 @@ export class CombatHelper {
 
     const damageLeft = Math.floor(attackerScope.skill + attackerScope.damageRolls);
     const damageMax = random(attackerScope.damageMin, attackerScope.damageMax) + attackerScope.damageBase;
-    const damageRight = Math.floor(attackerScope.str + attackerScope.level + attackerScope.dex4);
+    const damageRight = Math.floor(attackerScope.str + attackerScope.level);
     const damageBoost = attacker.getTotalStat('physicalDamageBoost');
 
     let damage = Math.floor((+dice.roll(`${damageLeft}d${damageRight}`) + damageMax) * attackerScope.multiplier) + damageBoost;
@@ -532,7 +532,10 @@ export class CombatHelper {
       }
 
       damage = Math.floor(damage * (1 + (damageBoostPercent / 100)));
-      damage += attacker.getTotalStat('magicalDamageBoost');
+
+      if(damageClass !== 'physical') {
+        damage += attacker.getTotalStat('magicalDamageBoost');
+      }
     }
 
     // if not healing, check for damage resist
