@@ -81,7 +81,10 @@ You only need to do this once; any time you create a character after being set a
 Some routes are enabled for debugging purposes and are otherwise unused. You can visit:
 
 * `/server` for server stats
+* `/premium-stats` for premium buying stats
+* `/item-stats` for avg. item stats
 * `/logs` for server logs (log entries expire after 6h)
+* `/maps` to see all of the maps in the game presently
 
 ### Commands
 
