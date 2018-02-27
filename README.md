@@ -1,6 +1,6 @@
 # Land of the Rair [![Build Status](https://travis-ci.org/LandOfTheRair/landoftherair.svg?branch=master)](https://travis-ci.org/LandOfTheRair/landoftherair)
 
-A prototype MORPG inspired by MUDs of olde.
+A high fantasy MORPG inspired by the MUDs of olde.
 
 ## Contributor Disclaimer
 While I appreciate contributions, consider that all contributions, significant or otherwise, cannot be compensated for at this time. 
@@ -9,7 +9,7 @@ While I appreciate contributions, consider that all contributions, significant o
 
 * Node.js (recommended: 8.0.0+)
 * npm (needed: 5.x+)
-* MongoDB (recommended: 3.4.4+)
+* MongoDB (recommended: 3.4.4+, or a hosted service, like MLab)
 * Redis (or a hosted redis service, like Redis Lab)
 
 ## Install
@@ -60,9 +60,10 @@ For initial setup, run this:
 
 For subsequent updates and specific changes, you can run these instead:
 
-* `npm run task:items` - this will populate the database with items
-* `npm run task:npcs`  - this will populate the database with npc data
-* `npm run task:drops` - this will populate the database with drop table data
+* `npm run seed:items` - this will populate the database with items
+* `npm run seed:npcs`  - this will populate the database with npc data
+* `npm run seed:drops` - this will populate the database with drop table data
+* `npm run seed:recipes` - this will populate the database with recipe data
 * `npm run task:macros`- this will generate the macro icon metadata. If you add new icons, please only take from [my repository](http://seiyria.com/gameicons-font/).
 
 ## Making Yourself a GM
@@ -71,10 +72,9 @@ If you want to do any debugging, you'll need to make yourself a GM. To do that, 
 
 ```
 db.accounts.update({ username: 'YOUR_ACCOUNT_NAME' }, { $set: { isGM: true } });
-db.players.update({ username: 'YOUR_ACCOUNT_NAME' }, { $set: { isGM: true } });
 ```
 
-You only need to do this once; any time you create a character after being set as a GM, that character will also be flagged.
+You only need to do this once.
 
 ### Server Debug Routes
 
