@@ -371,7 +371,7 @@ export class CombatHelper {
 
     if(damage > 0) {
       const levelDifferenceModifier = clamp(attackerScope.realLevel - defenderScope.realLevel, -10, 10) * 5;
-      const mitigationModifier = defenderScope.mitigation - (defenderScope.mitigation * (levelDifferenceModifier / 100));
+      const mitigationModifier = Math.max(75, defenderScope.mitigation - (defenderScope.mitigation * (levelDifferenceModifier / 100)));
       const mitigatedDamage = Math.floor(damage * (mitigationModifier / 100));
       damage -= mitigatedDamage;
     }
