@@ -39,4 +39,7 @@ export class InstancedDungeon extends GameWorld {
   requestJoin(options): boolean {
     return !this.partyOwner || this.partyOwner === options.party;
   }
+
+  // don't save boss timers for now
+  protected saveBossTimers() {}
 }

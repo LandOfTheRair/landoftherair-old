@@ -613,8 +613,7 @@ export class GameWorld extends Room<GameState> {
     return DB.$mapBossTimers.findOne({ mapName: this.state.mapName });
   }
 
-  private saveBossTimers() {
-
+  protected saveBossTimers() {
     const timestamp = Date.now();
 
     const spawners = this.spawners.filter(spawner => {
