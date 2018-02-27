@@ -122,117 +122,115 @@ export class ColyseusGameService {
   private joinRoom(room, party?: string) {
     this._joiningGame = true;
 
-    this.zone.runOutsideAngular(() => {
-      this.resetRoom();
+    this.resetRoom();
 
-      this.worldRoom = this.client.join(room, {
-        charSlot: this.character.charSlot,
-        username: this.colyseus.username,
-        party
-      });
+    this.worldRoom = this.client.join(room, {
+      charSlot: this.character.charSlot,
+      username: this.colyseus.username,
+      party
+    });
 
-      this.worldRoom.onUpdate.addOnce((state) => {
-        this.clientGameState.mapName = state.mapName;
-        this.clientGameState.grabOldUpdates(state.mapData);
+    this.worldRoom.onUpdate.addOnce((state) => {
+      this.clientGameState.mapName = state.mapName;
+      this.clientGameState.grabOldUpdates(state.mapData);
 
-        this.changingMap = false;
-      });
+      this.changingMap = false;
+    });
 
-      this.worldRoom.onUpdate.add((state) => {
-        this.clientGameState.setMapData(state.mapData || {});
-        this.clientGameState.setPlayers(state.playerHash);
-        this.clientGameState.setEnvironmentalObjects(state.environmentalObjects || []);
-        this.clientGameState.setDarkness(state.darkness || {});
-        this.clientGameState.setNPCVolatile(state.npcVolatile || {});
-        this.setCharacter(state.playerHash[this.colyseus.username]);
-      });
+    this.worldRoom.onUpdate.add((state) => {
+      this.clientGameState.setMapData(state.mapData || {});
+      this.clientGameState.setPlayers(state.playerHash);
+      this.clientGameState.setEnvironmentalObjects(state.environmentalObjects || []);
+      this.clientGameState.setDarkness(state.darkness || {});
+      this.clientGameState.setNPCVolatile(state.npcVolatile || {});
+      this.setCharacter(state.playerHash[this.colyseus.username]);
+    });
 
-      this.worldRoom.onData.add((data) => {
-        this.interceptGameCommand(data);
-      });
+    this.worldRoom.onData.add((data) => {
+      this.interceptGameCommand(data);
+    });
 
-      const updateSpecificAttr = (attr, change) => {
-        this.clientGameState.updatePlayer(change.path.id, attr, change.value);
-      };
+    const updateSpecificAttr = (attr, change) => {
+      this.clientGameState.updatePlayer(change.path.id, attr, change.value);
+    };
 
-      const updateAgro = (change) => {
-        this.clientGameState.updatePlayerAgro(change.path.id, change.path.player, change.value);
-      };
+    const updateAgro = (change) => {
+      this.clientGameState.updatePlayerAgro(change.path.id, change.path.player, change.value);
+    };
 
-      const updateHP = (change) => {
-        this.clientGameState.updatePlayerHP(change.path.id, change.path.key, change.value);
-      };
+    const updateHP = (change) => {
+      this.clientGameState.updatePlayerHP(change.path.id, change.path.key, change.value);
+    };
 
-      const updateHand = (hand, change) => {
-        this.clientGameState.updatePlayerHand(change.path.id, hand, change.value);
-      };
+    const updateHand = (hand, change) => {
+      this.clientGameState.updatePlayerHand(change.path.id, hand, change.value);
+    };
 
-      const updateHandItem = (hand, change) => {
-        this.clientGameState.updatePlayerHandItem(change.path.id, hand, change.path.attr, change.value);
-      };
+    const updateHandItem = (hand, change) => {
+      this.clientGameState.updatePlayerHandItem(change.path.id, hand, change.path.attr, change.value);
+    };
 
-      const updateGearItem = (slot, change) => {
-        this.clientGameState.updatePlayerGearItem(change.path.id, slot, change.value);
-      };
+    const updateGearItem = (slot, change) => {
+      this.clientGameState.updatePlayerGearItem(change.path.id, slot, change.value);
+    };
 
-      this.worldRoom.listen('playerHash/:id/x', updateSpecificAttr.bind(this, 'x'));
-      this.worldRoom.listen('playerHash/:id/y', updateSpecificAttr.bind(this, 'y'));
-      this.worldRoom.listen('playerHash/:id/dir', updateSpecificAttr.bind(this, 'dir'));
-      this.worldRoom.listen('playerHash/:id/swimLevel', updateSpecificAttr.bind(this, 'swimLevel'));
-      this.worldRoom.listen('playerHash/:id/partyName', updateSpecificAttr.bind(this, 'partyName'));
+    this.worldRoom.listen('playerHash/:id/x', updateSpecificAttr.bind(this, 'x'));
+    this.worldRoom.listen('playerHash/:id/y', updateSpecificAttr.bind(this, 'y'));
+    this.worldRoom.listen('playerHash/:id/dir', updateSpecificAttr.bind(this, 'dir'));
+    this.worldRoom.listen('playerHash/:id/swimLevel', updateSpecificAttr.bind(this, 'swimLevel'));
+    this.worldRoom.listen('playerHash/:id/partyName', updateSpecificAttr.bind(this, 'partyName'));
 
-      this.worldRoom.listen('playerHash/:id/agro/:player', updateAgro);
+    this.worldRoom.listen('playerHash/:id/agro/:player', updateAgro);
 
-      this.worldRoom.listen('playerHash/:id/hp/:key', updateHP);
+    this.worldRoom.listen('playerHash/:id/hp/:key', updateHP);
 
-      this.worldRoom.listen('playerHash/:id/leftHand', updateHand.bind(this, 'leftHand'));
-      this.worldRoom.listen('playerHash/:id/rightHand', updateHand.bind(this, 'rightHand'));
+    this.worldRoom.listen('playerHash/:id/leftHand', updateHand.bind(this, 'leftHand'));
+    this.worldRoom.listen('playerHash/:id/rightHand', updateHand.bind(this, 'rightHand'));
 
-      this.worldRoom.listen('playerHash/:id/gear/Armor', updateGearItem.bind(this, 'Armor'));
-      this.worldRoom.listen('playerHash/:id/gear/Robe1', updateGearItem.bind(this, 'Robe1'));
-      this.worldRoom.listen('playerHash/:id/gear/Robe2', updateGearItem.bind(this, 'Robe2'));
+    this.worldRoom.listen('playerHash/:id/gear/Armor', updateGearItem.bind(this, 'Armor'));
+    this.worldRoom.listen('playerHash/:id/gear/Robe1', updateGearItem.bind(this, 'Robe1'));
+    this.worldRoom.listen('playerHash/:id/gear/Robe2', updateGearItem.bind(this, 'Robe2'));
 
-      this.worldRoom.listen('playerHash/:id/leftHand/:attr', updateHandItem.bind(this, 'leftHand'));
-      this.worldRoom.listen('playerHash/:id/rightHand/:attr', updateHandItem.bind(this, 'rightHand'));
+    this.worldRoom.listen('playerHash/:id/leftHand/:attr', updateHandItem.bind(this, 'leftHand'));
+    this.worldRoom.listen('playerHash/:id/rightHand/:attr', updateHandItem.bind(this, 'rightHand'));
 
-      this.worldRoom.listen('playerHash/:id/leftHand/:attr', updateHandItem.bind(this, 'leftHand'));
-      this.worldRoom.listen('playerHash/:id/rightHand/:attr', updateHandItem.bind(this, 'rightHand'));
+    this.worldRoom.listen('playerHash/:id/leftHand/:attr', updateHandItem.bind(this, 'leftHand'));
+    this.worldRoom.listen('playerHash/:id/rightHand/:attr', updateHandItem.bind(this, 'rightHand'));
 
-      this.worldRoom.listen('playerHash/:id/effects/:effect/:attr', (change) => {
-        this.clientGameState.updatePlayerEffect(change);
-      });
+    this.worldRoom.listen('playerHash/:id/effects/:effect/:attr', (change) => {
+      this.clientGameState.updatePlayerEffect(change);
+    });
 
-      this.worldRoom.listen('playerHash/:id/totalStats/stealth', (change) => {
-        this.clientGameState.updatePlayerStealth(change.path.id, change.value);
-      });
+    this.worldRoom.listen('playerHash/:id/totalStats/stealth', (change) => {
+      this.clientGameState.updatePlayerStealth(change.path.id, change.value);
+    });
 
-      this.worldRoom.listen('playerHash/:id/totalStats/perception', (change) => {
-        this.clientGameState.updatePlayerPerception(change.path.id, change.value);
-      });
+    this.worldRoom.listen('playerHash/:id/totalStats/perception', (change) => {
+      this.clientGameState.updatePlayerPerception(change.path.id, change.value);
+    });
 
-      const updateDoor = (change) => {
-        this.clientGameState.modifyDoor(change);
-      };
+    const updateDoor = (change) => {
+      this.clientGameState.modifyDoor(change);
+    };
 
-      this.worldRoom.listen('mapData/openDoors/:id', updateDoor);
-      this.worldRoom.listen('mapData/openDoors/:id/isOpen', updateDoor);
+    this.worldRoom.listen('mapData/openDoors/:id', updateDoor);
+    this.worldRoom.listen('mapData/openDoors/:id/isOpen', updateDoor);
 
-      this.worldRoom.onJoin.add(() => {
-        this.inGame$.next(true);
-        this._inGame = true;
-      });
+    this.worldRoom.onJoin.add(() => {
+      this.inGame$.next(true);
+      this._inGame = true;
+    });
 
-      this.worldRoom.onLeave.add(() => {
-        this.clientGameState.removeAllPlayers();
-        if(this.changingMap) return;
-        this.inGame$.next(false);
-        this._inGame = false;
-        this._joiningGame = false;
-      });
+    this.worldRoom.onLeave.add(() => {
+      this.clientGameState.removeAllPlayers();
+      if(this.changingMap) return;
+      this.inGame$.next(false);
+      this._inGame = false;
+      this._joiningGame = false;
+    });
 
-      this.worldRoom.onError.add((e) => {
-        alert(e);
-      });
+    this.worldRoom.onError.add((e) => {
+      alert(e);
     });
   }
 
