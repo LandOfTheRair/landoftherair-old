@@ -85,6 +85,7 @@ if(process.argv[2] === '--single-core') {
         allMapNames[mapName] = true;
         const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
         gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
+        Logger.log(`[Child] Registered map ${mapName}`);
       });
     });
 
