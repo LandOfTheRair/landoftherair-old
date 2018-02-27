@@ -560,6 +560,11 @@ export class Character {
 
   equip(item: Item) {
     if(!this.canEquip(item)) return false;
+    this._equip(item);
+    return true;
+  }
+
+  _equip(item: Item) {
     const slot = this.getItemSlotToEquipIn(item);
     if(!slot) return false;
 
@@ -567,8 +572,6 @@ export class Character {
     this.recalculateStats();
     this.itemCheck(item);
     this.checkAndCreatePermanentEffect(item);
-
-    return true;
   }
 
   unequip(slot: string) {
@@ -892,7 +895,7 @@ export class Character {
   }
 
   gainSkill(type, skillGained = 1) {
-    if(!this.isValidSkill(type) || !this.canGainSkill(type)) return;
+    if(!this.isValidSkill(type) || !this.canGainSkill(type, skillGained)) return;
     this._gainSkill(type, skillGained);
   }
 
@@ -903,13 +906,16 @@ export class Character {
 
     this.skills[type] += skillGained;
 
-    if(this.skills[type] <= 0 || isNaN(this.skills[type])) {
+    if(this.skills[type] <= 0) this.skills[type] = 0;
+
+    if(isNaN(this.skills[type])) {
       this.skills[type] = prevVal;
-      throw new Error(`Invalid skill value for ${this.name}: ${type}`);
+      throw new Error(`Invalid skill value for ${this.name}: ${type}, gained: ${skillGained}, cur: ${this.skills[type]}`);
     }
   }
 
-  canGainSkill(type) {
+  canGainSkill(type, skillGain): boolean {
+    if(skillGain <= 0) return true;
     const curLevel = this.calcSkillLevel(type);
     return curLevel < this.$$room.state.maxSkill;
   }

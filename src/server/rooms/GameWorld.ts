@@ -537,7 +537,8 @@ export class GameWorld extends Room<GameState> {
     // but graphical glitches are a no no!
     if(item.sprite < 0) return;
 
-    if(item.destroyOnDrop) {
+    // drop items on destroy if they're supposed to, or if they're a tester.
+    if(item.destroyOnDrop || (ref.isPlayer && ref.isPlayer() && item.isOwnedBy(ref) && SubscriptionHelper.isTester(ref))) {
 
       // legacy code for legacy players :P
       if(item.name === 'Succor Blob' && item.succorInfo && ref.isPlayer && ref.isPlayer()) {

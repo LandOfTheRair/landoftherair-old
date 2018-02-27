@@ -111,6 +111,16 @@ Some commands are hidden and don't really need to be used by players, but should
 * `~~ping` - check your ping
 * `~~unstuck` - teleport to the spawn of the map (cannot be used in combat)
 
+#### Testing Commands
+
+Certain accounts designated as testers get access to several in game commands:
+
+* `^gold <gold>` - gain `<gold>` gold
+* `^loadout <level>` - generate a loadout for your class level
+* `^level <level>` - set your level to `<level>`
+* `^skills <level>` - set your skills to `<skill>`
+* `^traits` - reset your traits and gain 1000 TP
+
 #### GM Commands
 
 As a GM, you get access to several commands in the lobby:

@@ -245,7 +245,16 @@ export class ColyseusLobbyService {
       return true;
     }
 
+    if(command === '/tester') {
+      this.tester(args);
+      return true;
+    }
+
     return false;
+  }
+
+  public tester(args) {
+    this.room.send({ action: 'tester', args });
   }
 
   public mute(args) {
