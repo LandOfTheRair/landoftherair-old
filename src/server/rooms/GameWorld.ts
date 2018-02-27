@@ -219,7 +219,7 @@ export class GameWorld extends Room<GameState> {
       return false;
     }
 
-    if(playerData.inGame) {
+    if(playerData.inGame === true) {
       this.send(client, { error: 'already_in_game', prettyErrorName: 'Already In Game', prettyErrorDesc: 'You are already in game! Maybe you hit join too fast?' });
       return false;
     }
