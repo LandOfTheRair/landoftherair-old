@@ -73,8 +73,6 @@
   max-height: calc(100% - 25px);
 
   .message {
-    display: flex;
-    flex-direction: row;
     font-size: 1.3rem;
 
     .timestamp {
