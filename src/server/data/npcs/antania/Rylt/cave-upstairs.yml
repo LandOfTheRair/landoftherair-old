@@ -8,7 +8,7 @@
   stats:
     int: 20
     dex: 10
-    str: 15
+    str: 20
     con: 10
     agi: 10
     luk: 10
@@ -19,8 +19,8 @@
     perception: 250
 
   skillLevels:
-    Wand: 4
-    Conjuration: 4
+    Wand: 7
+    Conjuration: 7
 
   skillOnKill: 25
 
@@ -83,9 +83,11 @@
   alignment: Evil
   baseClass: Warrior
   sprite: 75
-  stats: 15
+  stats: 20
+  otherStats:
+    wil: 13
   skillLevels:
-    Martial: 5
+    Martial: 8
   level: 15
 
   otherStats:
