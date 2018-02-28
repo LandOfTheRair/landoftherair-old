@@ -6,7 +6,7 @@
   sprite: 405
   alignment: Evil
   stats: 13
-  skillLevels: 4
+  skillLevels: 3
   level: 11
 
   skillOnKill:  20
@@ -43,7 +43,7 @@
   sprite: 800
   alignment: Evil
   stats: 9
-  skillLevels: 4
+  skillLevels: 3
   level: 12
 
   skillOnKill:  20
