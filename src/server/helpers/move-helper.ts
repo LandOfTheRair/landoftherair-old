@@ -52,14 +52,16 @@ export class MoveHelper {
     /*
     visual grid of walkable tiles in view:
 
-    console.log(grid.nodes.map(arr => {
-      return arr.map(x => x.walkable ? 1 : 0);
-    }));
+    if(player.isPlayer()) {
+      console.log(grid.nodes.map(arr => {
+        return arr.map(x => x.walkable ? 1 : 0);
+      }));
+    }
     */
 
     const astar = new Pathfinder.AStarFinder({
       allowDiagonal: true,
-      dontCrossCorners: false
+      // dontCrossCorners: false
     });
 
     const finalPath = astar.findPath(4, 4, 4 + x, 4 + y, grid);

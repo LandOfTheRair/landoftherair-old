@@ -122,7 +122,7 @@
          "name":"NPCs",
          "objects":[
                 {
-                 "gid":3105,
+                 "gid":3137,
                  "height":64,
                  "id":174,
                  "name":"Alchemist",
@@ -146,7 +146,7 @@
                  "y":8832
                 }, 
                 {
-                 "gid":3145,
+                 "gid":3177,
                  "height":64,
                  "id":198,
                  "name":"Crier",
@@ -166,7 +166,7 @@
                  "y":9216
                 }, 
                 {
-                 "gid":3060,
+                 "gid":3092,
                  "height":64,
                  "id":298,
                  "name":"",
@@ -190,7 +190,7 @@
                  "y":8640
                 }, 
                 {
-                 "gid":3065,
+                 "gid":3097,
                  "height":64,
                  "id":300,
                  "name":"",
@@ -214,7 +214,7 @@
                  "y":8512
                 }, 
                 {
-                 "gid":3055,
+                 "gid":3087,
                  "height":64,
                  "id":301,
                  "name":"",
@@ -238,7 +238,7 @@
                  "y":8384
                 }, 
                 {
-                 "gid":3110,
+                 "gid":3142,
                  "height":64,
                  "id":316,
                  "name":"",
@@ -258,7 +258,7 @@
                  "y":8896
                 }, 
                 {
-                 "gid":3105,
+                 "gid":3137,
                  "height":64,
                  "id":324,
                  "name":"",
@@ -278,7 +278,7 @@
                  "y":8832
                 }, 
                 {
-                 "gid":3115,
+                 "gid":3147,
                  "height":64,
                  "id":726,
                  "name":"Encruster",
@@ -298,7 +298,7 @@
                  "y":8640
                 }, 
                 {
-                 "gid":2575,
+                 "gid":2607,
                  "height":64,
                  "id":914,
                  "name":"Smith",
@@ -322,7 +322,7 @@
                  "y":9152
                 }, 
                 {
-                 "gid":3115,
+                 "gid":3147,
                  "height":64,
                  "id":915,
                  "name":"Banker",
@@ -346,7 +346,7 @@
                  "y":9024
                 }, 
                 {
-                 "gid":3075,
+                 "gid":3107,
                  "height":64,
                  "id":918,
                  "name":"",
@@ -438,7 +438,6 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.0.3",
  "tileheight":64,
  "tilesets":[
         {
@@ -1687,7 +1686,7 @@
          "columns":32,
          "firstgid":1329,
          "image":"..\/..\/..\/client\/assets\/spritesheets\/decor.png",
-         "imageheight":2432,
+         "imageheight":2496,
          "imagewidth":2048,
          "margin":0,
          "name":"Decor",
@@ -1749,7 +1748,7 @@
                  "name":"LoudRugNoShineVert",
                  "tile":569
                 }],
-         "tilecount":1216,
+         "tilecount":1248,
          "tileheight":64,
          "tiles":
             {
@@ -2262,7 +2261,7 @@
         }, 
         {
          "columns":40,
-         "firstgid":2545,
+         "firstgid":2577,
          "image":"..\/..\/..\/client\/assets\/spritesheets\/creatures.png",
          "imageheight":3008,
          "imagewidth":2560,
@@ -2275,6 +2274,6 @@
         }],
  "tilewidth":64,
  "type":"map",
- "version":1,
+ "version":"1.0.0",
  "width":158
 }
