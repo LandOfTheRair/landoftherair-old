@@ -96,12 +96,12 @@ class ItemLoader {
       if(isUndefined(item.isBeltable))  item.isBeltable = false;
       if(isUndefined(item.isSackable))  item.isSackable = false;
 
-      if(includes(['Tunic', 'Scaleplate'], item.itemClass)) {
-        item.stats.mitigation = 10;
+      if(includes(['Tunic', 'Fur', 'Scaleplate'], item.itemClass)) {
+        if(!item.stats.mitigation) item.stats.mitigation = 10;
       }
 
       if(includes(['Breastplate', 'Fullplate'], item.itemClass)) {
-        item.stats.mitigation = 25;
+        if(!item.stats.mitigation) item.stats.mitigation = 25;
       }
     }
 
@@ -134,6 +134,7 @@ class ItemLoader {
 
     if(item.itemClass === 'Shield') {
       if(!item.stats.accuracy) item.stats.accuracy = 0;
+      if(!item.stats.mitigation) item.stats.mitigation = 5;
     }
 
     if(item.itemClass === 'Bottle' || item.itemClass === 'Food') {
