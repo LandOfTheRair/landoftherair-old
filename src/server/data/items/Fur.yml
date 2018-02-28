@@ -17,8 +17,8 @@
   desc: "a warm coat of bear fur"
   stats:
     armorClass: 6
-    fireResist: 20
-    iceResist: 20
+    fireResist: 25
+    iceResist: 25
   value: 100
   sprite: 218
 
