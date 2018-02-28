@@ -72,7 +72,14 @@ export class TesterHelper {
 
   static setLevel(player: Player, level: number) {
     player.level = level;
+    player.recalculateStats();
     this.sendMessage(player, `Set level to: ${level}`);
+  }
+
+  static setHP(player: Player, hp: number) {
+    player.setBaseStat('hp', hp);
+    player.recalculateStats();
+    this.sendMessage(player, `Set HP to: ${hp}`);
   }
 
   static gainGold(player: Player, gold: number) {

@@ -288,6 +288,10 @@ export class Character {
     return this.stats[stat] || 0;
   }
 
+  setBaseStat(stat: StatName, value: number) {
+    this.stats[stat] = value;
+  }
+
   initAI() {
     this.$$ai = {
       tick: new Signal(),
