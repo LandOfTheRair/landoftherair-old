@@ -15,7 +15,7 @@ export class RyltCaveUpstairsAcolyteSpawner extends Spawner {
       spawnRadius: 0,
       randomWalkRadius: 0,
       leashRadius: 0,
-      shouldBeActive: false,
+      shouldBeActive: true,
       npcIds
     });
   }
