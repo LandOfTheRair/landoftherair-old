@@ -11,6 +11,8 @@
   skillOnKill: 25
 
   otherStats:
+    dex: 20
+    accuracy: 10
     perception: 35
 
   gold:
@@ -82,6 +84,8 @@
   skillOnKill: 25
 
   otherStats:
+    dex: 20
+    accuracy: 10
     perception: 55
 
   gold:
@@ -174,6 +178,8 @@
   skillOnKill: 45
 
   otherStats:
+    dex: 20
+    accuracy: 10
     perception: 55
 
   gold:
