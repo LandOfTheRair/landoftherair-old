@@ -1004,7 +1004,7 @@
   name: Ranata
   hostility: Always
   sprite: 480
-  stats: 13
+  stats: 10
   skillLevels: 4
 
   level: 10
@@ -1082,7 +1082,7 @@
   name: Crazed Sedgwick
   hostility: Always
   sprite: 480
-  stats: 13
+  stats: 10
   skillLevels: 3
 
   level: 15

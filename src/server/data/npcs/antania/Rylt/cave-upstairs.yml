@@ -19,8 +19,8 @@
     perception: 250
 
   skillLevels:
-    Wand: 6
-    Conjuration: 6
+    Wand: 4
+    Conjuration: 4
 
   skillOnKill: 25
 
@@ -42,8 +42,7 @@
     min: 150000
     max: 175000
 
-  rightHand:
-    - Crazed Saraxa Wand
+  rightHand: Crazed Saraxa Wand
 
   gear:
     Armor: Antanian Tunic
@@ -86,7 +85,7 @@
   sprite: 75
   stats: 15
   skillLevels:
-    Martial: 7
+    Martial: 5
   level: 15
 
   otherStats:
