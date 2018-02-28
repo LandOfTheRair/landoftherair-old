@@ -26,7 +26,7 @@ export class SpellforgingHelper {
 
     enosDust += 1 + (itemQuality * 2);
 
-    if(random(0, 5) <= itemQuality) owtsDust++;
+    if(random(1, 5) <= itemQuality) owtsDust++;
     if(itemQuality === 5) owtsDust += 3;
 
     container.clearReagents();
