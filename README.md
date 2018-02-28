@@ -124,7 +124,9 @@ Certain accounts designated as testers get access to several in game commands:
 * `^gold <gold>` - gain `<gold>` gold
 * `^loadout <level>` - generate a loadout for your class level
 * `^level <level>` - set your level to `<level>`
-* `^skills <level>` - set your skills to `<skill>`
+* `^hp <newhp>` - set your hp to `<newhp>`
+* `^skills <level>` - set your skills to `<level>`
+* `^stats <level>` set your stats to `<level>`
 * `^traits` - reset your traits and gain 1000 TP
 
 #### GM Commands

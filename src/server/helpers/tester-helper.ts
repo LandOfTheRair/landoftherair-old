@@ -1,6 +1,6 @@
 
 import { Player } from '../../shared/models/player';
-import { SkillClassNames } from '../../shared/models/character';
+import { SkillClassNames, StatName } from '../../shared/models/character';
 import { SkillHelper } from './skill-helper';
 
 import { extend } from 'lodash';
@@ -98,6 +98,16 @@ export class TesterHelper {
     });
 
     this.sendMessage(player, `Set all skill levels to: ${level}`);
+  }
+
+  static setStats(player: Player, level: number) {
+    ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'cha', 'luk', 'con'].forEach(stat => {
+      player.setBaseStat(<StatName>stat, level);
+    });
+
+    player.recalculateStats();
+
+    this.sendMessage(player, `Set all stats to: ${level}`);
   }
 
   static resetTraits(player: Player) {
