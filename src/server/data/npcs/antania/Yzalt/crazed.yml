@@ -5,7 +5,7 @@
   sprite: 545
   alignment: Evil
   baseClass: Mage
-  stats: 10
+  stats: 7
   otherStats:
     int: 15
   skillLevels:
@@ -13,7 +13,7 @@
     Conjuration: 2
     Wand: 2
 
-  level: 10
+  level: 8
 
   allegianceReputation:
     Royalty: -101
@@ -94,14 +94,14 @@
   sprite: 585
   alignment: Evil
   baseClass: Thief
-  stats: 10
+  stats: 7
   skillLevels:
     Dagger: 2
     Ranged: 2
     Throwing: 2
     Thievery: 2
 
-  level: 10
+  level: 8
 
   allegianceReputation:
     Royalty: -101
@@ -184,13 +184,13 @@
   sprite: 590
   alignment: Good
   baseClass: Warrior
-  stats: 10
+  stats: 7
   skillLevels:
     Mace: 2
     Onehanded: 2
     Twohanded: 2
 
-  level: 10
+  level: 8
 
   allegianceReputation:
     Pirates: -101
@@ -276,14 +276,14 @@
   sprite: 550
   alignment: Good
   baseClass: Healer
-  stats: 10
+  stats: 7
   otherStats:
     wis: 15
   skillLevels:
     Mace: 2
     Restoration: 2
 
-  level: 10
+  level: 8
 
   allegianceReputation:
     Pirates: -101
@@ -360,7 +360,7 @@
   name: crazed mummy
   hostility: Always
   sprite: 155
-  stats: 10
+  stats: 6
   skillLevels:
     Mace: 2
     Onehanded: 2
@@ -451,7 +451,7 @@
   hostility: Always
   sprite: 545
   baseClass: Mage
-  stats: 13
+  stats: 10
   otherStats:
     int: 17
   skillLevels:
@@ -593,7 +593,7 @@
   sprite: 585
   alignment: Evil
   baseClass: Thief
-  stats: 14
+  stats: 10
   skillLevels:
     Dagger: 3
     Ranged: 3
@@ -750,7 +750,7 @@
   hostility: Always
   sprite: 590
   baseClass: Warrior
-  stats: 14
+  stats: 10
   skillLevels:
     Mace: 3
     Onehanded: 3
@@ -880,7 +880,7 @@
   name: insane healer
   hostility: Always
   sprite: 550
-  stats: 13
+  stats: 10
   otherStats:
     wis: 17
   skillLevels:

@@ -267,9 +267,9 @@
   alignment: Evil
   stats: 10
   skillLevels:
-    Longsword: 4
-    Axe: 4
-    Dagger: 4
+    Longsword: 3
+    Axe: 3
+    Dagger: 3
 
   level: 7
   skillOnKill: 6

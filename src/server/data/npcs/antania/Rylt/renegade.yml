@@ -126,9 +126,9 @@
   alignment: Evil
   stats: 10
   skillLevels:
-    Shortsword: 3
-    Conjuration: 5
-    Staff: 4
+    Shortsword: 2
+    Conjuration: 3
+    Staff: 2
 
   level: 4
   skillOnKill: 5
@@ -180,8 +180,8 @@
   alignment: Evil
   stats: 10
   skillLevels:
-    Mace: 3
-    Restoration: 3
+    Mace: 2
+    Restoration: 2
 
   level: 4
   skillOnKill: 5
@@ -230,7 +230,7 @@
   hostility: Always
   sprite: 640
   alignment: Evil
-  stats: 12
+  stats: 10
   skillLevels:
     Mace: 3
     Longsword: 3
