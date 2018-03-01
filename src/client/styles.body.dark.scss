@@ -78,6 +78,7 @@ body {
     color: $window-placeholder-color !important;
 
     .dropdown-item {
+      color: inherit !important;
 
       &:active, &:hover {
         background-color: lighten($window-background-color, 20%);
