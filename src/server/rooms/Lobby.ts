@@ -180,6 +180,7 @@ export class Lobby extends Room<LobbyState> {
     if(!message) return;
 
     const accountRef = this.state.findAccountByUsername(account);
+    if(!accountRef) return;
 
     if(source !== 'discord' && !accountRef.isGM) {
       const timestamp = Date.now();
