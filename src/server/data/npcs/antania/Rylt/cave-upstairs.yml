@@ -19,9 +19,7 @@
     accuracy: 10
     perception: 250
 
-  skillLevels:
-    Wand: 7
-    Conjuration: 7
+  skillLevels: 8
 
   skillOnKill: 25
 
@@ -56,6 +54,8 @@
   usableSkills:
     - Charge
     - Darkness
+    - EnergyBolt
+    - FireMist
 
   copyDrops:
     - drop: 'rightHand'
@@ -88,8 +88,7 @@
   otherStats:
     accuracy: 10
     wil: 13
-  skillLevels:
-    Martial: 8
+  skillLevels: 9
   level: 15
 
   otherStats:
@@ -148,6 +147,8 @@
   giveXp:
     min: 300
     max: 500
+
+  rightHand: Tower Longbow Strong
 
   gear:
     Armor: Antanian Tunic
