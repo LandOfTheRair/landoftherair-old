@@ -1,7 +1,7 @@
 
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
-import { Item, WeaponClasses } from '../../../shared/models/item';
+import { EquippableItemClasses, Item } from '../../../shared/models/item';
 import { Player } from '../../../shared/models/player';
 
 import { includes } from 'lodash';
@@ -199,7 +199,7 @@ export class ItemComponent implements OnInit {
   }
 
   get isEquippable(): boolean {
-    return this.player.canEquip(this.item) && !includes(WeaponClasses, this.item.itemClass);
+    return includes(EquippableItemClasses, this.item.itemClass);
   }
 
   get player(): Player {
@@ -339,6 +339,11 @@ export class ItemComponent implements OnInit {
 
     if(this.colyseusGame.showLocker.length) {
       if(this.context === 'Wardrobe') {
+        if(this.isEquippable) {
+          this.doColyseusMoveAction('E');
+          return;
+        }
+
         if(this.item.isSackable) {
           this.doColyseusMoveAction('S');
           return;
