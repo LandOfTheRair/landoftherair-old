@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ClientGameState } from './clientgamestate';
 import * as swal from 'sweetalert2';
 
