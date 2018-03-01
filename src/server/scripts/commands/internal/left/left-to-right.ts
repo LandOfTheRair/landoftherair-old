@@ -16,6 +16,7 @@ export class LeftToRight extends Command {
 
     player.setLeftHand(right, false);
     player.setRightHand(left, false);
+    player.recalculateStats();
   }
 
 }
