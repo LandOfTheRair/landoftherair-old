@@ -126,7 +126,7 @@ import { ColyseusService } from './colyseus.service';
         </ul>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <li class="nav-item" tooltip="Daily reset is when you can re-do daily quests, and buy new daily items!" placement="bottom">
             <a class="nav-link" href="#">Daily Reset in {{ timestampDisplay }}</a>
           </li>
         </ul>
