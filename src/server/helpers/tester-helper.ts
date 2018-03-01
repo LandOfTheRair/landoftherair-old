@@ -2,37 +2,7 @@
 import { Player } from '../../shared/models/player';
 import { SkillClassNames, StatName } from '../../shared/models/character';
 import { SkillHelper } from './skill-helper';
-
-import { extend } from 'lodash';
-
-const level1 = {
-  Head: 'Antanian Helm',
-  Neck: 'Antanian Amulet',
-  Waist: 'Antanian Sash',
-  Bracers: 'Antanian Bracers',
-  Ring1: 'Antanian Ring',
-  Ring2: 'Antanian Ring',
-  Hands: 'Antanian Leather Gloves',
-  Feet: 'Antanian Leather Boots',
-  Armor: 'Antanian Tunic',
-  Robe1: 'Antanian Cloak',
-  Robe2: 'Antanian Cloak'
-};
-
-const Loadouts = {
-  Mage: {
-    1: extend({}, level1, { Belt: ['Antanian Staff', 'Antanian Shortsword'] })
-  },
-  Thief: {
-    1: extend({}, level1, { Belt: ['Antanian Dagger', 'Antanian Shortsword'] })
-  },
-  Warrior: {
-    1: extend({}, level1, { Belt: ['Antanian Longsword', 'Antanian Mace', 'Antanian Greatsword', 'Antanian Shortbow', 'Antanian Wooden Shield'] })
-  },
-  Healer: {
-    1: extend({}, level1, { Belt: ['Antanian Mace', 'Antanian Shield'] })
-  }
-};
+import { Loadouts } from './loadout-listing';
 
 export class TesterHelper {
 

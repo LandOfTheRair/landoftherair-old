@@ -11,7 +11,18 @@ export class GMSearchItems extends Command {
   async execute(player: Player, { room, gameState, args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
-    const itemName = args;
+    let itemName = '';
+    let limit = 5;
+
+    const [gotLimit, gotItem] = args.split(' ');
+
+    if(!gotItem) {
+      itemName = gotLimit;
+    } else {
+      limit = +gotLimit;
+      itemName = args.substring(args.indexOf(' '));
+    }
+
     if(!itemName) return false;
 
     let items;
@@ -25,8 +36,8 @@ export class GMSearchItems extends Command {
 
     player.sendClientMessage(`Search results for item with name "${itemName}":`);
     for(let i = 0; i < items.length; i++) {
-      if(i >= 5) {
-        player.sendClientMessage(`... and ${items.length - 5} more.`);
+      if(i >= limit) {
+        player.sendClientMessage(`... and ${items.length - limit} more.`);
         return;
       }
       player.sendClientMessage(`${i + 1}: ${items[i].name}`);
