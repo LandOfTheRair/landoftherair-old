@@ -48,6 +48,6 @@ export const responses = (npc: NPC) => {
         return `Thanks, ${player.name}! I've upgraded your ${player.rightHand.itemClass.toLowerCase()}. This titanium will sell for a pretty penny, too.`;
       }
 
-      return `Hold one titanium chunk in your left hand, and I'll fuse it with your gear. Hold a piece of gear with one defensive add in your right hand, and it will help you better in combat!`;
+      return `Hold one titanium chunk in your left hand, and I'll fuse it with your gear. Hold a piece of gear with one offensive add in your right hand, and it will help you better in combat!`;
     });
 };
