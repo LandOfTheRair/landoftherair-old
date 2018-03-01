@@ -20,7 +20,7 @@ export class GMSearchItems extends Command {
       itemName = gotLimit;
     } else {
       limit = +gotLimit;
-      itemName = args.substring(args.indexOf(' '));
+      itemName = args.substring(args.indexOf(' ') + 1);
     }
 
     if(!itemName) return false;
