@@ -12,6 +12,7 @@ export class ColyseusService {
 
   client: any;
   private _isConnected = false;
+  private _isConnecting = false;
   public isConnected$ = new Subject();
 
   constructor(
@@ -34,14 +35,17 @@ export class ColyseusService {
 
   private initClient() {
     this.client = new Colyseus.Client(`${environment.server.wsProtocol}://${environment.server.domain}:${environment.server.port}`);
+    this._isConnecting = true;
 
     this.client.onOpen.add(() => {
       this._isConnected = true;
+      this._isConnecting = false;
       this.isConnected$.next(true);
     });
 
     this.client.onError.add((e) => {
       if(!e) return;
+      this._isConnecting = false;
       console.error(e);
       location.reload();
 
@@ -50,12 +54,17 @@ export class ColyseusService {
     this.client.onClose.add(() => {
       this.game.quit();
       this._isConnected = false;
+      this._isConnecting = false;
       this.isConnected$.next(false);
     });
   }
 
   get isConnected() {
     return this._isConnected;
+  }
+
+  get isConnecting() {
+    return this._isConnecting;
   }
 
   get isDiscordConnected() {

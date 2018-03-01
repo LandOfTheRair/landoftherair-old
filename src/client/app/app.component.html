@@ -11,7 +11,13 @@
 
 <div class="body-container">
 
-  <div *ngIf="!colyseus.isConnected" class="m-5 d-flex justify-content-center align-content-center h-100">
+  <div *ngIf="!colyseus.isConnected && colyseus.isConnecting" class="m-5 d-flex justify-content-center align-content-center h-100">
+    <div class="alert alert-info connection-warning">
+      Connecting to server...
+    </div>
+  </div>
+
+  <div *ngIf="!colyseus.isConnected && !colyseus.isConnecting" class="m-5 d-flex justify-content-center align-content-center h-100">
     <div class="alert alert-warning connection-warning">
       The game client could not connect to the server. The game may be down for maintenance. Refresh the page to attempt to reconnect.
     </div>
