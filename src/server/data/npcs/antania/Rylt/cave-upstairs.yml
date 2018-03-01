@@ -16,6 +16,7 @@
   level: 20
 
   otherStats:
+    accuracy: 10
     perception: 250
 
   skillLevels:
@@ -85,6 +86,7 @@
   sprite: 75
   stats: 20
   otherStats:
+    accuracy: 10
     wil: 13
   skillLevels:
     Martial: 8
@@ -149,3 +151,4 @@
 
   gear:
     Armor: Antanian Tunic
+    Head: Enemy DarkVision Helm
