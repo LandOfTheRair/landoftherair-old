@@ -16,7 +16,7 @@ class EffectInfo {
   caster: string;
   isPermanent?: boolean;
   isFrozen?: boolean;
-  canManuallyUnapply?: boolean
+  canManuallyUnapply?: boolean;
 }
 
 export class Effect {
