@@ -8,8 +8,6 @@ import { ColyseusGameService } from '../colyseus.game.service';
 })
 export class StatusWindowComponent {
 
-  constructor(public colyseusGame: ColyseusGameService) { }
-
   get healthPercent(): number {
     return this.colyseusGame.character.hp.__current / this.colyseusGame.character.hp.maximum * 100;
   }
@@ -24,5 +22,11 @@ export class StatusWindowComponent {
     const baseXp = this.colyseusGame.character.calcLevelXP(this.colyseusGame.character.level);
     const neededXp = this.colyseusGame.character.calcLevelXP(this.colyseusGame.character.level + 1);
     return Math.min(100, (this.colyseusGame.character.exp - baseXp) / (neededXp - baseXp) * 100);
+  }
+
+  constructor(public colyseusGame: ColyseusGameService) { }
+
+  tryUnapplying(effect) {
+    this.colyseusGame.tryEffectUnapply(effect);
   }
 }

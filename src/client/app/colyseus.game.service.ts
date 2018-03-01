@@ -438,6 +438,10 @@ export class ColyseusGameService {
     this.sendCommandString(`${this.showTrainer.uuid}, assess ${skill}`);
   }
 
+  public tryEffectUnapply(effect) {
+    this.sendCommandString(`~unapply ${effect.name}`);
+  }
+
   public train() {
     if(!this.showTrainer.uuid) return;
     this.sendCommandString(`${this.showTrainer.uuid}, train`);

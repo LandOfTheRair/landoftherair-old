@@ -9,6 +9,7 @@ export * from './Trait';
 export * from './Restore';
 export * from './Search';
 export * from './Drink';
+export * from './Unapply';
 export * from './Use';
 
 export * from './ground';

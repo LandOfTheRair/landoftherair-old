@@ -20,6 +20,7 @@ export class DarkVision extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     if(caster.baseClass === 'Thief') target = caster;
     this.setPotencyAndGainSkill(caster, skillRef);
+    this.flagUnapply();
 
     if(caster !== target) {
       this.casterEffectMessage(caster, `You cast DarkVision on ${target.name}.`);

@@ -21,6 +21,7 @@ export class TrueSight extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     if(caster.baseClass === 'Thief') target = caster;
     this.setPotencyAndGainSkill(caster, skillRef);
+    this.flagUnapply();
 
     if(caster !== target) {
       this.casterEffectMessage(caster, `You cast TrueSight on ${target.name}.`);

@@ -957,7 +957,7 @@ export class Character {
     this.effects = this.effects.filter(eff => eff.name !== effect.name);
   }
 
-  hasEffect(effectName) {
+  hasEffect(effectName): Effect {
     return find(this.effects, { name: effectName });
   }
 

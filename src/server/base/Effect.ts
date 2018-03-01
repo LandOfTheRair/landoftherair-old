@@ -16,6 +16,7 @@ class EffectInfo {
   caster: string;
   isPermanent?: boolean;
   isFrozen?: boolean;
+  canManuallyUnapply?: boolean
 }
 
 export class Effect {
@@ -36,9 +37,17 @@ export class Effect {
     if(!this.name) this.name = this.constructor.name;
   }
 
+  public canBeUnapplied() {
+    return this.effectInfo && this.effectInfo.canManuallyUnapply;
+  }
+
   protected flagPermanent(casterUUID: string) {
     this.duration = -1;
     this.effectInfo = { isPermanent: true, caster: casterUUID };
+  }
+
+  protected flagUnapply() {
+    this.effectInfo.canManuallyUnapply = true;
   }
 
   tick(char: Character) {

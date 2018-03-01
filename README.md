@@ -107,6 +107,7 @@ Some commands are hidden and don't really need to be used by players, but should
 * `~search` - search corpses on the ground, then look
 * `~talk` - called automatically when doing `xxx, message` - will trigger appropriate dialog for an npc if it has any
 * `~trait` - buy traits
+* `~unapply` - unapply a buff by name
 * `~use` - use an item
 
 #### Debugging Commands

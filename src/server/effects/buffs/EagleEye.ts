@@ -16,6 +16,7 @@ export class EagleEye extends SpellEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
+    this.flagUnapply();
 
     if(caster !== target) {
       this.casterEffectMessage(caster, `You cast EagleEye on ${target.name}.`);
