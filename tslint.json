@@ -83,6 +83,7 @@
       true,
       "allow-null-check"
     ],
+    "typedef": [true, "property-declaration"],
     "typedef-whitespace": [
       true,
       {

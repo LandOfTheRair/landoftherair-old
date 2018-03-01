@@ -220,7 +220,7 @@ export class Player extends Character {
     this.$$flaggedSkills = skills;
   }
 
-  kill(target: Character, opts: { isPetKill } = { isPetKill: false }) {
+  kill(target: Character, opts: { isPetKill: boolean } = { isPetKill: false }) {
     this.$$actionQueue = reject(this.$$actionQueue, ({ args }) => includes(args, target.uuid));
 
     const npcId = (<any>target).npcId;
