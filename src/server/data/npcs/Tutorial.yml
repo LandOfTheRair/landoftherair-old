@@ -75,14 +75,12 @@
     min: 10
     max: 50
 
-  tansFor: Tutorial Fur
-
 - npcId: Tutorial Wolf
   name: wolf
   hostility: Always
   sprite: 215
   alignment: Evil
-  stats: 3
+  stats: 2
   level: 1
 
   gold:
@@ -101,14 +99,12 @@
     Armor: Tutorial Fur
     Hands: Basic Claws
 
-  tansFor: Tutorial Fur
-
 - npcId: Tutorial Yeti
   name: yeti
   hostility: Always
   sprite: 220
-  stats: 5
-  level: 2
+  stats: 3
+  level: 1
 
   skillOnKill: 30
 
