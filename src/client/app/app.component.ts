@@ -43,6 +43,18 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('debugOptions')
   public debugOptionsModal;
 
+  @ViewChild('silverModal')
+  public silverModal;
+
+  @ViewChild('gameSettings')
+  public gameSettingsModal;
+
+  @ViewChild('myAccount')
+  public myAccountModal;
+
+  @ViewChild('tour')
+  private tour;
+
   // general utility w/ macros
   public macroArray = Array(10).fill(null).map((x, i) => i);
 
@@ -235,6 +247,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.macroGroupsModal.hide();
       this.optionsModal.hide();
       this.macrosModal.hide();
+      this.debugOptionsModal.hide();
+      this.silverModal.hide();
+      this.gameSettingsModal.hide();
+      this.myAccountModal.hide();
     });
 
     this.colyseus.lobby.lobbyState.newMessage$.subscribe((numNewMessages) => {
@@ -249,20 +265,20 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.preloadAssets();
 
     this.createUninitListener();
+
+    this.watchForTour();
   }
 
   private createUninitListener() {
     if(!environment.production) return;
     if(!this.authService.isAuthenticated) return;
 
-    /*
     window.onbeforeunload = (e) => {
       const message = 'Are you sure you want to quit? If you\'re in game, you might want to exit to lobby first!';
 
       e.returnValue = message;
       return message;
     };
-    */
   }
 
   private preloadAssets() {
@@ -609,6 +625,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   tryUpdateDiscordTag() {
     const tag = this.updateDiscordTag;
     this.colyseus.lobby.updateDiscordTag(tag);
+  }
+
+  private watchForTour() {
+    this.colyseus.game.tour$.subscribe(() => this.startTour());
+  }
+
+  startTour() {
+    setTimeout(() => {
+      this.tour.start();
+    });
   }
 
 }

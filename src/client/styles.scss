@@ -223,3 +223,12 @@ a {
 .modal-footer {
   justify-content: space-between;
 }
+
+walkthrough-container {
+  z-index: 20000 !important;
+
+  /deep/ .wkt-content-block {
+    max-width: 50%;
+    left: 15% !important;
+  }
+}

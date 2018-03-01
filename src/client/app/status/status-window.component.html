@@ -13,7 +13,7 @@
 
   <div class="col-4 p-0">
     <div class="row m-0 needs-min-height">
-      <div class="col-6 p-0">
+      <div class="col p-0">
 
         <div class="progress" tooltip="HP" container="body" [class.critical]="healthPercent < 20">
           <div class="progress-bar bg-danger" [style.width]="healthPercent + '%'"></div>
@@ -21,7 +21,7 @@
         </div>
 
       </div>
-      <div class="col-6 p-0">
+      <div class="col-6 p-0" *ngIf="colyseusGame.character.mp.maximum > 0">
 
         <div class="progress" tooltip="MP" container="body">
           <div class="progress-bar bg-primary" [style.width]="magicPercent + '%'"></div>

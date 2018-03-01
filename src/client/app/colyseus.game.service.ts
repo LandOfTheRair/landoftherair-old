@@ -55,6 +55,8 @@ export class ColyseusGameService {
 
   public myLoc$ = new Subject();
 
+  public tour$ = new Subject();
+
   private overrideNoBgm: boolean;
   private overrideNoSfx: boolean;
 
@@ -65,8 +67,7 @@ export class ColyseusGameService {
   }
 
   constructor(
-    private localStorage: LocalStorageService,
-    private zone: NgZone
+    private localStorage: LocalStorageService
   ) {
 
     this.overrideNoBgm = !this.localStorage.retrieve('playBackgroundMusic');
@@ -333,6 +334,11 @@ export class ColyseusGameService {
     if(action === 'add_gitem')      return this.addGroundItem(other.x, other.y, other.item);
     if(action === 'remove_gitem')   return this.removeGroundItem(other.x, other.y, other.item);
     if(action === 'sync_ground')    return this.syncGroundItems(other.ground);
+    if(action === 'take_tour')      return this.takeTour();
+  }
+
+  private takeTour() {
+    this.tour$.next();
   }
 
   private syncGroundItems(groundItems: any) {

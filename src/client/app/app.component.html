@@ -1257,3 +1257,124 @@
   <br>
   <a href="http://rair.land/docs/subscriber-benefits/" target="_blank">Click this link to see all the awesome perks of subscribing!</a>
 </div>
+
+<ng-walkthrough-flow #tour
+                     focusBackdrop="true"
+                     focusHighlightAnimation="true"
+                     closeButton="true"
+                     closeAnywhere="false"
+                     arrowColor="#fff"
+                     showArrow="true"
+                     radius="5px">
+
+  <ng-walkthrough
+    [focusElementSelector]="null"
+    [contentTemplate]="startFlow">
+    <ng-template #startFlow>
+      <h4 class="text-center">Welcome to Land of the Rair!</h4>
+      This is a brief guided tour of the UI to get you on your way. You can hit the X in the top right to get right into the action.
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#map"
+    [contentTemplate]="mapFlow">
+    <ng-template #mapFlow>
+      <h4 class="text-center">The Map</h4>
+      This is the map. It's your viewport to the world, and how you move around. You can click on any tile to move towards it. You will also see where other characters are, relative to where you can see.
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#status"
+    [contentTemplate]="statusFlow">
+    <ng-template #statusFlow>
+      <h4 class="text-center">Your Status</h4>
+      This window shows your status - your health, mana (where applicable), and your current experience. If you get any buffs or debuffs, those will show up on the left side.
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#npcs"
+    [contentTemplate]="npcsFlow">
+    <ng-template #npcsFlow>
+      <h4 class="text-center">The Character List</h4>
+      This is the character list. Here, every character in your view is listed, along with what they're holding and what they're wearing, their direction from you, and a rough indicator of their health. You can click on them to interact with them. Green means they're a friendly NPC, grey means they aren't hostile, but can be attacked, and red means that they are hostile and will attack you. Watch out for reds!
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#macros"
+    [contentTemplate]="macrosFlow">
+    <ng-template #macrosFlow>
+      <h4 class="text-center">Macros</h4>
+      This box shows your current "macro set" (basically, a set of commands). You can see that the "Attack" action is highlighted, which means any time you click on a grey NPC, you will attempt to attack it. Be careful!
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#log"
+    [contentTemplate]="logFlow">
+    <ng-template #logFlow>
+      <h4 class="text-center">The Log</h4>
+      Here you can see combat, NPC chatter, and various environment changes. As you move around, engage in combat, and talk to NPCs, more messages will appear here!
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#commandLine"
+    [contentTemplate]="commandLineFlow">
+    <ng-template #commandLineFlow>
+      <h4 class="text-center">The Command Line</h4>
+      The command line is one of your primary ways to interact with the world. You can use it to run commands (macros are just commands), talk to npcs (by saying <strong>name, hello</strong> or, for example, <strong>Greeter, hello</strong>). You can also change it to "Say" mode to talk with other players - just click the "Cmd" button!
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#equipment"
+    [contentTemplate]="equipmentFlow">
+    <ng-template #equipmentFlow>
+      <h4 class="text-center">Equipment</h4>
+      This is your equipment. You'll notice you have a weapon equipped in your right hand (your primary hand), and that you're wearing a tunic. As you travel the lands, you'll find new weapons and new pieces of gear.
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#belt"
+    [contentTemplate]="beltFlow">
+    <ng-template #beltFlow>
+      <h4 class="text-center">Belt</h4>
+      Your belt is where all of your weapons will go. For the most part, only weapons can go in here.
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#sack"
+    [contentTemplate]="sackFlow">
+    <ng-template #sackFlow>
+      <h4 class="text-center">Sack</h4>
+      Your sack is where most of your miscellaneous items go. You'll find bottles, rocks, boxes, and all sorts of things to go in here. You can also fit some small armor pieces (gloves, sashes, etc) and some small weapons (daggers, shortswords, etc) in it.
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#windowList"
+    [contentTemplate]="windowListFlow">
+    <ng-template #windowListFlow>
+      <h4 class="text-center">Window Menu</h4>
+      Up there, there are a few more windows you can explore. For the most part, they're representations of your characters capabilities, and nothing you need to look at right away. <br>
+      Also in this menu is the "Options" menu, which will let you change UI size, sound settings, and more. Take a look at that!
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    [contentTemplate]="endFlow">
+    <ng-template #endFlow>
+      <h4 class="text-center">The End!</h4>
+      That's it! Go out and slay some monsters!
+    </ng-template>
+  </ng-walkthrough>
+
+</ng-walkthrough-flow>
+
+

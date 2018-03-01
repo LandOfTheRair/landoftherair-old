@@ -576,7 +576,7 @@
          "name":"NPCs",
          "objects":[
                 {
-                 "gid":3150,
+                 "gid":3182,
                  "height":64,
                  "id":174,
                  "name":"Armor Seller",
@@ -596,7 +596,7 @@
                  "y":2176
                 }, 
                 {
-                 "gid":3150,
+                 "gid":3182,
                  "height":64,
                  "id":177,
                  "name":"Weapon Seller",
@@ -616,7 +616,7 @@
                  "y":2176
                 }, 
                 {
-                 "gid":3150,
+                 "gid":3182,
                  "height":64,
                  "id":178,
                  "name":"Potion Seller",
@@ -636,7 +636,7 @@
                  "y":2176
                 }, 
                 {
-                 "gid":3165,
+                 "gid":3197,
                  "height":64,
                  "id":179,
                  "name":"Hermit",
@@ -656,7 +656,7 @@
                  "y":512
                 }, 
                 {
-                 "gid":3065,
+                 "gid":3097,
                  "height":64,
                  "id":180,
                  "name":"Healer Trainer",
@@ -680,7 +680,7 @@
                  "y":384
                 }, 
                 {
-                 "gid":3060,
+                 "gid":3092,
                  "height":64,
                  "id":181,
                  "name":"Mage Trainer",
@@ -704,7 +704,7 @@
                  "y":384
                 }, 
                 {
-                 "gid":3055,
+                 "gid":3087,
                  "height":64,
                  "id":182,
                  "name":"Warrior Trainer",
@@ -728,7 +728,7 @@
                  "y":512
                 }, 
                 {
-                 "gid":3075,
+                 "gid":3107,
                  "height":64,
                  "id":183,
                  "name":"Thief Trainer",
@@ -752,7 +752,7 @@
                  "y":512
                 }, 
                 {
-                 "gid":2605,
+                 "gid":2637,
                  "height":64,
                  "id":194,
                  "name":"Billy",
@@ -772,7 +772,7 @@
                  "y":1728
                 }, 
                 {
-                 "gid":3145,
+                 "gid":3177,
                  "height":64,
                  "id":208,
                  "name":"Crier",
@@ -792,7 +792,7 @@
                  "y":1600
                 }, 
                 {
-                 "gid":3115,
+                 "gid":3147,
                  "height":64,
                  "id":211,
                  "name":"Encruster",
@@ -810,6 +810,26 @@
                  "width":64,
                  "x":1728,
                  "y":1856
+                }, 
+                {
+                 "gid":3157,
+                 "height":64,
+                 "id":218,
+                 "name":"Greeter",
+                 "properties":
+                    {
+                     "script":"tutorial\/greeter"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":704,
+                 "y":960
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1088,7 +1108,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":218,
+ "nextobjectid":219,
  "orientation":"orthogonal",
  "properties":
     {
@@ -2355,7 +2375,7 @@
          "columns":32,
          "firstgid":1329,
          "image":"..\/..\/client\/assets\/spritesheets\/decor.png",
-         "imageheight":2432,
+         "imageheight":2496,
          "imagewidth":2048,
          "margin":0,
          "name":"Decor",
@@ -2417,7 +2437,7 @@
                  "name":"LoudRugNoShineVert",
                  "tile":569
                 }],
-         "tilecount":1216,
+         "tilecount":1248,
          "tileheight":64,
          "tiles":
             {
@@ -2930,7 +2950,7 @@
         }, 
         {
          "columns":40,
-         "firstgid":2545,
+         "firstgid":2577,
          "image":"..\/..\/client\/assets\/spritesheets\/creatures.png",
          "imageheight":3008,
          "imagewidth":2560,

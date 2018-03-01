@@ -11,6 +11,7 @@ import { WindowManagerService } from '../windowmanager.service';
   template: `
     <div class="window"
          mwlResizable
+         [id]="windowName"
          [resizeEdges]="minimized ? {} : windowLocation.resizeEdges"
          [resizeSnapGrid]="windowLocation.resizeSnapGrid"
          (resizing)="resize($event)"

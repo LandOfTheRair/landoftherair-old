@@ -9,6 +9,7 @@ import * as Effects from '../effects';
 import * as dice from 'dice.js';
 import { CharacterHelper } from './character-helper';
 import { NPC } from '../../shared/models/npc';
+import { BuildupEffect } from '../base/Effect';
 
 export type DamageType =
   'Physical'
@@ -737,13 +738,13 @@ export class CombatHelper {
       const buildupMax = 100 + (10 * defender.level);
 
       targetEffect = new Effects[debuff]({});
-      targetEffect.buildupMax = buildupMax;
-      targetEffect.buildupCur = bonusIncrease;
-      targetEffect.decayRate -= this.elementalDecayRateValue(attacker, damageClass);
-      targetEffect.cast(attacker, defender);
+      (<BuildupEffect>targetEffect).buildupMax = buildupMax;
+      (<BuildupEffect>targetEffect).buildupCur = bonusIncrease;
+      (<BuildupEffect>targetEffect).decayRate -= this.elementalDecayRateValue(attacker, damageClass);
+      (<BuildupEffect>targetEffect).cast(attacker, defender);
     }
 
-    targetEffect.buildupCur += debuffIncrease;
-    targetEffect.buildupDamage += damage;
+    (<BuildupEffect>targetEffect).buildupCur += debuffIncrease;
+    (<BuildupEffect>targetEffect).buildupDamage += damage;
   }
 }

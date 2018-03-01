@@ -16,6 +16,7 @@ import {
   BsDropdownModule
 } from 'ngx-bootstrap';
 import { NgDragDropModule } from 'ng-drag-drop';
+import { WalkthroughModule } from 'angular-walkthrough';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { StripeCheckoutModule } from 'ng-stripe-checkout';
 import { ResizableModule } from 'angular-resizable-element';
@@ -136,6 +137,7 @@ import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/trade
 
     ResizableModule,
     ColorPickerModule,
+    WalkthroughModule.forRoot(),
     NgDragDropModule.forRoot(),
     Ng2Webstorage.forRoot(),
     BsDropdownModule.forRoot(),

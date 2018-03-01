@@ -42,7 +42,7 @@ import { ColyseusService } from './colyseus.service';
           </li>
         </ul>
 
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" id="windowList">
           <li class="nav-item" *ngIf="colyseus.lobby.myAccount.username" dropdown container="body">
             <a class="nav-link" href="#" dropdownToggle>Windows</a>
 

@@ -87,7 +87,7 @@ export class MapComponent implements OnInit, OnDestroy {
       const config = {
         width: boxSize, height: boxSize,
         multiTexture: true, renderer: (<any>window).Phaser.AUTO,
-        state: this.game, parent: 'map',
+        state: this.game, parent: 'mapcanvas',
         enableDebug: false
       };
 

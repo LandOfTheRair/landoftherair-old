@@ -23,7 +23,7 @@ export class Antidote extends SpellEffect {
 
     if(!poison) return;
 
-    if(this.potency < poison.potency) {
+    if(this.potency < poison.setPotency) {
       this.effectMessage(char, 'Your poison was not able to be cured!');
       return;
     }

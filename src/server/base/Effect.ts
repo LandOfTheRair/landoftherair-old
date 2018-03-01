@@ -27,6 +27,10 @@ export class Effect {
   protected tier: string;
   protected potency = 0;
 
+  public get setPotency(): number {
+    return this.potency;
+  }
+
   effectInfo: EffectInfo = { caster: '' };
   casterRef: any;
 
@@ -179,7 +183,7 @@ export class SpellEffect extends Effect {
     return caster.getTotalStat(stat);
   }
 
-  cast(caster: Character, target: Character, skillRef: Skill) {}
+  cast(caster: Character, target: Character, skillRef?: Skill) {}
 }
 
 export class ChanneledSpellEffect extends SpellEffect {

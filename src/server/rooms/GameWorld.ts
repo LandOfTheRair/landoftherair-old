@@ -33,6 +33,7 @@ import { LockerHelper } from '../helpers/locker-helper';
 import { BankHelper } from '../helpers/bank-helper';
 import { SubscriptionHelper } from '../helpers/subscription-helper';
 import { PouchHelper } from '../helpers/pouch-helper';
+import { MoveHelper } from '../helpers/move-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon';
@@ -240,9 +241,21 @@ export class GameWorld extends Room<GameState> {
 
     player.respawnPoint = clone(this.mapRespawnPoint);
 
+    if(this.mapName === 'Tutorial') {
+      setTimeout(() => {
+        player.sendClientMessage('Welcome to Land of the Rair!');
+        this.send(client, { action: 'take_tour' });
+      });
+    }
+
     this.usernameClientHash[player.username] = { client };
 
     this.setPlayerXY(player, player.x, player.y);
+
+    // 0,0 move to get info on the current tile
+    setTimeout(() => {
+      MoveHelper.move(player, { room: this, gameState: this.state, x: 0, y: 0 });
+    });
 
     this.send(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
     this.send(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
