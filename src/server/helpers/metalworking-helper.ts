@@ -54,7 +54,7 @@ export class MetalworkingHelper {
     player.tradeSkillContainers.metalworking.craftResult = brick;
 
     if(player.calcSkillLevel(SkillClassNames.Metalworking) < 5) {
-      player.gainSkill(SkillClassNames.Metalworking, 3);
+      player.gainSkill(SkillClassNames.Metalworking, 20);
     }
   }
 
@@ -153,6 +153,10 @@ export class MetalworkingHelper {
 
     container.upgradeResult = item;
     container.clearUpgrade();
+
+    if(player.calcSkillLevel(SkillClassNames.Metalworking) < 5) {
+      player.gainSkill(SkillClassNames.Metalworking, 20);
+    }
     return true;
   }
 
