@@ -180,9 +180,8 @@ export class Lobby extends Room<LobbyState> {
     if(!message) return;
 
     const accountRef = this.state.findAccountByUsername(account);
-    if(!accountRef) return;
 
-    if(source !== 'discord' && !accountRef.isGM) {
+    if(source !== 'discord' && accountRef && !accountRef.isGM) {
       const timestamp = Date.now();
 
       // set the last message if not set
@@ -206,7 +205,7 @@ export class Lobby extends Room<LobbyState> {
       accountRef.lastSentMessage = timestamp;
     }
 
-    if(accountRef.isMuted) return;
+    if(accountRef && accountRef.isMuted) return;
 
     this.state.addMessage({ account, message });
 
