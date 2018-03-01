@@ -284,6 +284,7 @@ export class ItemComponent implements OnInit {
     && this.item.itemClass !== 'Corpse'
     && this.context !== 'Obtainagain'
     && this.context !== 'Equipment'
+    && this.context !== 'GroundGroup'
     && this.context !== 'Ground') scopes.push('merchant');
 
     if(this.item.itemClass !== 'Coin'
@@ -313,6 +314,7 @@ export class ItemComponent implements OnInit {
 
     if(this.item.canUse && this.item.canUse(this.player)
     && this.context !== 'Ground'
+    && this.context !== 'GroundGroup'
     && this.context !== 'Equipment') scopes.push('use');
 
     this.scopes = scopes;
