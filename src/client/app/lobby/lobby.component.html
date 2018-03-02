@@ -10,7 +10,7 @@
           <span *ngIf="getMarkingClass(user)" [ngClass]="['user-marking', getMarkingClass(user)]"></span>
           <span class="user-name" [class.afk]="lobby.lobbyState.status[user.username] === 'AFK'">{{ user.username }}</span>
           <span class="user-ingame float-right" *ngIf="lobby.lobbyState.inGame[user.username] >= 0">
-            <img src="assets/spritesheets/in-game.png" height="16" width="16" />
+            <img src="assets/in-game.png" height="16" width="16" />
           </span>
         </div>
       </div>
