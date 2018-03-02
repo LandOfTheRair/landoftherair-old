@@ -247,6 +247,9 @@ export class Character {
   @nonenumerable
   $$ai: any;
 
+  @nonenumerable
+  $$flaggedSkills;
+
   $$interceptor: Character;
 
   sprite: number;
@@ -896,6 +899,19 @@ export class Character {
 
   isValidSkill(type) {
     return includes(ValidItemTypes, type) || SkillClassNames[type];
+  }
+
+  gainCurrentSkills(skillGained = 1) {
+    if(!this.$$flaggedSkills || !this.$$flaggedSkills.length) return;
+    const [primary, secondary] = this.$$flaggedSkills;
+    if(!primary) return;
+
+    if(secondary) {
+      this.gainSkill(primary, skillGained * 0.75);
+      this.gainSkill(secondary, skillGained * 0.25);
+    } else {
+      this.gainSkill(primary, skillGained);
+    }
   }
 
   gainSkill(type, skillGained = 1) {

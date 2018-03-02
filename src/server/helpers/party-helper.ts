@@ -42,7 +42,7 @@ export class PartyHelper {
 
       if(!partyMember || player.distFrom(partyMember) > 7) return;
 
-      partyMember.gainSkill(skill);
+      partyMember.gainCurrentSkills(skill);
     });
   }
 
