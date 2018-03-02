@@ -193,12 +193,15 @@ export class NPC extends Character {
 
   restore() {
     if(this.$$corpseRef) {
-      this.$$room.dropCorpseItems(this.$$corpseRef);
-      this.$$room.removeItemFromGround(this.$$corpseRef);
 
       if(this.$$corpseRef.$heldBy) {
-        DeathHelper.corpseCheck(this.$$room.state.findPlayer(this.$$corpseRef.$heldBy));
+        const holder = this.$$room.state.findPlayer(this.$$corpseRef.$heldBy);
+        holder.sendClientMessage(`The corpse turned to dust in your hands.`);
+        DeathHelper.corpseCheck(holder);
       }
+
+      this.$$room.dropCorpseItems(this.$$corpseRef);
+      this.$$room.removeItemFromGround(this.$$corpseRef);
     }
 
     if(this.spawner) {

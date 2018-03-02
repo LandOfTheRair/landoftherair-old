@@ -824,7 +824,7 @@ export class Character {
     this.dir = 'C';
     this.clearEffects();
 
-    this.$$deathTicks = 60;
+    this.$$deathTicks = 120;
 
     if(silent) {
       this.hp.toMinimum();
