@@ -116,7 +116,6 @@ Some commands are hidden and don't really need to be used by players, but should
 * `~~reset` - reset your buffs and additionalStats
 * `~~mobs` - count the number of mobs in the world
 * `~~ping` - check your ping
-* `~~unstuck` - teleport to the spawn of the map (cannot be used in combat)
 
 #### Testing Commands
 

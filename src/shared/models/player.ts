@@ -477,6 +477,11 @@ export class Player extends Character {
   tick() {
     super.tick();
 
+    if(this.$$room.state.checkIfActualWall(this.x, this.y)) {
+      this.sendClientMessage('You are probably somewhere you shouldn\'t be. You will be teleported to the respawn point.');
+      this.teleportToRespawnPoint();
+    }
+
     if(this.$$room.partyManager && this.partyName) this.$$room.partyManager.updateMember(this);
 
     if(this.isInCombat) this.combatTicks--;

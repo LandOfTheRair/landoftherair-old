@@ -598,9 +598,14 @@ export class GameState {
     this.resetPlayerHash();
   }
 
+  checkIfActualWall(x: number, y: number): boolean {
+    const adjustedY = y * this.map.width;
+    return this.map.layers[MapLayer.Walls].data[x + adjustedY];
+  }
+
   checkIfDenseWall(x: number, y: number): boolean {
     const adjustedY = y * this.map.width;
-    return this.map.layers[MapLayer.Walls].data[x + adjustedY]
+    return this.checkIfActualWall(x, y)
         || this.map.layers[MapLayer.Foliage].data[x + adjustedY];
   }
 
