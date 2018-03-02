@@ -28,7 +28,11 @@ export const VerticalDoorGids = {
   1116: true,
 
   // town3 door vert
-  1123: true
+  1123: true,
+
+  // cave green wall door vert
+  1211: true
+
 };
 
 export const TrueSightMap = {
@@ -55,7 +59,11 @@ export const TrueSightMap = {
 
   // town2 horiz, town2 vert
   175: 1123,
-  176: 1124
+  176: 1124,
+
+  // green cave wall horiz, green cave wall vert
+  350: 1217,
+  351: 1216
 };
 
 export const TrueSightMapReversed = invert(TrueSightMap);

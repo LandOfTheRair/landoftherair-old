@@ -100,6 +100,42 @@
                  "width":64,
                  "x":3520,
                  "y":9792
+                }, 
+                {
+                 "gid":1312,
+                 "height":64,
+                 "id":1112,
+                 "name":"",
+                 "rotation":0,
+                 "type":"SecretWall",
+                 "visible":true,
+                 "width":64,
+                 "x":8320,
+                 "y":8448
+                }, 
+                {
+                 "gid":1311,
+                 "height":64,
+                 "id":1113,
+                 "name":"",
+                 "rotation":0,
+                 "type":"SecretWall",
+                 "visible":true,
+                 "width":64,
+                 "x":8448,
+                 "y":8576
+                }, 
+                {
+                 "gid":1024,
+                 "height":64,
+                 "id":1114,
+                 "name":"Hidden Wall",
+                 "rotation":0,
+                 "type":"SecretWall",
+                 "visible":true,
+                 "width":64,
+                 "x":8384,
+                 "y":8448
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -110,7 +146,43 @@
         {
          "draworder":"topdown",
          "name":"Interactables",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":2406,
+                 "height":64,
+                 "id":1115,
+                 "name":"Door",
+                 "rotation":0,
+                 "type":"Door",
+                 "visible":true,
+                 "width":64,
+                 "x":8192,
+                 "y":8448
+                }, 
+                {
+                 "gid":2540,
+                 "height":64,
+                 "id":1116,
+                 "name":"asdfasdf",
+                 "rotation":0,
+                 "type":"Door",
+                 "visible":true,
+                 "width":64,
+                 "x":8000,
+                 "y":8576
+                }, 
+                {
+                 "gid":2543,
+                 "height":64,
+                 "id":1117,
+                 "name":"",
+                 "rotation":0,
+                 "type":"Door",
+                 "visible":true,
+                 "width":64,
+                 "x":8128,
+                 "y":8704
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -415,7 +487,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1112,
+ "nextobjectid":1119,
  "orientation":"orthogonal",
  "properties":
     {
