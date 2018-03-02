@@ -51,8 +51,11 @@ export class LifeHeartComponent {
 
   get hpPercentGradient() {
     let hpp = this.hpPercent;
-    if(hpp >= 5 && hpp < 15) hpp = 15;
-    if(hpp >= 15 && hpp < 20) hpp = 20;
+    if(hpp >= 5  && hpp < 15)   hpp = 15;
+    if(hpp >= 15 && hpp < 20)   hpp = 20;
+
+    if(hpp >= 80 && hpp < 95)   hpp = 80;
+    if(hpp >= 95 && hpp <= 100) hpp = 90;
     return this.domSanitizer.bypassSecurityTrustStyle(`polygon(0% ${hpp}%, 0% 100%, 100% 100%, 100% ${hpp}%)`);
   }
 
