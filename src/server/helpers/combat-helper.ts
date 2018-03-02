@@ -49,7 +49,7 @@ export class CombatHelper {
 
   static determineWeaponInformation(item: Item, baseRolls = 0) {
     if(!BaseItemStatsPerTier[item.itemClass]) {
-      throw new Error(`${item.itemClass} has no item stats per tier!`);
+      return { damageRolls: 0, damageBonus: 0, isWeak: false, isStrong: false };
     }
 
     const tier = item.tier || 0;
