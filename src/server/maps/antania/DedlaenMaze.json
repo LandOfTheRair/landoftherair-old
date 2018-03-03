@@ -5711,31 +5711,31 @@
                  "id":2843,
                  "name":"",
                  "rotation":0,
-                 "type":"",
+                 "type":"Door",
                  "visible":true,
                  "width":64,
                  "x":3776,
                  "y":512
                 }, 
                 {
-                 "gid":1719,
-                 "height":64,
-                 "id":2904,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":7808,
-                 "y":6144
-                }, 
-                {
                  "gid":1609,
                  "height":64,
                  "id":2906,
                  "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"DedlaenMaze",
+                     "teleportX":122,
+                     "teleportY":95
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
                  "rotation":0,
-                 "type":"",
+                 "type":"ClimbUp",
                  "visible":true,
                  "width":64,
                  "x":9216,
@@ -5745,9 +5745,17 @@
                  "gid":1547,
                  "height":64,
                  "id":2940,
-                 "name":"",
+                 "name":"Dedlaen Town",
+                 "properties":
+                    {
+                     "lockerId":"dedlaen"
+                    },
+                 "propertytypes":
+                    {
+                     "lockerId":"string"
+                    },
                  "rotation":0,
-                 "type":"",
+                 "type":"Locker",
                  "visible":true,
                  "width":64,
                  "x":8512,
@@ -10204,6 +10212,30 @@
                  "width":64,
                  "x":6400,
                  "y":6464
+                }, 
+                {
+                 "gid":1719,
+                 "height":64,
+                 "id":3928,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"DedlaenMaze",
+                     "teleportX":144,
+                     "teleportY":100
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"ClimbDown",
+                 "visible":true,
+                 "width":64,
+                 "x":7808,
+                 "y":6144
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -10657,7 +10689,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":3927,
+ "nextobjectid":3929,
  "orientation":"orthogonal",
  "properties":
     {
