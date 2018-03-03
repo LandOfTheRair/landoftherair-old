@@ -278,6 +278,56 @@
                  "width":64,
                  "x":9152,
                  "y":9472
+                }, 
+                {
+                 "gid":1713,
+                 "height":64,
+                 "id":1143,
+                 "name":"Portal",
+                 "properties":
+                    {
+                     "teleportMap":"TowerOfSelen",
+                     "teleportX":106,
+                     "teleportY":6
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":64,
+                 "x":3520,
+                 "y":9792
+                }, 
+                {
+                 "gid":1777,
+                 "height":64,
+                 "id":1144,
+                 "name":"",
+                 "properties":
+                    {
+                     "subscriberOnly":true,
+                     "teleportMap":"SubscriberCastle",
+                     "teleportX":13,
+                     "teleportY":28
+                    },
+                 "propertytypes":
+                    {
+                     "subscriberOnly":"bool",
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsUp",
+                 "visible":true,
+                 "width":64,
+                 "x":9728,
+                 "y":9792
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -563,7 +613,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1143,
+ "nextobjectid":1145,
  "orientation":"orthogonal",
  "properties":
     {
