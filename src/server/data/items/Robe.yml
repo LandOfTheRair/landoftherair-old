@@ -130,9 +130,10 @@
   stats:
     armorClass: 6
     defense: 3
-    magicalResist: 20
-    energyResist: 30
-    necroticResist: 30
+    fireResist: 30
+    waterResist: 30
+    energyResist: 40
+    necroticResist: 40
     mpregen: 7
     hpregen: 2
   trait:
