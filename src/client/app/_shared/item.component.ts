@@ -329,7 +329,12 @@ export class ItemComponent implements OnInit {
         return;
 
       } else if(this.context === 'Merchant' || this.context === 'Obtainagain') {
-        if(this.item.isSackable) {
+
+        if(this.item.isBeltable) {
+          this.doColyseusMoveAction('B');
+          return;
+
+        } else if(this.item.isSackable) {
           this.doColyseusMoveAction('S');
           return;
         }
@@ -344,21 +349,40 @@ export class ItemComponent implements OnInit {
           return;
         }
 
-        if(this.item.isSackable) {
+        if(this.item.isBeltable) {
+          this.doColyseusMoveAction('B');
+          return;
+
+        } else if(this.item.isSackable) {
           this.doColyseusMoveAction('S');
           return;
         }
+
       } else {
         this.doColyseusMoveAction('W');
         return;
       }
     }
 
-    if(this.item.canUse(this.colyseusGame.character) && (this.context === 'Right' || this.context === 'Left')) {
+    if(this.item.canUse && this.item.canUse(this.colyseusGame.character) && (this.context === 'Right' || this.context === 'Left')) {
       this.colyseusGame.buildUseAction(this.item, this.context);
+      return;
 
-    } else if(this.context !== 'Ground') {
+    } else if(this.context !== 'Ground' && this.context !== 'GroundGroup') {
       this.doColyseusMoveAction('G');
+      return;
+
+    } else if(this.context === 'Ground' || this.context === 'GroundGroup') {
+
+      if(this.item.isBeltable) {
+        this.doColyseusMoveAction('B');
+        return;
+
+      } else if(this.item.isSackable) {
+        this.doColyseusMoveAction('S');
+        return;
+      }
+
     }
 
   }
