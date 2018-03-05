@@ -262,6 +262,8 @@ export class CombatHelper {
     // skill + 1 because skill 0 is awful
     const calcSkill = attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type) + 1;
 
+    const damageCalcStat = isThrow || attackerWeapon.type === 'Ranged' ? 'dex' : 'str';
+
     const attackerScope = {
       skill: calcSkill,
       skill4: Math.floor(calcSkill / 4),
@@ -269,8 +271,8 @@ export class CombatHelper {
       accuracy: Math.floor(attacker.getTotalStat('accuracy') / offhandDivisor),
       dex: Math.floor(attacker.getTotalStat('dex') / offhandDivisor),
       dex4: Math.floor((attacker.getTotalStat('dex') / 4) / offhandDivisor),
-      str: Math.floor(attacker.getTotalStat('str') / offhandDivisor),
-      str4: Math.floor((attacker.getTotalStat('str') / 4) / offhandDivisor),
+      damageStat: Math.floor(attacker.getTotalStat(damageCalcStat) / offhandDivisor),
+      damageStat4: Math.floor((attacker.getTotalStat(damageCalcStat) / 4) / offhandDivisor),
       level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatLevelDivisor),
       realLevel: attacker.level,
       damageRolls: Math.max(1, damageRolls)
@@ -300,7 +302,7 @@ export class CombatHelper {
 
     // try to dodge
     const attackerDodgeBlockLeftSide = Math.floor(10 + attackerScope.skill + attackerScope.offense + attackerScope.accuracy);
-    const attackerDodgeBlockRightSide = Math.floor(attackerScope.dex + attackerScope.level + attackerScope.skill);
+    const attackerDodgeBlockRightSide = Math.floor(attackerScope.dex + attackerScope.skill);
 
     const defenderDodgeBlockLeftSide = Math.floor(1 + defenderScope.defense);
     const defenderDodgeRightSide = Math.floor(defenderScope.dex4 + defenderScope.agi + defenderScope.level);
@@ -346,7 +348,7 @@ export class CombatHelper {
     }
 
     // try to block with weapon
-    const attackerWeaponShieldBlockRightSide = Math.floor(attackerScope.str4 + attackerScope.dex + attackerScope.skill) - defenderWeaponAC;
+    const attackerWeaponShieldBlockRightSide = Math.floor(attackerScope.damageStat4 + attackerScope.dex + attackerScope.skill) - defenderWeaponAC;
     const defenderWeaponBlockLeftSide = 1;
     const defenderWeaponBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.skill);
 
@@ -393,7 +395,7 @@ export class CombatHelper {
     }
 
     const damageLeft = attackerScope.damageRolls + attackerScope.skill4;
-    const damageRight = Math.floor(attackerScope.str + attackerScope.level + attackerScope.skill);
+    const damageRight = Math.floor(attackerScope.damageStat + attackerScope.level + attackerScope.skill);
     const damageBoost = attacker.getTotalStat('physicalDamageBoost') + damageBonus;
 
     // thieves get +25% to the bottom damage range, warriors get +50%

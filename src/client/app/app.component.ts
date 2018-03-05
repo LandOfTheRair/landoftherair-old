@@ -263,7 +263,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.watchOptions();
 
     this.preloadAssets();
-    
+
     this.watchForTour();
   }
 
