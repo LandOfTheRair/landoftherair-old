@@ -26,7 +26,6 @@ export class AuthService {
   constructor() {
     this.isReady = new Promise(resolve => this.resolveReady = resolve);
     (<any>window).auth0 = this.auth0;
-    console.log('a', this.auth0);
   }
 
   public login() {

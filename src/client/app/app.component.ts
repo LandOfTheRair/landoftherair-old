@@ -216,7 +216,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     private renderer: Renderer2,
     private stripeCheckoutLoader: StripeCheckoutLoader
   ) {
-    console.log('test');
     this.authService.handleAuthentication();
     this.macroService.ignoreFunction = () => {
 
