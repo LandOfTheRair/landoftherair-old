@@ -25,14 +25,18 @@ export class AuthService {
 
   constructor() {
     this.isReady = new Promise(resolve => this.resolveReady = resolve);
+    (<any>window).auth0 = this.auth0;
   }
 
   public login() {
+    console.log(this.auth0);
     this.auth0.authorize();
   }
 
   public handleAuthentication(): void {
+    console.log(this.auth0);
     this.auth0.parseHash((err, authResult) => {
+      console.log(err, authResult);
       if(authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
