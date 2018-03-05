@@ -31,7 +31,7 @@ import { ColyseusService } from './colyseus.service';
               <li *ngIf="!inGame && colyseus.lobby.myAccount.username">
                 <a class="dropdown-item" (click)="silverModal.show()">Manage Silver</a>
               </li>
-              <li class="divider dropdown-divider" *ngIf="colyseus.lobby.myAccount.username"></li>
+              <li class="divider dropdown-divider"></li>
               <li>
                 <a class="dropdown-item" target="_blank" href="http://rair.land/docs/home/">Help!</a>
               </li>
