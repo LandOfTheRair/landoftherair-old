@@ -5,9 +5,9 @@
   hostility: Always
   sprite: 405
   alignment: Evil
-  stats: 13
-  skillLevels: 3
-  level: 11
+  stats: 10
+  skillLevels: 2
+  level: 10
 
   skillOnKill:  20
 
@@ -43,8 +43,8 @@
   sprite: 800
   alignment: Evil
   stats: 9
-  skillLevels: 3
-  level: 12
+  skillLevels: 2
+  level: 10
 
   skillOnKill:  20
 

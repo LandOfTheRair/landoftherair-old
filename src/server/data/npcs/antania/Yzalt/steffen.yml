@@ -69,7 +69,7 @@
   allegiance: Royalty
   sprite: [580, 595, 610, 615]
   alignment: Good
-  stats: 15
+  stats: 9
   skillLevels:
     Polearm: 3
     Mace: 3
@@ -173,11 +173,11 @@
   sprite: 590
   alignment: Good
   baseClass: Warrior
-  stats: 15
+  stats: 9
   skillLevels:
-    Mace: 4
-    Onehanded: 4
-    Twohanded: 4
+    Mace: 2
+    Onehanded: 2
+    Twohanded: 2
 
   level: 10
 
@@ -266,9 +266,9 @@
   sprite: 550
   alignment: Good
   baseClass: Healer
-  stats: 15
+  stats: 9
   skillLevels:
-    Mace: 3
+    Mace: 2
     Restoration: 3
 
   level: 10

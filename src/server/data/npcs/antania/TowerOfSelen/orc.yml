@@ -5,7 +5,7 @@
   sprite: 70
   alignment: Evil
   baseClass: Mage
-  stats: 13
+  stats: 10
   skillLevels: 3
   level: 14
 
@@ -67,7 +67,7 @@
   sprite: 70
   alignment: Evil
   stats: 6
-  skillLevels: 4
+  skillLevels: 3
   level: 14
 
   skillOnKill: 30
@@ -195,8 +195,8 @@
   hostility: Always
   sprite: 70
   alignment: Evil
-  stats: 14
-  skillLevels: 4
+  stats: 12
+  skillLevels: 3
   level: 15
 
   skillOnKill: 35

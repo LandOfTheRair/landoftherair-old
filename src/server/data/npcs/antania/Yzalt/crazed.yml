@@ -752,9 +752,9 @@
   baseClass: Warrior
   stats: 10
   skillLevels:
-    Mace: 3
-    Onehanded: 3
-    Twohanded: 3
+    Mace: 2
+    Onehanded: 2
+    Twohanded: 1
 
   level: 8
 

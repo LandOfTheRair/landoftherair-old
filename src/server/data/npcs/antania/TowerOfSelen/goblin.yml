@@ -4,14 +4,14 @@
   hostility: Always
   sprite: 80
   alignment: Evil
-  stats: 13
+  stats: 10
   skillLevels: 2
-  level: 14
+  level: 12
 
   skillOnKill: 25
 
   otherStats:
-    dex: 20
+    dex: 10
     accuracy: 10
     perception: 35
 
@@ -77,14 +77,14 @@
   baseClass: Thief
   sprite: 80
   alignment: Evil
-  stats: 10
+  stats: 9
   skillLevels: 2
   level: 14
 
   skillOnKill: 25
 
   otherStats:
-    dex: 20
+    dex: 12
     accuracy: 10
     perception: 55
 
@@ -171,7 +171,7 @@
   baseClass: Warrior
   sprite: 90
   alignment: Evil
-  stats: 10
+  stats: 8
   skillLevels: 2
   level: 15
 
