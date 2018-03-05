@@ -1,7 +1,7 @@
 
 import { Player } from '../../shared/models/player';
 import { SkillClassNames } from '../../shared/models/character';
-import { capitalize, clamp, includes, get, random } from 'lodash';
+import { capitalize, clamp, includes, get, random, cloneDeep } from 'lodash';
 import { ArmorClasses, Item } from '../../shared/models/item';
 
 const ingotCraftBuffs = {
@@ -15,7 +15,7 @@ const ingotCraftBuffs = {
   },
   'Gold Ingot (Infinity)': {
     weapon: { agi: 2 },
-    armor:  { hp: 100 }
+    armor:  { hp: 75 }
   }
 };
 
@@ -30,7 +30,7 @@ const ingotUpgradeBuffs = {
   },
   'Gold Ingot (Infinity)': {
     weapon: { offense: 1, defense: 1, accuracy: 3 },
-    armor:  { hp: 35 }
+    armor:  { hp: 20 }
   }
 };
 
@@ -105,12 +105,19 @@ export class MetalworkingHelper {
     let returnedItem = null;
 
     if(recipeMatch) {
-      const { item, skillGained, maxSkillForGains, xpGained } = recipeMatch;
+      const { item, skillGained, maxSkillForGains, xpGained, transferOwner } = recipeMatch;
       const sampleItem = await player.$$room.itemCreator.getItemByName(item, player.$$room);
 
       const mold = includes(ArmorClasses, sampleItem.itemClass) ? 'Armor Mold' : 'Weapon Mold';
       returnedItem = await player.$$room.itemCreator.getItemByName(mold, player.$$room);
       returnedItem.encrust = { name: sampleItem.name, sprite: sampleItem.sprite };
+
+      if(transferOwner) {
+        returnedItem.owner = container.craftItem.owner;
+      }
+
+      // transfer upgrades
+      returnedItem.previousUpgrades = container.craftItem.previousUpgrades;
 
       player.gainExp(xpGained);
 
@@ -148,6 +155,9 @@ export class MetalworkingHelper {
       item.stats[stat] += buff[stat];
     });
 
+    item.previousUpgrades = item.previousUpgrades || [];
+    item.previousUpgrades.push(buff);
+
     item.enchantLevel = item.enchantLevel || 0;
     item.enchantLevel++;
 
@@ -164,14 +174,22 @@ export class MetalworkingHelper {
     const left = player.leftHand;
     const right = player.rightHand;
 
+    const retroApplyUpgrades = cloneDeep(right.previousUpgrades) || [];
+
     const newItem = await player.$$room.itemCreator.getItemByName(right.encrust.name, player.$$room);
 
-    const buff = this.getBuffForItem(newItem, left, true);
+    const applyBuff = this.getBuffForItem(newItem, left, true);
+    retroApplyUpgrades.push(applyBuff);
 
-    Object.keys(buff).forEach(stat => {
-      newItem.stats[stat] = newItem.stats[stat] || 0;
-      newItem.stats[stat] += buff[stat];
+    retroApplyUpgrades.forEach(buff => {
+      Object.keys(buff).forEach(stat => {
+        newItem.stats[stat] = newItem.stats[stat] || 0;
+        newItem.stats[stat] += buff[stat];
+      });
     });
+
+    newItem.previousUpgrades = right.previousUpgrades || [];
+    newItem.previousUpgrades.push(applyBuff);
 
     player.setRightHand(newItem);
     player.setLeftHand(null);

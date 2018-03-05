@@ -187,6 +187,7 @@ export class Item {
   expiresAt: number;
 
   daily?: boolean;
+  previousUpgrades?: any[];
 
   constructor(opts) {
     extend(this, opts);
