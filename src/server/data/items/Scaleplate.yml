@@ -9,6 +9,9 @@
   binds: true
   value: 5000
 
+  requirements:
+    level: 15
+
 - name: Ether Scaleplate II
   sprite: 270
   stats:
@@ -18,3 +21,6 @@
   desc: "a bright red scaleplate, twice refined, forged with ether"
   binds: true
   value: 15000
+
+  requirements:
+    level: 21
