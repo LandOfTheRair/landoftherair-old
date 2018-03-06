@@ -693,12 +693,17 @@ export class Game {
       this.g.load.audio(`sfx-${sfx}`, `${this.assetService.assetUrl}/sfx/${sfx}.mp3`);
     });
 
-    this.g.game.renderer.setTexturePriority(['Terrain', 'Walls', 'Decor', 'Creatures', 'Items']);
-
     this.setupLoadingListeners();
   }
 
   create() {
+
+    this.g.game.renderer.setTexturePriority([
+      cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'),
+      cacheKey(this.clientGameState.mapName, 'tileset', 'Walls'),
+      'Creatures',
+      'Items'
+    ]);
 
     bgms.forEach(bgm => {
       this.bgms[bgm] = this.g.add.audio(`bgm-${bgm}`);
