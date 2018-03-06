@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ClientGameState } from './clientgamestate';
 import * as swal from 'sweetalert2';
+import * as fileSaver from 'file-saver';
 
 import { Subject } from 'rxjs/Subject';
 
@@ -65,6 +66,10 @@ export class ColyseusGameService {
   get character() {
     return this.clientGameState.currentPlayer;
   }
+
+  public isLoggingCombat: boolean;
+  public combatLogMax: number;
+  public combatLogs: any[] = [];
 
   constructor(
     private localStorage: LocalStorageService
@@ -283,13 +288,22 @@ export class ColyseusGameService {
     this.clientGameState.playerBoxes$.next({ newPlayer: this.character, oldPlayer: hasOldCharacter });
   }
 
-  private logMessage({ name, message, subClass, grouping, dirFrom }: any) {
+  private logMessage({ name, message, subClass, grouping, dirFrom, extraData }: any) {
     const isZero = (includes(message, '[0') && includes(message, 'damage]'))
                 || (includes(message, 'misses!'))
                 || (includes(message, 'blocked by your'));
     if(isZero && this.localStorage.retrieve('suppressZeroDamage')) return;
     if(!grouping || grouping === 'spell') grouping = 'always';
     this.clientGameState.addLogMessage({ name, message, subClass, grouping, dirFrom });
+
+    if(this.isLoggingCombat && extraData) {
+      const { uuid, weapon, damage, monsterName, type } = extraData;
+      this.combatLogs.push([uuid, monsterName, weapon, type, damage]);
+
+      if(this.combatLogs.length > this.combatLogMax) {
+        this.combatLogs.unshift();
+      }
+    }
 
     if(!this.overrideNoSfx) {
       this.sfx$.next(subClass);
@@ -335,6 +349,25 @@ export class ColyseusGameService {
     if(action === 'remove_gitem')   return this.removeGroundItem(other.x, other.y, other.item);
     if(action === 'sync_ground')    return this.syncGroundItems(other.ground);
     if(action === 'take_tour')      return this.takeTour();
+    if(action === 'combat_log')     return this.updateCombatLogRecordingSettings(other);
+  }
+
+  private updateCombatLogRecordingSettings({ start, logCount, stop, download }: any = {}) {
+    if(start) {
+      this.combatLogMax = logCount;
+      this.combatLogs = [];
+      this.isLoggingCombat = true;
+    }
+
+    if(stop) {
+      this.isLoggingCombat = false;
+    }
+
+    if(download) {
+      const csv = this.combatLogs.join('\n');
+      const csvBlob = new Blob([csv], { type: 'text/plain;charset=utf-8' });
+      fileSaver.saveAs(csvBlob, `combat-log-${Date.now()}.csv`);
+    }
   }
 
   private takeTour() {

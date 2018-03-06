@@ -372,6 +372,13 @@ export class GameWorld extends Room<GameState> {
     this.sendClientLogMessage(client, messageData, rootCharacter);
   }
 
+  public updateLogSettings(player: Player, logSettings) {
+    const client = this.findClient(player);
+    if(!client) return;
+
+    this.send(client, { action: 'combat_log', ...logSettings });
+  }
+
   sendClientLogMessage(client, messageData, rootCharacter?: Character) {
 
     let overMessage = messageData;
@@ -379,16 +386,18 @@ export class GameWorld extends Room<GameState> {
     let overClass = '';
     let overTarget = '';
     let overDir = '';
+    let overExtraData = null;
 
     let grouping = 'always';
 
     if(isObject(messageData)) {
-      const { message, name, subClass, target, dirFrom } = messageData;
+      const { message, name, subClass, target, dirFrom, extraData } = messageData;
       overMessage = message;
       overName = name;
       overClass = subClass;
       overTarget = target;
       overDir = dirFrom;
+      overExtraData = extraData;
 
       if(overClass) {
         grouping = overClass.split(' ')[0];
@@ -404,6 +413,7 @@ export class GameWorld extends Room<GameState> {
       subClass: overClass,
       target: overTarget,
       dirFrom: overDir,
+      extraData: overExtraData,
       grouping
     });
   }
