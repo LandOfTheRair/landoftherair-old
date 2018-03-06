@@ -619,7 +619,11 @@ export class CombatHelper {
     }
 
     damage = attacked.isNaturalResource ? 0 : damage;
-    const totalDamage = this.dealDamage(attacker, attacked, { damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg, attackerWeapon: { itemClass: effect.name, owner: effect.effectInfo.caster } });
+    const totalDamage = this.dealDamage(attacker, attacked, {
+      damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg, attackerWeapon: {
+        itemClass: effect.name, owner: effect.effectInfo.caster
+      }
+    });
 
     if(attacker && !attacker.isPlayer() && effect) {
       (<NPC>attacker).registerAttackDamage(attacked, effect.name, totalDamage);
