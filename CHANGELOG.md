@@ -1,6 +1,14 @@
 # Changelog
 
-## vv0.1.1 (06/03/2018)
+## v0.1.2 (06/03/2018)
+
+#### Enhancements
+
+- [#540](https://github.com/LandOfTheRair/landoftherair/issues/540) add source text name to all DoTs and buffs (at the bottom of the tooltip)
+
+---
+
+## v0.1.1 (06/03/2018)
 
 #### Enhancements
 
@@ -8,7 +16,7 @@
 
 ---
 
-## v0.1.0 (06/03/2018)
+## 0.1.0 (06/03/2018)
 
 #### Enhancements
 
@@ -216,7 +224,7 @@
 
 ---
 
-## v0.0.1 (22/12/2017)
+## 0.0.1 (22/12/2017)
 
 #### Enhancements
 
