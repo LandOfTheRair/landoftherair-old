@@ -1,4 +1,4 @@
-prefix: "v"
+prefix: ""
 ignoreIssuesWith:
   - duplicate
   - wontfix
