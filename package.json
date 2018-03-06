@@ -16,6 +16,9 @@
     "prebuild:prod": "node scripts/prebuild-client",
     "build:prod": "ng build --environment=prod --vendor-chunk=true --output-hashing=all --sourcemaps --extract-css --extract-licenses",
     "deploy": "npm run test:local && npm run prod:server && npm run prod:deploy",
+    "deploy:patch": "npm run deploy && npm run bump:patch",
+    "deploy:minor": "npm run deploy && npm run bump:minor",
+    "deploy:major": "npm run deploy && npm run bump:major",
     "prod:server": "node scripts/compile",
     "prod:deploy": "node scripts/deploy",
     "prod:start": "node dist/server/index",
@@ -44,6 +47,7 @@
     "bump:patch": "npm version patch -m \"Patch release %s\"",
     "bump:minor": "npm version minor -m \"Minor release %s\"",
     "bump:major": "npm version major -m \"Major release %s\"",
+    "postversion": "git push && git push --tags && npm run changelog && git commit CHANGELOG.md -m \"Update changelog.\" && git push",
     "changelog": "gren changelog --generate --tags=all -u landoftherair -r landoftherair -o -D issues"
   },
   "repository": {
