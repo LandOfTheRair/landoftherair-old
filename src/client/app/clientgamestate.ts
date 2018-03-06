@@ -1,5 +1,5 @@
 
-import { extend, merge, differenceBy, compact, values, filter, reject, size } from 'lodash';
+import { extend, merge, differenceBy, compact, values, filter, reject, size, get } from 'lodash';
 
 import { Player } from '../../shared/models/player';
 
@@ -249,7 +249,7 @@ export class ClientGameState {
 
     if(change.operation === 'replace' && effectRef[effectIndex]) {
       effectRef[effectIndex][attr] = effect;
-      if(effectRef[effectIndex].duration <= 0 && !effectRef[effectIndex].effectInfo.isPermanent) {
+      if(effectRef[effectIndex].duration <= 0 && !get(effectRef[effectIndex], 'effectInfo.isPermanent', false)) {
         effectRef[effectIndex] = null;
         this.playerHash[playerIndex].effects = compact(effectRef);
       }
