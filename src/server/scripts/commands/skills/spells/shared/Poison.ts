@@ -23,7 +23,7 @@ export class Poison extends Skill {
   range = () => 5;
 
   canUse(user: Character, target: Character) {
-    return !target.hasEffect('Poison');
+    return super.canUse(user, target) && !target.hasEffect('Poison');
   }
 
   execute(user: Character, { gameState, args, effect }) {

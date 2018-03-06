@@ -84,6 +84,7 @@ export const tick = (npc: NPC, canMove: boolean) => {
       }
 
       chosenSkill = CommandExecutor.checkIfCanUseSkill(skill, npc, highestAgro);
+      console.log('checking', skill, chosenSkill);
     });
 
     // use a skill that can hit the target

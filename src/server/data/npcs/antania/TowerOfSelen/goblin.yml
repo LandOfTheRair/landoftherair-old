@@ -96,6 +96,10 @@
     min: 9050
     max: 9250
 
+  mp:
+    min: 500
+    max: 700
+
   giveXp:
     min: 6000
     max: 6500

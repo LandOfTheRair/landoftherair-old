@@ -23,7 +23,7 @@ export class Darkness extends Skill {
   range = () => 5;
 
   canUse(user: Character, target: Character) {
-    return !CharacterHelper.isInDarkness(target);
+    return super.canUse(user, target) && !CharacterHelper.isInDarkness(target);
   }
 
   execute(user: Character, { gameState, args, effect }) {
