@@ -18,7 +18,7 @@
 - name: Antanian Steffen Nodachi
   stats:
     offense: 3
-    accuracy: -5
+    accuracy: -4
   desc: "a large steel nodachi"
   tier: 2
   type: Twohanded
@@ -32,7 +32,7 @@
 - name: Tower Greatsword Weak
   stats:
     offense: 6
-    accuracy: -9
+    accuracy: -5
   desc: "a large riyan greatsword"
   tier: 3
   type: Twohanded
@@ -46,7 +46,7 @@
 - name: Tower Greatsword Strong
   stats:
     offense: 6
-    accuracy: -9
+    accuracy: -5
   desc: "a large riyan greatsword"
   tier: 4
   type: Twohanded
@@ -56,3 +56,17 @@
 
   requirements:
     level: 14
+
+- name: Ether Greatsword
+  desc: "a greatsword forged from ether"
+  tier: 5
+  stats:
+    accuracy: -6
+    offense: 8
+  type: Twohanded
+  value: 2341
+  sprite: 43
+  binds: true
+
+  requirements:
+    level: 15

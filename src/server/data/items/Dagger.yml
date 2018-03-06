@@ -49,7 +49,7 @@
 - name: Tower Dagger Weak
   desc: "a small dagger made of a riyan metal"
   stats:
-    accuracy: 15
+    accuracy: 7
   isSackable: true
   tier: 3
   returnsOnThrow: true
@@ -64,7 +64,7 @@
 - name: Tower Dagger Strong
   desc: "a small dagger made of a riyan metal"
   stats:
-    accuracy: 15
+    accuracy: 8
   isSackable: true
   tier: 4
   returnsOnThrow: true
@@ -75,3 +75,18 @@
 
   requirements:
     level: 14
+
+- name: Ether Dagger
+  desc: "a dagger forged from ether"
+  tier: 5
+  stats:
+    accuracy: 10
+  returnsOnThrow: true
+  offhand: true
+  type: Dagger
+  value: 2347
+  sprite: 42
+  binds: true
+
+  requirements:
+    level: 15

@@ -49,3 +49,18 @@
 
   requirements:
     level: 14
+
+- name: Ether Halberd
+  desc: "a halberd forged from ether"
+  tier: 5
+  stats:
+    armorClass: 3
+    weaponArmorClass: 3
+    offense: 4
+  type: Polearm
+  value: 2344
+  sprite: 44
+  binds: true
+
+  requirements:
+    level: 15

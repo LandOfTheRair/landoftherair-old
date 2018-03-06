@@ -45,3 +45,76 @@
   ingredients:
     - Antanian Longsword
     - Ether Scale (Refined)
+
+- item: Ether Axe
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Axe
+    - Ether Scale (Refined)
+
+- item: Ether Dagger
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Dagger
+    - Ether Scale (Refined)
+
+- item: Ether Greataxe
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Greataxe
+    - Ether Scale (Refined)
+
+- item: Ether Greatsword
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Greatsword
+    - Ether Scale (Refined)
+
+- item: Ether Halberd
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Halberd
+    - Ether Scale (Refined)
+
+- item: Ether Longbow
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Longbow
+    - Ether Scale (Refined)
+
+- item: Ether Mace
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Mace
+    - Ether Scale (Refined)
+
+- item: Ether Spear
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Antanian Spear
+    - Ether Scale (Refined)
+

@@ -25,3 +25,17 @@
   value: 385
   sprite: 52
   binds: true
+
+- name: Ether Axe
+  desc: "an axe forged from ether"
+  tier: 5
+  stats:
+    offense: 4
+    defense: 4
+  type: Axe
+  value: 2346
+  sprite: 41
+  binds: true
+
+  requirements:
+    level: 15

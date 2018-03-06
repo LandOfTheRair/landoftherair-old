@@ -22,13 +22,26 @@
   secondaryType: Twohanded
   desc: "a heavy, metal-tipped greataxe stained with the blood of the land"
   stats:
-    armorClass: 0
     accuracy: 2
     offense: 4
-    defense: 0
   tier: 3
   proneChance: 8
   binds: true
   tellsBind: true
   sprite: 301
   value: 2500
+
+- name: Ether Greataxe
+  desc: "a greataxe forged from ether"
+  tier: 5
+  stats:
+    accuracy: 4
+    offense: 6
+  type: Axe
+  secondaryType: Twohanded
+  value: 2349
+  sprite: 132
+  binds: true
+
+  requirements:
+    level: 15

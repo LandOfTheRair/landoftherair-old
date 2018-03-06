@@ -18,3 +18,14 @@
 
   requirements:
     level: 14
+
+- name: Ether Spear
+  desc: "a spear forged from ether"
+  tier: 5
+  type: Staff
+  value: 2376
+  sprite: 51
+  binds: true
+
+  requirements:
+    level: 15
