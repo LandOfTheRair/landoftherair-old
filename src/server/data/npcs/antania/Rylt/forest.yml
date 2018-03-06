@@ -3,7 +3,6 @@
 - npcId: Rylt Deer
   name: deer
   sprite: 205
-  alignment: Good
   allegiance: None
   hostility: OnHit
   stats: 3

@@ -1,7 +1,6 @@
 
 - npcId: Antanian Dolphin
   name: dolphin
-  alignment: Good
   allegiance: None
   hostility: OnHit
   sprite: 165
