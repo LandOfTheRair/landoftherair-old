@@ -44,7 +44,7 @@
     "bump:patch": "npm version patch -m \"Patch release %s\"",
     "bump:minor": "npm version minor -m \"Minor release %s\"",
     "bump:major": "npm version major -m \"Major release %s\"",
-    "changelog": "gh-change-gen --owner landoftherair --repo landoftherair --labels enhancement,bug"
+    "changelog": "gren changelog --generate --tags=all -u landoftherair -r landoftherair -o -D issues"
   },
   "repository": {
     "type": "git",
@@ -130,6 +130,7 @@
     "ava-ts": "^0.23.0",
     "codelyzer": "~2.0.0",
     "fs-extra": "^4.0.2",
+    "github-release-notes": "^0.15.0",
     "md5-file": "^3.2.3",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",

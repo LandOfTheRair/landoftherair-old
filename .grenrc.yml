@@ -1,0 +1,23 @@
+prefix: "v"
+ignoreIssuesWith:
+  - duplicate
+  - wontfix
+  - invalid
+  - help wanted
+  - question
+
+template:
+  issue: "- [{{text}}]({{url}}) {{name}}"
+
+groupBy:
+  Enhancements:
+    - enhancement
+
+  Balance Adjustments:
+    - game:balance
+
+  New Content:
+    - game:newcontent
+
+  Bug Fixes:
+    - bug
