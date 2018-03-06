@@ -1,5 +1,13 @@
 # Changelog
 
+## vv0.1.1 (06/03/2018)
+
+#### Enhancements
+
+- [#538](https://github.com/LandOfTheRair/landoftherair/issues/538) Add a full tier of ether weapons
+
+---
+
 ## v0.1.0 (06/03/2018)
 
 #### Enhancements
