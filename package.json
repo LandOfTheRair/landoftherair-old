@@ -47,7 +47,7 @@
     "bump:patch": "npm version patch -m \"Patch release %s\"",
     "bump:minor": "npm version minor -m \"Minor release %s\"",
     "bump:major": "npm version major -m \"Major release %s\"",
-    "postversion": "git push && git push --tags && npm run changelog && git commit CHANGELOG.md -m \"Update changelog.\" && git push",
+    "postversion": "git push --follow-tags && npm run changelog && git commit CHANGELOG.md -m \"Update changelog.\" && git push",
     "changelog": "gren changelog --generate --tags=all -u landoftherair -r landoftherair -o -D issues"
   },
   "repository": {
