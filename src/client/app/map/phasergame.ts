@@ -698,13 +698,6 @@ export class Game {
 
   create() {
 
-    this.g.game.renderer.setTexturePriority([
-      cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'),
-      cacheKey(this.clientGameState.mapName, 'tileset', 'Walls'),
-      'Creatures',
-      'Items'
-    ]);
-
     bgms.forEach(bgm => {
       this.bgms[bgm] = this.g.add.audio(`bgm-${bgm}`);
     });
