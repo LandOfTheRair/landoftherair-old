@@ -14,14 +14,16 @@ import { findIndex } from 'lodash';
 })
 export class MacroBarsComponent implements OnInit {
 
-  public selectedMacro;
-
   public macroArray = Array(10).fill(null).map((x, i) => i);
+
+  public get selectedMacro(): string {
+    return this.macroService.currentlySelectedInGameMacro;
+  }
 
   constructor(private colyseusGame: ColyseusGameService, public macroService: MacroService) { }
 
   ngOnInit() {
-    this.selectedMacro = this.macroService.retrieveForCharacter('selectedMacro');
+    this.macroService.loadSelectedMacroForCurrentPlayer();
     this.createDefaultMacros();
   }
 
@@ -59,8 +61,7 @@ export class MacroBarsComponent implements OnInit {
   }
 
   public setSelectedMacro(macro) {
-    this.selectedMacro = macro;
-    this.macroService.storeForCharacter('selectedMacro', this.selectedMacro);
+    this.macroService.currentlySelectedInGameMacro = macro;
   }
 
   public operateOnMacro(macro: Macro) {

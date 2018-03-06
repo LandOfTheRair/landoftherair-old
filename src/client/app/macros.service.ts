@@ -68,6 +68,17 @@ export class MacroService {
 
   private shouldIgnoreKeybinds: Function;
 
+  private currentInGameSelectedMacro: string;
+
+  public get currentlySelectedInGameMacro(): string {
+    return this.currentInGameSelectedMacro;
+  }
+
+  public set currentlySelectedInGameMacro(macroName: string) {
+    this.currentInGameSelectedMacro = macroName;
+    this.storeForCharacter('selectedMacro', macroName);
+  }
+
   public set ignoreFunction(func: Function) {
     if(this.shouldIgnoreKeybinds) return;
     this.shouldIgnoreKeybinds = func;
@@ -75,6 +86,10 @@ export class MacroService {
 
   constructor(private localStorage: LocalStorageService, private colyseusGame: ColyseusGameService) {
     this.watchGameObservables();
+  }
+
+  public loadSelectedMacroForCurrentPlayer() {
+    this.currentlySelectedInGameMacro = this.retrieveForCharacter('selectedMacro');
   }
 
   private watchGameObservables() {
@@ -135,6 +150,10 @@ export class MacroService {
 
       if(macro.autoActivate) {
         this.colyseusGame.sendCommandString(macroText);
+
+      } else if(macro.lockActivation) {
+        this.currentInGameSelectedMacro = macro.name;
+
       } else {
         this.colyseusGame.currentCommand = macroText;
 
@@ -165,6 +184,7 @@ export class MacroService {
   private watchActiveMacro() {
     this.currentlySelectedMacro = this.retrieveForCharacter('selectedMacro');
     if(this.macroSubscription) this.macroSubscription.unsubscribe();
+
     this.macroSubscription = this.observeForCharacter('selectedMacro')
       .subscribe(macro => {
         this.currentlySelectedMacro = macro;
