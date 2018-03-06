@@ -65,6 +65,7 @@ class NPCLoader {
 
   static assignReputations(npc: NPC) {
     npc.allegianceReputation = npc.allegianceReputation || {};
+
     if(size(npc.allegianceReputation) > 0) return;
 
     const antiReps = {
@@ -79,7 +80,7 @@ class NPCLoader {
       'NaturalResource': ['Enemy']
     };
 
-    antiReps[npc.allegiance].forEach(antiRep => npc.allegianceReputation[antiRep] = -1);
+    antiReps[npc.allegiance].forEach(antiRep => npc.allegianceReputation[antiRep] = -101);
   }
 
   static skillXPFromLevel(level: number) {

@@ -59,6 +59,7 @@
 - npcId: Rylt Guard
   name: guard
   allegiance: 'None'
+  hostility: 'Faction'
   stats: 30
   level: 20
   baseClass: Warrior
@@ -69,7 +70,7 @@
     mace: 10
 
   allegianceReputation:
-    Enemy: -1
+    Enemy: -101
 
   skillOnKill: 5
 

@@ -2,6 +2,7 @@
 - npcId: Tower Town Guard
   name: guard
   allegiance: 'None'
+  hostility: 'Faction'
   sprite: 625
   baseClass: Warrior
   stats: 13
@@ -9,7 +10,7 @@
   level: 15
 
   allegianceReputation:
-    Enemy: -1
+    Enemy: -101
 
   skillOnKill: 30
 
