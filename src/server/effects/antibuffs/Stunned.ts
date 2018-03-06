@@ -17,6 +17,7 @@ export class Stunned extends SpellEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
+    this.flagCasterName(caster.name);
 
     if(target.hasEffect('RecentlyStunned') || target.hasEffect('Stunned')) {
       return this.effectMessage(caster, `${target.name} resisted your stun!`);

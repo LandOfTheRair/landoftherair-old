@@ -23,6 +23,7 @@ export class BarFire extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
+    this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 100 * caster.calcSkillLevel(this.skillFlag(caster));
     this.updateDurationBasedOnTraits(caster);

@@ -37,6 +37,7 @@ export class Disease extends SpellEffect {
     this.duration = this.duration || +dice.roll(`${totalPotency}d4`);
 
     this.effectInfo = { damage, caster: caster.uuid };
+    this.flagCasterName(caster.name);
     target.applyEffect(this);
     this.effectMessage(caster, `You diseased ${target.name}!`);
   }

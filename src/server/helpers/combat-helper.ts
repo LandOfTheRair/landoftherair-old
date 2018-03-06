@@ -669,7 +669,7 @@ export class CombatHelper {
   static dealDamage(
     attacker: Character,
     defender: Character,
-    { damage, damageClass, attackerDamageMessage, defenderDamageMessage, attackerWeapon }
+    { damage, damageClass, attackerDamageMessage, defenderDamageMessage, attackerWeapon }: any
   ): number {
 
     if(defender.isDead() || (<any>defender).hostility === 'Never') return;

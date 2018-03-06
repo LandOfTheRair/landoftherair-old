@@ -19,6 +19,7 @@ export class Autoheal extends SpellEffect {
 
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
+    this.flagCasterName(caster.name);
 
     if(caster !== target) {
       this.effectMessage(caster, `You cast autoheal on ${target.name}!`);

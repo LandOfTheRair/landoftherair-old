@@ -45,6 +45,10 @@ import { startCase } from 'lodash';
         <ng-template #effectTooltipTemplate>
           <strong>{{ effectName }}</strong><br>
           {{ effect.iconData.tooltipDesc || '' }}
+          <div *ngIf="effect.effectInfo && effect.effectInfo.casterName">
+            <br>
+            <strong>Source:</strong> {{ effect.effectInfo.casterName }}
+          </div>
         </ng-template>
       </div>
   `

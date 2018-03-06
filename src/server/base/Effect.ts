@@ -14,6 +14,7 @@ export const Maxes = {
 class EffectInfo {
   damage?: number;
   caster: string;
+  casterName?: string;
   isPermanent?: boolean;
   isFrozen?: boolean;
   canManuallyUnapply?: boolean;
@@ -31,7 +32,7 @@ export class Effect {
     return this.potency;
   }
 
-  effectInfo: EffectInfo = { caster: '' };
+  effectInfo: EffectInfo = { caster: '', casterName: '' };
   casterRef: any;
 
   public shouldNotShowMessage;
@@ -47,7 +48,12 @@ export class Effect {
 
   protected flagPermanent(casterUUID: string) {
     this.duration = -1;
-    this.effectInfo = { isPermanent: true, caster: casterUUID };
+    this.effectInfo.isPermanent = true;
+    this.effectInfo.caster = casterUUID;
+  }
+
+  protected flagCasterName(casterName: string) {
+    this.effectInfo.casterName = casterName;
   }
 
   protected flagUnapply() {

@@ -18,6 +18,7 @@ export class ShadowMeld extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
+    this.flagCasterName(caster.name);
 
     this.duration = 2 * caster.calcSkillLevel(SkillClassNames.Thievery);
     this.updateDurationBasedOnTraits(caster);
