@@ -356,11 +356,11 @@
   sprite: 590
   alignment: Good
   baseClass: Warrior
-  stats: 15
+  stats: 13
   skillLevels:
-    Mace: 5
-    Onehanded: 5
-    Twohanded: 5
+    Mace: 3
+    Onehanded: 3
+    Twohanded: 3
 
   level: 13
 
