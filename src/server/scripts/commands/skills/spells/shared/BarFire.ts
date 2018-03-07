@@ -19,8 +19,8 @@ export class BarFire extends Skill {
   public name = ['barfire', 'cast barfire'];
   public format = 'Target';
 
-  mpCost = () => 20;
-  range = () => 5;
+  mpCost() { return 20; }
+  range(attacker: Character) { return 5; }
 
   execute(user: Character, { gameState, args, effect }) {
 

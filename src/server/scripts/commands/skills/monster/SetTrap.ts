@@ -9,7 +9,6 @@ export class SetTrap extends Skill {
 
   name = 'settrap';
   execute() {}
-  range = () => 0;
 
   canUse(user: Character, target: Character) {
     const trap = find(user.sack.allItems, { itemClass: 'Trap' });

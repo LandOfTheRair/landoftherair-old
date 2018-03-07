@@ -1,13 +1,12 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { Player } from '../../../shared/models/player';
 
 export class Succor extends SpellEffect {
 
   maxSkillForSkillGain = 7;
-  skillFlag = (caster) => SkillClassNames.Restoration;
 
   async cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -18,7 +17,7 @@ export class Succor extends SpellEffect {
 
     if(caster.rightHand) return caster.sendClientMessage('You must empty your right hand!');
 
-    const skill = caster.calcSkillLevel(SkillClassNames.Restoration);
+    const skill = this.potency;
 
     caster.sendClientMessage('You channel your memories of this place into a ball of magical energy.');
 

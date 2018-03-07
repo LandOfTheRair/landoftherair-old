@@ -19,8 +19,8 @@ export class Autoheal extends Skill {
   public name = ['autoheal', 'cast autoheal'];
   public format = 'Target';
 
-  mpCost = () => 50;
-  range = () => 5;
+  mpCost() { return 50; }
+  range(attacker: Character) { return 5; }
 
   execute(user: Character, { gameState, args, effect }) {
 

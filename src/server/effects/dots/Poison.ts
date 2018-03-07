@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { CombatHelper } from '../../helpers/combat-helper';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
@@ -15,10 +15,6 @@ export class Poison extends SpellEffect {
 
   maxSkillForSkillGain = 7;
   skillMults = [[0, 1], [11, 1.25], [21, 2.5]];
-  skillFlag = (caster) => {
-    if(caster.baseClass === 'Healer')   return SkillClassNames.Restoration;
-    return SkillClassNames.Thievery;
-  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 

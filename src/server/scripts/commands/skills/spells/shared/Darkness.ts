@@ -19,8 +19,8 @@ export class Darkness extends Skill {
 
   public name = ['darkness', 'cast darkness'];
 
-  mpCost = () => 25;
-  range = () => 5;
+  mpCost() { return 25; }
+  range(attacker: Character) { return 5; }
 
   canUse(user: Character, target: Character) {
     return super.canUse(user, target) && !CharacterHelper.isInDarkness(target);

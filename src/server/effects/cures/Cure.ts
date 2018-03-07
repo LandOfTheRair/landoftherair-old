@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
 
@@ -8,7 +8,6 @@ export class Cure extends SpellEffect {
 
   maxSkillForSkillGain = 7;
   skillMults = [[0, 4], [11, 6], [21, 10]];
-  skillFlag = () => SkillClassNames.Restoration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

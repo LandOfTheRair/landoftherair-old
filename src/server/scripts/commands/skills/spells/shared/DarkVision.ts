@@ -18,8 +18,8 @@ export class DarkVision extends Skill {
 
   public name = ['darkvision', 'cast darkvision'];
 
-  mpCost = () => 25;
-  range = () => 5;
+  mpCost() { return 25; }
+  range(attacker: Character) { return 5; }
 
   execute(user: Character, { gameState, args, effect }) {
 

@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 export class MagicShield extends SpellEffect {
@@ -14,14 +14,13 @@ export class MagicShield extends SpellEffect {
 
   maxSkillForSkillGain = 15;
   potencyMultiplier = 3;
-  skillFlag = () => SkillClassNames.Conjuration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
     this.flagCasterName(caster.name);
 
-    if(!this.duration) this.duration = 30 * caster.calcSkillLevel(SkillClassNames.Conjuration);
+    if(!this.duration) this.duration = 30 * this.potency;
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {

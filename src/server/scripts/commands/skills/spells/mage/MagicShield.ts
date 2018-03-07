@@ -19,8 +19,8 @@ export class MagicShield extends Skill {
   public name = ['magicshield', 'cast magicshield'];
   public format = 'Target';
 
-  mpCost = () => 100;
-  range = () => 5;
+  mpCost() { return 100; }
+  range(attacker: Character) { return 5; }
 
   execute(user: Character, { gameState, args, effect }) {
 

@@ -18,8 +18,7 @@ export class Transmute extends Skill {
 
   public name = ['transmute', 'cast transmute'];
 
-  mpCost = () => 15;
-  range = () => 0;
+  mpCost() { return 15; }
 
   execute(user: Character, { gameState, args, effect }) {
     if(!this.tryToConsumeMP(user, effect)) return;

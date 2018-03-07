@@ -19,8 +19,8 @@ export class Regen extends Skill {
   public name = ['regen', 'cast regen'];
   public format = 'Target';
 
-  mpCost = () => 30;
-  range = () => 5;
+  mpCost() { return 30; }
+  range(attacker: Character) { return 5; }
 
   execute(user: Character, { gameState, args, effect }) {
 

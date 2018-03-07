@@ -19,8 +19,7 @@ export class Revive extends Skill {
   public name = ['revive', 'cast revive'];
   public format = '';
 
-  mpCost = () => 50;
-  range = () => 0;
+  mpCost() { return 50; }
 
   execute(user: Character, { gameState, args, effect }) {
     if(!this.tryToConsumeMP(user, effect)) return;

@@ -19,8 +19,7 @@ export class FindFamiliar extends Skill {
   public name = ['findfamiliar', 'cast findfamiliar'];
   public format = '[AnimalType]';
 
-  mpCost = () => 100;
-  range = () => 0;
+  mpCost() { return 100; }
 
   execute(user: Character, { gameState, args, effect }) {
     if(!this.tryToConsumeMP(user, effect)) return;

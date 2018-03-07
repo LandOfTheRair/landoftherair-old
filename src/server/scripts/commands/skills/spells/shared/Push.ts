@@ -18,8 +18,8 @@ export class Push extends Skill {
 
   public name = ['push', 'cast push'];
 
-  mpCost = () => 25;
-  range = () => 5;
+  mpCost() { return 25; }
+  range(attacker: Character) { return 5; }
 
   canUse(user: Character, target: Character) {
     if(!super.canUse(user, target)) return false;

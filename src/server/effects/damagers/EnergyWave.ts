@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
 
@@ -8,7 +8,6 @@ export class EnergyWave extends SpellEffect {
 
   maxSkillForSkillGain = 11;
   skillMults = [[0, 0.7], [11, 1.6], [21, 2.7]];
-  skillFlag = () => SkillClassNames.Conjuration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

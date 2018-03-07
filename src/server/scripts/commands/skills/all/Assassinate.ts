@@ -24,7 +24,7 @@ export class Assassinate extends Skill {
 
   requiresLearn = false;
 
-  range = (attacker: Character) => {
+  range(attacker: Character) {
     const weapon = attacker.rightHand;
     if(!weapon) return 0;
 

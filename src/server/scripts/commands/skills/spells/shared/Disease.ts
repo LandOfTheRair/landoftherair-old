@@ -19,8 +19,8 @@ export class Disease extends Skill {
   public name = ['disease', 'cast disease'];
   public format = 'Target';
 
-  mpCost = () => 30;
-  range = () => 5;
+  mpCost() { return 30; }
+  range(attacker: Character) { return 5; }
 
   canUse(user: Character, target: Character) {
     return super.canUse(user, target) && !target.hasEffect('Disease');

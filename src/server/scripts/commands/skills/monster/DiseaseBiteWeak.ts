@@ -12,7 +12,6 @@ export class DiseaseBiteWeak extends Skill {
 
   name = 'diseasebiteweak';
   execute() {}
-  range = () => 0;
 
   canUse(user: Character, target: Character) {
     return user.distFrom(target) <= this.range() && !target.hasEffect('Disease');

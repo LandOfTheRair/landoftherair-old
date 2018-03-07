@@ -19,8 +19,8 @@ export class Cure extends Skill {
   public name = ['cure', 'cast cure'];
   public format = 'Target';
 
-  mpCost = () => 5;
-  range = () => 5;
+  mpCost() { return 5; }
+  range(attacker: Character) { return 5; }
 
   execute(user: Character, { gameState, args, effect }) {
 

@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { CombatHelper } from '../../helpers/combat-helper';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
@@ -15,10 +15,6 @@ export class Disease extends SpellEffect {
 
   maxSkillForSkillGain = 13;
   skillMults = [[0, 2], [11, 3], [21, 4]];
-  skillFlag = (caster) => {
-    if(caster.baseClass === 'Healer')   return SkillClassNames.Restoration;
-    return SkillClassNames.Thievery;
-  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 

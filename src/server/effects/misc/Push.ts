@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { random, clamp } from 'lodash';
 import { Stunned } from '../antibuffs/Stunned';
@@ -8,10 +8,6 @@ import { Stunned } from '../antibuffs/Stunned';
 export class Push extends SpellEffect {
 
   maxSkillForSkillGain = 15;
-  skillFlag = (caster) => {
-    if(caster.baseClass === 'Healer') return SkillClassNames.Restoration;
-      return SkillClassNames.Conjuration;
-  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     if((<any>target).hostility === 'Never') return caster.sendClientMessage('How rude.');

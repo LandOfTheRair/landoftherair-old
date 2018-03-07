@@ -18,8 +18,7 @@ export class ShadowMeld extends Skill {
 
   public name = ['shadowmeld', 'cast shadowmeld'];
 
-  mpCost = () => 50;
-  range = () => 0;
+  mpCost() { return 50; }
 
   execute(user: Character, { gameState, args, effect }) {
 

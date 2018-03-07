@@ -18,8 +18,8 @@ export class TrueSight extends Skill {
 
   public name = ['truesight', 'cast truesight'];
 
-  mpCost = () => 25;
-  range = () => 5;
+  mpCost() { return 25; }
+  range(attacker: Character) { return 5; }
 
   execute(user: Character, { gameState, args, effect }) {
 

@@ -1,16 +1,11 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 export class Transmute extends SpellEffect {
 
   maxSkillForSkillGain = 11;
-
-  skillFlag = (caster) => {
-    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
-    return SkillClassNames.Thievery;
-  }
 
   async cast(caster: Character, target: Character, skillRef?: Skill) {
 

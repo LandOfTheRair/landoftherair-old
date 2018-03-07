@@ -14,7 +14,10 @@ export class Hidden extends SpellEffect {
   };
 
   maxSkillForSkillGain = 5;
-  skillFlag = () => SkillClassNames.Thievery;
+
+  skillFlag() {
+    return SkillClassNames.Thievery;
+  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

@@ -19,8 +19,8 @@ export class Poison extends Skill {
   public name = ['poison', 'cast poison'];
   public format = 'Target';
 
-  mpCost = () => 15;
-  range = () => 5;
+  mpCost() { return 15; }
+  range(attacker: Character) { return 5; }
 
   canUse(user: Character, target: Character) {
     return super.canUse(user, target) && !target.hasEffect('Poison');

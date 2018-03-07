@@ -2,7 +2,7 @@
 import { last, includes } from 'lodash';
 
 import { ChanneledSpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { MessageHelper } from '../../helpers/message-helper';
 import { GenderHelper } from '../../helpers/gender-helper';
@@ -48,7 +48,6 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
   private animalStr: string;
 
   maxSkillForSkillGain = 17;
-  skillFlag = () => SkillClassNames.Conjuration;
 
   cast(caster: Character, target: Character, skillRef?: Skill, animalStr?: string) {
     super.cast(caster, target, skillRef);

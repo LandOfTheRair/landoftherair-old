@@ -12,7 +12,6 @@ export class ChillBiteMedium extends Skill {
 
   name = 'chillbitemedium';
   execute() {}
-  range = () => 0;
 
   canUse(user: Character, target: Character) {
     return user.distFrom(target) <= this.range() && !target.hasEffect('Frosted');

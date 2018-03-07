@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 export class TrueSight extends SpellEffect {
@@ -12,11 +12,6 @@ export class TrueSight extends SpellEffect {
   };
 
   maxSkillForSkillGain = 7;
-  skillFlag = (caster) => {
-    if(caster.baseClass === 'Healer') return SkillClassNames.Restoration;
-    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
-    return SkillClassNames.Thievery;
-  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     if(caster.baseClass === 'Thief') target = caster;
@@ -28,10 +23,9 @@ export class TrueSight extends SpellEffect {
       this.casterEffectMessage(caster, `You cast TrueSight on ${target.name}.`);
     }
 
-    const usedSkill = this.skillFlag(caster);
     const durationMult = caster.baseClass === 'Healer' ? 30 : 15;
-    this.potency = caster.calcSkillLevel(usedSkill) * (caster.baseClass === 'Healer' ? 2 : 1);
-    if(!this.duration) this.duration = caster.calcSkillLevel(usedSkill) * durationMult;
+    this.potency *= (caster.baseClass === 'Healer' ? 2 : 1);
+    if(!this.duration) this.duration = this.potency * durationMult;
     this.updateDurationBasedOnTraits(caster);
     target.applyEffect(this);
   }

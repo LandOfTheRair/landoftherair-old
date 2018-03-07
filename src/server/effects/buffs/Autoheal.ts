@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { CombatHelper } from '../../helpers/combat-helper';
 import { Skill } from '../../base/Skill';
 
@@ -13,7 +13,6 @@ export class Autoheal extends SpellEffect {
   };
 
   maxSkillForSkillGain = 15;
-  skillFlag = (caster) => SkillClassNames.Restoration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
@@ -27,7 +26,7 @@ export class Autoheal extends SpellEffect {
 
     const wisCheck = this.getCoreStat(caster);
 
-    this.duration = this.duration || wisCheck * caster.calcSkillLevel(SkillClassNames.Restoration);
+    this.duration = this.duration || wisCheck * this.potency;
     this.potency = 30;
 
     this.effectInfo = { damage: 0, caster: caster.uuid };

@@ -19,8 +19,7 @@ export class Succor extends Skill {
   public name = ['succor', 'cast succor'];
   public format = '';
 
-  mpCost = () => 25;
-  range = () => 0;
+  mpCost() { return 25; }
 
   execute(user: Character, { gameState, args, effect }) {
     if(!this.tryToConsumeMP(user, effect)) return;

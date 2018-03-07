@@ -27,7 +27,7 @@ export class Charge extends Skill {
     return this.range(user) + user.getTotalStat('move') >= user.distFrom(target);
   }
 
-  range = (attacker: Character) => {
+  range(attacker: Character) {
     const weapon = attacker.rightHand;
     if(!weapon) return 0;
 

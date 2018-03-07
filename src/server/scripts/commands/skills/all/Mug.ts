@@ -23,7 +23,7 @@ export class Mug extends Skill {
 
   requiresLearn = false;
 
-  range = (attacker: Character) => {
+  range(attacker: Character) {
     const weapon = attacker.rightHand;
     if(!weapon) return 0;
 

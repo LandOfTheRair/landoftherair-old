@@ -19,8 +19,8 @@ export class BarNecro extends Skill {
   public name = ['barnecro', 'cast barnecro'];
   public format = 'Target';
 
-  mpCost = () => 40;
-  range = () => 5;
+  mpCost() { return 40; }
+  range(attacker: Character) { return 5; }
 
   execute(user: Character, { gameState, args, effect }) {
 

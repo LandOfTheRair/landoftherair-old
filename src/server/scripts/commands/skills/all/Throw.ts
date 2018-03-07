@@ -22,7 +22,7 @@ export class Throw extends Skill {
 
   requiresLearn = false;
 
-  range = (attacker: Character) => {
+  range(attacker: Character) {
     return 5;
   }
 

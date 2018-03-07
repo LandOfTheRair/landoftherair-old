@@ -1,12 +1,11 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 export class Augury extends SpellEffect {
 
   maxSkillForSkillGain = 15;
-  skillFlag = (caster) => SkillClassNames.Restoration;
 
   private distanceToMeasurement(dist: number): string {
     if(dist <= 0) return 'on top of you';

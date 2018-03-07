@@ -1,5 +1,5 @@
 
-import { Character } from '../../shared/models/character';
+import { Character, SkillClassNames } from '../../shared/models/character';
 import { extend, includes, get } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/combat-helper';
@@ -86,8 +86,13 @@ export class SpellEffect extends Effect {
   potencyMultiplier = 0;
 
   maxSkillForSkillGain = 0;
-  skillFlag: Function;
   skillMults: Array<number[]>;
+
+  skillFlag(caster) {
+    if(caster.baseClass === 'Healer') return SkillClassNames.Restoration;
+    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
+    return SkillClassNames.Thievery;
+  }
 
   casterEffectMessage(char: Character, message: string) {
     super.effectMessage(char, { message, subClass: 'spell buff give' });

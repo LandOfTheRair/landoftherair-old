@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 export class DarkVision extends SpellEffect {
@@ -12,10 +12,6 @@ export class DarkVision extends SpellEffect {
   };
 
   maxSkillForSkillGain = 13;
-  skillFlag = (caster) => {
-    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
-    return SkillClassNames.Thievery;
-  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     if(caster.baseClass === 'Thief') target = caster;
@@ -27,9 +23,8 @@ export class DarkVision extends SpellEffect {
       this.casterEffectMessage(caster, `You cast DarkVision on ${target.name}.`);
     }
 
-    const usedSkill = this.skillFlag(caster);
     const durationMult = caster.baseClass === 'Mage' ? 100 : 50;
-    if(!this.duration) this.duration = caster.calcSkillLevel(usedSkill) * durationMult;
+    if(!this.duration) this.duration = this.potency * durationMult;
     this.updateDurationBasedOnTraits(caster);
     target.applyEffect(this);
 

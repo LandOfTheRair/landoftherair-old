@@ -9,9 +9,9 @@ export abstract class Skill extends Command {
 
   requiresLearn = true;
 
-  mpCost = (caster?: Character) => 0;
-  hpCost = (caster?: Character) => 0;
-  range = (caster?: Character) => 0;
+  mpCost(caster?: Character) { return 0; };
+  hpCost(caster?: Character) { return 0; };
+  range(caster?: Character) { return 0; };
 
   modifiedMPCost(caster: Character, baseCost: number): number {
 

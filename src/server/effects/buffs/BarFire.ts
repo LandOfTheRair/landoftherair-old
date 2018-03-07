@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 export class BarFire extends SpellEffect {
@@ -14,11 +14,6 @@ export class BarFire extends SpellEffect {
 
   maxSkillForSkillGain = 7;
   potencyMultiplier = 20;
-  skillFlag = (caster) => {
-    if(caster.baseClass === 'Healer') return SkillClassNames.Restoration;
-    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
-    return SkillClassNames.Thievery;
-  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -27,7 +22,7 @@ export class BarFire extends SpellEffect {
 
     if(caster.baseClass === 'Mage') this.potencyMultiplier *= 2;
 
-    if(!this.duration) this.duration = 100 * caster.calcSkillLevel(this.skillFlag(caster));
+    if(!this.duration) this.duration = 100 * this.potency;
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {

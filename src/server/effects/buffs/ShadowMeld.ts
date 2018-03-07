@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 export class ShadowMeld extends SpellEffect {
@@ -13,14 +13,13 @@ export class ShadowMeld extends SpellEffect {
   };
 
   maxSkillForSkillGain = 15;
-  skillFlag = () => SkillClassNames.Thievery;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
     this.flagCasterName(caster.name);
 
-    this.duration = caster.calcSkillLevel(SkillClassNames.Thievery);
+    this.duration = this.potency;
     this.updateDurationBasedOnTraits(caster);
     this.potency = caster.stealthLevel();
     caster.applyEffect(this);

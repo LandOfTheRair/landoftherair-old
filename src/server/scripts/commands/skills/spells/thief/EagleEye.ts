@@ -18,8 +18,7 @@ export class EagleEye extends Skill {
 
   public name = ['eagleeye', 'cast eagleeye'];
 
-  mpCost = () => 50;
-  range = () => 0;
+  mpCost() { return 50; }
 
   execute(user: Character, { gameState, args, effect }) {
 

@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 export class BarNecro extends SpellEffect {
@@ -14,14 +14,13 @@ export class BarNecro extends SpellEffect {
 
   maxSkillForSkillGain = 7;
   potencyMultiplier = 20;
-  skillFlag = () => SkillClassNames.Restoration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
     this.flagCasterName(caster.name);
 
-    if(!this.duration) this.duration = 100 * caster.calcSkillLevel(SkillClassNames.Restoration);
+    if(!this.duration) this.duration = 100 * this.potency;
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {

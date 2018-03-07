@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 export class EagleEye extends SpellEffect {
@@ -12,7 +12,6 @@ export class EagleEye extends SpellEffect {
   };
 
   maxSkillForSkillGain = 15;
-  skillFlag = () => SkillClassNames.Thievery;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

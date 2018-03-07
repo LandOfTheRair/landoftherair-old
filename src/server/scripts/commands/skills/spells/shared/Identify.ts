@@ -18,8 +18,7 @@ export class Identify extends Skill {
 
   public name = ['identify', 'cast identify'];
 
-  mpCost = () => 15;
-  range = () => 0;
+  mpCost() { return 15; }
 
   execute(user: Character, { gameState, args, effect }) {
     if(!user.rightHand) return user.sendClientMessage('You need to have something in your right hand to identify it.');

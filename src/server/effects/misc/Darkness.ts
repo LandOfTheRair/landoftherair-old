@@ -1,15 +1,11 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 export class Darkness extends SpellEffect {
 
   maxSkillForSkillGain = 11;
-  skillFlag = (caster) => {
-    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
-    return SkillClassNames.Thievery;
-  }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

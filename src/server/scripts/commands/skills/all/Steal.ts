@@ -30,8 +30,6 @@ export class Steal extends Skill {
       && user.distFrom(target) === 0;
   }
 
-  range = () => 0;
-
   execute(user: Character, { gameState, args }) {
     if(!args) return false;
 

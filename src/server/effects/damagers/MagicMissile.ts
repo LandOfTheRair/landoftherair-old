@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
 
@@ -8,7 +8,6 @@ export class MagicMissile extends SpellEffect {
 
   maxSkillForSkillGain = 30;
   skillMults = [[0, 1], [11, 2.5], [21, 3]];
-  skillFlag = () => SkillClassNames.Conjuration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

@@ -19,8 +19,8 @@ export class Antidote extends Skill {
   public name = ['antidote', 'cast antidote'];
   public format = 'Target';
 
-  mpCost = () => 10;
-  range = () => 5;
+  mpCost() { return 10; }
+  range(attacker: Character) { return 5; }
 
   execute(user: Character, { gameState, args, effect }) {
 

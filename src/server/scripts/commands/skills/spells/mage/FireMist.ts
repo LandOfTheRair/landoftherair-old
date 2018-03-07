@@ -19,8 +19,8 @@ export class FireMist extends Skill {
   public name = ['firemist', 'cast firemist'];
   public format = 'Target';
 
-  mpCost = () => 35;
-  range = () => 5;
+  mpCost() { return 35; }
+  range(attacker: Character) { return 5; }
 
   execute(user: Character, { gameState, args, effect }) {
     const target = this.getTarget(user, args, true);
