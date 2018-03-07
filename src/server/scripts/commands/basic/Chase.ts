@@ -21,7 +21,7 @@ export class Chase extends Skill {
 
   requiresLearn = false;
 
-  range = (attacker: Character) => 4;
+  range(attacker: Character) { return 4; };
 
   execute(user: Character, { args }) {
     if(!args) return false;
