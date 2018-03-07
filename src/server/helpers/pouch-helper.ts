@@ -18,4 +18,9 @@ export class PouchHelper {
       { multi: true }
     );
   }
+
+  static async loadPouchForUsername(username: string) {
+    const data = await DB.$characterPouches.findOne({ username });
+    return data ? data.pouch : null;
+  }
 }

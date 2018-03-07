@@ -19,6 +19,7 @@ import { AllSilverPurchases, SilverBuyTiers, SubscriptionHelper } from '../helpe
 import { BonusArbiter } from '../helpers/bonus-arbiter';
 import { MessageHelper } from '../helpers/message-helper';
 import { DiscordHelper } from '../helpers/discord-helper';
+import { PouchHelper } from '../helpers/pouch-helper';
 
 const CHAT_SPAM_DELAY = 1000;
 const MAX_SPAM_MESSAGES = 5;
@@ -260,6 +261,8 @@ export class Lobby extends Room<LobbyState> {
     });
 
     await CharacterCreator.giveCharacterBasicGearAndSkills(player, this.itemCreator);
+
+    player.pouch = await PouchHelper.loadPouchForUsername(client.username);
 
     const savePlayer = player.toSaveObject();
 
