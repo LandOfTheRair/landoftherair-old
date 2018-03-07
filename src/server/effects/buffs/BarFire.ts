@@ -25,6 +25,8 @@ export class BarFire extends SpellEffect {
     this.flagUnapply();
     this.flagCasterName(caster.name);
 
+    if(caster.baseClass === 'Mage') this.potencyMultiplier *= 2;
+
     if(!this.duration) this.duration = 100 * caster.calcSkillLevel(this.skillFlag(caster));
     this.updateDurationBasedOnTraits(caster);
 
