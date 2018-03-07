@@ -11,6 +11,7 @@
   skillOnKill: 25
 
   otherStats:
+    con: 15
     accuracy: 10
     perception: 35
 
@@ -83,7 +84,9 @@
   skillOnKill: 25
 
   otherStats:
+    con: 15
     accuracy: 10
+    stealth: 50
     perception: 55
 
   gold:
@@ -180,6 +183,7 @@
   skillOnKill: 45
 
   otherStats:
+    con: 15
     accuracy: 5
     perception: 55
 

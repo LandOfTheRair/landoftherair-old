@@ -12,6 +12,7 @@
   skillOnKill: 30
 
   otherStats:
+    con: 15
     perception: 45
 
   gold:
@@ -73,6 +74,7 @@
   skillOnKill: 30
 
   otherStats:
+    con: 15
     perception: 45
 
   gold:
@@ -147,6 +149,7 @@
   skillOnKill: 30
 
   otherStats:
+    con: 15
     perception: 45
 
   gold:
@@ -211,6 +214,7 @@
   skillOnKill: 35
 
   otherStats:
+    con: 25
     perception: 55
 
   gold:

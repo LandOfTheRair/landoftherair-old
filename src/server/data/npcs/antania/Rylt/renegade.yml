@@ -321,6 +321,7 @@
   level: 7
 
   otherStats:
+    con: 20
     perception: 75
 
   skillOnKill: 50

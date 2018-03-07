@@ -12,6 +12,7 @@
   skillOnKill: 5
 
   otherStats:
+    con: 7
     perception: 35
 
   gold:
@@ -59,7 +60,7 @@
   sprite: 545
   alignment: Evil
   baseClass: Mage
-  stats: 20
+  stats: 15
   skillLevels:
     Staff: 1
     Wand: 2
@@ -149,7 +150,7 @@
     int: 15
     dex: 10
     str: 7
-    con: 10
+    con: 27
     agi: 10
     luk: 5
   level: 15
@@ -235,6 +236,7 @@
   level: 7
 
   otherStats:
+    con: 15
     perception: 80
 
   skillOnKill: 25

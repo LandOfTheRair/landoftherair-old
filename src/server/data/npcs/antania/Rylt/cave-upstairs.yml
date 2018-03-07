@@ -9,7 +9,7 @@
     int: 20
     dex: 10
     str: 20
-    con: 10
+    con: 33
     agi: 10
     luk: 10
     wil: 15
@@ -92,6 +92,7 @@
   level: 15
 
   otherStats:
+    con: 33
     perception: 170
 
   skillOnKill: 25

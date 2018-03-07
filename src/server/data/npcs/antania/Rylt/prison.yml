@@ -18,6 +18,7 @@
   skillOnKill: 2
 
   otherStats:
+    con: 7
     perception: 15
 
   gold:
@@ -122,6 +123,7 @@
     polearm: 3
 
   otherStats:
+    con: 7
     perception: 25
 
   skillOnKill: 20
@@ -373,7 +375,7 @@
     - Steal
 
   otherStats:
-    stealth: 20
+    stealth: 30
     perception: 40
 
   skillLevels:
@@ -579,6 +581,7 @@
   skillLevels: 2
 
   otherStats:
+    con: 20
     perception: 150
 
   level: 13

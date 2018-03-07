@@ -4,6 +4,8 @@
   sprite: 310
   alignment: Evil
   stats: 9
+  otherStats:
+    con: 11
   skillLevels:
     Martial: 5
     Conjuration: 7
@@ -57,6 +59,8 @@
   sprite: 310
   alignment: Evil
   stats: 13
+  otherStats:
+    con: 17
   skillLevels:
     Conjuration: 8
     Martial: 5

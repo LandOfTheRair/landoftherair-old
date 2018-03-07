@@ -7,6 +7,7 @@
   baseClass: Mage
   stats: 7
   otherStats:
+    con: 13
     int: 15
   skillLevels:
     Staff: 2
@@ -95,6 +96,8 @@
   alignment: Evil
   baseClass: Thief
   stats: 7
+  otherStats:
+    con: 13
   skillLevels:
     Dagger: 2
     Ranged: 2
@@ -185,6 +188,8 @@
   alignment: Good
   baseClass: Warrior
   stats: 7
+  otherStats:
+    con: 15
   skillLevels:
     Mace: 2
     Onehanded: 2
@@ -278,6 +283,7 @@
   baseClass: Healer
   stats: 7
   otherStats:
+    con: 13
     wis: 15
   skillLevels:
     Mace: 2
@@ -361,6 +367,8 @@
   hostility: Always
   sprite: 155
   stats: 6
+  otherStats:
+    con: 11
   skillLevels:
     Mace: 2
     Onehanded: 2
@@ -453,6 +461,7 @@
   baseClass: Mage
   stats: 10
   otherStats:
+    con: 15
     int: 17
   skillLevels:
     Staff: 3
@@ -594,6 +603,8 @@
   alignment: Evil
   baseClass: Thief
   stats: 10
+  otherStats:
+    con: 15
   skillLevels:
     Dagger: 3
     Ranged: 3
@@ -751,6 +762,8 @@
   sprite: 590
   baseClass: Warrior
   stats: 7
+  otherStats:
+    con: 15
   skillLevels:
     Mace: 2
     Onehanded: 2
@@ -882,6 +895,7 @@
   sprite: 550
   stats: 10
   otherStats:
+    con: 15
     wis: 17
   skillLevels:
     Mace: 3
@@ -1005,6 +1019,8 @@
   hostility: Always
   sprite: 480
   stats: 10
+  otherStats:
+    con: 25
   skillLevels: 7
 
   level: 10
@@ -1083,6 +1099,8 @@
   hostility: Always
   sprite: 480
   stats: 10
+  otherStats:
+    con: 30
   skillLevels: 3
 
   level: 15
