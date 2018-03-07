@@ -7,7 +7,7 @@ import * as dice from 'dice.js';
 export class EnergyWave extends SpellEffect {
 
   maxSkillForSkillGain = 11;
-  skillMults = [[0, 1.5], [11, 2.5], [21, 3.5]];
+  skillMults = [[0, 0.7], [11, 1.6], [21, 2.7]];
   skillFlag = () => SkillClassNames.Conjuration;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
