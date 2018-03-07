@@ -74,7 +74,7 @@ export const tick = (npc: NPC, canMove: boolean) => {
     attemptSkills.forEach(skill => {
       if(chosenSkill) return;
 
-      if(npc.getAttackDamage(highestAgro, skill) === 0) {
+      if(npc.getAttackDamage(highestAgro, skill) === 0 && npc.getZeroTimes(highestAgro, skill) >= 5) {
         skill = includes(npc.usableSkills, 'Charge') ? 'Charge' : 'Attack';
       }
 

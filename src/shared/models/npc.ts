@@ -231,10 +231,23 @@ export class NPC extends Character {
 
   registerAttackDamage(char: Character, attack: string, damage: number) {
     this.$$targetDamageDone = this.$$targetDamageDone || {};
-    set(this, ['$$targetDamageDone', char.uuid, attack], damage);
+    set(this, ['$$targetDamageDone', char.uuid, attack, 'lastDamage'], damage);
+
+    this.registerZeroTimes(char, attack, damage > 0);
   }
 
   getAttackDamage(char: Character, attack: string) {
-    return get(this, ['$$targetDamageDone', char.uuid, attack], -1);
+    return get(this, ['$$targetDamageDone', char.uuid, attack, 'lastDamage'], -1);
+  }
+
+  registerZeroTimes(char: Character, attack: string, overrideValue?: boolean) {
+    this.$$targetDamageDone = this.$$targetDamageDone || {};
+    const times = get(this, ['$$targetDamageDone', char.uuid, attack, 'zeroTimes'], 0);
+    set(this, ['$$targetDamageDone', char.uuid, attack, 'zeroTimes'], overrideValue ? 0 : times + 1);
+  }
+
+  getZeroTimes(char: Character, attack: string) {
+    this.$$targetDamageDone = this.$$targetDamageDone || {};
+    return get(this, ['$$targetDamageDone', char.uuid, attack, 'zeroTimes'], 0);
   }
 }
