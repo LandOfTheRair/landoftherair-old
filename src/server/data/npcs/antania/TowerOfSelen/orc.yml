@@ -137,6 +137,7 @@
 - npcId: Tower Orc Mage
   name: orc caster
   hostility: Always
+  baseClass: Mage
   sprite: 70
   alignment: Evil
   stats: 6

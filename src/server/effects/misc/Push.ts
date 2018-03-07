@@ -30,9 +30,9 @@ export class Push extends SpellEffect {
     const baseStat = caster.getTotalStat(userStat);
     const targetStat = target.getTotalStat(resistStat);
 
-    const successChance = clamp(baseStat - targetStat + 4, 0, 8) * 12.5;
+    const successChance = clamp((baseStat - targetStat) + 4, 0, 8) * 12.5;
 
-    if(random(0, 100) < successChance) {
+    if(random(0, 100) > successChance) {
       if(!predetermined) caster.sendClientMessage(`${target.name} resisted your push!`);
       return;
     }
