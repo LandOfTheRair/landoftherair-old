@@ -7,6 +7,7 @@ import * as Classes from '../classes';
 export class CharacterHelper {
 
   static canHide(char: Character): boolean|string {
+    if(char.hasEffect('Revealed')) return 'You cannot hide right now!';
     if(char.hasEffect('Hidden')) return 'You are already hidden!';
     if(char.hasEffect('ShadowMeld')) return 'You are already melded with the shadows!';
 

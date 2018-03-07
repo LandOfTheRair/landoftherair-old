@@ -28,6 +28,7 @@ export class ShadowMeld extends Skill {
 
     if(!this.tryToConsumeMP(user, effect)) return;
 
+    if(user.hasEffect('Revealed')) return user.sendClientMessage('You cannot hide right now!');
     if(user.hasEffect('Hidden')) return user.sendClientMessage('You cannot meld with shadows you are hidden in!');
 
     this.use(user, user);

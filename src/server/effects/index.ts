@@ -73,6 +73,7 @@ export * from './misc/Identify';
 export * from './misc/Succor';
 export * from './misc/Transmute';
 export * from './misc/Push';
+export * from './misc/Revealed';
 
 export * from './stances/ParryStance';
 export * from './stances/RageStance';

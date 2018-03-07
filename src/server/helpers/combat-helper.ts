@@ -178,7 +178,7 @@ export class CombatHelper {
   }
 
   private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
-    const { isThrow, throwHand, isMug, attackRange, isOffhand } = opts;
+    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand } = opts;
     let { isBackstab } = opts;
 
     if(!isBackstab) {
@@ -498,14 +498,30 @@ export class CombatHelper {
       damage = Math.floor(damage / offhandDivisor);
     }
 
+    const thiefSkill = attacker.calcSkillLevel(SkillClassNames.Thievery);
+
+    if(isAssassinate) {
+      let didSucceed = true;
+      const skillAvg = (thiefSkill + attackerScope.skill) / 2;
+
+      if(skillAvg <= defender.getTotalStat('con')) didSucceed = false;
+      if(attackerScope.realLevel < defenderScope.realLevel + 7) didSucceed = false;
+      if((<any>defender).$$shouldStrip) didSucceed = false;
+
+      if(!didSucceed) {
+        isBackstab = true;
+      } else {
+        damage = defender.hp.maximum;
+      }
+    }
+
     if(isBackstab) {
-      const thiefSkill = attacker.calcSkillLevel(SkillClassNames.Thievery);
-      const bonusMultiplier = attacker.baseClass === 'Thief' ? 1 + Math.floor(thiefSkill / 8) : 1.5;
+      let bonusMultiplier = attacker.baseClass === 'Thief' ? 1 + Math.floor(thiefSkill / 8) : 1.5;
+      if(isAssassinate) bonusMultiplier *= 3;
       damage = Math.floor(damage * bonusMultiplier);
     }
 
     if(isMug) {
-      const thiefSkill = attacker.calcSkillLevel(SkillClassNames.Thievery);
       const reductionFactor = 1 - Math.max(
         0.5,
         0.9 - (attacker.baseClass === 'Thief' ? Math.floor(thiefSkill / 5) / 10 : 0)
