@@ -86,7 +86,7 @@ export class TesterHelper {
     player.losePartyPoints(9999);
     player.gainPartyPoints(1000);
 
-    const allTraits = player.allTraitLevels;
+    const allTraits = player.allTraitLevels || {};
     Object.keys(allTraits).forEach(key => {
       player.decreaseTraitLevel(key, 50);
     });
