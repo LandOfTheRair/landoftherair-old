@@ -721,6 +721,9 @@ export class CombatHelper {
       }
     }
 
+    const baseDamageWithModifiers = damage;
+    let mitigatedPercent = 0;
+
     // if not healing, check for damage resist
     if(!isHeal) {
       const damageReduced = defender.getTotalStat(<StatName>`${damageClass}Resist`);
@@ -732,6 +735,8 @@ export class CombatHelper {
       }
 
       if(damage < 0) damage = 0;
+
+      mitigatedPercent = (damage / baseDamageWithModifiers);
 
       if(damageReduced > 0 && damage !== 0 && attacker && attacker !== defender) {
         attacker.sendClientMessage({
@@ -770,7 +775,7 @@ export class CombatHelper {
       }
     }
 
-    this.doElementalDebuffing(attacker, defender, damageClass, damage, { isRanged, isAttackerVisible });
+    this.doElementalDebuffing(attacker, defender, damageClass, damage, { isRanged, isAttackerVisible, mitigatedPercent });
 
     if(defender.isNaturalResource) damage = baseDamage;
 
@@ -892,7 +897,7 @@ export class CombatHelper {
   }
 
   private static doElementalDebuffing(attacker: Character, defender: Character, damageClass: DamageType, damage: number,
-                                      { isRanged, isAttackerVisible }: any = {}) {
+                                      { isRanged, isAttackerVisible, mitigatedPercent }: any = {}) {
     if(!attacker || damage <= 0) return;
 
     const [debuff, activeDebuff, recentDebuff] = this.getElementalDebuff(damageClass, { attacker, defender, isRanged, isAttackerVisible });
@@ -902,7 +907,10 @@ export class CombatHelper {
 
     let targetEffect = defender.hasEffect(debuff);
     const bonusIncrease = this.elementalBoostValue(attacker, debuff);
-    const debuffIncrease = 30 + bonusIncrease;
+    let debuffIncrease = 30 + bonusIncrease;
+
+    mitigatedPercent = mitigatedPercent || 0;
+    debuffIncrease = Math.floor(debuffIncrease * mitigatedPercent);
 
     if(!targetEffect) {
       const buildupMax = 100 + (10 * defender.level);

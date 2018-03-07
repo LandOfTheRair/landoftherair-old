@@ -249,7 +249,7 @@ export class BuildupEffect extends SpellEffect {
   public buildupCur = 0;
   public buildupMax = 100;
   public buildupDamage = 0;
-  public decayRate = 10;
+  public decayRate = 5;
 
   effectTick(char: Character) {
     if(this.buildupCur >= this.buildupMax) {
