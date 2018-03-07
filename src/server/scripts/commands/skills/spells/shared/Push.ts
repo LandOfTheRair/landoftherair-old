@@ -21,6 +21,17 @@ export class Push extends Skill {
   mpCost = () => 25;
   range = () => 5;
 
+  canUse(user: Character, target: Character) {
+    if(!super.canUse(user, target)) return false;
+
+    const userStat = user.baseClass === 'Healer' ? 'wis' : 'int';
+
+    const baseStat = user.getTotalStat(userStat);
+    const targetStat = target.getTotalStat('wil');
+    
+    return (targetStat - baseStat) + 4 > 0;
+  }
+
   execute(user: Character, { gameState, args, effect }) {
 
     const target = this.getTarget(user, args, true);
