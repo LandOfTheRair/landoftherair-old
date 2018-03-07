@@ -221,6 +221,14 @@ export class Lobby extends Room<LobbyState> {
 
   private async createCharacter(client, { charSlot, character }) {
     character = CharacterCreator.getCustomizedCharacter(character);
+    if(!character.name) {
+      this.send(client, {
+        error: 'invalid_char_name',
+        prettyErrorName: 'Invalid Character Name',
+        prettyErrorDesc: 'That character name is not valid.'
+      });
+      return;
+    }
 
     const account = this.state.findAccount(client.userId);
     if(!account) return;

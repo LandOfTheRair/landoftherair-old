@@ -4,6 +4,7 @@ import { Player } from '../../shared/models/player';
 import { ItemCreator } from './item-creator';
 import { SkillClassNames } from '../../shared/models/character';
 import { SkillHelper } from './skill-helper';
+import { MessageHelper } from './message-helper';
 
 export class CharacterCreator {
 
@@ -61,6 +62,8 @@ export class CharacterCreator {
     char.sex = sex;
 
     if(!name) name = '';
+
+    if(MessageHelper.hasAnyPossibleProfanity(name)) name = '';
 
     if(!includes(this.validAllegiances(), char.allegiance)) {
       char.allegiance = 'None';
