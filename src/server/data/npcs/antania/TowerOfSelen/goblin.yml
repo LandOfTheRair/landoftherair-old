@@ -77,14 +77,13 @@
   baseClass: Thief
   sprite: 80
   alignment: Evil
-  stats: 9
+  stats: 8
   skillLevels: 2
   level: 14
 
   skillOnKill: 25
 
   otherStats:
-    dex: 12
     accuracy: 10
     perception: 55
 
