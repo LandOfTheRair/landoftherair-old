@@ -750,7 +750,7 @@
   hostility: Always
   sprite: 590
   baseClass: Warrior
-  stats: 10
+  stats: 7
   skillLevels:
     Mace: 2
     Onehanded: 2
