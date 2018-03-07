@@ -11,7 +11,6 @@
   skillOnKill: 25
 
   otherStats:
-    dex: 10
     accuracy: 10
     perception: 35
 
@@ -174,14 +173,14 @@
   baseClass: Warrior
   sprite: 90
   alignment: Evil
-  stats: 8
+  stats: 7
   skillLevels: 2
-  level: 15
+  level: 14
 
   skillOnKill: 45
 
   otherStats:
-    accuracy: 10
+    accuracy: 5
     perception: 55
 
   gold:
