@@ -28,7 +28,7 @@ export class Push extends Skill {
 
     const baseStat = user.getTotalStat(userStat);
     const targetStat = target.getTotalStat('wil');
-    
+
     return (targetStat - baseStat) + 4 > 0;
   }
 
