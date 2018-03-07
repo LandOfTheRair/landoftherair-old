@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.1.3 (07/03/2018)
+
+#### Enhancements
+
+- [#554](https://github.com/LandOfTheRair/landoftherair/issues/554) Clean up range() and skillFlag() functions to not be = function
+
+#### Balance Adjustments
+
+- [#558](https://github.com/LandOfTheRair/landoftherair/issues/558) Nerf energy blast
+- [#557](https://github.com/LandOfTheRair/landoftherair/issues/557) Add trait scroll for ShadowRanger
+- [#556](https://github.com/LandOfTheRair/landoftherair/issues/556) Proportionalize elemental buildup with damage % blocked
+- [#555](https://github.com/LandOfTheRair/landoftherair/issues/555) Improve barfire/barice for mages
+- [#552](https://github.com/LandOfTheRair/landoftherair/issues/552) Tighten up range for Greatsword type (and other 2h) slightly
+- [#551](https://github.com/LandOfTheRair/landoftherair/issues/551) Lower dex of goblins so they shoot for less damage
+- [#550](https://github.com/LandOfTheRair/landoftherair/issues/550) Give ranata another healing skill
+- [#549](https://github.com/LandOfTheRair/landoftherair/issues/549) Adjust npc casting to check multiple times (5) before declaring a target is not hittable with a spell
+- [#547](https://github.com/LandOfTheRair/landoftherair/issues/547) Push should not be a choice for casting if it cannot work (check int/wis/will scores to precalculate this)
+- [#546](https://github.com/LandOfTheRair/landoftherair/issues/546) Nerf int of orc casters so they don't push as often 
+
+#### New Content
+
+- [#544](https://github.com/LandOfTheRair/landoftherair/issues/544) Thief ability: Assassinate (skill 13)
+- [#543](https://github.com/LandOfTheRair/landoftherair/issues/543) Thief ability: sneak attack (when hidden, plain attacks should fill up sneak attack gauge)
+
+#### Bug Fixes
+
+- [#545](https://github.com/LandOfTheRair/landoftherair/issues/545) RRing any character slot wipes the pouch
+
+---
+
 ## v0.1.2 (06/03/2018)
 
 #### Enhancements
@@ -20,7 +50,6 @@
 
 #### Enhancements
 
-- [#537](https://github.com/LandOfTheRair/landoftherair/issues/537) adjust metalworking so you can't forge an item higher level than you
 - [#536](https://github.com/LandOfTheRair/landoftherair/issues/536) combat log as csv
 - [#533](https://github.com/LandOfTheRair/landoftherair/issues/533) right click from ground -> sack
 - [#532](https://github.com/LandOfTheRair/landoftherair/issues/532) make ranged attacks (bow, throwing) do damage based off of dex instead of str
@@ -49,7 +78,6 @@
 - [#488](https://github.com/LandOfTheRair/landoftherair/issues/488) make trait, stat, skill, trade skill window minimizable
 - [#487](https://github.com/LandOfTheRair/landoftherair/issues/487) add quick open buttons on tagline window for belt, sack, pouch, equipment
 - [#486](https://github.com/LandOfTheRair/landoftherair/issues/486) add resiable lobby sizes, mirroring others
-- [#484](https://github.com/LandOfTheRair/landoftherair/issues/484) window.onbeforeunload - warn people when closing game
 - [#483](https://github.com/LandOfTheRair/landoftherair/issues/483) accounts designated as testers
 - [#482](https://github.com/LandOfTheRair/landoftherair/issues/482) add an option for "show friendly creatures first"
 - [#479](https://github.com/LandOfTheRair/landoftherair/issues/479) gm party join command
@@ -61,12 +89,8 @@
 - [#471](https://github.com/LandOfTheRair/landoftherair/issues/471) craft npcs should offer right click to send an alt keyword
 - [#470](https://github.com/LandOfTheRair/landoftherair/issues/470) add more info to DoTs
 - [#469](https://github.com/LandOfTheRair/landoftherair/issues/469) consistentize the trait popups
-- [#467](https://github.com/LandOfTheRair/landoftherair/issues/467) damage resist rating for armor
 - [#466](https://github.com/LandOfTheRair/landoftherair/issues/466) move asset spritesheets over to a new repo
-- [#465](https://github.com/LandOfTheRair/landoftherair/issues/465) Lower focus dps boost to 3%
-- [#463](https://github.com/LandOfTheRair/landoftherair/issues/463) Nerf crazed saraxa gear
 - [#462](https://github.com/LandOfTheRair/landoftherair/issues/462) Newbie guides for each class
-- [#461](https://github.com/LandOfTheRair/landoftherair/issues/461) increase hp regen of acolytes from 2 to 4% for crazed saraxa
 - [#459](https://github.com/LandOfTheRair/landoftherair/issues/459) cache bust assets
 - [#458](https://github.com/LandOfTheRair/landoftherair/issues/458) Metalworking
 - [#457](https://github.com/LandOfTheRair/landoftherair/issues/457) update #lobby with the number of people online in the title
@@ -78,17 +102,13 @@
 - [#449](https://github.com/LandOfTheRair/landoftherair/issues/449) make wands/totems cut spell casting cost
 - [#448](https://github.com/LandOfTheRair/landoftherair/issues/448) make xp bar sub lower bound so it doesnt start at half
 - [#446](https://github.com/LandOfTheRair/landoftherair/issues/446) View other player gear
-- [#445](https://github.com/LandOfTheRair/landoftherair/issues/445) Make damage roll boost owts only
 - [#443](https://github.com/LandOfTheRair/landoftherair/issues/443) Make main hand wands boost damage rolls for mage spells by their damage roll boost.
 - [#440](https://github.com/LandOfTheRair/landoftherair/issues/440) test to ensure no commands conflict
-- [#439](https://github.com/LandOfTheRair/landoftherair/issues/439) ~~unstuck
 - [#437](https://github.com/LandOfTheRair/landoftherair/issues/437) Adjust algorithm for item garbage collector
 - [#434](https://github.com/LandOfTheRair/landoftherair/issues/434) training dummy
-- [#433](https://github.com/LandOfTheRair/landoftherair/issues/433) nerf magic shield (mult 4 -> 3)
 - [#431](https://github.com/LandOfTheRair/landoftherair/issues/431) alchemist should tie bottles
 - [#429](https://github.com/LandOfTheRair/landoftherair/issues/429) pet level should match player level
 - [#428](https://github.com/LandOfTheRair/landoftherair/issues/428) clean up unused imports
-- [#427](https://github.com/LandOfTheRair/landoftherair/issues/427) make magiccutarmorclasses cut potency by half, instead of just damage
 - [#424](https://github.com/LandOfTheRair/landoftherair/issues/424) global player viewer
 - [#423](https://github.com/LandOfTheRair/landoftherair/issues/423) discord chat linked to lobby
 - [#413](https://github.com/LandOfTheRair/landoftherair/issues/413) make teleports check for item in either hand
@@ -113,7 +133,11 @@
 - [#370](https://github.com/LandOfTheRair/landoftherair/issues/370) give crazed/insane darkvision helms
 - [#369](https://github.com/LandOfTheRair/landoftherair/issues/369) maces/flails need to be toned down
 - [#366](https://github.com/LandOfTheRair/landoftherair/issues/366) add delay to sedgwicks explosion
+- [#362](https://github.com/LandOfTheRair/landoftherair/issues/362) Party points in a party of 2
 - [#360](https://github.com/LandOfTheRair/landoftherair/issues/360) hp seller Aychpos
+- [#357](https://github.com/LandOfTheRair/landoftherair/issues/357) disenchant should require item bound to the user
+- [#350](https://github.com/LandOfTheRair/landoftherair/issues/350) Nightly reset 
+- [#349](https://github.com/LandOfTheRair/landoftherair/issues/349) Make spawner actions more intelligent
 - [#337](https://github.com/LandOfTheRair/landoftherair/issues/337) macro substitutions
 - [#335](https://github.com/LandOfTheRair/landoftherair/issues/335) recipes that require certain alchemy level
 - [#334](https://github.com/LandOfTheRair/landoftherair/issues/334) add floors to rylt prison
@@ -125,6 +149,7 @@
 - [#326](https://github.com/LandOfTheRair/landoftherair/issues/326) add a diplomat npc to check faction values
 - [#325](https://github.com/LandOfTheRair/landoftherair/issues/325) change ivel quest to be just a deer
 - [#324](https://github.com/LandOfTheRair/landoftherair/issues/324) refactor getTraitLevel + modifiers
+- [#321](https://github.com/LandOfTheRair/landoftherair/issues/321) Periodically save ground (every few minutes)
 - [#318](https://github.com/LandOfTheRair/landoftherair/issues/318) Add quest that teaches alchemy
 - [#313](https://github.com/LandOfTheRair/landoftherair/issues/313) disable buttons when joining game
 - [#312](https://github.com/LandOfTheRair/landoftherair/issues/312) right click to use, add use, consume, eat, drink (aliases)
@@ -147,6 +172,27 @@
 - [#522](https://github.com/LandOfTheRair/landoftherair/issues/522) Give bows to saraxa acolytes
 - [#515](https://github.com/LandOfTheRair/landoftherair/issues/515) Adjust crazy saraxa encounter
 - [#513](https://github.com/LandOfTheRair/landoftherair/issues/513) Bump up ranata healer skill
+- [#467](https://github.com/LandOfTheRair/landoftherair/issues/467) damage resist rating for armor
+- [#465](https://github.com/LandOfTheRair/landoftherair/issues/465) Lower focus dps boost to 4%
+- [#463](https://github.com/LandOfTheRair/landoftherair/issues/463) Nerf crazed saraxa gear
+- [#461](https://github.com/LandOfTheRair/landoftherair/issues/461) increase hp regen of acolytes from 2 to 4% for crazed saraxa
+- [#445](https://github.com/LandOfTheRair/landoftherair/issues/445) Make damage roll boost owts only
+- [#433](https://github.com/LandOfTheRair/landoftherair/issues/433) nerf magic shield (mult 4 -> 3)
+- [#427](https://github.com/LandOfTheRair/landoftherair/issues/427) make magiccutarmorclasses cut potency by half, instead of just damage
+- [#363](https://github.com/LandOfTheRair/landoftherair/issues/363) Nerf Sedgwick
+- [#361](https://github.com/LandOfTheRair/landoftherair/issues/361) Buff cure roll (not mult)
+- [#356](https://github.com/LandOfTheRair/landoftherair/issues/356) Make npc box more performant
+- [#355](https://github.com/LandOfTheRair/landoftherair/issues/355) lower spawn in the dungeon
+- [#351](https://github.com/LandOfTheRair/landoftherair/issues/351) Change skill required for charge
+- [#348](https://github.com/LandOfTheRair/landoftherair/issues/348) Spawners should not respawn creatures if they're currently slow.
+- [#346](https://github.com/LandOfTheRair/landoftherair/issues/346) give casters a generic f/i prot gear item (maybe gloves)
+- [#344](https://github.com/LandOfTheRair/landoftherair/issues/344) healer buffs
+- [#343](https://github.com/LandOfTheRair/landoftherair/issues/343) Weaken crazed and buff insane xp
+- [#342](https://github.com/LandOfTheRair/landoftherair/issues/342) Possibly lower rare ring and pot spawns to a lower range
+- [#341](https://github.com/LandOfTheRair/landoftherair/issues/341) Make sure Bradley's con pots don't go to 15 (13 might be an ok number)
+- [#340](https://github.com/LandOfTheRair/landoftherair/issues/340) Clean up tonwin dp area so things don't Regen on it
+- [#338](https://github.com/LandOfTheRair/landoftherair/issues/338) Buff wand damage
+- [#336](https://github.com/LandOfTheRair/landoftherair/issues/336) Lower spawn in prisons
 
 #### Bug Fixes
 
@@ -202,19 +248,28 @@
 - [#392](https://github.com/LandOfTheRair/landoftherair/issues/392) warriors only should gain skill on hit
 - [#390](https://github.com/LandOfTheRair/landoftherair/issues/390) Bar water and bar fire potions work without water
 - [#383](https://github.com/LandOfTheRair/landoftherair/issues/383) Killing creatures drops no corpse
+- [#382](https://github.com/LandOfTheRair/landoftherair/issues/382) Dying in an instance might kick from party
 - [#380](https://github.com/LandOfTheRair/landoftherair/issues/380) optimize ground
 - [#377](https://github.com/LandOfTheRair/landoftherair/issues/377) dailies are still broken garbage
 - [#375](https://github.com/LandOfTheRair/landoftherair/issues/375) dailies are infinitely repeatable
+- [#371](https://github.com/LandOfTheRair/landoftherair/issues/371) party/dungeon bugs
 - [#368](https://github.com/LandOfTheRair/landoftherair/issues/368) add reset button for default macro group
 - [#367](https://github.com/LandOfTheRair/landoftherair/issues/367) fov doesnt change while dead
+- [#365](https://github.com/LandOfTheRair/landoftherair/issues/365) Direction doesn't reset when restoring or reviving 
+- [#364](https://github.com/LandOfTheRair/landoftherair/issues/364) Round all incoming damage and heals
+- [#359](https://github.com/LandOfTheRair/landoftherair/issues/359) Fix effect validation to or the two effect check conditions
 - [#358](https://github.com/LandOfTheRair/landoftherair/issues/358) sewerrat not registering kill - killed just using afflict
+- [#354](https://github.com/LandOfTheRair/landoftherair/issues/354) insanes should not fight each other
 - [#353](https://github.com/LandOfTheRair/landoftherair/issues/353) start creatures at max health before adding them to deepstream
+- [#352](https://github.com/LandOfTheRair/landoftherair/issues/352) Make sure tanning still works
 - [#345](https://github.com/LandOfTheRair/landoftherair/issues/345) bank input is broken too (similar to the lobby input)
+- [#339](https://github.com/LandOfTheRair/landoftherair/issues/339) Party agro
 - [#331](https://github.com/LandOfTheRair/landoftherair/issues/331) lobby text box does not keep focus
 - [#327](https://github.com/LandOfTheRair/landoftherair/issues/327) Can't see items in edge
 - [#323](https://github.com/LandOfTheRair/landoftherair/issues/323) Don't add darkness to wall tiles
 - [#322](https://github.com/LandOfTheRair/landoftherair/issues/322) New fov also reveals secret doors
 - [#320](https://github.com/LandOfTheRair/landoftherair/issues/320) lockers act weirdly when trying to add/deposit from a diff one from the one you're standing on
+- [#319](https://github.com/LandOfTheRair/landoftherair/issues/319) Game automatically levels you up but it shouldn't 
 - [#317](https://github.com/LandOfTheRair/landoftherair/issues/317) fov is not updated when dv is cast
 - [#316](https://github.com/LandOfTheRair/landoftherair/issues/316) losing party on map transition?
 - [#315](https://github.com/LandOfTheRair/landoftherair/issues/315) loaded ground items do not count as equipment?
@@ -239,12 +294,18 @@
 - [#292](https://github.com/LandOfTheRair/landoftherair/issues/292) add messages for target being stolen from
 - [#291](https://github.com/LandOfTheRair/landoftherair/issues/291) item rarity
 - [#288](https://github.com/LandOfTheRair/landoftherair/issues/288) add skill requirements to skill tooltips
+- [#287](https://github.com/LandOfTheRair/landoftherair/issues/287) Change item value based on encrusted gem
 - [#279](https://github.com/LandOfTheRair/landoftherair/issues/279) slow game loop down
 - [#272](https://github.com/LandOfTheRair/landoftherair/issues/272) text on top of a progress bar for hp/mp
+- [#267](https://github.com/LandOfTheRair/landoftherair/issues/267) Difficulty indicators
 - [#266](https://github.com/LandOfTheRair/landoftherair/issues/266) add traits for "above a threshold" and "below a threshold"
 - [#261](https://github.com/LandOfTheRair/landoftherair/issues/261) upgrade ng-drag-drop
+- [#258](https://github.com/LandOfTheRair/landoftherair/issues/258) move encrust to top right
 - [#256](https://github.com/LandOfTheRair/landoftherair/issues/256) dont send to client:
+- [#254](https://github.com/LandOfTheRair/landoftherair/issues/254) Add ping-pong debug command 
+- [#253](https://github.com/LandOfTheRair/landoftherair/issues/253) Add a debug command to count number of mobs
 - [#250](https://github.com/LandOfTheRair/landoftherair/issues/250) clear old npc, etc data when quitting game
+- [#249](https://github.com/LandOfTheRair/landoftherair/issues/249) Add chase command 
 - [#245](https://github.com/LandOfTheRair/landoftherair/issues/245) dropPool
 - [#244](https://github.com/LandOfTheRair/landoftherair/issues/244) analysis tools
 - [#243](https://github.com/LandOfTheRair/landoftherair/issues/243) requireQuest
@@ -253,12 +314,14 @@
 - [#238](https://github.com/LandOfTheRair/landoftherair/issues/238) remove .message strong letter spacing in non-fantasy
 - [#237](https://github.com/LandOfTheRair/landoftherair/issues/237) remove old auth0 keys from strorage
 - [#236](https://github.com/LandOfTheRair/landoftherair/issues/236) reduce drop rate if npc killed by npc (cut by 90%)
+- [#233](https://github.com/LandOfTheRair/landoftherair/issues/233) merchant in sewers that sells prot pots at a high fee
 - [#227](https://github.com/LandOfTheRair/landoftherair/issues/227) add option for light theme
 - [#226](https://github.com/LandOfTheRair/landoftherair/issues/226) add option to use roboto instead of fantasy
 - [#221](https://github.com/LandOfTheRair/landoftherair/issues/221) stop sending messages to people through walls
 - [#220](https://github.com/LandOfTheRair/landoftherair/issues/220) optimize data transferrence
 - [#219](https://github.com/LandOfTheRair/landoftherair/issues/219) dont strip succors
 - [#217](https://github.com/LandOfTheRair/landoftherair/issues/217) add succor 'region'
+- [#216](https://github.com/LandOfTheRair/landoftherair/issues/216) Add . Macro for repeat from macro use in addition to cmd
 - [#215](https://github.com/LandOfTheRair/landoftherair/issues/215) drink command, when potion slot empty, should put new potion in potion slot
 - [#214](https://github.com/LandOfTheRair/landoftherair/issues/214) right click to sell, locker if the window is open
 - [#212](https://github.com/LandOfTheRair/landoftherair/issues/212) fill in black areas on all sprites
@@ -269,6 +332,7 @@
 - [#205](https://github.com/LandOfTheRair/landoftherair/issues/205) add color difference between cmd and say mode
 - [#203](https://github.com/LandOfTheRair/landoftherair/issues/203) add permanent buff for "low con" warnings
 - [#201](https://github.com/LandOfTheRair/landoftherair/issues/201) drink from sack
+- [#199](https://github.com/LandOfTheRair/landoftherair/issues/199) give rep on kill
 - [#197](https://github.com/LandOfTheRair/landoftherair/issues/197) add new damage rolls property to item
 - [#196](https://github.com/LandOfTheRair/landoftherair/issues/196) party distance indicator modifications
 - [#195](https://github.com/LandOfTheRair/landoftherair/issues/195) sort creatures by distance
@@ -335,9 +399,16 @@
 - [#92](https://github.com/LandOfTheRair/landoftherair/issues/92) condition should affect AC
 - [#91](https://github.com/LandOfTheRair/landoftherair/issues/91) in game chat
 - [#86](https://github.com/LandOfTheRair/landoftherair/issues/86) throw bottles to dispense their effect on the target
+- [#84](https://github.com/LandOfTheRair/landoftherair/issues/84) add option for "suppress 0-damage attacks"
 - [#83](https://github.com/LandOfTheRair/landoftherair/issues/83) remove extraneous data from entities
+- [#80](https://github.com/LandOfTheRair/landoftherair/issues/80) rep quests
 - [#78](https://github.com/LandOfTheRair/landoftherair/issues/78) keep last selected slot selected on refresh
 - [#77](https://github.com/LandOfTheRair/landoftherair/issues/77) split macros per character
+
+#### Balance Adjustments
+
+- [#294](https://github.com/LandOfTheRair/landoftherair/issues/294) add some rylt townie spawners that walk randomly
+- [#275](https://github.com/LandOfTheRair/landoftherair/issues/275) add debuff for when dead
 
 #### Bug Fixes
 
@@ -352,10 +423,16 @@
 - [#280](https://github.com/LandOfTheRair/landoftherair/issues/280) not seeing corpses or any items on the ground sometimes (same with monsters - deepstream is broke)
 - [#278](https://github.com/LandOfTheRair/landoftherair/issues/278) a second player loading into the map doesnt load npcs
 - [#277](https://github.com/LandOfTheRair/landoftherair/issues/277) dead players still show sprite
+- [#276](https://github.com/LandOfTheRair/landoftherair/issues/276) restore doesn't work?
+- [#274](https://github.com/LandOfTheRair/landoftherair/issues/274) No way to remove macro from bar
+- [#273](https://github.com/LandOfTheRair/landoftherair/issues/273) Max size log window is broken 
 - [#271](https://github.com/LandOfTheRair/landoftherair/issues/271) ping is sometimes negative?
+- [#268](https://github.com/LandOfTheRair/landoftherair/issues/268) Floating boxes are broken (in chrome)
 - [#259](https://github.com/LandOfTheRair/landoftherair/issues/259) close/reenter - loading text in wrong spot
 - [#257](https://github.com/LandOfTheRair/landoftherair/issues/257) clear all inGame data when quitting the client(?)
 - [#251](https://github.com/LandOfTheRair/landoftherair/issues/251) sprite does not appear in some cases
+- [#248](https://github.com/LandOfTheRair/landoftherair/issues/248) Backstab and probably mug don't show you as moved 
+- [#246](https://github.com/LandOfTheRair/landoftherair/issues/246) Sell all doesn't work correctly
 - [#240](https://github.com/LandOfTheRair/landoftherair/issues/240) you hear direction is not right
 - [#235](https://github.com/LandOfTheRair/landoftherair/issues/235) active target bar doesnt disappear on death?
 - [#234](https://github.com/LandOfTheRair/landoftherair/issues/234) validate that truesight still works correctly
@@ -364,8 +441,10 @@
 - [#229](https://github.com/LandOfTheRair/landoftherair/issues/229) sprite does not reappear immediately when doing a map change
 - [#228](https://github.com/LandOfTheRair/landoftherair/issues/228) changing map causes macro wipes
 - [#224](https://github.com/LandOfTheRair/landoftherair/issues/224) items sometimes do not show up on the ground
+- [#223](https://github.com/LandOfTheRair/landoftherair/issues/223) You don't see anyone - right click sack to locker
 - [#222](https://github.com/LandOfTheRair/landoftherair/issues/222) spells can be cast through walls somehow (specifically darkness)
 - [#218](https://github.com/LandOfTheRair/landoftherair/issues/218) locker to sack, right click quickly, item dupe
+- [#213](https://github.com/LandOfTheRair/landoftherair/issues/213) clear floating boxes on logout
 - [#210](https://github.com/LandOfTheRair/landoftherair/issues/210) npc-opened doors dont render correctly?
 - [#209](https://github.com/LandOfTheRair/landoftherair/issues/209) periodically commands are sent twice
 - [#204](https://github.com/LandOfTheRair/landoftherair/issues/204) private messages are borked
@@ -375,6 +454,7 @@
 - [#191](https://github.com/LandOfTheRair/landoftherair/issues/191) tooltip placement currently inconsistent
 - [#188](https://github.com/LandOfTheRair/landoftherair/issues/188) investigate players not dropping corpses and player rotting not happening
 - [#187](https://github.com/LandOfTheRair/landoftherair/issues/187) npcs not casting spells?
+- [#186](https://github.com/LandOfTheRair/landoftherair/issues/186) Fix layering so stairs and doors are on top of loot
 - [#183](https://github.com/LandOfTheRair/landoftherair/issues/183) macro window needs all data
 - [#180](https://github.com/LandOfTheRair/landoftherair/issues/180) ground sub-items (bottom level) tooltips do not persist very long
 - [#179](https://github.com/LandOfTheRair/landoftherair/issues/179) store a timestamp for when bosses should respawn as well as their current tick
