@@ -126,6 +126,7 @@ class ItemLoader {
 
     if(includes(['Shortbow', 'Longbow'], item.itemClass)) {
       item.twoHanded = true;
+      item.secondaryType = 'Twohanded';
     }
 
     if(includes(['Crossbow', 'Shortbow', 'Longbow'], item.itemClass)) {
