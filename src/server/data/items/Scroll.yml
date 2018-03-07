@@ -181,6 +181,14 @@
     level: 1
   value: 1
 
+- name: Rune Scroll - Shadow Ranger I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Shadow Ranger I\""
+  trait:
+    name: ShadowRanger
+    level: 1
+  value: 1
+
 - name: Rune Scroll - Shadow Swap I
   sprite: 681
   desc: "a runic scroll imbued with the empowerment \"Shadow Swap I\""

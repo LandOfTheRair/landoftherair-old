@@ -147,6 +147,8 @@
       chance: 1
     - result: Rune Scroll - Shadow Daggers I
       chance: 1
+    - result: Rune Scroll - Shadow Ranger I
+      chance: 1
 
 - name: Antanian Daily Warrior Rune Scroll RNG Box
   desc: "a thin, blue gift box wrapped with a red bow. A card near it says \"WARRIOR\""
