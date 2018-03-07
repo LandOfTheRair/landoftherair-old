@@ -188,9 +188,9 @@
   skillLevels:
     Mace: 2
     Onehanded: 2
-    Twohanded: 2
+    Twohanded: 1
 
-  level: 8
+  level: 7
 
   allegianceReputation:
     Pirates: -101
