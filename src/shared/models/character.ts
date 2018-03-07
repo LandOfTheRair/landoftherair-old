@@ -903,12 +903,18 @@ export class Character {
 
   gainCurrentSkills(skillGained = 1) {
     if(!this.$$flaggedSkills || !this.$$flaggedSkills.length) return;
-    const [primary, secondary] = this.$$flaggedSkills;
+    const [primary, secondary, tertiary] = compact(this.$$flaggedSkills);
     if(!primary) return;
 
-    if(secondary) {
+    if(tertiary) {
+      this.gainSkill(primary, skillGained * 0.65);
+      this.gainSkill(secondary, skillGained * 0.25);
+      this.gainSkill(tertiary, skillGained * 0.10);
+
+    } else if(secondary) {
       this.gainSkill(primary, skillGained * 0.75);
       this.gainSkill(secondary, skillGained * 0.25);
+
     } else {
       this.gainSkill(primary, skillGained);
     }
@@ -1141,6 +1147,10 @@ export class Character {
     return Math.floor(thiefTotal + normalTotal);
   }
 
+  isHidden(): boolean {
+    return !!(this.hasEffect('Hidden') || this.hasEffect('ShadowMeld'));
+  }
+
   canSeeThroughStealthOf(char: Character) {
 
     if(char.isPlayer() && !char.hasEffect('Hidden') && !char.hasEffect('ShadowMeld')) return true;
@@ -1168,7 +1178,7 @@ export class Character {
     const level = this.getTraitLevel(trait);
 
     switch(trait) {
-      case 'DarkerShadows':       return level * 5;
+      case 'DarkerShadows':       return level * 2;
       case 'ShadowSheath':        return level;
       case 'IrresistibleStuns':   return level;
       case 'PhilosophersStone':   return level * 10;
@@ -1183,6 +1193,7 @@ export class Character {
       case 'NecroticFocus':       return level * 4;
       case 'HealingFocus':        return level * 4;
       case 'ForcefulStrike':      return level * 4;
+      case 'ShadowRanger':        return level * 4;
 
       default: return level;
     }

@@ -197,6 +197,8 @@ export class CombatHelper {
     attacker.combatTicks = 10;
     defender.combatTicks = 10;
 
+    const isAttackerVisible = defender.canSeeThroughStealthOf(attacker);
+
     let attackerWeapon: Item;
 
     if(isThrow) {
@@ -218,8 +220,8 @@ export class CombatHelper {
     flagSkills[0] = attackerWeapon.type;
     if(attackerWeapon.secondaryType) flagSkills[1] = attackerWeapon.secondaryType;
 
-    if(isThrow)    flagSkills[1] = SkillClassNames.Throwing;
-    if(isBackstab) flagSkills[1] = SkillClassNames.Thievery;
+    if(isThrow)                           flagSkills[2] = SkillClassNames.Throwing;
+    if(!isAttackerVisible || isBackstab)  flagSkills[2] = SkillClassNames.Thievery;
 
     attacker.flagSkill(flagSkills);
 
@@ -254,7 +256,7 @@ export class CombatHelper {
 
     const offhandDivisor = isOffhand ? 3 : 1;
 
-    const attackerName = defender.canSeeThroughStealthOf(attacker) ? attacker.name : 'somebody';
+    const attackerName = isAttackerVisible ? attacker.name : 'somebody';
     const attackerDamageRolls = attacker.getTotalStat('weaponDamageRolls');
 
     const { damageRolls, damageBonus, isWeak, isStrong } = this.determineWeaponInformation(attackerWeapon, attackerDamageRolls);
@@ -552,7 +554,9 @@ export class CombatHelper {
       damageClass: 'physical',
       attackerDamageMessage: damage > 0 ? `Your attack ${damageType}!` : '',
       defenderDamageMessage: msg,
-      attackerWeapon
+      attackerWeapon,
+      isRanged: damageCalcStat === 'dex',
+      isAttackerVisible
     });
 
     this.attemptToStun(attacker, attackerWeapon, defender);
@@ -621,7 +625,9 @@ export class CombatHelper {
     damage = attacked.isNaturalResource ? 0 : damage;
     const totalDamage = this.dealDamage(attacker, attacked, {
       damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg, attackerWeapon: {
-        itemClass: effect.name, owner: effect.effectInfo.caster
+        itemClass: effect.name,
+        owner: effect.effectInfo.caster,
+        ownerName: effect.effectInfo.casterName
       }
     });
 
@@ -669,7 +675,7 @@ export class CombatHelper {
   static dealDamage(
     attacker: Character,
     defender: Character,
-    { damage, damageClass, attackerDamageMessage, defenderDamageMessage, attackerWeapon }: any
+    { damage, damageClass, attackerDamageMessage, defenderDamageMessage, attackerWeapon, isRanged, isAttackerVisible }: any
   ): number {
 
     if(defender.isDead() || (<any>defender).hostility === 'Never') return;
@@ -686,6 +692,10 @@ export class CombatHelper {
         case 'necrotic':  damageBoostPercent = attacker.getTraitLevelAndUsageModifier('NecroticFocus'); break;
         case 'heal':      damageBoostPercent = attacker.getTraitLevelAndUsageModifier('HealingFocus'); break;
         case 'physical':  damageBoostPercent = attacker.getTraitLevelAndUsageModifier('ForcefulStrike'); break;
+      }
+
+      if(damageClass === 'physical' && !isAttackerVisible) {
+        damageBoostPercent = 10 + attacker.getTraitLevelAndUsageModifier('ShadowRanger');
       }
 
       damage = Math.floor(damage * (1 + (damageBoostPercent / 100)));
@@ -744,7 +754,7 @@ export class CombatHelper {
       }
     }
 
-    this.doElementalDebuffing(attacker, defender, damageClass, damage);
+    this.doElementalDebuffing(attacker, defender, damageClass, damage, { isRanged, isAttackerVisible });
 
     if(defender.isNaturalResource) damage = baseDamage;
 
@@ -781,7 +791,7 @@ export class CombatHelper {
           uuid: attacker ? attacker.uuid : get(attackerWeapon, 'owner', '???'),
           weapon: attackerWeapon ? attackerWeapon.itemClass : '???',
           damage,
-          monsterName: attacker ? attacker.name : '???'
+          monsterName: attacker ? attacker.name : get(attackerWeapon, 'ownerName', '???')
         }
       });
     }
@@ -821,30 +831,43 @@ export class CombatHelper {
 
   }
 
-  private static elementalBoostValue(attacker: Character, damageClass): number {
+  private static elementalBoostValue(attacker: Character, debuffName): number {
     if(!attacker) return 0;
 
-    switch(damageClass) {
-      case 'fire':  return attacker.getTraitLevelAndUsageModifier('ForgedFire');
-      case 'ice':   return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
+    switch(debuffName) {
+      case 'BuildupHeat':    return attacker.getTraitLevelAndUsageModifier('ForgedFire');
+      case 'BuildupChill':   return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
     }
 
     return 0;
   }
 
-  private static elementalDecayRateValue(attacker: Character, damageClass): number {
+  private static elementalDecayRateValue(attacker: Character, debuffName: string): number {
     if(!attacker) return 0;
 
-    switch(damageClass) {
-      case 'fire':  return attacker.getTraitLevelAndUsageModifier('ForgedFire');
-      case 'ice':   return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
+    switch(debuffName) {
+      case 'BuildupHeat':   return attacker.getTraitLevelAndUsageModifier('ForgedFire');
+      case 'BuildupChill':  return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
     }
 
     return 0;
   }
 
-  private static getElementalDebuff(damageClass: DamageType): string[] {
-    switch(damageClass.toLowerCase()) {
+  private static getElementalDebuff(damageClass: DamageType,
+                                    extraData: { attacker: Character, defender: Character, isRanged: boolean, isAttackerVisible: boolean }): string[] {
+
+    const lowerDamageClass = damageClass.toLowerCase();
+
+    const atk = extraData.attacker;
+    const def = extraData.defender;
+
+    if(atk && def && lowerDamageClass === 'physical') {
+      if(atk.baseClass === 'Thief' && !extraData.isAttackerVisible && extraData.isRanged) {
+        return ['BuildupSneakAttack', 'DefensesShattered', 'RecentlyShattered'];
+      }
+    }
+
+    switch(lowerDamageClass) {
       case 'fire': return ['BuildupHeat', 'Burning', 'RecentlyBurned'];
       case 'ice': return ['BuildupChill', 'Frosted', 'RecentlyFrosted'];
     }
@@ -852,16 +875,17 @@ export class CombatHelper {
     return [];
   }
 
-  private static doElementalDebuffing(attacker: Character, defender: Character, damageClass: DamageType, damage: number) {
+  private static doElementalDebuffing(attacker: Character, defender: Character, damageClass: DamageType, damage: number,
+                                      { isRanged, isAttackerVisible }: any = {}) {
     if(!attacker || damage <= 0) return;
 
-    const [debuff, activeDebuff, recentDebuff] = this.getElementalDebuff(damageClass);
+    const [debuff, activeDebuff, recentDebuff] = this.getElementalDebuff(damageClass, { attacker, defender, isRanged, isAttackerVisible });
     if(!debuff) return;
 
     if(defender.hasEffect(activeDebuff) || defender.hasEffect(recentDebuff)) return;
 
     let targetEffect = defender.hasEffect(debuff);
-    const bonusIncrease = this.elementalBoostValue(attacker, damageClass);
+    const bonusIncrease = this.elementalBoostValue(attacker, debuff);
     const debuffIncrease = 30 + bonusIncrease;
 
     if(!targetEffect) {

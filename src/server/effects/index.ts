@@ -61,6 +61,10 @@ export * from './buildups/BuildupChill';
 export * from './bursts/Frosted';
 export * from './recents/RecentlyFrosted';
 
+export * from './buildups/BuildupSneakAttack';
+export * from './bursts/DefensesShattered';
+export * from './recents/RecentlyShattered';
+
 export * from './antibuffs/Stunned';
 export * from './recents/RecentlyStunned';
 

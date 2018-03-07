@@ -240,6 +240,8 @@ export class Player extends Character {
     const adjustedSkill = this.$$room.calcAdjustedSkillGain(skillGain);
     if(isNaN(adjustedSkill) || adjustedSkill <= 0) return;
 
+    this.gainCurrentSkills(adjustedSkill);
+
     if(this.party) {
       PartyHelper.shareSkillWithParty(this, adjustedSkill);
     }
