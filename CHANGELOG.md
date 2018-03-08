@@ -1,5 +1,32 @@
 # Changelog
 
+## v0.1.4 (08/03/2018)
+
+#### Enhancements
+
+- [#569](https://github.com/LandOfTheRair/landoftherair/issues/569) Dangerous Debuff for lairs
+- [#560](https://github.com/LandOfTheRair/landoftherair/issues/560) Run offensive checking on character names when they're created
+
+#### Balance Adjustments
+
+- [#583](https://github.com/LandOfTheRair/landoftherair/issues/583) weredeer (and all lairs) need more perception
+- [#578](https://github.com/LandOfTheRair/landoftherair/issues/578) Prisoners should not see skill 0 thief 
+- [#577](https://github.com/LandOfTheRair/landoftherair/issues/577) Truesight may not be using potency correctly
+
+#### New Content
+
+- [#559](https://github.com/LandOfTheRair/landoftherair/issues/559) Powerword spells (healer skill 16, 17)
+
+#### Bug Fixes
+
+- [#582](https://github.com/LandOfTheRair/landoftherair/issues/582) throw/attack/backstab does not cause gain skill to proc 
+- [#581](https://github.com/LandOfTheRair/landoftherair/issues/581) shadow swap should not trigger when you're already hidden (or have Revealed)
+- [#580](https://github.com/LandOfTheRair/landoftherair/issues/580) @examine checks for visible targets but should not
+- [#579](https://github.com/LandOfTheRair/landoftherair/issues/579) Armor should not exhaust thief when hiding and casting
+- [#576](https://github.com/LandOfTheRair/landoftherair/issues/576) succor does not use potency correctly
+
+---
+
 ## v0.1.3 (07/03/2018)
 
 #### Enhancements
