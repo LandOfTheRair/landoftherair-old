@@ -113,7 +113,7 @@ export class SpellEffect extends Effect {
       this.potency = caster.calcSkillLevel(flaggedSkill) + 1;
 
       const armorClass = get(caster, 'gear.Armor.itemClass');
-      if(includes(MagicCutArmorClasses, armorClass)) {
+      if(includes(MagicCutArmorClasses, armorClass) && includes([SkillClassNames.Conjuration, SkillClassNames.Restoration], flaggedSkill)) {
         caster.sendClientMessage('Your armor exhausts you as you try to cast your spell!');
         this.potency = Math.floor(this.potency / 2);
       }
