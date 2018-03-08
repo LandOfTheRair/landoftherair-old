@@ -78,6 +78,8 @@ export class CombatHelper {
   }
 
   static attemptToShadowSwap(char: Character) {
+    if(char.hasEffect('Hidden') || char.hasEffect('Revealed')) return;
+
     const shadowSwapLevel = char.getTraitLevelAndUsageModifier('ShadowSwap');
     if(shadowSwapLevel === 0) return;
     if(!CharacterHelper.isNearWall(char)) return;
