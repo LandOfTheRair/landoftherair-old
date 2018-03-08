@@ -4,8 +4,7 @@
   hostility: Always
   sprite: 75
   stats: 8
-  skillLevels:
-    Martial: 3
+  skillLevels: 3
   level: 5
 
   skillOnKill: 9

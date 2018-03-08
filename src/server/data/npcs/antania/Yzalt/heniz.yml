@@ -34,12 +34,7 @@
   sprite: [580, 595, 610, 615]
   alignment: Evil
   stats: 15
-  skillLevels:
-    Longsword: 3
-    Axe: 3
-    Dagger: 3
-    Staff: 3
-    Bow: 3
+  skillLevels: 3
 
   level: 7
 
@@ -49,7 +44,7 @@
   skillOnKill: 5
 
   otherStats:
-    perception: 35
+    perception: 80
 
   gold:
     min: 100
@@ -150,8 +145,7 @@
   alignment: Evil
   baseClass: Thief
   stats: 15
-  skillLevels:
-    Dagger: 4
+  skillLevels: 4
 
   level: 10
 
@@ -163,7 +157,8 @@
   otherStats:
     fireResist: 100
     iceResist: 100
-    perception: 45
+    perception: 90
+    stealth: 40
 
   gold:
     min: 50
@@ -245,14 +240,12 @@
   alignment: Evil
   baseClass: Mage
   stats: 15
-  skillLevels:
-    Staff: 4
-    Conjuration: 5
-    Wand: 4
+  skillLevels: 4
 
   otherStats:
     fireResist: 100
     iceResist: 100
+    perception: 90
 
   level: 10
 
@@ -344,8 +337,7 @@
   alignment: Evil
   baseClass: Thief
   stats: 15
-  skillLevels:
-    Dagger: 5
+  skillLevels: 4
 
   level: 12
 
@@ -357,7 +349,7 @@
   otherStats:
     fireResist: 100
     iceResist: 100
-    perception: 45
+    perception: 90
 
   gold:
     min: 50
@@ -447,6 +439,7 @@
   otherStats:
     fireResist: 100
     iceResist: 100
+    perception: 90
 
   level: 13
 
@@ -454,9 +447,6 @@
     Royalty: -101
 
   skillOnKill: 8
-
-  otherStats:
-    perception: 45
 
   gold:
     min: 50

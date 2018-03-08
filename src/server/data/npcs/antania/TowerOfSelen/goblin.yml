@@ -13,7 +13,7 @@
   otherStats:
     con: 15
     accuracy: 10
-    perception: 35
+    perception: 200
 
   gold:
     min: 500
@@ -87,7 +87,7 @@
     con: 15
     accuracy: 10
     stealth: 50
-    perception: 55
+    perception: 250
 
   gold:
     min: 800
@@ -185,7 +185,7 @@
   otherStats:
     con: 15
     accuracy: 5
-    perception: 55
+    perception: 220
 
   gold:
     min: 800

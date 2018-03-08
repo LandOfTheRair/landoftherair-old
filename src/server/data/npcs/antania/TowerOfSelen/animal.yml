@@ -13,7 +13,7 @@
 
   otherStats:
     con: 15
-    perception: 15
+    perception: 200
 
   gold:
     min: 150
@@ -51,7 +51,7 @@
 
   otherStats:
     con: 15
-    perception: 15
+    perception: 200
 
   gold:
     min: 250

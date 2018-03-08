@@ -9,10 +9,8 @@
   otherStats:
     con: 13
     int: 15
-  skillLevels:
-    Staff: 2
-    Conjuration: 2
-    Wand: 2
+    perception: 130
+  skillLevels: 2
 
   level: 8
 
@@ -98,11 +96,8 @@
   stats: 7
   otherStats:
     con: 13
-  skillLevels:
-    Dagger: 2
-    Ranged: 2
-    Throwing: 2
-    Thievery: 2
+    perception: 130
+  skillLevels: 2
 
   level: 8
 
@@ -190,6 +185,7 @@
   stats: 7
   otherStats:
     con: 15
+    perception: 130
   skillLevels:
     Mace: 2
     Onehanded: 2
@@ -285,9 +281,8 @@
   otherStats:
     con: 13
     wis: 15
-  skillLevels:
-    Mace: 2
-    Restoration: 2
+    perception: 130
+  skillLevels: 2
 
   level: 8
 
@@ -369,13 +364,8 @@
   stats: 6
   otherStats:
     con: 11
-  skillLevels:
-    Mace: 2
-    Onehanded: 2
-    Twohanded: 2
-    Staff: 2
-    Wand: 2
-    Dagger: 2
+    perception: 110
+  skillLevels: 2
 
   level: 7
 
@@ -463,10 +453,8 @@
   otherStats:
     con: 15
     int: 17
-  skillLevels:
-    Staff: 3
-    Conjuration: 3
-    Wand: 3
+    perception: 170
+  skillLevels: 3
 
   level: 8
 
@@ -603,16 +591,12 @@
   alignment: Evil
   baseClass: Thief
   stats: 10
-  otherStats:
-    con: 15
-  skillLevels:
-    Dagger: 3
-    Ranged: 3
-    Throwing: 3
-    Thievery: 3
+  skillLevels: 3
 
   otherStats:
     stealth: 25
+    con: 15
+    perception: 170
 
   level: 8
 
@@ -764,6 +748,7 @@
   stats: 7
   otherStats:
     con: 15
+    perception: 170
   skillLevels:
     Mace: 2
     Onehanded: 2
@@ -897,9 +882,8 @@
   otherStats:
     con: 15
     wis: 17
-  skillLevels:
-    Mace: 3
-    Restoration: 3
+    perception: 170
+  skillLevels: 3
 
   level: 8
 
@@ -1021,6 +1005,7 @@
   stats: 10
   otherStats:
     con: 25
+    perception: 250
   skillLevels: 7
 
   level: 10
@@ -1101,6 +1086,7 @@
   stats: 10
   otherStats:
     con: 30
+    perception: 200
   skillLevels: 3
 
   level: 15

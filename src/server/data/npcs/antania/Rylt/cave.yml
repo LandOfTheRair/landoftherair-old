@@ -13,7 +13,7 @@
 
   otherStats:
     con: 7
-    perception: 35
+    perception: 80
 
   gold:
     min: 40
@@ -156,7 +156,7 @@
   level: 15
 
   otherStats:
-    perception: 120
+    perception: 250
 
   skillLevels:
     Wand: 3
@@ -237,7 +237,7 @@
 
   otherStats:
     con: 15
-    perception: 80
+    perception: 100
 
   skillOnKill: 25
 

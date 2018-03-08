@@ -15,7 +15,7 @@
   skillOnKill: 30
 
   otherStats:
-    perception: 45
+    perception: 200
 
   usableSkills:
     - Charge

@@ -6,20 +6,14 @@
   sprite: [630, 635, 645, 650]
   alignment: Evil
   stats: 1
-  skillLevels:
-    Mace: 1
-    Longsword: 1
-    Shortsword: 1
-    Axe: 1
-    Dagger: 1
-    Staff: 1
+  skillLevels: 1
 
   level: 1
   skillOnKill: 2
 
   otherStats:
     con: 7
-    perception: 15
+    perception: 80
 
   gold:
     min: 30
@@ -119,12 +113,11 @@
   level: 4
   baseClass: Warrior
 
-  skillLevels:
-    polearm: 3
+  skillLevels: 3
 
   otherStats:
     con: 7
-    perception: 25
+    perception: 80
 
   skillOnKill: 20
 
@@ -166,18 +159,13 @@
   sprite: [630, 635, 645, 650]
   alignment: Evil
   stats: 10
-  skillLevels:
-    Longsword: 2
-    Axe: 2
-    Dagger: 2
-    Mace: 2
-    Shortsword: 2
+  skillLevels: 2
 
   level: 6
   skillOnKill: 6
 
   otherStats:
-    perception: 35
+    perception: 110
 
   gold:
     min: 100
@@ -268,16 +256,13 @@
   sprite: [630, 635, 645, 650]
   alignment: Evil
   stats: 10
-  skillLevels:
-    Longsword: 3
-    Axe: 3
-    Dagger: 3
+  skillLevels: 2
 
   level: 7
   skillOnKill: 6
 
   otherStats:
-    perception: 35
+    perception: 115
 
   gold:
     min: 150
@@ -376,12 +361,9 @@
 
   otherStats:
     stealth: 30
-    perception: 40
+    perception: 120
 
-  skillLevels:
-    Throwing: 3
-    Ranged: 2
-    Dagger: 3
+  skillLevels: 2
 
   level: 4
   skillOnKill: 6
@@ -470,15 +452,13 @@
   sprite: 545
   alignment: Evil
   stats: 7
-  skillLevels:
-    Shortsword: 1
-    Conjuration: 2
+  skillLevels: 2
 
   level: 4
   skillOnKill: 7
 
   otherStats:
-    perception: 35
+    perception: 120
 
   gold:
     min: 150
@@ -530,7 +510,7 @@
     Restoration: 2
 
   otherStats:
-    perception: 35
+    perception: 120
 
   level: 4
   skillOnKill: 7
@@ -582,7 +562,7 @@
 
   otherStats:
     con: 20
-    perception: 150
+    perception: 250
 
   level: 13
   skillOnKill: 100
