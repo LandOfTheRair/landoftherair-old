@@ -399,7 +399,7 @@
   ></app-window>
 
   <ng-template #lockerHead>
-    {{ colyseus.game.activeLockerNumber ? colyseus.game.showLocker[colyseus.game.activeLockerNumber].regionId : '' }} Region Wardrobe
+    {{ colyseus.game.activeLockerNumber ? colyseus.game.showLocker[colyseus.game.activeLockerNumber].regionId : 'Global' }} Region Wardrobe
   </ng-template>
 
   <ng-template #lockerBody>
@@ -1040,7 +1040,7 @@
       <div class="modal-body" *ngIf="silverModal.isShown">
 
         <div class="top-container">
-          <img src="http://rair.land/img/coin.png" width="64" height="64" /> You have {{ (colyseus.lobby.myAccount.silver || 0) | number }} silver.
+          <img src="https://rair.land/img/coin.png" width="64" height="64" /> You have {{ (colyseus.lobby.myAccount.silver || 0) | number }} silver.
         </div>
 
         <tabset justified="true">
