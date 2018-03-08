@@ -29,7 +29,7 @@ export class Succor extends Skill {
 
   async use(user: Character, baseEffect = {}) {
     const effect = new CastEffect({});
-    effect.cast(user, user);
+    effect.cast(user, user, this);
   }
 
 }
