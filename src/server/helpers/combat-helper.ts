@@ -218,12 +218,12 @@ export class CombatHelper {
                          isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
     }
 
+    // flag appropriate skills based on attack
     const flagSkills = [];
-    flagSkills[0] = attackerWeapon.type;
-    if(attackerWeapon.secondaryType) flagSkills[1] = attackerWeapon.secondaryType;
-
-    if(isThrow)                           flagSkills[2] = SkillClassNames.Throwing;
-    if(!isAttackerVisible || isBackstab)  flagSkills[2] = SkillClassNames.Thievery;
+    flagSkills.push(attackerWeapon.type);
+    if(attackerWeapon.secondaryType)      flagSkills.push(attackerWeapon.secondaryType);
+    if(isThrow)                           flagSkills.push(SkillClassNames.Throwing);
+    if(!isAttackerVisible || isBackstab)  flagSkills.push(SkillClassNames.Thievery);
 
     attacker.flagSkill(flagSkills);
 
@@ -595,6 +595,8 @@ export class CombatHelper {
     if(damage <= 0) {
       return { noDamage: true };
     }
+
+    attacker.gainCurrentSkills(1);
 
     return { hit: true, damage, dealtBy: attackerWeapon.itemClass.toLowerCase(), damageType };
   }

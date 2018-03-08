@@ -214,7 +214,7 @@ export class Player extends Character {
 
   flagSkill(skills) {
     if(!isArray(skills)) skills = [skills];
-    this.$$flaggedSkills = skills;
+    this.$$flaggedSkills = compact(skills);
   }
 
   kill(target: Character, opts: { isPetKill: boolean } = { isPetKill: false }) {

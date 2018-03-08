@@ -903,13 +903,19 @@ export class Character {
 
   gainCurrentSkills(skillGained = 1) {
     if(!this.$$flaggedSkills || !this.$$flaggedSkills.length) return;
-    const [primary, secondary, tertiary] = compact(this.$$flaggedSkills);
+    const [primary, secondary, tertiary, quaternary] = compact(this.$$flaggedSkills);
     if(!primary) return;
 
-    if(tertiary) {
-      this.gainSkill(primary, skillGained * 0.65);
+    if(quaternary) {
+      this.gainSkill(primary, skillGained * 0.45);
       this.gainSkill(secondary, skillGained * 0.25);
-      this.gainSkill(tertiary, skillGained * 0.10);
+      this.gainSkill(tertiary, skillGained * 0.15);
+      this.gainSkill(quaternary, skillGained * 0.15);
+
+    } else if(tertiary) {
+      this.gainSkill(primary, skillGained * 0.55);
+      this.gainSkill(secondary, skillGained * 0.25);
+      this.gainSkill(tertiary, skillGained * 0.20);
 
     } else if(secondary) {
       this.gainSkill(primary, skillGained * 0.75);
