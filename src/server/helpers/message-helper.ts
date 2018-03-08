@@ -65,7 +65,9 @@ export class MessageHelper {
       const diffY = target.y - player.y;
 
       if(!player.canSee(diffX, diffY)) return false;
-      if(!player.canSeeThroughStealthOf(target)) return false;
+
+      // you can always see yourself
+      if(player !== target && !player.canSeeThroughStealthOf(target)) return false;
 
       return this.doesTargetMatchSearch(target, findStr);
     });
