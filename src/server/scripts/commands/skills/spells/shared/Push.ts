@@ -46,7 +46,7 @@ export class Push extends Skill {
 
   use(user: Character, target: Character) {
     const effect = new CastEffect({});
-    effect.cast(user, target);
+    effect.cast(user, target, this);
   }
 
 }

@@ -33,7 +33,7 @@ export class Identify extends Skill {
     if(user.baseClass === 'Mage') potency += 1;
 
     const effect = new CastEffect({ potency });
-    effect.cast(user, user);
+    effect.cast(user, user, this);
   }
 
 }

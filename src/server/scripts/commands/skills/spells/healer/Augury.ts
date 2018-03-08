@@ -36,7 +36,7 @@ export class Augury extends Skill {
 
   async use(user: Character, target: Character, baseEffect = {}) {
     const effect = new CastEffect({});
-    effect.cast(user, target);
+    effect.cast(user, target, this);
   }
 
 }
