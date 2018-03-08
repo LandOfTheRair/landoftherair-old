@@ -16,7 +16,8 @@ export class Assassinate extends Skill {
     icon: 'decapitation',
     color: '#530000',
     mode: 'lockActivation',
-    tooltipDesc: 'Attempt to assassinate your target from the shadows. Requires Thievery & weapon skill 13.'
+    tooltipDesc: 'Attempt to assassinate your target from the shadows. Requires Thievery & weapon skill 13.',
+    requireBaseClass: 'Thief'
   };
 
   public name = 'assassinate';

@@ -13,6 +13,7 @@ interface MacroMetadata {
   bgColor?: string;
   mode: string; // 'clickToTarget'|'autoActivate'|'lockActivation'
   tooltipDesc: string;
+  requireBaseClass?: string;
 }
 
 export abstract class Skill extends Command {
