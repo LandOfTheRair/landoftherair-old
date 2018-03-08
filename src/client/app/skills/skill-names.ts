@@ -61,7 +61,10 @@ const HealingMagic = [
   'Birdcaller',
   'Reflexive Healer',
   'Sharer of Boons',
-  'Sharer of Vitality'
+  'Sharer of Vitality',
+  'Miracle Maker',
+  'Smiter of Foes',
+  'Creator of Essence'
 ];
 
 const ElementalMagic = [
@@ -80,7 +83,12 @@ const ElementalMagic = [
   'Forceful Conjurer',
   'Protector of Bodies',
   'Protector of Minds',
-  'Novice Summoner'
+  'Novice Summoner',
+  'Wearer of Flames',
+  'Cloaker of Vision',
+  'Imbuer of Energy',
+  'Warper of Dimensions',
+  'Time Wizard'
 ];
 
 const Martial = [
