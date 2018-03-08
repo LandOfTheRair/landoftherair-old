@@ -5,11 +5,23 @@ import { Command } from './Command';
 import { random, get } from 'lodash';
 import { MessageHelper } from '../helpers/message-helper';
 
+interface MacroMetadata {
+  name: string;
+  macro: string;
+  icon: string;
+  color: string;
+  bgColor?: string;
+  mode: string; // 'clickToTarget'|'autoActivate'|'lockActivation'
+  tooltipDesc: string;
+}
+
 export abstract class Skill extends Command {
+
+  static macroMetadata: MacroMetadata;
 
   requiresLearn = true;
 
-  mpCost(caster?: Character) { return 0; };
+  mpCost(caster?: Character, targets?: Character[]) { return 0; };
   hpCost(caster?: Character) { return 0; };
   range(caster?: Character) { return 0; };
 
@@ -44,11 +56,11 @@ export abstract class Skill extends Command {
     return target.isPlayer() || !user.$$room.state.checkTargetForHostility(user, target);
   }
 
-  tryToConsumeMP(user: Character, effect): boolean {
+  tryToConsumeMP(user: Character, effect, targets?: Character[]): boolean {
 
     if(effect) return true;
 
-    const mpCost = this.modifiedMPCost(user, this.mpCost());
+    const mpCost = this.modifiedMPCost(user, this.mpCost(user, targets));
 
     if(user.baseClass === 'Thief') {
       if(user.hp.getValue() < mpCost) {

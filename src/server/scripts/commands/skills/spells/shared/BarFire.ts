@@ -2,7 +2,7 @@
 import { startsWith } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { BarFire as CastEffect } from '../../../../../effects/buffs/BarFire';
 
 export class BarFire extends Skill {

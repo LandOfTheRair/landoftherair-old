@@ -5,6 +5,7 @@ export * from './Autoheal';
 export * from './BarNecro';
 export * from './Cure';
 export * from './Light';
+export * from './PowerwordBarNecro';
 export * from './Regen';
 export * from './Revive';
 export * from './Stun';

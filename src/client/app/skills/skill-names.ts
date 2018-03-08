@@ -59,7 +59,9 @@ const HealingMagic = [
   'Forceful Healer',
   'Regenerator of Wounds',
   'Birdcaller',
-  'Reflexive Healer'
+  'Reflexive Healer',
+  'Sharer of Boons',
+  'Sharer of Vitality'
 ];
 
 const ElementalMagic = [

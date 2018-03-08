@@ -12,3 +12,6 @@ export * from './BarFire';
 export * from './BarFrost';
 
 export * from './Push';
+
+export * from './PowerwordBarFire';
+export * from './PowerwordBarFrost';

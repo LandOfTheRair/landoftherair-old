@@ -527,7 +527,7 @@ export class ColyseusGameService {
   private parseCommand(cmd: string) {
 
     const arr = cmd.split(' ');
-    const multiPrefixes = ['party', 'look', 'show', 'climb', 'cast', 'stance'];
+    const multiPrefixes = ['party', 'look', 'show', 'climb', 'cast', 'stance', 'powerword'];
 
     let argsIndex = 1;
 
