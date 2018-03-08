@@ -7,6 +7,7 @@ import { NPC } from '../../shared/models/npc';
 import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
 import { LootHelper } from '../helpers/loot-helper';
+import { Dangerous } from '../effects/special/Dangerous';
 
 export class Spawner {
 
@@ -249,6 +250,11 @@ export class Spawner {
     npc.$$stripOnSpawner = this.stripOnSpawner;
     npc.$$stripX = this.stripX;
     npc.$$stripY = this.stripY;
+
+    if(npc.$$shouldStrip) {
+      const dangerous = new Dangerous({});
+      dangerous.cast(npc, npc);
+    }
 
     npc.tryToCastEquippedEffects();
 

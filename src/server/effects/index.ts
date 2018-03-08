@@ -15,6 +15,7 @@ export * from './items/PermanentCHA';
 export * from './items/MinorHP';
 export * from './items/MinorMP';
 
+export * from './special/Dangerous';
 export * from './special/Dead';
 export * from './special/LowCON';
 export * from './misc/Hidden';

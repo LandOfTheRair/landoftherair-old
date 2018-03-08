@@ -508,7 +508,7 @@ export class CombatHelper {
 
       if(skillAvg <= defender.getTotalStat('con')) didSucceed = false;
       if(attackerScope.realLevel < defenderScope.realLevel + 7) didSucceed = false;
-      if((<any>defender).$$shouldStrip) didSucceed = false;
+      if(defender.hasEffect('Dangerous')) didSucceed = false;
 
       if(!didSucceed) {
         isBackstab = true;
