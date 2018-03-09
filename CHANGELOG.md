@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.5 (08/03/2018)
+
+#### Bug Fixes
+
+- [#585](https://github.com/LandOfTheRair/landoftherair/issues/585) Character creation does not work when there is no pouch for the account
+
+---
+
 ## v0.1.4 (08/03/2018)
 
 #### Enhancements
