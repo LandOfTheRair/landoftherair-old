@@ -352,7 +352,7 @@ export class Character {
   init() {}
   initServer() {}
 
-  toSaveObject() {
+  toSaveObject(): any {
     let keys = reject(Object.getOwnPropertyNames(this), key => {
       if(key === '_id') return true;
       if(startsWith(key, '$$')) return true;

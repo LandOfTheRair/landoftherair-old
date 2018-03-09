@@ -83,7 +83,7 @@ export class LobbyState {
   }
 
   removeAccount(username: string) {
-    this.accounts = reject(this.accounts, account => account.username === username);
+    this.accounts = reject(this.accounts, (account: Account) => account.username === username);
     this.account$.next(this.accounts);
   }
 

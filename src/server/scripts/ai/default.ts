@@ -3,6 +3,7 @@ import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
 import { random, maxBy, sample, sampleSize, clamp, includes, shuffle } from 'lodash';
 import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
+import { Character } from '../../../shared/models/character';
 
 const checkGroundForItems = (npc: NPC) => {
   if(npc.rightHand && npc.leftHand) return;
@@ -49,7 +50,7 @@ export const tick = (npc: NPC, canMove: boolean) => {
 
   const targetsInRange = npc.$$room.state.getPossibleTargetsFor(npc, 5);
 
-  let highestAgro = maxBy(targetsInRange, char => npc.agro[char.uuid]);
+  let highestAgro: Character = maxBy(targetsInRange, (char: Character) => npc.agro[char.uuid]);
   if(!highestAgro) highestAgro = sample(targetsInRange);
 
   // do movement
@@ -71,7 +72,7 @@ export const tick = (npc: NPC, canMove: boolean) => {
 
     let isThrowing = false;
 
-    attemptSkills.forEach(skill => {
+    attemptSkills.forEach((skill: string) => {
       if(chosenSkill) return;
 
       if(npc.getAttackDamage(highestAgro, skill) === 0 && npc.getZeroTimes(highestAgro, skill) >= 5) {

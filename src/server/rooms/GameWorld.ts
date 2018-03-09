@@ -704,7 +704,7 @@ export class GameWorld extends Room<GameState> {
     this.spawners.push(normalNPCSpawner);
 
     npcs.forEach(async npcData => {
-      const data = npcData.properties || {};
+      const data: any = npcData.properties || {};
       data.name = npcData.name || NPCLoader.determineNPCName(npcData);
       data.sprite = npcData.gid - this.state.map.tilesets[3].firstgid;
       data.x = npcData.x / 64;

@@ -157,7 +157,7 @@ export class GameState {
   }
 
   private createPlayerHash() {
-    return reduce(this.players, (prev, p) => {
+    return reduce(this.players, (prev: any, p: any) => {
       prev[p.username] = p;
       p._party = p.party ? p.party : null;
       return prev;
@@ -171,13 +171,13 @@ export class GameState {
   }
 
   getSuccorRegion(player: Player): string {
-    const succorRegion = filter(this.map.layers[MapLayer.Succorport].objects, reg => this.isInRegion(player, reg))[0];
+    const succorRegion: any = filter(this.map.layers[MapLayer.Succorport].objects, reg => this.isInRegion(player, reg))[0];
 
     return succorRegion ? succorRegion.name : 'the wilderness';
   }
 
   private trimNPC(npc: NPC): any {
-    const baseObj = pick(npc, [
+    const baseObj: any = pick(npc, [
       'agro', 'uuid', 'name',
       'hostility', 'alignment', 'allegiance', 'allegianceReputation',
       'dir', 'sprite',
@@ -244,7 +244,7 @@ export class GameState {
     const playerRef = this.findPlayerByClientId(clientId);
     delete this.maintainedPlayerHash[playerRef.username];
     delete this.playerClientIdHash[clientId];
-    this.players = reject(this.players, p => p.username === playerRef.username);
+    this.players = reject(this.players, (p: Player) => p.username === playerRef.username);
   }
 
   addInteractable(obj: any): void {
@@ -294,7 +294,7 @@ export class GameState {
 
     // no dark, calculate fov
     } else {
-      this.fov.compute(player.x, player.y, dist, (x, y) => {
+      (<any>this.fov).compute(player.x, player.y, dist, (x, y) => {
         return affected[x - player.x] && affected[x - player.x][y - player.y];
       }, (x, y) => {
         affected[x - player.x] = affected[x - player.x] || {};
@@ -319,7 +319,7 @@ export class GameState {
 
     const { x, y } = ref;
 
-    return reject(arr, p => {
+    return reject(arr, (p: Character) => {
 
       if(ref.fov && useSight) {
         const offsetX = p.x - x;
@@ -345,7 +345,7 @@ export class GameState {
 
   getAllHostilesInRange(ref: Character, radius): Character[] {
     const targets = this.getInRange(this.allPossibleTargets, ref, radius, this.players.map(p => p.uuid));
-    return filter(targets, target => this.checkTargetForHostility(target, ref));
+    return filter(targets, (target: NPC) => this.checkTargetForHostility(target, ref));
   }
 
   private checkTargetForHostility(me: NPC, target: Character): boolean {
@@ -361,7 +361,7 @@ export class GameState {
   }
 
   getPossibleTargetsFor(me: NPC, radius): Character[] {
-    return filter(this.allPossibleTargets, char => {
+    return filter(this.allPossibleTargets, (char: Character) => {
 
       // no hitting myself
       if(me === char) return false;
@@ -370,7 +370,7 @@ export class GameState {
       if(char.isDead()) return false;
 
       // if they can't attack, they're not worth fighting
-      if(char.hostility === 'Never') return false;
+      if((<NPC>char).hostility === 'Never') return false;
 
       // they have to be visible
       const inRadius = char.x > me.x - radius
@@ -442,7 +442,7 @@ export class GameState {
 
     const hasNewRegion = regionDesc && regionDesc !== player.$$lastRegion;
 
-    const bgmObj = filter(this.map.layers[MapLayer.BackgroundMusic].objects, reg => this.isInRegion(player, reg))[0];
+    const bgmObj: any = filter(this.map.layers[MapLayer.BackgroundMusic].objects, reg => this.isInRegion(player, reg))[0];
     player.bgmSetting = bgmObj ? bgmObj.name : 'wilderness';
 
     if(hasNewRegion) {
@@ -510,13 +510,13 @@ export class GameState {
     // initalize array if not exist
     this.getGroundItems(item.x, item.y);
 
-    this.groundItems[xKey][yKey][item.itemClass] = reject(this.groundItems[xKey][yKey][item.itemClass], i => i.uuid === item.uuid);
+    this.groundItems[xKey][yKey][item.itemClass] = reject(this.groundItems[xKey][yKey][item.itemClass], (i: Item) => i.uuid === item.uuid);
 
     if(size(this.groundItems[xKey][yKey][item.itemClass]) === 0) delete this.groundItems[xKey][yKey][item.itemClass];
     if(size(this.groundItems[xKey][yKey]) === 0) delete this.groundItems[xKey][yKey];
     if(size(this.groundItems[xKey]) === 0) delete this.groundItems[xKey];
 
-    this.simpleGroundItems[xKey][yKey][item.itemClass] = reject(this.simpleGroundItems[xKey][yKey][item.itemClass], i => i.uuid === item.uuid);
+    this.simpleGroundItems[xKey][yKey][item.itemClass] = reject(this.simpleGroundItems[xKey][yKey][item.itemClass], (i: Item) => i.uuid === item.uuid);
 
     if(size(this.simpleGroundItems[xKey][yKey][item.itemClass]) === 0) delete this.simpleGroundItems[xKey][yKey][item.itemClass];
     if(size(this.simpleGroundItems[xKey][yKey]) === 0) delete this.simpleGroundItems[xKey][yKey];
@@ -588,7 +588,7 @@ export class GameState {
 
       if(p.swimLevel > 0) {
         const hpPercentLost = p.swimLevel * 4;
-        const hpLost = Math.floor(p.hp.maximum * (hpPercentLost / 100));
+        const hpLost = Math.floor((<any>p.hp).maximum * (hpPercentLost / 100));
         CombatHelper.dealOnesidedDamage(p, { damage: hpLost, damageClass: p.$$swimElement || 'water', damageMessage: 'You are drowning!', suppressIfNegative: true });
       }
     });

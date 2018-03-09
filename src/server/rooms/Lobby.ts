@@ -186,14 +186,14 @@ export class Lobby extends Room<LobbyState> {
       const timestamp = Date.now();
 
       // set the last message if not set
-      if(!accountRef.lastSentMessage) accountRef.lastSentMessage = timestamp;
+      if(!accountRef.lastMessage) accountRef.lastMessage = timestamp;
 
       // verify spam messages is num
       if(!accountRef.spamMessages) accountRef.spamMessages = 0;
 
       // either increment it if they're talking too much, or decrement it
-      if(timestamp - accountRef.lastSentMessage < CHAT_SPAM_DELAY) accountRef.spamMessages++;
-      else                                                      accountRef.spamMessages = Math.max(accountRef.spamMessages - 1, 0);
+      if(timestamp - accountRef.lastMessage < CHAT_SPAM_DELAY) accountRef.spamMessages++;
+      else                                                     accountRef.spamMessages = Math.max(accountRef.spamMessages - 1, 0);
 
       // if they've finally gone over, mute em
       if(accountRef.spamMessages > MAX_SPAM_MESSAGES) {
@@ -203,7 +203,7 @@ export class Lobby extends Room<LobbyState> {
       }
 
       // reset their timestamp
-      accountRef.lastSentMessage = timestamp;
+      accountRef.lastMessage = timestamp;
     }
 
     if(accountRef && accountRef.isMuted) return;
@@ -346,7 +346,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   onLeave(client) {
-    this.removeUsername(client.username);
+    this.removeUsername((<any>client).username);
     this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
   }
