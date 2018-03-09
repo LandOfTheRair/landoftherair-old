@@ -25,9 +25,9 @@ export class Smelt extends Command {
 
     const lowerOreType = oreType.toLowerCase();
 
-    if(container.oreValues[lowerOreType] < 100) return player.sendClientMessage('You do not have enough ore to do that!');
+    if(container.oreValues[lowerOreType] < 50) return player.sendClientMessage('You do not have enough ore to do that!');
 
-    container.gainOre(lowerOreType, -100);
+    container.gainOre(lowerOreType, -50);
 
     await MetalworkingHelper.createIngotFor(player, lowerOreType);
 
