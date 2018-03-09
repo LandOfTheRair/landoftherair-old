@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.1.6 (09/03/2018)
+
+#### Balance Adjustments
+
+- [#584](https://github.com/LandOfTheRair/landoftherair/issues/584) Lower ingot cost to 50
+- [#571](https://github.com/LandOfTheRair/landoftherair/issues/571) Adjust ShadowMeld to apply Revealed on effect end
+
+#### New Content
+
+- [#548](https://github.com/LandOfTheRair/landoftherair/issues/548) Material storage
+
+#### Bug Fixes
+
+- [#591](https://github.com/LandOfTheRair/landoftherair/issues/591) stats window does not correctly show base stats
+
+---
+
 ## v0.1.5 (08/03/2018)
 
 #### Bug Fixes
