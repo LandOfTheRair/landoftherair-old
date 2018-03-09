@@ -15,6 +15,10 @@ export class StatsWindowComponent {
     return (<any>this.currentPlayer).totalStats;
   }
 
+  get baseStats(): any {
+    return (<any>this.currentPlayer).stats;
+  }
+
   constructor() { }
 
 }
