@@ -8,11 +8,11 @@ import { LockerHelper } from '../../../../helpers/locker-helper';
 export class LockerToGround extends Command {
 
   public name = '~WtG';
-  public format = 'ItemSlot LockerID';
+  public format = 'ItemSlot LockerID [Amt]';
 
   async execute(player: Player, { room, gameState, args }) {
     if(this.isAccessingLocker(player)) return;
-    const [slotId, lockerId] = args.split(' ');
+    const [slotId, lockerId, amount] = args.split(' ');
 
 
     this.accessLocker(player);
@@ -21,7 +21,7 @@ export class LockerToGround extends Command {
     const locker = await LockerHelper.loadLocker(player, lockerId);
     if(!locker) return this.unaccessLocker(player);
 
-    const item = locker.takeItemFromSlot(+slotId);
+    const item = locker.takeItemFromSlot(+slotId, +amount);
     if(!item) return this.unaccessLocker(player);
 
     room.addItemToGround(player, item);

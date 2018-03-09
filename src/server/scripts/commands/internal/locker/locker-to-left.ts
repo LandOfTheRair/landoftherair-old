@@ -8,10 +8,10 @@ import { LockerHelper } from '../../../../helpers/locker-helper';
 export class LockerToLeft extends Command {
 
   public name = '~WtL';
-  public format = 'ItemSlot LockerID';
+  public format = 'ItemSlot LockerID [Amt]';
 
   async execute(player: Player, { room, gameState, args }) {
-    const [slotId, lockerId] = args.split(' ');
+    const [slotId, lockerId, amount] = args.split(' ');
 
     if(this.isAccessingLocker(player)) return;
     this.accessLocker(player);
@@ -22,7 +22,7 @@ export class LockerToLeft extends Command {
     const locker = await LockerHelper.loadLocker(player, lockerId);
     if(!locker) return this.unaccessLocker(player);
 
-    const item = locker.takeItemFromSlot(+slotId);
+    const item = locker.takeItemFromSlot(+slotId, +amount);
     if(!item) return this.unaccessLocker(player);
 
     this.trySwapLeftToRight(player);

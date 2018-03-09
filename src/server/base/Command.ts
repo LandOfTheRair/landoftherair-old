@@ -6,6 +6,7 @@ import { Container } from '../../shared/models/container/container';
 import { MapLayer } from '../../shared/models/maplayer';
 import { MessageHelper } from '../helpers/message-helper';
 import { MaterialStorageHelper } from '../helpers/material-storage-helper';
+import { Locker } from '../../shared/models/container/locker';
 
 export abstract class Command {
 
@@ -93,10 +94,10 @@ export abstract class Command {
     player.$$isAccessingLocker = true;
   }
 
-  unaccessLocker(player: Player) {
+  unaccessLocker(player: Player, locker?: Locker) {
     player.$$isAccessingLocker = false;
-    if(player.$$locker) {
-      player.$$room.updateLocker(player, player.$$locker);
+    if(locker) {
+      player.$$room.updateLocker(player, locker);
     }
   }
 

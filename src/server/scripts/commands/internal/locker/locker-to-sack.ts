@@ -17,8 +17,6 @@ export class LockerToSack extends Command {
     const slot = +slotId;
     const amount = +amt;
 
-    console.log(args);
-
     this.accessLocker(player);
     if(!this.findLocker(player)) return this.unaccessLocker(player);
 

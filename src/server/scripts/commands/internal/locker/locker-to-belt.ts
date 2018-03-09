@@ -8,11 +8,11 @@ import { LockerHelper } from '../../../../helpers/locker-helper';
 export class LockerToBelt extends Command {
 
   public name = '~WtB';
-  public format = 'ItemSlot LockerID';
+  public format = 'ItemSlot LockerID [Amt]';
 
   async execute(player: Player, { room, gameState, args }) {
     if(this.isAccessingLocker(player)) return;
-    const [slotId, lockerId] = args.split(' ');
+    const [slotId, lockerId, amount] = args.split(' ');
 
     const slot = +slotId;
 
@@ -23,7 +23,7 @@ export class LockerToBelt extends Command {
     const locker = await LockerHelper.loadLocker(player, lockerId);
     if(!locker) return this.unaccessLocker(player);
 
-    const item = locker.takeItemFromSlot(slot);
+    const item = locker.takeItemFromSlot(slot, +amount);
     if(!item) return this.unaccessLocker(player);
 
     if(!player.addItemToBelt(item)) return this.unaccessLocker(player);

@@ -24,7 +24,7 @@ export class RightToLocker extends Command {
     const locker = await LockerHelper.loadLocker(player, args);
     if(!locker) return this.unaccessLocker(player);
 
-    if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player);
+    if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player, locker);
 
     player.setRightHand(null);
     room.updateLocker(player, locker);

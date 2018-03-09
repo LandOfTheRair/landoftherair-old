@@ -13,7 +13,7 @@ export class GroundToLocker extends Command {
   async execute(player: Player, { room, gameState, args }) {
     const splitArgs = args.split(' ');
     if(this.isAccessingLocker(player)) return;
-    if(splitArgs.length < 3) return false;
+    if(splitArgs.length < 3) return;
 
     const [itemType, itemId, lockerId] = splitArgs;
     const item = this.getItemFromGround(player, itemType, itemId);
@@ -28,7 +28,12 @@ export class GroundToLocker extends Command {
     const locker = await LockerHelper.loadLocker(player, lockerId);
     if(!locker) return this.unaccessLocker(player);
 
-    if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player);
+    // remove and re-add the item to update the ounces on the item
+    if(!this.addItemToContainer(player, locker, item)) {
+      room.removeItemFromGround(item);
+      room.addItemToGround(player, item);
+      return this.unaccessLocker(player, locker);
+    }
 
     room.updateLocker(player, locker);
     room.removeItemFromGround(item);

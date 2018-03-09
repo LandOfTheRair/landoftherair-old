@@ -1,5 +1,5 @@
 
-import { extend } from 'lodash';
+import { extend, isNumber } from 'lodash';
 
 import { Container } from './container';
 import { MaterialSlotInfo, ReverseValidItems, ValidMaterialItems } from '../../helpers/material-storage-layout';
@@ -23,6 +23,7 @@ export class MaterialLocker extends Container {
     const { maxSize } = extra;
 
     const desiredIndex = ValidMaterialItems[item.name];
+    const slotInfo = MaterialSlotInfo[desiredIndex];
 
     // put a new item in material storage
     if(!this.items[desiredIndex]) {
@@ -33,6 +34,7 @@ export class MaterialLocker extends Container {
         copy.ounces = maxSize;
         item.ounces -= copy.ounces;
         this.items[desiredIndex] = copy;
+        copy.sprite = slotInfo.sprite;
 
         return 'Not all of the items fit in your material storage.';
 
@@ -40,6 +42,8 @@ export class MaterialLocker extends Container {
       } else {
         this.items[desiredIndex] = item;
         if(!item.ounces) item.ounces = 1;
+        item.sprite = slotInfo.sprite;
+        return;
       }
     }
 
@@ -50,7 +54,7 @@ export class MaterialLocker extends Container {
     existingItem.ounces += totalAddOunces;
 
     if(totalAddOunces !== baseAddOunces) {
-      if(item.ounces > 0) item.ounces -= baseAddOunces;
+      if(item.ounces > 0) item.ounces -= totalAddOunces;
       return 'Not all of the items fit in your material storage.';
     }
   }
@@ -60,6 +64,7 @@ export class MaterialLocker extends Container {
     if(!item) return null;
 
     amt = Math.floor(Math.max(amt, 1));
+    if(isNaN(amt)) return null;
 
     if(amt > item.ounces) {
       this.items[slot] = null;
@@ -90,7 +95,7 @@ export class MaterialLocker extends Container {
 
   canAccept(item: Item): boolean {
     if(!item) return false;
-    return ValidMaterialItems[item.name];
+    return isNumber(ValidMaterialItems[item.name]);
   }
 
 }
