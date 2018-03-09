@@ -12,16 +12,38 @@
       </ul>
     </div>
 
-    <div class="col-8 p-0 d-flex flex-wrap flex-row">
+    <div class="col-8 p-0 d-flex flex-wrap flex-row" *ngIf="currentLocker.regionId !== 'Material'">
       <div *ngFor="let slot of slots"
            class="item-slot item-background">
-        <app-item *ngIf="colyseusGame.showLocker[colyseusGame.activeLockerNumber].items[slot]"
-                  [item]="colyseusGame.showLocker[colyseusGame.activeLockerNumber].items[slot]"
+        <app-item *ngIf="currentLocker.items[slot]"
+                  [item]="currentLocker.items[slot]"
                   [showDesc]="true"
                   [showOunces]="true"
                   context="Wardrobe"
                   [contextSlot]="slot"></app-item>
       </div>
     </div>
+
+    <div class="col-8 p-0 d-flex flex-wrap flex-row" *ngIf="currentLocker.regionId === 'Material'">
+      <div *ngFor="let category of materialLayout" class="d-flex flex-column flex-wrap mb-2">
+        <h3 class="text-center">{{ category.category }}</h3>
+
+        <div class="d-flex flex-row flex-wrap">
+          <div *ngFor="let itemSlot of category.layout" class="item-slot" [class.item-background]="itemSlot !== null">
+            <app-item *ngIf="itemSlot !== null && !currentLocker.items[itemSlot]"
+                      [showOutline]="true"
+                      [item]="{ sprite: slotInfo[itemSlot].sprite }"></app-item>
+
+            <app-item *ngIf="currentLocker.items[itemSlot]"
+                      [item]="currentLocker.items[itemSlot]"
+                      [showDesc]="true"
+                      [showOunces]="true"
+                      context="WardrobeMaterial"
+                      [contextSlot]="itemSlot"></app-item>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

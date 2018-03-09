@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
+import { MaterialStorageLayout, MaterialSlotInfo } from '../../../shared/helpers/material-storage-layout';
 
 @Component({
   selector: 'app-lockers',
@@ -15,6 +16,18 @@ export class LockersComponent {
 
   get maxSize() {
     return 15;
+  }
+
+  get currentLocker() {
+    return this.colyseusGame.showLocker[this.colyseusGame.activeLockerNumber];
+  }
+
+  get materialLayout() {
+    return MaterialStorageLayout;
+  }
+
+  get slotInfo() {
+    return MaterialSlotInfo;
   }
 
   constructor(public colyseusGame: ColyseusGameService) {

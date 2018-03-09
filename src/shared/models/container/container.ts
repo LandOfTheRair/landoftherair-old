@@ -34,7 +34,7 @@ export class Container {
     this.items = compact(this.items);
   }
 
-  addItem(item: Item, index?: number): string {
+  addItem(item: Item, index?: number, extra?: any): string {
     const containerName = startCase(this.constructor.name).toLowerCase();
     if(!this.canAccept(item, index)) return `That item does not fit properly in that slot of your ${containerName}.`;
     if(this.isFull() && isUndefined(index)) return `Your ${containerName} is full.`;
@@ -51,7 +51,7 @@ export class Container {
     return this.items[slot];
   }
 
-  takeItemFromSlot(slot: number): Item {
+  takeItemFromSlot(slot: number, amt?: number): Item {
     const item = this.items[slot];
     if(!item) return null;
 

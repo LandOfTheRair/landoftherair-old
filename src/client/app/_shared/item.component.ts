@@ -13,7 +13,7 @@ const POSSIBLE_TRADESKILL_SCOPES = ['Alchemy', 'Spellforging', 'Metalworking'];
 export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
                         | 'GroundGroup' | 'Equipment' | 'Left'
                         | 'Right' | 'Coin' | 'Merchant'
-                        | 'Obtainagain' | 'Wardrobe' | 'Tradeskill';
+                        | 'Obtainagain' | 'Wardrobe' | 'WardrobeMaterial' | 'Tradeskill';
 
 @Component({
   selector: 'app-item',
@@ -128,10 +128,15 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
     .encrust {
       transform: scale(0.65, 0.65) translate(45%, -45%);
     }
+    
+    .transparent {
+      opacity: 0.3;
+    }
   `],
   template: `    
     <div class="item-container" 
          [ngClass]="[size]"
+         [class.transparent]="showOutline"
          [isDisabled]="!showDesc" 
          triggers="dblclick:mouseleave"
          [dragScope]="scopes"
@@ -176,6 +181,9 @@ export class ItemComponent implements OnInit {
 
   @Input()
   public showEncrust = true;
+
+  @Input()
+  public showOutline = false;
 
   @Input()
   public context: MenuContext;
@@ -263,6 +271,8 @@ export class ItemComponent implements OnInit {
   }
 
   determineScopes() {
+    if(!this.context) return [];
+
     const scopes = [];
 
     if(this.context !== 'Obtainagain' && this.context !== 'Merchant') {
@@ -361,6 +371,10 @@ export class ItemComponent implements OnInit {
       } else {
         this.doColyseusMoveAction('W');
         return;
+      }
+
+      if(this.context === 'WardrobeMaterial') {
+        this.doColyseusMoveAction('W');
       }
     }
 

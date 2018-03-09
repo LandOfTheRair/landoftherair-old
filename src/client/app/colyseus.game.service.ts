@@ -787,6 +787,34 @@ export class ColyseusGameService {
       args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].lockerId}`;
     }
 
+    if(context === 'WardrobeMaterial') {
+
+      if(choiceStr === 'S' || choiceStr === 'B') {
+
+      }
+
+      const result = await (<any>swal)({
+        titleText: 'Withdraw How Many?',
+        input: 'number',
+        inputValue: 1,
+        inputAttributes: {
+          min: 0
+        },
+        showCancelButton: true,
+        useRejections: false,
+        preConfirm: (val) => {
+          return new Promise((resolve, reject) => {
+            if(val < 0) return reject('Invalid amount');
+            resolve();
+          });
+        }
+      });
+
+      if(result <= 0 || result.dismiss) return;
+
+      args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].lockerId} ${result}`;
+    }
+
     this.sendRawCommand(cmd, `${args.trim()} ${postargs}`.trim());
   }
 

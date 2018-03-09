@@ -12,7 +12,7 @@ export enum SubscriptionTier {
 
 export type SilverPurchase =
   'MorePotions' | 'MoreCharacters'
-| 'BiggerBelt' | 'BiggerSack'
+| 'BiggerBelt' | 'BiggerSack' | 'ExpandedStorage'
 | 'SharedLockers' | 'MagicPouch'
 | 'FestivalXP' | 'FestivalSkill' | 'FestivalGold' | 'FestivalTrait';
 
@@ -84,7 +84,8 @@ export class Account {
     BiggerBelt: 0,
     MagicPouch: 0,
     BiggerSack: 0,
-    SharedLockers: 0
+    SharedLockers: 0,
+    ExpandedStorage: 0
   };
 
   @nonenumerable
