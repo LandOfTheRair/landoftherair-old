@@ -64,7 +64,7 @@ export class Mug extends Skill {
 
     const res = CombatHelper.physicalAttack(user, target, { isMug: true, attackRange: this.range(user) });
 
-    if((<any>res).hit) {
+    if(res && (<any>res).hit) {
       this.facilitateSteal(user, target);
     }
   }
