@@ -372,7 +372,8 @@ export const AlchemistResponses = (npc: NPC) => {
 
       player.startQuest(LearnAlchemy);
 
-      return 'Great! I love teaching new alchemists. To start, go get a bottle of water and bread. Come back, and tell me you want to practice ALCHEMY. Then, just mix the two items together!';
+      return `Great! I love teaching new alchemists. To start, go get a bottle of water and bread. 
+      Come back, and tell me you want to practice ALCHEMY. Then, just mix the two items together!`;
     });
 
   npc.parser.addCommand('assess')
@@ -737,8 +738,7 @@ export const SpellforgingResponses = (npc: NPC) => {
     });
 };
 
-
-const calcRequiredGoldForNextHPMP = (player, maxForTier: number, normalizer: number, costsAtTier: { min, max }) => {
+const calcRequiredGoldForNextHPMP = (player, maxForTier: number, normalizer: number, costsAtTier: { min: number, max: number }) => {
 
   const normal = normalizer;
 

@@ -9,7 +9,7 @@ export class GMModifyItem extends Command {
   public name = '@itemmod';
   public format = 'Props...';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     if(!player.rightHand) return player.sendClientMessage('Hold an item in your right hand to modify.');

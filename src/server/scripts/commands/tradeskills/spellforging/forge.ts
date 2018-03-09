@@ -2,7 +2,7 @@
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
-import { compact, capitalize } from 'lodash';
+import { capitalize } from 'lodash';
 import { SpellforgingHelper } from '../../../../helpers/spellforging-helper';
 
 export class Forge extends Command {
@@ -10,7 +10,7 @@ export class Forge extends Command {
   public name = 'forge';
   public format = 'EnchUUID';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(!args) return false;
     if(!SpellforgingHelper.canSpellforge(player)) return player.sendClientMessage('You are not skilled enough to Spellforge.');
 
@@ -23,7 +23,7 @@ export class Forge extends Command {
 
     if(container.result) return player.sendClientMessage('You need to remove your previous result first.');
 
-    let lowerDustType = dustType.toLowerCase();
+    const lowerDustType = dustType.toLowerCase();
 
     if(container.dustValues[lowerDustType] < 100) return player.sendClientMessage('You do not have enough dust to do that!');
 

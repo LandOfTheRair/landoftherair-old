@@ -8,7 +8,7 @@ export class Tickle extends Command {
   public name = 'tickle';
   public format = 'Target?';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
 
     if(possTargets && possTargets[0]) {
@@ -21,7 +21,7 @@ export class Tickle extends Command {
       return;
     }
 
-    player.sendClientMessage('You tickles the air!');
+    player.sendClientMessage('You tickle the air!');
     player.sendClientMessageToRadius(`${player.name} tickles the air!`, 4, [player.uuid]);
 
   }

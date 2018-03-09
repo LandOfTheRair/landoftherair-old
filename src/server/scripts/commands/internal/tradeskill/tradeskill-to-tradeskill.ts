@@ -1,5 +1,5 @@
 
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -9,7 +9,7 @@ export class TradeskillToTradeskill extends Command {
   public name = '~TtT';
   public format = 'TradeskillSlot TradeskillSrcSlot AlchUUID TradeskillDestSlot';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
     const [tsSlot, tsSrcSlot, alchUUID, tsDestSlot] = args.split(' ');
     if(!tsSlot || isUndefined(tsSrcSlot) || !alchUUID || isUndefined(tsDestSlot)) return false;
 

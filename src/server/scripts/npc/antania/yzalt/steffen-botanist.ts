@@ -34,6 +34,7 @@ export const responses = (npc: NPC) => {
         return `Ah, thank you ${player.name}! Here, enjoy your increased health regeneration.`;
       }
 
-      return `Well hello there, adventurer! I am a roaming botanist and I seek the apples of the Steffen. If you can bring me two, I can increase your natural health regeneration using a technique I learned from my master!`;
+      return `Well hello there, adventurer! I am a roaming botanist and I seek the apples of the Steffen. 
+      If you can bring me two, I can increase your natural health regeneration using a technique I learned from my master!`;
     });
 };

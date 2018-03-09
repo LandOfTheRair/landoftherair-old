@@ -1,8 +1,7 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { MapLayer } from '../../../../shared/models/maplayer';
-import { find, includes } from 'lodash';
+import { includes } from 'lodash';
 
 export class ClimbUp extends Command {
 
@@ -17,7 +16,7 @@ export class ClimbUp extends Command {
 
   public name = ['climb up', 'climb down'];
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room }) {
 
     const interactable = player.$$room.state.getInteractable(player.x, player.y);
     const stairs = interactable && includes(['ClimbUp', 'ClimbDown'], interactable.type) ? interactable : null;

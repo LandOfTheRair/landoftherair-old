@@ -27,7 +27,7 @@ export class DiscordHelper {
 
       if(hasRole) {
         member.removeRole(watcherRole);
-        channel.send(`${member}, you are **no longer watching** events. You will no longer receive event notifications.`)
+        channel.send(`${member}, you are **no longer watching** events. You will no longer receive event notifications.`);
       } else {
         member.addRole(watcherRole);
         channel.send(`${member}, you are assigned the role ${DISCORD_WATCHER_ROLE_NAME}. You will be notified when something cool happens.`);

@@ -1,8 +1,7 @@
 
-import { clone, extend } from 'lodash';
+import { extend } from 'lodash';
 
 import { GameWorld } from '../rooms/GameWorld';
-import { Redis } from '../redis';
 
 export interface GameSettings {
   xpMult: number;

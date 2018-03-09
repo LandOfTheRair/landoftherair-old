@@ -1,5 +1,5 @@
 
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -9,7 +9,7 @@ export class LeftToEquip extends Command {
   public name = '~LtE';
   public format = 'ItemSlot';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { args }) {
     const item = player.leftHand;
     if(this.isAccessingLocker(player)) return;
     if(!item) return;

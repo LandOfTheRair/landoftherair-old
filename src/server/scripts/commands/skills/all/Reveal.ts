@@ -1,5 +1,5 @@
 
-import { startsWith } from 'lodash';
+
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
@@ -11,7 +11,7 @@ export class Reveal extends Skill {
 
   requiresLearn = false;
 
-  execute(user: Character, { gameState }) {
+  execute(user: Character) {
     this.use(user);
   }
 

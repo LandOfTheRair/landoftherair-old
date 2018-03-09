@@ -1,5 +1,5 @@
 
-import { omitBy, startsWith, isString, isObject, cloneDeep, sample, find, compact, get, filter, clone, pull, extend } from 'lodash';
+import { isObject, cloneDeep, find, get, clone, pull, extend } from 'lodash';
 
 import { Parser } from 'mingy';
 
@@ -152,8 +152,7 @@ export class GameWorld extends Room<GameState> {
     this.setState(new GameState({
       players: [],
       map: cloneDeep(require(opts.mapPath)),
-      mapName: opts.mapName,
-      createdId: opts.party
+      mapName: opts.mapName
     }));
 
     const finishLoad = async () => {
@@ -440,7 +439,7 @@ export class GameWorld extends Room<GameState> {
 
   showAlchemyWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
-    this.send(client, { action: 'show_ts', tradeskill:'Alchemy', uuid: npc.uuid });
+    this.send(client, { action: 'show_ts', tradeskill: 'Alchemy', uuid: npc.uuid });
   }
 
   showSpellforgingWindow(player: Player, npc: NPC) {
@@ -519,7 +518,7 @@ export class GameWorld extends Room<GameState> {
     this.updatePos(player);
   }
 
-  async teleport(player, opts: { newMap, x, y, zChange?, zSet? }) {
+  async teleport(player, opts: { newMap: string, x: number, y: number, zChange?: number, zSet?: number }) {
 
     const { newMap, x, y, zChange, zSet } = opts;
 

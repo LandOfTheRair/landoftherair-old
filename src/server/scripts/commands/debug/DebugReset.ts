@@ -6,7 +6,7 @@ export class DebugReset extends Command {
 
   public name = '~~reset';
 
-  execute(player: Player, { room, args }) {
+  execute(player: Player) {
     player.clearEffects();
     player.resetAdditionalStats();
 

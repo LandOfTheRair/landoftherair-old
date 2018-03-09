@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 import { Item } from '../../../../../shared/models/item';
@@ -10,11 +8,9 @@ export class BuybackToSack extends Command {
   public name = '~OtS';
   public format = 'MerchantUUID ItemSlot';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
 
     const [containerUUID, slot] = args.split(' ');
-
-
 
     const container = room.state.findNPC(containerUUID);
     if(!container) return player.sendClientMessage('That person is not here.');

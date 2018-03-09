@@ -18,7 +18,7 @@ import * as cluster from 'cluster';
 import * as http from 'http';
 
 if(!process.env.AUTH0_SECRET) {
-  console.log('No env.AUTH0_SECRET. Set one.');
+  Logger.log('No env.AUTH0_SECRET. Set one.');
   process.exit(0);
 }
 

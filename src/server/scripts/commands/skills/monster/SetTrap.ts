@@ -1,5 +1,5 @@
 
-import { startsWith, find } from 'lodash';
+import { find } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';

@@ -24,8 +24,10 @@ export class CharacterCreator {
     Townsfolk:    'You happen to be a person of the town. You may not be used to defending your town, but you can dodge a thrown milk can.',
     Royalty:      'You may never have picked up a sword in your life, but you are very well read, knowledgable, and wealthy.',
     Adventurers:  'You get around. You have seen a lot in your travels, and it shaped you to be hardy and knowledgable, even if your reflexes suffer.',
-    Wilderness:   'You spend a lot of time in the wilderness, away from society. This gives you lots of time to read, and you happen to like practicing magic with the spellbooks you have found.',
-    Underground:  'You live underground. You train daily by punching rocks. It is not the smartest choice, but you do it anyway. You have not seen yourself since you were young, so your appearance is lacking.'
+    Wilderness:   `You spend a lot of time in the wilderness, away from society. 
+    This gives you lots of time to read, and you happen to like practicing magic with the spellbooks you have found.`,
+    Underground:  `You live underground. You train daily by punching rocks. It is not the smartest choice, but you do it anyway. 
+    You have not seen yourself since you were young, so your appearance is lacking.`
   };
 
   static validAllegiances() {

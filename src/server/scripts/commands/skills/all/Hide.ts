@@ -1,5 +1,5 @@
 
-import { startsWith, isString } from 'lodash';
+import { isString } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
@@ -23,7 +23,7 @@ export class Hide extends Skill {
 
   requiresLearn = false;
 
-  execute(user: Character, { gameState }) {
+  execute(user: Character) {
     this.use(user);
   }
 

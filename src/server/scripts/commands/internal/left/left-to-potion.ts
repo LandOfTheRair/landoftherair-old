@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
@@ -9,7 +7,7 @@ export class LeftToPotion extends Command {
   public name = '~LtP';
   public format = '';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player) {
     const left = player.leftHand;
     if(this.isAccessingLocker(player)) return;
     if(!left) return;

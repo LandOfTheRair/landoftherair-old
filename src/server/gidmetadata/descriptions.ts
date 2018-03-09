@@ -1,6 +1,4 @@
 
-import { range } from 'lodash';
-
 const WOOD_PILE_DESC = 'You are standing near a pile of logs, stacked neatly so as not to trounce an unsuspecting passerby.';
 const WOOD_SEAT_DESC = 'You are sitting in a somewhat uncomfortable wooden seat.';
 const WATER_BARREL_DESC = 'You are standing near a keg. Who know\'s what\'s inside?';

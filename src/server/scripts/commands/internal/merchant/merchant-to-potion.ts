@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 import { Item } from '../../../../../shared/models/item';
@@ -10,11 +8,9 @@ export class MerchantToPotion extends Command {
   public name = '~MtP';
   public format = 'MerchantUUID ItemUUID';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { args }) {
 
     const [containerUUID, itemUUID] = args.split(' ');
-
-
 
     if(!this.checkMerchantDistance(player, containerUUID)) return false;
 

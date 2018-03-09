@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
@@ -9,7 +7,7 @@ export class RightToPotion extends Command {
   public name = '~RtP';
   public format = '';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player) {
     if(this.isAccessingLocker(player)) return;
     const right = player.rightHand;
     if(!right) return;

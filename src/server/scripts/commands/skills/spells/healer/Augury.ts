@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Augury as CastEffect } from '../../../../../effects/misc/Augury';
 import { MessageHelper } from '../../../../../helpers/message-helper';
 
@@ -22,7 +20,7 @@ export class Augury extends Skill {
 
   mpCost() { return 25; }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { args, effect }) {
     if(!this.tryToConsumeMP(user, effect)) return;
 
     const possTargets = MessageHelper.getPossibleAuguryTargets(user, args);

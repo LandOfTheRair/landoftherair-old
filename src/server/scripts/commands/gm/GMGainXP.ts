@@ -8,7 +8,7 @@ export class GMGainXP extends Command {
   public name = '@xp';
   public format = 'XP';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const xpGain = +args;

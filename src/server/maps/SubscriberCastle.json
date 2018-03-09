@@ -462,8 +462,8 @@
                  "name":"Thief Trainer",
                  "properties":
                     {
-                     "maxLevelUpLevel":3,
-                     "maxSkillTrain":3,
+                     "maxLevelUpLevel":50,
+                     "maxSkillTrain":40,
                      "script":"trainer\/thief"
                     },
                  "propertytypes":
@@ -849,7 +849,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 

@@ -22,6 +22,7 @@ export class Logger {
   }
 
   static log(msg: string) {
+    // tslint:disable-next-line no-console
     console.log(this._formatMessage(msg));
   }
 

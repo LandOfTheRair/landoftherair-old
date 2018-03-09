@@ -86,7 +86,8 @@ const yzaltFungusCloak = (player) => {
     return 'It doesn\'t smell the best, but it\'ll get the job done.';
   }
 
-  return 'Well, this robe stinks like a rat. And fungus. These rats really couldn\'t make something that smells nicer? Bring me another one and I\'ll... see what I can do...';
+  return `Well, this robe stinks like a rat. And fungus. These rats really couldn\'t make something that smells nicer? 
+  Bring me another one and I\'ll... see what I can do...`;
 };
 
 const yzaltRatGuardFur = (player) => {
@@ -138,7 +139,8 @@ export const responses = (npc: NPC) => {
       dv.duration = 3600;
       dv.cast(player, player);
 
-      return `Well hello there! If you're in the market for some dungeon diving, I can help you out with the gift of darkvision. Come back anytime! If you find anything interesting regarding the rat civilization, I want to be the first to know!`;
+      return `Well hello there! If you're in the market for some dungeon diving, I can help you out with the gift of darkvision. Come back anytime!
+       If you find anything interesting regarding the rat civilization, I want to be the first to know!`;
     });
 
 };

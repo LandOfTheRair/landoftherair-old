@@ -10,7 +10,7 @@ export class GMKill extends Command {
   public name = '@kill';
   public format = 'Target';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args);

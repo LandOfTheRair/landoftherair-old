@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { MagicMissile as CastEffect } from '../../../../../effects/damagers/MagicMissile';
 
 export class MagicMissile extends Skill {
@@ -22,7 +20,7 @@ export class MagicMissile extends Skill {
   mpCost() { return 5; }
   range(attacker: Character) { return 5; }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { args, effect }) {
     if(!args) return false;
 
     const target = this.getTarget(user, args);

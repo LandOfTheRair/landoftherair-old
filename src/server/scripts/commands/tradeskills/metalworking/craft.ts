@@ -2,7 +2,6 @@
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
-import { compact, capitalize } from 'lodash';
 import { MetalworkingHelper } from '../../../../helpers/metalworking-helper';
 
 export class Craft extends Command {
@@ -10,7 +9,7 @@ export class Craft extends Command {
   public name = 'craft';
   public format = 'SmithUUID';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(!args) return false;
     if(!MetalworkingHelper.canMetalwork(player)) return player.sendClientMessage('You are not able to Metalforge!');
 

@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { get } from 'lodash';
 import { SubscriptionHelper } from '../../../helpers/subscription-helper';
 import { MessageHelper } from '../../../helpers/message-helper';
 
@@ -10,7 +9,7 @@ export class GMIntercept extends Command {
   public name = '@intercept';
   public format = 'Charish';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
     if(!args) return false;
 

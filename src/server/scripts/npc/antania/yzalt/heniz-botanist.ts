@@ -33,6 +33,7 @@ export const responses = (npc: NPC) => {
         return `Ah, thank you ${player.name}! Here, enjoy your increased mana regeneration.`;
       }
 
-      return `Well hello there, adventurer! I am a roaming botanist and I seek the flowers of the Heniz. If you can bring me two, I can increase your natural mana regeneration using a technique I learned from my master!`;
+      return `Well hello there, adventurer! I am a roaming botanist and I seek the flowers of the Heniz. 
+      If you can bring me two, I can increase your natural mana regeneration using a technique I learned from my master!`;
     });
 };

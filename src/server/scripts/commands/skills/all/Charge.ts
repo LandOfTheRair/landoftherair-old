@@ -1,5 +1,5 @@
 
-import { startsWith } from 'lodash';
+
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
@@ -36,7 +36,7 @@ export class Charge extends Skill {
     return weapon.attackRange;
   }
 
-  execute(user: Character, { gameState, args }) {
+  execute(user: Character, { args }) {
     if(!args) return false;
 
     const weapon = user.rightHand;

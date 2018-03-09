@@ -2,8 +2,6 @@
 import { Look } from './Look';
 import { Player } from '../../../../shared/models/player';
 
-import { compact, endsWith } from 'lodash';
-
 export class Search extends Look {
 
   static macroMetadata = {
@@ -17,7 +15,7 @@ export class Search extends Look {
 
   public name = '~search';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, gameState }) {
     const items = gameState.getGroundItems(player.x, player.y);
 
     if(items.Corpse) {
@@ -32,7 +30,7 @@ export class Search extends Look {
       room.dropChestItems(chest, player);
     }
 
-    super.execute(player, { room, gameState, args });
+    super.execute(player, { room, gameState });
   }
 
 }

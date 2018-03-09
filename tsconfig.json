@@ -23,6 +23,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "client"
+    "src/client",
+    "src/server/tasks",
+    "src/server/test"
   ]
 }

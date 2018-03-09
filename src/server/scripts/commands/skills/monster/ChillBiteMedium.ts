@@ -1,6 +1,4 @@
 
-import { startsWith } from 'lodash';
-
 import * as dice from 'dice.js';
 
 import { Skill } from '../../../../base/Skill';

@@ -8,7 +8,7 @@ export class Kiss extends Command {
   public name = 'kiss';
   public format = 'Target?';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
 
     if(possTargets && possTargets[0]) {
@@ -21,7 +21,7 @@ export class Kiss extends Command {
       return;
     }
 
-    player.sendClientMessage('You kisses the air!');
+    player.sendClientMessage('You kiss the air!');
     player.sendClientMessageToRadius(`${player.name} kisses the air!`, 4, [player.uuid]);
 
   }

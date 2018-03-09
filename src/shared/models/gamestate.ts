@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, endsWith } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get } from 'lodash';
 
 import { Player } from './player';
 
@@ -55,8 +55,6 @@ export class GameState {
 
   @nonenumerable
   private secretWallHash = {};
-
-  private createdId: string|number;
 
   environmentalObjects: any[] = [];
 
@@ -577,7 +575,7 @@ export class GameState {
   }
 
   findChest(x, y): any {
-    const chest = this.getInteractable(x, y, true,'TreasureChest');
+    const chest = this.getInteractable(x, y, true, 'TreasureChest');
     if(!chest) return null;
 
     return chest;

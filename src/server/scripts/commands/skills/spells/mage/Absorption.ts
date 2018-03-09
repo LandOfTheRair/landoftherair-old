@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Absorption as CastEffect } from '../../../../../effects/buffs/Absorption';
 
 export class Absorption extends Skill {
@@ -22,7 +20,7 @@ export class Absorption extends Skill {
   mpCost() { return 100; }
   range(attacker: Character) { return 5; }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { args, effect }) {
 
     const target = this.getTarget(user, args, true);
     if(!target) return;

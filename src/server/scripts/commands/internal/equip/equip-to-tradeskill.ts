@@ -1,5 +1,5 @@
 
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -9,7 +9,7 @@ export class EquipToTradeskill extends Command {
   public name = '~EtT';
   public format = 'ItemSlot TradeskillSlot TradeskillDestSlot AlchUUID';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
     const [slot, tsSlot, tsDestSlot, alchUUID] = args.split(' ');
     if(this.isAccessingLocker(player)) return;
     if(!slot || !tsSlot || isUndefined(tsDestSlot) || !alchUUID) return false;

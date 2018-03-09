@@ -35,7 +35,8 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['prisoners'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
-      return `Why, yes. They've been doing nothing but trying to riot down there, as if they could actually get out. Regardless, I could use some HELP containing them.`;
+      return `Why, yes. They've been doing nothing but trying to riot down there, as if they could actually get out. 
+      Regardless, I could use some HELP containing them.`;
     });
 
   npc.parser.addCommand('help')
@@ -45,7 +46,9 @@ export const responses = (npc: NPC) => {
 
       player.startQuest(KillRebels);
 
-      return `Yes, please kill ${KillRebels.killsRequired} prisoners for me. Actually kill them. There's no paperwork to deal with if they're no longer living, you see. Get it done, and get it done fast. I'll give you a reward of 2,000 gold if you do -- 100 gold per prisoner killed.`;
+      return `Yes, please kill ${KillRebels.killsRequired} prisoners for me. Actually kill them. 
+      There's no paperwork to deal with if they're no longer living, you see. Get it done, and get it done fast. 
+      I'll give you a reward of 2,000 gold if you do -- 100 gold per prisoner killed.`;
     });
 
 };

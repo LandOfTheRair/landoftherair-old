@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 import { Item } from '../../../../../shared/models/item';
@@ -10,7 +8,7 @@ export class BuybackToRight extends Command {
   public name = '~OtR';
   public format = 'MerchantUUID ItemSlot';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
 
     const [containerUUID, slot] = args.split(' ');
 

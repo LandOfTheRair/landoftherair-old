@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Darkness as CastEffect } from '../../../../../effects/misc/Darkness';
 import { CharacterHelper } from '../../../../../helpers/character-helper';
 
@@ -26,7 +24,7 @@ export class Darkness extends Skill {
     return super.canUse(user, target) && !CharacterHelper.isInDarkness(target);
   }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { args, effect }) {
 
     const target = this.getTarget(user, args, true);
     if(!target) return;

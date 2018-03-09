@@ -9,7 +9,7 @@ export class Talk extends Command {
 
   public name = '~talk';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { args }) {
     const argArr = args.split(',');
 
     if(argArr.length < 2) return;

@@ -37,28 +37,34 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['tonwin'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      return `Yes, Tonwin tricked us all. He convinced us all to work against each other, bringing us deeper and deeper into the prison and imprisoning us separately from each other, all the while convincing us we would get something out of it. Money, fame, strength, you know how it goes. We were greedy.`;
+      return `Yes, Tonwin tricked us all. 
+      He convinced us all to work against each other, bringing us deeper and deeper into the prison and imprisoning us separately from each other. 
+      All the while, he was convincing us we would get something out of it. 
+      Money, fame, strength, you know how it goes. We were greedy.`;
     });
 
   npc.parser.addCommand('takwin')
     .set('syntax', ['takwin'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      return `Takwin was the closest to TONWIN. He's probably very close to Tonwin; he always trusted Takwin's counsel. I bet he would give you the strength he desired if you could help him.`;
+      return `Takwin was the closest to TONWIN. He's probably very close to Tonwin; he always trusted Takwin's counsel. 
+      I bet he would give you the strength he desired if you could help him.`;
     });
 
   npc.parser.addCommand('terwin')
     .set('syntax', ['terwin'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      return `Terwin always was a bit of an outcast to us. Who knows what was done with him, or if he's even alive? He probably can't give you the fame he so desired, but I'm sure he could help you in other ways.`;
+      return `Terwin always was a bit of an outcast to us. Who knows what was done with him, or if he's even alive? 
+      He probably can't give you the fame he so desired, but I'm sure he could help you in other ways.`;
     });
 
   npc.parser.addCommand('telwin')
     .set('syntax', ['telwin'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      return `Yes, yes. You see, I wanted money. With it, I could live comfortably in a Steffen castle. If you bring me PROOF of Tonwin's death, I can reward you with what I have.`;
+      return `Yes, yes. You see, I wanted money. With it, I could live comfortably in a Steffen castle. 
+      If you bring me PROOF of Tonwin's death, I can reward you with what I have.`;
     });
 
   npc.parser.addCommand('proof')

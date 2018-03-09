@@ -10,7 +10,7 @@ export class GMSpawnNPC extends Command {
   public name = '@spawnnpc';
   public format = 'Props...';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     if(!args) return false;

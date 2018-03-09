@@ -1,5 +1,5 @@
 
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -10,12 +10,12 @@ export class LockerToPotion extends Command {
   public name = '~WtP';
   public format = 'ItemSlot LockerID';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     const [slotId, lockerId] = args.split(' ');
+    if(isUndefined(slotId)) return;
 
     if(this.isAccessingLocker(player)) return;
     if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
-
 
     this.accessLocker(player);
     if(!this.findLocker(player)) return this.unaccessLocker(player);

@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Stunned as CastEffect } from '../../../../../effects/antibuffs/Stunned';
 
 export class Stun extends Skill {
@@ -22,7 +20,7 @@ export class Stun extends Skill {
   mpCost() { return 40; }
   range(attacker: Character) { return 5; }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { args, effect }) {
 
     const target = this.getTarget(user, args);
     if(!target) return;

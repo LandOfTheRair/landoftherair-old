@@ -1,5 +1,5 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/npc-loader'
+import { NPCLoader } from '../../../../helpers/npc-loader';
 import { KillSteffen } from '../../../../quests/antania/Yzalt/KillSteffen';
 
 export const setup = async (npc: NPC) => {

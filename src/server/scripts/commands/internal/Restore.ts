@@ -1,6 +1,4 @@
 
-import { startsWith } from 'lodash';
-
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 
@@ -17,7 +15,7 @@ export class Restore extends Command {
 
   public name = 'restore';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player) {
     if(!player.isDead()) return;
 
     player.restore(false);

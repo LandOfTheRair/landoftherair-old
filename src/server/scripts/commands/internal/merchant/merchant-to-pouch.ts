@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 import { Item } from '../../../../../shared/models/item';
@@ -10,13 +8,11 @@ export class MerchantToPouch extends Command {
   public name = '~MtD';
   public format = 'MerchantUUID ItemUUID Quantity';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { args }) {
 
     const [containerUUID, itemUUID, quantityCheck] = args.split(' ');
     const quantity = Math.round(+quantityCheck);
     if(quantity < 0) return false;
-
-
 
     if(!this.checkMerchantDistance(player, containerUUID)) return;
 

@@ -1,5 +1,5 @@
 
-import { startsWith } from 'lodash';
+
 
 import { Skill } from '../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../shared/models/character';
@@ -32,7 +32,7 @@ export class Backstab extends Skill {
     return weapon.attackRange;
   }
 
-  execute(user: Character, { gameState, args }) {
+  execute(user: Character, { args }) {
     if(!args) return false;
 
     const hidden = user.hasEffect('Hidden');

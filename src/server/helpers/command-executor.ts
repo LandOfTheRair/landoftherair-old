@@ -14,9 +14,9 @@ Object.keys(Commands).forEach(cmd => {
 
   let names = command.name;
 
-  const addToHash = (hash, name, command) => {
+  const addToHash = (hash, name, addCommand) => {
     if(hash[name]) throw new Error(`Error: Skill/Command ${name} already exists (bound to ${hash[name].constructor.name})`);
-    hash[name] = command;
+    hash[name] = addCommand;
   };
 
   // a monster skill has no name

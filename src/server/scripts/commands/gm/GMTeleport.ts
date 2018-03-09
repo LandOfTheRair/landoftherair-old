@@ -8,7 +8,7 @@ export class GMTeleport extends Command {
   public name = '@teleport';
   public format = 'X Y [Map]';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const [x, y, map] = args.split(' ');

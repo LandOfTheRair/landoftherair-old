@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
@@ -9,12 +7,10 @@ export class PotionToMerchant extends Command {
   public name = '~PtM';
   public format = 'MerchantUUID';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
     if(this.isAccessingLocker(player)) return;
 
     const merchantUUID = args;
-
-
 
     const container = room.state.findNPC(merchantUUID);
     if(!container) return player.sendClientMessage('That person is not here.');

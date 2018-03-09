@@ -43,7 +43,9 @@
     {
       "project": "src/client/tsconfig.app.json",
       "exclude": [
-        "**/*/_vars.ts"
+        "**/*/_vars.ts",
+        "**/server/**",
+        "**/shared/**"
       ]
     }
   ],

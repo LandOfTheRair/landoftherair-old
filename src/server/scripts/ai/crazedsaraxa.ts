@@ -16,7 +16,7 @@ class AcolyteOverseer extends SpellEffect {
     tooltipDesc: 'Receiving 4% healing per acolyte every 5 seconds.'
   };
 
-  private ticks: number = 0;
+  private ticks = 0;
 
   cast(target: NPC) {
     this.duration = 500;

@@ -1,14 +1,13 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { find, includes } from 'lodash';
 import { Logger } from '../../../logger';
 
 export class GMPartyJoin extends Command {
 
   public name = '@partyjoin';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
 
     if(player.party) return player.sendClientMessage(`You are already in the "${player.partyName}" party!`);
     if(!args) return player.sendClientMessage('You need to specify a party name!');

@@ -15,7 +15,7 @@ export class ShowSkills extends Command {
 
   public name = 'show skills';
 
-  execute(player: Player, { room, args }) {
+  execute(player: Player) {
     player.sendClientMessage(`You are ${player.name}, the ${player.alignment} level ${player.level} ${player.baseClass}.`);
     player.sendClientMessage(`Your allegiance lies with ${player.allegiance === 'None' ? 'no one' : `the ${player.allegiance}`}.`);
 

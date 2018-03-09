@@ -9,7 +9,7 @@ export class TesterGainGold extends Command {
   public name = '^gold';
   public format = 'Gold';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player) && !SubscriptionHelper.isTester(player)) return;
 
     const gold = Math.floor(+args);

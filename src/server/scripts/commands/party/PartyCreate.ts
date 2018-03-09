@@ -1,13 +1,12 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { find, includes } from 'lodash';
 
 export class PartyCreate extends Command {
 
   public name = 'party create';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
 
     if(player.party) return player.sendClientMessage('You are already in a party!');
     if(!args) return player.sendClientMessage('You need to specify a party name!');

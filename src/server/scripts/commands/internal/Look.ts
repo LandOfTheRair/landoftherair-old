@@ -29,7 +29,7 @@ export class Look extends Command {
     return 'zounds of';
   }
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, gameState }) {
     const items = gameState.getGroundItems(player.x, player.y);
     const numTypes = Object.keys(items);
 

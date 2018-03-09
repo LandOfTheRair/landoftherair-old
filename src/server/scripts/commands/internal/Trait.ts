@@ -1,6 +1,4 @@
 
-import { startsWith } from 'lodash';
-
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 
@@ -11,7 +9,7 @@ export class Trait extends Command {
   public name = '~trait';
   public format = 'TraitCategory TraitName';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { args }) {
     if(!args) return false;
 
     const [category, name] = args.split(' ');

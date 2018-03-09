@@ -1,5 +1,5 @@
 
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -10,15 +10,13 @@ export class EquipToLocker extends Command {
   public name = '~EtW';
   public format = 'ItemSlot LockerID';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     const [slot, lockerId] = args.split(' ');
     if(this.isAccessingLocker(player)) return;
     if(isUndefined(slot)) return false;
 
     const item = player.gear[slot];
     if(!item) return false;
-
-
 
     this.accessLocker(player);
 

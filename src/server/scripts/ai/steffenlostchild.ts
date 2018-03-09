@@ -1,7 +1,6 @@
 
 import { NPC } from '../../../shared/models/npc';
-import { CommandExecutor } from '../../helpers/command-executor';
-import { random, sumBy, maxBy, sample, sampleSize, clamp, size } from 'lodash';
+import { random, sample } from 'lodash';
 import { NPCLoader } from '../../helpers/npc-loader';
 import { Player } from '../../../shared/models/player';
 import { MoveHelper } from '../../helpers/move-helper';

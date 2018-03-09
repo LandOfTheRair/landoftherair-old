@@ -9,7 +9,7 @@ export class TesterSetSkills extends Command {
   public name = '^skills';
   public format = 'SkillLevel';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player) && !SubscriptionHelper.isTester(player)) return;
 
     const level = +args;

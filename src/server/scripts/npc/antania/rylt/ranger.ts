@@ -17,7 +17,9 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      return `Greetings, adventurer. I am the ranger who collects bear meat. You see, I really like bear meat. It was my destiny to collect it. If you can bring me some bear meat, we can help each other. You can SELL it to me, I can UPGRADE your gear, or I can give you an ANTIDOTE to help you with the local wildlife.`;
+      return `Greetings, adventurer. I am the ranger who collects bear meat. You see, I really like bear meat. 
+      It was my destiny to collect it. If you can bring me some bear meat, we can help each other. 
+      You can SELL it to me, I can UPGRADE your gear, or I can give you an ANTIDOTE to help you with the local wildlife.`;
     });
 
   npc.parser.addCommand('sell')
@@ -39,7 +41,8 @@ export const responses = (npc: NPC) => {
         return `Thanks, ${player.name}! Here is ${total.toLocaleString()} gold for your efforts.`;
       }
 
-      return `Hold one meat in your left hand, and I'll take that one as well as every one you're carrying. You can have 150 gold for each meat! Be sure you want to do this!`;
+      return `Hold one meat in your left hand, and I'll take that one as well as every one you're carrying. 
+      You can have 150 gold for each meat! Be sure you want to do this!`;
     });
 
   npc.parser.addCommand('upgrade')
@@ -67,10 +70,12 @@ export const responses = (npc: NPC) => {
         right.stats.offense += 1;
         player.recalculateStats();
 
-        return `Thanks, ${player.name}! I've upgraded your ${player.rightHand.itemClass.toLowerCase()}. And thanks for the meat, I'm going to have a good dinner tonight!`;
+        return `Thanks, ${player.name}! I've upgraded your ${player.rightHand.itemClass.toLowerCase()}. 
+        And thanks for the meat, I'm going to have a good dinner tonight!`;
       }
 
-      return `Hold one meat in your left hand, and I'll take that one plus four from your sack. Hold a piece of gear with no offensive adds in your right hand, and it will help you better in combat!`;
+      return `Hold one meat in your left hand, and I'll take that one plus four from your sack. 
+      Hold a piece of gear with no offensive adds in your right hand, and it will help you better in combat!`;
     });
 
   npc.parser.addCommand('antidote')
@@ -105,6 +110,7 @@ export const responses = (npc: NPC) => {
         return `Thanks, ${player.name}! There's a bottle of antidote for ya. And thanks for the meat, heheh.`;
       }
 
-      return `Hold one meat in your left hand, and hold a small healing bottle from town in your right. I'll take as many bear meat as there are ounces in the bottle and give you an antidote made with bear meat!`;
+      return `Hold one meat in your left hand, and hold a small healing bottle from town in your right. 
+      I'll take as many bear meat as there are ounces in the bottle and give you an antidote made with bear meat!`;
     });
 };

@@ -480,7 +480,9 @@ export class Lobby extends Room<LobbyState> {
           error: 'success_stripe',
           popupType: 'success',
           prettyErrorName: 'Stripe Success',
-          prettyErrorDesc: `Payment successful. Thanks for your support! You are now a ${purchaseInfo.item.duration}-month subscriber to Land of the Rair! You also now have ${account.silver.toLocaleString()} silver!`
+          prettyErrorDesc: `Payment successful. Thanks for your support! 
+          You are now a ${purchaseInfo.item.duration}-month subscriber to Land of the Rair! 
+          You also now have ${account.silver.toLocaleString()} silver!`
         });
 
       } else {
@@ -563,7 +565,8 @@ export class Lobby extends Room<LobbyState> {
     const gmAccount = this.state.findAccount(client.userId);
     if(!gmAccount || !gmAccount.isGM) return;
 
-    let { account, period } = data;
+    const { account } = data;
+    let { period } = data;
 
     if(!account) return;
     if(!period) period = 30;

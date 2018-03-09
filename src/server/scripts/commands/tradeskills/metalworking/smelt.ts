@@ -2,7 +2,7 @@
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
-import { compact, capitalize } from 'lodash';
+import { capitalize } from 'lodash';
 import { MetalworkingHelper } from '../../../../helpers/metalworking-helper';
 
 export class Smelt extends Command {
@@ -10,7 +10,7 @@ export class Smelt extends Command {
   public name = 'smelt';
   public format = 'SmithUUID';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(!args) return false;
     if(!MetalworkingHelper.canMetalwork(player)) return player.sendClientMessage('You are not able to Metalforge!');
 
@@ -23,7 +23,7 @@ export class Smelt extends Command {
 
     if(container.craftResult) return player.sendClientMessage('You need to remove your previous result first.');
 
-    let lowerOreType = oreType.toLowerCase();
+    const lowerOreType = oreType.toLowerCase();
 
     if(container.oreValues[lowerOreType] < 100) return player.sendClientMessage('You do not have enough ore to do that!');
 

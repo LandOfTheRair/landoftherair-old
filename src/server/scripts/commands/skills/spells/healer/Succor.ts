@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Succor as CastEffect } from '../../../../../effects/misc/Succor';
 
 export class Succor extends Skill {
@@ -21,7 +19,7 @@ export class Succor extends Skill {
 
   mpCost() { return 25; }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { effect }) {
     if(!this.tryToConsumeMP(user, effect)) return;
 
     this.use(user, effect);

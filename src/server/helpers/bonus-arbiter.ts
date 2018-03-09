@@ -1,7 +1,7 @@
 
 import * as scheduler from 'node-schedule';
 
-import { map, find, extend, clone } from 'lodash';
+import { clone } from 'lodash';
 import { GameSettings } from './bonus-helper';
 import { Lobby } from '../rooms/Lobby';
 

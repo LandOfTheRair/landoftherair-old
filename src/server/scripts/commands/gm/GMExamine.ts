@@ -10,7 +10,7 @@ export class GMExamine extends Command {
   public name = '@examine';
   public format = 'Target? Prop?';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     if(!args && player.rightHand) {

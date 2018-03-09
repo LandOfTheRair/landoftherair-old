@@ -3,7 +3,6 @@ import { GameWorld } from './GameWorld';
 
 export class InstancedDungeon extends GameWorld {
 
-  public createdId = Date.now();
   public partyOwner: string;
 
   get exitPoint() {

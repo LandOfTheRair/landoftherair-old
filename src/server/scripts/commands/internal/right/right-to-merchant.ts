@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
@@ -9,7 +7,7 @@ export class RightToMerchant extends Command {
   public name = '~RtM';
   public format = 'MerchantUUID';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { args }) {
     if(this.isAccessingLocker(player)) return;
     const item = player.rightHand;
 

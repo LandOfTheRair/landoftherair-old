@@ -1,5 +1,5 @@
 
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -10,10 +10,10 @@ export class LockerToGround extends Command {
   public name = '~WtG';
   public format = 'ItemSlot LockerID [Amt]';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(this.isAccessingLocker(player)) return;
     const [slotId, lockerId, amount] = args.split(' ');
-
+    if(isUndefined(slotId)) return;
 
     this.accessLocker(player);
     if(!this.findLocker(player)) return this.unaccessLocker(player);

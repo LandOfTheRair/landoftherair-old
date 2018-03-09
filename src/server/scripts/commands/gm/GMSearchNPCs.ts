@@ -9,7 +9,7 @@ export class GMSearchNPCs extends Command {
   public name = '@searchnpcs';
   public format = 'NPCName';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const npcName = args;

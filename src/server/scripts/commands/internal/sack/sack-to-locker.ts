@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 import { LockerHelper } from '../../../../helpers/locker-helper';
@@ -10,12 +8,10 @@ export class SackToLocker extends Command {
   public name = '~StW';
   public format = 'Slot LockerID';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(this.isAccessingLocker(player)) return;
 
     const [slot, lockerId] = args.split(' ');
-
-
 
     this.accessLocker(player);
 

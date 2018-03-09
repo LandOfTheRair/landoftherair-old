@@ -8,7 +8,7 @@ export class GMCreateGold extends Command {
   public name = '@gold';
   public format = 'Value';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const value = +args;

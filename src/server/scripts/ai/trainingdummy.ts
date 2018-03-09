@@ -1,6 +1,5 @@
 
 import { NPC } from '../../../shared/models/npc';
-import { random, sumBy, maxBy, sample, sampleSize, clamp, size } from 'lodash';
 
 // username -> lastAttack hash (updated every attack)
 const lastAttackTick = {
@@ -74,7 +73,7 @@ export const mechanicTick = (npc: NPC) => {
   });
 };
 
-export const damage = (npc: NPC, { damage, attacker }) => {
+export const damageTaken = (npc: NPC, { damage, attacker }) => {
   if(!attacker) return;
 
   const playerUsername = attacker.username;

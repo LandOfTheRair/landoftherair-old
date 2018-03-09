@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Revive as CastEffect } from '../../../../../effects/cures/Revive';
 
 export class Revive extends Skill {
@@ -21,7 +19,7 @@ export class Revive extends Skill {
 
   mpCost() { return 50; }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { effect }) {
     if(!this.tryToConsumeMP(user, effect)) return;
 
     const targets = user.$$room.state.getPlayersInRange(user, 0, [user.uuid]).filter(target => target.isDead());

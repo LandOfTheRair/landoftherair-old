@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 import { LockerHelper } from '../../../../helpers/locker-helper';
@@ -10,15 +8,13 @@ export class PotionToLocker extends Command {
   public name = '~PtW';
   public format = 'LockerID';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(this.isAccessingLocker(player)) return;
 
     const lockerId = args;
     const item = player.potionHand;
 
     if(!item) return;
-
-
 
     this.accessLocker(player);
 

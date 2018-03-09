@@ -1,7 +1,7 @@
 
 import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
-import { random, sumBy, maxBy, sample, sampleSize, clamp, size, includes } from 'lodash';
+import { random, maxBy, sample, sampleSize, clamp, includes } from 'lodash';
 import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
 
 const checkGroundForItems = (npc: NPC) => {

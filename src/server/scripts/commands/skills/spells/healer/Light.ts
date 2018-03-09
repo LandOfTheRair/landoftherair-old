@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Light as CastEffect } from '../../../../../effects/misc/Light';
 
 export class Light extends Skill {
@@ -21,7 +19,7 @@ export class Light extends Skill {
   mpCost() { return 25; }
   range(attacker: Character) { return 5; }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { args, effect }) {
 
     const target = this.getTarget(user, args, true);
     if(!target) return;

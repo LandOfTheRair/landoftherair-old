@@ -9,7 +9,7 @@ export class GMSummon extends Command {
   public name = '@summon';
   public format = 'PlayerName';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const playerName = args;

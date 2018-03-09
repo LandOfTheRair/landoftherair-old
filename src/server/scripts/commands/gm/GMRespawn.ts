@@ -10,7 +10,7 @@ export class GMRespawn extends Command {
   public name = '@respawn';
   public format = 'LairName';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(!SubscriptionHelper.isGM(player)) return;
     if(!args) return false;
 

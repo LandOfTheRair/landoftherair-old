@@ -1,5 +1,4 @@
 
-import { extend } from 'lodash';
 import { ResourceSpawner } from '../global/resource';
 
 export class GoldOreSpawner extends ResourceSpawner {

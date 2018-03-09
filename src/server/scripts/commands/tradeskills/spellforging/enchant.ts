@@ -2,7 +2,6 @@
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
-import { compact } from 'lodash';
 import { SpellforgingHelper } from '../../../../helpers/spellforging-helper';
 
 export class Enchant extends Command {
@@ -10,7 +9,7 @@ export class Enchant extends Command {
   public name = 'enchant';
   public format = 'EnchUUID';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(!args) return false;
     if(!SpellforgingHelper.canSpellforge(player)) return player.sendClientMessage('You are not skilled enough to Spellforge.');
 

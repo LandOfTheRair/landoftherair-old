@@ -9,7 +9,7 @@ export class Set extends Skill {
 
   requiresLearn = false;
 
-  execute(user: Character, { gameState, args }) {
+  execute(user: Character, { args }) {
 
     if(user.baseClass !== 'Thief') return user.sendClientMessage('Only Thieves can set traps!');
 

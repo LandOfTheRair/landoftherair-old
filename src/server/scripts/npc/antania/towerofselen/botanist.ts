@@ -39,6 +39,7 @@ export const responses = (npc: NPC) => {
         return `Ah, thank you ${player.name}! Here, enjoy your increased regeneration.`;
       }
 
-      return `Well hello there, adventurer! I am a roaming botanist and I seek both the flower of this land and the gem of your kind! Bring them both to me and I can conjure a spell to increase your regeneration!`;
+      return `Well hello there, adventurer! I am a roaming botanist and I seek both the flower of this land and the gem of your kind! 
+      Bring them both to me and I can conjure a spell to increase your regeneration!`;
     });
 };

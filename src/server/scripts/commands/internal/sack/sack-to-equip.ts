@@ -1,5 +1,5 @@
 
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -9,12 +9,10 @@ export class SackToEquip extends Command {
   public name = '~StE';
   public format = 'ItemSlot';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { args }) {
     if(this.isAccessingLocker(player)) return;
     const slot = +args;
     if(isUndefined(slot)) return false;
-
-
 
     const item = player.sack.getItemFromSlot(slot);
     if(!item) return false;

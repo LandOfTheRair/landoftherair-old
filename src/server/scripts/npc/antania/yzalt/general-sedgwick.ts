@@ -63,7 +63,9 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['nameless'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      return `Yes, the Nameless. A strange group, they were. Their feet never touched the ground, and they spoke with their minds. They said they had come bearing gifts, and to plant the seeds they had given us in our land, promising prosperity for ages to come. We know nothing of where they came from, and where they went to, just that our society is forever ruined because of them.`;
+      return `Yes, the Nameless. A strange group, they were. Their feet never touched the ground, and they spoke with their minds. 
+      They said they had come bearing gifts, and to plant the seeds they had given us in our land, promising prosperity for ages to come. 
+      We know nothing of where they came from, and where they went to, just that our society is forever ruined because of them.`;
     });
 
   npc.parser.addCommand('ranata')
@@ -106,7 +108,7 @@ export const responses = (npc: NPC) => {
 
       return `Well, I suppose it's no surprise, but at least now I'll know what happens to him.
       Down in the madhouse, no one's ever been down there but me, once, and that's when it wasn't called the madhouse.
-      Ranata entrusted this key to me just in case he were to go insane like his experiments, now I hope you'll do what I couldn't all these years.`
+      Ranata entrusted this key to me just in case he were to go insane like his experiments, now I hope you'll do what I couldn't all these years.`;
     });
 
   npc.parser.addCommand('password')

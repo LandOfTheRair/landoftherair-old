@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Disease as CastEffect } from '../../../../../effects/dots/Disease';
 
 export class Disease extends Skill {
@@ -26,7 +24,7 @@ export class Disease extends Skill {
     return super.canUse(user, target) && !target.hasEffect('Disease');
   }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { args, effect }) {
 
     const target = this.getTarget(user, args);
     if(!target) return;

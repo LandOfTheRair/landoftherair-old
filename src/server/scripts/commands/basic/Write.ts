@@ -7,7 +7,7 @@ export class Write extends Command {
   public name = 'write';
   public format = 'Message';
 
-  execute(player: Player, { room, args }) {
+  execute(player: Player, { args }) {
     if(!args) return false;
 
     const right = player.rightHand;

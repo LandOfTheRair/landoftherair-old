@@ -1,6 +1,4 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { BarNecro as CastEffect } from '../../../../../effects/buffs/BarNecro';
@@ -24,7 +22,7 @@ export class PowerwordBarNecro extends Skill {
   mpCost(caster: Player, targets: Player[]) { return 30 * targets.length; }
   range(attacker: Character) { return 5; }
 
-  execute(user: Player, { gameState, args, effect }) {
+  execute(user: Player, { effect }) {
 
     if(!user.party) return user.sendClientMessage('You do not have a party!');
 

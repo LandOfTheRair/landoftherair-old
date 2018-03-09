@@ -9,7 +9,7 @@ export class TesterSetStats extends Command {
   public name = '^stats';
   public format = 'StatValue';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player) && !SubscriptionHelper.isTester(player)) return;
 
     const level = +args;

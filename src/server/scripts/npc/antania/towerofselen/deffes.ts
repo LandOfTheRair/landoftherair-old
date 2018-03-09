@@ -17,7 +17,9 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      return `Greetings traveler. My brother and I are in search of rare chunks of titanium. For some reason, the denizens of this tower seem to carry an excess of them, compared to most other places we've looked. If you can HELP me, I can add some defense to your gear.`;
+      return `Greetings traveler. My brother and I are in search of rare chunks of titanium. 
+      For some reason, the denizens of this tower seem to carry an excess of them, compared to most other places we've looked. 
+      If you can HELP me, I can add some defense to your gear.`;
     });
 
   npc.parser.addCommand('help')
@@ -25,7 +27,9 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      return `Yah. If you can bring me a chunk, I can put some of it into your gear. Unfortunately, titanium is pretty picky - it requires a base of reinforcement in your gear to already exist. I only need one - the remainder of a chunk makes a tidy profit. Just tell me when you're ready for an UPGRADE.`;
+      return `Yah. If you can bring me a chunk, I can put some of it into your gear. 
+      Unfortunately, titanium is pretty picky - it requires a base of reinforcement in your gear to already exist. 
+      I only need one - the remainder of a chunk makes a tidy profit. Just tell me when you're ready for an UPGRADE.`;
     });
 
   npc.parser.addCommand('upgrade')
@@ -49,6 +53,7 @@ export const responses = (npc: NPC) => {
         return `Thanks, ${player.name}! I've upgraded your ${player.rightHand.itemClass.toLowerCase()}. This titanium will sell for a pretty penny, too.`;
       }
 
-      return `Hold one titanium chunk in your left hand, and I'll fuse it with your gear. Hold a piece of gear with one defensive add in your right hand, and it will help you better in combat!`;
+      return `Hold one titanium chunk in your left hand, and I'll fuse it with your gear. 
+      Hold a piece of gear with one defensive add in your right hand, and it will help you better in combat!`;
     });
 };

@@ -1,6 +1,4 @@
 
-import { startsWith } from 'lodash';
-
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 
@@ -18,7 +16,7 @@ export class ClearCommands extends Command {
 
   public name = '~clear';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player) {
     player.$$actionQueue = [];
     player.sendClientMessage('Command buffer cleared.');
   }

@@ -8,7 +8,7 @@ export class Dance extends Command {
   public name = 'dance';
   public format = 'Target?';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
 
     if(possTargets && possTargets[0]) {

@@ -822,7 +822,7 @@ export class CombatHelper {
     }
 
     defender.hp.sub(damage);
-    if(defender.$$ai) defender.$$ai.damage.dispatch(defender, { damage, attacker });
+    if(defender.$$ai) defender.$$ai.damageTaken.dispatch(defender, { damage, attacker });
 
     const wasFatal = defender.isDead();
 

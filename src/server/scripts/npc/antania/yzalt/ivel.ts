@@ -2,7 +2,6 @@ import { NPC } from '../../../../../shared/models/npc';
 import { NPCLoader } from '../../../../helpers/npc-loader';
 
 const DEER_CORPSE = 'deer corpse';
-const DOLPHIN_CORPSE = 'dolphin corpse';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';

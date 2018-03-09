@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
@@ -9,12 +7,10 @@ export class GroundToEquip extends Command {
   public name = '~GtE';
   public format = 'ItemType ItemId';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
     const splitArgs = args.split(' ');
     if(this.isAccessingLocker(player)) return;
     if(splitArgs.length < 1) return false;
-
-
 
     const [itemType, itemId] = splitArgs;
 

@@ -17,7 +17,7 @@ export class LookAt extends Command {
   public name = 'look at';
   public format = 'TARGET';
 
-  execute(player: Player, { room, args }) {
+  execute(player: Player, { args }) {
     if(!args) return false;
 
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args);

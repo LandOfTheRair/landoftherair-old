@@ -1,5 +1,5 @@
 
-import { startsWith, find } from 'lodash';
+import { find } from 'lodash';
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';

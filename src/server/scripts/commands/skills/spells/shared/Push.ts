@@ -1,5 +1,5 @@
 
-import { startsWith } from 'lodash';
+
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
@@ -32,7 +32,7 @@ export class Push extends Skill {
     return (targetStat - baseStat) + 4 > 0;
   }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { args, effect }) {
 
     const target = this.getTarget(user, args, true);
     if(!target) return;

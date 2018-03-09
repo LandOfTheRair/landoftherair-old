@@ -30,6 +30,9 @@ export const responses = (npc: NPC) => {
         return 'Thanks! I hope you enjoy my concoction.';
       }
 
-      return `Hail, adventurer. I know that because you don't look like you're from these parts. Anyway, I'm a chef and I create my cuisine from, er, "interesting" ingredients. For example, did you know if you mix a spider egg and an ounce of Goblood, it neutralizes the poison and increases the magic potential of the drinker? That was a happy accident.`;
+      return `Hail, adventurer. I know that because you don't look like you're from these parts. 
+      Anyway, I'm a chef and I create my cuisine from, er, "interesting" ingredients. 
+      For example, did you know if you mix a spider egg and an ounce of Goblood, it neutralizes the poison and increases the magic potential of the drinker? 
+      That was a happy accident.`;
     });
 };

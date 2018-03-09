@@ -1,6 +1,4 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Cure as CastEffect } from '../../../../../effects/cures/Cure';
@@ -22,7 +20,7 @@ export class Cure extends Skill {
   mpCost() { return 5; }
   range(attacker: Character) { return 5; }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { args, effect }) {
 
     const target = this.getTarget(user, args, true);
     if(!target) return;

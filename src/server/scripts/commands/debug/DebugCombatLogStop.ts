@@ -6,7 +6,7 @@ export class DebugCombatLogStop extends Command {
 
   public name = '~~combatlogstop';
 
-  execute(player: Player, { room, args }) {
+  execute(player: Player, { room }) {
     player.sendClientMessage('[combat logs] No longer logging combat.');
     room.updateLogSettings(player, { stop: true });
   }

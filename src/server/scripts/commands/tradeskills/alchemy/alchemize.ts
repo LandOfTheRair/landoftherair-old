@@ -10,7 +10,7 @@ export class Alchemize extends Command {
   public name = 'alchemize';
   public format = 'AlchUUID';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(!args) return false;
 
     const alch = room.state.findNPC(args);

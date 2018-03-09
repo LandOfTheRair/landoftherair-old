@@ -1,6 +1,4 @@
 
-import { find } from 'lodash';
-
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 import { LockerHelper } from '../../../../helpers/locker-helper';
@@ -10,12 +8,11 @@ export class BeltToLocker extends Command {
   public name = '~BtW';
   public format = 'Slot LockerID';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
 
     const [slot, lockerId] = args.split(' ');
 
     if(this.isAccessingLocker(player)) return;
-
 
     this.accessLocker(player);
     if(!this.findLocker(player)) return this.unaccessLocker(player);

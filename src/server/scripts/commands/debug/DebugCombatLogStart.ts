@@ -8,7 +8,7 @@ export class DebugCombatLogStart extends Command {
 
   execute(player: Player, { room, args }) {
 
-    const logCount = args && !isNaN(+args) && +args > 0 ? +args : 1000
+    const logCount = args && !isNaN(+args) && +args > 0 ? +args : 1000;
 
     player.sendClientMessage(`[combat logs] Logging up to ${logCount} log entries.`);
 

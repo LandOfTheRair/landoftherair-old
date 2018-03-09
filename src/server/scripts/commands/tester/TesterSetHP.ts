@@ -9,7 +9,7 @@ export class TesterSetHP extends Command {
   public name = '^hp';
   public format = 'HP';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player) && !SubscriptionHelper.isTester(player)) return;
 
     const hp = Math.floor(+args);

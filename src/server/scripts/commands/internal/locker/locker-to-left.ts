@@ -1,5 +1,5 @@
 
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -10,8 +10,9 @@ export class LockerToLeft extends Command {
   public name = '~WtL';
   public format = 'ItemSlot LockerID [Amt]';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     const [slotId, lockerId, amount] = args.split(' ');
+    if(isUndefined(slotId)) return;
 
     if(this.isAccessingLocker(player)) return;
     this.accessLocker(player);
@@ -29,7 +30,7 @@ export class LockerToLeft extends Command {
 
     player.setLeftHand(item);
     room.updateLocker(player, locker);
-    this.unaccessLocker(player)
+    this.unaccessLocker(player);
   }
 
 }

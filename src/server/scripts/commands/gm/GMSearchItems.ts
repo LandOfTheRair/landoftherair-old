@@ -8,7 +8,7 @@ export class GMSearchItems extends Command {
   public name = '@searchitems';
   public format = 'ItemName';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     let itemName = '';

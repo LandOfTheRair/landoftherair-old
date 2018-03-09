@@ -8,7 +8,7 @@ export class GMCreateItem extends Command {
   public name = '@item';
   public format = 'ItemName';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { room, args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const itemName = args;

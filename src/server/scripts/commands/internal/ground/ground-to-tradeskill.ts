@@ -1,5 +1,5 @@
 
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -9,7 +9,7 @@ export class GroundToTradeskill extends Command {
   public name = '~GtT';
   public format = 'ItemType ItemId ItemSlot TradeskillSlot TradeskillDestSlot AlchUUID';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
     const splitArgs = args.split(' ');
 
     const [itemType, itemId, tsSlot, tsDestSlot, alchUUID] = splitArgs;
@@ -19,8 +19,6 @@ export class GroundToTradeskill extends Command {
 
     const container = room.state.findNPC(alchUUID);
     if(!container) return player.sendClientMessage('That person is not here.');
-
-
 
     const item = this.getItemFromGround(player, itemType, itemId);
     if(!item) return false;

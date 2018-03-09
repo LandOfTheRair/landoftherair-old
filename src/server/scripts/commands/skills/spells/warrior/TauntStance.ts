@@ -1,5 +1,5 @@
 
-import { startsWith } from 'lodash';
+
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
@@ -21,7 +21,7 @@ export class TauntStance extends Skill {
 
   requiresLearn = false;
 
-  execute(user: Character, { gameState, args }) {
+  execute(user: Character) {
 
     const item = user.rightHand;
     if(!item) return user.sendClientMessage('You need a weapon to taunt!');

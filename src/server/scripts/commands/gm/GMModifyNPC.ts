@@ -10,7 +10,7 @@ export class GMModifyNPC extends Command {
   public name = '@npcmod';
   public format = 'Target Props...';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const [npcish, props] = args.split(' ', 2);

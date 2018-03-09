@@ -17,14 +17,17 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      return `Hey! You! Help! I'm trapped in here. At least I think so. Name's Rocky, I'm a golem or somethin'. They made me smart and stuff but I seem to be stuck between a ROCK and a hard place. Ha ha.`;
+      return `Hey! You! Help! I'm trapped in here. At least I think so. Name's Rocky, I'm a golem or somethin'. 
+      They made me smart and stuff but I seem to be stuck between a ROCK and a hard place. Ha ha.`;
     });
   npc.parser.addCommand('rock')
     .set('syntax', ['rock'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      return `Yeah! Yeah! Get it, 'cause I'm made of rocks and we're in a place made of- nevermind. Anyway, I can UPGRADE your gear to make it hard as a rock. Heh heh. You might have a lil' trouble finding 'em though, I don't think these guys are as smart as me.`;
+      return `Yeah! Yeah! Get it, 'cause I'm made of rocks and we're in a place made of- nevermind. 
+      Anyway, I can UPGRADE your gear to make it hard as a rock. Heh heh. 
+      You might have a lil' trouble finding 'em though, I don't think these guys are as smart as me.`;
     });
 
   npc.parser.addCommand('upgrade')
@@ -52,9 +55,11 @@ export const responses = (npc: NPC) => {
         right.stats.defense += 1;
         player.recalculateStats();
 
-        return `Thanks, ${player.name}! I've upgraded your ${player.rightHand.itemClass.toLowerCase()}. And thanks for the rocks, heheh. I'm gonna be the smartest rock in this cave.`;
+        return `Thanks, ${player.name}! I've upgraded your ${player.rightHand.itemClass.toLowerCase()}. 
+        And thanks for the rocks, heheh. I'm gonna be the smartest rock in this cave.`;
       }
 
-      return `Hold one golem brain in your left hand, and I'll take that one plus four from your sack. Hold a piece of gear with no defensive adds in your right hand, and it will help you better in combat!`;
+      return `Hold one golem brain in your left hand, and I'll take that one plus four from your sack. 
+      Hold a piece of gear with no defensive adds in your right hand, and it will help you better in combat!`;
     });
 };

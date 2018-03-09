@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { ChannelFindFamiliar as CastEffect } from '../../../../../effects/channels/ChannelFindFamiliar';
 
 export class FindFamiliar extends Skill {
@@ -21,7 +19,7 @@ export class FindFamiliar extends Skill {
 
   mpCost() { return 100; }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { args, effect }) {
     if(!this.tryToConsumeMP(user, effect)) return;
 
     this.use(user, user, effect, args);

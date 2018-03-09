@@ -18,8 +18,8 @@ export class GroundHelper {
     let baseItem = item;
 
     if(previouslyStackedItem) {
-      const item = find(this.itemGCArray, { uuid: previouslyStackedItem.uuid });
-      this.removeItemFromGround(item, true);
+      const oldItem = find(this.itemGCArray, { uuid: previouslyStackedItem.uuid });
+      this.removeItemFromGround(oldItem, true);
       baseItem = previouslyStackedItem;
     }
 
@@ -31,8 +31,8 @@ export class GroundHelper {
     });
 
     while(this.itemGCArray.length > this.room.maxItemsOnGround) {
-      const item = this.itemGCArray.shift();
-      this.removeItemFromGround(item);
+      const removeItem = this.itemGCArray.shift();
+      this.removeItemFromGround(removeItem);
     }
   }
 

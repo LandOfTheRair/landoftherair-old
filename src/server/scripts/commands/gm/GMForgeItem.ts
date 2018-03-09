@@ -10,7 +10,7 @@ export class GMForgeItem extends Command {
   public name = '@itemforge';
   public format = 'Props...';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     if(player.rightHand) return player.sendClientMessage('Empty your right hand first.');

@@ -3,7 +3,6 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { MapLayer } from '../../../../shared/models/maplayer';
 import { find, includes } from 'lodash';
-import { SkillClassNames } from '../../../../shared/models/character';
 import { MoveHelper } from '../../../helpers/move-helper';
 
 export class OpenDoor extends Command {
@@ -11,7 +10,7 @@ export class OpenDoor extends Command {
   public name = ['open', 'close'];
   public format = 'DIR';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { gameState, args }) {
     if(!args) return false;
 
     let { x, y } = player.getXYFromDir(args);

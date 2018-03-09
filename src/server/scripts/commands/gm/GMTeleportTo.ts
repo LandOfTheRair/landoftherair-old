@@ -9,7 +9,7 @@ export class GMTeleportTo extends Command {
   public name = '@teleportto';
   public format = 'Charish';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const playerName = args;

@@ -300,7 +300,7 @@ export class Character {
       tick: new Signal(),
       mechanicTick: new Signal(),
       death: new Signal(),
-      damage: new Signal()
+      damageTaken: new Signal()
     };
   }
 

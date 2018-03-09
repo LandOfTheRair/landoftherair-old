@@ -1,7 +1,7 @@
 
 import { Party, PartyPlayer } from '../../shared/models/party';
 
-import { map, find, extend } from 'lodash';
+import { find, extend } from 'lodash';
 import { Lobby } from '../rooms/Lobby';
 
 export class PartyArbiter {

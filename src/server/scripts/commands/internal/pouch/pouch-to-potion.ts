@@ -1,5 +1,5 @@
 
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -9,11 +9,10 @@ export class PouchToPotion extends Command {
   public name = '~DtP';
   public format = 'ItemSlot';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { args }) {
     if(this.isAccessingLocker(player)) return;
     const slot = +args;
-
-
+    if(!isUndefined(args)) return false;
 
     if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
 

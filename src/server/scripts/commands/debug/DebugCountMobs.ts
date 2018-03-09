@@ -6,7 +6,7 @@ export class DebugCountMobs extends Command {
 
   public name = '~~mobs';
 
-  execute(player: Player, { room, args }) {
+  execute(player: Player, { room }) {
     player.sendClientMessage(`Currently ${room.state._mapNPCs.length} NPCs and ${room.state.players.length} players in ${room.state.mapName}.`);
   }
 

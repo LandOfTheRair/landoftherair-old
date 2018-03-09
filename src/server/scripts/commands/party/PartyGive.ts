@@ -1,14 +1,13 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { find, includes } from 'lodash';
 import { MessageHelper } from '../../../helpers/message-helper';
 
 export class PartyGive extends Command {
 
   public name = 'party give';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player, { room, args }) {
     if(!player.party) return player.sendClientMessage('You are not in a party!');
     if(!args) return player.sendClientMessage('You need to specify a person to give leadership to!');
 

@@ -1,8 +1,6 @@
 
-import { startsWith } from 'lodash';
-
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Identify as CastEffect } from '../../../../../effects/misc/Identify';
 
 export class Identify extends Skill {
@@ -20,7 +18,7 @@ export class Identify extends Skill {
 
   mpCost() { return 15; }
 
-  execute(user: Character, { gameState, args, effect }) {
+  execute(user: Character, { effect }) {
     if(!user.rightHand) return user.sendClientMessage('You need to have something in your right hand to identify it.');
 
     if(!this.tryToConsumeMP(user, effect)) return;

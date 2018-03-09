@@ -17,7 +17,7 @@ export class Drink extends Command {
 
   public name = '~drink';
 
-  execute(player: Player, { room, gameState, args }) {
+  execute(player: Player) {
     // const item = player.potionHand;
     // if(!item) return player.sendClientMessage('You do not have a potion to drink!');
 

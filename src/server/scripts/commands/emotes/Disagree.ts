@@ -8,7 +8,7 @@ export class Disagree extends Command {
   public name = 'disagree';
   public format = 'Target?';
 
-  async execute(player: Player, { room, gameState, args }) {
+  async execute(player: Player, { args }) {
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
 
     if(possTargets && possTargets[0]) {
