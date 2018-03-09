@@ -132,6 +132,7 @@
     "@angular/cli": "^1.7.1",
     "@angular/compiler-cli": "^5.2.6",
     "@types/jasmine": "2.5.38",
+    "@types/lodash": "^4.14.104",
     "@types/node": "~6.0.60",
     "ava-ts": "^0.23.0",
     "codelyzer": "~2.0.0",
