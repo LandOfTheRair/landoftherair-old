@@ -4,7 +4,7 @@ import { isString } from 'lodash';
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { Hidden as CastEffect } from '../../../../effects/misc/Hidden';
-import { CharacterHelper } from '../../../../helpers/character-helper';
+import { CharacterHelper } from '../../../../helpers/character/character-helper';
 
 export class Hide extends Skill {
 

@@ -4,12 +4,12 @@ import { includes, capitalize, sample, get, random, compact } from 'lodash';
 import { Logger } from '../../logger';
 import { AllNormalGearSlots, SkillClassNames } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
-import { NPCLoader } from '../../helpers/npc-loader';
+import { NPCLoader } from '../../helpers/character/npc-loader';
 import { Revive } from '../../effects/cures/Revive';
 import { LearnAlchemy } from '../../quests/antania/Rylt/LearnAlchemy';
-import { SkillHelper } from '../../helpers/skill-helper';
-import { SpellforgingHelper } from '../../helpers/spellforging-helper';
-import { MetalworkingHelper } from '../../helpers/metalworking-helper';
+import { SkillHelper } from '../../helpers/character/skill-helper';
+import { SpellforgingHelper } from '../../helpers/tradeskill/spellforging-helper';
+import { MetalworkingHelper } from '../../helpers/tradeskill/metalworking-helper';
 import { ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
 
 export const TannerResponses = (npc: NPC) => {

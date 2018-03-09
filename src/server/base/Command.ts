@@ -4,8 +4,8 @@ import { find } from 'lodash';
 import { Item } from '../../shared/models/item';
 import { Container } from '../../shared/models/container/container';
 import { MapLayer } from '../../shared/models/maplayer';
-import { MessageHelper } from '../helpers/message-helper';
-import { MaterialStorageHelper } from '../helpers/material-storage-helper';
+import { MessageHelper } from '../helpers/lobby/message-helper';
+import { MaterialStorageHelper } from '../helpers/tradeskill/material-storage-helper';
 import { Locker } from '../../shared/models/container/locker';
 
 export abstract class Command {

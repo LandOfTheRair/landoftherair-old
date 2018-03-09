@@ -1,5 +1,5 @@
 import { NPC } from '../../../../shared/models/npc';
-import { NPCLoader } from '../../../helpers/npc-loader';
+import { NPCLoader } from '../../../helpers/character/npc-loader';
 import { DiplomatResponses } from '../common-responses';
 
 export const setup = async (npc: NPC) => {

@@ -1,7 +1,7 @@
 
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
-import { CombatHelper } from '../../helpers/combat-helper';
+import { CombatHelper } from '../../helpers/world/combat-helper';
 import { Skill } from '../../base/Skill';
 
 export class Autoheal extends SpellEffect {

@@ -271,7 +271,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.assetService.preloadAssets.forEach(asset => {
 
       // normally, fuck browser detection, but only chrome does this right???
-      if(includes(navigator.userAgent.toLowerCase())) {
+      if(includes(navigator.userAgent.toLowerCase(), 'chrome')) {
         const preload = document.createElement('link');
         preload.href = asset;
         preload.rel = 'prefetch';

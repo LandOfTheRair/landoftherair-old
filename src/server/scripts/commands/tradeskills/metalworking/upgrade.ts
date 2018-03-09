@@ -2,7 +2,7 @@
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
-import { MetalworkingHelper } from '../../../../helpers/metalworking-helper';
+import { MetalworkingHelper } from '../../../../helpers/tradeskill/metalworking-helper';
 
 export class Upgrade extends Command {
 

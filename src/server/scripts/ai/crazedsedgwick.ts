@@ -2,7 +2,7 @@
 import { Character } from '../../../shared/models/character';
 import { NPC } from '../../../shared/models/npc';
 import { tick as defaultTick } from './default';
-import { CombatHelper } from '../../helpers/combat-helper';
+import { CombatHelper } from '../../helpers/world/combat-helper';
 
 const blast = (npc: NPC) => {
   const msgObject = { name: npc.name, message: `HIYAAAAAAAAAH! Take THIS!`, subClass: 'chatter' };

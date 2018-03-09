@@ -6,7 +6,7 @@ import { Alignment, Character, SkillClassNames } from './character';
 
 import * as Effects from '../../server/effects';
 import { nonenumerable } from 'nonenumerable';
-import { LootHelper } from '../../server/helpers/loot-helper';
+import { LootHelper } from '../../server/helpers/world/loot-helper';
 
 export const ValidItemTypes = [
   'Mace', 'Axe', 'Dagger', 'Wand', 'Onehanded', 'Twohanded', 'Polearm', 'Ranged',

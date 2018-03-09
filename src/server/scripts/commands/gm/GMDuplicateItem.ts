@@ -2,7 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { Item } from '../../../../shared/models/item';
-import { SubscriptionHelper } from '../../../helpers/subscription-helper';
+import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMDuplicateItem extends Command {
 

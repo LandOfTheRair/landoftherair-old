@@ -3,7 +3,7 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { MapLayer } from '../../../../shared/models/maplayer';
 import { find, includes } from 'lodash';
-import { MoveHelper } from '../../../helpers/move-helper';
+import { MoveHelper } from '../../../helpers/character/move-helper';
 
 export class OpenDoor extends Command {
 

@@ -5,21 +5,21 @@ import { Account } from '../../shared/models/account';
 import { Player } from '../../shared/models/player';
 
 import { Redis } from '../redis';
-import { CharacterCreator } from '../helpers/character-creator';
+import { CharacterCreator } from '../helpers/character/character-creator';
 
 import { truncate, pick, includes, find } from 'lodash';
 
 import { DB } from '../database';
 
-import { JWTHelper } from '../helpers/jwt-helper';
-import { ItemCreator } from '../helpers/item-creator';
-import { PartyArbiter } from '../helpers/party-arbiter';
-import { AccountHelper } from '../helpers/account-helper';
-import { AllSilverPurchases, SilverBuyTiers, SubscriptionHelper } from '../helpers/subscription-helper';
-import { BonusArbiter } from '../helpers/bonus-arbiter';
-import { MessageHelper } from '../helpers/message-helper';
-import { DiscordHelper } from '../helpers/discord-helper';
-import { PouchHelper } from '../helpers/pouch-helper';
+import { JWTHelper } from '../helpers/account/jwt-helper';
+import { ItemCreator } from '../helpers/world/item-creator';
+import { PartyArbiter } from '../helpers/party/party-arbiter';
+import { AccountHelper } from '../helpers/account/account-helper';
+import { AllSilverPurchases, SilverBuyTiers, SubscriptionHelper } from '../helpers/account/subscription-helper';
+import { BonusArbiter } from '../helpers/bonus/bonus-arbiter';
+import { MessageHelper } from '../helpers/lobby/message-helper';
+import { DiscordHelper } from '../helpers/lobby/discord-helper';
+import { PouchHelper } from '../helpers/character/pouch-helper';
 
 const CHAT_SPAM_DELAY = 1000;
 const MAX_SPAM_MESSAGES = 5;

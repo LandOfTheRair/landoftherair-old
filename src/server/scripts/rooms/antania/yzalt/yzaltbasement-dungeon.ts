@@ -1,6 +1,6 @@
 
 import { LootFunctions, LootTable } from 'lootastic';
-import { LootHelper } from '../../../../helpers/loot-helper';
+import { LootHelper } from '../../../../helpers/world/loot-helper';
 
 export const setup = async (room) => {
 

@@ -4,8 +4,8 @@ import { flatten, random, set, get } from 'lodash';
 import { Allegiance, Character, Direction } from './character';
 import { Item } from './item';
 import * as uuid from 'uuid/v4';
-import { CharacterHelper } from '../../server/helpers/character-helper';
-import { DeathHelper } from '../../server/helpers/death-helper';
+import { CharacterHelper } from '../../server/helpers/character/character-helper';
+import { DeathHelper } from '../../server/helpers/character/death-helper';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 

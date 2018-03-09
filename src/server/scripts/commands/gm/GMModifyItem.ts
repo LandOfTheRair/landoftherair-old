@@ -2,7 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { merge } from 'lodash';
-import { SubscriptionHelper } from '../../../helpers/subscription-helper';
+import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMModifyItem extends Command {
 

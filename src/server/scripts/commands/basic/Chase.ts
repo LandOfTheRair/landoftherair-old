@@ -1,8 +1,8 @@
 
 import { Skill } from '../../../base/Skill';
 import { Character } from '../../../../shared/models/character';
-import { MoveHelper } from '../../../helpers/move-helper';
-import { MessageHelper } from '../../../helpers/message-helper';
+import { MoveHelper } from '../../../helpers/character/move-helper';
+import { MessageHelper } from '../../../helpers/lobby/message-helper';
 
 export class Chase extends Skill {
 

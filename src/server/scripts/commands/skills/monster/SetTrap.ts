@@ -3,7 +3,7 @@ import { find } from 'lodash';
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
-import { TrapHelper } from '../../../../helpers/trap-helper';
+import { TrapHelper } from '../../../../helpers/world/trap-helper';
 
 export class SetTrap extends Skill {
 

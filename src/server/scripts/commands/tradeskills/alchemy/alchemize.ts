@@ -3,7 +3,7 @@ import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
 import { compact } from 'lodash';
-import { AlchemyHelper } from '../../../../helpers/alchemy-helper';
+import { AlchemyHelper } from '../../../../helpers/tradeskill/alchemy-helper';
 
 export class Alchemize extends Command {
 

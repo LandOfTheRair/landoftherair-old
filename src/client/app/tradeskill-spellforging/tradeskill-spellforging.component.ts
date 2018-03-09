@@ -4,7 +4,7 @@ import { ColyseusGameService } from '../colyseus.game.service';
 import { capitalize, startCase } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import { Item } from '../../../shared/models/item';
-import { SpellforgingHelper } from '../../../server/helpers/spellforging-helper';
+import { SpellforgingHelper } from '../../../server/helpers/tradeskill/spellforging-helper';
 
 @Component({
   selector: 'app-tradeskill-spellforging',

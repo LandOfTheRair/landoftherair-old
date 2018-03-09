@@ -3,7 +3,7 @@ import { Character, SkillClassNames } from '../../shared/models/character';
 import { Command } from './Command';
 
 import { random, get } from 'lodash';
-import { MessageHelper } from '../helpers/message-helper';
+import { MessageHelper } from '../helpers/lobby/message-helper';
 
 interface MacroMetadata {
   name: string;

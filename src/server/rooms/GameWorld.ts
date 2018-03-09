@@ -17,23 +17,23 @@ import { Logger } from '../logger';
 import { Spawner } from '../base/Spawner';
 
 import { Character } from '../../shared/models/character';
-import { ItemCreator } from '../helpers/item-creator';
+import { ItemCreator } from '../helpers/world/item-creator';
 import { Item } from '../../shared/models/item';
 import { Locker } from '../../shared/models/container/locker';
 import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
 
-import { PartyManager } from '../helpers/party-manager';
-import { BonusHelper } from '../helpers/bonus-helper';
-import { NPCLoader } from '../helpers/npc-loader';
-import { AccountHelper } from '../helpers/account-helper';
-import { DeathHelper } from '../helpers/death-helper';
-import { CharacterHelper } from '../helpers/character-helper';
-import { GroundHelper } from '../helpers/ground-helper';
-import { LockerHelper } from '../helpers/locker-helper';
-import { BankHelper } from '../helpers/bank-helper';
-import { SubscriptionHelper } from '../helpers/subscription-helper';
-import { PouchHelper } from '../helpers/pouch-helper';
-import { MoveHelper } from '../helpers/move-helper';
+import { PartyManager } from '../helpers/party/party-manager';
+import { BonusHelper } from '../helpers/bonus/bonus-helper';
+import { NPCLoader } from '../helpers/character/npc-loader';
+import { AccountHelper } from '../helpers/account/account-helper';
+import { DeathHelper } from '../helpers/character/death-helper';
+import { CharacterHelper } from '../helpers/character/character-helper';
+import { GroundHelper } from '../helpers/world/ground-helper';
+import { LockerHelper } from '../helpers/world/locker-helper';
+import { BankHelper } from '../helpers/character/bank-helper';
+import { SubscriptionHelper } from '../helpers/account/subscription-helper';
+import { PouchHelper } from '../helpers/character/pouch-helper';
+import { MoveHelper } from '../helpers/character/move-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon';

@@ -8,10 +8,10 @@ import { Item } from './item';
 import { NPC } from './npc';
 import { Character } from './character';
 import { GetGidDescription, GetSwimLevel } from '../../server/gidmetadata/descriptions';
-import { CombatHelper } from '../../server/helpers/combat-helper';
+import { CombatHelper } from '../../server/helpers/world/combat-helper';
 import { MapLayer } from './maplayer';
 import { nonenumerable } from 'nonenumerable';
-import { LootHelper } from '../../server/helpers/loot-helper';
+import { LootHelper } from '../../server/helpers/world/loot-helper';
 
 enum TilesWithNoFOVUpdate {
   Empty = 0,

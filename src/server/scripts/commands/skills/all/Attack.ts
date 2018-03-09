@@ -1,8 +1,8 @@
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
-import { CombatHelper } from '../../../../helpers/combat-helper';
-import { MessageHelper } from '../../../../helpers/message-helper';
+import { CombatHelper } from '../../../../helpers/world/combat-helper';
+import { MessageHelper } from '../../../../helpers/lobby/message-helper';
 
 export class Attack extends Skill {
 

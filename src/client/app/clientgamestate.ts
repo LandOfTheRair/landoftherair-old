@@ -9,7 +9,7 @@ import { Subject } from 'rxjs/Subject';
 import { Item } from '../../shared/models/item';
 import { Character } from '../../shared/models/character';
 import { MapLayer } from '../../shared/models/maplayer';
-import { LootHelper } from '../../server/helpers/loot-helper';
+import { LootHelper } from '../../server/helpers/world/loot-helper';
 
 export class ClientGameState {
   fovArray = Array(9).fill(null).map((x, i) => i - 4);

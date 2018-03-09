@@ -3,7 +3,7 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { Item, EquippableItemClassesWithWeapons, ValidItemTypes } from '../../../../shared/models/item';
 import { includes } from 'lodash';
-import { SubscriptionHelper } from '../../../helpers/subscription-helper';
+import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMForgeItem extends Command {
 

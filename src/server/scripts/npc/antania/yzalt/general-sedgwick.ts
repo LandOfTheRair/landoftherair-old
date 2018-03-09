@@ -1,5 +1,5 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/npc-loader';
+import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 import { values } from 'lodash';
 import { HenizFindSedgwick } from '../../../../quests/antania/Yzalt/HenizFindSedgwick';

@@ -2,7 +2,7 @@
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Darkness as CastEffect } from '../../../../../effects/misc/Darkness';
-import { CharacterHelper } from '../../../../../helpers/character-helper';
+import { CharacterHelper } from '../../../../../helpers/character/character-helper';
 
 export class Darkness extends Skill {
 

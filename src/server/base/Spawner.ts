@@ -1,12 +1,12 @@
 
-import { NPCLoader } from '../helpers/npc-loader';
+import { NPCLoader } from '../helpers/character/npc-loader';
 import { LootTable } from 'lootastic';
 
 import { sample, random, extend, isNumber, isString, pull, min, every, compact, some, isArray } from 'lodash';
 import { NPC } from '../../shared/models/npc';
 import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
-import { LootHelper } from '../helpers/loot-helper';
+import { LootHelper } from '../helpers/world/loot-helper';
 import { Dangerous } from '../effects/special/Dangerous';
 
 export class Spawner {

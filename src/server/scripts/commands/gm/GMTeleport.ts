@@ -1,7 +1,7 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { SubscriptionHelper } from '../../../helpers/subscription-helper';
+import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMTeleport extends Command {
 

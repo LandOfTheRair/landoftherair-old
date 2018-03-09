@@ -58,7 +58,7 @@ export class StatusEffectComponent {
   @Input()
   public effect: any;
 
-  get effectName(): number {
+  get effectName(): string {
     return startCase(this.effect.name);
   }
 

@@ -14,11 +14,11 @@ import * as Quests from '../../server/quests';
 import { LowCON } from '../../server/effects/special/LowCON';
 import { Dead } from '../../server/effects/special/Dead';
 import { nonenumerable } from 'nonenumerable';
-import { CharacterHelper } from '../../server/helpers/character-helper';
+import { CharacterHelper } from '../../server/helpers/character/character-helper';
 
 import { AllTraits } from '../traits/trait-hash';
-import { DeathHelper } from '../../server/helpers/death-helper';
-import { PartyHelper } from '../../server/helpers/party-helper';
+import { DeathHelper } from '../../server/helpers/character/death-helper';
+import { PartyHelper } from '../../server/helpers/party/party-helper';
 import { Malnourished } from '../../server/effects/antibuffs/Malnourished';
 import { AlchemyContainer } from './container/tradeskills/alchemy';
 import { SpellforgingContainer } from './container/tradeskills/spellforging';

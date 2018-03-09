@@ -1,7 +1,7 @@
 
 import { BaseClass } from '../base/BaseClass';
 import { Character, SkillClassNames } from '../../shared/models/character';
-import { SkillHelper } from '../helpers/skill-helper';
+import { SkillHelper } from '../helpers/character/skill-helper';
 
 export class Mage extends BaseClass {
   static combatLevelDivisor = 3.5;

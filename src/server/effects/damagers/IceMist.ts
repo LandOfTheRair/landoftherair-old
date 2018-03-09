@@ -3,7 +3,7 @@ import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
-import { MessageHelper } from '../../helpers/message-helper';
+import { MessageHelper } from '../../helpers/lobby/message-helper';
 
 export class IceMist extends SpellEffect {
 

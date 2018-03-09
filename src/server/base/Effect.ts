@@ -2,7 +2,7 @@
 import { Character, SkillClassNames } from '../../shared/models/character';
 import { extend, includes, get } from 'lodash';
 import { Skill } from './Skill';
-import { CombatHelper } from '../helpers/combat-helper';
+import { CombatHelper } from '../helpers/world/combat-helper';
 import { MagicCutArmorClasses } from '../../shared/models/item';
 
 export const Maxes = {

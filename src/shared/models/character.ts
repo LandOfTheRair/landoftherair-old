@@ -10,7 +10,7 @@ import * as RestrictedNumber from 'restricted-number';
 import { Signal } from 'signals.js';
 import { MapLayer } from './maplayer';
 
-import { HideReductionPercents } from '../../server/helpers/hide-reductions';
+import { HideReductionPercents } from '../../server/helpers/character/hide-reductions';
 
 import * as Classes from '../../server/classes';
 import { Effect } from '../../server/base/Effect';
@@ -18,13 +18,13 @@ import * as Effects from '../../server/effects';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
 import { Pouch } from './container/pouch';
-import { MoveHelper } from '../../server/helpers/move-helper';
+import { MoveHelper } from '../../server/helpers/character/move-helper';
 import { nonenumerable } from 'nonenumerable';
-import { CharacterHelper } from '../../server/helpers/character-helper';
-import { MessageHelper } from '../../server/helpers/message-helper';
-import { TrapHelper } from '../../server/helpers/trap-helper';
-import { SkillHelper } from '../../server/helpers/skill-helper';
-import { XPHelper } from '../../server/helpers/xp-helper';
+import { CharacterHelper } from '../../server/helpers/character/character-helper';
+import { MessageHelper } from '../../server/helpers/lobby/message-helper';
+import { TrapHelper } from '../../server/helpers/world/trap-helper';
+import { SkillHelper } from '../../server/helpers/character/skill-helper';
+import { XPHelper } from '../../server/helpers/character/xp-helper';
 
 export type Allegiance =
   'None'

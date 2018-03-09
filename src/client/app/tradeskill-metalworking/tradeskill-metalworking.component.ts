@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 import { capitalize } from 'lodash';
-import { MetalworkingHelper } from '../../../server/helpers/metalworking-helper';
+import { MetalworkingHelper } from '../../../server/helpers/tradeskill/metalworking-helper';
 
 @Component({
   selector: 'app-tradeskill-metalworking',

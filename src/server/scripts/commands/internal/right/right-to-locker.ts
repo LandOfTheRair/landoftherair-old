@@ -1,7 +1,7 @@
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
-import { LockerHelper } from '../../../../helpers/locker-helper';
+import { LockerHelper } from '../../../../helpers/world/locker-helper';
 
 export class RightToLocker extends Command {
 

@@ -3,7 +3,7 @@ import { startsWith } from 'lodash';
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { MessageHelper } from '../../../helpers/message-helper';
+import { MessageHelper } from '../../../helpers/lobby/message-helper';
 
 export class Talk extends Command {
 

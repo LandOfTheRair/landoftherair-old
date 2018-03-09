@@ -86,7 +86,7 @@ export class WindowComponent implements OnInit, OnDestroy {
     return this.windowManager.getWindow(this.windowName);
   }
 
-  public get defaultPos(): { x: number, y: number } {
+  public get defaultPos(): { x?: number, y?: number } {
     return this.windowManager.getWindowDefault(this.windowName);
   }
 

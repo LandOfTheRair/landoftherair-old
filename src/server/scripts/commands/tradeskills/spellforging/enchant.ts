@@ -2,7 +2,7 @@
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
-import { SpellforgingHelper } from '../../../../helpers/spellforging-helper';
+import { SpellforgingHelper } from '../../../../helpers/tradeskill/spellforging-helper';
 
 export class Enchant extends Command {
 

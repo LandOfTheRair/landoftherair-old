@@ -3,7 +3,7 @@ import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
 import { capitalize } from 'lodash';
-import { SpellforgingHelper } from '../../../../helpers/spellforging-helper';
+import { SpellforgingHelper } from '../../../../helpers/tradeskill/spellforging-helper';
 
 export class Forge extends Command {
 
