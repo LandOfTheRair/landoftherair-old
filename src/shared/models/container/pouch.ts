@@ -5,7 +5,7 @@ import { Container } from './container';
 
 export class Pouch extends Container {
   constructor(opts) {
-    super({ size: opts.size || 0 });
+    super({ size: opts ? opts.size : 0 });
     extend(this, opts);
     this.initItems();
   }
