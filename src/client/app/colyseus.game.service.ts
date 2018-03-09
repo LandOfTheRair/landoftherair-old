@@ -644,12 +644,12 @@ export class ColyseusGameService {
   }
 
   public buildDropAction({ dragData }, choice) {
-    const { context, contextSlot, containerUUID, item } = dragData;
+    const { context, contextSlot, containerUUID, item, isStackableMaterial } = dragData;
 
-    this.buildAction(item, { context, contextSlot, containerUUID }, choice);
+    this.buildAction(item, { context, contextSlot, containerUUID, isStackableMaterial }, choice);
   }
 
-  public async buildAction(item, { context, contextSlot, containerUUID }, choice) {
+  public async buildAction(item, { context, contextSlot, containerUUID, isStackableMaterial }, choice) {
     const contextStr = context.substring(0, 1);
     const choiceStr = choice.substring(0, 1);
     const cmd = `~${contextStr}t${choiceStr}`;
@@ -785,6 +785,35 @@ export class ColyseusGameService {
 
     if(context === 'Wardrobe') {
       args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].lockerId}`;
+    }
+
+    if(context === 'WardrobeMaterial') {
+
+      if(isStackableMaterial) {
+        const result = await (<any>swal)({
+          titleText: 'Withdraw How Many?',
+          input: 'number',
+          inputValue: 1,
+          inputAttributes: {
+            min: 0
+          },
+          showCancelButton: true,
+          useRejections: false,
+          preConfirm: (val) => {
+            return new Promise((resolve, reject) => {
+              if(val < 0) return reject('Invalid amount');
+              resolve();
+            });
+          }
+        });
+
+        if(result <= 0 || result.dismiss) return;
+
+        args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].lockerId} ${result}`;
+
+      } else {
+        args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].lockerId} 1`;
+      }
     }
 
     this.sendRawCommand(cmd, `${args.trim()} ${postargs}`.trim());

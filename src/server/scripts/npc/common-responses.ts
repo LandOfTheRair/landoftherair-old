@@ -10,6 +10,7 @@ import { LearnAlchemy } from '../../quests/antania/Rylt/LearnAlchemy';
 import { SkillHelper } from '../../helpers/skill-helper';
 import { SpellforgingHelper } from '../../helpers/spellforging-helper';
 import { MetalworkingHelper } from '../../helpers/metalworking-helper';
+import { ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -527,6 +528,7 @@ export const EncrusterResponses = (npc: NPC) => {
 
       if(!player.rightHand) return 'You must hold an item in your right hand!';
       if(player.rightHand.itemClass === 'Rock') return 'Hey! I put rocks in items, not other rocks.';
+      if(ValidMaterialItems[player.rightHand.name]) return 'Sorry, but I can\'t encrust that item.';
       if(player.rightHand.itemClass === 'Corpse') return 'That would be disrespectful.';
       if(!player.rightHand.isOwnedBy(player)) return 'That item does not belong to you!';
       if(!player.leftHand || player.leftHand.itemClass !== 'Gem') return 'You must hold a gem in your left hand!';

@@ -5,6 +5,8 @@ import { Item } from '../../shared/models/item';
 import { Container } from '../../shared/models/container/container';
 import { MapLayer } from '../../shared/models/maplayer';
 import { MessageHelper } from '../helpers/message-helper';
+import { MaterialStorageHelper } from '../helpers/material-storage-helper';
+import { Locker } from '../../shared/models/container/locker';
 
 export abstract class Command {
 
@@ -40,7 +42,7 @@ export abstract class Command {
 
   addItemToContainer(player, container: Container, item: Item, index?: number) {
     if(!container) return player.sendClientMessage('Bad container name.');
-    const didFail = container.addItem(item, index);
+    const didFail = container.addItem(item, index, { maxSize: MaterialStorageHelper.getTotalSizeAvailable(player) });
     if(didFail) return player.sendClientMessage(didFail);
     return true;
   }
@@ -92,8 +94,11 @@ export abstract class Command {
     player.$$isAccessingLocker = true;
   }
 
-  unaccessLocker(player: Player) {
+  unaccessLocker(player: Player, locker?: Locker) {
     player.$$isAccessingLocker = false;
+    if(locker) {
+      player.$$room.updateLocker(player, locker);
+    }
   }
 
   isAccessingLocker(player: Player) {

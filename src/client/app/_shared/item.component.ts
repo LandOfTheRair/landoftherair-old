@@ -4,16 +4,17 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { EquippableItemClasses, Item } from '../../../shared/models/item';
 import { Player } from '../../../shared/models/player';
 
-import { includes } from 'lodash';
+import { includes, isNumber } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { AssetService } from '../asset.service';
+import { MaterialSlotInfo, ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
 
 const POSSIBLE_TRADESKILL_SCOPES = ['Alchemy', 'Spellforging', 'Metalworking'];
 
 export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
                         | 'GroundGroup' | 'Equipment' | 'Left'
                         | 'Right' | 'Coin' | 'Merchant'
-                        | 'Obtainagain' | 'Wardrobe' | 'Tradeskill';
+                        | 'Obtainagain' | 'Wardrobe' | 'WardrobeMaterial' | 'Tradeskill';
 
 @Component({
   selector: 'app-item',
@@ -128,10 +129,15 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
     .encrust {
       transform: scale(0.65, 0.65) translate(45%, -45%);
     }
+    
+    .transparent {
+      opacity: 0.3;
+    }
   `],
   template: `    
     <div class="item-container" 
          [ngClass]="[size]"
+         [class.transparent]="showOutline"
          [isDisabled]="!showDesc" 
          triggers="dblclick:mouseleave"
          [dragScope]="scopes"
@@ -140,7 +146,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          [dragEnabled]="!displayOnly"
          (mouseenter)="determineScopes()"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
-         [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID }"
+         [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID, isStackableMaterial: isStackableMaterial }"
          [tooltip]="descText">
       <img [src]="imgUrl" [style.object-position]="spriteLocation" />
       <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="showEncrust && item.encrust" />
@@ -176,6 +182,9 @@ export class ItemComponent implements OnInit {
 
   @Input()
   public showEncrust = true;
+
+  @Input()
+  public showOutline = false;
 
   @Input()
   public context: MenuContext;
@@ -244,6 +253,11 @@ export class ItemComponent implements OnInit {
     return item.descTextFor(this.player);
   }
 
+  get isStackableMaterial(): boolean {
+    if(!isNumber(ValidMaterialItems[this.item.name])) return false;
+    return MaterialSlotInfo[ValidMaterialItems[this.item.name]].withdrawInOunces;
+  }
+
   constructor(private colyseusGame: ColyseusGameService, private assetService: AssetService) {}
 
   ngOnInit() {
@@ -254,7 +268,8 @@ export class ItemComponent implements OnInit {
     this.colyseusGame.buildAction(this.item, {
       context: this.context,
       contextSlot: this.contextSlot,
-      containerUUID: this.containerUUID
+      containerUUID: this.containerUUID,
+      isStackableMaterial: this.isStackableMaterial
     }, choice);
   }
 
@@ -263,6 +278,8 @@ export class ItemComponent implements OnInit {
   }
 
   determineScopes() {
+    if(!this.context) return [];
+
     const scopes = [];
 
     if(this.context !== 'Obtainagain' && this.context !== 'Merchant') {
@@ -357,6 +374,10 @@ export class ItemComponent implements OnInit {
           this.doColyseusMoveAction('S');
           return;
         }
+
+      } else if(this.context === 'WardrobeMaterial') {
+        this.doColyseusMoveAction('S');
+        return;
 
       } else {
         this.doColyseusMoveAction('W');

@@ -4,7 +4,11 @@ import { startsWith } from 'lodash';
 import { DB } from '../database';
 import { Player } from '../../shared/models/player';
 import { Locker } from '../../shared/models/container/locker';
+import { MaterialLocker } from '../../shared/models/container/material-locker';
 import { SubscriptionHelper } from './subscription-helper';
+
+const MATERIAL_STORAGE_LOCKER_ID = -500;
+const MATERIAL_STORAGE_LOCKER_REGION = 'Material';
 
 export class LockerHelper {
 
@@ -12,7 +16,7 @@ export class LockerHelper {
     return Array(maxLockerSlots).fill(null).map((v, i) => -(i + 1));
   }
 
-  private static async createLockerIfNotExist(player, regionId, lockerName, lockerId, forceSlot = null) {
+  private static async createLockerIfNotExist(player, regionId, lockerName, lockerId, forceSlot: number = null) {
     return DB.$characterLockers.update(
       { username: player.username, charSlot: forceSlot || player.charSlot, regionId, lockerId },
       { $setOnInsert: { items: [] }, $set: { lockerName } },
@@ -31,6 +35,10 @@ export class LockerHelper {
     }));
   }
 
+  private static async createMaterialStorageIfNotExists(player: Player): Promise<any> {
+    return this.createLockerIfNotExist(player, MATERIAL_STORAGE_LOCKER_REGION, `Material Storage`, `materials`, MATERIAL_STORAGE_LOCKER_ID);
+  }
+
   static async openLocker(player: Player, lockerName, lockerId) {
     const regionId = player.$$room.mapRegion;
 
@@ -38,13 +46,16 @@ export class LockerHelper {
     const sharedLockers = await this.createSharedLockersIfNotExists(player);
     const numSharedLockers = sharedLockers.length;
 
+    await this.createMaterialStorageIfNotExists(player);
+
     const baseLockerSlots = this.numLockersToSlotArray(numSharedLockers);
+    baseLockerSlots.push(MATERIAL_STORAGE_LOCKER_ID);
     baseLockerSlots.push(player.charSlot);
 
     const lockers = await DB.$characterLockers.find({
       username: player.username,
       charSlot: { $in: baseLockerSlots },
-      regionId: { $in: [regionId, 'Shared'] }
+      regionId: { $in: [regionId, 'Shared', MATERIAL_STORAGE_LOCKER_REGION] }
     }).toArray();
 
     player.$$room.showLockerWindow(player, lockers, lockerId);
@@ -71,8 +82,21 @@ export class LockerHelper {
       charSlot = +lockerId.substring(lockerId.indexOf('-'));
     }
 
+    if(startsWith(lockerId, 'material')) {
+      regionId = MATERIAL_STORAGE_LOCKER_REGION;
+      charSlot = MATERIAL_STORAGE_LOCKER_ID;
+    }
+
     player.$$locker = DB.$characterLockers.findOne({ username: player.username, charSlot, regionId, lockerId })
-      .then(lock => lock && lock.lockerId ? new Locker(lock) : null);
+      .then(lock => {
+        if(!lock || !lock.lockerId) return null;
+
+        if(lock.regionId === MATERIAL_STORAGE_LOCKER_REGION) {
+          return new MaterialLocker(lock);
+        }
+
+        return new Locker(lock);
+      });
 
     return player.$$locker;
   }

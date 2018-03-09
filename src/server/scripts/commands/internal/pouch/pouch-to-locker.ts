@@ -27,7 +27,7 @@ export class PouchToLocker extends Command {
     const item = player.pouch.getItemFromSlot(+slot);
     if(!item) return this.unaccessLocker(player);
 
-    if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player);
+    if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player, locker);
 
     player.pouch.takeItemFromSlot(+slot);
     room.updateLocker(player, locker);

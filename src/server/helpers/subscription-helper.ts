@@ -112,7 +112,7 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     fgColor: '#060',
     maxPurchases: 1,
     key: 'BiggerSack',
-    cost: 1500
+    cost: 1000
   },
   {
     name: 'Bigger Belt',
@@ -121,7 +121,16 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     fgColor: '#a00',
     maxPurchases: 1,
     key: 'BiggerBelt',
-    cost: 1500
+    cost: 1000
+  },
+  {
+    name: 'Expanded Storage',
+    desc: 'Increase capacity for each item by 200 in your material storage. You can never have too much space.',
+    icon: 'ore',
+    fgColor: '#550',
+    maxPurchases: 4,
+    key: 'ExpandedStorage',
+    cost: 750
   },
   {
     name: 'Shared Wardrobes',
@@ -353,6 +362,10 @@ export class SubscriptionHelper {
 
   public static bonusPouchSlots(player: Player): number {
     return this.getSilverPurchase(player.$$account, 'MagicPouch') * 5;
+  }
+
+  public static bonusMaterialStorageSlots(player: Player): number {
+    return this.getSilverPurchase(player.$$account, 'ExpandedStorage') * 200;
   }
 
 }
