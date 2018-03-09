@@ -12,7 +12,7 @@ export class PouchToSack extends Command {
   execute(player: Player, { args }) {
     if(this.isAccessingLocker(player)) return;
     const slot = +args;
-    if(!isUndefined(args)) return false;
+    if(isUndefined(args)) return false;
 
     const item = player.pouch.getItemFromSlot(slot);
     if(!item) return false;

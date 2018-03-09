@@ -11,7 +11,7 @@ export class BeltToLeft extends Command {
 
   execute(player: Player, { args }) {
     const slot = +args;
-    if(!isUndefined(args)) return false;
+    if(isUndefined(args)) return false;
 
     if(this.isAccessingLocker(player)) return;
 

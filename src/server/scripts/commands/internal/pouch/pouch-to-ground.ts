@@ -12,7 +12,7 @@ export class PouchToGround extends Command {
   execute(player: Player, { room, args }) {
     if(this.isAccessingLocker(player)) return;
     const slot = +args;
-    if(!isUndefined(args)) return false;
+    if(isUndefined(args)) return false;
 
     const item = player.pouch.takeItemFromSlot(slot);
     if(!item) return;

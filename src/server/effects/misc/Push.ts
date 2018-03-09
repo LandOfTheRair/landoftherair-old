@@ -21,12 +21,14 @@ export class Push extends SpellEffect {
     }
 
     const userStat = caster.baseClass === 'Healer' ? 'wis' : 'int';
-    const resistStat = this.potency ? 'con' : 'wil';
+    const resistStat = predetermined ? 'con' : 'wil';
 
     const baseStat = caster.getTotalStat(userStat);
     const targetStat = target.getTotalStat(resistStat);
 
-    const successChance = clamp((targetStat - baseStat) + 4, 0, 8) * 12.5;
+    const successChance = clamp((baseStat - targetStat) + 4, 0, 8) * 12.5;
+
+    console.log(baseStat, targetStat, userStat, resistStat, predetermined, successChance);
 
     if(random(0, 100) > successChance) {
       if(!predetermined) caster.sendClientMessage(`${target.name} resisted your push!`);

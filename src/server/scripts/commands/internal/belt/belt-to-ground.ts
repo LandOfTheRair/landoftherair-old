@@ -11,7 +11,7 @@ export class BeltToGround extends Command {
 
   execute(player: Player, { room, args }) {
     const slot = +args;
-    if(!isUndefined(args)) return false;
+    if(isUndefined(args)) return false;
 
     if(this.isAccessingLocker(player)) return;
 

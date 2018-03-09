@@ -12,7 +12,7 @@ export class PouchToPotion extends Command {
   execute(player: Player, { args }) {
     if(this.isAccessingLocker(player)) return;
     const slot = +args;
-    if(!isUndefined(args)) return false;
+    if(isUndefined(args)) return false;
 
     if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
 
