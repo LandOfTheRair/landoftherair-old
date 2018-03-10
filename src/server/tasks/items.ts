@@ -28,7 +28,7 @@ class ItemLoader {
   static async loadAllItems() {
     await DB.init();
 
-    recurse(`${__dirname}/../data/items`).then(async files => {
+    recurse(`${__dirname}/../../content/items`).then(async files => {
       const filePromises = files.map(file => {
         const fileName = path.basename(file, path.extname(file));
         const itemsOfType = YAML.load(file);

@@ -15,7 +15,7 @@ class RecipeLoader {
   static async loadAllRecipes() {
     await DB.init();
 
-    recurse(`${__dirname}/../data/recipes`).then(async files => {
+    recurse(`${__dirname}/../../content/recipes`).then(async files => {
       const filePromises = files.map(file => {
         const fileName = path.basename(path.dirname(file));
         const itemsOfType = YAML.load(file);

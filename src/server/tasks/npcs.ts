@@ -20,7 +20,7 @@ class NPCLoader {
   static async loadAllNPCs() {
     await DB.init();
 
-    recurse(`${__dirname}/../data/npcs`).then(async files => {
+    recurse(`${__dirname}/../../content/npcs`).then(async files => {
       const filePromises = files.map(file => {
         const npcs = YAML.load(file);
 

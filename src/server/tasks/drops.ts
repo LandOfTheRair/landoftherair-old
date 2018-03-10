@@ -17,7 +17,7 @@ class DropsLoader {
     await DB.$regionDrops.remove({}, { multi: true });
 
     return new Promise(resolve => {
-      recurse(`${__dirname}/../data/droptables/regions`).then(files => {
+      recurse(`${__dirname}/../../content/droptables/regions`).then(files => {
         const filePromises = files.map(file => {
           const droptable = YAML.load(file);
           const fileName = path.basename(file, path.extname(file));
@@ -43,7 +43,7 @@ class DropsLoader {
 
     return new Promise(resolve => {
 
-      recurse(`${__dirname}/../data/droptables/maps`).then(files => {
+      recurse(`${__dirname}/../../content/droptables/maps`).then(files => {
         const filePromises = files.map(file => {
           const droptable = YAML.load(file);
           const fileName = path.basename(file, path.extname(file));
