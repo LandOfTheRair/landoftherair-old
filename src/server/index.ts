@@ -49,7 +49,7 @@ if(process.argv[2] === '--single-core') {
 
   const allMapNames = {};
 
-  recurse(`${__dirname}/maps`).then(files => {
+  recurse(`${__dirname}/../content/maps`).then(files => {
     files.forEach(file => {
       const mapName = path.basename(file, path.extname(file));
       allMapNames[mapName] = true;
@@ -79,7 +79,7 @@ if(process.argv[2] === '--single-core') {
 
     const allMapNames = {};
 
-    recurse(`${__dirname}/maps`).then(files => {
+    recurse(`${__dirname}/../content/maps`).then(files => {
       files.forEach(file => {
         const mapName = path.basename(file, path.extname(file));
         allMapNames[mapName] = true;

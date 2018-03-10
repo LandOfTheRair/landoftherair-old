@@ -1,20 +1,36 @@
 
 declare module 'mingy' {
-  export interface Parser {
+  export class Parser {
     setEnv(str: string, obj: any): void;
     parse(str: string): string;
   }
 }
 
 declare module 'luxon' {
-  export interface DateTime {
-    local(): number;
+  export class DateTime {
+    static local(): number;
+    static fromObject(obj: any): DateTime;
+    minus(obj: any): DateTime;
   }
 }
 
 declare module 'lootastic' {
-  export interface LootTable {
+  export class LootTable {
+    constructor(choices: any[], bonus?: number);
+
     chooseWithReplacement(num: number): any;
+    chooseWithoutReplacement(num: number): any;
+    tryToDropEachItem(num: number): any;
+  }
+
+  export class LootRoller {
+    static rollTables(tables: LootTable[]): any[];
+  }
+
+  export enum LootFunctions {
+    WithReplacement = 'chooseWithReplacement',
+    WithoutReplacement = 'chooseWithoutReplacement',
+    EachItem = 'tryToDropEachItem'
   }
 }
 

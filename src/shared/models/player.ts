@@ -698,7 +698,7 @@ export class Player extends Character {
 
   private canDailyActivate(checkTimestamp: number): boolean {
     let theoreticalResetTime = DateTime.fromObject({ zone: 'utc', hour: 12 });
-    if(+theoreticalResetTime > DateTime.fromObject({ zone: 'utc' })) {
+    if(+theoreticalResetTime > +DateTime.fromObject({ zone: 'utc' })) {
       theoreticalResetTime = theoreticalResetTime.minus({ days: 1 });
     }
 
