@@ -14,6 +14,7 @@ const animalHash = {
   deer: 'Mage Summon Deer',
   wolf: 'Mage Summon Wolf',
   bear: 'Mage Summon Bear',
+  salamander: 'Mage Summon Salamander',
   chillspider: 'Mage Summon Chillspider'
 };
 
@@ -30,6 +31,10 @@ const animalModHash = {
     npc.gainBaseStat('hp', Math.floor(potency * 4000));
     npc.gainBaseStat('str', Math.floor(potency / 5));
     npc.gainBaseStat('con', Math.floor(potency / 5));
+  },
+  salamander: (npc: NPC, potency: number) => {
+    npc.gainBaseStat('hp', Math.floor(potency * 1500));
+    npc.gainBaseStat('int', Math.floor(potency / 4));
   },
   chillspider: (npc: NPC, potency: number) => {
     npc.gainBaseStat('hp', Math.floor(potency * 3000));
@@ -63,6 +68,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
 
     if(this.potency >= 5) allPossibleAnimals.push('wolf');
     if(this.potency >= 10) allPossibleAnimals.push('bear');
+    if(this.potency >= 15) allPossibleAnimals.push('salamander');
     if(this.potency >= 20) allPossibleAnimals.push('chillspider');
 
     // can't cast for an animal at a higher skill

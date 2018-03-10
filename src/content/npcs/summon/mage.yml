@@ -69,6 +69,31 @@
   usableSkills:
     - PoisonBiteWeak
 
+- npcId: Mage Summon Salamander
+  name: salamander
+  sprite: 230
+  stats: 15
+  skills:
+    Conjuration: 5
+  level: 1
+
+  otherStats:
+    fireResist: 5000
+
+  hp:
+    min: 2500
+    max: 2500
+
+  mp:
+    min: 10000
+    max: 10000
+
+  gear:
+    Hands: Medium Claws
+
+  usableSkills:
+    - FireMist
+
 - npcId: Mage Summon Chillspider
   name: chillspider
   sprite: 800
