@@ -129,6 +129,7 @@ Certain accounts designated as testers get access to several in game commands:
 * `^level <level>` - set your level to `<level>`
 * `^hp <newhp>` - set your hp to `<newhp>`
 * `^mp <newmp>` - set your mp to `<newmp>`
+* `^regen <newregen>` - set your hp/mp regen to `<newregen>`
 * `^skills <level>` - set your skills to `<level>`
 * `^stats <level>` set your stats to `<level>`
 * `^traits` - reset your traits and gain 1000 TP
