@@ -5,7 +5,10 @@
        droppable
        dropScope="use"
        (onDrop)="colyseusGame.buildUseAction($event.dragData.item, $event.dragData.context, $event.dragData.contextSlot)">
-    <div class="vertical-center h-100 background-text" *ngIf="colyseusGame.character.effects.length === 0">You have no status effects.</div>
+    <div class="vertical-center h-100 text-center background-text" *ngIf="colyseusGame.character.effects.length === 0">
+      You have no status effects.<br>
+      Drop a potion or food here to consume it.
+    </div>
     <div *ngFor="let effect of colyseusGame.character.effects" class="effect-container">
       <app-status-effect [effect]="effect" (click)="tryUnapplying(effect)"></app-status-effect>
     </div>
