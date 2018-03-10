@@ -16,7 +16,7 @@ exec('tsc', (e) => {
 
   var copySilentDev =   copy('src/server/silent-dev.html',        'dist/server/silent-dev.html');
   var copySilentProd =  copy('src/server/silent-production.html', 'dist/server/silent-production.html');
-  var copyMaps =        copy('src/content',                       'dist/content');
+  var copyMaps =        copy('src/content/maps',                  'dist/server/maps');
 
   Promise.all([
     copySilentDev,

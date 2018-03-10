@@ -34,6 +34,8 @@ DB.init();
 
 const port = process.env.PORT || 3303;
 
+const mapPath = process.env.NODE_ENV === 'production' ? '' : '../content';
+
 if(process.argv[2] === '--single-core') {
 
   const api = new GameAPI();
@@ -49,7 +51,7 @@ if(process.argv[2] === '--single-core') {
 
   const allMapNames = {};
 
-  recurse(`${__dirname}/../content/maps`).then(files => {
+  recurse(`${__dirname}/${mapPath}/maps`).then(files => {
     files.forEach(file => {
       const mapName = path.basename(file, path.extname(file));
       allMapNames[mapName] = true;
@@ -79,7 +81,7 @@ if(process.argv[2] === '--single-core') {
 
     const allMapNames = {};
 
-    recurse(`${__dirname}/../content/maps`).then(files => {
+    recurse(`${__dirname}/${mapPath}/maps`).then(files => {
       files.forEach(file => {
         const mapName = path.basename(file, path.extname(file));
         allMapNames[mapName] = true;
