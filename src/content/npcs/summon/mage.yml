@@ -2,7 +2,7 @@
 - npcId: Mage Summon Deer
   name: deer
   sprite: 205
-  stats: 15
+  stats: 5
   skillLevels: 3
   level: 1
 
@@ -20,7 +20,7 @@
 - npcId: Mage Summon Wolf
   name: wolf
   sprite: 215
-  stats: 15
+  stats: 10
   skillLevels: 3
   level: 1
 
