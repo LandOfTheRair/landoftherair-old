@@ -55,7 +55,11 @@ export class LobbyState {
     this.accounts.forEach(account => {
       this.inGame[account.username] = account.inGame;
       this.status[account.username] = account.status;
-      this.subTier[account.username] = account.isGM ? 10 : account.subscriptionTier;
+
+      let tier = account.subscriptionTier;
+      if(account.isTester) tier = 1;
+      if(account.isGM) tier = 10;
+      this.subTier[account.username] = tier;
     });
   }
 
