@@ -2,52 +2,34 @@
 - npcId: Mage Summon Deer
   name: deer
   sprite: 205
-  allegiance: None
-  hostility: OnHit
-  stats: 3
-  skillLevels:
-    Martial: 3
-  level: 2
+  stats: 15
+  skillLevels: 3
+  level: 1
 
   gear:
     Armor: Deer Robe
     Hands: Basic Claws
 
-  skillOnKill: 3
-
   usableSkills:
     - PoisonBiteWeak
 
   hp:
-    min: 50
-    max: 100
+    min: 500
+    max: 500
 
-  giveXp:
-    min: 10
-    max: 50
-
-- npcId: Rylt Wolf
+- npcId: Mage Summon Wolf
   name: wolf
-  hostility: Always
   sprite: 215
-  alignment: Evil
-  stats: 4
-  skillLevels:
-    Martial: 3
-  level: 3
+  stats: 15
+  skillLevels: 3
+  level: 1
 
   otherStats:
     perception: 15
 
-  skillOnKill: 4
-
-  gold:
-    min: 10
-    max: 20
-
   hp:
-    min: 200
-    max: 300
+    min: 1000
+    max: 1000
 
   giveXp:
     min: 100
@@ -62,13 +44,10 @@
 
 - npcId: Mage Summon Bear
   name: bear
-  hostility: Always
   sprite: 210
-  alignment: Evil
-  stats: 5
-  skillLevels:
-    Martial: 4
-  level: 4
+  stats: 15
+  skillLevels: 4
+  level: 1
 
   otherStats:
     perception: 15
@@ -80,48 +59,26 @@
     max: 90
 
   hp:
-    min: 400
-    max: 600
-
-  giveXp:
-    min: 200
-    max: 325
+    min: 5000
+    max: 5000
 
   gear:
     Armor: Rylt Bear Fur
     Hands: Basic Claws
-
-  tansFor: Rylt Bear Fur
 
   usableSkills:
     - PoisonBiteWeak
 
 - npcId: Mage Summon Chillspider
   name: chillspider
-  hostility: Always
   sprite: 800
-  alignment: Evil
-  stats: 9
+  stats: 15
   skillLevels: 6
-  level: 10
-
-  skillOnKill:  20
-
-  otherStats:
-    con: 15
-    perception: 200
-
-  gold:
-    min: 250
-    max: 400
+  level: 1
 
   hp:
-    min: 1500
-    max: 2000
-
-  giveXp:
-    min: 2300
-    max: 3300
+    min: 3000
+    max: 3000
 
   gear:
     Hands: Medium Claws

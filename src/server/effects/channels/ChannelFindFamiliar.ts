@@ -20,25 +20,20 @@ const animalHash = {
 // this hash is for boosting stats/etc of the summoned creature, so it's useful
 const animalModHash = {
   deer: (npc: NPC, potency: number) => {
-    const base = npc.baseStats;
-    npc.gainBaseStat('hp', Math.floor(base.hp * potency));
+    npc.gainBaseStat('hp', Math.floor(potency * 2000));
   },
   wolf: (npc: NPC, potency: number) => {
-    const base = npc.baseStats;
-    npc.gainBaseStat('hp', Math.floor(base.hp * potency / 5));
+    npc.gainBaseStat('hp', Math.floor(potency * 3000));
     npc.gainBaseStat('str', Math.floor(potency / 3));
   },
   bear: (npc: NPC, potency: number) => {
-    const base = npc.baseStats;
-    npc.gainBaseStat('hp', Math.floor(base.hp * potency / 3));
+    npc.gainBaseStat('hp', Math.floor(potency * 4000));
     npc.gainBaseStat('str', Math.floor(potency / 5));
     npc.gainBaseStat('con', Math.floor(potency / 5));
   },
   chillspider: (npc: NPC, potency: number) => {
-    const base = npc.baseStats;
-    npc.gainBaseStat('hp', Math.floor(base.hp * potency / 4));
+    npc.gainBaseStat('hp', Math.floor(potency * 3000));
     npc.gainBaseStat('str', Math.floor(potency / 4));
-    npc.gainBaseStat('con', Math.floor(potency / 6));
   }
 };
 
