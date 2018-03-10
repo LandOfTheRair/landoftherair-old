@@ -52,6 +52,12 @@ export class TesterHelper {
     this.sendMessage(player, `Set HP to: ${hp}`);
   }
 
+  static setMP(player: Player, mp: number) {
+    player.setBaseStat('mp', mp);
+    player.recalculateStats();
+    this.sendMessage(player, `Set MP to: ${mp}`);
+  }
+
   static gainGold(player: Player, gold: number) {
     player.gainGold(gold);
     this.sendMessage(player, `Gained ${gold} gold`);
