@@ -11,7 +11,8 @@ export class ParryStance extends Skill {
     name: 'Parry Stance',
     macro: 'stance parry',
     icon: 'surrounded-shield',
-    color: '#000000',
+    color: '#fff',
+    bgColor: '#000',
     mode: 'autoActivate',
     tooltipDesc: 'Become more defensive, but lose offensive power. Requires weapon skill 13 (Warrior).',
     requiresBaseClass: 'Warrior'

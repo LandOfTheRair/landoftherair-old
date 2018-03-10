@@ -11,7 +11,8 @@ export class RageStance extends Skill {
     name: 'Rage Stance',
     macro: 'stance rage',
     icon: 'swords-power',
-    color: '#000000',
+    color: '#fff',
+    bgColor: '#000',
     mode: 'autoActivate',
     tooltipDesc: 'Become more offensive, but lose defensive power. Requires weapon skill 14 (Warrior).',
     requiresBaseClass: 'Warrior'

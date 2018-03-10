@@ -210,9 +210,7 @@ export class ChanneledSpellEffect extends SpellEffect {
   }
 }
 
-export class StanceEffect extends Effect {
-
-  public weaponClass: string;
+export class WeaponEffect extends Effect {
 
   protected skillRequired: number;
 
@@ -225,6 +223,11 @@ export class StanceEffect extends Effect {
     if(char.calcSkillLevel(item.type) < skillRequired) return false;
     return true;
   }
+}
+
+export class StanceEffect extends WeaponEffect {
+
+  public weaponClass: string;
 
   cast(char: Character, target: Character, skillRef?: Skill): boolean {
     this.weaponClass = char.rightHand.type;

@@ -89,3 +89,5 @@ export * from './stances/TauntStance';
 export * from './special/ActivePet';
 export * from './special/SummonedPet';
 export * from './channels/ChannelFindFamiliar';
+
+export * from './arts/Taunt';

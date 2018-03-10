@@ -11,7 +11,8 @@ export class TauntStance extends Skill {
     name: 'Taunt Stance',
     macro: 'stance taunt',
     icon: 'enrage',
-    color: '#000000',
+    color: '#fff',
+    bgColor: '#000',
     mode: 'autoActivate',
     tooltipDesc: 'Become more boisterous, taunting foes but losing offense and defense. Requires weapon skill 15 (Warrior).',
     requiresBaseClass: 'Warrior'
