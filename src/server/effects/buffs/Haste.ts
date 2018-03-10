@@ -2,7 +2,7 @@
 import { sample } from 'lodash';
 
 import { SpellEffect } from '../../base/Effect';
-import { Character } from '../../../shared/models/character';
+import { Character, StatName } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { RecentlyHasted } from '../recents/RecentlyHasted';
 
@@ -32,7 +32,7 @@ export class Haste extends SpellEffect {
     if(recentlyHasted) {
       target.unapplyEffect(recentlyHasted, true);
       target.sendClientMessage('You feel a wrenching sensation.');
-      const lostStat = sample(['str', 'dex', 'agi', 'con']);
+      const lostStat: StatName = sample(['str', 'dex', 'agi', 'con']);
       target.loseBaseStat(lostStat, -1);
     }
 
