@@ -256,7 +256,10 @@ export class CombatHelper {
                          ? defender.leftHand
                          : null;
 
-    const offhandDivisor = isOffhand ? 3 : 1;
+    let offhandDivisor = 1;
+    if(isOffhand) {
+      offhandDivisor = 3 - attacker.getTraitLevelAndUsageModifier('OffhandFinesse');
+    }
 
     const attackerName = isAttackerVisible ? attacker.name : 'somebody';
     const attackerDamageRolls = attacker.getTotalStat('weaponDamageRolls');
