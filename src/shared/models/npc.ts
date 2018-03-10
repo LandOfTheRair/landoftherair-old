@@ -6,6 +6,7 @@ import { Item } from './item';
 import * as uuid from 'uuid/v4';
 import { CharacterHelper } from '../../server/helpers/character/character-helper';
 import { DeathHelper } from '../../server/helpers/character/death-helper';
+import { Player } from './player';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 
@@ -126,7 +127,10 @@ export class NPC extends Character {
     if(this.isUnableToAct()) return;
 
     if(this.$$ai && this.$$ai.tick) {
-      this.$$ai.tick.dispatch(this, canMove);
+      const actions = this.getTotalStat('actionSpeed');
+      for(let i = 0; i < actions; i++) {
+        this.$$ai.tick.dispatch(this, canMove);
+      }
     }
   }
 
@@ -179,7 +183,7 @@ export class NPC extends Character {
         return false;
       }
 
-      if(killer.username) {
+      if((<Player>killer).username) {
         this.repMod.forEach(({ allegiance, delta }) => {
           killer.changeRep(allegiance, delta);
         });

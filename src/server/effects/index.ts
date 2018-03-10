@@ -40,6 +40,7 @@ export * from './buffs/BarWater';
 export * from './buffs/Absorption';
 export * from './buffs/MagicShield';
 export * from './buffs/VitalEssence';
+export * from './buffs/Haste';
 
 export * from './damagers/FireMist';
 export * from './damagers/IceMist';
@@ -70,6 +71,8 @@ export * from './recents/RecentlyShattered';
 
 export * from './antibuffs/Stunned';
 export * from './recents/RecentlyStunned';
+
+export * from './recents/RecentlyHasted';
 
 export * from './misc/Augury';
 export * from './misc/Identify';

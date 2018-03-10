@@ -498,9 +498,13 @@ export class Player extends Character {
     }
 
     if(!this.$$actionQueue || this.isUnableToAct()) return;
-    const nextAction = this.$$actionQueue.shift();
-    if(nextAction) {
-      this.$$room.executeCommand(this, nextAction.command, nextAction.args);
+
+    const actions = this.getTotalStat('actionSpeed');
+    for(let i = 0; i < actions; i++) {
+      const nextAction = this.$$actionQueue.shift();
+      if(nextAction) {
+        this.$$room.executeCommand(this, nextAction.command, nextAction.args);
+      }
     }
   }
 

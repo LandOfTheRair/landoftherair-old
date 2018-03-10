@@ -142,6 +142,8 @@ export class Stats {
   waterResist? = 0;
   fireResist? = 0;
   iceResist? = 0;
+
+  actionSpeed? = 1;
 }
 
 export type StatName =
@@ -150,7 +152,8 @@ export type StatName =
 | 'armorClass' | 'accuracy' | 'offense' | 'defense' | 'weaponArmorClass' | 'weaponDamageRolls' | 'mitigation'
 | 'stealth' | 'perception'
 | 'magicalDamageBoost' | 'physicalDamageBoost' | 'healingBoost'
-| 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist';
+| 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist'
+| 'actionSpeed';
 
 export const MaxSizes = {
   Belt: 5,

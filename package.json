@@ -134,6 +134,7 @@
     "@types/jasmine": "2.5.38",
     "@types/lodash": "^4.14.104",
     "@types/node": "~6.0.60",
+    "@types/uuid": "^3.4.3",
     "ava-ts": "^0.23.0",
     "codelyzer": "~2.0.0",
     "fs-extra": "^4.0.2",
