@@ -254,7 +254,7 @@ export class MacroService {
   public loadMacros() {
     this.customMacros = this.retrieveForCharacter('customMacros') || {};
     this.visibleMacroGroups = this.retrieveForCharacter('visibleMacroGroups') || ['default', null, null];
-    this.allMacroGroups = this.retrieveForCharacter('allMacroGroups') || { default: [] };
+    this.allMacroGroups = this.retrieveForCharacter('allMacroGroups') || { 'default': [] };
 
     _.extend(this.allMacros, this.customMacros);
     this.resetUsableMacros();

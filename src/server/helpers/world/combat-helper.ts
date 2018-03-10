@@ -266,7 +266,7 @@ export class CombatHelper {
     // skill + 1 because skill 0 is awful
     const calcSkill = attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type) + 1;
 
-    const damageCalcStat = isThrow || attackerWeapon.type === 'Ranged' ? 'dex' : 'str';
+    const damageCalcStat: StatName = isThrow || attackerWeapon.type === 'Ranged' ? 'dex' : 'str';
 
     const attackerScope = {
       skill: calcSkill,

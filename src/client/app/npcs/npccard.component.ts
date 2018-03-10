@@ -172,7 +172,7 @@ import { ColyseusGameService } from '../colyseus.game.service';
     padding-left: 2px;
     padding-right: 2px;
     font-size: 0.9rem;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: clip;

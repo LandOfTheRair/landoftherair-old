@@ -1,7 +1,7 @@
 
 import { isString, startsWith, set } from 'lodash';
 import { Character } from '../../../shared/models/character';
-import { VisualEffect } from '../../gidmetadata/visual-effects';
+import { VisualEffect } from '../world/visual-effects';
 
 import { CensorSensor, CensorTier } from 'censor-sensor';
 

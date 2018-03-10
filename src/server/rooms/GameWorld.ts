@@ -20,7 +20,7 @@ import { Character } from '../../shared/models/character';
 import { ItemCreator } from '../helpers/world/item-creator';
 import { Item } from '../../shared/models/item';
 import { Locker } from '../../shared/models/container/locker';
-import { VISUAL_EFFECTS, VisualEffect } from '../gidmetadata/visual-effects';
+import { VISUAL_EFFECTS, VisualEffect } from '../helpers/world/visual-effects';
 
 import { PartyManager } from '../helpers/party/party-manager';
 import { BonusHelper } from '../helpers/bonus/bonus-helper';

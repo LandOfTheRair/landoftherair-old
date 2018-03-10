@@ -350,7 +350,7 @@ export class Spawner {
   }
 
   public hasAnyAlive(): boolean {
-    return some(this.npcs, npc => npc.hp.getValue() > 0);
+    return some(this.npcs, npc => npc.hp.total > 0);
   }
 
   private removeSelf() {
