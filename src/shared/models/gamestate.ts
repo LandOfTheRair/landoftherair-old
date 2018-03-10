@@ -245,6 +245,10 @@ export class GameState {
     delete this.maintainedPlayerHash[playerRef.username];
     delete this.playerClientIdHash[clientId];
     this.players = reject(this.players, (p: Player) => p.username === playerRef.username);
+
+    if(playerRef.$$pet) {
+      playerRef.$$pet.die(playerRef, true);
+    }
   }
 
   addInteractable(obj: any): void {
