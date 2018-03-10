@@ -299,6 +299,10 @@
     min: 1500
     max: 1600
 
+  mp:
+    min: 1300
+    max: 1400
+
   giveXp:
     min: 2150
     max: 2450
@@ -896,6 +900,10 @@
   hp:
     min: 2500
     max: 2600
+
+  mp:
+    min: 2300
+    max: 2400
 
   giveXp:
     min: 3950
