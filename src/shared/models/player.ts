@@ -251,9 +251,11 @@ export class Player extends Character {
     super.gainExpFromKills(xpGain);
 
     if(this.party) {
-      PartyHelper.shareExpWithParty(this, xpGain);
+      const numMembersSharedWith = PartyHelper.shareExpWithParty(this, xpGain);
 
-      this.gainPartyExp(xpGain);
+      if(numMembersSharedWith > 0) {
+        this.gainPartyExp(xpGain);
+      }
     }
   }
 

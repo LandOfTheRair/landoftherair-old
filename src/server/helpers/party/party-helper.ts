@@ -46,7 +46,7 @@ export class PartyHelper {
     });
   }
 
-  static shareExpWithParty(player: Player, exp: number) {
+  static shareExpWithParty(player: Player, exp: number): number {
     const party = player.party;
 
     const members = party.members;
@@ -61,6 +61,8 @@ export class PartyHelper {
 
     exp = Math.floor(exp);
 
+    let foundMembers = 0;
+
     members.forEach(({ username }) => {
       if(username === player.username) return;
 
@@ -68,8 +70,12 @@ export class PartyHelper {
 
       if(!partyMember || player.distFrom(partyMember) > 7) return;
 
+      foundMembers++;
+
       partyMember.gainExp(exp);
     });
+
+    return foundMembers;
   }
 
   static shareKillsWithParty(player: Player, questOpts) {
