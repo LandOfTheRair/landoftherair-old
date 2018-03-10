@@ -29,12 +29,12 @@ export class MessageHelper {
     char.$$room.sendPlayerLogMessage(char, this.cleanMessage(message), rootCharacter);
   }
 
-  static sendClientMessageToRadius(char: Character, message, radius = 0, except = []) {
+  static sendClientMessageToRadius(char: Character, message, radius = 4, except = [], useSight = false) {
     const sendMessage = isString(message) ? { message, subClass: 'chatter' } : message;
 
     const charRegion = char.$$room.state.getSuccorRegion(char);
 
-    char.$$room.state.getPlayersInRange(char, radius, except).forEach(p => {
+    char.$$room.state.getPlayersInRange(char, radius, except, useSight).forEach(p => {
 
       // prevent messages through walls
       if(char.$$room.state.getSuccorRegion(p) !== charRegion) return;

@@ -186,7 +186,7 @@ export class CombatHelper {
     if(!isBackstab) {
       const procChance = attacker.getTraitLevelAndUsageModifier('ShadowDaggers');
       if(random(1, 100) <= procChance) {
-        defender.sendClientMessage({
+        attacker.sendClientMessage({
           message: `Your shadow daggers unsheathe themselves and attempt to strike ${defender.name}!`,
           subClass: 'combat other hit'
         });
@@ -717,8 +717,8 @@ export class CombatHelper {
         case 'physical':  damageBoostPercent = attacker.getTraitLevelAndUsageModifier('ForcefulStrike'); break;
       }
 
-      if(damageClass === 'physical' && !isAttackerVisible) {
-        damageBoostPercent = 10 + attacker.getTraitLevelAndUsageModifier('ShadowRanger');
+      if(damageClass === 'physical' && !isAttackerVisible && defender.hasEffect('BuildupSneakAttack')) {
+        damageBoostPercent = 25 + attacker.getTraitLevelAndUsageModifier('ShadowRanger');
       }
 
       damage = Math.floor(damage * (1 + (damageBoostPercent / 100)));
@@ -863,8 +863,9 @@ export class CombatHelper {
     if(!attacker) return 0;
 
     switch(debuffName) {
-      case 'BuildupHeat':    return attacker.getTraitLevelAndUsageModifier('ForgedFire');
-      case 'BuildupChill':   return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
+      case 'BuildupHeat':           return attacker.getTraitLevelAndUsageModifier('ForgedFire');
+      case 'BuildupChill':          return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
+      case 'BuildupSneakAttack':    return -attacker.getTraitLevelAndUsageModifier('ShadowRanger') / 4;
     }
 
     return 0;
@@ -874,8 +875,9 @@ export class CombatHelper {
     if(!attacker) return 0;
 
     switch(debuffName) {
-      case 'BuildupHeat':   return attacker.getTraitLevelAndUsageModifier('ForgedFire');
-      case 'BuildupChill':  return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
+      case 'BuildupHeat':           return attacker.getTraitLevelAndUsageModifier('ForgedFire');
+      case 'BuildupChill':          return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
+      case 'BuildupSneakAttack':    return -attacker.getTraitLevelAndUsageModifier('ShadowRanger') / 8;
     }
 
     return 0;
@@ -890,7 +892,7 @@ export class CombatHelper {
     const def = extraData.defender;
 
     if(atk && def && lowerDamageClass === 'physical') {
-      if(atk.baseClass === 'Thief' && !extraData.isAttackerVisible && extraData.isRanged) {
+      if(atk.baseClass === 'Thief' && !extraData.isAttackerVisible) {
         return ['BuildupSneakAttack', 'DefensesShattered', 'RecentlyShattered'];
       }
     }
@@ -913,7 +915,7 @@ export class CombatHelper {
     if(defender.hasEffect(activeDebuff) || defender.hasEffect(recentDebuff)) return;
 
     let targetEffect = defender.hasEffect(debuff);
-    const bonusIncrease = this.elementalBoostValue(attacker, debuff);
+    const bonusIncrease = Math.max(0, this.elementalBoostValue(attacker, debuff));
     let debuffIncrease = 30 + bonusIncrease;
 
     mitigatedPercent = mitigatedPercent || 0;
@@ -925,7 +927,7 @@ export class CombatHelper {
       targetEffect = new Effects[debuff]({});
       (<BuildupEffect>targetEffect).buildupMax = buildupMax;
       (<BuildupEffect>targetEffect).buildupCur = bonusIncrease;
-      (<BuildupEffect>targetEffect).decayRate -= this.elementalDecayRateValue(attacker, damageClass);
+      (<BuildupEffect>targetEffect).decayRate -= this.elementalDecayRateValue(attacker, debuff);
       (<BuildupEffect>targetEffect).cast(attacker, defender);
     }
 

@@ -9,7 +9,7 @@ export class BuildupSneakAttack extends BuildupEffect {
   iconData = {
     name: 'on-sight',
     color: '#333',
-    tooltipDesc: 'Sneak attacks are building up.'
+    tooltipDesc: 'Sneak attacks are building up. +25% damage from hiddens against this target.'
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {

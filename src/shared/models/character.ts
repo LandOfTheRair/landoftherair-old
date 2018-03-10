@@ -1047,8 +1047,8 @@ export class Character {
     }
   }
 
-  sendClientMessageToRadius(message, radius = 0, except = []) {
-    MessageHelper.sendClientMessageToRadius(this, message, radius, except);
+  sendClientMessageToRadius(message, radius = 4, except = [], useSight = false) {
+    MessageHelper.sendClientMessageToRadius(this, message, radius, except, useSight);
   }
 
   isPlayer() {

@@ -14,6 +14,15 @@ export class Revealed extends SpellEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.duration = this.duration || 5;
+
+    const hidden = target.hasEffect('Hidden');
+    const shadowMeld = target.hasEffect('ShadowMeld');
+
+    if(hidden)      target.unapplyEffect(hidden, true);
+    if(shadowMeld)  target.unapplyEffect(shadowMeld, true);
+
+    if(hidden || shadowMeld) target.sendClientMessage('You were forced out of hiding!');
+
     target.applyEffect(this);
   }
 

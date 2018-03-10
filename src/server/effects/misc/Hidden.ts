@@ -21,7 +21,7 @@ export class Hidden extends SpellEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
-
+    this.flagUnapply();
     this.flagPermanent(caster.uuid);
     this.potency = caster.stealthLevel();
     caster.applyEffect(this);
