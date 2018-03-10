@@ -26,7 +26,7 @@ class AcolyteOverseer extends SpellEffect {
   effectTick(char: Character) {
     this.ticks++;
 
-    const livingAcolytes = filter(acolytes, ac => ac && !ac.isDead());
+    const livingAcolytes = filter(acolytes, (ac: Character) => ac && !ac.isDead());
     if(livingAcolytes.length > 0) {
       if(this.ticks % 5 !== 0) return;
       char.hp.add(char.hp.maximum * 0.04 * livingAcolytes.length);
@@ -78,19 +78,19 @@ export const mechanicTick = async (npc: NPC) => {
   if(npc.hp.gtePercent(65)) trigger50 = false;
   if(npc.hp.gtePercent(40)) trigger25 = false;
 
-  if(!trigger75 && npc.hp.lessThanPercent(75)) {
+  if(!trigger75 && npc.hp.ltPercent(75)) {
     trigger75 = true;
 
     await spawnAcolyte(npc, 1);
   }
 
-  if(!trigger50 && npc.hp.lessThanPercent(50)) {
+  if(!trigger50 && npc.hp.ltPercent(50)) {
     trigger50 = true;
 
     await spawnAcolyte(npc, 2);
   }
 
-  if(!trigger25 && npc.hp.lessThanPercent(25)) {
+  if(!trigger25 && npc.hp.ltPercent(25)) {
     trigger25 = true;
 
     await spawnAcolyte(npc, 3);

@@ -39,8 +39,8 @@ class ItemLoader {
           if(!itemData.stats) itemData.stats = {};
 
           return new Promise((resolve, reject) => {
-            this.conditionallyAddInformation(itemData);
-            if(!this.validateItem(itemData)) return reject(new Error(`${itemData.name} failed validation.`));
+            ItemLoader.conditionallyAddInformation(itemData);
+            if(!ItemLoader.validateItem(itemData)) return reject(new Error(`${itemData.name} failed validation.`));
             return resolve(itemData);
           });
 
@@ -214,7 +214,7 @@ class ItemLoader {
         if(isArray(item.trait.name)) {
           (<any>item.trait.name).forEach(traitName => {
             if(AllTraits[traitCat][traitName]) found = true;
-          })
+          });
         } else {
           if(AllTraits[traitCat][item.trait.name]) found = true;
         }

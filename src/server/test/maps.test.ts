@@ -10,7 +10,7 @@ import { includes, find } from 'lodash';
 import { MapLayer } from '../../shared/models/maplayer';
 
 let allMaps = [];
-let allMapNames = {};
+const allMapNames = {};
 
 const tagFor = (map: any, key: string, key2?: string): string => {
   return `${map._name}:${key}${key2 ? ':' + key2 : ''}`;
@@ -33,7 +33,7 @@ test.before(async () => {
       });
       resolve(allMaps);
     });
-  })
+  });
 });
 
 // map tests
@@ -90,10 +90,12 @@ test('All map spawners have a valid script and AI script', t => {
   allMaps.forEach(map => {
     const spawnerObjects = map.layers[MapLayer.Spawners].objects;
     spawnerObjects.forEach(spawner => {
-      t.true(fs.existsSync(`${__dirname}/../scripts/spawners/${spawner.properties.script}.ts`), tagFor(map, 'spawnerscript', spawner.properties.script || `unspecified @ ${spawner.x / 64}, ${spawner.y / 64}`));
+      t.true(fs.existsSync(`${__dirname}/../scripts/spawners/${spawner.properties.script}.ts`),
+        tagFor(map, 'spawnerscript', spawner.properties.script || `unspecified @ ${spawner.x / 64}, ${spawner.y / 64}`));
 
       if(spawner.properties.npcAISettings) {
-        t.true(fs.existsSync(`${__dirname}/../scripts/ai/${spawner.properties.npcAISettings}.ts`), tagFor(map, 'npcAISettings', spawner.properties.npcAISettings || `unspecified @ ${spawner.x / 64}, ${spawner.y / 64}`));
+        t.true(fs.existsSync(`${__dirname}/../scripts/ai/${spawner.properties.npcAISettings}.ts`),
+          tagFor(map, 'npcAISettings', spawner.properties.npcAISettings || `unspecified @ ${spawner.x / 64}, ${spawner.y / 64}`));
       }
     });
   });
@@ -104,7 +106,8 @@ test('All NPCs have valid properties', t => {
   allMaps.forEach(map => {
     const npcObjects = map.layers[MapLayer.NPCs].objects;
     npcObjects.forEach(npc => {
-      t.true(fs.existsSync(`${__dirname}/../scripts/npc/${npc.properties.script}.ts`), tagFor(map, 'npcscript', npc.properties.script || `unspecified @ ${npc.x / 64}, ${npc.y / 64}`));
+      t.true(fs.existsSync(`${__dirname}/../scripts/npc/${npc.properties.script}.ts`),
+        tagFor(map, 'npcscript', npc.properties.script || `unspecified @ ${npc.x / 64}, ${npc.y / 64}`));
 
       switch(npc.properties.script) {
         case 'global/smith': {
@@ -171,7 +174,7 @@ test('All Interactables have valid properties', t => {
       if(interactable.type === 'Door') {
         if(!interactable.properties) return;
 
-        const { requireHeld, requireLockpick, skillRequired } = interactable.properties;
+        const { requireLockpick, skillRequired } = interactable.properties;
 
         if(requireLockpick) {
           t.truthy(skillRequired, tagFor(map, 'skillrequired'));

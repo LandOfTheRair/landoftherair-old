@@ -116,7 +116,7 @@
     "phaser-tiled": "^2.0.4",
     "process-stats": "^2.0.0",
     "recursive-readdir": "^2.2.1",
-    "restricted-number": "^1.1.0",
+    "restricted-number": "^2.0.1",
     "rollbar": "2.1.0",
     "roman-numerals": "^0.3.2",
     "rxjs": "^5.5.6",

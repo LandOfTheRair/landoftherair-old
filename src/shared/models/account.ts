@@ -95,8 +95,8 @@ export class Account {
     merge(this, opts);
   }
 
-  public toSaveObject() {
-    const baseObj = pick(this, [
+  public toSaveObject(): any {
+    const baseObj: any = pick(this, [
       'colyseusId', 'createdAt', 'userId', 'email',
       'emailVerified', 'username', 'isGM', 'status', 'isTester',
       'characterNames', 'maxCharacters', 'subscriptionTier', 'trialEnds', 'hasDoneTrial',

@@ -51,7 +51,7 @@ export class GameState {
   simpleGroundItems: any = {};
 
   @nonenumerable
-  fov: Mrpas;
+  fov: any; // Mrpas
 
   @nonenumerable
   private secretWallHash = {};
@@ -294,7 +294,7 @@ export class GameState {
 
     // no dark, calculate fov
     } else {
-      (<any>this.fov).compute(player.x, player.y, dist, (x, y) => {
+      this.fov.compute(player.x, player.y, dist, (x, y) => {
         return affected[x - player.x] && affected[x - player.x][y - player.y];
       }, (x, y) => {
         affected[x - player.x] = affected[x - player.x] || {};
@@ -583,12 +583,12 @@ export class GameState {
 
   tickPlayers(): void {
 
-    this.players.forEach(p => {
+    this.players.forEach((p: Player) => {
       p.tick();
 
       if(p.swimLevel > 0) {
         const hpPercentLost = p.swimLevel * 4;
-        const hpLost = Math.floor((<any>p.hp).maximum * (hpPercentLost / 100));
+        const hpLost = Math.floor(p.hp.maximum * (hpPercentLost / 100));
         CombatHelper.dealOnesidedDamage(p, { damage: hpLost, damageClass: p.$$swimElement || 'water', damageMessage: 'You are drowning!', suppressIfNegative: true });
       }
     });

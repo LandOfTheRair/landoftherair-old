@@ -11,7 +11,7 @@ export const Maxes = {
   Minor: 15
 };
 
-class EffectInfo {
+interface EffectInfo {
   damage?: number;
   caster: string;
   casterName?: string;
@@ -32,7 +32,7 @@ export class Effect {
     return this.potency;
   }
 
-  effectInfo: EffectInfo = { caster: '', casterName: '' };
+  effectInfo: EffectInfo = { caster: '' };
   casterRef: any;
 
   public shouldNotShowMessage;

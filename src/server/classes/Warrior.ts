@@ -7,11 +7,11 @@ export class Warrior extends BaseClass {
   static willDivisor = 4;
 
   static becomeClass(character: Character) {
-    super.becomeClass(character);
+    BaseClass.becomeClass(character);
   }
 
   static gainLevelStats(character: Character) {
-    super.gainLevelStats(character);
+    BaseClass.gainLevelStats(character);
     character.gainBaseStat('hp', this.rollDie(`2df([con] / 3) + f([con] / 3)`, character));
   }
 

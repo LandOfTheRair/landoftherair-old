@@ -47,8 +47,8 @@ export abstract class Skill extends Command {
   }
 
   canUse(user: Character, target: Character): boolean {
-    if(user.mp.lessThan(this.mpCost(user))) return false;
-    if(user.hp.lessThan(this.hpCost(user))) return false;
+    if(user.mp.lt(this.mpCost(user))) return false;
+    if(user.hp.lt(this.hpCost(user))) return false;
     if(user.distFrom(target) > this.range(user)) return false;
     return true;
   }

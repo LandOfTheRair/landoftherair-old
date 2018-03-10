@@ -7,7 +7,7 @@ import { DB } from '../database';
 import * as YAML from 'yamljs';
 import * as recurse from 'recursive-readdir';
 
-import { includes, flatten, isUndefined, isNumber, size, extend, get, isString, isArray } from 'lodash';
+import { includes, flatten, isNumber, size, extend, get, isString, isArray } from 'lodash';
 
 import { Stats, Skills } from '../../shared/models/character';
 
@@ -26,11 +26,11 @@ class NPCLoader {
 
         const promises = npcs.map(npcData => {
           return new Promise((resolve, reject) => {
-            this.conditionallyAddInformation(npcData);
-            this.assignReputations(npcData);
-            if(!this.validateItem(npcData)) return reject(new Error(`${npcData.npcId} failed validation.`));
+            NPCLoader.conditionallyAddInformation(npcData);
+            NPCLoader.assignReputations(npcData);
+            if(!NPCLoader.validateItem(npcData)) return reject(new Error(`${npcData.npcId} failed validation.`));
             return resolve(npcData);
-          })
+          });
         });
 
         return promises;

@@ -1,13 +1,15 @@
 
+import { RestrictedNumber } from 'restricted-number';
+import { Signal } from 'signals.js';
+
 import {
   merge, find, includes, compact, values,
   startsWith, clone, get, reject, pick
 } from 'lodash';
+
 import {
   Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
 } from './item';
-import * as RestrictedNumber from 'restricted-number';
-import { Signal } from 'signals.js';
 import { MapLayer } from './maplayer';
 
 import { HideReductionPercents } from '../../server/helpers/character/hide-reductions';

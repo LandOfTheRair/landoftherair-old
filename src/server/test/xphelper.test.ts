@@ -1,8 +1,6 @@
 
 import test from 'ava-ts';
 
-import * as Effects from '../effects';
-import * as recurse from 'recursive-readdir';
 import { XPHelper } from '../helpers/character/xp-helper';
 
 test('XP for every level is calculated correctly', async t => {

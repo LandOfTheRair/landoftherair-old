@@ -1,6 +1,4 @@
 
-import { reject, difference, values } from 'lodash';
-
 const argv = require('minimist')(process.argv.slice(2));
 require('dotenv').config({ silent: true, path: argv.prod ? '.env.prod' : '.env' });
 
@@ -10,11 +8,7 @@ import * as YAML from 'yamljs';
 import * as recurse from 'recursive-readdir';
 import * as path from 'path';
 
-import { includes, flatten, isUndefined, capitalize } from 'lodash';
-
-import {
-  Item, ValidItemTypes, WeaponClasses, ArmorClasses
-} from '../../shared/models/item';
+import { flatten } from 'lodash';
 
 class RecipeLoader {
 
@@ -31,8 +25,8 @@ class RecipeLoader {
           itemData.recipeType = fileName;
 
           return new Promise((resolve, reject) => {
-            this.addItemData(itemData);
-            if(!this.validateItem(itemData)) return reject(new Error(`${itemData.name} failed validation.`));
+            RecipeLoader.addItemData(itemData);
+            if(!RecipeLoader.validateItem(itemData)) return reject(new Error(`${itemData.name} failed validation.`));
             return resolve(itemData);
           });
 

@@ -8,7 +8,7 @@ import * as YAML from 'yamljs';
 import * as recurse from 'recursive-readdir';
 import * as path from 'path';
 
-import { includes, flatten, isUndefined, isNumber } from 'lodash';
+import { flatten } from 'lodash';
 
 class DropsLoader {
 

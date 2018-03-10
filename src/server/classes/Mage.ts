@@ -8,7 +8,7 @@ export class Mage extends BaseClass {
   static willDivisor = 3;
 
   static becomeClass(character: Character) {
-    super.becomeClass(character);
+    BaseClass.becomeClass(character);
 
     if(!character.getBaseStat('mp')) {
       character.gainBaseStat('mp', 30);
@@ -17,7 +17,7 @@ export class Mage extends BaseClass {
   }
 
   static gainLevelStats(character: Character) {
-    super.gainLevelStats(character);
+    BaseClass.gainLevelStats(character);
     character.gainBaseStat('hp', this.rollDie(`1d[con]`, character));
     character.gainBaseStat('mp', this.rollDie(`2d[int] + f([int] / 5)`, character));
   }
