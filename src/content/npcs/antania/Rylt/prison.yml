@@ -507,7 +507,7 @@
   stats: 7
   skillLevels:
     Mace: 1
-    Restoration: 2
+    Restoration: 1
 
   otherStats:
     perception: 120
