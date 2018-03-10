@@ -1,5 +1,38 @@
 # Changelog
 
+## v0.1.7 (10/03/2018)
+
+#### Enhancements
+
+- [#599](https://github.com/LandOfTheRair/landoftherair/issues/599) Tester set hp/mpregen command
+- [#598](https://github.com/LandOfTheRair/landoftherair/issues/598) Tester set mp command
+- [#596](https://github.com/LandOfTheRair/landoftherair/issues/596) add skeleton bones to decor
+- [#589](https://github.com/LandOfTheRair/landoftherair/issues/589) add sound effect when taking damage
+
+#### Balance Adjustments
+
+- [#605](https://github.com/LandOfTheRair/landoftherair/issues/605) Crazed saraxa wand needs a level requirement
+- [#602](https://github.com/LandOfTheRair/landoftherair/issues/602) lower drop rate of trait scrolls
+- [#600](https://github.com/LandOfTheRair/landoftherair/issues/600) lower restoration skill for rebels
+- [#590](https://github.com/LandOfTheRair/landoftherair/issues/590) Adjustments to Sneak Attack
+
+#### New Content
+
+- [#606](https://github.com/LandOfTheRair/landoftherair/issues/606) Improved summon (salamander, skill 15)
+- [#575](https://github.com/LandOfTheRair/landoftherair/issues/575) Offhand Finesse (Warrior Trait)
+- [#565](https://github.com/LandOfTheRair/landoftherair/issues/565) Improved summon (chillspider, mage skill 20)
+- [#563](https://github.com/LandOfTheRair/landoftherair/issues/563) VitalEssence spell (healer, skill 20)
+- [#562](https://github.com/LandOfTheRair/landoftherair/issues/562) Holyfire spell (healer, skill 19)
+- [#561](https://github.com/LandOfTheRair/landoftherair/issues/561) Wellspring spell (healer, skill 18)
+
+#### Bug Fixes
+
+- [#604](https://github.com/LandOfTheRair/landoftherair/issues/604) Verify that crazed and insane healers cast spells
+- [#601](https://github.com/LandOfTheRair/landoftherair/issues/601) can gain party points even if your party members are not nearby (or in the same map)
+- [#597](https://github.com/LandOfTheRair/landoftherair/issues/597) Test accounts cannot see sub stairs
+
+---
+
 ## v0.1.6 (09/03/2018)
 
 #### Balance Adjustments
@@ -57,6 +90,7 @@
 #### Enhancements
 
 - [#554](https://github.com/LandOfTheRair/landoftherair/issues/554) Clean up range() and skillFlag() functions to not be = function
+- [#553](https://github.com/LandOfTheRair/landoftherair/issues/553) Add "level difference" to combat logging
 
 #### Balance Adjustments
 
@@ -102,6 +136,7 @@
 
 #### Enhancements
 
+- [#537](https://github.com/LandOfTheRair/landoftherair/issues/537) adjust metalworking so you can't forge an item higher level than you
 - [#536](https://github.com/LandOfTheRair/landoftherair/issues/536) combat log as csv
 - [#533](https://github.com/LandOfTheRair/landoftherair/issues/533) right click from ground -> sack
 - [#532](https://github.com/LandOfTheRair/landoftherair/issues/532) make ranged attacks (bow, throwing) do damage based off of dex instead of str
@@ -130,6 +165,7 @@
 - [#488](https://github.com/LandOfTheRair/landoftherair/issues/488) make trait, stat, skill, trade skill window minimizable
 - [#487](https://github.com/LandOfTheRair/landoftherair/issues/487) add quick open buttons on tagline window for belt, sack, pouch, equipment
 - [#486](https://github.com/LandOfTheRair/landoftherair/issues/486) add resiable lobby sizes, mirroring others
+- [#484](https://github.com/LandOfTheRair/landoftherair/issues/484) window.onbeforeunload - warn people when closing game
 - [#483](https://github.com/LandOfTheRair/landoftherair/issues/483) accounts designated as testers
 - [#482](https://github.com/LandOfTheRair/landoftherair/issues/482) add an option for "show friendly creatures first"
 - [#479](https://github.com/LandOfTheRair/landoftherair/issues/479) gm party join command
@@ -156,6 +192,7 @@
 - [#446](https://github.com/LandOfTheRair/landoftherair/issues/446) View other player gear
 - [#443](https://github.com/LandOfTheRair/landoftherair/issues/443) Make main hand wands boost damage rolls for mage spells by their damage roll boost.
 - [#440](https://github.com/LandOfTheRair/landoftherair/issues/440) test to ensure no commands conflict
+- [#439](https://github.com/LandOfTheRair/landoftherair/issues/439) ~~unstuck
 - [#437](https://github.com/LandOfTheRair/landoftherair/issues/437) Adjust algorithm for item garbage collector
 - [#434](https://github.com/LandOfTheRair/landoftherair/issues/434) training dummy
 - [#431](https://github.com/LandOfTheRair/landoftherair/issues/431) alchemist should tie bottles
