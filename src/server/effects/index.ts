@@ -39,6 +39,7 @@ export * from './buffs/BarNecro';
 export * from './buffs/BarWater';
 export * from './buffs/Absorption';
 export * from './buffs/MagicShield';
+export * from './buffs/VitalEssence';
 
 export * from './damagers/FireMist';
 export * from './damagers/IceMist';

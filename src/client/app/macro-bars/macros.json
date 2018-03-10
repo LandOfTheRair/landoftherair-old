@@ -1,22 +1,22 @@
 {
     "allMeta": [
         {
-            "name": "Climb",
-            "macro": "climb up",
-            "icon": "ladder",
-            "color": "#D2691E",
-            "mode": "autoActivate",
-            "tooltipDesc": "Climb up or down on this tile.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Chase",
             "macro": "chase",
             "icon": "hooded-figure",
             "color": "#000000",
             "mode": "lockActivation",
             "tooltipDesc": "Move towards a target.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Climb",
+            "macro": "climb up",
+            "icon": "ladder",
+            "color": "#D2691E",
+            "mode": "autoActivate",
+            "tooltipDesc": "Climb up or down on this tile.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -31,22 +31,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show stats",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your stats and their base level in text form.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Show Skills",
             "macro": "show skills",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "See all of your skills and skill levels in text form.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Show Stats",
+            "macro": "show stats",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your stats and their base level in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -143,16 +143,6 @@
             "requiresLearn": false
         },
         {
-            "name": "Charge",
-            "macro": "charge",
-            "icon": "running-ninja",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Hide",
             "macro": "hide",
             "icon": "hidden",
@@ -174,12 +164,12 @@
             "requiresLearn": false
         },
         {
-            "name": "Throw",
-            "macro": "throw right",
-            "icon": "thrown-spear",
+            "name": "Charge",
+            "macro": "charge",
+            "icon": "running-ninja",
             "color": "#530000",
             "mode": "lockActivation",
-            "tooltipDesc": "Throw an item at a target.",
+            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -190,6 +180,16 @@
             "color": "#7F6B00",
             "mode": "lockActivation",
             "tooltipDesc": "Steal gold and items from your target.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Throw",
+            "macro": "throw right",
+            "icon": "thrown-spear",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Throw an item at a target.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -244,22 +244,22 @@
             "requiresLearn": true
         },
         {
-            "name": "HolyFire",
-            "macro": "cast holyfire",
-            "icon": "fireflake",
-            "color": "#f50",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict fire damage on a single target. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Cure",
             "macro": "cast cure",
             "icon": "tentacle-heart",
             "color": "#080",
             "mode": "clickToTarget",
             "tooltipDesc": "Heal a single target. Cost: 5 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "HolyFire",
+            "macro": "cast holyfire",
+            "icon": "fireflake",
+            "color": "#f50",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict fire damage on a single target. Cost: 15 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -285,16 +285,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Regen",
-            "macro": "cast regen",
-            "icon": "star-swirl",
-            "color": "#00c",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "PowerwordHeal",
             "macro": "powerword heal",
             "icon": "tentacle-heart",
@@ -306,12 +296,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Revive",
-            "macro": "cast revive",
-            "icon": "quicksand",
-            "color": "#080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Revive a single player on your tile. Cost: 50 MP",
+            "name": "Regen",
+            "macro": "cast regen",
+            "icon": "star-swirl",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -326,12 +316,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Succor",
-            "macro": "cast succor",
-            "icon": "blackball",
+            "name": "Revive",
+            "macro": "cast revive",
+            "icon": "quicksand",
             "color": "#080",
             "mode": "autoActivate",
-            "tooltipDesc": "Create a consumable that will let you return to your current location. Cost: 25 MP",
+            "tooltipDesc": "Revive a single player on your tile. Cost: 50 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -342,6 +332,136 @@
             "color": "#080",
             "mode": "autoActivate",
             "tooltipDesc": "Create a bottle of holy water. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Succor",
+            "macro": "cast succor",
+            "icon": "blackball",
+            "color": "#080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Create a consumable that will let you return to your current location. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "VitalEssence",
+            "macro": "cast vitalessence",
+            "icon": "bell-shield",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Boost maximum vitality for a single target. Cost: 200 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Absorption",
+            "macro": "cast absorption",
+            "icon": "magic-swirl",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Absorb all types of magic. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarWater",
+            "macro": "cast barwater",
+            "icon": "rosa-shield",
+            "color": "#208aec",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield water damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EnergyWave",
+            "macro": "cast energywave",
+            "icon": "beams-aura",
+            "color": "#000080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 45 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "FireMist",
+            "macro": "cast firemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 35 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "IceMist",
+            "macro": "cast icemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "FindFamiliar",
+            "macro": "cast findfamiliar",
+            "icon": "eagle-emblem",
+            "color": "#0aa",
+            "mode": "autoActivate",
+            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MagicBolt",
+            "macro": "cast magicbolt",
+            "icon": "burning-dot",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 10 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MagicMissile",
+            "macro": "cast magicmissile",
+            "icon": "missile-swarm",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Magic Shield",
+            "macro": "cast magicshield",
+            "icon": "vibrating-shield",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EagleEye",
+            "macro": "cast eagleeye",
+            "icon": "dead-eye",
+            "color": "#f00",
+            "mode": "autoActivate",
+            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowMeld",
+            "macro": "cast shadowmeld",
+            "icon": "hidden",
+            "color": "#00c",
+            "mode": "autoActivate",
+            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -468,94 +588,15 @@
             "requiresLearn": true
         },
         {
-            "name": "BarWater",
-            "macro": "cast barwater",
-            "icon": "rosa-shield",
-            "color": "#208aec",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield water damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Absorption",
-            "macro": "cast absorption",
-            "icon": "magic-swirl",
-            "color": "#a0a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Absorb all types of magic. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "FireMist",
-            "macro": "cast firemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 35 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "EnergyWave",
-            "macro": "cast energywave",
-            "icon": "beams-aura",
-            "color": "#000080",
+            "name": "Rage Stance",
+            "macro": "stance rage",
+            "icon": "swords-power",
+            "color": "#000000",
             "mode": "autoActivate",
-            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 45 MP",
+            "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 14 (Warrior).",
+            "requiresBaseClass": "Warrior",
             "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "IceMist",
-            "macro": "cast icemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MagicBolt",
-            "macro": "cast magicbolt",
-            "icon": "burning-dot",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 10 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "FindFamiliar",
-            "macro": "cast findfamiliar",
-            "icon": "eagle-emblem",
-            "color": "#0aa",
-            "mode": "autoActivate",
-            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Magic Shield",
-            "macro": "cast magicshield",
-            "icon": "vibrating-shield",
-            "color": "#a0a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MagicMissile",
-            "macro": "cast magicmissile",
-            "icon": "missile-swarm",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
-            "isSystem": true,
-            "requiresLearn": true
+            "requiresLearn": false
         },
         {
             "name": "Parry Stance",
@@ -564,17 +605,6 @@
             "color": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "Become more defensive, but lose offensive power. Requires weapon skill 13 (Warrior).",
-            "requiresBaseClass": "Warrior",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Rage Stance",
-            "macro": "stance rage",
-            "icon": "swords-power",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 14 (Warrior).",
             "requiresBaseClass": "Warrior",
             "isSystem": true,
             "requiresLearn": false
@@ -589,26 +619,6 @@
             "requiresBaseClass": "Warrior",
             "isSystem": true,
             "requiresLearn": false
-        },
-        {
-            "name": "ShadowMeld",
-            "macro": "cast shadowmeld",
-            "icon": "hidden",
-            "color": "#00c",
-            "mode": "autoActivate",
-            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "EagleEye",
-            "macro": "cast eagleeye",
-            "icon": "dead-eye",
-            "color": "#f00",
-            "mode": "autoActivate",
-            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
         }
     ]
 }

@@ -22,7 +22,8 @@ const learnedSkills = { Restoration: {
   16: ['PowerwordBarFire', 'PowerwordBarFrost', 'PowerwordBarNecro'],
   17: ['PowerwordHeal'],
   18: ['Wellspring'],
-  19: ['HolyFire']
+  19: ['HolyFire'],
+  20: ['VitalEssence']
 } };
 
 export const setup = async (npc: NPC) => {

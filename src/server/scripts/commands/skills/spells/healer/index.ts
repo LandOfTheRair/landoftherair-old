@@ -11,4 +11,5 @@ export * from './Regen';
 export * from './Revive';
 export * from './Stun';
 export * from './Succor';
+export * from './VitalEssence';
 export * from './Wellspring';
