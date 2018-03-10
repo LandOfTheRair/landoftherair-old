@@ -4,6 +4,7 @@ export * from './Augury';
 export * from './Autoheal';
 export * from './BarNecro';
 export * from './Cure';
+export * from './HolyFire';
 export * from './Light';
 export * from './PowerwordBarNecro';
 export * from './Regen';

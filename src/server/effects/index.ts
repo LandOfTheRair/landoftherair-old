@@ -26,6 +26,7 @@ export * from './buffs/DarkVision';
 export * from './buffs/TrueSight';
 
 export * from './damagers/Afflict';
+export * from './damagers/HolyFire';
 export * from './damagers/MagicMissile';
 export * from './damagers/MagicBolt';
 
