@@ -337,3 +337,18 @@
     duration: 10
     potency: 7
   value: 500
+
+- name: Holy Water
+  sprite: 31
+  desc: "a bottle of water encased in a holy glow"
+  value: 0
+  destroyOnDrop: true
+  effect:
+    name: Nourishment
+    tooltip: "+1 WIS/WIL/CON"
+    message: "The holy water revitalizes you."
+    stats:
+      wis: 1
+      wil: 1
+      con: 1
+    duration: 1800
