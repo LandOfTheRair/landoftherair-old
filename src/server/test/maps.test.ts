@@ -24,7 +24,7 @@ const isInBounds = (mapName: string, x: number, y: number): boolean => {
 
 test.before(async () => {
   return new Promise(resolve => {
-    recurse(`${__dirname}/../maps`).then(files => {
+    recurse(`${__dirname}/../../content/maps`).then(files => {
       allMaps = files.map(x => {
         const map = require(x);
         map._name = path.basename(x, path.extname(x));
