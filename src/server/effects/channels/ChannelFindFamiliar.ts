@@ -11,9 +11,10 @@ import { ActivePet } from '../special/ActivePet';
 import { SummonedPet } from '../special/SummonedPet';
 
 const animalHash = {
-  deer: 'Rylt Deer',
-  wolf: 'Rylt Wolf',
-  bear: 'Rylt Bear'
+  deer: 'Mage Summon Deer',
+  wolf: 'Mage Summon Wolf',
+  bear: 'Mage Summon Bear',
+  chillspider: 'Mage Summon Chillspider'
 };
 
 // this hash is for boosting stats/etc of the summoned creature, so it's useful
@@ -32,6 +33,12 @@ const animalModHash = {
     npc.gainBaseStat('hp', Math.floor(base.hp * potency / 3));
     npc.gainBaseStat('str', Math.floor(potency / 5));
     npc.gainBaseStat('con', Math.floor(potency / 5));
+  },
+  chillspider: (npc: NPC, potency: number) => {
+    const base = npc.baseStats;
+    npc.gainBaseStat('hp', Math.floor(base.hp * potency / 4));
+    npc.gainBaseStat('str', Math.floor(potency / 4));
+    npc.gainBaseStat('con', Math.floor(potency / 6));
   }
 };
 
@@ -61,6 +68,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
 
     if(this.potency >= 5) allPossibleAnimals.push('wolf');
     if(this.potency >= 10) allPossibleAnimals.push('bear');
+    if(this.potency >= 20) allPossibleAnimals.push('chillspider');
 
     // can't cast for an animal at a higher skill
     if(!includes(allPossibleAnimals, animalStr)) animalStr = '';
