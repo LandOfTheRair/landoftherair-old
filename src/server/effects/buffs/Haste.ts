@@ -32,8 +32,8 @@ export class Haste extends SpellEffect {
     if(recentlyHasted) {
       target.unapplyEffect(recentlyHasted, true);
       target.sendClientMessage('You feel a wrenching sensation.');
-      const lostStat: StatName = sample(['str', 'dex', 'agi', 'con']);
-      target.loseBaseStat(lostStat, -1);
+      const lostStat = sample(['str', 'dex', 'agi', 'con']);
+      target.loseBaseStat(<StatName>lostStat, -1);
     }
 
     target.applyEffect(this);
