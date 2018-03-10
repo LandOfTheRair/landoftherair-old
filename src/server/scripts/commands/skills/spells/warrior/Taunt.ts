@@ -1,5 +1,5 @@
 
-
+import { maxBy } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
@@ -17,9 +17,16 @@ export class Taunt extends Skill {
     requiresBaseClass: 'Warrior'
   };
 
-  public name = 'art taunt';
+  public name = ['taunt', 'art taunt'];
 
   requiresLearn = false;
+
+  canUse(user: Character, target: Character) {
+    const agro = target.agro;
+    const highestAgro = maxBy(Object.keys(agro), person => agro[person]);
+
+    return super.canUse(user, target) && highestAgro !== user.uuid;
+  }
 
   execute(user: Character, { args }) {
 

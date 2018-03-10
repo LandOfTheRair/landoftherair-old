@@ -52,8 +52,6 @@
   otherStats:
     perception: 15
 
-  skillOnKill: 5
-
   gold:
     min: 40
     max: 90
@@ -68,6 +66,7 @@
 
   usableSkills:
     - PoisonBiteWeak
+    - Taunt
 
 - npcId: Mage Summon Salamander
   name: salamander
