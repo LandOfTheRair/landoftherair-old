@@ -607,6 +607,20 @@ export class CombatHelper {
     return { hit: true, damage, dealtBy: attackerWeapon.itemClass.toLowerCase(), damageType };
   }
 
+  static tryDamageReflect(attacker, defender, damage: number, damageClass: DamageType) {
+    const stat = damageClass === 'Physical' ? 'physicalDamageReflect' : 'magicalDamageReflect';
+    const damageReflectStat = defender.getTotalStat(<StatName>stat);
+
+    const reflectedDamage = Math.min(damage, damageReflectStat);
+
+    this.dealOnesidedDamage(attacker, { 
+      damageClass: damageClass, 
+      damage: reflectedDamage,
+      damageMessage: 'Some of the damage was reflected back at you!',
+      suppressIfNegative: true
+    });
+  }
+
   static tryApplyEffect(attacker, defender, effect) {
     const applyEffect = Effects[effect.name];
     if(!applyEffect) return;
@@ -857,6 +871,8 @@ export class CombatHelper {
     }
 
     defender.$$room.state.updateNPCVolatile(defender);
+
+    this.tryDamageReflect(attacker, defender, damage, damageClass);
 
     return damage;
 

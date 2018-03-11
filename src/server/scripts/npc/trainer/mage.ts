@@ -19,6 +19,7 @@ const learnedSkills = { Conjuration: {
   13: ['MagicShield'],
   14: ['Absorption'],
   15: ['FindFamiliar'],
+  16: ['Firethorns'],
   20: ['Haste']
 } };
 

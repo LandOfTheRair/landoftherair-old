@@ -39,7 +39,7 @@ export * from './buffs/BarNecro';
 export * from './buffs/BarWater';
 export * from './buffs/Absorption';
 export * from './buffs/MagicShield';
-export * from './buffs/VitalEssence';
+export * from './buffs/Firethorns';
 export * from './buffs/Haste';
 
 export * from './damagers/FireMist';
@@ -47,6 +47,7 @@ export * from './damagers/IceMist';
 export * from './damagers/EnergyWave';
 
 export * from './buffs/Autoheal';
+export * from './buffs/VitalEssence';
 export * from './cures/Cure';
 export * from './cures/Regen';
 export * from './cures/Revive';

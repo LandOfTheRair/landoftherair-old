@@ -151,7 +151,7 @@ export type StatName =
 | 'move' | 'hpregen' | 'mpregen' | 'hp' | 'mp'
 | 'armorClass' | 'accuracy' | 'offense' | 'defense' | 'weaponArmorClass' | 'weaponDamageRolls' | 'mitigation'
 | 'stealth' | 'perception'
-| 'magicalDamageBoost' | 'physicalDamageBoost' | 'healingBoost'
+| 'magicalDamageBoost' | 'physicalDamageBoost' | 'healingBoost' | 'physicalDamageReflect' | 'magicalDamageReflect'
 | 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist'
 | 'actionSpeed';
 
