@@ -1,0 +1,40 @@
+
+import { Skill } from '../../../../../base/Skill';
+import { Character } from '../../../../../../shared/models/character';
+import { Firethorns as CastEffect } from '../../../../../effects/buffs/Firethorns';
+
+export class Firethorns extends Skill {
+
+  static macroMetadata = {
+    name: 'Firethorns',
+    macro: 'cast firethorns',
+    icon: 'barbed-coil',
+    color: '#f00',
+    mode: 'clickToTarget',
+    tooltipDesc: 'Physical attackers take fire damage. Cost: 100 MP'
+  };
+
+  public name = ['firethorns', 'cast firethorns'];
+  public format = 'Target';
+
+  mpCost() { return 100; }
+  range(attacker: Character) { return 5; }
+
+  execute(user: Character, { args, effect }) {
+
+    const target = this.getTarget(user, args, true);
+    if(!target) return;
+
+    if(!this.isValidBuffTarget(user, target)) return user.sendClientMessage('You cannot target that person with this spell.');
+
+    if(!this.tryToConsumeMP(user, effect)) return;
+
+    this.use(user, target, effect);
+  }
+
+  use(user: Character, target: Character, baseEffect = {}) {
+    const effect = new CastEffect(baseEffect);
+    effect.cast(user, target, this);
+  }
+
+}
