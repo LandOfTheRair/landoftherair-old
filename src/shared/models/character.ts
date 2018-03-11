@@ -1198,6 +1198,7 @@ export class Character {
       case 'ShadowDaggers':       return level;
       case 'ForgedFire':          return level;
       case 'FrostedTouch':        return level;
+      case 'Riposte':             return level;
       case 'CarefulTouch':        return Math.min(0.95, level * 0.05);
       case 'EffectiveSupporter':  return (level * 10) / 100;
       case 'OffhandFinesse':      return level * 0.1;

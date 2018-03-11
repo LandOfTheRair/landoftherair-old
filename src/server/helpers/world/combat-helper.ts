@@ -77,7 +77,15 @@ export class CombatHelper {
     return { damageRolls, damageBonus: damageBonus * tier, isWeak, isStrong };
   }
 
-  static attemptToShadowSwap(char: Character) {
+  private static attemptToRiposte(attacker: Character, defender: Character) {
+    const riposteLevel = defender.getTraitLevelAndUsageModifier('ShadowSwap');
+    if(riposteLevel === 0) return;
+    if(random(1, 100) > riposteLevel) return;
+
+    this.doPhysicalAttack(attacker, defender, { isRiposte: true });
+  }
+
+  private static attemptToShadowSwap(char: Character) {
     if(char.hasEffect('Hidden') || char.hasEffect('Revealed')) return;
 
     const shadowSwapLevel = char.getTraitLevelAndUsageModifier('ShadowSwap');
@@ -91,7 +99,7 @@ export class CombatHelper {
     hidden.cast(char, char);
   }
 
-  static attemptToStun(attacker: Character, weapon: Item, defender: Character) {
+  private static attemptToStun(attacker: Character, weapon: Item, defender: Character) {
     if(!weapon.proneChance) return;
     if(random(1, 100) > weapon.proneChance) return;
 
@@ -180,12 +188,12 @@ export class CombatHelper {
   }
 
   private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
-    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand } = opts;
+    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isRiposte } = opts;
     let { isBackstab } = opts;
 
     let backstabIgnoreRange = false;
 
-    if(!isBackstab) {
+    if(!isRiposte &&!isBackstab) {
       const procChance = attacker.getTraitLevelAndUsageModifier('ShadowDaggers');
       if(random(1, 100) <= procChance) {
         attacker.sendClientMessage({
@@ -332,30 +340,32 @@ export class CombatHelper {
     const dodgeRoll = random(defenderDodgeRoll, attackerDodgeRoll);
 
     if(dodgeRoll < 0 || attackDistance < distBetween) {
-      attacker.$$room.combatEffect(attacker, 'block-miss', defender.uuid);
-      attacker.sendClientMessage({
-        message: `You miss!`,
-        subClass: 'combat self miss',
-        target: defender.uuid,
-        extraData: {
-          type: 'miss',
-          uuid: attacker.uuid,
-          weapon: attackerWeapon.itemClass,
-          damage: 0,
-          monsterName: defender.name
-        }
-      });
-
-      defender.sendClientMessage({
-        message: `${attackerName} misses!`, subClass: 'combat other miss',
-        extraData: {
-          type: 'miss',
-          uuid: attacker.uuid,
-          weapon: attackerWeapon.itemClass,
-          damage: 0,
-          monsterName: attacker.name
-        }
-      });
+      if(!isRiposte) {
+        attacker.$$room.combatEffect(attacker, 'block-miss', defender.uuid);
+        attacker.sendClientMessage({
+          message: `You miss!`,
+          subClass: 'combat self miss',
+          target: defender.uuid,
+          extraData: {
+            type: 'miss',
+            uuid: attacker.uuid,
+            weapon: attackerWeapon.itemClass,
+            damage: 0,
+            monsterName: defender.name
+          }
+        });
+  
+        defender.sendClientMessage({
+          message: `${attackerName} misses!`, subClass: 'combat other miss',
+          extraData: {
+            type: 'miss',
+            uuid: attacker.uuid,
+            weapon: attackerWeapon.itemClass,
+            damage: 0,
+            monsterName: attacker.name
+          }
+        });
+      }
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { dodge: true };
     }
@@ -370,31 +380,33 @@ export class CombatHelper {
 
     const acRoll = random(defenderACRoll, attackerACRoll);
     if(acRoll < 0) {
-      attacker.$$room.combatEffect(attacker, 'block-armor', defender.uuid);
-      attacker.sendClientMessage({
-        message: `You were blocked by armor!`,
-        subClass: 'combat self block armor',
-        target: defender.uuid,
-        extraData: {
-          type: 'block-armor',
-          uuid: attacker.uuid,
-          weapon: attackerWeapon.itemClass,
-          damage: 0,
-          monsterName: defender.name
-        }
-      });
-
-      defender.sendClientMessage({
-        message: `${attackerName} was blocked by your armor!`,
-        subClass: 'combat other block armor',
-        extraData: {
-          type: 'block-armor',
-          uuid: attacker.uuid,
-          weapon: attackerWeapon.itemClass,
-          damage: 0,
-          monsterName: attacker.name
-        }
-      });
+      if(!isRiposte) {
+        attacker.$$room.combatEffect(attacker, 'block-armor', defender.uuid);
+        attacker.sendClientMessage({
+          message: `You were blocked by armor!`,
+          subClass: 'combat self block armor',
+          target: defender.uuid,
+          extraData: {
+            type: 'block-armor',
+            uuid: attacker.uuid,
+            weapon: attackerWeapon.itemClass,
+            damage: 0,
+            monsterName: defender.name
+          }
+        });
+  
+        defender.sendClientMessage({
+          message: `${attackerName} was blocked by your armor!`,
+          subClass: 'combat other block armor',
+          extraData: {
+            type: 'block-armor',
+            uuid: attacker.uuid,
+            weapon: attackerWeapon.itemClass,
+            damage: 0,
+            monsterName: attacker.name
+          }
+        });
+      }
       defenderArmor.loseCondition(1, () => defender.recalculateStats());
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { block: true, blockedBy: 'armor' };
@@ -412,34 +424,36 @@ export class CombatHelper {
 
     const weaponBlockRoll = random(defenderWeaponBlockRoll, attackerWeaponBlockRoll);
     if(weaponBlockRoll < 0 && defenderBlocker.isOwnedBy(defender) && defenderBlocker.hasCondition()) {
-      attacker.$$room.combatEffect(attacker, 'block-weapon', defender.uuid);
-
       const itemTypeToLower = defenderBlocker.itemClass.toLowerCase();
-      attacker.sendClientMessage({
-        message: `You were blocked by a ${itemTypeToLower}!`,
-        subClass: 'combat self block weapon',
-        target: defender.uuid,
-        extraData: {
-          type: 'block-weapon',
-          uuid: attacker.uuid,
-          weapon: attackerWeapon.itemClass,
-          damage: 0,
-          monsterName: defender.name
-        }
-      });
 
-      defender.sendClientMessage({
-        message: `${attackerName} was blocked by your ${itemTypeToLower}!`,
-        subClass: 'combat other block weapon',
-        extraData: {
-          type: 'block-weapon',
-          uuid: attacker.uuid,
-          weapon: attackerWeapon.itemClass,
-          damage: 0,
-          monsterName: attacker.name
-        }
-      });
-
+      if(!isRiposte) {
+        attacker.$$room.combatEffect(attacker, 'block-weapon', defender.uuid);
+  
+        attacker.sendClientMessage({
+          message: `You were blocked by a ${itemTypeToLower}!`,
+          subClass: 'combat self block weapon',
+          target: defender.uuid,
+          extraData: {
+            type: 'block-weapon',
+            uuid: attacker.uuid,
+            weapon: attackerWeapon.itemClass,
+            damage: 0,
+            monsterName: defender.name
+          }
+        });
+  
+        defender.sendClientMessage({
+          message: `${attackerName} was blocked by your ${itemTypeToLower}!`,
+          subClass: 'combat other block weapon',
+          extraData: {
+            type: 'block-weapon',
+            uuid: attacker.uuid,
+            weapon: attackerWeapon.itemClass,
+            damage: 0,
+            monsterName: attacker.name
+          }
+        });
+      }
 
       const lostCondition = 1 - (defender.getTraitLevelAndUsageModifier('CarefulTouch'));
       defenderBlocker.loseCondition(lostCondition, () => defender.recalculateStats());
@@ -457,32 +471,35 @@ export class CombatHelper {
 
       const shieldBlockRoll = random(attackerShieldBlockRoll, defenderShieldBlockRoll);
       if(shieldBlockRoll < 0) {
-        attacker.$$room.combatEffect(attacker, 'block-shield', defender.uuid);
         const itemTypeToLower = defenderShield.itemClass.toLowerCase();
-        attacker.sendClientMessage({
-          message: `You were blocked by a ${itemTypeToLower}!`,
-          subClass: 'combat self block shield',
-          target: defender.uuid,
-          extraData: {
-            type: 'block-shield',
-            uuid: attacker.uuid,
-            weapon: attackerWeapon.itemClass,
-            damage: 0,
-            monsterName: defender.name
-          }
-        });
 
-        defender.sendClientMessage({
-          message: `${attackerName} was blocked by your ${itemTypeToLower}!`,
-          subClass: 'combat other block shield',
-          extraData: {
-            type: 'block-shield',
-            uuid: attacker.uuid,
-            weapon: attackerWeapon.itemClass,
-            damage: 0,
-            monsterName: attacker.name
-          }
-        });
+        if(!isRiposte) {
+          attacker.$$room.combatEffect(attacker, 'block-shield', defender.uuid);
+          attacker.sendClientMessage({
+            message: `You were blocked by a ${itemTypeToLower}!`,
+            subClass: 'combat self block shield',
+            target: defender.uuid,
+            extraData: {
+              type: 'block-shield',
+              uuid: attacker.uuid,
+              weapon: attackerWeapon.itemClass,
+              damage: 0,
+              monsterName: defender.name
+            }
+          });
+  
+          defender.sendClientMessage({
+            message: `${attackerName} was blocked by your ${itemTypeToLower}!`,
+            subClass: 'combat other block shield',
+            extraData: {
+              type: 'block-shield',
+              uuid: attacker.uuid,
+              weapon: attackerWeapon.itemClass,
+              damage: 0,
+              monsterName: attacker.name
+            }
+          });
+        }
 
         const lostCondition = 1 - (defender.getTraitLevelAndUsageModifier('CarefulTouch'));
         defenderShield.loseCondition(lostCondition, () => defender.recalculateStats());
@@ -580,7 +597,8 @@ export class CombatHelper {
       defenderDamageMessage: msg,
       attackerWeapon,
       isRanged: damageCalcStat === 'dex',
-      isAttackerVisible
+      isAttackerVisible,
+      isRiposte
     });
 
     this.attemptToStun(attacker, attackerWeapon, defender);
@@ -600,6 +618,10 @@ export class CombatHelper {
 
     if(damage <= 0) {
       return { noDamage: true };
+    }
+
+    if(distBetween === 0) {
+      this.attemptToRiposte(attacker, defender);
     }
 
     attacker.gainCurrentSkills(1);
@@ -715,7 +737,8 @@ export class CombatHelper {
   static dealDamage(
     attacker: Character,
     defender: Character,
-    { damage, damageClass, attackerDamageMessage, defenderDamageMessage, attackerWeapon, isRanged, isAttackerVisible }: any
+    { damage, damageClass, attackerDamageMessage, defenderDamageMessage, 
+      attackerWeapon, isRanged, isAttackerVisible, isRiposte }: any
   ): number {
 
     if(defender.isDead() || (<any>defender).hostility === 'Never') return;
@@ -762,34 +785,36 @@ export class CombatHelper {
 
       mitigatedPercent = (damage / baseDamageWithModifiers);
 
-      if(damageReduced > 0 && damage !== 0 && attacker && attacker !== defender) {
-        attacker.sendClientMessage({
-          message: `Your attack is mangled by a magical force!`,
-          subClass: `combat self blocked`,
-          target: defender.uuid,
-          extraData: {
-            type: 'hit-physical',
-            uuid: attacker ? attacker.uuid : get(attackerWeapon, 'owner', '???'),
-            weapon: attackerWeapon ? attackerWeapon.itemClass : '???',
-            damage,
-            monsterName: defender.name
-          }
-        });
-      }
-
-      if(attacker && attacker !== defender && damage === 0) {
-        attacker.sendClientMessage({
-          message: `Your attack did no visible damage!`,
-          subClass: `combat self blocked`,
-          target: defender.uuid,
-          extraData: {
-            type: 'hit-physical',
-            uuid: attacker ? attacker.uuid : get(attackerWeapon, 'owner', '???'),
-            weapon: attackerWeapon ? attackerWeapon.itemClass : '???',
-            damage: 0,
-            monsterName: defender.name
-          }
-        });
+      if(!isRiposte) {
+        if(damageReduced > 0 && damage !== 0 && attacker && attacker !== defender) {
+          attacker.sendClientMessage({
+            message: `Your attack is mangled by a magical force!`,
+            subClass: `combat self blocked`,
+            target: defender.uuid,
+            extraData: {
+              type: 'hit-physical',
+              uuid: attacker ? attacker.uuid : get(attackerWeapon, 'owner', '???'),
+              weapon: attackerWeapon ? attackerWeapon.itemClass : '???',
+              damage,
+              monsterName: defender.name
+            }
+          });
+        }
+  
+        if(attacker && attacker !== defender && damage === 0) {
+          attacker.sendClientMessage({
+            message: `Your attack did no visible damage!`,
+            subClass: `combat self blocked`,
+            target: defender.uuid,
+            extraData: {
+              type: 'hit-physical',
+              uuid: attacker ? attacker.uuid : get(attackerWeapon, 'owner', '???'),
+              weapon: attackerWeapon ? attackerWeapon.itemClass : '???',
+              damage: 0,
+              monsterName: defender.name
+            }
+          });
+        }
       }
 
     // if healing, add some boost
@@ -809,7 +834,7 @@ export class CombatHelper {
     const otherClass = isHeal ? 'heal' : 'hit';
     const damageType = damageClass === 'physical' ? 'melee' : 'magic';
 
-    if(attackerDamageMessage && (<any>attacker).username) {
+    if(!isRiposte && attackerDamageMessage && (<any>attacker).username) {
 
       const secondaryClass = attacker !== defender ? 'self' : 'other';
 
@@ -827,7 +852,7 @@ export class CombatHelper {
       });
     }
 
-    if(defenderDamageMessage && (<any>defender).username && attacker !== defender) {
+    if(!isRiposte && defenderDamageMessage && (<any>defender).username && attacker !== defender) {
       defender.sendClientMessage({
         message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat other ${otherClass} ${damageType}`,
