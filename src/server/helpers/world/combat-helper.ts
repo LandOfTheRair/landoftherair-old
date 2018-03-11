@@ -183,6 +183,8 @@ export class CombatHelper {
     const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand } = opts;
     let { isBackstab } = opts;
 
+    let backstabIgnoreRange = false;
+
     if(!isBackstab) {
       const procChance = attacker.getTraitLevelAndUsageModifier('ShadowDaggers');
       if(random(1, 100) <= procChance) {
@@ -191,6 +193,7 @@ export class CombatHelper {
           subClass: 'combat other hit'
         });
         isBackstab = true;
+        backstabIgnoreRange = true;
       }
     }
 
@@ -322,7 +325,7 @@ export class CombatHelper {
     let attackDistance = attackRange ? attackRange : 0;
     const distBetween = attacker.distFrom(defender);
 
-    if(isBackstab || isMug) {
+    if((!backstabIgnoreRange && isBackstab) || isMug) {
       attackDistance = 0;
     }
 
