@@ -868,7 +868,7 @@ export class CombatHelper {
     switch(debuffName) {
       case 'BuildupHeat':           return attacker.getTraitLevelAndUsageModifier('ForgedFire');
       case 'BuildupChill':          return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
-      case 'BuildupSneakAttack':    return -attacker.getTraitLevelAndUsageModifier('ShadowRanger') / 4;
+      case 'BuildupSneakAttack':    return -attacker.getTraitLevelAndUsageModifier('ShadowRanger') / 8;
     }
 
     return 0;
@@ -880,7 +880,7 @@ export class CombatHelper {
     switch(debuffName) {
       case 'BuildupHeat':           return attacker.getTraitLevelAndUsageModifier('ForgedFire');
       case 'BuildupChill':          return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
-      case 'BuildupSneakAttack':    return -attacker.getTraitLevelAndUsageModifier('ShadowRanger') / 8;
+      case 'BuildupSneakAttack':    return -attacker.getTraitLevelAndUsageModifier('ShadowRanger') / 10;
     }
 
     return 0;
@@ -918,14 +918,19 @@ export class CombatHelper {
     if(defender.hasEffect(activeDebuff) || defender.hasEffect(recentDebuff)) return;
 
     let targetEffect = defender.hasEffect(debuff);
-    const bonusIncrease = Math.max(0, this.elementalBoostValue(attacker, debuff));
-    let debuffIncrease = 30 + bonusIncrease;
+    const bonusIncrease = this.elementalBoostValue(attacker, debuff);
+    let debuffIncrease = Math.max(5, 25 + bonusIncrease);
+
+    // if thief and offhand weapon, do ~half boost for each hand
+    if(debuff === 'BuildupSneakAttack' && get(attacker, 'leftHand.offhand')) {
+      debuffIncrease /= 1.75;
+    }
 
     mitigatedPercent = mitigatedPercent || 0;
     debuffIncrease = Math.floor(debuffIncrease * mitigatedPercent);
 
     if(!targetEffect) {
-      const buildupMax = 100 + (10 * defender.level);
+      const buildupMax = 200 + (10 * defender.level);
 
       targetEffect = new Effects[debuff]({});
       (<BuildupEffect>targetEffect).buildupMax = buildupMax;
