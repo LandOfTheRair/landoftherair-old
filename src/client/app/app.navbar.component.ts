@@ -9,6 +9,11 @@ import { ColyseusService } from './colyseus.service';
 
 @Component({
   selector: 'app-navbar',
+  styles: [`
+    nav {
+      max-height: 56px;
+    }
+  `],
   template: `
     <nav class="navbar navbar-expand-lg navbar-light bg-faded">
       <a class="navbar-brand" href="#">
