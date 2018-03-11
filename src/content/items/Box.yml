@@ -149,6 +149,8 @@
       chance: 1
     - result: Rune Scroll - Shadow Ranger I
       chance: 1
+    - result: Rune Scroll - Offhand Finesse I
+      chance: 1
 
 - name: Antanian Daily Warrior Rune Scroll RNG Box
   desc: "a thin, blue gift box wrapped with a red bow. A card near it says \"WARRIOR\""
@@ -162,4 +164,6 @@
     - result: Rune Scroll - Forceful Strike I
       chance: 1
     - result: Rune Scroll - Swashbuckler I
+      chance: 1
+    - result: Rune Scroll - Offhand Finesse I
       chance: 1
