@@ -233,7 +233,7 @@ export class CombatHelper {
         attacker.setRightHand(null);
       }
 
-      attacker.sendClientMessage({ message: `Your hand feels a burning sensation!`, target: defender.uuid });
+      attacker.sendClientMessage({ message: `You feel a burning sensation in your hand!`, target: defender.uuid });
       return;
     }
 

@@ -69,3 +69,7 @@
 
   requirements:
     level: 16
+
+    skill:
+      name: Wand
+      level: 7

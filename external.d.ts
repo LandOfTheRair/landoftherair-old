@@ -49,3 +49,7 @@ declare module 'mongodb' {
     collection(str: string): any;
   }
 }
+
+declare module 'roman-numerals' {
+  export function toRoman(num: number): string;
+}

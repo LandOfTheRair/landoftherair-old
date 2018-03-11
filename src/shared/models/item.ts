@@ -1,5 +1,5 @@
 
-import { extend, includes, isNumber, size, startCase } from 'lodash';
+import { extend, includes, isNumber, size, startCase, get } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import * as uuid from 'uuid/v4';
 import { Alignment, Character, SkillClassNames } from './character';
@@ -284,7 +284,8 @@ export class Item {
 
     const alignmentText = this.requirements && this.requirements.alignment ? `This item is ${this.requirements.alignment}. ` : '';
 
-    const skillText = this.requirements && this.requirements.skill ? `This item requires ${this.requirements.skill.name} level ${this.requirements.skill.level}. ` : '';
+    const formattedSkill = get(this, 'requirements.skill.name') === 'Wand' ? 'Magical Weapons' : get(this, 'requirements.skill.name');
+    const skillText = this.requirements && this.requirements.skill ? `This item requires ${formattedSkill} skill ${this.requirements.skill.level}. ` : '';
 
     const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
     const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';

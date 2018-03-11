@@ -28,6 +28,4 @@
   sprite: 390
 
   requirements:
-    skill:
-      name: Ranged
-      level: 5
+    level: 5
