@@ -318,6 +318,7 @@ export class ColyseusLobbyService {
   public startHeartbeat() {
     const source = Observable.interval(20000);
     source.subscribe(() => {
+      if(!this.room) return;
       this.room.send({ action: 'heartbeat' });
     });
   }
