@@ -9,7 +9,7 @@ export class Firethorns extends SpellEffect {
     name: 'barbed-coil',
     bgColor: '#f00',
     color: '#fff',
-    tooltipDesc: 'Reflect some physical damage as fire.'
+    tooltipDesc: 'Reflect some physical damage.'
   };
 
   maxSkillForSkillGain = 30;
@@ -34,7 +34,7 @@ export class Firethorns extends SpellEffect {
     this.targetEffectMessage(char, 'A thorny aura appears around you.');
     char.gainStat('physicalDamageReflect', this.potency * this.potencyMultiplier);
 
-    this.iconData.tooltipDesc = `Physical attackers take ${this.potency * this.potencyMultiplier} fire damage.`;
+    this.iconData.tooltipDesc = `Physical attackers take ${this.potency * this.potencyMultiplier} damage.`;
   }
 
   effectEnd(char: Character) {

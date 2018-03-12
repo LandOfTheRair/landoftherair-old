@@ -11,7 +11,7 @@ export class Firethorns extends Skill {
     icon: 'barbed-coil',
     color: '#f00',
     mode: 'clickToTarget',
-    tooltipDesc: 'Physical attackers take fire damage. Cost: 100 MP'
+    tooltipDesc: 'Physical attackers take damage. Cost: 100 MP'
   };
 
   public name = ['firethorns', 'cast firethorns'];

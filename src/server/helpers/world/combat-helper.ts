@@ -629,11 +629,13 @@ export class CombatHelper {
     return { hit: true, damage, dealtBy: attackerWeapon.itemClass.toLowerCase(), damageType };
   }
 
-  static tryDamageReflect(attacker, defender, damage: number, damageClass: DamageType) {
-    const stat = damageClass === 'Physical' ? 'physicalDamageReflect' : 'magicalDamageReflect';
+  static tryDamageReflect(attacker, defender, damage: number, damageClass) {
+    const stat = damageClass === 'physical' ? 'physicalDamageReflect' : 'magicalDamageReflect';
     const damageReflectStat = defender.getTotalStat(<StatName>stat);
 
     const reflectedDamage = Math.min(damage, damageReflectStat);
+    
+    if(damage <= 0) return;
 
     this.dealOnesidedDamage(attacker, {
       damageClass: damageClass,
@@ -703,7 +705,7 @@ export class CombatHelper {
   }
 
   static dealOnesidedDamage(defender, { damage, damageClass, damageMessage, suppressIfNegative }) {
-    if(defender.isDead()) return;
+    if(!defender || defender.isDead()) return;
 
     const isHeal = damage < 0;
 

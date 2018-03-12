@@ -134,6 +134,9 @@ export class Stats {
   magicalDamageBoost? = 0;
   healingBoost? = 0;
 
+  physicalDamageReflect? = 0;
+  magicalDamageReflect? = 0;
+
   mitigation? = 0;
   magicalResist? = 0;
   physicalResist? = 0;
