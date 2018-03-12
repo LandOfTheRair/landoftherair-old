@@ -237,3 +237,20 @@
     name: Swashbuckler
     level: 1
   value: 1
+
+- name: Rune Scroll - Offhand Finesse I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Offhand Finesse I\""
+  trait:
+    name: OffhandFinesse
+    level: 1
+  value: 1
+
+
+- name: Rune Scroll - Riposte I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Riposte I\""
+  trait:
+    name: Riposte
+    level: 1
+  value: 1

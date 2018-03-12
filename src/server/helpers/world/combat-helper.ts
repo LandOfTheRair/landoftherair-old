@@ -78,11 +78,12 @@ export class CombatHelper {
   }
 
   private static attemptToRiposte(attacker: Character, defender: Character) {
-    const riposteLevel = defender.getTraitLevelAndUsageModifier('ShadowSwap');
+    const riposteLevel = defender.getTraitLevelAndUsageModifier('Riposte');
     if(riposteLevel === 0) return;
     if(random(1, 100) > riposteLevel) return;
 
-    this.doPhysicalAttack(attacker, defender, { isRiposte: true });
+    defender.sendClientMessage('You riposte the attack!');
+    this.doPhysicalAttack(defender, attacker, { isRiposte: true });
   }
 
   private static attemptToShadowSwap(char: Character) {
@@ -634,7 +635,7 @@ export class CombatHelper {
     const damageReflectStat = defender.getTotalStat(<StatName>stat);
 
     const reflectedDamage = Math.min(damage, damageReflectStat);
-    
+
     if(damage <= 0) return;
 
     this.dealOnesidedDamage(attacker, {

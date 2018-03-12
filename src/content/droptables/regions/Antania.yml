@@ -295,3 +295,11 @@
 - result: Rune Scroll - Swashbuckler I
   chance: 1
   maxChance: 2500
+
+- result: Rune Scroll - Offhand Finesse I
+  chance: 1
+  maxChance: 2500
+
+- result: Rune Scroll - Riposte I
+  chance: 1
+  maxChance: 2500
