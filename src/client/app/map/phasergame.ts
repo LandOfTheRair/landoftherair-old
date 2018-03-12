@@ -397,6 +397,7 @@ export class Game {
     this.g.inputEnabled = true;
 
     this.g.input.onDown.add(({ worldX, worldY }) => {
+      if(this.g.input.activePointer.rightButton.isDown) return;
 
       if(!this.map || !this.map.objects) return;
 
