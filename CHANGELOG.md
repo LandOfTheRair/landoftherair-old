@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.1.8 (12/03/2018)
+
+#### Enhancements
+
+- [#613](https://github.com/LandOfTheRair/landoftherair/issues/613) user-select: none on the active target box
+
+#### Balance Adjustments
+
+- [#612](https://github.com/LandOfTheRair/landoftherair/issues/612) scale sneak attack boost by half if have an offhand weapon
+- [#611](https://github.com/LandOfTheRair/landoftherair/issues/611) Scale dagger damage up
+- [#610](https://github.com/LandOfTheRair/landoftherair/issues/610) Thieves also need Offhand Finesse
+- [#609](https://github.com/LandOfTheRair/landoftherair/issues/609) heniz poison shortbow requires ranged skill 5
+
+#### New Content
+
+- [#603](https://github.com/LandOfTheRair/landoftherair/issues/603) Warrior trait (riposte)
+- [#573](https://github.com/LandOfTheRair/landoftherair/issues/573) Firethorns spell (mage, skill 16)
+- [#567](https://github.com/LandOfTheRair/landoftherair/issues/567) Haste (mage, skill 20)
+- [#564](https://github.com/LandOfTheRair/landoftherair/issues/564) Taunt art (Warrior, skill 9)
+
+#### Bug Fixes
+
+- [#617](https://github.com/LandOfTheRair/landoftherair/issues/617) items do not pass potency correctly to the spell creator
+- [#615](https://github.com/LandOfTheRair/landoftherair/issues/615) look at skills window again
+- [#614](https://github.com/LandOfTheRair/landoftherair/issues/614) dont move on right click
+- [#608](https://github.com/LandOfTheRair/landoftherair/issues/608) shadow daggers proc at range doesn't appear to work
+- [#607](https://github.com/LandOfTheRair/landoftherair/issues/607) fix skill menu stretching
+
+---
+
 ## v0.1.7 (10/03/2018)
 
 #### Enhancements
