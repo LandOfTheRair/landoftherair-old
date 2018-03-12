@@ -28,7 +28,7 @@ export class Taunt extends Skill {
     return super.canUse(user, target) && highestAgro !== user.uuid;
   }
 
-  execute(user: Character, { args }) {
+  execute(user: Character, { args, effect }) {
 
     const item = user.rightHand;
     if(!item) return user.sendClientMessage('You need a weapon to taunt!');
@@ -39,11 +39,11 @@ export class Taunt extends Skill {
 
     if(target === user) return;
 
-    this.use(user, target);
+    this.use(user, target, effect);
   }
 
-  use(user: Character, target: Character) {
-    const art = new CastEffect({});
+  use(user: Character, target: Character, baseEffect = {}) {
+    const art = new CastEffect(baseEffect);
     art.cast(user, target, this);
   }
 

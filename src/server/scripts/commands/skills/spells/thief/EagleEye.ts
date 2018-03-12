@@ -29,11 +29,11 @@ export class EagleEye extends Skill {
 
     if(!this.tryToConsumeMP(user, effect)) return;
 
-    this.use(user, target);
+    this.use(user, target, effect);
   }
 
-  use(user: Character, target: Character) {
-    const effect = new CastEffect({});
+  use(user: Character, target: Character, baseEffect = {}) {
+    const effect = new CastEffect(baseEffect);
     effect.cast(user, target, this);
   }
 

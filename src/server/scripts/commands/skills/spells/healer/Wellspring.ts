@@ -26,7 +26,7 @@ export class Wellspring extends Skill {
   }
 
   async use(user: Character, baseEffect = {}) {
-    const effect = new CastEffect({});
+    const effect = new CastEffect(baseEffect);
     effect.cast(user, user, this);
   }
 

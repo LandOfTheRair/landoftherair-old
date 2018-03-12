@@ -24,7 +24,7 @@ export class Transmute extends Skill {
     this.use(user, effect);
   }
 
-  use(user: Character, baseEffect = { potency: 0 }) {
+  use(user: Character, baseEffect = {}) {
     const effect = new CastEffect(baseEffect);
     effect.cast(user, user, this);
   }

@@ -2,7 +2,7 @@
 
 
 import { Skill } from '../../../../../base/Skill';
-import { Character } from '../../../../../../shared/models/character';
+import { Character, StatName } from '../../../../../../shared/models/character';
 import { Push as CastEffect } from '../../../../../effects/misc/Push';
 
 export class Push extends Skill {
@@ -26,7 +26,7 @@ export class Push extends Skill {
 
     const userStat = user.baseClass === 'Healer' ? 'wis' : 'int';
 
-    const baseStat = user.getTotalStat(userStat);
+    const baseStat = user.getTotalStat(<StatName>userStat);
     const targetStat = target.getTotalStat('wil');
 
     return (baseStat - targetStat) + 4 > 0;
@@ -44,8 +44,8 @@ export class Push extends Skill {
     this.use(user, target);
   }
 
-  use(user: Character, target: Character) {
-    const effect = new CastEffect({});
+  use(user: Character, target: Character, baseEffect = {}) {
+    const effect = new CastEffect(baseEffect);
     effect.cast(user, target, this);
   }
 

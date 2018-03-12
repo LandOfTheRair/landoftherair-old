@@ -30,11 +30,11 @@ export class ShadowMeld extends Skill {
     if(user.hasEffect('Revealed')) return user.sendClientMessage('You cannot hide right now!');
     if(user.hasEffect('Hidden')) return user.sendClientMessage('You cannot meld with shadows you are hidden in!');
 
-    this.use(user, user);
+    this.use(user, user, effect);
   }
 
-  use(user: Character, target: Character) {
-    const effect = new CastEffect({});
+  use(user: Character, target: Character, baseEffect = {}) {
+    const effect = new CastEffect(baseEffect);
     effect.cast(user, target, this);
   }
 

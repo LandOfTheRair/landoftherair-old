@@ -28,10 +28,10 @@ export class TrueSight extends Skill {
 
     if(!this.tryToConsumeMP(user, effect)) return;
 
-    this.use(user, target);
+    this.use(user, target, effect);
   }
 
-  use(user: Character, target: Character) {
+  use(user: Character, target: Character, baseEffect = {}) {
     const effect = new CastEffect({});
     effect.cast(user, target, this);
   }

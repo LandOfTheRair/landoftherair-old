@@ -107,7 +107,7 @@ export class SpellEffect extends Effect {
     // called from something like a trap
     if(this.casterRef) return;
 
-    if(this.skillFlag && skillRef) {
+    if(!this.potency && this.skillFlag && skillRef) {
       const flaggedSkill = this.skillFlag(caster);
 
       this.potency = caster.calcSkillLevel(flaggedSkill) + 1;
@@ -124,7 +124,7 @@ export class SpellEffect extends Effect {
         caster.gainSkill(flaggedSkill, 1);
       }
 
-    } else if(!this.potency) {
+    } else {
       this.potency = 1;
     }
 
