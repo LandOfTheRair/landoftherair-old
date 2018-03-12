@@ -193,7 +193,7 @@ export class CombatHelper {
 
     let backstabIgnoreRange = false;
 
-    if(!isRiposte &&!isBackstab) {
+    if(!isRiposte && !isBackstab) {
       const procChance = attacker.getTraitLevelAndUsageModifier('ShadowDaggers');
       if(random(1, 100) <= procChance) {
         attacker.sendClientMessage({
@@ -354,7 +354,7 @@ export class CombatHelper {
             monsterName: defender.name
           }
         });
-  
+
         defender.sendClientMessage({
           message: `${attackerName} misses!`, subClass: 'combat other miss',
           extraData: {
@@ -394,7 +394,7 @@ export class CombatHelper {
             monsterName: defender.name
           }
         });
-  
+
         defender.sendClientMessage({
           message: `${attackerName} was blocked by your armor!`,
           subClass: 'combat other block armor',
@@ -428,7 +428,7 @@ export class CombatHelper {
 
       if(!isRiposte) {
         attacker.$$room.combatEffect(attacker, 'block-weapon', defender.uuid);
-  
+
         attacker.sendClientMessage({
           message: `You were blocked by a ${itemTypeToLower}!`,
           subClass: 'combat self block weapon',
@@ -441,7 +441,7 @@ export class CombatHelper {
             monsterName: defender.name
           }
         });
-  
+
         defender.sendClientMessage({
           message: `${attackerName} was blocked by your ${itemTypeToLower}!`,
           subClass: 'combat other block weapon',
@@ -487,7 +487,7 @@ export class CombatHelper {
               monsterName: defender.name
             }
           });
-  
+
           defender.sendClientMessage({
             message: `${attackerName} was blocked by your ${itemTypeToLower}!`,
             subClass: 'combat other block shield',
@@ -635,8 +635,8 @@ export class CombatHelper {
 
     const reflectedDamage = Math.min(damage, damageReflectStat);
 
-    this.dealOnesidedDamage(attacker, { 
-      damageClass: damageClass, 
+    this.dealOnesidedDamage(attacker, {
+      damageClass: damageClass,
       damage: reflectedDamage,
       damageMessage: 'Some of the damage was reflected back at you!',
       suppressIfNegative: true
@@ -737,7 +737,7 @@ export class CombatHelper {
   static dealDamage(
     attacker: Character,
     defender: Character,
-    { damage, damageClass, attackerDamageMessage, defenderDamageMessage, 
+    { damage, damageClass, attackerDamageMessage, defenderDamageMessage,
       attackerWeapon, isRanged, isAttackerVisible, isRiposte }: any
   ): number {
 
@@ -800,7 +800,7 @@ export class CombatHelper {
             }
           });
         }
-  
+
         if(attacker && attacker !== defender && damage === 0) {
           attacker.sendClientMessage({
             message: `Your attack did no visible damage!`,

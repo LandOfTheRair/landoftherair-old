@@ -123,16 +123,6 @@
             "requiresLearn": false
         },
         {
-            "name": "Charge",
-            "macro": "charge",
-            "icon": "running-ninja",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Attack",
             "macro": "attack",
             "icon": "blade-drag",
@@ -149,6 +139,16 @@
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Backstab your target from the shadows. Requires Thievery skill 3.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Charge",
+            "macro": "charge",
+            "icon": "running-ninja",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -204,6 +204,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Autoheal",
+            "macro": "cast autoheal",
+            "icon": "self-love",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Automatically healing when health gets too low. Cost: 50 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Antidote",
             "macro": "cast antidote",
             "icon": "miracle-medecine",
@@ -224,12 +234,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Autoheal",
-            "macro": "cast autoheal",
-            "icon": "self-love",
-            "color": "#00c",
+            "name": "Cure",
+            "macro": "cast cure",
+            "icon": "tentacle-heart",
+            "color": "#080",
             "mode": "clickToTarget",
-            "tooltipDesc": "Automatically healing when health gets too low. Cost: 50 MP",
+            "tooltipDesc": "Heal a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -240,16 +250,6 @@
             "color": "#1b390e",
             "mode": "clickToTarget",
             "tooltipDesc": "Shield necrotic damage for a single target. Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Cure",
-            "macro": "cast cure",
-            "icon": "tentacle-heart",
-            "color": "#080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Heal a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -326,22 +326,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Succor",
-            "macro": "cast succor",
-            "icon": "blackball",
-            "color": "#080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Create a consumable that will let you return to your current location. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "VitalEssence",
             "macro": "cast vitalessence",
             "icon": "bell-shield",
             "color": "#0a0",
             "mode": "clickToTarget",
             "tooltipDesc": "Boost maximum vitality for a single target. Cost: 200 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Succor",
+            "macro": "cast succor",
+            "icon": "blackball",
+            "color": "#080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Create a consumable that will let you return to your current location. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -486,16 +486,6 @@
             "requiresLearn": true
         },
         {
-            "name": "DarkVision",
-            "macro": "cast darkvision",
-            "icon": "angry-eyes",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See in the darkness. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Darkness",
             "macro": "cast darkness",
             "icon": "dust-cloud",
@@ -516,12 +506,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Poison",
-            "macro": "cast poison",
-            "icon": "poison-gas",
-            "color": "#0a0",
+            "name": "DarkVision",
+            "macro": "cast darkvision",
+            "icon": "angry-eyes",
+            "color": "#000",
             "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
+            "tooltipDesc": "See in the darkness. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -536,13 +526,12 @@
             "requiresLearn": true
         },
         {
-            "name": "PowerwordBarFire",
-            "macro": "powerword barfire",
-            "icon": "rosa-shield",
-            "color": "#DC143C",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Shield fire damage for your party. Cost: 30 MP / target",
+            "name": "Poison",
+            "macro": "cast poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -558,16 +547,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Push",
-            "macro": "cast push",
-            "icon": "air-zigzag",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Transmute",
             "macro": "cast transmute",
             "icon": "coins",
@@ -578,12 +557,53 @@
             "requiresLearn": true
         },
         {
+            "name": "PowerwordBarFire",
+            "macro": "powerword barfire",
+            "icon": "rosa-shield",
+            "color": "#DC143C",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Shield fire damage for your party. Cost: 30 MP / target",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Push",
+            "macro": "cast push",
+            "icon": "air-zigzag",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "TrueSight",
             "macro": "cast truesight",
             "icon": "all-seeing-eye",
             "color": "#00a",
             "mode": "clickToTarget",
             "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EagleEye",
+            "macro": "cast eagleeye",
+            "icon": "dead-eye",
+            "color": "#f00",
+            "mode": "autoActivate",
+            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowMeld",
+            "macro": "cast shadowmeld",
+            "icon": "hidden",
+            "color": "#00c",
+            "mode": "autoActivate",
+            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -633,26 +653,6 @@
             "requiresBaseClass": "Warrior",
             "isSystem": true,
             "requiresLearn": false
-        },
-        {
-            "name": "ShadowMeld",
-            "macro": "cast shadowmeld",
-            "icon": "hidden",
-            "color": "#00c",
-            "mode": "autoActivate",
-            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "EagleEye",
-            "macro": "cast eagleeye",
-            "icon": "dead-eye",
-            "color": "#f00",
-            "mode": "autoActivate",
-            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
         }
     ]
 }
