@@ -8,7 +8,8 @@ import { MagicCutArmorClasses } from '../../shared/models/item';
 export const Maxes = {
   Lesser: 10,
   Bradley: 13,
-  Minor: 15
+  Minor: 15,
+  Basic: 20
 };
 
 interface EffectInfo {

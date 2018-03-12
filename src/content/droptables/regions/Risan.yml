@@ -1,0 +1,45 @@
+
+# special bottles
+- result: Risan Strength Potion
+  chance: 1
+  maxChance: 4000
+
+- result: Risan Agility Potion
+  chance: 1
+  maxChance: 3500
+
+- result: Risan Dexterity Potion
+  chance: 1
+  maxChance: 4000
+
+- result: Risan Intelligence Potion
+  chance: 1
+  maxChance: 4500
+
+- result: Risan Wisdom Potion
+  chance: 1
+  maxChance: 4500
+
+- result: Risan Willpower Potion
+  chance: 1
+  maxChance: 8500
+
+- result: Risan Constitution Potion
+  chance: 1
+  maxChance: 1000
+
+- result: Risan Luck Potion
+  chance: 1
+  maxChance: 25000
+
+- result: Risan Charisma Potion
+  chance: 1
+  maxChance: 25000
+
+- result: Antanian Health Potion
+  chance: 1
+  maxChance: 3000
+
+- result: Antanian Magic Potion
+  chance: 1
+  maxChance: 3000

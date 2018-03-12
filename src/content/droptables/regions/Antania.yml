@@ -49,7 +49,7 @@
   chance: 1
   maxChance: 300
 
-- name: Antanian Emerald Chunk
+- result: Antanian Emerald Chunk
   chance: 1
   maxChance: 750
 
@@ -57,27 +57,27 @@
   chance: 1
   maxChance: 2500
 
-- name: Antanian Raw Jade
+- result: Antanian Raw Jade
   chance: 1
   maxChance: 1000
 
-- name: Antanian Carved Jade
+- result: Antanian Carved Jade
   chance: 1
   maxChance: 1500
 
-- name: Antanian Polished Ruby
+- result: Antanian Polished Ruby
   chance: 1
   maxChance: 750
 
-- name: Antanian White Pearl
+- result: Antanian White Pearl
   chance: 1
   maxChance: 2000
 
-- name: Antanian Black Pearl
+- result: Antanian Black Pearl
   chance: 1
   maxChance: 2000
 
-- name: Antanian Small Black Pearl
+- result: Antanian Small Black Pearl
   chance: 1
   maxChance: 450
 

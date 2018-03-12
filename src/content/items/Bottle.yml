@@ -37,6 +37,8 @@
     potency: 1000
   value: 3000
 
+# ANTANIAN STAT POTS
+
 - name: Antanian Strength Potion
   desc: "a small bottle filled with brown fluid. It smells like a tree"
   extendedDesc: "a potion of strength"
@@ -155,6 +157,99 @@
     potency: 1
     ignoreHPBoost: true
   value: 500
+
+# RISAN STAT POTS
+- name: Risan Strength Potion
+  desc: "a small bottle filled with brown fluid. It smells like a tree"
+  extendedDesc: "a potion of strength"
+  sprite: 151
+  effect:
+    name: PermanentSTR
+    tier: Basic
+    potency: 1
+  value: 5000
+
+- name: Risan Agility Potion
+  desc: "a small bottle filled with dark-yellow fluid. It smells like feathers"
+  extendedDesc: "a potion of agility"
+  sprite: 157
+  effect:
+    name: PermanentAGI
+    tier: Basic
+    potency: 1
+  value: 2000
+
+- name: Risan Dexterity Potion
+  desc: "a small bottle filled with yellow fluid. It smells like apples"
+  extendedDesc: "a potion of dexterity"
+  sprite: 150
+  effect:
+    name: PermanentDEX
+    tier: Basic
+    potency: 1
+  value: 3500
+
+- name: Risan Intelligence Potion
+  desc: "a small bottle filled with puce liquid. It smells like a root"
+  extendedDesc: "a potion of intelligence"
+  sprite: 158
+  effect:
+    name: PermanentINT
+    tier: Basic
+    potency: 1
+  value: 5000
+
+- name: Risan Wisdom Potion
+  desc: "a small bottle filled with teal. It smells like a herbs"
+  extendedDesc: "a potion of wisdom"
+  sprite: 156
+  effect:
+    name: PermanentWIS
+    tier: Basic
+    potency: 1
+  value: 3000
+
+- name: Risan Willpower Potion
+  desc: "a small bottle filled with orange fluid. It smells like mushrooms"
+  extendedDesc: "a potion of willpower"
+  sprite: 154
+  effect:
+    name: PermanentWIL
+    tier: Basic
+    potency: 1
+  value: 10000
+
+- name: Risan Constitution Potion
+  desc: "a small bottle filled with crimson fluid. It smells like cherries"
+  extendedDesc: "a potion of constitution"
+  sprite: 153
+  effect:
+    name: PermanentCON
+    tier: Basic
+    potency: 1
+  value: 10000
+
+- name: Risan Luck Potion
+  desc: "a small bottle filled with green fluid. It smells like clovers"
+  extendedDesc: "a potion of luck"
+  sprite: 152
+  effect:
+    name: PermanentLUK
+    tier: Basic
+    potency: 1
+  value: 100000
+
+- name: Risan Charisma Potion
+  desc: "a small bottle filled with purple fluid. It smells like flowers"
+  extendedDesc: "a potion of charisma"
+  sprite: 155
+  effect:
+    name: PermanentCHA
+    tier: Basic
+    potency: 1
+  value: 200000
+
+# MISCELLANEOUS BOTTLES
 
 - name: Ink Vial
   desc: "a small vial filled with ink"
@@ -352,3 +447,4 @@
       wil: 1
       con: 1
     duration: 1800
+
