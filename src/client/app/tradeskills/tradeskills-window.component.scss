@@ -1,12 +1,21 @@
 th, td {
-  min-width: 89px;
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 td.text-center {
   font-size: 90%;
 }
 
-th {
+tr {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+th, td {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
