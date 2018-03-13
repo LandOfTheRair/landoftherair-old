@@ -14,9 +14,7 @@ export class Cure extends SpellEffect {
 
     const damage = -+dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
-    caster.$$room.state.getAllHostilesInRange(caster, 4).forEach(mon => {
-      mon.addAgro(caster, Math.abs(damage / 10));
-    });
+    this.aoeAgro(caster, Math.abs(damage / 10));
 
     this.magicalAttack(caster, target, {
       skillRef,

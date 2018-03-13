@@ -188,6 +188,14 @@ export class ColyseusGameService {
 
     this.worldRoom.listen('playerHash/:id/agro/:player', updateAgro);
 
+    this.worldRoom.listen('playerHash/:id/effects/:effect', (change) => {
+      this.clientGameState.updatePlayerEffect(change);
+    });
+
+    this.worldRoom.listen('playerHash/:id/effects/:effect/:attr', (change) => {
+      this.clientGameState.updatePlayerEffect(change);
+    });
+
     this.worldRoom.listen('playerHash/:id/hp/:key', updateHP);
 
     this.worldRoom.listen('playerHash/:id/leftHand', updateHand.bind(this, 'leftHand'));

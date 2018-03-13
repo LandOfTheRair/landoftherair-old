@@ -61,6 +61,12 @@ export class Effect {
     this.effectInfo.canManuallyUnapply = true;
   }
 
+  protected aoeAgro(caster: Character, agro: number) {
+    caster.$$room.state.getAllHostilesInRange(caster, 4).forEach(mon => {
+      mon.addAgro(caster, agro);
+    });
+  }
+
   tick(char: Character) {
     this.effectTick(char);
 

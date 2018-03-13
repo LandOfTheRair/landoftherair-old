@@ -28,6 +28,8 @@ export class Haste extends SpellEffect {
       this.casterEffectMessage(caster, `You cast Haste on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 100);
+
     const recentlyHasted = target.hasEffect('RecentlyHasted');
     if(recentlyHasted) {
       target.unapplyEffect(recentlyHasted, true);

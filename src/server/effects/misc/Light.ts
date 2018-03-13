@@ -11,5 +11,7 @@ export class Light extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     target.$$room.removeDarkness(target.x, target.y, 1);
+
+    this.aoeAgro(caster, 10);
   }
 }

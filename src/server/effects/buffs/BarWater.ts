@@ -27,6 +27,8 @@ export class BarWater extends SpellEffect {
       this.casterEffectMessage(caster, `You cast BarWater on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 10);
+
     target.applyEffect(this);
   }
 

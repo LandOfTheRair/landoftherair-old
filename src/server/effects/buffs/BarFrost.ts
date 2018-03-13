@@ -29,6 +29,8 @@ export class BarFrost extends SpellEffect {
       this.casterEffectMessage(caster, `You cast BarFrost on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 10);
+
     target.applyEffect(this);
   }
 

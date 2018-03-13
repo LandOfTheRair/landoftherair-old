@@ -7,8 +7,7 @@ export class Firethorns extends SpellEffect {
 
   iconData = {
     name: 'barbed-coil',
-    bgColor: '#f00',
-    color: '#fff',
+    color: '#f00',
     tooltipDesc: 'Reflect some physical damage.'
   };
 
@@ -26,6 +25,8 @@ export class Firethorns extends SpellEffect {
     if(caster !== target) {
       this.casterEffectMessage(caster, `You cast Firethorns on ${target.name}.`);
     }
+
+    this.aoeAgro(caster, 10);
 
     target.applyEffect(this);
   }

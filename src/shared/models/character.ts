@@ -1105,6 +1105,14 @@ export class Character {
 
   addAgro(char: Character, value) {
     if(!char) return;
+
+    const invis = char.hasEffect('Invisible');
+    if(invis) {
+      char.unapplyEffect(invis, true);
+    }
+
+    if(this.isDead()) return;
+
     if(char.allegiance === this.allegiance && !char.isPlayer() && !this.isPlayer()) return;
 
     const agroAdd = (uuid, val) => {
@@ -1181,6 +1189,9 @@ export class Character {
   }
 
   canSeeThroughStealthOf(char: Character) {
+
+    // you can see through invis with truesight
+    if(char.hasEffect('Invisible') && !this.hasEffect('TrueSight')) return false;
 
     if(char.isPlayer() && !char.hasEffect('Hidden') && !char.hasEffect('ShadowMeld')) return true;
 

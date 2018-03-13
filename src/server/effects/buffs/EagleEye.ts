@@ -22,6 +22,8 @@ export class EagleEye extends SpellEffect {
       this.casterEffectMessage(caster, `You cast EagleEye on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 10);
+
     this.potency = Math.floor(this.potency / 2);
 
     if(!this.duration) this.duration = this.potency * 30;

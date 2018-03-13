@@ -23,6 +23,8 @@ export class TrueSight extends SpellEffect {
       this.casterEffectMessage(caster, `You cast TrueSight on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 10);
+
     const durationMult = caster.baseClass === 'Healer' ? 30 : 15;
     this.potency *= (caster.baseClass === 'Healer' ? 2 : 1);
     if(!this.duration) this.duration = this.potency * durationMult;

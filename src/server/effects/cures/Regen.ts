@@ -24,6 +24,8 @@ export class Regen extends SpellEffect {
       this.effectMessage(caster, `You are regenerating ${target.name}!`);
     }
 
+    this.aoeAgro(caster, 30);
+
     const damage = -+dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
     this.duration = this.duration || 10;

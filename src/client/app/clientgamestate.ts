@@ -244,6 +244,36 @@ export class ClientGameState {
     this._updatePlayerAtIndex(playerIndex);
   }
 
+  updatePlayerEffect(change) {
+    const playerIndex = change.path.id;
+    const effectIndex = change.path.effect;
+    const attr = change.path.attr;
+    const effect = change.value;
+
+    if(!this.playerHash[playerIndex]) return;
+
+    const effectRef = this.playerHash[playerIndex].effects;
+
+    if(change.operation === 'remove') {
+      delete effectRef[effectIndex];
+      return;
+    }
+
+    if(change.operation === 'add') {
+      effectRef[effectIndex] = effectRef[effectIndex] || (<any>{});
+      effectRef[effectIndex][attr] = effect;
+    }
+
+    if(change.operation === 'replace' && effectRef[effectIndex]) {
+      effectRef[effectIndex][attr] = effect;
+      if(effectRef[effectIndex].duration <= 0 && !get(effectRef[effectIndex], 'effectInfo.isPermanent', false)) {
+        delete effectRef[effectIndex];
+      }
+    }
+
+    this._updatePlayerAtIndex(playerIndex);
+  }
+
   private __updatePlayerAttribute(playerIndex, attr, key, val) {
     if(!this.playerHash[playerIndex]) return;
     this.playerHash[playerIndex][attr][key] = val;

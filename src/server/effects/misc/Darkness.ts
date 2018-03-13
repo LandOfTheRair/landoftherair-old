@@ -19,5 +19,6 @@ export class Darkness extends SpellEffect {
 
     target.$$room.createDarkness(target.x, target.y, caster.baseClass === 'Thief' ? 0 : 1, duration);
 
+    this.aoeAgro(caster, 10);
   }
 }

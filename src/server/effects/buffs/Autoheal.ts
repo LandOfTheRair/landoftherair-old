@@ -21,8 +21,10 @@ export class Autoheal extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(caster !== target) {
-      this.effectMessage(caster, `You cast autoheal on ${target.name}!`);
+      this.effectMessage(caster, `You cast Autoheal on ${target.name}!`);
     }
+
+    this.aoeAgro(caster, 50);
 
     const wisCheck = this.getCoreStat(caster);
 

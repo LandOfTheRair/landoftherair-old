@@ -14,6 +14,8 @@ export class Antidote extends SpellEffect {
       this.casterEffectMessage(caster, `You cast Antidote on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 1);
+
     target.applyEffect(this);
   }
 

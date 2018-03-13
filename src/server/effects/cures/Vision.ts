@@ -14,6 +14,8 @@ export class Vision extends SpellEffect {
       this.casterEffectMessage(caster, `You cast Vision on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 1);
+
     target.applyEffect(this);
   }
 

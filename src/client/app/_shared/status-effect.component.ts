@@ -1,11 +1,10 @@
 
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { startCase } from 'lodash';
 
 @Component({
   selector: 'app-status-effect',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
     .status-effect {
       position: relative;

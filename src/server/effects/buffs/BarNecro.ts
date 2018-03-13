@@ -27,6 +27,8 @@ export class BarNecro extends SpellEffect {
       this.casterEffectMessage(caster, `You cast BarNecro on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 10);
+
     target.applyEffect(this);
   }
 

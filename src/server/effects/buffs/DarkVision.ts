@@ -23,6 +23,8 @@ export class DarkVision extends SpellEffect {
       this.casterEffectMessage(caster, `You cast DarkVision on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 10);
+
     const durationMult = caster.baseClass === 'Mage' ? 100 : 50;
     if(!this.duration) this.duration = this.potency * durationMult;
     this.updateDurationBasedOnTraits(caster);

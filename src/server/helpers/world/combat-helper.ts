@@ -876,13 +876,11 @@ export class CombatHelper {
     defender.hp.sub(damage);
     if(defender.$$ai) defender.$$ai.damageTaken.dispatch(defender, { damage, attacker });
 
+    defender.addAgro(attacker, damage);
+
     const wasFatal = defender.isDead();
 
-    if(!wasFatal) {
-      if(defender !== attacker) {
-        defender.addAgro(attacker, damage);
-      }
-    } else {
+    if(wasFatal) {
       if(attacker) {
         const killMethod = defender.isNaturalResource ? 'smashed' : 'killed';
         defender.sendClientMessageToRadius({

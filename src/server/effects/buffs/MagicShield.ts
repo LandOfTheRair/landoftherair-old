@@ -27,6 +27,8 @@ export class MagicShield extends SpellEffect {
       this.casterEffectMessage(caster, `You cast MagicShield on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 100);
+
     target.applyEffect(this);
   }
 

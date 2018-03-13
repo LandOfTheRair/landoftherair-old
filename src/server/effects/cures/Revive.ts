@@ -11,6 +11,8 @@ export class Revive extends SpellEffect {
 
     this.setPotencyAndGainSkill(caster, skillRef);
 
+    this.aoeAgro(caster, 100);
+
     let hpPercent = 5;
     if(this.potency > 0)  hpPercent = 10;
     if(this.potency > 11) hpPercent = 20;

@@ -27,6 +27,8 @@ export class Absorption extends SpellEffect {
       this.casterEffectMessage(caster, `You cast Absorption on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 10);
+
     target.applyEffect(this);
   }
 

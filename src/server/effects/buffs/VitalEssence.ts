@@ -27,6 +27,8 @@ export class VitalEssence extends SpellEffect {
       this.casterEffectMessage(caster, `You cast VitalEssence on ${target.name}.`);
     }
 
+    this.aoeAgro(caster, 100);
+
     target.applyEffect(this);
   }
 
