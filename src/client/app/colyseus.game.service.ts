@@ -838,6 +838,8 @@ export class ColyseusGameService {
     if(compare.agro[me.uuid]
     || me.agro[compare.uuid]) return 'hostile';
 
+    if(me.hasEffect('Disguise') && me.getTotalStat('cha') > compare.getTotalStat('wil')) return 'neutral';
+
     if((me.alignment === 'Good' && compare.alignment === 'Evil')
     || (me.alignment === 'Evil' && compare.alignment === 'Good')) return 'hostile';
 

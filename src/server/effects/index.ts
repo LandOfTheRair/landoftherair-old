@@ -61,6 +61,7 @@ export * from './misc/Light';
 
 export * from './buffs/ShadowMeld';
 export * from './buffs/EagleEye';
+export * from './buffs/Disguise';
 
 export * from './buildups/BuildupHeat';
 export * from './bursts/Burning';
