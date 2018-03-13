@@ -213,6 +213,10 @@ export class CombatHelper {
 
     const isAttackerVisible = defender.canSeeThroughStealthOf(attacker);
 
+    if(!isAttackerVisible && defender.hasEffect('Debilitate')) {
+      isBackstab = true;
+    }
+
     let attackerWeapon: Item;
 
     if(isThrow) {
