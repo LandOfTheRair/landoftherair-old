@@ -31,16 +31,6 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Skills",
-            "macro": "show skills",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your skills and skill levels in text form.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Show Stats",
             "macro": "show stats",
             "icon": "checklist",
@@ -57,6 +47,16 @@
             "color": "#404040",
             "mode": "autoActivate",
             "tooltipDesc": "Go up or down stairs on this tile.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Show Skills",
+            "macro": "show skills",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your skills and skill levels in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -112,6 +112,16 @@
             "requiresLearn": false
         },
         {
+            "name": "Attack",
+            "macro": "attack",
+            "icon": "blade-drag",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Physically attack a target with the item in your right hand.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Assassinate",
             "macro": "assassinate",
             "icon": "decapitation",
@@ -119,16 +129,6 @@
             "mode": "lockActivation",
             "tooltipDesc": "Attempt to assassinate your target from the shadows. Requires Thievery & weapon skill 13.",
             "requireBaseClass": "Thief",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Attack",
-            "macro": "attack",
-            "icon": "blade-drag",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Physically attack a target with the item in your right hand.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -284,6 +284,17 @@
             "requiresLearn": true
         },
         {
+            "name": "PowerwordBarNecro",
+            "macro": "powerword barnecro",
+            "icon": "rosa-shield",
+            "color": "#1b390e",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Shield necrotic damage for your party. Cost: 60 MP / target",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "PowerwordHeal",
             "macro": "powerword heal",
             "icon": "tentacle-heart",
@@ -295,13 +306,12 @@
             "requiresLearn": true
         },
         {
-            "name": "PowerwordBarNecro",
-            "macro": "powerword barnecro",
-            "icon": "rosa-shield",
-            "color": "#1b390e",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Shield necrotic damage for your party. Cost: 60 MP / target",
+            "name": "Regen",
+            "macro": "cast regen",
+            "icon": "star-swirl",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -322,16 +332,6 @@
             "color": "#990",
             "mode": "clickToTarget",
             "tooltipDesc": "Attempt to stun a single target. Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Regen",
-            "macro": "cast regen",
-            "icon": "star-swirl",
-            "color": "#00c",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -386,16 +386,6 @@
             "requiresLearn": true
         },
         {
-            "name": "BarWater",
-            "macro": "cast barwater",
-            "icon": "rosa-shield",
-            "color": "#208aec",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield water damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "EnergyWave",
             "macro": "cast energywave",
             "icon": "beams-aura",
@@ -412,6 +402,16 @@
             "color": "#0aa",
             "mode": "autoActivate",
             "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarWater",
+            "macro": "cast barwater",
+            "icon": "rosa-shield",
+            "color": "#208aec",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield water damage for a single target. Cost: 20 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -456,22 +456,22 @@
             "requiresLearn": true
         },
         {
+            "name": "ImbueEnergy",
+            "macro": "cast imbueenergy",
+            "icon": "magic-palm",
+            "color": "#00b",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Augment physical attacks to do bonus energy damage. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Invisibility",
             "macro": "cast invisibility",
             "icon": "invisible",
             "color": "#000",
             "mode": "clickToTarget",
             "tooltipDesc": "Become invisible to the average vision. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MagicMissile",
-            "macro": "cast magicmissile",
-            "icon": "missile-swarm",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -486,42 +486,22 @@
             "requiresLearn": true
         },
         {
+            "name": "MagicMissile",
+            "macro": "cast magicmissile",
+            "icon": "missile-swarm",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Magic Shield",
             "macro": "cast magicshield",
             "icon": "vibrating-shield",
             "color": "#a0a",
             "mode": "clickToTarget",
             "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Debilitate",
-            "macro": "cast debilitate",
-            "icon": "one-eyed",
-            "color": "#a00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "EagleEye",
-            "macro": "cast eagleeye",
-            "icon": "dead-eye",
-            "color": "#f00",
-            "mode": "autoActivate",
-            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "ShadowMeld",
-            "macro": "cast shadowmeld",
-            "icon": "hidden",
-            "color": "#00c",
-            "mode": "autoActivate",
-            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -644,6 +624,36 @@
             "color": "#00a",
             "mode": "clickToTarget",
             "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Debilitate",
+            "macro": "cast debilitate",
+            "icon": "one-eyed",
+            "color": "#a00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EagleEye",
+            "macro": "cast eagleeye",
+            "icon": "dead-eye",
+            "color": "#f00",
+            "mode": "autoActivate",
+            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowMeld",
+            "macro": "cast shadowmeld",
+            "icon": "hidden",
+            "color": "#00c",
+            "mode": "autoActivate",
+            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
             "isSystem": true,
             "requiresLearn": true
         },

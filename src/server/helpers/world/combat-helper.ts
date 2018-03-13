@@ -873,6 +873,10 @@ export class CombatHelper {
       });
     }
 
+    attacker.augmentEffectsList.forEach(eff => eff.augmentAttack(attacker, defender, {
+      damage, damageClass
+    }));
+
     defender.hp.sub(damage);
     if(defender.$$ai) defender.$$ai.damageTaken.dispatch(defender, { damage, attacker });
 

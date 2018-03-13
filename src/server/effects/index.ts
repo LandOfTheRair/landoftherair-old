@@ -33,6 +33,8 @@ export * from './damagers/MagicBolt';
 export * from './dots/Disease';
 export * from './dots/Poison';
 
+export * from './augments/ImbueEnergy';
+
 export * from './buffs/BarFire';
 export * from './buffs/BarFrost';
 export * from './buffs/BarNecro';

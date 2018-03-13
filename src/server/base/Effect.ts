@@ -282,3 +282,7 @@ export class BuildupEffect extends SpellEffect {
 
   buildupProc(char: Character) {}
 }
+
+export interface AugmentSpellEffect {
+  augmentAttack(attacker: Character, defender: Character, opts: { damage: number, damageClass: string });
+}
