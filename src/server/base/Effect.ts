@@ -92,7 +92,8 @@ export class SpellEffect extends Effect {
   skillFlag(caster) {
     if(caster.baseClass === 'Healer') return SkillClassNames.Restoration;
     if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
-    return SkillClassNames.Thievery;
+    if(caster.baseClass === 'Thief')  return SkillClassNames.Thievery;
+    return caster.rightHand ? caster.rightHand.type : 'Martial';
   }
 
   casterEffectMessage(char: Character, message: string) {

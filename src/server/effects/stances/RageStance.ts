@@ -17,8 +17,6 @@ export class RageStance extends StanceEffect {
     tooltipDesc: 'Stance. Acting offensively.'
   };
 
-  skillFlag = (char) => char.rightHand ? char.rightHand.type : 'Martial';
-
   cast(caster: Character, target: Character, skillRef?: Skill): boolean {
     const foundSelf = super.cast(caster, target, skillRef);
     if(foundSelf) return foundSelf;
