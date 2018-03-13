@@ -80,6 +80,9 @@ export * from './recents/RecentlyBlinded';
 
 export * from './recents/RecentlyHasted';
 
+export * from './antibuffs/Debilitate';
+export * from './recents/RecentlyDebilitated';
+
 export * from './misc/Augury';
 export * from './misc/Identify';
 export * from './misc/Succor';
