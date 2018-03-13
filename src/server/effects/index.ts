@@ -51,6 +51,7 @@ export * from './buffs/VitalEssence';
 export * from './cures/Cure';
 export * from './cures/Regen';
 export * from './cures/Revive';
+export * from './cures/Vision';
 
 export * from './misc/Darkness';
 export * from './misc/Light';
@@ -72,6 +73,9 @@ export * from './recents/RecentlyShattered';
 
 export * from './antibuffs/Stunned';
 export * from './recents/RecentlyStunned';
+
+export * from './antibuffs/Blinded';
+export * from './recents/RecentlyBlinded';
 
 export * from './recents/RecentlyHasted';
 

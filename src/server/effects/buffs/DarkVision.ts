@@ -27,18 +27,23 @@ export class DarkVision extends SpellEffect {
     if(!this.duration) this.duration = this.potency * durationMult;
     this.updateDurationBasedOnTraits(caster);
     target.applyEffect(this);
-
-    target.$$room.state.calculateFOV(target);
-    if(target.isPlayer()) {
-      target.$$room.updateFOV(target);
-    }
   }
 
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'You can see in the dark!');
+
+    char.$$room.state.calculateFOV(char);
+    if(char.isPlayer()) {
+      char.$$room.updateFOV(char);
+    }
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your vision returns to normal.');
+
+    char.$$room.state.calculateFOV(char);
+    if(char.isPlayer()) {
+      char.$$room.updateFOV(char);
+    }
   }
 }

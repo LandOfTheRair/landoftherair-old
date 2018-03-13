@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character } from '../../../shared/models/character';
+import { Character, StatName } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { random, clamp } from 'lodash';
 import { Stunned } from '../antibuffs/Stunned';
@@ -23,8 +23,8 @@ export class Push extends SpellEffect {
     const userStat = caster.baseClass === 'Healer' ? 'wis' : 'int';
     const resistStat = predetermined ? 'con' : 'wil';
 
-    const baseStat = caster.getTotalStat(userStat);
-    const targetStat = target.getTotalStat(resistStat);
+    const baseStat = caster.getTotalStat(<StatName>userStat);
+    const targetStat = target.getTotalStat(<StatName>resistStat);
 
     const successChance = clamp((baseStat - targetStat) + 4, 0, 8) * 12.5;
 
