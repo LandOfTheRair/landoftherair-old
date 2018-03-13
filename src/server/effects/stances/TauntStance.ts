@@ -7,7 +7,7 @@ import { GenderHelper } from '../../helpers/character/gender-helper';
 
 export class TauntStance extends StanceEffect {
 
-  static get skillRequired() { return 15; }
+  static get skillRequired() { return 13; }
   protected skillRequired = TauntStance.skillRequired;
 
   iconData = {
