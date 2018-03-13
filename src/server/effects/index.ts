@@ -101,4 +101,7 @@ export * from './special/ActivePet';
 export * from './special/SummonedPet';
 export * from './channels/ChannelFindFamiliar';
 
+export * from './arts/Multistrike';
 export * from './arts/Taunt';
+
+export * from './antibuffs/LoweredDefenses';
