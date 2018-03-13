@@ -144,7 +144,7 @@
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "tslint": "~4.5.0",
-    "typescript": "^2.4.2",
+    "typescript": "~2.4.2",
     "webfont": "^7.1.4",
     "webpack": "^3.3.0",
     "yamljs": "^0.2.10"
