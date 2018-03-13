@@ -276,7 +276,7 @@ export class Character {
   }
 
   get augmentEffectsList(): AugmentSpellEffect[] {
-    return <any[]>values(this.effects).filter(x => (<AugmentSpellEffect>x).augmentAttack);
+    return <any[]>values(this.effects).filter(x => (<any>x).augmentAttack);
   }
 
   get isInCombat() {
