@@ -203,10 +203,6 @@ export class ColyseusGameService {
     this.worldRoom.listen('playerHash/:id/leftHand/:attr', updateHandItem.bind(this, 'leftHand'));
     this.worldRoom.listen('playerHash/:id/rightHand/:attr', updateHandItem.bind(this, 'rightHand'));
 
-    this.worldRoom.listen('playerHash/:id/effects/:effect/:attr', (change) => {
-      this.clientGameState.updatePlayerEffect(change);
-    });
-
     this.worldRoom.listen('playerHash/:id/totalStats/stealth', (change) => {
       this.clientGameState.updatePlayerStealth(change.path.id, change.value);
     });

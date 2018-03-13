@@ -27,7 +27,7 @@ export class Blind extends Skill {
 
     const baseStat = user.getTotalStat(<StatName>userStat);
     const targetStat = target.getTotalStat('wil');
-    
+
     return (baseStat - targetStat) + 4 > 0;
   }
 

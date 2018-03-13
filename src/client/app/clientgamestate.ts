@@ -152,7 +152,7 @@ export class ClientGameState {
     this.groundItems[xKey][yKey] = this.groundItems[xKey][yKey] || {};
     this.groundItems[xKey][yKey][item.itemClass] = this.groundItems[xKey][yKey][item.itemClass] || [];
 
-    this.groundItems[xKey][yKey][item.itemClass] = reject(this.groundItems[xKey][yKey][item.itemClass], i => i.uuid === item.uuid);
+    this.groundItems[xKey][yKey][item.itemClass] = reject(this.groundItems[xKey][yKey][item.itemClass], (i: Item) => i.uuid === item.uuid);
 
     if(size(this.groundItems[xKey][yKey][item.itemClass]) === 0) delete this.groundItems[xKey][yKey][item.itemClass];
     if(size(this.groundItems[xKey][yKey]) === 0) delete this.groundItems[xKey][yKey];
@@ -224,38 +224,6 @@ export class ClientGameState {
 
   private _updatePlayerAtIndex(playerIndex) {
     this.updatePlayer$.next(this.playerHash[playerIndex]);
-  }
-
-  updatePlayerEffect(change) {
-    const playerIndex = change.path.id;
-    const effectIndex = change.path.effect;
-    const attr = change.path.attr;
-    const effect = change.value;
-
-    if(!this.playerHash[playerIndex]) return;
-
-    const effectRef = this.playerHash[playerIndex].effects;
-
-    if(change.operation === 'remove') {
-      effectRef[effectIndex] = null;
-      this.playerHash[playerIndex].effects = compact(effectRef);
-      return;
-    }
-
-    if(change.operation === 'add') {
-      effectRef[effectIndex] = effectRef[effectIndex] || (<any>{});
-      effectRef[effectIndex][attr] = effect;
-    }
-
-    if(change.operation === 'replace' && effectRef[effectIndex]) {
-      effectRef[effectIndex][attr] = effect;
-      if(effectRef[effectIndex].duration <= 0 && !get(effectRef[effectIndex], 'effectInfo.isPermanent', false)) {
-        effectRef[effectIndex] = null;
-        this.playerHash[playerIndex].effects = compact(effectRef);
-      }
-    }
-
-    this._updatePlayerAtIndex(playerIndex);
   }
 
   updatePlayerStealth(playerIndex, stealth) {

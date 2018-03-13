@@ -203,7 +203,7 @@ export class ChanneledSpellEffect extends SpellEffect {
   cast(char: Character, target: Character, skillRef?: Skill) {
 
     // only one stance can be active at a time
-    char.effects.forEach(eff => {
+    char.effectsList.forEach(eff => {
       if(!includes(eff.constructor.name, 'Channel')) return;
       char.unapplyEffect(eff, true);
     });
@@ -236,7 +236,7 @@ export class StanceEffect extends WeaponEffect {
     let foundSelf = false;
 
     // only one stance can be active at a time
-    char.effects.forEach(eff => {
+    char.effectsList.forEach(eff => {
       if(!includes(eff.constructor.name, 'Stance')) return;
       char.unapplyEffect(eff, true);
       if(eff.constructor.name === this.constructor.name) foundSelf = true;

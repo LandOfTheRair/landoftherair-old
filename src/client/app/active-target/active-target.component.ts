@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { find } from 'lodash';
+import { find, values } from 'lodash';
 
 @Component({
   selector: 'app-active-target',
@@ -16,6 +16,10 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
 
   get target() {
     return this.colyseusGame.clientGameState.activeTarget;
+  }
+
+  get targetEffects() {
+    return values(this.target.effects);
   }
 
   get shouldShowBox() {

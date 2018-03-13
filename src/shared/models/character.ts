@@ -4,7 +4,7 @@ import { Signal } from 'signals.js';
 
 import {
   merge, find, includes, compact, values,
-  startsWith, clone, get, reject, pick
+  startsWith, clone, get, reject, pick, isArray
 } from 'lodash';
 
 import {
@@ -220,7 +220,7 @@ export class Character {
   belt: Belt = new Belt({ size: this.beltSize });
   pouch: Pouch = new Pouch({ size: 0 });
 
-  effects: Effect[] = [];
+  effects: { [key: string]: Effect } = {};
 
   gear: any = {};
   leftHand: Item;
@@ -270,6 +270,10 @@ export class Character {
 
   @nonenumerable
   public $$owner: Character;
+
+  get effectsList(): Effect[] {
+    return values(this.effects);
+  }
 
   get isInCombat() {
     return this.combatTicks > 0;
@@ -343,10 +347,20 @@ export class Character {
   }
 
   initEffects() {
-    this.effects = this.effects.map(x => {
-      const eff = new Effects[x.name](x);
-      eff.iconData = x.iconData;
-      return eff;
+    if(isArray(this.effects)) {
+      const effects: Effect[] = <Effect[]>this.effects;
+      const newEffects = {};
+      effects.forEach(eff => {
+        newEffects[eff.name] = eff;
+      });
+      this.effects = newEffects;
+    }
+
+    Object.keys(this.effects).forEach(effName => {
+      const eff = new Effects[effName](this.effects[effName]);
+      eff.iconData = this.effects[effName].iconData;
+
+      this.effects[effName] = eff;
     });
   }
 
@@ -817,7 +831,7 @@ export class Character {
 
   clearEffects() {
     const noClear = ['Nourishment', 'Malnourished'];
-    this.effects.forEach(effect => {
+    this.effectsList.forEach(effect => {
       if(includes(noClear, effect.name)) return;
       this.unapplyEffect(effect, true, true);
     });
@@ -979,7 +993,7 @@ export class Character {
     }
 
     if(effect.duration > 0 || newPermanency) {
-      this.effects.push(effect);
+      this.effects[effect.name] = effect;
     }
 
     effect.effectStart(this);
@@ -990,11 +1004,12 @@ export class Character {
       effect.shouldNotShowMessage = hideMessage;
       effect.effectEnd(this);
     }
-    this.effects = this.effects.filter(eff => eff.name !== effect.name);
+
+    delete this.effects[effect.name];
   }
 
   hasEffect(effectName): Effect {
-    return find(this.effects, { name: effectName });
+    return this.effects[effectName];
   }
 
   hasHeldItem(item: string, hand: 'left'|'right' = 'right'): boolean {

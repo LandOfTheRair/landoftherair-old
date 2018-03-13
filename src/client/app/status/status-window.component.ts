@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
+import { values } from 'lodash';
+
 @Component({
   selector: 'app-status-window',
   templateUrl: './status-window.component.html',
@@ -22,6 +24,10 @@ export class StatusWindowComponent {
     const baseXp = this.colyseusGame.character.calcLevelXP(this.colyseusGame.character.level);
     const neededXp = this.colyseusGame.character.calcLevelXP(this.colyseusGame.character.level + 1);
     return Math.min(100, (this.colyseusGame.character.exp - baseXp) / (neededXp - baseXp) * 100);
+  }
+
+  get allEffects(): any[] {
+    return values(this.colyseusGame.character.effects);
   }
 
   constructor(public colyseusGame: ColyseusGameService) { }

@@ -147,12 +147,12 @@ export class GameState {
 
   private tickAllEffects() {
     this._mapNPCs.forEach(npc => {
-      npc.effects.forEach(eff => eff.tick(npc));
+      npc.effectsList.forEach(eff => eff.tick(npc));
       this.updateNPCVolatile(npc);
     });
 
     this.players.forEach(player => {
-      player.effects.forEach(eff => eff.tick(player));
+      player.effectsList.forEach(eff => eff.tick(player));
     });
   }
 
