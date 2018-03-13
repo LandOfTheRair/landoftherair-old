@@ -8,7 +8,7 @@ export class MagicShield extends Skill {
   static macroMetadata = {
     name: 'Magic Shield',
     macro: 'cast magicshield',
-    icon: 'vibrating-shield',
+    icon: 'energy-shield',
     color: '#a0a',
     mode: 'clickToTarget',
     tooltipDesc: 'Negate some physical damage. Cost: 100 MP'

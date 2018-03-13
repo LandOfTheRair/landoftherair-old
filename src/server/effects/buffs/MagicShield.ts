@@ -6,7 +6,7 @@ import { Skill } from '../../base/Skill';
 export class MagicShield extends SpellEffect {
 
   iconData = {
-    name: 'vibrating-shield',
+    name: 'energy-shield',
     bgColor: '#a0a',
     color: '#fff',
     tooltipDesc: 'Negate some physical damage.'
