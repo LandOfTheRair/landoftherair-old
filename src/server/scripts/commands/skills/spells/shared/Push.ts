@@ -10,7 +10,7 @@ export class Push extends Skill {
   static macroMetadata = {
     name: 'Push',
     macro: 'cast push',
-    icon: 'air-zigzag',
+    icon: 'swirl-string',
     color: '#000',
     mode: 'clickToTarget',
     tooltipDesc: 'Push an enemy around. Cost: 25 MP'
