@@ -80,6 +80,3 @@
   binds: true
   value: 678
 
-  requirements:
-    level: 5
-

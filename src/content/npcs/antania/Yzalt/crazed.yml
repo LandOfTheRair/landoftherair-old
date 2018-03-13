@@ -1047,8 +1047,7 @@
   gear:
     Armor: Yzalt Fungus Ringmail Tunic
     Robe1: Ranata Robe
-    Head: Enemy DarkVision Helm
-    Ear: Antanian Earring
+    Ear: Enemy DarkVision Earring
 
   dropPool:
     choose:
@@ -1068,6 +1067,7 @@
       - Heniz Battlemage Gloves
       - Steffen Mana Ring
       - Steffen Wisdom Amulet
+      - Antanian Earring
 
   drops:
     - result: Ranata Totem
@@ -1075,8 +1075,6 @@
 
   copyDrops:
     - drop: 'rightHand'
-      chance: -1
-    - drop: 'gear.Ear'
       chance: -1
     - drop: 'gear.Robe1'
       chance: -1
@@ -1125,8 +1123,7 @@
   gear:
     Armor: Yzalt Fungus Ringmail Tunic
     Robe1: Ranata Robe
-    Head: Enemy DarkVision Helm
-    Ear: Antanian Earring
+    Ear: Enemy DarkVision Earring
 
   dropPool:
     choose:
@@ -1139,11 +1136,10 @@
       - Yzalt Combat Boots
       - Yzalt Combat Amulet
       - Yzalt Armor Ring
+      - Antanian Earring
 
   copyDrops:
     - drop: 'rightHand'
-      chance: -1
-    - drop: 'gear.Ear'
       chance: -1
     - drop: 'gear.Robe1'
       chance: -1

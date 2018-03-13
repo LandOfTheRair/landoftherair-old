@@ -46,6 +46,3 @@
   desc: "a woolen cloak"
   value: 10
   sprite: 211
-
-  requirements:
-    level: 10

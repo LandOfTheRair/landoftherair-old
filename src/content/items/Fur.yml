@@ -59,9 +59,6 @@
     fireResist: 40
     iceResist: 40
 
-  requirements:
-    level: 9
-
   value: 700
   sprite: 352
 
@@ -71,9 +68,6 @@
     armorClass: 12
     fireResist: 80
     iceResist: 80
-
-  requirements:
-    level: 11
 
   value: 1600
   sprite: 217

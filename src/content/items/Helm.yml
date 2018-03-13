@@ -105,16 +105,7 @@
   value: 3600
 
   requirements:
-    level: 7
     alignment: Good
-
-- name: Enemy DarkVision Helm
-  effect:
-    name: DarkVision
-    autocast: true
-  sprite: -1
-  desc: "a glow in the dark helmet with eyes that let you see in the dark"
-  value: 0
 
 - name: Heniz DarkVision Helm
   effect:
@@ -125,5 +116,4 @@
   value: 3500
 
   requirements:
-    level: 7
     alignment: Evil

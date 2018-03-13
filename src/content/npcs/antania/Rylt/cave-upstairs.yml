@@ -46,7 +46,7 @@
   gear:
     Armor: Antanian Tunic
     Neck: Crazed Saraxa Amulet
-    Head: Enemy DarkVision Helm
+    Ear: Enemy DarkVision Earring
 
     Robe1: FireIce Prot Robe 500
     Robe2: Crazed Saraxa Robe
@@ -111,7 +111,7 @@
 
   gear:
     Hands: Rylt Rockgolem Gloves
-    Head: Enemy DarkVision Helm
+    Ear: Enemy DarkVision Earring
     Armor:
       - none
       - Antanian Tunic
@@ -153,4 +153,4 @@
 
   gear:
     Armor: Antanian Tunic
-    Head: Enemy DarkVision Helm
+    Ear: Enemy DarkVision Earring

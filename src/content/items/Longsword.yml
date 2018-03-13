@@ -44,6 +44,3 @@
   value: 378
   sprite: 227
   binds: true
-
-  requirements:
-    level: 5

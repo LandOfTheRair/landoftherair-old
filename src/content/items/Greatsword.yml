@@ -26,9 +26,6 @@
   sprite: 308
   binds: true
 
-  requirements:
-    level: 5
-
 - name: Tower Greatsword Weak
   stats:
     offense: 6

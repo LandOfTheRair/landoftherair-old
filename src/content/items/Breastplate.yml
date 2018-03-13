@@ -20,8 +20,6 @@
     armorClass: 9
   sprite: 148
   desc: "an iron breastplate with strange marks etched into it"
-  requirements:
-    level: 10
   value: 2500
 
 - name: Tower Breastplate

@@ -31,6 +31,9 @@
   sprite: 301
   value: 2500
 
+  requirements:
+    level: 10
+
 - name: Ether Greataxe
   desc: "a greataxe forged from ether"
   tier: 5
