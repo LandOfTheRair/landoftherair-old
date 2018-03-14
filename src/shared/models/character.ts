@@ -1052,6 +1052,8 @@ export class Character {
   }
 
   doSuccor(succorInfo) {
+    if(this.$$room.state.isSuccorRestricted(this)) return this.sendClientMessage('The blob turns to ash in your hand!');
+
     this.sendClientMessage('You are whisked back to the place in your stored memories!');
 
     this.$$room.teleport(this, {
