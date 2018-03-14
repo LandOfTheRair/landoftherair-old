@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { StatName } from '../../../../shared/models/character';
 import { Stunned } from '../../../effects/antibuffs/Stunned';
 
 export class Memorize extends Command {

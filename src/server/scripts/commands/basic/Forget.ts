@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { StatName } from '../../../../shared/models/character';
 
 export class Forget extends Command {
 
