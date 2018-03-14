@@ -25,6 +25,7 @@ class Database {
   public $logs: any;
   public $gameSettings: any;
   public $banks: any;
+  public $teleports: any;
 
   private client: MongoClient;
 
@@ -82,6 +83,9 @@ class Database {
 
     this.$banks = this.client.collection('banks');
     this.$banks.ensureIndex({ username: 1 });
+
+    this.$teleports = this.client.collection('teleports');
+    this.$teleports.ensureIndex({ username: 1, charSlot: 1, teleport: 1 });
 
     this.clearStaleData();
   }

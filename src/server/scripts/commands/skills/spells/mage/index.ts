@@ -11,3 +11,5 @@ export * from './Invisibility';
 export * from './MagicBolt';
 export * from './MagicMissile';
 export * from './MagicShield';
+export * from './MassTeleport';
+export * from './Teleport';

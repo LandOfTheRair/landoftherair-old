@@ -20,6 +20,7 @@ import { BonusArbiter } from '../helpers/bonus/bonus-arbiter';
 import { MessageHelper } from '../helpers/lobby/message-helper';
 import { DiscordHelper } from '../helpers/lobby/discord-helper';
 import { PouchHelper } from '../helpers/character/pouch-helper';
+import { TeleportHelper } from '../helpers/world/teleport-helper';
 
 const CHAT_SPAM_DELAY = 1000;
 const MAX_SPAM_MESSAGES = 5;
@@ -246,6 +247,7 @@ export class Lobby extends Room<LobbyState> {
     const oldPlayerName = account.characterNames[charSlot];
     if(oldPlayerName) {
       DB.$players.remove({ username: client.username, charSlot });
+      TeleportHelper.removeAllTeleports(client.username, charSlot);
     }
 
     account.characterNames[charSlot] = character.name;

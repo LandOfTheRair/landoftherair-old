@@ -9324,10 +9324,20 @@
                  "height":512,
                  "id":762,
                  "name":"Renegade Leader Hut",
+                 "properties":
+                    {
+                     "restrictSuccor":true,
+                     "restrictTeleport":true
+                    },
+                 "propertytypes":
+                    {
+                     "restrictSuccor":"bool",
+                     "restrictTeleport":"bool"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":2240,
+                 "width":1792,
                  "x":5056,
                  "y":9280
                 }, 
@@ -9436,11 +9446,13 @@
                  "name":"Saraxa's Enclave",
                  "properties":
                     {
-                     "restrictSuccor":true
+                     "restrictSuccor":true,
+                     "restrictTeleport":true
                     },
                  "propertytypes":
                     {
-                     "restrictSuccor":"bool"
+                     "restrictSuccor":"bool",
+                     "restrictTeleport":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -9464,6 +9476,16 @@
                  "height":320,
                  "id":775,
                  "name":"Saraxa's Retreat",
+                 "properties":
+                    {
+                     "restrictSuccor":true,
+                     "restrictTeleport":true
+                    },
+                 "propertytypes":
+                    {
+                     "restrictSuccor":"bool",
+                     "restrictTeleport":"bool"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -9477,11 +9499,13 @@
                  "name":"Tonwin's Lair",
                  "properties":
                     {
-                     "restrictSuccor":true
+                     "restrictSuccor":true,
+                     "restrictTeleport":true
                     },
                  "propertytypes":
                     {
-                     "restrictSuccor":"bool"
+                     "restrictSuccor":"bool",
+                     "restrictTeleport":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -9514,7 +9538,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],

@@ -8163,11 +8163,13 @@
                  "name":"Ranata's Room",
                  "properties":
                     {
-                     "restrictSuccor":true
+                     "restrictSuccor":true,
+                     "restrictTeleport":true
                     },
                  "propertytypes":
                     {
-                     "restrictSuccor":"bool"
+                     "restrictSuccor":"bool",
+                     "restrictTeleport":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -8178,7 +8180,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],

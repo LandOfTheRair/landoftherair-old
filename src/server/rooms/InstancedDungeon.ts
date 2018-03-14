@@ -5,6 +5,10 @@ export class InstancedDungeon extends GameWorld {
 
   public partyOwner: string;
 
+  get canMemorize(): boolean {
+    return false;
+  }
+
   get exitPoint() {
     const { kickMap, kickX, kickY } = this.state.map.properties;
     return { kickMap, kickX, kickY };

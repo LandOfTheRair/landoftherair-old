@@ -34,6 +34,7 @@ import { BankHelper } from '../helpers/character/bank-helper';
 import { SubscriptionHelper } from '../helpers/account/subscription-helper';
 import { PouchHelper } from '../helpers/character/pouch-helper';
 import { MoveHelper } from '../helpers/character/move-helper';
+import { TeleportHelper } from '../helpers/world/teleport-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon';
@@ -56,7 +57,7 @@ const TickRatesPerTimer = {
 
 export class GameWorld extends Room<GameState> {
 
-  private allMapNames;
+  private allMapNames = {};
 
   private spawners: Spawner[] = [];
 
@@ -71,6 +72,7 @@ export class GameWorld extends Room<GameState> {
   private bonusHelper: BonusHelper;
   private groundHelper: GroundHelper;
   public itemCreator: ItemCreator;
+  public teleportHelper: TeleportHelper;
 
   private itemGC: any;
 
@@ -126,12 +128,25 @@ export class GameWorld extends Room<GameState> {
     };
   }
 
+  get mapSubscriberOnly(): boolean {
+    return this.state.map.properties.subscriberOnly;
+  }
+
   get script() {
     return this.state.map.properties.script;
   }
 
   get subscriptionHelper(): SubscriptionHelper {
     return SubscriptionHelper;
+  }
+
+  // 2 teleports per map, essentially
+  get maxTeleportLocations(): number {
+    return Math.floor(Object.keys(this.allMapNames).length * 1.5);
+  }
+
+  get canMemorize(): boolean {
+    return true;
   }
 
   private redis: Redis;
@@ -146,6 +161,7 @@ export class GameWorld extends Room<GameState> {
 
     this.itemCreator = new ItemCreator();
     this.groundHelper = new GroundHelper(this);
+    this.teleportHelper = new TeleportHelper(this);
 
     this.setPatchRate(1000);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
@@ -248,6 +264,13 @@ export class GameWorld extends Room<GameState> {
     }
 
     this.usernameClientHash[player.username] = { client };
+
+
+    if(this.mapSubscriberOnly && !SubscriptionHelper.isSubscribed(player)) {
+      player.sendClientMessage('Magical forces push you out of the rift!');
+      await this.teleport(player, { newMap: 'Rylt', x: 68, y: 13 });
+      return;
+    }
 
     this.setPlayerXY(player, player.x, player.y);
 

@@ -25,7 +25,7 @@ export class TestQuest extends Quest {
     structure.canTeleport = canTeleport;
     structure.canComplete = canComplete;
 
-    if(questOpts.canTeleport) structure.canTeleport = !canTeleport;
+    if(questOpts.cannotTeleport) structure.canTeleport = !canTeleport;
     if(questOpts.canComplete) structure.canComplete = !canComplete;
 
     player.setQuestData(this, structure);

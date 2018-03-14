@@ -170,6 +170,12 @@ export class GameState {
     return get(succorRegion, 'properties.restrictSuccor', false);
   }
 
+  isTeleportRestricted(player: Player): boolean {
+    const teleRegion = filter(this.map.layers[MapLayer.Succorport].objects, reg => this.isInRegion(player, reg))[0];
+
+    return get(teleRegion, 'properties.restrictTeleport', false);
+  }
+
   getSuccorRegion(player: Player): string {
     const succorRegion: any = filter(this.map.layers[MapLayer.Succorport].objects, reg => this.isInRegion(player, reg))[0];
 

@@ -881,15 +881,7 @@
                 {
                  "height":2432,
                  "id":413,
-                 "name":"Subscriber Castle",
-                 "properties":
-                    {
-                     "restrictSuccor":true
-                    },
-                 "propertytypes":
-                    {
-                     "restrictSuccor":"bool"
-                    },
+                 "name":"The Castle",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -899,7 +891,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
@@ -911,7 +903,8 @@
      "maxSkill":20,
      "region":"SubscriberLand",
      "respawnX":15,
-     "respawnY":39
+     "respawnY":39,
+     "subscriberOnly":true
     },
  "propertytypes":
     {
@@ -919,7 +912,8 @@
      "maxSkill":"int",
      "region":"string",
      "respawnX":"int",
-     "respawnY":"int"
+     "respawnY":"int",
+     "subscriberOnly":"bool"
     },
  "renderorder":"right-down",
  "tileheight":64,

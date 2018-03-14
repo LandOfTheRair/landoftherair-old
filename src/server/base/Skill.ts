@@ -57,7 +57,7 @@ export abstract class Skill extends Command {
     return target.isPlayer() || !user.$$room.state.checkTargetForHostility(user, target);
   }
 
-  tryToConsumeMP(user: Character, effect, targets?: Character[]): boolean {
+  tryToConsumeMP(user: Character, effect?, targets?: Character[]): boolean {
 
     if(effect) return true;
 
