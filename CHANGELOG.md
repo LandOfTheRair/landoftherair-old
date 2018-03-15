@@ -1,5 +1,37 @@
 # Changelog
 
+## v0.1.9 (15/03/2018)
+
+#### Enhancements
+
+- [#625](https://github.com/LandOfTheRair/landoftherair/issues/625) Keys should snap if used in the wrong lock
+- [#624](https://github.com/LandOfTheRair/landoftherair/issues/624) Hidden or invisible creature sprites should be somewhat transparent
+
+#### Balance Adjustments
+
+- [#620](https://github.com/LandOfTheRair/landoftherair/issues/620) Verify that you cannot teleport out of restricted succor areas with a succor blob.
+- [#566](https://github.com/LandOfTheRair/landoftherair/issues/566) Change stance skills gained
+
+#### New Content
+
+- [#595](https://github.com/LandOfTheRair/landoftherair/issues/595) debilitate (thief skill 12)
+- [#594](https://github.com/LandOfTheRair/landoftherair/issues/594) Disguise (thief skill 16)
+- [#593](https://github.com/LandOfTheRair/landoftherair/issues/593) Allow thieves to apply debuff bottles to their weapons / throw them for strong debuffs
+- [#592](https://github.com/LandOfTheRair/landoftherair/issues/592) Blind/Vision spells (healer skill 7)
+- [#587](https://github.com/LandOfTheRair/landoftherair/issues/587) Bait trap
+- [#586](https://github.com/LandOfTheRair/landoftherair/issues/586) Shadowclones, thief ability (skill 20)
+- [#574](https://github.com/LandOfTheRair/landoftherair/issues/574) Multistrike art (warrior, skill 17)
+- [#572](https://github.com/LandOfTheRair/landoftherair/issues/572) Imbue Energy spell (Mage, skill 18)
+- [#570](https://github.com/LandOfTheRair/landoftherair/issues/570) Teleport spell (mage, skill 19)
+- [#568](https://github.com/LandOfTheRair/landoftherair/issues/568) Invisibility (mage skill, 17)
+
+#### Bug Fixes
+
+- [#626](https://github.com/LandOfTheRair/landoftherair/issues/626) @intercept does not relay damage messages
+- [#619](https://github.com/LandOfTheRair/landoftherair/issues/619) MongoError: connection 49 to ds143342.mlab.com:43342 timed out
+
+---
+
 ## v0.1.8 (12/03/2018)
 
 #### Enhancements
