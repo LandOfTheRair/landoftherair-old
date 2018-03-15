@@ -103,8 +103,15 @@ export class MoveHelper {
 
       let shouldOpen = false;
 
-      if(requireHeld
-        && player.hasHeldItem(door.properties.requireHeld)) shouldOpen = true;
+      if(requireHeld && player.rightHand && player.rightHand.itemClass === 'Key') {
+        if(player.hasHeldItem(requireHeld)) {
+          shouldOpen = true;
+        } else {
+          player.sendClientMessage('The key snapped off in the lock!');
+          player.setRightHand(null);
+          return;
+        }
+      }
 
       if(requireLockpick
         && skillRequired
