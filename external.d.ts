@@ -70,6 +70,7 @@ declare module 'fantastical' {
   export const species: { [key: string]: Function };
 }
 
+/*
 declare module 'node-redis-pubsub' {
   class NRP {
     constructor(opts: any);
@@ -80,3 +81,4 @@ declare module 'node-redis-pubsub' {
 
   export = NRP;
 }
+*/
