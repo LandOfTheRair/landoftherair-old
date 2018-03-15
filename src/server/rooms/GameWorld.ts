@@ -190,7 +190,7 @@ export class GameWorld extends Room<GameState> {
       this.state.tick();
 
       if(this.script) {
-        const { setup } = require(__dirname + '/../scripts/rooms/' + this.script);
+        const { setup } = require(__dirname + '/../scripts/dungeons/' + this.script);
         setup(this);
       }
     };

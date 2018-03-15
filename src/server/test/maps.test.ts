@@ -41,7 +41,7 @@ test('All maps have valid script references', t => {
   allMaps.forEach(map => {
     if(!map.properties.script) return;
 
-    t.true(fs.existsSync(`${__dirname}/../scripts/rooms/${map.properties.script}.ts`), tagFor(map, 'mapscript'));
+    t.true(fs.existsSync(`${__dirname}/../scripts/dungeons/${map.properties.script}.ts`), tagFor(map, 'mapscript'));
   });
 });
 
