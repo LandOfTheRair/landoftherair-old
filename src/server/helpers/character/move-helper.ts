@@ -103,8 +103,8 @@ export class MoveHelper {
 
       let shouldOpen = false;
 
-      if(requireHeld && player.rightHand && player.rightHand.itemClass === 'Key') {
-        if(player.hasHeldItem(requireHeld)) {
+      if(player.rightHand && player.rightHand.itemClass === 'Key') {
+        if(requireHeld && player.hasHeldItem(requireHeld)) {
           shouldOpen = true;
         } else {
           player.sendClientMessage('The key snapped off in the lock!');
