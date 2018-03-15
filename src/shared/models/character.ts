@@ -266,7 +266,7 @@ export class Character {
   allegianceReputation: any = {};
 
   @nonenumerable
-  public $$pet: Character;
+  public $$pets: Character[];
 
   @nonenumerable
   public $$owner: Character;
@@ -855,7 +855,7 @@ export class Character {
     if(silent) {
       this.hp.toMinimum();
       this.$$deathTicks = 5;
-      this.$$owner.$$pet = null;
+      this.$$owner.$$pets = reject(this.$$owner.$$pets, (x: Character) => x === this);
     }
   }
 
@@ -1308,5 +1308,10 @@ export class Character {
     if(this.isNeutralTo(faction)) return 'neutral';
     if(this.isFriendlyTo(faction)) return 'friendly';
     if(this.isHostileTo(faction)) return 'hostile';
+  }
+
+  public killAllPets() {
+    if(!this.$$pets || this.$$pets.length === 0) return;
+    this.$$pets.forEach(pet => pet.die(this, true));
   }
 }

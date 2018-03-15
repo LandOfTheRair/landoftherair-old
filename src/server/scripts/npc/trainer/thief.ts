@@ -14,7 +14,8 @@ const learnedSkills = { Thievery: {
   13: ['DarkVision'],
   14: ['EagleEye'],
   15: ['ShadowMeld'],
-  16: ['Disguise']
+  16: ['Disguise'],
+  20: ['ShadowClones']
 } };
 
 export const setup = async (npc: NPC) => {

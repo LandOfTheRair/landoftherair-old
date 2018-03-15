@@ -11,7 +11,7 @@ export class Unapply extends Command {
     const effect = player.hasEffect(args);
     if(!effect) return player.sendClientMessage('You do not have that buff!');
 
-    if(!effect.canBeUnapplied()) return player.sendClientMessage('That\'s not how that works!');
+    if(!effect.canBeUnapplied()) return;
 
     player.unapplyEffect(effect, true);
   }

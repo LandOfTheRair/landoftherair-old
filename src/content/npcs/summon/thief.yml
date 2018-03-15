@@ -1,0 +1,14 @@
+
+- npcId: Thief Shadow Clone
+  name: shadow
+  sprite: 290
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  gear:
+    Armor: Antanian Tunic
+
+  hp:
+    min: 1
+    max: 1

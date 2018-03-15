@@ -3,6 +3,8 @@ import { Effect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
+import { some } from 'lodash';
+
 export class ActivePet extends Effect {
 
   iconData = {
@@ -25,16 +27,14 @@ export class ActivePet extends Effect {
   }
 
   effectTick(char: Character) {
-    if(char.$$pet && !char.$$pet.isDead()) return;
+    if(char.$$pets && some(char.$$pets, pet => !pet.isDead())) return;
 
     this.effectEnd(char);
     char.unapplyEffect(this);
   }
 
   effectEnd(char: Character) {
-    if(char.$$pet) {
-      char.$$pet.die(char, true);
-    }
+    char.killAllPets();
 
     char.gainStat('weaponArmorClass', Math.floor(this.potency / 2));
     char.gainStat('armorClass', Math.floor(this.potency / 2));

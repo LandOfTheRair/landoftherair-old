@@ -102,6 +102,10 @@ export * from './special/ActivePet';
 export * from './special/SummonedPet';
 export * from './channels/ChannelFindFamiliar';
 
+export * from './special/ActiveClones';
+export * from './special/SummonedClone';
+export * from './channels/ChannelShadowClones';
+
 export * from './arts/Multistrike';
 export * from './arts/Taunt';
 

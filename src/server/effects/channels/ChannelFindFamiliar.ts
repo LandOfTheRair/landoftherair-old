@@ -85,10 +85,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
 
   effectStart(char: Character) {
     MessageHelper.sendClientMessageToRadius(char, `${char.name} begins channeling find familiar.`);
-
-    if(char.$$pet) {
-      char.$$pet.die(char, true);
-    }
+    char.killAllPets();
   }
 
   effectEnd(char: Character) {
@@ -127,7 +124,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
         animalModHash[this.animalStr](npc, this.potency);
 
         // make them know each other
-        char.$$pet = npc;
+        char.$$pets = [npc];
         npc.$$owner = char;
 
         const summonedPet = new SummonedPet({});

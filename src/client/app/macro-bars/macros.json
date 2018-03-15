@@ -41,22 +41,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Stairs",
-            "macro": "up",
-            "icon": "3d-stairs",
-            "color": "#404040",
-            "mode": "autoActivate",
-            "tooltipDesc": "Go up or down stairs on this tile.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Show Stats",
             "macro": "show stats",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "See all of your stats and their base level in text form.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Stairs",
+            "macro": "up",
+            "icon": "3d-stairs",
+            "color": "#404040",
+            "mode": "autoActivate",
+            "tooltipDesc": "Go up or down stairs on this tile.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -214,26 +214,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Augury",
-            "macro": "cast augury",
-            "icon": "dove",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Use the winds to divine the location of your target. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Autoheal",
-            "macro": "cast autoheal",
-            "icon": "self-love",
-            "color": "#00c",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Automatically healing when health gets too low. Cost: 50 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "BarNecro",
             "macro": "cast barnecro",
             "icon": "rosa-shield",
@@ -250,6 +230,26 @@
             "color": "#900",
             "mode": "clickToTarget",
             "tooltipDesc": "Attempt to blind a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Autoheal",
+            "macro": "cast autoheal",
+            "icon": "self-love",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Automatically healing when health gets too low. Cost: 50 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Augury",
+            "macro": "cast augury",
+            "icon": "dove",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Use the winds to divine the location of your target. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -295,16 +295,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Regen",
-            "macro": "cast regen",
-            "icon": "star-swirl",
-            "color": "#00c",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "PowerwordHeal",
             "macro": "powerword heal",
             "icon": "tentacle-heart",
@@ -312,6 +302,16 @@
             "bgColor": "#000",
             "mode": "autoActivate",
             "tooltipDesc": "Heal your party. Cost: 25 MP / target",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Regen",
+            "macro": "cast regen",
+            "icon": "star-swirl",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -346,16 +346,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Vision",
-            "macro": "cast vision",
-            "icon": "evil-eyes",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cure blindness on a single target. Cost: 10 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "VitalEssence",
             "macro": "cast vitalessence",
             "icon": "bell-shield",
@@ -372,6 +362,16 @@
             "color": "#080",
             "mode": "autoActivate",
             "tooltipDesc": "Create a bottle of holy water. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Vision",
+            "macro": "cast vision",
+            "icon": "evil-eyes",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cure blindness on a single target. Cost: 10 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -426,6 +426,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Firethorns",
+            "macro": "cast firethorns",
+            "icon": "barbed-coil",
+            "color": "#f00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Physical attackers take damage. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Haste",
             "macro": "cast haste",
             "icon": "time-trap",
@@ -452,16 +462,6 @@
             "color": "#00b",
             "mode": "clickToTarget",
             "tooltipDesc": "Augment physical attacks to do bonus energy damage. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Firethorns",
-            "macro": "cast firethorns",
-            "icon": "barbed-coil",
-            "color": "#f00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Physical attackers take damage. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -496,22 +496,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Magic Shield",
-            "macro": "cast magicshield",
-            "icon": "energy-shield",
-            "color": "#a0a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "MassTeleport",
             "macro": "cast massteleport",
             "icon": "vortex",
             "color": "#a0a",
             "mode": "clickToTarget",
             "tooltipDesc": "Teleport those on your tile to a previously-memorized location. Cost: 100% MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Magic Shield",
+            "macro": "cast magicshield",
+            "icon": "energy-shield",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -674,6 +674,16 @@
             "color": "#f00",
             "mode": "autoActivate",
             "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowClones",
+            "macro": "cast shadowclones",
+            "icon": "dark-squad",
+            "color": "#111",
+            "mode": "autoActivate",
+            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 300 HP",
             "isSystem": true,
             "requiresLearn": true
         },
