@@ -32,6 +32,8 @@ const ENVIRONMENTAL_OBJECT_GID_HASH = {
   Trap: { gid: 334, image: 'Items' }
 };
 
+const HIDDEN_SPRITE_ALPHA = 0.7;
+
 export class Game {
 
   private playerSprite: any;
@@ -353,6 +355,8 @@ export class Game {
     if(player.username !== this.player.username) {
       sprite.visible = player.dir !== 'C' && this.player.canSeeThroughStealthOf(player);
     }
+
+    sprite.alpha = (<any>player).totalStats.stealth ? HIDDEN_SPRITE_ALPHA : 1;
   }
 
   private toggleTruesightForWalls(set: boolean) {
@@ -484,6 +488,8 @@ export class Game {
       const sprite = this.g.add.sprite(npc.x * 64, npc.y * 64, 'Creatures', npc.sprite);
       sprite.uuid = npc.uuid;
       sprite.visible = this.player.canSeeThroughStealthOf(npc);
+      sprite.alpha = (<any>npc).totalStats.stealth ? HIDDEN_SPRITE_ALPHA : 1;
+
       this.visibleNPCUUIDHash[npc.uuid] = sprite;
       this.visibleNPCs.add(sprite);
     });
