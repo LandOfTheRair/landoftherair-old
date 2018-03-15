@@ -184,8 +184,8 @@ export class Character {
 
   // we don't want to initialize this because of side effects from default values
   @nonenumerable
-  protected additionalStats: Stats = {};
-  protected totalStats: Stats = new Stats();
+  protected additionalStats: any = {};
+  protected totalStats: any = new Stats();
 
   protected skills: Skills = new Skills();
 

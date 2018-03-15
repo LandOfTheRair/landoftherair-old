@@ -51,7 +51,7 @@ export class NPCLoader {
     npc.vendorItems = npc.vendorItems || [];
 
     const loadedItems = await Promise.all(items.map(async ({ name, valueMult }) => {
-      const item = await this.loadItem(name);
+      const item = await NPCLoader.loadItem(name);
 
       item.value = Math.floor((valueMult || 1) * item.value);
 

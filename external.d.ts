@@ -53,3 +53,30 @@ declare module 'mongodb' {
 declare module 'roman-numerals' {
   export function toRoman(num: number): string;
 }
+
+declare module 'pathfinding' {
+  export class Grid {
+    constructor(width: number, height: number);
+    setWalkableAt(x: number, y: number, canWalk: boolean);
+  }
+
+  export class AStarFinder {
+    constructor(opts: any);
+    findPath(x: number, y: number, destX: number, destY: number, grid: Grid): any[];
+  }
+}
+
+declare module 'fantastical' {
+  export const species: { [key: string]: Function };
+}
+
+declare module 'node-redis-pubsub' {
+  class NRP {
+    constructor(opts: any);
+    on(event: string, func: Function);
+    emit(event: string, opts: any);
+    quit();
+  }
+
+  export = NRP;
+}
