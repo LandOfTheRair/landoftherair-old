@@ -1033,9 +1033,9 @@ export class Character {
       || (this.hasHeldItem(item2, 'right') && this.hasHeldItem(item1, 'left'));
   }
 
-  useItem(source: 'leftHand' | 'rightHand' | 'potionHand') {
-    const item = this[source];
-    if(!item || !item.use(this)) return;
+  useItem(source: 'leftHand' | 'rightHand' | 'potionHand', fromApply = false) {
+    const item: Item = this[source];
+    if(!item || !item.use(this, fromApply)) return;
 
     let remove = false;
 

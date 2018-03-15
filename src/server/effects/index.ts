@@ -33,6 +33,7 @@ export * from './damagers/MagicBolt';
 export * from './dots/Disease';
 export * from './dots/Poison';
 
+export * from './augments/Applied';
 export * from './augments/ImbueEnergy';
 
 export * from './buffs/BarFire';
@@ -79,6 +80,7 @@ export * from './antibuffs/Stunned';
 export * from './recents/RecentlyStunned';
 
 export * from './antibuffs/Blinded';
+export * from './antibuffs/BlurredVision';
 export * from './recents/RecentlyBlinded';
 
 export * from './recents/RecentlyHasted';

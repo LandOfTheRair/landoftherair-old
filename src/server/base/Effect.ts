@@ -29,6 +29,8 @@ export class Effect {
   protected tier: string;
   protected potency = 0;
 
+  protected hasSkillRef: boolean;
+
   public get setPotency(): number {
     return this.potency;
   }
@@ -112,8 +114,13 @@ export class SpellEffect extends Effect {
 
   setPotencyAndGainSkill(caster: Character, skillRef?: Skill) {
 
+    this.hasSkillRef = !!skillRef;
+
     // called from something like a trap
     if(this.casterRef) return;
+
+    // pre-set potency
+    if(this.potency) return;
 
     if(!this.potency && this.skillFlag && skillRef) {
       const flaggedSkill = this.skillFlag(caster);
@@ -139,6 +146,8 @@ export class SpellEffect extends Effect {
   }
 
   getMultiplier(): number {
+    if(!this.hasSkillRef) return 1;
+
     let retMult = 0;
 
     this.skillMults.forEach(([skill, mult]) => {
@@ -149,10 +158,13 @@ export class SpellEffect extends Effect {
   }
 
   getCoreStat(caster: Character): number {
+    if(!this.hasSkillRef) return 1;
+
     let base = 0;
 
     if(caster.baseClass === 'Healer') base = this.getCasterStat(caster, 'wis');
-    else                              base = this.getCasterStat(caster, 'int');
+    if(caster.baseClass === 'Mage')   base = this.getCasterStat(caster, 'int');
+    if(caster.baseClass === 'Thief')  base = this.getCasterStat(caster, 'int');
 
     return Math.max(1, base);
   }

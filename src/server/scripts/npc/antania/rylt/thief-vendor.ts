@@ -12,7 +12,10 @@ export const setup = async (npc: NPC) => {
     'Antanian Poison Thief Trap',
     'Antanian MagicMissile Thief Trap',
     'Antanian Afflict Thief Trap',
-    'Antanian Distraction Thief Trap'
+    'Antanian Distraction Thief Trap',
+    'Weak Disease Potion (5oz)',
+    'Weak Blind Potion (5oz)',
+    'Weak BlurredVision Potion (5oz)'
   ];
 
   NPCLoader.loadVendorItems(npc, vendorItems);

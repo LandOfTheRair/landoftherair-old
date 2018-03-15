@@ -419,7 +419,7 @@
   effect:
     name: Regen
     duration: 10
-    potency: 7
+    potency: 50
   value: 500
 
 - name: Weak Regen Potion (5oz)
@@ -430,8 +430,10 @@
   effect:
     name: Regen
     duration: 10
-    potency: 7
+    potency: 50
   value: 500
+
+# Healer Bottles
 
 - name: Holy Water
   sprite: 31
@@ -448,3 +450,39 @@
       con: 1
     duration: 1800
 
+# Thief Bottles
+- name: Weak Disease Potion (5oz)
+  desc: "a yellow bottle with flowers painted along the sides etched with the word \"DISEASE\""
+  extendedDesc: "a bottle of Disease"
+  sprite: 261
+  ounces: 5
+  effect:
+    name: Disease
+    duration: 30
+    potency: 10
+    canApply: true
+  value: 3000
+
+- name: Weak Blind Potion (5oz)
+  desc: "a yellow bottle with flowers painted along the sides etched with the word \"BLIND\""
+  extendedDesc: "a bottle of Blind"
+  sprite: 261
+  ounces: 5
+  effect:
+    name: Blinded
+    duration: 30
+    potency: 10
+    canApply: true
+  value: 3000
+
+- name: Weak BlurredVision Potion (5oz)
+  desc: "a yellow bottle with flowers painted along the sides etched with the word \"BLUR\""
+  extendedDesc: "a bottle of Blurred Vision"
+  sprite: 261
+  ounces: 5
+  effect:
+    name: BlurredVision
+    duration: 30
+    potency: 30
+    canApply: true
+  value: 3000

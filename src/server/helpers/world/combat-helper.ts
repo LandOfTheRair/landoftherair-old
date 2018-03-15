@@ -879,7 +879,14 @@ export class CombatHelper {
       }));
     }
 
+    if(isNaN(damage)) damage = 0;
+
     defender.hp.sub(damage);
+
+    if(isNaN(defender.hp.total)) {
+      defender.hp.set(1);
+    }
+
     if(defender.$$ai) defender.$$ai.damageTaken.dispatch(defender, { damage, attacker });
 
     defender.addAgro(attacker, damage);

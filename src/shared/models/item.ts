@@ -107,6 +107,15 @@ export class Encrust {
   value: number;
 }
 
+export class ItemEffect {
+  name: string;
+  tier: string;
+  potency: number;
+  uses?: number;
+  autocast?: boolean;
+  canApply?: boolean;
+}
+
 export enum Quality {
   POOR = 1,
   BELOW_AVERAGE = 2,
@@ -178,7 +187,7 @@ export class Item {
   @nonenumerable
   $$playersHeardDeath?: string[];
 
-  effect: any;
+  effect: ItemEffect;
 
   succorInfo: { map: string, x: number, y: number, z: number };
   destroyOnDrop: boolean;
@@ -344,12 +353,14 @@ export class Item {
     return this.effect.uses === 0;
   }
 
-  use(char: Character): boolean {
+  use(char: Character, fromApply = false): boolean {
+    if(fromApply) return true;
     if(!this.canUse(char)) return false;
     if(this.effect && (isNumber(this.ounces) ? this.ounces > 0 : true)) {
       // swallow effects that don't exist
       if(!Effects[this.effect.name]) return true;
-      char.applyEffect(new Effects[this.effect.name](this.effect));
+      const eff = new Effects[this.effect.name](this.effect);
+      eff.cast(char, char);
     }
 
     if(this.itemClass === 'Box') {

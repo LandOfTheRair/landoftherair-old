@@ -21,16 +21,22 @@ export class Vision extends SpellEffect {
 
   effectStart(char: Character) {
     const blinded = char.hasEffect('Blinded');
-
-    if(!blinded) return;
-
-    if(this.potency < blinded.setPotency) {
-      this.effectMessage(char, 'Your blindess was not able to be cured!');
-      return;
-    }
+    const blurred = char.hasEffect('BlurredVision');
 
     if(blinded) {
-      char.unapplyEffect(blinded);
+      if(this.potency < blinded.setPotency) {
+        this.effectMessage(char, 'Your blindess was not able to be cured!');
+      } else {
+        char.unapplyEffect(blinded);
+      }
+    }
+
+    if(blurred) {
+      if(this.potency < blurred.setPotency) {
+        this.effectMessage(char, 'Your blurred vision was not able to be cured!');
+      } else {
+        char.unapplyEffect(blurred);
+      }
     }
 
     this.effectMessage(char, 'Your eyes can see again.');
