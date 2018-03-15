@@ -55,7 +55,7 @@ class SummonedPet extends Effect {
   }
 }
 
-export class ActivePet extends Effect {
+class ActivePet extends Effect {
 
   iconData = {
     name: 'eagle-emblem',
