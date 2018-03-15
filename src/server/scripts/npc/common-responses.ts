@@ -137,7 +137,7 @@ export const SmithResponses = (npc: NPC) => {
       let totalCosts = 0;
 
       AllNormalGearSlots.forEach(slot => {
-        const item = get(player, slot);
+        const item: Item = get(player, slot);
         if(!item || item.condition > maxCondition) return;
 
         const cost = Math.floor((maxCondition - item.condition) / 1000 * cpt);

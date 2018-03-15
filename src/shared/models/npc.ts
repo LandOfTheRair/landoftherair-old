@@ -95,13 +95,6 @@ export class NPC extends Character {
     });
   }
 
-  setDirRelativeTo(char: Character) {
-    const diffX = char.x - this.x;
-    const diffY = char.y - this.y;
-
-    this.setDirBasedOnXYDiff(diffX, diffY);
-  }
-
   setPath(path: string) {
     if(!path) return;
     this.path = flatten(path.split(' ').map(str => {

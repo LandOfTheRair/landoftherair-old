@@ -128,9 +128,7 @@ export class CombatHelper {
     };
 
     if(breakTypes[item.itemClass]) {
-      defender.sendClientMessageToRadius({
-        message: breakTypes[item.itemClass], subClass: 'combat' }, 5
-      );
+      defender.sendClientMessageToRadius({ message: breakTypes[item.itemClass], subClass: 'combat' }, 5);
 
     } else {
       defender.$$room.addItemToGround(defender, item);
@@ -148,6 +146,8 @@ export class CombatHelper {
       opts.throwHand = 'left';
       this.doPhysicalAttack(attacker, defender, opts);
     }
+
+    attacker.setDirRelativeTo(defender);
   }
 
   private static calcDurabilityDamageDoneBasedOnDefender(item: Item, attacker: Character, defender: Character, baseDamage: number): number {
@@ -841,7 +841,7 @@ export class CombatHelper {
     const otherClass = isHeal ? 'heal' : 'hit';
     const damageType = damageClass === 'physical' ? 'melee' : 'magic';
 
-    if(!isRiposte && attackerDamageMessage && (<any>attacker).username) {
+    if(!isRiposte && attackerDamageMessage) {
 
       const secondaryClass = attacker !== defender ? 'self' : 'other';
 
@@ -859,7 +859,7 @@ export class CombatHelper {
       });
     }
 
-    if(!isRiposte && defenderDamageMessage && (<any>defender).username && attacker !== defender) {
+    if(!isRiposte && defenderDamageMessage && attacker !== defender) {
       defender.sendClientMessage({
         message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat other ${otherClass} ${damageType}`,

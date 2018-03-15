@@ -726,6 +726,13 @@ export class Character {
     this.dir = <Direction>this.getDirBasedOnDiff(x, y).substring(0, 1);
   }
 
+  setDirRelativeTo(char: Character) {
+    const diffX = char.x - this.x;
+    const diffY = char.y - this.y;
+
+    this.setDirBasedOnXYDiff(diffX, diffY);
+  }
+
   canSee(xOffset, yOffset) {
     if(!this.fov) return false;
     if(!this.fov[xOffset]) return false;
