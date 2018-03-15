@@ -92,18 +92,16 @@ export * from './misc/Succor';
 export * from './misc/Transmute';
 export * from './misc/Push';
 export * from './misc/Revealed';
+export * from './misc/Distraction';
+export * from './misc/Distraction';
 export * from './misc/Wellspring';
 
 export * from './stances/ParryStance';
 export * from './stances/RageStance';
 export * from './stances/TauntStance';
 
-export * from './special/ActivePet';
-export * from './special/SummonedPet';
 export * from './channels/ChannelFindFamiliar';
 
-export * from './special/ActiveClones';
-export * from './special/SummonedClone';
 export * from './channels/ChannelShadowClones';
 
 export * from './arts/Multistrike';

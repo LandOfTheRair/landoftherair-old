@@ -1,11 +1,51 @@
 
-import { ChanneledSpellEffect } from '../../base/Effect';
+import { some } from 'lodash';
+
+import { ChanneledSpellEffect, Effect } from '../../base/Effect';
 import { Character, StatName } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { NPC } from '../../../shared/models/npc';
-import { ActivePet } from '../special/ActivePet';
-import { SummonedClone } from '../special/SummonedClone';
 import { Item } from '../../../shared/models/item';
+
+class SummonedClone extends Effect {
+
+  iconData = {
+    name: 'dark-squad',
+    color: '#000',
+    tooltipDesc: 'Clone. Summoned by Player.'
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.iconData.tooltipDesc = `Clone. Summoned by ${caster.name}.`;
+    this.flagPermanent(target.uuid);
+    target.applyEffect(this);
+  }
+}
+
+class ActiveClones extends Effect {
+
+  iconData = {
+    name: 'dark-squad',
+    bgColor: '#000',
+    color: '#fff',
+    tooltipDesc: 'You have summoned backup.'
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    caster.applyEffect(this);
+  }
+
+  effectTick(char: Character) {
+    if(char.$$pets && some(char.$$pets, pet => !pet.isDead())) return;
+
+    this.effectEnd(char);
+    char.unapplyEffect(this);
+  }
+
+  effectEnd(char: Character) {
+    char.killAllPets();
+  }
+}
 
 export class ChannelShadowClones extends ChanneledSpellEffect {
 
@@ -18,7 +58,7 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
 
   maxSkillForSkillGain = 17;
 
-  cast(caster: Character, target: Character, skillRef?: Skill, animalStr?: string) {
+  cast(caster: Character, target: Character, skillRef?: Skill) {
     super.cast(caster, target, skillRef);
 
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -103,7 +143,7 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
 
     char.$$room.createSpawner(defaultSpawner, char);
 
-    const activePet = new ActivePet({ potency: this.potency });
+    const activePet = new ActiveClones({ potency: this.potency });
     activePet.duration = this.potency * 50;
     activePet.cast(char, char);
   }

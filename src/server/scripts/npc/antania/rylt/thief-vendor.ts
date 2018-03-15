@@ -11,7 +11,8 @@ export const setup = async (npc: NPC) => {
     'Antanian IceMist Thief Trap',
     'Antanian Poison Thief Trap',
     'Antanian MagicMissile Thief Trap',
-    'Antanian Afflict Thief Trap'
+    'Antanian Afflict Thief Trap',
+    'Antanian Distraction Thief Trap'
   ];
 
   NPCLoader.loadVendorItems(npc, vendorItems);

@@ -47,3 +47,11 @@
     levelRequirement: 3
     skillRequirement: 3
   value: 1000
+
+- name: Antanian Distraction Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Distraction"
+  effect:
+    name: Distraction
+    potency: 10
+  value: 1500

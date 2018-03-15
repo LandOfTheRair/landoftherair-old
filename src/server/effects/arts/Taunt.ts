@@ -12,7 +12,7 @@ export class Taunt extends WeaponEffect {
     caster.sendClientMessage(`You taunt ${target.name}!`);
     target.sendClientMessage(`${caster.name} taunted you!`);
 
-    this.potency = caster.calcSkillLevel(caster.rightHand.type);
+    this.potency = caster.rightHand ? caster.calcSkillLevel(caster.rightHand.type) : 1;
     target.addAgro(caster, 25 * this.potency);
   }
 }
