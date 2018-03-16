@@ -37,7 +37,7 @@ import { MoveHelper } from '../helpers/character/move-helper';
 import { TeleportHelper } from '../helpers/world/teleport-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
-| 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon';
+| 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon' | 'block-offhand';
 
 const TICK_TIMER = 500;
 

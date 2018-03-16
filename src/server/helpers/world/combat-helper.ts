@@ -272,6 +272,8 @@ export class CombatHelper {
                          ? defender.leftHand
                          : null;
 
+    const defenderOffhand = defender.leftHand && defender.leftHand.offhand ? defender.leftHand : null;
+
     let offhandDivisor = 1;
     if(isOffhand) {
       offhandDivisor = 3 - attacker.getTraitLevelAndUsageModifier('OffhandFinesse');
@@ -301,7 +303,6 @@ export class CombatHelper {
       damageRolls: Math.max(1, damageRolls)
     };
 
-    const defenderWeaponAC = defender.getTotalStat('weaponArmorClass');
     const defenderACBoost = defenderArmor.conditionACModifier() + (defenderShield ? defenderShield.conditionACModifier() : 0);
 
     const defenderScope = {
@@ -311,8 +312,12 @@ export class CombatHelper {
       dex: defender.getTotalStat('dex'),
       dex4: Math.floor(defender.getTotalStat('dex') / 4),
       armorClass: defender.getTotalStat('armorClass') + defenderACBoost,
-      shieldAC: defenderShield ? defenderShield.stats.armorClass : 0,
-      shieldDefense: defenderShield ? defenderShield.stats.defense || 0 : 0,
+      weaponAC: get(defenderBlocker, 'stats.weaponArmorClass', 0),
+      shieldAC: get(defenderShield, 'stats.armorClass', 0),
+      shieldDefense: get(defenderShield, 'stats.defense', 0),
+      offhandAC: get(defenderOffhand, 'stats.weaponArmorClass', 0),
+      offhandDefense: get(defenderOffhand, 'stats.defense', 0),
+      offhandSkill: defenderOffhand ? Math.floor(defender.calcSkillLevel(defenderOffhand.type) + 1) / 4 : 0,
       level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor),
       realLevel: defender.level,
       mitigation: defender.getTotalStat('mitigation')
@@ -418,7 +423,7 @@ export class CombatHelper {
     }
 
     // try to block with weapon
-    const attackerWeaponShieldBlockRightSide = Math.floor(attackerScope.damageStat4 + attackerScope.dex + attackerScope.skill) - defenderWeaponAC;
+    const attackerWeaponShieldBlockRightSide = Math.floor(attackerScope.damageStat4 + attackerScope.dex + attackerScope.skill) - defenderScope.weaponAC;
     const defenderWeaponBlockLeftSide = 1;
     const defenderWeaponBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.skill);
 
@@ -508,6 +513,53 @@ export class CombatHelper {
 
         const lostCondition = 1 - (defender.getTraitLevelAndUsageModifier('CarefulTouch'));
         defenderShield.loseCondition(lostCondition, () => defender.recalculateStats());
+        if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
+        return { block: true, blockedBy: `a ${itemTypeToLower}` };
+      }
+    }
+
+    // try to block with offhand weapon
+    if(defenderOffhand && defender.leftHand.isOwnedBy(defender) && defenderOffhand.hasCondition()) {
+      const defenderOffhandBlockLeftSide = Math.floor(1 + defenderScope.offhandDefense);
+      const defenderOffhandBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.offhandSkill);
+
+      const attackerOffhandBlockRoll = Math.max(1, +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerWeaponShieldBlockRightSide}`) - defenderScope.offhandAC);
+      const defenderOffhandBlockRoll = -+dice.roll(`${defenderOffhandBlockLeftSide}d${defenderOffhandBlockRightSide}`);
+
+      const offhandBlockRoll = random(attackerOffhandBlockRoll, defenderOffhandBlockRoll);
+      if(offhandBlockRoll < 0) {
+        const itemTypeToLower = defenderOffhand.itemClass.toLowerCase();
+
+        if(!isRiposte) {
+          attacker.$$room.combatEffect(attacker, 'block-offhand', defender.uuid);
+          attacker.sendClientMessage({
+            message: `You were blocked by a ${itemTypeToLower}!`,
+            subClass: 'combat self block offhand',
+            target: defender.uuid,
+            extraData: {
+              type: 'block-offhand',
+              uuid: attacker.uuid,
+              weapon: attackerWeapon.itemClass,
+              damage: 0,
+              monsterName: defender.name
+            }
+          });
+
+          defender.sendClientMessage({
+            message: `${attackerName} was blocked by your ${itemTypeToLower}!`,
+            subClass: 'combat other block offhand',
+            extraData: {
+              type: 'block-offhand',
+              uuid: attacker.uuid,
+              weapon: attackerWeapon.itemClass,
+              damage: 0,
+              monsterName: attacker.name
+            }
+          });
+        }
+
+        const lostCondition = 1 - (defender.getTraitLevelAndUsageModifier('CarefulTouch'));
+        defenderOffhand.loseCondition(lostCondition, () => defender.recalculateStats());
         if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
         return { block: true, blockedBy: `a ${itemTypeToLower}` };
       }

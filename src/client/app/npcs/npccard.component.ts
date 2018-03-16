@@ -258,7 +258,7 @@ import { ColyseusGameService } from '../colyseus.game.service';
     }
   }
 
-  .animate.block-armor, .animate.block-weapon, .animate.block-shield {
+  .animate.block-armor, .animate.block-weapon, .animate.block-shield, .animate.block-offhand {
     animation: block-hard 500ms ease-out alternate;
   }
   
