@@ -360,7 +360,12 @@ export class Item {
       // swallow effects that don't exist
       if(!Effects[this.effect.name]) return true;
       const eff = new Effects[this.effect.name](this.effect);
-      eff.cast(char, char);
+
+      if(eff.cast) {
+        eff.cast(char, char);
+      } else {
+        char.applyEffect(eff);
+      }
     }
 
     if(this.itemClass === 'Box') {
