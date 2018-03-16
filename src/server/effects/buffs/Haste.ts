@@ -31,7 +31,7 @@ export class Haste extends SpellEffect {
     this.aoeAgro(caster, 100);
 
     const recentlyHasted = target.hasEffect('RecentlyHasted');
-    if(recentlyHasted) {
+    if(recentlyHasted && target.isPlayer()) {
       target.unapplyEffect(recentlyHasted, true);
       target.sendClientMessage('You feel a wrenching sensation.');
       const lostStat = sample(['str', 'dex', 'agi', 'con']);

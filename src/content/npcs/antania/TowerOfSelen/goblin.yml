@@ -106,7 +106,6 @@
     max: 6500
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Tower Trash Tunic
         chance: 20
@@ -157,6 +156,7 @@
     - SetTrap
     - Steal
     - Darkness
+    - DarkVision
 
   sack:
     - name: Antanian FireMist Thief Trap

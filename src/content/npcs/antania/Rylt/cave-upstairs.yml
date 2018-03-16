@@ -46,7 +46,6 @@
   gear:
     Armor: Antanian Tunic
     Neck: Crazed Saraxa Amulet
-    Ear: Enemy DarkVision Earring
 
     Robe1: FireIce Prot Robe 500
     Robe2: Crazed Saraxa Robe
@@ -56,6 +55,12 @@
     - Darkness
     - EnergyBolt
     - FireMist
+    - DarkVision
+    - BarFire
+    - BarFrost
+    - Absorption
+    - TrueSight
+    - MagicShield
 
   copyDrops:
     - drop: 'rightHand'
@@ -111,7 +116,6 @@
 
   gear:
     Hands: Rylt Rockgolem Gloves
-    Ear: Enemy DarkVision Earring
     Armor:
       - none
       - Antanian Tunic
@@ -153,4 +157,3 @@
 
   gear:
     Armor: Antanian Tunic
-    Ear: Enemy DarkVision Earring

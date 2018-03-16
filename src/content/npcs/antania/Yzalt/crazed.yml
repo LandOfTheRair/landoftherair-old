@@ -34,6 +34,7 @@
   usableSkills:
     - MagicMissile
     - EnergyBlast
+    - DarkVision
 
   giveXp:
     min: 2350
@@ -56,7 +57,6 @@
       chance: 1
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Antanian Tunic
         chance: 1
@@ -140,7 +140,6 @@
       chance: 1
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Antanian Tunic
         chance: 1
@@ -232,7 +231,6 @@
       chance: 1
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor: Antanian Breastplate
     Robe1:
       - result: none
@@ -323,9 +321,12 @@
     - Afflict
     - Poison
     - Disease
+    - Antidote
+    - Vision
+    - BarNecro
+    - Cure
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor: Antanian Breastplate
     Robe1: FireIce Prot Robe 100
     Robe2: Antanian Cloak
@@ -426,7 +427,6 @@
       chance: 1
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Yzalt Fungus Ringmail Tunic
         chance: 1
@@ -481,6 +481,9 @@
     - EnergyBlast
     - IceMist
     - FireMist
+    - BarFire
+    - BarFrost
+    - DarkVision
 
   giveXp:
     min: 3950
@@ -497,7 +500,6 @@
       chance: 1
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Yzalt Fungus Ringmail Tunic
         chance: 1
@@ -607,6 +609,8 @@
   usableSkills:
     - SetTrap
     - Steal
+    - DarkVision
+    - EagleEye
 
   skillOnKill: 15
 
@@ -642,7 +646,6 @@
       chance: 1
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Yzalt Fungus Ringmail Tunic
         chance: 1
@@ -790,7 +793,6 @@
       chance: 1
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Yzalt Fungus Ringmail Tunic
         chance: 1
@@ -919,9 +921,12 @@
     - Afflict
     - Poison
     - Disease
+    - Antidote
+    - Vision
+    - BarNecro
+    - Cure
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Yzalt Fungus Ringmail Tunic
         chance: 1
@@ -1044,6 +1049,10 @@
     - Disease
     - Charge
     - Blind
+    - Antidote
+    - Vision
+    - BarNecro
+    - Cure
 
   gear:
     Armor: Yzalt Fungus Ringmail Tunic

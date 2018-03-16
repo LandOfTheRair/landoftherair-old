@@ -90,7 +90,6 @@
 
   gear:
     Armor: Yzalt RatGuard Fur
-    Ear: Enemy DarkVision Earring
     Hands: Basic Claws
 
     Robe1:
@@ -117,5 +116,6 @@
     - PoisonBiteMedium
     - DiseaseBiteWeak
     - Darkness
+    - DarkVision
 
   spawnMessage: "the sound of water being splashed around in"
