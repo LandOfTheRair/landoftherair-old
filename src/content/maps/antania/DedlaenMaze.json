@@ -22146,135 +22146,25 @@
                  "width":64,
                  "x":8640,
                  "y":7104
-                }, 
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"Spawners",
+         "objects":[
                 {
                  "gid":2363,
                  "height":64,
-                 "id":5301,
+                 "id":5315,
                  "name":"Solid Undead Spawner",
                  "properties":
                     {
-                     "script":"dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6784,
-                 "y":6848
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5302,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4928,
-                 "y":7424
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5303,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4544,
-                 "y":7360
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5304,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3072,
-                 "y":8768
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5305,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6464,
-                 "y":8704
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5306,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4800,
-                 "y":9152
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5307,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"dedlaenmaze\/solid-undead"
+                     "script":"antania\/dedlaenmaze\/solid-undead"
                     },
                  "propertytypes":
                     {
@@ -22290,11 +22180,11 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":5308,
+                 "id":5316,
                  "name":"Solid Undead Spawner",
                  "properties":
                     {
-                     "script":"dedlaenmaze\/solid-undead"
+                     "script":"antania\/dedlaenmaze\/solid-undead"
                     },
                  "propertytypes":
                     {
@@ -22310,11 +22200,51 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":5309,
+                 "id":5317,
                  "name":"Solid Undead Spawner",
                  "properties":
                     {
-                     "script":"dedlaenmaze\/solid-undead"
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4928,
+                 "y":7424
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5318,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3072,
+                 "y":8768
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5319,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
                     },
                  "propertytypes":
                     {
@@ -22330,31 +22260,11 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":5310,
+                 "id":5320,
                  "name":"Solid Undead Spawner",
                  "properties":
                     {
-                     "script":"dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4608,
-                 "y":11200
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5311,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"dedlaenmaze\/solid-undead"
+                     "script":"antania\/dedlaenmaze\/solid-undead"
                     },
                  "propertytypes":
                     {
@@ -22370,11 +22280,71 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":5313,
+                 "id":5321,
                  "name":"Solid Undead Spawner",
                  "properties":
                     {
-                     "script":"dedlaenmaze\/solid-undead"
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6784,
+                 "y":6848
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5322,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":896,
+                 "y":11008
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5323,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4544,
+                 "y":7360
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5324,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
                     },
                  "propertytypes":
                     {
@@ -22390,11 +22360,11 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":5314,
+                 "id":5325,
                  "name":"Solid Undead Spawner",
                  "properties":
                     {
-                     "script":"dedlaenmaze\/solid-undead"
+                     "script":"antania\/dedlaenmaze\/solid-undead"
                     },
                  "propertytypes":
                     {
@@ -22404,19 +22374,49 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":896,
-                 "y":11008
+                 "x":6464,
+                 "y":8704
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5326,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4800,
+                 "y":9152
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5327,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4608,
+                 "y":11200
                 }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "name":"Spawners",
-         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -22453,7 +22453,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5315,
+ "nextobjectid":5328,
  "orientation":"orthogonal",
  "properties":
     {
