@@ -14,8 +14,14 @@ export class Absorption extends Skill {
     tooltipDesc: 'Absorb all types of magic. Cost: 100 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['absorption', 'cast absorption'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('Absorption');
+  }
 
   mpCost() { return 100; }
   range(attacker: Character) { return 5; }

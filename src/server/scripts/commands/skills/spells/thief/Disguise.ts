@@ -16,7 +16,13 @@ export class Disguise extends Skill {
     tooltipDesc: 'Blend in with enemies. Cost: 100 HP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['disguise', 'cast disguise'];
+
+  canUse(user: Character, target: Character) {
+    return false;
+  }
 
   mpCost() { return 100; }
 

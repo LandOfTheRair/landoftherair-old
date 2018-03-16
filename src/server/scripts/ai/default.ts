@@ -4,6 +4,7 @@ import { CommandExecutor } from '../../helpers/command-executor';
 import { random, maxBy, sample, sampleSize, clamp, includes, shuffle } from 'lodash';
 import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
 import { Character } from '../../../shared/models/character';
+import { Skill } from '../../base/Skill';
 
 const checkGroundForItems = (npc: NPC) => {
   if(npc.rightHand && npc.leftHand) return;
@@ -40,6 +41,11 @@ const checkGroundForItems = (npc: NPC) => {
 
 };
 
+const findValidAllyInView = (npc: NPC, skillRef: Skill, skill: string) => {
+  const allies = npc.$$room.state.getAllAlliesInRange(npc, skillRef.range(npc));
+  return sample(allies.filter(ally => CommandExecutor.checkIfCanUseSkill(skill, npc, ally)));
+};
+
 export const tick = (npc: NPC, canMove: boolean) => {
 
   if(npc.isDead()) return;
@@ -53,6 +59,8 @@ export const tick = (npc: NPC, canMove: boolean) => {
   let highestAgro: Character = maxBy(targetsInRange, (char: Character) => npc.agro[char.uuid]);
   if(!highestAgro) highestAgro = sample(targetsInRange);
 
+  let currentTarget = highestAgro;
+
   // do movement
   const moveRate = npc.getTotalStat('move');
   const numSteps = random(0, Math.min(moveRate, npc.path ? npc.path.length : moveRate));
@@ -61,37 +69,51 @@ export const tick = (npc: NPC, canMove: boolean) => {
     checkGroundForItems(npc);
   }
 
+  const attemptSkills = shuffle(sampleSize(npc.usableSkills, 3));
+
+  let chosenSkill = null;
+  let chosenSkillFriendly = false;
+
+  let isThrowing = false;
+
+  attemptSkills.forEach((skill: string) => {
+    if(chosenSkill) return;
+
+    if(highestAgro && npc.getAttackDamage(highestAgro, skill) === 0 && npc.getZeroTimes(highestAgro, skill) >= 5) {
+      skill = includes(npc.usableSkills, 'Charge') ? 'Charge' : 'Attack';
+    }
+
+    if(highestAgro && skill === 'Attack' && npc.rightHand && npc.rightHand.returnsOnThrow) {
+      isThrowing = true;
+      skill = 'Throw';
+    }
+
+    // if it's a buff, it works slightly differently
+    const skillRef = CommandExecutor.getSkillRef(skill);
+    if(skillRef && skillRef.targetsFriendly) {
+      const newTarget = findValidAllyInView(npc, skillRef, skill);
+      if(!newTarget) return;
+
+      chosenSkillFriendly = true;
+      currentTarget = newTarget;
+      chosenSkill = skillRef;
+      return;
+    }
+
+    if(!currentTarget) return;
+    chosenSkill = CommandExecutor.checkIfCanUseSkill(skill, npc, currentTarget);
+  });
+
   // we have a target
   if(highestAgro) {
 
     npc.$$pathDisrupted = true;
 
-    const attemptSkills = shuffle(sampleSize(npc.usableSkills, 3));
-
-    let chosenSkill = null;
-
-    let isThrowing = false;
-
-    attemptSkills.forEach((skill: string) => {
-      if(chosenSkill) return;
-
-      if(npc.getAttackDamage(highestAgro, skill) === 0 && npc.getZeroTimes(highestAgro, skill) >= 5) {
-        skill = includes(npc.usableSkills, 'Charge') ? 'Charge' : 'Attack';
-      }
-
-      if(skill === 'Attack' && npc.rightHand && npc.rightHand.returnsOnThrow) {
-        isThrowing = true;
-        skill = 'Throw';
-      }
-
-      chosenSkill = CommandExecutor.checkIfCanUseSkill(skill, npc, highestAgro);
-    });
-
     // use a skill that can hit the target
     if(chosenSkill) {
       let opts = {};
       if(isThrowing) opts = { throwHand: 'right' };
-      chosenSkill.use(npc, highestAgro, opts);
+      chosenSkill.use(npc, currentTarget, opts);
 
     // either move towards target
     } else if(canMove) {
@@ -164,6 +186,10 @@ export const tick = (npc: NPC, canMove: boolean) => {
     npc.takeSequenceOfSteps(steps);
     diffX = npc.x - oldX;
     diffY = npc.y - oldY;
+  }
+
+  if(!highestAgro && chosenSkill && currentTarget) {
+    chosenSkill.use(npc, currentTarget);
   }
 
 

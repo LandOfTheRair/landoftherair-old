@@ -17,6 +17,10 @@ export class Wellspring extends Skill {
   public name = ['wellspring', 'cast wellspring'];
   public format = '';
 
+  canUse(user: Character, target: Character) {
+    return false;
+  }
+
   mpCost() { return 25; }
 
   execute(user: Character, { effect }) {

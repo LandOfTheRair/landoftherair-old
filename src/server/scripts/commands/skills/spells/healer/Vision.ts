@@ -1,6 +1,6 @@
 
 import { Skill } from '../../../../../base/Skill';
-import { Character } from '../../../../../../shared/models/character';
+import { Character, SkillClassNames } from '../../../../../../shared/models/character';
 import { Vision as CastEffect } from '../../../../../effects/cures/Vision';
 
 export class Vision extends Skill {
@@ -14,11 +14,25 @@ export class Vision extends Skill {
     tooltipDesc: 'Cure blindness on a single target. Cost: 10 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['vision', 'cast vision'];
   public format = 'Target';
 
   mpCost() { return 10; }
   range(attacker: Character) { return 5; }
+
+  canUse(user: Character, target: Character) {
+    if(!super.canUse(user, target)) return false;
+
+    const blinded = target.hasEffect('Blinded');
+    const blurred = target.hasEffect('BlurredVision');
+
+    const skill = user.calcSkillLevel(SkillClassNames.Restoration);
+
+    return skill >= blinded.setPotency
+        || skill >= blurred.setPotency;
+  }
 
   execute(user: Character, { args, effect }) {
 

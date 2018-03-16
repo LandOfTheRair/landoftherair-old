@@ -14,8 +14,14 @@ export class ShadowClones extends Skill {
     tooltipDesc: 'Summon some shadow backup to help you slaughter your foes. Cost: 300 HP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['shadowclones', 'cast shadowclones'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return false;
+  }
 
   mpCost() { return 300; }
 

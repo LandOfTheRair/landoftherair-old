@@ -14,8 +14,14 @@ export class Firethorns extends Skill {
     tooltipDesc: 'Physical attackers take damage. Cost: 100 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['firethorns', 'cast firethorns'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('Firethorns');
+  }
 
   mpCost() { return 100; }
   range(attacker: Character) { return 5; }

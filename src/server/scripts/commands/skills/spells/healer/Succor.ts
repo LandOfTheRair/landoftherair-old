@@ -17,6 +17,10 @@ export class Succor extends Skill {
   public name = ['succor', 'cast succor'];
   public format = '';
 
+  canUse(user: Character, target: Character) {
+    return false;
+  }
+
   mpCost() { return 25; }
 
   execute(user: Character, { effect }) {

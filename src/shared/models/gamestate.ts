@@ -353,18 +353,23 @@ export class GameState {
 
   getAllHostilesInRange(ref: Character, radius): Character[] {
     const targets = this.getInRange(this.allPossibleTargets, ref, radius, this.players.map(p => p.uuid));
-    return filter(targets, (target: NPC) => this.checkTargetForHostility(target, ref));
+    return filter(targets, (target: Character) => this.checkTargetForHostility(target, ref));
   }
 
-  private checkTargetForHostility(me: NPC, target: Character): boolean {
+  getAllAlliesInRange(ref: Character, radius): Character[] {
+    const targets = this.getInRange(this.allPossibleTargets, ref, radius);
+    return filter(targets, (target: Character) => !this.checkTargetForHostility(ref, target));
+  }
+
+  private checkTargetForHostility(me: Character, target: Character): boolean {
     if(target.allegiance === 'NaturalResource' || target.allegiance === 'GM') return false;
     if(me.agro[target.uuid] || target.agro[me.uuid]) return true;
     if(target.hasEffect('Disguise') && me.getTotalStat('wil') < target.getTotalStat('cha')) return false;
-    if(me.hostility === 'Faction' && (
+    if((<NPC>me).hostility === 'Faction' && (
          me.isHostileTo(target.allegiance)
       || target.isHostileTo(me.allegiance))) return true;
     if(me.allegiance === target.allegiance) return false;
-    if(me.hostility === 'Always') return true;
+    if((<NPC>me).hostility === 'Always') return true;
     if(me.alignment === 'Evil' && target.alignment === 'Good') return true;
     return false;
   }

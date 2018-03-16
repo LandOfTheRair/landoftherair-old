@@ -14,8 +14,14 @@ export class BarNecro extends Skill {
     tooltipDesc: 'Shield necrotic damage for a single target. Cost: 40 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['barnecro', 'cast barnecro'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('BarNecro');
+  }
 
   mpCost() { return 40; }
   range(attacker: Character) { return 5; }

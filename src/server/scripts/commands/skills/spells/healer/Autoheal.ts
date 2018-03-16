@@ -14,8 +14,14 @@ export class Autoheal extends Skill {
     tooltipDesc: 'Automatically healing when health gets too low. Cost: 50 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['autoheal', 'cast autoheal'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('Autoheal');
+  }
 
   mpCost() { return 50; }
   range(attacker: Character) { return 5; }

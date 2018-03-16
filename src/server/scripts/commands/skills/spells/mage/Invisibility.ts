@@ -14,8 +14,14 @@ export class Invisibility extends Skill {
     tooltipDesc: 'Become invisible to the average vision. Cost: 100 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['invisibility', 'cast invisibility'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('Invisibility');
+  }
 
   mpCost() { return 100; }
   range(attacker: Character) { return 5; }

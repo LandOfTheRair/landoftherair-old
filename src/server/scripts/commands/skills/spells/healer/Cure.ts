@@ -14,8 +14,14 @@ export class Cure extends Skill {
     tooltipDesc: 'Heal a single target. Cost: 5 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['cure', 'cast cure'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && target.hp.ltePercent(75);
+  }
 
   mpCost() { return 5; }
   range(attacker: Character) { return 5; }

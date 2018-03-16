@@ -19,6 +19,7 @@ interface MacroMetadata {
 export abstract class Skill extends Command {
 
   static macroMetadata: MacroMetadata;
+  static targetsFriendly: boolean;
 
   requiresLearn = true;
 

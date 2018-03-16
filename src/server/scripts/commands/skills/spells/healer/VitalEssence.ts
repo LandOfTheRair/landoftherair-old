@@ -14,8 +14,14 @@ export class VitalEssence extends Skill {
     tooltipDesc: 'Boost maximum vitality for a single target. Cost: 200 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['vitalessence', 'cast vitalessence'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('VitalEssence');
+  }
 
   mpCost() { return 200; }
   range(attacker: Character) { return 5; }

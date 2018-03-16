@@ -16,8 +16,14 @@ export class BarFire extends Skill {
     tooltipDesc: 'Shield fire damage for a single target. Cost: 20 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['barfire', 'cast barfire'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('BarFire');
+  }
 
   mpCost() { return 20; }
   range(attacker: Character) { return 5; }

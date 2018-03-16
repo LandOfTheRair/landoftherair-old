@@ -18,6 +18,8 @@ export class RageStance extends Skill {
     requiresBaseClass: 'Warrior'
   };
 
+  public targetsFriendly = true;
+
   public name = 'stance rage';
 
   requiresLearn = false;

@@ -18,6 +18,8 @@ export class ParryStance extends Skill {
     requiresBaseClass: 'Warrior'
   };
 
+  public targetsFriendly = true;
+
   public name = 'stance parry';
 
   requiresLearn = false;

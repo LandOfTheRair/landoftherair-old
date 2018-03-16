@@ -14,8 +14,14 @@ export class BarWater extends Skill {
     tooltipDesc: 'Shield water damage for a single target. Cost: 20 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['barwater', 'cast barwater'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('BarWater');
+  }
 
   mpCost() { return 20; }
   range(attacker: Character) { return 5; }

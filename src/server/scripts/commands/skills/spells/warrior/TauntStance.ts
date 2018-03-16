@@ -18,6 +18,8 @@ export class TauntStance extends Skill {
     requiresBaseClass: 'Warrior'
   };
 
+  public targetsFriendly = true;
+
   public name = 'stance taunt';
 
   requiresLearn = false;

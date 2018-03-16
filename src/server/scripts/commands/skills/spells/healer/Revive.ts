@@ -17,6 +17,10 @@ export class Revive extends Skill {
   public name = ['revive', 'cast revive'];
   public format = '';
 
+  canUse(user: Character, target: Character) {
+    return false;
+  }
+
   mpCost() { return 50; }
 
   execute(user: Character, { effect }) {

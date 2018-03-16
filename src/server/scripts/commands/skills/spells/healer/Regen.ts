@@ -14,6 +14,12 @@ export class Regen extends Skill {
     tooltipDesc: 'Cast a restorative aura on the target. Cost: 30 MP'
   };
 
+  public targetsFriendly = true;
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('Regen');
+  }
+
   public name = ['regen', 'cast regen'];
   public format = 'Target';
 

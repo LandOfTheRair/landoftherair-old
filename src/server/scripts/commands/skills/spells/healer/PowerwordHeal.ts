@@ -16,6 +16,8 @@ export class PowerwordHeal extends Skill {
     tooltipDesc: 'Heal your party. Cost: 25 MP / target'
   };
 
+  public targetsFriendly = true;
+
   public name = ['powerword heal'];
   public format = '';
 

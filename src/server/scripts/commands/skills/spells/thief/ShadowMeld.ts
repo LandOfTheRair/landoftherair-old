@@ -16,7 +16,13 @@ export class ShadowMeld extends Skill {
     tooltipDesc: 'Force a shadow to follow you and meld with it. Cost: 50 HP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['shadowmeld', 'cast shadowmeld'];
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('ShadowMeld');
+  }
 
   mpCost() { return 50; }
 

@@ -16,8 +16,14 @@ export class PowerwordBarFire extends Skill {
     tooltipDesc: 'Shield fire damage for your party. Cost: 30 MP / target'
   };
 
+  public targetsFriendly = true;
+
   public name = ['powerword barfire'];
   public format = '';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !user.hasEffect('BarFire');
+  }
 
   mpCost(caster: Player, targets: Player[]) { return 30 * targets.length; }
   range(attacker: Character) { return 5; }

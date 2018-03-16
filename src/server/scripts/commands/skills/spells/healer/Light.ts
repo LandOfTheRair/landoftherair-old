@@ -2,6 +2,7 @@
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Light as CastEffect } from '../../../../../effects/misc/Light';
+import { CharacterHelper } from '../../../../../helpers/character/character-helper';
 
 export class Light extends Skill {
 
@@ -18,6 +19,10 @@ export class Light extends Skill {
 
   mpCost() { return 25; }
   range(attacker: Character) { return 5; }
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && CharacterHelper.isInDarkness(target);
+  }
 
   execute(user: Character, { args, effect }) {
 

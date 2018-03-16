@@ -14,7 +14,13 @@ export class TrueSight extends Skill {
     tooltipDesc: 'See hidden walls and other hidden features. Cost: 25 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['truesight', 'cast truesight'];
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('TrueSight');
+  }
 
   mpCost() { return 25; }
   range(attacker: Character) { return 5; }

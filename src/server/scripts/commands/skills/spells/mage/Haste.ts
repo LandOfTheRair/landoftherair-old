@@ -14,8 +14,14 @@ export class Haste extends Skill {
     tooltipDesc: 'Act twice as fast. Cost: 200 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['haste', 'cast haste'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('Haste');
+  }
 
   mpCost() { return 200; }
   range(attacker: Character) { return 5; }

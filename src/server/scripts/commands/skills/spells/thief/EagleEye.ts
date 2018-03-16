@@ -16,7 +16,13 @@ export class EagleEye extends Skill {
     tooltipDesc: 'See through the trees and to the depths of the waters. Cost: 50 HP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['eagleeye', 'cast eagleeye'];
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('EagleEye');
+  }
 
   mpCost() { return 50; }
 

@@ -5,6 +5,7 @@ import { Player } from '../../shared/models/player';
 import { isArray, startsWith, includes } from 'lodash';
 import { Skill } from '../base/Skill';
 import { Command } from '../base/Command';
+import { Character } from '../../shared/models/character';
 
 const commandHash = {};
 const skillHash = {};
@@ -39,12 +40,17 @@ Object.keys(Commands).forEach(cmd => {
 export class CommandExecutor {
 
   // NPC ONLY
-  static checkIfCanUseSkill(skillName, user, target) {
-    const skill = skillHash[skillName.toLowerCase()];
+  static checkIfCanUseSkill(skillName, user: Character, target: Character) {
+    const skill = CommandExecutor.getSkillRef(skillName);
     if(!skill) return false;
     return skill.canUse(user, target) ? skill : null;
   }
 
+  static getSkillRef(skillName) {
+    return skillHash[skillName.toLowerCase()];
+  }
+
+  // command queuing for players
   static async queueCommand(player: Player, command: string, args: any) {
 
     if(!player) return;

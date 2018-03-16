@@ -1,6 +1,6 @@
 
 import { Skill } from '../../../../../base/Skill';
-import { Character } from '../../../../../../shared/models/character';
+import { Character, SkillClassNames } from '../../../../../../shared/models/character';
 import { Antidote as CastEffect } from '../../../../../effects/cures/Antidote';
 
 export class Antidote extends Skill {
@@ -14,8 +14,17 @@ export class Antidote extends Skill {
     tooltipDesc: 'Cure poison on a single target. Cost: 10 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['antidote', 'cast antidote'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    if(!super.canUse(user, target)) return false;
+
+    const poison = target.hasEffect('Poison');
+    return user.calcSkillLevel(SkillClassNames.Restoration) >= poison.setPotency;
+  }
 
   mpCost() { return 10; }
   range(attacker: Character) { return 5; }

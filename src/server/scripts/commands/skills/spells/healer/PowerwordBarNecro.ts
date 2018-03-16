@@ -22,6 +22,10 @@ export class PowerwordBarNecro extends Skill {
   mpCost(caster: Player, targets: Player[]) { return 30 * targets.length; }
   range(attacker: Character) { return 5; }
 
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !user.hasEffect('BarNecro');
+  }
+
   execute(user: Player, { effect }) {
 
     if(!user.party) return user.sendClientMessage('You do not have a party!');

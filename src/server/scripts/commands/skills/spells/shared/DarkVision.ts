@@ -2,6 +2,7 @@
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { DarkVision as CastEffect } from '../../../../../effects/buffs/DarkVision';
+import { CharacterHelper } from '../../../../../helpers/character/character-helper';
 
 export class DarkVision extends Skill {
 
@@ -14,10 +15,16 @@ export class DarkVision extends Skill {
     tooltipDesc: 'See in the darkness. Cost: 25 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['darkvision', 'cast darkvision'];
 
   mpCost() { return 25; }
   range(attacker: Character) { return 5; }
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('DarkVision');
+  }
 
   execute(user: Character, { args, effect }) {
 

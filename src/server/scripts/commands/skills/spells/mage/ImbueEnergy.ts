@@ -14,8 +14,14 @@ export class ImbueEnergy extends Skill {
     tooltipDesc: 'Augment physical attacks to do bonus energy damage. Cost: 100 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['imbueenergy', 'cast imbueenergy'];
   public format = 'Target';
+
+  canUse(user: Character, target: Character) {
+    return super.canUse(user, target) && !target.hasEffect('ImbueEnergy');
+  }
 
   mpCost() { return 100; }
   range(attacker: Character) { return 5; }

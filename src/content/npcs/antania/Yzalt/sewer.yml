@@ -32,7 +32,6 @@
 
   gear:
     Armor: Yzalt SewerRat Fur
-    Ear: Enemy DarkVision Earring
     Hands: Basic Claws
 
     Robe1:
@@ -50,6 +49,7 @@
     - PoisonBiteMedium
     - DiseaseBiteWeak
     - Darkness
+    - DarkVision
 
   spawnMessage: "the sound of water being skittered around in"
 
