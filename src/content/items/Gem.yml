@@ -39,7 +39,7 @@
   requirements:
     level: 4
 
-- name: Antanian Diamond
+- name: Risan Diamond
   desc: "a roughly-cut diamond"
   value: 5000
   sprite: 247
@@ -50,7 +50,7 @@
     physicalResist: 1
     magicalResist: 1
 
-- name: Antanian Emerald Chunk
+- name: Risan Emerald Chunk
   desc: "a chunk of raw emerald"
   value: 2500
   sprite: 246
@@ -60,7 +60,7 @@
   requirements:
     level: 7
 
-- name: Antanian Raw Jade
+- name: Risan Raw Jade
   desc: "a chunk of raw jade"
   value: 1500
   sprite: 310
@@ -70,14 +70,14 @@
   requirements:
     level: 7
 
-- name: Antanian Carved Jade
+- name: Risan Carved Jade
   desc: "a chunk of jade finely-carved into the shape of a scarab"
   value: 1800
   sprite: 311
   stats:
     perception: 10
 
-- name: Antanian Polished Ruby
+- name: Risan Polished Ruby
   desc: "a well-polished ruby"
   value: 1200
   sprite: 312
@@ -87,21 +87,21 @@
   requirements:
     level: 7
 
-- name: Antanian White Pearl
+- name: Risan White Pearl
   desc: "a large white pearl"
   value: 3000
   sprite: 313
   stats:
     hpregen: 1
 
-- name: Antanian Black Pearl
+- name: Risan Black Pearl
   desc: "a large black pearl"
   value: 3000
   sprite: 314
   stats:
     mpregen: 1
 
-- name: Antanian Small Black Pearl
+- name: Risan Small Black Pearl
   desc: "a small black pearl"
   value: 3500
   sprite: 315

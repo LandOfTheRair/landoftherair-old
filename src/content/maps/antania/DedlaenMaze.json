@@ -22079,7 +22079,7 @@
                  "gid":3137,
                  "height":64,
                  "id":5277,
-                 "name":"",
+                 "name":"Icariss",
                  "properties":
                     {
                      "script":"antania\/dedlaenmaze\/daily-nw-library"
@@ -22099,7 +22099,7 @@
                  "gid":3137,
                  "height":64,
                  "id":5278,
-                 "name":"",
+                 "name":"Aradeniss",
                  "properties":
                     {
                      "script":"antania\/dedlaenmaze\/daily-ne-library"
@@ -22119,7 +22119,7 @@
                  "gid":3137,
                  "height":64,
                  "id":5283,
-                 "name":"",
+                 "name":"Thesiss",
                  "properties":
                     {
                      "script":"antania\/dedlaenmaze\/daily-sw-library"
@@ -22139,7 +22139,7 @@
                  "gid":2607,
                  "height":64,
                  "id":5287,
-                 "name":"",
+                 "name":"Dedlaes",
                  "properties":
                     {
                      "script":"antania\/dedlaenmaze\/daily-se-smith"

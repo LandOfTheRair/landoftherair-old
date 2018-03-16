@@ -43,3 +43,36 @@
 - result: Antanian Magic Potion
   chance: 1
   maxChance: 3000
+
+# gems
+- result: Risan Emerald Chunk
+  chance: 1
+  maxChance: 750
+
+- result: Risan Diamond
+  chance: 1
+  maxChance: 2500
+
+- result: Risan Raw Jade
+  chance: 1
+  maxChance: 1000
+
+- result: Risan Carved Jade
+  chance: 1
+  maxChance: 1500
+
+- result: Risan Polished Ruby
+  chance: 1
+  maxChance: 750
+
+- result: Risan White Pearl
+  chance: 1
+  maxChance: 2000
+
+- result: Risan Black Pearl
+  chance: 1
+  maxChance: 2000
+
+- result: Risan Small Black Pearl
+  chance: 1
+  maxChance: 450

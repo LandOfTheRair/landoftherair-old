@@ -17,22 +17,6 @@
       chance: 60
     - result: Antanian Big Red Gem
       chance: 30
-    - result: Antanian Diamond
-      chance: 5
-    - result: Antanian Emerald Chunk
-      chance: 15
-    - result: Antanian Raw Jade
-      chance: 30
-    - result: Antanian Carved Jade
-      chance: 45
-    - result: Antanian Polished Ruby
-      chance: 15
-    - result: Antanian White Pearl
-      chance: 10
-    - result: Antanian Black Pearl
-      chance: 10
-    - result: Antanian Small Black Pearl
-      chance: 45
 
 - name: Antanian Daily Gem RNG Box
   desc: "a gift box wrapped with shiny multi-colored wrapping paper, tied with a golden bow"
@@ -51,21 +35,21 @@
       chance: 1
     - result: Antanian Big Red Gem
       chance: 1
-    - result: Antanian Diamond
+    - result: Risan Diamond
       chance: 1
-    - result: Antanian Emerald Chunk
+    - result: Risan Emerald Chunk
       chance: 1
-    - result: Antanian Raw Jade
+    - result: Risan Raw Jade
       chance: 1
-    - result: Antanian Carved Jade
+    - result: Risan Carved Jade
       chance: 1
-    - result: Antanian Polished Ruby
+    - result: Risan Polished Ruby
       chance: 1
-    - result: Antanian White Pearl
+    - result: Risan White Pearl
       chance: 1
-    - result: Antanian Black Pearl
+    - result: Risan Black Pearl
       chance: 1
-    - result: Antanian Small Black Pearl
+    - result: Risan Small Black Pearl
       chance: 1
 
 - name: Antanian Daily General Rune Scroll RNG Box
