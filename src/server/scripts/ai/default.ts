@@ -69,7 +69,7 @@ export const tick = (npc: NPC, canMove: boolean) => {
     checkGroundForItems(npc);
   }
 
-  const attemptSkills = shuffle(sampleSize(npc.usableSkills, Math.min(3, Math.floor(npc.usableSkills.length / 2))));
+  const attemptSkills = shuffle(sampleSize(npc.usableSkills, Math.max(3, Math.floor(npc.usableSkills.length / 2))));
 
   let chosenSkill = null;
   let chosenSkillFriendly = false;
