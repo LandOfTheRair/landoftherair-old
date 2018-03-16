@@ -16,12 +16,12 @@ export class Regen extends Skill {
 
   public targetsFriendly = true;
 
+  public name = ['regen', 'cast regen'];
+  public format = 'Target';
+
   canUse(user: Character, target: Character) {
     return super.canUse(user, target) && !target.hasEffect('Regen');
   }
-
-  public name = ['regen', 'cast regen'];
-  public format = 'Target';
 
   mpCost() { return 30; }
   range(attacker: Character) { return 5; }

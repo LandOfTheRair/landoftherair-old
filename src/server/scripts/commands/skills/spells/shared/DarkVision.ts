@@ -2,7 +2,6 @@
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { DarkVision as CastEffect } from '../../../../../effects/buffs/DarkVision';
-import { CharacterHelper } from '../../../../../helpers/character/character-helper';
 
 export class DarkVision extends Skill {
 
