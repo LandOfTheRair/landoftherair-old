@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.1.10 (16/03/2018)
+
+#### Enhancements
+
+- [#630](https://github.com/LandOfTheRair/landoftherair/issues/630) Make offhand weapons able to block
+- [#621](https://github.com/LandOfTheRair/landoftherair/issues/621) Monsters that can cast buff spells on other monsters
+
+#### Balance Adjustments
+
+- [#633](https://github.com/LandOfTheRair/landoftherair/issues/633) VitalEssence should also boost AC by it's potency
+
+#### Bug Fixes
+
+- [#632](https://github.com/LandOfTheRair/landoftherair/issues/632) TypeError: eff.cast is not a function
+- [#631](https://github.com/LandOfTheRair/landoftherair/issues/631) TypeError: eff.cast is not a function
+- [#629](https://github.com/LandOfTheRair/landoftherair/issues/629) TypeError: eff.cast is not a function
+- [#628](https://github.com/LandOfTheRair/landoftherair/issues/628) Verify that locker closes when stepping off
+
+---
+
 ## v0.1.9 (15/03/2018)
 
 #### Enhancements
