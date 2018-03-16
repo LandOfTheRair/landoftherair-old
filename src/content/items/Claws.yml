@@ -10,6 +10,16 @@
   desc: "a pair of sharp claws"
   value: 0
 
+- name: Maze Mummy Claws
+  tier: 3
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0
+  effect:
+    name: Disease
+    potency: 10
+    chance: 50
+
 - name: Werebear Claws
   tier: 2
   stats:
