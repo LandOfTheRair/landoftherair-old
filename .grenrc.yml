@@ -1,8 +1,9 @@
 prefix: ""
 ignoreIssuesWith:
-  - duplicate
-  - wontfix
-  - invalid
+  - sys:duplicate
+  - sys:wontfix
+  - sys:invalid
+  - sys:internal
   - help wanted
   - question
 
