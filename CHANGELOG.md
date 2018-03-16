@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.11 (16/03/2018)
+*No changelog for this release.*
+
+---
+
 ## v0.1.10 (16/03/2018)
 
 #### Enhancements
@@ -13,10 +18,7 @@
 
 #### Bug Fixes
 
-- [#632](https://github.com/LandOfTheRair/landoftherair/issues/632) TypeError: eff.cast is not a function
-- [#631](https://github.com/LandOfTheRair/landoftherair/issues/631) TypeError: eff.cast is not a function
 - [#629](https://github.com/LandOfTheRair/landoftherair/issues/629) TypeError: eff.cast is not a function
-- [#628](https://github.com/LandOfTheRair/landoftherair/issues/628) Verify that locker closes when stepping off
 
 ---
 
@@ -89,7 +91,6 @@
 - [#599](https://github.com/LandOfTheRair/landoftherair/issues/599) Tester set hp/mpregen command
 - [#598](https://github.com/LandOfTheRair/landoftherair/issues/598) Tester set mp command
 - [#596](https://github.com/LandOfTheRair/landoftherair/issues/596) add skeleton bones to decor
-- [#589](https://github.com/LandOfTheRair/landoftherair/issues/589) add sound effect when taking damage
 
 #### Balance Adjustments
 
@@ -169,11 +170,6 @@
 
 ## v0.1.3 (07/03/2018)
 
-#### Enhancements
-
-- [#554](https://github.com/LandOfTheRair/landoftherair/issues/554) Clean up range() and skillFlag() functions to not be = function
-- [#553](https://github.com/LandOfTheRair/landoftherair/issues/553) Add "level difference" to combat logging
-
 #### Balance Adjustments
 
 - [#558](https://github.com/LandOfTheRair/landoftherair/issues/558) Nerf energy blast
@@ -218,7 +214,6 @@
 
 #### Enhancements
 
-- [#537](https://github.com/LandOfTheRair/landoftherair/issues/537) adjust metalworking so you can't forge an item higher level than you
 - [#536](https://github.com/LandOfTheRair/landoftherair/issues/536) combat log as csv
 - [#533](https://github.com/LandOfTheRair/landoftherair/issues/533) right click from ground -> sack
 - [#532](https://github.com/LandOfTheRair/landoftherair/issues/532) make ranged attacks (bow, throwing) do damage based off of dex instead of str
@@ -247,7 +242,6 @@
 - [#488](https://github.com/LandOfTheRair/landoftherair/issues/488) make trait, stat, skill, trade skill window minimizable
 - [#487](https://github.com/LandOfTheRair/landoftherair/issues/487) add quick open buttons on tagline window for belt, sack, pouch, equipment
 - [#486](https://github.com/LandOfTheRair/landoftherair/issues/486) add resiable lobby sizes, mirroring others
-- [#484](https://github.com/LandOfTheRair/landoftherair/issues/484) window.onbeforeunload - warn people when closing game
 - [#483](https://github.com/LandOfTheRair/landoftherair/issues/483) accounts designated as testers
 - [#482](https://github.com/LandOfTheRair/landoftherair/issues/482) add an option for "show friendly creatures first"
 - [#479](https://github.com/LandOfTheRair/landoftherair/issues/479) gm party join command
@@ -274,12 +268,10 @@
 - [#446](https://github.com/LandOfTheRair/landoftherair/issues/446) View other player gear
 - [#443](https://github.com/LandOfTheRair/landoftherair/issues/443) Make main hand wands boost damage rolls for mage spells by their damage roll boost.
 - [#440](https://github.com/LandOfTheRair/landoftherair/issues/440) test to ensure no commands conflict
-- [#439](https://github.com/LandOfTheRair/landoftherair/issues/439) ~~unstuck
 - [#437](https://github.com/LandOfTheRair/landoftherair/issues/437) Adjust algorithm for item garbage collector
 - [#434](https://github.com/LandOfTheRair/landoftherair/issues/434) training dummy
 - [#431](https://github.com/LandOfTheRair/landoftherair/issues/431) alchemist should tie bottles
 - [#429](https://github.com/LandOfTheRair/landoftherair/issues/429) pet level should match player level
-- [#428](https://github.com/LandOfTheRair/landoftherair/issues/428) clean up unused imports
 - [#424](https://github.com/LandOfTheRair/landoftherair/issues/424) global player viewer
 - [#423](https://github.com/LandOfTheRair/landoftherair/issues/423) discord chat linked to lobby
 - [#413](https://github.com/LandOfTheRair/landoftherair/issues/413) make teleports check for item in either hand
