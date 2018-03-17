@@ -30,8 +30,8 @@ export class Vision extends Skill {
 
     const skill = user.calcSkillLevel(SkillClassNames.Restoration);
 
-    return skill >= blinded.setPotency
-        || skill >= blurred.setPotency;
+    return (blurred && skill >= blinded.setPotency)
+        || (blinded && skill >= blurred.setPotency);
   }
 
   execute(user: Character, { args, effect }) {

@@ -23,7 +23,7 @@ export class Antidote extends Skill {
     if(!super.canUse(user, target)) return false;
 
     const poison = target.hasEffect('Poison');
-    return user.calcSkillLevel(SkillClassNames.Restoration) >= poison.setPotency;
+    return poison && user.calcSkillLevel(SkillClassNames.Restoration) >= poison.setPotency;
   }
 
   mpCost() { return 10; }
