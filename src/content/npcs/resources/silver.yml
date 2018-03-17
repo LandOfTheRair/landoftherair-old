@@ -44,12 +44,6 @@
     - result: Antanian Small Red Gem
       chance: 1
       maxChance: 200
-    - result: Antanian Diamond
-      chance: 1
-      maxChance: 200
-    - result: Antanian Small Black Pearl
-      chance: 1
-      maxChance: 200
 
   spawnMessage: "a spontaneous eruption of silver"
 
@@ -101,12 +95,6 @@
       chance: 1
       maxChance: 200
     - result: Antanian Small Red Gem
-      chance: 1
-      maxChance: 200
-    - result: Antanian Diamond
-      chance: 1
-      maxChance: 200
-    - result: Antanian Small Black Pearl
       chance: 1
       maxChance: 200
 
