@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.12 (16/03/2018)
+
+#### Bug Fixes
+
+- [#635](https://github.com/LandOfTheRair/landoftherair/issues/635) TypeError: Cannot read property 'setPotency' of undefined
+
+---
+
 ## v0.1.11 (16/03/2018)
 *No changelog for this release.*
 
