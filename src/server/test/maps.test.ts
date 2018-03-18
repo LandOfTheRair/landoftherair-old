@@ -5,7 +5,7 @@ import * as recurse from 'recursive-readdir';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { includes, find } from 'lodash';
+import { includes, find, isNumber } from 'lodash';
 
 import { MapLayer } from '../../shared/models/maplayer';
 
@@ -53,8 +53,8 @@ test('All maps have a respawn point', t => {
     if(respawnMap) {
       t.truthy(allMapNames[respawnMap], tagFor(map, 'respawnmap'));
     }
-    t.truthy(respawnX, tagFor(map, 'respawnx'));
-    t.truthy(respawnY, tagFor(map, 'respawny'));
+    t.truthy(isNumber(respawnX), tagFor(map, 'respawnx'));
+    t.truthy(isNumber(respawnY), tagFor(map, 'respawny'));
     t.true(isInBounds(respawnMap || map._name, respawnX, respawnY), tagFor(map, 'respawnbounds'));
   });
 });
