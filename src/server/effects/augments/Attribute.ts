@@ -44,12 +44,14 @@ export class Attribute extends SpellEffect implements AttributeEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
-    if(target.isPlayer()) throw new Error(`Cannot apply attribute ${this.damageType} to a player ${target.name}!`);
-
-    this.flagPermanent(caster.uuid);
+    if(!this.duration) this.flagPermanent(caster.uuid);
     this.flagCasterName(caster.name);
 
-    this.name = `${this.damageType}Attribute`;
+    // descendant attributes (like ether fire) will not trigger this change, and will work
+    if(this.name === 'Attribute') {
+      if(target.isPlayer()) throw new Error(`Cannot apply attribute ${this.damageType} to a player ${target.name}!`);
+      this.name = `${this.damageType}Attribute`;
+    }
 
     // a potency of 1 means nothing
     if(this.potency === 1) return;
