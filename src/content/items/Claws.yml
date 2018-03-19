@@ -18,7 +18,7 @@
   effect:
     name: Disease
     potency: 10
-    chance: 50
+    chance: 10
 
 - name: Werebear Claws
   tier: 2
