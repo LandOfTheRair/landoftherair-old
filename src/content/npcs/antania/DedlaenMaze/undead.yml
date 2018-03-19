@@ -12,6 +12,8 @@
 
   otherStats:
     con: 15
+    accuracy: 5
+    offense: 5
     perception: 245
 
   gold:
