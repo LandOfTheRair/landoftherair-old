@@ -3,7 +3,7 @@ import { Character, SkillClassNames } from '../../shared/models/character';
 import { extend, includes, get } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/world/combat-helper';
-import { MagicCutArmorClasses } from '../../shared/models/item';
+import { Item, MagicCutArmorClasses } from '../../shared/models/item';
 
 export const Maxes = {
   Lesser: 10,
@@ -300,5 +300,5 @@ export interface AugmentSpellEffect {
 }
 
 export interface AttributeEffect {
-  modifyDamage(attacker: Character, defender: Character, opts: { damage: number, damageClass: string });
+  modifyDamage(attacker: Character, defender: Character, opts: { attackerWeapon: Item, damage: number, damageClass: string });
 }
