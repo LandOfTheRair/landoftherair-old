@@ -30,7 +30,7 @@ export class Disease extends SpellEffect {
     const totalPotency = this.getTotalDamageRolls(caster);
     const damage = +dice.roll(`${totalPotency}d${wisCheck}`);
 
-    this.duration = this.duration || +dice.roll(`${totalPotency}d4`);
+    this.duration = this.duration || this.potency * 2;
 
     this.effectInfo = { damage, caster: caster.uuid };
     this.flagCasterName(caster.name);

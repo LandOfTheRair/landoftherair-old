@@ -28,9 +28,7 @@ export class Poison extends SpellEffect {
     const totalPotency = Math.floor(mult * this.getTotalDamageRolls(caster));
     const damage = +dice.roll(`${totalPotency}d${wisCheck}`);
 
-    const durationAdjust = Math.floor(this.potency / 2);
-
-    this.duration = this.duration || +dice.roll(`${durationAdjust}d5`);
+    this.duration = this.duration || this.potency;
 
     this.effectInfo = { damage, caster: caster.uuid };
     this.flagCasterName(caster.name);
