@@ -13,6 +13,7 @@ import { BuildupEffect } from '../../base/Effect';
 
 export type DamageType =
   'Physical'
+| 'Necrotic'
 | 'Fire'
 | 'Ice'
 | 'Water'
@@ -892,6 +893,12 @@ export class CombatHelper {
 
     const otherClass = isHeal ? 'heal' : 'hit';
     const damageType = damageClass === 'physical' ? 'melee' : 'magic';
+
+    if(defender) {
+      defender.attributeEffectsList.forEach(eff => {
+        damage = eff.modifyDamage(attacker, defender, { attackerWeapon, damage, damageClass });
+      });
+    }
 
     if(!isRiposte && attackerDamageMessage) {
 

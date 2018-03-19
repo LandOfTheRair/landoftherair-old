@@ -298,3 +298,7 @@ export class BuildupEffect extends SpellEffect {
 export interface AugmentSpellEffect {
   augmentAttack(attacker: Character, defender: Character, opts: { damage: number, damageClass: string });
 }
+
+export interface AttributeEffect {
+  modifyDamage(attacker: Character, defender: Character, opts: { damage: number, damageClass: string });
+}

@@ -8,6 +8,7 @@ import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
 import { LootHelper } from '../helpers/world/loot-helper';
 import { Dangerous } from '../effects/special/Dangerous';
+import { Attribute } from '../effects/augments/Attribute';
 
 export class Spawner {
 
@@ -254,6 +255,13 @@ export class Spawner {
     if(npc.$$shouldStrip) {
       const dangerous = new Dangerous({});
       dangerous.cast(npc, npc);
+    }
+
+    if(npcData.attributes) {
+      npcData.attributes.forEach(attrInfo => {
+        const attr = new Attribute(attrInfo);
+        attr.cast(npc, npc);
+      });
     }
 
     npc.tryToCastEquippedEffects();

@@ -144,6 +144,24 @@ class NPCLoader {
     if(!npc.npcId) { console.error(`ERROR: ${JSON.stringify(npc)} has no npcId!`); return false; }
     if(npc.baseClass && !Classes[npc.baseClass]) { console.error(`ERROR: ${npc.npcId} has an invalid baseClass ${npc.baseClass}!`); return false; }
 
+    const validAttributes = ['physical', 'blunt', 'sharp', 'magic', 'necrotic', 'fire', 'ice', 'water', 'energy'];
+
+    if(npc.attributes) {
+      for(let i = 0; i < npc.attributes.length; i++) {
+        const attr = npc.attributes[i];
+
+        if(!includes(validAttributes, attr.damageType)) {
+          console.error(`ERROR: ${npc.npcId} has an invalid attribute damage type: ${attr.damageType}!`);
+          return false;
+        }
+
+        if(!isNumber(attr.potency)) {
+          console.error(`ERROR: ${npc.npcId} has an invalid non-numeric potency value!`);
+          return false;
+        }
+      }
+    }
+
     const validateKeys = [
       'rightHand', 'leftHand',
       'gear.Armor', 'gear.Robe1', 'gear.Robe2', 'gear.Feet', 'gear.Hands',

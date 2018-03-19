@@ -15,7 +15,7 @@ import { MapLayer } from './maplayer';
 import { HideReductionPercents } from '../../server/helpers/character/hide-reductions';
 
 import * as Classes from '../../server/classes';
-import { AugmentSpellEffect, Effect } from '../../server/base/Effect';
+import { AttributeEffect, AugmentSpellEffect, Effect } from '../../server/base/Effect';
 import * as Effects from '../../server/effects';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
@@ -277,6 +277,10 @@ export class Character {
 
   get augmentEffectsList(): AugmentSpellEffect[] {
     return <any[]>values(this.effects).filter(x => (<any>x).augmentAttack);
+  }
+
+  get attributeEffectsList(): AttributeEffect[] {
+    return <any[]>values(this.effects).filter(x => (<any>x).modifyDamage);
   }
 
   get isInCombat() {

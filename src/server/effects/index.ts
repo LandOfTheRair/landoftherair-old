@@ -33,6 +33,7 @@ export * from './damagers/MagicBolt';
 export * from './dots/Disease';
 export * from './dots/Poison';
 
+export * from './augments/Attribute';
 export * from './augments/Applied';
 export * from './augments/ImbueEnergy';
 

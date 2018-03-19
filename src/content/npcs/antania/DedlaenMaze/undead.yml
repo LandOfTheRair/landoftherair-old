@@ -32,6 +32,12 @@
     Hands: Maze Mummy Claws
     Robe1: Yzalt Mummy Cloak
 
+  attributes:
+    - damageType: 'blunt'
+      potency: 0.5
+    - damageType: 'fire'
+      potency: 1.5
+
   copyDrops:
     - drop: 'rightHand'
       chance: -1
