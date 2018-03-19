@@ -1004,6 +1004,7 @@ export class Character {
         this.sendClientMessage(`A new casting of ${effect.name} refused to take hold.`);
         return;
       }
+
       this.unapplyEffect(existingEffect, true, true);
     }
 
@@ -1011,7 +1012,9 @@ export class Character {
       this.effects[effect.name] = effect;
     }
 
+    if(existingEffect) effect.shouldNotShowMessage = true;
     effect.effectStart(this);
+    if(existingEffect) effect.shouldNotShowMessage = false;
   }
 
   unapplyEffect(effect: Effect, prematurelyEnd = false, hideMessage = false) {
