@@ -214,6 +214,10 @@ export class SpellEffect extends Effect {
     return caster.getTotalStat(stat);
   }
 
+  getCasterName(caster: Character, target: Character): string {
+    return target.canSeeThroughStealthOf(caster) ? caster.name : 'somebody';
+  }
+
   cast(caster: Character, target: Character, skillRef?: Skill) {}
 }
 

@@ -22416,6 +22416,166 @@
                  "width":64,
                  "x":4608,
                  "y":11200
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5351,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5888,
+                 "y":7424
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5352,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2816,
+                 "y":7552
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5353,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2112,
+                 "y":10816
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5354,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5888,
+                 "y":11520
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5355,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3968,
+                 "y":9984
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5356,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":384,
+                 "y":8640
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5357,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3328,
+                 "y":12352
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5358,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3136,
+                 "y":10944
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -22882,7 +23042,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5351,
+ "nextobjectid":5359,
  "orientation":"orthogonal",
  "properties":
     {

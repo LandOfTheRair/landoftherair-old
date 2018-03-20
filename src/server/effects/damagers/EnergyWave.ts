@@ -25,7 +25,7 @@ export class EnergyWave extends SpellEffect {
       this.magicalAttack(caster, refTarget, {
         skillRef,
         atkMsg: `You blast ${atkName} with a wave of energy!`,
-        defMsg: `${caster.name} blasted you with a wave of energy!`,
+        defMsg: `${this.getCasterName(caster, target)} blasted you with a wave of energy!`,
         damage,
         damageClass: 'energy'
       });

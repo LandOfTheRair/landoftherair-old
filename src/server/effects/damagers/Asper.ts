@@ -4,9 +4,9 @@ import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
 
-export class Afflict extends SpellEffect {
+export class Asper extends SpellEffect {
 
-  maxSkillForSkillGain = 30;
+  maxSkillForSkillGain = 25;
   skillMults = [[0, 2.75], [11, 3.75], [21, 4]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
@@ -14,12 +14,12 @@ export class Afflict extends SpellEffect {
 
     const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
-    this.magicalAttack(caster, target, {
-      skillRef,
-      atkMsg: `You afflict ${target.name}!`,
-      defMsg: `${this.getCasterName(caster, target)} hit you with an affliction!`,
-      damage,
-      damageClass: 'necrotic'
-    });
+    const realDrain = Math.min(damage, target.mp.maximum);
+
+    if(realDrain > 0) target.sendClientMessage('You feel your mental energy slipping away!');
+    caster.sendClientMessage(`You drained ${realDrain} MP from ${target.name}!`);
+
+    target.mp.sub(realDrain);
+    caster.mp.add(realDrain);
   }
 }

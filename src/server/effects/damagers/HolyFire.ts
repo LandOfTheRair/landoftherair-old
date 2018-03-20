@@ -17,7 +17,7 @@ export class HolyFire extends SpellEffect {
     this.magicalAttack(caster, target, {
       skillRef,
       atkMsg: `You scorch ${target.name}!`,
-      defMsg: `${caster.name} scorched you with holy fire!`,
+      defMsg: `${this.getCasterName(caster, target)} scorched you with holy fire!`,
       damage,
       damageClass: 'fire'
     });

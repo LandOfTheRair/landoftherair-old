@@ -80,3 +80,46 @@
 
   gear:
     Hands: Maze Ghoul Claws
+
+- npcId: Dedlaen Spectre
+  name: spectre
+  hostility: Always
+  sprite: 970
+  baseClass: Mage
+  alignment: Evil
+  stats: 14
+  skillLevels: 3
+  level: 15
+
+  skillOnKill: 10
+
+  otherStats:
+    con: 15
+    accuracy: 2
+    offense: 2
+    perception: 265
+    mpregen: 0
+
+  usableSkills:
+    - MagicMissile
+    - Invisibility
+    - Asper
+
+  gold:
+    min: 0
+    max: 0
+
+  hp:
+    min: 17950
+    max: 19350
+
+  mp:
+    min: 1000
+    max: 1000
+
+  giveXp:
+    min: 41000
+    max: 45000
+
+  gear:
+    Hands: Maze Ghoul Claws

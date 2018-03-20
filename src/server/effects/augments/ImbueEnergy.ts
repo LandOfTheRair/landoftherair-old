@@ -50,7 +50,7 @@ export class ImbueEnergy extends SpellEffect implements AugmentSpellEffect {
 
     this.magicalAttack(attacker, defender, {
       atkMsg: `You strike for bonus energy damage!`,
-      defMsg: `${attacker.name} struck you with a burst of raw energy!`,
+      defMsg: `${this.getCasterName(attacker, defender)} struck you with a burst of raw energy!`,
       damage: this.potency * this.potencyMultiplier,
       damageClass: 'energy'
     });

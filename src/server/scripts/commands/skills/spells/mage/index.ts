@@ -1,4 +1,5 @@
 export * from './Absorption';
+export * from './Asper';
 export * from './BarWater';
 export * from './EnergyWave';
 export * from './FindFamiliar';

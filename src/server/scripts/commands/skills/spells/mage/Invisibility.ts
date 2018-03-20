@@ -19,8 +19,9 @@ export class Invisibility extends Skill {
   public name = ['invisibility', 'cast invisibility'];
   public format = 'Target';
 
+  // npcs can only cast invis on themselves to prevent shenanigans
   canUse(user: Character, target: Character) {
-    return super.canUse(user, target) && !target.hasEffect('Invisibility');
+    return super.canUse(user, target) && !target.hasEffect('Invisibility') && user === target;
   }
 
   mpCost() { return 100; }

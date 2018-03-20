@@ -19,7 +19,7 @@ export class Cure extends SpellEffect {
     this.magicalAttack(caster, target, {
       skillRef,
       atkMsg: `You heal ${target.name}.`,
-      defMsg: `${caster.name} healed you!`,
+      defMsg: `${this.getCasterName(caster, target)} healed you!`,
       damage,
       damageClass: 'heal'
     });
