@@ -20,6 +20,16 @@
     potency: 10
     chance: 10
 
+- name: Maze Ghoul Claws
+  tier: 3
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0
+  effect:
+    name: Stunned
+    potency: 10
+    chance: 10
+
 - name: Werebear Claws
   tier: 2
   stats:

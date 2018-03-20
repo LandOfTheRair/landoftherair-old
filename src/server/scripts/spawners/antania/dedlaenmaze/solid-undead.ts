@@ -2,7 +2,8 @@
 import { Spawner } from '../../../../base/Spawner';
 
 const npcIds = [
-  'Dedlaen Mummy'
+  'Dedlaen Mummy',
+  'Dedlaen Ghoul'
 ];
 
 export class SolidUndeadSpawner extends Spawner {

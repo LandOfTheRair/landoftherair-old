@@ -12,8 +12,8 @@
 
   otherStats:
     con: 15
-    accuracy: 5
-    offense: 5
+    accuracy: 4
+    offense: 4
     perception: 245
 
   gold:
@@ -45,3 +45,38 @@
       chance: -1
     - drop: 'gear.Robe1'
       chance: -1
+
+- npcId: Dedlaen Ghoul
+  name: ghoul
+  hostility: Always
+  sprite: 375
+  alignment: Evil
+  stats: 14
+  skillLevels: 3
+  level: 15
+
+  skillOnKill: 10
+
+  otherStats:
+    con: 15
+    accuracy: 2
+    offense: 2
+    perception: 265
+
+  usableSkills:
+    - DoubleAttack
+
+  gold:
+    min: 1050
+    max: 1350
+
+  hp:
+    min: 17950
+    max: 19350
+
+  giveXp:
+    min: 39000
+    max: 42000
+
+  gear:
+    Hands: Maze Ghoul Claws
