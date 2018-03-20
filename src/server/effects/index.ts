@@ -30,6 +30,8 @@ export * from './damagers/HolyFire';
 export * from './damagers/MagicMissile';
 export * from './damagers/MagicBolt';
 
+export * from './damagers/Asper';
+
 export * from './dots/Disease';
 export * from './dots/Poison';
 
