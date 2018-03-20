@@ -17,11 +17,11 @@ export class WillpowerBoost extends Trait {
   }
 
   static canBuy(player: Player) {
-    return super.canBuy(player) && player.baseStats.wil < 15;
+    return Trait.canBuy(player) && player.baseStats.wil < 15;
   }
 
   static buy(player: Player) {
-    super.buy(player);
+    Trait.buy(player);
     player.gainBaseStat('wil');
   }
 

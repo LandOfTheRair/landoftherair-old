@@ -17,11 +17,11 @@ export class DexterityBoost extends Trait {
   }
 
   static canBuy(player: Player) {
-    return super.canBuy(player) && player.baseStats.dex < 15;
+    return Trait.canBuy(player) && player.baseStats.dex < 15;
   }
 
   static buy(player: Player) {
-    super.buy(player);
+    Trait.buy(player);
     player.gainBaseStat('dex');
   }
 

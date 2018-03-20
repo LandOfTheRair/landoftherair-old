@@ -13,7 +13,7 @@ export class ForcefulStrike extends Trait {
   static maxLevel = 20;
 
   static currentlyInEffect(player: Player): boolean {
-    return player.hp.gtePercent(85);
+    return Trait.currentlyInEffect(player) && player.hp.gtePercent(85);
   }
 
 }
