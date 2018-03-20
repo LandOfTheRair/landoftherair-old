@@ -23,15 +23,15 @@ export class Identify extends Skill {
 
     if(!this.tryToConsumeMP(user, effect)) return;
 
-    this.use(user, effect);
+    this.use(user, user, effect);
   }
 
-  use(user: Character, baseEffect = { potency: 0 }) {
+  use(user: Character, target: Character, baseEffect = { potency: 0 }) {
     let potency = 1;
     if(user.baseClass === 'Mage') potency += 1;
 
     const effect = new CastEffect({ potency });
-    effect.cast(user, user, this);
+    effect.cast(user, target, this);
   }
 
 }

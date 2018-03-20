@@ -71,7 +71,7 @@ export const tick = (npc: NPC, canMove: boolean) => {
 
   const attemptSkills = shuffle(sampleSize(npc.usableSkills, Math.max(3, Math.floor(npc.usableSkills.length / 2))));
 
-  let chosenSkill = null;
+  let chosenSkill: Skill = null;
   let chosenSkillFriendly = false;
 
   let isThrowing = false;
@@ -114,6 +114,7 @@ export const tick = (npc: NPC, canMove: boolean) => {
       let opts = {};
       if(isThrowing) opts = { throwHand: 'right' };
       chosenSkill.use(npc, currentTarget, opts);
+      npc.mp.sub(chosenSkill.mpCost());
 
     // either move towards target
     } else if(canMove) {
@@ -190,6 +191,7 @@ export const tick = (npc: NPC, canMove: boolean) => {
 
   if(!highestAgro && chosenSkill && currentTarget) {
     chosenSkill.use(npc, currentTarget);
+    npc.mp.sub(chosenSkill.mpCost());
   }
 
 

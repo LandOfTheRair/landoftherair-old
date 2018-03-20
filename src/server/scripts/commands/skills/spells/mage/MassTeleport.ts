@@ -21,10 +21,10 @@ export class MassTeleport extends Skill {
   execute(user: Player, { args }) {
     if(!this.tryToConsumeMP(user)) return;
 
-    this.use(user, args);
+    this.use(user, user, args);
   }
 
-  async use(user: Player, teleportLocation: string) {
+  async use(user: Player, target: Player, teleportLocation: string) {
     user.$$room.teleportHelper.massTeleportTo(user, teleportLocation);
   }
 

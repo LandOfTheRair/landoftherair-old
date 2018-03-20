@@ -31,7 +31,7 @@ export class FindFamiliar extends Skill {
     this.use(user, user, effect, args);
   }
 
-  use(user: Character, target: Character, baseEffect = {}, animalStr: string) {
+  use(user: Character, target: Character, baseEffect = {}, animalStr?: string) {
     const effect = new CastEffect(baseEffect);
     effect.cast(user, target, this, animalStr);
   }

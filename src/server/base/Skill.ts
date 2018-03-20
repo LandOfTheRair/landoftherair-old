@@ -189,4 +189,6 @@ export abstract class Skill extends Command {
 
   }
 
+  use(user: Character, target: Character, baseEffect = {}) {}
+
 }
