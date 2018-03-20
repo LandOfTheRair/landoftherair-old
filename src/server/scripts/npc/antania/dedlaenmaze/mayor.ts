@@ -11,7 +11,8 @@ export const setup = async (npc: NPC) => {
 export const responses = (npc: NPC) => {
 
   const allQuests = [
-    { questItem: 'Rotting Mummy Grub', amount: 4, name: 'grubs that eat decaying flesh' }
+    { questItem: 'Rotting Mummy Grub', amount: 5, name: 'some grubs that eat decaying flesh' },
+    { questItem: 'Perfect Maze Skull', amount: 1, name: 'the skull of a skeleton' }
   ];
 
   npc.parser.addCommand('hello')
@@ -28,13 +29,16 @@ export const responses = (npc: NPC) => {
 
       if(NPCLoader.checkPlayerHeldItem(player, questToday.questItem)) {
 
-        let indexes = NPCLoader.getItemsFromPlayerSackByName(player, questToday.questItem);
-        indexes = indexes.slice(0, questToday.amount);
+        const requiredInSack = questToday.amount - 1;
+        if(requiredInSack > 0) {
+          let indexes = NPCLoader.getItemsFromPlayerSackByName(player, questToday.questItem);
+          indexes = indexes.slice(0, questToday.amount);
 
-        if(indexes.length < questToday.amount) return 'You do not have enough of what I asked for!';
+          if(indexes.length < questToday.amount) return 'You do not have enough of what I asked for!';
+          NPCLoader.takeItemsFromPlayerSack(player, indexes);
+        }
 
         NPCLoader.takePlayerItem(player, questToday.questItem);
-        NPCLoader.takeItemsFromPlayerSack(player, indexes);
 
         player.completeDailyQuest(npc.name);
 
@@ -47,7 +51,7 @@ export const responses = (npc: NPC) => {
       }
 
       return `Hello, ${player.name}! We're trying to renovate our town and we need some materials to ward off monsters. 
-      Can you find us some ${questToday.name}? I'll need ${questToday.amount} of them.`;
+      Can you find us ${questToday.name}? I'll need ${questToday.amount} of them.`;
     });
 
 };

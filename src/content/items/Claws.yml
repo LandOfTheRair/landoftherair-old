@@ -30,6 +30,12 @@
     potency: 10
     chance: 10
 
+- name: Maze Skeleton Claws
+  tier: 4
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0
+
 - name: Werebear Claws
   tier: 2
   stats:

@@ -4,3 +4,10 @@
   value: 1
   binds: true
   sprite: 359
+
+- name: Perfect Maze Skull
+  desc: "a skull taken cleanly from a skeleton"
+  value: 1
+  binds: true
+  sprite: 712
+  notUsableAfterHours: 24
