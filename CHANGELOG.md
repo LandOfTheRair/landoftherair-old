@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.1.13 (20/03/2018)
+
+#### Enhancements
+
+- [#639](https://github.com/LandOfTheRair/landoftherair/issues/639) do not show start message when the previous effect was cancelled for debuffs
+- [#634](https://github.com/LandOfTheRair/landoftherair/issues/634) resistance/weakness attributes
+
+#### Balance Adjustments
+
+- [#642](https://github.com/LandOfTheRair/landoftherair/issues/642) add level requirements to some traits
+
+#### Bug Fixes
+
+- [#641](https://github.com/LandOfTheRair/landoftherair/issues/641) npcs do not use mp
+- [#638](https://github.com/LandOfTheRair/landoftherair/issues/638) Error: Item Antanian Diamond does not exist.
+
+---
+
 ## v0.1.12 (16/03/2018)
 
 #### Bug Fixes
