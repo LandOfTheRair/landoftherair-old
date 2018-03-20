@@ -97,3 +97,17 @@
       dex: 1
       agi: 1
     duration: 3600
+
+- name: Rotting Mummy Grub
+  sprite: 70
+  notUsableAfterHours: 24
+  desc: "a grub feasting on the remains of its former host"
+  value: 1
+  binds: true
+  effect:
+    name: Nourishment
+    tooltip: "-1 STR"
+    stats:
+      str: -1
+    duration: 86400
+

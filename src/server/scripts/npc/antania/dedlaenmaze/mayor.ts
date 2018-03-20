@@ -1,8 +1,6 @@
 import { NPC } from '../../../../../shared/models/npc';
 import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
-import { DailyKillApprentices, DailyKillRebels, DailyKillRenegades } from '../../../../quests';
-
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
@@ -12,11 +10,9 @@ export const setup = async (npc: NPC) => {
 
 export const responses = (npc: NPC) => {
 
-  const allQuests = [DailyKillRenegades, DailyKillRebels, DailyKillApprentices];
-  const questTodayIndex = new Date().getDate() % allQuests.length;
-  const allQuestModifiers = ['renegades', 'rebels', 'apprentices'];
-
-  const questToday = allQuests[questTodayIndex];
+  const allQuests = [
+    { questItem: 'Rotting Mummy Grub', amount: 4, name: 'grubs that eat decaying flesh' }
+  ];
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
@@ -24,23 +20,34 @@ export const responses = (npc: NPC) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
       if(!player.canDoDailyQuest(npc.name)) {
-        return 'Thanks, but you\'ve done all you can today. Come back tomorrow - I\'m sure there\'ll be work for you.';
+        return 'Thanks, but we don\'t want to work you too hard! Come back tomorrow - we\'ll have more work for you.';
       }
 
-      if(player.hasQuest(questToday)) {
-        if(questToday.isComplete(player)) {
-          questToday.completeFor(player);
-          player.completeDailyQuest(npc.name);
+      const questTodayIndex = (new Date().getDate() + NPCLoader.getDailyOffset(player)) % allQuests.length;
+      const questToday = allQuests[questTodayIndex];
 
-          return 'Thank you for taking care of that for me. You\'ve done this town a great service. Here\'s your reward.';
-        }
+      if(NPCLoader.checkPlayerHeldItem(player, questToday.questItem)) {
 
-        return questToday.incompleteText(player);
+        let indexes = NPCLoader.getItemsFromPlayerSackByName(player, questToday.questItem);
+        indexes = indexes.slice(0, questToday.amount);
+
+        if(indexes.length < questToday.amount) return 'You do not have enough of what I asked for!';
+
+        NPCLoader.takePlayerItem(player, questToday.questItem);
+        NPCLoader.takeItemsFromPlayerSack(player, indexes);
+
+        player.completeDailyQuest(npc.name);
+
+        player.gainGold(30000);
+        player.gainExp(100000);
+        player.gainTraitPoints(5, true);
+
+        player.sendClientMessage('You received 100,000 XP, 30,000 gold, and 5 TP!');
+        return `Thanks, ${player.name}! We'll see you tomorrow!`;
       }
 
-      player.startQuest(questToday);
-
-      return `Hello, ${player.name}! Our troubles seem to change daily here in Rylt. Can you help us out today by killing some ${allQuestModifiers[questTodayIndex]}?`;
+      return `Hello, ${player.name}! We're trying to renovate our town and we need some materials to ward off monsters. 
+      Can you find us some ${questToday.name}? I'll need ${questToday.amount} of them.`;
     });
 
 };

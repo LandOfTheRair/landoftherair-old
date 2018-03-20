@@ -1,5 +1,5 @@
 
-import { extend, includes, isNumber, size, startCase, get } from 'lodash';
+import { extend, includes, isNumber, size, startCase, get, isUndefined } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import * as uuid from 'uuid/v4';
 import { Alignment, Character, SkillClassNames } from './character';
@@ -137,6 +137,7 @@ export class Item {
   extendedDesc: string;
   sprite: number;
   itemClass: string;
+  createdAt: number;
 
   encrust?: Encrust;
   quality?: Quality;
@@ -198,6 +199,7 @@ export class Item {
 
   containedItems?: Array<{ chance: number, result: string }>;
   expiresAt: number;
+  notUsableAfterHours: number;
 
   daily?: boolean;
   previousUpgrades?: any[];
@@ -205,6 +207,7 @@ export class Item {
   constructor(opts) {
     extend(this, opts);
     if(!this.uuid) this.uuid = uuid();
+    if(!this.createdAt) this.createdAt = Date.now();
   }
 
   regenerateUUID() {
@@ -303,24 +306,33 @@ export class Item {
     const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
     const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';
 
+    const usefulText = !this.canUseExpiration() ? '' : `This item does not appear useful anymore. `;
+
     return `${starText} ${baseText}${sense1Text}${sense1AfterText}${sense2Text}${traitText}
     ${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}${skillText}
-    ${conditionText}${ownedText}${appraiseText}`;
+    ${conditionText}${ownedText}${appraiseText}${usefulText}`;
   }
 
-  isRobe() {
+  isRobe(): boolean {
     return EquipHash[this.itemClass] === 'Robe';
   }
 
-  isArmor() {
+  isArmor(): boolean {
     return EquipHash[this.itemClass] === 'Armor';
   }
 
-  isOwnedBy(char: Character) {
-    return !this.owner || this.owner && (<any>char).username === this.owner;
+  isOwnedBy(char: Character): boolean {
+    return (!this.owner || this.owner && (<any>char).username === this.owner) && this.canUseExpiration();
   }
 
-  canUseInCombat(char: Character) {
+  canUseExpiration(): boolean {
+    if(isUndefined(this.notUsableAfterHours)) return true;
+    const date = new Date(this.createdAt);
+    date.setHours(date.getHours() + this.notUsableAfterHours);
+    return +date > Date.now();
+  }
+
+  canUseInCombat(char: Character): boolean {
     const baseCondition = this.isOwnedBy(char) && this.hasCondition();
     if(!this.requirements) return baseCondition;
 
@@ -337,16 +349,16 @@ export class Item {
         && includes(profession, char.baseClass);
   }
 
-  hasCondition() {
+  hasCondition(): boolean {
     return this.condition > 0;
   }
 
-  loseCondition(val = 1, onBreak = () => {}) {
+  loseCondition(val = 1, onBreak = () => {}): void {
     this.condition -= val;
     if(onBreak && this.condition <= 0) onBreak();
   }
 
-  canUse(char: Character) {
+  canUse(char: Character): boolean {
     return (this.itemClass === 'Box' || this.effect || this.succorInfo || this.ounces > 0) && this.hasCondition() && this.isOwnedBy(char);
   }
 

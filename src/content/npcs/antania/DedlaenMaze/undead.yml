@@ -46,6 +46,11 @@
     - drop: 'gear.Robe1'
       chance: -1
 
+  drops:
+    - result: Rotting Mummy Grub
+      chance: 1
+      maxChance: 70
+
 - npcId: Dedlaen Ghoul
   name: ghoul
   hostility: Always

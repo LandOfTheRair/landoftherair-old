@@ -15,7 +15,7 @@ export class Asper extends SpellEffect {
     const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
     const realDrain = Math.min(damage, target.mp.maximum);
-    
+
     if(realDrain > 0) target.sendClientMessage('You feel your mental energy slipping away!');
     caster.sendClientMessage(`You drained ${realDrain} MP from ${target.name}!`);
 

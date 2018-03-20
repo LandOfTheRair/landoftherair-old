@@ -13,10 +13,7 @@ export const setup = async (npc: NPC) => {
 export const responses = (npc: NPC) => {
 
   const allQuests = [DailyKillRenegades, DailyKillRebels, DailyKillApprentices];
-  const questTodayIndex = new Date().getDate() % allQuests.length;
   const allQuestModifiers = ['renegades', 'rebels', 'apprentices'];
-
-  const questToday = allQuests[questTodayIndex];
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
@@ -26,6 +23,9 @@ export const responses = (npc: NPC) => {
       if(!player.canDoDailyQuest(npc.name)) {
         return 'Thanks, but you\'ve done all you can today. Come back tomorrow - I\'m sure there\'ll be work for you.';
       }
+
+      const questTodayIndex = (new Date().getDate() + NPCLoader.getDailyOffset(player)) % allQuests.length;
+      const questToday = allQuests[questTodayIndex];
 
       if(player.hasQuest(questToday)) {
         if(questToday.isComplete(player)) {
@@ -37,6 +37,8 @@ export const responses = (npc: NPC) => {
 
         return questToday.incompleteText(player);
       }
+
+      if(player.level >= 15) return 'We appreciate your help here in Rylt, but maybe you should talk to my acquaintance, Chief Bart, in the Maze.';
 
       player.startQuest(questToday);
 

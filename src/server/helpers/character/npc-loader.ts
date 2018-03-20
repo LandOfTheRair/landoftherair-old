@@ -129,7 +129,7 @@ export class NPCLoader {
     for(let i = 0; i < player.sack.allItems.length; i++) {
       const item = player.sack.allItems[i];
 
-      if(!item) continue;
+      if(!item || !item.isOwnedBy(player)) continue;
 
       if(partial) {
         if(!includes(item.name, name)) continue;
@@ -145,5 +145,9 @@ export class NPCLoader {
 
   static takeItemsFromPlayerSack(player: Player, sackIndexes = []): Item[] {
     return player.sack.takeItemFromSlots(sackIndexes);
+  }
+
+  static getDailyOffset(player: Player): number {
+    return player.name.charCodeAt(0);
   }
 }
