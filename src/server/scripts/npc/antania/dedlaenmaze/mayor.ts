@@ -27,6 +27,8 @@ export const responses = (npc: NPC) => {
       const questTodayIndex = (new Date().getDate() + NPCLoader.getDailyOffset(player)) % allQuests.length;
       const questToday = allQuests[questTodayIndex];
 
+      if(player.level < 13) return 'While we would appreciate your help in the Maze, maybe you should go talk to Mayor Twean in Rylt.';
+
       if(NPCLoader.checkPlayerHeldItem(player, questToday.questItem)) {
 
         const requiredInSack = questToday.amount - 1;
