@@ -22426,7 +22426,425 @@
         {
          "draworder":"topdown",
          "name":"RegionDescriptions",
-         "objects":[],
+         "objects":[
+                {
+                 "height":512,
+                 "id":5329,
+                 "name":"Casino",
+                 "properties":
+                    {
+                     "desc":"You stumble across a secret casino once used by the occupants of the tunnels."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":9152,
+                 "y":5440
+                }, 
+                {
+                 "height":256,
+                 "id":5330,
+                 "name":"NE Library",
+                 "properties":
+                    {
+                     "desc":"You find a hidden library amongst the rooms."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":9600,
+                 "y":4864
+                }, 
+                {
+                 "height":384,
+                 "id":5331,
+                 "name":"Lavish Room",
+                 "properties":
+                    {
+                     "desc":"You enter a lavish room, its occupants seemingly comfortable in this strange place."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":11904,
+                 "y":5760
+                }, 
+                {
+                 "height":256,
+                 "id":5332,
+                 "name":"Old Armory",
+                 "properties":
+                    {
+                     "desc":"You find an old armory here, most of the weapons worn by the sands of time"
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":11584,
+                 "y":5056
+                }, 
+                {
+                 "height":384,
+                 "id":5333,
+                 "name":"Old Armory",
+                 "properties":
+                    {
+                     "desc":"You find an old armory here, most of the weapons worn by the sands of time"
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":10176,
+                 "y":5568
+                }, 
+                {
+                 "height":256,
+                 "id":5334,
+                 "name":"Officer",
+                 "properties":
+                    {
+                     "desc":"You find what appears to be a full suite. Despite how out of place it is, a senior mercenary would have no trouble living here."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":10944,
+                 "y":5696
+                }, 
+                {
+                 "height":256,
+                 "id":5335,
+                 "name":"Old Armory",
+                 "properties":
+                    {
+                     "desc":"You see an old storage room, filled with armor and other knick-knacks."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":9664,
+                 "y":5440
+                }, 
+                {
+                 "height":256,
+                 "id":5336,
+                 "name":"Ransacked Armory",
+                 "properties":
+                    {
+                     "desc":"You come across an old armor, most of its gear pilfered."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":12032,
+                 "y":4160
+                }, 
+                {
+                 "height":256,
+                 "id":5337,
+                 "name":"Food Storage",
+                 "properties":
+                    {
+                     "desc":"You see what looks to be an old food storage room. Now, only rats come and go."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":9536,
+                 "y":3840
+                }, 
+                {
+                 "height":1216,
+                 "id":5338,
+                 "name":"Barracks",
+                 "properties":
+                    {
+                     "desc":"You enter a long hallway filled with identical rooms. You intuit that there were barracks back from when there were soldiers preparing for war."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":768,
+                 "x":7872,
+                 "y":2432
+                }, 
+                {
+                 "height":192,
+                 "id":5339,
+                 "name":"Worship",
+                 "properties":
+                    {
+                     "desc":"You see an altar on the opposite side of the room. Clearly, this was where any worshipping was done back in the day."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":9792,
+                 "y":3328
+                }, 
+                {
+                 "height":64,
+                 "id":5340,
+                 "name":"Storage Locker",
+                 "properties":
+                    {
+                     "desc":"You enter a storage locker. There's no such thing as being too prepared."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9856,
+                 "y":1280
+                }, 
+                {
+                 "height":64,
+                 "id":5341,
+                 "name":"Storage Locker",
+                 "properties":
+                    {
+                     "desc":"You enter a storage locker. There's no such thing as being too prepared."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7744,
+                 "y":768
+                }, 
+                {
+                 "height":64,
+                 "id":5342,
+                 "name":"Storage Locker",
+                 "properties":
+                    {
+                     "desc":"You enter a storage locker. There's no such thing as being too prepared."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7936,
+                 "y":512
+                }, 
+                {
+                 "height":384,
+                 "id":5343,
+                 "name":"Small Hideout",
+                 "properties":
+                    {
+                     "desc":"You find a small hideout in the furthest reaches of the maze. It seems like they could use a helping hand."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":576,
+                 "x":8064,
+                 "y":320
+                }, 
+                {
+                 "height":256,
+                 "id":5344,
+                 "name":"Old Armory",
+                 "properties":
+                    {
+                     "desc":"You find an old armory here, most of the weapons worn by the sands of time"
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":256,
+                 "x":7424,
+                 "y":640
+                }, 
+                {
+                 "height":320,
+                 "id":5345,
+                 "name":"Alchemist's Room",
+                 "properties":
+                    {
+                     "desc":"You enter the room, greeted by the stench of foul potions."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":9920,
+                 "y":448
+                }, 
+                {
+                 "height":896,
+                 "id":5346,
+                 "name":"Small Lair",
+                 "properties":
+                    {
+                     "desc":"You enter a room that stands out from the rest. Ornate decorations from top to bottom, and paved nicely. Perhaps this was a ceremonial ground of some sort."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":640,
+                 "x":7936,
+                 "y":960
+                }, 
+                {
+                 "height":384,
+                 "id":5347,
+                 "name":"Small Lair",
+                 "properties":
+                    {
+                     "desc":"You enter a room that stands out from the rest. Ornate decorations from top to bottom, and paved nicely. Perhaps this was a ceremonial ground of some sort."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":896,
+                 "x":7808,
+                 "y":1280
+                }, 
+                {
+                 "height":768,
+                 "id":5348,
+                 "name":"Big Lair",
+                 "properties":
+                    {
+                     "desc":"You enter the grand hall. The vast expanse leaves you in awe as you look around."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1024,
+                 "x":11456,
+                 "y":448
+                }, 
+                {
+                 "height":1088,
+                 "id":5349,
+                 "name":"Big Lair",
+                 "properties":
+                    {
+                     "desc":"You enter the grand hall. The vast expanse leaves you in awe as you look around."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":704,
+                 "x":11584,
+                 "y":256
+                }, 
+                {
+                 "height":832,
+                 "id":5350,
+                 "name":"Habitable Space",
+                 "properties":
+                    {
+                     "desc":"You enter a room that appears to be habitable, unlike the rest of this dungeon. Seems like people just got used to being stuck down here."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":256,
+                 "x":10112,
+                 "y":3648
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -22436,10 +22854,21 @@
         {
          "draworder":"topdown",
          "name":"BackgroundMusic",
-         "objects":[],
+         "objects":[
+                {
+                 "height":12288,
+                 "id":5328,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":12288,
+                 "x":256,
+                 "y":256
+                }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -22453,7 +22882,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5328,
+ "nextobjectid":5351,
  "orientation":"orthogonal",
  "properties":
     {
