@@ -76,6 +76,7 @@
     "@angular/router": "^5.2.6",
     "angular-resizable-element": "^2.0.0",
     "angular-walkthrough": "^0.5.6",
+    "angular2-virtual-scroll": "^0.3.2",
     "auth0-js": "^8.10.1",
     "bootstrap": "^4.0.0-beta",
     "censor-sensor": "^1.0.3",

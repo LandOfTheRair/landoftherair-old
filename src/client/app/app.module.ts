@@ -7,6 +7,8 @@ import { NgxAutoScrollDirective } from './ngx-auto-scroll.directive';
 import { DraggableWindowDirective } from './draggable.directive';
 
 import { Ng2Webstorage } from 'ngx-webstorage';
+import { VirtualScrollModule } from 'angular2-virtual-scroll';
+
 import {
   TooltipModule,
   ButtonsModule,
@@ -137,6 +139,7 @@ import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/trade
 
     ResizableModule,
     ColorPickerModule,
+    VirtualScrollModule,
     WalkthroughModule.forRoot(),
     NgDragDropModule.forRoot(),
     Ng2Webstorage.forRoot(),

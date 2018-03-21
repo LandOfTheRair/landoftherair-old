@@ -1,14 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { LocalStorage } from 'ngx-webstorage';
 import { ColyseusService } from '../colyseus.service';
+import { WindowManagerService } from '../windowmanager.service';
+
+import { get } from 'lodash';
 
 @Component({
   selector: 'app-log-window',
   templateUrl: './log-window.component.html',
   styleUrls: ['./log-window.component.scss']
 })
-export class LogWindowComponent implements OnInit {
+export class LogWindowComponent implements OnInit, OnDestroy {
 
   @Input()
   public windowSize;
@@ -19,14 +22,42 @@ export class LogWindowComponent implements OnInit {
   @LocalStorage()
   public filters;
 
+  public visibleLogItems: any[] = [];
+  public allFilteredVisibleLogItems: any[] = [];
+  public allLogItems: any[] = [];
+
+  private log$: any;
+
   public get clientGameState() {
     return this.colyseus.game.clientGameState;
   }
 
-  constructor(public colyseus: ColyseusService) {}
+  public get containerHeight(): number {
+    return get(this.windowManager.getWindow('log'), 'height', 0)        // window height (total)
+      - 28                                                                                        // - window bar height
+      - 31;                                                                                       // - window button height
+  }
+
+  constructor(public colyseus: ColyseusService, private windowManager: WindowManagerService) {}
 
   ngOnInit() {
     if(!this.filters) this.filters = { combat: true, env: true, chatter: true };
+    this.log$ = this.clientGameState.logMessages$.subscribe(data => this.addLogItem(data));
+  }
+
+  ngOnDestroy() {
+    this.log$.unsubscribe();
+  }
+
+  private addLogItem(data) {
+    this.allLogItems.push(data);
+    if(this.allLogItems.length > 500) this.allLogItems.shift();
+
+    this.allFilteredVisibleLogItems = this.allFilteredVisibleLogItems.concat([data]);
+  }
+
+  public updateVisibleItems(items) {
+    this.visibleLogItems = items;
   }
 
   // trigger ngx-webstorage

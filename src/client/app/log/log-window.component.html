@@ -13,12 +13,22 @@
     </div>
   </div>
 
-  <div class="p-1 message-container" [ngClass]="['window-size-' + windowSize]" appNgxAutoScroll lockYOffset="30">
+  <virtual-scroll class="p-1 message-container"
+                  [ngClass]="['window-size-' + windowSize]"
+                  appNgxAutoScroll
+                  lockYOffset="30"
+                  [style.height.px]="containerHeight"
+                  bufferAmount="10"
+                  [childHeight]="21"
+                  (update)="updateVisibleItems($event)"
+                  [items]="allFilteredVisibleLogItems">
+
     <div class="message {{ message.subClass }}"
          [class.hidden]="message.grouping !== 'always' && !filters[message.grouping]"
          [ngClass]="['font-size-'+fontSize]"
-         *ngFor="let message of clientGameState.logMessages$ | async">
+         *ngFor="let message of visibleLogItems">
       <app-log-message [message]="message"></app-log-message>
     </div>
-  </div>
+
+  </virtual-scroll>
 </div>

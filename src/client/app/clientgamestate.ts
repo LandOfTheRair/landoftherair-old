@@ -29,7 +29,6 @@ export class ClientGameState {
 
   groundItems: any = {};
 
-  private logMessages: any[] = [];
   public logMessages$ = new Subject<any>();
 
   environmentalObjects: any[] = [];
@@ -317,10 +316,7 @@ export class ClientGameState {
   addLogMessage(message) {
     message.message = this.formatMessage(message);
 
-    this.logMessages.push(message);
-    if(this.logMessages.length > 500) this.logMessages.shift();
-
-    this.logMessages$.next(this.logMessages);
+    this.logMessages$.next(message);
   }
 
   private formatMessage(message: any) {
@@ -331,7 +327,6 @@ export class ClientGameState {
   }
 
   reset() {
-    this.logMessages = [];
     this.map = {};
     this.mapName = '';
     this.updates = { openDoors: [] };
