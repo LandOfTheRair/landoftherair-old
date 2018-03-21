@@ -114,7 +114,7 @@ export const tick = (npc: NPC, canMove: boolean) => {
       let opts = {};
       if(isThrowing) opts = { throwHand: 'right' };
       chosenSkill.use(npc, currentTarget, opts);
-      npc.mp.sub(chosenSkill.mpCost());
+      npc.mp.sub(chosenSkill.mpCost(npc));
 
     // either move towards target
     } else if(canMove) {
@@ -191,7 +191,7 @@ export const tick = (npc: NPC, canMove: boolean) => {
 
   if(!highestAgro && chosenSkill && currentTarget) {
     chosenSkill.use(npc, currentTarget);
-    npc.mp.sub(chosenSkill.mpCost());
+    npc.mp.sub(chosenSkill.mpCost(npc));
   }
 
 

@@ -52,6 +52,7 @@
     armorClass: 1
     offense: 1
     defense: 1
+    mpregen: 10
   effect:
     name: Transmute
     uses: 100

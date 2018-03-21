@@ -109,6 +109,7 @@
     mpregen: 0
 
   usableSkills:
+    - DarkVision
     - MagicMissile
     - Invisibility
     - Asper
@@ -144,7 +145,7 @@
   baseClass: Mage
   alignment: Evil
   stats: 14
-  skillLevels: 3
+  skillLevels: 4
   level: 18
 
   skillOnKill: 250
@@ -158,8 +159,12 @@
     perception: 300
 
   usableSkills:
+    - Push
+    - TrueSight
+    - DarkVision
     - MagicBolt
     - Asper
+    - GhostWail
 
   gold:
     min: 13560
