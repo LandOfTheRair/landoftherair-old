@@ -12,6 +12,9 @@
     word-wrap: break-word;
     position: relative;
 
+    display: flex;
+    flex-direction: column;
+
     height: calc(100% - 31px);
 
     .filter-buttons {
