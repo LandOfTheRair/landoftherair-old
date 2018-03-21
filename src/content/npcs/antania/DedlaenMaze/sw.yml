@@ -151,8 +151,9 @@
 
   otherStats:
     con: 18
-    accuracy: 6
-    offense: 6
+    accuracy: 7
+    offense: 7
+    defense: 3
     perception: 300
 
   usableSkills:
@@ -181,9 +182,12 @@
     - damageType: 'magical'
       potency: 0
 
+  tansFor: Dedlaen Ghost Cloak
+
   gear:
     Ear: Enemy Invisibility Earring
     Hands: Maze Ghoul Claws
+    Robe1: Dedlaen Ghost Cloak
 
   drops:
     - result: Dedlaen Transmute Pearl

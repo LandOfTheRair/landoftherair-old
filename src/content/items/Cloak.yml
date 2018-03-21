@@ -46,3 +46,16 @@
   desc: "a woolen cloak"
   value: 10
   sprite: 211
+
+- name: Dedlaen Ghost Cloak
+  stats:
+    armorClass: 1
+    offense: 1
+    defense: 1
+  effect:
+    name: Transmute
+    uses: 100
+    potency: 20
+  desc: "a woolen cloak"
+  value: 3699
+  sprite: 18
