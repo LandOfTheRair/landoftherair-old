@@ -144,7 +144,7 @@ class NPCLoader {
     if(!npc.npcId) { console.error(`ERROR: ${JSON.stringify(npc)} has no npcId!`); return false; }
     if(npc.baseClass && !Classes[npc.baseClass]) { console.error(`ERROR: ${npc.npcId} has an invalid baseClass ${npc.baseClass}!`); return false; }
 
-    const validAttributes = ['physical', 'blunt', 'sharp', 'magic', 'necrotic', 'fire', 'ice', 'water', 'energy'];
+    const validAttributes = ['physical', 'blunt', 'sharp', 'magical', 'necrotic', 'fire', 'ice', 'water', 'energy'];
 
     if(npc.attributes) {
       for(let i = 0; i < npc.attributes.length; i++) {
@@ -160,6 +160,13 @@ class NPCLoader {
           return false;
         }
       }
+    }
+
+    const validMonsterClasses = ['Undead', 'Beast'];
+
+    if(npc.monsterClass && !includes(validMonsterClasses, npc.monsterClass)) {
+      console.error(`ERROR: ${npc.npcId} has an invalid monster class: ${npc.monsterClass}`);
+      return false;
     }
 
     const validateKeys = [

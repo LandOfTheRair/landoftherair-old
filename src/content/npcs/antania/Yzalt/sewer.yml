@@ -1,6 +1,7 @@
 - npcId: Yzalt Sewer Rat
   name: sewer rat
   hostility: Always
+  monsterClass: Beast
   sprite: 310
   alignment: Evil
   stats: 9
@@ -56,6 +57,7 @@
 - npcId: Yzalt Sewer RatGuard
   name: ratguard
   hostility: Always
+  monsterClass: Beast
   sprite: 310
   alignment: Evil
   stats: 13

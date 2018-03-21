@@ -9,12 +9,14 @@ import { DeathHelper } from '../../server/helpers/character/death-helper';
 import { Player } from './player';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
+export type MonsterClass = 'Undead' | 'Beast';
 
 export class NPC extends Character {
   npcId: string;
   uuid: string;
 
   hostility: Hostility = 'OnHit';
+  monsterClass?: MonsterClass;
 
   vendorItems: Item[];
 

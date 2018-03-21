@@ -1,6 +1,7 @@
 
 - npcId: Dedlaen Skeleton
   name: skeleton
+  monsterClass: Undead
   hostility: Always
   sprite: 285
   alignment: Evil

@@ -486,3 +486,23 @@
     potency: 30
     canApply: true
   value: 3000
+
+- name: EtherFire Potion (5oz)
+  desc: "a translucent blue bottle with fiery-hot mist emanating from it"
+  extendedDesc: "a bottle of Ether Fire"
+  sprite: 889
+  ounces: 5
+  effect:
+    name: EtherFire
+    potency: 2
+  value: 3000
+
+- name: BeastRipper Potion (5oz)
+  desc: "a translucent blue bottle with a green mist that smells like leaves"
+  extendedDesc: "a bottle of Beast Ripper"
+  sprite: 890
+  ounces: 5
+  effect:
+    name: BeastRipper
+    potency: 2
+  value: 3000

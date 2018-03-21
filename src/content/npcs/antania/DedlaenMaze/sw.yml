@@ -2,6 +2,7 @@
 - npcId: Dedlaen Mummy
   name: mummy
   hostility: Always
+  monsterClass: Undead
   sprite: 155
   alignment: Evil
   stats: 12
@@ -34,7 +35,7 @@
 
   attributes:
     - damageType: 'physical'
-      potency: 0.75
+      potency: 0.5
     - damageType: 'fire'
       potency: 1.5
 
@@ -54,6 +55,7 @@
 - npcId: Dedlaen Ghoul
   name: ghoul
   hostility: Always
+  monsterClass: Undead
   sprite: 375
   alignment: Evil
   stats: 14
@@ -89,6 +91,7 @@
 - npcId: Dedlaen Spectre
   name: spectre
   hostility: Always
+  monsterClass: Undead
   sprite: 970
   baseClass: Mage
   alignment: Evil
@@ -125,6 +128,10 @@
   giveXp:
     min: 41000
     max: 45000
+
+  attributes:
+    - damageType: 'physical'
+      potency: 0
 
   gear:
     Hands: Maze Ghoul Claws

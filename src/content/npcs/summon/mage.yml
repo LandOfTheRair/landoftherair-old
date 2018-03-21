@@ -1,6 +1,7 @@
 
 - npcId: Mage Summon Deer
   name: deer
+  monsterClass: Beast
   sprite: 205
   stats: 5
   skillLevels: 3
@@ -44,6 +45,7 @@
 
 - npcId: Mage Summon Bear
   name: bear
+  monsterClass: Beast
   sprite: 210
   stats: 15
   skillLevels: 4
@@ -71,6 +73,7 @@
 - npcId: Mage Summon Salamander
   name: salamander
   sprite: 230
+  monsterClass: Beast
   stats: 15
   skills:
     Conjuration: 5
@@ -95,6 +98,7 @@
 
 - npcId: Mage Summon Chillspider
   name: chillspider
+  monsterClass: Beast
   sprite: 800
   stats: 15
   skillLevels: 6

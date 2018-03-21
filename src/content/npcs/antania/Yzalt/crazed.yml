@@ -365,6 +365,7 @@
 - npcId: Crazed Mummy
   name: crazed mummy
   hostility: Always
+  monsterClass: Undead
   sprite: 155
   stats: 6
   otherStats:
@@ -400,7 +401,7 @@
 
   attributes:
     - damageType: 'physical'
-      potency: 0.75
+      potency: 0.5
     - damageType: 'fire'
       potency: 1.5
 

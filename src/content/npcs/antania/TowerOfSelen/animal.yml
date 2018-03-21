@@ -3,6 +3,7 @@
 - npcId: Tower Warg
   name: warg
   hostility: Always
+  monsterClass: Beast
   sprite: 405
   alignment: Evil
   stats: 10
@@ -40,6 +41,7 @@
 - npcId: Tower Warspider
   name: warspider
   hostility: Always
+  monsterClass: Beast
   sprite: 800
   alignment: Evil
   stats: 9

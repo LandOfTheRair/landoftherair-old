@@ -102,3 +102,23 @@
     - Ether Scale
     - Ether Scale
 
+- item: EtherFire Potion (5oz)
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 2
+  xpGained: 5000
+  ingredients:
+    - Holy Water
+    - Weak BarFire Potion
+    - Rotting Mummy Grub
+
+- item: BeastRipper Potion (5oz)
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 2
+  xpGained: 5000
+  ingredients:
+    - Holy Water
+    - Weak BarNecro Potion
+    - Antanian Bear Meat
+

@@ -5,6 +5,7 @@
   sprite: 205
   allegiance: None
   hostility: OnHit
+  monsterClass: Beast
   stats: 3
   skillLevels:
     Martial: 2
@@ -33,6 +34,7 @@
   name: weredeer
   sprite: 205
   hostility: Always
+  monsterClass: Beast
   stats: 15
   skillLevels: 3
   level: 4
@@ -49,6 +51,12 @@
   usableSkills:
     - PoisonBiteWeak
 
+  attributes:
+    - damageType: 'physical'
+      potency: 0.75
+    - damageType: 'magical'
+      potency: 0.75
+
   hp:
     min: 1700
     max: 2000
@@ -62,6 +70,7 @@
 - npcId: Rylt Wolf
   name: wolf
   hostility: Always
+  monsterClass: Beast
   sprite: 215
   alignment: Evil
   stats: 4
@@ -98,6 +107,7 @@
 - npcId: Rylt Bear
   name: bear
   hostility: Always
+  monsterClass: Beast
   sprite: 210
   alignment: Evil
   stats: 5
@@ -142,6 +152,7 @@
   name: werebear
   sprite: 210
   hostility: Always
+  monsterClass: Beast
   alignment: Evil
   stats: 10
   skillLevels: 4
@@ -168,6 +179,12 @@
 
   usableSkills:
     - PoisonBiteWeak
+
+  attributes:
+    - damageType: 'physical'
+      potency: 0.75
+    - damageType: 'magical'
+      potency: 0.75
 
   drops:
     - result: Werebear Claws

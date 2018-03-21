@@ -5,17 +5,23 @@ import { AttributeEffect, SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { Item, SharpWeaponClasses } from '../../../shared/models/item';
+import { NPC } from '../../../shared/models/npc';
 
 type AttributeType =
   'physical'
 | 'blunt'
 | 'sharp'
-| 'magic'
+| 'magical'
 | 'necrotic'
 | 'fire'
 | 'ice'
 | 'water'
 | 'energy';
+
+const ResistanceShredders = {
+  Undead: 'EtherFire',
+  Beast: 'BeastRipper'
+};
 
 export class Attribute extends SpellEffect implements AttributeEffect {
 
@@ -33,7 +39,7 @@ export class Attribute extends SpellEffect implements AttributeEffect {
       case 'sharp':    return '#000';
       case 'blunt':    return '#000';
 
-      case 'magic':    return '#f0f';
+      case 'magical':  return '#f0f';
       case 'necrotic': return '#0a0';
       case 'fire':     return '#DC143C';
       case 'ice':      return '#000080';
@@ -68,7 +74,15 @@ export class Attribute extends SpellEffect implements AttributeEffect {
 
   modifyDamage(attacker: Character, defender: Character, opts: { attackerWeapon: Item, damage: number, damageClass: string }) {
 
+    const monsterClass = (<NPC>defender).monsterClass;
+
     const { damageClass, attackerWeapon, damage } = opts;
+
+    // if you have something that ignores resistance, then it is ignored
+    if(monsterClass
+    && ResistanceShredders[monsterClass]
+    && attacker.hasEffect(ResistanceShredders[monsterClass])
+    && this.potency < 1) return damage;
 
     if(damageClass === this.damageType)                                                           return Math.floor(damage * this.potency);
 
@@ -77,7 +91,7 @@ export class Attribute extends SpellEffect implements AttributeEffect {
       if(this.damageType === 'blunt' && !includes(SharpWeaponClasses, attackerWeapon.itemClass))  return Math.floor(damage * this.potency);
     }
 
-    if(this.damageType === 'magic'
+    if(this.damageType === 'magical'
     && includes(['necrotic', 'fire', 'ice', 'water', 'energy'], damageClass))           return Math.floor(damage * this.potency);
 
     return damage;

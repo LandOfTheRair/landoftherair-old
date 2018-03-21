@@ -841,9 +841,15 @@ export class CombatHelper {
         damage -= magicReduction;
       }
 
-      if(damage < 0) damage = 0;
+      if(defender) {
+        defender.attributeEffectsList.forEach(eff => {
+          damage = eff.modifyDamage(attacker, defender, { attackerWeapon, damage, damageClass });
+        });
+      }
 
       mitigatedPercent = (damage / baseDamageWithModifiers);
+
+      if(damage < 0) damage = 0;
 
       if(!isRiposte) {
         if(damageReduced > 0 && damage !== 0 && attacker && attacker !== defender) {
@@ -893,12 +899,6 @@ export class CombatHelper {
 
     const otherClass = isHeal ? 'heal' : 'hit';
     const damageType = damageClass === 'physical' ? 'melee' : 'magic';
-
-    if(defender) {
-      defender.attributeEffectsList.forEach(eff => {
-        damage = eff.modifyDamage(attacker, defender, { attackerWeapon, damage, damageClass });
-      });
-    }
 
     if(!isRiposte && attackerDamageMessage) {
 
