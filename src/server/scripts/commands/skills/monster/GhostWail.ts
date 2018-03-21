@@ -5,6 +5,7 @@ import { Character } from '../../../../../shared/models/character';
 import { Stunned, Frosted } from '../../../../effects';
 
 import { every } from 'lodash';
+import { CharacterHelper } from '../../../../helpers/character/character-helper';
 
 export class GhostWail extends Skill {
 
@@ -36,6 +37,8 @@ export class GhostWail extends Skill {
       frosted.shouldNotShowMessage = true;
       frosted.cast(user, char);
       frosted.shouldNotShowMessage = false;
+
+      CharacterHelper.dropHands(char);
     });
   }
 
