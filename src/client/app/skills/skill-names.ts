@@ -60,9 +60,9 @@ const HealingMagic = [
   'Regenerator of Wounds',
   'Birdcaller',
   'Reflexive Healer',
+  'Miracle Maker',
   'Sharer of Boons',
   'Sharer of Vitality',
-  'Miracle Maker',
   'Smiter of Foes',
   'Creator of Essence'
 ];
