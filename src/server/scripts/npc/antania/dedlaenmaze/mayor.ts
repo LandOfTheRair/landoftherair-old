@@ -36,7 +36,7 @@ export const responses = (npc: NPC) => {
           let indexes = NPCLoader.getItemsFromPlayerSackByName(player, questToday.questItem);
           indexes = indexes.slice(0, questToday.amount);
 
-          if(indexes.length < questToday.amount) return 'You do not have enough of what I asked for!';
+          if(indexes.length < requiredInSack) return 'You do not have enough of what I asked for!';
           NPCLoader.takeItemsFromPlayerSack(player, indexes);
         }
 

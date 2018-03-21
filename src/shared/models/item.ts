@@ -306,7 +306,7 @@ export class Item {
     const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
     const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';
 
-    const usefulText = !this.canUseExpiration() ? '' : `This item does not appear useful anymore. `;
+    const usefulText = this.canUseExpiration() ? '' : `This item does not appear useful anymore. `;
 
     return `${starText} ${baseText}${sense1Text}${sense1AfterText}${sense2Text}${traitText}
     ${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}${skillText}
@@ -330,6 +330,7 @@ export class Item {
     const date = new Date(this.createdAt);
     date.setHours(date.getHours() + this.notUsableAfterHours);
     return +date > Date.now();
+    
   }
 
   canUseInCombat(char: Character): boolean {
