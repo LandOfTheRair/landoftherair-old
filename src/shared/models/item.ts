@@ -330,7 +330,6 @@ export class Item {
     const date = new Date(this.createdAt);
     date.setHours(date.getHours() + this.notUsableAfterHours);
     return +date > Date.now();
-    
   }
 
   canUseInCombat(char: Character): boolean {

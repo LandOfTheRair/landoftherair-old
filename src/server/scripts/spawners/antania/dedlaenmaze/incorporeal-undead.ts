@@ -10,8 +10,8 @@ export class IncorporealUndeadSpawner extends Spawner {
   constructor(room, opts) {
     super(room, opts, {
       respawnRate: 30,
-      initialSpawn: 2,
-      maxCreatures: 4,
+      initialSpawn: 1,
+      maxCreatures: 3,
       spawnRadius: 0,
       randomWalkRadius: 45,
       leashRadius: 65,

@@ -11,8 +11,8 @@ export class SolidUndeadSpawner extends Spawner {
   constructor(room, opts) {
     super(room, opts, {
       respawnRate: 30,
-      initialSpawn: 3,
-      maxCreatures: 7,
+      initialSpawn: 1,
+      maxCreatures: 3,
       spawnRadius: 0,
       randomWalkRadius: 45,
       leashRadius: 65,
