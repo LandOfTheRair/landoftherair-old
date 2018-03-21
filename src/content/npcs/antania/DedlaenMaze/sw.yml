@@ -154,6 +154,7 @@
     accuracy: 7
     offense: 7
     defense: 3
+    mpregen: 50
     perception: 300
 
   usableSkills:
