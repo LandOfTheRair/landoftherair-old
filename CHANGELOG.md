@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.1.14 (21/03/2018)
+
+#### Enhancements
+
+- [#644](https://github.com/LandOfTheRair/landoftherair/issues/644) Make NPC component perform better
+
+#### Bug Fixes
+
+- [#645](https://github.com/LandOfTheRair/landoftherair/issues/645) Attacking with food or bottle uses the item somehow
+
+---
+
 ## v0.1.13 (20/03/2018)
 
 #### Enhancements
