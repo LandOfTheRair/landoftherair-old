@@ -19,9 +19,9 @@ const learnedSkills = { Restoration: {
   13: ['Regen'],
   14: ['Augury'],
   15: ['Autoheal'],
-  16: ['PowerwordBarFire', 'PowerwordBarFrost', 'PowerwordBarNecro'],
-  17: ['PowerwordHeal'],
-  18: ['Wellspring'],
+  16: ['Wellspring'],
+  17: ['PowerwordBarFire', 'PowerwordBarFrost', 'PowerwordBarNecro'],
+  18: ['PowerwordHeal'],
   19: ['HolyFire'],
   20: ['VitalEssence']
 } };
