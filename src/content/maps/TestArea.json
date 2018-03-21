@@ -384,7 +384,7 @@
                  "name":"Tutorial Yeti Spawner",
                  "properties":
                     {
-                     "initialSpawn":16,
+                     "initialSpawn":3,
                      "lairName":"Tutorial Yeti",
                      "maxSpawn":30,
                      "randomWalkRadius":5,

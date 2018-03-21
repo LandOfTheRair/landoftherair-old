@@ -114,6 +114,7 @@ export class Encrust {
 export class ItemEffect {
   name: string;
   tier: string;
+  chance?: number;
   potency: number;
   uses?: number;
   autocast?: boolean;

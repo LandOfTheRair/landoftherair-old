@@ -2,7 +2,7 @@
 import { includes, random, capitalize, get, clamp } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../../shared/models/character';
-import { ShieldClasses, Item, MagicCutArmorClasses, WeaponClasses } from '../../../shared/models/item';
+import { ShieldClasses, Item, MagicCutArmorClasses, WeaponClasses, ItemEffect } from '../../../shared/models/item';
 import * as Classes from '../../classes';
 import * as Effects from '../../effects';
 
@@ -671,7 +671,7 @@ export class CombatHelper {
       this.tryApplyEffect(attacker, defender, encrustEffect);
 
     } else if(attackerWeapon.effect) {
-      this.tryApplyEffect(attacker, defender, attackerWeapon.effect);
+      this.tryApplyEffect(attacker, defender, attackerWeapon.effect, attackerWeapon);
     }
 
     if(damage <= 0) {
@@ -703,7 +703,11 @@ export class CombatHelper {
     });
   }
 
-  static tryApplyEffect(attacker, defender, effect) {
+  static tryApplyEffect(attacker: Character, defender: Character, effect: ItemEffect, source?: Item) {
+
+    // non-weapons (like bottles) can't trigger effects
+    if(source && !includes(WeaponClasses, source.itemClass)) return;
+
     const applyEffect = Effects[effect.name];
     if(!applyEffect) return;
 

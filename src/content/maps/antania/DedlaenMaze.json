@@ -23460,86 +23460,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":5404,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3776,
-                 "y":9536
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5405,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3584,
-                 "y":9408
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5406,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3712,
-                 "y":9408
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5407,
-                 "name":"Solid Undead Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/dedlaenmaze\/solid-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3584,
-                 "y":9472
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":5408,
                  "name":"Solid Undead Spawner",
                  "properties":
@@ -24096,46 +24016,6 @@
                  "width":64,
                  "x":3776,
                  "y":9408
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5437,
-                 "name":"Incorporeal Undead Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3520,
-                 "y":9472
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5438,
-                 "name":"Incorporeal Undead Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3584,
-                 "y":9344
                 }, 
                 {
                  "gid":2363,
@@ -24876,6 +24756,246 @@
                  "width":64,
                  "x":5312,
                  "y":7488
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5493,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6144,
+                 "y":9856
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5494,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6272,
+                 "y":9856
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5495,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6272,
+                 "y":10176
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5496,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6144,
+                 "y":10176
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5497,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6208,
+                 "y":9984
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5498,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6400,
+                 "y":9856
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5499,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6400,
+                 "y":9984
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5500,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6208,
+                 "y":10048
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5501,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6400,
+                 "y":9792
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5502,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6400,
+                 "y":10112
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5503,
+                 "name":"Solid Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/solid-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6336,
+                 "y":10048
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5504,
+                 "name":"Incorporeal Undead Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6144,
+                 "y":10048
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -25342,7 +25462,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5477,
+ "nextobjectid":5505,
  "orientation":"orthogonal",
  "properties":
     {
