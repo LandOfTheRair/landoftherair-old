@@ -39,7 +39,7 @@ export class Transmute extends SpellEffect {
       });
     });
 
-    if(runningTotal === 0) return caster.sendClientMessage('There is nothing here that you can transmute!');
+    if(runningTotal === 0) return;
 
     caster.sendClientMessageToRadius('You hear metal coins clinking together.', 4);
 

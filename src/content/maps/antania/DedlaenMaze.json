@@ -24996,6 +24996,38 @@
                  "width":64,
                  "x":6144,
                  "y":10048
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5505,
+                 "name":"Ghost Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Dedlaen Ghost",
+                     "maxSpawn":1,
+                     "randomWalkRadius":10,
+                     "respawnRate":900,
+                     "script":"global\/lair",
+                     "shouldStrip":false
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string",
+                     "shouldStrip":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4160,
+                 "y":11712
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -25462,7 +25494,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5505,
+ "nextobjectid":5506,
  "orientation":"orthogonal",
  "properties":
     {

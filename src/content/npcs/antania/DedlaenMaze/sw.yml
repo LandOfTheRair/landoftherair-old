@@ -134,4 +134,57 @@
       potency: 0
 
   gear:
+    Hands: Maze Mummy Claws
+
+- npcId: Dedlaen Ghost
+  name: ghost
+  hostility: Always
+  monsterClass: Undead
+  sprite: 300
+  baseClass: Mage
+  alignment: Evil
+  stats: 14
+  skillLevels: 3
+  level: 18
+
+  skillOnKill: 250
+
+  otherStats:
+    con: 18
+    accuracy: 6
+    offense: 6
+    perception: 300
+
+  usableSkills:
+    - MagicBolt
+    - Asper
+
+  gold:
+    min: 13560
+    max: 14570
+
+  hp:
+    min: 127950
+    max: 129350
+
+  mp:
+    min: 10000
+    max: 10000
+
+  giveXp:
+    min: 141000
+    max: 145000
+
+  attributes:
+    - damageType: 'physical'
+      potency: 0
+    - damageType: 'magical'
+      potency: 0
+
+  gear:
+    Ear: Enemy Invisibility Earring
     Hands: Maze Ghoul Claws
+
+  drops:
+    - result: Dedlaen Transmute Pearl
+      chance: -1
