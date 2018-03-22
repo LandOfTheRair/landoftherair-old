@@ -2,7 +2,8 @@
 import { Spawner } from '../../../../base/Spawner';
 
 const npcIds = [
-  'Dedlaen Skeleton'
+  { chance: 1,  result: 'Dedlaen Skeleton Knight' },
+  { chance: 10, result: 'Dedlaen Skeleton' }
 ];
 
 export class SkeletonSpawner extends Spawner {
