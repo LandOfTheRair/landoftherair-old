@@ -1,7 +1,7 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { Stunned as CastEffect } from '../../../../../effects/antibuffs/Stunned';
+import { Stun as CastEffect } from '../../../../../effects/antibuffs/Stun';
 
 export class Stun extends Skill {
 

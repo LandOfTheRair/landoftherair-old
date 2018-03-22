@@ -3,7 +3,7 @@ import { SpellEffect } from '../../base/Effect';
 import { Character, StatName } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { random, clamp } from 'lodash';
-import { Stunned } from '../antibuffs/Stunned';
+import { Stun } from '../antibuffs/Stun';
 
 export class Push extends SpellEffect {
 
@@ -69,7 +69,7 @@ export class Push extends SpellEffect {
     } else {
       target.sendClientMessageToRadius(`${target.name} was knocked over!`, 5);
 
-      const stunned = new Stunned({ duration: 1, potency: 1 });
+      const stunned = new Stun({ duration: 1, potency: 1 });
       stunned.cast(caster, target);
     }
   }

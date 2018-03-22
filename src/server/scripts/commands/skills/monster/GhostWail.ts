@@ -2,7 +2,7 @@
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
-import { Stunned, Frosted } from '../../../../effects';
+import { Stun, Frosted } from '../../../../effects';
 
 import { every } from 'lodash';
 import { CharacterHelper } from '../../../../helpers/character/character-helper';
@@ -28,7 +28,7 @@ export class GhostWail extends Skill {
 
     user.$$room.state.getPlayersInRange(user, 10).forEach(char => {
 
-      const stunned = new Stunned({ potency: 20, duration: 5 });
+      const stunned = new Stun({ potency: 20, duration: 5 });
       stunned.shouldNotShowMessage = true;
       stunned.cast(user, char);
       stunned.shouldNotShowMessage = false;

@@ -111,7 +111,7 @@ export class CombatHelper {
     // low chance of cstun
     if(random(1, defender.getTotalStat('con')) > 3) return;
 
-    const stun = new Effects.Stunned({});
+    const stun = new Effects.Stun({});
     stun.cast(attacker, defender);
   }
 

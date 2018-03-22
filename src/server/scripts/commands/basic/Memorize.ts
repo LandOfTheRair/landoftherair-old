@@ -1,7 +1,7 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { Stunned } from '../../../effects/antibuffs/Stunned';
+import { Stun } from '../../../effects/antibuffs/Stun';
 
 export class Memorize extends Command {
 
@@ -18,7 +18,7 @@ export class Memorize extends Command {
 
     player.sendClientMessage('You spend a moment taking in your surroundings...');
 
-    const stunned = new Stunned({ shouldNotShowMessage: true });
+    const stunned = new Stun({ shouldNotShowMessage: true });
     stunned.duration = 3;
     stunned.cast(player, player);
   }

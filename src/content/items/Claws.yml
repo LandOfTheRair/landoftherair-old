@@ -26,7 +26,7 @@
   desc: "a pair of sharp claws"
   value: 0
   effect:
-    name: Stunned
+    name: Stun
     potency: 10
     chance: 10
 
@@ -84,7 +84,7 @@
     offense: 3
     defense: 3
   effect:
-    name: Stunned
+    name: Stun
     potency: 15
     chance: 33
 

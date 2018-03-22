@@ -6,7 +6,7 @@ import { Character, StatName } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { RecentlyBlinded } from '../recents/RecentlyBlinded';
 
-export class Blinded extends SpellEffect {
+export class Blind extends SpellEffect {
 
   iconData = {
     name: 'evil-eyes',

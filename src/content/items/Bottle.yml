@@ -469,7 +469,7 @@
   sprite: 261
   ounces: 5
   effect:
-    name: Blinded
+    name: Blind
     duration: 30
     potency: 10
     canApply: true

@@ -292,7 +292,7 @@ export class GameState {
     const dist = 4;
 
     // darkness obscures all vision
-    if(player.hasEffect('Blinded') || (this.isDarkAt(player.x, player.y) && !player.hasEffect('DarkVision'))) {
+    if(player.hasEffect('Blind') || (this.isDarkAt(player.x, player.y) && !player.hasEffect('DarkVision'))) {
       for(let xx = player.x - dist; xx <= player.x + dist; xx++) {
         for(let yy = player.y - dist; yy <= player.y + dist; yy++) {
           affected[xx - player.x] = affected[xx - player.x] || {};

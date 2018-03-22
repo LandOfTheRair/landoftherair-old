@@ -1,7 +1,7 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character, StatName } from '../../../../../../shared/models/character';
-import { Blinded as CastEffect } from '../../../../../effects/antibuffs/Blinded';
+import { Blind as CastEffect } from '../../../../../effects/antibuffs/Blind';
 
 export class Blind extends Skill {
 
@@ -21,7 +21,7 @@ export class Blind extends Skill {
   range(attacker: Character) { return 5; }
 
   canUse(user: Character, target: Character) {
-    if(!super.canUse(user, target) || target.hasEffect('Blinded')) return false;
+    if(!super.canUse(user, target) || target.hasEffect('Blind')) return false;
 
     const userStat = user.baseClass === 'Healer' ? 'wis' : 'int';
 

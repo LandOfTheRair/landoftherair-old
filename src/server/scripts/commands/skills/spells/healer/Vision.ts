@@ -25,7 +25,7 @@ export class Vision extends Skill {
   canUse(user: Character, target: Character) {
     if(!super.canUse(user, target)) return false;
 
-    const blinded = target.hasEffect('Blinded');
+    const blinded = target.hasEffect('Blind');
     const blurred = target.hasEffect('BlurredVision');
 
     const skill = user.calcSkillLevel(SkillClassNames.Restoration);

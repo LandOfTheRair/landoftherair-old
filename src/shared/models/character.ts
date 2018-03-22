@@ -1294,7 +1294,7 @@ export class Character {
 
   public isUnableToAct(): boolean {
     const frozen = this.hasEffect('Frosted');
-    const stunned = this.hasEffect('Stunned');
+    const stunned = this.hasEffect('Stun');
 
     return get(frozen || {}, 'effectInfo.isFrozen', false) || stunned;
   }

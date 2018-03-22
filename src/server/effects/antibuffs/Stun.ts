@@ -4,7 +4,7 @@ import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { RecentlyStunned } from '../recents/RecentlyStunned';
 
-export class Stunned extends SpellEffect {
+export class Stun extends SpellEffect {
 
   iconData = {
     name: 'knockout',
@@ -18,7 +18,7 @@ export class Stunned extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagCasterName(caster.name);
 
-    if(target.hasEffect('RecentlyStunned') || target.hasEffect('Stunned')) {
+    if(target.hasEffect('RecentlyStunned') || target.hasEffect('Stun')) {
       return this.effectMessage(caster, `${target.name} resisted your stun!`);
     }
 

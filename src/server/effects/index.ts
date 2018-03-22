@@ -84,10 +84,10 @@ export * from './buildups/BuildupSneakAttack';
 export * from './bursts/DefensesShattered';
 export * from './recents/RecentlyShattered';
 
-export * from './antibuffs/Stunned';
+export * from './antibuffs/Stun';
 export * from './recents/RecentlyStunned';
 
-export * from './antibuffs/Blinded';
+export * from './antibuffs/Blind';
 export * from './antibuffs/BlurredVision';
 export * from './recents/RecentlyBlinded';
 

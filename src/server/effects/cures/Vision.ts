@@ -20,7 +20,7 @@ export class Vision extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    const blinded = char.hasEffect('Blinded');
+    const blinded = char.hasEffect('Blind');
     const blurred = char.hasEffect('BlurredVision');
 
     if(blinded) {
