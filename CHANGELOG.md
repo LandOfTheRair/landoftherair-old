@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.1.15 (22/03/2018)
+
+#### Enhancements
+
+- [#648](https://github.com/LandOfTheRair/landoftherair/issues/648) Cross reference dense tree tiles with plant spawns and make sure plants only spawn on empty tiles
+- [#646](https://github.com/LandOfTheRair/landoftherair/issues/646) Stop people from using succor if it is not usable
+- [#525](https://github.com/LandOfTheRair/landoftherair/issues/525) Add wall/broken wall as doors that have to be triggered open
+
+#### Bug Fixes
+
+- [#647](https://github.com/LandOfTheRair/landoftherair/issues/647) TypeError: Cannot read property 'hasEffect' of undefined
+
+---
+
 ## v0.1.14 (21/03/2018)
 
 #### Enhancements
