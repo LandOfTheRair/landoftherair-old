@@ -74,3 +74,26 @@
 
   requirements:
     level: 5
+
+- name: Ghast Claws
+  tier: 3
+  stats:
+    str: 1
+    dex: 1
+    agi: 1
+    offense: 3
+    defense: 3
+  effect:
+    name: Stunned
+    potency: 15
+    chance: 33
+
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 15
+
+  sprite: 294
+  desc: "a pair of silver, ghastly sharp claws"
+  value: 2500

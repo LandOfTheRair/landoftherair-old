@@ -42,6 +42,8 @@ export * from './augments/ImbueEnergy';
 export * from './augments/BeastRipper';
 export * from './augments/EtherFire';
 
+export * from './auras/NecroticAura';
+
 export * from './buffs/BarFire';
 export * from './buffs/BarFrost';
 export * from './buffs/BarNecro';

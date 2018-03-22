@@ -38,7 +38,7 @@ export class TauntStance extends StanceEffect {
 
   effectTick(char: Character) {
     char.$$room.state.getAllHostilesInRange(char, 4).forEach(target => {
-      target.addAgro(char, 1);
+      target.addAgro(char, 3);
     });
   }
 

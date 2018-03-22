@@ -352,8 +352,8 @@ export class GameState {
   }
 
   getAllHostilesInRange(ref: Character, radius): Character[] {
-    const targets = this.getInRange(this.allPossibleTargets, ref, radius, this.players.map(p => p.uuid));
-    return filter(targets, (target: Character) => this.checkTargetForHostility(target, ref));
+    const targets = this.getInRange(this.allPossibleTargets, ref, radius);
+    return filter(targets, (target: Character) => this.checkTargetForHostility(ref, target));
   }
 
   getAllAlliesInRange(ref: Character, radius): Character[] {
@@ -361,6 +361,7 @@ export class GameState {
     return filter(targets, (target: Character) => !this.checkTargetForHostility(ref, target));
   }
 
+  // hostility check: order is important
   private checkTargetForHostility(me: Character, target: Character): boolean {
     if(target.allegiance === 'NaturalResource' || target.allegiance === 'GM') return false;
     if(me.agro[target.uuid] || target.agro[me.uuid]) return true;
