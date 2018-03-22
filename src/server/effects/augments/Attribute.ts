@@ -79,7 +79,8 @@ export class Attribute extends SpellEffect implements AttributeEffect {
     const { damageClass, attackerWeapon, damage } = opts;
 
     // if you have something that ignores resistance, then it is ignored
-    if(monsterClass
+    if(attacker
+    && monsterClass
     && ResistanceShredders[monsterClass]
     && attacker.hasEffect(ResistanceShredders[monsterClass])
     && this.potency < 1) return damage;
