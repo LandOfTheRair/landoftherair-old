@@ -9,7 +9,8 @@ export const events = async (room: GameWorld) => {
     }
   };
 
-  room.addEvent('on:swwalltile', () => {
+  room.addEvent('on:swwalltile', ({ player }) => {
+    player.sendClientMessage('You hear a clicking noise.');
     toggleDoors();
   });
 

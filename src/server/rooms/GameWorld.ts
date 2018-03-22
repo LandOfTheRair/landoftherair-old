@@ -959,7 +959,7 @@ export class GameWorld extends Room<GameState> {
     return find(this.spawners, { name });
   }
 
-  public addEvent(name: string, callback: () => void) {
+  public addEvent(name: string, callback: (args: any) => void) {
     this.events[name] = this.events[name] || new Signal();
     this.events[name].add(callback);
   }
