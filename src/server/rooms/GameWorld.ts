@@ -587,7 +587,7 @@ export class GameWorld extends Room<GameState> {
 
       // legacy code for legacy players :P
       if(item.name === 'Succor Blob' && item.succorInfo && ref.isPlayer && ref.isPlayer()) {
-        ref.doSuccor(item.succorInfo);
+        ref.doSuccor(item.succorInfo, true);
       }
 
       return;
