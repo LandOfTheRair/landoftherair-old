@@ -64,3 +64,23 @@
 
   requirements:
     level: 15
+
+- name: Maze Revenant Halberd
+  desc: "a halberd that smells of death"
+  stats:
+    armorClass: 3
+    weaponArmorClass: 3
+    offense: 2
+    defense: -2
+  effect:
+    name: NecroticAura
+    potency: 2
+    autocast: true
+  tier: 4
+  type: Polearm
+  value: 14511
+  sprite: 230
+  binds: true
+
+  requirements:
+    level: 15

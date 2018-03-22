@@ -19,6 +19,14 @@ export class NecroticAura extends Effect {
     caster.applyEffect(this);
   }
 
+  effectStart(char: Character) {
+    char.sendClientMessage('A pungent aura envelops you.');
+  }
+
+  effectEnd(char: Character) {
+    char.sendClientMessage('Your pungent aura recedes.');
+  }
+
   effectTick(char: Character) {
     const damage = this.potency * 50;
     char.$$room.state.getAllHostilesInRange(char, 1).forEach(target => {

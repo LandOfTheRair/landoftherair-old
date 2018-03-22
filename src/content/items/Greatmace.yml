@@ -16,3 +16,19 @@
   secondaryType: Twohanded
   value: 150
   sprite: 325
+
+- name: Maze Revenant Greatmace
+  stats:
+    offense: 4
+    accuracy: 6
+    defense: -2
+  desc: "an iron greatmace that smells of death"
+  effect:
+    name: NecroticAura
+    potency: 2
+    autocast: true
+  tier: 4
+  type: Mace
+  secondaryType: Twohanded
+  value: 15025
+  sprite: 325

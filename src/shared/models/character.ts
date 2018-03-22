@@ -365,6 +365,10 @@ export class Character {
     }
 
     Object.keys(this.effects).forEach(effName => {
+      if(!Effects[effName]) {
+        delete this.effects[effName];
+        return;
+      }
       const eff = new Effects[effName](this.effects[effName]);
       eff.iconData = this.effects[effName].iconData;
 
@@ -556,16 +560,28 @@ export class Character {
   }
 
   setLeftHand(item: Item, recalc = true) {
+    const oldRightHand = this.leftHand;
+
     this.leftHand = item;
     this.itemCheck(item);
+
+    if(oldRightHand) this.checkAndUnapplyPermanentEffect(oldRightHand);
+    if(item)         this.checkAndCreatePermanentEffect(item);
+
     if(recalc) {
       this.recalculateStats();
     }
   }
 
   setRightHand(item: Item, recalc = true) {
+    const oldRightHand = this.rightHand;
+
     this.rightHand = item;
     this.itemCheck(item);
+
+    if(oldRightHand) this.checkAndUnapplyPermanentEffect(oldRightHand);
+    if(item)         this.checkAndCreatePermanentEffect(item);
+
     if(recalc) {
       this.recalculateStats();
     }
@@ -582,6 +598,15 @@ export class Character {
     effect.duration = -1;
     effect.effectInfo.isPermanent = true;
     this.applyEffect(effect);
+  }
+
+  private checkAndUnapplyPermanentEffect(item: Item) {
+    if(!item || !item.effect || !item.effect.autocast || !item.effect.name) return;
+
+    const effect = this.hasEffect(item.effect.name);
+    if(effect) {
+      this.unapplyEffect(effect, true);
+    }
   }
 
   tryToCastEquippedEffects() {
@@ -616,12 +641,7 @@ export class Character {
 
     this.gear[slot] = null;
 
-    if(item.effect && item.effect.autocast) {
-      const effect = this.hasEffect(item.effect.name);
-      if(effect) {
-        this.unapplyEffect(effect, true);
-      }
-    }
+    this.checkAndUnapplyPermanentEffect(item);
 
     this.recalculateStats();
   }

@@ -67,3 +67,22 @@
 
   requirements:
     level: 15
+
+- name: Maze Revenant Greatsword
+  stats:
+    offense: 6
+    defense: -2
+    accuracy: -5
+  desc: "an iron greatsword that smells of death"
+  effect:
+    name: NecroticAura
+    potency: 2
+    autocast: true
+  tier: 4
+  type: Twohanded
+  value: 15011
+  sprite: 198
+  binds: true
+
+  requirements:
+    level: 15

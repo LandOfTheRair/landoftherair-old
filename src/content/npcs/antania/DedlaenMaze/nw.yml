@@ -3,6 +3,56 @@
   name: skeleton
   monsterClass: Undead
   hostility: Always
+  sprite: 1015
+  alignment: Evil
+  stats: 15
+  skillLevels: 3
+  level: 15
+
+  skillOnKill: 10
+
+  otherStats:
+    con: 15
+    accuracy: 4
+    offense: 4
+    perception: 245
+
+  gold:
+    min: 3050
+    max: 3700
+
+  hp:
+    min: 17950
+    max: 21350
+
+  giveXp:
+    min: 39000
+    max: 45000
+
+  gear:
+    Hands: Maze Skeleton Claws
+
+  attributes:
+    - damageType: 'sharp'
+      potency: 0.75
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+
+  drops:
+    - result: Perfect Maze Skull
+      chance: 1
+      maxChance: 350
+
+- npcId: Dedlaen Skeleton Knight
+  name: skeleton knight
+  monsterClass: Undead
+  hostility: Always
   sprite: 285
   alignment: Evil
   stats: 15

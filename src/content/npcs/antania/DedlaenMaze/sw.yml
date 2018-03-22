@@ -237,3 +237,53 @@
   copyDrops:
     - drop: 'gear.Hands'
       chance: -1
+
+- npcId: Dedlaen Revenant
+  name: revenant
+  hostility: Always
+  sprite: 945
+  alignment: Evil
+  stats: 17
+  skillLevels: 4
+
+  level: 19
+
+  otherStats:
+    con: 22
+    accuracy: 7
+    offense: 7
+    defense: 3
+    mpregen: 50
+    perception: 350
+
+  skillOnKill: 50
+
+  gold:
+    min: 9500
+    max: 11700
+
+  hp:
+    min: 90950
+    max: 100000
+
+  giveXp:
+    min: 159000
+    max: 169000
+
+  usableSkills:
+    - Charge
+    - DoubleAttack
+
+  rightHand:
+    - Maze Revenant Greatmace
+    - Maze Revenant Greatsword
+    - Maze Revenant Halberd
+
+  gear:
+    Armor: Maze Bone Tunic
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1

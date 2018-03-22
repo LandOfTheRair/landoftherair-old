@@ -98,3 +98,28 @@
     - result: Tower Goblood
       chance: 1
       maxChance: 10
+
+- npcId: Maze Corpseflower Weed
+  name: weed
+  hostility: OnHit
+  allegiance: NaturalResource
+  sprite: 830
+  alignment: Neutral
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  skillOnKill: 1
+
+  hp:
+    min: 1
+    max: 1
+
+  giveXp:
+    min: 50
+    max: 100
+
+  drops:
+    - result: Maze Corpseflower
+      chance: 1
+      maxChance: 15
