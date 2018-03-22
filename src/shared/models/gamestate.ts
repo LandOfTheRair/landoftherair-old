@@ -481,6 +481,16 @@ export class GameState {
     door.density = !door.isOpen;
 
     this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y - 64 };
+
+    let { x, y } = door;
+
+    x /= 64;
+    y /= 64;
+
+    this.getPlayersInRange({ x, y }, 3).forEach(p => {
+      this.calculateFOV(p);
+      p.$$room.updateFOV(p);
+    });
   }
 
   // returns the stacked item if the item stacked

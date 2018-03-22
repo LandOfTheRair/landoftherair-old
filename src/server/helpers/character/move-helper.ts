@@ -96,7 +96,9 @@ export class MoveHelper {
 
   static tryToOpenDoor(player: Character, door, { gameState }): boolean {
     door.properties = door.properties || {};
-    const { requireLockpick, skillRequired, requireHeld } = door.properties;
+    const { requireLockpick, skillRequired, requireHeld, requireEventToOpen } = door.properties;
+
+    if(requireEventToOpen) return false;
 
     if(!door.isOpen
       && (requireLockpick || requireHeld)) {
@@ -139,16 +141,6 @@ export class MoveHelper {
 
     player.sendClientMessage(door.isOpen ? 'You close the door.' : 'You open the door.');
     gameState.toggleDoor(door);
-
-    let { x, y } = door;
-
-    x /= 64;
-    y /= 64;
-
-    gameState.getPlayersInRange({ x, y }, 3).forEach(p => {
-      gameState.calculateFOV(p);
-      p.$$room.updateFOV(p);
-    });
     return true;
   }
 

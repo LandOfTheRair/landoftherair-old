@@ -768,6 +768,8 @@ export class Character {
     const interactables = this.$$map.layers[MapLayer.Interactables].objects;
     const denseCheck = denseObjects.concat(interactables);
 
+    const oldEventSource = this.$$room.state.getInteractable(this.x, this.y, true, 'EventSource');
+
     let successfulStepsNoDensity = true;
 
     steps.forEach(step => {
@@ -805,6 +807,22 @@ export class Character {
 
     if(this.x > this.$$map.width)  this.x = this.$$map.width;
     if(this.y > this.$$map.height) this.y = this.$$map.height;
+
+    const newEventSource = this.$$room.state.getInteractable(this.x, this.y, true, 'EventSource');
+
+    if(oldEventSource) {
+      const evt = get(oldEventSource, 'properties.offEvent');
+      if(evt) {
+        this.$$room.dispatchEvent(evt, { player: this });
+      }
+    }
+
+    if(newEventSource) {
+      const evt = get(newEventSource, 'properties.onEvent');
+      if(evt) {
+        this.$$room.dispatchEvent(evt, { player: this });
+      }
+    }
 
     this.$$room.state.updateNPCVolatile(this);
 

@@ -35,6 +35,7 @@ import { SubscriptionHelper } from '../helpers/account/subscription-helper';
 import { PouchHelper } from '../helpers/character/pouch-helper';
 import { MoveHelper } from '../helpers/character/move-helper';
 import { TeleportHelper } from '../helpers/world/teleport-helper';
+import { Signal } from 'signals.js';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon' | 'block-offhand';
@@ -79,6 +80,8 @@ export class GameWorld extends Room<GameState> {
   private clearTimers: any[] = [];
 
   private usernameClientHash = {};
+
+  private events: { [key: string]: Signal } = {};
 
   get allSpawners() {
     return this.spawners;
@@ -190,8 +193,9 @@ export class GameWorld extends Room<GameState> {
       this.state.tick();
 
       if(this.script) {
-        const { setup } = require(__dirname + '/../scripts/dungeons/' + this.script);
-        setup(this);
+        const { setup, events } = require(__dirname + '/../scripts/dungeons/' + this.script);
+        if(setup) setup(this);
+        if(events) events(this);
       }
     };
 
@@ -954,4 +958,16 @@ export class GameWorld extends Room<GameState> {
   public getSpawnerByName(name: string): Spawner {
     return find(this.spawners, { name });
   }
+
+  public addEvent(name: string, callback: () => void) {
+    this.events[name] = this.events[name] || new Signal();
+    this.events[name].add(callback);
+  }
+
+  public dispatchEvent(name: string, args: any) {
+    if(!this.events[name]) throw new Error(`Event ${name} is not created on world!`);
+
+    this.events[name].dispatch(args);
+  }
+
 }
