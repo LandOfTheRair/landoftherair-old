@@ -1992,42 +1992,6 @@
                  "y":7488
                 }, 
                 {
-                 "gid":1479,
-                 "height":64,
-                 "id":3234,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":8384,
-                 "y":7232
-                }, 
-                {
-                 "gid":1426,
-                 "height":64,
-                 "id":3235,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":9024,
-                 "y":7232
-                }, 
-                {
-                 "gid":1466,
-                 "height":64,
-                 "id":3237,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":9024,
-                 "y":6976
-                }, 
-                {
                  "gid":1529,
                  "height":64,
                  "id":3238,
