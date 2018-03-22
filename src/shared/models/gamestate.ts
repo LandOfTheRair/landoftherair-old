@@ -480,7 +480,7 @@ export class GameState {
     if(!isUndefined(forceSet)) set = forceSet;
 
     if(set === door.isOpen) return;
-    
+
     door.isOpen = set;
     door.opacity = !set;
     door.density = !set;

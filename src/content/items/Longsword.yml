@@ -44,3 +44,10 @@
   value: 378
   sprite: 227
   binds: true
+
+- name: Maze Longsword
+  desc: "an iron longsword"
+  tier: 4
+  type: Onehanded
+  value: 1152
+  sprite: 197

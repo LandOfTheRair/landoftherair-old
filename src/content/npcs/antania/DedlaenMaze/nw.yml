@@ -18,8 +18,8 @@
     perception: 245
 
   gold:
-    min: 3050
-    max: 3700
+    min: 2050
+    max: 2700
 
   hp:
     min: 17950
@@ -30,11 +30,12 @@
     max: 45000
 
   gear:
+    Armor: Maze Bone Tunic
     Hands: Maze Skeleton Claws
 
   attributes:
     - damageType: 'sharp'
-      potency: 0.75
+      potency: 0.5
 
   copyDrops:
     - drop: 'rightHand'
@@ -55,16 +56,16 @@
   hostility: Always
   sprite: 285
   alignment: Evil
-  stats: 15
-  skillLevels: 3
-  level: 15
+  stats: 17
+  skillLevels: 4
+  level: 17
 
-  skillOnKill: 10
+  skillOnKill: 25
 
   otherStats:
-    con: 15
-    accuracy: 4
-    offense: 4
+    con: 20
+    accuracy: 5
+    offense: 5
     perception: 245
 
   gold:
@@ -72,19 +73,22 @@
     max: 3700
 
   hp:
-    min: 17950
-    max: 21350
+    min: 37950
+    max: 41350
 
   giveXp:
-    min: 39000
-    max: 45000
+    min: 69000
+    max: 75000
+
+  rightHand: Maze Longsword
 
   gear:
+    Armor: Maze Bone Tunic
     Hands: Maze Skeleton Claws
 
   attributes:
     - damageType: 'sharp'
-      potency: 0.75
+      potency: 0.5
 
   copyDrops:
     - drop: 'rightHand'
@@ -97,4 +101,4 @@
   drops:
     - result: Perfect Maze Skull
       chance: 1
-      maxChance: 350
+      maxChance: 250
