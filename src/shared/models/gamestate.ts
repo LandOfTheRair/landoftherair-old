@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, isUndefined } from 'lodash';
 
 import { Player } from './player';
 
@@ -475,10 +475,15 @@ export class GameState {
     }
   }
 
-  toggleDoor(door): void {
-    door.isOpen = !door.isOpen;
-    door.opacity = !door.isOpen;
-    door.density = !door.isOpen;
+  toggleDoor(door, forceSet?: boolean): void {
+    let set = !door.isOpen;
+    if(!isUndefined(forceSet)) set = forceSet;
+
+    if(set === door.isOpen) return;
+    
+    door.isOpen = set;
+    door.opacity = !set;
+    door.density = !set;
 
     this.mapData.openDoors[door.id] = { isOpen: door.isOpen, baseGid: door.gid, x: door.x, y: door.y - 64 };
 
