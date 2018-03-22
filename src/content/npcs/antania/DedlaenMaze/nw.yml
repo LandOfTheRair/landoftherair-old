@@ -95,8 +95,6 @@
       chance: -1
     - drop: 'gear.Armor'
       chance: -1
-    - drop: 'gear.Robe1'
-      chance: -1
 
   drops:
     - result: Perfect Maze Skull
