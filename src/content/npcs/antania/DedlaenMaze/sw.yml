@@ -52,7 +52,7 @@
   name: ghoul
   hostility: Always
   monsterClass: Undead
-  sprite: 375
+  sprite: 305
   alignment: Evil
   stats: 14
   skillLevels: 3
@@ -199,7 +199,7 @@
   name: ghast
   hostility: Always
   monsterClass: Undead
-  sprite: 375
+  sprite: 305
   alignment: Evil
   stats: 14
   skillLevels: 3
