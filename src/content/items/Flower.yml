@@ -13,3 +13,8 @@
   sprite: 736
   desc: "a vine of goblood"
   value: 20
+
+- name: Maze Corpseflower
+  sprite: 750
+  desc: "a chunk of corpseflower"
+  value: 30
