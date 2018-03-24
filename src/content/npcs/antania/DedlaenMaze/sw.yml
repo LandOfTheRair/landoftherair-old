@@ -46,7 +46,7 @@
   drops:
     - result: Rotting Mummy Grub
       chance: 1
-      maxChance: 70
+      maxChance: 10
 
 - npcId: Dedlaen Ghoul
   name: ghoul

@@ -48,7 +48,7 @@
   drops:
     - result: Perfect Maze Skull
       chance: 1
-      maxChance: 350
+      maxChance: 50
 
 - npcId: Dedlaen Skeleton Knight
   name: skeleton knight
@@ -99,7 +99,7 @@
   drops:
     - result: Perfect Maze Skull
       chance: 1
-      maxChance: 250
+      maxChance: 50
 
 - npcId: Dedlaen Crypt Thing
   name: crypt thing
