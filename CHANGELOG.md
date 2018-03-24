@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.1.16 (24/03/2018)
+
+#### Enhancements
+
+- [#652](https://github.com/LandOfTheRair/landoftherair/issues/652) adjust spawners so they can not spawn on dense tiles
+- [#650](https://github.com/LandOfTheRair/landoftherair/issues/650) mob count performance
+
+#### Balance Adjustments
+
+- [#651](https://github.com/LandOfTheRair/landoftherair/issues/651) increase drop rate of undead components in the maze
+
+---
+
 ## v0.1.15 (22/03/2018)
 
 #### Enhancements
