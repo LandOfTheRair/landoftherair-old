@@ -188,8 +188,9 @@ export class GameState {
 
   getSuccorRegion(player: Player): string {
     const succorRegion: any = filter(this.map.layers[MapLayer.Succorport].objects, reg => this.isInRegion(player, reg))[0];
+    const descRegion: any = filter(this.map.layers[MapLayer.RegionDescriptions].objects, reg => this.isInRegion(player, reg))[0];
 
-    return succorRegion ? succorRegion.name : 'the wilderness';
+    return get(succorRegion, 'name') || get(descRegion, 'name') || 'the wilderness';
   }
 
   private trimNPC(npc: NPC): any {
