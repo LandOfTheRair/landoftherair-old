@@ -100,3 +100,63 @@
     - result: Perfect Maze Skull
       chance: 1
       maxChance: 250
+
+- npcId: Dedlaen Crypt Thing
+  name: crypt thing
+  monsterClass: Undead
+  hostility: Always
+  sprite: 225
+  alignment: Evil
+  stats: 20
+  skillLevels: 4
+  level: 20
+
+  skillOnKill: 300
+
+  otherStats:
+    con: 25
+    accuracy: 5
+    offense: 5
+    perception: 300
+
+  gold:
+    min: 3050
+    max: 3700
+
+  hp:
+    min: 337950
+    max: 341350
+
+  giveXp:
+    min: 269000
+    max: 275000
+
+- npcId: Dedlaen Vampire
+  name: vampire
+  monsterClass: Undead
+  hostility: Always
+  sprite: 495
+  alignment: Evil
+  stats: 18
+  skillLevels: 4
+  level: 18
+
+  skillOnKill: 300
+
+  otherStats:
+    con: 25
+    accuracy: 5
+    offense: 5
+    perception: 300
+
+  gold:
+    min: 3050
+    max: 3700
+
+  hp:
+    min: 257950
+    max: 261350
+
+  giveXp:
+    min: 219000
+    max: 225000

@@ -29150,6 +29150,253 @@
                  "width":256,
                  "x":10112,
                  "y":3648
+                }, 
+                {
+                 "height":384,
+                 "id":5725,
+                 "name":"Struggle Room",
+                 "properties":
+                    {
+                     "desc":"You look around the room, seeing torn scrolls and blood."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":320,
+                 "y":2368
+                }, 
+                {
+                 "height":320,
+                 "id":5726,
+                 "name":"Bedroom",
+                 "properties":
+                    {
+                     "desc":"You see a relatively untouched bedroom, furnished with an ornate rug."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":256,
+                 "x":3072,
+                 "y":2560
+                }, 
+                {
+                 "height":448,
+                 "id":5727,
+                 "name":"Sacrifice Room",
+                 "properties":
+                    {
+                     "desc":"You look around the room and see pillars, rising to the ceiling, as well as sacrificial pyres and altars."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":1792,
+                 "y":2944
+                }, 
+                {
+                 "height":448,
+                 "id":5728,
+                 "name":"Rug Room",
+                 "properties":
+                    {
+                     "desc":"You see a very nice rug."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":1856,
+                 "y":5888
+                }, 
+                {
+                 "height":128,
+                 "id":5729,
+                 "name":"Small Barracks Room",
+                 "properties":
+                    {
+                     "desc":"You see a small barracks chamber complete with a weapon rack."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":2560,
+                 "y":6528
+                }, 
+                {
+                 "height":128,
+                 "id":5730,
+                 "name":"Small Barracks Room",
+                 "properties":
+                    {
+                     "desc":"You see a small barracks chamber complete with a weapon rack."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":3072,
+                 "y":6528
+                }, 
+                {
+                 "height":128,
+                 "id":5731,
+                 "name":"Small Barracks Room",
+                 "properties":
+                    {
+                     "desc":"You see a small barracks chamber complete with a weapon rack."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":2560,
+                 "y":6848
+                }, 
+                {
+                 "height":128,
+                 "id":5732,
+                 "name":"Small Barracks Room",
+                 "properties":
+                    {
+                     "desc":"You see a small barracks chamber complete with a weapon rack."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":3072,
+                 "y":6848
+                }, 
+                {
+                 "height":640,
+                 "id":5733,
+                 "name":"Armory Row",
+                 "properties":
+                    {
+                     "desc":"You see rows and rows of weapons lined up on the wall."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":4544,
+                 "y":2560
+                }, 
+                {
+                 "height":320,
+                 "id":5734,
+                 "name":"Ale\/Weapon Storage",
+                 "properties":
+                    {
+                     "desc":"You see a storage room, filled to the brim with barrels of ale and weapons."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":3840,
+                 "y":448
+                }, 
+                {
+                 "height":960,
+                 "id":5735,
+                 "name":"Ale Storage",
+                 "properties":
+                    {
+                     "desc":"You see barrels as far as the eye can see."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":256,
+                 "x":3072,
+                 "y":320
+                }, 
+                {
+                 "height":576,
+                 "id":5736,
+                 "name":"Ale Storage",
+                 "properties":
+                    {
+                     "desc":"The room here is littered with flour and ale."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":320,
+                 "y":4160
+                }, 
+                {
+                 "height":128,
+                 "id":5737,
+                 "name":"Small Toilet Room",
+                 "properties":
+                    {
+                     "desc":"This must have been where the soldiers relieved themselves."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":3072,
+                 "y":6208
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -29188,7 +29435,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5725,
+ "nextobjectid":5738,
  "orientation":"orthogonal",
  "properties":
     {
