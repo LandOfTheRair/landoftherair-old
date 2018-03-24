@@ -22540,6 +22540,25 @@
                  "width":64,
                  "x":8640,
                  "y":7104
+                }, 
+                {
+                 "height":256,
+                 "id":5802,
+                 "name":"Small Smithy",
+                 "properties":
+                    {
+                     "desc":"You enter a small smithy, hidden away in the caverns. Exquisite metals and crafts are hanging from the walls."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":11584,
+                 "y":6656
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -24267,6 +24286,405 @@
                  "width":320,
                  "x":6720,
                  "y":1472
+                }, 
+                {
+                 "height":704,
+                 "id":5777,
+                 "name":"Ritual Chamber",
+                 "properties":
+                    {
+                     "desc":"This room appears to be a ritualistic chamber of sorts."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":4480,
+                 "y":3712
+                }, 
+                {
+                 "height":192,
+                 "id":5778,
+                 "name":"Ritual Chamber",
+                 "properties":
+                    {
+                     "desc":"This room appears to be a ritualistic chamber of sorts."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":704,
+                 "x":4224,
+                 "y":3968
+                }, 
+                {
+                 "height":768,
+                 "id":5780,
+                 "name":"Church",
+                 "properties":
+                    {
+                     "desc":"You see a wide open room, filled to the brim with torches. Your voice seems to carry all the way across the room."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":640,
+                 "x":5056,
+                 "y":3456
+                }, 
+                {
+                 "height":512,
+                 "id":5781,
+                 "name":"Raided Armory",
+                 "properties":
+                    {
+                     "desc":"You find an armory that appears empty. It was probably raided a long time ago."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":4224,
+                 "y":5568
+                }, 
+                {
+                 "height":256,
+                 "id":5782,
+                 "name":"Mess Hall",
+                 "properties":
+                    {
+                     "desc":"You see a room with tables scattered about. The stench of rotting food fills the air."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":768,
+                 "x":3584,
+                 "y":4224
+                }, 
+                {
+                 "height":256,
+                 "id":5783,
+                 "name":"Guarded Room",
+                 "properties":
+                    {
+                     "desc":"You see signs of a struggle in this room, and an empty treasure chest."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":576,
+                 "x":3392,
+                 "y":4864
+                }, 
+                {
+                 "height":512,
+                 "id":5784,
+                 "name":"Guarded Room",
+                 "properties":
+                    {
+                     "desc":"You see signs of a struggle in this room, and an empty treasure chest."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":3520,
+                 "y":4736
+                }, 
+                {
+                 "height":768,
+                 "id":5785,
+                 "name":"Revenant Chambers",
+                 "properties":
+                    {
+                     "desc":"The scent of death permeates from the walls."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":3456,
+                 "y":7104
+                }, 
+                {
+                 "height":320,
+                 "id":5786,
+                 "name":"Revenant Chambers",
+                 "properties":
+                    {
+                     "desc":"The scent of death permeates from the walls."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":832,
+                 "x":3200,
+                 "y":7360
+                }, 
+                {
+                 "height":192,
+                 "id":5787,
+                 "name":"Study",
+                 "properties":
+                    {
+                     "desc":"You see a well-lit room with a bookshelf full of books and a desk."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":2752,
+                 "y":9088
+                }, 
+                {
+                 "height":320,
+                 "id":5788,
+                 "name":"War Room",
+                 "properties":
+                    {
+                     "desc":"You see a room that was looks like it was used for council preparations."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":704,
+                 "y":8192
+                }, 
+                {
+                 "height":512,
+                 "id":5790,
+                 "name":"Big Mess Hall",
+                 "properties":
+                    {
+                     "desc":"You see a well-stocked room, full of ale and weapons."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":704,
+                 "x":1088,
+                 "y":8704
+                }, 
+                {
+                 "height":960,
+                 "id":5791,
+                 "name":"Prison",
+                 "properties":
+                    {
+                     "desc":"You see a strange prison, where the prisoners have no way to get in or out."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":960,
+                 "x":384,
+                 "y":11456
+                }, 
+                {
+                 "height":896,
+                 "id":5792,
+                 "name":"Audience Chamber",
+                 "properties":
+                    {
+                     "desc":"This room instills a regal feel, as if it were inhabited by a royal family."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":4032,
+                 "y":11200
+                }, 
+                {
+                 "height":384,
+                 "id":5793,
+                 "name":"Audience Chamber",
+                 "properties":
+                    {
+                     "desc":"This room instills a regal feel, as if it were inhabited by a royal family."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":896,
+                 "x":3776,
+                 "y":11456
+                }, 
+                {
+                 "height":512,
+                 "id":5795,
+                 "name":"Graveyard",
+                 "properties":
+                    {
+                     "desc":"You see what appears to be a graveyard hidden away in the walls."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":6080,
+                 "y":9664
+                }, 
+                {
+                 "height":320,
+                 "id":5796,
+                 "name":"Crypt",
+                 "properties":
+                    {
+                     "desc":"You find a hidden crypt hidden behind the graveyard walls."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":5632,
+                 "y":9856
+                }, 
+                {
+                 "height":640,
+                 "id":5797,
+                 "name":"Ornate Chamber",
+                 "properties":
+                    {
+                     "desc":"This chamber is filled to the brim with ornate decorations."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":576,
+                 "x":5120,
+                 "y":7552
+                }, 
+                {
+                 "height":512,
+                 "id":5798,
+                 "name":"Organized Mess Hall",
+                 "properties":
+                    {
+                     "desc":"Tables and ale line the room."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":640,
+                 "x":768,
+                 "y":4864
+                }, 
+                {
+                 "height":512,
+                 "id":5799,
+                 "name":"Small Graveyard",
+                 "properties":
+                    {
+                     "desc":"You pass by a small graveyard."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":7488,
+                 "y":11136
+                }, 
+                {
+                 "height":192,
+                 "id":5801,
+                 "name":"Small Graveyard",
+                 "properties":
+                    {
+                     "desc":"You pass by a small graveyard."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":10496,
+                 "y":11520
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -24305,7 +24723,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5777,
+ "nextobjectid":5803,
  "orientation":"orthogonal",
  "properties":
     {
@@ -24332,6 +24750,7 @@
      "script":"string"
     },
  "renderorder":"right-down",
+ "tiledversion":"1.0.3",
  "tileheight":64,
  "tilesets":[
         {
@@ -26168,6 +26587,6 @@
         }],
  "tilewidth":64,
  "type":"map",
- "version":"1.0.0",
+ "version":1,
  "width":200
 }
