@@ -87,11 +87,19 @@ export class GameWorld extends Room<GameState> {
     return this.spawners;
   }
 
-  get mapRegion() {
+  get mapWidth(): number {
+    return this.state.map.width;
+  }
+
+  get mapHeight(): number {
+    return this.state.map.height;
+  }
+
+  get mapRegion(): string {
     return this.state.map.properties.region;
   }
 
-  get mapName() {
+  get mapName(): string {
     return this.state.mapName;
   }
 
@@ -103,11 +111,11 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.maxCreatures || 0;
   }
 
-  get disableCreatureSpawn() {
+  get disableCreatureSpawn(): boolean {
     return this.state.map.properties.disableCreatureRespawn;
   }
 
-  get canSpawnCreatures() {
+  get canSpawnCreatures(): boolean {
     return !this.disableCreatureSpawn && this.state._mapNPCs.length < this.maxCreatures;
   }
 
@@ -123,7 +131,7 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.maxItemsOnGround || 1000;
   }
 
-  get mapRespawnPoint() {
+  get mapRespawnPoint(): { map: string, x: number, y: number } {
     return {
       map: this.state.map.properties.respawnMap || this.mapName,
       x: this.state.map.properties.respawnX,
@@ -135,7 +143,7 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.subscriberOnly;
   }
 
-  get script() {
+  get script(): string {
     return this.state.map.properties.script;
   }
 

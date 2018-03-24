@@ -6,7 +6,7 @@ export class LairSpawner extends Spawner {
 
   constructor(room, opts, properties) {
 
-    const spawnerProps = extend({
+    const spawnerProps: any = extend({
       respawnRate: 3600,
       initialSpawn: 1,
       maxSpawn: 1,

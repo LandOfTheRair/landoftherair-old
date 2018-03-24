@@ -9,6 +9,7 @@ import { RandomlyShouts } from '../scripts/npc/common-responses';
 import { LootHelper } from '../helpers/world/loot-helper';
 import { Dangerous } from '../effects/special/Dangerous';
 import { Attribute } from '../effects/augments/Attribute';
+import { GameWorld } from '../rooms/GameWorld';
 
 export class Spawner {
 
@@ -62,7 +63,7 @@ export class Spawner {
   npcCreateCallback: Function;
   shouldBeActive = true;
 
-  constructor(private room, { x, y, map, name }, spawnOpts) {
+  constructor(private room: GameWorld, { x, y, map, name }, spawnOpts) {
     extend(this, spawnOpts);
 
     this.x = x;
@@ -194,8 +195,23 @@ export class Spawner {
       beltItems = compact(items);
     }
 
-    npcData.x = random(this.x - this.spawnRadius, this.x + this.spawnRadius);
-    npcData.y = random(this.y - this.spawnRadius, this.y + this.spawnRadius);
+    // spawn on any number of coordinates
+    let foundCoordinates = { x: 0, y: 0 };
+
+    while(!foundCoordinates.x || !foundCoordinates.y) {
+      const x = random(this.x - this.spawnRadius, this.x + this.spawnRadius);
+      const y = random(this.y - this.spawnRadius, this.y + this.spawnRadius);
+
+      const isWall = this.room.state.checkIfActualWall(x, y);
+      const invalidLocation = x < 4 || y < 4 || x > this.room.mapWidth - 4 || y > this.room.mapHeight - 4;
+
+      if(!isWall && !invalidLocation) {
+        foundCoordinates = { x, y };
+      }
+    }
+
+    npcData.x = foundCoordinates.x;
+    npcData.y = foundCoordinates.y;
     npcData.map = this.map;
 
     if(!npcData.name) {
@@ -300,7 +316,7 @@ export class Spawner {
   }
 
   getDistsForPlayers() {
-    return this.room.state.players.map(x => x.distFrom(this));
+    return this.room.state.allPlayers.map(x => x.distFrom(this));
   }
 
   shouldSlowDown(dists) {
