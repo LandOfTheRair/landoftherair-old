@@ -101,6 +101,9 @@
       chance: 1
       maxChance: 50
 
+  usableSkills:
+    - Charge
+
 - npcId: Dedlaen Crypt Thing
   name: crypt thing
   monsterClass: Undead
