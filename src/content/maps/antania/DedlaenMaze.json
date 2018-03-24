@@ -22939,8 +22939,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":3008,
-                 "y":5440
+                 "x":3200,
+                 "y":5888
                 }, 
                 {
                  "gid":2363,
@@ -22959,8 +22959,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1024,
-                 "y":5504
+                 "x":960,
+                 "y":5760
                 }, 
                 {
                  "gid":2363,
@@ -23019,8 +23019,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":3840,
-                 "y":1472
+                 "x":3008,
+                 "y":1536
                 }, 
                 {
                  "gid":2363,
@@ -23139,8 +23139,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1472,
-                 "y":8448
+                 "x":1216,
+                 "y":8192
                 }, 
                 {
                  "gid":2363,
@@ -23179,8 +23179,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":5440,
-                 "y":8704
+                 "x":5952,
+                 "y":8768
                 }, 
                 {
                  "gid":2363,
@@ -23199,7 +23199,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1472,
+                 "x":1280,
                  "y":10304
                 }, 
                 {
@@ -23239,8 +23239,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":5696,
-                 "y":11328
+                 "x":6272,
+                 "y":11456
                 }, 
                 {
                  "gid":2363,
@@ -23421,6 +23421,266 @@
                  "width":64,
                  "x":6336,
                  "y":10624
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5803,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4160,
+                 "y":1536
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5804,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5952,
+                 "y":1600
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5805,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5696,
+                 "y":2880
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5806,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5504,
+                 "y":3776
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5807,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3776,
+                 "y":2816
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5808,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1792,
+                 "y":4992
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5809,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5312,
+                 "y":6016
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5810,
+                 "name":"SW Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6144,
+                 "y":7488
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5811,
+                 "name":"SW Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4928,
+                 "y":9152
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5812,
+                 "name":"SW Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4864,
+                 "y":11264
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5813,
+                 "name":"SW Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2624,
+                 "y":9920
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5814,
+                 "name":"SW Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2624,
+                 "y":8320
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5815,
+                 "name":"SW Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4928,
+                 "y":8000
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -24723,7 +24983,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5803,
+ "nextobjectid":5816,
  "orientation":"orthogonal",
  "properties":
     {

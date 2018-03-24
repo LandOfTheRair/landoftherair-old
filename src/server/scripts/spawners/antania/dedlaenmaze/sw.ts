@@ -12,9 +12,9 @@ export class SWSpawner extends Spawner {
   constructor(room, opts) {
     super(room, opts, {
       respawnRate: 10,
-      initialSpawn: 30,
-      maxCreatures: 50,
-      spawnRadius: 20,
+      initialSpawn: 10,
+      maxCreatures: 35,
+      spawnRadius: 15,
       randomWalkRadius: 35,
       leashRadius: 45,
       npcIds
