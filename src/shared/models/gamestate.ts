@@ -4,6 +4,8 @@ import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, inclu
 import { Player } from './player';
 
 import * as Mrpas from 'mrpas';
+import * as RBush from 'rbush';
+
 import { Item } from './item';
 import { NPC } from './npc';
 import { Character } from './character';
@@ -65,6 +67,9 @@ export class GameState {
 
   private npcVolatile: any = {};
 
+  @nonenumerable
+  private npcQuadtree: any;
+
   get formattedMap() {
     const map = cloneDeep(this.map);
     map.layers.length = 10;
@@ -97,6 +102,11 @@ export class GameState {
     extend(this, opts);
     this.initFov();
     this.findSecretWalls();
+    this.initNPCQuadtree();
+  }
+
+  private initNPCQuadtree() {
+    this.npcQuadtree = RBush();
   }
 
   private findSecretWalls() {
@@ -204,6 +214,17 @@ export class GameState {
     this.trimmedNPCs[npc.uuid] = this.trimNPC(npc);
 
     this.updateNPCVolatile(npc);
+    this.npcQuadtreeInsert(npc);
+  }
+
+  private npcQuadtreeInsert(npc: NPC): void {
+    this.npcQuadtree.insert({
+      minX: npc.x,
+      minY: npc.y,
+      maxX: npc.x,
+      maxY: npc.y,
+      uuid: npc.uuid
+    });
   }
 
   syncNPC(npc: NPC): void {
@@ -223,11 +244,33 @@ export class GameState {
     if(!this.isDisposing) {
       delete this.npcVolatile[npc.uuid];
     }
+
+    this.npcQuadtreeRemove(npc);
   }
 
-  updateNPCVolatile(char: Character): void {
+  private npcQuadtreeRemove(npc: NPC, oldPos: any = {}): void {
+    const oldPosRange = {
+      minX: oldPos.x || npc.x,
+      minY: oldPos.y || npc.y,
+      maxX: oldPos.x || npc.x,
+      maxY: oldPos.y || npc.y,
+      uuid: oldPos.uuid || npc.uuid
+    };
+
+    this.npcQuadtree.remove(oldPosRange, (me, treeItem) => {
+      return me.uuid === treeItem.uuid;
+    });
+  }
+
+  updateNPCVolatile(char: NPC, updateBasedOnThisOldPos?: any): void {
     if(!this.mapNPCs[char.uuid] || this.isDisposing) return;
     this.npcVolatile[char.uuid] = { x: char.x, y: char.y, hp: char.hp, dir: char.dir, agro: char.agro, effects: char.effects };
+
+    if(updateBasedOnThisOldPos) {
+      updateBasedOnThisOldPos.uuid = char.uuid;
+      this.npcQuadtreeRemove(char, updateBasedOnThisOldPos);
+      this.npcQuadtreeInsert(char);
+    }
   }
 
   addPlayer(player, clientId: string): void {
@@ -348,30 +391,61 @@ export class GameState {
   }
 
   getAllInRange(ref, radius, except: string[] = [], useSight = true): Character[] {
-    return this.getInRange(this.allPossibleTargets, ref, radius, except, useSight);
+    const playersInRange = this.getPlayersInRange(ref, radius, except, useSight);
+
+    const foundNPCsInRange = this.npcQuadtree.search({
+      minX: ref.x - radius,
+      minY: ref.y - radius,
+      maxX: ref.x + radius,
+      maxY: ref.y + radius
+    });
+
+    const allNPCs = foundNPCsInRange.map(x => this.mapNPCs[x.uuid]);
+    const allAliveNPCs = allNPCs.filter((x: Character) => !x.isDead());
+
+    return playersInRange.concat(allAliveNPCs);
   }
 
   getAllHostilesInRange(ref: Character, radius): Character[] {
-    const targets = this.getInRange(this.allPossibleTargets, ref, radius);
+    const targets = this.getAllInRange(ref, radius);
     return filter(targets, (target: Character) => this.checkTargetForHostility(ref, target));
   }
 
   getAllAlliesInRange(ref: Character, radius): Character[] {
-    const targets = this.getInRange(this.allPossibleTargets, ref, radius);
+    const targets = this.getAllInRange(ref, radius);
     return filter(targets, (target: Character) => !this.checkTargetForHostility(ref, target));
   }
 
   // hostility check: order is important
   private checkTargetForHostility(me: Character, target: Character): boolean {
+
+    // I can never be hostile to myself
+    if(me === target) return false;
+
+    // GMs and natural resources are never hostile
     if(target.allegiance === 'NaturalResource' || target.allegiance === 'GM') return false;
+
+    // if either of us are agro'd to each other, there is hostility
     if(me.agro[target.uuid] || target.agro[me.uuid]) return true;
+
+    // if the target is disguised, and my wil is less than the targets cha, he is not hostile to me
     if(target.hasEffect('Disguise') && me.getTotalStat('wil') < target.getTotalStat('cha')) return false;
+
+    // if my hostility is based on faction, and either the target or my faction is hostile to each other, yes
     if((<NPC>me).hostility === 'Faction' && (
          me.isHostileTo(target.allegiance)
       || target.isHostileTo(me.allegiance))) return true;
+
+    // if we are of the same allegiance, no hostility
     if(me.allegiance === target.allegiance) return false;
-    if((<NPC>me).hostility === 'Always') return true;
+
+    // if either of us is an npc and always hostile, yes
+    if((<NPC>me).hostility === 'Always' || (<NPC>target).hostility === 'Always') return true;
+
+    // if I am evil, all do-gooders are hostile
     if(me.alignment === 'Evil' && target.alignment === 'Good') return true;
+
+    // no hostility
     return false;
   }
 

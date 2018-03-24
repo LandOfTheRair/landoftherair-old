@@ -797,6 +797,8 @@ export class Character {
       const nextTile = denseTiles[nextTileLoc];
       const isNextTileFluid = fluidTiles[nextTileLoc] !== 0;
 
+      const oldPos = { x: this.x, y: this.y };
+
       if(this.aquaticOnly && !isNextTileFluid) return;
 
       if(nextTile === 0) {
@@ -820,6 +822,8 @@ export class Character {
       if(!isChasing && !this.isValidStep(step)) return;
       this.x += step.x;
       this.y += step.y;
+
+      this.$$room.state.updateNPCVolatile(this, oldPos);
     });
 
     if(this.x < 0) this.x = 0;

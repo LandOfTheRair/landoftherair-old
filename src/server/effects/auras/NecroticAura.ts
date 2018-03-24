@@ -29,6 +29,7 @@ export class NecroticAura extends Effect {
 
   effectTick(char: Character) {
     const damage = this.potency * 50;
+
     char.$$room.state.getAllHostilesInRange(char, 1).forEach(target => {
       const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
 

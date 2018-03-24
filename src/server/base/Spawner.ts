@@ -361,6 +361,7 @@ export class Spawner {
         return;
       }
 
+      // dead things always tick when the spawner is slow for normal-speed corpse rotting
       if(this.$$isStayingSlow) {
         if(npc.isDead()) {
           npc.tick();
