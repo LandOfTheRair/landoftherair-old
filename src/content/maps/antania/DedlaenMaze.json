@@ -22540,25 +22540,6 @@
                  "width":64,
                  "x":8640,
                  "y":7104
-                }, 
-                {
-                 "height":256,
-                 "id":5802,
-                 "name":"Small Smithy",
-                 "properties":
-                    {
-                     "desc":"You enter a small smithy, hidden away in the caverns. Exquisite metals and crafts are hanging from the walls."
-                    },
-                 "propertytypes":
-                    {
-                     "desc":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":448,
-                 "x":11584,
-                 "y":6656
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -24945,6 +24926,25 @@
                  "width":192,
                  "x":10496,
                  "y":11520
+                }, 
+                {
+                 "height":256,
+                 "id":5817,
+                 "name":"Small Smithy",
+                 "properties":
+                    {
+                     "desc":"You enter a small smithy, hidden away in the caverns. Exquisite metals and crafts are hanging from the walls."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":11584,
+                 "y":6656
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -24983,7 +24983,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5816,
+ "nextobjectid":5818,
  "orientation":"orthogonal",
  "properties":
     {
