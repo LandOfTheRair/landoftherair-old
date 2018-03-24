@@ -24945,27 +24945,6 @@
                  "width":448,
                  "x":11584,
                  "y":6656
-                }, 
-                {
-                 "height":1408,
-                 "id":5822,
-                 "name":"Skullsdead Lake",
-                 "properties":
-                    {
-                     "restrictSuccor":true,
-                     "restrictTeleport":true
-                    },
-                 "propertytypes":
-                    {
-                     "restrictSuccor":"bool",
-                     "restrictTeleport":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":1792,
-                 "x":10752,
-                 "y":11136
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -25106,7 +25085,7 @@
                 {
                  "height":768,
                  "id":5825,
-                 "name":"Revenant Halls",
+                 "name":"Revenant Hall",
                  "properties":
                     {
                      "restrictSuccor":true,
@@ -25123,6 +25102,27 @@
                  "width":768,
                  "x":3200,
                  "y":7104
+                }, 
+                {
+                 "height":1408,
+                 "id":5826,
+                 "name":"Skullsdead Lake",
+                 "properties":
+                    {
+                     "restrictSuccor":true,
+                     "restrictTeleport":true
+                    },
+                 "propertytypes":
+                    {
+                     "restrictSuccor":"bool",
+                     "restrictTeleport":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1792,
+                 "x":10752,
+                 "y":11136
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -25130,7 +25130,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5826,
+ "nextobjectid":5827,
  "orientation":"orthogonal",
  "properties":
     {
