@@ -17,7 +17,7 @@ export class IceMist extends SpellEffect {
 
     MessageHelper.drawEffectInRadius(target, 'ICE_MIST', target, 1, 6);
 
-    const attacked = target.$$room.state.getAllInRange(target, 1);
+    const attacked = target.$$room.state.getAllInRange(target, 1, [], false);
 
     attacked.forEach(refTarget => {
       const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);

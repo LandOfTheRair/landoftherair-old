@@ -595,9 +595,8 @@ export class Character {
   private checkAndCreatePermanentEffect(item: Item) {
     if(!item || !item.effect || !item.effect.autocast || !item.effect.name) return;
     const effect = new Effects[item.effect.name](item.effect);
-    effect.duration = -1;
-    effect.effectInfo.isPermanent = true;
-    this.applyEffect(effect);
+    effect.flagPermanent(this.uuid);
+    effect.cast(this, this);
   }
 
   private checkAndUnapplyPermanentEffect(item: Item) {

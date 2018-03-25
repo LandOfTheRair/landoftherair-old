@@ -13,9 +13,11 @@ export class NecroticAura extends Effect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.flagPermanent(caster.uuid);
     this.potency = this.potency || 1;
+    this.flagPermanent(caster.uuid);
+    this.flagCasterName(caster.name);
     this.effectInfo.damage = this.potency * 50;
+    this.iconData.tooltipDesc = `Pulsing ${this.effectInfo.damage} necrotic damage in a 1x1.`;
     caster.applyEffect(this);
   }
 
@@ -30,8 +32,9 @@ export class NecroticAura extends Effect {
   effectTick(char: Character) {
     const damage = this.potency * 50;
 
+    const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
+
     char.$$room.state.getAllHostilesInRange(char, 1).forEach(target => {
-      const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
 
       CombatHelper.magicalAttack(caster, target, {
         effect: this,

@@ -347,7 +347,7 @@ export class GameState {
     if(ref.fov && useSight) {
       const offsetX = target.x - ref.x;
       const offsetY = target.y - ref.y;
-      return !ref.canSee(offsetX, offsetY);
+      return ref.canSee(offsetX, offsetY);
     }
 
     return true;
@@ -386,7 +386,8 @@ export class GameState {
     const allAliveNPCs = allNPCs.filter((x: Character) => !x.isDead());
 
     const allPossibleTargets = playersInRange.concat(allAliveNPCs);
-    const filteredTargets = allPossibleTargets.filter(char => includes(except, char.uuid));
+
+    const filteredTargets = allPossibleTargets.filter(char => !includes(except, char.uuid));
     const visibleTargets = filteredTargets.filter(char => this.isVisibleTo(ref, char, useSight));
 
     return visibleTargets;
