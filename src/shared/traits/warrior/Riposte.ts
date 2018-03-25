@@ -13,7 +13,7 @@ export class Riposte extends Trait {
   static maxLevel = 10;
 
   static canBuy(player: Player): boolean {
-    return Trait.canBuy(player) && player.level >= 15;
+    return super.canBuy(player) && player.level >= 15;
   }
 
 }

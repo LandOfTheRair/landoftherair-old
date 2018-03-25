@@ -13,7 +13,7 @@ export class OffhandFinesse extends Trait {
   static maxLevel = 15;
 
   static canBuy(player: Player): boolean {
-    return Trait.canBuy(player) && player.level >= 10;
+    return super.canBuy(player) && player.level >= 10;
   }
 
 }

@@ -13,11 +13,11 @@ export class Deadeye extends Trait {
   static maxLevel = 20;
 
   static canBuy(player: Player): boolean {
-    return Trait.canBuy(player) && this.currentlyInEffect(player);
+    return super.canBuy(player) && this.currentlyInEffect(player);
   }
 
   static currentlyInEffect(player: Player): boolean {
-    return Trait.currentlyInEffect(player) && player.getBaseTraitLevel('EagleEye') === 10;
+    return super.currentlyInEffect(player) && player.getBaseTraitLevel('EagleEye') === 10;
   }
 
 }
