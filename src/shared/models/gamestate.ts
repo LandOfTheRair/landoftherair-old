@@ -70,6 +70,9 @@ export class GameState {
   @nonenumerable
   private npcQuadtree: any;
 
+  @nonenumerable
+  private playerQuadtree: any;
+
   get formattedMap() {
     const map = cloneDeep(this.map);
     map.layers.length = 10;
@@ -90,10 +93,6 @@ export class GameState {
     return this.map.properties.maxSkill || 1;
   }
 
-  get allPossibleTargets(): Character[] {
-    return (<any>this.players).concat(this._mapNPCs);
-  }
-
   get allPlayers(): Player[] {
     return this.players;
   }
@@ -102,11 +101,12 @@ export class GameState {
     extend(this, opts);
     this.initFov();
     this.findSecretWalls();
-    this.initNPCQuadtree();
+    this.initQuadtrees();
   }
 
-  private initNPCQuadtree() {
+  private initQuadtrees() {
     this.npcQuadtree = RBush();
+    this.playerQuadtree = RBush();
   }
 
   private findSecretWalls() {
@@ -280,6 +280,18 @@ export class GameState {
     this.playerClientIdHash[clientId] = player;
     this.players.push(player);
     this.resetPlayerStatus(player);
+
+    this.playerQuadtreeInsert(player);
+  }
+
+  private playerQuadtreeInsert(player: Player): void {
+    this.playerQuadtree.insert({
+      minX: player.x,
+      minY: player.y,
+      maxX: player.x,
+      maxY: player.y,
+      uuid: player.uuid
+    });
   }
 
   findPlayer(username): Player {
@@ -297,6 +309,29 @@ export class GameState {
     this.players = reject(this.players, (p: Player) => p.username === playerRef.username);
 
     playerRef.killAllPets();
+    this.playerQuadtreeRemove(playerRef);
+  }
+
+  private playerQuadtreeRemove(player: Player, oldPos: any = {}): void {
+    const oldPosRange = {
+      minX: oldPos.x || player.x,
+      minY: oldPos.y || player.y,
+      maxX: oldPos.x || player.x,
+      maxY: oldPos.y || player.y,
+      uuid: oldPos.uuid || player.uuid
+    };
+
+    this.playerQuadtree.remove(oldPosRange, (me, treeItem) => {
+      return me.uuid === treeItem.uuid;
+    });
+  }
+
+  updatePlayerInQuadtree(char: Player, updateBasedOnThisOldPos?: any): void {
+    if(!updateBasedOnThisOldPos) return;
+
+    updateBasedOnThisOldPos.uuid = char.uuid;
+    this.playerQuadtreeRemove(char, updateBasedOnThisOldPos);
+    this.playerQuadtreeInsert(char);
   }
 
   addInteractable(obj: any): void {
@@ -367,6 +402,16 @@ export class GameState {
     player.fov = affected;
   }
 
+  private isVisibleTo(ref: Character, target: Character, useSight = true): boolean {
+    if(ref.fov && useSight) {
+      const offsetX = target.x - ref.x;
+      const offsetY = target.y - ref.y;
+      if(!ref.canSee(offsetX, offsetY)) return true;
+    }
+
+    return true;
+  }
+
   private getInRange(arr: Character[], ref, radius, except: string[] = [], useSight = true): Character[] {
 
     const { x, y } = ref;
@@ -387,11 +432,11 @@ export class GameState {
     });
   }
 
-  getPlayersInRange(ref, radius, except: string[] = [], useSight = true): Character[] {
+  getPlayersInRange(ref: { x: number, y: number }, radius, except: string[] = [], useSight = true): Character[] {
     return this.getInRange(this.players, ref, radius, except, useSight);
   }
 
-  getAllInRange(ref, radius, except: string[] = [], useSight = true): Character[] {
+  getAllInRange(ref: Character, radius, except: string[] = [], useSight = true): Character[] {
     const playersInRange = this.getPlayersInRange(ref, radius, except, useSight);
 
     const foundNPCsInRange = this.npcQuadtree.search({
@@ -404,7 +449,11 @@ export class GameState {
     const allNPCs = foundNPCsInRange.map(x => this.mapNPCs[x.uuid]);
     const allAliveNPCs = allNPCs.filter((x: Character) => !x.isDead());
 
-    return playersInRange.concat(allAliveNPCs);
+    const allPossibleTargets = playersInRange.concat(allAliveNPCs);
+    const filteredTargets = allPossibleTargets.filter(char => includes(except, char.uuid));
+    const visibleTargets = filteredTargets.filter(char => this.isVisibleTo(ref, char, useSight));
+
+    return visibleTargets;
   }
 
   getAllHostilesInRange(ref: Character, radius): Character[] {
@@ -450,8 +499,29 @@ export class GameState {
     return false;
   }
 
+  private getAllTargetsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
+    const foundNPCsInRange = this.npcQuadtree.search({
+      minX: pos.x - radius,
+      minY: pos.y - radius,
+      maxX: pos.x + radius,
+      maxY: pos.y + radius
+    });
+
+    const foundPlayersInRange = this.playerQuadtree.search({
+      minX: pos.x - radius,
+      minY: pos.y - radius,
+      maxX: pos.x + radius,
+      maxY: pos.y + radius
+    });
+
+    const foundNPCRefs = foundNPCsInRange.map(npc => this.mapNPCs[npc.uuid]);
+    const foundPlayerRefs = foundPlayersInRange.map(player => this.maintainedPlayerHash[player.uuid]);
+
+    return foundNPCRefs.concat(foundPlayerRefs);
+  }
+
   getPossibleTargetsFor(me: NPC, radius): Character[] {
-    return filter(this.allPossibleTargets, (char: Character) => {
+    return filter(this.getAllTargetsFromQuadtrees(me, radius), (char: Character) => {
 
       // no hitting myself
       if(me === char) return false;
@@ -461,14 +531,6 @@ export class GameState {
 
       // if they can't attack, they're not worth fighting
       if((<NPC>char).hostility === 'Never') return false;
-
-      // they have to be visible
-      const inRadius = char.x > me.x - radius
-        && char.x < me.x + radius
-        && char.y > me.y - radius
-        && char.y < me.y + radius;
-
-      if(!inRadius) return false;
 
       const offsetX = char.x - me.x;
       const offsetY = char.y - me.y;

@@ -823,7 +823,8 @@ export class Character {
       this.x += step.x;
       this.y += step.y;
 
-      this.$$room.state.updateNPCVolatile(this, oldPos);
+      if(this.isPlayer())   this.$$room.state.updatePlayerInQuadtree(this, oldPos);
+      else                  this.$$room.state.updateNPCVolatile(this, oldPos);
     });
 
     if(this.x < 0) this.x = 0;
@@ -848,7 +849,8 @@ export class Character {
       }
     }
 
-    this.$$room.state.updateNPCVolatile(this);
+    if(this.isPlayer())   this.$$room.state.updatePlayerInQuadtree(this);
+    else                  this.$$room.state.updateNPCVolatile(this);
 
     const potentialTrap = this.$$room.state.getInteractable(this.x, this.y, true, 'Trap');
     if(potentialTrap && potentialTrap.properties && potentialTrap.properties.effect) {

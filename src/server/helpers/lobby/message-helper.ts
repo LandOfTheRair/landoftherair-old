@@ -57,7 +57,7 @@ export class MessageHelper {
   }
 
   static getPossibleMessageTargets(player: Character, findStr: string): any[] {
-    const allTargets = player.$$room.state.allPossibleTargets;
+    const allTargets = player.$$room.state.getAllTargetsFromQuadtrees(player, 10);
     const possTargets = allTargets.filter(target => {
       if(target.isDead()) return;
 
@@ -76,7 +76,7 @@ export class MessageHelper {
   }
 
   static getPossibleAuguryTargets(player: Character, findStr: string): any[] {
-    const allTargets = player.$$room.state.allPossibleTargets;
+    const allTargets = player.$$room.state.getAllTargetsFromQuadtrees(player, 10);
     const possTargets = allTargets.filter(target => {
       return this.doesTargetMatchSearch(target, findStr);
     });

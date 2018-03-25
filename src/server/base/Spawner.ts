@@ -340,9 +340,9 @@ export class Spawner {
 
     if(this.shouldSlowDown(this.getDistsForPlayers())) {
       this.$$slowTicks = 2;
-      this.$$isStayingSlow = true;
+      this.slowDown();
     } else {
-      this.$$isStayingSlow = false;
+      this.speedUp();
     }
 
     if(this.currentTick > this.respawnRate
@@ -352,6 +352,14 @@ export class Spawner {
       this.currentTick = 0;
       this.createNPC();
     }
+  }
+
+  slowDown() {
+    this.$$isStayingSlow = true;
+  }
+
+  speedUp() {
+    this.$$isStayingSlow = false;
   }
 
   npcTick(canMove: boolean) {

@@ -17,7 +17,8 @@ export class GMTeleportTo extends Command {
 
     let found = false;
 
-    room.state.allPossibleTargets.forEach(checkTarget => {
+    const allPossibleTargets = (<any>room.state.players).concat(room.state._mapNPCs);
+    allPossibleTargets.forEach(checkTarget => {
       if(found || !MessageHelper.doesTargetMatchSearch(checkTarget, args)) return;
       room.setPlayerXY(player, checkTarget.x, checkTarget.y);
       checkTarget.z = player.z;
