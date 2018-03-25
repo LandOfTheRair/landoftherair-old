@@ -1,7 +1,7 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { Firethorns as CastEffect } from '../../../../../effects/buffs/Firethorns';
+import { Firethorns as CastEffect } from '../../../../../effects/auras/Firethorns';
 
 export class Firethorns extends Skill {
 

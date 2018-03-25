@@ -43,6 +43,7 @@ export * from './augments/BeastRipper';
 export * from './augments/EtherFire';
 
 export * from './auras/NecroticAura';
+export * from './auras/Firethorns';
 
 export * from './buffs/BarFire';
 export * from './buffs/BarFrost';
@@ -50,7 +51,6 @@ export * from './buffs/BarNecro';
 export * from './buffs/BarWater';
 export * from './buffs/Absorption';
 export * from './buffs/MagicShield';
-export * from './buffs/Firethorns';
 export * from './buffs/Haste';
 export * from './buffs/Invisible';
 

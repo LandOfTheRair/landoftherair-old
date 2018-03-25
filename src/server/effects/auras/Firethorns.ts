@@ -2,6 +2,7 @@
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
+import { CombatHelper } from '../../helpers/world/combat-helper';
 
 export class Firethorns extends SpellEffect {
 
@@ -35,7 +36,21 @@ export class Firethorns extends SpellEffect {
     this.targetEffectMessage(char, 'A thorny aura appears around you.');
     char.gainStat('physicalDamageReflect', this.potency * this.potencyMultiplier);
 
-    this.iconData.tooltipDesc = `Physical attackers take ${this.potency * this.potencyMultiplier} damage.`;
+    this.iconData.tooltipDesc = `Physical attackers take ${this.potency * this.potencyMultiplier} damage. Fire aura deals ${this.potency * this.potencyMultiplier} in a 1x1.`;
+  }
+
+  effectTick(char: Character) {
+    const damage = this.potency * this.potencyMultiplier;
+    const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
+
+    char.$$room.state.getAllHostilesInRange(char, 1).forEach(target => {
+      CombatHelper.magicalAttack(caster, target, {
+        effect: this,
+        defMsg: `You are overwhelmed by the surrounding warmth!`,
+        damage: damage,
+        damageClass: 'fire'
+      });
+    });
   }
 
   effectEnd(char: Character) {
