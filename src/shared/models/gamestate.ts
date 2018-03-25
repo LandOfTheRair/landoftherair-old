@@ -4,7 +4,6 @@ import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, inclu
 import { Player } from './player';
 
 import * as Mrpas from 'mrpas';
-import * as RBush from 'rbush';
 
 import { Item } from './item';
 import { NPC } from './npc';
@@ -14,6 +13,7 @@ import { CombatHelper } from '../../server/helpers/world/combat-helper';
 import { MapLayer } from './maplayer';
 import { nonenumerable } from 'nonenumerable';
 import { LootHelper } from '../../server/helpers/world/loot-helper';
+import { QuadtreeHelper } from '../../server/helpers/world/quadtree-helper';
 
 enum TilesWithNoFOVUpdate {
   Empty = 0,
@@ -67,12 +67,6 @@ export class GameState {
 
   private npcVolatile: any = {};
 
-  @nonenumerable
-  private npcQuadtree: any;
-
-  @nonenumerable
-  private playerQuadtree: any;
-
   get formattedMap() {
     const map = cloneDeep(this.map);
     map.layers.length = 10;
@@ -101,12 +95,7 @@ export class GameState {
     extend(this, opts);
     this.initFov();
     this.findSecretWalls();
-    this.initQuadtrees();
-  }
-
-  private initQuadtrees() {
-    this.npcQuadtree = RBush();
-    this.playerQuadtree = RBush();
+    QuadtreeHelper.init();
   }
 
   private findSecretWalls() {
@@ -215,17 +204,7 @@ export class GameState {
     this.trimmedNPCs[npc.uuid] = this.trimNPC(npc);
 
     this.updateNPCVolatile(npc);
-    this.npcQuadtreeInsert(npc);
-  }
-
-  private npcQuadtreeInsert(npc: NPC): void {
-    this.npcQuadtree.insert({
-      minX: npc.x,
-      minY: npc.y,
-      maxX: npc.x,
-      maxY: npc.y,
-      uuid: npc.uuid
-    });
+    QuadtreeHelper.npcQuadtreeInsert(npc);
   }
 
   syncNPC(npc: NPC): void {
@@ -246,21 +225,7 @@ export class GameState {
       delete this.npcVolatile[npc.uuid];
     }
 
-    this.npcQuadtreeRemove(npc);
-  }
-
-  private npcQuadtreeRemove(npc: NPC, oldPos: any = {}): void {
-    const oldPosRange = {
-      minX: oldPos.x || npc.x,
-      minY: oldPos.y || npc.y,
-      maxX: oldPos.x || npc.x,
-      maxY: oldPos.y || npc.y,
-      uuid: oldPos.uuid || npc.uuid
-    };
-
-    this.npcQuadtree.remove(oldPosRange, (me, treeItem) => {
-      return me.uuid === treeItem.uuid;
-    });
+    QuadtreeHelper.npcQuadtreeRemove(npc);
   }
 
   updateNPCVolatile(char: NPC, updateBasedOnThisOldPos?: any): void {
@@ -269,8 +234,8 @@ export class GameState {
 
     if(updateBasedOnThisOldPos) {
       updateBasedOnThisOldPos.uuid = char.uuid;
-      this.npcQuadtreeRemove(char, updateBasedOnThisOldPos);
-      this.npcQuadtreeInsert(char);
+      QuadtreeHelper.npcQuadtreeRemove(char, updateBasedOnThisOldPos);
+      QuadtreeHelper.npcQuadtreeInsert(char);
     }
   }
 
@@ -281,17 +246,7 @@ export class GameState {
     this.players.push(player);
     this.resetPlayerStatus(player);
 
-    this.playerQuadtreeInsert(player);
-  }
-
-  private playerQuadtreeInsert(player: Player): void {
-    this.playerQuadtree.insert({
-      minX: player.x,
-      minY: player.y,
-      maxX: player.x,
-      maxY: player.y,
-      uuid: player.uuid
-    });
+    QuadtreeHelper.playerQuadtreeInsert(player);
   }
 
   findPlayer(username): Player {
@@ -309,29 +264,15 @@ export class GameState {
     this.players = reject(this.players, (p: Player) => p.username === playerRef.username);
 
     playerRef.killAllPets();
-    this.playerQuadtreeRemove(playerRef);
-  }
-
-  private playerQuadtreeRemove(player: Player, oldPos: any = {}): void {
-    const oldPosRange = {
-      minX: oldPos.x || player.x,
-      minY: oldPos.y || player.y,
-      maxX: oldPos.x || player.x,
-      maxY: oldPos.y || player.y,
-      uuid: oldPos.uuid || player.uuid
-    };
-
-    this.playerQuadtree.remove(oldPosRange, (me, treeItem) => {
-      return me.uuid === treeItem.uuid;
-    });
+    QuadtreeHelper.playerQuadtreeRemove(playerRef);
   }
 
   updatePlayerInQuadtree(char: Player, updateBasedOnThisOldPos?: any): void {
     if(!updateBasedOnThisOldPos) return;
 
     updateBasedOnThisOldPos.uuid = char.uuid;
-    this.playerQuadtreeRemove(char, updateBasedOnThisOldPos);
-    this.playerQuadtreeInsert(char);
+    QuadtreeHelper.playerQuadtreeRemove(char, updateBasedOnThisOldPos);
+    QuadtreeHelper.playerQuadtreeInsert(char);
   }
 
   addInteractable(obj: any): void {
@@ -406,7 +347,7 @@ export class GameState {
     if(ref.fov && useSight) {
       const offsetX = target.x - ref.x;
       const offsetY = target.y - ref.y;
-      if(!ref.canSee(offsetX, offsetY)) return true;
+      return !ref.canSee(offsetX, offsetY);
     }
 
     return true;
@@ -439,12 +380,7 @@ export class GameState {
   getAllInRange(ref: Character, radius, except: string[] = [], useSight = true): Character[] {
     const playersInRange = this.getPlayersInRange(ref, radius, except, useSight);
 
-    const foundNPCsInRange = this.npcQuadtree.search({
-      minX: ref.x - radius,
-      minY: ref.y - radius,
-      maxX: ref.x + radius,
-      maxY: ref.y + radius
-    });
+    const foundNPCsInRange = QuadtreeHelper.npcQuadtreeSearch(ref, radius);
 
     const allNPCs = foundNPCsInRange.map(x => this.mapNPCs[x.uuid]);
     const allAliveNPCs = allNPCs.filter((x: Character) => !x.isDead());
@@ -500,19 +436,8 @@ export class GameState {
   }
 
   private getAllTargetsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
-    const foundNPCsInRange = this.npcQuadtree.search({
-      minX: pos.x - radius,
-      minY: pos.y - radius,
-      maxX: pos.x + radius,
-      maxY: pos.y + radius
-    });
-
-    const foundPlayersInRange = this.playerQuadtree.search({
-      minX: pos.x - radius,
-      minY: pos.y - radius,
-      maxX: pos.x + radius,
-      maxY: pos.y + radius
-    });
+    const foundNPCsInRange = QuadtreeHelper.npcQuadtreeSearch(pos, radius);
+    const foundPlayersInRange = QuadtreeHelper.playerQuadtreeSearch(pos, radius);
 
     const foundNPCRefs = foundNPCsInRange.map(npc => this.mapNPCs[npc.uuid]);
     const foundPlayerRefs = foundPlayersInRange.map(player => this.maintainedPlayerHash[player.uuid]);
