@@ -190,6 +190,9 @@ export class GameWorld extends Room<GameState> {
 
       setTimeout(() => {
         this.loadNPCsFromMap();
+      }, 1000);
+
+      setTimeout(() => {
         this.loadSpawners(spawnerTimers);
         this.loadDropTables();
       }, 0);
