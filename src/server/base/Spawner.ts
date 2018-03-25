@@ -315,13 +315,9 @@ export class Spawner {
     npc.setPath(sample(this.paths));
   }
 
-  getDistsForPlayers() {
-    return this.room.state.allPlayers.map(x => x.distFrom(this));
-  }
-
-  shouldSlowDown(dists) {
+  shouldSlowDown() {
     if(!this.canSlowDown) return false;
-    return dists.length > 0 && min(dists) > Math.max(this.leashRadius, 30);
+    return this.room.state.getPlayersInRange(this, Math.max(this.leashRadius, 30)).length === 0;
   }
 
   tick() {
@@ -338,7 +334,7 @@ export class Spawner {
       return;
     }
 
-    if(this.shouldSlowDown(this.getDistsForPlayers())) {
+    if(this.shouldSlowDown()) {
       this.$$slowTicks = 2;
       this.slowDown();
     } else {
