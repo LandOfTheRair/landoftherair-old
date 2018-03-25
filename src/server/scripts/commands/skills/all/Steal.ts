@@ -3,7 +3,7 @@
 
 import { Skill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
-import { MessageHelper } from '../../../../helpers/lobby/message-helper';
+import { MessageHelper } from '../../../../helpers/world/message-helper';
 
 export class Steal extends Skill {
 

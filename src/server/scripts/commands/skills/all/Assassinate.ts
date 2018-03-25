@@ -5,7 +5,7 @@ import { Skill } from '../../../../base/Skill';
 import { Character, SkillClassNames } from '../../../../../shared/models/character';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
 import { MoveHelper } from '../../../../helpers/character/move-helper';
-import { MessageHelper } from '../../../../helpers/lobby/message-helper';
+import { MessageHelper } from '../../../../helpers/world/message-helper';
 import { Revealed as CastEffect } from '../../../../effects/misc/Revealed';
 
 export class Assassinate extends Skill {

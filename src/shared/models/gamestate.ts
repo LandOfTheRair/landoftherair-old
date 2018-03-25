@@ -453,7 +453,7 @@ export class GameState {
       if(me === char) return false;
 
       // no hitting dead people
-      if(char.isDead()) return false;
+      if(!char || char.isDead()) return false;
 
       // if they can't attack, they're not worth fighting
       if((<NPC>char).hostility === 'Never') return false;

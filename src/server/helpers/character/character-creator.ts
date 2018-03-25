@@ -4,7 +4,7 @@ import { Player } from '../../../shared/models/player';
 import { ItemCreator } from '../world/item-creator';
 import { SkillClassNames } from '../../../shared/models/character';
 import { SkillHelper } from './skill-helper';
-import { MessageHelper } from '../lobby/message-helper';
+import { MessageHelper } from '../world/message-helper';
 
 export class CharacterCreator {
 

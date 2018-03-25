@@ -4,7 +4,7 @@ import { some, last, includes } from 'lodash';
 import { ChanneledSpellEffect, Effect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import { MessageHelper } from '../../helpers/lobby/message-helper';
+import { MessageHelper } from '../../helpers/world/message-helper';
 import { GenderHelper } from '../../helpers/character/gender-helper';
 import { NPC } from '../../../shared/models/npc';
 

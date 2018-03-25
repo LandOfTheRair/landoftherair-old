@@ -8,7 +8,7 @@ import {
 } from 'lodash';
 
 import {
-  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes
+  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes, WeaponClasses
 } from './item';
 import { MapLayer } from './maplayer';
 
@@ -23,7 +23,7 @@ import { Pouch } from './container/pouch';
 import { MoveHelper } from '../../server/helpers/character/move-helper';
 import { nonenumerable } from 'nonenumerable';
 import { CharacterHelper } from '../../server/helpers/character/character-helper';
-import { MessageHelper } from '../../server/helpers/lobby/message-helper';
+import { MessageHelper } from '../../server/helpers/world/message-helper';
 import { TrapHelper } from '../../server/helpers/world/trap-helper';
 import { SkillHelper } from '../../server/helpers/character/skill-helper';
 import { XPHelper } from '../../server/helpers/character/xp-helper';
@@ -481,8 +481,13 @@ export class Character {
     this.recalculateStats();
   }
 
-  canGetBonusFromItemInHand(item): boolean {
+  canGetBonusFromItemInHand(item: Item): boolean {
+
+    // shields do. not. work. in the main hand
     if(item.itemClass === 'Shield' && this.rightHand === item) return false;
+
+    // weapons do not work in the left hand unless they're a shield or offhand item
+    if(this.leftHand === item && !item.offhand && item.itemClass !== 'Shield' && includes(WeaponClasses, item.itemClass)) return false;
 
     return this.checkCanEquipWithoutGearCheck(item)
         && includes(GivesBonusInHandItemClasses, item.itemClass);
@@ -560,13 +565,13 @@ export class Character {
   }
 
   setLeftHand(item: Item, recalc = true) {
-    const oldRightHand = this.leftHand;
+    const oldLeftHand = this.leftHand;
 
     this.leftHand = item;
     this.itemCheck(item);
 
-    if(oldRightHand) this.checkAndUnapplyPermanentEffect(oldRightHand);
-    if(item)         this.checkAndCreatePermanentEffect(item);
+    if(oldLeftHand)                                   this.checkAndUnapplyPermanentEffect(oldLeftHand);
+    if(item && this.canGetBonusFromItemInHand(item))  this.checkAndCreatePermanentEffect(item);
 
     if(recalc) {
       this.recalculateStats();
@@ -579,8 +584,8 @@ export class Character {
     this.rightHand = item;
     this.itemCheck(item);
 
-    if(oldRightHand) this.checkAndUnapplyPermanentEffect(oldRightHand);
-    if(item)         this.checkAndCreatePermanentEffect(item);
+    if(oldRightHand)                                  this.checkAndUnapplyPermanentEffect(oldRightHand);
+    if(item && this.canGetBonusFromItemInHand(item))  this.checkAndCreatePermanentEffect(item);
 
     if(recalc) {
       this.recalculateStats();
@@ -593,6 +598,7 @@ export class Character {
   }
 
   private checkAndCreatePermanentEffect(item: Item) {
+    // TODO why does an effect in offhand when not valid (like the halberd) cast and uncast?
     if(!item || !item.effect || !item.effect.autocast || !item.effect.name) return;
     const effect = new Effects[item.effect.name](item.effect);
     effect.flagPermanent(this.uuid);

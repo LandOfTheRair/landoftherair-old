@@ -2,7 +2,7 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { get } from 'lodash';
-import { MessageHelper } from '../../../helpers/lobby/message-helper';
+import { MessageHelper } from '../../../helpers/world/message-helper';
 import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMExamine extends Command {

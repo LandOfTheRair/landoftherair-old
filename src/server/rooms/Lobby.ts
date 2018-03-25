@@ -17,7 +17,7 @@ import { PartyArbiter } from '../helpers/party/party-arbiter';
 import { AccountHelper } from '../helpers/account/account-helper';
 import { AllSilverPurchases, SilverBuyTiers, SubscriptionHelper } from '../helpers/account/subscription-helper';
 import { BonusArbiter } from '../helpers/bonus/bonus-arbiter';
-import { MessageHelper } from '../helpers/lobby/message-helper';
+import { MessageHelper } from '../helpers/world/message-helper';
 import { DiscordHelper } from '../helpers/lobby/discord-helper';
 import { PouchHelper } from '../helpers/character/pouch-helper';
 import { TeleportHelper } from '../helpers/world/teleport-helper';

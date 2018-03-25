@@ -2,7 +2,7 @@
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Augury as CastEffect } from '../../../../../effects/misc/Augury';
-import { MessageHelper } from '../../../../../helpers/lobby/message-helper';
+import { MessageHelper } from '../../../../../helpers/world/message-helper';
 
 export class Augury extends Skill {
 
