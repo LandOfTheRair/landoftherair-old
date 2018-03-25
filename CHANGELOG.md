@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.1.17 (25/03/2018)
+
+#### Enhancements
+
+- [#656](https://github.com/LandOfTheRair/landoftherair/issues/656) defer npc creation in the world until 1-2s after the first player joins
+- [#655](https://github.com/LandOfTheRair/landoftherair/issues/655) improve spawner performance
+- [#653](https://github.com/LandOfTheRair/landoftherair/issues/653) fix dirt sprite top left corner to be brown
+
+---
+
 ## v0.1.16 (24/03/2018)
 
 #### Enhancements
