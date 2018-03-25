@@ -291,7 +291,7 @@
   effect:
     name: BarNecro
     duration: 900
-    potency: 100
+    potency: 10
   value: 500
 
 - name: Weak BarNecro Potion (10oz)
@@ -302,7 +302,7 @@
   effect:
     name: BarNecro
     duration: 900
-    potency: 100
+    potency: 10
   value: 500
 
 - name: Weak BarFire Potion
@@ -312,7 +312,7 @@
   effect:
     name: BarFire
     duration: 900
-    potency: 100
+    potency: 10
   value: 500
 
 - name: Weak BarFire Potion (10oz)
@@ -323,7 +323,7 @@
   effect:
     name: BarFire
     duration: 900
-    potency: 100
+    potency: 10
   value: 500
 
 - name: Weak BarFrost Potion
@@ -333,7 +333,7 @@
   effect:
     name: BarFrost
     duration: 900
-    potency: 100
+    potency: 10
   value: 500
 
 - name: Weak BarFrost Potion (10oz)
@@ -344,7 +344,7 @@
   effect:
     name: BarFrost
     duration: 900
-    potency: 100
+    potency: 10
   value: 500
 
 - name: Weak BarWater Potion
@@ -354,7 +354,7 @@
   effect:
     name: BarWater
     duration: 900
-    potency: 100
+    potency: 10
   value: 500
 
 - name: Weak BarWater Potion (10oz)
@@ -365,7 +365,7 @@
   effect:
     name: BarWater
     duration: 900
-    potency: 100
+    potency: 10
   value: 500
 
 - name: Bear Meat Antidote
