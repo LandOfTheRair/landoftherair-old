@@ -23340,7 +23340,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1280,
+                 "x":1216,
                  "y":8896
                 }, 
                 {
@@ -23662,6 +23662,286 @@
                  "width":64,
                  "x":4928,
                  "y":8000
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5827,
+                 "name":"SW Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5312,
+                 "y":7808
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5828,
+                 "name":"SW Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5504,
+                 "y":7936
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5829,
+                 "name":"SW Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5312,
+                 "y":8064
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5830,
+                 "name":"SW Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1472,
+                 "y":10176
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5831,
+                 "name":"SW Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1408,
+                 "y":10240
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5832,
+                 "name":"SW Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1408,
+                 "y":9024
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5833,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1664,
+                 "y":6848
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5834,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":448,
+                 "y":6784
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5835,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1024,
+                 "y":5120
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5836,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1216,
+                 "y":5120
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5837,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2560,
+                 "y":4992
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5838,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2752,
+                 "y":5120
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5839,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2560,
+                 "y":5184
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5840,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4352,
+                 "y":5760
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -24948,7 +25228,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -25126,11 +25406,11 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextobjectid":5827,
+ "nextobjectid":5841,
  "orientation":"orthogonal",
  "properties":
     {
@@ -25157,7 +25437,6 @@
      "script":"string"
     },
  "renderorder":"right-down",
- "tiledversion":"1.0.3",
  "tileheight":64,
  "tilesets":[
         {
@@ -26994,6 +27273,6 @@
         }],
  "tilewidth":64,
  "type":"map",
- "version":1,
+ "version":"1.0.0",
  "width":200
 }

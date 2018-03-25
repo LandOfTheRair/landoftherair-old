@@ -10,9 +10,9 @@ export class SkeletonSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 10,
-      initialSpawn: 10,
-      maxCreatures: 35,
+      respawnRate: 5,
+      initialSpawn: 5,
+      maxCreatures: 45,
       spawnRadius: 15,
       randomWalkRadius: 35,
       leashRadius: 45,

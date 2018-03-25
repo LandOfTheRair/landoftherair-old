@@ -12,7 +12,7 @@ export class SkeletonRoomSpawner extends Spawner {
     super(room, opts, {
       respawnRate: 10,
       initialSpawn: 4,
-      maxCreatures: 10,
+      maxCreatures: 8,
       spawnRadius: 2,
       randomWalkRadius: 10,
       leashRadius: 20,
