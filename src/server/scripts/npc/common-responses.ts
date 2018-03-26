@@ -124,7 +124,12 @@ export const SmithResponses = (npc: NPC) => {
       const missingCondition = maxCondition - player.rightHand.condition;
       if(missingCondition < 0) return 'That item is already beyond my capabilities!';
 
-      const cost = Math.floor(missingCondition / 1000 * cpt);
+      const conditionDiffPercent = missingCondition / maxCondition;
+
+      const cptMod = player.rightHand.value * (1 - conditionDiffPercent);
+
+      let cost = Math.floor((missingCondition * cptMod * cpt) / 10000);
+      if(cost === 0 && missingCondition > 0) cost = 1;
 
       if(cost === 0) return 'That item is not in need of repair!';
       if(player.gold < cost) return `You need ${cost.toLocaleString()} gold to repair that item.`;
