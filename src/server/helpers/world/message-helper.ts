@@ -1,5 +1,5 @@
 
-import { isString, startsWith, set } from 'lodash';
+import { isString, isUndefined, startsWith, set } from 'lodash';
 import { Character } from '../../../shared/models/character';
 import { VisualEffect } from './visual-effects';
 
@@ -16,7 +16,7 @@ export class MessageHelper {
   }
 
   static cleanMessage(message: any): string {
-    if(message.message) {
+    if(!isUndefined(message.message)) {
       message.message = censor.cleanProfanity(message.message || '');
       return message;
     }
