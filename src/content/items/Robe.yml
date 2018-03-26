@@ -147,3 +147,20 @@
 
   requirements:
     level: 15
+
+- name: Dedlaen Death Knight Coat
+  quality: 5
+  stats:
+    defense: 1
+    fireResist: 150
+    iceResist: 150
+    energyResist: 100
+    necroticResist: 100
+  desc: "a brown coat that smells of death"
+  value: 1900
+  sprite: 485
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 13

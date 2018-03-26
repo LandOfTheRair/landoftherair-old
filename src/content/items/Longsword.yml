@@ -51,3 +51,21 @@
   type: Onehanded
   value: 1152
   sprite: 197
+
+- name: Dedlaen Death Knight Sword
+  quality: 5
+  desc: "a longsword blazing with an impure, green glow"
+  stats:
+    accuracy: 5
+    offense: 4
+    defense: 4
+    weaponArmorClass: 3
+  tier: 5
+  type: Onehanded
+  binds: true
+  tellsBind: true
+  sprite: 425
+  value: 25002
+
+  requirements:
+    level: 5

@@ -67,3 +67,19 @@
 
   requirements:
     level: 14
+
+- name: Dedlaen Death Knight Shield
+  quality: 5
+  stats:
+    armorClass: 16
+    defense: 3
+    offense: -3
+  desc: "a highly-reflective metal shield inscribed with a compass"
+  type: Mace
+  value: 25111
+  sprite: 517
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 17

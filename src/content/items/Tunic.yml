@@ -68,3 +68,13 @@
   desc: "a plain tunic reinforced with shards of bone"
   value: 350
   sprite: 10
+
+- name: Reinforced Maze Bone Tunic
+  stats:
+    armorClass: 16
+    defense: 3
+  requirements:
+    level: 14
+  desc: "a plain tunic double-reinforced with shards of bone"
+  value: 350
+  sprite: 10

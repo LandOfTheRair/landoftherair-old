@@ -24161,8 +24161,8 @@
                      "initialSpawn":1,
                      "lairName":"Dedlaen Crypt Thing",
                      "maxSpawn":1,
-                     "randomWalkRadius":4,
-                     "respawnRate":900,
+                     "randomWalkRadius":7,
+                     "respawnRate":3600,
                      "script":"global\/lair",
                      "shouldStrip":false
                     },
@@ -24182,6 +24182,38 @@
                  "width":64,
                  "x":7616,
                  "y":11392
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5855,
+                 "name":"Death Knight Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Dedlaen Death Knight",
+                     "maxSpawn":1,
+                     "randomWalkRadius":10,
+                     "respawnRate":3600,
+                     "script":"global\/lair",
+                     "shouldStrip":false
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string",
+                     "shouldStrip":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5312,
+                 "y":3840
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -25650,7 +25682,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5855,
+ "nextobjectid":5856,
  "orientation":"orthogonal",
  "properties":
     {

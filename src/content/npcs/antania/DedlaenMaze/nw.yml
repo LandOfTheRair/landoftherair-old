@@ -104,15 +104,96 @@
   usableSkills:
     - Charge
 
+- npcId: Dedlaen Death Knight
+  name: death knight
+  monsterClass: Undead
+  hostility: Always
+  baseClass: Mage
+  sprite: 285
+  alignment: Evil
+  stats: 17
+  skillLevels: 7
+  level: 19
+
+  skillOnKill: 300
+
+  otherStats:
+    con: 25
+    accuracy: 5
+    offense: 5
+    perception: 300
+
+  gold:
+    min: 23050
+    max: 33700
+
+  hp:
+    min: 357950
+    max: 361350
+
+  mp:
+    min: 10000
+    max: 10000
+
+  giveXp:
+    min: 239000
+    max: 245000
+
+  rightHand: Dedlaen Death Knight Sword
+  leftHand: Dedlaen Death Knight Shield
+
+  gear:
+    Armor: Reinforced Maze Bone Tunic
+    Hands: Maze Skeleton Claws
+    Robe1: Dedlaen Death Knight Coat
+
+  attributes:
+    - damageType: 'magical'
+      potency: 0
+    - damageType: 'physical'
+      potency: 0
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+
+  drops:
+    - result: Perfect Maze Skull
+      chance: -1
+
+  usableSkills:
+    - Charge
+    - Haste
+    - Firethorns
+    - ImbueEnergy
+    - Absorption
+    - MagicShield
+    - DarkVision
+    - Darkness
+    - FireMist
+    - IceMist
+
+  combatMessages:
+    - You will not take the throne from the dark lord!
+    - You will fall here!
+    - Your life is no longer your own!
+    - For the dark lord!
+
 - npcId: Dedlaen Vampire
   name: vampire
   monsterClass: Undead
   hostility: Always
   sprite: 495
   alignment: Evil
-  stats: 18
-  skillLevels: 4
-  level: 18
+  stats: 20
+  skillLevels: 5
+  level: 21
 
   skillOnKill: 300
 
@@ -133,3 +214,8 @@
   giveXp:
     min: 219000
     max: 225000
+
+  combatMessages:
+    - Gwahahaha! Very good!
+    - Soon, you'll become one of my pet skeletons!
+    - You cannot dethrone the dark lord!
