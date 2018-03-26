@@ -75,7 +75,18 @@ export class Spawner {
     if(room.disableCreatureSpawn) this.currentTick = 0;
 
     if(this.currentTick === 0) {
-      for(let i = 0; i < this.initialSpawn; i++) {
+      this.spawnInitialNPCs();
+    }
+  }
+
+  private async spawnInitialNPCs() {
+
+    // allow it to get into the cache
+    await this.createNPC();
+
+    const spawnAfter = this.initialSpawn - 1;
+    if(spawnAfter > 0) {
+      for(let i = 0; i < spawnAfter; i++) {
         this.createNPC();
       }
     }

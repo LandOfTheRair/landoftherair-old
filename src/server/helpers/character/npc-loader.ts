@@ -1,6 +1,7 @@
 
 import { species } from 'fantastical';
 import { capitalize, isString, sample, kebabCase, includes } from 'lodash';
+import * as Cache from 'node-cache';
 
 import { ItemCreator } from '../world/item-creator';
 import { NPC } from '../../../shared/models/npc';
@@ -12,6 +13,8 @@ import { Item } from '../../../shared/models/item';
 
 export class NPCLoader {
 
+  static cache = new Cache({ stdTTL: 600 });
+
   static itemCreator = new ItemCreator();
 
   static searchNPCs(name: string): Promise<NPC[]> {
@@ -19,11 +22,16 @@ export class NPCLoader {
     return DB.$npcs.find({ $or: [{ npcId: regex }, { name: regex }] }).toArray();
   }
 
-  static loadNPCData(npcId) {
-    return DB.$npcs.findOne({ npcId }).then(npc => {
-      if(!npc) throw new Error(`NPC ${npcId} does not exist.`);
-      return npc;
-    });
+  static async loadNPCData(npcId) {
+
+    const data = NPCLoader.cache.get(npcId);
+    if(data) return data;
+
+    const npc = await DB.$npcs.findOne({ npcId });
+    if(!npc) throw new Error(`NPC ${npcId} does not exist.`);
+
+    NPCLoader.cache.set(npcId, npc);
+    return npc;
   }
 
   static determineNPCName(npc: NPC) {

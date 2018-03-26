@@ -1,4 +1,6 @@
 
+import * as Cache from 'node-cache';
+
 import { DB } from '../../database';
 import { Item, Quality } from '../../../shared/models/item';
 import { GameWorld } from '../../rooms/GameWorld';
@@ -8,6 +10,8 @@ import { random, sampleSize, sum, sample, isArray, isNumber } from 'lodash';
 const randomStats = ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'con', 'cha', 'luk', 'offense', 'defense', 'armorClass'];
 
 export class ItemCreator {
+
+  private cache = new Cache({ stdTTL: 600 });
 
   private rollStatsForItem(potentialItem, room?: GameWorld): Item {
 
@@ -69,10 +73,17 @@ export class ItemCreator {
 
     if(name === 'none') return Promise.resolve(null);
 
-    const item = await DB.$items.findOne({ name });
+    const finalizeItem = (itemData) => this.rollStatsForItem(new Item(itemData), room);
 
+    const data = this.cache.get(name);
+    if(data) return finalizeItem(data);
+
+    const item = await DB.$items.findOne({ name });
     if(!item) throw new Error(`Item ${name} does not exist.`);
-    return this.rollStatsForItem(new Item(item), room);
+
+    this.cache.set(name, item);
+
+    return finalizeItem(item);
   }
 
   async getRecipe(query: any): Promise<any> {
