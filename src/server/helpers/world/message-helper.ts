@@ -59,7 +59,7 @@ export class MessageHelper {
   static getPossibleMessageTargets(player: Character, findStr: string): any[] {
     const allTargets = player.$$room.state.getAllTargetsFromQuadtrees(player, 10);
     const possTargets = allTargets.filter(target => {
-      if(!target || target.isDead()) return;
+      if(target.isDead()) return;
 
       const diffX = target.x - player.x;
       const diffY = target.y - player.y;

@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, isUndefined } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, isUndefined, compact } from 'lodash';
 
 import { Player } from './player';
 
@@ -382,7 +382,7 @@ export class GameState {
 
     const foundNPCsInRange = QuadtreeHelper.npcQuadtreeSearch(ref, radius);
 
-    const allNPCs = foundNPCsInRange.map(x => this.mapNPCs[x.uuid]);
+    const allNPCs = compact(foundNPCsInRange.map(x => this.mapNPCs[x.uuid]));
     const allAliveNPCs = allNPCs.filter((x: Character) => !x.isDead());
 
     const allPossibleTargets = playersInRange.concat(allAliveNPCs);
@@ -443,7 +443,7 @@ export class GameState {
     const foundNPCRefs = foundNPCsInRange.map(npc => this.mapNPCs[npc.uuid]);
     const foundPlayerRefs = foundPlayersInRange.map(player => this.maintainedPlayerHash[player.uuid]);
 
-    return foundNPCRefs.concat(foundPlayerRefs);
+    return compact(foundNPCRefs.concat(foundPlayerRefs));
   }
 
   getPossibleTargetsFor(me: NPC, radius): Character[] {
@@ -453,7 +453,7 @@ export class GameState {
       if(me === char) return false;
 
       // no hitting dead people
-      if(!char || char.isDead()) return false;
+      if(char.isDead()) return false;
 
       // if they can't attack, they're not worth fighting
       if((<NPC>char).hostility === 'Never') return false;
