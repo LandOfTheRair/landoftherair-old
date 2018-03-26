@@ -31,7 +31,8 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('help')
     .set('syntax', ['help'])
     .set('logic', () => {
-      return `Yes, I can help you, and you can help me. If you kill the nearby YETI and bring me his SKULL, I can give you a KEY to let you out of here.`;
+      return `Yes, I can help you, and you can help me. If you kill the nearby YETI and bring me his SKULL - just hold it in your right hand. 
+      If ya do that, I can give you a KEY to let you out of here.`;
     });
 
   npc.parser.addCommand('yeti')
@@ -73,6 +74,6 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['vision'])
     .set('logic', (args, { player }) => {
       NPCLoader.givePlayerEffect(player, 'TrueSight', { duration: 100 });
-      return `Here you go! Best of luck on finding them. I hear they're holed up in the northeast somewhere.`;
+      return `Here you go! Best of luck on finding them. They're holed up right outside here, a bit north. See if you can tell where they are!`;
     });
 };
