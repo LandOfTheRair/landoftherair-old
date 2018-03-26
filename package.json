@@ -108,6 +108,7 @@
     "ngx-bootstrap": "^2.0.2",
     "ngx-color-picker": "^5.3.3",
     "ngx-webstorage": "^2.0.1",
+    "node-cache": "^4.2.0",
     "node-redis-pubsub": "^1.0.3",
     "node-schedule": "^1.2.3",
     "nonenumerable": "^1.1.0",

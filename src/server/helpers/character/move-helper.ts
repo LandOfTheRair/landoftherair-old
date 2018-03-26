@@ -115,6 +115,7 @@ export class MoveHelper {
         }
       }
 
+      /** PERK:CLASS:THIEF:Thieves can pick locks. */
       if(requireLockpick
         && skillRequired
         && player.baseClass === 'Thief'

@@ -1221,6 +1221,8 @@ export class Character {
   }
 
   stealthLevel(): number {
+
+    /** PERK:CLASS:THIEF:Thieves get an innate bonus to hiding. */
     const isThief = this.baseClass === 'Thief';
     const thiefLevel = this.calcSkillLevel(SkillClassNames.Thievery);
     const casterThiefSkill = thiefLevel * (isThief ? 1.5 : 1) * 5;
@@ -1246,6 +1248,8 @@ export class Character {
   }
 
   perceptionLevel(): number {
+
+    /** PERK:CLASS:THIEF:Thieves get an innate bonus to perception. */
     const isThief = this.baseClass === 'Thief';
 
     const thiefLevel = this.calcSkillLevel(SkillClassNames.Thievery);
@@ -1272,6 +1276,7 @@ export class Character {
     // +1 so we don't zero out stealth on tile
     const distFactor = Math.floor(this.distFrom(char) + 1);
     const otherStealth = char.getTotalStat('stealth');
+
     const thiefMultPerTile = char.baseClass === 'Thief' ? 0.2 : 0.05;
 
     const totalStealth = Math.floor(otherStealth + (otherStealth * distFactor * thiefMultPerTile));

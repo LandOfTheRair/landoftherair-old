@@ -10,6 +10,7 @@ export class Darkness extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
+    /** PERK:CLASS:THIEF:Thieves darkness lasts twice as long. */
     const mult = caster.baseClass === 'Thief' ? 2 : 1;
 
     // skill - 7 in quarter-minutes
@@ -17,6 +18,7 @@ export class Darkness extends SpellEffect {
 
     caster.sendClientMessage('You cloak the area in a veil of darkness.');
 
+    /** PERK:CLASS:THIEF:Thieves darkness only covers one tile. */
     target.$$room.createDarkness(target.x, target.y, caster.baseClass === 'Thief' ? 0 : 1, duration);
 
     this.aoeAgro(caster, 10);

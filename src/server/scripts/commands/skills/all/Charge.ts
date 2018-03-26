@@ -43,6 +43,7 @@ export class Charge extends Skill {
     if(!weapon) return user.sendClientMessage('You need a weapon in your hand to charge!');
 
     const userSkill = user.calcSkillLevel(weapon.type);
+    /** PERK:CLASS:WARRIOR:Warriors can charge at skill 7 instead of 11. */
     const requiredSkill = user.baseClass === 'Warrior' ? 7 : 11;
     if(userSkill < requiredSkill) return user.sendClientMessage('You are not skilled enough to do that!');
 
@@ -62,6 +63,7 @@ export class Charge extends Skill {
     const xDiff = target.x - user.x;
     const yDiff = target.y - user.y;
 
+    /** PERK:CLASS:WARRIOR:Warriors gain skill on physical hits. */
     if(user.baseClass === 'Warrior') user.gainSkill(user.rightHand ? user.rightHand.itemClass : 'Martial', 1);
 
     MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff }, true);

@@ -20,6 +20,7 @@ export class BarFire extends SpellEffect {
     this.flagUnapply();
     this.flagCasterName(caster.name);
 
+    /** PERK:CLASS:MAGE:Mages have BarFire that is twice as strong. */
     if(caster.baseClass === 'Mage') this.potencyMultiplier *= 2;
 
     if(!this.duration) this.duration = 100 * this.potency;

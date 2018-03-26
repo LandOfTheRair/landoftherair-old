@@ -22,6 +22,7 @@ export class Disease extends SpellEffect {
 
     let mult = this.getMultiplier();
 
+    /** PERK:CLASS:THIEF:Thieves have disease that does 150% damage. */
     if(caster.baseClass === 'Thief') mult = Math.floor(mult * 1.5);
 
     const calcMod = Math.max(1, this.getCasterStat(caster, 'wis') - target.getTotalStat('con'));

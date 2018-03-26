@@ -14,6 +14,7 @@ export class DarkVision extends SpellEffect {
   maxSkillForSkillGain = 13;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
+    /** PERK:CLASS:THIEF:Thieves may only cast DarkVision on themselves. */
     if(caster.baseClass === 'Thief') target = caster;
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
@@ -25,7 +26,8 @@ export class DarkVision extends SpellEffect {
 
     this.aoeAgro(caster, 10);
 
-    const durationMult = caster.baseClass === 'Mage' ? 100 : 50;
+    /** PERK:CLASS:THIEF:Thief DarkVision lasts 50% as long. */
+    const durationMult = caster.baseClass === 'Thief' ? 50 : 100;
     if(!this.duration) this.duration = this.potency * durationMult;
     this.updateDurationBasedOnTraits(caster);
     target.applyEffect(this);

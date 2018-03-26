@@ -16,6 +16,7 @@ export class Transmute extends SpellEffect {
     if(this.potency > 11) valuePercent = 30;
     if(this.potency > 21) valuePercent = 40;
 
+    /** PERK:CLASS:THIEF:Thieves get 150% of the normal item transmute value. */
     if(caster.baseClass === 'Thief') {
       valuePercent = Math.floor(valuePercent * 1.5);
       valuePercent += caster.getTraitLevelAndUsageModifier('PhilosophersStone');

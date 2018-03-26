@@ -162,8 +162,13 @@ export class SpellEffect extends Effect {
 
     let base = 0;
 
+    /** PERK:CLASS:HEALER:Healers use wis as their primary spellcasting stat. */
     if(caster.baseClass === 'Healer') base = this.getCasterStat(caster, 'wis');
+
+    /** PERK:CLASS:MAGE:Mages use int as their primary spellcasting stat. */
     if(caster.baseClass === 'Mage')   base = this.getCasterStat(caster, 'int');
+
+    /** PERK:CLASS:THIEF:Thieves use int as their primary spellcasting stat. */
     if(caster.baseClass === 'Thief')  base = this.getCasterStat(caster, 'int');
 
     return Math.max(1, base);
@@ -177,10 +182,12 @@ export class SpellEffect extends Effect {
     let base = this.potency || 1;
 
     // check based on type, they're both technically wands
+    /** PERK:CLASS:MAGE:Mages get a bonus to damage if they hold a wand in their right hand. */
     if(caster.baseClass === 'Mage' && get(caster, 'rightHand.itemClass') === 'Wand') {
       base += get(caster, 'rightHand.tier', 0);
     }
 
+    /** PERK:CLASS:HEALER:Healers get a bonus to damage if they hold a totem in their right hand. */
     if(caster.baseClass === 'Healer' && get(caster, 'rightHand.itemClass') === 'Totem') {
       base += get(caster, 'rightHand.tier', 0);
     }

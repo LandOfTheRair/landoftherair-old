@@ -22,6 +22,7 @@ export class Poison extends SpellEffect {
 
     let mult = this.getMultiplier();
 
+    /** PERK:CLASS:THIEF:Thieves have poison that does 150% damage. */
     if(caster.baseClass === 'Thief') mult = Math.floor(mult * 1.5);
 
     const wisCheck = this.getTotalDamageDieSize(caster);

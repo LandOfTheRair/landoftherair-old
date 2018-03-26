@@ -36,6 +36,7 @@ const ingotUpgradeBuffs = {
 
 export class MetalworkingHelper {
 
+  /** PERK:CLASS:Warrior:Warriors can engage in metalworking. */
   static canMetalwork(player: Player): boolean {
     return player.baseClass === 'Warrior';
   }

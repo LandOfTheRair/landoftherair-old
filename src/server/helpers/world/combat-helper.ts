@@ -162,6 +162,7 @@ export class CombatHelper {
     attacker.sendClientMessage(`You strain your ${item.itemClass.toLowerCase()} from striking the ${defender.name}!`);
 
     let modifier = 1;
+    /** PERK:CLASS:WARRIOR:Warriors take half weapon damage when gathering from gathering nodes. */
     const classMultiplier = attacker.baseClass === 'Warrior' ? 50 : 100;
 
     if(defender.isOreVein) {
@@ -184,6 +185,7 @@ export class CombatHelper {
       if(item.type !== 'Mace' && item.type !== 'Staff') criticality += 1;
     }
 
+    /** PERK:CLASS:WARRIOR:Warriors always do additional damage versus gathering nodes. */
     if(attacker.baseClass === 'Warrior') criticality += 1;
 
     return criticality;
@@ -572,7 +574,11 @@ export class CombatHelper {
 
     // thieves get +25% to the bottom damage range, warriors get +50%
     let damageRollMinimum = 1;
+
+    /** PERK:CLASS:THIEF:Thieves always do at least 25% of their damage roll when rolling dice. */
     if(attacker.baseClass === 'Thief') damageRollMinimum = Math.floor(damageRight * 0.25);
+
+    /** PERK:CLASS:WARRIOR:Warriors always do at least 50% of their damage roll when rolling dice. */
     if(attacker.baseClass === 'Warrior') damageRollMinimum = Math.floor(damageRight * 0.5);
 
     let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}..${damageRollMinimum}`)) + damageBoost;
@@ -599,12 +605,14 @@ export class CombatHelper {
     }
 
     if(isBackstab) {
+      /** PERK:CLASS:THIEF:Thieves get a bonus to backstabbing based on their thievery skill. */
       let bonusMultiplier = attacker.baseClass === 'Thief' ? 1 + Math.floor(thiefSkill / 8) : 1.5;
       if(isAssassinate) bonusMultiplier *= 3;
       damage = Math.floor(damage * bonusMultiplier);
     }
 
     if(isMug) {
+      /** PERK:CLASS:THIEF:Thieves do more damage when mugging. */
       const reductionFactor = 1 - Math.max(
         0.5,
         0.9 - (attacker.baseClass === 'Thief' ? Math.floor(thiefSkill / 5) / 10 : 0)
@@ -1017,6 +1025,7 @@ export class CombatHelper {
     const def = extraData.defender;
 
     if(atk && def && lowerDamageClass === 'physical') {
+      /** PERK:CLASS:THIEF:Thieves can build up sneak attack damage while hidden. */
       if(atk.baseClass === 'Thief' && !extraData.isAttackerVisible) {
         return ['BuildupSneakAttack', 'DefensesShattered', 'RecentlyShattered'];
       }

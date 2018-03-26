@@ -31,10 +31,12 @@ export abstract class Skill extends Command {
 
     let traitReductionLevel = 0;
 
+    /** PERK:CLASS:MAGE:Mages get a bonus to MP cost reduction if they hold a wand in their right hand. */
     if(caster.baseClass === 'Mage' && get(caster, 'rightHand.type') === 'Wand') {
       traitReductionLevel = caster.getTraitLevel('WandSpecialty');
     }
 
+    /** PERK:CLASS:HEALER:Healers get a bonus to MP cost reduction if they hold a totem in their right hand. */
     if(caster.baseClass === 'Healer' && get(caster, 'rightHand.type') === 'Totem') {
       traitReductionLevel = caster.getTraitLevel('TotemSpecialty');
     }
@@ -64,6 +66,8 @@ export abstract class Skill extends Command {
 
     const mpCost = this.modifiedMPCost(user, this.mpCost(user, targets));
 
+
+    /** PERK:CLASS:THIEF:Thieves cast spells with their HP instead of using MP. */
     if(user.baseClass === 'Thief') {
       if(user.hp.total < mpCost) {
         user.sendClientMessage('You do not have enough HP!');
@@ -124,6 +128,7 @@ export abstract class Skill extends Command {
       gainer.gainSkill(SkillClassNames.Thievery, skillGained);
     };
 
+    /** PERK:CLASS:THIEF:Thieves gain thievery skill faster. */
     const mySkill = user.calcSkillLevel(SkillClassNames.Thievery) * (user.baseClass === 'Thief' ? 3 : 1.5);
     const myStealth = Math.max(target.getTotalStat('stealth'), user.stealthLevel());
     const yourPerception = target.getTotalStat('perception');

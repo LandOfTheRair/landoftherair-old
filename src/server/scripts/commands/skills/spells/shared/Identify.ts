@@ -28,6 +28,7 @@ export class Identify extends Skill {
 
   use(user: Character, target: Character, baseEffect = { potency: 0 }) {
     let potency = 1;
+    /** PERK:CLASS:MAGE:Mages always cast identify at a tier higher. */
     if(user.baseClass === 'Mage') potency += 1;
 
     const effect = new CastEffect({ potency });

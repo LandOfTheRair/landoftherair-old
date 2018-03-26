@@ -14,6 +14,7 @@ export class TrueSight extends SpellEffect {
   maxSkillForSkillGain = 7;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
+    /** PERK:CLASS:THIEF:Thieves may only cast TrueSight on themselves. */
     if(caster.baseClass === 'Thief') target = caster;
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
@@ -25,6 +26,7 @@ export class TrueSight extends SpellEffect {
 
     this.aoeAgro(caster, 10);
 
+    /** PERK:CLASS:HEALER:Healers have TrueSight that lasts twice as long. */
     const durationMult = caster.baseClass === 'Healer' ? 30 : 15;
     this.potency *= (caster.baseClass === 'Healer' ? 2 : 1);
     if(!this.duration) this.duration = this.potency * durationMult;
