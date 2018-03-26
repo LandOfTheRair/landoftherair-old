@@ -5249,12 +5249,14 @@
                  "properties":
                     {
                      "peddleCost":1000,
+                     "peddleDesc":"A Succor Ring will allow you to come back to a place you have previously visited!",
                      "peddleItem":"Succor Ring",
                      "script":"global\/peddler"
                     },
                  "propertytypes":
                     {
                      "peddleCost":"int",
+                     "peddleDesc":"string",
                      "peddleItem":"string",
                      "script":"string"
                     },
@@ -5313,12 +5315,14 @@
                  "properties":
                     {
                      "peddleCost":1000,
+                     "peddleDesc":"An Identify Ring will allow you to identify items and see their hidden properties!",
                      "peddleItem":"Identify Ring",
                      "script":"global\/peddler"
                     },
                  "propertytypes":
                     {
                      "peddleCost":"int",
+                     "peddleDesc":"string",
                      "peddleItem":"string",
                      "script":"string"
                     },

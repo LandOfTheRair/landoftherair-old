@@ -67,7 +67,9 @@ export const PeddlerResponses = (npc: NPC) => {
 
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
-      return `Hello, ${player.name}! I can sell you a fancy ${npc.peddleItem} for ${npc.peddleCost.toLocaleString()} gold. Just tell me you want to BUY it!`;
+      let bonusDesc = '';
+      if(npc.peddleDesc) bonusDesc = npc.peddleDesc + ' ';
+      return `Hello, ${player.name}! I can sell you a fancy ${npc.peddleItem} for ${npc.peddleCost.toLocaleString()} gold. ${bonusDesc}Just tell me you want to BUY it!`;
     });
 
   npc.parser.addCommand('buy')

@@ -39,6 +39,7 @@ export class NPC extends Character {
   costPerThousand?: number;
   repairsUpToCondition?: number;
 
+  peddleDesc?: string;
   peddleItem?: string;
   peddleCost?: number;
 
