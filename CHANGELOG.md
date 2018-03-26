@@ -1,11 +1,34 @@
 # Changelog
 
+## v0.1.18 (26/03/2018)
+
+#### Enhancements
+
+- [#674](https://github.com/LandOfTheRair/landoftherair/issues/674) add caches for items and npcs so the database doesn't need to be hit too often
+- [#671](https://github.com/LandOfTheRair/landoftherair/issues/671) add ore spawns in the maze
+- [#670](https://github.com/LandOfTheRair/landoftherair/issues/670) Smith should not have a default action with item held
+- [#666](https://github.com/LandOfTheRair/landoftherair/issues/666) Move the trainers in the tutorial and move the hermit south a bit
+- [#665](https://github.com/LandOfTheRair/landoftherair/issues/665) bring attention to the buff bar when the hermit gives one
+- [#664](https://github.com/LandOfTheRair/landoftherair/issues/664) Adjust succor ring seller
+
+#### Balance Adjustments
+
+- [#673](https://github.com/LandOfTheRair/landoftherair/issues/673) scale smith based on value of item
+
+#### Bug Fixes
+
+- [#669](https://github.com/LandOfTheRair/landoftherair/issues/669) TypeError: phrase.split is not a function
+- [#663](https://github.com/LandOfTheRair/landoftherair/issues/663) TypeError: Cannot read property 'isDead' of undefined
+- [#659](https://github.com/LandOfTheRair/landoftherair/issues/659) TypeError: Cannot read property 'isDead' of undefined
+- [#657](https://github.com/LandOfTheRair/landoftherair/issues/657) TypeError: Cannot read property 'isDead' of undefined
+
+---
+
 ## v0.1.17 (25/03/2018)
 
 #### Enhancements
 
 - [#656](https://github.com/LandOfTheRair/landoftherair/issues/656) defer npc creation in the world until 1-2s after the first player joins
-- [#655](https://github.com/LandOfTheRair/landoftherair/issues/655) improve spawner performance
 - [#653](https://github.com/LandOfTheRair/landoftherair/issues/653) fix dirt sprite top left corner to be brown
 
 ---
