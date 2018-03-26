@@ -80,3 +80,26 @@
   binds: true
   value: 678
 
+- name: Dedlaen Crypt Thing Sash
+  quality: 5
+  randomStats:
+    int:
+      min: 0
+      max: 2
+    wis:
+      min: 0
+      max: 2
+    str:
+      min: 0
+      max: 2
+    agi:
+      min: 0
+      max: 2
+  sprite: 388
+  desc: "a sash weaved with the iridescent threads of the rift-defying beast"
+  binds: true
+  tellsBind: true
+  value: 1900
+
+  requirements:
+    level: 15

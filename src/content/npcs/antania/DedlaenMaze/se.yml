@@ -25,6 +25,13 @@
     - damageType: 'magical'
       potency: 0
 
+  gear:
+    Waist: Dedlaen Crypt Thing Sash
+
+  copyDrops:
+    - drop: 'gear.Waist'
+      chance: -1
+
   usableSkills:
     - DedlaenCryptThingPunch
     - DiseaseBiteMedium
