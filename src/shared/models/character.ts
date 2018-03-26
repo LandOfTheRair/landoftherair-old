@@ -598,7 +598,6 @@ export class Character {
   }
 
   private checkAndCreatePermanentEffect(item: Item) {
-    // TODO why does an effect in offhand when not valid (like the halberd) cast and uncast?
     if(!item || !item.effect || !item.effect.autocast || !item.effect.name) return;
     const effect = new Effects[item.effect.name](item.effect);
     effect.flagPermanent(this.uuid);
