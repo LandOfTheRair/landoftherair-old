@@ -443,6 +443,8 @@ export class GameWorld extends Room<GameState> {
 
     if(rootCharacter) overName = `as ${rootCharacter.name}`;
 
+    if(!overMessage) return;
+
     this.send(client, {
       action: 'log_message',
       name: overName,
