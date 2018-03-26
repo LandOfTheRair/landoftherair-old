@@ -1,4 +1,5 @@
 - name: Ranata Totem
+  quality: 5
   desc: "a wooden totem with a hand carved into it"
   tier: 1
   effect:

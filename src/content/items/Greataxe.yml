@@ -18,6 +18,7 @@
   sprite: 453
 
 - name: Sedgwick's Greataxe
+  quality: 5
   type: Axe
   secondaryType: Twohanded
   desc: "a heavy, metal-tipped greataxe stained with the blood of the land"
