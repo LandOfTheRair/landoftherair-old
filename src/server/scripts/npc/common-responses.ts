@@ -102,28 +102,34 @@ export const SmithResponses = (npc: NPC) => {
 
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
-      if(player.rightHand) {
-        const maxCondition = player.$$room.subscriptionHelper.calcMaxSmithRepair(player, npc.repairsUpToCondition || 20000);
-
-        const cpt = npc.costPerThousand || 1;
-
-        const missingCondition = maxCondition - player.rightHand.condition;
-        if(missingCondition < 0) return 'That item is already beyond my capabilities!';
-
-        const cost = Math.floor(missingCondition / 1000 * cpt);
-
-        if(cost === 0) return 'That item is not in need of repair!';
-        if(player.gold < cost) return `You need ${cost.toLocaleString()} gold to repair that item.`;
-
-        player.loseGold(cost);
-        player.rightHand.condition = maxCondition;
-        return `Thank you, ${player.name}! I've repaired your item for ${cost.toLocaleString()} gold.`;
-      }
-
       return `Hello, ${player.name}! 
-      I am a Smith. I can repair your weapons and armor - just hold them in your right hand! 
+      I am a Smith. I can repair your weapons and armor - just hold them in your right hand and say REPAIR! 
       Or, you can tell me REPAIRALL and I will repair what you're holding and what you're wearing.
       You can also METALWORK here, I can COLLECT your ore, I can ASSESS your progress, and I can FORGE your items!`;
+    });
+
+  npc.parser.addCommand('repair')
+    .set('syntax', ['repair'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+
+      if(!player.rightHand) return 'You need to hold an item in your right hand!';
+
+      const maxCondition = player.$$room.subscriptionHelper.calcMaxSmithRepair(player, npc.repairsUpToCondition || 20000);
+
+      const cpt = npc.costPerThousand || 1;
+
+      const missingCondition = maxCondition - player.rightHand.condition;
+      if(missingCondition < 0) return 'That item is already beyond my capabilities!';
+
+      const cost = Math.floor(missingCondition / 1000 * cpt);
+
+      if(cost === 0) return 'That item is not in need of repair!';
+      if(player.gold < cost) return `You need ${cost.toLocaleString()} gold to repair that item.`;
+
+      player.loseGold(cost);
+      player.rightHand.condition = maxCondition;
+      return `Thank you, ${player.name}! I've repaired your item for ${cost.toLocaleString()} gold.`;
     });
 
   npc.parser.addCommand('repairall')
