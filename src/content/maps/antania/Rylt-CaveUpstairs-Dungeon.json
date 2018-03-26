@@ -490,7 +490,7 @@
      "itemGarbageCollection":15,
      "kickMap":"Rylt",
      "kickX":146,
-     "kickY":96,
+     "kickY":98,
      "maxCreatures":10,
      "maxSkill":15,
      "region":"Antania",
@@ -1764,7 +1764,7 @@
          "columns":32,
          "firstgid":1329,
          "image":"..\/..\/..\/client\/assets\/spritesheets\/decor.png",
-         "imageheight":2432,
+         "imageheight":2496,
          "imagewidth":2048,
          "margin":0,
          "name":"Decor",
@@ -1826,7 +1826,7 @@
                  "name":"LoudRugNoShineVert",
                  "tile":569
                 }],
-         "tilecount":1216,
+         "tilecount":1248,
          "tileheight":64,
          "tiles":
             {
@@ -2339,7 +2339,7 @@
         }, 
         {
          "columns":40,
-         "firstgid":2545,
+         "firstgid":2577,
          "image":"..\/..\/..\/client\/assets\/spritesheets\/creatures.png",
          "imageheight":3008,
          "imagewidth":2560,
