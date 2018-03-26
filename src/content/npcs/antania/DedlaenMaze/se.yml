@@ -1,0 +1,47 @@
+
+- npcId: Dedlaen Crypt Thing
+  name: crypt thing
+  monsterClass: Undead
+  hostility: Always
+  sprite: 225
+  alignment: Evil
+  stats: 20
+  skillLevels: 4
+  level: 20
+
+  skillOnKill: 300
+
+  otherStats:
+    con: 25
+    accuracy: 5
+    offense: 5
+    perception: 300
+
+  gold:
+    min: 23050
+    max: 23700
+
+  attributes:
+    - damageType: 'magical'
+      potency: 0
+
+  usableSkills:
+    - DedlaenCryptThingPunch
+    - DiseaseBiteMedium
+    - PoisonBiteMedium
+    - DoubleAttack
+    - Push
+    - TrueSight
+    - DarkVision
+
+  hp:
+    min: 337950
+    max: 341350
+
+  mp:
+    min: 10000
+    max: 10000
+
+  giveXp:
+    min: 269000
+    max: 275000

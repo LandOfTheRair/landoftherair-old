@@ -292,6 +292,17 @@ export class GameState {
     return find(this.map.layers[MapLayer.Interactables].objects, { name });
   }
 
+  getDecorByName(name: string) {
+
+    const decor = this.map.layers[MapLayer.Decor].objects;
+    const denseDecor = this.map.layers[MapLayer.DenseDecor].objects;
+    const opaqueDecor = this.map.layers[MapLayer.OpaqueDecor].objects;
+
+    const allDecor = decor.concat(denseDecor).concat(opaqueDecor);
+
+    return filter(allDecor, { name });
+  }
+
   removeInteractable(obj: any): void {
     const check = x => x === obj;
     this.map.layers[MapLayer.Interactables].objects = reject(this.map.layers[MapLayer.Interactables].objects, check);
