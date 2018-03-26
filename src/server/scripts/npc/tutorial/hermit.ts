@@ -74,6 +74,7 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['vision'])
     .set('logic', (args, { player }) => {
       NPCLoader.givePlayerEffect(player, 'TrueSight', { duration: 100 });
-      return `Here you go! Best of luck on finding them. They're holed up right outside here, a bit north. See if you can tell where they are!`;
+      return `Here you go! Best of luck on finding them. They're holed up right outside here, a bit north. See if you can tell where they are! 
+      [Hint: Check your status bar, below the map, to see your buffs!]`;
     });
 };
