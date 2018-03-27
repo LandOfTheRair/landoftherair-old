@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, isUndefined, compact, difference } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, isUndefined, compact } from 'lodash';
 
 import { Player } from './player';
 
