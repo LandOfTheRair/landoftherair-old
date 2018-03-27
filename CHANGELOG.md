@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.1.19 (27/03/2018)
+
+#### Enhancements
+
+- [#677](https://github.com/LandOfTheRair/landoftherair/issues/677) add maximum encrusts for a gem type
+
+#### Bug Fixes
+
+- [#678](https://github.com/LandOfTheRair/landoftherair/issues/678) TypeError: Cannot read property 'succorInfo' of undefined
+- [#668](https://github.com/LandOfTheRair/landoftherair/issues/668) Sometimes there are misses from the r trees
+
+---
+
 ## v0.1.18 (26/03/2018)
 
 #### Enhancements
@@ -19,8 +32,6 @@
 
 - [#669](https://github.com/LandOfTheRair/landoftherair/issues/669) TypeError: phrase.split is not a function
 - [#663](https://github.com/LandOfTheRair/landoftherair/issues/663) TypeError: Cannot read property 'isDead' of undefined
-- [#659](https://github.com/LandOfTheRair/landoftherair/issues/659) TypeError: Cannot read property 'isDead' of undefined
-- [#657](https://github.com/LandOfTheRair/landoftherair/issues/657) TypeError: Cannot read property 'isDead' of undefined
 
 ---
 
