@@ -370,7 +370,7 @@ export class Spawner {
     // npcs cannot spawn unless X ticks have passed, the spawner isn't overloaded, and they _always_ spawn OR they're not slow, _and_ the room isn't full
     if(this.currentTick > this.respawnRate
     && this.respawnRate > 0
-    && this.npcs.length < this.maxCreatures
+    && (this.npcs.length + this.despawnedNPCs.length) < this.maxCreatures
     && (this.alwaysSpawn || (this.room.canSpawnCreatures && !this.$$isStayingSlow))) {
       this.currentTick = 0;
       this.createNPC();
