@@ -32,7 +32,8 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['help'])
     .set('logic', () => {
       return `Yes, I can help you, and you can help me. If you kill the nearby YETI and bring me his SKULL - just hold it in your right hand. 
-      If ya do that, I can give you a KEY to let you out of here.`;
+      If ya do that, I can give you a KEY to let you out of here. I can also help you find the PROFESSION trainers. 
+      [Hint: Ask about the profession trainers with "her, profession"]`;
     });
 
   npc.parser.addCommand('yeti')
@@ -65,13 +66,6 @@ export const responses = (npc: NPC) => {
 
   npc.parser.addCommand('profession')
     .set('syntax', ['profession'])
-    .set('logic', () => {
-      return `Rumor has it, there's an enclave of trainers that seek new recruits for their ranks. 
-      I don't know where to find them, but I can grant you VISION to help you on your way.`;
-    });
-
-  npc.parser.addCommand('vision')
-    .set('syntax', ['vision'])
     .set('logic', (args, { player }) => {
       NPCLoader.givePlayerEffect(player, 'TrueSight', { duration: 100 });
       return `Here you go! Best of luck on finding them. They're holed up right outside here, a bit north. See if you can tell where they are! 
