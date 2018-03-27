@@ -1100,7 +1100,7 @@ export class Character {
   useItem(source: 'leftHand' | 'rightHand' | 'potionHand', fromApply = false) {
     const item: Item = this[source];
 
-    if(item.succorInfo && this.$$room.state.isSuccorRestricted(this)) {
+    if(item && item.succorInfo && this.$$room.state.isSuccorRestricted(this)) {
       return this.sendClientMessage('You stop, unable to envision the place in your memory!');
     }
 
