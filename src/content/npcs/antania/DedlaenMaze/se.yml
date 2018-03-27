@@ -9,7 +9,7 @@
   skillLevels: 4
   level: 20
 
-  skillOnKill: 300
+  skillOnKill: 1000
 
   otherStats:
     con: 25

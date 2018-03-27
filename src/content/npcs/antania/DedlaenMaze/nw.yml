@@ -9,7 +9,7 @@
   skillLevels: 3
   level: 15
 
-  skillOnKill: 10
+  skillOnKill: 15
 
   otherStats:
     con: 15
@@ -115,7 +115,7 @@
   skillLevels: 7
   level: 19
 
-  skillOnKill: 300
+  skillOnKill: 1000
 
   otherStats:
     con: 25
@@ -195,7 +195,7 @@
   skillLevels: 5
   level: 21
 
-  skillOnKill: 300
+  skillOnKill: 1000
 
   otherStats:
     con: 25
