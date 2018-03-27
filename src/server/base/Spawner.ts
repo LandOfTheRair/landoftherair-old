@@ -20,8 +20,8 @@ export class Spawner {
 
   currentTick = 0;
 
-  // in half-seconds
-  respawnRate = 240;
+  // in seconds
+  respawnRate = 120;
 
   initialSpawn = 0;
 
@@ -64,10 +64,6 @@ export class Spawner {
   removeWhenNoNPCs = false;
   npcCreateCallback: Function;
   shouldBeActive = true;
-
-  public get totalMonsters(): number {
-    return this.npcs.length;
-  }
 
   constructor(private room: GameWorld, { x, y, map, name }, spawnOpts) {
     extend(this, spawnOpts);

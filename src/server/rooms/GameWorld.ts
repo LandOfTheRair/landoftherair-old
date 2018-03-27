@@ -740,10 +740,9 @@ export class GameWorld extends Room<GameState> {
 
     if(npcs.length === 0) return;
     const normalNPCSpawner = new Spawner(this, { x: 0, y: 0, map: this.state.mapName, name: 'NPC Green Spawner' }, {
-      leashRadius: -1
+      leashRadius: -1,
+      canSlowDown: false
     });
-
-    normalNPCSpawner.canSlowDown = false;
 
     this.spawners.push(normalNPCSpawner);
 
