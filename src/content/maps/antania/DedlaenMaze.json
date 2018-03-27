@@ -22602,26 +22602,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":5504,
-                 "name":"Incorporeal Undead Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/dedlaenmaze\/incorporeal-undead"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6144,
-                 "y":10048
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":5505,
                  "name":"Ghost Spawner",
                  "properties":

@@ -14,8 +14,8 @@ export class SkeletonSpawner extends Spawner {
       initialSpawn: 5,
       maxCreatures: 45,
       spawnRadius: 15,
-      randomWalkRadius: 35,
-      leashRadius: 45,
+      randomWalkRadius: 30,
+      leashRadius: 40,
       npcIds
     });
   }

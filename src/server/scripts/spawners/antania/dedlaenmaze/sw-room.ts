@@ -15,8 +15,8 @@ export class SWRoomSpawner extends Spawner {
       initialSpawn: 4,
       maxCreatures: 10,
       spawnRadius: 2,
-      randomWalkRadius: 10,
-      leashRadius: 20,
+      randomWalkRadius: 7,
+      leashRadius: 15,
       npcIds
     });
   }

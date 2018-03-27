@@ -41,6 +41,8 @@ export class Spawner {
 
   npcs: NPC[] = [];
 
+  private despawnedNPCs: NPC[] = [];
+
   alwaysSpawn: boolean;
 
   shouldSerialize: boolean;
@@ -62,6 +64,10 @@ export class Spawner {
   removeWhenNoNPCs = false;
   npcCreateCallback: Function;
   shouldBeActive = true;
+
+  public get totalMonsters(): number {
+    return this.npcs.length;
+  }
 
   constructor(private room: GameWorld, { x, y, map, name }, spawnOpts) {
     extend(this, spawnOpts);
@@ -311,14 +317,16 @@ export class Spawner {
     return npc;
   }
 
-  addNPC(npc: NPC) {
+  addNPC(npc: NPC, doIncrement = true) {
     this.npcs.push(npc);
     this.room.addNPC(npc);
+    if(doIncrement) this.room.totalCreaturesInWorld++;
   }
 
-  removeNPC(npc: NPC) {
+  removeNPC(npc: NPC, doDecrement = true) {
     pull(this.npcs, npc);
     this.room.removeNPC(npc);
+    if(doDecrement) this.room.totalCreaturesInWorld--;
   }
 
   assignPath(npc: NPC) {
@@ -328,7 +336,7 @@ export class Spawner {
 
   shouldSlowDown() {
     if(!this.canSlowDown) return false;
-    return this.room.state.getPlayersInRange(this, Math.max(this.leashRadius, 30)).length === 0;
+    return this.room.state.getPlayersInRange(this, Math.max(this.leashRadius, 20)).length === 0;
   }
 
   tick() {
@@ -345,13 +353,21 @@ export class Spawner {
       return;
     }
 
-    if(this.shouldSlowDown()) {
+    // check if we're currently slow
+    const isSlow = this.$$isStayingSlow;
+    const shouldSlowDown = this.shouldSlowDown();
+
+    // if we aren't already slow, and we should slow down
+    if(!isSlow && shouldSlowDown) {
       this.$$slowTicks = 2;
       this.slowDown();
-    } else {
+
+    // if we need to speed up, we speed up
+    } else if(isSlow && !shouldSlowDown) {
       this.speedUp();
     }
 
+    // npcs cannot spawn unless X ticks have passed, the spawner isn't overloaded, and they _always_ spawn OR they're not slow, _and_ the room isn't full
     if(this.currentTick > this.respawnRate
     && this.respawnRate > 0
     && this.npcs.length < this.maxCreatures
@@ -363,10 +379,21 @@ export class Spawner {
 
   slowDown() {
     this.$$isStayingSlow = true;
+
+    this.npcs.forEach(npc => {
+      this.despawnedNPCs.push(npc);
+      this.removeNPC(npc, false);
+    });
   }
 
   speedUp() {
     this.$$isStayingSlow = false;
+
+    this.despawnedNPCs.forEach(npc => {
+      this.addNPC(npc, false);
+    });
+
+    this.despawnedNPCs = [];
   }
 
   npcTick(canMove: boolean): void {

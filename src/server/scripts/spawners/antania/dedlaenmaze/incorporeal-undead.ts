@@ -13,8 +13,8 @@ export class IncorporealUndeadSpawner extends Spawner {
       initialSpawn: 1,
       maxCreatures: 3,
       spawnRadius: 0,
-      randomWalkRadius: 45,
-      leashRadius: 65,
+      randomWalkRadius: 15,
+      leashRadius: 20,
       npcIds
     });
   }

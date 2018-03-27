@@ -83,6 +83,8 @@ export class GameWorld extends Room<GameState> {
 
   private events: { [key: string]: Signal } = {};
 
+  public totalCreaturesInWorld = 0;
+
   get allSpawners() {
     return this.spawners;
   }
@@ -116,7 +118,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   get canSpawnCreatures(): boolean {
-    return !this.disableCreatureSpawn && this.state._mapNPCs.length < this.maxCreatures;
+    return !this.disableCreatureSpawn && this.totalCreaturesInWorld < this.maxCreatures;
   }
 
   get decayRateHours() {
