@@ -9,6 +9,13 @@ export class QuadtreeHelper {
   private static playerBush;
   private static npcBush;
 
+  public static get playerCount(): number {
+    return QuadtreeHelper.playerBush.all().length;
+  }
+
+  public static get npcCount(): number {
+    return QuadtreeHelper.npcBush.all().length;
+  }
 
   static init() {
     QuadtreeHelper.playerBush = RBush();

@@ -369,7 +369,7 @@ export class Spawner {
     this.$$isStayingSlow = false;
   }
 
-  npcTick(canMove: boolean) {
+  npcTick(canMove: boolean): void {
     this.npcs.forEach(npc => {
       if(npc.hostility === 'Never') {
         npc.tick(canMove);
@@ -386,6 +386,18 @@ export class Spawner {
 
       npc.tick(canMove);
       npc.$$room.state.calculateFOV(npc);
+    });
+  }
+
+  buffTick(): void {
+    if(this.$$isStayingSlow) return;
+
+    this.npcs.forEach(npc => {
+      const effects = npc.effectsList;
+      if(effects.length === 0) return;
+
+      effects.forEach(eff => eff.tick(npc));
+      this.room.state.updateNPCVolatile(npc);
     });
   }
 

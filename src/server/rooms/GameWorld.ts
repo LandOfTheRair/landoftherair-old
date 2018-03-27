@@ -40,20 +40,20 @@ import { Signal } from 'signals.js';
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon' | 'block-offhand';
 
-const TICK_TIMER = 500;
+const TICK_TIMER = 1000;
 
 const TickRatesPerTimer = {
 
-  BuffTick: 2,
+  BuffTick: 1,
 
   // tick players every second
-  CharacterAction: 2,
+  CharacterAction: 1,
 
   // tick spawners every second
-  SpawnerTick: 2,
+  SpawnerTick: 1,
 
   // save players every minute
-  PlayerSave: 120
+  PlayerSave: 60
 };
 
 export class GameWorld extends Room<GameState> {
@@ -802,11 +802,12 @@ export class GameWorld extends Room<GameState> {
 
     if((this.ticks % TickRatesPerTimer.CharacterAction) === 0) {
       this.state.tickPlayers();
-      this.spawners.forEach(spawner => spawner.npcTick(this.ticks % 4 === 0));
+      this.spawners.forEach(spawner => spawner.npcTick(this.ticks % 2 === 0));
     }
 
     if((this.ticks % TickRatesPerTimer.BuffTick) === 0) {
       this.state.tick();
+      this.spawners.forEach(spawner => spawner.buffTick());
     }
 
     if((this.ticks % TickRatesPerTimer.SpawnerTick) === 0) {
