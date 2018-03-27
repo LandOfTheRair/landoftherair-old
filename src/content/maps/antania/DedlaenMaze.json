@@ -24816,10 +24816,10 @@
                 {
                  "height":640,
                  "id":5733,
-                 "name":"Armory Row",
+                 "name":"Stock Row",
                  "properties":
                     {
-                     "desc":"You see rows and rows of weapons lined up on the wall."
+                     "desc":"You see rows of stocks. The unruly must have been kept here."
                     },
                  "propertytypes":
                     {
@@ -25518,7 +25518,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
