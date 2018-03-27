@@ -575,7 +575,9 @@ export const EncrusterResponses = (npc: NPC) => {
       const replaceText = prevEncrust ? ` This has replaced your ${prevEncrust.desc}.` : '';
       player.recalculateStats();
 
-      return `I have set your ${player.rightHand.itemClass.toLowerCase()} with ${nextEncrust.desc}.${replaceText}`;
+      const maxEncrustText = nextEncrust.maxEncrusts > 0 ? ` This gem seems fairly unique, and you can only use ${nextEncrust.maxEncrusts} at a time!` : '';
+
+      return `I have set your ${player.rightHand.itemClass.toLowerCase()} with ${nextEncrust.desc}.${maxEncrustText}${replaceText}`;
     });
 };
 
