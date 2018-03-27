@@ -5,7 +5,7 @@ class FloatingBox {
   private el;
   private isRemoved: boolean;
 
-  constructor(private value: number, private side: Side, private color: string) {}
+  constructor(private value: number, private side: Side, private color: string, private stringMod) {}
 
   init(element) {
     const el = document.createElement('div');
@@ -22,7 +22,7 @@ class FloatingBox {
     el.style.pointerEvents = 'none';
     el.style.transition = 'all 7s ease 0s';
     el.style.letterSpacing = '2px';
-    el.innerText = `${this.value > 0 ? '+' : ''}${this.value.toLocaleString()}`;
+    el.innerText = `${this.value > 0 ? '+' : ''}${this.value.toLocaleString()} ${this.stringMod}`;
     element.appendChild(el);
 
     this.el = el;
@@ -49,12 +49,12 @@ class FloatingBox {
 
 export class XPBox extends FloatingBox {
   constructor(value: number) {
-    super(value, 'left', value < 0 ? 'red' : 'green');
+    super(value, 'left', value < 0 ? 'red' : 'green', 'XP');
   }
 }
 
 export class HPBox extends FloatingBox {
   constructor(value: number) {
-    super(value, 'right', value < 0 ? 'red' : 'blue');
+    super(value, 'right', value < 0 ? 'red' : 'blue', 'HP');
   }
 }

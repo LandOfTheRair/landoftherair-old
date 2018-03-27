@@ -32,6 +32,7 @@ export class Attribute extends SpellEffect implements AttributeEffect {
   };
 
   private damageType: AttributeType;
+  private unableToShred: boolean;
 
   private determineColor(attr: AttributeType) {
     switch(attr) {
@@ -69,6 +70,8 @@ export class Attribute extends SpellEffect implements AttributeEffect {
     if(this.potency <= 0) this.potency = 0;
     if(this.potency === 0) this.iconData.tooltipDesc = `Immune to ${capitalize(this.damageType)} damage.`;
 
+    if(this.unableToShred) this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Not bypassable.`;
+
     target.applyEffect(this);
   }
 
@@ -81,6 +84,7 @@ export class Attribute extends SpellEffect implements AttributeEffect {
     // if you have something that ignores resistance, then it is ignored
     if(attacker
     && monsterClass
+    && !this.unableToShred
     && ResistanceShredders[monsterClass]
     && attacker.hasEffect(ResistanceShredders[monsterClass])
     && this.potency < 1) return damage;

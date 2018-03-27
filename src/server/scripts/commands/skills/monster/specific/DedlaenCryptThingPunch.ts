@@ -1,8 +1,8 @@
 
 import { random, sample } from 'lodash';
 
-import { Skill } from '../../../../base/Skill';
-import { Character } from '../../../../../shared/models/character';
+import { Skill } from '../../../../../base/Skill';
+import { Character } from '../../../../../../shared/models/character';
 
 export class DedlaenCryptThingPunch extends Skill {
 

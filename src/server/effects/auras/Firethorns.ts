@@ -41,10 +41,9 @@ export class Firethorns extends SpellEffect {
 
   effectTick(char: Character) {
     const damage = this.potency * this.potencyMultiplier;
-    const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
 
     char.$$room.state.getAllHostilesInRange(char, 1).forEach(target => {
-      CombatHelper.magicalAttack(caster, target, {
+      CombatHelper.magicalAttack(char, target, {
         effect: this,
         defMsg: `You are overwhelmed by the surrounding warmth!`,
         damage: damage,

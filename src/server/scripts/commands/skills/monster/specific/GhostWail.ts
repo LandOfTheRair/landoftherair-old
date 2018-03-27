@@ -1,11 +1,11 @@
 
 
-import { Skill } from '../../../../base/Skill';
-import { Character } from '../../../../../shared/models/character';
-import { Stun, Frosted } from '../../../../effects';
+import { Skill } from '../../../../../base/Skill';
+import { Character } from '../../../../../../shared/models/character';
+import { Stun, Frosted } from '../../../../../effects';
 
 import { every } from 'lodash';
-import { CharacterHelper } from '../../../../helpers/character/character-helper';
+import { CharacterHelper } from '../../../../../helpers/character/character-helper';
 
 export class GhostWail extends Skill {
 

@@ -202,6 +202,8 @@
     accuracy: 5
     offense: 5
     perception: 300
+    stealth: 50
+    mpregen: 100
 
   drops:
     - result: Dedlaen Vampire Heart
@@ -215,9 +217,19 @@
     min: 257950
     max: 261350
 
+  mp:
+    min: 10000
+    max: 10000
+
   giveXp:
     min: 219000
     max: 225000
+
+  usableSkills:
+    - Charge
+    - VampireMistForm
+    - PoisonBiteMedium
+    - SkillSuckWeak
 
   combatMessages:
     - Gwahahaha! Very good!

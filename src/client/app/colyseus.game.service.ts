@@ -12,8 +12,7 @@ import { Locker } from '../../shared/models/container/locker';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Character } from '../../shared/models/character';
 import { NPC } from '../../shared/models/npc';
-
-export const VALID_TRADESKILLS = ['Alchemy', 'Spellforging', 'Metalworking'];
+import { VALID_TRADESKILLS } from '../../shared/helpers/tradeskill-helper';
 
 @Injectable()
 export class ColyseusGameService {
