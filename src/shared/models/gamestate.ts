@@ -256,19 +256,21 @@ export class GameState {
     QuadtreeHelper.playerQuadtreeRemove(playerRef);
   }
 
-  updateNPCInQuadtree(char: NPC, updateBasedOnThisOldPos?: any): void {
+  updateNPCInQuadtree(char: NPC, oldPos: any): void {
     if(!updateBasedOnThisOldPos) return;
+    if(oldPos.x === char.x && oldPos.y === char.y) return;
 
     updateBasedOnThisOldPos.uuid = char.uuid;
-    QuadtreeHelper.npcQuadtreeRemove(char, updateBasedOnThisOldPos);
+    QuadtreeHelper.npcQuadtreeRemove(char, oldPos);
     QuadtreeHelper.npcQuadtreeInsert(char);
   }
 
-  updatePlayerInQuadtree(char: Player, updateBasedOnThisOldPos?: any): void {
+  updatePlayerInQuadtree(char: Player, oldPos: any): void {
     if(!updateBasedOnThisOldPos) return;
+    if(oldPos.x === char.x && oldPos.y === char.y) return;
 
     updateBasedOnThisOldPos.uuid = char.uuid;
-    QuadtreeHelper.playerQuadtreeRemove(char, updateBasedOnThisOldPos);
+    QuadtreeHelper.playerQuadtreeRemove(char, oldPos);
     QuadtreeHelper.playerQuadtreeInsert(char);
   }
 
