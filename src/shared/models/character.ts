@@ -8,7 +8,7 @@ import {
 } from 'lodash';
 
 import {
-  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes, WeaponClasses, ItemEffect
+  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes, WeaponClasses
 } from './item';
 import { MapLayer } from './maplayer';
 
