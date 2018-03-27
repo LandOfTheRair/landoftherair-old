@@ -77,6 +77,9 @@
   stats:
     perception: 10
 
+  requirements:
+    level: 7
+
 - name: Risan Polished Ruby
   desc: "a well-polished ruby"
   value: 1200
@@ -94,6 +97,9 @@
   stats:
     hpregen: 1
 
+  requirements:
+    level: 7
+
 - name: Risan Black Pearl
   desc: "a large black pearl"
   value: 3000
@@ -101,12 +107,18 @@
   stats:
     mpregen: 1
 
+  requirements:
+    level: 7
+
 - name: Risan Small Black Pearl
   desc: "a small black pearl"
   value: 3500
   sprite: 315
   stats:
     accuracy: 3
+
+  requirements:
+    level: 7
 
 - name: Antanian MagicMissile Black Pearl
   desc: "a small black pearl radiating with magical energy"
@@ -222,6 +234,21 @@
       name: Transmute
       chance: 33
       potency: 20
+
+  requirements:
+    level: 10
+
+- name: Dedlaen Vampire Heart
+  desc: "a crystallized heart pulsing with blood"
+  value: 7500
+  sprite: 361
+
+  maxEncrusts: 1
+
+  stats:
+    str: 1
+    int: 1
+    wis: 1
 
   requirements:
     level: 10

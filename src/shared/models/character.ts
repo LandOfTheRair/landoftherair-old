@@ -512,18 +512,27 @@ export class Character {
       this.totalStats[stat] += classStats[stat];
     });
 
+    const encrustMaxes = {};
+
     const addStatsForItem = (item: Item) => {
       Object.keys(item.stats).forEach(stat => {
         this.totalStats[stat] += item.stats[stat];
       });
 
       if(item.encrust) {
-        Object.keys(item.encrust.stats).forEach(stat => {
-          this.totalStats[stat] += item.encrust.stats[stat];
-        });
+        encrustMaxes[item.encrust.desc] = encrustMaxes[item.encrust.desc] || { max: item.encrust.maxEncrusts, count: 0, stats: item.encrust.stats };
+        encrustMaxes[item.encrust.desc].count++;
+
+        const max = encrustMaxes[item.encrust.desc].max;
+
+        if(!max || encrustMaxes[item.encrust.desc].count <= max) {
+          Object.keys(item.encrust.stats).forEach(stat => {
+            this.totalStats[stat] += item.encrust.stats[stat];
+          });
+        }
       }
     };
-
+    
     allGear.forEach(item => {
       if(!item.stats || !this.checkCanEquipWithoutGearCheck(item)) return;
       addStatsForItem(item);

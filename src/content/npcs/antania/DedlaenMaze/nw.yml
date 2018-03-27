@@ -203,6 +203,10 @@
     offense: 5
     perception: 300
 
+  drops:
+    - result: Dedlaen Vampire Heart
+      chance: -1
+
   gold:
     min: 3050
     max: 3700

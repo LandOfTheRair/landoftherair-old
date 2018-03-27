@@ -559,7 +559,8 @@ export const EncrusterResponses = (npc: NPC) => {
         desc: player.leftHand.desc,
         stats: player.leftHand.stats,
         sprite: player.leftHand.sprite,
-        value: player.leftHand.value
+        value: player.leftHand.value,
+        maxEncrusts: player.leftHand.maxEncrusts || 0
       };
 
       const prevValue = get(prevEncrust, 'value', 0);

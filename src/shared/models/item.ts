@@ -109,6 +109,7 @@ export class Encrust {
   sprite: number;
   stats: any = {};
   value: number;
+  maxEncrusts?: number
 }
 
 export class ItemEffect {
@@ -152,6 +153,7 @@ export class Item {
 
   ounces = 0;
   value = 0;
+  maxEncrusts?: number;
   _buybackValue?: number;
   stats: any = {};
   requirements?: ItemRequirements;
