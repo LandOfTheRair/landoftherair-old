@@ -148,7 +148,7 @@
   effect:
     name: Transmute
     uses: 10
-    potency: 1
+    potency: 10
 
 - name: Succor Ring
   sprite: 239
@@ -158,6 +158,24 @@
     name: Succor
     uses: 10
     potency: 1
+
+- name: DarkVision Ring
+  sprite: 239
+  desc: "a silver ring set with a blue gem encased in a shadowy aura"
+  value: 100
+  effect:
+    name: DarkVision
+    uses: 10
+    potency: 10
+
+- name: Revive Ring
+  sprite: 239
+  desc: "a silver ring set with a blue gem encased in a holy aura"
+  value: 100
+  effect:
+    name: Revive
+    uses: 10
+    potency: 10
 
 - name: Terwin Ring
   stats:

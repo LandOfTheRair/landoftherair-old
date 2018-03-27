@@ -15,7 +15,12 @@ export const setup = async (npc: NPC) => {
     'Antanian Slice of Bread',
     'Antanian Loaf of Bread',
     'Antanian Bottle of Water',
-    'Antanian Pint of Water'
+    'Antanian Pint of Water',
+    'Identify Ring',
+    'Transmute Ring',
+    'Succor Ring',
+    'DarkVision Ring',
+    'Revive Ring'
   ];
 
   NPCLoader.loadVendorItems(npc, vendorItems);
