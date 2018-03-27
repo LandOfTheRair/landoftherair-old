@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.1.20 (27/03/2018)
+
+#### Enhancements
+
+- [#679](https://github.com/LandOfTheRair/landoftherair/issues/679) change log buttons to merge them into one group with borders inbetween
+- [#655](https://github.com/LandOfTheRair/landoftherair/issues/655) improve spawner performance
+
+#### New Content
+
+- [#681](https://github.com/LandOfTheRair/landoftherair/issues/681) break command
+
+---
+
 ## v0.1.19 (27/03/2018)
 
 #### Enhancements
