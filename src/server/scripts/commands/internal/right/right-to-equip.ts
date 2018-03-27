@@ -20,8 +20,8 @@ export class RightToEquip extends Command {
 
     if(!player.canEquip(item)) return player.sendClientMessage('You cannot equip that item.');
 
-    player.equip(item);
     player.setRightHand(null);
+    player.equip(item);
   }
 
 }

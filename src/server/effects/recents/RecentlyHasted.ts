@@ -8,7 +8,7 @@ export class RecentlyHasted extends SpellEffect {
   iconData = {
     name: 'time-trap',
     color: '#000',
-    tooltipDesc: 'Recently hasted. Hasting during this period will eat one physical stat.'
+    tooltipDesc: 'Recently hasted. Hasting during this period will lower one physical stat.'
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {

@@ -53,6 +53,7 @@ export class Effect {
     this.duration = -1;
     this.effectInfo.isPermanent = true;
     this.effectInfo.caster = casterUUID;
+    this.effectInfo.canManuallyUnapply = false;
   }
 
   protected flagCasterName(casterName: string) {
@@ -60,6 +61,7 @@ export class Effect {
   }
 
   protected flagUnapply() {
+    if(this.effectInfo.isPermanent) return;
     this.effectInfo.canManuallyUnapply = true;
   }
 

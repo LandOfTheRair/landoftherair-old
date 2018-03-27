@@ -19,8 +19,8 @@ export class LeftToEquip extends Command {
 
     if(!player.canEquip(item)) return player.sendClientMessage('You cannot equip that item.');
 
-    player.equip(item);
     player.setLeftHand(null);
+    player.equip(item);
   }
 
 }

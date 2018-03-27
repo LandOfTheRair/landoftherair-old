@@ -8,7 +8,7 @@ import {
 } from 'lodash';
 
 import {
-  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes, WeaponClasses
+  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes, WeaponClasses, ItemEffect
 } from './item';
 import { MapLayer } from './maplayer';
 
@@ -609,8 +609,8 @@ export class Character {
   private checkAndCreatePermanentEffect(item: Item) {
     if(!item || !item.effect || !item.effect.autocast || !item.effect.name) return;
     const effect = new Effects[item.effect.name](item.effect);
-    effect.flagPermanent(this.uuid);
     effect.cast(this, this);
+    effect.flagPermanent(this.uuid);
   }
 
   private checkAndUnapplyPermanentEffect(item: Item) {
