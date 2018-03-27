@@ -2,6 +2,9 @@
   desc: "a small purple gem"
   value: 300
   sprite: 213
+
+  maxEncrusts: 7
+
   stats:
     armorClass: 2
 
@@ -64,6 +67,9 @@
   desc: "a chunk of raw jade"
   value: 1500
   sprite: 310
+
+  maxEncrusts: 3
+
   stats:
     con: 1
 
@@ -94,6 +100,9 @@
   desc: "a large white pearl"
   value: 3000
   sprite: 313
+
+  maxEncrusts: 3
+
   stats:
     hpregen: 1
 
@@ -104,6 +113,9 @@
   desc: "a large black pearl"
   value: 3000
   sprite: 314
+
+  maxEncrusts: 3
+
   stats:
     mpregen: 1
 
@@ -150,6 +162,9 @@
   desc: "a slight black pearl bathed in shadows"
   value: 6000
   sprite: 315
+
+  maxEncrusts: 7
+
   stats:
     stealth: 3
     physicalDamageBoost: 10
@@ -162,6 +177,9 @@
   desc: "a crimson gem forged by the intense pressure of combat"
   value: 6000
   sprite: 245
+
+  maxEncrusts: 7
+
   stats:
     offense: 1
     defense: 1
@@ -174,6 +192,9 @@
   desc: "an emerald gem bathed in a faint amber glow"
   value: 6000
   sprite: 243
+
+  maxEncrusts: 7
+
   stats:
     healingBoost: 15
     defense: 1
@@ -186,6 +207,9 @@
   desc: "a violet gem pulsating with magical energy"
   value: 6000
   sprite: 213
+
+  maxEncrusts: 7
+
   stats:
     magicalDamageBoost: 15
     defense: 1
