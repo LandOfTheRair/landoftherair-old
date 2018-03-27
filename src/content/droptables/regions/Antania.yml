@@ -166,108 +166,108 @@
 # Rune Scrolls
 - result: Rune Scroll - Careful Touch I
   chance: 1
-  maxChance: 1500
+  maxChance: 2500
 
 - result: Rune Scroll - Death Grip I
   chance: 1
-  maxChance: 1500
+  maxChance: 2500
 
 - result: Rune Scroll - Eagle Eye I
   chance: 1
-  maxChance: 1500
+  maxChance: 2500
 
 - result: Rune Scroll - Funky Moves I
   chance: 1
-  maxChance: 1500
+  maxChance: 2500
 
 - result: Rune Scroll - Natural Armor I
   chance: 1
-  maxChance: 1500
+  maxChance: 2500
 
 - result: Rune Scroll - Sword Tricks I
   chance: 1
-  maxChance: 1500
+  maxChance: 2500
 
 - result: Rune Scroll - Magic Focus I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Calm Mind I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Healing Focus I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Necrotic Focus I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Forged Fire I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Frosted Touch I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Mana Pool I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Wand Specialty I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Totem Specialty I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Effective Supporter I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Darker Shadows I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Shadow Sheath I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Shadow Ranger I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Shadow Swap I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Philosophers Stone I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Shadow Daggers I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Deadeye I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Forceful Strike I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Swashbuckler I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Offhand Finesse I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Riposte I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
