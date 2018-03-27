@@ -208,8 +208,8 @@
       chance: -1
 
   gold:
-    min: 3050
-    max: 3700
+    min: 32050
+    max: 32700
 
   hp:
     min: 257950

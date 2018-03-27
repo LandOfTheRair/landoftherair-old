@@ -109,7 +109,7 @@ export class Encrust {
   sprite: number;
   stats: any = {};
   value: number;
-  maxEncrusts?: number
+  maxEncrusts?: number;
 }
 
 export class ItemEffect {

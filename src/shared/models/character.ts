@@ -532,7 +532,7 @@ export class Character {
         }
       }
     };
-    
+
     allGear.forEach(item => {
       if(!item.stats || !this.checkCanEquipWithoutGearCheck(item)) return;
       addStatsForItem(item);
