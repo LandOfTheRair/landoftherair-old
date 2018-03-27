@@ -571,7 +571,9 @@ export class GameWorld extends Room<GameState> {
     }
 
     if(!newMap || player.map === newMap) {
+      const oldPos = { x, y };
       this.setPlayerXY(player, x, y);
+      this.state.updatePlayerInQuadtree(player, oldPos);
     }
 
     if(zChange) {

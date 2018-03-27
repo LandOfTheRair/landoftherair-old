@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, isUndefined, compact } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, isUndefined, compact, difference } from 'lodash';
 
 import { Player } from './player';
 
@@ -223,15 +223,9 @@ export class GameState {
     QuadtreeHelper.npcQuadtreeRemove(npc);
   }
 
-  updateNPCVolatile(char: NPC, updateBasedOnThisOldPos?: any): void {
+  updateNPCVolatile(char: NPC): void {
     if(!this.mapNPCs[char.uuid] || this.isDisposing) return;
     this.npcVolatile[char.uuid] = { x: char.x, y: char.y, hp: char.hp, dir: char.dir, agro: char.agro, effects: char.effects };
-
-    if(updateBasedOnThisOldPos) {
-      updateBasedOnThisOldPos.uuid = char.uuid;
-      QuadtreeHelper.npcQuadtreeRemove(char, updateBasedOnThisOldPos);
-      QuadtreeHelper.npcQuadtreeInsert(char);
-    }
   }
 
   addPlayer(player, clientId: string): void {
@@ -260,6 +254,14 @@ export class GameState {
 
     playerRef.killAllPets();
     QuadtreeHelper.playerQuadtreeRemove(playerRef);
+  }
+
+  updateNPCInQuadtree(char: NPC, updateBasedOnThisOldPos?: any): void {
+    if(!updateBasedOnThisOldPos) return;
+
+    updateBasedOnThisOldPos.uuid = char.uuid;
+    QuadtreeHelper.npcQuadtreeRemove(char, updateBasedOnThisOldPos);
+    QuadtreeHelper.npcQuadtreeInsert(char);
   }
 
   updatePlayerInQuadtree(char: Player, updateBasedOnThisOldPos?: any): void {

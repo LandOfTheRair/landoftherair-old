@@ -386,6 +386,7 @@ export class Spawner {
 
       npc.tick(canMove);
       npc.$$room.state.calculateFOV(npc);
+      this.room.state.updateNPCVolatile(npc);
     });
   }
 
@@ -397,7 +398,6 @@ export class Spawner {
       if(effects.length === 0) return;
 
       effects.forEach(eff => eff.tick(npc));
-      this.room.state.updateNPCVolatile(npc);
     });
   }
 

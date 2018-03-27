@@ -984,8 +984,6 @@ export class CombatHelper {
       }
     }
 
-    defender.$$room.state.updateNPCVolatile(defender);
-
     this.tryDamageReflect(attacker, defender, damage, damageClass);
 
     return damage;

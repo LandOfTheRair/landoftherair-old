@@ -10,11 +10,19 @@ export class QuadtreeHelper {
   private static npcBush;
 
   public static get playerCount(): number {
-    return QuadtreeHelper.playerBush.all().length;
+    return QuadtreeHelper.players.length;
   }
 
   public static get npcCount(): number {
-    return QuadtreeHelper.npcBush.all().length;
+    return QuadtreeHelper.npcs.length;
+  }
+
+  public static get players(): any[] {
+    return QuadtreeHelper.playerBush.all();
+  }
+
+  public static get npcs(): any[] {
+    return QuadtreeHelper.npcBush.all();
   }
 
   static init() {
