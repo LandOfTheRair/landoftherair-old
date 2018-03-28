@@ -550,3 +550,51 @@
       chance: -1
     - drop: 'rightHand'
       chance: -1
+
+- npcId: Dedlaen Minotaur
+  name: minotaur
+  hostility: Always
+  sprite: 445
+  alignment: Evil
+  stats: 20
+  skillLevels: 5
+  level: 23
+
+  skillOnKill: 1000
+
+  otherStats:
+    con: 30
+    accuracy: 7
+    offense: 7
+    perception: 350
+    hpregen: 100
+
+  gold:
+    min: 52050
+    max: 52700
+
+  hp:
+    min: 457950
+    max: 461350
+
+  giveXp:
+    min: 269000
+    max: 275000
+
+  rightHand:
+    - Dedlaen Dueling Axe
+    - Dedlaen Minotaur Greataxe
+
+  leftHand: Dedlaen Dueling Axe
+
+  gear:
+    Ear: Enemy DarkVision Earring
+
+  usableSkills:
+    - Charge
+
+  copyDrops:
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1

@@ -21,6 +21,8 @@ export class LairSpawner extends Spawner {
       canSlowDown: false
     }, properties);
 
+    if(spawnerProps.leashRadius < spawnerProps.randomWalkRadius) spawnerProps.leashRadius = spawnerProps.randomWalkRadius + 10;
+
     spawnerProps.npcIds = [properties.lairName];
 
     super(room, opts, spawnerProps);

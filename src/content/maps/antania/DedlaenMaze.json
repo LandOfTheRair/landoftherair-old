@@ -24434,27 +24434,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":8064,
-                 "y":1472
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":5870,
-                 "name":"Orckin Room Spawner",
-                 "properties":
-                    {
-                     "script":"antania\/dedlaenmaze\/orckin-room"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":8384,
+                 "x":8256,
                  "y":1472
                 }, 
                 {
@@ -24536,6 +24516,78 @@
                  "width":64,
                  "x":11840,
                  "y":5184
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5875,
+                 "name":"Orckin Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/orckin-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":12160,
+                 "y":832
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5876,
+                 "name":"Orckin Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/orckin-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":11712,
+                 "y":832
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5877,
+                 "name":"Minotaur Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Dedlaen Minotaur",
+                     "maxSpawn":1,
+                     "randomWalkRadius":100,
+                     "respawnRate":3600,
+                     "script":"global\/lair",
+                     "shouldStrip":false
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string",
+                     "shouldStrip":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8192,
+                 "y":1472
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -26004,7 +26056,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5875,
+ "nextobjectid":5878,
  "orientation":"orthogonal",
  "properties":
     {

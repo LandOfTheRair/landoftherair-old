@@ -39,3 +39,19 @@
 
   requirements:
     level: 15
+
+- name: Dedlaen Dueling Axe
+  desc: "a finely-balanced dueling axe with a gigantic grip"
+  tier: 4
+  stats:
+    offense: 3
+    defense: 3
+  offhand: true
+  type: Axe
+  value: 4346
+  sprite: 451
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 15

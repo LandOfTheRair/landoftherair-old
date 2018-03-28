@@ -8,8 +8,8 @@
 
 - name: Rylt Renegade Greataxe
   stats:
-    offense: 2
-    accuracy: 2
+    offense: 1
+    accuracy: 1
   desc: "an iron greataxe engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   tier: 1
   type: Axe
@@ -23,8 +23,8 @@
   secondaryType: Twohanded
   desc: "a heavy, metal-tipped greataxe stained with the blood of the land"
   stats:
-    accuracy: 2
-    offense: 4
+    accuracy: 1
+    offense: 2
   tier: 3
   proneChance: 8
   binds: true
@@ -35,12 +35,30 @@
   requirements:
     level: 10
 
+- name: Dedlaen Minotaur Greataxe
+  desc: "a gargantuan greataxe formerly carried by a gigantic minotaur"
+  tier: 5
+  stats:
+    accuracy: 1
+    offense: 4
+    defense: -2
+    weaponArmorClass: 2
+  type: Axe
+  secondaryType: Twohanded
+  value: 3549
+  sprite: 455
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 15
+
 - name: Ether Greataxe
   desc: "a greataxe forged from ether"
   tier: 5
   stats:
-    accuracy: 4
-    offense: 6
+    accuracy: 2
+    offense: 4
   type: Axe
   secondaryType: Twohanded
   value: 2349
