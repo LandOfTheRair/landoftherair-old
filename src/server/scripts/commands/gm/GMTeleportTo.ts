@@ -1,4 +1,6 @@
 
+import { values } from 'lodash';
+
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { MessageHelper } from '../../../helpers/world/message-helper';
@@ -17,7 +19,7 @@ export class GMTeleportTo extends Command {
 
     let found = false;
 
-    const allPossibleTargets = (<any>room.state.players).concat(room.state._mapNPCs);
+    const allPossibleTargets = (<any>room.state.players).concat(values(room.state.mapNPCs));
     allPossibleTargets.forEach(checkTarget => {
       if(found || !MessageHelper.doesTargetMatchSearch(checkTarget, args)) return;
       room.setPlayerXY(player, checkTarget.x, checkTarget.y);

@@ -8702,6 +8702,26 @@
                  "width":64,
                  "x":7168,
                  "y":4352
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1213,
+                 "name":"Forest Deer Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/forest-deer"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6464,
+                 "y":704
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -9966,7 +9986,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1213,
+ "nextobjectid":1214,
  "orientation":"orthogonal",
  "properties":
     {

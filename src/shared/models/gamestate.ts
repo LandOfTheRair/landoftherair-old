@@ -41,9 +41,6 @@ export class GameState {
   mapData: any = { openDoors: {} };
 
   @nonenumerable
-  _mapNPCs: NPC[] = [];
-
-  @nonenumerable
   mapNPCs: any = {};
 
   @nonenumerable
@@ -197,7 +194,6 @@ export class GameState {
 
   addNPC(npc: NPC): void {
     npc.$$map = this.map;
-    this._mapNPCs.push(npc);
     this.mapNPCs[npc.uuid] = npc;
     this.trimmedNPCs[npc.uuid] = this.trimNPC(npc);
 
@@ -215,7 +211,6 @@ export class GameState {
   }
 
   removeNPC(npc: NPC): void {
-    pull(this._mapNPCs, npc);
     delete this.mapNPCs[npc.uuid];
     delete this.trimmedNPCs[npc.uuid];
 
