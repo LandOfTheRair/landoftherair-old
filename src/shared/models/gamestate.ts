@@ -671,6 +671,14 @@ export class GameState {
     this.resetPlayerHash();
   }
 
+  checkIfDenseObject(x: number, y: number): boolean {
+    const denseObjects: any[] = this.map.layers[MapLayer.DenseDecor].objects;
+    const interactables = this.map.layers[MapLayer.Interactables].objects;
+    const denseCheck = denseObjects.concat(interactables);
+    const object = find(denseCheck, { x: x * 64, y: (y + 1) * 64 });
+    return object && object.density && object.type !== 'Door';
+  }
+
   checkIfActualWall(x: number, y: number): boolean {
     const adjustedY = y * this.map.width;
     return this.map.layers[MapLayer.Walls].data[x + adjustedY];

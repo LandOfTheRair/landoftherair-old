@@ -216,9 +216,10 @@ export class Spawner {
       const y = random(this.y - this.spawnRadius, this.y + this.spawnRadius);
 
       const isWall = this.room.state.checkIfActualWall(x, y);
+      const hasDenseObject = this.room.state.checkIfDenseObject(x, y);
       const invalidLocation = x < 4 || y < 4 || x > this.room.mapWidth - 4 || y > this.room.mapHeight - 4;
 
-      if(!isWall && !invalidLocation) {
+      if(!isWall && !hasDenseObject && !invalidLocation) {
         foundCoordinates = { x, y };
       }
     }

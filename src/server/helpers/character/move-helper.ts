@@ -1,7 +1,7 @@
 
 import { Character, SkillClassNames } from '../../../shared/models/character';
 import { MapLayer } from '../../../shared/models/maplayer';
-import { find, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 
 import * as Pathfinder from 'pathfinding';
 import { TrapHelper } from '../world/trap-helper';
@@ -20,9 +20,6 @@ export class MoveHelper {
     // const checkY = Math.abs(y);
 
     const denseTiles = gameState.map.layers[MapLayer.Walls].data;
-    const denseObjects: any[] = gameState.map.layers[MapLayer.DenseDecor].objects;
-    const interactables = gameState.map.layers[MapLayer.Interactables].objects;
-    const denseCheck = denseObjects.concat(interactables);
 
     const grid = new Pathfinder.Grid(9, 9);
 
@@ -38,8 +35,7 @@ export class MoveHelper {
 
         // non-dense tiles get checked for objects
         } else {
-          const object = find(denseCheck, { x: (player.x + gx) * 64, y: (player.y + gy + 1) * 64 });
-          if(object && object.density && object.type !== 'Door') {
+          if(gameState.checkIfDenseObject(player.x + gx, player.y + gy)) {
             grid.setWalkableAt(gx + 4, gy + 4, false);
           }
         }
