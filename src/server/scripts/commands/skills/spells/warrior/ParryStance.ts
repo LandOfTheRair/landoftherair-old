@@ -14,7 +14,7 @@ export class ParryStance extends Skill {
     color: '#fff',
     bgColor: '#000',
     mode: 'autoActivate',
-    tooltipDesc: 'Become more defensive, but lose offensive power. Requires weapon skill 13 (Warrior).',
+    tooltipDesc: 'Become more defensive, but lose offensive power. Requires weapon skill 16 (Warrior).',
     requiresBaseClass: 'Warrior'
   };
 
