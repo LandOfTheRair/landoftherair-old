@@ -119,17 +119,29 @@ export const SmithResponses = (npc: NPC) => {
 
       const maxCondition = player.$$room.subscriptionHelper.calcMaxSmithRepair(player, npc.repairsUpToCondition || 20000);
 
-      const cpt = npc.costPerThousand || 1;
-
       const missingCondition = maxCondition - player.rightHand.condition;
       if(missingCondition < 0) return 'That item is already beyond my capabilities!';
+      // const condDiffMod = maxCondition * conditionDiffPercent;
 
-      const conditionDiffPercent = missingCondition / maxCondition;
+      let cost = 0;
 
-      const cptMod = player.rightHand.value * (1 - conditionDiffPercent);
+      const STANDARD_TIER = 20000;
 
-      let cost = Math.floor((missingCondition * cptMod * cpt) / 10000);
-      if(cost === 0 && missingCondition > 0) cost = 1;
+      // the first 20k (0-20000) is pretty reasonable
+      if(player.rightHand.condition < STANDARD_TIER) {
+        const diffLostLowTierPercent = (STANDARD_TIER - player.rightHand.condition) / STANDARD_TIER;
+        const baseLowTierCost = diffLostLowTierPercent * player.rightHand.value;
+        cost += baseLowTierCost;
+      }
+
+      const cpt = npc.costPerThousand || 1;
+      const diffLostHighTierPercent = (maxCondition - player.rightHand.condition) / (maxCondition);
+      const baseHighTierCost = diffLostHighTierPercent * player.rightHand.value;
+      cost += baseHighTierCost * cpt;
+
+      cost = Math.floor(cost);
+
+      if(cost <= 0 && missingCondition > 0) cost = 1;
 
       if(cost === 0) return 'That item is not in need of repair!';
       if(player.gold < cost) return `You need ${cost.toLocaleString()} gold to repair that item.`;
