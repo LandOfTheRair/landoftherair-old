@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, isUndefined, compact } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, pull, size, pick, minBy, includes, reduce, get, isUndefined } from 'lodash';
 
 import { Player } from './player';
 
@@ -354,7 +354,7 @@ export class GameState {
   }
 
   private isVisibleTo(ref: Character, target: Character, useSight = true): boolean {
-    if(ref.fov && useSight) {
+    if(ref.fov && useSight && ref.canSee) {
       const offsetX = target.x - ref.x;
       const offsetY = target.y - ref.y;
       return ref.canSee(offsetX, offsetY);
@@ -363,44 +363,14 @@ export class GameState {
     return true;
   }
 
-  private getInRange(arr: Character[], ref, radius, except: string[] = [], useSight = true): Character[] {
-
-    const { x, y } = ref;
-
-    return reject(arr, (p: Character) => {
-
-      if(ref.fov && useSight) {
-        const offsetX = p.x - x;
-        const offsetY = p.y - y;
-        if(!ref.canSee(offsetX, offsetY)) return true;
-      }
-
-      return p.x < x - radius
-        || p.x > x + radius
-        || p.y < y - radius
-        || p.y > y + radius
-        || includes(except, p.uuid);
-    });
-  }
-
-  getPlayersInRange(ref: { x: number, y: number }, radius, except: string[] = [], useSight = true): Character[] {
-    return this.getInRange(this.players, ref, radius, except, useSight);
+  getPlayersInRange(ref: Character, radius, except: string[] = [], useSight = true): Character[] {
+    return this.getAllPlayersFromQuadtrees(ref, radius)
+      .filter(char => !char.isDead() && !includes(except, char.uuid) && this.isVisibleTo(ref, char, useSight));
   }
 
   getAllInRange(ref: Character, radius, except: string[] = [], useSight = true): Character[] {
-    const playersInRange = this.getPlayersInRange(ref, radius, except, useSight);
-
-    const foundNPCsInRange = QuadtreeHelper.npcQuadtreeSearch(ref, radius);
-
-    const allNPCs = compact(foundNPCsInRange.map(x => this.mapNPCs[x.uuid]));
-    const allAliveNPCs = allNPCs.filter((x: Character) => !x.isDead());
-
-    const allPossibleTargets = playersInRange.concat(allAliveNPCs);
-
-    const filteredTargets = allPossibleTargets.filter(char => !includes(except, char.uuid));
-    const visibleTargets = filteredTargets.filter(char => this.isVisibleTo(ref, char, useSight));
-
-    return visibleTargets;
+    return this.getAllTargetsFromQuadtrees(ref, radius)
+      .filter(char => !char.isDead() && !includes(except, char.uuid) && this.isVisibleTo(ref, char, useSight));
   }
 
   getAllHostilesInRange(ref: Character, radius): Character[] {
@@ -446,18 +416,25 @@ export class GameState {
     return false;
   }
 
-  private getAllTargetsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
+  private getAllNPCsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
     const foundNPCsInRange = QuadtreeHelper.npcQuadtreeSearch(pos, radius);
-    const foundPlayersInRange = QuadtreeHelper.playerQuadtreeSearch(pos, radius);
-
     const foundNPCRefs = foundNPCsInRange.map(npc => this.mapNPCs[npc.uuid]);
-    const foundPlayerRefs = foundPlayersInRange.map(player => this.maintainedPlayerHash[player.uuid]);
+    return foundNPCRefs;
+  }
 
-    return compact(foundNPCRefs.concat(foundPlayerRefs));
+  private getAllPlayersFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
+    const foundPlayersInRange = QuadtreeHelper.playerQuadtreeSearch(pos, radius);
+    const foundPlayerRefs = foundPlayersInRange.map(player => this.maintainedPlayerHash[player.uuid]);
+    return foundPlayerRefs;
+  }
+
+  private getAllTargetsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
+    return this.getAllNPCsFromQuadtrees(pos, radius)
+           .concat(this.getAllPlayersFromQuadtrees(pos, radius));
   }
 
   getPossibleTargetsFor(me: NPC, radius): Character[] {
-    return filter(this.getAllTargetsFromQuadtrees(me, radius), (char: Character) => {
+    return filter(this.getAllInRange(me, radius), (char: Character) => {
 
       // no hitting myself
       if(me === char) return false;
@@ -565,7 +542,7 @@ export class GameState {
     x /= 64;
     y /= 64;
 
-    this.getPlayersInRange({ x, y }, 3).forEach(p => {
+    this.getAllPlayersFromQuadtrees({ x, y }, 4).forEach(p => {
       this.calculateFOV(p);
       p.$$room.updateFOV(p);
     });
@@ -740,7 +717,7 @@ export class GameState {
         if(!currentValue || (currentValue && currentValue < timestamp)) {
           this.darkness[xKey][yKey] = timestamp;
 
-          this.getPlayersInRange({ x, y }, 4).forEach((player: Player) => {
+          this.getAllPlayersFromQuadtrees({ x, y }, 4).forEach((player: Player) => {
             this.calculateFOV(player);
             player.$$room.updateFOV(player);
           });
@@ -762,7 +739,7 @@ export class GameState {
         if(force || this.darkness[xKey][ykey] === timestamp) {
           this.darkness[xKey][ykey] = false;
 
-          this.getPlayersInRange({ x, y }, 4).forEach((player: Player) => {
+          this.getAllPlayersFromQuadtrees({ x, y }, 4).forEach((player: Player) => {
             this.calculateFOV(player);
             player.$$room.updateFOV(player);
           });

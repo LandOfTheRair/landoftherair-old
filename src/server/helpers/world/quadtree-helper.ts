@@ -61,12 +61,11 @@ export class QuadtreeHelper {
       minX: oldPos.x || char.x,
       minY: oldPos.y || char.y,
       maxX: oldPos.x || char.x,
-      maxY: oldPos.y || char.y,
-      uuid: oldPos.uuid || char.uuid
+      maxY: oldPos.y || char.y
     };
 
     bush.remove(oldPosRange, (me, treeItem) => {
-      return me.uuid === treeItem.uuid;
+      return char.uuid === treeItem.uuid;
     });
   }
 

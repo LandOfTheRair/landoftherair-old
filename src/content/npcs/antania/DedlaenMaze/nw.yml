@@ -230,6 +230,7 @@
     - VampireMistForm
     - PoisonBiteMedium
     - SkillSuckWeak
+    - DarkVision
 
   combatMessages:
     - Gwahahaha! Very good!
