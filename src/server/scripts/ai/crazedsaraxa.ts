@@ -3,7 +3,7 @@ import { filter } from 'lodash';
 
 import { Character } from '../../../shared/models/character';
 import { NPC } from '../../../shared/models/npc';
-import { tick as defaultTick } from './default';
+import { DefaultAIBehavior } from './default';
 import { SpellEffect } from '../../base/Effect';
 
 const acolytes: NPC[] = [];
@@ -38,69 +38,74 @@ class AcolyteOverseer extends SpellEffect {
   }
 }
 
-const spawnAcolyte = async (npc: NPC, spawnId: number) => {
-  if(acolytes[spawnId] && !acolytes[spawnId].isDead()) return;
+export class CrazedSaraxaAIBehavior extends DefaultAIBehavior {
 
-  const msgObject = { name: npc.name, message: `Come forth, my acolyte!`, subClass: 'chatter' };
-  npc.sendClientMessageToRadius(msgObject, 10);
+  private trigger75 = false;
+  private trigger50 = false;
+  private trigger25 = false;
 
-  const npcSpawner = npc.$$room.getSpawnerByName(`Acolyte Spawner ${spawnId}`);
-  const acolyte = await npcSpawner.createNPC();
+  private async spawnAcolyte(spawnId: number) {
+    const npc = this.npc;
 
-  const rockySpawner = npc.$$room.getSpawnerByName('Crazed Saraxa Rocky Spawner');
-  if(!rockySpawner.hasAnyAlive()) {
-    rockySpawner.createNPC();
+    if(acolytes[spawnId] && !acolytes[spawnId].isDead()) return;
+
+    const msgObject = { name: npc.name, message: `Come forth, my acolyte!`, subClass: 'chatter' };
+    npc.sendClientMessageToRadius(msgObject, 10);
+
+    const npcSpawner = npc.$$room.getSpawnerByName(`Acolyte Spawner ${spawnId}`);
+    const acolyte = await npcSpawner.createNPC();
+
+    const rockySpawner = npc.$$room.getSpawnerByName('Crazed Saraxa Rocky Spawner');
+    if(!rockySpawner.hasAnyAlive()) {
+      rockySpawner.createNPC();
+    }
+
+    if(!npc.hasEffect('AcolyteOverseer')) {
+      const buff = new AcolyteOverseer({});
+      buff.cast(npc);
+    }
+
+    acolytes[spawnId] = acolyte;
+
+    const acolyteMessageObject = { name: npc.name, message: `The acolyte begins channeling energy back to Crazed Saraxa!`, subClass: 'environment' };
+    npc.sendClientMessageToRadius(acolyteMessageObject, 10);
   }
 
-  if(!npc.hasEffect('AcolyteOverseer')) {
-    const buff = new AcolyteOverseer({});
-    buff.cast(npc);
+  async mechanicTick() {
+
+    const npc = this.npc;
+
+    // oh yes, these acolytes can respawn
+    if(npc.hp.gtePercent(90)) this.trigger75 = false;
+    if(npc.hp.gtePercent(65)) this.trigger50 = false;
+    if(npc.hp.gtePercent(40)) this.trigger25 = false;
+
+    if(!this.trigger75 && npc.hp.ltPercent(75)) {
+      this.trigger75 = true;
+
+      await this.spawnAcolyte(1);
+    }
+
+    if(!this.trigger50 && npc.hp.ltPercent(50)) {
+      this.trigger50 = true;
+
+      await this.spawnAcolyte(2);
+    }
+
+    if(!this.trigger25 && npc.hp.ltPercent(25)) {
+      this.trigger25 = true;
+
+      await this.spawnAcolyte(3);
+    }
   }
 
-  acolytes[spawnId] = acolyte;
+  death(killer: Character) {
+    const npc = this.npc;
 
-  const acolyteMessageObject = { name: npc.name, message: `The acolyte begins channeling energy back to Crazed Saraxa!`, subClass: 'environment' };
-  npc.sendClientMessageToRadius(acolyteMessageObject, 10);
-};
+    const msgObject = { name: npc.name, message: `EeeaAAaarrrGGGgghhhh!`, subClass: 'chatter' };
+    npc.sendClientMessageToRadius(msgObject, 50);
+    npc.sendClientMessageToRadius('You hear a lock click in the distance.', 50);
 
-let trigger75 = false;
-let trigger50 = false;
-let trigger25 = false;
-
-export const tick = (npc: NPC, canMove) => {
-  defaultTick(npc, canMove);
-};
-
-export const mechanicTick = async (npc: NPC) => {
-
-  // oh yes, these acolytes can respawn
-  if(npc.hp.gtePercent(90)) trigger75 = false;
-  if(npc.hp.gtePercent(65)) trigger50 = false;
-  if(npc.hp.gtePercent(40)) trigger25 = false;
-
-  if(!trigger75 && npc.hp.ltPercent(75)) {
-    trigger75 = true;
-
-    await spawnAcolyte(npc, 1);
+    npc.$$room.state.getInteractableByName('Chest Door').properties.requireLockpick = false;
   }
-
-  if(!trigger50 && npc.hp.ltPercent(50)) {
-    trigger50 = true;
-
-    await spawnAcolyte(npc, 2);
-  }
-
-  if(!trigger25 && npc.hp.ltPercent(25)) {
-    trigger25 = true;
-
-    await spawnAcolyte(npc, 3);
-  }
-};
-
-export const death = (npc: NPC, killer: Character) => {
-  const msgObject = { name: npc.name, message: `EeeaAAaarrrGGGgghhhh!`, subClass: 'chatter' };
-  npc.sendClientMessageToRadius(msgObject, 50);
-  npc.sendClientMessageToRadius('You hear a lock click in the distance.', 50);
-
-  npc.$$room.state.getInteractableByName('Chest Door').properties.requireLockpick = false;
-};
+}

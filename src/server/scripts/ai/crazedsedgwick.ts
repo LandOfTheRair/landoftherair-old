@@ -1,68 +1,73 @@
 
 import { Character } from '../../../shared/models/character';
-import { NPC } from '../../../shared/models/npc';
-import { tick as defaultTick } from './default';
+import { DefaultAIBehavior } from './default';
 import { CombatHelper } from '../../helpers/world/combat-helper';
 
-const blast = (npc: NPC) => {
-  const msgObject = { name: npc.name, message: `HIYAAAAAAAAAH! Take THIS!`, subClass: 'chatter' };
-  npc.sendClientMessageToRadius(msgObject, 10);
+export class CrazedSedgwickAIBehavior extends DefaultAIBehavior {
 
-  const players = npc.$$room.state.getPlayersInRange(npc, 10);
+  private trigger75 = false;
+  private trigger50 = false;
+  private trigger25 = false;
 
-  players.forEach(player => {
-    if(player.x === 21 && player.y === 6) {
-      player.sendClientMessage('A magical barrier protects you from Sedgwick\'s magic!');
-      return;
+  private blast() {
+    const npc = this.npc;
+
+    const msgObject = { name: npc.name, message: `HIYAAAAAAAAAH! Take THIS!`, subClass: 'chatter' };
+    npc.sendClientMessageToRadius(msgObject, 10);
+
+    const players = npc.$$room.state.getPlayersInRange(npc, 10);
+
+    players.forEach(player => {
+      if(player.x === 21 && player.y === 6) {
+        player.sendClientMessage('A magical barrier protects you from Sedgwick\'s magic!');
+        return;
+      }
+
+      CombatHelper.magicalAttack(npc, player, {
+        atkMsg: `You blast ${player.name} with a wave of energy!`,
+        defMsg: `${npc.name} blasted you with a wave of energy!`,
+        damage: 1500,
+        damageClass: 'energy'
+      });
+    });
+  };
+
+  mechanicTick() {
+    const npc = this.npc;
+
+    if(!this.trigger75 && npc.hp.ltePercent(75)) {
+      this.trigger75 = true;
+
+      setTimeout(() => {
+        this.blast();
+      }, 2000);
     }
 
-    CombatHelper.magicalAttack(npc, player, {
-      atkMsg: `You blast ${player.name} with a wave of energy!`,
-      defMsg: `${npc.name} blasted you with a wave of energy!`,
-      damage: 1500,
-      damageClass: 'energy'
-    });
-  });
-};
+    if(!this.trigger50 && npc.hp.ltePercent(50)) {
+      this.trigger50 = true;
 
-let trigger75 = false;
-let trigger50 = false;
-let trigger25 = false;
+      setTimeout(() => {
+        this.blast();
+      }, 2000);
+    }
 
-export const tick = (npc: NPC, canMove) => {
-  defaultTick(npc, canMove);
-};
+    if(!this.trigger25 && npc.hp.ltePercent(25)) {
+      this.trigger25 = true;
 
-export const mechanicTick = (npc: NPC) => {
-  if(!trigger75 && npc.hp.ltePercent(75)) {
-    trigger75 = true;
-
-    setTimeout(() => {
-      blast(npc);
-    }, 2000);
+      setTimeout(() => {
+        this.blast();
+      }, 2000);
+    }
   }
 
-  if(!trigger50 && npc.hp.ltePercent(50)) {
-    trigger50 = true;
+  death(killer: Character) {
+    const npc = this.npc;
 
-    setTimeout(() => {
-      blast(npc);
-    }, 2000);
-  }
+    const msgObject = { name: npc.name, message: `Curse you, ${killer.name}! Curse you to your grave!`, subClass: 'chatter' };
+    npc.sendClientMessageToRadius(msgObject, 50);
+    npc.sendClientMessageToRadius('You hear a lock click in the distance.', 50);
 
-  if(!trigger25 && npc.hp.ltePercent(25)) {
-    trigger25 = true;
+    npc.$$room.state.getInteractableByName('Chest Door').properties.requireLockpick = false;
+  };
 
-    setTimeout(() => {
-      blast(npc);
-    }, 2000);
-  }
-};
-
-export const death = (npc: NPC, killer: Character) => {
-  const msgObject = { name: npc.name, message: `Curse you, ${killer.name}! Curse you to your grave!`, subClass: 'chatter' };
-  npc.sendClientMessageToRadius(msgObject, 50);
-  npc.sendClientMessageToRadius('You hear a lock click in the distance.', 50);
-
-  npc.$$room.state.getInteractableByName('Chest Door').properties.requireLockpick = false;
-};
+}

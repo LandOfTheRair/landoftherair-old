@@ -82,6 +82,7 @@ export class Spawner {
   }
 
   private async spawnInitialNPCs() {
+    if(this.initialSpawn === 0) return;
 
     // allow it to get into the cache
     await this.createNPC();
@@ -262,11 +263,16 @@ export class Spawner {
       ai = sample(aiSettings);
     }
 
-    const { tick, mechanicTick, death, damageTaken } = require(`../scripts/ai/${ai}`);
-    if(tick) npc.$$ai.tick.add(tick);
-    if(mechanicTick) npc.$$ai.mechanicTick.add(mechanicTick);
-    if(death) npc.$$ai.death.add(death);
-    if(damageTaken) npc.$$ai.damageTaken.add(damageTaken);
+    const aiScript = require(`../scripts/ai/${ai}`);
+    const aiProto = aiScript[Object.keys(aiScript)[0]];
+
+    const aiInst = new aiProto(npc);
+    const { tick, mechanicTick, death, damageTaken } = aiInst;
+
+    if(tick) npc.$$ai.tick.add(tick.bind(aiInst));
+    if(mechanicTick) npc.$$ai.mechanicTick.add(mechanicTick.bind(aiInst));
+    if(death) npc.$$ai.death.add(death.bind(aiInst));
+    if(damageTaken) npc.$$ai.damageTaken.add(damageTaken.bind(aiInst));
 
     if(npc.combatMessages) {
       RandomlyShouts(npc, npc.combatMessages, { combatOnly: true });

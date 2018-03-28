@@ -1,95 +1,89 @@
 
-import { NPC } from '../../../shared/models/npc';
+import { DefaultAIBehavior } from './default';
 
-// username -> lastAttack hash (updated every attack)
-const lastAttackTick = {
+export class TrainingDummyAIBehavior extends DefaultAIBehavior {
 
-};
+  private lastAttackTick = {};
+  private currentlyTicking = {};
+  private tenSecDamageTotals = {};
+  private runningDamageTotals = {};
 
-// username -> nextReportTick hash (updated on first attack)
-const currentlyTicking = {
+  private reset(username) {
+    delete this.lastAttackTick[username];
+    delete this.currentlyTicking[username];
+    delete this.runningDamageTotals[username];
+    delete this.tenSecDamageTotals[username];
+  }
 
-};
+  tick() {}
 
-// username -> damageTotal
-const tenSecDamageTotals = {
+  mechanicTick() {
 
-};
+    const npc = this.npc;
 
-// username -> damageTotal
-const runningDamageTotals = {
+    // reset agro every tick
+    npc.agro = {};
 
-};
+    Object.keys(this.currentlyTicking).forEach(username => {
 
-const reset = (username) => {
-  delete lastAttackTick[username];
-  delete currentlyTicking[username];
-  delete runningDamageTotals[username];
-  delete tenSecDamageTotals[username];
-};
-
-export const mechanicTick = (npc: NPC) => {
-
-  // reset agro every tick
-  npc.agro = {};
-
-  Object.keys(currentlyTicking).forEach(username => {
-
-    // no player? reset them, they left
-    const player = npc.$$room.state.findPlayer(username);
-    if(!player) {
-      reset(username);
-      return;
-    }
-
-    // lower the relative and absolute tick
-    lastAttackTick[username]--;
-    currentlyTicking[username]--;
-
-    // every 10s give a report to the player
-    if((currentlyTicking[username] % 10) === 0) {
-      const totalDamageForPeriod = tenSecDamageTotals[username] || 0;
-      const dpsInPeriod = Math.floor(totalDamageForPeriod / 10);
-
-      // reset the ten second total
-      delete tenSecDamageTotals[username];
-
-      if(totalDamageForPeriod === 0) {
-        reset(username);
+      // no player? reset them, they left
+      const player = npc.$$room.state.findPlayer(username);
+      if(!player) {
+        this.reset(username);
         return;
       }
 
-      player.sendClientMessage(`Dummy DPS Report: 10s: ${dpsInPeriod.toLocaleString()} DPS (total: ${totalDamageForPeriod.toLocaleString()})`);
-    }
+      // lower the relative and absolute tick
+      this.lastAttackTick[username]--;
+      this.currentlyTicking[username]--;
 
-    if(currentlyTicking[username] <= 0) {
+      // every 10s give a report to the player
+      if((this.currentlyTicking[username] % 10) === 0) {
+        const totalDamageForPeriod = this.tenSecDamageTotals[username] || 0;
+        const dpsInPeriod = Math.floor(totalDamageForPeriod / 10);
 
-      const totalDamageForPeriod = runningDamageTotals[username];
-      const dpsInPeriod = Math.floor(totalDamageForPeriod / 60);
+        // reset the ten second total
+        delete this.tenSecDamageTotals[username];
 
-      player.sendClientMessage(`Dummy DPS Report: 60s: ${dpsInPeriod.toLocaleString()} DPS (total: ${totalDamageForPeriod.toLocaleString()})`);
-      reset(username);
-    }
-  });
-};
+        if(totalDamageForPeriod === 0) {
+          this.reset(username);
+          return;
+        }
 
-export const damageTaken = (npc: NPC, { damage, attacker }) => {
-  if(!attacker) return;
+        player.sendClientMessage(`Dummy DPS Report: 10s: ${dpsInPeriod.toLocaleString()} DPS (total: ${totalDamageForPeriod.toLocaleString()})`);
+      }
 
-  const playerUsername = attacker.username;
-  if(!playerUsername) return;
+      if(this.currentlyTicking[username] <= 0) {
 
-  lastAttackTick[playerUsername] = 60;
+        const totalDamageForPeriod = this.runningDamageTotals[username];
+        const dpsInPeriod = Math.floor(totalDamageForPeriod / 60);
 
-  currentlyTicking[playerUsername] = currentlyTicking[playerUsername] || 60;
+        player.sendClientMessage(`Dummy DPS Report: 60s: ${dpsInPeriod.toLocaleString()} DPS (total: ${totalDamageForPeriod.toLocaleString()})`);
+        this.reset(username);
+      }
+    });
+  }
 
-  runningDamageTotals[playerUsername] = runningDamageTotals[playerUsername] || 0;
-  runningDamageTotals[playerUsername] += damage;
+  damageTaken({ damage, attacker }) {
+    if(!attacker) return;
 
-  tenSecDamageTotals[playerUsername] = tenSecDamageTotals[playerUsername] || 0;
-  tenSecDamageTotals[playerUsername] += damage;
-};
+    const playerUsername = attacker.username;
+    if(!playerUsername) return;
 
-export const death = (npc: NPC) => {
-  npc.spawner.createNPC();
-};
+    this.lastAttackTick[playerUsername] = 60;
+
+    this.currentlyTicking[playerUsername] = this.currentlyTicking[playerUsername] || 60;
+
+    this.runningDamageTotals[playerUsername] = this.runningDamageTotals[playerUsername] || 0;
+    this.runningDamageTotals[playerUsername] += damage;
+
+    this.tenSecDamageTotals[playerUsername] = this.tenSecDamageTotals[playerUsername] || 0;
+    this.tenSecDamageTotals[playerUsername] += damage;
+  }
+
+  death() {
+    const npc = this.npc;
+
+    npc.spawner.createNPC();
+  }
+}

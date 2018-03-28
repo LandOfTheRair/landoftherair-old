@@ -246,6 +246,8 @@ export const RandomlyShouts = (npc: NPC, responses: string[] = [], opts: any = {
   npc.$$ai.tick.add(() => {
     ticks++;
 
+    if(npc.isDead()) return;
+
     if(opts.combatOnly && npc.combatTicks <= 0) return;
 
     if(ticks >= nextTick) {

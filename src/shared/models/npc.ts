@@ -115,7 +115,7 @@ export class NPC extends Character {
     super.tick();
 
     if(this.$$ai && this.$$ai.mechanicTick) {
-      this.$$ai.mechanicTick.dispatch(this);
+      this.$$ai.mechanicTick.dispatch();
     }
 
     if(this.isInCombat) this.combatTicks--;
@@ -125,7 +125,7 @@ export class NPC extends Character {
     if(this.$$ai && this.$$ai.tick) {
       const actions = this.getTotalStat('actionSpeed');
       for(let i = 0; i < actions; i++) {
-        this.$$ai.tick.dispatch(this, canMove);
+        this.$$ai.tick.dispatch(canMove);
       }
     }
   }
@@ -168,7 +168,7 @@ export class NPC extends Character {
     if(!this.spawner) return false;
 
     if(this.$$ai && this.$$ai.death) {
-      this.$$ai.death.dispatch(this, killer);
+      this.$$ai.death.dispatch(killer);
     }
 
     if(killer) {

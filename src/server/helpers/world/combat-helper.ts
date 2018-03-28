@@ -759,9 +759,9 @@ export class CombatHelper {
     damage = attacked.isNaturalResource ? 0 : damage;
     const totalDamage = this.dealDamage(attacker, attacked, {
       damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg, attackerWeapon: {
-        itemClass: effect.name,
-        owner: effect.effectInfo.caster,
-        ownerName: effect.effectInfo.casterName
+        itemClass: effect ? effect.name : '???',
+        owner: effect ? effect.effectInfo.caster : '???',
+        ownerName: effect ? effect.effectInfo.casterName : '???'
       }
     });
 
@@ -958,7 +958,7 @@ export class CombatHelper {
       defender.hp.set(1);
     }
 
-    if(defender.$$ai) defender.$$ai.damageTaken.dispatch(defender, { damage, attacker });
+    if(defender.$$ai) defender.$$ai.damageTaken.dispatch({ damage, attacker });
 
     defender.addAgro(attacker, damage);
 
