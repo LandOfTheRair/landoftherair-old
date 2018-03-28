@@ -67,6 +67,9 @@ export class GameState {
 
   private npcVolatile: any = {};
 
+  @nonenumerable
+  private quadtreeHelper: QuadtreeHelper;
+
   get formattedMap() {
     const map = cloneDeep(this.map);
     map.layers.length = 10;
@@ -95,7 +98,7 @@ export class GameState {
     extend(this, opts);
     this.initFov();
     this.findSecretWalls();
-    QuadtreeHelper.init();
+    this.quadtreeHelper = new QuadtreeHelper();
   }
 
   private findSecretWalls() {
@@ -199,7 +202,7 @@ export class GameState {
     this.trimmedNPCs[npc.uuid] = this.trimNPC(npc);
 
     this.updateNPCVolatile(npc);
-    QuadtreeHelper.npcQuadtreeInsert(npc);
+    this.quadtreeHelper.npcQuadtreeInsert(npc);
   }
 
   syncNPC(npc: NPC): void {
@@ -220,7 +223,7 @@ export class GameState {
       delete this.npcVolatile[npc.uuid];
     }
 
-    QuadtreeHelper.npcQuadtreeRemove(npc);
+    this.quadtreeHelper.npcQuadtreeRemove(npc);
   }
 
   updateNPCVolatile(char: NPC): void {
@@ -235,7 +238,7 @@ export class GameState {
     this.players.push(player);
     this.resetPlayerStatus(player);
 
-    QuadtreeHelper.playerQuadtreeInsert(player);
+    this.quadtreeHelper.playerQuadtreeInsert(player);
   }
 
   findPlayer(username): Player {
@@ -253,7 +256,7 @@ export class GameState {
     this.players = reject(this.players, (p: Player) => p.username === playerRef.username);
 
     playerRef.killAllPets();
-    QuadtreeHelper.playerQuadtreeRemove(playerRef);
+    this.quadtreeHelper.playerQuadtreeRemove(playerRef);
   }
 
   updateNPCInQuadtree(char: NPC, oldPos: any): void {
@@ -261,8 +264,8 @@ export class GameState {
     if(oldPos.x === char.x && oldPos.y === char.y) return;
 
     oldPos.uuid = char.uuid;
-    QuadtreeHelper.npcQuadtreeRemove(char, oldPos);
-    QuadtreeHelper.npcQuadtreeInsert(char);
+    this.quadtreeHelper.npcQuadtreeRemove(char, oldPos);
+    this.quadtreeHelper.npcQuadtreeInsert(char);
   }
 
   updatePlayerInQuadtree(char: Player, oldPos: any): void {
@@ -270,8 +273,8 @@ export class GameState {
     if(oldPos.x === char.x && oldPos.y === char.y) return;
 
     oldPos.uuid = char.uuid;
-    QuadtreeHelper.playerQuadtreeRemove(char, oldPos);
-    QuadtreeHelper.playerQuadtreeInsert(char);
+    this.quadtreeHelper.playerQuadtreeRemove(char, oldPos);
+    this.quadtreeHelper.playerQuadtreeInsert(char);
   }
 
   addInteractable(obj: any): void {
@@ -421,13 +424,13 @@ export class GameState {
   }
 
   private getAllNPCsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
-    const foundNPCsInRange = QuadtreeHelper.npcQuadtreeSearch(pos, radius);
+    const foundNPCsInRange = this.quadtreeHelper.npcQuadtreeSearch(pos, radius);
     const foundNPCRefs = foundNPCsInRange.map(npc => this.mapNPCs[npc.uuid]);
     return foundNPCRefs;
   }
 
   private getAllPlayersFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
-    const foundPlayersInRange = QuadtreeHelper.playerQuadtreeSearch(pos, radius);
+    const foundPlayersInRange = this.quadtreeHelper.playerQuadtreeSearch(pos, radius);
     const foundPlayerRefs = foundPlayersInRange.map(player => this.maintainedPlayerHash[player.uuid]);
     return foundPlayerRefs;
   }

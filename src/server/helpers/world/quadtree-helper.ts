@@ -6,37 +6,37 @@ import { Character } from '../../../shared/models/character';
 
 export class QuadtreeHelper {
 
-  private static playerBush;
-  private static npcBush;
+  private playerBush;
+  private npcBush;
 
-  public static get playerCount(): number {
-    return QuadtreeHelper.players.length;
+  public get playerCount(): number {
+    return this.players.length;
   }
 
-  public static get npcCount(): number {
-    return QuadtreeHelper.npcs.length;
+  public get npcCount(): number {
+    return this.npcs.length;
   }
 
-  public static get players(): any[] {
-    return QuadtreeHelper.playerBush.all();
+  public get players(): any[] {
+    return this.playerBush.all();
   }
 
-  public static get npcs(): any[] {
-    return QuadtreeHelper.npcBush.all();
+  public get npcs(): any[] {
+    return this.npcBush.all();
   }
 
-  static init() {
-    QuadtreeHelper.playerBush = RBush();
-    QuadtreeHelper.npcBush = RBush();
+  constructor() {
+    this.playerBush = RBush();
+    this.npcBush = RBush();
   }
 
   // INSERT
-  private static _quadtreeInsert(bush: any, data: any) {
+  private _quadtreeInsert(bush: any, data: any) {
     bush.insert(data);
   }
 
-  static npcQuadtreeInsert(npc: NPC): void {
-    QuadtreeHelper._quadtreeInsert(QuadtreeHelper.npcBush, {
+  npcQuadtreeInsert(npc: NPC): void {
+    this._quadtreeInsert(this.npcBush, {
       minX: npc.x,
       minY: npc.y,
       maxX: npc.x,
@@ -45,8 +45,8 @@ export class QuadtreeHelper {
     });
   }
 
-  static playerQuadtreeInsert(player: Player): void {
-    QuadtreeHelper._quadtreeInsert(QuadtreeHelper.playerBush, {
+  playerQuadtreeInsert(player: Player): void {
+    this._quadtreeInsert(this.playerBush, {
       minX: player.x,
       minY: player.y,
       maxX: player.x,
@@ -56,7 +56,7 @@ export class QuadtreeHelper {
   }
 
   // REMOVE
-  private static _quadtreeRemove(bush: any, char: Character, oldPos: any = {}): void {
+  private _quadtreeRemove(bush: any, char: Character, oldPos: any = {}): void {
     const oldPosRange = {
       minX: oldPos.x || char.x,
       minY: oldPos.y || char.y,
@@ -69,16 +69,16 @@ export class QuadtreeHelper {
     });
   }
 
-  static npcQuadtreeRemove(npc: NPC, oldPos: any = {}): void {
-    QuadtreeHelper._quadtreeRemove(QuadtreeHelper.npcBush, npc, oldPos);
+  npcQuadtreeRemove(npc: NPC, oldPos: any = {}): void {
+    this._quadtreeRemove(this.npcBush, npc, oldPos);
   }
 
-  static playerQuadtreeRemove(player: Player, oldPos: any = {}): void {
-    QuadtreeHelper._quadtreeRemove(QuadtreeHelper.playerBush, player, oldPos);
+  playerQuadtreeRemove(player: Player, oldPos: any = {}): void {
+    this._quadtreeRemove(this.playerBush, player, oldPos);
   }
 
   // SEARCH
-  private static _quadtreeSearch(bush: any, pos: { x: number, y: number }, radius: number): any[] {
+  private _quadtreeSearch(bush: any, pos: { x: number, y: number }, radius: number): any[] {
     return bush.search({
       minX: pos.x - radius,
       minY: pos.y - radius,
@@ -87,11 +87,11 @@ export class QuadtreeHelper {
     });
   }
 
-  static npcQuadtreeSearch(pos: { x: number, y: number }, radius: number): any[] {
-    return QuadtreeHelper._quadtreeSearch(QuadtreeHelper.npcBush, pos, radius);
+  npcQuadtreeSearch(pos: { x: number, y: number }, radius: number): any[] {
+    return this._quadtreeSearch(this.npcBush, pos, radius);
   }
 
-  static playerQuadtreeSearch(pos: { x: number, y: number }, radius: number): any[] {
-    return QuadtreeHelper._quadtreeSearch(QuadtreeHelper.playerBush, pos, radius);
+  playerQuadtreeSearch(pos: { x: number, y: number }, radius: number): any[] {
+    return this._quadtreeSearch(this.playerBush, pos, radius);
   }
 }
