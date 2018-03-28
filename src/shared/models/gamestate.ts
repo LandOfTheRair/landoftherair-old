@@ -218,7 +218,7 @@ export class GameState {
       delete this.npcVolatile[npc.uuid];
     }
 
-    this.quadtreeHelper.npcQuadtreeRemove(npc);
+    this.quadtreeHelper.npcQuadtreeRemove(npc, { x: npc.x, y: npc.y });
   }
 
   updateNPCVolatile(char: NPC): void {
@@ -251,7 +251,7 @@ export class GameState {
     this.players = reject(this.players, (p: Player) => p.username === playerRef.username);
 
     playerRef.killAllPets();
-    this.quadtreeHelper.playerQuadtreeRemove(playerRef);
+    this.quadtreeHelper.playerQuadtreeRemove(playerRef, { x: playerRef.x, y: playerRef.y });
   }
 
   updateNPCInQuadtree(char: NPC, oldPos: any): void {

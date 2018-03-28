@@ -32,6 +32,7 @@ export class QuadtreeHelper {
 
   // INSERT
   private _quadtreeInsert(bush: any, data: any) {
+    if(!data.uuid) throw new Error(`Error: ${JSON.stringify(data)} is being inserted with no uuid!`);
     bush.insert(data);
   }
 
@@ -56,12 +57,12 @@ export class QuadtreeHelper {
   }
 
   // REMOVE
-  private _quadtreeRemove(bush: any, char: Character, oldPos: any = {}): void {
+  private _quadtreeRemove(bush: any, char: Character, oldPos: { x: number, y: number }): void {
     const oldPosRange = {
-      minX: oldPos.x || char.x,
-      minY: oldPos.y || char.y,
-      maxX: oldPos.x || char.x,
-      maxY: oldPos.y || char.y
+      minX: oldPos.x,
+      minY: oldPos.y,
+      maxX: oldPos.x,
+      maxY: oldPos.y
     };
 
     bush.remove(oldPosRange, (me, treeItem) => {
@@ -69,11 +70,11 @@ export class QuadtreeHelper {
     });
   }
 
-  npcQuadtreeRemove(npc: NPC, oldPos: any = {}): void {
+  npcQuadtreeRemove(npc: NPC, oldPos: { x: number, y: number }): void {
     this._quadtreeRemove(this.npcBush, npc, oldPos);
   }
 
-  playerQuadtreeRemove(player: Player, oldPos: any = {}): void {
+  playerQuadtreeRemove(player: Player, oldPos: { x: number, y: number }): void {
     this._quadtreeRemove(this.playerBush, player, oldPos);
   }
 
