@@ -17,7 +17,8 @@ export class LairSpawner extends Spawner {
       alwaysSpawn: true,
       requireDeadToRespawn: true,
       shouldStrip: true,
-      stripOnSpawner: true
+      stripOnSpawner: true,
+      canSlowDown: false
     }, properties);
 
     spawnerProps.npcIds = [properties.lairName];
