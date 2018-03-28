@@ -151,7 +151,6 @@
 - name: Dedlaen Death Knight Coat
   quality: 5
   stats:
-    defense: 1
     fireResist: 150
     iceResist: 150
     energyResist: 100
