@@ -4,6 +4,7 @@ import { Command } from './Command';
 
 import { random, get } from 'lodash';
 import { MessageHelper } from '../helpers/world/message-helper';
+import { Player } from '../../shared/models/player';
 
 interface MacroMetadata {
   name: string;
@@ -88,21 +89,22 @@ export abstract class Skill extends Command {
     return true;
   }
 
-  getTarget(user: Character, args: string, allowSelf = false): Character {
+  getTarget(user: Player, args: string, allowSelf = false): Character {
 
     let target = null;
+    args = args.trim();
 
     if(allowSelf) {
       target = user;
     }
 
     if(args) {
-      const possTargets = MessageHelper.getPossibleMessageTargets(user, args.trim());
+      const possTargets = MessageHelper.getPossibleMessageTargets(user, args);
       target = possTargets[0];
     }
 
     if(!target) {
-      user.sendClientMessage('You do not see that person.');
+      user.youDontSeeThatPerson(args);
       return null;
     }
 

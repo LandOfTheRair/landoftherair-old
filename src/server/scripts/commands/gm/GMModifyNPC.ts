@@ -15,7 +15,7 @@ export class GMModifyNPC extends Command {
 
     const [npcish, props] = args.split(' ', 2);
     const possTargets = MessageHelper.getPossibleMessageTargets(player, npcish);
-    if(!possTargets.length) return player.sendClientMessage('You do not see that person.');
+    if(!possTargets.length) return player.youDontSeeThatPerson(npcish);
 
     const target = possTargets[0];
     if(!target) return false;

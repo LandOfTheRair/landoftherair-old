@@ -26,7 +26,7 @@ export class Chase extends Skill {
 
     const possTargets = MessageHelper.getPossibleMessageTargets(user, args);
     const target = possTargets[0];
-    if(!target) return user.sendClientMessage('You do not see that person.');
+    if(!target) return user.youDontSeeThatPerson(args);
 
     this.use(user, target);
   }

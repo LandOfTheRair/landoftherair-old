@@ -217,8 +217,17 @@ export class Player extends Character {
     this.$$flaggedSkills = compact(skills);
   }
 
+  public youDontSeeThatPerson(uuid: string): void {
+    this.sendClientMessage('You do not see that person.');
+    this.clearActionQueueOf(uuid);
+  }
+
+  private clearActionQueueOf(uuid: string): void {
+    this.$$actionQueue = reject(this.$$actionQueue, ({ args }) => includes(args, uuid));
+  }
+
   kill(target: Character, opts: { isPetKill: boolean } = { isPetKill: false }) {
-    this.$$actionQueue = reject(this.$$actionQueue, ({ args }) => includes(args, target.uuid));
+    this.clearActionQueueOf(target.uuid);
 
     const npcId = (<any>target).npcId;
     if(npcId) {

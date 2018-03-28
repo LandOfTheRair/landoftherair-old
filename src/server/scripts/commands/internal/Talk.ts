@@ -25,7 +25,7 @@ export class Talk extends Command {
 
     const possTargets = MessageHelper.getPossibleMessageTargets(player, findStr);
     const target = possTargets[0];
-    if(!target) return player.sendClientMessage('You do not see that person.');
+    if(!target) return player.youDontSeeThatPerson(args);
 
     target.receiveMessage(player, message);
   }

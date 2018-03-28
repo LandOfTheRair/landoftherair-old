@@ -26,7 +26,7 @@ export class Throw extends Skill {
     return 5;
   }
 
-  execute(user: Character, { args }) {
+  execute(user: Player, { args }) {
 
     if(!args) return false;
 
@@ -35,7 +35,7 @@ export class Throw extends Skill {
 
     const possTargets = MessageHelper.getPossibleMessageTargets(user, targetId);
     const target = possTargets[0];
-    if(!target) return user.sendClientMessage('You do not see that person.');
+    if(!target) return user.youDontSeeThatPerson(args);
 
     if(target === user) return;
 

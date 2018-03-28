@@ -14,7 +14,7 @@ export class GMKill extends Command {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
-    if(!possTargets.length) return player.sendClientMessage('You do not see that person.');
+    if(!possTargets.length) return player.youDontSeeThatPerson(args);
 
     const target = possTargets[0];
     if(!target) return false;

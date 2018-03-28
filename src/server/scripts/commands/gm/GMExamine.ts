@@ -20,7 +20,7 @@ export class GMExamine extends Command {
 
     const [npcish, prop] = args.split(' ');
     const possTargets = MessageHelper.getPossibleMessageTargets(player, npcish);
-    if(!possTargets.length) return player.sendClientMessage('You do not see that person.');
+    if(!possTargets.length) return player.youDontSeeThatPerson(npcish);
 
     const target = possTargets[0];
     if(!target) return false;

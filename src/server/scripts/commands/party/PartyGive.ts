@@ -17,7 +17,7 @@ export class PartyGive extends Command {
 
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
     const target = possTargets[0];
-    if(!target) return player.sendClientMessage('You do not see that person.');
+    if(!target) return player.youDontSeeThatPerson(args);
 
     if((<Player>target).partyName !== player.partyName) return player.sendClientMessage(`${target.name} is not in your party!`);
 

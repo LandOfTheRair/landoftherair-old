@@ -6,6 +6,7 @@ import { Character } from '../../../../../shared/models/character';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
 import { MoveHelper } from '../../../../helpers/character/move-helper';
 import { MessageHelper } from '../../../../helpers/world/message-helper';
+import { Player } from '../../../../../shared/models/player';
 
 export class Charge extends Skill {
 
@@ -36,7 +37,7 @@ export class Charge extends Skill {
     return weapon.attackRange;
   }
 
-  execute(user: Character, { args }) {
+  execute(user: Player, { args }) {
     if(!args) return false;
 
     const weapon = user.rightHand;
@@ -52,7 +53,7 @@ export class Charge extends Skill {
 
     const possTargets = MessageHelper.getPossibleMessageTargets(user, args);
     const target = possTargets[0];
-    if(!target) return user.sendClientMessage('You do not see that person.');
+    if(!target) return user.youDontSeeThatPerson(args);
 
     if(target === user) return;
 

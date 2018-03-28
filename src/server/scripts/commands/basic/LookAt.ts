@@ -22,7 +22,7 @@ export class LookAt extends Command {
 
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
     const target = possTargets[0];
-    if(!target) return player.sendClientMessage('You do not see that person.');
+    if(!target) return player.youDontSeeThatPerson(args);
 
     const chestItem = target.gear.Robe2 || target.gear.Robe1 || target.gear.Armor;
     const chestDesc = chestItem ? chestItem.desc : 'nothing';

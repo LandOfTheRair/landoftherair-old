@@ -14,7 +14,7 @@ export class GMIntercept extends Command {
     if(!args) return false;
 
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
-    if(!possTargets.length) return player.sendClientMessage('You do not see that person.');
+    if(!possTargets.length) return player.youDontSeeThatPerson(args);
 
     const target = possTargets[0];
     if(!target) return false;
