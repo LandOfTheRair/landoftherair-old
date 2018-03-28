@@ -566,6 +566,7 @@ export class GameWorld extends Room<GameState> {
 
     const client = this.findClient(player);
     if(!client) return;
+    
 
     if(newMap && !this.allMapNames[newMap]) {
       this.sendClientLogMessage(client, `Warning: map "${newMap}" does not exist.`);
@@ -573,7 +574,7 @@ export class GameWorld extends Room<GameState> {
     }
 
     if(!newMap || player.map === newMap) {
-      const oldPos = { x, y };
+      const oldPos = { x: player.x, y: player.y };
       this.setPlayerXY(player, x, y);
       this.state.updatePlayerInQuadtree(player, oldPos);
     }
