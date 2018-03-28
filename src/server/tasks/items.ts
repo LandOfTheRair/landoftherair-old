@@ -130,7 +130,7 @@ class ItemLoader {
     }
 
     if(includes(['Crossbow', 'Shortbow', 'Longbow'], item.itemClass)) {
-      item.attackRange = 4;
+      item.attackRange = 5;
     }
 
     if(item.itemClass === 'Shield') {
