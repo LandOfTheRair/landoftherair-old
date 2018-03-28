@@ -26,7 +26,7 @@ export class Throw extends Skill {
     return 5;
   }
 
-  execute(user: Player, { args }) {
+  execute(user: Character, { args }) {
 
     if(!args) return false;
 

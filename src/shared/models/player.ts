@@ -218,7 +218,7 @@ export class Player extends Character {
   }
 
   public youDontSeeThatPerson(uuid: string): void {
-    super.youDontSeeThatPersion(uuid);
+    super.youDontSeeThatPerson(uuid);
     this.clearActionQueueOf(uuid);
   }
 

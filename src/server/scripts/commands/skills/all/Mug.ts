@@ -32,7 +32,7 @@ export class Mug extends Skill {
     return weapon.attackRange;
   }
 
-  execute(user: Player, { args }) {
+  execute(user: Character, { args }) {
     if(!args) return false;
 
     const weapon = user.rightHand;

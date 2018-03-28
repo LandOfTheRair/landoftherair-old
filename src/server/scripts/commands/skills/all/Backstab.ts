@@ -32,7 +32,7 @@ export class Backstab extends Skill {
     return weapon.attackRange;
   }
 
-  execute(user: Player, { args }) {
+  execute(user: Character, { args }) {
     if(!args) return false;
 
     const hidden = user.hasEffect('Hidden');
