@@ -36,6 +36,8 @@
   attributes:
     - damageType: 'sharp'
       potency: 0.5
+    - damageType: 'fire'
+      potency: 1.5
 
   copyDrops:
     - drop: 'rightHand'
@@ -89,6 +91,8 @@
   attributes:
     - damageType: 'sharp'
       potency: 0.5
+    - damageType: 'fire'
+      potency: 1.5
 
   copyDrops:
     - drop: 'rightHand'

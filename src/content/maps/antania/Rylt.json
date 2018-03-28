@@ -5556,7 +5556,7 @@
                  "name":"Smith",
                  "properties":
                     {
-                     "costPerThousand":5,
+                     "costPerThousand":1,
                      "repairsUpToCondition":20000,
                      "script":"global\/smith"
                     },

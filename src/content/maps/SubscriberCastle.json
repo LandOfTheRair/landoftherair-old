@@ -510,7 +510,7 @@
                  "name":"Smith",
                  "properties":
                     {
-                     "costPerThousand":25,
+                     "costPerThousand":5,
                      "repairsUpToCondition":45000,
                      "script":"global\/smith"
                     },
@@ -891,7 +891,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],

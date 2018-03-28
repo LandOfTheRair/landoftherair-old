@@ -1,0 +1,552 @@
+
+- npcId: Dedlaen Goblin
+  name: goblin
+  hostility: Always
+  sprite: 80
+  alignment: Evil
+  stats: 15
+  skillLevels: 3
+  level: 17
+
+  skillOnKill: 25
+
+  otherStats:
+    con: 15
+    accuracy: 10
+    perception: 200
+
+  gold:
+    min: 500
+    max: 600
+
+  hp:
+    min: 18550
+    max: 19750
+
+  giveXp:
+    min: 41500
+    max: 42500
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand:
+    - result: Tower Dagger Weak
+      chance: 5
+    - result: Tower Broadsword Weak
+      chance: 10
+    - result: Tower Greatsword Weak
+      chance: 10
+
+  rightHand:
+    - result: none
+      chance: 5
+    - result: Tower Shield Weak
+      chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+- npcId: Dedlaen Goblin Thief
+  name: sneakgoblin
+  hostility: Always
+  baseClass: Thief
+  sprite: 80
+  alignment: Evil
+  stats: 12
+  skillLevels: 3
+  level: 19
+
+  skillOnKill: 25
+
+  otherStats:
+    con: 15
+    accuracy: 10
+    stealth: 50
+    perception: 250
+
+  gold:
+    min: 800
+    max: 900
+
+  hp:
+    min: 29050
+    max: 29250
+
+  mp:
+    min: 500
+    max: 700
+
+  giveXp:
+    min: 36000
+    max: 36500
+
+  gear:
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand:
+    - result: Tower Dagger Weak
+      chance: 30
+    - result: Tower Longbow Weak
+      chance: 30
+    - result: Tower Dagger Strong
+      chance: 1
+    - result: Tower Longbow Strong
+      chance: 1
+
+  leftHand:
+    - result: none
+      chance: 100
+    - result: Tower Dagger Weak
+      chance: 10
+    - result: Tower Dagger Strong
+      chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  usableSkills:
+    - SetTrap
+    - Steal
+    - Darkness
+    - DarkVision
+
+  sack:
+    - name: Antanian FireMist Thief Trap
+      chance: 10
+    - name: Antanian IceMist Thief Trap
+      chance: 10
+    - name: Antanian Poison Thief Trap
+      chance: 10
+    - name: Antanian MagicMissile Thief Trap
+      chance: 10
+    - name: Antanian Afflict Thief Trap
+      chance: 10
+
+- npcId: Dedlaen Hobgoblin
+  name: hobgoblin
+  hostility: Always
+  baseClass: Warrior
+  sprite: 90
+  alignment: Evil
+  stats: 11
+  skillLevels: 4
+  level: 20
+
+  skillOnKill: 45
+
+  otherStats:
+    con: 15
+    accuracy: 5
+    perception: 220
+
+  gold:
+    min: 800
+    max: 900
+
+  hp:
+    min: 45550
+    max: 45950
+
+  giveXp:
+    min: 49500
+    max: 50500
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand:
+    - result: Tower Broadsword Strong
+      chance: 10
+    - result: Tower Greatsword Strong
+      chance: 10
+
+  leftHand:
+    - result: none
+      chance: 5
+    - result: Tower Shield Strong
+      chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  spawnMessage: "the indecipherable blabbering of goblins"
+
+- npcId: Dedlaen Orc
+  name: orc
+  hostility: Always
+  sprite: 70
+  alignment: Evil
+  baseClass: Warrior
+  stats: 13
+  skillLevels: 4
+  level: 20
+
+  skillOnKill: 30
+
+  otherStats:
+    con: 15
+    perception: 225
+
+  gold:
+    min: 550
+    max: 700
+
+  hp:
+    min: 32950
+    max: 33350
+
+  giveXp:
+    min: 37000
+    max: 38000
+
+  gear:
+    Armor:
+      - result: Tower Trash Breastplate
+        chance: 20
+      - result: Tower Breastplate
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand:
+    - result: Tower Spear Weak
+      chance: 10
+    - result: Tower Halberd Weak
+      chance: 3
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+
+- npcId: Dedlaen Orc Healer
+  name: orc shaman
+  hostility: Always
+  baseClass: Healer
+  sprite: 70
+  alignment: Evil
+  stats: 9
+  skillLevels: 4
+  level: 20
+
+  skillOnKill: 30
+
+  otherStats:
+    con: 15
+    perception: 225
+
+  gold:
+    min: 550
+    max: 700
+
+  hp:
+    min: 38950
+    max: 310350
+
+  mp:
+    min: 500
+    max: 700
+
+  giveXp:
+    min: 37000
+    max: 38000
+
+  usableSkills:
+    - Afflict
+    - Poison
+    - Disease
+    - Blind
+    - Vision
+    - BarNecro
+    - Antidote
+
+  gear:
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand: Tower Hammer Weak
+
+  leftHand:
+    - result: none
+      chance: 5
+    - result: Tower Shield Weak
+      chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+- npcId: Dedlaen Orc Mage
+  name: orc caster
+  hostility: Always
+  baseClass: Mage
+  sprite: 70
+  alignment: Evil
+  stats: 9
+  skillLevels: 4
+  level: 20
+
+  skillOnKill: 30
+
+  otherStats:
+    con: 15
+    perception: 225
+
+  gold:
+    min: 550
+    max: 700
+
+  hp:
+    min: 38950
+    max: 40350
+
+  mp:
+    min: 500
+    max: 700
+
+  giveXp:
+    min: 37000
+    max: 38000
+
+  usableSkills:
+    - MagicMissile
+    - Push
+    - DarkVision
+    - BarFire
+    - BarFrost
+
+  gear:
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand: Tower Spear Weak
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+
+- npcId: Dedlaen Troll
+  name: troll
+  hostility: Always
+  sprite: 85
+  alignment: Evil
+  baseClass: Warrior
+  stats: 13
+  skillLevels: 5
+  level: 20
+
+  skillOnKill: 30
+
+  otherStats:
+    con: 15
+    perception: 245
+
+  gold:
+    min: 1550
+    max: 1700
+
+  hp:
+    min: 52950
+    max: 53350
+
+  giveXp:
+    min: 47000
+    max: 48000
+
+  gear:
+    Hands: Maze Skeleton Claws
+
+  usableSkills:
+    - ShredTenPercent
+
+- npcId: Dedlaen Lizardman
+  name: lizardman
+  hostility: Always
+  baseClass: Mage
+  sprite: 100
+  alignment: Evil
+  stats: 15
+  skillLevels: 5
+  level: 20
+
+  skillOnKill: 30
+
+  otherStats:
+    con: 15
+    perception: 225
+    mpregen: 10
+
+  gold:
+    min: 1550
+    max: 1700
+
+  hp:
+    min: 38950
+    max: 40350
+
+  mp:
+    min: 500
+    max: 700
+
+  giveXp:
+    min: 37000
+    max: 38000
+
+  usableSkills:
+    - FireMist
+    - DarkVision
+    - BarFire
+
+  gear:
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  rightHand: Maze Longsword
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1

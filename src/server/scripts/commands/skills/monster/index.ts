@@ -10,6 +10,8 @@ export * from './PoisonBiteMedium';
 
 export * from './ChillBiteMedium';
 
+export * from './ShredTenPercent';
+
 export * from './SkillSuckWeak';
 
 export * from './specific/GhostWail';

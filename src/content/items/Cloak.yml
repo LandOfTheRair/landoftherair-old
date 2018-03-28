@@ -50,6 +50,7 @@
 - name: Dedlaen Ghost Cloak
   stats:
     armorClass: 1
+    wil: 2
     defense: 3
     mpregen: 10
   effect:
