@@ -1402,4 +1402,8 @@ export class Character {
     if(!this.$$pets || this.$$pets.length === 0) return;
     this.$$pets.forEach(pet => pet.die(this, true));
   }
+
+  public youDontSeeThatPerson(uuid: string): void {
+    this.sendClientMessage('You do not see that person.');
+  }
 }

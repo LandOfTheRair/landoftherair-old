@@ -218,7 +218,7 @@ export class Player extends Character {
   }
 
   public youDontSeeThatPerson(uuid: string): void {
-    this.sendClientMessage('You do not see that person.');
+    super.youDontSeeThatPersion(uuid);
     this.clearActionQueueOf(uuid);
   }
 
