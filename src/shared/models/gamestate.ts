@@ -146,7 +146,7 @@ export class GameState {
 
   private tickAllEffects() {
     this.players.forEach(player => {
-      player.effectsList.forEach(eff => eff.tick(player));
+      player.tickEffects();
     });
   }
 

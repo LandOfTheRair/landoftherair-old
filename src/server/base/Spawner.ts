@@ -417,10 +417,7 @@ export class Spawner {
     if(this.$$isStayingSlow) return;
 
     this.npcs.forEach(npc => {
-      const effects = npc.effectsList;
-      if(effects.length === 0) return;
-
-      effects.forEach(eff => eff.tick(npc));
+      npc.tickEffects();
     });
   }
 

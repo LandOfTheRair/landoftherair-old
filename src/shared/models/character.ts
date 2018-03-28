@@ -903,6 +903,10 @@ export class Character {
     return this.hp.atMinimum();
   }
 
+  tickEffects() {
+    this.effectsList.forEach(eff => eff.tick(this));
+  }
+
   clearEffects() {
     const noClear = ['Nourishment', 'Malnourished'];
     this.effectsList.forEach(effect => {
