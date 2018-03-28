@@ -12,6 +12,7 @@
   skillOnKill: 4
 
   otherStats:
+    fireResist: 70
     perception: 80
 
   gold:
@@ -120,12 +121,13 @@
   sprite: 545
   alignment: Evil
   stats: 10
-  skillLevels: 2
+  skillLevels: 1
 
   level: 4
   skillOnKill: 5
 
   otherStats:
+    fireResist: 70
     perception: 80
 
   gold:
@@ -177,6 +179,7 @@
   skillOnKill: 5
 
   otherStats:
+    fireResist: 70
     perception: 80
 
   gold:
@@ -228,6 +231,7 @@
   skillOnKill: 5
 
   otherStats:
+    fireResist: 70
     perception: 100
 
   gold:
@@ -303,6 +307,7 @@
 
   otherStats:
     con: 20
+    fireResist: 70
     perception: 150
 
   skillOnKill: 50
