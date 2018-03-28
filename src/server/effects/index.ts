@@ -110,8 +110,8 @@ export * from './stances/RageStance';
 export * from './stances/TauntStance';
 
 export * from './channels/ChannelFindFamiliar';
-
 export * from './channels/ChannelShadowClones';
+export * from './channels/ChannelSummon';
 
 export * from './arts/Multistrike';
 export * from './arts/Taunt';
