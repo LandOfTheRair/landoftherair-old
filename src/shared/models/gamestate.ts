@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, size, pick, minBy, includes, reduce, get, isUndefined } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, size, pick, minBy, includes, reduce, get, isUndefined, compact } from 'lodash';
 
 import { Player } from './player';
 
@@ -421,7 +421,17 @@ export class GameState {
   private getAllNPCsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
     const foundNPCsInRange = this.quadtreeHelper.npcQuadtreeSearch(pos, radius);
     const foundNPCRefs = foundNPCsInRange.map(npc => this.mapNPCs[npc.uuid]);
-    return foundNPCRefs;
+
+    /* fun debugging!
+    try {
+      foundNPCRefs.forEach(x => x.isDead());
+    } catch(e) {
+      const obj = { foundNPCsInRange, foundNPCInfo: foundNPCRefs.map(x => (x ? { name: x.name, uuid: x.uuid } : null)) }
+      require('fs').writeFileSync('asdfasdfsdf.txt', JSON.stringify(obj, null, 4), 'utf-8');
+    }
+    */
+    // I shouldn't have to do this, but shit happens
+    return compact(foundNPCRefs);
   }
 
   private getAllPlayersFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
