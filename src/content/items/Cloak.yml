@@ -50,8 +50,7 @@
 - name: Dedlaen Ghost Cloak
   stats:
     armorClass: 1
-    offense: 1
-    defense: 1
+    defense: 3
     mpregen: 10
   effect:
     name: Transmute
