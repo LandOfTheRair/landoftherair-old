@@ -24216,6 +24216,86 @@
                  "width":64,
                  "x":5248,
                  "y":3840
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5859,
+                 "name":"Bat Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/bat"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1856,
+                 "y":640
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5860,
+                 "name":"Bat Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/bat"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":576,
+                 "y":640
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5861,
+                 "name":"Bat Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/bat"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":576,
+                 "y":1920
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5862,
+                 "name":"Bat Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/bat"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1856,
+                 "y":1920
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -25684,7 +25764,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5858,
+ "nextobjectid":5863,
  "orientation":"orthogonal",
  "properties":
     {
