@@ -446,15 +446,8 @@ export class GameState {
       // no hitting myself
       if(me === char) return false;
 
-      // no hitting dead people
-      if(char.isDead()) return false;
-
       // if they can't attack, they're not worth fighting
       if((<NPC>char).hostility === 'Never') return false;
-
-      const offsetX = char.x - me.x;
-      const offsetY = char.y - me.y;
-      if(!me.canSee(offsetX, offsetY)) return false;
 
       if(!me.canSeeThroughStealthOf(char)) return false;
 
