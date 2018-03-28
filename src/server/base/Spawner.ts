@@ -332,7 +332,7 @@ export class Spawner {
 
   shouldSlowDown() {
     if(!this.canSlowDown) return false;
-    return this.room.state.getPlayersInRange(this, Math.max(this.leashRadius, 20)).length === 0;
+    return this.room.state.getAllPlayersInRange(this, Math.max(this.leashRadius, 20)).length === 0;
   }
 
   tick() {

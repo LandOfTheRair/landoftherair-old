@@ -354,13 +354,17 @@ export class GameState {
   }
 
   private isVisibleTo(ref: Character, target: Character, useSight = true): boolean {
-    if(ref.fov && useSight && ref.canSee) {
+    if(ref.fov && useSight) {
       const offsetX = target.x - ref.x;
       const offsetY = target.y - ref.y;
       return ref.canSee(offsetX, offsetY);
     }
 
     return true;
+  }
+
+  getAllPlayersInRange(ref: { x: number, y: number }, radius: number): Character[] {
+    return this.getAllPlayersFromQuadtrees(ref, radius);
   }
 
   getPlayersInRange(ref: Character, radius, except: string[] = [], useSight = true): Character[] {
