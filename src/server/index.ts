@@ -8,14 +8,14 @@ import { Logger } from './logger';
 
 import { includes } from 'lodash';
 
-import * as colyseus from 'colyseus';
+import { Server, RedisPresence } from 'colyseus';
 
 import * as Rooms from './rooms';
 
 import * as recurse from 'recursive-readdir';
 import * as path from 'path';
-import * as cluster from 'cluster';
 import * as http from 'http';
+import * as WebSocket from 'uws';
 
 if(!process.env.AUTH0_SECRET) {
   Logger.log('No env.AUTH0_SECRET. Set one.');
@@ -42,10 +42,12 @@ if(process.argv[2] === '--single-core') {
 
   const server = http.createServer(api.expressApp);
 
-  const gameServer = new colyseus.Server({ server });
+  const gameServer = new Server({
+    engine: WebSocket.Server,
+    server
+  });
 
   Logger.log(`[Single] Started server on port ${port}`);
-
 
   gameServer.register('Lobby', Rooms.Lobby);
 
@@ -64,33 +66,32 @@ if(process.argv[2] === '--single-core') {
 
 } else {
 
-  const gameServer = new colyseus.ClusterServer({});
+  const api = new GameAPI();
 
-  if(cluster.isMaster) {
-    gameServer.listen(port);
-    Logger.log(`[Master] Started server on port ${port}`);
+  const server = http.createServer(api.expressApp);
 
-    gameServer.fork();
+  const gameServer = new Server({
+    engine: WebSocket.Server,
+    presence: new RedisPresence({
+      url: process.env.REDIS_URL
+    }),
+    server
+  });
 
-  } else {
-    Logger.log(`[Child] Started child process ${process.pid}`);
+  Logger.log(`[Single] Started server on port ${port}`);
 
-    const api = new GameAPI();
+  gameServer.register('Lobby', Rooms.Lobby);
 
-    gameServer.register('Lobby', Rooms.Lobby);
+  const allMapNames = {};
 
-    const allMapNames = {};
-
-    recurse(`${__dirname}/${mapPath}/maps`).then(files => {
-      files.forEach(file => {
-        const mapName = path.basename(file, path.extname(file));
-        allMapNames[mapName] = true;
-        const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
-        gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
-        Logger.log(`[Child] Registered map ${mapName}`);
-      });
+  recurse(`${__dirname}/${mapPath}/maps`).then(files => {
+    files.forEach(file => {
+      const mapName = path.basename(file, path.extname(file));
+      allMapNames[mapName] = true;
+      const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
+      gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
     });
+  });
 
-    gameServer.attach({ server: api.expressApp });
-  }
+  server.listen(port);
 }

@@ -37,12 +37,12 @@ export class ColyseusLobbyService {
 
     this.room = this.client.join('Lobby');
 
-    this.room.onUpdate.add((state) => {
+    this.room.onStateChange.add((state) => {
       this.lobbyState.syncTo(state);
       this.setAccount(this.lobbyState.findAccountByUsername(this.myAccount.username));
     });
 
-    this.room.onData.add((data) => {
+    this.room.onMessage.add((data) => {
       this.interceptLobbyCommand(data);
     });
 
