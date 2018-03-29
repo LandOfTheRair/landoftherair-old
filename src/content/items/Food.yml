@@ -111,3 +111,22 @@
       str: -1
     duration: 86400
 
+- name: Dedlaen Dragon Turtle Egg
+  sprite: 381
+  desc: "an ivory egg taken from a young dragon turtle"
+  value: 10
+  effect:
+    name: Nourishment
+    tooltip: "+1 All Stats"
+    stats:
+      str: 1
+      dex: 1
+      agi: 1
+      int: 1
+      wil: 1
+      wis: 1
+      con: 1
+      luk: 1
+      cha: 1
+    duration: 21600
+
