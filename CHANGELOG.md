@@ -1,5 +1,30 @@
 # Changelog
 
+## v0.1.21 (28/03/2018)
+
+#### Enhancements
+
+- [#696](https://github.com/LandOfTheRair/landoftherair/issues/696) clear "you don't see that person" actions from queue after first one happens
+
+#### Balance Adjustments
+
+- [#700](https://github.com/LandOfTheRair/landoftherair/issues/700) nerf dagger damage bonus (and all damage bonuses)
+- [#699](https://github.com/LandOfTheRair/landoftherair/issues/699) move offes and defes to the maze
+- [#684](https://github.com/LandOfTheRair/landoftherair/issues/684) Add a skeleton room to revenant
+
+#### New Content
+
+- [#701](https://github.com/LandOfTheRair/landoftherair/issues/701) swimming buff
+
+#### Bug Fixes
+
+- [#697](https://github.com/LandOfTheRair/landoftherair/issues/697) TypeError: Cannot read property 'isDead' of undefined
+- [#693](https://github.com/LandOfTheRair/landoftherair/issues/693) Ensure that stances work for bows and broadswords
+- [#692](https://github.com/LandOfTheRair/landoftherair/issues/692) TypeError: Cannot read property 'isDead' of undefined
+- [#686](https://github.com/LandOfTheRair/landoftherair/issues/686) npcs can spawn on dense decor
+
+---
+
 ## v0.1.20 (27/03/2018)
 
 #### Enhancements
