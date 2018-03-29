@@ -20,8 +20,8 @@
     max: 700
 
   hp:
-    min: 12950
-    max: 13350
+    min: 8950
+    max: 9350
 
   giveXp:
     min: 7000
@@ -81,7 +81,7 @@
     max: 700
 
   hp:
-    min: 8950
+    min: 9950
     max: 10350
 
   mp:
@@ -159,7 +159,7 @@
     max: 700
 
   hp:
-    min: 8950
+    min: 9950
     max: 10350
 
   mp:
@@ -226,8 +226,8 @@
     max: 1700
 
   hp:
-    min: 35000
-    max: 40000
+    min: 45000
+    max: 50000
 
   giveXp:
     min: 15000
