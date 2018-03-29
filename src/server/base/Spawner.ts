@@ -384,6 +384,7 @@ export class Spawner {
     this.$$isStayingSlow = true;
 
     this.npcs.forEach(npc => {
+      if(npc.isDead()) return;
       this.despawnedNPCs.push(npc);
       this.removeNPC(npc, false);
     });
