@@ -18,7 +18,7 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       return `Greetings traveler. My brother and I are in search of rare chunks of titanium. 
-      For some reason, the denizens of this tower seem to carry an excess of them, compared to most other places we've looked. 
+      For some reason, the living beings of this maze seem to carry an excess of them, compared to most other places we've looked. 
       If you can HELP me, I can add some defense to your gear.`;
     });
 

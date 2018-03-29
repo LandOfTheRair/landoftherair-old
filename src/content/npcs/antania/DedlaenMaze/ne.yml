@@ -59,6 +59,11 @@
     - result: Tower Shield Weak
       chance: 1
 
+  drops:
+    - result: Tower Titanium Chunk
+      chance: 1
+      maxChance: 300
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
@@ -139,6 +144,11 @@
       chance: 10
     - result: Tower Dagger Strong
       chance: 1
+
+  drops:
+    - result: Tower Titanium Chunk
+      chance: 1
+      maxChance: 300
 
   copyDrops:
     - drop: 'gear.Armor'
@@ -229,6 +239,11 @@
     - result: Tower Shield Strong
       chance: 1
 
+  drops:
+    - result: Tower Titanium Chunk
+      chance: 1
+      maxChance: 300
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
@@ -293,6 +308,11 @@
       chance: 10
     - result: Tower Halberd Weak
       chance: 3
+
+  drops:
+    - result: Tower Titanium Chunk
+      chance: 1
+      maxChance: 300
 
   copyDrops:
     - drop: 'gear.Armor'
@@ -370,6 +390,11 @@
     - result: Tower Shield Weak
       chance: 1
 
+  drops:
+    - result: Tower Titanium Chunk
+      chance: 1
+      maxChance: 300
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
@@ -440,6 +465,11 @@
 
   rightHand: Tower Spear Weak
 
+  drops:
+    - result: Tower Titanium Chunk
+      chance: 1
+      maxChance: 300
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
@@ -477,6 +507,11 @@
   giveXp:
     min: 47000
     max: 48000
+
+  drops:
+    - result: Tower Titanium Chunk
+      chance: 1
+      maxChance: 300
 
   gear:
     Hands: Maze Skeleton Claws
@@ -541,6 +576,11 @@
 
   rightHand: Maze Longsword
 
+  drops:
+    - result: Tower Titanium Chunk
+      chance: 1
+      maxChance: 300
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
@@ -592,6 +632,12 @@
 
   usableSkills:
     - Charge
+
+  drops:
+    - result: Tower Titanium Chunk
+      chance: -1
+    - result: Dedlaen Minotaur Horn
+      chance: -1
 
   copyDrops:
     - drop: 'leftHand'

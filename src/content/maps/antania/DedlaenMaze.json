@@ -22434,46 +22434,6 @@
                  "y":768
                 }, 
                 {
-                 "gid":3137,
-                 "height":64,
-                 "id":5278,
-                 "name":"Aradeniss",
-                 "properties":
-                    {
-                     "script":"antania\/dedlaenmaze\/daily-ne-library"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":9792,
-                 "y":4992
-                }, 
-                {
-                 "gid":3137,
-                 "height":64,
-                 "id":5283,
-                 "name":"Thesiss",
-                 "properties":
-                    {
-                     "script":"antania\/dedlaenmaze\/daily-sw-library"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1600,
-                 "y":7360
-                }, 
-                {
                  "gid":2607,
                  "height":64,
                  "id":5287,
@@ -22552,6 +22512,46 @@
                  "width":64,
                  "x":8640,
                  "y":7104
+                }, 
+                {
+                 "gid":2602,
+                 "height":64,
+                 "id":5879,
+                 "name":"Offess",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/offes"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1728,
+                 "y":7360
+                }, 
+                {
+                 "gid":3112,
+                 "height":64,
+                 "id":5880,
+                 "name":"Deffess",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/deffes"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9792,
+                 "y":5056
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -26056,7 +26056,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5878,
+ "nextobjectid":5881,
  "orientation":"orthogonal",
  "properties":
     {

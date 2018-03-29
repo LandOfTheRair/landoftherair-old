@@ -5550,46 +5550,6 @@
                  "y":1600
                 }, 
                 {
-                 "gid":2602,
-                 "height":64,
-                 "id":2272,
-                 "name":"Offes",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/offes"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2752,
-                 "y":5440
-                }, 
-                {
-                 "gid":3112,
-                 "height":64,
-                 "id":2273,
-                 "name":"Deffes",
-                 "properties":
-                    {
-                     "script":"antania\/towerofselen\/deffes"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3200,
-                 "y":5760
-                }, 
-                {
                  "gid":3462,
                  "height":64,
                  "id":2330,
@@ -6804,6 +6764,26 @@
                  "width":64,
                  "x":2048,
                  "y":4224
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2440,
+                 "name":"Town Guard Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/town-guard"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3008,
+                 "y":5504
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7383,7 +7363,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2440,
+ "nextobjectid":2441,
  "orientation":"orthogonal",
  "properties":
     {

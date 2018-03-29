@@ -20,6 +20,12 @@
   binds: true
   value: 3500
 
+- name: Dedlaen Minotaur Horn
+  sprite: 221
+  desc: "an ivory horn taken from a youthful minotaur"
+  binds: true
+  value: 100000
+
 - name: Copper Ore (Small)
   sprite: 993
   desc: "copper ore"
