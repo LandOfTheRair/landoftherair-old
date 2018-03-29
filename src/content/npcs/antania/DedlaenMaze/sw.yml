@@ -209,8 +209,8 @@
 
   otherStats:
     con: 18
-    accuracy: 7
-    offense: 7
+    accuracy: 10
+    offense: 10
     defense: 3
     mpregen: 50
     perception: 300
@@ -231,7 +231,7 @@
     max: 202000
 
   gear:
-    Ear: Enemy Potency 10 Necrotic Aura Earring
+    Ear: Enemy Potency 15 Necrotic Aura Earring
     Hands: Ghast Claws
 
   copyDrops:

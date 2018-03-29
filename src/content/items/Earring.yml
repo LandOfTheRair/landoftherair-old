@@ -107,10 +107,10 @@
   desc: "a glowing golden earring"
   value: 0
 
-- name: Enemy Potency 10 Necrotic Aura Earring
+- name: Enemy Potency 15 Necrotic Aura Earring
   effect:
     name: NecroticAura
-    potency: 10
+    potency: 15
     autocast: true
   sprite: -1
   desc: "a glowing golden earring"
