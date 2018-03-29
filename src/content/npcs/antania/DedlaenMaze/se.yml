@@ -54,6 +54,55 @@
     min: 269000
     max: 275000
 
+- npcId: Dedlaen Water Naga
+  name: water naga
+  hostility: OnHit
+  baseClass: Mage
+  sprite: 330
+  stats: 15
+  skillLevels: 7
+  level: 20
+
+  skillOnKill: 30
+
+  otherStats:
+    waterResist: 5000
+    con: 25
+    perception: 225
+    mpregen: 10
+
+  gold:
+    min: 1550
+    max: 1700
+
+  hp:
+    min: 30950
+    max: 35350
+
+  mp:
+    min: 900
+    max: 1000
+
+  giveXp:
+    min: 40000
+    max: 45000
+
+  attributes:
+    - damageType: 'ice'
+      potency: 150
+
+  usableSkills:
+    - IceMist
+    - BarFrost
+    - DarkVision
+    - Absorption
+    - ChillBiteMedium
+
+  drops:
+    - result: Dedlaen Naga Key
+      chance: 1
+      maxChance: 100
+
 - npcId: Dedlaen Dragon Turtle
   name: dragon turtle
   hostility: Always

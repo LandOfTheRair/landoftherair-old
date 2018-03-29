@@ -21246,6 +21246,18 @@
                  "height":64,
                  "id":3919,
                  "name":"",
+                 "properties":
+                    {
+                     "requireHeld":"Dedlaen Naga Key",
+                     "requireLockpick":true,
+                     "skillRequired":19
+                    },
+                 "propertytypes":
+                    {
+                     "requireHeld":"string",
+                     "requireLockpick":"bool",
+                     "skillRequired":"int"
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -21258,6 +21270,18 @@
                  "height":64,
                  "id":3921,
                  "name":"",
+                 "properties":
+                    {
+                     "requireHeld":"Dedlaen Naga Key",
+                     "requireLockpick":true,
+                     "skillRequired":19
+                    },
+                 "propertytypes":
+                    {
+                     "requireHeld":"string",
+                     "requireLockpick":"bool",
+                     "skillRequired":"int"
+                    },
                  "rotation":0,
                  "type":"Door",
                  "visible":true,
@@ -24736,6 +24760,286 @@
                  "width":64,
                  "x":11520,
                  "y":11904
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5891,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":11008,
+                 "y":11456
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5892,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10688,
+                 "y":12096
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5893,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":11840,
+                 "y":11456
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5894,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":11968,
+                 "y":12224
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5895,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9664,
+                 "y":11136
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5896,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8640,
+                 "y":10816
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5897,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8832,
+                 "y":9792
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5898,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8256,
+                 "y":8768
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5899,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9472,
+                 "y":9152
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5900,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8896,
+                 "y":8000
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5901,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10496,
+                 "y":8768
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5902,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":11520,
+                 "y":9344
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5903,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10944,
+                 "y":10432
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5904,
+                 "name":"Water Naga Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/water-naga"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":12032,
+                 "y":10560
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -26204,7 +26508,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5891,
+ "nextobjectid":5905,
  "orientation":"orthogonal",
  "properties":
     {

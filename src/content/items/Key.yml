@@ -58,3 +58,9 @@
   sprite: 357
   value: 1
   binds: true
+
+- name: Dedlaen Naga Key
+  desc: "a silver key that's wet and slimy"
+  sprite: 357
+  value: 1
+  binds: true

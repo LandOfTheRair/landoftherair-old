@@ -230,6 +230,10 @@
     min: 199000
     max: 202000
 
+  attributes:
+    - damageType: 'necrotic'
+      potency: 0
+
   gear:
     Ear: Enemy Potency 15 Necrotic Aura Earring
     Hands: Ghast Claws
@@ -273,6 +277,10 @@
   usableSkills:
     - Charge
     - DoubleAttack
+
+  attributes:
+    - damageType: 'physical'
+      potency: 0.75
 
   rightHand:
     - Maze Revenant Greatmace
