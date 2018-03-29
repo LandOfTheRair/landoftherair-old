@@ -9,7 +9,6 @@ import { Item } from './item';
 import { NPC } from './npc';
 import { Character } from './character';
 import { GetGidDescription, GetSwimLevel } from '../../server/helpers/world/descriptions';
-import { CombatHelper } from '../../server/helpers/world/combat-helper';
 import { MapLayer } from './maplayer';
 import { nonenumerable } from 'nonenumerable';
 import { LootHelper } from '../../server/helpers/world/loot-helper';
