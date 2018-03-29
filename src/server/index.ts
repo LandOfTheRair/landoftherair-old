@@ -15,6 +15,7 @@ import * as Rooms from './rooms';
 import * as recurse from 'recursive-readdir';
 import * as path from 'path';
 import * as http from 'http';
+import * as cluster from 'cluster';
 import * as WebSocket from 'uws';
 
 if(!process.env.AUTH0_SECRET) {
@@ -66,32 +67,42 @@ if(process.argv[2] === '--single-core') {
 
 } else {
 
-  const api = new GameAPI();
+  if(cluster.isMaster) {
 
-  const server = http.createServer(api.expressApp);
+    Logger.log(`[Parent] Started server on port ${port}`);
 
-  const gameServer = new Server({
-    engine: WebSocket.Server,
-    presence: new RedisPresence({
-      url: process.env.REDIS_URL
-    }),
-    server
-  });
+    for (let i = 0; i < require('os').cpus().length; i++) {
+      cluster.fork();
+    }
 
-  Logger.log(`[Single] Started server on port ${port}`);
+  } else {
 
-  gameServer.register('Lobby', Rooms.Lobby);
+    Logger.log(`[Child] Started server on port ${port}`);
 
-  const allMapNames = {};
+    const api = new GameAPI();
+    const server = http.createServer(api.expressApp);
 
-  recurse(`${__dirname}/${mapPath}/maps`).then(files => {
-    files.forEach(file => {
-      const mapName = path.basename(file, path.extname(file));
-      allMapNames[mapName] = true;
-      const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
-      gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
+    const gameServer = new Server({
+      engine: WebSocket.Server,
+      presence: new RedisPresence({
+        url: process.env.REDIS_URL
+      }),
+      server
     });
-  });
 
-  server.listen(port);
+    gameServer.register('Lobby', Rooms.Lobby);
+
+    const allMapNames = {};
+
+    recurse(`${__dirname}/${mapPath}/maps`).then(files => {
+      files.forEach(file => {
+        const mapName = path.basename(file, path.extname(file));
+        allMapNames[mapName] = true;
+        const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
+        gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
+      });
+    });
+
+    server.listen(port);
+  }
 }
