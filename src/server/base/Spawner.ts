@@ -407,6 +407,8 @@ export class Spawner {
         return;
       }
 
+      this.room.state.updateNPCVolatile(npc);
+
       // dead things always tick when the spawner is slow for normal-speed corpse rotting
       if(this.$$isStayingSlow) {
         if(npc.isDead()) {
@@ -417,7 +419,6 @@ export class Spawner {
 
       npc.tick(canMove);
       npc.$$room.state.calculateFOV(npc);
-      this.room.state.updateNPCVolatile(npc);
     });
   }
 

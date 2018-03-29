@@ -161,8 +161,6 @@ export class NPC extends Character {
   die(killer, silent = false) {
     super.die(killer, silent);
 
-    this.$$room.state.updateNPCVolatile(this);
-
     if(silent) return;
 
     if(!this.spawner) return false;
