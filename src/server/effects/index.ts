@@ -18,6 +18,7 @@ export * from './items/MinorMP';
 export * from './special/Dangerous';
 export * from './special/Dead';
 export * from './special/LowCON';
+export * from './special/Swimming';
 export * from './misc/Hidden';
 
 export * from './cures/Antidote';

@@ -14,6 +14,7 @@ import { MapLayer } from './maplayer';
 import { nonenumerable } from 'nonenumerable';
 import { LootHelper } from '../../server/helpers/world/loot-helper';
 import { QuadtreeHelper } from '../../server/helpers/world/quadtree-helper';
+import { Swimming } from '../../server/effects/special/Swimming';
 
 enum TilesWithNoFOVUpdate {
   Empty = 0,
@@ -484,8 +485,19 @@ export class GameState {
     if(swimInfo) {
       player.$$swimElement = swimInfo.element;
       player.swimLevel = swimInfo.swimLevel;
+
+      if(!player.hasEffect('Swimming') && !player.hasEffect('Drowning')) {
+        const swimming = new Swimming({ potency: player.swimLevel, swimElement: player.$$swimElement });
+        swimming.cast(player, player);
+      }
     } else {
       player.swimLevel = 0;
+
+      const swimming = player.hasEffect('Swimming');
+      const drowning = player.hasEffect('Drowning');
+
+      if(swimming) player.unapplyEffect(swimming, true);
+      if(drowning) player.unapplyEffect(drowning, true);
     }
 
     if(ignoreMessages) return;
@@ -670,12 +682,6 @@ export class GameState {
 
     this.players.forEach((p: Player) => {
       p.tick();
-
-      if(p.swimLevel > 0) {
-        const hpPercentLost = p.swimLevel * 4;
-        const hpLost = Math.floor(p.hp.maximum * (hpPercentLost / 100));
-        CombatHelper.dealOnesidedDamage(p, { damage: hpLost, damageClass: p.$$swimElement || 'water', damageMessage: 'You are drowning!', suppressIfNegative: true });
-      }
     });
 
     this.resetPlayerHash();
