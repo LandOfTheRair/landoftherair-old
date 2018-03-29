@@ -25,6 +25,7 @@ export class Swimming extends SpellEffect {
   }
 
   effectEnd(char: Character) {
+    if(char.swimLevel === 0) return;
     const drowning = new Drowning({ swimElement: this.swimElement, potency: this.potency });
     drowning.cast(char, char);
   }
