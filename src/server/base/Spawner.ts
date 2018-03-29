@@ -169,7 +169,7 @@ export class Spawner {
           npcData.gear[slot] = item;
           return item;
         } catch(e) {
-          Logger.error(new Error(`Could not load item in ${slot} for ${npcData.name}.`));
+          Logger.error(new Error(`Could not load item ${npcData.gear[slot]} in slot ${slot} for ${npcData.name} (${npcData.npcId}).`));
         }
       }));
     }
