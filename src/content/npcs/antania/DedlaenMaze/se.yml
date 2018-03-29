@@ -58,7 +58,7 @@
   name: water naga
   hostility: OnHit
   baseClass: Mage
-  sprite: 330
+  sprite: 430
   stats: 15
   skillLevels: 7
   level: 20
@@ -97,6 +97,7 @@
     - DarkVision
     - Absorption
     - ChillBiteMedium
+    - Poison
 
   drops:
     - result: Dedlaen Naga Key
