@@ -84,7 +84,9 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   setCommandFromIndex() {
     if(this.curIndex === -1) this.colyseusGame.currentCommand = '';
     if(!this.colyseusGame.lastCommands[this.curIndex]) return;
-    this.colyseusGame.currentCommand = this.colyseusGame.lastCommands[this.curIndex];
+
+    const cmd = this.colyseusGame.lastCommands[this.curIndex];
+    this.colyseusGame.currentCommand = cmd;
   }
 
   prevCommand($event) {

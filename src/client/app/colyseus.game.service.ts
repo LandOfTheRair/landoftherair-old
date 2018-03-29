@@ -562,12 +562,6 @@ export class ColyseusGameService {
     str.split(';').forEach(cmd => {
       cmd = cmd.trim();
 
-      if(cmd === '.' && this.lastCommands[0]) {
-        cmd = this.lastCommands[0];
-      } else if(!includes(cmd, ', hello')) {
-        this.doCommand(cmd);
-      }
-
       let command = '';
       let args = '';
 
@@ -582,6 +576,14 @@ export class ColyseusGameService {
         args = `${args} ${target}`;
       }
 
+      const lastCmd = this.lastCommands[0];
+      if(cmd === '.' && lastCmd) {
+        command = lastCmd.substring(0, lastCmd.indexOf(' '));
+        args = lastCmd.substring(lastCmd.indexOf(' ') + 1);
+      } else if(!includes(cmd, ', hello')) {
+        this.doCommand(`${command.trim()} ${args.trim()}`.trim());
+      }
+      
       // format $ outgoing for easier macroing
       if(includes(args, '$')) {
         const splargs = args.trim().split(' ');
