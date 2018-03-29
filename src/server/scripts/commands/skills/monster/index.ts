@@ -11,6 +11,7 @@ export * from './PoisonBiteMedium';
 export * from './ChillBiteMedium';
 
 export * from './ShredTenPercent';
+export * from './ShredTwentyPercent';
 
 export * from './SkillSuckWeak';
 

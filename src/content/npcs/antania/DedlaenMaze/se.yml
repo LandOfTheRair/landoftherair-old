@@ -26,6 +26,7 @@
       potency: 0
 
   gear:
+    Hands: Maze Skeleton Claws
     Waist: Dedlaen Crypt Thing Sash
 
   copyDrops:
@@ -52,3 +53,52 @@
   giveXp:
     min: 269000
     max: 275000
+
+- npcId: Dedlaen Dragon Turtle
+  name: dragon turtle
+  hostility: Always
+  sprite: 455
+  alignment: Evil
+  stats: 20
+  skillLevels: 7
+  level: 20
+
+  skillOnKill: 1500
+  aquaticOnly: true
+
+  otherStats:
+    waterResist: 500000
+    con: 35
+    armorClass: 30
+    accuracy: 10
+    defense: 10
+    offense: 10
+    perception: 330
+
+  gold:
+    min: 27050
+    max: 27700
+
+  gear:
+    Hands: Maze Skeleton Claws
+
+  usableSkills:
+    - ShredTwentyPercent
+    - PoisonBiteMedium
+    - DoubleAttack
+
+  drops:
+    - result: Dedlaen Dragon Turtle Egg
+      chance: -1
+
+  hp:
+    min: 737950
+    max: 741350
+
+  mp:
+    min: 10000
+    max: 10000
+
+  giveXp:
+    min: 369000
+    max: 375000

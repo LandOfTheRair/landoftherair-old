@@ -206,6 +206,9 @@
     stealth: 50
     mpregen: 100
 
+  gear:
+    Hands: Maze Skeleton Claws
+
   drops:
     - result: Dedlaen Vampire Heart
       chance: -1
