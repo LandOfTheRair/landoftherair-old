@@ -419,7 +419,7 @@ export class GameState {
   }
 
   private getAllNPCsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
-    const foundNPCsInRange = this.quadtreeHelper.npcQuadtreeSearch(pos, radius);
+    const foundNPCsInRange = radius > 0 ? this.quadtreeHelper.npcQuadtreeSearch(pos, radius) : this.quadtreeHelper.npcs;
     const foundNPCRefs = foundNPCsInRange.map(npc => this.mapNPCs[npc.uuid]);
 
     /* fun debugging!

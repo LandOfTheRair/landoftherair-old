@@ -76,7 +76,8 @@ export class MessageHelper {
   }
 
   static getPossibleAuguryTargets(player: Character, findStr: string): any[] {
-    const allTargets = player.$$room.state.getAllInRange(player, 100);
+    // -1 is a special case that gets everything
+    const allTargets = player.$$room.state.getAllNPCsFromQuadtrees(player, -1);
     const possTargets = allTargets.filter(target => {
       return this.doesTargetMatchSearch(target, findStr);
     });

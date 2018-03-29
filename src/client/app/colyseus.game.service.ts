@@ -583,7 +583,7 @@ export class ColyseusGameService {
       } else if(!includes(cmd, ', hello')) {
         this.doCommand(`${command.trim()} ${args.trim()}`.trim());
       }
-      
+
       // format $ outgoing for easier macroing
       if(includes(args, '$')) {
         const splargs = args.trim().split(' ');
