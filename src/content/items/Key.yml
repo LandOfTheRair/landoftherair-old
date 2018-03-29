@@ -46,3 +46,15 @@
   sprite: 363
   value: 1
   binds: true
+
+- name: Dedlaen City Key
+  desc: "a key to the city of the Maze, entrusted to those who prove themselves"
+  sprite: 363
+  value: 1
+  binds: true
+
+- name: Dedlaen Maze Key
+  desc: "a silver key that smells like death"
+  sprite: 357
+  value: 1
+  binds: true

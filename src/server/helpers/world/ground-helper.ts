@@ -44,7 +44,7 @@ export class GroundHelper {
       return;
     }
 
-    this.itemGCArray = reject(this.itemGCArray, checkItem => checkItem.uuid === item.uuid);
+    this.itemGCArray = reject(this.itemGCArray, (checkItem: any) => checkItem.uuid === item.uuid);
   }
 
   watchForItemDecay(): any {
