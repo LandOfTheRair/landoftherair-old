@@ -89,7 +89,7 @@
 
   attributes:
     - damageType: 'ice'
-      potency: 150
+      potency: 1.75
 
   usableSkills:
     - IceMist
