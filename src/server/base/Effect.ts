@@ -9,7 +9,11 @@ export const Maxes = {
   Lesser: 10,
   Bradley: 13,
   Minor: 15,
-  Basic: 20
+  Basic: 18,
+  Greater: 21,
+  Major: 24,
+  Advanced: 27,
+  Pure: 30
 };
 
 interface EffectInfo {
