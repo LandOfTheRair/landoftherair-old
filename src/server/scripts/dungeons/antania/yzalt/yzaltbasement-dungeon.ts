@@ -16,6 +16,7 @@ export const setup = async (room) => {
     'Steffen DamageResist Ring',
     'Heniz Intelligence Ring',
     'Heniz Battlemage Gloves',
+    'Steffen Strength Gloves',
     'Steffen Mana Ring',
     'Steffen Wisdom Amulet'
   ];

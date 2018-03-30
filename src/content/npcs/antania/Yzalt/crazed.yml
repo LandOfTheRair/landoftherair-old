@@ -252,6 +252,11 @@
         chance: 500
       - result: Steffen Wisdom Amulet
         chance: 1
+    Hands:
+      - result: none
+        chance: 500
+      - result: Steffen Strength Gloves
+        chance: 1
 
   copyDrops:
     - drop: 'rightHand'
@@ -267,6 +272,8 @@
     - drop: 'gear.Ring2'
       chance: -1
     - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'gear.Hands'
       chance: -1
 
 - npcId: Crazed Steffen Healer
@@ -846,6 +853,8 @@
     Hands:
       - result: none
         chance: 200
+      - result: Steffen Strength Gloves
+        chance: 1
       - result: Yzalt Defensive Claws
         chance: 1
     Wrists:
@@ -1082,6 +1091,7 @@
       - Steffen DamageResist Ring
       - Heniz Intelligence Ring
       - Heniz Battlemage Gloves
+      - Steffen Strength Gloves
       - Steffen Mana Ring
       - Steffen Wisdom Amulet
       - Antanian Earring
