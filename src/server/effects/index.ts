@@ -98,6 +98,9 @@ export * from './recents/RecentlyHasted';
 export * from './antibuffs/Debilitate';
 export * from './recents/RecentlyDebilitated';
 
+export * from './antibuffs/Immobilize';
+export * from './recents/RecentlyImmobilized';
+
 export * from './misc/Augury';
 export * from './misc/Identify';
 export * from './misc/Succor';

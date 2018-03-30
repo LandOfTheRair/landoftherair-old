@@ -12,9 +12,11 @@ export class MoveHelper {
 
     if(isUndefined(x) || isUndefined(y)) return;
 
-    const moveRate = player.getBaseStat('move');
+    const moveRate = player.getTotalStat('move');
     x = Math.max(Math.min(x, 4), -4);
     y = Math.max(Math.min(y, 4), -4);
+
+    if(moveRate <= 0) return;
 
     // const checkX = Math.abs(x);
     // const checkY = Math.abs(y);

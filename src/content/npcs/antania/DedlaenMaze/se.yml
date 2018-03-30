@@ -76,8 +76,8 @@
     max: 1700
 
   hp:
-    min: 30950
-    max: 35350
+    min: 40950
+    max: 45350
 
   mp:
     min: 900
@@ -88,6 +88,8 @@
     max: 45000
 
   attributes:
+    - damageType: 'fire'
+      potency: 0.5
     - damageType: 'ice'
       potency: 1.75
 
@@ -103,6 +105,41 @@
     - result: Dedlaen Naga Key
       chance: 1
       maxChance: 100
+
+- npcId: Dedlaen Spider
+  name: spider
+  hostility: Always
+  monsterClass: Beast
+  sprite: 800
+  alignment: Evil
+  stats: 15
+  skillLevels: 2
+  level: 20
+
+  skillOnKill:  25
+
+  otherStats:
+    con: 25
+    perception: 200
+
+  gold:
+    min: 150
+    max: 250
+
+  hp:
+    min: 14000
+    max: 15000
+
+  giveXp:
+    min: 33000
+    max: 35000
+
+  gear:
+    Hands: Medium Claws
+
+  usableSkills:
+    - PoisonBiteStrong
+    - DedlaenSpiderImmobilize
 
 - npcId: Dedlaen Dragon Turtle
   name: dragon turtle
