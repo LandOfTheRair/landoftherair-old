@@ -73,6 +73,9 @@ export class Spawner {
     this.map = map;
     this.name = name;
 
+    // analysis script
+    if(!room) return;
+
     // if a room disables creature spawn, it wants them all to spawn at once
     if(room.disableCreatureSpawn) this.currentTick = 0;
 
