@@ -14,8 +14,8 @@ export class TowerGoblinSpawner extends Spawner {
       initialSpawn: 2,
       maxCreatures: 5,
       spawnRadius: 1,
-      randomWalkRadius: 30,
-      leashRadius: 40,
+      randomWalkRadius: 15,
+      leashRadius: 20,
       npcIds
     });
   }

@@ -14,8 +14,8 @@ export class TowerWarAnimalsSpawner extends Spawner {
       initialSpawn: 2,
       maxCreatures: 5,
       spawnRadius: 1,
-      randomWalkRadius: 30,
-      leashRadius: 40,
+      randomWalkRadius: 10,
+      leashRadius: 20,
       npcIds
     });
   }

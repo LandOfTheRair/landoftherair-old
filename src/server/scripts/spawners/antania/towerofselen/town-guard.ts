@@ -14,7 +14,7 @@ export class TowerTownGuardSpawner extends Spawner {
       maxCreatures: 3,
       spawnRadius: 0,
       randomWalkRadius: 15,
-      leashRadius: 25,
+      leashRadius: 20,
       npcIds
     });
   }
