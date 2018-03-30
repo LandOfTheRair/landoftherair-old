@@ -15,8 +15,8 @@ export class OrckinRoom extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 10,
-      initialSpawn: 4,
+      respawnRate: 20,
+      initialSpawn: 2,
       maxCreatures: 8,
       spawnRadius: 2,
       randomWalkRadius: 7,
