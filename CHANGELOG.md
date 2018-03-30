@@ -1,5 +1,56 @@
 # Changelog
 
+## v0.1.22 (30/03/2018)
+
+#### Enhancements
+
+- [#717](https://github.com/LandOfTheRair/landoftherair/issues/717) Space out and shrink big spawners in the maze
+- [#716](https://github.com/LandOfTheRair/landoftherair/issues/716) Don't let monsters target every round unless they have agro and unless there is a player in view.
+- [#714](https://github.com/LandOfTheRair/landoftherair/issues/714) Tiles with permanent darkness
+- [#710](https://github.com/LandOfTheRair/landoftherair/issues/710) Add requirements to ground item object
+- [#709](https://github.com/LandOfTheRair/landoftherair/issues/709) Show encrust in ground pile but not ground group
+- [#706](https://github.com/LandOfTheRair/landoftherair/issues/706) Adjust auto scrolls behavior of log to have less of a grace buffer
+
+#### Balance Adjustments
+
+- [#713](https://github.com/LandOfTheRair/landoftherair/issues/713) Risan pots should go to 18
+- [#711](https://github.com/LandOfTheRair/landoftherair/issues/711) downscale trash monster hp
+- [#704](https://github.com/LandOfTheRair/landoftherair/issues/704) Ghast encounter changes
+
+#### Bug Fixes
+
+- [#715](https://github.com/LandOfTheRair/landoftherair/issues/715) TypeError: Cannot read property 'send' of undefined
+- [#708](https://github.com/LandOfTheRair/landoftherair/issues/708) . command does not repeat commands that have a target
+- [#705](https://github.com/LandOfTheRair/landoftherair/issues/705) NPC volatile is not updated frequently enough
+- [#703](https://github.com/LandOfTheRair/landoftherair/issues/703) Augury does not work
+
+---
+
+## v0.1.21 (28/03/2018)
+
+#### Enhancements
+
+- [#696](https://github.com/LandOfTheRair/landoftherair/issues/696) clear "you don't see that person" actions from queue after first one happens
+
+#### Balance Adjustments
+
+- [#700](https://github.com/LandOfTheRair/landoftherair/issues/700) nerf dagger damage bonus (and all damage bonuses)
+- [#699](https://github.com/LandOfTheRair/landoftherair/issues/699) move offes and defes to the maze
+- [#684](https://github.com/LandOfTheRair/landoftherair/issues/684) Add a skeleton room to revenant
+
+#### New Content
+
+- [#701](https://github.com/LandOfTheRair/landoftherair/issues/701) swimming buff
+
+#### Bug Fixes
+
+- [#697](https://github.com/LandOfTheRair/landoftherair/issues/697) TypeError: Cannot read property 'isDead' of undefined
+- [#693](https://github.com/LandOfTheRair/landoftherair/issues/693) Ensure that stances work for bows and broadswords
+- [#692](https://github.com/LandOfTheRair/landoftherair/issues/692) TypeError: Cannot read property 'isDead' of undefined
+- [#686](https://github.com/LandOfTheRair/landoftherair/issues/686) npcs can spawn on dense decor
+
+---
+
 ## v0.1.20 (27/03/2018)
 
 #### Enhancements
