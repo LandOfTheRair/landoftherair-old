@@ -10,17 +10,27 @@ export class IceMist extends SpellEffect {
   maxSkillForSkillGain = 7;
   skillMults = [[0, 2], [11, 2.5], [21, 3]];
 
+  private range: number;
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
+    const range = this.range || 1;
+
     target.sendClientMessageToRadius({ message: 'You see a dense fog form.', subClass: 'combat magic' }, 10);
 
-    MessageHelper.drawEffectInRadius(target, 'ICE_MIST', target, 1, 6);
+    MessageHelper.drawEffectInRadius(target, 'ICE_MIST', target, range, 6);
 
-    const attacked = target.$$room.state.getAllInRange(target, 1, [], false);
+    const attacked = target.$$room.state.getAllInRange(target, range, [], false);
 
     attacked.forEach(refTarget => {
       const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
+
+      const dist = caster.distFrom(refTarget);
+
+      let damageMod = 1;
+      if(dist >= 2) damageMod = 0.75;
+      if(dist >= 3) damageMod = 0.5;
 
       const atkName = refTarget === caster ? 'yourself' : refTarget.name;
 
@@ -28,7 +38,7 @@ export class IceMist extends SpellEffect {
         skillRef,
         atkMsg: `You engulf ${atkName} in a chilling mist!`,
         defMsg: `${this.getCasterName(caster, target)} engulfed you in a chilling mist!`,
-        damage,
+        damage: Math.floor(damage * damageMod),
         damageClass: 'ice'
       });
     });

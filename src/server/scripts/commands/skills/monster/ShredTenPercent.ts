@@ -15,7 +15,7 @@ export class ShredTenPercent extends Skill {
   }
 
   use(user: Character, target: Character) {
-    const damage = Math.floor(target.hp.maximum / 10);
+    const damage = Math.floor(target.getTotalStat('hp') / 10);
     CombatHelper.dealDamage(user, target, {
       damage,
       damageClass: 'physical',

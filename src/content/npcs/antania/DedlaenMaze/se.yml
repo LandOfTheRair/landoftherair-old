@@ -145,6 +145,7 @@
   name: dragon turtle
   hostility: Always
   sprite: 455
+  baseClass: Mage
   alignment: Evil
   stats: 20
   skillLevels: 7
@@ -161,6 +162,7 @@
     defense: 10
     offense: 10
     perception: 330
+    mpregen: 20
 
   gold:
     min: 27050
@@ -173,6 +175,7 @@
     - ShredTwentyPercent
     - PoisonBiteMedium
     - DoubleAttack
+    - DedlaenDragonTurtleFire
 
   drops:
     - result: Dedlaen Dragon Turtle Egg
