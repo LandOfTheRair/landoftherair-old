@@ -25500,6 +25500,86 @@
                  "width":64,
                  "x":10432,
                  "y":7680
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5978,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2624,
+                 "y":5056
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5979,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1408,
+                 "y":5056
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5980,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3200,
+                 "y":768
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5981,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3648,
+                 "y":5056
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -26968,7 +27048,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5978,
+ "nextobjectid":5982,
  "orientation":"orthogonal",
  "properties":
     {
