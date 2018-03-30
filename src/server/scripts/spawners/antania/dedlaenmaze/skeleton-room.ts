@@ -15,7 +15,7 @@ export class SkeletonRoomSpawner extends Spawner {
       maxCreatures: 8,
       spawnRadius: 2,
       randomWalkRadius: 7,
-      leashRadius: 15,
+      leashRadius: 12,
       npcIds
     });
   }
