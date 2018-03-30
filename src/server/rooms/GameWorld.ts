@@ -1,5 +1,5 @@
 
-import { isObject, cloneDeep, find, get, clone, pull, extend } from 'lodash';
+import { isObject, cloneDeep, find, get, set, clone, pull, extend } from 'lodash';
 
 import { Parser } from 'mingy';
 
@@ -824,9 +824,20 @@ export class GameWorld extends Room<GameState> {
   private tick() {
     this.ticks++;
 
+    const ACTIVE_PLAYER_RANGE = 6;
+
+    const playerLocations = {};
+    this.state.allPlayers.forEach(player => {
+      for(let x = player.x - ACTIVE_PLAYER_RANGE; x < player.x + ACTIVE_PLAYER_RANGE; x++) {
+        for(let y = player.y - ACTIVE_PLAYER_RANGE; y < player.y + ACTIVE_PLAYER_RANGE; y++) {
+          set(playerLocations, [x, y], true);
+        }
+      }
+    });
+
     if((this.ticks % TickRatesPerTimer.CharacterAction) === 0) {
       this.state.tickPlayers();
-      this.spawners.forEach(spawner => spawner.npcTick(this.ticks % 2 === 0));
+      this.spawners.forEach(spawner => spawner.npcTick(this.ticks % 2 === 0, playerLocations));
     }
 
     if((this.ticks % TickRatesPerTimer.BuffTick) === 0) {

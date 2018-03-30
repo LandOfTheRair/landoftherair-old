@@ -1,7 +1,7 @@
 
 import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
-import { random, maxBy, sample, sampleSize, clamp, includes, shuffle } from 'lodash';
+import { random, maxBy, sample, sampleSize, clamp, includes, shuffle, size, get } from 'lodash';
 import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
@@ -55,7 +55,7 @@ export class DefaultAIBehavior {
     return sample(allies.filter(ally => CommandExecutor.checkIfCanUseSkill(skill, npc, ally)));
   }
 
-  public tick(canMove: boolean) {
+  public tick(canMove: boolean, playerLocations: any) {
 
     const npc = this.npc;
 
@@ -65,12 +65,33 @@ export class DefaultAIBehavior {
     let diffX = 0;
     let diffY = 0;
 
-    const targetsInRange = npc.$$room.state.getPossibleTargetsFor(npc, 5);
+    let highestAgro: Character = null;
+    let currentTarget: Character = null;
 
-    let highestAgro: Character = maxBy(targetsInRange, (char: Character) => npc.agro[char.uuid]);
-    if(!highestAgro) highestAgro = sample(targetsInRange);
+    // onhit with no agro means they don't care
+    if(npc.hostility === 'OnHit' && size(npc.agro) === 0) {
+      currentTarget = null;
 
-    let currentTarget = highestAgro;
+    // either you have agro, or you can look for a target
+    } else {
+
+      let shouldDoTargetting = true;
+
+      if(playerLocations) {
+        const amINearAPlayer = get(playerLocations, [npc.x, npc.y]);
+
+        if(!amINearAPlayer) shouldDoTargetting = false;
+      }
+
+      if(shouldDoTargetting) {
+        const targetsInRange = npc.$$room.state.getPossibleTargetsFor(npc, 4);
+
+        highestAgro = maxBy(targetsInRange, (char: Character) => npc.agro[char.uuid]);
+        if(!highestAgro) highestAgro = sample(targetsInRange);
+
+        currentTarget = highestAgro;
+      }
+    }
 
     // do movement
     const moveRate = npc.getTotalStat('move');

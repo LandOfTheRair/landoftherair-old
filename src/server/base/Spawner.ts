@@ -340,11 +340,6 @@ export class Spawner {
     npc.setPath(sample(this.paths));
   }
 
-  shouldSlowDown() {
-    if(!this.canSlowDown) return false;
-    return this.room.state.getAllPlayersInRange(this, Math.max(this.leashRadius, 20)).length === 0;
-  }
-
   tick() {
     if(!this.isActive()) return;
 
@@ -403,10 +398,15 @@ export class Spawner {
     this.despawnedNPCs = [];
   }
 
-  npcTick(canMove: boolean): void {
+  shouldSlowDown() {
+    if(!this.canSlowDown) return false;
+    return this.room.state.getAllPlayersInRange(this, this.leashRadius).length === 0;
+  }
+
+  npcTick(canMove: boolean, playerLocations: any): void {
     this.npcs.forEach(npc => {
       if(npc.hostility === 'Never') {
-        npc.tick(canMove);
+        npc.tick(canMove, playerLocations);
         return;
       }
 
@@ -415,12 +415,12 @@ export class Spawner {
       // dead things always tick when the spawner is slow for normal-speed corpse rotting
       if(this.$$isStayingSlow) {
         if(npc.isDead()) {
-          npc.tick();
+          npc.tick(false, playerLocations);
         }
         return;
       }
 
-      npc.tick(canMove);
+      npc.tick(canMove, playerLocations);
       npc.$$room.state.calculateFOV(npc);
     });
   }

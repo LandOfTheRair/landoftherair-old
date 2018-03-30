@@ -24958,7 +24958,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6464,
+                 "x":6208,
                  "y":11712
                 }, 
                 {
@@ -25000,6 +25000,226 @@
                  "width":64,
                  "x":5056,
                  "y":10368
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5952,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4352,
+                 "y":4864
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5953,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2624,
+                 "y":4864
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5954,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":960,
+                 "y":4992
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5955,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4288,
+                 "y":6272
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5956,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2304,
+                 "y":6336
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5957,
+                 "name":"Skeleton Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3968,
+                 "y":2944
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5958,
+                 "name":"SW Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3456,
+                 "y":10112
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5959,
+                 "name":"SW Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2304,
+                 "y":10752
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5960,
+                 "name":"SW Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4160,
+                 "y":12416
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5961,
+                 "name":"Orckin Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/ne-orckin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10304,
+                 "y":5056
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5962,
+                 "name":"Orckin Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/ne-orckin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7296,
+                 "y":5440
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -26468,7 +26688,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5952,
+ "nextobjectid":5963,
  "orientation":"orthogonal",
  "properties":
     {

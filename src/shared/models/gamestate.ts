@@ -446,7 +446,17 @@ export class GameState {
   }
 
   getPossibleTargetsFor(me: NPC, radius): Character[] {
-    return filter(this.getAllInRange(me, radius), (char: Character) => {
+
+    let targetArray = [];
+
+    // optimization for thirsty monsters
+    if(me.hostility === 'Always' && size(me.agro) === 0) {
+      targetArray = this.getAllPlayersInRange(me, radius);
+    } else {
+      targetArray = this.getAllInRange(me, radius);
+    }
+
+    return filter(targetArray, (char: Character) => {
 
       // no hitting myself
       if(me === char) return false;
