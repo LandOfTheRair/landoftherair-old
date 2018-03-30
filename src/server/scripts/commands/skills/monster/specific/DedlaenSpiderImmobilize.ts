@@ -8,6 +8,7 @@ export class DedlaenSpiderImmobilize extends Skill {
 
   name = 'dedlaenspiderimmobilize';
   execute() {}
+  range(attacker: Character) { return 2; }
 
   canUse(user: Character, target: Character) {
     return super.canUse(user, target) && !target.hasEffect('Immobilize') && !target.hasEffect('RecentlyImmobilized');
