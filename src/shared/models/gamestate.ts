@@ -718,6 +718,10 @@ export class GameState {
     return this.darkness[xKey][yKey];
   }
 
+  addPermanentDarkness(x: number, y: number, radius: number): void {
+    this.addDarkness(x, y, radius, -1);
+  }
+
   addDarkness(x: number, y: number, radius: number, timestamp: number): void {
     for(let xx = x - radius; xx <= x + radius; xx++) {
       for(let yy = y - radius; yy <= y + radius; yy++) {
@@ -730,6 +734,8 @@ export class GameState {
         this.darkness[xKey] = this.darkness[xKey] || {};
 
         const currentValue = this.darkness[xKey][yKey];
+
+        if(currentValue === -1) continue;
 
         // dont overwrite old, stronger darkness with new, weaker darkness
         if(!currentValue || (currentValue && currentValue < timestamp)) {
@@ -753,8 +759,12 @@ export class GameState {
 
         this.darkness[xKey] = this.darkness[xKey] || {};
 
+        const darknessValue = this.darkness[xKey][ykey];
+
+        if(darknessValue === -1) continue;
+
         // only remove my specific darkness
-        if(force || this.darkness[xKey][ykey] === timestamp) {
+        if(force || darknessValue === timestamp) {
           this.darkness[xKey][ykey] = false;
 
           this.getAllPlayersFromQuadtrees({ x, y }, 4).forEach((player: Player) => {
