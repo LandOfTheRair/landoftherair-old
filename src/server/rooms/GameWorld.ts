@@ -461,41 +461,57 @@ export class GameWorld extends Room<GameState> {
 
   showGroundWindow(player: Player) {
     const client = this.findClient(player);
+    if(!client) return;
+
     this.send(client, { action: 'show_ground' });
   }
 
   showTrainerWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
+    if(!client) return;
+
     this.send(client, { action: 'show_trainer', trainSkills: npc.trainSkills, classTrain: npc.classTrain, uuid: npc.uuid });
   }
 
   showShopWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
+    if(!client) return;
+
     this.send(client, { action: 'show_shop', vendorItems: npc.vendorItems, uuid: npc.uuid });
   }
 
   showBankWindow(player: Player, npc: NPC, banks: any) {
     const client = this.findClient(player);
+    if(!client) return;
+
     this.send(client, { action: 'show_bank', uuid: get(npc || {}, 'uuid'), bankId: get(npc || {}, 'bankId'), banks });
   }
 
   showAlchemyWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
+    if(!client) return;
+
     this.send(client, { action: 'show_ts', tradeskill: 'Alchemy', uuid: npc.uuid });
   }
 
   showSpellforgingWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
+    if(!client) return;
+
     this.send(client, { action: 'show_ts', tradeskill: 'Spellforging', uuid: npc.uuid });
   }
 
   showMetalworkingWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
+    if(!client) return;
+
     this.send(client, { action: 'show_ts', tradeskill: 'Metalworking', uuid: npc.uuid });
   }
 
   showLockerWindow(player: Player, lockers, lockerId) {
     const client = this.findClient(player);
+    if(!client) return;
+
     this.send(client, { action: 'show_lockers', lockers, lockerId });
   }
 
@@ -506,6 +522,8 @@ export class GameWorld extends Room<GameState> {
   updateLocker(player: Player, locker: Locker) {
     LockerHelper.saveLocker(player, locker);
     const client = player.$$room.findClient(player);
+    if(!client) return;
+
     this.send(client, { action: 'update_locker', locker });
   }
 
@@ -566,7 +584,7 @@ export class GameWorld extends Room<GameState> {
 
     const client = this.findClient(player);
     if(!client) return;
-    
+
 
     if(newMap && !this.allMapNames[newMap]) {
       this.sendClientLogMessage(client, `Warning: map "${newMap}" does not exist.`);
