@@ -188,6 +188,7 @@
 
   gear:
     Ear: Enemy Invisibility Earring
+    Head: Enemy TrueSight Earring
     Hands: Maze Ghoul Claws
     Robe1: Dedlaen Ghost Cloak
 
@@ -236,6 +237,7 @@
 
   gear:
     Ear: Enemy Potency 15 Necrotic Aura Earring
+    Head: Enemy TrueSight Earring
     Hands: Ghast Claws
 
   copyDrops:

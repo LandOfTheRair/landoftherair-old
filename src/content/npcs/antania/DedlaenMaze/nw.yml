@@ -234,6 +234,7 @@
     - PoisonBiteMedium
     - SkillSuckWeak
     - DarkVision
+    - TrueSight
 
   combatMessages:
     - Gwahahaha! Very good!
