@@ -129,11 +129,11 @@
   quality: 5
   stats:
     armorClass: 6
-    defense: 3
-    fireResist: 30
-    waterResist: 30
-    energyResist: 40
-    necroticResist: 40
+    defense: 4
+    fireResist: 100
+    waterResist: 100
+    energyResist: 100
+    necroticResist: 100
     mpregen: 7
     hpregen: 2
   trait:
