@@ -5,7 +5,7 @@ import { Player } from '../../../shared/models/player';
 import { MoveHelper } from '../../helpers/character/move-helper';
 import { DefaultAIBehavior } from './default';
 
-export class SteffenLostChildAIBehavior extends DefaultAIBehavior {
+export class DedlaenEscortAIBehavior extends DefaultAIBehavior {
   tick() {
 
     const npc = this.npc;
@@ -20,7 +20,6 @@ export class SteffenLostChildAIBehavior extends DefaultAIBehavior {
 
     let target: Player = null;
     targetsInRange.forEach((possibleTarget: Player) => {
-      if(!NPCLoader.checkPlayerHeldItemEitherHand(possibleTarget, 'Steffen LostChild Doll')) return;
       target = possibleTarget;
     });
 
@@ -36,7 +35,7 @@ export class SteffenLostChildAIBehavior extends DefaultAIBehavior {
       MoveHelper.move(npc, { x: target.x - npc.x, y: target.y - npc.y, room: npc.$$room, gameState: npc.$$room.state });
 
       responses = [
-        `Thanks for taking me ${target.sex === 'Male' ? 'mister' : 'miss'}!`,
+        `Thanks for taking me, ${target.sex === 'Male' ? 'sir' : 'madam'}!`,
         'Are you sure you know where you\'re going?',
         'Are we there yet?'
       ];
@@ -52,15 +51,15 @@ export class SteffenLostChildAIBehavior extends DefaultAIBehavior {
       diffY = npc.y - oldY;
 
       responses = [
-        `Someone please help me get home!`,
-        '*sob*',
-        'Is anyone there...?'
+        `Someone! Help! We're under siege here!`,
+        'Can anyone come help us?! Please!',
+        'Help!'
       ];
 
     }
 
     // spam view chat for fun
-    if(random(1, 7) === 1) {
+    if(random(1, 30) === 1) {
       let response = sample(responses);
 
       if(responses.length > 1 && response === npc.$$lastResponse) {
@@ -80,13 +79,12 @@ export class SteffenLostChildAIBehavior extends DefaultAIBehavior {
     // check if should leash
     const distFrom = npc.distFrom(npc.spawner);
 
-    if(npc.spawner.leashRadius >= 0 && distFrom > npc.spawner.leashRadius) {
+    if(!npc.$$following && npc.spawner.leashRadius >= 0 && distFrom > npc.spawner.leashRadius) {
       npc.sendLeashMessage();
 
       npc.x = npc.spawner.x;
       npc.y = npc.spawner.y;
     }
-
   }
 
 }

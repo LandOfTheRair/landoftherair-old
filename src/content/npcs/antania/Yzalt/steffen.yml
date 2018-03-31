@@ -63,7 +63,7 @@
   gear:
     Armor: Antanian Tunic
 
-  leashMessage: "the lost child say: Mama says I shouldn't go into these woods.."
+  leashMessage: "the lost child says: Mama says I shouldn't go into these woods.."
 
 - npcId: Steffen Townee
   allegiance: Royalty

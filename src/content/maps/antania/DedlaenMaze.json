@@ -22692,6 +22692,26 @@
                  "width":64,
                  "x":9536,
                  "y":7808
+                }, 
+                {
+                 "gid":3152,
+                 "height":64,
+                 "id":5986,
+                 "name":"Militia",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/militia"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7232,
+                 "y":6400
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -25660,6 +25680,86 @@
                  "width":64,
                  "x":9728,
                  "y":2240
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5990,
+                 "name":"Dedlaen Escort",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/escort"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8320,
+                 "y":512
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5991,
+                 "name":"Orckin Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/orckin-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7872,
+                 "y":2176
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5992,
+                 "name":"Orckin Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/orckin-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6912,
+                 "y":3840
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5993,
+                 "name":"Orckin Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/orckin-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6592,
+                 "y":6016
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -27128,7 +27228,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5986,
+ "nextobjectid":5994,
  "orientation":"orthogonal",
  "properties":
     {

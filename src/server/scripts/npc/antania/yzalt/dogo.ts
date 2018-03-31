@@ -20,7 +20,7 @@ export const responses = (npc: NPC) => {
 
       if(player.alignment === 'Good') return 'You are already a disciple of good!';
 
-      let lostChild = null;
+      let lostChild: NPC = null;
       npc.$$room.state.getAllInRange(npc, 0).forEach((possibleTarget: NPC) => {
         if(possibleTarget.npcId === 'Steffen LostChild')
         lostChild = possibleTarget;
@@ -33,7 +33,7 @@ export const responses = (npc: NPC) => {
 
         const msgObject = { name: npc.name, message: `Thank you, ${player.name}!`, subClass: 'chatter' };
         npc.sendClientMessageToRadius(msgObject, 8);
-        lostChild.spawner.removeNPC(lostChild);
+        lostChild.die(npc, true);
 
         return 'You have helped a child return home this day. Truly, you are deserving of the mark of good.';
       }

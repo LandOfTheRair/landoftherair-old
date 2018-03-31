@@ -88,7 +88,6 @@
   sprite: 72
   desc: "a broken spider egg from a war torn spider"
   value: 10
-  binds: true
   effect:
     name: Nourishment
     tooltip: "+1 STR, +1 DEX, +1 AGI"
@@ -110,6 +109,21 @@
     stats:
       str: -1
     duration: 86400
+
+- name: Dedlaen Militia Gourd
+  sprite: 115
+  desc: "a gourd harvested from an underground garden"
+  value: 10
+  effect:
+    name: Nourishment
+    tooltip: "+50 HP/MP, +5 HP/MP Regen, +10 Physical Resist"
+    stats:
+      hp: 50
+      mp: 50
+      hpregen: 5
+      mpregen: 5
+      physicalResist: 10
+    duration: 7200
 
 - name: Dedlaen Dragon Turtle Egg
   sprite: 381

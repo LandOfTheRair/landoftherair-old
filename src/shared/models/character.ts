@@ -929,7 +929,7 @@ export class Character {
     if(silent) {
       this.hp.toMinimum();
       this.$$deathTicks = 5;
-      this.$$owner.$$pets = reject(this.$$owner.$$pets, (x: Character) => x === this);
+      if(this.$$owner) this.$$owner.$$pets = reject(this.$$owner.$$pets, (x: Character) => x === this);
     }
   }
 

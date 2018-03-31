@@ -352,6 +352,7 @@ export class GameState {
   }
 
   private isVisibleTo(ref: Character, target: Character, useSight = true): boolean {
+    if((<NPC>ref).hostility === 'Never') return true;
     if(!ref.fov) return false;
 
     if(ref.fov && useSight) {

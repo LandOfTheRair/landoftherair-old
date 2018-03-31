@@ -51,11 +51,11 @@ export class NPCLoader {
     return species[func](sample(['male', 'female']));
   }
 
-  static loadItem(item) {
+  static loadItem(item): Promise<Item> {
     return this.itemCreator.getItemByName(item);
   }
 
-  private static async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>) {
+  private static async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>): Item[] {
     npc.vendorItems = npc.vendorItems || [];
 
     const loadedItems = await Promise.all(items.map(async ({ name, valueMult }) => {
