@@ -37,31 +37,7 @@ export class ChannelSummon extends ChanneledSpellEffect {
       shouldStrip: false,
       stripOnSpawner: true,
       removeWhenNoNPCs: true,
-      npcIds: [this.summonCreature],
-
-      npcCreateCallback: (npc: NPC) => {
-
-        // match the player
-        npc.allegianceReputation = char.allegianceReputation;
-        npc.allegianceReputation.Enemy = -100000;
-        npc.allegiance = char.allegiance;
-        npc.alignment = char.alignment;
-        npc.hostility = 'Faction';
-        npc.level = char.level;
-
-        // boost stats
-        const skills = char.allSkills;
-        Object.keys(skills).forEach(skill => {
-          npc._gainSkill(skill, skills[skill]);
-        });
-
-        const stats = char.baseStats;
-        Object.keys(stats).forEach((stat: StatName) => {
-          npc.gainStat(stat, stats[stat]);
-        });
-
-        npc.recalculateStats();
-      }
+      npcIds: [this.summonCreature]
     };
 
     char.$$room.createSpawner(defaultSpawner, char);

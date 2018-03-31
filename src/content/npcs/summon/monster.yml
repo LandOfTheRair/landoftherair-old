@@ -4,15 +4,15 @@
   hostility: Always
   sprite: 805
   alignment: Evil
-  stats: 7
+  stats: 10
   skillLevels: 3
-  level: 10
+  level: 15
 
   skillOnKill: 15
 
   otherStats:
     con: 15
-    wil: 3
+    wil: 5
     agi: 30
     defense: 10
     perception: 245
