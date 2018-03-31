@@ -676,7 +676,7 @@ export class CombatHelper {
 
     // encrusted effect takes priority if it exists
     if(encrustEffect) {
-      this.tryApplyEffect(attacker, defender, encrustEffect);
+      this.tryApplyEffect(attacker, defender, encrustEffect, attackerWeapon);
 
     } else if(attackerWeapon.effect) {
       this.tryApplyEffect(attacker, defender, attackerWeapon.effect, attackerWeapon);
@@ -727,7 +727,9 @@ export class CombatHelper {
 
     appEffect.potency = effect.potency || 0;
 
-    appEffect.cast(attacker, defender);
+    console.log(appEffect, source);
+
+    appEffect.cast(attacker, defender, source);
   }
 
   static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass }: any = {}) {
