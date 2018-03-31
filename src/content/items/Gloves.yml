@@ -68,6 +68,14 @@
   desc: "a pair of rocky gloves"
   sprite: -1
 
+- name: Crazed Rockgolem Gloves
+  stats:
+    defense: 2
+    offense: 2
+  tier: 3
+  desc: "a pair of rocky gloves"
+  sprite: -1
+
 - name: Dolphin Gloves
   stats:
     defense: 2

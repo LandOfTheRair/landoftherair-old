@@ -1,4 +1,5 @@
 - name: Saraxa Wand
+  quality: 5
   desc: "a blue wand engraved with the markings of a shaman"
   tier: 1
   effect:
@@ -56,7 +57,7 @@
   tier: 2
   effect:
     name: MagicBolt
-    potency: 10
+    potency: 20
     chance: 33
   trait:
     name: WandSpecialty

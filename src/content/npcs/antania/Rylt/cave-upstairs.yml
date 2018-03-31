@@ -6,11 +6,11 @@
   alignment: Evil
   baseClass: Mage
   stats:
-    int: 20
-    dex: 10
-    str: 20
+    int: 25
+    dex: 25
+    str: 25
     con: 33
-    agi: 10
+    agi: 25
     luk: 10
     wil: 15
   level: 20
@@ -21,7 +21,7 @@
 
   skillLevels: 8
 
-  skillOnKill: 25
+  skillOnKill: 250
 
   sprite: 545
 
@@ -115,7 +115,7 @@
     max: 75000
 
   gear:
-    Hands: Rylt Rockgolem Gloves
+    Hands: Crazed Rockgolem Gloves
     Armor:
       - none
       - Antanian Tunic
