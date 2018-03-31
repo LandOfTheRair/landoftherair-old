@@ -726,7 +726,7 @@ export class CombatHelper {
     if(!appEffect.cast) return;
 
     appEffect.potency = effect.potency || 0;
-    
+
     appEffect.cast(attacker, defender, source);
   }
 

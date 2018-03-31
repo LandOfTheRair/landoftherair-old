@@ -97,7 +97,7 @@ export class DefaultAIBehavior {
     const moveRate = npc.getTotalStat('move');
     const numSteps = random(0, Math.min(moveRate, npc.path ? npc.path.length : moveRate));
 
-    if(random(0, 10) === 0) {
+    if(random(0, 25) === 0) {
       this.checkGroundForItems();
     }
 
