@@ -508,6 +508,31 @@
     min: 47000
     max: 48000
 
+  gear:
+    Armor:
+      - result: Tower Trash Tunic
+        chance: 20
+      - result: Tower Bone Tunic
+        chance: 1
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 100
+      - result: Tower Prot Robe
+        chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+
   drops:
     - result: Tower Titanium Chunk
       chance: 1
