@@ -1,6 +1,5 @@
 
 import { random, sample } from 'lodash';
-import { NPCLoader } from '../../helpers/character/npc-loader';
 import { Player } from '../../../shared/models/player';
 import { MoveHelper } from '../../helpers/character/move-helper';
 import { DefaultAIBehavior } from './default';
