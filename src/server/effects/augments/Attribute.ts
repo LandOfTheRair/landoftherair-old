@@ -89,15 +89,23 @@ export class Attribute extends SpellEffect implements AttributeEffect {
     && attacker.hasEffect(ResistanceShredders[monsterClass])
     && this.potency < 1) return damage;
 
-    if(damageClass === this.damageType)                                                           return Math.floor(damage * this.potency);
+    if(damageClass === this.damageType)                                                             return Math.floor(damage * this.potency);
 
     if(damageClass === 'physical') {
-      if(this.damageType === 'sharp' && includes(SharpWeaponClasses, attackerWeapon.itemClass))   return Math.floor(damage * this.potency);
-      if(this.damageType === 'blunt' && !includes(SharpWeaponClasses, attackerWeapon.itemClass))  return Math.floor(damage * this.potency);
+
+      // if you have a weapon, it can be classed
+      if(attackerWeapon) {
+        if(this.damageType === 'blunt' && !includes(SharpWeaponClasses, attackerWeapon.itemClass))  return Math.floor(damage * this.potency);
+        if(this.damageType === 'sharp' && includes(SharpWeaponClasses, attackerWeapon.itemClass))   return Math.floor(damage * this.potency);
+
+      // no weapon = blunt
+      } else {
+        if(this.damageType === 'blunt')                                                             return Math.floor(damage * this.potency);
+      }
     }
 
     if(this.damageType === 'magical'
-    && includes(['necrotic', 'fire', 'ice', 'water', 'energy'], damageClass))           return Math.floor(damage * this.potency);
+    && includes(['necrotic', 'fire', 'ice', 'water', 'energy'], damageClass))             return Math.floor(damage * this.potency);
 
     return damage;
   }
