@@ -2,7 +2,6 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { Immobilize } from '../../../../../effects/antibuffs/Immobilize';
 import { FireMist } from '../../../../../effects/damagers/FireMist';
 
 export class DedlaenDragonTurtleFire extends Skill {
