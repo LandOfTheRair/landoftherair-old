@@ -4,15 +4,15 @@
   hostility: Always
   sprite: 805
   alignment: Evil
-  stats: 15
+  stats: 7
   skillLevels: 3
-  level: 15
+  level: 10
 
   skillOnKill: 15
 
   otherStats:
     con: 15
-    wil: 5
+    wil: 3
     agi: 30
     defense: 10
     perception: 245
@@ -22,8 +22,8 @@
     max: 0
 
   hp:
-    min: 17950
-    max: 21350
+    min: 13950
+    max: 16350
 
   giveXp:
     min: 29000
