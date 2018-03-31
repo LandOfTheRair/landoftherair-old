@@ -1,9 +1,7 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, StatName } from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import { random, clamp } from 'lodash';
-import { Stun } from '../antibuffs/Stun';
 import { MoveHelper } from '../../helpers/character/move-helper';
 
 export class Pull extends SpellEffect {
