@@ -55,7 +55,7 @@ export class NPCLoader {
     return this.itemCreator.getItemByName(item);
   }
 
-  private static async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>): Item[] {
+  private static async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>): Promise<Item[]> {
     npc.vendorItems = npc.vendorItems || [];
 
     const loadedItems = await Promise.all(items.map(async ({ name, valueMult }) => {
