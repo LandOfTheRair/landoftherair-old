@@ -33,6 +33,7 @@ export * from './damagers/MagicMissile';
 export * from './damagers/MagicBolt';
 
 export * from './damagers/Asper';
+export * from './damagers/Drain';
 
 export * from './dots/Disease';
 export * from './dots/Poison';

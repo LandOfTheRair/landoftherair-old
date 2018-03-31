@@ -116,7 +116,7 @@
   skillLevels: 2
   level: 20
 
-  skillOnKill:  25
+  skillOnKill: 25
 
   otherStats:
     con: 25
@@ -140,6 +140,45 @@
   usableSkills:
     - PoisonBiteStrong
     - DedlaenSpiderImmobilize
+
+- npcId: Dedlaen Leech
+  name: leech
+  hostility: Always
+  baseClass: Mage
+  monsterClass: Beast
+  sprite: 785
+  alignment: Evil
+  stats: 15
+  skillLevels: 2
+  level: 18
+
+  skillOnKill: 25
+
+  otherStats:
+    con: 25
+    perception: 200
+
+  gold:
+    min: 150
+    max: 250
+
+  hp:
+    min: 15000
+    max: 16000
+
+  mp:
+    min: 500
+    max: 500
+
+  giveXp:
+    min: 33000
+    max: 37000
+
+  gear:
+    Hands: Medium Claws
+
+  usableSkills:
+    - Drain
 
 - npcId: Dedlaen Dragon Turtle
   name: turtle dragon

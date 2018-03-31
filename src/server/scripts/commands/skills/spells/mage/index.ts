@@ -1,6 +1,7 @@
 export * from './Absorption';
 export * from './Asper';
 export * from './BarWater';
+export * from './Drain';
 export * from './EnergyWave';
 export * from './FindFamiliar';
 export * from './FireMist';

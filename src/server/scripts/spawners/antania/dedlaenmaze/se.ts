@@ -3,6 +3,7 @@ import { Spawner } from '../../../../base/Spawner';
 
 const npcIds = [
   { chance: 5, result: 'Dedlaen Spider' },
+  { chance: 5, result: 'Dedlaen Leech' },
   { chance: 1, result: 'Dedlaen Vampire Bat' },
   { chance: 1, result: 'Dedlaen Skeleton' }
 ];
