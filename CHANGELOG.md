@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.1.23 (31/03/2018)
+
+#### Balance Adjustments
+
+- [#726](https://github.com/LandOfTheRair/landoftherair/issues/726) Make sure troll drops items
+- [#725](https://github.com/LandOfTheRair/landoftherair/issues/725) Ensure the ne corner has sufficient spawns
+- [#724](https://github.com/LandOfTheRair/landoftherair/issues/724) Nerf the whole ne corner of the maze
+- [#723](https://github.com/LandOfTheRair/landoftherair/issues/723) Nerf vampire spawned bats
+- [#722](https://github.com/LandOfTheRair/landoftherair/issues/722) All dedlaen lairs need truesight
+
+#### New Content
+
+- [#720](https://github.com/LandOfTheRair/landoftherair/issues/720) Add NPC that casts invis into sub castle
+
+#### Bug Fixes
+
+- [#721](https://github.com/LandOfTheRair/landoftherair/issues/721) Vampire bats fight with normal bats sometimes.
+- [#719](https://github.com/LandOfTheRair/landoftherair/issues/719) spiders can cast immobilize through walls (probably applies to other creatures too)
+
+---
+
 ## v0.1.22 (30/03/2018)
 
 #### Enhancements
