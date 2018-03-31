@@ -230,7 +230,6 @@
     max: 225000
 
   usableSkills:
-    - Charge
     - VampireMistForm
     - PoisonBiteMedium
     - SkillSuckWeak
