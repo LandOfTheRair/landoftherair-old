@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.2.0 (31/03/2018)
+
+#### Balance Adjustments
+
+- [#728](https://github.com/LandOfTheRair/landoftherair/issues/728) gems do not have the correct potency set
+
+#### New Content
+
+- [#541](https://github.com/LandOfTheRair/landoftherair/issues/541) New Map: Dedlaen Maze
+
+#### Bug Fixes
+
+- [#727](https://github.com/LandOfTheRair/landoftherair/issues/727) TypeError: Cannot read property 'itemClass' of undefined
+
+---
+
 ## v0.1.23 (31/03/2018)
 
 #### Balance Adjustments
