@@ -352,6 +352,8 @@ export class GameState {
   }
 
   private isVisibleTo(ref: Character, target: Character, useSight = true): boolean {
+    if(!ref.fov) return false;
+
     if(ref.fov && useSight) {
       const offsetX = target.x - ref.x;
       const offsetY = target.y - ref.y;
@@ -361,6 +363,9 @@ export class GameState {
     return true;
   }
 
+  /**
+   * THIS FUNCTION GETS PLAYERS REGARDLESS OF THE NPC SIGHT
+   */
   getAllPlayersInRange(ref: { x: number, y: number }, radius: number): Character[] {
     return this.getAllPlayersFromQuadtrees(ref, radius);
   }
@@ -451,7 +456,7 @@ export class GameState {
 
     // optimization for thirsty monsters
     if(me.hostility === 'Always' && size(me.agro) === 0) {
-      targetArray = this.getAllPlayersInRange(me, radius);
+      targetArray = this.getPlayersInRange(me, radius);
     } else {
       targetArray = this.getAllInRange(me, radius);
     }
