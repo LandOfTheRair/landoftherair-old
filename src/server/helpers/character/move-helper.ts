@@ -8,7 +8,7 @@ import { TrapHelper } from '../world/trap-helper';
 
 export class MoveHelper {
 
-  static move(player: Character, { room, gameState, x, y }, isChasing = false) {
+  static move(player: Character, { room, gameState, x, y }, isChasing = false, recalculateSight = false) {
 
     if(isUndefined(x) || isUndefined(y)) return;
 
@@ -78,7 +78,7 @@ export class MoveHelper {
       steps.length = moveRate;
     }
 
-    player.takeSequenceOfSteps(steps, isChasing);
+    player.takeSequenceOfSteps(steps, isChasing, recalculateSight);
     player.setDirBasedOnXYDiff(x, y);
 
     if(player.isPlayer()) {

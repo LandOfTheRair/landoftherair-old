@@ -48,6 +48,7 @@
   sprite: 211
 
 - name: Dedlaen Ghost Cloak
+  quality: 5
   stats:
     armorClass: 1
     wil: 2

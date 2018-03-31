@@ -105,6 +105,7 @@ export * from './misc/Augury';
 export * from './misc/Identify';
 export * from './misc/Succor';
 export * from './misc/Transmute';
+export * from './misc/Pull';
 export * from './misc/Push';
 export * from './misc/Revealed';
 export * from './misc/Distraction';

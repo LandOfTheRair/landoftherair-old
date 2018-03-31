@@ -142,7 +142,7 @@
     - DedlaenSpiderImmobilize
 
 - npcId: Dedlaen Dragon Turtle
-  name: dragon turtle
+  name: turtle dragon
   hostility: Always
   sprite: 455
   baseClass: Mage
@@ -176,6 +176,7 @@
     - PoisonBiteMedium
     - DoubleAttack
     - DedlaenDragonTurtleFire
+    - PullOne
 
   drops:
     - result: Dedlaen Dragon Turtle Egg
