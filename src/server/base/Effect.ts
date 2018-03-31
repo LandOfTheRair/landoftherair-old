@@ -177,6 +177,9 @@ export class SpellEffect extends Effect {
     /** PERK:CLASS:THIEF:Thieves use int as their primary spellcasting stat. */
     if(caster.baseClass === 'Thief')  base = this.getCasterStat(caster, 'int');
 
+    /** PERK:CLASS:WARRIOR:Warriors use str as their primary spellcasting stat. */
+    if(caster.baseClass === 'Thief')  base = this.getCasterStat(caster, 'str');
+
     return Math.max(1, base);
   }
 
