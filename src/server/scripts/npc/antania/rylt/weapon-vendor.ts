@@ -14,6 +14,7 @@ export const setup = async (npc: NPC) => {
     'Antanian Staff',
     'Antanian Crossbow',
     'Antanian Shortbow',
+    'Antanian Longbow',
     'Antanian Wooden Shield',
     'Antanian Halberd'
   ];
