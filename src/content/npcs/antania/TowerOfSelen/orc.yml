@@ -20,12 +20,12 @@
     max: 700
 
   hp:
-    min: 8950
-    max: 9350
+    min: 5950
+    max: 6350
 
   giveXp:
-    min: 7000
-    max: 8000
+    min: 10000
+    max: 11000
 
   gear:
     Armor:
@@ -81,8 +81,8 @@
     max: 700
 
   hp:
-    min: 9950
-    max: 10350
+    min: 6950
+    max: 7350
 
   mp:
     min: 500
@@ -159,8 +159,8 @@
     max: 700
 
   hp:
-    min: 9950
-    max: 10350
+    min: 6950
+    max: 7350
 
   mp:
     min: 500

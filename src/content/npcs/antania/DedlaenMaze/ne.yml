@@ -20,8 +20,8 @@
     max: 600
 
   hp:
-    min: 13550
-    max: 14750
+    min: 8350
+    max: 8470
 
   giveXp:
     min: 41500
@@ -99,8 +99,8 @@
     max: 900
 
   hp:
-    min: 19050
-    max: 20250
+    min: 13050
+    max: 14250
 
   mp:
     min: 500
@@ -202,8 +202,8 @@
     max: 900
 
   hp:
-    min: 25550
-    max: 25950
+    min: 15550
+    max: 15950
 
   giveXp:
     min: 49500
@@ -279,8 +279,8 @@
     max: 700
 
   hp:
-    min: 25950
-    max: 26350
+    min: 16950
+    max: 18350
 
   giveXp:
     min: 37000
@@ -345,8 +345,8 @@
     max: 700
 
   hp:
-    min: 28000
-    max: 30000
+    min: 18000
+    max: 20000
 
   mp:
     min: 500
@@ -428,8 +428,8 @@
     max: 700
 
   hp:
-    min: 28000
-    max: 30000
+    min: 18000
+    max: 20000
 
   mp:
     min: 500
@@ -501,8 +501,8 @@
     max: 1700
 
   hp:
-    min: 42950
-    max: 43350
+    min: 32950
+    max: 33350
 
   giveXp:
     min: 47000
