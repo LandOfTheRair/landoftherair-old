@@ -131,6 +131,7 @@
   level: 20
 
   otherStats:
+    accuracy: 10
     perception: 50
 
   skillLevels: 4
