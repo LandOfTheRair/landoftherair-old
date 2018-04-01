@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.2.1 (01/04/2018)
+
+#### Balance Adjustments
+
+- [#740](https://github.com/LandOfTheRair/landoftherair/issues/740) Lower maze exp to be more proportional to the upgrade from tower
+- [#739](https://github.com/LandOfTheRair/landoftherair/issues/739) Nerf csaraxa wand to a reasonable point
+- [#732](https://github.com/LandOfTheRair/landoftherair/issues/732) Buff csaraxa robe with respect to the maze robes
+- [#731](https://github.com/LandOfTheRair/landoftherair/issues/731) Add energy prot to ghost robe
+
+#### New Content
+
+- [#738](https://github.com/LandOfTheRair/landoftherair/issues/738) Add ~~lag to count items, mobs, and ping.
+- [#737](https://github.com/LandOfTheRair/landoftherair/issues/737) Add ~~items to count items
+- [#729](https://github.com/LandOfTheRair/landoftherair/issues/729) add antanian longbow to rylt vendor
+
+---
+
 ## v0.2.0 (31/03/2018)
 
 #### Balance Adjustments
