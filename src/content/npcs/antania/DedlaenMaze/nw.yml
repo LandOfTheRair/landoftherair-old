@@ -26,8 +26,8 @@
     max: 13350
 
   giveXp:
-    min: 39000
-    max: 45000
+    min: 14000
+    max: 17000
 
   gear:
     Armor: Maze Bone Tunic
@@ -79,8 +79,8 @@
     max: 20350
 
   giveXp:
-    min: 69000
-    max: 75000
+    min: 24000
+    max: 25000
 
   rightHand: Maze Longsword
 

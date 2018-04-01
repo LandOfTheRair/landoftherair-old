@@ -26,8 +26,8 @@
     max: 8470
 
   giveXp:
-    min: 30000
-    max: 35000
+    min: 10000
+    max: 15000
 
   gear:
     Hands: Maze Mummy Claws
@@ -78,8 +78,8 @@
     max: 12350
 
   giveXp:
-    min: 39000
-    max: 42000
+    min: 19000
+    max: 22000
 
   gear:
     Hands: Maze Ghoul Claws
@@ -123,8 +123,8 @@
     max: 1000
 
   giveXp:
-    min: 41000
-    max: 45000
+    min: 11000
+    max: 15000
 
   attributes:
     - damageType: 'physical'
@@ -273,8 +273,8 @@
     max: 130000
 
   giveXp:
-    min: 159000
-    max: 169000
+    min: 129000
+    max: 139000
 
   usableSkills:
     - Charge

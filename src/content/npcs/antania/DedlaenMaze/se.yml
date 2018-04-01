@@ -76,8 +76,8 @@
     max: 1700
 
   hp:
-    min: 40950
-    max: 45350
+    min: 30950
+    max: 35350
 
   mp:
     min: 900
@@ -131,8 +131,8 @@
     max: 15000
 
   giveXp:
-    min: 33000
-    max: 35000
+    min: 23000
+    max: 25000
 
   gear:
     Hands: Medium Claws
@@ -171,8 +171,8 @@
     max: 500
 
   giveXp:
-    min: 33000
-    max: 37000
+    min: 23000
+    max: 27000
 
   gear:
     Hands: Medium Claws
