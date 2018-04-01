@@ -11,6 +11,10 @@ export class GroundHelper {
 
   private itemGCArray: any = [];
 
+  public get numberOfItems(): number {
+    return this.itemGCArray.length;
+  }
+
   constructor(private room: GameWorld) {}
 
   addItemToGround(ref, item: Item, previouslyStackedItem = null) {

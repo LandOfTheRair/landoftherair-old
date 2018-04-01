@@ -75,6 +75,10 @@ export class GameWorld extends Room<GameState> {
   public itemCreator: ItemCreator;
   public teleportHelper: TeleportHelper;
 
+  public get groundItemCount(): number {
+    return this.groundHelper.numberOfItems;
+  }
+
   private itemGC: any;
 
   private clearTimers: any[] = [];
