@@ -7,6 +7,8 @@ import { GameWorld } from '../../rooms/GameWorld';
 
 import { random, sampleSize, sum, sample, isArray, isNumber } from 'lodash';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const randomStats = ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'con', 'cha', 'luk', 'offense', 'defense', 'armorClass'];
 
 export class ItemCreator {
@@ -81,7 +83,7 @@ export class ItemCreator {
     const item = await DB.$items.findOne({ name });
     if(!item) throw new Error(`Item ${name} does not exist.`);
 
-    this.cache.set(name, item);
+    if(isProd) this.cache.set(name, item);
 
     return finalizeItem(item);
   }

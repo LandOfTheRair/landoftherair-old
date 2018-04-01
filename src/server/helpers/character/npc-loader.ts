@@ -11,6 +11,8 @@ import { Player } from '../../../shared/models/player';
 import * as Effects from '../../effects';
 import { Item } from '../../../shared/models/item';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 export class NPCLoader {
 
   static cache = new Cache({ stdTTL: 600 });
@@ -30,7 +32,7 @@ export class NPCLoader {
     const npc = await DB.$npcs.findOne({ npcId });
     if(!npc) throw new Error(`NPC ${npcId} does not exist.`);
 
-    NPCLoader.cache.set(npcId, npc);
+    if(isProd) NPCLoader.cache.set(npcId, npc);
     return npc;
   }
 

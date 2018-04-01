@@ -19,7 +19,7 @@
     accuracy: 10
     perception: 250
 
-  skillLevels: 8
+  skillLevels: 7
 
   skillOnKill: 250
 
@@ -38,8 +38,8 @@
     max: 10000
 
   giveXp:
-    min: 150000
-    max: 175000
+    min: 450000
+    max: 475000
 
   rightHand: Crazed Saraxa Wand
 
