@@ -109,7 +109,7 @@ class ItemLoader {
       item.type = 'Staff';
     }
 
-    if(item.itemClass === 'Tunic') {
+    if(item.itemClass === 'Tunic' || item.itemClass === 'Fur') {
       item.isSackable = true;
     }
 
