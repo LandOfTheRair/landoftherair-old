@@ -46,19 +46,25 @@
   desc: "a roughly-cut diamond"
   value: 5000
   sprite: 247
+
+  maxEncrusts: 4
+
   stats:
-    hp: 7
-    mp: 7
+    hp: 10
+    mp: 10
     perception: 2
-    physicalResist: 1
-    magicalResist: 1
+    physicalResist: 3
+    magicalResist: 3
 
 - name: Risan Emerald Chunk
   desc: "a chunk of raw emerald"
   value: 2500
   sprite: 246
+
+  maxEncrusts: 4
+
   stats:
-    physicalResist: 2
+    physicalResist: 6
 
   requirements:
     level: 7
