@@ -365,7 +365,7 @@ export class GameState {
   }
 
   /**
-   * THIS FUNCTION GETS PLAYERS REGARDLESS OF THE NPC SIGHT
+   * THIS FUNCTION GETS PLAYERS REGARDLESS OF SIGHT
    */
   getAllPlayersInRange(ref: { x: number, y: number }, radius: number): Character[] {
     return this.getAllPlayersFromQuadtrees(ref, radius);
