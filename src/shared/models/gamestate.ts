@@ -376,6 +376,11 @@ export class GameState {
       .filter(char => !char.isDead() && !includes(except, char.uuid) && this.isVisibleTo(ref, char, useSight));
   }
 
+  getAllInRangeRaw(ref: Character, radius, except: string[] = []): Character[] {
+    return this.getAllTargetsFromQuadtrees(ref, radius)
+      .filter(char => !includes(except, char.uuid));
+  }
+
   getAllInRange(ref: Character, radius, except: string[] = [], useSight = true): Character[] {
     return this.getAllTargetsFromQuadtrees(ref, radius)
       .filter(char => !char.isDead() && !includes(except, char.uuid) && this.isVisibleTo(ref, char, useSight));
@@ -425,7 +430,7 @@ export class GameState {
   }
 
   private getAllNPCsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
-    const foundNPCsInRange = radius > 0 ? this.quadtreeHelper.npcQuadtreeSearch(pos, radius) : this.quadtreeHelper.npcs;
+    const foundNPCsInRange = radius >= 0 ? this.quadtreeHelper.npcQuadtreeSearch(pos, radius) : this.quadtreeHelper.npcs;
     const foundNPCRefs = foundNPCsInRange.map(npc => this.mapNPCs[npc.uuid]);
 
     /* fun debugging!

@@ -438,6 +438,12 @@ export class Player extends Character {
 
     if(item.itemClass === 'Corpse') {
       item.$heldBy = this.username;
+
+      // find the corpses owner and give it 600 death ticks if a player picks it up
+      this.$$room.state.getAllInRangeRaw(this, 0).forEach(creature => {
+        if(creature.$$corpseRef !== item) return;
+        creature.$$deathTicks = 600;
+      });
     }
 
     if(item.effect && item.effect.uses) {
