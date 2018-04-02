@@ -11,12 +11,14 @@ export class PartyCreate extends Command {
     if(player.party) return player.sendClientMessage('You are already in a party!');
     if(!args) return player.sendClientMessage('You need to specify a party name!');
 
-    args = args.substring(0, 15);
+    const partyName = args.substring(0, 15).toLowerCase().trim().split(' ').join('');
 
-    if(room.partyManager.getPartyByName(args)) return player.sendClientMessage('That party already exists.');
+    if(!partyName) return player.sendClientMessage('You need to specify a party name!');
 
-    room.partyManager.createParty(player, args);
-    player.sendClientMessage(`Created the "${args}" party!`);
+    if(room.partyManager.getPartyByName(partyName)) return player.sendClientMessage('That party already exists.');
+
+    room.partyManager.createParty(player, partyName);
+    player.sendClientMessage(`Created the "${partyName}" party!`);
   }
 
 }

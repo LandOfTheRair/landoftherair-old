@@ -12,7 +12,9 @@ export class PartyJoin extends Command {
     if(player.party) return player.sendClientMessage(`You are already in the "${player.partyName}" party!`);
     if(!args) return player.sendClientMessage('You need to specify a party name!');
 
-    const party = room.partyManager.getPartyByName(args);
+    const partyName = args.substring(0, 15).toLowerCase().trim().split(' ').join('');
+
+    const party = room.partyManager.getPartyByName(partyName);
     if(!party) return player.sendClientMessage('That party doesn\'t exist.');
     if(!party.leader) {
       Logger.error(new Error('Party does not have a leader somehow?'), party);
@@ -28,7 +30,7 @@ export class PartyJoin extends Command {
 
     if(!foundLeader) return player.sendClientMessage('You don\'t see the leader of that party.');
 
-    room.partyManager.joinParty(player, args);
+    room.partyManager.joinParty(player, partyName);
   }
 
 }
