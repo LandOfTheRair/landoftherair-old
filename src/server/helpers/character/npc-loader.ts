@@ -164,7 +164,7 @@ export class NPCLoader {
     const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
     const oneDay = 1000 * 60 * 60 * 24;
     const day = Math.floor(diff / oneDay);
-    
+
     return day + NPCLoader.getDailyOffset(player);
   }
 

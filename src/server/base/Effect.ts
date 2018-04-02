@@ -30,6 +30,7 @@ export class Effect {
   name = '';
   iconData = {};
   duration = 0;
+  autocast: boolean;
   protected tier: string;
   protected potency = 0;
 

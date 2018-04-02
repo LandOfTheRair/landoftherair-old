@@ -50,7 +50,7 @@ export class Haste extends SpellEffect {
     this.effectMessage(char, 'Your perception of the world speeds up.');
     char.loseStat('actionSpeed', 1);
 
-    if(this.duration <= 0) {
+    if(this.duration <= 0 && !this.autocast) {
       const recentlyHasted = new RecentlyHasted({});
       recentlyHasted.cast(char, char);
     }
