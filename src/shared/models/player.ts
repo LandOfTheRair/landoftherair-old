@@ -1,6 +1,6 @@
 
 import { DateTime } from 'luxon';
-import { compact, pull, random, isArray, get, find, includes, reject, sample, startsWith, extend, values, isUndefined, cloneDeep } from 'lodash';
+import { compact, pull, random, isArray, get, set, find, includes, reject, sample, startsWith, extend, values, isUndefined, cloneDeep } from 'lodash';
 import { nonenumerable } from 'nonenumerable';
 import { RestrictedNumber } from 'restricted-number';
 
@@ -631,10 +631,30 @@ export class Player extends Character {
 
   public increaseTraitLevel(trait: string, reqBaseClass?: string, extra = {}): void {
     this.traitLevels = this.traitLevels || {};
-    this.traitLevels[trait] = this.traitLevels[trait] || { level: 0, active: true };
+    this.traitLevels[trait] = this.traitLevels[trait] || { level: 0, gearBoost: 0, active: true, reqBaseClass: '' };
     this.traitLevels[trait].reqBaseClass = reqBaseClass;
     extend(this.traitLevels[trait], extra);
     this.traitLevels[trait].level++;
+  }
+
+  public recalculateStats() {
+
+    // calculate trait bonuses
+    Object.keys(this.traitLevels).forEach(traitName => {
+      set(this.traitLevels, [traitName, 'gearBoost'], 0);
+    });
+
+    this.traitableGear.forEach(item => {
+      const { name, level } = get(item, 'trait', { name: '', level: 0 });
+
+      if(level === 0 || !name) return;
+
+      const curLevel = get(this.traitLevels, [name, 'gearBoost'], 0);
+      set(this.traitLevels, [name, 'gearBoost'], curLevel + level);
+    });
+
+    // recalculate everything else
+    super.recalculateStats();
   }
 
   private get traitableGear(): Item[] {
@@ -646,12 +666,12 @@ export class Player extends Character {
 
   public getBaseTraitLevel(trait: string): number {
     if(!this.traitLevels || !this.isTraitActive(trait) || !this.isTraitInEffect(trait)) return 0;
-    return this.traitLevels[trait] ? this.traitLevels[trait].level : 0;
+    return get(this.traitLevels, [trait, 'level'], 0);
   }
 
   public getTraitLevel(trait: string): number {
     if(!this.traitLevels || !this.isTraitActive(trait) || !this.isTraitInEffect(trait)) return 0;
-    const baseValue = this.traitableGear.reduce((prev, cur) => prev + (cur.trait && cur.trait.name === trait ? cur.trait.level : 0), 0);
+    const baseValue = get(this.traitLevels, [trait, 'gearBoost'], 0);
     return Math.min(5, baseValue) + this.getBaseTraitLevel(trait);
   }
 
@@ -680,7 +700,7 @@ export class Player extends Character {
     if(traitRef.reqBaseClass && this.baseClass !== traitRef.reqBaseClass) return false;
 
     // if it's active, yes
-    return traitRef ? traitRef.active : false;
+    return traitRef.active;
   }
 
   public manageTraitPointPotentialGain(command: string): void {
