@@ -154,7 +154,7 @@
     fireResist: 150
     iceResist: 150
     energyResist: 100
-    necroticResist: 100
+    necroticResist: 200
   desc: "a brown coat that smells of death"
   value: 1900
   sprite: 485
