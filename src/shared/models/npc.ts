@@ -161,7 +161,7 @@ export class NPC extends Character {
     if(this.$$shouldEatTier > 0) {
       dead.sendClientMessage(`${this.name} made a feast of you!`);
       dead.restore();
-
+ 
       const lostXP = Math.floor(dead.calcLevelXP(dead.level) / 40) * this.$$shouldEatTier;
       const lostSkill = 500 * this.$$shouldEatTier;
 
