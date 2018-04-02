@@ -23557,7 +23557,7 @@
                      "initialSpawn":1,
                      "lairName":"Dedlaen Death Knight",
                      "maxSpawn":1,
-                     "randomWalkRadius":10,
+                     "randomWalkRadius":7,
                      "respawnRate":7200,
                      "script":"global\/lair",
                      "shouldStrip":false
