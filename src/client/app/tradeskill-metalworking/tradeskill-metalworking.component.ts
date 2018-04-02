@@ -46,7 +46,7 @@ export class TradeskillMetalworkingComponent {
   }
 
   canSmeltIngot(oreType): boolean {
-    return this.oreValue(oreType) >= 100;
+    return this.oreValue(oreType) >= 50;
   }
 
   smelt(type: string) {
