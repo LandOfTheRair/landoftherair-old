@@ -14,6 +14,9 @@ export class DefaultAIBehavior {
 
     const npc = this.npc;
 
+    // npcs in rooms with exit points cannot pick up random items
+    if(npc.$$room.exitPoint) return;
+
     if(npc.rightHand && npc.leftHand) return;
 
     const ground = npc.$$room.state.getGroundItems(npc.x, npc.y);
