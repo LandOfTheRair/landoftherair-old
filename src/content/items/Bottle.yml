@@ -265,6 +265,16 @@
     duration: 600
   value: 200
 
+- name: TrueSight Potion (10oz)
+  desc: "a small bottle covered with eyes"
+  extendedDesc: "a potion of TrueSight"
+  sprite: 254
+  ounces: 10
+  effect:
+    name: TrueSight
+    duration: 600
+  value: 200
+
 - name: DarkVision Potion
   desc: "a small dark bottle covered with glow-in-the-dark eyes"
   extendedDesc: "a potion of DarkVision"

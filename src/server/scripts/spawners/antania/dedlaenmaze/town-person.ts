@@ -2,19 +2,19 @@
 import { Spawner } from '../../../../base/Spawner';
 
 const npcIds = [
-  'Dedlaen Town Guard'
+  'Dedlaen Townee'
 ];
 
-export class TownGuardSpawner extends Spawner {
+export class TowneeSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
       respawnRate: 30,
       initialSpawn: 2,
       maxCreatures: 5,
-      spawnRadius: 1,
-      randomWalkRadius: 10,
-      leashRadius: 15,
+      spawnRadius: 3,
+      randomWalkRadius: 7,
+      leashRadius: 10,
       npcIds
     });
   }

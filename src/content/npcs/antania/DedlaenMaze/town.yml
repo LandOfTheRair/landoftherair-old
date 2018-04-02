@@ -1,52 +1,56 @@
 
-- npcId: Tower Town Guard
-  name: guard
-  allegiance: 'None'
-  hostility: 'Faction'
-  sprite: 625
-  baseClass: Warrior
-  stats: 13
-  skillLevels: 5
-  level: 15
+- npcId: Dedlaen Townee
+  sprite: [580, 595, 610, 615]
+  stats: 10
+  level: 10
 
-  allegianceReputation:
-    Enemy: -101
+  skillLevels: 3
 
-  skillOnKill: 30
-
-  otherStats:
-    perception: 200
-
-  usableSkills:
-    - Charge
+  skillOnKill: 1
 
   gold:
-    min: 550
-    max: 700
+    min: 1
+    max: 5
 
   hp:
-    min: 13950
-    max: 14350
+    min: 5000
+    max: 5000
 
   giveXp:
-    min: 7000
-    max: 8000
+    min: 1000
+    max: 2000
 
   gear:
-    Ear: Enemy DarkVision Earring
-    Armor: Tower Trash Breastplate
-    Robe1:
-      - result: none
-        chance: 5
-      - result: Tower Trash Cloak
-        chance: 1
+    Armor: Antanian Tunic
 
-  rightHand: Tower Halberd Weak
+- npcId: Dedlaen Town Guard
+  name: guard
+  sprite: 625
+  stats: 20
+  level: 20
+  baseClass: Warrior
 
-  copyDrops:
-    - drop: 'gear.Armor'
-      chance: -1
-    - drop: 'gear.Robe1'
-      chance: -1
-    - drop: 'rightHand'
-      chance: -1
+  skillLevels: 5
+
+  skillOnKill: 1
+
+  gold:
+    min: 1
+    max: 5
+
+  hp:
+    min: 15000
+    max: 15000
+
+  giveXp:
+    min: 1000
+    max: 2000
+
+  gear:
+    Armor: Antanian Tunic
+
+  rightHand:
+    - Antanian Greatmace
+    - Antanian Greataxe
+    - Antanian Greatsword
+    - Antanian Halberd

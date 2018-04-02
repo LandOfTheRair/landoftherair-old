@@ -70,6 +70,15 @@
     - Tower Goblood
     - Antanian Pint of Water
 
+- item: TrueSight Potion (10oz)
+  skillGained: 10
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 600
+  ingredients:
+    - Maze Corpseflower
+    - Antanian Pint of Water
+
 - item: Weak Regen Potion
   skillGained: 10
   maxSkillForGains: 7
