@@ -1061,9 +1061,7 @@ export class Character {
 
     const oldPermanency = get(existingEffect, 'effectInfo.isPermanent', false);
     const newPermanency = get(effect, 'effectInfo.isPermanent', false);
-
-    console.log(existingEffect, oldPermanency, newPermanency);
-
+    
     if(existingEffect) {
       if(oldPermanency && !newPermanency) {
         this.sendClientMessage(`A new casting of ${effect.name} refused to take hold.`);
