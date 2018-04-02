@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.2.2 (02/04/2018)
+
+#### Balance Adjustments
+
+- [#743](https://github.com/LandOfTheRair/landoftherair/issues/743) Revenant greatmace has no req level
+- [#742](https://github.com/LandOfTheRair/landoftherair/issues/742) Increase necrotic resist on DK robe to 200
+- [#741](https://github.com/LandOfTheRair/landoftherair/issues/741) Make poison and disease do "poison" and "disease" damage
+
+#### Bug Fixes
+
+- [#744](https://github.com/LandOfTheRair/landoftherair/issues/744) Metalworking ingots UI requires 100 still
+- [#730](https://github.com/LandOfTheRair/landoftherair/issues/730) ensure that dungeon maps correctly save when everyone exits them
+
+---
+
 ## v0.2.1 (01/04/2018)
 
 #### Balance Adjustments
