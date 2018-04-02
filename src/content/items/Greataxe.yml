@@ -36,6 +36,7 @@
     level: 10
 
 - name: Dedlaen Minotaur Greataxe
+  quality: 5
   desc: "a gargantuan greataxe formerly carried by a gigantic minotaur"
   tier: 5
   stats:

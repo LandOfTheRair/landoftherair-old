@@ -41,6 +41,7 @@
     level: 15
 
 - name: Dedlaen Dueling Axe
+  quality: 5
   desc: "a finely-balanced dueling axe with a gigantic grip"
   tier: 4
   stats:
