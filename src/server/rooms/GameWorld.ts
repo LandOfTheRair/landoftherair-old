@@ -219,7 +219,7 @@ export class GameWorld extends Room<GameState> {
     finishLoad();
   }
 
-  onDispose() {
+  async onDispose() {
     this.state.isDisposing = true;
 
     if(this.itemGC) {
@@ -228,7 +228,8 @@ export class GameWorld extends Room<GameState> {
 
     this.clearTimers.forEach(timer => clearTimeout(timer));
 
-    this.groundHelper.saveGround();
+    await this.groundHelper.saveGround();
+
     this.saveBossTimers();
     if(this.partyManager) {
       this.partyManager.stopEmitting();
