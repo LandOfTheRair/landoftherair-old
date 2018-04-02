@@ -6,7 +6,6 @@ import { Attribute } from '../../../../../effects/augments/Attribute';
 import { Effect } from '../../../../../base/Effect';
 import { Asper } from '../../../../../effects/damagers/Asper';
 import { Disease } from '../../../../../effects/dots/Disease';
-import { Poison } from '../../../../../effects/dots/Poison';
 import { ChannelSummon } from '../../../../../effects/channels/ChannelSummon';
 
 class MistFormEffect extends Effect {
