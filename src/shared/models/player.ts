@@ -318,6 +318,11 @@ export class Player extends Character {
   async die(killer) {
     super.die(killer);
 
+    // if a room would kick you out of the map on death, save the ground now just in case
+    if(this.$$room.exitPoint) {
+      this.$$room.saveGround();
+    }
+
     this.lastDeathLocation = { x: this.x, y: this.y };
 
     // 5 minutes to restore

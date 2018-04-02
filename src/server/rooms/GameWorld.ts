@@ -166,6 +166,10 @@ export class GameWorld extends Room<GameState> {
     return true;
   }
 
+  get exitPoint() {
+    return null;
+  }
+
   private redis: Redis;
   public get redisClient() {
     return this.redis.client;
@@ -228,7 +232,7 @@ export class GameWorld extends Room<GameState> {
 
     this.clearTimers.forEach(timer => clearTimeout(timer));
 
-    await this.groundHelper.saveGround();
+    await this.saveGround();
 
     this.saveBossTimers();
     if(this.partyManager) {
@@ -340,6 +344,10 @@ export class GameWorld extends Room<GameState> {
     data.args = (data.args || '').trim().split('  ').join(' ');
 
     CommandExecutor.queueCommand(player, data.command, data);
+  }
+
+  public saveGround(): Promise<any> {
+    return this.groundHelper.saveGround();
   }
 
   public addNPC(npc: NPC) {
@@ -858,7 +866,7 @@ export class GameWorld extends Room<GameState> {
     if((this.ticks % TickRatesPerTimer.PlayerSave) === 0) {
       this.state.allPlayers.forEach(player => this.savePlayer(player));
 
-      this.groundHelper.saveGround();
+      this.saveGround();
       // reset ticks
       this.ticks = 0;
     }
