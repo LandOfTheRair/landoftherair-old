@@ -32,3 +32,6 @@
   secondaryType: Twohanded
   value: 15025
   sprite: 325
+
+  requirements:
+    level: 15
