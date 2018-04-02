@@ -20,9 +20,6 @@ export class BarFrost extends SpellEffect {
     this.flagUnapply();
     this.flagCasterName(caster.name);
 
-    /** PERK:CLASS:MAGE:Mages have BarFrost that is twice as strong. */
-    if(caster.baseClass === 'Mage') this.potencyMultiplier *= 2;
-
     if(!this.duration) this.duration = 100 * this.potency;
     this.updateDurationBasedOnTraits(caster);
 

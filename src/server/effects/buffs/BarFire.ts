@@ -20,9 +20,6 @@ export class BarFire extends SpellEffect {
     this.flagUnapply();
     this.flagCasterName(caster.name);
 
-    /** PERK:CLASS:MAGE:Mages have BarFire that is twice as strong. */
-    if(caster.baseClass === 'Mage') this.potencyMultiplier *= 2;
-
     if(!this.duration) this.duration = 100 * this.potency;
     this.updateDurationBasedOnTraits(caster);
 
@@ -40,10 +37,14 @@ export class BarFire extends SpellEffect {
     char.gainStat('fireResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} fire damage.`;
+
+    console.log('s', this.potency * this.potencyMultiplier, this.potency, this.potencyMultiplier);
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your flame resistance fades.');
     char.loseStat('fireResist', this.potency * this.potencyMultiplier);
+
+    console.log('e', this.potency * this.potencyMultiplier, this.potency, this.potencyMultiplier);
   }
 }
