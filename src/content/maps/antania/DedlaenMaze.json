@@ -27043,10 +27043,86 @@
                  "width":448,
                  "x":11584,
                  "y":6656
+                }, 
+                {
+                 "height":1408,
+                 "id":5994,
+                 "name":"Maze Village",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a small town in the maze. Who knows how these citizens are surviving down here."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1728,
+                 "x":7168,
+                 "y":6208
+                }, 
+                {
+                 "height":1280,
+                 "id":5995,
+                 "name":"Maze Village",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a small town in the maze. Who knows how these citizens are surviving down here."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":8896,
+                 "y":6336
+                }, 
+                {
+                 "height":192,
+                 "id":5996,
+                 "name":"Maze Village",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a small town in the maze. Who knows how these citizens are surviving down here."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1152,
+                 "x":7744,
+                 "y":6016
+                }, 
+                {
+                 "height":320,
+                 "id":5997,
+                 "name":"Maze Village Hidey Hole",
+                 "properties":
+                    {
+                     "desc":"You see a thief trainer standing in what smells like sewers. Eww."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":576,
+                 "x":8896,
+                 "y":6016
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -27228,7 +27304,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5994,
+ "nextobjectid":5998,
  "orientation":"orthogonal",
  "properties":
     {
