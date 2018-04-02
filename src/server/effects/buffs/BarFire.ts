@@ -37,14 +37,10 @@ export class BarFire extends SpellEffect {
     char.gainStat('fireResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} fire damage.`;
-
-    console.log('s', this.potency * this.potencyMultiplier, this.potency, this.potencyMultiplier);
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your flame resistance fades.');
     char.loseStat('fireResist', this.potency * this.potencyMultiplier);
-
-    console.log('e', this.potency * this.potencyMultiplier, this.potency, this.potencyMultiplier);
   }
 }
