@@ -23926,6 +23926,7 @@
                      "randomWalkRadius":20,
                      "respawnRate":7200,
                      "script":"global\/lair",
+                     "shouldEatTier":1,
                      "shouldStrip":true,
                      "stripRadius":1,
                      "stripX":148,
@@ -23939,6 +23940,7 @@
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
                      "script":"string",
+                     "shouldEatTier":"int",
                      "shouldStrip":"bool",
                      "stripRadius":"int",
                      "stripX":"int",
@@ -25329,7 +25331,7 @@
                  "visible":true,
                  "width":64,
                  "x":8320,
-                 "y":8512
+                 "y":8640
                 }, 
                 {
                  "gid":2363,
@@ -25528,8 +25530,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":9088,
-                 "y":8320
+                 "x":9216,
+                 "y":8448
                 }, 
                 {
                  "gid":2363,

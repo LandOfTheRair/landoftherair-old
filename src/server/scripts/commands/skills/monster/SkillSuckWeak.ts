@@ -16,8 +16,7 @@ export class SkillSuckWeak extends Skill {
   use(user: Character, target: Character) {
 
     // lose a tiny bit of xp
-    const lostXP = random(500, 2500);
-    target.gainExp(-lostXP);
+    target.loseExpOrSkill({ lostXPMin: 500, lostXPMax: 2500 });
 
     // lose a tiny bit of non-zero, non-tradeskill skills
     const skills = target.allSkills;

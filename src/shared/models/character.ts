@@ -3,7 +3,7 @@ import { RestrictedNumber } from 'restricted-number';
 import { Signal } from 'signals.js';
 
 import {
-  merge, find, includes, compact, values,
+  merge, find, includes, compact, values, random,
   startsWith, clone, get, reject, pick, isArray
 } from 'lodash';
 
@@ -1061,7 +1061,7 @@ export class Character {
 
     const oldPermanency = get(existingEffect, 'effectInfo.isPermanent', false);
     const newPermanency = get(effect, 'effectInfo.isPermanent', false);
-    
+
     if(existingEffect) {
       if(oldPermanency && !newPermanency) {
         this.sendClientMessage(`A new casting of ${effect.name} refused to take hold.`);
@@ -1405,5 +1405,15 @@ export class Character {
 
   public youDontSeeThatPerson(uuid: string): void {
     this.sendClientMessage('You do not see that person.');
+  }
+
+  public loseExpOrSkill(opts: { lostXPMin?: number, lostXPMax?: number, lostSkillMin?: number, lostSkillMax?: number }) {
+
+    const { lostXPMin, lostXPMax, lostSkillMin, lostSkillMax } = opts;
+
+    if(lostXPMin > 0 && lostXPMax > 0) {
+      const lostXP = random(lostXPMin, lostXPMax);
+      this.gainExp(-lostXP);
+    }
   }
 }

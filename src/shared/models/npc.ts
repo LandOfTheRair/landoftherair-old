@@ -64,6 +64,7 @@ export class NPC extends Character {
   $$stripOnSpawner: boolean;
   $$stripX: number;
   $$stripY: number;
+  $$shouldEatTier: number;
 
   $$lastResponse: string;
   $$following: boolean;
@@ -155,6 +156,16 @@ export class NPC extends Character {
       }
 
       CharacterHelper.strip(dead, this.$$stripOnSpawner ? stripPoint : this, this.$$stripRadius);
+    }
+
+    if(this.$$shouldEatTier > 0) {
+      dead.sendClientMessage(`${this.name} made a feast of you!`);
+      dead.restore();
+
+      const lostXP = Math.floor(dead.calcLevelXP(dead.level) / 40) * this.$$shouldEatTier;
+      const lostSkill = 500 * this.$$shouldEatTier;
+
+      dead.loseExpOrSkill({ lostXPMin: lostXP, lostXPMax: lostXP, lostSkillMin: lostSkill, lostSkillMax: lostSkill });
     }
   }
 

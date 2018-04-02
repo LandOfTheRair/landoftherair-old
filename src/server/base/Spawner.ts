@@ -56,6 +56,7 @@ export class Spawner {
   stripOnSpawner = true;
   stripX: number;
   stripY: number;
+  shouldEatTier = 0;
 
   $$slowTicks = 0;
 
@@ -286,6 +287,7 @@ export class Spawner {
     npc.hostility = npcData.hostility;
     npc.spawner = this;
     npc.$$shouldStrip = this.shouldStrip;
+    npc.$$shouldEatTier = this.shouldEatTier;
     npc.$$stripRadius = this.stripRadius;
     npc.$$stripOnSpawner = this.stripOnSpawner;
     npc.$$stripX = this.stripX;
