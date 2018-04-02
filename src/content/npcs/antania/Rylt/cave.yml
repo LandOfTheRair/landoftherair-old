@@ -219,6 +219,16 @@
       chance: 1
       maxChance: 20
 
+  dropPool:
+    choose:
+      min: 2
+      max: 2
+    items:
+      - Rune Scroll - Magic Focus I
+      - Rune Scroll - Forged Fire I
+      - Rune Scroll - Wand Specialty I
+      - Rune Scroll - Frosted Touch I
+
   combatMessages:
     - "Ah, Rocky, do be a dear and take care of our guests!"
     - "Those who trespass in my cave must pay the price!"

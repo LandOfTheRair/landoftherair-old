@@ -1077,24 +1077,14 @@
 
   dropPool:
     choose:
-      min: 1
-      max: 1
+      min: 2
+      max: 2
     items:
-      - Steffen Offensive Sash
-      - Yzalt Basic Sash
-      - Yzalt MagicResist Bracers
-      - Heniz Dexterity Bracers
-      - Yzalt Defensive Claws
-      - Yzalt Combat Boots
-      - Yzalt Combat Amulet
-      - Yzalt Armor Ring
-      - Steffen DamageResist Ring
-      - Heniz Intelligence Ring
-      - Heniz Battlemage Gloves
-      - Steffen Strength Gloves
-      - Steffen Mana Ring
-      - Steffen Wisdom Amulet
-      - Antanian Earring
+      - Rune Scroll - Healing Focus I
+      - Rune Scroll - Necrotic Focus I
+      - Rune Scroll - Totem Specialty I
+      - Rune Scroll - Effective Supporter I
+      - Rune Scroll - Irresistible Stuns I
 
   drops:
     - result: Ranata Totem
@@ -1154,16 +1144,13 @@
 
   dropPool:
     choose:
-      min: 1
-      max: 1
+      min: 2
+      max: 2
     items:
-      - Yzalt Basic Sash
-      - Yzalt MagicResist Bracers
-      - Yzalt Defensive Claws
-      - Yzalt Combat Boots
-      - Yzalt Combat Amulet
-      - Yzalt Armor Ring
-      - Antanian Earring
+      - Rune Scroll - Forceful Strike I
+      - Rune Scroll - Offhand Finesse I
+      - Rune Scroll - Riposte I
+      - Rune Scroll - Swashbuckler I
 
   copyDrops:
     - drop: 'rightHand'

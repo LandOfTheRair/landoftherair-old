@@ -554,7 +554,7 @@
 - npcId: Tonwin
   name: Tonwin
   hostility: Always
-  baseClass: Warrior
+  baseClass: Thief
   sprite: 5
   alignment: Evil
   stats: 12
@@ -562,6 +562,7 @@
 
   otherStats:
     con: 20
+    stealth: 20
     perception: 250
 
   level: 13
@@ -604,3 +605,13 @@
   drops:
     - result: Rylt Renegade Book
       chance: -1
+
+  dropPool:
+    choose:
+      min: 2
+      max: 2
+    items:
+      - Rune Scroll - Shadow Ranger I
+      - Rune Scroll - Shadow Swap I
+      - Rune Scroll - Darker Shadows I
+      - Rune Scroll - Shadow Daggers I
