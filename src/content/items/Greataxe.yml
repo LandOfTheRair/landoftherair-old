@@ -39,10 +39,10 @@
   desc: "a gargantuan greataxe formerly carried by a gigantic minotaur"
   tier: 5
   stats:
-    accuracy: 1
-    offense: 4
-    defense: -2
-    weaponArmorClass: 2
+    accuracy: -2
+    offense: 2
+    defense: -1
+    weaponArmorClass: 4
   type: Axe
   secondaryType: Twohanded
   value: 3549
