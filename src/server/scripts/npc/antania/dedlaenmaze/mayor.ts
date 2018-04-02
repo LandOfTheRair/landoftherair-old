@@ -24,7 +24,7 @@ export const responses = (npc: NPC) => {
         return 'Thanks, but we don\'t want to work you too hard! Come back tomorrow - we\'ll have more work for you.';
       }
 
-      const questTodayIndex = (new Date().getDate() + NPCLoader.getDailyOffset(player)) % allQuests.length;
+      const questTodayIndex = NPCLoader.getCurrentDailyDayOfYear(player) % allQuests.length;
       const questToday = allQuests[questTodayIndex];
 
       if(player.level < 13) return 'While we would appreciate your help in the Maze, maybe you should go talk to Mayor Twean in Rylt.';
