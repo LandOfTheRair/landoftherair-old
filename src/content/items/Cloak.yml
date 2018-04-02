@@ -63,3 +63,6 @@
   value: 3699
   sprite: 18
   binds: true
+
+  requirements:
+    level: 15
