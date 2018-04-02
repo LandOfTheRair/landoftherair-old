@@ -1,7 +1,7 @@
 
 - name: Antanian Gem RNG Box
   desc: "a gift box wrapped with shiny multi-colored wrapping paper, tied with a golden bow"
-  extendedDesc: "a gem container"
+  extendedDesc: "a gem container filled with an Antanian gem"
   sprite: 586
   value: 5000
   containedItems:
@@ -20,7 +20,7 @@
 
 - name: Antanian Daily Gem RNG Box
   desc: "a gift box wrapped with shiny multi-colored wrapping paper, tied with a golden bow"
-  extendedDesc: "a gem container"
+  extendedDesc: "a gem container filled with any gem"
   sprite: 586
   value: 2500
   binds: true
