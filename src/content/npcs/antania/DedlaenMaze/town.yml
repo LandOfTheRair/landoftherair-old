@@ -1,0 +1,52 @@
+
+- npcId: Tower Town Guard
+  name: guard
+  allegiance: 'None'
+  hostility: 'Faction'
+  sprite: 625
+  baseClass: Warrior
+  stats: 13
+  skillLevels: 5
+  level: 15
+
+  allegianceReputation:
+    Enemy: -101
+
+  skillOnKill: 30
+
+  otherStats:
+    perception: 200
+
+  usableSkills:
+    - Charge
+
+  gold:
+    min: 550
+    max: 700
+
+  hp:
+    min: 13950
+    max: 14350
+
+  giveXp:
+    min: 7000
+    max: 8000
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor: Tower Trash Breastplate
+    Robe1:
+      - result: none
+        chance: 5
+      - result: Tower Trash Cloak
+        chance: 1
+
+  rightHand: Tower Halberd Weak
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1

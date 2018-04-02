@@ -22710,7 +22710,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":7232,
+                 "x":7680,
                  "y":6400
                 }],
          "opacity":1,
@@ -24058,7 +24058,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":8832,
+                 "x":8768,
                  "y":9792
                 }, 
                 {
@@ -24098,7 +24098,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":9472,
+                 "x":9536,
                  "y":9152
                 }, 
                 {
@@ -24158,7 +24158,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11520,
+                 "x":11456,
                  "y":9344
                 }, 
                 {
@@ -24178,7 +24178,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":10944,
+                 "x":10880,
                  "y":10432
                 }, 
                 {
@@ -24259,7 +24259,7 @@
                  "visible":true,
                  "width":64,
                  "x":9600,
-                 "y":1472
+                 "y":1536
                 }, 
                 {
                  "gid":2363,
@@ -24318,7 +24318,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11776,
+                 "x":11840,
                  "y":3072
                 }, 
                 {
@@ -24739,7 +24739,7 @@
                  "visible":true,
                  "width":64,
                  "x":832,
-                 "y":8064
+                 "y":8000
                 }, 
                 {
                  "gid":2363,
@@ -24779,7 +24779,7 @@
                  "visible":true,
                  "width":64,
                  "x":3456,
-                 "y":9152
+                 "y":9216
                 }, 
                 {
                  "gid":2363,
@@ -24819,7 +24819,7 @@
                  "visible":true,
                  "width":64,
                  "x":6144,
-                 "y":7552
+                 "y":7616
                 }, 
                 {
                  "gid":2363,
@@ -24939,7 +24939,7 @@
                  "visible":true,
                  "width":64,
                  "x":1088,
-                 "y":10944
+                 "y":10880
                 }, 
                 {
                  "gid":2363,
@@ -25158,7 +25158,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":3456,
+                 "x":3392,
                  "y":10112
                 }, 
                 {
@@ -25298,7 +25298,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":8256,
+                 "x":8320,
                  "y":8512
                 }, 
                 {
@@ -25358,7 +25358,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11520,
+                 "x":11456,
                  "y":7872
                 }, 
                 {
@@ -25439,7 +25439,7 @@
                  "visible":true,
                  "width":64,
                  "x":9216,
-                 "y":11328
+                 "y":11264
                 }, 
                 {
                  "gid":2363,
@@ -25458,7 +25458,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11520,
+                 "x":11456,
                  "y":10496
                 }, 
                 {
@@ -25558,7 +25558,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1408,
+                 "x":1472,
                  "y":5056
                 }, 
                 {
@@ -25618,7 +25618,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":10752,
+                 "x":10816,
                  "y":4928
                 }, 
                 {
@@ -25638,7 +25638,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":8896,
+                 "x":8832,
                  "y":4864
                 }, 
                 {
@@ -25658,7 +25658,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11776,
+                 "x":11712,
                  "y":2176
                 }, 
                 {
@@ -25738,7 +25738,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6912,
+                 "x":6976,
                  "y":3840
                 }, 
                 {
@@ -25759,7 +25759,87 @@
                  "visible":true,
                  "width":64,
                  "x":6592,
-                 "y":6016
+                 "y":6080
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5998,
+                 "name":"Town Guard Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/town-guard"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7296,
+                 "y":6464
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":5999,
+                 "name":"Town Guard Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/town-guard"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9536,
+                 "y":7488
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6000,
+                 "name":"Townee Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/townee"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8000,
+                 "y":7040
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6003,
+                 "name":"Townee Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/townee"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8640,
+                 "y":6784
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -27122,7 +27202,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -27304,7 +27384,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5998,
+ "nextobjectid":6004,
  "orientation":"orthogonal",
  "properties":
     {
