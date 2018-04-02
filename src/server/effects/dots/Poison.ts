@@ -10,7 +10,7 @@ export class Poison extends SpellEffect {
   iconData = {
     name: 'poison-gas',
     color: '#0a0',
-    tooltipDesc: 'Constantly receiving necrotic damage.'
+    tooltipDesc: 'Constantly receiving poison damage.'
   };
 
   maxSkillForSkillGain = 7;
@@ -40,7 +40,7 @@ export class Poison extends SpellEffect {
   effectStart(char: Character) {
     this.effectMessage(char, 'You were poisoned!');
 
-    this.iconData.tooltipDesc = `Constantly receiving ${Math.abs(this.effectInfo.damage)} necrotic damage.`;
+    this.iconData.tooltipDesc = `Constantly receiving ${Math.abs(this.effectInfo.damage)} poison damage.`;
   }
 
   effectTick(char: Character) {
@@ -50,7 +50,7 @@ export class Poison extends SpellEffect {
       effect: this,
       defMsg: `You are poisoned!`,
       damage: this.effectInfo.damage,
-      damageClass: 'necrotic'
+      damageClass: 'poison'
     });
 
   }

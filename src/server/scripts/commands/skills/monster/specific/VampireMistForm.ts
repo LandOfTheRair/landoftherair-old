@@ -14,18 +14,21 @@ class MistFormEffect extends Effect {
   iconData = {
     name: 'steam',
     color: '#04f',
-    tooltipDesc: 'Mist form. Invulnerable and pulsing Asper, Poison, Disease.'
+    tooltipDesc: 'Mist form. Invulnerable and pulsing Asper & Disease.'
   };
+
+  private skillRef: Skill;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.duration = 10;
+    this.skillRef = skillRef;
     target.applyEffect(this);
 
     const physicalResist = new Attribute({ damageType: 'physical', duration: 10, potency: 0, unableToShred: true });
-    physicalResist.cast(caster, caster);
+    physicalResist.cast(caster, caster, skillRef);
 
     const magicalResist = new Attribute({ damageType: 'magical', duration: 10, potency: 0, unableToShred: true });
-    magicalResist.cast(caster, caster);
+    magicalResist.cast(caster, caster, skillRef);
 
     const batSummon = new ChannelSummon({ numSummons: 3, summonCreature: 'Summoned Vampire Bat' });
     batSummon.cast(caster, caster);
@@ -37,10 +40,7 @@ class MistFormEffect extends Effect {
       asper.cast(char, target);
 
       const disease = new Disease({ potency: 10 });
-      disease.cast(char, target);
-
-      const poison = new Poison({ potency: 10 });
-      poison.cast(char, target);
+      disease.cast(char, target, this.skillRef);
     });
   }
 
@@ -62,7 +62,7 @@ export class VampireMistForm extends Skill {
     user.sendClientMessageToRadius('You see the vampire condense into a pile of mist!', 5);
 
     const mistForm = new MistFormEffect({});
-    mistForm.cast(user, user);
+    mistForm.cast(user, user, this);
   }
 
 }

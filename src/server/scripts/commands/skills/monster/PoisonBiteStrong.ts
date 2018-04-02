@@ -25,7 +25,7 @@ export class PoisonBiteStrong extends Skill {
       attackerDamageMessage: '',
       defenderDamageMessage: `${user.name} bit you!`
     });
-    const effect = new CastEffect({ potency: 15, duration: 10 });
+    const effect = new CastEffect({ potency: 20, duration: 10 });
     effect.cast(user, target, this);
   }
 

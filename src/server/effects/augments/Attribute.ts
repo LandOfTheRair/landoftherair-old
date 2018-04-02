@@ -16,7 +16,9 @@ type AttributeType =
 | 'fire'
 | 'ice'
 | 'water'
-| 'energy';
+| 'energy'
+| 'poison'
+| 'disease';
 
 const ResistanceShredders = {
   Undead: 'EtherFire',

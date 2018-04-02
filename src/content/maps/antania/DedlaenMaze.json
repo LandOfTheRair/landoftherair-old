@@ -25808,7 +25808,7 @@
                  "name":"Townee Spawner",
                  "properties":
                     {
-                     "script":"antania\/dedlaenmaze\/townee"
+                     "script":"antania\/dedlaenmaze\/town-person"
                     },
                  "propertytypes":
                     {
@@ -25828,7 +25828,7 @@
                  "name":"Townee Spawner",
                  "properties":
                     {
-                     "script":"antania\/dedlaenmaze\/townee"
+                     "script":"antania\/dedlaenmaze\/town-person"
                     },
                  "propertytypes":
                     {

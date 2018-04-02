@@ -10,7 +10,7 @@ export class Disease extends SpellEffect {
   iconData = {
     name: 'death-juice',
     color: '#0a0',
-    tooltipDesc: 'Constantly receiving necrotic damage.'
+    tooltipDesc: 'Constantly receiving disease damage.'
   };
 
   maxSkillForSkillGain = 13;
@@ -25,7 +25,7 @@ export class Disease extends SpellEffect {
     /** PERK:CLASS:THIEF:Thieves have disease that does 150% damage. */
     if(caster.baseClass === 'Thief') mult = Math.floor(mult * 1.5);
 
-    const calcMod = Math.max(1, this.getCasterStat(caster, 'wis') - target.getTotalStat('con'));
+    const calcMod = Math.max(1, this.getCoreStat(caster) - target.getTotalStat('con'));
 
     const wisCheck = Math.max(1, Math.floor(mult * calcMod));
     const totalPotency = this.getTotalDamageRolls(caster);
@@ -42,7 +42,7 @@ export class Disease extends SpellEffect {
   effectStart(char: Character) {
     this.effectMessage(char, 'You were diseased!');
 
-    this.iconData.tooltipDesc = `Constantly receiving ${Math.abs(this.effectInfo.damage)} necrotic damage.`;
+    this.iconData.tooltipDesc = `Constantly receiving ${Math.abs(this.effectInfo.damage)} disease damage.`;
   }
 
   effectTick(char: Character) {
@@ -52,7 +52,7 @@ export class Disease extends SpellEffect {
       effect: this,
       defMsg: `You are diseased!`,
       damage: this.effectInfo.damage,
-      damageClass: 'necrotic'
+      damageClass: 'disease'
     });
 
   }

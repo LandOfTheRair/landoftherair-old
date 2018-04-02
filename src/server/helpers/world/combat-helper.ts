@@ -17,7 +17,9 @@ export type DamageType =
 | 'Fire'
 | 'Ice'
 | 'Water'
-| 'Energy';
+| 'Energy'
+| 'Poison'
+| 'Disease';
 
 export const BaseItemStatsPerTier = {
   Axe:                  { base: 2, min: 0, max: 2, weakChance: 10, damageBonus: 0 },
