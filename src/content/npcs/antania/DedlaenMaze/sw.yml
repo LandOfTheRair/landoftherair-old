@@ -256,7 +256,7 @@
 
   otherStats:
     con: 22
-    accuracy: 7
+    accuracy: 10
     offense: 7
     defense: 3
     mpregen: 50
