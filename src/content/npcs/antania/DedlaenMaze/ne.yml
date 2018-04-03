@@ -626,7 +626,7 @@
   sprite: 445
   alignment: Evil
   stats: 18
-  skillLevels: 8
+  skillLevels: 6
   level: 21
 
   skillOnKill: 1000
