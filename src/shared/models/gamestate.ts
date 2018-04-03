@@ -315,6 +315,8 @@ export class GameState {
   }
 
   calculateFOV(player): void {
+    if(!player) return;
+    
     const affected = {};
 
     const dist = 4;
