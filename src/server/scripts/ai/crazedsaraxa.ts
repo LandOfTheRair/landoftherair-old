@@ -66,7 +66,7 @@ export class CrazedSaraxaAIBehavior extends DefaultAIBehavior {
     }
 
     acolytes[spawnId] = acolyte;
-    
+
     acolyte.$$ai.death.add(() => {
       acolytes[spawnId] = null;
     });
