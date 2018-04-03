@@ -14,53 +14,53 @@
 - name: Rylt Guard Key
   desc: "a silver key with DO NOT LOSE - T??WIN hastily inscribed onto it"
   sprite: 357
-  value: 1
+  value: 100
   binds: true
 
 - name: Rylt Guard Key Enchanted
   desc: "a silver key with DO NOT LOSE - TONWIN hastily inscribed onto it"
   sprite: 357
-  value: 1
+  value: 200
   binds: true
 
 - name: Saraxa's Key
   desc: "a silver key that appears battered by rocks"
   sprite: 357
-  value: 1
+  value: 5000
   binds: true
 
 - name: Yzalt Sewer Key
   desc: "a silver key that reeks like sewage"
   sprite: 357
-  value: 1
+  value: 300
   binds: true
 
 - name: Ranata's Key
   desc: "a silver key with many clawmarks in it"
   sprite: 357
-  value: 1
+  value: 10
   binds: true
 
 - name: Warlord's Key
   desc: "a black key of orcish design"
   sprite: 363
-  value: 1
+  value: 4000
   binds: true
 
 - name: Dedlaen City Key
   desc: "a key to the city of the Maze, entrusted to those who prove themselves"
   sprite: 363
-  value: 1
+  value: 6000
   binds: true
 
 - name: Dedlaen Maze Key
   desc: "a silver key that smells like death"
   sprite: 357
-  value: 1
+  value: 6000
   binds: true
 
 - name: Dedlaen Naga Key
   desc: "a silver key that's wet and slimy"
   sprite: 357
-  value: 1
+  value: 10000
   binds: true
