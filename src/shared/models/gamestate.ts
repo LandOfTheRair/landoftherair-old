@@ -376,7 +376,7 @@ export class GameState {
       .filter(char => !char.isDead() && !includes(except, char.uuid) && this.isVisibleTo(ref, char, useSight));
   }
 
-  getAllInRangeRaw(ref: Character, radius, except: string[] = []): Character[] {
+  getAllInRangeRaw(ref: { x: number, y: number }, radius, except: string[] = []): Character[] {
     return this.getAllTargetsFromQuadtrees(ref, radius)
       .filter(char => !includes(except, char.uuid));
   }

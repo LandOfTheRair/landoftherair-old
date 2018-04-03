@@ -144,6 +144,14 @@ export class MoveHelper {
       }
     }
 
+    if(door.isOpen) {
+      const allInDoor = player.$$room.state.getAllInRangeRaw({ x: door.x / 64, y: (door.y / 64) - 1 }, 0);
+      if(allInDoor.length > 0) {
+        player.sendClientMessage('Something is blocking the door.');
+        return false;
+      }
+    }
+
     player.sendClientMessage(door.isOpen ? 'You close the door.' : 'You open the door.');
     gameState.toggleDoor(door);
     return true;
