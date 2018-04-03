@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.2.3 (03/04/2018)
+
+#### Balance Adjustments
+
+- [#747](https://github.com/LandOfTheRair/landoftherair/issues/747) Eating should reduce the target players max hp
+- [#735](https://github.com/LandOfTheRair/landoftherair/issues/735) Make the 4 starter bosses drop 2 trait scrolls
+- [#734](https://github.com/LandOfTheRair/landoftherair/issues/734) Limit trait scrolls per trait to be 5 per trait
+
+#### Bug Fixes
+
+- [#749](https://github.com/LandOfTheRair/landoftherair/issues/749) doors should not be closeable if someone is standing in them
+- [#748](https://github.com/LandOfTheRair/landoftherair/issues/748) TypeError: Cannot convert undefined or null to object
+
+---
+
 ## v0.2.2 (02/04/2018)
 
 #### Balance Adjustments
