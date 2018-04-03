@@ -238,15 +238,3 @@
   sprite: 266
   binds: true
   desc: "a gold ring plated with layers of silver"
-
-- name: Dedlaes Revive Ring
-  sprite: 27
-  desc: "a silver ring forged from the horn of a minotaur and reinforced with the egg of a dragon turtle and the crystalline heart of a vampire, set with a spectral pearl"
-  value: 10000
-  stats:
-    offense: 4
-    defense: 4
-  effect:
-    name: Revive
-    uses: 50
-    potency: 10

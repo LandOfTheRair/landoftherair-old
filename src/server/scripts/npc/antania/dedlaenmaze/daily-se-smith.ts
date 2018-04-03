@@ -5,7 +5,7 @@ const TURTLE_EGG = 'Dedlaen Dragon Turtle Egg';
 const MINO_HORN = 'Dedlaen Minotaur Horn';
 const GHOST_PEARL = 'Dedlaen Transmute Pearl';
 const VAMPIRE_HEART = 'Dedlaen Vampire Heart';
-const DEDLAES_RING = 'Dedlaes Revive Ring';
+const DEDLAES_RING = 'Dedlaes Revive Bracers';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
@@ -44,11 +44,11 @@ export const responses = (npc: NPC) => {
             player.setRightHand(item);
           });
 
-        return 'You\'ve earned this ring. It\'s very tough to make, but it is the most excellent ring a craftsman in this region can make!';
+        return 'You\'ve earned this. It\'s very tough to make, but it is the most excellent pair of bracers a craftsman in this region can make!';
       }
 
       return `I am the greatest craftsman in the land, unfortunately stuck in this terrifying maze.
-      Peer across the room and see my crafts line the walls. I can make you something too - the treasured ring my family taught me to make.
+      Peer across the room and see my crafts line the walls. I can make you something too - the treasured bracers my family taught me to make.
       Bring me the egg of the beast, the heart of the dark one, the horn of the wanderer, and the pearl of the specter.
       Prove to me your courage by holding the heart in your hand whilst the others are in your sack!`;
     });

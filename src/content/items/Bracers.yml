@@ -34,3 +34,17 @@
 
   requirements:
     level: 5
+
+- name: Dedlaes Revive Bracers
+  sprite: 119
+  desc: "a pair of bracers forged from the horn of a minotaur, reinforced with the egg of da dragon turtle and the crystalline heart of a vampire, set with many small spectral pearl shards"
+  value: 10000
+  stats:
+    offense: 4
+    defense: 4
+    hpregen: 5
+    mpregen: 5
+  effect:
+    name: Revive
+    uses: 50
+    potency: 10
