@@ -34,7 +34,7 @@
   randomStats:
     hp:
       min: 0
-      max: 65
+      max: 35
   sprite: 374
   desc: "a large iron helm with a flared-out neck protector"
   value: 244
@@ -45,7 +45,7 @@
   randomStats:
     mp:
       min: 0
-      max: 65
+      max: 35
   sprite: 374
   desc: "a large iron helm with a flared-out neck protector"
   value: 287
@@ -78,10 +78,10 @@
   randomStats:
     hp:
       min: 15
-      max: 30
+      max: 65
     mp:
       min: 15
-      max: 30
+      max: 65
   sprite: 309
   desc: "a small saucer commonly worn by goblinkin"
   value: 480
