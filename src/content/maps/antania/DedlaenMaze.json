@@ -22867,7 +22867,7 @@
                  "properties":
                     {
                      "lairName":"Dedlaen Ghast",
-                     "randomWalkRadius":20,
+                     "randomWalkRadius":7,
                      "respawnRate":3600,
                      "script":"global\/lair",
                      "shouldStrip":true,
