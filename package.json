@@ -4,7 +4,7 @@
   "description": "a prototype morpg",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel start:*",
+    "start": "npm-run-all --parallel start:client start:server:single",
     "start:server:plain": "ts-node src/server/index.ts",
     "start:server:plain:debug": "ts-node --inspect src/server/index.ts",
     "start:server": "nodemon --ignore \"client/\" --ignore \"dist/*\" --ignore \"*.json\" --exec \"ts-node \" -- \"src/server/index.ts\"",
