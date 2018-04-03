@@ -66,6 +66,10 @@ export class CrazedSaraxaAIBehavior extends DefaultAIBehavior {
     }
 
     acolytes[spawnId] = acolyte;
+    
+    acolyte.$$ai.death.add(() => {
+      acolytes[spawnId] = null;
+    });
 
     const acolyteMessageObject = { name: npc.name, message: `The acolyte begins channeling energy back to Crazed Saraxa!`, subClass: 'environment' };
     npc.sendClientMessageToRadius(acolyteMessageObject, 10);
