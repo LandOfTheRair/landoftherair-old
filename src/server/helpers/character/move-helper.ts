@@ -104,11 +104,17 @@ export class MoveHelper {
       let shouldOpen = false;
 
       if(player.rightHand && player.rightHand.itemClass === 'Key') {
+
+        if(player.rightHand.condition === 0) {
+          player.sendClientMessage('That key is not currently usable!');
+          return;
+        }
+
         if(requireHeld && player.hasHeldItem(requireHeld)) {
           shouldOpen = true;
         } else {
           player.sendClientMessage('The key snapped off in the lock!');
-          player.setRightHand(null);
+          player.rightHand.condition = 0;
           return;
         }
       }
