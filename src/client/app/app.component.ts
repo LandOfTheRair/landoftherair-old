@@ -216,7 +216,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     private renderer: Renderer2,
     private stripeCheckoutLoader: StripeCheckoutLoader
   ) {
-    this.authService.handleAuthentication();
     this.macroService.ignoreFunction = () => {
 
       // no macros when modals are up
@@ -234,11 +233,16 @@ export class AppComponent implements OnInit, AfterViewInit {
     };
   }
 
-  ngOnInit() {
-    this.authService.scheduleRenewal();
+  async ngOnInit() {
 
     if(!this.minimized) this.minimized = {};
     this.colyseus.init();
+
+    try {
+      await this.authService.handleAuthentication();
+    } catch(e) {
+      console.error('failed to log in', e);
+    }
 
     this.colyseus.isConnected$.subscribe((isConnected) => {
       if(isConnected) return;

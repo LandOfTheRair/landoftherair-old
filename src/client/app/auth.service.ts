@@ -27,20 +27,33 @@ export class AuthService {
     this.isReady = new Promise(resolve => this.resolveReady = resolve);
   }
 
-  public login() {
+  public async login() {
+    await this.resolveReady();
     this.auth0.authorize();
   }
 
-  public handleAuthentication(): void {
-    this.auth0.parseHash((err, authResult) => {
-      if(authResult && authResult.accessToken && authResult.idToken) {
-        window.location.hash = '';
-        this.setSession(authResult);
-      } else if(err) {
-        console.error(err);
-      }
+  public async handleAuthentication(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.auth0.parseHash((err, authResult) => {
 
-      this.resolveReady(authResult);
+        // just authenticated
+        if(authResult && authResult.accessToken && authResult.idToken) {
+          window.location.hash = '';
+          this.setSession(authResult);
+          resolve();
+
+        // failed to auth
+        } else if(err) {
+          console.error(err);
+          reject(err);
+
+        // already authenticated
+        } else {
+          resolve();
+        }
+
+        this.resolveReady(authResult);
+      });
     });
   }
 
