@@ -475,8 +475,8 @@ export class Character {
     this.recalculateStats();
   }
 
-  loseBaseStat(stat: StatName, value = -1) {
-    this.stats[stat] += value;
+  loseBaseStat(stat: StatName, value = 1) {
+    this.stats[stat] -= value;
     if(this.stats[stat] <= 1) this.stats[stat] = 1;
     this.recalculateStats();
   }

@@ -165,6 +165,8 @@ export class NPC extends Character {
       const lostXP = Math.floor(dead.calcLevelXP(dead.level) / 40) * this.$$shouldEatTier;
       const lostSkill = 500 * this.$$shouldEatTier;
 
+      dead.loseBaseStat('hp', this.$$shouldEatTier);
+
       dead.loseExpOrSkill({ lostXPMin: lostXP, lostXPMax: lostXP, lostSkillMin: lostSkill, lostSkillMax: lostSkill });
     }
   }
