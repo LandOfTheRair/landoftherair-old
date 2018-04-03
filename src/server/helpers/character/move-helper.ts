@@ -112,6 +112,7 @@ export class MoveHelper {
 
         if(requireHeld && player.hasHeldItem(requireHeld)) {
           shouldOpen = true;
+          player.rightHand.condition -= 1000;
         } else {
           player.sendClientMessage('The key snapped off in the lock!');
           player.rightHand.condition = 0;
