@@ -640,18 +640,20 @@ export class Player extends Character {
   public recalculateStats() {
 
     // calculate trait bonuses
-    Object.keys(this.traitLevels).forEach(traitName => {
-      set(this.traitLevels, [traitName, 'gearBoost'], 0);
-    });
+    if(this.traitLevels) {
+      Object.keys(this.traitLevels).forEach(traitName => {
+        set(this.traitLevels, [traitName, 'gearBoost'], 0);
+      });
 
-    this.traitableGear.forEach(item => {
-      const { name, level } = get(item, 'trait', { name: '', level: 0 });
+      this.traitableGear.forEach(item => {
+        const { name, level } = get(item, 'trait', { name: '', level: 0 });
 
-      if(level === 0 || !name) return;
+        if(level === 0 || !name) return;
 
-      const curLevel = get(this.traitLevels, [name, 'gearBoost'], 0);
-      set(this.traitLevels, [name, 'gearBoost'], curLevel + level);
-    });
+        const curLevel = get(this.traitLevels, [name, 'gearBoost'], 0);
+        set(this.traitLevels, [name, 'gearBoost'], curLevel + level);
+      });
+    }
 
     // recalculate everything else
     super.recalculateStats();
