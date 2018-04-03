@@ -316,7 +316,7 @@ export class GameState {
 
   calculateFOV(player): void {
     if(!player) return;
-    
+
     const affected = {};
 
     const dist = 4;
@@ -454,8 +454,8 @@ export class GameState {
   }
 
   private getAllTargetsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
-    return this.getAllNPCsFromQuadtrees(pos, radius)
-           .concat(this.getAllPlayersFromQuadtrees(pos, radius));
+    return compact(this.getAllNPCsFromQuadtrees(pos, radius)
+           .concat(this.getAllPlayersFromQuadtrees(pos, radius)));
   }
 
   getPossibleTargetsFor(me: NPC, radius): Character[] {
