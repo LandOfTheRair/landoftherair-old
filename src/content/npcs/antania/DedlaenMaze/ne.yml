@@ -829,6 +829,7 @@
 
   gear:
     Armor: Antanian Tunic
+    Ear: Enemy DarkVision Earring
 
   leashMessage: "the townee says: This is too much for me! I can't do this!"
 
@@ -860,6 +861,7 @@
 
   gear:
     Armor: Antanian Tunic
+    Ear: Enemy DarkVision Earring
 
   rightHand:
     - Antanian Greatmace
