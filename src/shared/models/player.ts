@@ -634,6 +634,7 @@ export class Player extends Character {
     this.traitLevels[trait] = this.traitLevels[trait] || { level: 0, gearBoost: 0, active: true, reqBaseClass: '' };
     this.traitLevels[trait].reqBaseClass = reqBaseClass;
     extend(this.traitLevels[trait], extra);
+    this.traitLevels[trait].level = this.traitLevels[trait].level || 0;
     this.traitLevels[trait].level++;
   }
 
