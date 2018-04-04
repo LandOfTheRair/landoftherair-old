@@ -229,12 +229,12 @@ export class GameWorld extends Room<GameState> {
       this.itemGC.cancel();
     }
 
-    await this.saveGround();
-
     this.saveBossTimers();
     if(this.partyManager) {
       this.partyManager.stopEmitting();
     }
+
+    await this.saveGround();
   }
 
   async onJoin(client, options) {
