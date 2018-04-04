@@ -1,6 +1,8 @@
 import { NPC } from '../../../../../shared/models/npc';
 import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
+import { sortBy } from 'lodash';
+
 const TURTLE_EGG = 'Dedlaen Dragon Turtle Egg';
 const MINO_HORN = 'Dedlaen Minotaur Horn';
 const GHOST_PEARL = 'Dedlaen Transmute Pearl';
@@ -32,7 +34,7 @@ export const responses = (npc: NPC) => {
           indexes.push(foundIndexes[0]);
         });
 
-        indexes = indexes.sort().reverse();
+        indexes = sortBy(indexes);
 
         if(indexes.length !== 3) return 'You do not have all of the items I asked for!';
 

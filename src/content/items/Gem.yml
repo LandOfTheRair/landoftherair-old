@@ -241,6 +241,7 @@
   desc: "a small black pearl with a thin layer of frost on it"
   value: 3000
   sprite: 315
+
   stats:
     effect:
       name: IceMist
@@ -254,6 +255,7 @@
   desc: "a small white pearl bathed in a faint golden glow"
   value: 10000
   sprite: 313
+
   effect:
     name: Transmute
     uses: 10
@@ -274,6 +276,9 @@
   sprite: 361
 
   maxEncrusts: 1
+
+  binds: true
+  tellsBind: true
 
   stats:
     str: 1
