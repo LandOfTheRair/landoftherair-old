@@ -5,35 +5,35 @@
 
 - result: Tower Mage Gem
   chance: 1
-  maxChance: 2500
+  maxChance: 2000
 
 - result: Tower Healer Gem
   chance: 1
-  maxChance: 2500
+  maxChance: 2000
 
 - result: Tower Warrior Gem
   chance: 1
-  maxChance: 2500
+  maxChance: 2000
 
 - result: Tower Thief Gem
   chance: 1
-  maxChance: 2500
+  maxChance: 2000
 
 - result: Tower Mage Earring
   chance: 1
-  maxChance: 3500
+  maxChance: 2500
 
 - result: Tower Healer Earring
   chance: 1
-  maxChance: 3500
+  maxChance: 2500
 
 - result: Tower Warrior Earring
   chance: 1
-  maxChance: 3500
+  maxChance: 2500
 
 - result: Tower Thief Earring
   chance: 1
-  maxChance: 3500
+  maxChance: 2500
 
 - result: Tower Offense Boots
   chance: 1

@@ -64,6 +64,22 @@
       chance: 1
       maxChance: 300
 
+    - result: Tower Mage Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Healer Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Warrior Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Thief Earring
+      chance: 1
+      maxChance: 3500
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
@@ -149,6 +165,22 @@
     - result: Tower Titanium Chunk
       chance: 1
       maxChance: 300
+
+    - result: Tower Mage Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Healer Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Warrior Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Thief Earring
+      chance: 1
+      maxChance: 3500
 
   copyDrops:
     - drop: 'gear.Armor'
@@ -244,6 +276,22 @@
       chance: 1
       maxChance: 300
 
+    - result: Tower Mage Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Healer Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Warrior Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Thief Earring
+      chance: 1
+      maxChance: 3500
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
@@ -313,6 +361,22 @@
     - result: Tower Titanium Chunk
       chance: 1
       maxChance: 300
+
+    - result: Tower Mage Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Healer Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Warrior Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Thief Earring
+      chance: 1
+      maxChance: 3500
 
   copyDrops:
     - drop: 'gear.Armor'
@@ -395,6 +459,22 @@
       chance: 1
       maxChance: 300
 
+    - result: Tower Mage Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Healer Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Warrior Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Thief Earring
+      chance: 1
+      maxChance: 3500
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
@@ -470,6 +550,22 @@
       chance: 1
       maxChance: 300
 
+    - result: Tower Mage Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Healer Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Warrior Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Thief Earring
+      chance: 1
+      maxChance: 3500
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
@@ -537,6 +633,22 @@
     - result: Tower Titanium Chunk
       chance: 1
       maxChance: 300
+
+    - result: Tower Mage Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Healer Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Warrior Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Thief Earring
+      chance: 1
+      maxChance: 3500
 
   gear:
     Hands: Maze Skeleton Claws
@@ -609,6 +721,22 @@
     - result: Tower Titanium Chunk
       chance: 1
       maxChance: 300
+
+    - result: Tower Mage Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Healer Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Warrior Earring
+      chance: 1
+      maxChance: 3500
+
+    - result: Tower Thief Earring
+      chance: 1
+      maxChance: 3500
 
   copyDrops:
     - drop: 'gear.Armor'
