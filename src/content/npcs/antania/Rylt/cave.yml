@@ -36,6 +36,10 @@
       - Antanian Cloak
 
   drops:
+    - result: Copper Ore (Small)
+      chance: 1
+      maxChance: 100
+
     - result: Antanian Leather Gloves
       chance: 20
       maxChance: 100

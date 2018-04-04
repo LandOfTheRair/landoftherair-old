@@ -29,6 +29,11 @@
       - Antanian Studded Tunic
       - Antanian Cloak
 
+  drops:
+    - result: Copper Ore (Small)
+      chance: 1
+      maxChance: 100
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
