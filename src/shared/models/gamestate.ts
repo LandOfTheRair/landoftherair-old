@@ -670,6 +670,7 @@ export class GameState {
   serializableGroundItems() {
     const groundItems = cloneDeep(this.groundItems);
     Object.keys(groundItems).forEach(x => {
+
       Object.keys(groundItems[x]).forEach(y => {
         delete groundItems[x][y].Corpse;
 
@@ -677,8 +678,14 @@ export class GameState {
           groundItems[x][y][cat].forEach(item => {
             delete item.$heldBy;
           });
+
+          if(!groundItems[x][y][cat]) delete groundItems[x][y][cat];
         });
+
+        if(!groundItems[x][y]) delete groundItems[x][y];
       });
+
+      if(!groundItems[x]) delete groundItems[x];
     });
     return groundItems;
   }
