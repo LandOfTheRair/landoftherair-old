@@ -6,8 +6,8 @@ export class ResourceSpawner extends Spawner {
 
   constructor(room, opts, properties) {
 
-    const spawnerProps = extend({
-      respawnRate: 3600,
+    const spawnerProps: any = extend({
+      respawnRate: 1800,
       initialSpawn: 1,
       maxSpawn: 1,
       spawnRadius: 0,
