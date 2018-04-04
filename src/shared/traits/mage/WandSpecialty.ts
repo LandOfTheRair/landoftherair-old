@@ -13,7 +13,7 @@ export class WandSpecialty extends Trait {
   static maxLevel = 5;
 
   static canBuy(player: Player): boolean {
-    return super.canBuy(player) && player.level >= 15;
+    return super.canBuy(player) && player.level >= 10;
   }
 
 }
