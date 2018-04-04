@@ -38,7 +38,7 @@ export class CrazedSedgwickAIBehavior extends DefaultAIBehavior {
     if(!this.trigger75 && npc.hp.ltePercent(75)) {
       this.trigger75 = true;
 
-      setTimeout(() => {
+      npc.$$room.clock.setTimeout(() => {
         this.blast();
       }, 2000);
     }
@@ -46,7 +46,7 @@ export class CrazedSedgwickAIBehavior extends DefaultAIBehavior {
     if(!this.trigger50 && npc.hp.ltePercent(50)) {
       this.trigger50 = true;
 
-      setTimeout(() => {
+      npc.$$room.clock.setTimeout(() => {
         this.blast();
       }, 2000);
     }
@@ -54,7 +54,7 @@ export class CrazedSedgwickAIBehavior extends DefaultAIBehavior {
     if(!this.trigger25 && npc.hp.ltePercent(25)) {
       this.trigger25 = true;
 
-      setTimeout(() => {
+      npc.$$room.clock.setTimeout(() => {
         this.blast();
       }, 2000);
     }

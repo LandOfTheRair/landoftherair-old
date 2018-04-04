@@ -81,8 +81,6 @@ export class GameWorld extends Room<GameState> {
 
   private itemGC: any;
 
-  private clearTimers: any[] = [];
-
   private usernameClientHash = {};
 
   private events: { [key: string]: Signal } = {};
@@ -198,13 +196,14 @@ export class GameWorld extends Room<GameState> {
       const timerData = await this.loadBossTimers();
       const spawnerTimers = timerData ? timerData.spawners : [];
 
-      setTimeout(() => {
-        this.loadNPCsFromMap();
-      }, 1000);
-
-      setTimeout(() => {
+      this.clock.setTimeout(() => {
         this.loadSpawners(spawnerTimers);
         this.loadDropTables();
+
+        this.clock.setTimeout(() => {
+          this.loadNPCsFromMap();
+        }, 1000);
+
       }, 0);
 
       this.initGround();
@@ -229,8 +228,6 @@ export class GameWorld extends Room<GameState> {
     if(this.itemGC) {
       this.itemGC.cancel();
     }
-
-    this.clearTimers.forEach(timer => clearTimeout(timer));
 
     await this.saveGround();
 
@@ -283,10 +280,10 @@ export class GameWorld extends Room<GameState> {
     player.respawnPoint = clone(this.mapRespawnPoint);
 
     if(this.mapName === 'Tutorial') {
-      setTimeout(() => {
+      this.clock.setTimeout(() => {
         player.sendClientMessage('Welcome to Land of the Rair!');
         this.send(client, { action: 'take_tour' });
-      });
+      }, 0);
     }
 
     this.usernameClientHash[player.username] = { client };
@@ -301,9 +298,9 @@ export class GameWorld extends Room<GameState> {
     this.setPlayerXY(player, player.x, player.y);
 
     // 0,0 move to get info on the current tile
-    setTimeout(() => {
+    this.clock.setTimeout(() => {
       MoveHelper.move(player, { room: this, gameState: this.state, x: 0, y: 0 });
-    });
+    }, 0);
 
     this.send(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
     this.send(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
@@ -733,14 +730,11 @@ export class GameWorld extends Room<GameState> {
   public createDarkness(startX: number, startY: number, radius: number, durationInMinutes: number): void {
     const darkTimestamp = Date.now();
 
-    const timer = setTimeout(() => {
+    this.clock.setTimeout(() => {
       this.state.removeDarkness(startX, startY, radius, darkTimestamp);
-      pull(this.clearTimers, timer);
     }, durationInMinutes * 1000 * 15);
 
     this.state.addDarkness(startX, startY, radius, darkTimestamp);
-
-    this.clearTimers.push(timer);
   }
 
   public removeDarkness(startX: number, startY: number, radius: number) {

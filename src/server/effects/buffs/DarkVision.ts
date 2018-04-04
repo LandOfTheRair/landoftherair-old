@@ -45,7 +45,7 @@ export class DarkVision extends SpellEffect {
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your vision returns to normal.');
 
-    setTimeout(() => {
+    char.$$room.clock.setTimeout(() => {
       char.$$room.state.calculateFOV(char);
       if(char.isPlayer()) {
         char.$$room.updateFOV(char);

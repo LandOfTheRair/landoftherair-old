@@ -65,7 +65,7 @@ export class PartyManager {
 
   // this is awful.
   private delayedStatRecalculation(player: Player) {
-    setTimeout(() => player.recalculateStats(), 1000);
+    player.$$room.clock.setTimeout(() => player.recalculateStats(), 1000);
   }
 
   private sendPartyMessage(partyName: string, message: string) {
