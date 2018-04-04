@@ -43,7 +43,7 @@
 - name: Dedlaen Dueling Axe
   quality: 5
   desc: "a finely-balanced dueling axe with a gigantic grip"
-  tier: 4
+  tier: 5
   stats:
     offense: 3
     defense: 3
