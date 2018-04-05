@@ -49,7 +49,7 @@ export class Autoheal extends SpellEffect {
 
     char.sendClientMessage('A warm surge of energy runs through your chest!');
 
-    this.duration = Math.max(1, this.duration - 50);
+    this.duration = Math.max(1, this.duration - 150);
 
     CombatHelper.magicalAttack(caster, char, {
       effect: this,
