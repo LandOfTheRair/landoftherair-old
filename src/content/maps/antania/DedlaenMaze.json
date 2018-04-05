@@ -27420,6 +27420,7 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "creator":"Blackmoore",
      "itemExpirationHours":6,
      "itemGarbageCollection":30,
      "maxCreatures":1200,
@@ -27432,6 +27433,7 @@
     },
  "propertytypes":
     {
+     "creator":"string",
      "itemExpirationHours":"int",
      "itemGarbageCollection":"int",
      "maxCreatures":"int",
