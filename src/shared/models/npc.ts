@@ -112,7 +112,7 @@ export class NPC extends Character {
     }));
   }
 
-  tick(canMove = false, playerLocations?) {
+  tick(canMove = false, amINearAPlayer?) {
     super.tick();
 
     if(this.$$ai && this.$$ai.mechanicTick) {
@@ -126,7 +126,7 @@ export class NPC extends Character {
     if(this.$$ai && this.$$ai.tick) {
       const actions = this.getTotalStat('actionSpeed');
       for(let i = 0; i < actions; i++) {
-        this.$$ai.tick.dispatch(canMove, playerLocations);
+        this.$$ai.tick.dispatch(canMove, amINearAPlayer);
       }
     }
   }

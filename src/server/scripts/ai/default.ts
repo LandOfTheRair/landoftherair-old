@@ -58,7 +58,7 @@ export class DefaultAIBehavior {
     return sample(allies.filter(ally => CommandExecutor.checkIfCanUseSkill(skill, npc, ally)));
   }
 
-  public tick(canMove: boolean, playerLocations: any) {
+  public tick(canMove: boolean, amINearAPlayer?: boolean) {
 
     const npc = this.npc;
 
@@ -79,12 +79,7 @@ export class DefaultAIBehavior {
     } else {
 
       let shouldDoTargetting = true;
-
-      if(playerLocations) {
-        const amINearAPlayer = get(playerLocations, [npc.x, npc.y]);
-
-        if(!amINearAPlayer) shouldDoTargetting = false;
-      }
+      if(!amINearAPlayer) shouldDoTargetting = false;
 
       if(shouldDoTargetting) {
         const targetsInRange = npc.$$room.state.getPossibleTargetsFor(npc, 4);

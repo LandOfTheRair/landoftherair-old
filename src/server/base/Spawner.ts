@@ -2,7 +2,7 @@
 import { NPCLoader } from '../helpers/character/npc-loader';
 import { LootTable } from 'lootastic';
 
-import { sample, random, extend, isNumber, isString, pull, every, compact, some, isArray } from 'lodash';
+import { sample, random, extend, isNumber, isString, pull, every, compact, some, get, isArray } from 'lodash';
 import { NPC } from '../../shared/models/npc';
 import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
@@ -407,8 +407,11 @@ export class Spawner {
 
   npcTick(canMove: boolean, playerLocations: any): void {
     this.npcs.forEach(npc => {
+
+      const amINearAPlayer = get(playerLocations, [npc.x, npc.y]);
+
       if(npc.hostility === 'Never') {
-        npc.tick(canMove, playerLocations);
+        npc.tick(canMove, amINearAPlayer);
         return;
       }
 
@@ -417,13 +420,13 @@ export class Spawner {
       // dead things always tick when the spawner is slow for normal-speed corpse rotting
       if(this.$$isStayingSlow) {
         if(npc.isDead()) {
-          npc.tick(false, playerLocations);
+          npc.tick(false, amINearAPlayer);
         }
         return;
       }
 
-      npc.tick(canMove, playerLocations);
-      npc.$$room.state.calculateFOV(npc);
+      npc.tick(canMove, amINearAPlayer);
+      if(amINearAPlayer) npc.$$room.state.calculateFOV(npc);
     });
   }
 
