@@ -408,6 +408,8 @@ export class Spawner {
   npcTick(canMove: boolean, playerLocations: any): void {
     this.npcs.forEach(npc => {
 
+      let oldPos = { x: npc.x, y: npc.y };
+
       const amINearAPlayer = get(playerLocations, [npc.x, npc.y]);
 
       if(npc.hostility === 'Never') {
@@ -426,7 +428,7 @@ export class Spawner {
       }
 
       npc.tick(canMove, amINearAPlayer);
-      if(amINearAPlayer) npc.$$room.state.calculateFOV(npc);
+      if(amINearAPlayer && (oldPos.x !== npc.x || oldPos.y !== npc.y)) npc.$$room.state.calculateFOV(npc);
     });
   }
 
