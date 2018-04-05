@@ -200,6 +200,7 @@
 
   otherStats:
     con: 25
+    wil: 33
     accuracy: 5
     offense: 5
     perception: 300
