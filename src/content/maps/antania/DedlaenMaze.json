@@ -27422,7 +27422,7 @@
     {
      "itemExpirationHours":6,
      "itemGarbageCollection":30,
-     "maxCreatures":1000,
+     "maxCreatures":1200,
      "maxSkill":20,
      "region":"Antania",
      "respawnMap":"DedlaenMaze",
