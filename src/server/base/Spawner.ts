@@ -408,7 +408,7 @@ export class Spawner {
   npcTick(canMove: boolean, playerLocations: any): void {
     this.npcs.forEach(npc => {
 
-      let oldPos = { x: npc.x, y: npc.y };
+      const oldPos = { x: npc.x, y: npc.y };
 
       const amINearAPlayer = get(playerLocations, [npc.x, npc.y]);
 
