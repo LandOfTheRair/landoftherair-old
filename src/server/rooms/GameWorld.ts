@@ -111,7 +111,7 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.maxSkill || 1;
   }
 
-  get maxCreatures() {
+  private get maxCreatures() {
     return this.state.map.properties.maxCreatures || 0;
   }
 
@@ -120,7 +120,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   get canSpawnCreatures(): boolean {
-    return !this.disableCreatureSpawn && this.totalCreaturesInWorld < this.maxCreatures;
+    return !this.disableCreatureSpawn; // && this.totalCreaturesInWorld < this.maxCreatures;
   }
 
   get decayRateHours() {

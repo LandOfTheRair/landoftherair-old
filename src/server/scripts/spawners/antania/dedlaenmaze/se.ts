@@ -12,9 +12,9 @@ export class SESpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 5,
-      initialSpawn: 3,
-      maxCreatures: 10,
+      respawnRate: 3,
+      initialSpawn: 1,
+      maxCreatures: 20,
       spawnRadius: 10,
       randomWalkRadius: 15,
       leashRadius: 20,
