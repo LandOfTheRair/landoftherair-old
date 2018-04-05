@@ -13,6 +13,8 @@
   otherStats:
     con: 15
     wil: 5
+    str: 25
+    dex: 25
     agi: 30
     defense: 10
     perception: 245

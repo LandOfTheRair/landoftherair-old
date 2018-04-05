@@ -192,7 +192,7 @@
   hostility: Always
   sprite: 495
   alignment: Evil
-  stats: 20
+  stats: 23
   skillLevels: 6
   level: 21
 
@@ -201,7 +201,7 @@
   otherStats:
     con: 25
     wil: 33
-    accuracy: 5
+    accuracy: 10
     offense: 5
     perception: 300
     stealth: 50

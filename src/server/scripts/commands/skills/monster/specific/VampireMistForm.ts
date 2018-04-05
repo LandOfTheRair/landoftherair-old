@@ -38,7 +38,7 @@ class MistFormEffect extends Effect {
       const asper = new Asper({ potency: 50 });
       asper.cast(char, target);
 
-      const disease = new Disease({ potency: 10 });
+      const disease = new Disease({ potency: 50 });
       disease.cast(char, target, this.skillRef);
     });
   }
