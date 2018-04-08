@@ -39,7 +39,7 @@ export class Blind extends SpellEffect {
       return;
     }
 
-    this.duration = Math.max(7, (this.potency + baseStat) - targetStat);
+    this.duration = Math.min(15, Math.max(7, (this.potency + baseStat) - targetStat));
     target.applyEffect(this);
   }
 
