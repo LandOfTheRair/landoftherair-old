@@ -449,6 +449,26 @@
                  "width":64,
                  "x":2368,
                  "y":2432
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":193,
+                 "name":"Orckin Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/ne-orckin"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2624,
+                 "y":1216
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -486,7 +506,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":192,
+ "nextobjectid":194,
  "orientation":"orthogonal",
  "properties":
     {

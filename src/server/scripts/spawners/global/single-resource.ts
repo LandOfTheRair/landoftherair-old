@@ -16,6 +16,7 @@ export class SingleResourceSpawner extends Spawner {
       shouldSerialize: true,
       alwaysSpawn: true,
       requireDeadToRespawn: true,
+      eliteTickCap: 0,
       npcAISettings: ['resource']
     }, properties);
 

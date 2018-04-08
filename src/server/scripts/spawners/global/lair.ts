@@ -18,7 +18,8 @@ export class LairSpawner extends Spawner {
       requireDeadToRespawn: true,
       shouldStrip: true,
       stripOnSpawner: true,
-      canSlowDown: false
+      canSlowDown: false,
+      eliteTickCap: 0
     }, properties);
 
     if(spawnerProps.leashRadius < spawnerProps.randomWalkRadius) spawnerProps.leashRadius = spawnerProps.randomWalkRadius + 10;

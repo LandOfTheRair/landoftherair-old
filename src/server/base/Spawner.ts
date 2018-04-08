@@ -10,6 +10,7 @@ import { LootHelper } from '../helpers/world/loot-helper';
 import { Dangerous } from '../effects/special/Dangerous';
 import { Attribute } from '../effects/augments/Attribute';
 import { GameWorld } from '../rooms/GameWorld';
+import {StatName} from '../../shared/models/character';
 
 export class Spawner {
 
@@ -57,9 +58,10 @@ export class Spawner {
   stripX: number;
   stripY: number;
   shouldEatTier = 0;
+  eliteTickCap = 50;
 
   $$slowTicks = 0;
-
+  $$eliteTicks = 0;
   $$isStayingSlow = false;
 
   removeWhenNoNPCs = false;
@@ -325,7 +327,25 @@ export class Spawner {
     return npc;
   }
 
+  private tryElitify(npc: NPC) {
+    if(npc.hostility === 'Never') return npc;
+
+    if(this.eliteTickCap <= 0) return npc;
+
+    this.$$eliteTicks++;
+    if(this.$$eliteTicks < this.eliteTickCap) return npc;
+
+    this.$$eliteTicks = 0;
+
+    npc.name = `elite ${npc.name}`;
+
+    Object.keys(npc.baseStats).forEach(stat => {
+      npc.gainBaseStat(<StatName>stat, Math.round(npc.getBaseStat(<StatName>stat) / 3));
+    });
+  }
+
   addNPC(npc: NPC, doIncrement = true) {
+    this.tryElitify(npc);
     this.npcs.push(npc);
     this.room.addNPC(npc);
     if(doIncrement) this.room.totalCreaturesInWorld++;
