@@ -52,6 +52,8 @@ export class NPC extends Character {
   giveXp: any;
   repMod: Array<{ delta: number, allegiance: Allegiance }>;
 
+  traitLevels: any;
+
   usableSkills: string[];
 
   leashMessage: string;
@@ -264,5 +266,11 @@ export class NPC extends Character {
   getZeroTimes(char: Character, attack: string) {
     this.$$targetDamageDone = this.$$targetDamageDone || {};
     return get(this, ['$$targetDamageDone', char.uuid, attack, 'zeroTimes'], 0);
+  }
+
+  getTraitLevel(trait: string): number {
+    if(!this.traitLevels) return 0;
+
+    return get(this, ['traitLevels', trait], 0);
   }
 }

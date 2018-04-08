@@ -791,6 +791,9 @@
   usableSkills:
     - Charge
 
+  traitLevels:
+    OffhandFinesse: 10
+
   drops:
     - result: Tower Titanium Chunk
       chance: -1

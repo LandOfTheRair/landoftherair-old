@@ -28,7 +28,7 @@ export class ItemCreator {
         const rolled = random(min, max);
 
         potentialItem.trait.level = rolled;
-        
+
         let percentileRank = +(((rolled) / (max)) / 0.25).toFixed(0);
         if(percentileRank <= 0) percentileRank = 1;
 
