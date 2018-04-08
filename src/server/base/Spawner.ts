@@ -411,6 +411,9 @@ export class Spawner {
       const oldPos = { x: npc.x, y: npc.y };
 
       const amINearAPlayer = get(playerLocations, [npc.x, npc.y]);
+      if(!amINearAPlayer) {
+        delete npc.fov;
+      }
 
       if(npc.hostility === 'Never') {
         npc.tick(canMove, amINearAPlayer);
