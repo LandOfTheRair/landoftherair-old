@@ -13,7 +13,7 @@
 
   otherStats:
     con: 25
-    wil: 33
+    wil: 29
     accuracy: 5
     offense: 5
     perception: 300
@@ -197,7 +197,7 @@
   otherStats:
     waterResist: 500000
     con: 35
-    wil: 33
+    wil: 29
     armorClass: 30
     accuracy: 10
     defense: 10

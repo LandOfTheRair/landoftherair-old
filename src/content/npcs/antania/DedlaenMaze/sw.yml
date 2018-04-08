@@ -148,7 +148,7 @@
 
   otherStats:
     con: 18
-    wil: 33
+    wil: 29
     accuracy: 10
     offense: 7
     defense: 3
@@ -211,7 +211,7 @@
 
   otherStats:
     con: 18
-    wil: 33
+    wil: 29
     accuracy: 10
     offense: 10
     defense: 3
