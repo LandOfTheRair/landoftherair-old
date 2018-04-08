@@ -1,5 +1,40 @@
 # Changelog
 
+## v0.2.4 (08/04/2018)
+
+#### Enhancements
+
+- [#770](https://github.com/LandOfTheRair/landoftherair/issues/770) non-equippable items should go to sack from locker on right click
+- [#768](https://github.com/LandOfTheRair/landoftherair/issues/768) traits should contribute to star rating
+- [#764](https://github.com/LandOfTheRair/landoftherair/issues/764) delete fov when an enemy goes inactive or slow
+- [#763](https://github.com/LandOfTheRair/landoftherair/issues/763) GM align should allow you to always see creatures
+- [#758](https://github.com/LandOfTheRair/landoftherair/issues/758) Add note in profile about what adding a discord tag does
+- [#757](https://github.com/LandOfTheRair/landoftherair/issues/757) special "global" drop table
+
+#### Balance Adjustments
+
+- [#755](https://github.com/LandOfTheRair/landoftherair/issues/755) Nerf blind
+- [#754](https://github.com/LandOfTheRair/landoftherair/issues/754) NPCs should be able to get traits
+
+#### New Content
+
+- [#772](https://github.com/LandOfTheRair/landoftherair/issues/772) Wall sight buff
+- [#767](https://github.com/LandOfTheRair/landoftherair/issues/767) elite monsters
+- [#766](https://github.com/LandOfTheRair/landoftherair/issues/766) zarn can give a buff "utility" based on the current gem held
+- [#765](https://github.com/LandOfTheRair/landoftherair/issues/765) zarn should have a trait examine feature
+
+#### Bug Fixes
+
+- [#773](https://github.com/LandOfTheRair/landoftherair/issues/773) duplicate corpses when hasted killing
+- [#771](https://github.com/LandOfTheRair/landoftherair/issues/771) insanes are attacking through walls
+- [#769](https://github.com/LandOfTheRair/landoftherair/issues/769) npcs no longer change direction when talked to
+- [#759](https://github.com/LandOfTheRair/landoftherair/issues/759) TypeError: phrase.split is not a function
+- [#756](https://github.com/LandOfTheRair/landoftherair/issues/756) resource nodes should be immune to status effects and moving
+- [#751](https://github.com/LandOfTheRair/landoftherair/issues/751) TypeError: Cannot read property 'hasEffect' of undefined
+- [#750](https://github.com/LandOfTheRair/landoftherair/issues/750) TypeError: Cannot read property 'isDead' of undefined
+
+---
+
 ## v0.2.3 (03/04/2018)
 
 #### Balance Adjustments
