@@ -124,3 +124,5 @@ export * from './arts/Multistrike';
 export * from './arts/Taunt';
 
 export * from './antibuffs/LoweredDefenses';
+
+export * from './buffs/WallSight';

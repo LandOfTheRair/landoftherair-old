@@ -314,7 +314,7 @@ export class GameState {
     });
   }
 
-  calculateFOV(player): void {
+  calculateFOV(player: Character): void {
     if(!player) return;
 
     const affected = {};
@@ -346,6 +346,15 @@ export class GameState {
             affected[xx - player.x] = affected[xx - player.x] || {};
             affected[xx - player.x][yy - player.y] = false;
           }
+        }
+      }
+    }
+
+    if(player.hasEffect('WallSight')) {
+      for(let xx = player.x - dist; xx <= player.x + dist; xx++) {
+        for(let yy = player.y - dist; yy <= player.y + dist; yy++) {
+          affected[xx - player.x] = affected[xx - player.x] || {};
+          affected[xx - player.x][yy - player.y] = true;
         }
       }
     }

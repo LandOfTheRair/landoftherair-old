@@ -16,6 +16,7 @@ export * from './GMPartyJoin';
 export * from './GMRespawn';
 export * from './GMSearchItems';
 export * from './GMSearchNPCs';
+export * from './GMSight';
 export * from './GMSpawnNPC';
 export * from './GMSummon';
 export * from './GMTeleport';

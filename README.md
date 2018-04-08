@@ -171,6 +171,7 @@ You also get access to some commands in-game:
 * `@summon playerish` - summon any player who matches playerish
 * `@teleport <x> <y> [map]` - teleport to X,Y, and if map is specified, you'll also change maps
 * `@teleportto npcish` - teleport to an npc matching a name like npcish
+* `@sight` - give yourself the ability to see through walls
 
 #### Game Settings
 
