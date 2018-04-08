@@ -17,13 +17,22 @@ export class ItemCreator {
 
   private rollStatsForItem(potentialItem, room?: GameWorld): Item {
 
+    const percentileValues = [];
+
     if(potentialItem.trait) {
       if(isArray(potentialItem.trait.name)) {
         potentialItem.trait.name = sample(potentialItem.trait.name);
       }
       if(!isNumber(potentialItem.trait.level)) {
         const { min, max } = potentialItem.trait.level;
-        potentialItem.trait.level = random(min, max);
+        const rolled = random(min, max);
+
+        potentialItem.trait.level = rolled;
+        
+        let percentileRank = +(((rolled) / (max)) / 0.25).toFixed(0);
+        if(percentileRank <= 0) percentileRank = 1;
+
+        percentileValues.push(rolled === max ? Quality.PERFECT : percentileRank);
       }
     }
 
@@ -31,8 +40,6 @@ export class ItemCreator {
       potentialItem.stats = potentialItem.stats || {};
 
       const allRandomStats = Object.keys(potentialItem.randomStats);
-
-      const percentileValues = [];
 
       allRandomStats.forEach(randomStat => {
         const { min, max } = potentialItem.randomStats[randomStat];
@@ -48,11 +55,11 @@ export class ItemCreator {
 
         percentileValues.push(rolled === max ? Quality.PERFECT : percentileRank);
       });
+    }
 
-      if(percentileValues.length > 0) {
-        const overallQuality = Math.max(1, Math.floor(sum(percentileValues) / percentileValues.length));
-        potentialItem.quality = overallQuality;
-      }
+    if(percentileValues.length > 0) {
+      const overallQuality = Math.max(1, Math.floor(sum(percentileValues) / percentileValues.length));
+      potentialItem.quality = overallQuality;
     }
 
     if(room) {
