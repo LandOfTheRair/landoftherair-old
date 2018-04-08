@@ -558,7 +558,7 @@ export class GameState {
     const bgmObj: any = filter(this.map.layers[MapLayer.BackgroundMusic].objects, reg => this.isInRegion(player, reg))[0];
     player.bgmSetting = bgmObj ? bgmObj.name : 'wilderness';
 
-    if(hasNewRegion) {
+    if(hasNewRegion && regionDesc) {
       player.$$lastRegion = regionDesc;
       player.sendClientMessage({ message: regionDesc, subClass: 'env' });
 
@@ -567,7 +567,7 @@ export class GameState {
 
     }
 
-    if(!hasNewRegion && desc !== player.$$lastDesc) {
+    if(!hasNewRegion && desc && desc !== player.$$lastDesc) {
       player.$$lastDesc = desc;
       player.sendClientMessage({ message: desc, subClass: 'env' });
     }
