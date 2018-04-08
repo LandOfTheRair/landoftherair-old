@@ -14,7 +14,7 @@ export class DedlaenCryptThingPunch extends Skill {
   }
 
   use(user: Character, target: Character) {
-    if(random(0, 10) !== 0) return;
+    if(random(0, 20) !== 0) return;
 
     target.sendClientMessageToRadius(`${target.name} was cast into a tear in the rift!`, 4);
     const allTeleportSpots = user.$$room.state.getDecorByName('CryptThing Spot');
