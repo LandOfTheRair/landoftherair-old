@@ -1,6 +1,7 @@
 
 import { NPC } from '../../../shared/models/npc';
-import { includes, capitalize, sample, get, random, compact } from 'lodash';
+import { includes, capitalize, sample, get, random, compact, startCase } from 'lodash';
+import { toRoman } from 'roman-numerals';
 import { Logger } from '../../logger';
 import { AllNormalGearSlots, SkillClassNames } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
@@ -743,8 +744,10 @@ export const SpellforgingResponses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(!SpellforgingHelper.canSpellforge(player)) return 'You are not able to Spellforge.';
 
-      return 'Greetings, fellow conjurer. I am a master enchanter who can help you learn to SPELLFORGE and ASSESS your progress.';
+      return `Greetings, fellow conjurer. I am a master enchanter who can help you learn to SPELLFORGE and ASSESS your progress.
+      I can also EXAMINE the traits on your gear and SMASH a gem to give you a magical aura based on it's properties.`;
     });
+
   npc.parser.addCommand('spellforge')
     .set('syntax', ['spellforge'])
     .set('logic', (args, { player }) => {
@@ -765,6 +768,54 @@ export const SpellforgingResponses = (npc: NPC) => {
 
       const percentWay = SkillHelper.assess(player, SkillClassNames.Spellforging);
       return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Spellforging.toUpperCase()} proficiency.`;
+    });
+
+  npc.parser.addCommand('examine')
+    .set('syntax', ['examine'])
+    .set('logic', (args, { player }) => {
+      const slots = [
+        { name: 'Right Hand',     path: 'rightHand' },
+        { name: 'Left Hand',      path: 'leftHand' },
+        { name: 'Ear',            path: 'gear.Ear' },
+        { name: 'Head',           path: 'gear.Head' },
+        { name: 'Neck',           path: 'gear.Neck' },
+        { name: 'Waist',          path: 'gear.Waist' },
+        { name: 'Wrists',         path: 'gear.Wrists' },
+        { name: 'Left Ring',      path: 'gear.Ring1' },
+        { name: 'Right Ring',     path: 'gear.Ring2' },
+        { name: 'Hands',          path: 'gear.Hands' },
+        { name: 'Feet',           path: 'gear.Feet' },
+        { name: 'Armor',          path: 'gear.Armor' },
+        { name: 'Inner Robe',     path: 'gear.Robe1' },
+        { name: 'Outer Robe',     path: 'gear.Robe2' }
+      ];
+
+      const allTraits = {};
+
+      player.sendClientMessage(`${player.name}, here are your active traits:`);
+
+      slots.forEach(({ path }) => {
+        const item = get(player, path);
+        if(!item) return;
+
+        const trait = get(item, 'trait.name');
+
+        if(!trait) return;
+        allTraits[trait] = allTraits[trait] || 0;
+        allTraits[trait] += get(item, 'trait.level', 0);
+      });
+
+      slots.forEach(({ name, path }) => {
+        const item = get(player, path);
+        const trait = get(item, 'trait.name');
+        const level = get(item, 'trait.level', 0);
+
+        const traitLevelString = trait ? `${startCase(trait)} ${toRoman(level)}` : '(none)';
+        const traitTotalString = trait ? ` (Total: ${allTraits[trait]})` : '';
+
+        player.sendClientMessage(`${name} - ${traitLevelString}${traitTotalString}`);
+      });
+
     });
 };
 
