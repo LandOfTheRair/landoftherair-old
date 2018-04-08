@@ -11,7 +11,7 @@ export class DedlaenSpiderImmobilize extends Skill {
   range(attacker: Character) { return 2; }
 
   canUse(user: Character, target: Character) {
-    return super.canUse(user, target) && !target.hasEffect('Immobilize') && !target.hasEffect('RecentlyImmobilized');
+    return super.canUse(user, target) && !target.hasEffect('Immobilize') && !target.hasEffect('RecentlyImmobilized') && target.getTotalStat('str') <= 25;
   }
 
   use(user: Character, target: Character) {

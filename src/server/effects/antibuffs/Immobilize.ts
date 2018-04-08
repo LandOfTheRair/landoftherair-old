@@ -15,7 +15,9 @@ export class Immobilize extends SpellEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = Math.max(3, 20 - target.getTotalStat('str'));
+    if(target.getTotalStat('str') > 25) return;
+
+    this.duration = Math.max(2, 20 - target.getTotalStat('str'));
     target.applyEffect(this);
   }
 
