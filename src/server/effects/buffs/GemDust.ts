@@ -11,7 +11,7 @@ export class GemDust extends SpellEffect {
 
   iconData = {
     name: 'gem-chain',
-    color: '#000',
+    color: '#f0f',
     tooltipDesc: 'Dusted.'
   };
 

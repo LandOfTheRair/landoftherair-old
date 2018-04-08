@@ -774,6 +774,8 @@ export const SpellforgingResponses = (npc: NPC) => {
   npc.parser.addCommand('examine')
     .set('syntax', ['examine'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
       const slots = [
         { name: 'Right Hand',     path: 'rightHand' },
         { name: 'Left Hand',      path: 'leftHand' },
@@ -826,6 +828,8 @@ export const SpellforgingResponses = (npc: NPC) => {
 
       const item = player.rightHand;
       if(!item || item.itemClass !== 'Gem') return 'You are not holding a gem.';
+
+      if(Object.keys(item.stats).length === 0) return 'That gem will provide no value to you.';
 
       player.setRightHand(null);
 
