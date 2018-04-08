@@ -1057,6 +1057,8 @@ export class Character {
   }
 
   applyEffect(effect: Effect) {
+    if(this.isNaturalResource) return;
+    
     const existingEffect = this.hasEffect(effect.name);
 
     const oldPermanency = get(existingEffect, 'effectInfo.isPermanent', false);
