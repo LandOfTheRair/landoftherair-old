@@ -127,7 +127,7 @@
 
 - name: Dedlaen Dragon Turtle Egg
   sprite: 381
-  desc: "an ivory egg taken from a young dragon turtle"
+  desc: "an ivory egg taken from a young turtle dragon"
   value: 10
   effect:
     name: Nourishment

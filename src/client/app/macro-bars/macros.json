@@ -357,16 +357,6 @@
             "requiresLearn": true
         },
         {
-            "name": "VitalEssence",
-            "macro": "cast vitalessence",
-            "icon": "bell-shield",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Boost maximum vitality for a single target. Cost: 200 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Vision",
             "macro": "cast vision",
             "icon": "evil-eyes",
@@ -377,12 +367,194 @@
             "requiresLearn": true
         },
         {
+            "name": "VitalEssence",
+            "macro": "cast vitalessence",
+            "icon": "bell-shield",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Boost maximum vitality for a single target. Cost: 200 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Wellspring",
             "macro": "cast wellspring",
             "icon": "holy-water",
             "color": "#080",
             "mode": "autoActivate",
             "tooltipDesc": "Create a bottle of holy water. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Debilitate",
+            "macro": "cast debilitate",
+            "icon": "one-eyed",
+            "color": "#a00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disguise",
+            "macro": "cast disguise",
+            "icon": "duality",
+            "color": "#111",
+            "mode": "autoActivate",
+            "tooltipDesc": "Blend in with enemies. Cost: 100 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EagleEye",
+            "macro": "cast eagleeye",
+            "icon": "dead-eye",
+            "color": "#f00",
+            "mode": "autoActivate",
+            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowClones",
+            "macro": "cast shadowclones",
+            "icon": "dark-squad",
+            "color": "#111",
+            "mode": "autoActivate",
+            "tooltipDesc": "Summon some shadow backup to help you slaughter your foes. Cost: 300 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowMeld",
+            "macro": "cast shadowmeld",
+            "icon": "hidden",
+            "color": "#00c",
+            "mode": "autoActivate",
+            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFire",
+            "macro": "cast barfire",
+            "icon": "rosa-shield",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield fire damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFrost",
+            "macro": "cast barfrost",
+            "icon": "rosa-shield",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Darkness",
+            "macro": "cast darkness",
+            "icon": "dust-cloud",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "DarkVision",
+            "macro": "cast darkvision",
+            "icon": "angry-eyes",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See in the darkness. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disease",
+            "macro": "cast disease",
+            "icon": "death-juice",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Identify",
+            "macro": "cast identify",
+            "icon": "uncertainty",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "tooltipDesc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Poison",
+            "macro": "cast poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "PowerwordBarFire",
+            "macro": "powerword barfire",
+            "icon": "rosa-shield",
+            "color": "#DC143C",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Shield fire damage for your party. Cost: 30 MP / target",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "PowerwordBarFrost",
+            "macro": "powerword barfrost",
+            "icon": "rosa-shield",
+            "color": "#000080",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Shield frost damage for your party. Cost: 30 MP / target",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Push",
+            "macro": "cast push",
+            "icon": "swirl-string",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Transmute",
+            "macro": "cast transmute",
+            "icon": "coins",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "tooltipDesc": "Convert the items on your current tile into gold. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "TrueSight",
+            "macro": "cast truesight",
+            "icon": "all-seeing-eye",
+            "color": "#00a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -477,6 +649,16 @@
             "requiresLearn": true
         },
         {
+            "name": "IceMist",
+            "macro": "cast icemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "ImbueEnergy",
             "macro": "cast imbueenergy",
             "icon": "magic-palm",
@@ -493,16 +675,6 @@
             "color": "#000",
             "mode": "clickToTarget",
             "tooltipDesc": "Become invisible to the average vision. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "IceMist",
-            "macro": "cast icemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -557,196 +729,12 @@
             "requiresLearn": true
         },
         {
-            "name": "BarFire",
-            "macro": "cast barfire",
-            "icon": "rosa-shield",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield fire damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "BarFrost",
-            "macro": "cast barfrost",
-            "icon": "rosa-shield",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "DarkVision",
-            "macro": "cast darkvision",
-            "icon": "angry-eyes",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See in the darkness. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Darkness",
-            "macro": "cast darkness",
-            "icon": "dust-cloud",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Disease",
-            "macro": "cast disease",
-            "icon": "death-juice",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Identify",
-            "macro": "cast identify",
-            "icon": "uncertainty",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "tooltipDesc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Poison",
-            "macro": "cast poison",
-            "icon": "poison-gas",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "PowerwordBarFire",
-            "macro": "powerword barfire",
-            "icon": "rosa-shield",
-            "color": "#DC143C",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Shield fire damage for your party. Cost: 30 MP / target",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "PowerwordBarFrost",
-            "macro": "powerword barfrost",
-            "icon": "rosa-shield",
-            "color": "#000080",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Shield frost damage for your party. Cost: 30 MP / target",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Push",
-            "macro": "cast push",
-            "icon": "swirl-string",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Transmute",
-            "macro": "cast transmute",
-            "icon": "coins",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "tooltipDesc": "Convert the items on your current tile into gold. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "TrueSight",
-            "macro": "cast truesight",
-            "icon": "all-seeing-eye",
-            "color": "#00a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Debilitate",
-            "macro": "cast debilitate",
-            "icon": "one-eyed",
-            "color": "#a00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Disguise",
-            "macro": "cast disguise",
-            "icon": "duality",
-            "color": "#111",
-            "mode": "autoActivate",
-            "tooltipDesc": "Blend in with enemies. Cost: 100 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "EagleEye",
-            "macro": "cast eagleeye",
-            "icon": "dead-eye",
-            "color": "#f00",
-            "mode": "autoActivate",
-            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "ShadowClones",
-            "macro": "cast shadowclones",
-            "icon": "dark-squad",
-            "color": "#111",
-            "mode": "autoActivate",
-            "tooltipDesc": "Summon some shadow backup to help you slaughter your foes. Cost: 300 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "ShadowMeld",
-            "macro": "cast shadowmeld",
-            "icon": "hidden",
-            "color": "#00c",
-            "mode": "autoActivate",
-            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Multistrike",
             "macro": "art multistrike",
             "icon": "sword-spin",
             "color": "#a00",
             "mode": "autoActivate",
             "tooltipDesc": "Attack up to 6 creatures on your tile. Requires weapon skill 17 (Warrior).",
-            "requiresBaseClass": "Warrior",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Rage Stance",
-            "macro": "stance rage",
-            "icon": "swords-power",
-            "color": "#fff",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 20 (Warrior).",
             "requiresBaseClass": "Warrior",
             "isSystem": true,
             "requiresLearn": false
@@ -759,6 +747,18 @@
             "bgColor": "#000",
             "mode": "autoActivate",
             "tooltipDesc": "Become more defensive, but lose offensive power. Requires weapon skill 16 (Warrior).",
+            "requiresBaseClass": "Warrior",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Rage Stance",
+            "macro": "stance rage",
+            "icon": "swords-power",
+            "color": "#fff",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 20 (Warrior).",
             "requiresBaseClass": "Warrior",
             "isSystem": true,
             "requiresLearn": false
