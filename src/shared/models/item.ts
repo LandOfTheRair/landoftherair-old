@@ -317,14 +317,6 @@ export class Item {
     ${conditionText}${ownedText}${appraiseText}${usefulText}`;
   }
 
-  isRobe(): boolean {
-    return EquipHash[this.itemClass] === 'Robe';
-  }
-
-  isArmor(): boolean {
-    return EquipHash[this.itemClass] === 'Armor';
-  }
-
   isOwnedBy(char: Character): boolean {
     return (!this.owner || this.owner && (<any>char).username === this.owner) && this.canUseExpiration();
   }

@@ -418,7 +418,7 @@ export class Character {
 
     let slot = item.itemClass;
 
-    if(item.isRobe()) {
+    if(EquipHash[item.itemClass] === 'Robe') {
       const armor = this.gear.Armor;
       const robe1 = this.gear.Robe1;
       const robe2 = this.gear.Robe2;
@@ -433,7 +433,7 @@ export class Character {
         slot = 'Robe2';
       }
 
-    } else if(item.isArmor()) {
+    } else if(EquipHash[item.itemClass] === 'Armor') {
       const armor = this.gear.Armor;
       if(armor) return false;
 

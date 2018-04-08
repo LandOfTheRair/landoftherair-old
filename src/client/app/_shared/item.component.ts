@@ -362,6 +362,13 @@ export class ItemComponent implements OnInit {
     if(this.colyseusGame.showLocker.length) {
       if(this.context === 'Wardrobe') {
         if(this.isEquippable) {
+
+          const slot = this.colyseusGame.character.getItemSlotToEquipIn(this.item);
+          if(slot === false) {
+            this.doColyseusMoveAction('S');
+            return;
+          }
+
           this.doColyseusMoveAction('E');
           return;
         }
@@ -369,8 +376,9 @@ export class ItemComponent implements OnInit {
         if(this.item.isBeltable) {
           this.doColyseusMoveAction('B');
           return;
+        }
 
-        } else if(this.item.isSackable) {
+        if(this.item.isSackable) {
           this.doColyseusMoveAction('S');
           return;
         }
