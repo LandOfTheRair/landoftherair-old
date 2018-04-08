@@ -1,6 +1,6 @@
 
 import { DateTime } from 'luxon';
-import { compact, pull, random, isArray, get, set, find, includes, reject, sample, startsWith, extend, values, isUndefined, cloneDeep } from 'lodash';
+import { compact, pull, random, isArray, get, set, find, includes, reject, extend, values, isUndefined, cloneDeep } from 'lodash';
 import { nonenumerable } from 'nonenumerable';
 import { RestrictedNumber } from 'restricted-number';
 
@@ -83,11 +83,7 @@ export class Player extends Character {
   private traitPoints;
 
   @nonenumerable
-  private traitPointTimer: number;
   private traitLevels: any;
-
-  @nonenumerable
-  private $$lastCommandSent: string;
 
   private partyPoints: number;
   private partyExp: RestrictedNumber;
@@ -602,14 +598,8 @@ export class Player extends Character {
     delete this.activeQuests[quest.name];
   }
 
-  public canGainTraitPoints(): boolean {
-    return this.traitPoints < 100;
-  }
-
-  public gainTraitPoints(tp = 0, overMax = false): void {
+  public gainTraitPoints(tp = 0): void {
     if(!this.traitPoints) this.traitPoints = 0;
-
-    if(!overMax && !this.canGainTraitPoints()) return;
 
     this.traitPoints += tp;
     if(this.traitPoints < 0 || isNaN(this.traitPoints)) this.traitPoints = 0;
@@ -704,40 +694,6 @@ export class Player extends Character {
 
     // if it's active, yes
     return traitRef.active;
-  }
-
-  public manageTraitPointPotentialGain(command: string): void {
-    if(startsWith(command, '~') || startsWith(command, '@')) return;
-
-    if(!this.traitPointTimer || this.traitPointTimer <= 0) {
-      const baseTraitPointTimer = random(900, 1200);
-      const adjustedTraitPointTimer = this.$$room.subscriptionHelper.modifyTraitPointTimerForSubscription(this, baseTraitPointTimer);
-      this.traitPointTimer = this.$$room.calcAdjustedTraitTimer(adjustedTraitPointTimer);
-    }
-
-    let timerReduction = 2;
-    if(this.$$lastCommandSent === command) timerReduction = 1;
-
-    this.$$lastCommandSent = command;
-
-    timerReduction = this.$$room.calcAdjustedTraitGain(timerReduction);
-
-    this.traitPointTimer -= timerReduction;
-
-    if(this.traitPointTimer <= 0 && this.canGainTraitPoints()) {
-      this.gainTraitPointWithMessage();
-    }
-  }
-
-  private gainTraitPointWithMessage() {
-    const messages = [
-      'You made an interesting observation.',
-      'You had a moment of self-realization.',
-      'You are suddenly more aware of your actions.'
-    ];
-
-    this.sendClientMessage(sample(messages));
-    this.gainTraitPoints(1);
   }
 
   takeSequenceOfSteps(steps, isChasing, recalculateFOV) {

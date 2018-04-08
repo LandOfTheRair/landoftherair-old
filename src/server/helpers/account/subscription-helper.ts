@@ -320,11 +320,6 @@ export class SubscriptionHelper {
     return Math.max(1, Math.floor(skill + (skill * this.subscriptionTierMultiplier(player))));
   }
 
-  // SUBSCRIBER BENEFIT: GAIN TRAITS (TIER * 5)% FASTER
-  public static modifyTraitPointTimerForSubscription(player: Player, timer: number): number {
-    return Math.floor(timer - (timer * this.subscriptionTierMultiplier(player)));
-  }
-
   // SUBSCRIBER BENEFIT: +(TIER * 5)% PARTY XP
   public static modifyPartyXPGainForSubscription(player: Player, xp: number): number {
     if(xp < 0) return xp;

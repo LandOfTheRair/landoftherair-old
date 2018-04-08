@@ -57,9 +57,8 @@ export class DailyKillApprentices extends Quest {
   }
 
   public static givePlayerRewards(player: Player): void {
-    player.gainGold(2000);
-    player.gainExp(500);
-    player.gainTraitPoints(3, true);
-    player.sendClientMessage('You received 500 XP, 2,000 gold, and 3 TP!');
+    player.gainGold(5000);
+    player.gainExp(5000);
+    player.sendClientMessage('You received 5,000 XP, 5,000 gold!');
   }
 }

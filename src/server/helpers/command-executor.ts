@@ -102,8 +102,6 @@ export class CommandExecutor {
     const wasSuccess = await cmd.execute(player, args);
     if(wasSuccess === false) {
       player.sendClientMessage(`Invalid format. Format: ${command} ${cmd.format}`);
-    } else {
-      player.manageTraitPointPotentialGain(command);
     }
 
     return true;
