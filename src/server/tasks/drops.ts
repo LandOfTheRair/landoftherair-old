@@ -17,15 +17,19 @@ class DropsLoader {
     await DB.$regionDrops.remove({}, { multi: true });
 
     return new Promise(resolve => {
+
+      const globalDroptable = YAML.load(`${__dirname}/../../content/droptables/Global.yml`);
+
       recurse(`${__dirname}/../../content/droptables/regions`).then(files => {
         const filePromises = files.map(file => {
           const droptable = YAML.load(file);
+
           const fileName = path.basename(file, path.extname(file));
           console.log(`Inserting Region ${fileName}`);
 
           return DB.$regionDrops.insert({
             regionName: fileName,
-            drops: droptable
+            drops: droptable.concat(globalDroptable)
           });
         });
 

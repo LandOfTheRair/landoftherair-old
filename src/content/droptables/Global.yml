@@ -1,0 +1,40 @@
+
+- result: Leather Ring
+  chance: 1
+  maxChance: 30
+
+- result: Leather Strength Ring
+  chance: 1
+  maxChance: 7500
+
+- result: Leather Dexterity Ring
+  chance: 1
+  maxChance: 7500
+
+- result: Leather Agility Ring
+  chance: 1
+  maxChance: 7500
+
+- result: Leather Intelligence Ring
+  chance: 1
+  maxChance: 7500
+
+- result: Leather Wisdom Ring
+  chance: 1
+  maxChance: 7500
+
+- result: Leather Willpower Ring
+  chance: 1
+  maxChance: 7500
+
+- result: Leather Constitution Ring
+  chance: 1
+  maxChance: 7500
+
+- result: Leather Charisma Ring
+  chance: 1
+  maxChance: 7500
+
+- result: Leather Luck Ring
+  chance: 1
+  maxChance: 7500
