@@ -275,10 +275,10 @@ export class Spawner {
     const aiInst = new aiProto(npc);
     const { tick, mechanicTick, death, damageTaken } = aiInst;
 
-    if(tick) npc.$$ai.tick.add(tick.bind(aiInst));
-    if(mechanicTick) npc.$$ai.mechanicTick.add(mechanicTick.bind(aiInst));
-    if(death) npc.$$ai.death.add(death.bind(aiInst));
-    if(damageTaken) npc.$$ai.damageTaken.add(damageTaken.bind(aiInst));
+    if(tick)          npc.$$ai.tick.add(tick.bind(aiInst));
+    if(mechanicTick)  npc.$$ai.mechanicTick.add(mechanicTick.bind(aiInst));
+    if(death)         npc.$$ai.death.add(death.bind(aiInst));
+    if(damageTaken)   npc.$$ai.damageTaken.add(damageTaken.bind(aiInst));
 
     if(npc.combatMessages) {
       RandomlyShouts(npc, npc.combatMessages, { combatOnly: true });
@@ -342,6 +342,13 @@ export class Spawner {
     Object.keys(npc.baseStats).forEach(stat => {
       npc.gainBaseStat(<StatName>stat, Math.round(npc.getBaseStat(<StatName>stat) / 3));
     });
+
+    npc.level += Math.floor(npc.level / 10);
+    npc.skillOnKill *= 4;
+    npc.gold *= 4;
+    npc.giveXp.min *= 4;
+    npc.giveXp.max *= 4;
+
   }
 
   addNPC(npc: NPC, doIncrement = true) {
