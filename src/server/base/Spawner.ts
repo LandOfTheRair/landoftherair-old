@@ -385,6 +385,7 @@ export class Spawner {
 
     this.npcs.forEach(npc => {
       if(npc.isDead()) return;
+      delete npc.fov;
       this.despawnedNPCs.push(npc);
       this.removeNPC(npc, false);
     });
