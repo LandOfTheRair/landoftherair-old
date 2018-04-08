@@ -93,6 +93,8 @@ export class NPC extends Character {
     if(!output || output === 'undefined') return;
 
     this.setDirRelativeTo(player);
+    this.$$room.state.updateNPCVolatile(this);
+
     output = output.split('|||');
     output.forEach(outputMessage => {
       player.sendClientMessage({ name: this.name, message: outputMessage });
