@@ -125,4 +125,5 @@ export * from './arts/Taunt';
 
 export * from './antibuffs/LoweredDefenses';
 
+export * from './buffs/GemDust';
 export * from './buffs/WallSight';

@@ -12,6 +12,7 @@ import { SkillHelper } from '../../helpers/character/skill-helper';
 import { SpellforgingHelper } from '../../helpers/tradeskill/spellforging-helper';
 import { MetalworkingHelper } from '../../helpers/tradeskill/metalworking-helper';
 import { ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
+import {GemDust} from '../../effects/buffs/GemDust';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -742,7 +743,6 @@ export const SpellforgingResponses = (npc: NPC) => {
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      if(!SpellforgingHelper.canSpellforge(player)) return 'You are not able to Spellforge.';
 
       return `Greetings, fellow conjurer. I am a master enchanter who can help you learn to SPELLFORGE and ASSESS your progress.
       I can also EXAMINE the traits on your gear and SMASH a gem to give you a magical aura based on it's properties.`;
@@ -760,6 +760,7 @@ export const SpellforgingResponses = (npc: NPC) => {
     .set('syntax', ['assess'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(!SpellforgingHelper.canSpellforge(player)) return 'You are not able to Spellforge.';
 
       const assessCost = 50;
       if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
@@ -816,6 +817,22 @@ export const SpellforgingResponses = (npc: NPC) => {
         player.sendClientMessage(`${name} - ${traitLevelString}${traitTotalString}`);
       });
 
+    });
+
+  npc.parser.addCommand('smash')
+    .set('syntax', ['smash'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      const item = player.rightHand;
+      if(!item || item.itemClass !== 'Gem') return 'You are not holding a gem.';
+
+      player.setRightHand(null);
+
+      const dust = new GemDust({ stats: item.stats, gemDesc: item.desc });
+      dust.cast(player, player);
+
+      return 'Your gem has been smashed into dust.';
     });
 };
 
