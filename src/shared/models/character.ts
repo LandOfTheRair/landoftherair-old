@@ -1282,6 +1282,7 @@ export class Character {
   }
 
   canSeeThroughStealthOf(char: Character) {
+    if(this.allegiance === 'GM') return true;
 
     // you can see through invis with truesight
     if(char.hasEffect('Invisible') && !this.hasEffect('TrueSight')) return false;
