@@ -39,6 +39,9 @@ export class DeathHelper {
   }
 
   static async createCorpse(target: Character, searchItems = [], customSprite = 0): Promise<Item> {
+    if(target.$$corpseRef) return;
+    target.$$corpseRef = new Item({});
+
     const corpse = await target.$$room.itemCreator.getItemByName('Corpse');
     corpse.sprite = customSprite || target.sprite + 4;
     corpse.searchItems = searchItems;
