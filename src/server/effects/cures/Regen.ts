@@ -3,7 +3,6 @@ import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { CombatHelper } from '../../helpers/world/combat-helper';
 import { Skill } from '../../base/Skill';
-import * as dice from 'dice.js';
 
 export class Regen extends SpellEffect {
 
@@ -26,7 +25,7 @@ export class Regen extends SpellEffect {
 
     this.aoeAgro(caster, 30);
 
-    const damage = -+dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
+    const damage = -(this.getTotalDamageRolls(caster) * this.getTotalDamageDieSize(caster) / 2);
 
     this.duration = this.duration || 10;
     this.updateDurationBasedOnTraits(caster);
