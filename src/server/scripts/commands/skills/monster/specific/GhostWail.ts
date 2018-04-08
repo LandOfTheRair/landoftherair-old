@@ -4,7 +4,7 @@ import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Stun, Frosted } from '../../../../../effects';
 
-import { every } from 'lodash';
+import { every, some, clamp, random } from 'lodash';
 import { CharacterHelper } from '../../../../../helpers/character/character-helper';
 
 export class GhostWail extends Skill {
@@ -19,6 +19,7 @@ export class GhostWail extends Skill {
     const inRange = user.$$room.state.getPlayersInRange(user, 10);
     return super.canUse(user, target)
         && inRange.length > 0
+        && some(inRange, char => char.getTotalStat('wil') < 23)
         && every(inRange, char => !char.hasEffect('RecentlyFrosted') && !char.hasEffect('Frosted'));
   }
 
@@ -27,6 +28,13 @@ export class GhostWail extends Skill {
     user.sendClientMessageToRadius('You hear a terrifying wail!', 5);
 
     user.$$room.state.getPlayersInRange(user, 10).forEach(char => {
+
+      const successChance = clamp((23 - target.getTotalStat('wil')) + 4, 0, 8) * 12.5;
+
+      if(random(0, 100) < successChance) {
+        char.sendClientMessage(`You resisted the wail of the ghost!`);
+        return;
+      }
 
       const stunned = new Stun({ potency: 20, duration: 5 });
       stunned.shouldNotShowMessage = true;
