@@ -20,12 +20,12 @@ export class Trait {
 
   static canBuy(player: Player): boolean {
     if(this.baseClass && player.baseClass !== this.baseClass) return false;
-    return player.getBaseTraitLevel(this.traitName) < this.maxLevel && player.hasTraitPoints(this.tpCost);
+    return player.getBaseTraitLevel(this.traitName) < this.maxLevel; // && player.hasTraitPoints(this.tpCost);
   }
 
   static buy(player: Player, extra?): void {
-    player.loseTraitPoints(this.tpCost);
-    if(this.increaseLevel) player.increaseTraitLevel(this.traitName, this.baseClass, extra);
+    // player.loseTraitPoints(this.tpCost);
+    if(this.increaseLevel) player.increaseTraitLevel(this.traitName, 1, this.baseClass, extra);
     player.sendClientMessage(`Your personality has expanded with knowledge of "${startCase(this.traitName)}"!`);
     player.recalculateStats();
   }

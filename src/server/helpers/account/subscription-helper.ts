@@ -72,16 +72,6 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     cost: 75,
     postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'goldMult', 6)
   },
-  {
-    name: 'Festival: Trait Gain +100%',
-    desc: 'Gain Traits +100% faster for 6 hours. Additional purchases increase duration, not bonus.',
-    icon: 'two-shadows',
-    fgColor: '#0aa',
-    maxPurchases: 99999,
-    key: 'FestivalTrait',
-    cost: 125,
-    postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'traitGainMult', 6)
-  },
 
   // multi purchases
   {

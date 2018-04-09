@@ -387,56 +387,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Debilitate",
-            "macro": "cast debilitate",
-            "icon": "one-eyed",
-            "color": "#a00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Disguise",
-            "macro": "cast disguise",
-            "icon": "duality",
-            "color": "#111",
-            "mode": "autoActivate",
-            "tooltipDesc": "Blend in with enemies. Cost: 100 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "EagleEye",
-            "macro": "cast eagleeye",
-            "icon": "dead-eye",
-            "color": "#f00",
-            "mode": "autoActivate",
-            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "ShadowClones",
-            "macro": "cast shadowclones",
-            "icon": "dark-squad",
-            "color": "#111",
-            "mode": "autoActivate",
-            "tooltipDesc": "Summon some shadow backup to help you slaughter your foes. Cost: 300 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "ShadowMeld",
-            "macro": "cast shadowmeld",
-            "icon": "hidden",
-            "color": "#00c",
-            "mode": "autoActivate",
-            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "BarFire",
             "macro": "cast barfire",
             "icon": "rosa-shield",
@@ -559,6 +509,56 @@
             "requiresLearn": true
         },
         {
+            "name": "Debilitate",
+            "macro": "cast debilitate",
+            "icon": "one-eyed",
+            "color": "#a00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disguise",
+            "macro": "cast disguise",
+            "icon": "duality",
+            "color": "#111",
+            "mode": "autoActivate",
+            "tooltipDesc": "Blend in with enemies. Cost: 100 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EagleEye",
+            "macro": "cast eagleeye",
+            "icon": "dead-eye",
+            "color": "#f00",
+            "mode": "autoActivate",
+            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowClones",
+            "macro": "cast shadowclones",
+            "icon": "dark-squad",
+            "color": "#111",
+            "mode": "autoActivate",
+            "tooltipDesc": "Summon some shadow backup to help you slaughter your foes. Cost: 300 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowMeld",
+            "macro": "cast shadowmeld",
+            "icon": "hidden",
+            "color": "#00c",
+            "mode": "autoActivate",
+            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Absorption",
             "macro": "cast absorption",
             "icon": "magic-swirl",
@@ -669,22 +669,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Invisibility",
-            "macro": "cast invisibility",
-            "icon": "invisible",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Become invisible to the average vision. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "MagicBolt",
             "macro": "cast magicbolt",
             "icon": "burning-dot",
             "color": "#0059bd",
             "mode": "lockActivation",
             "tooltipDesc": "Inflict energy damage on a single target. Cost: 10 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Invisibility",
+            "macro": "cast invisibility",
+            "icon": "invisible",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Become invisible to the average vision. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -734,19 +734,7 @@
             "icon": "sword-spin",
             "color": "#a00",
             "mode": "autoActivate",
-            "tooltipDesc": "Attack up to 6 creatures on your tile. Requires weapon skill 17 (Warrior).",
-            "requiresBaseClass": "Warrior",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Parry Stance",
-            "macro": "stance parry",
-            "icon": "surrounded-shield",
-            "color": "#fff",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more defensive, but lose offensive power. Requires weapon skill 16 (Warrior).",
+            "tooltipDesc": "Attack up to 4 creatures on your tile. Requires weapon skill 17 (Warrior).",
             "requiresBaseClass": "Warrior",
             "isSystem": true,
             "requiresLearn": false
@@ -759,6 +747,18 @@
             "bgColor": "#000",
             "mode": "autoActivate",
             "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 20 (Warrior).",
+            "requiresBaseClass": "Warrior",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Parry Stance",
+            "macro": "stance parry",
+            "icon": "surrounded-shield",
+            "color": "#fff",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more defensive, but lose offensive power. Requires weapon skill 16 (Warrior).",
             "requiresBaseClass": "Warrior",
             "isSystem": true,
             "requiresLearn": false

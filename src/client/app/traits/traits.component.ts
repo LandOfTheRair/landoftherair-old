@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { values, startCase } from 'lodash';
+import { startCase } from 'lodash';
 
 import { ColyseusGameService } from '../colyseus.game.service';
-
-import { AllTraits } from '../../../shared/traits/trait-hash';
 
 @Component({
   selector: 'app-traits',
@@ -13,31 +11,17 @@ import { AllTraits } from '../../../shared/traits/trait-hash';
 })
 export class TraitsComponent implements OnInit {
 
-  public activeTraitCategory: string;
+  get canSeeTree(): boolean {
+    return this.player.baseClass !== 'Undecided';
+  }
 
   get player() {
     return this.colyseusGame.character;
   }
 
-  get traitCategories(): string[] {
-    if(this.player.baseClass === 'Undecided') return ['Basic', 'Combat', 'Party'];
-
-    return ['Basic', 'Combat', 'Class', 'Party'];
-  }
-
-  private get realCategory() {
-    if(this.activeTraitCategory === 'Class') return this.player.baseClass;
-    return this.activeTraitCategory;
-  }
-
-  get currentTraitSet() {
-    return values(AllTraits[this.realCategory]);
-  }
-
   constructor(private colyseusGame: ColyseusGameService) { }
 
   ngOnInit() {
-    if(!this.activeTraitCategory) this.activeTraitCategory = 'Basic';
   }
 
   public fixName(name: string): string {
@@ -45,7 +29,7 @@ export class TraitsComponent implements OnInit {
   }
 
   public buy(traitName: string): void {
-    this.colyseusGame.sendRawCommand(`~trait`, `${this.realCategory} ${traitName}`);
+    // this.colyseusGame.sendRawCommand(`~trait`, `${this.realCategory} ${traitName}`);
   }
 
 }

@@ -7,8 +7,6 @@ export interface GameSettings {
   xpMult: number;
   skillMult: number;
   goldMult: number;
-  traitTimerMult: number;
-  traitGainMult: number;
   partyXPMult: number;
   numberOfRandomStatsForItems: number;
   randomStatMaxValue: number;
@@ -19,8 +17,6 @@ const BASE_SETTINGS: GameSettings = {
   xpMult: 1,
   skillMult: 1,
   goldMult: 1,
-  traitTimerMult: 1,
-  traitGainMult: 1,
   partyXPMult: 1,
   numberOfRandomStatsForItems: 0,
   randomStatMaxValue: 0,

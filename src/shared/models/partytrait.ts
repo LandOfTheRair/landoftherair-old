@@ -20,12 +20,12 @@ export class PartyTrait extends Trait {
   }
 
   static canBuy(player: Player): boolean {
-    return player.getTraitLevel(this.traitName) < this.maxLevel && player.hasPartyPoints(this.tpCost);
+    return player.getTraitLevel(this.traitName) < this.maxLevel; // && player.hasPartyPoints(this.tpCost);
   }
 
   static buy(player: Player, extra): void {
-    player.losePartyPoints(this.tpCost);
-    if(this.increaseLevel) player.increaseTraitLevel(this.traitName, this.baseClass, extra);
+    player.skillTree.losePartyPoints(this.tpCost);
+    if(this.increaseLevel) player.increaseTraitLevel(this.traitName, 1, this.baseClass, extra);
     player.sendClientMessage(`Your party knowledge has expanded in the form of "${startCase(this.traitName)}"!`);
     player.recalculateStats();
   }

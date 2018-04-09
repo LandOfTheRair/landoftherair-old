@@ -23,6 +23,7 @@ import { Malnourished } from '../../server/effects/antibuffs/Malnourished';
 import { AlchemyContainer } from './container/tradeskills/alchemy';
 import { SpellforgingContainer } from './container/tradeskills/spellforging';
 import { MetalworkingContainer } from './container/tradeskills/metalworking';
+import { SkillTree } from './skill-tree';
 
 export class Player extends Character {
   @nonenumerable
@@ -80,12 +81,9 @@ export class Player extends Character {
   @nonenumerable
   private permanentQuestCompletion: any;
 
-  private traitPoints;
-
   @nonenumerable
   private traitLevels: any;
 
-  private partyPoints: number;
   private partyExp: RestrictedNumber;
 
   private lastDeathLocation: any;
@@ -99,13 +97,20 @@ export class Player extends Character {
     metalworking?: MetalworkingContainer
   };
 
-  public daily: any;
+  public daily: { quest: any, item: any };
+
+  @nonenumerable
+  private $$skillTree: SkillTree;
 
   @nonenumerable
   public $$account: Account;
 
   get party(): Party {
     return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
+  }
+
+  get skillTree(): SkillTree {
+    return this.$$skillTree;
   }
 
   get allTraitLevels() {
@@ -145,23 +150,35 @@ export class Player extends Character {
     this.buyback = this.buyback.map(item => new Item(item));
   }
 
-  initServer() {
+  async initServer() {
     this.initEffects();
     this.recalculateStats();
     this.uuid = this.username;
     this.$$actionQueue = [];
     if(isUndefined(this.$$hungerTicks)) this.$$hungerTicks = 3600 * 6;
-    if(!this.traitPoints) this.traitPoints = 0;
+    if(isUndefined(this.daily)) this.daily = { quest: {}, item: {} };
+    if(isUndefined(this.daily.item)) this.daily.item = {};
+    if(isUndefined(this.daily.quest)) this.daily.quest = {};
+
+    if(isUndefined(this.$$skillTree)) {
+      delete (<any>this).traitLevels;
+      delete (<any>this).traitPointTimer;
+      this.learnedSpells = {};
+
+      this.$$skillTree = await this.$$room.skillTreeHelper.loadSkillTree(this);
+      this.$$skillTree.validateSelf();
+    }
+
     if(!this.partyExp || !this.partyExp.maximum) {
-      this.partyPoints = 0;
       this.partyExp = new RestrictedNumber(0, 100, 0);
 
     } else {
       this.partyExp = new RestrictedNumber(0, this.partyExp.maximum, this.partyExp.__current);
     }
-    if(isUndefined(this.daily)) this.daily = {};
-    if(isUndefined(this.daily.item)) this.daily.item = {};
-    if(isUndefined(this.daily.quest)) this.daily.quest = {};
+  }
+
+  saveSkillTree(): void {
+    this.$$room.skillTreeHelper.saveSkillTree(this);
   }
 
   learnSpell(skillName, conditional = false): boolean {
@@ -284,27 +301,13 @@ export class Player extends Character {
   }
 
   private checkToGainPartyPoints() {
-    if(this.partyPoints >= 100 || !this.partyExp.atMaximum()) return;
+    if(!this.$$skillTree.canGainPartyPoints || !this.partyExp.atMaximum()) return;
 
-    this.partyPoints = this.partyPoints || 0;
-    this.gainPartyPoints(1);
+    this.$$skillTree.gainPartyPoints(1);
     this.partyExp.toMinimum();
 
     const prevMax = this.partyExp.maximum;
     this.partyExp.maximum = Math.floor(100 + (prevMax * 1.0025));
-  }
-
-  public gainPartyPoints(pp = 1): void {
-    this.partyPoints += pp;
-  }
-
-  public hasPartyPoints(pp = 0): boolean {
-    return this.partyPoints >= pp;
-  }
-
-  public losePartyPoints(pp = 0): void {
-    this.partyPoints -= pp;
-    if(this.partyPoints < 0 || isNaN(this.partyPoints)) this.partyPoints = 0;
   }
 
   isPlayer() {
@@ -598,28 +601,12 @@ export class Player extends Character {
     delete this.activeQuests[quest.name];
   }
 
-  public gainTraitPoints(tp = 0): void {
-    if(!this.traitPoints) this.traitPoints = 0;
-
-    this.traitPoints += tp;
-    if(this.traitPoints < 0 || isNaN(this.traitPoints)) this.traitPoints = 0;
-  }
-
-  public hasTraitPoints(tp = 0): boolean {
-    return this.traitPoints >= tp;
-  }
-
-  public loseTraitPoints(tp = 1): void {
-    this.traitPoints -= tp;
-    if(this.traitPoints < 0 || isNaN(this.traitPoints)) this.traitPoints = 0;
-  }
-
   public decreaseTraitLevel(trait: string, levelsLost: number) {
     this.traitLevels[trait].level -= levelsLost;
     if(this.traitLevels[trait].level <= 0) this.traitLevels[trait].level = 0;
   }
 
-  public increaseTraitLevel(trait: string, reqBaseClass?: string, extra = {}): void {
+  public increaseTraitLevel(trait: string, levelsGained: number, reqBaseClass?: string, extra = {}): void {
     this.traitLevels = this.traitLevels || {};
     this.traitLevels[trait] = this.traitLevels[trait] || { level: 0, gearBoost: 0, active: true, reqBaseClass: '' };
     this.traitLevels[trait].reqBaseClass = reqBaseClass;

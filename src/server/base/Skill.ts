@@ -14,6 +14,9 @@ interface MacroMetadata {
   mode: string; // 'clickToTarget'|'autoActivate'|'lockActivation'
   tooltipDesc: string;
   requireBaseClass?: string;
+  requireCharacterLevel?: number;
+  requireSkillLevel?: number;
+  skillTPCost?: number;
 }
 
 export abstract class Skill extends Command {

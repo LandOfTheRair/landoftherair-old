@@ -542,7 +542,7 @@ export class Lobby extends Room<LobbyState> {
     this.send(client, { action: 'set_account', account: account.toSaveObject() });
   }
 
-  public updateFestivalTime(account: Account, key: 'xpMult'|'skillMult'|'traitGainMult'|'goldMult', hours = 6): void {
+  public updateFestivalTime(account: Account, key: 'xpMult'|'skillMult'|'goldMult', hours = 6): void {
 
     this.bonusArbiter.manuallyUpdateBonusHours({ [key]: hours });
     this.saveSettings();

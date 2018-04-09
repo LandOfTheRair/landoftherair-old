@@ -597,7 +597,7 @@ export const EncrusterResponses = (npc: NPC) => {
     });
 };
 
-export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
+export const BaseClassTrainerResponses = (npc: NPC) => {
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
@@ -659,7 +659,9 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       player.loseGold(trainCost);
 
-      return `You have gained ${newLevel - level} experience level.`;
+      const gainedTP = player.skillTree.calculateNewTPFromLevels(player);
+
+      return `You have gained ${newLevel - level} experience level and ${gainedTP} TP.`;
     });
 
   npc.parser.addCommand('join')
@@ -679,29 +681,16 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(player.baseClass !== npc.classTrain) return 'I have nothing to teach you.';
 
-      if(!skills) return 'I have no skills to teach you.';
-
       const learnCost = npc.maxSkillTrain * 100;
       if(player.gold < learnCost) return `I require ${learnCost} gold for my teaching.`;
 
-      const learnedSkills = [];
+      const gainedTP = player.skillTree.calculateNewTPFromSkills(player);
 
-      Object.keys(skills).forEach(skillName => {
-        Object.keys(skills[skillName]).forEach(spellLevel => {
-          if(player.calcSkillLevel(skillName) < +spellLevel) return;
-          skills[skillName][spellLevel].forEach(spellName => {
-            if(!player.learnSpell(spellName)) return;
-            learnedSkills.push(spellName);
-          });
-        });
-      });
+      if(gainedTP === 0) return 'I cannot currently teach you anything new.';
 
-      if(learnedSkills.length === 0) return 'I cannot currently teach you anything new.';
-
-      player.$$room.resetMacros(player);
       player.loseGold(learnCost);
 
-      return `You have learned the abilities: ${learnedSkills.join(', ')}.`;
+      return `You have gained ${gainedTP} TP!`;
     });
 };
 

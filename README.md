@@ -180,8 +180,6 @@ Internally, there are a large handful of game settings that control how players 
 * `xpMult` - the xp multiplier, default 1
 * `skillMult` - the skill multiplier, default 1
 * `goldMult` - the gold multiplier, default 1
-* `traitTimerMult` - the trait timer multiplier (higher = longer to get traits), default 1
-* `traitGainMult` - the trait gain multiplier (higher = faster to get traits), default 1
 * `numberOfRandomStatsForItems` - the number of random stats an item can generate with, default 0
 * `randomStatMaxValue` - the max value a random stat can be on an item, default 0
 * `randomStatChance` - the chance of an item generating with a random stat (1-1000000), default 0
