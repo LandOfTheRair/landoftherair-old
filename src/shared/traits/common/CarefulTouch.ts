@@ -7,7 +7,8 @@ export class CarefulTouch extends Trait {
   static description = 'Decrease the damage your items take by 5% per point.';
   static icon = 'blacksmith';
 
-  static tpCost = 10;
-  static maxLevel = 10;
+  static upgrades = [
+    { }, { }, { capstone: true }
+  ];
 
 }

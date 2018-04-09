@@ -9,8 +9,9 @@ export class FrostedTouch extends Trait {
   static description = 'Your ice spells freeze the opponent more quickly. Requires [Player Level] 10.';
   static icon = 'ice-spell-cast';
 
-  static tpCost = 20;
-  static maxLevel = 5;
+  static upgrades = [
+    { }, { }, { capstone: true }
+  ];
 
   static canBuy(player: Player): boolean {
     return super.canBuy(player) && player.level >= 10;

@@ -22,7 +22,7 @@ class MacroMetadataOrganizer {
         allMeta.push(meta);
       });
 
-      fs.writeFileSync(`${__dirname}/../../client/app/macro-bars/macros.json`, JSON.stringify({ allMeta }, null, 4));
+      fs.writeFileSync(`${__dirname}/../../shared/generated/macros/macros.json`, JSON.stringify({ allMeta }, null, 4));
 
       process.exit(0);
     });

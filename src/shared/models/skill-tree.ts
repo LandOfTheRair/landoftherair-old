@@ -81,6 +81,10 @@ export class SkillTree {
     }
   }
 
+  public hasTraitPoints(tp = 0): boolean {
+    return this.traitPoints >= tp;
+  }
+
   public gainTraitPoints(tp = 0): void {
     if(!this.traitPoints) this.traitPoints = 0;
 

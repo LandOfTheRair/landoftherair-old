@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import * as macros from './macros.json';
+import * as macros from '../../../shared/generated/macros/macros.json';
 import { MacroService, Macro } from '../macros.service';
 
 import { findIndex } from 'lodash';

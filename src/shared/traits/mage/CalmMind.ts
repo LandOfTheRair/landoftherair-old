@@ -8,7 +8,8 @@ export class CalmMind extends Trait {
   static description = 'Gain +1 to your mana regeneration per point.';
   static icon = 'psychic-waves';
 
-  static tpCost = 10;
-  static maxLevel = 10;
+  static upgrades = [
+    { }, { }, { capstone: true }
+  ];
 
 }

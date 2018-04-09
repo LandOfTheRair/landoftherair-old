@@ -1,0 +1,381 @@
+{
+    "Mage": {
+        "icon": "acorn",
+        "unbuyable": true,
+        "unlocks": [
+            "MagicMissile",
+            "CarefulTouch0",
+            "DeathGrip0",
+            "NaturalArmor0",
+            "PartyManaRegen0"
+        ]
+    },
+    "CarefulTouch0": {
+        "name": "CarefulTouch0",
+        "desc": "Decrease the damage your items take by 5% per point.",
+        "icon": "blacksmith",
+        "unlocks": [
+            "CarefulTouch1"
+        ]
+    },
+    "CarefulTouch1": {
+        "name": "CarefulTouch1",
+        "desc": "Decrease the damage your items take by 5% per point.",
+        "icon": "blacksmith",
+        "unlocks": [
+            "CarefulTouch2"
+        ]
+    },
+    "CarefulTouch2": {
+        "name": "CarefulTouch2",
+        "desc": "Decrease the damage your items take by 5% per point.",
+        "icon": "blacksmith",
+        "capstone": true
+    },
+    "DeathGrip0": {
+        "name": "DeathGrip0",
+        "desc": "Decrease your chance of dropping items on death by 1% per point.",
+        "icon": "drop-weapon",
+        "unlocks": [
+            "DeathGrip1"
+        ]
+    },
+    "DeathGrip1": {
+        "name": "DeathGrip1",
+        "desc": "Decrease your chance of dropping items on death by 1% per point.",
+        "icon": "drop-weapon",
+        "unlocks": [
+            "DeathGrip2"
+        ]
+    },
+    "DeathGrip2": {
+        "name": "DeathGrip2",
+        "desc": "Decrease your chance of dropping items on death by 1% per point.",
+        "icon": "drop-weapon",
+        "capstone": true
+    },
+    "NaturalArmor0": {
+        "name": "NaturalArmor0",
+        "desc": "Harden your skin, increasing your natural armor class by 1 per point.",
+        "icon": "armor-vest",
+        "unlocks": [
+            "NaturalArmor1"
+        ]
+    },
+    "NaturalArmor1": {
+        "name": "NaturalArmor1",
+        "desc": "Harden your skin, increasing your natural armor class by 1 per point.",
+        "icon": "armor-vest",
+        "unlocks": [
+            "NaturalArmor2"
+        ]
+    },
+    "NaturalArmor2": {
+        "name": "NaturalArmor2",
+        "desc": "Harden your skin, increasing your natural armor class by 1 per point.",
+        "icon": "armor-vest",
+        "capstone": true
+    },
+    "MagicFocus0": {
+        "name": "MagicFocus0",
+        "desc": "Deal 10% more energy damage per point.",
+        "icon": "plasma-bolt"
+    },
+    "MagicFocus1": {
+        "name": "MagicFocus1",
+        "desc": "Deal 10% more energy damage per point.",
+        "icon": "plasma-bolt",
+        "unlocks": [
+            "Transmute"
+        ]
+    },
+    "MagicFocus2": {
+        "name": "MagicFocus2",
+        "desc": "Deal 10% more energy damage per point.",
+        "icon": "plasma-bolt",
+        "unlocks": [
+            "EnergyWave"
+        ]
+    },
+    "MagicFocus3": {
+        "name": "MagicFocus3",
+        "desc": "Deal 10% more energy damage per point.",
+        "icon": "plasma-bolt",
+        "unlocks": [
+            "EnergyWaveWiden0"
+        ]
+    },
+    "MagicFocus4": {
+        "name": "MagicFocus4",
+        "desc": "Deal 10% more energy damage per point.",
+        "icon": "plasma-bolt",
+        "capstone": true,
+        "unlocks": [
+            "MagicBolt",
+            "Teleport"
+        ]
+    },
+    "EnergyWaveWiden0": {
+        "name": "EnergyWaveWiden0",
+        "desc": "Your Energy Wave spell range is lengthened.",
+        "icon": "beams-aura"
+    },
+    "MagicMissile": {
+        "name": "MagicMissile",
+        "desc": "Inflict energy damage on a single target. Cost: 5 MP",
+        "icon": "missile-swarm",
+        "iconColor": "#0059bd",
+        "unlocks": [
+            "MagicFocus0",
+            "Identify",
+            "ManaPool0"
+        ]
+    },
+    "Identify": {
+        "name": "Identify",
+        "desc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
+        "icon": "uncertainty",
+        "iconColor": "#665600",
+        "unlocks": [
+            "MagicFocus1",
+            "MagicFocus2",
+            "CalmMind0"
+        ]
+    },
+    "Transmute": {
+        "name": "Transmute",
+        "desc": "Convert the items on your current tile into gold. Cost: 15 MP",
+        "icon": "coins",
+        "iconColor": "#665600"
+    },
+    "EnergyWave": {
+        "name": "EnergyWave",
+        "desc": "Cast an area energy effect from your location (5x5). Cost: 45 MP",
+        "icon": "beams-aura",
+        "iconColor": "#000080",
+        "unlocks": [
+            "MagicFocus3",
+            "Push"
+        ]
+    },
+    "Push": {
+        "name": "Push",
+        "desc": "Push an enemy around. Cost: 25 MP",
+        "icon": "swirl-string",
+        "iconColor": "#000",
+        "unlocks": [
+            "MagicFocus4"
+        ]
+    },
+    "MagicBolt": {
+        "name": "MagicBolt",
+        "desc": "Inflict energy damage on a single target. Cost: 10 MP",
+        "icon": "burning-dot",
+        "iconColor": "#0059bd"
+    },
+    "Teleport": {
+        "name": "Teleport",
+        "desc": "Teleport to a previously-memorized location. Cost: 50% MP",
+        "icon": "deadly-strike",
+        "iconColor": "#a0a",
+        "unlocks": [
+            "MassTeleport"
+        ]
+    },
+    "MassTeleport": {
+        "name": "MassTeleport",
+        "desc": "Teleport those on your tile to a previously-memorized location. Cost: 100% MP",
+        "icon": "vortex",
+        "iconColor": "#a0a"
+    },
+    "Protector": {
+        "icon": "acorn",
+        "unbuyable": true,
+        "unlocks": [
+            "TrueSight"
+        ]
+    },
+    "DarknessWiden0": {
+        "name": "DarknessWiden0",
+        "desc": "Your Darkness spell range is lengthened.",
+        "icon": "dust-cloud"
+    },
+    "TrueSight": {
+        "name": "TrueSight",
+        "desc": "See hidden walls and other hidden features. Cost: 25 MP",
+        "icon": "all-seeing-eye",
+        "iconColor": "#00a",
+        "unlocks": [
+            "BarFrost",
+            "BarFire",
+            "BarWater"
+        ]
+    },
+    "BarWater": {
+        "name": "BarWater",
+        "desc": "Shield water damage for a single target. Cost: 20 MP",
+        "icon": "rosa-shield",
+        "iconColor": "#208aec",
+        "unlocks": [
+            "Darkness"
+        ]
+    },
+    "BarFire": {
+        "name": "BarFire",
+        "desc": "Shield fire damage for a single target. Cost: 20 MP",
+        "icon": "rosa-shield",
+        "iconColor": "#DC143C",
+        "unlocks": [
+            "MagicShield"
+        ]
+    },
+    "BarFrost": {
+        "name": "BarFrost",
+        "desc": "Shield frost damage for a single target. Cost: 20 MP",
+        "icon": "rosa-shield",
+        "iconColor": "#000080",
+        "unlocks": [
+            "Absorption"
+        ]
+    },
+    "MagicShield": {
+        "name": "MagicShield",
+        "desc": "Negate some physical damage. Cost: 100 MP",
+        "icon": "energy-shield",
+        "iconColor": "#a0a",
+        "unlocks": [
+            "Invisibility"
+        ]
+    },
+    "Absorption": {
+        "name": "Absorption",
+        "desc": "Absorb all types of magic. Cost: 100 MP",
+        "icon": "magic-swirl",
+        "iconColor": "#a0a",
+        "unlocks": [
+            "Invisibility"
+        ]
+    },
+    "Darkness": {
+        "name": "Darkness",
+        "desc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
+        "icon": "dust-cloud",
+        "iconColor": "#000",
+        "unlocks": [
+            "DarknessWiden0",
+            "DarkVision"
+        ]
+    },
+    "DarkVision": {
+        "name": "DarkVision",
+        "desc": "See in the darkness. Cost: 25 MP",
+        "icon": "angry-eyes",
+        "iconColor": "#000"
+    },
+    "Invisibility": {
+        "name": "Invisibility",
+        "desc": "Become invisible to the average vision. Cost: 100 MP",
+        "icon": "invisible",
+        "iconColor": "#000",
+        "unlocks": [
+            "Haste"
+        ]
+    },
+    "Haste": {
+        "name": "Haste",
+        "desc": "Act twice as fast. Cost: 200 MP",
+        "icon": "time-trap",
+        "iconColor": "#0a0"
+    },
+    "Elementalist": {
+        "icon": "acorn",
+        "unbuyable": true,
+        "unlocks": [
+            "FireMist",
+            "IceMist"
+        ]
+    },
+    "FireMistWiden0": {
+        "name": "FireMistWiden0",
+        "desc": "Your Fire Mist spell range is lengthened.",
+        "icon": "kaleidoscope-pearls"
+    },
+    "IceMistWiden0": {
+        "name": "IceMistWiden0",
+        "desc": "Your Ice Mist spell range is lengthened.",
+        "icon": "kaleidoscope-pearls"
+    },
+    "ForgedFire0": {
+        "name": "ForgedFire0",
+        "desc": "Your fire spells burn the opponent more quickly. Requires [Player Level] 10.",
+        "icon": "flame-spin",
+        "unlocks": [
+            "ForgedFire2"
+        ]
+    },
+    "ForgedFire1": {
+        "name": "ForgedFire1",
+        "desc": "Your fire spells burn the opponent more quickly. Requires [Player Level] 10.",
+        "icon": "flame-spin",
+        "unlocks": [
+            "FireMistWiden0"
+        ]
+    },
+    "ForgedFire2": {
+        "name": "ForgedFire2",
+        "desc": "Your fire spells burn the opponent more quickly. Requires [Player Level] 10.",
+        "icon": "flame-spin",
+        "capstone": true,
+        "unlocks": [
+            "Firethorns"
+        ]
+    },
+    "FrostedTouch0": {
+        "name": "FrostedTouch0",
+        "desc": "Your ice spells freeze the opponent more quickly. Requires [Player Level] 10.",
+        "icon": "ice-spell-cast",
+        "unlocks": [
+            "FrostedTouch2"
+        ]
+    },
+    "FrostedTouch1": {
+        "name": "FrostedTouch1",
+        "desc": "Your ice spells freeze the opponent more quickly. Requires [Player Level] 10.",
+        "icon": "ice-spell-cast",
+        "unlocks": [
+            "IceMistWiden0"
+        ]
+    },
+    "FrostedTouch2": {
+        "name": "FrostedTouch2",
+        "desc": "Your ice spells freeze the opponent more quickly. Requires [Player Level] 10.",
+        "icon": "ice-spell-cast",
+        "capstone": true
+    },
+    "FireMist": {
+        "name": "FireMist",
+        "desc": "Cast an area fire effect on a target (3x3). Cost: 35 MP",
+        "icon": "kaleidoscope-pearls",
+        "iconColor": "#DC143C",
+        "unlocks": [
+            "ForgedFire0",
+            "ForgedFire1"
+        ]
+    },
+    "IceMist": {
+        "name": "IceMist",
+        "desc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
+        "icon": "kaleidoscope-pearls",
+        "iconColor": "#000080",
+        "unlocks": [
+            "FrostedTouch0",
+            "FrostedTouch1"
+        ]
+    },
+    "Firethorns": {
+        "name": "Firethorns",
+        "desc": "Physical attackers take damage. Cost: 100 MP",
+        "icon": "barbed-coil",
+        "iconColor": "#f00"
+    }
+}

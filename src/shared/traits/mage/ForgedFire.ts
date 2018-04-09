@@ -9,8 +9,9 @@ export class ForgedFire extends Trait {
   static description = 'Your fire spells burn the opponent more quickly. Requires [Player Level] 10.';
   static icon = 'flame-spin';
 
-  static tpCost = 20;
-  static maxLevel = 5;
+  static upgrades = [
+    { }, { }, { capstone: true }
+  ];
 
   static canBuy(player: Player): boolean {
     return super.canBuy(player) && player.level >= 10;
