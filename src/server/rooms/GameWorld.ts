@@ -974,6 +974,16 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
+  public updateSkillTree(player: Player) {
+    const client = this.findClient(player);
+    if(!client) return;
+
+    this.send(client, {
+      action: 'skill_tree',
+      skillTree: player.skillTree
+    });
+  }
+
   public calcAdjustedGoldGain(gold: number) {
     return Math.floor(gold * this.bonusHelper.settings.goldMult);
   }

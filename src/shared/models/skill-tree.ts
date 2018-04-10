@@ -1,12 +1,17 @@
 
-import { extend, maxBy } from 'lodash';
+import { extend, maxBy, values } from 'lodash';
 import { Player } from './player';
 import { SkillClassNames } from './character';
+import { nonenumerable } from 'nonenumerable';
+import { AllTrees } from '../generated/skilltrees';
+
+// TODO how can you NaN traitPoints?
+// TODO how does saving the skill tree sometimes null it?
 
 export class SkillTree {
   levelsClaimed: { [key: string]: boolean } = {};
   skillsClaimed: { [key: string]: boolean } = {};
-  nodesClaimed:  { [key: string]: boolean } = {};
+  nodesClaimed:  { [key: string]: number  } = {};
 
   private traitPoints: number;
   private resetPoints: number;
@@ -22,8 +27,71 @@ export class SkillTree {
     return this.partyPoints < 100;
   }
 
+  @nonenumerable
+  public buyableNodesHash: { [key: string]: boolean } = {};
+
   constructor(opts: any = {}) {
     extend(this, opts);
+    if(!this.traitPoints) this.traitPoints = 0;
+    if(!this.resetPoints) this.resetPoints = 0;
+    if(!this.partyPoints) this.partyPoints = 0;
+
+    this.updateBuyableNodes();
+  }
+
+  public isBought(traitName: string): boolean {
+    return !!this.nodesClaimed[traitName];
+  }
+
+  public isAvailableToBuy(traitName: string): boolean {
+    if(this.isBought(traitName)) return false;
+
+    return this.buyableNodesHash[traitName];
+  }
+
+  public linkBuyableNodeToRealNode(traitName: string): any {
+    if(!this.isAvailableToBuy(traitName)) return null;
+
+    return AllTrees[this.baseClass][traitName];
+  }
+
+  public hasEnoughPointsToBuy(traitName: string): boolean {
+    const node = this.linkBuyableNodeToRealNode(traitName);
+    if(!node) return false;
+
+    if(node.isParty) return this.partyPoints >= node.cost;
+    return this.traitPoints >= node.cost;
+  }
+
+  public isCapableOfBuying(traitName, player: Player): boolean {
+    const node = this.linkBuyableNodeToRealNode(traitName);
+    if(!node) return false;
+
+    const myLevel = player.level;
+    const mySkill = this.getHighestRelevantSkillLevel(player);
+
+    return myLevel >= (node.requireCharacterLevel || 0) && mySkill > (node.requireSkillLevel || 0);
+  }
+
+  private updateBuyableNodes(): void {
+    if(!this.baseClass) return;
+
+    this.buyableNodesHash = {};
+
+    values(AllTrees[this.baseClass]).forEach(node => {
+      if(!node.root) return;
+      node.unlocks.forEach(unlock => this.buyableNodesHash[unlock] = true);
+    });
+
+    Object.keys(this.nodesClaimed).forEach(boughtNode => {
+      if(this.buyableNodesHash[boughtNode]) delete this.buyableNodesHash[boughtNode];
+
+      const node = AllTrees[this.baseClass][boughtNode];
+      if(!node.unlocks) return;
+
+      node.unlocks.forEach(unlock => this.buyableNodesHash[unlock] = true);
+    });
+
   }
 
   public calculateNewTPFromLevels(player: Player): number {
@@ -125,6 +193,7 @@ export class SkillTree {
     this.skillsClaimed = {};
 
     this.traitPoints = 0;
+    this.updateBuyableNodes();
   }
 
   public validateSelf(): void {
@@ -138,13 +207,41 @@ export class SkillTree {
     // reset learnedskills, recalc to make sure everything still jives
   }
 
+  private buyItem(traitNode: any): void {
+    this.nodesClaimed[traitNode.name] = traitNode.cost;
+
+    if(traitNode.isParty) {
+      this.partyPoints -= traitNode.cost;
+      return;
+    }
+
+    this.traitPoints -= traitNode.cost;
+  }
+
   // should nodes store their cost? so if it changes, the node and children are removed?
-  public buyTrait(player: Player, traitName: string, boost = 1): void {
-    player.increaseTraitLevel(traitName, boost);
+  public buyTrait(player: Player, traitName: string, realName: string): void {
+    const node = this.linkBuyableNodeToRealNode(traitName);
+    if(!node) return;
+
+    this.buyItem(node);
+
+    player.sendClientMessage(`You have expanded your trait "${realName}"!`);
+    const boost = node.capstone ? 3 : 1;
+    player.increaseTraitLevel(realName, boost);
+
+    this.updateBuyableNodes();
   }
 
   public buySkill(player: Player, skillName: string): void {
+    const node = this.linkBuyableNodeToRealNode(skillName);
+    if(!node) return;
+
+    this.buyItem(node);
+
+    player.sendClientMessage(`You have learned the skill "${skillName}"!`);
     player.learnSpell(skillName);
     player.$$room.resetMacros(player);
+
+    this.updateBuyableNodes();
   }
 }

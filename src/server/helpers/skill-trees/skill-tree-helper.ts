@@ -7,6 +7,8 @@ export class SkillTreeHelper {
 
   async saveSkillTree(player: Player): Promise<any> {
 
+    if(!player.skillTree) return false;
+
     return DB.$characterSkillTrees.update(
       { username: player.username, charSlot: player.charSlot },
       { $set: { skillTree: player.skillTree} },
@@ -15,12 +17,16 @@ export class SkillTreeHelper {
   }
 
   async loadSkillTree(player: Player): Promise<SkillTree> {
-    const tree = await DB.$characterSkillTrees.findOne({
+    const treeData = await DB.$characterSkillTrees.findOne({
       username: player.username,
       charSlot: player.charSlot
     });
 
-    return new SkillTree(tree);
+    const treeRef = new SkillTree(treeData ? treeData.skillTree : { baseClass: player.baseClass });
+
+    treeRef.syncWithPlayer(player);
+
+    return treeRef;
   }
 
 }

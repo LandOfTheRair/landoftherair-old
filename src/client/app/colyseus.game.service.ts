@@ -13,6 +13,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Character } from '../../shared/models/character';
 import { NPC } from '../../shared/models/npc';
 import { VALID_TRADESKILLS } from '../../shared/helpers/tradeskill-helper';
+import { SkillTree } from '../../shared/models/skill-tree';
 
 @Injectable()
 export class ColyseusGameService {
@@ -52,10 +53,12 @@ export class ColyseusGameService {
   public sfx$ = new Subject(); // sound
   public vfx$ = new Subject(); // spell effects
   public cfx$ = new Subject(); // combat effects
-
   public myLoc$ = new Subject();
-
   public tour$ = new Subject();
+
+  public get skillTree$() {
+    return this.clientGameState.skillTree$;
+  }
 
   private overrideNoBgm: boolean;
   private overrideNoSfx: boolean;
@@ -353,6 +356,11 @@ export class ColyseusGameService {
     if(action === 'sync_ground')    return this.syncGroundItems(other.ground);
     if(action === 'take_tour')      return this.takeTour();
     if(action === 'combat_log')     return this.updateCombatLogRecordingSettings(other);
+    if(action === 'skill_tree')     return this.updateSkillTree(other.skillTree);
+  }
+
+  private updateSkillTree(skillTree) {
+    this.skillTree$.next(new SkillTree(skillTree));
   }
 
   private updateCombatLogRecordingSettings({ start, logCount, stop, download }: any = {}) {
@@ -482,6 +490,10 @@ export class ColyseusGameService {
 
   public tryEffectUnapply(effect) {
     this.sendCommandString(`~unapply ${effect.name}`);
+  }
+
+  public requestSkillTree() {
+    this.sendCommandString(`~skilltree`);
   }
 
   public train() {

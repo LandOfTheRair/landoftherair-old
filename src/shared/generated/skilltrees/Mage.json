@@ -16,6 +16,7 @@
     },
     "PartyManaRegen0": {
         "name": "PartyManaRegen0",
+        "traitName": "PartyManaRegen",
         "desc": "Increase the mana regeneration of your party.",
         "icon": "health-increase",
         "cost": 3,
@@ -23,12 +24,14 @@
             "PartyManaRegen1"
         ],
         "cluster": 1,
+        "isParty": true,
         "unlockedBy": [
             "Mage"
         ]
     },
     "PartyManaRegen1": {
         "name": "PartyManaRegen1",
+        "traitName": "PartyManaRegen",
         "desc": "Increase the mana regeneration of your party.",
         "icon": "health-increase",
         "cost": 3,
@@ -36,23 +39,27 @@
             "PartyManaRegen2"
         ],
         "cluster": 1,
+        "isParty": true,
         "unlockedBy": [
             "PartyManaRegen0"
         ]
     },
     "PartyManaRegen2": {
         "name": "PartyManaRegen2",
+        "traitName": "PartyManaRegen",
         "desc": "Increase the mana regeneration of your party.",
         "icon": "health-increase",
         "capstone": true,
         "cost": 10,
         "cluster": 1,
+        "isParty": true,
         "unlockedBy": [
             "PartyManaRegen1"
         ]
     },
     "CalmMind0": {
         "name": "CalmMind0",
+        "traitName": "CalmMind",
         "desc": "Gain +1 to your mana regeneration per point.",
         "icon": "psychic-waves",
         "cost": 3,
@@ -66,6 +73,7 @@
     },
     "CalmMind1": {
         "name": "CalmMind1",
+        "traitName": "CalmMind",
         "desc": "Gain +1 to your mana regeneration per point.",
         "icon": "psychic-waves",
         "cost": 3,
@@ -79,6 +87,7 @@
     },
     "CalmMind2": {
         "name": "CalmMind2",
+        "traitName": "CalmMind",
         "desc": "Gain +1 to your mana regeneration per point.",
         "icon": "psychic-waves",
         "capstone": true,
@@ -90,6 +99,7 @@
     },
     "ManaPool0": {
         "name": "ManaPool0",
+        "traitName": "ManaPool",
         "desc": "Gain +1 additional mana per point.",
         "icon": "drink-me",
         "cost": 3,
@@ -103,6 +113,7 @@
     },
     "ManaPool1": {
         "name": "ManaPool1",
+        "traitName": "ManaPool",
         "desc": "Gain +1 additional mana per point.",
         "icon": "drink-me",
         "cost": 3,
@@ -116,6 +127,7 @@
     },
     "ManaPool2": {
         "name": "ManaPool2",
+        "traitName": "ManaPool",
         "desc": "Gain +1 additional mana per point.",
         "icon": "drink-me",
         "capstone": true,
@@ -127,6 +139,7 @@
     },
     "CarefulTouch0": {
         "name": "CarefulTouch0",
+        "traitName": "CarefulTouch",
         "desc": "Decrease the damage your items take by 5% per point.",
         "icon": "blacksmith",
         "cost": 3,
@@ -140,6 +153,7 @@
     },
     "CarefulTouch1": {
         "name": "CarefulTouch1",
+        "traitName": "CarefulTouch",
         "desc": "Decrease the damage your items take by 5% per point.",
         "icon": "blacksmith",
         "cost": 3,
@@ -153,6 +167,7 @@
     },
     "CarefulTouch2": {
         "name": "CarefulTouch2",
+        "traitName": "CarefulTouch",
         "desc": "Decrease the damage your items take by 5% per point.",
         "icon": "blacksmith",
         "capstone": true,
@@ -164,6 +179,7 @@
     },
     "DeathGrip0": {
         "name": "DeathGrip0",
+        "traitName": "DeathGrip",
         "desc": "Decrease your chance of dropping items on death by 1% per point.",
         "icon": "drop-weapon",
         "cost": 3,
@@ -177,6 +193,7 @@
     },
     "DeathGrip1": {
         "name": "DeathGrip1",
+        "traitName": "DeathGrip",
         "desc": "Decrease your chance of dropping items on death by 1% per point.",
         "icon": "drop-weapon",
         "cost": 3,
@@ -190,6 +207,7 @@
     },
     "DeathGrip2": {
         "name": "DeathGrip2",
+        "traitName": "DeathGrip",
         "desc": "Decrease your chance of dropping items on death by 1% per point.",
         "icon": "drop-weapon",
         "capstone": true,
@@ -201,6 +219,7 @@
     },
     "NaturalArmor0": {
         "name": "NaturalArmor0",
+        "traitName": "NaturalArmor",
         "desc": "Harden your skin, increasing your natural armor class by 1 per point.",
         "icon": "armor-vest",
         "cost": 3,
@@ -214,6 +233,7 @@
     },
     "NaturalArmor1": {
         "name": "NaturalArmor1",
+        "traitName": "NaturalArmor",
         "desc": "Harden your skin, increasing your natural armor class by 1 per point.",
         "icon": "armor-vest",
         "cost": 3,
@@ -227,6 +247,7 @@
     },
     "NaturalArmor2": {
         "name": "NaturalArmor2",
+        "traitName": "NaturalArmor",
         "desc": "Harden your skin, increasing your natural armor class by 1 per point.",
         "icon": "armor-vest",
         "capstone": true,
@@ -238,6 +259,7 @@
     },
     "MagicFocus0": {
         "name": "MagicFocus0",
+        "traitName": "MagicFocus",
         "desc": "Deal 10% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
@@ -248,6 +270,7 @@
     },
     "MagicFocus1": {
         "name": "MagicFocus1",
+        "traitName": "MagicFocus",
         "desc": "Deal 10% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
@@ -261,6 +284,7 @@
     },
     "MagicFocus2": {
         "name": "MagicFocus2",
+        "traitName": "MagicFocus",
         "desc": "Deal 10% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
@@ -274,6 +298,7 @@
     },
     "MagicFocus3": {
         "name": "MagicFocus3",
+        "traitName": "MagicFocus",
         "desc": "Deal 10% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
@@ -287,6 +312,7 @@
     },
     "MagicFocus4": {
         "name": "MagicFocus4",
+        "traitName": "MagicFocus",
         "desc": "Deal 10% more energy damage per point.",
         "icon": "plasma-bolt",
         "capstone": true,
@@ -302,6 +328,7 @@
     },
     "EnergyWaveWiden0": {
         "name": "EnergyWaveWiden0",
+        "traitName": "EnergyWaveWiden",
         "desc": "Your Energy Wave spell range is lengthened.",
         "icon": "beams-aura",
         "cost": 3,
@@ -435,6 +462,7 @@
     },
     "DarknessWiden0": {
         "name": "DarknessWiden0",
+        "traitName": "DarknessWiden",
         "desc": "Your Darkness spell range is lengthened.",
         "icon": "dust-cloud",
         "cost": 3,
@@ -599,6 +627,7 @@
     },
     "FireMistWiden0": {
         "name": "FireMistWiden0",
+        "traitName": "FireMistWiden",
         "desc": "Your Fire Mist spell range is lengthened.",
         "icon": "kaleidoscope-pearls",
         "cost": 3,
@@ -609,6 +638,7 @@
     },
     "IceMistWiden0": {
         "name": "IceMistWiden0",
+        "traitName": "IceMistWiden",
         "desc": "Your Ice Mist spell range is lengthened.",
         "icon": "kaleidoscope-pearls",
         "cost": 3,
@@ -619,6 +649,7 @@
     },
     "ForgedFire0": {
         "name": "ForgedFire0",
+        "traitName": "ForgedFire",
         "desc": "Your fire spells burn the opponent more quickly.",
         "icon": "flame-spin",
         "requireCharacterLevel": 10,
@@ -633,6 +664,7 @@
     },
     "ForgedFire1": {
         "name": "ForgedFire1",
+        "traitName": "ForgedFire",
         "desc": "Your fire spells burn the opponent more quickly.",
         "icon": "flame-spin",
         "requireCharacterLevel": 10,
@@ -647,6 +679,7 @@
     },
     "ForgedFire2": {
         "name": "ForgedFire2",
+        "traitName": "ForgedFire",
         "desc": "Your fire spells burn the opponent more quickly.",
         "icon": "flame-spin",
         "capstone": true,
@@ -662,6 +695,7 @@
     },
     "FrostedTouch0": {
         "name": "FrostedTouch0",
+        "traitName": "FrostedTouch",
         "desc": "Your ice spells freeze the opponent more quickly.",
         "icon": "ice-spell-cast",
         "requireCharacterLevel": 10,
@@ -676,6 +710,7 @@
     },
     "FrostedTouch1": {
         "name": "FrostedTouch1",
+        "traitName": "FrostedTouch",
         "desc": "Your ice spells freeze the opponent more quickly.",
         "icon": "ice-spell-cast",
         "requireCharacterLevel": 10,
@@ -690,6 +725,7 @@
     },
     "FrostedTouch2": {
         "name": "FrostedTouch2",
+        "traitName": "FrostedTouch",
         "desc": "Your ice spells freeze the opponent more quickly.",
         "icon": "ice-spell-cast",
         "capstone": true,

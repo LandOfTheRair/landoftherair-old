@@ -166,7 +166,6 @@ export class Player extends Character {
       this.learnedSpells = {};
 
       this.$$skillTree = await this.$$room.skillTreeHelper.loadSkillTree(this);
-      this.$$skillTree.validateSelf();
     }
 
     if(!this.partyExp || !this.partyExp.maximum) {

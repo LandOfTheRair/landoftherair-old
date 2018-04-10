@@ -12,7 +12,7 @@ import { SkillHelper } from '../../helpers/character/skill-helper';
 import { SpellforgingHelper } from '../../helpers/tradeskill/spellforging-helper';
 import { MetalworkingHelper } from '../../helpers/tradeskill/metalworking-helper';
 import { ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
-import {GemDust} from '../../effects/buffs/GemDust';
+import { GemDust } from '../../effects/buffs/GemDust';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -660,6 +660,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       player.loseGold(trainCost);
 
       const gainedTP = player.skillTree.calculateNewTPFromLevels(player);
+      player.$$room.updateSkillTree(player);
 
       return `You have gained ${newLevel - level} experience level and ${gainedTP} TP.`;
     });
@@ -685,6 +686,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       if(player.gold < learnCost) return `I require ${learnCost} gold for my teaching.`;
 
       const gainedTP = player.skillTree.calculateNewTPFromSkills(player);
+      player.$$room.updateSkillTree(player);
 
       if(gainedTP === 0) return 'I cannot currently teach you anything new.';
 

@@ -4,7 +4,7 @@ require('dotenv').config({ silent: true });
 
 import * as fs from 'fs';
 
-import { cloneDeep, last } from 'lodash';
+import { cloneDeep, last, includes } from 'lodash';
 
 import { AllTraits } from '../../shared/traits/trait-hash';
 import * as AllSkills from '../scripts/commands/skills/spells';
@@ -53,8 +53,9 @@ export class SkillTreeCreator {
               const existingTraitItem = tree[newName];
               if(!existingTraitItem) throw new Error(`${newName} not found in trait tree!`);
 
-              const newItem = {
+              const newItem: any = {
                 name: newName,
+                traitName: entireName,
                 desc: traitRef.description,
                 icon: traitRef.icon,
                 capstone: upgrade.capstone,
@@ -64,6 +65,8 @@ export class SkillTreeCreator {
                 unlocks: existingTraitItem.unlocks,
                 cluster: treeIndex + 1
               };
+
+              if(includes(entireName, 'Party')) newItem.isParty = true;
 
               resultingLayout[newName] = newItem;
 
