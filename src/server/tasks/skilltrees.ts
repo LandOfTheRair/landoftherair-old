@@ -1,3 +1,4 @@
+import { Trait } from '../../shared/models/trait';
 
 require('dotenv').config({ silent: true });
 
@@ -54,6 +55,9 @@ export class SkillTreeCreator {
                 desc: traitRef.description,
                 icon: traitRef.icon,
                 capstone: upgrade.capstone,
+                requireCharacterLevel: upgrade.requireCharacterLevel,
+                requireSkillLevel: upgrade.requireSkillLevel,
+                cost: Trait.determineUpgradeCost(upgrade),
                 unlocks: existingTraitItem.unlocks
               };
 
@@ -70,6 +74,9 @@ export class SkillTreeCreator {
               iconColor: skillRef.macroMetadata.color,
               bgColor: skillRef.macroMetadata.bgColor,
               capstone: existingItem.capstone,
+              requireCharacterLevel: skillRef.macroMetadata.requireCharacterLevel,
+              requireSkillLevel: skillRef.macroMetadata.requireSkillLevel,
+              cost: skillRef.macroMetadata.skillTPCost || 3,
               unlocks: existingItem.unlocks
             };
 

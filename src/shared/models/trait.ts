@@ -7,6 +7,8 @@ interface TraitUpgrade {
   cost?: number;
   capstone?: boolean;
   unbuyable?: boolean;
+  requireCharacterLevel?: number;
+  requireSkillLevel?: number;
 }
 
 export class Trait {
