@@ -6,9 +6,52 @@
 
 .item-container {
   min-height: 550px;
+  max-height: 550px;
   width: 100%;
 
   tabset {
     width: 100%;
+  }
+}
+
+.tooltip {
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  min-width: 200px;
+  max-width: 300px;
+
+  min-height: 80px;
+  max-height: 400px;
+
+  padding: 10px;
+  z-index: 15000;
+  font: 12px sans-serif;
+  background: #111;
+
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 8px;
+  pointer-events: none;
+
+  .name, .cost, .requirements {
+    font-weight: bold;
+  }
+}
+
+:host /deep/ svg {
+  position: relative;
+  background-color: #444;
+  z-index: 0;
+  width: 600px;
+  height: 550px;
+
+  image {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .nodes, .labels:hover{
+    cursor: pointer;
   }
 }

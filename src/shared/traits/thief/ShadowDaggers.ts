@@ -13,6 +13,6 @@ export class ShadowDaggers extends Trait {
   static maxLevel = 10;
 
   static canBuy(player: Player): boolean {
-    return super.canBuy(player) && player.level >= 15;
+    return super.canBuy(player, this.tpCost) && player.level >= 15;
   }
 }

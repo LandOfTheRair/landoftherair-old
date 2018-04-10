@@ -22,11 +22,14 @@ export class SkillTreeCreator {
       const allTrees = cloneDeep(Layouts[baseClass]);
       const resultingLayout: any = {};
 
-      allTrees.forEach(tree => {
+      // build base tre
+      allTrees.forEach((tree, treeIndex) => {
         Object.keys(tree).forEach(traitOrSkillName => {
 
           const existingItem = tree[traitOrSkillName];
           if(existingItem.unbuyable) {
+            existingItem.name = traitOrSkillName;
+            existingItem.cluster = treeIndex + 1;
             resultingLayout[traitOrSkillName] = existingItem;
             return;
           }
@@ -58,7 +61,8 @@ export class SkillTreeCreator {
                 requireCharacterLevel: upgrade.requireCharacterLevel,
                 requireSkillLevel: upgrade.requireSkillLevel,
                 cost: Trait.determineUpgradeCost(upgrade),
-                unlocks: existingTraitItem.unlocks
+                unlocks: existingTraitItem.unlocks,
+                cluster: treeIndex + 1
               };
 
               resultingLayout[newName] = newItem;
@@ -77,7 +81,8 @@ export class SkillTreeCreator {
               requireCharacterLevel: skillRef.macroMetadata.requireCharacterLevel,
               requireSkillLevel: skillRef.macroMetadata.requireSkillLevel,
               cost: skillRef.macroMetadata.skillTPCost || 3,
-              unlocks: existingItem.unlocks
+              unlocks: existingItem.unlocks,
+              cluster: treeIndex + 1
             };
 
             resultingLayout[traitOrSkillName] = newItem;
@@ -86,6 +91,22 @@ export class SkillTreeCreator {
             throw new Error(`Trait or skill ${traitOrSkillName} does not exist!`);
           }
 
+        });
+      });
+
+      // add linked-list style nodes
+      Object.keys(resultingLayout).forEach(nodeName => {
+
+        const node = resultingLayout[nodeName];
+
+        if(!node.unlocks) return;
+
+        node.unlocks.forEach(unlock => {
+          const unlockedNode = resultingLayout[unlock];
+
+          if(!unlockedNode.unlockedBy) unlockedNode.unlockedBy = [];
+
+          unlockedNode.unlockedBy.push(nodeName);
         });
       });
 

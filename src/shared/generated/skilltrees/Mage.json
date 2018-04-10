@@ -1,13 +1,128 @@
 {
     "Mage": {
-        "icon": "acorn",
+        "icon": "abstract-024",
+        "desc": "The Mage is a versatile energy-focused class. It can do damage while providing some utility for itself and allies.",
         "unbuyable": true,
+        "root": true,
         "unlocks": [
             "MagicMissile",
             "CarefulTouch0",
             "DeathGrip0",
             "NaturalArmor0",
             "PartyManaRegen0"
+        ],
+        "name": "Mage",
+        "cluster": 1
+    },
+    "PartyManaRegen0": {
+        "name": "PartyManaRegen0",
+        "desc": "Increase the mana regeneration of your party.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "PartyManaRegen1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Mage"
+        ]
+    },
+    "PartyManaRegen1": {
+        "name": "PartyManaRegen1",
+        "desc": "Increase the mana regeneration of your party.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "PartyManaRegen2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "PartyManaRegen0"
+        ]
+    },
+    "PartyManaRegen2": {
+        "name": "PartyManaRegen2",
+        "desc": "Increase the mana regeneration of your party.",
+        "icon": "health-increase",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "PartyManaRegen1"
+        ]
+    },
+    "CalmMind0": {
+        "name": "CalmMind0",
+        "desc": "Gain +1 to your mana regeneration per point.",
+        "icon": "psychic-waves",
+        "cost": 3,
+        "unlocks": [
+            "CalmMind1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Identify"
+        ]
+    },
+    "CalmMind1": {
+        "name": "CalmMind1",
+        "desc": "Gain +1 to your mana regeneration per point.",
+        "icon": "psychic-waves",
+        "cost": 3,
+        "unlocks": [
+            "CalmMind2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "CalmMind0"
+        ]
+    },
+    "CalmMind2": {
+        "name": "CalmMind2",
+        "desc": "Gain +1 to your mana regeneration per point.",
+        "icon": "psychic-waves",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "CalmMind1"
+        ]
+    },
+    "ManaPool0": {
+        "name": "ManaPool0",
+        "desc": "Gain +1 additional mana per point.",
+        "icon": "drink-me",
+        "cost": 3,
+        "unlocks": [
+            "ManaPool1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicMissile"
+        ]
+    },
+    "ManaPool1": {
+        "name": "ManaPool1",
+        "desc": "Gain +1 additional mana per point.",
+        "icon": "drink-me",
+        "cost": 3,
+        "unlocks": [
+            "ManaPool2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "ManaPool0"
+        ]
+    },
+    "ManaPool2": {
+        "name": "ManaPool2",
+        "desc": "Gain +1 additional mana per point.",
+        "icon": "drink-me",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "ManaPool1"
         ]
     },
     "CarefulTouch0": {
@@ -17,6 +132,10 @@
         "cost": 3,
         "unlocks": [
             "CarefulTouch1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Mage"
         ]
     },
     "CarefulTouch1": {
@@ -26,6 +145,10 @@
         "cost": 3,
         "unlocks": [
             "CarefulTouch2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "CarefulTouch0"
         ]
     },
     "CarefulTouch2": {
@@ -33,7 +156,11 @@
         "desc": "Decrease the damage your items take by 5% per point.",
         "icon": "blacksmith",
         "capstone": true,
-        "cost": 10
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "CarefulTouch1"
+        ]
     },
     "DeathGrip0": {
         "name": "DeathGrip0",
@@ -42,6 +169,10 @@
         "cost": 3,
         "unlocks": [
             "DeathGrip1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Mage"
         ]
     },
     "DeathGrip1": {
@@ -51,6 +182,10 @@
         "cost": 3,
         "unlocks": [
             "DeathGrip2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip0"
         ]
     },
     "DeathGrip2": {
@@ -58,7 +193,11 @@
         "desc": "Decrease your chance of dropping items on death by 1% per point.",
         "icon": "drop-weapon",
         "capstone": true,
-        "cost": 10
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip1"
+        ]
     },
     "NaturalArmor0": {
         "name": "NaturalArmor0",
@@ -67,6 +206,10 @@
         "cost": 3,
         "unlocks": [
             "NaturalArmor1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Mage"
         ]
     },
     "NaturalArmor1": {
@@ -76,6 +219,10 @@
         "cost": 3,
         "unlocks": [
             "NaturalArmor2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor0"
         ]
     },
     "NaturalArmor2": {
@@ -83,13 +230,21 @@
         "desc": "Harden your skin, increasing your natural armor class by 1 per point.",
         "icon": "armor-vest",
         "capstone": true,
-        "cost": 10
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor1"
+        ]
     },
     "MagicFocus0": {
         "name": "MagicFocus0",
         "desc": "Deal 10% more energy damage per point.",
         "icon": "plasma-bolt",
-        "cost": 3
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicMissile"
+        ]
     },
     "MagicFocus1": {
         "name": "MagicFocus1",
@@ -98,6 +253,10 @@
         "cost": 3,
         "unlocks": [
             "Transmute"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Identify"
         ]
     },
     "MagicFocus2": {
@@ -107,6 +266,10 @@
         "cost": 3,
         "unlocks": [
             "EnergyWave"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Identify"
         ]
     },
     "MagicFocus3": {
@@ -116,6 +279,10 @@
         "cost": 3,
         "unlocks": [
             "EnergyWaveWiden0"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "EnergyWave"
         ]
     },
     "MagicFocus4": {
@@ -127,13 +294,21 @@
         "unlocks": [
             "MagicBolt",
             "Teleport"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Push"
         ]
     },
     "EnergyWaveWiden0": {
         "name": "EnergyWaveWiden0",
         "desc": "Your Energy Wave spell range is lengthened.",
         "icon": "beams-aura",
-        "cost": 3
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicFocus3"
+        ]
     },
     "MagicMissile": {
         "name": "MagicMissile",
@@ -145,6 +320,10 @@
             "MagicFocus0",
             "Identify",
             "ManaPool0"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Mage"
         ]
     },
     "Identify": {
@@ -157,6 +336,10 @@
             "MagicFocus1",
             "MagicFocus2",
             "CalmMind0"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicMissile"
         ]
     },
     "Transmute": {
@@ -164,7 +347,11 @@
         "desc": "Convert the items on your current tile into gold. Cost: 15 MP",
         "icon": "coins",
         "iconColor": "#665600",
-        "cost": 3
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicFocus1"
+        ]
     },
     "EnergyWave": {
         "name": "EnergyWave",
@@ -177,6 +364,10 @@
         "unlocks": [
             "MagicFocus3",
             "Push"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicFocus2"
         ]
     },
     "Push": {
@@ -187,6 +378,10 @@
         "cost": 3,
         "unlocks": [
             "MagicFocus4"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "EnergyWave"
         ]
     },
     "MagicBolt": {
@@ -194,7 +389,11 @@
         "desc": "Inflict energy damage on a single target. Cost: 10 MP",
         "icon": "burning-dot",
         "iconColor": "#0059bd",
-        "cost": 3
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicFocus4"
+        ]
     },
     "Teleport": {
         "name": "Teleport",
@@ -206,6 +405,10 @@
         "cost": 20,
         "unlocks": [
             "MassTeleport"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicFocus4"
         ]
     },
     "MassTeleport": {
@@ -213,20 +416,32 @@
         "desc": "Teleport those on your tile to a previously-memorized location. Cost: 100% MP",
         "icon": "vortex",
         "iconColor": "#a0a",
-        "cost": 3
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "Teleport"
+        ]
     },
     "Protector": {
-        "icon": "acorn",
+        "icon": "abstract-038",
+        "desc": "The Protector focuses on learning useful reinforcement spells for itself and allies.",
         "unbuyable": true,
+        "root": true,
         "unlocks": [
             "TrueSight"
-        ]
+        ],
+        "name": "Protector",
+        "cluster": 2
     },
     "DarknessWiden0": {
         "name": "DarknessWiden0",
         "desc": "Your Darkness spell range is lengthened.",
         "icon": "dust-cloud",
-        "cost": 3
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Darkness"
+        ]
     },
     "TrueSight": {
         "name": "TrueSight",
@@ -238,6 +453,10 @@
             "BarFrost",
             "BarFire",
             "BarWater"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Protector"
         ]
     },
     "BarWater": {
@@ -248,6 +467,10 @@
         "cost": 3,
         "unlocks": [
             "Darkness"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "TrueSight"
         ]
     },
     "BarFire": {
@@ -258,6 +481,10 @@
         "cost": 3,
         "unlocks": [
             "MagicShield"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "TrueSight"
         ]
     },
     "BarFrost": {
@@ -268,6 +495,10 @@
         "cost": 3,
         "unlocks": [
             "Absorption"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "TrueSight"
         ]
     },
     "MagicShield": {
@@ -278,6 +509,10 @@
         "cost": 3,
         "unlocks": [
             "Invisibility"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "BarFire"
         ]
     },
     "Absorption": {
@@ -290,6 +525,10 @@
         "cost": 3,
         "unlocks": [
             "Invisibility"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "BarFrost"
         ]
     },
     "Darkness": {
@@ -301,6 +540,10 @@
         "unlocks": [
             "DarknessWiden0",
             "DarkVision"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "BarWater"
         ]
     },
     "DarkVision": {
@@ -308,7 +551,11 @@
         "desc": "See in the darkness. Cost: 25 MP",
         "icon": "angry-eyes",
         "iconColor": "#000",
-        "cost": 3
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Darkness"
+        ]
     },
     "Invisibility": {
         "name": "Invisibility",
@@ -318,6 +565,11 @@
         "cost": 3,
         "unlocks": [
             "Haste"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "MagicShield",
+            "Absorption"
         ]
     },
     "Haste": {
@@ -327,27 +579,43 @@
         "iconColor": "#0a0",
         "requireCharacterLevel": 20,
         "requireSkillLevel": 15,
-        "cost": 20
+        "cost": 20,
+        "cluster": 2,
+        "unlockedBy": [
+            "Invisibility"
+        ]
     },
     "Elementalist": {
-        "icon": "acorn",
+        "icon": "abstract-011",
         "unbuyable": true,
+        "root": true,
+        "desc": "The Elementalist focuses on the dichotomous fire and ice magics.",
         "unlocks": [
             "FireMist",
             "IceMist"
-        ]
+        ],
+        "name": "Elementalist",
+        "cluster": 3
     },
     "FireMistWiden0": {
         "name": "FireMistWiden0",
         "desc": "Your Fire Mist spell range is lengthened.",
         "icon": "kaleidoscope-pearls",
-        "cost": 3
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "ForgedFire1"
+        ]
     },
     "IceMistWiden0": {
         "name": "IceMistWiden0",
         "desc": "Your Ice Mist spell range is lengthened.",
         "icon": "kaleidoscope-pearls",
-        "cost": 3
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "FrostedTouch1"
+        ]
     },
     "ForgedFire0": {
         "name": "ForgedFire0",
@@ -357,6 +625,10 @@
         "cost": 3,
         "unlocks": [
             "ForgedFire2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "FireMist"
         ]
     },
     "ForgedFire1": {
@@ -367,6 +639,10 @@
         "cost": 3,
         "unlocks": [
             "FireMistWiden0"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "FireMist"
         ]
     },
     "ForgedFire2": {
@@ -378,6 +654,10 @@
         "cost": 10,
         "unlocks": [
             "Firethorns"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "ForgedFire0"
         ]
     },
     "FrostedTouch0": {
@@ -388,6 +668,10 @@
         "cost": 3,
         "unlocks": [
             "FrostedTouch2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "IceMist"
         ]
     },
     "FrostedTouch1": {
@@ -398,6 +682,10 @@
         "cost": 3,
         "unlocks": [
             "IceMistWiden0"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "IceMist"
         ]
     },
     "FrostedTouch2": {
@@ -406,7 +694,11 @@
         "icon": "ice-spell-cast",
         "capstone": true,
         "requireCharacterLevel": 10,
-        "cost": 10
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "FrostedTouch0"
+        ]
     },
     "FireMist": {
         "name": "FireMist",
@@ -417,6 +709,10 @@
         "unlocks": [
             "ForgedFire0",
             "ForgedFire1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Elementalist"
         ]
     },
     "IceMist": {
@@ -428,6 +724,10 @@
         "unlocks": [
             "FrostedTouch0",
             "FrostedTouch1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Elementalist"
         ]
     },
     "Firethorns": {
@@ -435,6 +735,10 @@
         "desc": "Physical attackers take damage. Cost: 100 MP",
         "icon": "barbed-coil",
         "iconColor": "#f00",
-        "cost": 3
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "ForgedFire2"
+        ]
     }
 }

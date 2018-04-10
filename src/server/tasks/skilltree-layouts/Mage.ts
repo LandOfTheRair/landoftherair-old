@@ -1,12 +1,44 @@
 
 const MAGE_TREE = {
   Mage: {
-    icon: 'acorn',
+    icon: 'abstract-024',
+    desc: 'The Mage is a versatile energy-focused class. It can do damage while providing some utility for itself and allies.',
     unbuyable: true,
+    root: true,
     unlocks: ['MagicMissile', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0', 'PartyManaRegen0']
   },
 
   // TRAITS
+  PartyManaRegen0: {
+    unlocks: ['PartyManaRegen1']
+  },
+  PartyManaRegen1: {
+    unlocks: ['PartyManaRegen2']
+  },
+  PartyManaRegen2: {
+
+  },
+
+  CalmMind0: {
+    unlocks: ['CalmMind1']
+  },
+  CalmMind1: {
+    unlocks: ['CalmMind2']
+  },
+  CalmMind2: {
+
+  },
+
+  ManaPool0: {
+    unlocks: ['ManaPool1']
+  },
+  ManaPool1: {
+    unlocks: ['ManaPool2']
+  },
+  ManaPool2: {
+
+  },
+
   CarefulTouch0: {
     unlocks: ['CarefulTouch1']
   },
@@ -86,8 +118,10 @@ const MAGE_TREE = {
 
 const PROTECTOR_TREE = {
   Protector: {
-    icon: 'acorn',
+    icon: 'abstract-038',
+    desc: 'The Protector focuses on learning useful reinforcement spells for itself and allies.',
     unbuyable: true,
+    root: true,
     unlocks: ['TrueSight']
   },
 
@@ -131,8 +165,10 @@ const PROTECTOR_TREE = {
 
 const ELEMENTALIST_TREE = {
   Elementalist: {
-    icon: 'acorn',
+    icon: 'abstract-011',
     unbuyable: true,
+    root: true,
+    desc: 'The Elementalist focuses on the dichotomous fire and ice magics.',
     unlocks: ['FireMist', 'IceMist']
   },
 

@@ -1,7 +1,39 @@
 
-<div class="p-1 item-container d-flex flex-wrap">
+<div class="item-container d-flex flex-wrap">
   <div class="vertical-center w-100 background-text" *ngIf="!canSeeTree">You must first dedicate to a profession!</div>
-  <div *ngIf="canSeeTree">
 
+  <div class="tooltip p-1" #tooltip [style.border-color]="ttData.iconColor">
+
+    <div class="row p-0 m-0 mb-3">
+      <div class="col-9 d-flex align-items-center">
+        <div class="name">{{ fixName(ttData.name) }} <span class="cost" *ngIf="ttData.cost">({{ ttData.cost }} TP)</span></div>
+      </div>
+
+      <div class="col-3">
+        <app-icon [name]="ttData.icon" fgColor="#fff" bgColor="transparent" size="small"></app-icon>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-12">
+        <div class="desc">{{ ttData.desc }}</div>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-6">
+        <div class="requirements level" *ngIf="ttData.requireCharacterLevel">
+          Required Level: {{ ttData.requireCharacterLevel }}
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="requirements skill" *ngIf="ttData.requireSkillLevel">
+          Required Skill: {{ ttData.requireSkillLevel }}
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div *ngIf="canSeeTree" #container></div>
 </div>

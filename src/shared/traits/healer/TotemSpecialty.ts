@@ -13,7 +13,7 @@ export class TotemSpecialty extends Trait {
   static maxLevel = 5;
 
   static canBuy(player: Player): boolean {
-    return super.canBuy(player) && player.level >= 10;
+    return super.canBuy(player, this.tpCost) && player.level >= 10;
   }
 
 }
