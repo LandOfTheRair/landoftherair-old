@@ -257,7 +257,7 @@ const BATTLEMAGE_TREE = {
     unbuyable: true,
     root: true,
     desc: 'The Battlemage applies their extensive magic knowledge to physical combat, and they are also capable of conjuring familiars to help.',
-    unlocks: ['LightenArmor0', 'BladedWands0', 'VolcanoStance', 'GlacierStance']
+    unlocks: ['LightenArmor0', 'BladedWands0', 'StrongMind0', 'VolcanoStance', 'GlacierStance']
   },
 
   // TRAITS
@@ -266,6 +266,10 @@ const BATTLEMAGE_TREE = {
   },
 
   BladedWands0: {
+
+  },
+
+  StrongMind0: {
 
   },
 

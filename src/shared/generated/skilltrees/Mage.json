@@ -932,6 +932,7 @@
         "unlocks": [
             "LightenArmor0",
             "BladedWands0",
+            "StrongMind0",
             "VolcanoStance",
             "GlacierStance"
         ],
@@ -958,6 +959,19 @@
         "icon": "energy-sword",
         "capstone": true,
         "requireCharacterLevel": 10,
+        "cost": 50,
+        "cluster": 4,
+        "unlockedBy": [
+            "Battlemage"
+        ]
+    },
+    "StrongMind0": {
+        "name": "StrongMind0",
+        "traitName": "StrongMind",
+        "desc": "Add 10% of your INT per point to your STR in melee combat.",
+        "icon": "brain",
+        "capstone": true,
+        "requireCharacterLevel": 15,
         "cost": 50,
         "cluster": 4,
         "unlockedBy": [

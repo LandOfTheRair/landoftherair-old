@@ -297,6 +297,14 @@ export class CombatHelper {
 
     const damageCalcStat: StatName = isThrow || attackerWeapon.type === 'Ranged' ? 'dex' : 'str';
 
+    let baseDamageCalcStat = attacker.getTotalStat(damageCalcStat);
+    const strongMindMod = attacker.getTraitLevelAndUsageModifier('StrongMind');
+
+    if(damageCalcStat === 'str' && strongMindMod > 0) {
+      const attackerInt = attacker.getTotalStat('int');
+      baseDamageCalcStat += Math.floor( attackerInt * strongMindMod);
+    }
+
     const attackerScope = {
       skill: calcSkill,
       skill4: Math.floor(calcSkill / 4),
@@ -304,8 +312,8 @@ export class CombatHelper {
       accuracy: Math.floor(attacker.getTotalStat('accuracy') / offhandDivisor),
       dex: Math.floor(attacker.getTotalStat('dex') / offhandDivisor),
       dex4: Math.floor((attacker.getTotalStat('dex') / 4) / offhandDivisor),
-      damageStat: Math.floor(attacker.getTotalStat(damageCalcStat) / offhandDivisor),
-      damageStat4: Math.floor((attacker.getTotalStat(damageCalcStat) / 4) / offhandDivisor),
+      damageStat: Math.floor(baseDamageCalcStat / offhandDivisor),
+      damageStat4: Math.floor((baseDamageCalcStat / 4) / offhandDivisor),
       level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatLevelDivisor),
       realLevel: attacker.level,
       damageRolls: Math.max(1, damageRolls)

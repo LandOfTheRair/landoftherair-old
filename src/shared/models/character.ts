@@ -1339,6 +1339,7 @@ export class Character {
       case 'CalmMind':            return level * 2;
       case 'NaturalArmor':        return level * 10;
       case 'ManaPool':            return level * 10;
+      case 'StrongMind':          return level * 0.1;
 
       case 'GlacierStanceImproved': return level * 0.1;
       case 'VolcanoStanceImproved': return level * 0.1;
