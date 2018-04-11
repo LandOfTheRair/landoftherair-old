@@ -5,11 +5,11 @@ export class CalmMind extends Trait {
 
   static baseClass = 'Mage';
   static traitName = 'CalmMind';
-  static description = 'Gain +1 to your mana regeneration per point.';
+  static description = 'Gain +2 to your mana regeneration per point.';
   static icon = 'psychic-waves';
 
   static upgrades = [
-    { }, { }, { capstone: true }
+    { }, { }, { requireCharacterLevel: 15, capstone: true }
   ];
 
 }

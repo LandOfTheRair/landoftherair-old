@@ -9,7 +9,7 @@ export class MagicFocus extends Trait {
   static icon = 'plasma-bolt';
 
   static upgrades = [
-    { }, { }, { }, { }, { capstone: true }
+    { }, { }, { }, { }, { requireCharacterLevel: 15, capstone: true }
   ];
 
 }

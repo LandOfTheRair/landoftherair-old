@@ -9,7 +9,7 @@ export class FrostedTouch extends Trait {
   static icon = 'ice-spell-cast';
 
   static upgrades = [
-    { requireCharacterLevel: 10 }, { requireCharacterLevel: 10 }, { requireCharacterLevel: 10, capstone: true }
+    { requireCharacterLevel: 10 }, { requireCharacterLevel: 10 }, { requireCharacterLevel: 15, capstone: true }
   ];
 
 }

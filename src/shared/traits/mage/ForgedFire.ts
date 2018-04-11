@@ -9,7 +9,7 @@ export class ForgedFire extends Trait {
   static icon = 'flame-spin';
 
   static upgrades = [
-    { requireCharacterLevel: 10 }, { requireCharacterLevel: 10 }, { requireCharacterLevel: 10, capstone: true }
+    { requireCharacterLevel: 10 }, { requireCharacterLevel: 10 }, { requireCharacterLevel: 15, capstone: true }
   ];
 
 }

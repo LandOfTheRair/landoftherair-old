@@ -5,11 +5,11 @@ export class ManaPool extends Trait {
 
   static baseClass = 'Mage';
   static traitName = 'ManaPool';
-  static description = 'Gain +1 additional mana per point.';
+  static description = 'Gain +10 additional mana per point.';
   static icon = 'drink-me';
 
   static upgrades = [
-    { }, { }, { capstone: true }
+    { }, { }, { requireCharacterLevel: 15, capstone: true }
   ];
 
 }

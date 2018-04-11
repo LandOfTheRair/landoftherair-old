@@ -9,7 +9,7 @@ export class WandSpecialty extends Trait {
   static icon = 'fairy-wand';
 
   static upgrades = [
-    { requireCharacterLevel: 10 }, { requireCharacterLevel: 10 }, { requireCharacterLevel: 10, capstone: true }
+    { requireCharacterLevel: 10 }, { requireCharacterLevel: 10 }, { requireCharacterLevel: 15, capstone: true }
   ];
 
 }

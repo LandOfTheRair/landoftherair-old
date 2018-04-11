@@ -608,6 +608,7 @@ export class Player extends Character {
   public decreaseTraitLevel(trait: string, levelsLost: number) {
     this.traitLevels[trait].level -= levelsLost;
     if(this.traitLevels[trait].level <= 0) this.traitLevels[trait].level = 0;
+    this.recalculateStats();
   }
 
   public increaseTraitLevel(trait: string, levelsGained: number, reqBaseClass?: string, extra = {}): void {
@@ -617,6 +618,7 @@ export class Player extends Character {
     extend(this.traitLevels[trait], extra);
     this.traitLevels[trait].level = this.traitLevels[trait].level || 0;
     this.traitLevels[trait].level += levelsGained;
+    this.recalculateStats();
   }
 
   public recalculateStats() {
