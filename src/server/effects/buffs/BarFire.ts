@@ -21,6 +21,9 @@ export class BarFire extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 100 * this.potency;
+
+    this.potency += Math.floor(this.potency * caster.getTraitLevelAndUsageModifier('ThermalBarrier'));
+
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {

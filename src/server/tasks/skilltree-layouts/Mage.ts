@@ -185,19 +185,39 @@ const ELEMENTALIST_TREE = {
     unlocks: ['ForgedFire2']
   },
   ForgedFire1: {
-    unlocks: ['FireMistWiden0']
+    unlocks: ['FireMistWiden0', 'ThermalBarrier0', 'FriendlyFire1']
   },
   ForgedFire2: {
-    unlocks: ['Firethorns']
+    unlocks: ['Firethorns', 'FriendlyFire2']
   },
 
   FrostedTouch0: {
     unlocks: ['FrostedTouch2']
   },
   FrostedTouch1: {
-    unlocks: ['IceMistWiden0']
+    unlocks: ['IceMistWiden0', 'ThermalBarrier1', 'FriendlyFire0']
   },
   FrostedTouch2: {
+    unlocks: ['Frostspikes', 'ThermalBarrier2']
+  },
+
+  ThermalBarrier0: {
+
+  },
+  ThermalBarrier1: {
+
+  },
+  ThermalBarrier2: {
+
+  },
+
+  FriendlyFire0: {
+
+  },
+  FriendlyFire1: {
+
+  },
+  FriendlyFire2: {
 
   },
 
@@ -211,6 +231,10 @@ const ELEMENTALIST_TREE = {
   },
 
   Firethorns: {
+
+  },
+
+  Frostspikes: {
 
   }
 };

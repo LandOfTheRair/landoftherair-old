@@ -432,7 +432,7 @@
     "Teleport": {
         "name": "Teleport",
         "desc": "Teleport to a previously-memorized location. Cost: 50% MP",
-        "icon": "deadly-strike",
+        "icon": "teleport",
         "iconColor": "#a0a",
         "requireCharacterLevel": 20,
         "requireSkillLevel": 15,
@@ -679,7 +679,9 @@
         "requireCharacterLevel": 10,
         "cost": 3,
         "unlocks": [
-            "FireMistWiden0"
+            "FireMistWiden0",
+            "ThermalBarrier0",
+            "FriendlyFire1"
         ],
         "cluster": 3,
         "unlockedBy": [
@@ -695,7 +697,8 @@
         "requireCharacterLevel": 15,
         "cost": 10,
         "unlocks": [
-            "Firethorns"
+            "Firethorns",
+            "FriendlyFire2"
         ],
         "cluster": 3,
         "unlockedBy": [
@@ -725,7 +728,9 @@
         "requireCharacterLevel": 10,
         "cost": 3,
         "unlocks": [
-            "IceMistWiden0"
+            "IceMistWiden0",
+            "ThermalBarrier1",
+            "FriendlyFire0"
         ],
         "cluster": 3,
         "unlockedBy": [
@@ -740,9 +745,87 @@
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 10,
+        "unlocks": [
+            "Frostspikes",
+            "ThermalBarrier2"
+        ],
         "cluster": 3,
         "unlockedBy": [
             "FrostedTouch0"
+        ]
+    },
+    "ThermalBarrier0": {
+        "name": "ThermalBarrier0",
+        "traitName": "ThermalBarrier",
+        "desc": "Your fire and ice protection spells are enhanced by +10% per point.",
+        "icon": "teleportation-rings",
+        "requireCharacterLevel": 10,
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "ForgedFire1"
+        ]
+    },
+    "ThermalBarrier1": {
+        "name": "ThermalBarrier1",
+        "traitName": "ThermalBarrier",
+        "desc": "Your fire and ice protection spells are enhanced by +10% per point.",
+        "icon": "teleportation-rings",
+        "requireCharacterLevel": 10,
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "FrostedTouch1"
+        ]
+    },
+    "ThermalBarrier2": {
+        "name": "ThermalBarrier2",
+        "traitName": "ThermalBarrier",
+        "desc": "Your fire and ice protection spells are enhanced by +10% per point.",
+        "icon": "teleportation-rings",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "FrostedTouch2"
+        ]
+    },
+    "FriendlyFire0": {
+        "name": "FriendlyFire0",
+        "traitName": "FriendlyFire",
+        "desc": "Your fire and ice spells have a +10% chance per point of not hitting allied creatures.",
+        "icon": "fire-silhouette",
+        "requireCharacterLevel": 10,
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "FrostedTouch1"
+        ]
+    },
+    "FriendlyFire1": {
+        "name": "FriendlyFire1",
+        "traitName": "FriendlyFire",
+        "desc": "Your fire and ice spells have a +10% chance per point of not hitting allied creatures.",
+        "icon": "fire-silhouette",
+        "requireCharacterLevel": 10,
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "ForgedFire1"
+        ]
+    },
+    "FriendlyFire2": {
+        "name": "FriendlyFire2",
+        "traitName": "FriendlyFire",
+        "desc": "Your fire and ice spells have a +10% chance per point of not hitting allied creatures.",
+        "icon": "fire-silhouette",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "ForgedFire2"
         ]
     },
     "FireMist": {
@@ -777,13 +860,24 @@
     },
     "Firethorns": {
         "name": "Firethorns",
-        "desc": "Physical attackers take damage. Cost: 100 MP",
+        "desc": "Physical attackers take fire damage. Cost: 100 MP",
         "icon": "barbed-coil",
         "iconColor": "#f00",
         "cost": 3,
         "cluster": 3,
         "unlockedBy": [
             "ForgedFire2"
+        ]
+    },
+    "Frostspikes": {
+        "name": "Frostspikes",
+        "desc": "Physical attackers take ice damage. Cost: 100 MP",
+        "icon": "barbed-coil",
+        "iconColor": "#000080",
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "FrostedTouch2"
         ]
     }
 }

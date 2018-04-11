@@ -47,6 +47,7 @@ export * from './augments/EtherFire';
 
 export * from './auras/NecroticAura';
 export * from './auras/Firethorns';
+export * from './auras/Frostspikes';
 
 export * from './buffs/BarFire';
 export * from './buffs/BarFrost';

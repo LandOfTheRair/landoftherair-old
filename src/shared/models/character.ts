@@ -1326,7 +1326,7 @@ export class Character {
       case 'FrostedTouch':        return level;
       case 'Riposte':             return level;
       case 'CarefulTouch':        return Math.min(0.95, level * 0.1);
-      case 'EffectiveSupporter':  return (level * 10) / 100;
+      case 'EffectiveSupporter':  return level * 0.1;
       case 'OffhandFinesse':      return level * 0.1;
       case 'MagicFocus':          return level * 10;
       case 'NecroticFocus':       return level * 10;
@@ -1334,6 +1334,8 @@ export class Character {
       case 'ForcefulStrike':      return level * 10;
       case 'ShadowRanger':        return level * 10;
 
+      case 'FriendlyFire':        return level * 10;
+      case 'ThermalBarrier':      return level * 0.1;
       case 'CalmMind':            return level * 2;
       case 'NaturalArmor':        return level * 10;
       case 'ManaPool':            return level * 10;

@@ -6,6 +6,7 @@ export * from './EnergyWave';
 export * from './FindFamiliar';
 export * from './FireMist';
 export * from './Firethorns';
+export * from './Frostspikes';
 export * from './Haste';
 export * from './IceMist';
 export * from './ImbueEnergy';

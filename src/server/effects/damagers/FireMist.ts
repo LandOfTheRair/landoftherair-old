@@ -1,4 +1,6 @@
 
+import { random } from 'lodash';
+
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
@@ -23,7 +25,15 @@ export class FireMist extends SpellEffect {
 
     const attacked = target.$$room.state.getAllInRange(target, range, [], false);
 
+    const friendlyFireMod = caster.getTraitLevelAndUsageModifier('FriendlyFire');
+
     attacked.forEach(refTarget => {
+
+      if(friendlyFireMod > 0) {
+        const roll = random(0, 100);
+        if(roll <= friendlyFireMod && !caster.$$room.state.checkTargetForHostility(caster, target)) return;
+      }
+
       const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
       const dist = caster.distFrom(refTarget);

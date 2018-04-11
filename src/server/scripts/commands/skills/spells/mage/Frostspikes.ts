@@ -1,26 +1,26 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { Firethorns as CastEffect } from '../../../../../effects/auras/Firethorns';
+import { Frostspikes as CastEffect } from '../../../../../effects/auras/Frostspikes';
 
-export class Firethorns extends Skill {
+export class Frostspikes extends Skill {
 
   static macroMetadata = {
-    name: 'Firethorns',
-    macro: 'cast firethorns',
+    name: 'Frostspikes',
+    macro: 'cast frostspikes',
     icon: 'barbed-coil',
-    color: '#f00',
+    color: '#000080',
     mode: 'clickToTarget',
-    tooltipDesc: 'Physical attackers take fire damage. Cost: 100 MP'
+    tooltipDesc: 'Physical attackers take ice damage. Cost: 100 MP'
   };
 
   public targetsFriendly = true;
 
-  public name = ['firethorns', 'cast firethorns'];
+  public name = ['frostspikes', 'cast frostspikes'];
   public format = 'Target';
 
   canUse(user: Character, target: Character) {
-    return super.canUse(user, target) && !target.hasEffect('Firethorns');
+    return super.canUse(user, target) && !target.hasEffect('Frostspikes');
   }
 
   mpCost() { return 100; }
