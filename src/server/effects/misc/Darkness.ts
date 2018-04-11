@@ -18,8 +18,10 @@ export class Darkness extends SpellEffect {
 
     caster.sendClientMessage('You cloak the area in a veil of darkness.');
 
+    const radius = (caster.baseClass === 'Thief' ? 0 : 1) + caster.getTraitLevel('DarknessWiden');
+
     /** PERK:CLASS:THIEF:Thieves darkness only covers one tile. */
-    target.$$room.createDarkness(target.x, target.y, caster.baseClass === 'Thief' ? 0 : 1, duration);
+    target.$$room.createDarkness(target.x, target.y, radius, duration);
 
     this.aoeAgro(caster, 10);
   }
