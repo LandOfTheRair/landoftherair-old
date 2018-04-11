@@ -17,7 +17,7 @@
     "PartyManaRegen0": {
         "name": "PartyManaRegen0",
         "traitName": "PartyManaRegen",
-        "desc": "Increase the mana regeneration of your party.",
+        "desc": "Increase the mana regeneration of your party by +2 per point.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -32,7 +32,7 @@
     "PartyManaRegen1": {
         "name": "PartyManaRegen1",
         "traitName": "PartyManaRegen",
-        "desc": "Increase the mana regeneration of your party.",
+        "desc": "Increase the mana regeneration of your party by +2 per point.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -47,9 +47,10 @@
     "PartyManaRegen2": {
         "name": "PartyManaRegen2",
         "traitName": "PartyManaRegen",
-        "desc": "Increase the mana regeneration of your party.",
+        "desc": "Increase the mana regeneration of your party by +2 per point.",
         "icon": "health-increase",
         "capstone": true,
+        "requireCharacterLevel": 15,
         "cost": 10,
         "cluster": 1,
         "isParty": true,
@@ -60,7 +61,7 @@
     "CalmMind0": {
         "name": "CalmMind0",
         "traitName": "CalmMind",
-        "desc": "Gain +1 to your mana regeneration per point.",
+        "desc": "Gain +2 to your mana regeneration per point.",
         "icon": "psychic-waves",
         "cost": 3,
         "unlocks": [
@@ -74,7 +75,7 @@
     "CalmMind1": {
         "name": "CalmMind1",
         "traitName": "CalmMind",
-        "desc": "Gain +1 to your mana regeneration per point.",
+        "desc": "Gain +2 to your mana regeneration per point.",
         "icon": "psychic-waves",
         "cost": 3,
         "unlocks": [
@@ -88,9 +89,10 @@
     "CalmMind2": {
         "name": "CalmMind2",
         "traitName": "CalmMind",
-        "desc": "Gain +1 to your mana regeneration per point.",
+        "desc": "Gain +2 to your mana regeneration per point.",
         "icon": "psychic-waves",
         "capstone": true,
+        "requireCharacterLevel": 15,
         "cost": 10,
         "cluster": 1,
         "unlockedBy": [
@@ -100,7 +102,7 @@
     "ManaPool0": {
         "name": "ManaPool0",
         "traitName": "ManaPool",
-        "desc": "Gain +1 additional mana per point.",
+        "desc": "Gain +10 additional mana per point.",
         "icon": "drink-me",
         "cost": 3,
         "unlocks": [
@@ -114,7 +116,7 @@
     "ManaPool1": {
         "name": "ManaPool1",
         "traitName": "ManaPool",
-        "desc": "Gain +1 additional mana per point.",
+        "desc": "Gain +10 additional mana per point.",
         "icon": "drink-me",
         "cost": 3,
         "unlocks": [
@@ -128,9 +130,10 @@
     "ManaPool2": {
         "name": "ManaPool2",
         "traitName": "ManaPool",
-        "desc": "Gain +1 additional mana per point.",
+        "desc": "Gain +10 additional mana per point.",
         "icon": "drink-me",
         "capstone": true,
+        "requireCharacterLevel": 15,
         "cost": 10,
         "cluster": 1,
         "unlockedBy": [
@@ -140,7 +143,7 @@
     "CarefulTouch0": {
         "name": "CarefulTouch0",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 5% per point.",
+        "desc": "Decrease the damage your items take by 10% per point.",
         "icon": "blacksmith",
         "cost": 3,
         "unlocks": [
@@ -154,7 +157,7 @@
     "CarefulTouch1": {
         "name": "CarefulTouch1",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 5% per point.",
+        "desc": "Decrease the damage your items take by 10% per point.",
         "icon": "blacksmith",
         "cost": 3,
         "unlocks": [
@@ -168,9 +171,10 @@
     "CarefulTouch2": {
         "name": "CarefulTouch2",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 5% per point.",
+        "desc": "Decrease the damage your items take by 10% per point.",
         "icon": "blacksmith",
         "capstone": true,
+        "requireCharacterLevel": 15,
         "cost": 10,
         "cluster": 1,
         "unlockedBy": [
@@ -180,7 +184,7 @@
     "DeathGrip0": {
         "name": "DeathGrip0",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 1% per point.",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
         "icon": "drop-weapon",
         "cost": 3,
         "unlocks": [
@@ -194,7 +198,7 @@
     "DeathGrip1": {
         "name": "DeathGrip1",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 1% per point.",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
         "icon": "drop-weapon",
         "cost": 3,
         "unlocks": [
@@ -208,9 +212,10 @@
     "DeathGrip2": {
         "name": "DeathGrip2",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 1% per point.",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
         "icon": "drop-weapon",
         "capstone": true,
+        "requireCharacterLevel": 15,
         "cost": 10,
         "cluster": 1,
         "unlockedBy": [
@@ -220,7 +225,7 @@
     "NaturalArmor0": {
         "name": "NaturalArmor0",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 1 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
         "icon": "armor-vest",
         "cost": 3,
         "unlocks": [
@@ -234,7 +239,7 @@
     "NaturalArmor1": {
         "name": "NaturalArmor1",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 1 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
         "icon": "armor-vest",
         "cost": 3,
         "unlocks": [
@@ -248,9 +253,10 @@
     "NaturalArmor2": {
         "name": "NaturalArmor2",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 1 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
         "icon": "armor-vest",
         "capstone": true,
+        "requireCharacterLevel": 15,
         "cost": 10,
         "cluster": 1,
         "unlockedBy": [
@@ -316,6 +322,7 @@
         "desc": "Deal 10% more energy damage per point.",
         "icon": "plasma-bolt",
         "capstone": true,
+        "requireCharacterLevel": 15,
         "cost": 10,
         "unlocks": [
             "MagicBolt",
@@ -416,7 +423,7 @@
         "desc": "Inflict energy damage on a single target. Cost: 10 MP",
         "icon": "burning-dot",
         "iconColor": "#0059bd",
-        "cost": 3,
+        "cost": 10,
         "cluster": 1,
         "unlockedBy": [
             "MagicFocus4"
@@ -534,7 +541,9 @@
         "desc": "Negate some physical damage. Cost: 100 MP",
         "icon": "energy-shield",
         "iconColor": "#a0a",
-        "cost": 3,
+        "requireCharacterLevel": 10,
+        "requireSkillLevel": 7,
+        "cost": 10,
         "unlocks": [
             "Invisibility"
         ],
@@ -550,7 +559,7 @@
         "iconColor": "#a0a",
         "requireCharacterLevel": 10,
         "requireSkillLevel": 7,
-        "cost": 3,
+        "cost": 10,
         "unlocks": [
             "Invisibility"
         ],
@@ -683,7 +692,7 @@
         "desc": "Your fire spells burn the opponent more quickly.",
         "icon": "flame-spin",
         "capstone": true,
-        "requireCharacterLevel": 10,
+        "requireCharacterLevel": 15,
         "cost": 10,
         "unlocks": [
             "Firethorns"
@@ -729,7 +738,7 @@
         "desc": "Your ice spells freeze the opponent more quickly.",
         "icon": "ice-spell-cast",
         "capstone": true,
-        "requireCharacterLevel": 10,
+        "requireCharacterLevel": 15,
         "cost": 10,
         "cluster": 3,
         "unlockedBy": [
