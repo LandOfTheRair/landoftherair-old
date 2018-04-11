@@ -287,6 +287,7 @@ export class SkillTree {
 
     }
 
+    this.resetPoints--;
     this.unbuyItem(ref);
 
     if(recalculateBuyable) {
