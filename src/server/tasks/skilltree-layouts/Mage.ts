@@ -292,10 +292,23 @@ const BATTLEMAGE_TREE = {
 
   // SKILLS
   VolcanoStance: {
-    unlocks: ['VolcanoStanceImproved0']
+    unlocks: ['VolcanoStanceImproved0', 'ImbueFlame', 'ImbueEnergy']
   },
+
   GlacierStance: {
-    unlocks: ['GlacierStanceImproved0']
+    unlocks: ['GlacierStanceImproved0', 'ImbueFrost', 'ImbueEnergy']
+  },
+
+  ImbueFrost: {
+
+  },
+
+  ImbueFlame: {
+
+  },
+
+  ImbueEnergy: {
+
   }
 };
 

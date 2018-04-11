@@ -41,6 +41,8 @@ export * from './dots/Poison';
 export * from './augments/Attribute';
 export * from './augments/Applied';
 export * from './augments/ImbueEnergy';
+export * from './augments/ImbueFlame';
+export * from './augments/ImbueFrost';
 
 export * from './augments/BeastRipper';
 export * from './augments/EtherFire';

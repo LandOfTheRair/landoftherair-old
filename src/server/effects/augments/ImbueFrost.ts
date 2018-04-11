@@ -5,12 +5,12 @@ import { AugmentSpellEffect, ImbueEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
-export class ImbueEnergy extends ImbueEffect implements AugmentSpellEffect {
+export class ImbueFrost extends ImbueEffect implements AugmentSpellEffect {
 
   iconData = {
     name: 'magic-palm',
-    color: '#a0a',
-    tooltipDesc: 'Physical attacks sometimes do bonus energy damage.'
+    color: '#00b',
+    tooltipDesc: 'Physical attacks sometimes do bonus frost damage.'
   };
 
   maxSkillForSkillGain = 21;
@@ -28,7 +28,7 @@ export class ImbueEnergy extends ImbueEffect implements AugmentSpellEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Imbue Energy on ${target.name}.`);
+      this.casterEffectMessage(caster, `You cast Imbue Frost on ${target.name}.`);
     }
 
     this.aoeAgro(caster, 10);
@@ -37,13 +37,13 @@ export class ImbueEnergy extends ImbueEffect implements AugmentSpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'A whirling purple aura envelops your hands.');
+    this.targetEffectMessage(char, 'A whirling blue aura envelops your hands.');
 
-    this.iconData.tooltipDesc = `Physical attacks sometimes do ${this.potency * this.potencyMultiplier} bonus energy damage.`;
+    this.iconData.tooltipDesc = `Physical attacks sometimes do ${this.potency * this.potencyMultiplier} bonus ice damage.`;
   }
 
   effectEnd(char: Character) {
-    this.effectMessage(char, 'Your hands lose their purple glow.');
+    this.effectMessage(char, 'Your hands lose their blue glow.');
   }
 
   augmentAttack(attacker: Character, defender: Character, opts: { damage: number, damageClass: string }) {
@@ -52,10 +52,10 @@ export class ImbueEnergy extends ImbueEffect implements AugmentSpellEffect {
     if(random(0, 100) > this.potency) return;
 
     this.magicalAttack(attacker, defender, {
-      atkMsg: `You strike for bonus energy damage!`,
-      defMsg: `${this.getCasterName(attacker, defender)} struck you with a burst of raw energy!`,
+      atkMsg: `You strike for bonus ice damage!`,
+      defMsg: `${this.getCasterName(attacker, defender)} struck you with a burst of raw frost!`,
       damage: this.potency * this.potencyMultiplier,
-      damageClass: 'energy'
+      damageClass: 'ice'
     });
   }
 }

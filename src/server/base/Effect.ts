@@ -253,6 +253,22 @@ export class ChanneledSpellEffect extends SpellEffect {
   }
 }
 
+export class ImbueEffect extends SpellEffect {
+
+  cast(char: Character, target: Character, skillRef?: Skill): boolean {
+    let foundSelf = false;
+
+    // only one imbue can be active at a time
+    char.effectsList.forEach(eff => {
+      if(!includes(eff.constructor.name, 'Imbue')) return;
+      char.unapplyEffect(eff, true);
+      if(eff.constructor.name === this.constructor.name) foundSelf = true;
+    });
+
+    return foundSelf;
+  }
+}
+
 export class WeaponEffect extends Effect {
 
   protected skillRequired: number;

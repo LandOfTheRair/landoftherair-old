@@ -1,26 +1,26 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { ImbueEnergy as CastEffect } from '../../../../../effects/augments/ImbueEnergy';
+import { ImbueFlame as CastEffect } from '../../../../../effects/augments/ImbueFlame';
 
-export class ImbueEnergy extends Skill {
+export class ImbueFlame extends Skill {
 
   static macroMetadata = {
-    name: 'ImbueEnergy',
-    macro: 'cast imbueenergy',
+    name: 'ImbueFlame',
+    macro: 'cast imbueflame',
     icon: 'magic-palm',
-    color: '#a0a',
+    color: '#a00',
     mode: 'clickToTarget',
-    tooltipDesc: 'Augment physical attacks to do bonus energy damage. Cost: 100 MP'
+    tooltipDesc: 'Augment physical attacks to do bonus fire damage. Cost: 100 MP'
   };
 
   public targetsFriendly = true;
 
-  public name = ['imbueenergy', 'cast imbueenergy'];
+  public name = ['imbueflame', 'cast imbueflame'];
   public format = 'Target';
 
   canUse(user: Character, target: Character) {
-    return super.canUse(user, target) && !target.hasEffect('ImbueEnergy');
+    return super.canUse(user, target) && !target.hasEffect('ImbueFlame');
   }
 
   mpCost() { return 100; }

@@ -11,6 +11,8 @@ export * from './GlacierStance';
 export * from './Haste';
 export * from './IceMist';
 export * from './ImbueEnergy';
+export * from './ImbueFlame';
+export * from './ImbueFrost';
 export * from './Invisibility';
 export * from './MagicBolt';
 export * from './MagicMissile';

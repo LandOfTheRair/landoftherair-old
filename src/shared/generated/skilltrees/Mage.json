@@ -1038,7 +1038,9 @@
         "bgColor": "#000",
         "cost": 3,
         "unlocks": [
-            "VolcanoStanceImproved0"
+            "VolcanoStanceImproved0",
+            "ImbueFlame",
+            "ImbueEnergy"
         ],
         "cluster": 4,
         "unlockedBy": [
@@ -1053,11 +1055,47 @@
         "bgColor": "#000",
         "cost": 3,
         "unlocks": [
-            "GlacierStanceImproved0"
+            "GlacierStanceImproved0",
+            "ImbueFrost",
+            "ImbueEnergy"
         ],
         "cluster": 4,
         "unlockedBy": [
             "Battlemage"
+        ]
+    },
+    "ImbueFrost": {
+        "name": "ImbueFrost",
+        "desc": "Augment physical attacks to do bonus ice damage. Cost: 100 MP",
+        "icon": "magic-palm",
+        "iconColor": "#00b",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "GlacierStance"
+        ]
+    },
+    "ImbueFlame": {
+        "name": "ImbueFlame",
+        "desc": "Augment physical attacks to do bonus fire damage. Cost: 100 MP",
+        "icon": "magic-palm",
+        "iconColor": "#a00",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "VolcanoStance"
+        ]
+    },
+    "ImbueEnergy": {
+        "name": "ImbueEnergy",
+        "desc": "Augment physical attacks to do bonus energy damage. Cost: 100 MP",
+        "icon": "magic-palm",
+        "iconColor": "#a0a",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "VolcanoStance",
+            "GlacierStance"
         ]
     }
 }
