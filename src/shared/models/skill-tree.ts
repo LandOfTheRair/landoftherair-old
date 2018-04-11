@@ -1,12 +1,9 @@
 
-import { extend, maxBy, values } from 'lodash';
+import { extend, maxBy, values, every, some } from 'lodash';
 import { Player } from './player';
 import { SkillClassNames } from './character';
 import { nonenumerable } from 'nonenumerable';
 import { AllTrees } from '../generated/skilltrees';
-
-// TODO how can you NaN traitPoints?
-// TODO how does saving the skill tree sometimes null it?
 
 export class SkillTree {
   levelsClaimed: { [key: string]: boolean } = {};
@@ -50,9 +47,11 @@ export class SkillTree {
   }
 
   public linkBuyableNodeToRealNode(traitName: string): any {
-    if(!this.isAvailableToBuy(traitName)) return null;
-
     return AllTrees[this.baseClass][traitName];
+  }
+
+  public hasEnoughPointsToRefund(): boolean {
+    return this.resetPoints > 0;
   }
 
   public hasEnoughPointsToBuy(traitName: string): boolean {
@@ -63,7 +62,7 @@ export class SkillTree {
     return this.traitPoints >= node.cost;
   }
 
-  public isCapableOfBuying(traitName, player: Player): boolean {
+  public isCapableOfBuying(traitName: string, player: Player): boolean {
     const node = this.linkBuyableNodeToRealNode(traitName);
     if(!node) return false;
 
@@ -71,6 +70,15 @@ export class SkillTree {
     const mySkill = this.getHighestRelevantSkillLevel(player);
 
     return myLevel >= (node.requireCharacterLevel || 0) && mySkill > (node.requireSkillLevel || 0);
+  }
+
+  public isCapableOfRefunding(traitName: string): boolean {
+    const node = this.linkBuyableNodeToRealNode(traitName);
+    if(!node) return false;
+
+    if(!node.unlocks || node.unlocks.length === 0) return true;
+
+    return every(node.unlocks, unlock => !this.isBought(unlock));
   }
 
   private updateBuyableNodes(): void {
@@ -187,24 +195,59 @@ export class SkillTree {
     this.gainResetPoints(-rp);
   }
 
-  public reset(): void {
+  public reset(player: Player): void {
+
+    // TODO actually un-buy everything so refunds are processed correctly - do it here, then reset
+
     this.nodesClaimed = {};
     this.levelsClaimed = {};
     this.skillsClaimed = {};
 
     this.traitPoints = 0;
+    player.$$room.savePlayer(player);
     this.updateBuyableNodes();
   }
 
-  public validateSelf(): void {
-    // make sure there are no orphaned nodes. if there are, remove them from the nodesClaimed hash
-    // make sure all pre-reqs are met for each node
-    // make sure all bought nodes cost the same and refund the difference
+  public validateSelf(player: Player): void {
+
+    Object.keys(this.nodesClaimed).forEach(claimedNode => {
+      const realNode = this.linkBuyableNodeToRealNode(claimedNode);
+
+      // no node = instant refund
+      if(!realNode) {
+        this.refundNode(player, claimedNode);
+        return;
+      }
+
+      // if it has no parents, whatever, probably not a buyable node or something
+      if(!realNode.unlockedBy) return;
+
+      // if it's missing all parents, probably not valid
+      const missingAllParents = !some(realNode.unlockedBy, boughtNode => {
+        const boughtRef = this.linkBuyableNodeToRealNode(boughtNode);
+        return boughtRef.root || this.isBought(boughtNode);
+      });
+
+      const unableToBuyNode = !this.isCapableOfBuying(claimedNode, player);
+
+      if(missingAllParents || unableToBuyNode) {
+        this.refundNode(player, claimedNode);
+      } else {
+        if(realNode.cost !== this.nodesClaimed[claimedNode]) {
+          const refund = realNode.cost - this.nodesClaimed[claimedNode];
+          this.traitPoints += refund;
+          this.nodesClaimed[claimedNode] = realNode.cost;
+          player.sendClientMessage(`Refunded ${refund} TP due to inconsistency with ${claimedNode}.`);
+        }
+      }
+
+    });
   }
 
   public syncWithPlayer(player: Player): void {
     this.baseClass = player.baseClass;
-    // reset learnedskills, recalc to make sure everything still jives
+
+    this.validateSelf(player);
   }
 
   private buyItem(traitNode: any): void {
@@ -218,30 +261,89 @@ export class SkillTree {
     this.traitPoints -= traitNode.cost;
   }
 
-  // should nodes store their cost? so if it changes, the node and children are removed?
-  public buyTrait(player: Player, traitName: string, realName: string): void {
+  private unbuyItem(traitNode: any): void {
+
+    if(traitNode.isParty) {
+      this.partyPoints += this.nodesClaimed[traitNode.name];
+    } else {
+      this.traitPoints += this.nodesClaimed[traitNode.name];
+    }
+
+    delete this.nodesClaimed[traitNode.name];
+  }
+
+  public refundNode(player: Player, traitName: string, recalculateBuyable = true): void {
+
+    const ref = this.linkBuyableNodeToRealNode(traitName);
+    if(!ref) return;
+
+    // is trait
+    if(ref.traitName) {
+      this.refundTrait(player, ref.name, ref.traitName);
+
+    // is skill
+    } else {
+      this.refundSkill(player, ref.name);
+
+    }
+
+    this.unbuyItem(ref);
+
+    if(recalculateBuyable) {
+      this.updateBuyableNodes();
+      player.$$room.savePlayer(player);
+    }
+
+  }
+
+  private refundTrait(player: Player, traitName: string, realName: string): void {
     const node = this.linkBuyableNodeToRealNode(traitName);
+
+    player.sendClientMessage(`You have refunded the trait "${realName}"!`);
+    const boost = node.capstone ? 3 : 1;
+
+    player.decreaseTraitLevel(realName, boost);
+  }
+
+  private refundSkill(player: Player, skillName: string): void {
+    const node = this.linkBuyableNodeToRealNode(skillName);
     if(!node) return;
 
-    this.buyItem(node);
+    player.sendClientMessage(`You have refunded the skill "${skillName}"!`);
+    player.unlearnSpell(skillName);
+  }
+
+  public buyNode(player: Player, traitName: string) {
+
+    const ref = this.linkBuyableNodeToRealNode(traitName);
+    if(!ref) return;
+
+    // is trait
+    if(ref.traitName) {
+      this.buyTrait(player, ref.name, ref.traitName);
+
+    // is skill
+    } else {
+      this.buySkill(player, ref.name);
+
+    }
+
+    this.buyItem(ref);
+    this.updateBuyableNodes();
+    player.$$room.savePlayer(player);
+  }
+
+  private buyTrait(player: Player, traitName: string, realName: string): void {
+    const node = this.linkBuyableNodeToRealNode(traitName);
 
     player.sendClientMessage(`You have expanded your trait "${realName}"!`);
     const boost = node.capstone ? 3 : 1;
     player.increaseTraitLevel(realName, boost);
-
-    this.updateBuyableNodes();
   }
 
-  public buySkill(player: Player, skillName: string): void {
-    const node = this.linkBuyableNodeToRealNode(skillName);
-    if(!node) return;
-
-    this.buyItem(node);
-
+  private buySkill(player: Player, skillName: string): void {
     player.sendClientMessage(`You have learned the skill "${skillName}"!`);
     player.learnSpell(skillName);
     player.$$room.resetMacros(player);
-
-    this.updateBuyableNodes();
   }
 }

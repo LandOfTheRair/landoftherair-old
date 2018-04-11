@@ -249,6 +249,7 @@ export class Lobby extends Room<LobbyState> {
     const oldPlayerName = account.characterNames[charSlot];
     if(oldPlayerName) {
       DB.$players.remove({ username: client.username, charSlot });
+      DB.$characterSkillTrees.remove({ username: client.username, charSlot });
       TeleportHelper.removeAllTeleports(client.username, charSlot);
     }
 

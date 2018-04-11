@@ -1,6 +1,6 @@
 
 import { DateTime } from 'luxon';
-import { compact, pull, random, isArray, get, set, find, includes, reject, extend, values, isUndefined, cloneDeep } from 'lodash';
+import { compact, pull, random, isArray, get, set, find, includes, reject, extend, values, isUndefined, cloneDeep, size } from 'lodash';
 import { nonenumerable } from 'nonenumerable';
 import { RestrictedNumber } from 'restricted-number';
 
@@ -160,12 +160,13 @@ export class Player extends Character {
     if(isUndefined(this.daily.item)) this.daily.item = {};
     if(isUndefined(this.daily.quest)) this.daily.quest = {};
 
-    if(isUndefined(this.$$skillTree)) {
+    this.$$skillTree = await this.$$room.skillTreeHelper.loadSkillTree(this);
+
+    // if you haven't bought any nodes, reset all the irrelevant details
+    if(size(this.$$skillTree.nodesClaimed) === 0) {
       delete (<any>this).traitLevels;
       delete (<any>this).traitPointTimer;
       this.learnedSpells = {};
-
-      this.$$skillTree = await this.$$room.skillTreeHelper.loadSkillTree(this);
     }
 
     if(!this.partyExp || !this.partyExp.maximum) {
@@ -178,6 +179,10 @@ export class Player extends Character {
 
   saveSkillTree(): void {
     this.$$room.skillTreeHelper.saveSkillTree(this);
+  }
+
+  unlearnSpell(skillName): void {
+    delete this.learnedSpells[skillName];
   }
 
   learnSpell(skillName, conditional = false): boolean {
@@ -611,7 +616,7 @@ export class Player extends Character {
     this.traitLevels[trait].reqBaseClass = reqBaseClass;
     extend(this.traitLevels[trait], extra);
     this.traitLevels[trait].level = this.traitLevels[trait].level || 0;
-    this.traitLevels[trait].level++;
+    this.traitLevels[trait].level += levelsGained;
   }
 
   public recalculateStats() {

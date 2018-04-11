@@ -11,6 +11,27 @@ export class Trait extends Command {
     if(!args) return false;
 
     const traitName = args;
+
+    if(player.skillTree.isBought(traitName)) {
+
+      if(!player.skillTree.hasEnoughPointsToRefund()) {
+        player.sendClientMessage('You do not have enough reset points to refund that trait!');
+        return;
+      }
+
+      if(!player.skillTree.isCapableOfRefunding(traitName)) {
+        player.sendClientMessage('You must first refund the children nodes to refund that!');
+        return;
+      }
+
+      player.skillTree.refundNode(player, traitName);
+
+      player.$$room.updateSkillTree(player);
+      player.saveSkillTree();
+
+      return;
+    }
+
     if(!player.skillTree.isAvailableToBuy(traitName)) {
       player.sendClientMessage('You cannot buy that trait!');
       return;
@@ -26,17 +47,7 @@ export class Trait extends Command {
       return;
     }
 
-    const ref = player.skillTree.linkBuyableNodeToRealNode(traitName);
-
-    // is trait
-    if(ref.traitName) {
-      player.skillTree.buyTrait(player, ref.name, ref.traitName);
-
-    // is skill
-    } else {
-      player.skillTree.buySkill(player, ref.name);
-
-    }
+    player.skillTree.buyNode(player, traitName);
 
     player.$$room.updateSkillTree(player);
     player.saveSkillTree();

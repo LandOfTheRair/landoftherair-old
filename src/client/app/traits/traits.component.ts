@@ -361,6 +361,22 @@ class D3SkillTree implements D3SkillTreeConfig {
 
         .on('click', (d) => {
 
+          if(this.skillTree.isBought(d.name)) {
+
+            (<any>swal)({
+              titleText: `Refund Trait: ${this.fixName(d.name)}`,
+              text: `Are you sure you want to REFUND the trait ${this.fixName(d.name)} for 1 RP?`,
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonText: 'Yes, REFUND it!'
+            }).then(() => {
+              this.colyseusGame.sendRawCommand('~trait', d.name);
+
+            }).catch(() => {});
+
+            return;
+          }
+
           if(d.unbuyable) return;
           if(!this.skillTree.isAvailableToBuy(d.name)) return;
 

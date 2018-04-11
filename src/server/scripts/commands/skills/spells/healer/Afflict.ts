@@ -11,7 +11,8 @@ export class Afflict extends Skill {
     icon: 'bolas',
     color: '#bd5900',
     mode: 'lockActivation',
-    tooltipDesc: 'Inflict necrotic damage on a single target. Cost: 10 MP'
+    tooltipDesc: 'Inflict necrotic damage on a single target. Cost: 10 MP',
+    skillTPCost: 1
   };
 
   public name = ['afflict', 'cast afflict'];

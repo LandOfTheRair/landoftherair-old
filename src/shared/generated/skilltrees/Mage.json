@@ -342,7 +342,7 @@
         "desc": "Inflict energy damage on a single target. Cost: 5 MP",
         "icon": "missile-swarm",
         "iconColor": "#0059bd",
-        "cost": 3,
+        "cost": 1,
         "unlocks": [
             "MagicFocus0",
             "Identify",
