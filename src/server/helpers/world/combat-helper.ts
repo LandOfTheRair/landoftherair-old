@@ -50,13 +50,16 @@ export const BaseItemStatsPerTier = {
 
 export class CombatHelper {
 
-  static determineWeaponInformation(item: Item, baseRolls = 0) {
+  static determineWeaponInformation(attacker: Character, item: Item, baseRolls = 0) {
     if(!BaseItemStatsPerTier[item.itemClass]) {
       return { damageRolls: 0, damageBonus: 0, isWeak: false, isStrong: false };
     }
 
+    let itemClass = item.itemClass;
+    if(itemClass === 'Wand' && attacker.getTraitLevel('BladedWands')) itemClass = 'Longsword';
+
     const tier = item.tier || 0;
-    const { base, min, max, weakChance, damageBonus } = BaseItemStatsPerTier[item.itemClass];
+    const { base, min, max, weakChance, damageBonus } = BaseItemStatsPerTier[itemClass];
 
     let damageRolls = baseRolls;
     const minTier = min * tier;
@@ -287,7 +290,7 @@ export class CombatHelper {
     const attackerName = isAttackerVisible ? attacker.name : 'somebody';
     const attackerDamageRolls = attacker.getTotalStat('weaponDamageRolls');
 
-    const { damageRolls, damageBonus, isWeak, isStrong } = this.determineWeaponInformation(attackerWeapon, attackerDamageRolls);
+    const { damageRolls, damageBonus, isWeak, isStrong } = this.determineWeaponInformation(attacker, attackerWeapon, attackerDamageRolls);
 
     // skill + 1 because skill 0 is awful
     const calcSkill = attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type) + 1;

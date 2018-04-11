@@ -122,11 +122,23 @@ const PROTECTOR_TREE = {
     desc: 'The Protector focuses on learning useful reinforcement spells for itself and allies.',
     unbuyable: true,
     root: true,
-    unlocks: ['TrueSight']
+    unlocks: ['TrueSight', 'WandSpecialty0']
   },
 
   // TRAITS
   DarknessWiden0: {
+
+  },
+
+  WandSpecialty0: {
+    unlocks: ['WandSpecialty1']
+  },
+
+  WandSpecialty1: {
+    unlocks: ['WandSpecialty2']
+  },
+
+  WandSpecialty2: {
 
   },
 
@@ -245,11 +257,15 @@ const BATTLEMAGE_TREE = {
     unbuyable: true,
     root: true,
     desc: 'The Battlemage applies their extensive magic knowledge to physical combat, and they are also capable of conjuring familiars to help.',
-    unlocks: ['LightenArmor0', 'VolcanoStance', 'GlacierStance']
+    unlocks: ['LightenArmor0', 'BladedWands0', 'VolcanoStance', 'GlacierStance']
   },
 
   // TRAITS
   LightenArmor0: {
+
+  },
+
+  BladedWands0: {
 
   },
 

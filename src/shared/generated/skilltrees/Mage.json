@@ -462,7 +462,8 @@
         "unbuyable": true,
         "root": true,
         "unlocks": [
-            "TrueSight"
+            "TrueSight",
+            "WandSpecialty0"
         ],
         "name": "Protector",
         "cluster": 2
@@ -476,6 +477,49 @@
         "cluster": 2,
         "unlockedBy": [
             "Darkness"
+        ]
+    },
+    "WandSpecialty0": {
+        "name": "WandSpecialty0",
+        "traitName": "WandSpecialty",
+        "desc": "Spells cost 2% less per point to cast while holding a wand in your right hand.",
+        "icon": "fairy-wand",
+        "requireCharacterLevel": 10,
+        "cost": 3,
+        "unlocks": [
+            "WandSpecialty1"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Protector"
+        ]
+    },
+    "WandSpecialty1": {
+        "name": "WandSpecialty1",
+        "traitName": "WandSpecialty",
+        "desc": "Spells cost 2% less per point to cast while holding a wand in your right hand.",
+        "icon": "fairy-wand",
+        "requireCharacterLevel": 10,
+        "cost": 3,
+        "unlocks": [
+            "WandSpecialty2"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "WandSpecialty0"
+        ]
+    },
+    "WandSpecialty2": {
+        "name": "WandSpecialty2",
+        "traitName": "WandSpecialty",
+        "desc": "Spells cost 2% less per point to cast while holding a wand in your right hand.",
+        "icon": "fairy-wand",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "WandSpecialty1"
         ]
     },
     "TrueSight": {
@@ -887,6 +931,7 @@
         "desc": "The Battlemage applies their extensive magic knowledge to physical combat, and they are also capable of conjuring familiars to help.",
         "unlocks": [
             "LightenArmor0",
+            "BladedWands0",
             "VolcanoStance",
             "GlacierStance"
         ],
@@ -901,6 +946,19 @@
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 70,
+        "cluster": 4,
+        "unlockedBy": [
+            "Battlemage"
+        ]
+    },
+    "BladedWands0": {
+        "name": "BladedWands0",
+        "traitName": "BladedWands",
+        "desc": "You treat wands as longswords for the purposes of combat calculations.",
+        "icon": "energy-sword",
+        "capstone": true,
+        "requireCharacterLevel": 10,
+        "cost": 50,
         "cluster": 4,
         "unlockedBy": [
             "Battlemage"

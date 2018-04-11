@@ -15,6 +15,7 @@ export * from './FireMistWiden';
 export * from './IceMistWiden';
 export * from './EnergyWaveWiden';
 
+export * from './BladedWands';
 export * from './LightenArmor';
 export * from './VolcanoStanceImproved';
 export * from './GlacierStanceImproved';
