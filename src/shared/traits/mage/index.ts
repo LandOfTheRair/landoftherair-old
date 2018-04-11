@@ -14,3 +14,7 @@ export * from './DarknessWiden';
 export * from './FireMistWiden';
 export * from './IceMistWiden';
 export * from './EnergyWaveWiden';
+
+export * from './LightenArmor';
+export * from './VolcanoStanceImproved';
+export * from './GlacierStanceImproved';

@@ -239,8 +239,49 @@ const ELEMENTALIST_TREE = {
   }
 };
 
+const BATTLEMAGE_TREE = {
+  Battlemage: {
+    icon: 'abstract-034',
+    unbuyable: true,
+    root: true,
+    desc: 'The Battlemage applies their extensive magic knowledge to physical combat, and they are also capable of conjuring familiars to help.',
+    unlocks: ['LightenArmor0', 'VolcanoStance', 'GlacierStance']
+  },
+
+  // TRAITS
+  LightenArmor0: {
+
+  },
+
+  VolcanoStanceImproved0: {
+    unlocks: ['VolcanoStanceImproved1']
+  },
+
+  VolcanoStanceImproved1: {
+
+  },
+
+  GlacierStanceImproved0: {
+    unlocks: ['GlacierStanceImproved1']
+  },
+
+  GlacierStanceImproved1: {
+
+  },
+
+
+  // SKILLS
+  VolcanoStance: {
+    unlocks: ['VolcanoStanceImproved0']
+  },
+  GlacierStance: {
+    unlocks: ['GlacierStanceImproved0']
+  }
+};
+
 export const AllTrees = [
   MAGE_TREE,
   PROTECTOR_TREE,
-  ELEMENTALIST_TREE
+  ELEMENTALIST_TREE,
+  BATTLEMAGE_TREE
 ];

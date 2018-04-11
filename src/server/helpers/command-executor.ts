@@ -93,8 +93,9 @@ export class CommandExecutor {
     const cmd: Command = commandHash[command];
     if(!cmd) return false;
 
+    const prefix = command.split(' ')[0];
     const spell = command.split(' ')[1];
-    const hasLearned = player.hasLearned(spell || '');
+    const hasLearned = player.hasLearned(spell || '') || player.hasLearned(`${spell}${prefix}` || '');
     if(cmd.requiresLearn && !hasLearned) return player.sendClientMessage('You do not know that spell!');
 
     if(hasLearned.effect) args.effect = hasLearned.effect;

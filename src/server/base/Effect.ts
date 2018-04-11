@@ -94,6 +94,29 @@ export class Effect {
     if(!char || this.shouldNotShowMessage) return;
     char.sendClientMessage(message);
   }
+
+  skillFlag(caster) {
+    if(caster.baseClass === 'Healer') return SkillClassNames.Restoration;
+    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
+    if(caster.baseClass === 'Thief')  return SkillClassNames.Thievery;
+    return caster.rightHand ? caster.rightHand.type : 'Martial';
+  }
+
+  magicalAttack(caster, ref, opts: any = {}) {
+    opts.effect = this;
+    if(opts.skillRef) {
+      opts.skillRef.flagSkills = this.skillFlag(caster);
+    }
+
+    // trap casters do not have uuid
+    if(!caster.uuid) caster = ref;
+
+    CombatHelper.magicalAttack(caster, ref, opts);
+  }
+
+  getCasterName(caster: Character, target: Character): string {
+    return target.canSeeThroughStealthOf(caster) ? caster.name : 'somebody';
+  }
 }
 
 export class SpellEffect extends Effect {
@@ -103,13 +126,6 @@ export class SpellEffect extends Effect {
 
   maxSkillForSkillGain = 0;
   skillMults: Array<number[]>;
-
-  skillFlag(caster) {
-    if(caster.baseClass === 'Healer') return SkillClassNames.Restoration;
-    if(caster.baseClass === 'Mage')   return SkillClassNames.Conjuration;
-    if(caster.baseClass === 'Thief')  return SkillClassNames.Thievery;
-    return caster.rightHand ? caster.rightHand.type : 'Martial';
-  }
 
   casterEffectMessage(char: Character, message: string) {
     super.effectMessage(char, { message, subClass: 'spell buff give' });
@@ -135,7 +151,9 @@ export class SpellEffect extends Effect {
       this.potency = caster.calcSkillLevel(flaggedSkill) + 1;
 
       const armorClass = get(caster, 'gear.Armor.itemClass');
-      if(includes(MagicCutArmorClasses, armorClass) && includes([SkillClassNames.Conjuration, SkillClassNames.Restoration], flaggedSkill)) {
+      if(includes(MagicCutArmorClasses, armorClass)
+      && includes([SkillClassNames.Conjuration, SkillClassNames.Restoration], flaggedSkill)
+      && !caster.getTraitLevel('LightenArmor')) {
         caster.sendClientMessage('Your armor exhausts you as you try to cast your spell!');
         this.potency = Math.floor(this.potency / 2);
       }
@@ -213,26 +231,10 @@ export class SpellEffect extends Effect {
     this.duration += Math.floor(this.duration * durationMultiplierBonus);
   }
 
-  magicalAttack(caster, ref, opts: any = {}) {
-    opts.effect = this;
-    if(opts.skillRef) {
-      opts.skillRef.flagSkills = this.skillFlag(caster);
-    }
-
-    // trap casters do not have uuid
-    if(!caster.uuid) caster = ref;
-
-    CombatHelper.magicalAttack(caster, ref, opts);
-  }
-
   getCasterStat(caster, stat) {
     if(this.casterRef) return this.casterRef.casterStats[stat];
 
     return caster.getTotalStat(stat);
-  }
-
-  getCasterName(caster: Character, target: Character): string {
-    return target.canSeeThroughStealthOf(caster) ? caster.name : 'somebody';
   }
 
   cast(caster: Character, target: Character, skillRef?: Skill) {}
@@ -256,7 +258,6 @@ export class WeaponEffect extends Effect {
   protected skillRequired: number;
 
   static isValid(char: Character, weaponClass: string, skillRequired: number): boolean {
-    if(char.baseClass !== 'Warrior') return false;
     const item = char.rightHand;
     if(!item || item.type === 'Martial') return false;
     if(item.type !== weaponClass) return false;

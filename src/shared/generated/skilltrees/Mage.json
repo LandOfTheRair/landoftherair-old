@@ -758,7 +758,7 @@
         "name": "ThermalBarrier0",
         "traitName": "ThermalBarrier",
         "desc": "Your fire and ice protection spells are enhanced by +10% per point.",
-        "icon": "teleportation-rings",
+        "icon": "transportation-rings",
         "requireCharacterLevel": 10,
         "cost": 3,
         "cluster": 3,
@@ -770,7 +770,7 @@
         "name": "ThermalBarrier1",
         "traitName": "ThermalBarrier",
         "desc": "Your fire and ice protection spells are enhanced by +10% per point.",
-        "icon": "teleportation-rings",
+        "icon": "transportation-rings",
         "requireCharacterLevel": 10,
         "cost": 3,
         "cluster": 3,
@@ -782,7 +782,7 @@
         "name": "ThermalBarrier2",
         "traitName": "ThermalBarrier",
         "desc": "Your fire and ice protection spells are enhanced by +10% per point.",
-        "icon": "teleportation-rings",
+        "icon": "transportation-rings",
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 10,
@@ -795,7 +795,7 @@
         "name": "FriendlyFire0",
         "traitName": "FriendlyFire",
         "desc": "Your fire and ice spells have a +10% chance per point of not hitting allied creatures.",
-        "icon": "fire-silhouette",
+        "icon": "fire-bowl",
         "requireCharacterLevel": 10,
         "cost": 3,
         "cluster": 3,
@@ -807,7 +807,7 @@
         "name": "FriendlyFire1",
         "traitName": "FriendlyFire",
         "desc": "Your fire and ice spells have a +10% chance per point of not hitting allied creatures.",
-        "icon": "fire-silhouette",
+        "icon": "fire-bowl",
         "requireCharacterLevel": 10,
         "cost": 3,
         "cluster": 3,
@@ -819,7 +819,7 @@
         "name": "FriendlyFire2",
         "traitName": "FriendlyFire",
         "desc": "Your fire and ice spells have a +10% chance per point of not hitting allied creatures.",
-        "icon": "fire-silhouette",
+        "icon": "fire-bowl",
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 10,
@@ -878,6 +878,114 @@
         "cluster": 3,
         "unlockedBy": [
             "FrostedTouch2"
+        ]
+    },
+    "Battlemage": {
+        "icon": "abstract-034",
+        "unbuyable": true,
+        "root": true,
+        "desc": "The Battlemage applies their extensive magic knowledge to physical combat, and they are also capable of conjuring familiars to help.",
+        "unlocks": [
+            "LightenArmor0",
+            "VolcanoStance",
+            "GlacierStance"
+        ],
+        "name": "Battlemage",
+        "cluster": 4
+    },
+    "LightenArmor0": {
+        "name": "LightenArmor0",
+        "traitName": "LightenArmor",
+        "desc": "Your armor no longer hinders your spellcasting.",
+        "icon": "kevlar",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 70,
+        "cluster": 4,
+        "unlockedBy": [
+            "Battlemage"
+        ]
+    },
+    "VolcanoStanceImproved0": {
+        "name": "VolcanoStanceImproved0",
+        "traitName": "VolcanoStanceImproved",
+        "desc": "Do 10% more fire damage per point while in Volcano stance.",
+        "icon": "fire-silhouette",
+        "cost": 3,
+        "unlocks": [
+            "VolcanoStanceImproved1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "VolcanoStance"
+        ]
+    },
+    "VolcanoStanceImproved1": {
+        "name": "VolcanoStanceImproved1",
+        "traitName": "VolcanoStanceImproved",
+        "desc": "Do 10% more fire damage per point while in Volcano stance.",
+        "icon": "fire-silhouette",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "VolcanoStanceImproved0"
+        ]
+    },
+    "GlacierStanceImproved0": {
+        "name": "GlacierStanceImproved0",
+        "traitName": "GlacierStanceImproved",
+        "desc": "Do 10% more ice damage per point while in Volcano stance.",
+        "icon": "frozen-orb",
+        "cost": 3,
+        "unlocks": [
+            "GlacierStanceImproved1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "GlacierStance"
+        ]
+    },
+    "GlacierStanceImproved1": {
+        "name": "GlacierStanceImproved1",
+        "traitName": "GlacierStanceImproved",
+        "desc": "Do 10% more ice damage per point while in Volcano stance.",
+        "icon": "frozen-orb",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "GlacierStanceImproved0"
+        ]
+    },
+    "VolcanoStance": {
+        "name": "VolcanoStance",
+        "desc": "Become more offensive, increasing your offensive capabilities and doing fire damage on hit.",
+        "icon": "fire-silhouette",
+        "iconColor": "#DC143C",
+        "bgColor": "#000",
+        "cost": 3,
+        "unlocks": [
+            "VolcanoStanceImproved0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Battlemage"
+        ]
+    },
+    "GlacierStance": {
+        "name": "GlacierStance",
+        "desc": "Become more defense, increasing your defensive capabilities and doing ice damage on hit.",
+        "icon": "frozen-orb",
+        "iconColor": "#000080",
+        "bgColor": "#000",
+        "cost": 3,
+        "unlocks": [
+            "GlacierStanceImproved0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Battlemage"
         ]
     }
 }

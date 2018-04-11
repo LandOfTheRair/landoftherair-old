@@ -753,7 +753,7 @@ export class CombatHelper {
 
     if(attacker) {
       const armorClass = get(attacker, 'gear.Armor.itemClass');
-      if(includes(MagicCutArmorClasses, armorClass)) {
+      if(includes(MagicCutArmorClasses, armorClass) && !attacker.getTraitLevel('LightenArmor')) {
         damage = Math.floor(damage / 2);
       }
     }
