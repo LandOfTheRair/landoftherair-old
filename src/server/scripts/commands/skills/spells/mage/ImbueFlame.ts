@@ -11,7 +11,8 @@ export class ImbueFlame extends Skill {
     icon: 'magic-palm',
     color: '#a00',
     mode: 'clickToTarget',
-    tooltipDesc: 'Augment physical attacks to do bonus fire damage. Cost: 100 MP'
+    tooltipDesc: 'Augment physical attacks to do bonus fire damage. Cost: 100 MP',
+    requireSkillLevel: 10
   };
 
   public targetsFriendly = true;

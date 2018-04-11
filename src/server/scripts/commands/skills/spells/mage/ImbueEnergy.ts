@@ -11,7 +11,8 @@ export class ImbueEnergy extends Skill {
     icon: 'magic-palm',
     color: '#a0a',
     mode: 'clickToTarget',
-    tooltipDesc: 'Augment physical attacks to do bonus energy damage. Cost: 100 MP'
+    tooltipDesc: 'Augment physical attacks to do bonus energy damage. Cost: 100 MP',
+    requireSkillLevel: 10
   };
 
   public targetsFriendly = true;

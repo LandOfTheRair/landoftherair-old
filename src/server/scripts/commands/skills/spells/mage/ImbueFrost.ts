@@ -11,7 +11,8 @@ export class ImbueFrost extends Skill {
     icon: 'magic-palm',
     color: '#00b',
     mode: 'clickToTarget',
-    tooltipDesc: 'Augment physical attacks to do bonus ice damage. Cost: 100 MP'
+    tooltipDesc: 'Augment physical attacks to do bonus ice damage. Cost: 100 MP',
+    requireSkillLevel: 10
   };
 
   public targetsFriendly = true;
