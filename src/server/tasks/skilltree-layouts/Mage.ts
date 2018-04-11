@@ -257,7 +257,7 @@ const BATTLEMAGE_TREE = {
     unbuyable: true,
     root: true,
     desc: 'The Battlemage applies their extensive magic knowledge to physical combat, and they are also capable of conjuring familiars to help.',
-    unlocks: ['LightenArmor0', 'BladedWands0', 'StrongMind0', 'VolcanoStance', 'GlacierStance']
+    unlocks: ['LightenArmor0', 'BladedWands0', 'StrongMind0', 'FindFamiliar', 'VolcanoStance', 'GlacierStance']
   },
 
   // TRAITS
@@ -270,6 +270,22 @@ const BATTLEMAGE_TREE = {
   },
 
   StrongMind0: {
+
+  },
+
+  FindFamiliarBear0: {
+
+  },
+
+  FindFamiliarWolf0: {
+
+  },
+
+  FindFamiliarChillspider0: {
+
+  },
+
+  FindFamiliarSalamander0: {
 
   },
 
@@ -309,6 +325,10 @@ const BATTLEMAGE_TREE = {
 
   ImbueEnergy: {
 
+  },
+
+  FindFamiliar: {
+    unlocks: ['FindFamiliarBear0', 'FindFamiliarSalamander0', 'FindFamiliarWolf0', 'FindFamiliarChillspider0']
   }
 };
 

@@ -118,10 +118,10 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
 
     const allPossibleAnimals = ['deer'];
 
-    if(this.potency >= 5) allPossibleAnimals.push('wolf');
-    if(this.potency >= 10) allPossibleAnimals.push('bear');
-    if(this.potency >= 15) allPossibleAnimals.push('salamander');
-    if(this.potency >= 20) allPossibleAnimals.push('chillspider');
+    if(caster.getTraitLevel('FindFamiliarWolf'))        allPossibleAnimals.push('wolf');
+    if(caster.getTraitLevel('FindFamiliarBear'))        allPossibleAnimals.push('bear');
+    if(caster.getTraitLevel('FindFamiliarSalamander'))  allPossibleAnimals.push('salamander');
+    if(caster.getTraitLevel('FindFamiliarChillspider')) allPossibleAnimals.push('chillspider');
 
     // can't cast for an animal at a higher skill
     if(!includes(allPossibleAnimals, animalStr)) animalStr = '';

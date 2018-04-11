@@ -15,6 +15,11 @@ export * from './FireMistWiden';
 export * from './IceMistWiden';
 export * from './EnergyWaveWiden';
 
+export * from './FindFamiliarSalamander';
+export * from './FindFamiliarBear';
+export * from './FindFamiliarWolf';
+export * from './FindFamiliarChillspider';
+
 export * from './StrongMind';
 export * from './BladedWands';
 export * from './LightenArmor';
