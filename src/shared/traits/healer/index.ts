@@ -7,6 +7,8 @@ export * from './IrresistableStuns';
 export * from './ManaPool';
 export * from './NatureSpirit';
 export * from './HealingFocus';
+export * from './HolyAffliction';
+export * from './HolyIllumination';
 export * from './ImprovedAutoheal';
 export * from './NecroticFocus';
 export * from './PartyHealthRegen';

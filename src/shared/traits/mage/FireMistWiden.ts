@@ -9,7 +9,7 @@ export class FireMistWiden extends Trait {
   static icon = 'kaleidoscope-pearls';
 
   static upgrades = [
-    { }
+    { cost: 5, capstone: true }
   ];
 
 }

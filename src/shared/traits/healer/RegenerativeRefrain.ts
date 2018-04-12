@@ -9,7 +9,7 @@ export class RegenerativeRefrain extends Trait {
   static icon = 'star-swirl';
 
   static upgrades = [
-    { cost: 20 }
+    { cost: 20, capstone: true }
   ];
 
 }

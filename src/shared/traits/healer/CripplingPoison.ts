@@ -9,7 +9,7 @@ export class CripplingPoison extends Trait {
   static icon = 'poison-gas';
 
   static upgrades = [
-    { cost: 25 }
+    { cost: 25, capstone: true }
   ];
 
 }

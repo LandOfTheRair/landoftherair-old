@@ -367,7 +367,7 @@ class D3SkillTree implements D3SkillTreeConfig {
           if(this.skillTree.isBought(d.name)) {
 
             (<any>swal)({
-              titleText: `Refund Trait: ${this.fixName(d.name)}`,
+              titleText: `Refund ${d.traitName ? 'Trait' : 'Skill'}: ${this.fixName(d.name)}`,
               text: `Are you sure you want to REFUND the trait ${this.fixName(d.name)} for 1 RP?`,
               type: 'warning',
               showCancelButton: true,
@@ -384,7 +384,7 @@ class D3SkillTree implements D3SkillTreeConfig {
           if(!this.skillTree.isAvailableToBuy(d.name)) return;
 
           (<any>swal)({
-            titleText: `Buy Trait: ${this.fixName(d.name)}`,
+            titleText: `Buy ${d.traitName ? 'Trait' : 'Skill'}: ${this.fixName(d.name)}`,
             text: `Are you sure you want to buy the trait ${this.fixName(d.name)} for ${d.cost} ${d.isParty ? 'PP' : 'TP'}?`,
             showCancelButton: true,
             confirmButtonText: 'Yes, buy it!'
@@ -410,8 +410,8 @@ class D3SkillTree implements D3SkillTreeConfig {
             .style('opacity', 0.9);
 
           tooltip
-            .style('left', (d3.event.layerX + 20) + 'px')
-            .style('top', (d3.event.layerY - 20) + 'px');
+            .style('left', (d3.event.layerX - (tooltip.node().getBoundingClientRect().width / 2)) + 'px')
+            .style('top', (d3.event.layerY + 30) + 'px');
 
           tooltip
             .attr('transform', d3.zoomTransform(tooltip.node()));

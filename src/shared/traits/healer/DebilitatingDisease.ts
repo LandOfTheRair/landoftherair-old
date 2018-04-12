@@ -9,7 +9,7 @@ export class DebilitatingDisease extends Trait {
   static icon = 'death-juice';
 
   static upgrades = [
-    { cost: 25 }
+    { cost: 25, capstone: true }
   ];
 
 }

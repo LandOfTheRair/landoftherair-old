@@ -9,7 +9,7 @@ export class ImprovedAutoheal extends Trait {
   static icon = 'self-love';
 
   static upgrades = [
-    { cost: 50 }
+    { cost: 50, capstone: true }
   ];
 
 }

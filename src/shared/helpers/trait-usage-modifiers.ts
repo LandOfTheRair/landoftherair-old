@@ -30,6 +30,7 @@ export class TraitUsageModifiers {
       case 'ManaPool':            return level * 10;
       case 'StrongMind':          return level * 0.1;
       case 'NatureSpirit':        return level * 0.05;
+      case 'HolyAffliction':      return level * 3;
 
       case 'GlacierStanceImproved':     return level * 0.1;
       case 'VolcanoStanceImproved':     return level * 0.1;

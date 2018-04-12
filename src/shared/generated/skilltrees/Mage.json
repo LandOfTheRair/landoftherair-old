@@ -511,7 +511,8 @@
         "traitName": "DarknessWiden",
         "desc": "Your Darkness spell range is lengthened.",
         "icon": "dust-cloud",
-        "cost": 3,
+        "capstone": true,
+        "cost": 5,
         "cluster": 2,
         "unlockedBy": [
             "Darkness"
@@ -721,7 +722,8 @@
         "traitName": "FireMistWiden",
         "desc": "Your Fire Mist spell range is lengthened.",
         "icon": "kaleidoscope-pearls",
-        "cost": 3,
+        "capstone": true,
+        "cost": 5,
         "cluster": 3,
         "unlockedBy": [
             "ForgedFire1"
@@ -732,7 +734,8 @@
         "traitName": "IceMistWiden",
         "desc": "Your Ice Mist spell range is lengthened.",
         "icon": "kaleidoscope-pearls",
-        "cost": 3,
+        "capstone": true,
+        "cost": 5,
         "cluster": 3,
         "unlockedBy": [
             "FrostedTouch1"

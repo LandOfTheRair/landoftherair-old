@@ -9,7 +9,7 @@ export class DarknessWiden extends Trait {
   static icon = 'dust-cloud';
 
   static upgrades = [
-    { }
+    { cost: 5, capstone: true }
   ];
 
 }

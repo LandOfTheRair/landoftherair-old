@@ -9,7 +9,7 @@ export class StrongerSnare extends Trait {
   static icon = 'light-thorny-triskelion';
 
   static upgrades = [
-    { cost: 50 }
+    { cost: 50, capstone: true }
   ];
 
 }

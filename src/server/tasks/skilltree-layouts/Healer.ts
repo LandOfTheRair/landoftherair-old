@@ -287,13 +287,13 @@ const DIVINER_TREE = {
     unlocks: ['NecroticFocus3']
   },
   NecroticFocus3: {
-    unlocks: ['NecroticFocus4', 'Push']
+    unlocks: ['NecroticFocus4', 'Light']
   },
   NecroticFocus4: {
-    unlocks: ['NecroticFocus5']
+    unlocks: ['NecroticFocus5', 'Push']
   },
   NecroticFocus5: {
-    unlocks: ['NecroticFocus6', 'Light']
+    unlocks: ['NecroticFocus6']
   },
   NecroticFocus6: {
     unlocks: ['NecroticFocus7']
@@ -312,17 +312,33 @@ const DIVINER_TREE = {
 
   },
 
+  HolyIllumination0: {
+
+  },
+
+  HolyAffliction0: {
+    unlocks: ['HolyAffliction1']
+  },
+
+  HolyAffliction1: {
+    unlocks: ['HolyAffliction2']
+  },
+
+  HolyAffliction2: {
+
+  },
+
   // SKILLS
   Afflict: {
     unlocks: ['NecroticFocus0']
   },
 
   Light: {
-    unlocks: ['HolyFire']
+    unlocks: ['HolyFire', 'HolyAffliction0']
   },
 
   HolyFire: {
-
+    unlocks: ['HolyIllumination0']
   },
 
   Push: {
