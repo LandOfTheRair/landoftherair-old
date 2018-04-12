@@ -47,6 +47,7 @@
     "analyze:armor": "ts-node src/server/tasks/analysis/armor",
     "analyze:premium": "ts-node src/server/tasks/analysis/premium",
     "analyze:spawners": "ts-node src/server/tasks/analysis/spawner-heatmap",
+    "analyze:skilltrees": "ts-node src/server/tasks/analysis/skilltrees",
     "runseed:prod": "npm-run-all \"seed:* -- --prod\"",
     "bump:patch": "npm version patch -m \"Patch release %s\"",
     "bump:minor": "npm version minor -m \"Minor release %s\"",
