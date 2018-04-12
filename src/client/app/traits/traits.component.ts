@@ -57,7 +57,10 @@ const defaultConfig = {
 };
 
 const AllConfigs: { [key: string]: D3SkillTreeConfig } = {
-  Mage: merge({}, defaultConfig, { })
+  Mage: merge({}, defaultConfig, { }),
+  Thief: merge({}, defaultConfig, { }),
+  Healer: merge({}, defaultConfig, { force: { root: -30 } }),
+  Warrior: merge({}, defaultConfig, { })
 };
 
 @Component({

@@ -11,7 +11,8 @@ export class Regen extends Skill {
     icon: 'star-swirl',
     color: '#00c',
     mode: 'clickToTarget',
-    tooltipDesc: 'Cast a restorative aura on the target. Cost: 30 MP'
+    tooltipDesc: 'Cast a restorative aura on the target. Cost: 30 MP',
+    requireSkillLevel: 10
   };
 
   public targetsFriendly = true;

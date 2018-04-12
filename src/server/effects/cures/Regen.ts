@@ -15,6 +15,8 @@ export class Regen extends SpellEffect {
   maxSkillForSkillGain = 15;
   skillMults = [[0, 0.5], [11, 1], [21, 2]];
 
+  private shouldBurst: boolean;
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -29,6 +31,8 @@ export class Regen extends SpellEffect {
 
     this.duration = this.duration || 10;
     this.updateDurationBasedOnTraits(caster);
+
+    this.shouldBurst = !!caster.getTraitLevel('RegenerativeRefrain');
 
     this.effectInfo = { damage, caster: caster.uuid };
     target.applyEffect(this);
@@ -45,6 +49,7 @@ export class Regen extends SpellEffect {
 
     CombatHelper.magicalAttack(caster, char, {
       effect: this,
+      atkMsg: caster === char ? `You are regenerating health!` : '',
       defMsg: `You are regenerating health!`,
       damage: this.effectInfo.damage,
       damageClass: 'heal'
@@ -53,6 +58,18 @@ export class Regen extends SpellEffect {
   }
 
   effectEnd(char: Character) {
+    if(this.shouldBurst) {
+      const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
+
+      CombatHelper.magicalAttack(caster, char, {
+        effect: this,
+        atkMsg: caster === char ? `Your regeneration spell bursted!` : '',
+        defMsg: `Your regeneration spell bursted!`,
+        damage: this.effectInfo.damage * 3,
+        damageClass: 'heal'
+      });
+    }
+
     this.effectMessage(char, 'Your body is no longer regenerating quickly.');
   }
 }

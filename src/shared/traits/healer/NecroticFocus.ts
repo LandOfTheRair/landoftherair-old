@@ -8,7 +8,8 @@ export class NecroticFocus extends Trait {
   static description = 'Deal 10% more necrotic damage per point.';
   static icon = 'plasma-bolt';
 
-  static tpCost = 10;
-  static maxLevel = 10;
+  static upgrades = [
+    { }, { }, { }, { }, { }, { }, { }, { requireCharacterLevel: 15, capstone: true }
+  ];
 
 }

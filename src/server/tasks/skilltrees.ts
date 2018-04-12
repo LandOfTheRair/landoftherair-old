@@ -10,9 +10,11 @@ import { AllTraits } from '../../shared/traits/trait-hash';
 import * as AllSkills from '../scripts/commands/skills/spells';
 
 import { AllTrees as MageLayout } from './skilltree-layouts/Mage';
+import { AllTrees as HealerLayout } from './skilltree-layouts/Healer';
 
 const Layouts = {
-  Mage: MageLayout
+  Mage: MageLayout,
+  Healer: HealerLayout
 };
 
 export class SkillTreeCreator {
@@ -106,6 +108,8 @@ export class SkillTreeCreator {
 
         node.unlocks.forEach(unlock => {
           const unlockedNode = resultingLayout[unlock];
+
+          if(!unlockedNode) throw new Error(`Node ${unlock} does not exist!`);
 
           if(!unlockedNode.unlockedBy) unlockedNode.unlockedBy = [];
 

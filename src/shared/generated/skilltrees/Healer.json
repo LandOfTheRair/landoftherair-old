@@ -1,0 +1,1106 @@
+{
+    "Healer": {
+        "icon": "abstract-041",
+        "desc": "The Healer is a class focused on keeping its allies and itself alive.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "Cure",
+            "PartyHealthRegen0",
+            "CalmMind0",
+            "ManaPool0",
+            "CarefulTouch0",
+            "DeathGrip0",
+            "NaturalArmor0"
+        ],
+        "name": "Healer",
+        "cluster": 1
+    },
+    "PartyHealthRegen0": {
+        "name": "PartyHealthRegen0",
+        "traitName": "PartyHealthRegen",
+        "desc": "Increase your health regeneration while in a party.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "PartyHealthRegen1"
+        ],
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "Healer"
+        ]
+    },
+    "PartyHealthRegen1": {
+        "name": "PartyHealthRegen1",
+        "traitName": "PartyHealthRegen",
+        "desc": "Increase your health regeneration while in a party.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "PartyHealthRegen2"
+        ],
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "PartyHealthRegen0"
+        ]
+    },
+    "PartyHealthRegen2": {
+        "name": "PartyHealthRegen2",
+        "traitName": "PartyHealthRegen",
+        "desc": "Increase your health regeneration while in a party.",
+        "icon": "health-increase",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "PartyHealthRegen1"
+        ]
+    },
+    "CalmMind0": {
+        "name": "CalmMind0",
+        "traitName": "CalmMind",
+        "desc": "Gain +2 to your mana regeneration per point.",
+        "icon": "psychic-waves",
+        "cost": 3,
+        "unlocks": [
+            "CalmMind1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Healer"
+        ]
+    },
+    "CalmMind1": {
+        "name": "CalmMind1",
+        "traitName": "CalmMind",
+        "desc": "Gain +2 to your mana regeneration per point.",
+        "icon": "psychic-waves",
+        "cost": 3,
+        "unlocks": [
+            "CalmMind2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "CalmMind0"
+        ]
+    },
+    "CalmMind2": {
+        "name": "CalmMind2",
+        "traitName": "CalmMind",
+        "desc": "Gain +2 to your mana regeneration per point.",
+        "icon": "psychic-waves",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "CalmMind1"
+        ]
+    },
+    "ManaPool0": {
+        "name": "ManaPool0",
+        "traitName": "ManaPool",
+        "desc": "Gain +10 additional mana per point.",
+        "icon": "drink-me",
+        "cost": 3,
+        "unlocks": [
+            "ManaPool1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Healer"
+        ]
+    },
+    "ManaPool1": {
+        "name": "ManaPool1",
+        "traitName": "ManaPool",
+        "desc": "Gain +10 additional mana per point.",
+        "icon": "drink-me",
+        "cost": 3,
+        "unlocks": [
+            "ManaPool2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "ManaPool0"
+        ]
+    },
+    "ManaPool2": {
+        "name": "ManaPool2",
+        "traitName": "ManaPool",
+        "desc": "Gain +10 additional mana per point.",
+        "icon": "drink-me",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "ManaPool1"
+        ]
+    },
+    "CarefulTouch0": {
+        "name": "CarefulTouch0",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "cost": 3,
+        "unlocks": [
+            "CarefulTouch1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Healer"
+        ]
+    },
+    "CarefulTouch1": {
+        "name": "CarefulTouch1",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "cost": 3,
+        "unlocks": [
+            "CarefulTouch2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "CarefulTouch0"
+        ]
+    },
+    "CarefulTouch2": {
+        "name": "CarefulTouch2",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "CarefulTouch1"
+        ]
+    },
+    "DeathGrip0": {
+        "name": "DeathGrip0",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "cost": 3,
+        "unlocks": [
+            "DeathGrip1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Healer"
+        ]
+    },
+    "DeathGrip1": {
+        "name": "DeathGrip1",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "cost": 3,
+        "unlocks": [
+            "DeathGrip2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip0"
+        ]
+    },
+    "DeathGrip2": {
+        "name": "DeathGrip2",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip1"
+        ]
+    },
+    "NaturalArmor0": {
+        "name": "NaturalArmor0",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "armor-vest",
+        "cost": 3,
+        "unlocks": [
+            "NaturalArmor1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Healer"
+        ]
+    },
+    "NaturalArmor1": {
+        "name": "NaturalArmor1",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "armor-vest",
+        "cost": 3,
+        "unlocks": [
+            "NaturalArmor2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor0"
+        ]
+    },
+    "NaturalArmor2": {
+        "name": "NaturalArmor2",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "armor-vest",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor1"
+        ]
+    },
+    "HealingFocus0": {
+        "name": "HealingFocus0",
+        "traitName": "HealingFocus",
+        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "HealingFocus1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Cure"
+        ]
+    },
+    "HealingFocus1": {
+        "name": "HealingFocus1",
+        "traitName": "HealingFocus",
+        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "HealingFocus2",
+            "Succor"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus0"
+        ]
+    },
+    "HealingFocus2": {
+        "name": "HealingFocus2",
+        "traitName": "HealingFocus",
+        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "HealingFocus3"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus1"
+        ]
+    },
+    "HealingFocus3": {
+        "name": "HealingFocus3",
+        "traitName": "HealingFocus",
+        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "HealingFocus4",
+            "Revive"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus2"
+        ]
+    },
+    "HealingFocus4": {
+        "name": "HealingFocus4",
+        "traitName": "HealingFocus",
+        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "HealingFocus5"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus3"
+        ]
+    },
+    "HealingFocus5": {
+        "name": "HealingFocus5",
+        "traitName": "HealingFocus",
+        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "HealingFocus6",
+            "Wellspring"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus4"
+        ]
+    },
+    "HealingFocus6": {
+        "name": "HealingFocus6",
+        "traitName": "HealingFocus",
+        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "icon": "health-increase",
+        "cost": 3,
+        "unlocks": [
+            "HealingFocus7",
+            "PowerwordHeal"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus5"
+        ]
+    },
+    "HealingFocus7": {
+        "name": "HealingFocus7",
+        "traitName": "HealingFocus",
+        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "icon": "health-increase",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "unlocks": [
+            "VitalEssence"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus6"
+        ]
+    },
+    "Cure": {
+        "name": "Cure",
+        "desc": "Heal a single target. Cost: 5 MP",
+        "icon": "tentacle-heart",
+        "iconColor": "#080",
+        "cost": 1,
+        "unlocks": [
+            "HealingFocus0"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Healer"
+        ]
+    },
+    "Succor": {
+        "name": "Succor",
+        "desc": "Create a consumable that will let you return to your current location. Cost: 25 MP",
+        "icon": "blackball",
+        "iconColor": "#080",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus1"
+        ]
+    },
+    "PowerwordHeal": {
+        "name": "PowerwordHeal",
+        "desc": "Heal your party. Cost: 25 MP / target",
+        "icon": "tentacle-heart",
+        "iconColor": "#080",
+        "bgColor": "#000",
+        "requireSkillLevel": 13,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus6"
+        ]
+    },
+    "Wellspring": {
+        "name": "Wellspring",
+        "desc": "Create a bottle of holy water. Cost: 25 MP",
+        "icon": "holy-water",
+        "iconColor": "#080",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus5"
+        ]
+    },
+    "VitalEssence": {
+        "name": "VitalEssence",
+        "desc": "Boost maximum vitality for a single target. Cost: 200 MP",
+        "icon": "bell-shield",
+        "iconColor": "#0a0",
+        "requireSkillLevel": 15,
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus7"
+        ]
+    },
+    "Revive": {
+        "name": "Revive",
+        "desc": "Revive a single player on your tile. Cost: 50 MP",
+        "icon": "quicksand",
+        "iconColor": "#080",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "HealingFocus3"
+        ]
+    },
+    "Druid": {
+        "icon": "abstract-097",
+        "desc": "The Druid is a class focused on debuffing enemies and cleansing debuffs from allies.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "NatureSpirit0",
+            "NatureSpirit1",
+            "NatureSpirit2",
+            "NatureSpirit3",
+            "NatureSpirit4"
+        ],
+        "name": "Druid",
+        "cluster": 2
+    },
+    "NatureSpirit0": {
+        "name": "NatureSpirit0",
+        "traitName": "NatureSpirit",
+        "desc": "Unlock the ability to critically debuff your enemies, gaining bonus damage and duration.",
+        "icon": "daemon-pull",
+        "cost": 3,
+        "unlocks": [
+            "Antidote"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Druid"
+        ]
+    },
+    "NatureSpirit1": {
+        "name": "NatureSpirit1",
+        "traitName": "NatureSpirit",
+        "desc": "Unlock the ability to critically debuff your enemies, gaining bonus damage and duration.",
+        "icon": "daemon-pull",
+        "cost": 3,
+        "unlocks": [
+            "Vision"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Druid"
+        ]
+    },
+    "NatureSpirit2": {
+        "name": "NatureSpirit2",
+        "traitName": "NatureSpirit",
+        "desc": "Unlock the ability to critically debuff your enemies, gaining bonus damage and duration.",
+        "icon": "daemon-pull",
+        "cost": 3,
+        "unlocks": [
+            "Stun"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Druid"
+        ]
+    },
+    "NatureSpirit3": {
+        "name": "NatureSpirit3",
+        "traitName": "NatureSpirit",
+        "desc": "Unlock the ability to critically debuff your enemies, gaining bonus damage and duration.",
+        "icon": "daemon-pull",
+        "cost": 3,
+        "unlocks": [
+            "Snare"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Druid"
+        ]
+    },
+    "NatureSpirit4": {
+        "name": "NatureSpirit4",
+        "traitName": "NatureSpirit",
+        "desc": "Unlock the ability to critically debuff your enemies, gaining bonus damage and duration.",
+        "icon": "daemon-pull",
+        "cost": 3,
+        "unlocks": [
+            "Augury"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Druid"
+        ]
+    },
+    "IrresistibleStuns0": {
+        "name": "IrresistibleStuns0",
+        "traitName": "IrresistibleStuns",
+        "desc": "Reduce your stun targets WIL by 1 per pt.",
+        "icon": "knockout",
+        "requireCharacterLevel": 10,
+        "cost": 3,
+        "unlocks": [
+            "IrresistibleStuns1"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Stun"
+        ]
+    },
+    "IrresistibleStuns1": {
+        "name": "IrresistibleStuns1",
+        "traitName": "IrresistibleStuns",
+        "desc": "Reduce your stun targets WIL by 1 per pt.",
+        "icon": "knockout",
+        "cost": 3,
+        "unlocks": [
+            "IrresistibleStuns2"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "IrresistibleStuns0"
+        ]
+    },
+    "IrresistibleStuns2": {
+        "name": "IrresistibleStuns2",
+        "traitName": "IrresistibleStuns",
+        "desc": "Reduce your stun targets WIL by 1 per pt.",
+        "icon": "knockout",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "IrresistibleStuns1"
+        ]
+    },
+    "Antidote": {
+        "name": "Antidote",
+        "desc": "Cure poison on a single target. Cost: 10 MP",
+        "icon": "miracle-medecine",
+        "iconColor": "#0a0",
+        "cost": 3,
+        "unlocks": [
+            "Poison",
+            "Disease"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "NatureSpirit0"
+        ]
+    },
+    "Poison": {
+        "name": "Poison",
+        "desc": "Inflict a deadly poison on your target. Cost: 15 MP",
+        "icon": "poison-gas",
+        "iconColor": "#0a0",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Antidote"
+        ]
+    },
+    "Disease": {
+        "name": "Disease",
+        "desc": "Inflict a deadly disease on your target. Cost: 30 MP",
+        "icon": "death-juice",
+        "iconColor": "#0a0",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Antidote"
+        ]
+    },
+    "Vision": {
+        "name": "Vision",
+        "desc": "Cure blindness on a single target. Cost: 10 MP",
+        "icon": "evil-eyes",
+        "iconColor": "#0a0",
+        "cost": 3,
+        "unlocks": [
+            "Blind"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "NatureSpirit1"
+        ]
+    },
+    "Blind": {
+        "name": "Blind",
+        "desc": "Attempt to blind a single target. Cost: 20 MP",
+        "icon": "evil-eyes",
+        "iconColor": "#900",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Vision"
+        ]
+    },
+    "Stun": {
+        "name": "Stun",
+        "desc": "Attempt to stun a single target. Cost: 40 MP",
+        "icon": "knockout",
+        "iconColor": "#990",
+        "cost": 3,
+        "unlocks": [
+            "IrresistibleStuns0"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "NatureSpirit2"
+        ]
+    },
+    "Snare": {
+        "name": "Snare",
+        "desc": "Slow down the target. Cost: 50 MP",
+        "icon": "light-thorny-triskelion",
+        "iconColor": "#0a0",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "NatureSpirit3"
+        ]
+    },
+    "Augury": {
+        "name": "Augury",
+        "desc": "Use the winds to divine the location of your target. Cost: 25 MP",
+        "icon": "dove",
+        "iconColor": "#000",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "NatureSpirit4"
+        ]
+    },
+    "Bard": {
+        "icon": "abstract-047",
+        "desc": "The Bard is a class focused on buffing allies, using a wide array of protection and healing-related spells.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "EffectiveSupporter0",
+            "TrueSight"
+        ],
+        "name": "Bard",
+        "cluster": 3
+    },
+    "EffectiveSupporter0": {
+        "name": "EffectiveSupporter0",
+        "traitName": "EffectiveSupporter",
+        "desc": "Your support spells last 10% longer per point.",
+        "icon": "burning-passion",
+        "requireCharacterLevel": 15,
+        "cost": 3,
+        "unlocks": [
+            "EffectiveSupporter1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Bard"
+        ]
+    },
+    "EffectiveSupporter1": {
+        "name": "EffectiveSupporter1",
+        "traitName": "EffectiveSupporter",
+        "desc": "Your support spells last 10% longer per point.",
+        "icon": "burning-passion",
+        "cost": 3,
+        "unlocks": [
+            "EffectiveSupporter2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "EffectiveSupporter0"
+        ]
+    },
+    "EffectiveSupporter2": {
+        "name": "EffectiveSupporter2",
+        "traitName": "EffectiveSupporter",
+        "desc": "Your support spells last 10% longer per point.",
+        "icon": "burning-passion",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "EffectiveSupporter1"
+        ]
+    },
+    "RegenerativeRefrain0": {
+        "name": "RegenerativeRefrain0",
+        "traitName": "RegenerativeRefrain",
+        "desc": "Your Regen spell will have a bonus heal when it fades.",
+        "icon": "star-swirl",
+        "cost": 20,
+        "cluster": 3,
+        "unlockedBy": [
+            "Regen"
+        ]
+    },
+    "ImprovedAutoheal0": {
+        "name": "ImprovedAutoheal0",
+        "traitName": "ImprovedAutoheal",
+        "desc": "Your Autoheal spell will consume fewer charges and trigger at a higher percent.",
+        "icon": "self-love",
+        "cost": 50,
+        "cluster": 3,
+        "unlockedBy": [
+            "Autoheal"
+        ]
+    },
+    "TrueSight": {
+        "name": "TrueSight",
+        "desc": "See hidden walls and other hidden features. Cost: 25 MP",
+        "icon": "all-seeing-eye",
+        "iconColor": "#00a",
+        "cost": 3,
+        "unlocks": [
+            "BarNecro",
+            "BarFrost",
+            "BarFire",
+            "Regen"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Bard"
+        ]
+    },
+    "BarNecro": {
+        "name": "BarNecro",
+        "desc": "Shield necrotic damage for a single target. Cost: 40 MP",
+        "icon": "rosa-shield",
+        "iconColor": "#1b390e",
+        "cost": 3,
+        "unlocks": [
+            "PowerwordBarNecro"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "TrueSight"
+        ]
+    },
+    "PowerwordBarNecro": {
+        "name": "PowerwordBarNecro",
+        "desc": "Shield necrotic damage for your party. Cost: 60 MP / target",
+        "icon": "rosa-shield",
+        "iconColor": "#1b390e",
+        "bgColor": "#000",
+        "requireSkillLevel": 13,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "BarNecro"
+        ]
+    },
+    "BarFire": {
+        "name": "BarFire",
+        "desc": "Shield fire damage for a single target. Cost: 20 MP",
+        "icon": "rosa-shield",
+        "iconColor": "#DC143C",
+        "cost": 3,
+        "unlocks": [
+            "PowerwordBarFire"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "TrueSight"
+        ]
+    },
+    "PowerwordBarFire": {
+        "name": "PowerwordBarFire",
+        "desc": "Shield fire damage for your party. Cost: 30 MP / target",
+        "icon": "rosa-shield",
+        "iconColor": "#DC143C",
+        "bgColor": "#000",
+        "requireSkillLevel": 13,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "BarFire"
+        ]
+    },
+    "BarFrost": {
+        "name": "BarFrost",
+        "desc": "Shield frost damage for a single target. Cost: 20 MP",
+        "icon": "rosa-shield",
+        "iconColor": "#000080",
+        "cost": 3,
+        "unlocks": [
+            "PowerwordBarFrost"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "TrueSight"
+        ]
+    },
+    "PowerwordBarFrost": {
+        "name": "PowerwordBarFrost",
+        "desc": "Shield frost damage for your party. Cost: 30 MP / target",
+        "icon": "rosa-shield",
+        "iconColor": "#000080",
+        "bgColor": "#000",
+        "requireSkillLevel": 13,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "BarFrost"
+        ]
+    },
+    "Regen": {
+        "name": "Regen",
+        "desc": "Cast a restorative aura on the target. Cost: 30 MP",
+        "icon": "star-swirl",
+        "iconColor": "#00c",
+        "requireSkillLevel": 10,
+        "cost": 3,
+        "unlocks": [
+            "Autoheal",
+            "RegenerativeRefrain0"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "TrueSight"
+        ]
+    },
+    "Autoheal": {
+        "name": "Autoheal",
+        "desc": "Automatically heal when health gets too low. Cost: 50 MP",
+        "icon": "self-love",
+        "iconColor": "#00c",
+        "requireSkillLevel": 15,
+        "cost": 3,
+        "unlocks": [
+            "ImprovedAutoheal0"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Regen"
+        ]
+    },
+    "Diviner": {
+        "icon": "abstract-010",
+        "desc": "The Diviner is a class focused on holy retribution. It is able to deal damage effectively while bringing light to the darkness.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "Afflict",
+            "TotemSpecialty0"
+        ],
+        "name": "Diviner",
+        "cluster": 4
+    },
+    "NecroticFocus0": {
+        "name": "NecroticFocus0",
+        "traitName": "NecroticFocus",
+        "desc": "Deal 10% more necrotic damage per point.",
+        "icon": "plasma-bolt",
+        "cost": 3,
+        "unlocks": [
+            "NecroticFocus1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Afflict"
+        ]
+    },
+    "NecroticFocus1": {
+        "name": "NecroticFocus1",
+        "traitName": "NecroticFocus",
+        "desc": "Deal 10% more necrotic damage per point.",
+        "icon": "plasma-bolt",
+        "cost": 3,
+        "unlocks": [
+            "NecroticFocus2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus0"
+        ]
+    },
+    "NecroticFocus2": {
+        "name": "NecroticFocus2",
+        "traitName": "NecroticFocus",
+        "desc": "Deal 10% more necrotic damage per point.",
+        "icon": "plasma-bolt",
+        "cost": 3,
+        "unlocks": [
+            "NecroticFocus3"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus1"
+        ]
+    },
+    "NecroticFocus3": {
+        "name": "NecroticFocus3",
+        "traitName": "NecroticFocus",
+        "desc": "Deal 10% more necrotic damage per point.",
+        "icon": "plasma-bolt",
+        "cost": 3,
+        "unlocks": [
+            "NecroticFocus4",
+            "Push"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus2"
+        ]
+    },
+    "NecroticFocus4": {
+        "name": "NecroticFocus4",
+        "traitName": "NecroticFocus",
+        "desc": "Deal 10% more necrotic damage per point.",
+        "icon": "plasma-bolt",
+        "cost": 3,
+        "unlocks": [
+            "NecroticFocus5"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus3"
+        ]
+    },
+    "NecroticFocus5": {
+        "name": "NecroticFocus5",
+        "traitName": "NecroticFocus",
+        "desc": "Deal 10% more necrotic damage per point.",
+        "icon": "plasma-bolt",
+        "cost": 3,
+        "unlocks": [
+            "NecroticFocus6",
+            "Light"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus4"
+        ]
+    },
+    "NecroticFocus6": {
+        "name": "NecroticFocus6",
+        "traitName": "NecroticFocus",
+        "desc": "Deal 10% more necrotic damage per point.",
+        "icon": "plasma-bolt",
+        "cost": 3,
+        "unlocks": [
+            "NecroticFocus7"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus5"
+        ]
+    },
+    "NecroticFocus7": {
+        "name": "NecroticFocus7",
+        "traitName": "NecroticFocus",
+        "desc": "Deal 10% more necrotic damage per point.",
+        "icon": "plasma-bolt",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "unlocks": [],
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus6"
+        ]
+    },
+    "TotemSpecialty0": {
+        "name": "TotemSpecialty0",
+        "traitName": "TotemSpecialty",
+        "desc": "Spells cost 2% less per point to cast while holding a totem in your right hand.",
+        "icon": "grapple",
+        "requireCharacterLevel": 10,
+        "cost": 3,
+        "unlocks": [
+            "TotemSpecialty1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Diviner"
+        ]
+    },
+    "TotemSpecialty1": {
+        "name": "TotemSpecialty1",
+        "traitName": "TotemSpecialty",
+        "desc": "Spells cost 2% less per point to cast while holding a totem in your right hand.",
+        "icon": "grapple",
+        "requireCharacterLevel": 10,
+        "cost": 3,
+        "unlocks": [
+            "TotemSpecialty2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "TotemSpecialty0"
+        ]
+    },
+    "TotemSpecialty2": {
+        "name": "TotemSpecialty2",
+        "traitName": "TotemSpecialty",
+        "desc": "Spells cost 2% less per point to cast while holding a totem in your right hand.",
+        "icon": "grapple",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "TotemSpecialty1"
+        ]
+    },
+    "Afflict": {
+        "name": "Afflict",
+        "desc": "Inflict necrotic damage on a single target. Cost: 10 MP",
+        "icon": "bolas",
+        "iconColor": "#bd5900",
+        "cost": 1,
+        "unlocks": [
+            "NecroticFocus0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Diviner"
+        ]
+    },
+    "Light": {
+        "name": "Light",
+        "desc": "Clear darkness near the target (3x3). Cost: 25 MP",
+        "icon": "candle-light",
+        "iconColor": "#aa0",
+        "cost": 3,
+        "unlocks": [
+            "HolyFire"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus5"
+        ]
+    },
+    "HolyFire": {
+        "name": "HolyFire",
+        "desc": "Inflict fire damage on a single target. Cost: 15 MP",
+        "icon": "fireflake",
+        "iconColor": "#f50",
+        "requireSkillLevel": 15,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "Light"
+        ]
+    },
+    "Push": {
+        "name": "Push",
+        "desc": "Push an enemy around. Cost: 25 MP",
+        "icon": "swirl-string",
+        "iconColor": "#000",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus3"
+        ]
+    }
+}

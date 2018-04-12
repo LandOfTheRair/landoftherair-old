@@ -70,7 +70,7 @@ const MAGE_TREE = {
   },
 
   MagicFocus0: {
-
+    unlocks: ['MagicFocus6']
   },
   MagicFocus1: {
     unlocks: ['Transmute']
@@ -79,9 +79,18 @@ const MAGE_TREE = {
     unlocks: ['EnergyWave']
   },
   MagicFocus3: {
-    unlocks: ['EnergyWaveWiden0']
+    unlocks: ['EnergyWaveWiden0', 'MagicFocus4']
   },
   MagicFocus4: {
+
+  },
+  MagicFocus5: {
+
+  },
+  MagicFocus6: {
+
+  },
+  MagicFocus7: {
     unlocks: ['MagicBolt', 'Teleport']
   },
 
@@ -103,7 +112,7 @@ const MAGE_TREE = {
     unlocks: ['MagicFocus3', 'Push']
   },
   Push: {
-    unlocks: ['MagicFocus4']
+    unlocks: ['MagicFocus7', 'MagicFocus5']
   },
   MagicBolt: {
 

@@ -1,38 +1,33 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { Cure as CastEffect } from '../../../../../effects/cures/Cure';
+import { Haste as CastEffect } from '../../../../../effects/buffs/Haste';
 
-export class Cure extends Skill {
+export class Snare extends Skill {
 
   static macroMetadata = {
-    name: 'Cure',
-    macro: 'cast cure',
-    icon: 'tentacle-heart',
-    color: '#080',
+    name: 'Snare',
+    macro: 'cast snare',
+    icon: 'light-thorny-triskelion',
+    color: '#0a0',
     mode: 'clickToTarget',
-    tooltipDesc: 'Heal a single target. Cost: 5 MP',
-    skillTPCost: 1
+    tooltipDesc: 'Slow down the target. Cost: 50 MP'
   };
 
-  public targetsFriendly = true;
-
-  public name = ['cure', 'cast cure'];
+  public name = ['snare', 'cast snare'];
   public format = 'Target';
 
   canUse(user: Character, target: Character) {
-    return super.canUse(user, target) && target.hp.ltePercent(75);
+    return super.canUse(user, target) && !target.hasEffect('Snare');
   }
 
-  mpCost() { return 5; }
+  mpCost() { return 50; }
   range(attacker: Character) { return 5; }
 
   execute(user: Character, { args, effect }) {
 
     const target = this.getTarget(user, args, true);
     if(!target) return;
-
-    if(!this.isValidBuffTarget(user, target)) return user.sendClientMessage('You cannot target that person with this spell.');
 
     if(!this.tryToConsumeMP(user, effect)) return;
 

@@ -7,7 +7,8 @@ export class PartyHealthRegen extends PartyTrait {
   static description = 'Increase your health regeneration while in a party.';
   static icon = 'health-increase';
 
-  static tpCost = 25;
-  static maxLevel = 20;
+  static upgrades = [
+    { }, { }, { requireCharacterLevel: 15, capstone: true }
+  ];
 
 }

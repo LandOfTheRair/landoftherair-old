@@ -1,5 +1,5 @@
 
-import { extend, maxBy, values, every, some } from 'lodash';
+import { extend, maxBy, values, every, some, startCase } from 'lodash';
 import { Player } from './player';
 import { SkillClassNames } from './character';
 import { nonenumerable } from 'nonenumerable';
@@ -300,7 +300,7 @@ export class SkillTree {
   private refundTrait(player: Player, traitName: string, realName: string): void {
     const node = this.linkBuyableNodeToRealNode(traitName);
 
-    player.sendClientMessage(`You have refunded the trait "${realName}"!`);
+    player.sendClientMessage(`You have refunded the trait "${startCase(realName)}"!`);
     const boost = node.capstone ? 3 : 1;
 
     player.decreaseTraitLevel(realName, boost);
@@ -310,7 +310,7 @@ export class SkillTree {
     const node = this.linkBuyableNodeToRealNode(skillName);
     if(!node) return;
 
-    player.sendClientMessage(`You have refunded the skill "${skillName}"!`);
+    player.sendClientMessage(`You have refunded the skill "${startCase(skillName)}"!`);
     player.unlearnSpell(skillName);
   }
 
@@ -337,13 +337,13 @@ export class SkillTree {
   private buyTrait(player: Player, traitName: string, realName: string): void {
     const node = this.linkBuyableNodeToRealNode(traitName);
 
-    player.sendClientMessage(`You have expanded your trait "${realName}"!`);
+    player.sendClientMessage(`You have expanded your trait "${startCase(realName)}"!`);
     const boost = node.capstone ? 3 : 1;
     player.increaseTraitLevel(realName, boost);
   }
 
   private buySkill(player: Player, skillName: string): void {
-    player.sendClientMessage(`You have learned the skill "${skillName}"!`);
+    player.sendClientMessage(`You have learned the skill "${startCase(skillName)}"!`);
     player.learnSpell(skillName);
     player.$$room.resetMacros(player);
   }

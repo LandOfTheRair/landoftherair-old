@@ -93,6 +93,9 @@ export * from './recents/RecentlyShattered';
 export * from './antibuffs/Stun';
 export * from './recents/RecentlyStunned';
 
+export * from './antibuffs/Snare';
+export * from './recents/RecentlySnared';
+
 export * from './antibuffs/Blind';
 export * from './antibuffs/BlurredVision';
 export * from './recents/RecentlyBlinded';

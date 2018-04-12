@@ -1,28 +1,30 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { BarFire as CastEffect } from '../../../../../effects/buffs/BarFire';
+import { BarFrost as CastEffect } from '../../../../../effects/buffs/BarFrost';
 import { Player } from '../../../../../../shared/models/player';
 
-export class PowerwordBarFire extends Skill {
+export class PowerwordBarFrost extends Skill {
 
   static macroMetadata = {
-    name: 'PowerwordBarFire',
-    macro: 'powerword barfire',
+    name: 'PowerwordBarFrost',
+    macro: 'powerword barfrost',
     icon: 'rosa-shield',
-    color: '#DC143C',
+    color: '#000080',
     bgColor: '#000',
     mode: 'autoActivate',
-    tooltipDesc: 'Shield fire damage for your party. Cost: 30 MP / target'
+    tooltipDesc: 'Shield frost damage for your party. Cost: 30 MP / target',
+    requireSkillLevel: 13,
+    skillTPCost: 10
   };
 
   public targetsFriendly = true;
 
-  public name = ['powerword barfire'];
+  public name = ['powerword barfrost'];
   public format = '';
 
   canUse(user: Character, target: Character) {
-    return super.canUse(user, target) && !user.hasEffect('BarFire');
+    return super.canUse(user, target) && !user.hasEffect('BarFrost');
   }
 
   mpCost(caster: Player, targets: Player[]) { return 30 * targets.length; }

@@ -1,0 +1,325 @@
+
+const HEALER_TREE = {
+  Healer: {
+    icon: 'abstract-041',
+    desc: 'The Healer is a class focused on keeping its allies and itself alive.',
+    unbuyable: true,
+    root: true,
+    unlocks: ['Cure', 'PartyHealthRegen0', 'CalmMind0', 'ManaPool0', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0']
+  },
+
+  // TRAITS
+  PartyHealthRegen0: {
+    unlocks: ['PartyHealthRegen1']
+  },
+  PartyHealthRegen1: {
+    unlocks: ['PartyHealthRegen2']
+  },
+  PartyHealthRegen2: {
+
+  },
+
+  CalmMind0: {
+    unlocks: ['CalmMind1']
+  },
+  CalmMind1: {
+    unlocks: ['CalmMind2']
+  },
+  CalmMind2: {
+
+  },
+
+  ManaPool0: {
+    unlocks: ['ManaPool1']
+  },
+  ManaPool1: {
+    unlocks: ['ManaPool2']
+  },
+  ManaPool2: {
+
+  },
+
+  CarefulTouch0: {
+    unlocks: ['CarefulTouch1']
+  },
+  CarefulTouch1: {
+    unlocks: ['CarefulTouch2']
+  },
+  CarefulTouch2: {
+
+  },
+
+  DeathGrip0: {
+    unlocks: ['DeathGrip1']
+  },
+  DeathGrip1: {
+    unlocks: ['DeathGrip2']
+  },
+  DeathGrip2: {
+
+  },
+
+  NaturalArmor0: {
+    unlocks: ['NaturalArmor1']
+  },
+  NaturalArmor1: {
+    unlocks: ['NaturalArmor2']
+  },
+  NaturalArmor2: {
+
+  },
+
+  HealingFocus0: {
+    unlocks: ['HealingFocus1']
+  },
+  HealingFocus1: {
+    unlocks: ['HealingFocus2', 'Succor']
+  },
+  HealingFocus2: {
+    unlocks: ['HealingFocus3']
+  },
+  HealingFocus3: {
+    unlocks: ['HealingFocus4', 'Revive']
+  },
+  HealingFocus4: {
+    unlocks: ['HealingFocus5']
+  },
+  HealingFocus5: {
+    unlocks: ['HealingFocus6', 'Wellspring']
+  },
+  HealingFocus6: {
+    unlocks: ['HealingFocus7', 'PowerwordHeal']
+  },
+  HealingFocus7: {
+    unlocks: ['VitalEssence']
+  },
+
+  // SKILLS
+  Cure: {
+    unlocks: ['HealingFocus0']
+  },
+
+  Succor: {
+
+  },
+
+  PowerwordHeal: {
+
+  },
+
+  Wellspring: {
+
+  },
+
+  VitalEssence: {
+
+  },
+
+  Revive: {
+
+  }
+};
+
+const DRUID_TREE = {
+  Druid: {
+    icon: 'abstract-097',
+    desc: 'The Druid is a class focused on debuffing enemies and cleansing debuffs from allies.',
+    unbuyable: true,
+    root: true,
+    unlocks: ['NatureSpirit0', 'NatureSpirit1', 'NatureSpirit2', 'NatureSpirit3', 'NatureSpirit4']
+  },
+
+  // TRAITS
+  NatureSpirit0: {
+    unlocks: ['Antidote']
+  },
+  NatureSpirit1: {
+    unlocks: ['Vision']
+  },
+  NatureSpirit2: {
+    unlocks: ['Stun']
+  },
+  NatureSpirit3: {
+    unlocks: ['Snare']
+  },
+  NatureSpirit4: {
+    unlocks: ['Augury']
+  },
+  IrresistibleStuns0: {
+    unlocks: ['IrresistibleStuns1']
+  },
+  IrresistibleStuns1: {
+    unlocks: ['IrresistibleStuns2']
+  },
+  IrresistibleStuns2: {
+
+  },
+
+  // SKILLS
+  Antidote: {
+    unlocks: ['Poison', 'Disease']
+  },
+
+  Poison: {
+
+  },
+
+  Disease: {
+
+  },
+
+  Vision: {
+    unlocks: ['Blind']
+  },
+
+  Blind: {
+
+  },
+
+  Stun: {
+    unlocks: ['IrresistibleStuns0']
+  },
+
+  Snare: {
+
+  },
+
+  Augury: {
+
+  }
+};
+
+const BARD_TREE = {
+  Bard: {
+    icon: 'abstract-047',
+    desc: 'The Bard is a class focused on buffing allies, using a wide array of protection and healing-related spells.',
+    unbuyable: true,
+    root: true,
+    unlocks: ['EffectiveSupporter0', 'TrueSight']
+  },
+
+  // TRAITS
+  EffectiveSupporter0: {
+    unlocks: ['EffectiveSupporter1']
+  },
+  EffectiveSupporter1: {
+    unlocks: ['EffectiveSupporter2']
+  },
+  EffectiveSupporter2: {
+
+  },
+
+  RegenerativeRefrain0: {
+
+  },
+
+  ImprovedAutoheal0: {
+
+  },
+
+  // SKILLS
+  TrueSight: {
+    unlocks: ['BarNecro', 'BarFrost', 'BarFire', 'Regen']
+  },
+
+  BarNecro: {
+    unlocks: ['PowerwordBarNecro']
+  },
+
+  PowerwordBarNecro: {
+
+  },
+
+  BarFire: {
+    unlocks: ['PowerwordBarFire']
+  },
+
+  PowerwordBarFire: {
+
+  },
+
+  BarFrost: {
+    unlocks: ['PowerwordBarFrost']
+  },
+
+  PowerwordBarFrost: {
+
+  },
+
+  Regen: {
+    unlocks: ['Autoheal', 'RegenerativeRefrain0']
+  },
+
+  Autoheal: {
+    unlocks: ['ImprovedAutoheal0']
+  }
+};
+
+const DIVINER_TREE = {
+  Diviner: {
+    icon: 'abstract-010',
+    desc: 'The Diviner is a class focused on holy retribution. It is able to deal damage effectively while bringing light to the darkness.',
+    unbuyable: true,
+    root: true,
+    unlocks: ['Afflict', 'TotemSpecialty0']
+  },
+
+  NecroticFocus0: {
+    unlocks: ['NecroticFocus1']
+  },
+  NecroticFocus1: {
+    unlocks: ['NecroticFocus2']
+  },
+  NecroticFocus2: {
+    unlocks: ['NecroticFocus3']
+  },
+  NecroticFocus3: {
+    unlocks: ['NecroticFocus4', 'Push']
+  },
+  NecroticFocus4: {
+    unlocks: ['NecroticFocus5']
+  },
+  NecroticFocus5: {
+    unlocks: ['NecroticFocus6', 'Light']
+  },
+  NecroticFocus6: {
+    unlocks: ['NecroticFocus7']
+  },
+  NecroticFocus7: {
+    unlocks: []
+  },
+
+  TotemSpecialty0: {
+    unlocks: ['TotemSpecialty1']
+  },
+  TotemSpecialty1: {
+    unlocks: ['TotemSpecialty2']
+  },
+  TotemSpecialty2: {
+
+  },
+
+  // SKILLS
+  Afflict: {
+    unlocks: ['NecroticFocus0']
+  },
+
+  Light: {
+    unlocks: ['HolyFire']
+  },
+
+  HolyFire: {
+
+  },
+
+  Push: {
+
+  }
+};
+
+export const AllTrees = [
+  HEALER_TREE,
+  DRUID_TREE,
+  BARD_TREE,
+  DIVINER_TREE
+];

@@ -13,7 +13,9 @@ export class PowerwordHeal extends Skill {
     color: '#080',
     bgColor: '#000',
     mode: 'autoActivate',
-    tooltipDesc: 'Heal your party. Cost: 25 MP / target'
+    tooltipDesc: 'Heal your party. Cost: 25 MP / target',
+    requireSkillLevel: 13,
+    skillTPCost: 10
   };
 
   public targetsFriendly = true;

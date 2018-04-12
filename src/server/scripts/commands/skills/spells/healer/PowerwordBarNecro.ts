@@ -13,7 +13,9 @@ export class PowerwordBarNecro extends Skill {
     color: '#1b390e',
     bgColor: '#000',
     mode: 'autoActivate',
-    tooltipDesc: 'Shield necrotic damage for your party. Cost: 60 MP / target'
+    tooltipDesc: 'Shield necrotic damage for your party. Cost: 60 MP / target',
+    requireSkillLevel: 13,
+    skillTPCost: 10
   };
 
   public name = ['powerword barnecro'];

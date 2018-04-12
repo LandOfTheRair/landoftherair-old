@@ -269,6 +269,9 @@
         "desc": "Deal 10% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
+        "unlocks": [
+            "MagicFocus6"
+        ],
         "cluster": 1,
         "unlockedBy": [
             "MagicMissile"
@@ -309,7 +312,8 @@
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
-            "EnergyWaveWiden0"
+            "EnergyWaveWiden0",
+            "MagicFocus4"
         ],
         "cluster": 1,
         "unlockedBy": [
@@ -318,6 +322,39 @@
     },
     "MagicFocus4": {
         "name": "MagicFocus4",
+        "traitName": "MagicFocus",
+        "desc": "Deal 10% more energy damage per point.",
+        "icon": "plasma-bolt",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicFocus3"
+        ]
+    },
+    "MagicFocus5": {
+        "name": "MagicFocus5",
+        "traitName": "MagicFocus",
+        "desc": "Deal 10% more energy damage per point.",
+        "icon": "plasma-bolt",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "Push"
+        ]
+    },
+    "MagicFocus6": {
+        "name": "MagicFocus6",
+        "traitName": "MagicFocus",
+        "desc": "Deal 10% more energy damage per point.",
+        "icon": "plasma-bolt",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicFocus0"
+        ]
+    },
+    "MagicFocus7": {
+        "name": "MagicFocus7",
         "traitName": "MagicFocus",
         "desc": "Deal 10% more energy damage per point.",
         "icon": "plasma-bolt",
@@ -411,7 +448,8 @@
         "iconColor": "#000",
         "cost": 3,
         "unlocks": [
-            "MagicFocus4"
+            "MagicFocus7",
+            "MagicFocus5"
         ],
         "cluster": 1,
         "unlockedBy": [
@@ -426,7 +464,7 @@
         "cost": 10,
         "cluster": 1,
         "unlockedBy": [
-            "MagicFocus4"
+            "MagicFocus7"
         ]
     },
     "Teleport": {
@@ -442,7 +480,7 @@
         ],
         "cluster": 1,
         "unlockedBy": [
-            "MagicFocus4"
+            "MagicFocus7"
         ]
     },
     "MassTeleport": {

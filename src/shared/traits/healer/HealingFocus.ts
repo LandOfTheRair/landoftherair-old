@@ -8,7 +8,8 @@ export class HealingFocus extends Trait {
   static description = 'Heal 10% more health per point when you use restorative magic.';
   static icon = 'health-increase';
 
-  static tpCost = 10;
-  static maxLevel = 10;
+  static upgrades = [
+    { }, { }, { }, { }, { }, { }, { }, { requireCharacterLevel: 15, capstone: true }
+  ];
 
 }

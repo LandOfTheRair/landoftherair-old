@@ -1340,10 +1340,12 @@ export class Character {
       case 'NaturalArmor':        return level * 10;
       case 'ManaPool':            return level * 10;
       case 'StrongMind':          return level * 0.1;
+      case 'NatureSpirit':        return level * 0.1;
 
-      case 'GlacierStanceImproved': return level * 0.1;
-      case 'VolcanoStanceImproved': return level * 0.1;
-      case 'PartyManaRegeneration': return level * 2;
+      case 'GlacierStanceImproved':     return level * 0.1;
+      case 'VolcanoStanceImproved':     return level * 0.1;
+      case 'PartyManaRegeneration':     return level * 2;
+      case 'PartyHealthRegeneration':   return level * 2;
 
       default: return level;
     }
