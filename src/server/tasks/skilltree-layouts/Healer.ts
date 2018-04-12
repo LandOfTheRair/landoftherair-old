@@ -145,6 +145,7 @@ const DRUID_TREE = {
   NatureSpirit4: {
     unlocks: ['Augury']
   },
+
   IrresistibleStuns0: {
     unlocks: ['IrresistibleStuns1']
   },
@@ -155,17 +156,29 @@ const DRUID_TREE = {
 
   },
 
+  StrongerSnare0: {
+
+  },
+
+  CripplingPoison0: {
+
+  },
+
+  DebilitatingDisease0: {
+
+  },
+
   // SKILLS
   Antidote: {
     unlocks: ['Poison', 'Disease']
   },
 
   Poison: {
-
+    unlocks: ['CripplingPoison0']
   },
 
   Disease: {
-
+    unlocks: ['DebilitatingDisease0']
   },
 
   Vision: {
@@ -181,7 +194,7 @@ const DRUID_TREE = {
   },
 
   Snare: {
-
+    unlocks: ['StrongerSnare0']
   },
 
   Augury: {

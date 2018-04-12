@@ -1,4 +1,6 @@
 
+import { random } from 'lodash';
+
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { CombatHelper } from '../../helpers/world/combat-helper';
@@ -16,6 +18,9 @@ export class Poison extends SpellEffect {
   maxSkillForSkillGain = 7;
   skillMults = [[0, 1], [11, 1.25], [21, 2.5]];
 
+  private critBonus: number;
+  private healerCripple: number;
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -31,6 +36,15 @@ export class Poison extends SpellEffect {
 
     this.duration = this.duration || this.potency;
 
+    const natureSpirit = caster.getTraitLevelAndUsageModifier('NatureSpirit');
+    this.critBonus = natureSpirit;
+
+    this.duration += caster.getTraitLevel('NatureSpirit');
+
+    if(caster.getTraitLevel('CripplingPoison')) {
+      this.healerCripple = Math.round(this.potency / 5);
+    }
+
     this.effectInfo = { damage, caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
@@ -41,15 +55,27 @@ export class Poison extends SpellEffect {
     this.effectMessage(char, 'You were poisoned!');
 
     this.iconData.tooltipDesc = `Constantly receiving ${Math.abs(this.effectInfo.damage)} poison damage.`;
+
+    if(this.healerCripple) {
+      this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Offense/Defense penalty.`;
+      char.loseStat('offense', this.healerCripple);
+      char.loseStat('defense', this.healerCripple);
+    }
   }
 
   effectTick(char: Character) {
     const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
 
+    let isCrit = false;
+
+    if(random(1, 100) <= this.critBonus * 100) {
+      isCrit = true;
+    }
+
     CombatHelper.magicalAttack(caster, char, {
       effect: this,
-      defMsg: `You are poisoned!`,
-      damage: this.effectInfo.damage,
+      defMsg: `You are ${isCrit ? 'critically ' : ' '}poisoned!`,
+      damage: this.effectInfo.damage * (isCrit ? 3 : 1),
       damageClass: 'poison'
     });
 
@@ -57,5 +83,10 @@ export class Poison extends SpellEffect {
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your body flushed the poison out.');
+
+    if(this.healerCripple) {
+      char.gainStat('offense', this.healerCripple);
+      char.gainStat('defense', this.healerCripple);
+    }
   }
 }

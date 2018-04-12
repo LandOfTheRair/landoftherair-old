@@ -1,7 +1,7 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { Haste as CastEffect } from '../../../../../effects/buffs/Haste';
+import { Snare as CastEffect } from '../../../../../effects/antibuffs/Snare';
 
 export class Snare extends Skill {
 

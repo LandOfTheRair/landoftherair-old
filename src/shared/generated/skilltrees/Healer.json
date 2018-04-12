@@ -581,6 +581,39 @@
             "IrresistibleStuns1"
         ]
     },
+    "StrongerSnare0": {
+        "name": "StrongerSnare0",
+        "traitName": "StrongerSnare",
+        "desc": "Your Snare spell will slow the target movement even more yet",
+        "icon": "light-thorny-triskelion",
+        "cost": 50,
+        "cluster": 2,
+        "unlockedBy": [
+            "Snare"
+        ]
+    },
+    "CripplingPoison0": {
+        "name": "CripplingPoison0",
+        "traitName": "CripplingPoison",
+        "desc": "Your Poison spell will also lower the attack and defense of the afflicted target.",
+        "icon": "poison-gas",
+        "cost": 25,
+        "cluster": 2,
+        "unlockedBy": [
+            "Poison"
+        ]
+    },
+    "DebilitatingDisease0": {
+        "name": "DebilitatingDisease0",
+        "traitName": "DebilitatingDisease",
+        "desc": "Your Disease spell will also lower the CON, WIL, and accuracy of the afflicted target.",
+        "icon": "death-juice",
+        "cost": 25,
+        "cluster": 2,
+        "unlockedBy": [
+            "Disease"
+        ]
+    },
     "Antidote": {
         "name": "Antidote",
         "desc": "Cure poison on a single target. Cost: 10 MP",
@@ -602,6 +635,9 @@
         "icon": "poison-gas",
         "iconColor": "#0a0",
         "cost": 3,
+        "unlocks": [
+            "CripplingPoison0"
+        ],
         "cluster": 2,
         "unlockedBy": [
             "Antidote"
@@ -613,6 +649,9 @@
         "icon": "death-juice",
         "iconColor": "#0a0",
         "cost": 3,
+        "unlocks": [
+            "DebilitatingDisease0"
+        ],
         "cluster": 2,
         "unlockedBy": [
             "Antidote"
@@ -663,6 +702,9 @@
         "icon": "light-thorny-triskelion",
         "iconColor": "#0a0",
         "cost": 3,
+        "unlocks": [
+            "StrongerSnare0"
+        ],
         "cluster": 2,
         "unlockedBy": [
             "NatureSpirit3"

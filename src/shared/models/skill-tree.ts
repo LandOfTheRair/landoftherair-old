@@ -337,7 +337,7 @@ export class SkillTree {
   private buyTrait(player: Player, traitName: string, realName: string): void {
     const node = this.linkBuyableNodeToRealNode(traitName);
 
-    player.sendClientMessage(`You have expanded your trait "${startCase(realName)}"!`);
+    player.sendClientMessage(`You have expanded your knowledge with the trait "${startCase(realName)}"!`);
     const boost = node.capstone ? 3 : 1;
     player.increaseTraitLevel(realName, boost);
   }

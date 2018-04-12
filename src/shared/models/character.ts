@@ -27,6 +27,7 @@ import { MessageHelper } from '../../server/helpers/world/message-helper';
 import { TrapHelper } from '../../server/helpers/world/trap-helper';
 import { SkillHelper } from '../../server/helpers/character/skill-helper';
 import { XPHelper } from '../../server/helpers/character/xp-helper';
+import { TraitUsageModifiers } from '../helpers/trait-usage-modifiers';
 
 export type Allegiance =
   'None'
@@ -1314,41 +1315,7 @@ export class Character {
   public getTraitLevelAndUsageModifier(trait: string): number {
     const level = this.getTraitLevel(trait);
 
-    switch(trait) {
-      case 'DarkerShadows':       return level * 2;
-      case 'ShadowSheath':        return level;
-      case 'IrresistibleStuns':   return level;
-      case 'PhilosophersStone':   return level * 10;
-      case 'DeathGrip':           return Math.min(100, level * 5);
-      case 'ShadowSwap':          return Math.min(100, level * 2);
-      case 'ShadowDaggers':       return level;
-      case 'ForgedFire':          return level;
-      case 'FrostedTouch':        return level;
-      case 'Riposte':             return level;
-      case 'CarefulTouch':        return Math.min(0.95, level * 0.1);
-      case 'EffectiveSupporter':  return level * 0.1;
-      case 'OffhandFinesse':      return level * 0.1;
-      case 'MagicFocus':          return level * 10;
-      case 'NecroticFocus':       return level * 10;
-      case 'HealingFocus':        return level * 10;
-      case 'ForcefulStrike':      return level * 10;
-      case 'ShadowRanger':        return level * 10;
-
-      case 'FriendlyFire':        return level * 10;
-      case 'ThermalBarrier':      return level * 0.1;
-      case 'CalmMind':            return level * 2;
-      case 'NaturalArmor':        return level * 10;
-      case 'ManaPool':            return level * 10;
-      case 'StrongMind':          return level * 0.1;
-      case 'NatureSpirit':        return level * 0.1;
-
-      case 'GlacierStanceImproved':     return level * 0.1;
-      case 'VolcanoStanceImproved':     return level * 0.1;
-      case 'PartyManaRegeneration':     return level * 2;
-      case 'PartyHealthRegeneration':   return level * 2;
-
-      default: return level;
-    }
+    return TraitUsageModifiers.getTraitLevelAndUsageModifier(trait, level);
   }
 
   private adjustStatsForTraits(): void {
@@ -1372,11 +1339,11 @@ export class Character {
     const party = (<any>this).party;
     if(!party || !party.canApplyPartyAbilities) return;
 
-    this.totalStats.defense += this.getTraitLevel('PartyDefense');
-    this.totalStats.offense += this.getTraitLevel('PartyOffense');
+    this.totalStats.defense += this.getTraitLevelAndUsageModifier('PartyDefense');
+    this.totalStats.offense += this.getTraitLevelAndUsageModifier('PartyOffense');
 
     this.totalStats.mpregen += this.getTraitLevelAndUsageModifier('PartyManaRegeneration');
-    this.totalStats.hpregen += this.getTraitLevel('PartyHealthRegeneration');
+    this.totalStats.hpregen += this.getTraitLevelAndUsageModifier('PartyHealthRegeneration');
   }
 
   public isUnableToAct(): boolean {
