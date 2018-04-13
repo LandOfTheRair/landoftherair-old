@@ -1,30 +1,28 @@
 
 
 
-import { Skill } from '../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../shared/models/character';
-import { CombatHelper } from '../../../../helpers/world/combat-helper';
-import { MoveHelper } from '../../../../helpers/character/move-helper';
-import { MessageHelper } from '../../../../helpers/world/message-helper';
-import { Revealed as CastEffect } from '../../../../effects/misc/Revealed';
-import { Player } from '../../../../../shared/models/player';
+import { Skill } from '../../../../../base/Skill';
+import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { CombatHelper } from '../../../../../helpers/world/combat-helper';
+import { MoveHelper } from '../../../../../helpers/character/move-helper';
+import { MessageHelper } from '../../../../../helpers/world/message-helper';
+import { Revealed as CastEffect } from '../../../../../effects/misc/Revealed';
+import { Player } from '../../../../../../shared/models/player';
 
 export class Assassinate extends Skill {
 
   static macroMetadata = {
     name: 'Assassinate',
-    macro: 'assassinate',
+    macro: 'cast assassinate',
     icon: 'decapitation',
     color: '#530000',
     mode: 'lockActivation',
-    tooltipDesc: 'Attempt to assassinate your target from the shadows. Requires Thievery & weapon skill 13.',
-    requireBaseClass: 'Thief'
+    tooltipDesc: 'Attempt to assassinate your target from the shadows. Requires weapon skill 13.',
+    requireSkillLevel: 13
   };
 
-  public name = 'assassinate';
+  public name = ['assassinate', 'cast assassinate'];
   public format = 'Target';
-
-  requiresLearn = false;
 
   range(attacker: Character) {
     const weapon = attacker.rightHand;
@@ -37,8 +35,6 @@ export class Assassinate extends Skill {
 
   execute(user: Player, { args }) {
     if(!args) return false;
-
-    if(user.baseClass !== 'Thief') return user.sendClientMessage('You don\'t know how to do that!');
 
     const hidden = user.hasEffect('Hidden');
     const shadowMeld = user.hasEffect('ShadowMeld');

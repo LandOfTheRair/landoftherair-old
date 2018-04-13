@@ -11,10 +11,14 @@ import * as AllSkills from '../scripts/commands/skills/spells';
 
 import { AllTrees as MageLayout } from './skilltree-layouts/Mage';
 import { AllTrees as HealerLayout } from './skilltree-layouts/Healer';
+import { AllTrees as ThiefLayout } from './skilltree-layouts/Thief';
+import { AllTrees as WarriorLayout } from './skilltree-layouts/Warrior';
 
 const Layouts = {
   Mage: MageLayout,
-  Healer: HealerLayout
+  Healer: HealerLayout,
+  Thief: ThiefLayout,
+  Warrior: WarriorLayout
 };
 
 export class SkillTreeCreator {
@@ -53,7 +57,7 @@ export class SkillTreeCreator {
               const newName = entireName + index;
 
               const existingTraitItem = tree[newName];
-              if(!existingTraitItem) throw new Error(`${newName} not found in trait tree!`);
+              if(!existingTraitItem) throw new Error(`${newName} not found in (${baseClass}) trait tree!`);
 
               const newItem: any = {
                 name: newName,
@@ -93,7 +97,7 @@ export class SkillTreeCreator {
             resultingLayout[traitOrSkillName] = newItem;
 
           } else {
-            throw new Error(`Trait or skill ${traitOrSkillName} does not exist!`);
+            throw new Error(`Trait or skill ${traitOrSkillName} does not exist (${baseClass})!`);
           }
 
         });
@@ -109,7 +113,7 @@ export class SkillTreeCreator {
         node.unlocks.forEach(unlock => {
           const unlockedNode = resultingLayout[unlock];
 
-          if(!unlockedNode) throw new Error(`Node ${unlock} does not exist!`);
+          if(!unlockedNode) throw new Error(`Node ${unlock} (${baseClass}) does not exist!`);
 
           if(!unlockedNode.unlockedBy) unlockedNode.unlockedBy = [];
 

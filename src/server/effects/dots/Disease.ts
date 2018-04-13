@@ -20,6 +20,7 @@ export class Disease extends SpellEffect {
 
   private critBonus: number;
   private healerDebilitate: number;
+  private thiefDegenerate: number;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
@@ -47,6 +48,10 @@ export class Disease extends SpellEffect {
       this.healerDebilitate = Math.max(1, Math.round(this.potency / 10));
     }
 
+    if(caster.getTraitLevel('DegenerativeDisease')) {
+      this.thiefDegenerate = this.potency;
+    }
+
     this.effectInfo = { damage, caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
@@ -63,6 +68,11 @@ export class Disease extends SpellEffect {
       char.loseStat('wil', this.healerDebilitate);
       char.loseStat('con', this.healerDebilitate);
       char.loseStat('accuracy', this.healerDebilitate);
+    }
+
+    if(this.thiefDegenerate) {
+      this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Perception penalty.`;
+      char.loseStat('perception', this.thiefDegenerate);
     }
   }
 
@@ -91,6 +101,10 @@ export class Disease extends SpellEffect {
       char.gainStat('wil', this.healerDebilitate);
       char.gainStat('con', this.healerDebilitate);
       char.gainStat('accuracy', this.healerDebilitate);
+    }
+
+    if(this.thiefDegenerate) {
+      char.gainStat('perception', this.thiefDegenerate);
     }
   }
 }

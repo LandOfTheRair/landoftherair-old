@@ -1,5 +1,5 @@
 
-import { random } from 'lodash';
+import { random, isUndefined } from 'lodash';
 
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
@@ -17,7 +17,7 @@ export class FireMist extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    const range = (this.range || 1) + target.getTraitLevel('FireMistWiden');
+    const range = (isUndefined(this.range) ? 1 : this.range) + target.getTraitLevel('FireMistWiden');
 
     target.sendClientMessageToRadius({ message: 'You hear a soft sizzling noise.', subClass: 'combat magic' }, 10);
 

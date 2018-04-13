@@ -1322,17 +1322,17 @@ export class Character {
 
     // combat traits
     this.totalStats.armorClass += this.getTraitLevelAndUsageModifier('NaturalArmor');
-    this.totalStats.accuracy += this.getTraitLevel('EagleEye');
-    this.totalStats.defense += this.getTraitLevel('FunkyMoves');
-    this.totalStats.offense += this.getTraitLevel('SwordTricks');
+    this.totalStats.accuracy += this.getTraitLevelAndUsageModifier('EagleEye');
+    this.totalStats.defense += this.getTraitLevelAndUsageModifier('FunkyMoves');
+    this.totalStats.offense += this.getTraitLevelAndUsageModifier('SwordTricks');
 
     // mage & healer traits
     this.totalStats.mp += this.getTraitLevelAndUsageModifier('ManaPool');
     this.totalStats.mpregen += this.getTraitLevelAndUsageModifier('CalmMind');
 
     // warrior
-    this.totalStats.offense += this.getTraitLevel('Swashbuckler');
-    this.totalStats.accuracy += this.getTraitLevel('Deadeye');
+    this.totalStats.offense += this.getTraitLevelAndUsageModifier('Swashbuckler');
+    this.totalStats.accuracy += this.getTraitLevelAndUsageModifier('Deadeye');
   }
 
   private adjustStatsForPartyAbilities(): void {

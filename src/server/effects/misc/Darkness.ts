@@ -1,4 +1,6 @@
 
+import { isUndefined } from 'lodash';
+
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
@@ -6,6 +8,8 @@ import { Skill } from '../../base/Skill';
 export class Darkness extends SpellEffect {
 
   maxSkillForSkillGain = 11;
+
+  private range: number;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -18,7 +22,7 @@ export class Darkness extends SpellEffect {
 
     caster.sendClientMessage('You cloak the area in a veil of darkness.');
 
-    const radius = (caster.baseClass === 'Thief' ? 0 : 1) + caster.getTraitLevel('DarknessWiden');
+    const radius = (caster.baseClass === 'Thief' ? 0 : 1) + (isUndefined(this.range) ? 0 : this.range) + caster.getTraitLevel('DarknessWiden');
 
     /** PERK:CLASS:THIEF:Thieves darkness only covers one tile. */
     target.$$room.createDarkness(target.x, target.y, radius, duration);

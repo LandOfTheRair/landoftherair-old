@@ -13,7 +13,8 @@ export class Disguise extends Skill {
     icon: 'duality',
     color: '#111',
     mode: 'autoActivate',
-    tooltipDesc: 'Blend in with enemies. Cost: 100 HP'
+    tooltipDesc: 'Blend in with enemies. Cost: 100 HP',
+    requireSkillLevel: 15
   };
 
   public targetsFriendly = true;

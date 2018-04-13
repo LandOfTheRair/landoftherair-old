@@ -1,17 +1,23 @@
 
-import { Skill } from '../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../shared/models/character';
-import { TrapHelper } from '../../../../helpers/world/trap-helper';
+import { Skill } from '../../../../../base/Skill';
+import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { TrapHelper } from '../../../../../helpers/world/trap-helper';
 
 export class Set extends Skill {
 
-  public name = 'set';
+  static macroMetadata = {
+    name: 'Set',
+    macro: 'cast set',
+    icon: 'quake-stomp',
+    color: '#530000',
+    mode: 'clickToActivate',
+    tooltipDesc: 'Set a trap from your hand. Traps can be purchased from thief vendors.'
+  };
 
-  requiresLearn = false;
+  public name = ['set', 'cast set'];
+  public format = 'Dir';
 
   execute(user: Character, { args }) {
-
-    if(user.baseClass !== 'Thief') return user.sendClientMessage('Only Thieves can set traps!');
 
     const weapon = user.rightHand;
     if(!weapon || weapon.itemClass !== 'Trap') return user.sendClientMessage('You need a trap in your right hand to set it!');

@@ -7,7 +7,8 @@ export class PartyOffense extends PartyTrait {
   static description = 'Increase your offensive capabilities while in a party.';
   static icon = 'sword-clash';
 
-  static tpCost = 20;
-  static maxLevel = 10;
+  static upgrades = [
+    { }, { }, { capstone: true }
+  ];
 
 }

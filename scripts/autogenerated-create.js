@@ -1,4 +1,6 @@
 
+var exec = require('child_process').exec;
+
 const macroCreatePromise = new Promise((resolve, reject) => {
   exec('npm run task:macros:meta', (e) => {
     if(e) return reject(e);

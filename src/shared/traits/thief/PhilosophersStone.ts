@@ -8,7 +8,8 @@ export class PhilosophersStone extends Trait {
   static description = 'You get 10% more gold per point when you transmute items.';
   static icon = 'coins';
 
-  static tpCost = 10;
-  static maxLevel = 10;
+  static upgrades = [
+    { }, { }, { requireCharacterLevel: 15, capstone: true }
+  ];
 
 }

@@ -1,17 +1,22 @@
 
-import { Skill } from '../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../shared/models/character';
+import { Skill } from '../../../../../base/Skill';
+import { Character, SkillClassNames } from '../../../../../../shared/models/character';
 
 export class Disarm extends Skill {
 
-  public name = 'disarm';
+  static macroMetadata = {
+    name: 'Disarm',
+    macro: 'cast disarm',
+    icon: 'quake-stomp',
+    color: '#000053',
+    mode: 'clickToActivate',
+    tooltipDesc: 'Disarm a trap on an adjacent tile.'
+  };
+
+  public name = ['disarm', 'cast disarm'];
   public format = 'Dir';
 
-  requiresLearn = false;
-
   execute(user: Character, { args }) {
-
-    if(user.baseClass !== 'Thief') return user.sendClientMessage('Only Thieves can disarm traps!');
 
     const { x, y } = user.getXYFromDir(args);
 

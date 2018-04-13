@@ -32,10 +32,15 @@ export class TraitUsageModifiers {
       case 'NatureSpirit':        return level * 0.05;
       case 'HolyAffliction':      return level * 3;
 
+      case 'StrongerTraps':       return level * 5;
+
+      case 'RecuperatingDebilitation':  return level * 5;
       case 'GlacierStanceImproved':     return level * 0.1;
       case 'VolcanoStanceImproved':     return level * 0.1;
       case 'PartyManaRegeneration':     return level * 2;
       case 'PartyHealthRegeneration':   return level * 2;
+      case 'PartyOffense':              return level * 2;
+      case 'PartyDefense':              return level * 2;
 
       default: return level;
     }

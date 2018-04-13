@@ -461,7 +461,7 @@ export const BankResponses = (npc: NPC) => {
     });
 };
 
-export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
+export const VendorResponses = (npc: NPC, { classRestriction = '', filter = (items, player) => items } = {}) => {
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
@@ -480,7 +480,13 @@ export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
       }
 
       if(npc.distFrom(player) > 2) return 'Please move closer.';
-      npc.$$room.showShopWindow(player, npc);
+
+      let showItems = npc.vendorItems;
+      if(filter) {
+        showItems = filter(showItems, player);
+      }
+
+      npc.$$room.showShopWindow(player, npc, showItems);
       return `Greetings ${player.name}! Please view my wares.`;
     });
 

@@ -72,7 +72,7 @@ export abstract class Skill extends Command {
 
     /** PERK:CLASS:THIEF:Thieves cast spells with their HP instead of using MP. */
     if(user.baseClass === 'Thief') {
-      if(user.hp.total < mpCost) {
+      if(user.hp.total <= mpCost) {
         user.sendClientMessage('You do not have enough HP!');
         return false;
       }

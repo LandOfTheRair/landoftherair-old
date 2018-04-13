@@ -36,7 +36,7 @@ export class Applied extends SpellEffect implements AugmentSpellEffect {
   }
 
   effectEnd(char: Character) {
-    this.effectMessage(char, 'Your hands lose their blue glow.');
+    this.effectMessage(char, 'Your weapons are no longer coated.');
   }
 
   augmentAttack(attacker: Character, defender: Character, opts: { damage: number, damageClass: string }) {

@@ -1,5 +1,5 @@
 
-import { random } from 'lodash';
+import { random, isUndefined } from 'lodash';
 
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
@@ -17,7 +17,7 @@ export class IceMist extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    const range = (this.range || 1) + target.getTraitLevel('IceMistWiden');
+    const range = (isUndefined(this.range) ? 1 : this.range) + target.getTraitLevel('IceMistWiden');
 
     target.sendClientMessageToRadius({ message: 'You see a dense fog form.', subClass: 'combat magic' }, 10);
 

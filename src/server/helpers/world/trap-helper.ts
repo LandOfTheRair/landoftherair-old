@@ -14,7 +14,7 @@ export class TrapHelper {
     const effectRef = new Effects[effect.name](effect);
     effectRef.casterRef = caster;
 
-    effectRef.cast(target, target);
+    effectRef.cast(target, target, obj);
   }
 
   static placeTrap(x, y, user: Character, trap): boolean {
@@ -23,6 +23,9 @@ export class TrapHelper {
     if(interactable) return false;
 
     const statCopy = user.sumStats;
+
+    trap.effect.range = user.getTraitLevel('WiderTraps');
+    trap.effect.potency += user.getTraitLevelAndUsageModifier('StrongerTraps');
 
     const trapInteractable = {
       x: x * 64,

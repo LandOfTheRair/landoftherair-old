@@ -20,6 +20,7 @@ export class Poison extends SpellEffect {
 
   private critBonus: number;
   private healerCripple: number;
+  private thiefCorrode: number;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
@@ -45,6 +46,10 @@ export class Poison extends SpellEffect {
       this.healerCripple = Math.round(this.potency / 5);
     }
 
+    if(caster.getTraitLevel('CorrosivePoison')) {
+      this.thiefCorrode = Math.round(this.potency / 5);
+    }
+
     this.effectInfo = { damage, caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
@@ -60,6 +65,11 @@ export class Poison extends SpellEffect {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Offense/Defense penalty.`;
       char.loseStat('offense', this.healerCripple);
       char.loseStat('defense', this.healerCripple);
+    }
+
+    if(this.thiefCorrode) {
+      this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Mitigation penalty.`;
+      char.loseStat('mitigation', this.thiefCorrode);
     }
   }
 
@@ -87,6 +97,10 @@ export class Poison extends SpellEffect {
     if(this.healerCripple) {
       char.gainStat('offense', this.healerCripple);
       char.gainStat('defense', this.healerCripple);
+    }
+
+    if(this.thiefCorrode) {
+      char.gainStat('mitigation', this.thiefCorrode);
     }
   }
 }

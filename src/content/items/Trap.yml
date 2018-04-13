@@ -55,3 +55,43 @@
     name: Distraction
     potency: 10
   value: 1500
+
+- name: Antanian Darkness Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Darkness"
+  effect:
+    name: Darkness
+    potency: 15
+    levelRequirement: 3
+    skillRequirement: 3
+  value: 2000
+
+- name: Antanian Snare Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Snare"
+  effect:
+    name: Snare
+    potency: 10
+    levelRequirement: 3
+    skillRequirement: 3
+  value: 2000
+
+- name: Antanian Stun Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Stun"
+  effect:
+    name: Stun
+    potency: 10
+    levelRequirement: 3
+    skillRequirement: 3
+  value: 2000
+
+- name: Antanian Blind Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Blind"
+  effect:
+    name: Blind
+    potency: 10
+    levelRequirement: 3
+    skillRequirement: 3
+  value: 2000
