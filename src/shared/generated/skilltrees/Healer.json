@@ -1113,7 +1113,7 @@
     "HolyAffliction0": {
         "name": "HolyAffliction0",
         "traitName": "HolyAffliction",
-        "desc": "Your single-target spells have a chance of doing critical damage.",
+        "desc": "Your single-target spells have a 3% chance per point of doing critical damage.",
         "icon": "large-wound",
         "cost": 10,
         "unlocks": [
@@ -1127,7 +1127,7 @@
     "HolyAffliction1": {
         "name": "HolyAffliction1",
         "traitName": "HolyAffliction",
-        "desc": "Your single-target spells have a chance of doing critical damage.",
+        "desc": "Your single-target spells have a 3% chance per point of doing critical damage.",
         "icon": "large-wound",
         "cost": 10,
         "unlocks": [
@@ -1141,7 +1141,7 @@
     "HolyAffliction2": {
         "name": "HolyAffliction2",
         "traitName": "HolyAffliction",
-        "desc": "Your single-target spells have a chance of doing critical damage.",
+        "desc": "Your single-target spells have a 3% chance per point of doing critical damage.",
         "icon": "large-wound",
         "capstone": true,
         "cost": 35,

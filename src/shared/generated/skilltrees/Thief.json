@@ -1,0 +1,663 @@
+{
+    "Thief": {
+        "icon": "abstract-005",
+        "desc": "The Thief class excels at pickpocketing, mugging, and backstabbing unsuspecting foes.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "PartyOffense0",
+            "CarefulTouch0",
+            "DeathGrip0",
+            "NaturalArmor0"
+        ],
+        "name": "Thief",
+        "cluster": 1
+    },
+    "PartyOffense0": {
+        "name": "PartyOffense0",
+        "traitName": "PartyOffense",
+        "desc": "Increase your offensive capabilities while in a party.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "unlocks": [
+            "PartyOffense1"
+        ],
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "Thief"
+        ]
+    },
+    "PartyOffense1": {
+        "name": "PartyOffense1",
+        "traitName": "PartyOffense",
+        "desc": "Increase your offensive capabilities while in a party.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "unlocks": [
+            "PartyOffense2"
+        ],
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "PartyOffense0"
+        ]
+    },
+    "PartyOffense2": {
+        "name": "PartyOffense2",
+        "traitName": "PartyOffense",
+        "desc": "Increase your offensive capabilities while in a party.",
+        "icon": "sword-clash",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "PartyOffense1"
+        ]
+    },
+    "CarefulTouch0": {
+        "name": "CarefulTouch0",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "cost": 3,
+        "unlocks": [
+            "CarefulTouch1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Thief"
+        ]
+    },
+    "CarefulTouch1": {
+        "name": "CarefulTouch1",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "cost": 3,
+        "unlocks": [
+            "CarefulTouch2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "CarefulTouch0"
+        ]
+    },
+    "CarefulTouch2": {
+        "name": "CarefulTouch2",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "CarefulTouch1"
+        ]
+    },
+    "DeathGrip0": {
+        "name": "DeathGrip0",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "cost": 3,
+        "unlocks": [
+            "DeathGrip1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Thief"
+        ]
+    },
+    "DeathGrip1": {
+        "name": "DeathGrip1",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "cost": 3,
+        "unlocks": [
+            "DeathGrip2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip0"
+        ]
+    },
+    "DeathGrip2": {
+        "name": "DeathGrip2",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip1"
+        ]
+    },
+    "NaturalArmor0": {
+        "name": "NaturalArmor0",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "armor-vest",
+        "cost": 3,
+        "unlocks": [
+            "NaturalArmor1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Thief"
+        ]
+    },
+    "NaturalArmor1": {
+        "name": "NaturalArmor1",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "armor-vest",
+        "cost": 3,
+        "unlocks": [
+            "NaturalArmor2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor0"
+        ]
+    },
+    "NaturalArmor2": {
+        "name": "NaturalArmor2",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "armor-vest",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor1"
+        ]
+    },
+    "Ninja": {
+        "icon": "abstract-066",
+        "desc": "The Ninja class is one that focuses on the shadows. They are not often seen or heard.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [],
+        "name": "Ninja",
+        "cluster": 2
+    },
+    "Rogue": {
+        "icon": "abstract-071",
+        "desc": "The Rogue is a class that focuses on the finer thievery arts, such as setting and disarming traps, blending in with enemies, and looting valuable items.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "OffhandFinesse0",
+            "Identify",
+            "Set"
+        ],
+        "name": "Rogue",
+        "cluster": 3
+    },
+    "OffhandFinesse0": {
+        "name": "OffhandFinesse0",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-sabres",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Rogue"
+        ]
+    },
+    "OffhandFinesse1": {
+        "name": "OffhandFinesse1",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-sabres",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "OffhandFinesse0"
+        ]
+    },
+    "OffhandFinesse2": {
+        "name": "OffhandFinesse2",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-sabres",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse3"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "OffhandFinesse1"
+        ]
+    },
+    "OffhandFinesse3": {
+        "name": "OffhandFinesse3",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-sabres",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse4"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "OffhandFinesse2"
+        ]
+    },
+    "OffhandFinesse4": {
+        "name": "OffhandFinesse4",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-sabres",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "OffhandFinesse3"
+        ]
+    },
+    "PhilosophersStone0": {
+        "name": "PhilosophersStone0",
+        "traitName": "PhilosophersStone",
+        "desc": "You get 10% more gold per point when you transmute items.",
+        "icon": "coins",
+        "cost": 3,
+        "unlocks": [
+            "PhilosophersStone1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Transmute"
+        ]
+    },
+    "PhilosophersStone1": {
+        "name": "PhilosophersStone1",
+        "traitName": "PhilosophersStone",
+        "desc": "You get 10% more gold per point when you transmute items.",
+        "icon": "coins",
+        "cost": 3,
+        "unlocks": [
+            "PhilosophersStone2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "PhilosophersStone0"
+        ]
+    },
+    "PhilosophersStone2": {
+        "name": "PhilosophersStone2",
+        "traitName": "PhilosophersStone",
+        "desc": "You get 10% more gold per point when you transmute items.",
+        "icon": "coins",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "PhilosophersStone1"
+        ]
+    },
+    "Identify": {
+        "name": "Identify",
+        "desc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
+        "icon": "uncertainty",
+        "iconColor": "#665600",
+        "cost": 3,
+        "unlocks": [
+            "Transmute"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Rogue"
+        ]
+    },
+    "Transmute": {
+        "name": "Transmute",
+        "desc": "Convert the items on your current tile into gold. Cost: 15 MP",
+        "icon": "coins",
+        "iconColor": "#665600",
+        "cost": 3,
+        "unlocks": [
+            "EagleEye",
+            "PhilosophersStone0"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Identify"
+        ]
+    },
+    "EagleEye": {
+        "name": "EagleEye",
+        "desc": "See through the trees and to the depths of the waters. Cost: 50 HP",
+        "icon": "dead-eye",
+        "iconColor": "#f00",
+        "requireSkillLevel": 10,
+        "cost": 3,
+        "unlocks": [
+            "Disguise"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Transmute"
+        ]
+    },
+    "Disguise": {
+        "name": "Disguise",
+        "desc": "Blend in with enemies. Cost: 100 HP",
+        "icon": "duality",
+        "iconColor": "#111",
+        "requireSkillLevel": 15,
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "EagleEye"
+        ]
+    },
+    "Set": {
+        "name": "Set",
+        "desc": "Set a trap from your hand. Traps can be purchased from thief vendors.",
+        "icon": "quake-stomp",
+        "iconColor": "#530000",
+        "cost": 3,
+        "unlocks": [
+            "Disarm"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Rogue"
+        ]
+    },
+    "Disarm": {
+        "name": "Disarm",
+        "desc": "Disarm a trap on an adjacent tile.",
+        "icon": "quake-stomp",
+        "iconColor": "#000053",
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "Set"
+        ]
+    },
+    "Assassin": {
+        "icon": "abstract-088",
+        "desc": "The Assassin class focuses strongly on lethal thief arts, such as applying poisons to their weapons and inflicting violent diseases on their foes.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "Apply",
+            "ShadowRanger0",
+            "ShadowSwap0"
+        ],
+        "name": "Assassin",
+        "cluster": 4
+    },
+    "ShadowDaggers0": {
+        "name": "ShadowDaggers0",
+        "traitName": "ShadowDaggers",
+        "desc": "Your plain melee attacks turn into backstabs 1% of the time per point.",
+        "icon": "daggers",
+        "cost": 3,
+        "unlocks": [
+            "ShadowDaggers1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Apply"
+        ]
+    },
+    "ShadowDaggers1": {
+        "name": "ShadowDaggers1",
+        "traitName": "ShadowDaggers",
+        "desc": "Your plain melee attacks turn into backstabs 1% of the time per point.",
+        "icon": "daggers",
+        "cost": 3,
+        "unlocks": [
+            "ShadowDaggers2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowDaggers0"
+        ]
+    },
+    "ShadowDaggers2": {
+        "name": "ShadowDaggers2",
+        "traitName": "ShadowDaggers",
+        "desc": "Your plain melee attacks turn into backstabs 1% of the time per point.",
+        "icon": "daggers",
+        "capstone": true,
+        "cost": 10,
+        "unlocks": [
+            "Assassinate"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowDaggers1"
+        ]
+    },
+    "ShadowRanger0": {
+        "name": "ShadowRanger0",
+        "traitName": "ShadowRanger",
+        "desc": "Do 10% more damage while hidden per point.",
+        "icon": "on-sight",
+        "cost": 3,
+        "unlocks": [
+            "ShadowRanger1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Assassin"
+        ]
+    },
+    "ShadowRanger1": {
+        "name": "ShadowRanger1",
+        "traitName": "ShadowRanger",
+        "desc": "Do 10% more damage while hidden per point.",
+        "icon": "on-sight",
+        "cost": 3,
+        "unlocks": [
+            "ShadowRanger2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowRanger0"
+        ]
+    },
+    "ShadowRanger2": {
+        "name": "ShadowRanger2",
+        "traitName": "ShadowRanger",
+        "desc": "Do 10% more damage while hidden per point.",
+        "icon": "on-sight",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowRanger1"
+        ]
+    },
+    "ShadowSwap0": {
+        "name": "ShadowSwap0",
+        "traitName": "ShadowSwap",
+        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "icon": "shadow-follower",
+        "cost": 3,
+        "unlocks": [
+            "ShadowSwap1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Assassin"
+        ]
+    },
+    "ShadowSwap1": {
+        "name": "ShadowSwap1",
+        "traitName": "ShadowSwap",
+        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "icon": "shadow-follower",
+        "cost": 3,
+        "unlocks": [
+            "ShadowSwap2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowSwap0"
+        ]
+    },
+    "ShadowSwap2": {
+        "name": "ShadowSwap2",
+        "traitName": "ShadowSwap",
+        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "icon": "shadow-follower",
+        "cost": 3,
+        "unlocks": [
+            "ShadowSwap3"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowSwap1"
+        ]
+    },
+    "ShadowSwap3": {
+        "name": "ShadowSwap3",
+        "traitName": "ShadowSwap",
+        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "icon": "shadow-follower",
+        "cost": 3,
+        "unlocks": [
+            "ShadowSwap4"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowSwap2"
+        ]
+    },
+    "ShadowSwap4": {
+        "name": "ShadowSwap4",
+        "traitName": "ShadowSwap",
+        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "icon": "shadow-follower",
+        "cost": 3,
+        "unlocks": [
+            "ShadowSwap5"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowSwap3"
+        ]
+    },
+    "ShadowSwap5": {
+        "name": "ShadowSwap5",
+        "traitName": "ShadowSwap",
+        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "icon": "shadow-follower",
+        "cost": 3,
+        "unlocks": [
+            "ShadowSwap6"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowSwap4"
+        ]
+    },
+    "ShadowSwap6": {
+        "name": "ShadowSwap6",
+        "traitName": "ShadowSwap",
+        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "icon": "shadow-follower",
+        "cost": 3,
+        "unlocks": [
+            "ShadowSwap7"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowSwap5"
+        ]
+    },
+    "ShadowSwap7": {
+        "name": "ShadowSwap7",
+        "traitName": "ShadowSwap",
+        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "icon": "shadow-follower",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowSwap6"
+        ]
+    },
+    "Apply": {
+        "name": "Apply",
+        "desc": "Apply a bottle's effects from your left hand onto your weapon strikes.",
+        "icon": "bloody-sword",
+        "iconColor": "#050",
+        "cost": 3,
+        "unlocks": [
+            "ShadowDaggers0",
+            "Poison",
+            "Disease",
+            "Debilitate"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Assassin"
+        ]
+    },
+    "Assassinate": {
+        "name": "Assassinate",
+        "desc": "Attempt to assassinate your target from the shadows. Requires weapon skill 13.",
+        "icon": "decapitation",
+        "iconColor": "#530000",
+        "requireSkillLevel": 13,
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowDaggers2"
+        ]
+    },
+    "Debilitate": {
+        "name": "Debilitate",
+        "desc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
+        "icon": "one-eyed",
+        "iconColor": "#a00",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "Apply"
+        ]
+    },
+    "Poison": {
+        "name": "Poison",
+        "desc": "Inflict a deadly poison on your target. Cost: 15 MP",
+        "icon": "poison-gas",
+        "iconColor": "#0a0",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "Apply"
+        ]
+    },
+    "Disease": {
+        "name": "Disease",
+        "desc": "Inflict a deadly disease on your target. Cost: 30 MP",
+        "icon": "death-juice",
+        "iconColor": "#0a0",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "Apply"
+        ]
+    }
+}
