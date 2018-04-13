@@ -4,7 +4,6 @@ import { MapLayer } from '../../../shared/models/maplayer';
 import { isUndefined } from 'lodash';
 
 import * as Pathfinder from 'pathfinding';
-import { TrapHelper } from '../world/trap-helper';
 
 export class MoveHelper {
 
