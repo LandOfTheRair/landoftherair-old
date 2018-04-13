@@ -5,6 +5,15 @@ import * as Effects from '../../effects';
 
 export class TrapHelper {
 
+  static triggerTrap(target: Character, obj: any): void {
+    console.log(obj, obj.uses);
+    obj.uses--;
+    if(obj.uses <= 0) {
+      target.$$room.state.removeInteractable(obj);
+    }
+    TrapHelper.castEffectFromTrap(target, obj);
+  }
+
   static castEffectFromTrap(target: Character, obj: any) {
     if(!obj || !obj.properties || !obj.properties.effect) return;
 
@@ -30,6 +39,7 @@ export class TrapHelper {
     const trapInteractable = {
       x: x * 64,
       y: (y + 1) * 64,
+      uses: 1 + user.getTraitLevel('ReusableTraps'),
       type: 'Trap',
       properties: {
         effect: trap.effect,

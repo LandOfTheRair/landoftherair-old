@@ -122,6 +122,14 @@ const ROGUE_TREE = {
 
   },
 
+  ReusableTraps0: {
+    unlocks: ['ReusableTraps1']
+  },
+
+  ReusableTraps1: {
+
+  },
+
   // SKILLS
   Identify: {
     unlocks: ['Transmute']
@@ -144,7 +152,7 @@ const ROGUE_TREE = {
   },
 
   Disarm: {
-    unlocks: ['WiderTraps0', 'StrongerTraps0', 'AdvancedTraps0']
+    unlocks: ['WiderTraps0', 'StrongerTraps0', 'AdvancedTraps0', 'ReusableTraps0']
   }
 };
 

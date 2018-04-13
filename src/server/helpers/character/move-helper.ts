@@ -162,7 +162,6 @@ export class MoveHelper {
     switch(obj.type) {
       case 'Teleport': return this.handleTeleport(room, player, obj);
       case 'Locker':   return this.handleLocker(room, player, obj);
-      case 'Trap':     return this.handleTrap(room, player, obj);
     }
   }
 
@@ -203,11 +202,5 @@ export class MoveHelper {
   private static handleLocker(room, player, obj) {
     const { lockerId } = obj.properties;
     room.openLocker(player, obj.name, lockerId);
-  }
-
-  private static handleTrap(room, player, obj) {
-    room.state.removeInteractable(obj);
-    player.sendClientMessage('You\'ve triggered a trap!');
-    TrapHelper.castEffectFromTrap(player, obj);
   }
 }

@@ -870,8 +870,7 @@ export class Character {
 
     const potentialTrap = this.$$room.state.getInteractable(this.x, this.y, true, 'Trap');
     if(potentialTrap && potentialTrap.properties && potentialTrap.properties.effect) {
-      this.$$room.state.removeInteractable(potentialTrap);
-      TrapHelper.castEffectFromTrap(this, potentialTrap);
+      TrapHelper.triggerTrap(this, potentialTrap);
     }
 
     // player only

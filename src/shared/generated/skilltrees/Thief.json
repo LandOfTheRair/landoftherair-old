@@ -401,6 +401,31 @@
             "Disarm"
         ]
     },
+    "ReusableTraps0": {
+        "name": "ReusableTraps0",
+        "traitName": "ReusableTraps",
+        "desc": "Your traps can be triggered 1 more time per point.",
+        "icon": "regeneration",
+        "cost": 10,
+        "unlocks": [
+            "ReusableTraps1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Disarm"
+        ]
+    },
+    "ReusableTraps1": {
+        "name": "ReusableTraps1",
+        "traitName": "ReusableTraps",
+        "desc": "Your traps can be triggered 1 more time per point.",
+        "icon": "regeneration",
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "ReusableTraps0"
+        ]
+    },
     "Identify": {
         "name": "Identify",
         "desc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
@@ -480,7 +505,8 @@
         "unlocks": [
             "WiderTraps0",
             "StrongerTraps0",
-            "AdvancedTraps0"
+            "AdvancedTraps0",
+            "ReusableTraps0"
         ],
         "cluster": 3,
         "unlockedBy": [

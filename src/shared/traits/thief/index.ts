@@ -7,6 +7,7 @@ export * from './OffhandFinesse';
 export * from './PartyOffense';
 export * from './PhilosophersStone';
 export * from './RecuperatingDebilitation';
+export * from './ReusableTraps';
 export * from './ShadowDaggers';
 export * from './ShadowRanger';
 export * from './ShadowSheath';
