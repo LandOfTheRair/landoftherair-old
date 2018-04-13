@@ -142,8 +142,10 @@ export abstract class Skill extends Command {
 
     const userName = target.canSeeThroughStealthOf(user) ? user.name : 'somebody';
 
+    const stealMod = 1 + user.getTraitLevelAndUsageModifier('NimbleStealing');
+
     if(target.gold > 0) {
-      if(random(0, stealRoll) < 30) {
+      if(random(0, stealRoll) < 30 - stealMod) {
         gainThiefSkill(user, 1);
         target.addAgro(user, 1);
         user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
@@ -157,7 +159,7 @@ export abstract class Skill extends Command {
         1,
         Math.min(
           target.gold,
-          mySkill * 100,
+          mySkill * 100 * stealMod,
           Math.max(5, Math.floor(target.gold * (fuzzedSkill / 100)))
         )
       );
@@ -172,7 +174,7 @@ export abstract class Skill extends Command {
       user.sendClientMessage({ message: `You stole ${stolenGold} gold from ${target.name}!`, target: target.uuid });
 
     } else if(target.sack.allItems.length > 0) {
-      if(random(0, stealRoll) < 60) {
+      if(random(0, stealRoll) < 60 - stealMod) {
         gainThiefSkill(user, 1);
         target.addAgro(user, 1);
         user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });

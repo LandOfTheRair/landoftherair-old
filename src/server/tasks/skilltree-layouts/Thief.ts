@@ -5,7 +5,7 @@ const THIEF_TREE = {
     desc: 'The Thief class excels at pickpocketing, mugging, and backstabbing unsuspecting foes.',
     unbuyable: true,
     root: true,
-    unlocks: ['PartyOffense0', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0']
+    unlocks: ['PartyOffense0', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0', 'NimbleStealing0']
   },
 
   // TRAITS
@@ -48,6 +48,20 @@ const THIEF_TREE = {
   NaturalArmor2: {
 
   },
+
+  NimbleStealing0: {
+    unlocks: ['NimbleStealing1']
+  },
+  NimbleStealing1: {
+    unlocks: ['NimbleStealing2']
+  },
+  NimbleStealing2: {
+    unlocks: ['DoubleStealing0']
+  },
+
+  DoubleStealing0: {
+
+  }
 };
 
 const NINJA_TREE = {
@@ -66,7 +80,7 @@ const ROGUE_TREE = {
     desc: 'The Rogue is a class that focuses on the finer thievery arts, such as setting and disarming traps, blending in with enemies, and looting valuable items.',
     unbuyable: true,
     root: true,
-    unlocks: ['OffhandFinesse0', 'Identify', 'Set']
+    unlocks: ['OffhandFinesse0', 'Identify', 'Set', 'LockpickSpecialty0']
   },
 
   // TRAITS
@@ -125,8 +139,23 @@ const ROGUE_TREE = {
   ReusableTraps0: {
     unlocks: ['ReusableTraps1']
   },
-
   ReusableTraps1: {
+
+  },
+
+  LockpickSpecialty0: {
+    unlocks: ['LockpickSpecialty1']
+  },
+  LockpickSpecialty1: {
+    unlocks: ['LockpickSpecialty2']
+  },
+  LockpickSpecialty2: {
+    unlocks: ['LockpickSpecialty3']
+  },
+  LockpickSpecialty3: {
+    unlocks: ['LockpickSpecialty4']
+  },
+  LockpickSpecialty4: {
 
   },
 

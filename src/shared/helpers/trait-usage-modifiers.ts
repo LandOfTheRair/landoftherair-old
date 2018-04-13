@@ -33,6 +33,7 @@ export class TraitUsageModifiers {
       case 'HolyAffliction':      return level * 3;
 
       case 'StrongerTraps':       return level * 5;
+      case 'NimbleStealing':      return level * 5;
 
       case 'RecuperatingDebilitation':  return level * 5;
       case 'GlacierStanceImproved':     return level * 0.1;

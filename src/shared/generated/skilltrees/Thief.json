@@ -8,7 +8,8 @@
             "PartyOffense0",
             "CarefulTouch0",
             "DeathGrip0",
-            "NaturalArmor0"
+            "NaturalArmor0",
+            "NimbleStealing0"
         ],
         "name": "Thief",
         "cluster": 1
@@ -179,6 +180,61 @@
             "NaturalArmor1"
         ]
     },
+    "NimbleStealing0": {
+        "name": "NimbleStealing0",
+        "traitName": "NimbleStealing",
+        "desc": "You are less likely to be discovered when stealing, and you steal more gold when you are successful.",
+        "icon": "take-my-money",
+        "cost": 3,
+        "unlocks": [
+            "NimbleStealing1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Thief"
+        ]
+    },
+    "NimbleStealing1": {
+        "name": "NimbleStealing1",
+        "traitName": "NimbleStealing",
+        "desc": "You are less likely to be discovered when stealing, and you steal more gold when you are successful.",
+        "icon": "take-my-money",
+        "cost": 3,
+        "unlocks": [
+            "NimbleStealing2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "NimbleStealing0"
+        ]
+    },
+    "NimbleStealing2": {
+        "name": "NimbleStealing2",
+        "traitName": "NimbleStealing",
+        "desc": "You are less likely to be discovered when stealing, and you steal more gold when you are successful.",
+        "icon": "take-my-money",
+        "capstone": true,
+        "cost": 10,
+        "unlocks": [
+            "DoubleStealing0"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "NimbleStealing1"
+        ]
+    },
+    "DoubleStealing0": {
+        "name": "DoubleStealing0",
+        "traitName": "DoubleStealing",
+        "desc": "You will use both hands when stelaing, if possible.",
+        "icon": "take-my-money",
+        "capstone": true,
+        "cost": 20,
+        "cluster": 1,
+        "unlockedBy": [
+            "NimbleStealing2"
+        ]
+    },
     "Ninja": {
         "icon": "abstract-066",
         "desc": "The Ninja class is one that focuses on the shadows. They are not often seen or heard.",
@@ -196,7 +252,8 @@
         "unlocks": [
             "OffhandFinesse0",
             "Identify",
-            "Set"
+            "Set",
+            "LockpickSpecialty0"
         ],
         "name": "Rogue",
         "cluster": 3
@@ -424,6 +481,73 @@
         "cluster": 3,
         "unlockedBy": [
             "ReusableTraps0"
+        ]
+    },
+    "LockpickSpecialty0": {
+        "name": "LockpickSpecialty0",
+        "traitName": "LockpickSpecialty",
+        "desc": "Your lockpicking ability is slightly increased.",
+        "icon": "unlocking",
+        "cost": 3,
+        "unlocks": [
+            "LockpickSpecialty1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Rogue"
+        ]
+    },
+    "LockpickSpecialty1": {
+        "name": "LockpickSpecialty1",
+        "traitName": "LockpickSpecialty",
+        "desc": "Your lockpicking ability is slightly increased.",
+        "icon": "unlocking",
+        "cost": 3,
+        "unlocks": [
+            "LockpickSpecialty2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "LockpickSpecialty0"
+        ]
+    },
+    "LockpickSpecialty2": {
+        "name": "LockpickSpecialty2",
+        "traitName": "LockpickSpecialty",
+        "desc": "Your lockpicking ability is slightly increased.",
+        "icon": "unlocking",
+        "cost": 3,
+        "unlocks": [
+            "LockpickSpecialty3"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "LockpickSpecialty1"
+        ]
+    },
+    "LockpickSpecialty3": {
+        "name": "LockpickSpecialty3",
+        "traitName": "LockpickSpecialty",
+        "desc": "Your lockpicking ability is slightly increased.",
+        "icon": "unlocking",
+        "cost": 3,
+        "unlocks": [
+            "LockpickSpecialty4"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "LockpickSpecialty2"
+        ]
+    },
+    "LockpickSpecialty4": {
+        "name": "LockpickSpecialty4",
+        "traitName": "LockpickSpecialty",
+        "desc": "Your lockpicking ability is slightly increased.",
+        "icon": "unlocking",
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "LockpickSpecialty3"
         ]
     },
     "Identify": {

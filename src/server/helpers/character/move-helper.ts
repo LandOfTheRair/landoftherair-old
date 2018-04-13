@@ -126,7 +126,7 @@ export class MoveHelper {
         && player.baseClass === 'Thief'
         && player.hasHeldItem('Lockpick', 'right')) {
 
-        const playerSkill = player.calcSkillLevel(SkillClassNames.Thievery);
+        const playerSkill = player.calcSkillLevel(SkillClassNames.Thievery) + player.getTraitLevel('LockpickSpecialty');
 
         if(playerSkill < skillRequired) {
           player.sendClientMessage('You are not skilled enough to pick this lock.');
