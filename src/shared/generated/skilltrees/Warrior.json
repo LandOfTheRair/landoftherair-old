@@ -757,7 +757,7 @@
     "Boost": {
         "name": "Boost",
         "desc": "Increase your STR, DEX, and AGI.",
-        "icon": "fist",
+        "icon": "strong",
         "iconColor": "#a00",
         "cost": 3,
         "unlocks": [
@@ -773,9 +773,50 @@
         "desc": "The Monk class expands on Warrior by transforming it into an entirely hand-to-hand combat-based class",
         "unbuyable": true,
         "root": true,
-        "unlocks": [],
+        "unlocks": [
+            "BrassKnuckles0"
+        ],
         "name": "Monk",
         "cluster": 3
+    },
+    "BrassKnuckles0": {
+        "name": "BrassKnuckles0",
+        "traitName": "BrassKnuckles",
+        "desc": "Your open-hand fist attacks are stronger.",
+        "icon": "brass-knuckles",
+        "cost": 20,
+        "unlocks": [
+            "BrassKnuckles1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Monk"
+        ]
+    },
+    "BrassKnuckles1": {
+        "name": "BrassKnuckles1",
+        "traitName": "BrassKnuckles",
+        "desc": "Your open-hand fist attacks are stronger.",
+        "icon": "brass-knuckles",
+        "cost": 20,
+        "unlocks": [
+            "BrassKnuckles2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "BrassKnuckles0"
+        ]
+    },
+    "BrassKnuckles2": {
+        "name": "BrassKnuckles2",
+        "traitName": "BrassKnuckles",
+        "desc": "Your open-hand fist attacks are stronger.",
+        "icon": "brass-knuckles",
+        "cost": 20,
+        "cluster": 3,
+        "unlockedBy": [
+            "BrassKnuckles1"
+        ]
     },
     "Paladin": {
         "icon": "abstract-007",

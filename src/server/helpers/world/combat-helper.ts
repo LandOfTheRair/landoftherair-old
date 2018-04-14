@@ -59,8 +59,12 @@ export class CombatHelper {
     let itemClass = item.itemClass;
     if(itemClass === 'Wand' && attacker.getTraitLevel('BladedWands')) itemClass = 'Longsword';
 
-    const tier = item.tier || 0;
+    let tier = item.tier || 0;
     const { base, min, max, weakChance, damageBonus } = BaseItemStatsPerTier[itemClass];
+
+    if(itemClass === 'Hands') {
+      tier += attacker.getTraitLevel('BrassKnuckles');
+    }
 
     let damageRolls = baseRolls;
     const minTier = min * tier;

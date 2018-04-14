@@ -39,7 +39,7 @@ import { Signal } from 'signals.js';
 import { SkillTreeHelper } from '../helpers/skill-trees/skill-tree-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
-| 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon' | 'block-offhand';
+| 'block-dodge' | 'block-armor' | 'block-miss' | 'block-shield' | 'block-weapon' | 'block-offhand';
 
 const TICK_TIMER = 1000;
 

@@ -1,5 +1,6 @@
 
 export * from './BoostedBoost';
+export * from './BrassKnuckles';
 export * from './DoubleThrust';
 export * from './EagleEye';
 export * from './ForcefulStrike';

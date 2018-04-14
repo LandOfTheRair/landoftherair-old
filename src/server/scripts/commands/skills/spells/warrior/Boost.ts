@@ -8,7 +8,7 @@ export class Boost extends Skill {
   static macroMetadata = {
     name: 'Boost',
     macro: 'art boost',
-    icon: 'fist',
+    icon: 'strong',
     color: '#a00',
     mode: 'clickToTarget',
     tooltipDesc: 'Increase your STR, DEX, and AGI.'
