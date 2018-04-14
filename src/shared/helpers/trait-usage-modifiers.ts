@@ -35,6 +35,8 @@ export class TraitUsageModifiers {
       case 'StrongerTraps':       return level * 5;
       case 'NimbleStealing':      return level * 5;
 
+      case 'Swashbuckler':        return Math.max(0.025, 1 - (level * 0.125));
+
       case 'RecuperatingDebilitation':  return level * 5;
       case 'GlacierStanceImproved':     return level * 0.1;
       case 'VolcanoStanceImproved':     return level * 0.1;

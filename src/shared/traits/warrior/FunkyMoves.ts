@@ -9,7 +9,7 @@ export class FunkyMoves extends Trait {
   static icon = 'wingfoot';
 
   static upgrades = [
-    { }, { }, { capstone: true }
+    { }, { }, { }, { }, { }
   ];
 
 }

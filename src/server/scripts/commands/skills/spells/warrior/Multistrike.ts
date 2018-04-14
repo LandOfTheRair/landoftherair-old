@@ -11,8 +11,8 @@ export class Multistrike extends Skill {
     icon: 'sword-spin',
     color: '#a00',
     mode: 'autoActivate',
-    tooltipDesc: 'Attack up to 4 creatures on your tile. Requires weapon skill 17 (Warrior).',
-    requiresBaseClass: 'Warrior'
+    tooltipDesc: 'Attack multiple creatures on your tile.',
+    requireSkillLevel: 13
   };
 
   public name = ['multistrike', 'art multistrike'];

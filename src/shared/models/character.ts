@@ -1319,7 +1319,7 @@ export class Character {
 
   private adjustStatsForTraits(): void {
 
-    // combat traits
+    // warrior traits
     this.totalStats.armorClass += this.getTraitLevelAndUsageModifier('NaturalArmor');
     this.totalStats.accuracy += this.getTraitLevelAndUsageModifier('EagleEye');
     this.totalStats.defense += this.getTraitLevelAndUsageModifier('FunkyMoves');
@@ -1328,10 +1328,6 @@ export class Character {
     // mage & healer traits
     this.totalStats.mp += this.getTraitLevelAndUsageModifier('ManaPool');
     this.totalStats.mpregen += this.getTraitLevelAndUsageModifier('CalmMind');
-
-    // warrior
-    this.totalStats.offense += this.getTraitLevelAndUsageModifier('Swashbuckler');
-    this.totalStats.accuracy += this.getTraitLevelAndUsageModifier('Deadeye');
   }
 
   private adjustStatsForPartyAbilities(): void {

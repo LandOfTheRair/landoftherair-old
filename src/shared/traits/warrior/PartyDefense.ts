@@ -7,7 +7,8 @@ export class PartyDefense extends PartyTrait {
   static description = 'Increase your defensive capabilities while in a party.';
   static icon = 'armor-vest';
 
-  static tpCost = 20;
-  static maxLevel = 10;
+  static upgrades = [
+    { }, { }, { capstone: true }
+  ];
 
 }

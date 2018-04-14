@@ -9,7 +9,7 @@ export class SwordTricks extends Trait {
   static icon = 'sword-clash';
 
   static upgrades = [
-    { }, { }, { capstone: true }
+    { }, { }, { }, { }, { }
   ];
 
 }

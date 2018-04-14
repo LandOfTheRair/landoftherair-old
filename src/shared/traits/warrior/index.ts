@@ -1,9 +1,9 @@
 
-export * from './Deadeye';
-export * from './Swashbuckler';
-export * from './ForcefulStrike';
-export * from './OffhandFinesse';
-export * from './Riposte';
 export * from './EagleEye';
+export * from './ForcefulStrike';
 export * from './FunkyMoves';
+export * from './OffhandFinesse';
+export * from './PartyDefense';
+export * from './Riposte';
+export * from './Swashbuckler';
 export * from './SwordTricks';

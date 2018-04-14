@@ -1,19 +1,15 @@
 
 import { Trait } from '../../models/trait';
-import { Player } from '../../models/player';
 
 export class Swashbuckler extends Trait {
 
   static baseClass = 'Warrior';
   static traitName = 'Swashbuckler';
-  static description = 'Further enhance your sword craft, strengthening your offense by 1 per point. Requires [Sword Tricks] Level 5';
-  static icon = 'sword-clash';
+  static description = 'Reduce your chance of getting a glancing blow.';
+  static icon = 'spiral-thrust';
 
-  static tpCost = 20;
-  static maxLevel = 10;
-
-  static canBuy(player: Player): boolean {
-    return super.canBuy(player, this.tpCost) && player.getBaseTraitLevel('SwordTricks') === 5;
-  }
+  static upgrades = [
+    { }, { }, { }, { }, { capstone: true }
+  ];
 
 }

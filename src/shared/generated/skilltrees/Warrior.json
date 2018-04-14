@@ -1,1 +1,482 @@
-{}
+{
+    "Warrior": {
+        "icon": "abstract-053",
+        "desc": "The Warrior class excels in physical combat.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "PartyDefense0",
+            "CarefulTouch0",
+            "DeathGrip0",
+            "NaturalArmor0",
+            "EagleEye0",
+            "SwordTricks0",
+            "FunkyMoves0",
+            "Swashbuckler0"
+        ],
+        "name": "Warrior",
+        "cluster": 1
+    },
+    "PartyDefense0": {
+        "name": "PartyDefense0",
+        "traitName": "PartyDefense",
+        "desc": "Increase your defensive capabilities while in a party.",
+        "icon": "armor-vest",
+        "cost": 3,
+        "unlocks": [
+            "PartyDefense1"
+        ],
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "PartyDefense1": {
+        "name": "PartyDefense1",
+        "traitName": "PartyDefense",
+        "desc": "Increase your defensive capabilities while in a party.",
+        "icon": "armor-vest",
+        "cost": 3,
+        "unlocks": [
+            "PartyDefense2"
+        ],
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "PartyDefense0"
+        ]
+    },
+    "PartyDefense2": {
+        "name": "PartyDefense2",
+        "traitName": "PartyDefense",
+        "desc": "Increase your defensive capabilities while in a party.",
+        "icon": "armor-vest",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "PartyDefense1"
+        ]
+    },
+    "CarefulTouch0": {
+        "name": "CarefulTouch0",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "cost": 3,
+        "unlocks": [
+            "CarefulTouch1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "CarefulTouch1": {
+        "name": "CarefulTouch1",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "cost": 3,
+        "unlocks": [
+            "CarefulTouch2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "CarefulTouch0"
+        ]
+    },
+    "CarefulTouch2": {
+        "name": "CarefulTouch2",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "CarefulTouch1"
+        ]
+    },
+    "DeathGrip0": {
+        "name": "DeathGrip0",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "cost": 3,
+        "unlocks": [
+            "DeathGrip1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "DeathGrip1": {
+        "name": "DeathGrip1",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "cost": 3,
+        "unlocks": [
+            "DeathGrip2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip0"
+        ]
+    },
+    "DeathGrip2": {
+        "name": "DeathGrip2",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip1"
+        ]
+    },
+    "NaturalArmor0": {
+        "name": "NaturalArmor0",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "armor-vest",
+        "cost": 3,
+        "unlocks": [
+            "NaturalArmor1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "NaturalArmor1": {
+        "name": "NaturalArmor1",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "armor-vest",
+        "cost": 3,
+        "unlocks": [
+            "NaturalArmor2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor0"
+        ]
+    },
+    "NaturalArmor2": {
+        "name": "NaturalArmor2",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "armor-vest",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor1"
+        ]
+    },
+    "EagleEye0": {
+        "name": "EagleEye0",
+        "traitName": "EagleEye",
+        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "icon": "bullseye",
+        "cost": 3,
+        "unlocks": [
+            "EagleEye1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "EagleEye1": {
+        "name": "EagleEye1",
+        "traitName": "EagleEye",
+        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "icon": "bullseye",
+        "cost": 3,
+        "unlocks": [
+            "EagleEye2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "EagleEye0"
+        ]
+    },
+    "EagleEye2": {
+        "name": "EagleEye2",
+        "traitName": "EagleEye",
+        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "icon": "bullseye",
+        "cost": 3,
+        "unlocks": [
+            "EagleEye3"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "EagleEye1"
+        ]
+    },
+    "EagleEye3": {
+        "name": "EagleEye3",
+        "traitName": "EagleEye",
+        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "icon": "bullseye",
+        "cost": 3,
+        "unlocks": [
+            "EagleEye4"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "EagleEye2"
+        ]
+    },
+    "EagleEye4": {
+        "name": "EagleEye4",
+        "traitName": "EagleEye",
+        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "icon": "bullseye",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "EagleEye3"
+        ]
+    },
+    "SwordTricks0": {
+        "name": "SwordTricks0",
+        "traitName": "SwordTricks",
+        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "unlocks": [
+            "SwordTricks1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "SwordTricks1": {
+        "name": "SwordTricks1",
+        "traitName": "SwordTricks",
+        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "unlocks": [
+            "SwordTricks2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "SwordTricks0"
+        ]
+    },
+    "SwordTricks2": {
+        "name": "SwordTricks2",
+        "traitName": "SwordTricks",
+        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "unlocks": [
+            "SwordTricks3"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "SwordTricks1"
+        ]
+    },
+    "SwordTricks3": {
+        "name": "SwordTricks3",
+        "traitName": "SwordTricks",
+        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "unlocks": [
+            "SwordTricks4"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "SwordTricks2"
+        ]
+    },
+    "SwordTricks4": {
+        "name": "SwordTricks4",
+        "traitName": "SwordTricks",
+        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "SwordTricks3"
+        ]
+    },
+    "FunkyMoves0": {
+        "name": "FunkyMoves0",
+        "traitName": "FunkyMoves",
+        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "FunkyMoves1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "FunkyMoves1": {
+        "name": "FunkyMoves1",
+        "traitName": "FunkyMoves",
+        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "FunkyMoves2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "FunkyMoves0"
+        ]
+    },
+    "FunkyMoves2": {
+        "name": "FunkyMoves2",
+        "traitName": "FunkyMoves",
+        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "FunkyMoves3"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "FunkyMoves1"
+        ]
+    },
+    "FunkyMoves3": {
+        "name": "FunkyMoves3",
+        "traitName": "FunkyMoves",
+        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "FunkyMoves4"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "FunkyMoves2"
+        ]
+    },
+    "FunkyMoves4": {
+        "name": "FunkyMoves4",
+        "traitName": "FunkyMoves",
+        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "FunkyMoves3"
+        ]
+    },
+    "Swashbuckler0": {
+        "name": "Swashbuckler0",
+        "traitName": "Swashbuckler",
+        "desc": "Reduce your chance of getting a glancing blow.",
+        "icon": "spiral-thrust",
+        "cost": 3,
+        "unlocks": [
+            "Swashbuckler1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "Swashbuckler1": {
+        "name": "Swashbuckler1",
+        "traitName": "Swashbuckler",
+        "desc": "Reduce your chance of getting a glancing blow.",
+        "icon": "spiral-thrust",
+        "cost": 3,
+        "unlocks": [
+            "Swashbuckler2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Swashbuckler0"
+        ]
+    },
+    "Swashbuckler2": {
+        "name": "Swashbuckler2",
+        "traitName": "Swashbuckler",
+        "desc": "Reduce your chance of getting a glancing blow.",
+        "icon": "spiral-thrust",
+        "cost": 3,
+        "unlocks": [
+            "Swashbuckler3"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Swashbuckler1"
+        ]
+    },
+    "Swashbuckler3": {
+        "name": "Swashbuckler3",
+        "traitName": "Swashbuckler",
+        "desc": "Reduce your chance of getting a glancing blow.",
+        "icon": "spiral-thrust",
+        "cost": 3,
+        "unlocks": [
+            "Swashbuckler4"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Swashbuckler2"
+        ]
+    },
+    "Swashbuckler4": {
+        "name": "Swashbuckler4",
+        "traitName": "Swashbuckler",
+        "desc": "Reduce your chance of getting a glancing blow.",
+        "icon": "spiral-thrust",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "Swashbuckler3"
+        ]
+    },
+    "Duelist": {
+        "icon": "abstract-027",
+        "desc": "The Duelist class excels at stylized combat - dual-wielding weapons and counter-attacking with flair and finesse.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [],
+        "name": "Duelist",
+        "cluster": 2
+    },
+    "Monk": {
+        "icon": "abstract-033",
+        "desc": "The Monk class expands on Warrior by transforming it into an entirely hand-to-hand combat-based class",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [],
+        "name": "Monk",
+        "cluster": 3
+    },
+    "Paladin": {
+        "icon": "abstract-007",
+        "desc": "The Paladin excels at using big weapons, and learns some new tricks to get the most use out of them.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [],
+        "name": "Paladin",
+        "cluster": 4
+    }
+}

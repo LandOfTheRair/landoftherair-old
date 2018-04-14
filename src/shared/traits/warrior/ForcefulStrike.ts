@@ -9,9 +9,6 @@ export class ForcefulStrike extends Trait {
   static description = 'Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 85%.';
   static icon = 'striped-sword';
 
-  static tpCost = 10;
-  static maxLevel = 20;
-
   static currentlyInEffect(player: Player): boolean {
     return super.currentlyInEffect(player) && player.hp.gtePercent(85);
   }

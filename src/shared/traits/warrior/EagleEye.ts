@@ -9,6 +9,6 @@ export class EagleEye extends Trait {
   static icon = 'bullseye';
 
   static upgrades = [
-    { }, { }, { capstone: true }
+    { }, { }, { }, { }, { }
   ];
 }

@@ -13,8 +13,7 @@ export class Taunt extends Skill {
     icon: 'enrage',
     color: '#a00',
     mode: 'clickToTarget',
-    tooltipDesc: 'Taunt a single creature. Requires weapon skill 9 (Warrior).',
-    requiresBaseClass: 'Warrior'
+    tooltipDesc: 'Taunt a single creature.'
   };
 
   public name = ['taunt', 'art taunt'];
