@@ -215,7 +215,7 @@ export class SkillTree {
 
       // no node = instant refund
       if(!realNode) {
-        this.refundNode(player, claimedNode);
+        this.refundNode(player, claimedNode, true, false);
         return;
       }
 
@@ -231,7 +231,7 @@ export class SkillTree {
       const unableToBuyNode = !this.isCapableOfBuying(claimedNode, player);
 
       if(missingAllParents || unableToBuyNode) {
-        this.refundNode(player, claimedNode);
+        this.refundNode(player, claimedNode, true, false);
       } else {
         if(realNode.cost !== this.nodesClaimed[claimedNode]) {
           const refund = realNode.cost - this.nodesClaimed[claimedNode];
@@ -272,7 +272,7 @@ export class SkillTree {
     delete this.nodesClaimed[traitNode.name];
   }
 
-  public refundNode(player: Player, traitName: string, recalculateBuyable = true): void {
+  public refundNode(player: Player, traitName: string, recalculateBuyable = true, consumeRP = true): void {
 
     const ref = this.linkBuyableNodeToRealNode(traitName);
     if(!ref) return;
@@ -287,7 +287,7 @@ export class SkillTree {
 
     }
 
-    this.resetPoints--;
+    if(consumeRP) this.resetPoints--;
     this.unbuyItem(ref);
 
     if(recalculateBuyable) {

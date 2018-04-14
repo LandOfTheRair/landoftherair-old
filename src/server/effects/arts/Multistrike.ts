@@ -13,14 +13,17 @@ export class Multistrike extends WeaponEffect {
   protected skillRequired = Multistrike.skillRequired;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    const attacked = sampleSize(target.$$room.state.getAllInRange(target, 0, [caster.uuid]), 4);
+    const numTargets = 3 + caster.getTraitLevelAndUsageModifier('Multitarget');
+
+    const attacked = sampleSize(target.$$room.state.getAllInRange(target, 0, [caster.uuid]), numTargets);
 
     attacked.forEach(refTarget => {
       CombatHelper.physicalAttack(caster, refTarget);
     });
 
     if(attacked.length > 0) {
-      const debuff = new LoweredDefenses({});
+      const divisor = caster.getTraitLevel('Multifocus') ? 2 : 1;
+      const debuff = new LoweredDefenses({ potency: attacked.length / divisor });
       debuff.cast(caster, caster);
     }
   }

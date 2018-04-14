@@ -198,7 +198,7 @@ export class CombatHelper {
   }
 
   private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
-    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isRiposte } = opts;
+    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isRiposte, damageMult } = opts;
     let { isBackstab } = opts;
 
     let backstabIgnoreRange = false;
@@ -666,6 +666,10 @@ export class CombatHelper {
 
     } else {
       attacker.$$room.combatEffect(attacker, 'hit-mid', defender.uuid);
+    }
+
+    if(damageMult) {
+      damage = Math.floor(damage * damageMult);
     }
 
     damage = this.calcDamageDoneBasedOnDefender(attackerWeapon, attacker, defender, damage, criticality);

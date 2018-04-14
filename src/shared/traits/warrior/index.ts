@@ -1,8 +1,11 @@
 
+export * from './DoubleThrust';
 export * from './EagleEye';
 export * from './ForcefulStrike';
 export * from './FunkyMoves';
 export * from './HolyProtection';
+export * from './Multifocus';
+export * from './Multitarget';
 export * from './OffhandFinesse';
 export * from './PartyDefense';
 export * from './Riposte';

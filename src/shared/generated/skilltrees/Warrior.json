@@ -709,7 +709,7 @@
         "cost": 3,
         "unlocks": [
             "ForcefulStrike1",
-            "Blindstrike"
+            "Thruststrike"
         ],
         "cluster": 4,
         "unlockedBy": [
@@ -723,7 +723,8 @@
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
-            "ForcefulStrike2"
+            "ForcefulStrike2",
+            "Blindstrike"
         ],
         "cluster": 4,
         "unlockedBy": [
@@ -737,7 +738,8 @@
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
-            "ForcefulStrike3"
+            "ForcefulStrike3",
+            "Multistrike"
         ],
         "cluster": 4,
         "unlockedBy": [
@@ -769,6 +771,55 @@
             "ForcefulStrike3"
         ]
     },
+    "Multitarget0": {
+        "name": "Multitarget0",
+        "traitName": "Multitarget",
+        "desc": "Increase the number of enemies you can strike with Multistrike.",
+        "icon": "sword-spin",
+        "cost": 10,
+        "unlocks": [
+            "Multitarget1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Multistrike"
+        ]
+    },
+    "Multitarget1": {
+        "name": "Multitarget1",
+        "traitName": "Multitarget",
+        "desc": "Increase the number of enemies you can strike with Multistrike.",
+        "icon": "sword-spin",
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "Multitarget0"
+        ]
+    },
+    "Multifocus0": {
+        "name": "Multifocus0",
+        "traitName": "Multifocus",
+        "desc": "Lower the defensive penalty for using Multistrike.",
+        "icon": "sword-spin",
+        "capstone": true,
+        "cost": 40,
+        "cluster": 4,
+        "unlockedBy": [
+            "Multistrike"
+        ]
+    },
+    "DoubleThrust0": {
+        "name": "DoubleThrust0",
+        "traitName": "DoubleThrust",
+        "desc": "Thruststrike now attacks with a slightly-weaker second swing.",
+        "icon": "saber-slash",
+        "capstone": true,
+        "cost": 50,
+        "cluster": 4,
+        "unlockedBy": [
+            "Thruststrike"
+        ]
+    },
     "Multistrike": {
         "name": "Multistrike",
         "desc": "Attack multiple creatures on your tile.",
@@ -776,7 +827,14 @@
         "iconColor": "#a00",
         "requireSkillLevel": 13,
         "cost": 3,
-        "cluster": 4
+        "unlocks": [
+            "Multitarget0",
+            "Multifocus0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike2"
+        ]
     },
     "Blindstrike": {
         "name": "Blindstrike",
@@ -785,6 +843,20 @@
         "iconColor": "#a00",
         "requireSkillLevel": 13,
         "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike1"
+        ]
+    },
+    "Thruststrike": {
+        "name": "Thruststrike",
+        "desc": "Charge towards an enemy, attacking with the item in your right hand. Deals more damage than Charge.",
+        "icon": "saber-slash",
+        "iconColor": "#a00",
+        "cost": 3,
+        "unlocks": [
+            "DoubleThrust0"
+        ],
         "cluster": 4,
         "unlockedBy": [
             "ForcefulStrike0"

@@ -206,13 +206,13 @@ const PALADIN_TREE = {
   },
 
   ForcefulStrike0: {
-    unlocks: ['ForcefulStrike1', 'Blindstrike']
+    unlocks: ['ForcefulStrike1', 'Thruststrike']
   },
   ForcefulStrike1: {
-    unlocks: ['ForcefulStrike2', 'Multistrike']
+    unlocks: ['ForcefulStrike2', 'Blindstrike']
   },
   ForcefulStrike2: {
-    unlocks: ['ForcefulStrike3']
+    unlocks: ['ForcefulStrike3', 'Multistrike']
   },
   ForcefulStrike3: {
     unlocks: ['ForcefulStrike4']
@@ -221,13 +221,32 @@ const PALADIN_TREE = {
 
   },
 
+  Multitarget0: {
+    unlocks: ['Multitarget1']
+  },
+  Multitarget1: {
+
+  },
+
+  Multifocus0: {
+
+  },
+
+  DoubleThrust0: {
+
+  },
+
   // SKILLS
   Multistrike: {
-
+    unlocks: ['Multitarget0', 'Multifocus0']
   },
 
   Blindstrike: {
 
+  },
+
+  Thruststrike: {
+    unlocks: ['DoubleThrust0']
   }
 };
 

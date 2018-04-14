@@ -38,6 +38,7 @@ export class TraitUsageModifiers {
       case 'Swashbuckler':        return Math.max(0.025, 1 - (level * 0.125));
       case 'SterlingArmor':       return level * 10;
       case 'HolyProtection':      return level * 10;
+      case 'Multitarget':         return level * 3;
 
       case 'RecuperatingDebilitation':  return level * 5;
       case 'GlacierStanceImproved':     return level * 0.1;
