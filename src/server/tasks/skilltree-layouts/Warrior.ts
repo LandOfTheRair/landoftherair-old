@@ -121,8 +121,28 @@ const DUELIST_TREE = {
     desc: 'The Duelist class excels at stylized combat - dual-wielding weapons and counter-attacking with flair and finesse.',
     unbuyable: true,
     root: true,
-    unlocks: []
+    unlocks: ['ForcefulStrike5']
+  },
+
+  // TRAITS
+
+  ForcefulStrike5: {
+    unlocks: ['ForcefulStrike6']
+  },
+  ForcefulStrike6: {
+    unlocks: ['ForcefulStrike7']
+  },
+  ForcefulStrike7: {
+    unlocks: ['ForcefulStrike8']
+  },
+  ForcefulStrike8: {
+    unlocks: ['ForcefulStrike9']
+  },
+  ForcefulStrike9: {
+
   }
+
+  // SKILLS
 };
 
 const MONK_TREE = {
@@ -132,7 +152,11 @@ const MONK_TREE = {
     unbuyable: true,
     root: true,
     unlocks: []
-  }
+  },
+
+  // TRAITS
+
+  // SKILLS
 };
 
 const PALADIN_TREE = {
@@ -141,7 +165,69 @@ const PALADIN_TREE = {
     desc: 'The Paladin excels at using big weapons, and learns some new tricks to get the most use out of them.',
     unbuyable: true,
     root: true,
-    unlocks: []
+    unlocks: ['Shieldbearer0', 'SterlingArmor0', 'HolyProtection0', 'ForcefulStrike0']
+  },
+
+  // TRAITS
+  Shieldbearer0: {
+
+  },
+
+  SterlingArmor0: {
+    unlocks: ['SterlingArmor1']
+  },
+  SterlingArmor1: {
+    unlocks: ['SterlingArmor2']
+  },
+  SterlingArmor2: {
+    unlocks: ['SterlingArmor3']
+  },
+  SterlingArmor3: {
+    unlocks: ['SterlingArmor4']
+  },
+  SterlingArmor4: {
+
+  },
+
+  HolyProtection0: {
+    unlocks: ['HolyProtection1']
+  },
+  HolyProtection1: {
+    unlocks: ['HolyProtection2']
+  },
+  HolyProtection2: {
+    unlocks: ['HolyProtection3']
+  },
+  HolyProtection3: {
+    unlocks: ['HolyProtection4']
+  },
+  HolyProtection4: {
+
+  },
+
+  ForcefulStrike0: {
+    unlocks: ['ForcefulStrike1', 'Blindstrike']
+  },
+  ForcefulStrike1: {
+    unlocks: ['ForcefulStrike2', 'Multistrike']
+  },
+  ForcefulStrike2: {
+    unlocks: ['ForcefulStrike3']
+  },
+  ForcefulStrike3: {
+    unlocks: ['ForcefulStrike4']
+  },
+  ForcefulStrike4: {
+
+  },
+
+  // SKILLS
+  Multistrike: {
+
+  },
+
+  Blindstrike: {
+
   }
 };
 

@@ -31,6 +31,7 @@ export const BaseItemStatsPerTier = {
   Flail:                { base: 0, min: 1, max: 4, weakChance: 10, damageBonus: 0 },
   Gloves:               { base: 1, min: 0, max: 2, weakChance: 10, damageBonus: 5 },
   Hands:                { base: 1, min: 0, max: 2, weakChance: 10, damageBonus: 5 },
+  Boots:                { base: 2, min: 1, max: 3, weakChance: 10, damageBonus: 5 },
   Greataxe:             { base: 5, min: 1, max: 2, weakChance: 10, damageBonus: 5 },
   Greatmace:            { base: 5, min: 1, max: 2, weakChance: 10, damageBonus: 5 },
   Greatsword:           { base: 3, min: 1, max: 4, weakChance: 10, damageBonus: 5 },
@@ -676,6 +677,8 @@ export class CombatHelper {
       defenderDamageMessage: msg,
       attackerWeapon,
       isRanged: damageCalcStat === 'dex',
+      isWeak,
+      isStrong,
       isAttackerVisible,
       isRiposte
     });
@@ -823,7 +826,7 @@ export class CombatHelper {
     attacker: Character,
     defender: Character,
     { damage, damageClass, attackerDamageMessage, defenderDamageMessage,
-      attackerWeapon, isRanged, isAttackerVisible, isRiposte }: any
+      attackerWeapon, isRanged, isAttackerVisible, isRiposte, isWeak }: any
   ): number {
 
     if(defender.isDead() || (<any>defender).hostility === 'Never') return;
@@ -918,6 +921,8 @@ export class CombatHelper {
     this.doElementalDebuffing(attacker, defender, damageClass, damage, { isRanged, isAttackerVisible, mitigatedPercent });
 
     if(defender.isNaturalResource) damage = baseDamage;
+
+    if(isWeak && random(1, 100) <= defender.getTraitLevelAndUsageModifier('SterlingArmor')) damage = 0;
 
     const absDmg = Math.round(Math.abs(damage));
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;

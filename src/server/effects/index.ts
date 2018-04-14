@@ -128,6 +128,7 @@ export * from './channels/ChannelFindFamiliar';
 export * from './channels/ChannelShadowClones';
 export * from './channels/ChannelSummon';
 
+export * from './arts/Blindstrike';
 export * from './arts/Multistrike';
 export * from './arts/Taunt';
 

@@ -146,7 +146,7 @@
         "name": "NaturalArmor0",
         "traitName": "NaturalArmor",
         "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
-        "icon": "armor-vest",
+        "icon": "internal-injury",
         "cost": 3,
         "unlocks": [
             "NaturalArmor1"
@@ -160,7 +160,7 @@
         "name": "NaturalArmor1",
         "traitName": "NaturalArmor",
         "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
-        "icon": "armor-vest",
+        "icon": "internal-injury",
         "cost": 3,
         "unlocks": [
             "NaturalArmor2"
@@ -174,7 +174,7 @@
         "name": "NaturalArmor2",
         "traitName": "NaturalArmor",
         "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
-        "icon": "armor-vest",
+        "icon": "internal-injury",
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 10,
@@ -457,9 +457,78 @@
         "desc": "The Duelist class excels at stylized combat - dual-wielding weapons and counter-attacking with flair and finesse.",
         "unbuyable": true,
         "root": true,
-        "unlocks": [],
+        "unlocks": [
+            "ForcefulStrike5"
+        ],
         "name": "Duelist",
         "cluster": 2
+    },
+    "ForcefulStrike5": {
+        "name": "ForcefulStrike5",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike6"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Duelist"
+        ]
+    },
+    "ForcefulStrike6": {
+        "name": "ForcefulStrike6",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike7"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike5"
+        ]
+    },
+    "ForcefulStrike7": {
+        "name": "ForcefulStrike7",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike8"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike6"
+        ]
+    },
+    "ForcefulStrike8": {
+        "name": "ForcefulStrike8",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike9"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike7"
+        ]
+    },
+    "ForcefulStrike9": {
+        "name": "ForcefulStrike9",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike8"
+        ]
     },
     "Monk": {
         "icon": "abstract-033",
@@ -475,8 +544,250 @@
         "desc": "The Paladin excels at using big weapons, and learns some new tricks to get the most use out of them.",
         "unbuyable": true,
         "root": true,
-        "unlocks": [],
+        "unlocks": [
+            "Shieldbearer0",
+            "SterlingArmor0",
+            "HolyProtection0",
+            "ForcefulStrike0"
+        ],
         "name": "Paladin",
         "cluster": 4
+    },
+    "Shieldbearer0": {
+        "name": "Shieldbearer0",
+        "traitName": "Shieldbearer",
+        "desc": "You can hold shields and gain their full effect while they are in your right hand.",
+        "icon": "edged-shield",
+        "capstone": true,
+        "cost": 50,
+        "cluster": 4,
+        "unlockedBy": [
+            "Paladin"
+        ]
+    },
+    "SterlingArmor0": {
+        "name": "SterlingArmor0",
+        "traitName": "SterlingArmor",
+        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "icon": "chest-armor",
+        "cost": 3,
+        "unlocks": [
+            "SterlingArmor1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Paladin"
+        ]
+    },
+    "SterlingArmor1": {
+        "name": "SterlingArmor1",
+        "traitName": "SterlingArmor",
+        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "icon": "chest-armor",
+        "cost": 3,
+        "unlocks": [
+            "SterlingArmor2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "SterlingArmor0"
+        ]
+    },
+    "SterlingArmor2": {
+        "name": "SterlingArmor2",
+        "traitName": "SterlingArmor",
+        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "icon": "chest-armor",
+        "cost": 3,
+        "unlocks": [
+            "SterlingArmor3"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "SterlingArmor1"
+        ]
+    },
+    "SterlingArmor3": {
+        "name": "SterlingArmor3",
+        "traitName": "SterlingArmor",
+        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "icon": "chest-armor",
+        "cost": 3,
+        "unlocks": [
+            "SterlingArmor4"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "SterlingArmor2"
+        ]
+    },
+    "SterlingArmor4": {
+        "name": "SterlingArmor4",
+        "traitName": "SterlingArmor",
+        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "icon": "chest-armor",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "SterlingArmor3"
+        ]
+    },
+    "HolyProtection0": {
+        "name": "HolyProtection0",
+        "traitName": "HolyProtection",
+        "desc": "Decrease the amount of magical damage you take.",
+        "icon": "holy-symbol",
+        "cost": 3,
+        "unlocks": [
+            "HolyProtection1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Paladin"
+        ]
+    },
+    "HolyProtection1": {
+        "name": "HolyProtection1",
+        "traitName": "HolyProtection",
+        "desc": "Decrease the amount of magical damage you take.",
+        "icon": "holy-symbol",
+        "cost": 3,
+        "unlocks": [
+            "HolyProtection2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "HolyProtection0"
+        ]
+    },
+    "HolyProtection2": {
+        "name": "HolyProtection2",
+        "traitName": "HolyProtection",
+        "desc": "Decrease the amount of magical damage you take.",
+        "icon": "holy-symbol",
+        "cost": 3,
+        "unlocks": [
+            "HolyProtection3"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "HolyProtection1"
+        ]
+    },
+    "HolyProtection3": {
+        "name": "HolyProtection3",
+        "traitName": "HolyProtection",
+        "desc": "Decrease the amount of magical damage you take.",
+        "icon": "holy-symbol",
+        "cost": 3,
+        "unlocks": [
+            "HolyProtection4"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "HolyProtection2"
+        ]
+    },
+    "HolyProtection4": {
+        "name": "HolyProtection4",
+        "traitName": "HolyProtection",
+        "desc": "Decrease the amount of magical damage you take.",
+        "icon": "holy-symbol",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "HolyProtection3"
+        ]
+    },
+    "ForcefulStrike0": {
+        "name": "ForcefulStrike0",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike1",
+            "Blindstrike"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Paladin"
+        ]
+    },
+    "ForcefulStrike1": {
+        "name": "ForcefulStrike1",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike0"
+        ]
+    },
+    "ForcefulStrike2": {
+        "name": "ForcefulStrike2",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike3"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike1"
+        ]
+    },
+    "ForcefulStrike3": {
+        "name": "ForcefulStrike3",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike4"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike2"
+        ]
+    },
+    "ForcefulStrike4": {
+        "name": "ForcefulStrike4",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike3"
+        ]
+    },
+    "Multistrike": {
+        "name": "Multistrike",
+        "desc": "Attack multiple creatures on your tile.",
+        "icon": "sword-spin",
+        "iconColor": "#a00",
+        "requireSkillLevel": 13,
+        "cost": 3,
+        "cluster": 4
+    },
+    "Blindstrike": {
+        "name": "Blindstrike",
+        "desc": "Attack a random creature on your tile, even while you are unable to see.",
+        "icon": "sword-tie",
+        "iconColor": "#a00",
+        "requireSkillLevel": 13,
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike0"
+        ]
     }
 }

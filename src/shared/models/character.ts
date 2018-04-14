@@ -485,7 +485,7 @@ export class Character {
   canGetBonusFromItemInHand(item: Item): boolean {
 
     // shields do. not. work. in the main hand
-    if(item.itemClass === 'Shield' && this.rightHand === item) return false;
+    if(item.itemClass === 'Shield' && this.rightHand === item && !this.getTraitLevel('Shieldbearer')) return false;
 
     // weapons do not work in the left hand unless they're a shield or offhand item
     if(this.leftHand === item && !item.offhand && item.itemClass !== 'Shield' && includes(WeaponClasses, item.itemClass)) return false;
@@ -1319,11 +1319,14 @@ export class Character {
 
   private adjustStatsForTraits(): void {
 
-    // warrior traits
+    // all traits
     this.totalStats.armorClass += this.getTraitLevelAndUsageModifier('NaturalArmor');
+
+    // warrior traits
     this.totalStats.accuracy += this.getTraitLevelAndUsageModifier('EagleEye');
     this.totalStats.defense += this.getTraitLevelAndUsageModifier('FunkyMoves');
     this.totalStats.offense += this.getTraitLevelAndUsageModifier('SwordTricks');
+    this.totalStats.magicalResist += this.getTraitLevelAndUsageModifier('HolyProtection');
 
     // mage & healer traits
     this.totalStats.mp += this.getTraitLevelAndUsageModifier('ManaPool');

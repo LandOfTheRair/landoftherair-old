@@ -30,10 +30,14 @@ export class SkillTreeCreator {
 
       // build base tre
       allTrees.forEach((tree, treeIndex) => {
+
+        let treeName = 'unknown';
+
         Object.keys(tree).forEach(traitOrSkillName => {
 
           const existingItem = tree[traitOrSkillName];
           if(existingItem.unbuyable) {
+            treeName = traitOrSkillName;
             existingItem.name = traitOrSkillName;
             existingItem.cluster = treeIndex + 1;
             resultingLayout[traitOrSkillName] = existingItem;
@@ -57,7 +61,7 @@ export class SkillTreeCreator {
               const newName = entireName + index;
 
               const existingTraitItem = tree[newName];
-              if(!existingTraitItem) throw new Error(`${newName} not found in (${baseClass}) trait tree!`);
+              if(!existingTraitItem) return; // throw new Error(`${newName} not found in (${baseClass}|${treeName}) trait tree!`);
 
               const newItem: any = {
                 name: newName,

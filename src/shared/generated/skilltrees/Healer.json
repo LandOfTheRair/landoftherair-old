@@ -228,7 +228,7 @@
         "name": "NaturalArmor0",
         "traitName": "NaturalArmor",
         "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
-        "icon": "armor-vest",
+        "icon": "internal-injury",
         "cost": 3,
         "unlocks": [
             "NaturalArmor1"
@@ -242,7 +242,7 @@
         "name": "NaturalArmor1",
         "traitName": "NaturalArmor",
         "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
-        "icon": "armor-vest",
+        "icon": "internal-injury",
         "cost": 3,
         "unlocks": [
             "NaturalArmor2"
@@ -256,7 +256,7 @@
         "name": "NaturalArmor2",
         "traitName": "NaturalArmor",
         "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
-        "icon": "armor-vest",
+        "icon": "internal-injury",
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 10,
