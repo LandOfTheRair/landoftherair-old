@@ -240,9 +240,259 @@
         "desc": "The Ninja class is one that focuses on the shadows. They are not often seen or heard.",
         "unbuyable": true,
         "root": true,
-        "unlocks": [],
+        "unlocks": [
+            "DarkerShadows0"
+        ],
         "name": "Ninja",
         "cluster": 2
+    },
+    "ShadowSheath0": {
+        "name": "ShadowSheath0",
+        "traitName": "ShadowSheath",
+        "desc": "Your weapons are 2% easier per point to conceal.",
+        "icon": "thrown-knife",
+        "cost": 3,
+        "unlocks": [
+            "ShadowSheath6"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows5"
+        ]
+    },
+    "ShadowSheath1": {
+        "name": "ShadowSheath1",
+        "traitName": "ShadowSheath",
+        "desc": "Your weapons are 2% easier per point to conceal.",
+        "icon": "thrown-knife",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows0"
+        ]
+    },
+    "ShadowSheath2": {
+        "name": "ShadowSheath2",
+        "traitName": "ShadowSheath",
+        "desc": "Your weapons are 2% easier per point to conceal.",
+        "icon": "thrown-knife",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows1"
+        ]
+    },
+    "ShadowSheath3": {
+        "name": "ShadowSheath3",
+        "traitName": "ShadowSheath",
+        "desc": "Your weapons are 2% easier per point to conceal.",
+        "icon": "thrown-knife",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows2"
+        ]
+    },
+    "ShadowSheath4": {
+        "name": "ShadowSheath4",
+        "traitName": "ShadowSheath",
+        "desc": "Your weapons are 2% easier per point to conceal.",
+        "icon": "thrown-knife",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows3"
+        ]
+    },
+    "ShadowSheath5": {
+        "name": "ShadowSheath5",
+        "traitName": "ShadowSheath",
+        "desc": "Your weapons are 2% easier per point to conceal.",
+        "icon": "thrown-knife",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows4"
+        ]
+    },
+    "ShadowSheath6": {
+        "name": "ShadowSheath6",
+        "traitName": "ShadowSheath",
+        "desc": "Your weapons are 2% easier per point to conceal.",
+        "icon": "thrown-knife",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "ShadowSheath0"
+        ]
+    },
+    "DarkerShadows0": {
+        "name": "DarkerShadows0",
+        "traitName": "DarkerShadows",
+        "desc": "The shadows around you are 2% darker per point.",
+        "icon": "hidden",
+        "cost": 3,
+        "unlocks": [
+            "DarkerShadows1",
+            "ShadowSheath1"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Ninja"
+        ]
+    },
+    "DarkerShadows1": {
+        "name": "DarkerShadows1",
+        "traitName": "DarkerShadows",
+        "desc": "The shadows around you are 2% darker per point.",
+        "icon": "hidden",
+        "cost": 3,
+        "unlocks": [
+            "DarkerShadows2",
+            "ShadowSheath2"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows0"
+        ]
+    },
+    "DarkerShadows2": {
+        "name": "DarkerShadows2",
+        "traitName": "DarkerShadows",
+        "desc": "The shadows around you are 2% darker per point.",
+        "icon": "hidden",
+        "cost": 3,
+        "unlocks": [
+            "DarkerShadows3",
+            "ShadowSheath3",
+            "DarkVision"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows1"
+        ]
+    },
+    "DarkerShadows3": {
+        "name": "DarkerShadows3",
+        "traitName": "DarkerShadows",
+        "desc": "The shadows around you are 2% darker per point.",
+        "icon": "hidden",
+        "cost": 3,
+        "unlocks": [
+            "DarkerShadows4",
+            "ShadowSheath4"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows2"
+        ]
+    },
+    "DarkerShadows4": {
+        "name": "DarkerShadows4",
+        "traitName": "DarkerShadows",
+        "desc": "The shadows around you are 2% darker per point.",
+        "icon": "hidden",
+        "cost": 3,
+        "unlocks": [
+            "DarkerShadows5",
+            "ShadowSheath5"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows3"
+        ]
+    },
+    "DarkerShadows5": {
+        "name": "DarkerShadows5",
+        "traitName": "DarkerShadows",
+        "desc": "The shadows around you are 2% darker per point.",
+        "icon": "hidden",
+        "cost": 3,
+        "unlocks": [
+            "DarkerShadows6",
+            "ShadowSheath0"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows4"
+        ]
+    },
+    "DarkerShadows6": {
+        "name": "DarkerShadows6",
+        "traitName": "DarkerShadows",
+        "desc": "The shadows around you are 2% darker per point.",
+        "icon": "hidden",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows5"
+        ]
+    },
+    "DarknessWiden0": {
+        "name": "DarknessWiden0",
+        "traitName": "DarknessWiden",
+        "desc": "Your Darkness spell range is lengthened.",
+        "icon": "dust-cloud",
+        "capstone": true,
+        "cost": 5,
+        "cluster": 2,
+        "unlockedBy": [
+            "Darkness"
+        ]
+    },
+    "Darkness": {
+        "name": "Darkness",
+        "desc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
+        "icon": "dust-cloud",
+        "iconColor": "#000",
+        "cost": 3,
+        "unlocks": [
+            "DarknessWiden0",
+            "ShadowMeld",
+            "ShadowClones"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkVision"
+        ]
+    },
+    "DarkVision": {
+        "name": "DarkVision",
+        "desc": "See in the darkness. Cost: 25 MP",
+        "icon": "angry-eyes",
+        "iconColor": "#000",
+        "cost": 3,
+        "unlocks": [
+            "Darkness"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows2"
+        ]
+    },
+    "ShadowMeld": {
+        "name": "ShadowMeld",
+        "desc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
+        "icon": "hidden",
+        "iconColor": "#00c",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Darkness"
+        ]
+    },
+    "ShadowClones": {
+        "name": "ShadowClones",
+        "desc": "Summon some shadow backup to help you slaughter your foes. Cost: 300 HP",
+        "icon": "dark-squad",
+        "iconColor": "#111",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Darkness"
+        ]
     },
     "Rogue": {
         "icon": "abstract-071",

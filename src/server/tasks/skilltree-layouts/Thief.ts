@@ -70,7 +70,73 @@ const NINJA_TREE = {
     desc: 'The Ninja class is one that focuses on the shadows. They are not often seen or heard.',
     unbuyable: true,
     root: true,
-    unlocks: []
+    unlocks: ['DarkerShadows0']
+  },
+
+  // TRAITS
+  ShadowSheath0: {
+    unlocks: ['ShadowSheath6']
+  },
+  ShadowSheath1: {
+
+  },
+  ShadowSheath2: {
+
+  },
+  ShadowSheath3: {
+
+  },
+  ShadowSheath4: {
+
+  },
+  ShadowSheath5: {
+
+  },
+  ShadowSheath6: {
+
+  },
+
+  DarkerShadows0: {
+    unlocks: ['DarkerShadows1', 'ShadowSheath1']
+  },
+  DarkerShadows1: {
+    unlocks: ['DarkerShadows2', 'ShadowSheath2']
+  },
+  DarkerShadows2: {
+    unlocks: ['DarkerShadows3', 'ShadowSheath3', 'DarkVision']
+  },
+  DarkerShadows3: {
+    unlocks: ['DarkerShadows4', 'ShadowSheath4']
+  },
+  DarkerShadows4: {
+    unlocks: ['DarkerShadows5', 'ShadowSheath5']
+  },
+  DarkerShadows5: {
+    unlocks: ['DarkerShadows6', 'ShadowSheath0']
+  },
+  DarkerShadows6: {
+
+  },
+
+  DarknessWiden0: {
+
+  },
+
+  // SKILLS
+  Darkness: {
+    unlocks: ['DarknessWiden0', 'ShadowMeld', 'ShadowClones']
+  },
+
+  DarkVision: {
+    unlocks: ['Darkness']
+  },
+
+  ShadowMeld: {
+
+  },
+
+  ShadowClones: {
+
   }
 };
 

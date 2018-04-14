@@ -8,4 +8,8 @@ export class DarkerShadows extends Trait {
   static description = 'The shadows around you are 2% darker per point.';
   static icon = 'hidden';
 
+  static upgrades = [
+    { }, { }, { }, { }, { }, { }, { capstone: true }
+  ];
+
 }

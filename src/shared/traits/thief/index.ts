@@ -2,6 +2,7 @@
 export * from './AdvancedTraps';
 export * from './CorrosivePoison';
 export * from './DarkerShadows';
+export * from './DarknessWiden';
 export * from './DegenerativeDisease';
 export * from './DoubleStealing';
 export * from './LockpickSpecialty';

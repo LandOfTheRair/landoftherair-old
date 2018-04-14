@@ -5,7 +5,7 @@ export class TraitUsageModifiers {
 
     switch(trait) {
       case 'DarkerShadows':       return level * 2;
-      case 'ShadowSheath':        return level;
+      case 'ShadowSheath':        return level * 2;
       case 'IrresistibleStuns':   return level;
       case 'PhilosophersStone':   return level * 10;
       case 'DeathGrip':           return Math.min(100, level * 5);
