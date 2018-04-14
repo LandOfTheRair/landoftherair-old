@@ -30,9 +30,10 @@ Object.keys(AllTrees).forEach(prof => {
   });
 
   const totals = ['Total', 0, 0, 0, 0];
-  
+
   clusterStats.forEach(({ nodes, totalCost, title, skills, traits }) => {
     if(!traits) return;
+
     table.push([title, nodes, skills, traits, totalCost]);
     totals[1] += nodes;
     totals[2] += skills;
