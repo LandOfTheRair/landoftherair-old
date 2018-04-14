@@ -20,9 +20,7 @@ export class RageStance extends Skill {
 
   public targetsFriendly = true;
 
-  public name = 'stance rage';
-
-  requiresLearn = false;
+  public name = ['ragestance', 'stance ragestance', 'stance rage'];
 
   execute(user: Character) {
 

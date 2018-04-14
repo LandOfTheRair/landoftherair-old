@@ -121,7 +121,7 @@ const DUELIST_TREE = {
     desc: 'The Duelist class excels at stylized combat - dual-wielding weapons and counter-attacking with flair and finesse.',
     unbuyable: true,
     root: true,
-    unlocks: ['ForcefulStrike5']
+    unlocks: ['ForcefulStrike5', 'OffhandFinesse0', 'Riposte0']
   },
 
   // TRAITS
@@ -130,7 +130,7 @@ const DUELIST_TREE = {
     unlocks: ['ForcefulStrike6']
   },
   ForcefulStrike6: {
-    unlocks: ['ForcefulStrike7']
+    unlocks: ['ForcefulStrike7', 'RageStance']
   },
   ForcefulStrike7: {
     unlocks: ['ForcefulStrike8']
@@ -139,10 +139,69 @@ const DUELIST_TREE = {
     unlocks: ['ForcefulStrike9']
   },
   ForcefulStrike9: {
+    unlocks: ['Boost']
+  },
 
-  }
+  OffhandFinesse0: {
+    unlocks: ['OffhandFinesse1']
+  },
+  OffhandFinesse1: {
+    unlocks: ['OffhandFinesse2', 'Provoke']
+  },
+  OffhandFinesse2: {
+    unlocks: ['OffhandFinesse3']
+  },
+  OffhandFinesse3: {
+    unlocks: ['OffhandFinesse4']
+  },
+  OffhandFinesse4: {
+
+  },
+
+  Riposte0: {
+    unlocks: ['Riposte1']
+  },
+  Riposte1: {
+    unlocks: ['Riposte2', 'ParryStance']
+  },
+  Riposte2: {
+    unlocks: ['Riposte3']
+  },
+  Riposte3: {
+    unlocks: ['Riposte4']
+  },
+  Riposte4: {
+
+  },
+
+  BoostedBoost0: {
+    unlocks: ['BoostedBoost1']
+  },
+  BoostedBoost1: {
+
+  },
 
   // SKILLS
+
+  Provoke: {
+    unlocks: ['TauntStance']
+  },
+
+  TauntStance: {
+
+  },
+
+  RageStance: {
+
+  },
+
+  ParryStance: {
+
+  },
+
+  Boost: {
+    unlocks: ['BoostedBoost0']
+  }
 };
 
 const MONK_TREE = {

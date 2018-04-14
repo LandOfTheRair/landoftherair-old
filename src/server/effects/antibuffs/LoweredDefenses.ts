@@ -16,7 +16,7 @@ export class LoweredDefenses extends SpellEffect {
   private mitigationPenalty = 0;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = 7;
+    this.duration = this.duration || 7;
     this.potency = this.potency || 1;
     target.applyEffect(this);
   }

@@ -6,4 +6,6 @@ export * from './TauntStance';
 export * from './Blindstrike';
 export * from './Multistrike';
 export * from './Thruststrike';
-export * from './Taunt';
+
+export * from './Boost';
+export * from './Provoke';

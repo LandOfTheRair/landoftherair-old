@@ -130,7 +130,7 @@ export * from './channels/ChannelSummon';
 
 export * from './arts/Blindstrike';
 export * from './arts/Multistrike';
-export * from './arts/Taunt';
+export * from './arts/Provoke';
 
 export * from './antibuffs/LoweredDefenses';
 

@@ -24,7 +24,7 @@
     Armor: Antanian Tunic
 
   usableSkills:
-    - Taunt
+    - Provoke
 
   hp:
     min: 1000

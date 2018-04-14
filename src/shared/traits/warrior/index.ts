@@ -1,4 +1,5 @@
 
+export * from './BoostedBoost';
 export * from './DoubleThrust';
 export * from './EagleEye';
 export * from './ForcefulStrike';

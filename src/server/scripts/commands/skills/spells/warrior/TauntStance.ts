@@ -20,9 +20,7 @@ export class TauntStance extends Skill {
 
   public targetsFriendly = true;
 
-  public name = 'stance taunt';
-
-  requiresLearn = false;
+  public name = ['tauntstance', 'stance tauntstance', 'stance taunt'];
 
   execute(user: Character) {
 

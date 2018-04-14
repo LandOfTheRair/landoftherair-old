@@ -458,7 +458,9 @@
         "unbuyable": true,
         "root": true,
         "unlocks": [
-            "ForcefulStrike5"
+            "ForcefulStrike5",
+            "OffhandFinesse0",
+            "Riposte0"
         ],
         "name": "Duelist",
         "cluster": 2
@@ -484,7 +486,8 @@
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
-            "ForcefulStrike7"
+            "ForcefulStrike7",
+            "RageStance"
         ],
         "cluster": 2,
         "unlockedBy": [
@@ -525,9 +528,244 @@
         "desc": "Strike more forcefully with your weapon, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
+        "unlocks": [
+            "Boost"
+        ],
         "cluster": 2,
         "unlockedBy": [
             "ForcefulStrike8"
+        ]
+    },
+    "OffhandFinesse0": {
+        "name": "OffhandFinesse0",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-axes",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse1"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Duelist"
+        ]
+    },
+    "OffhandFinesse1": {
+        "name": "OffhandFinesse1",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-axes",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse2",
+            "Provoke"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "OffhandFinesse0"
+        ]
+    },
+    "OffhandFinesse2": {
+        "name": "OffhandFinesse2",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-axes",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse3"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "OffhandFinesse1"
+        ]
+    },
+    "OffhandFinesse3": {
+        "name": "OffhandFinesse3",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-axes",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse4"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "OffhandFinesse2"
+        ]
+    },
+    "OffhandFinesse4": {
+        "name": "OffhandFinesse4",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-axes",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "OffhandFinesse3"
+        ]
+    },
+    "Riposte0": {
+        "name": "Riposte0",
+        "traitName": "Riposte",
+        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "icon": "spinning-sword",
+        "cost": 3,
+        "unlocks": [
+            "Riposte1"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Duelist"
+        ]
+    },
+    "Riposte1": {
+        "name": "Riposte1",
+        "traitName": "Riposte",
+        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "icon": "spinning-sword",
+        "cost": 3,
+        "unlocks": [
+            "Riposte2",
+            "ParryStance"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Riposte0"
+        ]
+    },
+    "Riposte2": {
+        "name": "Riposte2",
+        "traitName": "Riposte",
+        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "icon": "spinning-sword",
+        "cost": 3,
+        "unlocks": [
+            "Riposte3"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Riposte1"
+        ]
+    },
+    "Riposte3": {
+        "name": "Riposte3",
+        "traitName": "Riposte",
+        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "icon": "spinning-sword",
+        "cost": 3,
+        "unlocks": [
+            "Riposte4"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Riposte2"
+        ]
+    },
+    "Riposte4": {
+        "name": "Riposte4",
+        "traitName": "Riposte",
+        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "icon": "spinning-sword",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "Riposte3"
+        ]
+    },
+    "BoostedBoost0": {
+        "name": "BoostedBoost0",
+        "traitName": "BoostedBoost",
+        "desc": "Boost adds +1 more to each stat boosted.",
+        "icon": "fist",
+        "cost": 20,
+        "unlocks": [
+            "BoostedBoost1"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Boost"
+        ]
+    },
+    "BoostedBoost1": {
+        "name": "BoostedBoost1",
+        "traitName": "BoostedBoost",
+        "desc": "Boost adds +1 more to each stat boosted.",
+        "icon": "fist",
+        "cost": 20,
+        "cluster": 2,
+        "unlockedBy": [
+            "BoostedBoost0"
+        ]
+    },
+    "Provoke": {
+        "name": "Provoke",
+        "desc": "Provoke a single creature.",
+        "icon": "enrage",
+        "iconColor": "#a00",
+        "cost": 3,
+        "unlocks": [
+            "TauntStance"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "OffhandFinesse1"
+        ]
+    },
+    "TauntStance": {
+        "name": "TauntStance",
+        "desc": "Become more boisterous, taunting foes but losing offense and defense.",
+        "icon": "enrage",
+        "iconColor": "#fff",
+        "bgColor": "#000",
+        "requireSkillLevel": 10,
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Provoke"
+        ]
+    },
+    "RageStance": {
+        "name": "RageStance",
+        "desc": "Become more offensive, but lose defensive power.",
+        "icon": "swords-power",
+        "iconColor": "#fff",
+        "bgColor": "#000",
+        "requireSkillLevel": 10,
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike6"
+        ]
+    },
+    "ParryStance": {
+        "name": "ParryStance",
+        "desc": "Become more defensive, but lose offensive power.",
+        "icon": "surrounded-shield",
+        "iconColor": "#fff",
+        "bgColor": "#000",
+        "requireSkillLevel": 10,
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Riposte1"
+        ]
+    },
+    "Boost": {
+        "name": "Boost",
+        "desc": "Increase your STR, DEX, and AGI.",
+        "icon": "fist",
+        "iconColor": "#a00",
+        "cost": 3,
+        "unlocks": [
+            "BoostedBoost0"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike9"
         ]
     },
     "Monk": {

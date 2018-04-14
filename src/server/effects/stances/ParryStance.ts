@@ -7,7 +7,7 @@ import { GenderHelper } from '../../helpers/character/gender-helper';
 
 export class ParryStance extends StanceEffect {
 
-  static get skillRequired() { return 16; }
+  static get skillRequired() { return 1; }
   protected skillRequired = ParryStance.skillRequired;
 
   iconData = {

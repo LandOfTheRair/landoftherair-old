@@ -3,22 +3,24 @@ import { maxBy } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { Taunt as CastEffect } from '../../../../../effects/arts/Taunt';
+import { Provoke as CastEffect } from '../../../../../effects/arts/Provoke';
 
-export class Taunt extends Skill {
+export class Provoke extends Skill {
 
   static macroMetadata = {
-    name: 'Taunt',
-    macro: 'art taunt',
+    name: 'Provoke',
+    macro: 'art provoke',
     icon: 'enrage',
     color: '#a00',
     mode: 'clickToTarget',
-    tooltipDesc: 'Taunt a single creature.'
+    tooltipDesc: 'Provoke a single creature.'
   };
 
-  public name = ['taunt', 'art taunt'];
+  public name = ['provoke', 'art provoke'];
 
-  requiresLearn = false;
+  range() {
+    return 5;
+  }
 
   canUse(user: Character, target: Character) {
     const agro = target.agro;
@@ -30,8 +32,8 @@ export class Taunt extends Skill {
   execute(user: Character, { args, effect }) {
 
     const item = user.rightHand;
-    if(!item) return user.sendClientMessage('You need a weapon to taunt!');
-    if(!CastEffect.isValid(user, item.type, CastEffect.skillRequired)) return user.sendClientMessage('You cannot taunt with that weapon.');
+    if(!item) return user.sendClientMessage('You need a weapon to provoke!');
+    if(!CastEffect.isValid(user, item.type, CastEffect.skillRequired)) return user.sendClientMessage('You cannot provoke with that weapon.');
 
     const target = this.getTarget(user, args, true);
     if(!target) return;
