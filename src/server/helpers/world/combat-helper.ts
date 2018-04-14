@@ -198,7 +198,7 @@ export class CombatHelper {
   }
 
   private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
-    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isRiposte, damageMult } = opts;
+    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isKick, isPunch, isRiposte, damageMult } = opts;
     let { isBackstab } = opts;
 
     let backstabIgnoreRange = false;
@@ -234,13 +234,23 @@ export class CombatHelper {
     } else if(isOffhand) {
       attackerWeapon = attacker.leftHand;
 
+    } else if(isKick) {
+      attackerWeapon = attacker.gear.Feet
+                    || { type: SkillClassNames.Martial, itemClass: 'Boots', name: 'feet',
+                         tier: 1,
+                         canUseInCombat: () => true,
+                         isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
+
     } else {
-      attackerWeapon = attacker.rightHand
-                    || attacker.gear.Hands
+      attackerWeapon = attacker.rightHand;
+
+      if(isPunch || !attackerWeapon) {
+        attackerWeapon = attacker.gear.Hands
                     || { type: SkillClassNames.Martial, itemClass: 'Hands', name: 'hands',
                          tier: 1,
                          canUseInCombat: () => true,
                          isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
+      }
     }
 
     // flag appropriate skills based on attack
@@ -638,8 +648,13 @@ export class CombatHelper {
 
     if(attacker.rightHand) {
       msg = `${attackerName} hits with a ${attackerWeapon.itemClass.toLowerCase()}!`;
+
+    } else if(isKick) {
+      msg = `${attackerName} kicks you!`;
+
     } else if(attackerWeapon.itemClass === 'Claws') {
       msg = `${attackerName} claws you!`;
+
     } else {
       msg = `${attackerName} punches you!`;
     }
