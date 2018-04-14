@@ -9,7 +9,7 @@ export class LockpickSpecialty extends Trait {
   static icon = 'unlocking';
 
   static upgrades = [
-    { }, { }, { }, { }, { }
+    { cost: 5 }, { cost: 5 }, { cost: 5 }, { cost: 5 }, { cost: 5 }
   ];
 
 }

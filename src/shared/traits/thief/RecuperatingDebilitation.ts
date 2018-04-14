@@ -9,7 +9,7 @@ export class RecuperatingDebilitation extends Trait {
   static icon = 'one-eyed';
 
   static upgrades = [
-    { }, { }, { }, { cost: 25, capstone: true }
+    { }, { }, { }, { cost: 30, capstone: true }
   ];
 
 }

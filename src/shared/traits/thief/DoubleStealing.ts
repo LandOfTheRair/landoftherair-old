@@ -9,6 +9,6 @@ export class DoubleStealing extends Trait {
   static icon = 'take-my-money';
 
   static upgrades = [
-    { cost: 20, capstone: true }
+    { cost: 30, capstone: true }
   ];
 }

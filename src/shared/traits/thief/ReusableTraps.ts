@@ -9,7 +9,7 @@ export class ReusableTraps extends Trait {
   static icon = 'regeneration';
 
   static upgrades = [
-    { cost: 10 }, { cost: 10 }
+    { cost: 15 }, { cost: 15 }
   ];
 
 }

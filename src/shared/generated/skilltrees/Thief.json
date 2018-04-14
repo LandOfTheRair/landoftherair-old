@@ -229,7 +229,7 @@
         "desc": "You will use both hands when stelaing, if possible.",
         "icon": "take-my-money",
         "capstone": true,
-        "cost": 20,
+        "cost": 30,
         "cluster": 1,
         "unlockedBy": [
             "NimbleStealing2"
@@ -436,7 +436,7 @@
         "desc": "Your Darkness spell range is lengthened.",
         "icon": "dust-cloud",
         "capstone": true,
-        "cost": 5,
+        "cost": 15,
         "cluster": 2,
         "unlockedBy": [
             "Darkness"
@@ -713,7 +713,7 @@
         "traitName": "ReusableTraps",
         "desc": "Your traps can be triggered 1 more time per point.",
         "icon": "regeneration",
-        "cost": 10,
+        "cost": 15,
         "unlocks": [
             "ReusableTraps1"
         ],
@@ -727,7 +727,7 @@
         "traitName": "ReusableTraps",
         "desc": "Your traps can be triggered 1 more time per point.",
         "icon": "regeneration",
-        "cost": 10,
+        "cost": 15,
         "cluster": 3,
         "unlockedBy": [
             "ReusableTraps0"
@@ -738,7 +738,7 @@
         "traitName": "LockpickSpecialty",
         "desc": "Your lockpicking ability is slightly increased.",
         "icon": "unlocking",
-        "cost": 3,
+        "cost": 5,
         "unlocks": [
             "LockpickSpecialty1"
         ],
@@ -752,7 +752,7 @@
         "traitName": "LockpickSpecialty",
         "desc": "Your lockpicking ability is slightly increased.",
         "icon": "unlocking",
-        "cost": 3,
+        "cost": 5,
         "unlocks": [
             "LockpickSpecialty2"
         ],
@@ -766,7 +766,7 @@
         "traitName": "LockpickSpecialty",
         "desc": "Your lockpicking ability is slightly increased.",
         "icon": "unlocking",
-        "cost": 3,
+        "cost": 5,
         "unlocks": [
             "LockpickSpecialty3"
         ],
@@ -780,7 +780,7 @@
         "traitName": "LockpickSpecialty",
         "desc": "Your lockpicking ability is slightly increased.",
         "icon": "unlocking",
-        "cost": 3,
+        "cost": 5,
         "unlocks": [
             "LockpickSpecialty4"
         ],
@@ -794,7 +794,7 @@
         "traitName": "LockpickSpecialty",
         "desc": "Your lockpicking ability is slightly increased.",
         "icon": "unlocking",
-        "cost": 3,
+        "cost": 5,
         "cluster": 3,
         "unlockedBy": [
             "LockpickSpecialty3"
@@ -1091,7 +1091,7 @@
         "desc": "Your Disease spell will also lower the perception of the afflicted target.",
         "icon": "death-juice",
         "capstone": true,
-        "cost": 35,
+        "cost": 50,
         "cluster": 4,
         "unlockedBy": [
             "Disease"
@@ -1103,7 +1103,7 @@
         "desc": "Your Poison spell will also lower the mitigation of the afflicted target.",
         "icon": "poison-gas",
         "capstone": true,
-        "cost": 35,
+        "cost": 50,
         "cluster": 4,
         "unlockedBy": [
             "Poison"
@@ -1157,7 +1157,7 @@
         "desc": "Your Debilitate spell will cool down 5s faster per point.",
         "icon": "one-eyed",
         "capstone": true,
-        "cost": 25,
+        "cost": 30,
         "cluster": 4,
         "unlockedBy": [
             "RecuperatingDebilitation2"
