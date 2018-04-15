@@ -60,6 +60,28 @@
     profession:
       - "Mage"
 
+- name: Dedlaen Dexterity Gloves
+  tier: 3
+  randomStats:
+    offense:
+      min: 1
+      max: 3
+    defense:
+      min: 1
+      max: 3
+    dex:
+      min: 2
+      max: 5
+
+  binds: true
+
+  requirements:
+    level: 15
+
+  sprite: 362
+  desc: "a pair of golden gauntlets inscribed with a bow in one glove and a dagger in the other"
+  value: 2700
+
 - name: Rylt Rockgolem Gloves
   stats:
     defense: 2
