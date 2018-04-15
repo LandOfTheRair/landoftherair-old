@@ -152,7 +152,6 @@ export class Player extends Character {
 
   async initServer() {
     this.initEffects();
-    this.recalculateStats();
     this.uuid = this.username;
     this.$$actionQueue = [];
     if(isUndefined(this.$$hungerTicks)) this.$$hungerTicks = 3600 * 6;
@@ -169,6 +168,7 @@ export class Player extends Character {
       delete (<any>this).traitPointTimer;
       this.learnedSpells = {};
       this.traitLevels = {};
+      this.$$room.savePlayer(this);
     }
 
     if(!this.partyExp || !this.partyExp.maximum) {
@@ -177,6 +177,8 @@ export class Player extends Character {
     } else {
       this.partyExp = new RestrictedNumber(0, this.partyExp.maximum, this.partyExp.__current);
     }
+
+    this.recalculateStats();
   }
 
   saveSkillTree(): void {
@@ -669,8 +671,10 @@ export class Player extends Character {
   }
 
   public isTraitInEffect(trait: string): boolean {
+    console.log('ch', trait)
     if(!this.traitLevels) return false;
 
+    console.log(this.traitLevels[trait])
     const traitRef = this.traitLevels[trait];
     if(!traitRef) return false;
 
@@ -678,6 +682,7 @@ export class Player extends Character {
     const { category, name } = traitRef;
     if(!category || !name) return true;
 
+    console.log(category, name, traitRef)
     return (AllTraits.Common[name] || AllTraits[this.baseClass][name]).currentlyInEffect(this);
   }
 
