@@ -34,7 +34,7 @@ export class Stun extends SpellEffect {
       if(targetWil > this.potency) return this.effectMessage(caster, `${target.name} resisted your stun!`);
 
       this.duration = Math.min(10, Math.max(7, this.potency - targetWil));
-      this.duration += caster.getTraitLevelAndUsageModifier('NatureSpirit');
+      this.duration += caster.getTraitLevel('NatureSpirit');
     }
     target.applyEffect(this);
   }

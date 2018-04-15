@@ -46,7 +46,7 @@ export class Snare extends SpellEffect {
     }
 
     this.duration = clamp((this.potency + baseStat) - targetStat, 3, 5);
-    this.duration += caster.getTraitLevelAndUsageModifier('NatureSpirit');
+    this.duration += caster.getTraitLevel('NatureSpirit');
 
     target.applyEffect(this);
   }

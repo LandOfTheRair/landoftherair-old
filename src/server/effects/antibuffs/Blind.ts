@@ -40,7 +40,7 @@ export class Blind extends SpellEffect {
     }
 
     this.duration = clamp((this.potency + baseStat) - targetStat, 2, 5);
-    this.duration += caster.getTraitLevelAndUsageModifier('NatureSpirit');
+    this.duration += caster.getTraitLevel('NatureSpirit');
     target.applyEffect(this);
   }
 
