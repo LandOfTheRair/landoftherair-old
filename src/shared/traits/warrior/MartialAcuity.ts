@@ -2,15 +2,15 @@
 import { Trait } from '../../models/trait';
 import { Player } from '../../models/player';
 
-export class Punchkick extends Trait {
+export class MartialAcuity extends Trait {
 
   static baseClass = 'Warrior';
-  static traitName = 'Punchkick';
-  static description = 'Your jumpkick ability includes an additional punch.';
-  static icon = 'high-kick';
+  static traitName = 'MartialAcuity';
+  static description = 'Gain an offensive bonus when trying to physically hit another creature.';
+  static icon = 'armor-punch';
 
   static upgrades = [
-    { cost: 20 }
+    { }, { }, { capstone: true }
   ];
 
   static currentlyInEffect(player: Player): boolean {

@@ -775,7 +775,9 @@
         "root": true,
         "unlocks": [
             "BrassKnuckles0",
-            "MartialAgility0"
+            "MartialAgility0",
+            "StunningFist0",
+            "MartialAcuity0"
         ],
         "name": "Monk",
         "cluster": 3
@@ -869,6 +871,86 @@
         "cluster": 3,
         "unlockedBy": [
             "MartialAgility1"
+        ]
+    },
+    "MartialAcuity0": {
+        "name": "MartialAcuity0",
+        "traitName": "MartialAcuity",
+        "desc": "Gain an offensive bonus when trying to physically hit another creature.",
+        "icon": "armor-punch",
+        "cost": 3,
+        "unlocks": [
+            "MartialAcuity1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Monk"
+        ]
+    },
+    "MartialAcuity1": {
+        "name": "MartialAcuity1",
+        "traitName": "MartialAcuity",
+        "desc": "Gain an offensive bonus when trying to physically hit another creature.",
+        "icon": "armor-punch",
+        "cost": 3,
+        "unlocks": [
+            "MartialAcuity2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAcuity0"
+        ]
+    },
+    "MartialAcuity2": {
+        "name": "MartialAcuity2",
+        "traitName": "MartialAcuity",
+        "desc": "Gain an offensive bonus when trying to physically hit another creature.",
+        "icon": "armor-punch",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAcuity1"
+        ]
+    },
+    "StunningFist0": {
+        "name": "StunningFist0",
+        "traitName": "StunningFist",
+        "desc": "Increase your chance of stunning an opponent with a fist attack.",
+        "icon": "thor-fist",
+        "cost": 3,
+        "unlocks": [
+            "StunningFist1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Monk"
+        ]
+    },
+    "StunningFist1": {
+        "name": "StunningFist1",
+        "traitName": "StunningFist",
+        "desc": "Increase your chance of stunning an opponent with a fist attack.",
+        "icon": "thor-fist",
+        "cost": 3,
+        "unlocks": [
+            "StunningFist2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "StunningFist0"
+        ]
+    },
+    "StunningFist2": {
+        "name": "StunningFist2",
+        "traitName": "StunningFist",
+        "desc": "Increase your chance of stunning an opponent with a fist attack.",
+        "icon": "thor-fist",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "StunningFist1"
         ]
     },
     "Paladin": {

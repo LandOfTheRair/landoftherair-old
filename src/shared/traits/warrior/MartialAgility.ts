@@ -1,5 +1,6 @@
 
 import { Trait } from '../../models/trait';
+import { Player } from '../../models/player';
 
 export class MartialAgility extends Trait {
 
@@ -11,5 +12,9 @@ export class MartialAgility extends Trait {
   static upgrades = [
     { }, { }, { capstone: true }
   ];
+
+  static currentlyInEffect(player: Player): boolean {
+    return super.currentlyInEffect(player) && (!player.rightHand || !player.leftHand);
+  }
 
 }
