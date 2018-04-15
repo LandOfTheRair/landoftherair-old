@@ -14,14 +14,19 @@ exec('tsc', (e) => {
     process.exit(-1);
   }
 
-  var copySilentDev =   copy('src/server/silent-dev.html',        'dist/server/silent-dev.html');
-  var copySilentProd =  copy('src/server/silent-production.html', 'dist/server/silent-production.html');
-  var copyMaps =        copy('src/content/maps',                  'dist/server/maps');
+  var copySilentDev =   copy('src/server/silent-dev.html',              'dist/server/silent-dev.html');
+  var copySilentProd =  copy('src/server/silent-production.html',       'dist/server/silent-production.html');
+  var copyMaps =        copy('src/content/maps',                        'dist/server/maps');
+
+  const promises = ['Mage', 'Thief', 'Healer', 'Warrior'].map(prof => {
+    return copy(`src/shared/generated/skilltrees/${prof}.json`,         `dist/shared/generated/skilltrees/${prof}.json`);
+  });
 
   Promise.all([
     copySilentDev,
     copySilentProd,
-    copyMaps
+    copyMaps,
+    ...promises
   ]).then(() => {
     console.log('Done compiling.');
   });
