@@ -112,17 +112,25 @@ export class CombatHelper {
   }
 
   private static attemptToStun(attacker: Character, weapon: Item, defender: Character) {
-    if(!weapon.proneChance) return;
-    if(random(1, 100) > weapon.proneChance) return;
 
-    const push = new Effects.Push({ potency: attacker.level });
-    push.cast(attacker, defender);
+    // prone can happen randomly
+    if(weapon.proneChance && random(1, 100) > weapon.proneChance) {
+      const push = new Effects.Push({ potency: attacker.level });
+      push.cast(attacker, defender);
+    }
+
+    let conMultiplier = 20;
+
+    if(weapon.itemClass === SkillClassNames.Martial) {
+      const multiplierLoss = attacker.getTraitLevelAndUsageModifier('StunningFist');
+      conMultiplier -= multiplierLoss;
+    }
 
     // low chance of cstun
-    if(random(1, defender.getTotalStat('con')) > 3) return;
-
-    const stun = new Effects.Stun({});
-    stun.cast(attacker, defender);
+    if(random(1, defender.getTotalStat('con') * conMultiplier) === 1) {
+      const stun = new Effects.Stun({});
+      stun.cast(attacker, defender);
+    }
   }
 
   static isShield(item) {
@@ -370,6 +378,16 @@ export class CombatHelper {
     let defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`);
 
     if(defender.isNaturalResource) defenderDodgeRoll = 0;
+
+    let defenderDodgeMartialBonusMultiplier = 1;
+    const defenderDodgeMartialLevel = defender.getTraitLevelAndUsageModifier('MartialAgility');
+
+    if(defenderDodgeMartialLevel) {
+      if(!defender.rightHand) defenderDodgeMartialBonusMultiplier += defenderDodgeMartialLevel;
+      if(!defender.leftHand)  defenderDodgeMartialBonusMultiplier += defenderDodgeMartialLevel;
+    }
+
+    defenderDodgeRoll *= defenderDodgeMartialBonusMultiplier;
 
     let attackDistance = attackRange ? attackRange : 0;
     const distBetween = attacker.distFrom(defender);

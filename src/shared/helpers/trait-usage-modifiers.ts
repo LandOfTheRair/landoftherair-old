@@ -40,6 +40,9 @@ export class TraitUsageModifiers {
       case 'HolyProtection':      return level * 10;
       case 'Multitarget':         return level * 3;
 
+      case 'MartialAgility':      return level * 0.2;
+      case 'StunningFist':        return level * 2;
+
       case 'RecuperatingDebilitation':  return level * 5;
       case 'GlacierStanceImproved':     return level * 0.1;
       case 'VolcanoStanceImproved':     return level * 0.1;

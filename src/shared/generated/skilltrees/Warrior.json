@@ -774,7 +774,8 @@
         "unbuyable": true,
         "root": true,
         "unlocks": [
-            "BrassKnuckles0"
+            "BrassKnuckles0",
+            "MartialAgility0"
         ],
         "name": "Monk",
         "cluster": 3
@@ -828,6 +829,46 @@
         "cluster": 3,
         "unlockedBy": [
             "BrassKnuckles0"
+        ]
+    },
+    "MartialAgility0": {
+        "name": "MartialAgility0",
+        "traitName": "MartialAgility",
+        "desc": "Gain a bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "MartialAgility1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Monk"
+        ]
+    },
+    "MartialAgility1": {
+        "name": "MartialAgility1",
+        "traitName": "MartialAgility",
+        "desc": "Gain a bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "MartialAgility2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAgility0"
+        ]
+    },
+    "MartialAgility2": {
+        "name": "MartialAgility2",
+        "traitName": "MartialAgility",
+        "desc": "Gain a bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
+        "icon": "wingfoot",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAgility1"
         ]
     },
     "Paladin": {

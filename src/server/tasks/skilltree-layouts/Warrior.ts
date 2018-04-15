@@ -211,7 +211,7 @@ const MONK_TREE = {
     desc: 'The Monk class expands on Warrior by transforming it into an entirely hand-to-hand combat-based class',
     unbuyable: true,
     root: true,
-    unlocks: ['BrassKnuckles0']
+    unlocks: ['BrassKnuckles0', 'MartialAgility0', 'StunningFist0']
   },
 
   // TRAITS
@@ -228,6 +228,26 @@ const MONK_TREE = {
   Punchkick0: {
 
   },
+
+  MartialAgility0: {
+    unlocks: ['MartialAgility1']
+  },
+  MartialAgility1: {
+    unlocks: ['MartialAgility2']
+  },
+  MartialAgility2: {
+
+  },
+
+  StunningFist0: {
+    unlocks: ['StunningFist1']
+  },
+  StunningFist1: {
+    unlocks: ['StunningFist2']
+  },
+  StunningFist2: {
+
+  }
 
   // SKILLS
 };

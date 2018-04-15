@@ -6,6 +6,7 @@ export * from './EagleEye';
 export * from './ForcefulStrike';
 export * from './FunkyMoves';
 export * from './HolyProtection';
+export * from './MartialAgility';
 export * from './Multifocus';
 export * from './Multitarget';
 export * from './OffhandFinesse';
