@@ -7,7 +7,7 @@ import * as dice from 'dice.js';
 export class MagicBolt extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillMults = [[0, 3], [11, 4], [21, 6]];
+  skillMults = [[0, 4], [11, 6], [21, 8]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

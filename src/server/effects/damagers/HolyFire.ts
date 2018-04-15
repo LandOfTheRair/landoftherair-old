@@ -10,7 +10,7 @@ import { Light } from '../misc/Light';
 export class HolyFire extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillMults = [[0, 3], [11, 4], [21, 5]];
+  skillMults = [[0, 4], [11, 5], [21, 6]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
