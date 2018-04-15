@@ -5,36 +5,24 @@ import { CombatHelper } from '../../../../helpers/world/combat-helper';
 import { MessageHelper } from '../../../../helpers/world/message-helper';
 import { Player } from '../../../../../shared/models/player';
 
-export class Attack extends Skill {
+export class Kick extends Skill {
 
   static macroMetadata = {
-    name: 'Attack',
-    macro: 'attack',
-    icon: 'blade-drag',
+    name: 'Kick',
+    macro: 'kick',
+    icon: 'barefoot',
     color: '#530000',
     mode: 'lockActivation',
-    tooltipDesc: 'Physically attack a target with the item in your right hand.'
+    tooltipDesc: 'Physically attack a target with your boots.'
   };
 
-  public name = 'attack';
+  public name = 'kick';
   public format = 'Target';
 
   requiresLearn = false;
 
-  range(attacker: Character) {
-    const weapon = attacker.rightHand;
-    if(!weapon) return 0;
-
-    if(weapon.twoHanded && attacker.leftHand) return -1;
-
-    return weapon.attackRange;
-  }
-
   execute(user: Player, { args }) {
     if(!args) return false;
-
-    const range = this.range(user);
-    if(range === -1) return user.sendClientMessage('You need to have your left hand empty to use that weapon!');
 
     const possTargets = MessageHelper.getPossibleMessageTargets(user, args);
     const target = possTargets[0];
@@ -42,7 +30,7 @@ export class Attack extends Skill {
 
     if(target === user) return;
 
-    if(target.distFrom(user) > range) return user.sendClientMessage('That target is too far away!');
+    if(target.distFrom(user) > 0) return user.sendClientMessage('That target is too far away!');
 
     this.use(user, target);
   }
@@ -50,8 +38,8 @@ export class Attack extends Skill {
   use(user: Character, target: Character) {
 
     /** PERK:CLASS:WARRIOR:Warriors gain skill on physical hits. */
-    if(user.baseClass === 'Warrior') user.gainSkill(user.rightHand ? user.rightHand.itemClass : SkillClassNames.Martial, 1);
-    CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
+    if(user.baseClass === 'Warrior') user.gainSkill(SkillClassNames.Martial, 1);
+    CombatHelper.physicalAttack(user, target, { attackRange: 0, isKick: true });
   }
 
 }

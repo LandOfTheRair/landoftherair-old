@@ -2,7 +2,7 @@
 
 
 import { Skill } from '../../../../base/Skill';
-import { Character } from '../../../../../shared/models/character';
+import { Character, SkillClassNames } from '../../../../../shared/models/character';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
 import { MoveHelper } from '../../../../helpers/character/move-helper';
 import { MessageHelper } from '../../../../helpers/world/message-helper';
@@ -65,7 +65,7 @@ export class Charge extends Skill {
     const yDiff = target.y - user.y;
 
     /** PERK:CLASS:WARRIOR:Warriors gain skill on physical hits. */
-    if(user.baseClass === 'Warrior') user.gainSkill(user.rightHand ? user.rightHand.itemClass : 'Martial', 1);
+    if(user.baseClass === 'Warrior') user.gainSkill(user.rightHand ? user.rightHand.itemClass : SkillClassNames.Martial, 1);
 
     MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff }, true);
 

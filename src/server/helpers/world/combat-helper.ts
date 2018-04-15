@@ -650,7 +650,7 @@ export class CombatHelper {
 
     let msg = '';
 
-    if(attacker.rightHand) {
+    if(attacker.rightHand && !isKick && !isPunch) {
       msg = `${attackerName} hits with a ${attackerWeapon.itemClass.toLowerCase()}!`;
 
     } else if(isKick) {

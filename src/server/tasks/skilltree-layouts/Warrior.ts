@@ -1,3 +1,4 @@
+import { Punchkick } from '../../../shared/traits/warrior/Punchkick';
 
 const WARRIOR_TREE = {
   Warrior: {
@@ -215,12 +216,16 @@ const MONK_TREE = {
 
   // TRAITS
   BrassKnuckles0: {
-    unlocks: ['BrassKnuckles1']
+    unlocks: ['BrassKnuckles1', 'Punchkick0']
   },
   BrassKnuckles1: {
     unlocks: ['BrassKnuckles2']
   },
   BrassKnuckles2: {
+
+  },
+
+  Punchkick0: {
 
   },
 
