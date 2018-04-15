@@ -95,7 +95,12 @@ export class CommandExecutor {
 
     const prefix = command.split(' ')[0];
     const spell = command.split(' ')[1];
-    const hasLearned = player.hasLearned(spell || '') || player.hasLearned(`${spell}${prefix}` || '');
+
+    let hasLearned = player.hasLearned(spell || '');
+    if(includes(['powerword', 'stance'], prefix)) {
+      hasLearned = player.hasLearned(`${prefix}${spell}` || '') || player.hasLearned(`${spell}${prefix}` || '');
+    }
+
     if(cmd.requiresLearn && !hasLearned) return player.sendClientMessage('You do not know that ability!');
 
     if(hasLearned.effect) args.effect = hasLearned.effect;
