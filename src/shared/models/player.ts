@@ -671,10 +671,8 @@ export class Player extends Character {
   }
 
   public isTraitInEffect(trait: string): boolean {
-    console.log('ch', trait)
     if(!this.traitLevels) return false;
 
-    console.log(this.traitLevels[trait])
     const traitRef = this.traitLevels[trait];
     if(!traitRef) return false;
 
@@ -682,7 +680,6 @@ export class Player extends Character {
     const { category, name } = traitRef;
     if(!category || !name) return true;
 
-    console.log(category, name, traitRef)
     return (AllTraits.Common[name] || AllTraits[this.baseClass][name]).currentlyInEffect(this);
   }
 
