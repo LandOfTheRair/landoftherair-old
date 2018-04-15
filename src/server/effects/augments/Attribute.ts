@@ -106,8 +106,9 @@ export class Attribute extends SpellEffect implements AttributeEffect {
       }
     }
 
+    const magicClasses = ['necrotic', 'fire', 'ice', 'water', 'energy', 'poison', 'disease'];
     if(this.damageType === 'magical'
-    && includes(['necrotic', 'fire', 'ice', 'water', 'energy'], damageClass))             return Math.floor(damage * this.potency);
+    && includes(magicClasses, damageClass))                                                         return Math.floor(damage * this.potency);
 
     return damage;
   }
