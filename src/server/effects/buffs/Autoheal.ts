@@ -35,6 +35,8 @@ export class Autoheal extends SpellEffect {
     this.duration = this.duration || wisCheck * this.potency;
     this.potency = 30;
     if(this.isEnhanced) this.potency = 40;
+    
+    this.updateDurationBasedOnTraits(caster);
 
     this.effectInfo = { damage: 0, caster: caster.uuid };
     target.applyEffect(this);
