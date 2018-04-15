@@ -319,6 +319,7 @@ export class Spawner {
     }
 
     npc.recalculateStats();
+    this.tryElitify(npc);
 
     npc.hp.toMaximum();
     npc.mp.toMaximum();
@@ -352,7 +353,6 @@ export class Spawner {
   }
 
   addNPC(npc: NPC, doIncrement = true) {
-    this.tryElitify(npc);
     this.npcs.push(npc);
     this.room.addNPC(npc);
     if(doIncrement) this.room.totalCreaturesInWorld++;
