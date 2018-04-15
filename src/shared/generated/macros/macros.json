@@ -1,22 +1,22 @@
 {
     "allMeta": [
         {
-            "name": "Climb",
-            "macro": "climb up",
-            "icon": "ladder",
-            "color": "#D2691E",
-            "mode": "autoActivate",
-            "tooltipDesc": "Climb up or down on this tile.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Chase",
             "macro": "chase",
             "icon": "hooded-figure",
             "color": "#000000",
             "mode": "lockActivation",
             "tooltipDesc": "Move towards a target.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Climb",
+            "macro": "climb up",
+            "icon": "ladder",
+            "color": "#D2691E",
+            "mode": "autoActivate",
+            "tooltipDesc": "Climb up or down on this tile.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -527,6 +527,17 @@
             "requiresLearn": true
         },
         {
+            "name": "Glacier Stance",
+            "macro": "stance glacier",
+            "icon": "frozen-orb",
+            "color": "#000080",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more defense, increasing your defensive capabilities and doing ice damage on hit.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Haste",
             "macro": "cast haste",
             "icon": "time-trap",
@@ -557,17 +568,6 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Augment physical attacks to do bonus energy damage. Cost: 100 MP",
             "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Glacier Stance",
-            "macro": "stance glacier",
-            "icon": "frozen-orb",
-            "color": "#000080",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more defense, increasing your defensive capabilities and doing ice damage on hit.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -713,16 +713,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Disease",
-            "macro": "cast disease",
-            "icon": "death-juice",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Identify",
             "macro": "cast identify",
             "icon": "uncertainty",
@@ -739,6 +729,16 @@
             "color": "#0a0",
             "mode": "clickToTarget",
             "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disease",
+            "macro": "cast disease",
+            "icon": "death-juice",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
             "isSystem": true,
             "requiresLearn": true
         },
