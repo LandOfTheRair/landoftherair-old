@@ -36,9 +36,10 @@ import { PouchHelper } from '../helpers/character/pouch-helper';
 import { MoveHelper } from '../helpers/character/move-helper';
 import { TeleportHelper } from '../helpers/world/teleport-helper';
 import { Signal } from 'signals.js';
+import { SkillTreeHelper } from '../helpers/skill-trees/skill-tree-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
-| 'block-dodge' | 'block-armor' | 'block-shield' | 'block-weapon' | 'block-offhand';
+| 'block-dodge' | 'block-armor' | 'block-miss' | 'block-shield' | 'block-weapon' | 'block-offhand';
 
 const TICK_TIMER = 1000;
 
@@ -74,6 +75,7 @@ export class GameWorld extends Room<GameState> {
   private groundHelper: GroundHelper;
   public itemCreator: ItemCreator;
   public teleportHelper: TeleportHelper;
+  public skillTreeHelper: SkillTreeHelper;
 
   public get groundItemCount(): number {
     return this.groundHelper.numberOfItems;
@@ -181,6 +183,7 @@ export class GameWorld extends Room<GameState> {
     this.itemCreator = new ItemCreator();
     this.groundHelper = new GroundHelper(this);
     this.teleportHelper = new TeleportHelper(this);
+    this.skillTreeHelper = new SkillTreeHelper();
 
     this.setPatchRate(1000);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
@@ -397,6 +400,7 @@ export class GameWorld extends Room<GameState> {
     }
 
     this.savePlayerPouch(savePlayer);
+    this.skillTreeHelper.saveSkillTree(player);
 
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }
@@ -483,11 +487,11 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'show_trainer', trainSkills: npc.trainSkills, classTrain: npc.classTrain, uuid: npc.uuid });
   }
 
-  showShopWindow(player: Player, npc: NPC) {
+  showShopWindow(player: Player, npc: NPC, items: Item[]) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_shop', vendorItems: npc.vendorItems, uuid: npc.uuid });
+    this.send(client, { action: 'show_shop', vendorItems: items, uuid: npc.uuid });
   }
 
   showBankWindow(player: Player, npc: NPC, banks: any) {
@@ -970,6 +974,16 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
+  public updateSkillTree(player: Player) {
+    const client = this.findClient(player);
+    if(!client) return;
+
+    this.send(client, {
+      action: 'skill_tree',
+      skillTree: player.skillTree
+    });
+  }
+
   public calcAdjustedGoldGain(gold: number) {
     return Math.floor(gold * this.bonusHelper.settings.goldMult);
   }
@@ -980,15 +994,6 @@ export class GameWorld extends Room<GameState> {
 
   public calcAdjustedXPGain(xp: number) {
     return Math.floor(xp * this.bonusHelper.settings.xpMult);
-  }
-
-  public calcAdjustedTraitTimer(timerValue: number) {
-    return Math.floor(timerValue * this.bonusHelper.settings.traitTimerMult);
-  }
-
-  // no rounding here
-  public calcAdjustedTraitGain(traitValue: number) {
-    return traitValue * this.bonusHelper.settings.traitGainMult;
   }
 
   public calcAdjustedPartyXPGain(xpGain: number) {

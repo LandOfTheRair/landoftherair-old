@@ -1,4 +1,6 @@
 
+import { random, isUndefined } from 'lodash';
+
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
@@ -15,7 +17,7 @@ export class FireMist extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    const range = this.range || 1;
+    const range = (isUndefined(this.range) ? 1 : this.range) + target.getTraitLevel('FireMistWiden');
 
     target.sendClientMessageToRadius({ message: 'You hear a soft sizzling noise.', subClass: 'combat magic' }, 10);
 
@@ -23,7 +25,15 @@ export class FireMist extends SpellEffect {
 
     const attacked = target.$$room.state.getAllInRange(target, range, [], false);
 
+    const friendlyFireMod = caster.getTraitLevelAndUsageModifier('FriendlyFire');
+
     attacked.forEach(refTarget => {
+
+      if(friendlyFireMod > 0) {
+        const roll = random(0, 100);
+        if(roll <= friendlyFireMod && !caster.$$room.state.checkTargetForHostility(caster, target)) return;
+      }
+
       const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
       const dist = caster.distFrom(refTarget);

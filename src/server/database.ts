@@ -20,6 +20,7 @@ class Database {
   public $mapGroundItems: any;
   public $characterLockers: any;
   public $characterPouches: any;
+  public $characterSkillTrees: any;
   public $mapBossTimers: any;
   public $lobbySettings: any;
   public $logs: any;
@@ -73,6 +74,9 @@ class Database {
 
     this.$characterPouches = this.client.collection('characterPouches');
     this.$characterPouches.ensureIndex({ username: 1 }, { unique: true });
+
+    this.$characterSkillTrees = this.client.collection('characterSkillTrees');
+    this.$characterSkillTrees.ensureIndex({ username: 1, charSlot: 1 }, { unique: true });
 
     this.$lobbySettings = this.client.collection('lobbySettings');
 

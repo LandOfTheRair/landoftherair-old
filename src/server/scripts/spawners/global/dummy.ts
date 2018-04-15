@@ -17,6 +17,7 @@ export class TrainingDummySpawner extends Spawner {
       leashRadius: 0,
       eliteTickCap: 0,
       npcAISettings: ['trainingdummy'],
+      canSlowDown: false,
       npcIds
     });
   }

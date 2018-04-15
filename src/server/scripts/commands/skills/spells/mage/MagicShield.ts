@@ -11,7 +11,10 @@ export class MagicShield extends Skill {
     icon: 'energy-shield',
     color: '#a0a',
     mode: 'clickToTarget',
-    tooltipDesc: 'Negate some physical damage. Cost: 100 MP'
+    tooltipDesc: 'Negate some physical damage. Cost: 100 MP',
+    skillTPCost: 10,
+    requireCharacterLevel: 10,
+    requireSkillLevel: 7
   };
 
   public targetsFriendly = true;

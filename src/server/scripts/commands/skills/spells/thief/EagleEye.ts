@@ -13,7 +13,8 @@ export class EagleEye extends Skill {
     icon: 'dead-eye',
     color: '#f00',
     mode: 'autoActivate',
-    tooltipDesc: 'See through the trees and to the depths of the waters. Cost: 50 HP'
+    tooltipDesc: 'See through the trees and to the depths of the waters. Cost: 50 HP',
+    requireSkillLevel: 10
   };
 
   public targetsFriendly = true;

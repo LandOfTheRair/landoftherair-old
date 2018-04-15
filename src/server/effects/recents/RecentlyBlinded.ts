@@ -12,7 +12,7 @@ export class RecentlyBlinded extends SpellEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = 5;
+    this.duration = 10;
     target.applyEffect(this);
   }
 }

@@ -1,15 +1,15 @@
 
 import { random } from 'lodash';
 
-import { AugmentSpellEffect, SpellEffect } from '../../base/Effect';
+import { AugmentSpellEffect, ImbueEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
-export class ImbueEnergy extends SpellEffect implements AugmentSpellEffect {
+export class ImbueEnergy extends ImbueEffect implements AugmentSpellEffect {
 
   iconData = {
     name: 'magic-palm',
-    color: '#00b',
+    color: '#a0a',
     tooltipDesc: 'Physical attacks sometimes do bonus energy damage.'
   };
 
@@ -17,6 +17,9 @@ export class ImbueEnergy extends SpellEffect implements AugmentSpellEffect {
   potencyMultiplier = 10;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
+    const foundSelf = super.cast(caster, target, skillRef);
+    if(foundSelf) return foundSelf;
+
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
     this.flagCasterName(caster.name);
@@ -34,13 +37,13 @@ export class ImbueEnergy extends SpellEffect implements AugmentSpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'A whirling blue aura envelops your hands.');
+    this.targetEffectMessage(char, 'A whirling purple aura envelops your hands.');
 
     this.iconData.tooltipDesc = `Physical attacks sometimes do ${this.potency * this.potencyMultiplier} bonus energy damage.`;
   }
 
   effectEnd(char: Character) {
-    this.effectMessage(char, 'Your hands lose their blue glow.');
+    this.effectMessage(char, 'Your hands lose their purple glow.');
   }
 
   augmentAttack(attacker: Character, defender: Character, opts: { damage: number, damageClass: string }) {

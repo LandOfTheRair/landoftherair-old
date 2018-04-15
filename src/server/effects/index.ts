@@ -41,12 +41,15 @@ export * from './dots/Poison';
 export * from './augments/Attribute';
 export * from './augments/Applied';
 export * from './augments/ImbueEnergy';
+export * from './augments/ImbueFlame';
+export * from './augments/ImbueFrost';
 
 export * from './augments/BeastRipper';
 export * from './augments/EtherFire';
 
 export * from './auras/NecroticAura';
 export * from './auras/Firethorns';
+export * from './auras/Frostspikes';
 
 export * from './buffs/BarFire';
 export * from './buffs/BarFrost';
@@ -90,6 +93,9 @@ export * from './recents/RecentlyShattered';
 export * from './antibuffs/Stun';
 export * from './recents/RecentlyStunned';
 
+export * from './antibuffs/Snare';
+export * from './recents/RecentlySnared';
+
 export * from './antibuffs/Blind';
 export * from './antibuffs/BlurredVision';
 export * from './recents/RecentlyBlinded';
@@ -112,16 +118,22 @@ export * from './misc/Revealed';
 export * from './misc/Distraction';
 export * from './misc/Wellspring';
 
+export * from './stances/GlacierStance';
 export * from './stances/ParryStance';
 export * from './stances/RageStance';
 export * from './stances/TauntStance';
+export * from './stances/VolcanoStance';
 
 export * from './channels/ChannelFindFamiliar';
 export * from './channels/ChannelShadowClones';
 export * from './channels/ChannelSummon';
 
+export * from './arts/Boost';
+export * from './arts/Blindstrike';
 export * from './arts/Multistrike';
-export * from './arts/Taunt';
+export * from './arts/Provoke';
+export * from './arts/Shield';
+export * from './arts/Sweep';
 
 export * from './antibuffs/LoweredDefenses';
 

@@ -94,10 +94,12 @@ export class TesterHelper {
   }
 
   static resetTraits(player: Player) {
-    player.loseTraitPoints(9999);
-    player.gainTraitPoints(1000);
-    player.losePartyPoints(9999);
-    player.gainPartyPoints(1000);
+    player.skillTree.loseTraitPoints(9999);
+    player.skillTree.gainTraitPoints(1000);
+    player.skillTree.loseResetPoints(9999);
+    player.skillTree.gainResetPoints(1000);
+    player.skillTree.losePartyPoints(9999);
+    player.skillTree.gainPartyPoints(1000);
 
     const allTraits = player.allTraitLevels || {};
     Object.keys(allTraits).forEach(key => {

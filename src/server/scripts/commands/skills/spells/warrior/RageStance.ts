@@ -14,15 +14,13 @@ export class RageStance extends Skill {
     color: '#fff',
     bgColor: '#000',
     mode: 'autoActivate',
-    tooltipDesc: 'Become more offensive, but lose defensive power. Requires weapon skill 20 (Warrior).',
-    requiresBaseClass: 'Warrior'
+    tooltipDesc: 'Become more offensive, but lose defensive power. Requires weapon skill 10.',
+    requireSkillLevel: 10
   };
 
   public targetsFriendly = true;
 
-  public name = 'stance rage';
-
-  requiresLearn = false;
+  public name = ['ragestance', 'stance ragestance', 'stance rage'];
 
   execute(user: Character) {
 

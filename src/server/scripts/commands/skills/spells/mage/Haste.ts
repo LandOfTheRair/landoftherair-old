@@ -11,7 +11,10 @@ export class Haste extends Skill {
     icon: 'time-trap',
     color: '#0a0',
     mode: 'clickToTarget',
-    tooltipDesc: 'Act twice as fast. Cost: 200 MP'
+    tooltipDesc: 'Act twice as fast. Cost: 200 MP',
+    requireCharacterLevel: 20,
+    requireSkillLevel: 15,
+    skillTPCost: 20
   };
 
   public targetsFriendly = true;

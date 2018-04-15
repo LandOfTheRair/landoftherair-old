@@ -3,29 +3,37 @@ import { startCase } from 'lodash';
 
 import { Player } from './player';
 
+interface TraitUpgrade {
+  cost?: number;
+  capstone?: boolean;
+  unbuyable?: boolean;
+  requireCharacterLevel?: number;
+  requireSkillLevel?: number;
+}
+
 export class Trait {
 
   static baseClass: string;
-  static increaseLevel = true;
   static traitName = 'Name';
   static description = 'Description';
   static icon = '';
 
-  static tpCost = 100;
-  static maxLevel = 0;
+  static upgrades: TraitUpgrade[] = [];
 
-  static currentLevel(player: Player): number {
-    return player.getBaseTraitLevel(this.traitName);
+  static determineUpgradeCost(upgrade: TraitUpgrade): number {
+    if(upgrade.cost)      return upgrade.cost;
+    if(upgrade.capstone)  return 10;
+    return 3;
   }
 
-  static canBuy(player: Player): boolean {
+  static canBuy(player: Player, cost: number): boolean {
     if(this.baseClass && player.baseClass !== this.baseClass) return false;
-    return player.getBaseTraitLevel(this.traitName) < this.maxLevel && player.hasTraitPoints(this.tpCost);
+    return player.skillTree.hasTraitPoints(cost);
   }
 
-  static buy(player: Player, extra?): void {
-    player.loseTraitPoints(this.tpCost);
-    if(this.increaseLevel) player.increaseTraitLevel(this.traitName, this.baseClass, extra);
+  static buy(player: Player, cost: number, extra?): void {
+    player.skillTree.loseTraitPoints(cost);
+    player.increaseTraitLevel(this.traitName, 1, this.baseClass, extra);
     player.sendClientMessage(`Your personality has expanded with knowledge of "${startCase(this.traitName)}"!`);
     player.recalculateStats();
   }

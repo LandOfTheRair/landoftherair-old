@@ -143,8 +143,6 @@
   value: 40000
   binds: true
   containedItems:
-    - result: Rune Scroll - Deadeye I
-      chance: 1
     - result: Rune Scroll - Forceful Strike I
       chance: 1
     - result: Rune Scroll - Swashbuckler I

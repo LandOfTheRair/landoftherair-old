@@ -11,7 +11,9 @@ export class HolyFire extends Skill {
     icon: 'fireflake',
     color: '#f50',
     mode: 'lockActivation',
-    tooltipDesc: 'Inflict fire damage on a single target. Cost: 15 MP'
+    tooltipDesc: 'Inflict fire damage on a single target. Cost: 15 MP',
+    skillTPCost: 10,
+    requireSkillLevel: 15
   };
 
   public name = ['holyfire', 'cast holyfire'];

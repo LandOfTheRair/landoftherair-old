@@ -47,7 +47,11 @@ export class Steal extends Skill {
     this.use(user, target);
   }
 
-  use(user: Character, target: Character) {
-    this.facilitateSteal(user, target);
+  async use(user: Character, target: Character) {
+    await this.facilitateSteal(user, target);
+
+    if(user.getTraitLevel('DoubleStealing') && (!user.rightHand || !user.leftHand)) {
+      this.facilitateSteal(user, target);
+    }
   }
 }

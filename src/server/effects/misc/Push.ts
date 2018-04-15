@@ -10,7 +10,7 @@ export class Push extends SpellEffect {
   maxSkillForSkillGain = 15;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    if((<any>target).hostility === 'Never') return caster.sendClientMessage('How rude.');
+    if((<any>target).hostility === 'Never' || target.isNaturalResource) return caster.sendClientMessage('How rude.');
 
     target.addAgro(caster, 5);
 

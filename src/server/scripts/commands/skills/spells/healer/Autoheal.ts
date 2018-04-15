@@ -11,7 +11,8 @@ export class Autoheal extends Skill {
     icon: 'self-love',
     color: '#00c',
     mode: 'clickToTarget',
-    tooltipDesc: 'Automatically healing when health gets too low. Cost: 50 MP'
+    tooltipDesc: 'Automatically heal when health gets too low. Cost: 50 MP',
+    requireSkillLevel: 15
   };
 
   public targetsFriendly = true;

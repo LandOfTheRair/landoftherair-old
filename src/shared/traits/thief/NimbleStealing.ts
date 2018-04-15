@@ -1,0 +1,14 @@
+
+import { Trait } from '../../models/trait';
+
+export class NimbleStealing extends Trait {
+
+  static baseClass = 'Thief';
+  static traitName = 'NimbleStealing';
+  static description = 'You are less likely to be discovered when stealing, and you steal more gold when you are successful.';
+  static icon = 'take-my-money';
+
+  static upgrades = [
+    { }, { }, { capstone: true }
+  ];
+}

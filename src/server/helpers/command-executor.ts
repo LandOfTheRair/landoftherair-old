@@ -93,17 +93,16 @@ export class CommandExecutor {
     const cmd: Command = commandHash[command];
     if(!cmd) return false;
 
+    const prefix = command.split(' ')[0];
     const spell = command.split(' ')[1];
-    const hasLearned = player.hasLearned(spell || '');
-    if(cmd.requiresLearn && !hasLearned) return player.sendClientMessage('You do not know that spell!');
+    const hasLearned = player.hasLearned(spell || '') || player.hasLearned(`${spell}${prefix}` || '');
+    if(cmd.requiresLearn && !hasLearned) return player.sendClientMessage('You do not know that ability!');
 
     if(hasLearned.effect) args.effect = hasLearned.effect;
 
     const wasSuccess = await cmd.execute(player, args);
     if(wasSuccess === false) {
       player.sendClientMessage(`Invalid format. Format: ${command} ${cmd.format}`);
-    } else {
-      player.manageTraitPointPotentialGain(command);
     }
 
     return true;

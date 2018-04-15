@@ -14,6 +14,8 @@ export class Autoheal extends SpellEffect {
 
   maxSkillForSkillGain = 15;
 
+  private isEnhanced: boolean;
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -24,12 +26,15 @@ export class Autoheal extends SpellEffect {
       this.effectMessage(caster, `You cast Autoheal on ${target.name}!`);
     }
 
+    this.isEnhanced = !!caster.getTraitLevel('ImprovedAutoheal');
+
     this.aoeAgro(caster, 50);
 
     const wisCheck = this.getCoreStat(caster);
 
     this.duration = this.duration || wisCheck * this.potency;
     this.potency = 30;
+    if(this.isEnhanced) this.potency = 40;
 
     this.effectInfo = { damage: 0, caster: caster.uuid };
     target.applyEffect(this);
@@ -49,7 +54,7 @@ export class Autoheal extends SpellEffect {
 
     char.sendClientMessage('A warm surge of energy runs through your chest!');
 
-    this.duration = Math.max(1, this.duration - 150);
+    this.duration = Math.max(1, this.duration - (this.isEnhanced ? 75 : 150));
 
     CombatHelper.magicalAttack(caster, char, {
       effect: this,

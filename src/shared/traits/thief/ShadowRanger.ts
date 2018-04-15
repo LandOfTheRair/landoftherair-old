@@ -8,7 +8,8 @@ export class ShadowRanger extends Trait {
   static description = 'Do 10% more damage while hidden per point.';
   static icon = 'on-sight';
 
-  static tpCost = 10;
-  static maxLevel = 10;
+  static upgrades = [
+    { }, { }, { capstone: true }
+  ];
 
 }

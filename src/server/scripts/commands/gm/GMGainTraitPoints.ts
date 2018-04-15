@@ -12,6 +12,8 @@ export class GMGainTraitPoints extends Command {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const traitGain = +args;
-    player.gainTraitPoints(traitGain);
+    player.skillTree.reset(player);
+    player.skillTree.gainResetPoints(traitGain);
+    player.skillTree.gainTraitPoints(traitGain);
   }
 }

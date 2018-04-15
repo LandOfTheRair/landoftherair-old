@@ -14,6 +14,8 @@ export class Debilitate extends SpellEffect {
 
   maxSkillForSkillGain = 16;
 
+  private recentlyDurationLoss: number;
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagCasterName(caster.name);
@@ -24,6 +26,7 @@ export class Debilitate extends SpellEffect {
       return this.effectMessage(caster, `${target.name} resisted your debilitation!`);
     }
 
+    this.recentlyDurationLoss = caster.getTraitLevelAndUsageModifier('RecuperatingDebilitation');
     target.addAgro(caster, 30);
     target.applyEffect(this);
   }
@@ -33,7 +36,7 @@ export class Debilitate extends SpellEffect {
   }
 
   effectEnd(char: Character) {
-    const recentlyDebilitated = new RecentlyDebilitated({});
+    const recentlyDebilitated = new RecentlyDebilitated({ duration: 60 - this.recentlyDurationLoss });
     recentlyDebilitated.cast(char, char);
     this.effectMessage(char, 'Your perception of the hidden is heightened!');
   }

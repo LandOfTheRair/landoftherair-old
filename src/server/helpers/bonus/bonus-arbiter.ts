@@ -9,7 +9,6 @@ export class BonusArbiter {
 
   private bonusSyncData: GameSettings = {
     xpMult: 1, goldMult: 1, skillMult: 1, partyXPMult: 1,
-    traitGainMult: 1, traitTimerMult: 1,
     numberOfRandomStatsForItems: 0,
     randomStatMaxValue: 0,
     randomStatChance: 0
@@ -18,15 +17,13 @@ export class BonusArbiter {
   private boughtBonusHoursRemaining = {
     xpMult: 0,
     goldMult: 0,
-    skillMult: 0,
-    traitGainMult: 0
+    skillMult: 0
   };
 
   private bonusTimers = {
     xpMult: null,
     goldMult: null,
-    skillMult: null,
-    traitGainMult: null
+    skillMult: null
   };
 
   public get allBonusData() {

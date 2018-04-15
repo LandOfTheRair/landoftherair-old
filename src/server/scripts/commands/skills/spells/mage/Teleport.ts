@@ -7,10 +7,13 @@ export class Teleport extends Skill {
   static macroMetadata = {
     name: 'Teleport',
     macro: 'cast teleport',
-    icon: 'deadly-strike',
+    icon: 'teleport',
     color: '#a0a',
     mode: 'clickToTarget',
-    tooltipDesc: 'Teleport to a previously-memorized location. Cost: 50% MP'
+    tooltipDesc: 'Teleport to a previously-memorized location. Cost: 50% MP',
+    requireCharacterLevel: 20,
+    requireSkillLevel: 15,
+    skillTPCost: 20
   };
 
   public name = ['teleport', 'cast teleport'];

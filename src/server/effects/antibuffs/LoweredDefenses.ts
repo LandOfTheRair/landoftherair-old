@@ -6,9 +6,9 @@ import { Skill } from '../../base/Skill';
 export class LoweredDefenses extends SpellEffect {
 
   iconData = {
-    name: 'fall-down',
+    name: 'armor-downgrade',
     color: '#000',
-    tooltipDesc: 'Physical defenses lowered by 33%.'
+    tooltipDesc: 'Physical defenses lowered.'
   };
 
   private acPenalty = 0;
@@ -16,14 +16,18 @@ export class LoweredDefenses extends SpellEffect {
   private mitigationPenalty = 0;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = 7;
+    this.duration = this.duration || 7;
+    this.potency = this.potency || 1;
     target.applyEffect(this);
   }
 
   effectStart(char: Character) {
-    this.acPenalty = Math.floor(char.getTotalStat('armorClass') / 3);
-    this.defensePenalty = Math.floor(char.getTotalStat('defense') / 3);
-    this.mitigationPenalty = 10;
+    this.iconData.tooltipDesc = `Physical defenses lowered by ${this.potency * 5}%`;
+
+    const lostPenalty = (this.potency * 5) / 100;
+    this.acPenalty = Math.floor(char.getTotalStat('armorClass') * lostPenalty);
+    this.defensePenalty = Math.floor(char.getTotalStat('defense') * lostPenalty);
+    this.mitigationPenalty = Math.floor(this.potency);
 
     char.loseStat('armorClass', this.acPenalty);
     char.loseStat('defense', this.defensePenalty);

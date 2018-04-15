@@ -4,7 +4,6 @@ import { MapLayer } from '../../../shared/models/maplayer';
 import { isUndefined } from 'lodash';
 
 import * as Pathfinder from 'pathfinding';
-import { TrapHelper } from '../world/trap-helper';
 
 export class MoveHelper {
 
@@ -126,7 +125,7 @@ export class MoveHelper {
         && player.baseClass === 'Thief'
         && player.hasHeldItem('Lockpick', 'right')) {
 
-        const playerSkill = player.calcSkillLevel(SkillClassNames.Thievery);
+        const playerSkill = player.calcSkillLevel(SkillClassNames.Thievery) + player.getTraitLevel('LockpickSpecialty');
 
         if(playerSkill < skillRequired) {
           player.sendClientMessage('You are not skilled enough to pick this lock.');
@@ -162,7 +161,6 @@ export class MoveHelper {
     switch(obj.type) {
       case 'Teleport': return this.handleTeleport(room, player, obj);
       case 'Locker':   return this.handleLocker(room, player, obj);
-      case 'Trap':     return this.handleTrap(room, player, obj);
     }
   }
 
@@ -203,11 +201,5 @@ export class MoveHelper {
   private static handleLocker(room, player, obj) {
     const { lockerId } = obj.properties;
     room.openLocker(player, obj.name, lockerId);
-  }
-
-  private static handleTrap(room, player, obj) {
-    room.state.removeInteractable(obj);
-    player.sendClientMessage('You\'ve triggered a trap!');
-    TrapHelper.castEffectFromTrap(player, obj);
   }
 }

@@ -1,0 +1,1322 @@
+{
+    "Warrior": {
+        "icon": "abstract-053",
+        "desc": "The Warrior class excels in physical combat.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "PartyDefense0",
+            "CarefulTouch0",
+            "DeathGrip0",
+            "NaturalArmor0",
+            "EagleEye0",
+            "SwordTricks0",
+            "FunkyMoves0",
+            "Swashbuckler0"
+        ],
+        "name": "Warrior",
+        "cluster": 1
+    },
+    "PartyDefense0": {
+        "name": "PartyDefense0",
+        "traitName": "PartyDefense",
+        "desc": "Increase your defensive capabilities while in a party.",
+        "icon": "armor-vest",
+        "cost": 3,
+        "unlocks": [
+            "PartyDefense1"
+        ],
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "PartyDefense1": {
+        "name": "PartyDefense1",
+        "traitName": "PartyDefense",
+        "desc": "Increase your defensive capabilities while in a party.",
+        "icon": "armor-vest",
+        "cost": 3,
+        "unlocks": [
+            "PartyDefense2"
+        ],
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "PartyDefense0"
+        ]
+    },
+    "PartyDefense2": {
+        "name": "PartyDefense2",
+        "traitName": "PartyDefense",
+        "desc": "Increase your defensive capabilities while in a party.",
+        "icon": "armor-vest",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "isParty": true,
+        "unlockedBy": [
+            "PartyDefense1"
+        ]
+    },
+    "CarefulTouch0": {
+        "name": "CarefulTouch0",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "cost": 3,
+        "unlocks": [
+            "CarefulTouch1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "CarefulTouch1": {
+        "name": "CarefulTouch1",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "cost": 3,
+        "unlocks": [
+            "CarefulTouch2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "CarefulTouch0"
+        ]
+    },
+    "CarefulTouch2": {
+        "name": "CarefulTouch2",
+        "traitName": "CarefulTouch",
+        "desc": "Decrease the damage your items take by 10% per point.",
+        "icon": "blacksmith",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "CarefulTouch1"
+        ]
+    },
+    "DeathGrip0": {
+        "name": "DeathGrip0",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "cost": 3,
+        "unlocks": [
+            "DeathGrip1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "DeathGrip1": {
+        "name": "DeathGrip1",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "cost": 3,
+        "unlocks": [
+            "DeathGrip2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip0"
+        ]
+    },
+    "DeathGrip2": {
+        "name": "DeathGrip2",
+        "traitName": "DeathGrip",
+        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "icon": "drop-weapon",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip1"
+        ]
+    },
+    "NaturalArmor0": {
+        "name": "NaturalArmor0",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "internal-injury",
+        "cost": 3,
+        "unlocks": [
+            "NaturalArmor1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "NaturalArmor1": {
+        "name": "NaturalArmor1",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "internal-injury",
+        "cost": 3,
+        "unlocks": [
+            "NaturalArmor2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor0"
+        ]
+    },
+    "NaturalArmor2": {
+        "name": "NaturalArmor2",
+        "traitName": "NaturalArmor",
+        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "icon": "internal-injury",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor1"
+        ]
+    },
+    "EagleEye0": {
+        "name": "EagleEye0",
+        "traitName": "EagleEye",
+        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "icon": "bullseye",
+        "cost": 3,
+        "unlocks": [
+            "EagleEye1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "EagleEye1": {
+        "name": "EagleEye1",
+        "traitName": "EagleEye",
+        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "icon": "bullseye",
+        "cost": 3,
+        "unlocks": [
+            "EagleEye2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "EagleEye0"
+        ]
+    },
+    "EagleEye2": {
+        "name": "EagleEye2",
+        "traitName": "EagleEye",
+        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "icon": "bullseye",
+        "cost": 3,
+        "unlocks": [
+            "EagleEye3"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "EagleEye1"
+        ]
+    },
+    "EagleEye3": {
+        "name": "EagleEye3",
+        "traitName": "EagleEye",
+        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "icon": "bullseye",
+        "cost": 3,
+        "unlocks": [
+            "EagleEye4"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "EagleEye2"
+        ]
+    },
+    "EagleEye4": {
+        "name": "EagleEye4",
+        "traitName": "EagleEye",
+        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "icon": "bullseye",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "EagleEye3"
+        ]
+    },
+    "SwordTricks0": {
+        "name": "SwordTricks0",
+        "traitName": "SwordTricks",
+        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "unlocks": [
+            "SwordTricks1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "SwordTricks1": {
+        "name": "SwordTricks1",
+        "traitName": "SwordTricks",
+        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "unlocks": [
+            "SwordTricks2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "SwordTricks0"
+        ]
+    },
+    "SwordTricks2": {
+        "name": "SwordTricks2",
+        "traitName": "SwordTricks",
+        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "unlocks": [
+            "SwordTricks3"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "SwordTricks1"
+        ]
+    },
+    "SwordTricks3": {
+        "name": "SwordTricks3",
+        "traitName": "SwordTricks",
+        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "unlocks": [
+            "SwordTricks4"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "SwordTricks2"
+        ]
+    },
+    "SwordTricks4": {
+        "name": "SwordTricks4",
+        "traitName": "SwordTricks",
+        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "icon": "sword-clash",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "SwordTricks3"
+        ]
+    },
+    "FunkyMoves0": {
+        "name": "FunkyMoves0",
+        "traitName": "FunkyMoves",
+        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "FunkyMoves1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "FunkyMoves1": {
+        "name": "FunkyMoves1",
+        "traitName": "FunkyMoves",
+        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "FunkyMoves2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "FunkyMoves0"
+        ]
+    },
+    "FunkyMoves2": {
+        "name": "FunkyMoves2",
+        "traitName": "FunkyMoves",
+        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "FunkyMoves3"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "FunkyMoves1"
+        ]
+    },
+    "FunkyMoves3": {
+        "name": "FunkyMoves3",
+        "traitName": "FunkyMoves",
+        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "FunkyMoves4"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "FunkyMoves2"
+        ]
+    },
+    "FunkyMoves4": {
+        "name": "FunkyMoves4",
+        "traitName": "FunkyMoves",
+        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "FunkyMoves3"
+        ]
+    },
+    "Swashbuckler0": {
+        "name": "Swashbuckler0",
+        "traitName": "Swashbuckler",
+        "desc": "Reduce your chance of getting a glancing blow.",
+        "icon": "spiral-thrust",
+        "cost": 3,
+        "unlocks": [
+            "Swashbuckler1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Warrior"
+        ]
+    },
+    "Swashbuckler1": {
+        "name": "Swashbuckler1",
+        "traitName": "Swashbuckler",
+        "desc": "Reduce your chance of getting a glancing blow.",
+        "icon": "spiral-thrust",
+        "cost": 3,
+        "unlocks": [
+            "Swashbuckler2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Swashbuckler0"
+        ]
+    },
+    "Swashbuckler2": {
+        "name": "Swashbuckler2",
+        "traitName": "Swashbuckler",
+        "desc": "Reduce your chance of getting a glancing blow.",
+        "icon": "spiral-thrust",
+        "cost": 3,
+        "unlocks": [
+            "Swashbuckler3"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Swashbuckler1"
+        ]
+    },
+    "Swashbuckler3": {
+        "name": "Swashbuckler3",
+        "traitName": "Swashbuckler",
+        "desc": "Reduce your chance of getting a glancing blow.",
+        "icon": "spiral-thrust",
+        "cost": 3,
+        "unlocks": [
+            "Swashbuckler4"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Swashbuckler2"
+        ]
+    },
+    "Swashbuckler4": {
+        "name": "Swashbuckler4",
+        "traitName": "Swashbuckler",
+        "desc": "Reduce your chance of getting a glancing blow.",
+        "icon": "spiral-thrust",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "Swashbuckler3"
+        ]
+    },
+    "Duelist": {
+        "icon": "abstract-027",
+        "desc": "The Duelist class excels at stylized combat - dual-wielding weapons and counter-attacking with flair and finesse.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "ForcefulStrike5",
+            "OffhandFinesse0",
+            "Riposte0"
+        ],
+        "name": "Duelist",
+        "cluster": 2
+    },
+    "ForcefulStrike5": {
+        "name": "ForcefulStrike5",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike6"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Duelist"
+        ]
+    },
+    "ForcefulStrike6": {
+        "name": "ForcefulStrike6",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike7",
+            "RageStance"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike5"
+        ]
+    },
+    "ForcefulStrike7": {
+        "name": "ForcefulStrike7",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike8"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike6"
+        ]
+    },
+    "ForcefulStrike8": {
+        "name": "ForcefulStrike8",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike9"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike7"
+        ]
+    },
+    "ForcefulStrike9": {
+        "name": "ForcefulStrike9",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "Boost"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike8"
+        ]
+    },
+    "OffhandFinesse0": {
+        "name": "OffhandFinesse0",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-axes",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse1"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Duelist"
+        ]
+    },
+    "OffhandFinesse1": {
+        "name": "OffhandFinesse1",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-axes",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse2",
+            "Provoke"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "OffhandFinesse0"
+        ]
+    },
+    "OffhandFinesse2": {
+        "name": "OffhandFinesse2",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-axes",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse3"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "OffhandFinesse1"
+        ]
+    },
+    "OffhandFinesse3": {
+        "name": "OffhandFinesse3",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-axes",
+        "cost": 3,
+        "unlocks": [
+            "OffhandFinesse4"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "OffhandFinesse2"
+        ]
+    },
+    "OffhandFinesse4": {
+        "name": "OffhandFinesse4",
+        "traitName": "OffhandFinesse",
+        "desc": "Increase your offhand attack damage by 10% per point.",
+        "icon": "crossed-axes",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "OffhandFinesse3"
+        ]
+    },
+    "Riposte0": {
+        "name": "Riposte0",
+        "traitName": "Riposte",
+        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "icon": "spinning-sword",
+        "cost": 3,
+        "unlocks": [
+            "Riposte1"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Duelist"
+        ]
+    },
+    "Riposte1": {
+        "name": "Riposte1",
+        "traitName": "Riposte",
+        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "icon": "spinning-sword",
+        "cost": 3,
+        "unlocks": [
+            "Riposte2",
+            "ParryStance"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Riposte0"
+        ]
+    },
+    "Riposte2": {
+        "name": "Riposte2",
+        "traitName": "Riposte",
+        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "icon": "spinning-sword",
+        "cost": 3,
+        "unlocks": [
+            "Riposte3"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Riposte1"
+        ]
+    },
+    "Riposte3": {
+        "name": "Riposte3",
+        "traitName": "Riposte",
+        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "icon": "spinning-sword",
+        "cost": 3,
+        "unlocks": [
+            "Riposte4"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Riposte2"
+        ]
+    },
+    "Riposte4": {
+        "name": "Riposte4",
+        "traitName": "Riposte",
+        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "icon": "spinning-sword",
+        "capstone": true,
+        "requireCharacterLevel": 15,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "Riposte3"
+        ]
+    },
+    "BoostedBoost0": {
+        "name": "BoostedBoost0",
+        "traitName": "BoostedBoost",
+        "desc": "Boost adds +1 more to each stat boosted.",
+        "icon": "fist",
+        "cost": 20,
+        "unlocks": [
+            "BoostedBoost1"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "Boost"
+        ]
+    },
+    "BoostedBoost1": {
+        "name": "BoostedBoost1",
+        "traitName": "BoostedBoost",
+        "desc": "Boost adds +1 more to each stat boosted.",
+        "icon": "fist",
+        "cost": 20,
+        "cluster": 2,
+        "unlockedBy": [
+            "BoostedBoost0"
+        ]
+    },
+    "Provoke": {
+        "name": "Provoke",
+        "desc": "Provoke a single creature.",
+        "icon": "enrage",
+        "iconColor": "#a00",
+        "cost": 3,
+        "unlocks": [
+            "TauntStance"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "OffhandFinesse1"
+        ]
+    },
+    "TauntStance": {
+        "name": "TauntStance",
+        "desc": "Become more boisterous, taunting foes but losing offense and defense. Requires weapon skill 10.",
+        "icon": "enrage",
+        "iconColor": "#fff",
+        "bgColor": "#000",
+        "requireSkillLevel": 10,
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Provoke"
+        ]
+    },
+    "RageStance": {
+        "name": "RageStance",
+        "desc": "Become more offensive, but lose defensive power. Requires weapon skill 10.",
+        "icon": "swords-power",
+        "iconColor": "#fff",
+        "bgColor": "#000",
+        "requireSkillLevel": 10,
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike6"
+        ]
+    },
+    "ParryStance": {
+        "name": "ParryStance",
+        "desc": "Become more defensive, but lose offensive power. Requires weapon skill 10.",
+        "icon": "surrounded-shield",
+        "iconColor": "#fff",
+        "bgColor": "#000",
+        "requireSkillLevel": 10,
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "Riposte1"
+        ]
+    },
+    "Boost": {
+        "name": "Boost",
+        "desc": "Increase your STR, DEX, and AGI.",
+        "icon": "strong",
+        "iconColor": "#a00",
+        "cost": 3,
+        "unlocks": [
+            "BoostedBoost0"
+        ],
+        "cluster": 2,
+        "unlockedBy": [
+            "ForcefulStrike9"
+        ]
+    },
+    "Monk": {
+        "icon": "abstract-033",
+        "desc": "The Monk class expands on Warrior by transforming it into an entirely hand-to-hand combat-based class.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "BrassKnuckles0",
+            "MartialAgility0",
+            "StunningFist0",
+            "MartialAcuity0"
+        ],
+        "name": "Monk",
+        "cluster": 3
+    },
+    "BrassKnuckles0": {
+        "name": "BrassKnuckles0",
+        "traitName": "BrassKnuckles",
+        "desc": "Your open-hand fist attacks are stronger.",
+        "icon": "brass-knuckles",
+        "cost": 20,
+        "unlocks": [
+            "BrassKnuckles1",
+            "Punchkick0"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Monk"
+        ]
+    },
+    "BrassKnuckles1": {
+        "name": "BrassKnuckles1",
+        "traitName": "BrassKnuckles",
+        "desc": "Your open-hand fist attacks are stronger.",
+        "icon": "brass-knuckles",
+        "cost": 20,
+        "unlocks": [
+            "BrassKnuckles2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "BrassKnuckles0"
+        ]
+    },
+    "BrassKnuckles2": {
+        "name": "BrassKnuckles2",
+        "traitName": "BrassKnuckles",
+        "desc": "Your open-hand fist attacks are stronger.",
+        "icon": "brass-knuckles",
+        "cost": 20,
+        "cluster": 3,
+        "unlockedBy": [
+            "BrassKnuckles1"
+        ]
+    },
+    "Punchkick0": {
+        "name": "Punchkick0",
+        "traitName": "Punchkick",
+        "desc": "Your jumpkick ability includes an additional punch.",
+        "icon": "high-kick",
+        "cost": 20,
+        "cluster": 3,
+        "unlockedBy": [
+            "BrassKnuckles0"
+        ]
+    },
+    "MartialAgility0": {
+        "name": "MartialAgility0",
+        "traitName": "MartialAgility",
+        "desc": "Gain a bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "MartialAgility1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Monk"
+        ]
+    },
+    "MartialAgility1": {
+        "name": "MartialAgility1",
+        "traitName": "MartialAgility",
+        "desc": "Gain a bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
+        "icon": "wingfoot",
+        "cost": 3,
+        "unlocks": [
+            "MartialAgility2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAgility0"
+        ]
+    },
+    "MartialAgility2": {
+        "name": "MartialAgility2",
+        "traitName": "MartialAgility",
+        "desc": "Gain a bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
+        "icon": "wingfoot",
+        "capstone": true,
+        "cost": 10,
+        "unlocks": [
+            "Sweep"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAgility1"
+        ]
+    },
+    "MartialAcuity0": {
+        "name": "MartialAcuity0",
+        "traitName": "MartialAcuity",
+        "desc": "Gain an offensive bonus when trying to physically hit another creature.",
+        "icon": "armor-punch",
+        "cost": 3,
+        "unlocks": [
+            "MartialAcuity1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Monk"
+        ]
+    },
+    "MartialAcuity1": {
+        "name": "MartialAcuity1",
+        "traitName": "MartialAcuity",
+        "desc": "Gain an offensive bonus when trying to physically hit another creature.",
+        "icon": "armor-punch",
+        "cost": 3,
+        "unlocks": [
+            "MartialAcuity2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAcuity0"
+        ]
+    },
+    "MartialAcuity2": {
+        "name": "MartialAcuity2",
+        "traitName": "MartialAcuity",
+        "desc": "Gain an offensive bonus when trying to physically hit another creature.",
+        "icon": "armor-punch",
+        "capstone": true,
+        "cost": 10,
+        "unlocks": [
+            "Shield",
+            "Rapidpunch"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAcuity1"
+        ]
+    },
+    "StunningFist0": {
+        "name": "StunningFist0",
+        "traitName": "StunningFist",
+        "desc": "Increase your chance of stunning an opponent with a martial attack.",
+        "icon": "thor-fist",
+        "cost": 3,
+        "unlocks": [
+            "StunningFist1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Monk"
+        ]
+    },
+    "StunningFist1": {
+        "name": "StunningFist1",
+        "traitName": "StunningFist",
+        "desc": "Increase your chance of stunning an opponent with a martial attack.",
+        "icon": "thor-fist",
+        "cost": 3,
+        "unlocks": [
+            "StunningFist2"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "StunningFist0"
+        ]
+    },
+    "StunningFist2": {
+        "name": "StunningFist2",
+        "traitName": "StunningFist",
+        "desc": "Increase your chance of stunning an opponent with a martial attack.",
+        "icon": "thor-fist",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "StunningFist1"
+        ]
+    },
+    "Shield": {
+        "name": "Shield",
+        "desc": "Increase your physical and magical resistance.",
+        "icon": "vibrating-shield",
+        "iconColor": "#a00",
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAcuity2"
+        ]
+    },
+    "Sweep": {
+        "name": "Sweep",
+        "desc": "Attack multiple creatures on your tile with a kick attack.",
+        "icon": "foot-trip",
+        "iconColor": "#a00",
+        "requireSkillLevel": 13,
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAgility2"
+        ]
+    },
+    "Rapidpunch": {
+        "name": "Rapidpunch",
+        "desc": "Punch a single target many times in succession.",
+        "icon": "fire-punch",
+        "iconColor": "#a00",
+        "requireSkillLevel": 15,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAcuity2"
+        ]
+    },
+    "Paladin": {
+        "icon": "abstract-007",
+        "desc": "The Paladin excels at using big weapons, and learns some new tricks to get the most use out of them.",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "Shieldbearer0",
+            "SterlingArmor0",
+            "HolyProtection0",
+            "ForcefulStrike0"
+        ],
+        "name": "Paladin",
+        "cluster": 4
+    },
+    "Shieldbearer0": {
+        "name": "Shieldbearer0",
+        "traitName": "Shieldbearer",
+        "desc": "You can hold shields and gain their full effect while they are in your right hand.",
+        "icon": "edged-shield",
+        "capstone": true,
+        "cost": 40,
+        "cluster": 4,
+        "unlockedBy": [
+            "Paladin"
+        ]
+    },
+    "SterlingArmor0": {
+        "name": "SterlingArmor0",
+        "traitName": "SterlingArmor",
+        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "icon": "chest-armor",
+        "cost": 3,
+        "unlocks": [
+            "SterlingArmor1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Paladin"
+        ]
+    },
+    "SterlingArmor1": {
+        "name": "SterlingArmor1",
+        "traitName": "SterlingArmor",
+        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "icon": "chest-armor",
+        "cost": 3,
+        "unlocks": [
+            "SterlingArmor2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "SterlingArmor0"
+        ]
+    },
+    "SterlingArmor2": {
+        "name": "SterlingArmor2",
+        "traitName": "SterlingArmor",
+        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "icon": "chest-armor",
+        "cost": 3,
+        "unlocks": [
+            "SterlingArmor3"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "SterlingArmor1"
+        ]
+    },
+    "SterlingArmor3": {
+        "name": "SterlingArmor3",
+        "traitName": "SterlingArmor",
+        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "icon": "chest-armor",
+        "cost": 3,
+        "unlocks": [
+            "SterlingArmor4"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "SterlingArmor2"
+        ]
+    },
+    "SterlingArmor4": {
+        "name": "SterlingArmor4",
+        "traitName": "SterlingArmor",
+        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "icon": "chest-armor",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "SterlingArmor3"
+        ]
+    },
+    "HolyProtection0": {
+        "name": "HolyProtection0",
+        "traitName": "HolyProtection",
+        "desc": "Decrease the amount of magical damage you take.",
+        "icon": "holy-symbol",
+        "cost": 3,
+        "unlocks": [
+            "HolyProtection1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Paladin"
+        ]
+    },
+    "HolyProtection1": {
+        "name": "HolyProtection1",
+        "traitName": "HolyProtection",
+        "desc": "Decrease the amount of magical damage you take.",
+        "icon": "holy-symbol",
+        "cost": 3,
+        "unlocks": [
+            "HolyProtection2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "HolyProtection0"
+        ]
+    },
+    "HolyProtection2": {
+        "name": "HolyProtection2",
+        "traitName": "HolyProtection",
+        "desc": "Decrease the amount of magical damage you take.",
+        "icon": "holy-symbol",
+        "cost": 3,
+        "unlocks": [
+            "HolyProtection3"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "HolyProtection1"
+        ]
+    },
+    "HolyProtection3": {
+        "name": "HolyProtection3",
+        "traitName": "HolyProtection",
+        "desc": "Decrease the amount of magical damage you take.",
+        "icon": "holy-symbol",
+        "cost": 3,
+        "unlocks": [
+            "HolyProtection4"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "HolyProtection2"
+        ]
+    },
+    "HolyProtection4": {
+        "name": "HolyProtection4",
+        "traitName": "HolyProtection",
+        "desc": "Decrease the amount of magical damage you take.",
+        "icon": "holy-symbol",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "HolyProtection3"
+        ]
+    },
+    "ForcefulStrike0": {
+        "name": "ForcefulStrike0",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike1",
+            "Thruststrike"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Paladin"
+        ]
+    },
+    "ForcefulStrike1": {
+        "name": "ForcefulStrike1",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike2",
+            "Blindstrike"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike0"
+        ]
+    },
+    "ForcefulStrike2": {
+        "name": "ForcefulStrike2",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike3",
+            "Multistrike"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike1"
+        ]
+    },
+    "ForcefulStrike3": {
+        "name": "ForcefulStrike3",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "unlocks": [
+            "ForcefulStrike4"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike2"
+        ]
+    },
+    "ForcefulStrike4": {
+        "name": "ForcefulStrike4",
+        "traitName": "ForcefulStrike",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "icon": "striped-sword",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike3"
+        ]
+    },
+    "Multitarget0": {
+        "name": "Multitarget0",
+        "traitName": "Multitarget",
+        "desc": "Increase the number of enemies you can strike with Multistrike.",
+        "icon": "sword-spin",
+        "cost": 10,
+        "unlocks": [
+            "Multitarget1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Multistrike"
+        ]
+    },
+    "Multitarget1": {
+        "name": "Multitarget1",
+        "traitName": "Multitarget",
+        "desc": "Increase the number of enemies you can strike with Multistrike.",
+        "icon": "sword-spin",
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "Multitarget0"
+        ]
+    },
+    "Multifocus0": {
+        "name": "Multifocus0",
+        "traitName": "Multifocus",
+        "desc": "Lower the defensive penalty for using Multistrike.",
+        "icon": "sword-spin",
+        "capstone": true,
+        "cost": 40,
+        "cluster": 4,
+        "unlockedBy": [
+            "Multistrike"
+        ]
+    },
+    "DoubleThrust0": {
+        "name": "DoubleThrust0",
+        "traitName": "DoubleThrust",
+        "desc": "Thruststrike now attacks with a slightly-weaker second swing.",
+        "icon": "saber-slash",
+        "capstone": true,
+        "cost": 40,
+        "cluster": 4,
+        "unlockedBy": [
+            "Thruststrike"
+        ]
+    },
+    "Multistrike": {
+        "name": "Multistrike",
+        "desc": "Attack multiple creatures on your tile. Requires weapon skill 13.",
+        "icon": "sword-spin",
+        "iconColor": "#a00",
+        "requireSkillLevel": 13,
+        "cost": 3,
+        "unlocks": [
+            "Multitarget0",
+            "Multifocus0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike2"
+        ]
+    },
+    "Blindstrike": {
+        "name": "Blindstrike",
+        "desc": "Attack a random creature on your tile, even while you are unable to see.",
+        "icon": "sword-tie",
+        "iconColor": "#a00",
+        "requireSkillLevel": 10,
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike1"
+        ]
+    },
+    "Thruststrike": {
+        "name": "Thruststrike",
+        "desc": "Charge towards an enemy, attacking with the item in your right hand. Deals more damage than Charge.",
+        "icon": "saber-slash",
+        "iconColor": "#a00",
+        "requireSkillLevel": 7,
+        "cost": 3,
+        "unlocks": [
+            "DoubleThrust0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ForcefulStrike0"
+        ]
+    }
+}

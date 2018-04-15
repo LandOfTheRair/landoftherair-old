@@ -1,10 +1,7 @@
 - name: Antanian Leather Boots
   stats:
     accuracy: 3
-  minDamage: 1
-  maxDamage: 3
-  baseDamage: 3
-  damageRolls: 1
+  tier: 1
   sprite: 232
   desc: "a pair of leather boots"
   value: 50
@@ -14,10 +11,7 @@
     defense: 1
     offense: 1
     accuracy: 4
-  minDamage: 3
-  maxDamage: 3
-  baseDamage: 3
-  damageRolls: 1
+  tier: 1
   sprite: 232
   desc: "a pair of leather boots engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   value: 50
@@ -27,10 +21,7 @@
     armorClass: 2
     defense: 1
     offense: 2
-  minDamage: 1
-  maxDamage: 6
-  baseDamage: 9
-  damageRolls: 1
+  tier: 2
   sprite: 369
   desc: "a pair of black leather combat boots"
   value: 580
@@ -46,10 +37,7 @@
     offense:
       min: 3
       max: 5
-  minDamage: 1
-  maxDamage: 6
-  baseDamage: 15
-  damageRolls: 2
+  tier: 4
   sprite: 369
   desc: "a pair of rugged combat boots"
   value: 980
@@ -65,10 +53,7 @@
     defense:
       min: 3
       max: 5
-  minDamage: 1
-  maxDamage: 6
-  baseDamage: 15
-  damageRolls: 1
+  tier: 3
   sprite: 372
   desc: "a pair of spongy, springy boots that allows you to move more quickly"
   value: 980
@@ -80,10 +65,7 @@
 - name: Antanian Swimming Boots
   stats:
     waterResist: 500
-  minDamage: 4
-  maxDamage: 5
-  baseDamage: 5
-  damageRolls: 1
+  tier: 1
   sprite: 370
   desc: "a pair sharkskin boots that help you swim more easily"
   value: 250

@@ -46,9 +46,11 @@ export const responses = (npc: NPC) => {
 
         player.gainGold(30000);
         player.gainExp(100000);
-        player.gainTraitPoints(5, true);
 
-        player.sendClientMessage('You received 100,000 XP, 30,000 gold, and 5 TP!');
+        const gainedResetPoints = player.skillTree.canGainResetPoints ? 3 : 0;
+        player.skillTree.gainResetPoints(gainedResetPoints);
+
+        player.sendClientMessage(`You received 100,000 XP, 30,000 gold and ${gainedResetPoints} RP!`);
         return `Thanks, ${player.name}! We'll see you tomorrow!`;
       }
 

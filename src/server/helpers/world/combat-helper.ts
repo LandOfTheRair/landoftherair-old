@@ -31,6 +31,7 @@ export const BaseItemStatsPerTier = {
   Flail:                { base: 0, min: 1, max: 4, weakChance: 10, damageBonus: 0 },
   Gloves:               { base: 1, min: 0, max: 2, weakChance: 10, damageBonus: 5 },
   Hands:                { base: 1, min: 0, max: 2, weakChance: 10, damageBonus: 5 },
+  Boots:                { base: 2, min: 1, max: 3, weakChance: 10, damageBonus: 5 },
   Greataxe:             { base: 5, min: 1, max: 2, weakChance: 10, damageBonus: 5 },
   Greatmace:            { base: 5, min: 1, max: 2, weakChance: 10, damageBonus: 5 },
   Greatsword:           { base: 3, min: 1, max: 4, weakChance: 10, damageBonus: 5 },
@@ -50,13 +51,20 @@ export const BaseItemStatsPerTier = {
 
 export class CombatHelper {
 
-  static determineWeaponInformation(item: Item, baseRolls = 0) {
+  static determineWeaponInformation(attacker: Character, item: Item, baseRolls = 0) {
     if(!BaseItemStatsPerTier[item.itemClass]) {
       return { damageRolls: 0, damageBonus: 0, isWeak: false, isStrong: false };
     }
 
-    const tier = item.tier || 0;
-    const { base, min, max, weakChance, damageBonus } = BaseItemStatsPerTier[item.itemClass];
+    let itemClass = item.itemClass;
+    if(itemClass === 'Wand' && attacker.getTraitLevel('BladedWands')) itemClass = 'Longsword';
+
+    let tier = item.tier || 0;
+    const { base, min, max, weakChance, damageBonus } = BaseItemStatsPerTier[itemClass];
+
+    if(itemClass === 'Hands') {
+      tier += attacker.getTraitLevel('BrassKnuckles');
+    }
 
     let damageRolls = baseRolls;
     const minTier = min * tier;
@@ -64,7 +72,7 @@ export class CombatHelper {
     const baseTier = base * tier;
 
     // try to flub
-    const didFlub = random(0, 100) <= weakChance;
+    const didFlub = random(0, 100) <= weakChance * attacker.getTraitLevelAndUsageModifier('Swashbuckler');
 
     const bonusRolls = didFlub ? minTier : random(minTier, maxTier);
 
@@ -104,17 +112,25 @@ export class CombatHelper {
   }
 
   private static attemptToStun(attacker: Character, weapon: Item, defender: Character) {
-    if(!weapon.proneChance) return;
-    if(random(1, 100) > weapon.proneChance) return;
 
-    const push = new Effects.Push({ potency: attacker.level });
-    push.cast(attacker, defender);
+    // prone can happen randomly
+    if(weapon.proneChance && random(1, 100) > weapon.proneChance) {
+      const push = new Effects.Push({ potency: attacker.level });
+      push.cast(attacker, defender);
+    }
+
+    let conMultiplier = 20;
+
+    if(weapon.itemClass === SkillClassNames.Martial) {
+      const multiplierLoss = attacker.getTraitLevelAndUsageModifier('StunningFist');
+      conMultiplier -= multiplierLoss;
+    }
 
     // low chance of cstun
-    if(random(1, defender.getTotalStat('con')) > 3) return;
-
-    const stun = new Effects.Stun({});
-    stun.cast(attacker, defender);
+    if(random(1, defender.getTotalStat('con') * conMultiplier) === 1) {
+      const stun = new Effects.Stun({});
+      stun.cast(attacker, defender);
+    }
   }
 
   static isShield(item) {
@@ -194,7 +210,7 @@ export class CombatHelper {
   }
 
   private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
-    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isRiposte } = opts;
+    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isKick, isPunch, isRiposte, damageMult } = opts;
     let { isBackstab } = opts;
 
     let backstabIgnoreRange = false;
@@ -230,13 +246,23 @@ export class CombatHelper {
     } else if(isOffhand) {
       attackerWeapon = attacker.leftHand;
 
+    } else if(isKick) {
+      attackerWeapon = attacker.gear.Feet
+                    || { type: SkillClassNames.Martial, itemClass: 'Boots', name: 'feet',
+                         tier: 1,
+                         canUseInCombat: () => true,
+                         isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
+
     } else {
-      attackerWeapon = attacker.rightHand
-                    || attacker.gear.Hands
+      attackerWeapon = attacker.rightHand;
+
+      if(isPunch || !attackerWeapon) {
+        attackerWeapon = attacker.gear.Hands
                     || { type: SkillClassNames.Martial, itemClass: 'Hands', name: 'hands',
                          tier: 1,
                          canUseInCombat: () => true,
                          isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
+      }
     }
 
     // flag appropriate skills based on attack
@@ -287,22 +313,29 @@ export class CombatHelper {
     const attackerName = isAttackerVisible ? attacker.name : 'somebody';
     const attackerDamageRolls = attacker.getTotalStat('weaponDamageRolls');
 
-    const { damageRolls, damageBonus, isWeak, isStrong } = this.determineWeaponInformation(attackerWeapon, attackerDamageRolls);
+    const { damageRolls, damageBonus, isWeak, isStrong } = this.determineWeaponInformation(attacker, attackerWeapon, attackerDamageRolls);
 
     // skill + 1 because skill 0 is awful
     const calcSkill = attacker.calcSkillLevel(isThrow ? SkillClassNames.Throwing : attackerWeapon.type) + 1;
 
     const damageCalcStat: StatName = isThrow || attackerWeapon.type === 'Ranged' ? 'dex' : 'str';
 
+    let baseDamageCalcStat = attacker.getTotalStat(damageCalcStat);
+    const strongMindMod = attacker.getTraitLevelAndUsageModifier('StrongMind');
+
+    if(damageCalcStat === 'str' && strongMindMod > 0) {
+      const attackerInt = attacker.getTotalStat('int');
+      baseDamageCalcStat += Math.floor( attackerInt * strongMindMod);
+    }
+
     const attackerScope = {
       skill: calcSkill,
       skill4: Math.floor(calcSkill / 4),
       offense: Math.floor(attacker.getTotalStat('offense') / offhandDivisor),
       accuracy: Math.floor(attacker.getTotalStat('accuracy') / offhandDivisor),
-      dex: Math.floor(attacker.getTotalStat('dex') / offhandDivisor),
-      dex4: Math.floor((attacker.getTotalStat('dex') / 4) / offhandDivisor),
-      damageStat: Math.floor(attacker.getTotalStat(damageCalcStat) / offhandDivisor),
-      damageStat4: Math.floor((attacker.getTotalStat(damageCalcStat) / 4) / offhandDivisor),
+      dex: Math.floor(attacker.getTotalStat('dex') / offhandDivisor) + attacker.getTraitLevelAndUsageModifier('MartialAcuity'),
+      damageStat: Math.floor(baseDamageCalcStat / offhandDivisor),
+      damageStat4: Math.floor((baseDamageCalcStat / 4) / offhandDivisor),
       level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatLevelDivisor),
       realLevel: attacker.level,
       damageRolls: Math.max(1, damageRolls)
@@ -344,6 +377,16 @@ export class CombatHelper {
     let defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`);
 
     if(defender.isNaturalResource) defenderDodgeRoll = 0;
+
+    let defenderDodgeMartialBonusMultiplier = 1;
+    const defenderDodgeMartialLevel = defender.getTraitLevelAndUsageModifier('MartialAgility');
+
+    if(defenderDodgeMartialLevel) {
+      if(!defender.rightHand) defenderDodgeMartialBonusMultiplier += defenderDodgeMartialLevel;
+      if(!defender.leftHand)  defenderDodgeMartialBonusMultiplier += defenderDodgeMartialLevel;
+    }
+
+    defenderDodgeRoll *= defenderDodgeMartialBonusMultiplier;
 
     let attackDistance = attackRange ? attackRange : 0;
     const distBetween = attacker.distFrom(defender);
@@ -624,10 +667,15 @@ export class CombatHelper {
 
     let msg = '';
 
-    if(attacker.rightHand) {
+    if(attacker.rightHand && !isKick && !isPunch) {
       msg = `${attackerName} hits with a ${attackerWeapon.itemClass.toLowerCase()}!`;
+
+    } else if(isKick) {
+      msg = `${attackerName} kicks you!`;
+
     } else if(attackerWeapon.itemClass === 'Claws') {
       msg = `${attackerName} claws you!`;
+
     } else {
       msg = `${attackerName} punches you!`;
     }
@@ -656,6 +704,10 @@ export class CombatHelper {
       attacker.$$room.combatEffect(attacker, 'hit-mid', defender.uuid);
     }
 
+    if(damageMult) {
+      damage = Math.floor(damage * damageMult);
+    }
+
     damage = this.calcDamageDoneBasedOnDefender(attackerWeapon, attacker, defender, damage, criticality);
 
     damage = this.dealDamage(attacker, defender, {
@@ -665,6 +717,8 @@ export class CombatHelper {
       defenderDamageMessage: msg,
       attackerWeapon,
       isRanged: damageCalcStat === 'dex',
+      isWeak,
+      isStrong,
       isAttackerVisible,
       isRiposte
     });
@@ -753,7 +807,7 @@ export class CombatHelper {
 
     if(attacker) {
       const armorClass = get(attacker, 'gear.Armor.itemClass');
-      if(includes(MagicCutArmorClasses, armorClass)) {
+      if(includes(MagicCutArmorClasses, armorClass) && !attacker.getTraitLevel('LightenArmor')) {
         damage = Math.floor(damage / 2);
       }
     }
@@ -812,7 +866,7 @@ export class CombatHelper {
     attacker: Character,
     defender: Character,
     { damage, damageClass, attackerDamageMessage, defenderDamageMessage,
-      attackerWeapon, isRanged, isAttackerVisible, isRiposte }: any
+      attackerWeapon, isRanged, isAttackerVisible, isRiposte, isWeak }: any
   ): number {
 
     if(defender.isDead() || (<any>defender).hostility === 'Never') return;
@@ -907,6 +961,8 @@ export class CombatHelper {
     this.doElementalDebuffing(attacker, defender, damageClass, damage, { isRanged, isAttackerVisible, mitigatedPercent });
 
     if(defender.isNaturalResource) damage = baseDamage;
+
+    if(isWeak && random(1, 100) <= defender.getTraitLevelAndUsageModifier('SterlingArmor')) damage = 0;
 
     const absDmg = Math.round(Math.abs(damage));
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;

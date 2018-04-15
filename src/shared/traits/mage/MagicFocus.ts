@@ -8,7 +8,8 @@ export class MagicFocus extends Trait {
   static description = 'Deal 10% more energy damage per point.';
   static icon = 'plasma-bolt';
 
-  static tpCost = 10;
-  static maxLevel = 10;
+  static upgrades = [
+    { }, { }, { }, { }, { }, { }, { }, { requireCharacterLevel: 15, capstone: true }
+  ];
 
 }

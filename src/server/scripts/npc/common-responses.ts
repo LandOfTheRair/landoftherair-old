@@ -12,7 +12,8 @@ import { SkillHelper } from '../../helpers/character/skill-helper';
 import { SpellforgingHelper } from '../../helpers/tradeskill/spellforging-helper';
 import { MetalworkingHelper } from '../../helpers/tradeskill/metalworking-helper';
 import { ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
-import {GemDust} from '../../effects/buffs/GemDust';
+import { GemDust } from '../../effects/buffs/GemDust';
+import { SubscriptionHelper } from '../../helpers/account/subscription-helper';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -461,7 +462,7 @@ export const BankResponses = (npc: NPC) => {
     });
 };
 
-export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
+export const VendorResponses = (npc: NPC, { classRestriction = '', filter = (items, player) => items } = {}) => {
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
@@ -480,7 +481,13 @@ export const VendorResponses = (npc: NPC, { classRestriction = '' } = {}) => {
       }
 
       if(npc.distFrom(player) > 2) return 'Please move closer.';
-      npc.$$room.showShopWindow(player, npc);
+
+      let showItems = npc.vendorItems;
+      if(filter) {
+        showItems = filter(showItems, player);
+      }
+
+      npc.$$room.showShopWindow(player, npc, showItems);
       return `Greetings ${player.name}! Please view my wares.`;
     });
 
@@ -597,7 +604,7 @@ export const EncrusterResponses = (npc: NPC) => {
     });
 };
 
-export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
+export const BaseClassTrainerResponses = (npc: NPC) => {
 
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
@@ -612,7 +619,8 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
       return `Hail, ${player.name}! 
       If you want to try to level up, TRAIN with me. 
       Alternatively, I can let you know how your combat skills are progressing if you want to ASSESS them! 
-      You can also JOIN the ${npc.classTrain} profession if you haven't chosen one already!`;
+      You can also JOIN the ${npc.classTrain} profession if you haven't chosen one already!
+      If you're a subscriber, I can also RESET your skill tree!`;
     });
 
   npc.parser.addCommand('assess')
@@ -659,7 +667,10 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
 
       player.loseGold(trainCost);
 
-      return `You have gained ${newLevel - level} experience level.`;
+      const gainedTP = player.skillTree.calculateNewTPFromLevels(player);
+      player.$$room.updateSkillTree(player);
+
+      return `You have gained ${newLevel - level} experience level and ${gainedTP} TP.`;
     });
 
   npc.parser.addCommand('join')
@@ -679,29 +690,29 @@ export const BaseClassTrainerResponses = (npc: NPC, skills?: any) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(player.baseClass !== npc.classTrain) return 'I have nothing to teach you.';
 
-      if(!skills) return 'I have no skills to teach you.';
-
       const learnCost = npc.maxSkillTrain * 100;
       if(player.gold < learnCost) return `I require ${learnCost} gold for my teaching.`;
 
-      const learnedSkills = [];
+      const gainedTP = player.skillTree.calculateNewTPFromSkills(player);
+      player.$$room.updateSkillTree(player);
 
-      Object.keys(skills).forEach(skillName => {
-        Object.keys(skills[skillName]).forEach(spellLevel => {
-          if(player.calcSkillLevel(skillName) < +spellLevel) return;
-          skills[skillName][spellLevel].forEach(spellName => {
-            if(!player.learnSpell(spellName)) return;
-            learnedSkills.push(spellName);
-          });
-        });
-      });
+      if(gainedTP === 0) return 'I cannot currently teach you anything new.';
 
-      if(learnedSkills.length === 0) return 'I cannot currently teach you anything new.';
-
-      player.$$room.resetMacros(player);
       player.loseGold(learnCost);
 
-      return `You have learned the abilities: ${learnedSkills.join(', ')}.`;
+      return `You have gained ${gainedTP} TP!`;
+    });
+
+  npc.parser.addCommand('reset')
+    .set('syntax', ['reset'])
+    .set('logic', (args, { player }) => {
+      if(!SubscriptionHelper.isSubscribed(player)) return 'You are not a subscriber!';
+
+      player.skillTree.reset(player);
+      player.skillTree.calculateNewTPFromSkills(player);
+      player.$$room.updateSkillTree(player);
+
+      return 'Done! Enjoy your reset skill tree. You may need to LEARN from me again to get all of your points back!';
     });
 };
 

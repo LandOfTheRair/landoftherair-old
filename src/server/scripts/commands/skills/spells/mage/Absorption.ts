@@ -11,7 +11,10 @@ export class Absorption extends Skill {
     icon: 'magic-swirl',
     color: '#a0a',
     mode: 'clickToTarget',
-    tooltipDesc: 'Absorb all types of magic. Cost: 100 MP'
+    tooltipDesc: 'Absorb all types of magic. Cost: 100 MP',
+    skillTPCost: 10,
+    requireCharacterLevel: 10,
+    requireSkillLevel: 7
   };
 
   public targetsFriendly = true;

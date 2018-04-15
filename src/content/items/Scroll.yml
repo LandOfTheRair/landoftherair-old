@@ -214,14 +214,6 @@
   value: 1
 
 # Warrior Rune Scrolls
-- name: Rune Scroll - Deadeye I
-  sprite: 681
-  desc: "a runic scroll imbued with the empowerment \"Deadeye I\""
-  trait:
-    name: Deadeye
-    level: 1
-  value: 1
-
 - name: Rune Scroll - Forceful Strike I
   sprite: 681
   desc: "a runic scroll imbued with the empowerment \"Forceful Strike I\""

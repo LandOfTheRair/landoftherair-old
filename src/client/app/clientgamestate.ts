@@ -10,6 +10,7 @@ import { Item } from '../../shared/models/item';
 import { Character } from '../../shared/models/character';
 import { MapLayer } from '../../shared/models/maplayer';
 import { LootHelper } from '../../server/helpers/world/loot-helper';
+import { SkillTree } from '../../shared/models/skill-tree';
 
 export class ClientGameState {
   fovArray = Array(9).fill(null).map((x, i) => i - 4);
@@ -30,6 +31,7 @@ export class ClientGameState {
   groundItems: any = {};
 
   public logMessages$ = new Subject<any>();
+  public skillTree$ = new BehaviorSubject<SkillTree>(new SkillTree({}));
 
   environmentalObjects: any[] = [];
 
@@ -339,6 +341,7 @@ export class ClientGameState {
     this.darkness = {};
     this.groundItems = {};
     this.updateGround$.next({});
+    this.skillTree$.next(new SkillTree({}));
     this._activeTarget = null;
     this.mapNPCs = {};
     this.environmentalObjects = [];

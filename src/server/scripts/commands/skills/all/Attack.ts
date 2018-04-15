@@ -1,6 +1,6 @@
 
 import { Skill } from '../../../../base/Skill';
-import { Character } from '../../../../../shared/models/character';
+import { Character, SkillClassNames } from '../../../../../shared/models/character';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
 import { MessageHelper } from '../../../../helpers/world/message-helper';
 import { Player } from '../../../../../shared/models/player';
@@ -50,7 +50,7 @@ export class Attack extends Skill {
   use(user: Character, target: Character) {
 
     /** PERK:CLASS:WARRIOR:Warriors gain skill on physical hits. */
-    if(user.baseClass === 'Warrior') user.gainSkill(user.rightHand ? user.rightHand.itemClass : 'Martial', 1);
+    if(user.baseClass === 'Warrior') user.gainSkill(user.rightHand ? user.rightHand.itemClass : SkillClassNames.Martial, 1);
     CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
   }
 

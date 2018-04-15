@@ -8,6 +8,7 @@ export * from './Talk';
 export * from './Trait';
 export * from './Restore';
 export * from './Search';
+export * from './SkillTree';
 export * from './Drink';
 export * from './Unapply';
 export * from './Use';
