@@ -677,7 +677,7 @@ export class Player extends Character {
     const { category, name } = traitRef;
     if(!category || !name) return true;
 
-    return AllTraits[category][name].currentlyInEffect(this);
+    return (AllTraits.Common[name] || AllTraits[this.baseClass][name]).currentlyInEffect(this);
   }
 
   public isTraitActive(trait: string): boolean {
