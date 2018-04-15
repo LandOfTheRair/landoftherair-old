@@ -14,9 +14,9 @@ export class WallSight extends SpellEffect {
   maxSkillForSkillGain = 7;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.flagUnapply();
     this.flagCasterName(caster.name);
     this.flagPermanent(caster.uuid);
+    this.flagUnapply(true);
     target.applyEffect(this);
   }
 

@@ -65,8 +65,8 @@ export class Effect {
     this.effectInfo.casterName = casterName;
   }
 
-  protected flagUnapply() {
-    if(this.effectInfo.isPermanent) return;
+  protected flagUnapply(force = false) {
+    if(this.effectInfo.isPermanent && !force) return;
     this.effectInfo.canManuallyUnapply = true;
   }
 
