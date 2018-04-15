@@ -912,7 +912,8 @@
         "capstone": true,
         "cost": 10,
         "unlocks": [
-            "Shield"
+            "Shield",
+            "Rapidpunch"
         ],
         "cluster": 3,
         "unlockedBy": [
@@ -982,6 +983,18 @@
             "MartialAgility2"
         ]
     },
+    "Rapidpunch": {
+        "name": "Rapidpunch",
+        "desc": "Punch a single target many times in succession.",
+        "icon": "fire-punch",
+        "iconColor": "#a00",
+        "requireSkillLevel": 15,
+        "cost": 10,
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAcuity2"
+        ]
+    },
     "Paladin": {
         "icon": "abstract-007",
         "desc": "The Paladin excels at using big weapons, and learns some new tricks to get the most use out of them.",
@@ -1002,7 +1015,7 @@
         "desc": "You can hold shields and gain their full effect while they are in your right hand.",
         "icon": "edged-shield",
         "capstone": true,
-        "cost": 50,
+        "cost": 40,
         "cluster": 4,
         "unlockedBy": [
             "Paladin"
@@ -1257,7 +1270,7 @@
         "desc": "Thruststrike now attacks with a slightly-weaker second swing.",
         "icon": "saber-slash",
         "capstone": true,
-        "cost": 50,
+        "cost": 40,
         "cluster": 4,
         "unlockedBy": [
             "Thruststrike"

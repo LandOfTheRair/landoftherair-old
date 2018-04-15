@@ -9,7 +9,7 @@ export class Shieldbearer extends Trait {
   static icon = 'edged-shield';
 
   static upgrades = [
-    { cost: 50, capstone: true }
+    { cost: 40, capstone: true }
   ];
 
 }

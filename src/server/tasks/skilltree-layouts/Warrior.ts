@@ -245,7 +245,7 @@ const MONK_TREE = {
     unlocks: ['MartialAcuity2']
   },
   MartialAcuity2: {
-    unlocks: ['Shield']
+    unlocks: ['Shield', 'Rapidpunch']
   },
 
   StunningFist0: {
@@ -264,6 +264,10 @@ const MONK_TREE = {
   },
 
   Sweep: {
+
+  },
+
+  Rapidpunch: {
 
   }
 };
