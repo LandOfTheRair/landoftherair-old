@@ -114,7 +114,7 @@ export class CombatHelper {
   private static attemptToStun(attacker: Character, weapon: Item, defender: Character) {
 
     // prone can happen randomly
-    if(weapon.proneChance && random(1, 100) > weapon.proneChance) {
+    if(weapon.proneChance > 0 && random(1, 100) <= weapon.proneChance) {
       const push = new Effects.Push({ potency: attacker.level });
       push.cast(attacker, defender);
     }
@@ -885,11 +885,14 @@ export class CombatHelper {
         case 'physical':  damageBoostPercent = attacker.getTraitLevelAndUsageModifier('ForcefulStrike'); break;
       }
 
+      console.log(damageBoostPercent, damage);
+
       if(damageClass === 'physical' && !isAttackerVisible && defender.hasEffect('BuildupSneakAttack')) {
         damageBoostPercent = 25 + attacker.getTraitLevelAndUsageModifier('ShadowRanger');
       }
 
       damage = Math.floor(damage * (1 + (damageBoostPercent / 100)));
+      console.log('post', damage)
 
       if(damageClass !== 'physical') {
         damage += attacker.getTotalStat('magicalDamageBoost');
