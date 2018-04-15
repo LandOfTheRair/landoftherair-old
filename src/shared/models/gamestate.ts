@@ -706,6 +706,10 @@ export class GameState {
 
     if(!this.groundItems[xKey]) this.groundItems[xKey] = {};
     if(!this.groundItems[xKey][yKey]) this.groundItems[xKey][yKey] = {};
+
+    if(!this.simpleGroundItems[xKey]) this.simpleGroundItems[xKey] = {};
+    if(!this.simpleGroundItems[xKey][yKey]) this.simpleGroundItems[xKey][yKey] = {};
+
     return this.groundItems[xKey][yKey];
   }
 
