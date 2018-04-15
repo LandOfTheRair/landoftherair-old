@@ -4,7 +4,8 @@ import { Signal } from 'signals.js';
 
 import {
   merge, find, includes, compact, values, random,
-  startsWith, clone, get, reject, pick, isArray
+  startsWith, clone, get, reject, pick, isArray,
+  sample, filter
 } from 'lodash';
 
 import {
@@ -28,6 +29,7 @@ import { TrapHelper } from '../../server/helpers/world/trap-helper';
 import { SkillHelper } from '../../server/helpers/character/skill-helper';
 import { XPHelper } from '../../server/helpers/character/xp-helper';
 import { TraitUsageModifiers } from '../helpers/trait-usage-modifiers';
+import { VALID_TRADESKILLS_HASH } from '../helpers/tradeskill-helper';
 
 export type Allegiance =
   'None'
@@ -1393,6 +1395,17 @@ export class Character {
     if(lostXPMin > 0 && lostXPMax > 0) {
       const lostXP = random(lostXPMin, lostXPMax);
       this.gainExp(-lostXP);
+    }
+
+    // lose a tiny bit of non-zero, non-tradeskill skills
+    if(lostSkillMin > 0 && lostSkillMax > 0) {
+      const skills = this.allSkills;
+      const lostSkill = random(lostSkillMin, lostSkillMax);
+      const lostSkillType = sample(filter(Object.keys(skills), skill => {
+        return skills[skill] > 0 && !VALID_TRADESKILLS_HASH[skill];
+      }));
+
+      this._gainSkill(lostSkillType, -lostSkill);
     }
   }
 }
