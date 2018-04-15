@@ -17,7 +17,7 @@ export class FireMist extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    const range = (isUndefined(this.range) ? 1 : this.range) + target.getTraitLevel('FireMistWiden');
+    const range = (isUndefined(this.range) ? 1 : this.range) + (target.getTraitLevel('FireMistWiden') ? 1 : 0);
 
     target.sendClientMessageToRadius({ message: 'You hear a soft sizzling noise.', subClass: 'combat magic' }, 10);
 

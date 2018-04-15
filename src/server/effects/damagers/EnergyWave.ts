@@ -14,7 +14,7 @@ export class EnergyWave extends SpellEffect {
 
     target.sendClientMessageToRadius({ message: `You feel a wave of energy pulse outwards from ${target.name}.`, subClass: 'combat magic' }, 5, [caster.uuid]);
 
-    const totalRadius = 1 + target.getTraitLevel('EnergyWaveWiden');
+    const totalRadius = 1 + (target.getTraitLevel('EnergyWaveWiden') ? 1 : 0);
 
     const attacked = target.$$room.state.getAllInRange(target, totalRadius, [caster.uuid]);
 

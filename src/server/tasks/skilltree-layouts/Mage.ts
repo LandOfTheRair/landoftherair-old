@@ -91,7 +91,7 @@ const MAGE_TREE = {
 
   },
   MagicFocus7: {
-    unlocks: ['MagicBolt', 'Teleport']
+    unlocks: ['Teleport']
   },
 
   EnergyWaveWiden0: {
@@ -112,7 +112,7 @@ const MAGE_TREE = {
     unlocks: ['MagicFocus3', 'Push']
   },
   Push: {
-    unlocks: ['MagicFocus7', 'MagicFocus5']
+    unlocks: ['MagicFocus7', 'MagicFocus5', 'MagicBolt']
   },
   MagicBolt: {
 

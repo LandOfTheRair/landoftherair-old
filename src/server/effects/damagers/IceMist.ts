@@ -17,7 +17,7 @@ export class IceMist extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    const range = (isUndefined(this.range) ? 1 : this.range) + target.getTraitLevel('IceMistWiden');
+    const range = (isUndefined(this.range) ? 1 : this.range) + (target.getTraitLevel('IceMistWiden') ? 1 : 0);
 
     target.sendClientMessageToRadius({ message: 'You see a dense fog form.', subClass: 'combat magic' }, 10);
 
