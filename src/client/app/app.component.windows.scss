@@ -204,6 +204,10 @@
     max-width: 600px;
 
     z-index: 1000;
+
+    .window-body {
+      overflow: visible;
+    }
   }
 
   &.tradeskill {
