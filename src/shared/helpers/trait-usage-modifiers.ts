@@ -17,10 +17,10 @@ export class TraitUsageModifiers {
       case 'CarefulTouch':        return Math.min(0.95, level * 0.1);
       case 'EffectiveSupporter':  return level * 0.1;
       case 'OffhandFinesse':      return level * 0.1;
-      case 'MagicFocus':          return level * 10;
-      case 'NecroticFocus':       return level * 10;
-      case 'HealingFocus':        return level * 10;
-      case 'ForcefulStrike':      return level * 10;
+      case 'MagicFocus':          return level * 15;
+      case 'NecroticFocus':       return level * 15;
+      case 'HealingFocus':        return level * 15;
+      case 'ForcefulStrike':      return level * 15;
       case 'ShadowRanger':        return level * 10;
 
       case 'FriendlyFire':        return level * 10;
