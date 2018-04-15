@@ -839,6 +839,7 @@ export const SpellforgingResponses = (npc: NPC) => {
 
       const item = player.rightHand;
       if(!item || item.itemClass !== 'Gem') return 'You are not holding a gem.';
+      if(!item.isOwnedBy(player)) return 'That is not yours to smash!';
 
       if(Object.keys(item.stats).length === 0) return 'That gem will provide no value to you.';
 
