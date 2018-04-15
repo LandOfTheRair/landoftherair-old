@@ -502,6 +502,7 @@ export class Player extends Character {
   }
 
   queueAction({ command, args }) {
+    if(!this.$$actionQueue) this.$$actionQueue = [];
     this.$$actionQueue.push({ command, args });
     const aqSize = this.$$room.subscriptionHelper.calcActionQueueSize(this);
     if(this.$$actionQueue.length > aqSize) this.$$actionQueue.length = aqSize;
