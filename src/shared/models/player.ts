@@ -187,6 +187,10 @@ export class Player extends Character {
     delete this.learnedSpells[skillName];
   }
 
+  unlearnAll(): void {
+    this.learnedSpells = {};
+  }
+
   learnSpell(skillName, conditional = false): boolean {
     this.learnedSpells = this.learnedSpells || {};
     const storeName = skillName.toLowerCase();

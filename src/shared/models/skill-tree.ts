@@ -197,13 +197,17 @@ export class SkillTree {
 
   public reset(player: Player): void {
 
-    // TODO actually un-buy everything so refunds are processed correctly - do it here, then reset
+    Object.keys(this.nodesClaimed).forEach(claimedNode => {
+      this.refundNode(player, claimedNode, false, false);
+    });
 
     this.nodesClaimed = {};
     this.levelsClaimed = {};
     this.skillsClaimed = {};
 
+    player.unlearnAll();
     this.traitPoints = 0;
+
     player.$$room.savePlayer(player);
     this.updateBuyableNodes();
   }

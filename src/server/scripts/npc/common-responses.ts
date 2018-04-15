@@ -13,6 +13,7 @@ import { SpellforgingHelper } from '../../helpers/tradeskill/spellforging-helper
 import { MetalworkingHelper } from '../../helpers/tradeskill/metalworking-helper';
 import { ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
 import { GemDust } from '../../effects/buffs/GemDust';
+import { SubscriptionHelper } from '../../helpers/account/subscription-helper';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -618,7 +619,8 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       return `Hail, ${player.name}! 
       If you want to try to level up, TRAIN with me. 
       Alternatively, I can let you know how your combat skills are progressing if you want to ASSESS them! 
-      You can also JOIN the ${npc.classTrain} profession if you haven't chosen one already!`;
+      You can also JOIN the ${npc.classTrain} profession if you haven't chosen one already!
+      If you're a subscriber, I can also RESET your skill tree!`;
     });
 
   npc.parser.addCommand('assess')
@@ -699,6 +701,18 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       player.loseGold(learnCost);
 
       return `You have gained ${gainedTP} TP!`;
+    });
+
+  npc.parser.addCommand('reset')
+    .set('syntax', ['reset'])
+    .set('logic', (args, { player }) => {
+      if(!SubscriptionHelper.isSubscribed(player)) return 'You are not a subscriber!';
+
+      player.skillTree.reset(player);
+      player.skillTree.calculateNewTPFromSkills(player);
+      player.$$room.updateSkillTree(player);
+
+      return 'Done! Enjoy your reset skill tree. You may need to LEARN from me again to get all of your points back!';
     });
 };
 
