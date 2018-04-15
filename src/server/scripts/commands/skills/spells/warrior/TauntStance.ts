@@ -14,7 +14,7 @@ export class TauntStance extends Skill {
     color: '#fff',
     bgColor: '#000',
     mode: 'autoActivate',
-    tooltipDesc: 'Become more boisterous, taunting foes but losing offense and defense.',
+    tooltipDesc: 'Become more boisterous, taunting foes but losing offense and defense. Requires weapon skill 10.',
     requireSkillLevel: 10
   };
 

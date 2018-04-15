@@ -12,7 +12,7 @@ export class Blindstrike extends Skill {
     color: '#a00',
     mode: 'autoActivate',
     tooltipDesc: 'Attack a random creature on your tile, even while you are unable to see.',
-    requireSkillLevel: 13
+    requireSkillLevel: 10
   };
 
   public name = ['blindstrike', 'art blindstrike'];

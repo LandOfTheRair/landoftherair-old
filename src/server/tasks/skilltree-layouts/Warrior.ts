@@ -1,4 +1,3 @@
-import { Punchkick } from '../../../shared/traits/warrior/Punchkick';
 
 const WARRIOR_TREE = {
   Warrior: {
@@ -208,7 +207,7 @@ const DUELIST_TREE = {
 const MONK_TREE = {
   Monk: {
     icon: 'abstract-033',
-    desc: 'The Monk class expands on Warrior by transforming it into an entirely hand-to-hand combat-based class',
+    desc: 'The Monk class expands on Warrior by transforming it into an entirely hand-to-hand combat-based class.',
     unbuyable: true,
     root: true,
     unlocks: ['BrassKnuckles0', 'MartialAgility0', 'StunningFist0', 'MartialAcuity0']
@@ -236,7 +235,7 @@ const MONK_TREE = {
     unlocks: ['MartialAgility2']
   },
   MartialAgility2: {
-
+    unlocks: ['Sweep']
   },
 
   MartialAcuity0: {
@@ -246,7 +245,7 @@ const MONK_TREE = {
     unlocks: ['MartialAcuity2']
   },
   MartialAcuity2: {
-
+    unlocks: ['Shield']
   },
 
   StunningFist0: {
@@ -257,9 +256,16 @@ const MONK_TREE = {
   },
   StunningFist2: {
 
-  }
+  },
 
   // SKILLS
+  Shield: {
+
+  },
+
+  Sweep: {
+
+  }
 };
 
 const PALADIN_TREE = {

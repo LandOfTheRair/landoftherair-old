@@ -717,7 +717,7 @@
     },
     "TauntStance": {
         "name": "TauntStance",
-        "desc": "Become more boisterous, taunting foes but losing offense and defense.",
+        "desc": "Become more boisterous, taunting foes but losing offense and defense. Requires weapon skill 10.",
         "icon": "enrage",
         "iconColor": "#fff",
         "bgColor": "#000",
@@ -730,7 +730,7 @@
     },
     "RageStance": {
         "name": "RageStance",
-        "desc": "Become more offensive, but lose defensive power.",
+        "desc": "Become more offensive, but lose defensive power. Requires weapon skill 10.",
         "icon": "swords-power",
         "iconColor": "#fff",
         "bgColor": "#000",
@@ -743,7 +743,7 @@
     },
     "ParryStance": {
         "name": "ParryStance",
-        "desc": "Become more defensive, but lose offensive power.",
+        "desc": "Become more defensive, but lose offensive power. Requires weapon skill 10.",
         "icon": "surrounded-shield",
         "iconColor": "#fff",
         "bgColor": "#000",
@@ -770,7 +770,7 @@
     },
     "Monk": {
         "icon": "abstract-033",
-        "desc": "The Monk class expands on Warrior by transforming it into an entirely hand-to-hand combat-based class",
+        "desc": "The Monk class expands on Warrior by transforming it into an entirely hand-to-hand combat-based class.",
         "unbuyable": true,
         "root": true,
         "unlocks": [
@@ -868,6 +868,9 @@
         "icon": "wingfoot",
         "capstone": true,
         "cost": 10,
+        "unlocks": [
+            "Sweep"
+        ],
         "cluster": 3,
         "unlockedBy": [
             "MartialAgility1"
@@ -908,6 +911,9 @@
         "icon": "armor-punch",
         "capstone": true,
         "cost": 10,
+        "unlocks": [
+            "Shield"
+        ],
         "cluster": 3,
         "unlockedBy": [
             "MartialAcuity1"
@@ -916,7 +922,7 @@
     "StunningFist0": {
         "name": "StunningFist0",
         "traitName": "StunningFist",
-        "desc": "Increase your chance of stunning an opponent with a fist attack.",
+        "desc": "Increase your chance of stunning an opponent with a martial attack.",
         "icon": "thor-fist",
         "cost": 3,
         "unlocks": [
@@ -930,7 +936,7 @@
     "StunningFist1": {
         "name": "StunningFist1",
         "traitName": "StunningFist",
-        "desc": "Increase your chance of stunning an opponent with a fist attack.",
+        "desc": "Increase your chance of stunning an opponent with a martial attack.",
         "icon": "thor-fist",
         "cost": 3,
         "unlocks": [
@@ -944,13 +950,36 @@
     "StunningFist2": {
         "name": "StunningFist2",
         "traitName": "StunningFist",
-        "desc": "Increase your chance of stunning an opponent with a fist attack.",
+        "desc": "Increase your chance of stunning an opponent with a martial attack.",
         "icon": "thor-fist",
         "capstone": true,
         "cost": 10,
         "cluster": 3,
         "unlockedBy": [
             "StunningFist1"
+        ]
+    },
+    "Shield": {
+        "name": "Shield",
+        "desc": "Increase your physical and magical resistance.",
+        "icon": "vibrating-shield",
+        "iconColor": "#a00",
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAcuity2"
+        ]
+    },
+    "Sweep": {
+        "name": "Sweep",
+        "desc": "Attack multiple creatures on your tile with a kick attack.",
+        "icon": "foot-trip",
+        "iconColor": "#a00",
+        "requireSkillLevel": 13,
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAgility2"
         ]
     },
     "Paladin": {
@@ -1236,7 +1265,7 @@
     },
     "Multistrike": {
         "name": "Multistrike",
-        "desc": "Attack multiple creatures on your tile.",
+        "desc": "Attack multiple creatures on your tile. Requires weapon skill 13.",
         "icon": "sword-spin",
         "iconColor": "#a00",
         "requireSkillLevel": 13,
@@ -1255,7 +1284,7 @@
         "desc": "Attack a random creature on your tile, even while you are unable to see.",
         "icon": "sword-tie",
         "iconColor": "#a00",
-        "requireSkillLevel": 13,
+        "requireSkillLevel": 10,
         "cost": 3,
         "cluster": 4,
         "unlockedBy": [
@@ -1267,6 +1296,7 @@
         "desc": "Charge towards an enemy, attacking with the item in your right hand. Deals more damage than Charge.",
         "icon": "saber-slash",
         "iconColor": "#a00",
+        "requireSkillLevel": 7,
         "cost": 3,
         "unlocks": [
             "DoubleThrust0"

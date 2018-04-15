@@ -132,6 +132,8 @@ export * from './arts/Boost';
 export * from './arts/Blindstrike';
 export * from './arts/Multistrike';
 export * from './arts/Provoke';
+export * from './arts/Shield';
+export * from './arts/Sweep';
 
 export * from './antibuffs/LoweredDefenses';
 

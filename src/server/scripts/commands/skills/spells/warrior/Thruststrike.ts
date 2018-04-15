@@ -16,7 +16,8 @@ export class Thruststrike extends Skill {
     icon: 'saber-slash',
     color: '#a00',
     mode: 'lockActivation',
-    tooltipDesc: 'Charge towards an enemy, attacking with the item in your right hand. Deals more damage than Charge.'
+    tooltipDesc: 'Charge towards an enemy, attacking with the item in your right hand. Deals more damage than Charge.',
+    requireSkillLevel: 7
   };
 
   public name = ['thruststrike', 'art thruststrike'];

@@ -8,7 +8,7 @@ import { CombatHelper } from '../../helpers/world/combat-helper';
 
 export class Blindstrike extends WeaponEffect {
 
-  static get skillRequired() { return 1; }
+  static get skillRequired() { return 10; }
   protected skillRequired = Blindstrike.skillRequired;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {

@@ -9,3 +9,5 @@ export * from './Thruststrike';
 
 export * from './Boost';
 export * from './Provoke';
+export * from './Shield';
+export * from './Sweep';
