@@ -885,14 +885,11 @@ export class CombatHelper {
         case 'physical':  damageBoostPercent = attacker.getTraitLevelAndUsageModifier('ForcefulStrike'); break;
       }
 
-      console.log(damageBoostPercent, damage);
-
       if(damageClass === 'physical' && !isAttackerVisible && defender.hasEffect('BuildupSneakAttack')) {
         damageBoostPercent = 25 + attacker.getTraitLevelAndUsageModifier('ShadowRanger');
       }
 
       damage = Math.floor(damage * (1 + (damageBoostPercent / 100)));
-      console.log('post', damage)
 
       if(damageClass !== 'physical') {
         damage += attacker.getTotalStat('magicalDamageBoost');
