@@ -27,7 +27,7 @@ export class GroundToRight extends Command {
     if(!item) return;
 
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-    this.trySwapLeftToRight(player);
+    this.trySwapRightToLeft(player);
 
     player.setRightHand(item);
     room.removeItemFromGround(item);

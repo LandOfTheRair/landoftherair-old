@@ -19,7 +19,7 @@ export class BeltToRight extends Command {
     const item = player.belt.takeItemFromSlot(slot);
     if(!item) return false;
 
-    this.trySwapLeftToRight(player);
+    this.trySwapRightToLeft(player);
 
     player.setRightHand(item);
   }

@@ -27,7 +27,7 @@ export class BuybackToRight extends Command {
 
     const newItem = new Item(item);
 
-    this.trySwapLeftToRight(player);
+    this.trySwapRightToLeft(player);
 
     player.setRightHand(newItem);
   }
