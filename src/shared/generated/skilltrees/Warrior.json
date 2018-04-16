@@ -468,7 +468,7 @@
     "ForcefulStrike5": {
         "name": "ForcefulStrike5",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -482,7 +482,7 @@
     "ForcefulStrike6": {
         "name": "ForcefulStrike6",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -497,7 +497,7 @@
     "ForcefulStrike7": {
         "name": "ForcefulStrike7",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -511,7 +511,7 @@
     "ForcefulStrike8": {
         "name": "ForcefulStrike8",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -525,7 +525,7 @@
     "ForcefulStrike9": {
         "name": "ForcefulStrike9",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1160,7 +1160,7 @@
     "ForcefulStrike0": {
         "name": "ForcefulStrike0",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1175,7 +1175,7 @@
     "ForcefulStrike1": {
         "name": "ForcefulStrike1",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1190,7 +1190,7 @@
     "ForcefulStrike2": {
         "name": "ForcefulStrike2",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1205,7 +1205,7 @@
     "ForcefulStrike3": {
         "name": "ForcefulStrike3",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1219,7 +1219,7 @@
     "ForcefulStrike4": {
         "name": "ForcefulStrike4",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "cluster": 4,

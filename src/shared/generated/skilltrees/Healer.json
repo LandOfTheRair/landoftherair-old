@@ -268,7 +268,7 @@
     "HealingFocus0": {
         "name": "HealingFocus0",
         "traitName": "HealingFocus",
-        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "desc": "Heal 15% more health per point when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -282,7 +282,7 @@
     "HealingFocus1": {
         "name": "HealingFocus1",
         "traitName": "HealingFocus",
-        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "desc": "Heal 15% more health per point when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -297,7 +297,7 @@
     "HealingFocus2": {
         "name": "HealingFocus2",
         "traitName": "HealingFocus",
-        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "desc": "Heal 15% more health per point when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -311,7 +311,7 @@
     "HealingFocus3": {
         "name": "HealingFocus3",
         "traitName": "HealingFocus",
-        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "desc": "Heal 15% more health per point when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -326,7 +326,7 @@
     "HealingFocus4": {
         "name": "HealingFocus4",
         "traitName": "HealingFocus",
-        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "desc": "Heal 15% more health per point when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -340,7 +340,7 @@
     "HealingFocus5": {
         "name": "HealingFocus5",
         "traitName": "HealingFocus",
-        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "desc": "Heal 15% more health per point when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -355,7 +355,7 @@
     "HealingFocus6": {
         "name": "HealingFocus6",
         "traitName": "HealingFocus",
-        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "desc": "Heal 15% more health per point when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -370,7 +370,7 @@
     "HealingFocus7": {
         "name": "HealingFocus7",
         "traitName": "HealingFocus",
-        "desc": "Heal 10% more health per point when you use restorative magic.",
+        "desc": "Heal 15% more health per point when you use restorative magic.",
         "icon": "health-increase",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -945,7 +945,7 @@
     "NecroticFocus0": {
         "name": "NecroticFocus0",
         "traitName": "NecroticFocus",
-        "desc": "Deal 10% more necrotic damage per point.",
+        "desc": "Deal 15% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -959,7 +959,7 @@
     "NecroticFocus1": {
         "name": "NecroticFocus1",
         "traitName": "NecroticFocus",
-        "desc": "Deal 10% more necrotic damage per point.",
+        "desc": "Deal 15% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -973,7 +973,7 @@
     "NecroticFocus2": {
         "name": "NecroticFocus2",
         "traitName": "NecroticFocus",
-        "desc": "Deal 10% more necrotic damage per point.",
+        "desc": "Deal 15% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -987,7 +987,7 @@
     "NecroticFocus3": {
         "name": "NecroticFocus3",
         "traitName": "NecroticFocus",
-        "desc": "Deal 10% more necrotic damage per point.",
+        "desc": "Deal 15% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -1002,7 +1002,7 @@
     "NecroticFocus4": {
         "name": "NecroticFocus4",
         "traitName": "NecroticFocus",
-        "desc": "Deal 10% more necrotic damage per point.",
+        "desc": "Deal 15% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -1017,7 +1017,7 @@
     "NecroticFocus5": {
         "name": "NecroticFocus5",
         "traitName": "NecroticFocus",
-        "desc": "Deal 10% more necrotic damage per point.",
+        "desc": "Deal 15% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -1031,7 +1031,7 @@
     "NecroticFocus6": {
         "name": "NecroticFocus6",
         "traitName": "NecroticFocus",
-        "desc": "Deal 10% more necrotic damage per point.",
+        "desc": "Deal 15% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -1045,7 +1045,7 @@
     "NecroticFocus7": {
         "name": "NecroticFocus7",
         "traitName": "NecroticFocus",
-        "desc": "Deal 10% more necrotic damage per point.",
+        "desc": "Deal 15% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "capstone": true,
         "requireCharacterLevel": 15,

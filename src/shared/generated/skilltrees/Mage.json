@@ -266,7 +266,7 @@
     "MagicFocus0": {
         "name": "MagicFocus0",
         "traitName": "MagicFocus",
-        "desc": "Deal 10% more energy damage per point.",
+        "desc": "Deal 15% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -280,7 +280,7 @@
     "MagicFocus1": {
         "name": "MagicFocus1",
         "traitName": "MagicFocus",
-        "desc": "Deal 10% more energy damage per point.",
+        "desc": "Deal 15% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -294,7 +294,7 @@
     "MagicFocus2": {
         "name": "MagicFocus2",
         "traitName": "MagicFocus",
-        "desc": "Deal 10% more energy damage per point.",
+        "desc": "Deal 15% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -308,7 +308,7 @@
     "MagicFocus3": {
         "name": "MagicFocus3",
         "traitName": "MagicFocus",
-        "desc": "Deal 10% more energy damage per point.",
+        "desc": "Deal 15% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -323,7 +323,7 @@
     "MagicFocus4": {
         "name": "MagicFocus4",
         "traitName": "MagicFocus",
-        "desc": "Deal 10% more energy damage per point.",
+        "desc": "Deal 15% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "cluster": 1,
@@ -334,7 +334,7 @@
     "MagicFocus5": {
         "name": "MagicFocus5",
         "traitName": "MagicFocus",
-        "desc": "Deal 10% more energy damage per point.",
+        "desc": "Deal 15% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "cluster": 1,
@@ -345,7 +345,7 @@
     "MagicFocus6": {
         "name": "MagicFocus6",
         "traitName": "MagicFocus",
-        "desc": "Deal 10% more energy damage per point.",
+        "desc": "Deal 15% more energy damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "cluster": 1,
@@ -356,13 +356,12 @@
     "MagicFocus7": {
         "name": "MagicFocus7",
         "traitName": "MagicFocus",
-        "desc": "Deal 10% more energy damage per point.",
+        "desc": "Deal 15% more energy damage per point.",
         "icon": "plasma-bolt",
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 10,
         "unlocks": [
-            "MagicBolt",
             "Teleport"
         ],
         "cluster": 1,
@@ -449,7 +448,8 @@
         "cost": 3,
         "unlocks": [
             "MagicFocus7",
-            "MagicFocus5"
+            "MagicFocus5",
+            "MagicBolt"
         ],
         "cluster": 1,
         "unlockedBy": [
@@ -464,7 +464,7 @@
         "cost": 10,
         "cluster": 1,
         "unlockedBy": [
-            "MagicFocus7"
+            "Push"
         ]
     },
     "Teleport": {

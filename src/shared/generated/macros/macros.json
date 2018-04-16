@@ -132,6 +132,16 @@
             "requiresLearn": false
         },
         {
+            "name": "Charge",
+            "macro": "charge",
+            "icon": "running-ninja",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Hide",
             "macro": "hide",
             "icon": "hidden",
@@ -153,16 +163,6 @@
             "requiresLearn": false
         },
         {
-            "name": "Mug",
-            "macro": "mug",
-            "icon": "hooded-assassin",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Mug your target, dealing damage and stealing from them. Requires Thievery skill 7.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Kick",
             "macro": "kick",
             "icon": "barefoot",
@@ -173,12 +173,12 @@
             "requiresLearn": false
         },
         {
-            "name": "Charge",
-            "macro": "charge",
-            "icon": "running-ninja",
+            "name": "Mug",
+            "macro": "mug",
+            "icon": "hooded-assassin",
             "color": "#530000",
             "mode": "lockActivation",
-            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
+            "tooltipDesc": "Mug your target, dealing damage and stealing from them. Requires Thievery skill 7.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -401,6 +401,17 @@
             "requiresLearn": true
         },
         {
+            "name": "VitalEssence",
+            "macro": "cast vitalessence",
+            "icon": "bell-shield",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Boost maximum vitality for a single target. Cost: 200 MP",
+            "requireSkillLevel": 15,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Vision",
             "macro": "cast vision",
             "icon": "evil-eyes",
@@ -421,13 +432,243 @@
             "requiresLearn": true
         },
         {
-            "name": "VitalEssence",
-            "macro": "cast vitalessence",
-            "icon": "bell-shield",
+            "name": "Asper",
+            "macro": "cast asper",
+            "icon": "wind-hole",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Drain mana from a single target. Cost: 10 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Absorption",
+            "macro": "cast absorption",
+            "icon": "magic-swirl",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Absorb all types of magic. Cost: 100 MP",
+            "skillTPCost": 10,
+            "requireCharacterLevel": 10,
+            "requireSkillLevel": 7,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarWater",
+            "macro": "cast barwater",
+            "icon": "rosa-shield",
+            "color": "#208aec",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield water damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Drain",
+            "macro": "cast drain",
+            "icon": "wind-hole",
+            "color": "#af0000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Drain health from a single target. Cost: 10 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "FindFamiliar",
+            "macro": "cast findfamiliar",
+            "icon": "eagle-emblem",
+            "color": "#0aa",
+            "mode": "autoActivate",
+            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "FireMist",
+            "macro": "cast firemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 35 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EnergyWave",
+            "macro": "cast energywave",
+            "icon": "beams-aura",
+            "color": "#000080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 45 MP",
+            "requireCharacterLevel": 10,
+            "requireSkillLevel": 7,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Firethorns",
+            "macro": "cast firethorns",
+            "icon": "barbed-coil",
+            "color": "#f00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Physical attackers take fire damage. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Frostspikes",
+            "macro": "cast frostspikes",
+            "icon": "barbed-coil",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Physical attackers take ice damage. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Glacier Stance",
+            "macro": "stance glacier",
+            "icon": "frozen-orb",
+            "color": "#000080",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more defense, increasing your defensive capabilities and doing ice damage on hit.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "IceMist",
+            "macro": "cast icemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ImbueEnergy",
+            "macro": "cast imbueenergy",
+            "icon": "magic-palm",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Augment physical attacks to do bonus energy damage. Cost: 100 MP",
+            "requireSkillLevel": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Haste",
+            "macro": "cast haste",
+            "icon": "time-trap",
             "color": "#0a0",
             "mode": "clickToTarget",
-            "tooltipDesc": "Boost maximum vitality for a single target. Cost: 200 MP",
+            "tooltipDesc": "Act twice as fast. Cost: 200 MP",
+            "requireCharacterLevel": 20,
             "requireSkillLevel": 15,
+            "skillTPCost": 20,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ImbueFlame",
+            "macro": "cast imbueflame",
+            "icon": "magic-palm",
+            "color": "#a00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Augment physical attacks to do bonus fire damage. Cost: 100 MP",
+            "requireSkillLevel": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ImbueFrost",
+            "macro": "cast imbuefrost",
+            "icon": "magic-palm",
+            "color": "#00b",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Augment physical attacks to do bonus ice damage. Cost: 100 MP",
+            "requireSkillLevel": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MagicBolt",
+            "macro": "cast magicbolt",
+            "icon": "burning-dot",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 10 MP",
+            "skillTPCost": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Invisibility",
+            "macro": "cast invisibility",
+            "icon": "invisible",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Become invisible to the average vision. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MagicMissile",
+            "macro": "cast magicmissile",
+            "icon": "missile-swarm",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
+            "skillTPCost": 1,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Magic Shield",
+            "macro": "cast magicshield",
+            "icon": "energy-shield",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
+            "skillTPCost": 10,
+            "requireCharacterLevel": 10,
+            "requireSkillLevel": 7,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MassTeleport",
+            "macro": "cast massteleport",
+            "icon": "vortex",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Teleport those on your tile to a previously-memorized location. Cost: 100% MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Teleport",
+            "macro": "cast teleport",
+            "icon": "teleport",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Teleport to a previously-memorized location. Cost: 50% MP",
+            "requireCharacterLevel": 20,
+            "requireSkillLevel": 15,
+            "skillTPCost": 20,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Volcano Stance",
+            "macro": "stance volcano",
+            "icon": "fire-silhouette",
+            "color": "#DC143C",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more offensive, increasing your offensive capabilities and doing fire damage on hit.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -492,22 +733,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Poison",
-            "macro": "cast poison",
-            "icon": "poison-gas",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Push",
             "macro": "cast push",
             "icon": "swirl-string",
             "color": "#000",
             "mode": "clickToTarget",
             "tooltipDesc": "Push an enemy around. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Poison",
+            "macro": "cast poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -625,247 +866,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Absorption",
-            "macro": "cast absorption",
-            "icon": "magic-swirl",
-            "color": "#a0a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Absorb all types of magic. Cost: 100 MP",
-            "skillTPCost": 10,
-            "requireCharacterLevel": 10,
-            "requireSkillLevel": 7,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Asper",
-            "macro": "cast asper",
-            "icon": "wind-hole",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Drain mana from a single target. Cost: 10 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "BarWater",
-            "macro": "cast barwater",
-            "icon": "rosa-shield",
-            "color": "#208aec",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield water damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Drain",
-            "macro": "cast drain",
-            "icon": "wind-hole",
-            "color": "#af0000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Drain health from a single target. Cost: 10 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "EnergyWave",
-            "macro": "cast energywave",
-            "icon": "beams-aura",
-            "color": "#000080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 45 MP",
-            "requireCharacterLevel": 10,
-            "requireSkillLevel": 7,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "FindFamiliar",
-            "macro": "cast findfamiliar",
-            "icon": "eagle-emblem",
-            "color": "#0aa",
-            "mode": "autoActivate",
-            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "FireMist",
-            "macro": "cast firemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area fire effect on a target (3x3). Cost: 35 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Firethorns",
-            "macro": "cast firethorns",
-            "icon": "barbed-coil",
-            "color": "#f00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Physical attackers take fire damage. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Frostspikes",
-            "macro": "cast frostspikes",
-            "icon": "barbed-coil",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Physical attackers take ice damage. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Glacier Stance",
-            "macro": "stance glacier",
-            "icon": "frozen-orb",
-            "color": "#000080",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more defense, increasing your defensive capabilities and doing ice damage on hit.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Haste",
-            "macro": "cast haste",
-            "icon": "time-trap",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Act twice as fast. Cost: 200 MP",
-            "requireCharacterLevel": 20,
-            "requireSkillLevel": 15,
-            "skillTPCost": 20,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "IceMist",
-            "macro": "cast icemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "ImbueEnergy",
-            "macro": "cast imbueenergy",
-            "icon": "magic-palm",
-            "color": "#a0a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Augment physical attacks to do bonus energy damage. Cost: 100 MP",
-            "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "ImbueFlame",
-            "macro": "cast imbueflame",
-            "icon": "magic-palm",
-            "color": "#a00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Augment physical attacks to do bonus fire damage. Cost: 100 MP",
-            "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "ImbueFrost",
-            "macro": "cast imbuefrost",
-            "icon": "magic-palm",
-            "color": "#00b",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Augment physical attacks to do bonus ice damage. Cost: 100 MP",
-            "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Invisibility",
-            "macro": "cast invisibility",
-            "icon": "invisible",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Become invisible to the average vision. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MagicBolt",
-            "macro": "cast magicbolt",
-            "icon": "burning-dot",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 10 MP",
-            "skillTPCost": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MagicMissile",
-            "macro": "cast magicmissile",
-            "icon": "missile-swarm",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
-            "skillTPCost": 1,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Magic Shield",
-            "macro": "cast magicshield",
-            "icon": "energy-shield",
-            "color": "#a0a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
-            "skillTPCost": 10,
-            "requireCharacterLevel": 10,
-            "requireSkillLevel": 7,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MassTeleport",
-            "macro": "cast massteleport",
-            "icon": "vortex",
-            "color": "#a0a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Teleport those on your tile to a previously-memorized location. Cost: 100% MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Teleport",
-            "macro": "cast teleport",
-            "icon": "teleport",
-            "color": "#a0a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Teleport to a previously-memorized location. Cost: 50% MP",
-            "requireCharacterLevel": 20,
-            "requireSkillLevel": 15,
-            "skillTPCost": 20,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Volcano Stance",
-            "macro": "stance volcano",
-            "icon": "fire-silhouette",
-            "color": "#DC143C",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more offensive, increasing your offensive capabilities and doing fire damage on hit.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Blindstrike",
             "macro": "art blindstrike",
             "icon": "sword-tie",
@@ -887,17 +887,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Multistrike",
-            "macro": "art multistrike",
-            "icon": "sword-spin",
-            "color": "#a00",
-            "mode": "autoActivate",
-            "tooltipDesc": "Attack multiple creatures on your tile. Requires weapon skill 13.",
-            "requireSkillLevel": 13,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Parry Stance",
             "macro": "stance parry",
             "icon": "surrounded-shield",
@@ -906,6 +895,17 @@
             "mode": "autoActivate",
             "tooltipDesc": "Become more defensive, but lose offensive power. Requires weapon skill 10.",
             "requireSkillLevel": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Multistrike",
+            "macro": "art multistrike",
+            "icon": "sword-spin",
+            "color": "#a00",
+            "mode": "autoActivate",
+            "tooltipDesc": "Attack multiple creatures on your tile. Requires weapon skill 13.",
+            "requireSkillLevel": 13,
             "isSystem": true,
             "requiresLearn": true
         },
