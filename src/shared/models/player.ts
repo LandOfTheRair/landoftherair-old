@@ -622,8 +622,7 @@ export class Player extends Character {
 
   public increaseTraitLevel(trait: string, levelsGained: number, reqBaseClass?: string, extra = {}): void {
     this.traitLevels = this.traitLevels || {};
-    this.traitLevels[trait] = this.traitLevels[trait] || { level: 0, gearBoost: 0, active: true, reqBaseClass: '' };
-    this.traitLevels[trait].reqBaseClass = reqBaseClass;
+    this.traitLevels[trait] = this.traitLevels[trait] || { level: 0, gearBoost: 0 };
     extend(this.traitLevels[trait], extra);
     this.traitLevels[trait].level = this.traitLevels[trait].level || 0;
     this.traitLevels[trait].level += levelsGained;
@@ -689,13 +688,7 @@ export class Player extends Character {
     if(!this.traitLevels) return false;
 
     const traitRef = this.traitLevels[trait];
-    if(!traitRef) return false;
-
-    // if my class doesn't match the trait name, the answer is no
-    if(traitRef.reqBaseClass && this.baseClass !== traitRef.reqBaseClass) return false;
-
-    // if it's active, yes
-    return traitRef.active;
+    return !!traitRef;
   }
 
   takeSequenceOfSteps(steps, isChasing, recalculateFOV) {

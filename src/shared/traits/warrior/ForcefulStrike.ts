@@ -6,7 +6,7 @@ export class ForcefulStrike extends Trait {
 
   static baseClass = 'Warrior';
   static traitName = 'ForcefulStrike';
-  static description = 'Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.';
+  static description = 'Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.';
   static icon = 'striped-sword';
 
   static upgrades = [

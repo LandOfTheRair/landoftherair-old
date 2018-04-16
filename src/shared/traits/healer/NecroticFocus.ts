@@ -5,7 +5,7 @@ export class NecroticFocus extends Trait {
 
   static baseClass = 'Healer';
   static traitName = 'NecroticFocus';
-  static description = 'Deal 15% more necrotic damage per point.';
+  static description = 'Deal 10% more necrotic damage per point.';
   static icon = 'plasma-bolt';
 
   static upgrades = [
