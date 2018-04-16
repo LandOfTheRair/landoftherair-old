@@ -76,7 +76,7 @@ class NPCLoader {
       'Wilderness': ['Underground', 'Enemy'],
       'Underground': ['Wilderness', 'Enemy'],
       'Pirates': ['Adventurers', 'Townsfolk', 'Enemy'],
-      'Enemy': ['Royalty', 'Townsfolk', 'Adventurers', 'Wilderness', 'Underground', 'Pirates'],
+      'Enemy': ['Royalty', 'Townsfolk', 'Adventurers', 'Wilderness', 'Underground', 'Pirates', 'None'],
       'NaturalResource': ['Enemy']
     };
 

@@ -323,6 +323,8 @@ export class Spawner {
 
     npc.hp.toMaximum();
     npc.mp.toMaximum();
+
+    npc.$$room.state.calculateFOV(npc);
     this.addNPC(npc);
 
     return npc;
