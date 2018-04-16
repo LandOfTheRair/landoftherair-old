@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.2.7 (16/04/2018)
+
+#### Enhancements
+
+- [#802](https://github.com/LandOfTheRair/landoftherair/issues/802) wield/sheathe macros
+- [#800](https://github.com/LandOfTheRair/landoftherair/issues/800) trait text needs some special formatter setup
+
+#### Balance Adjustments
+
+- [#801](https://github.com/LandOfTheRair/landoftherair/issues/801) items with multiple types should take the average of them to get the skill in combat
+- [#774](https://github.com/LandOfTheRair/landoftherair/issues/774) elites should have a higher chance of dropping items
+- [#753](https://github.com/LandOfTheRair/landoftherair/issues/753) Light should make an area non-darkable for a while, dependent on skill
+
+#### New Content
+
+- [#780](https://github.com/LandOfTheRair/landoftherair/issues/780) party buffs should work differently
+
+---
+
 ## v0.2.6 (15/04/2018)
 
 #### Enhancements
