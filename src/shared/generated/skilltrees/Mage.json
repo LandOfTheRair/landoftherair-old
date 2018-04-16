@@ -9,19 +9,19 @@
             "CarefulTouch0",
             "DeathGrip0",
             "NaturalArmor0",
-            "PartyManaRegen0"
+            "PartyManaRegeneration0"
         ],
         "name": "Mage",
         "cluster": 1
     },
-    "PartyManaRegen0": {
-        "name": "PartyManaRegen0",
-        "traitName": "PartyManaRegen",
+    "PartyManaRegeneration0": {
+        "name": "PartyManaRegeneration0",
+        "traitName": "PartyManaRegeneration",
         "desc": "Increase the mana regeneration of your party by +$2|6$.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
-            "PartyManaRegen1"
+            "PartyManaRegeneration1"
         ],
         "cluster": 1,
         "isParty": true,
@@ -29,24 +29,24 @@
             "Mage"
         ]
     },
-    "PartyManaRegen1": {
-        "name": "PartyManaRegen1",
-        "traitName": "PartyManaRegen",
+    "PartyManaRegeneration1": {
+        "name": "PartyManaRegeneration1",
+        "traitName": "PartyManaRegeneration",
         "desc": "Increase the mana regeneration of your party by +$2|6$.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
-            "PartyManaRegen2"
+            "PartyManaRegeneration2"
         ],
         "cluster": 1,
         "isParty": true,
         "unlockedBy": [
-            "PartyManaRegen0"
+            "PartyManaRegeneration0"
         ]
     },
-    "PartyManaRegen2": {
-        "name": "PartyManaRegen2",
-        "traitName": "PartyManaRegen",
+    "PartyManaRegeneration2": {
+        "name": "PartyManaRegeneration2",
+        "traitName": "PartyManaRegeneration",
         "desc": "Increase the mana regeneration of your party by +$2|6$.",
         "icon": "health-increase",
         "capstone": true,
@@ -55,7 +55,7 @@
         "cluster": 1,
         "isParty": true,
         "unlockedBy": [
-            "PartyManaRegen1"
+            "PartyManaRegeneration1"
         ]
     },
     "CalmMind0": {

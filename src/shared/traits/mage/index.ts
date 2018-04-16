@@ -5,7 +5,7 @@ export * from './FrostedTouch';
 export * from './ManaPool';
 export * from './MagicFocus';
 export * from './WandSpecialty';
-export * from './PartyManaRegen';
+export * from './PartyManaRegeneration';
 
 export * from './FriendlyFire';
 export * from './ThermalBarrier';

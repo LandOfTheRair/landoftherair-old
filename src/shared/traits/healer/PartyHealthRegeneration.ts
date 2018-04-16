@@ -1,9 +1,9 @@
 
 import { PartyTrait } from '../../models/partytrait';
 
-export class PartyHealthRegen extends PartyTrait {
+export class PartyHealthRegeneration extends PartyTrait {
 
-  static traitName = 'PartyHealthRegen';
+  static traitName = 'PartyHealthRegeneration';
   static description = 'Increase the health regeneration of your party by +$2|6$.';
   static icon = 'health-increase';
 

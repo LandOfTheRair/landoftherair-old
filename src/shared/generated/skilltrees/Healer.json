@@ -6,7 +6,7 @@
         "root": true,
         "unlocks": [
             "Cure",
-            "PartyHealthRegen0",
+            "PartyHealthRegeneration0",
             "CalmMind0",
             "ManaPool0",
             "CarefulTouch0",
@@ -16,14 +16,14 @@
         "name": "Healer",
         "cluster": 1
     },
-    "PartyHealthRegen0": {
-        "name": "PartyHealthRegen0",
-        "traitName": "PartyHealthRegen",
+    "PartyHealthRegeneration0": {
+        "name": "PartyHealthRegeneration0",
+        "traitName": "PartyHealthRegeneration",
         "desc": "Increase the health regeneration of your party by +$2|6$.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
-            "PartyHealthRegen1"
+            "PartyHealthRegeneration1"
         ],
         "cluster": 1,
         "isParty": true,
@@ -31,24 +31,24 @@
             "Healer"
         ]
     },
-    "PartyHealthRegen1": {
-        "name": "PartyHealthRegen1",
-        "traitName": "PartyHealthRegen",
+    "PartyHealthRegeneration1": {
+        "name": "PartyHealthRegeneration1",
+        "traitName": "PartyHealthRegeneration",
         "desc": "Increase the health regeneration of your party by +$2|6$.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
-            "PartyHealthRegen2"
+            "PartyHealthRegeneration2"
         ],
         "cluster": 1,
         "isParty": true,
         "unlockedBy": [
-            "PartyHealthRegen0"
+            "PartyHealthRegeneration0"
         ]
     },
-    "PartyHealthRegen2": {
-        "name": "PartyHealthRegen2",
-        "traitName": "PartyHealthRegen",
+    "PartyHealthRegeneration2": {
+        "name": "PartyHealthRegeneration2",
+        "traitName": "PartyHealthRegeneration",
         "desc": "Increase the health regeneration of your party by +$2|6$.",
         "icon": "health-increase",
         "capstone": true,
@@ -57,7 +57,7 @@
         "cluster": 1,
         "isParty": true,
         "unlockedBy": [
-            "PartyHealthRegen1"
+            "PartyHealthRegeneration1"
         ]
     },
     "CalmMind0": {

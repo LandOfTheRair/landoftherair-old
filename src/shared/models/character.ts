@@ -545,7 +545,6 @@ export class Character {
     if(this.rightHand && this.rightHand.stats && this.canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
 
     this.adjustStatsForTraits();
-    this.adjustStatsForPartyAbilities();
 
     this.hp.maximum = Math.max(1, this.getTotalStat('hp'));
     this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
@@ -1067,7 +1066,7 @@ export class Character {
     const newPermanency = get(effect, 'effectInfo.isPermanent', false);
 
     if(existingEffect) {
-      if(oldPermanency && !newPermanency) {
+      if(oldPermanency && !newPermanency && !includes(effect.name, 'Party')) {
         this.sendClientMessage(`A new casting of ${effect.name} refused to take hold.`);
         return;
       }
@@ -1333,17 +1332,6 @@ export class Character {
     // mage & healer traits
     this.totalStats.mp += this.getTraitLevelAndUsageModifier('ManaPool');
     this.totalStats.mpregen += this.getTraitLevelAndUsageModifier('CalmMind');
-  }
-
-  private adjustStatsForPartyAbilities(): void {
-    const party = (<any>this).party;
-    if(!party || !party.canApplyPartyAbilities) return;
-
-    this.totalStats.defense += this.getTraitLevelAndUsageModifier('PartyDefense');
-    this.totalStats.offense += this.getTraitLevelAndUsageModifier('PartyOffense');
-
-    this.totalStats.mpregen += this.getTraitLevelAndUsageModifier('PartyManaRegeneration');
-    this.totalStats.hpregen += this.getTraitLevelAndUsageModifier('PartyHealthRegeneration');
   }
 
   public isUnableToAct(): boolean {

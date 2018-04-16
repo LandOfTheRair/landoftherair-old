@@ -1,21 +1,26 @@
 
+import { compact } from 'lodash';
+
 import { Player } from '../../../shared/models/player';
 import { Allegiance } from '../../../shared/models/character';
 
 export class PartyHelper {
 
-  static shareRepWithParty(player: Player, allegiance: Allegiance, delta: number) {
-    const party = player.party;
-
-    const members = party.members;
-
-    members.forEach(({ username }) => {
+  static getPartyMembersInRange(player: Player, distance = 7): Player[] {
+    const playerRefs = player.party.members.map(({ username }) => {
       if(username === player.username) return;
+      const memberRef = player.$$room.state.findPlayer(username);
 
-      const partyMember = player.$$room.state.findPlayer(username);
+      if(player.distFrom(memberRef) > distance) return null;
 
-      if(!partyMember || player.distFrom(partyMember) > 7) return;
+      return memberRef;
+    });
 
+    return compact(playerRefs);
+  }
+
+  static shareRepWithParty(player: Player, allegiance: Allegiance, delta: number) {
+    PartyHelper.getPartyMembersInRange(player).forEach(partyMember => {
       partyMember.changeRep(allegiance, delta, true);
     });
   }
@@ -35,13 +40,7 @@ export class PartyHelper {
 
     skill = Math.floor(skill);
 
-    members.forEach(({ username }) => {
-      if(username === player.username) return;
-
-      const partyMember = player.$$room.state.findPlayer(username);
-
-      if(!partyMember || player.distFrom(partyMember) > 7) return;
-
+    PartyHelper.getPartyMembersInRange(player).forEach(partyMember => {
       partyMember.gainCurrentSkills(skill);
     });
   }
@@ -63,15 +62,8 @@ export class PartyHelper {
 
     let foundMembers = 0;
 
-    members.forEach(({ username }) => {
-      if(username === player.username) return;
-
-      const partyMember = player.$$room.state.findPlayer(username);
-
-      if(!partyMember || player.distFrom(partyMember) > 7) return;
-
+    PartyHelper.getPartyMembersInRange(player).forEach(partyMember => {
       foundMembers++;
-
       partyMember.gainExp(exp);
     });
 
@@ -79,17 +71,7 @@ export class PartyHelper {
   }
 
   static shareKillsWithParty(player: Player, questOpts) {
-    const party = player.party;
-
-    const members = party.members;
-
-    members.forEach(({ username }) => {
-      if(username === player.username) return;
-
-      const partyMember = player.$$room.state.findPlayer(username);
-
-      if(!partyMember || player.distFrom(partyMember) > 7) return;
-
+    PartyHelper.getPartyMembersInRange(player).forEach(partyMember => {
       partyMember.checkForQuestUpdates(questOpts);
     });
   }

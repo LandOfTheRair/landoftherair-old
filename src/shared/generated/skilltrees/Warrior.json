@@ -20,7 +20,7 @@
     "PartyDefense0": {
         "name": "PartyDefense0",
         "traitName": "PartyDefense",
-        "desc": "Increase your defensive capabilities while in a party.",
+        "desc": "Increase the defensive capabilities of your party.",
         "icon": "armor-vest",
         "cost": 3,
         "unlocks": [
@@ -35,7 +35,7 @@
     "PartyDefense1": {
         "name": "PartyDefense1",
         "traitName": "PartyDefense",
-        "desc": "Increase your defensive capabilities while in a party.",
+        "desc": "Increase the defensive capabilities of your party.",
         "icon": "armor-vest",
         "cost": 3,
         "unlocks": [
@@ -50,7 +50,7 @@
     "PartyDefense2": {
         "name": "PartyDefense2",
         "traitName": "PartyDefense",
-        "desc": "Increase your defensive capabilities while in a party.",
+        "desc": "Increase the defensive capabilities of your party.",
         "icon": "armor-vest",
         "capstone": true,
         "cost": 10,
@@ -186,7 +186,7 @@
     "EagleEye0": {
         "name": "EagleEye0",
         "traitName": "EagleEye",
-        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "desc": "Sharpen your vision, increasing your accuracy by $1|3$.",
         "icon": "bullseye",
         "cost": 3,
         "unlocks": [
@@ -200,7 +200,7 @@
     "EagleEye1": {
         "name": "EagleEye1",
         "traitName": "EagleEye",
-        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "desc": "Sharpen your vision, increasing your accuracy by $1|3$.",
         "icon": "bullseye",
         "cost": 3,
         "unlocks": [
@@ -214,7 +214,7 @@
     "EagleEye2": {
         "name": "EagleEye2",
         "traitName": "EagleEye",
-        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "desc": "Sharpen your vision, increasing your accuracy by $1|3$.",
         "icon": "bullseye",
         "cost": 3,
         "unlocks": [
@@ -228,7 +228,7 @@
     "EagleEye3": {
         "name": "EagleEye3",
         "traitName": "EagleEye",
-        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "desc": "Sharpen your vision, increasing your accuracy by $1|3$.",
         "icon": "bullseye",
         "cost": 3,
         "unlocks": [
@@ -242,7 +242,7 @@
     "EagleEye4": {
         "name": "EagleEye4",
         "traitName": "EagleEye",
-        "desc": "Sharpen your vision, increasing your accuracy by 1 per point.",
+        "desc": "Sharpen your vision, increasing your accuracy by $1|3$.",
         "icon": "bullseye",
         "cost": 3,
         "cluster": 1,
@@ -253,7 +253,7 @@
     "SwordTricks0": {
         "name": "SwordTricks0",
         "traitName": "SwordTricks",
-        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "desc": "Learn some new sword tricks, increasing your offense by $1|3$.",
         "icon": "sword-clash",
         "cost": 3,
         "unlocks": [
@@ -267,7 +267,7 @@
     "SwordTricks1": {
         "name": "SwordTricks1",
         "traitName": "SwordTricks",
-        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "desc": "Learn some new sword tricks, increasing your offense by $1|3$.",
         "icon": "sword-clash",
         "cost": 3,
         "unlocks": [
@@ -281,7 +281,7 @@
     "SwordTricks2": {
         "name": "SwordTricks2",
         "traitName": "SwordTricks",
-        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "desc": "Learn some new sword tricks, increasing your offense by $1|3$.",
         "icon": "sword-clash",
         "cost": 3,
         "unlocks": [
@@ -295,7 +295,7 @@
     "SwordTricks3": {
         "name": "SwordTricks3",
         "traitName": "SwordTricks",
-        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "desc": "Learn some new sword tricks, increasing your offense by $1|3$.",
         "icon": "sword-clash",
         "cost": 3,
         "unlocks": [
@@ -309,7 +309,7 @@
     "SwordTricks4": {
         "name": "SwordTricks4",
         "traitName": "SwordTricks",
-        "desc": "Learn some new sword tricks, increasing your offense by 1 per point.",
+        "desc": "Learn some new sword tricks, increasing your offense by $1|3$.",
         "icon": "sword-clash",
         "cost": 3,
         "cluster": 1,
@@ -320,7 +320,7 @@
     "FunkyMoves0": {
         "name": "FunkyMoves0",
         "traitName": "FunkyMoves",
-        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "desc": "Learn to dance better, increasing your defense by $1|3$.",
         "icon": "wingfoot",
         "cost": 3,
         "unlocks": [
@@ -334,7 +334,7 @@
     "FunkyMoves1": {
         "name": "FunkyMoves1",
         "traitName": "FunkyMoves",
-        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "desc": "Learn to dance better, increasing your defense by $1|3$.",
         "icon": "wingfoot",
         "cost": 3,
         "unlocks": [
@@ -348,7 +348,7 @@
     "FunkyMoves2": {
         "name": "FunkyMoves2",
         "traitName": "FunkyMoves",
-        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "desc": "Learn to dance better, increasing your defense by $1|3$.",
         "icon": "wingfoot",
         "cost": 3,
         "unlocks": [
@@ -362,7 +362,7 @@
     "FunkyMoves3": {
         "name": "FunkyMoves3",
         "traitName": "FunkyMoves",
-        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "desc": "Learn to dance better, increasing your defense by $1|3$.",
         "icon": "wingfoot",
         "cost": 3,
         "unlocks": [
@@ -376,7 +376,7 @@
     "FunkyMoves4": {
         "name": "FunkyMoves4",
         "traitName": "FunkyMoves",
-        "desc": "Learn to dance better, increasing your defense by 1 per point.",
+        "desc": "Learn to dance better, increasing your defense by $1|3$.",
         "icon": "wingfoot",
         "cost": 3,
         "cluster": 1,
@@ -468,7 +468,7 @@
     "ForcefulStrike5": {
         "name": "ForcefulStrike5",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -482,7 +482,7 @@
     "ForcefulStrike6": {
         "name": "ForcefulStrike6",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -497,7 +497,7 @@
     "ForcefulStrike7": {
         "name": "ForcefulStrike7",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -511,7 +511,7 @@
     "ForcefulStrike8": {
         "name": "ForcefulStrike8",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -525,7 +525,7 @@
     "ForcefulStrike9": {
         "name": "ForcefulStrike9",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -539,7 +539,7 @@
     "OffhandFinesse0": {
         "name": "OffhandFinesse0",
         "traitName": "OffhandFinesse",
-        "desc": "Increase your offhand attack damage by 10% per point.",
+        "desc": "Increase your offhand attack damage by $10|30$%.",
         "icon": "crossed-axes",
         "cost": 3,
         "unlocks": [
@@ -553,7 +553,7 @@
     "OffhandFinesse1": {
         "name": "OffhandFinesse1",
         "traitName": "OffhandFinesse",
-        "desc": "Increase your offhand attack damage by 10% per point.",
+        "desc": "Increase your offhand attack damage by $10|30$%.",
         "icon": "crossed-axes",
         "cost": 3,
         "unlocks": [
@@ -568,7 +568,7 @@
     "OffhandFinesse2": {
         "name": "OffhandFinesse2",
         "traitName": "OffhandFinesse",
-        "desc": "Increase your offhand attack damage by 10% per point.",
+        "desc": "Increase your offhand attack damage by $10|30$%.",
         "icon": "crossed-axes",
         "cost": 3,
         "unlocks": [
@@ -582,7 +582,7 @@
     "OffhandFinesse3": {
         "name": "OffhandFinesse3",
         "traitName": "OffhandFinesse",
-        "desc": "Increase your offhand attack damage by 10% per point.",
+        "desc": "Increase your offhand attack damage by $10|30$%.",
         "icon": "crossed-axes",
         "cost": 3,
         "unlocks": [
@@ -596,7 +596,7 @@
     "OffhandFinesse4": {
         "name": "OffhandFinesse4",
         "traitName": "OffhandFinesse",
-        "desc": "Increase your offhand attack damage by 10% per point.",
+        "desc": "Increase your offhand attack damage by $10|30$%.",
         "icon": "crossed-axes",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -609,7 +609,7 @@
     "Riposte0": {
         "name": "Riposte0",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $2|6$% per point.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -623,7 +623,7 @@
     "Riposte1": {
         "name": "Riposte1",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $2|6$% per point.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -638,7 +638,7 @@
     "Riposte2": {
         "name": "Riposte2",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $2|6$% per point.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -652,7 +652,7 @@
     "Riposte3": {
         "name": "Riposte3",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $2|6$% per point.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -666,7 +666,7 @@
     "Riposte4": {
         "name": "Riposte4",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by 2% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $2|6$% per point.",
         "icon": "spinning-sword",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -679,7 +679,7 @@
     "BoostedBoost0": {
         "name": "BoostedBoost0",
         "traitName": "BoostedBoost",
-        "desc": "Boost adds +1 more to each stat boosted.",
+        "desc": "Boost adds +$1|3$ more to each stat boosted.",
         "icon": "fist",
         "cost": 20,
         "unlocks": [
@@ -693,7 +693,7 @@
     "BoostedBoost1": {
         "name": "BoostedBoost1",
         "traitName": "BoostedBoost",
-        "desc": "Boost adds +1 more to each stat boosted.",
+        "desc": "Boost adds +$1|3$ more to each stat boosted.",
         "icon": "fist",
         "cost": 20,
         "cluster": 2,
@@ -1160,7 +1160,7 @@
     "ForcefulStrike0": {
         "name": "ForcefulStrike0",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1175,7 +1175,7 @@
     "ForcefulStrike1": {
         "name": "ForcefulStrike1",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1190,7 +1190,7 @@
     "ForcefulStrike2": {
         "name": "ForcefulStrike2",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1205,7 +1205,7 @@
     "ForcefulStrike3": {
         "name": "ForcefulStrike3",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1219,7 +1219,7 @@
     "ForcefulStrike4": {
         "name": "ForcefulStrike4",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "cluster": 4,

@@ -17,7 +17,7 @@
     "PartyOffense0": {
         "name": "PartyOffense0",
         "traitName": "PartyOffense",
-        "desc": "Increase your offensive capabilities while in a party.",
+        "desc": "Increase the offensive capabilities of your party.",
         "icon": "sword-clash",
         "cost": 3,
         "unlocks": [
@@ -32,7 +32,7 @@
     "PartyOffense1": {
         "name": "PartyOffense1",
         "traitName": "PartyOffense",
-        "desc": "Increase your offensive capabilities while in a party.",
+        "desc": "Increase the offensive capabilities of your party.",
         "icon": "sword-clash",
         "cost": 3,
         "unlocks": [
@@ -47,7 +47,7 @@
     "PartyOffense2": {
         "name": "PartyOffense2",
         "traitName": "PartyOffense",
-        "desc": "Increase your offensive capabilities while in a party.",
+        "desc": "Increase the offensive capabilities of your party.",
         "icon": "sword-clash",
         "capstone": true,
         "cost": 10,
@@ -226,7 +226,7 @@
     "DoubleStealing0": {
         "name": "DoubleStealing0",
         "traitName": "DoubleStealing",
-        "desc": "You will use both hands when stelaing, if possible.",
+        "desc": "You will use both hands when stealing, if possible.",
         "icon": "take-my-money",
         "capstone": true,
         "cost": 30,
@@ -249,7 +249,7 @@
     "ShadowSheath0": {
         "name": "ShadowSheath0",
         "traitName": "ShadowSheath",
-        "desc": "Your weapons are 2% easier per point to conceal.",
+        "desc": "Your weapons are $2|6$% easier to conceal.",
         "icon": "thrown-knife",
         "cost": 3,
         "unlocks": [
@@ -263,7 +263,7 @@
     "ShadowSheath1": {
         "name": "ShadowSheath1",
         "traitName": "ShadowSheath",
-        "desc": "Your weapons are 2% easier per point to conceal.",
+        "desc": "Your weapons are $2|6$% easier to conceal.",
         "icon": "thrown-knife",
         "cost": 3,
         "cluster": 2,
@@ -274,7 +274,7 @@
     "ShadowSheath2": {
         "name": "ShadowSheath2",
         "traitName": "ShadowSheath",
-        "desc": "Your weapons are 2% easier per point to conceal.",
+        "desc": "Your weapons are $2|6$% easier to conceal.",
         "icon": "thrown-knife",
         "cost": 3,
         "cluster": 2,
@@ -285,7 +285,7 @@
     "ShadowSheath3": {
         "name": "ShadowSheath3",
         "traitName": "ShadowSheath",
-        "desc": "Your weapons are 2% easier per point to conceal.",
+        "desc": "Your weapons are $2|6$% easier to conceal.",
         "icon": "thrown-knife",
         "cost": 3,
         "cluster": 2,
@@ -296,7 +296,7 @@
     "ShadowSheath4": {
         "name": "ShadowSheath4",
         "traitName": "ShadowSheath",
-        "desc": "Your weapons are 2% easier per point to conceal.",
+        "desc": "Your weapons are $2|6$% easier to conceal.",
         "icon": "thrown-knife",
         "cost": 3,
         "cluster": 2,
@@ -307,7 +307,7 @@
     "ShadowSheath5": {
         "name": "ShadowSheath5",
         "traitName": "ShadowSheath",
-        "desc": "Your weapons are 2% easier per point to conceal.",
+        "desc": "Your weapons are $2|6$% easier to conceal.",
         "icon": "thrown-knife",
         "cost": 3,
         "cluster": 2,
@@ -318,7 +318,7 @@
     "ShadowSheath6": {
         "name": "ShadowSheath6",
         "traitName": "ShadowSheath",
-        "desc": "Your weapons are 2% easier per point to conceal.",
+        "desc": "Your weapons are $2|6$% easier to conceal.",
         "icon": "thrown-knife",
         "capstone": true,
         "cost": 10,
@@ -330,7 +330,7 @@
     "DarkerShadows0": {
         "name": "DarkerShadows0",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are 2% darker per point.",
+        "desc": "The shadows around you are $2|6$% darker.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -345,7 +345,7 @@
     "DarkerShadows1": {
         "name": "DarkerShadows1",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are 2% darker per point.",
+        "desc": "The shadows around you are $2|6$% darker.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -360,7 +360,7 @@
     "DarkerShadows2": {
         "name": "DarkerShadows2",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are 2% darker per point.",
+        "desc": "The shadows around you are $2|6$% darker.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -376,7 +376,7 @@
     "DarkerShadows3": {
         "name": "DarkerShadows3",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are 2% darker per point.",
+        "desc": "The shadows around you are $2|6$% darker.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -391,7 +391,7 @@
     "DarkerShadows4": {
         "name": "DarkerShadows4",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are 2% darker per point.",
+        "desc": "The shadows around you are $2|6$% darker.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -406,7 +406,7 @@
     "DarkerShadows5": {
         "name": "DarkerShadows5",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are 2% darker per point.",
+        "desc": "The shadows around you are $2|6$% darker.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -421,7 +421,7 @@
     "DarkerShadows6": {
         "name": "DarkerShadows6",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are 2% darker per point.",
+        "desc": "The shadows around you are $2|6$% darker.",
         "icon": "hidden",
         "capstone": true,
         "cost": 10,
@@ -511,7 +511,7 @@
     "OffhandFinesse0": {
         "name": "OffhandFinesse0",
         "traitName": "OffhandFinesse",
-        "desc": "Increase your offhand attack damage by 10% per point.",
+        "desc": "Increase your offhand attack damage by $10|30$%.",
         "icon": "crossed-sabres",
         "cost": 3,
         "unlocks": [
@@ -525,7 +525,7 @@
     "OffhandFinesse1": {
         "name": "OffhandFinesse1",
         "traitName": "OffhandFinesse",
-        "desc": "Increase your offhand attack damage by 10% per point.",
+        "desc": "Increase your offhand attack damage by $10|30$%.",
         "icon": "crossed-sabres",
         "cost": 3,
         "unlocks": [
@@ -539,7 +539,7 @@
     "OffhandFinesse2": {
         "name": "OffhandFinesse2",
         "traitName": "OffhandFinesse",
-        "desc": "Increase your offhand attack damage by 10% per point.",
+        "desc": "Increase your offhand attack damage by $10|30$%.",
         "icon": "crossed-sabres",
         "cost": 3,
         "unlocks": [
@@ -553,7 +553,7 @@
     "OffhandFinesse3": {
         "name": "OffhandFinesse3",
         "traitName": "OffhandFinesse",
-        "desc": "Increase your offhand attack damage by 10% per point.",
+        "desc": "Increase your offhand attack damage by $10|30$%.",
         "icon": "crossed-sabres",
         "cost": 3,
         "unlocks": [
@@ -567,7 +567,7 @@
     "OffhandFinesse4": {
         "name": "OffhandFinesse4",
         "traitName": "OffhandFinesse",
-        "desc": "Increase your offhand attack damage by 10% per point.",
+        "desc": "Increase your offhand attack damage by $10|30$%.",
         "icon": "crossed-sabres",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -580,7 +580,7 @@
     "PhilosophersStone0": {
         "name": "PhilosophersStone0",
         "traitName": "PhilosophersStone",
-        "desc": "You get 10% more gold per point when you transmute items.",
+        "desc": "You get $10|30$% more gold when you transmute items.",
         "icon": "coins",
         "cost": 3,
         "unlocks": [
@@ -594,7 +594,7 @@
     "PhilosophersStone1": {
         "name": "PhilosophersStone1",
         "traitName": "PhilosophersStone",
-        "desc": "You get 10% more gold per point when you transmute items.",
+        "desc": "You get $10|30$% more gold when you transmute items.",
         "icon": "coins",
         "cost": 3,
         "unlocks": [
@@ -608,7 +608,7 @@
     "PhilosophersStone2": {
         "name": "PhilosophersStone2",
         "traitName": "PhilosophersStone",
-        "desc": "You get 10% more gold per point when you transmute items.",
+        "desc": "You get $10|30$% more gold when you transmute items.",
         "icon": "coins",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -711,7 +711,7 @@
     "ReusableTraps0": {
         "name": "ReusableTraps0",
         "traitName": "ReusableTraps",
-        "desc": "Your traps can be triggered 1 more time per point.",
+        "desc": "Your traps can be triggered $1|3$ more time(s).",
         "icon": "regeneration",
         "cost": 15,
         "unlocks": [
@@ -725,7 +725,7 @@
     "ReusableTraps1": {
         "name": "ReusableTraps1",
         "traitName": "ReusableTraps",
-        "desc": "Your traps can be triggered 1 more time per point.",
+        "desc": "Your traps can be triggered $1|3$ more time(s).",
         "icon": "regeneration",
         "cost": 15,
         "cluster": 3,
@@ -903,7 +903,7 @@
     "ShadowDaggers0": {
         "name": "ShadowDaggers0",
         "traitName": "ShadowDaggers",
-        "desc": "Your plain melee attacks turn into backstabs 1% of the time per point.",
+        "desc": "Your plain melee attacks turn into backstabs $1|3$% of the time.",
         "icon": "daggers",
         "cost": 3,
         "unlocks": [
@@ -918,7 +918,7 @@
     "ShadowDaggers1": {
         "name": "ShadowDaggers1",
         "traitName": "ShadowDaggers",
-        "desc": "Your plain melee attacks turn into backstabs 1% of the time per point.",
+        "desc": "Your plain melee attacks turn into backstabs $1|3$% of the time.",
         "icon": "daggers",
         "cost": 3,
         "unlocks": [
@@ -933,7 +933,7 @@
     "ShadowDaggers2": {
         "name": "ShadowDaggers2",
         "traitName": "ShadowDaggers",
-        "desc": "Your plain melee attacks turn into backstabs 1% of the time per point.",
+        "desc": "Your plain melee attacks turn into backstabs $1|3$% of the time.",
         "icon": "daggers",
         "capstone": true,
         "cost": 10,
@@ -948,7 +948,7 @@
     "ShadowRanger0": {
         "name": "ShadowRanger0",
         "traitName": "ShadowRanger",
-        "desc": "Do 10% more damage while hidden per point.",
+        "desc": "Do $10|30$% more damage while hidden.",
         "icon": "on-sight",
         "cost": 3,
         "unlocks": [
@@ -963,7 +963,7 @@
     "ShadowRanger1": {
         "name": "ShadowRanger1",
         "traitName": "ShadowRanger",
-        "desc": "Do 10% more damage while hidden per point.",
+        "desc": "Do $10|30$% more damage while hidden.",
         "icon": "on-sight",
         "cost": 3,
         "unlocks": [
@@ -978,7 +978,7 @@
     "ShadowRanger2": {
         "name": "ShadowRanger2",
         "traitName": "ShadowRanger",
-        "desc": "Do 10% more damage while hidden per point.",
+        "desc": "Do $10|30$% more damage while hidden.",
         "icon": "on-sight",
         "capstone": true,
         "cost": 10,
@@ -990,7 +990,7 @@
     "ShadowSwap0": {
         "name": "ShadowSwap0",
         "traitName": "ShadowSwap",
-        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "desc": "Swap places with your shadow in combat $2|6$% more frequently.",
         "icon": "shadow-follower",
         "cost": 3,
         "unlocks": [
@@ -1004,7 +1004,7 @@
     "ShadowSwap1": {
         "name": "ShadowSwap1",
         "traitName": "ShadowSwap",
-        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "desc": "Swap places with your shadow in combat $2|6$% more frequently.",
         "icon": "shadow-follower",
         "cost": 3,
         "unlocks": [
@@ -1018,7 +1018,7 @@
     "ShadowSwap2": {
         "name": "ShadowSwap2",
         "traitName": "ShadowSwap",
-        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "desc": "Swap places with your shadow in combat $2|6$% more frequently.",
         "icon": "shadow-follower",
         "cost": 3,
         "cluster": 4,
@@ -1029,7 +1029,7 @@
     "ShadowSwap3": {
         "name": "ShadowSwap3",
         "traitName": "ShadowSwap",
-        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "desc": "Swap places with your shadow in combat $2|6$% more frequently.",
         "icon": "shadow-follower",
         "cost": 3,
         "cluster": 4,
@@ -1040,7 +1040,7 @@
     "ShadowSwap4": {
         "name": "ShadowSwap4",
         "traitName": "ShadowSwap",
-        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "desc": "Swap places with your shadow in combat $2|6$% more frequently.",
         "icon": "shadow-follower",
         "cost": 3,
         "cluster": 4,
@@ -1051,7 +1051,7 @@
     "ShadowSwap5": {
         "name": "ShadowSwap5",
         "traitName": "ShadowSwap",
-        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "desc": "Swap places with your shadow in combat $2|6$% more frequently.",
         "icon": "shadow-follower",
         "cost": 3,
         "cluster": 4,
@@ -1062,7 +1062,7 @@
     "ShadowSwap6": {
         "name": "ShadowSwap6",
         "traitName": "ShadowSwap",
-        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "desc": "Swap places with your shadow in combat $2|6$% more frequently.",
         "icon": "shadow-follower",
         "cost": 3,
         "unlocks": [
@@ -1076,7 +1076,7 @@
     "ShadowSwap7": {
         "name": "ShadowSwap7",
         "traitName": "ShadowSwap",
-        "desc": "Swap places with your shadow in combat 2% more per point.",
+        "desc": "Swap places with your shadow in combat $2|6$% more frequently.",
         "icon": "shadow-follower",
         "capstone": true,
         "cost": 10,
@@ -1112,7 +1112,7 @@
     "RecuperatingDebilitation0": {
         "name": "RecuperatingDebilitation0",
         "traitName": "RecuperatingDebilitation",
-        "desc": "Your Debilitate spell will cool down 5s faster per point.",
+        "desc": "Your Debilitate spell will cool down $5|15$s faster.",
         "icon": "one-eyed",
         "cost": 3,
         "unlocks": [
@@ -1126,7 +1126,7 @@
     "RecuperatingDebilitation1": {
         "name": "RecuperatingDebilitation1",
         "traitName": "RecuperatingDebilitation",
-        "desc": "Your Debilitate spell will cool down 5s faster per point.",
+        "desc": "Your Debilitate spell will cool down $5|15$s faster.",
         "icon": "one-eyed",
         "cost": 3,
         "unlocks": [
@@ -1140,7 +1140,7 @@
     "RecuperatingDebilitation2": {
         "name": "RecuperatingDebilitation2",
         "traitName": "RecuperatingDebilitation",
-        "desc": "Your Debilitate spell will cool down 5s faster per point.",
+        "desc": "Your Debilitate spell will cool down $5|15$s faster.",
         "icon": "one-eyed",
         "cost": 3,
         "unlocks": [
@@ -1154,7 +1154,7 @@
     "RecuperatingDebilitation3": {
         "name": "RecuperatingDebilitation3",
         "traitName": "RecuperatingDebilitation",
-        "desc": "Your Debilitate spell will cool down 5s faster per point.",
+        "desc": "Your Debilitate spell will cool down $5|15$s faster.",
         "icon": "one-eyed",
         "capstone": true,
         "cost": 30,

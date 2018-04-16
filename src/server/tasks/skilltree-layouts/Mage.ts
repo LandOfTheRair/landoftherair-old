@@ -5,17 +5,17 @@ const MAGE_TREE = {
     desc: 'The Mage is a versatile energy-focused class. It can do damage while providing some utility for itself and allies.',
     unbuyable: true,
     root: true,
-    unlocks: ['MagicMissile', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0', 'PartyManaRegen0']
+    unlocks: ['MagicMissile', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0', 'PartyManaRegeneration0']
   },
 
   // TRAITS
-  PartyManaRegen0: {
-    unlocks: ['PartyManaRegen1']
+  PartyManaRegeneration0: {
+    unlocks: ['PartyManaRegeneration1']
   },
-  PartyManaRegen1: {
-    unlocks: ['PartyManaRegen2']
+  PartyManaRegeneration1: {
+    unlocks: ['PartyManaRegeneration2']
   },
-  PartyManaRegen2: {
+  PartyManaRegeneration2: {
 
   },
 

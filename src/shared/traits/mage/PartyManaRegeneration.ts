@@ -1,9 +1,9 @@
 
 import { PartyTrait } from '../../models/partytrait';
 
-export class PartyManaRegen extends PartyTrait {
+export class PartyManaRegeneration extends PartyTrait {
 
-  static traitName = 'PartyManaRegen';
+  static traitName = 'PartyManaRegeneration';
   static description = 'Increase the mana regeneration of your party by +$2|6$.';
   static icon = 'health-increase';
 

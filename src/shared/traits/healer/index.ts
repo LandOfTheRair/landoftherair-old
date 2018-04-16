@@ -11,7 +11,7 @@ export * from './HolyAffliction';
 export * from './HolyIllumination';
 export * from './ImprovedAutoheal';
 export * from './NecroticFocus';
-export * from './PartyHealthRegen';
+export * from './PartyHealthRegeneration';
 export * from './RegenerativeRefrain';
 export * from './StrongerSnare';
 export * from './TotemSpecialty';

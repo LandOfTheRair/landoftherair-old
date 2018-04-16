@@ -12,6 +12,7 @@ import { Party } from './party';
 import { Quest } from '../../server/base/Quest';
 
 import * as Quests from '../../server/quests';
+import * as Effects from '../../server/effects';
 import { LowCON } from '../../server/effects/special/LowCON';
 import { Dead } from '../../server/effects/special/Dead';
 import { CharacterHelper } from '../../server/helpers/character/character-helper';
@@ -519,7 +520,10 @@ export class Player extends Character {
       this.teleportToRespawnPoint();
     }
 
-    if(this.$$room.partyManager && this.partyName) this.$$room.partyManager.updateMember(this);
+    if(this.$$room.partyManager && this.partyName) {
+      this.$$room.partyManager.updateMember(this);
+      this.tryToCastPartyEffects();
+    }
 
     if(this.isInCombat) this.combatTicks--;
 
@@ -539,6 +543,29 @@ export class Player extends Character {
         this.$$room.executeCommand(this, nextAction.command, nextAction.args);
       }
     }
+  }
+
+  private tryToCastPartyEffects(): void {
+    const party = this.party;
+    if(!party || !party.canApplyPartyAbilities) return;
+
+    const classMap = {
+      Warrior: 'PartyDefense',
+      Healer: 'PartyHealthRegeneration',
+      Thief: 'PartyOffense',
+      Mage: 'PartyManaRegeneration'
+    };
+
+    const effect = classMap[this.baseClass];
+    if(!effect) return;
+
+    if(this.hasEffect(effect)) return;
+
+    const level = this.getTraitLevelAndUsageModifier(effect);
+    if(level === 0) return;
+
+    const partyEffect = new Effects[effect]({ potency: level });
+    partyEffect.cast(this, this);
   }
 
   addAgro(char: Character, value) {

@@ -5,17 +5,17 @@ const HEALER_TREE = {
     desc: 'The Healer is a class focused on keeping its allies and itself alive.',
     unbuyable: true,
     root: true,
-    unlocks: ['Cure', 'PartyHealthRegen0', 'CalmMind0', 'ManaPool0', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0']
+    unlocks: ['Cure', 'PartyHealthRegeneration0', 'CalmMind0', 'ManaPool0', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0']
   },
 
   // TRAITS
-  PartyHealthRegen0: {
-    unlocks: ['PartyHealthRegen1']
+  PartyHealthRegeneration0: {
+    unlocks: ['PartyHealthRegeneration1']
   },
-  PartyHealthRegen1: {
-    unlocks: ['PartyHealthRegen2']
+  PartyHealthRegeneration1: {
+    unlocks: ['PartyHealthRegeneration2']
   },
-  PartyHealthRegen2: {
+  PartyHealthRegeneration2: {
 
   },
 

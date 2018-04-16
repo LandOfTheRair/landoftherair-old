@@ -95,7 +95,7 @@ export class SkillTree {
       if(this.buyableNodesHash[boughtNode]) delete this.buyableNodesHash[boughtNode];
 
       const node = AllTrees[this.baseClass][boughtNode];
-      if(!node.unlocks) return;
+      if(!node || !node.unlocks) return;
 
       node.unlocks.forEach(unlock => this.buyableNodesHash[unlock] = true);
     });
