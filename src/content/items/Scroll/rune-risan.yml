@@ -68,11 +68,11 @@
 
 # Thief Rune Scrolls
 
-- name: Rune Scroll - Lockpicking Specialty I
+- name: Rune Scroll - Lockpick Specialty I
   sprite: 681
-  desc: "a runic scroll imbued with the empowerment \"Lockpicking Specialty I\""
+  desc: "a runic scroll imbued with the empowerment \"Lockpick Specialty I\""
   trait:
-    name: LockpickingSpecialty
+    name: LockpickSpecialty
     level: 1
   value: 1
 
@@ -130,6 +130,6 @@
   sprite: 681
   desc: "a runic scroll imbued with the empowerment \"Stering Armor I\""
   trait:
-    name: SteringArmor
+    name: SterlingArmor
     level: 1
   value: 1

@@ -140,6 +140,15 @@
     potency: 10
   value: 2000
 
+- name: Minotaur Horn Flask
+  desc: "a small flask filled with liquid made from a distilled minotaur horn"
+  extendedDesc: "a flask of VitalEssence"
+  sprite: 140
+  effect:
+    name: VitalEssence
+    potency: 7
+  value: 1000
+
 - name: EtherFire Potion
   desc: "a translucent blue bottle with fiery-hot mist emanating from it"
   extendedDesc: "a bottle of Ether Fire"

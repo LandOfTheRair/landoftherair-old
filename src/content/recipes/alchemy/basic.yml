@@ -132,3 +132,14 @@
     - Weak BarNecro Potion
     - Antanian Bear Meat
 
+- item: Minotaur Horn Flask
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 4
+  xpGained: 15000
+  ingredients:
+    - Antanian Bottle of Water
+    - Antanian Slice of Bread
+    - Dedlaen Minotaur Horn
+
+

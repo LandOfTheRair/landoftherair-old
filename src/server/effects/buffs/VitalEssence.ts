@@ -37,7 +37,7 @@ export class VitalEssence extends SpellEffect {
     char.gainStat('hp', this.potency * this.potencyMultiplier);
     char.gainStat('armorClass', this.potency);
 
-    this.iconData.tooltipDesc = `Grants you ${this.potency * this.potencyMultiplier} more health.`;
+    this.iconData.tooltipDesc = `Grants you ${this.potency * this.potencyMultiplier} more health and ${this.potency} AC.`;
   }
 
   effectEnd(char: Character) {
