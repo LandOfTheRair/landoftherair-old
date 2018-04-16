@@ -1,29 +1,3 @@
-- name: Scribe Scroll
-  sprite: 224
-  desc: "an empty scroll"
-  value: 100
-
-# Lore Scrolls
-- name: Antanian Lore Scroll 1
-  sprite: 224
-  desc: "a scroll saying: \"Tonwin, the plan is going according to plan. The Renegades are performing beautifully. -S\""
-  value: 1
-
-- name: Antanian Lore Scroll 2
-  sprite: 224
-  desc: "a scroll saying: \"Commander, why are we supposed to let ourselves get captured?\""
-  value: 1
-
-- name: Antanian Lore Scroll 3
-  sprite: 224
-  desc: "a scroll saying: \"My brother will never be set free. Do not worry about that, S. -T\""
-  value: 1
-
-- name: Antanian Recipe Scroll 1
-  sprite: 224
-  desc: "a scroll saying: \"Recipe: Gills Potion - 1 Blueflower, 1 glass of water - stir\""
-  value: 1
-
 # Rune Scrolls
 - name: Rune Scroll - Careful Touch I
   sprite: 681
@@ -41,35 +15,11 @@
     level: 1
   value: 1
 
-- name: Rune Scroll - Eagle Eye I
-  sprite: 681
-  desc: "a runic scroll imbued with the empowerment \"Eagle Eye I\""
-  trait:
-    name: EagleEye
-    level: 1
-  value: 1
-
-- name: Rune Scroll - Funky Moves I
-  sprite: 681
-  desc: "a runic scroll imbued with the empowerment \"Funky Moves I\""
-  trait:
-    name: FunkyMoves
-    level: 1
-  value: 1
-
 - name: Rune Scroll - Natural Armor I
   sprite: 681
   desc: "a runic scroll imbued with the empowerment \"Natural Armor I\""
   trait:
     name: NaturalArmor
-    level: 1
-  value: 1
-
-- name: Rune Scroll - Sword Tricks I
-  sprite: 681
-  desc: "a runic scroll imbued with the empowerment \"Sword Tricks I\""
-  trait:
-    name: SwordTricks
     level: 1
   value: 1
 
@@ -243,5 +193,29 @@
   desc: "a runic scroll imbued with the empowerment \"Riposte I\""
   trait:
     name: Riposte
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Sword Tricks I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Sword Tricks I\""
+  trait:
+    name: SwordTricks
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Eagle Eye I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Eagle Eye I\""
+  trait:
+    name: EagleEye
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Funky Moves I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Funky Moves I\""
+  trait:
+    name: FunkyMoves
     level: 1
   value: 1

@@ -1,0 +1,20 @@
+
+- name: Antanian Lore Scroll 1
+  sprite: 224
+  desc: "a scroll saying: \"Tonwin, the plan is going according to plan. The Renegades are performing beautifully. -S\""
+  value: 1
+
+- name: Antanian Lore Scroll 2
+  sprite: 224
+  desc: "a scroll saying: \"Commander, why are we supposed to let ourselves get captured?\""
+  value: 1
+
+- name: Antanian Lore Scroll 3
+  sprite: 224
+  desc: "a scroll saying: \"My brother will never be set free. Do not worry about that, S. -T\""
+  value: 1
+
+- name: Antanian Recipe Scroll 1
+  sprite: 224
+  desc: "a scroll saying: \"Recipe: Gills Potion - 1 Blueflower, 1 glass of water - stir\""
+  value: 1

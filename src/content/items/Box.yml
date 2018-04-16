@@ -63,13 +63,7 @@
       chance: 1
     - result: Rune Scroll - Death Grip I
       chance: 1
-    - result: Rune Scroll - Eagle Eye I
-      chance: 1
-    - result: Rune Scroll - Funky Moves I
-      chance: 1
     - result: Rune Scroll - Natural Armor I
-      chance: 1
-    - result: Rune Scroll - Sword Tricks I
       chance: 1
 
 - name: Antanian Daily Healer Rune Scroll RNG Box
@@ -150,4 +144,10 @@
     - result: Rune Scroll - Riposte I
       chance: 1
     - result: Rune Scroll - Offhand Finesse I
+      chance: 1
+    - result: Rune Scroll - Eagle Eye I
+      chance: 1
+    - result: Rune Scroll - Funky Moves I
+      chance: 1
+    - result: Rune Scroll - Sword Tricks I
       chance: 1
