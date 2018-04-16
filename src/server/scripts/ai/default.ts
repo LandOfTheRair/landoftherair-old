@@ -133,7 +133,7 @@ export class DefaultAIBehavior {
       if(!currentTarget) return;
       chosenSkill = CommandExecutor.checkIfCanUseSkill(skill, npc, currentTarget);
     });
-    
+
     // we have a target
     if(highestAgro) {
 
