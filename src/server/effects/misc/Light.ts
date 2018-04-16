@@ -16,7 +16,7 @@ export class Light extends SpellEffect {
 
     if(isUndefined(this.radius)) this.radius = 1;
 
-    target.$$room.removeDarkness(target.x, target.y, this.radius);
+    target.$$room.removeDarkness(target.x, target.y, this.radius, this.potency);
 
     this.aoeAgro(caster, 10);
   }

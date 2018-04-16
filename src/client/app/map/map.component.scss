@@ -12,11 +12,11 @@ $bottom-gradient: linear-gradient(to bottom, transparent 0%, transparent 29%, #0
     position: absolute;
     pointer-events: none;
 
-    &.faded, &.left-half, &.right-half, &.bottom-half {
+    &.faded:not(.light), &.left-half, &.right-half, &.bottom-half {
       display: inline !important;
     }
 
-    &.faded {
+    &.faded:not(.light) {
       opacity: 0.5 !important;
     }
 

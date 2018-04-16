@@ -161,11 +161,14 @@ export class MapComponent implements OnInit, OnDestroy {
     return hasSecretWall || (wallLayerTile !== TilesWithNoFOVUpdate.Empty && wallLayerTile !== TilesWithNoFOVUpdate.Air);
   }
 
+  isLightAt(x: number, y: number) {
+    const lightVal = get(this.clientGameState.darkness, ['x' + (x + this.currentPlayer.x), 'y' + (y + this.currentPlayer.y)]);
+    return !lightVal || lightVal < -1;
+  }
+
   shouldRenderXY(x: number, y: number) {
 
     const val = get(this.colyseus.game.clientGameState.fov, [x, y]);
-
-    // if(isUndefined(val)) return fal;
 
     return this.game
         && this.game.shouldRender
@@ -173,9 +176,12 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   canDarkSee(x: number, y: number) {
-    return this.clientGameState.darkness['x' + (x + this.currentPlayer.x)]
-        && this.clientGameState.darkness['x' + (x + this.currentPlayer.x)]['y' + (y + this.currentPlayer.y)]
-        && this.currentPlayer.hasEffect('DarkVision');
+
+    if(!this.clientGameState.darkness['x' + (x + this.currentPlayer.x)]) return false;
+
+    const darkCheck = this.clientGameState.darkness['x' + (x + this.currentPlayer.x)]['y' + (y + this.currentPlayer.y)];
+
+    return (darkCheck === -1 || darkCheck > 0) && this.currentPlayer.hasEffect('DarkVision');
   }
 
 }

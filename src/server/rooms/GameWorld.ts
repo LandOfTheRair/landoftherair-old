@@ -741,8 +741,8 @@ export class GameWorld extends Room<GameState> {
     this.state.addDarkness(startX, startY, radius, darkTimestamp);
   }
 
-  public removeDarkness(startX: number, startY: number, radius: number) {
-    this.state.removeDarkness(startX, startY, radius, 0, true);
+  public removeDarkness(startX: number, startY: number, radius: number, lightSeconds: number) {
+    this.state.removeDarkness(startX, startY, radius, 0, true, lightSeconds);
   }
 
   private async loadDropTables() {

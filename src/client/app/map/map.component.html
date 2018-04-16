@@ -6,6 +6,7 @@
          class="fog"
          [style.left]="((x+4)*64)+'px'"
          [style.top]="(((y+4)*64))+'px'"
+         [class.light]="isLightAt(x, y)"
          [class.hidden]="shouldRenderXY(x, y)"
          [class.faded]="shouldRenderXY(x, y) && canDarkSee(x, y)"
     ></div>

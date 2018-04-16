@@ -758,7 +758,8 @@ export class GameState {
     const yKey = `y${y}`;
 
     if(!this.darkness[xKey]) return false;
-    return this.darkness[xKey][yKey];
+    if(!this.darkness[xKey][yKey]) return false;
+    return this.darkness[xKey][yKey] >= -1;
   }
 
   addPermanentDarkness(x: number, y: number, radius: number): void {
@@ -780,6 +781,11 @@ export class GameState {
 
         if(currentValue === -1) continue;
 
+        // is light
+        if(currentValue < -1) {
+          if(Date.now() < -currentValue) continue;
+        }
+
         // dont overwrite old, stronger darkness with new, weaker darkness
         if(!currentValue || (currentValue && currentValue < timestamp)) {
           this.darkness[xKey][yKey] = timestamp;
@@ -793,22 +799,28 @@ export class GameState {
     }
   }
 
-  removeDarkness(x: number, y: number, radius: number, timestamp: number, force = false): void {
+  removeDarkness(x: number, y: number, radius: number, timestamp: number, force = false, lightSeconds = 0): void {
     for(let xx = x - radius; xx <= x + radius; xx++) {
       for(let yy = y - radius; yy <= y + radius; yy++) {
 
         const xKey = `x${xx}`;
-        const ykey = `y${yy}`;
+        const yKey = `y${yy}`;
 
         this.darkness[xKey] = this.darkness[xKey] || {};
 
-        const darknessValue = this.darkness[xKey][ykey];
+        const darknessValue = this.darkness[xKey][yKey];
 
         if(darknessValue === -1) continue;
 
         // only remove my specific darkness
         if(force || darknessValue === timestamp) {
-          this.darkness[xKey][ykey] = false;
+          this.darkness[xKey][yKey] = false;
+
+          if(lightSeconds > 0) {
+            const lightUntil = new Date();
+            lightUntil.setSeconds(lightUntil.getSeconds() + lightSeconds);
+            this.darkness[xKey][yKey] = -lightUntil.getTime();
+          }
 
           this.getAllPlayersFromQuadtrees({ x, y }, 4).forEach((player: Player) => {
             this.calculateFOV(player);
