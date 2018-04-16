@@ -30,8 +30,8 @@ class ItemLoader {
 
     recurse(`${__dirname}/../../content/items`).then(async files => {
       const filePromises = files.map(file => {
-        const basePath = file.split('items\\')[1];
-        const basePathLeftSide = basePath.split('\\')[0];
+        const basePath = file.split('items' + path.sep)[1];
+        const basePathLeftSide = basePath.split(path.sep)[0];
         const itemClassRoot = path.basename(basePathLeftSide, path.extname(basePathLeftSide));
 
         const itemsOfType = YAML.load(file);
