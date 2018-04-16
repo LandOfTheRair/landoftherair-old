@@ -329,6 +329,11 @@ export class CombatHelper {
       baseDamageCalcStat += Math.floor( attackerInt * strongMindMod);
     }
 
+    let attackerSkillCalculated = calcSkill;
+    if(attackerWeapon.secondaryType) {
+      attackerSkillCalculated = Math.floor((attackerSkillCalculated + attacker.calcSkillLevel(attackerWeapon.secondaryType)) / 2);
+    }
+    
     const attackerScope = {
       skill: calcSkill,
       skill4: Math.floor(calcSkill / 4),
