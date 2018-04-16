@@ -1,6 +1,4 @@
 
-import { random } from 'lodash';
-
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
