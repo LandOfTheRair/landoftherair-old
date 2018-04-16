@@ -1,5 +1,5 @@
 
-<div class="macro-group-container d-flex flex-wrap">
+<div class="macro-group-container d-flex flex-wrap" *ngIf="macroService.hasLoaded">
   <div *ngFor="let group of macroService.visibleMacroGroups; let i = index">
     <div class="macro-group" *ngIf="macroService.allMacroGroups[group]">
 
