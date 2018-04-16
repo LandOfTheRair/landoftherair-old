@@ -1,0 +1,135 @@
+
+# Healer Rune Scrolls
+- name: Rune Scroll - Holy Affliction I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Holy Affliction I\""
+  trait:
+    name: HolyAffliction
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Regenerative Refrain I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Regenerative Refrain I\""
+  trait:
+    name: RegenerativeRefrain
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Nature Spirit I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Nature Spirit I\""
+  trait:
+    name: NatureSpirit
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Effective Supporter I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Effective Supporter I\""
+  trait:
+    name: EffectiveSupporter
+    level: 1
+  value: 1
+
+# Mage Rune Scrolls
+- name: Rune Scroll - Glacier Stance Improved I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Glacier Stance Improved I\""
+  trait:
+    name: GlacierStanceImproved
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Volcano Stance Improved I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Volcano Stance Improved I\""
+  trait:
+    name: VolcanoStanceImproved
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Thermal Barrier I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Thermal Barrier I\""
+  trait:
+    name: ThermalBarrier
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Friendly Fire I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Friendly Fire I\""
+  trait:
+    name: FriendlyFire
+    level: 1
+  value: 1
+
+
+# Thief Rune Scrolls
+
+- name: Rune Scroll - Lockpicking Specialty I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Lockpicking Specialty I\""
+  trait:
+    name: LockpickingSpecialty
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Stronger Traps I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Stronger Traps I\""
+  trait:
+    name: StrongerTraps
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Nimble Stealing I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Nimble Stealing I\""
+  trait:
+    name: NimbleStealing
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Recuperating Debilitation I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Recuperating Debilitation I\""
+  trait:
+    name: RecuperatingDebilitation
+    level: 1
+  value: 1
+
+# Warrior Rune Scrolls
+
+- name: Rune Scroll - Brass Knuckles I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Brass Knuckles I\""
+  trait:
+    name: BrassKnuckles
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Holy Protection I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Holy Protection I\""
+  trait:
+    name: HolyProtection
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Martial Agility I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Martial Agility I\""
+  trait:
+    name: MartialAgility
+    level: 1
+  value: 1
+
+- name: Rune Scroll - Stering Armor I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Stering Armor I\""
+  trait:
+    name: SteringArmor
+    level: 1
+  value: 1

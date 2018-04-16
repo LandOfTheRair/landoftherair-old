@@ -97,11 +97,11 @@
 
 - result: Antanian Luck Potion
   chance: 1
-  maxChance: 15000
+  maxChance: 25000
 
 - result: Antanian Charisma Potion
   chance: 1
-  maxChance: 15000
+  maxChance: 20000
 
 - result: Antanian Health Potion
   chance: 1
@@ -134,11 +134,11 @@
 
 - result: Rune Scroll - Eagle Eye I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Funky Moves I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Natural Armor I
   chance: 1
@@ -146,7 +146,7 @@
 
 - result: Rune Scroll - Sword Tricks I
   chance: 1
-  maxChance: 2500
+  maxChance: 4000
 
 - result: Rune Scroll - Magic Focus I
   chance: 1
@@ -181,10 +181,6 @@
   maxChance: 4000
 
 - result: Rune Scroll - Totem Specialty I
-  chance: 1
-  maxChance: 4000
-
-- result: Rune Scroll - Effective Supporter I
   chance: 1
   maxChance: 4000
 

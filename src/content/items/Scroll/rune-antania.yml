@@ -65,14 +65,6 @@
     level: 1
   value: 1
 
-- name: Rune Scroll - Effective Supporter I
-  sprite: 681
-  desc: "a runic scroll imbued with the empowerment \"Effective Supporter I\""
-  trait:
-    name: EffectiveSupporter
-    level: 1
-  value: 1
-
 - name: Rune Scroll - Irresistible Stuns I
   sprite: 681
   desc: "a runic scroll imbued with the empowerment \"Irresistible Stuns I\""

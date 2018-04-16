@@ -76,3 +76,69 @@
 - result: Risan Small Black Pearl
   chance: 1
   maxChance: 450
+
+# Rune Scrolls
+
+- result: Rune Scroll - Holy Affliction I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Regenerative Refrain I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Nature Spirit I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Effective Supporter I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Glacier Stance Improved I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Volcano Stance Improved I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Thermal Barrier I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Friendly Fire I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Lockpicking Specialty I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Stronger Traps I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Nimble Stealing I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Recuperating Debilitation I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Brass Knuckles I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Holy Protection I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Martial Agility I
+  chance: 1
+  maxChance: 10000
+
+- result: Rune Scroll - Sterling Armor I
+  chance: 1
+  maxChance: 10000

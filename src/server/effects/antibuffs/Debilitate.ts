@@ -36,7 +36,7 @@ export class Debilitate extends SpellEffect {
   }
 
   effectEnd(char: Character) {
-    const recentlyDebilitated = new RecentlyDebilitated({ duration: 60 - this.recentlyDurationLoss });
+    const recentlyDebilitated = new RecentlyDebilitated({ duration: Math.max(10, 60 - this.recentlyDurationLoss) });
     recentlyDebilitated.cast(char, char);
     this.effectMessage(char, 'Your perception of the hidden is heightened!');
   }

@@ -1,0 +1,18 @@
+- name: Antanian Golem Brain
+  sprite: 64
+  desc: "a fresh brain ripped straight from a rockgolem"
+  binds: true
+  value: 100
+
+- name: Tower Titanium Chunk
+  sprite: 68
+  desc: "a chunk of raw titanium"
+  binds: true
+  value: 3500
+
+- name: Dedlaen Minotaur Horn
+  sprite: 221
+  desc: "an ivory horn taken from a youthful minotaur"
+  binds: true
+  value: 100000
+
