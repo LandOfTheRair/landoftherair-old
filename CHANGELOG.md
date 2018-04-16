@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.2.6 (15/04/2018)
+
+#### Enhancements
+
+- [#736](https://github.com/LandOfTheRair/landoftherair/issues/736) Skill Trees
+
+#### Bug Fixes
+
+- [#793](https://github.com/LandOfTheRair/landoftherair/issues/793) TypeError: Cannot read property 'currentlyInEffect' of undefined
+- [#789](https://github.com/LandOfTheRair/landoftherair/issues/789) TypeError: Cannot read property 'push' of undefined
+- [#786](https://github.com/LandOfTheRair/landoftherair/issues/786) TypeError: Cannot read property 'NaturalArmor' of undefined
+- [#784](https://github.com/LandOfTheRair/landoftherair/issues/784) TypeError: Cannot read property 'setPotency' of undefined
+- [#783](https://github.com/LandOfTheRair/landoftherair/issues/783) TypeError: Cannot read property 'y14' of undefined
+- [#782](https://github.com/LandOfTheRair/landoftherair/issues/782) eating does not take skill
+- [#781](https://github.com/LandOfTheRair/landoftherair/issues/781) skillsuckweak gives skill instead of takes it
+- [#779](https://github.com/LandOfTheRair/landoftherair/issues/779) can't unapply or uncast GM sight
+- [#778](https://github.com/LandOfTheRair/landoftherair/issues/778) poison/disease damage bypass attributes
+- [#777](https://github.com/LandOfTheRair/landoftherair/issues/777) powerword heal "you do not know that spell"
+- [#776](https://github.com/LandOfTheRair/landoftherair/issues/776) Elites spawn with 75% hp
+- [#775](https://github.com/LandOfTheRair/landoftherair/issues/775) zarn should only allow gems owned by the smasher to smash
+
+---
+
 ## v0.2.5 (15/04/2018)
 *No changelog for this release.*
 
