@@ -333,10 +333,10 @@ export class CombatHelper {
     if(attackerWeapon.secondaryType) {
       attackerSkillCalculated = Math.floor((attackerSkillCalculated + attacker.calcSkillLevel(attackerWeapon.secondaryType)) / 2);
     }
-    
+
     const attackerScope = {
-      skill: calcSkill,
-      skill4: Math.floor(calcSkill / 4),
+      skill: attackerSkillCalculated,
+      skill4: Math.floor(attackerSkillCalculated / 4),
       offense: Math.floor(attacker.getTotalStat('offense') / offhandDivisor),
       accuracy: Math.floor(attacker.getTotalStat('accuracy') / offhandDivisor),
       dex: Math.floor(attacker.getTotalStat('dex') / offhandDivisor) + attacker.getTraitLevelAndUsageModifier('MartialAcuity'),
