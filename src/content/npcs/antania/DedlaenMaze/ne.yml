@@ -428,6 +428,7 @@
     - Vision
     - BarNecro
     - Antidote
+    - Cure
 
   gear:
     Armor:
@@ -520,7 +521,7 @@
     max: 28000
 
   usableSkills:
-    - MagicMissile
+    - MagicBolt
     - Push
     - DarkVision
     - BarFire
