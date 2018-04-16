@@ -11,6 +11,7 @@ export class PotionToRight extends Command {
     if(this.isAccessingLocker(player)) return;
     if(!player.potionHand) return false;
 
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
     this.trySwapRightToLeft(player);
 
     player.setRightHand(player.potionHand);

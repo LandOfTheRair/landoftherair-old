@@ -18,9 +18,7 @@ export class EquipToRight extends Command {
     if(!item) return false;
 
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-    if(player.rightHand && !player.leftHand) {
-      player.setLeftHand(player.rightHand);
-    }
+    this.trySwapLeftToRight(player);
 
     player.unequip(slot);
     player.setRightHand(item);

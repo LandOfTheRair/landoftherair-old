@@ -12,9 +12,7 @@ export class CoinToRight extends Command {
     if(value <= 0 || value > player.gold || isNaN(value)) return false;
 
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
-    if(player.rightHand && !player.leftHand) {
-      player.setLeftHand(player.rightHand);
-    }
+    this.trySwapLeftToRight(player);
 
     const item = await player.$$room.itemCreator.getGold(value);
 

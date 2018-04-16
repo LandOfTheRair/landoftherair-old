@@ -13,6 +13,7 @@ export class SackToRight extends Command {
     if(this.isAccessingLocker(player)) return;
     const slot = +args;
     if(isUndefined(slot)) return false;
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     const item = player.sack.takeItemFromSlot(slot);
     if(!item) return false;

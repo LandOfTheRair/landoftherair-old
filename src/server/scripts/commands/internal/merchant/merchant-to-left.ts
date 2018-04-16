@@ -11,6 +11,7 @@ export class MerchantToLeft extends Command {
   execute(player: Player, { args }) {
 
     const [containerUUID, itemUUID] = args.split(' ');
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     if(!this.checkMerchantDistance(player, containerUUID)) return false;
 

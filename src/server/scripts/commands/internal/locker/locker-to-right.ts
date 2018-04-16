@@ -13,6 +13,7 @@ export class LockerToRight extends Command {
   async execute(player: Player, { room, args }) {
     const [slotId, lockerId, amt] = args.split(' ');
     if(isUndefined(slotId)) return;
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     if(this.isAccessingLocker(player)) return;
 

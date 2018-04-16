@@ -12,6 +12,7 @@ export class BeltToLeft extends Command {
   execute(player: Player, { args }) {
     const slot = +args;
     if(isUndefined(args)) return false;
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     if(this.isAccessingLocker(player)) return;
 

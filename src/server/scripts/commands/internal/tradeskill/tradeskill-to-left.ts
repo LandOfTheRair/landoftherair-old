@@ -12,6 +12,7 @@ export class TradeskillToLeft extends Command {
   execute(player: Player, { room, args }) {
     const [tsSlot, tsSrcSlot, alchUUID] = args.split(' ');
     if(!tsSlot || isUndefined(tsSrcSlot) || !alchUUID) return false;
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     const container = room.state.findNPC(alchUUID);
     if(!container) return player.sendClientMessage('That person is not here.');

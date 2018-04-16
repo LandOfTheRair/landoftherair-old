@@ -27,9 +27,8 @@ export class BuybackToLeft extends Command {
 
     const newItem = new Item(item);
 
-    if(player.leftHand && !player.rightHand) {
-      player.setRightHand(player.leftHand);
-    }
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
+    this.trySwapLeftToRight(player);
 
     player.setLeftHand(newItem);
   }

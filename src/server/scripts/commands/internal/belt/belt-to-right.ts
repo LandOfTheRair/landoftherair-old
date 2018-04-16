@@ -12,13 +12,14 @@ export class BeltToRight extends Command {
   execute(player: Player, { args }) {
     const slot = +args;
     if(isUndefined(args)) return false;
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     if(this.isAccessingLocker(player)) return;
 
     const item = player.belt.takeItemFromSlot(slot);
     if(!item) return false;
 
-    this.trySwapRightToLeft(player);
+    this.trySwapLeftToRight(player);
 
     player.setRightHand(item);
   }

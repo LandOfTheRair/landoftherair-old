@@ -13,6 +13,7 @@ export class PouchToRight extends Command {
     if(this.isAccessingLocker(player)) return;
     const slot = +args;
     if(isUndefined(args)) return false;
+    if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     const item = player.pouch.takeItemFromSlot(slot);
     if(!item) return false;
