@@ -2,7 +2,7 @@
 import { NPC } from '../../../shared/models/npc';
 import { Item } from '../../../shared/models/item';
 
-import { compact, get, random } from 'lodash';
+import { compact, get, random, includes } from 'lodash';
 
 import { LootRoller, LootFunctions, LootTable } from 'lootastic';
 
@@ -14,6 +14,9 @@ export class LootHelper {
 
   static async getAllLoot(npc: NPC, bonus = 0, sackOnly = false): Promise<Item[]> {
     const tables = [];
+
+    // elites double the players loot finding capability
+    if(includes(npc.name, 'elite')) bonus *= 2;
 
     const isNaturalResource = npc.isNaturalResource;
 
