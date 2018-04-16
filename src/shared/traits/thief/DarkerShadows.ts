@@ -5,7 +5,7 @@ export class DarkerShadows extends Trait {
 
   static baseClass = 'Thief';
   static traitName = 'DarkerShadows';
-  static description = 'The shadows around you are 2% darker per point.';
+  static description = 'The shadows around you are $2|6$% darker.';
   static icon = 'hidden';
 
   static upgrades = [

@@ -5,7 +5,7 @@ export class RecuperatingDebilitation extends Trait {
 
   static baseClass = 'Thief';
   static traitName = 'RecuperatingDebilitation';
-  static description = 'Your Debilitate spell will cool down 5s faster per point.';
+  static description = 'Your Debilitate spell will cool down $5|15$s faster.';
   static icon = 'one-eyed';
 
   static upgrades = [

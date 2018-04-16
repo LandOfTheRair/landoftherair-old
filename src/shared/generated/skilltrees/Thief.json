@@ -60,7 +60,7 @@
     "CarefulTouch0": {
         "name": "CarefulTouch0",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 10% per point.",
+        "desc": "Decrease the damage your items take by $10|30$%.",
         "icon": "blacksmith",
         "cost": 3,
         "unlocks": [
@@ -74,7 +74,7 @@
     "CarefulTouch1": {
         "name": "CarefulTouch1",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 10% per point.",
+        "desc": "Decrease the damage your items take by $10|30$%.",
         "icon": "blacksmith",
         "cost": 3,
         "unlocks": [
@@ -88,7 +88,7 @@
     "CarefulTouch2": {
         "name": "CarefulTouch2",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 10% per point.",
+        "desc": "Decrease the damage your items take by $10|30$%.",
         "icon": "blacksmith",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -101,7 +101,7 @@
     "DeathGrip0": {
         "name": "DeathGrip0",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "desc": "Decrease your chance of dropping items on death by $5|15$%.",
         "icon": "drop-weapon",
         "cost": 3,
         "unlocks": [
@@ -115,7 +115,7 @@
     "DeathGrip1": {
         "name": "DeathGrip1",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "desc": "Decrease your chance of dropping items on death by $5|15$%.",
         "icon": "drop-weapon",
         "cost": 3,
         "unlocks": [
@@ -129,7 +129,7 @@
     "DeathGrip2": {
         "name": "DeathGrip2",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "desc": "Decrease your chance of dropping items on death by $5|15$%.",
         "icon": "drop-weapon",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -142,7 +142,7 @@
     "NaturalArmor0": {
         "name": "NaturalArmor0",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by $2|6$.",
         "icon": "internal-injury",
         "cost": 3,
         "unlocks": [
@@ -156,7 +156,7 @@
     "NaturalArmor1": {
         "name": "NaturalArmor1",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by $2|6$.",
         "icon": "internal-injury",
         "cost": 3,
         "unlocks": [
@@ -170,7 +170,7 @@
     "NaturalArmor2": {
         "name": "NaturalArmor2",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by $2|6$.",
         "icon": "internal-injury",
         "capstone": true,
         "requireCharacterLevel": 15,

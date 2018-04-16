@@ -5,7 +5,7 @@ export class ThermalBarrier extends Trait {
 
   static baseClass = 'Mage';
   static traitName = 'ThermalBarrier';
-  static description = 'Your fire and ice protection spells are enhanced by +10% per point.';
+  static description = 'Your fire and ice protection spells are enhanced by +$10|30$%.';
   static icon = 'transportation-rings';
 
   static upgrades = [

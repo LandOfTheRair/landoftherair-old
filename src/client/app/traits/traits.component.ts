@@ -1,7 +1,7 @@
 
 import { Component, AfterViewInit, ViewChild, OnDestroy, OnInit } from '@angular/core';
 
-import { startCase, extend, merge, values, minBy, maxBy, last } from 'lodash';
+import { startCase, extend, merge, values, minBy, maxBy, last, includes } from 'lodash';
 import * as d3 from 'd3';
 
 import { AllTrees } from '../../../shared/generated/skilltrees';
@@ -135,6 +135,16 @@ export class TraitsComponent implements AfterViewInit, OnInit, OnDestroy {
     }
 
     return startCase(name);
+  }
+
+  public fixDesc(desc: string, isCapstone: boolean): string {
+    if(!includes(desc, '$')) return desc;
+    const split = desc.split('$');
+
+    const target = split[1];
+
+    split[1] = target.split('|')[isCapstone ? 1 : 0];
+    return split.join('');
   }
 
 }

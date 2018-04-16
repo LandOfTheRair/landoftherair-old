@@ -5,7 +5,7 @@ export class IrresistibleStuns extends Trait {
 
   static baseClass = 'Healer';
   static traitName = 'IrresistibleStuns';
-  static description = 'Reduce your stun targets WIL by 1 per pt.';
+  static description = 'Reduce your stun targets WIL by $1|3$.';
   static icon = 'knockout';
 
   static upgrades = [

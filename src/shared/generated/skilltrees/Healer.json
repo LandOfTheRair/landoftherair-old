@@ -19,7 +19,7 @@
     "PartyHealthRegen0": {
         "name": "PartyHealthRegen0",
         "traitName": "PartyHealthRegen",
-        "desc": "Increase your health regeneration while in a party.",
+        "desc": "Increase the health regeneration of your party by +$2|6$.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -34,7 +34,7 @@
     "PartyHealthRegen1": {
         "name": "PartyHealthRegen1",
         "traitName": "PartyHealthRegen",
-        "desc": "Increase your health regeneration while in a party.",
+        "desc": "Increase the health regeneration of your party by +$2|6$.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -49,7 +49,7 @@
     "PartyHealthRegen2": {
         "name": "PartyHealthRegen2",
         "traitName": "PartyHealthRegen",
-        "desc": "Increase your health regeneration while in a party.",
+        "desc": "Increase the health regeneration of your party by +$2|6$.",
         "icon": "health-increase",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -63,7 +63,7 @@
     "CalmMind0": {
         "name": "CalmMind0",
         "traitName": "CalmMind",
-        "desc": "Gain +2 to your mana regeneration per point.",
+        "desc": "Gain +$2|6$ to your mana regeneration.",
         "icon": "psychic-waves",
         "cost": 3,
         "unlocks": [
@@ -77,7 +77,7 @@
     "CalmMind1": {
         "name": "CalmMind1",
         "traitName": "CalmMind",
-        "desc": "Gain +2 to your mana regeneration per point.",
+        "desc": "Gain +$2|6$ to your mana regeneration.",
         "icon": "psychic-waves",
         "cost": 3,
         "unlocks": [
@@ -91,7 +91,7 @@
     "CalmMind2": {
         "name": "CalmMind2",
         "traitName": "CalmMind",
-        "desc": "Gain +2 to your mana regeneration per point.",
+        "desc": "Gain +$2|6$ to your mana regeneration.",
         "icon": "psychic-waves",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -104,7 +104,7 @@
     "ManaPool0": {
         "name": "ManaPool0",
         "traitName": "ManaPool",
-        "desc": "Gain +10 additional mana per point.",
+        "desc": "Gain +$10|30$ additional mana.",
         "icon": "drink-me",
         "cost": 3,
         "unlocks": [
@@ -118,7 +118,7 @@
     "ManaPool1": {
         "name": "ManaPool1",
         "traitName": "ManaPool",
-        "desc": "Gain +10 additional mana per point.",
+        "desc": "Gain +$10|30$ additional mana.",
         "icon": "drink-me",
         "cost": 3,
         "unlocks": [
@@ -132,7 +132,7 @@
     "ManaPool2": {
         "name": "ManaPool2",
         "traitName": "ManaPool",
-        "desc": "Gain +10 additional mana per point.",
+        "desc": "Gain +$10|30$ additional mana.",
         "icon": "drink-me",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -145,7 +145,7 @@
     "CarefulTouch0": {
         "name": "CarefulTouch0",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 10% per point.",
+        "desc": "Decrease the damage your items take by $10|30$%.",
         "icon": "blacksmith",
         "cost": 3,
         "unlocks": [
@@ -159,7 +159,7 @@
     "CarefulTouch1": {
         "name": "CarefulTouch1",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 10% per point.",
+        "desc": "Decrease the damage your items take by $10|30$%.",
         "icon": "blacksmith",
         "cost": 3,
         "unlocks": [
@@ -173,7 +173,7 @@
     "CarefulTouch2": {
         "name": "CarefulTouch2",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 10% per point.",
+        "desc": "Decrease the damage your items take by $10|30$%.",
         "icon": "blacksmith",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -186,7 +186,7 @@
     "DeathGrip0": {
         "name": "DeathGrip0",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "desc": "Decrease your chance of dropping items on death by $5|15$%.",
         "icon": "drop-weapon",
         "cost": 3,
         "unlocks": [
@@ -200,7 +200,7 @@
     "DeathGrip1": {
         "name": "DeathGrip1",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "desc": "Decrease your chance of dropping items on death by $5|15$%.",
         "icon": "drop-weapon",
         "cost": 3,
         "unlocks": [
@@ -214,7 +214,7 @@
     "DeathGrip2": {
         "name": "DeathGrip2",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "desc": "Decrease your chance of dropping items on death by $5|15$%.",
         "icon": "drop-weapon",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -227,7 +227,7 @@
     "NaturalArmor0": {
         "name": "NaturalArmor0",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by $2|6$.",
         "icon": "internal-injury",
         "cost": 3,
         "unlocks": [
@@ -241,7 +241,7 @@
     "NaturalArmor1": {
         "name": "NaturalArmor1",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by $2|6$.",
         "icon": "internal-injury",
         "cost": 3,
         "unlocks": [
@@ -255,7 +255,7 @@
     "NaturalArmor2": {
         "name": "NaturalArmor2",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by $2|6$.",
         "icon": "internal-injury",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -268,7 +268,7 @@
     "HealingFocus0": {
         "name": "HealingFocus0",
         "traitName": "HealingFocus",
-        "desc": "Heal 15% more health per point when you use restorative magic.",
+        "desc": "Heal $10|30$% more health when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -282,7 +282,7 @@
     "HealingFocus1": {
         "name": "HealingFocus1",
         "traitName": "HealingFocus",
-        "desc": "Heal 15% more health per point when you use restorative magic.",
+        "desc": "Heal $10|30$% more health when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -297,7 +297,7 @@
     "HealingFocus2": {
         "name": "HealingFocus2",
         "traitName": "HealingFocus",
-        "desc": "Heal 15% more health per point when you use restorative magic.",
+        "desc": "Heal $10|30$% more health when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -311,7 +311,7 @@
     "HealingFocus3": {
         "name": "HealingFocus3",
         "traitName": "HealingFocus",
-        "desc": "Heal 15% more health per point when you use restorative magic.",
+        "desc": "Heal $10|30$% more health when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -326,7 +326,7 @@
     "HealingFocus4": {
         "name": "HealingFocus4",
         "traitName": "HealingFocus",
-        "desc": "Heal 15% more health per point when you use restorative magic.",
+        "desc": "Heal $10|30$% more health when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -340,7 +340,7 @@
     "HealingFocus5": {
         "name": "HealingFocus5",
         "traitName": "HealingFocus",
-        "desc": "Heal 15% more health per point when you use restorative magic.",
+        "desc": "Heal $10|30$% more health when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -355,7 +355,7 @@
     "HealingFocus6": {
         "name": "HealingFocus6",
         "traitName": "HealingFocus",
-        "desc": "Heal 15% more health per point when you use restorative magic.",
+        "desc": "Heal $10|30$% more health when you use restorative magic.",
         "icon": "health-increase",
         "cost": 3,
         "unlocks": [
@@ -370,7 +370,7 @@
     "HealingFocus7": {
         "name": "HealingFocus7",
         "traitName": "HealingFocus",
-        "desc": "Heal 15% more health per point when you use restorative magic.",
+        "desc": "Heal $10|30$% more health when you use restorative magic.",
         "icon": "health-increase",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -543,7 +543,7 @@
     "IrresistibleStuns0": {
         "name": "IrresistibleStuns0",
         "traitName": "IrresistibleStuns",
-        "desc": "Reduce your stun targets WIL by 1 per pt.",
+        "desc": "Reduce your stun targets WIL by $1|3$.",
         "icon": "knockout",
         "requireCharacterLevel": 10,
         "cost": 3,
@@ -558,7 +558,7 @@
     "IrresistibleStuns1": {
         "name": "IrresistibleStuns1",
         "traitName": "IrresistibleStuns",
-        "desc": "Reduce your stun targets WIL by 1 per pt.",
+        "desc": "Reduce your stun targets WIL by $1|3$.",
         "icon": "knockout",
         "cost": 3,
         "unlocks": [
@@ -572,7 +572,7 @@
     "IrresistibleStuns2": {
         "name": "IrresistibleStuns2",
         "traitName": "IrresistibleStuns",
-        "desc": "Reduce your stun targets WIL by 1 per pt.",
+        "desc": "Reduce your stun targets WIL by $1|3$.",
         "icon": "knockout",
         "capstone": true,
         "cost": 10,
@@ -739,7 +739,7 @@
     "EffectiveSupporter0": {
         "name": "EffectiveSupporter0",
         "traitName": "EffectiveSupporter",
-        "desc": "Your support spells last 10% longer per point.",
+        "desc": "Your support spells last $10|30$% longer.",
         "icon": "burning-passion",
         "requireCharacterLevel": 15,
         "cost": 3,
@@ -754,7 +754,7 @@
     "EffectiveSupporter1": {
         "name": "EffectiveSupporter1",
         "traitName": "EffectiveSupporter",
-        "desc": "Your support spells last 10% longer per point.",
+        "desc": "Your support spells last $10|30$% longer.",
         "icon": "burning-passion",
         "cost": 3,
         "unlocks": [
@@ -768,7 +768,7 @@
     "EffectiveSupporter2": {
         "name": "EffectiveSupporter2",
         "traitName": "EffectiveSupporter",
-        "desc": "Your support spells last 10% longer per point.",
+        "desc": "Your support spells last $10|30$% longer.",
         "icon": "burning-passion",
         "capstone": true,
         "cost": 10,
@@ -945,7 +945,7 @@
     "NecroticFocus0": {
         "name": "NecroticFocus0",
         "traitName": "NecroticFocus",
-        "desc": "Deal 15% more necrotic damage per point.",
+        "desc": "Deal $10|30$% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -959,7 +959,7 @@
     "NecroticFocus1": {
         "name": "NecroticFocus1",
         "traitName": "NecroticFocus",
-        "desc": "Deal 15% more necrotic damage per point.",
+        "desc": "Deal $10|30$% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -973,7 +973,7 @@
     "NecroticFocus2": {
         "name": "NecroticFocus2",
         "traitName": "NecroticFocus",
-        "desc": "Deal 15% more necrotic damage per point.",
+        "desc": "Deal $10|30$% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -987,7 +987,7 @@
     "NecroticFocus3": {
         "name": "NecroticFocus3",
         "traitName": "NecroticFocus",
-        "desc": "Deal 15% more necrotic damage per point.",
+        "desc": "Deal $10|30$% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -1002,7 +1002,7 @@
     "NecroticFocus4": {
         "name": "NecroticFocus4",
         "traitName": "NecroticFocus",
-        "desc": "Deal 15% more necrotic damage per point.",
+        "desc": "Deal $10|30$% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -1017,7 +1017,7 @@
     "NecroticFocus5": {
         "name": "NecroticFocus5",
         "traitName": "NecroticFocus",
-        "desc": "Deal 15% more necrotic damage per point.",
+        "desc": "Deal $10|30$% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -1031,7 +1031,7 @@
     "NecroticFocus6": {
         "name": "NecroticFocus6",
         "traitName": "NecroticFocus",
-        "desc": "Deal 15% more necrotic damage per point.",
+        "desc": "Deal $10|30$% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
@@ -1045,7 +1045,7 @@
     "NecroticFocus7": {
         "name": "NecroticFocus7",
         "traitName": "NecroticFocus",
-        "desc": "Deal 15% more necrotic damage per point.",
+        "desc": "Deal $10|30$% more necrotic damage per point.",
         "icon": "plasma-bolt",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -1059,7 +1059,7 @@
     "TotemSpecialty0": {
         "name": "TotemSpecialty0",
         "traitName": "TotemSpecialty",
-        "desc": "Spells cost 2% less per point to cast while holding a totem in your right hand.",
+        "desc": "Spells cost $2|6$% less per point to cast while holding a totem in your right hand.",
         "icon": "grapple",
         "requireCharacterLevel": 10,
         "cost": 3,
@@ -1074,7 +1074,7 @@
     "TotemSpecialty1": {
         "name": "TotemSpecialty1",
         "traitName": "TotemSpecialty",
-        "desc": "Spells cost 2% less per point to cast while holding a totem in your right hand.",
+        "desc": "Spells cost $2|6$% less per point to cast while holding a totem in your right hand.",
         "icon": "grapple",
         "requireCharacterLevel": 10,
         "cost": 3,
@@ -1089,7 +1089,7 @@
     "TotemSpecialty2": {
         "name": "TotemSpecialty2",
         "traitName": "TotemSpecialty",
-        "desc": "Spells cost 2% less per point to cast while holding a totem in your right hand.",
+        "desc": "Spells cost $2|6$% less per point to cast while holding a totem in your right hand.",
         "icon": "grapple",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -1113,7 +1113,7 @@
     "HolyAffliction0": {
         "name": "HolyAffliction0",
         "traitName": "HolyAffliction",
-        "desc": "Your single-target spells have a 3% chance per point of doing critical damage.",
+        "desc": "Your single-target spells have a $3|9$% chance of doing critical damage.",
         "icon": "large-wound",
         "cost": 10,
         "unlocks": [
@@ -1127,7 +1127,7 @@
     "HolyAffliction1": {
         "name": "HolyAffliction1",
         "traitName": "HolyAffliction",
-        "desc": "Your single-target spells have a 3% chance per point of doing critical damage.",
+        "desc": "Your single-target spells have a $3|9$% chance of doing critical damage.",
         "icon": "large-wound",
         "cost": 10,
         "unlocks": [
@@ -1141,7 +1141,7 @@
     "HolyAffliction2": {
         "name": "HolyAffliction2",
         "traitName": "HolyAffliction",
-        "desc": "Your single-target spells have a 3% chance per point of doing critical damage.",
+        "desc": "Your single-target spells have a $3|9$% chance of doing critical damage.",
         "icon": "large-wound",
         "capstone": true,
         "cost": 35,

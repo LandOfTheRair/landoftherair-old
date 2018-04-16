@@ -401,6 +401,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Vision",
+            "macro": "cast vision",
+            "icon": "evil-eyes",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cure blindness on a single target. Cost: 10 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "VitalEssence",
             "macro": "cast vitalessence",
             "icon": "bell-shield",
@@ -408,16 +418,6 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Boost maximum vitality for a single target. Cost: 200 MP",
             "requireSkillLevel": 15,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Vision",
-            "macro": "cast vision",
-            "icon": "evil-eyes",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cure blindness on a single target. Cost: 10 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -432,16 +432,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Asper",
-            "macro": "cast asper",
-            "icon": "wind-hole",
-            "color": "#0059bd",
-            "mode": "lockActivation",
-            "tooltipDesc": "Drain mana from a single target. Cost: 10 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Absorption",
             "macro": "cast absorption",
             "icon": "magic-swirl",
@@ -451,6 +441,16 @@
             "skillTPCost": 10,
             "requireCharacterLevel": 10,
             "requireSkillLevel": 7,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Asper",
+            "macro": "cast asper",
+            "icon": "wind-hole",
+            "color": "#0059bd",
+            "mode": "lockActivation",
+            "tooltipDesc": "Drain mana from a single target. Cost: 10 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -475,6 +475,18 @@
             "requiresLearn": true
         },
         {
+            "name": "EnergyWave",
+            "macro": "cast energywave",
+            "icon": "beams-aura",
+            "color": "#000080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 45 MP",
+            "requireCharacterLevel": 10,
+            "requireSkillLevel": 7,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "FindFamiliar",
             "macro": "cast findfamiliar",
             "icon": "eagle-emblem",
@@ -495,18 +507,6 @@
             "requiresLearn": true
         },
         {
-            "name": "EnergyWave",
-            "macro": "cast energywave",
-            "icon": "beams-aura",
-            "color": "#000080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Cast an area energy effect from your location (5x5). Cost: 45 MP",
-            "requireCharacterLevel": 10,
-            "requireSkillLevel": 7,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Firethorns",
             "macro": "cast firethorns",
             "icon": "barbed-coil",
@@ -523,6 +523,19 @@
             "color": "#000080",
             "mode": "clickToTarget",
             "tooltipDesc": "Physical attackers take ice damage. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Haste",
+            "macro": "cast haste",
+            "icon": "time-trap",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Act twice as fast. Cost: 200 MP",
+            "requireCharacterLevel": 20,
+            "requireSkillLevel": 15,
+            "skillTPCost": 20,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -559,19 +572,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Haste",
-            "macro": "cast haste",
-            "icon": "time-trap",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Act twice as fast. Cost: 200 MP",
-            "requireCharacterLevel": 20,
-            "requireSkillLevel": 15,
-            "skillTPCost": 20,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "ImbueFlame",
             "macro": "cast imbueflame",
             "icon": "magic-palm",
@@ -594,6 +594,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Invisibility",
+            "macro": "cast invisibility",
+            "icon": "invisible",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Become invisible to the average vision. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "MagicBolt",
             "macro": "cast magicbolt",
             "icon": "burning-dot",
@@ -601,16 +611,6 @@
             "mode": "lockActivation",
             "tooltipDesc": "Inflict energy damage on a single target. Cost: 10 MP",
             "skillTPCost": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Invisibility",
-            "macro": "cast invisibility",
-            "icon": "invisible",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Become invisible to the average vision. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -733,22 +733,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Push",
-            "macro": "cast push",
-            "icon": "swirl-string",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Poison",
             "macro": "cast poison",
             "icon": "poison-gas",
             "color": "#0a0",
             "mode": "clickToTarget",
             "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Push",
+            "macro": "cast push",
+            "icon": "swirl-string",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -887,6 +887,17 @@
             "requiresLearn": true
         },
         {
+            "name": "Multistrike",
+            "macro": "art multistrike",
+            "icon": "sword-spin",
+            "color": "#a00",
+            "mode": "autoActivate",
+            "tooltipDesc": "Attack multiple creatures on your tile. Requires weapon skill 13.",
+            "requireSkillLevel": 13,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Parry Stance",
             "macro": "stance parry",
             "icon": "surrounded-shield",
@@ -895,17 +906,6 @@
             "mode": "autoActivate",
             "tooltipDesc": "Become more defensive, but lose offensive power. Requires weapon skill 10.",
             "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Multistrike",
-            "macro": "art multistrike",
-            "icon": "sword-spin",
-            "color": "#a00",
-            "mode": "autoActivate",
-            "tooltipDesc": "Attack multiple creatures on your tile. Requires weapon skill 13.",
-            "requireSkillLevel": 13,
             "isSystem": true,
             "requiresLearn": true
         },

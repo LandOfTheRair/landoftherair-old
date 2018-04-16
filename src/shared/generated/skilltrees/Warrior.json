@@ -63,7 +63,7 @@
     "CarefulTouch0": {
         "name": "CarefulTouch0",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 10% per point.",
+        "desc": "Decrease the damage your items take by $10|30$%.",
         "icon": "blacksmith",
         "cost": 3,
         "unlocks": [
@@ -77,7 +77,7 @@
     "CarefulTouch1": {
         "name": "CarefulTouch1",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 10% per point.",
+        "desc": "Decrease the damage your items take by $10|30$%.",
         "icon": "blacksmith",
         "cost": 3,
         "unlocks": [
@@ -91,7 +91,7 @@
     "CarefulTouch2": {
         "name": "CarefulTouch2",
         "traitName": "CarefulTouch",
-        "desc": "Decrease the damage your items take by 10% per point.",
+        "desc": "Decrease the damage your items take by $10|30$%.",
         "icon": "blacksmith",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -104,7 +104,7 @@
     "DeathGrip0": {
         "name": "DeathGrip0",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "desc": "Decrease your chance of dropping items on death by $5|15$%.",
         "icon": "drop-weapon",
         "cost": 3,
         "unlocks": [
@@ -118,7 +118,7 @@
     "DeathGrip1": {
         "name": "DeathGrip1",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "desc": "Decrease your chance of dropping items on death by $5|15$%.",
         "icon": "drop-weapon",
         "cost": 3,
         "unlocks": [
@@ -132,7 +132,7 @@
     "DeathGrip2": {
         "name": "DeathGrip2",
         "traitName": "DeathGrip",
-        "desc": "Decrease your chance of dropping items on death by 5% per point.",
+        "desc": "Decrease your chance of dropping items on death by $5|15$%.",
         "icon": "drop-weapon",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -145,7 +145,7 @@
     "NaturalArmor0": {
         "name": "NaturalArmor0",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by $2|6$.",
         "icon": "internal-injury",
         "cost": 3,
         "unlocks": [
@@ -159,7 +159,7 @@
     "NaturalArmor1": {
         "name": "NaturalArmor1",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by $2|6$.",
         "icon": "internal-injury",
         "cost": 3,
         "unlocks": [
@@ -173,7 +173,7 @@
     "NaturalArmor2": {
         "name": "NaturalArmor2",
         "traitName": "NaturalArmor",
-        "desc": "Harden your skin, increasing your natural armor class by 2 per point.",
+        "desc": "Harden your skin, increasing your natural armor class by $2|6$.",
         "icon": "internal-injury",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -468,7 +468,7 @@
     "ForcefulStrike5": {
         "name": "ForcefulStrike5",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -482,7 +482,7 @@
     "ForcefulStrike6": {
         "name": "ForcefulStrike6",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -497,7 +497,7 @@
     "ForcefulStrike7": {
         "name": "ForcefulStrike7",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -511,7 +511,7 @@
     "ForcefulStrike8": {
         "name": "ForcefulStrike8",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -525,7 +525,7 @@
     "ForcefulStrike9": {
         "name": "ForcefulStrike9",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1160,7 +1160,7 @@
     "ForcefulStrike0": {
         "name": "ForcefulStrike0",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1175,7 +1175,7 @@
     "ForcefulStrike1": {
         "name": "ForcefulStrike1",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1190,7 +1190,7 @@
     "ForcefulStrike2": {
         "name": "ForcefulStrike2",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1205,7 +1205,7 @@
     "ForcefulStrike3": {
         "name": "ForcefulStrike3",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "unlocks": [
@@ -1219,7 +1219,7 @@
     "ForcefulStrike4": {
         "name": "ForcefulStrike4",
         "traitName": "ForcefulStrike",
-        "desc": "Strike more forcefully, dealing 15% additional damage per point if your health is above 50%.",
+        "desc": "Strike more forcefully, dealing 10% additional damage per point if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
         "cluster": 4,

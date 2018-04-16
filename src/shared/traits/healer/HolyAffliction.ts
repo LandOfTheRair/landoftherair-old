@@ -5,7 +5,7 @@ export class HolyAffliction extends Trait {
 
   static baseClass = 'Healer';
   static traitName = 'HolyAffliction';
-  static description = 'Your single-target spells have a 3% chance per point of doing critical damage.';
+  static description = 'Your single-target spells have a $3|9$% chance of doing critical damage.';
   static icon = 'large-wound';
 
   static upgrades = [

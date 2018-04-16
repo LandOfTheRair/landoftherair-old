@@ -5,7 +5,7 @@ export class ReusableTraps extends Trait {
 
   static baseClass = 'Thief';
   static traitName = 'ReusableTraps';
-  static description = 'Your traps can be triggered 1 more time per point.';
+  static description = 'Your traps can be triggered $1|3$ more time(s).';
   static icon = 'regeneration';
 
   static upgrades = [
