@@ -1,0 +1,31 @@
+
+- name: Ink Vial
+  desc: "a small vial filled with ink"
+  sprite: 899
+  value: 500
+
+
+- name: Antanian Bottle of Water
+  sprite: 38
+  desc: "a bottle of water"
+  value: 50
+  effect:
+    name: Nourishment
+    tooltip: "+3 MP Regen"
+    message: "The water quenches your thirst."
+    stats:
+      mpregen: 3
+    duration: 10800
+
+- name: Antanian Pint of Water
+  sprite: 38
+  desc: "a pint of water"
+  value: 500
+  ounces: 16
+  effect:
+    name: Nourishment
+    tooltip: "+3 MP Regen"
+    message: "The water quenches your thirst."
+    stats:
+      mpregen: 3
+    duration: 10800

@@ -30,11 +30,14 @@ class ItemLoader {
 
     recurse(`${__dirname}/../../content/items`).then(async files => {
       const filePromises = files.map(file => {
-        const fileName = path.basename(file, path.extname(file));
+        const basePath = file.split('items\\')[1];
+        const basePathLeftSide = basePath.split('\\')[0];
+        const itemClassRoot = path.basename(basePathLeftSide, path.extname(basePathLeftSide));
+
         const itemsOfType = YAML.load(file);
 
         const promises = itemsOfType.map(itemData => {
-          itemData.itemClass = fileName;
+          itemData.itemClass = itemClassRoot;
           itemData.type = itemData.type || SkillClassNames.Martial;
           if(!itemData.stats) itemData.stats = {};
 

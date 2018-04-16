@@ -1,0 +1,59 @@
+
+- name: Mend Bottle
+  desc: "a small bottle filled with fizzy purple liquid"
+  extendedDesc: "a mending potion"
+  sprite: 107
+  effect:
+    name: ExactHeal
+    potency: 200
+  value: 5
+
+- name: Mend Bottle (5oz)
+  desc: "a small bottle filled with fizzy purple liquid"
+  extendedDesc: "a mending potion"
+  sprite: 107
+  ounces: 5
+  effect:
+    name: ExactHeal
+    potency: 200
+  value: 30
+
+- name: Instant Heal Bottle
+  desc: "a small bottle labeled Instant Heal"
+  extendedDesc: "a healing potion"
+  sprite: 260
+  effect:
+    name: ExactHeal
+    potency: 1000
+  value: 500
+
+- name: Instant Heal Bottle (5oz)
+  desc: "a small bottle labeled Instant Heal"
+  extendedDesc: "a healing potion"
+  sprite: 260
+  ounces: 5
+  effect:
+    name: ExactHeal
+    potency: 1000
+  value: 3000
+
+- name: Weak Regen Potion
+  desc: "a small bottle labeled Instant Heal, filled with purple liquid"
+  extendedDesc: "a potion of Regen"
+  sprite: 959
+  effect:
+    name: Regen
+    duration: 10
+    potency: 50
+  value: 500
+
+- name: Weak Regen Potion (5oz)
+  desc: "a small bottle labeled Instant Heal, filled with purple liquid"
+  extendedDesc: "a potion of Regen"
+  sprite: 959
+  ounces: 5
+  effect:
+    name: Regen
+    duration: 10
+    potency: 50
+  value: 500

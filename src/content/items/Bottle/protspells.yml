@@ -1,0 +1,181 @@
+
+- name: TrueSight Potion
+  desc: "a small bottle covered with eyes"
+  extendedDesc: "a potion of TrueSight"
+  sprite: 254
+  effect:
+    name: TrueSight
+    duration: 600
+  value: 200
+
+- name: TrueSight Potion (10oz)
+  desc: "a small bottle covered with eyes"
+  extendedDesc: "a potion of TrueSight"
+  sprite: 254
+  ounces: 10
+  effect:
+    name: TrueSight
+    duration: 600
+  value: 200
+
+- name: DarkVision Potion
+  desc: "a small dark bottle covered with glow-in-the-dark eyes"
+  extendedDesc: "a potion of DarkVision"
+  sprite: 957
+  effect:
+    name: DarkVision
+    duration: 1200
+  value: 200
+
+- name: DarkVision Potion (10oz)
+  desc: "a small dark bottle covered with glow-in-the-dark eyes"
+  extendedDesc: "a potion of DarkVision"
+  ounces: 10
+  sprite: 957
+  effect:
+    name: DarkVision
+    duration: 1200
+  value: 200
+
+- name: Weak BarNecro Potion
+  desc: "a small white bottle. It smells putrid"
+  extendedDesc: "a potion of BarNecro"
+  sprite: 251
+  effect:
+    name: BarNecro
+    duration: 900
+    potency: 10
+  value: 500
+
+- name: Weak BarNecro Potion (10oz)
+  desc: "a small white bottle. It smells putrid"
+  extendedDesc: "a potion of BarNecro"
+  sprite: 251
+  ounces: 10
+  effect:
+    name: BarNecro
+    duration: 900
+    potency: 10
+  value: 500
+
+- name: Weak BarFire Potion
+  desc: "a small white bottle. It feels warm to the touch"
+  extendedDesc: "a potion of BarFire"
+  sprite: 251
+  effect:
+    name: BarFire
+    duration: 900
+    potency: 10
+  value: 500
+
+- name: Weak BarFire Potion (10oz)
+  desc: "a small white bottle. It feels warm to the touch"
+  extendedDesc: "a potion of BarFire"
+  sprite: 251
+  ounces: 10
+  effect:
+    name: BarFire
+    duration: 900
+    potency: 10
+  value: 500
+
+- name: Weak BarFrost Potion
+  desc: "a small white bottle. The bottle chills your hand"
+  extendedDesc: "a potion of BarFrost"
+  sprite: 251
+  effect:
+    name: BarFrost
+    duration: 900
+    potency: 10
+  value: 500
+
+- name: Weak BarFrost Potion (10oz)
+  desc: "a small white bottle. The bottle chills your hand"
+  extendedDesc: "a potion of BarFrost"
+  sprite: 251
+  ounces: 10
+  effect:
+    name: BarFrost
+    duration: 900
+    potency: 10
+  value: 500
+
+- name: Weak BarWater Potion
+  desc: "a small white bottle. The liquid in it seems unnaturally buoyant"
+  extendedDesc: "a potion of BarWater"
+  sprite: 251
+  effect:
+    name: BarWater
+    duration: 900
+    potency: 10
+  value: 500
+
+- name: Weak BarWater Potion (10oz)
+  desc: "a small white bottle. The liquid in it seems unnaturally buoyant"
+  extendedDesc: "a potion of BarWater"
+  sprite: 251
+  ounces: 10
+  effect:
+    name: BarWater
+    duration: 900
+    potency: 10
+  value: 500
+
+- name: Bear Meat Antidote
+  desc: "a small flask filled with liquid made of bear meat"
+  extendedDesc: "a flask of Antidote"
+  sprite: 142
+  effect:
+    name: Antidote
+    potency: 10
+  value: 1000
+
+- name: Bear Meat Antidote (10oz)
+  desc: "a small flask filled with liquid made of bear meat"
+  extendedDesc: "a flask of Antidote"
+  sprite: 142
+  ounces: 10
+  effect:
+    name: Antidote
+    potency: 10
+  value: 2000
+
+- name: EtherFire Potion
+  desc: "a translucent blue bottle with fiery-hot mist emanating from it"
+  extendedDesc: "a bottle of Ether Fire"
+  sprite: 889
+  ounces: 1
+  effect:
+    name: EtherFire
+    potency: 2
+  value: 2000
+
+- name: EtherFire Potion (5oz)
+  desc: "a translucent blue bottle with fiery-hot mist emanating from it"
+  extendedDesc: "a bottle of Ether Fire"
+  sprite: 889
+  ounces: 5
+  effect:
+    name: EtherFire
+    potency: 2
+  value: 10000
+
+- name: BeastRipper Potion
+  desc: "a translucent blue bottle with a green mist that smells like leaves"
+  extendedDesc: "a bottle of Beast Ripper"
+  sprite: 890
+  ounces: 1
+  effect:
+    name: BeastRipper
+    potency: 2
+  value: 2000
+
+- name: BeastRipper Potion (5oz)
+  desc: "a translucent blue bottle with a green mist that smells like leaves"
+  extendedDesc: "a bottle of Beast Ripper"
+  sprite: 890
+  ounces: 5
+  effect:
+    name: BeastRipper
+    potency: 2
+  value: 10000
