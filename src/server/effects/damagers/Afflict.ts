@@ -1,10 +1,9 @@
 
-import { random } from 'lodash';
-
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Afflict extends SpellEffect {
 
@@ -19,7 +18,7 @@ export class Afflict extends SpellEffect {
     let isCrit = false;
 
     const holyAfflictionChance = caster.getTraitLevelAndUsageModifier('HolyAffliction');
-    if(random(0, 100) <= holyAfflictionChance) {
+    if(RollerHelper.XInOneHundred(holyAfflictionChance)) {
       isCrit = true;
     }
 

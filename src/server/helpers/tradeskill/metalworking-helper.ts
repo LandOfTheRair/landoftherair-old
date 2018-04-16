@@ -1,8 +1,9 @@
 
 import { Player } from '../../../shared/models/player';
 import { SkillClassNames } from '../../../shared/models/character';
-import { capitalize, clamp, includes, get, random, cloneDeep } from 'lodash';
+import { capitalize, clamp, includes, get, cloneDeep } from 'lodash';
 import { ArmorClasses, Item } from '../../../shared/models/item';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 const ingotCraftBuffs = {
   'Copper Ingot (Pillars)': {
@@ -144,8 +145,7 @@ export class MetalworkingHelper {
     const reagent = container.upgradeReagent;
 
     if(!item || !reagent) return false;
-
-    if(random(1, 100) > this.successPercent(player)) {
+    if(!RollerHelper.XInOneHundred(this.successPercent(player))) {
       container.clearUpgradeIngredient();
       return false;
     }

@@ -1,9 +1,8 @@
 
-import { random } from 'lodash';
-
 import { AugmentSpellEffect, ImbueEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class ImbueEnergy extends ImbueEffect implements AugmentSpellEffect {
 
@@ -49,7 +48,7 @@ export class ImbueEnergy extends ImbueEffect implements AugmentSpellEffect {
   augmentAttack(attacker: Character, defender: Character, opts: { damage: number, damageClass: string }) {
 
     if(opts.damageClass !== 'physical') return;
-    if(random(0, 100) > this.potency) return;
+    if(!RollerHelper.XInOneHundred(this.potency)) return;
 
     this.magicalAttack(attacker, defender, {
       atkMsg: `You strike for bonus energy damage!`,

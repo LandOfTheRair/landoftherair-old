@@ -3,6 +3,7 @@ import { random, sample } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
+import { RollerHelper } from '../../../../../../shared/helpers/roller-helper';
 
 export class DedlaenCryptThingPunch extends Skill {
 
@@ -14,7 +15,7 @@ export class DedlaenCryptThingPunch extends Skill {
   }
 
   use(user: Character, target: Character) {
-    if(random(0, 20) !== 0) return;
+    if(!RollerHelper.OneInX(20)) return;
 
     target.sendClientMessageToRadius(`${target.name} was cast into a tear in the rift!`, 4);
     const allTeleportSpots = user.$$room.state.getDecorByName('CryptThing Spot');

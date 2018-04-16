@@ -10,6 +10,7 @@ import * as dice from 'dice.js';
 import { CharacterHelper } from '../character/character-helper';
 import { NPC } from '../../../shared/models/npc';
 import { BuildupEffect } from '../../base/Effect';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export type DamageType =
   'Physical'
@@ -72,7 +73,7 @@ export class CombatHelper {
     const baseTier = base * tier;
 
     // try to flub
-    const didFlub = random(0, 100) <= weakChance * attacker.getTraitLevelAndUsageModifier('Swashbuckler');
+    const didFlub = RollerHelper.XInOneHundred(weakChance * attacker.getTraitLevelAndUsageModifier('Swashbuckler'));
 
     const bonusRolls = didFlub ? minTier : random(minTier, maxTier);
 
@@ -91,7 +92,7 @@ export class CombatHelper {
   private static attemptToRiposte(attacker: Character, defender: Character) {
     const riposteLevel = defender.getTraitLevelAndUsageModifier('Riposte');
     if(riposteLevel === 0) return;
-    if(random(1, 100) > riposteLevel) return;
+    if(!RollerHelper.XInOneHundred(riposteLevel)) return;
 
     defender.sendClientMessage('You riposte the attack!');
     this.doPhysicalAttack(defender, attacker, { isRiposte: true });
@@ -104,7 +105,7 @@ export class CombatHelper {
     if(shadowSwapLevel === 0) return;
     if(!CharacterHelper.isNearWall(char)) return;
 
-    if(random(1, 100) > shadowSwapLevel) return;
+    if(!RollerHelper.XInOneHundred(shadowSwapLevel)) return;
 
     const hidden = new Effects.Hidden({});
     char.sendClientMessage('You swap places with your shadow!');
@@ -114,7 +115,7 @@ export class CombatHelper {
   private static attemptToStun(attacker: Character, weapon: Item, defender: Character) {
 
     // prone can happen randomly
-    if(weapon.proneChance > 0 && random(1, 100) <= weapon.proneChance) {
+    if(weapon.proneChance > 0 && RollerHelper.XInOneHundred(weapon.proneChance)) {
       const push = new Effects.Push({ potency: attacker.level });
       push.cast(attacker, defender);
     }
@@ -127,7 +128,7 @@ export class CombatHelper {
     }
 
     // low chance of cstun
-    if(random(1, defender.getTotalStat('con') * conMultiplier) === 1) {
+    if(RollerHelper.OneInX(defender.getTotalStat('con') * conMultiplier)) {
       const stun = new Effects.Stun({});
       stun.cast(attacker, defender);
     }
@@ -217,7 +218,7 @@ export class CombatHelper {
 
     if(!isRiposte && !isBackstab) {
       const procChance = attacker.getTraitLevelAndUsageModifier('ShadowDaggers');
-      if(random(1, 100) <= procChance) {
+      if(RollerHelper.XInOneHundred(procChance)) {
         attacker.sendClientMessage({
           message: `Your shadow daggers unsheathe themselves and attempt to strike ${defender.name}!`,
           subClass: 'combat other hit'
@@ -962,7 +963,7 @@ export class CombatHelper {
 
     if(defender.isNaturalResource) damage = baseDamage;
 
-    if(isWeak && random(1, 100) <= defender.getTraitLevelAndUsageModifier('SterlingArmor')) damage = 0;
+    if(isWeak && RollerHelper.XInOneHundred(defender.getTraitLevelAndUsageModifier('SterlingArmor'))) damage = 0;
 
     const absDmg = Math.round(Math.abs(damage));
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;

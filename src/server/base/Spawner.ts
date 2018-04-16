@@ -11,6 +11,7 @@ import { Dangerous } from '../effects/special/Dangerous';
 import { Attribute } from '../effects/augments/Attribute';
 import { GameWorld } from '../rooms/GameWorld';
 import {StatName} from '../../shared/models/character';
+import { RollerHelper } from '../../shared/helpers/roller-helper';
 
 export class Spawner {
 
@@ -111,7 +112,7 @@ export class Spawner {
     if(itemName.chance && itemName.name) {
       if(itemName.chance < 0) return { name: itemName.name };
 
-      if(random(0, 100) <= itemName.chance) return { name: itemName.name };
+      if(RollerHelper.XInOneHundred(itemName.chance)) return { name: itemName.name };
     }
 
     return { name: '' };

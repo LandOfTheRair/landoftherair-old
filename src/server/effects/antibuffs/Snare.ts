@@ -1,10 +1,11 @@
 
-import { clamp, random } from 'lodash';
+import { clamp } from 'lodash';
 
 import { SpellEffect } from '../../base/Effect';
 import { Character, StatName } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { RecentlySnared } from '../recents/RecentlySnared';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Snare extends SpellEffect {
 
@@ -36,7 +37,7 @@ export class Snare extends SpellEffect {
 
     const successChance = clamp((baseStat - targetStat) + 2, 0, 4) * 25;
 
-    if(random(0, 100) > successChance) {
+    if(!RollerHelper.XInOneHundred(successChance)) {
       caster.sendClientMessage(`${target.name} resisted your snare!`);
       return;
     }

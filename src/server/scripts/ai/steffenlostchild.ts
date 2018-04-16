@@ -4,6 +4,7 @@ import { NPCLoader } from '../../helpers/character/npc-loader';
 import { Player } from '../../../shared/models/player';
 import { MoveHelper } from '../../helpers/character/move-helper';
 import { DefaultAIBehavior } from './default';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class SteffenLostChildAIBehavior extends DefaultAIBehavior {
   tick() {
@@ -60,7 +61,7 @@ export class SteffenLostChildAIBehavior extends DefaultAIBehavior {
     }
 
     // spam view chat for fun
-    if(random(1, 7) === 1) {
+    if(RollerHelper.OneInX(7)) {
       let response = sample(responses);
 
       if(responses.length > 1 && response === npc.$$lastResponse) {

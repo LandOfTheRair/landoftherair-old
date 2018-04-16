@@ -4,6 +4,7 @@ import { Item, EquippableItemClassesWithWeapons } from '../../../shared/models/i
 
 import { includes, random, clone, clamp, capitalize } from 'lodash';
 import { SkillClassNames } from '../../../shared/models/character';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class SpellforgingHelper {
 
@@ -83,7 +84,7 @@ export class SpellforgingHelper {
     const item = container.modifyItem;
     const reagent = container.reagent;
 
-    if(random(1, 100) > this.successPercent(player)) {
+    if(!RollerHelper.XInOneHundred(this.successPercent(player))) {
       container.clearIngredient();
       return false;
     }

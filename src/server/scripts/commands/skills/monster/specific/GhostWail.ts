@@ -4,8 +4,9 @@ import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Stun, Frosted } from '../../../../../effects';
 
-import { every, some, clamp, random } from 'lodash';
+import { every, some, clamp } from 'lodash';
 import { CharacterHelper } from '../../../../../helpers/character/character-helper';
+import { RollerHelper } from '../../../../../../shared/helpers/roller-helper';
 
 export class GhostWail extends Skill {
 
@@ -31,7 +32,7 @@ export class GhostWail extends Skill {
 
       const successChance = clamp((23 - target.getTotalStat('wil')) + 4, 0, 8) * 12.5;
 
-      if(random(0, 100) < successChance) {
+      if(RollerHelper.XInOneHundred(successChance)) {
         char.sendClientMessage(`You resisted the wail of the ghost!`);
         return;
       }

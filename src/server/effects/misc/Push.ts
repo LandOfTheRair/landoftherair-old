@@ -4,6 +4,7 @@ import { Character, StatName } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { random, clamp } from 'lodash';
 import { Stun } from '../antibuffs/Stun';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Push extends SpellEffect {
 
@@ -28,7 +29,7 @@ export class Push extends SpellEffect {
 
     const successChance = clamp((baseStat - targetStat) + 4, 0, 8) * 12.5;
 
-    if(random(0, 100) > successChance) {
+    if(!RollerHelper.XInOneHundred(successChance)) {
       if(!predetermined) caster.sendClientMessage(`${target.name} resisted your push!`);
       return;
     }

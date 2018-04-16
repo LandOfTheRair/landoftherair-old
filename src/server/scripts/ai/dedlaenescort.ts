@@ -3,6 +3,7 @@ import { random, sample } from 'lodash';
 import { Player } from '../../../shared/models/player';
 import { MoveHelper } from '../../helpers/character/move-helper';
 import { DefaultAIBehavior } from './default';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class DedlaenEscortAIBehavior extends DefaultAIBehavior {
   tick() {
@@ -58,7 +59,7 @@ export class DedlaenEscortAIBehavior extends DefaultAIBehavior {
     }
 
     // spam view chat for fun
-    if(random(1, 30) === 1) {
+    if(RollerHelper.OneInX(30)) {
       let response = sample(responses);
 
       if(responses.length > 1 && response === npc.$$lastResponse) {

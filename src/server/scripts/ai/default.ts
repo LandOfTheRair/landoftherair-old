@@ -5,6 +5,7 @@ import { random, maxBy, sample, sampleSize, clamp, includes, shuffle, size } fro
 import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class DefaultAIBehavior {
 
@@ -95,7 +96,7 @@ export class DefaultAIBehavior {
     const moveRate = npc.getTotalStat('move');
     const numSteps = random(0, Math.min(moveRate, npc.path ? npc.path.length : moveRate));
 
-    if(random(0, 25) === 0) {
+    if(RollerHelper.OneInX(25)) {
       this.checkGroundForItems();
     }
 

@@ -1,11 +1,10 @@
 
-import { random } from 'lodash';
-
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { CombatHelper } from '../../helpers/world/combat-helper';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Poison extends SpellEffect {
 
@@ -78,7 +77,7 @@ export class Poison extends SpellEffect {
 
     let isCrit = false;
 
-    if(random(1, 100) <= this.critBonus * 100) {
+    if(RollerHelper.XInOneHundred(this.critBonus * 100)) {
       isCrit = true;
     }
 

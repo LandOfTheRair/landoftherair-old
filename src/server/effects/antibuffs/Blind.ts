@@ -1,10 +1,11 @@
 
-import { clamp, random } from 'lodash';
+import { clamp } from 'lodash';
 
 import { SpellEffect } from '../../base/Effect';
 import { Character, StatName } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { RecentlyBlinded } from '../recents/RecentlyBlinded';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Blind extends SpellEffect {
 
@@ -34,7 +35,7 @@ export class Blind extends SpellEffect {
 
     const successChance = clamp((baseStat - targetStat) + 4, 0, 8) * 12.5;
 
-    if(random(0, 100) > successChance) {
+    if(!RollerHelper.XInOneHundred(successChance)) {
       caster.sendClientMessage(`${target.name} resisted your blind!`);
       return;
     }

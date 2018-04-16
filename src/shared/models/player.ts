@@ -1,6 +1,6 @@
 
 import { DateTime } from 'luxon';
-import { compact, pull, random, isArray, get, set, find, includes, reject, extend, values, isUndefined, cloneDeep, size } from 'lodash';
+import { compact, pull, isArray, get, set, find, includes, reject, extend, values, isUndefined, cloneDeep, size } from 'lodash';
 import { nonenumerable } from 'nonenumerable';
 import { RestrictedNumber } from 'restricted-number';
 
@@ -24,6 +24,7 @@ import { AlchemyContainer } from './container/tradeskills/alchemy';
 import { SpellforgingContainer } from './container/tradeskills/spellforging';
 import { MetalworkingContainer } from './container/tradeskills/metalworking';
 import { SkillTree } from './skill-tree';
+import { RollerHelper } from '../helpers/roller-helper';
 
 export class Player extends Character {
   @nonenumerable
@@ -359,16 +360,16 @@ export class Player extends Character {
     }
 
     if(myCon === 3) {
-      if(this.stats.hp > 10 && random(1, 5) === 1) {
+      if(this.stats.hp > 10 && RollerHelper.OneInX(5)) {
         this.loseBaseStat('hp', 2);
       }
 
-      if(random(1, myLuk / 5) === 1) this.loseBaseStat('con', 1);
+      if(RollerHelper.OneInX(myLuk / 5)) this.loseBaseStat('con', 1);
     }
 
     if(myCon === 2) {
       if(this.stats.hp > 10) this.loseBaseStat('hp', 2);
-      if(random(1, myLuk) === 1) this.loseBaseStat('con', 1);
+      if(RollerHelper.OneInX(myLuk)) this.loseBaseStat('con', 1);
     }
 
     if(myCon === 1) {
@@ -377,20 +378,20 @@ export class Player extends Character {
 
     if(killer && !killer.isPlayer()) {
 
-      if(random(1, 100) > this.getTraitLevelAndUsageModifier('DeathGrip')) {
+      if(!RollerHelper.XInOneHundred(this.getTraitLevelAndUsageModifier('DeathGrip'))) {
         CharacterHelper.dropHands(this);
       }
 
       if(myCon === 3) {
-        if(random(1, myLuk) === 1) CharacterHelper.strip(this, this);
+        if(RollerHelper.OneInX(myLuk)) CharacterHelper.strip(this, this);
       }
 
       if(myCon === 2) {
-        if(random(1, myLuk / 5) === 1) CharacterHelper.strip(this, this);
+        if(RollerHelper.OneInX(myLuk / 5)) CharacterHelper.strip(this, this);
       }
 
       if(myCon === 1) {
-        if(random(1, 2) === 1) CharacterHelper.strip(this, this);
+        if(RollerHelper.OneInX(2)) CharacterHelper.strip(this, this);
       }
     }
   }
@@ -418,8 +419,8 @@ export class Player extends Character {
 
     if(force) {
       this.sendClientMessage('You feel a churning sensation.');
-      if(this.stats.str > 5 && random(1, 5) === 1) this.stats.str--;
-      if(this.stats.agi > 5 && random(1, 5) === 1) this.stats.agi--;
+      if(this.stats.str > 5 && RollerHelper.OneInX(5)) this.stats.str--;
+      if(this.stats.agi > 5 && RollerHelper.OneInX(5)) this.stats.agi--;
     }
 
     this.hp.set(1);
