@@ -149,6 +149,15 @@
     potency: 7
   value: 1000
 
+- name: Weak Absorption Potion
+  desc: "a translucent blue bottle filled with a viscous liquid"
+  extendedDesc: "a flask of Absorption"
+  sprite: 250
+  effect:
+    name: Absorption
+    potency: 15
+  value: 1500
+
 - name: EtherFire Potion
   desc: "a translucent blue bottle with fiery-hot mist emanating from it"
   extendedDesc: "a bottle of Ether Fire"

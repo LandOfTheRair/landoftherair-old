@@ -2,3 +2,24 @@
 - result: Mines Caveflower
   chance: 1
   maxChance: 250
+
+- result: Weak Absorption Potion
+  chance: 1
+  maxChance: 100
+
+- result: Risan Fire Prot Crystal
+  chance: 1
+  maxChance: 1000
+
+- result: Risan Ice Prot Crystal
+  chance: 1
+  maxChance: 1000
+
+- result: Risan Necrotic Prot Crystal
+  chance: 1
+  maxChance: 1000
+
+- result: Risan Energy Prot Crystal
+  chance: 1
+  maxChance: 1000
+

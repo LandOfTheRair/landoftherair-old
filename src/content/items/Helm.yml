@@ -117,3 +117,51 @@
 
   requirements:
     alignment: Evil
+
+- name: Miner Defense Health Helm
+  sprite: 336
+  randomStats:
+    defense:
+      min: 2
+      max: 5
+    hp:
+      min: 50
+      max: 75
+  desc: "a helmet designed to protect the face from overexposure to heat"
+  value: 4500
+
+- name: Miner Offense Health Helm
+  sprite: 336
+  randomStats:
+    offense:
+      min: 2
+      max: 5
+    hp:
+      min: 50
+      max: 75
+  desc: "a helmet designed to protect the face from overexposure to heat"
+  value: 4500
+
+- name: Miner Defense Mana Helm
+  sprite: 336
+  randomStats:
+    defense:
+      min: 2
+      max: 5
+    mp:
+      min: 50
+      max: 75
+  desc: "a helmet designed to protect the face from overexposure to heat"
+  value: 4500
+
+- name: Miner Offense Mana Helm
+  sprite: 336
+  randomStats:
+    offense:
+      min: 2
+      max: 5
+    mp:
+      min: 50
+      max: 75
+  desc: "a helmet designed to protect the face from overexposure to heat"
+  value: 4500

@@ -1,0 +1,88 @@
+
+- name: Leather Ring
+  stats:
+    armorClass: 1
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 1
+
+- name: Leather Strength Ring
+  randomStats:
+    str:
+      min: 1
+      max: 3
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 7
+
+- name: Leather Dexterity Ring
+  randomStats:
+    dex:
+      min: 1
+      max: 3
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 12
+
+- name: Leather Agility Ring
+  randomStats:
+    agi:
+      min: 1
+      max: 3
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 17
+
+- name: Leather Intelligence Ring
+  randomStats:
+    int:
+      min: 1
+      max: 3
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 21
+
+- name: Leather Wisdom Ring
+  randomStats:
+    wis:
+      min: 1
+      max: 3
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 25
+
+- name: Leather Willpower Ring
+  randomStats:
+    wil:
+      min: 1
+      max: 3
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 29
+
+- name: Leather Constitution Ring
+  randomStats:
+    con:
+      min: 1
+      max: 3
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 31
+
+- name: Leather Charisma Ring
+  randomStats:
+    cha:
+      min: 1
+      max: 3
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 39
+
+- name: Leather Luck Ring
+  randomStats:
+    luk:
+      min: 1
+      max: 3
+  sprite: 249
+  desc: "a ring made of bound leather"
+  value: 51

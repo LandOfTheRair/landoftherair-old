@@ -1,0 +1,73 @@
+
+
+- name: Antanian MagicMissile Black Pearl
+  desc: "a small black pearl radiating with magical energy"
+  value: 2000
+  sprite: 315
+  stats:
+    effect:
+      name: MagicMissile
+      potency: 5
+      chance: 10
+
+  requirements:
+    level: 5
+
+- name: Antanian MagicBolt Black Pearl
+  desc: "a small black pearl overflowing with magical energy"
+  value: 3000
+  sprite: 315
+  stats:
+    effect:
+      name: MagicBolt
+      potency: 7
+      chance: 10
+
+  requirements:
+    level: 15
+
+- name: Tower FireMist Black Pearl
+  desc: "a small black pearl radiating with heat"
+  value: 3000
+  sprite: 315
+  stats:
+    effect:
+      name: FireMist
+      potency: 10
+      chance: 10
+
+  requirements:
+    level: 11
+
+- name: Tower IceMist Black Pearl
+  desc: "a small black pearl with a thin layer of frost on it"
+  value: 3000
+  sprite: 315
+
+  stats:
+    effect:
+      name: IceMist
+      potency: 10
+      chance: 10
+
+  requirements:
+    level: 11
+
+- name: Dedlaen Transmute Pearl
+  desc: "a small white pearl bathed in a faint golden glow"
+  value: 10000
+  sprite: 313
+
+  effect:
+    name: Transmute
+    uses: 10
+    potency: 20
+
+  stats:
+    effect:
+      name: Transmute
+      chance: 33
+      potency: 20
+
+  requirements:
+    level: 10

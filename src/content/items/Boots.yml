@@ -70,3 +70,9 @@
   desc: "a pair sharkskin boots that help you swim more easily"
   value: 250
   binds: true
+
+- name: Mines Rockman Boots
+  tier: 3
+  sprite: 232
+  desc: "a pair of leather boots"
+  value: 75

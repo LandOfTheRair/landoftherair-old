@@ -64,7 +64,12 @@ export class MetalworkingHelper {
 
     // move prots over
     if(buffItem.itemClass === 'Fur') {
-      return { fireResist: buffItem.stats.fireResist, iceResist: buffItem.stats.iceResist };
+      return {
+        fireResist: buffItem.stats.fireResist,
+        iceResist: buffItem.stats.iceResist,
+        poisonResist: buffItem.stats.poisonResist,
+        diseaseResist: buffItem.stats.diseaseResist
+      };
     }
 
     // move specific ingot buffs over

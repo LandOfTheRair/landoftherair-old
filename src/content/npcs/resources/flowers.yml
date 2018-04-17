@@ -124,7 +124,7 @@
       chance: 1
       maxChance: 15
 
-- npcId: Mines Caveflower Root
+- npcId: Mines Caveroot
   name: tree root
   hostility: OnHit
   allegiance: NaturalResource

@@ -142,4 +142,12 @@
     - Antanian Slice of Bread
     - Dedlaen Minotaur Horn
 
+- item: Weak Absorption Potion
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 2
+  xpGained: 7500
+  ingredients:
+    - Antanian Bottle of Water
+    - Mines Caveroot
 

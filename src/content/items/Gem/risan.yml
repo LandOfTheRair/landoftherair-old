@@ -1,0 +1,140 @@
+
+
+- name: Risan Diamond
+  desc: "a roughly-cut diamond"
+  value: 5000
+  sprite: 247
+
+  maxEncrusts: 4
+
+  stats:
+    hp: 10
+    mp: 10
+    perception: 2
+    physicalResist: 3
+    magicalResist: 3
+
+- name: Risan Emerald Chunk
+  desc: "a chunk of raw emerald"
+  value: 2500
+  sprite: 246
+
+  maxEncrusts: 4
+
+  stats:
+    physicalResist: 6
+
+  requirements:
+    level: 7
+
+- name: Risan Raw Jade
+  desc: "a chunk of raw jade"
+  value: 1500
+  sprite: 310
+
+  maxEncrusts: 3
+
+  stats:
+    con: 1
+
+  requirements:
+    level: 7
+
+- name: Risan Carved Jade
+  desc: "a chunk of jade finely-carved into the shape of a scarab"
+  value: 1800
+  sprite: 311
+  stats:
+    perception: 10
+
+  requirements:
+    level: 7
+
+- name: Risan Polished Ruby
+  desc: "a well-polished ruby"
+  value: 1200
+  sprite: 312
+  stats:
+    magicalResist: 3
+
+  requirements:
+    level: 7
+
+- name: Risan White Pearl
+  desc: "a large white pearl"
+  value: 3000
+  sprite: 313
+
+  maxEncrusts: 3
+
+  stats:
+    hpregen: 1
+
+  requirements:
+    level: 7
+
+- name: Risan Black Pearl
+  desc: "a large black pearl"
+  value: 3000
+  sprite: 314
+
+  maxEncrusts: 3
+
+  stats:
+    mpregen: 1
+
+  requirements:
+    level: 7
+
+- name: Risan Small Black Pearl
+  desc: "a small black pearl"
+  value: 3500
+  sprite: 315
+
+  maxEncrusts: 3
+
+  stats:
+    accuracy: 3
+
+  requirements:
+    level: 7
+
+- name: Risan Fire Prot Crystal
+  desc: "a small crystal encasing a fire frozen in time"
+  value: 5000
+  sprite: 339
+
+  maxEncrusts: 4
+
+  stats:
+    fireResist: 50
+
+- name: Risan Ice Prot Crystal
+  desc: "a small crystal encasing a chunk of ice"
+  value: 5000
+  sprite: 338
+
+  maxEncrusts: 4
+
+  stats:
+    iceResist: 50
+
+- name: Risan Necrotic Prot Crystal
+  desc: "a small crystal encasing a chunk of earth"
+  value: 5000
+  sprite: 337
+
+  maxEncrusts: 4
+
+  stats:
+    necroticResist: 50
+
+- name: Risan Energy Prot Crystal
+  desc: "a strangely-shaped crystal that has a pervasive energy aura"
+  value: 5000
+  sprite: 337
+
+  maxEncrusts: 4
+
+  stats:
+    energyResist: 50

@@ -1,0 +1,136 @@
+
+- npcId: Risan Miner
+  name: miner
+  hostility: Faction
+  allegiance: Townsfolk
+  baseClass: Warrior
+  sprite: 770
+  stats: 16
+  skillLevels: 8
+  level: 19
+
+  skillOnKill: 45
+
+  otherStats:
+    con: 15
+    accuracy: 5
+    perception: 220
+
+  allegianceReputation:
+    Enemy: -101
+    NaturalResource: -101
+
+  gold:
+    min: 2850
+    max: 3000
+
+  hp:
+    min: 23950
+    max: 27350
+
+  giveXp:
+    min: 30000
+    max: 31000
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor: Mines Trash Breastplate
+    Head:
+      - result: none
+        chance: 150
+      - result: Miner Defense Health Helm
+        chance: 1
+      - result: Miner Offense Health Helm
+        chance: 1
+      - result: Miner Defense Mana Helm
+        chance: 1
+      - result: Miner Offense Mana Helm
+        chance: 1
+
+  rightHand: Mines Hammer
+
+  usableSkills:
+    - Charge
+
+  leftHand:
+    - result: none
+      chance: 5
+    - result: Mines Fire Offense Shield
+      chance: 1
+    - result: Mines Fire Defense Shield
+      chance: 1
+
+  drops:
+    - result: Risan Mines Key
+      chance: 1
+      maxChance: 300
+
+    - result: Risan Miner Book
+      chance: 1
+      maxChance: 1000
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+- npcId: Mines Rockman
+  name: rockman
+  hostility: Always
+  sprite: 75
+  stats: 18
+  skillLevels: 11
+  level: 19
+
+  otherStats:
+    armorClass: 30
+    perception: 150
+    accuracy: 7
+    offense: 7
+    move: 2
+
+  skillOnKill: 35
+
+  gold:
+    min: 1850
+    max: 2000
+
+  hp:
+    min: 35950
+    max: 37350
+
+  giveXp:
+    min: 36000
+    max: 39000
+
+  usableSkills:
+    - Kick
+    - Jumpkick
+
+  traitLevels:
+    MartialAgility: 3
+    MartialAcuity: 3
+    Punchkick: 1
+    StunningFist: 3
+
+  gear:
+    Hands: Mines Rockman Gloves
+    Feet: Mines Rockman Boots
+    Armor:
+      - none
+      - Risan Trash Tunic
+      - Risan Trash Cloak
+
+  drops:
+    - result: Silver Ore (Small)
+      chance: 1
+      maxChance: 100
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+
+  spawnMessage: "the sound of rocks grinding together"

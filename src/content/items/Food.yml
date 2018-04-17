@@ -42,6 +42,7 @@
   effect:
     name: Nourishment
     tooltip: "+3 HP Regen"
+    message: "The bread is delicious!"
     stats:
       hpregen: 3
     duration: 21600
@@ -54,6 +55,7 @@
   effect:
     name: Nourishment
     tooltip: "+3 HP Regen"
+    message: "The bread is delicious!"
     stats:
       hpregen: 3
     duration: 21600
@@ -66,6 +68,7 @@
   effect:
     name: Nourishment
     tooltip: "+1 STR, +1 WIL"
+    message: "The bread is unappealing, but filling!"
     stats:
       str: 1
       wil: 1
@@ -79,6 +82,7 @@
   effect:
     name: Nourishment
     tooltip: "+1 STR, +1 WIL"
+    message: "The bread is unappealing, but filling!"
     stats:
       str: 1
       wil: 1
@@ -91,6 +95,7 @@
   effect:
     name: Nourishment
     tooltip: "+1 STR, +1 DEX, +1 AGI"
+    message: "The egg innards has a strangely rough texture."
     stats:
       str: 1
       dex: 1
@@ -105,9 +110,12 @@
   binds: true
   effect:
     name: Nourishment
-    tooltip: "-1 STR"
+    tooltip: "-1 STR, +20 Poison/Disease Resist"
+    message: "The grub tastes like decaying flesh. At least you lost your appetite."
     stats:
       str: -1
+      poisonResist: 20
+      diseaseResist: 20
     duration: 86400
 
 - name: Dedlaen Militia Gourd
@@ -117,6 +125,7 @@
   effect:
     name: Nourishment
     tooltip: "+50 HP/MP, +5 HP/MP Regen, +10 Physical Resist"
+    message: "The gourd is sweet and delicious!"
     stats:
       hp: 50
       mp: 50
@@ -144,3 +153,38 @@
       cha: 1
     duration: 21600
 
+- name: Crazed Bear Meat
+  sprite: 932
+  desc: "a fresh chunk of bear meat from a Risan bear"
+  value: 1500
+  effect:
+    name: Nourishment
+    tooltip: "+2 STR"
+    message: "The beat meat is tender!"
+    stats:
+      str: 2
+    duration: 10800
+
+- name: Crazed Wolf Flank
+  sprite: 933
+  desc: "a fresh flank of wolf meat from a Risan wolf"
+  value: 1500
+  effect:
+    name: Nourishment
+    tooltip: "+15 HP Regen"
+    message: "The wolf flank is chewy!"
+    stats:
+      hpregen: 15
+    duration: 10800
+
+- name: Mines Griffon Tongue
+  sprite: 928
+  desc: "a tongue ripped from a Risan griffon"
+  value: 2500
+  effect:
+    name: Nourishment
+    tooltip: "+15 HP Regen"
+    message: "The griffon tongue is chewy!"
+    stats:
+      hpregen: 15
+    duration: 10800

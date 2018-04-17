@@ -1,0 +1,54 @@
+
+- name: Identify Ring
+  sprite: 239
+  desc: "a silver ring set with a crystallized blue eye"
+  value: 100
+  effect:
+    name: Identify
+    uses: 10
+    potency: 1
+
+- name: Transmute Ring
+  sprite: 239
+  desc: "a silver ring set with a blue coin"
+  value: 100
+  effect:
+    name: Transmute
+    uses: 10
+    potency: 10
+
+- name: Succor Ring
+  sprite: 239
+  desc: "a silver ring set with ancient blue wood"
+  value: 100
+  effect:
+    name: Succor
+    uses: 10
+    potency: 1
+
+- name: DarkVision Ring
+  sprite: 239
+  desc: "a silver ring set with a blue gem encased in a shadowy aura"
+  value: 100
+  effect:
+    name: DarkVision
+    uses: 10
+    potency: 10
+
+- name: Revive Ring
+  sprite: 239
+  desc: "a silver ring set with a blue gem encased in a holy aura"
+  value: 100
+  effect:
+    name: Revive
+    uses: 10
+    potency: 10
+
+- name: EagleEye Ring
+  sprite: 239
+  desc: "a silver ring set with the light blue eye of an eagle"
+  value: 100
+  effect:
+    name: EagleEye
+    uses: 10
+    potency: 10

@@ -148,6 +148,8 @@ export class Stats {
   waterResist? = 0;
   fireResist? = 0;
   iceResist? = 0;
+  poisonResist? = 0;
+  diseaseResist? = 0;
 
   actionSpeed? = 1;
 }
@@ -159,6 +161,7 @@ export type StatName =
 | 'stealth' | 'perception'
 | 'magicalDamageBoost' | 'physicalDamageBoost' | 'healingBoost' | 'physicalDamageReflect' | 'magicalDamageReflect'
 | 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist'
+| 'poisonResist' | 'diseaseResist'
 | 'actionSpeed';
 
 export const MaxSizes = {

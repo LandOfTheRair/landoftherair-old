@@ -39,3 +39,19 @@
 
   requirements:
     level: 14
+
+- name: Mines Hammer
+  stats:
+    accuracy: -3
+    offense: 6
+    fireResist: 50
+  effect:
+    name: FireMist
+    potency: 15
+    chance: 10
+  desc: "an excavating hammer forged in the mines of Risan that emanates heat"
+  tier: 4
+  type: Mace
+  value: 1501
+  sprite: 45
+  binds: true

@@ -70,3 +70,9 @@
   sprite: 617
   value: 10000
   binds: true
+
+- name: Risan Scorched Mines Key
+  desc: "a silver and green key with the head emblem scorched beyond repair"
+  sprite: 617
+  value: 12000
+  binds: true

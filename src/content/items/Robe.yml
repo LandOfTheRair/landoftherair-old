@@ -163,3 +163,17 @@
 
   requirements:
     level: 13
+
+- name: Crazed Deer Robe
+  stats:
+    energyResist: 20
+    fireResist: 20
+    iceResist: 20
+    necroticResist: 20
+    poisonResist: 20
+  desc: "a shimmering golden robe made from the hide of a crazed deer"
+  value: 2500
+  sprite: 385
+
+  requirements:
+    level: 11

@@ -1,0 +1,121 @@
+- name: Antanian Purple Gem
+  desc: "a small purple gem"
+  value: 300
+  sprite: 213
+
+  maxEncrusts: 7
+
+  stats:
+    armorClass: 2
+
+- name: Antanian Small Green Gem
+  desc: "a small green gem"
+  value: 500
+  sprite: 242
+  stats:
+    hp: 15
+
+- name: Antanian Big Green Gem
+  desc: "a big green gem"
+  value: 1500
+  sprite: 243
+  stats:
+    defense: 1
+
+  requirements:
+    level: 4
+
+- name: Antanian Small Red Gem
+  desc: "a small red gem"
+  value: 700
+  sprite: 244
+  stats:
+    mp: 15
+
+- name: Antanian Big Red Gem
+  desc: "a big red gem"
+  value: 2000
+  sprite: 245
+  stats:
+    offense: 1
+
+  requirements:
+    level: 4
+
+- name: Tower Thief Gem
+  desc: "a slight black pearl bathed in shadows"
+  value: 6000
+  sprite: 315
+
+  maxEncrusts: 7
+
+  stats:
+    stealth: 3
+    physicalDamageBoost: 10
+    perception: -1
+
+  requirements:
+    level: 11
+
+- name: Tower Warrior Gem
+  desc: "a crimson gem forged by the intense pressure of combat"
+  value: 6000
+  sprite: 245
+
+  maxEncrusts: 7
+
+  stats:
+    offense: 1
+    defense: 1
+    armorClass: -1
+
+  requirements:
+    level: 11
+
+- name: Tower Healer Gem
+  desc: "an emerald gem bathed in a faint amber glow"
+  value: 6000
+  sprite: 243
+
+  maxEncrusts: 7
+
+  stats:
+    healingBoost: 15
+    defense: 1
+    offense: -1
+
+  requirements:
+    level: 11
+
+- name: Tower Mage Gem
+  desc: "a violet gem pulsating with magical energy"
+  value: 6000
+  sprite: 213
+
+  maxEncrusts: 7
+
+  stats:
+    magicalDamageBoost: 15
+    defense: 1
+    offense: -1
+
+  requirements:
+    level: 11
+
+- name: Dedlaen Vampire Heart
+  desc: "a crystallized heart pulsing with blood"
+  value: 7500
+  sprite: 361
+
+  maxEncrusts: 1
+
+  binds: true
+  tellsBind: true
+
+  stats:
+    str: 1
+    int: 1
+    wis: 1
+
+  requirements:
+    level: 10

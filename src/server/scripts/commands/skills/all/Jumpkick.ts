@@ -25,7 +25,8 @@ export class Jumpkick extends Skill {
   requiresLearn = false;
 
   canUse(user: Character, target: Character) {
-    return this.range(user) >= user.distFrom(target);
+    const dist = user.distFrom(target);
+    return dist > 0 && this.range(user) >= dist;
   }
 
   range(attacker: Character) {

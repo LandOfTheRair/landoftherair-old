@@ -21,6 +21,10 @@ export class Kick extends Skill {
 
   requiresLearn = false;
 
+  canUse(user: Character, target: Character) {
+    return this.range(user) >= user.distFrom(target);
+  }
+
   execute(user: Player, { args }) {
     if(!args) return false;
 

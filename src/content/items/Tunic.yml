@@ -78,3 +78,10 @@
   desc: "a plain tunic double-reinforced with shards of bone"
   value: 350
   sprite: 10
+
+- name: Risan Trash Tunic
+  stats:
+    armorClass: 12
+  desc: "a leather tunic"
+  value: 300
+  sprite: 206

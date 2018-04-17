@@ -83,3 +83,23 @@
 
   requirements:
     level: 17
+
+- name: Mines Fire Offense Shield
+  stats:
+    armorClass: 14
+    fireResist: 300
+    offense: 4
+  desc: "a shield forged from Risan metals designed to protect against fire"
+  type: Mace
+  value: 3004
+  sprite: 329
+
+- name: Mines Fire Defense Shield
+  stats:
+    armorClass: 14
+    fireResist: 300
+    defense: 4
+  desc: "a shield forged from Risan metals designed to protect against fire"
+  type: Mace
+  value: 3004
+  sprite: 329

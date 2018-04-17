@@ -413,8 +413,11 @@ export class GameState {
     // I can never be hostile to myself
     if(me === target) return false;
 
-    // GMs and natural resources are never hostile
-    if(target.allegiance === 'NaturalResource' || target.allegiance === 'GM') return false;
+    // GMs are never hostile
+    if(target.allegiance === 'GM') return false;
+
+    // natural resources are only hostile if I have a reputation modifier for them (positive or negative)
+    if(target.allegiance === 'NaturalResource' && !me.allegianceReputation.NaturalResource) return false;
 
     // if either of us are agro'd to each other, there is hostility
     if(me.agro[target.uuid] || target.agro[me.uuid]) return true;

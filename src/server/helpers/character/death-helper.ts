@@ -67,7 +67,8 @@ export class DeathHelper {
   static async calculateLootDrops(npc: NPC, killer: Character) {
     const bonus = killer.getTotalStat('luk');
 
-    if(!killer.isPlayer()) {
+    // natural resources always drop, no matter who killed them ~immersion~
+    if(npc.allegiance !== 'NaturalResource' && !killer.isPlayer()) {
       if(npc.dropsCorpse) this.createCorpse(npc, []);
       return;
     }

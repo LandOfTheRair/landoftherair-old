@@ -36,6 +36,12 @@
   desc: "a pair of sharp claws"
   value: 0
 
+- name: Mines Animal Claws
+  tier: 5
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0
+
 - name: Werebear Claws
   tier: 2
   stats:

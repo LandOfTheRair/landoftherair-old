@@ -105,3 +105,11 @@
   tier: 1
   desc: "a pair of finny gloves"
   sprite: -1
+
+- name: Mines Rockman Gloves
+  stats:
+    defense: 4
+    offense: 4
+  tier: 3
+  desc: "a pair of rocky gloves"
+  sprite: -1

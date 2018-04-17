@@ -1,0 +1,202 @@
+
+- npcId: Risan Crazed Deer
+  name: crazed deer
+  sprite: 205
+  allegiance: Wilderness
+  hostility: Always
+  monsterClass: Beast
+  stats: 13
+  skillLevels:
+    Martial: 8
+  level: 16
+
+  otherStats:
+    perception: 100
+
+  gear:
+    Armor: Crazed Deer Robe
+    Robe1: Crazed Deer Robe
+    Robe2: Crazed Deer Robe
+    Hands: Mines Animal Claws
+
+  skillOnKill: 35
+
+  usableSkills:
+    - PoisonBiteMedium
+
+  allegianceReputation:
+    NaturalResource: -101
+
+  attributes:
+    - damageType: 'physical'
+      potency: 0.75
+    - damageType: 'fire'
+      potency: 1.25
+
+  gold:
+    min: 150
+    max: 300
+
+  hp:
+    min: 12950
+    max: 14350
+
+  giveXp:
+    min: 15000
+    max: 18000
+
+  tansFor: Crazed Deer Robe
+
+- npcId: Risan Crazed Wolf
+  name: crazed wolf
+  sprite: 215
+  allegiance: Wilderness
+  hostility: Always
+  monsterClass: Beast
+  stats: 19
+  skillLevels:
+    Martial: 10
+  level: 19
+
+  otherStats:
+    perception: 100
+
+  gear:
+    Armor: Crazed Beast Fur
+    Hands: Mines Animal Claws
+
+  skillOnKill: 45
+
+  usableSkills:
+    - PoisonBiteStrong
+
+  allegianceReputation:
+    NaturalResource: -101
+
+  drops:
+    - result: Crazed Wolf Flank
+      chance: 1
+      maxChance: 50
+
+  attributes:
+    - damageType: 'physical'
+      potency: 0.75
+    - damageType: 'fire'
+      potency: 1.25
+
+  gold:
+    min: 350
+    max: 500
+
+  hp:
+    min: 16950
+    max: 19350
+
+  giveXp:
+    min: 22000
+    max: 25000
+
+  tansFor: Crazed Beast Fur
+
+- npcId: Risan Crazed Bear
+  name: crazed bear
+  sprite: 210
+  allegiance: Wilderness
+  hostility: Always
+  monsterClass: Beast
+  stats: 17
+  skillLevels:
+    Martial: 9
+  level: 19
+
+  otherStats:
+    armorClass: 10
+    perception: 100
+
+  gear:
+    Armor: Crazed Bear Fur
+    Hands: Mines Animal Claws
+
+  skillOnKill: 45
+
+  usableSkills:
+    - PoisonBiteMedium
+
+  allegianceReputation:
+    NaturalResource: -101
+
+  drops:
+    - result: Crazed Bear Meat
+      chance: 1
+      maxChance: 50
+
+  attributes:
+    - damageType: 'physical'
+      potency: 0.75
+    - damageType: 'fire'
+      potency: 1.25
+
+  gold:
+    min: 450
+    max: 500
+
+  hp:
+    min: 24950
+    max: 26350
+
+  giveXp:
+    min: 29000
+    max: 31000
+
+  tansFor: Crazed Bear Fur
+
+- npcId: Risan Griffon
+  name: griffon
+  sprite: 210
+  allegiance: Wilderness
+  hostility: Always
+  monsterClass: Beast
+  stats: 20
+  skillLevels:
+    Martial: 13
+  level: 23
+
+  otherStats:
+    armorClass: 25
+    perception: 300
+
+  gear:
+    Armor: Mines Griffon Fur
+    Hands: Mines Animal Claws
+
+  skillOnKill: 300
+
+  usableSkills:
+    - PoisonBiteStrong
+
+  drops:
+    - result: Mines Griffon Tongue
+      chance: -1
+
+  attributes:
+    - damageType: 'physical'
+      potency: 0.75
+    - damageType: 'magical'
+      potency: 0.75
+
+  traitLevels:
+    StunningFist: 7
+
+  gold:
+    min: 31450
+    max: 32500
+
+  hp:
+    min: 804950
+    max: 816350
+
+  giveXp:
+    min: 399000
+    max: 409000
+
+  tansFor: Mines Griffon Fur

@@ -30,3 +30,11 @@
   requirements:
     level: 12
   value: 2500
+
+- name: Mines Trash Breastplate
+  stats:
+    armorClass: 12
+    fireResist: 150
+  sprite: 210
+  desc: "an iron breastplate used by the miners of Risan"
+  value: 2504
