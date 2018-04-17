@@ -138,14 +138,14 @@ export class ColyseusGameService {
       party
     });
 
-    this.worldRoom.onUpdate.addOnce((state) => {
+    this.worldRoom.onStateChange.addOnce((state) => {
       this.clientGameState.mapName = state.mapName;
       this.clientGameState.grabOldUpdates(state.mapData);
 
       this.changingMap = false;
     });
 
-    this.worldRoom.onUpdate.add((state) => {
+    this.worldRoom.onStateChange.add((state) => {
       this.clientGameState.setMapData(state.mapData || {});
       this.clientGameState.setPlayers(state.playerHash);
       this.clientGameState.setEnvironmentalObjects(state.environmentalObjects || []);
@@ -154,7 +154,7 @@ export class ColyseusGameService {
       this.setCharacter(state.playerHash[this.colyseus.username]);
     });
 
-    this.worldRoom.onData.add((data) => {
+    this.worldRoom.onMessage.add((data) => {
       this.interceptGameCommand(data);
     });
 
