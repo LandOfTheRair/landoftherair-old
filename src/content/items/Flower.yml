@@ -18,3 +18,8 @@
   sprite: 750
   desc: "a chunk of corpseflower"
   value: 30
+
+- name: Mines Caveflower
+  sprite: 761
+  desc: "a root of caveflower"
+  value: 50

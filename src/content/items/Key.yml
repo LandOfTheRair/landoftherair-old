@@ -64,3 +64,9 @@
   sprite: 357
   value: 10000
   binds: true
+
+- name: Risan Mines Key
+  desc: "a silver and green key with the head emblem representing the miner camp of Risan"
+  sprite: 617
+  value: 10000
+  binds: true
