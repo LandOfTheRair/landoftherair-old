@@ -9,6 +9,7 @@ import { Logger } from './logger';
 import { includes } from 'lodash';
 
 import { Server, MemsharedPresence } from 'colyseus';
+import { monitor } from '@colyseus/monitor';
 
 import * as Rooms from './rooms';
 
@@ -61,9 +62,11 @@ if(process.argv[2] === '--single-core') {
       const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
       gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
     });
-  });
 
-  server.listen(port);
+    api.expressApp.use('/colyseus', monitor(gameServer));
+
+    server.listen(port);
+  });
 
 } else {
 
@@ -84,9 +87,7 @@ if(process.argv[2] === '--single-core') {
 
     const gameServer = new Server({
       engine: WebSocket.Server,
-      presence: new MemsharedPresence({
-
-      }),
+      presence: new MemsharedPresence(),
       server
     });
 
@@ -101,8 +102,12 @@ if(process.argv[2] === '--single-core') {
         const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
         gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
       });
-    });
 
-    server.listen(port);
+      if(process.env.NODE_ENV !== 'production') {
+        api.expressApp.use('/colyseus', monitor(gameServer));
+      }
+
+      server.listen(port);
+    });
   }
 }
