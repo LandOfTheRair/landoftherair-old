@@ -150,13 +150,13 @@
 
   tansFor: Crazed Bear Fur
 
-- npcId: Risan Griffon
+- npcId: Mines Griffon
   name: griffon
-  sprite: 210
+  sprite: 435
   allegiance: Wilderness
   hostility: Always
   monsterClass: Beast
-  stats: 20
+  stats: 25
   skillLevels:
     Martial: 13
   level: 23

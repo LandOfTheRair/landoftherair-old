@@ -5257,6 +5257,46 @@
                  "width":64,
                  "x":5632,
                  "y":3904
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1503,
+                 "name":"Griffon Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Mines Griffon",
+                     "maxSpawn":1,
+                     "randomWalkRadius":20,
+                     "respawnRate":7200,
+                     "script":"global\/lair",
+                     "shouldEatTier":1.5,
+                     "shouldStrip":true,
+                     "stripRadius":1,
+                     "stripX":92,
+                     "stripY":28
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string",
+                     "shouldEatTier":"float",
+                     "shouldStrip":"bool",
+                     "stripRadius":"int",
+                     "stripX":"int",
+                     "stripY":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5184,
+                 "y":2880
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5294,7 +5334,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1503,
+ "nextobjectid":1504,
  "orientation":"orthogonal",
  "properties":
     {
