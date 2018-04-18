@@ -188,3 +188,13 @@
     stats:
       hpregen: 15
     duration: 10800
+
+- name: Risan Dryad Succor Blob
+  sprite: 956
+  desc: "a blob of spatial memories from Risan"
+  value: 0
+  succorInfo:
+    map: RisanMines
+    x: 62
+    y: 30
+    z: 1

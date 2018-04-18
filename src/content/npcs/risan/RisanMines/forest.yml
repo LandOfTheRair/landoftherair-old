@@ -2,7 +2,8 @@
 - npcId: Risan Crazed Deer
   name: crazed deer
   sprite: 205
-  allegiance: Wilderness
+  allegiance: Enemy
+  alignment: Evil
   hostility: Always
   monsterClass: Beast
   stats: 13
@@ -50,7 +51,8 @@
 - npcId: Risan Crazed Wolf
   name: crazed wolf
   sprite: 215
-  allegiance: Wilderness
+  allegiance: Enemy
+  alignment: Evil
   hostility: Always
   monsterClass: Beast
   stats: 19
@@ -101,7 +103,8 @@
 - npcId: Risan Crazed Bear
   name: crazed bear
   sprite: 210
-  allegiance: Wilderness
+  allegiance: Enemy
+  alignment: Evil
   hostility: Always
   monsterClass: Beast
   stats: 17
@@ -153,7 +156,8 @@
 - npcId: Mines Griffon
   name: griffon
   sprite: 435
-  allegiance: Wilderness
+  allegiance: Enemy
+  alignment: Evil
   hostility: Always
   monsterClass: Beast
   stats: 25
@@ -186,6 +190,7 @@
 
   traitLevels:
     StunningFist: 7
+    ForcefulStrike: 5
 
   gold:
     min: 31450
@@ -200,3 +205,95 @@
     max: 409000
 
   tansFor: Mines Griffon Fur
+
+- npcId: Risan Dryad
+  name: dryad
+  sprite: 465
+  allegiance: Wilderness
+  hostility: Faction
+  alignment: Good
+  baseClass: Thief
+  stats: 16
+  skillLevels: 7
+  level: 18
+
+  otherStats:
+    perception: 150
+
+  rightHand: Risan Mines Spirit Shortsword
+  leftHand:
+    - result: none
+      chance: 30
+    - result: Risan Mines Spirit Shortsword
+      chance: 1
+
+  gear:
+    Armor: Risan Trash Tunic
+    Robe1:
+      - result: none
+        chance: 500
+      - result: Forest Spirit Mage Cloak
+        chance: 1
+      - result: Forest Spirit Thief Cloak
+        chance: 1
+      - result: Forest Spirit Healer Cloak
+        chance: 1
+      - result: Forest Spirit Warrior Cloak
+        chance: 1
+
+    Hands: Mines Animal Claws
+
+  skillOnKill: 35
+
+  traitLevels:
+    OffhandFinesse: 5
+    ForcefulStrike: 5
+    HolyProtection: 5
+    Riposte: 3
+    ShadowSheath: 2
+    ShadowSwap: 2
+    DarkerShadows: 10
+    ShadowDaggers: 2
+
+  usableSkills:
+    - Charge
+    - Backstab
+    - Cure
+    - Snare
+    - Poison
+    - Steal
+    - Hide
+
+  gold:
+    min: 350
+    max: 500
+
+  hp:
+    min: 19950
+    max: 20350
+
+  mp:
+    min: 500
+    max: 1000
+
+  giveXp:
+    min: 25000
+    max: 28000
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  drops:
+    - result: Risan Dryad Succor Blob
+      chance: 1
+      maxChance: 10
+

@@ -73,3 +73,71 @@
   desc: "a woolen cloak"
   value: 3
   sprite: 211
+
+- name: Forest Spirit Healer Cloak
+  stats:
+    defense: 3
+    wis: 1
+    perception: 30
+
+  desc: "a cloak that smells highly of the Risan forest"
+  value: 2500
+  sprite: 17
+
+  trait:
+    name: EffectiveSupporter
+    level: 2
+
+  requirements:
+    level: 14
+
+- name: Forest Spirit Mage Cloak
+  stats:
+    defense: 3
+    int: 1
+    perception: 30
+
+  desc: "a cloak that smells highly of the Risan forest"
+  value: 2500
+  sprite: 17
+
+  trait:
+    name: ThermalBarrier
+    level: 2
+
+  requirements:
+    level: 14
+
+- name: Forest Spirit Warrior Cloak
+  stats:
+    offense: 3
+    str: 1
+    perception: 30
+
+  desc: "a cloak that smells highly of the Risan forest"
+  value: 2500
+  sprite: 17
+
+  trait:
+    name: HolyProtection
+    level: 2
+
+  requirements:
+    level: 14
+
+- name: Forest Spirit Thief Cloak
+  stats:
+    offense: 3
+    agi: 1
+    perception: 30
+
+  desc: "a cloak that smells highly of the Risan forest"
+  value: 2500
+  sprite: 17
+
+  trait:
+    name: DarkerShadows
+    level: 2
+
+  requirements:
+    level: 14

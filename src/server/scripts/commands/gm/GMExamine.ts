@@ -19,7 +19,8 @@ export class GMExamine extends Command {
     }
 
     const [npcish, prop] = args.split(' ');
-    const possTargets = MessageHelper.getPossibleMessageTargets(player, npcish);
+    const possTargets = MessageHelper.getPossibleMessageTargets(player, npcish, false);
+    console.log(possTargets.map(x => x.name))
     if(!possTargets.length) return player.youDontSeeThatPerson(npcish);
 
     const target = possTargets[0];

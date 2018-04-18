@@ -9,8 +9,22 @@
   desc: "an iron shortsword engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   stats:
     offense: 1
-    accuracy: 3
+    accuracy: 1
   tier: 1
   type: Shortsword
   value: 105
   sprite: 195
+
+- name: Risan Mines Spirit Shortsword
+  desc: "a highly-reflective silver shortsword"
+  stats:
+    offense: 3
+    defense: 3
+    accuracy: 3
+  offhand: true
+  binds: true
+  tier: 5
+  type: Shortsword
+  value: 3411
+  sprite: 333
+

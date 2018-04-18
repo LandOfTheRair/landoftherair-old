@@ -128,17 +128,16 @@
 - name: Crazed Saraxa Robe
   quality: 5
   stats:
-    armorClass: 6
+    armorClass: 3
     defense: 4
     fireResist: 100
     waterResist: 100
     energyResist: 100
     necroticResist: 100
-    mpregen: 7
     hpregen: 2
   trait:
-    name: MagicFocus
-    level: 2
+    name: CalmMind
+    level: 3
   binds: true
   tellsBind: true
   desc: "a gold-trimmed robe stained crimson from ether mist"

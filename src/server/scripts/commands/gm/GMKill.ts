@@ -13,7 +13,7 @@ export class GMKill extends Command {
   async execute(player: Player, { args }) {
     if(!SubscriptionHelper.isGM(player)) return;
 
-    const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
+    const possTargets = MessageHelper.getPossibleMessageTargets(player, args, false);
     if(!possTargets.length) return player.youDontSeeThatPerson(args);
 
     const target = possTargets[0];

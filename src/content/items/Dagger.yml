@@ -1,6 +1,6 @@
 - name: Antanian Dagger
   stats:
-    accuracy: 5
+    accuracy: 1
   desc: "an iron dagger"
   isSackable: true
   tier: 1
@@ -10,7 +10,7 @@
 
 - name: Rylt Renegade Dagger
   stats:
-    accuracy: 7
+    accuracy: 2
     offense: 1
   desc: "an iron dagger engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   isSackable: true
@@ -22,7 +22,7 @@
 - name: Antanian Returning Dagger
   desc: "a small iron dagger that vibrates strangely"
   stats:
-    accuracy: 5
+    accuracy: 3
   isSackable: true
   tier: 2
   returnsOnThrow: true
@@ -33,7 +33,7 @@
 - name: Antanian Dualwielding Dagger
   desc: "a finely-made dagger with a blue hilt"
   stats:
-    accuracy: 5
+    accuracy: 3
   isSackable: true
   tier: 2
   returnsOnThrow: true
@@ -49,7 +49,7 @@
 - name: Tower Dagger Weak
   desc: "a small dagger made of a riyan metal"
   stats:
-    accuracy: 7
+    accuracy: 4
   isSackable: true
   tier: 3
   returnsOnThrow: true
@@ -64,7 +64,7 @@
 - name: Tower Dagger Strong
   desc: "a small dagger made of a riyan metal"
   stats:
-    accuracy: 8
+    accuracy: 5
   isSackable: true
   tier: 4
   returnsOnThrow: true
@@ -80,7 +80,7 @@
   desc: "a dagger forged from ether"
   tier: 5
   stats:
-    accuracy: 10
+    accuracy: 6
   returnsOnThrow: true
   offhand: true
   type: Dagger

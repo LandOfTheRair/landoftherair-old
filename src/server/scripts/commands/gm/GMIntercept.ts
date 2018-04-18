@@ -13,7 +13,7 @@ export class GMIntercept extends Command {
     if(!SubscriptionHelper.isGM(player)) return;
     if(!args) return false;
 
-    const possTargets = MessageHelper.getPossibleMessageTargets(player, args);
+    const possTargets = MessageHelper.getPossibleMessageTargets(player, args, false);
     if(!possTargets.length) return player.youDontSeeThatPerson(args);
 
     const target = possTargets[0];

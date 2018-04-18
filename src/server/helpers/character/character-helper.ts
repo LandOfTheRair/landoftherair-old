@@ -33,7 +33,7 @@ export class CharacterHelper {
   static isNearWall(char: Character): boolean {
     for(let x = char.x - 1; x <= char.x + 1; x++) {
       for(let y = char.y - 1; y <= char.y + 1; y++) {
-        const tile = char.$$room.state.checkIfDenseWall(x, y);
+        const tile = char.$$room.state.checkIfDenseWall(x, y, false);
         if(tile) return true;
       }
     }

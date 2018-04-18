@@ -32,6 +32,11 @@ export class Backstab extends Skill {
     return weapon.attackRange;
   }
 
+  canUse(user: Character, target: Character) {
+    return user.hasEffect('Hidden') && this.range(user) + user.getTotalStat('move') >= user.distFrom(target);
+  }
+
+
   execute(user: Character, { args }) {
     if(!args) return false;
 

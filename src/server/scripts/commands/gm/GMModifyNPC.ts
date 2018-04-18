@@ -14,7 +14,7 @@ export class GMModifyNPC extends Command {
     if(!SubscriptionHelper.isGM(player)) return;
 
     const [npcish, props] = args.split(' ', 2);
-    const possTargets = MessageHelper.getPossibleMessageTargets(player, npcish);
+    const possTargets = MessageHelper.getPossibleMessageTargets(player, npcish, false);
     if(!possTargets.length) return player.youDontSeeThatPerson(npcish);
 
     const target = possTargets[0];

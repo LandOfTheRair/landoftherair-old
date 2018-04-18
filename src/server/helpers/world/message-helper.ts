@@ -56,18 +56,18 @@ export class MessageHelper {
     });
   }
 
-  static getPossibleMessageTargets(player: Character, findStr: string): any[] {
-    const allTargets = player.$$room.state.getAllInRange(player, 4);
+  static getPossibleMessageTargets(player: Character, findStr: string, useSight = true): any[] {
+    const allTargets = player.$$room.state.getAllInRange(player, 4, [], useSight);
     const possTargets = allTargets.filter(target => {
       if(target.isDead()) return false;
 
       const diffX = target.x - player.x;
       const diffY = target.y - player.y;
 
-      if(!player.canSee(diffX, diffY)) return false;
+      if(useSight && !player.canSee(diffX, diffY)) return false;
 
       // you can always see yourself
-      if(player !== target && !player.canSeeThroughStealthOf(target)) return false;
+      if(useSight && player !== target && !player.canSeeThroughStealthOf(target)) return false;
 
       return this.doesTargetMatchSearch(target, findStr);
     });

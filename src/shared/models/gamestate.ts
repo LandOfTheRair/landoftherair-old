@@ -740,14 +740,15 @@ export class GameState {
     return object && object.density && object.type !== 'Door';
   }
 
-  checkIfActualWall(x: number, y: number): boolean {
+  checkIfActualWall(x: number, y: number, shouldAirCountForWall = true): boolean {
     const adjustedY = y * this.map.width;
-    return this.map.layers[MapLayer.Walls].data[x + adjustedY];
+    const mapData = this.map.layers[MapLayer.Walls].data[x + adjustedY];
+    return mapData && (shouldAirCountForWall ? true : mapData !== TilesWithNoFOVUpdate.Air);
   }
 
-  checkIfDenseWall(x: number, y: number): boolean {
+  checkIfDenseWall(x: number, y: number, shouldAirCountForWall = true): boolean {
     const adjustedY = y * this.map.width;
-    return this.checkIfActualWall(x, y)
+    return this.checkIfActualWall(x, y, shouldAirCountForWall)
         || this.map.layers[MapLayer.Foliage].data[x + adjustedY];
   }
 
