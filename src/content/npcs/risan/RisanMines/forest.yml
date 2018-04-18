@@ -233,7 +233,7 @@
     Armor: Risan Trash Tunic
     Robe1:
       - result: none
-        chance: 1000
+        chance: 5000
       - result: Forest Spirit Mage Cloak
         chance: 1
       - result: Forest Spirit Thief Cloak
@@ -241,6 +241,8 @@
       - result: Forest Spirit Healer Cloak
         chance: 1
       - result: Forest Spirit Warrior Cloak
+        chance: 1
+      - result: Forest Spirit Undecided Cloak
         chance: 1
 
     Hands: Mines Animal Claws

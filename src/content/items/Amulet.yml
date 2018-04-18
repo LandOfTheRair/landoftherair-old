@@ -137,3 +137,12 @@
 
   requirements:
     level: 10
+
+
+- name: Librarian Undecided Amulet
+  stats:
+    hp: 200
+  binds: true
+  sprite: 231
+  desc: "a gold chain formerly used as a bookmark"
+  value: 5000

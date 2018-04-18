@@ -82,7 +82,7 @@
     poisonResist: 20
     diseaseResist: 20
 
-  desc: "a cloak that smells highly of the Risan forest"
+  desc: "a cloak that smells highly of the Risan forest. It's covered in holy eyes"
   value: 2500
   sprite: 17
   binds: true
@@ -102,7 +102,7 @@
     poisonResist: 20
     diseaseResist: 20
 
-  desc: "a cloak that smells highly of the Risan forest"
+  desc: "a cloak that smells highly of the Risan forest. It's covered in iridescent eyes"
   value: 2500
   sprite: 17
   binds: true
@@ -122,7 +122,7 @@
     poisonResist: 20
     diseaseResist: 20
 
-  desc: "a cloak that smells highly of the Risan forest"
+  desc: "a cloak that smells highly of the Risan forest. It's covered in hard bark"
   value: 2500
   sprite: 17
   binds: true
@@ -142,7 +142,7 @@
     poisonResist: 20
     diseaseResist: 20
 
-  desc: "a cloak that smells highly of the Risan forest"
+  desc: "a cloak that smells highly of the Risan forest. It's covered in shadowy eyes"
   value: 2500
   sprite: 17
   binds: true
@@ -153,3 +153,19 @@
 
   requirements:
     level: 14
+
+- name: Forest Spirit Undecided Cloak
+  stats:
+    offense: 5
+    defense: 5
+    perception: 30
+    poisonResist: 20
+    diseaseResist: 20
+
+  desc: "a cloak that smells highly of the Risan forest"
+  value: 500
+  sprite: 17
+
+  trait:
+    name: DeathGrip
+    level: 5
