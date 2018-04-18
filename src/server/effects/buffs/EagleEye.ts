@@ -12,6 +12,7 @@ export class EagleEye extends SpellEffect {
   };
 
   maxSkillForSkillGain = 15;
+  potencyMultiplier = 20;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -34,15 +35,15 @@ export class EagleEye extends SpellEffect {
 
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'Your vision expands to see through the trees and beneath the waters.');
-    char.gainStat('perception', this.potency);
+    char.gainStat('perception', this.potency * this.potencyMultiplier);
     char.gainStat('accuracy', this.potency);
 
-    this.iconData.tooltipDesc = `Seeing through the trees and waters. +${this.potency} perception/accuracy.`;
+    this.iconData.tooltipDesc = `Seeing through the trees and waters. +${this.potency * this.potencyMultiplier} perception, +${this.potency} accuracy.`;
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your vision returns to normal.');
-    char.loseStat('perception', this.potency);
+    char.loseStat('perception', this.potency * this.potencyMultiplier);
     char.loseStat('accuracy', this.potency);
   }
 }

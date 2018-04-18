@@ -1,5 +1,5 @@
 
-import { extend, merge, differenceBy, values, filter, reject, size, get } from 'lodash';
+import { extend, merge, differenceBy, values, filter, reject, size, get, set } from 'lodash';
 
 import { Player } from '../../shared/models/player';
 
@@ -15,7 +15,7 @@ import { SkillTree } from '../../shared/models/skill-tree';
 export class ClientGameState {
   fovArray = Array(9).fill(null).map((x, i) => i - 4);
 
-  currentPlayer: any;
+  currentPlayer: Character;
 
   private playerHash: { [key: string]: Player } = {};
   map: any = {};
@@ -97,6 +97,9 @@ export class ClientGameState {
       if(!this.mapNPCs[npcUUID]) return;
       merge(this.mapNPCs[npcUUID], npcVolatile[npcUUID]);
       this.mapNPCs[npcUUID].effects = npcVolatile[npcUUID].effects;
+
+      const newStealth = get(npcVolatile[npcUUID], 'totalStats.stealth', 0);
+      set(this.mapNPCs[npcUUID], 'totalStats.stealth', newStealth);
     });
   }
 

@@ -18,12 +18,16 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
     return this.colyseusGame.clientGameState.activeTarget;
   }
 
+  get character() {
+    return this.colyseusGame.clientGameState.currentPlayer;
+  }
+
   get targetEffects() {
     return values(this.target.effects);
   }
 
   get shouldShowBox() {
-    return this.target && this.target.hp.__current > 0;
+    return this.target && this.target.hp.__current > 0 && this.character.canSeeThroughStealthOf(this.target);
   }
 
   get targetHealth() {

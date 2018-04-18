@@ -223,7 +223,15 @@ export class GameState {
 
   updateNPCVolatile(char: NPC): void {
     if(!this.mapNPCs[char.uuid] || this.isDisposing) return;
-    this.npcVolatile[char.uuid] = { x: char.x, y: char.y, hp: char.hp, dir: char.dir, agro: char.agro, effects: char.effects };
+    this.npcVolatile[char.uuid] = {
+      x: char.x,
+      y: char.y,
+      hp: char.hp,
+      dir: char.dir,
+      agro: char.agro,
+      effects: char.effects,
+      totalStats: { stealth: char.getTotalStat('stealth') }
+    };
   }
 
   addPlayer(player, clientId: string): void {
