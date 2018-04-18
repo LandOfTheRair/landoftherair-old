@@ -283,7 +283,7 @@ export class MacroService {
     this.allUsableMacros = _(this.allMacros)
       .values()
       .reject(x => {
-        const learnedSpells = this.colyseusGame.character.learnedSpells || {};
+        const learnedSpells = (<any>this.colyseusGame.character).learnedSpells || {};
         if(x.requiresLearn) {
           return !learnedSpells[x.name.toLowerCase()];
         }

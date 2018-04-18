@@ -22,7 +22,7 @@ export class TradeskillSpellforgingComponent {
   }
 
   get disenchantDisabled(): boolean {
-    return !this.player.tradeSkillContainers.spellforging.modifyItem || this.player.tradeSkillContainers.spellforging.reagent;
+    return !this.player.tradeSkillContainers.spellforging.modifyItem || !!this.player.tradeSkillContainers.spellforging.reagent;
   }
 
   get enchantDisabled(): boolean {
@@ -32,7 +32,7 @@ export class TradeskillSpellforgingComponent {
   get showInfo(): boolean {
     const item = this.player.tradeSkillContainers.spellforging.modifyItem;
     const reagent = this.player.tradeSkillContainers.spellforging.reagent;
-    return item && reagent;
+    return !!(item && reagent);
   }
 
   get hasWarning(): boolean {

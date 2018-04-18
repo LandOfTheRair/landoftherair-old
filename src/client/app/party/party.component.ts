@@ -10,12 +10,16 @@ import { startCase } from 'lodash';
 })
 export class PartyComponent {
 
+  get partyExp() {
+    return (<any>this.colyseusGame.character).partyExp;
+  }
+
   get partyPointProgressPercent() {
-    return (this.colyseusGame.character.partyExp.__current / this.colyseusGame.character.partyExp.maximum * 100).toFixed(2);
+    return (this.partyExp.__current / this.partyExp.maximum * 100).toFixed(2);
   }
 
   get partyExpString() {
-    return `${this.colyseusGame.character.partyExp.__current} / ${this.colyseusGame.character.partyExp.maximum}`;
+    return `${this.partyExp.__current} / ${this.partyExp.maximum}`;
   }
 
   constructor(

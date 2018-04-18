@@ -15,7 +15,7 @@ export class TradeskillAlchemyComponent {
   }
 
   get disabled(): boolean {
-    return this.player.tradeSkillContainers.alchemy.reagents.length === 0 || this.player.tradeSkillContainers.alchemy.result;
+    return this.player.tradeSkillContainers.alchemy.reagents.length === 0 || !!this.player.tradeSkillContainers.alchemy.result;
   }
 
   constructor(public colyseusGame: ColyseusGameService) { }
