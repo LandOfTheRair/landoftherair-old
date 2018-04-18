@@ -49,6 +49,7 @@
     name: FireMist
     potency: 15
     chance: 10
+    range: 0
   desc: "an excavating hammer forged in the mines of Risan that emanates heat"
   tier: 4
   type: Mace

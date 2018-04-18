@@ -91,7 +91,7 @@ export class CrazedSaraxaAIBehavior extends DefaultAIBehavior {
 
 class AcolyteOverseer extends SpellEffect {
   iconData = {
-    name: 'ages',
+    name: 'minions',
     bgColor: '#a06',
     color: '#fff',
     tooltipDesc: 'Receiving 4% healing per acolyte every 5 seconds.'

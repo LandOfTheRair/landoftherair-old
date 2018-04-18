@@ -77,6 +77,81 @@
     - drop: 'leftHand'
       chance: -1
 
+- npcId: Risan Crazed Miner
+  name: crazed miner
+  hostility: Always
+  allegiance: Enemy
+  baseClass: Warrior
+  sprite: 770
+  stats: 21
+  skillLevels: 8
+  level: 22
+
+  skillOnKill: 55
+
+  otherStats:
+    accuracy: 5
+    perception: 240
+
+  gold:
+    min: 3850
+    max: 4000
+
+  hp:
+    min: 33950
+    max: 37350
+
+  giveXp:
+    min: 45000
+    max: 51000
+
+  gear:
+    Ear: Enemy DarkVision Earring
+    Armor: Mines Trash Breastplate
+    Head:
+      - result: none
+        chance: 150
+      - result: Miner Defense Health Helm
+        chance: 1
+      - result: Miner Offense Health Helm
+        chance: 1
+      - result: Miner Defense Mana Helm
+        chance: 1
+      - result: Miner Offense Mana Helm
+        chance: 1
+
+  rightHand: Mines Hammer
+
+  usableSkills:
+    - Charge
+
+  leftHand:
+    - result: none
+      chance: 5
+    - result: Mines Fire Offense Shield
+      chance: 1
+    - result: Mines Fire Defense Shield
+      chance: 1
+
+  drops:
+    - result: Risan Scorched Mines Key
+      chance: 1
+      maxChance: 100
+
+    - result: Risan Miner Book
+      chance: 1
+      maxChance: 500
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
 - npcId: Mines Rockman
   name: rockman
   hostility: Always

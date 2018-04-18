@@ -134,7 +134,7 @@ export class Spawner {
     return sample(choices);
   }
 
-  async createNPC(): Promise<NPC> {
+  async createNPC(opts: { npcId?: string, createCallback?: Function } = {}): Promise<NPC> {
     if(!this.npcIds || this.npcIds.length === 0) {
       if(this.x !== 0 && this.y !== 0) {
         Logger.error(`No valid npcIds for spawner ${this.constructor.name} at ${this.x}, ${this.y} on ${this.map}`);
@@ -143,12 +143,17 @@ export class Spawner {
       return;
     }
 
-    let chosenNPC = '';
-    if(this.npcIds.length === 1) {
-      chosenNPC = this.npcIds[0];
-    } else {
-      const npcChooser = new LootTable(this.npcIds);
-      chosenNPC = npcChooser.chooseWithReplacement(1)[0];
+    const { npcId, createCallback } = opts;
+
+    let chosenNPC = npcId;
+
+    if(!chosenNPC) {
+      if(this.npcIds.length === 1) {
+        chosenNPC = this.npcIds[0];
+      } else {
+        const npcChooser = new LootTable(this.npcIds);
+        chosenNPC = npcChooser.chooseWithReplacement(1)[0];
+      }
     }
 
     const npcData = await NPCLoader.loadNPCData(chosenNPC);
@@ -317,6 +322,10 @@ export class Spawner {
     // post-creation processing
     if(this.npcCreateCallback) {
       this.npcCreateCallback(npc);
+    }
+
+    if(createCallback) {
+      createCallback(npc);
     }
 
     npc.recalculateStats();
