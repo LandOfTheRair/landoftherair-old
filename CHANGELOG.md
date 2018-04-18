@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.2.8 (18/04/2018)
+*No changelog for this release.*
+
+---
+
 ## v0.2.7 (16/04/2018)
 
 #### Enhancements
