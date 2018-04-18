@@ -30,7 +30,7 @@
 - name: Yzalt Fungus Cloak
   stats:
     armorClass: 2
-    stealth: 1
+    stealth: 5
     defense: 1
     hpregen: 3
   desc: "a woolen cloak stained green from the nearby fungus growing on it"
@@ -79,10 +79,13 @@
     defense: 3
     wis: 1
     perception: 30
+    poisonResist: 20
+    diseaseResist: 20
 
   desc: "a cloak that smells highly of the Risan forest"
   value: 2500
   sprite: 17
+  binds: true
 
   trait:
     name: EffectiveSupporter
@@ -96,10 +99,13 @@
     defense: 3
     int: 1
     perception: 30
+    poisonResist: 20
+    diseaseResist: 20
 
   desc: "a cloak that smells highly of the Risan forest"
   value: 2500
   sprite: 17
+  binds: true
 
   trait:
     name: ThermalBarrier
@@ -113,10 +119,13 @@
     offense: 3
     str: 1
     perception: 30
+    poisonResist: 20
+    diseaseResist: 20
 
   desc: "a cloak that smells highly of the Risan forest"
   value: 2500
   sprite: 17
+  binds: true
 
   trait:
     name: HolyProtection
@@ -130,10 +139,13 @@
     offense: 3
     agi: 1
     perception: 30
+    poisonResist: 20
+    diseaseResist: 20
 
   desc: "a cloak that smells highly of the Risan forest"
   value: 2500
   sprite: 17
+  binds: true
 
   trait:
     name: DarkerShadows

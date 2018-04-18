@@ -24,7 +24,9 @@ export class Hide extends Skill {
   requiresLearn = false;
 
   canUse(user: Character, target: Character) {
-    return !user.hasEffect('Hidden') && CharacterHelper.isNearWall(user);
+    return !user.hasEffect('Hidden')
+      && !target.hasEffect('Revealed')
+      && CharacterHelper.isNearWall(user);
   }
 
 

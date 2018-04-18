@@ -198,3 +198,15 @@
     x: 62
     y: 30
     z: 1
+
+- name: Cyrena's Heart
+  sprite: 611
+  desc: "the still-beating heart of the forest queen"
+  value: 2500
+  effect:
+    name: Nourishment
+    tooltip: "+300 Perception"
+    message: "The heart opens your eyes!"
+    stats:
+      perception: 300
+    duration: 36000

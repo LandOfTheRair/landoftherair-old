@@ -114,8 +114,10 @@ export class CombatHelper {
 
   private static attemptToStun(attacker: Character, weapon: Item, defender: Character) {
 
+    const hasFleetOfFoot = defender.hasEffect('FleetOfFoot');
+
     // prone can happen randomly
-    if(weapon.proneChance > 0 && RollerHelper.XInOneHundred(weapon.proneChance)) {
+    if(!hasFleetOfFoot && weapon.proneChance > 0 && RollerHelper.XInOneHundred(weapon.proneChance)) {
       const push = new Effects.Push({ potency: attacker.level });
       push.cast(attacker, defender);
     }
@@ -125,6 +127,10 @@ export class CombatHelper {
     if(weapon.itemClass === SkillClassNames.Martial) {
       const multiplierLoss = attacker.getTraitLevelAndUsageModifier('StunningFist');
       conMultiplier -= multiplierLoss;
+    }
+
+    if(hasFleetOfFoot) {
+      conMultiplier *= 2;
     }
 
     // low chance of cstun
@@ -233,7 +239,10 @@ export class CombatHelper {
     attacker.combatTicks = 10;
     defender.combatTicks = 10;
 
-    const isAttackerVisible = defender.canSeeThroughStealthOf(attacker);
+    let isAttackerVisible = defender.canSeeThroughStealthOf(attacker);
+    if(CharacterHelper.isInDarkness(defender) && !defender.hasEffect('DarkVision')) {
+      isAttackerVisible = false;
+    }
 
     if(!isAttackerVisible && defender.hasEffect('Debilitate')) {
       isBackstab = true;

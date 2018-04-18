@@ -181,6 +181,8 @@
   drops:
     - result: Mines Griffon Tongue
       chance: -1
+    - result: Griffon Spring Boots
+      chance: -1
 
   attributes:
     - damageType: 'physical'
@@ -231,7 +233,7 @@
     Armor: Risan Trash Tunic
     Robe1:
       - result: none
-        chance: 500
+        chance: 1000
       - result: Forest Spirit Mage Cloak
         chance: 1
       - result: Forest Spirit Thief Cloak
@@ -297,3 +299,177 @@
       chance: 1
       maxChance: 10
 
+- npcId: Risan Crazed Dryad
+  name: crazed dryad
+  sprite: 465
+  hostility: Always
+  alignment: Evil
+  baseClass: Thief
+  stats: 19
+  skillLevels: 7
+  level: 20
+
+  otherStats:
+    perception: 150
+
+  rightHand: Risan Mines Spirit Shortsword
+  leftHand:
+    - result: none
+      chance: 5
+    - result: Risan Mines Spirit Shortsword
+      chance: 1
+
+  gear:
+    Armor: Risan Trash Tunic
+    Robe1:
+      - result: none
+        chance: 500
+      - result: Forest Spirit Mage Cloak
+        chance: 1
+      - result: Forest Spirit Thief Cloak
+        chance: 1
+      - result: Forest Spirit Healer Cloak
+        chance: 1
+      - result: Forest Spirit Warrior Cloak
+        chance: 1
+
+    Hands: Mines Animal Claws
+
+  skillOnKill: 65
+
+  traitLevels:
+    OffhandFinesse: 3
+    ForcefulStrike: 4
+    HolyProtection: 3
+    Riposte: 3
+    ShadowSheath: 3
+    ShadowSwap: 3
+    DarkerShadows: 7
+    ShadowDaggers: 3
+
+  usableSkills:
+    - Charge
+    - Backstab
+    - Cure
+    - Snare
+    - Poison
+    - Disease
+    - DarkVision
+    - Hide
+
+  gold:
+    min: 1350
+    max: 1500
+
+  hp:
+    min: 21950
+    max: 22350
+
+  mp:
+    min: 500
+    max: 1000
+
+  giveXp:
+    min: 45000
+    max: 58000
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+
+- npcId: Dryad Queen Cyrena
+  name: Queen Cyrena
+  sprite: 465
+  hostility: Always
+  alignment: Evil
+  baseClass: Thief
+  stats: 24
+  skillLevels: 9
+  level: 24
+
+  otherStats:
+    perception: 150
+
+  rightHand: Risan Mines Spirit Shortsword
+  leftHand: Risan Mines Spirit Shortsword
+
+  gear:
+    Armor: Risan Trash Tunic
+    Robe1:
+      - Forest Spirit Mage Cloak
+      - Forest Spirit Thief Cloak
+      - Forest Spirit Healer Cloak
+      - Forest Spirit Warrior Cloak
+
+    Hands: Mines Animal Claws
+
+  skillOnKill: 300
+
+  traitLevels:
+    OffhandFinesse: 10
+    ForcefulStrike: 10
+    HolyProtection: 5
+    Riposte: 5
+    ShadowSheath: 5
+    ShadowSwap: 5
+    DarkerShadows: 10
+    ShadowDaggers: 5
+    DarknessWiden: 1
+
+  usableSkills:
+    - Charge
+    - Backstab
+    - Cure
+    - Snare
+    - Poison
+    - Disease
+    - Hide
+    - DarkVision
+    - Darkness
+    - ShadowMeld
+    - TrueSight
+
+  gold:
+    min: 1350
+    max: 1500
+
+  gold:
+    min: 43850
+    max: 44000
+
+  hp:
+    min: 804950
+    max: 816350
+
+  mp:
+    min: 10050
+    max: 10150
+
+  giveXp:
+    min: 469000
+    max: 509000
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  drops:
+    - result: Cyrena's Heart
+      chance: -1

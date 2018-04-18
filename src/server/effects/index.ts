@@ -59,6 +59,7 @@ export * from './buffs/Absorption';
 export * from './buffs/MagicShield';
 export * from './buffs/Haste';
 export * from './buffs/Invisible';
+export * from './buffs/FleetOfFoot';
 
 export * from './damagers/FireMist';
 export * from './damagers/IceMist';

@@ -41,7 +41,7 @@
   stats:
     armorClass: 7
     perception: 5
-    stealth: -5
+    stealth: -10
     fireResist: 20
     iceResist: 20
 
@@ -53,7 +53,7 @@
   stats:
     armorClass: 10
     perception: 7
-    stealth: -7
+    stealth: -15
     offense: 1
     defense: 1
     fireResist: 40

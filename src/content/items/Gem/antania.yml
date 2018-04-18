@@ -50,7 +50,7 @@
   maxEncrusts: 7
 
   stats:
-    stealth: 3
+    stealth: 10
     physicalDamageBoost: 10
     perception: -1
 

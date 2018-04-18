@@ -21,7 +21,10 @@ export class ShadowMeld extends Skill {
   public name = ['shadowmeld', 'cast shadowmeld'];
 
   canUse(user: Character, target: Character) {
-    return super.canUse(user, target) && !target.hasEffect('ShadowMeld');
+    return super.canUse(user, target)
+      && !target.hasEffect('Revealed')
+      && !target.hasEffect('ShadowMeld')
+      && !target.hasEffect('Hidden');
   }
 
   mpCost() { return 50; }

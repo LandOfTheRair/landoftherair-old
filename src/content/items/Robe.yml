@@ -56,7 +56,7 @@
 - name: Yzalt Straw Robe
   stats:
     armorClass: 2
-    stealth: 2
+    stealth: 15
     perception: 2
     defense: 1
     offense: 1
@@ -74,7 +74,7 @@
 - name: Ranata Robe
   quality: 5
   stats:
-    stealth: 10
+    stealth: 30
     perception: 10
     defense: 1
     offense: 1

@@ -55,7 +55,7 @@
       max: 5
   tier: 3
   sprite: 372
-  desc: "a pair of spongy, springy boots that allows you to move more quickly"
+  desc: "a pair of rugged combat boots"
   value: 980
   binds: true
 
@@ -76,3 +76,16 @@
   sprite: 232
   desc: "a pair of leather boots"
   value: 75
+
+- name: Griffon Spring Boots
+  stats:
+    offense: 3
+    defense: 3
+  effect:
+    name: FleetOfFoot
+    autocast: true
+  tier: 4
+  sprite: 372
+  desc: "a pair of spongy, springy boots that allows you to move more quickly"
+  value: 1980
+  binds: true
