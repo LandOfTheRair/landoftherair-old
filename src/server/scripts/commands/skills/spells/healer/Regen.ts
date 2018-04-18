@@ -21,7 +21,7 @@ export class Regen extends Skill {
   public format = 'Target';
 
   canUse(user: Character, target: Character) {
-    return super.canUse(user, target) && !target.hasEffect('Regen');
+    return super.canUse(user, target) && !target.hasEffect('Regen') && target.hp.ltePercent(75);
   }
 
   mpCost() { return 30; }

@@ -20,7 +20,7 @@ export class FindFamiliar extends Skill {
   public format = '[AnimalType]';
 
   canUse(user: Character, target: Character) {
-    return false;
+    return !(user.hasEffect('ChannelFindFamiliar') || user.hasEffect('ActivePet'));
   }
 
   mpCost() { return 100; }

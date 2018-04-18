@@ -1,7 +1,7 @@
 
 import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
-import { random, maxBy, sample, sampleSize, clamp, includes, shuffle, size } from 'lodash';
+import { random, maxBy, sample, sampleSize, clamp, includes, shuffle, size, extend } from 'lodash';
 import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
@@ -66,6 +66,12 @@ export class DefaultAIBehavior {
     if(npc.isDead()) return;
     if(npc.hostility === 'Never') return;
 
+    const possibleAgro = npc.agro;
+
+    if(npc.$$owner) {
+      extend(possibleAgro, npc.$$owner.agro);
+    }
+
     let diffX = 0;
     let diffY = 0;
 
@@ -73,7 +79,7 @@ export class DefaultAIBehavior {
     let currentTarget: Character = null;
 
     // onhit with no agro means they don't care
-    if(npc.hostility === 'OnHit' && size(npc.agro) === 0) {
+    if(npc.hostility === 'OnHit' && size(possibleAgro) === 0) {
       currentTarget = null;
 
     // either you have agro, or you can look for a target
@@ -85,7 +91,7 @@ export class DefaultAIBehavior {
       if(shouldDoTargetting) {
         const targetsInRange = npc.$$room.state.getPossibleTargetsFor(npc, 4);
 
-        highestAgro = maxBy(targetsInRange, (char: Character) => npc.agro[char.uuid]);
+        highestAgro = maxBy(targetsInRange, (char: Character) => possibleAgro[char.uuid]);
         if(!highestAgro) highestAgro = sample(targetsInRange);
 
         currentTarget = highestAgro;

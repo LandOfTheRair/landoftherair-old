@@ -54,7 +54,7 @@
 - name: Crazed Saraxa Wand
   quality: 5
   desc: "a crimson wand stained from over-exposure to ether mist"
-  tier: 2
+  tier: 3
   effect:
     name: MagicBolt
     potency: 10
@@ -69,8 +69,28 @@
   sprite: 961
 
   requirements:
-    level: 16
+    level: 14
 
     skill:
       name: Wand
-      level: 7
+      level: 4
+
+- name: Overseer Jigan Wand
+  quality: 5
+  desc: "a blue wand"
+  tier: 3
+  effect:
+    name: Asper
+    potency: 10
+    chance: 33
+  trait:
+    name: MagicFocus
+    level: 3
+  binds: true
+  tellsBind: true
+  type: Wand
+  value: 2500
+  sprite: 281
+
+  requirements:
+    level: 17

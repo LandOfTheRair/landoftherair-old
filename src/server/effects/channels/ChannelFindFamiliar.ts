@@ -1,5 +1,5 @@
 
-import { some, last, includes } from 'lodash';
+import { some, last, includes, sample } from 'lodash';
 
 import { ChanneledSpellEffect, Effect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
@@ -108,7 +108,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
 
   maxSkillForSkillGain = 17;
 
-  cast(caster: Character, target: Character, skillRef?: Skill, animalStr?: string) {
+  cast(caster: Character, target: Character, skillRef?: Skill, animalStr = '') {
     super.cast(caster, target, skillRef);
 
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -126,10 +126,12 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
     // can't cast for an animal at a higher skill
     if(!includes(allPossibleAnimals, animalStr)) animalStr = '';
 
-    let resultingId = animalHash[animalStr];
-    if(!resultingId) resultingId = animalHash[last(allPossibleAnimals)];
+    const randomlyChosen = sample(allPossibleAnimals);
 
-    this.animalStr = animalStr || last(allPossibleAnimals);
+    let resultingId = animalHash[animalStr];
+    if(!resultingId) resultingId = animalHash[randomlyChosen];
+
+    this.animalStr = animalStr || randomlyChosen;
     this.animalId = resultingId;
 
     caster.applyEffect(this);
@@ -162,13 +164,18 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
 
       npcCreateCallback: (npc: NPC) => {
 
-        // match the player
         npc.allegianceReputation = char.allegianceReputation;
-        npc.allegianceReputation.Enemy = -100000;
         npc.allegiance = char.allegiance;
         npc.alignment = char.alignment;
-        npc.hostility = 'Faction';
         npc.level = char.level;
+
+        // match the player
+        if(char.isPlayer()) {
+          npc.allegianceReputation.Enemy = -100000;
+          npc.hostility = 'Faction';
+        } else {
+          npc.hostility = (<NPC>char).hostility;
+        }
 
         npc.name = `pet ${npc.name}`;
 

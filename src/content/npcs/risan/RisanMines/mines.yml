@@ -209,3 +209,116 @@
       chance: -1
 
   spawnMessage: "the sound of rocks grinding together"
+
+- npcId: Overseer Jigan
+  name: Overseer Jigan
+  hostility: OnHit
+  allegiance: Enemy
+  baseClass: Mage
+  sprite: 490
+  stats: 24
+  skillLevels: 8
+  level: 26
+
+  skillOnKill: 350
+
+  otherStats:
+    accuracy: 5
+    perception: 300
+    mpregen: 30
+
+  gold:
+    min: 43850
+    max: 44000
+
+  hp:
+    min: 1004950
+    max: 1016350
+
+  mp:
+    min: 10050
+    max: 10150
+
+  giveXp:
+    min: 569000
+    max: 609000
+
+  gear:
+    Armor: Mines Griffon Fur
+    Robe1:
+      - result: none
+        chance: 3
+      - result: Crazed Deer Robe
+        chance: 1
+    Robe2:
+      - result: none
+        chance: 10
+      - result: Crazed Deer Robe
+        chance: 1
+    Head:
+      - result: none
+        chance: 150
+      - result: Miner Defense Health Helm
+        chance: 1
+      - result: Miner Offense Health Helm
+        chance: 1
+      - result: Miner Defense Mana Helm
+        chance: 1
+      - result: Miner Offense Mana Helm
+        chance: 1
+
+  rightHand:
+    - Overseer Jigan Staff
+    - Overseer Jigan Totem
+    - Overseer Jigan Wand
+
+  usableSkills:
+    - Charge
+    - DarkVision
+    - TrueSight
+    - Afflict
+    - HolyFire
+    - MagicBolt
+    - Disease
+    - Poison
+    - Snare
+    - Regen
+    - Cure
+    - FindFamiliar
+    - Absorption
+    - MagicShield
+    - VitalEssence
+    - Vision
+    - Asper
+
+  traitLevels:
+    HolyAffliction: 3
+    NecroticFocus: 3
+    CripplingPoison: 1
+    DebilitatingDisease: 1
+    EffectiveSupporter: 5
+    TotemSpecialty: 5
+    WandSpecialty: 5
+    BladedWands: 1
+    FindFamiliarSalamander: 1
+    FindFamiliarChillspider: 1
+    FindFamiliarBear: 1
+    FindFamiliarWolf: 1
+
+  drops:
+    - result: Risan Miner Book
+      chance: -1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1

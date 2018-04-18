@@ -28,3 +28,23 @@
 
   requirements:
     level: 5
+
+- name: Overseer Jigan Staff
+  desc: "a finely-milled quarterstaff emanating a strong magical energy"
+  stats:
+    int: 3
+    wis: 3
+    defense: 4
+  tier: 5
+  type: Staff
+  value: 9567
+  sprite: 268
+  binds: true
+  tellsBind: true
+
+  trait:
+    name: CalmMind
+    level: 5
+
+  requirements:
+    level: 17
