@@ -21,6 +21,7 @@ import { MessageHelper } from '../helpers/world/message-helper';
 import { DiscordHelper } from '../helpers/lobby/discord-helper';
 import { PouchHelper } from '../helpers/character/pouch-helper';
 import { TeleportHelper } from '../helpers/world/teleport-helper';
+import { DateTime } from 'luxon';
 
 const CHAT_SPAM_DELAY = 1000;
 const MAX_SPAM_MESSAGES = 5;
@@ -38,10 +39,15 @@ export class Lobby extends Room<LobbyState> {
     return this.redis.client;
   }
 
+  private resetTime: DateTime;
+  private hasAlertedOfReset: boolean[] = [];
+
   async onInit(opts) {
     this.redis = new Redis();
+    this.flagResetTime();
 
     this.setPatchRate(250);
+    this.setSimulationInterval(this.tick.bind(this), 1000);
     this.autoDispose = false;
 
     this.itemCreator = new ItemCreator();
@@ -58,6 +64,47 @@ export class Lobby extends Room<LobbyState> {
 
     await this.startDiscord();
     this.updateDiscordLobbyChannelUserCount();
+  }
+
+  private flagResetTime() {
+    let theoreticalResetTime = DateTime.fromObject({ zone: 'utc', hour: 12 });
+    if(+theoreticalResetTime < +DateTime.fromObject({ zone: 'utc' })) {
+      theoreticalResetTime = theoreticalResetTime.plus({ days: 1 });
+    }
+
+    this.resetTime = theoreticalResetTime;
+  }
+
+  tick() {
+    const nowTimestamp = +DateTime.fromObject({ zone: 'utc' });
+
+    const diff = (+this.resetTime - nowTimestamp) / 1000;
+    const minutes = Math.floor((diff / 60)) % 60;
+
+    if(minutes <= 15 && !this.hasAlertedOfReset[0]) {
+      this.hasAlertedOfReset[0] = true;
+      this.broadcastSystemMessage({ message:
+        `The server will reset in approximately 15 minutes (6:00 AM UTC)! 
+        This is an automated restart and cannot be stopped. 
+        Please prepare to exit the game soon or risk losing progress.
+        Further notifications will be sent as chat messages.`
+      });
+    }
+
+    if(minutes <= 5 && !this.hasAlertedOfReset[1]) {
+      this.hasAlertedOfReset[1] = true;
+      this.addSystemMessage(`The server will reset in approximately 5 minutes (6:00 AM UTC)!`);
+    }
+
+    if(minutes <= 3 && !this.hasAlertedOfReset[2]) {
+      this.hasAlertedOfReset[2] = true;
+      this.addSystemMessage(`The server will reset in approximately 3 minutes (6:00 AM UTC)!`);
+    }
+
+    if(minutes <= 1 && !this.hasAlertedOfReset[3]) {
+      this.hasAlertedOfReset[3] = true;
+      this.addSystemMessage(`The server will reset in approximately 1 minute (6:00 AM UTC)!`);
+    }
   }
 
   private async createAccount({ userId, username }): Promise<Account> {
@@ -615,11 +662,15 @@ export class Lobby extends Room<LobbyState> {
     this.saveSettings();
   }
 
+  private broadcastSystemMessage(data, sender = 'System') {
+    this.broadcast({ action: 'alert', sender, message: data.message });
+  }
+
   private broadcastAlert(client, data) {
     const gmAccount = this.state.findAccount(client.userId);
     if(!gmAccount || !gmAccount.isGM) return;
 
-    this.broadcast({ action: 'alert', sender: gmAccount.username, message: data.message });
+    this.broadcastSystemMessage(data, gmAccount.username);
   }
 
   private changeStatus(client, newStatus) {
