@@ -1,5 +1,5 @@
 
-import { some, last, includes, sample } from 'lodash';
+import { some, includes, sample } from 'lodash';
 
 import { ChanneledSpellEffect, Effect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
