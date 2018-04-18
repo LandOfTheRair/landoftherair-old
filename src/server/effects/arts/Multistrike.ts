@@ -23,7 +23,17 @@ export class Multistrike extends WeaponEffect {
 
     if(attacked.length > 0) {
       const divisor = caster.getTraitLevel('Multifocus') ? 2 : 1;
-      const debuff = new LoweredDefenses({ potency: attacked.length / divisor });
+
+      let castPotency = attacked.length / divisor;
+      let castDuration = 7;
+      const loweredDefensesInstance = caster.hasEffect('LoweredDefenses');
+
+      if(loweredDefensesInstance) {
+        castPotency = Math.max(loweredDefensesInstance.setPotency, castPotency);
+        castDuration = Math.max(loweredDefensesInstance.duration, castPotency);
+      }
+
+      const debuff = new LoweredDefenses({ potency: castPotency, duration: castDuration });
       debuff.cast(caster, caster);
     }
   }

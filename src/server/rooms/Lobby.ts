@@ -79,9 +79,10 @@ export class Lobby extends Room<LobbyState> {
     const nowTimestamp = +DateTime.fromObject({ zone: 'utc' });
 
     const diff = (+this.resetTime - nowTimestamp) / 1000;
+    const hours = Math.floor((diff / 60) / 60) % 60;
     const minutes = Math.floor((diff / 60)) % 60;
 
-    if(minutes <= 15 && !this.hasAlertedOfReset[0]) {
+    if(hours === 0 && minutes <= 15 && !this.hasAlertedOfReset[0]) {
       this.hasAlertedOfReset[0] = true;
       this.broadcastSystemMessage({ message:
         `The server will reset in approximately 15 minutes (6:00 AM UTC)! 
@@ -91,17 +92,17 @@ export class Lobby extends Room<LobbyState> {
       });
     }
 
-    if(minutes <= 5 && !this.hasAlertedOfReset[1]) {
+    if(hours === 0 && minutes <= 5 && !this.hasAlertedOfReset[1]) {
       this.hasAlertedOfReset[1] = true;
       this.addSystemMessage(`The server will reset in approximately 5 minutes (6:00 AM UTC)!`);
     }
 
-    if(minutes <= 3 && !this.hasAlertedOfReset[2]) {
+    if(hours === 0 && minutes <= 3 && !this.hasAlertedOfReset[2]) {
       this.hasAlertedOfReset[2] = true;
       this.addSystemMessage(`The server will reset in approximately 3 minutes (6:00 AM UTC)!`);
     }
 
-    if(minutes <= 1 && !this.hasAlertedOfReset[3]) {
+    if(hours === 0 && minutes <= 1 && !this.hasAlertedOfReset[3]) {
       this.hasAlertedOfReset[3] = true;
       this.addSystemMessage(`The server will reset in approximately 1 minute (6:00 AM UTC)!`);
     }
