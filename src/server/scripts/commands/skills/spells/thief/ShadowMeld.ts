@@ -22,9 +22,9 @@ export class ShadowMeld extends Skill {
 
   canUse(user: Character, target: Character) {
     return super.canUse(user, target)
-      && !target.hasEffect('Revealed')
-      && !target.hasEffect('ShadowMeld')
-      && !target.hasEffect('Hidden');
+      && !user.hasEffect('Revealed')
+      && !user.hasEffect('ShadowMeld')
+      && !user.hasEffect('Hidden');
   }
 
   mpCost() { return 50; }
