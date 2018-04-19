@@ -3237,8 +3237,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1920,
-                 "y":3008
+                 "x":1984,
+                 "y":3072
                 }, 
                 {
                  "gid":2363,
@@ -5639,26 +5639,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":1515,
-                 "name":"Crazed Dryad Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/risanmines\/crazed-dryad"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4352,
-                 "y":1280
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":1516,
                  "name":"Crazed Dryad Spawner",
                  "properties":
@@ -5773,6 +5753,45 @@
                  "width":64,
                  "x":4480,
                  "y":1344
+                }, 
+                {
+                 "height":768,
+                 "id":1558,
+                 "name":"Flower Peak",
+                 "properties":
+                    {
+                     "desc":"You find a small offshoot of the island that has not quite collapsed, but looks like it might. The flowers grow nicely here."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":1024,
+                 "y":6976
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1560,
+                 "name":"Miner Spawner",
+                 "properties":
+                    {
+                     "script":"risan\/risanmines\/miner"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8576,
+                 "y":8768
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5783,7 +5802,255 @@
         {
          "draworder":"topdown",
          "name":"RegionDescriptions",
-         "objects":[],
+         "objects":[
+                {
+                 "height":2048,
+                 "id":1561,
+                 "name":"Miner Town",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a town of miners. It seems to be an outpost here more than anything."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":2048,
+                 "x":7744,
+                 "y":7744
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1562,
+                 "name":"Crazed Dryad Spawner",
+                 "properties":
+                    {
+                     "script":"risan\/risanmines\/crazed-dryad"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4352,
+                 "y":1280
+                }, 
+                {
+                 "height":384,
+                 "id":1563,
+                 "name":"Overseer's Room",
+                 "properties":
+                    {
+                     "desc":"You enter the back room, and see what looks like a primitive office."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":576,
+                 "x":1600,
+                 "y":2048
+                }, 
+                {
+                 "height":832,
+                 "id":1564,
+                 "name":"Dead Forest",
+                 "properties":
+                    {
+                     "desc":"You find yourself in an enclosed, dead forest. You wonder how the trees grew inside a cave."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":4928,
+                 "y":1024
+                }, 
+                {
+                 "height":640,
+                 "id":1565,
+                 "name":"Dead Forest",
+                 "properties":
+                    {
+                     "desc":"You find yourself in an enclosed, dead forest. You wonder how the trees grew inside a cave."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":5248,
+                 "y":1216
+                }, 
+                {
+                 "height":448,
+                 "id":1566,
+                 "name":"Library",
+                 "properties":
+                    {
+                     "desc":"You are whisked through the strange, ancient artifact disguised as a rug and into a mysterious library."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":8896,
+                 "y":3584
+                }, 
+                {
+                 "height":320,
+                 "id":1567,
+                 "name":"Meeting Spot",
+                 "properties":
+                    {
+                     "desc":"You see a table and chairs nearby, probably used to meet up and take a break."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":6016,
+                 "y":3584
+                }, 
+                {
+                 "height":320,
+                 "id":1568,
+                 "name":"Break Spot",
+                 "properties":
+                    {
+                     "desc":"You see a table and chairs tucked away in a cave pocket. It would be easy to escape to take a break once in a while."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":5888,
+                 "y":4416
+                }, 
+                {
+                 "height":448,
+                 "id":1569,
+                 "name":"Storage Area",
+                 "properties":
+                    {
+                     "desc":"You see a lot of supplies strewn about. They're probably being stored here."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":704,
+                 "x":3328,
+                 "y":5440
+                }, 
+                {
+                 "height":1408,
+                 "id":1570,
+                 "name":"Griffin Roost",
+                 "properties":
+                    {
+                     "desc":"You see a gaping hole in the island, and a lot of bird nests nearby."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1216,
+                 "x":4544,
+                 "y":2112
+                }, 
+                {
+                 "height":1024,
+                 "id":1571,
+                 "name":"Dead Forest",
+                 "properties":
+                    {
+                     "desc":"You find yourself in an enclosed, dead forest. You wonder how the trees grew inside a cave."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1088,
+                 "x":3840,
+                 "y":832
+                }, 
+                {
+                 "height":64,
+                 "id":1572,
+                 "name":"Sad Bucket",
+                 "properties":
+                    {
+                     "desc":"You see here what appears to be the saddest bucket in existence. Not a single drop of water landed in it."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3776,
+                 "y":1664
+                }, 
+                {
+                 "height":704,
+                 "id":1573,
+                 "name":"Enclosed Area",
+                 "properties":
+                    {
+                     "desc":"You see here an isolated cave area. It's hard to tell what might be in it from the outside."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":704,
+                 "x":320,
+                 "y":320
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -5997,7 +6264,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1548,
+ "nextobjectid":1574,
  "orientation":"orthogonal",
  "properties":
     {
