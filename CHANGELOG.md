@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.2.9 (19/04/2018)
+
+#### New Content
+
+- [#542](https://github.com/LandOfTheRair/landoftherair/issues/542) New Map: Risan Mines
+
+---
+
 ## v0.2.8 (18/04/2018)
 *No changelog for this release.*
 
