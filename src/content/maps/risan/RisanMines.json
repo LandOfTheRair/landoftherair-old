@@ -5755,25 +5755,6 @@
                  "y":1344
                 }, 
                 {
-                 "height":768,
-                 "id":1558,
-                 "name":"Flower Peak",
-                 "properties":
-                    {
-                     "desc":"You find a small offshoot of the island that has not quite collapsed, but looks like it might. The flowers grow nicely here."
-                    },
-                 "propertytypes":
-                    {
-                     "desc":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":512,
-                 "x":1024,
-                 "y":6976
-                }, 
-                {
                  "gid":2363,
                  "height":64,
                  "id":1560,
@@ -5792,6 +5773,26 @@
                  "width":64,
                  "x":8576,
                  "y":8768
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1574,
+                 "name":"Crazed Dryad Spawner",
+                 "properties":
+                    {
+                     "script":"risan\/risanmines\/crazed-dryad"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4352,
+                 "y":1280
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5821,26 +5822,6 @@
                  "width":2048,
                  "x":7744,
                  "y":7744
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":1562,
-                 "name":"Crazed Dryad Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/risanmines\/crazed-dryad"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4352,
-                 "y":1280
                 }, 
                 {
                  "height":384,
@@ -6050,6 +6031,25 @@
                  "width":704,
                  "x":320,
                  "y":320
+                }, 
+                {
+                 "height":768,
+                 "id":1576,
+                 "name":"Flower Peak",
+                 "properties":
+                    {
+                     "desc":"You find a small offshoot of the island that has not quite collapsed, but looks like it might. The flowers grow nicely here."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":448,
+                 "x":1088,
+                 "y":6976
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -6264,7 +6264,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1574,
+ "nextobjectid":1577,
  "orientation":"orthogonal",
  "properties":
     {
