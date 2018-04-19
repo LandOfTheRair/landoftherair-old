@@ -11,7 +11,8 @@ export class Drain extends Skill {
     icon: 'wind-hole',
     color: '#af0000',
     mode: 'lockActivation',
-    tooltipDesc: 'Drain health from a single target. Cost: 10 MP'
+    tooltipDesc: 'Drain health from a single target. Cost: 10 MP',
+    requireSkillLevel: 15
   };
 
   public name = ['drain', 'cast drain'];

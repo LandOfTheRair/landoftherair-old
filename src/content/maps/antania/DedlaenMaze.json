@@ -24443,8 +24443,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4864,
-                 "y":2176
+                 "x":4928,
+                 "y":2112
                 }, 
                 {
                  "gid":2363,
@@ -25584,7 +25584,7 @@
                  "visible":true,
                  "width":64,
                  "x":3648,
-                 "y":5056
+                 "y":4992
                 }, 
                 {
                  "gid":2363,
@@ -25825,6 +25825,126 @@
                  "width":64,
                  "x":8640,
                  "y":6784
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6006,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4992,
+                 "y":2304
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6007,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4800,
+                 "y":2240
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6008,
+                 "name":"Skeleton Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/skeleton-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3648,
+                 "y":5120
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6009,
+                 "name":"SW Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/sw-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5440,
+                 "y":7936
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6010,
+                 "name":"Orckin Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/orckin-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":11968,
+                 "y":640
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6011,
+                 "name":"Orckin Room Spawner",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/orckin-room"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":11904,
+                 "y":1024
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -27369,7 +27489,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":6006,
+ "nextobjectid":6012,
  "orientation":"orthogonal",
  "properties":
     {

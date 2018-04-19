@@ -219,7 +219,7 @@ const BARD_TREE = {
     unlocks: ['EffectiveSupporter2']
   },
   EffectiveSupporter2: {
-
+    unlocks: ['Secondwind']
   },
 
   RegenerativeRefrain0: {
@@ -265,6 +265,10 @@ const BARD_TREE = {
 
   Autoheal: {
     unlocks: ['ImprovedAutoheal0']
+  },
+
+  Secondwind: {
+
   }
 };
 

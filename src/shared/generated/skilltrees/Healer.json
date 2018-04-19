@@ -772,6 +772,9 @@
         "icon": "burning-passion",
         "capstone": true,
         "cost": 10,
+        "unlocks": [
+            "Secondwind"
+        ],
         "cluster": 3,
         "unlockedBy": [
             "EffectiveSupporter1"
@@ -928,6 +931,17 @@
         "cluster": 3,
         "unlockedBy": [
             "Regen"
+        ]
+    },
+    "Secondwind": {
+        "name": "Secondwind",
+        "desc": "Prevent losing gear on death. Cost: 250 MP",
+        "icon": "wing-cloak",
+        "iconColor": "#a0a",
+        "cost": 20,
+        "cluster": 3,
+        "unlockedBy": [
+            "EffectiveSupporter2"
         ]
     },
     "Diviner": {

@@ -329,6 +329,10 @@ export class Player extends Character {
   }
 
   async die(killer) {
+    if(this.hasEffect('Dead')) return;
+
+    const hasSecondWind = this.hasEffect('Secondwind');
+
     super.die(killer);
 
     // if a room would kick you out of the map on death, save the ground now just in case
@@ -348,7 +352,9 @@ export class Player extends Character {
 
     this.$$actionQueue = [];
 
-    await DeathHelper.createCorpse(this, [], this.getBaseSprite() + 4);
+    if(killer && !(<any>killer).$$shouldEatTier) {
+      await DeathHelper.createCorpse(this, [], this.getBaseSprite() + 4);
+    }
 
     const myCon = this.getBaseStat('con');
     const myLuk = this.getTotalStat('luk');
@@ -379,7 +385,7 @@ export class Player extends Character {
 
     if(killer && !killer.isPlayer()) {
 
-      if(!RollerHelper.XInOneHundred(this.getTraitLevelAndUsageModifier('DeathGrip'))) {
+      if(!RollerHelper.XInOneHundred(this.getTraitLevelAndUsageModifier('DeathGrip')) && !hasSecondWind) {
         CharacterHelper.dropHands(this);
       }
 

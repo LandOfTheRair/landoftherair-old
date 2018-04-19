@@ -67,6 +67,7 @@ export * from './damagers/EnergyWave';
 
 export * from './buffs/Autoheal';
 export * from './buffs/VitalEssence';
+export * from './buffs/Secondwind';
 export * from './cures/Cure';
 export * from './cures/Regen';
 export * from './cures/Revive';

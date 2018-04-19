@@ -1044,11 +1044,12 @@ export class CombatHelper {
           message: `${defender.name} was ${killMethod} by ${attacker.name}!`, subClass: 'combat self kill' }, 5, [defender.uuid]
         );
         defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
-        defender.die(attacker);
 
         if((<any>attacker).uuid) {
           attacker.kill(defender);
         }
+
+        defender.die(attacker);
 
       } else {
         defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' }, 5, [defender.uuid]);

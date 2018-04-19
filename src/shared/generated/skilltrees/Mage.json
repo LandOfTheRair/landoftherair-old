@@ -337,6 +337,10 @@
         "desc": "Deal $10|30$% more energy damage.",
         "icon": "plasma-bolt",
         "cost": 3,
+        "unlocks": [
+            "Drain",
+            "Asper"
+        ],
         "cluster": 1,
         "unlockedBy": [
             "Push"
@@ -492,6 +496,30 @@
         "cluster": 1,
         "unlockedBy": [
             "Teleport"
+        ]
+    },
+    "Drain": {
+        "name": "Drain",
+        "desc": "Drain health from a single target. Cost: 10 MP",
+        "icon": "wind-hole",
+        "iconColor": "#af0000",
+        "requireSkillLevel": 15,
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicFocus5"
+        ]
+    },
+    "Asper": {
+        "name": "Asper",
+        "desc": "Drain mana from a single target. Cost: 10 MP",
+        "icon": "wind-hole",
+        "iconColor": "#0059bd",
+        "requireSkillLevel": 15,
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicFocus5"
         ]
     },
     "Protector": {

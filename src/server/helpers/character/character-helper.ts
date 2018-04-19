@@ -53,6 +53,8 @@ export class CharacterHelper {
   }
 
   static strip(char: Character, { x, y }, spread = 0) {
+    if(char.hasEffect('Secondwind')) return;
+
     this.dropHands(char);
 
     char.sendClientMessage('You feel an overwhelming heat as your equipment disappears from your body!');

@@ -13,6 +13,7 @@ export * from './PowerwordBarNecro';
 export * from './PowerwordHeal';
 export * from './Regen';
 export * from './Revive';
+export * from './Secondwind';
 export * from './Snare';
 export * from './Stun';
 export * from './Succor';

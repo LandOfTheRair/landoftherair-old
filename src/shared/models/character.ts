@@ -614,8 +614,8 @@ export class Character {
   private checkAndCreatePermanentEffect(item: Item) {
     if(!item || !item.effect || !item.effect.autocast || !item.effect.name) return;
     const effect = new Effects[item.effect.name](item.effect);
-    effect.cast(this, this);
     effect.flagPermanent(this.uuid);
+    effect.cast(this, this);
   }
 
   private checkAndUnapplyPermanentEffect(item: Item) {
@@ -912,9 +912,11 @@ export class Character {
   }
 
   clearEffects() {
+    const shouldClearPermanents = !this.hasEffect('Secondwind');
     const noClear = ['Nourishment', 'Malnourished'];
     this.effectsList.forEach(effect => {
       if(includes(noClear, effect.name)) return;
+      if(get(effect, 'effectInfo.isPermanent') && !shouldClearPermanents) return;
       this.unapplyEffect(effect, true, true);
     });
   }

@@ -166,10 +166,10 @@ export class NPC extends Character {
       dead.sendClientMessage(`${this.name} made a feast of you!`);
       dead.restore();
 
-      const lostXP = Math.floor(dead.calcLevelXP(dead.level) / 40) * this.$$shouldEatTier;
-      const lostSkill = 500 * this.$$shouldEatTier;
-
-      dead.loseBaseStat('hp', this.$$shouldEatTier);
+      const lostXP = Math.floor((dead.calcLevelXP(dead.level) / 40) * this.$$shouldEatTier);
+      const lostSkill = Math.floor(500 * this.$$shouldEatTier);
+1
+      dead.loseBaseStat('hp', Math.floor(this.$$shouldEatTier));
 
       dead.loseExpOrSkill({ lostXPMin: lostXP, lostXPMax: lostXP, lostSkillMin: lostSkill, lostSkillMax: lostSkill });
     }

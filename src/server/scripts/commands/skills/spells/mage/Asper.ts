@@ -11,7 +11,8 @@ export class Asper extends Skill {
     icon: 'wind-hole',
     color: '#0059bd',
     mode: 'lockActivation',
-    tooltipDesc: 'Drain mana from a single target. Cost: 10 MP'
+    tooltipDesc: 'Drain mana from a single target. Cost: 10 MP',
+    requireSkillLevel: 15
   };
 
   public name = ['asper', 'cast asper'];

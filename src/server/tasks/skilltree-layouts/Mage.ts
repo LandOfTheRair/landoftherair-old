@@ -85,7 +85,7 @@ const MAGE_TREE = {
 
   },
   MagicFocus5: {
-
+    unlocks: ['Drain', 'Asper']
   },
   MagicFocus6: {
 
@@ -121,6 +121,12 @@ const MAGE_TREE = {
     unlocks: ['MassTeleport']
   },
   MassTeleport: {
+
+  },
+  Drain: {
+
+  },
+  Asper: {
 
   }
 };
