@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMGainXP extends Command {
 
@@ -9,7 +8,7 @@ export class GMGainXP extends Command {
   public format = 'XP';
 
   async execute(player: Player, { args }) {
-    if(!SubscriptionHelper.isGM(player)) return;
+    if(!player.$$room.subscriptionHelper.isGM(player)) return;
 
     const xpGain = +args;
     player.gainExp(xpGain);

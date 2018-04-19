@@ -144,7 +144,7 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
 
 export class SubscriptionHelper {
 
-  public static async buyWithStripe(account: Account, purchaseInfo) {
+  public async buyWithStripe(account: Account, purchaseInfo) {
     if(!process.env.STRIPE_TOKEN) throw new Error('Stripe is not configured');
 
     if(!purchaseInfo) return;
@@ -206,19 +206,19 @@ export class SubscriptionHelper {
   }
 
   // account management
-  public static async subscribe(account: Account, months: number): Promise<Account> {
+  public async subscribe(account: Account, months: number): Promise<Account> {
     await this.startTrial(account, months * 30, SubscriptionTier.BASIC_SUBSCRIPTION);
     await this.giveSilver(account, months * 500);
     return account;
   }
 
-  public static async unsubscribe(account: Account): Promise<Account> {
+  public async unsubscribe(account: Account): Promise<Account> {
     account.subscriptionTier = SubscriptionTier.NO_SUBSCRIPTION;
     await AccountHelper.saveAccount(account);
     return account;
   }
 
-  public static async startTrial(account: Account, expirationDays = 30, tier = SubscriptionTier.TRIAL_SUBSCRIPTION): Promise<Account> {
+  public async startTrial(account: Account, expirationDays = 30, tier = SubscriptionTier.TRIAL_SUBSCRIPTION): Promise<Account> {
     const date = new Date();
     date.setDate(date.getDate() + expirationDays);
     account.trialEnds = date.getTime();
@@ -228,13 +228,13 @@ export class SubscriptionHelper {
     return account;
   }
 
-  public static async giveSilver(account: Account, silver = 0): Promise<Account> {
+  public async giveSilver(account: Account, silver = 0): Promise<Account> {
     account.silver = Math.max(0, (account.silver || 0) + silver);
     await AccountHelper.saveAccount(account);
     return account;
   }
 
-  public static async purchaseWithSilver(account: Account, purchase: SilverPurchase, lobbyInstance: Lobby): Promise<boolean> {
+  public async purchaseWithSilver(account: Account, purchase: SilverPurchase, lobbyInstance: Lobby): Promise<boolean> {
     const purchaseItem = find(AllSilverPurchases, { key: purchase });
     const curPurchaseTier = this.getSilverPurchase(account, purchase);
 
@@ -253,7 +253,7 @@ export class SubscriptionHelper {
     return true;
   }
 
-  public static async checkAccountForExpiration(account: Account): Promise<Account> {
+  public async checkAccountForExpiration(account: Account): Promise<Account> {
     const now = Date.now();
     if(now >= account.trialEnds) {
       account.subscriptionTier = SubscriptionTier.NO_SUBSCRIPTION;
@@ -264,92 +264,92 @@ export class SubscriptionHelper {
   }
 
   // checker functions
-  public static isGM(player: Player): boolean {
+  public isGM(player: Player): boolean {
     return player.$$account.isGM;
   }
 
-  public static isTester(player: Player): boolean {
+  public isTester(player: Player): boolean {
     return player.$$account.isTester;
   }
 
-  public static isSubscribed(player: Player): boolean {
+  public isSubscribed(player: Player): boolean {
     return this.subscriptionTier(player) > 0;
   }
 
   // silver related functions
-  public static getSilverPurchase(account: Account, purchase: SilverPurchase): number {
+  public getSilverPurchase(account: Account, purchase: SilverPurchase): number {
     if(account.isTester) return 1;
 
     return get(account, `silverPurchases.${purchase}`, 0);
   }
 
   // the max tier is 10
-  private static subscriptionTier(player: Player): number {
+  private subscriptionTier(player: Player): number {
     if(this.isGM(player)) return 10;
     if(this.isTester(player)) return 1;
     return player.$$account.subscriptionTier;
   }
 
   // the max tier is 10
-  private static subscriptionTierMultiplier(player: Player): number {
+  private subscriptionTierMultiplier(player: Player): number {
     const tier = Math.min(10, this.subscriptionTier(player));
     return (tier * SUBSCRIPTION_TIER_MULTIPLER) / 100;
   }
 
   // SUBSCRIBER BENEFIT: +(TIER * 5)% XP
-  public static modifyXPGainForSubscription(player: Player, xp: number): number {
+  public modifyXPGainForSubscription(player: Player, xp: number): number {
     if(xp < 0) return xp;
 
     return Math.max(1, Math.floor(xp + (xp * this.subscriptionTierMultiplier(player))));
   }
 
   // SUBSCRIBER BENEFIT: +(TIER * 5)% SKILL
-  public static modifySkillGainForSubscription(player: Player, skill: number): number {
+  public modifySkillGainForSubscription(player: Player, skill: number): number {
     if(skill < 0) return skill;
 
     return Math.max(1, Math.floor(skill + (skill * this.subscriptionTierMultiplier(player))));
   }
 
   // SUBSCRIBER BENEFIT: +(TIER * 5)% PARTY XP
-  public static modifyPartyXPGainForSubscription(player: Player, xp: number): number {
+  public modifyPartyXPGainForSubscription(player: Player, xp: number): number {
     if(xp < 0) return xp;
 
     return Math.max(1, Math.floor(xp + (xp * this.subscriptionTierMultiplier(player))));
   }
 
   // SUBSCRIBER BENEFIT: +(TIER * 2) ACTION QUEUE ITEMS
-  public static calcActionQueueSize(player: Player): number {
+  public calcActionQueueSize(player: Player): number {
     return BASE_ACTION_QUEUE_SIZE + (this.subscriptionTier(player) * ACTION_QUEUE_MULTIPLIER);
   }
 
   // SUBSCRIBER BENEFIT: +(TIER) POTION OZ
-  public static calcPotionMaxSize(player: Player, basePotionSize: number): number {
+  public calcPotionMaxSize(player: Player, basePotionSize: number): number {
     return basePotionSize + this.subscriptionTier(player) + (this.getSilverPurchase(player.$$account, 'MorePotions') * 5);
   }
 
   // SUBSCRIBER BENEFIT: +(TIER * 1000) POTION OZ
-  public static calcMaxSmithRepair(player: Player, baseSmithRepair: number): number {
+  public calcMaxSmithRepair(player: Player, baseSmithRepair: number): number {
     return baseSmithRepair + (this.subscriptionTier(player) * 1000);
   }
 
   // SUBSCRIBER BENEFIT: -(TIER * 5)% HP/MP DOC COST
-  public static modifyDocPrice(player: Player, basePrice: number): number {
+  public modifyDocPrice(player: Player, basePrice: number): number {
     return Math.max(1, Math.floor(basePrice - (basePrice * this.subscriptionTierMultiplier(player))));
   }
 
-  public static bonusSackSlots(player: Player): number {
+  public bonusSackSlots(player: Player): number {
     return this.getSilverPurchase(player.$$account, 'BiggerSack') * 5;
   }
 
-  public static bonusBeltSlots(player: Player): number {
+  public bonusBeltSlots(player: Player): number {
     return this.getSilverPurchase(player.$$account, 'BiggerBelt') * 5;
   }
 
-  public static bonusPouchSlots(player: Player): number {
+  public bonusPouchSlots(player: Player): number {
     return this.getSilverPurchase(player.$$account, 'MagicPouch') * 5;
   }
 
-  public static bonusMaterialStorageSlots(player: Player): number {
+  public bonusMaterialStorageSlots(player: Player): number {
     return this.getSilverPurchase(player.$$account, 'ExpandedStorage') * 200;
   }
 

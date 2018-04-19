@@ -6,7 +6,7 @@ import { MagicShield as CastEffect } from '../../../../../effects/buffs/MagicShi
 export class MagicShield extends Skill {
 
   static macroMetadata = {
-    name: 'Magic Shield',
+    name: 'MagicShield',
     macro: 'cast magicshield',
     icon: 'energy-shield',
     color: '#a0a',

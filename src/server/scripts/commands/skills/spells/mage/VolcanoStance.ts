@@ -8,7 +8,7 @@ import { VolcanoStance as CastEffect } from '../../../../../effects/stances/Volc
 export class VolcanoStance extends Skill {
 
   static macroMetadata = {
-    name: 'Volcano Stance',
+    name: 'VolcanoStance',
     macro: 'stance volcano',
     icon: 'fire-silhouette',
     color: '#DC143C',

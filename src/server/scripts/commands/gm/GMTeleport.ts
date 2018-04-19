@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMTeleport extends Command {
 
@@ -9,7 +8,7 @@ export class GMTeleport extends Command {
   public format = 'X Y [Map]';
 
   execute(player: Player, { room, args }) {
-    if(!SubscriptionHelper.isGM(player)) return;
+    if(!player.$$room.subscriptionHelper.isGM(player)) return;
 
     const [x, y, map] = args.split(' ');
 

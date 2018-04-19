@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 import { TesterHelper } from '../../../helpers/tester/tester-helper';
 
 export class TesterGainGold extends Command {
@@ -10,7 +9,7 @@ export class TesterGainGold extends Command {
   public format = 'Gold';
 
   async execute(player: Player, { args }) {
-    if(!SubscriptionHelper.isGM(player) && !SubscriptionHelper.isTester(player)) return;
+    if(!player.$$room.subscriptionHelper.isGM(player) && !player.$$room.subscriptionHelper.isTester(player)) return;
 
     const gold = Math.floor(+args);
     if(gold < 1 || isNaN(gold)) return false;

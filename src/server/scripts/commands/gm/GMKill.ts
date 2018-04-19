@@ -3,7 +3,6 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { CombatHelper } from '../../../helpers/world/combat-helper';
 import { MessageHelper } from '../../../helpers/world/message-helper';
-import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMKill extends Command {
 
@@ -11,7 +10,7 @@ export class GMKill extends Command {
   public format = 'Target';
 
   async execute(player: Player, { args }) {
-    if(!SubscriptionHelper.isGM(player)) return;
+    if(!player.$$room.subscriptionHelper.isGM(player)) return;
 
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args, false);
     if(!possTargets.length) return player.youDontSeeThatPerson(args);

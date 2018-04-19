@@ -3,7 +3,6 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { merge } from 'lodash';
 import { NPCLoader } from '../../../helpers/character/npc-loader';
-import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMSpawnNPC extends Command {
 
@@ -11,7 +10,7 @@ export class GMSpawnNPC extends Command {
   public format = 'Props...';
 
   async execute(player: Player, { args }) {
-    if(!SubscriptionHelper.isGM(player)) return;
+    if(!player.$$room.subscriptionHelper.isGM(player)) return;
 
     if(!args) return false;
 

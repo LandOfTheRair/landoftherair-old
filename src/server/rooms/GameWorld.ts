@@ -76,6 +76,7 @@ export class GameWorld extends Room<GameState> {
   public itemCreator: ItemCreator;
   public teleportHelper: TeleportHelper;
   public skillTreeHelper: SkillTreeHelper;
+  private subscriptionHelper: SubscriptionHelper;
 
   public get groundItemCount(): number {
     return this.groundHelper.numberOfItems;
@@ -153,10 +154,6 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.script;
   }
 
-  get subscriptionHelper(): SubscriptionHelper {
-    return SubscriptionHelper;
-  }
-
   // 2 teleports per map, essentially
   get maxTeleportLocations(): number {
     return Math.floor(Object.keys(this.allMapNames).length * 1.5);
@@ -184,6 +181,7 @@ export class GameWorld extends Room<GameState> {
     this.groundHelper = new GroundHelper(this);
     this.teleportHelper = new TeleportHelper(this);
     this.skillTreeHelper = new SkillTreeHelper();
+    this.subscriptionHelper = new SubscriptionHelper();
 
     this.setPatchRate(1000);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
@@ -292,7 +290,7 @@ export class GameWorld extends Room<GameState> {
     this.usernameClientHash[player.username] = { client };
 
 
-    if(this.mapSubscriberOnly && !SubscriptionHelper.isSubscribed(player)) {
+    if(this.mapSubscriberOnly && !this.subscriptionHelper.isSubscribed(player)) {
       player.sendClientMessage('Magical forces push you out of the rift!');
       await this.teleport(player, { newMap: 'Rylt', x: 68, y: 13 });
       return;
@@ -637,7 +635,7 @@ export class GameWorld extends Room<GameState> {
     if(item.sprite < 0) return;
 
     // drop items on destroy if they're supposed to, or if they're a tester.
-    if(item.destroyOnDrop || (ref.isPlayer && ref.isPlayer() && item.isOwnedBy(ref) && SubscriptionHelper.isTester(ref))) {
+    if(item.destroyOnDrop || (ref.isPlayer && ref.isPlayer() && item.isOwnedBy(ref) && this.subscriptionHelper.isTester(ref))) {
 
       // legacy code for legacy players :P
       if(item.name === 'Succor Blob' && item.succorInfo && ref.isPlayer && ref.isPlayer()) {

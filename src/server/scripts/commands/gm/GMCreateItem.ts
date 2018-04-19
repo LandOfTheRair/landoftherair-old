@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMCreateItem extends Command {
 
@@ -9,7 +8,7 @@ export class GMCreateItem extends Command {
   public format = 'ItemName';
 
   async execute(player: Player, { room, args }) {
-    if(!SubscriptionHelper.isGM(player)) return;
+    if(!player.$$room.subscriptionHelper.isGM(player)) return;
 
     const itemName = args;
     if(!itemName) return false;

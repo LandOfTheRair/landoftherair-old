@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 import { MessageHelper } from '../../../helpers/world/message-helper';
 
 export class GMIntercept extends Command {
@@ -10,7 +9,7 @@ export class GMIntercept extends Command {
   public format = 'Charish';
 
   async execute(player: Player, { args }) {
-    if(!SubscriptionHelper.isGM(player)) return;
+    if(!player.$$room.subscriptionHelper.isGM(player)) return;
     if(!args) return false;
 
     const possTargets = MessageHelper.getPossibleMessageTargets(player, args, false);

@@ -13,7 +13,6 @@ import { SpellforgingHelper } from '../../helpers/tradeskill/spellforging-helper
 import { MetalworkingHelper } from '../../helpers/tradeskill/metalworking-helper';
 import { ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
 import { GemDust } from '../../effects/buffs/GemDust';
-import { SubscriptionHelper } from '../../helpers/account/subscription-helper';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')
@@ -706,7 +705,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
   npc.parser.addCommand('reset')
     .set('syntax', ['reset'])
     .set('logic', (args, { player }) => {
-      if(!SubscriptionHelper.isSubscribed(player)) return 'You are not a subscriber!';
+      if(!player.$$room.subscriptionHelper.isSubscribed(player)) return 'You are not a subscriber!';
 
       player.skillTree.reset(player);
       player.skillTree.calculateNewTPFromSkills(player);

@@ -33,6 +33,7 @@ export class Lobby extends Room<LobbyState> {
   private itemCreator: ItemCreator;
   private partyArbiter: PartyArbiter;
   private bonusArbiter: BonusArbiter;
+  private subscriptionHelper: SubscriptionHelper;
 
   private redis: Redis;
   public get redisClient() {
@@ -53,6 +54,7 @@ export class Lobby extends Room<LobbyState> {
     this.itemCreator = new ItemCreator();
     this.partyArbiter = new PartyArbiter(this);
     this.bonusArbiter = new BonusArbiter(this);
+    this.subscriptionHelper = new SubscriptionHelper();
 
     this.setState(new LobbyState({ accounts: [], messages: [], motd: '' }));
 
@@ -184,7 +186,7 @@ export class Lobby extends Room<LobbyState> {
 
     if(!account || !account.username || !account.userId) return;
 
-    await SubscriptionHelper.checkAccountForExpiration(account);
+    await this.subscriptionHelper.checkAccountForExpiration(account);
     DiscordHelper.activateTag(account, account.discordTag);
 
     const { email, emailVerified } = JWTHelper.extractEmailAndVerifiedStatusFromToken(idToken);
@@ -526,7 +528,7 @@ export class Lobby extends Room<LobbyState> {
     if(!account) return;
 
     try {
-      await SubscriptionHelper.buyWithStripe(account, purchaseInfo);
+      await this.subscriptionHelper.buyWithStripe(account, purchaseInfo);
 
       if(purchaseInfo.item.duration) {
         this.send(client, {
@@ -579,7 +581,7 @@ export class Lobby extends Room<LobbyState> {
     const account = this.state.findAccount(client.userId);
     if(!account) return;
 
-    const wasSuccess = await SubscriptionHelper.purchaseWithSilver(account, key, this);
+    const wasSuccess = await this.subscriptionHelper.purchaseWithSilver(account, key, this);
     if(!wasSuccess) {
       this.send(client, {
         error: 'couldnt_purchase',
@@ -611,7 +613,7 @@ export class Lobby extends Room<LobbyState> {
     const targetAccount = this.state.findAccountByUsername(account);
     if(!targetAccount) return;
 
-    SubscriptionHelper.giveSilver(targetAccount, silver);
+    this.subscriptionHelper.giveSilver(targetAccount, silver);
   }
 
   private async handleSubscription(client, data) {
@@ -627,7 +629,7 @@ export class Lobby extends Room<LobbyState> {
     const targetAccount = this.state.findAccountByUsername(account);
     if(!targetAccount) return;
 
-    await SubscriptionHelper.startTrial(targetAccount, period);
+    await this.subscriptionHelper.startTrial(targetAccount, period);
     this.state.updateHashes();
   }
 
@@ -640,7 +642,7 @@ export class Lobby extends Room<LobbyState> {
     const targetAccount = this.state.findAccountByUsername(account);
     if(!targetAccount) return;
 
-    await SubscriptionHelper.unsubscribe(targetAccount);
+    await this.subscriptionHelper.unsubscribe(targetAccount);
     this.state.updateHashes();
   }
 

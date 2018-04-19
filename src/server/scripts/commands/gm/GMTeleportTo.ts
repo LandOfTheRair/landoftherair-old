@@ -4,7 +4,6 @@ import { values } from 'lodash';
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { MessageHelper } from '../../../helpers/world/message-helper';
-import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMTeleportTo extends Command {
 
@@ -12,7 +11,7 @@ export class GMTeleportTo extends Command {
   public format = 'Charish';
 
   execute(player: Player, { room, args }) {
-    if(!SubscriptionHelper.isGM(player)) return;
+    if(!player.$$room.subscriptionHelper.isGM(player)) return;
 
     const playerName = args;
     if(!playerName) return false;

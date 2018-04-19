@@ -5,7 +5,6 @@ import { DB } from '../../database';
 import { Player } from '../../../shared/models/player';
 import { Locker } from '../../../shared/models/container/locker';
 import { MaterialLocker } from '../../../shared/models/container/material-locker';
-import { SubscriptionHelper } from '../account/subscription-helper';
 
 const MATERIAL_STORAGE_LOCKER_ID = -500;
 const MATERIAL_STORAGE_LOCKER_REGION = 'Material';
@@ -25,7 +24,7 @@ export class LockerHelper {
   }
 
   private static async createSharedLockersIfNotExists(player: Player): Promise<any> {
-    const maxLockerSlots = SubscriptionHelper.getSilverPurchase(player.$$account, 'SharedLockers');
+    const maxLockerSlots = player.$$room.subscriptionHelper.getSilverPurchase(player.$$account, 'SharedLockers');
     if(maxLockerSlots === 0) return new Promise(resolve => resolve([]));
 
     const allLockerSlots = this.numLockersToSlotArray(maxLockerSlots);

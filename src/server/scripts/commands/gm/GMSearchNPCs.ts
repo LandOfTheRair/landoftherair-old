@@ -2,7 +2,6 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { NPCLoader } from '../../../helpers/character/npc-loader';
-import { SubscriptionHelper } from '../../../helpers/account/subscription-helper';
 
 export class GMSearchNPCs extends Command {
 
@@ -10,7 +9,7 @@ export class GMSearchNPCs extends Command {
   public format = 'NPCName';
 
   async execute(player: Player, { args }) {
-    if(!SubscriptionHelper.isGM(player)) return;
+    if(!player.$$room.subscriptionHelper.isGM(player)) return;
 
     const npcName = args;
     if(!npcName) return false;
