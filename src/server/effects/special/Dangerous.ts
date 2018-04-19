@@ -17,4 +17,8 @@ export class Dangerous extends Effect {
     caster.applyEffect(this);
   }
 
+  effectStart(char: Character) {
+    char.gainStat('hpregen', 100);
+  }
+
 }
