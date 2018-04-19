@@ -15,7 +15,8 @@ export enum MaterialSlot {
   TowerFlower = 9,
   MazeFlower = 10,
   RedEtherScale = 11,
-  RedEtherScaleRefined = 12
+  RedEtherScaleRefined = 12,
+  MinesFlower = 13
 }
 
 // the valid items for deposit and the slot they map to
@@ -35,7 +36,8 @@ export const ValidMaterialItems = {
   'Tower Goblood': MaterialSlot.TowerFlower,
   'Maze Corpseflower': MaterialSlot.MazeFlower,
   'Ether Scale': MaterialSlot.RedEtherScale,
-  'Ether Scale (Refined)': MaterialSlot.RedEtherScaleRefined
+  'Ether Scale (Refined)': MaterialSlot.RedEtherScaleRefined,
+  'Mines Caveflower': MaterialSlot.MinesFlower
 };
 
 export const ReverseValidItems = invertBy(ValidMaterialItems);
@@ -53,7 +55,8 @@ export const MaterialSlotInfo = {
   [MaterialSlot.TowerFlower]:           { sprite: 736,  withdrawInOunces: false },
   [MaterialSlot.MazeFlower]:            { sprite: 750,  withdrawInOunces: false },
   [MaterialSlot.RedEtherScale]:         { sprite: 965,  withdrawInOunces: false },
-  [MaterialSlot.RedEtherScaleRefined]:  { sprite: 965,  withdrawInOunces: false }
+  [MaterialSlot.RedEtherScaleRefined]:  { sprite: 965,  withdrawInOunces: false },
+  [MaterialSlot.MinesFlower]:           { sprite: 761,  withdrawInOunces: false }
 };
 
 // these *can* be changed to adjust the layout of the slots
@@ -63,7 +66,8 @@ const RAW_MATERIAL_LAYOUT = [
 ];
 
 const FLOWER_LAYOUT = [
-  MaterialSlot.RyltFlower, MaterialSlot.YzaltFlower, MaterialSlot.YzaltApple, MaterialSlot.TowerFlower, MaterialSlot.MazeFlower
+  MaterialSlot.RyltFlower, MaterialSlot.YzaltFlower, MaterialSlot.YzaltApple, MaterialSlot.TowerFlower, MaterialSlot.MazeFlower,
+  MaterialSlot.MinesFlower, null, null, null, null
 ];
 
 const SCALE_LAYOUT = [
