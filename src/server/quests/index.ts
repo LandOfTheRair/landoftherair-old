@@ -11,4 +11,8 @@ export * from './antania/Yzalt/HenizFindSedgwick';
 export * from './antania/Yzalt/SteffenFindSedgwick';
 export * from './antania/Yzalt/KillRanata';
 
+export * from './risan/RisanMines/DailyKillDryads';
+export * from './risan/RisanMines/DailyKillMiners';
+export * from './risan/RisanMines/DailyKillWildlife';
+
 export * from './gm/TestArea/TestQuest';

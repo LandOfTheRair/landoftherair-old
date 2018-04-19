@@ -1461,6 +1461,174 @@
                  "width":64,
                  "x":8768,
                  "y":8320
+                }, 
+                {
+                 "gid":2207,
+                 "height":64,
+                 "id":1577,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8256,
+                 "y":9472
+                }, 
+                {
+                 "gid":2207,
+                 "height":64,
+                 "id":1578,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8320,
+                 "y":8256
+                }, 
+                {
+                 "gid":2207,
+                 "height":64,
+                 "id":1579,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9600,
+                 "y":8256
+                }, 
+                {
+                 "gid":2207,
+                 "height":64,
+                 "id":1580,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9216,
+                 "y":9664
+                }, 
+                {
+                 "gid":1501,
+                 "height":64,
+                 "id":1581,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8832,
+                 "y":8448
+                }, 
+                {
+                 "gid":1503,
+                 "height":64,
+                 "id":1582,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9344,
+                 "y":9600
+                }, 
+                {
+                 "gid":1503,
+                 "height":64,
+                 "id":1583,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8448,
+                 "y":9280
+                }, 
+                {
+                 "gid":1601,
+                 "height":64,
+                 "id":1584,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7936,
+                 "y":9344
+                }, 
+                {
+                 "gid":1725,
+                 "height":64,
+                 "id":1585,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8256,
+                 "y":9152
+                }, 
+                {
+                 "gid":1846,
+                 "height":64,
+                 "id":1586,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2048,
+                 "y":2176
+                }, 
+                {
+                 "gid":1846,
+                 "height":64,
+                 "id":1587,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1600,
+                 "y":2304
+                }, 
+                {
+                 "gid":1848,
+                 "height":64,
+                 "id":1588,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1664,
+                 "y":2112
+                }, 
+                {
+                 "gid":1600,
+                 "height":64,
+                 "id":1589,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7936,
+                 "y":9408
+                }, 
+                {
+                 "gid":1589,
+                 "height":64,
+                 "id":1590,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7936,
+                 "y":9280
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2909,6 +3077,26 @@
                  "width":64,
                  "x":1472,
                  "y":2176
+                }, 
+                {
+                 "gid":2632,
+                 "height":64,
+                 "id":1591,
+                 "name":"Interim Overseer",
+                 "properties":
+                    {
+                     "script":"risan\/mines\/interim"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7936,
+                 "y":9408
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -6050,10 +6238,29 @@
                  "width":448,
                  "x":1088,
                  "y":6976
+                }, 
+                {
+                 "height":384,
+                 "id":1592,
+                 "name":"Interim Overseer's Room",
+                 "properties":
+                    {
+                     "desc":"You open the door and enter a dimly-lit room with a gaping hole in the floor."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":7936,
+                 "y":9088
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -6260,11 +6467,11 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextobjectid":1577,
+ "nextobjectid":1593,
  "orientation":"orthogonal",
  "properties":
     {
