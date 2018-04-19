@@ -142,6 +142,24 @@
     - Antanian Slice of Bread
     - Dedlaen Minotaur Horn
 
+- item: Weak EagleEye Potion
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 2
+  xpGained: 7500
+  ingredients:
+    - Antanian Bottle of Water
+    - Mines Caveroot
+
+- item: Weak EagleEye Potion (10oz)
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 2
+  xpGained: 7500
+  ingredients:
+    - Antanian Pint of Water
+    - Mines Caveroot
+
 - item: Weak Absorption Potion
   skillGained: 50
   maxSkillForGains: 7
@@ -149,5 +167,16 @@
   xpGained: 7500
   ingredients:
     - Antanian Bottle of Water
+    - Antanian Slice of Bread
+    - Mines Caveroot
+
+- item: Weak Absorption Potion (10oz)
+  skillGained: 50
+  maxSkillForGains: 7
+  requiredSkill: 2
+  xpGained: 7500
+  ingredients:
+    - Antanian Pint of Water
+    - Antanian Loaf of Bread
     - Mines Caveroot
 

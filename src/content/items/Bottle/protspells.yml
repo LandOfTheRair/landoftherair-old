@@ -1,6 +1,6 @@
 
 - name: TrueSight Potion
-  desc: "a small bottle covered with eyes"
+  desc: "a small red bottle covered with eyes"
   extendedDesc: "a potion of TrueSight"
   sprite: 254
   effect:
@@ -9,7 +9,7 @@
   value: 200
 
 - name: TrueSight Potion (10oz)
-  desc: "a small bottle covered with eyes"
+  desc: "a small red bottle covered with eyes"
   extendedDesc: "a potion of TrueSight"
   sprite: 254
   ounces: 10
@@ -157,6 +157,35 @@
     name: Absorption
     potency: 15
   value: 1500
+
+- name: Weak Absorption Potion (10oz)
+  desc: "a translucent blue bottle filled with a viscous liquid"
+  extendedDesc: "a flask of Absorption"
+  sprite: 250
+  ounces: 10
+  effect:
+    name: Absorption
+    potency: 15
+  value: 2500
+
+- name: Weak EagleEye Potion
+  desc: "a small red bottle covered in animalistic eyes"
+  extendedDesc: "a flask of EagleEye"
+  sprite: 250
+  effect:
+    name: EagleEye
+    potency: 15
+  value: 1500
+
+- name: Weak EagleEye Potion (10oz)
+  desc: "a small red bottle covered in animalistic eyes"
+  extendedDesc: "a flask of EagleEye"
+  sprite: 250
+  ounces: 10
+  effect:
+    name: EagleEye
+    potency: 15
+  value: 2500
 
 - name: EtherFire Potion
   desc: "a translucent blue bottle with fiery-hot mist emanating from it"
