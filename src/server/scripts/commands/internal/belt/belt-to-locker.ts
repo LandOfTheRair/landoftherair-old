@@ -1,7 +1,6 @@
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
-import { LockerHelper } from '../../../../helpers/world/locker-helper';
 
 export class BeltToLocker extends Command {
 
@@ -17,7 +16,7 @@ export class BeltToLocker extends Command {
     this.accessLocker(player);
     if(!this.findLocker(player)) return this.unaccessLocker(player);
 
-    const locker = await LockerHelper.loadLocker(player, lockerId);
+    const locker = await player.$$room.lockerHelper.loadLocker(player, lockerId);
     if(!locker) return this.unaccessLocker(player);
 
     const item = player.belt.getItemFromSlot(slot);

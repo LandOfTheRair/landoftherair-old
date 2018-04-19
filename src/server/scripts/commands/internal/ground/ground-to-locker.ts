@@ -1,7 +1,6 @@
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
-import { LockerHelper } from '../../../../helpers/world/locker-helper';
 
 export class GroundToLocker extends Command {
 
@@ -21,7 +20,7 @@ export class GroundToLocker extends Command {
 
     if(!this.findLocker(player)) return this.unaccessLocker(player);
 
-    const locker = await LockerHelper.loadLocker(player, lockerId);
+    const locker = await player.$$room.lockerHelper.loadLocker(player, lockerId);
     if(!locker) return this.unaccessLocker(player);
 
     // remove and re-add the item to update the ounces on the item

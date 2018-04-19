@@ -11,11 +11,11 @@ const MATERIAL_STORAGE_LOCKER_REGION = 'Material';
 
 export class LockerHelper {
 
-  private static numLockersToSlotArray(maxLockerSlots: number): number[] {
+  private numLockersToSlotArray(maxLockerSlots: number): number[] {
     return Array(maxLockerSlots).fill(null).map((v, i) => -(i + 1));
   }
 
-  private static async createLockerIfNotExist(player, regionId, lockerName, lockerId, forceSlot: number = null) {
+  private async createLockerIfNotExist(player, regionId, lockerName, lockerId, forceSlot: number = null) {
     return DB.$characterLockers.update(
       { username: player.username, charSlot: forceSlot || player.charSlot, regionId, lockerId },
       { $setOnInsert: { items: [] }, $set: { lockerName } },
@@ -23,7 +23,7 @@ export class LockerHelper {
     );
   }
 
-  private static async createSharedLockersIfNotExists(player: Player): Promise<any> {
+  private async createSharedLockersIfNotExists(player: Player): Promise<any> {
     const maxLockerSlots = player.$$room.subscriptionHelper.getSilverPurchase(player.$$account, 'SharedLockers');
     if(maxLockerSlots === 0) return new Promise(resolve => resolve([]));
 
@@ -34,11 +34,11 @@ export class LockerHelper {
     }));
   }
 
-  private static async createMaterialStorageIfNotExists(player: Player): Promise<any> {
+  private async createMaterialStorageIfNotExists(player: Player): Promise<any> {
     return this.createLockerIfNotExist(player, MATERIAL_STORAGE_LOCKER_REGION, `Material Storage`, `materials`, MATERIAL_STORAGE_LOCKER_ID);
   }
 
-  static async openLocker(player: Player, lockerName, lockerId) {
+  async openLocker(player: Player, lockerName, lockerId) {
     const regionId = player.$$room.mapRegion;
 
     await this.createLockerIfNotExist(player, regionId, lockerName, lockerId);
@@ -60,14 +60,14 @@ export class LockerHelper {
     player.$$room.showLockerWindow(player, lockers, lockerId);
   }
 
-  static async saveLocker(player: Player, locker: Locker) {
+  async saveLocker(player: Player, locker: Locker) {
     return DB.$characterLockers.update(
       { username: player.username, charSlot: locker.charSlot, regionId: locker.regionId, lockerId: locker.lockerId },
       { $set: { lockerName: locker.lockerName, items: locker.allItems } }
     );
   }
 
-  static async loadLocker(player: Player, lockerId): Promise<Locker> {
+  async loadLocker(player: Player, lockerId): Promise<Locker> {
     if(player.$$locker) {
       const locker = await player.$$locker;
       if(player.$$locker.lockerId === lockerId) return locker;

@@ -78,6 +78,7 @@ export class GameWorld extends Room<GameState> {
   public skillTreeHelper: SkillTreeHelper;
   public subscriptionHelper: SubscriptionHelper;
   public npcLoader: NPCLoader;
+  public lockerHelper: LockerHelper;
 
   public get groundItemCount(): number {
     return this.groundHelper.numberOfItems;
@@ -184,6 +185,7 @@ export class GameWorld extends Room<GameState> {
     this.skillTreeHelper = new SkillTreeHelper();
     this.subscriptionHelper = new SubscriptionHelper();
     this.npcLoader = new NPCLoader();
+    this.lockerHelper = new LockerHelper();
 
     this.setPatchRate(1000);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
@@ -530,11 +532,11 @@ export class GameWorld extends Room<GameState> {
   }
 
   openLocker(player: Player, lockerName, lockerId) {
-    LockerHelper.openLocker(player, lockerName, lockerId);
+    this.lockerHelper.openLocker(player, lockerName, lockerId);
   }
 
   updateLocker(player: Player, locker: Locker) {
-    LockerHelper.saveLocker(player, locker);
+    this.lockerHelper.saveLocker(player, locker);
     const client = player.$$room.findClient(player);
     if(!client) return;
 
