@@ -5,6 +5,7 @@ export * from './Autoheal';
 export * from './BarNecro';
 export * from './Blind';
 export * from './Cure';
+export * from './Dispel';
 export * from './HolyFire';
 export * from './Light';
 export * from './PowerwordBarFire';

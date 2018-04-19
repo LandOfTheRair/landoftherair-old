@@ -303,7 +303,7 @@ const DIVINER_TREE = {
     unlocks: ['NecroticFocus7']
   },
   NecroticFocus7: {
-    unlocks: []
+    unlocks: ['Dispel']
   },
 
   TotemSpecialty0: {
@@ -346,6 +346,10 @@ const DIVINER_TREE = {
   },
 
   Push: {
+
+  },
+
+  Dispel: {
 
   }
 };

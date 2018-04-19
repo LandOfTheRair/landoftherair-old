@@ -281,6 +281,10 @@ export class Character {
     return values(this.effects);
   }
 
+  get dispellableEffects(): Effect[] {
+    return this.effectsList.filter(x => x.canBeUnapplied);
+  }
+
   get augmentEffectsList(): AugmentSpellEffect[] {
     return <any[]>values(this.effects).filter(x => (<any>x).augmentAttack);
   }

@@ -111,6 +111,7 @@ export * from './antibuffs/Immobilize';
 export * from './recents/RecentlyImmobilized';
 
 export * from './misc/Augury';
+export * from './misc/Dispel';
 export * from './misc/Identify';
 export * from './misc/Succor';
 export * from './misc/Transmute';

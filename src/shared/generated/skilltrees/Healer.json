@@ -1064,7 +1064,9 @@
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 10,
-        "unlocks": [],
+        "unlocks": [
+            "Dispel"
+        ],
         "cluster": 4,
         "unlockedBy": [
             "NecroticFocus6"
@@ -1217,6 +1219,17 @@
         "cluster": 4,
         "unlockedBy": [
             "NecroticFocus4"
+        ]
+    },
+    "Dispel": {
+        "name": "Dispel",
+        "desc": "Remove a buff from a target. Cost: 25 MP",
+        "icon": "broken-shield",
+        "iconColor": "#600",
+        "cost": 20,
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus7"
         ]
     }
 }
