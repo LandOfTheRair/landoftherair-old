@@ -16,17 +16,19 @@ export class Afflict extends SpellEffect {
     const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
     let isCrit = false;
+    let damageMultiplier = 1;
 
     const holyAfflictionChance = caster.getTraitLevelAndUsageModifier('HolyAffliction');
     if(RollerHelper.XInOneHundred(holyAfflictionChance)) {
       isCrit = true;
+      damageMultiplier += caster.getTraitLevel('HolyAffliction') * 0.5;
     }
 
     this.magicalAttack(caster, target, {
       skillRef,
       atkMsg: `You ${isCrit ? 'critically ' : ' '}afflict ${target.name}!`,
       defMsg: `${this.getCasterName(caster, target)} ${isCrit ? 'critically ' : ' '}afflicted you!`,
-      damage: isCrit ? damage * 3 : damage,
+      damage: Math.floor(damage * damageMultiplier),
       damageClass: 'necrotic'
     });
   }
