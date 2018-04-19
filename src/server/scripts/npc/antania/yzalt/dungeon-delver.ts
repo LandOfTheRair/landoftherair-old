@@ -18,12 +18,12 @@ const allItems = [
 ];
 
 const yzaltSewerRatFur = (player) => {
-  if(!npc.$$room.npcLoader.checkPlayerHeldItem(player, SEWERRAT_FUR, 'right')) return 'That fur does not belong to you.';
+  if(!player.$$room.npcLoader.checkPlayerHeldItem(player, SEWERRAT_FUR, 'right')) return 'That fur does not belong to you.';
 
   if(player.rightHand.stats.armorClass > 7) return 'You have already improved that fur!';
 
-  if(npc.$$room.npcLoader.checkPlayerHeldItemBothHands(player, SEWERRAT_FUR)) {
-    npc.$$room.npcLoader.takePlayerItem(player, SEWERRAT_FUR, 'left');
+  if(player.$$room.npcLoader.checkPlayerHeldItemBothHands(player, SEWERRAT_FUR)) {
+    player.$$room.npcLoader.takePlayerItem(player, SEWERRAT_FUR, 'left');
 
     player.rightHand.stats.armorClass += 3;
     player.rightHand.stats.fireResist += 10;
@@ -36,12 +36,12 @@ const yzaltSewerRatFur = (player) => {
 };
 
 const yzaltStrawRobe = (player) => {
-  if(!npc.$$room.npcLoader.checkPlayerHeldItem(player, STRAW_ROBE, 'right')) return 'That robe does not belong to you.';
+  if(!player.$$room.npcLoader.checkPlayerHeldItem(player, STRAW_ROBE, 'right')) return 'That robe does not belong to you.';
 
   if(player.rightHand.stats.armorClass > 2) return 'You have already improved that robe!';
 
-  if(npc.$$room.npcLoader.checkPlayerHeldItemBothHands(player, STRAW_ROBE)) {
-    npc.$$room.npcLoader.takePlayerItem(player, STRAW_ROBE, 'left');
+  if(player.$$room.npcLoader.checkPlayerHeldItemBothHands(player, STRAW_ROBE)) {
+    player.$$room.npcLoader.takePlayerItem(player, STRAW_ROBE, 'left');
 
     player.rightHand.stats.armorClass += 1;
     player.rightHand.stats.iceResist += 20;
@@ -54,12 +54,12 @@ const yzaltStrawRobe = (player) => {
 };
 
 const yzaltRatGuardAxe = (player) => {
-  if(!npc.$$room.npcLoader.checkPlayerHeldItem(player, RATGUARD_AXE, 'right')) return 'That axe does not belong to you.';
+  if(!player.$$room.npcLoader.checkPlayerHeldItem(player, RATGUARD_AXE, 'right')) return 'That axe does not belong to you.';
 
   if(player.rightHand.minDamage > 5) return 'You have already improved that axe!';
 
-  if(npc.$$room.npcLoader.checkPlayerHeldItemBothHands(player, RATGUARD_AXE)) {
-    npc.$$room.npcLoader.takePlayerItem(player, RATGUARD_AXE, 'left');
+  if(player.$$room.npcLoader.checkPlayerHeldItemBothHands(player, RATGUARD_AXE)) {
+    player.$$room.npcLoader.takePlayerItem(player, RATGUARD_AXE, 'left');
 
     player.rightHand.minDamage += 5;
     player.rightHand.maxDamage += 5;
@@ -71,12 +71,12 @@ const yzaltRatGuardAxe = (player) => {
 };
 
 const yzaltFungusCloak = (player) => {
-  if(!npc.$$room.npcLoader.checkPlayerHeldItem(player, FUNGUS_CLOAK, 'right')) return 'That cloak does not belong to you.';
+  if(!player.$$room.npcLoader.checkPlayerHeldItem(player, FUNGUS_CLOAK, 'right')) return 'That cloak does not belong to you.';
 
   if(player.rightHand.stats.armorClass > 2) return 'You have already improved that cloak!';
 
-  if(npc.$$room.npcLoader.checkPlayerHeldItemBothHands(player, FUNGUS_CLOAK)) {
-    npc.$$room.npcLoader.takePlayerItem(player, FUNGUS_CLOAK, 'left');
+  if(player.$$room.npcLoader.checkPlayerHeldItemBothHands(player, FUNGUS_CLOAK)) {
+    player.$$room.npcLoader.takePlayerItem(player, FUNGUS_CLOAK, 'left');
 
     player.rightHand.stats.armorClass += 1;
     player.rightHand.stats.defense += 1;
@@ -90,12 +90,12 @@ const yzaltFungusCloak = (player) => {
 };
 
 const yzaltRatGuardFur = (player) => {
-  if(!npc.$$room.npcLoader.checkPlayerHeldItem(player, RATGUARD_FUR, 'right')) return 'That fur does not belong to you.';
+  if(!player.$$room.npcLoader.checkPlayerHeldItem(player, RATGUARD_FUR, 'right')) return 'That fur does not belong to you.';
 
   if(player.rightHand.stats.armorClass > 10) return 'You have already improved that fur!';
 
-  if(npc.$$room.npcLoader.checkPlayerHeldItemBothHands(player, RATGUARD_FUR)) {
-    npc.$$room.npcLoader.takePlayerItem(player, RATGUARD_FUR, 'left');
+  if(player.$$room.npcLoader.checkPlayerHeldItemBothHands(player, RATGUARD_FUR)) {
+    player.$$room.npcLoader.takePlayerItem(player, RATGUARD_FUR, 'left');
 
     player.rightHand.stats.armorClass += 5;
     player.rightHand.stats.fireResist += 20;
