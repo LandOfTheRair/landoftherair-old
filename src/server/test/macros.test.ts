@@ -11,7 +11,7 @@ test('All macro metadata blobs have the correct syntax', async t => {
     if(includes(command, 'index')) return;
     const cmd = require(command);
     const meta = cmd[Object.keys(cmd)[0]].macroMetadata;
-    console.log(meta.name, meta.requiresLearn)
+    meta.requiresLearn = !meta.requiresBaseClass && includes(command, 'spell');
     if(!meta.name || !meta.requiresLearn) return;
 
     t.false(includes(meta.name, ' '), `${meta.name} has a space in it`);

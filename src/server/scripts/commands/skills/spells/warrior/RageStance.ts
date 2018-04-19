@@ -8,7 +8,7 @@ import { RageStance as CastEffect } from '../../../../../effects/stances/RageSta
 export class RageStance extends Skill {
 
   static macroMetadata = {
-    name: 'Rage Stance',
+    name: 'RageStance',
     macro: 'stance rage',
     icon: 'swords-power',
     color: '#fff',

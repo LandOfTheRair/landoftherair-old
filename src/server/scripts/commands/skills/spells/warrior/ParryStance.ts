@@ -8,7 +8,7 @@ import { ParryStance as CastEffect } from '../../../../../effects/stances/ParryS
 export class ParryStance extends Skill {
 
   static macroMetadata = {
-    name: 'Parry Stance',
+    name: 'ParryStance',
     macro: 'stance parry',
     icon: 'surrounded-shield',
     color: '#fff',

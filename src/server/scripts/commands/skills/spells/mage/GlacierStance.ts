@@ -8,7 +8,7 @@ import { GlacierStance as CastEffect } from '../../../../../effects/stances/Glac
 export class GlacierStance extends Skill {
 
   static macroMetadata = {
-    name: 'Glacier Stance',
+    name: 'GlacierStance',
     macro: 'stance glacier',
     icon: 'frozen-orb',
     color: '#000080',

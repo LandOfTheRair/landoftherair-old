@@ -8,7 +8,7 @@ import { TauntStance as CastEffect } from '../../../../../effects/stances/TauntS
 export class TauntStance extends Skill {
 
   static macroMetadata = {
-    name: 'Taunt Stance',
+    name: 'TauntStance',
     macro: 'stance taunt',
     icon: 'enrage',
     color: '#fff',
