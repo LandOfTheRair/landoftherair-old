@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { Logger } from '../../../logger';
 
 export class PartyJoin extends Command {
 
@@ -17,7 +16,6 @@ export class PartyJoin extends Command {
     const party = room.partyManager.getPartyByName(partyName);
     if(!party) return player.sendClientMessage('That party doesn\'t exist.');
     if(!party.leader) {
-      Logger.error(new Error('Party does not have a leader somehow?'), party);
       player.sendClientMessage('That party doesn\'t have a leader. Not sure how this happened.');
       return;
     }
