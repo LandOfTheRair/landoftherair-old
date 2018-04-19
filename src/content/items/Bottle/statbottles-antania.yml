@@ -1,7 +1,7 @@
 
 
 - name: Antanian Strength Potion
-  desc: "a small bottle filled with brown fluid. It smells like a tree"
+  desc: "a small bottle filled with brown fluid. It smells faintly like a tree"
   extendedDesc: "a potion of strength"
   sprite: 151
   effect:
@@ -11,7 +11,7 @@
   value: 5000
 
 - name: Antanian Agility Potion
-  desc: "a small bottle filled with dark-yellow fluid. It smells like feathers"
+  desc: "a small bottle filled with dark-yellow fluid. It smells faintly like feathers"
   extendedDesc: "a potion of agility"
   sprite: 157
   effect:
@@ -21,7 +21,7 @@
   value: 2000
 
 - name: Antanian Dexterity Potion
-  desc: "a small bottle filled with yellow fluid. It smells like apples"
+  desc: "a small bottle filled with yellow fluid. It smells faintly like apples"
   extendedDesc: "a potion of dexterity"
   sprite: 150
   effect:
@@ -31,7 +31,7 @@
   value: 3500
 
 - name: Antanian Intelligence Potion
-  desc: "a small bottle filled with puce liquid. It smells like a root"
+  desc: "a small bottle filled with puce liquid. It smells faintly like a root"
   extendedDesc: "a potion of intelligence"
   sprite: 158
   effect:
@@ -41,7 +41,7 @@
   value: 5000
 
 - name: Antanian Wisdom Potion
-  desc: "a small bottle filled with teal. It smells like a herbs"
+  desc: "a small bottle filled with teal. It smells faintly like herbs"
   extendedDesc: "a potion of wisdom"
   sprite: 156
   effect:
@@ -51,7 +51,7 @@
   value: 3000
 
 - name: Antanian Willpower Potion
-  desc: "a small bottle filled with orange fluid. It smells like mushrooms"
+  desc: "a small bottle filled with orange fluid. It smells faintly like mushrooms"
   extendedDesc: "a potion of willpower"
   sprite: 154
   effect:
@@ -61,7 +61,7 @@
   value: 10000
 
 - name: Antanian Constitution Potion
-  desc: "a small bottle filled with crimson fluid. It smells like cherries"
+  desc: "a small bottle filled with crimson fluid. It smells faintly like cherries"
   extendedDesc: "a potion of constitution"
   sprite: 153
   effect:
@@ -71,7 +71,7 @@
   value: 10000
 
 - name: Antanian Luck Potion
-  desc: "a small bottle filled with green fluid. It smells like clovers"
+  desc: "a small bottle filled with green fluid. It smells faintly like clovers"
   extendedDesc: "a potion of luck"
   sprite: 152
   effect:
@@ -81,7 +81,7 @@
   value: 100000
 
 - name: Antanian Charisma Potion
-  desc: "a small bottle filled with purple fluid. It smells like flowers"
+  desc: "a small bottle filled with purple fluid. It smells faintly like flowers"
   extendedDesc: "a potion of charisma"
   sprite: 155
   effect:
