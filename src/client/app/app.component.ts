@@ -8,7 +8,7 @@ import { MacroService, Macro } from './macros.service';
 
 import * as macicons from '../macicons/macicons.json';
 
-import { includes, isNull, cloneDeep, get } from 'lodash';
+import { includes, isNull, cloneDeep, get, startCase } from 'lodash';
 import { AuthService } from './auth.service';
 import { AssetService } from './asset.service';
 import { SilverPurchase } from '../../shared/models/account';
@@ -625,6 +625,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.tour.start();
     });
+  }
+
+  public fixMacroName(name: string) {
+    return startCase(name);
   }
 
 }

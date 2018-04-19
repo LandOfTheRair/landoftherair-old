@@ -728,7 +728,7 @@
                       size="small"></app-icon>
           </div>
           <div class="col-6">
-            {{ macro }}
+            {{ fixMacroName(macro) }}
           </div>
           <div class="col-4">
             <div class="show-on-hover">
@@ -1255,7 +1255,7 @@
               [name]="macroService.allMacros[macro].icon"
               [bgColor]="macroService.allMacros[macro].background || '#ccc'"
               [fgColor]="macroService.allMacros[macro].foreground"
-              [tooltip]="macroService.allMacros[macro].name"
+              [tooltip]="fixMacroName(macroService.allMacros[macro].name)"
               (click)="selectMacroForSpot(macro)"
               size="nsmall"></app-icon>
   </div>
