@@ -8,7 +8,7 @@
   monsterClass: Beast
   stats: 13
   skillLevels:
-    Martial: 8
+    Martial: 6
   level: 16
 
   otherStats:
@@ -55,9 +55,9 @@
   alignment: Evil
   hostility: Always
   monsterClass: Beast
-  stats: 19
+  stats: 17
   skillLevels:
-    Martial: 10
+    Martial: 8
   level: 19
 
   otherStats:
@@ -107,9 +107,9 @@
   alignment: Evil
   hostility: Always
   monsterClass: Beast
-  stats: 17
+  stats: 15
   skillLevels:
-    Martial: 9
+    Martial: 7
   level: 19
 
   otherStats:
@@ -192,7 +192,7 @@
 
   traitLevels:
     StunningFist: 7
-    ForcefulStrike: 5
+    ForcefulStrike: 3
 
   gold:
     min: 31450
