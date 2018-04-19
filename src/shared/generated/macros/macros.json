@@ -31,22 +31,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show stats",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your stats and their base level in text form.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Show Skills",
             "macro": "show skills",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "See all of your skills and skill levels in text form.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Show Stats",
+            "macro": "show stats",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your stats and their base level in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -122,22 +122,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Charge",
-            "macro": "charge",
-            "icon": "running-ninja",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Backstab",
             "macro": "backstab",
             "icon": "backstab",
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Backstab your target from the shadows. Requires Thievery skill 3.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Charge",
+            "macro": "charge",
+            "icon": "running-ninja",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -163,22 +163,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Mug",
-            "macro": "mug",
-            "icon": "hooded-assassin",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Mug your target, dealing damage and stealing from them. Requires Thievery skill 7.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Kick",
             "macro": "kick",
             "icon": "barefoot",
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Physically attack a target with your boots.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Mug",
+            "macro": "mug",
+            "icon": "hooded-assassin",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Mug your target, dealing damage and stealing from them. Requires Thievery skill 7.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -276,6 +276,17 @@
             "requiresLearn": true
         },
         {
+            "name": "Dispel",
+            "macro": "cast dispel",
+            "icon": "broken-shield",
+            "color": "#600",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Remove a buff from a target. Cost: 25 MP",
+            "skillTPCost": 20,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "HolyFire",
             "macro": "cast holyfire",
             "icon": "fireflake",
@@ -284,6 +295,16 @@
             "tooltipDesc": "Inflict fire damage on a single target. Cost: 15 MP",
             "skillTPCost": 10,
             "requireSkillLevel": 15,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Light",
+            "macro": "cast light",
+            "icon": "candle-light",
+            "color": "#aa0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Clear darkness near the target (3x3). Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -297,16 +318,6 @@
             "tooltipDesc": "Shield fire damage for your party. Cost: 30 MP / target",
             "requireSkillLevel": 13,
             "skillTPCost": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Light",
-            "macro": "cast light",
-            "icon": "candle-light",
-            "color": "#aa0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Clear darkness near the target (3x3). Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -367,6 +378,17 @@
             "color": "#080",
             "mode": "autoActivate",
             "tooltipDesc": "Revive a single player on your tile. Cost: 50 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Secondwind",
+            "macro": "cast secondwind",
+            "icon": "wing-cloak",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Prevent losing gear on death. Cost: 250 MP",
+            "skillTPCost": 20,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -432,106 +454,6 @@
             "requiresLearn": true
         },
         {
-            "name": "BarFire",
-            "macro": "cast barfire",
-            "icon": "rosa-shield",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield fire damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "BarFrost",
-            "macro": "cast barfrost",
-            "icon": "rosa-shield",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Darkness",
-            "macro": "cast darkness",
-            "icon": "dust-cloud",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "DarkVision",
-            "macro": "cast darkvision",
-            "icon": "angry-eyes",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See in the darkness. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Disease",
-            "macro": "cast disease",
-            "icon": "death-juice",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Identify",
-            "macro": "cast identify",
-            "icon": "uncertainty",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "tooltipDesc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Poison",
-            "macro": "cast poison",
-            "icon": "poison-gas",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Push",
-            "macro": "cast push",
-            "icon": "swirl-string",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Transmute",
-            "macro": "cast transmute",
-            "icon": "coins",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "tooltipDesc": "Convert the items on your current tile into gold. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "TrueSight",
-            "macro": "cast truesight",
-            "icon": "all-seeing-eye",
-            "color": "#00a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Absorption",
             "macro": "cast absorption",
             "icon": "magic-swirl",
@@ -551,6 +473,7 @@
             "color": "#0059bd",
             "mode": "lockActivation",
             "tooltipDesc": "Drain mana from a single target. Cost: 10 MP",
+            "requireSkillLevel": 15,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -571,6 +494,7 @@
             "color": "#af0000",
             "mode": "lockActivation",
             "tooltipDesc": "Drain health from a single target. Cost: 10 MP",
+            "requireSkillLevel": 15,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -749,17 +673,6 @@
             "requiresLearn": true
         },
         {
-            "name": "VolcanoStance",
-            "macro": "stance volcano",
-            "icon": "fire-silhouette",
-            "color": "#DC143C",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more offensive, increasing your offensive capabilities and doing fire damage on hit.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Teleport",
             "macro": "cast teleport",
             "icon": "teleport",
@@ -769,6 +682,17 @@
             "requireCharacterLevel": 20,
             "requireSkillLevel": 15,
             "skillTPCost": 20,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "VolcanoStance",
+            "macro": "stance volcano",
+            "icon": "fire-silhouette",
+            "color": "#DC143C",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more offensive, increasing your offensive capabilities and doing fire damage on hit.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -825,6 +749,17 @@
             "requiresLearn": true
         },
         {
+            "name": "EagleEye",
+            "macro": "cast eagleeye",
+            "icon": "dead-eye",
+            "color": "#f00",
+            "mode": "autoActivate",
+            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
+            "requireSkillLevel": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Set",
             "macro": "cast set",
             "icon": "quake-stomp",
@@ -855,13 +790,102 @@
             "requiresLearn": true
         },
         {
-            "name": "EagleEye",
-            "macro": "cast eagleeye",
-            "icon": "dead-eye",
-            "color": "#f00",
+            "name": "BarFire",
+            "macro": "cast barfire",
+            "icon": "rosa-shield",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield fire damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFrost",
+            "macro": "cast barfrost",
+            "icon": "rosa-shield",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Darkness",
+            "macro": "cast darkness",
+            "icon": "dust-cloud",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "DarkVision",
+            "macro": "cast darkvision",
+            "icon": "angry-eyes",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See in the darkness. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disease",
+            "macro": "cast disease",
+            "icon": "death-juice",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Identify",
+            "macro": "cast identify",
+            "icon": "uncertainty",
+            "color": "#665600",
             "mode": "autoActivate",
-            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
-            "requireSkillLevel": 10,
+            "tooltipDesc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Poison",
+            "macro": "cast poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Push",
+            "macro": "cast push",
+            "icon": "swirl-string",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Transmute",
+            "macro": "cast transmute",
+            "icon": "coins",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "tooltipDesc": "Convert the items on your current tile into gold. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "TrueSight",
+            "macro": "cast truesight",
+            "icon": "all-seeing-eye",
+            "color": "#00a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -954,6 +978,17 @@
             "requiresLearn": true
         },
         {
+            "name": "Sweep",
+            "macro": "art sweep",
+            "icon": "foot-trip",
+            "color": "#a00",
+            "mode": "autoActivate",
+            "tooltipDesc": "Attack multiple creatures on your tile with a kick attack.",
+            "requireSkillLevel": 13,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "TauntStance",
             "macro": "stance taunt",
             "icon": "enrage",
@@ -962,17 +997,6 @@
             "mode": "autoActivate",
             "tooltipDesc": "Become more boisterous, taunting foes but losing offense and defense. Requires weapon skill 10.",
             "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Sweep",
-            "macro": "art sweep",
-            "icon": "foot-trip",
-            "color": "#a00",
-            "mode": "autoActivate",
-            "tooltipDesc": "Attack multiple creatures on your tile with a kick attack.",
-            "requireSkillLevel": 13,
             "isSystem": true,
             "requiresLearn": true
         },
