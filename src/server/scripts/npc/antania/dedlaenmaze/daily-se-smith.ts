@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 import { sortBy } from 'lodash';
 
@@ -12,8 +11,8 @@ const DEDLAES_RING = 'Dedlaes Revive Bracers';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem('Smith Hammer');
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Breastplate');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem('Smith Hammer');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Breastplate');
 
   npc.recalculateStats();
 };
@@ -24,12 +23,12 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItem(player, VAMPIRE_HEART)) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, VAMPIRE_HEART)) {
 
         let indexes = [];
 
         [TURTLE_EGG, MINO_HORN, GHOST_PEARL].forEach(item => {
-          const foundIndexes = NPCLoader.getItemsFromPlayerSackByName(player, item);
+          const foundIndexes = npc.$$room.npcLoader.getItemsFromPlayerSackByName(player, item);
           if(foundIndexes.length === 0) return;
           indexes.push(foundIndexes[0]);
         });
@@ -38,10 +37,10 @@ export const responses = (npc: NPC) => {
 
         if(indexes.length !== 3) return 'You do not have all of the items I asked for!';
 
-        NPCLoader.takePlayerItem(player, VAMPIRE_HEART);
-        NPCLoader.takeItemsFromPlayerSack(player, indexes);
+        npc.$$room.npcLoader.takePlayerItem(player, VAMPIRE_HEART);
+        npc.$$room.npcLoader.takeItemsFromPlayerSack(player, indexes);
 
-        NPCLoader.loadItem(DEDLAES_RING)
+        npc.$$room.npcLoader.loadItem(DEDLAES_RING)
           .then(item => {
             player.setRightHand(item);
           });

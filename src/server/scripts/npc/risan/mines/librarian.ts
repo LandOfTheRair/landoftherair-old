@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const BOOK = 'Risan Miner Book';
 const HEART = 'Cyrena\'s Heart';
@@ -7,7 +6,7 @@ const HEART = 'Cyrena\'s Heart';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
 
   npc.recalculateStats();
 };
@@ -19,10 +18,10 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.takePlayerItem(player, HEART, 'right')) {
-        NPCLoader.takePlayerItem(player, HEART, 'right');
+      if(npc.$$room.npcLoader.takePlayerItem(player, HEART, 'right')) {
+        npc.$$room.npcLoader.takePlayerItem(player, HEART, 'right');
 
-        NPCLoader.loadItem(`Librarian ${player.baseClass} Amulet`)
+        npc.$$room.npcLoader.loadItem(`Librarian ${player.baseClass} Amulet`)
           .then(item => {
             player.setRightHand(item);
           });
@@ -30,7 +29,7 @@ export const responses = (npc: NPC) => {
         return `I'll be damned, the queen does exist. I can't offer you much, but I can offer you a fine bookmark from my collection.`;
       }
 
-      if(NPCLoader.checkPlayerHeldItemEitherHand(player, BOOK)) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, BOOK)) {
         return `Well hello! It seems you aren't here to pilfer all my books like the rest, judging by your taste in books.
         In fact, that novella details some very real EVENTS that are taking place right now.`;
       }

@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { NPCLoader } from '../../../helpers/character/npc-loader';
 
 export class GMSearchNPCs extends Command {
 
@@ -16,7 +15,7 @@ export class GMSearchNPCs extends Command {
 
     let items;
     try {
-      items = await NPCLoader.searchNPCs(npcName);
+      items = await player.$$room.npcLoader.searchNPCs(npcName);
     } catch(e) {
       return;
     }

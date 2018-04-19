@@ -5,7 +5,6 @@ import { toRoman } from 'roman-numerals';
 import { Logger } from '../../logger';
 import { AllNormalGearSlots, SkillClassNames } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
-import { NPCLoader } from '../../helpers/character/npc-loader';
 import { Revive } from '../../effects/cures/Revive';
 import { LearnAlchemy } from '../../quests/antania/Rylt/LearnAlchemy';
 import { SkillHelper } from '../../helpers/character/skill-helper';
@@ -44,7 +43,7 @@ export const TannerResponses = (npc: NPC) => {
 
         if(!corpse.tansFor) return;
 
-        NPCLoader.loadItem(corpse.tansFor)
+        player.$$room.npcLoader.loadItem(corpse.tansFor)
           .then(item => {
             item.setOwner(player);
             npc.$$room.addItemToGround(npc, item);
@@ -210,10 +209,10 @@ export const SmithResponses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      const indexes = NPCLoader.getItemsFromPlayerSackByName(player, ' Ore ', true);
+      const indexes = player.$$room.npcLoader.getItemsFromPlayerSackByName(player, ' Ore ', true);
       if(indexes.length === 0) return 'You don\'t have any ore!';
 
-      const allOre = NPCLoader.takeItemsFromPlayerSack(player, indexes);
+      const allOre = player.$$room.npcLoader.takeItemsFromPlayerSack(player, indexes);
 
       const [copper, silver, gold] = [
         allOre.reduce((prev, item) => prev + (includes(item.name, 'Copper') ? item.ounces : 0), 0),
@@ -319,7 +318,7 @@ export const AlchemistResponses = (npc: NPC) => {
 
       if(player.hasQuest(LearnAlchemy) && !isQuestComplete) {
 
-        if(NPCLoader.checkPlayerHeldItemEitherHand(player, 'Antanian Fungus Bread')) {
+        if(player.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, 'Antanian Fungus Bread')) {
           LearnAlchemy.updateProgress(player);
         }
 
@@ -376,7 +375,7 @@ export const AlchemistResponses = (npc: NPC) => {
         itemsRemoved++;
       });
 
-      NPCLoader.takeItemsFromPlayerSack(player, indexes);
+      player.$$room.npcLoader.takeItemsFromPlayerSack(player, indexes);
 
       if(itemsRemoved === 0) return 'I was not able to combine any bottles.';
 
@@ -914,7 +913,7 @@ export const HPDocResponses = (npc: NPC) => {
       const maxHpForTier = hpTiers[player.baseClass][npc.hpTier];
 
       if(playerBaseHp > maxHpForTier) return 'Too powerful! No help!';
-      if(!NPCLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
+      if(!player.$$room.npcLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
 
       let cost = calcRequiredGoldForNextHPMP(player, maxHpForTier, hpNormalizers[npc.hpTier], hpCosts[npc.hpTier]);
       let totalHPGained = 0;
@@ -992,7 +991,7 @@ export const MPDocResponses = (npc: NPC) => {
       const maxMpForTier = mpTiers[player.baseClass][npc.mpTier];
 
       if(playerBaseMp > maxMpForTier) return 'Too powerful! No help!';
-      if(!NPCLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
+      if(!player.$$room.npcLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
 
       let cost = calcRequiredGoldForNextHPMP(player, maxMpForTier, mpNormalizers[npc.mpTier], mpCosts[npc.mpTier]);
       let totalMPGained = 0;

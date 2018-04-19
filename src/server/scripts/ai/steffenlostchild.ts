@@ -1,6 +1,5 @@
 
 import { random, sample } from 'lodash';
-import { NPCLoader } from '../../helpers/character/npc-loader';
 import { Player } from '../../../shared/models/player';
 import { MoveHelper } from '../../helpers/character/move-helper';
 import { DefaultAIBehavior } from './default';
@@ -21,7 +20,7 @@ export class SteffenLostChildAIBehavior extends DefaultAIBehavior {
 
     let target: Player = null;
     targetsInRange.forEach((possibleTarget: Player) => {
-      if(!NPCLoader.checkPlayerHeldItemEitherHand(possibleTarget, 'Steffen LostChild Doll')) return;
+      if(!npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(possibleTarget, 'Steffen LostChild Doll')) return;
       target = possibleTarget;
     });
 

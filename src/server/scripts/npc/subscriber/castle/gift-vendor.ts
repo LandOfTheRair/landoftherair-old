@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 import { VendorResponses } from '../../common-responses';
 
 export const setup = async (npc: NPC) => {
@@ -15,10 +14,10 @@ export const setup = async (npc: NPC) => {
     'Antanian Daily Warrior Rune Scroll RNG Box'
   ];
 
-  await NPCLoader.loadDailyVendorItems(npc, dailyItems);
+  await npc.$$room.npcLoader.loadDailyVendorItems(npc, dailyItems);
 
-  npc.rightHand = await NPCLoader.loadItem('Antanian Gem RNG Box');
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem('Antanian Gem RNG Box');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
 
   npc.recalculateStats();
 };

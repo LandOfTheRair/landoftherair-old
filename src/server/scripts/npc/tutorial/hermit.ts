@@ -1,12 +1,11 @@
 import { NPC } from '../../../../shared/models/npc';
-import { NPCLoader } from '../../../helpers/character/npc-loader';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.leftHand = await NPCLoader.loadItem('Tutorial Yeti Skull');
-  npc.rightHand = await NPCLoader.loadItem('Tutorial Key');
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.leftHand = await npc.$$room.npcLoader.loadItem('Tutorial Yeti Skull');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem('Tutorial Key');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
 
   npc.recalculateStats();
 };
@@ -16,9 +15,9 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
-      if(NPCLoader.checkPlayerHeldItem(player, 'Tutorial Yeti Skull')) {
-        NPCLoader.takePlayerItem(player, 'Tutorial Yeti Skull');
-        NPCLoader.givePlayerItem(player, 'Tutorial Key');
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, 'Tutorial Yeti Skull')) {
+        npc.$$room.npcLoader.takePlayerItem(player, 'Tutorial Yeti Skull');
+        npc.$$room.npcLoader.givePlayerItem(player, 'Tutorial Key');
         return `Ah, thank you ${player.name}! I see you've brought me the skull of the feared yeti. 
         Here, you can have this key. Now go out into the world and do great things!`;
       }
@@ -67,7 +66,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('profession')
     .set('syntax', ['profession'])
     .set('logic', (args, { player }) => {
-      NPCLoader.givePlayerEffect(player, 'TrueSight', { duration: 100 });
+      npc.$$room.npcLoader.givePlayerEffect(player, 'TrueSight', { duration: 100 });
       return `Here you go! Best of luck on finding them. They're holed up right outside here, a bit north. See if you can tell where they are! 
       [Hint: Check your status bar, below the map, to see your buffs!]`;
     });

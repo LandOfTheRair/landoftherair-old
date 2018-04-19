@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const TONWIN_SWORD = 'Tonwin Sword';
 
@@ -7,7 +6,7 @@ export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
   npc.gainBaseStat('stealth', 20);
 
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -20,8 +19,8 @@ export const responses = (npc: NPC) => {
 
       if(player.alignment === 'Neutral') return 'You are already a disciple of neutrality!';
 
-      if(NPCLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
-        NPCLoader.takePlayerItem(player, TONWIN_SWORD);
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
+        npc.$$room.npcLoader.takePlayerItem(player, TONWIN_SWORD);
 
         player.changeAlignment('Neutral');
 

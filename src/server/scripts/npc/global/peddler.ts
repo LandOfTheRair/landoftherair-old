@@ -1,12 +1,11 @@
 import { NPC } from '../../../../shared/models/npc';
-import { NPCLoader } from '../../../helpers/character/npc-loader';
 import { RandomlyShouts, PeddlerResponses } from '../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem(npc.peddleItem);
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem(npc.peddleItem);
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 

@@ -1,12 +1,11 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 import { DailyKillApprentices, DailyKillRebels, DailyKillRenegades } from '../../../../quests';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -24,7 +23,7 @@ export const responses = (npc: NPC) => {
         return 'Thanks, but you\'ve done all you can today. Come back tomorrow - I\'m sure there\'ll be work for you.';
       }
 
-      const questTodayIndex = NPCLoader.getCurrentDailyDayOfYear(player) % allQuests.length;
+      const questTodayIndex = npc.$$room.npcLoader.getCurrentDailyDayOfYear(player) % allQuests.length;
       const questToday = allQuests[questTodayIndex];
 
       if(player.hasQuest(questToday)) {

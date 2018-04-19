@@ -1,13 +1,12 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const TITANIUM = 'Tower Titanium Chunk';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem('Tower Halberd Weak');
-  npc.gear.Armor = await NPCLoader.loadItem('Tower Breastplate');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem('Tower Halberd Weak');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Tower Breastplate');
   npc.recalculateStats();
 };
 
@@ -36,7 +35,7 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItem(player, TITANIUM, 'left')) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, TITANIUM, 'left')) {
 
         const right = player.rightHand;
         if(!right) return 'Please hold an item in your right hand.';
@@ -44,7 +43,7 @@ export const responses = (npc: NPC) => {
         if(right.stats.offense < 1) return 'That item is too weak for me to upgrade!';
         if(right.stats.offense > 1) return 'That item is too strong for me to upgrade!';
 
-        NPCLoader.takePlayerItem(player, TITANIUM, 'left');
+        npc.$$room.npcLoader.takePlayerItem(player, TITANIUM, 'left');
 
         right.stats.offense += 1;
         player.recalculateStats();

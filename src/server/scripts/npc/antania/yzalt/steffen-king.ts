@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 import { SteffenFindSedgwick } from '../../../../quests/antania/Yzalt/SteffenFindSedgwick';
 import { KillRanata } from '../../../../quests/antania/Yzalt/KillRanata';
 
@@ -10,7 +9,7 @@ export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
   npc.allegiance = 'Royalty';
 
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -47,7 +46,7 @@ export const responses = (npc: NPC) => {
 
           KillRanata.completeFor(player);
 
-          NPCLoader.loadItem(STEFFEN_HELM)
+          npc.$$room.npcLoader.loadItem(STEFFEN_HELM)
             .then(item => {
               player.setRightHand(item);
             });

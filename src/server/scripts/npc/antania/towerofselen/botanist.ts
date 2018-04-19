@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const FLOWER = 'Tower Goblood';
 const QUESTNAME = 'Tower Botanist Regeneration';
@@ -7,8 +6,8 @@ const QUESTNAME = 'Tower Botanist Regeneration';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem(FLOWER);
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem(FLOWER);
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
 
   npc.recalculateStats();
 };
@@ -26,11 +25,11 @@ export const responses = (npc: NPC) => {
 
       if(player.hasPermanentCompletionFor(QUESTNAME)) return `You've already brought me a flower and gem, ${player.name}!`;
 
-      if(NPCLoader.checkPlayerHeldItemEitherHand(player, FLOWER)
-      && NPCLoader.checkPlayerHeldItemEitherHand(player, GEM)) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, FLOWER)
+      && npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, GEM)) {
 
-        NPCLoader.takePlayerItemFromEitherHand(player, FLOWER);
-        NPCLoader.takePlayerItemFromEitherHand(player, GEM);
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, FLOWER);
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, GEM);
 
         player.gainStat('hpregen', 1);
         player.gainStat('mpregen', 1);

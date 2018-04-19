@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 import { VendorResponses } from '../../common-responses';
 
 export const setup = async (npc: NPC) => {
@@ -18,10 +17,10 @@ export const setup = async (npc: NPC) => {
     'Antanian Pint of Water'
   ];
 
-  NPCLoader.loadVendorItems(npc, vendorItems);
+  npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);
 
-  npc.rightHand = await NPCLoader.loadItem('Instant Heal Bottle');
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem('Instant Heal Bottle');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 

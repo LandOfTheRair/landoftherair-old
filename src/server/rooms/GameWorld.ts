@@ -76,7 +76,8 @@ export class GameWorld extends Room<GameState> {
   public itemCreator: ItemCreator;
   public teleportHelper: TeleportHelper;
   public skillTreeHelper: SkillTreeHelper;
-  private subscriptionHelper: SubscriptionHelper;
+  public subscriptionHelper: SubscriptionHelper;
+  public npcLoader: NPCLoader;
 
   public get groundItemCount(): number {
     return this.groundHelper.numberOfItems;
@@ -182,6 +183,7 @@ export class GameWorld extends Room<GameState> {
     this.teleportHelper = new TeleportHelper(this);
     this.skillTreeHelper = new SkillTreeHelper();
     this.subscriptionHelper = new SubscriptionHelper();
+    this.npcLoader = new NPCLoader();
 
     this.setPatchRate(1000);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
@@ -778,7 +780,7 @@ export class GameWorld extends Room<GameState> {
 
     npcs.forEach(async npcData => {
       const data: any = npcData.properties || {};
-      data.name = npcData.name || NPCLoader.determineNPCName(npcData);
+      data.name = npcData.name || this.npcLoader.determineNPCName(npcData);
       data.sprite = npcData.gid - this.state.map.tilesets[3].firstgid;
       data.x = npcData.x / 64;
       data.y = (npcData.y / 64) - 1;
@@ -801,7 +803,7 @@ export class GameWorld extends Room<GameState> {
         Logger.error(e);
       }
 
-      if(!npc.name) NPCLoader.determineNPCName(npc);
+      if(!npc.name) this.npcLoader.determineNPCName(npc);
 
       normalNPCSpawner.addNPC(npc);
     });

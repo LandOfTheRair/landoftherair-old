@@ -15,28 +15,28 @@ const isProd = process.env.NODE_ENV === 'production';
 
 export class NPCLoader {
 
-  static cache = new Cache({ stdTTL: 600 });
+  cache = new Cache({ stdTTL: 600 });
 
-  static itemCreator = new ItemCreator();
+  itemCreator = new ItemCreator();
 
-  static searchNPCs(name: string): Promise<NPC[]> {
+  searchNPCs(name: string): Promise<NPC[]> {
     const regex = new RegExp(`.*${name}.*`, 'i');
     return DB.$npcs.find({ $or: [{ npcId: regex }, { name: regex }] }).toArray();
   }
 
-  static async loadNPCData(npcId) {
+  async loadNPCData(npcId) {
 
-    const data = NPCLoader.cache.get(npcId);
+    const data = this.cache.get(npcId);
     if(data) return data;
 
     const npc = await DB.$npcs.findOne({ npcId });
     if(!npc) throw new Error(`NPC ${npcId} does not exist.`);
 
-    if(isProd) NPCLoader.cache.set(npcId, npc);
+    if(isProd) this.cache.set(npcId, npc);
     return npc;
   }
 
-  static determineNPCName(npc: NPC) {
+  determineNPCName(npc: NPC) {
     let func = 'human';
 
     switch(npc.allegiance) {
@@ -53,15 +53,15 @@ export class NPCLoader {
     return species[func](sample(['male', 'female']));
   }
 
-  static loadItem(item): Promise<Item> {
+  loadItem(item): Promise<Item> {
     return this.itemCreator.getItemByName(item);
   }
 
-  private static async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>): Promise<Item[]> {
+  private async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>): Promise<Item[]> {
     npc.vendorItems = npc.vendorItems || [];
 
     const loadedItems = await Promise.all(items.map(async ({ name, valueMult }) => {
-      const item = await NPCLoader.loadItem(name);
+      const item = await this.loadItem(name);
 
       item.value = Math.floor((valueMult || 1) * item.value);
 
@@ -73,7 +73,7 @@ export class NPCLoader {
     return loadedItems;
   }
 
-  static async loadVendorItems(npc: NPC, items: any[]) {
+  async loadVendorItems(npc: NPC, items: any[]) {
     items = items.map(item => {
       if(isString(item)) return { name: item, valueMult: 1 };
       return item;
@@ -82,7 +82,7 @@ export class NPCLoader {
     return this._loadVendorItems(npc, items);
   }
 
-  static async loadDailyVendorItems(npc: NPC, items: any[]) {
+  async loadDailyVendorItems(npc: NPC, items: any[]) {
     items = items.map(item => {
       if(isString(item)) return { name: item, valueMult: 1 };
       return item;
@@ -98,30 +98,30 @@ export class NPCLoader {
     return dailyItems;
   }
 
-  static checkPlayerHeldItemEitherHand(player: Player, itemName: string) {
+  checkPlayerHeldItemEitherHand(player: Player, itemName: string) {
     return player.hasHeldItem(itemName, 'right') || player.hasHeldItem(itemName, 'left');
   }
 
-  static checkPlayerHeldItemBothHands(player: Player, itemName: string) {
+  checkPlayerHeldItemBothHands(player: Player, itemName: string) {
     return player.hasHeldItem(itemName, 'right') && player.hasHeldItem(itemName, 'left');
   }
 
-  static takePlayerItemFromEitherHand(player: Player, itemName: string) {
+  takePlayerItemFromEitherHand(player: Player, itemName: string) {
     if(this.takePlayerItem(player, itemName, 'right')) return;
     this.takePlayerItem(player, itemName, 'left');
   }
 
-  static checkPlayerHeldItem(player: Player, itemName: string, hand: 'left'|'right' = 'right') {
+  checkPlayerHeldItem(player: Player, itemName: string, hand: 'left'|'right' = 'right') {
     return player.hasHeldItem(itemName, hand);
   }
 
-  static takePlayerItem(player: Player, itemName: string, hand: 'left'|'right' = 'right'): boolean {
+  takePlayerItem(player: Player, itemName: string, hand: 'left'|'right' = 'right'): boolean {
     if(!player[`${hand}Hand`] || player[`${hand}Hand`].name !== itemName) return false;
     player[`set${capitalize(hand)}Hand`](null);
     return true;
   }
 
-  static async givePlayerItem(player: Player, itemName: string, hand: 'left'|'right' = 'right', setOwner = true) {
+  async givePlayerItem(player: Player, itemName: string, hand: 'left'|'right' = 'right', setOwner = true) {
     const item = await this.loadItem(itemName);
     if(setOwner) {
       item.setOwner(player);
@@ -129,11 +129,11 @@ export class NPCLoader {
     player[`set${capitalize(hand)}Hand`](item);
   }
 
-  static givePlayerEffect(player: Player, effectName: string, { potency, duration }: any = {}) {
+  givePlayerEffect(player: Player, effectName: string, { potency, duration }: any = {}) {
     player.applyEffect(new Effects[effectName]({ name: effectName, potency, duration }));
   }
 
-  static getItemsFromPlayerSackByName(player: Player, name, partial = false) {
+  getItemsFromPlayerSackByName(player: Player, name, partial = false) {
     const indexes = [];
 
     for(let i = 0; i < player.sack.allItems.length; i++) {
@@ -153,11 +153,11 @@ export class NPCLoader {
     return indexes;
   }
 
-  static takeItemsFromPlayerSack(player: Player, sackIndexes = []): Item[] {
+  takeItemsFromPlayerSack(player: Player, sackIndexes = []): Item[] {
     return player.sack.takeItemFromSlots(sackIndexes);
   }
 
-  static getCurrentDailyDayOfYear(player: Player): number {
+  getCurrentDailyDayOfYear(player: Player): number {
 
     const now = new Date();
     const start = new Date(now.getFullYear(), 0, 0);
@@ -165,10 +165,10 @@ export class NPCLoader {
     const oneDay = 1000 * 60 * 60 * 24;
     const day = Math.floor(diff / oneDay);
 
-    return day + NPCLoader.getDailyOffset(player);
+    return day + this.getDailyOffset(player);
   }
 
-  static getDailyOffset(player: Player): number {
+  getDailyOffset(player: Player): number {
     return player.name.charCodeAt(0);
   }
 }

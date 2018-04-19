@@ -1,13 +1,12 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const RENEGADE_BOOK = 'Rylt Renegade Book';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem(RENEGADE_BOOK);
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem(RENEGADE_BOOK);
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -17,10 +16,10 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItem(player, RENEGADE_BOOK)) {
-        NPCLoader.takePlayerItem(player, RENEGADE_BOOK);
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, RENEGADE_BOOK)) {
+        npc.$$room.npcLoader.takePlayerItem(player, RENEGADE_BOOK);
 
-        NPCLoader.loadItem('Antanian Health Potion')
+        npc.$$room.npcLoader.loadItem('Antanian Health Potion')
           .then(item => {
             item.binds = true;
             player.setRightHand(item);

@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const FLOWER = 'Mines Caveflower';
 const QUESTNAME = 'Risan Mines Botanist Regeneration';
@@ -7,8 +6,8 @@ const QUESTNAME = 'Risan Mines Botanist Regeneration';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.leftHand = await NPCLoader.loadItem(FLOWER);
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.leftHand = await npc.$$room.npcLoader.loadItem(FLOWER);
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
 
   npc.recalculateStats();
 };
@@ -26,10 +25,10 @@ export const responses = (npc: NPC) => {
 
       const CLOAK = `Forest Spirit ${player.baseClass} Cloak`;
 
-      if(NPCLoader.checkPlayerHeldItemEitherHand(player, FLOWER)
-      && NPCLoader.checkPlayerHeldItemEitherHand(player, CLOAK)) {
-        NPCLoader.takePlayerItemFromEitherHand(player, FLOWER);
-        NPCLoader.takePlayerItemFromEitherHand(player, CLOAK);
+      if(npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, FLOWER)
+      && npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, CLOAK)) {
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, FLOWER);
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, CLOAK);
 
         player.gainStat('hpregen', 1);
         player.gainStat('mpregen', 1);

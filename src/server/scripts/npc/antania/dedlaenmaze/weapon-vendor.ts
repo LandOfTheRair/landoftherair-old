@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 import { VendorResponses } from '../../common-responses';
 import { sample } from 'lodash';
 
@@ -18,10 +17,10 @@ export const setup = async (npc: NPC) => {
     'Antanian Halberd'
   ];
 
-  NPCLoader.loadVendorItems(npc, vendorItems);
+  npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);
 
-  npc.rightHand = await NPCLoader.loadItem(sample(vendorItems));
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Cloak');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem(sample(vendorItems));
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Cloak');
   npc.recalculateStats();
 };
 

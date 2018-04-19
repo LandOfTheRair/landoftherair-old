@@ -2,7 +2,6 @@
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { merge } from 'lodash';
-import { NPCLoader } from '../../../helpers/character/npc-loader';
 
 export class GMSpawnNPC extends Command {
 
@@ -45,7 +44,7 @@ export class GMSpawnNPC extends Command {
     const npcOpts = merge(defaultNpc, mergeObj.npc || {});
     const { npcId } = npcOpts;
 
-    const npcData = await NPCLoader.loadNPCData(npcId);
+    const npcData = await player.$$room.npcLoader.loadNPCData(npcId);
 
     if(!npcData) return player.sendClientMessage('That npcId is not valid!');
 

@@ -1,5 +1,4 @@
 
-import { NPCLoader } from '../helpers/character/npc-loader';
 import { LootTable } from 'lootastic';
 
 import { sample, random, extend, isNumber, isString, pull, every, compact, some, get, isArray } from 'lodash';
@@ -120,11 +119,11 @@ export class Spawner {
 
   private async chooseItemFrom(choices: string[]|any[]) {
     if(!choices) return null;
-    if(isString(choices)) return NPCLoader.loadItem(choices);
+    if(isString(choices)) return this.room.npcLoader.loadItem(choices);
     const itemChooser = new LootTable(choices);
     const item = itemChooser.chooseWithReplacement(1);
 
-    if(item && item[0] && item[0] !== 'none') return NPCLoader.loadItem(item[0]);
+    if(item && item[0] && item[0] !== 'none') return this.room.npcLoader.loadItem(item[0]);
     return null;
   }
 
@@ -156,7 +155,7 @@ export class Spawner {
       }
     }
 
-    const npcData = await NPCLoader.loadNPCData(chosenNPC);
+    const npcData = await this.room.npcLoader.loadNPCData(chosenNPC);
 
     if(!npcData) {
       Logger.error(`No valid spawn for spawner ${this.constructor.name} at ${this.x}, ${this.y} on ${this.map}`);
@@ -195,7 +194,7 @@ export class Spawner {
         if(!name) return null;
 
         try {
-          return await NPCLoader.loadItem(name);
+          return await this.room.npcLoader.loadItem(name);
         } catch(e) {
           Logger.error(new Error(`Could not load item ${name} for ${npcData.name}.`));
         }
@@ -212,7 +211,7 @@ export class Spawner {
         if(!name) return null;
 
         try {
-          return await NPCLoader.loadItem(name);
+          return await this.room.npcLoader.loadItem(name);
         } catch(e) {
           Logger.error(new Error(`Could not load item ${name} for ${npcData.name}.`));
         }
@@ -242,7 +241,7 @@ export class Spawner {
     npcData.map = this.map;
 
     if(!npcData.name) {
-      npcData.name = NPCLoader.determineNPCName(npcData);
+      npcData.name = this.room.npcLoader.determineNPCName(npcData);
     }
 
     if(npcData.gold) {

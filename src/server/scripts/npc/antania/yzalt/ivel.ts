@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const DEER_CORPSE = 'deer corpse';
 
@@ -7,7 +6,7 @@ export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
   npc.gainBaseStat('stealth', 20);
 
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -20,11 +19,11 @@ export const responses = (npc: NPC) => {
 
       if(player.alignment === 'Evil') return 'You are already a disciple of evil!';
 
-      if((NPCLoader.checkPlayerHeldItem(player, DEER_CORPSE, 'right')
-        || NPCLoader.checkPlayerHeldItem(player, DEER_CORPSE, 'left'))) {
+      if((npc.$$room.npcLoader.checkPlayerHeldItem(player, DEER_CORPSE, 'right')
+        || npc.$$room.npcLoader.checkPlayerHeldItem(player, DEER_CORPSE, 'left'))) {
 
-        NPCLoader.takePlayerItem(player, DEER_CORPSE, 'right');
-        NPCLoader.takePlayerItem(player, DEER_CORPSE, 'left');
+        npc.$$room.npcLoader.takePlayerItem(player, DEER_CORPSE, 'right');
+        npc.$$room.npcLoader.takePlayerItem(player, DEER_CORPSE, 'left');
 
         player.changeAlignment('Evil');
 

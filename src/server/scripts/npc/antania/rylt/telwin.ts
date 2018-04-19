@@ -1,13 +1,12 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const TONWIN_SWORD = 'Tonwin Sword';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem('Gold Coin');
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem('Gold Coin');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -72,10 +71,10 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
-        NPCLoader.takePlayerItem(player, TONWIN_SWORD);
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
+        npc.$$room.npcLoader.takePlayerItem(player, TONWIN_SWORD);
 
-        NPCLoader.loadItem('Gold Coin')
+        npc.$$room.npcLoader.loadItem('Gold Coin')
           .then(item => {
             item.value = 20000;
             player.setRightHand(item);

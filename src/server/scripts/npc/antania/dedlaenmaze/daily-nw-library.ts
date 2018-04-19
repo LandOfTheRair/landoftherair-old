@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const GHOST_PEARL = 'Dedlaen Transmute Pearl';
 const VAMPIRE_HEART = 'Dedlaen Vampire Heart';
@@ -8,8 +7,8 @@ const DEDLAEN_MAZE_KEY = 'Dedlaen Maze Key';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem(DEDLAEN_MAZE_KEY);
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem(DEDLAEN_MAZE_KEY);
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
 
   npc.recalculateStats();
 };
@@ -20,12 +19,13 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItemEitherHand(player, GHOST_PEARL) && NPCLoader.checkPlayerHeldItemEitherHand(player, VAMPIRE_HEART)) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, GHOST_PEARL)
+        && npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, VAMPIRE_HEART)) {
 
-        NPCLoader.takePlayerItemFromEitherHand(player, GHOST_PEARL);
-        NPCLoader.takePlayerItemFromEitherHand(player, VAMPIRE_HEART);
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, GHOST_PEARL);
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, VAMPIRE_HEART);
 
-        NPCLoader.loadItem(DEDLAEN_MAZE_KEY)
+        npc.$$room.npcLoader.loadItem(DEDLAEN_MAZE_KEY)
           .then(item => {
             player.setRightHand(item);
           });

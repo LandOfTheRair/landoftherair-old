@@ -1,10 +1,9 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -24,23 +23,23 @@ export const responses = (npc: NPC) => {
         return 'Thanks, but we don\'t want to work you too hard! Come back tomorrow - we\'ll have more work for you.';
       }
 
-      const questTodayIndex = NPCLoader.getCurrentDailyDayOfYear(player) % allQuests.length;
+      const questTodayIndex = npc.$$room.npcLoader.getCurrentDailyDayOfYear(player) % allQuests.length;
       const questToday = allQuests[questTodayIndex];
 
       if(player.level < 13) return 'While we would appreciate your help in the Maze, maybe you should go talk to Mayor Twean in Rylt.';
 
-      if(NPCLoader.checkPlayerHeldItem(player, questToday.questItem)) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, questToday.questItem)) {
 
         const requiredInSack = questToday.amount - 1;
         if(requiredInSack > 0) {
-          let indexes = NPCLoader.getItemsFromPlayerSackByName(player, questToday.questItem);
+          let indexes = npc.$$room.npcLoader.getItemsFromPlayerSackByName(player, questToday.questItem);
           indexes = indexes.slice(0, questToday.amount);
 
           if(indexes.length < requiredInSack) return 'You do not have enough of what I asked for!';
-          NPCLoader.takeItemsFromPlayerSack(player, indexes);
+          npc.$$room.npcLoader.takeItemsFromPlayerSack(player, indexes);
         }
 
-        NPCLoader.takePlayerItem(player, questToday.questItem);
+        npc.$$room.npcLoader.takePlayerItem(player, questToday.questItem);
 
         player.completeDailyQuest(npc.name);
 

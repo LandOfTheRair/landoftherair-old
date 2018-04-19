@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const SPIDER_EGG = 'Tower Spider Egg';
 const FLOWER = 'Tower Goblood';
@@ -7,7 +6,7 @@ const FLOWER = 'Tower Goblood';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -17,11 +16,11 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItemEitherHand(player, SPIDER_EGG) && NPCLoader.checkPlayerHeldItemEitherHand(player, FLOWER)) {
-        NPCLoader.takePlayerItemFromEitherHand(player, SPIDER_EGG);
-        NPCLoader.takePlayerItemFromEitherHand(player, FLOWER);
+      if(npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, SPIDER_EGG) && npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, FLOWER)) {
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, SPIDER_EGG);
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, FLOWER);
 
-        NPCLoader.loadItem('Antanian Magic Potion')
+        npc.$$room.npcLoader.loadItem('Antanian Magic Potion')
           .then(item => {
             item.binds = true;
             player.setRightHand(item);

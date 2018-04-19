@@ -1,13 +1,12 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const BEAR_MEAT = 'Antanian Bear Meat';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem(BEAR_MEAT);
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Breastplate');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem(BEAR_MEAT);
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Breastplate');
   npc.recalculateStats();
 };
 
@@ -27,15 +26,15 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItem(player, BEAR_MEAT, 'left')) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, BEAR_MEAT, 'left')) {
 
         let total = 150;
-        NPCLoader.takePlayerItem(player, BEAR_MEAT, 'left');
+        npc.$$room.npcLoader.takePlayerItem(player, BEAR_MEAT, 'left');
 
-        const indexes = NPCLoader.getItemsFromPlayerSackByName(player, BEAR_MEAT);
+        const indexes = npc.$$room.npcLoader.getItemsFromPlayerSackByName(player, BEAR_MEAT);
         total += indexes.length * 150;
 
-        NPCLoader.takeItemsFromPlayerSack(player, indexes);
+        npc.$$room.npcLoader.takeItemsFromPlayerSack(player, indexes);
 
         player.gainGold(total);
         return `Thanks, ${player.name}! Here is ${total.toLocaleString()} gold for your efforts.`;
@@ -52,20 +51,20 @@ export const responses = (npc: NPC) => {
 
       const REQUIRED_MEATS = 4;
 
-      if(NPCLoader.checkPlayerHeldItem(player, BEAR_MEAT, 'left')) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, BEAR_MEAT, 'left')) {
 
         const right = player.rightHand;
         if(!right) return 'Please hold an item in your right hand.';
         right.stats.offense = right.stats.offense || 0;
         if(right.stats.offense !== 0) return 'That item already has offensive adds!';
 
-        let indexes = NPCLoader.getItemsFromPlayerSackByName(player, BEAR_MEAT);
+        let indexes = npc.$$room.npcLoader.getItemsFromPlayerSackByName(player, BEAR_MEAT);
         indexes = indexes.slice(0, REQUIRED_MEATS);
 
         if(indexes.length < REQUIRED_MEATS) return 'You do not have enough bear meat for that!';
 
-        NPCLoader.takePlayerItem(player, BEAR_MEAT, 'left');
-        NPCLoader.takeItemsFromPlayerSack(player, indexes);
+        npc.$$room.npcLoader.takePlayerItem(player, BEAR_MEAT, 'left');
+        npc.$$room.npcLoader.takeItemsFromPlayerSack(player, indexes);
 
         right.stats.offense += 1;
         player.recalculateStats();
@@ -83,7 +82,7 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItem(player, BEAR_MEAT, 'left')) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, BEAR_MEAT, 'left')) {
 
         const right = player.rightHand;
         if(!right || right.name !== 'Mend Bottle') return 'Please hold a small healing bottle in your right hand.';
@@ -91,17 +90,17 @@ export const responses = (npc: NPC) => {
         const REQUIRED_MEATS = right.ounces;
 
         if(right.ounces > 1) {
-          let indexes = NPCLoader.getItemsFromPlayerSackByName(player, BEAR_MEAT);
+          let indexes = npc.$$room.npcLoader.getItemsFromPlayerSackByName(player, BEAR_MEAT);
           indexes = indexes.slice(0, REQUIRED_MEATS);
 
           if(indexes.length < REQUIRED_MEATS) return 'You do not have enough bear meat for that!';
-          NPCLoader.takeItemsFromPlayerSack(player, indexes);
+          npc.$$room.npcLoader.takeItemsFromPlayerSack(player, indexes);
         }
 
-        NPCLoader.takePlayerItem(player, BEAR_MEAT, 'left');
-        NPCLoader.takePlayerItem(player, 'Mend Bottle', 'right');
+        npc.$$room.npcLoader.takePlayerItem(player, BEAR_MEAT, 'left');
+        npc.$$room.npcLoader.takePlayerItem(player, 'Mend Bottle', 'right');
 
-        NPCLoader.loadItem('Bear Meat Antidote')
+        npc.$$room.npcLoader.loadItem('Bear Meat Antidote')
           .then(item => {
             item.ounces = REQUIRED_MEATS;
             player.setRightHand(item);

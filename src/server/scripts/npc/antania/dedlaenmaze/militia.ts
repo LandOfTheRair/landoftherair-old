@@ -2,7 +2,6 @@
 import { includes } from 'lodash';
 
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 import { Character } from '../../../../../shared/models/character';
 
 const GOURD_REWARD = 'Dedlaen Militia Gourd';
@@ -10,8 +9,8 @@ const GOURD_REWARD = 'Dedlaen Militia Gourd';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem('Maze Longsword');
-  npc.gear.Armor = await NPCLoader.loadItem('Tower Breastplate');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem('Maze Longsword');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Tower Breastplate');
   npc.recalculateStats();
 };
 
@@ -33,7 +32,7 @@ export const responses = (npc: NPC) => {
 
       if(numItems > 0) {
         for(let i = 0; i < numItems; i++) {
-          NPCLoader.loadItem(GOURD_REWARD).then(item => {
+          npc.$$room.npcLoader.loadItem(GOURD_REWARD).then(item => {
             npc.$$room.addItemToGround(npc, item);
           });
         }

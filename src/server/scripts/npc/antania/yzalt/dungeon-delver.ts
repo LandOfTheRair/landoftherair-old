@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 import { DarkVision } from '../../../../effects/buffs/DarkVision';
 
 import { includes } from 'lodash';
@@ -19,12 +18,12 @@ const allItems = [
 ];
 
 const yzaltSewerRatFur = (player) => {
-  if(!NPCLoader.checkPlayerHeldItem(player, SEWERRAT_FUR, 'right')) return 'That fur does not belong to you.';
+  if(!npc.$$room.npcLoader.checkPlayerHeldItem(player, SEWERRAT_FUR, 'right')) return 'That fur does not belong to you.';
 
   if(player.rightHand.stats.armorClass > 7) return 'You have already improved that fur!';
 
-  if(NPCLoader.checkPlayerHeldItemBothHands(player, SEWERRAT_FUR)) {
-    NPCLoader.takePlayerItem(player, SEWERRAT_FUR, 'left');
+  if(npc.$$room.npcLoader.checkPlayerHeldItemBothHands(player, SEWERRAT_FUR)) {
+    npc.$$room.npcLoader.takePlayerItem(player, SEWERRAT_FUR, 'left');
 
     player.rightHand.stats.armorClass += 3;
     player.rightHand.stats.fireResist += 10;
@@ -37,12 +36,12 @@ const yzaltSewerRatFur = (player) => {
 };
 
 const yzaltStrawRobe = (player) => {
-  if(!NPCLoader.checkPlayerHeldItem(player, STRAW_ROBE, 'right')) return 'That robe does not belong to you.';
+  if(!npc.$$room.npcLoader.checkPlayerHeldItem(player, STRAW_ROBE, 'right')) return 'That robe does not belong to you.';
 
   if(player.rightHand.stats.armorClass > 2) return 'You have already improved that robe!';
 
-  if(NPCLoader.checkPlayerHeldItemBothHands(player, STRAW_ROBE)) {
-    NPCLoader.takePlayerItem(player, STRAW_ROBE, 'left');
+  if(npc.$$room.npcLoader.checkPlayerHeldItemBothHands(player, STRAW_ROBE)) {
+    npc.$$room.npcLoader.takePlayerItem(player, STRAW_ROBE, 'left');
 
     player.rightHand.stats.armorClass += 1;
     player.rightHand.stats.iceResist += 20;
@@ -55,12 +54,12 @@ const yzaltStrawRobe = (player) => {
 };
 
 const yzaltRatGuardAxe = (player) => {
-  if(!NPCLoader.checkPlayerHeldItem(player, RATGUARD_AXE, 'right')) return 'That axe does not belong to you.';
+  if(!npc.$$room.npcLoader.checkPlayerHeldItem(player, RATGUARD_AXE, 'right')) return 'That axe does not belong to you.';
 
   if(player.rightHand.minDamage > 5) return 'You have already improved that axe!';
 
-  if(NPCLoader.checkPlayerHeldItemBothHands(player, RATGUARD_AXE)) {
-    NPCLoader.takePlayerItem(player, RATGUARD_AXE, 'left');
+  if(npc.$$room.npcLoader.checkPlayerHeldItemBothHands(player, RATGUARD_AXE)) {
+    npc.$$room.npcLoader.takePlayerItem(player, RATGUARD_AXE, 'left');
 
     player.rightHand.minDamage += 5;
     player.rightHand.maxDamage += 5;
@@ -72,12 +71,12 @@ const yzaltRatGuardAxe = (player) => {
 };
 
 const yzaltFungusCloak = (player) => {
-  if(!NPCLoader.checkPlayerHeldItem(player, FUNGUS_CLOAK, 'right')) return 'That cloak does not belong to you.';
+  if(!npc.$$room.npcLoader.checkPlayerHeldItem(player, FUNGUS_CLOAK, 'right')) return 'That cloak does not belong to you.';
 
   if(player.rightHand.stats.armorClass > 2) return 'You have already improved that cloak!';
 
-  if(NPCLoader.checkPlayerHeldItemBothHands(player, FUNGUS_CLOAK)) {
-    NPCLoader.takePlayerItem(player, FUNGUS_CLOAK, 'left');
+  if(npc.$$room.npcLoader.checkPlayerHeldItemBothHands(player, FUNGUS_CLOAK)) {
+    npc.$$room.npcLoader.takePlayerItem(player, FUNGUS_CLOAK, 'left');
 
     player.rightHand.stats.armorClass += 1;
     player.rightHand.stats.defense += 1;
@@ -91,12 +90,12 @@ const yzaltFungusCloak = (player) => {
 };
 
 const yzaltRatGuardFur = (player) => {
-  if(!NPCLoader.checkPlayerHeldItem(player, RATGUARD_FUR, 'right')) return 'That fur does not belong to you.';
+  if(!npc.$$room.npcLoader.checkPlayerHeldItem(player, RATGUARD_FUR, 'right')) return 'That fur does not belong to you.';
 
   if(player.rightHand.stats.armorClass > 10) return 'You have already improved that fur!';
 
-  if(NPCLoader.checkPlayerHeldItemBothHands(player, RATGUARD_FUR)) {
-    NPCLoader.takePlayerItem(player, RATGUARD_FUR, 'left');
+  if(npc.$$room.npcLoader.checkPlayerHeldItemBothHands(player, RATGUARD_FUR)) {
+    npc.$$room.npcLoader.takePlayerItem(player, RATGUARD_FUR, 'left');
 
     player.rightHand.stats.armorClass += 5;
     player.rightHand.stats.fireResist += 20;
@@ -120,7 +119,7 @@ const itemFuncs = {
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 

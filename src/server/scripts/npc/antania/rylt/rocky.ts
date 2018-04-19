@@ -1,13 +1,12 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const GOLEM_ROCK = 'Antanian Golem Brain';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem(GOLEM_ROCK);
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem(GOLEM_ROCK);
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -37,20 +36,20 @@ export const responses = (npc: NPC) => {
 
       const REQUIRED_ROCKS = 4;
 
-      if(NPCLoader.checkPlayerHeldItem(player, GOLEM_ROCK, 'left')) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, GOLEM_ROCK, 'left')) {
 
         const right = player.rightHand;
         if(!right) return 'Please hold an item in your right hand.';
         right.stats.defense = right.stats.defense || 0;
         if(right.stats.defense !== 0) return 'That item already has defense adds!';
 
-        let indexes = NPCLoader.getItemsFromPlayerSackByName(player, GOLEM_ROCK);
+        let indexes = npc.$$room.npcLoader.getItemsFromPlayerSackByName(player, GOLEM_ROCK);
         indexes = indexes.slice(0, REQUIRED_ROCKS);
 
         if(indexes.length < REQUIRED_ROCKS) return 'You do not have enough golem brains for that!';
 
-        NPCLoader.takePlayerItem(player, GOLEM_ROCK, 'left');
-        NPCLoader.takeItemsFromPlayerSack(player, indexes);
+        npc.$$room.npcLoader.takePlayerItem(player, GOLEM_ROCK, 'left');
+        npc.$$room.npcLoader.takeItemsFromPlayerSack(player, indexes);
 
         right.stats.defense += 1;
         player.recalculateStats();

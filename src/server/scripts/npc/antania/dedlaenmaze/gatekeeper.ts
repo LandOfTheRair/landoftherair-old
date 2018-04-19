@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const MINO_HORN = 'Dedlaen Minotaur Horn';
 const DEDLAEN_CITY_KEY = 'Dedlaen City Key';
@@ -7,8 +6,8 @@ const DEDLAEN_CITY_KEY = 'Dedlaen City Key';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem('Maze Longsword');
-  npc.gear.Armor = await NPCLoader.loadItem('Tower Breastplate');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem('Maze Longsword');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Tower Breastplate');
   npc.recalculateStats();
 };
 
@@ -18,11 +17,11 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItem(player, MINO_HORN, 'right')) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, MINO_HORN, 'right')) {
 
-        NPCLoader.takePlayerItem(player, MINO_HORN);
+        npc.$$room.npcLoader.takePlayerItem(player, MINO_HORN);
 
-        NPCLoader.loadItem(DEDLAEN_CITY_KEY)
+        npc.$$room.npcLoader.loadItem(DEDLAEN_CITY_KEY)
           .then(item => {
             player.setRightHand(item);
           });

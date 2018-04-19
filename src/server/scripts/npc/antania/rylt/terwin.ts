@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const TERWIN_RING = 'Terwin Ring';
 const GUARD_KEY = 'Rylt Guard Key';
@@ -9,8 +8,8 @@ const TONWIN_SWORD = 'Tonwin Sword';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
 
-  npc.rightHand = await NPCLoader.loadItem(TERWIN_RING);
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem(TERWIN_RING);
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -48,10 +47,10 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItem(player, GUARD_KEY)) {
-        NPCLoader.takePlayerItem(player, GUARD_KEY);
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, GUARD_KEY)) {
+        npc.$$room.npcLoader.takePlayerItem(player, GUARD_KEY);
 
-        NPCLoader.loadItem(ENCHANTED_GUARD_KEY)
+        npc.$$room.npcLoader.loadItem(ENCHANTED_GUARD_KEY)
           .then(item => {
             player.setRightHand(item);
           });
@@ -67,10 +66,10 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(NPCLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
-        NPCLoader.takePlayerItem(player, TONWIN_SWORD);
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
+        npc.$$room.npcLoader.takePlayerItem(player, TONWIN_SWORD);
 
-        NPCLoader.loadItem(TERWIN_RING)
+        npc.$$room.npcLoader.loadItem(TERWIN_RING)
           .then(item => {
             player.setRightHand(item);
           });

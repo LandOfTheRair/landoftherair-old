@@ -1,5 +1,4 @@
 import { NPC } from '../../../../../shared/models/npc';
-import { NPCLoader } from '../../../../helpers/character/npc-loader';
 
 const CHILD_DOLL = 'Steffen LostChild Doll';
 
@@ -7,7 +6,7 @@ export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
   npc.gainBaseStat('stealth', 20);
 
-  npc.gear.Armor = await NPCLoader.loadItem('Antanian Tunic');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };
 
@@ -26,8 +25,8 @@ export const responses = (npc: NPC) => {
         lostChild = possibleTarget;
       });
 
-      if(lostChild && NPCLoader.checkPlayerHeldItemEitherHand(player, CHILD_DOLL)) {
-        NPCLoader.takePlayerItemFromEitherHand(player, CHILD_DOLL);
+      if(lostChild && npc.$$room.npcLoader.checkPlayerHeldItemEitherHand(player, CHILD_DOLL)) {
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, CHILD_DOLL);
 
         player.changeAlignment('Good');
 
@@ -43,7 +42,7 @@ export const responses = (npc: NPC) => {
         return 'Empty your right hand if you wish to embark on the search for good!';
       }
 
-      NPCLoader.loadItem(CHILD_DOLL)
+      npc.$$room.npcLoader.loadItem(CHILD_DOLL)
         .then(item => {
           player.setRightHand(item);
         });
