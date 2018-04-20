@@ -33,7 +33,8 @@ export class Backstab extends Skill {
   }
 
   canUse(user: Character, target: Character) {
-    return user.hasEffect('Hidden') && this.range(user) + user.getTotalStat('move') >= user.distFrom(target);
+    return (user.hasEffect('Hidden') || user.hasEffect('ShadowMeld'))
+      && this.range(user) + user.getTotalStat('move') >= user.distFrom(target);
   }
 
 

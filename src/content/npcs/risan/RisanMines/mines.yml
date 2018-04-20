@@ -224,6 +224,8 @@
 
   otherStats:
     accuracy: 5
+    wil: 30
+    con: 30
     perception: 300
     mpregen: 30
 

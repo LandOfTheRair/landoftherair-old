@@ -394,11 +394,13 @@
   hostility: Always
   alignment: Evil
   baseClass: Thief
-  stats: 24
+  stats: 20
   skillLevels: 9
   level: 24
 
   otherStats:
+    wil: 30
+    con: 30
     perception: 150
 
   rightHand: Risan Mines Spirit Shortsword
@@ -417,8 +419,8 @@
   skillOnKill: 300
 
   traitLevels:
-    OffhandFinesse: 10
-    ForcefulStrike: 10
+    OffhandFinesse: 5
+    ForcefulStrike: 5
     HolyProtection: 5
     Riposte: 5
     ShadowSheath: 5
