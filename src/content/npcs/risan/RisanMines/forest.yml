@@ -307,7 +307,7 @@
   hostility: Always
   alignment: Evil
   baseClass: Thief
-  stats: 19
+  stats: 16
   skillLevels: 7
   level: 20
 
@@ -341,13 +341,13 @@
 
   traitLevels:
     OffhandFinesse: 3
-    ForcefulStrike: 4
+    ForcefulStrike: 1
     HolyProtection: 3
-    Riposte: 3
-    ShadowSheath: 3
-    ShadowSwap: 3
+    Riposte: 1
+    ShadowSheath: 1
+    ShadowSwap: 1
     DarkerShadows: 7
-    ShadowDaggers: 3
+    ShadowDaggers: 1
 
   usableSkills:
     - Charge
