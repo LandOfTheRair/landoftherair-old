@@ -17,6 +17,7 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(player.level < 14) return 'Hmm? How did a weakling like you get here? Remove yourself from my sight.';
 
       if(npc.$$room.npcLoader.takePlayerItem(player, HEART, 'right')) {
         npc.$$room.npcLoader.takePlayerItem(player, HEART, 'right');
@@ -41,6 +42,7 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['events'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(player.level < 14) return 'Hmm? How did a weakling like you get here? Remove yourself from my sight.';
 
       return `Yes, indeed. It's quite strange, but the book mentions a miner and a dryad who find love and happiness.
       The Dryad Queen Cyrena is none too pleased, however, and she exiles the dryad from her coven.
@@ -52,6 +54,7 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['revenge'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(player.level < 14) return 'Hmm? How did a weakling like you get here? Remove yourself from my sight.';
 
       return `Quite! So what happens next? Well, the dryad caused the whole coven to go insane.
       Something about her poison just set them off, and they started murdering each other, just like that.
@@ -63,6 +66,7 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['heart'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(player.level < 14) return 'Hmm? How did a weakling like you get here? Remove yourself from my sight.';
 
       return `Yes, her heart, her very essence. If she were to exist, then the fall of her coven mirrors our current, erm, situation.
       The trees are decaying, the land is falling apart, surely you've seen that, yes?
