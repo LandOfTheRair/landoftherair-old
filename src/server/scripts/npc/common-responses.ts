@@ -708,6 +708,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
       player.skillTree.reset(player);
       player.skillTree.calculateNewTPFromSkills(player);
+      player.skillTree.calculateNewTPFromLevels(player);
       player.$$room.updateSkillTree(player);
 
       return 'Done! Enjoy your reset skill tree. You may need to LEARN from me again to get all of your points back!';

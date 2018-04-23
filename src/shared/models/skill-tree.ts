@@ -102,6 +102,7 @@ export class SkillTree {
 
   }
 
+
   public calculateNewTPFromLevels(player: Player): number {
     const level = player.level;
 
