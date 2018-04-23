@@ -24,7 +24,7 @@ export class TraitUsageModifiers {
       case 'ShadowRanger':        return level * 10;
 
       case 'FriendlyFire':        return level * 10;
-      case 'ThermalBarrier':      return level * 0.1;
+      case 'ThermalBarrier':      return level * 0.2;
       case 'CalmMind':            return level * 2;
       case 'NaturalArmor':        return level * 2;
       case 'ManaPool':            return level * 10;
