@@ -149,7 +149,7 @@
   xpGained: 7500
   ingredients:
     - Antanian Bottle of Water
-    - Mines Caveroot
+    - Mines Caveflower
 
 - item: Weak EagleEye Potion (10oz)
   skillGained: 50
@@ -158,7 +158,7 @@
   xpGained: 7500
   ingredients:
     - Antanian Pint of Water
-    - Mines Caveroot
+    - Mines Caveflower
 
 - item: Weak Absorption Potion
   skillGained: 50
@@ -168,7 +168,7 @@
   ingredients:
     - Antanian Bottle of Water
     - Antanian Slice of Bread
-    - Mines Caveroot
+    - Mines Caveflower
 
 - item: Weak Absorption Potion (10oz)
   skillGained: 50
@@ -178,5 +178,5 @@
   ingredients:
     - Antanian Pint of Water
     - Antanian Loaf of Bread
-    - Mines Caveroot
+    - Mines Caveflower
 
