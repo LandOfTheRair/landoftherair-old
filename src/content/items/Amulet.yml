@@ -98,7 +98,7 @@
   value: 5000
 
   requirements:
-    level: 10
+    level: 14
 
 - name: Librarian Mage Amulet
   stats:
@@ -112,7 +112,7 @@
   value: 5000
 
   requirements:
-    level: 10
+    level: 14
 
 - name: Librarian Warrior Amulet
   stats:
@@ -124,7 +124,7 @@
   value: 5000
 
   requirements:
-    level: 10
+    level: 14
 
 - name: Librarian Thief Amulet
   stats:
@@ -136,7 +136,7 @@
   value: 5000
 
   requirements:
-    level: 10
+    level: 14
 
 
 - name: Librarian Undecided Amulet
