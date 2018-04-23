@@ -312,6 +312,7 @@
   level: 20
 
   otherStats:
+    accuracy: -3
     perception: 150
 
   rightHand: Risan Mines Spirit Shortsword
