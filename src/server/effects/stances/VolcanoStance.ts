@@ -4,6 +4,7 @@ import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { MessageHelper } from '../../helpers/world/message-helper';
 import { GenderHelper } from '../../helpers/character/gender-helper';
+import { Item } from '../../../shared/models/item';
 
 export class VolcanoStance extends StanceEffect implements AugmentSpellEffect {
 
@@ -55,5 +56,17 @@ export class VolcanoStance extends StanceEffect implements AugmentSpellEffect {
       damage: Math.floor(opts.damage * (0.1 + attacker.getTraitLevelAndUsageModifier('VolcanoStanceImproved'))),
       damageClass: 'fire'
     });
+  }
+
+  modifyDamage(attacker: Character, defender: Character, opts: { attackerWeapon: Item, damage: number, damageClass: string }) {
+    const { damageClass, damage } = opts;
+
+    if(damageClass !== 'fire') return;
+
+    let potency = 0.5;
+    potency -= attacker.getTraitLevelAndUsageModifier('VolcanoStanceImproved');
+    if(potency <= 0) potency = 0.1;
+
+    return Math.floor(damage * potency);
   }
 }
