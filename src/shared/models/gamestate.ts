@@ -392,17 +392,17 @@ export class GameState {
 
   getPlayersInRange(ref: Character, radius, except: string[] = [], useSight = true): Character[] {
     return this.getAllPlayersFromQuadtrees(ref, radius)
-      .filter(char => !char.isDead() && !includes(except, char.uuid) && this.isVisibleTo(ref, char, useSight));
+      .filter(char => char && !char.isDead() && !includes(except, char.uuid) && this.isVisibleTo(ref, char, useSight));
   }
 
   getAllInRangeRaw(ref: { x: number, y: number }, radius, except: string[] = []): Character[] {
     return this.getAllTargetsFromQuadtrees(ref, radius)
-      .filter(char => !includes(except, char.uuid));
+      .filter(char => char && !includes(except, char.uuid));
   }
 
   getAllInRange(ref: Character, radius, except: string[] = [], useSight = true): Character[] {
     return this.getAllTargetsFromQuadtrees(ref, radius)
-      .filter(char => !char.isDead() && !includes(except, char.uuid) && this.isVisibleTo(ref, char, useSight));
+      .filter(char => char && !char.isDead() && !includes(except, char.uuid) && this.isVisibleTo(ref, char, useSight));
   }
 
   getAllHostilesInRange(ref: Character, radius): Character[] {
