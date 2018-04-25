@@ -1094,6 +1094,7 @@ export class Character {
 
   unapplyEffect(effect: Effect, prematurelyEnd = false, hideMessage = false) {
     if(prematurelyEnd) {
+      effect.hasEnded = true;
       effect.shouldNotShowMessage = hideMessage;
       effect.effectEnd(this);
     }

@@ -18,8 +18,8 @@ export class Revealed extends SpellEffect {
     const hidden = target.hasEffect('Hidden');
     const shadowMeld = target.hasEffect('ShadowMeld');
 
-    if(hidden)                                  target.unapplyEffect(hidden, true);
-    if(shadowMeld && shadowMeld.duration > 3)   target.unapplyEffect(shadowMeld, true);
+    if(hidden)                               target.unapplyEffect(hidden, true);
+    if(shadowMeld && !shadowMeld.hasEnded)   target.unapplyEffect(shadowMeld, true);
 
     if(hidden || shadowMeld) target.sendClientMessage('You were forced out of hiding!');
 

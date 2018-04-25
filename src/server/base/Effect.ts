@@ -43,7 +43,8 @@ export class Effect {
   effectInfo: EffectInfo = { caster: '' };
   casterRef: any;
 
-  public shouldNotShowMessage;
+  public shouldNotShowMessage: boolean;
+  public hasEnded: boolean;
 
   constructor(opts) {
     extend(this, opts);
