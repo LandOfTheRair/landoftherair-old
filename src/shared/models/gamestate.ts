@@ -602,6 +602,7 @@ export class GameState {
     y /= 64;
 
     this.getAllPlayersFromQuadtrees({ x, y }, 4).forEach(p => {
+      if(!p || !p.$$room) return;
       this.calculateFOV(p);
       p.$$room.updateFOV(p);
     });
