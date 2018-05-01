@@ -912,7 +912,7 @@
         ],
         "cluster": 4,
         "unlockedBy": [
-            "Apply"
+            "BetterBackstab0"
         ]
     },
     "ShadowDaggers1": {
@@ -1163,6 +1163,47 @@
             "RecuperatingDebilitation2"
         ]
     },
+    "BetterBackstab0": {
+        "name": "BetterBackstab0",
+        "traitName": "BetterBackstab",
+        "desc": "Increase your backstab damage multiplier by $1|3$.",
+        "icon": "backstab",
+        "cost": 3,
+        "unlocks": [
+            "BetterBackstab1",
+            "ShadowDaggers0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Apply"
+        ]
+    },
+    "BetterBackstab1": {
+        "name": "BetterBackstab1",
+        "traitName": "BetterBackstab",
+        "desc": "Increase your backstab damage multiplier by $1|3$.",
+        "icon": "backstab",
+        "cost": 3,
+        "unlocks": [
+            "BetterBackstab2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "BetterBackstab0"
+        ]
+    },
+    "BetterBackstab2": {
+        "name": "BetterBackstab2",
+        "traitName": "BetterBackstab",
+        "desc": "Increase your backstab damage multiplier by $1|3$.",
+        "icon": "backstab",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "BetterBackstab1"
+        ]
+    },
     "Apply": {
         "name": "Apply",
         "desc": "Apply a bottle's effects from your left hand onto your weapon strikes.",
@@ -1170,7 +1211,7 @@
         "iconColor": "#050",
         "cost": 3,
         "unlocks": [
-            "ShadowDaggers0",
+            "BetterBackstab0",
             "Poison",
             "Disease",
             "Debilitate"

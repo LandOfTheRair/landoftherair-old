@@ -22,6 +22,7 @@ export class TraitUsageModifiers {
       case 'HealingFocus':        return level * 10;
       case 'ForcefulStrike':      return level * 10;
       case 'ShadowRanger':        return level * 10;
+      case 'BetterBackstab':      return level;
 
       case 'FriendlyFire':        return level * 10;
       case 'ThermalBarrier':      return level * 0.2;

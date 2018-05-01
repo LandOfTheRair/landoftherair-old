@@ -268,7 +268,7 @@ const ASSASSIN_TREE = {
     unlocks: ['ShadowDaggers2', 'ShadowSwap5']
   },
   ShadowDaggers2: {
-    unlocks: ['Assassinate']
+    
   },
 
   ShadowRanger0: {
@@ -330,9 +330,21 @@ const ASSASSIN_TREE = {
 
   },
 
+  BetterBackstab0: {
+    unlocks: ['BetterBackstab1', 'ShadowDaggers0']
+  },
+
+  BetterBackstab1: {
+    unlocks: ['BetterBackstab2']
+  },
+
+  BetterBackstab2: {
+    unlocks: ['Assassinate']
+  },
+
   // SKILLS
   Apply: {
-    unlocks: ['ShadowDaggers0', 'Poison', 'Disease', 'Debilitate']
+    unlocks: ['BetterBackstab0', 'Poison', 'Disease', 'Debilitate']
   },
 
   Assassinate: {

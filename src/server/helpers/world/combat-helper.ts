@@ -666,7 +666,10 @@ export class CombatHelper {
 
     if(isBackstab) {
       /** PERK:CLASS:THIEF:Thieves get a bonus to backstabbing based on their thievery skill. */
-      let bonusMultiplier = attacker.baseClass === 'Thief' ? 1 + Math.floor(thiefSkill / 8) : 1.5;
+      let bonusMultiplier = 1.5;
+      if(attacker.baseClass === 'Thief') {
+        bonusMultiplier += attacker.getTraitLevelAndUsageModifier('BetterBackstab');
+      }
       if(isAssassinate) bonusMultiplier *= 3;
       damage = Math.floor(damage * bonusMultiplier);
     }

@@ -1,5 +1,6 @@
 
 export * from './AdvancedTraps';
+export * from './BetterBackstab';
 export * from './CorrosivePoison';
 export * from './DarkerShadows';
 export * from './DarknessWiden';
