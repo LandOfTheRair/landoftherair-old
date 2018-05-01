@@ -268,7 +268,7 @@ const ASSASSIN_TREE = {
     unlocks: ['ShadowDaggers2', 'ShadowSwap5']
   },
   ShadowDaggers2: {
-    
+
   },
 
   ShadowRanger0: {
