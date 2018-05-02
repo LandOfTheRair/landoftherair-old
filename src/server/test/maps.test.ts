@@ -45,6 +45,17 @@ test('All maps have valid script references', t => {
   });
 });
 
+test('All maps have the correct number of tilesets in the correct order', t => {
+  allMaps.forEach(map => {
+    const tilesets = map.tilesets;
+
+    t.is(tilesets[0].name, 'Terrain');
+    t.is(tilesets[1].name, 'Walls');
+    t.is(tilesets[2].name, 'Decor');
+    t.is(tilesets[3].name, 'Creatures');
+  });
+});
+
 test('All maps have a respawn point', t => {
   allMaps.forEach(map => {
 
