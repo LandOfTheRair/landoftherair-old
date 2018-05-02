@@ -113,11 +113,11 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
 
         const stats = char.baseStats;
         Object.keys(stats).forEach((stat: StatName) => {
-          npc.gainStat(stat, stats[stat]);
+          npc.gainBaseStat(stat, stats[stat]);
         });
 
         const reversedPotency = (this.potency * 5) + 10;
-        npc.gainStat('hp', char.getBaseStat('hp') * reversedPotency);
+        npc.gainBaseStat('hp', char.getBaseStat('hp') * reversedPotency);
 
         npc.recalculateStats();
 

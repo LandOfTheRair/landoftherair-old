@@ -30,7 +30,7 @@ export class Distraction extends SpellEffect {
         npc.level = this.potency;
 
         // boost stats
-        npc.gainStat('hp', npc.getBaseStat('hp') * this.potency * 5);
+        npc.gainBaseStat('hp', npc.getBaseStat('hp') * this.potency * 5);
         npc.recalculateStats();
       }
     };
