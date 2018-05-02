@@ -7,7 +7,7 @@ import * as dice from 'dice.js';
 export class EnergyWave extends SpellEffect {
 
   maxSkillForSkillGain = 11;
-  skillMults = [[0, 0.7], [11, 1.6], [21, 2.7]];
+  skillMults = [[0, 0.7], [6, 1.2], [11, 1.7], [16, 2.2], [21, 2.7]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

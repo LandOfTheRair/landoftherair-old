@@ -10,7 +10,7 @@ import { MessageHelper } from '../../helpers/world/message-helper';
 export class IceMist extends SpellEffect {
 
   maxSkillForSkillGain = 7;
-  skillMults = [[0, 2], [11, 2.5], [21, 3]];
+  skillMults = [[0, 2], [6, 2.25], [11, 2.5], [16, 2.75], [21, 3]];
 
   private range: number;
 

@@ -9,7 +9,7 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 export class HolyFire extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillMults = [[0, 4], [11, 5], [21, 6]];
+  skillMults = [[0, 4], [6, 4.5], [11, 5], [16, 5.5], [21, 6]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

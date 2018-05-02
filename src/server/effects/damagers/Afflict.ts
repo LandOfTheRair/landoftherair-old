@@ -8,7 +8,7 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 export class Afflict extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillMults = [[0, 2.75], [11, 3.75], [21, 4.75]];
+  skillMults = [[0, 2.75], [6, 3.25], [11, 3.75], [16, 4.25], [21, 4.75]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
