@@ -15,7 +15,7 @@ export class Poison extends SpellEffect {
   };
 
   maxSkillForSkillGain = 7;
-  skillMults = [[0, 1], [6, 1.5], [11, 2], [16, 2.5], [21, 3]];
+  skillMults = [[0, 1], [6, 1.25], [11, 1.5], [16, 1.75], [21, 2]];
 
   private critBonus: number;
   private healerCripple: number;
