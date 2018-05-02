@@ -37,13 +37,11 @@ export class Shield extends SpellEffect {
 
     this.iconData.tooltipDesc = `+${this.potency} physical/magical resistance.`;
 
-    char.gainStat('physicalResist', this.potency);
-    char.gainStat('magicalResist', this.potency);
+    this.gainStat(char, 'physicalResist', this.potency);
+    this.gainStat(char, 'magicalResist', this.potency);
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your resistances fade.');
-    char.loseStat('physicalResist', this.potency);
-    char.loseStat('magicalResist', this.potency);
   }
 }

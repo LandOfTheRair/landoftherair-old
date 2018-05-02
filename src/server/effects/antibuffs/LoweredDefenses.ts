@@ -29,14 +29,8 @@ export class LoweredDefenses extends SpellEffect {
     this.defensePenalty = Math.floor(char.getTotalStat('defense') * lostPenalty);
     this.mitigationPenalty = Math.floor(this.potency);
 
-    char.loseStat('armorClass', this.acPenalty);
-    char.loseStat('defense', this.defensePenalty);
-    char.loseStat('mitigation', this.mitigationPenalty);
-  }
-
-  effectEnd(char: Character) {
-    char.gainStat('armorClass', this.acPenalty);
-    char.gainStat('defense', this.defensePenalty);
-    char.gainStat('mitigation', this.mitigationPenalty);
+    this.loseStat(char, 'armorClass', this.acPenalty);
+    this.loseStat(char, 'defense', this.defensePenalty);
+    this.loseStat(char, 'mitigation', this.mitigationPenalty);
   }
 }

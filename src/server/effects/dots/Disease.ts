@@ -64,14 +64,14 @@ export class Disease extends SpellEffect {
 
     if(this.healerDebilitate) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} CON/WIL/Accuracy penalty.`;
-      char.loseStat('wil', this.healerDebilitate);
-      char.loseStat('con', this.healerDebilitate);
-      char.loseStat('accuracy', this.healerDebilitate);
+      this.loseStat(char, 'wil', this.healerDebilitate);
+      this.loseStat(char, 'con', this.healerDebilitate);
+      this.loseStat(char, 'accuracy', this.healerDebilitate);
     }
 
     if(this.thiefDegenerate) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Perception penalty.`;
-      char.loseStat('perception', this.thiefDegenerate);
+      this.loseStat(char, 'perception', this.thiefDegenerate);
     }
   }
 
@@ -95,15 +95,5 @@ export class Disease extends SpellEffect {
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your body recovered from the disease.');
-
-    if(this.healerDebilitate) {
-      char.gainStat('wil', this.healerDebilitate);
-      char.gainStat('con', this.healerDebilitate);
-      char.gainStat('accuracy', this.healerDebilitate);
-    }
-
-    if(this.thiefDegenerate) {
-      char.gainStat('perception', this.thiefDegenerate);
-    }
   }
 }

@@ -18,7 +18,7 @@ export class Dangerous extends Effect {
   }
 
   effectStart(char: Character) {
-    char.gainStat('hpregen', 100);
+    this.gainStat(char, 'hpregen', 100);
   }
 
 }

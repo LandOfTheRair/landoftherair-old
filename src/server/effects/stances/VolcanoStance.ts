@@ -29,21 +29,15 @@ export class VolcanoStance extends StanceEffect implements AugmentSpellEffect {
   effectStart(char: Character) {
     MessageHelper.sendClientMessageToRadius(char, `${char.name} takes on an explosive stance.`);
 
-    char.loseStat('armorClass', this.potency);
-    char.loseStat('defense', Math.floor(this.potency / 4));
+    this.loseStat(char, 'armorClass', this.potency);
+    this.loseStat(char, 'defense', Math.floor(this.potency / 4));
 
-    char.gainStat('offense', Math.floor(this.potency / 4));
-    char.gainStat('accuracy', Math.floor(this.potency / 4));
+    this.gainStat(char, 'offense', Math.floor(this.potency / 4));
+    this.gainStat(char, 'accuracy', Math.floor(this.potency / 4));
   }
 
   effectEnd(char: Character) {
     MessageHelper.sendClientMessageToRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} explosive stance.`);
-
-    char.gainStat('armorClass', this.potency);
-    char.gainStat('defense', Math.floor(this.potency / 4));
-
-    char.loseStat('offense', Math.floor(this.potency / 4));
-    char.loseStat('accuracy', Math.floor(this.potency / 4));
   }
 
   augmentAttack(attacker: Character, defender: Character, opts: { damage: number, damageClass: string }) {

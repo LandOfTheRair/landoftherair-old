@@ -18,10 +18,6 @@ export class RecentlyDebilitated extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    char.gainStat('perception', this.potency);
-  }
-
-  effectEnd(char: Character) {
-    char.loseStat('perception', this.potency);
+    this.gainStat(char, 'perception', this.potency);
   }
 }

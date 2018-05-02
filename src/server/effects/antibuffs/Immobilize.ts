@@ -23,7 +23,7 @@ export class Immobilize extends SpellEffect {
 
   effectStart(char: Character) {
     this.effectMessage(char, 'You are stuck!');
-    char.loseStat('move', 5);
+    this.loseStat(char, 'move', 5);
   }
 
   effectEnd(char: Character) {
@@ -31,6 +31,5 @@ export class Immobilize extends SpellEffect {
     recently.cast(char, char);
 
     this.effectMessage(char, 'You regain your movement.');
-    char.gainStat('move', 5);
   }
 }

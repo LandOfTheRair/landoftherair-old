@@ -27,11 +27,10 @@ export class BlurredVision extends SpellEffect {
 
     this.potency = Math.floor(char.getTotalStat('perception') * (this.potency / 100));
     this.targetEffectMessage(char, 'Your vision begins to blur.');
-    char.loseStat('perception', this.potency);
+    this.loseStat(char, 'perception', this.potency);
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your vision is returns to normal.');
-    char.gainStat('perception', this.potency);
   }
 }

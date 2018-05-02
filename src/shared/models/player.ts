@@ -163,6 +163,8 @@ export class Player extends Character {
 
     this.$$skillTree = await this.$$room.skillTreeHelper.loadSkillTree(this);
 
+    delete (<any>this).additionalStats;
+
     // if you haven't bought any nodes, reset all the irrelevant details
     if(size(this.$$skillTree.nodesClaimed) === 0) {
       delete (<any>this).traitPoints;

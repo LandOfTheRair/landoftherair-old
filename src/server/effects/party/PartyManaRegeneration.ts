@@ -27,7 +27,7 @@ export class PartyManaRegeneration extends Effect {
   }
 
   effectStart(char: Character) {
-    char.gainStat('mpregen', this.potency);
+    this.gainStat(char, 'mpregen', this.potency);
   }
 
   effectTick(char: Character) {
@@ -52,9 +52,5 @@ export class PartyManaRegeneration extends Effect {
 
     this.effectEnd(char);
     char.unapplyEffect(this);
-  }
-
-  effectEnd(char: Character) {
-    char.loseStat('mpregen', this.potency);
   }
 }

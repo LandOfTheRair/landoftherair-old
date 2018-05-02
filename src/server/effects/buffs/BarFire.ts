@@ -37,13 +37,12 @@ export class BarFire extends SpellEffect {
 
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'Your body builds a temporary resistance to flame.');
-    char.gainStat('fireResist', this.potency * this.potencyMultiplier);
+    this.gainStat(char, 'fireResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} fire damage.`;
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your flame resistance fades.');
-    char.loseStat('fireResist', this.potency * this.potencyMultiplier);
   }
 }

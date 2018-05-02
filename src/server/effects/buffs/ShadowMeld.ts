@@ -19,7 +19,7 @@ export class ShadowMeld extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
     this.flagCasterName(caster.name);
-    
+
     this.duration = this.potency;
     this.updateDurationBasedOnTraits(caster);
     this.potency = caster.stealthLevel();
@@ -28,12 +28,11 @@ export class ShadowMeld extends SpellEffect {
 
   effectStart(char: Character) {
     this.effectMessage(char, 'You meld with the shadows.');
-    char.gainStat('stealth', this.potency);
+    this.gainStat(char, 'stealth', this.potency);
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'You are no longer melded with the shadows!');
-    char.loseStat('stealth', this.potency);
 
     const revealed = new Revealed({});
     revealed.duration = 3;

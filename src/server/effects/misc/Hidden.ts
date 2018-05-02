@@ -29,7 +29,7 @@ export class Hidden extends SpellEffect {
 
   effectStart(char: Character) {
     this.effectMessage(char, 'You step into the shadows.');
-    char.gainStat('stealth', this.potency);
+    this.gainStat(char, 'stealth', this.potency);
   }
 
   effectTick(char: Character) {
@@ -41,6 +41,5 @@ export class Hidden extends SpellEffect {
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'You are no longer hidden!');
-    char.loseStat('stealth', this.potency);
   }
 }

@@ -27,7 +27,7 @@ export class PartyHealthRegeneration extends Effect {
   }
 
   effectStart(char: Character) {
-    char.gainStat('hpregen', this.potency);
+    this.gainStat(char, 'hpregen', this.potency);
   }
 
   effectTick(char: Character) {
@@ -52,9 +52,5 @@ export class PartyHealthRegeneration extends Effect {
 
     this.effectEnd(char);
     char.unapplyEffect(this);
-  }
-
-  effectEnd(char: Character) {
-    char.loseStat('hpregen', this.potency);
   }
 }

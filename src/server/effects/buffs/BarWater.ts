@@ -34,13 +34,12 @@ export class BarWater extends SpellEffect {
 
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'Gills form around your neck.');
-    char.gainStat('waterResist', this.potency * this.potencyMultiplier);
+    this.gainStat(char, 'waterResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} water damage.`;
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your water resistance fades.');
-    char.loseStat('waterResist', this.potency * this.potencyMultiplier);
   }
 }

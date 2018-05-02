@@ -187,10 +187,6 @@ export class Character {
   gold = 0;
 
   protected stats: Stats = new Stats();
-
-  // we don't want to initialize this because of side effects from default values
-  @nonenumerable
-  protected additionalStats: any = {};
   protected totalStats: any = new Stats();
 
   protected skills: Skills = new Skills();
@@ -471,15 +467,6 @@ export class Character {
     return slot;
   }
 
-  gainStat(stat: StatName, value = 1) {
-    this.additionalStats[stat] = (this.additionalStats[stat] || 0) + value;
-    this.recalculateStats();
-  }
-
-  loseStat(stat: StatName, value = 1) {
-    this.gainStat(stat, -value);
-  }
-
   gainBaseStat(stat: StatName, value = 1) {
     this.stats[stat] += value;
     this.recalculateStats();
@@ -503,6 +490,14 @@ export class Character {
         && includes(GivesBonusInHandItemClasses, item.itemClass);
   }
 
+  private adjustStatsBasedOnEffect(eff: Effect, isLose = false) {
+    const statBuffs = eff.allBoosts || {};
+
+    Object.keys(statBuffs).forEach(stat => {
+      this.totalStats[stat] += (statBuffs[stat] * (isLose ? -1 : 1));
+    });
+  }
+
   recalculateStats() {
     this.totalStats = {};
 
@@ -512,8 +507,8 @@ export class Character {
     });
 
     // stats from effects
-    Object.keys(this.additionalStats).forEach(stat => {
-      this.totalStats[stat] += this.additionalStats[stat];
+    values(this.effects).forEach(eff => {
+      this.adjustStatsBasedOnEffect(eff);
     });
 
     // stats from class
@@ -940,11 +935,6 @@ export class Character {
     });
   }
 
-  resetAdditionalStats() {
-    this.additionalStats = {};
-    this.recalculateStats();
-  }
-
   die(killer?: Character, silent = false) {
     this.dir = 'C';
     this.clearEffects();
@@ -1108,6 +1098,9 @@ export class Character {
   }
 
   unapplyEffect(effect: Effect, prematurelyEnd = false, hideMessage = false) {
+
+    this.adjustStatsBasedOnEffect(effect, true);
+
     if(prematurelyEnd) {
       effect.hasEnded = true;
       effect.shouldNotShowMessage = hideMessage;

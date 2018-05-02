@@ -54,14 +54,12 @@ export class Snare extends SpellEffect {
 
   effectStart(char: Character) {
     this.effectMessage(char, 'Roots grow from the ground to slow your movement!');
-    char.loseStat('move', this.movementLoss);
+    this.loseStat(char, 'move', this.movementLoss);
   }
 
   effectEnd(char: Character) {
     const recentlySnared = new RecentlySnared({});
     recentlySnared.cast(char, char);
     this.effectMessage(char, 'The roots disappear.');
-    char.gainStat('move', this.movementLoss);
-
   }
 }

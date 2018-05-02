@@ -34,15 +34,13 @@ export class VitalEssence extends SpellEffect {
 
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'Your body feels more durable.');
-    char.gainStat('hp', this.potency * this.potencyMultiplier);
-    char.gainStat('armorClass', this.potency);
+    this.gainStat(char, 'hp', this.potency * this.potencyMultiplier);
+    this.gainStat(char, 'armorClass', this.potency);
 
     this.iconData.tooltipDesc = `Grants you ${this.potency * this.potencyMultiplier} more health and ${this.potency} AC.`;
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your durability fades.');
-    char.loseStat('hp', this.potency * this.potencyMultiplier);
-    char.loseStat('armorClass', this.potency);
   }
 }

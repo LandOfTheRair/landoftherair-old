@@ -27,7 +27,7 @@ export class PartyDefense extends Effect {
   }
 
   effectStart(char: Character) {
-    char.gainStat('defense', this.potency);
+    this.gainStat(char, 'defense', this.potency);
   }
 
   effectTick(char: Character) {
@@ -52,9 +52,5 @@ export class PartyDefense extends Effect {
 
     this.effectEnd(char);
     char.unapplyEffect(this);
-  }
-
-  effectEnd(char: Character) {
-    char.loseStat('defense', this.potency);
   }
 }

@@ -62,13 +62,13 @@ export class Poison extends SpellEffect {
 
     if(this.healerCripple) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Offense/Defense penalty.`;
-      char.loseStat('offense', this.healerCripple);
-      char.loseStat('defense', this.healerCripple);
+      this.loseStat(char, 'offense', this.healerCripple);
+      this.loseStat(char, 'defense', this.healerCripple);
     }
 
     if(this.thiefCorrode) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Mitigation penalty.`;
-      char.loseStat('mitigation', this.thiefCorrode);
+      this.loseStat(char, 'mitigation', this.thiefCorrode);
     }
   }
 
@@ -92,14 +92,5 @@ export class Poison extends SpellEffect {
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your body flushed the poison out.');
-
-    if(this.healerCripple) {
-      char.gainStat('offense', this.healerCripple);
-      char.gainStat('defense', this.healerCripple);
-    }
-
-    if(this.thiefCorrode) {
-      char.gainStat('mitigation', this.thiefCorrode);
-    }
   }
 }

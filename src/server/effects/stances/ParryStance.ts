@@ -28,24 +28,16 @@ export class ParryStance extends StanceEffect {
   effectStart(char: Character) {
     MessageHelper.sendClientMessageToRadius(char, `${char.name} takes on a defensive stance.`);
 
-    char.gainStat('weaponArmorClass', this.potency);
-    char.gainStat('defense', Math.floor(this.potency / 4));
-    char.gainStat('mitigation', Math.floor(this.potency / 8));
+    this.gainStat(char, 'weaponArmorClass', this.potency);
+    this.gainStat(char, 'defense', Math.floor(this.potency / 4));
+    this.gainStat(char, 'mitigation', Math.floor(this.potency / 8));
 
-    char.loseStat('offense', Math.floor(this.potency / 2));
-    char.loseStat('accuracy', Math.floor(this.potency / 2));
-    char.loseStat('weaponDamageRolls', Math.floor(this.potency / 2));
+    this.loseStat(char, 'offense', Math.floor(this.potency / 2));
+    this.loseStat(char, 'accuracy', Math.floor(this.potency / 2));
+    this.loseStat(char, 'weaponDamageRolls', Math.floor(this.potency / 2));
   }
 
   effectEnd(char: Character) {
     MessageHelper.sendClientMessageToRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} defensive stance.`);
-
-    char.loseStat('weaponArmorClass', this.potency);
-    char.loseStat('defense', Math.floor(this.potency / 4));
-    char.loseStat('mitigation', Math.floor(this.potency / 8));
-
-    char.gainStat('offense', Math.floor(this.potency / 2));
-    char.gainStat('accuracy', Math.floor(this.potency / 2));
-    char.gainStat('weaponDamageRolls', Math.floor(this.potency / 2));
   }
 }

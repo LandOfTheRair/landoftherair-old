@@ -69,11 +69,11 @@ class ActivePet extends Effect {
   }
 
   effectStart(char: Character) {
-    char.loseStat('weaponArmorClass', Math.floor(this.potency / 2));
-    char.loseStat('armorClass', Math.floor(this.potency / 2));
-    char.loseStat('defense', Math.floor(this.potency / 2));
-    char.loseStat('offense', Math.floor(this.potency / 2));
-    char.loseStat('accuracy', Math.floor(this.potency / 2));
+    this.loseStat(char, 'weaponArmorClass', Math.floor(this.potency / 2));
+    this.loseStat(char, 'armorClass', Math.floor(this.potency / 2));
+    this.loseStat(char, 'defense', Math.floor(this.potency / 2));
+    this.loseStat(char, 'offense', Math.floor(this.potency / 2));
+    this.loseStat(char, 'accuracy', Math.floor(this.potency / 2));
   }
 
   effectTick(char: Character) {
@@ -85,12 +85,6 @@ class ActivePet extends Effect {
 
   effectEnd(char: Character) {
     char.killAllPets();
-
-    char.gainStat('weaponArmorClass', Math.floor(this.potency / 2));
-    char.gainStat('armorClass', Math.floor(this.potency / 2));
-    char.gainStat('defense', Math.floor(this.potency / 2));
-    char.gainStat('offense', Math.floor(this.potency / 2));
-    char.gainStat('accuracy', Math.floor(this.potency / 2));
   }
 }
 

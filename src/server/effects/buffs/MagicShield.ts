@@ -34,13 +34,12 @@ export class MagicShield extends SpellEffect {
 
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'Your skin hardens.');
-    char.gainStat('physicalResist', this.potency * this.potencyMultiplier);
+    this.gainStat(char, 'physicalResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} physical damage.`;
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your skin softens.');
-    char.loseStat('physicalResist', this.potency * this.potencyMultiplier);
   }
 }

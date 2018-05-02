@@ -16,13 +16,11 @@ export class MinerFever extends SpellEffect {
 
   effectStart(char: Character) {
     char.sendClientMessage('You feel a bit woozy.');
-    char.loseStat('hpregen', this.potency);
-    char.loseStat('mpregen', this.potency);
+    this.loseStat(char, 'hpregen', this.potency);
+    this.loseStat(char, 'mpregen', this.potency);
   }
 
   effectEnd(char: Character) {
     char.sendClientMessage('Your headache has cleared.');
-    char.gainStat('hpregen', this.potency);
-    char.gainStat('mpregen', this.potency);
   }
 }

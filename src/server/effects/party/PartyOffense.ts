@@ -27,7 +27,7 @@ export class PartyOffense extends Effect {
   }
 
   effectStart(char: Character) {
-    char.gainStat('offense', this.potency);
+    this.gainStat(char, 'offense', this.potency);
   }
 
   effectTick(char: Character) {
@@ -52,9 +52,5 @@ export class PartyOffense extends Effect {
 
     this.effectEnd(char);
     char.unapplyEffect(this);
-  }
-
-  effectEnd(char: Character) {
-    char.loseStat('offense', this.potency);
   }
 }

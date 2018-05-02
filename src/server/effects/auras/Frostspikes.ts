@@ -34,7 +34,7 @@ export class Frostspikes extends SpellEffect {
 
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'A spiky aura appears around you.');
-    char.gainStat('physicalDamageReflect', this.potency * this.potencyMultiplier);
+    this.gainStat(char, 'physicalDamageReflect', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Physical attackers take ${this.potency * this.potencyMultiplier} damage. Ice aura deals ${this.potency * this.potencyMultiplier} in a 1x1.`;
   }
@@ -54,6 +54,5 @@ export class Frostspikes extends SpellEffect {
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your spiky aura fades.');
-    char.loseStat('physicalDamageReflect', this.potency * this.potencyMultiplier);
   }
 }

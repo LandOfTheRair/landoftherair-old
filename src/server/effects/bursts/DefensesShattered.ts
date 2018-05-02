@@ -33,13 +33,11 @@ export class DefensesShattered extends SpellEffect {
     });
 
     this.effectMessage(char, 'Your defenses have been shattered!');
-    char.loseStat('con', this.potency);
-    char.loseStat('wil', this.secondaryPotency);
+    this.loseStat(char, 'con', this.potency);
+    this.loseStat(char, 'wil', this.secondaryPotency);
   }
 
   effectEnd(char: Character) {
-    char.gainStat('con', this.potency);
-    char.gainStat('wil', this.secondaryPotency);
     const recently = new RecentlyShattered({});
     recently.cast(char, char);
     this.effectMessage(char, 'Your defenses have recovered.');

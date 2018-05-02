@@ -8,8 +8,7 @@ export class DebugReset extends Command {
 
   execute(player: Player) {
     player.clearAllEffects();
-    player.resetAdditionalStats();
-
+    player.recalculateStats();
   }
 
 }

@@ -43,15 +43,12 @@ export class Boost extends SpellEffect {
 
     this.iconData.tooltipDesc = `+${this.potency} STR/DEX/AGI`;
 
-    char.gainStat('str', this.potency);
-    char.gainStat('dex', this.potency);
-    char.gainStat('agi', this.potency);
+    this.gainStat(char, 'str', this.potency);
+    this.gainStat(char, 'dex', this.potency);
+    this.gainStat(char, 'agi', this.potency);
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your boosted physique fades.');
-    char.loseStat('str', this.potency);
-    char.loseStat('dex', this.potency);
-    char.loseStat('agi', this.potency);
   }
 }

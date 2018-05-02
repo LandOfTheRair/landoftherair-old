@@ -26,15 +26,11 @@ export class GemDust extends SpellEffect {
     this.effectMessage(char, `You've been enveloped by the dust of ${this.gemDesc}.`);
 
     Object.keys(this.stats || {}).forEach(stat => {
-      char.gainStat(<StatName>stat, this.stats[stat]);
+      this.gainStat(char, <StatName>stat, this.stats[stat]);
     });
   }
 
   effectEnd(char: Player) {
     this.effectMessage(char, 'Your gem dust has worn off.');
-
-    Object.keys(this.stats || {}).forEach(stat => {
-      char.gainStat(<StatName>stat, -this.stats[stat]);
-    });
   }
 }

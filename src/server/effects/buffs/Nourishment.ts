@@ -33,15 +33,11 @@ export class Nourishment extends SpellEffect {
     if(this.tooltip) this.iconData.tooltipDesc = `Nourished: ${this.tooltip}`;
 
     Object.keys(this.stats || {}).forEach(stat => {
-      char.gainStat(<StatName>stat, this.stats[stat]);
+      this.gainStat(char, <StatName>stat, this.stats[stat]);
     });
   }
 
   effectEnd(char: Player) {
     this.effectMessage(char, 'Your nourishment has worn off.');
-
-    Object.keys(this.stats || {}).forEach(stat => {
-      char.gainStat(<StatName>stat, -this.stats[stat]);
-    });
   }
 }

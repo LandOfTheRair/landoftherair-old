@@ -34,13 +34,12 @@ export class Absorption extends SpellEffect {
 
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'Your body builds a temporary resistance to magic.');
-    char.gainStat('magicalResist', this.potency * this.potencyMultiplier);
+    this.gainStat(char, 'magicalResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} magic damage.`;
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'Your magic resistance fades.');
-    char.loseStat('magicalResist', this.potency * this.potencyMultiplier);
   }
 }

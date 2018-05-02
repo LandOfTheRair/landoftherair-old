@@ -33,11 +33,10 @@ export class Invisible extends SpellEffect {
     this.targetEffectMessage(char, 'You can see through yourself!');
 
     // add some stealth so it triggers transparency on the client
-    char.gainStat('stealth', 1);
+    this.gainStat(char, 'stealth', 1);
   }
 
   effectEnd(char: Character) {
     this.effectMessage(char, 'You are once again opaque.');
-    char.loseStat('stealth', 1);
   }
 }

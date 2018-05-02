@@ -30,10 +30,10 @@ export class TauntStance extends StanceEffect {
 
     const quartered =  Math.floor(this.potency / 4);
 
-    char.loseStat('weaponArmorClass', quartered);
-    char.loseStat('armorClass', quartered);
-    char.loseStat('defense', quartered);
-    char.loseStat('offense', quartered);
+    this.loseStat(char, 'weaponArmorClass', quartered);
+    this.loseStat(char, 'armorClass', quartered);
+    this.loseStat(char, 'defense', quartered);
+    this.loseStat(char, 'offense', quartered);
   }
 
   effectTick(char: Character) {
@@ -44,12 +44,5 @@ export class TauntStance extends StanceEffect {
 
   effectEnd(char: Character) {
     MessageHelper.sendClientMessageToRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} taunting stance.`);
-
-    const quartered =  Math.floor(this.potency / 4);
-
-    char.gainStat('weaponArmorClass', quartered);
-    char.gainStat('armorClass', quartered);
-    char.gainStat('defense', quartered);
-    char.gainStat('offense', quartered);
   }
 }

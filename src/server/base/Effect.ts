@@ -1,5 +1,5 @@
 
-import { Character, SkillClassNames } from '../../shared/models/character';
+import { Character, SkillClassNames, StatName } from '../../shared/models/character';
 import { extend, includes, get } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/world/combat-helper';
@@ -36,6 +36,12 @@ export class Effect {
 
   protected hasSkillRef: boolean;
 
+  private statBoosts: { [key: string]: number };
+
+  public get allBoosts() {
+    return this.statBoosts;
+  }
+
   public get setPotency(): number {
     return this.potency;
   }
@@ -49,6 +55,18 @@ export class Effect {
   constructor(opts) {
     extend(this, opts);
     if(!this.name) this.name = this.constructor.name;
+  }
+
+  public gainStat(char: Character, stat: StatName, value: number) {
+    this.statBoosts = this.statBoosts || {};
+    this.statBoosts[stat] = this.statBoosts[stat] || 0;
+    this.statBoosts[stat] += value;
+
+    char.recalculateStats();
+  }
+
+  public loseStat(char: Character, stat: StatName, value: number) {
+    this.gainStat(char, stat, -value);
   }
 
   public canBeUnapplied() {
