@@ -27,13 +27,19 @@ export const TannerResponses = (npc: NPC) => {
       const ground = npc.$$room.state.getGroundItems(npc.x, npc.y);
       if(!ground.Corpse || !ground.Corpse.length) return 'There are no corpses here!';
 
-      let errMessage = '';
-
       ground.Corpse.forEach(corpse => {
-        if(corpse.$$isPlayerCorpse) return;
+        if(corpse.$$isPlayerCorpse) {
+          player.sendClientMessage(`You cannot tan players! What do I look like, a cannibal?`);
+          return;
+        }
 
         if(!includes(corpse.$$playersHeardDeath, player.username)) {
-          errMessage = 'You didn\'t have a hand in killing that!';
+          player.sendClientMessage(`You didn't have a hand in killing the ${corpse.desc.split('the corpse of a ')[1]}!`);
+          return;
+        }
+
+        if(!corpse.tansFor) {
+          player.sendClientMessage(`I can't make anything out of ${corpse.desc}!`);
           return;
         }
 
@@ -41,18 +47,15 @@ export const TannerResponses = (npc: NPC) => {
         if(corpseNPC) corpseNPC.restore();
         else          npc.$$room.removeItemFromGround(corpse);
 
-        if(!corpse.tansFor) return;
-
         player.$$room.npcLoader.loadItem(corpse.tansFor)
           .then(item => {
             item.setOwner(player);
             npc.$$room.addItemToGround(npc, item);
           });
+
+        player.sendClientMessage(`Here you go, ${player.name}! I've tanned ${corpse.desc} for you.`);
       });
 
-      if(errMessage) return errMessage;
-
-      return `Here you go, ${player.name}!`;
     });
 };
 
