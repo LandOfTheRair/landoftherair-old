@@ -924,6 +924,12 @@ export class Character {
     this.effectsList.forEach(eff => eff.tick(this));
   }
 
+  clearAllEffects() {
+    this.effectsList.forEach(effect => {
+      this.unapplyEffect(effect, true, true);
+    });
+  }
+
   clearEffects() {
     const shouldClearPermanents = !this.hasEffect('Secondwind');
     const noClear = ['Nourishment', 'Malnourished'];
