@@ -147,3 +147,5 @@ export * from './party/PartyHealthRegeneration';
 export * from './party/PartyManaRegeneration';
 export * from './party/PartyOffense';
 export * from './party/PartyDefense';
+
+export * from './map/MinerFever';

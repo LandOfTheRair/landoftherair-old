@@ -28,8 +28,8 @@ export const responses = (npc: NPC) => {
       && npc.$$room.npcLoader.checkPlayerHeldItem(player, FLOWER, 'left')) {
         npc.$$room.npcLoader.takePlayerItem(player, FLOWER, 'right');
         npc.$$room.npcLoader.takePlayerItem(player, FLOWER, 'left');
-        player.gainStat('hpregen', 1);
-        player.gainStat('mpregen', 1);
+        player.gainBaseStat('hpregen', 1);
+        player.gainBaseStat('mpregen', 1);
         player.permanentlyCompleteQuest(QUESTNAME);
         return `Ah, thank you ${player.name}! Here, enjoy your increased regeneration.`;
       }

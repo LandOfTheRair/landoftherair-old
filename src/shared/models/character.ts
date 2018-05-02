@@ -506,16 +506,17 @@ export class Character {
   recalculateStats() {
     this.totalStats = {};
 
-    const allGear = compact(values(this.gear));
-
+    // base stats
     Object.keys(this.stats).forEach(stat => {
       this.totalStats[stat] = this.stats[stat];
     });
 
+    // stats from effects
     Object.keys(this.additionalStats).forEach(stat => {
       this.totalStats[stat] += this.additionalStats[stat];
     });
 
+    // stats from class
     const classStats = Classes[this.baseClass].calcBonusStatsForCharacter(this);
 
     Object.keys(classStats).forEach(stat => {
@@ -543,26 +544,34 @@ export class Character {
       }
     };
 
+    // stats from gear
+    const allGear = compact(values(this.gear));
+
     allGear.forEach(item => {
       if(!item.stats || !this.checkCanEquipWithoutGearCheck(item)) return;
       addStatsForItem(item);
     });
 
+    // stats from hands
     if(this.leftHand && this.leftHand.stats && this.canGetBonusFromItemInHand(this.leftHand))    addStatsForItem(this.leftHand);
     if(this.rightHand && this.rightHand.stats && this.canGetBonusFromItemInHand(this.rightHand)) addStatsForItem(this.rightHand);
 
+    // stats from traits
     this.adjustStatsForTraits();
 
+    // reset hp/mp
     this.hp.maximum = Math.max(1, this.getTotalStat('hp'));
     this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
 
     this.mp.maximum = Math.max(0, this.getTotalStat('mp'));
     this.mp.__current = Math.min(this.mp.__current, this.mp.maximum);
 
+    // if you're hiding, you have a hide penalty
     if(this.totalStats.stealth > 0) {
       this.totalStats.stealth -= this.hidePenalty();
     }
 
+    // always recalculate perception
     this.totalStats.perception += this.perceptionLevel();
   }
 

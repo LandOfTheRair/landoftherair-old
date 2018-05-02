@@ -3,35 +3,7 @@ import { GameWorld } from '../../../../rooms/GameWorld';
 import { FireMist } from '../../../../effects/damagers/FireMist';
 import { NPC } from '../../../../../shared/models/npc';
 import { Player } from '../../../../../shared/models/player';
-import { SpellEffect } from '../../../../base/Effect';
-import { Character } from '../../../../../shared/models/character';
-import { CrazedSaraxaAIBehavior } from '../../../ai/crazedsaraxa';
-
-class MinerFever extends SpellEffect {
-  iconData = {
-    name: 'screaming',
-    color: '#f00',
-    tooltipDesc: 'Temporarily lost some regenerative capacity.'
-  };
-
-  cast(caster: Character, target: Character, skillRef?, ai?: CrazedSaraxaAIBehavior) {
-    this.duration = 15;
-    this.potency = 10;
-    target.applyEffect(this);
-  }
-
-  effectStart(char: Character) {
-    char.sendClientMessage('You feel a bit woozy.');
-    char.loseStat('hpregen', this.potency);
-    char.loseStat('mpregen', this.potency);
-  }
-
-  effectEnd(char: Character) {
-    char.sendClientMessage('Your headache has cleared.');
-    char.gainStat('hpregen', this.potency);
-    char.gainStat('mpregen', this.potency);
-  }
-}
+import { MinerFever } from '../../../../effects/map/MinerFever';
 
 export const events = async (room: GameWorld) => {
 
