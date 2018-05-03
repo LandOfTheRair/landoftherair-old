@@ -4,6 +4,7 @@
   extendedDesc: "a gem container filled with an Antanian gem"
   sprite: 586
   value: 5000
+  binds: true
   containedItems:
     - result: none
       chance: 1

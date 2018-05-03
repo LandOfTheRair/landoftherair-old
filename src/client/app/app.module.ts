@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule, HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 import { NgxAutoScrollDirective } from './ngx-auto-scroll.directive';
 import { DraggableWindowDirective } from './draggable.directive';
@@ -17,6 +18,7 @@ import {
   ModalModule,
   BsDropdownModule
 } from 'ngx-bootstrap';
+
 import { NgDragDropModule } from 'ng-drag-drop';
 import { WalkthroughModule } from 'angular-walkthrough';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -74,10 +76,24 @@ import { ActiveTargetComponent } from './active-target/active-target.component';
 import { PartyComponent } from './party/party.component';
 import { TraitsComponent } from './traits/traits.component';
 
+import { MarketBoardComponent } from './market-board/market-board.component';
+
 import { TradeskillAlchemyComponent } from './tradeskill-alchemy/tradeskill-alchemy.component';
 import { TradeskillSpellforgingComponent } from './tradeskill-spellforging/tradeskill-spellforging.component';
 import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/tradeskill-metalworking.component';
 
+import { environment } from '../environments/environment';
+
+const envUrl = `${environment.server.protocol}://${environment.server.domain}:${environment.server.port}`;
+
+@Injectable()
+class APIInterceptor implements HttpInterceptor {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    const apiReq = req.clone({ url: `${envUrl}/${req.url}` });
+    return next.handle(apiReq);
+  }
+}
 (<any>window).PhaserGlobal = { hideBanner: true };
 
 @NgModule({
@@ -127,6 +143,7 @@ import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/trade
     ActiveTargetComponent,
     PartyComponent,
     TraitsComponent,
+    MarketBoardComponent,
 
     TradeskillAlchemyComponent,
     TradeskillSpellforgingComponent,
@@ -135,7 +152,7 @@ import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/trade
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
 
     ResizableModule,
     ColorPickerModule,
@@ -159,7 +176,12 @@ import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/trade
     ColyseusGameService,
     MacroService,
     AssetService,
-    WindowManagerService
+    WindowManagerService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: APIInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

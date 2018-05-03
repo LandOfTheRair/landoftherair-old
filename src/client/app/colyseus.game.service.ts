@@ -31,6 +31,7 @@ export class ColyseusGameService {
   showTrainer: any = {};
   showShop: any = {};
   showBank: any = {};
+  showMarketBoard: any = {};
 
   showAlchemy: any = {};
   showSpellforging: any = {};
@@ -339,6 +340,7 @@ export class ColyseusGameService {
     if(action === 'update_locker')  return this.updateLocker(other.locker);
     if(action === 'show_lockers')   return this.showLockerWindow(other.lockers, other.lockerId);
     if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId, other.banks);
+    if(action === 'show_mb')        return this.showMarketBoardWindow(other.uuid);
     if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid);
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
     if(action === 'show_ts')        return this.showTradeskillWindow(other.tradeskill, other.uuid);
@@ -455,6 +457,11 @@ export class ColyseusGameService {
     this.showLocker = lockers;
     this.updateActiveWindowForGameWindow('locker');
     this.activeLockerNumber = findIndex(lockers, { lockerId });
+  }
+
+  private showMarketBoardWindow(uuid) {
+    this.showMarketBoard = { uuid };
+    this.updateActiveWindowForGameWindow('marketboard');
   }
 
   private showBankWindow(uuid, bankId, banks) {

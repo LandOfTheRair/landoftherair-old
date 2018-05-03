@@ -27,6 +27,8 @@ class Database {
   public $gameSettings: any;
   public $banks: any;
   public $teleports: any;
+  public $marketListings: any;
+  public $marketPickups: any;
 
   private client: MongoClient;
 
@@ -90,6 +92,12 @@ class Database {
 
     this.$teleports = this.client.collection('teleports');
     this.$teleports.ensureIndex({ username: 1, charSlot: 1, teleport: 1 });
+
+    this.$marketListings = this.client.collection('marketListings');
+    this.$marketListings.ensureIndex({ itemId: 1, quality: 1 });
+
+    this.$marketPickups = this.client.collection('marketPickups');
+    this.$marketPickups.ensureIndex({ username: 1 });
 
     this.clearStaleData();
   }

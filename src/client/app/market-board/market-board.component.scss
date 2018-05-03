@@ -1,0 +1,88 @@
+
+nav {
+  min-height: 42px;
+  max-height: 42px;
+
+  border-bottom: 1px solid #000;
+
+  .options-bar {
+    justify-content: space-between;
+
+    li {
+      min-height: 42px;
+      max-height: 42px;
+
+      &:first-child {
+        border-right: 1px solid #000;
+      }
+
+      &:last-child {
+        border-left: 1px solid #000;
+      }
+
+      width: 33.33%;
+      text-align: center;
+
+      &.active {
+        background-color: darken(#343a40, 10%);
+      }
+    }
+  }
+}
+
+.spinning-loader {
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  app-icon {
+    margin-right: 15px;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+
+.content {
+  height: calc(470px - 42px);
+}
+
+input {
+  border: 1px solid #aaa;
+}
+
+.vertical-center span {
+  margin: 20%;
+  text-align: center;
+}
+
+.buy {
+  .left-side {
+    width: 33.33% !important;
+    border-right: 1px solid #000;
+
+    .buy-header {
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      background-color: darken(#343a40, 10%);
+    }
+  }
+
+  .right-side {
+
+    overflow: auto;
+
+    .listing-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+.item-slot {
+  margin: 5px;
+}

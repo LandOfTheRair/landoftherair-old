@@ -227,7 +227,11 @@ export class AppComponent implements OnInit, AfterViewInit {
       if(this.colyseus.game.showBank.bankId) return true;
 
       if(document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return true;
-      if(this.activeWindow === 'cmd' || this.activeWindow === 'lobby' || this.activeWindow === 'bank') return true;
+
+      if(this.activeWindow === 'cmd'
+      || this.activeWindow === 'lobby'
+      || this.activeWindow === 'bank'
+      || this.activeWindow === 'marketboard') return true;
 
       return false;
     };
@@ -546,7 +550,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.newMessages = 0;
     }
 
-    if(win !== 'commandLine' && win !== 'lobby') {
+    if(win !== 'commandLine' && win !== 'lobby' && win !== 'marketboard') {
       (<HTMLElement>document.activeElement).blur();
     }
   }

@@ -2,4 +2,5 @@
   sprite: 354
   desc: "a small childrens doll"
   value: 0
+  binds: true
   destroyOnDrop: true

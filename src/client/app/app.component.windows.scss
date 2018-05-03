@@ -232,6 +232,15 @@
     }
   }
 
+  &.marketboard {
+    min-width: 850px;
+    max-width: 850px;
+
+    z-index: 1000;
+    min-height: 500px;
+    max-height: 500px;
+  }
+
   position: absolute !important;
 
   border: 1px solid #000;

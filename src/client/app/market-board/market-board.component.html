@@ -1,0 +1,105 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark pr-0 pl-0">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav w-100 options-bar">
+      <li class="nav-item" [class.active]="activeTab === tab" *ngFor="let tab of tabs" (click)="switchTab(tab)">
+        <a class="nav-link">{{ tab }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="d-flex flex-column w-100 content">
+  <ng-template [ngTemplateOutlet]="currentTab"></ng-template>
+</div>
+
+<ng-template #marketBuy>
+
+  <div class="row buy p-0 m-0 h-100">
+    <div class="left-side">
+      <div class="row p-0 m-1 mt-2">
+        <div class="col">
+          <input class="form-control" (input)="changeSearchText()" [(ngModel)]="searchText" placeholder="Search..." />
+        </div>
+      </div>
+
+      <div class="row mt-3 ml-0 mr-0">
+        <div class="col text-center buy-header">Result Sort</div>
+      </div>
+
+      <div class="row ml-3 mr-3 mb-0 mt-1" *ngFor="let sort of sortOptions">
+        <button class="btn btn-info btn-block" [class.btn-outline-info]="currentSort !== sort.sort" (click)="changeSort(sort.sort)">
+          {{ sort.name }}
+        </button>
+      </div>
+
+      <div class="row mt-3 ml-0 mr-0">
+        <div class="col text-center buy-header">Item Type Filter</div>
+      </div>
+
+      <div class="row ml-3 mr-3 mb-0 mt-1">
+        <button class="btn btn-info btn-sm m-1"
+                *ngFor="let filter of filterTags"
+                (click)="toggleFilter(filter)"
+                [class.btn-outline-info]="!filter.isIncluded">
+          {{ filter.name }}
+        </button>
+      </div>
+    </div>
+
+    <div class="col right-side p-0">
+
+      <div class="vertical-center background-text content" *ngIf="buyableItemListings.length === 0">
+
+        <div *ngIf="isLoading" class="vertical-center spinning-loader">
+          <app-icon name="spinning-blades" bgColor="transparent" fgColor="#aaa"></app-icon> Loading...
+        </div>
+
+        <div *ngIf="!isLoading" class="vertical-center">
+          <span *ngIf="isError">You are searching too often, try again in a few seconds.</span>
+          <span *ngIf="!isError">No items are currently for sale that match your search criteria.</span>
+        </div>
+
+      </div>
+
+      <div class="row m-0 p-0" *ngFor="let itemListing of buyableItemListings">
+
+        <div class="col m-0 p-0">
+
+          <div class="item-slot item-background">
+            <app-item [item]="itemListing.itemInfo" [showDesc]="false"></app-item>
+          </div>
+        </div>
+
+        <div class="col-8 m-0 p-0 listing-info">
+          <div>
+            <strong>{{ itemListing.itemId }}</strong>
+            {{ starTextFor(itemListing) }}
+          </div>
+
+          <div>
+            <small><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
+          </div>
+        </div>
+
+        <div class="col m-0 p-0 vertical-center">
+          <button class="btn btn-primary">Buy</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+
+<ng-template #marketSell>
+  Sell
+</ng-template>
+
+<ng-template #marketListings>
+  Listings
+</ng-template>
+
+
+
