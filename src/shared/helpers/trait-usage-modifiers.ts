@@ -45,6 +45,7 @@ export class TraitUsageModifiers {
       case 'StunningFist':        return level * 2;
       case 'MartialAcuity':       return level;
 
+      case 'EnhancedApplications':      return level * 60;
       case 'RecuperatingDebilitation':  return level * 5;
       case 'GlacierStanceImproved':     return level * 0.1;
       case 'VolcanoStanceImproved':     return level * 0.1;

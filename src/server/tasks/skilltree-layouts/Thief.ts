@@ -342,9 +342,13 @@ const ASSASSIN_TREE = {
     unlocks: ['Assassinate']
   },
 
+  EnhancedApplications0: {
+
+  },
+
   // SKILLS
   Apply: {
-    unlocks: ['BetterBackstab0', 'Poison', 'Disease', 'Debilitate']
+    unlocks: ['BetterBackstab0', 'Poison', 'Disease', 'Debilitate', 'EnhancedApplications0']
   },
 
   Assassinate: {

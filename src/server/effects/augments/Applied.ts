@@ -22,7 +22,9 @@ export class Applied extends SpellEffect implements AugmentSpellEffect {
     this.flagUnapply();
     this.flagCasterName(caster.name);
 
-    if(!this.duration) this.duration = 30;
+    if(!this.duration) this.duration = 120;
+
+    this.duration += caster.getTraitLevelAndUsageModifier('EnhancedApplications');
 
     this.aoeAgro(caster, 10);
 
