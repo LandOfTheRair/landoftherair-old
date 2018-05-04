@@ -14,7 +14,7 @@ export class Disease extends SpellEffect {
     tooltipDesc: 'Constantly receiving disease damage.'
   };
 
-  maxSkillForSkillGain = 13;
+  maxSkillForSkillGain = 25;
   skillMults = [[0, 2], [6, 2.5], [11, 3], [16, 3.5], [21, 4]];
 
   private critBonus: number;

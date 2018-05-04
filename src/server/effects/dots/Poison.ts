@@ -14,7 +14,7 @@ export class Poison extends SpellEffect {
     tooltipDesc: 'Constantly receiving poison damage.'
   };
 
-  maxSkillForSkillGain = 7;
+  maxSkillForSkillGain = 25;
   skillMults = [[0, 1], [6, 1.25], [11, 1.5], [16, 1.75], [21, 2]];
 
   private critBonus: number;
