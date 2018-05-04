@@ -115,7 +115,7 @@ export class MarketBoardComponent implements OnInit {
         return prev;
       }, []);
     }
-    
+
     this.http.post('api/market', searchParams)
       .catch(() => {
         this.isLoading = false;

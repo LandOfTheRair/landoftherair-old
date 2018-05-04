@@ -69,7 +69,7 @@ export class SkillTree {
     const myLevel = player.level;
     const mySkill = this.getHighestRelevantSkillLevel(player);
 
-    return myLevel >= (node.requireCharacterLevel || 0) && mySkill > (node.requireSkillLevel || 0);
+    return myLevel >= (node.requireCharacterLevel || 0) && mySkill >= (node.requireSkillLevel || 0);
   }
 
   public isCapableOfRefunding(traitName: string): boolean {
