@@ -46,6 +46,9 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
   // for my listings
   public myListings: any[] = [];
 
+  // for my pickups
+  public myPickups: any[] = [];
+
   private marketBoardRemoveId$: Subscription;
 
   public sortOptions = [
@@ -74,6 +77,10 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     return this.colyseusGame.character;
   }
 
+  get mapRegion() {
+    return this.colyseusGame.showMarketBoard.mapRegion;
+  }
+
   get currentTab() {
     switch(this.activeTab) {
       case 'Buy':           return this.marketBuy;
@@ -84,17 +91,21 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
   }
 
   get listingFeeRate() {
-    return `${Math.floor(MarketCalculatorHelper.getListingFeeForRegion(this.colyseusGame.showMarketBoard.mapRegion) * 100)}%`;
+    return `${Math.floor(MarketCalculatorHelper.getListingFeeForRegion(this.mapRegion) * 100)}%`;
+  }
+
+  get taxRate() {
+    return `${Math.floor(MarketCalculatorHelper.getTaxForRegion(this.mapRegion) * 100)}%`;
   }
 
   get listingFee() {
-    return MarketCalculatorHelper.calculateListingCostForRegion(this.sellValue, this.colyseusGame.showMarketBoard.mapRegion);
+    return MarketCalculatorHelper.calculateListingCostForRegion(this.sellValue, this.mapRegion);
   }
 
   get sellError() {
     // recently initialized, no need to show an error from the onset (but show an empty string because it also isn't ready)
     if(this.sellValue === 0) return ' ';
-    return MarketCalculatorHelper.itemListError(this.player, this.colyseusGame.showMarketBoard.mapRegion, this.player.rightHand, this.sellValue);
+    return MarketCalculatorHelper.itemListError(this.player, this.mapRegion, this.player.rightHand, this.sellValue);
   }
 
   constructor(public colyseusGame: ColyseusGameService, private http: HttpClient) { }
@@ -121,6 +132,10 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
 
     if(newTab === 'My Listings') {
       this.loadMyListings();
+    }
+
+    if(newTab === 'Pick Up') {
+      this.loadMyPickups();
     }
   }
 
@@ -193,8 +208,39 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
       });
   }
 
-  public starTextFor(itemListing) {
-    const quality = itemListing.itemInfo.quality;
+  private loadMyPickups() {
+
+    this.isError = false;
+    this.isLoading = true;
+
+    this.http.post('api/market/pickups', { username: this.player.username })
+      .catch(() => {
+        this.isLoading = false;
+        this.isError = true;
+        this.myPickups = [];
+        return Observable.empty();
+      })
+      .subscribe((data: any) => {
+        this.isLoading = false;
+
+        const allItems = [];
+
+        if(data.gold > 0) {
+          const totalTaxPaid = MarketCalculatorHelper.calculateTaxCostForRegion(data.gold, this.mapRegion);
+          allItems.push({ sprite: 212, value: data.gold, taxes: totalTaxPaid, itemId: `${data.gold.toLocaleString()} Gold`, uuid: 'gold' });
+        }
+
+        if(data.items) {
+          data.items.forEach(itemData => {
+            allItems.push({ sprite: itemData.sprite, quality: itemData.quality, itemId: itemData.itemId, uuid: itemData.uuid });
+          });
+        }
+
+        this.myPickups = allItems;
+      });
+  }
+
+  public starTextFor(quality = 0) {
     return quality - 2 > 0 ? Array(quality - 2).fill('★').join('') : '';
   }
 
@@ -205,7 +251,7 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
   buy(listing: any) {
     (<any>swal)({
       titleText: 'Buy Item',
-      text: `Are you sure you want to buy ${listing.itemId} ${this.starTextFor(listing)} for ${listing.listingInfo.price.toLocaleString()} gold?`,
+      text: `Are you sure you want to buy ${listing.itemId} ${this.starTextFor(listing.itemInfo.quality)} for ${listing.listingInfo.price.toLocaleString()} gold?`,
       showCancelButton: true,
       confirmButtonText: 'Yes, buy it!',
       type: 'warning'
@@ -217,12 +263,17 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
   cancel(listing: any) {
     (<any>swal)({
       titleText: 'Cancel Item Listing',
-      text: `Are you sure you want to CANCEL the listing for ${listing.itemId} ${this.starTextFor(listing)}? Your listing fee will not be refunded.`,
+      text: `Are you sure you want to CANCEL the listing for ${listing.itemId} ${this.starTextFor(listing.itemInfo.quality)}? Your listing fee will not be refunded.`,
       showCancelButton: true,
       confirmButtonText: 'Yes, cancel it!',
       type: 'warning'
     }).then(() => {
       this.colyseusGame.sendRawCommand('buymarketitem', `${this.colyseusGame.showMarketBoard.uuid} ${listing._id}`);
     }).catch(() => {});
+  }
+
+  pickUp(uuid: string) {
+    this.colyseusGame.sendRawCommand('pickupmarketitem', `${this.colyseusGame.showMarketBoard.uuid} ${uuid}`);
+    this.myPickups = reject(this.myPickups, item => item.uuid === uuid);
   }
 }

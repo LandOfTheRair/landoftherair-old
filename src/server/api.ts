@@ -78,6 +78,11 @@ export class GameAPI {
       const items = await this.myMarketboardListings(req.body);
       res.json(items);
     });
+
+    app.use('/api/market/pickups', async (req, res) => {
+      const items = await this.myMarketboardPickups(req.body);
+      res.json(items);
+    });
   }
 
   private async searchMarketboard(opts: any = {}) {
@@ -116,5 +121,10 @@ export class GameAPI {
       .skip(page * PAGE_SIZE)
       .limit(PAGE_SIZE)
       .toArray();
+  }
+
+  private async myMarketboardPickups(opts: any = {}) {
+    return DB.$marketPickups
+      .findOne({ username: opts.username });
   }
 }

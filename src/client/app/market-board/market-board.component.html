@@ -75,7 +75,7 @@
         <div class="col-8 m-0 p-0 listing-info">
           <div>
             <strong>{{ itemListing.itemId }}</strong>
-            {{ starTextFor(itemListing) }}
+            {{ starTextFor(itemListing.itemInfo.quality) }}
           </div>
 
           <div>
@@ -188,7 +188,7 @@
         <div class="col-8 m-0 p-0 listing-info">
           <div>
             <strong>{{ itemListing.itemId }}</strong>
-            {{ starTextFor(itemListing) }}
+            {{ starTextFor(itemListing.itemInfo.quality) }}
           </div>
 
           <div>
@@ -206,7 +206,52 @@
 </ng-template>
 
 <ng-template #marketPickup>
-  Pikcup
+
+  <h6 class="text-center mt-2 mb-2 font-italic">Empty your right hand to receive items!</h6>
+
+  <div class="row buy p-0 m-0 h-100">
+    <div class="col right-side p-0">
+
+      <div class="vertical-center background-text content" *ngIf="myPickups.length === 0">
+
+        <div *ngIf="isLoading" class="vertical-center spinning-loader">
+          <app-icon name="spinning-blades" bgColor="transparent" fgColor="#aaa"></app-icon> Loading...
+        </div>
+
+        <div *ngIf="!isLoading" class="vertical-center">
+          <span *ngIf="isError">You are searching too often, try again in a few seconds.</span>
+          <span *ngIf="!isError">You do not have anything to pick up.</span>
+        </div>
+
+      </div>
+
+      <div class="row m-0 p-0" *ngFor="let itemInfo of myPickups">
+
+        <div class="col m-0 p-0">
+
+          <div class="item-slot item-background">
+            <app-item [item]="itemInfo" [showDesc]="false"></app-item>
+          </div>
+        </div>
+
+        <div class="col-8 m-0 p-0 listing-info">
+          <div>
+            <strong>{{ itemInfo.itemId }}</strong>
+            {{ starTextFor(itemInfo.quality) }}
+          </div>
+
+          <div *ngIf="itemInfo.uuid === 'gold'">
+            <small><em>You will pay {{ itemInfo.taxes | number }} gold after taxes ({{ taxRate }}).</em></small>
+          </div>
+        </div>
+
+        <div class="col m-0 p-0 vertical-center">
+          <button class="btn btn-primary" (click)="pickUp(itemInfo.uuid)" [disabled]="player.rightHand">Pick Up</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 

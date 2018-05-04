@@ -1,4 +1,6 @@
 
+import { find, extend } from 'lodash';
+
 import { DB, stringToObjectId } from '../../database';
 import { Item } from '../../../shared/models/item';
 import { Player } from '../../../shared/models/player';
@@ -12,6 +14,14 @@ export class MarketHelper {
 
   public async removeListingById(id: string) {
     return DB.$marketListings.removeOne({ _id: stringToObjectId(id) });
+  }
+
+  public async numberOfListings(username: string) {
+    return DB.$marketListings.find({ 'listingInfo.seller': username }).count();
+  }
+
+  public async getPickupByUsername(username: string) {
+    return DB.$marketPickups.findOne({ username });
   }
 
   public async addListingPickup(forUsername: string, opts: { gold?: number, itemInfo?: any } = {}) {
@@ -56,6 +66,7 @@ export class MarketHelper {
         sprite: item.sprite,
         itemClass: item.itemClass,
         requirements: item.requirements,
+        uuid: item.uuid,
         itemOverride: {
           quality: item.quality,
           stats: item.stats,
@@ -102,6 +113,30 @@ export class MarketHelper {
     listing.itemInfo.itemId = listing.itemId;
     await this.addListingPickup(player.username, { itemInfo: listing.itemInfo });
     await this.addListingPickup(listing.listingInfo.seller, { gold: listing.listingInfo.price });
+  }
+
+  public async pickupItem(player: Player, itemUUID: string) {
+    const pickupInfo = await this.getPickupByUsername(player.username);
+
+    if(itemUUID === 'gold') {
+      // tax, add to player gold
+      const gainedGold = pickupInfo.gold - MarketCalculatorHelper.calculateTaxCost(player, pickupInfo.gold);
+      player.gold += gainedGold;
+
+      await DB.$marketPickups.update({ username: player.username }, { $set: { gold: 0 } });
+    } else {
+      const itemData = find(pickupInfo.items, { uuid: itemUUID });
+
+      const item = await player.$$room.itemCreator.getItemByName(itemData.itemId);
+
+      item.quality = itemData.itemOverride.quality;
+      extend(item.trait, itemData.itemOverride.trait);
+      extend(item.stats, itemData.itemOverride.stats);
+
+      player.setRightHand(item);
+
+      await DB.$marketPickups.update({ username: player.username }, { $pull: { items: { uuid: itemUUID } } });
+    }
   }
 
 }

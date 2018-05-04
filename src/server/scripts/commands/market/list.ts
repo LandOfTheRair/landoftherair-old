@@ -18,6 +18,11 @@ export class ListMarketItem extends Command {
     const error = player.$$room.marketHelper.itemListError(player, listItem, +listPrice);
     if(error) return player.sendClientMessage(error);
 
+    const numListings = await player.$$room.marketHelper.numberOfListings(player.username);
+    if(numListings >= 5) {
+      return player.sendClientMessage('You have too many items listed on the market board!');
+    }
+
     await player.$$room.marketHelper.listItem(player, listItem, +listPrice);
 
     player.setRightHand(null);

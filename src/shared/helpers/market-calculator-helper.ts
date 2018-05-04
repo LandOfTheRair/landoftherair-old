@@ -17,7 +17,7 @@ export class MarketCalculatorHelper {
     switch(region) {
       case 'GMLand':         return 0.01;
       case 'SubscriberLand': return 0.01;
-      default:               return 0.05;
+      default:               return 0.10;
     }
   }
 
@@ -28,6 +28,15 @@ export class MarketCalculatorHelper {
 
   static calculateListingCost(player: Player, baseCost: number): number {
     return MarketCalculatorHelper.calculateListingCostForRegion(baseCost, player.$$room.mapRegion);
+  }
+
+  static calculateTaxCostForRegion(baseCost: number, region: string) {
+    const listPercent = MarketCalculatorHelper.getTaxForRegion(region);
+    return Math.max(1, Math.floor(baseCost * listPercent));
+  }
+
+  static calculateTaxCost(player: Player, baseCost: number): number {
+    return MarketCalculatorHelper.calculateTaxCostForRegion(baseCost, player.$$room.mapRegion);
   }
 
   static itemListError(player: Player, region: string, item: Item, baseItemListCost: number) {
