@@ -94,11 +94,114 @@
 </ng-template>
 
 <ng-template #marketSell>
-  Sell
+  <div class="sell-grid">
+    <div class="row mt-3">
+      <div class="col text-center">
+        <h2>Sell Item In Right Hand</h2>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col"></div>
+
+      <div class="col-4 d-flex justify-content-center">
+        <div class="item-slot item-background">
+          <app-item [item]="player.rightHand"
+                    [showOunces]="true"
+                    *ngIf="player.rightHand"></app-item>
+        </div>
+      </div>
+      <div class="col-4 vertical-center text-danger text-center" *ngIf="sellError">
+        {{ sellError }}
+      </div>
+      <div class="col-4 vertical-center text-success" *ngIf="!sellError">
+        Ready to sell!
+      </div>
+
+      <div class="col"></div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col"></div>
+      <div class="col-4">
+        <h2 class="text-center">Sell Price</h2>
+      </div>
+      <div class="col-4">
+        <h2 class="text-center">Listing Fee ({{ listingFeeRate }})</h2>
+      </div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col"></div>
+      <div class="col-4 text-center">
+        <input type="number" class="form-control" [(ngModel)]="sellValue" min="1" placeholder="Sell for this much gold..." />
+      </div>
+      <div class="col-4 text-center" [class.text-danger]="listingFee > player.gold">
+        {{ listingFee | number }} gold
+      </div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row mt-3"></div>
+    <div class="row mt-3"></div>
+
+    <div class="row mt-3">
+      <div class="col text-center">
+        <button class="btn btn-primary" [disabled]="sellError">List this item!</button>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #marketListings>
-  Listings
+  <div class="row buy p-0 m-0 h-100">
+    <div class="col right-side p-0">
+
+      <div class="vertical-center background-text content" *ngIf="myListings.length === 0">
+
+        <div *ngIf="isLoading" class="vertical-center spinning-loader">
+          <app-icon name="spinning-blades" bgColor="transparent" fgColor="#aaa"></app-icon> Loading...
+        </div>
+
+        <div *ngIf="!isLoading" class="vertical-center">
+          <span *ngIf="isError">You are searching too often, try again in a few seconds.</span>
+          <span *ngIf="!isError">You do not have any listings on the market board.</span>
+        </div>
+
+      </div>
+
+      <div class="row m-0 p-0" *ngFor="let itemListing of myListings">
+
+        <div class="col m-0 p-0">
+
+          <div class="item-slot item-background">
+            <app-item [item]="itemListing.itemInfo" [showDesc]="false"></app-item>
+          </div>
+        </div>
+
+        <div class="col-8 m-0 p-0 listing-info">
+          <div>
+            <strong>{{ itemListing.itemId }}</strong>
+            {{ starTextFor(itemListing) }}
+          </div>
+
+          <div>
+            <small><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
+          </div>
+        </div>
+
+        <div class="col m-0 p-0 vertical-center">
+          <button class="btn btn-primary">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #marketPickup>
+  Pikcup
 </ng-template>
 
 

@@ -13,7 +13,7 @@ export class MarketHelper {
   public itemListError(player: Player, item: Item, baseItemListCost: number): string {
     if(player.$$room.subscriptionHelper.isTester(player)) return 'Test accounts cannot list items.';
 
-    return MarketCalculatorHelper.itemListError(player, item, baseItemListCost);
+    return MarketCalculatorHelper.itemListError(player, player.$$room.mapRegion, item, baseItemListCost);
   }
 
   public async listItem(player: Player, item: Item, baseItemListCost: number) {

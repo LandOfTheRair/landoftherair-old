@@ -12,6 +12,8 @@ import { drawNormal as drawNormalArmor } from './tasks/analysis/_armor';
 import { drawNormal as drawNormalWeapon, drawSpecial as drawSpecialWeapon } from './tasks/analysis/_weapons';
 import { drawPremium } from './tasks/analysis/_premium';
 
+const PAGE_SIZE = 50;
+
 export class GameAPI {
 
   public expressApp: any;
@@ -67,15 +69,18 @@ export class GameAPI {
 
     app.use('/api/', limiter);
 
-    app.use('/api/market', async (req, res) => {
+    app.use('/api/market/all', async (req, res) => {
       const items = await this.searchMarketboard(req.body);
+      res.json(items);
+    });
+
+    app.use('/api/market/mine', async (req, res) => {
+      const items = await this.myMarketboardListings(req.body);
       res.json(items);
     });
   }
 
   private async searchMarketboard(opts: any = {}) {
-
-    const PAGE_SIZE = 50;
 
     const page = +(opts.page || 0);
     const sort = opts.sort || { 'listingInfo.listedAt': -1 };
@@ -94,6 +99,19 @@ export class GameAPI {
 
     return DB.$marketListings
       .find(query)
+      .sort(sort)
+      .skip(page * PAGE_SIZE)
+      .limit(PAGE_SIZE)
+      .toArray();
+  }
+
+  private async myMarketboardListings(opts: any = {}) {
+
+    const page = +(opts.page || 0);
+    const sort = opts.sort || { 'listingInfo.listedAt': -1 };
+
+    return DB.$marketListings
+      .find({ 'listingInfo.seller': opts.username })
       .sort(sort)
       .skip(page * PAGE_SIZE)
       .limit(PAGE_SIZE)

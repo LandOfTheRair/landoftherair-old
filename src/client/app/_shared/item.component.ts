@@ -339,6 +339,8 @@ export class ItemComponent implements OnInit {
 
   automaticallyTakeActionBasedOnOpenWindows() {
 
+    if(!this.context) return;
+
     if(this.colyseusGame.showShop.uuid) {
 
       if(this.context === 'Sack' || this.context === 'Belt' || this.context === 'DemiMagicPouch') {

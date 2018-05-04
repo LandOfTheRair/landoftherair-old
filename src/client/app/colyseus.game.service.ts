@@ -340,7 +340,7 @@ export class ColyseusGameService {
     if(action === 'update_locker')  return this.updateLocker(other.locker);
     if(action === 'show_lockers')   return this.showLockerWindow(other.lockers, other.lockerId);
     if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId, other.banks);
-    if(action === 'show_mb')        return this.showMarketBoardWindow(other.uuid);
+    if(action === 'show_mb')        return this.showMarketBoardWindow(other.uuid, other.mapRegion);
     if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid);
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
     if(action === 'show_ts')        return this.showTradeskillWindow(other.tradeskill, other.uuid);
@@ -459,8 +459,8 @@ export class ColyseusGameService {
     this.activeLockerNumber = findIndex(lockers, { lockerId });
   }
 
-  private showMarketBoardWindow(uuid) {
-    this.showMarketBoard = { uuid };
+  private showMarketBoardWindow(uuid, mapRegion) {
+    this.showMarketBoard = { uuid, mapRegion };
     this.updateActiveWindowForGameWindow('marketboard');
   }
 
@@ -624,6 +624,7 @@ export class ColyseusGameService {
     this.showTrainer = {};
     this.showShop = {};
     this.showBank = {};
+    this.showMarketBoard = {};
     this.showLocker = [];
 
     VALID_TRADESKILLS.forEach(tradeskill => {
@@ -674,6 +675,8 @@ export class ColyseusGameService {
   }
 
   public async buildAction(item, { context, contextSlot, containerUUID, isStackableMaterial }, choice) {
+    if(!context) return;
+
     const contextStr = context.substring(0, 1);
     const choiceStr = choice.substring(0, 1);
     const cmd = `~${contextStr}t${choiceStr}`;

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import debounce from 'debounce-decorator';
 import { Observable } from 'rxjs/Observable';
 import { ArmorClasses, WeaponClasses } from '../../../shared/models/item';
+import { MarketCalculatorHelper } from '../../../shared/helpers/market-calculator-helper';
 
 @Component({
   selector: 'app-market-board',
@@ -22,13 +23,24 @@ export class MarketBoardComponent implements OnInit {
   @ViewChild('marketListings')
   public marketListings;
 
+  @ViewChild('marketPickup')
+  public marketPickup;
+
   public activeTab = 'Buy';
-  public tabs = ['Buy', 'Sell', 'My Listings'];
+  public tabs = ['Buy', 'Sell', 'My Listings', 'Pick Up'];
 
   public isLoading: boolean;
   public isError: boolean;
+
+  // for buying
   public buyableItemListings: any[] = [];
   public searchText = '';
+
+  // for sell
+  public sellValue = 0;
+
+  // for my listings
+  public myListings: any[] = [];
 
   public sortOptions = [
     { name: 'Most Recent',        sort: { 'listingInfo.listedAt': -1 } },
@@ -60,7 +72,20 @@ export class MarketBoardComponent implements OnInit {
       case 'Buy':           return this.marketBuy;
       case 'Sell':          return this.marketSell;
       case 'My Listings':   return this.marketListings;
+      case 'Pick Up':       return this.marketPickup;
     }
+  }
+
+  get listingFeeRate() {
+    return `${Math.floor(MarketCalculatorHelper.getListingFeeForRegion(this.colyseusGame.showMarketBoard.mapRegion) * 100)}%`;
+  }
+
+  get listingFee() {
+    return MarketCalculatorHelper.calculateListingCostForRegion(this.sellValue, this.colyseusGame.showMarketBoard.mapRegion);
+  }
+
+  get sellError() {
+    return MarketCalculatorHelper.itemListError(this.player, this.colyseusGame.showMarketBoard.mapRegion, this.player.rightHand, this.sellValue);
   }
 
   constructor(public colyseusGame: ColyseusGameService, private http: HttpClient) { }
@@ -75,6 +100,10 @@ export class MarketBoardComponent implements OnInit {
     if(newTab === 'Buy') {
       this.changeSort(this.sortOptions[0].sort);
       this.loadBuyOptions();
+    }
+
+    if(newTab === 'My Listings') {
+      this.loadMyListings();
     }
   }
 
@@ -116,7 +145,7 @@ export class MarketBoardComponent implements OnInit {
       }, []);
     }
 
-    this.http.post('api/market', searchParams)
+    this.http.post('api/market/all', searchParams)
       .catch(() => {
         this.isLoading = false;
         this.isError = true;
@@ -126,6 +155,24 @@ export class MarketBoardComponent implements OnInit {
       .subscribe((data: any[]) => {
         this.isLoading = false;
         this.buyableItemListings = data;
+      });
+  }
+
+  private loadMyListings() {
+
+    this.isError = false;
+    this.isLoading = true;
+
+    this.http.post('api/market/mine', { username: this.player.username })
+      .catch(() => {
+        this.isLoading = false;
+        this.isError = true;
+        this.myListings = [];
+        return Observable.empty();
+      })
+      .subscribe((data: any[]) => {
+        this.isLoading = false;
+        this.myListings = data;
       });
   }
 

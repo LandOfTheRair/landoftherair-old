@@ -524,7 +524,7 @@ export class GameWorld extends Room<GameState> {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_mb', uuid: npc.uuid });
+    this.send(client, { action: 'show_mb', uuid: npc.uuid, mapRegion: this.mapRegion });
   }
 
   showMetalworkingWindow(player: Player, npc: NPC) {

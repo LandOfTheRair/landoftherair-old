@@ -12,15 +12,11 @@ nav {
       min-height: 42px;
       max-height: 42px;
 
-      &:first-child {
+      &:not(:last-child) {
         border-right: 1px solid #000;
       }
 
-      &:last-child {
-        border-left: 1px solid #000;
-      }
-
-      width: 33.33%;
+      width: 25%;
       text-align: center;
 
       &.active {

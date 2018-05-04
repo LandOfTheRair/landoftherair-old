@@ -5792,7 +5792,7 @@
                  "gid":2632,
                  "height":64,
                  "id":1233,
-                 "name":"Steelrose Trader",
+                 "name":"Steelrose Agent",
                  "properties":
                     {
                      "script":"global\/trader"
