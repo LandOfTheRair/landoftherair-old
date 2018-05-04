@@ -149,9 +149,9 @@ export class Item {
   // username ref
   owner?: string;
 
-  tier = 0;
+  tier: number;
 
-  ounces = 0;
+  ounces: number;
   value = 0;
   maxEncrusts?: number;
   _buybackValue?: number;
@@ -161,13 +161,13 @@ export class Item {
   type = 'Martial';
   secondaryType: string;
 
-  twoHanded = false;
-  proneChance = 0;
+  twoHanded: boolean;
+  proneChance: number;
 
-  isBeltable = false;
+  isBeltable: boolean;
   isSackable = true;
 
-  attackRange = 0;
+  attackRange: number;
   offhand: boolean;
   returnsOnThrow: boolean;
   binds: boolean;

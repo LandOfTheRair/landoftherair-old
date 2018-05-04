@@ -1,5 +1,5 @@
 
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectID } from 'mongodb';
 import { Logger } from './logger';
 
 const DB_URI = process.env.MONGODB_URI;
@@ -108,3 +108,4 @@ class Database {
 }
 
 export const DB = new Database();
+export const stringToObjectId = (str: string) => new ObjectID(str);

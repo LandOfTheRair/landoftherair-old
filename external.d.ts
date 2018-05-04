@@ -54,6 +54,11 @@ declare module 'mongodb' {
 
     collection(str: string): any;
   }
+
+  export class ObjectID {
+    constructor(str: string);
+  }
+
 }
 
 declare module 'roman-numerals' {

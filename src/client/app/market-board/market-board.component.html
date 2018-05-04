@@ -79,12 +79,12 @@
           </div>
 
           <div>
-            <small><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
+            <small [class.text-danger]="itemListing.listingInfo.price > player.gold"><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
           </div>
         </div>
 
         <div class="col m-0 p-0 vertical-center">
-          <button class="btn btn-primary">Buy</button>
+          <button class="btn btn-primary" [disabled]="itemListing.listingInfo.price > player.gold" (click)="buy(itemListing)">Buy</button>
         </div>
 
       </div>
@@ -153,7 +153,7 @@
 
     <div class="row mt-3">
       <div class="col text-center">
-        <button class="btn btn-primary" [disabled]="sellError">List this item!</button>
+        <button class="btn btn-primary" [disabled]="sellError" (click)="list()">List this item!</button>
       </div>
     </div>
   </div>
@@ -197,7 +197,7 @@
         </div>
 
         <div class="col m-0 p-0 vertical-center">
-          <button class="btn btn-primary">Cancel</button>
+          <button class="btn btn-primary" (click)="cancel(itemListing)">Cancel</button>
         </div>
 
       </div>

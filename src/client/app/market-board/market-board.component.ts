@@ -1,18 +1,22 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { HttpClient } from '@angular/common/http';
 
+import { reject } from 'lodash';
+
 import debounce from 'debounce-decorator';
-import { Observable } from 'rxjs/Observable';
-import { ArmorClasses, WeaponClasses } from '../../../shared/models/item';
+import { Observable } from 'rxjs/Rx';
+import { EquippableItemClasses, WeaponClasses } from '../../../shared/models/item';
 import { MarketCalculatorHelper } from '../../../shared/helpers/market-calculator-helper';
+import * as swal from 'sweetalert2';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-market-board',
   templateUrl: './market-board.component.html',
   styleUrls: ['./market-board.component.scss']
 })
-export class MarketBoardComponent implements OnInit {
+export class MarketBoardComponent implements OnInit, OnDestroy {
 
   @ViewChild('marketBuy')
   public marketBuy;
@@ -42,6 +46,8 @@ export class MarketBoardComponent implements OnInit {
   // for my listings
   public myListings: any[] = [];
 
+  private marketBoardRemoveId$: Subscription;
+
   public sortOptions = [
     { name: 'Most Recent',        sort: { 'listingInfo.listedAt': -1 } },
     { name: 'Least Recent',       sort: { 'listingInfo.listedAt': 1 } },
@@ -50,12 +56,13 @@ export class MarketBoardComponent implements OnInit {
   ];
 
   public filterTags: Array<{ name: string, includedTypes: string[], isIncluded?: boolean }> = [
-    { name: 'Armor',          includedTypes: ArmorClasses },
     { name: 'Bottles',        includedTypes: ['Bottle'] },
     { name: 'Food',           includedTypes: ['Food'] },
+    { name: 'Gear',           includedTypes: EquippableItemClasses },
     { name: 'Gems',           includedTypes: ['Gem'] },
     { name: 'Misc',           includedTypes: ['Box', 'Book', 'Skull', 'Key'] },
     { name: 'Reagents',       includedTypes: ['Flower', 'Rock'] },
+    { name: 'Rings',          includedTypes: ['Ring'] },
     { name: 'Scrolls',        includedTypes: ['Scroll'] },
     { name: 'Traps',          includedTypes: ['Trap'] },
     { name: 'Weapons',        includedTypes: WeaponClasses }
@@ -85,6 +92,8 @@ export class MarketBoardComponent implements OnInit {
   }
 
   get sellError() {
+    // recently initialized, no need to show an error from the onset (but show an empty string because it also isn't ready)
+    if(this.sellValue === 0) return ' ';
     return MarketCalculatorHelper.itemListError(this.player, this.colyseusGame.showMarketBoard.mapRegion, this.player.rightHand, this.sellValue);
   }
 
@@ -92,6 +101,14 @@ export class MarketBoardComponent implements OnInit {
 
   ngOnInit() {
     this.switchTab('Buy');
+    this.marketBoardRemoveId$ = this.colyseusGame.marketboardRemove$.subscribe((listingId) => {
+      this.buyableItemListings = reject(this.buyableItemListings, listing => listing._id === listingId);
+      this.myListings = reject(this.myListings, listing => listing._id === listingId);
+    });
+  }
+
+  ngOnDestroy() {
+    this.marketBoardRemoveId$.unsubscribe();
   }
 
   switchTab(newTab) {
@@ -182,6 +199,30 @@ export class MarketBoardComponent implements OnInit {
   }
 
   list() {
-    this.colyseusGame.sendRawCommand('listmarketitem', this.colyseusGame.showMarketBoard.uuid);
+    this.colyseusGame.sendRawCommand('listmarketitem', `${this.colyseusGame.showMarketBoard.uuid} ${this.sellValue}`);
+  }
+
+  buy(listing: any) {
+    (<any>swal)({
+      titleText: 'Buy Item',
+      text: `Are you sure you want to buy ${listing.itemId} ${this.starTextFor(listing)} for ${listing.listingInfo.price.toLocaleString()} gold?`,
+      showCancelButton: true,
+      confirmButtonText: 'Yes, buy it!',
+      type: 'warning'
+    }).then(() => {
+      this.colyseusGame.sendRawCommand('buymarketitem', `${this.colyseusGame.showMarketBoard.uuid} ${listing._id}`);
+    }).catch(() => {});
+  }
+
+  cancel(listing: any) {
+    (<any>swal)({
+      titleText: 'Cancel Item Listing',
+      text: `Are you sure you want to CANCEL the listing for ${listing.itemId} ${this.starTextFor(listing)}? Your listing fee will not be refunded.`,
+      showCancelButton: true,
+      confirmButtonText: 'Yes, cancel it!',
+      type: 'warning'
+    }).then(() => {
+      this.colyseusGame.sendRawCommand('buymarketitem', `${this.colyseusGame.showMarketBoard.uuid} ${listing._id}`);
+    }).catch(() => {});
   }
 }

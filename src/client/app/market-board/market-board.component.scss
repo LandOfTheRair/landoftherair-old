@@ -20,7 +20,8 @@ nav {
       text-align: center;
 
       &.active {
-        background-color: darken(#343a40, 10%);
+        background-color: #444;
+        font-weight: 500;
       }
     }
   }

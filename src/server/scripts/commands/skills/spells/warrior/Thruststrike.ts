@@ -33,7 +33,7 @@ export class Thruststrike extends Skill {
 
     if(weapon.twoHanded && attacker.leftHand) return -1;
 
-    return weapon.attackRange;
+    return weapon.attackRange || 0;
   }
 
   execute(user: Player, { args }) {

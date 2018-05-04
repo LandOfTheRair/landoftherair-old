@@ -1043,4 +1043,8 @@ export class GameWorld extends Room<GameState> {
     this.events[name].dispatch(args);
   }
 
+  public broadcastBoughtListing(listingId: string) {
+    this.broadcast({ action: 'mb_bought', listingId });
+  }
+
 }

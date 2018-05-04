@@ -123,12 +123,12 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
 
         if(char.rightHand) {
           npc.rightHand = new Item(char.rightHand);
-          npc.rightHand.tier = Math.max(1, npc.rightHand.tier - 1);
+          npc.rightHand.tier = Math.max(1, (npc.rightHand.tier || 0) - 1);
         }
 
         if(char.leftHand) {
           npc.leftHand = new Item(char.leftHand);
-          npc.leftHand.tier = Math.max(1, npc.leftHand.tier - 1);
+          npc.leftHand.tier = Math.max(1, (npc.leftHand.tier || 0) - 1);
         }
 
         // make them know each other

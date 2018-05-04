@@ -40,9 +40,8 @@ export class MarketCalculatorHelper {
     || isNaN(baseItemListCost)
     || baseItemListCost <= 0)                 return 'Invalid listing cost.';
 
-    if(item.encrust)                          return 'Item is encrusted.';
-    if(item.owner)                            return 'Item is bound.';
-    if(item.quality > 0 && item.quality < 5)  return 'Item cannot be sold as-is due to RNG.';
+    if(item.encrust)                          return 'Item is encrusted, and cannot be sold.';
+    if(item.owner)                            return 'Item is bound, and cannot be sold.';
 
     const gold = player.gold;
 

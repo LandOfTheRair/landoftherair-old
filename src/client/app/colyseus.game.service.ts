@@ -56,6 +56,7 @@ export class ColyseusGameService {
   public cfx$ = new Subject(); // combat effects
   public myLoc$ = new Subject();
   public tour$ = new Subject();
+  public marketboardRemove$ = new Subject();
 
   public get skillTree$() {
     return this.clientGameState.skillTree$;
@@ -341,6 +342,7 @@ export class ColyseusGameService {
     if(action === 'show_lockers')   return this.showLockerWindow(other.lockers, other.lockerId);
     if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId, other.banks);
     if(action === 'show_mb')        return this.showMarketBoardWindow(other.uuid, other.mapRegion);
+    if(action === 'mb_bought')      return this.resyncMarketboardItems(other.listingId);
     if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid);
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
     if(action === 'show_ts')        return this.showTradeskillWindow(other.tradeskill, other.uuid);
@@ -359,6 +361,10 @@ export class ColyseusGameService {
     if(action === 'take_tour')      return this.takeTour();
     if(action === 'combat_log')     return this.updateCombatLogRecordingSettings(other);
     if(action === 'skill_tree')     return this.updateSkillTree(other.skillTree);
+  }
+
+  private resyncMarketboardItems(removeListingId: string) {
+    this.marketboardRemove$.next(removeListingId);
   }
 
   private updateSkillTree(skillTree) {
