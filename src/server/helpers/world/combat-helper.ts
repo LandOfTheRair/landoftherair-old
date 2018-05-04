@@ -317,7 +317,7 @@ export class CombatHelper {
 
     let offhandMultiplier = 1;
     if(isOffhand) {
-      offhandMultiplier = 0.3 + attacker.getTraitLevelAndUsageModifier('OffhandFinesse');
+      offhandMultiplier = 0.2 + attacker.getTraitLevelAndUsageModifier('OffhandFinesse');
     }
 
     const attackerName = isAttackerVisible ? attacker.name : 'somebody';
@@ -644,7 +644,7 @@ export class CombatHelper {
     let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}..${damageRollMinimum}`)) + damageBoost;
 
     if(isOffhand) {
-      damage = Math.floor(damage / offhandDivisor);
+      damage = Math.floor(damage * offhandMultiplier);
     }
 
     const thiefSkill = attacker.calcSkillLevel(SkillClassNames.Thievery);
@@ -1072,7 +1072,7 @@ export class CombatHelper {
     switch(debuffName) {
       case 'BuildupHeat':           return attacker.getTraitLevelAndUsageModifier('ForgedFire') * 3;
       case 'BuildupChill':          return attacker.getTraitLevelAndUsageModifier('FrostedTouch') * 3;
-      case 'BuildupSneakAttack':    return -attacker.getTraitLevelAndUsageModifier('ShadowRanger') / 8;
+      case 'BuildupSneakAttack':    return -Math.max(attacker.getTraitLevelAndUsageModifier('ShadowRanger'), 5) / 8;
     }
 
     return 0;
@@ -1084,7 +1084,7 @@ export class CombatHelper {
     switch(debuffName) {
       case 'BuildupHeat':           return attacker.getTraitLevelAndUsageModifier('ForgedFire');
       case 'BuildupChill':          return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
-      case 'BuildupSneakAttack':    return -attacker.getTraitLevelAndUsageModifier('ShadowRanger') / 10;
+      case 'BuildupSneakAttack':    return -Math.max(attacker.getTraitLevelAndUsageModifier('ShadowRanger'), 5) / 10;
     }
 
     return 0;
@@ -1125,6 +1125,10 @@ export class CombatHelper {
     let targetEffect = defender.hasEffect(debuff);
     const bonusIncrease = this.elementalBoostValue(attacker, debuff);
     let debuffIncrease = Math.max(5, 25 + bonusIncrease);
+
+    if(debuff === 'BuildupSneakAttack') {
+      console.log(this.elementalBoostValue(attacker, debuff), this.elementalDecayRateValue(attacker, debuff))
+    }
 
     // if thief and offhand weapon, do ~half boost for each hand
     if(debuff === 'BuildupSneakAttack' && get(attacker, 'leftHand.offhand')) {
