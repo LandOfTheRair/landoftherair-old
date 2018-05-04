@@ -222,11 +222,17 @@
   otherStats:
     perception: 150
 
-  rightHand: Risan Mines Spirit Shortsword
+  rightHand:
+    - result: Risan Mines Spirit Shortsword
+      chance: 5000
+    - result: Risan Mines Rare Spirit Shortsword
+      chance: 1
   leftHand:
     - result: none
-      chance: 30
+      chance: 3000
     - result: Risan Mines Spirit Shortsword
+      chance: 100
+    - result: Risan Mines Rare Spirit Shortsword
       chance: 1
 
   gear:
@@ -315,11 +321,17 @@
     accuracy: -3
     perception: 150
 
-  rightHand: Risan Mines Spirit Shortsword
+  rightHand:
+    - result: Risan Mines Spirit Shortsword
+      chance: 5000
+    - result: Risan Mines Rare Spirit Shortsword
+      chance: 1
   leftHand:
     - result: none
-      chance: 5
+      chance: 3000
     - result: Risan Mines Spirit Shortsword
+      chance: 100
+    - result: Risan Mines Rare Spirit Shortsword
       chance: 1
 
   gear:
@@ -405,7 +417,11 @@
     perception: 150
 
   rightHand: Risan Mines Spirit Shortsword
-  leftHand: Risan Mines Spirit Shortsword
+  leftHand:
+    - result: Risan Mines Spirit Shortsword
+      chance: 4000
+    - result: Risan Mines Rare Spirit Shortsword
+      chance: 1
 
   gear:
     Armor: Risan Trash Tunic
