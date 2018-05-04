@@ -1027,3 +1027,16 @@ export const MPDocResponses = (npc: NPC) => {
       return `Gained ${totalMPGained} magic forces! Cost ${totalCost.toLocaleString()} gold!`;
     });
 };
+
+export const TraderResponses = (npc: NPC) => {
+
+  npc.parser.addCommand('hello')
+    .set('syntax', ['hello'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+      npc.$$room.showMarketBoard(player, npc);
+
+      return `${player.name}, hello! Welcome to the Steelrose Trading Company. I'll be your agent today, how can I help you?`;
+    });
+
+};

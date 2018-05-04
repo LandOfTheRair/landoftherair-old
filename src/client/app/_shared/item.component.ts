@@ -231,7 +231,7 @@ export class ItemComponent implements OnInit {
     if(this.item.condition <= 0)     return 'glow-black';
     if(this.item.condition <= 5000)  return 'glow-red';
     if(this.item.condition <= 10000) return 'glow-yellow';
-    return '';
+    return 'glow-none';
   }
 
   get spriteLocation() {
@@ -338,6 +338,8 @@ export class ItemComponent implements OnInit {
   }
 
   automaticallyTakeActionBasedOnOpenWindows() {
+
+    if(!this.context) return;
 
     if(this.colyseusGame.showShop.uuid) {
 

@@ -11,7 +11,7 @@ export enum SubscriptionTier {
 }
 
 export type SilverPurchase =
-  'MorePotions' | 'MoreCharacters'
+  'MorePotions' | 'MoreCharacters' | 'MoreMarketboard'
 | 'BiggerBelt' | 'BiggerSack' | 'ExpandedStorage'
 | 'SharedLockers' | 'MagicPouch'
 | 'FestivalXP' | 'FestivalSkill' | 'FestivalGold' | 'FestivalTrait';

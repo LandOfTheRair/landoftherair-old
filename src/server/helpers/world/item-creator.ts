@@ -59,7 +59,7 @@ export class ItemCreator {
 
     if(percentileValues.length > 0) {
       const overallQuality = Math.max(1, Math.floor(sum(percentileValues) / percentileValues.length));
-      potentialItem.quality = overallQuality;
+      potentialItem.quality = Math.max(1, overallQuality);
     }
 
     if(room) {

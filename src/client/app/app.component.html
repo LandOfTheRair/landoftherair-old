@@ -501,6 +501,24 @@
     <app-tradeskill-metalworking></app-tradeskill-metalworking>
   </ng-template>
 
+  <app-window *ngIf="inGame && colyseus.game.showMarketBoard.uuid"
+              windowName="marketboard"
+              [otherWindowClasses]="'marketboard above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="colyseus.game.showMarketBoard = {}"
+              [headTemplate]="marketboardHead"
+              [bodyTemplate]="marketboardBody"
+  ></app-window>
+
+  <ng-template #marketboardHead>
+    Market Board
+  </ng-template>
+
+  <ng-template #marketboardBody>
+    <app-market-board></app-market-board>
+  </ng-template>
+
 </div>
 
 <div class="modal fade" bsModal #options="bs-modal" tabindex="-1">

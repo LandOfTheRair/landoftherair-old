@@ -37,6 +37,7 @@ import { MoveHelper } from '../helpers/character/move-helper';
 import { TeleportHelper } from '../helpers/world/teleport-helper';
 import { Signal } from 'signals.js';
 import { SkillTreeHelper } from '../helpers/skill-trees/skill-tree-helper';
+import { MarketHelper } from '../helpers/world/market-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-miss' | 'block-shield' | 'block-weapon' | 'block-offhand';
@@ -79,6 +80,7 @@ export class GameWorld extends Room<GameState> {
   public subscriptionHelper: SubscriptionHelper;
   public npcLoader: NPCLoader;
   public lockerHelper: LockerHelper;
+  private marketHelper: MarketHelper;
 
   public get groundItemCount(): number {
     return this.groundHelper.numberOfItems;
@@ -186,6 +188,7 @@ export class GameWorld extends Room<GameState> {
     this.subscriptionHelper = new SubscriptionHelper();
     this.npcLoader = new NPCLoader();
     this.lockerHelper = new LockerHelper();
+    this.marketHelper = new MarketHelper();
 
     this.setPatchRate(1000);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
@@ -515,6 +518,13 @@ export class GameWorld extends Room<GameState> {
     if(!client) return;
 
     this.send(client, { action: 'show_ts', tradeskill: 'Spellforging', uuid: npc.uuid });
+  }
+
+  showMarketBoard(player: Player, npc: NPC) {
+    const client = this.findClient(player);
+    if(!client) return;
+
+    this.send(client, { action: 'show_mb', uuid: npc.uuid, mapRegion: this.mapRegion });
   }
 
   showMetalworkingWindow(player: Player, npc: NPC) {
@@ -1031,6 +1041,10 @@ export class GameWorld extends Room<GameState> {
     if(!this.events[name]) throw new Error(`Event ${name} is not created on world!`);
 
     this.events[name].dispatch(args);
+  }
+
+  public broadcastBoughtListing(listingId: string) {
+    this.broadcast({ action: 'mb_bought', listingId });
   }
 
 }

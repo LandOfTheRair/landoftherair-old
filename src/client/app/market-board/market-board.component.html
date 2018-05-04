@@ -1,0 +1,258 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark pr-0 pl-0">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav w-100 options-bar">
+      <li class="nav-item" [class.active]="activeTab === tab" *ngFor="let tab of tabs" (click)="switchTab(tab)">
+        <a class="nav-link">{{ tab }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="d-flex flex-column w-100 content">
+  <ng-template [ngTemplateOutlet]="currentTab"></ng-template>
+</div>
+
+<ng-template #marketBuy>
+
+  <div class="row buy p-0 m-0 h-100">
+    <div class="left-side">
+      <div class="row p-0 m-1 mt-2">
+        <div class="col">
+          <input class="form-control" (input)="changeSearchText()" [(ngModel)]="searchText" placeholder="Search..." />
+        </div>
+      </div>
+
+      <div class="row mt-3 ml-0 mr-0">
+        <div class="col text-center buy-header">Result Sort</div>
+      </div>
+
+      <div class="row ml-3 mr-3 mb-0 mt-1" *ngFor="let sort of sortOptions">
+        <button class="btn btn-info btn-block" [class.btn-outline-info]="currentSort !== sort.sort" (click)="changeSort(sort.sort)">
+          {{ sort.name }}
+        </button>
+      </div>
+
+      <div class="row mt-3 ml-0 mr-0">
+        <div class="col text-center buy-header">Item Type Filter</div>
+      </div>
+
+      <div class="row ml-3 mr-3 mb-0 mt-1">
+        <button class="btn btn-info btn-sm m-1"
+                *ngFor="let filter of filterTags"
+                (click)="toggleFilter(filter)"
+                [class.btn-outline-info]="!filter.isIncluded">
+          {{ filter.name }}
+        </button>
+      </div>
+    </div>
+
+    <div class="col right-side p-0">
+
+      <div class="vertical-center background-text content" *ngIf="buyableItemListings.length === 0">
+
+        <div *ngIf="isLoading" class="vertical-center spinning-loader">
+          <app-icon name="spinning-blades" bgColor="transparent" fgColor="#aaa"></app-icon> Loading...
+        </div>
+
+        <div *ngIf="!isLoading" class="vertical-center">
+          <span *ngIf="isError">You are searching too often, try again in a few seconds.</span>
+          <span *ngIf="!isError">No items are currently for sale that match your search criteria.</span>
+        </div>
+
+      </div>
+
+      <div class="row m-0 p-0" *ngFor="let itemListing of buyableItemListings">
+
+        <div class="col m-0 p-0">
+
+          <div class="item-slot item-background">
+            <app-item [item]="itemListing.itemInfo" [showDesc]="false"></app-item>
+          </div>
+        </div>
+
+        <div class="col-8 m-0 p-0 listing-info">
+          <div>
+            <strong>{{ itemListing.itemId }}</strong>
+            {{ starTextFor(itemListing.itemInfo.quality) }}
+          </div>
+
+          <div>
+            <small [class.text-danger]="itemListing.listingInfo.price > player.gold"><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
+          </div>
+        </div>
+
+        <div class="col m-0 p-0 vertical-center">
+          <button class="btn btn-primary" [disabled]="itemListing.listingInfo.price > player.gold" (click)="buy(itemListing)">Buy</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+
+<ng-template #marketSell>
+  <div class="sell-grid">
+
+    <div class="row mt-3"></div>
+
+    <div class="row mt-3">
+      <div class="col text-center">
+        <h3>Sell Item In Right Hand</h3>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col"></div>
+
+      <div class="col-4 d-flex justify-content-center">
+        <div class="item-slot item-background">
+          <app-item [item]="player.rightHand"
+                    [showOunces]="true"
+                    *ngIf="player.rightHand"></app-item>
+        </div>
+      </div>
+      <div class="col-4 vertical-center text-danger text-center" *ngIf="sellError">
+        {{ sellError }}
+      </div>
+      <div class="col-4 vertical-center text-success" *ngIf="!sellError">
+        Ready to sell!
+      </div>
+
+      <div class="col"></div>
+    </div>
+
+    <div class="row mt-3"></div>
+
+    <div class="row mt-3">
+      <div class="col"></div>
+      <div class="col-4">
+        <h3 class="text-center">Sell Price</h3>
+      </div>
+      <div class="col-4">
+        <h3 class="text-center">Listing Fee ({{ listingFeeRate }})</h3>
+      </div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col"></div>
+      <div class="col-4 text-center">
+        <input type="number" class="form-control" [(ngModel)]="sellValue" min="1" placeholder="Sell for this much gold..." />
+      </div>
+      <div class="col-4 text-center" [class.text-danger]="listingFee > player.gold">
+        {{ listingFee | number }} gold
+      </div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row mt-3"></div>
+    <div class="row mt-3"></div>
+
+    <div class="row mt-3">
+      <div class="col text-center">
+        <button class="btn btn-primary" [disabled]="sellError" (click)="list()">List this item!</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #marketListings>
+  <div class="row buy p-0 m-0 h-100">
+    <div class="col right-side p-0">
+
+      <div class="vertical-center background-text content" *ngIf="myListings.length === 0">
+
+        <div *ngIf="isLoading" class="vertical-center spinning-loader">
+          <app-icon name="spinning-blades" bgColor="transparent" fgColor="#aaa"></app-icon> Loading...
+        </div>
+
+        <div *ngIf="!isLoading" class="vertical-center">
+          <span *ngIf="isError">You are searching too often, try again in a few seconds.</span>
+          <span *ngIf="!isError">You do not have any listings on the market board.</span>
+        </div>
+
+      </div>
+
+      <div class="row m-0 p-0" *ngFor="let itemListing of myListings">
+
+        <div class="col m-0 p-0">
+
+          <div class="item-slot item-background">
+            <app-item [item]="itemListing.itemInfo" [showDesc]="false"></app-item>
+          </div>
+        </div>
+
+        <div class="col-8 m-0 p-0 listing-info">
+          <div>
+            <strong>{{ itemListing.itemId }}</strong>
+            {{ starTextFor(itemListing.itemInfo.quality) }}
+          </div>
+
+          <div>
+            <small><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
+          </div>
+        </div>
+
+        <div class="col m-0 p-0 vertical-center">
+          <button class="btn btn-primary" (click)="cancel(itemListing)">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #marketPickup>
+
+  <h6 class="text-center mt-2 mb-2 font-italic">Empty your right hand to receive items!</h6>
+
+  <div class="row buy p-0 m-0 h-100">
+    <div class="col right-side p-0">
+
+      <div class="vertical-center background-text content" *ngIf="myPickups.length === 0">
+
+        <div *ngIf="isLoading" class="vertical-center spinning-loader">
+          <app-icon name="spinning-blades" bgColor="transparent" fgColor="#aaa"></app-icon> Loading...
+        </div>
+
+        <div *ngIf="!isLoading" class="vertical-center">
+          <span *ngIf="isError">You are searching too often, try again in a few seconds.</span>
+          <span *ngIf="!isError">You do not have anything to pick up.</span>
+        </div>
+
+      </div>
+
+      <div class="row m-0 p-0" *ngFor="let itemInfo of myPickups">
+
+        <div class="col m-0 p-0">
+
+          <div class="item-slot item-background">
+            <app-item [item]="itemInfo" [showDesc]="false"></app-item>
+          </div>
+        </div>
+
+        <div class="col-8 m-0 p-0 listing-info">
+          <div>
+            <strong>{{ itemInfo.itemId }}</strong>
+            {{ starTextFor(itemInfo.quality) }}
+          </div>
+
+          <div *ngIf="itemInfo.uuid === 'gold'">
+            <small><em>You will pay {{ itemInfo.taxes | number }} gold after taxes ({{ taxRate }}).</em></small>
+          </div>
+        </div>
+
+        <div class="col m-0 p-0 vertical-center">
+          <button class="btn btn-primary" (click)="pickUp(itemInfo.uuid)" [disabled]="player.rightHand">Pick Up</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
