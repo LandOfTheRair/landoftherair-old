@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.2.10 (04/05/2018)
+
+#### Enhancements
+
+- [#799](https://github.com/LandOfTheRair/landoftherair/issues/799) Global market
+
+#### Bug Fixes
+
+- [#819](https://github.com/LandOfTheRair/landoftherair/issues/819) RangeError: Maximum call stack size exceeded
+- [#818](https://github.com/LandOfTheRair/landoftherair/issues/818) TypeError: Cannot read property '$room' of undefined
+- [#817](https://github.com/LandOfTheRair/landoftherair/issues/817) TypeError: Cannot read property 'isDead' of undefined
+
+---
+
 ## v0.2.9 (19/04/2018)
 
 #### New Content
