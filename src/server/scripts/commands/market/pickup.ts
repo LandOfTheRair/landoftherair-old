@@ -23,7 +23,6 @@ export class PickupMarketItem extends Command {
       await player.$$room.marketHelper.pickupItem(player, itemUUID);
 
     } catch(e) {
-      console.error(e);
       player.sendClientMessage('Could not complete transaction.');
 
     }

@@ -84,6 +84,15 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     cost: 300
   },
   {
+    name: 'More Marketboard Listings',
+    desc: 'Increase the number of market board listing slots you have by 10.',
+    icon: 'take-my-money',
+    fgColor: '#aa0',
+    maxPurchases: 5,
+    key: 'MoreMarketboard',
+    cost: 300
+  },
+  {
     name: 'More Characters',
     desc: 'Add another character slot to your account. Perfect for hording items.',
     icon: 'ages',
@@ -335,6 +344,11 @@ export class SubscriptionHelper {
   // SUBSCRIBER BENEFIT: -(TIER * 5)% HP/MP DOC COST
   public modifyDocPrice(player: Player, basePrice: number): number {
     return Math.max(1, Math.floor(basePrice - (basePrice * this.subscriptionTierMultiplier(player))));
+  }
+
+  // SUBSCRIBER BENEFIT: +(TIER * 5) MARKETBOARD LISTING SLOTS
+  public calcMarketboardListingSlots(player: Player, baseSlotCount: number): number {
+    return baseSlotCount + (this.subscriptionTier(player) * 5) + (this.getSilverPurchase(player.$$account, 'MoreMarketboard') * 10);
   }
 
   public bonusSackSlots(player: Player): number {

@@ -19,7 +19,9 @@ export class ListMarketItem extends Command {
     if(error) return player.sendClientMessage(error);
 
     const numListings = await player.$$room.marketHelper.numberOfListings(player.username);
-    if(numListings >= 5) {
+    const maxListings = player.$$room.subscriptionHelper.calcMarketboardListingSlots(player, 25);
+    
+    if(numListings >= maxListings) {
       return player.sendClientMessage('You have too many items listed on the market board!');
     }
 
