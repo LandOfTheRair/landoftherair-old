@@ -1126,10 +1126,6 @@ export class CombatHelper {
     const bonusIncrease = this.elementalBoostValue(attacker, debuff);
     let debuffIncrease = Math.max(5, 25 + bonusIncrease);
 
-    if(debuff === 'BuildupSneakAttack') {
-      console.log(this.elementalBoostValue(attacker, debuff), this.elementalDecayRateValue(attacker, debuff))
-    }
-
     // if thief and offhand weapon, do ~half boost for each hand
     if(debuff === 'BuildupSneakAttack' && get(attacker, 'leftHand.offhand')) {
       debuffIncrease /= 1.75;
