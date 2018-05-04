@@ -315,9 +315,9 @@ export class CombatHelper {
 
     const defenderOffhand = defender.leftHand && defender.leftHand.offhand ? defender.leftHand : null;
 
-    let offhandDivisor = 1;
+    let offhandMultiplier = 1;
     if(isOffhand) {
-      offhandDivisor = 3 - attacker.getTraitLevelAndUsageModifier('OffhandFinesse');
+      offhandMultiplier = 0.3 + attacker.getTraitLevelAndUsageModifier('OffhandFinesse');
     }
 
     const attackerName = isAttackerVisible ? attacker.name : 'somebody';
@@ -346,11 +346,11 @@ export class CombatHelper {
     const attackerScope = {
       skill: attackerSkillCalculated,
       skill4: Math.floor(attackerSkillCalculated / 4),
-      offense: Math.floor(attacker.getTotalStat('offense') / offhandDivisor),
-      accuracy: Math.floor(attacker.getTotalStat('accuracy') / offhandDivisor),
-      dex: Math.floor(attacker.getTotalStat('dex') / offhandDivisor) + attacker.getTraitLevelAndUsageModifier('MartialAcuity'),
-      damageStat: Math.floor(baseDamageCalcStat / offhandDivisor),
-      damageStat4: Math.floor((baseDamageCalcStat / 4) / offhandDivisor),
+      offense: Math.floor(attacker.getTotalStat('offense') * offhandMultiplier),
+      accuracy: Math.floor(attacker.getTotalStat('accuracy') * offhandMultiplier),
+      dex: Math.floor(attacker.getTotalStat('dex') * offhandMultiplier) + attacker.getTraitLevelAndUsageModifier('MartialAcuity'),
+      damageStat: Math.floor(baseDamageCalcStat * offhandMultiplier),
+      damageStat4: Math.floor((baseDamageCalcStat / 4) * offhandMultiplier),
       level: 1 + Math.floor(attacker.level / Classes[attacker.baseClass || 'Undecided'].combatLevelDivisor),
       realLevel: attacker.level,
       damageRolls: Math.max(1, damageRolls)
