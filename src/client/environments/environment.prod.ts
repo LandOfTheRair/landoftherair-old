@@ -1,7 +1,7 @@
 
 import { BUILDVARS } from './_vars';
 
-const buildVersion = BUILDVARS.version.tag || BUILDVARS.version.raw || BUILDVARS.version.hash;
+const buildVersion = BUILDVARS.version.tag || BUILDVARS.version.semverString || BUILDVARS.version.raw || BUILDVARS.version.hash;
 const buildDate = new Date();
 
 export const environment = {
