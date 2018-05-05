@@ -1,5 +1,6 @@
 
 const md5file = require('md5-file');
+const { gitDescribeSync } = require('git-describe');
 const fs = require('fs');
 
 const files = ['creatures', 'decor', 'effects', 'items', 'swimming', 'terrain', 'walls'];
@@ -11,6 +12,16 @@ files.forEach(file => {
   md5hash[file] = md5;
 });
 
-const content = `export const BUILDVARS = ${JSON.stringify(md5hash, null, 2)};`;
+const gitRev = gitDescribeSync({
+  dirtyMark: false,
+  dirtySemver: false
+});
+
+const allVars = {
+  hashes: md5hash,
+  version: gitRev
+};
+
+const content = `export const BUILDVARS = ${JSON.stringify(allVars, null, 2)};`;
 
 fs.writeFileSync(`${__dirname}/../src/client/environments/_vars.ts`, content, 'utf8');

@@ -203,6 +203,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     return environment.stripe.key;
   }
 
+  get gitVersion(): string {
+    return environment.version;
+  }
+
   private stripeCheckoutHandler: StripeCheckoutHandler;
   private currentlyBuyingItem: any;
 

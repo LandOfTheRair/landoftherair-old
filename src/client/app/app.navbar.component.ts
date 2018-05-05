@@ -38,6 +38,9 @@ import { ColyseusService } from './colyseus.service';
               </li>
               <li class="divider dropdown-divider"></li>
               <li>
+                <a class="dropdown-item" (click)="aboutModal.show()">About</a>
+              </li>
+              <li>
                 <a class="dropdown-item" target="_blank" href="http://rair.land/docs/home/">Help!</a>
               </li>
               <li class="divider dropdown-divider"></li>
@@ -172,6 +175,9 @@ export class NavbarComponent implements OnInit {
 
   @Input()
   public macroGroups;
+
+  @Input()
+  public aboutModal;
 
   public resetTimestamp: number;
   public nowTimestamp: number;

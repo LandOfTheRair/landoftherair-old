@@ -5,6 +5,7 @@
             [debugOptions]="debugOptions"
             [macros]="macros"
             [macroGroups]="macroGroups"
+            [aboutModal]="aboutModal"
             (openWindow)="menuOpenWindow($event)"
             (cleanup)="cleanupWindows()"
 ></app-navbar>
@@ -1044,6 +1045,53 @@
       <div class="modal-footer">
         <div></div>
         <button type="button" class="btn btn-warning" (click)="applyDebug()">Apply</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #aboutModal="bs-modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title pull-left">About Land of the Rair</h3>
+        <button type="button" class="close pull-right" (click)="aboutModal.hide()">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body" *ngIf="aboutModal.isShown">
+
+        <div class="row">
+          <div class="col">
+            <h5>License</h5> Land of the Rair is <a href="https://github.com/LandOfTheRair/landoftherair/blob/master/LICENSE" target="_blank">GPL-3.0 licensed</a>, but is <a href="https://github.com/LandOfTheRair/landoftherair" target="_blank">entirely open source</a>.
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col">
+            <h5>Version Notes/Changelog</h5> For version notes, you can check the <a href="https://github.com/LandOfTheRair/landoftherair/blob/master/CHANGELOG.md" target="_blank">changelog</a>. While this changelog encompasses most changes, fixes, and enhancements, periods of frequent balancing are often not tracked.
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col">
+            <h5>Credits</h5> For a running list of credits regarding major libraries used, art, music, and player created content, <a href="https://rair.land/docs/credits/" target="_blank">please see the credits page on rair.land.</a>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col">
+            <h5>Current Version</h5> {{ gitVersion }}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <div></div>
+        <button type="button" class="btn btn-default" (click)="aboutModal.hide()">Close</button>
       </div>
     </div>
   </div>

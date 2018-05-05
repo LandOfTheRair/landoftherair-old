@@ -34,5 +34,6 @@ export const environment = {
     swimming: 0,
     terrain: 0,
     walls: 0
-  }
+  },
+  version: 'localdev'
 };

@@ -24,5 +24,6 @@ export const environment = {
   stripe: {
     key: 'pk_live_dHe4YokXv14cVzmj38NYbqVU'
   },
-  assetHashes: BUILDVARS
+  assetHashes: BUILDVARS.hashes,
+  version: BUILDVARS.version.tag || BUILDVARS.version.hash
 };
