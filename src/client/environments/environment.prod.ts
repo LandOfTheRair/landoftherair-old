@@ -1,6 +1,9 @@
 
 import { BUILDVARS } from './_vars';
 
+const buildVersion = BUILDVARS.version.tag || BUILDVARS.version.raw || BUILDVARS.version.hash;
+const buildDate = new Date();
+
 export const environment = {
   production: true,
   server: {
@@ -25,5 +28,5 @@ export const environment = {
     key: 'pk_live_dHe4YokXv14cVzmj38NYbqVU'
   },
   assetHashes: BUILDVARS.hashes,
-  version: BUILDVARS.version.tag || BUILDVARS.version.hash
+  version: `${buildVersion} (built on ${buildDate})`
 };
