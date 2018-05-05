@@ -51,11 +51,16 @@
   usableSkills:
     - PoisonBiteWeak
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0.75
-    - damageType: 'magical'
-      potency: 0.75
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'magical'
+        potency: 0.75
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
 
   hp:
     min: 1700
@@ -180,11 +185,16 @@
   usableSkills:
     - PoisonBiteWeak
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0.75
-    - damageType: 'magical'
-      potency: 0.75
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'magical'
+        potency: 0.75
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
 
   drops:
     - result: Werebear Claws

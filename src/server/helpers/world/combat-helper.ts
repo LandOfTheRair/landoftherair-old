@@ -115,9 +115,10 @@ export class CombatHelper {
   private static attemptToStun(attacker: Character, weapon: Item, defender: Character) {
 
     const hasFleetOfFoot = defender.hasEffect('FleetOfFoot');
+    const hasUnshakeable = defender.hasEffect('Unshakeable');
 
     // prone can happen randomly
-    if(!hasFleetOfFoot && weapon.proneChance > 0 && RollerHelper.XInOneHundred(weapon.proneChance)) {
+    if(!hasFleetOfFoot && !hasUnshakeable && weapon.proneChance > 0 && RollerHelper.XInOneHundred(weapon.proneChance)) {
       const push = new Effects.Push({ potency: attacker.level });
       push.cast(attacker, defender);
     }

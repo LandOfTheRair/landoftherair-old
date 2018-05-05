@@ -28,11 +28,16 @@
   allegianceReputation:
     NaturalResource: -101
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0.75
-    - damageType: 'fire'
-      potency: 1.25
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.25
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
 
   gold:
     min: 150
@@ -80,11 +85,16 @@
       chance: 1
       maxChance: 50
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0.75
-    - damageType: 'fire'
-      potency: 1.25
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.5
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
 
   gold:
     min: 350
@@ -133,11 +143,16 @@
       chance: 1
       maxChance: 50
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0.75
-    - damageType: 'fire'
-      potency: 1.25
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.5
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
 
   gold:
     min: 450
@@ -184,11 +199,16 @@
     - result: Griffon Spring Boots
       chance: -1
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0.75
-    - damageType: 'magical'
-      potency: 0.75
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'magical'
+        potency: 0.75
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
 
   traitLevels:
     StunningFist: 7

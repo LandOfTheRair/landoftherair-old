@@ -33,11 +33,16 @@
     Hands: Maze Mummy Claws
     Robe1: Yzalt Mummy Cloak
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0.5
-    - damageType: 'fire'
-      potency: 1.5
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.5
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.5
 
   copyDrops:
     - drop: 'gear.Robe1'
@@ -126,9 +131,11 @@
     min: 11000
     max: 15000
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0
 
   gear:
     Hands: Maze Mummy Claws
@@ -179,11 +186,16 @@
     min: 141000
     max: 145000
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0
-    - damageType: 'magical'
-      potency: 0
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0
+
+    - name: Attribute
+      effectData:
+        damageType: 'magical'
+        potency: 0
 
   tansFor: Dedlaen Ghost Cloak
 
@@ -233,9 +245,11 @@
     min: 199000
     max: 202000
 
-  attributes:
-    - damageType: 'necrotic'
-      potency: 0
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'necrotic'
+        potency: 0
 
   gear:
     Ear: Enemy Potency 15 Necrotic Aura Earring
@@ -283,9 +297,11 @@
     - Charge
     - DoubleAttack
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0.75
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
 
   rightHand:
     - Maze Revenant Greatmace

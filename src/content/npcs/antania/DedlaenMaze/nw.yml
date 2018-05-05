@@ -33,11 +33,16 @@
     Armor: Maze Bone Tunic
     Hands: Maze Skeleton Claws
 
-  attributes:
-    - damageType: 'sharp'
-      potency: 0.5
-    - damageType: 'fire'
-      potency: 1.5
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.5
+
+    - name: Attribute
+      effectData:
+        damageType: 'sharp'
+        potency: 0.5
 
   copyDrops:
     - drop: 'rightHand'
@@ -88,11 +93,16 @@
     Armor: Maze Bone Tunic
     Hands: Maze Skeleton Claws
 
-  attributes:
-    - damageType: 'sharp'
-      potency: 0.5
-    - damageType: 'fire'
-      potency: 1.5
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.5
+
+    - name: Attribute
+      effectData:
+        damageType: 'sharp'
+        potency: 0.5
 
   copyDrops:
     - drop: 'rightHand'
@@ -152,11 +162,16 @@
     Hands: Maze Skeleton Claws
     Robe1: Dedlaen Death Knight Coat
 
-  attributes:
-    - damageType: 'magical'
-      potency: 0
-    - damageType: 'physical'
-      potency: 0
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'magical'
+        potency: 0
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0
 
   copyDrops:
     - drop: 'rightHand'

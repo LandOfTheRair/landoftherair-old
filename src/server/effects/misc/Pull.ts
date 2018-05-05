@@ -7,6 +7,8 @@ import { MoveHelper } from '../../helpers/character/move-helper';
 export class Pull extends SpellEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
+    if(target.hasEffect('Unshakeable')) return;
+
     const xDiff = caster.x - target.x;
     const yDiff = caster.y - target.y;
 

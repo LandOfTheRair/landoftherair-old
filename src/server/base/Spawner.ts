@@ -7,7 +7,7 @@ import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
 import { LootHelper } from '../helpers/world/loot-helper';
 import { Dangerous } from '../effects/special/Dangerous';
-import { Attribute } from '../effects/augments/Attribute';
+import * as Effects from '../effects';
 import { GameWorld } from '../rooms/GameWorld';
 import {StatName} from '../../shared/models/character';
 import { RollerHelper } from '../../shared/helpers/roller-helper';
@@ -305,9 +305,9 @@ export class Spawner {
       dangerous.cast(npc, npc);
     }
 
-    if(npcData.attributes) {
-      npcData.attributes.forEach(attrInfo => {
-        const attr = new Attribute(attrInfo);
+    if(npcData.baseEffects) {
+      npcData.baseEffects.forEach(({ name, effectData }) => {
+        const attr = new Effects[name](effectData);
         attr.cast(npc, npc);
       });
     }

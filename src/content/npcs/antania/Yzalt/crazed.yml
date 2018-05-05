@@ -406,11 +406,17 @@
     - allegiance: Royalty
       delta: 1
 
-  attributes:
-    - damageType: 'physical'
-      potency: 0.5
-    - damageType: 'fire'
-      potency: 1.5
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.5
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.5
 
   rightHand:
     - result: Antanian Greatmace

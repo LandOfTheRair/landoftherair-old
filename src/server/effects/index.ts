@@ -20,6 +20,7 @@ export * from './special/Dead';
 export * from './special/LowCON';
 export * from './special/Swimming';
 export * from './special/Drowning';
+export * from './special/Unshakeable';
 export * from './misc/Hidden';
 
 export * from './cures/Antidote';

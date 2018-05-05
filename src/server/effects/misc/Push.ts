@@ -12,6 +12,7 @@ export class Push extends SpellEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     if((<any>target).hostility === 'Never' || target.isNaturalResource) return caster.sendClientMessage('How rude.');
+    if(target.hasEffect('Unshakeable')) return;
 
     target.addAgro(caster, 5);
 

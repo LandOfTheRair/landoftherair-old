@@ -9,6 +9,8 @@ import * as recurse from 'recursive-readdir';
 
 import { includes, flatten, isNumber, size, extend, get, isString, isArray } from 'lodash';
 
+import * as Effects from '../effects';
+
 import { Stats, Skills } from '../../shared/models/character';
 
 import { NPC } from '../../shared/models/npc';
@@ -146,18 +148,30 @@ class NPCLoader {
 
     const validAttributes = ['physical', 'blunt', 'sharp', 'magical', 'necrotic', 'fire', 'ice', 'water', 'energy'];
 
-    if(npc.attributes) {
-      for(let i = 0; i < npc.attributes.length; i++) {
-        const attr = npc.attributes[i];
+    if(npc.baseEffects) {
+      for(let i = 0; i < npc.baseEffects.length; i++) {
+        const attr = npc.baseEffects[i];
 
-        if(!includes(validAttributes, attr.damageType)) {
-          console.error(`ERROR: ${npc.npcId} has an invalid attribute damage type: ${attr.damageType}!`);
-          return false;
-        }
+        if(attr.name === 'Attribute') {
+          if(!attr.effectData) {
+            console.error(`ERROR: ${npc.npcId} has an invalid attribute - no effectData!`);
+            return false;
+          }
 
-        if(!isNumber(attr.potency)) {
-          console.error(`ERROR: ${npc.npcId} has an invalid non-numeric potency value!`);
-          return false;
+          if(!includes(validAttributes, attr.effectData.damageType)) {
+            console.error(`ERROR: ${npc.npcId} has an invalid attribute damage type: ${attr.effectData.damageType}!`);
+            return false;
+          }
+
+          if(!isNumber(attr.effectData.potency)) {
+            console.error(`ERROR: ${npc.npcId} has an invalid non-numeric potency value for attribute ${attr.effectData.damageType}!`);
+            return false;
+          }
+        } else {
+          if(!Effects[attr.name]) {
+            console.error(`ERROR: ${npc.npcId} has an invalid baseEffect: ${attr.name}!`);
+            return false;
+          }
         }
       }
     }

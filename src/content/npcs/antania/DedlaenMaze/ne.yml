@@ -657,9 +657,11 @@
   usableSkills:
     - ShredTenPercent
 
-  attributes:
-    - damageType: 'fire'
-      potency: 1.5
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.5
 
 - npcId: Dedlaen Lizardman
   name: lizardman

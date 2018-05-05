@@ -55,6 +55,11 @@ export class Effect {
   constructor(opts) {
     extend(this, opts);
     if(!this.name) this.name = this.constructor.name;
+
+    // set from a "base effect" on a creature
+    if(get(this, 'effectInfo.isPermanent')) {
+      this.flagPermanent('caster');
+    }
   }
 
   public gainStat(char: Character, stat: StatName, value: number) {

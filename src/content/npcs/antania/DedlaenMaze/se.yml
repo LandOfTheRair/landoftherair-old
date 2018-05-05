@@ -22,9 +22,11 @@
     min: 23050
     max: 23700
 
-  attributes:
-    - damageType: 'magical'
-      potency: 0
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'magical'
+        potency: 0
 
   gear:
     Hands: Maze Skeleton Claws
@@ -88,11 +90,16 @@
     min: 40000
     max: 45000
 
-  attributes:
-    - damageType: 'fire'
-      potency: 0.5
-    - damageType: 'ice'
-      potency: 1.75
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 0.5
+
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 1.75
 
   usableSkills:
     - IceMist
