@@ -183,11 +183,12 @@
   value: 2500
   effect:
     name: Nourishment
-    tooltip: "+15 HP Regen"
+    tooltip: "+20 HP/MP Regen"
     message: "The griffon tongue is chewy!"
     stats:
-      hpregen: 15
-    duration: 10800
+      hpregen: 20
+      mpregen: 20
+    duration: 43200
 
 - name: Risan Dryad Succor Blob
   sprite: 956
