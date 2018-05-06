@@ -117,6 +117,7 @@ Some commands are hidden and don't really need to be used by players, but should
 * `~~items` - count the number of items in the world
 * `~~mobs` - count the number of mobs in the world
 * `~~ping` - check your ping
+* `~~flagged` - check your flagged skills
 * `~~lag` - run `pos`, `items`, `mobs`, and `ping`
 * `~~combatlogstart <maxentries=1000>` - start logging combat data (this will clear any existing combat log data) - more than 1000 entries is not recommended
 * `~~combatlogstop` - stop logging combat data
