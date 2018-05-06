@@ -6,6 +6,7 @@ export * from './DarkerShadows';
 export * from './DarknessWiden';
 export * from './DegenerativeDisease';
 export * from './DoubleStealing';
+export * from './EnhancedApplications';
 export * from './LockpickSpecialty';
 export * from './NimbleStealing';
 export * from './OffhandFinesse';
