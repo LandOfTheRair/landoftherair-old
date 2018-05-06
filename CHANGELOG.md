@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.2.11 (06/05/2018)
+
+#### Enhancements
+
+- [#827](https://github.com/LandOfTheRair/landoftherair/issues/827) unshakeable buff
+- [#823](https://github.com/LandOfTheRair/landoftherair/issues/823) add client version to lobby
+
+#### New Content
+
+- [#826](https://github.com/LandOfTheRair/landoftherair/issues/826) new metalworking recipes
+
+---
+
 ## v0.2.10 (04/05/2018)
 
 #### Enhancements
