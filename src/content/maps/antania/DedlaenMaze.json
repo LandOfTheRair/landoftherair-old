@@ -27882,7 +27882,7 @@
      "respawnMap":"DedlaenMaze",
      "respawnX":131,
      "respawnY":119,
-     "script":"antania\/rylt\/dedlaenmaze"
+     "script":"antania\/dedlaenmaze\/dedlaenmaze"
     },
  "propertytypes":
     {

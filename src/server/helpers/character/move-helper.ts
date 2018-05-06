@@ -1,7 +1,7 @@
 
 import { Character, SkillClassNames } from '../../../shared/models/character';
 import { MapLayer } from '../../../shared/models/maplayer';
-import { isUndefined } from 'lodash';
+import { isUndefined, find, values } from 'lodash';
 
 import * as Pathfinder from 'pathfinding';
 
@@ -93,12 +93,12 @@ export class MoveHelper {
 
   static tryToOpenDoor(player: Character, door, { gameState }): boolean {
     door.properties = door.properties || {};
-    const { requireLockpick, skillRequired, requireHeld, requireEventToOpen } = door.properties;
+    const { requireLockpick, skillRequired, requireHeld, requireEventToOpen, lockedIfAlive } = door.properties;
 
     if(requireEventToOpen) return false;
 
     if(!door.isOpen
-      && (requireLockpick || requireHeld)) {
+      && (requireLockpick || requireHeld || lockedIfAlive)) {
 
       let shouldOpen = false;
 
@@ -136,6 +136,16 @@ export class MoveHelper {
         player.setRightHand(null);
 
         shouldOpen = true;
+      }
+
+      if(lockedIfAlive) {
+        const isNPCAlive = find(values(player.$$room.state.mapNPCs), { npcId: lockedIfAlive });
+        if(!isNPCAlive || (isNPCAlive && isNPCAlive.isDead())) {
+          shouldOpen = true;
+        } else {
+          player.sendClientMessage('The door is sealed shut by a magical force.');
+          return false;
+        }
       }
 
       if(!shouldOpen) {

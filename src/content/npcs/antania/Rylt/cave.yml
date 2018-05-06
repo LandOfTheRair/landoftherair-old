@@ -219,9 +219,6 @@
     - result: Antanian MagicMissile Black Pearl
       chance: 1
       maxChance: 20
-    - result: Saraxa's Key
-      chance: 1
-      maxChance: 20
 
   dropPool:
     choose:

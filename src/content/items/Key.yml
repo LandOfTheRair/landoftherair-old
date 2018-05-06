@@ -23,12 +23,6 @@
   value: 200
   binds: true
 
-- name: Saraxa's Key
-  desc: "a silver key that appears battered by rocks"
-  sprite: 357
-  value: 5000
-  binds: true
-
 - name: Yzalt Sewer Key
   desc: "a silver key that reeks like sewage"
   sprite: 357

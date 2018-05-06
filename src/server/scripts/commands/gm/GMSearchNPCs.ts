@@ -20,7 +20,7 @@ export class GMSearchNPCs extends Command {
       return;
     }
 
-    if(!items.length) return player.sendClientMessage(`No npcs matching "${npcName}" were found.`);
+    if(!items.length) return player.sendClientMessage(`No NPCs matching "${npcName}" were found.`);
 
     player.sendClientMessage(`Search results for item with name "${npcName}":`);
     for(let i = 0; i < items.length; i++) {
