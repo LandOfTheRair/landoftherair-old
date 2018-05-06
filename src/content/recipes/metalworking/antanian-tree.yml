@@ -1,0 +1,72 @@
+
+- item: Copper Dagger
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 1500
+  ingredients:
+    - Antanian Twig
+    - Copper Ore (Small)
+
+- item: Copper Longsword
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 1500
+  ingredients:
+    - Antanian Twig
+    - Copper Ore (Large)
+
+- item: Copper Greatsword
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 1500
+  ingredients:
+    - Antanian Branch
+    - Copper Ore (Small)
+
+- item: Copper Halberd
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 1500
+  ingredients:
+    - Antanian Branch
+    - Copper Ore (Large)
+
+- item: Silver Axe
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 1500
+  ingredients:
+    - Antanian Twig
+    - Silver Ore (Small)
+
+- item: Silver Hammer
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 1500
+  ingredients:
+    - Antanian Twig
+    - Silver Ore (Large)
+
+- item: Silver Greataxe
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 1500
+  ingredients:
+    - Antanian Branch
+    - Silver Ore (Small)
+
+- item: Silver Greatmace
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 1500
+  ingredients:
+    - Antanian Branch
+    - Silver Ore (Large)

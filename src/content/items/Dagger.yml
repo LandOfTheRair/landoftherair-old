@@ -30,6 +30,18 @@
   value: 500
   sprite: 216
 
+- name: Copper Dagger
+  desc: "a roughly-made copper dagger that appears to be a twig attached to forged metal"
+  stats:
+    offense: 1
+    defense: 1
+    accuracy: 3
+  isSackable: true
+  tier: 2
+  type: Dagger
+  value: 2500
+  sprite: 205
+
 - name: Antanian Dualwielding Dagger
   desc: "a finely-made dagger with a blue hilt"
   stats:

@@ -20,6 +20,14 @@
   usableSkills:
     - PoisonBiteWeak
 
+  drops:
+    - result: Antanian Twig
+      chance: 1
+      maxChance: 25
+    - result: Antanian Branch
+      chance: 1
+      maxChance: 25
+
   hp:
     min: 50
     max: 100
@@ -50,6 +58,14 @@
 
   usableSkills:
     - PoisonBiteWeak
+
+  drops:
+    - result: Antanian Twig
+      chance: 1
+      maxChance: 25
+    - result: Antanian Branch
+      chance: 1
+      maxChance: 25
 
   baseEffects:
     - name: Attribute
@@ -107,6 +123,13 @@
   usableSkills:
     - PoisonBiteWeak
 
+  drops:
+    - result: Antanian Twig
+      chance: 1
+      maxChance: 25
+    - result: Antanian Branch
+      chance: 1
+      maxChance: 25
   tansFor: Rylt Fur
 
 - npcId: Rylt Bear
@@ -150,6 +173,12 @@
     - result: Antanian Bear Meat
       chance: 1
       maxChance: 3
+    - result: Antanian Twig
+      chance: 1
+      maxChance: 25
+    - result: Antanian Branch
+      chance: 1
+      maxChance: 25
 
   spawnMessage: "a deep roar"
 
@@ -209,6 +238,12 @@
       chance: -1
     - result: Antanian Bear Meat
       chance: -1
+    - result: Antanian Twig
+      chance: 1
+      maxChance: 25
+    - result: Antanian Branch
+      chance: 1
+      maxChance: 25
 
   spawnMessage: "a guttural roar"
   leashMessage: "a guttural roar"

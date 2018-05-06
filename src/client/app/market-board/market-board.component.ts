@@ -64,7 +64,7 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     { name: 'Gear',           includedTypes: EquippableItemClasses },
     { name: 'Gems',           includedTypes: ['Gem'] },
     { name: 'Misc',           includedTypes: ['Box', 'Book', 'Skull', 'Key'] },
-    { name: 'Reagents',       includedTypes: ['Flower', 'Rock'] },
+    { name: 'Reagents',       includedTypes: ['Flower', 'Rock', 'Twig'] },
     { name: 'Rings',          includedTypes: ['Ring'] },
     { name: 'Scrolls',        includedTypes: ['Scroll'] },
     { name: 'Traps',          includedTypes: ['Trap'] },

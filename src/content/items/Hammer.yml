@@ -12,6 +12,17 @@
   value: 100
   sprite: 226
 
+- name: Silver Hammer
+  desc: "a roughly-made silver hammer that appears to be a twig attached to forged metal"
+  stats:
+    offense: 2
+    defense: 2
+    accuracy: -1
+  tier: 2
+  type: Mace
+  value: 2500
+  sprite: 226
+
 - name: Tower Hammer Weak
   stats:
     accuracy: -3

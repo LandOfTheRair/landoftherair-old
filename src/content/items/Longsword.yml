@@ -45,6 +45,16 @@
   sprite: 227
   binds: true
 
+- name: Copper Longsword
+  desc: "a roughly-made copper longsword that appears to be a twig attached to forged metal"
+  stats:
+    offense: 3
+    defense: 3
+  tier: 2
+  type: Onehanded
+  value: 2500
+  sprite: 197
+
 - name: Maze Longsword
   desc: "an iron longsword"
   tier: 4

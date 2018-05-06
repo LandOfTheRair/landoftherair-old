@@ -84,7 +84,7 @@ export class MetalworkingContainer extends Container {
     // index === 0 = main slot armor (tunic or breastplate)
 
     // index === 1 = upgrade component (scale, etc)
-    if(index === 1 && item.itemClass !== 'Scale') return false;
+    if(index === 1 && item.itemClass !== 'Scale' && item.itemClass !== 'Twig' && !includes(item.name, 'Ore')) return false;
 
     // index === 2 = mold output
 

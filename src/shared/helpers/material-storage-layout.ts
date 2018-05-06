@@ -16,7 +16,9 @@ export enum MaterialSlot {
   MazeFlower = 10,
   RedEtherScale = 11,
   RedEtherScaleRefined = 12,
-  MinesFlower = 13
+  MinesFlower = 13,
+  AntanianTwig = 14,
+  AntanianBranch = 15
 }
 
 // the valid items for deposit and the slot they map to
@@ -37,7 +39,9 @@ export const ValidMaterialItems = {
   'Maze Corpseflower': MaterialSlot.MazeFlower,
   'Ether Scale': MaterialSlot.RedEtherScale,
   'Ether Scale (Refined)': MaterialSlot.RedEtherScaleRefined,
-  'Mines Caveflower': MaterialSlot.MinesFlower
+  'Mines Caveflower': MaterialSlot.MinesFlower,
+  'Antanian Twig': MaterialSlot.AntanianTwig,
+  'Antanian Branch': MaterialSlot.AntanianBranch
 };
 
 export const ReverseValidItems = invertBy(ValidMaterialItems);
@@ -56,13 +60,16 @@ export const MaterialSlotInfo = {
   [MaterialSlot.MazeFlower]:            { sprite: 750,  withdrawInOunces: false },
   [MaterialSlot.RedEtherScale]:         { sprite: 965,  withdrawInOunces: false },
   [MaterialSlot.RedEtherScaleRefined]:  { sprite: 965,  withdrawInOunces: false },
-  [MaterialSlot.MinesFlower]:           { sprite: 761,  withdrawInOunces: false }
+  [MaterialSlot.MinesFlower]:           { sprite: 761,  withdrawInOunces: false },
+  [MaterialSlot.AntanianTwig]:          { sprite: 222,  withdrawInOunces: false },
+  [MaterialSlot.AntanianBranch]:        { sprite: 602,  withdrawInOunces: false }
 };
 
 // these *can* be changed to adjust the layout of the slots
 const RAW_MATERIAL_LAYOUT = [
   MaterialSlot.CopperOre, MaterialSlot.SilverOre, MaterialSlot.GoldOre, null, null,
-  MaterialSlot.CopperIngot, MaterialSlot.SilverIngot, MaterialSlot.GoldIngot, null, null
+  MaterialSlot.CopperIngot, MaterialSlot.SilverIngot, MaterialSlot.GoldIngot, null, null,
+  MaterialSlot.AntanianTwig, MaterialSlot.AntanianBranch, null, null, null
 ];
 
 const FLOWER_LAYOUT = [
@@ -76,7 +83,7 @@ const SCALE_LAYOUT = [
 ];
 
 export const MaterialStorageLayout = [
-  { category: 'Ore & Ingots', layout: RAW_MATERIAL_LAYOUT },
+  { category: 'Natural Resources', layout: RAW_MATERIAL_LAYOUT },
   { category: 'Flowers',      layout: FLOWER_LAYOUT },
   { category: 'Scales',       layout: SCALE_LAYOUT }
 ];

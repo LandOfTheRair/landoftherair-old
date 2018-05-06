@@ -1,18 +1,18 @@
 
 - item: Ether Fullplate
   skillGained: 20
-  maxSkillForGains: 7
-  requiredSkill: 2
-  xpGained: 600
+  maxSkillForGains: 10
+  requiredSkill: 7
+  xpGained: 25000
   ingredients:
     - Antanian Breastplate
     - Ether Scale
 
 - item: Ether Fullplate II
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 4
-  xpGained: 600
+  maxSkillForGains: 12
+  requiredSkill: 9
+  xpGained: 25000
   transferOwner: true
   ingredients:
     - Ether Fullplate
@@ -20,18 +20,18 @@
 
 - item: Ether Scaleplate
   skillGained: 20
-  maxSkillForGains: 7
-  requiredSkill: 2
-  xpGained: 600
+  maxSkillForGains: 10
+  requiredSkill: 7
+  xpGained: 25000
   ingredients:
     - Antanian Scalemail Tunic
     - Ether Scale
 
 - item: Ether Scaleplate II
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 4
-  xpGained: 600
+  maxSkillForGains: 12
+  requiredSkill: 9
+  xpGained: 25000
   transferOwner: true
   ingredients:
     - Ether Scaleplate
@@ -39,81 +39,81 @@
 
 - item: Ether Broadsword
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 1
-  xpGained: 600
+  maxSkillForGains: 8
+  requiredSkill: 6
+  xpGained: 25000
   ingredients:
     - Antanian Longsword
     - Ether Scale (Refined)
 
 - item: Ether Axe
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 1
-  xpGained: 600
+  maxSkillForGains: 8
+  requiredSkill: 6
+  xpGained: 25000
   ingredients:
     - Antanian Axe
     - Ether Scale (Refined)
 
 - item: Ether Dagger
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 1
-  xpGained: 600
+  maxSkillForGains: 8
+  requiredSkill: 6
+  xpGained: 25000
   ingredients:
     - Antanian Dagger
     - Ether Scale (Refined)
 
 - item: Ether Greataxe
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 1
-  xpGained: 600
+  maxSkillForGains: 8
+  requiredSkill: 6
+  xpGained: 25000
   ingredients:
     - Antanian Greataxe
     - Ether Scale (Refined)
 
 - item: Ether Greatsword
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 1
-  xpGained: 600
+  maxSkillForGains: 8
+  requiredSkill: 6
+  xpGained: 25000
   ingredients:
     - Antanian Greatsword
     - Ether Scale (Refined)
 
 - item: Ether Halberd
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 1
-  xpGained: 600
+  maxSkillForGains: 8
+  requiredSkill: 6
+  xpGained: 25000
   ingredients:
     - Antanian Halberd
     - Ether Scale (Refined)
 
 - item: Ether Longbow
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 1
-  xpGained: 600
+  maxSkillForGains: 8
+  requiredSkill: 6
+  xpGained: 25000
   ingredients:
     - Antanian Longbow
     - Ether Scale (Refined)
 
 - item: Ether Mace
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 1
-  xpGained: 600
+  maxSkillForGains: 8
+  requiredSkill: 6
+  xpGained: 25000
   ingredients:
     - Antanian Mace
     - Ether Scale (Refined)
 
 - item: Ether Spear
   skillGained: 50
-  maxSkillForGains: 7
-  requiredSkill: 1
-  xpGained: 600
+  maxSkillForGains: 8
+  requiredSkill: 6
+  xpGained: 25000
   ingredients:
     - Antanian Spear
     - Ether Scale (Refined)

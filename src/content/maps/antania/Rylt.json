@@ -8757,6 +8757,292 @@
                  "width":64,
                  "x":6464,
                  "y":704
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1234,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3712,
+                 "y":576
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1235,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6528,
+                 "y":1088
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1236,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6080,
+                 "y":3264
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1237,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3520,
+                 "y":3264
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1238,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2240,
+                 "y":3584
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1239,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3584,
+                 "y":5440
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1240,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4672,
+                 "y":5120
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1241,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5888,
+                 "y":6528
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1242,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":4288,
+                 "y":6976
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1243,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3328,
+                 "y":8832
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1244,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9664,
+                 "y":6848
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1245,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7808,
+                 "y":5696
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1246,
+                 "name":"Tree Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Small Antanian Dying Tree",
+                     "script":"resource\/random-antanian-tree"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7552,
+                 "y":3776
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -10021,7 +10307,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1234,
+ "nextobjectid":1247,
  "orientation":"orthogonal",
  "properties":
     {

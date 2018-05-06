@@ -90,7 +90,7 @@ export class DeathHelper {
         if(npc.isOreVein) {
           killer.sendClientMessage(`Something falls out of the rubble.`);
         } else {
-          killer.sendClientMessage(`Something falls to the ground`);
+          killer.sendClientMessage(`Something falls to the ground.`);
         }
       }
 

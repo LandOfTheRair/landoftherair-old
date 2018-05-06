@@ -4,3 +4,13 @@
   value: 0
   binds: true
   destroyOnDrop: true
+
+- name: Antanian Twig
+  sprite: 222
+  desc: "a twig taken from an Antanian tree"
+  value: 15
+
+- name: Antanian Branch
+  sprite: 602
+  desc: "an oddly-shaped branch taken from an Antanian tree"
+  value: 15

@@ -17,6 +17,18 @@
   value: 150
   sprite: 453
 
+- name: Silver Greataxe
+  desc: "a roughly-made silver greataxe that appears to be a branch attached to forged metal"
+  stats:
+    offense: 2
+    defense: 1
+    accuracy: 1
+  tier: 2
+  type: Axe
+  secondaryYype: Twohanded
+  value: 2500
+  sprite: 453
+
 - name: Sedgwick's Greataxe
   quality: 5
   type: Axe

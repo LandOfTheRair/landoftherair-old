@@ -26,6 +26,16 @@
   sprite: 308
   binds: true
 
+- name: Copper Greatsword
+  desc: "a roughly-made copper greatsword that appears to be a branch attached to forged metal"
+  stats:
+    offense: 4
+    defense: 2
+  tier: 2
+  type: Twohanded
+  value: 2500
+  sprite: 198
+
 - name: Tower Greatsword Weak
   stats:
     offense: 6
