@@ -171,6 +171,7 @@ export class SpellEffect extends Effect {
 
     if(!this.potency && this.skillFlag && skillRef) {
       const flaggedSkill = this.skillFlag(caster);
+      caster.flagSkill(flaggedSkill);
 
       this.potency = caster.calcSkillLevel(flaggedSkill) + 1;
 
