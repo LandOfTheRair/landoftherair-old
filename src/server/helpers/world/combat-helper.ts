@@ -1073,7 +1073,7 @@ export class CombatHelper {
     switch(debuffName) {
       case 'BuildupHeat':           return attacker.getTraitLevelAndUsageModifier('ForgedFire') * 3;
       case 'BuildupChill':          return attacker.getTraitLevelAndUsageModifier('FrostedTouch') * 3;
-      case 'BuildupSneakAttack':    return -Math.max(attacker.getTraitLevelAndUsageModifier('ShadowRanger'), 5) / 8;
+      case 'BuildupSneakAttack':    return -Math.max(5, attacker.getTraitLevel('ShadowRanger'));
     }
 
     return 0;
@@ -1085,7 +1085,7 @@ export class CombatHelper {
     switch(debuffName) {
       case 'BuildupHeat':           return attacker.getTraitLevelAndUsageModifier('ForgedFire');
       case 'BuildupChill':          return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
-      case 'BuildupSneakAttack':    return -Math.max(attacker.getTraitLevelAndUsageModifier('ShadowRanger'), 5) / 10;
+      case 'BuildupSneakAttack':    return -Math.max(5, attacker.getTraitLevel('ShadowRanger'));
     }
 
     return 0;
@@ -1123,7 +1123,7 @@ export class CombatHelper {
 
     if(defender.hasEffect(activeDebuff) || defender.hasEffect(recentDebuff)) return;
 
-    let targetEffect = defender.hasEffect(debuff);
+    let targetEffect = <BuildupEffect>defender.hasEffect(debuff);
     const bonusIncrease = this.elementalBoostValue(attacker, debuff);
     let debuffIncrease = Math.max(5, 25 + bonusIncrease);
 
@@ -1139,13 +1139,15 @@ export class CombatHelper {
       const buildupMax = 200 + (10 * defender.level);
 
       targetEffect = new Effects[debuff]({});
-      (<BuildupEffect>targetEffect).buildupMax = buildupMax;
-      (<BuildupEffect>targetEffect).buildupCur = bonusIncrease;
-      (<BuildupEffect>targetEffect).decayRate -= this.elementalDecayRateValue(attacker, debuff);
-      (<BuildupEffect>targetEffect).cast(attacker, defender);
+      targetEffect.buildupMax = buildupMax;
+      targetEffect.buildupCur = bonusIncrease;
+      targetEffect.decayRate -= this.elementalDecayRateValue(attacker, debuff);
+      targetEffect.cast(attacker, defender);
     }
 
-    (<BuildupEffect>targetEffect).buildupCur += debuffIncrease;
-    (<BuildupEffect>targetEffect).buildupDamage += damage;
+    if(debuffIncrease + targetEffect.buildupCur <= 0) targetEffect.buildupCur = Math.abs(debuffIncrease);
+
+    targetEffect.buildupCur += debuffIncrease;
+    targetEffect.buildupDamage += damage;
   }
 }
