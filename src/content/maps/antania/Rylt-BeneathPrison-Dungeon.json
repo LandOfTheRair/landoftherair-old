@@ -528,7 +528,7 @@
                  "name":"Cave Upstairs",
                  "properties":
                     {
-                     "desc":"As you enter, the stench of blood fills the air. You see crimson particles floating in the air."
+                     "desc":"As you step down the stairs, you find your way into a tidy area. The crimson ether mist makes it hard to see clearly."
                     },
                  "propertytypes":
                     {
@@ -547,7 +547,7 @@
                  "name":"Vault",
                  "properties":
                     {
-                     "desc":"As you walk through the door, you see a chest. You can only imagine what a lunatic like Saraxa would keep there."
+                     "desc":"As you walk through the door, you see a chest. The keepings of a crazed Tonwin must be truly of value for them to be behind a locked door."
                     },
                  "propertytypes":
                     {
@@ -557,12 +557,12 @@
                  "type":"",
                  "visible":true,
                  "width":320,
-                 "x":256,
-                 "y":1280
+                 "x":1344,
+                 "y":1216
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -571,19 +571,19 @@
          "name":"BackgroundMusic",
          "objects":[
                 {
-                 "height":2560,
+                 "height":1408,
                  "id":1454,
                  "name":"dungeon",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":2560,
+                 "width":1408,
                  "x":256,
                  "y":256
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
