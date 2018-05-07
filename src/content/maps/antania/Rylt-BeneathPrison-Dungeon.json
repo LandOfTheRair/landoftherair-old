@@ -419,11 +419,19 @@
                  "name":"Brother Spawner 1",
                  "properties":
                     {
-                     "script":"global\/empty"
+                     "script":"global\/empty",
+                     "shouldStrip":true,
+                     "stripRadius":1,
+                     "stripX":23,
+                     "stripY":11
                     },
                  "propertytypes":
                     {
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool",
+                     "stripRadius":"int",
+                     "stripX":"int",
+                     "stripY":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -439,11 +447,19 @@
                  "name":"Brother Spawner 2",
                  "properties":
                     {
-                     "script":"global\/empty"
+                     "script":"global\/empty",
+                     "shouldStrip":true,
+                     "stripRadius":1,
+                     "stripX":23,
+                     "stripY":11
                     },
                  "propertytypes":
                     {
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool",
+                     "stripRadius":"int",
+                     "stripX":"int",
+                     "stripY":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -459,11 +475,19 @@
                  "name":"Brother Spawner 3",
                  "properties":
                     {
-                     "script":"global\/empty"
+                     "script":"global\/empty",
+                     "shouldStrip":true,
+                     "stripRadius":1,
+                     "stripX":23,
+                     "stripY":11
                     },
                  "propertytypes":
                     {
-                     "script":"string"
+                     "script":"string",
+                     "shouldStrip":"bool",
+                     "stripRadius":"int",
+                     "stripX":"int",
+                     "stripY":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -562,7 +586,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -583,7 +607,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
