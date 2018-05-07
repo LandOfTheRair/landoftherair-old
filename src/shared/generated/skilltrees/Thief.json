@@ -937,9 +937,6 @@
         "icon": "daggers",
         "capstone": true,
         "cost": 10,
-        "unlocks": [
-            "Assassinate"
-        ],
         "cluster": 4,
         "unlockedBy": [
             "ShadowDaggers1"
@@ -1199,9 +1196,24 @@
         "icon": "backstab",
         "capstone": true,
         "cost": 10,
+        "unlocks": [
+            "Assassinate"
+        ],
         "cluster": 4,
         "unlockedBy": [
             "BetterBackstab1"
+        ]
+    },
+    "EnhancedApplications0": {
+        "name": "EnhancedApplications0",
+        "traitName": "EnhancedApplications",
+        "desc": "Your applications last $60|180$ seconds longer.",
+        "icon": "bloody-sword",
+        "capstone": true,
+        "cost": 30,
+        "cluster": 4,
+        "unlockedBy": [
+            "Apply"
         ]
     },
     "Apply": {
@@ -1214,7 +1226,8 @@
             "BetterBackstab0",
             "Poison",
             "Disease",
-            "Debilitate"
+            "Debilitate",
+            "EnhancedApplications0"
         ],
         "cluster": 4,
         "unlockedBy": [
@@ -1230,7 +1243,7 @@
         "cost": 3,
         "cluster": 4,
         "unlockedBy": [
-            "ShadowDaggers2"
+            "BetterBackstab2"
         ]
     },
     "Debilitate": {
