@@ -165,3 +165,21 @@
       max: 75
   desc: "a helmet designed to protect the face from overexposure to heat"
   value: 4500
+
+- name: Crazed Tonwin Helm
+  quality: 5
+  stats:
+    armorClass: 10
+    offense: 5
+    defense: 5
+    fireResist: 100
+    iceResist: 100
+  tier: 6
+  sprite: 973
+  desc: "a mesmerizing helm bathed in a crimson ether glow"
+  value: 22042
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

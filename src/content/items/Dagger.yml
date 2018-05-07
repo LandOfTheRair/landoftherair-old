@@ -102,3 +102,26 @@
 
   requirements:
     level: 15
+
+- name: Crazed Tonwin Dagger
+  desc: "a dirk with a blade that appears to be enveloped in blazing ether"
+  tier: 6
+  stats:
+    accuracy: 7
+    offense: 3
+  effect:
+    name: ImbueFlame
+    potency: 10
+    autocast: true
+  trait:
+    name: BetterBackstab
+    level: 2
+  returnsOnThrow: true
+  type: Dagger
+  value: 21347
+  sprite: 978
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

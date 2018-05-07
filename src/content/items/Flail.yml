@@ -9,3 +9,24 @@
   value: 401
   sprite: 228
   binds: true
+
+- name: Crazed Tonwin Flail
+  quality: 5
+  proneChance: 20
+  stats:
+    accuracy: -5
+    offense: 5
+  tier: 6
+  trait:
+    name: OffhandFinesse
+    level: 3
+  offhand: true
+  desc: "a standard-issue 2-ball flail bathed in a crimson ether glow"
+  type: Mace
+  value: 20141
+  sprite: 1002
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

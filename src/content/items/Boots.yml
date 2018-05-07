@@ -89,3 +89,21 @@
   desc: "a pair of spongy, springy boots that allows you to move more quickly"
   value: 1980
   binds: true
+
+- name: Crazed Tonwin Boots
+  quality: 5
+  stats:
+    armorClass: 15
+    offense: 5
+    defense: 5
+    fireResist: 100
+    iceResist: 100
+  tier: 6
+  sprite: 975
+  desc: "a mesmerizing pair of chausses bathed in a crimson ether glow"
+  value: 20042
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

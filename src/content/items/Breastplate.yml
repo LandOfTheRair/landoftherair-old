@@ -38,3 +38,20 @@
   sprite: 210
   desc: "an iron breastplate used by the miners of Risan"
   value: 2504
+
+- name: Crazed Tonwin Breastplate
+  quality: 5
+  stats:
+    armorClass: 35
+    offense: 5
+    defense: 5
+    fireResist: 150
+    iceResist: 150
+  sprite: 974
+  desc: "a mesmerizing breastplate bathed in a crimson ether glow, depicting the eruption of a volcano in the dead of night"
+  value: 25042
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

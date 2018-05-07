@@ -292,6 +292,8 @@ export class ImbueEffect extends SpellEffect {
     // only one imbue can be active at a time
     char.effectsList.forEach(eff => {
       if(!includes(eff.constructor.name, 'Imbue')) return;
+      if(eff.effectInfo.isPermanent) return;
+
       char.unapplyEffect(eff, true);
       if(eff.constructor.name === this.constructor.name) foundSelf = true;
     });

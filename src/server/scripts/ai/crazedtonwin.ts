@@ -43,7 +43,7 @@ export class CrazedTonwinAIBehavior extends DefaultAIBehavior {
     // spawn the brother
     const npcId = this.brotherIds[brotherId];
 
-    const msgObject = { name: npc.name, message: `Brother ${npcId.split(' ')[1]}! Join me!`, subClass: 'chatter' };
+    const msgObject = { name: npc.name, message: `BROTHER ${npcId.split(' ')[1].toUpperCase()}! JOIN ME!`, subClass: 'chatter' };
     npc.sendClientMessageToRadius(msgObject, 10);
 
     const npcSpawner = npc.$$room.getSpawnerByName(`Brother Spawner ${spawnId}`);
@@ -73,6 +73,14 @@ export class CrazedTonwinAIBehavior extends DefaultAIBehavior {
     npc.sendClientMessageToRadius(brotherMessage, 10);
   }
 
+  private async tonwinUnsheathe() {
+    const itemChoice = sample(['Crazed Tonwin Shield', 'Crazed Tonwin Flail']);
+    const newItem = await this.npc.$$room.itemCreator.getItemByName(itemChoice);
+    this.npc.leftHand = newItem;
+    this.npc.recalculateStats();
+    this.npc.$$room.syncNPC(this.npc);
+  }
+
   async mechanicTick() {
 
     const npc = this.npc;
@@ -91,6 +99,7 @@ export class CrazedTonwinAIBehavior extends DefaultAIBehavior {
     if(!this.trigger50 && npc.hp.ltPercent(50)) {
       this.trigger50 = true;
 
+      await this.tonwinUnsheathe();
       await this.spawnBrother();
     }
 

@@ -42,14 +42,10 @@
     min: 1450000
     max: 1475000
 
-  rightHand: Crazed Saraxa Wand
+  rightHand: Crazed Tonwin Dagger
 
   gear:
-    Armor: Antanian Tunic
-    Neck: Crazed Saraxa Amulet
-
-    Robe1: FireIce Prot Robe 500
-    Robe2: Crazed Saraxa Robe
+    Armor: Crazed Tonwin Breastplate
 
   usableSkills:
     - Charge
@@ -58,6 +54,8 @@
     - ShadowMeld
     - ShadowClones
     - EagleEye
+    - Backstab
+    - Hide
 
   copyDrops:
     - drop: 'rightHand'
@@ -66,15 +64,18 @@
       chance: -1
 
   drops:
-    - result: Antanian MagicBolt Black Pearl
+    - result: Crazed Tonwin Boots
       chance: 1
-      maxChance: 20
+      maxChance: 5
+    - result: Crazed Tonwin Helm
+      chance: 1
+      maxChance: 5
 
   combatMessages:
     - "BROTHERS... HELP"
     - "WHY IT END THIS WAY"
     - "YOU... DIE"
-    - "MAGIC... POWER"
+    - "ETHER... POWER"
 
 - npcId: Shadow Telwin
   name: Shadow Telwin
@@ -117,7 +118,7 @@
     min: 250000
     max: 275000
 
-  rightHand: Crazed Saraxa Wand
+  rightHand: Tonwin Sword
 
   gear:
     Armor: Tower Breastplate
@@ -176,7 +177,11 @@
     min: 250000
     max: 275000
 
-  rightHand: Crazed Saraxa Wand
+  rightHand: Saraxa Wand
+
+  traitLevels:
+    BladedWands: 1
+    LightenArmor: 1
 
   gear:
     Armor: Tower Breastplate
@@ -237,7 +242,10 @@
     min: 250000
     max: 275000
 
-  rightHand: Crazed Saraxa Wand
+  rightHand: Ranata Totem
+
+  traitLevels:
+    LightenArmor: 1
 
   gear:
     Armor: Tower Breastplate

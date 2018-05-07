@@ -90,6 +90,7 @@
     fireResist: 300
     offense: 4
   desc: "a shield forged from Risan metals designed to protect against fire"
+  binds: true
   type: Mace
   value: 3004
   sprite: 329
@@ -100,6 +101,22 @@
     fireResist: 300
     defense: 4
   desc: "a shield forged from Risan metals designed to protect against fire"
+  binds: true
   type: Mace
   value: 3004
   sprite: 329
+
+- name: Crazed Tonwin Shield
+  quality: 5
+  stats:
+    armorClass: 25
+    defense: 5
+  desc: "a highly-reflective shield engraved with the head of a snake and stained with crimson ether"
+  type: Mace
+  value: 21151
+  sprite: 1004
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

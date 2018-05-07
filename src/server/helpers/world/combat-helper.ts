@@ -749,10 +749,10 @@ export class CombatHelper {
     const encrustEffect = get(attackerWeapon, 'encrust.stats.effect', null);
 
     // encrusted effect takes priority if it exists
-    if(encrustEffect) {
+    if(encrustEffect && !encrustEffect.autocast) {
       this.tryApplyEffect(attacker, defender, encrustEffect, attackerWeapon);
 
-    } else if(attackerWeapon.effect) {
+    } else if(attackerWeapon.effect && !attackerWeapon.effect.autocast) {
       this.tryApplyEffect(attacker, defender, attackerWeapon.effect, attackerWeapon);
     }
 
