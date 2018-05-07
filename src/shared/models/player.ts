@@ -523,7 +523,7 @@ export class Player extends Character {
   tick() {
     super.tick();
 
-    if(this.$$room.state.checkIfActualWall(this.x, this.y)) {
+    if(this.$$room.state.checkIfActualWall(this.x, this.y) && !this.$$room.subscriptionHelper.isGM(this)) {
       this.sendClientMessage('You are probably somewhere you shouldn\'t be. You will be teleported to the respawn point.');
       this.teleportToRespawnPoint();
     }
