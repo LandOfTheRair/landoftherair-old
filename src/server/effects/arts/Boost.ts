@@ -4,7 +4,6 @@ import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { Stun } from '..';
 import { GenderHelper } from '../../helpers/character/gender-helper';
-import { MessageHelper } from '../../helpers/world/message-helper';
 import { LoweredDefenses } from '../antibuffs/LoweredDefenses';
 
 export class Boost extends SpellEffect {

@@ -2,7 +2,6 @@
 import { AttributeEffect, AugmentSpellEffect, StanceEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import { MessageHelper } from '../../helpers/world/message-helper';
 import { GenderHelper } from '../../helpers/character/gender-helper';
 import { Item } from '../../../shared/models/item';
 

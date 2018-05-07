@@ -4,7 +4,6 @@ import { Character, SkillClassNames } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { Stun } from '..';
 import { GenderHelper } from '../../helpers/character/gender-helper';
-import { MessageHelper } from '../../helpers/world/message-helper';
 
 export class Shield extends SpellEffect {
 
