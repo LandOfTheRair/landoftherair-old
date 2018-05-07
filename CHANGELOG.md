@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.2.12 (07/05/2018)
+
+#### Enhancements
+
+- [#821](https://github.com/LandOfTheRair/landoftherair/issues/821) debug command to check flagged skills
+
+#### New Content
+
+- [#622](https://github.com/LandOfTheRair/landoftherair/issues/622) New encounter: Crazed Tonwin
+
+---
+
 ## v0.2.11 (06/05/2018)
 
 #### Enhancements
