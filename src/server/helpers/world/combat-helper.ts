@@ -1073,7 +1073,7 @@ export class CombatHelper {
     switch(debuffName) {
       case 'BuildupHeat':           return attacker.getTraitLevelAndUsageModifier('ForgedFire') * 3;
       case 'BuildupChill':          return attacker.getTraitLevelAndUsageModifier('FrostedTouch') * 3;
-      case 'BuildupSneakAttack':    return -Math.max(5, attacker.getTraitLevel('ShadowRanger'));
+      case 'BuildupSneakAttack':    return -Math.min(5, attacker.getTraitLevel('ShadowRanger'));
     }
 
     return 0;
@@ -1085,7 +1085,7 @@ export class CombatHelper {
     switch(debuffName) {
       case 'BuildupHeat':           return attacker.getTraitLevelAndUsageModifier('ForgedFire');
       case 'BuildupChill':          return attacker.getTraitLevelAndUsageModifier('FrostedTouch');
-      case 'BuildupSneakAttack':    return -Math.max(5, attacker.getTraitLevel('ShadowRanger'));
+      case 'BuildupSneakAttack':    return -Math.min(5, attacker.getTraitLevel('ShadowRanger'));
     }
 
     return 0;
