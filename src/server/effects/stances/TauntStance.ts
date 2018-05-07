@@ -26,7 +26,7 @@ export class TauntStance extends StanceEffect {
   }
 
   effectStart(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} takes on an taunting stance.`);
+    this.effectMessageRadius(char, `${char.name} takes on an taunting stance.`);
 
     const quartered =  Math.floor(this.potency / 4);
 
@@ -43,6 +43,6 @@ export class TauntStance extends StanceEffect {
   }
 
   effectEnd(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} taunting stance.`);
+    this.effectMessageRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} taunting stance.`);
   }
 }

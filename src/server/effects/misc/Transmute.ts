@@ -42,7 +42,7 @@ export class Transmute extends SpellEffect {
 
     if(runningTotal === 0) return;
 
-    caster.sendClientMessageToRadius('You hear metal coins clinking together.', 4);
+    this.effectMessageRadius(caster, 'You hear metal coins clinking together.', 4);
 
     const gold = await caster.$$room.itemCreator.getGold(Math.floor(runningTotal));
     caster.$$room.addItemToGround(caster, gold);

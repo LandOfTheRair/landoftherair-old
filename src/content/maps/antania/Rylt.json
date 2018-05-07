@@ -5215,8 +5215,8 @@
                     {
                      "requireParty":true,
                      "teleportMap":"Rylt-BeneathPrison-Dungeon",
-                     "teleportX":13,
-                     "teleportY":41
+                     "teleportX":23,
+                     "teleportY":6
                     },
                  "propertytypes":
                     {

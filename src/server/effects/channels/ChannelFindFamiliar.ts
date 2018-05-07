@@ -132,17 +132,17 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
   }
 
   effectStart(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} begins channeling find familiar.`);
+    this.effectMessageRadius(char, `${char.name} begins channeling find familiar.`);
     char.killAllPets();
   }
 
   effectEnd(char: Character) {
     if(this.duration !== 0) {
-      MessageHelper.sendClientMessageToRadius(char, `${char.name} ceases channeling find familiar.`);
+      this.effectMessageRadius(char, `${char.name} ceases channeling find familiar.`);
       return;
     }
 
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} finishes channeling find familiar for ${GenderHelper.hisher(char)} pet ${this.animalStr}!`);
+    this.effectMessageRadius(char, `${char.name} finishes channeling find familiar for ${GenderHelper.hisher(char)} pet ${this.animalStr}!`);
 
     const defaultSpawner = {
       maxCreatures: 1,

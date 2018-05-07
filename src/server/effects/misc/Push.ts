@@ -67,9 +67,9 @@ export class Push extends SpellEffect {
     }
 
     if(didFirstPushWork || didSecondPushWork) {
-      target.sendClientMessageToRadius(`${target.name} was knocked down!`, 5);
+      this.effectMessageRadius(target, `${target.name} was knocked down!`, 5);
     } else {
-      target.sendClientMessageToRadius(`${target.name} was knocked over!`, 5);
+      this.effectMessageRadius(target, `${target.name} was knocked over!`, 5);
 
       const stunned = new Stun({ duration: 1, potency: 1 });
       stunned.cast(caster, target);

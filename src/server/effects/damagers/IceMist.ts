@@ -19,7 +19,7 @@ export class IceMist extends SpellEffect {
 
     const range = (isUndefined(this.range) ? 1 : this.range) + (target.getTraitLevel('IceMistWiden') ? 1 : 0);
 
-    target.sendClientMessageToRadius({ message: 'You see a dense fog form.', subClass: 'combat magic' }, 10);
+    this.effectMessageRadius(target, { message: 'You see a dense fog form.', subClass: 'combat magic' }, 10);
 
     MessageHelper.drawEffectInRadius(target, 'ICE_MIST', target, range, 6);
 

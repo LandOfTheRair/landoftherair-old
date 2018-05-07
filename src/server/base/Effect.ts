@@ -4,6 +4,7 @@ import { extend, includes, get } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/world/combat-helper';
 import { Item, MagicCutArmorClasses } from '../../shared/models/item';
+import { MessageHelper } from '../helpers/world/message-helper';
 
 export const Maxes = {
   Lesser: 10,
@@ -117,6 +118,11 @@ export class Effect {
   effectMessage(char: Character, message: string|any) {
     if(!char || this.shouldNotShowMessage) return;
     char.sendClientMessage(message);
+  }
+
+  effectMessageRadius(char: Character, message: string|any, radius = 4, ignore: string[] = []) {
+    if(!char || this.shouldNotShowMessage) return;
+    MessageHelper.sendClientMessageToRadius(char, message, radius, ignore);
   }
 
   skillFlag(caster) {

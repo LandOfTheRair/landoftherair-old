@@ -23,7 +23,7 @@ export class DefensesShattered extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    char.sendClientMessageToRadius(`${char.name} pinpoints the hidden attackers!`);
+    this.effectMessageRadius(char, `${char.name} pinpoints the hidden attackers!`);
 
     const revealed = char.$$room.state.getPlayersInRange(char, 4, [], false);
     revealed.forEach(target => {

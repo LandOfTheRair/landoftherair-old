@@ -26,7 +26,7 @@ export class RageStance extends StanceEffect {
   }
 
   effectStart(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} takes on an offensive stance.`);
+    this.effectMessageRadius(char, `${char.name} takes on an offensive stance.`);
 
     this.loseStat(char, 'weaponArmorClass', this.potency);
     this.loseStat(char, 'armorClass', this.potency);
@@ -39,6 +39,6 @@ export class RageStance extends StanceEffect {
   }
 
   effectEnd(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} offensive stance.`);
+    this.effectMessageRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} offensive stance.`);
   }
 }

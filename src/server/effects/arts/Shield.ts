@@ -27,7 +27,7 @@ export class Shield extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} clasps ${GenderHelper.hisher(char)} hands together and exhales.`);
+    this.effectMessageRadius(char, `${char.name} clasps ${GenderHelper.hisher(char)} hands together and exhales.`);
 
     this.duration += 3;
 

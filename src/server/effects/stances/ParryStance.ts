@@ -26,7 +26,7 @@ export class ParryStance extends StanceEffect {
   }
 
   effectStart(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} takes on a defensive stance.`);
+    this.effectMessageRadius(char, `${char.name} takes on a defensive stance.`);
 
     this.gainStat(char, 'weaponArmorClass', this.potency);
     this.gainStat(char, 'defense', Math.floor(this.potency / 4));
@@ -38,6 +38,6 @@ export class ParryStance extends StanceEffect {
   }
 
   effectEnd(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} defensive stance.`);
+    this.effectMessageRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} defensive stance.`);
   }
 }

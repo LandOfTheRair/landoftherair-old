@@ -15,6 +15,9 @@ export class Boost extends SpellEffect {
     tooltipDesc: 'Increased STR, DEX, AGI'
   };
 
+  private ignoreDefenseLoss: boolean;
+  private ignoreStun: boolean;
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.flagUnapply();
     this.flagCasterName(caster.name);
@@ -30,16 +33,20 @@ export class Boost extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} clasps ${GenderHelper.hisher(char)} hands together and exhales.`);
+    this.effectMessageRadius(char, `${char.name} clasps ${GenderHelper.hisher(char)} hands together and exhales.`);
 
-    this.duration += 3;
+    if(!this.ignoreStun) {
+      this.duration += 3;
 
-    const stunned = new Stun({ shouldNotShowMessage: true });
-    stunned.duration = 3;
-    stunned.cast(char, char);
+      const stunned = new Stun({ shouldNotShowMessage: true });
+      stunned.duration = 3;
+      stunned.cast(char, char);
+    }
 
-    const debuff = new LoweredDefenses({ potency: 6, duration: 23 });
-    debuff.cast(char, char);
+    if(!this.ignoreDefenseLoss) {
+      const debuff = new LoweredDefenses({ potency: 6, duration: 23 });
+      debuff.cast(char, char);
+    }
 
     this.iconData.tooltipDesc = `+${this.potency} STR/DEX/AGI`;
 

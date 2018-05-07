@@ -19,7 +19,7 @@ export class FireMist extends SpellEffect {
 
     const range = (isUndefined(this.range) ? 1 : this.range) + (target.getTraitLevel('FireMistWiden') ? 1 : 0);
 
-    target.sendClientMessageToRadius({ message: 'You hear a soft sizzling noise.', subClass: 'combat magic' }, 10);
+    this.effectMessageRadius(target, { message: 'You hear a soft sizzling noise.', subClass: 'combat magic' }, 10);
 
     MessageHelper.drawEffectInRadius(target, 'FIRE_MIST', target, range, 6);
 

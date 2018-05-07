@@ -27,7 +27,7 @@ export class GlacierStance extends StanceEffect implements AugmentSpellEffect, A
   }
 
   effectStart(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} takes on a glacial stance.`);
+    this.effectMessageRadius(char, `${char.name} takes on a glacial stance.`);
 
     this.gainStat(char, 'armorClass', this.potency);
     this.gainStat(char, 'defense', Math.floor(this.potency / 4));
@@ -37,7 +37,7 @@ export class GlacierStance extends StanceEffect implements AugmentSpellEffect, A
   }
 
   effectEnd(char: Character) {
-    MessageHelper.sendClientMessageToRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} glacial stance.`);
+    this.effectMessageRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} glacial stance.`);
   }
 
   augmentAttack(attacker: Character, defender: Character, opts: { damage: number, damageClass: string }) {

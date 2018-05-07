@@ -1,0 +1,262 @@
+
+
+- npcId: Crazed Tonwin
+  name: Crazed Tonwin
+  hostility: Always
+  alignment: Evil
+  baseClass: Thief
+  stats:
+    int: 30
+    dex: 30
+    str: 30
+    con: 40
+    agi: 35
+    luk: 30
+    wil: 25
+  level: 30
+
+  otherStats:
+    accuracy: 10
+    stealth: 50
+    perception: 350
+
+  skillLevels: 10
+
+  skillOnKill: 1450
+
+  sprite: 5
+
+  hp:
+    min: 50000000
+    max: 50000000
+
+  mp:
+    min: 25000
+    max: 25000
+
+  gold:
+    min: 25000
+    max: 30000
+
+  giveXp:
+    min: 1450000
+    max: 1475000
+
+  rightHand: Crazed Saraxa Wand
+
+  gear:
+    Armor: Antanian Tunic
+    Neck: Crazed Saraxa Amulet
+
+    Robe1: FireIce Prot Robe 500
+    Robe2: Crazed Saraxa Robe
+
+  usableSkills:
+    - Charge
+    - DarkVision
+    - TrueSight
+    - ShadowMeld
+    - ShadowClones
+    - EagleEye
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  drops:
+    - result: Antanian MagicBolt Black Pearl
+      chance: 1
+      maxChance: 20
+
+  combatMessages:
+    - "BROTHERS... HELP"
+    - "WHY IT END THIS WAY"
+    - "YOU... DIE"
+    - "MAGIC... POWER"
+
+- npcId: Shadow Telwin
+  name: Shadow Telwin
+  hostility: Always
+  alignment: Evil
+  baseClass: Warrior
+  stats:
+    int: 20
+    dex: 20
+    str: 20
+    con: 30
+    agi: 20
+    luk: 20
+    wil: 25
+  level: 25
+
+  otherStats:
+    accuracy: 10
+    perception: 350
+
+  skillLevels: 9
+
+  skillOnKill: 450
+
+  sprite: 5
+
+  hp:
+    min: 1000000
+    max: 1000000
+
+  mp:
+    min: 25000
+    max: 25000
+
+  gold:
+    min: 5000
+    max: 10000
+
+  giveXp:
+    min: 250000
+    max: 275000
+
+  rightHand: Crazed Saraxa Wand
+
+  gear:
+    Armor: Tower Breastplate
+    Robe1: FireIce Prot Robe 500
+    Robe2: Antanian Cloak
+
+  usableSkills:
+    - Charge
+    - Thruststrike
+    - Blindstrike
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+
+- npcId: Shadow Terwin
+  name: Shadow Terwin
+  hostility: Always
+  alignment: Evil
+  baseClass: Mage
+  stats:
+    int: 20
+    dex: 20
+    str: 20
+    con: 30
+    agi: 20
+    luk: 20
+    wil: 25
+  level: 25
+
+  otherStats:
+    accuracy: 10
+    perception: 350
+
+  skillLevels: 9
+
+  skillOnKill: 450
+
+  sprite: 5
+
+  hp:
+    min: 1000000
+    max: 1000000
+
+  mp:
+    min: 25000
+    max: 25000
+
+  gold:
+    min: 5000
+    max: 10000
+
+  giveXp:
+    min: 250000
+    max: 275000
+
+  rightHand: Crazed Saraxa Wand
+
+  gear:
+    Armor: Tower Breastplate
+    Robe1: FireIce Prot Robe 500
+    Robe2: Antanian Cloak
+
+  usableSkills:
+    - Charge
+    - MagicBolt
+    - DarkVision
+    - Darkness
+    - TrueSight
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+
+- npcId: Shadow Takwin
+  name: Shadow Takwin
+  hostility: Always
+  alignment: Evil
+  baseClass: Healer
+  stats:
+    int: 20
+    dex: 20
+    str: 20
+    con: 30
+    agi: 20
+    luk: 20
+    wil: 25
+  level: 25
+
+  otherStats:
+    accuracy: 10
+    perception: 350
+
+  skillLevels: 9
+
+  skillOnKill: 450
+
+  sprite: 5
+
+  hp:
+    min: 1000000
+    max: 1000000
+
+  mp:
+    min: 25000
+    max: 25000
+
+  gold:
+    min: 5000
+    max: 10000
+
+  giveXp:
+    min: 250000
+    max: 275000
+
+  rightHand: Crazed Saraxa Wand
+
+  gear:
+    Armor: Tower Breastplate
+    Robe1: FireIce Prot Robe 500
+    Robe2: Antanian Cloak
+
+  usableSkills:
+    - Charge
+    - Cure
+    - Snare
+    - Poison
+    - Afflict
+    - Antidote
+    - Vision
+    - Blind
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+

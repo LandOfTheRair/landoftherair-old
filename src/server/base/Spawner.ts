@@ -134,7 +134,7 @@ export class Spawner {
   }
 
   async createNPC(opts: { npcId?: string, createCallback?: Function } = {}): Promise<NPC> {
-    if(!this.npcIds || this.npcIds.length === 0) {
+    if((!this.npcIds || this.npcIds.length === 0) && !opts.npcId) {
       if(this.x !== 0 && this.y !== 0) {
         Logger.error(`No valid npcIds for spawner ${this.constructor.name} at ${this.x}, ${this.y} on ${this.map}`);
       }
