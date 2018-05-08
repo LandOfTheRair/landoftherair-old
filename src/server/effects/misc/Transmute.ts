@@ -7,7 +7,7 @@ export class Transmute extends SpellEffect {
 
   maxSkillForSkillGain = 11;
 
-  async cast(caster: Character, target: Character, skillRef?: Skill) {
+  async cast(caster: Character, target: Character|{ x: number, y: number }, skillRef?: Skill) {
 
     this.setPotencyAndGainSkill(caster, skillRef);
 
@@ -22,7 +22,7 @@ export class Transmute extends SpellEffect {
       valuePercent += caster.getTraitLevelAndUsageModifier('PhilosophersStone');
     }
 
-    const groundItems = target.$$room.state.getGroundItems(target.x, target.y);
+    const groundItems = caster.$$room.state.getGroundItems(target.x, target.y);
 
     let runningTotal = 0;
 
@@ -45,6 +45,6 @@ export class Transmute extends SpellEffect {
     this.effectMessageRadius(caster, 'You hear metal coins clinking together.', 4);
 
     const gold = await caster.$$room.itemCreator.getGold(Math.floor(runningTotal));
-    caster.$$room.addItemToGround(caster, gold);
+    caster.$$room.addItemToGround(target, gold);
   }
 }

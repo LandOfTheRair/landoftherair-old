@@ -14,16 +14,16 @@ export class FireMist extends SpellEffect {
 
   private range: number;
 
-  cast(caster: Character, target: Character, skillRef?: Skill) {
+  cast(caster: Character, target: Character|{ x: number, y: number }, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    const range = (isUndefined(this.range) ? 1 : this.range) + (target.getTraitLevel('FireMistWiden') ? 1 : 0);
+    const range = (isUndefined(this.range) ? 1 : this.range) + (caster.getTraitLevel('FireMistWiden') ? 1 : 0);
 
-    this.effectMessageRadius(target, { message: 'You hear a soft sizzling noise.', subClass: 'combat magic' }, 10);
+    this.effectMessageRadius(caster, { message: 'You hear a soft sizzling noise.', subClass: 'combat magic' }, 10);
 
-    MessageHelper.drawEffectInRadius(target, 'FIRE_MIST', target, range, 6);
+    MessageHelper.drawEffectInRadius(caster, 'FIRE_MIST', target, range, 6);
 
-    const attacked = target.$$room.state.getAllInRange(target, range, [], false);
+    const attacked = caster.$$room.state.getAllInRange(target, range, [], false);
 
     const friendlyFireMod = caster.getTraitLevelAndUsageModifier('FriendlyFire');
 
@@ -47,7 +47,7 @@ export class FireMist extends SpellEffect {
       this.magicalAttack(caster, refTarget, {
         skillRef,
         atkMsg: `You engulf ${atkName} in a hot mist!`,
-        defMsg: `${this.getCasterName(caster, target)} engulfed you in a hot mist!`,
+        defMsg: `${this.getCasterName(caster, refTarget)} engulfed you in a hot mist!`,
         damage: Math.floor(damage * damageMod),
         damageClass: 'fire'
       });

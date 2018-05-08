@@ -12,7 +12,7 @@ export class Light extends Skill {
     icon: 'candle-light',
     color: '#aa0',
     mode: 'clickToTarget',
-    tooltipDesc: 'Clear darkness near the target (3x3). Cost: 25 MP'
+    tooltipDesc: 'Clear darkness near the target (3x3). Allows directional targeting. Cost: 25 MP'
   };
 
   public name = ['light', 'cast light'];
@@ -26,7 +26,7 @@ export class Light extends Skill {
 
   execute(user: Character, { args, effect }) {
 
-    const target = this.getTarget(user, args, true);
+    const target = this.getTarget(user, args, true, true);
     if(!target) return;
 
     if(!this.tryToConsumeMP(user, effect)) return;

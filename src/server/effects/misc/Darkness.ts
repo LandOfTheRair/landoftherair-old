@@ -11,7 +11,7 @@ export class Darkness extends SpellEffect {
 
   private range: number;
 
-  cast(caster: Character, target: Character, skillRef?: Skill) {
+  cast(caster: Character, target: Character|{ x: number, y: number }, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     /** PERK:CLASS:THIEF:Thieves darkness lasts twice as long. */
@@ -27,7 +27,7 @@ export class Darkness extends SpellEffect {
       + (caster.getTraitLevel('DarknessWiden') ? 1 : 0);
 
     /** PERK:CLASS:THIEF:Thieves darkness only covers one tile. */
-    target.$$room.createDarkness(target.x, target.y, radius, duration);
+    caster.$$room.createDarkness(target.x, target.y, radius, duration);
 
     this.aoeAgro(caster, 10);
   }

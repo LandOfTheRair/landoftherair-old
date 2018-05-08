@@ -11,22 +11,25 @@ export class Transmute extends Skill {
     icon: 'coins',
     color: '#665600',
     mode: 'autoActivate',
-    tooltipDesc: 'Convert the items on your current tile into gold. Cost: 15 MP'
+    tooltipDesc: 'Convert the items on your current tile into gold. Allows directional targeting. Cost: 15 MP'
   };
 
   public name = ['transmute', 'cast transmute'];
 
   mpCost() { return 15; }
 
-  execute(user: Character, { effect }) {
+  execute(user: Character, { args, effect }) {
+    let target = this.getTarget(user, args, true, true);
+    if(!target) target = user;
+
     if(!this.tryToConsumeMP(user, effect)) return;
 
-    this.use(user, effect);
+    this.use(user, target, effect);
   }
 
-  use(user: Character, baseEffect = {}) {
+  use(user: Character, target: Character|{ x: number, y: number }, baseEffect = {}) {
     const effect = new CastEffect(baseEffect);
-    effect.cast(user, user, this);
+    effect.cast(user, target, this);
   }
 
 }

@@ -11,7 +11,7 @@ export class IceMist extends Skill {
     icon: 'kaleidoscope-pearls',
     color: '#000080',
     mode: 'clickToTarget',
-    tooltipDesc: 'Cast an area ice effect on a target (3x3). Cost: 35 MP'
+    tooltipDesc: 'Cast an area ice effect on a target (3x3). Allows directional targeting. Cost: 35 MP'
   };
 
   public name = ['icemist', 'cast icemist'];
@@ -21,7 +21,7 @@ export class IceMist extends Skill {
   range(attacker: Character) { return 5; }
 
   execute(user: Character, { args, effect }) {
-    const target = this.getTarget(user, args, true);
+    const target = this.getTarget(user, args, true, true);
     if(!target) return;
 
     if(!this.tryToConsumeMP(user, effect)) return;
@@ -29,7 +29,7 @@ export class IceMist extends Skill {
     this.use(user, target, effect);
   }
 
-  use(user: Character, target: Character, baseEffect = {}) {
+  use(user: Character, target: Character|{ x: number, y: number }, baseEffect = {}) {
     const effect = new CastEffect(baseEffect);
     effect.cast(user, target, this);
   }

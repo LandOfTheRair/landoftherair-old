@@ -1,5 +1,5 @@
 
-import { Character, SkillClassNames } from '../../shared/models/character';
+import { Character, Direction, SkillClassNames } from '../../shared/models/character';
 import { Command } from './Command';
 
 import { random, get } from 'lodash';
@@ -91,10 +91,34 @@ export abstract class Skill extends Command {
     return true;
   }
 
-  getTarget(user: Character, args: string, allowSelf = false): Character {
+  getTarget(user: Character, args: string, allowSelf = false, allowDirection = false): Character|any {
 
     let target = null;
     args = args.trim();
+
+    // try to do directional casting, ie, n w w e
+    const splitArgs = args.split(' ');
+    if(allowDirection && (splitArgs.length > 0 || args.length <= 2)) {
+      let curX = user.x;
+      let curY = user.y;
+
+      for(let i = 0; i < splitArgs.length; i++) {
+        // you can specify a max of 4 directions
+        if(i >= 4) continue;
+
+        const { x, y } = user.getXYFromDir(<Direction>splitArgs[i]);
+
+        // if you specify a wall tile, your cast is halted
+        if(user.$$room.state.checkIfActualWall(curX + x, curY + y)) break;
+
+        curX += x;
+        curY += y;
+      }
+
+      if(curX !== user.x || curY !== user.y) {
+        return { x: curX, y: curY };
+      }
+    }
 
     if(allowSelf) {
       target = user;
@@ -118,6 +142,10 @@ export abstract class Skill extends Command {
     }
 
     return target;
+  }
+
+  getDirectionalTarget(user: Character, args: string) {
+
   }
 
   async facilitateSteal(user: Character, target: Character) {

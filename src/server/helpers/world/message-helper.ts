@@ -37,7 +37,7 @@ export class MessageHelper {
     char.$$room.state.getPlayersInRange(char, radius, except, useSight).forEach(p => {
 
       // prevent messages through walls
-      if(char.$$room.state.getSuccorRegion(p) !== charRegion) return;
+      if(p.$$room.state.getSuccorRegion(p) !== charRegion) return;
 
       // outta range, generate a "you heard X in the Y dir" message
       if(radius > 4 && char.distFrom(p) > 5) {

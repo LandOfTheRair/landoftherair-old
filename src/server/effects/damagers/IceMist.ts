@@ -14,16 +14,16 @@ export class IceMist extends SpellEffect {
 
   private range: number;
 
-  cast(caster: Character, target: Character, skillRef?: Skill) {
+  cast(caster: Character, target: Character|{ x: number, y: number }, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    const range = (isUndefined(this.range) ? 1 : this.range) + (target.getTraitLevel('IceMistWiden') ? 1 : 0);
+    const range = (isUndefined(this.range) ? 1 : this.range) + (caster.getTraitLevel('IceMistWiden') ? 1 : 0);
 
-    this.effectMessageRadius(target, { message: 'You see a dense fog form.', subClass: 'combat magic' }, 10);
+    this.effectMessageRadius(caster, { message: 'You see a dense fog form.', subClass: 'combat magic' }, 10);
 
-    MessageHelper.drawEffectInRadius(target, 'ICE_MIST', target, range, 6);
+    MessageHelper.drawEffectInRadius(caster, 'ICE_MIST', target, range, 6);
 
-    const attacked = target.$$room.state.getAllInRange(target, range, [], false);
+    const attacked = caster.$$room.state.getAllInRange(target, range, [], false);
 
     const friendlyFireMod = caster.getTraitLevelAndUsageModifier('FriendlyFire');
 
@@ -47,7 +47,7 @@ export class IceMist extends SpellEffect {
       this.magicalAttack(caster, refTarget, {
         skillRef,
         atkMsg: `You engulf ${atkName} in a chilling mist!`,
-        defMsg: `${this.getCasterName(caster, target)} engulfed you in a chilling mist!`,
+        defMsg: `${this.getCasterName(caster, refTarget)} engulfed you in a chilling mist!`,
         damage: Math.floor(damage * damageMod),
         damageClass: 'ice'
       });

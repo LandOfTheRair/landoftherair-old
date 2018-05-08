@@ -12,7 +12,7 @@ export class Darkness extends Skill {
     icon: 'dust-cloud',
     color: '#000',
     mode: 'clickToTarget',
-    tooltipDesc: 'Drop an area darkness effect on the target (3x3). Cost: 25 MP'
+    tooltipDesc: 'Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP'
   };
 
   public name = ['darkness', 'cast darkness'];
@@ -26,7 +26,7 @@ export class Darkness extends Skill {
 
   execute(user: Character, { args, effect }) {
 
-    const target = this.getTarget(user, args, true);
+    const target = this.getTarget(user, args, true, true);
     if(!target) return;
 
     if(!this.tryToConsumeMP(user, effect)) return;
@@ -34,7 +34,7 @@ export class Darkness extends Skill {
     this.use(user, target, effect);
   }
 
-  use(user: Character, target: Character, baseEffect = {}) {
+  use(user: Character, target: Character|{ x: number, y: number }, baseEffect = {}) {
     const effect = new CastEffect(baseEffect);
     effect.cast(user, target, this);
   }
