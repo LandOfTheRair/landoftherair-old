@@ -10,6 +10,9 @@ export * from './PartyManaRegeneration';
 export * from './FriendlyFire';
 export * from './ThermalBarrier';
 
+export * from './LingeringDrain';
+export * from './LingeringAsper';
+
 export * from './DarknessWiden';
 export * from './FireMistWiden';
 export * from './IceMistWiden';

@@ -384,6 +384,30 @@
             "MagicFocus3"
         ]
     },
+    "LingeringDrain0": {
+        "name": "LingeringDrain0",
+        "traitName": "LingeringDrain",
+        "desc": "Your Drain spell also leaves a 3 round EoT that continues to drain the target HP.",
+        "icon": "wind-hole",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "Drain"
+        ]
+    },
+    "LingeringAsper0": {
+        "name": "LingeringAsper0",
+        "traitName": "LingeringAsper",
+        "desc": "Your Asper spell also leaves a 3 round EoT that continues to drain the target MP.",
+        "icon": "wind-hole",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "Asper"
+        ]
+    },
     "MagicMissile": {
         "name": "MagicMissile",
         "desc": "Inflict energy damage on a single target. Cost: 5 MP",
@@ -505,6 +529,9 @@
         "iconColor": "#af0000",
         "requireSkillLevel": 15,
         "cost": 3,
+        "unlocks": [
+            "LingeringDrain0"
+        ],
         "cluster": 1,
         "unlockedBy": [
             "MagicFocus5"
@@ -517,6 +544,9 @@
         "iconColor": "#0059bd",
         "requireSkillLevel": 15,
         "cost": 3,
+        "unlocks": [
+            "LingeringAsper0"
+        ],
         "cluster": 1,
         "unlockedBy": [
             "MagicFocus5"

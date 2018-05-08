@@ -98,6 +98,14 @@ const MAGE_TREE = {
 
   },
 
+  LingeringDrain0: {
+
+  },
+
+  LingeringAsper0: {
+
+  },
+
   // SKILLS
   MagicMissile: {
     unlocks: ['MagicFocus0', 'Identify', 'ManaPool0']
@@ -124,10 +132,10 @@ const MAGE_TREE = {
 
   },
   Drain: {
-
+    unlocks: ['LingeringDrain0']
   },
   Asper: {
-
+    unlocks: ['LingeringAsper0']
   }
 };
 
