@@ -798,8 +798,8 @@
  "properties":
     {
      "disableCreatureRespawn":true,
-     "itemExpirationHours":0.5,
-     "itemGarbageCollection":15,
+     "itemExpirationHours":6,
+     "itemGarbageCollection":60,
      "kickMap":"Yzalt",
      "kickX":24,
      "kickY":18,

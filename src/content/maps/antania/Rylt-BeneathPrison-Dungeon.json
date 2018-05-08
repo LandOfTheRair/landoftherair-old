@@ -645,8 +645,8 @@
  "properties":
     {
      "disableCreatureRespawn":true,
-     "itemExpirationHours":0.5,
-     "itemGarbageCollection":15,
+     "itemExpirationHours":6,
+     "itemGarbageCollection":60,
      "kickMap":"Rylt",
      "kickX":23,
      "kickY":56,
