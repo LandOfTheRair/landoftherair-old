@@ -10,6 +10,10 @@ import { startCase } from 'lodash';
 })
 export class PartyComponent {
 
+  get party() {
+    return (<any>this.colyseusGame.character)._party;
+  }
+
   get partyExp() {
     return (<any>this.colyseusGame.character).partyExp;
   }

@@ -10,6 +10,10 @@ export class TradeskillAlchemyComponent {
 
   slots = Array(8).fill(null).map((x, i) => i);
 
+  get items() {
+    return (<any>this.player.tradeSkillContainers.alchemy).items;
+  }
+
   get player() {
     return this.colyseusGame.character;
   }

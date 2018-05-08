@@ -11,6 +11,10 @@ import { MetalworkingHelper } from '../../../server/helpers/tradeskill/metalwork
 })
 export class TradeskillMetalworkingComponent {
 
+  get items() {
+    return (<any>this.player.tradeSkillContainers.metalworking).items;
+  }
+
   get player() {
     return this.colyseusGame.character;
   }

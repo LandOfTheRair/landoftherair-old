@@ -9,8 +9,8 @@
     <th class="text-center">Location</th>
   </tr>
   </thead>
-  <tbody *ngIf="colyseusGame.character._party">
-  <tr *ngFor="let char of colyseusGame.character._party.members">
+  <tbody *ngIf="party">
+  <tr *ngFor="let char of party.members">
     <td>{{ char.name }}</td>
     <td>{{ char.baseClass }}</td>
     <td>{{ char.level }}</td>
@@ -19,7 +19,7 @@
     <td class="text-center">{{ locationFor(char) }}</td>
   </tr>
   </tbody>
-  <tbody *ngIf="!colyseusGame.character._party">
+  <tbody *ngIf="!party">
   <tr>
     <td colspan="6" class="text-center">You do not have a party.</td>
   </tr>

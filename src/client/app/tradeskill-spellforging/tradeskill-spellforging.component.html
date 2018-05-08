@@ -24,10 +24,10 @@
                droppable
                dropScope="spellforging"
                (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Spellforging:0')">
-            <span class="item-slot-bg-text" *ngIf="!player.tradeSkillContainers.spellforging.items[0]">Subject Item</span>
+            <span class="item-slot-bg-text" *ngIf="!items[0]">Subject Item</span>
             <app-item size="normal"
-                      *ngIf="player.tradeSkillContainers.spellforging.items[0]"
-                      [item]="player.tradeSkillContainers.spellforging.items[0]"
+                      *ngIf="items[0]"
+                      [item]="items[0]"
                       contextSlot="0"
                       [containerUUID]="colyseusGame.showSpellforging.uuid"
                       context="Tradeskill:Spellforging"></app-item>
@@ -39,10 +39,10 @@
                droppable
                dropScope="spellforging"
                (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Spellforging:1')">
-            <span class="item-slot-bg-text" *ngIf="!player.tradeSkillContainers.spellforging.items[1]">Reagent Item</span>
+            <span class="item-slot-bg-text" *ngIf="!items[1]">Reagent Item</span>
             <app-item size="normal"
-                      *ngIf="player.tradeSkillContainers.spellforging.items[1]"
-                      [item]="player.tradeSkillContainers.spellforging.items[1]"
+                      *ngIf="items[1]"
+                      [item]="items[1]"
                       contextSlot="1"
                       [containerUUID]="colyseusGame.showSpellforging.uuid"
                       context="Tradeskill:Spellforging"></app-item>
@@ -51,10 +51,10 @@
 
         <div class="col col-4 item-row">
           <div class="item-slot item-background">
-            <span class="item-slot-bg-text" *ngIf="!player.tradeSkillContainers.spellforging.items[2]">Result Item</span>
+            <span class="item-slot-bg-text" *ngIf="!items[2]">Result Item</span>
             <app-item size="normal"
-                      *ngIf="player.tradeSkillContainers.spellforging.items[2]"
-                      [item]="player.tradeSkillContainers.spellforging.items[2]"
+                      *ngIf="items[2]"
+                      [item]="items[2]"
                       contextSlot="2"
                       [containerUUID]="colyseusGame.showSpellforging.uuid"
                       context="Tradeskill:Spellforging"></app-item>

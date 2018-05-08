@@ -87,7 +87,7 @@ import { environment } from '../environments/environment';
 const envUrl = `${environment.server.protocol}://${environment.server.domain}:${environment.server.port}`;
 
 @Injectable()
-class APIInterceptor implements HttpInterceptor {
+export class APIInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const apiReq = req.clone({ url: `${envUrl}/${req.url}` });

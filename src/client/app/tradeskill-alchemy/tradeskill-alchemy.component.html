@@ -19,8 +19,8 @@
            dropScope="alchemy"
            (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Alchemy:'+slot)">
         <app-item size="normal"
-                  *ngIf="player.tradeSkillContainers.alchemy.items[slot]"
-                  [item]="player.tradeSkillContainers.alchemy.items[slot]"
+                  *ngIf="items[slot]"
+                  [item]="items[slot]"
                   [contextSlot]="slot"
                   [containerUUID]="colyseusGame.showAlchemy.uuid"
                   context="Tradeskill:Alchemy"></app-item>
@@ -30,8 +30,8 @@
     <div class="col col-4 right-side">
       <div class="item-slot item-background">
         <app-item size="normal"
-                  *ngIf="player.tradeSkillContainers.alchemy.items[8]"
-                  [item]="player.tradeSkillContainers.alchemy.items[8]"
+                  *ngIf="items[8]"
+                  [item]="items[8]"
                   contextSlot="8"
                   [containerUUID]="colyseusGame.showAlchemy.uuid"
                   context="Tradeskill:Alchemy"></app-item>

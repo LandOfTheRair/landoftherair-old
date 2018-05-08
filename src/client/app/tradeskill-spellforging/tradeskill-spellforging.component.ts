@@ -17,6 +17,10 @@ export class TradeskillSpellforgingComponent {
     return this.colyseusGame.character;
   }
 
+  get items() {
+    return (<any>this.player.tradeSkillContainers.spellforging).items;
+  }
+
   get brickTypes(): string[] {
     return Object.keys(this.player.tradeSkillContainers.spellforging.dustValues).map(x => capitalize(x));
   }
