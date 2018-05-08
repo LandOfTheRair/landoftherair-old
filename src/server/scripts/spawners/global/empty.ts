@@ -5,7 +5,7 @@ export class EmptySpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 3600,
+      respawnRate: 0,
       initialSpawn: 0,
       maxSpawn: 1,
       spawnRadius: 0,
