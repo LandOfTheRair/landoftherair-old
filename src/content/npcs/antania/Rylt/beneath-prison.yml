@@ -46,13 +46,14 @@
 
   gear:
     Armor: Crazed Tonwin Breastplate
+    Feet: Crazed Tonwin Boots
+    Head: Crazed Tonwin Helm
 
   usableSkills:
     - Charge
     - DarkVision
     - TrueSight
     - ShadowMeld
-    - ShadowClones
     - EagleEye
     - Backstab
     - Hide
