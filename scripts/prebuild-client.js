@@ -17,9 +17,6 @@ const gitRev = gitDescribeSync({
   dirtySemver: false
 });
 
-gitRev._head = process.env.HEAD;
-gitRev._branch = process.env.BRANCH;
-
 const allVars = {
   hashes: md5hash,
   version: gitRev
