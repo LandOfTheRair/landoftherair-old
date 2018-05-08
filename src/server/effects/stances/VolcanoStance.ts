@@ -54,7 +54,7 @@ export class VolcanoStance extends StanceEffect implements AugmentSpellEffect {
   modifyDamage(attacker: Character, defender: Character, opts: { attackerWeapon: Item, damage: number, damageClass: string }) {
     const { damageClass, damage } = opts;
 
-    if(damageClass !== 'fire') return;
+    if(damageClass !== 'fire') return damage;
 
     let potency = 0.5;
     potency -= attacker.getTraitLevelAndUsageModifier('VolcanoStanceImproved');

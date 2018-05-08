@@ -54,7 +54,7 @@ export class GlacierStance extends StanceEffect implements AugmentSpellEffect, A
   modifyDamage(attacker: Character, defender: Character, opts: { attackerWeapon: Item, damage: number, damageClass: string }) {
     const { damageClass, damage } = opts;
 
-    if(damageClass !== 'ice') return;
+    if(damageClass !== 'ice') return damage;
 
     let potency = 0.5;
     potency -= attacker.getTraitLevelAndUsageModifier('GlacierStanceImproved');
