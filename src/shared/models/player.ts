@@ -20,7 +20,7 @@ import { CharacterHelper } from '../../server/helpers/character/character-helper
 import { AllTraits } from '../traits/trait-hash';
 import { DeathHelper } from '../../server/helpers/character/death-helper';
 import { PartyHelper } from '../../server/helpers/party/party-helper';
-import { Malnourished } from '../../server/effects/antibuffs/Malnourished';
+import { Malnourished } from '../../server/effects/special/Malnourished';
 import { AlchemyContainer } from './container/tradeskills/alchemy';
 import { SpellforgingContainer } from './container/tradeskills/spellforging';
 import { MetalworkingContainer } from './container/tradeskills/metalworking';

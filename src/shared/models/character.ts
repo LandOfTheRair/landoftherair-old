@@ -498,8 +498,14 @@ export class Character {
     });
   }
 
+  private canBeEncumbered(): boolean {
+    if(this.baseClass !== 'Mage' && this.baseClass !== 'Healer') return false;
+    return !this.getTraitLevel('LightenArmor');
+  }
+
   recalculateStats() {
     this.totalStats = {};
+    let castEncumber = false;
 
     // base stats
     Object.keys(this.stats).forEach(stat => {
@@ -545,6 +551,7 @@ export class Character {
     allGear.forEach(item => {
       if(!item.stats || !this.checkCanEquipWithoutGearCheck(item)) return;
       addStatsForItem(item);
+      if(item.isHeavy) castEncumber = true;
     });
 
     // stats from hands
@@ -568,6 +575,23 @@ export class Character {
 
     // always recalculate perception
     this.totalStats.perception += this.perceptionLevel();
+
+    const isEncumbered = this.hasEffect('Encumbered');
+
+    if(this.canBeEncumbered()) {
+
+      if(isEncumbered && !castEncumber) {
+        this.unapplyEffect(isEncumbered, true);
+
+      } else if(!isEncumbered && castEncumber) {
+        const encumbered = new Effects.Encumbered({});
+        encumbered.cast(this, this);
+      }
+    } else {
+      if(isEncumbered) {
+        this.unapplyEffect(isEncumbered, true);
+      }
+    }
   }
 
   itemCheck(item: Item) {

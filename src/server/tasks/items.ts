@@ -137,8 +137,13 @@ class ItemLoader {
     }
 
     if(item.itemClass === 'Shield') {
+      item.type = 'Mace';
       if(!item.stats.accuracy) item.stats.accuracy = 0;
       if(!item.stats.mitigation) item.stats.mitigation = 5;
+    }
+
+    if(includes(['Breastplate', 'Fullplate'], item.itemClass)) {
+      item.isHeavy = true;
     }
 
     if(item.itemClass === 'Bottle' || item.itemClass === 'Food') {

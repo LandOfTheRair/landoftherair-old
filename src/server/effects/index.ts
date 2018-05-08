@@ -1,7 +1,7 @@
 
 export * from './items/ExactHeal';
 export * from './buffs/Nourishment';
-export * from './antibuffs/Malnourished';
+export * from './special/Malnourished';
 
 export * from './items/PermanentSTR';
 export * from './items/PermanentDEX';
@@ -18,6 +18,7 @@ export * from './items/MinorMP';
 export * from './special/Dangerous';
 export * from './special/Dead';
 export * from './special/LowCON';
+export * from './special/Encumbered';
 export * from './special/Swimming';
 export * from './special/Drowning';
 export * from './special/Unshakeable';

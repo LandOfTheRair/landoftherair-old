@@ -98,6 +98,7 @@
     defense: 5
     fireResist: 100
     iceResist: 100
+  isHeavy: true
   tier: 6
   sprite: 975
   desc: "a mesmerizing pair of chausses bathed in a crimson ether glow"

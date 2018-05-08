@@ -7,7 +7,7 @@ export class Dead extends SpellEffect {
 
   iconData = {
     name: 'broken-skull',
-    color: '#000',
+    color: '#f00',
     tooltipDesc: 'You are dead. Use the restore macro to come back to life. If you wait too long, your body will rot, risking stat loss!'
   };
 

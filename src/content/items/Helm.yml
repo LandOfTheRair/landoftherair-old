@@ -174,8 +174,8 @@
     defense: 5
     fireResist: 100
     iceResist: 100
-  tier: 6
   sprite: 973
+  isHeavy: true
   desc: "a mesmerizing helm bathed in a crimson ether glow"
   value: 22042
   binds: true

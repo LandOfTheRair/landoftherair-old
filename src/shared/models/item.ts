@@ -78,8 +78,6 @@ FeetClasses.forEach(t => EquipHash[t] = 'Feet');
 HandsClasses.forEach(t => EquipHash[t] = 'Hands');
 EarClasses.forEach(t => EquipHash[t] = 'Ear');
 
-export const MagicCutArmorClasses = ['Breastplate', 'Fullplate'];
-
 export const GivesBonusInHandItemClasses = WeaponClasses.concat(NeckClasses);
 
 export const EquippableItemClasses = HeadClasses
@@ -172,6 +170,8 @@ export class Item {
   returnsOnThrow: boolean;
   binds: boolean;
   tellsBind: boolean;
+
+  isHeavy: boolean;
 
   trait?: { name: string, level: number };
 

@@ -3,7 +3,7 @@ import { Character, SkillClassNames, StatName } from '../../shared/models/charac
 import { extend, includes, get } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/world/combat-helper';
-import { Item, MagicCutArmorClasses } from '../../shared/models/item';
+import { Item } from '../../shared/models/item';
 import { MessageHelper } from '../helpers/world/message-helper';
 
 export const Maxes = {
@@ -181,10 +181,8 @@ export class SpellEffect extends Effect {
 
       this.potency = caster.calcSkillLevel(flaggedSkill) + 1;
 
-      const armorClass = get(caster, 'gear.Armor.itemClass');
-      if(includes(MagicCutArmorClasses, armorClass)
-      && includes([SkillClassNames.Conjuration, SkillClassNames.Restoration], flaggedSkill)
-      && !caster.getTraitLevel('LightenArmor')) {
+      if(caster.hasEffect('Encumbered')
+      && includes([SkillClassNames.Conjuration, SkillClassNames.Restoration], flaggedSkill)) {
         caster.sendClientMessage('Your armor exhausts you as you try to cast your spell!');
         this.potency = Math.floor(this.potency / 2);
       }
