@@ -28,5 +28,5 @@ export const environment = {
     key: 'pk_live_dHe4YokXv14cVzmj38NYbqVU'
   },
   assetHashes: BUILDVARS.hashes,
-  version: `${buildVersion} (built on ${buildDate})`
+  version: `${buildVersion} (built on ${buildDate}) ${JSON.stringify(BUILDVARS.version)}`
 };
