@@ -153,6 +153,7 @@ class Invulnerable extends SpellEffect implements AttributeEffect {
 class BrotherlySpeed extends Haste {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.flagPermanent(caster.uuid);
+    this.effectInfo.canManuallyUnapply = false;
     super.cast(caster, target, skillRef);
   }
 }
@@ -160,6 +161,7 @@ class BrotherlySpeed extends Haste {
 class BrotherlyShield extends VitalEssence {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.flagPermanent(caster.uuid);
+    this.effectInfo.canManuallyUnapply = false;
     this.potency = 30;
     super.cast(caster, target, skillRef);
   }
@@ -168,6 +170,7 @@ class BrotherlyShield extends VitalEssence {
 class BrotherlySword extends Boost {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.flagPermanent(caster.uuid);
+    this.effectInfo.canManuallyUnapply = false;
     this.potency = 5;
     super.cast(caster, target, skillRef);
   }
