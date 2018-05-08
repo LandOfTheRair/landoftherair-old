@@ -10,6 +10,7 @@ export * from './GMGainTraitPoints';
 export * from './GMGainXP';
 export * from './GMIntercept';
 export * from './GMKill';
+export * from './GMLootVortex';
 export * from './GMModifyItem';
 export * from './GMModifyNPC';
 export * from './GMPartyJoin';

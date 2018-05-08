@@ -162,6 +162,7 @@ You also get access to some commands in-game:
 * `@xp <xp>` - gain <xp> XP
 * `@intercept <target>` - you will see log messages as this target (as well as your own).
 * `@kill <target>` - will instantly kill `target`
+* `@lootvortex <radius>` - pull every item in `radius` tiles to the current one
 * `@itemmod propsish` - modify your rightHand item based on props specified, for example: `ounces=10`
 * `@npcmod npcish propsish` - modify the npc based on propsish
 * `@partyjoin partyname` - automatically join `partyname` if it exists, regardless of leader visibility
