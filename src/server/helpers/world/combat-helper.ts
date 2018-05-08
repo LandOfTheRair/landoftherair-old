@@ -2,7 +2,7 @@
 import { includes, random, capitalize, get, clamp } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../../shared/models/character';
-import { ShieldClasses, Item, MagicCutArmorClasses, WeaponClasses, ItemEffect } from '../../../shared/models/item';
+import { ShieldClasses, Item, WeaponClasses, ItemEffect } from '../../../shared/models/item';
 import * as Classes from '../../classes';
 import * as Effects from '../../effects';
 

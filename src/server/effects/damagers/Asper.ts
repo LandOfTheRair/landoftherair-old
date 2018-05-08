@@ -3,8 +3,6 @@ import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
-import { RollerHelper } from '../../../shared/helpers/roller-helper';
-import { CombatHelper } from '../../helpers/world/combat-helper';
 
 export class Asper extends SpellEffect {
 
