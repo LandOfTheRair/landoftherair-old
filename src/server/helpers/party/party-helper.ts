@@ -11,6 +11,8 @@ export class PartyHelper {
       if(username === player.username) return;
       const memberRef = player.$$room.state.findPlayer(username);
 
+      if(!memberRef) return null;
+
       if(player.distFrom(memberRef) > distance) return null;
 
       return memberRef;
