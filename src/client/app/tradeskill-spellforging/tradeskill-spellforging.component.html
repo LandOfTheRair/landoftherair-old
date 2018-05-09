@@ -62,9 +62,14 @@
         </div>
       </div>
 
-      <div class="row mt-3" *ngIf="showInfo">
-        <div class="col text-center" [class.text-danger]="successChance <= 25">
-          Chance of success: {{ successChance }}% (Item is currently +{{ player.tradeSkillContainers.spellforging.modifyItem.enchantLevel || 0 }})
+      <div class="row mt-3">
+
+        <div class="col text-center" *ngIf="player.tradeSkillContainers.spellforging.modifyItem">
+          Item is currently +{{ player.tradeSkillContainers.spellforging.modifyItem.enchantLevel || 0 }}
+        </div>
+        <div class="col" [class.hidden]="showInfo"></div>
+        <div class="col text-center" [class.text-danger]="successChance <= 25" [class.hidden]="!showInfo">
+          Chance of success: {{ successChance }}%
         </div>
       </div>
 

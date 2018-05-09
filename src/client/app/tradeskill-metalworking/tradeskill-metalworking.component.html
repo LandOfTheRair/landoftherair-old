@@ -117,8 +117,21 @@
       </div>
 
       <div class="row mt-3">
-        <div class="col text-center" [class.text-danger]="successChance <= 25" *ngIf="showInfo">
-          Chance of success: {{ successChance }}% (Item is currently +{{ player.tradeSkillContainers.metalworking.upgradeItem.enchantLevel || 0 }})
+        <div class="col text-center" *ngIf="player.tradeSkillContainers.metalworking.upgradeItem">
+          Item is currently +{{ player.tradeSkillContainers.metalworking.upgradeItem.enchantLevel || 0 }}
+        </div>
+        <div class="col" [class.hidden]="showInfo"></div>
+        <div class="col text-center" [class.text-danger]="successChance <= 25" [class.hidden]="!showInfo">
+          Chance of success: {{ successChance }}%
+        </div>
+      </div>
+
+      <div class="row mt-3" *ngIf="upgrades.length > 0">
+        <div class="col-6 text-center">
+          Upgrades ({{ upgrades.length }})
+        </div>
+        <div class="col">
+          {{ upgradeString }}
         </div>
       </div>
 

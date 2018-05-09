@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { capitalize } from 'lodash';
+import { capitalize, flatten } from 'lodash';
 import { MetalworkingHelper } from '../../../server/helpers/tradeskill/metalworking-helper';
 
 @Component({
@@ -10,6 +10,18 @@ import { MetalworkingHelper } from '../../../server/helpers/tradeskill/metalwork
   styleUrls: ['./tradeskill-metalworking.component.scss']
 })
 export class TradeskillMetalworkingComponent {
+
+  get upgrades() {
+    if(!this.player.tradeSkillContainers.metalworking.upgradeItem) return [];
+    return this.player.tradeSkillContainers.metalworking.upgradeItem.previousUpgrades;
+  }
+
+  get upgradeString() {
+    const upgrades = this.upgrades;
+    return flatten(upgrades.map(obj => {
+      return Object.keys(obj).map(key => `${key.toUpperCase()} +${obj[key]}`);
+    })).join(', ');
+  }
 
   get items() {
     return (<any>this.player.tradeSkillContainers.metalworking).items;
