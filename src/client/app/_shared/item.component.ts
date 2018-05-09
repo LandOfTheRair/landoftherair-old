@@ -405,6 +405,16 @@ export class ItemComponent implements OnInit {
 
     } else if(this.context === 'Ground' || this.context === 'GroundGroup') {
 
+      if(this.isEquippable) {
+
+        const slot = (<any>this.colyseusGame.character).getItemSlotToEquipIn(this.item);
+        if(slot !== false) {
+          this.doColyseusMoveAction('E');
+          return;
+        }
+
+      }
+
       if(this.item.isBeltable) {
         this.doColyseusMoveAction('B');
         return;
