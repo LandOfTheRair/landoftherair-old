@@ -442,7 +442,7 @@
     },
     "Transmute": {
         "name": "Transmute",
-        "desc": "Convert the items on your current tile into gold. Cost: 15 MP",
+        "desc": "Convert the items on your current tile into gold. Allows directional targeting. Cost: 15 MP",
         "icon": "coins",
         "iconColor": "#665600",
         "cost": 3,
@@ -711,7 +711,7 @@
     },
     "Darkness": {
         "name": "Darkness",
-        "desc": "Drop an area darkness effect on the target (3x3). Cost: 25 MP",
+        "desc": "Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP",
         "icon": "dust-cloud",
         "iconColor": "#000",
         "cost": 3,
@@ -973,7 +973,7 @@
     },
     "FireMist": {
         "name": "FireMist",
-        "desc": "Cast an area fire effect on a target (3x3). Cost: 35 MP",
+        "desc": "Cast an area fire effect on a target (3x3). Allows directional targeting. Cost: 35 MP",
         "icon": "kaleidoscope-pearls",
         "iconColor": "#DC143C",
         "cost": 3,
@@ -988,7 +988,7 @@
     },
     "IceMist": {
         "name": "IceMist",
-        "desc": "Cast an area ice effect on a target (3x3). Cost: 35 MP",
+        "desc": "Cast an area ice effect on a target (3x3). Allows directional targeting. Cost: 35 MP",
         "icon": "kaleidoscope-pearls",
         "iconColor": "#000080",
         "cost": 3,

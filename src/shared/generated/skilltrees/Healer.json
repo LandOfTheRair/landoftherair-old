@@ -1182,7 +1182,7 @@
     },
     "Light": {
         "name": "Light",
-        "desc": "Clear darkness near the target (3x3). Cost: 25 MP",
+        "desc": "Clear darkness near the target (3x3). Allows directional targeting. Cost: 25 MP",
         "icon": "candle-light",
         "iconColor": "#aa0",
         "cost": 3,
