@@ -598,8 +598,10 @@ export class GameWorld extends Room<GameState> {
   }
 
   setPlayerXY(player, x, y) {
+    const oldPos = { x: player.x, y: player.y };
     player.x = x;
     player.y = y;
+    player.$$room.state.updatePlayerInQuadtree(player, oldPos);
     this.state.calculateFOV(player);
     this.updatePos(player);
   }
