@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.2.13 (08/05/2018)
+
+#### Enhancements
+
+- [#824](https://github.com/LandOfTheRair/landoftherair/issues/824) traits to make asper/drain leave an EoT (effect over time) that does more of what they already do
+- [#820](https://github.com/LandOfTheRair/landoftherair/issues/820) directional casting of AoE spells
+
+#### Bug Fixes
+
+- [#832](https://github.com/LandOfTheRair/landoftherair/issues/832) TypeError: Cannot read property 'x' of undefined
+- [#829](https://github.com/LandOfTheRair/landoftherair/issues/829) No valid npcIds for spawner EmptySpawner at 8, 6 on Rylt-BeneathPrison-Dungeon
+
+---
+
 ## v0.2.12 (07/05/2018)
 
 #### Enhancements
