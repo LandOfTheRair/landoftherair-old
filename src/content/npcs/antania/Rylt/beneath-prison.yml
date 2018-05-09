@@ -63,6 +63,8 @@
       chance: -1
     - drop: 'leftHand'
       chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
 
   drops:
     - result: Crazed Tonwin Boots
