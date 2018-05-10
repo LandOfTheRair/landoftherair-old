@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { capitalize, flatten } from 'lodash';
+import { capitalize, flatten, sortBy } from 'lodash';
 import { MetalworkingHelper } from '../../../server/helpers/tradeskill/metalworking-helper';
 
 @Component({
@@ -18,9 +18,15 @@ export class TradeskillMetalworkingComponent {
 
   get upgradeString() {
     const upgrades = this.upgrades;
-    return flatten(upgrades.map(obj => {
-      return Object.keys(obj).map(key => `${key.toUpperCase()} +${obj[key]}`);
-    })).join(', ');
+    const sumObject = upgrades.reduce((prev, cur) => {
+      Object.keys(cur).forEach(key => {
+        prev[key] = prev[key] || 0;
+        prev[key] += cur[key];
+      });
+      return prev;
+    }, {});
+
+    return sortBy(Object.keys(sumObject)).map(key => `${key.toUpperCase()} +${sumObject[key]}`).join(', ');
   }
 
   get items() {
