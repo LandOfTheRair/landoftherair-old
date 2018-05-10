@@ -13,7 +13,7 @@ export class TradeskillMetalworkingComponent {
 
   get upgrades() {
     if(!this.player.tradeSkillContainers.metalworking.upgradeItem) return [];
-    return this.player.tradeSkillContainers.metalworking.upgradeItem.previousUpgrades;
+    return this.player.tradeSkillContainers.metalworking.upgradeItem.previousUpgrades || [];
   }
 
   get upgradeString() {
