@@ -443,9 +443,9 @@
                  "name":"",
                  "properties":
                     {
-                     "teleportMap":"Yzalt",
-                     "teleportX":88,
-                     "teleportY":138
+                     "teleportMap":"Frostlands",
+                     "teleportX":133,
+                     "teleportY":95
                     },
                  "propertytypes":
                     {
@@ -467,9 +467,9 @@
                  "name":"",
                  "properties":
                     {
-                     "teleportMap":"Yzalt",
-                     "teleportX":88,
-                     "teleportY":138
+                     "teleportMap":"Frostlands",
+                     "teleportX":133,
+                     "teleportY":111
                     },
                  "propertytypes":
                     {
@@ -539,33 +539,9 @@
                  "name":"",
                  "properties":
                     {
-                     "teleportMap":"Yzalt",
-                     "teleportX":83,
-                     "teleportY":150
-                    },
-                 "propertytypes":
-                    {
-                     "teleportMap":"string",
-                     "teleportX":"int",
-                     "teleportY":"int"
-                    },
-                 "rotation":0,
-                 "type":"StairsDown",
-                 "visible":true,
-                 "width":64,
-                 "x":8768,
-                 "y":5568
-                }, 
-                {
-                 "gid":1779,
-                 "height":64,
-                 "id":1211,
-                 "name":"",
-                 "properties":
-                    {
-                     "teleportMap":"Yzalt",
-                     "teleportX":83,
-                     "teleportY":150
+                     "teleportMap":"Frostlands",
+                     "teleportX":251,
+                     "teleportY":207
                     },
                  "propertytypes":
                     {
@@ -578,7 +554,31 @@
                  "visible":true,
                  "width":64,
                  "x":8512,
-                 "y":7040
+                 "y":6144
+                }, 
+                {
+                 "gid":1779,
+                 "height":64,
+                 "id":1211,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"Frostlands",
+                     "teleportX":251,
+                     "teleportY":223
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsDown",
+                 "visible":true,
+                 "width":64,
+                 "x":8512,
+                 "y":7168
                 }],
          "opacity":1,
          "type":"objectgroup",
