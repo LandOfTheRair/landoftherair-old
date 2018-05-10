@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { capitalize, flatten, sortBy } from 'lodash';
+import { capitalize, sortBy } from 'lodash';
 import { MetalworkingHelper } from '../../../server/helpers/tradeskill/metalworking-helper';
 
 @Component({
