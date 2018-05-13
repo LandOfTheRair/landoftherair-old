@@ -5,7 +5,7 @@ export class FindFamiliarBear extends Trait {
 
   static baseClass = 'Mage';
   static traitName = 'FindFamiliarBear';
-  static description = 'You can now summon a bear, which has a lot of HP.';
+  static description = 'You can now summon a bear, which has a lot of HP and can taunt your enemies.';
   static icon = 'eagle-emblem';
 
   static upgrades = [

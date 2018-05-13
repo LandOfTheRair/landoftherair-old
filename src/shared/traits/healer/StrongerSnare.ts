@@ -5,7 +5,7 @@ export class StrongerSnare extends Trait {
 
   static baseClass = 'Healer';
   static traitName = 'StrongerSnare';
-  static description = 'Your Snare spell will slow the target movement even more yet';
+  static description = 'Your Snare spell more effectively slows down the target.';
   static icon = 'light-thorny-triskelion';
 
   static upgrades = [

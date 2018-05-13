@@ -5,7 +5,7 @@ export class DarknessWiden extends Trait {
 
   static baseClass = 'Thief';
   static traitName = 'DarknessWiden';
-  static description = 'Your Darkness spell range is lengthened.';
+  static description = 'Your Darkness spell range is widened by $1|1$ tile.';
   static icon = 'dust-cloud';
 
   static upgrades = [

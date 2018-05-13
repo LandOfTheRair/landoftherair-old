@@ -6,7 +6,7 @@ export class BrassKnuckles extends Trait {
 
   static baseClass = 'Warrior';
   static traitName = 'BrassKnuckles';
-  static description = 'Your open-hand fist attacks are stronger.';
+  static description = 'Your open-hand fist attacks are treated as $1|1$ tier stronger.';
   static icon = 'brass-knuckles';
 
   static upgrades = [
