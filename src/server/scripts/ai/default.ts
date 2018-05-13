@@ -141,6 +141,10 @@ export class DefaultAIBehavior {
       chosenSkill = CommandExecutor.checkIfCanUseSkill(skill, npc, currentTarget);
     });
 
+    if(npc.$$interceptor) {
+      npc.sendClientMessage(`Tick. Skill chosen: ${chosenSkill ? chosenSkill.name : 'none'}. Has target: ${!!highestAgro || !!currentTarget}`);
+    }
+
     // we have a target
     if(highestAgro) {
 
@@ -239,7 +243,8 @@ export class DefaultAIBehavior {
     // check if should leash
     const distFrom = npc.distFrom(npc.spawner);
 
-    if(npc.spawner.leashRadius >= 0 && distFrom > npc.spawner.leashRadius) {
+    // if we have no target and its out of the random walk radius, or we're past the leash radius, we leash
+    if((!currentTarget && distFrom > npc.spawner.randomWalkRadius) || (npc.spawner.leashRadius >= 0 && distFrom > npc.spawner.leashRadius)) {
 
       npc.sendLeashMessage();
 
