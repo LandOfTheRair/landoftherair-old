@@ -9,7 +9,7 @@ export class Dangerous extends Effect {
     name: 'crowned-skull',
     bgColor: '#000',
     color: '#fff',
-    tooltipDesc: 'This creature is dangerous! It has above average stats and will strip your gear on death.'
+    tooltipDesc: 'This creature is dangerous! It has above average stats and may strip your gear on death.'
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {

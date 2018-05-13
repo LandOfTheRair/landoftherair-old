@@ -19,6 +19,7 @@ export class LairSpawner extends Spawner {
       shouldStrip: true,
       stripOnSpawner: true,
       canSlowDown: false,
+      isDangerous: true,
       eliteTickCap: 0
     }, properties);
 

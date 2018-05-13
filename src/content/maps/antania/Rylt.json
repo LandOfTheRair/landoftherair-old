@@ -6139,6 +6139,7 @@
                  "name":"Werebear Spawner",
                  "properties":
                     {
+                     "isDangerous":false,
                      "lairName":"Rylt Werebear",
                      "randomWalkRadius":5,
                      "respawnRate":1800,
@@ -6150,6 +6151,7 @@
                     },
                  "propertytypes":
                     {
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
@@ -6273,6 +6275,7 @@
                  "name":"Weredeer Spawner",
                  "properties":
                     {
+                     "isDangerous":false,
                      "lairName":"Rylt Weredeer",
                      "randomWalkRadius":5,
                      "script":"global\/lair",
@@ -6280,6 +6283,7 @@
                     },
                  "propertytypes":
                     {
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "script":"string",
@@ -6299,6 +6303,7 @@
                  "name":"Weredeer Spawner",
                  "properties":
                     {
+                     "isDangerous":false,
                      "lairName":"Rylt Weredeer",
                      "randomWalkRadius":5,
                      "script":"global\/lair",
@@ -6306,6 +6311,7 @@
                     },
                  "propertytypes":
                     {
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "script":"string",
@@ -6326,6 +6332,7 @@
                  "properties":
                     {
                      "initialSpawn":3,
+                     "isDangerous":false,
                      "lairName":"Rylt Weredeer",
                      "maxSpawn":3,
                      "randomWalkRadius":5,
@@ -6335,6 +6342,7 @@
                  "propertytypes":
                     {
                      "initialSpawn":"int",
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "maxSpawn":"int",
                      "randomWalkRadius":"int",

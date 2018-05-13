@@ -51,6 +51,7 @@ export class Spawner {
   requireDeadToRespawn = false;
 
   canSlowDown = true;
+  isDangerous = false;
 
   shouldStrip = false;
   stripRadius = 0;
@@ -300,7 +301,7 @@ export class Spawner {
     npc.$$stripX = this.stripX;
     npc.$$stripY = this.stripY;
 
-    if(npc.$$shouldStrip) {
+    if(this.isDangerous) {
       const dangerous = new Dangerous({});
       dangerous.cast(npc, npc);
     }
