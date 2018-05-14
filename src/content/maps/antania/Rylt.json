@@ -6543,6 +6543,7 @@
                  "name":"Renegade Leader Spawner",
                  "properties":
                     {
+                     "isDangerous":false,
                      "lairName":"Rylt Renegade Leader",
                      "randomWalkRadius":5,
                      "respawnRate":1200,
@@ -6551,6 +6552,7 @@
                     },
                  "propertytypes":
                     {
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
@@ -6571,6 +6573,7 @@
                  "name":"Renegade Leader Spawner",
                  "properties":
                     {
+                     "isDangerous":false,
                      "lairName":"Rylt Renegade Leader",
                      "randomWalkRadius":5,
                      "respawnRate":1200,
@@ -6579,6 +6582,7 @@
                     },
                  "propertytypes":
                     {
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
@@ -6599,6 +6603,7 @@
                  "name":"Renegade Leader Spawner",
                  "properties":
                     {
+                     "isDangerous":false,
                      "lairName":"Rylt Renegade Leader",
                      "randomWalkRadius":15,
                      "respawnRate":600,
@@ -6607,6 +6612,7 @@
                     },
                  "propertytypes":
                     {
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
@@ -6627,6 +6633,7 @@
                  "name":"Renegade Leader Spawner",
                  "properties":
                     {
+                     "isDangerous":false,
                      "lairName":"Rylt Renegade Leader",
                      "randomWalkRadius":15,
                      "respawnRate":600,
@@ -6635,6 +6642,7 @@
                     },
                  "propertytypes":
                     {
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
@@ -6655,6 +6663,7 @@
                  "name":"Renegade Commander Spawner",
                  "properties":
                     {
+                     "isDangerous":false,
                      "lairName":"Rylt Renegade Commander",
                      "randomWalkRadius":15,
                      "respawnRate":3600,
@@ -6666,6 +6675,7 @@
                     },
                  "propertytypes":
                     {
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
