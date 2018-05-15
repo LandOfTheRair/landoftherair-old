@@ -50,11 +50,14 @@ const HealingMagic = [
   'Seer of Truth',
   'Cleanser of Veins',
   'Poisoner of Veins',
+  'Restorer of Vision',
+  'Taker of Vision',
   'Protector from Necrosis',
   'Restorer of Life',
   'Traveler of the Void',
   'Restorer of Light',
   'Inflictor of Plague',
+  'Snarer of Feet',
   'Mind Interrupter',
   'Forceful Healer',
   'Regenerator of Wounds',
@@ -64,7 +67,9 @@ const HealingMagic = [
   'Sharer of Boons',
   'Sharer of Vitality',
   'Smiter of Foes',
-  'Creator of Essence'
+  'Creator of Essence',
+  'Dispeller of Boons',
+  'Preserver of Security'
 ];
 
 const ElementalMagic = [
@@ -73,6 +78,7 @@ const ElementalMagic = [
   'Identifier of Items',
   'Seer of Truth',
   'Elemental Protector',
+  'Elemental Channeler',
   'Protector of Breath',
   'Flinger of Fire',
   'Flinger of Frost',
@@ -85,10 +91,15 @@ const ElementalMagic = [
   'Protector of Minds',
   'Novice Summoner',
   'Wearer of Flames',
+  'Wearer of Frost',
   'Cloaker of Vision',
   'Imbuer of Energy',
   'Warper of Dimensions',
-  'Time Wizard'
+  'Time Wizard',
+  'Dimensional Wizard',
+  'Multidimensional Wizard',
+  'Vitality Thief',
+  'Energy Thief'
 ];
 
 const Martial = [
