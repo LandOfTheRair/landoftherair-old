@@ -146,7 +146,7 @@ const DESCS = [
   'You are standing near a hole.',
   'You are standing on cobblestone.',
   'You are standing in snow.',
-  'You are swimming in deep water.',
+  'You are swimming in chilly water.',
   'You are standing in flowery grass.',
   'You are standing knee-deep in weeds and bog flowers.',
   'You are standing on dirt.'
