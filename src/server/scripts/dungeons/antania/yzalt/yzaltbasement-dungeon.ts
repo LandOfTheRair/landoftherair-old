@@ -7,6 +7,7 @@ export const setup = async (room) => {
   const possibleLoot = [
     'Steffen Offensive Sash',
     'Yzalt Basic Sash',
+    'Heniz Agility Sash',
     'Yzalt MagicResist Bracers',
     'Heniz Dexterity Bracers',
     'Yzalt Defensive Claws',

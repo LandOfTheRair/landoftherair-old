@@ -54,3 +54,19 @@
 - result: Tower Vitals Saucer
   chance: 1
   maxChance: 600
+
+- result: Heniz Agility Sash
+  chance: 1
+  maxChance: 600
+
+- result: Steffen Offensive Sash
+  chance: 1
+  maxChance: 600
+
+- result: Steffen DamageResist Ring
+  chance: 1
+  maxChance: 600
+
+- result: Heniz Intelligence Ring
+  chance: 1
+  maxChance: 600
