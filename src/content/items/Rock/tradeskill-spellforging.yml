@@ -2,10 +2,10 @@
 
 - name: Enchanting Brick - Enos
   sprite: 616
-  desc: "a magical brick, emanating with the power of the rift"
+  desc: "a machleum brick, emanating with the power of ether"
   value: 100
 
 - name: Enchanting Brick - Owts
   sprite: 683
-  desc: "a shimmering magical brick, overflowing with magical power originating from the rift"
+  desc: "a shimmering machleum brick, overflowing with the magical power of ether"
   value: 100

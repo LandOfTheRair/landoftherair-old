@@ -57,7 +57,7 @@ export class MoveHelper {
     */
 
     const astar = new Pathfinder.AStarFinder({
-      allowDiagonal: true,
+      diagonalMovement: Pathfinder.DiagonalMovement.Always,
       // dontCrossCorners: false
     });
 
