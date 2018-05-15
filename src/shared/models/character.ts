@@ -573,6 +573,8 @@ export class Character {
       this.totalStats.stealth -= this.hidePenalty();
     }
 
+    this.totalStats.mitigation += this.getTraitLevelAndUsageModifier('UnarmoredSavant');
+
     // always recalculate perception
     this.totalStats.perception += this.perceptionLevel();
 

@@ -584,7 +584,7 @@
     "StrongerSnare0": {
         "name": "StrongerSnare0",
         "traitName": "StrongerSnare",
-        "desc": "Your Snare spell will slow the target movement even more yet",
+        "desc": "Your Snare spell more effectively slows down the target.",
         "icon": "light-thorny-triskelion",
         "capstone": true,
         "cost": 50,

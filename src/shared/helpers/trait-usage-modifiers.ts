@@ -1,3 +1,4 @@
+import { UnarmoredSavant } from '../traits/warrior/UnarmoredSavant';
 
 export class TraitUsageModifiers {
 
@@ -44,6 +45,8 @@ export class TraitUsageModifiers {
       case 'MartialAgility':      return level * 0.2;
       case 'StunningFist':        return level * 2;
       case 'MartialAcuity':       return level;
+
+      case 'UnarmoredSavant':     return level ? 40 : 0;
 
       case 'EnhancedApplications':      return level * 60;
       case 'RecuperatingDebilitation':  return level * 5;

@@ -376,7 +376,7 @@
     "EnergyWaveWiden0": {
         "name": "EnergyWaveWiden0",
         "traitName": "EnergyWaveWiden",
-        "desc": "Your Energy Wave spell range is lengthened.",
+        "desc": "Your Energy Wave spell range is widened by $1|1$ tile.",
         "icon": "beams-aura",
         "cost": 3,
         "cluster": 1,
@@ -567,7 +567,7 @@
     "DarknessWiden0": {
         "name": "DarknessWiden0",
         "traitName": "DarknessWiden",
-        "desc": "Your Darkness spell range is lengthened.",
+        "desc": "Your Darkness spell range is widened by $1|1$ tile.",
         "icon": "dust-cloud",
         "capstone": true,
         "cost": 5,
@@ -778,7 +778,7 @@
     "FireMistWiden0": {
         "name": "FireMistWiden0",
         "traitName": "FireMistWiden",
-        "desc": "Your Fire Mist spell range is lengthened.",
+        "desc": "Your Fire Mist spell range is widened by $1|1$ tile.",
         "icon": "kaleidoscope-pearls",
         "capstone": true,
         "cost": 5,
@@ -790,7 +790,7 @@
     "IceMistWiden0": {
         "name": "IceMistWiden0",
         "traitName": "IceMistWiden",
-        "desc": "Your Ice Mist spell range is lengthened.",
+        "desc": "Your Ice Mist spell range is widened by $1|1$ tile.",
         "icon": "kaleidoscope-pearls",
         "capstone": true,
         "cost": 5,
@@ -1055,7 +1055,7 @@
     "BladedWands0": {
         "name": "BladedWands0",
         "traitName": "BladedWands",
-        "desc": "You treat wands as longswords for the purposes of combat calculations.",
+        "desc": "You treat wands as longswords of the same tier for the purposes of combat calculations.",
         "icon": "energy-sword",
         "capstone": true,
         "requireCharacterLevel": 10,
@@ -1081,7 +1081,7 @@
     "FindFamiliarBear0": {
         "name": "FindFamiliarBear0",
         "traitName": "FindFamiliarBear",
-        "desc": "You can now summon a bear, which has a lot of HP.",
+        "desc": "You can now summon a bear, which has a lot of HP and can taunt your enemies.",
         "icon": "eagle-emblem",
         "capstone": true,
         "requireCharacterLevel": 10,
@@ -1107,7 +1107,7 @@
     "FindFamiliarChillspider0": {
         "name": "FindFamiliarChillspider0",
         "traitName": "FindFamiliarChillspider",
-        "desc": "You can now summon a chillspider, which freezes foes.",
+        "desc": "You can now summon a chillspider, which slows foes.",
         "icon": "eagle-emblem",
         "capstone": true,
         "requireCharacterLevel": 10,

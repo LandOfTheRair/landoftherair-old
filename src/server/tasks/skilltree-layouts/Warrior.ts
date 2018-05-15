@@ -235,7 +235,7 @@ const MONK_TREE = {
     unlocks: ['MartialAgility2']
   },
   MartialAgility2: {
-    unlocks: ['Sweep']
+    unlocks: ['Sweep', 'UnarmoredSavant0']
   },
 
   MartialAcuity0: {
@@ -255,6 +255,10 @@ const MONK_TREE = {
     unlocks: ['StunningFist2']
   },
   StunningFist2: {
+
+  },
+
+  UnarmoredSavant0: {
 
   },
 

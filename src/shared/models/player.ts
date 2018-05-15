@@ -711,11 +711,10 @@ export class Player extends Character {
     const traitRef = this.traitLevels[trait];
     if(!traitRef) return false;
 
-    // check if is active, defaults to true
-    const { category, name } = traitRef;
-    if(!category || !name) return true;
+    const traitObj = AllTraits.Common[trait] || AllTraits[this.baseClass][trait];
+    if(!traitObj) return false;
 
-    return (AllTraits.Common[name] || AllTraits[this.baseClass][name]).currentlyInEffect(this);
+    return traitObj.currentlyInEffect(this);
   }
 
   public isTraitActive(trait: string): boolean {

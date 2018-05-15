@@ -19,3 +19,4 @@ export * from './SterlingArmor';
 export * from './StunningFist';
 export * from './Swashbuckler';
 export * from './SwordTricks';
+export * from './UnarmoredSavant';

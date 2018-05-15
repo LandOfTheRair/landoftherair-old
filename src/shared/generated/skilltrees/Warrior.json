@@ -387,7 +387,7 @@
     "Swashbuckler0": {
         "name": "Swashbuckler0",
         "traitName": "Swashbuckler",
-        "desc": "Reduce your chance of getting a glancing blow.",
+        "desc": "Reduce your chance of getting a glancing blow by $12.5|37.5$%.",
         "icon": "spiral-thrust",
         "cost": 3,
         "unlocks": [
@@ -401,7 +401,7 @@
     "Swashbuckler1": {
         "name": "Swashbuckler1",
         "traitName": "Swashbuckler",
-        "desc": "Reduce your chance of getting a glancing blow.",
+        "desc": "Reduce your chance of getting a glancing blow by $12.5|37.5$%.",
         "icon": "spiral-thrust",
         "cost": 3,
         "unlocks": [
@@ -415,7 +415,7 @@
     "Swashbuckler2": {
         "name": "Swashbuckler2",
         "traitName": "Swashbuckler",
-        "desc": "Reduce your chance of getting a glancing blow.",
+        "desc": "Reduce your chance of getting a glancing blow by $12.5|37.5$%.",
         "icon": "spiral-thrust",
         "cost": 3,
         "unlocks": [
@@ -429,7 +429,7 @@
     "Swashbuckler3": {
         "name": "Swashbuckler3",
         "traitName": "Swashbuckler",
-        "desc": "Reduce your chance of getting a glancing blow.",
+        "desc": "Reduce your chance of getting a glancing blow by $12.5|37.5$%.",
         "icon": "spiral-thrust",
         "cost": 3,
         "unlocks": [
@@ -443,7 +443,7 @@
     "Swashbuckler4": {
         "name": "Swashbuckler4",
         "traitName": "Swashbuckler",
-        "desc": "Reduce your chance of getting a glancing blow.",
+        "desc": "Reduce your chance of getting a glancing blow by $12.5|37.5$%.",
         "icon": "spiral-thrust",
         "capstone": true,
         "cost": 10,
@@ -785,7 +785,7 @@
     "BrassKnuckles0": {
         "name": "BrassKnuckles0",
         "traitName": "BrassKnuckles",
-        "desc": "Your open-hand fist attacks are stronger.",
+        "desc": "Your open-hand fist attacks are treated as $1|1$ tier stronger.",
         "icon": "brass-knuckles",
         "cost": 20,
         "unlocks": [
@@ -800,7 +800,7 @@
     "BrassKnuckles1": {
         "name": "BrassKnuckles1",
         "traitName": "BrassKnuckles",
-        "desc": "Your open-hand fist attacks are stronger.",
+        "desc": "Your open-hand fist attacks are treated as $1|1$ tier stronger.",
         "icon": "brass-knuckles",
         "cost": 20,
         "unlocks": [
@@ -814,7 +814,7 @@
     "BrassKnuckles2": {
         "name": "BrassKnuckles2",
         "traitName": "BrassKnuckles",
-        "desc": "Your open-hand fist attacks are stronger.",
+        "desc": "Your open-hand fist attacks are treated as $1|1$ tier stronger.",
         "icon": "brass-knuckles",
         "cost": 20,
         "cluster": 3,
@@ -836,7 +836,7 @@
     "MartialAgility0": {
         "name": "MartialAgility0",
         "traitName": "MartialAgility",
-        "desc": "Gain a bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
+        "desc": "Gain a $20|60$% bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
         "icon": "wingfoot",
         "cost": 3,
         "unlocks": [
@@ -850,7 +850,7 @@
     "MartialAgility1": {
         "name": "MartialAgility1",
         "traitName": "MartialAgility",
-        "desc": "Gain a bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
+        "desc": "Gain a $20|60$% bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
         "icon": "wingfoot",
         "cost": 3,
         "unlocks": [
@@ -864,12 +864,13 @@
     "MartialAgility2": {
         "name": "MartialAgility2",
         "traitName": "MartialAgility",
-        "desc": "Gain a bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
+        "desc": "Gain a $20|60$% bonus to dodging melee attacks if you have open hands. If both of your hands are open, the bonus is higher.",
         "icon": "wingfoot",
         "capstone": true,
         "cost": 10,
         "unlocks": [
-            "Sweep"
+            "Sweep",
+            "UnarmoredSavant0"
         ],
         "cluster": 3,
         "unlockedBy": [
@@ -879,7 +880,7 @@
     "MartialAcuity0": {
         "name": "MartialAcuity0",
         "traitName": "MartialAcuity",
-        "desc": "Gain an offensive bonus when trying to physically hit another creature.",
+        "desc": "Gain a +$1|3$ offensive bonus when trying to physically hit another creature.",
         "icon": "armor-punch",
         "cost": 3,
         "unlocks": [
@@ -893,7 +894,7 @@
     "MartialAcuity1": {
         "name": "MartialAcuity1",
         "traitName": "MartialAcuity",
-        "desc": "Gain an offensive bonus when trying to physically hit another creature.",
+        "desc": "Gain a +$1|3$ offensive bonus when trying to physically hit another creature.",
         "icon": "armor-punch",
         "cost": 3,
         "unlocks": [
@@ -907,7 +908,7 @@
     "MartialAcuity2": {
         "name": "MartialAcuity2",
         "traitName": "MartialAcuity",
-        "desc": "Gain an offensive bonus when trying to physically hit another creature.",
+        "desc": "Gain a +$1|3$ offensive bonus when trying to physically hit another creature.",
         "icon": "armor-punch",
         "capstone": true,
         "cost": 10,
@@ -958,6 +959,18 @@
         "cluster": 3,
         "unlockedBy": [
             "StunningFist1"
+        ]
+    },
+    "UnarmoredSavant0": {
+        "name": "UnarmoredSavant0",
+        "traitName": "UnarmoredSavant",
+        "desc": "Gain a 40% bonus to mitigation if you are using a robe or cloak in your main armor slot.",
+        "icon": "robe",
+        "capstone": true,
+        "cost": 30,
+        "cluster": 3,
+        "unlockedBy": [
+            "MartialAgility2"
         ]
     },
     "Shield": {
@@ -1024,7 +1037,7 @@
     "SterlingArmor0": {
         "name": "SterlingArmor0",
         "traitName": "SterlingArmor",
-        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "desc": "Increase your chance of ignoring incoming glancing blows by $10|30$%.",
         "icon": "chest-armor",
         "cost": 3,
         "unlocks": [
@@ -1038,7 +1051,7 @@
     "SterlingArmor1": {
         "name": "SterlingArmor1",
         "traitName": "SterlingArmor",
-        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "desc": "Increase your chance of ignoring incoming glancing blows by $10|30$%.",
         "icon": "chest-armor",
         "cost": 3,
         "unlocks": [
@@ -1052,7 +1065,7 @@
     "SterlingArmor2": {
         "name": "SterlingArmor2",
         "traitName": "SterlingArmor",
-        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "desc": "Increase your chance of ignoring incoming glancing blows by $10|30$%.",
         "icon": "chest-armor",
         "cost": 3,
         "unlocks": [
@@ -1066,7 +1079,7 @@
     "SterlingArmor3": {
         "name": "SterlingArmor3",
         "traitName": "SterlingArmor",
-        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "desc": "Increase your chance of ignoring incoming glancing blows by $10|30$%.",
         "icon": "chest-armor",
         "cost": 3,
         "unlocks": [
@@ -1080,7 +1093,7 @@
     "SterlingArmor4": {
         "name": "SterlingArmor4",
         "traitName": "SterlingArmor",
-        "desc": "Increase your chance of ignoring incoming glancing blows.",
+        "desc": "Increase your chance of ignoring incoming glancing blows by $10|30$%.",
         "icon": "chest-armor",
         "capstone": true,
         "cost": 10,
@@ -1092,7 +1105,7 @@
     "HolyProtection0": {
         "name": "HolyProtection0",
         "traitName": "HolyProtection",
-        "desc": "Decrease the amount of magical damage you take.",
+        "desc": "Decrease the amount of magical damage you take by $10|30$.",
         "icon": "holy-symbol",
         "cost": 3,
         "unlocks": [
@@ -1106,7 +1119,7 @@
     "HolyProtection1": {
         "name": "HolyProtection1",
         "traitName": "HolyProtection",
-        "desc": "Decrease the amount of magical damage you take.",
+        "desc": "Decrease the amount of magical damage you take by $10|30$.",
         "icon": "holy-symbol",
         "cost": 3,
         "unlocks": [
@@ -1120,7 +1133,7 @@
     "HolyProtection2": {
         "name": "HolyProtection2",
         "traitName": "HolyProtection",
-        "desc": "Decrease the amount of magical damage you take.",
+        "desc": "Decrease the amount of magical damage you take by $10|30$.",
         "icon": "holy-symbol",
         "cost": 3,
         "unlocks": [
@@ -1134,7 +1147,7 @@
     "HolyProtection3": {
         "name": "HolyProtection3",
         "traitName": "HolyProtection",
-        "desc": "Decrease the amount of magical damage you take.",
+        "desc": "Decrease the amount of magical damage you take by $10|30$.",
         "icon": "holy-symbol",
         "cost": 3,
         "unlocks": [
@@ -1148,7 +1161,7 @@
     "HolyProtection4": {
         "name": "HolyProtection4",
         "traitName": "HolyProtection",
-        "desc": "Decrease the amount of magical damage you take.",
+        "desc": "Decrease the amount of magical damage you take by $10|30$.",
         "icon": "holy-symbol",
         "capstone": true,
         "cost": 10,
@@ -1230,7 +1243,7 @@
     "Multitarget0": {
         "name": "Multitarget0",
         "traitName": "Multitarget",
-        "desc": "Increase the number of enemies you can strike with Multistrike.",
+        "desc": "Increase the number of enemies you can strike with Multistrike by $3|9$.",
         "icon": "sword-spin",
         "cost": 10,
         "unlocks": [
@@ -1244,7 +1257,7 @@
     "Multitarget1": {
         "name": "Multitarget1",
         "traitName": "Multitarget",
-        "desc": "Increase the number of enemies you can strike with Multistrike.",
+        "desc": "Increase the number of enemies you can strike with Multistrike by $3|9$.",
         "icon": "sword-spin",
         "cost": 10,
         "cluster": 4,
@@ -1255,7 +1268,7 @@
     "Multifocus0": {
         "name": "Multifocus0",
         "traitName": "Multifocus",
-        "desc": "Lower the defensive penalty for using Multistrike.",
+        "desc": "Lower the defensive penalty for using Multistrike by 50%.",
         "icon": "sword-spin",
         "capstone": true,
         "cost": 40,
