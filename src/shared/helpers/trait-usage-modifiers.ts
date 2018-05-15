@@ -1,4 +1,3 @@
-import { UnarmoredSavant } from '../traits/warrior/UnarmoredSavant';
 
 export class TraitUsageModifiers {
 

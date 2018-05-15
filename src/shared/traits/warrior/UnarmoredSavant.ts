@@ -18,7 +18,6 @@ export class UnarmoredSavant extends Trait {
 
   static currentlyInEffect(player: Player): boolean {
     const itemClass = get(player, 'gear.Armor.itemClass');
-    console.log('ua', itemClass)
     return super.currentlyInEffect(player) && (includes(RobeClasses, itemClass));
   }
 
