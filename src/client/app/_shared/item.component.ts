@@ -356,6 +356,10 @@ export class ItemComponent implements OnInit {
         } else if(this.item.isSackable) {
           this.doColyseusMoveAction('S');
           return;
+
+        } else {
+          this.doColyseusMoveAction('R');
+          return;
         }
       }
 
