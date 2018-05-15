@@ -565,6 +565,32 @@
                  "width":64,
                  "x":896,
                  "y":512
+                }, 
+                {
+                 "gid":1777,
+                 "height":64,
+                 "id":223,
+                 "name":"",
+                 "properties":
+                    {
+                     "subscriberOnly":true,
+                     "teleportMap":"SubscriberCastle",
+                     "teleportX":17,
+                     "teleportY":35
+                    },
+                 "propertytypes":
+                    {
+                     "subscriberOnly":"bool",
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsUp",
+                 "visible":true,
+                 "width":64,
+                 "x":1088,
+                 "y":960
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1109,7 +1135,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":222,
+ "nextobjectid":224,
  "orientation":"orthogonal",
  "properties":
     {
