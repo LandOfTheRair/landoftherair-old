@@ -84,7 +84,7 @@
 
 - name: Ghast Claws
   quality: 5
-  tier: 3
+  tier: 4
   stats:
     str: 1
     dex: 1

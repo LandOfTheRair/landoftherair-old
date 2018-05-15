@@ -61,7 +61,7 @@
       - "Mage"
 
 - name: Dedlaen Dexterity Gloves
-  tier: 3
+  tier: 4
   randomStats:
     offense:
       min: 1
