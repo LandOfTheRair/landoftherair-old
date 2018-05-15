@@ -101,6 +101,12 @@ test('All map spawners have a valid script and AI script', t => {
   allMaps.forEach(map => {
     const spawnerObjects = map.layers[MapLayer.Spawners].objects;
     spawnerObjects.forEach(spawner => {
+
+      if(!spawner.properties) {
+        t.fail(`Interactable (${map._name}) ${JSON.stringify(spawner)} has no properties!`);
+        return;
+      }
+
       t.true(fs.existsSync(`${__dirname}/../scripts/spawners/${spawner.properties.script}.ts`),
         tagFor(map, 'spawnerscript', spawner.properties.script || `unspecified @ ${spawner.x / 64}, ${spawner.y / 64}`));
 
