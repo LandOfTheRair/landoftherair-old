@@ -2,7 +2,7 @@
 import { includes, random, capitalize, get, clamp } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../../shared/models/character';
-import { ShieldClasses, Item, WeaponClasses, ItemEffect } from '../../../shared/models/item';
+import { ShieldClasses, Item, WeaponClasses, ItemEffect, HandsClasses } from '../../../shared/models/item';
 import * as Classes from '../../classes';
 import * as Effects from '../../effects';
 
@@ -31,7 +31,7 @@ export const BaseItemStatsPerTier = {
   Dagger:               { base: 2, min: 0, max: 1, weakChance: 1,  damageBonus: 10 },
   Flail:                { base: 0, min: 1, max: 4, weakChance: 10, damageBonus: 0 },
   Gloves:               { base: 1, min: 0, max: 2, weakChance: 10, damageBonus: 5 },
-  Hands:                { base: 1, min: 0, max: 2, weakChance: 10, damageBonus: 5 },
+  Hands:                { base: 1, min: 0, max: 1, weakChance: 10, damageBonus: 5 },
   Boots:                { base: 2, min: 1, max: 3, weakChance: 10, damageBonus: 5 },
   Greataxe:             { base: 5, min: 1, max: 2, weakChance: 10, damageBonus: 5 },
   Greatmace:            { base: 5, min: 1, max: 2, weakChance: 10, damageBonus: 5 },
@@ -63,7 +63,7 @@ export class CombatHelper {
     let tier = item.tier || 0;
     const { base, min, max, weakChance, damageBonus } = BaseItemStatsPerTier[itemClass];
 
-    if(itemClass === 'Hands') {
+    if(itemClass === 'Hands' || includes(HandsClasses, item.type)) {
       tier += attacker.getTraitLevel('BrassKnuckles');
     }
 
