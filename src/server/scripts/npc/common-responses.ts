@@ -726,7 +726,7 @@ export const ReviverResponses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
 
-      const targets = npc.$$room.state.getPlayersInRange(npc, 0, [npc.uuid]).filter(target => target.isDead());
+      const targets = npc.$$room.state.getAllPlayersInRange(npc, 0).filter(target => target.isDead());
       const target = targets[0];
 
       if(!target) return 'There is no one in need of revival here!';
