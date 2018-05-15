@@ -605,13 +605,3 @@
   drops:
     - result: Rylt Renegade Book
       chance: -1
-
-  dropPool:
-    choose:
-      min: 2
-      max: 2
-    items:
-      - Rune Scroll - Shadow Ranger I
-      - Rune Scroll - Shadow Swap I
-      - Rune Scroll - Darker Shadows I
-      - Rune Scroll - Shadow Daggers I

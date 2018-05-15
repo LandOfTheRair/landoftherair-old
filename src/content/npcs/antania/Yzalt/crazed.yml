@@ -1081,16 +1081,6 @@
     Robe1: Ranata Robe
     Ear: Enemy DarkVision Earring
 
-  dropPool:
-    choose:
-      min: 2
-      max: 2
-    items:
-      - Rune Scroll - Healing Focus I
-      - Rune Scroll - Necrotic Focus I
-      - Rune Scroll - Totem Specialty I
-      - Rune Scroll - Irresistible Stuns I
-
   drops:
     - result: Ranata Totem
       chance: -1
@@ -1156,6 +1146,18 @@
       - Rune Scroll - Offhand Finesse I
       - Rune Scroll - Riposte I
       - Rune Scroll - Swashbuckler I
+      - Rune Scroll - Healing Focus I
+      - Rune Scroll - Necrotic Focus I
+      - Rune Scroll - Totem Specialty I
+      - Rune Scroll - Irresistible Stuns I
+      - Rune Scroll - Magic Focus I
+      - Rune Scroll - Forged Fire I
+      - Rune Scroll - Wand Specialty I
+      - Rune Scroll - Frosted Touch I
+      - Rune Scroll - Shadow Ranger I
+      - Rune Scroll - Shadow Swap I
+      - Rune Scroll - Darker Shadows I
+      - Rune Scroll - Shadow Daggers I
 
   copyDrops:
     - drop: 'rightHand'
