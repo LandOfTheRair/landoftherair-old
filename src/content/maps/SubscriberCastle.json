@@ -817,6 +817,30 @@
                  "width":64,
                  "x":832,
                  "y":1856
+                }, 
+                {
+                 "gid":1779,
+                 "height":64,
+                 "id":483,
+                 "name":"Risan Castle Town",
+                 "properties":
+                    {
+                     "teleportMap":"Frostlands",
+                     "teleportX":104,
+                     "teleportY":101
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsDown",
+                 "visible":true,
+                 "width":64,
+                 "x":832,
+                 "y":1728
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1331,10 +1355,29 @@
                  "width":64,
                  "x":832,
                  "y":1792
+                }, 
+                {
+                 "height":64,
+                 "id":484,
+                 "name":"Risan Castle Town",
+                 "properties":
+                    {
+                     "desc":"You see a sign near the stairs that reads \"Risan Castle Town\"."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":832,
+                 "y":1664
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1380,7 +1423,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":483,
+ "nextobjectid":485,
  "orientation":"orthogonal",
  "properties":
     {
@@ -1401,7 +1444,7 @@
      "subscriberOnly":"bool"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.4",
+ "tiledversion":"1.1.5",
  "tileheight":64,
  "tilesets":[
         {
