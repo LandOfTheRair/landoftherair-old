@@ -75,6 +75,10 @@ declare module 'pathfinding' {
     constructor(opts: any);
     findPath(x: number, y: number, destX: number, destY: number, grid: Grid): any[];
   }
+
+  enum DiagonalMovement {
+    Always = 1
+  }
 }
 
 declare module 'fantastical' {
