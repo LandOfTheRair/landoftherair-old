@@ -11,8 +11,8 @@ const ingotCraftBuffs = {
     armor:  { mitigation: 5 }
   },
   'Silver Ingot (Hourglass)': {
-    weapon: { weaponArmorClass: 7 },
-    armor:  { armorClass: 7 }
+    weapon: { weaponArmorClass: 10 },
+    armor:  { armorClass: 8 }
   },
   'Gold Ingot (Infinity)': {
     weapon: { agi: 2 },
@@ -22,15 +22,15 @@ const ingotCraftBuffs = {
 
 const ingotUpgradeBuffs = {
   'Copper Ingot (Pillars)': {
-    weapon: { physicalDamageBoost: 25 },
-    armor:  { mitigation: 1 }
+    weapon: { weaponDamageRolls: 3 },
+    armor:  { mitigation: 2 }
   },
   'Silver Ingot (Hourglass)': {
-    weapon: { weaponArmorClass: 2 },
-    armor:  { armorClass: 2 }
+    weapon: { weaponArmorClass: 4 },
+    armor:  { armorClass: 3 }
   },
   'Gold Ingot (Infinity)': {
-    weapon: { offense: 1, defense: 1, accuracy: 3 },
+    weapon: { offense: 2, defense: 2, accuracy: 2 },
     armor:  { hp: 20 }
   }
 };
