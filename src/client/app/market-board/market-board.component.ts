@@ -250,7 +250,7 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     const stats = get(itemInfo, 'itemOverride.stats', {});
     const statKeys = Object.keys(stats);
     if(statKeys.length === 0) return '';
-    return statKeys.map(stat => `+${stats[stat]} ${stat.toUpperCase()}`).join(', ');
+    return statKeys.map(stat => `${stats[stat] < 0 ? '' : '+'}${stats[stat]} ${stat.toUpperCase()}`).join(', ');
   }
 
   public traitStringFor(itemInfo) {
