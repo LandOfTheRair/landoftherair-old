@@ -219,7 +219,9 @@ export class CombatHelper {
 
   private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
     const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isKick, isPunch, isRiposte, damageMult } = opts;
-    let { isBackstab } = opts;
+    let { isBackstab, accuracyLoss } = opts;
+
+    if(!accuracyLoss) accuracyLoss = 0;
 
     let backstabIgnoreRange = false;
 
@@ -348,7 +350,7 @@ export class CombatHelper {
       skill: attackerSkillCalculated,
       skill4: Math.floor(attackerSkillCalculated / 4),
       offense: Math.floor(attacker.getTotalStat('offense') * offhandMultiplier),
-      accuracy: Math.floor(attacker.getTotalStat('accuracy') * offhandMultiplier),
+      accuracy: Math.floor(attacker.getTotalStat('accuracy') * offhandMultiplier) - accuracyLoss,
       dex: Math.floor(attacker.getTotalStat('dex') * offhandMultiplier) + attacker.getTraitLevelAndUsageModifier('MartialAcuity'),
       damageStat: Math.floor(baseDamageCalcStat * offhandMultiplier),
       damageStat4: Math.floor((baseDamageCalcStat / 4) * offhandMultiplier),
