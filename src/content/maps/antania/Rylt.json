@@ -8857,12 +8857,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -8879,12 +8877,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -8901,12 +8897,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -8923,12 +8917,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -8945,12 +8937,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -8967,12 +8957,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -8989,12 +8977,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -9011,12 +8997,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -9033,12 +9017,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -9055,12 +9037,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -9077,12 +9057,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -9099,12 +9077,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -9121,12 +9097,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,

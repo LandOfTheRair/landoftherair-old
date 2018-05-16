@@ -14,3 +14,18 @@
   sprite: 602
   desc: "an oddly-shaped branch taken from an Antanian tree"
   value: 15
+
+- name: Risan Twig
+  sprite: 222
+  desc: "a twig taken from a Risan tree"
+  value: 25
+
+- name: Risan Frozen Twig
+  sprite: 283
+  desc: "a frozen twig taken from a Risan tree"
+  value: 25
+
+- name: Risan Branch
+  sprite: 602
+  desc: "an oddly-shaped branch taken from a Risan tree"
+  value: 25

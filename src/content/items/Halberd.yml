@@ -20,7 +20,7 @@
   value: 145
   sprite: 230
 
-- name: Copper Halberd
+- name: Antanian Copper Halberd
   desc: "a roughly-made copper halberd that appears to be a branch attached to forged metal"
   stats:
     armorClass: 4
@@ -30,6 +30,20 @@
   type: Polearm
   value: 2500
   sprite: 230
+
+- name: Risan Copper Halberd
+  desc: "a crudely-made copper halberd that appears to be a branch attached to forged metal"
+  stats:
+    armorClass: 8
+    offense: 5
+    accuracy: 6
+  tier: 5
+  type: Polearm
+  value: 3500
+  sprite: 230
+
+  requirements:
+    level: 15
 
 - name: Tower Halberd Weak
   desc: "a riyan halberd"
@@ -66,7 +80,7 @@
   tier: 5
   stats:
     armorClass: 3
-    weaponArmorClass: 3
+    weaponArmorClass: 10
     offense: 4
   type: Polearm
   value: 2344

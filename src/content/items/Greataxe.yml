@@ -17,7 +17,7 @@
   value: 150
   sprite: 453
 
-- name: Silver Greataxe
+- name: Antanian Silver Greataxe
   desc: "a roughly-made silver greataxe that appears to be a branch attached to forged metal"
   stats:
     offense: 2
@@ -25,8 +25,20 @@
     accuracy: 1
   tier: 2
   type: Axe
-  secondaryYype: Twohanded
+  secondaryType: Twohanded
   value: 2500
+  sprite: 453
+
+- name: Risan Silver Greataxe
+  desc: "a crudely-made silver greataxe that appears to be a branch attached to forged metal"
+  stats:
+    offense: 2
+    defense: 2
+    accuracy: 1
+  tier: 5
+  type: Axe
+  secondaryType: Twohanded
+  value: 3500
   sprite: 453
 
 - name: Sedgwick's Greataxe

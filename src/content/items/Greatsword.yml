@@ -26,7 +26,7 @@
   sprite: 308
   binds: true
 
-- name: Copper Greatsword
+- name: Antanian Copper Greatsword
   desc: "a roughly-made copper greatsword that appears to be a branch attached to forged metal"
   stats:
     offense: 4
@@ -35,6 +35,19 @@
   type: Twohanded
   value: 2500
   sprite: 198
+
+- name: Risan Copper Greatsword
+  desc: "a crudely-made copper greatsword that appears to be a branch attached to forged metal"
+  stats:
+    offense: 6
+    defense: 2
+  tier: 5
+  type: Twohanded
+  value: 3500
+  sprite: 198
+
+  requirements:
+    level: 15
 
 - name: Tower Greatsword Weak
   stats:

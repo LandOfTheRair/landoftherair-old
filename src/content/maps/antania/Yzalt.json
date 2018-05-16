@@ -7299,12 +7299,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -7321,12 +7319,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -7343,12 +7339,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -7365,12 +7359,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -7387,12 +7379,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -7409,12 +7399,10 @@
                  "name":"Tree Spawner",
                  "properties":
                     {
-                     "resourceName":"Small Antanian Dying Tree",
                      "script":"resource\/random-antanian-tree"
                     },
                  "propertytypes":
                     {
-                     "resourceName":"string",
                      "script":"string"
                     },
                  "rotation":0,
@@ -8424,7 +8412,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.4",
  "tileheight":64,
  "tilesets":[
         {

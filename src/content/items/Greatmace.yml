@@ -17,7 +17,7 @@
   value: 150
   sprite: 325
 
-- name: Silver Greatmace
+- name: Antanian Silver Greatmace
   desc: "a roughly-made silver greatmace that appears to be a branch attached to forged metal"
   stats:
     offense: 2
@@ -27,6 +27,18 @@
   type: Mace
   secondaryYype: Twohanded
   value: 2500
+  sprite: 325
+
+- name: Risan Silver Greatmace
+  desc: "a crudely-made silver greatmace that appears to be a branch attached to forged metal"
+  stats:
+    offense: 3
+    defense: 3
+    accuracy: 5
+  tier: 5
+  type: Mace
+  secondaryYype: Twohanded
+  value: 3500
   sprite: 325
 
 - name: Maze Revenant Greatmace

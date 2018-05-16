@@ -1,5 +1,5 @@
 
-- item: Copper Dagger
+- item: Antanian Copper Dagger
   skillGained: 20
   maxSkillForGains: 7
   requiredSkill: 1
@@ -8,7 +8,7 @@
     - Antanian Twig
     - Copper Ore (Small)
 
-- item: Copper Longsword
+- item: Antanian Copper Longsword
   skillGained: 20
   maxSkillForGains: 7
   requiredSkill: 1
@@ -17,7 +17,7 @@
     - Antanian Twig
     - Copper Ore (Large)
 
-- item: Copper Greatsword
+- item: Antanian Copper Greatsword
   skillGained: 20
   maxSkillForGains: 7
   requiredSkill: 1
@@ -26,7 +26,7 @@
     - Antanian Branch
     - Copper Ore (Small)
 
-- item: Copper Halberd
+- item: Antanian Copper Halberd
   skillGained: 20
   maxSkillForGains: 7
   requiredSkill: 1
@@ -35,7 +35,7 @@
     - Antanian Branch
     - Copper Ore (Large)
 
-- item: Silver Axe
+- item: Antanian Silver Axe
   skillGained: 20
   maxSkillForGains: 7
   requiredSkill: 1
@@ -44,7 +44,7 @@
     - Antanian Twig
     - Silver Ore (Small)
 
-- item: Silver Hammer
+- item: Antanian Silver Hammer
   skillGained: 20
   maxSkillForGains: 7
   requiredSkill: 1
@@ -53,7 +53,7 @@
     - Antanian Twig
     - Silver Ore (Large)
 
-- item: Silver Greataxe
+- item: Antanian Silver Greataxe
   skillGained: 20
   maxSkillForGains: 7
   requiredSkill: 1
@@ -62,7 +62,7 @@
     - Antanian Branch
     - Silver Ore (Small)
 
-- item: Silver Greatmace
+- item: Antanian Silver Greatmace
   skillGained: 20
   maxSkillForGains: 7
   requiredSkill: 1

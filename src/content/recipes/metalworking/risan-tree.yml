@@ -1,0 +1,72 @@
+
+- item: Risan Copper Dagger
+  skillGained: 50
+  maxSkillForGains: 12
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Risan Twig
+    - Copper Ore (Small)
+
+- item: Risan Copper Longsword
+  skillGained: 50
+  maxSkillForGains: 12
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Risan Twig
+    - Copper Ore (Large)
+
+- item: Risan Copper Greatsword
+  skillGained: 50
+  maxSkillForGains: 12
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Risan Branch
+    - Copper Ore (Small)
+
+- item: Risan Copper Halberd
+  skillGained: 50
+  maxSkillForGains: 12
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Risan Branch
+    - Copper Ore (Large)
+
+- item: Risan Silver Axe
+  skillGained: 50
+  maxSkillForGains: 12
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Risan Twig
+    - Silver Ore (Small)
+
+- item: Risan Silver Hammer
+  skillGained: 50
+  maxSkillForGains: 12
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Risan Twig
+    - Silver Ore (Large)
+
+- item: Risan Silver Greataxe
+  skillGained: 50
+  maxSkillForGains: 12
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Risan Branch
+    - Silver Ore (Small)
+
+- item: Risan Silver Greatmace
+  skillGained: 50
+  maxSkillForGains: 12
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Risan Branch
+    - Silver Ore (Large)

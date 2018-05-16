@@ -18,7 +18,10 @@ export enum MaterialSlot {
   RedEtherScaleRefined = 12,
   MinesFlower = 13,
   AntanianTwig = 14,
-  AntanianBranch = 15
+  AntanianBranch = 15,
+  RisanTwig = 16,
+  RisanBranch = 17,
+  RisanFrozenTwig = 18
 }
 
 // the valid items for deposit and the slot they map to
@@ -41,7 +44,10 @@ export const ValidMaterialItems = {
   'Ether Scale (Refined)': MaterialSlot.RedEtherScaleRefined,
   'Mines Caveflower': MaterialSlot.MinesFlower,
   'Antanian Twig': MaterialSlot.AntanianTwig,
-  'Antanian Branch': MaterialSlot.AntanianBranch
+  'Antanian Branch': MaterialSlot.AntanianBranch,
+  'Risan Twig': MaterialSlot.RisanTwig,
+  'Risan Branch': MaterialSlot.RisanBranch,
+  'Risan Frozen Twig': MaterialSlot.RisanFrozenTwig
 };
 
 export const ReverseValidItems = invertBy(ValidMaterialItems);
@@ -62,14 +68,17 @@ export const MaterialSlotInfo = {
   [MaterialSlot.RedEtherScaleRefined]:  { sprite: 965,  withdrawInOunces: false },
   [MaterialSlot.MinesFlower]:           { sprite: 761,  withdrawInOunces: false },
   [MaterialSlot.AntanianTwig]:          { sprite: 222,  withdrawInOunces: false },
-  [MaterialSlot.AntanianBranch]:        { sprite: 602,  withdrawInOunces: false }
+  [MaterialSlot.AntanianBranch]:        { sprite: 602,  withdrawInOunces: false },
+  [MaterialSlot.RisanTwig]:             { sprite: 222,  withdrawInOunces: false },
+  [MaterialSlot.RisanBranch]:           { sprite: 602,  withdrawInOunces: false },
+  [MaterialSlot.RisanFrozenTwig]:       { sprite: 282,  withdrawInOunces: false }
 };
 
 // these *can* be changed to adjust the layout of the slots
 const RAW_MATERIAL_LAYOUT = [
   MaterialSlot.CopperOre, MaterialSlot.SilverOre, MaterialSlot.GoldOre, null, null,
   MaterialSlot.CopperIngot, MaterialSlot.SilverIngot, MaterialSlot.GoldIngot, null, null,
-  MaterialSlot.AntanianTwig, MaterialSlot.AntanianBranch, null, null, null
+  MaterialSlot.AntanianTwig, MaterialSlot.AntanianBranch, MaterialSlot.RisanTwig, MaterialSlot.RisanBranch, MaterialSlot.RisanFrozenTwig
 ];
 
 const FLOWER_LAYOUT = [
