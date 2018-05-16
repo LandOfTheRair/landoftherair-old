@@ -192,12 +192,12 @@ export class Game {
     this.environmentalObjectHash = {};
 
     Object.keys(this.bgms).forEach(bgm => {
-      if(!this.bgms[bgm]) return;
+      if(!this.bgms[bgm] || !this.bgms[bgm].isDecoded) return;
       this.bgms[bgm].destroy();
     });
 
     Object.keys(this.sfxs).forEach(sfx => {
-      if(!this.sfxs[sfx]) return;
+      if(!this.sfxs[sfx] || !this.sfxs[sfx].isDecoded) return;
       this.sfxs[sfx].destroy();
     });
 
@@ -672,7 +672,7 @@ export class Game {
     this.g.load.crossOrigin = 'anonymous';
 
     this.g.load.onFileError.add((key, file) => {
-      console.error(`File load error "${key}": ${file}`);
+      console.error(`File load error "${key}"`, file);
     });
 
     this.setupPhaser();
