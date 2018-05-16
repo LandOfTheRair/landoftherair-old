@@ -235,7 +235,9 @@ class D3SkillTree implements D3SkillTreeConfig {
       cluster: 0,
       radius: this.clusterSize,
       x: this.maxWidth / 2,
-      y: this.maxHeight / 2
+      y: this.maxHeight / 2,
+      currentNode: 0,
+      totalNodes: 0
     };
 
     for(let i = minCluster; i <= maxCluster; i++) {
@@ -245,9 +247,19 @@ class D3SkillTree implements D3SkillTreeConfig {
         cluster: i,
         radius: this.clusterSize,
         x: (Math.cos(RADIAL_LOCATION) * (this.clusterSize / 2)) + this.maxWidth / 2,
-        y: (Math.sin(RADIAL_LOCATION) * (this.clusterSize / 2)) + this.maxHeight / 2
+        y: (Math.sin(RADIAL_LOCATION) * (this.clusterSize / 2)) + this.maxHeight / 2,
+        currentNode: 0,
+        totalNodes: 0
       };
     }
+
+    values(this.tree).forEach(node => {
+      const curNodeIndex = this.clusters[node.cluster].currentNode;
+      node._index = curNodeIndex + 1;
+
+      this.clusters[node.cluster].currentNode += 1;
+      this.clusters[node.cluster].totalNodes += 1;
+    });
   }
 
   private initNodes() {
@@ -267,7 +279,12 @@ class D3SkillTree implements D3SkillTreeConfig {
       if(node.root) {
         node.fx = node.x = this.clusters[node.cluster].x;
         node.fy = node.y = this.clusters[node.cluster].y;
+      } else {
+        const RADIAL_LOCATION = (node._index) / (this.clusters[node.cluster].totalNodes) * 2 * Math.PI;
+        node.x = Math.cos(RADIAL_LOCATION) * (this.clusterSize / 4) + this.clusters[node.cluster].x;
+        node.y = Math.sin(RADIAL_LOCATION) * (this.clusterSize / 4) + this.clusters[node.cluster].y;
       }
+
     });
   }
 
@@ -313,20 +330,22 @@ class D3SkillTree implements D3SkillTreeConfig {
     const forceLink = d3
       .forceLink()
       .id(l => l.id)
-      .strength(2);
+      .strength(1);
 
     const forceCharge = d3.forceManyBody()
       .strength(d => {
-        if(d.root)       return this.force.root;
-        if(d.unbuyable)  return this.force.unbuyable;
-        if(d.capstone)   return this.force.capstone;
-        return this.force.normal;
+        let force = this.force.normal;
+        if(d.root)       force = this.force.root;
+        if(d.unbuyable)  force = this.force.unbuyable;
+        if(d.capstone)   force = this.force.capstone;
+        return force;
       });
 
     const forceCollide = d3.forceCollide()
       .radius(d => {
         return d.radius + this.radiusCollisionRangeExtension;
-      }).iterations(3);
+      })
+      .strength(1);
 
     const forceStrength = (force) => {
       return force.strength(d => d.unlocks ? this.strength.max : this.strength.min);
@@ -484,13 +503,9 @@ class D3SkillTree implements D3SkillTreeConfig {
       Math.log(this.simulation.alphaMin()) / Math.log(1 - this.simulation.alphaDecay())
     );
 
-    this.simulation.stop();
-
     for(let i = 0; i < n; ++i) {
       this.simulation.tick();
     }
-
-    this.simulation.restart();
   }
 
   private updateSVGNodes() {
