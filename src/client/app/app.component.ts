@@ -554,7 +554,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.newMessages = 0;
     }
 
-    if(win !== 'commandLine' && win !== 'lobby' && win !== 'marketboard') {
+    if(win !== 'commandLine' && win !== 'lobby' && win !== 'marketboard' && win !== 'bank') {
       (<HTMLElement>document.activeElement).blur();
     }
   }
