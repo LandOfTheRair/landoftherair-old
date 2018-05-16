@@ -144,8 +144,9 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID, isStackableMaterial: isStackableMaterial }"
          (mouseenter)="determineScopes()"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
-         triggers="dblclick:mouseleave"
+         triggers="hover:mouseleave"
          container="body"
+         delay="750"
          [isDisabled]="!showDesc"
          [tooltip]="descText">
       <img [src]="imgUrl" [style.object-position]="spriteLocation" />
