@@ -6,3 +6,7 @@
 - result: Bear Meat Antidote
   chance: 1
   maxChance: 200
+
+- result: Broom
+  chance: 1
+  maxChance: 1000000
