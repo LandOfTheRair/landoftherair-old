@@ -37,7 +37,7 @@
 
 - name: Dedlaes Revive Bracers
   sprite: 119
-  desc: "a pair of bracers forged from the horn of a minotaur, reinforced with the egg of da dragon turtle and the crystalline heart of a vampire, set with many small spectral pearl shards"
+  desc: "a pair of bracers forged from the horn of a minotaur, reinforced with the egg of a dragon turtle and the crystalline heart of a vampire, set with many small spectral pearl shards"
   value: 10000
   stats:
     offense: 4
