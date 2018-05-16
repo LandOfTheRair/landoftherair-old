@@ -5,7 +5,7 @@ import { Signal } from 'signals.js';
 import {
   merge, find, includes, compact, values, random,
   startsWith, clone, get, reject, pick, isArray,
-  sample, filter
+  sample, filter, maxBy
 } from 'lodash';
 
 import {
@@ -1236,6 +1236,24 @@ export class Character {
     }
 
     return Math.floor(Math.sqrt(Math.pow(point.x - checkX, 2) + Math.pow(point.y - checkY, 2)));
+  }
+
+  resetAgro() {
+    this.agro = {};
+  }
+
+  addAgroOverTop(char: Character, value: number) {
+    if(!char || (<any>this).hostility === 'Never') return;
+
+    const myAgro = this.agro[char.uuid] || 0;
+    const maxAgroKey = maxBy(Object.keys(this.agro), key => this.agro[key]);
+    const maxAgro = this.agro[maxAgroKey] || 0;
+
+    let boostValue = value;
+
+    if(maxAgroKey === char.uuid) boostValue += (maxAgro - myAgro);
+
+    this.addAgro(char, boostValue);
   }
 
   addAgro(char: Character, value) {

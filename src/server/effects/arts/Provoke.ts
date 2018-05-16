@@ -13,6 +13,8 @@ export class Provoke extends WeaponEffect {
     target.sendClientMessage(`${caster.name} provoked you!`);
 
     this.potency = caster.rightHand ? caster.calcSkillLevel(caster.rightHand.type) : 1;
-    target.addAgro(caster, 25 * this.potency);
+    console.log(target.agro);
+    target.addAgroOverTop(caster, 25 * this.potency);
+    console.log(target.agro);
   }
 }
