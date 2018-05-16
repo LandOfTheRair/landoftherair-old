@@ -16,6 +16,8 @@
   sprite: 524
   stats:
     armorClass: 25
+    offense: 3
+    defense: 3
     fireResist: 100
     iceResist: 100
   desc: "a red fullplate, twice refined, forged with ether"
@@ -23,4 +25,4 @@
   value: 15000
 
   requirements:
-    level: 21
+    level: 25
