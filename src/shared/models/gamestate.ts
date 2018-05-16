@@ -804,6 +804,7 @@ export class GameState {
           this.darkness[xKey][yKey] = timestamp;
 
           this.getAllPlayersFromQuadtrees({ x, y }, 4).forEach((player: Player) => {
+            if(!player || !player.$$room) return;
             this.calculateFOV(player);
             player.$$room.updateFOV(player);
           });
@@ -836,6 +837,7 @@ export class GameState {
           }
 
           this.getAllPlayersFromQuadtrees({ x, y }, 4).forEach((player: Player) => {
+            if(!player || !player.$$room) return;
             this.calculateFOV(player);
             player.$$room.updateFOV(player);
           });
