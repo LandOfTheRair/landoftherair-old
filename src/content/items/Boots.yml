@@ -54,7 +54,7 @@
       min: 3
       max: 5
   tier: 3
-  sprite: 372
+  sprite: 269
   desc: "a pair of rugged combat boots"
   value: 980
   binds: true
