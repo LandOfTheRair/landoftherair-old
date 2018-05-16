@@ -110,12 +110,11 @@
   binds: true
   effect:
     name: Nourishment
-    tooltip: "-1 STR, +20 Poison/Disease Resist"
+    tooltip: "+60 Poison Resist, +30 Disease Resist"
     message: "The grub tastes like decaying flesh. At least you lost your appetite."
     stats:
-      str: -1
-      poisonResist: 20
-      diseaseResist: 20
+      poisonResist: 60
+      diseaseResist: 30
     duration: 86400
 
 - name: Dedlaen Militia Gourd
