@@ -22,6 +22,7 @@ export * from './special/Encumbered';
 export * from './special/Swimming';
 export * from './special/Drowning';
 export * from './special/Unshakeable';
+export * from './misc/Vortex';
 export * from './misc/Hidden';
 
 export * from './cures/Antidote';

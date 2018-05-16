@@ -12,3 +12,4 @@ export * from './BarFire';
 export * from './BarFrost';
 
 export * from './Push';
+export * from './Vortex';
