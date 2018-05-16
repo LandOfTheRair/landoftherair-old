@@ -16,7 +16,7 @@ export class TraitUsageModifiers {
       case 'Riposte':             return level * 2;
       case 'CarefulTouch':        return Math.min(0.95, level * 0.1);
       case 'EffectiveSupporter':  return level * 0.1;
-      case 'OffhandFinesse':      return level * 0.1;
+      case 'OffhandFinesse':      return level * 0.07;
       case 'MagicFocus':          return level * 10;
       case 'NecroticFocus':       return level * 10;
       case 'HealingFocus':        return level * 10;

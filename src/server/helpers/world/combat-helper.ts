@@ -320,7 +320,7 @@ export class CombatHelper {
 
     let offhandMultiplier = 1;
     if(isOffhand) {
-      offhandMultiplier = 0.2 + attacker.getTraitLevelAndUsageModifier('OffhandFinesse');
+      offhandMultiplier = 0.1 + attacker.getTraitLevelAndUsageModifier('OffhandFinesse');
     }
 
     const attackerName = isAttackerVisible ? attacker.name : 'somebody';
