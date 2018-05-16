@@ -75,7 +75,7 @@
         <div class="col-8 m-0 p-0 listing-info">
           <div>
             <strong>{{ itemListing.itemId }}</strong>
-            {{ starTextFor(itemListing.itemInfo.quality) }}
+            {{ starTextFor(itemListing.itemInfo) }}
           </div>
 
           <div>
@@ -188,7 +188,7 @@
         <div class="col-8 m-0 p-0 listing-info">
           <div>
             <strong>{{ itemListing.itemId }}</strong>
-            {{ starTextFor(itemListing.itemInfo.quality) }}
+            {{ starTextFor(itemListing.itemInfo) }}
           </div>
 
           <div>
@@ -237,7 +237,7 @@
         <div class="col-8 m-0 p-0 listing-info">
           <div>
             <strong>{{ itemInfo.itemId }}</strong>
-            {{ starTextFor(itemInfo.quality) }}
+            {{ starTextFor(itemInfo) }}
           </div>
 
           <div *ngIf="itemInfo.uuid === 'gold'">

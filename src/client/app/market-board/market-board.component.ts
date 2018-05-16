@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { HttpClient } from '@angular/common/http';
 
-import { reject } from 'lodash';
+import { reject, get } from 'lodash';
 
 import debounce from 'debounce-decorator';
 import { Observable } from 'rxjs/Rx';
@@ -240,7 +240,8 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
       });
   }
 
-  public starTextFor(quality = 0) {
+  public starTextFor(itemInfo) {
+    const quality = get(itemInfo, 'itemOverride.quality', 0);
     return quality - 2 > 0 ? Array(quality - 2).fill('★').join('') : '';
   }
 

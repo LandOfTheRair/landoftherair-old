@@ -54,7 +54,7 @@ export class MarketCalculatorHelper {
 
     const gold = player.gold;
 
-    const totalListingFee = baseItemListCost + MarketCalculatorHelper.calculateListingCostForRegion(baseItemListCost, region);
+    const totalListingFee = MarketCalculatorHelper.calculateListingCostForRegion(baseItemListCost, region);
 
     if(gold < totalListingFee)                return 'Not enough funds to pay listing fee.';
   }
