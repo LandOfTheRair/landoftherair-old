@@ -68,7 +68,7 @@
   maxEncrusts: 3
 
   stats:
-    hpregen: 1
+    hpregen: 5
 
   requirements:
     level: 7
@@ -81,7 +81,7 @@
   maxEncrusts: 3
 
   stats:
-    mpregen: 1
+    mpregen: 5
 
   requirements:
     level: 7
