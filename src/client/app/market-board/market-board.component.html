@@ -79,7 +79,7 @@
           </div>
 
           <div class="thin-line">
-            <small>{{ statStringFor(itemListing.itemInfo) }}</small>
+            <small>{{ statStringFor(itemListing.itemInfo) || 'no stats' }} / {{ traitStringFor(itemListing.itemInfo) || 'no trait' }}</small>
           </div>
 
           <div class="thin-line">

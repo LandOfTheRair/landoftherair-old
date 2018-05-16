@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { HttpClient } from '@angular/common/http';
 
-import { reject, get } from 'lodash';
+import { reject, get, startCase } from 'lodash';
+import { toRoman } from 'roman-numerals';
 
 import debounce from 'debounce-decorator';
 import { Observable } from 'rxjs/Rx';
@@ -247,7 +248,16 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
 
   public statStringFor(itemInfo) {
     const stats = get(itemInfo, 'itemOverride.stats', {});
-    return Object.keys(stats).map(stat => `+${stats[stat]} ${stat.toUpperCase()}`).join(', ');
+    const statKeys = Object.keys(stats);
+    if(statKeys.length === 0) return '';
+    return statKeys.map(stat => `+${stats[stat]} ${stat.toUpperCase()}`).join(', ');
+  }
+
+  public traitStringFor(itemInfo) {
+    const trait = get(itemInfo, 'itemOverride.trait', { name: '', level: '' });
+    if(!trait || !trait.name || !trait.level) return '';
+
+    return `${startCase(trait.name)} ${toRoman(trait.level)}`;
   }
 
   list() {
