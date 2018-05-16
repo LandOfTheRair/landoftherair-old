@@ -63,7 +63,7 @@ export class CombatHelper {
     let tier = item.tier || 0;
     const { base, min, max, weakChance, damageBonus } = BaseItemStatsPerTier[itemClass];
 
-    if(itemClass === 'Hands' || includes(HandsClasses, item.type)) {
+    if(itemClass === 'Hands' || includes(HandsClasses, itemClass)) {
       tier += attacker.getTraitLevel('BrassKnuckles');
     }
 
