@@ -205,6 +205,7 @@ export class Game {
     this.sfxs = {};
 
     this.isRenderingTruesight = false;
+    this.isRenderingEagleEye = false;
   }
 
   private focusCameraOnPlayer() {
