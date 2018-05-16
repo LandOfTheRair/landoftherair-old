@@ -84,7 +84,7 @@
   effect:
     name: FleetOfFoot
     autocast: true
-  tier: 4
+  tier: 5
   sprite: 372
   desc: "a pair of spongy, springy boots that allows you to move more quickly"
   value: 1980
