@@ -36,6 +36,12 @@ export class ParryStance extends StanceEffect {
     this.loseStat(char, 'weaponDamageRolls', Math.floor(this.potency / 2));
   }
 
+  effectTick(char: Character) {
+    char.$$room.state.getAllHostilesInRange(char, 4).forEach(target => {
+      target.addAgroOverTop(char, 30 * this.potency);
+    });
+  }
+
   effectEnd(char: Character) {
     this.effectMessageRadius(char, `${char.name} breaks ${GenderHelper.hisher(char)} defensive stance.`);
   }

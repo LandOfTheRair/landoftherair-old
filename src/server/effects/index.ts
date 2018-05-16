@@ -127,7 +127,6 @@ export * from './misc/Wellspring';
 export * from './stances/GlacierStance';
 export * from './stances/ParryStance';
 export * from './stances/RageStance';
-export * from './stances/TauntStance';
 export * from './stances/VolcanoStance';
 
 export * from './channels/ChannelFindFamiliar';
