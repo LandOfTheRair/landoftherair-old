@@ -1068,7 +1068,19 @@ export class Character {
   }
 
   gainSkill(type, skillGained = 1) {
-    if(!this.isValidSkill(type) || !this.canGainSkill(type, skillGained)) return;
+    if(!this.isValidSkill(type)) return;
+
+    // you can gain up to 2 skills post-cap if you feel like grinding heavily
+    if(skillGained > 0) {
+      const curLevel = this.calcSkillLevel(type);
+      const maxLevel = this.$$room.state.maxSkill;
+      const diff = curLevel - maxLevel;
+
+      if(diff === 0) skillGained /= 10;
+      if(diff === 1) skillGained /= 33;
+      if(diff > 1)   return;
+    }
+
     this._gainSkill(type, skillGained);
   }
 
