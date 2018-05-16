@@ -147,6 +147,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          (mouseenter)="determineScopes()"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
          [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID, isStackableMaterial: isStackableMaterial }"
+         placement="auto"
          [tooltip]="descText">
       <img [src]="imgUrl" [style.object-position]="spriteLocation" />
       <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="showEncrust && item.encrust" />
