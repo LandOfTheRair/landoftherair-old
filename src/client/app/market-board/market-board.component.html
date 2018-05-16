@@ -63,7 +63,7 @@
 
       </div>
 
-      <div class="row m-0 p-0" *ngFor="let itemListing of buyableItemListings">
+      <div class="row mt-1 mb-1 ml-0 mr-0 p-0" *ngFor="let itemListing of buyableItemListings">
 
         <div class="col m-0 p-0">
 
@@ -73,12 +73,16 @@
         </div>
 
         <div class="col-8 m-0 p-0 listing-info">
-          <div>
+          <div class="thin-line">
             <strong>{{ itemListing.itemId }}</strong>
             {{ starTextFor(itemListing.itemInfo) }}
           </div>
 
-          <div>
+          <div class="thin-line">
+            <small>{{ statStringFor(itemListing.itemInfo) }}</small>
+          </div>
+
+          <div class="thin-line">
             <small [class.text-danger]="itemListing.listingInfo.price > player.gold"><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
           </div>
         </div>

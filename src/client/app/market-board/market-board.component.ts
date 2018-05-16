@@ -245,6 +245,11 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     return quality - 2 > 0 ? Array(quality - 2).fill('★').join('') : '';
   }
 
+  public statStringFor(itemInfo) {
+    const stats = get(itemInfo, 'itemOverride.stats', {});
+    return Object.keys(stats).map(stat => `+${stats[stat]} ${stat.toUpperCase()}`).join(', ');
+  }
+
   list() {
     this.colyseusGame.sendRawCommand('listmarketitem', `${this.colyseusGame.showMarketBoard.uuid} ${this.sellValue}`);
   }
