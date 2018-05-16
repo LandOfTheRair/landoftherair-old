@@ -138,16 +138,15 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
     <div class="item-container" 
          [ngClass]="[size]"
          [class.transparent]="showOutline"
-         [isDisabled]="!showDesc" 
-         triggers="dblclick:mouseleave"
+         draggable
          [dragScope]="scopes"
-         draggable 
-         container="body"
          [dragEnabled]="!displayOnly"
+         [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID, isStackableMaterial: isStackableMaterial }"
          (mouseenter)="determineScopes()"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
-         [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID, isStackableMaterial: isStackableMaterial }"
-         placement="auto"
+         triggers="dblclick:mouseleave"
+         container="body"
+         [isDisabled]="!showDesc"
          [tooltip]="descText">
       <img [src]="imgUrl" [style.object-position]="spriteLocation" />
       <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="showEncrust && item.encrust" />
