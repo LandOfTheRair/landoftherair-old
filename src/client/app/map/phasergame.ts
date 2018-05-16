@@ -192,10 +192,12 @@ export class Game {
     this.environmentalObjectHash = {};
 
     Object.keys(this.bgms).forEach(bgm => {
+      if(!this.bgms[bgm]) return;
       this.bgms[bgm].destroy();
     });
 
     Object.keys(this.sfxs).forEach(sfx => {
+      if(!this.sfxs[sfx]) return;
       this.sfxs[sfx].destroy();
     });
 
