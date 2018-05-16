@@ -584,14 +584,14 @@ export class Game {
       align: 'center'
     };
 
-    const loadingText = this.g.add.text(288, 288, 'Loading...', textStyle);
+    const loadingText = this.g.add.text(288, 288, 'Loading... 0% complete (0/0)', textStyle);
     loadingText.anchor.set(0.5, 0);
     loadingText.fixedToCamera = true;
 
     loadingText.bringToTop();
 
     this.g.load.onLoadStart.add(() => {
-      loadingText.setText('Loading...');
+      loadingText.setText('Loading... 0% complete (0/0)');
     });
 
     this.g.load.onFileComplete.add((progress, cacheKeyForLoaded, success, totalLoaded, totalFiles) => {
@@ -669,6 +669,10 @@ export class Game {
   preload() {
     this.g.lockRender = false;
     this.g.load.crossOrigin = 'anonymous';
+
+    this.g.load.onFileError.add((key, file) => {
+      console.error(`File load error "${key}": ${file}`);
+    });
 
     this.setupPhaser();
 
