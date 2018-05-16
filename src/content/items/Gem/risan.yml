@@ -102,7 +102,7 @@
 - name: Risan Fire Prot Crystal
   desc: "a small crystal encasing a fire frozen in time"
   value: 5000
-  sprite: 339
+  sprite: 340
 
   maxEncrusts: 4
 
@@ -112,7 +112,7 @@
 - name: Risan Ice Prot Crystal
   desc: "a small crystal encasing a chunk of ice"
   value: 5000
-  sprite: 338
+  sprite: 339
 
   maxEncrusts: 4
 
@@ -122,7 +122,7 @@
 - name: Risan Necrotic Prot Crystal
   desc: "a small crystal encasing a chunk of earth"
   value: 5000
-  sprite: 337
+  sprite: 341
 
   maxEncrusts: 4
 
@@ -132,7 +132,7 @@
 - name: Risan Energy Prot Crystal
   desc: "a strangely-shaped crystal that has a pervasive energy aura"
   value: 5000
-  sprite: 337
+  sprite: 338
 
   maxEncrusts: 4
 
