@@ -43,6 +43,7 @@
     "task:macros:font": "webfont -f macicons -t css -d src/client/macicons src/client/assets/icons/*.svg",
     "task:skilltrees": "ts-node src/server/tasks/skilltrees.ts",
     "task:allsprites": "ts-node src/server/tasks/analysis/allsprites",
+    "task:wikidocs": "ts-node src/server/tasks/wikidocs.ts",
     "task:analysis": "npm-run-all analyze:*",
     "analyze:weapons": "ts-node src/server/tasks/analysis/weapons",
     "analyze:armor": "ts-node src/server/tasks/analysis/armor",

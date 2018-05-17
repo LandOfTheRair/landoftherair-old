@@ -11,7 +11,7 @@ export class VitalEssence extends Skill {
     icon: 'bell-shield',
     color: '#0a0',
     mode: 'clickToTarget',
-    tooltipDesc: 'Boost maximum vitality for a single target. Cost: 200 MP',
+    tooltipDesc: 'Boost maximum vitality and armor for a single target. Cost: 200 MP',
     requireSkillLevel: 15
   };
 
