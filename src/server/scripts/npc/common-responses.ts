@@ -211,6 +211,7 @@ export const SmithResponses = (npc: NPC) => {
     .set('syntax', ['collect'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(!MetalworkingHelper.canMetalwork(player)) return 'Only Warriors can engage in Metalworking!';
 
       const indexes = player.$$room.npcLoader.getItemsFromPlayerSackByName(player, ' Ore ', true);
       if(indexes.length === 0) return 'You don\'t have any ore!';
