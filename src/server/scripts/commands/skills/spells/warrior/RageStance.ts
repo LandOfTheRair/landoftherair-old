@@ -5,6 +5,8 @@ import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { RageStance as CastEffect } from '../../../../../effects/stances/RageStance';
 
+import { get } from 'lodash';
+
 export class RageStance extends Skill {
 
   static macroMetadata = {
@@ -24,9 +26,8 @@ export class RageStance extends Skill {
 
   execute(user: Character) {
 
-    const item = user.rightHand;
-    if(!item) return user.sendClientMessage('You need a weapon to enrage!');
-    if(!CastEffect.isValid(user, item.type, CastEffect.skillRequired)) return user.sendClientMessage('You cannot enrage with that weapon.');
+    const itemType = get(user.rightHand, 'type', 'Martial');
+    if(!CastEffect.isValid(user, itemType, CastEffect.skillRequired)) return user.sendClientMessage('You cannot enrage with that weapon.');
 
     this.use(user);
   }

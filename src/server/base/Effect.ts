@@ -319,7 +319,7 @@ export class StanceEffect extends WeaponEffect {
   public weaponClass: string;
 
   cast(char: Character, target: Character, skillRef?: Skill): boolean {
-    this.weaponClass = char.rightHand.type;
+    this.weaponClass = get(char.rightHand, 'type', 'Martial');
 
     let foundSelf = false;
 

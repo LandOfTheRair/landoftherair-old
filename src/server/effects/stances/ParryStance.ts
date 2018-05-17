@@ -4,6 +4,8 @@ import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { GenderHelper } from '../../helpers/character/gender-helper';
 
+import { get } from 'lodash';
+
 export class ParryStance extends StanceEffect {
 
   static get skillRequired() { return 10; }
@@ -20,7 +22,7 @@ export class ParryStance extends StanceEffect {
     const foundSelf = super.cast(caster, target, skillRef);
     if(foundSelf) return foundSelf;
     this.flagPermanent(caster.uuid);
-    this.potency = caster.calcSkillLevel(caster.rightHand.type);
+    this.potency = caster.calcSkillLevel(get(caster.rightHand, 'type', 'Martial'));
     caster.applyEffect(this);
   }
 

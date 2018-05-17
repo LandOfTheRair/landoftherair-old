@@ -136,7 +136,7 @@ export class CombatHelper {
 
     // low chance of cstun
     if(RollerHelper.OneInX(defender.getTotalStat('con') * conMultiplier)) {
-      const stun = new Effects.Stun({});
+      const stun = new Effects.Stun({ shouldNotShowMessage: true });
       stun.cast(attacker, defender);
     }
   }
