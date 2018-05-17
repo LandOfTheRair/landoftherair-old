@@ -487,6 +487,7 @@ export class Character {
     if(this.leftHand === item && !item.offhand && item.itemClass !== 'Shield' && includes(WeaponClasses, item.itemClass)) return false;
 
     return this.checkCanEquipWithoutGearCheck(item)
+        && item.isOwnedBy(this)
         && includes(GivesBonusInHandItemClasses, item.itemClass);
   }
 
@@ -549,7 +550,7 @@ export class Character {
     const allGear = compact(values(this.gear));
 
     allGear.forEach(item => {
-      if(!item.stats || !this.checkCanEquipWithoutGearCheck(item)) return;
+      if(!item.stats || !this.checkCanEquipWithoutGearCheck(item) || !item.isOwnedBy(this)) return;
       addStatsForItem(item);
       if(item.isHeavy) castEncumber = true;
     });
