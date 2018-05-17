@@ -9,6 +9,8 @@ export class Identify extends SpellEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
+
+    if(!caster.rightHand) return user.sendClientMessage('You need to have something in your right hand to identify it.');
     caster.sendClientMessage(caster.rightHand.descTextFor(caster, this.potency));
   }
 }
