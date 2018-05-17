@@ -417,6 +417,8 @@ export class CombatHelper {
 
     if(dodgeRoll < 0 || attackDistance < distBetween) {
       if(!isRiposte) {
+        if(distBetween === 0)  this.attemptToRiposte(attacker, defender);
+
         attacker.$$room.combatEffect(attacker, 'block-miss', defender.uuid);
         attacker.sendClientMessage({
           message: `You miss!`,
@@ -503,6 +505,8 @@ export class CombatHelper {
       const itemTypeToLower = defenderBlocker.itemClass.toLowerCase();
 
       if(!isRiposte) {
+        if(distBetween === 0)  this.attemptToRiposte(attacker, defender);
+
         attacker.$$room.combatEffect(attacker, 'block-weapon', defender.uuid);
 
         attacker.sendClientMessage({
@@ -550,6 +554,8 @@ export class CombatHelper {
         const itemTypeToLower = defenderShield.itemClass.toLowerCase();
 
         if(!isRiposte) {
+          if(distBetween === 0)  this.attemptToRiposte(attacker, defender);
+
           attacker.$$room.combatEffect(attacker, 'block-shield', defender.uuid);
           attacker.sendClientMessage({
             message: `You were blocked by a ${itemTypeToLower}!`,
@@ -597,6 +603,8 @@ export class CombatHelper {
         const itemTypeToLower = defenderOffhand.itemClass.toLowerCase();
 
         if(!isRiposte) {
+          if(distBetween === 0)  this.attemptToRiposte(attacker, defender);
+
           attacker.$$room.combatEffect(attacker, 'block-offhand', defender.uuid);
           attacker.sendClientMessage({
             message: `You were blocked by a ${itemTypeToLower}!`,
@@ -760,10 +768,6 @@ export class CombatHelper {
 
     if(damage <= 0) {
       return { noDamage: true };
-    }
-
-    if(distBetween === 0) {
-      this.attemptToRiposte(attacker, defender);
     }
 
     attacker.gainCurrentSkills(1);
