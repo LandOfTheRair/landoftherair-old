@@ -26,6 +26,7 @@ export class TesterHelper {
       if(!curGear[slot]) return;
 
       const item = await player.$$room.itemCreator.getItemByName(curGear[slot]);
+      if(!item.effect) item.effect = { name: 'Secondwind', autocast: true, potency: 1 };
       player._equip(item);
     });
 
