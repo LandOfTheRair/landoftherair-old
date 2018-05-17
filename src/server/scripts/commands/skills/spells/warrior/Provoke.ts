@@ -1,5 +1,5 @@
 
-import { maxBy } from 'lodash';
+import { maxBy, get } from 'lodash';
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
@@ -30,10 +30,9 @@ export class Provoke extends Skill {
   }
 
   execute(user: Character, { args, effect }) {
+    const itemType = get(user.rightHand, 'type', 'Martial');
 
-    const item = user.rightHand;
-    if(!item) return user.sendClientMessage('You need a weapon to provoke!');
-    if(!CastEffect.isValid(user, item.type, CastEffect.skillRequired)) return user.sendClientMessage('You cannot provoke with that weapon.');
+    if(!CastEffect.isValid(user, itemType, CastEffect.skillRequired)) return user.sendClientMessage('You cannot provoke with that weapon.');
 
     const target = this.getTarget(user, args, true);
     if(!target) return;

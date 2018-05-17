@@ -306,10 +306,10 @@ export class WeaponEffect extends Effect {
 
   static isValid(char: Character, weaponClass: string, skillRequired: number): boolean {
     const item = char.rightHand;
-    if(!item || item.type === 'Martial') return false;
-    if(item.type !== weaponClass) return false;
-    if(item.twoHanded && char.leftHand) return false;
-    if(char.calcSkillLevel(item.type) < skillRequired) return false;
+    const itemType = get(item, 'type', 'Martial');
+    if(itemType !== weaponClass) return false;
+    if(item && item.twoHanded && char.leftHand) return false;
+    if(char.calcSkillLevel(itemType) < skillRequired) return false;
     return true;
   }
 }
