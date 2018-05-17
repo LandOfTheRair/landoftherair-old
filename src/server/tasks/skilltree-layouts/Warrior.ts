@@ -217,7 +217,7 @@ const MONK_TREE = {
     unlocks: ['BrassKnuckles2']
   },
   BrassKnuckles2: {
-
+    unlocks: ['MirroredEnchantments0']
   },
 
   Punchkick0: {
@@ -255,6 +255,10 @@ const MONK_TREE = {
   },
 
   UnarmoredSavant0: {
+
+  },
+
+  MirroredEnchantments0: {
 
   },
 

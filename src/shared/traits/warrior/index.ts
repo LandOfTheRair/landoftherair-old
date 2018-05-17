@@ -8,6 +8,7 @@ export * from './FunkyMoves';
 export * from './HolyProtection';
 export * from './MartialAcuity';
 export * from './MartialAgility';
+export * from './MirroredEnchantments';
 export * from './Multifocus';
 export * from './Multitarget';
 export * from './OffhandFinesse';

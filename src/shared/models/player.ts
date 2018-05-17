@@ -674,12 +674,19 @@ export class Player extends Character {
       });
 
       this.traitableGear.forEach(item => {
-        const { name, level } = get(item, 'trait', { name: '', level: 0 });
+        const traitInfo = get(item, 'trait', { name: '', level: 0 });
 
-        if(level === 0 || !name) return;
+        let level = traitInfo.level;
 
-        const curLevel = get(this.traitLevels, [name, 'gearBoost'], 0);
-        set(this.traitLevels, [name, 'gearBoost'], curLevel + level);
+        if(level === 0 || !traitInfo.name) return;
+
+        const curLevel = get(this.traitLevels, [traitInfo.name, 'gearBoost'], 0);
+
+        const canMirrorProc = get(this, 'gear.Hands') === item || get(this, 'gear.Feet') === item;
+        if(this.getTraitLevel('MirroredEnchantments') && canMirrorProc) {
+          level *= 2;
+        }
+        set(this.traitLevels, [traitInfo.name, 'gearBoost'], curLevel + level);
       });
     }
 

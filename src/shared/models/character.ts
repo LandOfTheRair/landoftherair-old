@@ -538,10 +538,23 @@ export class Character {
 
         const max = encrustMaxes[item.encrust.desc].max;
 
-        if(!max || encrustMaxes[item.encrust.desc].count <= max) {
+        const addEncrustStats = () => {
           Object.keys(item.encrust.stats).forEach(stat => {
             this.totalStats[stat] += item.encrust.stats[stat];
           });
+        };
+
+        if(!max || encrustMaxes[item.encrust.desc].count <= max) {
+          addEncrustStats();
+        }
+
+        const canMirrorProc = get(this, 'gear.Hands') === item || get(this, 'gear.Feet') === item;
+        if(this.getTraitLevel('MirroredEnchantments') && canMirrorProc) {
+          encrustMaxes[item.encrust.desc].count++;
+
+          if(!max || encrustMaxes[item.encrust.desc].count <= max) {
+            addEncrustStats();
+          }
         }
       }
     };

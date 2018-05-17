@@ -609,7 +609,7 @@
     "Riposte0": {
         "name": "Riposte0",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by $2|6$% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $3|9$% per point.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -623,7 +623,7 @@
     "Riposte1": {
         "name": "Riposte1",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by $2|6$% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $3|9$% per point.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -638,7 +638,7 @@
     "Riposte2": {
         "name": "Riposte2",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by $2|6$% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $3|9$% per point.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -652,7 +652,7 @@
     "Riposte3": {
         "name": "Riposte3",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by $2|6$% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $3|9$% per point.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -666,7 +666,7 @@
     "Riposte4": {
         "name": "Riposte4",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by $2|6$% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $3|9$% per point.",
         "icon": "spinning-sword",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -707,25 +707,9 @@
         "icon": "enrage",
         "iconColor": "#a00",
         "cost": 3,
-        "unlocks": [
-            "TauntStance"
-        ],
         "cluster": 2,
         "unlockedBy": [
             "OffhandFinesse1"
-        ]
-    },
-    "TauntStance": {
-        "name": "TauntStance",
-        "desc": "Become more boisterous, taunting foes but losing offense and defense. Requires weapon skill 10.",
-        "icon": "enrage",
-        "iconColor": "#fff",
-        "bgColor": "#000",
-        "requireSkillLevel": 10,
-        "cost": 3,
-        "cluster": 2,
-        "unlockedBy": [
-            "Provoke"
         ]
     },
     "RageStance": {
@@ -743,7 +727,7 @@
     },
     "ParryStance": {
         "name": "ParryStance",
-        "desc": "Become more defensive, but lose offensive power. Requires weapon skill 10.",
+        "desc": "Become more defensive, but lose offensive power. You also taunt foes. Requires weapon skill 10.",
         "icon": "surrounded-shield",
         "iconColor": "#fff",
         "bgColor": "#000",
@@ -817,6 +801,9 @@
         "desc": "Your open-hand fist attacks are treated as $1|1$ tier stronger.",
         "icon": "brass-knuckles",
         "cost": 20,
+        "unlocks": [
+            "MirroredEnchantments0"
+        ],
         "cluster": 3,
         "unlockedBy": [
             "BrassKnuckles1"
@@ -971,6 +958,18 @@
         "cluster": 3,
         "unlockedBy": [
             "MartialAgility2"
+        ]
+    },
+    "MirroredEnchantments0": {
+        "name": "MirroredEnchantments0",
+        "traitName": "MirroredEnchantments",
+        "desc": "The potency of gems and runes in your boots and gloves are doubled.",
+        "icon": "emerald",
+        "capstone": true,
+        "cost": 30,
+        "cluster": 3,
+        "unlockedBy": [
+            "BrassKnuckles2"
         ]
     },
     "Shield": {
