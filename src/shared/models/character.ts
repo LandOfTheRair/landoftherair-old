@@ -361,15 +361,6 @@ export class Character {
   }
 
   initEffects() {
-    if(isArray(this.effects)) {
-      const effects: Effect[] = <Effect[]>this.effects;
-      const newEffects = {};
-      effects.forEach(eff => {
-        newEffects[eff.name] = eff;
-      });
-      this.effects = newEffects;
-    }
-
     Object.keys(this.effects).forEach(effName => {
       if(!Effects[effName]) {
         delete this.effects[effName];
