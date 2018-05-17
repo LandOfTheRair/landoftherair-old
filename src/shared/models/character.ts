@@ -4,7 +4,7 @@ import { Signal } from 'signals.js';
 
 import {
   merge, find, includes, compact, values, random,
-  startsWith, clone, get, reject, pick, isArray,
+  startsWith, clone, get, reject, pick,
   sample, filter, maxBy
 } from 'lodash';
 
