@@ -376,6 +376,7 @@ export class CombatHelper {
       offhandSkill: defenderOffhand ? Math.floor(defender.calcSkillLevel(defenderOffhand.type) + 1) / 4 : 0,
       level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor),
       realLevel: defender.level,
+      riposteLevel: defender.getTraitLevel('Riposte'),
       mitigation: defender.getTotalStat('mitigation')
     };
 
@@ -389,7 +390,7 @@ export class CombatHelper {
     const attackerDodgeBlockRightSide = Math.floor(attackerScope.dex + attackerScope.skill);
 
     const defenderDodgeBlockLeftSide = Math.floor(1 + defenderScope.defense);
-    const defenderDodgeRightSide = Math.floor(defenderScope.dex4 + defenderScope.agi + defenderScope.level);
+    const defenderDodgeRightSide = Math.floor(defenderScope.dex4 + defenderScope.agi + defenderScope.level + defenderScope.riposteLevel);
 
     const attackerDodgeRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`);
     let defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`);
