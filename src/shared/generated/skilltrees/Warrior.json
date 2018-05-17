@@ -963,7 +963,7 @@
     "MirroredEnchantments0": {
         "name": "MirroredEnchantments0",
         "traitName": "MirroredEnchantments",
-        "desc": "The potency of gems and runes in your boots and gloves are doubled.",
+        "desc": "The potency of gems and runes in your boots and gloves are doubled while your right hand is empty.",
         "icon": "emerald",
         "capstone": true,
         "cost": 30,
