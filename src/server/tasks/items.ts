@@ -122,12 +122,7 @@ class ItemLoader {
       item.attackRange = 1;
     }
 
-    if(item.type === 'Twohanded' || item.secondaryType === 'Twohanded') {
-      item.twoHanded = true;
-      if(!item.proneChance && item.type !== 'Ranged') item.proneChance = 5;
-    }
-
-    if(includes(['Shortbow', 'Longbow'], item.itemClass)) {
+    if(includes(['Shortbow', 'Longbow', 'Greatmace', 'Greataxe'], item.itemClass)) {
       item.twoHanded = true;
       item.secondaryType = 'Twohanded';
     }
@@ -140,6 +135,11 @@ class ItemLoader {
       item.type = 'Mace';
       if(!item.stats.accuracy) item.stats.accuracy = 0;
       if(!item.stats.mitigation) item.stats.mitigation = 5;
+    }
+
+    if(item.type === 'Twohanded' || item.secondaryType === 'Twohanded') {
+      item.twoHanded = true;
+      if(!item.proneChance && item.type !== 'Ranged') item.proneChance = 5;
     }
 
     if(includes(['Breastplate', 'Fullplate'], item.itemClass)) {

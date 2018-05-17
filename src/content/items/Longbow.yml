@@ -4,7 +4,6 @@
   desc: "a wooden longbow"
   tier: 1
   type: Ranged
-  secondaryType: Twohanded
   value: 110
   sprite: 200
 
@@ -25,7 +24,6 @@
   desc: "a crystal longbow, glowing with dark magic"
   tier: 2
   type: Ranged
-  secondaryType: Twohanded
   value: 2300
   sprite: 445
 
@@ -38,7 +36,6 @@
   desc: "a longbow made of a riyan wood"
   tier: 3
   type: Ranged
-  secondaryType: Twohanded
   value: 1110
   sprite: 47
 
@@ -51,7 +48,6 @@
   desc: "a longbow made of a riyan wood"
   tier: 4
   type: Ranged
-  secondaryType: Twohanded
   value: 1110
   sprite: 47
 
@@ -64,7 +60,6 @@
   stats:
     accuracy: 4
   type: Ranged
-  secondaryType: Twohanded
   value: 2390
   sprite: 47
   binds: true

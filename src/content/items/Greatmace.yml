@@ -2,7 +2,6 @@
   desc: "an iron greatmace"
   tier: 1
   type: Mace
-  secondaryType: Twohanded
   value: 150
   sprite: 325
 
@@ -13,7 +12,6 @@
   desc: "an iron greatmace engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   tier: 1
   type: Mace
-  secondaryType: Twohanded
   value: 150
   sprite: 325
 
@@ -25,7 +23,6 @@
     accuracy: 3
   tier: 2
   type: Mace
-  secondaryYype: Twohanded
   value: 2500
   sprite: 325
 
@@ -37,7 +34,6 @@
     accuracy: 5
   tier: 5
   type: Mace
-  secondaryYype: Twohanded
   value: 3500
   sprite: 325
 
@@ -53,7 +49,6 @@
     autocast: true
   tier: 4
   type: Mace
-  secondaryType: Twohanded
   value: 15025
   sprite: 325
 

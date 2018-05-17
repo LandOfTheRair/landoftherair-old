@@ -2,7 +2,6 @@
   desc: "an iron greataxe"
   tier: 1
   type: Axe
-  secondaryType: Twohanded
   value: 150
   sprite: 453
 
@@ -13,7 +12,6 @@
   desc: "an iron greataxe engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   tier: 1
   type: Axe
-  secondaryType: Twohanded
   value: 150
   sprite: 453
 
@@ -25,7 +23,6 @@
     accuracy: 1
   tier: 2
   type: Axe
-  secondaryType: Twohanded
   value: 2500
   sprite: 453
 
@@ -37,14 +34,12 @@
     accuracy: 1
   tier: 5
   type: Axe
-  secondaryType: Twohanded
   value: 3500
   sprite: 453
 
 - name: Sedgwick's Greataxe
   quality: 5
   type: Axe
-  secondaryType: Twohanded
   desc: "a heavy, metal-tipped greataxe stained with the blood of the land"
   stats:
     accuracy: 1
@@ -69,7 +64,6 @@
     defense: -1
     weaponArmorClass: 4
   type: Axe
-  secondaryType: Twohanded
   value: 3549
   sprite: 455
   binds: true
@@ -85,7 +79,6 @@
     accuracy: 2
     offense: 4
   type: Axe
-  secondaryType: Twohanded
   value: 2349
   sprite: 132
   binds: true
