@@ -87,8 +87,7 @@ export const PeddlerResponses = (npc: NPC) => {
 
       player.loseGold(npc.peddleCost);
 
-      const item = new Item(npc.rightHand);
-      item.regenerateUUID();
+      const item = new Item(npc.rightHand, { doRegenerate: true });
 
       player.setRightHand(item);
 

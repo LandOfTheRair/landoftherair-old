@@ -38,8 +38,7 @@ export class MerchantToBelt extends Command {
 
       if(item.daily) player.buyDailyItem(item);
 
-      const newItem = new Item(item);
-      newItem.regenerateUUID();
+      const newItem = new Item(item, { doRegenerate: true });
 
       player.addItemToBelt(newItem);
     }

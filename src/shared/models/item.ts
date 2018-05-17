@@ -1,5 +1,5 @@
 
-import { extend, includes, isNumber, size, startCase, get, isUndefined } from 'lodash';
+import { extend, includes, isNumber, size, startCase, get, isUndefined, cloneDeep } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import * as uuid from 'uuid/v4';
 import { Alignment, Character, SkillClassNames } from './character';
@@ -207,13 +207,18 @@ export class Item {
   daily?: boolean;
   previousUpgrades?: any[];
 
-  constructor(opts) {
+  constructor(opts, extraOpts: { doRegenerate?: boolean } = {}) {
+    if(extraOpts.doRegenerate) {
+      opts = cloneDeep(opts);
+      this.regenerateUUID();
+    }
+
     extend(this, opts);
     if(!this.uuid) this.uuid = uuid();
     if(!this.createdAt) this.createdAt = Date.now();
   }
 
-  regenerateUUID() {
+  private regenerateUUID() {
     this.uuid = uuid();
   }
 

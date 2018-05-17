@@ -69,8 +69,7 @@ export class MaterialLocker extends Container {
     if(amt > item.ounces) {
       this.items[slot] = null;
     } else {
-      const cloneItem = new Item(item);
-      cloneItem.regenerateUUID();
+      const cloneItem = new Item(item, { doRegenerate: true });
       delete cloneItem.ounces;
 
       // if it comes out in ounces, just make one big cluster

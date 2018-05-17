@@ -27,8 +27,7 @@ export class MerchantToLeft extends Command {
 
     player.loseGold(item.value);
 
-    const newItem = new Item(item);
-    newItem.regenerateUUID();
+    const newItem = new Item(item, { doRegenerate: true });
 
     this.trySwapLeftToRight(player);
 

@@ -38,8 +38,7 @@ export class MerchantToPouch extends Command {
 
       if(item.daily) player.buyDailyItem(item);
 
-      const newItem = new Item(item);
-      newItem.regenerateUUID();
+      const newItem = new Item(item, { doRegenerate: true });
 
       player.addItemToPouch(newItem);
     }

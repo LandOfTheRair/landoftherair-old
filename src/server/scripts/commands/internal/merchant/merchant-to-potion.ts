@@ -28,8 +28,7 @@ export class MerchantToPotion extends Command {
 
     player.loseGold(item.value);
 
-    const newItem = new Item(item);
-    newItem.regenerateUUID();
+    const newItem = new Item(item, { doRegenerate: true });
 
     player.setPotionHand(newItem);
   }
