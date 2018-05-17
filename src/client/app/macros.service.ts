@@ -119,6 +119,11 @@ export class MacroService {
     if(!this.loadMutex) return;
     this.loadMutex = false;
     document.removeEventListener('keydown', this.macroListener);
+
+    this.allMacros = {};
+    this.customMacros = {};
+    this.visibleMacroGroups = ['default', null, null];
+    this.allMacroGroups = { 'default': [] };
   }
 
   get activeMacro(): Macro {
