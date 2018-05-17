@@ -184,10 +184,6 @@ const DUELIST_TREE = {
   // SKILLS
 
   Provoke: {
-    unlocks: ['TauntStance']
-  },
-
-  TauntStance: {
 
   },
 
