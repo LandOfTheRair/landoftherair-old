@@ -327,7 +327,7 @@ export class Game {
   }
 
   updatePlayerSprite(sprite, player: Player) {
-
+    
     let frame = 0;
     let key = '';
 
@@ -357,6 +357,8 @@ export class Game {
 
     if(player.username !== this.player.username) {
       sprite.visible = player.dir !== 'C' && this.player.canSeeThroughStealthOf(player);
+    } else {
+      sprite.visible = !player.isDead();
     }
 
     sprite.alpha = (<any>player).totalStats.stealth ? HIDDEN_SPRITE_ALPHA : 1;
