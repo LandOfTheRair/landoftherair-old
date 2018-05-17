@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.2.14 (17/05/2018)
+
+#### Enhancements
+
+- [#840](https://github.com/LandOfTheRair/landoftherair/issues/840) tester should never get stripped - override a random, non-autocast piece of gear with secondwind autocast
+- [#839](https://github.com/LandOfTheRair/landoftherair/issues/839) tester enos all gear (+5/5) command
+- [#835](https://github.com/LandOfTheRair/landoftherair/issues/835) make diagonal movement work
+
+#### Balance Adjustments
+
+- [#841](https://github.com/LandOfTheRair/landoftherair/issues/841) monk trait to get double boot/hand gem/trait bonus ("Mirrored Enchantments")
+
+#### Bug Fixes
+
+- [#842](https://github.com/LandOfTheRair/landoftherair/issues/842) dead characters are still standing
+- [#838](https://github.com/LandOfTheRair/landoftherair/issues/838) TypeError: Cannot read property 'descTextFor' of null
+- [#837](https://github.com/LandOfTheRair/landoftherair/issues/837) TypeError: Cannot read property '$room' of undefined
+
+---
+
 ## v0.2.13 (08/05/2018)
 
 #### Enhancements
@@ -393,7 +413,6 @@
 #### Bug Fixes
 
 - [#641](https://github.com/LandOfTheRair/landoftherair/issues/641) npcs do not use mp
-- [#638](https://github.com/LandOfTheRair/landoftherair/issues/638) Error: Item Antanian Diamond does not exist.
 
 ---
 
