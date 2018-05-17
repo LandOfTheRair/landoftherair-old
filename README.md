@@ -130,6 +130,7 @@ Certain accounts designated as testers get access to several in game commands:
 * `^gold <gold>` - gain `<gold>` gold
 * `^loadout <level>` - generate a loadout for your class level
 * `^level <level>` - set your level to `<level>`
+* `^owts <boost>` - increase all of your worn/held gear with an Owts enchantment by `<boost>`
 * `^hp <newhp>` - set your hp to `<newhp>`
 * `^mp <newmp>` - set your mp to `<newmp>`
 * `^regen <newregen>` - set your hp/mp regen to `<newregen>`

@@ -327,7 +327,7 @@ export class Game {
   }
 
   updatePlayerSprite(sprite, player: Player) {
-    
+
     let frame = 0;
     let key = '';
 

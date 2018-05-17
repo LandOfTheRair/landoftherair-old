@@ -4,10 +4,33 @@ import { SkillClassNames, StatName } from '../../../shared/models/character';
 import { SkillHelper } from '../character/skill-helper';
 import { Loadouts } from './loadout-listing';
 
+import { get } from 'lodash';
+
 export class TesterHelper {
 
   static sendMessage(player: Player, message: string) {
     player.sendClientMessage(`[tester] ${message}`);
+  }
+
+  static owtsAllGear(player: Player, boost: number): void {
+    ['rightHand', 'leftHand', 'gear.Ear', 'gear.Head', 'gear.Neck',
+      'gear.Wrists', 'gear.Waist', 'gear.Ring1', 'gear.Ring2',
+      'gear.Hands', 'gear.Feet', 'gear.Armor', 'gear.Robe1', 'gear.Robe2'
+    ].forEach(slot => {
+      const item = get(player, slot);
+      if(!item) return;
+
+      item.stats = item.stats || {};
+      item.stats.defense = item.stats.defense || 0;
+      item.stats.offense = item.stats.offense || 0;
+      item.tier = item.tier || 0;
+
+      item.stats.defense += boost;
+      item.stats.offense += boost;
+      item.tier += boost;
+    });
+
+    this.sendMessage(player, `Adjusted Owts enchants on all gear by ${boost}.`);
   }
 
   static generateLoadout(player: Player, level: number) {
