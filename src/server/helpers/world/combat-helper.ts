@@ -165,9 +165,9 @@ export class CombatHelper {
   static physicalAttack(attacker: Character, defender: Character, opts: any = {}) {
     this.doPhysicalAttack(attacker, defender, opts);
 
-    const throwCheck = !opts.isThrow || (opts.isThrow && get(attacker.leftHand, 'returnsOnThrow'));
+    const shouldOffhandProcCheck = !opts.isThrow || (opts.isThrow && get(attacker.leftHand, 'returnsOnThrow'));
 
-    if(throwCheck && get(attacker.leftHand, 'offhand')) {
+    if(shouldOffhandProcCheck && get(attacker.leftHand, 'offhand')) {
       opts = opts || {};
       opts.isOffhand = true;
       opts.throwHand = 'left';
@@ -320,7 +320,7 @@ export class CombatHelper {
 
     let offhandMultiplier = 1;
     if(isOffhand) {
-      offhandMultiplier = 0.1 + attacker.getTraitLevelAndUsageModifier('OffhandFinesse');
+      offhandMultiplier = 0.2 + attacker.getTraitLevelAndUsageModifier('OffhandFinesse');
     }
 
     const attackerName = isAttackerVisible ? attacker.name : 'somebody';

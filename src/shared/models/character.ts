@@ -1078,6 +1078,7 @@ export class Character {
 
       if(diff === 0) skillGained /= 10;
       if(diff === 1) skillGained /= 33;
+
       if(diff > 1)   return;
     }
 
