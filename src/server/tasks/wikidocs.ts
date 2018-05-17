@@ -18,7 +18,7 @@ addMarkdown('---------- | -----------');
 
 sortBy(Object.keys(AllSkills)).forEach(skillName => {
   const { name, tooltipDesc } = AllSkills[skillName].macroMetadata;
-  
+
   addMarkdown(`${startCase(name)} | ${tooltipDesc}`);
 });
 
@@ -35,11 +35,14 @@ sortBy(Object.keys(AllTraits)).forEach(className => {
   });
 });
 
-exec(`git clone git@github.com:landoftherair/landoftherair.wiki.git wiki`, (e, stdout, stderr) => {
+exec(`git clone git@github.com:landoftherair/landoftherair.wiki.git wiki`, () => {
 
   fs.writeFileSync(`${__dirname}/../../../wiki/Traits-And-Skills.md`, markdown, 'utf-8');
 
-  exec(`cd ${__dirname}/../../../wiki && git add . && git commit -am "Updated traits/skills doc." && git push`, (e, stdout, stderr) => {
-    fs.removeSync(`${__dirname}/../../../wiki`);
+  exec('npm run changelog', () => {
+    exec(`cd ${__dirname}/../../../wiki && git add . && git commit -am "Updated wikidocs." && git push`, () => {
+      fs.removeSync(`${__dirname}/../../../wiki`);
+    });
   });
+
 });
