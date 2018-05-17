@@ -45,7 +45,7 @@ export const BaseItemStatsPerTier = {
   Shortbow:             { base: 3, min: 1, max: 2, weakChance: 10, damageBonus: 0 },
   Shortsword:           { base: 1, min: 1, max: 3, weakChance: 15, damageBonus: 5 },
   Spear:                { base: 1, min: 0, max: 3, weakChance: 10, damageBonus: 0 },
-  Staff:                { base: 0, min: 0, max: 2, weakChance: 20, damageBonus: 0 },
+  Staff:                { base: 3, min: 0, max: 2, weakChance: 20, damageBonus: 0 },
   Totem:                { base: 1, min: 0, max: 1, weakChance: 30, damageBonus: 0 },
   Wand:                 { base: 1, min: 0, max: 1, weakChance: 30, damageBonus: 0 }
 };
