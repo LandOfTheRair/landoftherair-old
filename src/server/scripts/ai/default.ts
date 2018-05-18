@@ -70,7 +70,7 @@ export class DefaultAIBehavior {
 
     if(npc.$$owner) {
       extend(possibleAgro, npc.$$owner.agro);
-      delete npc.agro[npc.$$owner.username];
+      delete npc.agro[(<any>npc.$$owner).username];
     }
 
     let diffX = 0;
