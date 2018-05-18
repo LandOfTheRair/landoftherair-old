@@ -171,6 +171,90 @@
     class:
       - "Healer"
 
+- name: Frostlands Thief Earring
+  stats:
+    offense: 3
+    hpregen: 5
+  trait:
+    name:
+      - BetterBackstab
+      - ReusableTraps
+    level:
+      min: 1
+      max: 3
+  sprite: 906
+  desc: "a golden earring set with a blue gem encased with a shadowy aura"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 15
+    class:
+      - "Thief"
+
+- name: Frostlands Warrior Earring
+  stats:
+    offense: 3
+    hpregen: 5
+  trait:
+    name:
+      - Multitarget
+      - MartialAgility
+    level:
+      min: 1
+      max: 3
+  sprite: 906
+  desc: "a golden earring set with a blue gem with tiny swords carved into it"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 15
+    class:
+      - "Warrior"
+
+- name: Frostlands Mage Earring
+  stats:
+    defense: 3
+    mpregen: 5
+  trait:
+    name:
+      - ThermalBarrier
+      - FriendlyFire
+    level:
+      min: 1
+      max: 3
+  sprite: 906
+  desc: "a golden earring set with a blue gem that changes temperature rapidly in your hands"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 15
+    class:
+      - "Mage"
+
+- name: Frostlands Healer Earring
+  stats:
+    defense: 3
+    mpregen: 5
+  trait:
+    name:
+      - EffectiveSupporter
+      - HolyAffliction
+    level:
+      min: 1
+      max: 3
+  sprite: 906
+  desc: "a golden earring set with a blue gem bathed in a holy light"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 15
+    class:
+      - "Healer"
+
 - name: Enemy TrueSight Earring
   effect:
     name: TrueSight

@@ -77,6 +77,26 @@
   chance: 1
   maxChance: 450
 
+- result: Risan Purple Gem
+  chance: 1
+  maxChance: 1500
+
+- result: Risan Small Green Gem
+  chance: 1
+  maxChance: 1500
+
+- result: Risan Big Green Gem
+  chance: 1
+  maxChance: 1500
+
+- result: Risan Small Red Gem
+  chance: 1
+  maxChance: 1500
+
+- result: Risan Big Red Gem
+  chance: 1
+  maxChance: 1500
+
 # Rune Scrolls
 
 - result: Rune Scroll - Holy Affliction I

@@ -78,7 +78,7 @@
     armorClass: 10
     fireResist: 30
     iceResist: 30
-  value: 100
+  value: 5100
   sprite: 297
 
 - name: Crazed Bear Fur
@@ -89,7 +89,7 @@
     iceResist: 50
     poisonResist: 10
     diseaseResist: 10
-  value: 100
+  value: 5300
   sprite: 218
 
 - name: Mines Griffon Fur
@@ -100,8 +100,29 @@
     iceResist: 150
     offense: 4
     defense: 4
-  value: 100
+  value: 10011
   sprite: 219
 
   requirements:
     level: 13
+
+- name: Frostlands Yeti Fur
+  desc: "the tanned hide of a cave yeti"
+  stats:
+    fireResist: 175
+    iceResist: 175
+  randomStats:
+    armorClass:
+      min: 18
+      max: 22
+    offense:
+      min: 2
+      max: 3
+    defense:
+      min: 2
+      max: 3
+  value: 3200
+  sprite: 278
+
+  requirements:
+    level: 20

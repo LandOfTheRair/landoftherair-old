@@ -71,3 +71,17 @@
 
   requirements:
     level: 10
+
+- name: Risan Frost Larimar
+  desc: "a sparkling frost gem that refracts and changes the light around it to be blue"
+  value: 10000
+  sprite: 924
+
+  stats:
+    effect:
+      name: Dispel
+      chance: 50
+      potency: 30
+
+  requirements:
+    level: 25

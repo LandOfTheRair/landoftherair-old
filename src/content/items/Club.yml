@@ -8,3 +8,46 @@
   type: Mace
   value: 200
   sprite: 238
+
+- name: Frostlands Yeti Club
+  proneChance: 20
+  stats:
+    accuracy: 3
+  randomStats:
+    offense:
+      min: 2
+      max: 4
+    defense:
+      min: 2
+      max: 4
+    weaponArmorClass:
+      min: 0
+      max: 5
+  desc: "a club forged from the bones of a yeti"
+  tier: 6
+  type: Mace
+  value: 2200
+  sprite: 238
+
+- name: Frostlands Frozen Yeti Club
+  proneChance: 25
+  stats:
+    accuracy: 3
+  randomStats:
+    offense:
+      min: 3
+      max: 5
+    defense:
+      min: 3
+      max: 5
+    weaponArmorClass:
+      min: 5
+      max: 10
+  trait:
+    name: DeathGrip
+    level: 5
+  desc: "a club forged from the bones of a yeti frozen solid by the bitter Frostlands wind"
+  tier: 7
+  type: Mace
+  value: 12200
+  sprite: 1005

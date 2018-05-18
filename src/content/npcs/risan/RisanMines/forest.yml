@@ -51,6 +51,14 @@
     min: 15000
     max: 18000
 
+  drops:
+    - result: Risan Twig
+      chance: 1
+      maxChance: 25
+    - result: Risan Branch
+      chance: 1
+      maxChance: 25
+
   tansFor: Crazed Deer Robe
 
 - npcId: Risan Crazed Wolf
@@ -81,6 +89,12 @@
     NaturalResource: -101
 
   drops:
+    - result: Risan Twig
+      chance: 1
+      maxChance: 25
+    - result: Risan Branch
+      chance: 1
+      maxChance: 25
     - result: Crazed Wolf Flank
       chance: 1
       maxChance: 50
@@ -139,6 +153,12 @@
     NaturalResource: -101
 
   drops:
+    - result: Risan Twig
+      chance: 1
+      maxChance: 25
+    - result: Risan Branch
+      chance: 1
+      maxChance: 25
     - result: Crazed Bear Meat
       chance: 1
       maxChance: 50

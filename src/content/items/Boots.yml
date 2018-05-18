@@ -67,7 +67,7 @@
     waterResist: 500
   tier: 1
   sprite: 370
-  desc: "a pair sharkskin boots that help you swim more easily"
+  desc: "a pair of sharkskin boots that help you swim more easily"
   value: 250
   binds: true
 
@@ -89,6 +89,10 @@
   desc: "a pair of spongy, springy boots that allows you to move more quickly"
   value: 1980
   binds: true
+  tellsBind: true
+
+  requirements:
+    level: 20
 
 - name: Crazed Tonwin Boots
   quality: 5
@@ -108,3 +112,23 @@
 
   requirements:
     level: 25
+
+- name: Frostlands Boots
+  stats:
+    fireResist: 175
+    iceResist: 175
+  randomStats:
+    offense:
+      min: 2
+      max: 4
+    defense:
+      min: 2
+      max: 4
+    armorClass:
+      min: 3
+      max: 5
+  tier: 6
+  sprite: 371
+  desc: "a pair of green fur boots that keep you warm when traversing the frostlands"
+  value: 2500
+  binds: true

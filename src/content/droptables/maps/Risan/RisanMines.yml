@@ -11,6 +11,10 @@
   chance: 1
   maxChance: 100
 
+- result: Medium BarFire Potion
+  chance: 1
+  maxChance: 100
+
 - result: Risan Fire Prot Crystal
   chance: 1
   maxChance: 1000

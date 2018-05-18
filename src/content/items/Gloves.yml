@@ -82,6 +82,78 @@
   desc: "a pair of golden gauntlets inscribed with a bow in one glove and a dagger in the other"
   value: 2700
 
+- name: Frostlands Royal Mage Gauntlets
+  tier: 6
+  stats:
+    armorClass: 5
+    defense: 5
+    mp: 150
+    magicalDamageBoost: 350
+
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25
+
+  sprite: 131
+  desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of Anata, the Enchanter"
+  value: 30000
+
+- name: Frostlands Royal Healer Gauntlets
+  tier: 6
+  stats:
+    armorClass: 5
+    defense: 5
+    mp: 150
+    healingBoost: 350
+
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25
+
+  sprite: 131
+  desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of Kieru, the Crusader"
+  value: 30000
+
+- name: Frostlands Royal Warrior Gauntlets
+  tier: 6
+  stats:
+    armorClass: 5
+    offense: 5
+    hp: 150
+    mitigation: 5
+
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25
+
+  sprite: 131
+  desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of Yneta, the Strong"
+  value: 30000
+
+- name: Frostlands Royal Thief Gauntlets
+  tier: 6
+  stats:
+    armorClass: 5
+    offense: 5
+    stealth: 100
+    perception: 100
+
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25
+
+  sprite: 131
+  desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of Shalala, the Shadow"
+  value: 30000
+
 - name: Rylt Rockgolem Gloves
   stats:
     defense: 2

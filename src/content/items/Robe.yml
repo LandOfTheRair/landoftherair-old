@@ -176,3 +176,35 @@
 
   requirements:
     level: 11
+
+- name: Frostlands Sabretooth Robe
+  stats:
+    iceResist: 200
+    fireResist: 50
+
+  randomStats:
+    offense:
+      min: 1
+      max: 3
+    defense:
+      min: 1
+      max: 3
+    armorClass:
+      min: 3
+      max: 7
+
+  desc: "a cloak tanned from the hide of a sabretooth"
+  value: 3500
+  sprite: 286
+
+- name: Frostlands Frostfang Robe
+  stats:
+    offense: 3
+    defense: 3
+    armorClass: 10
+    iceResist: 300
+    fireResist: 100
+
+  desc: "a cloak tanned from the hide of a big sabretooth"
+  value: 3500
+  sprite: 286

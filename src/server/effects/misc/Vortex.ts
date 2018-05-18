@@ -10,6 +10,8 @@ export class Vortex extends SpellEffect {
 
     for(let x = caster.x - radius; x < caster.x + radius; x++) {
       for(let y = caster.y - radius; y < caster.y + radius; y++) {
+        if(x === caster.x && y === caster.y) continue;
+        
         const items = caster.$$room.state.getGroundItems(x, y);
 
         Object.keys(items).forEach(itemClass => {

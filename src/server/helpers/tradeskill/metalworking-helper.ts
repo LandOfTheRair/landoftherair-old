@@ -8,30 +8,36 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 const ingotCraftBuffs = {
   'Copper Ingot (Pillars)': {
     weapon: { str: 2 },
-    armor:  { mitigation: 5 }
+    armor:  { mitigation: 5 },
+    ring:   { physicalResist: 10, magicalResist: 10 }
   },
   'Silver Ingot (Hourglass)': {
     weapon: { weaponArmorClass: 10 },
-    armor:  { armorClass: 8 }
+    armor:  { armorClass: 8 },
+    ring:   { armorClass: 3 }
   },
   'Gold Ingot (Infinity)': {
     weapon: { agi: 2 },
-    armor:  { hp: 75 }
+    armor:  { hp: 75 },
+    ring:   { perception: 50 }
   }
 };
 
 const ingotUpgradeBuffs = {
   'Copper Ingot (Pillars)': {
     weapon: { weaponDamageRolls: 3 },
-    armor:  { mitigation: 2 }
+    armor:  { mitigation: 2 },
+    ring:   {}
   },
   'Silver Ingot (Hourglass)': {
     weapon: { weaponArmorClass: 4 },
-    armor:  { armorClass: 3 }
+    armor:  { armorClass: 3 },
+    ring:   {}
   },
   'Gold Ingot (Infinity)': {
     weapon: { offense: 2, defense: 2, accuracy: 2 },
-    armor:  { hp: 20 }
+    armor:  { hp: 20 },
+    ring:   {}
   }
 };
 
@@ -48,6 +54,14 @@ export class MetalworkingHelper {
       case 'Silver': return 'Hourglass';
       case 'Gold':   return 'Infinity';
     }
+  }
+
+  static getUpgradeCreateType(item: Item): 'armor'|'weapon'|'ring' {
+    if(item.itemClass === 'Shield')             return 'armor';
+    if(item.itemClass === 'Ring')               return 'ring';
+    if(includes(ArmorClasses, item.itemClass))  return 'armor';
+
+    return 'weapon';
   }
 
   static async createIngotFor(player: Player, type: string): Promise<void> {
@@ -73,7 +87,7 @@ export class MetalworkingHelper {
     }
 
     // move specific ingot buffs over
-    const type = item.itemClass === 'Shield' || includes(ArmorClasses, item.itemClass) ? 'armor' : 'weapon';
+    const type = MetalworkingHelper.getUpgradeCreateType(item);
     return get(isCreate ? ingotCraftBuffs : ingotUpgradeBuffs, [buffItem.name, type], {});
   }
 

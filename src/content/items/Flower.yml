@@ -23,3 +23,8 @@
   sprite: 761
   desc: "a root of caveflower"
   value: 50
+
+- name: Frostlands Gourd
+  sprite: 840
+  desc: "a frozen gourd"
+  value: 60

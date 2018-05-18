@@ -126,6 +126,7 @@
   stats:
     accuracy: 7
     offense: 3
+    fireResist: 200
   effect:
     name: ImbueFlame
     potency: 10
@@ -137,6 +138,28 @@
   type: Dagger
   value: 21347
   sprite: 978
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25
+
+- name: Frost Chakram
+  desc: "a frozen chakram created from magical icicles"
+  tier: 6
+  stats:
+    accuracy: 3
+    defense: 4
+    iceResist: 200
+  effect:
+    name: ImbueFrost
+    potency: 10
+    autocast: true
+  offhand: true
+  returnsOnThrow: true
+  type: Ranged
+  value: 24347
+  sprite: 710
   binds: true
   tellsBind: true
 

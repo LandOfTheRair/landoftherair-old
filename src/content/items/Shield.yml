@@ -110,3 +110,17 @@
 
   requirements:
     level: 25
+
+- name: Frostlands Shield
+  stats:
+    armorClass: 20
+    fireResist: 300
+    iceResist: 300
+    defense: 3
+  desc: "a highly-polished shield engraved with the mark of the Risan royal family which is covered in a layer of frost"
+  value: 21451
+  sprite: 864
+  binds: true
+
+  requirements:
+    level: 21

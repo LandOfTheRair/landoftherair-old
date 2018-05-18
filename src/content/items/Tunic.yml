@@ -85,3 +85,19 @@
   desc: "a leather tunic"
   value: 300
   sprite: 206
+
+- name: Sanquin Scales Tunic
+  stats:
+    iceResist: 300
+  randomStats:
+    armorClass:
+      min: 22
+      max: 27
+    defense:
+      min: 3
+      max: 6
+  requirements:
+    level: 20
+  desc: "a tunic made from the frozen scales of a sanquin"
+  value: 5020
+  sprite: 269

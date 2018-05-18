@@ -109,3 +109,18 @@
 
   requirements:
     level: 15
+
+- name: Frostlands Thermidor Halberd
+  desc: "a frozen defensive halberd used by the ancient thermidor people of Risan"
+  stats:
+    armorClass: 10
+    weaponArmorClass: 15
+    defense: 5
+  tier: 6
+  type: Polearm
+  value: 19511
+  sprite: 438
+  binds: true
+
+  requirements:
+    level: 23

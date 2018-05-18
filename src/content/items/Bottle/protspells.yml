@@ -79,8 +79,29 @@
     potency: 10
   value: 500
 
+- name: Medium BarFire Potion
+  desc: "a small white bottle. It feels hot to the touch"
+  extendedDesc: "a potion of BarFire"
+  sprite: 251
+  effect:
+    name: BarFire
+    duration: 900
+    potency: 20
+  value: 4500
+
+- name: Medium BarFire Potion (10oz)
+  desc: "a small white bottle. It feels hot to the touch"
+  extendedDesc: "a potion of BarFire"
+  sprite: 251
+  ounces: 10
+  effect:
+    name: BarFire
+    duration: 900
+    potency: 10
+  value: 500
+
 - name: Weak BarFrost Potion
-  desc: "a small white bottle. The bottle chills your hand"
+  desc: "a small white bottle. The bottle cools your hand"
   extendedDesc: "a potion of BarFrost"
   sprite: 251
   effect:
@@ -90,7 +111,7 @@
   value: 500
 
 - name: Weak BarFrost Potion (10oz)
-  desc: "a small white bottle. The bottle chills your hand"
+  desc: "a small white bottle. The bottle cools your hand"
   extendedDesc: "a potion of BarFrost"
   sprite: 251
   ounces: 10
@@ -99,6 +120,27 @@
     duration: 900
     potency: 10
   value: 500
+
+- name: Medium BarFrost Potion
+  desc: "a small white bottle. The bottle chills your hand"
+  extendedDesc: "a potion of BarFrost"
+  sprite: 251
+  effect:
+    name: BarFrost
+    duration: 900
+    potency: 20
+  value: 4500
+
+- name: Medium BarFrost Potion (10oz)
+  desc: "a small white bottle. The bottle chills your hand"
+  extendedDesc: "a potion of BarFrost"
+  sprite: 251
+  ounces: 10
+  effect:
+    name: BarFrost
+    duration: 900
+    potency: 20
+  value: 4500
 
 - name: Weak BarWater Potion
   desc: "a small white bottle. The liquid in it seems unnaturally buoyant"

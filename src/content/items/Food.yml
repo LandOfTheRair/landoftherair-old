@@ -210,3 +210,31 @@
     stats:
       perception: 300
     duration: 36000
+
+- name: Yeti Bile (Small)
+  sprite: 679
+  desc: "a small chunk of bile from a yeti"
+  value: 1500
+  effect:
+    name: Nourishment
+    tooltip: "+2 WIL/CON"
+    message: "The bile exercises your constitution!"
+    stats:
+      wil: 2
+      con: 2
+    duration: 36000
+
+- name: Yeti Bile (Large)
+  sprite: 678
+  desc: "a large pile of bile from a yeti"
+  value: 2500
+  effect:
+    name: Nourishment
+    tooltip: "+3 WIL/CON, +100 Poison Resist, +70 Disease Resist"
+    message: "The bile exercises your constitution!"
+    stats:
+      wil: 3
+      con: 3
+      poisonResist: 100
+      diseaseResist: 70
+    duration: 36000
