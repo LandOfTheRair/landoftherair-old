@@ -29,7 +29,7 @@ export class TraitUsageModifiers {
       case 'CalmMind':            return level * 2;
       case 'NaturalArmor':        return level * 2;
       case 'ManaPool':            return level * 10;
-      case 'StrongMind':          return level * 0.1;
+      case 'StrongMind':          return level;
       case 'NatureSpirit':        return level * 0.05;
       case 'HolyAffliction':      return level * 3;
 
