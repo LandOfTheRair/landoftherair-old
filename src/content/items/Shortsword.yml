@@ -30,6 +30,9 @@
   value: 3411
   sprite: 305
 
+  requirements:
+    level: 15
+
 - name: Risan Mines Rare Spirit Shortsword
   desc: "a highly-reflective silver shortsword"
   stats:
@@ -43,4 +46,7 @@
   type: Shortsword
   value: 3411
   sprite: 333
+
+  requirements:
+    level: 15
 
