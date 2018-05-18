@@ -1,0 +1,12 @@
+
+- result: Medium BarFrost Potion
+  chance: 1
+  maxChance: 100
+
+- result: Risan Disease Prot Crystal
+  chance: 1
+  maxChance: 1000
+
+- result: Risan Poison Prot Crystal
+  chance: 1
+  maxChance: 1000
