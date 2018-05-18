@@ -1,10 +1,9 @@
 
-- name: Basic Malcheum Ring
+- name: Basic Machleum Ring
   sprite: 620
-  binds: true
   desc: "a basic translucent pink ring forged from machleum"
 
-- name: Simple Mage Malcheum Ring
+- name: Simple Mage Machleum Ring
   stats:
     int: 3
     mpregen: 5
@@ -15,7 +14,7 @@
   requirements:
     level: 25
 
-- name: Simple Healer Malcheum Ring
+- name: Simple Healer Machleum Ring
   stats:
     wis: 3
     mpregen: 5
@@ -26,7 +25,7 @@
   requirements:
     level: 25
 
-- name: Simple Warrior Malcheum Ring
+- name: Simple Warrior Machleum Ring
   stats:
     str: 3
     hpregen: 5
@@ -37,7 +36,7 @@
   requirements:
     level: 25
 
-- name: Simple Thief Malcheum Ring
+- name: Simple Thief Machleum Ring
   stats:
     agi: 3
     hpregen: 5
@@ -48,7 +47,7 @@
   requirements:
     level: 25
 
-- name: Double Mage Malcheum Ring
+- name: Double Mage Machleum Ring
   stats:
     int: 2
     luk: 2
@@ -60,7 +59,7 @@
   requirements:
     level: 25
 
-- name: Double Healer Malcheum Ring
+- name: Double Healer Machleum Ring
   stats:
     wis: 2
     wil: 2
@@ -72,7 +71,7 @@
   requirements:
     level: 25
 
-- name: Double Warrior Malcheum Ring
+- name: Double Warrior Machleum Ring
   stats:
     str: 2
     dex: 3
@@ -84,7 +83,7 @@
   requirements:
     level: 25
 
-- name: Double Thief Malcheum Ring
+- name: Double Thief Machleum Ring
   stats:
     agi: 2
     stealth: 25
@@ -96,7 +95,7 @@
   requirements:
     level: 25
 
-- name: Giant Malcheum Ring
+- name: Giant Machleum Ring
   sprite: 625
   binds: true
   desc: "a giant machleum ring set with a large frost larimar"
