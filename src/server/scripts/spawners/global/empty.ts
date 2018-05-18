@@ -1,10 +1,13 @@
 
 import { Spawner } from '../../../base/Spawner';
 
+import { extend } from 'lodash';
+
 export class EmptySpawner extends Spawner {
 
-  constructor(room, opts) {
-    super(room, opts, {
+  constructor(room, opts, properties) {
+
+    const spawnerProps: any = extend({
       respawnRate: 0,
       initialSpawn: 0,
       maxSpawn: 1,
@@ -19,7 +22,9 @@ export class EmptySpawner extends Spawner {
       canSlowDown: false,
       eliteTickCap: 0,
       npcIds: []
-    });
+    }, properties);
+
+    super(room, opts, spawnerProps);
   }
 
 }
