@@ -1,0 +1,9 @@
+
+- item: Basic Malcheum Ring
+  skillGained: 20
+  maxSkillForGains: 10
+  requiredSkill: 10
+  xpGained: 25000
+  ingredients:
+    - Enchanting Brick - Owts
+    - Enchanting Brick - Owts

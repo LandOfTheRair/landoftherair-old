@@ -1,0 +1,78 @@
+
+- name: Basic Malcheum Ring
+  sprite: 620
+  binds: true
+  desc: "a basic translucent pink ring forged from machleum"
+
+- name: Simple Mage Malcheum Ring
+  stats:
+    int: 3
+    mpregen: 5
+  sprite: 623
+  binds: true
+  desc: "a simple machleum ring set with a freezing frost larimar"
+
+- name: Simple Healer Malcheum Ring
+  stats:
+    wis: 3
+    mpregen: 5
+  sprite: 623
+  binds: true
+  desc: "a simple machleum ring set with a holy frost larimar"
+
+- name: Simple Warrior Malcheum Ring
+  stats:
+    str: 3
+    hpregen: 5
+  sprite: 623
+  binds: true
+  desc: "a simple machleum ring set with a strong frost larimar"
+
+- name: Simple Thief Malcheum Ring
+  stats:
+    agi: 3
+    hpregen: 5
+  sprite: 623
+  binds: true
+  desc: "a simple machleum ring set with a shadowy frost larimar"
+
+- name: Double Mage Malcheum Ring
+  stats:
+    int: 2
+    luk: 2
+    mpregen: 5
+  sprite: 624
+  binds: true
+  desc: "a twin machleum ring set with a freezing frost larimar"
+
+- name: Double Healer Malcheum Ring
+  stats:
+    wis: 2
+    wil: 2
+    mpregen: 5
+  sprite: 624
+  binds: true
+  desc: "a twin machleum ring set with a holy frost larimar"
+
+- name: Double Warrior Malcheum Ring
+  stats:
+    str: 2
+    dex: 3
+    hpregen: 5
+  sprite: 624
+  binds: true
+  desc: "a twin machleum ring set with a strong frost larimar"
+
+- name: Double Thief Malcheum Ring
+  stats:
+    agi: 2
+    stealth: 25
+    hpregen: 5
+  sprite: 624
+  binds: true
+  desc: "a twin machleum ring set with a shadowy frost larimar"
+
+- name: Giant Malcheum Ring
+  sprite: 625
+  binds: true
+  desc: "a giant machleum ring set with a large frost larimar"

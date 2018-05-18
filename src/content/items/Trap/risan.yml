@@ -1,0 +1,143 @@
+- name: Risan FireMist Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell FireMist"
+  effect:
+    name: FireMist
+    uses: 3
+    potency: 20
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 3500
+
+- name: Risan IceMist Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell IceMist"
+  effect:
+    name: IceMist
+    uses: 3
+    potency: 20
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 3500
+
+- name: Risan Poison Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Poison"
+  effect:
+    name: Poison
+    uses: 3
+    potency: 20
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 3000
+
+- name: Risan HolyFire Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell HolyFire"
+  effect:
+    name: HolyFire
+    uses: 3
+    potency: 20
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 3000
+
+- name: Risan MagicBolt Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell MagicBolt"
+  effect:
+    name: MagicBolt
+    uses: 3
+    potency: 20
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 3000
+
+- name: Risan Distraction Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Distraction"
+  effect:
+    name: Distraction
+    uses: 3
+    potency: 20
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 3500
+
+- name: Risan Darkness Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Darkness"
+  effect:
+    name: Darkness
+    uses: 3
+    potency: 25
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 4000
+
+- name: Risan Snare Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Snare"
+  effect:
+    name: Snare
+    uses: 3
+    potency: 20
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 4000
+
+- name: Risan Stun Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Stun"
+  effect:
+    name: Stun
+    uses: 3
+    potency: 20
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 4000
+
+- name: Risan Blind Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Blind"
+  effect:
+    name: Blind
+    uses: 3
+    potency: 20
+    levelRequirement: 3
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 4000
+
+- name: Risan Cure Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Cure"
+  effect:
+    name: Cure
+    uses: 3
+    potency: 30
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 1000
+
+- name: Risan Dispel Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Dispel"
+  effect:
+    name: Dispel
+    uses: 3
+    potency: 30
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 4000
+
+- name: Risan Haste Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Haste"
+  effect:
+    name: Haste
+    uses: 3
+    potency: 20
+    levelRequirement: 15
+    skillRequirement: 15
+  value: 10000
