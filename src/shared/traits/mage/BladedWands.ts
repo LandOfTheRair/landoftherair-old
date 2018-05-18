@@ -9,7 +9,7 @@ export class BladedWands extends Trait {
   static icon = 'energy-sword';
 
   static upgrades = [
-    { cost: 50, requireCharacterLevel: 10, capstone: true }
+    { cost: 30, requireCharacterLevel: 10, capstone: true }
   ];
 
 }
