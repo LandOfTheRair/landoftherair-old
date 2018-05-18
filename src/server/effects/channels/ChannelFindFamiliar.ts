@@ -161,7 +161,6 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
         npc.allegiance = char.allegiance;
         npc.alignment = char.alignment;
         npc.level = char.level;
-        npc.skills
 
         // match the player
         if(char.isPlayer()) {
