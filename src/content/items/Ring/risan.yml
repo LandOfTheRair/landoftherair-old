@@ -12,6 +12,9 @@
   binds: true
   desc: "a simple machleum ring set with a freezing frost larimar"
 
+  requirements:
+    level: 25
+
 - name: Simple Healer Malcheum Ring
   stats:
     wis: 3
@@ -19,6 +22,9 @@
   sprite: 623
   binds: true
   desc: "a simple machleum ring set with a holy frost larimar"
+
+  requirements:
+    level: 25
 
 - name: Simple Warrior Malcheum Ring
   stats:
@@ -28,6 +34,9 @@
   binds: true
   desc: "a simple machleum ring set with a strong frost larimar"
 
+  requirements:
+    level: 25
+
 - name: Simple Thief Malcheum Ring
   stats:
     agi: 3
@@ -35,6 +44,9 @@
   sprite: 623
   binds: true
   desc: "a simple machleum ring set with a shadowy frost larimar"
+
+  requirements:
+    level: 25
 
 - name: Double Mage Malcheum Ring
   stats:
@@ -45,6 +57,9 @@
   binds: true
   desc: "a twin machleum ring set with a freezing frost larimar"
 
+  requirements:
+    level: 25
+
 - name: Double Healer Malcheum Ring
   stats:
     wis: 2
@@ -53,6 +68,9 @@
   sprite: 624
   binds: true
   desc: "a twin machleum ring set with a holy frost larimar"
+
+  requirements:
+    level: 25
 
 - name: Double Warrior Malcheum Ring
   stats:
@@ -63,6 +81,9 @@
   binds: true
   desc: "a twin machleum ring set with a strong frost larimar"
 
+  requirements:
+    level: 25
+
 - name: Double Thief Malcheum Ring
   stats:
     agi: 2
@@ -71,6 +92,9 @@
   sprite: 624
   binds: true
   desc: "a twin machleum ring set with a shadowy frost larimar"
+
+  requirements:
+    level: 25
 
 - name: Giant Malcheum Ring
   sprite: 625
