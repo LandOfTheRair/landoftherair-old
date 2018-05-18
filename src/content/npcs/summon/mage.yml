@@ -42,6 +42,7 @@
 
   usableSkills:
     - PoisonBiteWeak
+    - Rapidpunch
 
 - npcId: Mage Summon Bear
   name: bear
