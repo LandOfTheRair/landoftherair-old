@@ -427,6 +427,9 @@ export class GameState {
     // natural resources are only hostile if I have a reputation modifier for them (positive or negative)
     if(target.allegiance === 'NaturalResource' && !me.allegianceReputation.NaturalResource) return false;
 
+    // if I am a pet, and my prospective target is a player, we won't do this
+    if(me.$$owner && target.isPlayer()) return false;
+
     // if either of us are agro'd to each other, there is hostility
     if(me.agro[target.uuid] || target.agro[me.uuid]) return true;
 
