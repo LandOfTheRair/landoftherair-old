@@ -23,6 +23,10 @@ export class PartyKick extends Command {
 
     room.partyManager.kickFromParty(player, target);
     target.sendClientMessage(`You were kicked from the "${party.name}" party!`);
+
+    if(!room.canPartyAction) {
+      room.kickOut(target);
+    }
   }
 
 }

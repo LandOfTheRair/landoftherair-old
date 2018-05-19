@@ -1,5 +1,6 @@
 
 import { GameWorld } from './GameWorld';
+import { Player } from '../../shared/models/player';
 
 export class InstancedDungeon extends GameWorld {
 
@@ -12,6 +13,10 @@ export class InstancedDungeon extends GameWorld {
   get exitPoint() {
     const { kickMap, kickX, kickY } = this.state.map.properties;
     return { kickMap, kickX, kickY };
+  }
+
+  get canPartyAction(): boolean {
+    return false;
   }
 
   async onInit(options): Promise<void> {
@@ -31,8 +36,6 @@ export class InstancedDungeon extends GameWorld {
 
     const player = this.state.findPlayer(options.username);
     if(!player.partyName || (this.partyOwner && player.partyName !== this.partyOwner)) {
-      const { kickMap, kickX, kickY } = this.exitPoint;
-      await this.teleport(player, { newMap: kickMap, x: kickX, y: kickY });
       return false;
     }
 

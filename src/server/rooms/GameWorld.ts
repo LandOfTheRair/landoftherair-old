@@ -171,6 +171,10 @@ export class GameWorld extends Room<GameState> {
     return null;
   }
 
+  get canPartyAction(): boolean {
+    return true;
+  }
+
   private redis: Redis;
   public get redisClient() {
     return this.redis.client;
@@ -350,6 +354,13 @@ export class GameWorld extends Room<GameState> {
     data.args = (data.args || '').trim().split('  ').join(' ');
 
     CommandExecutor.queueCommand(player, data.command, data);
+  }
+
+  public async kickOut(player: Player) {
+    if(!this.exitPoint) return;
+
+    const { kickMap, kickX, kickY } = this.exitPoint;
+    await this.teleport(player, { newMap: kickMap, x: kickX, y: kickY });
   }
 
   public saveGround(): Promise<any> {

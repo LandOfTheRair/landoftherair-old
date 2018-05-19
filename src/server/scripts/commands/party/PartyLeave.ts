@@ -12,6 +12,10 @@ export class PartyLeave extends Command {
 
     room.partyManager.leaveParty(player);
     player.sendClientMessage(`You left the "${partyName}" party!`);
+
+    if(!room.canPartyAction) {
+      room.kickOut(player);
+    }
   }
 
 }
