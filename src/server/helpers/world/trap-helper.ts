@@ -22,7 +22,9 @@ export class TrapHelper {
     const effectRef = new Effects[effect.name](effect);
     effectRef.casterRef = caster;
 
-    effectRef.cast(target, target, obj);
+    const casterCreature = target.$$room.state.findPlayer(caster.username);
+
+    effectRef.cast(casterCreature ? casterCreature : target, target, obj);
   }
 
   static placeTrap(x, y, user: Character, trap): boolean {
@@ -38,7 +40,7 @@ export class TrapHelper {
     const trapInteractable = {
       x: x * 64,
       y: (y + 1) * 64,
-      uses: 1 + user.getTraitLevel('ReusableTraps'),
+      uses: (trap.uses || 1) + user.getTraitLevel('ReusableTraps'),
       type: 'Trap',
       properties: {
         effect: trap.effect,

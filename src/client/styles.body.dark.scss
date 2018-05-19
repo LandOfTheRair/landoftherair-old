@@ -36,6 +36,10 @@ body {
     .popover-content {
       padding: 5px !important;
     }
+
+    .popover-arrow::after {
+      border-top-color: #222 !important;
+    }
   }
 
   .swal2-success-circular-line-left, .swal2-success-circular-line-right, .swal2-success-fix {

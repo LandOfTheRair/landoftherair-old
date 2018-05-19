@@ -224,7 +224,7 @@ export class Player extends Character {
 
         const item = get(this, slot);
 
-        if(!item) return false;
+        if(!item || item.itemClass === 'Trap') return false;
 
         if(item.castAndTryBreak()) {
           this.sendClientMessage('Your item has fizzled and turned to dust.');
@@ -472,7 +472,7 @@ export class Player extends Character {
       });
     }
 
-    if(item.effect && item.effect.uses) {
+    if(item.effect && item.effect.uses && item.itemClass !== 'Trap') {
       this.learnSpell(item.effect.name, true);
     }
   }
