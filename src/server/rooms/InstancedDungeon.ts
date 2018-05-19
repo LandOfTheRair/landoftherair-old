@@ -1,6 +1,5 @@
 
 import { GameWorld } from './GameWorld';
-import { Player } from '../../shared/models/player';
 
 export class InstancedDungeon extends GameWorld {
 
