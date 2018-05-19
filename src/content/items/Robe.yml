@@ -4,6 +4,7 @@
     fireResist: 10
     iceResist: 10
     necroticResist: 10
+    poisonResist: 10
     defense: 1
   desc: "a gold robe made from the hide of a deer"
   value: 100
@@ -16,6 +17,7 @@
     fireResist: 15
     iceResist: 15
     necroticResist: 15
+    poisonResist: 20
     defense: 2
   desc: "a silver robe made from the hide of a weredeer"
   value: 1000
