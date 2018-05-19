@@ -769,7 +769,9 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-info" (click)="macros.hide(); macroGroups.show()">To Macro Groups</button>
+        <div>
+          <button type="button" class="btn btn-info" (click)="macros.hide(); macroGroups.show()">To Macro Groups</button>
+        </div>
         <div>
           <button type="button" class="btn btn-primary" (click)="addMacro()">New Macro</button>
           <button type="button" class="btn btn-secondary" (click)="macros.hide()">Close</button>
@@ -1007,7 +1009,14 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" (click)="macroGroups.hide(); macros.show()">To Macros</button>
+          <div>
+            <button type="button" class="btn btn-info" (click)="macroGroups.hide(); macros.show()">To Macros</button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-warning" (click)="macroService.exportMacros()">Export Macros</button>
+            <input type="file" #uploadMacros class="hidden" accept=".json" (change)="macroService.importMacros($event, uploadMacros)"/>
+            <button type="button" class="btn btn-warning" (click)="uploadMacros.click()">Import Macros</button>
+          </div>
           <div>
             <button type="button" class="btn btn-primary" (click)="addMacroGroup()">New Macro Group</button>
             <button type="button" class="btn btn-secondary" (click)="macroGroups.hide()">Close</button>
