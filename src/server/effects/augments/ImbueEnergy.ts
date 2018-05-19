@@ -13,7 +13,6 @@ export class ImbueEnergy extends ImbueEffect implements AugmentSpellEffect {
   };
 
   maxSkillForSkillGain = 21;
-  potencyMultiplier = 10;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     const foundSelf = super.cast(caster, target, skillRef);
@@ -38,7 +37,7 @@ export class ImbueEnergy extends ImbueEffect implements AugmentSpellEffect {
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'A whirling purple aura envelops your hands.');
 
-    this.iconData.tooltipDesc = `Physical attacks sometimes do ${this.potency * this.potencyMultiplier} bonus energy damage.`;
+    this.iconData.tooltipDesc = `Physical attacks sometimes do ${Math.floor(this.potency / 2)}% bonus energy damage.`;
   }
 
   effectEnd(char: Character) {
@@ -48,12 +47,14 @@ export class ImbueEnergy extends ImbueEffect implements AugmentSpellEffect {
   augmentAttack(attacker: Character, defender: Character, opts: { damage: number, damageClass: string }) {
 
     if(opts.damageClass !== 'physical') return;
-    if(!RollerHelper.XInOneHundred(this.potency)) return;
+    if(!RollerHelper.XInOneHundred(this.potency / 2)) return;
+
+    const bonusDamage = Math.floor(opts.damage * ((this.potency / 200)));
 
     this.magicalAttack(attacker, defender, {
       atkMsg: `You strike for bonus energy damage!`,
       defMsg: `${this.getCasterName(attacker, defender)} struck you with a burst of raw energy!`,
-      damage: this.potency * this.potencyMultiplier,
+      damage: bonusDamage,
       damageClass: 'energy'
     });
   }

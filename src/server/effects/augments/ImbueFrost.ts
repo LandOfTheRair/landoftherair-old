@@ -13,7 +13,6 @@ export class ImbueFrost extends ImbueEffect implements AugmentSpellEffect {
   };
 
   maxSkillForSkillGain = 21;
-  potencyMultiplier = 10;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     const foundSelf = super.cast(caster, target, skillRef);
@@ -38,7 +37,7 @@ export class ImbueFrost extends ImbueEffect implements AugmentSpellEffect {
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'A whirling blue aura envelops your hands.');
 
-    this.iconData.tooltipDesc = `Physical attacks sometimes do ${this.potency * this.potencyMultiplier} bonus ice damage.`;
+    this.iconData.tooltipDesc = `Physical attacks sometimes do ${Math.floor(this.potency / 2)}% bonus ice damage.`;
   }
 
   effectEnd(char: Character) {
@@ -50,10 +49,12 @@ export class ImbueFrost extends ImbueEffect implements AugmentSpellEffect {
     if(opts.damageClass !== 'physical') return;
     if(!RollerHelper.XInOneHundred(this.potency)) return;
 
+    const bonusDamage = Math.floor(opts.damage * ((this.potency / 200)));
+
     this.magicalAttack(attacker, defender, {
       atkMsg: `You strike for bonus ice damage!`,
       defMsg: `${this.getCasterName(attacker, defender)} struck you with a burst of raw frost!`,
-      damage: this.potency * this.potencyMultiplier,
+      damage: bonusDamage,
       damageClass: 'ice'
     });
   }
