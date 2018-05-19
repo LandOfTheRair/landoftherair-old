@@ -241,6 +241,12 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
       });
   }
 
+  public enchantTextFor(itemInfo) {
+    const el = get(itemInfo, 'itemOverride.enchantLevel', 0);
+    if(el > 0) return `+${el} `;
+    return '';
+  }
+
   public starTextFor(itemInfo) {
     const quality = get(itemInfo, 'itemOverride.quality', 0);
     return quality - 2 > 0 ? Array(quality - 2).fill('★').join('') : '';
