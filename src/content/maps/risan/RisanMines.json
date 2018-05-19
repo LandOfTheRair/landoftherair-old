@@ -2835,6 +2835,32 @@
                  "width":64,
                  "x":832,
                  "y":384
+                }, 
+                {
+                 "gid":1779,
+                 "height":64,
+                 "id":1625,
+                 "name":"",
+                 "properties":
+                    {
+                     "requireParty":true,
+                     "teleportMap":"DryadCaves-Dungeon",
+                     "teleportX":23,
+                     "teleportY":6
+                    },
+                 "propertytypes":
+                    {
+                     "requireParty":"bool",
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsDown",
+                 "visible":true,
+                 "width":64,
+                 "x":3904,
+                 "y":1792
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7067,7 +7093,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1625,
+ "nextobjectid":1626,
  "orientation":"orthogonal",
  "properties":
     {

@@ -36,6 +36,7 @@ export class InstancedDungeon extends GameWorld {
 
     const player = this.state.findPlayer(options.username);
     if(!player.partyName || (this.partyOwner && player.partyName !== this.partyOwner)) {
+      this.kickOut(player);
       return false;
     }
 
