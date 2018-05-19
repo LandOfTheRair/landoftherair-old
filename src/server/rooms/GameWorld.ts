@@ -278,7 +278,7 @@ export class GameWorld extends Room<GameState> {
     playerData.$$room = this;
     const player = new Player(playerData);
     player.z = player.z || 0;
-    player.initServer();
+    await player.initServer();
     CharacterHelper.setUpClassFor(player);
     this.state.addPlayer(player, client.id);
 
@@ -312,6 +312,7 @@ export class GameWorld extends Room<GameState> {
 
     this.send(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
     this.send(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
+    this.updateSkillTree(player);
   }
 
   async onLeave(client) {
