@@ -94,7 +94,6 @@ export class CombatHelper {
     if(riposteLevel === 0) return;
     if(!RollerHelper.XInOneHundred(riposteLevel)) return;
 
-    defender.sendClientMessage('You riposte the attack!');
     this.doPhysicalAttack(defender, attacker, { isRiposte: true });
   }
 
@@ -994,12 +993,12 @@ export class CombatHelper {
     const otherClass = isHeal ? 'heal' : 'hit';
     const damageType = damageClass === 'physical' ? 'melee' : 'magic';
 
-    if(!isRiposte && attackerDamageMessage) {
+    if(attackerDamageMessage) {
 
       const secondaryClass = attacker !== defender ? 'self' : 'other';
 
       attacker.sendClientMessage({
-        message: `${attackerDamageMessage} [${absDmg} ${dmgString}]`,
+        message: `${isRiposte ? 'You riposte the attack!' : attackerDamageMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat ${secondaryClass} ${otherClass} ${damageType}`,
         target: defender.uuid,
         extraData: {
@@ -1012,9 +1011,9 @@ export class CombatHelper {
       });
     }
 
-    if(!isRiposte && defenderDamageMessage && attacker !== defender) {
+    if(defenderDamageMessage && attacker !== defender) {
       defender.sendClientMessage({
-        message: `${defenderDamageMessage} [${absDmg} ${dmgString}]`,
+        message: `${isRiposte ? 'Your attack was riposted!' : defenderDamageMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat other ${otherClass} ${damageType}`,
         extraData: {
           type: 'damage',
