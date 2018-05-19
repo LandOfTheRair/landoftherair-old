@@ -6,7 +6,8 @@ export class MirroredEnchantments extends Trait {
 
   static baseClass = 'Warrior';
   static traitName = 'MirroredEnchantments';
-  static description = 'The potency of gems and runes in your boots and gloves are doubled while your right hand is empty. You cannot exceed an encrusted gem max limit in this fashion.';
+  static description = `The potency of gems and runes in your boots and gloves are doubled while your right hand is empty. 
+  You cannot exceed an encrusted gem max limit in this fashion.`;
   static icon = 'emerald';
 
   static upgrades = [
