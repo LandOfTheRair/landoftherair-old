@@ -4,7 +4,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 
 import * as _ from 'lodash';
 import { ColyseusGameService } from './colyseus.game.service';
-import * as swal from "sweetalert2";
+import * as swal from 'sweetalert2';
 
 export class MacroGroup {
   macroNames: string[];
