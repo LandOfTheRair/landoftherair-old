@@ -64,6 +64,8 @@ export class ColyseusGameService {
 
   private overrideNoBgm: boolean;
   private overrideNoSfx: boolean;
+  private nostalgicBgm: boolean;
+  private suppressZero: boolean;
 
   public currentViewTarget: any;
 
@@ -81,15 +83,27 @@ export class ColyseusGameService {
 
     this.overrideNoBgm = !this.localStorage.retrieve('playBackgroundMusic');
     this.overrideNoSfx = !this.localStorage.retrieve('playSoundEffects');
+    this.nostalgicBgm = this.localStorage.retrieve('nostalgicBackgroundMusic');
+    this.suppressZero = this.localStorage.retrieve('suppressZeroDamage');
 
     this.localStorage.observe('playBackgroundMusic')
       .subscribe(shouldPlayBgm => {
         this.overrideNoBgm = !shouldPlayBgm;
       });
 
+    this.localStorage.observe('nostalgicBackgroundMusic')
+      .subscribe(nostalgicBackgroundMusic => {
+        this.nostalgicBgm = nostalgicBackgroundMusic;
+      });
+
     this.localStorage.observe('playSoundEffects')
       .subscribe(shouldPlaySfx => {
         this.overrideNoSfx = !shouldPlaySfx;
+      });
+
+    this.localStorage.observe('suppressZeroDamage')
+      .subscribe(suppressZeroDamage => {
+        this.suppressZero = suppressZeroDamage;
       });
 
     this.lastCommands = this.localStorage.retrieve('lastCommands') || [];
@@ -285,11 +299,12 @@ export class ColyseusGameService {
       this.bgm$.next('');
 
     } else {
-      if(this.character.combatTicks > 0) {
-        this.bgm$.next('combat');
-      } else {
-        this.bgm$.next(this.character.bgmSetting);
+      let bgm = this.character.combatTicks > 0 ? 'combat' : this.character.bgmSetting;
+      if(this.nostalgicBgm) {
+        bgm = `${bgm}-nostalgia`;
       }
+
+      this.bgm$.next(bgm);
     }
 
     // update hp/xp/etc for floating boxes
@@ -300,7 +315,7 @@ export class ColyseusGameService {
     const isZero = (includes(message, '[0') && includes(message, 'damage]'))
                 || (includes(message, 'misses!'))
                 || (includes(message, 'blocked by your'));
-    if(isZero && this.localStorage.retrieve('suppressZeroDamage')) return;
+    if(isZero && this.suppressZero) return;
     if(!grouping || grouping === 'spell') grouping = 'always';
     this.clientGameState.addLogMessage({ name, message, subClass, grouping, dirFrom });
 

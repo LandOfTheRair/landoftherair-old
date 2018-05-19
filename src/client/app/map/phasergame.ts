@@ -703,6 +703,7 @@ export class Game {
 
     bgms.forEach(bgm => {
       this.g.load.audio(`bgm-${bgm}`, `${this.assetService.assetUrl}/bgm/${bgm}.mp3`);
+      this.g.load.audio(`bgm-${bgm}-nostalgia`, `${this.assetService.assetUrl}/bgm/${bgm}-nostalgia.mp3`);
     });
 
     sfxs.forEach(sfx => {
@@ -716,6 +717,7 @@ export class Game {
 
     bgms.forEach(bgm => {
       this.bgms[bgm] = this.g.add.audio(`bgm-${bgm}`);
+      this.bgms[`${bgm}-nostalgia`] = this.g.add.audio(`bgm-${bgm}-nostalgia`);
     });
 
     sfxs.forEach(sfx => {

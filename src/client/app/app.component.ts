@@ -167,6 +167,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   public playBackgroundMusic: boolean;
 
   @LocalStorage()
+  public nostalgicBackgroundMusic: boolean;
+
+  @LocalStorage()
   public playSoundEffects: boolean;
 
   public newMessages = 0;
