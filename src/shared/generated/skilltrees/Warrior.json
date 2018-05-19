@@ -769,7 +769,7 @@
     "BrassKnuckles0": {
         "name": "BrassKnuckles0",
         "traitName": "BrassKnuckles",
-        "desc": "Your open-hand fist attacks are treated as $1|1$ tier stronger.",
+        "desc": "Your open-hand fist attacks gain a +$1|3$ tier bonus.",
         "icon": "brass-knuckles",
         "cost": 20,
         "unlocks": [
@@ -784,7 +784,7 @@
     "BrassKnuckles1": {
         "name": "BrassKnuckles1",
         "traitName": "BrassKnuckles",
-        "desc": "Your open-hand fist attacks are treated as $1|1$ tier stronger.",
+        "desc": "Your open-hand fist attacks gain a +$1|3$ tier bonus.",
         "icon": "brass-knuckles",
         "cost": 20,
         "unlocks": [
@@ -798,7 +798,7 @@
     "BrassKnuckles2": {
         "name": "BrassKnuckles2",
         "traitName": "BrassKnuckles",
-        "desc": "Your open-hand fist attacks are treated as $1|1$ tier stronger.",
+        "desc": "Your open-hand fist attacks gain a +$1|3$ tier bonus.",
         "icon": "brass-knuckles",
         "cost": 20,
         "unlocks": [

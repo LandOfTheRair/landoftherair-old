@@ -183,7 +183,7 @@
     "NimbleStealing0": {
         "name": "NimbleStealing0",
         "traitName": "NimbleStealing",
-        "desc": "You are $5|15$ less likely to be discovered when stealing, and you steal more gold when you are successful.",
+        "desc": "You are $5|15$% less likely to be discovered when stealing, and you steal more gold when you are successful.",
         "icon": "take-my-money",
         "cost": 3,
         "unlocks": [
@@ -197,7 +197,7 @@
     "NimbleStealing1": {
         "name": "NimbleStealing1",
         "traitName": "NimbleStealing",
-        "desc": "You are $5|15$ less likely to be discovered when stealing, and you steal more gold when you are successful.",
+        "desc": "You are $5|15$% less likely to be discovered when stealing, and you steal more gold when you are successful.",
         "icon": "take-my-money",
         "cost": 3,
         "unlocks": [
@@ -211,7 +211,7 @@
     "NimbleStealing2": {
         "name": "NimbleStealing2",
         "traitName": "NimbleStealing",
-        "desc": "You are $5|15$ less likely to be discovered when stealing, and you steal more gold when you are successful.",
+        "desc": "You are $5|15$% less likely to be discovered when stealing, and you steal more gold when you are successful.",
         "icon": "take-my-money",
         "capstone": true,
         "cost": 10,
@@ -613,6 +613,9 @@
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 10,
+        "unlocks": [
+            "Vortex"
+        ],
         "cluster": 3,
         "unlockedBy": [
             "PhilosophersStone1"
@@ -885,6 +888,17 @@
         "cluster": 3,
         "unlockedBy": [
             "Set"
+        ]
+    },
+    "Vortex": {
+        "name": "Vortex",
+        "desc": "Create a vortex which sucks in nearby items. Cost: 100 MP",
+        "icon": "wind-hole",
+        "iconColor": "#333",
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "PhilosophersStone2"
         ]
     },
     "Assassin": {

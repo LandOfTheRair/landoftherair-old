@@ -175,7 +175,7 @@ const ROGUE_TREE = {
   },
 
   PhilosophersStone2: {
-
+    unlocks: ['Vortex']
   },
 
   WiderTraps0: {
@@ -248,6 +248,10 @@ const ROGUE_TREE = {
 
   Disarm: {
     unlocks: ['WiderTraps0', 'StrongerTraps0', 'AdvancedTraps0', 'ReusableTraps0']
+  },
+
+  Vortex: {
+
   }
 };
 

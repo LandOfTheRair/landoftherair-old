@@ -1059,7 +1059,7 @@
         "icon": "energy-sword",
         "capstone": true,
         "requireCharacterLevel": 10,
-        "cost": 50,
+        "cost": 30,
         "cluster": 4,
         "unlockedBy": [
             "Battlemage"
@@ -1133,7 +1133,7 @@
     "VolcanoStanceImproved0": {
         "name": "VolcanoStanceImproved0",
         "traitName": "VolcanoStanceImproved",
-        "desc": "Do $10|30$% more fire damage (while resisting $10|30$% more fire damage) while in Volcano stance.",
+        "desc": "Do $10|30$% more fire damage (while resisting that much more fire damage) while in Volcano stance.",
         "icon": "fire-silhouette",
         "cost": 3,
         "unlocks": [
@@ -1147,7 +1147,7 @@
     "VolcanoStanceImproved1": {
         "name": "VolcanoStanceImproved1",
         "traitName": "VolcanoStanceImproved",
-        "desc": "Do $10|30$% more fire damage (while resisting $10|30$% more fire damage) while in Volcano stance.",
+        "desc": "Do $10|30$% more fire damage (while resisting that much more fire damage) while in Volcano stance.",
         "icon": "fire-silhouette",
         "capstone": true,
         "cost": 10,
@@ -1159,7 +1159,7 @@
     "GlacierStanceImproved0": {
         "name": "GlacierStanceImproved0",
         "traitName": "GlacierStanceImproved",
-        "desc": "Do $10|30$% more ice damage (while resisting $10|30$% more ice damage) while in Glacier stance.",
+        "desc": "Do $10|30$% more ice damage (while resisting that much more ice damage) while in Glacier stance.",
         "icon": "frozen-orb",
         "cost": 3,
         "unlocks": [
@@ -1173,7 +1173,7 @@
     "GlacierStanceImproved1": {
         "name": "GlacierStanceImproved1",
         "traitName": "GlacierStanceImproved",
-        "desc": "Do $10|30$% more ice damage (while resisting $10|30$% more ice damage) while in Glacier stance.",
+        "desc": "Do $10|30$% more ice damage (while resisting that much more ice damage) while in Glacier stance.",
         "icon": "frozen-orb",
         "capstone": true,
         "cost": 10,

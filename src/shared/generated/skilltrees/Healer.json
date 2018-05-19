@@ -434,7 +434,7 @@
     },
     "VitalEssence": {
         "name": "VitalEssence",
-        "desc": "Boost maximum vitality for a single target. Cost: 200 MP",
+        "desc": "Boost maximum vitality and armor for a single target. Cost: 200 MP",
         "icon": "bell-shield",
         "iconColor": "#0a0",
         "requireSkillLevel": 15,
