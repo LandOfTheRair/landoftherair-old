@@ -5,7 +5,7 @@
   value: 115
   sprite: 197
 
-- name: Risan Shortsword
+- name: Risan Longsword
   desc: "an iron longsword forged in the land of Risan"
   tier: 5
   type: Shortsword

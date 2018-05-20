@@ -16,7 +16,7 @@
   value: 65
   sprite: 196
 
-- name: Risan Shortsword
+- name: Risan Staff
   desc: "an wooden staff carved in the land of Risan"
   tier: 5
   type: Staff

@@ -7,7 +7,7 @@
   value: 110
   sprite: 200
 
-- name: Risan Shortbow
+- name: Risan Longbow
   desc: "an wooden longbow crafted in the land of Risan"
   tier: 5
   type: Ranged
