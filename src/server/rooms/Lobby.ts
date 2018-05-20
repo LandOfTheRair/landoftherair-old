@@ -595,7 +595,7 @@ export class Lobby extends Room<LobbyState> {
 
   public updateFestivalTime(account: Account, key: 'xpMult'|'skillMult'|'goldMult', hours = 6): void {
 
-    this.bonusArbiter.manuallyUpdateBonusHours({ [key]: hours });
+    this.bonusArbiter.manuallyUpdateBonusHours({ [key]: hours }, true);
     this.saveSettings();
 
     const hoursRemaining = this.bonusArbiter.boughtBonusHours[key];

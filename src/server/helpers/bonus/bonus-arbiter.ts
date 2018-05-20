@@ -99,14 +99,14 @@ export class BonusArbiter {
     return settings;
   }
 
-  public manuallyUpdateBonusHours(hours) {
+  public manuallyUpdateBonusHours(hours, forceAdd?: boolean) {
     Object.keys(hours).forEach(settingsKey => {
       if(!this.boughtBonusHoursRemaining.hasOwnProperty(settingsKey)) {
         delete hours[settingsKey];
         return;
       }
 
-      if(this.boughtBonusHoursRemaining[settingsKey] === hours[settingsKey]) return;
+      if(!forceAdd && this.boughtBonusHoursRemaining[settingsKey] === hours[settingsKey]) return;
 
       this.boughtBonusHoursRemaining[settingsKey] += hours[settingsKey];
     });
