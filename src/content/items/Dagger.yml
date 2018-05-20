@@ -8,6 +8,17 @@
   value: 75
   sprite: 205
 
+- name: Risan Dagger
+  desc: "an iron dagger forged in the land of Risan"
+  isSackable: true
+  tier: 5
+  type: Dagger
+  value: 750
+  sprite: 205
+  
+  requirements:
+    level: 15
+
 - name: Rylt Renegade Dagger
   stats:
     accuracy: 2

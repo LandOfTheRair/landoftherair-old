@@ -5,6 +5,16 @@
   value: 115
   sprite: 197
 
+- name: Risan Shortsword
+  desc: "an iron longsword forged in the land of Risan"
+  tier: 5
+  type: Shortsword
+  value: 2500
+  sprite: 197
+  
+  requirements:
+    level: 15
+
 - name: Rylt Renegade Longsword
   desc: "an iron longsword engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   stats:

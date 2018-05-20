@@ -10,3 +10,15 @@
 - result: Risan Poison Prot Crystal
   chance: 1
   maxChance: 1000
+
+- result: Frostlands Gourd
+  chance: 1
+  maxChance: 500
+
+- result: Frostlands Boots
+  chance: 1
+  maxChance: 5000
+
+- result: Frost Chakram
+  chance: 1
+  maxChance: 50000

@@ -126,3 +126,24 @@
 
   requirements:
     level: 20
+
+- name: Frostlands Strong Yeti Fur
+  desc: "the tanned hide of a great cave yeti"
+  stats:
+    fireResist: 200
+    iceResist: 200
+  randomStats:
+    armorClass:
+      min: 22
+      max: 25
+    offense:
+      min: 2
+      max: 3
+    defense:
+      min: 2
+      max: 3
+  value: 3300
+  sprite: 278
+
+  requirements:
+    level: 21

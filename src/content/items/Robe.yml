@@ -183,6 +183,8 @@
   stats:
     iceResist: 200
     fireResist: 50
+    poisonResist: 50
+    diseaseResist: 25
 
   randomStats:
     offense:
@@ -206,6 +208,8 @@
     armorClass: 10
     iceResist: 300
     fireResist: 100
+    poisonResist: 75
+    diseaseResist: 25
 
   desc: "a cloak tanned from the hide of a big sabretooth"
   value: 3500

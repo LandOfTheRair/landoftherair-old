@@ -5,6 +5,13 @@
   value: 1
   sprite: 211
 
+- name: Risan Cloak
+  stats:
+    armorClass: 5
+  desc: "a woolen cloak tailored in the land of Risan"
+  value: 10000
+  sprite: 211
+
 - name: Rylt Renegade Cloak
   stats:
     armorClass: 1

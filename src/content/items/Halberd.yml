@@ -9,6 +9,16 @@
   value: 145
   sprite: 230
 
+- name: Risan Halberd
+  desc: "an iron-tipped halberd crafted in the land of Risan"
+  tier: 5
+  type: Polearm
+  value: 10000
+  sprite: 230
+  
+  requirements:
+    level: 15
+
 - name: Rylt Renegade Halberd
   desc: "an iron-tipped halberd engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   stats:

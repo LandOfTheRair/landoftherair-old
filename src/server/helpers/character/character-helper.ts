@@ -6,6 +6,10 @@ import * as Classes from '../../classes';
 
 export class CharacterHelper {
 
+  static isAbleToSee(char: Character): boolean {
+    return !CharacterHelper.isInDarkness(char) && !char.hasEffect('Blind');
+  }
+
   static canHide(char: Character): boolean|string {
     if(char.hasEffect('Revealed')) return 'You cannot hide right now!';
     if(char.hasEffect('Hidden')) return 'You are already hidden!';
@@ -15,8 +19,8 @@ export class CharacterHelper {
     const hideHpPercent = char.baseClass === 'Thief' ? 70 : 90;
     if(char.hp.ltePercent(hideHpPercent)) return 'You are too injured to hide!';
 
-    const nearWall = this.isNearWall(char);
-    const inDark = this.isInDarkness(char);
+    const nearWall = CharacterHelper.isNearWall(char);
+    const inDark = CharacterHelper.isInDarkness(char);
 
     if(!nearWall && !inDark) {
       if(!nearWall) return 'You are not near a wall!';

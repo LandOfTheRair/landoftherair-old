@@ -5,6 +5,16 @@
   value: 150
   sprite: 198
 
+- name: Risan Greatsword
+  desc: "an iron greatsword forged in the land of Risan"
+  tier: 5
+  type: Twohanded
+  value: 7500
+  sprite: 198
+  
+  requirements:
+    level: 15
+
 - name: Rylt Renegade Greatsword
   stats:
     offense: 1

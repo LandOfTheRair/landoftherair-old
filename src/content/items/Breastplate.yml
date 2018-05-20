@@ -6,6 +6,16 @@
   desc: "a simple iron breastplate"
   value: 500
 
+- name: Risan Breastplate
+  stats:
+    armorClass: 20
+  sprite: 210
+  desc: "a simple iron breastplate forged in the lands of Risan"
+  value: 15000
+
+  requirements:
+    level: 15
+
 - name: Rylt Renegade Breastplate
   stats:
     armorClass: 7

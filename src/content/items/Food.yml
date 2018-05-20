@@ -238,3 +238,15 @@
       poisonResist: 100
       diseaseResist: 70
     duration: 36000
+
+- name: Frostsnake Egg
+  sprite: 72
+  desc: "a slightly-broken egg filled with glowing viscous liquid"
+  value: 2500
+  effect:
+    name: Nourishment
+    tooltip: "+2 INT"
+    message: "The egg contents are delicious!"
+    stats:
+      int: 2
+    duration: 10800

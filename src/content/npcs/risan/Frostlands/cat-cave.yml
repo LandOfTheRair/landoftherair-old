@@ -1,0 +1,128 @@
+
+- npcId: Frostlands Sabretooth
+  name: sabretooth
+  sprite: 265
+  allegiance: Enemy
+  alignment: Evil
+  hostility: Always
+  monsterClass: Beast
+  stats: 23
+  skillLevels: 10
+  level: 30
+
+  otherStats:
+    armorClass: 50
+    defense: 15
+    perception: 150
+
+  gear:
+    Armor: Frostlands Sabretooth Fur
+    Hands: Mines Animal Claws
+
+  traitLevels:
+    Riposte: 5
+    SterlingArmor: 5
+    BrassKnuckles: 2
+    MartialAgility: 5
+
+  skillOnKill: 45
+
+  usableSkills:
+    - ChillBiteMedium
+    - Blindstrike
+    - Frostspikes
+    - Sweep
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.25
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0.25
+
+  gold:
+    min: 1350
+    max: 1500
+
+  hp:
+    min: 56950
+    max: 59350
+
+  mp:
+    min: 1000
+    max: 1000
+
+  giveXp:
+    min: 62000
+    max: 65000
+
+  tansFor: Frostlands Sabretooth Fur
+
+- npcId: Frostfang
+  name: Frostfang
+  sprite: 265
+  allegiance: Enemy
+  alignment: Evil
+  hostility: Always
+  monsterClass: Beast
+  stats: 25
+  skillLevels: 12
+  level: 35
+
+  otherStats:
+    armorClass: 50
+    offense: 10
+    defense: 15
+    perception: 150
+
+  gear:
+    Armor: Frostlands Frostfang Fur
+    Hands: Mines Animal Claws
+
+  traitLevels:
+    Riposte: 5
+    SterlingArmor: 5
+    BrassKnuckles: 3
+    MartialAgility: 10
+
+  skillOnKill: 250
+
+  usableSkills:
+    - Blindstrike
+    - ChillBiteStrong
+    - Frostspikes
+    - Rapidpunch
+    - ShadowMeld
+    - Sweep
+    - ShadowClones
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.5
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0.25
+
+  gold:
+    min: 12350
+    max: 13500
+
+  hp:
+    min: 556950
+    max: 559350
+
+  mp:
+    min: 15000
+    max: 15000
+
+  giveXp:
+    min: 362000
+    max: 365000
+
+  tansFor: Frostlands Frostfang Fur

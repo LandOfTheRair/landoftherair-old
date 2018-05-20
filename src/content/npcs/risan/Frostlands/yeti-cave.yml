@@ -1,0 +1,207 @@
+
+- npcId: Frostlands Yeti
+  name: yeti
+  sprite: 220
+  allegiance: Enemy
+  alignment: Evil
+  hostility: Always
+  monsterClass: Beast
+  stats: 21
+  skillLevels: 10
+  level: 29
+
+  otherStats:
+    armorClass: 40
+    defense: 10
+    perception: 150
+
+  rightHand:
+    - result: Frostlands Yeti Club
+      chance: 5000
+    - result: Frostlands Frozen Yeti Club
+      chance: 1
+
+  gear:
+    Armor: Frostlands Yeti Fur
+    Hands: Mines Animal Claws
+
+  traitLevels:
+    Riposte: 5
+    SterlingArmor: 5
+
+  skillOnKill: 45
+
+  drops:
+    - result: Yeti Bile (Small)
+      chance: 1
+      maxChance: 50
+
+  usableSkills:
+    - Charge
+    - Blindstrike
+    - ImbueFrost
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 0.75
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0.25
+
+  gold:
+    min: 1350
+    max: 1500
+
+  hp:
+    min: 46950
+    max: 49350
+
+  mp:
+    min: 1000
+    max: 1000
+
+  giveXp:
+    min: 52000
+    max: 55000
+
+  tansFor: Frostlands Yeti Fur
+
+- npcId: Frostlands Strong Yeti
+  name: yeti
+  sprite: 220
+  allegiance: Enemy
+  alignment: Evil
+  hostility: Always
+  monsterClass: Beast
+  stats: 25
+  skillLevels: 11
+  level: 31
+
+  otherStats:
+    armorClass: 50
+    defense: 15
+    perception: 150
+
+  rightHand:
+    - result: Frostlands Yeti Club
+      chance: 4500
+    - result: Frostlands Frozen Yeti Club
+      chance: 1
+
+  gear:
+    Armor: Frostlands Strong Yeti Fur
+    Hands: Mines Animal Claws
+
+  drops:
+    - result: Yeti Bile (Large)
+      chance: 1
+      maxChance: 200
+
+  traitLevels:
+    Riposte: 10
+    SterlingArmor: 10
+
+  skillOnKill: 55
+
+  usableSkills:
+    - Charge
+    - Blindstrike
+    - ImbueFrost
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 0.75
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0.25
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 66950
+    max: 69350
+
+  mp:
+    min: 1000
+    max: 1000
+
+  giveXp:
+    min: 72000
+    max: 75000
+
+  tansFor: Frostlands Strong Yeti Fur
+
+- npcId: Frostlands Frostgolem
+  name: frostgolem
+  hostility: Always
+  sprite: 75
+  stats: 22
+  skillLevels: 11
+  level: 26
+
+  otherStats:
+    armorClass: 50
+    perception: 150
+    accuracy: 7
+    offense: 10
+    defense: 10
+    move: 2
+
+  skillOnKill: 35
+
+  gold:
+    min: 1850
+    max: 2000
+
+  hp:
+    min: 55950
+    max: 57350
+
+  giveXp:
+    min: 86000
+    max: 99000
+
+  usableSkills:
+    - Kick
+    - Jumpkick
+
+  traitLevels:
+    MartialAgility: 5
+    MartialAcuity: 3
+    Punchkick: 1
+    StunningFist: 5
+
+  gear:
+    Hands: Mines Rockman Gloves
+    Feet: Mines Rockman Boots
+    Armor:
+      - none
+      - Risan Trash Tunic
+      - Risan Trash Cloak
+
+  drops:
+    - result: Silver Ore (Small)
+      chance: 1
+      maxChance: 100
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+
+  spawnMessage: "the sound of rocks grinding together"

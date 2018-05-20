@@ -7,6 +7,16 @@
   value: 95
   sprite: 199
 
+- name: Risan Shortbow
+  desc: "an wooden shortbow crafted in the land of Risan"
+  tier: 5
+  type: Ranged
+  value: 2000
+  sprite: 199
+  
+  requirements:
+    level: 15
+
 - name: Rylt Renegade Shortbow
   stats:
     accuracy: 5

@@ -1,0 +1,133 @@
+
+- npcId: Frostlands Townee
+  allegiance: None
+  stats: 25
+  skillLevels: 9
+  level: 20
+
+  skillOnKill: 1
+
+  sprite: [580, 595, 610, 615]
+
+  hp:
+    min: 30000
+    max: 40000
+
+  gold:
+    min: 500
+    max: 1000
+
+  giveXp:
+    min: 43000
+    max: 45000
+
+  leftHand:
+    - none
+    - Risan Wooden Shield
+
+  rightHand:
+    - none
+    - Risan Shortsword
+    - Risan Longsword
+    - Risan Staff
+    - Risan Dagger
+    - Risan Crossbow
+
+  gear:
+    Armor:
+      - Risan Tunic
+      - Risan Studded Tunic
+      - Risan Scalemail Tunic
+      - Risan Ringmail Tunic
+      - Risan Breastplate
+
+    Robe1:
+      - none
+      - Risan Cloak
+
+  copyDrops:
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+
+
+- npcId: Frostlands Guard
+  name: guard
+  allegiance: None
+  hostility: Faction
+  stats: 40
+  level: 30
+  baseClass: Warrior
+
+  skillLevels: 20
+
+  allegianceReputation:
+    Enemy: -101
+
+  skillOnKill: 5
+
+  sprite: 625
+
+  hp:
+    min: 100000
+    max: 125000
+
+  gold:
+    min: 1500
+    max: 2000
+
+  giveXp:
+    min: 75000
+    max: 80000
+
+  rightHand: Risan Halberd
+
+  gear:
+    Armor: Risan Breastplate
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+
+- npcId: Frostlands Slave
+  name: slave
+  allegiance: None
+  stats: 15
+  skillLevels: 3
+  level: 15
+
+  skillOnKill: 1
+
+  sprite: 1795
+
+  hp:
+    min: 1500
+    max: 1500
+
+  gold:
+    min: 0
+    max: 10
+
+  giveXp:
+    min: 1000
+    max: 2000
+
+  gear:
+    Armor: Risan Tunic
+
+    Robe1:
+      - none
+      - Risan Cloak
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1

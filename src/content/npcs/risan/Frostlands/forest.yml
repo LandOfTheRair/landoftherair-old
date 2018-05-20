@@ -1,0 +1,55 @@
+
+- npcId: Risan Crazed Moose
+  name: crazed moose
+  sprite: 470
+  allegiance: Enemy
+  alignment: Evil
+  hostility: Always
+  monsterClass: Beast
+  stats: 20
+  skillLevels:
+    Martial: 8
+  level: 25
+
+  otherStats:
+    perception: 100
+
+  gear:
+    Armor: Crazed Beast Fur
+    Hands: Mines Animal Claws
+
+  skillOnKill: 45
+
+  usableSkills:
+    - PoisonBiteStrong
+
+  drops:
+    - result: Risan Twig
+      chance: 1
+      maxChance: 25
+    - result: Risan Branch
+      chance: 1
+      maxChance: 25
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
+
+  traitLevels:
+    StunningFist: 10
+
+  gold:
+    min: 1350
+    max: 1500
+
+  hp:
+    min: 26950
+    max: 29350
+
+  giveXp:
+    min: 32000
+    max: 35000
+
+  tansFor: Crazed Beast Fur

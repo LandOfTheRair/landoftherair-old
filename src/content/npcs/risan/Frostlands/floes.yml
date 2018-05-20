@@ -1,0 +1,109 @@
+
+- npcId: Frostsnake
+  name: frostsnake
+  sprite: 270
+  allegiance: Enemy
+  alignment: Evil
+  hostility: Always
+  monsterClass: Beast
+  stats: 22
+  skillLevels:
+    Martial: 9
+  level: 27
+
+  otherStats:
+    defense: 50
+    armorClass: 40
+    perception: 100
+
+  gear:
+    Hands: Mines Animal Claws
+
+  skillOnKill: 45
+
+  usableSkills:
+    - Jumpkick
+    - PoisonBiteStrong
+    - ChillBiteStrong
+
+  drops:
+    - result: Frostsnake Egg
+      chance: 1
+      maxChance: 50
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
+
+  traitLevels:
+    StunningFist: 5
+
+  gold:
+    min: 1350
+    max: 1500
+
+  hp:
+    min: 46950
+    max: 49350
+
+  giveXp:
+    min: 62000
+    max: 65000
+
+- npcId: Frostlands Remorhaz
+  name: remorhaz
+  sprite: 95
+  allegiance: Enemy
+  alignment: Evil
+  hostility: Always
+  baseClass: Mage
+  monsterClass: Beast
+  stats: 24
+  skillLevels: 11
+  level: 29
+
+  otherStats:
+    defense: 30
+    armorClass: 20
+    perception: 100
+
+  gear:
+    Armor: Remorhaz Scales Tunic
+    Hands: Mines Animal Claws
+
+  skillOnKill: 45
+
+  usableSkills:
+    - IceMist
+    - PoisonBiteStrong
+    - ChillBiteStrong
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0
+
+  traitLevels:
+    IceMistWiden: 1
+    FrostedTouch: 5
+
+  gold:
+    min: 1350
+    max: 1500
+
+  hp:
+    min: 49950
+    max: 53350
+
+  giveXp:
+    min: 52000
+    max: 69000
+
+  tansFor: Remorhaz Scales Tunic

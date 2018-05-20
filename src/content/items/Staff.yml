@@ -16,6 +16,16 @@
   value: 65
   sprite: 196
 
+- name: Risan Shortsword
+  desc: "an wooden staff carved in the land of Risan"
+  tier: 5
+  type: Staff
+  value: 6000
+  sprite: 196
+  
+  requirements:
+    level: 15
+
 - name: Rylt Renegade Staff
   desc: "a wooden staff engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   stats:

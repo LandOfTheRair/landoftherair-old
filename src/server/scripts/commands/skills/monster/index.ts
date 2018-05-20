@@ -10,6 +10,7 @@ export * from './PoisonBiteMedium';
 export * from './PoisonBiteStrong';
 
 export * from './ChillBiteMedium';
+export * from './ChillBiteStrong';
 
 export * from './PullOne';
 

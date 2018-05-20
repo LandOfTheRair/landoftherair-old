@@ -346,6 +346,9 @@
     - result: Risan Dryad Succor Blob
       chance: 1
       maxChance: 10
+    - result: Weak EagleEye Potion
+      chance: 1
+      maxChance: 100
 
 - npcId: Risan Crazed Dryad
   name: crazed dryad
@@ -391,6 +394,11 @@
     Hands: Mines Animal Claws
 
   skillOnKill: 65
+
+  drops:
+    - result: Weak EagleEye Potion
+      chance: 1
+      maxChance: 100
 
   traitLevels:
     OffhandFinesse: 3

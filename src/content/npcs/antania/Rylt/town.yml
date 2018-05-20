@@ -64,10 +64,7 @@
   level: 20
   baseClass: Warrior
 
-  skillLevels:
-    twohanded: 10
-    polearm: 10
-    mace: 10
+  skillLevels: 10
 
   allegianceReputation:
     Enemy: -101

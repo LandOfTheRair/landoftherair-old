@@ -2,6 +2,7 @@
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Blindstrike as CastEffect } from '../../../../../effects/arts/Blindstrike';
+import { CharacterHelper } from '../../../../../helpers/character/character-helper';
 
 export class Blindstrike extends Skill {
 
@@ -16,6 +17,10 @@ export class Blindstrike extends Skill {
   };
 
   public name = ['blindstrike', 'art blindstrike'];
+
+  canUse(char: Character) {
+    return !CharacterHelper.isAbleToSee(char);
+  }
 
   execute(user: Character, { effect }) {
 

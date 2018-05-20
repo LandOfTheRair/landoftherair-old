@@ -44,6 +44,11 @@
   chance: 1
   maxChance: 3000
 
+# items
+- result: Risan Combat Ring
+  chance: 1
+  maxChance: 5000
+
 # gems
 - result: Risan Emerald Chunk
   chance: 1
