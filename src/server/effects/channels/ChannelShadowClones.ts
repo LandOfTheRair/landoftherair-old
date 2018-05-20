@@ -70,6 +70,9 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
     // then divide by 5 to see the number of clones total
     this.potency = Math.floor(this.potency / 5);
 
+    // min of 1, always
+    this.potency = Math.max(this.potency, 1);
+
     caster.applyEffect(this);
   }
 
