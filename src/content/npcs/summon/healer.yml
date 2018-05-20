@@ -1,0 +1,67 @@
+
+- npcId: Healer Summon Nature Spirit
+  name: nature spirit
+  sprite: 465
+  stats: 25
+  skillLevels: 7
+  level: 1
+
+  usableSkills:
+    - Snare
+    - Stun
+    - Poison
+    - Disease
+    - Blind
+
+  hp:
+    min: 500
+    max: 500
+
+  mp:
+    min: 50000
+    max: 50000
+
+- npcId: Healer Summon Light Spirit
+  name: light spirit
+  sprite: 1850
+  stats: 25
+  skillLevels: 7
+  level: 1
+
+  usableSkills:
+    - Cure
+    - Regen
+    - Vision
+    - Antidote
+
+  hp:
+    min: 500
+    max: 500
+
+  mp:
+    min: 50000
+    max: 50000
+
+- npcId: Healer Summon Water Spirit
+  name: water spirit
+  sprite: 260
+  stats: 25
+  skillLevels: 7
+  level: 1
+
+  usableSkills:
+    - BarFire
+    - BarFrost
+    - BarWater
+    - BarNecro
+    - TrueSight
+    - MagicShield
+    - Absorption
+
+  hp:
+    min: 500
+    max: 500
+
+  mp:
+    min: 50000
+    max: 50000
