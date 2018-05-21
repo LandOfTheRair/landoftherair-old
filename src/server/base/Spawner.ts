@@ -89,7 +89,9 @@ export class Spawner {
   }
 
   private async spawnInitialNPCs() {
+    // if no initial spawn or if no players in range, do not spawn anything
     if(this.initialSpawn === 0) return;
+    if(this.shouldSlowDown()) return;
 
     // allow it to get into the cache
     await this.createNPC();
