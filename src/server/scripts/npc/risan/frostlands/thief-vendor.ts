@@ -23,9 +23,9 @@ export const setup = async (npc: NPC) => {
     'Risan Dispel Thief Trap',
     'Risan Cure Thief Trap',
     'Risan Haste Thief Trap',
-    'Weak Disease Potion (5oz)',
-    'Weak Blind Potion (5oz)',
-    'Weak BlurredVision Potion (5oz)'
+    'Medium Disease Potion (5oz)',
+    'Medium Blind Potion (5oz)',
+    'Medium BlurredVision Potion (5oz)'
   ];
 
   npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);

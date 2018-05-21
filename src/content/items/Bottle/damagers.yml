@@ -34,3 +34,39 @@
     potency: 30
     canApply: true
   value: 3000
+
+- name: Medium Disease Potion (5oz)
+  desc: "a yellow bottle with flowers painted along the sides etched with the word \"DISEASE\""
+  extendedDesc: "a bottle of Disease"
+  sprite: 261
+  ounces: 5
+  effect:
+    name: Disease
+    duration: 60
+    potency: 20
+    canApply: true
+  value: 15000
+
+- name: Medium Blind Potion (5oz)
+  desc: "a yellow bottle with flowers painted along the sides etched with the word \"BLIND\""
+  extendedDesc: "a bottle of Blind"
+  sprite: 261
+  ounces: 5
+  effect:
+    name: Blind
+    duration: 60
+    potency: 20
+    canApply: true
+  value: 15000
+
+- name: Medium BlurredVision Potion (5oz)
+  desc: "a yellow bottle with flowers painted along the sides etched with the word \"BLUR\""
+  extendedDesc: "a bottle of Blurred Vision"
+  sprite: 261
+  ounces: 5
+  effect:
+    name: BlurredVision
+    duration: 60
+    potency: 60
+    canApply: true
+  value: 15000
