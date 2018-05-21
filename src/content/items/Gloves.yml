@@ -154,6 +154,22 @@
   desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of Shalala, the Shadow"
   value: 30000
 
+- name: Frostlands Royal Undecided Gauntlets
+  tier: 6
+  stats:
+    armorClass: 15
+    hp: 200
+
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25
+
+  sprite: 131
+  desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of S'ekthi, the Leader"
+  value: 30000
+
 - name: Rylt Rockgolem Gloves
   stats:
     defense: 2

@@ -201,6 +201,9 @@
   value: 3500
   sprite: 286
 
+  requirements:
+    level: 25
+
 - name: Frostlands Frostfang Robe
   stats:
     offense: 3
@@ -214,6 +217,9 @@
   desc: "the tanned hide of a big sabretooth"
   value: 3500
   sprite: 286
+
+  requirements:
+    level: 25
 
 - name: Frostlands Noble Robe
   stats:

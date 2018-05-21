@@ -78,6 +78,7 @@
   value: 75
 
 - name: Griffon Spring Boots
+  quality: 5
   stats:
     offense: 3
     defense: 3

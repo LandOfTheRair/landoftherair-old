@@ -25,9 +25,13 @@
       max: 5
   desc: "a club forged from the bones of a yeti"
   tier: 6
+  binds: true
   type: Mace
   value: 2200
   sprite: 238
+
+  requirements:
+    level: 25
 
 - name: Frostlands Frozen Yeti Club
   proneChance: 25
@@ -47,7 +51,12 @@
     name: DeathGrip
     level: 5
   desc: "a club forged from the bones of a yeti frozen solid by the bitter Frostlands wind"
+  binds: true
+  tellsBind: true
   tier: 7
   type: Mace
   value: 12200
   sprite: 1005
+
+  requirements:
+    level: 25

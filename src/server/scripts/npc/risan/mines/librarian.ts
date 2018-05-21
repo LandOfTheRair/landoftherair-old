@@ -19,7 +19,7 @@ export const responses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(player.level < 14) return 'Hmm? How did a weakling like you get here? Remove yourself from my sight.';
 
-      if(npc.$$room.npcLoader.takePlayerItem(player, HEART, 'right')) {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, HEART, 'right')) {
         npc.$$room.npcLoader.takePlayerItem(player, HEART, 'right');
 
         npc.$$room.npcLoader.loadItem(`Librarian ${player.baseClass} Amulet`)

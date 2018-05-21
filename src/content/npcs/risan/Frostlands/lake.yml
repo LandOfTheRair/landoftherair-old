@@ -1,6 +1,6 @@
 - npcId: Frostlands Thermidor
   name: thermidor
-  sprite: 270
+  sprite: 190
   allegiance: Enemy
   alignment: Evil
   hostility: Always
@@ -34,6 +34,7 @@
     - Autoheal
     - Dispel
     - ImbueFrost
+    - IceMist
 
   hp:
     min: 45000

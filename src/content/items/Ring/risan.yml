@@ -63,6 +63,17 @@
   requirements:
     level: 25
 
+- name: Undecided Simple Machleum Ring
+  stats:
+    armorClass: 10
+    hp: 100
+  sprite: 623
+  binds: true
+  desc: "a simple machleum ring set with a freezing frost larimar"
+
+  requirements:
+    level: 25
+
 - name: Mage Double Machleum Ring
   stats:
     int: 2
@@ -107,6 +118,17 @@
   sprite: 624
   binds: true
   desc: "a twin machleum ring set with a highly-polished, shadowy etherfrost larimar"
+
+  requirements:
+    level: 25
+
+- name: Undecided Double Machleum Ring
+  stats:
+    hp: 100
+    armorClass: 5
+  sprite: 624
+  binds: true
+  desc: "a twin machleum ring set with a highly-polished etherfrost larimar"
 
   requirements:
     level: 25
