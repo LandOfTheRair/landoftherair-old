@@ -31,3 +31,6 @@
   type: Wand
   value: 3500
   sprite: 887
+
+  requirements:
+    level: 17
