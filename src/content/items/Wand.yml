@@ -19,7 +19,7 @@
   desc: "a blue wand engraved with the blazing Heniz runes"
   tier: 1
   effect:
-    name: FireMist
+    name: Combust
     potency: 8
     chance: 10
   trait:
@@ -37,7 +37,7 @@
   desc: "a blue wand engraved with the frozen Heniz runes"
   tier: 1
   effect:
-    name: IceMist
+    name: Hail
     potency: 8
     chance: 10
   trait:

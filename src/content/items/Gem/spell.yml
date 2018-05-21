@@ -32,7 +32,7 @@
   sprite: 315
   stats:
     effect:
-      name: FireMist
+      name: Combust
       potency: 10
       chance: 10
 
@@ -46,7 +46,7 @@
 
   stats:
     effect:
-      name: IceMist
+      name: Hail
       potency: 10
       chance: 10
 
