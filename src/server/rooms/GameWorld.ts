@@ -416,7 +416,7 @@ export class GameWorld extends Room<GameState> {
       savePlayer.rightHand = null;
     }
 
-    this.savePlayerPouch(savePlayer);
+    await this.savePlayerPouch(savePlayer);
     this.skillTreeHelper.saveSkillTree(player);
 
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
@@ -1034,7 +1034,7 @@ export class GameWorld extends Room<GameState> {
   }
 
   public savePlayerPouch(player: Player) {
-    PouchHelper.savePouch(player);
+    return PouchHelper.savePouch(player);
   }
 
   public getInteractableByName(name: string) {
