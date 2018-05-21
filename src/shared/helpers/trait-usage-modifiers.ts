@@ -32,6 +32,7 @@ export class TraitUsageModifiers {
       case 'StrongMind':          return level;
       case 'NatureSpirit':        return level * 0.05;
       case 'HolyAffliction':      return level * 3;
+      case 'ConcussiveBolt':      return level ? 5 : 0;
 
       case 'StrongerTraps':       return level * 5;
       case 'NimbleStealing':      return level * 5;

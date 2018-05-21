@@ -3,6 +3,8 @@ import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
+import { Stun } from '../index';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class MagicBolt extends SpellEffect {
 
@@ -21,5 +23,13 @@ export class MagicBolt extends SpellEffect {
       damage,
       damageClass: 'energy'
     });
+
+    const concussiveChance = caster.getTraitLevelAndUsageModifier('ConcussiveBolt');
+    if(RollerHelper.XInOneHundred(concussiveChance)) {
+      const stunned = new Stun({ potency: this.potency, duration: 5 });
+      stunned.shouldNotShowMessage = true;
+      stunned.cast(caster, target);
+      stunned.shouldNotShowMessage = false;
+    }
   }
 }

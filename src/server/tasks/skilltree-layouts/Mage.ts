@@ -106,6 +106,10 @@ const MAGE_TREE = {
 
   },
 
+  ConcussiveBolt0: {
+
+  },
+
   // SKILLS
   MagicMissile: {
     unlocks: ['MagicFocus0', 'Identify', 'ManaPool0']
@@ -123,7 +127,7 @@ const MAGE_TREE = {
     unlocks: ['MagicFocus7', 'MagicFocus5', 'MagicBolt']
   },
   MagicBolt: {
-
+    unlocks: ['ConcussiveBolt0']
   },
   Teleport: {
     unlocks: ['MassTeleport']

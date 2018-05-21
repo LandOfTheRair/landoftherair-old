@@ -408,6 +408,18 @@
             "Asper"
         ]
     },
+    "ConcussiveBolt0": {
+        "name": "ConcussiveBolt0",
+        "traitName": "ConcussiveBolt",
+        "desc": "Your Magic Bolt spell will have a $5|15$% chance to stun the enemy.",
+        "icon": "burning-dot",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicBolt"
+        ]
+    },
     "MagicMissile": {
         "name": "MagicMissile",
         "desc": "Inflict energy damage on a single target. Cost: 5 MP",
@@ -490,6 +502,9 @@
         "icon": "burning-dot",
         "iconColor": "#a0a",
         "cost": 10,
+        "unlocks": [
+            "ConcussiveBolt0"
+        ],
         "cluster": 1,
         "unlockedBy": [
             "Push"

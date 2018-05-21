@@ -1,5 +1,6 @@
 
 export * from './CalmMind';
+export * from './ConcussiveBolt';
 export * from './ForgedFire';
 export * from './FrostedTouch';
 export * from './ManaPool';
