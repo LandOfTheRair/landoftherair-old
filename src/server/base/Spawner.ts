@@ -89,7 +89,10 @@ export class Spawner {
   }
 
   private async spawnInitialNPCs() {
+    // if no initial spawn or if no players in range, do not spawn anything
     if(this.initialSpawn === 0) return;
+    if(this.shouldSlowDown()) return;
+
 
     // allow it to get into the cache
     await this.createNPC();
@@ -224,6 +227,8 @@ export class Spawner {
     // spawn on any number of coordinates
     let foundCoordinates = { x: 0, y: 0 };
 
+    let attempts = 0;
+
     while(!foundCoordinates.x || !foundCoordinates.y) {
       const x = random(this.x - this.spawnRadius, this.x + this.spawnRadius);
       const y = random(this.y - this.spawnRadius, this.y + this.spawnRadius);
@@ -234,6 +239,11 @@ export class Spawner {
 
       if(!isWall && !hasDenseObject && !invalidLocation) {
         foundCoordinates = { x, y };
+      }
+
+      if(attempts++ > 100) {
+        Logger.error(new Error(`Could not place a creature at ${this.x}, ${this.y} - ${this.room.mapName}`));
+        break;
       }
     }
 

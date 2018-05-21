@@ -20,10 +20,13 @@ export const responses = (npc: NPC) => {
     'The Smith can repair your broken and breaking gear!',
     'Try asking the Healer to RECALL you!',
     'The Healer can REVIVE your comrades!',
-    'The hidden library is rumored to have great treasures!',
-    'Beware the flying terror!',
-    'The wildlife has gone mad from the mines!',
-    'The miners are the bravest of souls!'
+    'The King has many grand treasures in his royal vault!',
+    'The ice floes are full of terror!',
+    'The Yeti can channel frost itself!',
+    'Beware the Frostfang!',
+    'Felines like shiny objects!',
+    'The mercenary guard captain is a laggard!',
+    'Risan potions are better than Antanian potions!'
   ]);
 
 };

@@ -33,6 +33,8 @@ export class ClimbUp extends Command {
       newMap: teleportMap,
       zChange: interactable.type === 'ClimbUp' ? 1 : -1
     });
+
+    player.sendClientMessage(`You climb ${interactable.type === 'ClimbUp' ? 'up' : 'down'}.`);
   }
 
 }

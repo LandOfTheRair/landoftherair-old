@@ -22,7 +22,7 @@
   drops:
     - result: Rylt Blueflower
       chance: 1
-      maxChance: 15
+      maxChance: 4
 
 - npcId: Yzalt Apple Tree
   name: apple bush
@@ -47,7 +47,7 @@
   drops:
     - result: Yzalt Steffen Apple
       chance: 1
-      maxChance: 15
+      maxChance: 4
 
 - npcId: Yzalt Bogweed Bush
   name: bogweeds
@@ -72,7 +72,7 @@
   drops:
     - result: Yzalt Bogweed
       chance: 1
-      maxChance: 15
+      maxChance: 4
 
 - npcId: Tower Goblood Plant
   name: flora
@@ -97,7 +97,7 @@
   drops:
     - result: Tower Goblood
       chance: 1
-      maxChance: 10
+      maxChance: 4
 
 - npcId: Maze Corpseflower Weed
   name: weed
@@ -122,7 +122,7 @@
   drops:
     - result: Maze Corpseflower
       chance: 1
-      maxChance: 15
+      maxChance: 7
 
 - npcId: Mines Caveroot
   name: tree root
@@ -147,7 +147,7 @@
   drops:
     - result: Mines Caveflower
       chance: 1
-      maxChance: 20
+      maxChance: 10
 
 - npcId: Frostlands Gourd
   name: frost sprout
@@ -172,4 +172,4 @@
   drops:
     - result: Frostlands Gourd
       chance: 1
-      maxChance: 20
+      maxChance: 15

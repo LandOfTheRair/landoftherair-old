@@ -42,10 +42,11 @@ export class Set extends Skill {
 
   use(user: Character, { x, y } = { x: 0, y: 0 }) {
     const trap = user.rightHand;
-    user.setRightHand(null);
+
+    if(!TrapHelper.placeTrap(x, y, user, trap)) return user.sendClientMessage('You cannot set a trap there.');
 
     user.gainSkill(SkillClassNames.Thievery, 3);
-    TrapHelper.placeTrap(x, y, user, trap);
+    user.setRightHand(null);
     user.sendClientMessage(`You set the ${trap.effect.name} trap.`);
   }
 

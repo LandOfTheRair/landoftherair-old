@@ -1,0 +1,22 @@
+
+
+- item: EtherFire Potion (5oz)
+  skillGained: 50
+  maxSkillForGains: 9
+  requiredSkill: 2
+  xpGained: 5000
+  ingredients:
+    - Holy Water
+    - Weak BarFire Potion
+    - Rotting Mummy Grub
+    - Maze Corpseflower
+
+- item: BeastRipper Potion (5oz)
+  skillGained: 50
+  maxSkillForGains: 9
+  requiredSkill: 2
+  xpGained: 5000
+  ingredients:
+    - Holy Water
+    - Weak BarNecro Potion
+    - Antanian Bear Meat

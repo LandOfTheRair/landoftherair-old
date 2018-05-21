@@ -55,6 +55,50 @@
     - drop: 'gear.Robe1'
       chance: -1
 
+- npcId: Frostlands Noble
+  name: noble
+  allegiance: None
+  stats: 35
+  skillLevels: 15
+  level: 30
+
+  skillOnKill: 1
+
+  sprite: [580, 595, 610, 615]
+
+  hp:
+    min: 30000
+    max: 40000
+
+  gold:
+    min: 500
+    max: 1000
+
+  giveXp:
+    min: 43000
+    max: 45000
+
+  rightHand: Risan Shortsword
+
+  gear:
+    Armor:
+      - Risan Tunic
+      - Risan Studded Tunic
+      - Risan Scalemail Tunic
+      - Risan Ringmail Tunic
+      - Risan Breastplate
+
+    Robe1: Frostlands Noble Robe
+
+  copyDrops:
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
 
 - npcId: Frostlands Guard
   name: guard
@@ -105,7 +149,7 @@
 
   skillOnKill: 1
 
-  sprite: 1795
+  sprite: 1805
 
   hp:
     min: 1500

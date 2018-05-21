@@ -29,7 +29,7 @@ export class TrapHelper {
 
   static placeTrap(x, y, user: Character, trap): boolean {
 
-    const interactable = user.$$room.state.getInteractable(x, y, true, 'Trap');
+    const interactable = user.$$room.state.getInteractable(x, y, true);
     if(interactable) return false;
 
     const statCopy = user.sumStats;

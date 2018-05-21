@@ -841,9 +841,6 @@ export class Character {
   takeSequenceOfSteps(steps: any[], isChasing = false, recalculateFOV = false): boolean {
     const denseTiles = this.$$map.layers[MapLayer.Walls].data;
     const fluidTiles = this.$$map.layers[MapLayer.Fluids].data;
-    const denseObjects: any[] = this.$$map.layers[MapLayer.DenseDecor].objects;
-    const interactables = this.$$map.layers[MapLayer.Interactables].objects;
-    const denseCheck = denseObjects.concat(interactables);
 
     const oldEventSource = this.$$room.state.getInteractable(this.x, this.y, true, 'EventSource');
 
@@ -856,10 +853,11 @@ export class Character {
 
       const oldPos = { x: this.x, y: this.y };
 
+
       if(this.aquaticOnly && !isNextTileFluid) return;
 
       if(nextTile === 0) {
-        const object = find(denseCheck, { x: (this.x + step.x) * 64, y: (this.y + step.y + 1) * 64 });
+        const object = this.$$room.state.getInteractableOrDenseObject(this.x + step.x, this.y + step.y);
         if(object && object.density) {
           if(object.type === 'Door') {
             if(!MoveHelper.tryToOpenDoor(this, object, { gameState: this.$$room.state })) {

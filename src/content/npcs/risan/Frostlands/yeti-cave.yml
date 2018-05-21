@@ -35,6 +35,9 @@
     - result: Yeti Bile (Small)
       chance: 1
       maxChance: 50
+    - result: Risan Frost Larimar
+      chance: 1
+      maxChance: 20000
 
   usableSkills:
     - Charge
@@ -103,6 +106,9 @@
     - result: Yeti Bile (Large)
       chance: 1
       maxChance: 200
+    - result: Risan Frost Larimar
+      chance: 1
+      maxChance: 19000
 
   traitLevels:
     Riposte: 10

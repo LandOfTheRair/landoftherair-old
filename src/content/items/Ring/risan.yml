@@ -1,9 +1,25 @@
 
+- name: Risan Combat Ring
+  randomStats:
+    defense:
+      min: 1
+      max: 10
+    offense:
+      min: 1
+      max: 10
+  binds: true
+  sprite: 267
+  desc: "a gold ring set with a blue gem with a shield etched into it"
+  value: 1900
+
+  requirements:
+    level: 15
+
 - name: Basic Machleum Ring
   sprite: 620
   desc: "a basic translucent pink ring forged from machleum"
 
-- name: Simple Mage Machleum Ring
+- name: Mage Simple Machleum Ring
   stats:
     int: 3
     mpregen: 5
@@ -14,7 +30,7 @@
   requirements:
     level: 25
 
-- name: Simple Healer Machleum Ring
+- name: Healer Simple Machleum Ring
   stats:
     wis: 3
     mpregen: 5
@@ -25,7 +41,7 @@
   requirements:
     level: 25
 
-- name: Simple Warrior Machleum Ring
+- name: Warrior Simple Machleum Ring
   stats:
     str: 3
     hpregen: 5
@@ -36,7 +52,7 @@
   requirements:
     level: 25
 
-- name: Simple Thief Machleum Ring
+- name: Thief Simple Machleum Ring
   stats:
     agi: 3
     hpregen: 5
@@ -47,50 +63,50 @@
   requirements:
     level: 25
 
-- name: Double Mage Machleum Ring
+- name: Mage Double Machleum Ring
   stats:
     int: 2
     luk: 2
     mpregen: 5
   sprite: 624
   binds: true
-  desc: "a twin machleum ring set with a freezing frost larimar"
+  desc: "a twin machleum ring set with a highly-polished, freezing etherfrost larimar"
 
   requirements:
     level: 25
 
-- name: Double Healer Machleum Ring
+- name: Healer Double Machleum Ring
   stats:
     wis: 2
     wil: 2
     mpregen: 5
   sprite: 624
   binds: true
-  desc: "a twin machleum ring set with a holy frost larimar"
+  desc: "a twin machleum ring set with a highly-polished, holy etherfrost larimar"
 
   requirements:
     level: 25
 
-- name: Double Warrior Machleum Ring
+- name: Warrior Double Machleum Ring
   stats:
     str: 2
     dex: 3
     hpregen: 5
   sprite: 624
   binds: true
-  desc: "a twin machleum ring set with a strong frost larimar"
+  desc: "a twin machleum ring set with a highly-polished, strong etherfrost larimar"
 
   requirements:
     level: 25
 
-- name: Double Thief Machleum Ring
+- name: Thief Double Machleum Ring
   stats:
     agi: 2
     stealth: 25
     hpregen: 5
   sprite: 624
   binds: true
-  desc: "a twin machleum ring set with a shadowy frost larimar"
+  desc: "a twin machleum ring set with a highly-polished, shadowy etherfrost larimar"
 
   requirements:
     level: 25

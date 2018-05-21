@@ -67,6 +67,15 @@ export class GameState {
   @nonenumerable
   private quadtreeHelper: QuadtreeHelper;
 
+  @nonenumerable
+  private interactableHash: any = {};
+
+  @nonenumerable
+  private denseHash: any = {};
+
+  @nonenumerable
+  private opaqueHash: any = {};
+
   get formattedMap() {
     const map = cloneDeep(this.map);
     map.layers.length = 10;
@@ -107,13 +116,41 @@ export class GameState {
     });
   }
 
+  private addXYObjectToHash(obj, hash) {
+    const setX = obj.x / 64;
+    const setY = (obj.y / 64);
+
+    hash[setX] = hash[setX] || {};
+    hash[setX][setY] = obj;
+  }
+
+  private removeXYObjectFromHash(obj, hash) {
+    const setX = obj.x / 64;
+    const setY = (obj.y / 64);
+
+    hash[setX] = hash[setX] || {};
+    hash[setX][setY] = null;
+  }
+
+  private getXYObjectFromHash(x: number, y: number, hash) {
+    return get(hash, [x, y + 1], null);
+  }
+
   private initFov() {
     const denseLayer = this.map.layers[MapLayer.Walls].data;
     const opaqueObjects = this.map.layers[MapLayer.OpaqueDecor].objects;
-    opaqueObjects.forEach(obj => obj.opacity = 1);
+    opaqueObjects.forEach(obj => {
+      obj.opacity = 1;
+
+      this.addXYObjectToHash(obj, this.opaqueHash);
+    });
 
     const denseObjects = this.map.layers[MapLayer.DenseDecor].objects;
-    denseObjects.forEach(obj => obj.density = 1);
+    denseObjects.forEach(obj => {
+      obj.density = 1;
+
+      this.addXYObjectToHash(obj, this.denseHash);
+    });
 
     const interactables = this.map.layers[MapLayer.Interactables].objects;
     interactables.forEach(obj => {
@@ -121,14 +158,14 @@ export class GameState {
         obj.opacity = 1;
         obj.density = 1;
       }
-    });
 
-    const checkObjects = opaqueObjects.concat(interactables);
+      this.addXYObjectToHash(obj, this.interactableHash);
+    });
 
     this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
       const tile = denseLayer[(y * this.map.width) + x];
       if(tile === TilesWithNoFOVUpdate.Empty || tile === TilesWithNoFOVUpdate.Air) {
-        const object = find(checkObjects, { x: x * 64, y: (y + 1) * 64 });
+        const object = this.getXYObjectFromHash(x, y, this.interactableHash) || this.getXYObjectFromHash(x, y, this.opaqueHash);
         return !object || (object && !object.opacity);
       }
       return false;
@@ -282,6 +319,7 @@ export class GameState {
 
   addInteractable(obj: any): void {
     this.map.layers[MapLayer.Interactables].objects.push(obj);
+    this.addXYObjectToHash(obj, this.interactableHash);
     this.environmentalObjects.push(obj);
   }
 
@@ -312,6 +350,7 @@ export class GameState {
     const check = x => x === obj;
     this.map.layers[MapLayer.Interactables].objects = reject(this.map.layers[MapLayer.Interactables].objects, check);
     this.environmentalObjects = reject(this.environmentalObjects, check);
+    this.removeXYObjectFromHash(obj, this.interactableHash);
   }
 
   resetFOV(player): void {
@@ -744,11 +783,12 @@ export class GameState {
     this.resetPlayerHash();
   }
 
+  public getInteractableOrDenseObject(x: number, y: number) {
+    return this.getXYObjectFromHash(x, y, this.denseHash) || this.getXYObjectFromHash(x, y, this.interactableHash);
+  }
+
   checkIfDenseObject(x: number, y: number): boolean {
-    const denseObjects: any[] = this.map.layers[MapLayer.DenseDecor].objects;
-    const interactables = this.map.layers[MapLayer.Interactables].objects;
-    const denseCheck = denseObjects.concat(interactables);
-    const object = find(denseCheck, { x: x * 64, y: (y + 1) * 64 });
+    const object = this.getInteractableOrDenseObject(x, y);
     return object && object.density && object.type !== 'Door';
   }
 

@@ -85,3 +85,21 @@
 
   requirements:
     level: 25
+
+- name: Risan Ether Larimar
+  desc: "a sparkling frost gem imbued with the power of red ether"
+  value: 100000
+  sprite: 963
+
+  maxEncrusts: 1
+
+  stats:
+    hp: 200
+
+    effect:
+      name: Dispel
+      chance: 100
+      potency: 30
+
+  requirements:
+    level: 30

@@ -16,7 +16,7 @@
     perception: 150
 
   gear:
-    Armor: Frostlands Sabretooth Fur
+    Armor: Frostlands Sabretooth Robe
     Hands: Mines Animal Claws
 
   traitLevels:
@@ -59,7 +59,21 @@
     min: 62000
     max: 65000
 
-  tansFor: Frostlands Sabretooth Fur
+  drops:
+    - result: Frostlands Mage Earring
+      chance: 1
+      maxChance: 5000
+    - result: Frostlands Thief Earring
+      chance: 1
+      maxChance: 5000
+    - result: Frostlands Healer Earring
+      chance: 1
+      maxChance: 5000
+    - result: Frostlands Warrior Earring
+      chance: 1
+      maxChance: 5000
+
+  tansFor: Frostlands Sabretooth Robe
 
 - npcId: Frostfang
   name: Frostfang
@@ -79,7 +93,7 @@
     perception: 150
 
   gear:
-    Armor: Frostlands Frostfang Fur
+    Armor: Frostlands Frostfang Robe
     Hands: Mines Animal Claws
 
   traitLevels:
@@ -125,4 +139,18 @@
     min: 362000
     max: 365000
 
-  tansFor: Frostlands Frostfang Fur
+  drops:
+    - result: Frostlands Mage Earring
+      chance: 1
+      maxChance: 100
+    - result: Frostlands Thief Earring
+      chance: 1
+      maxChance: 100
+    - result: Frostlands Healer Earring
+      chance: 1
+      maxChance: 100
+    - result: Frostlands Warrior Earring
+      chance: 1
+      maxChance: 100
+
+  tansFor: Frostlands Frostfang Robe

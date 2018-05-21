@@ -18,7 +18,8 @@ export const setup = async (npc: NPC) => {
     { name: 'Revive Ring', valueMult: 25 },
     { name: 'Transmute Ring', valueMult: 25 },
     { name: 'EagleEye Ring', valueMult: 25 },
-    { name: 'DarkVision Ring', valueMult: 25 }
+    { name: 'DarkVision Ring', valueMult: 25 },
+    { name: 'BeastRipper Potion', valueMult: 25 }
   ];
 
   npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);

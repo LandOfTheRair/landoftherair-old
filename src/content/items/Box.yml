@@ -19,6 +19,26 @@
     - result: Antanian Big Red Gem
       chance: 30
 
+- name: Risan Gem RNG Box
+  desc: "a gift box wrapped with shiny multi-colored wrapping paper, tied with a golden bow"
+  extendedDesc: "a gem container filled with a Risan gem"
+  sprite: 586
+  value: 50000
+  binds: true
+  containedItems:
+    - result: none
+      chance: 1
+    - result: Risan Purple Gem
+      chance: 45
+    - result: Risan Small Green Gem
+      chance: 60
+    - result: Risan Big Green Gem
+      chance: 30
+    - result: Risan Small Red Gem
+      chance: 60
+    - result: Risan Big Red Gem
+      chance: 30
+
 - name: Antanian Daily Gem RNG Box
   desc: "a gift box wrapped with shiny multi-colored wrapping paper, tied with a golden bow"
   extendedDesc: "a gem container filled with any gem"
@@ -51,6 +71,16 @@
     - result: Risan Black Pearl
       chance: 1
     - result: Risan Small Black Pearl
+      chance: 1
+    - result: Risan Purple Gem
+      chance: 1
+    - result: Risan Small Green Gem
+      chance: 1
+    - result: Risan Big Green Gem
+      chance: 1
+    - result: Risan Small Red Gem
+      chance: 1
+    - result: Risan Big Red Gem
       chance: 1
 
 - name: Antanian Daily General Rune Scroll RNG Box

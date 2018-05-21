@@ -78,7 +78,7 @@
 - name: Overseer Jigan Wand
   quality: 5
   desc: "a blue wand forged with metals from the Risan mines"
-  tier: 3
+  tier: 2
   effect:
     name: Asper
     potency: 10

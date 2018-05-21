@@ -197,7 +197,7 @@
       min: 3
       max: 7
 
-  desc: "a cloak tanned from the hide of a sabretooth"
+  desc: "the tanned hide of a sabretooth"
   value: 3500
   sprite: 286
 
@@ -211,6 +211,15 @@
     poisonResist: 75
     diseaseResist: 25
 
-  desc: "a cloak tanned from the hide of a big sabretooth"
+  desc: "the tanned hide of a big sabretooth"
   value: 3500
   sprite: 286
+
+- name: Frostlands Noble Robe
+  stats:
+    offense: 5
+    defense: 5
+
+  desc: "a royal robe made of the finest threads that can be found in Risan"
+  value: 3500
+  sprite: 101
