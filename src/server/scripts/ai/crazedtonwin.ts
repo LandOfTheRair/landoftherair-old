@@ -1,5 +1,5 @@
 
-import { filter, compact, sample } from 'lodash';
+import { filter, compact, sample, reject } from 'lodash';
 import { nonenumerable } from 'nonenumerable';
 
 import { Character } from '../../../shared/models/character';
@@ -16,15 +16,28 @@ export class CrazedTonwinAIBehavior extends DefaultAIBehavior {
   private trigger50 = false;
   private trigger25 = false;
 
-  private possibleSpawnIds = [1, 2, 3];
-  private brothers: NPC[] = [];
-  private brotherIds = ['Shadow Takwin', 'Shadow Telwin', 'Shadow Terwin'];
-  private brotherEffects = [BrotherlySword, BrotherlyShield, BrotherlySpeed];
-  private brotherMessages = [
-    'My shield for you, Brother!',
-    'My sword for you, Brother!',
-    'My speed for you, Brother!'
+  private brotherSpawnObjects = [
+    {
+      spawnLoc: 0,
+      id: 'Shadow Takwin',
+      effect: BrotherlySword,
+      message: 'My sword for you, Brother!'
+    },
+    {
+      spawnLoc: 1,
+      id: 'Shadow Telwin',
+      effect: BrotherlyShield,
+      message: 'My shield for you, Brother!'
+    },
+    {
+      spawnLoc: 2,
+      id: 'Shadow Terwin',
+      effect: BrotherlySpeed,
+      message: 'My speed for you, Brother!'
+    }
   ];
+
+  private brothers: NPC[] = [];
 
   public get livingBrothers(): NPC[] {
     return compact(filter(this.brothers, (ac: NPC) => ac && !ac.isDead()));
@@ -33,43 +46,38 @@ export class CrazedTonwinAIBehavior extends DefaultAIBehavior {
   private async spawnBrother() {
     const npc = this.npc;
 
-    const spawnId = sample(this.possibleSpawnIds);
-    const brotherId = spawnId - 1;
+    const { spawnLoc, id, effect, message } = sample(this.brotherSpawnObjects);
 
     // make it so that brother can't spawn again
-    this.possibleSpawnIds[brotherId] = null;
-    this.possibleSpawnIds = compact(this.possibleSpawnIds);
+    this.brotherSpawnObjects = reject(this.brotherSpawnObjects, (data) => data.id === id);
 
-    // spawn the brother
-    const npcId = this.brotherIds[brotherId];
-
-    const msgObject = { name: npc.name, message: `BROTHER ${npcId.split(' ')[1].toUpperCase()}! JOIN ME!`, subClass: 'chatter' };
+    const msgObject = { name: npc.name, message: `BROTHER ${id.split(' ')[1].toUpperCase()}! JOIN ME!`, subClass: 'chatter' };
     npc.sendClientMessageToRadius(msgObject, 10);
 
-    const npcSpawner = npc.$$room.getSpawnerByName(`Brother Spawner ${spawnId}`);
-    const brother = await npcSpawner.createNPC({ npcId });
+    const npcSpawner = npc.$$room.getSpawnerByName(`Brother Spawner ${spawnLoc + 1}`);
+    const brother = await npcSpawner.createNPC({ npcId: id });
 
     // give the brother effect
-    const effect = new this.brotherEffects[brotherId]({ shouldShowMessage: false, ignoreDefenseLoss: true, ignoreStun: true });
-    effect.cast(brother, npc, null);
-    effect.cast(npc, brother, null);
+    const brotherEffect = new effect({ shouldShowMessage: false, ignoreDefenseLoss: true, ignoreStun: true });
+    brotherEffect.cast(brother, npc, null);
+    brotherEffect.cast(npc, brother, null);
 
     // make tonwin invuln
     const buff = new Invulnerable({});
     buff.cast(npc, npc, null, this);
 
     // open the door
-    npc.$$room.state.toggleDoor(npc.$$room.state.getInteractableByName(`Tile Door ${spawnId}`), true);
+    npc.$$room.state.toggleDoor(npc.$$room.state.getInteractableByName(`Tile Door ${spawnLoc + 1}`), true);
 
     // add it to the array (for the invuln buff)
-    this.brothers[brotherId] = brother;
+    this.brothers[spawnLoc] = brother;
 
     brother.$$ai.death.add(() => {
-      this.brothers[brotherId] = null;
+      this.brothers[spawnLoc] = null;
     });
 
     // add another message from the brother
-    const brotherMessage = { name: npc.name, message: this.brotherMessages[brotherId], subClass: 'environment' };
+    const brotherMessage = { name: npc.name, message, subClass: 'environment' };
     npc.sendClientMessageToRadius(brotherMessage, 10);
   }
 
