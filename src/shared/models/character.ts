@@ -3,7 +3,7 @@ import { RestrictedNumber } from 'restricted-number';
 import { Signal } from 'signals.js';
 
 import {
-  merge, find, includes, compact, values, random,
+  merge, includes, compact, values, random,
   startsWith, clone, get, reject, pick,
   sample, filter, maxBy
 } from 'lodash';
