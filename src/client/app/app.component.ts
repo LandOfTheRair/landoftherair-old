@@ -642,4 +642,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     return startCase(name);
   }
 
+  public isMacroGroupActive(name: string): number {
+    for(let i = 0; i < this.macroService.visibleMacroGroups.length; i++) {
+      if(this.macroService.visibleMacroGroups[i] === name) return i + 1;
+    }
+  }
+
 }

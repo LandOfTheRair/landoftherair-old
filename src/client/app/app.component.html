@@ -948,6 +948,7 @@
 
       <div class="modal-body macro-list-body" *ngIf="macroService.hasLoaded && macroGroups.isShown">
 
+        <!--
         <div class="row mb-1">
           <h4 class="text-center w-100">Active Macro Groups</h4>
         </div>
@@ -974,27 +975,37 @@
             </div>
           </div>
         </div>
+        -->
 
         <div class="row mb-1">
-          <h4 class="text-center w-100">All Macro Groups</h4>
           <h6 class="text-center w-100 font-italic">(left click to select new macro, right click to remove macro)</h6>
         </div>
 
         <div class="row pb-1 activate-inner-on-hover"
              [class.mb-3]="last"
-             *ngFor="let group of macroService.iterableMacroGroups; let last = last">
+             *ngFor="let group of macroService.iterableMacroGroups; let first = first; let last = last">
 
           <div class="col-3">
-            <div class="text-center font-weight-bold">{{ group.key }}</div>
+            <div class="text-center font-weight-bold">
+              {{ group.key }}
+              <span *ngIf="isMacroGroupActive(group.key)">(#{{ isMacroGroupActive(group.key) }})</span>
+            </div>
             <div class="text-center show-on-hover">
-              <button class="btn btn-primary btn-sm" (click)="makeActiveGroup(group.key, 0)">1</button>
-              <button class="btn btn-primary btn-sm" (click)="makeActiveGroup(group.key, 1)">2</button>
-              <button class="btn btn-primary btn-sm" (click)="makeActiveGroup(group.key, 2)">3</button>
+              <button class="btn btn-warning btn-sm"
+                      *ngIf="!first && isMacroGroupActive(group.key) && isMacroGroupActive(group.key) !== 1"
+                      (click)="removeActiveGroup(isMacroGroupActive(group.key) - 1)">Remove</button>
 
-              <button class="btn btn-warning btn-sm" *ngIf="group.key === 'default'" (click)="resetDefaultGroup()">Reset</button>
-              <button class="btn btn-danger btn-sm" *ngIf="group.key !== 'default'" (click)="deleteGroup(group.key)">
-                Delete
-              </button>
+              <button class="btn btn-primary btn-sm" *ngIf="!isMacroGroupActive(group.key)" (click)="makeActiveGroup(group.key, 0)">1</button>
+              <button class="btn btn-primary btn-sm" *ngIf="!isMacroGroupActive(group.key)" (click)="makeActiveGroup(group.key, 1)">2</button>
+              <button class="btn btn-primary btn-sm" *ngIf="!isMacroGroupActive(group.key)" (click)="makeActiveGroup(group.key, 2)">3</button>
+
+              <button class="btn btn-warning btn-sm"
+                      *ngIf="!isMacroGroupActive(group.key) && group.key === 'default'"
+                      (click)="resetDefaultGroup()">Reset</button>
+
+              <button class="btn btn-danger btn-sm"
+                      *ngIf="!isMacroGroupActive(group.key) && group.key !== 'default'"
+                      (click)="deleteGroup(group.key)">Delete</button>
             </div>
           </div>
 
