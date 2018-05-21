@@ -8765,6 +8765,26 @@
                  "width":64,
                  "x":14144,
                  "y":13312
+                }, 
+                {
+                 "gid":3462,
+                 "height":64,
+                 "id":2440,
+                 "name":"Botanist",
+                 "properties":
+                    {
+                     "script":"risan\/frostlands\/botanist"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":16064,
+                 "y":14848
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -16178,7 +16198,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2440,
+ "nextobjectid":2441,
  "orientation":"orthogonal",
  "properties":
     {
