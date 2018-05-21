@@ -20,5 +20,6 @@ export * from './MagicBolt';
 export * from './MagicMissile';
 export * from './MagicShield';
 export * from './MassTeleport';
+export * from './RiftSlash';
 export * from './Teleport';
 export * from './VolcanoStance';
