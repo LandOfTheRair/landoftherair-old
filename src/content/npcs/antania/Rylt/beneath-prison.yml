@@ -74,6 +74,28 @@
       chance: 1
       maxChance: 5
 
+  dropPool:
+    choose:
+      min: 2
+      max: 2
+    items:
+      - Rune Scroll - Holy Affliction I
+      - Rune Scroll - Regenerative Refrain I
+      - Rune Scroll - Nature Spirit I
+      - Rune Scroll - Effective Supporter I
+      - Rune Scroll - Glacier Stance Improved I
+      - Rune Scroll - Volcanic Stance Improved I
+      - Rune Scroll - Thermal Barrier I
+      - Rune Scroll - Friendly Fire I
+      - Rune Scroll - Lockpick Specialty I
+      - Rune Scroll - Stronger Traps I
+      - Rune Scroll - Nimble Stealing I
+      - Rune Scroll - Recuperating Debilitation I
+      - Rune Scroll - Brass Knuckles I
+      - Rune Scroll - Holy Protection I
+      - Rune Scroll - Martial Agility I
+      - Rune Scroll - Sterling Armor I
+
   combatMessages:
     - "BROTHERS... HELP"
     - "WHY IT END THIS WAY"
