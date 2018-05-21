@@ -9,7 +9,7 @@ export class DrainSlash extends Trait {
   static icon = 'running-ninja';
 
   static upgrades = [
-    { cost: 15, capstone: true }
+    { cost: 20, capstone: true }
   ];
 
 }
