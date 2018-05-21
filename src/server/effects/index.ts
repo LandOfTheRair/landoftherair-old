@@ -32,8 +32,11 @@ export * from './buffs/TrueSight';
 
 export * from './damagers/Afflict';
 export * from './damagers/HolyFire';
+
 export * from './damagers/MagicMissile';
 export * from './damagers/MagicBolt';
+export * from './damagers/Combust';
+export * from './damagers/Hail';
 
 export * from './damagers/Asper';
 export * from './damagers/Drain';

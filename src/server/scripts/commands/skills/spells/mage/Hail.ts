@@ -1,24 +1,24 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { MagicMissile as CastEffect } from '../../../../../effects/damagers/MagicMissile';
+import { Hail as CastEffect } from '../../../../../effects/damagers/Hail';
 
-export class MagicMissile extends Skill {
+export class Hail extends Skill {
 
   static macroMetadata = {
-    name: 'MagicMissile',
-    macro: 'cast magicmissile',
-    icon: 'missile-swarm',
-    color: '#a0a',
+    name: 'Hail',
+    macro: 'cast hail',
+    icon: 'burning-dot',
+    color: '#000080',
     mode: 'lockActivation',
-    tooltipDesc: 'Inflict energy damage on a single target. Cost: 5 MP',
-    skillTPCost: 1
+    tooltipDesc: 'Inflict ice damage on a single target. Cost: 20 MP',
+    skillTPCost: 5
   };
 
-  public name = ['magicmissile', 'cast magicmissile'];
+  public name = ['hail', 'cast hail'];
   public format = 'Target';
 
-  mpCost() { return 5; }
+  mpCost() { return 20; }
   range(attacker: Character) { return 5; }
 
   execute(user: Character, { args, effect }) {

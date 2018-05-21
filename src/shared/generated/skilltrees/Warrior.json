@@ -963,7 +963,7 @@
     "MirroredEnchantments0": {
         "name": "MirroredEnchantments0",
         "traitName": "MirroredEnchantments",
-        "desc": "The potency of gems and runes in your boots and gloves are doubled while your right hand is empty.",
+        "desc": "The potency of gems and runes in your boots and gloves are doubled while your right hand is empty. \n  You cannot exceed an encrusted gem max limit or trait cap in this fashion.",
         "icon": "emerald",
         "capstone": true,
         "cost": 30,

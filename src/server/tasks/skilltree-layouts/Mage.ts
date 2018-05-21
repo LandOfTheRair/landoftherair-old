@@ -204,7 +204,7 @@ const ELEMENTALIST_TREE = {
     unbuyable: true,
     root: true,
     desc: 'The Elementalist focuses on the dichotomous fire and ice magics.',
-    unlocks: ['FireMist', 'IceMist']
+    unlocks: ['Combust', 'Hail']
   },
 
   // TRAITS
@@ -263,6 +263,14 @@ const ELEMENTALIST_TREE = {
 
   IceMist: {
     unlocks: ['FrostedTouch0', 'FrostedTouch1']
+  },
+
+  Combust: {
+    unlocks: ['FireMist']
+  },
+
+  Hail: {
+    unlocks: ['IceMist']
   },
 
   Firethorns: {

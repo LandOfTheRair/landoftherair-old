@@ -34,7 +34,7 @@
     - Autoheal
     - Dispel
     - ImbueFrost
-    - IceMist
+    - Hail
 
   hp:
     min: 45000

@@ -412,7 +412,7 @@
         "name": "MagicMissile",
         "desc": "Inflict energy damage on a single target. Cost: 5 MP",
         "icon": "missile-swarm",
-        "iconColor": "#0059bd",
+        "iconColor": "#a0a",
         "cost": 1,
         "unlocks": [
             "MagicFocus0",
@@ -488,7 +488,7 @@
         "name": "MagicBolt",
         "desc": "Inflict energy damage on a single target. Cost: 10 MP",
         "icon": "burning-dot",
-        "iconColor": "#0059bd",
+        "iconColor": "#a0a",
         "cost": 10,
         "cluster": 1,
         "unlockedBy": [
@@ -769,8 +769,8 @@
         "root": true,
         "desc": "The Elementalist focuses on the dichotomous fire and ice magics.",
         "unlocks": [
-            "FireMist",
-            "IceMist"
+            "Combust",
+            "Hail"
         ],
         "name": "Elementalist",
         "cluster": 3
@@ -983,7 +983,7 @@
         ],
         "cluster": 3,
         "unlockedBy": [
-            "Elementalist"
+            "Combust"
         ]
     },
     "IceMist": {
@@ -995,6 +995,34 @@
         "unlocks": [
             "FrostedTouch0",
             "FrostedTouch1"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Hail"
+        ]
+    },
+    "Combust": {
+        "name": "Combust",
+        "desc": "Inflict fire damage on a single target. Cost: 20 MP",
+        "icon": "burning-dot",
+        "iconColor": "#DC143C",
+        "cost": 5,
+        "unlocks": [
+            "FireMist"
+        ],
+        "cluster": 3,
+        "unlockedBy": [
+            "Elementalist"
+        ]
+    },
+    "Hail": {
+        "name": "Hail",
+        "desc": "Inflict ice damage on a single target. Cost: 20 MP",
+        "icon": "burning-dot",
+        "iconColor": "#000080",
+        "cost": 5,
+        "unlocks": [
+            "IceMist"
         ],
         "cluster": 3,
         "unlockedBy": [

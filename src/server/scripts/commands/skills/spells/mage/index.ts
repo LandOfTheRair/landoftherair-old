@@ -1,6 +1,7 @@
 export * from './Absorption';
 export * from './Asper';
 export * from './BarWater';
+export * from './Combust';
 export * from './Drain';
 export * from './EnergyWave';
 export * from './FindFamiliar';
@@ -8,6 +9,7 @@ export * from './FireMist';
 export * from './Firethorns';
 export * from './Frostspikes';
 export * from './GlacierStance';
+export * from './Hail';
 export * from './Haste';
 export * from './IceMist';
 export * from './ImbueEnergy';

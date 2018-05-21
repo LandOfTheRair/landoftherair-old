@@ -9,7 +9,7 @@ export class MagicBolt extends Skill {
     name: 'MagicBolt',
     macro: 'cast magicbolt',
     icon: 'burning-dot',
-    color: '#0059bd',
+    color: '#a0a',
     mode: 'lockActivation',
     tooltipDesc: 'Inflict energy damage on a single target. Cost: 10 MP',
     skillTPCost: 10
