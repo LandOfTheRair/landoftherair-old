@@ -129,10 +129,12 @@ export class TeleportHelper {
 
     player.hp.set(1);
 
-    const teleportees = player.$$room.state.getAllInRange(player, 0, [player.uuid]);
+    const room = player.$$room;
+    const teleportees = room.state.getAllInRange(player, 0, [player.uuid]);
+
     this.doPlayerTeleport(player, teleportLocation.teleport);
 
-    player.$$room.clock.setTimeout(() => {
+    room.clock.setTimeout(() => {
       teleportees.forEach(target => {
         this.doPlayerTeleport(target, teleportLocation.teleport);
       });
