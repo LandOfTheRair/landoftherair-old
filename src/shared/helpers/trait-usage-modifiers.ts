@@ -33,6 +33,9 @@ export class TraitUsageModifiers {
       case 'NatureSpirit':        return level * 0.05;
       case 'HolyAffliction':      return level * 3;
       case 'ConcussiveBolt':      return level ? 5 : 0;
+      case 'DrainSlash':          return level * 5;
+
+      case 'LingeringDrain':      return level * 3;
 
       case 'StrongerTraps':       return level * 5;
       case 'NimbleStealing':      return level * 5;

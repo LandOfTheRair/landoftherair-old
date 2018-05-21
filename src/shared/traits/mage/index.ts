@@ -19,6 +19,8 @@ export * from './FireMistWiden';
 export * from './IceMistWiden';
 export * from './EnergyWaveWiden';
 
+export * from './DrainSlash';
+
 export * from './FindFamiliarSalamander';
 export * from './FindFamiliarBear';
 export * from './FindFamiliarWolf';

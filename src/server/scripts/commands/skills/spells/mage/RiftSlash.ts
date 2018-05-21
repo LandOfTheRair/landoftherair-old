@@ -7,6 +7,8 @@ import { CombatHelper } from '../../../../../helpers/world/combat-helper';
 import { MoveHelper } from '../../../../../helpers/character/move-helper';
 import { MessageHelper } from '../../../../../helpers/world/message-helper';
 import { Player } from '../../../../../../shared/models/player';
+import { RollerHelper } from '../../../../../../shared/helpers/roller-helper';
+import { Drain, Stun } from '../../../../../effects';
 
 export class RiftSlash extends Skill {
 
@@ -59,6 +61,14 @@ export class RiftSlash extends Skill {
     user.$$room.updatePos(user);
 
     CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
+
+    const drainChance = user.getTraitLevelAndUsageModifier('DrainSlash');
+    if(RollerHelper.XInOneHundred(drainChance)) {
+      const drain = new Drain({});
+      drain.shouldNotShowMessage = true;
+      drain.cast(user, target, this);
+      drain.shouldNotShowMessage = false;
+    }
   }
 
 }

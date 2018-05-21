@@ -34,8 +34,10 @@ export class Drain extends SpellEffect {
     target.hp.sub(realDrain);
     caster.hp.add(realDrain);
 
-    if(damage > 0 && caster.getTraitLevel('LingeringDrain')) {
-      this.duration = 3;
+    const lingeringDrainDuration = caster.getTraitLevelAndUsageModifier('LingeringDrain');
+
+    if(damage > 0 && lingeringDrainDuration) {
+      this.duration = lingeringDrainDuration;
       target.applyEffect(this);
     }
   }

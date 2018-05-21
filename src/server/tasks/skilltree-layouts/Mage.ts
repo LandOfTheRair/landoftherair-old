@@ -85,7 +85,7 @@ const MAGE_TREE = {
 
   },
   MagicFocus5: {
-    unlocks: ['Drain', 'Asper']
+    unlocks: ['Asper']
   },
   MagicFocus6: {
 
@@ -95,10 +95,6 @@ const MAGE_TREE = {
   },
 
   EnergyWaveWiden0: {
-
-  },
-
-  LingeringDrain0: {
 
   },
 
@@ -134,9 +130,6 @@ const MAGE_TREE = {
   },
   MassTeleport: {
 
-  },
-  Drain: {
-    unlocks: ['LingeringDrain0']
   },
   Asper: {
     unlocks: ['LingeringAsper0']
@@ -340,10 +333,17 @@ const BATTLEMAGE_TREE = {
 
   },
 
+  LingeringDrain0: {
+
+  },
+
+  DrainSlash0: {
+
+  },
 
   // SKILLS
   RiftSlash: {
-    unlocks: ['VolcanoStance', 'GlacierStance']
+    unlocks: ['VolcanoStance', 'GlacierStance', 'Drain']
   },
 
   VolcanoStance: {
@@ -368,6 +368,10 @@ const BATTLEMAGE_TREE = {
 
   FindFamiliar: {
     unlocks: ['FindFamiliarBear0', 'FindFamiliarSalamander0', 'FindFamiliarWolf0', 'FindFamiliarChillspider0']
+  },
+
+  Drain: {
+    unlocks: ['LingeringDrain0', 'DrainSlash0']
   }
 };
 
