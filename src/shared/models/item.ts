@@ -15,7 +15,7 @@ export const ValidItemTypes = [
 
 export const WeaponClasses = [
   'Axe', 'Broadsword', 'Crossbow', 'Dagger', 'Club', 'Flail', 'Greataxe', 'Greatmace', 'Greatsword', 'Hammer', 'Halberd', 'Longbow',
-  'Longsword', 'Mace', 'Shield', 'Shortbow', 'Shortsword', 'Spear', 'Staff', 'Totem', 'Wand'
+  'Longsword', 'Mace', 'Saucer', 'Shield', 'Shortbow', 'Shortsword', 'Spear', 'Staff', 'Totem', 'Wand'
 ];
 
 export const SharpWeaponClasses = [
@@ -23,7 +23,7 @@ export const SharpWeaponClasses = [
 ];
 
 export const ShieldClasses = [
-  'Shield'
+  'Shield', 'Saucer'
 ];
 
 export const ArmorClasses = [
@@ -35,7 +35,7 @@ export const RobeClasses = [
 ];
 
 export const HeadClasses = [
-  'Helm', 'Skull'
+  'Helm', 'Skull', 'Saucer'
 ];
 
 export const NeckClasses = [

@@ -9,7 +9,7 @@ import {
 } from 'lodash';
 
 import {
-  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes, WeaponClasses
+  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes, WeaponClasses, ShieldClasses
 } from './item';
 import { MapLayer } from './maplayer';
 
@@ -471,11 +471,13 @@ export class Character {
 
   canGetBonusFromItemInHand(item: Item): boolean {
 
+    const isShield = includes(ShieldClasses, item.itemClass);
+
     // shields do. not. work. in the main hand
-    if(item.itemClass === 'Shield' && this.rightHand === item && !this.getTraitLevel('Shieldbearer')) return false;
+    if(isShield && this.rightHand === item && !this.getTraitLevel('Shieldbearer')) return false;
 
     // weapons do not work in the left hand unless they're a shield or offhand item
-    if(this.leftHand === item && !item.offhand && item.itemClass !== 'Shield' && includes(WeaponClasses, item.itemClass)) return false;
+    if(this.leftHand === item && !item.offhand && !isShield && includes(WeaponClasses, item.itemClass)) return false;
 
     return this.checkCanEquipWithoutGearCheck(item)
         && item.isOwnedBy(this)

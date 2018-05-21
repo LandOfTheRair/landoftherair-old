@@ -18,7 +18,7 @@ import * as path from 'path';
 import { includes, flatten, isUndefined, capitalize } from 'lodash';
 
 import {
-  Item, ValidItemTypes, WeaponClasses, ArmorClasses
+  Item, ValidItemTypes, WeaponClasses, ArmorClasses, ShieldClasses
 } from '../../shared/models/item';
 
 const ValidSkillNames = values(SkillClassNames);
@@ -131,7 +131,7 @@ class ItemLoader {
       item.attackRange = 5;
     }
 
-    if(item.itemClass === 'Shield') {
+    if(includes(ShieldClasses, item.itemClass)) {
       item.type = 'Mace';
       if(!item.stats.accuracy) item.stats.accuracy = 0;
       if(!item.stats.mitigation) item.stats.mitigation = 5;

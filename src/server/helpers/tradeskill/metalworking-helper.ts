@@ -2,7 +2,7 @@
 import { Player } from '../../../shared/models/player';
 import { SkillClassNames } from '../../../shared/models/character';
 import { capitalize, clamp, includes, get, cloneDeep } from 'lodash';
-import { ArmorClasses, Item } from '../../../shared/models/item';
+import { ArmorClasses, Item, ShieldClasses } from '../../../shared/models/item';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 const ingotCraftBuffs = {
@@ -57,7 +57,7 @@ export class MetalworkingHelper {
   }
 
   static getUpgradeCreateType(item: Item): 'armor'|'weapon'|'ring' {
-    if(item.itemClass === 'Shield')             return 'armor';
+    if(includes(ShieldClasses, item.itemClass)) return 'armor';
     if(item.itemClass === 'Ring')               return 'ring';
     if(includes(ArmorClasses, item.itemClass))  return 'armor';
 

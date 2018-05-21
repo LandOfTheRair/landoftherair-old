@@ -8,13 +8,13 @@ export class ItemLoader {
 
   static WEAPON_TYPES: string[] = [
     'Axe', 'Broadsword', 'Claws', 'Club', 'Crossbow', 'Dagger', 'Gloves', 'Greataxe', 'Greatmace', 'Greatsword',
-    'Halberd', 'Hammer', 'Longbow', 'Longsword', 'Mace', 'Shield', 'Shortbow', 'Shortsword',
+    'Halberd', 'Hammer', 'Longbow', 'Longsword', 'Mace', 'Saucer', 'Shield', 'Shortbow', 'Shortsword',
     'Spear', 'Staff', 'Wand'
   ];
 
   static ARMOR_TYPES: string[] = [
     'Amulet', 'Boots', 'Bracers', 'Breastplate', 'Claws', 'Cloak', 'Earring', 'Fur', 'Gloves', 'Helm',
-    'Ring', 'Robe', 'Sash', 'Shield', 'Tunic'
+    'Ring', 'Robe', 'Sash', 'Saucer', 'Shield', 'Tunic'
   ];
 
   static OTHER_TYPES: string[] = [

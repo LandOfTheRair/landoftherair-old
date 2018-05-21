@@ -1,0 +1,48 @@
+
+- name: Tower Defense Saucer
+  randomStats:
+    armorClass:
+      min: 1
+      max: 4
+    defense:
+      min: 2
+      max: 4
+  sprite: 309
+  desc: "a small saucer commonly held and worn by goblinkin"
+  value: 387
+
+  requirements:
+    level: 12
+
+- name: Tower Offense Saucer
+  randomStats:
+    armorClass:
+      min: 1
+      max: 4
+    offense:
+      min: 2
+      max: 4
+  sprite: 309
+  desc: "a small saucer commonly held and worn by goblinkin"
+  value: 480
+
+  requirements:
+    level: 12
+
+- name: Tower Vitals Saucer
+  randomStats:
+    armorClass:
+      min: 1
+      max: 4
+    hp:
+      min: 15
+      max: 65
+    mp:
+      min: 15
+      max: 65
+  sprite: 309
+  desc: "a small saucer commonly held and worn by goblinkin"
+  value: 480
+
+  requirements:
+    level: 12
