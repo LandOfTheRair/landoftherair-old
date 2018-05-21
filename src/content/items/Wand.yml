@@ -9,6 +9,7 @@
   trait:
     name: WandSpecialty
     level: 2
+  offhand: true
   binds: true
   tellsBind: true
   type: Wand
@@ -25,6 +26,7 @@
   trait:
     name: WandSpecialty
     level: 1
+  offhand: true
   binds: true
   type: Wand
   value: 750
@@ -43,6 +45,7 @@
   trait:
     name: WandSpecialty
     level: 1
+  offhand: true
   binds: true
   type: Wand
   value: 750
@@ -62,6 +65,7 @@
   trait:
     name: WandSpecialty
     level: 3
+  offhand: true
   binds: true
   tellsBind: true
   type: Wand
@@ -86,6 +90,7 @@
   trait:
     name: MagicFocus
     level: 3
+  offhand: true
   binds: true
   tellsBind: true
   type: Wand
