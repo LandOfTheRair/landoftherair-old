@@ -157,6 +157,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
       <span class="ounces" *ngIf="showOunces && item.ounces > 0">{{ item.ounces }}oz</span>
       <span class="value" *ngIf="showValue">{{ overrideValue || (item._buybackValue || item.value) + 'g' }}</span>
       <span class="value" *ngIf="showOunces && item.succorInfo">{{ item.succorInfo.map }}</span>
+      <span class="ounces" *ngIf="showDesc && item.itemClass === 'Trap'">{{ item.effect.name }}</span>
     </div>
     
   `
