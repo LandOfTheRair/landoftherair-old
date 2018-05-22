@@ -94,7 +94,7 @@ DB.init()
         });
 
         gameServer.register('Lobby', Rooms.Lobby);
-        gameServer.matchMaker.create('Lobby', {});
+        // gameServer.matchMaker.create('Lobby', {});
 
         const allMapNames = {};
 
@@ -106,7 +106,8 @@ DB.init()
             gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
 
             if(!includes(mapName, '-Dungeon')) {
-              gameServer.matchMaker.create(mapName, {});
+              // Logger.log(`Starting map ${mapName}`);
+              // gameServer.matchMaker.create(mapName, {});
             }
           });
 
