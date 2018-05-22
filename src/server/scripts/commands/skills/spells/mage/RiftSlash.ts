@@ -2,13 +2,12 @@
 
 
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { CombatHelper } from '../../../../../helpers/world/combat-helper';
-import { MoveHelper } from '../../../../../helpers/character/move-helper';
 import { MessageHelper } from '../../../../../helpers/world/message-helper';
 import { Player } from '../../../../../../shared/models/player';
 import { RollerHelper } from '../../../../../../shared/helpers/roller-helper';
-import { Drain, Stun } from '../../../../../effects';
+import { Drain } from '../../../../../effects';
 
 export class RiftSlash extends Skill {
 
