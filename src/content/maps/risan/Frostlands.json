@@ -8785,6 +8785,50 @@
                  "width":64,
                  "x":16064,
                  "y":14848
+                }, 
+                {
+                 "gid":3332,
+                 "height":64,
+                 "id":2441,
+                 "name":"Meo",
+                 "properties":
+                    {
+                     "mpTier":2,
+                     "script":"global\/mpdoc"
+                    },
+                 "propertytypes":
+                    {
+                     "mpTier":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":12352,
+                 "y":14336
+                }, 
+                {
+                 "gid":3342,
+                 "height":64,
+                 "id":2442,
+                 "name":"Heo",
+                 "properties":
+                    {
+                     "hpTier":2,
+                     "script":"global\/hpdoc"
+                    },
+                 "propertytypes":
+                    {
+                     "hpTier":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":12352,
+                 "y":14016
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -12161,26 +12205,6 @@
                  "width":64,
                  "x":12544,
                  "y":13504
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":2167,
-                 "name":"Town Random Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frostlands\/town-random"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":12544,
-                 "y":14144
                 }, 
                 {
                  "gid":2363,
@@ -16198,7 +16222,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2441,
+ "nextobjectid":2443,
  "orientation":"orthogonal",
  "properties":
     {

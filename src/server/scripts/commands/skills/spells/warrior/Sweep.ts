@@ -1,7 +1,7 @@
 
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { Multistrike as CastEffect } from '../../../../../effects/arts/Multistrike';
+import { Sweep as CastEffect } from '../../../../../effects/arts/Sweep';
 
 export class Sweep extends Skill {
 
