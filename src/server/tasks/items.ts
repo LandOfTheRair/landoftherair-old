@@ -127,7 +127,7 @@ class ItemLoader {
       item.secondaryType = 'Twohanded';
     }
 
-    if(includes(['Crossbow', 'Shortbow', 'Longbow'], item.itemClass)) {
+    if(includes(['Crossbow', 'Shortbow', 'Longbow'], item.itemClass) || item.type === 'Ranged') {
       item.attackRange = 5;
     }
 

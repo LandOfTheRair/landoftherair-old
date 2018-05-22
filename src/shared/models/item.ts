@@ -8,6 +8,16 @@ import * as Effects from '../../server/effects';
 import { nonenumerable } from 'nonenumerable';
 import { LootHelper } from '../../server/helpers/world/loot-helper';
 
+export type DamageType =
+  'physical'
+| 'necrotic'
+| 'fire'
+| 'ice'
+| 'water'
+| 'energy'
+| 'poison'
+| 'disease';
+
 export const ValidItemTypes = [
   'Mace', 'Axe', 'Dagger', 'Wand', 'Onehanded', 'Twohanded', 'Polearm', 'Ranged',
   'Martial', 'Staff', 'Restoration', 'Conjuration', 'Throwing', 'Thievery', 'Shortsword'
@@ -141,6 +151,7 @@ export class Item {
 
   encrust?: Encrust;
   quality?: Quality;
+  damageClass?: DamageType;
 
   uuid?: string;
 

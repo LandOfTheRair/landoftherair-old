@@ -2,7 +2,7 @@
 import { includes, random, capitalize, get, clamp } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../../shared/models/character';
-import { ShieldClasses, Item, WeaponClasses, ItemEffect, HandsClasses } from '../../../shared/models/item';
+import { ShieldClasses, Item, WeaponClasses, ItemEffect, HandsClasses, DamageType } from '../../../shared/models/item';
 import * as Classes from '../../classes';
 import * as Effects from '../../effects';
 
@@ -11,16 +11,6 @@ import { CharacterHelper } from '../character/character-helper';
 import { NPC } from '../../../shared/models/npc';
 import { BuildupEffect } from '../../base/Effect';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
-
-export type DamageType =
-  'Physical'
-| 'Necrotic'
-| 'Fire'
-| 'Ice'
-| 'Water'
-| 'Energy'
-| 'Poison'
-| 'Disease';
 
 export const BaseItemStatsPerTier = {
   Axe:                  { base: 2, min: 0, max: 2, weakChance: 10, damageBonus: 0 },
@@ -741,7 +731,8 @@ export class CombatHelper {
 
     damage = this.dealDamage(attacker, defender, {
       damage,
-      damageClass: 'physical',
+      damageClass: attackerWeapon.damageClass || 'physical',
+      isMelee: true,
       attackerDamageMessage: damage > 0 ? `Your attack ${damageType}!` : '',
       defenderDamageMessage: msg,
       attackerWeapon,
@@ -890,7 +881,7 @@ export class CombatHelper {
     attacker: Character,
     defender: Character,
     { damage, damageClass, attackerDamageMessage, defenderDamageMessage,
-      attackerWeapon, isRanged, isAttackerVisible, isRiposte, isWeak }: any
+      attackerWeapon, isRanged, isAttackerVisible, isRiposte, isWeak, isMelee }: any
   ): number {
 
     if(defender.isDead() || (<any>defender).hostility === 'Never') return;
@@ -911,13 +902,13 @@ export class CombatHelper {
         case 'physical':  damageBoostPercent = attacker.getTraitLevelAndUsageModifier('ForcefulStrike'); break;
       }
 
-      if(damageClass === 'physical' && !isAttackerVisible && defender.hasEffect('BuildupSneakAttack')) {
+      if(isMelee && !isAttackerVisible && defender.hasEffect('BuildupSneakAttack')) {
         damageBoostPercent = 25 + attacker.getTraitLevelAndUsageModifier('ShadowRanger');
       }
 
       damage = Math.floor(damage * (1 + (damageBoostPercent / 100)));
 
-      if(damageClass !== 'physical') {
+      if(!isMelee) {
         damage += attacker.getTotalStat('magicalDamageBoost');
       }
     }
@@ -930,7 +921,7 @@ export class CombatHelper {
       const damageReduced = defender.getTotalStat(<StatName>`${damageClass}Resist`);
       damage -= damageReduced;
       // non-physical attacks are magical
-      if(damageClass !== 'physical') {
+      if(!isMelee) {
         const magicReduction = defender.getTotalStat('magicalResist');
         damage -= magicReduction;
       }
@@ -994,7 +985,7 @@ export class CombatHelper {
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;
 
     const otherClass = isHeal ? 'heal' : 'hit';
-    const damageType = damageClass === 'physical' ? 'melee' : 'magic';
+    const damageType = isMelee ? 'melee' : 'magic';
 
     if(attackerDamageMessage) {
 
