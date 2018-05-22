@@ -65,6 +65,8 @@ if(process.argv[2] === '--single-core') {
 
     api.expressApp.use('/colyseus', monitor(gameServer));
 
+    gameServer.matchMaker.create('Lobby', {});
+
     server.listen(port);
   });
 
@@ -106,6 +108,8 @@ if(process.argv[2] === '--single-core') {
       if(process.env.NODE_ENV !== 'production') {
         api.expressApp.use('/colyseus', monitor(gameServer));
       }
+
+      gameServer.matchMaker.create('Lobby', {});
 
       server.listen(port);
     });
