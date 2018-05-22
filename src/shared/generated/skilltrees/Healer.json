@@ -533,7 +533,8 @@
         "icon": "daemon-pull",
         "cost": 3,
         "unlocks": [
-            "Augury"
+            "Augury",
+            "FindFamiliar"
         ],
         "cluster": 2,
         "unlockedBy": [
@@ -615,6 +616,45 @@
         "cluster": 2,
         "unlockedBy": [
             "Disease"
+        ]
+    },
+    "FindFamiliarNature0": {
+        "name": "FindFamiliarNature0",
+        "traitName": "FindFamiliarNature",
+        "desc": "You can now summon a nature spirit, which debuffs foes.",
+        "icon": "eagle-emblem",
+        "capstone": true,
+        "requireCharacterLevel": 10,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "FindFamiliar"
+        ]
+    },
+    "FindFamiliarLight0": {
+        "name": "FindFamiliarLight0",
+        "traitName": "FindFamiliarLight",
+        "desc": "You can now summon a light spirit, which heals allies.",
+        "icon": "eagle-emblem",
+        "capstone": true,
+        "requireCharacterLevel": 10,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "FindFamiliar"
+        ]
+    },
+    "FindFamiliarWater0": {
+        "name": "FindFamiliarWater0",
+        "traitName": "FindFamiliarWater",
+        "desc": "You can now summon a water spirit, which supports allies.",
+        "icon": "eagle-emblem",
+        "capstone": true,
+        "requireCharacterLevel": 10,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "FindFamiliar"
         ]
     },
     "Antidote": {
@@ -719,6 +759,22 @@
         "icon": "dove",
         "iconColor": "#000",
         "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "NatureSpirit4"
+        ]
+    },
+    "FindFamiliar": {
+        "name": "FindFamiliar",
+        "desc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
+        "icon": "eagle-emblem",
+        "iconColor": "#0aa",
+        "cost": 3,
+        "unlocks": [
+            "FindFamiliarNature0",
+            "FindFamiliarLight0",
+            "FindFamiliarWater0"
+        ],
         "cluster": 2,
         "unlockedBy": [
             "NatureSpirit4"

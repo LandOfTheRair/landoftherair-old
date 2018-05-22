@@ -12,7 +12,10 @@ const animalHash = {
   wolf: 'Mage Summon Wolf',
   bear: 'Mage Summon Bear',
   salamander: 'Mage Summon Salamander',
-  chillspider: 'Mage Summon Chillspider'
+  chillspider: 'Mage Summon Chillspider',
+  water: 'Healer Summon Water Spirit',
+  light: 'Healer Summon Light Spirit',
+  nature: 'Healer Summon Nature Spirit'
 };
 
 // this hash is for boosting stats/etc of the summoned creature, so it's useful
@@ -36,7 +39,19 @@ const animalModHash = {
   chillspider: (npc: NPC, potency: number) => {
     npc.gainBaseStat('hp', Math.floor(potency * 3000));
     npc.gainBaseStat('str', Math.floor(potency / 4));
-  }
+  },
+  water: (npc: NPC, potency: number) => {
+    npc.gainBaseStat('hp', Math.floor(potency * 3000));
+    npc.gainBaseStat('wis', Math.floor(potency / 3));
+  },
+  light: (npc: NPC, potency: number) => {
+    npc.gainBaseStat('hp', Math.floor(potency * 3000));
+    npc.gainBaseStat('wis', Math.floor(potency / 4));
+  },
+  nature: (npc: NPC, potency: number) => {
+    npc.gainBaseStat('hp', Math.floor(potency * 3000));
+    npc.gainBaseStat('wis', Math.floor(potency / 3));
+  },
 };
 
 class SummonedPet extends Effect {
@@ -111,6 +126,12 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
 
     const allPossibleAnimals = ['deer'];
 
+    // healer animals
+    if(caster.getTraitLevel('FindFamiliarLight'))       allPossibleAnimals.push('light');
+    if(caster.getTraitLevel('FindFamiliarWater'))       allPossibleAnimals.push('water');
+    if(caster.getTraitLevel('FindFamiliarNature'))      allPossibleAnimals.push('nature');
+
+    // mage animals
     if(caster.getTraitLevel('FindFamiliarWolf'))        allPossibleAnimals.push('wolf');
     if(caster.getTraitLevel('FindFamiliarBear'))        allPossibleAnimals.push('bear');
     if(caster.getTraitLevel('FindFamiliarSalamander'))  allPossibleAnimals.push('salamander');

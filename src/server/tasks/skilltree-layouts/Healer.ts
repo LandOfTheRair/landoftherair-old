@@ -143,7 +143,7 @@ const DRUID_TREE = {
     unlocks: ['Snare']
   },
   NatureSpirit4: {
-    unlocks: ['Augury']
+    unlocks: ['Augury', 'FindFamiliar']
   },
 
   IrresistibleStuns0: {
@@ -165,6 +165,18 @@ const DRUID_TREE = {
   },
 
   DebilitatingDisease0: {
+
+  },
+
+  FindFamiliarNature0: {
+
+  },
+
+  FindFamiliarLight0: {
+
+  },
+
+  FindFamiliarWater0: {
 
   },
 
@@ -199,7 +211,11 @@ const DRUID_TREE = {
 
   Augury: {
 
-  }
+  },
+
+  FindFamiliar: {
+    unlocks: ['FindFamiliarNature0', 'FindFamiliarLight0', 'FindFamiliarWater0']
+  },
 };
 
 const BARD_TREE = {

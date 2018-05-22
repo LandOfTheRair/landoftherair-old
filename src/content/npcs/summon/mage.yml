@@ -76,8 +76,7 @@
   sprite: 230
   monsterClass: Beast
   stats: 15
-  skills:
-    Conjuration: 5
+  skills: 5
   level: 1
 
   otherStats:

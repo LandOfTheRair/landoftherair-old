@@ -1199,10 +1199,9 @@
     "LingeringDrain0": {
         "name": "LingeringDrain0",
         "traitName": "LingeringDrain",
-        "desc": "Your Drain spell also leaves a 3 round EoT that continues to drain the target HP.",
+        "desc": "Your Drain spell also leaves a $3|9$ round EoT that continues to drain the target HP.",
         "icon": "wind-hole",
-        "capstone": true,
-        "cost": 10,
+        "cost": 3,
         "cluster": 4,
         "unlockedBy": [
             "Drain"
@@ -1214,7 +1213,7 @@
         "desc": "You have a $5|15$% chance of casting Drain on your melee target when using Rift Slash.",
         "icon": "running-ninja",
         "capstone": true,
-        "cost": 15,
+        "cost": 20,
         "cluster": 4,
         "unlockedBy": [
             "Drain"

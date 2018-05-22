@@ -4,7 +4,6 @@ export * from './BarWater';
 export * from './Combust';
 export * from './Drain';
 export * from './EnergyWave';
-export * from './FindFamiliar';
 export * from './FireMist';
 export * from './Firethorns';
 export * from './Frostspikes';

@@ -13,3 +13,5 @@ export * from './BarFrost';
 
 export * from './Push';
 export * from './Vortex';
+
+export * from './FindFamiliar';

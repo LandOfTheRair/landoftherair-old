@@ -3,7 +3,7 @@
   name: nature spirit
   sprite: 465
   stats: 25
-  skillLevels: 7
+  skillLevels: 5
   level: 1
 
   usableSkills:
@@ -23,9 +23,9 @@
 
 - npcId: Healer Summon Light Spirit
   name: light spirit
-  sprite: 1850
+  sprite: 1860
   stats: 25
-  skillLevels: 7
+  skillLevels: 5
   level: 1
 
   usableSkills:
@@ -44,9 +44,9 @@
 
 - npcId: Healer Summon Water Spirit
   name: water spirit
-  sprite: 260
+  sprite: 180
   stats: 25
-  skillLevels: 7
+  skillLevels: 5
   level: 1
 
   usableSkills:
