@@ -29,14 +29,14 @@ export class UpStairs extends Command {
 
     if(requireParty && !player.party) return player.sendClientMessage('You must gather your party before venturing forth.');
 
+    player.sendClientMessage(`You ${interactable.type === 'StairsUp' ? 'ascend' : 'descend'} the staircase.`);
+
     room.teleport(player, {
       x: teleportX,
       y: teleportY,
       newMap: teleportMap,
       zChange: interactable.type === 'StairsUp' ? 1 : -1
     });
-
-    player.sendClientMessage(`You ${interactable.type === 'StairsUp' ? 'ascend' : 'descend'} the staircase.`);
   }
 
 }

@@ -27,14 +27,14 @@ export class ClimbUp extends Command {
 
     if(requireParty && !player.party) return player.sendClientMessage('You must gather your party before venturing forth.');
 
+    player.sendClientMessage(`You climb ${interactable.type === 'ClimbUp' ? 'up' : 'down'}.`);
+
     room.teleport(player, {
       x: teleportX,
       y: teleportY,
       newMap: teleportMap,
       zChange: interactable.type === 'ClimbUp' ? 1 : -1
     });
-
-    player.sendClientMessage(`You climb ${interactable.type === 'ClimbUp' ? 'up' : 'down'}.`);
   }
 
 }

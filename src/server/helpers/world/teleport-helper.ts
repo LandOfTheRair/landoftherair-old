@@ -82,13 +82,13 @@ export class TeleportHelper {
     }).toArray();
   }
 
-  private doPlayerTeleport(player: Player, opts: { map: string, x: number, y: number, z: number }): void {
+  private async doPlayerTeleport(player: Player, opts: { map: string, x: number, y: number, z: number }) {
 
     player.sendClientMessage('Your vision blurs as you travel through the rift.');
 
     const { map, x, y, z } = opts;
 
-    this.room.teleport(player, {
+    await this.room.teleport(player, {
       newMap: map,
       x: x,
       y: y,
@@ -110,7 +110,7 @@ export class TeleportHelper {
 
     player.hp.set(1);
 
-    this.doPlayerTeleport(player, teleportLocation.teleport);
+    await this.doPlayerTeleport(player, teleportLocation.teleport);
 
     return true;
   }
@@ -132,7 +132,7 @@ export class TeleportHelper {
     const room = player.$$room;
     const teleportees = room.state.getAllInRange(player, 0, [player.uuid]);
 
-    this.doPlayerTeleport(player, teleportLocation.teleport);
+    await this.doPlayerTeleport(player, teleportLocation.teleport);
 
     room.clock.setTimeout(() => {
       teleportees.forEach(target => {
