@@ -12,7 +12,6 @@ export class BeastRipper extends SpellEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.flagUnapply();
     this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 900 * this.potency;
