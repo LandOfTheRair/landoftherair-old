@@ -23,6 +23,7 @@ export const responses = (npc: NPC) => {
       const mod = player.leftHand;
 
       const mergeItems = (newRing, oldRing) => {
+        newRing.enchantLevel = oldRing.enchantLevel;
         Object.keys(oldRing.stats).forEach(stat => {
           if(!newRing.stats[stat]) newRing.stats[stat] = 0;
           newRing.stats[stat] += oldRing.stats[stat];
