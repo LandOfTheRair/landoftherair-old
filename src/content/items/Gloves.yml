@@ -201,3 +201,12 @@
   tier: 3
   desc: "a pair of rocky gloves"
   sprite: -1
+
+- name: Frostlands Frostgolem Gloves
+  stats:
+    defense: 4
+    offense: 4
+  tier: 3
+  damageClass: 'ice'
+  desc: "a pair of rocky gloves"
+  sprite: -1

@@ -15,7 +15,7 @@
   type: Polearm
   value: 10000
   sprite: 230
-  
+
   requirements:
     level: 15
 
@@ -127,6 +127,7 @@
     weaponArmorClass: 15
     defense: 5
   tier: 6
+  damageClass: 'ice'
   type: Polearm
   value: 19511
   sprite: 438
