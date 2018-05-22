@@ -41,6 +41,7 @@ export const BaseItemStatsPerTier = {
   Longbow:              { base: 4, min: 1, max: 3, weakChance: 10, damageBonus: 0 },
   Longsword:            { base: 2, min: 1, max: 2, weakChance: 15, damageBonus: 5 },
   Mace:                 { base: 2, min: 0, max: 2, weakChance: 10, damageBonus: 5 },
+  Saucer:               { base: 0, min: 0, max: 0, weakChance: 10, damageBonus: 0 },
   Shield:               { base: 0, min: 0, max: 0, weakChance: 10, damageBonus: 0 },
   Shortbow:             { base: 3, min: 1, max: 2, weakChance: 10, damageBonus: 0 },
   Shortsword:           { base: 1, min: 1, max: 3, weakChance: 15, damageBonus: 5 },

@@ -135,6 +135,7 @@ class ItemLoader {
       item.type = 'Mace';
       if(!item.stats.accuracy) item.stats.accuracy = 0;
       if(!item.stats.mitigation) item.stats.mitigation = 5;
+      if(!item.tier) item.tier = 1;
     }
 
     if(item.type === 'Twohanded' || item.secondaryType === 'Twohanded') {
