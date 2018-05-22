@@ -32,90 +32,90 @@ process.on('uncaughtException', e => {
   Logger.error(e);
 });
 
-DB.init();
+DB.init()
+  .then(() => {
 
-const port = process.env.PORT || 3303;
+    const port = process.env.PORT || 3303;
 
-const mapPath = process.env.NODE_ENV === 'production' ? '' : '../content';
+    const mapPath = process.env.NODE_ENV === 'production' ? '' : '../content';
 
-if(process.argv[2] === '--single-core') {
+    if(process.argv[2] === '--single-core') {
 
-  const api = new GameAPI();
+      const api = new GameAPI();
 
-  const server = http.createServer(api.expressApp);
+      const server = http.createServer(api.expressApp);
 
-  const gameServer = new Server({
-    engine: WebSocket.Server,
-    server
-  });
-
-  Logger.log(`[Single] Started server on port ${port}`);
-
-  gameServer.register('Lobby', Rooms.Lobby);
-
-  const allMapNames = {};
-
-  recurse(`${__dirname}/${mapPath}/maps`).then(files => {
-    files.forEach(file => {
-      const mapName = path.basename(file, path.extname(file));
-      allMapNames[mapName] = true;
-      const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
-      gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
-    });
-
-    api.expressApp.use('/colyseus', monitor(gameServer));
-
-    gameServer.matchMaker.create('Lobby', {});
-
-    server.listen(port);
-  });
-
-} else {
-
-  if(cluster.isMaster) {
-
-    Logger.log(`[Parent] Started server on port ${port}`);
-
-    for (let i = 0; i < require('os').cpus().length; i++) {
-      cluster.fork();
-    }
-
-  } else {
-
-    Logger.log(`[Child] Started server on port ${port}`);
-
-    const api = new GameAPI();
-    const server = http.createServer(api.expressApp);
-
-    const gameServer = new Server({
-      engine: WebSocket.Server,
-      presence: new MemsharedPresence(),
-      server
-    });
-
-    gameServer.register('Lobby', Rooms.Lobby);
-
-    const allMapNames = {};
-
-    recurse(`${__dirname}/${mapPath}/maps`).then(files => {
-      files.forEach(file => {
-        const mapName = path.basename(file, path.extname(file));
-        allMapNames[mapName] = true;
-        const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
-        gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
-
-        if(!includes(mapName, '-Dungeon')) {
-          gameServer.matchMaker.create(mapName, {});
-        }
+      const gameServer = new Server({
+        engine: WebSocket.Server,
+        server
       });
 
-      if(process.env.NODE_ENV !== 'production') {
-        api.expressApp.use('/colyseus', monitor(gameServer));
-      }
+      Logger.log(`[Single] Started server on port ${port}`);
 
+      gameServer.register('Lobby', Rooms.Lobby);
       gameServer.matchMaker.create('Lobby', {});
 
-      server.listen(port);
-    });
-  }
-}
+      const allMapNames = {};
+
+      recurse(`${__dirname}/${mapPath}/maps`).then(files => {
+        files.forEach(file => {
+          const mapName = path.basename(file, path.extname(file));
+          allMapNames[mapName] = true;
+          const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
+          gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
+        });
+
+        api.expressApp.use('/colyseus', monitor(gameServer));
+
+        server.listen(port);
+      });
+
+    } else {
+
+      if(cluster.isMaster) {
+
+        Logger.log(`[Parent] Started server on port ${port}`);
+
+        for (let i = 0; i < require('os').cpus().length; i++) {
+          cluster.fork();
+        }
+
+      } else {
+
+        Logger.log(`[Child] Started server on port ${port}`);
+
+        const api = new GameAPI();
+        const server = http.createServer(api.expressApp);
+
+        const gameServer = new Server({
+          engine: WebSocket.Server,
+          presence: new MemsharedPresence(),
+          server
+        });
+
+        gameServer.register('Lobby', Rooms.Lobby);
+        gameServer.matchMaker.create('Lobby', {});
+
+        const allMapNames = {};
+
+        recurse(`${__dirname}/${mapPath}/maps`).then(files => {
+          files.forEach(file => {
+            const mapName = path.basename(file, path.extname(file));
+            allMapNames[mapName] = true;
+            const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
+            gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
+
+            if(!includes(mapName, '-Dungeon')) {
+              gameServer.matchMaker.create(mapName, {});
+            }
+          });
+
+          if(process.env.NODE_ENV !== 'production') {
+            api.expressApp.use('/colyseus', monitor(gameServer));
+          }
+
+          server.listen(port);
+        });
+      }
+    }
+  });
