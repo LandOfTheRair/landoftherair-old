@@ -28,6 +28,8 @@ export class InstancedDungeon extends GameWorld {
     }
 
     await super.onInit(options);
+
+    this.autoDispose = true;
   }
 
   async onJoin(client, options): Promise<boolean> {

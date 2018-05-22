@@ -181,6 +181,8 @@ export class GameWorld extends Room<GameState> {
   }
 
   async onInit(opts) {
+    this.autoDispose = false;
+
     this.redis = new Redis();
 
     this.allMapNames = opts.allMapNames;
@@ -858,6 +860,8 @@ export class GameWorld extends Room<GameState> {
   }
 
   private tick() {
+    if(this.state.allPlayers.length === 0) return;
+
     this.ticks++;
 
     const ACTIVE_PLAYER_RANGE = 6;
