@@ -6,7 +6,7 @@ export class MartialAcuity extends Trait {
 
   static baseClass = 'Warrior';
   static traitName = 'MartialAcuity';
-  static description = 'Gain a +$1|3$ offensive bonus when trying to physically hit another creature.';
+  static description = 'Gain a +$1|3$ to-hit bonus when trying to physically hit another creature.';
   static icon = 'armor-punch';
 
   static upgrades = [
