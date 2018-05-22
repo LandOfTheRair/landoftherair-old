@@ -386,13 +386,13 @@ export class CombatHelper {
     defender.addAgro(attacker, 1);
 
     // try to dodge
-    const attackerDodgeBlockLeftSide = Math.floor(10 + attackerScope.skill + attackerScope.offense + attackerScope.accuracy);
+    const attackerDodgeBlockLeftSide = Math.floor(10 + attackerScope.skill + attackerScope.offense);
     const attackerDodgeBlockRightSide = Math.floor(attackerScope.dex + attackerScope.skill);
 
     const defenderDodgeBlockLeftSide = Math.floor(1 + defenderScope.defense);
     const defenderDodgeRightSide = Math.floor(defenderScope.dex4 + defenderScope.agi + defenderScope.level + defenderScope.riposteLevel);
 
-    const attackerDodgeRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`);
+    const attackerDodgeRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`) + attackerScope.accuracy;
     let defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`);
 
     if(defender.isNaturalResource) defenderDodgeRoll = 0;
