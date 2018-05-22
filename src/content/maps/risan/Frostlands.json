@@ -8091,7 +8091,7 @@
                  "name":"Portal",
                  "properties":
                     {
-                     "teleportMap":"TowerOfSelen",
+                     "teleportMap":"RisanMines",
                      "teleportX":13,
                      "teleportY":6
                     },

@@ -24,7 +24,7 @@ export class DefaultAIBehavior {
 
     if(npc.$$hadRightHandAtSpawn && !npc.rightHand && (!npc.leftHand || !npc.leftHand.twoHanded)) {
       WeaponClasses.forEach(itemClass => {
-        if(itemClass === 'Shield') return;
+        if(includes(ShieldClasses, itemClass)) return;
 
         const items = ground[itemClass];
         if(!items || !items.length) return;
