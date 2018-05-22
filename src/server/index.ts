@@ -113,7 +113,6 @@ DB.init()
           if(process.env.NODE_ENV !== 'production') {
             api.expressApp.use('/colyseus', monitor(gameServer));
           }
-
           server.listen(port);
         });
       }

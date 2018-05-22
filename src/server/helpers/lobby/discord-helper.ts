@@ -62,6 +62,8 @@ export class DiscordHelper {
     }
 
     DiscordHelper.discord.on('message', ({ content, channel, author, member }) => {
+      if(!channel || !DiscordHelper.discordChannel || !DiscordHelper.discordBotChannel) return;
+
       if(channel.id === DiscordHelper.discordChannel.id) DiscordHelper.parseLobbyMessage({ content, author });
       if(channel.id === DiscordHelper.discordBotChannel.id) DiscordHelper.parseBotMessage({ content, channel, member });
     });
