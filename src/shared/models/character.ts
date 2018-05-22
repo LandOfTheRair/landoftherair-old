@@ -278,7 +278,8 @@ export class Character {
   }
 
   get dispellableEffects(): Effect[] {
-    return this.effectsList.filter(x => x.canBeUnapplied);
+    const noClear = ['Nourishment', 'Malnourished'];
+    return this.effectsList.filter(x => x.canBeUnapplied && !includes(noClear, x.name));
   }
 
   get augmentEffectsList(): AugmentSpellEffect[] {
