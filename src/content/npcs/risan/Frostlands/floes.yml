@@ -77,7 +77,7 @@
 
   usableSkills:
     - IceMist
-    - PoisonBiteStrong
+    - PoisonBiteWeak
     - ChillBiteStrong
 
   baseEffects:
