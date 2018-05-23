@@ -111,7 +111,8 @@ export class Game {
     });
   }
 
-  public isSamePlayer(username: string) {
+  public isSamePlayer(username: string): boolean {
+    if(!this.player) return false;
     return username === this.player.username;
   }
 
@@ -219,7 +220,7 @@ export class Game {
 
   private createPlayer(player: Player) {
     if(!player) return;
-    if(player.map !== this.clientGameState.currentPlayer.map) {
+    if(player.map !== this.player.map && !this.isSamePlayer(player.username)) {
       this.removePlayer(player);
       return;
     }
