@@ -147,6 +147,8 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   isThereAWallAt(checkX: number, checkY: number) {
+    if(!this.currentPlayer) return false;
+
     const map = this.map;
     const { width, layers } = map;
     const { x, y } = this.currentPlayer;
@@ -162,6 +164,8 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   isLightAt(x: number, y: number) {
+    if(!this.currentPlayer) return false;
+
     const lightVal = get(this.clientGameState.darkness, ['x' + (x + this.currentPlayer.x), 'y' + (y + this.currentPlayer.y)]);
     return !lightVal || lightVal < -1;
   }
@@ -176,6 +180,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   canDarkSee(x: number, y: number) {
+    if(!this.currentPlayer) return false;
 
     if(!this.clientGameState.darkness['x' + (x + this.currentPlayer.x)]) return false;
 

@@ -15,7 +15,15 @@ import { SkillTree } from '../../shared/models/skill-tree';
 export class ClientGameState {
   fovArray = Array(9).fill(null).map((x, i) => i - 4);
 
-  currentPlayer: Player;
+  _currentPlayer: Player;
+
+  public set currentPlayer(player: Player) {
+    this._currentPlayer = player;
+  }
+
+  public get currentPlayer() {
+    return this._currentPlayer;
+  }
 
   private playerHash: { [key: string]: Player } = {};
   map: any = {};

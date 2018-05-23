@@ -10,24 +10,35 @@ import { values } from 'lodash';
 })
 export class StatusWindowComponent {
 
+  public get player() {
+    return this.colyseusGame.character;
+  }
+
   get healthPercent(): number {
-    return this.colyseusGame.character.hp.__current / this.colyseusGame.character.hp.maximum * 100;
+    if(!this.player) return 0;
+
+    return this.player.hp.__current / this.player.hp.maximum * 100;
   }
 
   get magicPercent(): number {
+    if(!this.player) return 0;
+
     // show full bar even if 0/0
-    if(this.colyseusGame.character.mp.maximum === 0) return 100;
-    return this.colyseusGame.character.mp.__current / this.colyseusGame.character.mp.maximum * 100;
+    if(this.player.mp.maximum === 0) return 100;
+    return this.player.mp.__current / this.player.mp.maximum * 100;
   }
 
   get xpPercent(): number {
-    const baseXp = this.colyseusGame.character.calcLevelXP(this.colyseusGame.character.level);
-    const neededXp = this.colyseusGame.character.calcLevelXP(this.colyseusGame.character.level + 1);
-    return Math.min(100, (this.colyseusGame.character.exp - baseXp) / (neededXp - baseXp) * 100);
+    if(!this.player) return 0;
+
+    const baseXp = this.player.calcLevelXP(this.player.level);
+    const neededXp = this.player.calcLevelXP(this.player.level + 1);
+    return Math.min(100, (this.player.exp - baseXp) / (neededXp - baseXp) * 100);
   }
 
   get allEffects(): any[] {
-    return values(this.colyseusGame.character.effects);
+    if(!this.player) return [];
+    return values(this.player.effects);
   }
 
   constructor(public colyseusGame: ColyseusGameService) { }

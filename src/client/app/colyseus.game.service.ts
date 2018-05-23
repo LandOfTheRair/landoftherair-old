@@ -43,6 +43,7 @@ export class ColyseusGameService {
   currentTarget: string;
 
   private changingMap: boolean;
+  private isQuitting: boolean;
 
   public lastCommands: string[];
 
@@ -76,6 +77,8 @@ export class ColyseusGameService {
   public isLoggingCombat: boolean;
   public combatLogMax: number;
   public combatLogs: any[] = [];
+
+  private loadedCharacterSlot: number;
 
   constructor(
     private localStorage: LocalStorageService
@@ -114,6 +117,7 @@ export class ColyseusGameService {
   init(colyseus, client, character) {
     this.colyseus = colyseus;
     this.client = client;
+    this.loadedCharacterSlot = character.charSlot;
     this.setCharacter(character);
 
     this.clientGameState.loadPlayer$.next();
@@ -254,6 +258,7 @@ export class ColyseusGameService {
       this.clientGameState.hasLoadedMeInNewMap = false;
       this.clientGameState.removeAllPlayers();
       if(this.changingMap) return;
+
       this.inGame$.next(false);
       this._inGame = false;
       this._joiningGame = false;
@@ -283,7 +288,9 @@ export class ColyseusGameService {
   }
 
   private setCharacter(character) {
+    if(this.isQuitting) return;
     if(!character) return;
+    if(character.charSlot !== this.loadedCharacterSlot) return;
 
     const hasOldCharacter = this.character;
 
@@ -673,14 +680,20 @@ export class ColyseusGameService {
   }
 
   public quit() {
-    this.unshowWindows();
-    this.clientGameState.reset();
+    this.clientGameState.currentPlayer = null;
+    this.isQuitting = true;
 
-    this.resetRoom();
+    setTimeout(() => {
+      this.unshowWindows();
+      this.clientGameState.reset();
 
-    if(this.colyseus && this.colyseus.lobby) {
-      this.colyseus.lobby.quit();
-    }
+      this.resetRoom();
+
+      if(this.colyseus && this.colyseus.lobby) {
+        this.colyseus.lobby.quit();
+        this.isQuitting = false;
+      }
+    });
   }
 
   private canMoveBetweenContainers(context: string, choice: string): boolean {

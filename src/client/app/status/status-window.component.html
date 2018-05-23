@@ -20,15 +20,15 @@
 
         <div class="progress" tooltip="HP" container="body" [class.critical]="healthPercent < 20">
           <div class="progress-bar bg-danger" [style.width]="healthPercent + '%'"></div>
-          <div class="progress-bar-text">{{ colyseusGame.character.hp.__current }}/{{ colyseusGame.character.hp.maximum }}</div>
+          <div class="progress-bar-text" *ngIf="player">{{ player.hp.__current }}/{{ player.hp.maximum }}</div>
         </div>
 
       </div>
-      <div class="col-6 p-0" *ngIf="colyseusGame.character.mp.maximum > 0">
+      <div class="col-6 p-0" *ngIf="player && player.mp.maximum > 0">
 
         <div class="progress" tooltip="MP" container="body">
           <div class="progress-bar bg-primary" [style.width]="magicPercent + '%'"></div>
-          <div class="progress-bar-text">{{ colyseusGame.character.mp.__current }}/{{ colyseusGame.character.mp.maximum }}</div>
+          <div class="progress-bar-text" *ngIf="player">{{ player.mp.__current }}/{{ player.mp.maximum }}</div>
         </div>
 
       </div>
@@ -36,9 +36,9 @@
     <div class="row m-0 needs-min-height">
       <div class="col-12 p-0">
 
-        <div class="progress" [tooltip]="'Experience Level ' + colyseusGame.character.level" container="body">
+        <div class="progress" [tooltip]="'Experience Level ' + player.level" container="body" *ngIf="player">
           <div class="progress-bar bg-success" [style.width]="xpPercent + '%'"></div>
-          <div class="progress-bar-text">{{ colyseusGame.character.exp | number }}</div>
+          <div class="progress-bar-text">{{ player.exp | number }}</div>
         </div>
 
       </div>

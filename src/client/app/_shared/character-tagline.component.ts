@@ -4,7 +4,7 @@ import { Player } from '../../../shared/models/player';
 @Component({
   selector: 'app-character-tagline',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `{{ player.name }} the {{ player.alignment }} level {{ player.level }} {{ player.baseClass }}`
+  template: `<span *ngIf="player">{{ player.name }} the {{ player.alignment }} level {{ player.level }} {{ player.baseClass }}</span>`
 })
 export class PlayerTaglineComponent {
 

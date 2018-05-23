@@ -219,7 +219,7 @@ export class Game {
   }
 
   private createPlayer(player: Player) {
-    if(!player) return;
+    if(!player || !this.player) return;
     if(player.map !== this.player.map && !this.isSamePlayer(player.username)) {
       this.removePlayer(player);
       return;
