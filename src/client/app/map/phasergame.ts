@@ -219,6 +219,10 @@ export class Game {
 
   private createPlayer(player: Player) {
     if(!player) return;
+    if(player.map !== this.clientGameState.currentPlayer.map) {
+      this.removePlayer(player);
+      return;
+    }
 
     if(this.isSamePlayer(player.username)) {
       if(this.playerSprite) this.playerSprite.destroy();

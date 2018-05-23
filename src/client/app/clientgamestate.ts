@@ -50,6 +50,8 @@ export class ClientGameState {
 
   setMap$ = new BehaviorSubject({});
 
+  public hasLoadedMeInNewMap: boolean;
+
   get players() {
     return values(this.playerHash);
   }
@@ -214,6 +216,9 @@ export class ClientGameState {
   }
 
   private addPlayer(player: Player) {
+    if(player.username === this.currentPlayer.username) this.hasLoadedMeInNewMap = true;
+    if(!this.hasLoadedMeInNewMap) return;
+
     this.createPlayer$.next(player);
   }
 
@@ -350,6 +355,6 @@ export class ClientGameState {
     this.environmentalObjects = [];
     this.fov = {};
     this.mapData = { openDoors: {} };
-    this.playerHash = {};
+    this.removeAllPlayers();
   }
 }
