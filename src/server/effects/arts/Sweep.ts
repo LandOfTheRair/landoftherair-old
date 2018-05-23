@@ -13,9 +13,9 @@ export class Sweep extends WeaponEffect {
   protected skillRequired = Sweep.skillRequired;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    const numTargets = 12;
+    const numTargets = 9;
 
-    const attacked = sampleSize(target.$$room.state.getAllInRange(target, 0, [caster.uuid]), numTargets);
+    const attacked = sampleSize(target.$$room.state.getAllInRange(target, 0, [caster.uuid], false), numTargets);
 
     attacked.forEach(refTarget => {
       CombatHelper.physicalAttack(caster, refTarget, { isKick: true });
