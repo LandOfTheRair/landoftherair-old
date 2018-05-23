@@ -240,6 +240,7 @@ export class Game {
   }
 
   updatePlayer(player: Player) {
+    if(!player) return;
     if(this.isSamePlayer(player.username)) {
       if(!this.playerSprite) return;
 
@@ -257,6 +258,7 @@ export class Game {
   }
 
   removePlayer(player: Player) {
+    if(!player) return;
     if(this.isSamePlayer(player.username)) {
       if(!this.playerSprite) return;
       this.playerSprite.destroy();
