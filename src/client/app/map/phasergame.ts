@@ -107,10 +107,6 @@ export class Game {
     this.colyseus.game.vfx$.subscribe(nextVfx => {
       this.drawVfx(nextVfx);
     });
-
-    this.colyseus.game.myLoc$.subscribe(() => {
-      this.focusCameraOnPlayer();
-    });
   }
 
   private drawVfx({ effect, tiles }) {
@@ -632,6 +628,7 @@ export class Game {
       if(this.isSamePlayer(player.username)) {
         this.eagleeyeCheck();
         this.truesightCheck();
+        this.focusCameraOnPlayer();
       }
     });
   }
