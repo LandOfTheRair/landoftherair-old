@@ -62,8 +62,6 @@ export class Game {
     Interactables: {}
   };
 
-  private playersNeedingCreation: Player[] = [];
-
   private currentBgm: string;
   private bgms = {};
   private sfxs = {};
@@ -80,6 +78,10 @@ export class Game {
 
   private get player() {
     return this.clientGameState.currentPlayer;
+  }
+
+  get g(): any {
+    return <any>this;
   }
 
   constructor(private clientGameState: ClientGameState, private assetService, public colyseus) {
@@ -109,11 +111,6 @@ export class Game {
     this.colyseus.game.myLoc$.subscribe(() => {
       this.focusCameraOnPlayer();
     });
-  }
-
-  public isSamePlayer(username: string): boolean {
-    if(!this.player) return false;
-    return username === this.player.username;
   }
 
   private drawVfx({ effect, tiles }) {
@@ -212,70 +209,6 @@ export class Game {
   private focusCameraOnPlayer() {
     if(!this.g || !this.g.camera || !this.player) return;
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
-  }
-
-  public createPlayerShell(player: Player) {
-    this.playersNeedingCreation.push(player);
-  }
-
-  private createPlayer(player: Player) {
-    if(!player || !this.player) return;
-    if(player.map !== this.player.map && !this.isSamePlayer(player.username)) {
-      this.removePlayer(player);
-      return;
-    }
-
-    if(this.isSamePlayer(player.username)) {
-      if(this.playerSprite) this.playerSprite.destroy();
-
-      // duplicated code so we don't dupe the sprite
-      const sprite = this.getPlayerSprite(player);
-      this.playerSprite = sprite;
-
-    } else {
-      if(this.playerSpriteHash[player.username]) return;
-      const sprite = this.getPlayerSprite(player);
-      this.playerSpriteHash[player.username] = sprite;
-      this.otherPlayerSprites.add(sprite);
-    }
-  }
-
-  updatePlayer(player: Player) {
-    if(!player) return;
-    if(this.isSamePlayer(player.username)) {
-      if(!this.playerSprite) return;
-
-      this.updatePlayerSprite(this.playerSprite, player);
-      this.truesightCheck();
-      this.eagleeyeCheck();
-    } else {
-      let sprite = this.playerSpriteHash[player.username];
-      if(!sprite) {
-        this.createPlayer(player);
-        sprite = this.playerSpriteHash[player.username];
-      }
-      this.updatePlayerSprite(sprite, player);
-    }
-  }
-
-  removePlayer(player: Player) {
-    if(!player) return;
-    if(this.isSamePlayer(player.username)) {
-      if(!this.playerSprite) return;
-      this.playerSprite.destroy();
-      delete this.playerSprite;
-
-    } else {
-      if(!this.otherPlayerSprites) return;
-      const oldSprite = this.playerSpriteHash[player.username];
-      if(!oldSprite) return;
-      oldSprite.destroy();
-      delete this.playerSpriteHash[player.username];
-    }
-  }
-
-  get g(): any {
-    return <any>this;
   }
 
   getStartingSpriteForSex(player: Player) {
@@ -401,6 +334,11 @@ export class Game {
       this.isRenderingEagleEye = true;
 
     }
+  }
+
+  public isSamePlayer(username: string): boolean {
+    if(!this.player) return false;
+    return username === this.player.username;
   }
 
   private notInRange(centerX, centerY, x, y) {
@@ -668,12 +606,41 @@ export class Game {
     });
   }
 
-  private createNewPlayers() {
-    this.playersNeedingCreation.forEach(player => {
-      this.createPlayer(player);
-    });
+  private createPlayerSprites() {
+    this.clientGameState.players.forEach(player => {
+      let sprite = this.playerSpriteHash[player.uuid];
 
-    this.playersNeedingCreation = [];
+      if(!sprite) {
+        sprite = this.getPlayerSprite(player);
+        this.playerSpriteHash[player.uuid] = sprite;
+        this.otherPlayerSprites.add(sprite);
+
+      } else {
+
+        if(this.isSamePlayer(player.username)) {
+          this.updatePlayerSprite(this.playerSprite, player);
+        } else {
+          this.updatePlayerSprite(sprite, player);
+        }
+
+      }
+
+      if(this.isSamePlayer(player.username)) {
+        this.eagleeyeCheck();
+        this.truesightCheck();
+      }
+    });
+  }
+
+  private removeOldPlayerSprites() {
+    Object.keys(this.playerSpriteHash).forEach(playerUUID => {
+      const isPlayerInHash = this.clientGameState.findPlayer(playerUUID);
+      if(isPlayerInHash) return;
+
+      const sprite = this.playerSpriteHash[playerUUID];
+      sprite.destroy();
+      delete this.playerSpriteHash[playerUUID];
+    });
   }
 
   preload() {
@@ -736,7 +703,11 @@ export class Game {
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 
     this.createLayers();
-    this.createPlayer(this.player);
+
+    this.playerSprite = this.getPlayerSprite(this.player);
+    this.playerSpriteHash[this.player.username] = this.playerSprite;
+    this.g.camera.follow(this.playerSprite);
+    this.g.camera.targetOffset.set(32);
 
     // probably an early exit
     if(this.map.tilesets.length === 0) return;
@@ -789,13 +760,6 @@ export class Game {
     this.g.camera.fade('#000', 1);
   }
 
-  update() {
-    if(!this.colyseus.game._inGame || !this.player) return;
-
-    // center on player mid
-    this.focusCameraOnPlayer();
-  }
-
   render() {
     if(!this.colyseus.game._inGame || !this.player) return;
 
@@ -810,7 +774,8 @@ export class Game {
       this.updateDoors();
     }
 
-    this.createNewPlayers();
+    this.removeOldPlayerSprites();
+    this.createPlayerSprites();
 
     this.removeOldItemSprites(this.player.x, this.player.y);
     this.showItemSprites(this.player.x, this.player.y);

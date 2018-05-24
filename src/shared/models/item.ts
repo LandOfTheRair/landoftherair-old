@@ -323,7 +323,7 @@ export class Item {
     const skillText = this.requirements && this.requirements.skill ? `This item requires ${formattedSkill} skill ${this.requirements.skill.level}. ` : '';
 
     /** PERK:CLASS:THIEF:Thieves can automatically appraise items by double clicking them after skill 7. */
-    const canAppraise = player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
+    const canAppraise = player && player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
     const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';
 
     const usefulText = this.canUseExpiration() ? '' : `This item does not appear useful anymore. `;

@@ -47,9 +47,6 @@ export class ClientGameState {
     openDoors: []
   };
 
-  createPlayer$ = new Subject<Player>();
-  updatePlayer$ = new Subject<Player>();
-  removePlayer$ = new Subject<Player>();
   playerBoxes$  = new Subject<{ newPlayer: Player, oldPlayer: Player }>();
 
   loadPlayer$   = new Subject<any>();
@@ -219,46 +216,31 @@ export class ClientGameState {
       });
     }
 
-    addPlayers.forEach(p => this.addPlayer(this.playerHash[p]));
+    // addPlayers.forEach(p => this.addPlayer(this.playerHash[p]));
     delPlayers.forEach(p => this.removePlayer(this.playerHash[p]));
-  }
-
-  private addPlayer(player: Player) {
-    if(player.username === this.currentPlayer.username) this.hasLoadedMeInNewMap = true;
-    if(!this.hasLoadedMeInNewMap) return;
-
-    this.createPlayer$.next(player);
-  }
-
-  private removePlayer(player: Player) {
-    delete this.playerHash[player.username];
-    this.removePlayer$.next(player);
   }
 
   findPlayer(username) {
     return this.playerHash[username];
   }
 
-  private _updatePlayerAtIndex(playerIndex) {
-    this.updatePlayer$.next(this.playerHash[playerIndex]);
+  private removePlayer(player: Player) {
+    delete this.playerHash[player.username];
   }
 
   updatePlayerStealth(playerIndex, stealth) {
     if(!this.playerHash[playerIndex]) return;
     (<any>this.playerHash[playerIndex]).totalStats.stealth = stealth;
-    this._updatePlayerAtIndex(playerIndex);
   }
 
   updatePlayerPerception(playerIndex, perception) {
     if(!this.playerHash[playerIndex]) return;
     (<any>this.playerHash[playerIndex]).totalStats.perception = perception;
-    this._updatePlayerAtIndex(playerIndex);
   }
 
   updatePlayer(playerIndex, attr, val) {
     if(!this.playerHash[playerIndex]) return;
     this.playerHash[playerIndex][attr] = val;
-    this._updatePlayerAtIndex(playerIndex);
   }
 
   updatePlayerEffect(change) {
@@ -287,8 +269,6 @@ export class ClientGameState {
         delete effectRef[effectIndex];
       }
     }
-
-    this._updatePlayerAtIndex(playerIndex);
   }
 
   private __updatePlayerAttribute(playerIndex, attr, key, val) {
@@ -324,10 +304,6 @@ export class ClientGameState {
   }
 
   removeAllPlayers() {
-    values(this.playerHash).forEach((p) => {
-      this.removePlayer$.next(p);
-    });
-
     this.playerHash = {};
   }
 

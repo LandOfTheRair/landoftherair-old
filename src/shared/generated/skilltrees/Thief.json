@@ -335,7 +335,8 @@
         "cost": 3,
         "unlocks": [
             "DarkerShadows1",
-            "ShadowSheath1"
+            "ShadowSheath1",
+            "TrueSight"
         ],
         "cluster": 2,
         "unlockedBy": [
@@ -492,6 +493,17 @@
         "cluster": 2,
         "unlockedBy": [
             "Darkness"
+        ]
+    },
+    "TrueSight": {
+        "name": "TrueSight",
+        "desc": "See hidden walls and other hidden features. Cost: 25 MP",
+        "icon": "all-seeing-eye",
+        "iconColor": "#00a",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "DarkerShadows0"
         ]
     },
     "Rogue": {

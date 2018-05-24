@@ -97,7 +97,7 @@ const NINJA_TREE = {
   },
 
   DarkerShadows0: {
-    unlocks: ['DarkerShadows1', 'ShadowSheath1']
+    unlocks: ['DarkerShadows1', 'ShadowSheath1', 'TrueSight']
   },
   DarkerShadows1: {
     unlocks: ['DarkerShadows2', 'ShadowSheath2']
@@ -136,6 +136,10 @@ const NINJA_TREE = {
   },
 
   ShadowClones: {
+
+  },
+
+  TrueSight: {
 
   }
 };

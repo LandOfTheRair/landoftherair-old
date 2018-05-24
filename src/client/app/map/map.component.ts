@@ -30,9 +30,6 @@ export class MapComponent implements OnInit, OnDestroy {
 
   start$: any;
 
-  create$: any;
-  update$: any;
-  remove$: any;
   boxes$:  any;
 
   started: boolean;
@@ -93,24 +90,6 @@ export class MapComponent implements OnInit, OnDestroy {
 
       this.phaser = new (<any>window).Phaser.Game(config);
 
-      this.create$ = this.clientGameState.createPlayer$.subscribe((addPlayer) => {
-
-        this.clientGameState.players.forEach(player => {
-          this.game.createPlayerShell(player);
-        });
-
-      });
-
-      this.update$ = this.clientGameState.updatePlayer$.subscribe((player) => {
-        if(!this.game.isLoaded) return;
-
-        this.game.updatePlayer(player);
-      });
-
-      this.remove$ = this.clientGameState.removePlayer$.subscribe((player) => {
-        this.game.removePlayer(player);
-      });
-
       this.boxes$ = this.clientGameState.playerBoxes$.subscribe(({ newPlayer, oldPlayer }) => {
         if(!this.game.isLoaded || !newPlayer || !oldPlayer) return;
 
@@ -135,9 +114,6 @@ export class MapComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.start$.unsubscribe();
 
-    if(this.create$) this.create$.unsubscribe();
-    if(this.update$) this.update$.unsubscribe();
-    if(this.remove$) this.remove$.unsubscribe();
     if(this.boxes$)  this.boxes$.unsubscribe();
 
     this.game.reset();
