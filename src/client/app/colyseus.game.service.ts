@@ -923,6 +923,8 @@ export class ColyseusGameService {
     if(!char) return '';
 
     const me = this.character;
+    if(!me) return '';
+
     const diffX = char.x - me.x;
     const diffY = char.y - me.y;
 
