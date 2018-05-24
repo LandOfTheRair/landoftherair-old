@@ -615,6 +615,10 @@ export class Game {
         this.playerSpriteHash[player.uuid] = sprite;
         this.otherPlayerSprites.add(sprite);
 
+        if(this.isSamePlayer(player.username)) {
+          this.playerSprite = sprite;
+        }
+
       } else {
 
         if(this.isSamePlayer(player.username)) {
@@ -703,11 +707,8 @@ export class Game {
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 
     this.createLayers();
-
-    this.playerSprite = this.getPlayerSprite(this.player);
-    this.playerSpriteHash[this.player.username] = this.playerSprite;
-    this.g.camera.follow(this.playerSprite);
-    this.g.camera.targetOffset.set(32);
+    // this.g.camera.follow(this.playerSprite);
+    // this.g.camera.targetOffset.set(32);
 
     // probably an early exit
     if(this.map.tilesets.length === 0) return;
