@@ -8,12 +8,6 @@ import { HPBox, XPBox } from './floating-box';
 import { AssetService } from '../asset.service';
 
 import { get } from 'lodash';
-import { MapLayer } from '../../../shared/models/maplayer';
-
-enum TilesWithNoFOVUpdate {
-  Empty = 0,
-  Air = 2386
-}
 
 @Component({
   selector: 'app-map',
@@ -120,49 +114,6 @@ export class MapComponent implements OnInit, OnDestroy {
     this.phaser.destroy();
 
     this.cleanCanvases();
-  }
-
-  isThereAWallAt(checkX: number, checkY: number) {
-    if(!this.currentPlayer) return false;
-
-    const map = this.map;
-    const { width, layers } = map;
-    const { x, y } = this.currentPlayer;
-
-    const totalX = x + checkX;
-    const totalY = y + checkY;
-
-    const hasSecretWall = get(this.clientGameState.secretWallHash, [totalX, totalY]);
-
-    const wallLayerTile = layers[MapLayer.Walls].data[(width * totalY) + totalX];
-
-    return hasSecretWall || (wallLayerTile !== TilesWithNoFOVUpdate.Empty && wallLayerTile !== TilesWithNoFOVUpdate.Air);
-  }
-
-  isLightAt(x: number, y: number) {
-    if(!this.currentPlayer) return false;
-
-    const lightVal = get(this.clientGameState.darkness, ['x' + (x + this.currentPlayer.x), 'y' + (y + this.currentPlayer.y)]);
-    return !lightVal || lightVal < -1;
-  }
-
-  shouldRenderXY(x: number, y: number) {
-
-    const val = get(this.colyseus.game.clientGameState.fov, [x, y]);
-
-    return this.game
-        && this.game.shouldRender
-        && val;
-  }
-
-  canDarkSee(x: number, y: number) {
-    if(!this.currentPlayer) return false;
-
-    if(!this.clientGameState.darkness['x' + (x + this.currentPlayer.x)]) return false;
-
-    const darkCheck = this.clientGameState.darkness['x' + (x + this.currentPlayer.x)]['y' + (y + this.currentPlayer.y)];
-
-    return (darkCheck === -1 || darkCheck > 0) && this.currentPlayer.hasEffect('DarkVision');
   }
 
 }

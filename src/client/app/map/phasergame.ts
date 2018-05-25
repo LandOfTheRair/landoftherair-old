@@ -1,7 +1,7 @@
 
 import * as TiledPlugin from 'phaser-tiled';
 
-import { find, compact, difference, values, forEach } from 'lodash';
+import { find, compact, difference, values, forEach, get } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
 
@@ -12,6 +12,11 @@ import { TrueSightMap, TrueSightMapReversed, VerticalDoorGids } from './phaserco
 import { MapLayer } from '../../../shared/models/maplayer';
 
 const cacheKey = TiledPlugin.utils.cacheKey;
+
+enum TilesWithNoFOVUpdate {
+  Empty = 0,
+  Air = 2386
+}
 
 const SFXMap = {
   'combat self block armor': 'combat-block-armor',
@@ -59,7 +64,8 @@ export class Game {
     Decor: {},
     DenseDecor: {},
     OpaqueDecor: {},
-    Interactables: {}
+    Interactables: {},
+    FOV: {}
   };
 
   private currentBgm: string;
@@ -68,6 +74,8 @@ export class Game {
 
   public isLoaded: boolean;
   private hasFlashed: boolean;
+
+  private fovSprites: any = {};
 
   public get shouldRender() {
     if(!this.g || !this.g.camera || !this.playerSprite) return false;
@@ -177,6 +185,10 @@ export class Game {
 
     if(this.vfx) {
       this.vfx.destroy();
+    }
+
+    if(this.groups.FOV) {
+      this.groups.FOV.destroy();
     }
 
     this.visibleNPCUUIDHash = {};
@@ -561,6 +573,8 @@ export class Game {
     this.vfx = this.g.add.group();
     this.visibleNPCs = this.g.add.group();
     this.otherPlayerSprites = this.g.add.group();
+
+    this.groups.FOV = this.g.add.group();
   }
 
   private drawEnvironmentalObjects(centerX, centerY) {
@@ -642,6 +656,121 @@ export class Game {
       sprite.destroy();
       delete this.playerSpriteHash[playerUUID];
     });
+  }
+
+  private isThereAWallAt(checkX: number, checkY: number) {
+    if(!this.player) return false;
+
+    const map = this.map;
+    const { width, layers } = map;
+    const { x, y } = this.player;
+
+    const totalX = x + checkX;
+    const totalY = y + checkY;
+
+    const hasSecretWall = get(this.clientGameState.secretWallHash, [totalX, totalY]);
+    const wallList = layers[MapLayer.Walls].data || layers[MapLayer.Walls].tileIds;
+    const wallLayerTile = wallList[(width * totalY) + totalX];
+    return hasSecretWall || (wallLayerTile !== TilesWithNoFOVUpdate.Empty && wallLayerTile !== TilesWithNoFOVUpdate.Air);
+  }
+
+  private isDarkAt(x: number, y: number) {
+    return get(this.clientGameState.darkness, ['x' + (x + this.player.x), 'y' + (y + this.player.y)]);
+  }
+
+  private isLightAt(x: number, y: number) {
+    if(!this.player) return false;
+
+    const lightVal = this.isDarkAt(x, y);
+    return !lightVal || lightVal < -1;
+  }
+
+  private canDarkSee(x: number, y: number) {
+    if(!this.player) return false;
+
+    const darkCheck = this.isDarkAt(x, y);
+    return (darkCheck === -1 || darkCheck > 0) && this.player.hasEffect('DarkVision');
+  }
+
+  private shouldRenderXY(x: number, y: number) {
+    return get(this.colyseus.game.clientGameState.fov, [x, y]);
+  }
+
+  private updateFOV() {
+    for(let x = -4; x <= 4; x++) {
+      for(let y = -4; y <= 4; y++) {
+        const fovState = this.shouldRenderXY(x, y);
+        const fovSprite = this.fovSprites[x][y];
+
+        fovSprite.scale.set(1, 1);
+        fovSprite.cameraOffset.x = 64 * (x + 4);
+        fovSprite.cameraOffset.y = 64 * (y + 4);
+
+        // tile effects
+        if(this.isDarkAt(x, y)) {
+          if(this.isLightAt(x, y)) {
+            fovSprite.alpha = 0;
+            continue;
+          }
+
+          if(this.canDarkSee(x, y)) {
+            fovSprite.alpha = 0.5;
+            continue;
+          }
+        }
+
+        fovSprite.alpha = fovState ? 0 : 1;
+
+        // cut tiles
+        if(fovState) {
+          const isWallHere = this.isThereAWallAt(x, y);
+          if(!isWallHere) continue;
+
+          // cut left (scale down to x0.5, no offset)
+          if(x - 1 >= -4 && !this.shouldRenderXY(x - 1, y)) {
+            fovSprite.alpha = 1;
+            fovSprite.scale.x = 0.35;
+            continue;
+          }
+
+          // cut right (scale down to x0.5, x + ~32)
+          if(x + 1 <= 4 && !this.shouldRenderXY(x + 1, y)) {
+            fovSprite.alpha = 1;
+            fovSprite.scale.x = 0.35;
+            fovSprite.cameraOffset.x += 42;
+            continue;
+          }
+
+          // cut down (scale down to y0.5, y + ~32)
+          if(y + 1 <= 4 && !this.shouldRenderXY(x, y + 1)) {
+            fovSprite.alpha = 1;
+            fovSprite.scale.y = 0.7;
+            fovSprite.cameraOffset.y += 20;
+            continue;
+          }
+        }
+
+      }
+    }
+  }
+
+  private createFOV() {
+    const blackBitmapData = this.g.add.bitmapData(64, 64);
+    blackBitmapData.ctx.beginPath();
+    blackBitmapData.ctx.rect(0, 0, 64, 64);
+    blackBitmapData.ctx.fillStyle = '#000';
+    blackBitmapData.ctx.fill();
+
+    for(let x = -4; x <= 4; x++) {
+      this.fovSprites[x] = {};
+
+      for(let y = -4; y <= 4; y++) {
+        const dark = this.g.add.sprite(64 * (x + 4), 64 * (y + 4), blackBitmapData);
+        dark.fixedToCamera = true;
+        this.fovSprites[x][y] = dark;
+        this.groups.FOV.add(dark);
+      }
+    }
   }
 
   preload() {
@@ -755,6 +884,8 @@ export class Game {
       parseLayer(this.map.objects[index]);
     });
 
+    this.createFOV();
+
     this.g.camera.fade('#000', 1);
   }
 
@@ -774,6 +905,8 @@ export class Game {
 
     this.removeOldPlayerSprites();
     this.createPlayerSprites();
+
+    this.updateFOV();
 
     this.removeOldItemSprites(this.player.x, this.player.y);
     this.showItemSprites(this.player.x, this.player.y);

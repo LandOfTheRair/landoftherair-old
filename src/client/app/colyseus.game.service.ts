@@ -273,11 +273,11 @@ export class ColyseusGameService {
     if(dir === 'C') {
       dir = this.character.hp.__current === 0 ? 'C' : 'S';
     }
+
     this.character.x = x;
     this.character.y = y;
     this.character.dir = dir;
     this.character.swimLevel = swimLevel;
-    this.character.fov = this.clientGameState.fov;
 
     this.clientGameState.updatePlayer(this.character.username, 'x', x);
     this.clientGameState.updatePlayer(this.character.username, 'y', y);
