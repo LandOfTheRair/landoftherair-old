@@ -7,8 +7,6 @@ import { ColyseusService } from '../colyseus.service';
 import { HPBox, XPBox } from './floating-box';
 import { AssetService } from '../asset.service';
 
-import { get } from 'lodash';
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
