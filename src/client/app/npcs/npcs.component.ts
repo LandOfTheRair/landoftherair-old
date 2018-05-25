@@ -80,7 +80,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
   private visibleNPCS() {
     if(!this.colyseusGame.character) return [];
 
-    const fov = this.colyseusGame.character.fov;
+    const fov = this.colyseusGame.clientGameState.fov;
     const npcs: any[] = this.colyseusGame.clientGameState.allCharacters;
 
     if(!fov) return [];
