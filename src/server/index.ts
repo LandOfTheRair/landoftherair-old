@@ -8,7 +8,7 @@ import { Logger } from './logger';
 
 import { includes } from 'lodash';
 
-import { Server, MemsharedPresence } from 'colyseus';
+import { Server, RedisPresence } from 'colyseus';
 import { monitor } from '@colyseus/monitor';
 
 import * as Rooms from './rooms';
@@ -88,12 +88,13 @@ DB.init()
 
         const gameServer = new Server({
           engine: WebSocket.Server,
-          presence: new MemsharedPresence(),
+          presence: new RedisPresence({
+            url: process.env.REDIS_URL
+          }),
           server
         });
 
         gameServer.register('Lobby', Rooms.Lobby);
-        gameServer.matchMaker.create('Lobby', {});
 
         const allMapNames = {};
 
