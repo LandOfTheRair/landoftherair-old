@@ -339,7 +339,7 @@ export class GameWorld extends Room<GameState> {
 
     await this.leaveGameAndSave(player);
     this.prePlayerMapLeave(player);
-    this.savePlayer(player);
+    await this.savePlayer(player);
   }
 
   onMessage(client, data) {

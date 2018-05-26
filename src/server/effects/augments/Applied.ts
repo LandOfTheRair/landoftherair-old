@@ -46,6 +46,6 @@ export class Applied extends SpellEffect implements AugmentSpellEffect {
     if(opts.damageClass !== 'physical') return;
 
     const eff = new Effects[this.appliedEffect.name](this.appliedEffect);
-    eff.cast(defender, defender);
+    eff.cast(attacker, defender, this);
   }
 }
