@@ -14,6 +14,7 @@ export class Dispel extends SpellEffect {
     this.aoeAgro(caster, 10);
 
     const effects = target.dispellableEffects;
+    // console.log(effects)
 
     if(effects.length === 0) return;
 
