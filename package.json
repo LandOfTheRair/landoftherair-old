@@ -23,7 +23,7 @@
     "prod:server": "node scripts/compile",
     "prod:deploy": "node scripts/deploy",
     "prod:start": "node dist/server/index",
-    "prod:start:debug": "DEBUG=colyseus:* node dist/server/index",
+    "prod:start:debug": "DEBUG=colyseus:matchmaking node dist/server/index",
     "postinstall": "node scripts/postinstall-assets",
     "lint": "npm run lint:client && npm run lint:server",
     "lint:client": "ng lint",
