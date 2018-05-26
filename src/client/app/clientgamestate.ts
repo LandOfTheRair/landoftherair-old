@@ -207,16 +207,12 @@ export class ClientGameState {
     const newList = Object.keys(players);
     const oldList = Object.keys(this.playerHash);
 
-    const addPlayers = differenceBy(newList, oldList);
     const delPlayers = differenceBy(oldList, newList);
 
-    if(addPlayers.length > 0 || delPlayers.length > 0) {
-      newList.forEach(playerUsername => {
-        this.playerHash[playerUsername] = new Player(players[playerUsername]);
-      });
-    }
+    newList.forEach(playerUsername => {
+      this.playerHash[playerUsername] = new Player(players[playerUsername]);
+    });
 
-    // addPlayers.forEach(p => this.addPlayer(this.playerHash[p]));
     delPlayers.forEach(p => this.removePlayer(this.playerHash[p]));
   }
 

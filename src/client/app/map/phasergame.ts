@@ -78,7 +78,7 @@ export class Game {
   private fovSprites: any = {};
 
   public get shouldRender() {
-    if(!this.g || !this.g.camera || !this.playerSprite) return false;
+    if(!this.g || !this.g.camera) return false;
 
     const point = this.g.camera.position;
     return point.x !== 0 && point.y !== 0;
@@ -212,6 +212,8 @@ export class Game {
 
     this.isRenderingTruesight = false;
     this.isRenderingEagleEye = false;
+
+    this.playerSprite = null;
   }
 
   private focusCameraOnPlayer() {
@@ -833,8 +835,6 @@ export class Game {
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 
     this.createLayers();
-    // this.g.camera.follow(this.playerSprite);
-    // this.g.camera.targetOffset.set(32);
 
     // probably an early exit
     if(this.map.tilesets.length === 0) return;
@@ -887,10 +887,14 @@ export class Game {
     this.createFOV();
 
     this.g.camera.fade('#000', 1);
+
+    this.playerSprite = this.getPlayerSprite(this.player);
+    this.playerSpriteHash[this.player.username] = this.playerSprite;
+    this.focusCameraOnPlayer();
   }
 
   render() {
-    if(!this.colyseus.game._inGame || !this.player) return;
+    if(!this.colyseus.game._inGame || !this.player || !this.shouldRender) return;
 
     if(!this.hasFlashed) {
       this.hasFlashed = true;
