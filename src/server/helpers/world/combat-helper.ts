@@ -184,7 +184,7 @@ export class CombatHelper {
     if(defender.isOreVein) {
       if(item.type !== 'Mace') modifier = 2;
     } else {
-      if(item.type === 'Mace' || item.type === 'Staff') modifier = 2;
+      if(item.type === 'Mace' || item.type === 'Staff' || item.type === 'Gloves') modifier = 2;
     }
 
     return classMultiplier * baseDamage * modifier;
@@ -193,12 +193,12 @@ export class CombatHelper {
   private static calcDamageDoneBasedOnDefender(item: Item, attacker: Character, defender: Character, baseDamage: number, criticality: number): number {
     if(!defender.isNaturalResource) return baseDamage;
 
-    if(!includes(WeaponClasses, item.itemClass)) return 0;
+    if(!includes(WeaponClasses, item.itemClass) && item.itemClass !== 'Gloves' && item.itemClass !== 'Claws') return 0;
 
     if(defender.isOreVein) {
       if(item.type === 'Mace') criticality += 1;
     } else {
-      if(item.type !== 'Mace' && item.type !== 'Staff') criticality += 1;
+      if(item.type !== 'Mace' && item.type !== 'Staff' && item.type !== 'Gloves') criticality += 1;
     }
 
     /** PERK:CLASS:WARRIOR:Warriors always do additional damage versus gathering nodes. */
