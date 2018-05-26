@@ -499,8 +499,8 @@
   usableSkills:
     - MagicMissile
     - EnergyBlast
-    - IceMist
-    - FireMist
+    - Hail
+    - Combust
     - BarFire
     - BarFrost
     - DarkVision

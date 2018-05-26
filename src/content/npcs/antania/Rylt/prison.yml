@@ -491,7 +491,7 @@
 
   usableSkills:
     - MagicMissile
-    - IceMist
+    - Hail
 
   drops:
     - result: Rylt Renegade Book

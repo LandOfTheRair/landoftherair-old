@@ -159,7 +159,7 @@
 
   usableSkills:
     - MagicMissile
-    - FireMist
+    - Combust
 
   drops:
     - result: Rylt Renegade Book
