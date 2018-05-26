@@ -85,6 +85,7 @@ export class TraitsComponent implements AfterViewInit, OnInit, OnDestroy {
   public skillTree: any = {};
 
   get canSeeTree(): boolean {
+    if(!this.player) return false;
     return this.player.baseClass !== 'Undecided';
   }
 

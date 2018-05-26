@@ -190,7 +190,7 @@ export class Player extends Character {
   }
 
   unlearnSpell(skillName): void {
-    delete this.learnedSpells[skillName];
+    delete this.learnedSpells[skillName.toLowerCase()];
   }
 
   unlearnAll(): void {
