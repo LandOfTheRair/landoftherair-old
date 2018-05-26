@@ -93,6 +93,7 @@ DB.init()
         });
 
         gameServer.register('Lobby', Rooms.Lobby);
+        gameServer.matchMaker.create('Lobby', {});
 
         const allMapNames = {};
 
