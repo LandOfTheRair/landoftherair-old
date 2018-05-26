@@ -194,7 +194,10 @@ export class Player extends Character {
   }
 
   unlearnAll(): void {
-    this.learnedSpells = {};
+    Object.keys(this.learnedSpells).forEach(spell => {
+      if(this.learnedSpells[spell] === -1) return;
+      delete this.learnedSpells[spell];
+    });
   }
 
   learnSpell(skillName, conditional = false): boolean {
