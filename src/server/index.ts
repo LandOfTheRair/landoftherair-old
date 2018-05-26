@@ -53,7 +53,6 @@ DB.init()
       Logger.log(`[Single] Started server on port ${port}`);
 
       gameServer.register('Lobby', Rooms.Lobby);
-      gameServer.matchMaker.create('Lobby', {});
 
       const allMapNames = {};
 
@@ -94,7 +93,6 @@ DB.init()
         });
 
         gameServer.register('Lobby', Rooms.Lobby);
-        // gameServer.matchMaker.create('Lobby', {});
 
         const allMapNames = {};
 
@@ -104,11 +102,6 @@ DB.init()
             allMapNames[mapName] = true;
             const proto = includes(mapName, '-Dungeon') ? Rooms.InstancedDungeon : Rooms.GameWorld;
             gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
-
-            if(!includes(mapName, '-Dungeon')) {
-              // Logger.log(`Starting map ${mapName}`);
-              // gameServer.matchMaker.create(mapName, {});
-            }
           });
 
           if(process.env.NODE_ENV !== 'production') {
