@@ -1,1 +1,1 @@
-web: DEBUG=colyseus:* npm run prod:start
+web: npm run prod:start:debug
