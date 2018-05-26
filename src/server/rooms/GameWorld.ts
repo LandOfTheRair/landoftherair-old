@@ -181,8 +181,6 @@ export class GameWorld extends Room<GameState> {
   }
 
   async onInit(opts) {
-    this.autoDispose = false;
-
     this.redis = new Redis();
 
     this.allMapNames = opts.allMapNames;
