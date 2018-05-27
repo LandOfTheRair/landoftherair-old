@@ -4,7 +4,7 @@
   uses: 3
   effect:
     name: FireMist
-    potency: 100
+    potency: 30
     levelRequirement: 15
     skillRequirement: 15
   value: 3500
@@ -15,7 +15,7 @@
   uses: 3
   effect:
     name: IceMist
-    potency: 100
+    potency: 30
     levelRequirement: 15
     skillRequirement: 15
   value: 3500
@@ -26,7 +26,7 @@
   uses: 3
   effect:
     name: Poison
-    potency: 20
+    potency: 30
     levelRequirement: 15
     skillRequirement: 15
   value: 3000
@@ -37,7 +37,7 @@
   uses: 3
   effect:
     name: HolyFire
-    potency: 100
+    potency: 30
     levelRequirement: 15
     skillRequirement: 15
   value: 3000
@@ -48,7 +48,7 @@
   uses: 3
   effect:
     name: MagicBolt
-    potency: 100
+    potency: 30
     levelRequirement: 15
     skillRequirement: 15
   value: 3000
@@ -59,7 +59,7 @@
   uses: 3
   effect:
     name: Distraction
-    potency: 20
+    potency: 30
     levelRequirement: 15
     skillRequirement: 15
   value: 3500
@@ -70,7 +70,7 @@
   uses: 3
   effect:
     name: Darkness
-    potency: 25
+    potency: 35
     levelRequirement: 15
     skillRequirement: 15
   value: 4000
@@ -81,7 +81,7 @@
   uses: 3
   effect:
     name: Snare
-    potency: 20
+    potency: 30
     levelRequirement: 15
     skillRequirement: 15
   value: 4000
@@ -92,7 +92,7 @@
   uses: 3
   effect:
     name: Stun
-    potency: 25
+    potency: 35
     levelRequirement: 15
     skillRequirement: 15
   value: 4000
@@ -103,7 +103,7 @@
   uses: 3
   effect:
     name: Blind
-    potency: 25
+    potency: 35
     levelRequirement: 3
     levelRequirement: 15
     skillRequirement: 15

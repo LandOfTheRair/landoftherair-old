@@ -97,7 +97,7 @@ const ElementalMagic = [
   'Warper of Dimensions',
   'Time Wizard',
   'Dimensional Wizard',
-  'Multidimensional Wizard',
+  'Rift Traveler',
   'Vitality Thief',
   'Energy Thief'
 ];

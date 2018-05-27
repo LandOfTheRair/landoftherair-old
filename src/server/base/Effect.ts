@@ -249,6 +249,10 @@ export class SpellEffect extends Effect {
       base += get(caster, 'rightHand.tier', 0);
     }
 
+    if(caster && caster.baseClass === 'Thief' && caster.getTraitLevelAndUsageModifier) {
+      base += caster.getTraitLevelAndUsageModifier('StrongerTraps');
+    }
+
     return base;
   }
 
