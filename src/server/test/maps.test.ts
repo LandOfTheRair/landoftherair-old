@@ -216,7 +216,7 @@ test('All 2-way Teleports are bi-directional', t => {
       const checkRef = find(checkObjs, { x: teleportX * 64, y: (teleportY + 1) * 64 });
 
       // one-way teleport
-      if(!checkRef && interactable.type === 'Teleport') return;
+      if(!checkRef && (interactable.type === 'Teleport' || interactable.type === 'Fall')) return;
 
       // not a valid return point
       if(!includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport', 'Fall'], checkRef.type)) return;
