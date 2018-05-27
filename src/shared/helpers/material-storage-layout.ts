@@ -70,9 +70,9 @@ export const MaterialSlotInfo = {
   [MaterialSlot.RedEtherScaleRefined]:  { sprite: 965,  withdrawInOunces: false },
   [MaterialSlot.MinesFlower]:           { sprite: 761,  withdrawInOunces: false },
   [MaterialSlot.AntanianTwig]:          { sprite: 222,  withdrawInOunces: false },
-  [MaterialSlot.AntanianBranch]:        { sprite: 602,  withdrawInOunces: false },
+  [MaterialSlot.AntanianBranch]:        { sprite: 1008, withdrawInOunces: false },
   [MaterialSlot.RisanTwig]:             { sprite: 222,  withdrawInOunces: false },
-  [MaterialSlot.RisanBranch]:           { sprite: 602,  withdrawInOunces: false },
+  [MaterialSlot.RisanBranch]:           { sprite: 1008, withdrawInOunces: false },
   [MaterialSlot.RisanFrozenTwig]:       { sprite: 282,  withdrawInOunces: false },
   [MaterialSlot.FrostlandsGourd]:       { sprite: 840,  withdrawInOunces: false }
 };

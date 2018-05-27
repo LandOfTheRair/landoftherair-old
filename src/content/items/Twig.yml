@@ -11,7 +11,7 @@
   value: 15
 
 - name: Antanian Branch
-  sprite: 602
+  sprite: 1008
   desc: "an oddly-shaped branch taken from an Antanian tree"
   value: 15
 
@@ -26,6 +26,6 @@
   value: 25
 
 - name: Risan Branch
-  sprite: 602
+  sprite: 1008
   desc: "an oddly-shaped branch taken from a Risan tree"
   value: 25
