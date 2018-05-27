@@ -4,6 +4,7 @@ import { MapLayer } from '../../../shared/models/maplayer';
 import { isUndefined, find, values } from 'lodash';
 
 import * as Pathfinder from 'pathfinding';
+import { CombatHelper } from '../world/combat-helper';
 
 export class MoveHelper {
 
@@ -169,13 +170,14 @@ export class MoveHelper {
 
   private static handleInteractable(room, player, obj) {
     switch(obj.type) {
+      case 'Fall':     return this.handleTeleport(room, player, obj, true);
       case 'Teleport': return this.handleTeleport(room, player, obj);
       case 'Locker':   return this.handleLocker(room, player, obj);
     }
   }
 
-  private static handleTeleport(room, player, obj) {
-    const { teleportX, teleportY, teleportMap, requireHeld, requireQuest, requireQuestProgress, requireQuestComplete, requireParty } = obj.properties;
+  private static handleTeleport(room, player, obj, isFall?: boolean) {
+    const { teleportX, teleportY, teleportMap, requireHeld, requireQuest, requireQuestProgress, requireQuestComplete, requireParty, damagePercent } = obj.properties;
 
     if(requireParty && !player.party) return player.sendClientMessage('You must gather your party before venturing forth.');
 
@@ -205,7 +207,14 @@ export class MoveHelper {
     }
 
     room.teleport(player, { x: teleportX, y: teleportY, newMap: teleportMap });
-    player.sendClientMessage('Your surroundings shift.');
+
+    if(isFall) {
+      const hpLost = Math.floor(player.hp.maximum * ((damagePercent || 15) / 100));
+      const damage = player.hasEffect('FleetOfFoot') ? 1 : hpLost;
+      CombatHelper.dealOnesidedDamage(player, { damage, damageClass: 'physical', damageMessage: 'You have fallen!', suppressIfNegative: true });
+    } else {
+      player.sendClientMessage('Your surroundings shift.');
+    }
   }
 
   private static handleLocker(room, player, obj) {

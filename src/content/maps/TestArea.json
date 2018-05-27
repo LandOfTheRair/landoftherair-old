@@ -337,6 +337,32 @@
                  "width":64,
                  "x":1472,
                  "y":2624
+                }, 
+                {
+                 "gid":2561,
+                 "height":64,
+                 "id":195,
+                 "name":"",
+                 "properties":
+                    {
+                     "damagePercent":15,
+                     "teleportMap":"TestArea",
+                     "teleportX":30,
+                     "teleportY":36
+                    },
+                 "propertytypes":
+                    {
+                     "damagePercent":"int",
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"Fall",
+                 "visible":true,
+                 "width":64,
+                 "x":2048,
+                 "y":2368
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -486,7 +512,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":194,
+ "nextobjectid":196,
  "orientation":"orthogonal",
  "properties":
     {

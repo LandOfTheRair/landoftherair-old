@@ -180,7 +180,7 @@ test('All Interactables have valid properties', t => {
         t.truthy(interactable.properties.lockerId, tagFor(map, 'lockerId'));
       }
 
-      if(includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport'], interactable.type)) {
+      if(includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport', 'Fall'], interactable.type)) {
         const { teleportMap, teleportX, teleportY } = interactable.properties;
         t.truthy(teleportMap, tagFor(map, 'teleportmap'));
         t.truthy(teleportX, tagFor(map, 'teleportx'));
@@ -206,7 +206,7 @@ test('All 2-way Teleports are bi-directional', t => {
   allMaps.forEach(map => {
     const intObjects = map.layers[MapLayer.Interactables].objects;
     intObjects.forEach(interactable => {
-      if(!includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport'], interactable.type)) return;
+      if(!includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport', 'Fall'], interactable.type)) return;
 
       const myX = interactable.x / 64;
       const myY = (interactable.y / 64) - 1;
@@ -219,7 +219,7 @@ test('All 2-way Teleports are bi-directional', t => {
       if(!checkRef && interactable.type === 'Teleport') return;
 
       // not a valid return point
-      if(!includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport'], checkRef.type)) return;
+      if(!includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport', 'Fall'], checkRef.type)) return;
 
       const checkX = checkRef.x / 64;
       const checkY = (checkRef.y / 64) - 1;
