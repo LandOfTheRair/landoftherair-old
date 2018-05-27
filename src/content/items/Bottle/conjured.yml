@@ -14,3 +14,18 @@
       wil: 1
       con: 1
     duration: 1800
+
+- name: Holy Bile Water
+  sprite: 31
+  desc: "a bottle of bile water encased in a holy glow"
+  value: 1000
+  effect:
+    name: Nourishment
+    tooltip: "+2 WIS/WIL/CON, +5 MP Regen"
+    message: "The bile water revitalizes you."
+    stats:
+      wis: 2
+      wil: 2
+      con: 2
+      mpregen: 5
+    duration: 1800

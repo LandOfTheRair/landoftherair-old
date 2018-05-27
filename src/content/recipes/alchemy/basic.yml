@@ -36,4 +36,13 @@
     - Antanian Slice of Bread
     - Dedlaen Minotaur Horn
 
+- item: Holy Bile Water
+  skillGained: 50
+  maxSkillForGains: 9
+  requiredSkill: 4
+  xpGained: 25000
+  ingredients:
+    - Holy Water
+    - Yeti Bile (Large)
+
 
