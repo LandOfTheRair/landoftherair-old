@@ -45,7 +45,7 @@ export const responses = (npc: NPC) => {
         }
 
         if(includes(item.name, 'Simple Machleum Ring')) {
-          if(!mod || mod.name !== 'Risan Ether Larimar') return 'Ring and gem! Need both!';
+          if(!mod || mod.name !== 'Risan Ether Larimar') return 'Ring and ether red gem! Need both!';
 
           npc.$$room.npcLoader.loadItem(`${player.baseClass} Double Machleum Ring`)
             .then(newItem => {
