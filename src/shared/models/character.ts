@@ -1105,10 +1105,10 @@ export class Character {
     }
   }
 
-  canGainSkill(type, skillGain): boolean {
-    if(skillGain <= 0) return true;
+  addSkillLevels(type: string, levels: number) {
     const curLevel = this.calcSkillLevel(type);
-    return curLevel < this.$$room.state.maxSkill;
+    const nextLevel = SkillHelper.calcSkillXP(curLevel + levels);
+    this.skills[type] = nextLevel;
   }
 
   calcSkillLevel(type: string) {
