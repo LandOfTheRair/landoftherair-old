@@ -10,6 +10,7 @@ import { startsWith } from 'lodash';
 export class AuthService {
 
   refreshSubscription: any;
+  private isScheduled: boolean;
 
   auth0 = new auth0.WebAuth({
     clientID: environment.auth0.client,
@@ -25,6 +26,7 @@ export class AuthService {
 
   constructor() {
     this.isReady = new Promise(resolve => this.resolveReady = resolve);
+    this.renewIfAuthenticated();
   }
 
   public async login() {
@@ -55,6 +57,12 @@ export class AuthService {
         this.resolveReady(authResult);
       });
     });
+  }
+
+  private renewIfAuthenticated() {
+    if(!this.isAuthenticated()) return;
+
+    this.renewToken();
   }
 
   private setSession(authResult?): void {
@@ -95,6 +103,11 @@ export class AuthService {
       redirectUri: `${environment.server.protocol}://${environment.server.domain}:${environment.server.port}/silent-${environment.server.silentExt}`,
       usePostMessage: true
     }, (err, result) => {
+      if(!err && !result && this.isAuthenticated()) {
+        this.scheduleRenewal();
+        return;
+      }
+
       if(err || result.error) {
         console.error(err);
       } else {
@@ -105,7 +118,8 @@ export class AuthService {
   }
 
   public scheduleRenewal() {
-    if(!this.isAuthenticated()) return;
+    if(!this.isAuthenticated() || this.isScheduled) return;
+    this.isScheduled = true;
     this.clearOldNonces();
 
     const expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
