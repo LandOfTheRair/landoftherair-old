@@ -26,7 +26,7 @@ export const BaseItemStatsPerTier = {
   Greataxe:             { base: 5, min: 1, max: 2, weakChance: 10, damageBonus: 5 },
   Greatmace:            { base: 5, min: 1, max: 2, weakChance: 10, damageBonus: 5 },
   Greatsword:           { base: 3, min: 1, max: 4, weakChance: 10, damageBonus: 5 },
-  Halberd:              { base: 1, min: 0, max: 4, weakChance: 10, damageBonus: 0 },
+  Halberd:              { base: 1, min: 0, max: 8, weakChance: 5,  damageBonus: 0 },
   Hammer:               { base: 1, min: 0, max: 1, weakChance: 20, damageBonus: 10 },
   Longbow:              { base: 4, min: 1, max: 3, weakChance: 10, damageBonus: 0 },
   Longsword:            { base: 2, min: 1, max: 2, weakChance: 15, damageBonus: 5 },
