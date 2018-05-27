@@ -5,7 +5,7 @@ export class BladedWands extends Trait {
 
   static baseClass = 'Mage';
   static traitName = 'BladedWands';
-  static description = 'You treat wands as longswords of the same tier for the purposes of combat calculations.';
+  static description = 'You treat wands as longswords at tier + 3 for the purposes of combat calculations.';
   static icon = 'energy-sword';
 
   static upgrades = [
