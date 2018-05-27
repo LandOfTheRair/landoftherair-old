@@ -332,10 +332,9 @@
 
   copyDrops:
     - drop: 'gear.Armor'
-      chance: -1
+      chance: 1
+      maxChance: 100
     - drop: 'gear.Robe1'
-      chance: -1
-    - drop: 'gear.Robe2'
       chance: -1
     - drop: 'rightHand'
       chance: -1
@@ -438,10 +437,9 @@
 
   copyDrops:
     - drop: 'gear.Armor'
-      chance: -1
+      chance: 1
+      maxChance: 100
     - drop: 'gear.Robe1'
-      chance: -1
-    - drop: 'gear.Robe2'
       chance: -1
     - drop: 'rightHand'
       chance: -1

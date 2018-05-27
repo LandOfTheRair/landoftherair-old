@@ -71,7 +71,8 @@
 
   copyDrops:
     - drop: 'gear.Armor'
-      chance: -1
+      chance: 1
+      maxChance: 100
     - drop: 'rightHand'
       chance: -1
     - drop: 'leftHand'
