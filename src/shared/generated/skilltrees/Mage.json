@@ -1069,7 +1069,7 @@
     "BladedWands0": {
         "name": "BladedWands0",
         "traitName": "BladedWands",
-        "desc": "You treat wands as longswords of the same tier for the purposes of combat calculations.",
+        "desc": "You treat wands as longswords at tier + 3 for the purposes of combat calculations.",
         "icon": "energy-sword",
         "capstone": true,
         "requireCharacterLevel": 10,

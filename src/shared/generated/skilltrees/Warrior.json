@@ -856,7 +856,7 @@
         "capstone": true,
         "cost": 10,
         "unlocks": [
-            "Sweep",
+            "Shield",
             "UnarmoredSavant0"
         ],
         "cluster": 3,
@@ -900,7 +900,7 @@
         "capstone": true,
         "cost": 10,
         "unlocks": [
-            "Shield",
+            "Sweep",
             "Rapidpunch"
         ],
         "cluster": 3,
@@ -980,7 +980,7 @@
         "cost": 3,
         "cluster": 3,
         "unlockedBy": [
-            "MartialAcuity2"
+            "MartialAgility2"
         ]
     },
     "Sweep": {
@@ -992,7 +992,7 @@
         "cost": 3,
         "cluster": 3,
         "unlockedBy": [
-            "MartialAgility2"
+            "MartialAcuity2"
         ]
     },
     "Rapidpunch": {
