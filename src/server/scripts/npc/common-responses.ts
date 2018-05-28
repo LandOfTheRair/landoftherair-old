@@ -810,7 +810,7 @@ export const SpellforgingResponses = (npc: NPC) => {
 
       player.sendClientMessage(`${player.name}, here are your active traits:`);
 
-      slots.forEach(({ path }) => {
+      slots.forEach(({ name, path }) => {
         const item = get(player, path);
         if(!item) return;
 
@@ -818,13 +818,24 @@ export const SpellforgingResponses = (npc: NPC) => {
 
         if(!trait) return;
         allTraits[trait] = allTraits[trait] || 0;
-        allTraits[trait] += get(item, 'trait.level', 0);
+
+        let level = get(item, 'trait.level', 0);
+
+        if((name === 'Feet' || name === 'Hands') && player.getTraitLevel('MirroredEnchantments')) {
+          level *= 2;
+        }
+
+        allTraits[trait] += level;
       });
 
       slots.forEach(({ name, path }) => {
         const item = get(player, path);
         const trait = get(item, 'trait.name');
-        const level = get(item, 'trait.level', 0);
+        let level = get(item, 'trait.level', 0);
+
+        if((name === 'Feet' || name === 'Hands') && player.getTraitLevel('MirroredEnchantments')) {
+          level *= 2;
+        }
 
         const traitLevelString = trait ? `${startCase(trait)} ${toRoman(level)}` : '(none)';
         const traitTotalString = trait ? ` (Total: ${allTraits[trait]})` : '';
