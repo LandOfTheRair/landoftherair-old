@@ -27,7 +27,7 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
   }
 
   get shouldShowBox() {
-    return this.target && this.target.hp.__current > 0 && this.character.canSeeThroughStealthOf(this.target);
+    return this.target && this.character && this.target.hp.__current > 0 && this.character.canSeeThroughStealthOf(this.target);
   }
 
   get targetHealth() {
