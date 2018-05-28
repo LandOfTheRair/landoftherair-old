@@ -10,7 +10,7 @@
   tier: 5
   value: 2000
   sprite: 327
-  
+
   requirements:
     level: 15
 
@@ -122,14 +122,33 @@
 
 - name: Frostlands Shield
   stats:
+    armorClass: 17
+    weaponArmorClass: 3
+    offense: 2
+    defense: 2
+  tier: 6
+  desc: "a wrought iron shield engraved with PROPERTY OF BRIGANDS, PLEASE RETURN IF FOUND"
+  value: 13333
+  sprite: 329
+  binds: true
+
+  requirements:
+    level: 21
+
+- name: Frostlands Royal Shield
+  damageClass: 'ice'
+  stats:
     armorClass: 20
+    weaponArmorClass: 7
     fireResist: 300
     iceResist: 300
-    defense: 3
+    offense: 2
+    defense: 2
+  tier: 6
   desc: "a highly-polished shield engraved with the mark of the Risan royal family which is covered in a layer of frost"
   value: 21451
   sprite: 864
   binds: true
 
   requirements:
-    level: 21
+    level: 25

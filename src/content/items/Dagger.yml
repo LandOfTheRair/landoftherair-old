@@ -155,6 +155,22 @@
   requirements:
     level: 25
 
+- name: Frostlands Brigand Dagger
+  stats:
+    offense: 3
+    accuracy: 5
+  desc: "a small iron dagger engraved with PROPERTY OF BRIGANDS, PLEASE RETURN IF FOUND in the hilt"
+  offhand: true
+  returnsOnThrow: true
+  tier: 6
+  type: Dagger
+  value: 12185
+  sprite: 205
+  binds: true
+
+  requirements:
+    level: 21
+
 - name: Frost Chakram
   desc: "a frozen chakram created from magical icicles"
   tier: 6

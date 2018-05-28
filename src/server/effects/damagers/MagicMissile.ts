@@ -13,7 +13,6 @@ export class MagicMissile extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
-    console.log(this.getTotalDamageRolls(caster), this.getTotalDamageDieSize(caster))
 
     this.magicalAttack(caster, target, {
       skillRef,

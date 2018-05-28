@@ -230,3 +230,19 @@
   desc: "a royal robe made of the finest threads that can be found in Risan"
   value: 3500
   sprite: 101
+
+- name: Frostlands Brigand Combat Robe
+  randomStats:
+    offense:
+      min: 0
+      max: 10
+    defense:
+      min: 0
+      max: 10
+  desc: "a yellow robe sewn with a black hem"
+  value: 17004
+  sprite: 380
+  binds: true
+
+  requirements:
+    level: 21

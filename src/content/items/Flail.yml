@@ -30,3 +30,17 @@
 
   requirements:
     level: 25
+
+- name: Frostlands Brigand Flail
+  stats:
+    accuracy: -4
+    offense: 5
+  desc: "a big 3-ball flail engraved with PROPERTY OF BRIGANDS, PLEASE RETURN IF FOUND in the grip"
+  tier: 6
+  type: Mace
+  value: 12185
+  sprite: 349
+  binds: true
+
+  requirements:
+    level: 21

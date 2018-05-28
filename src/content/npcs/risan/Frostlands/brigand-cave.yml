@@ -1,0 +1,578 @@
+
+- npcId: Frostlands Brigand Fighter
+  name: brigand
+  sprite: [630, 635, 645, 650]
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Warrior
+  hostility: Always
+  stats: 22
+  skillLevels: 10
+  level: 27
+
+  otherStats:
+    perception: 200
+
+  rightHand:
+    - Frostlands Brigand Axe
+    - Frostlands Brigand Broadsword
+    - Frostlands Brigand Flail
+    - Frostlands Brigand Greatsword
+
+  leftHand:
+    - result: none
+      chance: 10000
+    - result: Frostlands Shield
+      chance: 1000
+    - result: Frostlands Royal Shield
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Frostlands Trash Breastplate
+        chance: 50
+      - result: Frostlands Yeti Fur
+        chance: 10
+      - result: Frostlands Strong Yeti Fur
+        chance: 1
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Robe2:
+      - result: none
+        chance: 300
+      - result: Frostlands Brigand Combat Robe
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  traitLevels:
+    OffhandFinesse: 4
+    Riposte: 5
+
+  skillOnKill: 65
+
+  usableSkills:
+    - Thruststrike
+    - Blindstrike
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 96950
+    max: 99350
+
+  mp:
+    min: 5000
+    max: 5000
+
+  giveXp:
+    min: 87000
+    max: 90000
+
+- npcId: Frostlands Brigand Mage
+  name: brigand
+  sprite: 545
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Mage
+  hostility: Always
+  stats: 22
+  skillLevels: 8
+  level: 27
+
+  otherStats:
+    perception: 200
+
+  rightHand: Frostlands Brigand Staff
+
+  leftHand:
+    - result: none
+      chance: 10000
+    - result: Frostlands Shield
+      chance: 1000
+    - result: Frostlands Royal Shield
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Risan Trash Tunic
+        chance: 50
+      - result: Frostlands Yeti Fur
+        chance: 10
+      - result: Frostlands Strong Yeti Fur
+        chance: 1
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Robe2:
+      - result: none
+        chance: 300
+      - result: Frostlands Brigand Combat Robe
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  traitLevels:
+    ForgedFire: 5
+    FrostedTouch: 5
+
+  skillOnKill: 65
+
+  usableSkills:
+    - Hail
+    - Combust
+    - MagicMissile
+    - DarkVision
+    - BarFire
+    - BarFrost
+    - MagicShield
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 96950
+    max: 99350
+
+  mp:
+    min: 5000
+    max: 5000
+
+  giveXp:
+    min: 91000
+    max: 97000
+
+- npcId: Frostlands Brigand Healer
+  name: brigand
+  sprite: 550
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Healer
+  hostility: Always
+  stats: 22
+  skillLevels: 8
+  level: 27
+
+  otherStats:
+    perception: 200
+
+  rightHand: Frostlands Brigand Flail
+
+  leftHand:
+    - result: none
+      chance: 10000
+    - result: Frostlands Shield
+      chance: 1000
+    - result: Frostlands Royal Shield
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Risan Trash Tunic
+        chance: 50
+      - result: Frostlands Yeti Fur
+        chance: 10
+      - result: Frostlands Strong Yeti Fur
+        chance: 1
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Robe2:
+      - result: none
+        chance: 300
+      - result: Frostlands Brigand Combat Robe
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  traitLevels:
+    FindFamiliarWater: 1
+    FindFamiliarNature: 1
+    FindFamiliarLight: 1
+    HolyAffliction: 1
+    CripplingPoison: 1
+
+  skillOnKill: 65
+
+  usableSkills:
+    - Afflict
+    - BarNecro
+    - FindFamiliar
+    - Cure
+    - Poison
+    - Vision
+    - Antidote
+    - Dispel
+    - TrueSight
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 96950
+    max: 99350
+
+  mp:
+    min: 5000
+    max: 5000
+
+  giveXp:
+    min: 91000
+    max: 97000
+
+- npcId: Frostlands Brigand Thief
+  name: brigand
+  sprite: [630, 635, 645, 650]
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Thief
+  hostility: Always
+  stats: 22
+  skillLevels: 11
+  level: 27
+
+  otherStats:
+    stealth: 50
+    perception: 200
+
+  rightHand:
+    - result: none
+      chance: 10000
+    - result: Frostlands Brigand Dagger
+      chance: 9000
+    - result: Frostlands Brigand Crossbow
+      chance: 9000
+    - result: Frost Chakram
+      chance: 1
+
+  leftHand:
+    - result: none
+      chance: 10000
+    - result: Frostlands Brigand Dagger
+      chance: 9000
+    - result: Frostlands Brigand Crossbow
+      chance: 9000
+    - result: Frost Chakram
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Risan Trash Breastplate
+        chance: 50
+      - result: Frostlands Yeti Fur
+        chance: 10
+      - result: Frostlands Strong Yeti Fur
+        chance: 1
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Robe2:
+      - result: none
+        chance: 300
+      - result: Frostlands Brigand Combat Robe
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  traitLevels:
+    OffhandFinesse: 5
+    NimbleStealing: 5
+    ShadowDaggers: 5
+    ShadowRanger: 3
+    ShadowSwap: 5
+    DegenerativeDisease: 1
+    DarknessWiden: 2
+
+  skillOnKill: 65
+
+  usableSkills:
+    - SetTrap
+    - Steal
+    - Disease
+    - Hide
+    - EagleEye
+    - ShadowClones
+    - Darkness
+    - DarkVision
+
+  sack:
+    - name: Risan FireMist Thief Trap
+      chance: 5
+    - name: Risan IceMist Thief Trap
+      chance: 5
+    - name: Risan Poison Thief Trap
+      chance: 5
+    - name: Risan MagicBolt Thief Trap
+      chance: 5
+    - name: Risan HolyFire Thief Trap
+      chance: 5
+    - name: Risan Snare Thief Trap
+      chance: 5
+    - name: Risan Stun Thief Trap
+      chance: 5
+    - name: Risan Blind Thief Trap
+      chance: 5
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 96950
+    max: 99350
+
+  mp:
+    min: 5000
+    max: 5000
+
+  giveXp:
+    min: 91000
+    max: 97000
+
+- npcId: Frostlands Brigand Shieldbearer
+  name: brigand
+  sprite: [630, 635, 645, 650]
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Warrior
+  hostility: Always
+  stats: 26
+  skillLevels: 11
+  level: 29
+
+  otherStats:
+    perception: 200
+
+  rightHand:
+    - result: Frostlands Shield
+      chance: 4500
+    - result: Frostlands Royal Shield
+      chance: 1
+
+  leftHand:
+    - result: Frostlands Shield
+      chance: 4500
+    - result: Frostlands Royal Shield
+      chance: 1
+
+  gear:
+    Armor:
+      - result: Frostlands Trash Breastplate
+        chance: 50
+      - result: Frostlands Yeti Fur
+        chance: 10
+      - result: Frostlands Strong Yeti Fur
+        chance: 1
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Robe2:
+      - result: none
+        chance: 300
+      - result: Frostlands Brigand Combat Robe
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  traitLevels:
+    Shieldbearer: 1
+
+  skillOnKill: 60
+
+  usableSkills:
+    - Charge
+    - Blindstrike
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 96950
+    max: 99350
+
+  mp:
+    min: 5000
+    max: 5000
+
+  giveXp:
+    min: 92000
+    max: 95000
+
+- npcId: Frostlands Brigand Monk
+  name: brigand
+  sprite: 320
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Warrior
+  hostility: Always
+  stats: 21
+  skillLevels: 11
+  level: 29
+
+  otherStats:
+    perception: 200
+
+  leftHand:
+    - result: none
+      chance: 10000
+    - result: Frostlands Shield
+      chance: 1000
+    - result: Frostlands Royal Shield
+      chance: 1
+
+  gear:
+    Armor: Risan Trash Cloak
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Robe2:
+      - result: none
+        chance: 300
+      - result: Frostlands Brigand Combat Robe
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  traitLevels:
+    Shieldbearer: 1
+    UnarmoredSavant: 1
+    StunningFist: 5
+    Riposte: 2
+    MartialAgility: 10
+    BrassKnuckles: 2
+    Punchkick: 1
+
+  skillOnKill: 60
+
+  usableSkills:
+    - Jumpkick
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 96950
+    max: 99350
+
+  mp:
+    min: 5000
+    max: 5000
+
+  giveXp:
+    min: 92000
+    max: 95000

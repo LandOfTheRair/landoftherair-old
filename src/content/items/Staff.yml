@@ -22,7 +22,7 @@
   type: Staff
   value: 6000
   sprite: 196
-  
+
   requirements:
     level: 15
 
@@ -70,3 +70,17 @@
 
   requirements:
     level: 17
+
+- name: Frostlands Brigand Staff
+  stats:
+    offense: 3
+    accuracy: 3
+  desc: "a wooden staff engraved with PROPERTY OF BRIGANDS, PLEASE RETURN IF FOUND"
+  tier: 6
+  type: Staff
+  value: 20185
+  sprite: 196
+  binds: true
+
+  requirements:
+    level: 21

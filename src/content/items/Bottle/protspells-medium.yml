@@ -39,7 +39,7 @@
   effect:
     name: BarFire
     duration: 900
-    potency: 10
+    potency: 20
   value: 500
 
 - name: Medium BarNecro Potion
@@ -60,5 +60,5 @@
   effect:
     name: BarNecro
     duration: 900
-    potency: 10
+    potency: 20
   value: 500
