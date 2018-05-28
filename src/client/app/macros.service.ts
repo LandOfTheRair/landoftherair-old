@@ -131,11 +131,13 @@ export class MacroService {
     const charSlot = this.getCurrentCharSlot();
     const charName = this.colyseusGame.character.name;
     const charClass = this.colyseusGame.character.baseClass;
+    const charAccount = this.colyseusGame.character.username;
 
     const data = {
       charName,
       charSlot,
       charClass,
+      charAccount,
       customMacros: this.customMacros,
       visibleMacroGroups: this.visibleMacroGroups,
       allMacroGroups: this.allMacroGroups
@@ -144,7 +146,7 @@ export class MacroService {
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data, null, 4));
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute('href',     dataStr);
-    downloadAnchorNode.setAttribute('download', `lotr-macros-${charName}-${charSlot}.json`);
+    downloadAnchorNode.setAttribute('download', `lotr-macros-${charAccount}-${charName}-${charSlot}.json`);
     downloadAnchorNode.click();
   }
 
@@ -158,6 +160,7 @@ export class MacroService {
       const charSlot = this.getCurrentCharSlot();
       const charName = this.colyseusGame.character.name;
       const charClass = this.colyseusGame.character.baseClass;
+      const charAccount = this.colyseusGame.character.username;
 
       const macros = JSON.parse((<FileReader>ev.target).result);
 
@@ -174,8 +177,8 @@ export class MacroService {
       if(charSlot !== macros.charSlot || charName !== macros.charName) {
         (<any>swal)({
           titleText: 'Confirm Macro Import',
-          text: `Are you sure you want to import macros from the character ${macros.charName} on slot ${macros.charSlot + 1} (Class: ${macros.charClass})?
-          You are currently on character ${charName}, slot ${charSlot + 1}, class ${charClass}.`,
+          text: `Are you sure you want to import macros from the ${macros.charName} (${macros.charClass}) on slot ${macros.charSlot + 1} of account ${macros.charAccount}?
+          You are currently on account ${charAccount}, character ${charName}, slot ${charSlot + 1}, class ${charClass}.`,
           showCancelButton: true,
           confirmButtonText: 'Yes, import macros!',
           type: 'warning'
@@ -240,22 +243,29 @@ export class MacroService {
     return this.localStorage.retrieve('curSlot');
   }
 
+  private getCurrentUsername(): string {
+    return this.colyseusGame.character.username;
+  }
+
   public retrieveForCharacter(key) {
     if(!this.colyseusGame.character) return {};
     const charSlot = this.getCurrentCharSlot();
-    return this.localStorage.retrieve(`macros-${charSlot}-${key}`);
+    const charAcct = this.getCurrentUsername();
+    return this.localStorage.retrieve(`macros-${charAcct}-${charSlot}-${key}`);
   }
 
   public storeForCharacter(key, value) {
     if(!this.colyseusGame.character) return;
     const charSlot = this.getCurrentCharSlot();
-    return this.localStorage.store(`macros-${charSlot}-${key}`, value);
+    const charAcct = this.getCurrentUsername();
+    return this.localStorage.store(`macros-${charAcct}-${charSlot}-${key}`, value);
   }
 
   private observeForCharacter(key) {
     if(!this.colyseusGame.character) return;
     const charSlot = this.getCurrentCharSlot();
-    return this.localStorage.observe(`macros-${charSlot}-${key}`);
+    const charAcct = this.getCurrentUsername();
+    return this.localStorage.observe(`macros-${charAcct}-${charSlot}-${key}`);
   }
 
   private watchActiveMacro() {

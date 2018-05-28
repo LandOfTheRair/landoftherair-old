@@ -334,6 +334,7 @@ export class Item {
     let statText = '';
     if(thiefSkill >= 10 || conjSkill >= 20) {
       statText = Object.keys(this.stats)
+        .filter(x => this.stats[x])
         .map(x => `${this.stats[x] < 0 ? '' : '+'}${this.stats[x]} ${x.toUpperCase()}`)
         .join(', ');
 
