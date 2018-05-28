@@ -163,7 +163,7 @@ export class MacroService {
       const charAccount = this.colyseusGame.character.username;
 
       const macros = JSON.parse((<FileReader>ev.target).result);
-
+      
       const finish = () => {
         this.allMacroGroups = macros.allMacroGroups;
         this.customMacros = macros.customMacros;
@@ -172,9 +172,9 @@ export class MacroService {
         inputEl.value = null;
       };
 
-      if(!macros.charName || !macros.charSlot || !macros.allMacroGroups || !macros.customMacros || !macros.visibleMacroGroups) return;
+      if(!macros.charName || _.isUndefined(macros.charSlot) || !macros.allMacroGroups || !macros.customMacros || !macros.visibleMacroGroups) return;
 
-      if(charSlot !== macros.charSlot || charName !== macros.charName) {
+      if(charSlot !== macros.charSlot || charName !== macros.charName || charAccount !== macros.charAccount) {
         (<any>swal)({
           titleText: 'Confirm Macro Import',
           text: `Are you sure you want to import macros from the ${macros.charName} (${macros.charClass}) on slot ${macros.charSlot + 1} of account ${macros.charAccount}?
@@ -190,8 +190,6 @@ export class MacroService {
         finish();
 
       }
-
-      finish();
     };
     reader.readAsText(file);
 
