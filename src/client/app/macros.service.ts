@@ -163,11 +163,13 @@ export class MacroService {
       const charAccount = this.colyseusGame.character.username;
 
       const macros = JSON.parse((<FileReader>ev.target).result);
-      
+
       const finish = () => {
         this.allMacroGroups = macros.allMacroGroups;
         this.customMacros = macros.customMacros;
         this.visibleMacroGroups = macros.visibleMacroGroups;
+
+        _.extend(this.allMacros, this.customMacros);
 
         inputEl.value = null;
       };
