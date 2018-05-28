@@ -98,8 +98,10 @@ export class NpcsComponent implements OnInit, OnDestroy {
       return npc;
     }));
 
-    if(this.shouldSortDistance) {
+    if(isBoolean(this.shouldSortDistance)) {
       unsorted = sortBy(unsorted, npc => npc.distFrom(me));
+
+      if(!this.shouldSortDistance) unsorted = unsorted.reverse();
     }
 
     if(isBoolean(this.shouldSortFriendly)) {
