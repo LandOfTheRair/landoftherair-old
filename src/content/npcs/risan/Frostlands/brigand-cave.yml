@@ -295,8 +295,6 @@
     perception: 200
 
   rightHand:
-    - result: none
-      chance: 10000
     - result: Frostlands Brigand Dagger
       chance: 9000
     - result: Frostlands Brigand Crossbow
@@ -316,7 +314,7 @@
 
   gear:
     Armor:
-      - result: Risan Trash Breastplate
+      - result: Risan Trash Tunic
         chance: 50
       - result: Frostlands Yeti Fur
         chance: 10

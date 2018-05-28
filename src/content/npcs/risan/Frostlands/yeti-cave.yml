@@ -39,6 +39,10 @@
       chance: 1
       maxChance: 20000
 
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+
   usableSkills:
     - Charge
     - Blindstrike
@@ -109,6 +113,10 @@
     - result: Risan Frost Larimar
       chance: 1
       maxChance: 19000
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
 
   traitLevels:
     Riposte: 10
@@ -215,7 +223,6 @@
 
   spawnMessage: "the sound of rocks grinding together"
 
-
 - npcId: Abomniblus
   name: Abomniblus
   sprite: 475
@@ -266,6 +273,10 @@
       effectData:
         damageType: 'ice'
         potency: 0
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
 
   gold:
     min: 12350
