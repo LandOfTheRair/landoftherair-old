@@ -15,7 +15,7 @@
 - name: Ether Scaleplate II
   sprite: 270
   stats:
-    armorClass: 15
+    armorClass: 20
     fireResist: 200
     iceResist: 200
   desc: "a bright red scaleplate, twice refined, forged with ether"

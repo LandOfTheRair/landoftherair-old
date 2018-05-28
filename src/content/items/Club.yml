@@ -36,6 +36,7 @@
 
 - name: Frostlands Frozen Yeti Club
   proneChance: 25
+  damageClass: 'ice'
   stats:
     accuracy: 3
   randomStats:
@@ -51,6 +52,10 @@
   trait:
     name: DeathGrip
     level: 5
+  effect:
+    name: Hail
+    potency: 15
+    chance: 25
   desc: "a club forged from the bones of a yeti frozen solid by the bitter Frostlands wind"
   binds: true
   tellsBind: true

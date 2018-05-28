@@ -205,9 +205,87 @@
     - result: Silver Ore (Small)
       chance: 1
       maxChance: 100
+    - result: Risan Frost Larimar
+      chance: 1
+      maxChance: 20000
 
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
 
   spawnMessage: "the sound of rocks grinding together"
+
+
+- npcId: Abomniblus
+  name: Abomniblus
+  sprite: 475
+  baseClass: Mage
+  allegiance: Enemy
+  alignment: Evil
+  hostility: Always
+  monsterClass: Beast
+  stats: 30
+  skillLevels: 13
+  level: 35
+
+  otherStats:
+    int: 20
+    armorClass: 65
+    offense: 15
+    defense: 10
+    perception: 150
+
+  rightHand: Frostlands Frozen Yeti Club
+
+  gear:
+    Armor: Abomniblus Fur
+    Hands: Mines Animal Claws
+
+  traitLevels:
+    SterlingArmor: 10
+    HolyProtection: 10
+    DoubleThrust: 1
+    ShadowSwap: 5
+    IceMistWiden: 2
+
+  skillOnKill: 250
+
+  usableSkills:
+    - Blindstrike
+    - Hail
+    - IceMist
+    - RiftSlash
+    - ThrustStrike
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.75
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0
+
+  gold:
+    min: 12350
+    max: 13500
+
+  hp:
+    min: 5500000
+    max: 5500000
+
+  mp:
+    min: 15000
+    max: 15000
+
+  giveXp:
+    min: 362000
+    max: 365000
+
+  drops:
+    - result: Risan Frost Larimar
+      chance: 1
+      maxChance: 10
+
+  tansFor: Abomniblus Fur

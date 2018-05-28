@@ -147,3 +147,19 @@
 
   requirements:
     level: 21
+
+- name: Abomniblus Fur
+  quality: 5
+  desc: "the tanned fur of an abominable yeti"
+  stats:
+    fireResist: 300
+    iceResist: 300
+    poisonResist: 100
+    diseaseResist: 50
+    armorClass: 30
+    defense: 5
+  value: 3300
+  sprite: 358
+
+  requirements:
+    level: 25

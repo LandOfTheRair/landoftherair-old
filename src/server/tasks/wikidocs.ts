@@ -30,7 +30,7 @@ sortBy(Object.keys(AllTraits)).forEach(className => {
   sortBy(Object.keys(AllTraits[className])).forEach(trait => {
     const { traitName, baseClass, description } = AllTraits[className][trait];
 
-    const realDesc = description.split('|').join('/').split('$').join('*')
+    const realDesc = description.split('|').join('/').split('$').join('*').split('\n').join(' ');
     addMarkdown(`${startCase(traitName)} | ${baseClass || '-'} | ${realDesc}`);
   });
 });

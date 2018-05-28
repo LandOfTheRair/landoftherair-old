@@ -205,6 +205,7 @@
     level: 25
 
 - name: Frostlands Frostfang Robe
+  quality: 5
   stats:
     offense: 3
     defense: 3
