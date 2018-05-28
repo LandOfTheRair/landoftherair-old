@@ -1,5 +1,5 @@
 
-import { includes, random, capitalize, get, clamp } from 'lodash';
+import { includes, random, capitalize, get, clamp, cloneDeep } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../../shared/models/character';
 import { ShieldClasses, Item, WeaponClasses, ItemEffect, HandsClasses, DamageType } from '../../../shared/models/item';
@@ -759,7 +759,9 @@ export class CombatHelper {
       this.tryApplyEffect(attacker, defender, encrustEffect, attackerWeapon);
 
     } else if(attackerWeapon.effect && !attackerWeapon.effect.autocast) {
-      this.tryApplyEffect(attacker, defender, attackerWeapon.effect, attackerWeapon);
+      const effect = cloneDeep(attackerWeapon.effect);
+      effect.potency += attackerScope.skill;
+      this.tryApplyEffect(attacker, defender, effect, attackerWeapon);
     }
 
     if(damage <= 0) {
