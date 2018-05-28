@@ -274,7 +274,7 @@ export class Item {
     this.owner = player.uuid;
   }
 
-  descTextFor(player: Character, senseLevel = 0) {
+  descTextFor(player: Character, senseLevel = 0, fromClient = false) {
 
     const starText = this.quality - 2 > 0 ? Array(this.quality - 2).fill('★').join('') : '';
 
@@ -322,15 +322,28 @@ export class Item {
     const formattedSkill = get(this, 'requirements.skill.name') === 'Wand' ? 'Magical Weapons' : get(this, 'requirements.skill.name');
     const skillText = this.requirements && this.requirements.skill ? `This item requires ${formattedSkill} skill ${this.requirements.skill.level}. ` : '';
 
+    const thiefSkill = player.calcSkillLevel(SkillClassNames.Thievery);
+    const conjSkill = player.calcSkillLevel(SkillClassNames.Conjuration);
+
     /** PERK:CLASS:THIEF:Thieves can automatically appraise items by double clicking them after skill 7. */
-    const canAppraise = player && player.baseClass === 'Thief' && player.calcSkillLevel(SkillClassNames.Thievery) >= 7;
+    const canAppraise = player && player.baseClass === 'Thief' && thiefSkill >= 7;
     const appraiseText = canAppraise ? `The item is worth ${this.value} gold. ` : '';
 
     const usefulText = this.canUseExpiration() ? '' : `This item does not appear useful anymore. `;
 
+    let statText = '';
+    if(thiefSkill >= 10 || conjSkill >= 20) {
+      statText = Object.keys(this.stats)
+        .map(x => `${this.stats[x] < 0 ? '' : '+'}${this.stats[x]} ${x.toUpperCase()}`)
+        .join(', ');
+
+      statText = `Hidden Bonuses: ${statText}`;
+      if(fromClient) statText = `<br><br>${statText}`;
+    }
+
     return `${starText} ${baseText}${sense1Text}${sense1AfterText}${sense2Text}${traitText}
     ${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}${skillText}
-    ${conditionText}${ownedText}${appraiseText}${usefulText}`;
+    ${conditionText}${ownedText}${appraiseText}${usefulText}${statText}`;
   }
 
   isOwnedBy(char: Character): boolean {

@@ -148,7 +148,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          container="body"
          delay="750"
          [isDisabled]="!showDesc"
-         [tooltip]="descText">
+         [tooltip]="desc">
       <img [src]="imgUrl" [style.object-position]="spriteLocation" />
       <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="showEncrust && item.encrust" />
       <div class="item-background" *ngIf="showBackground"></div>
@@ -158,6 +158,10 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
       <span class="value" *ngIf="showValue">{{ overrideValue || (item._buybackValue || item.value) + 'g' }}</span>
       <span class="value" *ngIf="showOunces && item.succorInfo">{{ item.succorInfo.map }}</span>
       <span class="ounces" *ngIf="showDesc && item.effect && item.itemClass === 'Trap'">{{ item.effect.name }}</span>
+      
+      <ng-template #desc>
+        <div [innerHtml]="descText"></div>
+      </ng-template>
     </div>
     
   `
@@ -252,7 +256,7 @@ export class ItemComponent implements OnInit {
 
   get descText() {
     const item = new Item(this.item);
-    return item.descTextFor(this.player);
+    return item.descTextFor(this.player, 0, true);
   }
 
   get isStackableMaterial(): boolean {

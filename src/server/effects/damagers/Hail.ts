@@ -11,7 +11,7 @@ export class Hail extends SpellEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
-    
+
     for(let i = 0; i < 2; i++) {
       this.magicalAttack(caster, target, {
         skillRef,
