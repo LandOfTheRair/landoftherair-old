@@ -683,10 +683,19 @@
 
         <div class="row">
           <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="shouldSortFriendly">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="shouldSortFriendly" id="shouldSortFriendly"/>
-              Sort friendlies first
-            </label>
+            Sort friendlies
+            <div class="form-check form-check-inline ml-1">
+              <input type="radio" class="form-check-input" [(ngModel)]="shouldSortFriendly" [value]="null" id="shouldSortFriendly1"/>
+              <label class="form-check-label" for="shouldSortFriendly1">none</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" class="form-check-input" [(ngModel)]="shouldSortFriendly" [value]="true" id="shouldSortFriendly2"/>
+              <label class="form-check-label" for="shouldSortFriendly2">first</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" class="form-check-input" [(ngModel)]="shouldSortFriendly" [value]="false" id="shouldSortFriendly3"/>
+              <label class="form-check-label" for="shouldSortFriendly3">last</label>
+            </div>
           </div>
         </div>
 

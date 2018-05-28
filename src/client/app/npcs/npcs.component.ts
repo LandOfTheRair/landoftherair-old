@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { compact, find, pull, findIndex, sortBy, cloneDeep } from 'lodash';
+import { compact, find, pull, findIndex, sortBy, cloneDeep, isBoolean } from 'lodash';
 import { NPC } from '../../../shared/models/npc';
 import { MacroService } from '../macros.service';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -102,8 +102,8 @@ export class NpcsComponent implements OnInit, OnDestroy {
       unsorted = sortBy(unsorted, npc => npc.distFrom(me));
     }
 
-    if(this.shouldSortFriendly) {
-      const sortOrder = { neutral: 0, friendly: 1, hostile: 2 };
+    if(isBoolean(this.shouldSortFriendly)) {
+      const sortOrder = this.shouldSortFriendly ? { neutral: 0, friendly: 1, hostile: 2 } : { hostile: 0, neutral: 1, friendly: 2 };
       unsorted = sortBy(unsorted, npc => sortOrder[this.colyseusGame.hostilityLevelFor(npc)]);
     }
 
