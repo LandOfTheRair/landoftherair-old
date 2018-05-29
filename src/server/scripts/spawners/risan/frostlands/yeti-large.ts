@@ -12,7 +12,7 @@ export class BigYetiCaveSpawnerSpawner extends Spawner {
     super(room, opts, {
       respawnRate: 7,
       initialSpawn: 2,
-      maxCreatures: 6,
+      maxCreatures: 8,
       spawnRadius: 6,
       randomWalkRadius: 7,
       leashRadius: 12,

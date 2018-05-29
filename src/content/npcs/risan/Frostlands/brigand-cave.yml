@@ -98,7 +98,7 @@
   baseClass: Mage
   hostility: Always
   stats: 22
-  skillLevels: 8
+  skillLevels: 6
   level: 27
 
   otherStats:
@@ -190,7 +190,7 @@
   baseClass: Healer
   hostility: Always
   stats: 22
-  skillLevels: 8
+  skillLevels: 7
   level: 27
 
   otherStats:

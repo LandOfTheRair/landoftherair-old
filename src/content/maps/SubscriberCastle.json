@@ -1510,6 +1510,8 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "itemExpirationHours":24,
+     "itemGarbageCollection":30,
      "maxCreatures":5,
      "maxSkill":20,
      "region":"SubscriberLand",
@@ -1519,6 +1521,8 @@
     },
  "propertytypes":
     {
+     "itemExpirationHours":"int",
+     "itemGarbageCollection":"int",
      "maxCreatures":"int",
      "maxSkill":"int",
      "region":"string",
