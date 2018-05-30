@@ -1,5 +1,5 @@
 
-import { some } from 'lodash';
+import { some, cloneDeep } from 'lodash';
 
 import { ChanneledSpellEffect, Effect } from '../../base/Effect';
 import { Character, StatName } from '../../../shared/models/character';
@@ -125,12 +125,12 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
         npc.recalculateStats();
 
         if(char.rightHand) {
-          npc.rightHand = new Item(char.rightHand);
+          npc.rightHand = new Item(cloneDeep(char.rightHand));
           npc.rightHand.tier = Math.max(1, (npc.rightHand.tier || 0) - 1);
         }
 
         if(char.leftHand) {
-          npc.leftHand = new Item(char.leftHand);
+          npc.leftHand = new Item(cloneDeep(char.leftHand));
           npc.leftHand.tier = Math.max(1, (npc.leftHand.tier || 0) - 1);
         }
 

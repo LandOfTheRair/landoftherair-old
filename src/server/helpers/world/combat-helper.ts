@@ -53,7 +53,7 @@ export class CombatHelper {
 
     if(itemClass === 'Wand' && attacker.getTraitLevel('BladedWands')) {
       itemClass = 'Longsword';
-      item.tier += 3;
+      tier += 3;
     }
 
     const { base, min, max, weakChance, damageBonus } = BaseItemStatsPerTier[itemClass];
