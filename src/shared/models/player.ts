@@ -441,7 +441,7 @@ export class Player extends Character {
   }
 
   teleportToRespawnPoint() {
-    this.$$room.teleport(this, { newMap: this.respawnPoint.map, x: this.respawnPoint.x, y: this.respawnPoint.y, zChange: 0 });
+    return this.$$room.teleport(this, { newMap: this.respawnPoint.map, x: this.respawnPoint.x, y: this.respawnPoint.y, zChange: 0 });
   }
 
   getBaseSprite() {
