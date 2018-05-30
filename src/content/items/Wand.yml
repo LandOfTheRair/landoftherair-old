@@ -60,7 +60,7 @@
   tier: 3
   effect:
     name: MagicBolt
-    potency: 10
+    potency: 5
     chance: 33
   trait:
     name: WandSpecialty
