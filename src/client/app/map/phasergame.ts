@@ -64,8 +64,7 @@ export class Game {
     Decor: {},
     DenseDecor: {},
     OpaqueDecor: {},
-    Interactables: {},
-    FOV: {}
+    Interactables: {}
   };
 
   private currentBgm: string;
@@ -75,6 +74,7 @@ export class Game {
   public isLoaded: boolean;
   private hasFlashed: boolean;
 
+  private fovGroup: any = {};
   private fovSprites: any = {};
 
   public get shouldRender() {
@@ -187,8 +187,8 @@ export class Game {
       this.vfx.destroy();
     }
 
-    if(this.groups.FOV) {
-      this.groups.FOV.destroy();
+    if(this.fovGroup && this.fovGroup.destroy) {
+      this.fovGroup.destroy();
     }
 
     this.visibleNPCUUIDHash = {};
@@ -576,7 +576,7 @@ export class Game {
     this.visibleNPCs = this.g.add.group();
     this.otherPlayerSprites = this.g.add.group();
 
-    this.groups.FOV = this.g.add.group();
+    this.fovGroup = this.g.add.group();
   }
 
   private drawEnvironmentalObjects(centerX, centerY) {
@@ -770,7 +770,7 @@ export class Game {
         const dark = this.g.add.sprite(64 * (x + 4), 64 * (y + 4), blackBitmapData);
         dark.fixedToCamera = true;
         this.fovSprites[x][y] = dark;
-        this.groups.FOV.add(dark);
+        this.fovGroup.add(dark);
       }
     }
   }

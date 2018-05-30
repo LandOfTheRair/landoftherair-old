@@ -426,7 +426,7 @@ export class Player extends Character {
     this.reviveHandler();
   }
 
-  restore(force = false) {
+  async restore(force = false) {
     if(!this.isDead()) return;
 
     if(force) {
@@ -435,9 +435,9 @@ export class Player extends Character {
       if(this.stats.agi > 5 && RollerHelper.OneInX(5)) this.stats.agi--;
     }
 
-    this.hp.set(1);
     this.reviveHandler();
-    this.teleportToRespawnPoint();
+    await this.teleportToRespawnPoint();
+    this.hp.set(1);
   }
 
   teleportToRespawnPoint() {
