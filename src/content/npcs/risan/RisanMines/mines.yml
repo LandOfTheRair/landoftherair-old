@@ -218,7 +218,7 @@
   baseClass: Mage
   sprite: 490
   stats: 24
-  skillLevels: 8
+  skillLevels: 7
   level: 26
 
   skillOnKill: 350
@@ -296,12 +296,9 @@
 
   traitLevels:
     HolyAffliction: 1
-    NecroticFocus: 3
     CripplingPoison: 1
     DebilitatingDisease: 1
     EffectiveSupporter: 5
-    TotemSpecialty: 5
-    WandSpecialty: 5
     BladedWands: 1
     FindFamiliarSalamander: 1
     FindFamiliarChillspider: 1

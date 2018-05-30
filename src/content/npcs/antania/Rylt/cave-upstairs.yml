@@ -19,7 +19,7 @@
     accuracy: 10
     perception: 250
 
-  skillLevels: 7
+  skillLevels: 6
 
   skillOnKill: 250
 

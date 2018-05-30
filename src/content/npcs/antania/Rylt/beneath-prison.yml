@@ -180,7 +180,7 @@
     accuracy: 10
     perception: 350
 
-  skillLevels: 8
+  skillLevels: 7
 
   skillOnKill: 450
 
