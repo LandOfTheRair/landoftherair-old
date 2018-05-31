@@ -93,14 +93,17 @@ export class SpellforgingHelper {
       item.enchantLevel = item.enchantLevel || 0;
       item.enchantLevel++;
 
-      item.stats.accuracy = item.stats.accuracy || 0;
-      item.stats.accuracy += 2;
+      if(includes(reagent.name, 'Enos')) {
 
-      item.stats.offense = item.stats.offense || 0;
-      item.stats.offense++;
+        item.stats.accuracy = item.stats.accuracy || 0;
+        item.stats.accuracy++;
 
-      item.stats.defense = item.stats.defense || 0;
-      item.stats.defense++;
+        item.stats.offense = item.stats.offense || 0;
+        item.stats.offense++;
+
+        item.stats.defense = item.stats.defense || 0;
+        item.stats.defense++;
+      }
 
       if(includes(reagent.name, 'Owts')) {
         item.tier += 1;
