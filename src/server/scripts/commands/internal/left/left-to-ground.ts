@@ -10,8 +10,10 @@ export class LeftToGround extends Command {
   execute(player: Player, { room }) {
     if(!player.leftHand) return;
     if(this.isAccessingLocker(player)) return;
-    room.addItemToGround(player, player.leftHand);
+
+    const item = player.leftHand;
     player.setLeftHand(null);
+    room.addItemToGround(player, item);
     room.showGroundWindow(player);
   }
 

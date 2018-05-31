@@ -1,5 +1,5 @@
 
-import { isObject, cloneDeep, find, get, set, clone, pull, extend } from 'lodash';
+import { isObject, cloneDeep, find, get, set, clone, pull, merge } from 'lodash';
 
 import { Parser } from 'mingy';
 
@@ -406,7 +406,7 @@ export class GameWorld extends Room<GameState> {
       savePlayer.inGame = false;
     }
 
-    extend(savePlayer, extraOpts);
+    merge(savePlayer, extraOpts);
 
     if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
       savePlayer.leftHand = null;
@@ -417,7 +417,7 @@ export class GameWorld extends Room<GameState> {
     }
 
     await this.savePlayerPouch(savePlayer);
-    this.skillTreeHelper.saveSkillTree(player);
+    await this.skillTreeHelper.saveSkillTree(player);
 
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }
@@ -662,11 +662,13 @@ export class GameWorld extends Room<GameState> {
     if(item.sprite < 0) return;
 
     // drop items on destroy if they're supposed to, or if they're a tester.
-    if(item.destroyOnDrop || (ref.isPlayer && ref.isPlayer() && item.isOwnedBy(ref) && this.subscriptionHelper.isTester(ref))) {
+    if(this.subscriptionHelper.isTester(ref) && ref.isPlayer && ref.isPlayer() && item.isOwnedBy(ref)) return;
+
+    if(item.destroyOnDrop) {
 
       // legacy code for legacy players :P
       if(item.name === 'Succor Blob' && item.succorInfo && ref.isPlayer && ref.isPlayer()) {
-        ref.doSuccor(item.succorInfo, true);
+        ref.doSuccor(item.succorInfo);
       }
 
       return;

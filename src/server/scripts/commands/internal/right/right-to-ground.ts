@@ -10,8 +10,10 @@ export class RightToGround extends Command {
   execute(player: Player, { room }) {
     if(this.isAccessingLocker(player)) return;
     if(!player.rightHand) return;
-    room.addItemToGround(player, player.rightHand);
+
+    const item = player.rightHand;
     player.setRightHand(null);
+    room.addItemToGround(player, item);
     room.showGroundWindow(player);
   }
 

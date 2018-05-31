@@ -1203,7 +1203,7 @@ export class Character {
 
     this.sendClientMessage('You are whisked back to the place in your stored memories!');
 
-    this.$$room.teleport(this, {
+    return this.$$room.teleport(this, {
       x: succorInfo.x,
       y: succorInfo.y,
       newMap: succorInfo.map,
