@@ -14,14 +14,20 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
       return `Greetings, ${player.name}! It is I who can grant unto thee some temporary relief. 
-      Just tell me one of these spells, and I'll fix you right up: invisibility`;
+      Just tell me one of these spells, and I'll fix you right up: invisibility, darkvision`;
     });
-
 
   npc.parser.addCommand('invisibility')
     .set('syntax', ['invisibility'])
     .set('logic', (args, { player }) => {
       npc.$$room.npcLoader.givePlayerEffect(player, 'Invisible', { duration: 900 });
       return `Now then, go get your DP!`;
+    });
+
+  npc.parser.addCommand('darkvision')
+    .set('syntax', ['darkvision'])
+    .set('logic', (args, { player }) => {
+      npc.$$room.npcLoader.givePlayerEffect(player, 'DarkVision', { duration: 900 });
+      return `Now then, go delve the depths!`;
     });
 };
