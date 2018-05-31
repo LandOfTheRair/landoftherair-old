@@ -7773,6 +7773,7 @@
                  "name":"Renegade Leader Spawner",
                  "properties":
                     {
+                     "isDangerous":false,
                      "lairName":"Rylt Renegade Leader",
                      "randomWalkRadius":5,
                      "respawnRate":1200,
@@ -7781,6 +7782,7 @@
                     },
                  "propertytypes":
                     {
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
@@ -7801,6 +7803,7 @@
                  "name":"Renegade Leader Spawner",
                  "properties":
                     {
+                     "isDangerous":false,
                      "lairName":"Rylt Renegade Leader",
                      "randomWalkRadius":5,
                      "respawnRate":1200,
@@ -7809,6 +7812,7 @@
                     },
                  "propertytypes":
                     {
+                     "isDangerous":"bool",
                      "lairName":"string",
                      "randomWalkRadius":"int",
                      "respawnRate":"int",
