@@ -19,7 +19,8 @@ export const setup = async (npc: NPC) => {
     'Transmute Ring',
     'Succor Ring',
     'DarkVision Ring',
-    'Revive Ring'
+    'Revive Ring',
+    'Bradley Constitution Potion'
   ];
 
   npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);
