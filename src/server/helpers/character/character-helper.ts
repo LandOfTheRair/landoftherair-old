@@ -7,7 +7,9 @@ import * as Classes from '../../classes';
 export class CharacterHelper {
 
   static isAbleToSee(char: Character): boolean {
-    return !CharacterHelper.isInDarkness(char) && !char.hasEffect('Blind');
+    if(char.hasEffect('Blind')) return false;
+    if(CharacterHelper.isInDarkness(char) && !char.hasEffect('DarkVision')) return false;
+    return true;
   }
 
   static canHide(char: Character): boolean|string {

@@ -5,6 +5,7 @@ import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/world/combat-helper';
 import { Item } from '../../shared/models/item';
 import { MessageHelper } from '../helpers/world/message-helper';
+import { CharacterHelper } from '../helpers/character/character-helper';
 
 export const Maxes = {
   Lesser: 10,
@@ -145,6 +146,7 @@ export class Effect {
   }
 
   getCasterName(caster: Character, target: Character): string {
+    if(!CharacterHelper.isAbleToSee(target)) return 'somebody';
     return target.canSeeThroughStealthOf(caster) ? caster.name : 'somebody';
   }
 }
