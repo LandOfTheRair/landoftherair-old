@@ -662,7 +662,7 @@ export class GameWorld extends Room<GameState> {
     if(item.sprite < 0) return;
 
     // drop items on destroy if they're supposed to, or if they're a tester.
-    if(this.subscriptionHelper.isTester(ref) && ref.isPlayer && ref.isPlayer() && item.isOwnedBy(ref)) return;
+    if(ref.isPlayer && ref.isPlayer() && item.isOwnedBy(ref) && this.subscriptionHelper.isTester(ref)) return;
 
     if(item.destroyOnDrop) {
 
