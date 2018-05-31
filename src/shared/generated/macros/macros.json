@@ -1,16 +1,6 @@
 {
     "allMeta": [
         {
-            "name": "Chase",
-            "macro": "chase",
-            "icon": "hooded-figure",
-            "color": "#000000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Move towards a target.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Climb",
             "macro": "climb up",
             "icon": "ladder",
@@ -21,12 +11,32 @@
             "requiresLearn": false
         },
         {
+            "name": "Chase",
+            "macro": "chase",
+            "icon": "hooded-figure",
+            "color": "#000000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Move towards a target.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Look At",
             "macro": "look at",
             "icon": "look-at",
             "color": "#8A6948",
             "mode": "clickToTarget",
             "tooltipDesc": "Look at a target, getting a full description of them and their gear.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Show Skills",
+            "macro": "show skills",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your skills and skill levels in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -47,16 +57,6 @@
             "color": "#404040",
             "mode": "autoActivate",
             "tooltipDesc": "Go up or down stairs on this tile.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Show Skills",
-            "macro": "show skills",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your skills and skill levels in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -173,22 +173,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Steal",
-            "macro": "steal",
-            "icon": "take-my-money",
-            "color": "#7F6B00",
-            "mode": "lockActivation",
-            "tooltipDesc": "Steal gold and items from your target.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Mug",
             "macro": "mug",
             "icon": "hooded-assassin",
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Mug your target, dealing damage and stealing from them. Requires Thievery skill 7.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Steal",
+            "macro": "steal",
+            "icon": "take-my-money",
+            "color": "#7F6B00",
+            "mode": "lockActivation",
+            "tooltipDesc": "Steal gold and items from your target.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -372,16 +372,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Revive",
-            "macro": "cast revive",
-            "icon": "quicksand",
-            "color": "#080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Revive a single player on your tile. Cost: 50 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Secondwind",
             "macro": "cast secondwind",
             "icon": "wing-cloak",
@@ -389,6 +379,16 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Prevent losing gear on death. Cost: 250 MP",
             "skillTPCost": 20,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Revive",
+            "macro": "cast revive",
+            "icon": "quicksand",
+            "color": "#080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Revive a single player on your tile. Cost: 50 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -587,6 +587,16 @@
             "requiresLearn": true
         },
         {
+            "name": "IceMist",
+            "macro": "cast icemist",
+            "icon": "kaleidoscope-pearls",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast an area ice effect on a target (3x3). Allows directional targeting. Cost: 35 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "ImbueEnergy",
             "macro": "cast imbueenergy",
             "icon": "magic-palm",
@@ -594,16 +604,6 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Augment physical attacks to do bonus energy damage. Cost: 100 MP",
             "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "IceMist",
-            "macro": "cast icemist",
-            "icon": "kaleidoscope-pearls",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast an area ice effect on a target (3x3). Allows directional targeting. Cost: 35 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -732,22 +732,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Darkness",
-            "macro": "cast darkness",
-            "icon": "dust-cloud",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "BarFrost",
             "macro": "cast barfrost",
             "icon": "rosa-shield",
             "color": "#000080",
             "mode": "clickToTarget",
             "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Darkness",
+            "macro": "cast darkness",
+            "icon": "dust-cloud",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -863,12 +863,13 @@
             "requiresLearn": true
         },
         {
-            "name": "Debilitate",
-            "macro": "cast debilitate",
-            "icon": "one-eyed",
-            "color": "#a00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
+            "name": "Disguise",
+            "macro": "cast disguise",
+            "icon": "duality",
+            "color": "#111",
+            "mode": "autoActivate",
+            "tooltipDesc": "Blend in with enemies. Cost: 100 HP",
+            "requireSkillLevel": 15,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -879,17 +880,6 @@
             "color": "#000053",
             "mode": "clickToActivate",
             "tooltipDesc": "Disarm a trap on an adjacent tile.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Disguise",
-            "macro": "cast disguise",
-            "icon": "duality",
-            "color": "#111",
-            "mode": "autoActivate",
-            "tooltipDesc": "Blend in with enemies. Cost: 100 HP",
-            "requireSkillLevel": 15,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -905,6 +895,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Debilitate",
+            "macro": "cast debilitate",
+            "icon": "one-eyed",
+            "color": "#a00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Set",
             "macro": "cast set",
             "icon": "quake-stomp",
@@ -915,22 +915,22 @@
             "requiresLearn": true
         },
         {
-            "name": "ShadowClones",
-            "macro": "cast shadowclones",
-            "icon": "dark-squad",
-            "color": "#111",
-            "mode": "autoActivate",
-            "tooltipDesc": "Summon some shadow backup to help you slaughter your foes. Cost: 300 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "ShadowMeld",
             "macro": "cast shadowmeld",
             "icon": "hidden",
             "color": "#00c",
             "mode": "autoActivate",
             "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowClones",
+            "macro": "cast shadowclones",
+            "icon": "dark-squad",
+            "color": "#111",
+            "mode": "autoActivate",
+            "tooltipDesc": "Summon some shadow backup to help you slaughter your foes. Cost: 300 HP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -1001,16 +1001,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Shield",
-            "macro": "art shield",
-            "icon": "vibrating-shield",
-            "color": "#a00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Increase your physical and magical resistance.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Rapidpunch",
             "macro": "art rapidpunch",
             "icon": "fire-punch",
@@ -1019,6 +1009,16 @@
             "tooltipDesc": "Punch a single target many times in succession.",
             "requireSkillLevel": 15,
             "skillTPCost": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Shield",
+            "macro": "art shield",
+            "icon": "vibrating-shield",
+            "color": "#a00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Increase your physical and magical resistance.",
             "isSystem": true,
             "requiresLearn": true
         },
