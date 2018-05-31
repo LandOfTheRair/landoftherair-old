@@ -1076,7 +1076,7 @@ export class Character {
     if(!this.isValidSkill(type)) return;
 
     // you can gain up to 2 skills post-cap if you feel like grinding heavily
-    if(skillGained > 0) {
+    if(skillGained > 0 && !VALID_TRADESKILLS_HASH[type]) {
       const curLevel = this.calcSkillLevel(type);
       const maxLevel = this.$$room.state.maxSkill;
       const diff = curLevel - maxLevel;
