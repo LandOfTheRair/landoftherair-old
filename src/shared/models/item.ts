@@ -338,7 +338,7 @@ export class Item {
         .map(x => `${this.stats[x] < 0 ? '' : '+'}${this.stats[x]} ${x.toUpperCase()}`)
         .join(', ');
 
-      statText = `Hidden Bonuses: ${statText}`;
+      statText = statText ? `Hidden Bonuses: ${statText}` : '';
       if(fromClient) statText = `<br><br>${statText}`;
     }
 
