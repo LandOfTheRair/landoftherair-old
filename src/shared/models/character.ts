@@ -503,7 +503,8 @@ export class Character {
 
     // base stats
     Object.keys(this.stats).forEach(stat => {
-      this.totalStats[stat] = this.stats[stat];
+      if(isNaN(this.stats[stat])) return;
+      this.totalStats[stat] = this.stats[stat] || 0;
     });
 
     // stats from effects
@@ -515,6 +516,8 @@ export class Character {
     const classStats = Classes[this.baseClass].calcBonusStatsForCharacter(this);
 
     Object.keys(classStats).forEach(stat => {
+      if(isNaN(classStats[stat])) return;
+      this.totalStats[stat] = this.totalStats[stat] || 0;
       this.totalStats[stat] += classStats[stat];
     });
 
@@ -522,6 +525,8 @@ export class Character {
 
     const addStatsForItem = (item: Item) => {
       Object.keys(item.stats).forEach(stat => {
+        if(isNaN(item.stats[stat])) return;
+        this.totalStats[stat] = this.totalStats[stat] || 0;
         this.totalStats[stat] += item.stats[stat];
       });
 
@@ -533,6 +538,8 @@ export class Character {
 
         const addEncrustStats = () => {
           Object.keys(item.encrust.stats).forEach(stat => {
+            if(isNaN(item.encrust.stats[stat])) return;
+            this.totalStats[stat] = this.totalStats[stat] || 0;
             this.totalStats[stat] += item.encrust.stats[stat];
           });
         };

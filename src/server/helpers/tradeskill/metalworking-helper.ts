@@ -79,10 +79,10 @@ export class MetalworkingHelper {
     // move prots over
     if(buffItem.itemClass === 'Fur') {
       return {
-        fireResist: buffItem.stats.fireResist,
-        iceResist: buffItem.stats.iceResist,
-        poisonResist: buffItem.stats.poisonResist,
-        diseaseResist: buffItem.stats.diseaseResist
+        fireResist: buffItem.stats.fireResist || 0,
+        iceResist: buffItem.stats.iceResist || 0,
+        poisonResist: buffItem.stats.poisonResist || 0,
+        diseaseResist: buffItem.stats.diseaseResist || 0
       };
     }
 
