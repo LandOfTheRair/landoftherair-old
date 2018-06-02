@@ -40,13 +40,13 @@ import { ColyseusGameService } from '../colyseus.game.service';
 
         <div class="char-gear">
           <div class="gear-item right">
-            <app-item size="xsmall" [showDesc]="false" [showEncrust]="false" [item]="npc.rightHand" *ngIf="npc.rightHand"></app-item>
+            <app-item size="xsmall" [showDesc]="false" [showEncrust]="false" [item]="npc.rightHand"></app-item>
           </div>
           <div class="gear-item armor">
-            <app-item size="xsmall" [showDesc]="false" [showEncrust]="false" [item]="npcArmorItem(npc)" *ngIf="npcArmorItem(npc)"></app-item>
+            <app-item size="xsmall" [showDesc]="false" [showEncrust]="false" [item]="npcArmorItem(npc)"></app-item>
           </div>
           <div class="gear-item left">
-            <app-item size="xsmall" [showDesc]="false" [showEncrust]="false" [item]="npc.leftHand" *ngIf="npc.leftHand"></app-item>
+            <app-item size="xsmall" [showDesc]="false" [showEncrust]="false" [item]="npc.leftHand"></app-item>
           </div>
         </div>
 

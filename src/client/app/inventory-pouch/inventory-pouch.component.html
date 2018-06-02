@@ -2,8 +2,7 @@
 <div class="p-1 item-container d-flex flex-wrap" droppable dropScope="demimagicpouch"(onDrop)="colyseusGame.buildDropAction($event, 'DemiMagicPouch')" *ngIf="player">
   <div *ngFor="let slot of slots"
        class="item-slot item-background">
-    <app-item *ngIf="player.pouch.items[slot]"
-              [size]="size"
+    <app-item [size]="size"
               [item]="player.pouch.items[slot]"
               [showDesc]="true"
               [showOunces]="true"

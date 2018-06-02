@@ -10,7 +10,7 @@
        dropScope="ear"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Ear">Earring</span>
-    <app-item [size]="size" [item]="player.gear.Ear" context="Equipment" *ngIf="player.gear.Ear" contextSlot="Ear"></app-item>
+    <app-item [size]="size" [item]="player.gear.Ear" context="Equipment" contextSlot="Ear"></app-item>
   </div>
 
   <div class="item-slot item-background"
@@ -18,7 +18,7 @@
        dropScope="head"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Head">Helm</span>
-    <app-item [size]="size" [item]="player.gear.Head" context="Equipment" *ngIf="player.gear.Head" contextSlot="Head"></app-item>
+    <app-item [size]="size" [item]="player.gear.Head" context="Equipment" contextSlot="Head"></app-item>
   </div>
 
   <div class="item-slot item-background"
@@ -26,7 +26,7 @@
        dropScope="neck"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Neck">Amulet</span>
-    <app-item [size]="size" [item]="player.gear.Neck" context="Equipment" *ngIf="player.gear.Neck" contextSlot="Neck"></app-item>
+    <app-item [size]="size" [item]="player.gear.Neck" context="Equipment" contextSlot="Neck"></app-item>
   </div>
 
   <div class="item-slot"></div>
@@ -37,7 +37,7 @@
        dropScope="waist"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Waist">Sash</span>
-    <app-item [size]="size" [item]="player.gear.Waist" context="Equipment" *ngIf="player.gear.Waist" contextSlot="Waist"></app-item>
+    <app-item [size]="size" [item]="player.gear.Waist" context="Equipment" contextSlot="Waist"></app-item>
   </div>
 
   <div class="item-slot"></div>
@@ -49,7 +49,7 @@
        dropScope="wrists"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Wrists">Bracers</span>
-    <app-item [size]="size" [item]="player.gear.Wrists" context="Equipment" *ngIf="player.gear.Wrists" contextSlot="Wrists"></app-item>
+    <app-item [size]="size" [item]="player.gear.Wrists" context="Equipment" contextSlot="Wrists"></app-item>
   </div>
 
   <!-- next row (ring, lefthand, righthand, ring) -->
@@ -58,7 +58,7 @@
        dropScope="ring"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Ring1">Ring</span>
-    <app-item [size]="size" [item]="player.gear.Ring1" context="Equipment" *ngIf="player.gear.Ring1" contextSlot="Ring1"></app-item>
+    <app-item [size]="size" [item]="player.gear.Ring1" context="Equipment" contextSlot="Ring1"></app-item>
   </div>
 
   <div class="item-slot item-background"
@@ -69,9 +69,8 @@
     <app-item [size]="size"
               [item]="player.rightHand"
               [showOunces]="true"
-              [showValue]="player.rightHand.itemClass === 'Coin'"
-              context="Right"
-              *ngIf="player.rightHand"></app-item>
+              [showValue]="player.rightHand && player.rightHand.itemClass === 'Coin'"
+              context="Right"></app-item>
   </div>
 
   <div class="item-slot"></div>
@@ -83,10 +82,9 @@
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.leftHand">Left Hand</span>
     <app-item [size]="size"
               [item]="player.leftHand"
-              [showValue]="player.leftHand.itemClass === 'Coin'"
+              [showValue]="player.leftHand && player.leftHand.itemClass === 'Coin'"
               context="Left"
-              [showOunces]="true"
-              *ngIf="player.leftHand"></app-item>
+              [showOunces]="true"></app-item>
   </div>
 
   <div class="item-slot item-background"
@@ -94,7 +92,7 @@
        dropScope="ring"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Ring2">Ring</span>
-    <app-item [size]="size" [item]="player.gear.Ring2" context="Equipment" *ngIf="player.gear.Ring2" contextSlot="Ring2"></app-item>
+    <app-item [size]="size" [item]="player.gear.Ring2" context="Equipment" contextSlot="Ring2"></app-item>
   </div>
 
   <!-- next row (gloves, boots) -->
@@ -103,7 +101,7 @@
        dropScope="hands"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Hands">Gloves</span>
-    <app-item [size]="size" [item]="player.gear.Hands" context="Equipment" *ngIf="player.gear.Hands" contextSlot="Hands"></app-item>
+    <app-item [size]="size" [item]="player.gear.Hands" context="Equipment" contextSlot="Hands"></app-item>
   </div>
 
   <div class="item-slot"></div>
@@ -115,7 +113,7 @@
        dropScope="feet"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Feet">Boots</span>
-    <app-item [size]="size" [item]="player.gear.Feet" context="Equipment" *ngIf="player.gear.Feet" contextSlot="Feet"></app-item>
+    <app-item [size]="size" [item]="player.gear.Feet" context="Equipment" contextSlot="Feet"></app-item>
   </div>
 
   <!-- last row (potion, armor, robe, robe) -->
@@ -124,7 +122,7 @@
        dropScope="potion"
        (onDrop)="colyseusGame.buildDropAction($event, 'Potion')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.potionHand">Potion</span>
-    <app-item [size]="size" [item]="player.potionHand" showOunces="true" context="Potion" *ngIf="player.potionHand"></app-item>
+    <app-item [size]="size" [item]="player.potionHand" showOunces="true" context="Potion"></app-item>
   </div>
 
   <div class="item-slot item-background"
@@ -132,7 +130,7 @@
        [dropScope]="['armor', 'robe']"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Armor">Armor</span>
-    <app-item [size]="size" [item]="player.gear.Armor" context="Equipment" *ngIf="player.gear.Armor" contextSlot="Armor"></app-item>
+    <app-item [size]="size" [item]="player.gear.Armor" context="Equipment" contextSlot="Armor"></app-item>
   </div>
 
   <div class="item-slot item-background"
@@ -140,7 +138,7 @@
        dropScope="robe"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Robe1">Robe</span>
-    <app-item [size]="size" [item]="player.gear.Robe1" context="Equipment" *ngIf="player.gear.Robe1" contextSlot="Robe1"></app-item>
+    <app-item [size]="size" [item]="player.gear.Robe1" context="Equipment" contextSlot="Robe1"></app-item>
   </div>
 
   <div class="item-slot item-background"
@@ -148,7 +146,7 @@
        dropScope="robe"
        (onDrop)="colyseusGame.buildDropAction($event, 'Equipment')">
     <span class="item-slot-bg-text {{ size }}" *ngIf="!player.gear.Robe2">Robe</span>
-    <app-item [size]="size" [item]="player.gear.Robe2" context="Equipment" *ngIf="player.gear.Robe2" contextSlot="Robe2"></app-item>
+    <app-item [size]="size" [item]="player.gear.Robe2" context="Equipment" contextSlot="Robe2"></app-item>
   </div>
   <div class="item-slot"></div>
 

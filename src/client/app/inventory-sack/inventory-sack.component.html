@@ -2,8 +2,7 @@
 <div class="p-1 item-container d-flex flex-wrap" droppable dropScope="sack" (onDrop)="colyseusGame.buildDropAction($event, 'Sack')" *ngIf="player">
   <div *ngFor="let slot of slots"
        class="item-slot item-background">
-    <app-item *ngIf="player.sack.items[slot]"
-              [size]="size"
+    <app-item [size]="size"
               [item]="player.sack.items[slot]"
               [showDesc]="true"
               [showOunces]="true"

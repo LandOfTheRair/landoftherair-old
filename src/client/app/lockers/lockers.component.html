@@ -15,8 +15,7 @@
     <div class="col-8 p-0 d-flex flex-wrap flex-row" *ngIf="currentLocker.regionId !== 'Material'">
       <div *ngFor="let slot of slots"
            class="item-slot item-background">
-        <app-item *ngIf="currentLocker.items[slot]"
-                  [item]="currentLocker.items[slot]"
+        <app-item [item]="currentLocker.items[slot]"
                   [showDesc]="true"
                   [showOunces]="true"
                   context="Wardrobe"
@@ -34,8 +33,7 @@
                       [showOutline]="true"
                       [item]="{ sprite: slotInfo[itemSlot].sprite }"></app-item>
 
-            <app-item *ngIf="currentLocker.items[itemSlot]"
-                      [item]="currentLocker.items[itemSlot]"
+            <app-item [item]="currentLocker.items[itemSlot]"
                       [showDesc]="true"
                       [showOunces]="true"
                       context="WardrobeMaterial"

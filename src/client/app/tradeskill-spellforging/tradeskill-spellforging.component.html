@@ -26,7 +26,6 @@
                (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Spellforging:0')">
             <span class="item-slot-bg-text" *ngIf="!items[0]">Subject Item</span>
             <app-item size="normal"
-                      *ngIf="items[0]"
                       [item]="items[0]"
                       contextSlot="0"
                       [containerUUID]="colyseusGame.showSpellforging.uuid"
@@ -41,7 +40,6 @@
                (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Spellforging:1')">
             <span class="item-slot-bg-text" *ngIf="!items[1]">Reagent Item</span>
             <app-item size="normal"
-                      *ngIf="items[1]"
                       [item]="items[1]"
                       contextSlot="1"
                       [containerUUID]="colyseusGame.showSpellforging.uuid"
@@ -53,7 +51,6 @@
           <div class="item-slot item-background">
             <span class="item-slot-bg-text" *ngIf="!items[2]">Result Item</span>
             <app-item size="normal"
-                      *ngIf="items[2]"
                       [item]="items[2]"
                       contextSlot="2"
                       [containerUUID]="colyseusGame.showSpellforging.uuid"

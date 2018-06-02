@@ -73,7 +73,7 @@ export const MaterialSlotInfo = {
   [MaterialSlot.AntanianBranch]:        { sprite: 1008, withdrawInOunces: false },
   [MaterialSlot.RisanTwig]:             { sprite: 222,  withdrawInOunces: false },
   [MaterialSlot.RisanBranch]:           { sprite: 1008, withdrawInOunces: false },
-  [MaterialSlot.RisanFrozenTwig]:       { sprite: 282,  withdrawInOunces: false },
+  [MaterialSlot.RisanFrozenTwig]:       { sprite: 283,  withdrawInOunces: false },
   [MaterialSlot.FrostlandsGourd]:       { sprite: 840,  withdrawInOunces: false }
 };
 

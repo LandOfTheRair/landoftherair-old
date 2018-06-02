@@ -1,5 +1,5 @@
 
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { EquippableItemClasses, Item } from '../../../shared/models/item';
 import { Player } from '../../../shared/models/player';
@@ -140,24 +140,24 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          [class.transparent]="showOutline"
          draggable
          [dragScope]="scopes"
-         [dragEnabled]="!displayOnly"
+         [dragEnabled]="item && !displayOnly"
          [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID, isStackableMaterial: isStackableMaterial }"
          (mouseenter)="determineScopes()"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
          triggers="hover:mouseleave"
          container="body"
          delay="750"
-         [isDisabled]="!showDesc"
+         [isDisabled]="!item || !showDesc"
          [tooltip]="desc">
-      <img [src]="imgUrl" [style.object-position]="spriteLocation" />
-      <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="showEncrust && item.encrust" />
-      <div class="item-background" *ngIf="showBackground"></div>
-      <div class="glow-container" [ngClass]="[glowColor]" *ngIf="showDesc"></div>
-      <span class="count" *ngIf="realCount > 0">{{ realCount }}x</span>
-      <span class="ounces" *ngIf="showOunces && item.ounces > 0">{{ item.ounces }}oz</span>
-      <span class="value" *ngIf="showValue">{{ overrideValue || (item._buybackValue || item.value) + 'g' }}</span>
-      <span class="value" *ngIf="showOunces && item.succorInfo">{{ item.succorInfo.map }}</span>
-      <span class="ounces" *ngIf="showDesc && item.effect && item.itemClass === 'Trap'">{{ item.effect.name }}</span>
+      <img [src]="imgUrl" [style.object-position]="spriteLocation" [class.hidden]="!item" />
+      <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="item && showEncrust && item.encrust" />
+      <div class="item-background" *ngIf="item && showBackground"></div>
+      <div class="glow-container" [ngClass]="[glowColor]" *ngIf="item && showDesc"></div>
+      <span class="count" *ngIf="item && realCount > 0">{{ realCount }}x</span>
+      <span class="ounces" *ngIf="item && showOunces && item.ounces > 0">{{ item.ounces }}oz</span>
+      <span class="value" *ngIf="item && showValue">{{ overrideValue || (item._buybackValue || item.value) + 'g' }}</span>
+      <span class="value" *ngIf="item && showOunces && item.succorInfo">{{ item.succorInfo.map }}</span>
+      <span class="ounces" *ngIf="item && showDesc && item.effect && item.itemClass === 'Trap'">{{ item.effect.name }}</span>
       
       <ng-template #desc>
         <div [innerHtml]="descText"></div>
@@ -166,7 +166,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
     
   `
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent {
 
   @Input()
   public item: Item;
@@ -214,6 +214,7 @@ export class ItemComponent implements OnInit {
   }
 
   get isEquippable(): boolean {
+    if(!this.item) return false;
     return includes(EquippableItemClasses, this.item.itemClass);
   }
 
@@ -226,7 +227,7 @@ export class ItemComponent implements OnInit {
   }
 
   get imgUrl() {
-    if(this.item.itemClass === 'Corpse') {
+    if(this.item && this.item.itemClass === 'Corpse') {
       return this.assetService.creaturesUrl;
     }
 
@@ -241,6 +242,7 @@ export class ItemComponent implements OnInit {
   }
 
   get spriteLocation() {
+    if(!this.item) return '0px 0px';
     const divisor = this.item.itemClass === 'Corpse' ? 40 : 32;
     const y = Math.floor(this.item.sprite / divisor);
     const x = this.item.sprite % divisor;
@@ -248,6 +250,7 @@ export class ItemComponent implements OnInit {
   }
 
   get encrustLocation() {
+    if(!this.item) return '0px 0px';
     const divisor = 32;
     const y = Math.floor(this.item.encrust.sprite / divisor);
     const x = this.item.encrust.sprite % divisor;
@@ -255,20 +258,18 @@ export class ItemComponent implements OnInit {
   }
 
   get descText() {
+    if(!this.item) return '';
     const item = new Item(this.item);
     return item.descTextFor(this.player, 0, true);
   }
 
   get isStackableMaterial(): boolean {
+    if(!this.item) return false;
     if(!isNumber(ValidMaterialItems[this.item.name])) return false;
     return MaterialSlotInfo[ValidMaterialItems[this.item.name]].withdrawInOunces;
   }
 
   constructor(private colyseusGame: ColyseusGameService, private assetService: AssetService) {}
-
-  ngOnInit() {
-    this.item = new Item(this.item);
-  }
 
   doColyseusMoveAction(choice) {
     this.colyseusGame.buildAction(this.item, {
@@ -284,7 +285,7 @@ export class ItemComponent implements OnInit {
   }
 
   determineScopes() {
-    if(!this.context) return [];
+    if(!this.context || !this.item) return [];
 
     const scopes = [];
 
@@ -345,7 +346,7 @@ export class ItemComponent implements OnInit {
 
   automaticallyTakeActionBasedOnOpenWindows() {
 
-    if(!this.context) return;
+    if(!this.context || !this.item) return;
 
     if(this.colyseusGame.showShop.uuid) {
 

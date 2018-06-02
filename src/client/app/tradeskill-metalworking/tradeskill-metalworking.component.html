@@ -24,7 +24,6 @@
                (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Metalworking:0')">
             <span class="item-slot-bg-text" *ngIf="!items[0]">Base Item</span>
             <app-item size="normal"
-                      *ngIf="items[0]"
                       [item]="items[0]"
                       contextSlot="0"
                       [containerUUID]="colyseusGame.showMetalworking.uuid"
@@ -39,7 +38,6 @@
                (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Metalworking:1')">
             <span class="item-slot-bg-text" *ngIf="!items[1]">Craft Reagent</span>
             <app-item size="normal"
-                      *ngIf="items[1]"
                       [item]="items[1]"
                       contextSlot="1"
                       [containerUUID]="colyseusGame.showMetalworking.uuid"
@@ -51,7 +49,6 @@
           <div class="item-slot item-background">
             <span class="item-slot-bg-text" *ngIf="!items[2]">Craft Result</span>
             <app-item size="normal"
-                      *ngIf="items[2]"
                       [item]="items[2]"
                       contextSlot="2"
                       [containerUUID]="colyseusGame.showMetalworking.uuid"
@@ -80,7 +77,6 @@
                (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Metalworking:3')">
             <span class="item-slot-bg-text" *ngIf="!items[3]">Upgrade Item</span>
             <app-item size="normal"
-                      *ngIf="items[3]"
                       [item]="items[3]"
                       contextSlot="3"
                       [containerUUID]="colyseusGame.showMetalworking.uuid"
@@ -95,7 +91,6 @@
                (onDrop)="colyseusGame.buildDropAction($event, 'Tradeskill:Metalworking:4')">
             <span class="item-slot-bg-text" *ngIf="!items[4]">Upgrade Reagent</span>
             <app-item size="normal"
-                      *ngIf="items[4]"
                       [item]="items[4]"
                       contextSlot="4"
                       [containerUUID]="colyseusGame.showMetalworking.uuid"
@@ -107,7 +102,6 @@
           <div class="item-slot item-background">
             <span class="item-slot-bg-text" *ngIf="!items[5]">Upgrade Result</span>
             <app-item size="normal"
-                      *ngIf="items[5]"
                       [item]="items[5]"
                       contextSlot="5"
                       [containerUUID]="colyseusGame.showMetalworking.uuid"
