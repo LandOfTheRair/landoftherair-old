@@ -43,6 +43,8 @@ export class Game {
 
   private playerSprite: any;
   private map: any;
+  private skipLoading: boolean;
+  private oldMapName: string;
 
   private visibleNPCUUIDHash = {};
   private visibleItemUUIDHash = {};
@@ -96,7 +98,7 @@ export class Game {
 
     // reset any time inGame is set to true
     this.colyseus.game.inGame$.subscribe(inGame => {
-      this.reset();
+      // this.reset();
 
       if(!inGame) {
         this.updateBgm('');
@@ -158,7 +160,7 @@ export class Game {
 
   }
 
-  public reset() {
+  public reset(skipLoading = false) {
     this.updateBgm('');
     this.g.lockRender = true;
     this.hasFlashed = false;
@@ -197,23 +199,28 @@ export class Game {
     this.playerSpriteHash = {};
     this.environmentalObjectHash = {};
 
-    Object.keys(this.bgms).forEach(bgm => {
-      if(!this.bgms[bgm] || !this.bgms[bgm].isDecoded) return;
-      this.bgms[bgm].destroy();
-    });
+    if(!skipLoading) {
 
-    Object.keys(this.sfxs).forEach(sfx => {
-      if(!this.sfxs[sfx] || !this.sfxs[sfx].isDecoded) return;
-      this.sfxs[sfx].destroy();
-    });
+      Object.keys(this.bgms).forEach(bgm => {
+        if(!this.bgms[bgm] || !this.bgms[bgm].isDecoded) return;
+        this.bgms[bgm].destroy();
+      });
 
-    this.bgms = {};
-    this.sfxs = {};
+      Object.keys(this.sfxs).forEach(sfx => {
+        if(!this.sfxs[sfx] || !this.sfxs[sfx].isDecoded) return;
+        this.sfxs[sfx].destroy();
+      });
 
-    this.isRenderingTruesight = false;
-    this.isRenderingEagleEye = false;
+      this.bgms = {};
+      this.sfxs = {};
 
-    this.playerSprite = null;
+      this.isRenderingTruesight = false;
+      this.isRenderingEagleEye = false;
+
+      this.playerSprite = null;
+    }
+
+    this.skipLoading = skipLoading;
   }
 
   private focusCameraOnPlayer() {
@@ -768,6 +775,7 @@ export class Game {
 
       for(let y = -4; y <= 4; y++) {
         const dark = this.g.add.sprite(64 * (x + 4), 64 * (y + 4), blackBitmapData);
+        dark.alpha = 0;
         dark.fixedToCamera = true;
         this.fovSprites[x][y] = dark;
         this.fovGroup.add(dark);
@@ -785,38 +793,46 @@ export class Game {
 
     this.setupPhaser();
 
-    this.isLoaded = false;
-
     this.g.add.plugin(new TiledPlugin(this.g, this.g.stage));
 
+    this.isLoaded = false;
     const loadMap = this.clientGameState.map;
 
     // remove unused tileset to prevent warnings since things on a layer that uses this tileset are handled manually
     loadMap.tilesets.length = 3;
 
     this.cacheMap(loadMap);
-
     this.g.load.tiledmap(cacheKey(this.clientGameState.mapName, 'tiledmap'), null, loadMap, (<any>window).Phaser.Tilemap.TILED_JSON);
 
-    this.g.load.image(cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'), this.assetService.terrainUrl, 64, 64);
-    this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Walls'), this.assetService.wallsUrl, 64, 64);
-    this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Decor'), this.assetService.decorUrl, 64, 64);
+    if(this.oldMapName && this.skipLoading) {
+      ['Terrain', 'Walls', 'Decor'].forEach(key => {
+        this.g.cache._cache.image[cacheKey(this.clientGameState.mapName, 'tileset', key)] = this.g.cache._cache.image[cacheKey(this.oldMapName, 'tileset', key)];
+      });
+    }
 
-    this.g.load.spritesheet('Swimming', this.assetService.swimmingUrl, 64, 64);
-    this.g.load.spritesheet('Creatures', this.assetService.creaturesUrl, 64, 64);
-    this.g.load.spritesheet('Items', this.assetService.itemsUrl, 64, 64);
-    this.g.load.spritesheet('Effects', this.assetService.effectsUrl, 64, 64);
+    this.oldMapName = this.clientGameState.mapName;
 
-    bgms.forEach(bgm => {
-      this.g.load.audio(`bgm-${bgm}`, `${this.assetService.assetUrl}/bgm/${bgm}.mp3`);
-      this.g.load.audio(`bgm-${bgm}-nostalgia`, `${this.assetService.assetUrl}/bgm/${bgm}-nostalgia.mp3`);
-    });
+    if(!this.skipLoading) {
+      this.g.load.image(cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'), this.assetService.terrainUrl, 64, 64);
+      this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Walls'), this.assetService.wallsUrl, 64, 64);
+      this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Decor'), this.assetService.decorUrl, 64, 64);
 
-    sfxs.forEach(sfx => {
-      this.g.load.audio(`sfx-${sfx}`, `${this.assetService.assetUrl}/sfx/${sfx}.mp3`);
-    });
+      this.g.load.spritesheet('Swimming', this.assetService.swimmingUrl, 64, 64);
+      this.g.load.spritesheet('Creatures', this.assetService.creaturesUrl, 64, 64);
+      this.g.load.spritesheet('Items', this.assetService.itemsUrl, 64, 64);
+      this.g.load.spritesheet('Effects', this.assetService.effectsUrl, 64, 64);
 
-    this.setupLoadingListeners();
+      bgms.forEach(bgm => {
+        this.g.load.audio(`bgm-${bgm}`, `${this.assetService.assetUrl}/bgm/${bgm}.mp3`);
+        this.g.load.audio(`bgm-${bgm}-nostalgia`, `${this.assetService.assetUrl}/bgm/${bgm}-nostalgia.mp3`);
+      });
+
+      sfxs.forEach(sfx => {
+        this.g.load.audio(`sfx-${sfx}`, `${this.assetService.assetUrl}/sfx/${sfx}.mp3`);
+      });
+
+      this.setupLoadingListeners();
+    }
   }
 
   create() {
@@ -891,6 +907,8 @@ export class Game {
     this.playerSprite = this.getPlayerSprite(this.player);
     this.playerSpriteHash[this.player.username] = this.playerSprite;
     this.focusCameraOnPlayer();
+
+    this.skipLoading = false;
   }
 
   render() {
@@ -899,7 +917,7 @@ export class Game {
     if(!this.hasFlashed) {
       this.hasFlashed = true;
 
-      this.g.camera.flash('#000', 500);
+      this.g.camera.flash('#000', 1);
       this.isLoaded = true;
     }
 

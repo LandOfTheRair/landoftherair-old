@@ -59,7 +59,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
       if(this.started && this.phaser) {
         allBoxes.forEach(box => box.clearSelf());
-        this.game.reset();
+        this.game.reset(true);
         this.phaser.state.start(this.phaser.state.current);
       }
 
