@@ -92,7 +92,8 @@ export class MetalworkingContainer extends Container {
 
     // index === 2 = mold output
 
-    // index === 3 = main slot armor (any) or weapon (any)
+    // index === 3 = main slot armor (any) or weapon (any) - except fur, because armor can be upgraded with fur
+    if(index === 3 && item.itemClass === 'Fur') return false;
     if(index === 3 && !includes(ArmorClasses, item.itemClass) && !includes(WeaponClasses, item.itemClass)) return false;
 
     // index === 4 = upgrade component (ingot or fur)

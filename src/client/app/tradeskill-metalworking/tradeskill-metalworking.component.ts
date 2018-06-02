@@ -26,7 +26,10 @@ export class TradeskillMetalworkingComponent {
       return prev;
     }, {});
 
-    return sortBy(Object.keys(sumObject)).map(key => `${key.toUpperCase()} +${sumObject[key]}`).join(', ');
+    return sortBy(Object.keys(sumObject))
+      .filter(x => sumObject[x] > 0)
+      .map(key => `${key.toUpperCase()} +${sumObject[key]}`)
+      .join(', ');
   }
 
   get items() {
