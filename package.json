@@ -10,7 +10,7 @@
     "start:server": "nodemon --ignore \"client/\" --ignore \"dist/*\" --ignore \"*.json\" --exec \"ts-node \" -- \"src/server/index.ts\"",
     "start:server:single": "nodemon --ignore \"client/\" --ignore \"dist/*\" --ignore \"*.json\" --exec \"ts-node \" -- \"src/server/index.ts\" --single-core",
     "start:server:single:debug": "nodemon --ignore \"client/\" --ignore \"dist/*\" --ignore \"*.json\" --exec \"node --inspect -r ts-node/register \" -- \"src/server/index.ts\" --single-core",
-    "start:client": "ng serve -o --host 0.0.0.0 --disable-host-check",
+    "start:client": "ng serve -o --host 0.0.0.0 --port 4567 --disable-host-check",
     "build": "ng build",
     "build:netlify": "npm run postinstall && npm run build:prod",
     "prebuild:prod": "node scripts/prebuild-client",
