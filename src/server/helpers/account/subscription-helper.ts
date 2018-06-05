@@ -300,7 +300,7 @@ export class SubscriptionHelper {
 
   public async decrementSilverPurchase(account: Account, purchase: SilverPurchase): Promise<boolean> {
     const purchaseItem = find(AllSilverPurchases, { key: purchase });
-    const curPurchaseTier = this.getSilverPurchase(account, purchase)
+    const curPurchaseTier = this.getSilverPurchase(account, purchase);
 
     if(!purchaseItem) return false;
     if(curPurchaseTier === 0) return false;
