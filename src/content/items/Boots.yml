@@ -129,7 +129,7 @@
       min: 3
       max: 5
   tier: 6
-  sprite: 371
-  desc: "a pair of green fur boots that keep you warm when traversing the frostlands"
+  sprite: 287
+  desc: "a pair of white-fur boots that keep you warm when traversing the frostlands"
   value: 2500
   binds: true
