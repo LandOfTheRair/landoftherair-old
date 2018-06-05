@@ -47,7 +47,7 @@ export class ColyseusLobbyService {
     });
 
     this.room.onError.add((e) => {
-      alert(e);
+      alert('ROOM ERROR: ' + JSON.stringify(e));
     });
   }
 
