@@ -80,6 +80,8 @@ export class ColyseusGameService {
 
   private loadedCharacterSlot: number;
 
+  public suppressAnimations: boolean;
+
   constructor(
     private localStorage: LocalStorageService
   ) {
@@ -88,6 +90,7 @@ export class ColyseusGameService {
     this.overrideNoSfx = !this.localStorage.retrieve('playSoundEffects');
     this.nostalgicBgm = this.localStorage.retrieve('nostalgicBackgroundMusic');
     this.suppressZero = this.localStorage.retrieve('suppressZeroDamage');
+    this.suppressAnimations = this.localStorage.retrieve('suppressAnimations');
 
     this.localStorage.observe('playBackgroundMusic')
       .subscribe(shouldPlayBgm => {
@@ -107,6 +110,11 @@ export class ColyseusGameService {
     this.localStorage.observe('suppressZeroDamage')
       .subscribe(suppressZeroDamage => {
         this.suppressZero = suppressZeroDamage;
+      });
+
+    this.localStorage.observe('suppressAnimations')
+      .subscribe(suppressAnimations => {
+        this.suppressAnimations = suppressAnimations;
       });
 
     this.lastCommands = this.localStorage.retrieve('lastCommands') || [];

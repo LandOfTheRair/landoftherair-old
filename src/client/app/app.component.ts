@@ -152,6 +152,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   public suppressZeroDamage: boolean;
 
   @LocalStorage()
+  public suppressAnimations: boolean;
+
+  @LocalStorage()
   public showActiveTarget: boolean;
 
   @LocalStorage()

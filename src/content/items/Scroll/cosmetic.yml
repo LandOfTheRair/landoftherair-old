@@ -1,0 +1,40 @@
+
+- name: Cosmetic Scroll - Inversify
+  sprite: 224
+  desc: "a cosmetic scroll featuring \"Inversify\""
+  value: 1
+  cosmetic:
+    name: Inversify
+    isPermanent: true
+
+- name: Cosmetic Scroll - Ancientify
+  sprite: 224
+  desc: "a cosmetic scroll featuring \"Ancientify\""
+  value: 1
+  cosmetic:
+    name: Ancientify
+    isPermanent: true
+
+- name: Cosmetic Scroll - Ether Pulse
+  sprite: 224
+  desc: "a cosmetic scroll featuring \"Ether Pulse\""
+  value: 1
+  cosmetic:
+    name: EtherPulse
+    isPermanent: true
+
+- name: Cosmetic Scroll - Ghost Ether
+  sprite: 224
+  desc: "a cosmetic scroll featuring \"Ghost Ether\""
+  value: 1
+  cosmetic:
+    name: GhostEther
+    isPermanent: true
+
+- name: Cosmetic Scroll - Ether Nebula
+  sprite: 224
+  desc: "a cosmetic scroll featuring \"Ether Nebula\""
+  value: 1
+  cosmetic:
+    name: EtherNebula
+    isPermanent: true

@@ -19,121 +19,10 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
 @Component({
   selector: 'app-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: [`    
-    .item-container {
-      position: relative;
-      height: 64px;
-      width: 64px;
-    }
-    
-    .item-container.small {
-      max-height: 48px;
-      max-width: 48px;
-      transform: scale(0.75, 0.75) translate(-15%, -15%);
-    }
-    
-    .item-container.xsmall {   
-      max-height: 32px;
-      max-width: 32px;   
-      transform: scale(0.5, 0.5) translate(-50%, -50%);
-    }
-
-    img {
-      width: 64px;
-      height: 64px;
-      object-fit: none;
-      z-index: 550;
-      position: absolute;
-      top: 0;
-      pointer-events: none;
-    }
-    
-    .count, .value, .ounces {
-      position: absolute;
-      color: #000;
-      text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
-      font-size: 0.8rem;
-      z-index: 560;
-    }
-    
-    .count {
-      top: 5px;
-      right: 5px;
-    }
-    
-    .value {
-      bottom: 5px;
-      left: 5px;
-    }
-    
-    .ounces {
-      top: 5px;
-      left: 5px;
-    }
-    
-    .glow-container {
-      border-radius: 50%;
-      height: 64px;
-      width: 64px;
-      position: absolute;
-      top: 0;
-      z-index: 540;
-    }
-    
-    .glow-yellow {
-      animation: glow-yellow 800ms ease-out infinite alternate;
-    }
-    
-    .glow-red {
-      animation: glow-red 400ms ease-out infinite alternate;
-    }
-    
-    .glow-black {
-      animation: glow-black 200ms ease-out infinite alternate;
-    }
-
-    @keyframes glow-yellow {
-      0% {
-        box-shadow: inset 0 0 10px #f60;
-      }
-      100% {
-        box-shadow: inset 0 0 15px #f60;
-      }
-    }
-
-    @keyframes glow-red {
-      0% {
-        box-shadow: inset 0 0 15px #f00;
-      }
-      100% {
-        box-shadow: inset 0 0 20px #f00;
-      }
-    }
-
-    @keyframes glow-black {
-      0% {
-        box-shadow: inset 0 0 20px #000;
-      }
-      100% {
-        box-shadow: inset 0 0 30px #000;
-      }
-    }
-    
-    .item-background {
-      height: 64px;
-      width: 64px;
-      position: absolute;
-      top: 0;
-    }
-    
-    .encrust {
-      transform: scale(0.65, 0.65) translate(45%, -45%);
-    }
-    
-    .transparent {
-      opacity: 0.3;
-    }
-  `],
+  styleUrls: [
+    './item.component.scss',
+    './item.cosmetics.scss'
+  ],
   template: `    
     <div class="item-container" 
          [ngClass]="[size]"
@@ -149,10 +38,18 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          delay="750"
          [isDisabled]="!item || !showDesc"
          [tooltip]="desc">
-      <img [src]="imgUrl" [style.object-position]="spriteLocation" [class.hidden]="!item" />
+      <img [src]="imgUrl" 
+           [style.object-position]="spriteLocation" 
+           [class.hidden]="!item" 
+           [class.animate]="!colyseusGame.suppressAnimations" 
+           [ngClass]="['cosmetic-item-' + cosmeticName]" />
       <img [src]="imgUrl" [style.object-position]="encrustLocation" class="encrust" *ngIf="item && showEncrust && item.encrust" />
       <div class="item-background" *ngIf="item && showBackground"></div>
       <div class="glow-container" [ngClass]="[glowColor]" *ngIf="item && showDesc"></div>
+      <div class="animation-container"
+           [class.animate]="!colyseusGame.suppressAnimations" 
+           [ngClass]="['cosmetic-bg-' + cosmeticName]" 
+           *ngIf="item && cosmeticName"></div>
       <span class="count" *ngIf="item && realCount > 0">{{ realCount }}x</span>
       <span class="ounces" *ngIf="item && showOunces && item.ounces > 0">{{ item.ounces }}oz</span>
       <span class="value" *ngIf="item && showValue">{{ overrideValue || (item._buybackValue || item.value) + 'g' }}</span>
@@ -232,6 +129,14 @@ export class ItemComponent {
     }
 
     return this.assetService.itemsUrl;
+  }
+
+  get cosmeticName(): string {
+    if(!this.item) return '';
+    if(!this.item.cosmetic) return '';
+    if(this.item.condition <= 10000) return '';
+
+    return this.item.cosmetic.name;
   }
 
   get glowColor() {

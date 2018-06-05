@@ -14,7 +14,8 @@ export type SilverPurchase =
   'MorePotions' | 'MoreCharacters' | 'MoreMarketboard'
 | 'BiggerBelt' | 'BiggerSack' | 'ExpandedStorage'
 | 'SharedLockers' | 'MagicPouch'
-| 'FestivalXP' | 'FestivalSkill' | 'FestivalGold' | 'FestivalTrait';
+| 'FestivalXP' | 'FestivalSkill' | 'FestivalGold' | 'FestivalTrait'
+| 'CosmeticInversify' | 'CosmeticAncientify' | 'CosmeticEtherPulse' | 'CosmeticGhostEther';
 
 export class Account {
   @nonenumerable

@@ -665,6 +665,15 @@
 
         <div class="row">
           <div class="col-9 ml-auto form-check">
+            <label class="form-check-label" for="suppressAnimations">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="suppressAnimations" id="suppressAnimations"/>
+              Stop Item Animations
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-9 ml-auto form-check">
             <label class="form-check-label" for="showActiveTarget">
               <input type="checkbox" class="form-check-input" [(ngModel)]="showActiveTarget" id="showActiveTarget"/>
               Show Current Target Information (Ctrl-Click to select without attacking)

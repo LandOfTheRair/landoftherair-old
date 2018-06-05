@@ -72,6 +72,42 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     cost: 75,
     postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'goldMult', 6)
   },
+  {
+    name: 'Cosmetic: Inversify',
+    desc: 'Visit Cosmetica to redeem your Inversify cosmetic (turns your item "inversed" looking).',
+    icon: 'beard',
+    fgColor: '#4d1919',
+    maxPurchases: 99999,
+    key: 'CosmeticInversify',
+    cost: 50
+  },
+  {
+    name: 'Cosmetic: Ancientify',
+    desc: 'Visit Cosmetica to redeem your Ancientify cosmetic (turns your item "ancient" looking).',
+    icon: 'beard',
+    fgColor: '#4d1919',
+    maxPurchases: 99999,
+    key: 'CosmeticAncientify',
+    cost: 50
+  },
+  {
+    name: 'Cosmetic: Ether Pulse',
+    desc: 'Visit Cosmetica to redeem your Ether Pulse cosmetic (your item will have a red glowing pulse).',
+    icon: 'beard',
+    fgColor: '#4d1919',
+    maxPurchases: 99999,
+    key: 'CosmeticEtherPulse',
+    cost: 75
+  },
+  {
+    name: 'Cosmetic: Ghost Ether',
+    desc: 'Visit Cosmetica to redeem your Ghost Ether cosmetic (your item will have a ghostly blue pulse).',
+    icon: 'beard',
+    fgColor: '#4d1919',
+    maxPurchases: 99999,
+    key: 'CosmeticGhostEther',
+    cost: 75
+  },
 
   // multi purchases
   {
@@ -262,6 +298,21 @@ export class SubscriptionHelper {
     return true;
   }
 
+  public async decrementSilverPurchase(account: Account, purchase: SilverPurchase): Promise<boolean> {
+    const purchaseItem = find(AllSilverPurchases, { key: purchase });
+    const curPurchaseTier = this.getSilverPurchase(account, purchase)
+
+    if(!purchaseItem) return false;
+    if(curPurchaseTier === 0) return false;
+    if(account.inGame >= 0) return false;
+
+    account.silverPurchases[purchase] = account.silverPurchases[purchase] || 0;
+    account.silverPurchases[purchase]--;
+
+    await AccountHelper.saveAccount(account);
+    return true;
+  }
+
   public async checkAccountForExpiration(account: Account): Promise<Account> {
     const now = Date.now();
     if(now >= account.trialEnds) {
@@ -365,6 +416,15 @@ export class SubscriptionHelper {
 
   public bonusMaterialStorageSlots(player: Player): number {
     return this.getSilverPurchase(player.$$account, 'ExpandedStorage') * 200;
+  }
+
+  public getSilverCosmetics(player: Player): any {
+    return {
+      inversify: this.getSilverPurchase(player.$$account, 'CosmeticInversify'),
+      ancientify: this.getSilverPurchase(player.$$account, 'CosmeticAncientify'),
+      etherpulse: this.getSilverPurchase(player.$$account, 'CosmeticEtherPulse'),
+      ghostether: this.getSilverPurchase(player.$$account, 'CosmeticGhostEther')
+    };
   }
 
 }

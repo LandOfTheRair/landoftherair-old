@@ -120,6 +120,11 @@ export class Encrust {
   maxEncrusts?: number;
 }
 
+export class ItemCosmetic {
+  name: string;
+  isPermanent?: boolean;
+}
+
 export class ItemEffect {
   name: string;
   tier: string;
@@ -152,6 +157,7 @@ export class Item {
   encrust?: Encrust;
   quality?: Quality;
   damageClass?: DamageType;
+  cosmetic?: ItemCosmetic;
 
   uuid?: string;
 
@@ -160,7 +166,7 @@ export class Item {
 
   tier: number;
 
-  ounces: number;
+  ounces?: number;
   value = 0;
   maxEncrusts?: number;
   _buybackValue?: number;

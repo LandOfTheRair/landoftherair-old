@@ -38,3 +38,23 @@
 - result: Leather Luck Ring
   chance: 1
   maxChance: 7500
+
+- result: Cosmetic Scroll - Inversify
+  chance: 1
+  maxChance: 1000000
+
+- result: Cosmetic Scroll - Ancientify
+  chance: 1
+  maxChance: 1000000
+
+- result: Cosmetic Scroll - Ether Pulse
+  chance: 1
+  maxChance: 1000000
+
+- result: Cosmetic Scroll - Ghost Ether
+  chance: 1
+  maxChance: 1000000
+
+- result: Cosmetic Scroll - Ether Nebula
+  chance: 1
+  maxChance: 1000000
