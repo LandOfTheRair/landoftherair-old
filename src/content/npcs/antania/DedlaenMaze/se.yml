@@ -36,6 +36,11 @@
     - drop: 'gear.Waist'
       chance: -1
 
+  drops:
+    - result: Dedlaen Maze Key
+      chance: 1
+      maxChance: 5
+
   usableSkills:
     - DedlaenCryptThingPunch
     - DiseaseBiteMedium
