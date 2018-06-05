@@ -126,11 +126,15 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
 
         if(char.rightHand) {
           npc.rightHand = new Item(cloneDeep(char.rightHand));
+          npc.rightHand.requirements = null;
+          npc.rightHand.destroyOnDrop = true;
           npc.rightHand.tier = Math.max(1, (npc.rightHand.tier || 0) - 1);
         }
 
         if(char.leftHand) {
           npc.leftHand = new Item(cloneDeep(char.leftHand));
+          npc.leftHand.requirements = null;
+          npc.leftHand.destroyOnDrop = true;
           npc.leftHand.tier = Math.max(1, (npc.leftHand.tier || 0) - 1);
         }
 
