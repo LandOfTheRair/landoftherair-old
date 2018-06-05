@@ -9,12 +9,12 @@
       clientID: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
       scope: 'openid profile',
       responseType: 'token id_token',
-      redirectUri: 'http://localhost:4200'
+      redirectUri: 'http://localhost:4567'
     });
   </script>
   <script>
     webAuth.parseHash(window.location.hash, function (err, response) {
-      parent.postMessage(err || response, 'http://localhost:4200');
+      parent.postMessage(err || response, 'http://localhost:4567');
     });
   </script>
 </head>

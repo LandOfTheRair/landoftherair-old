@@ -15,12 +15,12 @@ export const environment = {
   client: {
     domain: 'localhost',
     protocol: 'http',
-    port: 4200
+    port: 4567
   },
   auth0: {
     domain: 'landoftherair.auth0.com',
     client: 'U8bTIfByag72iLPYAf7LxXVrBDC0M-Ov',
-    callbackUrl: 'http://localhost:4200',
+    callbackUrl: 'http://localhost:4567',
     apiUrl: 'authidentifier'
   },
   stripe: {
