@@ -227,16 +227,12 @@ export class Item {
   constructor(opts, extraOpts: { doRegenerate?: boolean } = {}) {
     if(extraOpts.doRegenerate) {
       opts = cloneDeep(opts);
-      this.regenerateUUID();
+      opts.uuid = null;
     }
 
     extend(this, opts);
     if(!this.uuid) this.uuid = uuid();
     if(!this.createdAt) this.createdAt = Date.now();
-  }
-
-  private regenerateUUID() {
-    this.uuid = uuid();
   }
 
   usesString(): string {
