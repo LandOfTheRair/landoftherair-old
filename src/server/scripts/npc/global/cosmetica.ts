@@ -46,6 +46,7 @@ export const responses = (npc: NPC) => {
       if(player.leftHand) return 'Your left hand must be empty!';
       if(!player.rightHand.cosmetic) return 'That item is not cosmetized!';
       if(player.rightHand.cosmetic.isPermanent) return 'That cosmetic cannot be extracted!';
+      if(!player.rightHand.isOwnedBy(player)) return 'That is not your item!';
 
       const cosmetic = startCase(player.rightHand.cosmetic.name);
 
