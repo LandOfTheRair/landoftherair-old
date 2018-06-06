@@ -37,6 +37,16 @@
     potency: 1000
   value: 3000
 
+- name: Instant Heal Bottle (50oz)
+  desc: "a small bottle labeled Instant Heal"
+  extendedDesc: "a healing potion"
+  sprite: 260
+  ounces: 50
+  effect:
+    name: ExactHeal
+    potency: 1000
+  value: 35000
+
 - name: Weak Regen Potion
   desc: "a small bottle labeled Instant Heal, filled with purple liquid"
   extendedDesc: "a potion of Regen"
