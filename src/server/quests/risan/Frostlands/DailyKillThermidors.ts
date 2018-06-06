@@ -59,9 +59,10 @@ export class DailyKillThermidors extends Quest {
   public static givePlayerRewards(player: Player): void {
     player.gainGold(50000);
     player.gainExp(1500000);
+    player.$$room.subscriptionHelper.giveSilver(player.$$account, 2);
 
     const gainedResetPoints = player.skillTree.canGainResetPoints ? 2 : 0;
     player.skillTree.gainResetPoints(gainedResetPoints);
-    player.sendClientMessage(`You received 1,500,000 XP, 50,000 gold and ${gainedResetPoints} RP}!`);
+    player.sendClientMessage(`You received 1,500,000 XP, 50,000 gold, 2 silver and ${gainedResetPoints} RP!`);
   }
 }
