@@ -1106,7 +1106,7 @@ export class Character {
 
     if(this.skills[type] <= 0) this.skills[type] = 0;
 
-    if(isNaN(this.skills[type])) {
+    if(isNaN(this.skills[type]) || !isFinite(this.skills[type])) {
       this.skills[type] = prevVal;
       throw new Error(`Invalid skill value for ${this.name}: ${type}, gained: ${skillGained}, cur: ${this.skills[type]}`);
     }
