@@ -9579,8 +9579,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":7488,
-                 "y":8320
+                 "x":7616,
+                 "y":8384
                 }, 
                 {
                  "gid":3147,
@@ -10041,6 +10041,26 @@
                  "width":64,
                  "x":12352,
                  "y":14016
+                }, 
+                {
+                 "gid":3132,
+                 "height":64,
+                 "id":2702,
+                 "name":"Cosmetica",
+                 "properties":
+                    {
+                     "script":"global\/cosmetica"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7360,
+                 "y":8384
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -17982,7 +18002,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2702,
+ "nextobjectid":2703,
  "orientation":"orthogonal",
  "properties":
     {

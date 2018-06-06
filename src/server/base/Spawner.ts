@@ -1,7 +1,7 @@
 
 import { LootTable } from 'lootastic';
 
-import { sample, random, extend, isNumber, isString, pull, every, compact, some, get, isArray } from 'lodash';
+import { sample, random, extend, isNumber, isString, pull, every, compact, some, get, isArray, includes } from 'lodash';
 import { NPC } from '../../shared/models/npc';
 import { Logger } from '../logger';
 import { RandomlyShouts } from '../scripts/npc/common-responses';
@@ -9,7 +9,7 @@ import { LootHelper } from '../helpers/world/loot-helper';
 import { Dangerous } from '../effects/special/Dangerous';
 import * as Effects from '../effects';
 import { GameWorld } from '../rooms/GameWorld';
-import {StatName} from '../../shared/models/character';
+import { StatName } from '../../shared/models/character';
 import { RollerHelper } from '../../shared/helpers/roller-helper';
 
 export class Spawner {
@@ -336,6 +336,19 @@ export class Spawner {
     if(createCallback) {
       createCallback(npc);
     }
+
+    npc.usableSkills = npc.usableSkills || [];
+
+    if(!includes(npc.usableSkills, 'Charge')) {
+      npc.usableSkills.push('Attack');
+    }
+
+    const mappedSkills = npc.usableSkills.map((x: any) => {
+      if(x.result) return x;
+      return { result: x, chance: 1 };
+    });
+
+    npc.$$skillRoller = new LootTable(mappedSkills, 0);
 
     npc.recalculateStats();
     this.tryElitify(npc);

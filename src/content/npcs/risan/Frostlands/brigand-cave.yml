@@ -253,15 +253,24 @@
   skillOnKill: 65
 
   usableSkills:
-    - Afflict
-    - BarNecro
-    - FindFamiliar
-    - Cure
-    - Poison
-    - Vision
-    - Antidote
-    - Dispel
-    - TrueSight
+    - result: Afflict
+      chance: 100
+    - result: BarNecro
+      chance: 100
+    - result: FindFamiliar
+      chance: 100
+    - result: Cure
+      chance: 100
+    - result: Poison
+      chance: 100
+    - result: Vision
+      chance: 100
+    - result: Antidote
+      chance: 100
+    - result: Dispel
+      chance: 5
+    - result: TrueSight
+      chance: 100
 
   gold:
     min: 1550

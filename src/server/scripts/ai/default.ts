@@ -1,7 +1,7 @@
 
 import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
-import { random, maxBy, sample, sampleSize, clamp, includes, shuffle, size, extend } from 'lodash';
+import { random, maxBy, sample, sampleSize, clamp, includes, shuffle, size, extend, uniq } from 'lodash';
 import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
@@ -107,14 +107,14 @@ export class DefaultAIBehavior {
       this.checkGroundForItems();
     }
 
-    const attemptSkills = shuffle(sampleSize(npc.usableSkills, Math.max(3, Math.floor(npc.usableSkills.length / 2))));
-
     let chosenSkill: Skill = null;
     let chosenSkillFriendly = false;
 
     let isThrowing = false;
 
-    attemptSkills.forEach((skill: string) => {
+    const rolledSkills = uniq(npc.$$skillRoller.chooseWithReplacement(3));
+
+    rolledSkills.forEach((skill: string) => {
       if(chosenSkill) return;
 
       if(highestAgro && npc.getAttackDamage(highestAgro, skill) === 0 && npc.getZeroTimes(highestAgro, skill) >= 5) {

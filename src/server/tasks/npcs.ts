@@ -95,18 +95,12 @@ class NPCLoader {
   static conditionallyAddInformation(npc: any) {
     if(!npc.allegiance) npc.allegiance = 'Enemy';
 
-    if(!npc.usableSkills) npc.usableSkills = [];
-
     if(!npc.skillOnKill) npc.skillOnKill = 1;
 
     if(!npc.repMod) npc.repMod = [];
 
     if(npc.allegiance !== 'None') {
       npc.repMod.push({ delta: -1, allegiance: npc.allegiance });
-    }
-
-    if(!includes(npc.usableSkills, 'Charge')) {
-      npc.usableSkills.push('Attack');
     }
 
     if(!npc.level) npc.level = 1;

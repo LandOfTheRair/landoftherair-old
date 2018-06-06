@@ -60,6 +60,7 @@ export class NPC extends Character {
   spawnMessage: string;
   combatMessages: string[];
 
+  $$skillRoller: any;
   $$pathDisrupted: boolean;
   $$shouldStrip: boolean;
   $$stripRadius: number;
