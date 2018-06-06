@@ -1,7 +1,7 @@
 
 import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
-import { random, maxBy, sample, sampleSize, clamp, includes, shuffle, size, extend, uniq } from 'lodash';
+import { random, maxBy, sample, clamp, includes, size, extend, uniq } from 'lodash';
 import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
