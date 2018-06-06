@@ -233,7 +233,7 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
 
         if(data.items) {
           data.items.forEach(itemData => {
-            allItems.push({ sprite: itemData.sprite, quality: itemData.quality, itemId: itemData.itemId, uuid: itemData.uuid });
+            allItems.push({ sprite: itemData.sprite, quality: itemData.quality, itemId: itemData.itemId, uuid: itemData.uuid, cosmetic: itemData.itemOverride.cosmetic });
           });
         }
 

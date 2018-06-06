@@ -67,12 +67,19 @@ export class MarketHelper {
         itemClass: item.itemClass,
         requirements: item.requirements,
         uuid: item.uuid,
+
+        // for display purposes only
+        cosmetic: item.cosmetic,
+        condition: item.condition,
+
         itemOverride: {
           enchantLevel: item.enchantLevel,
           effect: item.effect,
           quality: item.quality,
           stats: item.stats,
-          trait: item.trait
+          trait: item.trait,
+          cosmetic: item.cosmetic,
+          condition: item.condition
         }
       },
 
@@ -131,12 +138,14 @@ export class MarketHelper {
 
       const item = await player.$$room.itemCreator.getItemByName(itemData.itemId);
 
-      item.quality = itemData.itemOverride.quality;
-      item.enchantLevel = itemData.itemOverride.enchantLevel;
+      if(itemData.itemOverride.quality) item.quality = itemData.itemOverride.quality;
+      if(itemData.itemOverride.enchantLevel) item.enchantLevel = itemData.itemOverride.enchantLevel;
+      if(itemData.itemOverride.cosmetic) item.cosmetic = itemData.itemOverride.cosmetic;
+      item.condition = itemData.itemOverride.condition;
 
-      extend(item.effect, itemData.itemOverride.effect);
-      extend(item.trait,  itemData.itemOverride.trait);
-      extend(item.stats,  itemData.itemOverride.stats);
+      extend(item.effect,   itemData.itemOverride.effect);
+      extend(item.trait,    itemData.itemOverride.trait);
+      extend(item.stats,    itemData.itemOverride.stats);
 
       player.setRightHand(item);
 
