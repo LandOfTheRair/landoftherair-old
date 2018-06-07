@@ -18,7 +18,7 @@ export class Search extends Look {
   execute(player: Player, { room, gameState }) {
     const items = gameState.getGroundItems(player.x, player.y);
 
-    if(items.Corpse) {
+    if(items.Corpse && items.Corpse.length > 0) {
       items.Corpse.forEach(corpse => {
         room.dropCorpseItems(corpse, player);
       });

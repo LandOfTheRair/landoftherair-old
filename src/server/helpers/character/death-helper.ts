@@ -65,11 +65,11 @@ export class DeathHelper {
     return corpse;
   }
 
-  static async calculateLootDrops(npc: NPC, killer: Character) {
-    const bonus = killer.getTotalStat('luk');
+  static async calculateLootDrops(npc: NPC, killer?: Character) {
+    const bonus = killer ? killer.getTotalStat('luk') : 0;
 
     // natural resources always drop, no matter who killed them ~immersion~
-    if(npc.allegiance !== 'NaturalResource' && !killer.isPlayer()) {
+    if(npc.allegiance !== 'NaturalResource' && killer && !killer.isPlayer()) {
       if(npc.dropsCorpse) this.createCorpse(npc, []);
       return;
     }
@@ -87,7 +87,7 @@ export class DeathHelper {
 
     } else if(allItems.length > 0) {
 
-      if(npc.isNaturalResource) {
+      if(npc.isNaturalResource && killer) {
         if(npc.isOreVein) {
           killer.sendClientMessage(`Something falls out of the rubble.`);
         } else {
