@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { includes, pull, difference, differenceBy, pullAll } from 'lodash';
+import { includes, pull, difference, differenceBy, pullAll, sortBy } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 @Component({
@@ -60,6 +60,8 @@ export class GroundComponent implements OnInit, OnDestroy {
       pullAll(myCurrentGround[newItemType], removeObjects);
 
     });
+
+    myCurrentGround.Corpse = sortBy(myNewGround.Corpse, corpse => corpse.searchItems ? 0 : 1);
 
     if(myCurrentGround.Coin && myNewGround.Coin) {
       myCurrentGround.Coin = [];

@@ -133,6 +133,8 @@ export class ItemComponent {
 
   get cosmeticName(): string {
     if(!this.item) return '';
+    if(this.item.searchItems) return 'UnsearchedCorpse';
+
     if(!this.item.cosmetic) return '';
     if(this.item.condition <= 10000) return '';
 

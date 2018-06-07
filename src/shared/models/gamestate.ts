@@ -727,7 +727,11 @@ export class GameState {
   }
 
   public simplifyItem(item: Item): any {
-    return pick(item, ['uuid', 'desc', 'sprite', 'itemClass', 'owner', 'quality', 'value', 'ounces', 'isSackable', 'isBeltable', 'encrust', 'requirements', 'cosmetic']);
+    const base: any = pick(item, ['uuid', 'desc', 'sprite', 'itemClass', 'owner', 'quality', 'value', 'ounces', 'isSackable', 'isBeltable', 'encrust', 'requirements', 'cosmetic']);
+
+    if(item.searchItems) base.searchItems = [null];
+
+    return base;
   }
 
   serializableGroundItems() {

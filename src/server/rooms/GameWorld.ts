@@ -914,6 +914,10 @@ export class GameWorld extends Room<GameState> {
     });
 
     corpse.searchItems = null;
+
+    if(corpse.x && corpse.y) {
+      this.broadcast({ action: 'update_gitem', x: corpse.x, y: corpse.y, item: this.state.simplifyItem(corpse) });
+    }
   }
 
   dropChestItems(chest: any, searcher?: Player) {

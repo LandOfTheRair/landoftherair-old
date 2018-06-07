@@ -1,5 +1,5 @@
 
-import { extend, merge, differenceBy, values, filter, reject, size, get, set } from 'lodash';
+import { extend, merge, differenceBy, values, filter, reject, size, get, set, findIndex } from 'lodash';
 
 import { Player } from '../../shared/models/player';
 
@@ -151,6 +151,24 @@ export class ClientGameState {
     } else {
       typeList.push(item);
     }
+
+    this.updateGroundItems();
+  }
+
+  updateGroundItem(x: number, y: number, item: Item) {
+    const xKey = `x${x}`;
+    const yKey = `y${y}`;
+
+    this.groundItems[xKey] = this.groundItems[xKey] || {};
+    this.groundItems[xKey][yKey] = this.groundItems[xKey][yKey] || {};
+    this.groundItems[xKey][yKey][item.itemClass] = this.groundItems[xKey][yKey][item.itemClass] || [];
+
+    const typeList = this.groundItems[xKey][yKey][item.itemClass];
+
+    const oldItem = findIndex(typeList, { uuid: item.uuid });
+    if(oldItem === -1) return;
+
+    typeList[oldItem] = item;
 
     this.updateGroundItems();
   }

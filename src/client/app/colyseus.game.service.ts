@@ -388,6 +388,7 @@ export class ColyseusGameService {
     if(action === 'remove_npc')     return this.removeNPC(other.npcUUID);
     if(action === 'sync_npcs')      return this.syncNPCs(other.npcs);
     if(action === 'add_gitem')      return this.addGroundItem(other.x, other.y, other.item);
+    if(action === 'update_gitem')   return this.updateGroundItem(other.x, other.y, other.item);
     if(action === 'remove_gitem')   return this.removeGroundItem(other.x, other.y, other.item);
     if(action === 'sync_ground')    return this.syncGroundItems(other.ground);
     if(action === 'take_tour')      return this.takeTour();
@@ -431,6 +432,10 @@ export class ColyseusGameService {
 
   private removeGroundItem(x: number, y: number, item: Item) {
     this.clientGameState.removeGroundItem(x, y, item);
+  }
+
+  private updateGroundItem(x: number, y: number, item: Item) {
+    this.clientGameState.updateGroundItem(x, y, item);
   }
 
   private addGroundItem(x: number, y: number, item: Item) {
