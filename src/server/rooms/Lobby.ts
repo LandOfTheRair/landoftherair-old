@@ -202,7 +202,7 @@ export class Lobby extends Room<LobbyState> {
 
     await DB.$players.update({ username: client.username }, { $set: { inGame: -1 } }, { multi: true });
 
-    this.send(client, { action: 'set_account', account: account.toSaveObject() });
+    this.updateAccount(client);
     this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
   }
@@ -307,7 +307,7 @@ export class Lobby extends Room<LobbyState> {
     AccountHelper.saveAccount(account);
     account.inGame = -1;
 
-    this.send(client, { action: 'set_account', account: account.toSaveObject() });
+    this.updateAccount(client);
 
     const stats = pick(character, ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'con', 'luk', 'cha']);
     const name = character.name;
@@ -443,9 +443,17 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'discord_tag')     return this.trySetDiscordTag(client, data.newTag);
     if(data.action === 'mute')            return this.toggleMute(client, data.args);
     if(data.action === 'tester')          return this.toggleTester(client, data.args);
+    if(data.action === 'update_account')  return this.updateAccount(client);
     if(data.userId && data.accessToken)   return this.tryLogin(client, data);
     if(data.message)                      return this.sendMessage(client, data.message);
     if(data.characterCreator)             return this.viewCharacter(client, data);
+  }
+
+  private updateAccount(client) {
+    const account = this.state.findAccount(client.userId);
+    if(!account) return;
+
+    this.send(client, { action: 'set_account', account: account.toSaveObject() });
   }
 
   private toggleTester(client, account: string) {
@@ -556,7 +564,7 @@ export class Lobby extends Room<LobbyState> {
       });
     }
 
-    this.send(client, { action: 'set_account', account: account.toSaveObject() });
+    this.updateAccount(client);
   }
 
   private adjustFestival(client, args: string) {
@@ -590,7 +598,7 @@ export class Lobby extends Room<LobbyState> {
       });
     }
 
-    this.send(client, { action: 'set_account', account: account.toSaveObject() });
+    this.updateAccount(client);
   }
 
   public updateFestivalTime(account: Account, key: 'xpMult'|'skillMult'|'goldMult', hours = 6): void {

@@ -148,6 +148,10 @@ export class ColyseusLobbyService {
     if(action === 'force_logout')   return this.forceLogout();
   }
 
+  public updateAccount() {
+    this.room.send({ action: 'update_account' });
+  }
+
   private forceLogout() {
     this.colyseus.game.quit();
     this.room.leave();

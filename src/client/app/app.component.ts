@@ -651,4 +651,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
+  public updateAccount() {
+    this.colyseus.lobby.updateAccount();
+  }
+
 }
