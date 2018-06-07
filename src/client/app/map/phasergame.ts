@@ -83,7 +83,7 @@ export class Game {
     if(!this.g || !this.g.camera) return false;
 
     const point = this.g.camera.position;
-    return point.x !== 0 && point.y !== 0;
+    return point.x !== 0 || point.y !== 0;
   }
 
   private get player() {
