@@ -22,7 +22,7 @@ export class TrainingDummyAIBehavior extends DefaultAIBehavior {
     const npc = this.npc;
 
     // reset agro every tick
-    npc.agro = {};
+    npc.resetAgro(true);
 
     Object.keys(this.currentlyTicking).forEach(username => {
 

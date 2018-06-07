@@ -1263,8 +1263,13 @@ export class Character {
     return Math.floor(Math.sqrt(Math.pow(point.x - checkX, 2) + Math.pow(point.y - checkY, 2)));
   }
 
-  resetAgro() {
-    this.agro = {};
+  resetAgro(full = false) {
+    if(full) {
+      this.agro = {};
+      return;
+    }
+
+    Object.keys(this.agro).forEach(uuid => this.agro[uuid] = 1);
   }
 
   addAgroOverTop(char: Character, value: number) {

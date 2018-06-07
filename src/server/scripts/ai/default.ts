@@ -199,7 +199,7 @@ export class DefaultAIBehavior {
     } else if(canMove && npc.path && npc.path.length > 0) {
       if(npc.$$pathDisrupted) {
         npc.$$pathDisrupted = false;
-        npc.agro = {};
+        npc.resetAgro(true);
         npc.x = npc.spawner.x;
         npc.y = npc.spawner.y;
         npc.spawner.assignPath(npc);
@@ -261,7 +261,7 @@ export class DefaultAIBehavior {
       if(distFrom > npc.spawner.leashRadius + 4) {
         npc.hp.toMaximum();
         npc.mp.toMaximum();
-        npc.agro = {};
+        npc.resetAgro(true);
       }
 
       // if we had a path, re-assign a path
