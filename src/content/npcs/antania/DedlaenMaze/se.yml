@@ -42,13 +42,20 @@
       maxChance: 5
 
   usableSkills:
-    - DedlaenCryptThingPunch
-    - DiseaseBiteMedium
-    - PoisonBiteMedium
-    - DoubleAttack
-    - Push
-    - TrueSight
-    - DarkVision
+    - result: DiseaseBiteMedium
+      chance: 10
+    - result: PoisonBiteMedium
+      chance: 10
+    - result: DoubleAttack
+      chance: 15
+    - result: Push
+      chance: 5
+    - result: TrueSight
+      chance: 20
+    - result: DarkVision
+      chance: 20
+    - result: DedlaenCryptThingPunch
+      chance: 1
 
   hp:
     min: 337950
