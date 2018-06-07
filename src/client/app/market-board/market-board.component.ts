@@ -59,8 +59,9 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     { name: 'Price: High to Low', sort: { 'listingInfo.price': -1 } }
   ];
 
-  public filterTags: Array<{ name: string, includedTypes: string[], isIncluded?: boolean }> = [
+  public filterTags: Array<{ name: string, includedTypes: string[], isIncluded?: boolean, setSearchKey?: string }> = [
     { name: 'Bottles',        includedTypes: ['Bottle'] },
+    { name: 'Cosmetics',      includedTypes: ['Scroll'], setSearchKey: 'Cosmetic' },
     { name: 'Food',           includedTypes: ['Food'] },
     { name: 'Gear',           includedTypes: EquippableItemClasses },
     { name: 'Gems',           includedTypes: ['Gem'] },
@@ -147,6 +148,22 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
 
   public toggleFilter(filter) {
     filter.isIncluded = !filter.isIncluded;
+
+    if(filter.setSearchKey) {
+      if(filter.isIncluded) {
+        this.filterTags.forEach(tag => tag.isIncluded = tag.setSearchKey === filter.setSearchKey);
+        this.searchText = filter.setSearchKey;
+      } else {
+        this.searchText = '';
+      }
+    } else {
+      this.filterTags.forEach(tag => {
+        if(tag.setSearchKey && tag.isIncluded && this.searchText === tag.setSearchKey) {
+          this.searchText = '';
+          tag.isIncluded = false;
+        }
+      });
+    }
     this.loadBuyOptions();
   }
 
