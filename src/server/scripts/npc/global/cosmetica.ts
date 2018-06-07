@@ -30,6 +30,8 @@ export const responses = (npc: NPC) => {
       if(!player.rightHand) return 'You must hold an item in your right hand!';
       if(!player.leftHand) return 'You must hold a cosmetic scroll in your left hand!';
       if(!includes(player.leftHand.name, 'Cosmetic Scroll')) return 'You are not holding a cosmetic scroll!';
+      if(player.rightHand.itemClass === 'Corpse') return 'That would be disrespectful.';
+      if(player.rightHand.itemClass === 'Coin') return 'How about not.';
 
       player.rightHand.cosmetic = { name: player.leftHand.cosmetic.name };
       player.setLeftHand(null);
