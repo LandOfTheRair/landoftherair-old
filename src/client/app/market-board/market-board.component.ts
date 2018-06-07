@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { HttpClient } from '@angular/common/http';
 
-import { reject, get, startCase } from 'lodash';
+import { reject, get, startCase, isNumber } from 'lodash';
 import { toRoman } from 'roman-numerals';
 
 import debounce from 'debounce-decorator';
@@ -40,6 +40,7 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
   // for buying
   public buyableItemListings: any[] = [];
   public searchText = '';
+  public currentPage = 0;
 
   // for sell
   public sellValue = 0;
@@ -164,11 +165,26 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
         }
       });
     }
+
+    this.currentPage = 0;
     this.loadBuyOptions();
   }
 
   @debounce(500)
   public changeSearchText() {
+    this.loadBuyOptions();
+  }
+
+  public canGoBack() {
+    return this.currentPage !== 0;
+  }
+
+  public canGoForward() {
+    return this.buyableItemListings.length > 0;
+  }
+
+  public changePage(delta: number) {
+    this.currentPage += delta;
     this.loadBuyOptions();
   }
 
@@ -185,6 +201,10 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
 
     if(this.currentSort) {
       searchParams.sort = this.currentSort;
+    }
+
+    if(isNumber(this.currentPage)) {
+      searchParams.page = this.currentPage;
     }
 
     const includedFilters = this.filterTags.filter(x => x.isIncluded);

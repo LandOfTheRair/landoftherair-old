@@ -75,7 +75,24 @@ input {
 
   .right-side {
 
-    overflow: auto;
+    .items {
+      height: calc(500px - 42px - 30px);
+
+      overflow: auto;
+    }
+
+    .background-text {
+      height: calc(500px - 42px - 30px);
+    }
+
+    .nav {
+      height: 30px;
+
+      border-top: 1px solid #000;
+
+      display: flex;
+      justify-content: space-evenly;
+    }
 
     .listing-info {
       display: flex;

@@ -112,14 +112,14 @@ export class GameAPI {
 
   private async myMarketboardListings(opts: any = {}) {
 
-    const page = +(opts.page || 0);
+    // const page = +(opts.page || 0);
     const sort = opts.sort || { 'listingInfo.listedAt': -1 };
 
     return DB.$marketListings
       .find({ 'listingInfo.seller': opts.username })
       .sort(sort)
-      .skip(page * PAGE_SIZE)
-      .limit(PAGE_SIZE)
+      // .skip(page * PAGE_SIZE)
+      // .limit(PAGE_SIZE)
       .toArray();
   }
 

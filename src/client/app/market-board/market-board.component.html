@@ -52,7 +52,7 @@
 
       <div class="vertical-center background-text content" *ngIf="buyableItemListings.length === 0">
 
-        <div *ngIf="isLoading" class="vertical-center spinning-loader">
+        <div *ngIf="isLoading" class="vertical-center spinning-loader ">
           <app-icon name="spinning-blades" bgColor="transparent" fgColor="#aaa"></app-icon> Loading...
         </div>
 
@@ -63,34 +63,48 @@
 
       </div>
 
-      <div class="row mt-1 mb-1 ml-0 mr-0 p-0" *ngFor="let itemListing of buyableItemListings">
+      <div class="items" *ngIf="!isLoading && buyableItemListings.length > 0">
+        <div class="row mt-1 mb-1 ml-0 mr-0 p-0 item" *ngFor="let itemListing of buyableItemListings">
 
-        <div class="col m-0 p-0">
+          <div class="col m-0 p-0">
 
-          <div class="item-slot item-background">
-            <app-item [item]="itemListing.itemInfo" [showDesc]="false"></app-item>
+            <div class="item-slot item-background">
+              <app-item [item]="itemListing.itemInfo" [showDesc]="false"></app-item>
+            </div>
           </div>
+
+          <div class="col-8 m-0 p-0 listing-info">
+            <div class="thin-line">
+              <strong>{{ enchantTextFor(itemListing.itemInfo) }}{{ itemListing.itemId }}</strong>
+              {{ starTextFor(itemListing.itemInfo) }}
+            </div>
+
+            <div class="thin-line">
+              <small>{{ statStringFor(itemListing.itemInfo) || 'no stats' }} / {{ traitStringFor(itemListing.itemInfo) || 'no trait' }}</small>
+            </div>
+
+            <div class="thin-line">
+              <small [class.text-danger]="itemListing.listingInfo.price > player.gold"><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
+            </div>
+          </div>
+
+          <div class="col m-0 p-0 vertical-center">
+            <button class="btn btn-primary" [disabled]="itemListing.listingInfo.price > player.gold" (click)="buy(itemListing)">Buy</button>
+          </div>
+
         </div>
+      </div>
 
-        <div class="col-8 m-0 p-0 listing-info">
-          <div class="thin-line">
-            <strong>{{ enchantTextFor(itemListing.itemInfo) }}{{ itemListing.itemId }}</strong>
-            {{ starTextFor(itemListing.itemInfo) }}
-          </div>
+      <div class="row mt-1 mb-1 ml-0 mr-0 p-0" class="nav" *ngIf="!isLoading">
+        <button class="btn btn-info btn-sm btn-round" [disabled]="!canGoBack()" (click)="changePage(-1)">
+          ←
+        </button>
 
-          <div class="thin-line">
-            <small>{{ statStringFor(itemListing.itemInfo) || 'no stats' }} / {{ traitStringFor(itemListing.itemInfo) || 'no trait' }}</small>
-          </div>
+        Page {{ currentPage + 1 }}
 
-          <div class="thin-line">
-            <small [class.text-danger]="itemListing.listingInfo.price > player.gold"><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
-          </div>
-        </div>
-
-        <div class="col m-0 p-0 vertical-center">
-          <button class="btn btn-primary" [disabled]="itemListing.listingInfo.price > player.gold" (click)="buy(itemListing)">Buy</button>
-        </div>
-
+        <button class="btn btn-info btn-sm btn-round" [disabled]="!canGoForward()" (click)="changePage(1)">
+          →
+        </button>
       </div>
     </div>
   </div>
