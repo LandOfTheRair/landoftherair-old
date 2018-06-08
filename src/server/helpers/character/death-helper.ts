@@ -70,7 +70,7 @@ export class DeathHelper {
 
     // natural resources always drop, no matter who killed them ~immersion~
     if(npc.allegiance !== 'NaturalResource' && killer && !killer.isPlayer()) {
-      if(npc.dropsCorpse) this.createCorpse(npc, []);
+      if(npc.dropsCorpse) return DeathHelper.createCorpse(npc, []);
       return;
     }
 
@@ -83,7 +83,7 @@ export class DeathHelper {
     }
 
     if(npc.dropsCorpse) {
-      this.createCorpse(npc, allItems);
+      return DeathHelper.createCorpse(npc, allItems);
 
     } else if(allItems.length > 0) {
 
