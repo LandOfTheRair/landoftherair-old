@@ -141,7 +141,7 @@ export class MarketHelper {
       if(itemData.itemOverride.quality) item.quality = itemData.itemOverride.quality;
       if(itemData.itemOverride.enchantLevel) item.enchantLevel = itemData.itemOverride.enchantLevel;
       if(itemData.itemOverride.cosmetic) item.cosmetic = itemData.itemOverride.cosmetic;
-      item.condition = itemData.itemOverride.condition;
+      item.condition = itemData.itemOverride.condition || 5000;
 
       extend(item.effect,   itemData.itemOverride.effect);
       extend(item.trait,    itemData.itemOverride.trait);
