@@ -74,8 +74,6 @@ export class NPC extends Character {
   $$hadRightHandAtSpawn: boolean;
   private $$targetDamageDone = {};
 
-  private $$isAlreadyDead: boolean;
-
   get dropsCorpse(): boolean {
     return !this.isNaturalResource;
   }
@@ -179,8 +177,7 @@ export class NPC extends Character {
   }
 
   die(killer, silent = false) {
-    if(this.$$isAlreadyDead) return;
-    this.$$isAlreadyDead = true;
+    if(this.$$deathTicks > 0) return;
 
     super.die(killer, silent);
 
