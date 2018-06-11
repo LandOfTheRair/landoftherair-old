@@ -241,7 +241,7 @@ export class ItemComponent {
     }
 
     if(this.item.isSackable) scopes.push('sack', 'demimagicpouch');
-    if(this.item.isBeltable) scopes.push('belt');
+    if(this.item.isBeltable) scopes.push('belt', 'demimagicpouch');
 
     if(this.item.canUse && this.item.canUse(this.player)
     && this.context !== 'Ground'

@@ -11,7 +11,7 @@ export class Pouch extends Container {
   }
 
   canAccept(item) {
-    return item.isSackable && super.canAccept(item);
+    return (item.isSackable || item.isBeltable) && super.canAccept(item);
   }
 
   resetItems() {
