@@ -39,22 +39,20 @@ export class DeathHelper {
   }
 
   static async createCorpse(target: Character, searchItems = [], customSprite = 0): Promise<Item> {
-    if(target.$$corpseRef) return;
-    if(target.$$owner) return;
+    if(target.$$corpseRef || target.$$owner) return;
     target.$$corpseRef = new Item({});
 
     const corpse = await target.$$room.itemCreator.getItemByName('Corpse');
     corpse.sprite = customSprite || target.sprite + 4;
-    corpse.searchItems = searchItems;
+    corpse.searchItems = searchItems || [];
     corpse.desc = `the corpse of a ${target.name}`;
     corpse.name = `${target.name} corpse`;
+    target.$$corpseRef = corpse;
 
     target.$$room.addItemToGround(target, corpse);
 
     const isPlayer = target.isPlayer();
     corpse.$$isPlayerCorpse = isPlayer;
-
-    target.$$corpseRef = corpse;
 
     if(!isPlayer) {
       corpse.tansFor = (<any>target).tansFor;

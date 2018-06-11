@@ -176,7 +176,7 @@ export class NPC extends Character {
     }
   }
 
-  die(killer, silent = false) {
+  async die(killer, silent = false) {
     if(this.$$deathTicks > 0) return;
 
     super.die(killer, silent);
@@ -188,6 +188,8 @@ export class NPC extends Character {
     if(this.$$ai && this.$$ai.death) {
       this.$$ai.death.dispatch(killer);
     }
+
+    await DeathHelper.calculateLootDrops(this, killer);
 
     if(killer) {
 
@@ -206,8 +208,6 @@ export class NPC extends Character {
 
         killer.gainExpFromKills(this.$$room.calcAdjustedXPGain(givenXp));
       }
-
-      DeathHelper.calculateLootDrops(this, killer);
     }
   }
 
