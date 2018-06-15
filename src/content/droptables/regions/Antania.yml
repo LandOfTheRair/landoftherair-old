@@ -69,27 +69,27 @@
 # special bottles
 - result: Antanian Strength Potion
   chance: 1
-  maxChance: 30000
+  maxChance: 15000
 
 - result: Antanian Agility Potion
   chance: 1
-  maxChance: 25000
+  maxChance: 15000
 
 - result: Antanian Dexterity Potion
   chance: 1
-  maxChance: 30000
+  maxChance: 15000
 
 - result: Antanian Intelligence Potion
   chance: 1
-  maxChance: 35000
+  maxChance: 15000
 
 - result: Antanian Wisdom Potion
   chance: 1
-  maxChance: 35000
+  maxChance: 15000
 
 - result: Antanian Willpower Potion
   chance: 1
-  maxChance: 75000
+  maxChance: 65000
 
 - result: Antanian Constitution Potion
   chance: 1
