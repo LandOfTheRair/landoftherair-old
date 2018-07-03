@@ -218,6 +218,11 @@ test('All 2-way Teleports are bi-directional', t => {
       // one-way teleport
       if(!checkRef && (interactable.type === 'Teleport' || interactable.type === 'Fall')) return;
 
+      if(!checkRef) {
+        t.fail(`Interactable (${map._name}) @ ${myX}, ${myY} has an invalid teleport destination!`);
+        return;
+      }
+
       // not a valid return point
       if(!includes(['StairsUp', 'StairsDown', 'ClimbUp', 'ClimbDown', 'Teleport', 'Fall'], checkRef.type)) return;
 
