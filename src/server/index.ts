@@ -17,7 +17,6 @@ import * as recurse from 'recursive-readdir';
 import * as path from 'path';
 import * as http from 'http';
 import * as cluster from 'cluster';
-import * as WebSocket from 'uws';
 
 if(!process.env.AUTH0_SECRET) {
   Logger.log('No env.AUTH0_SECRET. Set one.');
@@ -46,7 +45,6 @@ DB.init()
       const server = http.createServer(api.expressApp);
 
       const gameServer = new Server({
-        engine: WebSocket.Server,
         server
       });
 
@@ -87,7 +85,6 @@ DB.init()
         const server = http.createServer(api.expressApp);
 
         const gameServer = new Server({
-          engine: WebSocket.Server,
           presence: new MemsharedPresence(),
           server
         });
