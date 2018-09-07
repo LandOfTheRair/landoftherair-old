@@ -24,6 +24,10 @@ export class AuthService {
   isReady: Promise<any>;
   private resolveReady: any;
 
+  public get testUsername(): string {
+    return new URLSearchParams(window.location.search || '').get('username');
+  }
+
   constructor() {
     this.isReady = new Promise(resolve => this.resolveReady = resolve);
     this.renewIfAuthenticated();
@@ -36,6 +40,25 @@ export class AuthService {
 
   public async handleAuthentication(): Promise<any> {
     return new Promise((resolve, reject) => {
+
+      const username = this.testUsername;
+      if(username) {
+        const authResult = {
+          expiresIn: 36000000,
+          idToken: 'DEV_ID_TOKEN',
+          accessToken: 'DEV_ACCESS_TOKEN',
+          idTokenPayload: {
+            sub: `dev|${username}`
+          }
+        };
+
+        localStorage.setItem('user_name', username);
+        this.setSession(authResult);
+        resolve();
+        this.resolveReady(authResult);
+        return;
+      }
+      
       this.auth0.parseHash((err, authResult) => {
 
         // just authenticated
