@@ -16,7 +16,7 @@ import { ColyseusService } from './colyseus.service';
   `],
   template: `
     <nav class="navbar navbar-expand-lg navbar-light bg-faded">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand">
         <span>Land of the Rair</span>
         <span *ngIf="colyseus.lobby.myAccount.username">- {{ colyseus.lobby.myAccount.username }}</span>
       </a>
@@ -24,7 +24,7 @@ import { ColyseusService } from './colyseus.service';
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item" dropdown container="body">
-            <a class="nav-link" href="#" dropdownToggle>Game {{ colyseus.isConnected ? '' : '(Disconnected)' }}</a>
+            <a class="nav-link" dropdownToggle>Game {{ colyseus.isConnected ? '' : '(Disconnected)' }}</a>
 
             <ul *dropdownMenu class="dropdown-menu">
               <li *ngIf="colyseus.lobby.myAccount.username">
@@ -57,7 +57,7 @@ import { ColyseusService } from './colyseus.service';
 
         <ul class="navbar-nav" id="windowList">
           <li class="nav-item" *ngIf="colyseus.lobby.myAccount.username" dropdown container="body">
-            <a class="nav-link" href="#" dropdownToggle>Windows</a>
+            <a class="nav-link" dropdownToggle>Windows</a>
 
             <ul *dropdownMenu class="dropdown-menu">
               <li *ngIf="inGame">
