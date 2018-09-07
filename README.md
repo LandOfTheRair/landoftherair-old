@@ -13,7 +13,7 @@ A high fantasy MORPG inspired by the MUDs of olde.
 
 * `npm install`
 * `npm run setup`
-* `npm start`
+* `npm start` (or run `npm run start:client` and `npm run start:server` separately)
 
 ## Environment Variables
 
