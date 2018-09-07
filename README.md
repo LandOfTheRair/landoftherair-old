@@ -2,9 +2,6 @@
 
 A high fantasy MORPG inspired by the MUDs of olde.
 
-## Contributor Disclaimer
-While I appreciate contributions, consider that all contributions, significant or otherwise, cannot be compensated for at this time. 
-
 ## Requirements
 
 * Node.js (recommended: 8.0.0+)
@@ -23,8 +20,11 @@ While I appreciate contributions, consider that all contributions, significant o
 First, create a [`.env`](https://www.npmjs.com/package/dotenv) file in the root. Then, populate it with these values:
 
 * `MONGODB_URI` - the URI that leads to a mongodb instance
-* `AUTH0_SECRET` - Auth0 server secret
 * `REDIS_URL` - a URI that leads to a redis cache
+
+If you want to use Auth0, you can set this value (if you don't, see the section "Authenticating Locally" below):
+
+* `AUTH0_SECRET` - Auth0 server secret
 
 If you want strict validation of users (ie, if you're doing anything sensitive like taking payments), set these values:
 
@@ -75,6 +75,10 @@ db.accounts.update({ username: 'YOUR_ACCOUNT_NAME' }, { $set: { isGM: true } });
 ```
 
 You only need to do this once.
+
+## Authenticating Locally
+
+If you do not want to use Auth0 for some particular reason, you can bypass it by adding `?username=myusername` to the URL. This does not work in production mode.
 
 ### Server Debug Routes
 
