@@ -22,7 +22,7 @@ First, create a [`.env`](https://www.npmjs.com/package/dotenv) file in the root.
 * `MONGODB_URI` - the URI that leads to a mongodb instance
 * `REDIS_URL` - a URI that leads to a redis cache
 
-If you want to use Auth0, you can set this value (if you don't, see the section "Authenticating Locally" below):
+If you want to use Auth0, you can set this value (if you don't, see the section [Authenticating Locally](#authenticating-locally) below):
 
 * `AUTH0_SECRET` - Auth0 server secret
 
@@ -66,6 +66,10 @@ For subsequent updates and specific changes, you can run these instead:
 * `npm run seed:recipes` - this will populate the database with recipe data
 * `npm run task:macros`- this will generate the macro icon metadata. If you add new icons, please only take from [my repository](http://seiyria.com/gameicons-font/).
 
+## Authenticating Locally
+
+If you do not want to use Auth0 for some particular reason, you can bypass it by adding `?username=myusername` to the URL. This does not work in production mode.
+
 ## Making Yourself a GM
 
 If you want to do any debugging, you'll need to make yourself a GM. To do that, you'll want to set your account to be a GM. Open up a mongo shell or run this query through an external tool:
@@ -75,10 +79,6 @@ db.accounts.update({ username: 'YOUR_ACCOUNT_NAME' }, { $set: { isGM: true } });
 ```
 
 You only need to do this once.
-
-## Authenticating Locally
-
-If you do not want to use Auth0 for some particular reason, you can bypass it by adding `?username=myusername` to the URL. This does not work in production mode.
 
 ### Server Debug Routes
 
