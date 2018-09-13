@@ -44,6 +44,14 @@
   chance: 1
   maxChance: 3000
 
+- result: Risan Experience Potion
+  chance: 1
+  maxChance: 25000
+
+- result: Risan Skill Potion
+  chance: 1
+  maxChance: 25000
+
 # items
 - result: Risan Combat Ring
   chance: 1

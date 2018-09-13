@@ -14,6 +14,8 @@ export * from './items/PermanentLUK';
 export * from './items/PermanentCHA';
 export * from './items/MinorHP';
 export * from './items/MinorMP';
+export * from './items/PermanentExperience';
+export * from './items/PermanentSkill';
 
 export * from './special/Dangerous';
 export * from './special/Dead';

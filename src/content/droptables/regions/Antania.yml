@@ -111,6 +111,14 @@
   chance: 1
   maxChance: 2000
 
+- result: Antanian Experience Potion
+  chance: 1
+  maxChance: 10000
+
+- result: Antanian Skill Potion
+  chance: 1
+  maxChance: 10000
+
 - result: Antanian Lore Scroll 1
   chance: 1
   maxChance: 500

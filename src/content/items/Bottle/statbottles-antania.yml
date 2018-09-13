@@ -2,7 +2,7 @@
 
 - name: Antanian Strength Potion
   desc: "a small bottle filled with brown fluid. It smells faintly like a tree"
-  extendedDesc: "a potion of strength"
+  extendedDesc: "a potion of minor strength"
   sprite: 151
   effect:
     name: PermanentSTR
@@ -12,7 +12,7 @@
 
 - name: Antanian Agility Potion
   desc: "a small bottle filled with dark-yellow fluid. It smells faintly like feathers"
-  extendedDesc: "a potion of agility"
+  extendedDesc: "a potion of minor agility"
   sprite: 157
   effect:
     name: PermanentAGI
@@ -22,7 +22,7 @@
 
 - name: Antanian Dexterity Potion
   desc: "a small bottle filled with yellow fluid. It smells faintly like apples"
-  extendedDesc: "a potion of dexterity"
+  extendedDesc: "a potion of minor dexterity"
   sprite: 150
   effect:
     name: PermanentDEX
@@ -32,7 +32,7 @@
 
 - name: Antanian Intelligence Potion
   desc: "a small bottle filled with puce liquid. It smells faintly like a root"
-  extendedDesc: "a potion of intelligence"
+  extendedDesc: "a potion of minor intelligence"
   sprite: 158
   effect:
     name: PermanentINT
@@ -42,7 +42,7 @@
 
 - name: Antanian Wisdom Potion
   desc: "a small bottle filled with teal. It smells faintly like herbs"
-  extendedDesc: "a potion of wisdom"
+  extendedDesc: "a potion of minor wisdom"
   sprite: 156
   effect:
     name: PermanentWIS
@@ -52,7 +52,7 @@
 
 - name: Antanian Willpower Potion
   desc: "a small bottle filled with orange fluid. It smells faintly like mushrooms"
-  extendedDesc: "a potion of willpower"
+  extendedDesc: "a potion of minor willpower"
   sprite: 154
   effect:
     name: PermanentWIL
@@ -62,7 +62,7 @@
 
 - name: Antanian Constitution Potion
   desc: "a small bottle filled with crimson fluid. It smells faintly like cherries"
-  extendedDesc: "a potion of constitution"
+  extendedDesc: "a potion of minor constitution"
   sprite: 153
   effect:
     name: PermanentCON
@@ -72,7 +72,7 @@
 
 - name: Antanian Luck Potion
   desc: "a small bottle filled with green fluid. It smells faintly like clovers"
-  extendedDesc: "a potion of luck"
+  extendedDesc: "a potion of minor luck"
   sprite: 152
   effect:
     name: PermanentLUK
@@ -82,7 +82,7 @@
 
 - name: Antanian Charisma Potion
   desc: "a small bottle filled with purple fluid. It smells faintly like flowers"
-  extendedDesc: "a potion of charisma"
+  extendedDesc: "a potion of minor charisma"
   sprite: 155
   effect:
     name: PermanentCHA
@@ -92,7 +92,7 @@
 
 - name: Antanian Health Potion
   desc: "a small bottle filled with clear, odorless fluid"
-  extendedDesc: "a potion of health"
+  extendedDesc: "a potion of minor health"
   sprite: 149
   effect:
     name: MinorHP
@@ -101,12 +101,30 @@
 
 - name: Antanian Magic Potion
   desc: "a small bottle filled with clear, odorless fluid"
-  extendedDesc: "a potion of magic"
+  extendedDesc: "a potion of minor magic"
   sprite: 149
   effect:
     name: MinorMP
     potency: 5
   value: 150000
+
+- name: Antanian Experience Potion
+  desc: "a small bottle filled with clear, odorless fluid"
+  extendedDesc: "a potion of minor experience"
+  sprite: 149
+  effect:
+    name: PermanentExperience
+    potency: 50000
+  value: 100000
+
+- name: Antanian Skill Potion
+  desc: "a small bottle filled with clear, odorless fluid"
+  extendedDesc: "a potion of minor skill"
+  sprite: 149
+  effect:
+    name: PermanentSkill
+    potency: 500
+  value: 100000
 
 - name: Bradley Constitution Potion
   desc: "a small bottle filled with crimson fluid, etched with the number II. It smells like cherries"

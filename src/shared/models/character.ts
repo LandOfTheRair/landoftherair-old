@@ -5,7 +5,7 @@ import { Signal } from 'signals.js';
 import {
   merge, includes, compact, values, random,
   startsWith, clone, get, reject, pick,
-  sample, filter, maxBy
+  sample, filter, maxBy, capitalize
 } from 'lodash';
 
 import {
@@ -1054,7 +1054,7 @@ export class Character {
   }
 
   isValidSkill(type) {
-    return includes(ValidItemTypes, type) || SkillClassNames[type];
+    return includes(ValidItemTypes, type) || SkillClassNames[type] || SkillClassNames[capitalize(type)];
   }
 
   gainCurrentSkills(skillGained = 1) {
@@ -1185,7 +1185,7 @@ export class Character {
       return this.sendClientMessage('You stop, unable to envision the place in your memory!');
     }
 
-    if(!item || !item.use(this, fromApply)) return;
+    if(!item || !item.canUseInCombat(this) || !item.use(this, fromApply)) return this.sendClientMessage('You cannot use that item!');
 
     let remove = false;
 
