@@ -156,7 +156,10 @@ export class Player extends Character {
     this.initEffects();
     this.uuid = this.username;
     this.$$actionQueue = [];
-    if(isUndefined(this.$$hungerTicks)) this.$$hungerTicks = 3600 * 6;
+    if(isUndefined(this.$$hungerTicks)) {
+      const nourished = this.hasEffect('Nourishment');
+      this.$$hungerTicks = (nourished ? nourished.duration : 0) + 3600 * 6;
+    }
     if(isUndefined(this.daily)) this.daily = { quest: {}, item: {} };
     if(isUndefined(this.daily.item)) this.daily.item = {};
     if(isUndefined(this.daily.quest)) this.daily.quest = {};
