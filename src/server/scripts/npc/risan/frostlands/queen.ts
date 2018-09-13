@@ -4,6 +4,7 @@ import { includes } from 'lodash';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Queen';
 
   npc.rightHand = await npc.$$room.npcLoader.loadItem('Undecided Simple Machleum Ring');
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Frostlands Noble Robe');

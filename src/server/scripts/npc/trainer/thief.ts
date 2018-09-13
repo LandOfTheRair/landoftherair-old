@@ -4,6 +4,7 @@ import { SkillClassNames } from '../../../../shared/models/character';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Master Thief';
 
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Scalemail Tunic');
   npc.rightHand = await npc.$$room.npcLoader.loadItem('Antanian Dagger');

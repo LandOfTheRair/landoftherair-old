@@ -266,6 +266,7 @@ export class Character {
 
   alignment: Alignment = 'Neutral';
   allegianceReputation: any = {};
+  affiliation?: string;
 
   @nonenumerable
   public $$pets: Character[];

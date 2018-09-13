@@ -148,6 +148,7 @@
 - npcId: Saraxa
   name: Saraxa
   hostility: Always
+  affiliation: Corrupted
   alignment: Evil
   baseClass: Mage
   stats:

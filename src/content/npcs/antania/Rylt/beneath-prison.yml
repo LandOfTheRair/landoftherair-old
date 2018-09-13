@@ -1,8 +1,9 @@
 
 
 - npcId: Crazed Tonwin
-  name: Crazed Tonwin
+  name: Tonwin
   hostility: Always
+  affiliation: Crazed
   alignment: Evil
   baseClass: Thief
   stats:

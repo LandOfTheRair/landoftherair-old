@@ -10,6 +10,7 @@ const RANATA_KEY = 'Ranata\'s Key';
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
   npc.allegiance = 'Pirates';
+  npc.affiliation = 'Legendary General';
 
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();

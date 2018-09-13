@@ -4478,7 +4478,7 @@
                  "gid":2577,
                  "height":64,
                  "id":1027,
-                 "name":"King Kranton",
+                 "name":"Kranton",
                  "properties":
                     {
                      "script":"antania\/yzalt\/steffen-king"
@@ -4698,7 +4698,7 @@
                  "gid":3447,
                  "height":64,
                  "id":1113,
-                 "name":"Elder Ergorat",
+                 "name":"Ergorat",
                  "properties":
                     {
                      "script":"antania\/yzalt\/heniz-elder"
@@ -8158,7 +8158,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 

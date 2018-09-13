@@ -8,6 +8,7 @@ import { HenizFindSedgwick } from '../../../../quests/antania/Yzalt/HenizFindSed
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
   npc.allegiance = 'Royalty';
+  npc.affiliation = 'Steffen King';
 
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();

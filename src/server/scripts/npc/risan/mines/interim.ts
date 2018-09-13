@@ -4,6 +4,7 @@ import { DailyKillDryads, DailyKillMiners, DailyKillWildlife } from '../../../..
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Interim Overseer';
 
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Risan Tunic');
   npc.recalculateStats();

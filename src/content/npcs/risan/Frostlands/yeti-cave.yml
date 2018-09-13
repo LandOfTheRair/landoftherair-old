@@ -226,6 +226,7 @@
 - npcId: Abomniblus
   name: Abomniblus
   sprite: 475
+  affiliation: Frozen Terror
   baseClass: Mage
   allegiance: Enemy
   alignment: Evil

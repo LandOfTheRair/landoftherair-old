@@ -143,6 +143,8 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
         char.$$pets.push(npc);
         npc.$$owner = char;
 
+        npc.affiliation = `${char.name}'s Clone`;
+
         const summoned = new SummonedClone({});
         summoned.cast(char, npc);
       }

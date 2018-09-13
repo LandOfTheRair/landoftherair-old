@@ -5,6 +5,7 @@ const QUESTNAME = 'Steffen Botanist Regeneration';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Floral Collector';
 
   npc.leftHand = await npc.$$room.npcLoader.loadItem(FLOWER);
   npc.rightHand = await npc.$$room.npcLoader.loadItem(FLOWER);

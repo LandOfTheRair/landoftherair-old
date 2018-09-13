@@ -5,6 +5,7 @@ const FLOWER = 'Tower Goblood';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Royal Cook';
 
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();

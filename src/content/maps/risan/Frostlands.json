@@ -9942,7 +9942,7 @@
                  "gid":2577,
                  "height":64,
                  "id":1831,
-                 "name":"King Risa",
+                 "name":"Risa",
                  "properties":
                     {
                      "script":"risan\/frostlands\/king"
@@ -9962,7 +9962,7 @@
                  "gid":3457,
                  "height":64,
                  "id":1832,
-                 "name":"Queen Risa",
+                 "name":"Thena",
                  "properties":
                     {
                      "script":"risan\/frostlands\/queen"

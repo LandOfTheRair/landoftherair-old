@@ -4,6 +4,7 @@ import { DailyKillApprentices, DailyKillRebels, DailyKillRenegades } from '../..
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Mayor';
 
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();

@@ -192,6 +192,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
         }
 
         npc.name = `pet ${npc.name}`;
+        npc.affiliation = `${char.name}'s Pet`;
 
         // boost stats
         animalModHash[this.animalStr](npc, this.potency);

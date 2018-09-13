@@ -4,6 +4,7 @@ const TITANIUM = 'Tower Titanium Chunk';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Defensive Specialist';
 
   npc.rightHand = await npc.$$room.npcLoader.loadItem('Tower Broadsword Weak');
   npc.leftHand = await npc.$$room.npcLoader.loadItem('Tower Shield Weak');

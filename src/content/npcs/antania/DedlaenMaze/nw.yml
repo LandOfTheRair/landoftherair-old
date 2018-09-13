@@ -260,6 +260,7 @@
 - npcId: Dedlaen Vampire Bat
   name: bat
   hostility: Always
+  affiliation: Vampire's Minion
   sprite: 805
   alignment: Evil
   stats: 10

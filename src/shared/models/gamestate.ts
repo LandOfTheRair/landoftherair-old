@@ -223,6 +223,7 @@ export class GameState {
       'hp', 'level',
       'x', 'y', 'z',
       'effects',
+      'affiliation',
       'totalStats.wil', 'totalStats.stealth'
     ]);
     if(!baseObj.gear) baseObj.gear = {};

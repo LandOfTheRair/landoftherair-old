@@ -5,6 +5,7 @@ const YETI_CLUB = 'Frostlands Frozen Yeti Club';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'King';
 
   npc.rightHand = await npc.$$room.npcLoader.loadItem('Risan Royal Spear');
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Frostlands Noble Robe');

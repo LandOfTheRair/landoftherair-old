@@ -1036,6 +1036,7 @@
 - npcId: Ranata
   name: Ranata
   hostility: Always
+  affiliation: Crazed
   sprite: 480
   stats: 10
   otherStats:
@@ -1098,8 +1099,9 @@
 
 
 - npcId: Crazed Sedgwick
-  name: Crazed Sedgwick
+  name: Sedgwick
   hostility: Always
+  affiliation: Crazed
   sprite: 480
   stats: 10
   otherStats:

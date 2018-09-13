@@ -3,6 +3,7 @@ import { VendorResponses } from '../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Armor Vendor';
 
   const vendorItems = [
     'Antanian Tunic',

@@ -4,6 +4,8 @@ const CHILD_DOLL = 'Steffen LostChild Doll';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Good Aligner';
+
   npc.gainBaseStat('stealth', 20);
 
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');

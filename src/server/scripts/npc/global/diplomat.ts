@@ -3,6 +3,7 @@ import { DiplomatResponses } from '../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Faction Seer';
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
 };
 

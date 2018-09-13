@@ -14,12 +14,17 @@
 }
 
 .target-name, .target-health {
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
-.target-name, .progress-bar, .progress-bar-text {
+.target-name, .target-affiliation, .progress-bar, .progress-bar-text {
   color: #fff !important;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+}
+
+.target-affiliation {
+  min-height: 15px;
+  font-size: 85%;
 }
 
 .target-name {
@@ -38,7 +43,7 @@
   font-weight: bold;
 }
 
-.target-health, .target-status, .target-name {
+.target-health, .target-status, .target-name, .target-affiliation {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;

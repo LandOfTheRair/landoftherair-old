@@ -30,7 +30,7 @@ export class Interact extends Command {
     CommandExecutor.executeCommand(player, command, { room, gameState, args });
   }
 
-  private doDoor( gameState, door) {
+  private doDoor(gameState, door) {
     const gameStateDoor = gameState.mapData.openDoors[door.id];
     const shouldContinue = !gameStateDoor || (gameStateDoor && !gameStateDoor.isOpen);
 

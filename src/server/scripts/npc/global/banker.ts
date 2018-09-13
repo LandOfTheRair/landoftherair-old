@@ -3,6 +3,7 @@ import { BankResponses } from '../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Banker\'s Guild';
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.rightHand = await npc.$$room.npcLoader.loadItem('Gold Coin');
 };

@@ -4,6 +4,7 @@ const DEER_CORPSE = 'deer corpse';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Evil Aligner';
   npc.gainBaseStat('stealth', 20);
 
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');

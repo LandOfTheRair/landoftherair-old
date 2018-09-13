@@ -5,6 +5,7 @@ const HEART = 'Cyrena\'s Heart';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Secret Librarian';
 
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Risan Tunic');
 

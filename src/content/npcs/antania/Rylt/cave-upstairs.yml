@@ -1,8 +1,9 @@
 
 
 - npcId: Crazed Saraxa
-  name: Crazed Saraxa
+  name: Saraxa
   hostility: Always
+  affiliation: Crazed
   alignment: Evil
   baseClass: Mage
   stats:

@@ -448,9 +448,10 @@
 
 
 - npcId: Dryad Queen Cyrena
-  name: Queen Cyrena
+  name: Cyrena
   sprite: 465
   hostility: Always
+  affiliation: Dryad Queen
   alignment: Evil
   baseClass: Thief
   stats: 19

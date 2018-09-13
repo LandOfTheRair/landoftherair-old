@@ -2,6 +2,7 @@ import { NPC } from '../../../../shared/models/npc';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Quest Giver';
 
   npc.leftHand = await npc.$$room.npcLoader.loadItem('Tutorial Yeti Skull');
   npc.rightHand = await npc.$$room.npcLoader.loadItem('Tutorial Key');

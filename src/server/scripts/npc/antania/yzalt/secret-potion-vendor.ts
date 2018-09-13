@@ -3,6 +3,7 @@ import { VendorResponses } from '../../common-responses';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Potion Vendor';
 
   const vendorItems = [
     { name: 'Weak BarNecro Potion', valueMult: 5 },
