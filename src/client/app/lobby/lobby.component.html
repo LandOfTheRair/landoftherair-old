@@ -48,8 +48,8 @@
                   [disabled]="!lobby.colyseus.isConnected">{{ lobby.myAccount.status }} <span class="caret"></span></button>
 
           <ul *dropdownMenu class="dropdown-menu">
-            <li role="menuitem"><a class="dropdown-item" href="#" (click)="lobby.changeStatus('Available')">Available</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#" (click)="lobby.changeStatus('AFK')">AFK</a></li>
+            <li role="menuitem"><a class="dropdown-item" (click)="lobby.changeStatus('Available')">Available</a></li>
+            <li role="menuitem"><a class="dropdown-item" (click)="lobby.changeStatus('AFK')">AFK</a></li>
           </ul>
         </div>
       </div>

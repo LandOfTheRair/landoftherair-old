@@ -101,7 +101,7 @@ import { ColyseusService } from './colyseus.service';
 
         <ul class="navbar-nav mr-auto" *ngIf="inGame">
           <li class="nav-item" *ngIf="colyseus.lobby.myAccount" dropdown container="body">
-            <a class="nav-link" href="#" dropdownToggle>Macros</a>
+            <a class="nav-link" dropdownToggle>Macros</a>
 
             <ul *dropdownMenu class="dropdown-menu">
               <li>
@@ -140,7 +140,7 @@ import { ColyseusService } from './colyseus.service';
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item" tooltip="Daily reset is when you can re-do daily quests, and buy new daily items!" placement="bottom">
-            <a class="nav-link" href="#">Daily Reset in {{ timestampDisplay }}</a>
+            <a class="nav-link">Daily Reset in {{ timestampDisplay }}</a>
           </li>
         </ul>
       </div>

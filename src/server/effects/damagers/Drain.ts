@@ -27,6 +27,8 @@ export class Drain extends SpellEffect {
     let realDrain = Math.min(damage, target.getTotalStat('hp'));
     if(target.hp.total - realDrain <= 0) realDrain = target.hp.total - 1;
 
+    if(realDrain <= 0) return caster.sendClientMessage('Your target had no life force to drain!');
+
     if(realDrain > 0) target.sendClientMessage('You feel your life force slipping away!');
 
     caster.sendClientMessage(`You drained ${realDrain} HP from ${target.name}!`);

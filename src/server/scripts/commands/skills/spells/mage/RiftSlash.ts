@@ -17,7 +17,7 @@ export class RiftSlash extends Skill {
     icon: 'running-ninja',
     color: '#a0a',
     mode: 'lockActivation',
-    tooltipDesc: 'Warp through the rift and physicall attack your enemy. Cost: 10 MP',
+    tooltipDesc: 'Warp through the rift and physically attack your enemy. Cost: 10 MP',
     requireCharacterLevel: 5,
     requireSkillLevel: 5,
     skillTPCost: 10
