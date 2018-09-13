@@ -205,6 +205,9 @@ export class GameWorld extends Room<GameState> {
     const finishLoad = async () => {
       if(opts.skipMostOfLoad) return;
 
+      this.initPartyManager();
+      this.initBonusHelper();
+
       const timerData = await this.loadBossTimers();
       const spawnerTimers = timerData ? timerData.spawners : [];
 
@@ -219,8 +222,6 @@ export class GameWorld extends Room<GameState> {
       }, 0);
 
       this.initGround();
-      this.initPartyManager();
-      this.initBonusHelper();
 
       this.state.tick();
 
@@ -329,7 +330,7 @@ export class GameWorld extends Room<GameState> {
     player.inGame = false;
 
     // do not leave party if you're teleporting between maps
-    if(!player.$$doNotSave && player.partyName) {
+    if(this.partyManager && !player.$$doNotSave && player.partyName) {
       this.partyManager.leaveParty(player);
     }
 
