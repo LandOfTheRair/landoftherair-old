@@ -671,7 +671,7 @@ export class Game {
     if(!this.player) return false;
 
     const map = this.map;
-    const { width, layers } = map;
+    const { size, layers } = map;
     const { x, y } = this.player;
 
     const totalX = x + checkX;
@@ -679,7 +679,8 @@ export class Game {
 
     const hasSecretWall = get(this.clientGameState.secretWallHash, [totalX, totalY]);
     const wallList = layers[MapLayer.Walls].data || layers[MapLayer.Walls].tileIds;
-    const wallLayerTile = wallList[(width * totalY) + totalX];
+    const wallLayerTile = wallList[(size.x * totalY) + totalX];
+
     return hasSecretWall || (wallLayerTile !== TilesWithNoFOVUpdate.Empty && wallLayerTile !== TilesWithNoFOVUpdate.Air);
   }
 
@@ -735,26 +736,29 @@ export class Game {
           const isWallHere = this.isThereAWallAt(x, y);
           if(!isWallHere) continue;
 
-          // cut left (scale down to x0.5, no offset)
-          if(x - 1 >= -4 && !this.shouldRenderXY(x - 1, y)) {
-            fovSprite.alpha = 1;
-            fovSprite.scale.x = 0.35;
-            continue;
-          }
+          // check bottom first because it is the most jarring transition to see
 
-          // cut right (scale down to x0.5, x + ~32)
-          if(x + 1 <= 4 && !this.shouldRenderXY(x + 1, y)) {
-            fovSprite.alpha = 1;
-            fovSprite.scale.x = 0.35;
-            fovSprite.cameraOffset.x += 42;
-            continue;
-          }
-
-          // cut down (scale down to y0.5, y + ~32)
-          if(y + 1 <= 4 && !this.shouldRenderXY(x, y + 1)) {
+          if(y === 4                                                 // cut down IIF the wall *is* the edge tile (scale down to y0.5, y + ~32)
+            || (y + 1 <= 4 && !this.shouldRenderXY(x, y + 1))) {  // cut down (scale down to y0.5, y + ~32)
             fovSprite.alpha = 1;
             fovSprite.scale.y = 0.7;
             fovSprite.cameraOffset.y += 20;
+            continue;
+          }
+
+          if(x === -4                                              // cut left IIF the wall *is* the edge tile (scale down to x0.5, no offset)
+          || (x - 1 >= -4 && !this.shouldRenderXY(x - 1, y))) { // cut left (scale down to x0.5, no offset)
+            fovSprite.alpha = 1;
+            fovSprite.scale.x = 0.35;
+            continue;
+          }
+
+
+          if(x === 4                                               // cut right IIF the wall *is* the edge tile (scale down to x0.5, x + ~32)
+          || (x + 1 <= 4 && !this.shouldRenderXY(x + 1, y))) {  // cut right (scale down to x0.5, x + ~32)
+            fovSprite.alpha = 1;
+            fovSprite.scale.x = 0.35;
+            fovSprite.cameraOffset.x += 42;
             continue;
           }
         }
