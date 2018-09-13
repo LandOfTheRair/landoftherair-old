@@ -3,19 +3,24 @@ import * as scheduler from 'node-schedule';
 import { Logger } from '../../logger';
 import { Item } from '../../../shared/models/item';
 
-import { compact, reject, find } from 'lodash';
+import { compact, reject, find, includes } from 'lodash';
 import { DB } from '../../database';
 import { GameWorld } from '../../rooms/GameWorld';
 
 export class GroundHelper {
 
   private itemGCArray: any = [];
+  private trashGCArray: any = [];
 
   public get numberOfItems(): number {
     return this.itemGCArray.length;
   }
 
   constructor(private room: GameWorld) {}
+
+  private isTrash(item: Item) {
+    return includes(item.name, ' Trash ');
+  }
 
   addItemToGround(ref, item: Item, previouslyStackedItem = null) {
 
@@ -27,15 +32,18 @@ export class GroundHelper {
       baseItem = previouslyStackedItem;
     }
 
-    this.itemGCArray.push({
+    const pushArr = this.isTrash(baseItem) ? this.trashGCArray : this.itemGCArray;
+
+    pushArr.push({
       uuid: baseItem.uuid,
       itemClass: baseItem.itemClass,
       x: ref.x,
       y: ref.y
     });
 
-    while(this.itemGCArray.length > this.room.maxItemsOnGround) {
-      const removeItem = this.itemGCArray.shift();
+    while(this.trashGCArray.length + this.itemGCArray.length > this.room.maxItemsOnGround) {
+      const shiftArr = this.trashGCArray.length > 0 ? this.trashGCArray : this.itemGCArray;
+      const removeItem = shiftArr.shift();
       this.removeItemFromGround(removeItem);
     }
   }
