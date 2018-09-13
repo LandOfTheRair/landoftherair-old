@@ -170,6 +170,7 @@ export class Item {
   value = 0;
   maxEncrusts?: number;
   _buybackValue?: number;
+  sellValue?: number;
   stats: any = {};
   requirements?: ItemRequirements;
   condition = 20000;
@@ -233,6 +234,7 @@ export class Item {
     extend(this, opts);
     if(!this.uuid) this.uuid = uuid();
     if(!this.createdAt) this.createdAt = Date.now();
+    if(!this.value && this.sellValue) this.value = this.sellValue;
   }
 
   usesString(): string {
@@ -242,7 +244,7 @@ export class Item {
     if(uses < 3)    return 'looks brittle';
     if(uses < 9)    return 'looks cracked';
     if(uses < 20)   return 'looks normal';
-    if(uses < 50)   return 'looks energetic';
+    if(uses < 50)   return 'surges with energy';
     if(uses < 100)  return 'crackles with power';
 
     return 'is flawlessly vibrant';
@@ -279,6 +281,8 @@ export class Item {
   descTextFor(player: Character, senseLevel = 0, fromClient = false) {
 
     const starText = this.quality - 2 > 0 ? Array(this.quality - 2).fill('★').join('') : '';
+
+    const isValuableText = this.sellValue ? 'It looks valuable. ' : '';
 
     let ownedText = '';
     if(this.owner) {
@@ -344,7 +348,7 @@ export class Item {
       if(fromClient) statText = `<br><br>${statText}`;
     }
 
-    return `${starText} ${baseText}${sense1Text}${sense1AfterText}${sense2Text}${traitText}
+    return `${starText} ${baseText}${isValuableText}${sense1Text}${sense1AfterText}${sense2Text}${traitText}
     ${dualWieldText}${usesText}${fluidText}${levelText}${alignmentText}${skillText}
     ${conditionText}${ownedText}${appraiseText}${usefulText}${statText}`;
   }

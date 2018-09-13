@@ -2,7 +2,7 @@
 
 - name: Risan Diamond
   desc: "a roughly-cut diamond"
-  value: 5000
+  sellValue: 25000
   sprite: 247
 
   maxEncrusts: 4
