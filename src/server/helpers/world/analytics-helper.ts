@@ -53,7 +53,6 @@ export class AnalyticsHelper {
 
     if(args.event_id) args.event_id = args.event_id.split(' ').join('');
 
-    console.log(type, args)
     this.ga.track(type, this.userString(player), args);
   }
 
@@ -106,6 +105,10 @@ export class AnalyticsHelper {
     if(gold === 0 || !reason) return;
 
     this.track(player, 'resource', { event_id: `${type}:gold:${reason}`, amount: type === 'Source' ? gold : -gold });
+  }
+
+  public trackTutorial(player: Player, step: string) {
+    this.track(player, 'design', { event_id: `Tutorial:${step}` });
   }
 
 }
