@@ -55,7 +55,7 @@ export class CommandExecutor {
 
     if(!player) return;
 
-    const wasSuccess = await this._queueCommand(player, command, args);
+    const { wasSuccess } = await this._queueCommand(player, command, args);
 
     // explicit check
     if(wasSuccess === false) {
@@ -63,9 +63,9 @@ export class CommandExecutor {
     }
   }
 
-  static async _queueCommand(player: Player, command: string, args: any) {
+  static async _queueCommand(player: Player, command: string, args: any): Promise<{ wasSuccess: boolean, command?: Command }> {
     const cmd: Command = commandHash[command];
-    if(!cmd) return false;
+    if(!cmd) return { wasSuccess: false };
 
     // wat?
     if(!player) return;
@@ -85,13 +85,13 @@ export class CommandExecutor {
       return await this.executeCommand(player, command, args);
     } else {
       player.queueAction({ command, args: args.args });
-      return true;
+      return { wasSuccess: true };
     }
   }
 
-  static async executeCommand(player: Player, command: string, args: any) {
+  static async executeCommand(player: Player, command: string, args: any): Promise<{ wasSuccess: boolean, command?: Command }> {
     const cmd: Command = commandHash[command];
-    if(!cmd) return false;
+    if(!cmd) return { wasSuccess: false };
 
     const prefix = command.split(' ')[0];
     const spell = command.split(' ')[1];
@@ -101,7 +101,10 @@ export class CommandExecutor {
       hasLearned = player.hasLearned(`${prefix}${spell}` || '') || player.hasLearned(`${spell}${prefix}` || '');
     }
 
-    if(cmd.requiresLearn && !hasLearned) return player.sendClientMessage('You do not know that ability!');
+    if(cmd.requiresLearn && !hasLearned) {
+      player.sendClientMessage('You do not know that ability!');
+      return;
+    }
 
     if(hasLearned.effect) args.effect = hasLearned.effect;
 
@@ -110,7 +113,7 @@ export class CommandExecutor {
       player.sendClientMessage(`Invalid format. Format: ${command} ${cmd.format}`);
     }
 
-    return true;
+    return { wasSuccess: true, command: cmd };
   }
 
 }

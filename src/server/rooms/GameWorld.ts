@@ -38,6 +38,7 @@ import { TeleportHelper } from '../helpers/world/teleport-helper';
 import { Signal } from 'signals.js';
 import { SkillTreeHelper } from '../helpers/skill-trees/skill-tree-helper';
 import { MarketHelper } from '../helpers/world/market-helper';
+import { AnalyticsHelper } from '../helpers/world/analytics-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-miss' | 'block-shield' | 'block-weapon' | 'block-offhand';
@@ -81,6 +82,7 @@ export class GameWorld extends Room<GameState> {
   public npcLoader: NPCLoader;
   public lockerHelper: LockerHelper;
   private marketHelper: MarketHelper;
+  public analyticsHelper: AnalyticsHelper;
 
   public get groundItemCount(): number {
     return this.groundHelper.numberOfItems;
@@ -193,6 +195,7 @@ export class GameWorld extends Room<GameState> {
     this.npcLoader = new NPCLoader();
     this.lockerHelper = new LockerHelper();
     this.marketHelper = new MarketHelper();
+    this.analyticsHelper = new AnalyticsHelper();
 
     this.setPatchRate(1000);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
@@ -318,6 +321,8 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
     this.send(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
     this.updateSkillTree(player);
+
+    this.analyticsHelper.startGameSession(player, options.userAgent);
   }
 
   async onLeave(client) {
@@ -325,6 +330,7 @@ export class GameWorld extends Room<GameState> {
     if(!player) return;
 
     delete this.usernameClientHash[player.username];
+    this.analyticsHelper.stopGameSession(player);
 
     this.state.removePlayer(client.id);
     player.inGame = false;
@@ -585,7 +591,7 @@ export class GameWorld extends Room<GameState> {
     player.$$banks[region] = player.$$banks[region] || 0;
     player.$$banks[region] += amount;
 
-    player.loseGold(amount);
+    player.spendGold(amount, 'Service:Bank');
 
     BankHelper.saveBank(player);
     this.showBankWindow(player, null, player.$$banks);
@@ -604,7 +610,7 @@ export class GameWorld extends Room<GameState> {
     if(amount > player.$$banks[region]) amount = player.$$banks[region];
 
     player.$$banks[region] -= amount;
-    player.gainGold(amount);
+    player.earnGold(amount, 'Service:Bank');
     BankHelper.saveBank(player);
     this.showBankWindow(player, null, player.$$banks);
     return amount;
@@ -712,15 +718,19 @@ export class GameWorld extends Room<GameState> {
     return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: { inGame: false } });
   }
 
-  executeCommand(player: Player, command, args: string) {
+  async executeCommand(player: Player, commandString, args: string) {
     const data = {
       gameState: this.state,
       room: this,
       args,
-      command
+      command: commandString
     };
 
-    CommandExecutor.executeCommand(player, data.command, data);
+    const { wasSuccess, command } = await CommandExecutor.executeCommand(player, data.command, data);
+
+    if(wasSuccess) {
+      this.analyticsHelper.trackSkill(player, command);
+    }
   }
 
   private initGround() {
@@ -906,7 +916,7 @@ export class GameWorld extends Room<GameState> {
 
     corpse.searchItems.forEach(item => {
       if(searcher && item.itemClass === 'Coin') {
-        searcher.gainGold(item.value);
+        searcher.earnGold(item.value, 'Game:SearchCorpse');
         searcher.sendClientMessage(`You loot ${item.value} gold coins from the corpse.`);
 
       } else {
@@ -926,7 +936,7 @@ export class GameWorld extends Room<GameState> {
 
     chest.searchItems.forEach(item => {
       if(searcher && item.itemClass === 'Coin') {
-        searcher.gainGold(item.value);
+        searcher.earnGold(item.value, 'Game:SearchChest');
         searcher.sendClientMessage(`You loot ${item.value} gold coins from the chest.`);
 
       } else {

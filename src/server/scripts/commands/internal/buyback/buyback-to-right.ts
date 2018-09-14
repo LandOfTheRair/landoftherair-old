@@ -23,7 +23,6 @@ export class BuybackToRight extends Command {
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     player.buyItemBack(slot);
-    player.loseGold(item._buybackValue);
 
     const newItem = new Item(item);
 

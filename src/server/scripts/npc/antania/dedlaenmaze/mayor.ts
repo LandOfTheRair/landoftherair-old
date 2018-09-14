@@ -44,7 +44,7 @@ export const responses = (npc: NPC) => {
 
         player.completeDailyQuest(npc.name);
 
-        player.gainGold(30000);
+        player.earnGold(30000, 'Quest:MazeDaily');
         player.gainExp(100000);
         player.$$room.subscriptionHelper.giveSilver(player.$$account, 1);
 

@@ -745,7 +745,7 @@ export class Character {
 
   addItemToSack(item: Item) {
     if(item.itemClass === 'Coin') {
-      this.gainGold(item.value);
+      this.earnGold(item.value, 'Game:SackGold');
       return true;
     }
 
@@ -786,9 +786,17 @@ export class Character {
     this.gold += gold;
   }
 
-  loseGold(gold: number) {
+  earnGold(gold: number, reason: string) {
+    this.gainGold(gold);
+  }
+
+  private loseGold(gold: number) {
     this.gold -= gold;
     if(this.gold <= 0) this.gold = 0;
+  }
+
+  spendGold(gold: number, on: string) {
+    this.loseGold(gold);
   }
 
   getDirBasedOnDiff(x, y): string {
@@ -981,6 +989,8 @@ export class Character {
     this.clearEffects();
 
     this.$$deathTicks = 120;
+
+    this.$$room.analyticsHelper.trackKill(this, killer);
 
     if(silent) {
       this.hp.toMinimum();

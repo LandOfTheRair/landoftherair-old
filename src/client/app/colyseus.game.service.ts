@@ -161,6 +161,7 @@ export class ColyseusGameService {
     this.resetRoom();
 
     this.worldRoom = this.client.join(room, {
+      userAgent: navigator.userAgent,
       charSlot: this.character.charSlot,
       username: this.colyseus.username,
       party

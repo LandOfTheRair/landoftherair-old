@@ -36,7 +36,7 @@ export const responses = (npc: NPC) => {
 
         npc.$$room.npcLoader.takeItemsFromPlayerSack(player, indexes);
 
-        player.gainGold(total);
+        player.earnGold(total, 'Quest:RangerBear');
         return `Thanks, ${player.name}! Here is ${total.toLocaleString()} gold for your efforts.`;
       }
 

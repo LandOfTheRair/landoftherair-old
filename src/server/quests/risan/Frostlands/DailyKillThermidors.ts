@@ -57,7 +57,7 @@ export class DailyKillThermidors extends Quest {
   }
 
   public static givePlayerRewards(player: Player): void {
-    player.gainGold(50000);
+    this.rewardPlayerGold(player, 50000);
     player.gainExp(1500000);
     player.$$room.subscriptionHelper.giveSilver(player.$$account, 2);
 
