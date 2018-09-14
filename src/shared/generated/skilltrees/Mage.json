@@ -1221,7 +1221,7 @@
     },
     "RiftSlash": {
         "name": "RiftSlash",
-        "desc": "Warp through the rift and physicall attack your enemy. Cost: 10 MP",
+        "desc": "Warp through the rift and physically attack your enemy. Cost: 10 MP",
         "icon": "running-ninja",
         "iconColor": "#a0a",
         "requireCharacterLevel": 5,

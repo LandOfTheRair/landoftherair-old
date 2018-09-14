@@ -245,22 +245,22 @@
             "requiresLearn": true
         },
         {
-            "name": "BarNecro",
-            "macro": "cast barnecro",
-            "icon": "rosa-shield",
-            "color": "#1b390e",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield necrotic damage for a single target. Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Blind",
             "macro": "cast blind",
             "icon": "evil-eyes",
             "color": "#900",
             "mode": "clickToTarget",
             "tooltipDesc": "Attempt to blind a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarNecro",
+            "macro": "cast barnecro",
+            "icon": "rosa-shield",
+            "color": "#1b390e",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield necrotic damage for a single target. Cost: 40 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -423,6 +423,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Wellspring",
+            "macro": "cast wellspring",
+            "icon": "holy-water",
+            "color": "#080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Create a bottle of holy water. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Vision",
             "macro": "cast vision",
             "icon": "evil-eyes",
@@ -440,16 +450,6 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Boost maximum vitality and armor for a single target. Cost: 200 MP",
             "requireSkillLevel": 15,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Wellspring",
-            "macro": "cast wellspring",
-            "icon": "holy-water",
-            "color": "#080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Create a bottle of holy water. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -532,22 +532,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Firethorns",
-            "macro": "cast firethorns",
-            "icon": "barbed-coil",
-            "color": "#f00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Physical attackers take fire damage. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Frostspikes",
             "macro": "cast frostspikes",
             "icon": "barbed-coil",
             "color": "#000080",
             "mode": "clickToTarget",
             "tooltipDesc": "Physical attackers take ice damage. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Firethorns",
+            "macro": "cast firethorns",
+            "icon": "barbed-coil",
+            "color": "#f00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Physical attackers take fire damage. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -570,19 +570,6 @@
             "mode": "lockActivation",
             "tooltipDesc": "Inflict ice damage on a single target. Cost: 20 MP",
             "skillTPCost": 5,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Haste",
-            "macro": "cast haste",
-            "icon": "time-trap",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Act twice as fast. Cost: 200 MP",
-            "requireCharacterLevel": 20,
-            "requireSkillLevel": 15,
-            "skillTPCost": 20,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -675,12 +662,15 @@
             "requiresLearn": true
         },
         {
-            "name": "MassTeleport",
-            "macro": "cast massteleport",
-            "icon": "vortex",
-            "color": "#a0a",
+            "name": "Haste",
+            "macro": "cast haste",
+            "icon": "time-trap",
+            "color": "#0a0",
             "mode": "clickToTarget",
-            "tooltipDesc": "Teleport those on your tile to a previously-memorized location. Cost: 100% MP",
+            "tooltipDesc": "Act twice as fast. Cost: 200 MP",
+            "requireCharacterLevel": 20,
+            "requireSkillLevel": 15,
+            "skillTPCost": 20,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -690,7 +680,7 @@
             "icon": "running-ninja",
             "color": "#a0a",
             "mode": "lockActivation",
-            "tooltipDesc": "Warp through the rift and physicall attack your enemy. Cost: 10 MP",
+            "tooltipDesc": "Warp through the rift and physically attack your enemy. Cost: 10 MP",
             "requireCharacterLevel": 5,
             "requireSkillLevel": 5,
             "skillTPCost": 10,
@@ -707,6 +697,16 @@
             "requireCharacterLevel": 20,
             "requireSkillLevel": 15,
             "skillTPCost": 20,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MassTeleport",
+            "macro": "cast massteleport",
+            "icon": "vortex",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Teleport those on your tile to a previously-memorized location. Cost: 100% MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -905,16 +905,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Set",
-            "macro": "cast set",
-            "icon": "quake-stomp",
-            "color": "#530000",
-            "mode": "clickToActivate",
-            "tooltipDesc": "Set a trap from your hand. Traps can be purchased from thief vendors.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "ShadowClones",
             "macro": "cast shadowclones",
             "icon": "dark-squad",
@@ -931,6 +921,16 @@
             "color": "#00c",
             "mode": "autoActivate",
             "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Set",
+            "macro": "cast set",
+            "icon": "quake-stomp",
+            "color": "#530000",
+            "mode": "clickToActivate",
+            "tooltipDesc": "Set a trap from your hand. Traps can be purchased from thief vendors.",
             "isSystem": true,
             "requiresLearn": true
         },
