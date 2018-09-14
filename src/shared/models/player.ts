@@ -495,12 +495,13 @@ export class Player extends Character {
     const item = this.buyback[slot];
     pull(this.buyback, item);
     this.fixBuyback();
+    this.spendGold(item._buybackValue, `Buyback:${item.name}`);
     return item;
   }
 
   sellItem(item: Item): number {
     const value = this.sellValue(item);
-    this.gainGold(value);
+    this.earnGold(value, `Sell:${item.name}`);
     item._buybackValue = value;
 
     this.buyback.push(item);
@@ -787,6 +788,18 @@ export class Player extends Character {
     }
 
     super._gainSkill(type, val);
+  }
+
+  spendGold(gold: number, on: string) {
+    super.spendGold(gold, on);
+
+    this.$$room.analyticsHelper.trackGoldFlow('Sink', this, gold, on);
+  }
+
+  earnGold(gold: number, reason: string) {
+    super.earnGold(gold, reason);
+
+    this.$$room.analyticsHelper.trackGoldFlow('Source', this, gold, reason);
   }
 
 }

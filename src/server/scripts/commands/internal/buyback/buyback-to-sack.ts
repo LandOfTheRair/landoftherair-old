@@ -25,7 +25,6 @@ export class BuybackToSack extends Command {
     if(!player.addItemToSack(newItem)) return;
 
     player.buyItemBack(slot);
-    player.loseGold(item._buybackValue);
 
   }
 

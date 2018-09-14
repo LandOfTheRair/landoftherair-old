@@ -25,7 +25,6 @@ export class BuybackToPouch extends Command {
     if(!player.addItemToPouch(newItem)) return;
 
     player.buyItemBack(slot);
-    player.loseGold(item._buybackValue);
 
   }
 

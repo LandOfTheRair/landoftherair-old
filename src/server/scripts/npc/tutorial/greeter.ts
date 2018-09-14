@@ -13,6 +13,8 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      player.$$room.analyticsHelper.trackTutorial(player, 'Greeter:Hello');
+
       return `Welcome to Land of the Rair, ${player.name}!`;
     });
 

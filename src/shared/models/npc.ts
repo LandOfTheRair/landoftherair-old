@@ -1,5 +1,5 @@
 
-import { flatten, random, set, get } from 'lodash';
+import { flatten, random, set, get, sample } from 'lodash';
 
 import { Allegiance, Character, Direction } from './character';
 import { Item } from './item';
@@ -80,6 +80,7 @@ export class NPC extends Character {
 
   init() {
     if(!this.uuid) this.uuid = uuid();
+    if(!this.npcId) this.npcId = this.name;
     this.initAI();
     this.initSack();
     this.initBelt();
@@ -93,10 +94,30 @@ export class NPC extends Character {
 
     this.parser.setEnv('player', player);
     let output = this.parser.parse(message);
-    if(!output || output === 'undefined') return;
 
     this.setDirRelativeTo(player);
     this.$$room.state.updateNPCVolatile(this);
+
+    if(!output || output === 'undefined') {
+
+      const questionMessages = [
+        'Hmm?',
+        'What do you mean?',
+        'Hello, are you looking for me?',
+        'What do you want with me?',
+        'Did you mean to say something else?',
+        'What did you just call me?',
+        'Can you get to the point of the matter?',
+        'I\'m very busy, can you hurry it up?',
+        'Can you be more clear?'
+      ];
+
+      player.sendClientMessage({ name: this.name, message: sample(questionMessages) });
+      return;
+
+    } else {
+      this.$$room.analyticsHelper.trackNPCChat(player, this, message);
+    }
 
     output = output.split('|||');
     output.forEach(outputMessage => {

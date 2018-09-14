@@ -58,7 +58,7 @@ export class DailyKillDryads extends Quest {
   }
 
   public static givePlayerRewards(player: Player): void {
-    player.gainGold(25000);
+    this.rewardPlayerGold(player, 25000);
     player.gainExp(500000);
     player.$$room.subscriptionHelper.giveSilver(player.$$account, 2);
 

@@ -16,7 +16,7 @@ export class CoinToGround extends Command {
 
     room.addItemToGround(player, item);
     room.showGroundWindow(player);
-    player.loseGold(value);
+    player.spendGold(value, 'Service:CoinInHand');
   }
 
 }

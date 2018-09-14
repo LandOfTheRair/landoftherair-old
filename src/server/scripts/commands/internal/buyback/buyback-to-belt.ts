@@ -25,7 +25,6 @@ export class BuybackToBelt extends Command {
     if(!player.addItemToBelt(newItem)) return;
 
     player.buyItemBack(slot);
-    player.loseGold(item._buybackValue);
   }
 
 }

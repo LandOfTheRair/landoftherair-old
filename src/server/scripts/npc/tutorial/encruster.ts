@@ -23,6 +23,8 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      player.$$room.analyticsHelper.trackTutorial(player, 'Encruster:Hello');
+
       return `Hello, ${player.name}! Welcome to Land of the Rair. 
       I am an encruster, and I can do two things for you: make your gear distinguishable, and add stats to your gear! 
       If you hold a gem and item in your hand, I can add various stats to the item! Find my brethren in the world and they can help you!`;

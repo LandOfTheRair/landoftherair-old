@@ -26,7 +26,7 @@ export class MerchantToPotion extends Command {
       player.buyDailyItem(item);
     }
 
-    player.loseGold(item.value);
+    player.spendGold(item.value, `Buy:${item.name}`);
 
     const newItem = new Item(item, { doRegenerate: true });
 

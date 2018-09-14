@@ -31,4 +31,8 @@ export class Quest {
   }
 
   public static givePlayerRewards(player: Player): void {}
+
+  public static rewardPlayerGold(player: Player, gold: number): void {
+    player.earnGold(gold, `Quest:${this.constructor.name}`);
+  }
 }

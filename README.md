@@ -46,6 +46,11 @@ If you want to test Stripe, you need to add:
 
 * `STRIPE_TOKEN` - the Stripe secret key
 
+If you want to test GameAnalytics, you need to add:
+
+* `GAMEANALYTICS_GAME_KEY` - the GameAnalytics game key
+* `GAMEANALYTICS_SECRET_KEY` - the GameAnalytics secret key
+
 Also, your bot will need a role that can assign roles.
 
 ## Setup

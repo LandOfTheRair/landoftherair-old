@@ -34,7 +34,7 @@ export class MerchantToPouch extends Command {
         return;
       }
 
-      player.loseGold(item.value);
+      player.spendGold(item.value, `Buy:${item.name}`);
 
       if(item.daily) player.buyDailyItem(item);
 

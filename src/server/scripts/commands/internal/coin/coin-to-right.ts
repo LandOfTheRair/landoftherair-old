@@ -17,7 +17,7 @@ export class CoinToRight extends Command {
     const item = await player.$$room.itemCreator.getGold(value);
 
     player.setRightHand(item);
-    player.loseGold(value);
+    player.spendGold(value, 'Service:CoinInHand');
   }
 
 }

@@ -85,7 +85,7 @@ export const PeddlerResponses = (npc: NPC) => {
 
       if(player.gold < npc.peddleCost) return `I can't offer this for free. You need ${npc.peddleCost.toLocaleString()} gold for a ${npc.peddleItem}.`;
 
-      player.loseGold(npc.peddleCost);
+      player.spendGold(npc.peddleCost, `Service:Peddler:${npc.rightHand.name}`);
 
       const item = new Item(npc.rightHand, { doRegenerate: true });
 
@@ -149,7 +149,8 @@ export const SmithResponses = (npc: NPC) => {
       if(cost === 0) return 'That item is not in need of repair!';
       if(player.gold < cost) return `You need ${cost.toLocaleString()} gold to repair that item.`;
 
-      player.loseGold(cost);
+      player.spendGold(cost, `Service:Repair`);
+
       player.rightHand.condition = maxCondition;
       return `Thank you, ${player.name}! I've repaired your item for ${cost.toLocaleString()} gold.`;
     });
@@ -173,7 +174,7 @@ export const SmithResponses = (npc: NPC) => {
 
         totalCosts += cost;
 
-        player.loseGold(cost);
+        player.spendGold(cost, `Service:RepairAll`);
         item.condition = maxCondition;
       });
 
@@ -200,7 +201,7 @@ export const SmithResponses = (npc: NPC) => {
       const assessCost = 50;
       if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
-      player.loseGold(assessCost);
+      player.spendGold(assessCost, `Service:Assess`);
 
       const percentWay = SkillHelper.assess(player, SkillClassNames.Metalworking);
       return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Metalworking.toUpperCase()} proficiency.`;
@@ -372,7 +373,7 @@ export const AlchemistResponses = (npc: NPC) => {
         const cost = checkItem.ounces * npc.alchCost;
         if(npc.alchCost > cost) return;
 
-        player.loseGold(cost);
+        player.spendGold(cost, `Service:Combine`);
         indexes.push(i);
         item.ounces += checkItem.ounces;
         itemsRemoved++;
@@ -415,7 +416,7 @@ export const AlchemistResponses = (npc: NPC) => {
       const assessCost = 50;
       if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
-      player.loseGold(assessCost);
+      player.spendGold(assessCost, `Service:Assess`);
 
       const percentWay = SkillHelper.assess(player, SkillClassNames.Alchemy);
       return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Alchemy.toUpperCase()} proficiency.`;
@@ -591,7 +592,7 @@ export const EncrusterResponses = (npc: NPC) => {
       player.rightHand.value -= prevValue;
       player.rightHand.value += nextEncrust.value;
 
-      player.loseGold(cost);
+      player.spendGold(cost, `Service:Encrust`);
       player.setLeftHand(null);
       player.rightHand.setOwner(player);
 
@@ -640,7 +641,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       const assessCost = maxAssessSkill * 10;
       if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
-      player.loseGold(assessCost);
+      player.spendGold(assessCost, `Service:Assess`);
 
       if(skillLevel >= maxAssessSkill) return 'You are too advanced for my teachings.';
 
@@ -666,7 +667,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
       if(newLevel === level) return 'You are not experienced enough to train with me.';
 
-      player.loseGold(trainCost);
+      player.spendGold(trainCost, `Service:Train`);
 
       const gainedTP = player.skillTree.calculateNewTPFromLevels(player);
       player.$$room.updateSkillTree(player);
@@ -699,7 +700,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
       if(gainedTP === 0) return 'I cannot currently teach you anything new.';
 
-      player.loseGold(learnCost);
+      player.spendGold(learnCost, `Service:Learn`);
 
       return `You have gained ${gainedTP} TP!`;
     });
@@ -778,7 +779,7 @@ export const SpellforgingResponses = (npc: NPC) => {
       const assessCost = 50;
       if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
-      player.loseGold(assessCost);
+      player.spendGold(assessCost, `Service:Assess`);
 
       const percentWay = SkillHelper.assess(player, SkillClassNames.Spellforging);
       return `You are ${percentWay}% on your way towards the next level of ${SkillClassNames.Spellforging.toUpperCase()} proficiency.`;
