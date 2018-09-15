@@ -68,7 +68,7 @@ export class CommandExecutor {
     if(!cmd) return { wasSuccess: false };
 
     // wat?
-    if(!player) return;
+    if(!player) return { wasSuccess: false };
 
     if(startsWith(command, '@') || startsWith(command, '~~')) {
       return this.executeCommand(player, command, args);
@@ -78,7 +78,7 @@ export class CommandExecutor {
 
     if(!includes(allowedDeadCommands, command) && player.isDead()) {
       player.sendClientMessage(`Your corpse can't do that.`);
-      return;
+      return { wasSuccess: false };
     }
 
     if(startsWith(command, '~') && !player.isUnableToAct()) {
@@ -103,7 +103,7 @@ export class CommandExecutor {
 
     if(cmd.requiresLearn && !hasLearned) {
       player.sendClientMessage('You do not know that ability!');
-      return;
+      return { wasSuccess: false };
     }
 
     if(hasLearned.effect) args.effect = hasLearned.effect;
