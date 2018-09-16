@@ -28,10 +28,11 @@ interface EffectInfo {
 }
 
 export class Effect {
-
+ 
   name = '';
   iconData = {};
   duration = 0;
+  charges?: number;
   autocast: boolean;
   protected tier: string;
   protected potency = 0;
@@ -378,4 +379,8 @@ export interface AugmentSpellEffect {
 
 export interface AttributeEffect {
   modifyDamage(attacker: Character, defender: Character, opts: { attackerWeapon: Item, damage: number, damageClass: string });
+}
+
+export interface OnHitEffect {
+  onHit(attacker: Character, defender: Character, opts: { damage: number, damageClass: string });
 }

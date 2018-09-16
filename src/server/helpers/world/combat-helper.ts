@@ -1031,6 +1031,12 @@ export class CombatHelper {
       }));
     }
 
+    if(defender) {
+      defender.onHitEffectsList.forEach(eff => eff.onHit(attacker, defender, {
+        damage, damageClass
+      }));
+    }
+
     if(isNaN(damage)) damage = 0;
 
     defender.hp.sub(damage);
