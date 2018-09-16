@@ -4,6 +4,7 @@ export * from './Chase';
 export * from './LookAt';
 export * from './ShowSkills';
 export * from './ShowStats';
+export * from './Swap';
 export * from './OpenDoor';
 export * from './UpStairs';
 export * from './ClimbUp';
