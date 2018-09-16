@@ -42,6 +42,8 @@ If you want to test Discord integration, you can also add:
 * `DISCORD_BOT_CHANNEL` - the id of the channel for your discord bot to listen for commands in
 * `DISCORD_BOT_NAME` - the name of the bot as it was set up (default: "LandOfTheRairLobby")
 
+Also, your bot will need a role that can assign roles.
+
 If you want to test Stripe, you need to add:
 
 * `STRIPE_TOKEN` - the Stripe secret key
@@ -50,8 +52,6 @@ If you want to test GameAnalytics, you need to add:
 
 * `GAMEANALYTICS_GAME_KEY` - the GameAnalytics game key
 * `GAMEANALYTICS_SECRET_KEY` - the GameAnalytics secret key
-
-Also, your bot will need a role that can assign roles.
 
 ## Setup
 
