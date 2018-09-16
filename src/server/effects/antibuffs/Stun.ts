@@ -2,7 +2,6 @@
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import { RecentlyStunned } from '../recents/RecentlyStunned';
 
 export class Stun extends SpellEffect {
 
@@ -47,5 +46,19 @@ export class Stun extends SpellEffect {
     const recentlyStunned = new RecentlyStunned({});
     recentlyStunned.cast(char, char);
     this.effectMessage(char, 'You are no longer stunned.');
+  }
+}
+
+export class RecentlyStunned extends SpellEffect {
+
+  iconData = {
+    name: 'knockout',
+    color: '#000',
+    tooltipDesc: 'Recently stunned and cannot be stunned for a period.'
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.duration = 10;
+    target.applyEffect(this);
   }
 }

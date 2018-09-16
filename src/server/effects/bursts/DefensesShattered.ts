@@ -2,7 +2,6 @@
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import { RecentlyShattered } from '../recents/RecentlyShattered';
 import { Revealed } from '../misc/Revealed';
 
 export class DefensesShattered extends SpellEffect {
@@ -41,5 +40,19 @@ export class DefensesShattered extends SpellEffect {
     const recently = new RecentlyShattered({});
     recently.cast(char, char);
     this.effectMessage(char, 'Your defenses have recovered.');
+  }
+}
+
+export class RecentlyShattered extends SpellEffect {
+
+  iconData = {
+    name: 'on-sight',
+    color: '#333',
+    tooltipDesc: 'Recently had shattered defenses and cannot be shattered for a period.'
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.duration = 60;
+    target.applyEffect(this);
   }
 }

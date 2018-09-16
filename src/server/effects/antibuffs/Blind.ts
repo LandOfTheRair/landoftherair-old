@@ -4,7 +4,6 @@ import { clamp } from 'lodash';
 import { SpellEffect } from '../../base/Effect';
 import { Character, StatName } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import { RecentlyBlinded } from '../recents/RecentlyBlinded';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Blind extends SpellEffect {
@@ -63,5 +62,19 @@ export class Blind extends SpellEffect {
     if(char.isPlayer()) {
       char.$$room.updateFOV(char);
     }
+  }
+}
+
+export class RecentlyBlinded extends SpellEffect {
+
+  iconData = {
+    name: 'evil-eyes',
+    color: '#000',
+    tooltipDesc: 'Recently blinded and cannot be blinded for a period.'
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.duration = 10;
+    target.applyEffect(this);
   }
 }

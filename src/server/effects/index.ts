@@ -90,33 +90,19 @@ export * from './buffs/Disguise';
 
 export * from './buildups/BuildupHeat';
 export * from './bursts/Burning';
-export * from './recents/RecentlyBurned';
 
 export * from './buildups/BuildupChill';
 export * from './bursts/Frosted';
-export * from './recents/RecentlyFrosted';
 
 export * from './buildups/BuildupSneakAttack';
 export * from './bursts/DefensesShattered';
-export * from './recents/RecentlyShattered';
 
 export * from './antibuffs/Stun';
-export * from './recents/RecentlyStunned';
-
 export * from './antibuffs/Snare';
-export * from './recents/RecentlySnared';
-
 export * from './antibuffs/Blind';
 export * from './antibuffs/BlurredVision';
-export * from './recents/RecentlyBlinded';
-
-export * from './recents/RecentlyHasted';
-
 export * from './antibuffs/Debilitate';
-export * from './recents/RecentlyDebilitated';
-
 export * from './antibuffs/Immobilize';
-export * from './recents/RecentlyImmobilized';
 
 export * from './misc/Augury';
 export * from './misc/ConjureHealing';

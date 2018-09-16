@@ -4,7 +4,6 @@ import { clamp } from 'lodash';
 import { SpellEffect } from '../../base/Effect';
 import { Character, StatName } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import { RecentlySnared } from '../recents/RecentlySnared';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Snare extends SpellEffect {
@@ -61,5 +60,19 @@ export class Snare extends SpellEffect {
     const recentlySnared = new RecentlySnared({});
     recentlySnared.cast(char, char);
     this.effectMessage(char, 'The roots disappear.');
+  }
+}
+
+export class RecentlySnared extends SpellEffect {
+
+  iconData = {
+    name: 'light-thorny-triskelion',
+    color: '#000',
+    tooltipDesc: 'Recently snared and cannot be snared for a period.'
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.duration = 10;
+    target.applyEffect(this);
   }
 }
