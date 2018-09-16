@@ -6,6 +6,7 @@ export * from './BarNecro';
 export * from './Blind';
 export * from './Cure';
 export * from './Dispel';
+export * from './HolyAura';
 export * from './HolyFire';
 export * from './Light';
 export * from './PowerwordBarFire';

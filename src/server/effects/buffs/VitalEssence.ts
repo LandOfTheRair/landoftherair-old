@@ -47,8 +47,8 @@ export class VitalEssence extends SpellEffect implements OnHitEffect {
     this.effectMessage(char, 'Your durability fades.');
   }
 
-  onHit(attacker: Character, defender: Character, { damage }) {
-    if(damage <= 0) return;
+  onHit(attacker: Character, defender: Character, opts: { damage: number }) {
+    if(opts.damage <= 0) return;
 
     this.charges--;
     if(this.charges <= 0) defender.unapplyEffect(this);

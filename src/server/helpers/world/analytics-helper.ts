@@ -74,6 +74,8 @@ export class AnalyticsHelper {
   // USES: PLAYER
   public trackKill(dead: Character, killer: Character) {
 
+    if(!dead || !killer) return;
+
     if(dead.isPlayer() && !killer.isPlayer()) {
       this.track(<Player>dead, 'design', { event_id: `${this.getPlayerPrefix(<Player>dead)}:Killed:${(<NPC>killer).npcId}` });
     }

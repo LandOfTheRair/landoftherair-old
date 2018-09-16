@@ -1105,7 +1105,8 @@
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
-            "NecroticFocus7"
+            "NecroticFocus7",
+            "HolyAura"
         ],
         "cluster": 4,
         "unlockedBy": [
@@ -1249,6 +1250,17 @@
         "cluster": 4,
         "unlockedBy": [
             "NecroticFocus3"
+        ]
+    },
+    "HolyAura": {
+        "name": "HolyAura",
+        "desc": "Become invulnerable to damage for a short period of time. Cost: 75 MP",
+        "icon": "aura",
+        "iconColor": "#aa0",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "NecroticFocus6"
         ]
     },
     "HolyFire": {

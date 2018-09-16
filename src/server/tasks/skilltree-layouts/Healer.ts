@@ -316,7 +316,7 @@ const DIVINER_TREE = {
     unlocks: ['NecroticFocus6']
   },
   NecroticFocus6: {
-    unlocks: ['NecroticFocus7']
+    unlocks: ['NecroticFocus7', 'HolyAura']
   },
   NecroticFocus7: {
     unlocks: ['Dispel']
@@ -355,6 +355,10 @@ const DIVINER_TREE = {
 
   Light: {
     unlocks: ['HolyFire', 'HolyAffliction0']
+  },
+
+  HolyAura: {
+
   },
 
   HolyFire: {
