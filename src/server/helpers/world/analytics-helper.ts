@@ -27,7 +27,7 @@ export class AnalyticsHelper {
 
   // CALLED FROM IN GAME
   private userString(player: Player) {
-    return `${player.username}-${player.charSlot}-${player.name}`;
+    return `${player.username}`;
   }
 
   startGameSession(player: Player, ua: string) {
