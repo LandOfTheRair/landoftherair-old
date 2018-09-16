@@ -1,5 +1,5 @@
 
-
+# Healer
 - name: Holy Water
   sprite: 31
   desc: "a bottle of water encased in a holy glow"
@@ -29,3 +29,14 @@
       con: 2
       mpregen: 5
     duration: 1800
+
+# Mage
+- name: Conjured Healing Potion
+  desc: "a small bottle filled with magical healing liquid"
+  extendedDesc: "a healing potion"
+  destroyOnDrop: true
+  sprite: 107
+  effect:
+    name: ExactHeal
+    potency: 0
+  value: 0

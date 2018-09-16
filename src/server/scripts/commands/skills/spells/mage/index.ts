@@ -2,6 +2,7 @@ export * from './Absorption';
 export * from './Asper';
 export * from './BarWater';
 export * from './Combust';
+export * from './ConjureHealing';
 export * from './Drain';
 export * from './EnergyWave';
 export * from './FireMist';

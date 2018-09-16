@@ -338,7 +338,8 @@
         "icon": "plasma-bolt",
         "cost": 3,
         "unlocks": [
-            "Asper"
+            "Asper",
+            "ConjureHealing"
         ],
         "cluster": 1,
         "unlockedBy": [
@@ -534,6 +535,17 @@
         "unlocks": [
             "LingeringAsper0"
         ],
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicFocus5"
+        ]
+    },
+    "ConjureHealing": {
+        "name": "ConjureHealing",
+        "desc": "Create a bottle of bound healing water. Cost: 25 MP",
+        "icon": "brandy-bottle",
+        "iconColor": "#080",
+        "cost": 3,
         "cluster": 1,
         "unlockedBy": [
             "MagicFocus5"

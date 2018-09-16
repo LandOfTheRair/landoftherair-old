@@ -85,7 +85,7 @@ const MAGE_TREE = {
 
   },
   MagicFocus5: {
-    unlocks: ['Asper']
+    unlocks: ['Asper', 'ConjureHealing']
   },
   MagicFocus6: {
 
@@ -133,6 +133,9 @@ const MAGE_TREE = {
   },
   Asper: {
     unlocks: ['LingeringAsper0']
+  },
+  ConjureHealing: {
+    
   }
 };
 
