@@ -9,9 +9,9 @@ import { LootHelper } from '../world/loot-helper';
 
 export class DeathHelper {
 
-  static autoReviveAndUncorpse(player: Player) {
+  static async autoReviveAndUncorpse(player: Player) {
     if(!player.isDead()) return;
-    player.restore(false);
+    await player.restore(false);
   }
 
   static corpseCheck(player, specificCorpse?: Item) {

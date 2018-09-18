@@ -340,10 +340,10 @@ export class GameWorld extends Room<GameState> {
       this.partyManager.leaveParty(player);
     }
 
-    DeathHelper.autoReviveAndUncorpse(player);
+    await DeathHelper.autoReviveAndUncorpse(player);
 
     await this.leaveGameAndSave(player);
-    this.prePlayerMapLeave(player);
+    await this.prePlayerMapLeave(player);
     await this.savePlayer(player);
   }
 
@@ -620,7 +620,7 @@ export class GameWorld extends Room<GameState> {
     const oldPos = { x: player.x, y: player.y };
     player.x = x;
     player.y = y;
-    player.$$room.state.updatePlayerInQuadtree(player, oldPos);
+    this.state.updatePlayerInQuadtree(player, oldPos);
     this.state.calculateFOV(player);
     this.updatePos(player);
   }
@@ -629,18 +629,16 @@ export class GameWorld extends Room<GameState> {
 
     const { newMap, x, y, zChange, zSet } = opts;
 
+    if(!newMap || player.map === newMap) {
+      this.setPlayerXY(player, x, y);
+    }
+
     const client = this.findClient(player);
     if(!client) return;
 
     if(newMap && !this.allMapNames[newMap]) {
       this.sendClientLogMessage(client, `Warning: map "${newMap}" does not exist.`);
       return;
-    }
-
-    if(!newMap || player.map === newMap) {
-      const oldPos = { x: player.x, y: player.y };
-      this.setPlayerXY(player, x, y);
-      this.state.updatePlayerInQuadtree(player, oldPos);
     }
 
     if(zChange) {
@@ -707,9 +705,9 @@ export class GameWorld extends Room<GameState> {
     this.broadcast({ action: 'remove_gitem', x, y, item: this.state.simplifyItem(item) });
   }
 
-  private prePlayerMapLeave(player: Player) {
+  private async prePlayerMapLeave(player: Player) {
     DeathHelper.corpseCheck(player);
-    DeathHelper.autoReviveAndUncorpse(player);
+    await DeathHelper.autoReviveAndUncorpse(player);
     this.doorCheck(player);
     player.z = 0;
   }
