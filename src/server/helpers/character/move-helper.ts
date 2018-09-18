@@ -10,7 +10,6 @@ export class MoveHelper {
 
   static move(player: Character, { room, gameState, x, y }, isChasing = false, recalculateSight = false): boolean {
 
-    console.log('move', x, y, 'moverate', player.getTotalStat('move'));
     if(isUndefined(x) || isUndefined(y)) return;
 
     const moveRate = player.getTotalStat('move');
@@ -74,8 +73,6 @@ export class MoveHelper {
 
     // the first step is always our tile, we should ignore it.
     steps.shift();
-
-    console.log('steps', steps)
 
     if(steps.length > moveRate) {
       steps.length = moveRate;
