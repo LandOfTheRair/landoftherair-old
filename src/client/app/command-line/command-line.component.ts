@@ -1,9 +1,12 @@
 import { Component, Input, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { LocalStorage } from 'ngx-webstorage';
 import { ColyseusGameService } from '../colyseus.game.service';
+import { ColyseusLobbyService } from '../colyseus.lobby.service';
 
 import { environment } from '../../environments/environment';
 import { MacroService } from '../macros.service';
+
+type Mode = 'cmd' | 'say' | 'party' | 'global';
 
 @Component({
   selector: 'app-command-line',
@@ -19,14 +22,32 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   public cmdEntryInput;
 
   @LocalStorage()
-  public isSay: boolean;
+  public cmdMode: Mode;
 
   private listener: any;
   private sendListener: any;
 
   private curIndex = -1;
 
-  constructor(public colyseusGame: ColyseusGameService, public macroService: MacroService) {}
+  public get placeholder(): string {
+    if(this.cmdMode === 'say') return 'Type your message here...';
+    if(this.cmdMode === 'party') return 'Chat to your party here...';
+    if(this.cmdMode === 'global') return 'Type your message to share to lobby here...';
+    if(this.cmdMode === 'cmd') return 'Enter your command here...';
+  }
+
+  public get buttonText(): string {
+    if(this.cmdMode === 'say') return 'Say';
+    if(this.cmdMode === 'party') return 'Party';
+    if(this.cmdMode === 'global') return 'Global';
+    if(this.cmdMode === 'cmd') return 'Cmd';
+  }
+
+  constructor(
+    public colyseusGame: ColyseusGameService, 
+    public colyseusLobby: ColyseusLobbyService,
+    public macroService: MacroService
+  ) {}
 
   ngOnInit() {
     this.listener = (ev) => {
@@ -46,6 +67,8 @@ export class CommandLineComponent implements OnInit, OnDestroy {
     };
 
     document.addEventListener('contextmenu', this.sendListener);
+
+    if(!this.cmdMode) this.cmdMode = 'cmd';
   }
 
   ngOnDestroy() {
@@ -56,8 +79,20 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   sendCommand() {
     if(!this.colyseusGame.currentCommand || !this.colyseusGame.currentCommand.trim()) return;
 
-    if(this.isSay) {
+    if(this.cmdMode === 'say') {
       this.colyseusGame.sendCommandString(`~say ${this.colyseusGame.currentCommand}`);
+      this.colyseusGame.currentCommand = '';
+      return;
+    }
+
+    if(this.cmdMode === 'party') {
+      this.colyseusGame.sendCommandString(`~partysay ${this.colyseusGame.currentCommand}`);
+      this.colyseusGame.currentCommand = '';
+      return;
+    }
+
+    if(this.cmdMode === 'global') {
+      this.colyseusLobby.sendMessage(this.colyseusGame.currentCommand);
       this.colyseusGame.currentCommand = '';
       return;
     }

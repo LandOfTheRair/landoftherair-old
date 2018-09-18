@@ -75,6 +75,19 @@ export class PartyManager {
     this.room.sendMessageToUsernames(map(party.members, 'username'), message);
   }
 
+  public playerSendPartyMessage(player: Player, message: string) {
+    const party = this.parties[player.partyName];
+    if(!party) return;
+
+    console.log(player, message);
+    this.room.sendMessageToUsernames(map(party.members, 'username'), { 
+      name: `[party] ${player.name}`,
+      message, 
+      subClass: 'chatter', 
+      grouping: 'chatter' 
+    });
+  }
+
   public createParty(leader: Player, partyName: string) {
     const leaderMember = new PartyPlayer(leader);
     leader.partyName = partyName;

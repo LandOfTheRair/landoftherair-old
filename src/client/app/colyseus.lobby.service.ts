@@ -10,6 +10,8 @@ import { Account, SilverPurchase } from '../../shared/models/account';
 import { Observable } from 'rxjs/Observable';
 import { merge } from 'lodash';
 
+import { Subject } from 'rxjs/Subject';
+
 @Injectable()
 export class ColyseusLobbyService {
 
@@ -19,6 +21,8 @@ export class ColyseusLobbyService {
   lobbyState: LobbyState = new LobbyState({});
   myAccount: Account = new Account({});
   myCharacter: any = { name: '' };
+
+  public newMessages$ = new Subject<{ account: string, message: string }>();
 
   constructor(private auth: AuthService) {}
 
@@ -146,6 +150,11 @@ export class ColyseusLobbyService {
     if(action === 'set_character')  return this.setCharacter(other.character);
     if(action === 'start_game')     return this.startGame(other.character);
     if(action === 'force_logout')   return this.forceLogout();
+    if(action === 'new_message')    return this.newMessage(other.account, other.message);
+  }
+
+  private newMessage(account: string, message: string) {
+    this.newMessages$.next({ account, message });
   }
 
   public updateAccount() {

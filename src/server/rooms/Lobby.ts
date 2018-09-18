@@ -266,6 +266,8 @@ export class Lobby extends Room<LobbyState> {
     if(source !== 'discord') {
       this.sendDiscordMessage(account, message);
     }
+
+    this.broadcast({ action: 'new_message', account, message });
   }
 
   private viewCharacter(client, data) {

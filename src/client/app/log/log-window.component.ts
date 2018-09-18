@@ -27,6 +27,7 @@ export class LogWindowComponent implements OnInit, OnDestroy {
   public allLogItems: any[] = [];
 
   private log$: any;
+  private globalMsg$: any;
 
   public get clientGameState() {
     return this.colyseus.game.clientGameState;
@@ -43,13 +44,25 @@ export class LogWindowComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if(!this.filters) this.filters = { combat: true, env: true, chatter: true };
     this.log$ = this.clientGameState.logMessages$.subscribe(data => this.addLogItem(data));
+    this.globalMsg$ = this.colyseus.lobby.newMessages$.subscribe(data => this.addGlobalMessage(data));
   }
 
   ngOnDestroy() {
     this.log$.unsubscribe();
+    this.globalMsg$.unsubscribe();
+  }
+
+  private addGlobalMessage({ account, message }) {
+    this.addLogItem({
+      name: `[global] ${account}`,
+      message,
+      subClass: 'chatter',
+      grouping: 'chatter'
+    });
   }
 
   private addLogItem(data) {
+    console.log(data);
     this.allLogItems.push(data);
     if(this.allLogItems.length > 500) this.allLogItems.shift();
 
