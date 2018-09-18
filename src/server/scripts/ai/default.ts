@@ -6,6 +6,7 @@ import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
+import { MoveHelper } from '../../helpers/character/move-helper';
 
 export class DefaultAIBehavior {
 
@@ -59,6 +60,44 @@ export class DefaultAIBehavior {
     return sample(allies.filter(ally => CommandExecutor.checkIfCanUseSkill(skill, npc, ally)));
   }
 
+  private moveTowardsSimple(npc: NPC, target: { x: number, y: number }, moveRate) {
+    const oldX = npc.x;
+    const oldY = npc.y;
+
+    const steps = [];
+    let stepdiffX = clamp(target.x - npc.x, -moveRate, moveRate);
+    let stepdiffY = clamp(target.y - npc.y, -moveRate, moveRate);
+
+    for(let curStep = 0; curStep < moveRate; curStep++) {
+      const step = { x: 0, y: 0 };
+
+      if(stepdiffX < 0) {
+        step.x = -1;
+        stepdiffX++;
+      } else if(stepdiffX > 0) {
+        step.x = 1;
+        stepdiffX--;
+      }
+
+      if(stepdiffY < 0) {
+        step.y = -1;
+        stepdiffY++;
+      } else if(stepdiffY > 0) {
+        step.y = 1;
+        stepdiffY--;
+      }
+
+      steps[curStep] = step;
+
+    }
+
+    npc.takeSequenceOfSteps(steps, true);
+    const diffX = npc.x - oldX;
+    const diffY = npc.y - oldY;
+
+    return { xChange: diffX, yChange: diffY };
+  }
+
   public tick(canMove: boolean, amINearAPlayer?: boolean) {
 
     const npc = this.npc;
@@ -108,7 +147,6 @@ export class DefaultAIBehavior {
     }
 
     let chosenSkill: Skill = null;
-    let chosenSkillFriendly = false;
 
     let isThrowing = false;
 
@@ -132,7 +170,6 @@ export class DefaultAIBehavior {
         const newTarget = this.findValidAllyInView(skillRef, skill);
         if(!newTarget) return;
 
-        chosenSkillFriendly = true;
         currentTarget = newTarget;
         chosenSkill = skillRef;
         return;
@@ -149,7 +186,7 @@ export class DefaultAIBehavior {
     // we have a target
     if(highestAgro) {
 
-      if(npc.path) npc.$$pathDisrupted = true;
+      if(npc.path && !npc.$$pathDisrupted) npc.$$pathDisrupted = { x: npc.x, y: npc.y };
 
       // use a skill that can hit the target
       if(chosenSkill) {
@@ -160,65 +197,49 @@ export class DefaultAIBehavior {
 
         // either move towards target
       } else if(canMove) {
-        const oldX = npc.x;
-        const oldY = npc.y;
-
-        const steps = [];
-        let stepdiffX = clamp(highestAgro.x - npc.x, -moveRate, moveRate);
-        let stepdiffY = clamp(highestAgro.y - npc.y, -moveRate, moveRate);
-
-        for(let curStep = 0; curStep < moveRate; curStep++) {
-          const step = { x: 0, y: 0 };
-
-          if(stepdiffX < 0) {
-            step.x = -1;
-            stepdiffX++;
-          } else if(stepdiffX > 0) {
-            step.x = 1;
-            stepdiffX--;
-          }
-
-          if(stepdiffY < 0) {
-            step.y = -1;
-            stepdiffY++;
-          } else if(stepdiffY > 0) {
-            step.y = 1;
-            stepdiffY--;
-          }
-
-          steps[curStep] = step;
-
-        }
-
-        npc.takeSequenceOfSteps(steps, true);
-        diffX = npc.x - oldX;
-        diffY = npc.y - oldY;
+        const { xChange, yChange } = this.moveTowardsSimple(npc, highestAgro, moveRate);
+        diffX = xChange;
+        diffY = yChange;
       }
 
       // we have a path
     } else if(canMove && npc.path && npc.path.length > 0) {
+
+      let hasMovedAfterPathDisruption = false;
+
       if(npc.$$pathDisrupted) {
-        npc.$$pathDisrupted = false;
-        npc.resetAgro(true);
-        npc.x = npc.spawner.x;
-        npc.y = npc.spawner.y;
-        npc.spawner.assignPath(npc);
+
+        if(npc.x === npc.$$pathDisrupted.x && npc.y === npc.$$pathDisrupted.y) {
+          npc.$$pathDisrupted = null;
+
+        } else {
+          const didMoveHappen = MoveHelper.move(npc, {
+            x: npc.$$pathDisrupted.x - npc.x,
+            y: npc.$$pathDisrupted.y - npc.y,
+            room: npc.$$room,
+            gameState: npc.$$room.state
+          });
+
+          if(didMoveHappen) hasMovedAfterPathDisruption = true;
+        }
       }
 
-      const steps = [];
-
-      for(let i = 0; i < numSteps; i++) {
-        const step = npc.path.shift();
-        diffX += step.x;
-        diffY += step.y;
-
-        steps.push(step);
-      }
-
-      npc.takeSequenceOfSteps(steps);
-
-      if(!npc.path.length) {
-        npc.spawner.assignPath(npc);
+      if(!hasMovedAfterPathDisruption && !npc.$$pathDisrupted) {
+        const steps = [];
+  
+        for(let i = 0; i < numSteps; i++) {
+          const step = npc.path.shift();
+          diffX += step.x;
+          diffY += step.y;
+  
+          steps.push(step);
+        }
+  
+        npc.takeSequenceOfSteps(steps);
+  
+        if(!npc.path.length) {
+          npc.spawner.assignPath(npc);
+        }
       }
 
       // we wander
@@ -238,7 +259,7 @@ export class DefaultAIBehavior {
 
 
     // change dir
-    npc.setDirBasedOnXYDiff(diffX, diffY);
+    if(diffX || diffY) npc.setDirBasedOnXYDiff(diffX, diffY);
 
 
     // check if should leash
@@ -246,7 +267,7 @@ export class DefaultAIBehavior {
 
     // if we have no path AND no target and its out of the random walk radius, or we're past the leash radius, we leash
 
-    const noLeash = !npc.path || npc.$$pathDisrupted;
+    const noLeash = !npc.path;
 
     if(noLeash
       && ((!currentTarget && distFrom > npc.spawner.randomWalkRadius)
