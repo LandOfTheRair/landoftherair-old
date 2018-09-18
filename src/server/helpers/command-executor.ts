@@ -58,7 +58,6 @@ export class CommandExecutor {
     const { wasSuccess } = await this._queueCommand(player, command, args);
 
     // explicit check
-    console.log(wasSuccess, player.isDead())
     if(wasSuccess === false && !player.isDead()) {
       player.sendClientMessage(`Command "${command}" is invalid.`);
     }
