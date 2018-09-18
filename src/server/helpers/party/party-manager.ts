@@ -79,7 +79,6 @@ export class PartyManager {
     const party = this.parties[player.partyName];
     if(!party) return;
 
-    console.log(player, message);
     this.room.sendMessageToUsernames(map(party.members, 'username'), { 
       name: `[party] ${player.name}`,
       message, 
