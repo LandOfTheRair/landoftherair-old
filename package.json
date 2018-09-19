@@ -62,7 +62,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/seiyria/kod-prototype.git"
+    "url": "git+https://github.com/landoftherair/landoftherair.git"
   },
   "engines": {
     "node": "8.6.0"
@@ -70,9 +70,9 @@
   "author": "Kyle Kemp <kyle@seiyria.com>",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/seiyria/kod-prototype/issues"
+    "url": "https://github.com/landoftherair/landoftherair/issues"
   },
-  "homepage": "https://github.com/seiyria/kod-prototype#readme",
+  "homepage": "https://github.com/landoftherair/landoftherair#readme",
   "dependencies": {
     "@angular/common": "^5.2.6",
     "@angular/compiler": "^5.2.6",
