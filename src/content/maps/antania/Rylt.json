@@ -5881,6 +5881,26 @@
                  "width":64,
                  "x":5312,
                  "y":2496
+                }, 
+                {
+                 "gid":2637,
+                 "height":64,
+                 "id":1251,
+                 "name":"Jona",
+                 "properties":
+                    {
+                     "script":"antania\/rylt\/jona"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7616,
+                 "y":6784
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -10377,7 +10397,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1251,
+ "nextobjectid":1252,
  "orientation":"orthogonal",
  "properties":
     {
@@ -10400,7 +10420,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.4",
+ "tiledversion":"1.1.5",
  "tileheight":64,
  "tilesets":[
         {

@@ -4,6 +4,7 @@ export * from './antania/Rylt/LearnAlchemy';
 export * from './antania/Rylt/DailyKillApprentices';
 export * from './antania/Rylt/DailyKillRebels';
 export * from './antania/Rylt/DailyKillRenegades';
+export * from './antania/rylt/RenegadeFeathers';
 
 export * from './antania/Yzalt/KillSteffen';
 export * from './antania/Yzalt/KillHeniz';

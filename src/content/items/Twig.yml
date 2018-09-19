@@ -5,6 +5,14 @@
   binds: true
   destroyOnDrop: true
 
+- name: Renegade Feather
+  sprite: 116
+  desc: "a pink feather taken from a renegade"
+  sellValue: 500
+  binds: true
+  requirements:
+    quest: RenegadeFeathers
+
 - name: Antanian Twig
   sprite: 222
   desc: "a twig taken from an Antanian tree"

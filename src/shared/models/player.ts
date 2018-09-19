@@ -598,7 +598,11 @@ export class Player extends Character {
   }
 
   hasQuest(quest: Quest): boolean {
-    return get(this.activeQuests, quest.name, false);
+    return this.hasQuestName(quest.name);
+  }
+
+  hasQuestName(questName: string): boolean {
+    return get(this.activeQuests, questName, false);
   }
 
   hasPermanentCompletionFor(questName: string): boolean {
@@ -655,6 +659,13 @@ export class Player extends Character {
   removeQuest(quest: Quest) {
     delete this.questProgress[quest.name];
     delete this.activeQuests[quest.name];
+  }
+
+  canTakeItem(item: Item): boolean {
+    if(!item.requirements) return true;
+    if(!item.requirements.quest) return true;
+    
+    return this.hasQuestName(item.requirements.quest);
   }
 
   public decreaseTraitLevel(trait: string, levelsLost: number) {

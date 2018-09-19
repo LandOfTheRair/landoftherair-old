@@ -15,6 +15,7 @@ export class GroundToLocker extends Command {
     const [itemType, itemId, lockerId] = splitArgs;
     const item = this.getItemFromGround(player, itemType, itemId);
     if(!item) return;
+    if(!this.takeItemCheck(player, item)) return;
 
     this.accessLocker(player);
 

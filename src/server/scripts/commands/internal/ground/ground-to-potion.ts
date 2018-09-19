@@ -25,6 +25,7 @@ export class GroundToPotion extends Command {
     }
 
     if(!item) return;
+    if(!this.takeItemCheck(player, item)) return;
 
     if(item.itemClass !== 'Bottle') return player.sendClientMessage('That item is not a bottle.');
 

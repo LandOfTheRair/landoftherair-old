@@ -112,6 +112,9 @@
     - result: Rylt Renegade Book
       chance: 1
       maxChance: 500
+    - result: Renegade Feather
+      chance: 1
+      maxChance: 15
 
 
 - npcId: Rylt Renegade Mage
@@ -165,6 +168,9 @@
     - result: Rylt Renegade Book
       chance: 1
       maxChance: 200
+    - result: Renegade Feather
+      chance: 1
+      maxChance: 15
 
 - npcId: Rylt Renegade Healer
   name: renegade
@@ -217,6 +223,9 @@
     - result: Rylt Renegade Book
       chance: 1
       maxChance: 200
+    - result: Renegade Feather
+      chance: 1
+      maxChance: 15
 
 - npcId: Rylt Renegade Leader
   name: leader
@@ -274,6 +283,9 @@
     - result: Rylt Renegade Book
       chance: 1
       maxChance: 450
+    - result: Renegade Feather
+      chance: 1
+      maxChance: 7
 
   copyDrops:
     - drop: 'rightHand'
@@ -350,6 +362,9 @@
     - result: Rylt Renegade Book
       chance: 1
       maxChance: 400
+    - result: Renegade Feather
+      chance: 1
+      maxChance: 1
 
   copyDrops:
     - drop: 'rightHand'

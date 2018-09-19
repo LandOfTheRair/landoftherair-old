@@ -20,6 +20,7 @@ export class GroundToSack extends Command {
       const item = this.getItemFromGround(player, itemType, itemId);
       if(!item) return;
 
+      if(!this.takeItemCheck(player, item)) return;
       if(!player.addItemToSack(item)) return;
       room.removeItemFromGround(item);
 
@@ -28,6 +29,7 @@ export class GroundToSack extends Command {
       if(!items) return;
 
       each(items, item => {
+        if(!this.takeItemCheck(player, item)) return false;
         if(!player.addItemToSack(item)) return false;
         room.removeItemFromGround(item);
       });

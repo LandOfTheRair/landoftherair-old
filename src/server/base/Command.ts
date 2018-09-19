@@ -104,4 +104,13 @@ export abstract class Command {
   isAccessingLocker(player: Player) {
     return player.$$isAccessingLocker;
   }
+
+  takeItemCheck(player: Player, item: Item): boolean {
+    if(!player.canTakeItem(item)) {
+      player.sendClientMessage('You don\'t need that item right now.');
+      return false;
+    }
+
+    return true;
+  }
 }

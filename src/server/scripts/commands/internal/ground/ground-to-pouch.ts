@@ -20,6 +20,7 @@ export class GroundToPouch extends Command {
       const item = this.getItemFromGround(player, itemType, itemId);
       if(!item) return;
 
+      if(!this.takeItemCheck(player, item)) return;
       if(!player.addItemToPouch(item)) return;
       room.removeItemFromGround(item);
 
@@ -28,6 +29,7 @@ export class GroundToPouch extends Command {
       if(!items) return;
 
       each(items, item => {
+        if(!this.takeItemCheck(player, item)) return false;
         if(!player.addItemToPouch(item)) return false;
         room.removeItemFromGround(item);
       });

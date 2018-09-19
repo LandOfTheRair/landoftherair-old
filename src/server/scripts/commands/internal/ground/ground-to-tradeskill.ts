@@ -22,6 +22,7 @@ export class GroundToTradeskill extends Command {
 
     const item = this.getItemFromGround(player, itemType, itemId);
     if(!item) return false;
+    if(!this.takeItemCheck(player, item)) return false;
 
     const added = this.addItemToContainer(player, player.tradeSkillContainers[tsSlot], item, +tsDestSlot);
     if(!added) return;

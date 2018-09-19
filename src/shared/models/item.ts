@@ -108,6 +108,7 @@ export class ItemRequirements {
   level?: number;
   profession?: string[];
   alignment?: Alignment;
+  quest?: string;
   skill?: { name: string, level: number };
 }
 

@@ -1,5 +1,5 @@
 
-import { isObject, cloneDeep, find, get, set, clone, pull, merge } from 'lodash';
+import { isObject, cloneDeep, find, get, set, clone, pull, merge, pullAll } from 'lodash';
 
 import { Parser } from 'mingy';
 
@@ -912,17 +912,39 @@ export class GameWorld extends Room<GameState> {
   dropCorpseItems(corpse: Item, searcher?: Player) {
     if(!corpse || !corpse.searchItems) return;
 
+    const removedItems = [];
+
+    const removeItemFromCorpse = (item) => {
+      this.addItemToGround(corpse, item);
+      removedItems.push(item);
+    };
+
     corpse.searchItems.forEach(item => {
       if(searcher && item.itemClass === 'Coin') {
         searcher.earnGold(item.value, 'Game:SearchCorpse');
         searcher.sendClientMessage(`You loot ${item.value} gold coins from the corpse.`);
+        removedItems.push(item);
 
       } else {
-        this.addItemToGround(corpse, item);
+
+        const requiredQuest = get(item, 'requirements.quest');
+        if(requiredQuest) {
+          if(searcher 
+          && searcher.hasQuestName(requiredQuest)
+          && !searcher.hasPermanentCompletionFor(requiredQuest)) removeItemFromCorpse(item);
+
+        } else {
+          removeItemFromCorpse(item);
+        }
+        
       }
     });
 
-    corpse.searchItems = null;
+    pullAll(corpse.searchItems, removedItems);
+
+    if(corpse.searchItems.length === 0) {
+      corpse.searchItems = null;
+    }
 
     if(corpse.x && corpse.y) {
       this.broadcast({ action: 'update_gitem', x: corpse.x, y: corpse.y, item: this.state.simplifyItem(corpse) });

@@ -24,6 +24,7 @@ export class GroundToEquip extends Command {
       item = items[0];
     }
 
+    if(!this.takeItemCheck(player, item)) return;
     if(!player.canEquip(item)) return player.sendClientMessage('You cannot equip that item.');
 
     player.equip(item);
