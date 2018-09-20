@@ -55,6 +55,7 @@ export class Game {
   // groups
   private itemsOnGround: any;
   private otherEnvironmentalObjects: any;
+  private doorTops: any;
   private visibleNPCs: any;
   private otherPlayerSprites: any;
   private vfx: any;
@@ -175,6 +176,10 @@ export class Game {
 
     if(this.otherEnvironmentalObjects) {
       this.otherEnvironmentalObjects.destroy();
+    }
+
+    if(this.doorTops) {
+      this.doorTops.destroy();
     }
 
     if(this.visibleNPCs) {
@@ -577,6 +582,7 @@ export class Game {
     this.itemsOnGround = this.g.add.group();
 
     this.groups.Interactables = this.g.add.group();
+    this.doorTops = this.g.add.group();
 
     this.otherEnvironmentalObjects = this.g.add.group();
     this.vfx = this.g.add.group();
@@ -887,6 +893,7 @@ export class Game {
         if(obj.type === 'Door' && VerticalDoorGids[sprite._baseFrame]) {
           const doorTopSprite = this.g.add.sprite(obj.x, obj.y - 128, cacheKey(this.clientGameState.mapName, 'tileset', tileSet), obj.gid - firstGid + 2);
           doorTopSprite.visible = false;
+          this.doorTops.add(doorTopSprite);
           sprite._doorTopSprite = doorTopSprite;
         }
 
