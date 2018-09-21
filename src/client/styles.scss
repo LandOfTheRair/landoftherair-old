@@ -84,12 +84,16 @@ body.no-fantasy {
 // THEME SPECIFIC ADJUSTMENTS
 
 body {
+
+  $background-dark: rgba(50, 50, 50, 0.1);
+  $background-light: rgba(200, 200, 200, 0.1);
+
   background-color: #8c3310;
   background-image:
-    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-    linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
-    linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+    repeating-linear-gradient(120deg, $background-light, $background-light 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(60deg, $background-light, $background-light 1px, transparent 1px, transparent 60px),
+    linear-gradient(60deg, $background-dark 15%, transparent 15%, transparent 85%, $background-dark 85%, $background-dark),
+    linear-gradient(120deg, $background-dark 15%, transparent 15%, transparent 85%, $background-dark 85%, $background-dark);
   background-size: 70px 120px;
   background-attachment: fixed;
   overflow: visible;
