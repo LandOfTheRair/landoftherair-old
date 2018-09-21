@@ -26325,6 +26325,292 @@
                  "width":64,
                  "x":2944,
                  "y":9216
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6032,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":12416,
+                 "y":12480
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6033,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":12416,
+                 "y":11200
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6034,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":12288,
+                 "y":10880
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6035,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":11392,
+                 "y":10688
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6036,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":11264,
+                 "y":11072
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6037,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10048,
+                 "y":11008
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6038,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9664,
+                 "y":9856
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6039,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8448,
+                 "y":11776
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6040,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9152,
+                 "y":12352
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6041,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8448,
+                 "y":8128
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6042,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":9664,
+                 "y":6400
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6043,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10752,
+                 "y":6400
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":6044,
+                 "name":"Titanium Spawner",
+                 "properties":
+                    {
+                     "resourceName":"Dedlaen Titanium Node",
+                     "script":"global\/single-resource"
+                    },
+                 "propertytypes":
+                    {
+                     "resourceName":"string",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":12288,
+                 "y":7424
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -27869,7 +28155,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":6031,
+ "nextobjectid":6045,
  "orientation":"orthogonal",
  "properties":
     {
@@ -27898,7 +28184,7 @@
      "script":"string"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.4",
+ "tiledversion":"1.1.5",
  "tileheight":64,
  "tilesets":[
         {

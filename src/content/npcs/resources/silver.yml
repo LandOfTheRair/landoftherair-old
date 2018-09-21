@@ -4,7 +4,7 @@
   name: silver vein
   hostility: OnHit
   allegiance: NaturalResource
-  sprite: 1845
+  sprite: 1840
   alignment: Neutral
   stats: 1
   skillLevels: 1
@@ -51,7 +51,7 @@
   name: rich silver vein
   hostility: OnHit
   allegiance: NaturalResource
-  sprite: 1845
+  sprite: 1840
   alignment: Neutral
   stats: 1
   skillLevels: 1
