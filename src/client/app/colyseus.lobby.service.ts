@@ -23,6 +23,7 @@ export class ColyseusLobbyService {
   myAccount: Account = new Account({});
   myCharacter: any = { name: '' };
 
+  public myAccount$ = new BehaviorSubject<Account>(new Account({}));
   public tour$ = new BehaviorSubject<boolean>(false);
   public newMessages$ = new Subject<{ account: string, message: string }>();
 
@@ -112,6 +113,7 @@ export class ColyseusLobbyService {
 
   private setAccount(account) {
     merge(this.myAccount, account);
+    this.myAccount$.next(account);
   }
 
   private setCharacter(character) {

@@ -646,9 +646,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   startLobbyTour() {
-    console.log('test')
     setTimeout(() => {
-      console.log(this.lobbyTour)
       this.lobbyTour.start();
     });
   }
