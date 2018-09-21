@@ -7,7 +7,7 @@ export class Swap extends Command {
   public name = 'swap';
   public format = '';
 
-  async execute(player: Player, { args }) {
+  async execute(player: Player) {
     if(this.isAccessingLocker(player)) return;
     const left = player.leftHand;
     const right = player.rightHand;

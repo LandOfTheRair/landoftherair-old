@@ -140,7 +140,7 @@ export class CombatHelper {
     const maxSkill = attacker.$$room.maxSkill;
 
     const diff = maxSkill - curSkill;
-    let pctChance = diff <= 0 ? 50 : 50 - (Math.min(diff, 4) * 10);
+    const pctChance = diff <= 0 ? 50 : 50 - (Math.min(diff, 4) * 10);
 
     const sackItems = defender.sack.allItems;
 

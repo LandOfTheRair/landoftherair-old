@@ -12,7 +12,7 @@ export class Tan extends Command {
   public name = 'tan';
   public format = '';
 
-  async execute(player: Player, { room, args }) {
+  async execute(player: Player) {
 
     const ground = player.$$room.state.getGroundItems(player.x, player.y);
     if(!ground.Corpse || !ground.Corpse.length) return player.sendClientMessage('There are no corpses here!');
@@ -46,7 +46,7 @@ export class Tan extends Command {
       const diff = maxSkill - curSkill;
 
       // 5 skills below or worse - 0% chance to tan. 5 skills above or better - 100% chance to tan
-      let pctChance = Math.abs(clamp(diff, -5, 5) - 5) * 10;
+      const pctChance = Math.abs(clamp(diff, -5, 5) - 5) * 10;
 
       if(RollerHelper.XInOneHundred(pctChance)) {
         player.$$room.npcLoader.loadItem(corpse.tansFor)
