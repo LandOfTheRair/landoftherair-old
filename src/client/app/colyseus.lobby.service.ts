@@ -11,6 +11,7 @@ import { Observable } from 'rxjs/Observable';
 import { merge } from 'lodash';
 
 import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class ColyseusLobbyService {
@@ -22,6 +23,7 @@ export class ColyseusLobbyService {
   myAccount: Account = new Account({});
   myCharacter: any = { name: '' };
 
+  public tour$ = new BehaviorSubject<boolean>(false);
   public newMessages$ = new Subject<{ account: string, message: string }>();
 
   constructor(private auth: AuthService) {}

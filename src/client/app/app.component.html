@@ -1390,6 +1390,44 @@
   <a href="http://rair.land/docs/subscriber-benefits/" target="_blank">Click this link to see all the awesome perks of subscribing!</a>
 </div>
 
+<ng-walkthrough-flow #lobbyTour
+                     focusBackdrop="true"
+                     focusHighlightAnimation="true"
+                     closeButton="true"
+                     closeAnywhere="false"
+                     arrowColor="#fff"
+                     showArrow="true"
+                     radius="5px">
+
+  <ng-walkthrough
+    [focusElementSelector]="null"
+    [contentTemplate]="startLobbyFlow">
+    <ng-template #startLobbyFlow>
+      <h4 class="text-center">Welcome to the Lobby!</h4>
+      This is a brief guided tour of the UI to get you on your way. This is very quick, please read it if you're a new user!
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#characterSelect"
+    [contentTemplate]="characterSelectFlow">
+    <ng-template #characterSelectFlow>
+      <h4 class="text-center">Character Select</h4>
+      This is the character select window. Here, you can create new characters by hitting "Create" and then joining the actual game by hitting "Play" - pretty simple!
+    </ng-template>
+  </ng-walkthrough>
+
+  <ng-walkthrough
+    focusElementSelector="#lobby"
+    [contentTemplate]="lobbyFlow">
+    <ng-template #lobbyFlow>
+      <h4 class="text-center">The Lobby Window</h4>
+      This is the lobby window. You can chat with other players here. If you don't see many players online, don't worry! The game should be connected to discord, as well, so you can still get help if you're stuck.
+    </ng-template>
+  </ng-walkthrough>
+
+</ng-walkthrough-flow>
+
 <ng-walkthrough-flow #tour
                      focusBackdrop="true"
                      focusHighlightAnimation="true"

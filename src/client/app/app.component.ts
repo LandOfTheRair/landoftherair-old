@@ -55,6 +55,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('tour')
   private tour;
 
+  @ViewChild('lobbyTour')
+  private lobbyTour;
+
   // general utility w/ macros
   public macroArray = Array(10).fill(null).map((x, i) => i);
 
@@ -633,11 +636,20 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   private watchForTour() {
     this.colyseus.game.tour$.subscribe(() => this.startTour());
+    this.colyseus.lobby.tour$.subscribe((val) => val && this.startLobbyTour());
   }
 
   startTour() {
     setTimeout(() => {
       this.tour.start();
+    });
+  }
+
+  startLobbyTour() {
+    console.log('test')
+    setTimeout(() => {
+      console.log(this.lobbyTour)
+      this.lobbyTour.start();
     });
   }
 

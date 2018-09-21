@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ColyseusLobbyService } from '../colyseus.lobby.service';
 
-import { truncate, capitalize } from 'lodash';
+import { truncate, capitalize, some } from 'lodash';
 import { LocalStorage } from 'ngx-webstorage';
 import { ColyseusGameService } from '../colyseus.game.service';
 
@@ -38,6 +38,7 @@ export class CharacterSelectComponent implements OnInit {
 
   ngOnInit() {
     if(!this.curSlot) this.curSlot = 0;
+    if(!some(this.lobby.myAccount.characterNames)) this.lobby.tour$.next(true);
   }
 
   getCharacter() {
