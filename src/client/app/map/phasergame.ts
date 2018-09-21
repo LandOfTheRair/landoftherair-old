@@ -712,7 +712,9 @@ export class Game {
     return get(this.colyseus.game.clientGameState.fov, [x, y]);
   }
 
-  private updateFOV() {
+  private updateFOV() { 
+    const isPlayerInHash = this.playerSpriteHash[this.player.username];
+
     for(let x = -4; x <= 4; x++) {
       for(let y = -4; y <= 4; y++) {
         const fovState = this.shouldRenderXY(x, y);
@@ -721,6 +723,11 @@ export class Game {
         fovSprite.scale.set(1, 1);
         fovSprite.cameraOffset.x = 64 * (x + 4);
         fovSprite.cameraOffset.y = 64 * (y + 4);
+
+        if(!isPlayerInHash) {
+          fovSprite.alpha = 1;
+          continue;
+        }
 
         // tile effects
         if(this.isDarkAt(x, y)) {
