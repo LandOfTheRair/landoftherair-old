@@ -22,7 +22,6 @@ export class SingleResourceSpawner extends Spawner {
     }, properties);
 
     spawnerProps.npcIds = [properties.resourceName];
-    console.log(properties.resourceName)
 
     super(room, opts, spawnerProps);
   }
