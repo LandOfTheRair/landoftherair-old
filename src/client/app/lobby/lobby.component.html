@@ -43,9 +43,9 @@
           <button class="btn form-control no-border-radius dropdown-toggle border-top-button"
                   dropdownToggle
                   type="button"
-                  [class.btn-success]="lobby.myAccount.status === 'Available'"
-                  [class.btn-secondary]="lobby.myAccount.status === 'AFK'"
-                  [disabled]="!lobby.colyseus.isConnected">{{ lobby.myAccount.status }} <span class="caret"></span></button>
+                  [class.btn-success]="lobby.lobbyState.status[lobby.myAccount.username] === 'Available'"
+                  [class.btn-secondary]="lobby.lobbyState.status[lobby.myAccount.username] === 'AFK'"
+                  [disabled]="!lobby.colyseus.isConnected">{{ lobby.lobbyState.status[lobby.myAccount.username] }} <span class="caret"></span></button>
 
           <ul *dropdownMenu class="dropdown-menu">
             <li role="menuitem"><a class="dropdown-item" (click)="lobby.changeStatus('Available')">Available</a></li>
