@@ -1,0 +1,28 @@
+
+
+- npcId: Dedlaen Titanium Node
+  name: titanium chunk
+  hostility: OnHit
+  allegiance: NaturalResource
+  sprite: 1840
+  alignment: Neutral
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  skillOnKill: 1
+
+  hp:
+    min: 6
+    max: 10
+
+  giveXp:
+    min: 100
+    max: 150
+
+  gear:
+    Armor: Tower Titanium Chunk
+
+  drops:
+    - result: Tower Titanium Chunk
+      chance: -1
