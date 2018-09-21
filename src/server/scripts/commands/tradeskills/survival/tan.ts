@@ -56,8 +56,11 @@ export class Tan extends Command {
           });
   
         player.sendClientMessage(`You successfully tanned ${corpse.desc}!`);
+        player.gainSkill(SkillClassNames.Survival, 10);
+
       } else {
         player.sendClientMessage(`You failed to tan ${corpse.desc}.`);
+        player.gainSkill(SkillClassNames.Survival, 3);
       }
     });
   }
