@@ -13,12 +13,16 @@ import { ColyseusService } from './colyseus.service';
     nav {
       max-height: 56px;
     }
+
+    .navbar-brand {
+      color: #ccc !important;
+    }
   `],
   template: `
     <nav class="navbar navbar-expand-lg navbar-light bg-faded">
       <a class="navbar-brand">
-        <span>Land of the Rair</span>
-        <span *ngIf="colyseus.lobby.myAccount.username">- {{ colyseus.lobby.myAccount.username }}</span>
+        <img src="android-chrome-512x512.png" width="48" height="48" alt="">
+        <span *ngIf="colyseus.lobby.myAccount.username">{{ colyseus.lobby.myAccount.username }}</span>
       </a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
