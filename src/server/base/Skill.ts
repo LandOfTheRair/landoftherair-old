@@ -144,10 +144,6 @@ export abstract class Skill extends Command {
     return target;
   }
 
-  getDirectionalTarget(user: Character, args: string) {
-
-  }
-
   async facilitateSteal(user: Character, target: Character) {
 
     if(target.sack.allItems.length === 0 && target.gold <= 0) {

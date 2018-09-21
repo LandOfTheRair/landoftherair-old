@@ -1,5 +1,5 @@
 
-export const VALID_TRADESKILLS = ['Alchemy', 'Spellforging', 'Metalworking'];
+export const VALID_TRADESKILLS = ['Alchemy', 'Spellforging', 'Metalworking', 'Survival'];
 export const VALID_TRADESKILLS_HASH = {};
 
 VALID_TRADESKILLS.forEach(skill => {

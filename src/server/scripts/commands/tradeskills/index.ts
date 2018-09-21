@@ -7,3 +7,5 @@ export * from './metalworking/upgrade';
 export * from './spellforging/disenchant';
 export * from './spellforging/enchant';
 export * from './spellforging/forge';
+
+export * from './survival/tan';

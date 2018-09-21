@@ -1,5 +1,5 @@
 
-import { includes, random, capitalize, get, clamp, cloneDeep } from 'lodash';
+import { includes, random, capitalize, get, clamp, cloneDeep, sample } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../../shared/models/character';
 import { ShieldClasses, Item, WeaponClasses, ItemEffect, HandsClasses, DamageType } from '../../../shared/models/item';
@@ -133,6 +133,23 @@ export class CombatHelper {
       const stun = new Effects.Stun({ shouldNotShowMessage: true });
       stun.cast(attacker, defender);
     }
+  }
+
+  private static attemptToIncreaseResourceDrops(attacker: Character, defender: Character) {
+    const curSkill = attacker.calcSkillLevel(SkillClassNames.Survival);
+    const maxSkill = attacker.$$room.maxSkill;
+
+    const diff = maxSkill - curSkill;
+    let pctChance = diff <= 0 ? 50 : 50 - (Math.min(diff, 4) * 10);
+
+    const sackItems = defender.sack.allItems;
+
+    if(!RollerHelper.XInOneHundred(pctChance) || sackItems.length === 0) return;
+    attacker.sendClientMessage('Your survival knowledge helped you find more items!');
+
+    const randomItem = sample(sackItems);
+    const copiedItem = attacker.$$room.itemCreator.duplicateItem(randomItem);
+    defender.sack.addItem(copiedItem);
   }
 
   static isShield(item) {
@@ -1064,6 +1081,11 @@ export class CombatHelper {
         }
 
         defender.die(attacker);
+
+        if(defender.isNaturalResource) {
+          attacker.gainSkill(SkillClassNames.Survival, attacker.$$room.maxSkill);
+          this.attemptToIncreaseResourceDrops(attacker, defender);
+        }
 
       } else {
         defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' }, 5, [defender.uuid]);

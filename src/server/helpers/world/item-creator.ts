@@ -123,4 +123,8 @@ export class ItemCreator {
   hasItemExpired(item: Item) {
     return Date.now() > item.expiresAt;
   }
+
+  duplicateItem(item: Item) {
+    return new Item(item, { doRegenerate: true });
+  }
 }

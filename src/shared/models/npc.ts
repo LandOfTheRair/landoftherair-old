@@ -210,9 +210,9 @@ export class NPC extends Character {
       this.$$ai.death.dispatch(killer);
     }
 
-    await DeathHelper.calculateLootDrops(this, killer);
-
     if(killer) {
+
+      this.addAgro(killer, 1);
 
       const giveXp = this.giveXp || { min: 1, max: 10 };
       const givenXp = random(giveXp.min, giveXp.max);
@@ -230,6 +230,8 @@ export class NPC extends Character {
         killer.gainExpFromKills(this.$$room.calcAdjustedXPGain(givenXp));
       }
     }
+
+    await DeathHelper.calculateLootDrops(this, killer);
   }
 
   restore() {

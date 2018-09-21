@@ -75,7 +75,8 @@ export const SkillClassNames = {
 
   Alchemy: 'Alchemy',
   Spellforging: 'Spellforging',
-  Metalworking: 'Metalworking'
+  Metalworking: 'Metalworking',
+  Survival: 'Survival'
 };
 
 export class Skills {
@@ -101,6 +102,7 @@ export class Skills {
   alchemy = 0;
   spellforging = 0;
   metalworking = 0;
+  survival = 0;
 }
 
 export class Stats {
@@ -1311,8 +1313,6 @@ export class Character {
     if(invis && !invis.effectInfo.isPermanent) {
       char.unapplyEffect(invis, true);
     }
-
-    if(this.isDead()) return;
 
     if(char.allegiance === this.allegiance && !char.isPlayer() && !this.isPlayer()) return;
 

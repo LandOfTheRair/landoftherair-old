@@ -13,10 +13,8 @@ export class GMDuplicateItem extends Command {
 
     if(!player.rightHand) return player.sendClientMessage('Hold an item in your right hand to modify.');
     if(player.leftHand) return player.sendClientMessage('Empty your left hand.');
-
-    const item = new Item(player.rightHand, { doRegenerate: true });
-
-    player.setLeftHand(item);
+    
+    player.setLeftHand(player.$$room.itemCreator.duplicateItem(player.rightHand));
 
   }
 }

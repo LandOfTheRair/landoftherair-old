@@ -62,7 +62,6 @@ export class LogWindowComponent implements OnInit, OnDestroy {
   }
 
   private addLogItem(data) {
-    console.log(data);
     this.allLogItems.push(data);
     if(this.allLogItems.length > 500) this.allLogItems.shift();
 

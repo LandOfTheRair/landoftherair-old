@@ -31,22 +31,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show stats",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your stats and their base level in text form.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Show Skills",
             "macro": "show skills",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "See all of your skills and skill levels in text form.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Show Stats",
+            "macro": "show stats",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your stats and their base level in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -132,6 +132,16 @@
             "requiresLearn": false
         },
         {
+            "name": "Charge",
+            "macro": "charge",
+            "icon": "running-ninja",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Hide",
             "macro": "hide",
             "icon": "hidden",
@@ -143,12 +153,12 @@
             "requiresLearn": false
         },
         {
-            "name": "Charge",
-            "macro": "charge",
-            "icon": "running-ninja",
+            "name": "Jumpkick",
+            "macro": "jumpkick",
+            "icon": "high-kick",
             "color": "#530000",
             "mode": "lockActivation",
-            "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Requires weapon skill 7 (Warrior) or weapon skill 11 (Other).",
+            "tooltipDesc": "Jump and kick an enemy. Requires Martial skill 5.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -159,16 +169,6 @@
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Physically attack a target with your boots.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Jumpkick",
-            "macro": "jumpkick",
-            "icon": "high-kick",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Jump and kick an enemy. Requires Martial skill 5.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -245,6 +245,16 @@
             "requiresLearn": true
         },
         {
+            "name": "BarNecro",
+            "macro": "cast barnecro",
+            "icon": "rosa-shield",
+            "color": "#1b390e",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield necrotic damage for a single target. Cost: 40 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Blind",
             "macro": "cast blind",
             "icon": "evil-eyes",
@@ -266,16 +276,6 @@
             "requiresLearn": true
         },
         {
-            "name": "BarNecro",
-            "macro": "cast barnecro",
-            "icon": "rosa-shield",
-            "color": "#1b390e",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield necrotic damage for a single target. Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Dispel",
             "macro": "cast dispel",
             "icon": "broken-shield",
@@ -283,6 +283,16 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Remove a buff from a target. Cost: 25 MP",
             "skillTPCost": 20,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "HolyAura",
+            "macro": "cast holyaura",
+            "icon": "aura",
+            "color": "#aa0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Become invulnerable to damage for a short period of time. Cost: 75 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -454,99 +464,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Apply",
-            "macro": "cast apply",
-            "icon": "bloody-sword",
-            "color": "#050",
-            "mode": "autoActivate",
-            "tooltipDesc": "Apply a bottle's effects from your left hand onto your weapon strikes.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Assassinate",
-            "macro": "cast assassinate",
-            "icon": "decapitation",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Attempt to assassinate your target from the shadows. Requires weapon skill 13.",
-            "requireSkillLevel": 13,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Debilitate",
-            "macro": "cast debilitate",
-            "icon": "one-eyed",
-            "color": "#a00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Disarm",
-            "macro": "cast disarm",
-            "icon": "quake-stomp",
-            "color": "#000053",
-            "mode": "clickToActivate",
-            "tooltipDesc": "Disarm a trap on an adjacent tile.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Disguise",
-            "macro": "cast disguise",
-            "icon": "duality",
-            "color": "#111",
-            "mode": "autoActivate",
-            "tooltipDesc": "Blend in with enemies. Cost: 100 HP",
-            "requireSkillLevel": 15,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "EagleEye",
-            "macro": "cast eagleeye",
-            "icon": "dead-eye",
-            "color": "#f00",
-            "mode": "autoActivate",
-            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
-            "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Set",
-            "macro": "cast set",
-            "icon": "quake-stomp",
-            "color": "#530000",
-            "mode": "clickToActivate",
-            "tooltipDesc": "Set a trap from your hand. Traps can be purchased from thief vendors.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "ShadowClones",
-            "macro": "cast shadowclones",
-            "icon": "dark-squad",
-            "color": "#111",
-            "mode": "autoActivate",
-            "tooltipDesc": "Summon some shadow backup to help you slaughter your foes. Cost: 300 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "ShadowMeld",
-            "macro": "cast shadowmeld",
-            "icon": "hidden",
-            "color": "#00c",
-            "mode": "autoActivate",
-            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Absorption",
             "macro": "cast absorption",
             "icon": "magic-swirl",
@@ -588,6 +505,16 @@
             "mode": "lockActivation",
             "tooltipDesc": "Inflict fire damage on a single target. Cost: 20 MP",
             "skillTPCost": 5,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ConjureHealing",
+            "macro": "cast conjurehealing",
+            "icon": "brandy-bottle",
+            "color": "#080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Create a bottle of bound healing water. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -791,17 +718,6 @@
             "requiresLearn": true
         },
         {
-            "name": "VolcanoStance",
-            "macro": "stance volcano",
-            "icon": "fire-silhouette",
-            "color": "#DC143C",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more offensive, increasing your physical offensive capabilities, your fire resistance, and doing fire damage on hit.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Teleport",
             "macro": "cast teleport",
             "icon": "teleport",
@@ -811,6 +727,17 @@
             "requireCharacterLevel": 20,
             "requireSkillLevel": 15,
             "skillTPCost": 20,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "VolcanoStance",
+            "macro": "stance volcano",
+            "icon": "fire-silhouette",
+            "color": "#DC143C",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more offensive, increasing your physical offensive capabilities, your fire resistance, and doing fire damage on hit.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -835,22 +762,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Darkness",
-            "macro": "cast darkness",
-            "icon": "dust-cloud",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "DarkVision",
             "macro": "cast darkvision",
             "icon": "angry-eyes",
             "color": "#000",
             "mode": "clickToTarget",
             "tooltipDesc": "See in the darkness. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Darkness",
+            "macro": "cast darkness",
+            "icon": "dust-cloud",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -935,6 +862,99 @@
             "requiresLearn": true
         },
         {
+            "name": "Apply",
+            "macro": "cast apply",
+            "icon": "bloody-sword",
+            "color": "#050",
+            "mode": "autoActivate",
+            "tooltipDesc": "Apply a bottle's effects from your left hand onto your weapon strikes.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Assassinate",
+            "macro": "cast assassinate",
+            "icon": "decapitation",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Attempt to assassinate your target from the shadows. Requires weapon skill 13.",
+            "requireSkillLevel": 13,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Debilitate",
+            "macro": "cast debilitate",
+            "icon": "one-eyed",
+            "color": "#a00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disarm",
+            "macro": "cast disarm",
+            "icon": "quake-stomp",
+            "color": "#000053",
+            "mode": "clickToActivate",
+            "tooltipDesc": "Disarm a trap on an adjacent tile.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disguise",
+            "macro": "cast disguise",
+            "icon": "duality",
+            "color": "#111",
+            "mode": "autoActivate",
+            "tooltipDesc": "Blend in with enemies. Cost: 100 HP",
+            "requireSkillLevel": 15,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "EagleEye",
+            "macro": "cast eagleeye",
+            "icon": "dead-eye",
+            "color": "#f00",
+            "mode": "autoActivate",
+            "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
+            "requireSkillLevel": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Set",
+            "macro": "cast set",
+            "icon": "quake-stomp",
+            "color": "#530000",
+            "mode": "clickToActivate",
+            "tooltipDesc": "Set a trap from your hand. Traps can be purchased from thief vendors.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowClones",
+            "macro": "cast shadowclones",
+            "icon": "dark-squad",
+            "color": "#111",
+            "mode": "autoActivate",
+            "tooltipDesc": "Summon some shadow backup to help you slaughter your foes. Cost: 300 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ShadowMeld",
+            "macro": "cast shadowmeld",
+            "icon": "hidden",
+            "color": "#00c",
+            "mode": "autoActivate",
+            "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Blindstrike",
             "macro": "art blindstrike",
             "icon": "sword-tie",
@@ -979,6 +999,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Provoke",
+            "macro": "art provoke",
+            "icon": "enrage",
+            "color": "#a00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Provoke a single creature.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "RageStance",
             "macro": "stance rage",
             "icon": "swords-power",
@@ -987,16 +1017,6 @@
             "mode": "autoActivate",
             "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 10.",
             "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Provoke",
-            "macro": "art provoke",
-            "icon": "enrage",
-            "color": "#a00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Provoke a single creature.",
             "isSystem": true,
             "requiresLearn": true
         },
