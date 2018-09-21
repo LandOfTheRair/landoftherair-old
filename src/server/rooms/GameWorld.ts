@@ -286,9 +286,11 @@ export class GameWorld extends Room<GameState> {
     playerData.$$room = this;
     const player = new Player(playerData);
     player.z = player.z || 0;
+
+    this.usernameClientHash[player.username] = { client };
+    this.state.addPlayer(player, client.id);
     await player.initServer();
     CharacterHelper.setUpClassFor(player);
-    this.state.addPlayer(player, client.id);
 
     player.inGame = true;
     this.savePlayer(player);
@@ -301,8 +303,6 @@ export class GameWorld extends Room<GameState> {
         this.send(client, { action: 'take_tour' });
       }, 0);
     }
-
-    this.usernameClientHash[player.username] = { client };
 
 
     if(this.mapSubscriberOnly && !this.subscriptionHelper.isSubscribed(player)) {
@@ -446,6 +446,7 @@ export class GameWorld extends Room<GameState> {
   sendPlayerLogMessage(player: Player, messageData, rootCharacter?: Character) {
     const client = this.findClient(player);
     if(!client) return;
+
     this.sendClientLogMessage(client, messageData, rootCharacter);
   }
 
