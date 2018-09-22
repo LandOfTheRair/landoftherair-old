@@ -2,16 +2,13 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "module": "esnext",
+    "module": "es2015",
     "baseUrl": "",
     "types": []
   },
-  "angularCompilerOptions": {
-    "generateCodeForLibraries": true
-  },
   "exclude": [
     "test.ts",
-    "**/*.test.ts",
+    "**/*.test.ts"
     "**/*.spec.ts"
   ]
 }
