@@ -1,4 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { VirtualScrollComponent } from 'angular2-virtual-scroll';
 
 import { LocalStorage } from 'ngx-webstorage';
 import { ColyseusService } from '../colyseus.service';
@@ -22,6 +23,9 @@ export class LogWindowComponent implements OnInit, OnDestroy {
   @LocalStorage()
   public filters;
 
+  @ViewChild(VirtualScrollComponent)
+  private chatView: VirtualScrollComponent;
+
   public visibleLogItems: any[] = [];
   public allFilteredVisibleLogItems: any[] = [];
   public allLogItems: any[] = [];
@@ -35,14 +39,14 @@ export class LogWindowComponent implements OnInit, OnDestroy {
 
   public get containerHeight(): number {
     return get(this.windowManager.getWindow('log'), 'height', 0)        // window height (total)
-      - 28                                                                                        // - window bar height
-      - 31;                                                                                       // - window button height
+      - 28                                                              // - window bar height
+      - 31;                                                             // - window button height
   }
 
   constructor(public colyseus: ColyseusService, private windowManager: WindowManagerService) {}
 
   ngOnInit() {
-    if(!this.filters) this.filters = { combat: true, env: true, chatter: true };
+    if(!this.filters) this.filters = { all: true, combat: true, env: true, chatter: true };
     this.log$ = this.clientGameState.logMessages$.subscribe(data => this.addLogItem(data));
     this.globalMsg$ = this.colyseus.lobby.newMessages$.subscribe(data => this.addGlobalMessage(data));
   }
@@ -65,16 +69,26 @@ export class LogWindowComponent implements OnInit, OnDestroy {
     this.allLogItems.push(data);
     if(this.allLogItems.length > 500) this.allLogItems.shift();
 
-    this.allFilteredVisibleLogItems = this.allFilteredVisibleLogItems.concat([data]);
+    if(this.filters.all || this.filters[data.grouping]) {
+      this.allFilteredVisibleLogItems = this.allFilteredVisibleLogItems.concat([data]);
+    }
   }
 
   public updateVisibleItems(items) {
     this.visibleLogItems = items;
   }
 
-  // trigger ngx-webstorage
-  saveFilters() {
+  saveFilters(newFilter: string) {
+
+    ['all', 'chatter', 'env', 'combat'].forEach(x => this.filters[x] = false);
+    this.filters[newFilter] = true;
     this.filters = this.filters;
+
+    this.allFilteredVisibleLogItems = this.allLogItems.filter(msg => {
+      return msg.grouping === 'always' || this.filters.all || this.filters[msg.grouping];
+    });
+
+    this.chatView.scrollInto(this.visibleLogItems[this.visibleLogItems.length - 1]);
   }
 
 }

@@ -112,7 +112,7 @@ export class NPC extends Character {
         'Can you be more clear?'
       ];
 
-      player.sendClientMessage({ name: this.name, message: sample(questionMessages) });
+      player.sendClientMessage({ name: this.name, message: sample(questionMessages), grouping: 'chatter', subClass: 'chatter' });
       return;
 
     } else {
@@ -121,7 +121,7 @@ export class NPC extends Character {
 
     output = output.split('|||');
     output.forEach(outputMessage => {
-      player.sendClientMessage({ name: this.name, message: outputMessage });
+      player.sendClientMessage({ name: this.name, message: outputMessage, grouping: 'chatter', subClass: 'chatter' });
     });
   }
 

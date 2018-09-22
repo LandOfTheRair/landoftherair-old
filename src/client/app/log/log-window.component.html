@@ -3,45 +3,53 @@
 
   <div class="filter-buttons d-flex justify-content-around">
     <button class="btn btn-block btn-sm no-border-radius mt-0"
+            [class.btn-secondary]="!filters.all"
+            [class.btn-info]="filters.all"
+            btnCheckbox
+            [(ngModel)]="filters.all"
+            (click)="saveFilters('all')">
+      All
+    </button>
+    <button class="btn btn-block btn-sm no-border-radius mt-0"
             [class.btn-secondary]="!filters.env"
             [class.btn-info]="filters.env"
             btnCheckbox
             [(ngModel)]="filters.env"
-            (click)="saveFilters()">
-      Environment [{{ filters.env ? 'ON' : 'OFF'}}]
+            (click)="saveFilters('env')">
+      Environment
     </button>
     <button class="btn btn-block btn-sm no-border-radius mt-0"
             [class.btn-secondary]="!filters.combat"
             [class.btn-info]="filters.combat"
             btnCheckbox
             [(ngModel)]="filters.combat"
-            (click)="saveFilters()">
-      Combat [{{ filters.combat ? 'ON' : 'OFF'}}]
+            (click)="saveFilters('combat')">
+      Combat
     </button>
     <button class="btn btn-block btn-sm no-border-radius mt-0"
             [class.btn-secondary]="!filters.chatter"
             [class.btn-info]="filters.chatter"
             btnCheckbox
             [(ngModel)]="filters.chatter"
-            (click)="saveFilters()">
-      Chatter [{{ filters.chatter ? 'ON' : 'OFF'}}]
+            (click)="saveFilters('chatter')">
+      Chat
     </button>
   </div>
 
-  <virtual-scroll class="p-1 message-container"
+  <virtual-scroll #chatView
+                  class="p-1 message-container"
                   [ngClass]="['window-size-' + windowSize]"
                   appNgxAutoScroll
                   lockYOffset="10"
                   [style.height.px]="containerHeight"
                   bufferAmount="10"
-                  [childHeight]="21"
-                  (update)="updateVisibleItems($event)"
+                  enableUnequalChildrenSizes="true"
+                  (vsUpdate)="updateVisibleItems($event)"
                   [items]="allFilteredVisibleLogItems">
 
     <div class="message {{ message.subClass }}"
-         [class.hidden]="message.grouping !== 'always' && !filters[message.grouping]"
          [ngClass]="['font-size-'+fontSize]"
-         *ngFor="let message of visibleLogItems">
+         *ngFor="let message of chatView.viewPortItems">
       <app-log-message [message]="message"></app-log-message>
     </div>
 
