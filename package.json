@@ -168,7 +168,7 @@
     "nodemon": "^1.18.4",
     "npm-run-all": "4.0.2",
     "pngjs": "^3.3.2",
-    "tslint": "4.5.0",
+    "tslint": "^5.11.0",
     "typescript": "2.9.2",
     "webfont": "^7.1.4",
     "webpack": "4.19.1",
