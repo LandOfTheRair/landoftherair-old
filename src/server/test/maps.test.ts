@@ -213,7 +213,7 @@ test('All 2-way Teleports are bi-directional', t => {
       const { teleportX, teleportY, teleportMap } = interactable.properties;
       const checkObjs = allMapNames[teleportMap].layers[MapLayer.Interactables].objects;
 
-      const checkRef = find(checkObjs, { x: teleportX * 64, y: (teleportY + 1) * 64 });
+      const checkRef: any = find(checkObjs, { x: teleportX * 64, y: (teleportY + 1) * 64 });
 
       // one-way teleport
       if(!checkRef && (interactable.type === 'Teleport' || interactable.type === 'Fall')) return;
