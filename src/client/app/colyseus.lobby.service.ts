@@ -7,11 +7,8 @@ import { AuthService } from './auth.service';
 import { LobbyState } from '../../shared/models/lobbystate';
 import { Account, SilverPurchase } from '../../shared/models/account';
 
-import { Observable } from 'rxjs/Observable';
+import { Subject, BehaviorSubject, interval } from 'rxjs';
 import { merge } from 'lodash';
-
-import { Subject } from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class ColyseusLobbyService {
@@ -333,7 +330,7 @@ export class ColyseusLobbyService {
   }
 
   public startHeartbeat() {
-    const source = Observable.interval(20000);
+    const source = interval(20000);
     source.subscribe(() => {
       if(!this.room) return;
       this.room.send({ action: 'heartbeat' });

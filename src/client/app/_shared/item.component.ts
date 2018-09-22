@@ -176,7 +176,7 @@ export class ItemComponent {
     return MaterialSlotInfo[ValidMaterialItems[this.item.name]].withdrawInOunces;
   }
 
-  constructor(private colyseusGame: ColyseusGameService, private assetService: AssetService) {}
+  constructor(public colyseusGame: ColyseusGameService, private assetService: AssetService) {}
 
   doColyseusMoveAction(choice) {
     this.colyseusGame.buildAction(this.item, {

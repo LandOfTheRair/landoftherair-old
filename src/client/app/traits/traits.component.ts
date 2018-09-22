@@ -8,8 +8,7 @@ import { AllTrees } from '../../../shared/generated/skilltrees';
 
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { Subscription } from 'rxjs/Subscription';
-import { Subject } from 'rxjs/Subject';
+import { Subscription, Subject } from 'rxjs';
 import { AssetService } from '../asset.service';
 import { SkillTree } from '../../../shared/models/skill-tree';
 import * as swal from 'sweetalert2';

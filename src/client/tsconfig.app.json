@@ -2,9 +2,12 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "module": "es2015",
+    "module": "esnext",
     "baseUrl": "",
     "types": []
+  },
+  "angularCompilerOptions": {
+    "generateCodeForLibraries": true
   },
   "exclude": [
     "test.ts",

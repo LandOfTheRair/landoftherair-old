@@ -3,8 +3,7 @@ import { extend, merge, differenceBy, values, filter, reject, size, get, set, fi
 
 import { Player } from '../../shared/models/player';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import { Item } from '../../shared/models/item';
 import { Character } from '../../shared/models/character';

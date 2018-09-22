@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { NgxAutoScrollDirective } from './ngx-auto-scroll.directive';
 import { DraggableWindowDirective } from './draggable.directive';
@@ -10,14 +10,12 @@ import { DraggableWindowDirective } from './draggable.directive';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { VirtualScrollModule } from 'angular2-virtual-scroll';
 
-import {
-  TooltipModule,
-  ButtonsModule,
-  PopoverModule,
-  TabsModule,
-  ModalModule,
-  BsDropdownModule
-} from 'ngx-bootstrap';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { NgDragDropModule } from 'ng-drag-drop';
 import { WalkthroughModule } from 'angular-walkthrough';

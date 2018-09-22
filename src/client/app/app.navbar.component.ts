@@ -2,7 +2,7 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { get } from 'lodash';
 import { DateTime } from 'luxon';
-import { Observable } from 'rxjs/Observable';
+import { timer } from 'rxjs';
 import * as swal from 'sweetalert2';
 
 import { ColyseusService } from './colyseus.service';
@@ -21,8 +21,8 @@ import { ColyseusService } from './colyseus.service';
   template: `
     <nav class="navbar navbar-expand-lg navbar-light bg-faded">
       <a class="navbar-brand">
-        <img src="android-chrome-512x512.png" width="48" height="48" alt="">
-        <span *ngIf="colyseus.lobby.myAccount.username">{{ colyseus.lobby.myAccount.username }}</span>
+        <img src="assets/favicon/android-chrome-512x512.png" width="48" height="48" alt="">
+        <span *ngIf="colyseus.lobby.myAccount.username" class="ml-2">{{ colyseus.lobby.myAccount.username }}</span>
       </a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -225,7 +225,7 @@ export class NavbarComponent implements OnInit {
     setResetTimestamp();
     formatTimestring();
 
-    Observable.timer(0, 60000)
+    timer(0, 60000)
       .subscribe(() => {
         this.nowTimestamp = +DateTime.fromObject({ zone: 'utc' });
         if(this.nowTimestamp > this.resetTimestamp) setResetTimestamp();

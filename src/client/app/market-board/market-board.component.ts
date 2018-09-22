@@ -6,11 +6,11 @@ import { reject, get, startCase, isNumber } from 'lodash';
 import { toRoman } from 'roman-numerals';
 
 import debounce from 'debounce-decorator';
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subscription, empty } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { EquippableItemClasses, WeaponClasses } from '../../../shared/models/item';
 import { MarketCalculatorHelper } from '../../../shared/helpers/market-calculator-helper';
 import * as swal from 'sweetalert2';
-import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-market-board',
@@ -216,12 +216,12 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     }
 
     this.http.post('api/market/all', searchParams)
-      .catch(() => {
+      .pipe(catchError(() => {
         this.isLoading = false;
         this.isError = true;
         this.buyableItemListings = [];
-        return Observable.empty();
-      })
+        return empty();
+      }))
       .subscribe((data: any[]) => {
         this.isLoading = false;
         this.buyableItemListings = data;
@@ -234,12 +234,12 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     this.isLoading = true;
 
     this.http.post('api/market/mine', { username: this.player.username })
-      .catch(() => {
+      .pipe(catchError(() => {
         this.isLoading = false;
         this.isError = true;
         this.myListings = [];
-        return Observable.empty();
-      })
+        return empty();
+      }))
       .subscribe((data: any[]) => {
         this.isLoading = false;
         this.myListings = data;
@@ -252,12 +252,12 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     this.isLoading = true;
 
     this.http.post('api/market/pickups', { username: this.player.username })
-      .catch(() => {
+      .pipe(catchError(() => {
         this.isLoading = false;
         this.isError = true;
         this.myPickups = [];
-        return Observable.empty();
-      })
+        return empty();
+      }))
       .subscribe((data: any) => {
         this.isLoading = false;
 

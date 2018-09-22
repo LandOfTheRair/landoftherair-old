@@ -5,7 +5,7 @@ import { compact, find, pull, findIndex, sortBy, cloneDeep, isBoolean } from 'lo
 import { NPC } from '../../../shared/models/npc';
 import { MacroService } from '../macros.service';
 import { LocalStorageService } from 'ngx-webstorage';
-import { Observable } from 'rxjs/Observable';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-npcs',
@@ -60,7 +60,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
         this.shouldSortDistance = value;
       });
 
-    this.timer$ = Observable.timer(0, 500)
+    this.timer$ = timer(0, 500)
       .subscribe(() => this.updateNPCList());
 
     this.move$ = this.colyseusGame.myLoc$.subscribe(() => this.updateNPCList());

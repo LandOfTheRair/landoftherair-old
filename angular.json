@@ -1,0 +1,109 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "landoftherair": {
+      "root": "src",
+      "sourceRoot": "src/client",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/client/index.html",
+            "main": "src/client/main.ts",
+            "tsConfig": "src/client/tsconfig.app.json",
+            "showCircularDependencies": false,
+            "polyfills": "src/client/polyfills.ts",
+            "assets": [
+              "src/client/assets",
+              "src/client/_headers",
+              "src/client/favicon.ico",
+              "src/client/*.png",
+              "src/client/browserconfig.xml",
+              "src/client/manifest.json"
+            ],
+            "styles": [
+              "node_modules/sweetalert2/dist/sweetalert2.css",
+              "node_modules/ng-drag-drop/style.css",
+              "src/client/macicons/macicons.css",
+              "src/client/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/phaser-ce/build/custom/p2.js",
+              "node_modules/phaser-ce/build/custom/pixi.js",
+              "node_modules/phaser-ce/build/custom/phaser-split.js",
+              "node_modules/phaser-camera-offset/index.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/client/environments/environment.ts",
+                  "with": "src/client/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "landoftherair:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "landoftherair:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "landoftherair:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/client/tsconfig.app.json"
+            ],
+            "exclude": [
+              "**/*/_vars.ts",
+              "**/server/**",
+              "**/shared/**"
+            ]
+          }
+        }
+      }
+    },
+    "landoftherair-e2e": {
+      "root": "src/e2e",
+      "sourceRoot": "src/e2e",
+      "projectType": "application"
+    }
+  },
+  "defaultProject": "landoftherair",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  }
+}

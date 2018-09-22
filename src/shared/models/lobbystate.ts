@@ -2,11 +2,10 @@
 import { Account } from './account';
 import { Message } from './message';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import { nonenumerable } from 'nonenumerable';
 import { find, reject, pullAt, extend } from 'lodash';
-import { Subject } from 'rxjs/Subject';
 
 export class LobbyState {
   accounts: Account[] = [];

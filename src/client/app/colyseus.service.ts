@@ -5,7 +5,7 @@ import * as Colyseus from 'colyseus.js';
 import { isUndefined } from 'lodash';
 import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class ColyseusService {

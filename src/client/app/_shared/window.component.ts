@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef 
 
 import { kebabCase } from 'lodash';
 import { LocalStorageService } from 'ngx-webstorage';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { WindowManagerService } from '../windowmanager.service';
 
 @Component({

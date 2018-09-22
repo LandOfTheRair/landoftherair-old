@@ -3,7 +3,7 @@ import { ClientGameState } from './clientgamestate';
 import * as swal from 'sweetalert2';
 import * as fileSaver from 'file-saver';
 
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 import { find, includes, findIndex, extend, startsWith, capitalize, isNumber } from 'lodash';
 import { Player } from '../../shared/models/player';
