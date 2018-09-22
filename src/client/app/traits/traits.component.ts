@@ -1,17 +1,14 @@
 
 import { Component, AfterViewInit, ViewChild, OnDestroy, OnInit } from '@angular/core';
 
-import { startCase, extend, merge, values, minBy, maxBy, last, includes } from 'lodash';
-import * as d3 from 'd3';
+import { startCase, merge, last, includes } from 'lodash';
 
 import { AllTrees } from '../../../shared/generated/skilltrees';
 
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { Subscription, Subject } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AssetService } from '../asset.service';
-import { SkillTree } from '../../../shared/models/skill-tree';
-import * as swal from 'sweetalert2';
 
 import { D3SkillTree, D3SkillTreeConfig } from './d3skilltree';
 

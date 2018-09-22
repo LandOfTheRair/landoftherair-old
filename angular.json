@@ -39,6 +39,25 @@
             ]
           },
           "configurations": {
+
+            "fakeprod": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/client/environments/environment.ts",
+                  "with": "src/client/environments/environment.prod.ts"
+                }
+              ]
+            },
+
             "production": {
               "optimization": true,
               "outputHashing": "all",
