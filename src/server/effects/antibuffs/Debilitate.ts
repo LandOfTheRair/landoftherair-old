@@ -3,6 +3,25 @@ import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
+export class RecentlyDebilitated extends SpellEffect {
+
+  iconData = {
+    name: 'one-eyed',
+    color: '#000',
+    tooltipDesc: 'Recently debilitated. +10% perception.'
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.duration = this.duration || 60;
+    this.potency = Math.floor(target.getTotalStat('perception') / 10);
+    target.applyEffect(this);
+  }
+
+  effectStart(char: Character) {
+    this.gainStat(char, 'perception', this.potency);
+  }
+}
+
 export class Debilitate extends SpellEffect {
 
   iconData = {
@@ -38,24 +57,5 @@ export class Debilitate extends SpellEffect {
     const recentlyDebilitated = new RecentlyDebilitated({ duration: Math.max(10, 60 - this.recentlyDurationLoss) });
     recentlyDebilitated.cast(char, char);
     this.effectMessage(char, 'Your perception of the hidden is heightened!');
-  }
-}
-
-export class RecentlyDebilitated extends SpellEffect {
-
-  iconData = {
-    name: 'one-eyed',
-    color: '#000',
-    tooltipDesc: 'Recently debilitated. +10% perception.'
-  };
-
-  cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = this.duration || 60;
-    this.potency = Math.floor(target.getTotalStat('perception') / 10);
-    target.applyEffect(this);
-  }
-
-  effectStart(char: Character) {
-    this.gainStat(char, 'perception', this.potency);
   }
 }

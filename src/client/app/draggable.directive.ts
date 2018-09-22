@@ -14,7 +14,7 @@ export class DraggableWindowDirective implements OnInit {
   private _handle: HTMLElement;
 
   @Input('appDraggableWindow')
-  set allowDrag(value: boolean){
+  set allowDrag(value: boolean) {
     this._allowDrag = value;
     if(this._allowDrag) {
       this.element.nativeElement.className += ' cursor-draggable';
@@ -24,7 +24,7 @@ export class DraggableWindowDirective implements OnInit {
   }
 
   @Input('windowHandle')
-  set windowHandle(handle: HTMLElement){
+  set windowHandle(handle: HTMLElement) {
     this._handle = handle;
   }
 

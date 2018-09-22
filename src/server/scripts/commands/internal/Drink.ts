@@ -37,9 +37,9 @@ export class Drink extends Command {
       return;
     }
 
-    const itemIndex = findLastIndex(player.sack.allItems, (item) => {
-      if(!item.effect) return false;
-      return item.effect.name === 'ExactHeal';
+    const itemIndex = findLastIndex(player.sack.allItems, (checkItem) => {
+      if(!checkItem.effect) return false;
+      return checkItem.effect.name === 'ExactHeal';
     });
 
     if(itemIndex === -1) return player.sendClientMessage('You have no potions to drink!');

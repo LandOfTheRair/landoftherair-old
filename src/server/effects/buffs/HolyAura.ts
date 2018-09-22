@@ -3,6 +3,20 @@ import { SpellEffect, AttributeEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
+export class RecentlyShielded extends SpellEffect {
+
+  iconData = {
+    name: 'aura',
+    color: '#000',
+    tooltipDesc: 'Recently shielded and cannot be shielded for a period.'
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.duration = 15;
+    target.applyEffect(this);
+  }
+}
+
 export class HolyAura extends SpellEffect implements AttributeEffect {
 
   iconData = {
@@ -52,19 +66,5 @@ export class HolyAura extends SpellEffect implements AttributeEffect {
 
     if(this.charges > 0) return 0;
     return -this.charges;
-  }
-}
-
-export class RecentlyShielded extends SpellEffect {
-
-  iconData = {
-    name: 'aura',
-    color: '#000',
-    tooltipDesc: 'Recently shielded and cannot be shielded for a period.'
-  };
-
-  cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = 15;
-    target.applyEffect(this);
   }
 }

@@ -69,6 +69,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.pinOption$.unsubscribe();
     this.sortFriendly$.unsubscribe();
+    this.sortDistance$.unsubscribe();
     this.timer$.unsubscribe();
     this.move$.unsubscribe();
   }
@@ -86,27 +87,27 @@ export class NpcsComponent implements OnInit, OnDestroy {
     if(!fov) return [];
     const me = this.colyseusGame.character;
 
-    let unsorted = compact(npcs.map(npc => {
-      if((<any>npc).username === me.username) return false;
-      if(npc.dir === 'C') return false;
-      if(!me.canSeeThroughStealthOf(npc)) return false;
-      const diffX = npc.x - me.x;
-      const diffY = npc.y - me.y;
+    let unsorted = compact(npcs.map(testnpc => {
+      if((<any>testnpc).username === me.username) return false;
+      if(testnpc.dir === 'C') return false;
+      if(!me.canSeeThroughStealthOf(testnpc)) return false;
+      const diffX = testnpc.x - me.x;
+      const diffY = testnpc.y - me.y;
 
       if(!fov[diffX]) return false;
       if(!fov[diffX][diffY]) return false;
-      return npc;
+      return testnpc;
     }));
 
     if(isBoolean(this.shouldSortDistance)) {
-      unsorted = sortBy(unsorted, npc => npc.distFrom(me));
+      unsorted = sortBy(unsorted, testnpc => testnpc.distFrom(me));
 
       if(!this.shouldSortDistance) unsorted = unsorted.reverse();
     }
 
     if(isBoolean(this.shouldSortFriendly)) {
       const sortOrder = this.shouldSortFriendly ? { neutral: 0, friendly: 1, hostile: 2 } : { hostile: 0, neutral: 1, friendly: 2 };
-      unsorted = sortBy(unsorted, npc => sortOrder[this.colyseusGame.hostilityLevelFor(npc)]);
+      unsorted = sortBy(unsorted, testnpc => sortOrder[this.colyseusGame.hostilityLevelFor(testnpc)]);
     }
 
     if(!this.pinUUID || !this.shouldPin) return unsorted;

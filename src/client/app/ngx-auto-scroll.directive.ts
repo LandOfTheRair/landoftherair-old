@@ -4,8 +4,11 @@ import {AfterContentInit, Directive, ElementRef, HostListener, Input, OnDestroy}
   selector: '[appNgxAutoScroll]',
 })
 export class NgxAutoScrollDirective implements AfterContentInit, OnDestroy {
-  @Input('lockYOffset') public lockYOffset = 10;
-  @Input('observeAttributes') public observeAttributes = 'false';
+  @Input()
+  public lockYOffset = 10;
+
+  @Input()
+  public observeAttributes = 'false';
 
   private nativeElement: HTMLElement;
   private isLocked = false;

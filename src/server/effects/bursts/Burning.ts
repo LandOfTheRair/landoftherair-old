@@ -4,6 +4,20 @@ import { Character } from '../../../shared/models/character';
 import { CombatHelper } from '../../helpers/world/combat-helper';
 import { Skill } from '../../base/Skill';
 
+export class RecentlyBurned extends SpellEffect {
+
+  iconData = {
+    name: 'fire',
+    color: '#000',
+    tooltipDesc: 'Recently burned and cannot be burned for a period.'
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.duration = 10;
+    target.applyEffect(this);
+  }
+}
+
 export class Burning extends SpellEffect {
 
   iconData = {
@@ -39,19 +53,5 @@ export class Burning extends SpellEffect {
     const recently = new RecentlyBurned({});
     recently.cast(char, char);
     this.effectMessage(char, 'You are no longer on fire.');
-  }
-}
-
-export class RecentlyBurned extends SpellEffect {
-
-  iconData = {
-    name: 'fire',
-    color: '#000',
-    tooltipDesc: 'Recently burned and cannot be burned for a period.'
-  };
-
-  cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = 10;
-    target.applyEffect(this);
   }
 }

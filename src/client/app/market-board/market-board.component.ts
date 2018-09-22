@@ -6,7 +6,7 @@ import { reject, get, startCase, isNumber } from 'lodash';
 import { toRoman } from 'roman-numerals';
 
 import debounce from 'debounce-decorator';
-import { Observable, Subscription, empty } from 'rxjs';
+import { Subscription, empty } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { EquippableItemClasses, WeaponClasses } from '../../../shared/models/item';
 import { MarketCalculatorHelper } from '../../../shared/helpers/market-calculator-helper';

@@ -227,7 +227,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     public windowManager: WindowManagerService,
     private localStorage: LocalStorageService,
     private renderer: Renderer2,
-    private stripeCheckoutLoader: StripeCheckoutLoader
+    public stripeCheckoutLoader: StripeCheckoutLoader
   ) {
     this.macroService.ignoreFunction = () => {
 

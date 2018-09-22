@@ -30,14 +30,6 @@ export class MapComponent implements OnInit, OnDestroy {
     return this.colyseus.game.clientGameState;
   }
 
-  private get currentPlayer(): Player {
-    return this.clientGameState.currentPlayer;
-  }
-
-  private get map(): any {
-    return this.clientGameState.map;
-  }
-
   constructor(private assetService: AssetService, public colyseus: ColyseusService, public zone: NgZone) {}
 
   private cleanCanvases() {

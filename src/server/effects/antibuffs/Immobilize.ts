@@ -4,6 +4,20 @@ import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
+export class RecentlyImmobilized extends SpellEffect {
+
+  iconData = {
+    name: 'web-spit',
+    color: '#000',
+    tooltipDesc: 'Recently blinded and cannot be blinded for a period.'
+  };
+
+  cast(caster: Character, target: Character, skillRef?: Skill) {
+    this.duration = 5;
+    target.applyEffect(this);
+  }
+}
+
 export class Immobilize extends SpellEffect {
 
   iconData = {
@@ -30,19 +44,5 @@ export class Immobilize extends SpellEffect {
     recently.cast(char, char);
 
     this.effectMessage(char, 'You regain your movement.');
-  }
-}
-
-export class RecentlyImmobilized extends SpellEffect {
-
-  iconData = {
-    name: 'web-spit',
-    color: '#000',
-    tooltipDesc: 'Recently blinded and cannot be blinded for a period.'
-  };
-
-  cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = 5;
-    target.applyEffect(this);
   }
 }
