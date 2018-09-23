@@ -109,7 +109,7 @@ export class GameState {
 
   private findSecretWalls() {
     const allPossibleLayers = this.map.layers[MapLayer.OpaqueDecor].objects;
-    const secretWalls = filter(allPossibleLayers, { type: 'SecretWall' });
+    const secretWalls: any[] = filter(allPossibleLayers, { type: 'SecretWall' });
     secretWalls.forEach(({ x, y }) => {
       this.secretWallHash[x / 64] = this.secretWallHash[x / 64] || {};
       this.secretWallHash[x / 64][(y / 64) - 1] = true;
@@ -597,7 +597,7 @@ export class GameState {
     }
 
     const descObjs = this.map.layers[MapLayer.Interactables].objects.concat(this.map.layers[MapLayer.Decor].objects);
-    const descObj = find(descObjs, { x: player.x * 64, y: (player.y + 1) * 64 });
+    const descObj: any = find(descObjs, { x: player.x * 64, y: (player.y + 1) * 64 });
     const intDesc = GetGidDescription(descObj ? descObj.gid : 0);
 
     const swimDesc = GetGidDescription(swimTile);

@@ -199,7 +199,7 @@ export class SubscriptionHelper {
 
     // subscription
     if(includes(item.key, 'sub')) {
-      const purchaseItem = find(SilverBuyTiers.sub, { key: item.key });
+      const purchaseItem: any = find(SilverBuyTiers.sub, { key: item.key });
       if(!purchaseItem) throw new Error('Invalid purchase item');
 
       // monthly
@@ -225,7 +225,7 @@ export class SubscriptionHelper {
 
     // microtransaction
     } else {
-      const purchaseItem = find(SilverBuyTiers.micro, { key: item.key });
+      const purchaseItem: any = find(SilverBuyTiers.micro, { key: item.key });
       if(!purchaseItem) throw new Error('Invalid purchase item');
 
       try {

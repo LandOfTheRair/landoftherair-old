@@ -136,7 +136,7 @@ export class Lobby extends Room<LobbyState> {
     if(checkAccount) {
       this.removeUsername(username);
 
-      const oldClient = find(this.clients, { userId });
+      const oldClient: any = find(this.clients, { userId });
       if(oldClient) {
         this.send(oldClient, {
           error: 'someone_kicked_you',

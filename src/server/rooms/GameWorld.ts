@@ -857,7 +857,8 @@ export class GameWorld extends Room<GameState> {
       const properties = spawnerData.properties;
       const spawnerX = spawnerData.x / 64;
       const spawnerY = (spawnerData.y / 64) - 1;
-      const spawnerOldData = find(timerData, { x: spawnerX, y: spawnerY });
+      const spawnerFindArgs: any = { x: spawnerX, y: spawnerY };
+      const spawnerOldData: any = find(timerData, spawnerFindArgs);
 
       if(spawnerOldData) {
         const difference = Math.floor((now - spawnerOldData.timestamp) / 1000);
@@ -930,14 +931,14 @@ export class GameWorld extends Room<GameState> {
 
         const requiredQuest = get(item, 'requirements.quest');
         if(requiredQuest) {
-          if(searcher 
+          if(searcher
           && searcher.hasQuestName(requiredQuest)
           && !searcher.hasPermanentCompletionFor(requiredQuest)) removeItemFromCorpse(item);
 
         } else {
           removeItemFromCorpse(item);
         }
-        
+
       }
     });
 

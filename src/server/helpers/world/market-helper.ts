@@ -134,7 +134,7 @@ export class MarketHelper {
 
       await DB.$marketPickups.update({ username: player.username }, { $set: { gold: 0 } });
     } else {
-      const itemData = find(pickupInfo.items, { uuid: itemUUID });
+      const itemData: any = find(pickupInfo.items, { uuid: itemUUID });
 
       const item = await player.$$room.itemCreator.getItemByName(itemData.itemId);
 
