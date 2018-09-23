@@ -19,15 +19,9 @@
             "polyfills": "./src/client/polyfills.ts",
             "assets": [
               "./src/client/assets",
-              "./src/client/_headers",
-              "./src/client/favicon.ico",
-              "./src/client/*.png",
-              "./src/client/browserconfig.xml",
-              "./src/client/manifest.json"
+              "./src/client/_headers"
             ],
             "styles": [
-              "./node_modules/sweetalert2/dist/sweetalert2.css",
-              "./node_modules/ng-drag-drop/style.css",
               "./src/client/macicons/macicons.css",
               "./src/client/styles.scss"
             ],

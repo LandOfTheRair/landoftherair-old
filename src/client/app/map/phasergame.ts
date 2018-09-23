@@ -530,7 +530,7 @@ export class Game {
       const door = this.clientGameState.mapData.openDoors[doorId];
       if(!door) return;
 
-      const doorSprite = find(this.groups.Interactables.children, { x: door.x, y: door.y });
+      const doorSprite: any = find(this.groups.Interactables.children, { x: door.x, y: door.y });
       if(!doorSprite) return;
 
       if(door.isOpen) doorSprite.frame = doorSprite._baseFrame + 1;

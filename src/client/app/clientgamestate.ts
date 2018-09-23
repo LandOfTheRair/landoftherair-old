@@ -111,7 +111,7 @@ export class ClientGameState {
 
   private findSecretWalls() {
     const allPossibleLayers = this.map.layers[MapLayer.OpaqueDecor].objects;
-    const secretWalls = filter(allPossibleLayers, { type: 'SecretWall' });
+    const secretWalls: any = filter(allPossibleLayers, { type: 'SecretWall' });
     secretWalls.forEach(({ x, y }) => {
       this.secretWallHash[x / 64] = this.secretWallHash[x / 64] || {};
       this.secretWallHash[x / 64][(y / 64) - 1] = true;

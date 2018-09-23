@@ -82,7 +82,8 @@ export class MacroBarsComponent implements OnInit {
 
   public changeMacroGroup(macroBarIndex, modifier = 0) {
     const currentName = this.macroService.visibleMacroGroups[macroBarIndex];
-    const currentIndex = findIndex(this.macroService.iterableMacroGroups, { key: currentName });
+    const findArgs: any = { key: currentName };
+    const currentIndex: any = findIndex(this.macroService.iterableMacroGroups, findArgs);
 
     let newIndex = currentIndex + modifier;
     if(newIndex === -1) newIndex = this.macroService.iterableMacroGroups.length - 1;

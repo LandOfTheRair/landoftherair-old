@@ -85,7 +85,7 @@ export abstract class Command {
 
   getItemFromGround(player, itemClass, itemId): Item {
     const ground = player.$$room.state.getGroundItems(player.x, player.y);
-    const item: Item = find(ground[itemClass], { uuid: itemId });
+    const item: any = find(ground[itemClass], { uuid: itemId });
     if(!item) return player.sendClientMessage('You do not see that item.');
     return item;
   }

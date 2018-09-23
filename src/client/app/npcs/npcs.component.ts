@@ -87,7 +87,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
     if(!fov) return [];
     const me = this.colyseusGame.character;
 
-    let unsorted = compact(npcs.map(testnpc => {
+    let unsorted: any[] = compact(npcs.map(testnpc => {
       if((<any>testnpc).username === me.username) return false;
       if(testnpc.dir === 'C') return false;
       if(!me.canSeeThroughStealthOf(testnpc)) return false;
@@ -112,7 +112,8 @@ export class NpcsComponent implements OnInit, OnDestroy {
 
     if(!this.pinUUID || !this.shouldPin) return unsorted;
 
-    const npc = find(unsorted, { uuid: this.pinUUID });
+    const args: any = { uuid: this.pinUUID };
+    const npc: any = find(unsorted, args);
     const index = findIndex(unsorted, npc);
 
     if(!npc || index === this.pinPos) return unsorted;
