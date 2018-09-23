@@ -671,17 +671,6 @@
             "requiresLearn": true
         },
         {
-            "name": "MagicMissile",
-            "macro": "cast magicmissile",
-            "icon": "missile-swarm",
-            "color": "#a0a",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
-            "skillTPCost": 1,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "MagicShield",
             "macro": "cast magicshield",
             "icon": "energy-shield",
@@ -691,6 +680,17 @@
             "skillTPCost": 10,
             "requireCharacterLevel": 10,
             "requireSkillLevel": 7,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MagicMissile",
+            "macro": "cast magicmissile",
+            "icon": "missile-swarm",
+            "color": "#a0a",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
+            "skillTPCost": 1,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -762,22 +762,22 @@
             "requiresLearn": true
         },
         {
-            "name": "DarkVision",
-            "macro": "cast darkvision",
-            "icon": "angry-eyes",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See in the darkness. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Darkness",
             "macro": "cast darkness",
             "icon": "dust-cloud",
             "color": "#000",
             "mode": "clickToTarget",
             "tooltipDesc": "Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "DarkVision",
+            "macro": "cast darkvision",
+            "icon": "angry-eyes",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See in the darkness. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
