@@ -61,8 +61,6 @@ DB.init()
           gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
         });
 
-        api.expressApp.use('/colyseus', monitor(gameServer));
-
         server.listen(port);
       });
 
