@@ -85,7 +85,6 @@
     "@angular/platform-browser": "6.1.8",
     "@angular/platform-browser-dynamic": "6.1.8",
     "@angular/router": "6.1.8",
-    "@colyseus/monitor": "^0.1.4",
     "angular-resizable-element": "^3.2.2",
     "angular-walkthrough": "^0.5.6",
     "angular2-virtual-scroll": "^0.4.14",

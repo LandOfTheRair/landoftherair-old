@@ -4,38 +4,38 @@
   "newProjectRoot": "projects",
   "projects": {
     "landoftherair": {
-      "root": "src",
-      "sourceRoot": "src/client",
+      "root": "./src",
+      "sourceRoot": "./src/client",
       "projectType": "application",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist",
-            "index": "src/client/index.html",
-            "main": "src/client/main.ts",
-            "tsConfig": "src/client/tsconfig.app.json",
+            "index": "./src/client/index.html",
+            "main": "./src/client/main.ts",
+            "tsConfig": "./src/client/tsconfig.app.json",
             "showCircularDependencies": false,
-            "polyfills": "src/client/polyfills.ts",
+            "polyfills": "./src/client/polyfills.ts",
             "assets": [
-              "src/client/assets",
-              "src/client/_headers",
-              "src/client/favicon.ico",
-              "src/client/*.png",
-              "src/client/browserconfig.xml",
-              "src/client/manifest.json"
+              "./src/client/assets",
+              "./src/client/_headers",
+              "./src/client/favicon.ico",
+              "./src/client/*.png",
+              "./src/client/browserconfig.xml",
+              "./src/client/manifest.json"
             ],
             "styles": [
-              "node_modules/sweetalert2/dist/sweetalert2.css",
-              "node_modules/ng-drag-drop/style.css",
-              "src/client/macicons/macicons.css",
-              "src/client/styles.scss"
+              "./node_modules/sweetalert2/dist/sweetalert2.css",
+              "./node_modules/ng-drag-drop/style.css",
+              "./src/client/macicons/macicons.css",
+              "./src/client/styles.scss"
             ],
             "scripts": [
-              "node_modules/phaser-ce/build/custom/p2.js",
-              "node_modules/phaser-ce/build/custom/pixi.js",
-              "node_modules/phaser-ce/build/custom/phaser-split.js",
-              "node_modules/phaser-camera-offset/index.js"
+              "./node_modules/phaser-ce/build/custom/p2.js",
+              "./node_modules/phaser-ce/build/custom/pixi.js",
+              "./node_modules/phaser-ce/build/custom/phaser-split.js",
+              "./node_modules/phaser-camera-offset/index.js"
             ]
           },
           "configurations": {
@@ -52,8 +52,8 @@
               "buildOptimizer": false,
               "fileReplacements": [
                 {
-                  "replace": "src/client/environments/environment.ts",
-                  "with": "src/client/environments/environment.prod.ts"
+                  "replace": "./src/client/environments/environment.ts",
+                  "with": "./src/client/environments/environment.prod.ts"
                 }
               ]
             },
@@ -70,8 +70,8 @@
               "buildOptimizer": true,
               "fileReplacements": [
                 {
-                  "replace": "src/client/environments/environment.ts",
-                  "with": "src/client/environments/environment.prod.ts"
+                  "replace": "./src/client/environments/environment.ts",
+                  "with": "./src/client/environments/environment.prod.ts"
                 }
               ]
             }

@@ -9,7 +9,6 @@ import { Logger } from './logger';
 import { includes } from 'lodash';
 
 import { Server, MemsharedPresence } from 'colyseus';
-import { monitor } from '@colyseus/monitor';
 
 import * as Rooms from './rooms';
 
@@ -101,9 +100,6 @@ DB.init()
             gameServer.register(mapName, proto, { mapName, mapPath: file, allMapNames });
           });
 
-          if(process.env.NODE_ENV !== 'production') {
-            api.expressApp.use('/colyseus', monitor(gameServer));
-          }
           server.listen(port);
         });
       }
