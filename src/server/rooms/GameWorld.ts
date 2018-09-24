@@ -288,8 +288,8 @@ export class GameWorld extends Room<GameState> {
     player.z = player.z || 0;
 
     this.usernameClientHash[player.username] = { client };
-    this.state.addPlayer(player, client.id);
     await player.initServer();
+    this.state.addPlayer(player, client.id);
     CharacterHelper.setUpClassFor(player);
 
     player.inGame = true;
