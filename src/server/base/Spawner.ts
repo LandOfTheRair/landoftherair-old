@@ -446,7 +446,7 @@ export class Spawner {
 
     this.npcs.forEach(npc => {
       if(npc.isDead()) return;
-      delete npc.fov;
+      npc.fov = null;
       this.despawnedNPCs.push(npc);
       this.removeNPC(npc, false);
     });
@@ -474,7 +474,7 @@ export class Spawner {
 
       const amINearAPlayer = get(playerLocations, [npc.x, npc.y]);
       if(!amINearAPlayer) {
-        delete npc.fov;
+        npc.fov = null;
       }
 
       if(npc.hostility === 'Never') {
