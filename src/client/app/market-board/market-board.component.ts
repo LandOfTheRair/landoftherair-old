@@ -263,9 +263,9 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
 
         const allItems = [];
 
-        if(data.gold > 0) {
-          const totalTaxPaid = MarketCalculatorHelper.calculateTaxCostForRegion(data.gold, this.mapRegion);
-          allItems.push({ sprite: 212, value: data.gold, taxes: totalTaxPaid, itemId: `${data.gold.toLocaleString()} Gold`, uuid: 'gold' });
+        if(data.currentGold > 0) {
+          const totalTaxPaid = MarketCalculatorHelper.calculateTaxCostForRegion(data.currentGold, this.mapRegion);
+          allItems.push({ sprite: 212, value: data.currentGold, taxes: totalTaxPaid, itemId: `${data.currentGold.toLocaleString()} Gold`, uuid: 'currentGold' });
         }
 
         if(data.items) {

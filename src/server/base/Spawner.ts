@@ -254,8 +254,8 @@ export class Spawner {
       npcData.name = this.room.npcLoader.determineNPCName(npcData);
     }
 
-    if(npcData.gold) {
-      npcData.gold = random(npcData.gold.min, npcData.gold.max);
+    if(npcData.currentGold) {
+      npcData.gold = random(npcData.currentGold.min, npcData.currentGold.max);
     }
 
     if(npcData.hp) {
@@ -380,7 +380,7 @@ export class Spawner {
 
     npc.level += Math.floor(npc.level / 10);
     npc.skillOnKill *= 4;
-    npc.gold *= 4;
+    npc.gainGold(npc.currentGold * 3);
     npc.giveXp.min *= 4;
     npc.giveXp.max *= 4;
 

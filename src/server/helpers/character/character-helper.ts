@@ -67,20 +67,20 @@ export class CharacterHelper {
 
     const pickSlot = () => ({ x: random(x - spread, x + spread), y: random(y - spread, y + spread) });
 
-    if(char.gold > 0) {
+    if(char.currentGold > 0) {
 
       // can't use itemcreator because this is a shared model
       const gold = new Item({
         itemClass: 'Coin',
         name: 'Gold Coin',
         sprite: 212,
-        value: char.gold,
+        value: char.currentGold,
         isBeltable: false,
-        desc: 'gold coins'
+        desc: 'currentGold coins'
       });
 
       char.$$room.addItemToGround(pickSlot(), gold);
-      char.gold = 0;
+      char.spendGold(char.currentGold);
     }
 
     Object.keys(char.gear).forEach(gearSlot => {

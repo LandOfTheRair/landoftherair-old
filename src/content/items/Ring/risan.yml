@@ -9,7 +9,7 @@
       max: 10
   binds: true
   sprite: 267
-  desc: "a gold ring set with a blue gem with a shield etched into it"
+  desc: "a currentGold ring set with a blue gem with a shield etched into it"
   value: 1900
 
   requirements:

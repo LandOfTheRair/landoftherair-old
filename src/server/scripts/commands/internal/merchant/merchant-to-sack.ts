@@ -29,8 +29,8 @@ export class MerchantToSack extends Command {
     }
 
     for(let i = 0; i < maxQuantity; i++) {
-      if(player.gold < item.value) {
-        if(i === 0) player.sendClientMessage('You do not have enough gold for that.');
+      if(player.currentGold < item.value) {
+        if(i === 0) player.sendClientMessage('You do not have enough currentGold for that.');
         return;
       }
 

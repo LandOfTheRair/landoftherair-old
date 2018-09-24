@@ -9,7 +9,7 @@ export class CoinToGround extends Command {
 
   async execute(player: Player, { room, args }) {
     const value = +args;
-    if(value <= 0 || value > player.gold || isNaN(value)) return;
+    if(value <= 0 || value > player.currentGold || isNaN(value)) return;
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     const item = await player.$$room.itemCreator.getGold(value);

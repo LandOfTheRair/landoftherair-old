@@ -58,6 +58,6 @@ export class KillSteffen extends Quest {
     this.rewardPlayerGold(player, 1000);
     player.gainExp(1000);
     player.changeRep('Pirates', 100, true);
-    player.sendClientMessage('You received 1,000 XP, 1,000 gold, and Pirates faction reputation!');
+    player.sendClientMessage('You received 1,000 XP, 1,000 currentGold, and Pirates faction reputation!');
   }
 }

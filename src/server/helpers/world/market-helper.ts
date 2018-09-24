@@ -55,7 +55,7 @@ export class MarketHelper {
   public async listItem(player: Player, item: Item, baseItemListCost: number) {
 
     const totalListingPrice = Math.floor(MarketCalculatorHelper.calculateListingCost(player, baseItemListCost));
-    player.gold -= totalListingPrice;
+    player.spendGold(totalListingPrice);
 
     player.sendClientMessage(`You've spent ${totalListingPrice.toLocaleString()} gold listing your item for sale.`);
 
@@ -103,9 +103,9 @@ export class MarketHelper {
     }
 
     const cost = listing.listingInfo.price;
-    if(player.gold < cost) throw new Error('Player does not have enough gold to buy.');
+    if(player.currentGold < cost) throw new Error('Player does not have enough currentGold to buy.');
 
-    player.gold -= cost;
+    player.spendGold(cost);
 
     await this.removeListingById(listing._id);
     await this.moveTransactionToPickup(player, listing);
@@ -127,10 +127,10 @@ export class MarketHelper {
   public async pickupItem(player: Player, itemUUID: string) {
     const pickupInfo = await this.getPickupByUsername(player.username);
 
-    if(itemUUID === 'gold') {
-      // tax, add to player gold
-      const gainedGold = pickupInfo.gold - MarketCalculatorHelper.calculateTaxCost(player, pickupInfo.gold);
-      player.gold += gainedGold;
+    if(itemUUID === 'currentGold') {
+      // tax, add to player currentGold
+      const gainedGold = pickupInfo.currentGold - MarketCalculatorHelper.calculateTaxCost(player, pickupInfo.currentGold);
+      player.earnGold(gainedGold);
 
       await DB.$marketPickups.update({ username: player.username }, { $set: { gold: 0 } });
     } else {

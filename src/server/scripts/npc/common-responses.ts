@@ -83,7 +83,7 @@ export const PeddlerResponses = (npc: NPC) => {
 
       if(player.rightHand) return 'Please empty your right hand!';
 
-      if(player.gold < npc.peddleCost) return `I can't offer this for free. You need ${npc.peddleCost.toLocaleString()} gold for a ${npc.peddleItem}.`;
+      if(player.currentGold < npc.peddleCost) return `I can't offer this for free. You need ${npc.peddleCost.toLocaleString()} gold for a ${npc.peddleItem}.`;
 
       player.spendGold(npc.peddleCost, `Service:Peddler:${npc.rightHand.name}`);
 
@@ -147,7 +147,7 @@ export const SmithResponses = (npc: NPC) => {
       if(cost <= 0 && missingCondition > 0) cost = 1;
 
       if(cost === 0) return 'That item is not in need of repair!';
-      if(player.gold < cost) return `You need ${cost.toLocaleString()} gold to repair that item.`;
+      if(player.currentGold < cost) return `You need ${cost.toLocaleString()} gold to repair that item.`;
 
       player.spendGold(cost, `Service:Repair`);
 
@@ -170,7 +170,7 @@ export const SmithResponses = (npc: NPC) => {
         if(!item || item.condition > maxCondition) return;
 
         const cost = Math.floor((maxCondition - item.condition) / 1000 * cpt);
-        if(cost === 0 || cost > player.gold) return;
+        if(cost === 0 || cost > player.currentGold) return;
 
         totalCosts += cost;
 
@@ -199,7 +199,7 @@ export const SmithResponses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       const assessCost = 50;
-      if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
+      if(player.currentGold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
       player.spendGold(assessCost, `Service:Assess`);
 
@@ -226,7 +226,7 @@ export const SmithResponses = (npc: NPC) => {
 
       player.tradeSkillContainers.metalworking.gainOre('copper', copper);
       player.tradeSkillContainers.metalworking.gainOre('silver', silver);
-      player.tradeSkillContainers.metalworking.gainOre('gold', gold);
+      player.tradeSkillContainers.metalworking.gainOre('currentGold', gold);
 
       const copperString = copper > 0 ? `${copper} copper ore` : '';
       const silverString = silver > 0 ? `${silver} silver ore` : '';
@@ -414,7 +414,7 @@ export const AlchemistResponses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       const assessCost = 50;
-      if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
+      if(player.currentGold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
       player.spendGold(assessCost, `Service:Assess`);
 
@@ -445,7 +445,7 @@ export const BankResponses = (npc: NPC) => {
       const amount = +args.amount;
       const region = npc.bankId;
       const res = player.$$room.depositBankMoney(player, region, amount);
-      if(res === false) return 'That amount of gold is not valid.';
+      if(res === false) return 'That amount of currentGold is not valid.';
       if(res === 0) return 'What, do you think you\'re funny? Get out of line, there are other people to service!';
       return `Thank you, you have deposited ${res.toLocaleString()} gold into the ${region} National Bank. Your new balance is ${player.$$banks[region].toLocaleString()} gold.`;
     });
@@ -458,7 +458,7 @@ export const BankResponses = (npc: NPC) => {
       const amount = +args.amount;
       const region = npc.bankId;
       const res = player.$$room.withdrawBankMoney(player, region, amount);
-      if(res === false) return 'That amount of gold is not valid.';
+      if(res === false) return 'That amount of currentGold is not valid.';
       if(res === 0) return 'Hey, do I look like a charity to you? Get lost!';
       return `Thank you, you have withdrawn ${res.toLocaleString()} gold into the ${region} National Bank. Your new balance is ${player.$$banks[region].toLocaleString()} gold.`;
     });
@@ -576,7 +576,7 @@ export const EncrusterResponses = (npc: NPC) => {
 
       const cost = player.leftHand.value + player.rightHand.value + 500;
 
-      if(player.gold < cost) return `I require ${cost.toLocaleString()} gold for this transaction.`;
+      if(player.currentGold < cost) return `I require ${cost.toLocaleString()} gold for this transaction.`;
 
       const prevEncrust = player.rightHand.encrust;
 
@@ -639,7 +639,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       const maxAssessSkill = npc.maxSkillTrain;
 
       const assessCost = maxAssessSkill * 10;
-      if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
+      if(player.currentGold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
       player.spendGold(assessCost, `Service:Assess`);
 
@@ -658,7 +658,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       const level = player.level;
 
       const trainCost = npc.maxLevelUpLevel * 50;
-      if(player.gold < trainCost) return `I require ${trainCost} gold for my training.`;
+      if(player.currentGold < trainCost) return `I require ${trainCost} gold for my training.`;
 
       if(level >= npc.maxLevelUpLevel) return 'You are too advanced for my teachings.';
 
@@ -693,7 +693,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       if(player.baseClass !== npc.classTrain) return 'I have nothing to teach you.';
 
       const learnCost = npc.maxSkillTrain * 100;
-      if(player.gold < learnCost) return `I require ${learnCost} gold for my teaching.`;
+      if(player.currentGold < learnCost) return `I require ${learnCost} gold for my teaching.`;
 
       const gainedTP = player.skillTree.calculateNewTPFromSkills(player);
       player.$$room.updateSkillTree(player);
@@ -777,7 +777,7 @@ export const SpellforgingResponses = (npc: NPC) => {
       if(!SpellforgingHelper.canSpellforge(player)) return 'You are not able to Spellforge.';
 
       const assessCost = 50;
-      if(player.gold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
+      if(player.currentGold < assessCost) return `I require ${assessCost.toLocaleString()} gold for my assessment.`;
 
       player.spendGold(assessCost, `Service:Assess`);
 
@@ -929,7 +929,7 @@ export const HPDocResponses = (npc: NPC) => {
       const maxHpForTier = hpTiers[player.baseClass][npc.hpTier];
 
       if(playerBaseHp > maxHpForTier) return 'Too powerful! No help!';
-      if(!player.$$room.npcLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
+      if(!player.$$room.npcLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No currentGold! No help!';
 
       let cost = calcRequiredGoldForNextHPMP(player, maxHpForTier, hpNormalizers[npc.hpTier], hpCosts[npc.hpTier]);
       let totalHPGained = 0;
@@ -1007,7 +1007,7 @@ export const MPDocResponses = (npc: NPC) => {
       const maxMpForTier = mpTiers[player.baseClass][npc.mpTier];
 
       if(playerBaseMp > maxMpForTier) return 'Too powerful! No help!';
-      if(!player.$$room.npcLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
+      if(!player.$$room.npcLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No currentGold! No help!';
 
       let cost = calcRequiredGoldForNextHPMP(player, maxMpForTier, mpNormalizers[npc.mpTier], mpCosts[npc.mpTier]);
       let totalMPGained = 0;

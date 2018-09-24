@@ -6,7 +6,7 @@
     necroticResist: 10
     poisonResist: 10
     defense: 1
-  desc: "a gold robe made from the hide of a deer"
+  desc: "a currentGold robe made from the hide of a deer"
   value: 100
   sprite: 385
 
@@ -30,7 +30,7 @@
     energyResist: 10
     mpregen: 2
   binds: true
-  desc: "a red robe with a shimmering gold trim"
+  desc: "a red robe with a shimmering currentGold trim"
   value: 400
   sprite: 488
 
@@ -48,7 +48,7 @@
     level: 1
   binds: true
   tellsBind: true
-  desc: "a red robe with a shimmering gold trim engraved with the markings of a shaman"
+  desc: "a red robe with a shimmering currentGold trim engraved with the markings of a shaman"
   value: 1400
   sprite: 488
 
@@ -142,7 +142,7 @@
     level: 3
   binds: true
   tellsBind: true
-  desc: "a gold-trimmed robe stained crimson from ether mist"
+  desc: "a currentGold-trimmed robe stained crimson from ether mist"
   value: 7891
   sprite: 488
 

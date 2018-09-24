@@ -19,7 +19,7 @@ export const responses = (npc: NPC) => {
     'The Renegade camp in the southeast is full of dangerous brigands!',
     'The cave to the east is filled with practitioners of magic and their golems!',
     'Thieves prefer to hide!',
-    'The Banker can hold onto your gold!',
+    'The Banker can hold onto your currentGold!',
     'The Smith can repair your broken and breaking gear!',
     'Try asking the Healer to RECALL you!',
     'The Healer can REVIVE your comrades!',

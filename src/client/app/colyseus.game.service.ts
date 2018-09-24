@@ -780,7 +780,7 @@ export class ColyseusGameService {
         inputValue: 1,
         inputAttributes: {
           min: 0,
-          max: this.character.gold
+          max: this.character.currentGold
         },
         showCancelButton: true,
         cancelButtonText: 'Max',
@@ -796,11 +796,11 @@ export class ColyseusGameService {
 
       if(result.dismiss) {
         if(result.dismiss === 'cancel') {
-          args = '' + this.character.gold;
+          args = '' + this.character.currentGold;
           this.sendRawCommand(cmd, args);
         }
       } else {
-        args = '' + Math.round(Math.min(this.character.gold, result));
+        args = '' + Math.round(Math.min(this.character.currentGold, result));
         this.sendRawCommand(cmd, args);
       }
 

@@ -14,7 +14,7 @@ export class Steal extends Skill {
     icon: 'take-my-money',
     color: '#7F6B00',
     mode: 'lockActivation',
-    tooltipDesc: 'Steal gold and items from your target.'
+    tooltipDesc: 'Steal currentGold and items from your target.'
   };
 
   public name = 'steal';

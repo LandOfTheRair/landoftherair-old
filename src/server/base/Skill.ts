@@ -146,7 +146,7 @@ export abstract class Skill extends Command {
 
   async facilitateSteal(user: Character, target: Character) {
 
-    if(target.sack.allItems.length === 0 && target.gold <= 0) {
+    if(target.sack.allItems.length === 0 && target.currentGold <= 0) {
       user.sendClientMessage('You can\'t seem to find anything to take!');
       return;
     }
@@ -168,7 +168,7 @@ export abstract class Skill extends Command {
 
     const stealMod = 1 + user.getTraitLevelAndUsageModifier('NimbleStealing');
 
-    if(target.gold > 0) {
+    if(target.currentGold > 0) {
       if(random(0, stealRoll) < 30 - stealMod) {
         gainThiefSkill(user, 1);
         target.addAgro(user, 1);
@@ -182,16 +182,16 @@ export abstract class Skill extends Command {
       const stolenGold = Math.max(
         1,
         Math.min(
-          target.gold,
+          target.currentGold,
           mySkill * 100 * stealMod,
-          Math.max(5, Math.floor(target.gold * (fuzzedSkill / 100)))
+          Math.max(5, Math.floor(target.currentGold * (fuzzedSkill / 100)))
         )
       );
 
       const handName = this.getEmptyHand(user);
       if(!handName) return;
 
-      target.gold -= stolenGold;
+      target.spendGold(stolenGold);
       const item = await user.$$room.itemCreator.getGold(stolenGold);
 
       user[`set${handName}`](item);

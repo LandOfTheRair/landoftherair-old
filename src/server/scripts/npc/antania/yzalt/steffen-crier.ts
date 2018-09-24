@@ -15,7 +15,7 @@ export const responses = (npc: NPC) => {
     'You should not go far without armor or weapons!',
     'The Alchemist can make your potions last longer!',
     'Thieves prefer to hide!',
-    'The Banker can hold onto your gold!',
+    'The Banker can hold onto your currentGold!',
     'The Smith can repair your broken and breaking gear!',
     'There are tales of a renegade who collects books!',
     'Try asking the Healer to RECALL you!',

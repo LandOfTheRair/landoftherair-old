@@ -18,7 +18,7 @@ export class BuybackToBelt extends Command {
     const item = player.buyback[+slot];
     if(!item) return player.sendClientMessage('You do not see that item.');
 
-    if(player.gold < item._buybackValue) return player.sendClientMessage('You do not have enough gold for that.');
+    if(player.currentGold < item._buybackValue) return player.sendClientMessage('You do not have enough currentGold for that.');
 
     const newItem = new Item(item);
 

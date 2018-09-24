@@ -64,7 +64,7 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
   },
   {
     name: 'Festival: Gold Gain +100%',
-    desc: 'Get +100% more gold per kill for 6 hours. Additional purchases increase duration, not bonus.',
+    desc: 'Get +100% more currentGold per kill for 6 hours. Additional purchases increase duration, not bonus.',
     icon: 'two-shadows',
     fgColor: '#aa0',
     maxPurchases: 99999,

@@ -164,6 +164,13 @@ export class Player extends Character {
     if(isUndefined(this.daily.item)) this.daily.item = {};
     if(isUndefined(this.daily.quest)) this.daily.quest = {};
 
+    if(isUndefined(this.currency)) this.currency = { gold: 0 };
+
+    if((<any>this).gold) {
+      this.currency.gold = (<any>this).gold;
+      delete (<any>this).gold;
+    }
+
     this.$$skillTree = await this.$$room.skillTreeHelper.loadSkillTree(this);
 
     delete (<any>this).additionalStats;
@@ -664,7 +671,7 @@ export class Player extends Character {
   canTakeItem(item: Item): boolean {
     if(!item.requirements) return true;
     if(!item.requirements.quest) return true;
-    
+
     return this.hasQuestName(item.requirements.quest);
   }
 
@@ -801,16 +808,20 @@ export class Player extends Character {
     super._gainSkill(type, val);
   }
 
-  spendGold(gold: number, on: string) {
+  spendGold(gold: number, on?: string) {
     super.spendGold(gold, on);
 
-    this.$$room.analyticsHelper.trackGoldFlow('Sink', this, gold, on);
+    if(on) {
+      this.$$room.analyticsHelper.trackGoldFlow('Sink', this, gold, on);
+    }
   }
 
-  earnGold(gold: number, reason: string) {
+  earnGold(gold: number, reason?: string) {
     super.earnGold(gold, reason);
 
-    this.$$room.analyticsHelper.trackGoldFlow('Source', this, gold, reason);
+    if(reason) {
+      this.$$room.analyticsHelper.trackGoldFlow('Source', this, gold, reason);
+    }
   }
 
 }

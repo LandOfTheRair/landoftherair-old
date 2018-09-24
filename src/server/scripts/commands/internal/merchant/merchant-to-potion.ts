@@ -19,7 +19,7 @@ export class MerchantToPotion extends Command {
 
     if(item.itemClass !== 'Bottle') return player.sendClientMessage('That item is not a bottle.');
 
-    if(player.gold < item.value) return player.sendClientMessage('You do not have enough gold for that.');
+    if(player.currentGold < item.value) return player.sendClientMessage('You do not have enough currentGold for that.');
 
     if(item.daily) {
       if(!player.canBuyDailyItem(item)) return player.sendClientMessage('Sorry, that\'s sold out at the moment. Check back tomorrow!');

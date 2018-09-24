@@ -9,7 +9,7 @@ export class CoinToLeft extends Command {
 
   async execute(player: Player, { args }) {
     const value = +args;
-    if(value <= 0 || value > player.gold || isNaN(value)) return false;
+    if(value <= 0 || value > player.currentGold || isNaN(value)) return false;
 
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
     this.trySwapLeftToRight(player);

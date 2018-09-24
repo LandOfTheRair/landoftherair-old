@@ -74,8 +74,8 @@ export class DeathHelper {
 
     let allItems = await LootHelper.getAllLoot(npc, bonus);
 
-    if(npc.gold) {
-      const adjustedGold = npc.$$room.calcAdjustedGoldGain(npc.gold);
+    if(npc.currentGold) {
+      const adjustedGold = npc.$$room.calcAdjustedGoldGain(npc.currentGold);
       const gold = await npc.$$room.itemCreator.getGold(adjustedGold);
       allItems.push(gold);
     }
@@ -86,7 +86,7 @@ export class DeathHelper {
     } else if(allItems.length > 0) {
 
       if(npc.isNaturalResource && killer) {
-        // we only concat the sack for natural resources because 
+        // we only concat the sack for natural resources because
         // when we kill them and get bonus items via Survival they go in sack
         allItems = allItems.concat(npc.sack.allItems);
 

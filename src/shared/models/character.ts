@@ -186,7 +186,11 @@ export class Character {
   mp: RestrictedNumber = new RestrictedNumber(0, 0, 0);
   exp = 1000;
 
-  gold = 0;
+  currency: any = { gold: 0 };
+
+  public get currentGold(): number {
+    return this.currency.gold;
+  }
 
   protected stats: Stats = new Stats();
   protected totalStats: any = new Stats();
@@ -789,19 +793,21 @@ export class Character {
 
   gainGold(gold: number) {
     if(gold <= 0) return;
-    this.gold += gold;
+    gold = Math.round(gold);
+    this.currency.gold += gold;
   }
 
-  earnGold(gold: number, reason: string) {
+  earnGold(gold: number, reason?: string) {
     this.gainGold(gold);
   }
 
   private loseGold(gold: number) {
-    this.gold -= gold;
-    if(this.gold <= 0) this.gold = 0;
+    gold = Math.round(gold);
+    this.currency.gold -= gold;
+    if(this.currency.gold <= 0) this.currency.gold = 0;
   }
 
-  spendGold(gold: number, on: string) {
+  spendGold(gold: number, on?: string) {
     this.loseGold(gold);
   }
 
@@ -1010,6 +1016,8 @@ export class Character {
 
   gainExp(xp: number) {
     if(this.isDead()) return;
+
+    xp = Math.round(xp);
 
     const prevXp = this.exp;
 

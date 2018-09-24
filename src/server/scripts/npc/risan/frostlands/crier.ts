@@ -16,7 +16,7 @@ export const responses = (npc: NPC) => {
     'Potions can be a saving grace!',
     'The Alchemist can make your potions last longer!',
     'Thieves prefer to hide!',
-    'The Banker can hold onto your gold!',
+    'The Banker can hold onto your currentGold!',
     'The Smith can repair your broken and breaking gear!',
     'Try asking the Healer to RECALL you!',
     'The Healer can REVIVE your comrades!',

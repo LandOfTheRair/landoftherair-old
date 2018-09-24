@@ -84,12 +84,12 @@
             </div>
 
             <div class="thin-line">
-              <small [class.text-danger]="itemListing.listingInfo.price > player.gold"><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
+              <small [class.text-danger]="itemListing.listingInfo.price > player.currentGold"><em>{{ itemListing.listingInfo.price | number }} gold</em></small>
             </div>
           </div>
 
           <div class="col m-0 p-0 vertical-center">
-            <button class="btn btn-primary" [disabled]="itemListing.listingInfo.price > player.gold" (click)="buy(itemListing)">Buy</button>
+            <button class="btn btn-primary" [disabled]="itemListing.listingInfo.price > player.currentGold" (click)="buy(itemListing)">Buy</button>
           </div>
 
         </div>
@@ -160,7 +160,7 @@
       <div class="col-4 text-center">
         <input type="number" class="form-control" [(ngModel)]="sellValue" min="1" placeholder="Sell for this much gold..." />
       </div>
-      <div class="col-4 text-center" [class.text-danger]="listingFee > player.gold">
+      <div class="col-4 text-center" [class.text-danger]="listingFee > player.currentGold">
         {{ listingFee | number }} gold
       </div>
       <div class="col"></div>
@@ -258,7 +258,7 @@
             {{ starTextFor(itemInfo) }}
           </div>
 
-          <div *ngIf="itemInfo.uuid === 'gold'">
+          <div *ngIf="itemInfo.uuid === 'currentGold'">
             <small><em>You will pay {{ itemInfo.taxes | number }} gold after taxes ({{ taxRate }}).</em></small>
           </div>
         </div>

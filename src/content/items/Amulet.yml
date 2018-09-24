@@ -3,7 +3,7 @@
   stats:
     defense: 1
   sprite: 231
-  desc: "a simple gold chain amulet"
+  desc: "a simple currentGold chain amulet"
   value: 1000
 
 - name: Rylt Apprentice Regen Amulet
@@ -144,5 +144,5 @@
     hp: 200
   binds: true
   sprite: 231
-  desc: "a gold chain formerly used as a bookmark"
+  desc: "a currentGold chain formerly used as a bookmark"
   value: 5000

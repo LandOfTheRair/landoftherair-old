@@ -52,7 +52,7 @@ export class MarketCalculatorHelper {
     if(item.encrust)                          return 'Item is encrusted, and cannot be sold.';
     if(item.owner)                            return 'Item is bound, and cannot be sold.';
 
-    const gold = player.gold;
+    const gold = player.currentGold;
 
     const totalListingFee = MarketCalculatorHelper.calculateListingCostForRegion(baseItemListCost, region);
 

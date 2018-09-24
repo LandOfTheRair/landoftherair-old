@@ -5,7 +5,7 @@ import { TesterHelper } from '../../../helpers/tester/tester-helper';
 
 export class TesterGainGold extends Command {
 
-  public name = '^gold';
+  public name = '^currentGold';
   public format = 'Gold';
 
   async execute(player: Player, { args }) {

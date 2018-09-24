@@ -314,7 +314,7 @@ export class Lobby extends Room<LobbyState> {
     const stats = pick(character, ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'con', 'luk', 'cha']);
     const name = character.name;
     const sex = character.sex;
-    const gold = character.gold;
+    const gold = character.currentGold;
     const allegiance = character.allegiance;
 
     const player: Player = new Player({

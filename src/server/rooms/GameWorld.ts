@@ -425,7 +425,7 @@ export class GameWorld extends Room<GameState> {
 
     await this.savePlayerPouch(savePlayer);
     await this.skillTreeHelper.saveSkillTree(player);
-
+    
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }
 
@@ -586,7 +586,7 @@ export class GameWorld extends Room<GameState> {
     if(isNaN(amount)) return false;
 
     if(amount < 0) return false;
-    if(amount > player.gold) amount = player.gold;
+    if(amount > player.currentGold) amount = player.currentGold;
 
     player.$$banks = player.$$banks || {};
     player.$$banks[region] = player.$$banks[region] || 0;
