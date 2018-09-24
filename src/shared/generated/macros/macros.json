@@ -1,22 +1,22 @@
 {
     "allMeta": [
         {
-            "name": "Chase",
-            "macro": "chase",
-            "icon": "hooded-figure",
-            "color": "#000000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Move towards a target.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Climb",
             "macro": "climb up",
             "icon": "ladder",
             "color": "#D2691E",
             "mode": "autoActivate",
             "tooltipDesc": "Climb up or down on this tile.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Chase",
+            "macro": "chase",
+            "icon": "hooded-figure",
+            "color": "#000000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Move towards a target.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -31,22 +31,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show stats",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your stats and their base level in text form.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Show Skills",
             "macro": "show skills",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "See all of your skills and skill levels in text form.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Show Stats",
+            "macro": "show stats",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your stats and their base level in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -153,16 +153,6 @@
             "requiresLearn": false
         },
         {
-            "name": "Jumpkick",
-            "macro": "jumpkick",
-            "icon": "high-kick",
-            "color": "#530000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Jump and kick an enemy. Requires Martial skill 5.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Kick",
             "macro": "kick",
             "icon": "barefoot",
@@ -203,6 +193,16 @@
             "requiresLearn": false
         },
         {
+            "name": "Jumpkick",
+            "macro": "jumpkick",
+            "icon": "high-kick",
+            "color": "#530000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Jump and kick an enemy. Requires Martial skill 5.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Afflict",
             "macro": "cast afflict",
             "icon": "bolas",
@@ -234,16 +234,6 @@
             "requiresLearn": true
         },
         {
-            "name": "BarNecro",
-            "macro": "cast barnecro",
-            "icon": "rosa-shield",
-            "color": "#1b390e",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield necrotic damage for a single target. Cost: 40 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Autoheal",
             "macro": "cast autoheal",
             "icon": "self-love",
@@ -251,6 +241,16 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Automatically heal when health gets too low. Cost: 50 MP",
             "requireSkillLevel": 15,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarNecro",
+            "macro": "cast barnecro",
+            "icon": "rosa-shield",
+            "color": "#1b390e",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield necrotic damage for a single target. Cost: 40 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -319,19 +319,6 @@
             "requiresLearn": true
         },
         {
-            "name": "PowerwordBarFrost",
-            "macro": "powerword barfrost",
-            "icon": "rosa-shield",
-            "color": "#000080",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Shield frost damage for your party. Cost: 30 MP / target",
-            "requireSkillLevel": 13,
-            "skillTPCost": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "PowerwordBarFire",
             "macro": "powerword barfire",
             "icon": "rosa-shield",
@@ -339,6 +326,19 @@
             "bgColor": "#000",
             "mode": "autoActivate",
             "tooltipDesc": "Shield fire damage for your party. Cost: 30 MP / target",
+            "requireSkillLevel": 13,
+            "skillTPCost": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "PowerwordBarFrost",
+            "macro": "powerword barfrost",
+            "icon": "rosa-shield",
+            "color": "#000080",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Shield frost damage for your party. Cost: 30 MP / target",
             "requireSkillLevel": 13,
             "skillTPCost": 10,
             "isSystem": true,
@@ -925,22 +925,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Set",
-            "macro": "cast set",
-            "icon": "quake-stomp",
-            "color": "#530000",
-            "mode": "clickToActivate",
-            "tooltipDesc": "Set a trap from your hand. Traps can be purchased from thief vendors.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "ShadowClones",
             "macro": "cast shadowclones",
             "icon": "dark-squad",
             "color": "#111",
             "mode": "autoActivate",
             "tooltipDesc": "Summon some shadow backup to help you slaughter your foes. Cost: 300 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Set",
+            "macro": "cast set",
+            "icon": "quake-stomp",
+            "color": "#530000",
+            "mode": "clickToActivate",
+            "tooltipDesc": "Set a trap from your hand. Traps can be purchased from thief vendors.",
             "isSystem": true,
             "requiresLearn": true
         },
