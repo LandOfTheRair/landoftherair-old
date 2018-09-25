@@ -39,6 +39,7 @@ import { Signal } from 'signals.js';
 import { SkillTreeHelper } from '../helpers/skill-trees/skill-tree-helper';
 import { MarketHelper } from '../helpers/world/market-helper';
 import { AnalyticsHelper } from '../helpers/world/analytics-helper';
+import { globalResponses, globalSetup } from '../scripts/npc/global-responses';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-miss' | 'block-shield' | 'block-weapon' | 'block-offhand';
@@ -829,10 +830,12 @@ export class GameWorld extends Room<GameState> {
       try {
         if(npc.script) {
           const { setup, responses } = require(`${__dirname}/../scripts/npc/${npc.script}`);
+          await globalSetup(npc);
           await setup(npc);
 
           if(npc.hostility === 'Never') {
             npc.parser = new Parser();
+            globalResponses(npc);
             responses(npc);
           }
         }
