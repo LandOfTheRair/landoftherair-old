@@ -84,7 +84,7 @@ export class TraitsComponent implements AfterViewInit, OnInit, OnDestroy {
       this.d3tooltip.nativeElement,
       this.colyseusGame,
       this.assetsService.assetUrl,
-      AllTrees[this.player.baseClass],
+      AllTrees[this.player.baseClass].default,
       AllConfigs[this.player.baseClass]
     );
 
