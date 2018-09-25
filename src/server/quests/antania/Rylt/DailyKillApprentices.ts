@@ -3,6 +3,7 @@ import { clone, includes } from 'lodash';
 
 import { Quest } from '../../../base/Quest';
 import { Player } from '../../../../shared/models/player';
+import { HolidayHelper } from '../../../helpers/world/holiday-helper';
 
 export class DailyKillApprentices extends Quest {
 
@@ -64,5 +65,7 @@ export class DailyKillApprentices extends Quest {
     const gainedResetPoints = player.skillTree.canGainResetPoints ? 2 : 0;
     player.skillTree.gainResetPoints(gainedResetPoints);
     player.sendClientMessage(`You received 5,000 XP, 5,000 gold, 1 silver and ${gainedResetPoints} RP!`);
+
+    HolidayHelper.tryGrantHolidayTokens(player, 15);
   }
 }

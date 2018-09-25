@@ -1,4 +1,8 @@
 
+import { some } from 'lodash';
+
+import { Player } from '../../../shared/models/player';
+
 export enum Holiday {
   Halloween = 'Halloween'
 }
@@ -22,4 +26,15 @@ export class HolidayHelper {
     return holidayChecker[hol]();
   }
 
+  static isAnyHoliday(): boolean {
+    return some(Object.keys(holidayChecker).map(hol => holidayChecker[hol]()));
+  }
+
+  static tryGrantHolidayTokens(player: Player, amt: number): void {
+    if(!HolidayHelper.isAnyHoliday()) return;
+
+    player.sendClientMessage(`You also earned ${amt} holiday tokens!`);
+  }
 }
+
+

@@ -1,4 +1,5 @@
 import { NPC } from '../../../../../shared/models/npc';
+import { HolidayHelper } from '../../../../helpers/world/holiday-helper';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
@@ -52,6 +53,9 @@ export const responses = (npc: NPC) => {
         player.skillTree.gainResetPoints(gainedResetPoints);
 
         player.sendClientMessage(`You received 100,000 XP, 30,000 gold, 1 silver and ${gainedResetPoints} RP!`);
+
+        HolidayHelper.tryGrantHolidayTokens(player, 25);
+
         return `Thanks, ${player.name}! We'll see you tomorrow!`;
       }
 
