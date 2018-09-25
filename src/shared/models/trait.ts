@@ -17,6 +17,7 @@ export class Trait {
   static traitName = 'Name';
   static description = 'Description';
   static icon = '';
+  static isFree: boolean;
 
   static upgrades: TraitUpgrade[] = [];
 
@@ -40,5 +41,22 @@ export class Trait {
 
   static currentlyInEffect(player: Player): boolean {
     return !this.baseClass || player.baseClass === this.baseClass;
+  }
+}
+
+export class FreeTrait extends Trait {
+
+  static isFree = true;
+
+  static determineUpgradeCost(): number {
+    return 0;
+  }
+
+  static canBuy(): boolean {
+    return false;
+  }
+
+  static buy(): void {
+    return;
   }
 }

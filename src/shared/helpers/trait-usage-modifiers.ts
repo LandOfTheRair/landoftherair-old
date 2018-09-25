@@ -60,6 +60,8 @@ export class TraitUsageModifiers {
       case 'PartyOffense':              return level * 2;
       case 'PartyDefense':              return level * 2;
 
+      case 'SlowDigestion':       return level * 0.2;
+
       default: return level;
     }
   }

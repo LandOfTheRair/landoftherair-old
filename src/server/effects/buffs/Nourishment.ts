@@ -28,6 +28,8 @@ export class Nourishment extends SpellEffect {
       char.unapplyEffect(isMalnourished, true);
     }
 
+    this.duration += Math.round(this.duration * char.getTraitLevelAndUsageModifier('SlowDigestion'));
+
     char.$$hungerTicks = this.duration + (3600 * 6);
 
     if(this.tooltip) this.iconData.tooltipDesc = `Nourished: ${this.tooltip}`;

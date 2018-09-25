@@ -741,11 +741,12 @@ export class Player extends Character {
   public isTraitInEffect(trait: string): boolean {
     if(!this.traitLevels) return false;
 
+    const traitObj = AllTraits.Common[trait] || AllTraits.Free[trait] || AllTraits[this.baseClass][trait];
+    if(!traitObj) return false;
+    if(traitObj.isFree) return traitObj.currentlyInEffect(this);
+
     const traitRef = this.traitLevels[trait];
     if(!traitRef) return false;
-
-    const traitObj = AllTraits.Common[trait] || AllTraits[this.baseClass][trait];
-    if(!traitObj) return false;
 
     return traitObj.currentlyInEffect(this);
   }

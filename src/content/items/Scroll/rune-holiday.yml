@@ -1,0 +1,44 @@
+
+# Halloween Rune Scrolls
+- name: Rune Scroll - Slow Digestion I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Slow Digestion I\""
+  trait:
+    name: SlowDigestion
+    level: 1
+  value: 500
+
+- name: Rune Scroll - Slow Digestion II
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Slow Digestion II\""
+  trait:
+    name: SlowDigestion
+    level: 2
+  value: 1000
+
+- name: Rune Scroll - Slow Digestion III
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Slow Digestion III\""
+  trait:
+    name: SlowDigestion
+    level: 3
+  value: 2000
+
+- name: Rune Scroll - Slow Digestion IV
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Slow Digestion IV\""
+  trait:
+    name: SlowDigestion
+    level: 4
+  value: 4000
+
+- name: Rune Scroll - Slow Digestion V
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Slow Digestion V\""
+  trait:
+    name: SlowDigestion
+    level: 5
+  cosmetic:
+    name: EtherNebula
+    isPermanent: true
+  value: 8000
