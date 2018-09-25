@@ -144,3 +144,5 @@ export * from './party/PartyOffense';
 export * from './party/PartyDefense';
 
 export * from './map/MinerFever';
+
+export * from './holiday/ZombieScratch';
