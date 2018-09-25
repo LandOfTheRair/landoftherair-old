@@ -24,6 +24,7 @@ export class CharacterSelectComponent implements OnInit, OnDestroy {
   public confirmOverwrite: boolean;
 
   private account$: any;
+  private hasToured: boolean;
 
   public get statusString(): string {
     if(!this.resourcesLoaded.done) return 'Loading... (' + this.resourcesLoaded.current + '/' + this.resourcesLoaded.total + ')';
@@ -43,7 +44,8 @@ export class CharacterSelectComponent implements OnInit, OnDestroy {
 
     // give users a brief tour if their account has no characters
     this.account$ = this.lobby.myAccount$.subscribe(() => {
-      if(!this.lobby.myAccount.username) return;
+      if(!this.lobby.myAccount.username || this.hasToured) return;
+      this.hasToured = true;
       if(!some(this.lobby.myAccount.characterNames)) this.lobby.tour$.next(true);
     });
   }

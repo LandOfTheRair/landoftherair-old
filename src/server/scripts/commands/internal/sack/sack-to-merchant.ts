@@ -12,9 +12,10 @@ export class SackToMerchant extends Command {
 
     const [slot, merchantUUID] = args.split(' ');
 
-    const container = room.state.findNPC(merchantUUID);
-    if(!container) return player.sendClientMessage('That person is not here.');
-    if(container.distFrom(player) > 2) return player.sendClientMessage('That person is too far away.');
+    if(!this.checkMerchantDistance(player, merchantUUID)) return;
+
+    const npc = this.getNPCInView(player, merchantUUID);
+    if(npc.$$vendorCurrency) return player.sendClientMessage('Sorry, if you want to sell stuff you gotta go somewhere else.');
 
     const itemCheck = player.sack.getItemFromSlot(+slot);
     if(!itemCheck) return false;

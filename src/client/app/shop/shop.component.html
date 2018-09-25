@@ -1,8 +1,20 @@
 
 <div class="p-1 shop-container" droppable dropScope="merchant" (onDrop)="colyseusGame.buildDropAction($event, 'Merchant')">
-  <div class="row p-0">
 
-    <div class="col-9 shop-area d-flex flex-wrap flex-row">
+  <div class="row mt-1">
+    <div class="col text-center">
+      You have
+      {{ (colyseusGame.character.currency[colyseusGame.showShop.vendorCurrency || 'gold'] || 0) | number:0 }}
+      {{ colyseusGame.showShop.vendorCurrency }}
+      {{ colyseusGame.showShop.vendorCurrency ? 'tokens' : 'gold' }}.
+    </div>
+  </div>
+
+  <div class="row mt-3 p-0">
+
+    <div class="shop-area d-flex flex-wrap flex-row mb-3"
+         [class.col-9]="!colyseusGame.showShop.vendorCurrency"
+         [class.col-12]="colyseusGame.showShop.vendorCurrency">
 
       <h4 class="w-100 text-center">Vendor Items</h4>
 
@@ -19,7 +31,7 @@
 
     </div>
 
-    <div class="col-3 buyback-area d-flex flex-wrap flex-column">
+    <div class="col-3 buyback-area d-flex flex-wrap flex-column" [class.hidden]="colyseusGame.showShop.vendorCurrency">
 
       <h4 class="w-100 text-center">Buyback</h4>
 
@@ -35,7 +47,7 @@
 
   </div>
 
-  <div class="row m-3 mb-3 p-0">
+  <div class="row m-3 mb-3 p-0" [class.hidden]="colyseusGame.showShop.vendorCurrency">
     <h4 class="w-100 text-center">Sell From Sack</h4>
 
     <div class="col-4 text-right vertical-center">

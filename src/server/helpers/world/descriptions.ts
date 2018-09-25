@@ -134,7 +134,7 @@ const DecorGids = {
   883: 'You are standing near an alchemy table. Be careful what you mix together here lest it blow up.',
   884: 'You are standing on what probably was a bale of hay. Soft enough to take a nap!',
   885: 'You are standing near a pile of books and scrolls. Someone made a mess of this.',
-  886: 'You are standing on some rocks. If you\'re not careful, you\'ll fall and spill your currentGold everywhere.',
+  886: 'You are standing on some rocks. If you\'re not careful, you\'ll fall and spill your gold everywhere.',
   894: 'You are standing near a blackjack table. Hit me!',
   895: 'You are standing near a roulette table. All on black!',
 

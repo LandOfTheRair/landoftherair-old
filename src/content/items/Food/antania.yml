@@ -1,0 +1,88 @@
+
+- name: Antanian Bear Meat
+  sprite: 932
+  desc: "a fresh chunk of bear meat from an Antanian bear"
+  value: 100
+  effect:
+    name: Nourishment
+    tooltip: "+1 STR"
+    message: "The beat meat is tender!"
+    stats:
+      str: 1
+    duration: 10800
+
+- name: Yzalt Steffen Apple
+  sprite: 560
+  desc: "a ripe apple"
+  value: 100
+  effect:
+    name: Nourishment
+    tooltip: "+1 INT"
+    message: "The apple is delicious!"
+    stats:
+      int: 1
+    duration: 3600
+
+- name: Tower Spider Egg
+  sprite: 72
+  desc: "a broken spider egg from a war torn spider"
+  value: 10
+  effect:
+    name: Nourishment
+    tooltip: "+1 STR, +1 DEX, +1 AGI"
+    message: "The egg innards has a strangely rough texture."
+    stats:
+      str: 1
+      dex: 1
+      agi: 1
+    duration: 3600
+
+- name: Rotting Mummy Grub
+  sprite: 70
+  notUsableAfterHours: 24
+  desc: "a grub feasting on the remains of its former host"
+  value: 1
+  binds: true
+  effect:
+    name: Nourishment
+    tooltip: "+60 Poison Resist, +30 Disease Resist"
+    message: "The grub tastes like decaying flesh. At least you lost your appetite."
+    stats:
+      poisonResist: 60
+      diseaseResist: 30
+    duration: 86400
+
+- name: Dedlaen Militia Gourd
+  sprite: 115
+  desc: "a gourd harvested from an underground garden"
+  value: 10
+  effect:
+    name: Nourishment
+    tooltip: "+50 HP/MP, +5 HP/MP Regen, +10 Physical Resist"
+    message: "The gourd is sweet and delicious!"
+    stats:
+      hp: 50
+      mp: 50
+      hpregen: 5
+      mpregen: 5
+      physicalResist: 10
+    duration: 7200
+
+- name: Dedlaen Dragon Turtle Egg
+  sprite: 381
+  desc: "an ivory egg taken from a young turtle dragon"
+  value: 10
+  effect:
+    name: Nourishment
+    tooltip: "+1 All Stats"
+    stats:
+      str: 1
+      dex: 1
+      agi: 1
+      int: 1
+      wil: 1
+      wis: 1
+      con: 1
+      luk: 1
+      cha: 1
+    duration: 21600

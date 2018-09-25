@@ -116,7 +116,7 @@
               </tr>
 
               <tr>
-                <td colspan="3" class="text-center"><strong>Gold</strong> {{ lobby.myCharacter.currentGold | number:0 }}</td>
+                <td colspan="3" class="text-center"><strong>Gold</strong> {{ lobby.myCharacter.gold | number:0 }}</td>
               </tr>
             </table>
           </div>
@@ -128,7 +128,7 @@
         </div>
 
         <div class="row" *ngIf="needsOverwrite">
-          <div class="col-1 ml-auto vertical-center">
+          <div class="col-1 ml-auto vertical-center text-right">
             <input type="checkbox" id="overwrite" class="form-control" [(ngModel)]="confirmOverwrite" />
           </div>
           <div class="col-8">

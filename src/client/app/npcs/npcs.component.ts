@@ -173,6 +173,13 @@ export class NpcsComponent implements OnInit, OnDestroy {
   }
 
   public trySendAltAction(target) {
+
+    const char = this.colyseusGame.character;
+    if(char.rightHand && char.rightHand.name === 'Halloween Basket') {
+      this.colyseusGame.sendCommandString(`${target.name}, trick or treat`);
+      return;
+    }
+
     if(target.name === 'Alchemist') this.colyseusGame.sendCommandString('Alchemist, alchemy');
     if(target.name === 'Smith')     this.colyseusGame.sendCommandString('Smith, metalwork');
     if(target.name === 'Zarn')      this.colyseusGame.sendCommandString('Zarn, spellforge');

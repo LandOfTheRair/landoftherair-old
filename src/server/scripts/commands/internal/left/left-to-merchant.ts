@@ -16,6 +16,9 @@ export class LeftToMerchant extends Command {
 
     if(!this.checkMerchantDistance(player, args)) return;
 
+    const npc = this.getNPCInView(player, args);
+    if(npc.$$vendorCurrency) return player.sendClientMessage('Sorry, if you want to sell stuff you gotta go somewhere else.');
+
     player.sellItem(item);
     player.setLeftHand(null);
   }

@@ -226,7 +226,7 @@ export const SmithResponses = (npc: NPC) => {
 
       player.tradeSkillContainers.metalworking.gainOre('copper', copper);
       player.tradeSkillContainers.metalworking.gainOre('silver', silver);
-      player.tradeSkillContainers.metalworking.gainOre('currentGold', gold);
+      player.tradeSkillContainers.metalworking.gainOre('gold', gold);
 
       const copperString = copper > 0 ? `${copper} copper ore` : '';
       const silverString = silver > 0 ? `${silver} silver ore` : '';
@@ -445,7 +445,7 @@ export const BankResponses = (npc: NPC) => {
       const amount = +args.amount;
       const region = npc.bankId;
       const res = player.$$room.depositBankMoney(player, region, amount);
-      if(res === false) return 'That amount of currentGold is not valid.';
+      if(res === false) return 'That amount of gold is not valid.';
       if(res === 0) return 'What, do you think you\'re funny? Get out of line, there are other people to service!';
       return `Thank you, you have deposited ${res.toLocaleString()} gold into the ${region} National Bank. Your new balance is ${player.$$banks[region].toLocaleString()} gold.`;
     });
@@ -458,7 +458,7 @@ export const BankResponses = (npc: NPC) => {
       const amount = +args.amount;
       const region = npc.bankId;
       const res = player.$$room.withdrawBankMoney(player, region, amount);
-      if(res === false) return 'That amount of currentGold is not valid.';
+      if(res === false) return 'That amount of gold is not valid.';
       if(res === 0) return 'Hey, do I look like a charity to you? Get lost!';
       return `Thank you, you have withdrawn ${res.toLocaleString()} gold into the ${region} National Bank. Your new balance is ${player.$$banks[region].toLocaleString()} gold.`;
     });
@@ -514,6 +514,8 @@ export const VendorResponses = (npc: NPC, { classRestriction = '', filter = (ite
     .set('syntax', ['sell <string:itemtype*>'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
+      if(npc.$$vendorCurrency) return 'Sorry, I don\'t buy stuff here. You gotta find a normal merchant for that.';
+
       const itemtype = args['itemtype*'].toLowerCase();
 
       if(npc.allegiance !== 'None') {
@@ -929,7 +931,7 @@ export const HPDocResponses = (npc: NPC) => {
       const maxHpForTier = hpTiers[player.baseClass][npc.hpTier];
 
       if(playerBaseHp > maxHpForTier) return 'Too powerful! No help!';
-      if(!player.$$room.npcLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No currentGold! No help!';
+      if(!player.$$room.npcLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
 
       let cost = calcRequiredGoldForNextHPMP(player, maxHpForTier, hpNormalizers[npc.hpTier], hpCosts[npc.hpTier]);
       let totalHPGained = 0;
@@ -1007,7 +1009,7 @@ export const MPDocResponses = (npc: NPC) => {
       const maxMpForTier = mpTiers[player.baseClass][npc.mpTier];
 
       if(playerBaseMp > maxMpForTier) return 'Too powerful! No help!';
-      if(!player.$$room.npcLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No currentGold! No help!';
+      if(!player.$$room.npcLoader.checkPlayerHeldItem(player, 'Gold Coin', 'right')) return 'No gold! No help!';
 
       let cost = calcRequiredGoldForNextHPMP(player, maxMpForTier, mpNormalizers[npc.mpTier], mpCosts[npc.mpTier]);
       let totalMPGained = 0;

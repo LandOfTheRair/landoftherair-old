@@ -50,6 +50,6 @@ export class SteffenFindSedgwick extends Quest {
   public static givePlayerRewards(player: Player): void {
     this.rewardPlayerGold(player, 1000);
     player.gainExp(1000);
-    player.sendClientMessage('You received 1,000 XP and 1,000 currentGold!');
+    player.sendClientMessage('You received 1,000 XP and 1,000 gold!');
   }
 }

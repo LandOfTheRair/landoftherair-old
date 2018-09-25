@@ -1,0 +1,60 @@
+
+
+- name: Alchemical Mistake
+  sprite: 956
+  desc: "an amalgamation of materials that did not alchemize well"
+  value: 0
+  destroyOnDrop: true
+
+- name: Antanian Slice of Bread
+  sprite: 610
+  desc: "a freshly baked slice of bread"
+  value: 50
+  effect:
+    name: Nourishment
+    tooltip: "+3 HP Regen"
+    message: "The bread is delicious!"
+    stats:
+      hpregen: 3
+    duration: 21600
+
+- name: Antanian Loaf of Bread
+  sprite: 610
+  desc: "a freshly baked loaf of bread"
+  value: 500
+  ounces: 12
+  effect:
+    name: Nourishment
+    tooltip: "+3 HP Regen"
+    message: "The bread is delicious!"
+    stats:
+      hpregen: 3
+    duration: 21600
+
+- name: Antanian Fungus Bread
+  sprite: 110
+  desc: "a moldy slice of bread. Gross"
+  value: 1
+  ounces: 1
+  effect:
+    name: Nourishment
+    tooltip: "+1 STR, +1 WIL"
+    message: "The bread is unappealing, but filling!"
+    stats:
+      str: 1
+      wil: 1
+    duration: 42200
+
+- name: Antanian Fungus Loaf
+  sprite: 110
+  desc: "a moldy loaf of bread. Gross"
+  value: 1
+  ounces: 12
+  effect:
+    name: Nourishment
+    tooltip: "+1 STR, +1 WIL"
+    message: "The bread is unappealing, but filling!"
+    stats:
+      str: 1
+      wil: 1
+    duration: 42200

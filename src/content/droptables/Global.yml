@@ -1,4 +1,5 @@
 
+# Stat Rings
 - result: Leather Ring
   chance: 1
   maxChance: 30
@@ -39,6 +40,7 @@
   chance: 1
   maxChance: 7500
 
+# Cosmetics
 - result: Cosmetic Scroll - Inversify
   chance: 1
   maxChance: 1000000
@@ -58,3 +60,36 @@
 - result: Cosmetic Scroll - Ether Nebula
   chance: 1
   maxChance: 1000000
+
+# Holidays
+
+## Halloween
+- result: Halloween Candy - Gummies
+  chance: 1
+  maxChance: 25
+  requireHoliday: Halloween
+
+- result: Halloween Candy - Lollipops
+  chance: 1
+  maxChance: 25
+  requireHoliday: Halloween
+
+- result: Halloween Candy - Mints
+  chance: 1
+  maxChance: 25
+  requireHoliday: Halloween
+
+- result: Halloween Candy - Jellies
+  chance: 1
+  maxChance: 25
+  requireHoliday: Halloween
+
+- result: Halloween Candy - Wrapped
+  chance: 1
+  maxChance: 25
+  requireHoliday: Halloween
+
+- result: Halloween Candy Pile
+  chance: 1
+  maxChance: 500
+  requireHoliday: Halloween

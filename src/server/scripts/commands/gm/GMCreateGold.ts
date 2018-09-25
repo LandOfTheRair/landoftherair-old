@@ -4,7 +4,7 @@ import { Player } from '../../../../shared/models/player';
 
 export class GMCreateGold extends Command {
 
-  public name = '@currentGold';
+  public name = '@gold';
   public format = 'Value';
 
   async execute(player: Player, { room, args }) {

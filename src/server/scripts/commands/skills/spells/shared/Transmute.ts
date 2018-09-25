@@ -11,7 +11,7 @@ export class Transmute extends Skill {
     icon: 'coins',
     color: '#665600',
     mode: 'autoActivate',
-    tooltipDesc: 'Convert the items on your current tile into currentGold. Allows directional targeting. Cost: 15 MP'
+    tooltipDesc: 'Convert the items on your current tile into gold. Allows directional targeting. Cost: 15 MP'
   };
 
   public name = ['transmute', 'cast transmute'];

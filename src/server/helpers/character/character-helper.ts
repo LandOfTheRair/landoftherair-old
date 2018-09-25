@@ -76,7 +76,7 @@ export class CharacterHelper {
         sprite: 212,
         value: char.currentGold,
         isBeltable: false,
-        desc: 'currentGold coins'
+        desc: 'gold coins'
       });
 
       char.$$room.addItemToGround(pickSlot(), gold);

@@ -7,6 +7,7 @@ import { MapLayer } from '../../shared/models/maplayer';
 import { MessageHelper } from '../helpers/world/message-helper';
 import { MaterialStorageHelper } from '../helpers/tradeskill/material-storage-helper';
 import { Locker } from '../../shared/models/container/locker';
+import { NPC } from '../../shared/models/npc';
 
 export abstract class Command {
 
@@ -45,6 +46,10 @@ export abstract class Command {
     const didFail = container.addItem(item, index, { maxSize: MaterialStorageHelper.getTotalSizeAvailable(player) });
     if(didFail) return player.sendClientMessage(didFail);
     return true;
+  }
+
+  getNPCInView(player, uuid): NPC {
+    return player.$$room.state.findNPC(uuid);
   }
 
   checkMerchantDistance(player, merchantUUID) {

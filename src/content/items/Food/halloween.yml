@@ -1,0 +1,106 @@
+
+- name: Halloween Candy Pile
+  desc: "a small assortment of candies, including lollipops, mints, and gummies"
+  value: 10000
+  sprite: 546
+  ounces: 1
+
+  effect:
+    name: Nourishment
+    tooltip: "+3 All Stats"
+    message: "Wowza, what a strong sugar rush!"
+    stats:
+      str: 3
+      dex: 3
+      agi: 3
+      int: 3
+      wis: 3
+      wil: 3
+      con: 3
+      luk: 3
+      cha: 3
+    duration: 600
+
+- name: Halloween Candy - Lollipops
+  desc: "a couple of lollipops"
+  value: 1000
+  sprite: 547
+  ounces: 1
+
+  effect:
+    name: Nourishment
+    tooltip: "+5 AGI"
+    message: "Whew, what a sugar rush!"
+    stats:
+      agi: 5
+    duration: 300
+
+- name: Halloween Candy - Gummies
+  desc: "a handful of gummy candy"
+  value: 1000
+  sprite: 548
+  ounces: 1
+
+  effect:
+    name: Nourishment
+    tooltip: "+5 STR"
+    message: "Whew, what a sugar rush!"
+    stats:
+      str: 5
+    duration: 300
+
+- name: Halloween Candy - Wrapped
+  desc: "a handful of wrapped candies"
+  value: 1000
+  sprite: 549
+  ounces: 1
+
+  effect:
+    name: Nourishment
+    tooltip: "+5 INT"
+    message: "Whew, what a sugar rush!"
+    stats:
+      int: 5
+    duration: 300
+
+- name: Halloween Candy - Jellies
+  desc: "a handful of jelly candy"
+  value: 1000
+  sprite: 550
+  ounces: 1
+
+  effect:
+    name: Nourishment
+    tooltip: "+5 DEX"
+    message: "Whew, what a sugar rush!"
+    stats:
+      dex: 5
+    duration: 300
+
+- name: Halloween Candy - Mints
+  desc: "a handful of mints"
+  value: 1000
+  sprite: 551
+  ounces: 1
+
+  effect:
+    name: Nourishment
+    tooltip: "+5 WIS"
+    message: "Whew, what a sugar rush!"
+    stats:
+      wis: 5
+    duration: 300
+
+- name: Halloween Zombie Brain
+  desc: "a squishy brain taken from an undead of Halloween"
+  value: 1000
+  sprite: 64
+  ounces: 1
+
+  effect:
+    name: Nourishment
+    tooltip: "-2 INT"
+    message: "Gross! Don't make that mistake twice."
+    stats:
+      int: -2
+    duration: 3600

@@ -12,9 +12,10 @@ export class PotionToMerchant extends Command {
 
     const merchantUUID = args;
 
-    const container = room.state.findNPC(merchantUUID);
-    if(!container) return player.sendClientMessage('That person is not here.');
-    if(container.distFrom(player) > 2) return player.sendClientMessage('That person is too far away.');
+    if(!this.checkMerchantDistance(player, merchantUUID)) return;
+
+    const npc = this.getNPCInView(player, args);
+    if(npc.$$vendorCurrency) return player.sendClientMessage('Sorry, if you want to sell stuff you gotta go somewhere else.');
 
     const item = player.potionHand;
     if(!item) return false;

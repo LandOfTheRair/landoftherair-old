@@ -2,14 +2,19 @@
 import { NPC } from '../../../shared/models/npc';
 import { Item } from '../../../shared/models/item';
 
-import { compact, get, random, includes } from 'lodash';
+import { compact, get, random, includes, cloneDeep } from 'lodash';
 
 import { LootRoller, LootFunctions, LootTable } from 'lootastic';
+import { HolidayHelper } from './holiday-helper';
 
 export class LootHelper {
 
   static isItemValueStackable(item: Item): boolean {
     return item.itemClass === 'Coin';
+  }
+
+  private static filterDropTable(dropTable: any[]) {
+    return dropTable.filter(item => item.requireHoliday ? HolidayHelper.isHoliday(item.requireHoliday) : true);
   }
 
   static async getAllLoot(npc: NPC, bonus = 0, sackOnly = false): Promise<Item[]> {
@@ -22,7 +27,7 @@ export class LootHelper {
 
     if(!isNaturalResource && npc.$$room.dropTables.map.length > 0) {
       tables.push({
-        table: new LootTable(npc.$$room.dropTables.map, bonus),
+        table: new LootTable(LootHelper.filterDropTable(npc.$$room.dropTables.map), bonus),
         func: LootFunctions.EachItem,
         args: 0
       });
@@ -30,7 +35,7 @@ export class LootHelper {
 
     if(!isNaturalResource && npc.$$room.dropTables.region.length > 0) {
       tables.push({
-        table: new LootTable(npc.$$room.dropTables.region, bonus),
+        table: new LootTable(LootHelper.filterDropTable(npc.$$room.dropTables.region), bonus),
         func: LootFunctions.EachItem,
         args: 0
       });
@@ -38,7 +43,7 @@ export class LootHelper {
 
     if(npc.drops && npc.drops.length > 0) {
       tables.push({
-        table: new LootTable(npc.drops, bonus),
+        table: new LootTable(LootHelper.filterDropTable(npc.drops), bonus),
         func: LootFunctions.EachItem,
         args: 0
       });
@@ -51,7 +56,7 @@ export class LootHelper {
 
       if(numChoices > 0 && items.length > 0) {
         tables.push({
-          table: new LootTable(items, bonus),
+          table: new LootTable(LootHelper.filterDropTable(items), bonus),
           func: replace ? LootFunctions.WithReplacement : LootFunctions.WithoutReplacement,
           args: numChoices
         });
@@ -68,7 +73,7 @@ export class LootHelper {
 
       if(drops.length > 0) {
         tables.push({
-          table: new LootTable(drops, bonus),
+          table: new LootTable(LootHelper.filterDropTable(drops), bonus),
           func: LootFunctions.EachItem,
           args: 0
         });
@@ -84,8 +89,16 @@ export class LootHelper {
 
   public static async rollSingleTable(rollArray: Array<{ chance: number, result: string }>, room) {
     return this.getItemsFromTables([{
-      table: new LootTable(rollArray, 0),
+      table: new LootTable(LootHelper.filterDropTable(rollArray), 0),
       func: LootFunctions.WithoutReplacement,
+      args: 1
+    }], room);
+  }
+
+  public static async rollSingleTableForEachItem(rollArray: Array<{ chance: number, result: string }>, room) {
+    return this.getItemsFromTables([{
+      table: new LootTable(LootHelper.filterDropTable(rollArray), 0),
+      func: LootFunctions.EachItem,
       args: 1
     }], room);
   }

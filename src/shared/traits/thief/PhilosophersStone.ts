@@ -5,7 +5,7 @@ export class PhilosophersStone extends Trait {
 
   static baseClass = 'Thief';
   static traitName = 'PhilosophersStone';
-  static description = 'You get $10|30$% more currentGold when you transmute items.';
+  static description = 'You get $10|30$% more gold when you transmute items.';
   static icon = 'coins';
 
   static upgrades = [

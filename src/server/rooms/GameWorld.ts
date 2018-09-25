@@ -425,7 +425,7 @@ export class GameWorld extends Room<GameState> {
 
     await this.savePlayerPouch(savePlayer);
     await this.skillTreeHelper.saveSkillTree(player);
-    
+
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }
 
@@ -516,7 +516,7 @@ export class GameWorld extends Room<GameState> {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_shop', vendorItems: items, uuid: npc.uuid });
+    this.send(client, { action: 'show_shop', vendorItems: items, uuid: npc.uuid, vendorCurrency: npc.$$vendorCurrency });
   }
 
   showBankWindow(player: Player, npc: NPC, banks: any) {

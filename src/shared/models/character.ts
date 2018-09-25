@@ -30,6 +30,7 @@ import { SkillHelper } from '../../server/helpers/character/skill-helper';
 import { XPHelper } from '../../server/helpers/character/xp-helper';
 import { TraitUsageModifiers } from '../helpers/trait-usage-modifiers';
 import { VALID_TRADESKILLS_HASH } from '../helpers/tradeskill-helper';
+import { Currency } from '../../server/helpers/world/holiday-helper';
 
 export type Allegiance =
   'None'
@@ -791,24 +792,32 @@ export class Character {
     return true;
   }
 
-  gainGold(gold: number) {
-    if(gold <= 0) return;
-    gold = Math.round(gold);
-    this.currency.gold += gold;
-  }
-
   earnGold(gold: number, reason?: string) {
-    this.gainGold(gold);
-  }
-
-  private loseGold(gold: number) {
-    gold = Math.round(gold);
-    this.currency.gold -= gold;
-    if(this.currency.gold <= 0) this.currency.gold = 0;
+    this.earnCurrency(Currency.Gold, gold, reason);
   }
 
   spendGold(gold: number, on?: string) {
-    this.loseGold(gold);
+    this.spendCurrency(Currency.Gold, gold, on);
+  }
+
+  hasCurrency(currency: Currency, amt: number): boolean {
+    if(!currency) currency = Currency.Gold;
+    return this.currency[currency] >= amt;
+  }
+
+  earnCurrency(currency: Currency, amt: number, on?: string) {
+    if(!currency) currency = Currency.Gold;
+
+    if(!this.currency[currency]) this.currency[currency] = 0;
+    this.currency[currency] += Math.round(amt);
+  }
+
+  spendCurrency(currency: Currency, amt: number, on?: string) {
+    if(!currency) currency = Currency.Gold;
+
+    if(!this.currency[currency]) this.currency[currency] = 0;
+    this.currency[currency] -= Math.round(amt);
+    if(this.currency[currency] <= 0) this.currency[currency] = 0;
   }
 
   getDirBasedOnDiff(x, y): string {

@@ -159,16 +159,21 @@
     - DarkVision
 
   sack:
-    - name: Antanian FireMist Thief Trap
+    - result: Antanian FireMist Thief Trap
       chance: 10
-    - name: Antanian IceMist Thief Trap
+      maxChance: 100
+    - result: Antanian IceMist Thief Trap
       chance: 10
-    - name: Antanian Poison Thief Trap
+      maxChance: 100
+    - result: Antanian Poison Thief Trap
       chance: 10
-    - name: Antanian MagicMissile Thief Trap
+      maxChance: 100
+    - result: Antanian MagicMissile Thief Trap
       chance: 10
-    - name: Antanian Afflict Thief Trap
+      maxChance: 100
+    - result: Antanian Afflict Thief Trap
       chance: 10
+      maxChance: 100
 
 - npcId: Tower Hobgoblin
   name: hobgoblin

@@ -59,6 +59,6 @@ export class KillRebels extends Quest {
   public static givePlayerRewards(player: Player): void {
     this.rewardPlayerGold(player, 2000);
     player.gainExp(500);
-    player.sendClientMessage('You received 500 XP and 2,000 currentGold!');
+    player.sendClientMessage('You received 500 XP and 2,000 gold!');
   }
 }

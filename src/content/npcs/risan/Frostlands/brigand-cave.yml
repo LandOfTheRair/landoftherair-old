@@ -380,22 +380,30 @@
     - DarkVision
 
   sack:
-    - name: Risan FireMist Thief Trap
+    - result: Risan FireMist Thief Trap
       chance: 5
-    - name: Risan IceMist Thief Trap
+      maxChance: 100
+    - result: Risan IceMist Thief Trap
       chance: 5
-    - name: Risan Poison Thief Trap
+      maxChance: 100
+    - result: Risan Poison Thief Trap
       chance: 5
-    - name: Risan MagicBolt Thief Trap
+      maxChance: 100
+    - result: Risan MagicBolt Thief Trap
       chance: 5
-    - name: Risan HolyFire Thief Trap
+      maxChance: 100
+    - result: Risan HolyFire Thief Trap
       chance: 5
-    - name: Risan Snare Thief Trap
+      maxChance: 100
+    - result: Risan Snare Thief Trap
       chance: 5
-    - name: Risan Stun Thief Trap
+      maxChance: 100
+    - result: Risan Stun Thief Trap
       chance: 5
-    - name: Risan Blind Thief Trap
+      maxChance: 100
+    - result: Risan Blind Thief Trap
       chance: 5
+      maxChance: 100
 
   gold:
     min: 1550

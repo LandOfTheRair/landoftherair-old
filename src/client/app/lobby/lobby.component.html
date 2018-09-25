@@ -20,7 +20,7 @@
     <div class="col-9 p-0 m-0 h-100">
 
       <div class="motd-area pl-1 p-0">
-        <strong>&lt;System&gt;:</strong> <span [innerHTML]="(lobby.lobbyState.motd || '(no motd)') | linkify"></span>
+        <strong>&lt;System&gt;:</strong> <span class="ml-1" [innerHTML]="(lobby.lobbyState.motd || '(no motd)') | linkify"></span>
       </div>
 
       <div class="chat-area p-0" appNgxAutoScroll lockYOffset="30">

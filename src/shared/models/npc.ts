@@ -7,6 +7,7 @@ import * as uuid from 'uuid/v4';
 import { CharacterHelper } from '../../server/helpers/character/character-helper';
 import { DeathHelper } from '../../server/helpers/character/death-helper';
 import { Player } from './player';
+import { Currency } from '../../server/helpers/world/holiday-helper';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 export type MonsterClass = 'Undead' | 'Beast';
@@ -68,6 +69,7 @@ export class NPC extends Character {
   $$stripX: number;
   $$stripY: number;
   $$shouldEatTier: number;
+  $$vendorCurrency: Currency;
 
   $$lastResponse: string;
   $$following: boolean;

@@ -1,0 +1,17 @@
+
+- name: Halloween Basket
+  desc: "a festive basket carved out of a pumpkin"
+  value: 1
+  sprite: 544
+  destroyOnDrop: true
+
+- name: Halloween Gem
+  desc: "a sparkling orange diamond, carved from the brightest of pumpkin rocks"
+  value: 50
+  sprite: 1013
+
+  maxEncrusts: 3
+
+  stats:
+    hp: 50
+    mp: 50

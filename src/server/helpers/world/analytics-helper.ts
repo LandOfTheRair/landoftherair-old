@@ -103,10 +103,10 @@ export class AnalyticsHelper {
     this.track(player, 'design', { event_id: `NPC:Talk:${npc.npcId}:${displayCmd}` });
   }
 
-  public trackGoldFlow(type: 'Source'|'Sink', player: Player, gold: number, reason: string) {
+  public trackCurrencySink(type: 'Source'|'Sink', player: Player, currency: string, gold: number, reason: string) {
     if(gold === 0 || !reason) return;
 
-    this.track(player, 'resource', { event_id: `${type}:gold:${reason}`, amount: type === 'Source' ? gold : -gold });
+    this.track(player, 'resource', { event_id: `${type}:${currency}:${reason}`, amount: type === 'Source' ? gold : -gold });
   }
 
   public trackTutorial(player: Player, step: string) {

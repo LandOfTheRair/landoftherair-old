@@ -11,6 +11,7 @@ import * as Effects from '../effects';
 import { GameWorld } from '../rooms/GameWorld';
 import { StatName } from '../../shared/models/character';
 import { RollerHelper } from '../../shared/helpers/roller-helper';
+import { Currency } from '../helpers/world/holiday-helper';
 
 export class Spawner {
 
@@ -208,7 +209,7 @@ export class Spawner {
 
     let beltItems = [];
 
-    if(npcData.belt) {
+    if(npcData.belt && npcData.belt.length > 0) {
       const items = await Promise.all(npcData.belt.map(async itemName => {
         const { name } = this.shouldLoadItem(itemName);
         if(!name) return null;
@@ -254,8 +255,8 @@ export class Spawner {
       npcData.name = this.room.npcLoader.determineNPCName(npcData);
     }
 
-    if(npcData.currentGold) {
-      npcData.gold = random(npcData.currentGold.min, npcData.currentGold.max);
+    if(npcData.gold) {
+      npcData.gold = random(npcData.gold.min, npcData.gold.max);
     }
 
     if(npcData.hp) {
@@ -271,8 +272,10 @@ export class Spawner {
     const npc = new NPC(npcData);
     npc.$$room = this.room;
 
-    const additionalSackItems = await LootHelper.getAllLoot(npc, 0, true);
-    sackItems.push(...additionalSackItems);
+    if(npcData.sack && npcData.sack.length > 0) {
+      const additionalSackItems = await LootHelper.rollSingleTableForEachItem((<any>npcData.sack), npc.$$room);
+      sackItems.push(...additionalSackItems);
+    }
 
     beltItems.forEach(item => npc.belt.addItem(item));
     sackItems.forEach(item => npc.sack.addItem(item));
@@ -380,7 +383,7 @@ export class Spawner {
 
     npc.level += Math.floor(npc.level / 10);
     npc.skillOnKill *= 4;
-    npc.gainGold(npc.currentGold * 3);
+    npc.earnCurrency(Currency.Gold, npc.currentGold * 3);
     npc.giveXp.min *= 4;
     npc.giveXp.max *= 4;
 

@@ -31,9 +31,11 @@ export class ShopComponent {
 
   public overriddenValueDisplay(slot): number|string {
     const item = this.colyseusGame.showShop.vendorItems[slot];
-    if(!item || !item.daily) return null;
+    if(!item) return null;
 
-    if(!this.colyseusGame.character.canBuyDailyItem(item)) return 'SOLD OUT';
+    if(this.colyseusGame.showShop.vendorCurrency) return `${item.value}t`;
+    if(item.daily && !this.colyseusGame.character.canBuyDailyItem(item)) return 'SOLD OUT';
+
     return null;
   }
 

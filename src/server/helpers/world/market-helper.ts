@@ -103,7 +103,7 @@ export class MarketHelper {
     }
 
     const cost = listing.listingInfo.price;
-    if(player.currentGold < cost) throw new Error('Player does not have enough currentGold to buy.');
+    if(player.currentGold < cost) throw new Error('Player does not have enough gold to buy.');
 
     player.spendGold(cost);
 
@@ -127,9 +127,9 @@ export class MarketHelper {
   public async pickupItem(player: Player, itemUUID: string) {
     const pickupInfo = await this.getPickupByUsername(player.username);
 
-    if(itemUUID === 'currentGold') {
-      // tax, add to player currentGold
-      const gainedGold = pickupInfo.currentGold - MarketCalculatorHelper.calculateTaxCost(player, pickupInfo.currentGold);
+    if(itemUUID === 'gold') {
+      // tax, add to player gold
+      const gainedGold = pickupInfo.gold - MarketCalculatorHelper.calculateTaxCost(player, pickupInfo.gold);
       player.earnGold(gainedGold);
 
       await DB.$marketPickups.update({ username: player.username }, { $set: { gold: 0 } });

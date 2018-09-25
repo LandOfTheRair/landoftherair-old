@@ -5,6 +5,7 @@ import { SkillHelper } from '../character/skill-helper';
 import { Loadouts } from './loadout-listing';
 
 import { get } from 'lodash';
+import { Currency } from '../world/holiday-helper';
 
 export class TesterHelper {
 
@@ -90,7 +91,7 @@ export class TesterHelper {
   }
 
   static gainGold(player: Player, gold: number) {
-    player.gainGold(gold);
+    player.earnCurrency(Currency.Gold, gold);
     this.sendMessage(player, `Gained ${gold} gold`);
   }
 

@@ -1,7 +1,7 @@
 
 
 - npcId: Basic Gold Vein
-  name: currentGold vein
+  name: gold vein
   hostility: OnHit
   allegiance: NaturalResource
   sprite: 1835
@@ -45,10 +45,10 @@
       chance: 1
       maxChance: 200
 
-  spawnMessage: "a spontaneous eruption of currentGold"
+  spawnMessage: "a spontaneous eruption of gold"
 
 - npcId: Rich Gold Vein
-  name: rich currentGold vein
+  name: rich gold vein
   hostility: OnHit
   allegiance: NaturalResource
   sprite: 1835
@@ -98,4 +98,4 @@
       chance: 1
       maxChance: 200
 
-  spawnMessage: "a spontaneous eruption of currentGold"
+  spawnMessage: "a spontaneous eruption of gold"

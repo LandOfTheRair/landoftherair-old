@@ -1,0 +1,90 @@
+
+
+- name: Crazed Bear Meat
+  sprite: 932
+  desc: "a fresh chunk of bear meat from a Risan bear"
+  value: 1500
+  effect:
+    name: Nourishment
+    tooltip: "+2 STR"
+    message: "The beat meat is tender!"
+    stats:
+      str: 2
+    duration: 10800
+
+- name: Crazed Wolf Flank
+  sprite: 933
+  desc: "a fresh flank of wolf meat from a Risan wolf"
+  value: 1500
+  effect:
+    name: Nourishment
+    tooltip: "+15 HP Regen"
+    message: "The wolf flank is chewy!"
+    stats:
+      hpregen: 15
+    duration: 10800
+
+- name: Mines Griffon Tongue
+  sprite: 928
+  desc: "a tongue ripped from a Risan griffon"
+  value: 2500
+  effect:
+    name: Nourishment
+    tooltip: "+20 HP/MP Regen"
+    message: "The griffon tongue is chewy!"
+    stats:
+      hpregen: 20
+      mpregen: 20
+    duration: 43200
+
+- name: Cyrena's Heart
+  sprite: 611
+  desc: "the still-beating heart of the forest queen"
+  value: 2500
+  effect:
+    name: Nourishment
+    tooltip: "+300 Perception"
+    message: "The heart opens your eyes!"
+    stats:
+      perception: 300
+    duration: 36000
+
+- name: Yeti Bile (Small)
+  sprite: 679
+  desc: "a small chunk of bile from a yeti"
+  value: 1500
+  effect:
+    name: Nourishment
+    tooltip: "+2 WIL/CON"
+    message: "The bile exercises your constitution!"
+    stats:
+      wil: 2
+      con: 2
+    duration: 36000
+
+- name: Yeti Bile (Large)
+  sprite: 678
+  desc: "a large pile of bile from a yeti"
+  value: 2500
+  effect:
+    name: Nourishment
+    tooltip: "+3 WIL/CON, +100 Poison Resist, +70 Disease Resist"
+    message: "The bile exercises your constitution!"
+    stats:
+      wil: 3
+      con: 3
+      poisonResist: 100
+      diseaseResist: 70
+    duration: 36000
+
+- name: Frostsnake Egg
+  sprite: 72
+  desc: "a slightly-broken egg filled with glowing viscous liquid"
+  value: 2500
+  effect:
+    name: Nourishment
+    tooltip: "+2 INT"
+    message: "The egg contents are delicious!"
+    stats:
+      int: 2
+    duration: 10800

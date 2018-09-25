@@ -258,7 +258,7 @@
             {{ starTextFor(itemInfo) }}
           </div>
 
-          <div *ngIf="itemInfo.uuid === 'currentGold'">
+          <div *ngIf="itemInfo.uuid === 'gold'">
             <small><em>You will pay {{ itemInfo.taxes | number }} gold after taxes ({{ taxRate }}).</em></small>
           </div>
         </div>

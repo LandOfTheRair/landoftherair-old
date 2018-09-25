@@ -1,5 +1,5 @@
 - name: Gold Coin
   sprite: 212
   value: 1
-  desc: "currentGold coins"
+  desc: "gold coins"
   isBeltable: false

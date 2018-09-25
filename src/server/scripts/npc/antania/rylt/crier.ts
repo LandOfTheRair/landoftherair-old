@@ -19,7 +19,7 @@ export const responses = (npc: NPC) => {
     'The Renegade camp in the southeast is full of dangerous brigands!',
     'The cave to the east is filled with practitioners of magic and their golems!',
     'Thieves prefer to hide!',
-    'The Banker can hold onto your currentGold!',
+    'The Banker can hold onto your gold!',
     'The Smith can repair your broken and breaking gear!',
     'Beware the werecreatures!',
     'Werebear claws are prized by martial artists!',

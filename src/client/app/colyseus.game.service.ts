@@ -376,7 +376,7 @@ export class ColyseusGameService {
     if(action === 'show_bank')      return this.showBankWindow(other.uuid, other.bankId, other.banks);
     if(action === 'show_mb')        return this.showMarketBoardWindow(other.uuid, other.mapRegion);
     if(action === 'mb_bought')      return this.resyncMarketboardItems(other.listingId);
-    if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid);
+    if(action === 'show_shop')      return this.showShopWindow(other.vendorItems, other.uuid, other.vendorCurrency);
     if(action === 'show_trainer')   return this.showTrainerWindow(other.classTrain, other.trainSkills, other.uuid);
     if(action === 'show_ts')        return this.showTradeskillWindow(other.tradeskill, other.uuid);
     if(action === 'show_ground')    return this.showGroundWindow();
@@ -517,8 +517,8 @@ export class ColyseusGameService {
     this.updateActiveWindowForGameWindow('bank');
   }
 
-  private showShopWindow(vendorItems, uuid) {
-    this.showShop = { vendorItems, uuid };
+  private showShopWindow(vendorItems, uuid, vendorCurrency) {
+    this.showShop = { vendorItems, uuid, vendorCurrency };
     this.updateActiveWindowForGameWindow('shop');
   }
 

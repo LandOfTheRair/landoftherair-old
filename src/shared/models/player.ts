@@ -26,6 +26,7 @@ import { SpellforgingContainer } from './container/tradeskills/spellforging';
 import { MetalworkingContainer } from './container/tradeskills/metalworking';
 import { SkillTree } from './skill-tree';
 import { RollerHelper } from '../helpers/roller-helper';
+import { Currency } from '../../server/helpers/world/holiday-helper';
 
 export class Player extends Character {
   @nonenumerable
@@ -808,19 +809,19 @@ export class Player extends Character {
     super._gainSkill(type, val);
   }
 
-  spendGold(gold: number, on?: string) {
-    super.spendGold(gold, on);
+  spendCurrency(currency: Currency, amt: number, on?: string) {
+    super.spendCurrency(currency, amt, on);
 
     if(on) {
-      this.$$room.analyticsHelper.trackGoldFlow('Sink', this, gold, on);
+      this.$$room.analyticsHelper.trackCurrencySink('Sink', this, currency, amt, on);
     }
   }
 
-  earnGold(gold: number, reason?: string) {
-    super.earnGold(gold, reason);
+  earnCurrency(currency: Currency, amt: number, reason?: string) {
+    super.earnCurrency(currency, amt, reason);
 
     if(reason) {
-      this.$$room.analyticsHelper.trackGoldFlow('Source', this, gold, reason);
+      this.$$room.analyticsHelper.trackCurrencySink('Source', this, currency, amt, reason);
     }
   }
 

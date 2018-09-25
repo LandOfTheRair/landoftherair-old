@@ -20,7 +20,7 @@ export class CharacterCreator {
 
   static allegianceDesc = {
     None:         'You have no particular affiliation. You specialize in nothing in particular, and are all-around fairly average.',
-    Pirates:      'Yarr. Ye be strong and dextrous, but what ye make up in physical, ye lack in the mental. At least ye get some currentGold, aye?',
+    Pirates:      'Yarr. Ye be strong and dextrous, but what ye make up in physical, ye lack in the mental. At least ye get some gold, aye?',
     Townsfolk:    'You happen to be a person of the town. You may not be used to defending your town, but you can dodge a thrown milk can.',
     Royalty:      'You may never have picked up a sword in your life, but you are very well read, knowledgable, and wealthy.',
     Adventurers:  'You get around. You have seen a lot in your travels, and it shaped you to be hardy and knowledgable, even if your reflexes suffer.',

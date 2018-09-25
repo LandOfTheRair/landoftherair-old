@@ -28,13 +28,15 @@ export class MerchantToSack extends Command {
       maxQuantity = 1;
     }
 
+    const npc = this.getNPCInView(player, containerUUID);
+
     for(let i = 0; i < maxQuantity; i++) {
-      if(player.currentGold < item.value) {
-        if(i === 0) player.sendClientMessage('You do not have enough currentGold for that.');
+      if(!player.hasCurrency(npc.$$vendorCurrency, item.value)) {
+        if(i === 0) player.sendClientMessage('You do not have enough for that.');
         return;
       }
 
-      player.spendGold(item.value, `Buy:${item.name}`);
+      player.spendCurrency(npc.$$vendorCurrency, item.value, `Buy:${item.name}`);
 
       if(item.daily) player.buyDailyItem(item);
 

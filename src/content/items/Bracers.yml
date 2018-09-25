@@ -2,7 +2,7 @@
   stats:
     armorClass: 1
   sprite: 234
-  desc: "a pair of currentGold bracers"
+  desc: "a pair of gold bracers"
   value: 100
 
 - name: Heniz Dexterity Bracers
