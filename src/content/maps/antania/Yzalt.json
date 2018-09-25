@@ -5069,46 +5069,6 @@
                  "width":64,
                  "x":2816,
                  "y":4096
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":1575,
-                 "name":"Zombie Spawner",
-                 "properties":
-                    {
-                     "script":"holiday\/halloween\/zombie"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2240,
-                 "y":1280
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":1576,
-                 "name":"Zombie Spawner",
-                 "properties":
-                    {
-                     "script":"holiday\/halloween\/zombie"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1728,
-                 "y":10560
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7463,6 +7423,46 @@
                  "width":64,
                  "x":3776,
                  "y":768
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1577,
+                 "name":"Zombie Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/halloween\/zombie"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2240,
+                 "y":1280
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1578,
+                 "name":"Zombie Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/halloween\/zombie"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1728,
+                 "y":10560
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -8441,7 +8441,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1577,
+ "nextobjectid":1579,
  "orientation":"orthogonal",
  "properties":
     {
