@@ -2,6 +2,7 @@
 
 - npcId: Crazed Saraxa
   name: Saraxa
+  monsterClass: Humanoid
   hostility: Always
   affiliation: Crazed
   alignment: Evil

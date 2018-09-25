@@ -1,0 +1,37 @@
+
+
+- npcId: Halloween Zombie
+  name: zombie
+  monsterClass: Undead
+  hostility: Always
+  sprite: 1465
+  alignment: Evil
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  skillOnKill: 15
+
+  gold:
+    min: 15
+    max: 35
+
+  hp:
+    min: 5000
+    max: 6000
+
+  giveXp:
+    min: 500
+    max: 1000
+
+  gear:
+    Hands: Medium Claws
+
+  drops:
+    - result: Halloween Zombie Brain
+      chance: 1
+      maxChance: 5
+
+  usableSkills:
+    - ShredTenPercent
+    - HalloweenZombieScratch

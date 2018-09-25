@@ -1,9 +1,4 @@
 
-declare module '*.json' {
-  const value: any;
-  export default value;
-}
-
 declare module 'mingy' {
   export class Parser {
     setEnv(str: string, obj: any): void;

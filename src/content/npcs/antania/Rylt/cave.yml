@@ -60,6 +60,7 @@
 
 - npcId: Rylt Cave Apprentice
   name: apprentice
+  monsterClass: Humanoid
   hostility: Always
   sprite: 545
   alignment: Evil
@@ -147,6 +148,7 @@
 
 - npcId: Saraxa
   name: Saraxa
+  monsterClass: Humanoid
   hostility: Always
   affiliation: Corrupted
   alignment: Evil

@@ -86,7 +86,10 @@ export class SkillTree {
 
     this.buyableNodesHash = {};
 
-    values(AllTrees[this.baseClass]).forEach(node => {
+    // this is fucking stupid.
+    const tree = AllTrees[this.baseClass].default || AllTrees[this.baseClass];
+
+    values(tree).forEach(node => {
       if(!node.root) return;
       node.unlocks.forEach(unlock => this.buyableNodesHash[unlock] = true);
     });
@@ -94,7 +97,7 @@ export class SkillTree {
     Object.keys(this.nodesClaimed).forEach(boughtNode => {
       if(this.buyableNodesHash[boughtNode]) delete this.buyableNodesHash[boughtNode];
 
-      const node = AllTrees[this.baseClass][boughtNode];
+      const node = tree[boughtNode];
       if(!node || !node.unlocks) return;
 
       node.unlocks.forEach(unlock => this.buyableNodesHash[unlock] = true);

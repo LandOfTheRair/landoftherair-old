@@ -10,14 +10,12 @@ import { Player } from './player';
 import { Currency } from '../../server/helpers/world/holiday-helper';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
-export type MonsterClass = 'Undead' | 'Beast';
 
 export class NPC extends Character {
   npcId: string;
   uuid: string;
 
   hostility: Hostility = 'OnHit';
-  monsterClass?: MonsterClass;
 
   vendorItems: Item[];
 
@@ -48,7 +46,7 @@ export class NPC extends Character {
   mpTier?: number;
 
   copyDrops: any[];
-  drops: Item[];
+  drops: any[];
   dropPool: { items: Item[], choose: { min: number, max: number }, replace?: boolean };
   giveXp: { min: number, max: number };
   repMod: Array<{ delta: number, allegiance: Allegiance }>;

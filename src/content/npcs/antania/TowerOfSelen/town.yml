@@ -1,6 +1,7 @@
 
 - npcId: Tower Town Guard
   name: guard
+  monsterClass: Humanoid
   allegiance: 'None'
   hostility: 'Faction'
   sprite: 625

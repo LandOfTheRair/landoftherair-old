@@ -2,6 +2,7 @@
 
 - npcId: Rylt Renegade Prisoner
   name: prisoner
+  monsterClass: Humanoid
   hostility: Always
   sprite: [630, 635, 645, 650]
   alignment: Evil
@@ -108,6 +109,7 @@
 
 - npcId: Rylt Prison Guard
   name: guard
+  monsterClass: Humanoid
   allegiance: 'None'
   stats: 5
   level: 4
@@ -155,6 +157,7 @@
 
 - npcId: Rylt Renegade Weak Rebel
   name: rebel
+  monsterClass: Humanoid
   hostility: Always
   sprite: [630, 635, 645, 650]
   alignment: Evil
@@ -252,6 +255,7 @@
 
 - npcId: Rylt Renegade Rebel
   name: rioter
+  monsterClass: Humanoid
   hostility: Always
   sprite: [630, 635, 645, 650]
   alignment: Evil
@@ -348,6 +352,7 @@
 
 - npcId: Rylt Renegade Rebel Thief
   name: rioter
+  monsterClass: Humanoid
   hostility: Always
   sprite: [630, 635, 645, 650]
   alignment: Evil
@@ -452,6 +457,7 @@
 
 - npcId: Rylt Renegade Mage Rebel
   name: rioter
+  monsterClass: Humanoid
   hostility: Always
   baseClass: Mage
   sprite: 545
@@ -505,6 +511,7 @@
 
 - npcId: Rylt Renegade Healer Rebel
   name: rioter
+  monsterClass: Humanoid
   baseClass: Healer
   hostility: Always
   sprite: 550
@@ -558,6 +565,7 @@
 
 - npcId: Tonwin
   name: Tonwin
+  monsterClass: Humanoid
   hostility: Always
   affiliation: Corrupted
   baseClass: Thief

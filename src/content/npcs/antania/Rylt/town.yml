@@ -1,6 +1,7 @@
 
 - npcId: Rylt Townee
   allegiance: None
+  monsterClass: Humanoid
   stats: 15
   skillLevels: 5
   level: 10
@@ -58,6 +59,7 @@
 
 - npcId: Rylt Guard
   name: guard
+  monsterClass: Humanoid
   allegiance: None
   hostility: Faction
   stats: 30

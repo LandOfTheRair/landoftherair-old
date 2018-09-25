@@ -4,6 +4,7 @@
   name: Tonwin
   hostility: Always
   affiliation: Crazed
+  monsterClass: Humanoid
   alignment: Evil
   baseClass: Thief
   stats:

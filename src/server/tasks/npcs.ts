@@ -170,7 +170,7 @@ class NPCLoader {
       }
     }
 
-    const validMonsterClasses = ['Undead', 'Beast'];
+    const validMonsterClasses = ['Undead', 'Beast', 'Humanoid'];
 
     if(npc.monsterClass && !includes(validMonsterClasses, npc.monsterClass)) {
       console.error(`ERROR: ${npc.npcId} has an invalid monster class: ${npc.monsterClass}`);

@@ -1,5 +1,6 @@
 
 - npcId: Frostlands Townee
+  monsterClass: Humanoid
   allegiance: None
   stats: 25
   skillLevels: 9
@@ -56,6 +57,7 @@
       chance: -1
 
 - npcId: Frostlands Noble
+  monsterClass: Humanoid
   name: noble
   allegiance: None
   stats: 35
@@ -101,6 +103,7 @@
       chance: -1
 
 - npcId: Frostlands Guard
+  monsterClass: Humanoid
   name: guard
   allegiance: None
   hostility: Faction
@@ -141,6 +144,7 @@
       chance: -1
 
 - npcId: Frostlands Slave
+  monsterClass: Humanoid
   name: slave
   allegiance: None
   stats: 15

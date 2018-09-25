@@ -53,7 +53,9 @@ export class AnalyticsHelper {
 
     if(args.event_id) args.event_id = args.event_id.split(' ').join('');
 
-    this.ga.track(type, this.userString(player), args);
+    try {
+      this.ga.track(type, this.userString(player), args);
+    } catch(e) {}
   }
 
   // Map:{Instance|Static}:{MapName}

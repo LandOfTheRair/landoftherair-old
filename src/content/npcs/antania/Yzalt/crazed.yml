@@ -1,6 +1,7 @@
 
 - npcId: Crazed Heniz Mage
   name: crazed mage
+  monsterClass: Humanoid
   hostility: Always
   sprite: 545
   alignment: Evil
@@ -89,6 +90,7 @@
 
 - npcId: Crazed Heniz Thief
   name: crazed thief
+  monsterClass: Humanoid
   hostility: Always
   sprite: 585
   alignment: Evil
@@ -177,6 +179,7 @@
 
 - npcId: Crazed Steffen Warrior
   name: crazed warrior
+  monsterClass: Humanoid
   hostility: Always
   sprite: 590
   alignment: Good
@@ -278,6 +281,7 @@
 
 - npcId: Crazed Steffen Healer
   name: crazed healer
+  monsterClass: Humanoid
   hostility: Always
   sprite: 550
   alignment: Good
@@ -470,6 +474,7 @@
 
 - npcId: Insane Heniz Mage
   name: insane mage
+  monsterClass: Humanoid
   hostility: Always
   sprite: 545
   baseClass: Mage
@@ -612,6 +617,7 @@
 
 - npcId: Insane Heniz Thief
   name: insane thief
+  monsterClass: Humanoid
   hostility: Always
   sprite: 585
   alignment: Evil
@@ -774,6 +780,7 @@
 
 - npcId: Insane Steffen Warrior
   name: insane warrior
+  monsterClass: Humanoid
   hostility: Always
   sprite: 590
   baseClass: Warrior
@@ -909,6 +916,7 @@
 
 - npcId: Insane Steffen Healer
   name: insane healer
+  monsterClass: Humanoid
   hostility: Always
   sprite: 550
   stats: 10
@@ -1040,6 +1048,7 @@
 
 - npcId: Ranata
   name: Ranata
+  monsterClass: Humanoid
   hostility: Always
   affiliation: Crazed
   sprite: 480
@@ -1105,6 +1114,7 @@
 
 - npcId: Crazed Sedgwick
   name: Sedgwick
+  monsterClass: Humanoid
   hostility: Always
   affiliation: Crazed
   sprite: 480

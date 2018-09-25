@@ -1,6 +1,7 @@
 
 - npcId: Frostlands Brigand Fighter
   name: brigand
+  monsterClass: Humanoid
   sprite: [630, 635, 645, 650]
   allegiance: Enemy
   alignment: Evil
@@ -92,6 +93,7 @@
 
 - npcId: Frostlands Brigand Mage
   name: brigand
+  monsterClass: Humanoid
   sprite: 545
   allegiance: Enemy
   alignment: Evil
@@ -184,6 +186,7 @@
 
 - npcId: Frostlands Brigand Healer
   name: brigand
+  monsterClass: Humanoid
   sprite: 550
   allegiance: Enemy
   alignment: Evil
@@ -290,6 +293,7 @@
 
 - npcId: Frostlands Brigand Thief
   name: brigand
+  monsterClass: Humanoid
   sprite: [630, 635, 645, 650]
   allegiance: Enemy
   alignment: Evil
@@ -423,6 +427,7 @@
 
 - npcId: Frostlands Brigand Shieldbearer
   name: brigand
+  monsterClass: Humanoid
   sprite: [630, 635, 645, 650]
   allegiance: Enemy
   alignment: Evil
@@ -511,6 +516,7 @@
 
 - npcId: Frostlands Brigand Monk
   name: brigand
+  monsterClass: Humanoid
   sprite: 320
   allegiance: Enemy
   alignment: Evil

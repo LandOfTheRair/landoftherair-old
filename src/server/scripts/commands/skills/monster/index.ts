@@ -24,3 +24,5 @@ export * from './specific/DedlaenCryptThingPunch';
 export * from './specific/DedlaenDragonTurtleFire';
 export * from './specific/DedlaenSpiderImmobilize';
 export * from './specific/VampireMistForm';
+
+export * from './holiday/HalloweenZombieScratch';

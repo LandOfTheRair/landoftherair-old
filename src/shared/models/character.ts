@@ -157,6 +157,8 @@ export class Stats {
   actionSpeed? = 1;
 }
 
+export type MonsterClass = 'Undead' | 'Beast' | 'Humanoid';
+
 export type StatName =
   'str' | 'dex' | 'agi' | 'int' | 'wis' | 'wil' | 'luk' | 'cha' | 'con'
 | 'move' | 'hpregen' | 'mpregen' | 'hp' | 'mp'
@@ -224,6 +226,7 @@ export class Character {
   skillOnKill: number;
 
   baseClass: CharacterClass = 'Undecided';
+  monsterClass?: MonsterClass;
 
   sack: Sack = new Sack({ size: this.sackSize });
   belt: Belt = new Belt({ size: this.beltSize });

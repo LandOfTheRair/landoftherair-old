@@ -1,5 +1,6 @@
 - npcId: Steffen Child
   name: child
+  monsterClass: Humanoid
   allegiance: Royalty
   sprite: 60
   alignment: Good
@@ -31,6 +32,7 @@
 
 - npcId: Steffen LostChild
   name: lost child
+  monsterClass: Humanoid
   allegiance: Royalty
   sprite: 60
   alignment: Good
@@ -67,6 +69,7 @@
 
 - npcId: Steffen Townee
   allegiance: Royalty
+  monsterClass: Humanoid
   sprite: [580, 595, 610, 615]
   alignment: Good
   stats: 9
@@ -164,6 +167,7 @@
 
 - npcId: Steffen Warrior Defender
   name: defender
+  monsterClass: Humanoid
   allegiance: Royalty
   hostility: Faction
   sprite: 590
@@ -256,6 +260,7 @@
 
 - npcId: Steffen Healer Defender
   name: defender
+  monsterClass: Humanoid
   hostility: Faction
   allegiance: Royalty
   sprite: 550
@@ -348,6 +353,7 @@
 
 - npcId: Steffen Warrior Offender
   name: assaulter
+  monsterClass: Humanoid
   hostility: Faction
   allegiance: Royalty
   sprite: 590
@@ -440,6 +446,7 @@
 
 - npcId: Steffen Healer Offender
   name: assaulter
+  monsterClass: Humanoid
   hostility: Faction
   allegiance: Royalty
   sprite: 550

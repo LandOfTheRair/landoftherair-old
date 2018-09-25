@@ -1,6 +1,7 @@
 
 - npcId: Risan Miner
   name: miner
+  monsterClass: Humanoid
   hostility: Faction
   allegiance: Townsfolk
   baseClass: Warrior
@@ -80,6 +81,7 @@
 
 - npcId: Risan Crazed Miner
   name: crazed miner
+  monsterClass: Humanoid
   hostility: Always
   allegiance: Enemy
   baseClass: Warrior
@@ -212,7 +214,9 @@
   spawnMessage: "the sound of rocks grinding together"
 
 - npcId: Overseer Jigan
-  name: Overseer Jigan
+  name: Jigan
+  monsterClass: Humanoid
+  affiliation: Mines Overseer
   hostility: OnHit
   allegiance: Enemy
   baseClass: Mage
