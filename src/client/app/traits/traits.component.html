@@ -1,6 +1,7 @@
 
 <div class="item-container d-flex flex-wrap">
   <div class="vertical-center w-100 background-text" *ngIf="!canSeeTree">You must first dedicate to a profession!</div>
+  <div class="position-absolute w-100 font-italic text-center help-text" *ngIf="canSeeTree">Drag to look around; scroll to zoom in and out.</div>
 
   <div class="tooltip p-1" #tooltip [style.border-color]="ttData.iconColor">
 
