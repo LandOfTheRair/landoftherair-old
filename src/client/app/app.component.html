@@ -1309,7 +1309,7 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #myAccount="bs-modal" tabindex="-1" (onShow)="updateMyStoredTag()">
+<div class="modal fade" bsModal #myAccount="bs-modal" tabindex="-1" (onShow)="updateMyServerInformation()">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
@@ -1348,6 +1348,23 @@
             </div>
 
           </div>
+        </div>
+      </div>
+
+      <div class="row mt-3" *ngIf="updateDiscordTag">
+        <div class="col-4"></div>
+        <div class="col-8">
+          <label class="ml-3" for="alwaysOnline">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="updateDiscordOnline" (change)="tryUpdateDiscordOnline()" id="alwaysOnline"/>
+            Always Online
+          </label>
+
+          <div class="row">
+            <div class="col text-center">
+              <h6><em><small>Being "Always Online" means you'll show up in lobby if you're online in discord, but not in game.</small></em></h6>
+            </div>
+          </div>
+
         </div>
       </div>
 

@@ -215,6 +215,10 @@ export class ColyseusLobbyService {
     this.room.send({ action: 'discord_tag', newTag });
   }
 
+  public updateDiscordOnline(isOnline: boolean) {
+    this.room.send({ action: 'discord_online', isOnline });
+  }
+
   public doCommand(string): boolean {
     const command = string.split(' ')[0];
     const args = string.substring(string.indexOf(' ')).trim();

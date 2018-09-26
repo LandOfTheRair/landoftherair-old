@@ -443,6 +443,7 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'festival')        return this.adjustFestival(client, data.args);
     if(data.action === 'rmbuy')           return this.rmBuy(client, data.purchaseInfo);
     if(data.action === 'discord_tag')     return this.trySetDiscordTag(client, data.newTag);
+    if(data.action === 'discord_online')  return this.trySetDiscordOnline(client, data.isOnline);
     if(data.action === 'mute')            return this.toggleMute(client, data.args);
     if(data.action === 'tester')          return this.toggleTester(client, data.args);
     if(data.action === 'update_account')  return this.updateAccount(client);
@@ -531,6 +532,15 @@ export class Lobby extends Room<LobbyState> {
       prettyErrorDesc: `Discord tag set! You will now be marked as verified, and if you are a subscriber, you'll get access to the subscriber-only channel.`
     });
     return;
+  }
+
+  private async trySetDiscordOnline(client, isOnline: boolean) {
+    const account = this.state.findAccount(client.userId);
+    if(!account) return;
+
+    account.discordOnline = isOnline;
+    DiscordHelper.syncAlwaysOnlineStatus(account);
+    AccountHelper.saveAccount(account);
   }
 
   private async rmBuy(client, purchaseInfo) {
@@ -700,11 +710,28 @@ export class Lobby extends Room<LobbyState> {
   private async startDiscord() {
     const didConnect = await DiscordHelper.init({
       newMessageCallback: ({ content, author }) => {
-        this.addMessage({ message: content, account: `ᐎ${author.username}` }, 'discord');
+        this.addMessage({ message: content, account: DiscordHelper.formatDiscordUsernameForLobby(author.username) }, 'discord');
+      },
+      presenceUpdateCallback: () => {
+        this.updateStateWithAlwaysOnlineDiscordUsers();
       }
     });
 
     this.state.discordConnected = didConnect;
+    this.updateStateWithAlwaysOnlineDiscordUsers();
+  }
+
+  private updateStateWithAlwaysOnlineDiscordUsers() {
+    this.state.setDiscordAlwaysOnlineUsers(
+      DiscordHelper.getAllAlwaysOnlineMembers()
+        .filter(user => user.presence.status !== 'offline')
+        .map(user => {
+          return {
+            username: DiscordHelper.formatDiscordUsernameForLobby(user.user.username),
+            tag: `${user.user.username}#${user.user.discriminator}`
+          }
+        })
+    );
   }
 
   private sendDiscordMessage(username: string, message: string) {

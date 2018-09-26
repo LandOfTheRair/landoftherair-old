@@ -7,8 +7,14 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { nonenumerable } from 'nonenumerable';
 import { find, reject, pullAt, extend } from 'lodash';
 
+export interface DiscordMockAccount {
+  tag: string;
+  username: string;
+}
+
 export class LobbyState {
   accounts: Account[] = [];
+  discordAccounts: DiscordMockAccount[] = [];
   messages: Message[] = [];
   motd: string;
   discordConnected: boolean;
@@ -25,10 +31,10 @@ export class LobbyState {
   newMessage$ = new Subject<number>();
 
   inGame = {};
-
   status = {};
-
   subTier = {};
+  lobbyAccountDiscordHash = {};
+
 
   constructor({ accounts = [], messages = [], motd = '' }) {
     this.accounts = accounts;
@@ -48,6 +54,9 @@ export class LobbyState {
     if(oldMessagesLength !== 0 && this.messages.length !== oldMessagesLength) {
       this.newMessage$.next(this.messages.length - oldMessagesLength);
     }
+
+    this.lobbyAccountDiscordHash = {};
+    this.accounts.forEach(acct => this.lobbyAccountDiscordHash[acct.discordTag] = true);
   }
 
   updateHashes() {
@@ -93,5 +102,9 @@ export class LobbyState {
   removeAccountAtPosition(position: number) {
     pullAt(this.accounts, [position]);
     this.account$.next(this.accounts);
+  }
+
+  setDiscordAlwaysOnlineUsers(accts: DiscordMockAccount[]) {
+    this.discordAccounts = accts;
   }
 }

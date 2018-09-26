@@ -199,6 +199,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   private imagesLoaded = 0;
 
   public updateDiscordTag: string;
+  public updateDiscordOnline: boolean;
 
   get resourcesLoaded() {
     return {
@@ -625,13 +626,18 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
-  updateMyStoredTag() {
+  updateMyServerInformation() {
     this.updateDiscordTag = this.colyseus.lobby.myAccount.discordTag;
+    this.updateDiscordOnline = this.colyseus.lobby.myAccount.discordOnline;
   }
 
   tryUpdateDiscordTag() {
     const tag = this.updateDiscordTag;
     this.colyseus.lobby.updateDiscordTag(tag);
+  }
+
+  tryUpdateDiscordOnline() {
+    this.colyseus.lobby.updateDiscordOnline(this.updateDiscordOnline);
   }
 
   private watchForTour() {

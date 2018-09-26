@@ -89,8 +89,8 @@ export class Account {
     ExpandedStorage: 0
   };
 
-  @nonenumerable
   discordTag: string;
+  discordOnline: boolean;
 
   constructor(opts) {
     merge(this, opts);
@@ -102,7 +102,7 @@ export class Account {
       'emailVerified', 'username', 'isGM', 'status', 'isTester',
       'characterNames', 'maxCharacters', 'subscriptionTier', 'trialEnds', 'hasDoneTrial',
       'silver', 'silverPurchases',
-      'discordTag',
+      'discordTag', 'discordOnline',
       'isMuted'
     ]);
 

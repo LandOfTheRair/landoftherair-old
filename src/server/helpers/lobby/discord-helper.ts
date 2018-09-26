@@ -7,6 +7,7 @@ const DISCORD_WATCHER_ROLE_NAME = process.env.DISCORD_WATCHER_ROLE || 'Event Wat
 const DISCORD_VERIFIED_ROLE_NAME = process.env.DISCORD_VERIFIED_ROLE || 'Verified';
 const DISCORD_MUTED_ROLE_NAME = process.env.DISCORD_MUTED_ROLE || 'Muted';
 const DISCORD_SUBSCRIBER_ROLE_NAME = process.env.DISCORD_SUBSCRIBER_ROLE || 'Subscriber';
+const DISCORD_ONLINE_ROLE_NAME = process.env.DISCORD_ONLINE_ROLE || 'Online In Lobby';
 const DISCORD_BOT_NAME = process.env.DISCORD_BOT_NAME || 'LandOfTheRairLobby';
 
 export class DiscordHelper {
@@ -16,6 +17,7 @@ export class DiscordHelper {
   private static discordBotChannel: Discord.GroupDMChannel;
 
   private static newMessageCallback: (obj) => void;
+  private static presenceUpdateCallback: (oldU, newU) => void;
 
   private static parseBotMessage({ content, channel, member }) {
     if(content !== '!events') return;
@@ -38,16 +40,21 @@ export class DiscordHelper {
     }
   }
 
+  public static formatDiscordUsernameForLobby(username: string): string {
+    return `ᐎ${username}`;
+  }
+
   private static parseLobbyMessage({ content, author }) {
     if(author.username === DISCORD_BOT_NAME) return;
 
     DiscordHelper.newMessageCallback({ content, author });
   }
 
-  public static async init({ newMessageCallback }): Promise<boolean> {
+  public static async init({ newMessageCallback, presenceUpdateCallback }): Promise<boolean> {
     if(!process.env.DISCORD_SECRET) return false;
 
     this.newMessageCallback = newMessageCallback;
+    this.presenceUpdateCallback = presenceUpdateCallback;
 
     DiscordHelper.discord = new Discord.Client();
 
@@ -68,7 +75,19 @@ export class DiscordHelper {
       if(channel.id === DiscordHelper.discordBotChannel.id) DiscordHelper.parseBotMessage({ content, channel, member });
     });
 
+    DiscordHelper.discord.on('presenceUpdate', (oldMember, newMember) => {
+      if(!DiscordHelper.discordChannel || !DiscordHelper.discordBotChannel) return;
+
+      presenceUpdateCallback(oldMember, newMember);
+    });
+
     return true;
+  }
+
+  public static getAllAlwaysOnlineMembers(): Discord.GuildMember[] {
+    if(!this.discord || !this.discordGuild) return [];
+
+    return this.discordGuild.roles.find('name', DISCORD_ONLINE_ROLE_NAME).members.array();
   }
 
   public static sendMessage(username: string, message: string) {
@@ -118,7 +137,8 @@ export class DiscordHelper {
     [
       DISCORD_VERIFIED_ROLE_NAME,
       DISCORD_SUBSCRIBER_ROLE_NAME,
-      DISCORD_MUTED_ROLE_NAME
+      DISCORD_MUTED_ROLE_NAME,
+      DISCORD_ONLINE_ROLE_NAME
     ].forEach(role => {
       guildMember.removeRole(this.discordGuild.roles.find('name', role));
     });
@@ -136,6 +156,10 @@ export class DiscordHelper {
       guildMember.addRole(this.discordGuild.roles.find('name', DISCORD_MUTED_ROLE_NAME));
     }
 
+    if(account.discordOnline) {
+      guildMember.addRole(this.discordGuild.roles.find('name', DISCORD_ONLINE_ROLE_NAME));
+    }
+
     if(account.subscriptionTier > 0) {
       guildMember.addRole(this.discordGuild.roles.find('name', DISCORD_SUBSCRIBER_ROLE_NAME));
     } else {
@@ -143,5 +167,21 @@ export class DiscordHelper {
     }
 
     return true;
+  }
+
+  public static syncAlwaysOnlineStatus(account: Account): boolean {
+    if(!this.discord) return;
+
+    const guildMember = this.getUserByTag(account.discordTag);
+    if(!guildMember) return false;
+
+    if(account.discordOnline) {
+      guildMember.addRole(this.discordGuild.roles.find('name', DISCORD_ONLINE_ROLE_NAME));
+    } else {
+      guildMember.removeRole(this.discordGuild.roles.find('name', DISCORD_ONLINE_ROLE_NAME));
+    }
+
+    return true;
+
   }
 }

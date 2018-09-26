@@ -38,6 +38,7 @@ If you want to test Discord integration, you can also add:
 * `DISCORD_VERIFIED_ROLE` - the role for a user to get when they connect their discord (default: "Verified")
 * `DISCORD_MUTED_ROLE` - the role for a user who is muted in game (default: "Muted")
 * `DISCORD_SUBSCRIBER_ROLE` - the role for a user to get when they subscribe (default: "Subscriber")
+* `DISCORD_ONLINE_ROLE` - the role for a user who is "always online" (default: Online In Lobby)
 * `DISCORD_CHANNEL` - the id of the channel for your discord bot to talk in
 * `DISCORD_BOT_CHANNEL` - the id of the channel for your discord bot to listen for commands in
 * `DISCORD_BOT_NAME` - the name of the bot as it was set up (default: "LandOfTheRairLobby")
