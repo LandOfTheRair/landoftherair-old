@@ -23,12 +23,12 @@ export class MerchantToPouch extends Command {
 
     let maxQuantity = Math.min(quantity, player.pouch.size - player.pouch.allItems.length);
 
+    const npc = this.getNPCInView(player, containerUUID);
+
     if(item.daily) {
       if(!player.canBuyDailyItem(item)) return player.sendClientMessageFromNPC(npc, 'Sorry, that\'s sold out at the moment. Check back tomorrow!');
       maxQuantity = 1;
     }
-
-    const npc = this.getNPCInView(player, containerUUID);
 
     for(let i = 0; i < maxQuantity; i++) {
       if(!player.hasCurrency(npc.$$vendorCurrency, item.value)) {
