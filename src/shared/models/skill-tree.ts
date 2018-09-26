@@ -87,7 +87,7 @@ export class SkillTree {
     this.buyableNodesHash = {};
 
     // this is fucking stupid.
-    const tree = AllTrees[this.baseClass].default || AllTrees[this.baseClass];
+    const tree = AllTrees[this.baseClass] && AllTrees[this.baseClass].default ? AllTrees[this.baseClass].default : AllTrees[this.baseClass];
 
     values(tree).forEach(node => {
       if(!node.root) return;
