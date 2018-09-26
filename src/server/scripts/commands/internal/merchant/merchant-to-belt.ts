@@ -23,16 +23,16 @@ export class MerchantToBelt extends Command {
 
     let maxQuantity = Math.min(quantity, player.belt.size - player.belt.allItems.length);
 
+    const npc = this.getNPCInView(player, containerUUID);
+
     if(item.daily) {
-      if(!player.canBuyDailyItem(item)) return player.sendClientMessage('Sorry, that\'s sold out at the moment. Check back tomorrow!');
+      if(!player.canBuyDailyItem(item)) return player.sendClientMessageFromNPC(npc, 'Sorry, that\'s sold out at the moment. Check back tomorrow!');
       maxQuantity = 1;
     }
 
-    const npc = this.getNPCInView(player, containerUUID);
-
     for(let i = 0; i < maxQuantity; i++) {
       if(!player.hasCurrency(npc.$$vendorCurrency, item.value)) {
-        if(i === 0) player.sendClientMessage('You do not have enough for that.');
+        if(i === 0) player.sendClientMessageFromNPC(npc, 'You do not have enough for that.');
         return;
       }
 

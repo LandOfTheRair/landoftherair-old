@@ -16,11 +16,11 @@ export class BeltToMerchant extends Command {
     if(!this.checkMerchantDistance(player, merchantUUID)) return;
 
     const npc = this.getNPCInView(player, merchantUUID);
-    if(npc.$$vendorCurrency) return player.sendClientMessage('Sorry, if you want to sell stuff you gotta go somewhere else.');
+    if(npc.$$vendorCurrency) return player.sendClientMessageFromNPC(npc, 'Sorry, if you want to sell stuff you gotta go somewhere else.');
 
     const itemCheck = player.belt.getItemFromSlot(slot);
     if(!itemCheck) return false;
-    if(!itemCheck.isOwnedBy(player)) return player.sendClientMessage('That is not yours!');
+    if(!itemCheck.isOwnedBy(player)) return player.sendClientMessageFromNPC(npc, 'That is not yours!');
 
     const item = player.belt.takeItemFromSlot(slot);
     if(!item) return false;

@@ -29,17 +29,17 @@ export const TannerResponses = (npc: NPC) => {
 
       ground.Corpse.forEach(corpse => {
         if(corpse.$$isPlayerCorpse) {
-          player.sendClientMessage(`You cannot tan players! What do I look like, a cannibal?`);
+          player.sendClientMessageFromNPC(npc, `You cannot tan players! What do I look like, a cannibal?`);
           return;
         }
 
         if(!includes(corpse.$$playersHeardDeath, player.username)) {
-          player.sendClientMessage(`You didn't have a hand in killing the ${corpse.desc.split('the corpse of a ')[1]}!`);
+          player.sendClientMessageFromNPC(npc, `You didn't have a hand in killing the ${corpse.desc.split('the corpse of a ')[1]}!`);
           return;
         }
 
         if(!corpse.tansFor) {
-          player.sendClientMessage(`I can't make anything out of ${corpse.desc}!`);
+          player.sendClientMessageFromNPC(npc, `I can't make anything out of ${corpse.desc}!`);
           return;
         }
 
@@ -53,7 +53,7 @@ export const TannerResponses = (npc: NPC) => {
             npc.$$room.addItemToGround(npc, item);
           });
 
-        player.sendClientMessage(`Here you go, ${player.name}! I've tanned ${corpse.desc} for you.`);
+        return `Here you go, ${player.name}! I've tanned ${corpse.desc} for you.`;
       });
 
     });
@@ -811,7 +811,7 @@ export const SpellforgingResponses = (npc: NPC) => {
 
       const allTraits = {};
 
-      player.sendClientMessage(`${player.name}, here are your active traits:`);
+      player.sendClientMessageFromNPC(npc, `${player.name}, here are your active traits:`);
 
       slots.forEach(({ name, path }) => {
         const item = get(player, path);

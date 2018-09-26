@@ -31,7 +31,7 @@ export const responses = (npc: NPC) => {
             player.setRightHand(item);
           });
 
-        return player.sendClientMessage(`You have done our kingdom a great deed today. Thank you, ${player.name}!`);
+        return `You have done our kingdom a great deed today. Thank you, ${player.name}!`;
       }
 
       return 'Greetings, royal subject. What brings you to my KINGDOM?';

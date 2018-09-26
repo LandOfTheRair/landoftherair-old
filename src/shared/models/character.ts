@@ -1271,6 +1271,10 @@ export class Character {
     MessageHelper.sendClientMessageToRadius(this, message, radius, except, useSight);
   }
 
+  sendClientMessageFromNPC(npc: Character, message: string): void {
+    this.sendClientMessage({ name: npc.name, message, subClass: 'chatter' });
+  }
+
   isPlayer() {
     return false;
   }

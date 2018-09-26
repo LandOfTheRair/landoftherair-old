@@ -15,11 +15,11 @@ export class PotionToMerchant extends Command {
     if(!this.checkMerchantDistance(player, merchantUUID)) return;
 
     const npc = this.getNPCInView(player, args);
-    if(npc.$$vendorCurrency) return player.sendClientMessage('Sorry, if you want to sell stuff you gotta go somewhere else.');
+    if(npc.$$vendorCurrency) return player.sendClientMessageFromNPC(npc, 'Sorry, if you want to sell stuff you gotta go somewhere else.');
 
     const item = player.potionHand;
     if(!item) return false;
-    if(!item.isOwnedBy(player)) return player.sendClientMessage('That is not yours!');
+    if(!item.isOwnedBy(player)) return player.sendClientMessageFromNPC(npc, 'That is not yours!');
 
     player.setPotionHand(null);
     player.sellItem(item);

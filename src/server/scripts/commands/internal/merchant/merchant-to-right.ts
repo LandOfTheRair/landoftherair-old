@@ -20,10 +20,10 @@ export class MerchantToRight extends Command {
 
     const npc = this.getNPCInView(player, containerUUID);
 
-    if(!player.hasCurrency(npc.$$vendorCurrency, item.value)) return player.sendClientMessage('You do not have enough for that.');
+    if(!player.hasCurrency(npc.$$vendorCurrency, item.value)) return player.sendClientMessageFromNPC(npc, 'You do not have enough for that.');
 
     if(item.daily) {
-      if(!player.canBuyDailyItem(item)) return player.sendClientMessage('Sorry, that\'s sold out at the moment. Check back tomorrow!');
+      if(!player.canBuyDailyItem(item)) return player.sendClientMessageFromNPC(npc, 'Sorry, that\'s sold out at the moment. Check back tomorrow!');
       player.buyDailyItem(item);
     }
 

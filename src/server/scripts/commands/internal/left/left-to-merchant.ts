@@ -12,12 +12,12 @@ export class LeftToMerchant extends Command {
 
     if(this.isAccessingLocker(player)) return;
     if(!item) return;
-    if(!item.isOwnedBy(player)) return player.sendClientMessage('That is not yours!');
 
     if(!this.checkMerchantDistance(player, args)) return;
 
     const npc = this.getNPCInView(player, args);
-    if(npc.$$vendorCurrency) return player.sendClientMessage('Sorry, if you want to sell stuff you gotta go somewhere else.');
+    if(!item.isOwnedBy(player)) return player.sendClientMessageFromNPC(npc, 'That is not yours!');
+    if(npc.$$vendorCurrency) return player.sendClientMessageFromNPC(npc, 'Sorry, if you want to sell stuff you gotta go somewhere else.');
 
     player.sellItem(item);
     player.setLeftHand(null);
