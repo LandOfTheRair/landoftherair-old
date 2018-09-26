@@ -128,11 +128,9 @@
         </div>
 
         <div class="row" *ngIf="needsOverwrite">
-          <div class="col-1 ml-auto vertical-center text-right">
-            <input type="checkbox" id="overwrite" class="form-control" [(ngModel)]="confirmOverwrite" />
-          </div>
-          <div class="col-8">
-            <label for="overwrite">
+          <div class="col-12 d-flex vertical-center">
+            <label for="overwrite" class="w-100 text-center">
+              <input type="checkbox" id="overwrite" [(ngModel)]="confirmOverwrite" />
               Yes, I want to overwrite my old character.
             </label>
           </div>
