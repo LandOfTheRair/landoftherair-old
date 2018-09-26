@@ -712,7 +712,7 @@ export class Game {
     return get(this.colyseus.game.clientGameState.fov, [x, y]);
   }
 
-  private updateFOV() { 
+  private updateFOV() {
     const isPlayerInHash = this.playerSpriteHash[this.player.username];
 
     for(let x = -4; x <= 4; x++) {
@@ -892,7 +892,7 @@ export class Game {
           sprite.events.onInputDown.add(() => {
             if(this.player.x !== sprite.x / 64 || this.player.y !== sprite.y / 64) return;
 
-            this.colyseus.game.currentCommand = obj.type === 'StairsUp' ? 'up' : 'down';
+            this.colyseus.game.currentCommand = obj.type === 'StairsUp' ? '#up' : '#down';
 
           });
         }

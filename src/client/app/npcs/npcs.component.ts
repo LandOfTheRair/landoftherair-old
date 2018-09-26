@@ -148,7 +148,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
       this.colyseusGame.sendCommandString(`${npc.uuid}, hello`);
 
     } else if((<any>npc).username && !this.colyseusGame.currentCommand && this.colyseusGame.hostilityLevelFor(npc) !== 'hostile') {
-      this.colyseusGame.currentCommand = `${npc.uuid}, `;
+      this.colyseusGame.currentCommand = `#${npc.uuid}, `;
 
     } else if(this.colyseusGame.currentCommand) {
       this.colyseusGame.sendCommandString(this.colyseusGame.currentCommand, npc.uuid);

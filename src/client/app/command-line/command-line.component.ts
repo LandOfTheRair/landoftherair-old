@@ -3,6 +3,8 @@ import { LocalStorage } from 'ngx-webstorage';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { ColyseusLobbyService } from '../colyseus.lobby.service';
 
+import { startsWith } from 'lodash';
+
 import { environment } from '../../environments/environment';
 import { MacroService } from '../macros.service';
 
@@ -44,7 +46,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    public colyseusGame: ColyseusGameService, 
+    public colyseusGame: ColyseusGameService,
     public colyseusLobby: ColyseusLobbyService,
     public macroService: MacroService
   ) {}
@@ -79,22 +81,28 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   sendCommand() {
     if(!this.colyseusGame.currentCommand || !this.colyseusGame.currentCommand.trim()) return;
 
-    if(this.cmdMode === 'say') {
+    const shouldBypassOthers = startsWith(this.colyseusGame.currentCommand, '#');
+
+    if(!shouldBypassOthers && this.cmdMode === 'say') {
       this.colyseusGame.sendCommandString(`~say ${this.colyseusGame.currentCommand}`);
       this.colyseusGame.currentCommand = '';
       return;
     }
 
-    if(this.cmdMode === 'party') {
+    if(!shouldBypassOthers && this.cmdMode === 'party') {
       this.colyseusGame.sendCommandString(`~partysay ${this.colyseusGame.currentCommand}`);
       this.colyseusGame.currentCommand = '';
       return;
     }
 
-    if(this.cmdMode === 'global') {
+    if(!shouldBypassOthers && this.cmdMode === 'global') {
       this.colyseusLobby.sendMessage(this.colyseusGame.currentCommand);
       this.colyseusGame.currentCommand = '';
       return;
+    }
+
+    if(shouldBypassOthers) {
+      this.colyseusGame.currentCommand = this.colyseusGame.currentCommand.substring(1);
     }
 
     this.curIndex = -1;

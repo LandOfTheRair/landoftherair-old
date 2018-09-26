@@ -231,7 +231,7 @@ export class MacroService {
         this.currentInGameSelectedMacro = macro.name;
 
       } else {
-        this.colyseusGame.currentCommand = macroText;
+        this.colyseusGame.currentCommand = `#${macroText}`;
 
       }
     };
