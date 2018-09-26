@@ -603,7 +603,7 @@ export class Lobby extends Room<LobbyState> {
     this.updateAccount(client);
   }
 
-  public updateFestivalTime(account: Account, key: 'xpMult'|'skillMult'|'goldMult', hours = 6): void {
+  public updateFestivalTime(account: Account, key: 'xpMult'|'skillMult'|'goldMult'|'itemFindMult', hours = 6): void {
 
     this.bonusArbiter.manuallyUpdateBonusHours({ [key]: hours }, true);
     this.saveSettings();

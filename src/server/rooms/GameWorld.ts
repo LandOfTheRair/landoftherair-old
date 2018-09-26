@@ -1065,6 +1065,10 @@ export class GameWorld extends Room<GameState> {
     return Math.floor(xp * this.bonusHelper.settings.xpMult);
   }
 
+  public calcAdjustedItemFindGain(itemFindBonus: number) {
+    return Math.floor(itemFindBonus * this.bonusHelper.settings.itemFindMult);
+  }
+
   public calcAdjustedPartyXPGain(xpGain: number) {
     return Math.floor(xpGain * this.bonusHelper.settings.partyXPMult);
   }

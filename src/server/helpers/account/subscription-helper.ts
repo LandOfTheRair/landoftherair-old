@@ -73,6 +73,16 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'goldMult', 6)
   },
   {
+    name: 'Festival: Item Find +100%',
+    desc: 'Find rare items +100% of the time (twice as often!) for 6 hours. Additional purchases increase duration, not bonus.',
+    icon: 'two-shadows',
+    fgColor: '#aa0',
+    maxPurchases: 99999,
+    key: 'FestivalItemFind',
+    cost: 150,
+    postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'itemFindMult', 6)
+  },
+  {
     name: 'Cosmetic: Inversify',
     desc: 'Visit Cosmetica to redeem your Inversify cosmetic (turns your item "inversed" looking).',
     icon: 'beard',

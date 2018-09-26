@@ -1284,18 +1284,19 @@
             <div>XP Multiplier: {{ bonusData.bonus.xpMult * 100 }}%</div>
             <div>Gold Multiplier: {{ bonusData.bonus.goldMult * 100 }}%</div>
             <div>Skill Multiplier: {{ bonusData.bonus.skillMult * 100 }}%</div>
+            <div>Item Find Multiplier: {{ bonusData.bonus.itemFindMult * 100 }}%</div>
           </div>
           <div class="col-6">
             <h5>Bonus Festivals</h5>
             <div *ngIf="bonusData.bonusHours.xpMult">+100% XP ({{ bonusData.bonusHours.xpMult }} hours)</div>
             <div *ngIf="bonusData.bonusHours.goldMult">+100% Gold ({{ bonusData.bonusHours.goldMult }} hours)</div>
             <div *ngIf="bonusData.bonusHours.skillMult">+100% Skill ({{ bonusData.bonusHours.skillMult }} hours)</div>
-            <div *ngIf="bonusData.bonusHours.traitGainMult">+100% Trait Gain ({{ bonusData.bonusHours.traitGainMult }} hours)</div>
+            <div *ngIf="bonusData.bonusHours.itemFindMult">+100% Skill ({{ bonusData.bonusHours.itemFindMult }} hours)</div>
 
             <div *ngIf="!bonusData.bonusHours.xpMult
                      && !bonusData.bonusHours.goldMult
                      && !bonusData.bonusHours.skillMult
-                     && !bonusData.bonusHours.traitGainMult">None. You should start one!</div>
+                     && !bonusData.bonusHours.itemFindMult">None. You should start one!</div>
           </div>
         </div>
       </div>
