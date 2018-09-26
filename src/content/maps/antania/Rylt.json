@@ -9209,6 +9209,66 @@
                  "width":64,
                  "x":4992,
                  "y":2112
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1257,
+                 "name":"Zombie Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/halloween\/zombie"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8192,
+                 "y":8384
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1258,
+                 "name":"Zombie Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/halloween\/zombie"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8512,
+                 "y":1600
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1259,
+                 "name":"Zombie Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/halloween\/zombie"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8576,
+                 "y":3648
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -10492,7 +10552,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1257,
+ "nextobjectid":1260,
  "orientation":"orthogonal",
  "properties":
     {
