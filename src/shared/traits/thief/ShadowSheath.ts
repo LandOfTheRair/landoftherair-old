@@ -12,4 +12,8 @@ export class ShadowSheath extends Trait {
     { }, { }, { }, { }, { }, { }, { capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 2;
+  }
+
 }

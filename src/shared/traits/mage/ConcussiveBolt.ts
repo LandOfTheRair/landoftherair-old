@@ -12,4 +12,8 @@ export class ConcussiveBolt extends Trait {
     { capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return level ? 5 : 0;
+  }
+
 }

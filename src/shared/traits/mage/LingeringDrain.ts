@@ -12,4 +12,8 @@ export class LingeringDrain extends Trait {
     { }, { }, { capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 3;
+  }
+
 }

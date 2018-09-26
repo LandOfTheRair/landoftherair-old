@@ -11,4 +11,8 @@ export class NimbleStealing extends Trait {
   static upgrades = [
     { }, { }, { capstone: true }
   ];
+
+  static usageModifier(level: number): number {
+    return level * 5;
+  }
 }

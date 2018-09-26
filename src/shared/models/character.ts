@@ -1448,7 +1448,7 @@ export class Character {
   public getTraitLevelAndUsageModifier(trait: string): number {
     const level = this.getTraitLevel(trait);
 
-    return TraitUsageModifiers.getTraitLevelAndUsageModifier(trait, level);
+    return TraitUsageModifiers.getTraitLevelAndUsageModifier(this, trait, level);
   }
 
   private adjustStatsForTraits(): void {

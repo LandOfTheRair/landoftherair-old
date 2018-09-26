@@ -12,4 +12,8 @@ export class VolcanoStanceImproved extends Trait {
     { }, { capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 0.1;
+  }
+
 }

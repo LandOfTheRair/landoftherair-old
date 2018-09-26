@@ -12,4 +12,8 @@ export class ThermalBarrier extends Trait {
     { requireCharacterLevel: 10 }, { requireCharacterLevel: 10 }, { requireCharacterLevel: 15, capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 0.2;
+  }
+
 }

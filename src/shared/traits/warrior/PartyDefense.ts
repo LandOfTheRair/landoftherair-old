@@ -11,4 +11,8 @@ export class PartyDefense extends PartyTrait {
     { }, { }, { capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 2;
+  }
+
 }

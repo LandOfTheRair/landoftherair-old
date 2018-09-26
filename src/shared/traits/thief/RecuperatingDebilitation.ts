@@ -12,4 +12,8 @@ export class RecuperatingDebilitation extends Trait {
     { }, { }, { }, { cost: 30, capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 5;
+  }
+
 }

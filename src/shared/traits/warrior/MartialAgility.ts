@@ -17,4 +17,8 @@ export class MartialAgility extends Trait {
     return super.currentlyInEffect(player) && (!player.rightHand || !player.leftHand);
   }
 
+  static usageModifier(level: number): number {
+    return level * 0.2;
+  }
+
 }

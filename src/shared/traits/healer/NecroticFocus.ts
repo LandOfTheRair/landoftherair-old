@@ -12,4 +12,8 @@ export class NecroticFocus extends Trait {
     { }, { }, { }, { }, { }, { }, { }, { requireCharacterLevel: 15, capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 10;
+  }
+
 }

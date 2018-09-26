@@ -12,4 +12,8 @@ export class StrongerTraps extends Trait {
     { }, { }, { }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 5;
+  }
+
 }

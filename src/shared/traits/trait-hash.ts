@@ -12,5 +12,6 @@ export const AllTraits = {
   Mage: MageTraits,
   Healer: HealerTraits,
   Warrior: WarriorTraits,
-  Thief: ThiefTraits
+  Thief: ThiefTraits,
+  Undecided: {}
 };

@@ -17,4 +17,8 @@ export class StunningFist extends Trait {
     return super.currentlyInEffect(player) && !player.rightHand;
   }
 
+  static usageModifier(level: number): number {
+    return level * 2;
+  }
+
 }

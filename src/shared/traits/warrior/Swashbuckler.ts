@@ -12,4 +12,8 @@ export class Swashbuckler extends Trait {
     { }, { }, { }, { }, { capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return Math.max(0.025, 1 - (level * 0.125));
+  }
+
 }

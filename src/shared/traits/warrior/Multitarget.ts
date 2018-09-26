@@ -12,4 +12,8 @@ export class Multitarget extends Trait {
     { cost: 10 }, { cost: 10 }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 3;
+  }
+
 }

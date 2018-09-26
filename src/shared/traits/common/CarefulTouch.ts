@@ -11,4 +11,8 @@ export class CarefulTouch extends Trait {
     { }, { }, { requireCharacterLevel: 15, capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return Math.min(0.95, level * 0.1);
+  }
+
 }

@@ -9,4 +9,8 @@ export class SlowDigestion extends FreeTrait {
 
   static upgrades = [];
 
+  static usageModifier(level: number): number {
+    return level * 0.2;
+  }
+
 }

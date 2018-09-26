@@ -21,4 +21,8 @@ export class UnarmoredSavant extends Trait {
     return super.currentlyInEffect(player) && (includes(RobeClasses, itemClass));
   }
 
+  static usageModifier(level: number): number {
+    return level ? 40 : 0;
+  }
+
 }

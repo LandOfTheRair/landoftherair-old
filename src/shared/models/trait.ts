@@ -42,6 +42,10 @@ export class Trait {
   static currentlyInEffect(player: Player): boolean {
     return !this.baseClass || player.baseClass === this.baseClass;
   }
+
+  static usageModifier(level: number): number {
+    return level;
+  }
 }
 
 export class FreeTrait extends Trait {

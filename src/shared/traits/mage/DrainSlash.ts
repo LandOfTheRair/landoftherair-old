@@ -12,4 +12,8 @@ export class DrainSlash extends Trait {
     { cost: 20, capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 5;
+  }
+
 }

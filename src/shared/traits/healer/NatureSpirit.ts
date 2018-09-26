@@ -12,4 +12,8 @@ export class NatureSpirit extends Trait {
     { }, { }, { }, { }, { }
   ];
 
+  static usageModifier(level: number): number {
+    return level * 0.05;
+  }
+
 }

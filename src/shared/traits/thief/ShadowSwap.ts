@@ -12,4 +12,8 @@ export class ShadowSwap extends Trait {
     { }, { }, { }, { }, { }, { }, { }, { capstone: true }
   ];
 
+  static usageModifier(level: number): number {
+    return Math.min(100, level * 2);
+  }
+
 }

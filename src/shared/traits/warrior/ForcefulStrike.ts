@@ -17,4 +17,8 @@ export class ForcefulStrike extends Trait {
     return super.currentlyInEffect(player) && player.hp.gtePercent(50);
   }
 
+  static usageModifier(level: number): number {
+    return level * 10;
+  }
+
 }
