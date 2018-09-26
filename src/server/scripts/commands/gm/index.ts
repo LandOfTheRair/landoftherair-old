@@ -2,6 +2,7 @@
 export * from './GMAllegiance';
 export * from './GMCreateGold';
 export * from './GMCreateItem';
+export * from './GMCurrency';
 export * from './GMDuplicateItem';
 export * from './GMExamine';
 export * from './GMForgeItem';

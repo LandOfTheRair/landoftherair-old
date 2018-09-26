@@ -151,7 +151,7 @@ import { ColyseusService } from './colyseus.service';
 
             <ul *dropdownMenu class="dropdown-menu">
               <li class="wide-item" *ngFor="let currency of allCurrencies">
-                <a class="nav-link d-flex justify-content-between">
+                <a class="nav-link d-flex justify-content-between" [class.hidden]="colyseus.game.character.currency[currency.toLowerCase()] <= 0">
                   <span>{{ currency }}</span>
                   <span>{{ colyseus.game.character.currency[currency.toLowerCase()] | number:0 }}</span>
                 </a>
@@ -217,7 +217,8 @@ export class NavbarComponent implements OnInit {
 
   public get hasMultipleCurrencies(): boolean {
     if(!this.colyseus.game.character) return false;
-    return Object.keys(this.colyseus.game.character.currency).length > 1;
+    return Object.keys(this.colyseus.game.character.currency)
+      .filter(x => this.colyseus.game.character.currency[x] > 0).length > 1;
   }
 
   public get allCurrencies(): string[] {

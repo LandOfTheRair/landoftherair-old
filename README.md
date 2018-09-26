@@ -164,6 +164,7 @@ You also get access to some commands in-game:
 
 * `@allegiance <allegiance>` - change your allegiance to `allegiance`. If `GM` is specified, then you will be non-hostle to everything, and they will be non-hostile to you
 * `@gold <num>` - create <num> gold on your tile
+* `@currency <type> <num>` - give yourself `num` of `type` currency
 * `@item <item name>` - create a particular item on your tile
 * `@itemdupe` - copy your right hand to your left hand
 * `@examine <nothing|npcish> <nothing|prop>` - if `npcish` is specified, will examine an npc (if `prop` is specified, it will print only that prop). Otherwise, it'll examine your right hand item
