@@ -674,7 +674,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       const gainedTP = player.skillTree.calculateNewTPFromLevels(player);
       player.$$room.updateSkillTree(player);
 
-      return `You have gained ${newLevel - level} experience level and ${gainedTP} TP.`;
+      return `You have gained ${newLevel - level} experience level and ${gainedTP} TP. Visit your Trait Tree to spend TP!`;
     });
 
   npc.parser.addCommand('join')
@@ -704,7 +704,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
       player.spendGold(learnCost, `Service:Learn`);
 
-      return `You have gained ${gainedTP} TP!`;
+      return `You have gained ${gainedTP} TP! Visit your Trait Tree to spend TP!`;
     });
 
   npc.parser.addCommand('reset')
