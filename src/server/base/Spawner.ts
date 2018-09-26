@@ -93,6 +93,7 @@ export class Spawner {
     // if no initial spawn or if no players in range, do not spawn anything
     if(this.initialSpawn === 0) return;
     if(this.shouldSlowDown()) return;
+    if(!this.isActive()) return;
 
     // allow it to get into the cache
     await this.createNPC();
