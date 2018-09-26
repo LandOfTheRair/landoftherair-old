@@ -24,7 +24,7 @@ export class LootHelper {
     if(includes(npc.name, 'elite')) bonus *= 2;
 
     bonus = npc.$$room.calcAdjustedItemFindGain(bonus);
-    
+
     const isNaturalResource = npc.isNaturalResource;
 
     if(!isNaturalResource && npc.$$room.dropTables.map.length > 0) {

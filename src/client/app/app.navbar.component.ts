@@ -1,6 +1,6 @@
 
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
-import { get } from 'lodash';
+import { get, capitalize } from 'lodash';
 import { DateTime } from 'luxon';
 import { timer } from 'rxjs';
 import * as swal from 'sweetalert2';
@@ -16,6 +16,10 @@ import { ColyseusService } from './colyseus.service';
 
     .navbar-brand {
       color: #ccc !important;
+    }
+    
+    .wide-item {
+      width: 250px;
     }
   `],
   template: `
@@ -140,11 +144,27 @@ import { ColyseusService } from './colyseus.service';
               <app-icon name="battle-gear" size="small" fgColor="#ccc" bgColor="transparent"></app-icon>
             </a>
           </li>
+          <li class="nav-item" *ngIf="hasMultipleCurrencies" dropdown container="body">
+            <a class="nav-link" dropdownToggle>
+              <app-icon name="two-coins" size="small" fgColor="#ccc" bgColor="transparent"></app-icon>
+            </a>
+
+            <ul *dropdownMenu class="dropdown-menu">
+              <li class="wide-item" *ngFor="let currency of allCurrencies">
+                <a class="nav-link d-flex justify-content-between">
+                  <span>{{ currency }}</span>
+                  <span>{{ colyseus.game.character.currency[currency.toLowerCase()] | number:0 }}</span>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item" tooltip="Daily reset is when you can re-do daily quests, and buy new daily items!" placement="bottom">
-            <a class="nav-link">Daily Reset in {{ timestampDisplay }}</a>
+            <a class="nav-link">
+              Daily Reset in {{ timestampDisplay }}
+            </a>
           </li>
         </ul>
       </div>
@@ -193,6 +213,16 @@ export class NavbarComponent implements OnInit {
 
   public get hasPouch(): boolean {
     return get(this.colyseus.lobby.myAccount, 'silverPurchases.MagicPouch', 0) > 0;
+  }
+
+  public get hasMultipleCurrencies(): boolean {
+    if(!this.colyseus.game.character) return false;
+    return Object.keys(this.colyseus.game.character.currency).length > 1;
+  }
+
+  public get allCurrencies(): string[] {
+    if(!this.colyseus.game.character) return [];
+    return Object.keys(this.colyseus.game.character.currency).map(x => capitalize(x));
   }
 
   constructor(
