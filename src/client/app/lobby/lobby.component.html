@@ -32,7 +32,7 @@
         <strong>&lt;System&gt;:</strong> <span class="ml-1" [innerHTML]="(lobby.lobbyState.motd || '(no motd)') | linkify"></span>
       </div>
 
-      <div class="chat-area p-0" appNgxAutoScroll lockYOffset="30" [style.height]="chatHeight" [style.max-height]="chatHeight">
+      <div class="chat-area p-0" appNgxAutoScroll lockYOffset="30" [style.height]="chatHeight" [style.max-height]="chatHeight" #chat>
         <div class="message pl-1" *ngFor="let message of lobby.lobbyState.messages">
           <span class="timestamp">[{{ message.timestamp | date:'hh:mm'}}]</span>
           <span class="account">{{ message.account }}:</span>
