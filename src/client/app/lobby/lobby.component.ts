@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { ColyseusLobbyService } from '../colyseus.lobby.service';
 import { Account } from '../../../shared/models/account';
 
@@ -9,7 +9,7 @@ import * as _ from 'lodash';
   templateUrl: './lobby.component.html',
   styleUrls: ['./lobby.component.scss']
 })
-export class LobbyComponent implements OnInit, OnDestroy {
+export class LobbyComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('chatInput')
   public chatInput;
@@ -33,10 +33,15 @@ export class LobbyComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.accounts$ = this.lobby.lobbyState.account$.subscribe(accounts => this.sortAndSetAccounts(accounts));
     this.newMessage$ = this.lobby.lobbyState.newMessage$.subscribe(() => this.recalcChatHeight());
+  }
 
+  ngAfterViewInit() {
     setTimeout(() => {
       this.recalcChatHeight();
-      this.chat.nativeElement.scrollTop = this.chat.nativeElement.scrollHeight;
+
+      setTimeout(() => {
+        this.chat.nativeElement.scrollTop = this.chat.nativeElement.scrollHeight;
+      });
     }, 500);
   }
 
