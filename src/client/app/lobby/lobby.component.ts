@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewChecked } from '@angular/core';
 import { ColyseusLobbyService } from '../colyseus.lobby.service';
 import { Account } from '../../../shared/models/account';
 
@@ -9,15 +9,20 @@ import * as _ from 'lodash';
   templateUrl: './lobby.component.html',
   styleUrls: ['./lobby.component.scss']
 })
-export class LobbyComponent implements OnInit, OnDestroy {
+export class LobbyComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   @ViewChild('chatInput')
   public chatInput;
+
+  @ViewChild('motd')
+  public motd;
 
   public chatText: string;
 
   public accounts$: any;
   public displayAccounts: Account[] = [];
+
+  public chatHeight: string;
 
   constructor(public lobby: ColyseusLobbyService) { }
 
@@ -25,8 +30,19 @@ export class LobbyComponent implements OnInit, OnDestroy {
     this.accounts$ = this.lobby.lobbyState.account$.subscribe(accounts => this.sortAndSetAccounts(accounts));
   }
 
+  ngAfterViewChecked() {
+    setTimeout(() => {
+      this.recalcChatHeight();
+    })
+  }
+
   ngOnDestroy() {
     this.accounts$.unsubscribe();
+  }
+
+  private recalcChatHeight() {
+    if(this.motd.nativeElement.offsetHeight === 0) return;
+    this.chatHeight = `calc(100% - ${this.motd.nativeElement.offsetHeight}px)`;
   }
 
   sendMessage() {

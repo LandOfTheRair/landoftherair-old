@@ -28,11 +28,11 @@
 
     <div class="col-9 p-0 m-0 h-100">
 
-      <div class="motd-area pl-1 p-0">
+      <div class="motd-area pl-1 p-0" #motd>
         <strong>&lt;System&gt;:</strong> <span class="ml-1" [innerHTML]="(lobby.lobbyState.motd || '(no motd)') | linkify"></span>
       </div>
 
-      <div class="chat-area p-0" appNgxAutoScroll lockYOffset="30">
+      <div class="chat-area p-0" appNgxAutoScroll lockYOffset="30" [style.height]="chatHeight" [style.max-height]="chatHeight">
         <div class="message pl-1" *ngFor="let message of lobby.lobbyState.messages">
           <span class="timestamp">[{{ message.timestamp | date:'hh:mm'}}]</span>
           <span class="account">{{ message.account }}:</span>
