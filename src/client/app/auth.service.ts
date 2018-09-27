@@ -60,7 +60,15 @@ export class AuthService {
         return;
       }
 
-      this.auth0.parseHash((err, authResult) => {
+      console.log(window.location.hash);
+
+      if(!window.location.hash) {
+        resolve();
+        this.resolveReady();
+        return;
+      }
+
+      this.auth0.parseHash({ hash: window.location.hash }, (err, authResult) => {
 
         // just authenticated
         if(authResult && authResult.accessToken && authResult.idToken) {
@@ -70,7 +78,7 @@ export class AuthService {
 
         // failed to auth
         } else if(err) {
-          console.error(err);
+          console.error('AUTH ERROR', err);
           reject(err);
 
         // already authenticated

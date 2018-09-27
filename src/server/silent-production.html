@@ -13,7 +13,7 @@
     });
   </script>
   <script>
-    webAuth.parseHash(window.location.hash, function (err, response) {
+    webAuth.parseHash({ hash: window.location.hash }, function (err, response) {
       parent.postMessage(err || response, 'https://play.rair.land');
     });
   </script>
