@@ -275,6 +275,7 @@ export class ColyseusGameService {
 
     this.worldRoom.onError.add((e) => {
       alert('WORLD ROOM ERROR: ' + JSON.stringify(e));
+      console.error(e);
     });
   }
 
