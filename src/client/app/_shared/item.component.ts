@@ -13,7 +13,7 @@ const POSSIBLE_TRADESKILL_SCOPES = ['Alchemy', 'Spellforging', 'Metalworking'];
 
 export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
                         | 'GroundGroup' | 'Equipment' | 'Left'
-                        | 'Right' | 'Coin' | 'Merchant'
+                        | 'Right' | 'Coin' | 'Merchant' | 'Potion'
                         | 'Obtainagain' | 'Wardrobe' | 'WardrobeMaterial' | 'Tradeskill';
 
 @Component({
@@ -254,6 +254,11 @@ export class ItemComponent {
   automaticallyTakeActionBasedOnOpenWindows() {
 
     if(!this.context || !this.item) return;
+
+    if(this.context === 'Potion') {
+      this.colyseusGame.sendCommandString('~drink');
+      return;
+    }
 
     if(this.colyseusGame.showShop.uuid) {
 
