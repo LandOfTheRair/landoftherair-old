@@ -81,6 +81,10 @@ export class DiscordHelper {
       presenceUpdateCallback(oldMember, newMember);
     });
 
+    DiscordHelper.discord.on('error', (error) => {
+      Logger.error(error);
+    });
+
     return true;
   }
 
