@@ -22,7 +22,7 @@ export class Antidote extends SpellEffect {
   effectStart(char: Character) {
     const poison = char.hasEffect('Poison');
 
-    if(!poison) return;
+    if(!poison) return this.effectMessage(char, 'You are not poisoned, but if you were, you would have been cured!');
 
     if(this.potency < poison.setPotency) {
       this.effectMessage(char, 'Your poison was not able to be cured!');
