@@ -60,14 +60,6 @@ export class AuthService {
         return;
       }
 
-      console.log(window.location.hash);
-
-      if(!window.location.hash) {
-        resolve();
-        this.resolveReady();
-        return;
-      }
-
       this.auth0.parseHash({ hash: window.location.hash }, (err, authResult) => {
 
         // just authenticated
