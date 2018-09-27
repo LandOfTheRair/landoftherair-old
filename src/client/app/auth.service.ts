@@ -59,7 +59,7 @@ export class AuthService {
         this.resolveReady(authResult);
         return;
       }
-      
+
       this.auth0.parseHash((err, authResult) => {
 
         // just authenticated
