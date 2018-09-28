@@ -268,6 +268,10 @@ export class ColyseusLobbyService {
       return true;
     }
 
+    if(command.startsWith('/')) {
+      return true;
+    }
+
     return false;
   }
 
