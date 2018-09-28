@@ -623,7 +623,6 @@ export class ColyseusGameService {
   }
 
   public sendCommandString(str: string, target?: string) {
-    console.log(str)
     str.split(';').forEach(cmd => {
       cmd = cmd.trim();
 
