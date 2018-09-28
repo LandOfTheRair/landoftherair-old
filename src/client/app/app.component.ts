@@ -217,6 +217,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     return environment.version;
   }
 
+  // CTRL + some keys = forced browser actions
+  get isInvalidMacroCombination(): boolean {
+    return this.currentlyEditingMacro.modifiers.ctrl
+      && !this.currentlyEditingMacro.modifiers.alt
+      && !this.currentlyEditingMacro.modifiers.shift
+      && includes(
+        ['W', 'T', 'N'],
+        this.currentlyEditingMacro.key
+      );
+  }
+
   private stripeCheckoutHandler: StripeCheckoutHandler;
   private currentlyBuyingItem: any;
 

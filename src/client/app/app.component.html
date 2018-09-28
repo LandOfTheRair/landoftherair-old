@@ -794,7 +794,7 @@
                       *ngIf="macroService.allMacros[macro].isSystem" (click)="copyMacro(macroService.allMacros[macro])">
                 Copy
               </button>
-              <button class="btn btn-danger btn-sm"
+              <button class="btn btn-danger btn-sm ml-1"
                       *ngIf="!macroService.allMacros[macro].isSystem"
                       (click)="deleteMacro(macroService.allMacros[macro])">Remove
               </button>
@@ -876,6 +876,11 @@
           </div>
         </div>
 
+        <div class="row mb-1" *ngIf="isInvalidMacroCombination">
+          <div class="col-3"></div>
+          <div class="col-9 font-italic text-danger small-text">This macro combination may not work if you're in a web browser!</div>
+        </div>
+
         <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">Mode</div>
           <div class="col-9">
@@ -883,7 +888,7 @@
                     [class.btn-secondary]="!currentlyEditingMacro.clickToTarget"
                     [class.btn-success]="currentlyEditingMacro.clickToTarget"
                     (click)="changeMacroMode('clickToTarget')"
-                    tooltip="Clicking this macro will let you click an npc target"
+                    tooltip="Clicking this macro will let you click an NPC target"
             >Need Target
             </button>
             <button class="btn ml-1"
