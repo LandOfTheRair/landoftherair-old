@@ -272,6 +272,7 @@ export class Spawner {
 
     const npc = new NPC(npcData);
     npc.$$room = this.room;
+    npc.currency.gold = npcData.gold;
 
     if(npcData.sack && npcData.sack.length > 0) {
       const additionalSackItems = await LootHelper.rollSingleTableForEachItem((<any>npcData.sack), npc.$$room);
