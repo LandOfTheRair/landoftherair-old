@@ -219,11 +219,11 @@ export class Game {
       this.bgms = {};
       this.sfxs = {};
 
-      this.isRenderingTruesight = false;
-      this.isRenderingEagleEye = false;
-
       this.playerSprite = null;
     }
+
+    this.isRenderingTruesight = false;
+    this.isRenderingEagleEye = false;
 
     this.skipLoading = skipLoading;
   }
@@ -924,6 +924,8 @@ export class Game {
 
     this.playerSprite = this.getPlayerSprite(this.player);
     this.playerSpriteHash[this.player.username] = this.playerSprite;
+    this.truesightCheck();
+    this.eagleeyeCheck();
     this.focusCameraOnPlayer();
 
     this.skipLoading = false;
