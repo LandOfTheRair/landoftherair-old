@@ -52,6 +52,24 @@
               ]
             },
 
+            "fakeproddev": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "fileReplacements": [
+                {
+                  "replace": "./src/client/environments/environment.ts",
+                  "with": "./src/client/environments/environment.fakeproddev.ts"
+                }
+              ]
+            },
+
             "production": {
               "optimization": true,
               "outputHashing": "all",
@@ -79,6 +97,9 @@
           "configurations": {
             "production": {
               "browserTarget": "landoftherair:build:production"
+            },
+            "fakeproddev": {
+              "browserTarget": "landoftherair:build:fakeproddev"
             }
           }
         },
