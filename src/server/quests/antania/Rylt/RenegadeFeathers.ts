@@ -39,6 +39,6 @@ export class RenegadeFeathers extends Quest {
   public static givePlayerRewards(player: Player): void {
     this.rewardPlayerGold(player, 10000);
     player.gainExp(5000);
-    player.sendClientMessage('You received 5,000 XP and 10,000 currentGold!');
+    player.sendClientMessage('You received 5,000 XP and 10,000 gold!');
   }
 }

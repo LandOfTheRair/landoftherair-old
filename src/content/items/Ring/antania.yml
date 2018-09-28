@@ -5,7 +5,7 @@
     armorClass: 2
     defense: 1
   sprite: 215
-  desc: "a simple currentGold ring"
+  desc: "a simple gold ring"
   value: 150
 
 - name: Antanian Defense Ring
@@ -17,7 +17,7 @@
       min: 2
       max: 5
   sprite: 240
-  desc: "a currentGold ring set with a green gem"
+  desc: "a gold ring set with a green gem"
   value: 500
 
 - name: Antanian Offense Ring
@@ -29,7 +29,7 @@
     weaponDamageRolls: 1
   binds: true
   sprite: 241
-  desc: "a currentGold ring set with a blue gem"
+  desc: "a gold ring set with a blue gem"
   value: 600
 
 - name: Antanian Combat Ring
@@ -42,7 +42,7 @@
       max: 4
   binds: true
   sprite: 267
-  desc: "a currentGold ring set with a blue gem with a shield etched into it"
+  desc: "a gold ring set with a blue gem with a shield etched into it"
   value: 1500
 
 - name: Terwin Ring
@@ -50,7 +50,7 @@
     cha: 1
   binds: true
   sprite: 30
-  desc: "a currentGold ring with a sparkly red gem set in the center"
+  desc: "a gold ring with a sparkly red gem set in the center"
   value: 1000
 
 - name: Steffen DamageResist Ring
@@ -105,4 +105,4 @@
       max: 6
   sprite: 266
   binds: true
-  desc: "a currentGold ring plated with layers of silver"
+  desc: "a gold ring plated with layers of silver"

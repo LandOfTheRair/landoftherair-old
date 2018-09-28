@@ -55,29 +55,29 @@
 
 - name: Gold Ore (Small)
   sprite: 950
-  desc: "currentGold ore"
+  desc: "gold ore"
   ounces: 1
   value: 500
 
 - name: Gold Ore (Large)
   sprite: 951
-  desc: "currentGold ore"
+  desc: "gold ore"
   ounces: 5
   value: 2500
 
 - name: Gold Ingot (Pillars)
   sprite: 408
-  desc: "a currentGold ingot inscribed with ancient pillars"
+  desc: "a gold ingot inscribed with ancient pillars"
   value: 55000
 
 - name: Gold Ingot (Infinity)
   sprite: 409
-  desc: "a currentGold ingot inscribed with the symbol of infinity"
+  desc: "a gold ingot inscribed with the symbol of infinity"
   value: 55000
 
 - name: Gold Ingot (Hourglass)
   sprite: 410
-  desc: "a currentGold ingot inscribed with an hourglass"
+  desc: "a gold ingot inscribed with an hourglass"
   value: 55000
 
 - name: Armor Mold
