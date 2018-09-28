@@ -45,6 +45,13 @@ export class CommandLineComponent implements OnInit, OnDestroy {
     if(this.cmdMode === 'cmd') return 'Cmd';
   }
 
+  public get nextMode(): Mode {
+    if(this.cmdMode === 'say') return 'party';
+    if(this.cmdMode === 'party') return 'global';
+    if(this.cmdMode === 'global') return 'cmd';
+    if(this.cmdMode === 'cmd') return 'say';
+  }
+
   constructor(
     public colyseusGame: ColyseusGameService,
     public colyseusLobby: ColyseusLobbyService,
@@ -53,12 +60,29 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.listener = (ev) => {
+
+      if(this.cmdEntryInput.nativeElement === document.activeElement && ev.key === 'Tab') {
+        this.cmdMode = this.nextMode;
+        ev.preventDefault();
+        ev.stopPropagation();
+        return;
+      }
+
+      if(this.cmdEntryInput.nativeElement === document.activeElement && ev.key === 'Enter' && !this.colyseusGame.currentCommand) {
+        this.cmdEntryInput.nativeElement.blur();
+        ev.preventDefault();
+        ev.stopPropagation();
+        return;
+      }
+
       if(document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
       if(this.macroService.hasMacroMatching(ev.key)) return;
+      if(ev.key !== 'Enter') return;
+
       this.cmdEntryInput.nativeElement.focus();
     };
 
-    document.addEventListener('keypress', this.listener);
+    document.addEventListener('keydown', this.listener);
 
     this.sendListener = (ev) => {
       if(environment.production) {
@@ -74,7 +98,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    document.removeEventListener('keypress', this.listener);
+    document.removeEventListener('keydown', this.listener);
     document.removeEventListener('contextmenu', this.sendListener);
   }
 
