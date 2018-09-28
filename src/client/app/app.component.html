@@ -809,7 +809,7 @@
         </div>
         <div>
           <button type="button" class="btn btn-primary" (click)="addMacro()">New Macro</button>
-          <button type="button" class="btn btn-secondary" (click)="macros.hide()">Close</button>
+          <button type="button" class="btn btn-secondary ml-1" (click)="macros.hide()">Close</button>
         </div>
       </div>
     </div>
@@ -886,14 +886,14 @@
                     tooltip="Clicking this macro will let you click an npc target"
             >Need Target
             </button>
-            <button class="btn"
+            <button class="btn ml-1"
                     [class.btn-secondary]="!currentlyEditingMacro.autoActivate"
                     [class.btn-success]="currentlyEditingMacro.autoActivate"
                     (click)="changeMacroMode('autoActivate')"
                     tooltip="Clicking this macro will fire it instantly"
             >Instant
             </button>
-            <button class="btn"
+            <button class="btn ml-1"
                     [class.btn-secondary]="!currentlyEditingMacro.lockActivation"
                     [class.btn-success]="currentlyEditingMacro.lockActivation"
                     (click)="changeMacroMode('lockActivation')"
@@ -954,7 +954,7 @@
         <div></div>
         <div>
           <button type="button" class="btn btn-primary" [disabled]="invalidMacro()" (click)="saveMacro()">Save Macro</button>
-          <button type="button" class="btn btn-secondary" (click)="viewMacro.hide()">Close</button>
+          <button type="button" class="btn btn-secondary ml-1" (click)="viewMacro.hide()">Close</button>
         </div>
       </div>
     </div>
@@ -1062,11 +1062,11 @@
           <div>
             <button type="button" class="btn btn-warning" (click)="macroService.exportMacros()">Export Macros</button>
             <input type="file" #uploadMacros class="hidden" accept=".json" (change)="macroService.importMacros($event, uploadMacros)"/>
-            <button type="button" class="btn btn-warning" (click)="uploadMacros.click()">Import Macros</button>
+            <button type="button" class="btn btn-warning ml-1" (click)="uploadMacros.click()">Import Macros</button>
           </div>
           <div>
             <button type="button" class="btn btn-primary" (click)="addMacroGroup()">New Macro Group</button>
-            <button type="button" class="btn btn-secondary" (click)="macroGroups.hide()">Close</button>
+            <button type="button" class="btn btn-secondary ml-1" (click)="macroGroups.hide()">Close</button>
           </div>
         </div>
       </div>

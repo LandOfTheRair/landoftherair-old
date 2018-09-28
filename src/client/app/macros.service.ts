@@ -220,6 +220,7 @@ export class MacroService {
       builtMacro = `${builtMacro}${ev.key.toUpperCase()}`;
 
       const macro = this.macroMap[builtMacro];
+
       if(!macro) return;
 
       const macroText = macro.macro;
