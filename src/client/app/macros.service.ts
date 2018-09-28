@@ -209,6 +209,9 @@ export class MacroService {
     this.macroListener = (ev) => {
       if(this.shouldIgnoreKeybinds()) return;
 
+      ev.preventDefault();
+      ev.stopPropagation();
+
       let builtMacro = '';
       if(ev.altKey) builtMacro = 'ALT+';
       if(ev.ctrlKey) builtMacro = `${builtMacro}CTRL+`;
@@ -218,9 +221,6 @@ export class MacroService {
 
       const macro = this.macroMap[builtMacro];
       if(!macro) return;
-
-      ev.preventDefault();
-      ev.stopPropagation();
 
       const macroText = macro.macro;
 
