@@ -34,7 +34,7 @@ export class HolyAura extends SpellEffect implements AttributeEffect {
     this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 30;
-    if(!this.charges) this.charges = 30 * this.potency;
+    if(!this.charges) this.charges = 50 * this.potency;
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
@@ -48,7 +48,7 @@ export class HolyAura extends SpellEffect implements AttributeEffect {
 
   effectStart(char: Character) {
     this.targetEffectMessage(char, 'A holy aura surrounds your body.');
-    this.iconData.tooltipDesc = `Invulnerable to ${this.potency} physical damage.`;
+    this.iconData.tooltipDesc = `Invulnerable to ${this.charges} physical damage.`;
   }
 
   effectEnd(char: Character) {

@@ -17,8 +17,8 @@ export class VitalEssence extends SpellEffect implements OnHitEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
-    this.flagUnapply();
     this.flagPermanent(caster.uuid);
+    this.flagUnapply(true);
     this.flagCasterName(caster.name);
 
     if(!this.charges) this.charges = 10 * this.potency;
