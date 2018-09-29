@@ -12,6 +12,7 @@ export * from './antania/Rylt/KillZombies';
 
 export * from './antania/Yzalt/KillSteffen';
 export * from './antania/Yzalt/KillHeniz';
+export * from './antania/Yzalt/KillRats';
 export * from './antania/Yzalt/HenizFindSedgwick';
 export * from './antania/Yzalt/SteffenFindSedgwick';
 export * from './antania/Yzalt/KillRanata';
