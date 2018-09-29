@@ -4,7 +4,7 @@ import { KillRebels } from '../../../../quests';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
-  npc.affiliation = 'Town Guard';
+  npc.affiliation = 'Town Guard Captain';
 
   npc.rightHand = await npc.$$room.npcLoader.loadItem('Antanian Halberd');
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');

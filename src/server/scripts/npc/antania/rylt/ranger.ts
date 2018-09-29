@@ -4,6 +4,7 @@ const BEAR_MEAT = 'Antanian Bear Meat';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Bear Expert';
 
   npc.rightHand = await npc.$$room.npcLoader.loadItem(BEAR_MEAT);
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Breastplate');

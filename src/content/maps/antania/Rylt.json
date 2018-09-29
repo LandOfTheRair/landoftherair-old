@@ -5706,7 +5706,7 @@
                  "gid":2602,
                  "height":64,
                  "id":916,
-                 "name":"Guard Jarek",
+                 "name":"Jarek",
                  "properties":
                     {
                      "script":"antania\/rylt\/guard-jarek"
@@ -10004,7 +10004,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 

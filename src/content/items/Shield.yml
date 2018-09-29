@@ -152,3 +152,18 @@
 
   requirements:
     level: 25
+
+- name: Halloween Pumpkin Shield
+  stats:
+    armorClass: 40
+  desc: "a strangely resilient pumpkin filled with rock candy"
+  value: 500
+  sprite: 545
+  binds: true
+
+  trait:
+    name: SlowDigestion
+    level: 2
+
+  requirements:
+    level: 15
