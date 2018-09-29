@@ -703,6 +703,7 @@ export class Game {
 
   private canDarkSee(x: number, y: number) {
     if(!this.player) return false;
+    if(this.player.hasEffect('Blind')) return false;
 
     const darkCheck = this.isDarkAt(x, y);
     return (darkCheck === -1 || darkCheck > 0) && this.player.hasEffect('DarkVision');
@@ -730,7 +731,7 @@ export class Game {
         }
 
         // tile effects
-        if(this.isDarkAt(x, y)) {
+        if(fovState && this.isDarkAt(x, y)) {
           if(this.isLightAt(x, y)) {
             fovSprite.alpha = 0;
             continue;
