@@ -30,7 +30,7 @@ export const responses = (npc: NPC) => {
 
       player.startQuest(RenegadeFeathers);
 
-      return `Hewwo, can you help me? I want a pink feather from the renegades!`;
+      return `Hewwo, can you help me? I want a pink feather from the renegades! Dey are to the sowwtheast! Mommy says I can't cross the bridge to get one myself...`;
     });
 
 };
