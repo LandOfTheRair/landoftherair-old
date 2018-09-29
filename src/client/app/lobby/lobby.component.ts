@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular
 import { ColyseusLobbyService } from '../colyseus.lobby.service';
 import { Account } from '../../../shared/models/account';
 
-import * as _ from 'lodash';
+import { sortBy } from 'lodash';
 
 @Component({
   selector: 'app-lobby',
@@ -63,10 +63,10 @@ export class LobbyComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   sortAndSetAccounts(accounts: Account[]) {
-    this.displayAccounts = _(accounts)
-      .sortBy(acc => acc.username.toLowerCase())
-      .sortBy(acc => !this.lobby.lobbyState.subTier[acc.username])
-      .value();
+    this.displayAccounts = <any>sortBy(accounts, [
+      acc => -this.lobby.lobbyState.subTier[acc.username],
+      acc => acc.username.toLowerCase()
+    ]);
   }
 
   getMarkingClass(account: Account) {
