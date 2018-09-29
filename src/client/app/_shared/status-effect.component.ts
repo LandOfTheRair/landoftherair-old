@@ -32,9 +32,9 @@ import { startCase } from 'lodash';
   `],
   template: `
       <div class="status-effect" *ngIf="effect && effect.iconData">
-        <div class="status-remaining" *ngIf="effect.charges > 0 && !effect.duration">{{ effect.charges }}</div>
+        <div class="status-remaining" *ngIf="effect.charges > 0">{{ effect.charges }}</div>
         <div class="status-remaining" *ngIf="effect.buildupCur > 0">{{ buildupPercent }}%</div>
-        <div class="status-remaining" *ngIf="effect.duration > 0">{{ effect.duration }}</div>
+        <div class="status-remaining" *ngIf="effect.duration > 0 && !effect.charges">{{ effect.duration }}</div>
         <app-icon [fgColor]="effect.iconData.color"
                   [bgColor]="effect.iconData.bgColor || 'transparent'"
                   [name]="effect.iconData.name"
