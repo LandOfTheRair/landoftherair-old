@@ -443,7 +443,7 @@ export class Game {
     const removeUUIDs = [];
 
     forEach(this.clientGameState.mapNPCs, npc => {
-      if(this.notInRange(centerX, centerY, npc.x, npc.y) || npc.dir === 'C') {
+      if(this.notInRange(centerX, centerY, npc.x, npc.y) || npc.dir === 'C' || npc.hp.__current === 0) {
         removeUUIDs.push(npc.uuid);
         return;
       }
