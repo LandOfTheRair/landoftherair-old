@@ -166,14 +166,14 @@ export class ColyseusLobbyService {
     this.colyseus.game.quit();
     this.room.leave();
     this.quit();
-    this.room.send({ action: 'logout' });
-    this.auth.logout();
 
-    window.location.reload();
+    this.logout();
   }
 
   public logout() {
     this.room.send({ action: 'logout' });
+    localStorage.removeItem('colyseusid');
+    localStorage.removeItem('reconnection');
     this.auth.logout();
 
     window.location.reload();
