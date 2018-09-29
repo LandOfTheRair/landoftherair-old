@@ -709,8 +709,9 @@ export class Lobby extends Room<LobbyState> {
   // discord is optional
   private async startDiscord() {
     const didConnect = await DiscordHelper.init({
-      newMessageCallback: ({ content, author }) => {
-        this.addMessage({ message: content, account: DiscordHelper.formatDiscordUsernameForLobby(author.username) }, 'discord');
+      newMessageCallback: ({ content, author, member }) => {
+        const name = DiscordHelper.getDisplayNameForDiscordUser(member);
+        this.addMessage({ message: content, account: DiscordHelper.formatDiscordUsernameForLobby(name) }, 'discord');
       },
       presenceUpdateCallback: () => {
         this.updateStateWithAlwaysOnlineDiscordUsers();
@@ -726,8 +727,9 @@ export class Lobby extends Room<LobbyState> {
       DiscordHelper.getAllAlwaysOnlineMembers()
         .filter(user => user.presence.status !== 'offline')
         .map(user => {
+          const name = DiscordHelper.getDisplayNameForDiscordUser(user);
           return {
-            username: DiscordHelper.formatDiscordUsernameForLobby(user.user.username),
+            username: DiscordHelper.formatDiscordUsernameForLobby(name),
             tag: `${user.user.username}#${user.user.discriminator}`
           }
         })

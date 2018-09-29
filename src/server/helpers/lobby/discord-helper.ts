@@ -40,14 +40,18 @@ export class DiscordHelper {
     }
   }
 
+  public static getDisplayNameForDiscordUser(member: Discord.GuildMember) {
+    return member.nickname || member.user.username;
+  }
+
   public static formatDiscordUsernameForLobby(username: string): string {
     return `ᐎ${username}`;
   }
 
-  private static parseLobbyMessage({ content, author }) {
+  private static parseLobbyMessage({ content, author, member }) {
     if(author.username === DISCORD_BOT_NAME) return;
 
-    DiscordHelper.newMessageCallback({ content, author });
+    DiscordHelper.newMessageCallback({ content, author, member });
   }
 
   public static async init({ newMessageCallback, presenceUpdateCallback }): Promise<boolean> {
@@ -71,7 +75,7 @@ export class DiscordHelper {
     DiscordHelper.discord.on('message', ({ content, channel, author, member }) => {
       if(!channel || !DiscordHelper.discordChannel || !DiscordHelper.discordBotChannel) return;
 
-      if(channel.id === DiscordHelper.discordChannel.id) DiscordHelper.parseLobbyMessage({ content, author });
+      if(channel.id === DiscordHelper.discordChannel.id) DiscordHelper.parseLobbyMessage({ content, author, member });
       if(channel.id === DiscordHelper.discordBotChannel.id) DiscordHelper.parseBotMessage({ content, channel, member });
     });
 
