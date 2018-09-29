@@ -29,9 +29,24 @@ import { startCase } from 'lodash';
       color: #000;
       user-select: none;
     }
+    
+    .fading {
+      animation: buff-fading 500ms ease-in-out infinite alternate;
+    }
+
+    @keyframes buff-fading {
+      0% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
   `],
   template: `
-      <div class="status-effect" *ngIf="effect && effect.iconData">
+      <div class="status-effect" 
+           [class.fading]="effect.duration > 0 && effect.duration <= 15"
+           *ngIf="effect && effect.iconData">
         <div class="status-remaining" *ngIf="effect.charges > 0">{{ effect.charges }}</div>
         <div class="status-remaining" *ngIf="effect.buildupCur > 0">{{ buildupPercent }}%</div>
         <div class="status-remaining" *ngIf="effect.duration > 0 && !effect.charges">{{ effect.duration }}</div>
