@@ -1,6 +1,7 @@
 
 export * from './antania/Rylt/KillRebels';
 export * from './antania/Rylt/KillApprentices';
+export * from './antania/Rylt/KillRenegades';
 export * from './antania/Rylt/LearnAlchemy';
 export * from './antania/Rylt/DailyKillApprentices';
 export * from './antania/Rylt/DailyKillRebels';
