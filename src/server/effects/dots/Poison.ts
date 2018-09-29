@@ -58,8 +58,6 @@ export class Poison extends SpellEffect {
   effectStart(char: Character) {
     this.effectMessage(char, 'You were poisoned!');
 
-    this.iconData.tooltipDesc = `Constantly receiving ${Math.abs(this.effectInfo.damage)} poison damage.`;
-
     if(this.healerCripple) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Offense/Defense penalty.`;
       this.loseStat(char, 'offense', this.healerCripple);
@@ -83,9 +81,11 @@ export class Poison extends SpellEffect {
 
     CombatHelper.magicalAttack(caster, char, {
       effect: this,
-      defMsg: `You are ${isCrit ? 'critically ' : ' '}poisoned!`,
+      atkMsg: `${char.name} is ${isCrit ? 'critically ' : ''}poisoned!`,
+      defMsg: `You are ${isCrit ? 'critically ' : ''}poisoned!`,
       damage: this.effectInfo.damage * (isCrit ? 3 : 1),
-      damageClass: 'poison'
+      damageClass: 'poison',
+      isOverTime: true
     });
 
   }

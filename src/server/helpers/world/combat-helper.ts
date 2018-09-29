@@ -825,7 +825,7 @@ export class CombatHelper {
     appEffect.cast(attacker, defender, source);
   }
 
-  static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass }: any = {}) {
+  static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass, isOverTime }: any = {}) {
 
     if(attacker) {
       attacker.combatTicks = 10;
@@ -852,7 +852,7 @@ export class CombatHelper {
 
     damage = attacked.isNaturalResource ? 0 : damage;
     const totalDamage = this.dealDamage(attacker, attacked, {
-      damage, damageClass, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg, attackerWeapon: {
+      damage, damageClass, isOverTime, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg, attackerWeapon: {
         itemClass: effect ? effect.name : '???',
         owner: effect ? effect.effectInfo.caster : '???',
         ownerName: effect ? effect.effectInfo.casterName : '???'
@@ -903,7 +903,7 @@ export class CombatHelper {
   static dealDamage(
     attacker: Character,
     defender: Character,
-    { damage, damageClass, attackerDamageMessage, defenderDamageMessage,
+    { damage, damageClass, attackerDamageMessage, defenderDamageMessage, isOverTime,
       attackerWeapon, isRanged, isAttackerVisible, isRiposte, isWeak, isMelee }: any
   ): number {
 
@@ -1010,13 +1010,13 @@ export class CombatHelper {
     const otherClass = isHeal ? 'heal' : 'hit';
     const damageType = isMelee ? 'melee' : 'magic';
 
-    if(attackerDamageMessage) {
+    if(attackerDamageMessage && attacker) {
 
       const secondaryClass = attacker !== defender ? 'self' : 'other';
 
       attacker.sendClientMessage({
         message: `${isRiposte ? 'You riposte the attack!' : attackerDamageMessage} [${absDmg} ${dmgString}]`,
-        subClass: `combat ${secondaryClass} ${otherClass} ${damageType}`,
+        subClass: `combat ${secondaryClass} ${otherClass} ${damageType} ${isOverTime ? 'out-overtime' : ''}`,
         target: defender.uuid,
         extraData: {
           type: 'damage',
@@ -1028,10 +1028,10 @@ export class CombatHelper {
       });
     }
 
-    if(defenderDamageMessage && attacker !== defender) {
+    if(defenderDamageMessage && defender && attacker !== defender) {
       defender.sendClientMessage({
         message: `${isRiposte ? 'Your attack was riposted!' : defenderDamageMessage} [${absDmg} ${dmgString}]`,
-        subClass: `combat other ${otherClass} ${damageType}`,
+        subClass: `combat other ${otherClass} ${damageType} ${isOverTime ? 'in-overtime' : ''}`,
         extraData: {
           type: 'damage',
           uuid: attacker ? attacker.uuid : get(attackerWeapon, 'owner', '???'),

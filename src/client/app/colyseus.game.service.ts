@@ -67,6 +67,7 @@ export class ColyseusGameService {
   private overrideNoSfx: boolean;
   private nostalgicBgm: boolean;
   private suppressZero: boolean;
+  private suppressOutgoingDot: boolean;
 
   public currentViewTarget: any;
 
@@ -91,6 +92,7 @@ export class ColyseusGameService {
     this.nostalgicBgm = this.localStorage.retrieve('nostalgicBackgroundMusic');
     this.suppressZero = this.localStorage.retrieve('suppressZeroDamage');
     this.suppressAnimations = this.localStorage.retrieve('suppressAnimations');
+    this.suppressOutgoingDot = this.localStorage.retrieve('suppressOutgoingDot');
 
     this.localStorage.observe('playBackgroundMusic')
       .subscribe(shouldPlayBgm => {
@@ -110,6 +112,11 @@ export class ColyseusGameService {
     this.localStorage.observe('suppressZeroDamage')
       .subscribe(suppressZeroDamage => {
         this.suppressZero = suppressZeroDamage;
+      });
+
+    this.localStorage.observe('suppressOutgoingDot')
+      .subscribe(suppressOutgoingDot => {
+        this.suppressOutgoingDot = suppressOutgoingDot;
       });
 
     this.localStorage.observe('suppressAnimations')
@@ -331,10 +338,14 @@ export class ColyseusGameService {
   }
 
   private logMessage({ name, message, subClass, grouping, dirFrom, extraData }: any) {
+    if(this.suppressOutgoingDot && includes(subClass, 'out-overtime')) return;
+
     const isZero = (includes(message, '[0') && includes(message, 'damage]'))
                 || (includes(message, 'misses!'))
                 || (includes(message, 'blocked by your'));
+
     if(isZero && this.suppressZero) return;
+
     if(!grouping || grouping === 'spell') grouping = 'always';
     this.clientGameState.addLogMessage({ name, message, subClass, grouping, dirFrom });
 

@@ -60,8 +60,6 @@ export class Disease extends SpellEffect {
   effectStart(char: Character) {
     this.effectMessage(char, 'You were diseased!');
 
-    this.iconData.tooltipDesc = `Constantly receiving ${Math.abs(this.effectInfo.damage)} disease damage.`;
-
     if(this.healerDebilitate) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} CON/WIL/Accuracy penalty.`;
       this.loseStat(char, 'wil', this.healerDebilitate);
@@ -86,9 +84,11 @@ export class Disease extends SpellEffect {
 
     CombatHelper.magicalAttack(caster, char, {
       effect: this,
-      defMsg: `You are ${isCrit ? 'critically ' : ' '}diseased!`,
+      atkMsg: `${char.name} is ${isCrit ? 'critically ' : ''}diseased!`,
+      defMsg: `You are ${isCrit ? 'critically ' : ''}diseased!`,
       damage: this.effectInfo.damage * (isCrit ? 3 : 1),
-      damageClass: 'disease'
+      damageClass: 'disease',
+      isOverTime: true
     });
 
   }
