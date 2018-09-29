@@ -33,11 +33,13 @@ export class AnalyticsHelper {
   startGameSession(player: Player, ua: string) {
     if(!this.ga) return;
 
-    this.ga.sessionStart(this.userString(player), {
-      ua,
-      sdk_version: 'rest api v2',
-      session_num: 1
-    });
+    try {
+      this.ga.sessionStart(this.userString(player), {
+        ua,
+        sdk_version: 'rest api v2',
+        session_num: 1
+      });
+    } catch(e) {}
 
     this.trackMapEnter(player);
   }
