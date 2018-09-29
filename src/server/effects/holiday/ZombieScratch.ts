@@ -1,10 +1,7 @@
 
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
-import { CombatHelper } from '../../helpers/world/combat-helper';
 import { Skill } from '../../base/Skill';
-import * as dice from 'dice.js';
-import { RollerHelper } from '../../../shared/helpers/roller-helper';
 import { NPC } from '../../../shared/models/npc';
 
 export class ZombieScratch extends SpellEffect {
@@ -34,6 +31,7 @@ export class ZombieScratch extends SpellEffect {
     char.sprite = 1465;
     char.alignment = 'Evil';
     char.monsterClass = 'Undead';
+    (<NPC>char).npcId = 'Halloween Zombie';
     (<NPC>char).hostility = 'Always';
     (<NPC>char).usableSkills.push('ShredTenPercent', 'HalloweenZombieScratch');
 

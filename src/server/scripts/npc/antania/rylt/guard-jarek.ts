@@ -1,6 +1,7 @@
 import { NPC } from '../../../../../shared/models/npc';
 
-import { KillRebels } from '../../../../quests';
+import { KillRebels, KillZombies } from '../../../../quests';
+import { Holiday, HolidayHelper } from '../../../../helpers/world/holiday-helper';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
@@ -28,7 +29,12 @@ export const responses = (npc: NPC) => {
         return KillRebels.incompleteText(player);
       }
 
-      return `Hello, ${player.name}! Don't mind me and this stack of paperwork, I've been having troubles with the PRISONERS lately.`;
+      let msg = `Hello, ${player.name}! Don't mind me and this stack of paperwork, I've been having troubles with the PRISONERS lately.`;
+      if(HolidayHelper.isHoliday(Holiday.Halloween)) {
+        msg = `${msg} Also, we've been having a bit of ZOMBIE trouble lately...`;
+      }
+
+      return msg;
     });
 
   npc.parser.addCommand('prisoners')
@@ -37,6 +43,28 @@ export const responses = (npc: NPC) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
       return `Why, yes. They've been doing nothing but trying to riot down there, as if they could actually get out. 
       Regardless, I could use some HELP containing them.`;
+    });
+
+  npc.parser.addCommand('zombie')
+    .set('syntax', ['zombie'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 2) return 'Please move closer.';
+
+      if(player.hasQuest(KillZombies)) {
+        if(KillZombies.isComplete(player)) {
+          KillZombies.completeFor(player);
+
+          return 'Thanks. The effort is ongoing, and the results are truly troublesome, but with your help we\'ve made good progress today.';
+        }
+
+        return KillZombies.incompleteText(player);
+      }
+
+      if(!HolidayHelper.isHoliday(Holiday.Halloween)) return 'What? We have no such problems right now.';
+
+      player.startQuest(KillZombies);
+
+      return `Yes, there is a zombie invasion. Have you seen out in the streets? It's a bloodbath! Help us, please!`;
     });
 
   npc.parser.addCommand('help')

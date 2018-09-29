@@ -8,6 +8,8 @@ export * from './antania/Rylt/DailyKillRebels';
 export * from './antania/Rylt/DailyKillRenegades';
 export * from './antania/Rylt/RenegadeFeathers';
 
+export * from './antania/Rylt/KillZombies';
+
 export * from './antania/Yzalt/KillSteffen';
 export * from './antania/Yzalt/KillHeniz';
 export * from './antania/Yzalt/HenizFindSedgwick';
