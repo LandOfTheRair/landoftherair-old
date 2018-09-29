@@ -807,7 +807,17 @@ export class Player extends Character {
       val = this.$$room.subscriptionHelper.modifySkillGainForSubscription(this, skillGained);
     }
 
+    const curLevel = this.calcSkillLevel(type);
     super._gainSkill(type, val);
+    const newLevel = this.calcSkillLevel(type);
+
+    if(this.$$room && curLevel !== newLevel) {
+      if(newLevel > curLevel) {
+        this.sendClientMessage(`You have become more proficient in your ${type.toUpperCase()} skill!`);
+      } else {
+        this.sendClientMessage(`You have lost proficiency in your ${type.toUpperCase()} skill!`);
+      }
+    }
   }
 
   spendCurrency(currency: Currency, amt: number, on?: string) {
