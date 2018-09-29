@@ -34,3 +34,23 @@
 
   requirements:
     level: 17
+
+- name: Insane Ranata Totem
+  quality: 5
+  desc: "a bloody wooden totem with a hand carved into it"
+  tier: 3
+  effect:
+    name: Afflict
+    potency: 20
+    chance: 20
+  trait:
+    name: TotemSpecialty
+    level: 3
+  binds: true
+  tellsBind: true
+  type: Wand
+  value: 3500
+  sprite: 887
+
+  requirements:
+    level: 19

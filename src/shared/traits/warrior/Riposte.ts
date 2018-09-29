@@ -5,7 +5,7 @@ export class Riposte extends Trait {
 
   static baseClass = 'Warrior';
   static traitName = 'Riposte';
-  static description = 'Increase the chance of counter-attacking enemies by $3|9$% per point.';
+  static description = 'Increase the chance of counter-attacking enemies by $3|9$%.';
   static icon = 'spinning-sword';
 
   static upgrades = [

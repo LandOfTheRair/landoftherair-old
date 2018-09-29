@@ -74,8 +74,10 @@ export class NPC extends Character {
   $$hadRightHandAtSpawn: boolean;
   private $$targetDamageDone = {};
 
+  noCorpseDrop?: boolean;
+
   get dropsCorpse(): boolean {
-    return !this.isNaturalResource;
+    return !this.isNaturalResource && !this.noCorpseDrop;
   }
 
   init() {
@@ -201,6 +203,8 @@ export class NPC extends Character {
     if(this.$$deathTicks > 0) return;
 
     super.die(killer, silent);
+
+    this.$$room.dispatchEvent('kill:npc', { npc: this });
 
     if(silent) return;
 

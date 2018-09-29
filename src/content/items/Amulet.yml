@@ -138,7 +138,6 @@
   requirements:
     level: 14
 
-
 - name: Librarian Undecided Amulet
   stats:
     hp: 200
@@ -146,3 +145,23 @@
   sprite: 231
   desc: "a gold chain formerly used as a bookmark"
   value: 5000
+
+- name: Insane Ranata Amulet
+  quality: 5
+  stats:
+    int: 2
+    wis: 2
+    defense: 4
+    mp: 100
+  binds: true
+  tellsBind: true
+  sprite: 360
+  desc: "an shimmering golden amulet set with a sparkling diamond"
+  value: 10000
+
+  trait:
+    name: CalmMind
+    level: 5
+
+  requirements:
+    level: 15

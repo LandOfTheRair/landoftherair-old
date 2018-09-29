@@ -246,3 +246,18 @@
 
   requirements:
     level: 21
+
+- name: Insane Ranata Robe
+  quality: 5
+  stats:
+    offense: 5
+    defense: 5
+    hpregen: 10
+    mpregen: 10
+
+  desc: "a tattered purple cloak, the hue of which is the result of a tainted ether experiment"
+  value: 9500
+  sprite: 98
+
+  requirements:
+    level: 23

@@ -44,6 +44,18 @@ export class InstancedDungeon extends GameWorld {
     return true;
   }
 
+  async onLeave(client): Promise<any> {
+    const player = this.state.findPlayerByClientId(client.id);
+    if(!player) return;
+
+    const { kickMap, kickX, kickY } = this.exitPoint;
+    player.map = kickMap;
+    player.x = kickX;
+    player.y = kickY;
+
+    super.onLeave(client);
+  }
+
   requestJoin(options): boolean {
     return !this.partyOwner || this.partyOwner === options.party;
   }

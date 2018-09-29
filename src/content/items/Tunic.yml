@@ -144,3 +144,16 @@
   desc: "a tunic made from the frozen-solid scales of a remorhaz"
   value: 5020
   sprite: 269
+
+- name: Silver Dragon Scale Tunic
+  stats:
+    armorClass: 24
+    defense: 3
+    offense: 3
+    fireResist: 100
+    iceResist: 100
+  requirements:
+    level: 14
+  desc: "a tunic crafted from the silky scales of a silver dragon"
+  value: 3502
+  sprite: 302

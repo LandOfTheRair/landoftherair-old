@@ -1,5 +1,5 @@
 
-import { cloneDeep, reject, filter, extend, find, size, pick, minBy, includes, reduce, get, isUndefined, compact } from 'lodash';
+import { cloneDeep, reject, filter, extend, find, size, pick, minBy, includes, reduce, get, isUndefined, compact, values } from 'lodash';
 
 import { Player } from './player';
 
@@ -248,6 +248,11 @@ export class GameState {
     return this.mapNPCs[uuid];
   }
 
+  findNPCByName(name: string): NPC {
+    const opts: any = { name };
+    return find(values(this.mapNPCs), opts);
+  }
+
   removeNPC(npc: NPC): void {
     delete this.mapNPCs[npc.uuid];
     delete this.trimmedNPCs[npc.uuid];
@@ -412,7 +417,7 @@ export class GameState {
 
   private isVisibleTo(ref: Character, target: Character, useSight = true): boolean {
     if((<NPC>ref).hostility === 'Never') return true;
-    if(!ref.fov) return false;
+    if(!ref.fov && useSight) return false;
 
     if(ref.fov && useSight) {
       const offsetX = target.x - ref.x;

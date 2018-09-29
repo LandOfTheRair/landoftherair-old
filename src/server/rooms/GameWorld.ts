@@ -234,6 +234,8 @@ export class GameWorld extends Room<GameState> {
         if(setup) setup(this);
         if(events) events(this);
       }
+
+      this.addEvent('kill:npc', () => {});
     };
 
     finishLoad();

@@ -7,10 +7,10 @@ import { invert } from 'lodash';
 export const VerticalDoorGids = {
 
   // blue wall door vert
-  1068: true,
+  1058: true,
 
   // undead wall door vert
-  1075: true,
+  1065: true,
 
   // cave wall door vert
   1070: true,
