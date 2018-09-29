@@ -26,6 +26,9 @@ export const environment = {
   stripe: {
     key: 'pk_test_TNxhxgcsao9B4ouQwRXeUnmm'
   },
+  rollbar: {
+    token: ''
+  },
   assetHashes: {
     creatures: 0,
     decor: 0,

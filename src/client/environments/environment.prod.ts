@@ -27,6 +27,9 @@ export const environment = {
   stripe: {
     key: 'pk_live_dHe4YokXv14cVzmj38NYbqVU'
   },
+  rollbar: {
+    token: '4d7c7a0d19114e19b98c0112afa27f7f'
+  },
   assetHashes: BUILDVARS.hashes,
   version: `${buildVersion} (built on ${buildDate})`
 };

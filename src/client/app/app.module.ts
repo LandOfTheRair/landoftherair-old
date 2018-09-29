@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injectable } from '@angular/core';
+import { NgModule, Injectable, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -22,6 +22,8 @@ import { WalkthroughModule } from 'angular-walkthrough';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { StripeCheckoutModule } from 'ng-stripe-checkout';
 import { ResizableModule } from 'angular-resizable-element';
+
+import { RollbarModule, RollbarService } from 'angular-rollbar';
 
 import { AppComponent } from './app.component';
 
@@ -152,6 +154,13 @@ export class APIInterceptor implements HttpInterceptor {
     FormsModule,
     HttpClientModule,
 
+    RollbarModule.forRoot({
+      accessToken: environment.rollbar.token,
+      enabled: !!environment.rollbar.token,
+      captureUncaught: true,
+      captureUnhandledRejections: true
+    }),
+
     ResizableModule,
     ColorPickerModule,
     VirtualScrollModule,
@@ -168,6 +177,7 @@ export class APIInterceptor implements HttpInterceptor {
     StripeCheckoutModule
   ],
   providers: [
+    { provide: ErrorHandler, useClass: RollbarService },
     AuthService,
     ColyseusService,
     ColyseusLobbyService,
