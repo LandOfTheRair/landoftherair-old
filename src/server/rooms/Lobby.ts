@@ -35,6 +35,8 @@ export class Lobby extends Room<LobbyState> {
   private bonusArbiter: BonusArbiter;
   private subscriptionHelper: SubscriptionHelper;
 
+  private userIdsLoggingIn: any = {};
+
   private redis: Redis;
   public get redisClient() {
     return this.redis.client;
@@ -118,6 +120,9 @@ export class Lobby extends Room<LobbyState> {
 
   private async tryLogin(client, { userId, username, idToken }) {
 
+    if(this.userIdsLoggingIn[userId]) return;
+    this.userIdsLoggingIn[userId] = true;
+
     if(process.env.AUTH0_JWKS_URI) {
       const isValidRS256Token = await JWTHelper.verifyRS256Token(idToken);
 
@@ -128,6 +133,8 @@ export class Lobby extends Room<LobbyState> {
           prettyErrorDesc: 'Stop hacking.',
           clearLoginData: true
         });
+
+        delete this.userIdsLoggingIn[userId];
         return;
       }
     }
@@ -157,6 +164,7 @@ export class Lobby extends Room<LobbyState> {
     if(!account) {
       if(!username) {
         this.send(client, { action: 'need_user_name' });
+        delete this.userIdsLoggingIn[userId];
         return;
 
       } else {
@@ -168,6 +176,7 @@ export class Lobby extends Room<LobbyState> {
             prettyErrorDesc: 'If you believe your name should be allowed please contact an admin - the filters aren\'t perfect.',
             clearLoginData: true
           });
+          delete this.userIdsLoggingIn[userId];
           return;
         }
 
@@ -184,7 +193,10 @@ export class Lobby extends Room<LobbyState> {
       }
     }
 
-    if(!account || !account.username || !account.userId) return;
+    if(!account || !account.username || !account.userId) {
+      delete this.userIdsLoggingIn[userId];
+      return;
+    }
 
     await this.subscriptionHelper.checkAccountForExpiration(account);
     DiscordHelper.activateTag(account, account.discordTag);
@@ -205,6 +217,7 @@ export class Lobby extends Room<LobbyState> {
     this.updateAccount(client);
     this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
+    delete this.userIdsLoggingIn[userId];
   }
 
   private cleanAndSaveAccount(account: Account) {
