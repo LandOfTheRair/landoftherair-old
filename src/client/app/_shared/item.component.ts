@@ -34,6 +34,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          (mouseenter)="determineScopes()"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
          triggers="hover:mouseleave"
+         placement="auto"
          container="body"
          delay="750"
          [isDisabled]="!item || !showDesc"
