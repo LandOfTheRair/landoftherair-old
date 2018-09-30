@@ -75,6 +75,10 @@ input {
 
   .right-side {
 
+    &.receive, &.listings {
+      overflow-y: auto;
+    }
+
     .items {
       height: calc(500px - 42px - 30px);
 
