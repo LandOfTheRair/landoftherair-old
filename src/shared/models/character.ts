@@ -5,7 +5,7 @@ import { Signal } from 'signals.js';
 import {
   merge, includes, compact, values, random,
   startsWith, clone, get, reject, pick,
-  sample, filter, maxBy, capitalize
+  sample, filter, maxBy, capitalize, isArray
 } from 'lodash';
 
 import {
@@ -376,6 +376,8 @@ export class Character {
   }
 
   initEffects() {
+    if(isArray(this.effects)) this.effects = {};
+    
     Object.keys(this.effects).forEach(effName => {
       if(!Effects[effName]) {
         delete this.effects[effName];
