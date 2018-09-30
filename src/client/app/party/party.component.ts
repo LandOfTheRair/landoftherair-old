@@ -11,18 +11,22 @@ import { startCase } from 'lodash';
 export class PartyComponent {
 
   get party() {
+    if(!this.colyseusGame.character) return null;
     return (<any>this.colyseusGame.character)._party;
   }
 
   get partyExp() {
+    if(!this.colyseusGame.character) return null;
     return (<any>this.colyseusGame.character).partyExp;
   }
 
   get partyPointProgressPercent() {
+    if(!this.partyExp) return 0;
     return (this.partyExp.__current / this.partyExp.maximum * 100).toFixed(2);
   }
 
   get partyExpString() {
+    if(!this.partyExp) return '0 / 0';
     return `${this.partyExp.__current} / ${this.partyExp.maximum}`;
   }
 
