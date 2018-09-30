@@ -30,7 +30,7 @@ import { SkillHelper } from '../../server/helpers/character/skill-helper';
 import { XPHelper } from '../../server/helpers/character/xp-helper';
 import { TraitUsageModifiers } from '../helpers/trait-usage-modifiers';
 import { VALID_TRADESKILLS_HASH } from '../helpers/tradeskill-helper';
-import { Currency } from '../../server/helpers/world/holiday-helper';
+import { Currency } from '../helpers/holiday-helper';
 
 export type Allegiance =
   'None'

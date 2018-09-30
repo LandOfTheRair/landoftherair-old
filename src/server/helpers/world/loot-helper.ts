@@ -5,7 +5,7 @@ import { Item } from '../../../shared/models/item';
 import { compact, get, random, includes, cloneDeep } from 'lodash';
 
 import { LootRoller, LootFunctions, LootTable } from 'lootastic';
-import { HolidayHelper } from './holiday-helper';
+import { HolidayHelper } from '../../../shared/helpers/holiday-helper';
 
 export class LootHelper {
 

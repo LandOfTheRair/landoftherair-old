@@ -2,7 +2,7 @@
 import { includes } from 'lodash';
 
 import { NPC } from '../../../../../shared/models/npc';
-import { Currency } from '../../../../helpers/world/holiday-helper';
+import { Currency } from '../../../../../shared/helpers/holiday-helper';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';

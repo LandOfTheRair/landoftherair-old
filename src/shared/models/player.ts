@@ -26,7 +26,7 @@ import { SpellforgingContainer } from './container/tradeskills/spellforging';
 import { MetalworkingContainer } from './container/tradeskills/metalworking';
 import { SkillTree } from './skill-tree';
 import { RollerHelper } from '../helpers/roller-helper';
-import { Currency } from '../../server/helpers/world/holiday-helper';
+import { Currency } from '../helpers/holiday-helper';
 
 export class Player extends Character {
   @nonenumerable

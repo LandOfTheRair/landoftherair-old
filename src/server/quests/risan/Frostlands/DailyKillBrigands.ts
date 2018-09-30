@@ -3,7 +3,7 @@ import { clone, includes } from 'lodash';
 
 import { Quest } from '../../../base/Quest';
 import { Player } from '../../../../shared/models/player';
-import { HolidayHelper } from '../../../helpers/world/holiday-helper';
+import { HolidayHelper } from '../../../../shared/helpers/holiday-helper';
 
 export class DailyKillBrigands extends Quest {
 

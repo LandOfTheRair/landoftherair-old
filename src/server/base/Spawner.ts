@@ -11,7 +11,7 @@ import * as Effects from '../effects';
 import { GameWorld } from '../rooms/GameWorld';
 import { StatName } from '../../shared/models/character';
 import { RollerHelper } from '../../shared/helpers/roller-helper';
-import { Currency } from '../helpers/world/holiday-helper';
+import { Currency } from '../../shared/helpers/holiday-helper';
 
 export class Spawner {
 

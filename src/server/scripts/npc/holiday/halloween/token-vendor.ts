@@ -1,6 +1,6 @@
 import { NPC } from '../../../../../shared/models/npc';
 import { VendorResponses } from '../../common-responses';
-import { Currency } from '../../../../helpers/world/holiday-helper';
+import { Currency } from '../../../../../shared/helpers/holiday-helper';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';

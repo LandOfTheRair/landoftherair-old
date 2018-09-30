@@ -1,6 +1,6 @@
 
 import { Spawner } from '../../../../base/Spawner';
-import { Holiday, HolidayHelper } from '../../../../helpers/world/holiday-helper';
+import { Holiday, HolidayHelper } from '../../../../../shared/helpers/holiday-helper';
 
 const npcIds = [
   'Halloween Zombie'

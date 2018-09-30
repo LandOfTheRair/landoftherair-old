@@ -5,7 +5,7 @@ import { SkillHelper } from '../character/skill-helper';
 import { Loadouts } from './loadout-listing';
 
 import { get } from 'lodash';
-import { Currency } from '../world/holiday-helper';
+import { Currency } from '../../../shared/helpers/holiday-helper';
 
 export class TesterHelper {
 

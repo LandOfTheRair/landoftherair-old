@@ -2,7 +2,7 @@
 import { sample } from 'lodash';
 
 import { NPC } from '../../../shared/models/npc';
-import { Holiday, HolidayHelper } from '../../helpers/world/holiday-helper';
+import { Holiday, HolidayHelper } from '../../../shared/helpers/holiday-helper';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 import { Player } from '../../../shared/models/player';
 import { CombatHelper } from '../../helpers/world/combat-helper';

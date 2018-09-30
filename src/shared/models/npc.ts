@@ -7,7 +7,7 @@ import * as uuid from 'uuid/v4';
 import { CharacterHelper } from '../../server/helpers/character/character-helper';
 import { DeathHelper } from '../../server/helpers/character/death-helper';
 import { Player } from './player';
-import { Currency } from '../../server/helpers/world/holiday-helper';
+import { Currency } from '../helpers/holiday-helper';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 
