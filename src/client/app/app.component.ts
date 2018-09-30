@@ -528,7 +528,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   changeMacroPage(newPage) {
     if(newPage < 0) return;
-    const pageSize = 45;
+    const pageSize = 36;
     const allMacros = this.macroService.allMacroNames();
     const maxPage = Math.floor(allMacros.length / pageSize);
     if(newPage > maxPage) return;
