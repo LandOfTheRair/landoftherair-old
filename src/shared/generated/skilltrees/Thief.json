@@ -183,7 +183,7 @@
     "NimbleStealing0": {
         "name": "NimbleStealing0",
         "traitName": "NimbleStealing",
-        "desc": "You are $5|15$% less likely to be discovered when stealing, and you steal more currentGold when you are successful.",
+        "desc": "You are $5|15$% less likely to be discovered when stealing, and you steal more gold when you are successful.",
         "icon": "take-my-money",
         "cost": 3,
         "unlocks": [
@@ -197,7 +197,7 @@
     "NimbleStealing1": {
         "name": "NimbleStealing1",
         "traitName": "NimbleStealing",
-        "desc": "You are $5|15$% less likely to be discovered when stealing, and you steal more currentGold when you are successful.",
+        "desc": "You are $5|15$% less likely to be discovered when stealing, and you steal more gold when you are successful.",
         "icon": "take-my-money",
         "cost": 3,
         "unlocks": [
@@ -211,7 +211,7 @@
     "NimbleStealing2": {
         "name": "NimbleStealing2",
         "traitName": "NimbleStealing",
-        "desc": "You are $5|15$% less likely to be discovered when stealing, and you steal more currentGold when you are successful.",
+        "desc": "You are $5|15$% less likely to be discovered when stealing, and you steal more gold when you are successful.",
         "icon": "take-my-money",
         "capstone": true,
         "cost": 10,
@@ -751,7 +751,7 @@
     "LockpickSpecialty0": {
         "name": "LockpickSpecialty0",
         "traitName": "LockpickSpecialty",
-        "desc": "Your lockpicking ability is increased by $1|3$ skill per point.",
+        "desc": "Your lockpicking ability is increased by +$1|3$ skill(s).",
         "icon": "unlocking",
         "cost": 5,
         "unlocks": [
@@ -765,7 +765,7 @@
     "LockpickSpecialty1": {
         "name": "LockpickSpecialty1",
         "traitName": "LockpickSpecialty",
-        "desc": "Your lockpicking ability is increased by $1|3$ skill per point.",
+        "desc": "Your lockpicking ability is increased by +$1|3$ skill(s).",
         "icon": "unlocking",
         "cost": 5,
         "unlocks": [
@@ -779,7 +779,7 @@
     "LockpickSpecialty2": {
         "name": "LockpickSpecialty2",
         "traitName": "LockpickSpecialty",
-        "desc": "Your lockpicking ability is increased by $1|3$ skill per point.",
+        "desc": "Your lockpicking ability is increased by +$1|3$ skill(s).",
         "icon": "unlocking",
         "cost": 5,
         "unlocks": [
@@ -793,7 +793,7 @@
     "LockpickSpecialty3": {
         "name": "LockpickSpecialty3",
         "traitName": "LockpickSpecialty",
-        "desc": "Your lockpicking ability is increased by $1|3$ skill per point.",
+        "desc": "Your lockpicking ability is increased by +$1|3$ skill(s).",
         "icon": "unlocking",
         "cost": 5,
         "unlocks": [
@@ -807,7 +807,7 @@
     "LockpickSpecialty4": {
         "name": "LockpickSpecialty4",
         "traitName": "LockpickSpecialty",
-        "desc": "Your lockpicking ability is increased by $1|3$ skill per point.",
+        "desc": "Your lockpicking ability is increased by +$1|3$ skill(s).",
         "icon": "unlocking",
         "cost": 5,
         "cluster": 3,

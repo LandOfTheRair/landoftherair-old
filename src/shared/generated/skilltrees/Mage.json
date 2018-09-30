@@ -61,7 +61,7 @@
     "CalmMind0": {
         "name": "CalmMind0",
         "traitName": "CalmMind",
-        "desc": "Gain +$2|6$ to your mana regeneration per point.",
+        "desc": "Gain +$2|6$ to your mana regeneration.",
         "icon": "psychic-waves",
         "cost": 3,
         "unlocks": [
@@ -75,7 +75,7 @@
     "CalmMind1": {
         "name": "CalmMind1",
         "traitName": "CalmMind",
-        "desc": "Gain +$2|6$ to your mana regeneration per point.",
+        "desc": "Gain +$2|6$ to your mana regeneration.",
         "icon": "psychic-waves",
         "cost": 3,
         "unlocks": [
@@ -89,7 +89,7 @@
     "CalmMind2": {
         "name": "CalmMind2",
         "traitName": "CalmMind",
-        "desc": "Gain +$2|6$ to your mana regeneration per point.",
+        "desc": "Gain +$2|6$ to your mana regeneration.",
         "icon": "psychic-waves",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -578,7 +578,7 @@
     "WandSpecialty0": {
         "name": "WandSpecialty0",
         "traitName": "WandSpecialty",
-        "desc": "Spells cost $2|6$% less per point to cast while holding a wand in your right hand.",
+        "desc": "Spells cost $2|6$% less to cast while holding a wand in your right hand.",
         "icon": "fairy-wand",
         "requireCharacterLevel": 10,
         "cost": 3,
@@ -593,7 +593,7 @@
     "WandSpecialty1": {
         "name": "WandSpecialty1",
         "traitName": "WandSpecialty",
-        "desc": "Spells cost $2|6$% less per point to cast while holding a wand in your right hand.",
+        "desc": "Spells cost $2|6$% less to cast while holding a wand in your right hand.",
         "icon": "fairy-wand",
         "requireCharacterLevel": 10,
         "cost": 3,
@@ -608,7 +608,7 @@
     "WandSpecialty2": {
         "name": "WandSpecialty2",
         "traitName": "WandSpecialty",
-        "desc": "Spells cost $2|6$% less per point to cast while holding a wand in your right hand.",
+        "desc": "Spells cost $2|6$% less to cast while holding a wand in your right hand.",
         "icon": "fairy-wand",
         "capstone": true,
         "requireCharacterLevel": 15,

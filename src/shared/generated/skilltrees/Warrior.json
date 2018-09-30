@@ -609,7 +609,7 @@
     "Riposte0": {
         "name": "Riposte0",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by $3|9$% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $3|9$%.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -623,7 +623,7 @@
     "Riposte1": {
         "name": "Riposte1",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by $3|9$% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $3|9$%.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -638,7 +638,7 @@
     "Riposte2": {
         "name": "Riposte2",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by $3|9$% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $3|9$%.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -652,7 +652,7 @@
     "Riposte3": {
         "name": "Riposte3",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by $3|9$% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $3|9$%.",
         "icon": "spinning-sword",
         "cost": 3,
         "unlocks": [
@@ -666,7 +666,7 @@
     "Riposte4": {
         "name": "Riposte4",
         "traitName": "Riposte",
-        "desc": "Increase the chance of counter-attacking enemies by $3|9$% per point.",
+        "desc": "Increase the chance of counter-attacking enemies by $3|9$%.",
         "icon": "spinning-sword",
         "capstone": true,
         "requireCharacterLevel": 15,
