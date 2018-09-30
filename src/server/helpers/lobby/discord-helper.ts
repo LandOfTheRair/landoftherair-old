@@ -72,11 +72,11 @@ export class DiscordHelper {
       return false;
     }
 
-    DiscordHelper.discord.on('message', ({ content, channel, author, member }) => {
+    DiscordHelper.discord.on('message', ({ cleanContent, channel, author, member }) => {
       if(!channel || !DiscordHelper.discordChannel || !DiscordHelper.discordBotChannel) return;
 
-      if(channel.id === DiscordHelper.discordChannel.id) DiscordHelper.parseLobbyMessage({ content, author, member });
-      if(channel.id === DiscordHelper.discordBotChannel.id) DiscordHelper.parseBotMessage({ content, channel, member });
+      if(channel.id === DiscordHelper.discordChannel.id) DiscordHelper.parseLobbyMessage({ content: cleanContent, author, member });
+      if(channel.id === DiscordHelper.discordBotChannel.id) DiscordHelper.parseBotMessage({ content: cleanContent, channel, member });
     });
 
     DiscordHelper.discord.on('presenceUpdate', (oldMember, newMember) => {
