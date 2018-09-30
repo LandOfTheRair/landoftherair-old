@@ -78,7 +78,8 @@ export class Game {
   private hasFlashed: boolean;
 
   private fovGroup: any = {};
-  private fovSprites: any = {};
+  private fovSprites: any = {};   // horizontal fov sprites
+  private fovSprites2: any = {};  // extra fov sprites for vertical layering
 
   public get shouldRender() {
     if(!this.g || !this.g.camera) return false;
@@ -720,10 +721,15 @@ export class Game {
       for(let y = -4; y <= 4; y++) {
         const fovState = this.shouldRenderXY(x, y);
         const fovSprite = this.fovSprites[x][y];
+        const fovSprite2 = this.fovSprites2[x][y];
 
         fovSprite.scale.set(1, 1);
         fovSprite.cameraOffset.x = 64 * (x + 4);
         fovSprite.cameraOffset.y = 64 * (y + 4);
+
+        fovSprite2.scale.set(1, 1);
+        fovSprite2.cameraOffset.x = 64 * (x + 4);
+        fovSprite2.cameraOffset.y = 64 * (y + 4);
 
         if(!isPlayerInHash) {
           fovSprite.alpha = 1;
@@ -744,24 +750,31 @@ export class Game {
         }
 
         fovSprite.alpha = fovState ? 0 : 1;
+        fovSprite2.alpha = fovState ? 0 : 1;
 
         // cut tiles
         if(fovState) {
           const isWallHere = this.isThereAWallAt(x, y);
           if(!isWallHere) continue;
 
-          // check bottom first because it is the most jarring transition to see
-
+          // FOV SPRITE 2 IS USED HERE SO IT CAN LAYER ON TOP OF THE OTHER ONES
           if(y === 4                                                 // cut down IIF the wall *is* the edge tile (scale down to y0.5, y + ~32)
             || (y + 1 <= 4 && !this.shouldRenderXY(x, y + 1))) {  // cut down (scale down to y0.5, y + ~32)
-            fovSprite.alpha = 1;
-            fovSprite.scale.y = 0.7;
-            fovSprite.cameraOffset.y += 20;
-            continue;
+
+            fovSprite2.alpha = 1;
+            fovSprite2.scale.y = 0.7;
+            fovSprite2.cameraOffset.y += 20;
           }
 
           if(x === -4                                              // cut left IIF the wall *is* the edge tile (scale down to x0.5, no offset)
           || (x - 1 >= -4 && !this.shouldRenderXY(x - 1, y))) { // cut left (scale down to x0.5, no offset)
+
+            // if the tile is black on both sides, it should be black regardless
+            if(!this.shouldRenderXY(x + 1, y)) {
+              fovSprite.alpha = 1;
+              continue;
+            }
+
             fovSprite.alpha = 1;
             fovSprite.scale.x = 0.35;
             continue;
@@ -770,6 +783,13 @@ export class Game {
 
           if(x === 4                                               // cut right IIF the wall *is* the edge tile (scale down to x0.5, x + ~32)
           || (x + 1 <= 4 && !this.shouldRenderXY(x + 1, y))) {  // cut right (scale down to x0.5, x + ~32)
+
+            // if the tile is black on both sides, it should be black regardless
+            if(!this.shouldRenderXY(x - 1, y)) {
+              fovSprite.alpha = 1;
+              continue;
+            }
+
             fovSprite.alpha = 1;
             fovSprite.scale.x = 0.35;
             fovSprite.cameraOffset.x += 42;
@@ -788,8 +808,17 @@ export class Game {
     blackBitmapData.ctx.fillStyle = '#000';
     blackBitmapData.ctx.fill();
 
+    /*
+    const debugBitmapData = this.g.add.bitmapData(64, 64);
+    debugBitmapData.ctx.beginPath();
+    debugBitmapData.ctx.rect(0, 0, 64, 64);
+    debugBitmapData.ctx.fillStyle = '#0f0';
+    debugBitmapData.ctx.fill();
+    */
+
     for(let x = -4; x <= 4; x++) {
       this.fovSprites[x] = {};
+      this.fovSprites2[x] = {};
 
       for(let y = -4; y <= 4; y++) {
         const dark = this.g.add.sprite(64 * (x + 4), 64 * (y + 4), blackBitmapData);
@@ -797,6 +826,12 @@ export class Game {
         dark.fixedToCamera = true;
         this.fovSprites[x][y] = dark;
         this.fovGroup.add(dark);
+
+        const dark2 = this.g.add.sprite(64 * (x + 4), 64 * (y + 4), blackBitmapData);
+        dark2.alpha = 0;
+        dark2.fixedToCamera = true;
+        this.fovSprites2[x][y] = dark2;
+        this.fovGroup.add(dark2);
       }
     }
   }
