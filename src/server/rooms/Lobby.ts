@@ -217,7 +217,8 @@ export class Lobby extends Room<LobbyState> {
     const account = this.state.findAccount(client.userId);
     if(!account) return;
 
-    this.cleanAndSaveAccount(account);
+    account.inGame = -1;
+    AccountHelper.saveAccount(account);
 
     this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
