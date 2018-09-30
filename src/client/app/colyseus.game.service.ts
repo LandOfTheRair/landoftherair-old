@@ -293,6 +293,10 @@ export class ColyseusGameService {
     this.worldRoom.onError.add((e) => {
       alert('WORLD ROOM ERROR: ' + JSON.stringify(e));
       console.error(e);
+      this.inGame$.next(false);
+      this._inGame = false;
+      this._joiningGame = false;
+
     });
   }
 
