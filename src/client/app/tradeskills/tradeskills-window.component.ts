@@ -16,6 +16,8 @@ export class TradeSkillsWindowComponent {
   constructor() { }
 
   getSkillName(skill) {
+    if(!this.currentPlayer) return '';
+
     const level = this.currentPlayer.calcSkillLevel(skill);
     return `${SkillNames.getName(level, skill)} (${level})`;
   }
