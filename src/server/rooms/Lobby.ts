@@ -652,7 +652,9 @@ export class Lobby extends Room<LobbyState> {
 
     const hoursRemaining = this.bonusArbiter.boughtBonusHours[key];
 
-    this.sendDiscordEventNotification(`${account.username} just bought ${hours} hours of ${key} +100%! There are ${hoursRemaining} hours left of the bonus.`);
+    const msg = `${account.username} just bought ${hours} hours of ${key} +100%! There are ${hoursRemaining} hours left of the bonus.`;
+    this.addSystemMessage(msg);
+    this.sendDiscordEventNotification(msg);
   }
 
   private async giveSilver(client, data) {
