@@ -47,9 +47,6 @@ export class ClientGameState {
   };
 
   playerBoxes$  = new Subject<{ newPlayer: Player, oldPlayer: Player }>();
-
-  loadPlayer$   = new Subject<any>();
-
   updateGround$ = new BehaviorSubject({});
 
   setMap$ = new BehaviorSubject({});

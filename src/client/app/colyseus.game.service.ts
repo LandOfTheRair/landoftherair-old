@@ -127,6 +127,12 @@ export class ColyseusGameService {
     this.lastCommands = this.localStorage.retrieve('lastCommands') || [];
 
     (<any>window).sendCommand = this.sendCommandString.bind(this);
+
+    document.addEventListener('contextmenu', (event) => {
+      if(!this._inGame) return;
+      event.preventDefault();
+      return false;
+    });
   }
 
   init(colyseus, client, character) {
@@ -140,15 +146,7 @@ export class ColyseusGameService {
       return;
     }
 
-    this.clientGameState.loadPlayer$.next();
-
     this.initGame();
-
-    document.addEventListener('contextmenu', (event) => {
-      if(!this._inGame) return;
-      event.preventDefault();
-      return false;
-    });
   }
 
   get isChangingMap() {
