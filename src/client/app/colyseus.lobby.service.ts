@@ -173,8 +173,7 @@ export class ColyseusLobbyService {
 
   public logout() {
     this.room.send({ action: 'logout' });
-    localStorage.removeItem('colyseusid');
-    localStorage.removeItem('reconnection');
+    this.colyseus.clearColyseusData();
     this.auth.logout();
 
     window.location.reload();

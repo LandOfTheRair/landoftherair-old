@@ -33,7 +33,14 @@ export class ColyseusService {
     this.game.init(this, this.client, character);
   }
 
+  public clearColyseusData() {
+    localStorage.removeItem('colyseusid');
+    localStorage.removeItem('reconnection');
+  }
+
   private initClient() {
+    this.clearColyseusData();
+
     this.client = new Colyseus.Client(`${environment.server.wsProtocol}://${environment.server.domain}:${environment.server.port}`);
     this._isConnecting = true;
 

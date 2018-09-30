@@ -207,16 +207,29 @@ export class Lobby extends Room<LobbyState> {
     this.updateDiscordLobbyChannelUserCount();
   }
 
+  private cleanAndSaveAccount(account: Account) {
+    account.inGame = -1;
+    account.colyseusId = null;
+    AccountHelper.saveAccount(account);
+  }
+
   quit(client) {
     const account = this.state.findAccount(client.userId);
     if(!account) return;
-    account.inGame = -1;
+
+    this.cleanAndSaveAccount(account);
+
     this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
   }
 
   private logout(client) {
     this.state.removeAccount(client.userId);
+
+    const account = this.state.findAccount(client.userId);
+    if(!account) return;
+
+    this.cleanAndSaveAccount(account);
   }
 
   private sendMessage(client, message) {
@@ -406,6 +419,11 @@ export class Lobby extends Room<LobbyState> {
     this.removeUsername((<any>client).username);
     this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
+
+    const account = this.state.findAccount(client.userId);
+    if(!account) return;
+
+    this.cleanAndSaveAccount(account);
   }
 
   onDispose() {
