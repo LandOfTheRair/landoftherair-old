@@ -153,7 +153,7 @@ export class Lobby extends Room<LobbyState> {
 
         this.send(oldClient, { action: 'force_logout' });
 
-        oldClient.close(1);
+        oldClient.close();
 
       }
 
