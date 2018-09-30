@@ -110,6 +110,7 @@ export class AnalyticsHelper {
 
   public trackCurrencySink(type: 'Source'|'Sink', player: Player, currency: string, gold: number, reason: string) {
     if(gold === 0 || !reason) return;
+    if(!currency) currency = 'gold';
 
     this.track(player, 'resource', { event_id: `${type}:${currency}:${reason}`, amount: type === 'Source' ? gold : -gold });
   }
