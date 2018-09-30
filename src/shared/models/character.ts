@@ -377,7 +377,7 @@ export class Character {
 
   initEffects() {
     if(isArray(this.effects)) this.effects = {};
-    
+
     Object.keys(this.effects).forEach(effName => {
       if(!Effects[effName]) {
         delete this.effects[effName];

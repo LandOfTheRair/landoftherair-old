@@ -52,6 +52,7 @@ export class AnalyticsHelper {
 
   private track(player: Player, type: 'design'|'resource', args: any) {
     if(!this.ga) return;
+    if(!player.isPlayer()) return;
 
     if(args.event_id) args.event_id = args.event_id.split(' ').join('');
 
