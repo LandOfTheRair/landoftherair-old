@@ -125,12 +125,17 @@ export class Game {
     if(!this.vfx) return;
 
     tiles.forEach(({ x, y }) => {
-      const sprite = this.g.add.sprite(x * 64, y * 64, 'Effects', effect);
-      this.vfx.add(sprite);
 
-      setTimeout(() => {
-        sprite.destroy();
-      }, 2000);
+      try {
+        const sprite = this.g.add.sprite(x * 64, y * 64, 'Effects', effect);
+        this.vfx.add(sprite);
+
+        setTimeout(() => {
+          sprite.destroy();
+        }, 2000);
+      } catch(e) {
+        console.error(e);
+      }
     });
   }
 
