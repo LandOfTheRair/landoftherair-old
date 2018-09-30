@@ -135,6 +135,11 @@ export class ColyseusGameService {
     this.loadedCharacterSlot = character.charSlot;
     this.setCharacter(character);
 
+    if(!this.clientGameState.currentPlayer) {
+      alert('Could not get your character (?) please try again! You might have to refresh the page!');
+      return;
+    }
+
     this.clientGameState.loadPlayer$.next();
 
     this.initGame();
@@ -155,9 +160,14 @@ export class ColyseusGameService {
   }
 
   private initGame() {
-    if (!this.client) throw new Error('Client not intialized; cannot initialize game connection.');
+    if(!this.client) throw new Error('Client not intialized; cannot initialize game connection.');
 
     this.unshowWindows();
+
+    if(!this.character) {
+      alert('For some reason your character was not available here! please alert seiyria and refresh the page to try again. thanks!');
+      return;
+    }
 
     this.joinRoom(this.character.map);
   }
@@ -283,6 +293,7 @@ export class ColyseusGameService {
     this.worldRoom.onError.add((e) => {
       alert('WORLD ROOM ERROR: ' + JSON.stringify(e));
       console.error(e);
+      throw e;
     });
   }
 

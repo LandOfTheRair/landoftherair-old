@@ -52,6 +52,8 @@ export class ColyseusLobbyService {
 
     this.room.onError.add((e) => {
       alert('ROOM ERROR: ' + JSON.stringify(e));
+      console.error(e);
+      throw e;
     });
   }
 
