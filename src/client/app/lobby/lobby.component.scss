@@ -74,6 +74,7 @@
 
   .message {
     font-size: 1.3rem;
+    word-break: break-all;
 
     .timestamp {
       min-width: 80px;
