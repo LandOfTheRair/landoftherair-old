@@ -20,6 +20,10 @@ const holidayChecker = {
   }
 };
 
+const holidayDescriptions = {
+  Halloween: 'Go smash some zombies, take their brains, and go trick-or-treating!'
+};
+
 export class HolidayHelper {
 
   static isHoliday(hol: Holiday): boolean {
@@ -40,6 +44,10 @@ export class HolidayHelper {
     });
 
     return holiday;
+  }
+
+  static currentHolidayDescription(holiday: Holiday|string): string {
+    return holidayDescriptions[holiday];
   }
 
   static tryGrantHolidayTokens(player: Player, amt: number): void {

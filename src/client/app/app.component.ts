@@ -15,6 +15,7 @@ import { SilverPurchase } from '../../shared/models/account';
 
 import { environment } from '../environments/environment';
 import { WindowManagerService } from './windowmanager.service';
+import { HolidayHelper } from '../../shared/helpers/holiday-helper';
 
 type Size = 'normal' | 'small' | 'xsmall';
 type XSizeMax = 'max' | 'xlarge' | 'large' | 'normal' | 'small' | 'xsmall';
@@ -73,6 +74,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   public currentMacrosInPage = [];
   public currentMacroGroupForEditor: string;
   public currentMacroIdxForEditor: number;
+
+  public currentHoliday: { name: string, description: string };
 
   @LocalStorage()
   public activeWindow: string;
@@ -301,6 +304,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.preloadAssets();
 
     this.watchForTour();
+
+    if(HolidayHelper.isAnyHoliday()) {
+      this.currentHoliday = { name: HolidayHelper.currentHoliday(), description: HolidayHelper.currentHolidayDescription(HolidayHelper.currentHoliday()) };
+    }
   }
 
   private preloadAssets() {

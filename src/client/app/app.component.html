@@ -1293,6 +1293,17 @@
       </div>
 
       <div class="modal-body" *ngIf="gameSettings.isShown">
+
+        <div class="row mb-3" *ngIf="currentHoliday">
+          <div class="col-12 text-center">
+            <h5>Holiday</h5>
+            <div><strong>{{ currentHoliday.name }}</strong>: {{ currentHoliday.description }}</div>
+            <div>
+              <a href="https://rair.land/docs/{{ currentHoliday.name }}/" target="_blank">More Info</a>
+            </div>
+          </div>
+        </div>
+
         <div class="row" *ngIf="colyseus.lobby.lobbyState.bonusInfo as bonusData">
           <div class="col-6">
             <h5>Base Multipliers</h5>
@@ -1314,6 +1325,7 @@
                      && !bonusData.bonusHours.itemFindMult">None. You should start one!</div>
           </div>
         </div>
+
       </div>
 
       <div class="modal-footer">
