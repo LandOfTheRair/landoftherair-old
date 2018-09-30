@@ -262,6 +262,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       if(this.activeWindow === 'cmd'
       || this.activeWindow === 'lobby'
       || this.activeWindow === 'bank'
+      || this.activeWindow === 'shop'
       || this.activeWindow === 'marketboard') return true;
 
       return false;
@@ -585,7 +586,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.newMessages = 0;
     }
 
-    if(win !== 'commandLine' && win !== 'lobby' && win !== 'marketboard' && win !== 'bank') {
+    if(win !== 'commandLine' && win !== 'lobby' && win !== 'marketboard' && win !== 'bank' && win !== 'shop') {
       (<HTMLElement>document.activeElement).blur();
     }
   }

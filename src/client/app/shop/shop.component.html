@@ -47,7 +47,7 @@
 
   </div>
 
-  <div class="row m-3 mb-3 p-0" [class.hidden]="colyseusGame.showShop.vendorCurrency">
+  <div class="row m-3 mb-3 p-0" [class.hidden]="colyseusGame.showShop.vendorCurrency || allSackItemTypes.length === 0">
     <h4 class="w-100 text-center">Sell From Sack</h4>
 
     <div class="col-4 text-right vertical-center">
