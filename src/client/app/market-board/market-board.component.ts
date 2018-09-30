@@ -125,6 +125,19 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     this.marketBoardRemoveId$.unsubscribe();
   }
 
+  public requirementTooltipFor(listing) {
+    const requirements = listing.itemInfo.requirements;
+    if(!requirements) return `Requirements: none`;
+
+    const reqArr = [];
+    if(requirements.level) reqArr.push(`Level: ${requirements.level}`);
+    if(requirements.profession) reqArr.push(`Class: ${requirements.profession}`);
+    if(requirements.alignment) reqArr.push(`Alignment: ${requirements.alignment}`);
+    if(requirements.skill) reqArr.push(`Skill: ${requirements.skill.name}:${requirements.skill.level}`);
+
+    return `Requirements - ${reqArr.join(', ')}`;
+  }
+
   switchTab(newTab) {
     this.activeTab = newTab;
 
