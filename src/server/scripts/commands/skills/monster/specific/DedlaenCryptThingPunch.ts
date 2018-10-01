@@ -1,14 +1,13 @@
 
 import { sample } from 'lodash';
 
-import { Skill } from '../../../../../base/Skill';
+import { MonsterSkill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { RollerHelper } from '../../../../../../shared/helpers/roller-helper';
 
-export class DedlaenCryptThingPunch extends Skill {
+export class DedlaenCryptThingPunch extends MonsterSkill {
 
   name = 'dedlaencryptthingpunch';
-  execute() {}
 
   canUse(user: Character, target: Character) {
     return user.distFrom(target) <= this.range();

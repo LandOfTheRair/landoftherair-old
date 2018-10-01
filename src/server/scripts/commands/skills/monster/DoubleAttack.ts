@@ -1,13 +1,12 @@
 
 
-import { Skill } from '../../../../base/Skill';
+import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
 
-export class DoubleAttack extends Skill {
+export class DoubleAttack extends MonsterSkill {
 
   name = 'doubleattack';
-  execute() {}
 
   canUse(user: Character, target: Character) {
     return user.distFrom(target) <= this.range();

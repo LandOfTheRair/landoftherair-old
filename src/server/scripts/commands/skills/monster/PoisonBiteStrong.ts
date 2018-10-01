@@ -3,15 +3,14 @@
 
 import * as dice from 'dice.js';
 
-import { Skill } from '../../../../base/Skill';
+import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { Poison as CastEffect } from '../../../../effects/dots/Poison';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
 
-export class PoisonBiteStrong extends Skill {
+export class PoisonBiteStrong extends MonsterSkill {
 
   name = 'poisonbitestrong';
-  execute() {}
 
   canUse(user: Character, target: Character) {
     return user.distFrom(target) <= this.range() && !target.hasEffect('Poison');

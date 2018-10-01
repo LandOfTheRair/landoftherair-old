@@ -3,15 +3,14 @@
 
 import * as dice from 'dice.js';
 
-import { Skill } from '../../../../base/Skill';
+import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { Disease as CastEffect } from '../../../../effects/dots/Disease';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
 
-export class DiseaseBiteMedium extends Skill {
+export class DiseaseBiteMedium extends MonsterSkill {
 
   name = 'diseasebitemedium';
-  execute() {}
 
   canUse(user: Character, target: Character) {
     return user.distFrom(target) <= this.range() && !target.hasEffect('Disease');

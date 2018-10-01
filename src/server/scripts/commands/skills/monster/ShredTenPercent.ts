@@ -1,14 +1,13 @@
 
 
 
-import { Skill } from '../../../../base/Skill';
+import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
 
-export class ShredTenPercent extends Skill {
+export class ShredTenPercent extends MonsterSkill {
 
   name = 'shredtenpercent';
-  execute() {}
 
   canUse(user: Character, target: Character) {
     return user.distFrom(target) <= this.range() && target.hp.gtePercent(50);

@@ -243,3 +243,17 @@ export abstract class Skill extends Command {
   use(user: Character, target: Character, baseEffect = {}) {}
 
 }
+
+export abstract class MonsterSkill extends Skill {
+  monsterSkill = true;
+
+  execute(user: Character, { args }) {
+    if(!args) return false;
+
+    const target = this.getTarget(user, args);
+    if(!target) return;
+
+    this.use(user, target);
+  }
+
+}

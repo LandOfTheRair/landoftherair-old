@@ -1,6 +1,6 @@
 
 
-import { Skill } from '../../../../../base/Skill';
+import { MonsterSkill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Stun, Frosted } from '../../../../../effects';
 
@@ -8,10 +8,9 @@ import { every, some, clamp } from 'lodash';
 import { CharacterHelper } from '../../../../../helpers/character/character-helper';
 import { RollerHelper } from '../../../../../../shared/helpers/roller-helper';
 
-export class GhostWail extends Skill {
+export class GhostWail extends MonsterSkill {
 
   name = 'ghostwail';
-  execute() {}
 
   mpCost(user: Character) { return Math.floor(user.mp.maximum / 2); }
   range(attacker: Character) { return 5; }

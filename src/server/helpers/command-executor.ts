@@ -101,7 +101,7 @@ export class CommandExecutor {
       hasLearned = player.hasLearned(`${prefix}${spell}` || '') || player.hasLearned(`${spell}${prefix}` || '');
     }
 
-    if(cmd.requiresLearn && !hasLearned) {
+    if(cmd.requiresLearn && !hasLearned && !(cmd.monsterSkill && player.$$room.subscriptionHelper.isGM(player))) {
       player.sendClientMessage('You do not know that ability!');
       return { wasSuccess: false };
     }

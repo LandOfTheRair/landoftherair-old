@@ -2,14 +2,13 @@
 
 import * as dice from 'dice.js';
 
-import { Skill } from '../../../../base/Skill';
+import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
 
-export class SkillSuckWeak extends Skill {
+export class SkillSuckWeak extends MonsterSkill {
 
   name = 'skillsuckweak';
-  execute() {}
 
   use(user: Character, target: Character) {
 

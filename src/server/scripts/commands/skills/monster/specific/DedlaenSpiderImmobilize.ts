@@ -1,13 +1,12 @@
 
 
-import { Skill } from '../../../../../base/Skill';
+import { MonsterSkill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Immobilize } from '../../../../../effects/antibuffs/Immobilize';
 
-export class DedlaenSpiderImmobilize extends Skill {
+export class DedlaenSpiderImmobilize extends MonsterSkill {
 
   name = 'dedlaenspiderimmobilize';
-  execute() {}
   range(attacker: Character) { return 2; }
 
   canUse(user: Character, target: Character) {

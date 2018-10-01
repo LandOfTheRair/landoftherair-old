@@ -1,12 +1,11 @@
 
-import { Skill } from '../../../../../base/Skill';
+import { MonsterSkill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { ZombieScratch } from '../../../../../effects/holiday/ZombieScratch';
 
-export class HalloweenZombieScratch extends Skill {
+export class HalloweenZombieScratch extends MonsterSkill {
 
   name = 'halloweenzombiescratch';
-  execute() {}
 
   canUse(user: Character, target: Character) {
     return !target.hasEffect('Dangerous')

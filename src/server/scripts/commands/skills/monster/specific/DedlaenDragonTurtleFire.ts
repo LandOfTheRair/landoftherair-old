@@ -1,14 +1,13 @@
 
 
-import { Skill } from '../../../../../base/Skill';
+import { MonsterSkill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { FireMist } from '../../../../../effects/damagers/FireMist';
 
-export class DedlaenDragonTurtleFire extends Skill {
+export class DedlaenDragonTurtleFire extends MonsterSkill {
 
   name = 'dedlaendragonturtlefire';
 
-  execute() {}
   range(attacker: Character) { return 0; }
   mpCost() { return 1000; }
 

@@ -15,6 +15,7 @@ export abstract class Command {
   abstract name: string|string[];
   format = '';
   requiresLearn: boolean;
+  monsterSkill: boolean;
 
   abstract execute(player: Player, args);
 

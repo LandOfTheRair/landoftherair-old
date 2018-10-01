@@ -1,6 +1,6 @@
 
 
-import { Skill } from '../../../../../base/Skill';
+import { MonsterSkill, Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Attribute } from '../../../../../effects/augments/Attribute';
 import { Effect } from '../../../../../base/Effect';
@@ -45,10 +45,9 @@ class MistFormEffect extends Effect {
 
 }
 
-export class VampireMistForm extends Skill {
+export class VampireMistForm extends MonsterSkill {
 
   name = 'vampiremistform';
-  execute() {}
 
   mpCost(user: Character) { return Math.floor(user.mp.maximum * 0.75); }
 
