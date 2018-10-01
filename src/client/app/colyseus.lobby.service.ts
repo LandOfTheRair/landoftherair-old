@@ -39,20 +39,27 @@ export class ColyseusLobbyService {
   private initLobby() {
     if(!this.client) throw new Error('Client not intialized; cannot initialize lobby connection.');
 
-    this.room = this.client.join('Lobby');
+    this.client.getAvailableRooms('Lobby', (rooms, err) => {
+      if(err) throw err;
 
-    this.room.onStateChange.add((state) => {
-      this.lobbyState.syncTo(state);
-      this.setAccount(this.lobbyState.findAccountByUsername(this.myAccount.username));
-    });
+      let roomId = 'Lobby';
+      if(rooms && rooms[0] && rooms[0].roomId) roomId = rooms[0].roomId;
 
-    this.room.onMessage.add((data) => {
-      this.interceptLobbyCommand(data);
-    });
+      this.room = this.client.join(roomId);
 
-    this.room.onError.add((e) => {
-      alert('ROOM ERROR: ' + JSON.stringify(e));
-      console.error(e);
+      this.room.onStateChange.add((state) => {
+        this.lobbyState.syncTo(state);
+        this.setAccount(this.lobbyState.findAccountByUsername(this.myAccount.username));
+      });
+
+      this.room.onMessage.add((data) => {
+        this.interceptLobbyCommand(data);
+      });
+
+      this.room.onError.add((e) => {
+        alert('ROOM ERROR: ' + JSON.stringify(e));
+        console.error(e);
+      });
     });
   }
 
