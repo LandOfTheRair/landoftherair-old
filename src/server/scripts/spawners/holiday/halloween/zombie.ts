@@ -10,7 +10,7 @@ export class HalloweenZombieSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 600,
+      respawnRate: 30,
       initialSpawn: 2,
       maxCreatures: 2,
       spawnRadius: 0,
