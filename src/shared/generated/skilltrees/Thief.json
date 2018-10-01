@@ -1005,6 +1005,9 @@
         "icon": "on-sight",
         "capstone": true,
         "cost": 10,
+        "unlocks": [
+            "MultiShot"
+        ],
         "cluster": 4,
         "unlockedBy": [
             "ShadowRanger1"
@@ -1242,6 +1245,17 @@
             "Apply"
         ]
     },
+    "TripleShot0": {
+        "name": "TripleShot0",
+        "traitName": "TripleShot",
+        "desc": "Your MultiShot spell will shoot $1|3$ more shots.",
+        "icon": "double-shot",
+        "cost": 3,
+        "cluster": 4,
+        "unlockedBy": [
+            "MultiShot"
+        ]
+    },
     "Apply": {
         "name": "Apply",
         "desc": "Apply a bottle's effects from your left hand onto your weapon strikes.",
@@ -1312,6 +1326,20 @@
         "cluster": 4,
         "unlockedBy": [
             "Apply"
+        ]
+    },
+    "MultiShot": {
+        "name": "MultiShot",
+        "desc": "Shoot multiple arrows at your enemy. Cost: 10 HP",
+        "icon": "double-shot",
+        "iconColor": "#000",
+        "cost": 10,
+        "unlocks": [
+            "TripleShot0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "ShadowRanger2"
         ]
     }
 }

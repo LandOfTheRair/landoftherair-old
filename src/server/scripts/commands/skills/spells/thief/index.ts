@@ -5,6 +5,7 @@ export * from './Debilitate';
 export * from './Disarm';
 export * from './Disguise';
 export * from './EagleEye';
+export * from './MultiShot';
 export * from './Set';
 export * from './ShadowClones';
 export * from './ShadowMeld';

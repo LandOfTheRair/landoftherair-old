@@ -286,7 +286,7 @@ const ASSASSIN_TREE = {
     unlocks: ['ShadowRanger2', 'ShadowSwap3']
   },
   ShadowRanger2: {
-
+    unlocks: ['MultiShot']
   },
 
   ShadowSwap0: {
@@ -354,6 +354,10 @@ const ASSASSIN_TREE = {
 
   },
 
+  TripleShot0: {
+
+  },
+
   // SKILLS
   Apply: {
     unlocks: ['BetterBackstab0', 'Poison', 'Disease', 'Debilitate', 'EnhancedApplications0']
@@ -373,6 +377,10 @@ const ASSASSIN_TREE = {
 
   Disease: {
     unlocks: ['DegenerativeDisease0']
+  },
+
+  MultiShot: {
+    unlocks: ['TripleShot0']
   }
 };
 
