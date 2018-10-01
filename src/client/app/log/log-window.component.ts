@@ -32,6 +32,7 @@ export class LogWindowComponent implements OnInit, OnDestroy {
 
   private log$: any;
   private globalMsg$: any;
+  private lastMessage: { account: string, message: string };
 
   public get clientGameState() {
     return this.colyseus.game.clientGameState;
@@ -57,6 +58,9 @@ export class LogWindowComponent implements OnInit, OnDestroy {
   }
 
   private addGlobalMessage({ account, message }) {
+    if(this.lastMessage && this.lastMessage.account === account && this.lastMessage.message === message) return;
+
+    this.lastMessage = { account, message };
     this.addLogItem({
       name: `[global] ${account}`,
       message,
