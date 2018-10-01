@@ -714,9 +714,12 @@ export class ColyseusGameService {
 
   private resetRoom() {
     if(!this.worldRoom) return;
-    this.worldRoom.leave();
 
-    this.clientGameState.mapchangeReset();
+    try {
+      this.worldRoom.leave();
+
+      this.clientGameState.mapchangeReset();
+    } catch(e) {}
   }
 
   public quit() {
