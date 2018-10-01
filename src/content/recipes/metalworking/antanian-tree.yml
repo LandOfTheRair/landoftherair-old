@@ -70,3 +70,12 @@
   ingredients:
     - Antanian Branch
     - Silver Ore (Large)
+
+- item: Antanian Crafted Arrows
+  skillGained: 20
+  maxSkillForGains: 7
+  requiredSkill: 1
+  xpGained: 1500
+  ingredients:
+    - Antanian Twig
+    - Antanian Branch

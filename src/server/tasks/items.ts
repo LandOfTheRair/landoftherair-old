@@ -18,7 +18,7 @@ import * as path from 'path';
 import { includes, flatten, isUndefined, capitalize } from 'lodash';
 
 import {
-  Item, ValidItemTypes, WeaponClasses, ArmorClasses, ShieldClasses
+  Item, ValidItemTypes, WeaponClasses, ArmorClasses, ShieldClasses, AmmoClasses
 } from '../../shared/models/item';
 
 const ValidSkillNames = values(SkillClassNames);
@@ -41,7 +41,7 @@ class ItemLoader {
           itemData.type = itemData.type || SkillClassNames.Martial;
           if(!itemData.stats) itemData.stats = {};
 
-          return new Promise((resolve, reject) => {
+          return new Promise((resolve) => {
             ItemLoader.conditionallyAddInformation(itemData);
             if(!ItemLoader.validateItem(itemData)) return reject(new Error(`${itemData.name} failed validation.`));
             return resolve(itemData);
@@ -116,6 +116,10 @@ class ItemLoader {
       item.isSackable = true;
     }
 
+    if(includes(AmmoClasses, item.itemClass)) {
+      item.isBeltable = true;
+    }
+
     if(item.type === 'Polearm') {
       item.isBeltable = false;
       item.twoHanded = true;
@@ -125,6 +129,10 @@ class ItemLoader {
     if(includes(['Shortbow', 'Longbow', 'Greatmace', 'Greataxe'], item.itemClass)) {
       item.twoHanded = true;
       item.secondaryType = 'Twohanded';
+    }
+
+    if(includes(['Crossbow', 'Shortbow', 'Longbow'], item.itemClass)) {
+      item.canShoot = true;
     }
 
     if(includes(['Crossbow', 'Shortbow', 'Longbow'], item.itemClass) || item.type === 'Ranged') {

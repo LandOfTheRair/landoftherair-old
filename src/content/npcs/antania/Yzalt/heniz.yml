@@ -77,6 +77,8 @@
       chance: 4
     - result: Antanian Bubble Shield
       chance: 1
+    - result: Antanian Arrows
+      chance: 1
 
   gear:
     Ring1:
@@ -192,6 +194,10 @@
     - result: none
       chance: 30
     - result: Antanian Dualwielding Dagger
+      chance: 1
+    - result: Antanian Arrows
+      chance: 10
+    - result: Antanian Poisoned Arrows
       chance: 1
 
   gear:
@@ -385,6 +391,10 @@
     - result: none
       chance: 30
     - result: Antanian Dualwielding Dagger
+      chance: 1
+    - result: Antanian Arrows
+      chance: 10
+    - result: Antanian Poisoned Arrows
       chance: 1
 
   gear:

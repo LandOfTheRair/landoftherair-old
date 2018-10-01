@@ -1,0 +1,68 @@
+- name: Antanian Arrows
+  stats:
+    accuracy: 1
+  tier: 1
+  shots: 250
+  sprite: 202
+  desc: "a large handful of copper-tipped arrows"
+  value: 100
+
+- name: Antanian Crafted Arrows
+  tier: 2
+  shots: 1000
+  sprite: 202
+  desc: "a large handful of arrows, carved from branches from an Antanian tree"
+  value: 500
+
+- name: Antanian Poisoned Arrows
+  stats:
+    accuracy: 1
+  tier: 1
+  shots: 100
+  effect:
+    name: Poison
+    potency: 10
+    chance: 33
+  sprite: 202
+  desc: "a large handful of poison-tipped arrows"
+  value: 2500
+
+- name: Antanian Darkness Arrows
+  stats:
+    accuracy: 1
+  tier: 1
+  shots: 100
+  effect:
+    name: Darkness
+    potency: 10
+    chance: 100
+  sprite: 202
+  desc: "a large handful of arrows coated in shadow"
+  value: 2500
+
+- name: Mines Fire Arrows
+  stats:
+    accuracy: 3
+  damageClass: 'fire'
+  tier: 3
+  shots: 250
+  sprite: 202
+  desc: "a large handful of arrows with tips made from volcanic rock"
+  value: 5000
+
+- name: Risan Crafted Arrows
+  tier: 3
+  shots: 1000
+  sprite: 202
+  desc: "a large handful of arrows, carved from branches from a Risan tree"
+  value: 500
+
+- name: Frostlands Arrows
+  stats:
+    accuracy: 3
+  damageClass: 'ice'
+  tier: 3
+  shots: 250
+  sprite: 202
+  desc: "a large handful of arrows with tips made from ice"
+  value: 5000

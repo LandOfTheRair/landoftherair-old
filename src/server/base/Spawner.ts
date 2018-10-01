@@ -171,9 +171,22 @@ export class Spawner {
 
     npcData.rightHand = await this.chooseItemFrom(npcData.rightHand);
 
-    // prevent loading a left hand if your right hand requires 2h
-    if(!npcData.rightHand || (npcData.rightHand && !npcData.rightHand.twoHanded)) {
-      npcData.leftHand = await this.chooseItemFrom(npcData.leftHand);
+    // prevent loading a left hand if your right hand requires 2h (unless it's a bow, in which case ammo can load)
+    if(!npcData.rightHand || (npcData.rightHand && (!npcData.rightHand.twoHanded || npcData.rightHand.canShoot))) {
+      const potentialLeftHand = await this.chooseItemFrom(npcData.leftHand);
+
+      // is ammo
+      if(potentialLeftHand && potentialLeftHand.shots && npcData.rightHand && npcData.rightHand.canShoot) {
+        npcData.leftHand = potentialLeftHand;
+
+      // is not ammo, and there is no 2h
+      } else if(potentialLeftHand && !potentialLeftHand.shots && (!npcData.rightHand || (npcData.rightHand && !npcData.rightHand.twoHanded))) {
+        npcData.leftHand = potentialLeftHand;
+
+      } else {
+        npcData.leftHand = null;
+      }
+
     } else {
       npcData.leftHand = null;
     }

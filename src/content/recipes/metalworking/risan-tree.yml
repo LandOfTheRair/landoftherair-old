@@ -70,3 +70,12 @@
   ingredients:
     - Risan Branch
     - Silver Ore (Large)
+
+- item: Risan Crafted Arrows
+  skillGained: 50
+  maxSkillForGains: 12
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Risan Twig
+    - Risan Branch

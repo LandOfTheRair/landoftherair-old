@@ -16,7 +16,8 @@ export const setup = async (npc: NPC) => {
     'Risan Shortbow',
     'Risan Longbow',
     'Risan Wooden Shield',
-    'Risan Halberd'
+    'Risan Halberd',
+    'Frostlands Arrows'
   ];
 
   npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);

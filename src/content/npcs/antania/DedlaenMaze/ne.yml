@@ -160,6 +160,8 @@
       chance: 10
     - result: Tower Dagger Strong
       chance: 1
+    - result: Antanian Arrows
+      chance: 1
 
   drops:
     - result: Tower Titanium Chunk

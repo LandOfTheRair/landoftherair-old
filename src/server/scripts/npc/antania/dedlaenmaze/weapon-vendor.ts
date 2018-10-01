@@ -15,7 +15,8 @@ export const setup = async (npc: NPC) => {
     'Antanian Crossbow',
     'Antanian Shortbow',
     'Antanian Wooden Shield',
-    'Antanian Halberd'
+    'Antanian Halberd',
+    'Antanian Arrows'
   ];
 
   npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);

@@ -2,7 +2,7 @@
 import { includes, random, capitalize, get, clamp, cloneDeep, sample } from 'lodash';
 
 import { Character, SkillClassNames, StatName } from '../../../shared/models/character';
-import { ShieldClasses, Item, WeaponClasses, ItemEffect, HandsClasses, DamageType } from '../../../shared/models/item';
+import { ShieldClasses, Item, WeaponClasses, ItemEffect, HandsClasses, DamageType, AmmoClasses } from '../../../shared/models/item';
 import * as Classes from '../../classes';
 import * as Effects from '../../effects';
 
@@ -13,6 +13,7 @@ import { BuildupEffect } from '../../base/Effect';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export const BaseItemStatsPerTier = {
+  Arrow:                { base: 1, min: 0, max: 2, weakChance: 25, damageBonus: 10 },
   Axe:                  { base: 2, min: 0, max: 2, weakChance: 10, damageBonus: 0 },
   Broadsword:           { base: 2, min: 0, max: 2, weakChance: 5,  damageBonus: 5 },
   Claws:                { base: 3, min: 0, max: 1, weakChance: 10, damageBonus: 0 },
@@ -156,9 +157,8 @@ export class CombatHelper {
     return includes(ShieldClasses, item.itemClass);
   }
 
-  static resolveThrow(attacker, defender, hand, item) {
+  static resolveThrow(attacker, defender, hand, item: Item) {
     if(item.returnsOnThrow) return;
-    attacker[`set${capitalize(hand)}Hand`](null);
 
     const breakTypes = {
       Bottle: `You hear the sound of glass shattering!`,
@@ -166,9 +166,17 @@ export class CombatHelper {
     };
 
     if(breakTypes[item.itemClass]) {
+      attacker[`set${capitalize(hand)}Hand`](null);
       defender.sendClientMessageToRadius({ message: breakTypes[item.itemClass], subClass: 'combat' }, 5);
 
+    } else if(item.shots) {
+      item.shots--;
+      if(item.shots <= 0) {
+        attacker[`set${capitalize(hand)}Hand`](null);
+      }
+
     } else {
+      attacker[`set${capitalize(hand)}Hand`](null);
       defender.$$room.addItemToGround(defender, item);
     }
   }
@@ -335,7 +343,14 @@ export class CombatHelper {
     }
 
     const attackerName = isAttackerVisible ? attacker.name : 'somebody';
-    const attackerDamageRolls = attacker.getTotalStat('weaponDamageRolls');
+    let attackerDamageRolls = attacker.getTotalStat('weaponDamageRolls');
+
+    // boost the base number of damage rolls by the tier of the arrow, if possible
+    if(attackerWeapon.canShoot && attacker.leftHand && attacker.leftHand.shots) {
+      attackerDamageRolls += attacker.leftHand.tier;
+      attacker.leftHand.shots--;
+      if(attacker.leftHand.shots <= 0) attacker.setLeftHand(null);
+    }
 
     const { damageRolls, damageBonus, isWeak, isStrong } = this.determineWeaponInformation(attacker, attackerWeapon, attackerDamageRolls);
 
@@ -750,9 +765,14 @@ export class CombatHelper {
 
     damage = this.calcDamageDoneBasedOnDefender(attackerWeapon, attacker, defender, damage, criticality);
 
+    let damageClass = attackerWeapon.damageClass || 'physical';
+    if(attackerWeapon.canShoot && attacker.leftHand && attacker.leftHand.shots) {
+      damageClass = attacker.leftHand.damageClass || 'physical';
+    }
+
     damage = this.dealDamage(attacker, defender, {
       damage,
-      damageClass: attackerWeapon.damageClass || 'physical',
+      damageClass,
       isMelee: true,
       attackerDamageMessage: damage > 0 ? `Your attack ${damageType}!` : '',
       defenderDamageMessage: msg,
@@ -769,16 +789,34 @@ export class CombatHelper {
 
     if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
 
-    const encrustEffect = get(attackerWeapon, 'encrust.stats.effect', null);
+    let didEffect = false;
 
-    // encrusted effect takes priority if it exists
-    if(encrustEffect && !encrustEffect.autocast) {
-      this.tryApplyEffect(attacker, defender, encrustEffect, attackerWeapon);
+    if(attackerWeapon.canShoot && attacker.leftHand && attacker.leftHand.shots) {
+      const encrustEffectAmmo = get(attacker.leftHand, 'encrust.stats.effect', null);
 
-    } else if(attackerWeapon.effect && !attackerWeapon.effect.autocast) {
-      const effect = cloneDeep(attackerWeapon.effect);
-      effect.potency += attackerScope.skill;
-      this.tryApplyEffect(attacker, defender, effect, attackerWeapon);
+      // encrusted effect takes priority if it exists
+      if(encrustEffectAmmo && !encrustEffectAmmo.autocast) {
+        didEffect = this.tryApplyEffect(attacker, defender, encrustEffectAmmo, attacker.leftHand);
+
+      } else if(attacker.leftHand.effect && !attacker.leftHand.effect.autocast) {
+        const effect = cloneDeep(attacker.leftHand.effect);
+        effect.potency += attackerScope.skill;
+        didEffect = this.tryApplyEffect(attacker, defender, effect, attacker.leftHand);
+      }
+    }
+
+    if(!didEffect) {
+      const encrustEffect = get(attackerWeapon, 'encrust.stats.effect', null);
+
+      // encrusted effect takes priority if it exists
+      if(encrustEffect && !encrustEffect.autocast) {
+        this.tryApplyEffect(attacker, defender, encrustEffect, attackerWeapon);
+
+      } else if(attackerWeapon.effect && !attackerWeapon.effect.autocast) {
+        const effect = cloneDeep(attackerWeapon.effect);
+        effect.potency += attackerScope.skill;
+        this.tryApplyEffect(attacker, defender, effect, attackerWeapon);
+      }
     }
 
     if(damage <= 0) {
@@ -806,16 +844,16 @@ export class CombatHelper {
     });
   }
 
-  static tryApplyEffect(attacker: Character, defender: Character, effect: ItemEffect, source?: Item) {
+  static tryApplyEffect(attacker: Character, defender: Character, effect: ItemEffect, source?: Item): boolean {
 
     // non-weapons (like bottles) can't trigger effects
-    if(source && !includes(WeaponClasses, source.itemClass)) return;
+    if(source && !includes(WeaponClasses.concat(AmmoClasses), source.itemClass)) return false;
 
     const applyEffect = Effects[effect.name];
-    if(!applyEffect) return;
+    if(!applyEffect) return false;
 
     const chance = effect.chance || 100;
-    if(+dice.roll('1d100') > chance) return;
+    if(+dice.roll('1d100') > chance) return false;
 
     const appEffect = new applyEffect(effect);
     if(!appEffect.cast) return;
@@ -823,6 +861,8 @@ export class CombatHelper {
     appEffect.potency = effect.potency || 0;
 
     appEffect.cast(attacker, defender, source);
+
+    return true;
   }
 
   static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass, isOverTime }: any = {}) {

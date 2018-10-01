@@ -139,6 +139,8 @@
       chance: 10
     - result: Tower Dagger Strong
       chance: 1
+    - result: Antanian Arrows
+      chance: 1
 
   copyDrops:
     - drop: 'gear.Armor'

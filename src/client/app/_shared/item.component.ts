@@ -51,7 +51,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
            [class.animate]="!colyseusGame.suppressAnimations" 
            [ngClass]="['cosmetic-bg-' + cosmeticName]" 
            *ngIf="item && cosmeticName"></div>
-      <span class="count" *ngIf="item && realCount > 0">{{ realCount }}x</span>
+      <span class="count" *ngIf="item && showCount && realCount > 0">{{ realCount }}x</span>
       <span class="ounces" *ngIf="item && showOunces && item.ounces > 0">{{ item.ounces }}oz</span>
       <span class="value" *ngIf="item && showValue">{{ overrideValue || (item._buybackValue || item.value) + 'g' }}</span>
       <span class="value" *ngIf="item && showOunces && item.succorInfo">{{ item.succorInfo.map }}</span>
@@ -80,6 +80,9 @@ export class ItemComponent {
 
   @Input()
   public showOunces = false;
+
+  @Input()
+  public showCount = true;
 
   @Input()
   public showBackground: boolean;
@@ -121,7 +124,7 @@ export class ItemComponent {
   }
 
   get realCount() {
-    return this.count;
+    return this.count || this.item.shots;
   }
 
   get imgUrl() {

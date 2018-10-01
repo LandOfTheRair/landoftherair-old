@@ -182,5 +182,9 @@
 
   rightHand: Tower Longbow Strong
 
+  leftHand:
+    - none
+    - Antanian Arrows
+
   gear:
     Armor: Antanian Tunic

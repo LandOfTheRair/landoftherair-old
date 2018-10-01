@@ -28,6 +28,10 @@ export const WeaponClasses = [
   'Longsword', 'Mace', 'Saucer', 'Shield', 'Shortbow', 'Shortsword', 'Spear', 'Staff', 'Totem', 'Wand'
 ];
 
+export const AmmoClasses = [
+  'Arrow'
+];
+
 export const SharpWeaponClasses = [
   'Axe', 'Broadsword', 'Crossbow', 'Dagger', 'Greataxe', 'Greatsword', 'Halberd', 'Longbow', 'Longsword', 'Shortbow', 'Shortsword', 'Spear'
 ];
@@ -88,7 +92,7 @@ FeetClasses.forEach(t => EquipHash[t] = 'Feet');
 HandsClasses.forEach(t => EquipHash[t] = 'Hands');
 EarClasses.forEach(t => EquipHash[t] = 'Ear');
 
-export const GivesBonusInHandItemClasses = WeaponClasses.concat(NeckClasses);
+export const GivesBonusInHandItemClasses = WeaponClasses.concat(NeckClasses).concat(AmmoClasses);
 
 export const EquippableItemClasses = HeadClasses
   .concat(NeckClasses)
@@ -102,7 +106,8 @@ export const EquippableItemClasses = HeadClasses
   .concat(EarClasses);
 
 export const EquippableItemClassesWithWeapons = EquippableItemClasses
-  .concat(WeaponClasses);
+  .concat(WeaponClasses)
+  .concat(AmmoClasses);
 
 export class ItemRequirements {
   level?: number;
@@ -190,7 +195,9 @@ export class Item {
   binds: boolean;
   tellsBind: boolean;
 
-  isHeavy: boolean;
+  isHeavy?: boolean;
+  canShoot?: boolean;
+  shots?: number;
 
   trait?: { name: string, level: number };
 
