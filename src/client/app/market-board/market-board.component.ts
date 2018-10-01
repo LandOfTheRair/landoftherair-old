@@ -273,6 +273,10 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
       }))
       .subscribe((data: any) => {
         this.isLoading = false;
+        if(!data) {
+          this.myPickups = [];
+          return;
+        }
 
         const allItems = [];
 
