@@ -646,6 +646,9 @@ export class ColyseusGameService {
   }
 
   public sendCommandString(str: string, target?: string) {
+    // strip the leading # if it exists
+    if(str.startsWith('#')) str = str.substring(1);
+
     str.split(';').forEach(cmd => {
       cmd = cmd.trim();
 
