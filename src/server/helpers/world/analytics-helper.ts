@@ -102,10 +102,10 @@ export class AnalyticsHelper {
   }
 
   public trackNPCChat(player: Player, npc: NPC, cmd: string) {
-    if(cmd === 'hello') return;
+    if(cmd === 'hello' || !player.isPlayer()) return;
 
     const displayCmd = cmd.split(' ')[0];
-    this.track(player, 'design', { event_id: `NPC:Talk:${npc.npcId}:${displayCmd}` });
+    this.track(player, 'design', { event_id: `NPC:Talk:${npc.npcId.split(' ').join('')}:${displayCmd}` });
   }
 
   public trackCurrencySink(type: 'Source'|'Sink', player: Player, currency: string, gold: number, reason: string) {
