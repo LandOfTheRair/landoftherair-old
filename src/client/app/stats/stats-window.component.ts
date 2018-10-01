@@ -12,10 +12,12 @@ export class StatsWindowComponent {
   public currentPlayer: Player = new Player({});
 
   get stats(): any {
+    if(!this.currentPlayer) return {};
     return (<any>this.currentPlayer).totalStats;
   }
 
   get baseStats(): any {
+    if(!this.currentPlayer) return {};
     return (<any>this.currentPlayer).stats;
   }
 
