@@ -1250,7 +1250,8 @@
         "traitName": "TripleShot",
         "desc": "Your MultiShot spell will shoot $1|3$ more shots.",
         "icon": "double-shot",
-        "cost": 3,
+        "capstone": true,
+        "cost": 10,
         "cluster": 4,
         "unlockedBy": [
             "MultiShot"

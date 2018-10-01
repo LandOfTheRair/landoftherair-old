@@ -453,7 +453,7 @@
     },
     "EnergyWave": {
         "name": "EnergyWave",
-        "desc": "Cast an area energy effect from your location (5x5). Cost: 45 MP",
+        "desc": "Cast an area energy effect from your location (3x3). Cost: 45 MP",
         "icon": "beams-aura",
         "iconColor": "#000080",
         "requireCharacterLevel": 10,
