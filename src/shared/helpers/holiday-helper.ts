@@ -16,7 +16,7 @@ const holidayChecker = {
 
   // takes place in October, all month
   Halloween: () => {
-    return new Date().getMonth() === 8;
+    return new Date().getMonth() === 9;
   }
 };
 
