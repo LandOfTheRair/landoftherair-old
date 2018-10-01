@@ -259,7 +259,9 @@
     - Tower Broadsword Strong
     - Tower Halberd Strong
 
-  leftHand: Tower Shield Strong
+  leftHand:
+    - Tower Shield Strong
+    - Antanian Arrows
 
   drops:
     - result: Warlord's Key

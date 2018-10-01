@@ -29,12 +29,7 @@ export class RiftSlash extends Skill {
   mpCost(user: Player) { return 10; }
 
   range(attacker: Character) {
-    const weapon = attacker.rightHand;
-    if(!weapon) return 5;
-
-    if(weapon.twoHanded && attacker.leftHand) return -1;
-
-    return 5;
+    return this.calcPlainAttackRange(attacker, 5);
   }
 
   execute(user: Player, { args }) {

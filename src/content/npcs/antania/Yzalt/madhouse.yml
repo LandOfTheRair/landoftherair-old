@@ -476,6 +476,10 @@
       chance: 15
     - result: Antanian Dualwielding Dagger
       chance: 1
+    - result: Antanian Poisoned Arrows
+      chance: 1
+    - result: Antanian Arrows
+      chance: 5
 
   gear:
     Armor:

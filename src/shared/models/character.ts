@@ -495,8 +495,11 @@ export class Character {
     // shields do. not. work. in the main hand
     if(isShield && this.rightHand === item && !this.getTraitLevel('Shieldbearer')) return false;
 
+    // ammo does not work unless you can actually shoot it
+    if(this.leftHand === item && item.shots && (!this.rightHand || !this.rightHand.canShoot)) return false;
+
     // weapons do not work in the left hand unless they're a shield or offhand item
-    if(this.leftHand === item && !item.offhand && !isShield && includes(WeaponClasses, item.itemClass)) return false;
+    if(this.leftHand === item && !item.offhand && !isShield && !item.shots && includes(WeaponClasses, item.itemClass)) return false;
 
     return this.checkCanEquipWithoutGearCheck(item)
         && item.isOwnedBy(this)

@@ -50,8 +50,8 @@ export const TrueSightMap = {
   79: 1086,
 
   // green stone horiz, green stone vert
-  94: 1093,
-  95: 1094,
+  94: 1094,
+  95: 1093,
 
   // town horiz, town vert
   111: 1100,

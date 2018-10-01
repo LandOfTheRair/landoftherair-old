@@ -29,12 +29,7 @@ export class Charge extends Skill {
   }
 
   range(attacker: Character) {
-    const weapon = attacker.rightHand;
-    if(!weapon) return 0;
-
-    if(weapon.twoHanded && attacker.leftHand) return -1;
-
-    return weapon.attackRange || 0;
+    return this.calcPlainAttackRange(attacker);
   }
 
   execute(user: Player, { args }) {

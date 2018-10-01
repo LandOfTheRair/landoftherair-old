@@ -59,6 +59,22 @@ export abstract class Skill extends Command {
     return true;
   }
 
+  calcPlainAttackRange(attacker: Character, defaultRange = 0): number {
+    const weapon = attacker.rightHand;
+    if(!weapon) return 0;
+
+    // if you have a twohanded item and a lefthand, normally you can't use it
+    if(weapon.twoHanded && attacker.leftHand) {
+
+      // but if you have a weapon that can shoot, and are holding ammo, we allow it to pass through
+      if(!weapon.canShoot || (weapon.canShoot && !attacker.leftHand.shots)) {
+        return -1;
+      }
+    }
+
+    return weapon.attackRange || defaultRange;
+  }
+
   isValidBuffTarget(user: Character, target: Character): boolean {
     return target.isPlayer() || !user.$$room.state.checkTargetForHostility(user, target);
   }

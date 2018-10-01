@@ -140,6 +140,10 @@
       chance: 30
     - result: Antanian Dualwielding Dagger
       chance: 1
+    - result: Antanian Arrows
+      chance: 10
+    - result: Antanian Poisoned Arrows
+      chance: 1
 
   gear:
     Armor:
@@ -670,6 +674,10 @@
       chance: 30
     - result: Antanian Dualwielding Dagger
       chance: 1
+    - result: Antanian Arrows
+      chance: 10
+    - result: Antanian Poisoned Arrows
+      chance: 1
 
   gear:
     Armor:
@@ -1079,6 +1087,10 @@
     max: 55000
 
   rightHand: Ranata Longbow
+
+  leftHand:
+    - none
+    - Antanian Darkness Arrows
 
   usableSkills:
     - Afflict
