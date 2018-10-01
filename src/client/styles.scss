@@ -243,3 +243,7 @@ walkthrough-container {
     left: 15% !important;
   }
 }
+
+bs-tooltip-container {
+  pointer-events: none;
+}
