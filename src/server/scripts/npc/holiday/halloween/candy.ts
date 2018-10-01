@@ -22,7 +22,7 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(!player.rightHand) return 'If you want tokens, bring me brains and candy.';
+      if(!player.rightHand) return 'If you want tokens, bring me brains and candy. I can also check out your SACK, if you have \'em there.';
 
       if(player.rightHand.name === 'Halloween Zombie Brain') {
         player.setRightHand(null);
@@ -42,6 +42,26 @@ export const responses = (npc: NPC) => {
         return 'Thanks for the candy, chum. Here\'s a token, don\'t spend it all in one place, ya hear?';
       }
 
-      return 'Sorry man, I only deal in brains and candy.'
+      return 'Sorry man, I only deal in brains and candy. Maybe you got a SACK full of \'em?';
+    });
+
+  npc.parser.addCommand('sack')
+    .set('syntax', ['sack'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+
+      const brainIndexes = npc.$$room.npcLoader.getItemsFromPlayerSackByName(player, 'Halloween Zombie Brain');
+      npc.$$room.npcLoader.takeItemsFromPlayerSack(player, brainIndexes);
+
+      const pileIndexes = npc.$$room.npcLoader.getItemsFromPlayerSackByName(player, 'Halloween Candy Pile');
+      npc.$$room.npcLoader.takeItemsFromPlayerSack(player, pileIndexes);
+
+      const candyIndexes = npc.$$room.npcLoader.getItemsFromPlayerSackByName(player, 'Halloween Candy -', true);
+      npc.$$room.npcLoader.takeItemsFromPlayerSack(player, candyIndexes);
+
+      const tokensGained = candyIndexes.length + (pileIndexes.length * 10) + (brainIndexes.length * 5);
+      player.earnCurrency(Currency.Halloween, tokensGained);
+
+      return `Woah, dude, thanks! Here's ${tokensGained} tokens.`;
     });
 };
