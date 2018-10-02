@@ -348,6 +348,10 @@ const DIVINER_TREE = {
 
   },
 
+  SearingPurification0: {
+
+  },
+
   // SKILLS
   Afflict: {
     unlocks: ['NecroticFocus0']
@@ -362,7 +366,7 @@ const DIVINER_TREE = {
   },
 
   HolyFire: {
-    unlocks: ['HolyIllumination0']
+    unlocks: ['HolyIllumination0', 'SearingPurification0']
   },
 
   Push: {

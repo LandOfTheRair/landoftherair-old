@@ -9,7 +9,7 @@ export class HolyIllumination extends Trait {
   static icon = 'fireflake';
 
   static upgrades = [
-    { cost: 20 }
+    { cost: 5 }
   ];
 
 }

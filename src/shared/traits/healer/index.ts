@@ -16,5 +16,6 @@ export * from './ImprovedAutoheal';
 export * from './NecroticFocus';
 export * from './PartyHealthRegeneration';
 export * from './RegenerativeRefrain';
+export * from './SearingPurification';
 export * from './StrongerSnare';
 export * from './TotemSpecialty';

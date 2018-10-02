@@ -1177,7 +1177,7 @@
         "traitName": "HolyIllumination",
         "desc": "Your HolyFire spell will cast light on the enemy it hits.",
         "icon": "fireflake",
-        "cost": 20,
+        "cost": 5,
         "cluster": 4,
         "unlockedBy": [
             "HolyFire"
@@ -1221,6 +1221,17 @@
         "cluster": 4,
         "unlockedBy": [
             "HolyAffliction1"
+        ]
+    },
+    "SearingPurification0": {
+        "name": "SearingPurification0",
+        "traitName": "SearingPurification",
+        "desc": "Your HolyFire spell will cause the target to lose 2% MP and take fire damage for 5 seconds.",
+        "icon": "fireflake",
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "HolyFire"
         ]
     },
     "Afflict": {
@@ -1271,7 +1282,8 @@
         "requireSkillLevel": 15,
         "cost": 10,
         "unlocks": [
-            "HolyIllumination0"
+            "HolyIllumination0",
+            "SearingPurification0"
         ],
         "cluster": 4,
         "unlockedBy": [
