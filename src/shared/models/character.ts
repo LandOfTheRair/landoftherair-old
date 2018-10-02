@@ -76,6 +76,7 @@ export const SkillClassNames = {
 
   Alchemy: 'Alchemy',
   Spellforging: 'Spellforging',
+  Runewriting: 'Runewriting',
   Metalworking: 'Metalworking',
   Survival: 'Survival'
 };

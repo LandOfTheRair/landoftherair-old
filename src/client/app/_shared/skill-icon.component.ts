@@ -20,6 +20,7 @@ const hash = {
 
   Alchemy: 'apothecary',
   Spellforging: 'spell-book',
+  Runewriting: 'rune-stone',
   Metalworking: 'ore',
   Survival: 'dig-dug',
 
@@ -45,6 +46,7 @@ const tooltips = {
 
   Alchemy: 'Alchemy',
   Spellforging: 'Spellforging',
+  Runewriting: 'Runewriting',
   Metalworking: 'Metalworking',
   Survival: 'Survival',
 
