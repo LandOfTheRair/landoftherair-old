@@ -23,7 +23,7 @@ export class RenegadeFeathers extends Quest {
   }
 
   public static isComplete(player: Player): boolean {
-    return player.rightHand.name === 'Renegade Feather';
+    return player.rightHand && player.rightHand.name === 'Renegade Feather';
   }
 
   public static incompleteText(player: Player): string {
