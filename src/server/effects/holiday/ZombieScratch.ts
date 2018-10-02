@@ -6,6 +6,8 @@ import { NPC } from '../../../shared/models/npc';
 
 export class ZombieScratch extends SpellEffect {
 
+  private casterUUID: string;
+
   iconData = {
     name: 'bleeding-wound',
     color: '#a00',
@@ -15,6 +17,7 @@ export class ZombieScratch extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.duration = 30;
     this.flagCasterName(caster.name);
+    this.casterUUID = caster.uuid;
     target.applyEffect(this);
     this.effectMessage(caster, `You zombie-scratched ${target.name}!`);
   }
@@ -26,6 +29,11 @@ export class ZombieScratch extends SpellEffect {
   effectEnd(char: Character) {
     char.sendClientMessageToRadius(`${char.name} undergoes a horrific transformation!`);
 
+    const scratcher = char.$$room.state.findNPC(this.casterUUID);
+    scratcher.removeAgro(char);
+
+    char.hp.toMaximum();
+    char.resetAgro(true);
     char.name = 'zombie';
     char.allegiance = 'Enemy';
     char.sprite = 1465;
@@ -36,7 +44,11 @@ export class ZombieScratch extends SpellEffect {
     (<NPC>char).usableSkills.push('ShredTenPercent', 'HalloweenZombieScratch');
 
     (<NPC>char).drops = (<NPC>char).drops || [];
-    (<NPC>char).drops.push({ result: 'Halloween Zombie Brain', chance: 1, maxChance: 2 });
+    (<NPC>char).drops.push(
+      { result: 'Halloween Zombie Brain', chance: 1, maxChance: 4 },
+      { result: 'Halloween Pumpkin Shield', chance: 1, maxChance: 15000 },
+      { result: 'Halloween Moon Boots', chance: 1, maxChance: 75000 }
+    );
 
     char.$$room.syncNPC(char);
   }

@@ -31,6 +31,12 @@
     - result: Halloween Zombie Brain
       chance: 1
       maxChance: 5
+    - result: Halloween Moon Boots
+      chance: 1
+      maxChance: 100000
+    - result: Halloween Pumpkin Shield
+      chance: 1
+      maxChance: 20000
 
   usableSkills:
     - ShredTenPercent

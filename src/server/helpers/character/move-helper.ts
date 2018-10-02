@@ -135,6 +135,7 @@ export class MoveHelper {
           return false;
         }
 
+        player.gainSkill(SkillClassNames.Thievery, skillRequired);
         player.sendClientMessage('You successfully picked the lock!');
         player.setRightHand(null);
 

@@ -403,7 +403,8 @@ export class CombatHelper {
       level: 1 + Math.floor(defender.level / Classes[defender.baseClass || 'Undecided'].combatLevelDivisor),
       realLevel: defender.level,
       riposteLevel: defender.getTraitLevel('Riposte'),
-      mitigation: defender.getTotalStat('mitigation')
+      mitigation: defender.getTotalStat('mitigation'),
+      dodgeBonus: Math.floor((100 - get(defender.gear, 'Armor.stats.mitigation', 0)) / 10)
     };
 
     const lostAtkCondition = 1 - (attacker.getTraitLevelAndUsageModifier('CarefulTouch'));
@@ -419,7 +420,7 @@ export class CombatHelper {
     const defenderDodgeRightSide = Math.floor(defenderScope.dex4 + defenderScope.agi + defenderScope.level + defenderScope.riposteLevel);
 
     const attackerDodgeRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`) + attackerScope.accuracy;
-    let defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`);
+    let defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`) + defenderScope.dodgeBonus;
 
     if(defender.isNaturalResource) defenderDodgeRoll = 0;
 
