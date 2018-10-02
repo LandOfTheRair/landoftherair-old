@@ -11,7 +11,7 @@ export class PotionToSack extends Command {
     if(this.isAccessingLocker(player)) return;
     if(!player.potionHand) return false;
 
-    if(!this.checkPlayerEmptyHand(player)) return false;
+    if(!this.checkPlayerEmptyHand(player)) return;
 
     if(!player.addItemToSack(player.potionHand)) return;
     player.setPotionHand(null);

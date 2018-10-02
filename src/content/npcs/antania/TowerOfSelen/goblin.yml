@@ -159,6 +159,8 @@
     - Steal
     - Darkness
     - DarkVision
+    - Identify
+    - Transmute
 
   sack:
     - result: Antanian FireMist Thief Trap
@@ -235,6 +237,9 @@
       chance: 5
     - result: Tower Shield Strong
       chance: 1
+
+  usableSkills:
+    - Boost
 
   copyDrops:
     - drop: 'gear.Armor'

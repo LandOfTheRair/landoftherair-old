@@ -1,0 +1,39 @@
+
+- name: Ink Vial
+  desc: "a small vial filled with ink"
+  sprite: 899
+  value: 500
+  effect:
+    name: Nourishment
+    tooltip: "-1 CON"
+    message: "Yuck! Ink is not the best choice to drink."
+    stats:
+      con: -1
+    duration: 30
+
+- name: Ink Vial (15oz)
+  desc: "a small vial filled with ink"
+  ounces: 15
+  sprite: 899
+  value: 10000
+  effect:
+    name: Nourishment
+    tooltip: "-1 CON"
+    message: "Yuck! Ink is not the best choice to drink."
+    stats:
+      con: -1
+    duration: 30
+
+- name: Ink Vial (50oz)
+  desc: "a small vial filled with ink"
+  ounces: 50
+  sprite: 899
+  value: 35000
+  effect:
+    name: Nourishment
+    tooltip: "-1 CON"
+    message: "Yuck! Ink is not the best choice to drink."
+    stats:
+      con: -1
+    duration: 30
+

@@ -922,7 +922,10 @@ export class GameWorld extends Room<GameState> {
     const removedItems = [];
 
     const removeItemFromCorpse = (item) => {
-      this.addItemToGround(corpse, item);
+      // if items are dropping from the corpse from someones hands, that means we have to do it at the players loc
+      const ref = corpse.$heldBy ? this.state.findPlayer(corpse.$heldBy) : corpse;
+
+      this.addItemToGround(ref, item);
       removedItems.push(item);
     };
 

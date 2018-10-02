@@ -16,6 +16,7 @@ export abstract class Command {
   format = '';
   requiresLearn: boolean;
   monsterSkill: boolean;
+  unableToLearnFromStealing: boolean;
 
   abstract execute(player: Player, args);
 

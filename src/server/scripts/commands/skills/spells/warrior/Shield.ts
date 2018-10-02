@@ -18,6 +18,10 @@ export class Shield extends Skill {
 
   public name = ['shield', 'art shield'];
 
+  canUse(user: Character) {
+    return !user.hasEffect('Shield');
+  }
+
   execute(user: Character, { effect }) {
     this.use(user, user, effect);
   }

@@ -133,7 +133,6 @@ export class ItemCosmetic {
 
 export class ItemEffect {
   name: string;
-  tier: string;
   chance?: number;
   potency: number;
   uses?: number;

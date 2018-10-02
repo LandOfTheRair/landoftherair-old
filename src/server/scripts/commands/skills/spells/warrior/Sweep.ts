@@ -16,6 +16,7 @@ export class Sweep extends Skill {
   };
 
   public name = ['sweep', 'art sweep'];
+  public unableToLearnFromStealing = true;
 
   execute(user: Character, { effect }) {
     this.use(user, user, effect);

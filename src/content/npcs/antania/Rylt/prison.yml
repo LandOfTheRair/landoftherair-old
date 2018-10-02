@@ -363,6 +363,8 @@
   usableSkills:
     - SetTrap
     - Steal
+    - Identify
+    - Transmute
 
   otherStats:
     stealth: 30

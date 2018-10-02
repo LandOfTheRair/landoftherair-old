@@ -105,6 +105,7 @@ export class Skills {
   spellforging = 0;
   metalworking = 0;
   survival = 0;
+  runewriting = 0;
 }
 
 export class Stats {

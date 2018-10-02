@@ -22,6 +22,7 @@ export class Thruststrike extends Skill {
 
   public name = ['thruststrike', 'art thruststrike'];
   public format = 'Target';
+  public unableToLearnFromStealing = true;
 
   canUse(user: Character, target: Character) {
     return this.range(user) + user.getTotalStat('move') >= user.distFrom(target);

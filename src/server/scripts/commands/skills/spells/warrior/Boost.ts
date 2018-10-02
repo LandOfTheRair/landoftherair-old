@@ -18,6 +18,10 @@ export class Boost extends Skill {
 
   public name = ['boost', 'art boost'];
 
+  canUse(user: Character) {
+    return !user.hasEffect('Boost');
+  }
+
   execute(user: Character, { effect }) {
     this.use(user, user, effect);
   }

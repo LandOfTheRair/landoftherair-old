@@ -167,6 +167,10 @@
       - result: Heniz Agility Sash
         chance: 1
 
+  usableSkills:
+    - Identify
+    - Transmute
+
   copyDrops:
     - drop: 'rightHand'
       chance: -1
@@ -217,6 +221,7 @@
     max: 2250
 
   usableSkills:
+    - Boost
     - Charge
 
   repMod:
@@ -641,6 +646,8 @@
     - Steal
     - DarkVision
     - EagleEye
+    - Identify
+    - Transmute
 
   skillOnKill: 15
 
@@ -818,6 +825,7 @@
     max: 4150
 
   usableSkills:
+    - Boost
     - Charge
 
   rightHand:

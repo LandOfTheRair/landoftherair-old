@@ -236,6 +236,9 @@
       - result: Steffen Wisdom Amulet
         chance: 1
 
+  usableSkills:
+    - Boost
+
   combatMessages:
     - "We will erase the infidels from our town!"
     - "No Heniz will leave here unscathed!"
@@ -421,6 +424,9 @@
         chance: 500
       - result: Steffen Wisdom Amulet
         chance: 1
+
+  usableSkills:
+    - Boost
 
   combatMessages:
     - "We will erase the infidels from our continent!"

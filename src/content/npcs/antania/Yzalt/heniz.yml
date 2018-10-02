@@ -222,6 +222,10 @@
       - result: Heniz Agility Sash
         chance: 1
 
+  usableSkills:
+    - Identify
+    - Transmute
+
   combatMessages:
     - "Remove yourselves from our home, Steffen fiends!"
     - "You can't take our home away from us, you Steffen monsters!"
@@ -418,6 +422,10 @@
         chance: 500
       - result: Heniz Agility Sash
         chance: 1
+
+  usableSkills:
+    - Identify
+    - Transmute
 
   combatMessages:
     - "Remove yourselves from our land, Steffen fiends!"

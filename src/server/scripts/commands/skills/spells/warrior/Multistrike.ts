@@ -16,6 +16,7 @@ export class Multistrike extends Skill {
   };
 
   public name = ['multistrike', 'art multistrike'];
+  public unableToLearnFromStealing = true;
 
   execute(user: Character, { effect }) {
 

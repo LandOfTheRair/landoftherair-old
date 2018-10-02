@@ -74,6 +74,8 @@
   usableSkills:
     - Thruststrike
     - Blindstrike
+    - Boost
+    - Shield
 
   gold:
     min: 1550
@@ -382,6 +384,8 @@
     - ShadowClones
     - Darkness
     - DarkVision
+    - Identify
+    - Transmute
 
   sack:
     - result: Risan FireMist Thief Trap

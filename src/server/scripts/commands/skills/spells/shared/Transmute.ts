@@ -18,6 +18,10 @@ export class Transmute extends Skill {
 
   mpCost() { return 15; }
 
+  canUse() {
+    return false;
+  }
+
   execute(user: Character, { args, effect }) {
     let target = this.getTarget(user, args, true, true);
     if(!target) target = user;

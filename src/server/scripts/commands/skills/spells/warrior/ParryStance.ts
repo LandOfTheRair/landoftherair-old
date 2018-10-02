@@ -23,6 +23,7 @@ export class ParryStance extends Skill {
   public targetsFriendly = true;
 
   public name = ['parrystance', 'stance parrystance', 'stance parry'];
+  public unableToLearnFromStealing = true;
 
   execute(user: Character) {
 

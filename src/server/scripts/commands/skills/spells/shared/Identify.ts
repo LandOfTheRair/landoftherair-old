@@ -18,6 +18,10 @@ export class Identify extends Skill {
 
   mpCost() { return 15; }
 
+  canUse() {
+    return false;
+  }
+
   execute(user: Character, { effect }) {
     if(!user.rightHand) return user.sendClientMessage('You need to have something in your right hand to identify it.');
 

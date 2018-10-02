@@ -23,6 +23,7 @@ export class Rapidpunch extends Skill {
 
   public name = ['rapidpunch', 'art rapidpunch'];
   public format = 'Target';
+  public unableToLearnFromStealing = true;
 
   execute(user: Player, { args }) {
     if(!args) return false;

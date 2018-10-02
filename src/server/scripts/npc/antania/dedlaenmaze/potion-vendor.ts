@@ -12,6 +12,7 @@ export const setup = async (npc: NPC) => {
     'Instant Heal Bottle (5oz)',
     'Scribe Scroll',
     'Ink Vial',
+    'Ink Vial (15oz)',
     'Antanian Slice of Bread',
     'Antanian Loaf of Bread',
     'Antanian Bottle of Water',

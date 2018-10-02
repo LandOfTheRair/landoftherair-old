@@ -313,6 +313,8 @@
     - Poison
     - Steal
     - Hide
+    - Identify
+    - Transmute
 
   gold:
     min: 350
@@ -418,6 +420,8 @@
     - Disease
     - DarkVision
     - Hide
+    - Identify
+    - Transmute
 
   gold:
     min: 1350

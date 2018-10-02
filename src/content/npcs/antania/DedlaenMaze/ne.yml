@@ -201,6 +201,8 @@
     - Steal
     - Darkness
     - DarkVision
+    - Identify
+    - Transmute
 
   sack:
     - result: Antanian FireMist Thief Trap
@@ -299,6 +301,9 @@
       chance: 1
       maxChance: 3500
 
+  usableSkills:
+    - Boost
+
   copyDrops:
     - drop: 'gear.Armor'
       chance: -1
@@ -384,6 +389,9 @@
     - result: Maze Thief Earring
       chance: 1
       maxChance: 3500
+
+  usableSkills:
+    - Boost
 
   copyDrops:
     - drop: 'gear.Armor'

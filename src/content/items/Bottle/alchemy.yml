@@ -1,8 +1,4 @@
 
-- name: Ink Vial
-  desc: "a small vial filled with ink"
-  sprite: 899
-  value: 500
 
 - name: Antanian Bottle of Water
   sprite: 38

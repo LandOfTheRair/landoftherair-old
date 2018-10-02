@@ -17,6 +17,7 @@ export class Blindstrike extends Skill {
   };
 
   public name = ['blindstrike', 'art blindstrike'];
+  public unableToLearnFromStealing = true;
 
   canUse(char: Character) {
     return !CharacterHelper.isAbleToSee(char);

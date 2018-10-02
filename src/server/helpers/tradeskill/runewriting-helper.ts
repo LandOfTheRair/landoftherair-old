@@ -1,6 +1,11 @@
 
+import { includes, sample } from 'lodash';
+
 import { Player } from '../../../shared/models/player';
 import { SkillClassNames } from '../../../shared/models/character';
+import { Skill } from '../../base/Skill';
+import { CommandExecutor } from '../command-executor';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class RunewritingHelper {
 
@@ -8,32 +13,61 @@ export class RunewritingHelper {
     return player.calcSkillLevel(SkillClassNames.Restoration) >= 1;
   }
 
-  static doRunewrite(player: Player): boolean {
-    if(!player.potionHand || !player.rightHand || !player.leftHand) return false;
+  static doRunewrite(player: Player): void {
 
-    // hardcoded ink vial for now, maybe use more ink vials later?
-    if(player.potionHand.name !== 'Ink Vial') return false;
+    const ink = player.potionHand;
+    const scroll = player.rightHand;
+    const corpse = player.leftHand;
 
-    // must be an empty scribe scroll
-    if(player.rightHand.name !== 'Scribe Scroll') return false;
-    if(player.rightHand.desc !== 'an empty scroll') return false;
+    const npcRef = player.$$room.state.findNPC((<any>corpse).npcUUID);
 
-    // must be a corpse, but not a player corpse
-    if(player.leftHand.itemClass !== 'Corpse') return false;
-    if(player.leftHand.$$isPlayerCorpse) return false;
+    const possibleSkills = (npcRef.usableSkills || []).filter(skillName => {
+      const skillRef: Skill = CommandExecutor.getSkillRef(skillName);
+      if(!skillRef) return false;
+      if(skillRef.monsterSkill || !skillRef.requiresLearn || skillRef.unableToLearnFromStealing) return false;
 
-    // TODO
-    // consume an ounce of ink
-    // pick a spell known by the target (check usableSkills, but ignore monster skills)
-    // check if there is spell "the blood did not impart any knowledge" if not
-    // write the desc of the scroll
-    // write the effect of the scroll
-    // effect potency is based on potency of writer
-    // effect chance is based on the level of the corpse compared to the casters level
-    //   50% chance when corpse level == player level, down to 10% if you're 10 levels lower, and up to 100% if you're 10 levels higher 
-    // elite creatures have a potency bonus of 3, and a skill gain bonus of *2
-    // Dangerous creatures have a potency bonus of 5, and a skill gain bonus of *3
-    // skill gain is based on the level of the corpse
-    // the corpse should be consumed no matter what, dropped to the ground and searched "the corpse crumbled to dust"
+      return true;
+    });
+
+    const chosenSkill = sample(possibleSkills);
+
+    if(!chosenSkill) {
+      player.sendClientMessage('The corpse blood imparts no knowledge.');
+      player.gainSkill(SkillClassNames.Runewriting, Math.floor(npcRef.level / 2));
+      player.$$room.dropCorpseItems(corpse);
+      player.setLeftHand(null);
+      return;
+    }
+
+    const failChance = (5 + npcRef.level - player.level) * 5;
+
+    if(failChance > 0 && RollerHelper.XInOneHundred(failChance)) {
+      player.sendClientMessage('The corpse blood is too difficult to inscribe.');
+      player.gainSkill(SkillClassNames.Runewriting, Math.floor(npcRef.level / 3));
+      player.$$room.dropCorpseItems(corpse);
+      player.setLeftHand(null);
+      return;
+    }
+
+    let skillGain = npcRef.level + 10;
+    if(includes(npcRef.name, 'elite')) skillGain *= 2;
+    player.gainSkill(SkillClassNames.Runewriting, skillGain);
+
+    ink.ounces--;
+    if(ink.ounces <= 0) player.setPotionHand(null);
+
+    scroll.desc = `a rune scroll inscribed with the spell "${chosenSkill}"`;
+    scroll.effect = {
+      name: chosenSkill,
+      potency: npcRef.level,
+      uses: player.calcSkillLevel(SkillClassNames.Runewriting) + 1
+    };
+
+    scroll.cosmetic = { name: 'Ancientify', isPermanent: true };
+
+    player.$$room.dropCorpseItems(corpse);
+    player.setLeftHand(null);
+
+    player.sendClientMessage(`The corpse imparts the knowledge of the spell "${chosenSkill}"!`);
   }
 }
