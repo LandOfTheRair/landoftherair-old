@@ -56,6 +56,7 @@ export class RunewritingHelper {
     ink.ounces--;
     if(ink.ounces <= 0) player.setPotionHand(null);
 
+    scroll.name = 'Runewritten Scroll';
     scroll.desc = `a rune scroll inscribed with the spell "${chosenSkill}"`;
     scroll.effect = {
       name: chosenSkill,
