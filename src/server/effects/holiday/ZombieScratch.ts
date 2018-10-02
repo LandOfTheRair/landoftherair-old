@@ -27,10 +27,12 @@ export class ZombieScratch extends SpellEffect {
   }
 
   effectEnd(char: Character) {
+    if(char.hp.atMinimum()) return;
+
     char.sendClientMessageToRadius(`${char.name} undergoes a horrific transformation!`);
 
     const scratcher = char.$$room.state.findNPC(this.casterUUID);
-    scratcher.removeAgro(char);
+    if(char) scratcher.removeAgro(char);
 
     char.hp.toMaximum();
     char.resetAgro(true);
