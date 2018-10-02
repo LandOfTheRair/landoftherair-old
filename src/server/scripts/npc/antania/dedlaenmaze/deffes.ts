@@ -36,6 +36,7 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['upgrade'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(player.level > 25) return 'Hey! I think you might be a bit too strong for this enchantment.';
 
       if(npc.$$room.npcLoader.checkPlayerHeldItem(player, TITANIUM, 'left')) {
 
