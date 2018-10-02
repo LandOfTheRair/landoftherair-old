@@ -44,7 +44,11 @@ export class ZombieScratch extends SpellEffect {
     (<NPC>char).usableSkills.push('ShredTenPercent', 'HalloweenZombieScratch');
 
     (<NPC>char).drops = (<NPC>char).drops || [];
-    (<NPC>char).drops.push({ result: 'Halloween Zombie Brain', chance: 1, maxChance: 2 });
+    (<NPC>char).drops.push(
+      { result: 'Halloween Zombie Brain', chance: 1, maxChance: 4 },
+      { result: 'Halloween Pumpkin Shield', chance: 1, maxChance: 15000 },
+      { result: 'Halloween Moon Boots', chance: 1, maxChance: 75000 }
+    );
 
     char.$$room.syncNPC(char);
   }

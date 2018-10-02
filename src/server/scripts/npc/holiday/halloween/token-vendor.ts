@@ -13,7 +13,8 @@ export const setup = async (npc: NPC) => {
     { name: 'Rune Scroll - Slow Digestion IV' },
     { name: 'Rune Scroll - Slow Digestion V' },
     { name: 'Halloween Gem' },
-    { name: 'Halloween Pumpkin Shield' }
+    { name: 'Halloween Pumpkin Shield' },
+    { name: 'Halloween Moon Boots' }
   ];
 
   npc.$$vendorCurrency = Currency.Halloween;
