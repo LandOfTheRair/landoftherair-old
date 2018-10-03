@@ -411,7 +411,7 @@ export class Item {
   use(char: Character, fromApply = false): boolean {
     if(fromApply) return true;
     if(!this.canUse(char)) return false;
-    if(this.effect && (isNumber(this.ounces) ? this.ounces > 0 : true)) {
+    if(this.effect && (isNumber(this.ounces) ? this.ounces !== 0 : true)) {
       // swallow effects that don't exist
       if(!Effects[this.effect.name]) return true;
       const eff = new Effects[this.effect.name](this.effect);

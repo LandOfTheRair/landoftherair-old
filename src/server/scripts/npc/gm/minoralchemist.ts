@@ -16,7 +16,8 @@ export const setup = async (npc: NPC) => {
     'Antanian Charisma Potion',
     'Antanian Luck Potion',
     'Antanian Health Potion',
-    'Antanian Magic Potion'
+    'Antanian Magic Potion',
+    'Endless Ink Potion'
   ];
 
   npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);
