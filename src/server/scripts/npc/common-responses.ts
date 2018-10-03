@@ -770,6 +770,7 @@ export const SpellforgingResponses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(!SpellforgingHelper.canSpellforge(player)) return 'You are not skilled enough to Spellforge.';
       npc.$$room.showSpellforgingWindow(player, npc);
+      return 'Welcome back, Mage.';
     });
 
   npc.parser.addCommand('assess')
