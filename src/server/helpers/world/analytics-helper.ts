@@ -47,7 +47,9 @@ export class AnalyticsHelper {
   stopGameSession(player: Player) {
     if(!this.ga) return;
 
-    this.ga.sessionEnd(this.userString(player));
+    try {
+      this.ga.sessionEnd(this.userString(player));
+    } catch(e) {}
   }
 
   private track(player: Player, type: 'design'|'resource', args: any) {
