@@ -51,7 +51,7 @@ export class ClientGameState {
 
   setMap$ = new BehaviorSubject({});
 
-  public hasLoadedMeInNewMap: boolean;
+  public hasLoadedInGame: boolean;
 
   get players() {
     return values(this.playerHash);

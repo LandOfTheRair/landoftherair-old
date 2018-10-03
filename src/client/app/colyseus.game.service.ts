@@ -275,11 +275,11 @@ export class ColyseusGameService {
     this.worldRoom.onJoin.add(() => {
       this.inGame$.next(true);
       this._inGame = true;
-      this.clientGameState.hasLoadedMeInNewMap = false;
+      this.clientGameState.hasLoadedInGame = false;
     });
 
     this.worldRoom.onLeave.add(() => {
-      this.clientGameState.hasLoadedMeInNewMap = false;
+      this.clientGameState.hasLoadedInGame = false;
       this.clientGameState.removeAllPlayers();
       if(this.changingMap) return;
 

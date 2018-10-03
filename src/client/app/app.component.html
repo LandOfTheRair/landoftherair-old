@@ -63,7 +63,7 @@
   <app-window *ngIf="inGame"
               windowName="map"
               (active)="setActiveWindow($event)"
-              [canClose]="true"
+              [canClose]="colyseus.game.clientGameState.hasLoadedInGame"
               (close)="colyseus.game.quit()"
               [headTemplate]="mapHead"
               [bodyTemplate]="mapBody"

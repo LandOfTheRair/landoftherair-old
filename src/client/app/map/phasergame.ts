@@ -854,6 +854,7 @@ export class Game {
     this.g.add.plugin(new TiledPlugin(this.g, this.g.stage));
 
     this.isLoaded = false;
+    this.clientGameState.hasLoadedInGame = false;
     const loadMap = this.clientGameState.map;
 
     // remove unused tileset to prevent warnings since things on a layer that uses this tileset are handled manually
@@ -980,6 +981,7 @@ export class Game {
 
       this.g.camera.flash('#000', 1);
       this.isLoaded = true;
+      this.clientGameState.hasLoadedInGame = true;
     }
 
     if(this.clientGameState.updates.openDoors.length > 0) {
