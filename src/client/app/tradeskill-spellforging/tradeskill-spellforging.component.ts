@@ -47,6 +47,14 @@ export class TradeskillSpellforgingComponent {
     return item.trait.name !== reagent.trait.name || item.trait.level !== reagent.trait.level;
   }
 
+  get hasEffectWarning(): boolean {
+    if(!this.showInfo) return false;
+    const item = this.player.tradeSkillContainers.spellforging.modifyItem;
+    const reagent = this.player.tradeSkillContainers.spellforging.reagent;
+    if(!item.effect || !reagent.effect) return false;
+    return item.effect.name !== reagent.effect.name || item.effect.potency !== reagent.effect.potency;
+  }
+
   get successChance(): number {
     return SpellforgingHelper.successPercent(this.player);
   }

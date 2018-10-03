@@ -1,6 +1,6 @@
 
 import { Player } from '../../../shared/models/player';
-import { Item, EquippableItemClassesWithWeapons } from '../../../shared/models/item';
+import { Item, EquippableItemClassesWithWeapons, AmmoClasses } from '../../../shared/models/item';
 
 import { includes, random, clone, clamp, capitalize } from 'lodash';
 import { SkillClassNames } from '../../../shared/models/character';
@@ -70,6 +70,15 @@ export class SpellforgingHelper {
       return Math.floor((forgeVal + conjVal) / 2);
     }
 
+    // only works for ammo
+    if(includes(reagent.name, 'Runewritten Scroll')) {
+      if(!includes(AmmoClasses, item.itemClass)) return 0;
+
+      const level = (reagent.effect.potency / 4);
+
+      return clamp((forgeSkill - level) * 15, 0, 100);
+    }
+
     if(reagent.itemClass === 'Scroll') {
       const level = reagent.trait.level;
       const requiredSkillLevel = (level - 1) * 5;
@@ -112,6 +121,15 @@ export class SpellforgingHelper {
       container.result = item;
       container.clearReagents();
       player.gainSkill(SkillClassNames.Spellforging, item.enchantLevel * 25);
+    }
+
+    if(includes(reagent.name, 'Runewritten Scroll')) {
+      item.effect = clone(reagent.effect);
+      item.effect.chance = Math.min(100, player.calcSkillLevel(SkillClassNames.Spellforging) * 2);
+      container.result = item;
+      container.clearReagents();
+      player.gainSkill(SkillClassNames.Spellforging, item.effect.potency * 10);
+      return true;
     }
 
     if(reagent.itemClass === 'Scroll') {

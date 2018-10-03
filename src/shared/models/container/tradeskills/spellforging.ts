@@ -55,7 +55,10 @@ export class SpellforgingContainer extends Container {
   canAccept(item, index?: number) {
     if(index < 0) return false;
     if(index >= 2) return false;
-    if(index === 1 && !includes(item.name, 'Rune Scroll') && !includes(item.name, 'Enchanting Brick')) return false;
+    if(index === 1
+    && !includes(item.name, 'Rune Scroll')
+    && !includes(item.name, 'Enchanting Brick')
+    && !includes(item.name, 'Runewritten Scroll')) return false;
     return super.canAccept(item);
   }
 }
