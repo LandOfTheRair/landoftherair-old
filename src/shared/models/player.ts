@@ -93,6 +93,7 @@ export class Player extends Character {
 
   public $$hungerTicks: number;
   public $$isAccessingLocker: boolean;
+  public $$ready: boolean;
 
   public tradeSkillContainers: {
     alchemy?: AlchemyContainer,

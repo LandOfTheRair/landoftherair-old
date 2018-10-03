@@ -314,17 +314,6 @@ export class GameWorld extends Room<GameState> {
       return;
     }
 
-    this.setPlayerXY(player, player.x, player.y);
-
-    // 0,0 move to get info on the current tile
-    this.clock.setTimeout(() => {
-      MoveHelper.move(player, { room: this, gameState: this.state, x: 0, y: 0 });
-    }, 0);
-
-    this.send(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
-    this.send(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
-    this.updateSkillTree(player);
-
     this.analyticsHelper.startGameSession(player, options.userAgent);
   }
 
@@ -351,10 +340,15 @@ export class GameWorld extends Room<GameState> {
   }
 
   onMessage(client, data) {
-    if(!data.command) return;
     const player = this.state.findPlayerByClientId(client.id);
 
-    if(!player) return;
+    // intercept ready flag and send data to player
+    if(data.ready) {
+      this.flagClientReady(client, player);
+      return;
+    }
+
+    if(!data.command || !player || !player.$$ready) return;
 
     data.gameState = this.state;
     data.room = this;
@@ -364,6 +358,21 @@ export class GameWorld extends Room<GameState> {
     data.args = (data.args || '').trim().split('  ').join(' ');
 
     CommandExecutor.queueCommand(player, data.command, data);
+  }
+
+  public flagClientReady(client, player) {
+    player.$$ready = true;
+
+    this.setPlayerXY(player, player.x, player.y);
+
+    // 0,0 move to get info on the current tile
+    this.clock.setTimeout(() => {
+      MoveHelper.move(player, { room: this, gameState: this.state, x: 0, y: 0 });
+    }, 0);
+
+    this.send(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
+    this.send(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
+    this.updateSkillTree(player);
   }
 
   public async kickOut(player: Player) {

@@ -610,6 +610,10 @@ export class ColyseusGameService {
     this.worldRoom.send(data);
   }
 
+  public sendReadyFlag() {
+    this.worldRoom.send({ ready: true });
+  }
+
   public sendRawCommand(command: string, args: string) {
     this.sendAction({ command, args });
   }

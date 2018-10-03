@@ -982,6 +982,7 @@ export class Game {
       this.g.camera.flash('#000', 1);
       this.isLoaded = true;
       this.clientGameState.hasLoadedInGame = true;
+      this.colyseus.game.sendReadyFlag();
     }
 
     if(this.clientGameState.updates.openDoors.length > 0) {
