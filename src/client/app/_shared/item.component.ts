@@ -34,7 +34,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          (mouseenter)="determineScopes()"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
          triggers="hover:mouseleave"
-         placement="auto"
+         [placement]="tooltipPlacement"
          container="body"
          delay="750"
          [isDisabled]="!item || !showDesc"
@@ -104,6 +104,9 @@ export class ItemComponent {
 
   @Input()
   public overrideValue: number|string;
+
+  @Input()
+  public tooltipPlacement = 'auto';
 
   @Input()
   public size: 'xsmall' | 'small' | 'normal' = 'normal';
