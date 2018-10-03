@@ -191,6 +191,7 @@ export const SmithResponses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(!MetalworkingHelper.canMetalwork(player)) return 'Only Warriors can engage in Metalworking!';
       npc.$$room.showMetalworkingWindow(player, npc);
+      return 'Welcome back, Warrior.';
     });
 
   npc.parser.addCommand('assess')
@@ -393,6 +394,7 @@ export const AlchemistResponses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       npc.$$room.showAlchemyWindow(player, npc);
+      return 'Welcome back, Alchemist.';
     });
 
   npc.parser.addCommand('learn')
