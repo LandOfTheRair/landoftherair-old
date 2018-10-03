@@ -5,7 +5,7 @@ import { CommandExecutor } from '../../../helpers/command-executor';
 
 export class Wield extends Command {
 
-  public name = '~wield';
+  public name = ['~wield', 'wield'];
   public format = 'Slot|ItemType';
 
   execute(player: Player, { args, room, gameState }) {

@@ -7,7 +7,7 @@ import { Player } from '../../../../shared/models/player';
 
 export class Sheathe extends Skill {
 
-  public name = '~sheathe';
+  public name = ['~sheathe', 'sheathe'];
   public format = 'Hand';
 
   requiresLearn = false;
