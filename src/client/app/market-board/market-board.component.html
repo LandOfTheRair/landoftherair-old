@@ -69,7 +69,12 @@
           <div class="col m-0 p-0">
 
             <div class="item-slot item-background">
-              <app-item [item]="itemListing.itemInfo" [showDesc]="false" [tooltip]="requirementTooltipFor(itemListing)" placement="right"></app-item>
+              <app-item [item]="itemListing.itemInfo"
+                        [showDesc]="false"
+                        [showCount]="true"
+                        [count]="itemListing.itemInfo.itemOverride ? itemListing.itemInfo.itemOverride.shots : 0"
+                        [tooltip]="requirementTooltipFor(itemListing)"
+                        placement="right"></app-item>
             </div>
           </div>
 
