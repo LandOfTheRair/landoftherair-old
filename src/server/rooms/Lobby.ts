@@ -399,12 +399,15 @@ export class Lobby extends Room<LobbyState> {
 
     if(account && account.inGame >= 0) {
 
-      this.send(client, {
-        error: 'already_in_game',
-        prettyErrorName: 'Already In Game',
-        prettyErrorDesc: 'You are already in game. If you actually are not in game, give this a few seconds or refresh the page.'
-      });
-      return;
+      const isAnyoneInGame = await AccountHelper.doesAccountActuallyHaveAnyPlayersInGame(account);
+      if(isAnyoneInGame) {
+        this.send(client, {
+          error: 'already_in_game',
+          prettyErrorName: 'Already In Game',
+          prettyErrorDesc: 'You are already in game. If you actually are not in game, give this a few seconds or refresh the page.'
+        });
+        return;
+      }
     }
 
     const character = await this.getCharacter(client.username, charSlot);

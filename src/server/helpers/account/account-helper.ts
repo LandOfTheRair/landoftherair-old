@@ -27,4 +27,8 @@ export class AccountHelper {
   static async doesDiscordTagExist(discordTag: string): Promise<boolean> {
     return DB.$accounts.findOne({ discordTag });
   }
+
+  static async doesAccountActuallyHaveAnyPlayersInGame(account: Account): Promise<boolean> {
+    return (await DB.$players.count({ username: account.username, inGame: true }) > 0);
+  }
 }
