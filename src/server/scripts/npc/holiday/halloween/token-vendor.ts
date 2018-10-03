@@ -17,8 +17,13 @@ export const setup = async (npc: NPC) => {
     { name: 'Halloween Moon Boots' }
   ];
 
+  const dailyVendorItems = [
+    'Antanian Strength Potion'
+  ];
+
   npc.$$vendorCurrency = Currency.Halloween;
-  npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);
+  await npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);
+  await npc.$$room.npcLoader.loadDailyVendorItems(npc, dailyVendorItems);
 
   npc.rightHand = await npc.$$room.npcLoader.loadItem('Halloween Gem');
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Risan Breastplate');

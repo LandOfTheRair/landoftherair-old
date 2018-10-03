@@ -33,8 +33,8 @@ export class ShopComponent {
     const item = this.colyseusGame.showShop.vendorItems[slot];
     if(!item) return null;
 
-    if(this.colyseusGame.showShop.vendorCurrency) return `${item.value}t`;
     if(item.daily && !this.colyseusGame.character.canBuyDailyItem(item)) return 'SOLD OUT';
+    if(this.colyseusGame.showShop.vendorCurrency) return `${item.value}t`;
 
     return null;
   }
