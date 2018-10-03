@@ -149,8 +149,8 @@
 - name: Insane Ranata Amulet
   quality: 5
   stats:
-    int: 2
-    wis: 2
+    int: 3
+    wis: 3
     defense: 4
     mp: 100
   binds: true
@@ -164,4 +164,4 @@
     level: 5
 
   requirements:
-    level: 15
+    level: 30

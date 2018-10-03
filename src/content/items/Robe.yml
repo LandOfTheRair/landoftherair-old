@@ -132,8 +132,8 @@
   stats:
     armorClass: 3
     defense: 4
+    iceResist: 100
     fireResist: 100
-    waterResist: 100
     energyResist: 100
     necroticResist: 100
     hpregen: 2
@@ -250,14 +250,17 @@
 - name: Insane Ranata Robe
   quality: 5
   stats:
+    agi: 2
     offense: 5
     defense: 5
     hpregen: 10
     mpregen: 10
+    iceResist: 200
+    fireResist: 200
 
   desc: "a tattered purple cloak, the hue of which is the result of a tainted ether experiment"
   value: 9500
   sprite: 98
 
   requirements:
-    level: 23
+    level: 30
