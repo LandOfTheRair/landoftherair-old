@@ -386,7 +386,7 @@ export class ColyseusGameService {
         titleText: other.prettyErrorName,
         text: other.prettyErrorDesc,
         type: 'error'
-      });
+      }).catch(() => {});
       return;
     }
 

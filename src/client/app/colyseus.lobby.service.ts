@@ -147,7 +147,7 @@ export class ColyseusLobbyService {
           localStorage.removeItem('user_name');
           this.getUserName(true);
         }
-      });
+      }).catch(() => {});
 
       return;
     }
@@ -336,7 +336,7 @@ export class ColyseusLobbyService {
       titleText: `GM Alert from ${sender}`,
       text: message,
       type: 'info'
-    });
+    }).catch(() => {});
   }
 
   public changeStatus(status) {
