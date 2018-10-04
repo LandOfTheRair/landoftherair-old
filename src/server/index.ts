@@ -8,7 +8,7 @@ import { Logger } from './logger';
 
 import { includes } from 'lodash';
 
-import { Server, MemsharedPresence } from 'colyseus';
+import { Server, MemsharedPresence, RedisPresence } from 'colyseus';
 
 import * as Rooms from './rooms';
 
@@ -21,6 +21,8 @@ if(!process.env.AUTH0_SECRET) {
   Logger.log('No env.AUTH0_SECRET. Set one.');
   process.exit(0);
 }
+
+const USE_REDIS_INSTEAD = process.env.USE_REDIS_INSTEAD;
 
 process.on('unhandledRejection', e => {
   Logger.error(e);
@@ -81,8 +83,10 @@ DB.init()
         const api = new GameAPI();
         const server = http.createServer(api.expressApp);
 
+        const presence = USE_REDIS_INSTEAD ? new RedisPresence({ url: process.env.REDIS_URL }) : new MemsharedPresence();
+
         const gameServer = new Server({
-          presence: new MemsharedPresence(),
+          presence,
           server
         });
 
