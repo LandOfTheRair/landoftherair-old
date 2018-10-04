@@ -107,7 +107,7 @@ export class AnalyticsHelper {
     if(cmd === 'hello' || !player.isPlayer()) return;
 
     const displayCmd = cmd.split(' ')[0];
-    this.track(player, 'design', { event_id: `NPC:Talk:${npc.npcId.split(' ').join('')}:${displayCmd}` });
+    this.track(player, 'design', { event_id: `NPC:Talk:${npc.npcId.split(' ').join('')}:${displayCmd.split(' ').join('')}` });
   }
 
   public trackCurrencySink(type: 'Source'|'Sink', player: Player, currency: string, gold: number, reason: string) {
