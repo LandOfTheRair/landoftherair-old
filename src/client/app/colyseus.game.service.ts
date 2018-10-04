@@ -14,6 +14,7 @@ import { Character } from '../../shared/models/character';
 import { NPC } from '../../shared/models/npc';
 import { VALID_TRADESKILLS } from '../../shared/helpers/tradeskill-helper';
 import { SkillTree } from '../../shared/models/skill-tree';
+import { AlertService } from './alert.service';
 
 @Injectable()
 export class ColyseusGameService {
@@ -84,7 +85,8 @@ export class ColyseusGameService {
   public suppressAnimations: boolean;
 
   constructor(
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private alert: AlertService
   ) {
 
     this.overrideNoBgm = !this.localStorage.retrieve('playBackgroundMusic');
@@ -142,7 +144,11 @@ export class ColyseusGameService {
     this.setCharacter(character);
 
     if(!this.clientGameState.currentPlayer) {
-      alert('Could not get your character (?) please try again! You might have to refresh the page!');
+      this.alert.alert({
+        title: 'Init Error',
+        text: 'Your character was not sent by the server in an adequate amount of time. If you see this error, shout out in lobby.',
+        type: 'error'
+      });
       return;
     }
 
@@ -163,7 +169,12 @@ export class ColyseusGameService {
     this.unshowWindows();
 
     if(!this.character) {
-      alert('For some reason your character was not available here! please alert seiyria and refresh the page to try again. thanks!');
+
+      this.alert.alert({
+        title: 'Init Error',
+        text: 'Your character is not available when doing init game. If you see this error, shout out in lobby.',
+        type: 'error'
+      });
       return;
     }
 
@@ -289,7 +300,12 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onError.add((e) => {
-      alert('WORLD ROOM ERROR: ' + JSON.stringify(e));
+      this.alert.alert({
+        title: 'World Room Error',
+        text: JSON.stringify(e),
+        type: 'error'
+      });
+
       console.error(e);
       this.clientGameState.hasLoadedInGame = false;
       this.inGame$.next(false);
@@ -383,11 +399,7 @@ export class ColyseusGameService {
   private interceptGameCommand({ action, error, ...other }) {
     console.info('Colyseus:Game', action, error, other);
     if(error) {
-      (<any>swal)({
-        titleText: other.prettyErrorName,
-        text: other.prettyErrorDesc,
-        type: 'error'
-      }).catch(() => {});
+      this.alert.alert({ title: other.prettyErrorName, text: other.prettyErrorDesc, type: 'error' });
       return;
     }
 

@@ -9,6 +9,7 @@ import { Account, SilverPurchase } from '../../shared/models/account';
 
 import { Subject, BehaviorSubject, interval } from 'rxjs';
 import { merge } from 'lodash';
+import { AlertService } from './alert.service';
 
 @Injectable()
 export class ColyseusLobbyService {
@@ -24,7 +25,7 @@ export class ColyseusLobbyService {
   public tour$ = new BehaviorSubject<boolean>(false);
   public newMessages$ = new Subject<{ account: string, message: string }>();
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private alert: AlertService) {}
 
   init(colyseus, client) {
     this.colyseus = colyseus;
@@ -57,7 +58,7 @@ export class ColyseusLobbyService {
       });
 
       this.room.onError.add((e) => {
-        alert('ROOM ERROR: ' + JSON.stringify(e));
+        this.alert.alert({ title: 'Room Error', text: JSON.stringify(e), type: 'error' });
         console.error(e);
       });
     });
@@ -333,11 +334,7 @@ export class ColyseusLobbyService {
   }
 
   public popupAlert({ sender, message }) {
-    (<any>swal)({
-      titleText: `GM Alert from ${sender}`,
-      text: message,
-      type: 'info'
-    }).catch(() => {});
+    this.alert.alert({ title: `GM Alert from ${sender}`, text: message, type: 'info' });
   }
 
   public changeStatus(status) {

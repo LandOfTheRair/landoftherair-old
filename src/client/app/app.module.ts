@@ -83,6 +83,7 @@ import { TradeskillSpellforgingComponent } from './tradeskill-spellforging/trade
 import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/tradeskill-metalworking.component';
 
 import { environment } from '../environments/environment';
+import { AlertService } from './alert.service';
 
 const envUrl = `${environment.server.protocol}://${environment.server.domain}:${environment.server.port}`;
 
@@ -184,6 +185,7 @@ export class APIInterceptor implements HttpInterceptor {
   ],
   providers: [
     { provide: ErrorHandler, useClass: RollbarService },
+    AlertService,
     AuthService,
     ColyseusService,
     ColyseusLobbyService,
