@@ -148,7 +148,7 @@ export class Game {
   }
 
   private updateBgm(newBgm: string) {
-    if(!newBgm && this.currentBgm) {
+    if(!newBgm && this.currentBgm && this.bgms[this.currentBgm]) {
       this.bgms[this.currentBgm].stop();
       this.currentBgm = '';
       return;
@@ -156,7 +156,7 @@ export class Game {
 
     if(newBgm === this.currentBgm) return;
 
-    if(this.currentBgm) {
+    if(this.currentBgm && this.bgms[this.currentBgm]) {
       this.bgms[this.currentBgm].stop();
     }
 
