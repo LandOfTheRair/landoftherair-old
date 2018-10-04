@@ -154,8 +154,9 @@
     level: 25
 
 - name: Halloween Pumpkin Shield
+  enchantLevel: 5
   stats:
-    armorClass: 40
+    armorClass: 30
   desc: "a strangely resilient pumpkin filled with rock candy"
   value: 2500
   sprite: 545
