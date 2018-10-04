@@ -186,12 +186,15 @@ export class ColyseusGameService {
 
     this.resetRoom();
 
-    this.worldRoom = this.client.join(room, {
+    const joinOpts: any = {
       userAgent: navigator.userAgent,
       charSlot: this.character.charSlot,
-      username: this.colyseus.username,
-      party
-    });
+      username: this.colyseus.username
+    };
+
+    if(party) joinOpts.party = party;
+
+    this.worldRoom = this.client.join(room, joinOpts);
 
     this.worldRoom.onStateChange.addOnce((state) => {
       this.clientGameState.mapName = state.mapName;
