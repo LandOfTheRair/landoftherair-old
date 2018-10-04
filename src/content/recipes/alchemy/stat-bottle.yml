@@ -1,0 +1,76 @@
+
+
+- item: Antanian Strength Potion
+  skillGained: 1000
+  maxSkillForGains: 15
+  requiredSkill: 5
+  xpGained: 5000
+  ingredients:
+    - Ether Scale (Refined)
+    - Antanian Bottle of Water
+    - Bradley Constitution Potion
+    - Dedlaen Vampire Heart
+    - Antanian Branch
+    - Antanian Branch
+    - Tower Goblood
+    - Tower Goblood
+
+- item: Antanian Dexterity Potion
+  skillGained: 1000
+  maxSkillForGains: 15
+  requiredSkill: 5
+  xpGained: 5000
+  ingredients:
+    - Ether Scale (Refined)
+    - Antanian Bottle of Water
+    - Bradley Constitution Potion
+    - Dedlaen Vampire Heart
+    - Yzalt Steffen Apple
+    - Yzalt Steffen Apple
+    - Yzalt Steffen Apple
+    - Yzalt Steffen Apple
+
+- item: Antanian Intelligence Potion
+  skillGained: 1000
+  maxSkillForGains: 15
+  requiredSkill: 5
+  xpGained: 5000
+  ingredients:
+    - Ether Scale (Refined)
+    - Antanian Bottle of Water
+    - Bradley Constitution Potion
+    - Dedlaen Minotaur Horn
+    - Antanian Twig
+    - Antanian Twig
+    - Yzalt Bogweed
+    - Yzalt Bogweed
+
+- item: Antanian Wisdom Potion
+  skillGained: 1000
+  maxSkillForGains: 15
+  requiredSkill: 5
+  xpGained: 5000
+  ingredients:
+    - Ether Scale (Refined)
+    - Antanian Bottle of Water
+    - Bradley Constitution Potion
+    - Dedlaen Minotaur Horn
+    - Rotting Mummy Grub
+    - Rotting Mummy Grub
+    - Rylt Blueflower
+    - Rylt Blueflower
+
+- item: Antanian Agility Potion
+  skillGained: 1000
+  maxSkillForGains: 15
+  requiredSkill: 5
+  xpGained: 5000
+  ingredients:
+    - Ether Scale (Refined)
+    - Antanian Bottle of Water
+    - Bradley Constitution Potion
+    - Dedlaen Vampire Heart
+    - Renegade Feather
+    - Renegade Feather
+    - Maze Corpseflower
+    - Maze Corpseflower
