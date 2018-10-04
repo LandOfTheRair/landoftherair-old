@@ -362,7 +362,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private getCharacter(username, charSlot) {
-    return DB.$players.findOne({ username, charSlot });
+    return DB.$players.findOne({ username, charSlot, inGame: { $ne: true } });
   }
 
   public saveSettings() {
@@ -412,7 +412,7 @@ export class Lobby extends Room<LobbyState> {
 
     const character = await this.getCharacter(client.username, charSlot);
 
-    if(!character || character.inGame) {
+    if(!character) {
       this.send(client, {
         error: 'no_character',
         prettyErrorName: 'No Character',
