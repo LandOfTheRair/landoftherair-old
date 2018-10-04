@@ -1,1 +1,1 @@
-web: npm run prod:start:debug:all
+web: npm run prod:start:debug
