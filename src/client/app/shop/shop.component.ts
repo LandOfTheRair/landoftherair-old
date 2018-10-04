@@ -19,7 +19,7 @@ export class ShopComponent {
 
   get allSackItemTypes() {
     if(!this.colyseusGame.character) return [];
-    
+
     return _(this.colyseusGame.character.sack.allItems)
       .map('itemClass')
       .uniq()
