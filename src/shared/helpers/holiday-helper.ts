@@ -53,6 +53,8 @@ export class HolidayHelper {
   static tryGrantHolidayTokens(player: Player, amt: number): void {
     if(!HolidayHelper.isAnyHoliday()) return;
 
+    if(player.$$room.subscriptionHelper.isSubscribed(player)) amt *= 2;
+    
     player.earnCurrency(<Currency>HolidayHelper.currentHoliday().toLowerCase(), amt);
     player.sendClientMessage(`You also earned ${amt} holiday tokens!`);
   }
