@@ -397,7 +397,8 @@ export class ColyseusGameService {
   }
 
   private interceptGameCommand({ action, error, ...other }) {
-    console.info('Colyseus:Game', action, error, other);
+    // console.info('Colyseus:Game', action, error, other);
+
     if(error) {
       this.alert.alert({ title: other.prettyErrorName, text: other.prettyErrorDesc, type: 'error' });
       return;

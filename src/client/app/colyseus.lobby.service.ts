@@ -127,7 +127,8 @@ export class ColyseusLobbyService {
   }
 
   private interceptLobbyCommand({ action, error, ...other }) {
-    console.info('Colyseus:Lobby', action, error, other);
+    // console.info('Colyseus:Lobby', action, error, other);
+
     if(error) {
 
       if(error === 'error_invalid_token') {
