@@ -158,7 +158,12 @@ export class APIInterceptor implements HttpInterceptor {
       accessToken: environment.rollbar.token,
       enabled: !!environment.rollbar.token,
       captureUncaught: true,
-      captureUnhandledRejections: true
+      captureUnhandledRejections: true,
+      ignoredMessages: [
+        'bad checksum',
+        'copy extends past end of input',
+        'cannot read property \'readyState\' of undefined'
+      ]
     }),
 
     ResizableModule,
