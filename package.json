@@ -95,7 +95,7 @@
     "buffer": "^5.2.1",
     "censor-sensor": "^1.0.3",
     "cli-table": "^0.3.1",
-    "colyseus": "^0.9.17",
+    "colyseus": "github:seiyria/colyseus",
     "colyseus.js": "^0.9.14",
     "connect-static-file": "^1.2.0",
     "core-js": "^2.4.1",
