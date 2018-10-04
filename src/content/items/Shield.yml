@@ -157,7 +157,7 @@
   stats:
     armorClass: 40
   desc: "a strangely resilient pumpkin filled with rock candy"
-  value: 500
+  value: 2500
   sprite: 545
   binds: true
 
