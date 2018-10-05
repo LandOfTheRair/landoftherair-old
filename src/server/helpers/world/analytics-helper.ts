@@ -73,6 +73,10 @@ export class AnalyticsHelper {
     return `Player:${player.baseClass}`;
   }
 
+  private fixStringForTracking(str: string): string {
+    return str.replace(/\s/g, '');
+  }
+
   // USES: MAP
   public trackMapEnter(player: Player) {
     this.track(player, 'design', { event_id: `${this.getMapPrefix(player)}:Enter` });
@@ -84,11 +88,11 @@ export class AnalyticsHelper {
     if(!dead || !killer || !dead.isPlayer || !killer.isPlayer) return;
 
     if(dead.isPlayer() && !killer.isPlayer()) {
-      this.track(<Player>dead, 'design', { event_id: `${this.getPlayerPrefix(<Player>dead)}:Killed:${(<NPC>killer).npcId}` });
+      this.track(<Player>dead, 'design', { event_id: `${this.getPlayerPrefix(<Player>dead)}:Killed:${this.fixStringForTracking((<NPC>killer).npcId)}` });
     }
 
     if(killer.isPlayer() && !dead.isPlayer()) {
-      this.track(<Player>dead, 'design', { event_id: `${this.getPlayerPrefix(<Player>killer)}:Kill:${(<NPC>dead).npcId}` });
+      this.track(<Player>dead, 'design', { event_id: `${this.getPlayerPrefix(<Player>killer)}:Kill:${this.fixStringForTracking((<NPC>dead).npcId)}` });
     }
 
     if(killer.isPlayer() && killer === dead) {
@@ -107,7 +111,7 @@ export class AnalyticsHelper {
     if(cmd === 'hello' || !player.isPlayer()) return;
 
     const displayCmd = cmd.split(' ')[0];
-    this.track(player, 'design', { event_id: `NPC:Talk:${npc.npcId.split(' ').join('')}:${displayCmd.split(' ').join('')}` });
+    this.track(player, 'design', { event_id: `NPC:Talk:${this.fixStringForTracking(npc.npcId)}:${this.fixStringForTracking(displayCmd)}` });
   }
 
   public trackCurrencySink(type: 'Source'|'Sink', player: Player, currency: string, gold: number, reason: string) {
