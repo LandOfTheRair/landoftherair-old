@@ -19,8 +19,8 @@ A high fantasy MORPG inspired by the MUDs of olde.
 
 First, create a [`.env`](https://www.npmjs.com/package/dotenv) file in the root. Then, populate it with these values:
 
-* `MONGODB_URI` - the URI that leads to a mongodb instance
-* `REDIS_URL` - a URI that leads to a redis cache
+* `MONGODB_URI` - the URI that leads to a mongodb instance (for example: `mongodb://localhost:27017/rair`)
+* `REDIS_URL` - a URI that leads to a redis cache (for example: `redis://localhost:6379`)
 
 If you want to use Auth0, you can set this value (if you don't, see the section [Authenticating Locally](#authenticating-locally) below):
 
