@@ -260,7 +260,13 @@ export class GameWorld extends Room<GameState> {
   async onJoin(client, options) {
     const { charSlot, username } = options;
 
-    const account = await AccountHelper.getAccountByUsername(username);
+    let account = null;
+
+    try {
+      account = await AccountHelper.getAccountByUsername(username);
+    } catch(e) {
+      Logger.error(e);
+    }
 
     if(!account || account.colyseusId !== client.id) {
       this.send(client, {
@@ -271,7 +277,13 @@ export class GameWorld extends Room<GameState> {
       return false;
     }
 
-    const playerData = await DB.$players.findOne({ username, map: this.mapName, charSlot });
+    let playerData = null;
+
+    try {
+      playerData = await DB.$players.findOne({ username, map: this.mapName, charSlot });
+    } catch(e) {
+      Logger.error(e);
+    }
 
     if(!playerData) {
       this.send(client, { error: 'invalid_char', prettyErrorName: 'Invalid Character Data', prettyErrorDesc: 'No idea how this happened!' });
@@ -283,8 +295,6 @@ export class GameWorld extends Room<GameState> {
       return false;
     }
 
-    this.send(client, { action: 'set_map', map: this.state.formattedMap });
-
     // needs to be available when player.init() is called
     playerData.$$account = account;
     playerData.$$room = this;
@@ -292,14 +302,26 @@ export class GameWorld extends Room<GameState> {
     player.z = player.z || 0;
 
     this.usernameClientHash[player.username] = { client };
-    await player.initServer();
+
+    try {
+      await player.initServer();
+    } catch(e) {
+      Logger.error(e);
+    }
+
     this.state.addPlayer(player, client.id);
     CharacterHelper.setUpClassFor(player);
 
     player.inGame = true;
-    this.savePlayer(player);
-
     player.respawnPoint = clone(this.mapRespawnPoint);
+
+    try {
+      await this.savePlayer(player);
+    } catch(e) {
+      Logger.error(e);
+    }
+
+    this.send(client, { action: 'set_map', map: this.state.formattedMap });
 
     if(this.mapName === 'Tutorial') {
       this.clock.setTimeout(() => {
@@ -307,7 +329,6 @@ export class GameWorld extends Room<GameState> {
         this.send(client, { action: 'take_tour' });
       }, 0);
     }
-
 
     if(this.mapSubscriberOnly && !this.subscriptionHelper.isSubscribed(player)) {
       player.sendClientMessage('Magical forces push you out of the rift!');
@@ -333,11 +354,14 @@ export class GameWorld extends Room<GameState> {
       this.partyManager.leaveParty(player);
     }
 
-    await DeathHelper.autoReviveAndUncorpse(player);
-
-    await this.leaveGameAndSave(player);
-    await this.prePlayerMapLeave(player);
-    await this.savePlayer(player);
+    try {
+      await DeathHelper.autoReviveAndUncorpse(player);
+      await this.leaveGameAndSave(player);
+      await this.prePlayerMapLeave(player);
+      await this.savePlayer(player);
+    } catch(e) {
+      Logger.error(e);
+    }
   }
 
   onMessage(client, data) {
