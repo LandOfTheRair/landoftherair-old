@@ -30,11 +30,11 @@ export class AnalyticsHelper {
     return `${player.username}`;
   }
 
-  startGameSession(player: Player, ua: string) {
+  async startGameSession(player: Player, ua: string) {
     if(!this.ga) return;
 
     try {
-      this.ga.sessionStart(this.userString(player), {
+      await this.ga.sessionStart(this.userString(player), {
         ua,
         sdk_version: 'rest api v2',
         session_num: 1
@@ -44,11 +44,11 @@ export class AnalyticsHelper {
     this.trackMapEnter(player);
   }
 
-  stopGameSession(player: Player) {
+  async stopGameSession(player: Player) {
     if(!this.ga) return;
 
     try {
-      this.ga.sessionEnd(this.userString(player));
+      await this.ga.sessionEnd(this.userString(player));
     } catch(e) {}
   }
 
