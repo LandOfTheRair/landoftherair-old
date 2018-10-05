@@ -44,7 +44,7 @@ export class TradeskillSpellforgingComponent {
     const item = this.player.tradeSkillContainers.spellforging.modifyItem;
     const reagent = this.player.tradeSkillContainers.spellforging.reagent;
     if(!item.trait || !reagent.trait) return false;
-    return item.trait.name !== reagent.trait.name || item.trait.level !== reagent.trait.level;
+    return reagent.itemClass === 'Scroll' && (item.trait.name !== reagent.trait.name || item.trait.level !== reagent.trait.level);
   }
 
   get hasEffectWarning(): boolean {
