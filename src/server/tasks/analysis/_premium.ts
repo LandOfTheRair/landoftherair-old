@@ -22,7 +22,7 @@ export const drawPremium = async () => {
     'SharedLockers',
     'FestivalXP',
     'FestivalGold',
-    'FestivalTrait',
+    'FestivalItemFind',
     'FestivalSkill'
   ];
 
