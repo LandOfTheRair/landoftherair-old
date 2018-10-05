@@ -121,6 +121,7 @@ export class SpellforgingHelper {
       container.result = item;
       container.clearReagents();
       player.gainSkill(SkillClassNames.Spellforging, item.enchantLevel * 25);
+      return true;
     }
 
     if(includes(reagent.name, 'Runewritten Scroll')) {
