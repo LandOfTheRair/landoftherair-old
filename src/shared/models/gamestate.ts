@@ -222,7 +222,7 @@ export class GameState {
       'leftHand', 'rightHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2',
       'hp', 'level',
       'x', 'y', 'z',
-      'effects',
+      'effects', 'baseClass',
       'affiliation',
       'totalStats.wil', 'totalStats.stealth'
     ]);

@@ -1439,7 +1439,7 @@ export class Character {
     const thiefMultPerTile = char.baseClass === 'Thief' ? 0.2 : 0.05;
 
     const totalStealth = Math.floor(otherStealth + (otherStealth * distFactor * thiefMultPerTile));
-
+    
     return this.getTotalStat('perception') >= totalStealth;
   }
 
