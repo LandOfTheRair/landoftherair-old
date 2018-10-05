@@ -146,7 +146,7 @@ export class ColyseusGameService {
     if(!this.clientGameState.currentPlayer) {
       this.alert.alert({
         title: 'Init Error',
-        text: 'Your character was not sent by the server in an adequate amount of time. If you see this error, shout out in lobby.',
+        text: 'Your character was not sent by the server in an adequate amount of time. If you see this error, refresh the page and try again.',
         type: 'error'
       });
       return;
@@ -169,10 +169,9 @@ export class ColyseusGameService {
     this.unshowWindows();
 
     if(!this.character) {
-
       this.alert.alert({
         title: 'Init Error',
-        text: 'Your character is not available when doing init game. If you see this error, shout out in lobby.',
+        text: 'Your character is not available when doing init game. If you see this error, refresh the page and try again.',
         type: 'error'
       });
       return;
