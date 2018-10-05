@@ -13,7 +13,7 @@ export class VitalEssence extends SpellEffect implements OnHitEffect {
   };
 
   maxSkillForSkillGain = 25;
-  potencyMultiplier = 10;
+  potencyMultiplier = 15;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -21,7 +21,7 @@ export class VitalEssence extends SpellEffect implements OnHitEffect {
     this.flagUnapply(true);
     this.flagCasterName(caster.name);
 
-    if(!this.charges) this.charges = 10 * this.potency;
+    if(!this.charges) this.charges = 5 * this.potency;
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
@@ -37,7 +37,7 @@ export class VitalEssence extends SpellEffect implements OnHitEffect {
     this.targetEffectMessage(char, 'Your body feels more durable.');
     this.gainStat(char, 'hp', this.potency * this.potencyMultiplier);
 
-    const acGain = Math.floor(this.potency / 3);
+    const acGain = Math.floor(this.potency / 2);
     this.gainStat(char, 'armorClass', acGain);
 
     this.iconData.tooltipDesc = `Grants you ${this.potency * this.potencyMultiplier} more health and ${acGain} AC. Each hit you take erodes your essence.`;
