@@ -8,8 +8,8 @@ import * as CLITable from 'cli-table';
 export const drawNormal = async () => {
 
   const table = new CLITable({
-    head: ['Item Class', '# Items', 'Avg. BaseDmg', 'Avg. MinDmg', 'Avg. MaxDmg', 'Avg. # Rolls'],
-    colWidths: [15, 10, 14, 13, 13, 14]
+    head: ['Item Class', '# Items', 'Avg. Tier', 'Low Tier', 'High Tier'],
+    colWidths: [15, 10, 14, 13, 13]
   });
 
   const allItems = await ItemLoader.loadAllItems(ItemLoader.WEAPON_TYPES);
@@ -18,12 +18,11 @@ export const drawNormal = async () => {
     .sortBy('itemClass')
     .groupBy('itemClass')
     .forEach((data, itemClass) => {
-      const baseDamage =  (_.sumBy(data, 'baseDamage') / data.length).toFixed(2);
-      const minDamage =   (_.sumBy(data, 'minDamage') / data.length).toFixed(2);
-      const maxDamage =   (_.sumBy(data, 'maxDamage') / data.length).toFixed(2);
-      const damageRolls = (_.sumBy(data, 'damageRolls') / data.length).toFixed(2);
+      const tier =  (_.sumBy(data, 'tier') / data.length).toFixed(2);
+      const lowTier =   (_.minBy(data, 'tier')).tier;
+      const highTier =   (_.maxBy(data, 'tier')).tier;
 
-      table.push([itemClass, data.length, baseDamage, minDamage, maxDamage, damageRolls]);
+      table.push([itemClass, data.length, tier, lowTier, highTier]);
     });
 
   return table.toString();
