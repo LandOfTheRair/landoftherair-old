@@ -86,6 +86,10 @@ db.accounts.update({ username: 'YOUR_ACCOUNT_NAME' }, { $set: { isGM: true } });
 
 You only need to do this once.
 
+## Testing Outside Of `localhost`
+
+By default, the client is configured to connect to `localhost`. If you want to connect somewhere else (say, you're using a VM), you can change `src/client/environments/environment.ts` to reflect the location of your server. For example, if you're developing in a VM, you probably want to change the two instances of `localhost` to be the IP of the VM.
+
 ### Server Debug Routes
 
 Some routes are enabled for debugging purposes and are otherwise unused. You can visit:
