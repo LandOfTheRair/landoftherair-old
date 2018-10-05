@@ -12,11 +12,11 @@ export class EnergyWave extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    this.effectMessageRadius(target, { message: `You feel a wave of energy pulse outwards from ${target.name}.`, subClass: 'combat magic' }, 5, [caster.uuid]);
-
     const totalRadius = 1 + (target.getTraitLevel('EnergyWaveWiden') ? 1 : 0);
 
-    const attacked = target.$$room.state.getAllInRange(target, totalRadius, [caster.uuid]);
+    this.effectMessageRadius(target, { message: `You feel a wave of energy pulse outwards from ${target.name}.`, subClass: 'combat magic' }, 5, [caster.uuid]);
+
+    const attacked = target.$$room.state.getAllInRange(target, totalRadius, [caster.uuid], false);
 
     attacked.forEach(refTarget => {
       const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
