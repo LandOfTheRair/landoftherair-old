@@ -229,7 +229,7 @@ const BARD_TREE = {
 
   // TRAITS
   EffectiveSupporter0: {
-    unlocks: ['EffectiveSupporter1']
+    unlocks: ['EffectiveSupporter1', 'Aid']
   },
   EffectiveSupporter1: {
     unlocks: ['EffectiveSupporter2']
@@ -281,6 +281,10 @@ const BARD_TREE = {
 
   Autoheal: {
     unlocks: ['ImprovedAutoheal0']
+  },
+
+  Aid: {
+
   },
 
   Secondwind: {

@@ -73,6 +73,7 @@ export * from './damagers/FireMist';
 export * from './damagers/IceMist';
 export * from './damagers/EnergyWave';
 
+export * from './buffs/Aid';
 export * from './buffs/Autoheal';
 export * from './buffs/VitalEssence';
 export * from './buffs/Secondwind';

@@ -800,7 +800,8 @@
         "requireCharacterLevel": 15,
         "cost": 3,
         "unlocks": [
-            "EffectiveSupporter1"
+            "EffectiveSupporter1",
+            "Aid"
         ],
         "cluster": 3,
         "unlockedBy": [
@@ -987,6 +988,18 @@
         "cluster": 3,
         "unlockedBy": [
             "Regen"
+        ]
+    },
+    "Aid": {
+        "name": "Aid",
+        "desc": "Increase the targets DEX and offensive combat rating. Cost: 50 MP",
+        "icon": "three-friends",
+        "iconColor": "#00c",
+        "requireSkillLevel": 10,
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "EffectiveSupporter0"
         ]
     },
     "Secondwind": {

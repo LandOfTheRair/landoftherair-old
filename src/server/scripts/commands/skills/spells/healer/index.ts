@@ -1,4 +1,6 @@
+
 export * from './Afflict';
+export * from './Aid';
 export * from './Antidote';
 export * from './Augury';
 export * from './Autoheal';
