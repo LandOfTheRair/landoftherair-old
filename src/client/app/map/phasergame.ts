@@ -525,46 +525,46 @@ export class Game {
 
     if(!goldNW && goldN && !goldNE && goldE && !goldSE && goldS && !goldSW && goldW) return 349;  // ALL corner missing
 
-    if(!goldNW && !goldN && !goldNE && goldE && goldSE && goldS && goldSW && goldW) return 350; // TOP missing
-    if(goldNW && goldN && !goldNE && !goldE && !goldSE && goldS && goldSW && goldW) return 351; // RIGHT missing
-    if(goldNW && goldN && goldNE && goldE && !goldSE && !goldS && !goldSW && goldW) return 352; // BOTTOM missing
-    if(!goldNW && goldN && goldNE && goldE && goldSE && goldS && !goldSW && !goldW) return 353; // LEFT missing
+    if(!goldN && goldE && goldSE && goldS && goldSW && goldW) return 350; // N missing NE,NW unchecked
+    if(goldNW && goldN && !goldE && goldS && goldSW && goldW) return 351; // E missing NE,SE unchecked
+    if(goldNW && goldN && goldNE && goldE && !goldS && goldW) return 352; // S missing SE,SW unchecked
+    if(goldN && goldNE && goldE && goldSE && goldS && !goldW) return 353; // W missing SW,NW unchecked
 
-    if(!goldNW && goldN && goldNE && goldE && !goldSE && !goldS && !goldSW && goldW) return 354;  // NW,BOTTOM missing
-    if(goldNW && goldN && !goldNE && goldE && !goldSE && !goldS && !goldSW && goldW) return 355;  // NE,BOTTOM missing
-    if(!goldNW && !goldN && !goldNE && goldE && !goldSE && goldS && goldSW && goldW) return 356;  // SE,TOP missing
-    if(!goldNW && !goldN && !goldNE && goldE && goldSE && goldS && !goldSW && goldW) return 357;  // SW,TOP missing
+    if(!goldNW && goldN && goldNE && goldE && !goldS && goldW) return 354;  // NW,S missing SE,SW unchecked
+    if(goldNW && goldN && !goldNE && goldE && !goldS && goldW) return 355;  // NE,S missing SE,SW unchecked
+    if(!goldN && goldE && !goldSE && goldS && goldSW && goldW) return 356;  // SE,N missing NE,NW unchecked
+    if(!goldN && goldE && goldSE && goldS && !goldSW && goldW) return 357;  // SW,N missing NE,NW unchecked
 
-    if(!goldNW && goldN && !goldNE && !goldE && !goldSE && goldS && goldSW && goldW) return 358;  // NW,RIGHT missing
-    if(!goldNW && goldN && !goldNE && goldE && goldSE && goldS && !goldSW && !goldW) return 359;  // NE,LEFT missing
-    if(!goldNW && goldN && goldNE && goldE && !goldSE && goldS && !goldSW && !goldW) return 360;  // SE,LEFT missing
-    if(goldNW && goldN && !goldNE && !goldE && !goldSE && goldS && !goldSW && goldW) return 361;  // SW,RIGHT missing
+    if(!goldNW && goldN && !goldE && goldS && goldSW && goldW) return 358;  // NW,E missing NE,SE unchecked
+    if(goldN && !goldNE && goldE && goldSE && goldS && !goldW) return 359;  // NE,W missing NW,SW unchecked
+    if(goldN && goldNE && goldE && !goldSE && goldS && !goldW) return 360;  // SE,W missing NW,SW unchecked
+    if(goldNW && goldN && !goldE && goldS && !goldSW && goldW) return 361;  // SW,E missing NE,SE unchecked
 
-    if(!goldNW && !goldN && !goldNE && goldE && !goldSE && goldS && !goldSW && goldW) return 362; // SE,SW,TOP missing
-    if(!goldNW && goldN && !goldNE && !goldE && !goldSE && goldS && !goldSW && goldW) return 363; // NW,SW,RIGHT missing
-    if(!goldNW && goldN && !goldNE && goldE && !goldSE && !goldS && !goldSW && goldW) return 364; // NE,NW,BOTTOM missing
-    if(!goldNW && goldN && !goldNE && goldE && !goldSE && goldS && !goldSW && !goldW) return 365; // NE,SE,LEFT missing
+    if(!goldN && goldE && !goldSE && goldS && !goldSW && goldW) return 362; // SE,SW,N missing NW,NE unchecked
+    if(!goldNW && goldN && !goldE && goldS && !goldSW && goldW) return 363; // NW,SW,E missing SE,NE unchecked
+    if(!goldNW && goldN && !goldNE && goldE && !goldS && goldW) return 364; // NE,NW,S missing SE,SW unchecked
+    if(goldN && !goldNE && goldE && !goldSE && goldS && !goldW) return 365; // NE,SE,W missing NW,SW unchecked
 
-    if(!goldNW && !goldN && !goldNE && goldE && goldSE && goldS && !goldSW && !goldW) return 366; // E,SE,S present
-    if(!goldNW && !goldN && !goldNE && !goldE && !goldSE && goldS && goldSW && goldW) return 367; // W,SW,S present
-    if(goldNW && goldN && !goldNE && !goldE && !goldSE && !goldS && !goldSW && goldW) return 368; // W,NW,N present
-    if(!goldNW && goldN && goldNE && goldE && !goldSE && !goldS && !goldSW && !goldW) return 369; // E,NE,N present
+    if(!goldN && goldE && goldSE && goldS && !goldW) return 366; // E,SE,S present, NE,SW,NW unchecked
+    if(!goldN && !goldE && goldS && goldSW && goldW) return 367; // W,SW,S present, NW,SE,NE unchecked
+    if(goldNW && goldN && !goldE && !goldS && goldW) return 368; // W,NW,N present, NE,SE,SW unchecked
+    if(goldN && goldNE && goldE && !goldS && !goldW) return 369; // E,NE,N present, NW,SE,SW unchecked
 
-    if(!goldNW && !goldN && !goldNE && goldE && !goldSE && goldS && !goldSW && !goldW) return 370;  // E,S present
-    if(!goldNW && !goldN && !goldNE && !goldE && !goldSE && goldS && !goldSW && goldW) return 371;  // W,S present
-    if(!goldNW && goldN && !goldNE && !goldE && !goldSE && !goldS && !goldSW && goldW) return 372;  // W,N present
-    if(!goldNW && goldN && !goldNE && goldE && !goldSE && !goldS && !goldSW && !goldW) return 373;  // E,N present
+    if(!goldN && goldE && goldS && !goldW) return 370;  // E,S present, CORNERS unchecked
+    if(!goldN && !goldE && goldS && goldW) return 371;  // W,S present, CORNERS unchecked
+    if(goldN && !goldE && !goldS && goldW) return 372;  // W,N present, CORNERS unchecked
+    if(goldN && goldE && !goldS && !goldW) return 373;  // E,N present, CORNERS unchecked
 
-    if(!goldNW && !goldN && !goldNE && !goldE && !goldSE && goldS && !goldSW && !goldW) return 374; // S present
-    if(!goldNW && !goldN && !goldNE && !goldE && !goldSE && !goldS && !goldSW && goldW) return 375; // W present
-    if(!goldNW && goldN && !goldNE && !goldE && !goldSE && !goldS && !goldSW && !goldW) return 376; // N present
-    if(!goldNW && !goldN && !goldNE && goldE && !goldSE && !goldS && !goldSW && !goldW) return 377; // E present
+    if(!goldN && !goldE && goldS && !goldW) return 374; // S present, CORNERS unchecked
+    if(!goldN && !goldE && !goldS && goldW) return 375; // W present, CORNERS unchecked
+    if(goldN && !goldE && !goldS && !goldW) return 376; // N present, CORNERS unchecked
+    if(!goldN && goldE && !goldS && !goldW) return 377; // E present, CORNERS unchecked
 
-    if(!goldNW && goldN && !goldNE && !goldE && !goldSE && goldS && !goldSW && !goldW) return 378;  // N,S present
-    if(!goldNW && !goldN && !goldNE && goldE && !goldSE && !goldS && !goldSW && goldW) return 379;  // E,W present
+    if(goldN && !goldE && goldS && !goldW) return 378;  // N,S present, CORNERS unchecked
+    if(!goldN && goldE && !goldS && goldW) return 379;  // E,W present, CORNERS unchecked
 
-    if(goldNW && !goldN && !goldNE && !goldE && goldSE && !goldS && !goldSW && !goldW) return 380;  // NW,SE missing
-    if(!goldNW && !goldN && goldNE && !goldE && !goldSE && !goldS && goldSW && !goldW) return 381;  // NE,SW missing
+    if(!goldNW && goldN && goldNE && goldE && !goldSE && goldS && goldSW && goldW) return 380;  // NW,SE missing
+    if(goldNW && goldN && !goldNE && goldE && goldSE && goldS && !goldSW && goldW) return 381;  // NE,SW missing
 
     if(goldNW && goldN && goldNE && goldE && goldSE && goldS && goldSW && goldW) return 382;  // ALL present
 
