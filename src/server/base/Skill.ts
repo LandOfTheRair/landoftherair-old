@@ -35,12 +35,12 @@ export abstract class Skill extends Command {
     let traitReductionLevel = 0;
 
     /** PERK:CLASS:MAGE:Mages get a bonus to MP cost reduction if they hold a wand in their right hand. */
-    if(caster.baseClass === 'Mage' && get(caster, 'rightHand.type') === 'Wand') {
+    if(caster.baseClass === 'Mage' && get(caster, 'rightHand.itemClass') === 'Wand') {
       traitReductionLevel = caster.getTraitLevel('WandSpecialty');
     }
 
     /** PERK:CLASS:HEALER:Healers get a bonus to MP cost reduction if they hold a totem in their right hand. */
-    if(caster.baseClass === 'Healer' && get(caster, 'rightHand.type') === 'Totem') {
+    if(caster.baseClass === 'Healer' && get(caster, 'rightHand.itemClass') === 'Totem') {
       traitReductionLevel = caster.getTraitLevel('TotemSpecialty');
     }
 
