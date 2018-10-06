@@ -6,7 +6,7 @@ import { Vortex } from '../../../effects/misc/Vortex';
 export class GMLootVortex extends Command {
 
   public name = '@lootvortex';
-  public format = 'Radius';
+  public format = '[Radius]';
 
   async execute(player: Player, { args }) {
     if(!player.$$room.subscriptionHelper.isGM(player)) return;

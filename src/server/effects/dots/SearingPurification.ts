@@ -27,8 +27,13 @@ export class SearingPurification extends SpellEffect {
     tooltipDesc: 'Being purified by holy light.'
   };
 
+  skillMults = [[0, 3], [6, 3.5], [11, 4], [16, 4.5], [21, 5]];
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.effectInfo = { caster: caster.uuid };
+    this.hasSkillRef = !!skillRef;
+
+    const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
+    this.effectInfo = { damage, caster: caster.uuid };
     this.duration = 5;
     this.flagCasterName(caster.name);
     target.applyEffect(this);
@@ -40,7 +45,6 @@ export class SearingPurification extends SpellEffect {
 
   effectTick(char: Character) {
     const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
-    const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
     char.mp.sub(Math.floor(char.mp.maximum * 0.02));
 
@@ -48,7 +52,7 @@ export class SearingPurification extends SpellEffect {
       effect: this,
       atkMsg: `${char.name} is getting seared alive!`,
       defMsg: `You are getting seared alive!`,
-      damage: damage,
+      damage: this.effectInfo.damage,
       damageClass: 'fire',
       isOverTime: true
     });

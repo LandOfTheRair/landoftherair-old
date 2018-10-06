@@ -11,7 +11,7 @@ import { SearingPurification } from '../dots/SearingPurification';
 export class HolyFire extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillMults = [[0, 4], [6, 5], [11, 6], [16, 7], [21, 8]];
+  skillMults = [[0, 1.5], [6, 2], [11, 2.5], [16, 3], [21, 3.5]];
 
   iconData = {
     name: 'fireflake',
@@ -51,8 +51,8 @@ export class HolyFire extends SpellEffect {
       }
 
       if(caster.getTraitLevel('SearingPurification') && !refTarget.hasEffect('RecentlyPurified')) {
-        const searingPurification = new SearingPurification({});
-        searingPurification.cast(caster, refTarget);
+        const searingPurification = new SearingPurification({ potency: this.potency });
+        searingPurification.cast(caster, refTarget, skillRef);
       }
     });
   }
