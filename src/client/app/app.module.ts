@@ -163,6 +163,7 @@ export class APIInterceptor implements HttpInterceptor {
       ignoredMessages: [
         'bad checksum',
         'copy extends past end of input',
+        'Cannot read property \'getImage\' of null',
         'cannot read property \'readyState\' of undefined',
         'WebSocket is not open: readyState 2 (CLOSING)'
       ]
