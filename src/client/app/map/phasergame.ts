@@ -207,7 +207,7 @@ export class Game {
       this.fovGroup.destroy();
     }
 
-    if(this.goldGroup) {
+    if(this.goldGroup && this.goldGroup.destroy) {
       this.goldGroup.destroy();
     }
 
