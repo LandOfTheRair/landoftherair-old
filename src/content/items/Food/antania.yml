@@ -50,7 +50,7 @@
     stats:
       poisonResist: 60
       diseaseResist: 30
-    duration: 86400
+    duration: 21600
 
 - name: Dedlaen Militia Gourd
   sprite: 115
