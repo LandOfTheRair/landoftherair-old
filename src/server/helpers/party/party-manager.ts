@@ -79,11 +79,11 @@ export class PartyManager {
     const party = this.parties[player.partyName];
     if(!party) return;
 
-    this.room.sendMessageToUsernames(map(party.members, 'username'), { 
+    this.room.sendMessageToUsernames(map(party.members, 'username'), {
       name: `[party] ${player.name}`,
-      message, 
-      subClass: 'chatter', 
-      grouping: 'chatter' 
+      message,
+      subClass: 'chatter',
+      grouping: 'chatter'
     });
   }
 
@@ -120,6 +120,8 @@ export class PartyManager {
   public leaveParty(leaver: Player) {
     const member = new PartyPlayer(leaver);
     const partyName = leaver.partyName;
+
+    leaver.sendClientMessage(`You left the "${partyName}" party!`);
 
     leaver.partyName = '';
     leaver.recalculateStats();

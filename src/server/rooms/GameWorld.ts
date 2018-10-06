@@ -355,8 +355,6 @@ export class GameWorld extends Room<GameState> {
     }
 
     try {
-      await DeathHelper.autoReviveAndUncorpse(player);
-      await this.leaveGameAndSave(player);
       await this.prePlayerMapLeave(player);
       await this.savePlayer(player);
     } catch(e) {
@@ -692,7 +690,6 @@ export class GameWorld extends Room<GameState> {
     if(newMap && player.map !== newMap) {
       player.map = newMap;
       player.$$doNotSave = true;
-      this.prePlayerMapLeave(player);
       await this.savePlayer(player, { x, y, map: newMap }, true);
       this.state.resetFOV(player);
       this.send(client, { action: 'change_map', map: newMap, party: player.partyName });
@@ -748,10 +745,6 @@ export class GameWorld extends Room<GameState> {
     await DeathHelper.autoReviveAndUncorpse(player);
     this.doorCheck(player);
     player.z = 0;
-  }
-
-  private leaveGameAndSave(player: Player) {
-    return DB.$players.update({ username: player.username, charSlot: player.charSlot }, { $set: { inGame: false } });
   }
 
   async executeCommand(player: Player, commandString, args: string) {
