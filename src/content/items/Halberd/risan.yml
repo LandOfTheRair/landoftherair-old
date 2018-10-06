@@ -1,4 +1,12 @@
 
+- name: Risan Halberd	
+  desc: "an iron-tipped halberd crafted in the land of Risan"	
+  tier: 5	
+  type: Polearm	
+  value: 10000	
+  sprite: 230	
+  requirements:	
+    level: 15
 
 - name: Frostlands Thermidor Halberd
   desc: "a frozen defensive halberd used by the ancient thermidor people of Risan"
