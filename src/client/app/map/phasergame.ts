@@ -425,7 +425,9 @@ export class Game {
     };
   }
 
-  private canCreateItemSpriteAt(x, y) {
+  private canCreateItemSpriteAt(x, y): boolean {
+    if(!this.clientGameState.map) return false;
+
     const tileCheck = (y * this.clientGameState.map.width) + x;
     const fluid = this.clientGameState.map.layers[MapLayer.Fluids].data;
     const foliage = this.clientGameState.map.layers[MapLayer.Foliage].data;
