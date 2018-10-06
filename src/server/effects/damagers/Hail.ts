@@ -15,8 +15,8 @@ export class Hail extends SpellEffect {
     for(let i = 0; i < 2; i++) {
       this.magicalAttack(caster, target, {
         skillRef,
-        atkMsg: `You fling hail at ${target.name}!`,
-        defMsg: `${this.getCasterName(caster, target)} pelted you with bullets of hail!`,
+        atkMsg: `You fling hail at %0!`,
+        defMsg: `%0 pelted you with bullets of hail!`,
         damage: +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`),
         damageClass: 'ice'
       });

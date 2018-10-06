@@ -53,7 +53,7 @@ export class ImbueFrost extends ImbueEffect implements AugmentSpellEffect {
 
     this.magicalAttack(attacker, defender, {
       atkMsg: `You strike for bonus ice damage!`,
-      defMsg: `${this.getCasterName(attacker, defender)} struck you with a burst of raw frost!`,
+      defMsg: `%0 struck you with a burst of raw frost!`,
       damage: bonusDamage,
       damageClass: 'ice'
     });

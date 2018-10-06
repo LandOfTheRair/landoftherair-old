@@ -44,8 +44,8 @@ export class VolcanoStance extends StanceEffect implements AugmentSpellEffect {
     if(opts.damageClass !== 'physical') return;
 
     this.magicalAttack(attacker, defender, {
-      atkMsg: `You unleash volcanic fury upon ${defender.name}!`,
-      defMsg: `${this.getCasterName(attacker, defender)} struck you with a burst of volcanic heat!`,
+      atkMsg: `You unleash volcanic fury upon %0!`,
+      defMsg: `%0 struck you with a burst of volcanic heat!`,
       damage: Math.floor(opts.damage * (0.1 + attacker.getTraitLevelAndUsageModifier('VolcanoStanceImproved'))),
       damageClass: 'fire'
     });

@@ -11,6 +11,7 @@ import { CharacterHelper } from '../character/character-helper';
 import { NPC } from '../../../shared/models/npc';
 import { BuildupEffect } from '../../base/Effect';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
+import { MessageHelper } from './message-helper';
 
 export const BaseItemStatsPerTier = {
   Arrow:                { base: 1, min: 0, max: 2, weakChance: 25, damageBonus: 10 },
@@ -1055,8 +1056,10 @@ export class CombatHelper {
 
       const secondaryClass = attacker !== defender ? 'self' : 'other';
 
+      const formattedAtkMessage = MessageHelper.formatMessageFor(attacker, attackerDamageMessage, [defender]);
+
       attacker.sendClientMessage({
-        message: `${isRiposte ? 'You riposte the attack!' : attackerDamageMessage} [${absDmg} ${dmgString}]`,
+        message: `${isRiposte ? 'You riposte the attack!' : formattedAtkMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat ${secondaryClass} ${otherClass} ${damageType} ${isOverTime ? 'out-overtime' : ''}`,
         target: defender.uuid,
         extraData: {
@@ -1070,8 +1073,11 @@ export class CombatHelper {
     }
 
     if(defenderDamageMessage && defender && attacker !== defender) {
+
+      const formattedDefMessage = MessageHelper.formatMessageFor(defender, defenderDamageMessage, [attacker]);
+
       defender.sendClientMessage({
-        message: `${isRiposte ? 'Your attack was riposted!' : defenderDamageMessage} [${absDmg} ${dmgString}]`,
+        message: `${isRiposte ? 'Your attack was riposted!' : formattedDefMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat other ${otherClass} ${damageType} ${isOverTime ? 'in-overtime' : ''}`,
         extraData: {
           type: 'damage',
@@ -1112,10 +1118,18 @@ export class CombatHelper {
     if(wasFatal) {
       if(attacker) {
         const killMethod = defender.isNaturalResource ? 'smashed' : 'killed';
-        defender.sendClientMessageToRadius({
-          message: `${defender.name} was ${killMethod} by ${attacker.name}!`, subClass: 'combat self kill' }, 5, [defender.uuid]
+        defender.sendClientMessageToRadius({ message: `%0 was ${killMethod} by %1!`, subClass: 'combat self kill' },
+          5,
+          [defender.uuid, attacker.uuid],
+          true,
+          [defender, attacker]
         );
-        defender.sendClientMessage({ message: `You were killed by ${attacker.name}!`, subClass: 'combat other kill' });
+
+        const formattedAtkMessage = MessageHelper.formatMessageFor(attacker, `You ${killMethod} %0!`, [defender]);
+        attacker.sendClientMessage({ message: formattedAtkMessage, subClass: 'combat self kill' });
+
+        const formattedDefMessage = MessageHelper.formatMessageFor(defender, `You were killed by %0!`, [attacker]);
+        defender.sendClientMessage({ message: formattedDefMessage, subClass: 'combat other kill' });
 
         if((<any>attacker).uuid) {
           attacker.kill(defender);

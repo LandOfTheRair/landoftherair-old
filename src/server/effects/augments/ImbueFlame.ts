@@ -53,7 +53,7 @@ export class ImbueFlame extends ImbueEffect implements AugmentSpellEffect {
 
     this.magicalAttack(attacker, defender, {
       atkMsg: `You strike for bonus fire damage!`,
-      defMsg: `${this.getCasterName(attacker, defender)} struck you with a burst of raw heat!`,
+      defMsg: `%0 struck you with a burst of raw heat!`,
       damage: bonusDamage,
       damageClass: 'fire'
     });

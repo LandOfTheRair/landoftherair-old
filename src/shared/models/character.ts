@@ -1274,8 +1274,8 @@ export class Character {
     }
   }
 
-  sendClientMessageToRadius(message, radius = 4, except = [], useSight = false) {
-    MessageHelper.sendClientMessageToRadius(this, message, radius, except, useSight);
+  sendClientMessageToRadius(message, radius = 4, except = [], useSight = false, formatArgs = []) {
+    MessageHelper.sendClientMessageToRadius(this, message, radius, except, useSight, formatArgs);
   }
 
   sendClientMessageFromNPC(npc: Character, message: string): void {

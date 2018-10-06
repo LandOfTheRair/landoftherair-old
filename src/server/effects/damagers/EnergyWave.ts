@@ -21,12 +21,10 @@ export class EnergyWave extends SpellEffect {
     attacked.forEach(refTarget => {
       const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
 
-      const atkName = refTarget.name;
-
       this.magicalAttack(caster, refTarget, {
         skillRef,
-        atkMsg: `You blast ${atkName} with a wave of energy!`,
-        defMsg: `${this.getCasterName(caster, target)} blasted you with a wave of energy!`,
+        atkMsg: `You blast %0 with a wave of energy!`,
+        defMsg: `%0 blasted you with a wave of energy!`,
         damage,
         damageClass: 'energy'
       });

@@ -44,8 +44,8 @@ export class GlacierStance extends StanceEffect implements AugmentSpellEffect, A
     if(opts.damageClass !== 'physical') return;
 
     this.magicalAttack(attacker, defender, {
-      atkMsg: `You unleash glacial fury upon ${defender.name}!`,
-      defMsg: `${this.getCasterName(attacker, defender)} struck you with a burst of glacial frost!`,
+      atkMsg: `You unleash glacial fury upon %0!`,
+      defMsg: `%0 struck you with a burst of glacial frost!`,
       damage: Math.floor(opts.damage * (0.1 + attacker.getTraitLevelAndUsageModifier('GlacierStanceImproved'))),
       damageClass: 'ice'
     });

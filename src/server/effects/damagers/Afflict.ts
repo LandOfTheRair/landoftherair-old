@@ -26,8 +26,8 @@ export class Afflict extends SpellEffect {
 
     this.magicalAttack(caster, target, {
       skillRef,
-      atkMsg: `You ${isCrit ? 'critically ' : ' '}afflict ${target.name}!`,
-      defMsg: `${this.getCasterName(caster, target)} ${isCrit ? 'critically ' : ' '}afflicted you!`,
+      atkMsg: `You ${isCrit ? 'critically ' : ' '}afflict %0!`,
+      defMsg: `%0 ${isCrit ? 'critically ' : ' '}afflicted you!`,
       damage: Math.floor(damage * damageMultiplier),
       damageClass: 'necrotic'
     });

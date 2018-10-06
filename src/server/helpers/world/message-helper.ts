@@ -4,6 +4,7 @@ import { Character } from '../../../shared/models/character';
 import { VisualEffect } from './visual-effects';
 
 import { CensorSensor, CensorTier } from 'censor-sensor';
+import { CharacterHelper } from '../character/character-helper';
 
 const censor = new CensorSensor();
 censor.disableTier(CensorTier.CommonProfanity);
@@ -24,12 +25,25 @@ export class MessageHelper {
     return censor.cleanProfanity(message || '');
   }
 
+  static formatMessageFor(char: Character, message: string, args: Character[]) {
+    if(!args.length) return message;
+
+    return [...args].reduce((str, c, idx) => {
+      if(!c) return str;
+
+      let name = c.name;
+      if(!CharacterHelper.isAbleToSee(char) || !char.canSeeThroughStealthOf(c)) name = 'somebody';
+      if(char === c) name = 'yourself';
+      return str.replace(new RegExp(`%${idx}`), name);
+    }, message);
+  }
+
   static sendClientMessage(char: Character, message, rootCharacter?: Character) {
     if(!char.isPlayer()) return;
     char.$$room.sendPlayerLogMessage(char, this.cleanMessage(message), rootCharacter);
   }
 
-  static sendClientMessageToRadius(char: Character, message, radius = 4, except = [], useSight = false) {
+  static sendClientMessageToRadius(char: Character, message, radius = 4, except = [], useSight = false, formatArgs = []) {
     const sendMessage = isString(message) ? { message, subClass: 'chatter' } : message;
 
     const charRegion = char.$$room.state.getSuccorRegion(char);
@@ -38,6 +52,8 @@ export class MessageHelper {
 
       // prevent messages through walls
       if(p.$$room.state.getSuccorRegion(p) !== charRegion) return;
+
+      if(formatArgs.length > 0) sendMessage.message = MessageHelper.formatMessageFor(p, sendMessage.message, formatArgs);
 
       // outta range, generate a "you heard X in the Y dir" message
       if(radius > 4 && char.distFrom(p) > 5) {

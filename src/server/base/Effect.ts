@@ -145,11 +145,6 @@ export class Effect {
 
     CombatHelper.magicalAttack(caster, ref, opts);
   }
-
-  getCasterName(caster: Character, target: Character): string {
-    if(!CharacterHelper.isAbleToSee(target)) return 'somebody';
-    return target.canSeeThroughStealthOf(caster) ? caster.name : 'somebody';
-  }
 }
 
 export class SpellEffect extends Effect {

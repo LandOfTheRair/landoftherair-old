@@ -42,12 +42,10 @@ export class IceMist extends SpellEffect {
       if(dist >= 2) damageMod = 0.75;
       if(dist >= 3) damageMod = 0.5;
 
-      const atkName = refTarget === caster ? 'yourself' : refTarget.name;
-
       this.magicalAttack(caster, refTarget, {
         skillRef,
-        atkMsg: `You engulf ${atkName} in a chilling mist!`,
-        defMsg: `${this.getCasterName(caster, refTarget)} engulfed you in a chilling mist!`,
+        atkMsg: `You engulf %0 in a chilling mist!`,
+        defMsg: `%0 engulfed you in a chilling mist!`,
         damage: Math.floor(damage * damageMod),
         damageClass: 'ice'
       });

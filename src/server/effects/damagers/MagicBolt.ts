@@ -18,8 +18,8 @@ export class MagicBolt extends SpellEffect {
 
     this.magicalAttack(caster, target, {
       skillRef,
-      atkMsg: `You fire a magic bolt at ${target.name}!`,
-      defMsg: `${this.getCasterName(caster, target)} hit you with a magic bolt!`,
+      atkMsg: `You fire a magic bolt at %0!`,
+      defMsg: `%0 hit you with a magic bolt!`,
       damage,
       damageClass: 'energy'
     });

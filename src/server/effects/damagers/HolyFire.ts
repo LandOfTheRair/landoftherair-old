@@ -37,12 +37,10 @@ export class HolyFire extends SpellEffect {
         damageMultiplier += caster.getTraitLevel('HolyAffliction') * 0.5;
       }
 
-      const atkName = refTarget === caster ? 'yourself' : refTarget.name;
-
       this.magicalAttack(caster, refTarget, {
         skillRef,
-        atkMsg: `You ${isCrit ? 'critically ' : ' '}scorch ${atkName}!`,
-        defMsg: `${this.getCasterName(caster, refTarget)} ${isCrit ? 'critically ' : ' '}scorched you with holy fire!`,
+        atkMsg: `You ${isCrit ? 'critically ' : ' '}scorch %0!`,
+        defMsg: `%0 ${isCrit ? 'critically ' : ' '}scorched you with holy fire!`,
         damage: Math.floor(damage * damageMultiplier),
         damageClass: 'fire'
       });

@@ -16,8 +16,8 @@ export class Combust extends SpellEffect {
 
     this.magicalAttack(caster, target, {
       skillRef,
-      atkMsg: `You combust ${target.name}!`,
-      defMsg: `${this.getCasterName(caster, target)} set you ablaze!`,
+      atkMsg: `You combust %0!`,
+      defMsg: `%0 set you ablaze!`,
       damage,
       damageClass: 'fire'
     });
