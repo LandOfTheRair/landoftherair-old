@@ -1,0 +1,98 @@
+- name: Antanian Helm
+  stats:
+    armorClass: 2
+  sprite: 235
+  desc: "a simple iron helm"
+  value: 100
+
+- name: Rylt Renegade Helm
+  stats:
+    armorClass: 3
+    defense: 1
+    offense: 1
+  sprite: 235
+  desc: "a simple iron helm engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  value: 100
+
+- name: Yzalt Combat Helm
+  stats:
+    armorClass: 5
+  randomStats:
+    defense:
+      min: 0
+      max: 1
+    offense:
+      min: 0
+      max: 1
+  sprite: 374
+  desc: "a large iron helm with a flared-out neck protector"
+  value: 200
+
+- name: Yzalt Health Helm
+  stats:
+    armorClass: 3
+  randomStats:
+    hp:
+      min: 0
+      max: 35
+  sprite: 374
+  desc: "a large iron helm with a flared-out neck protector"
+  value: 244
+
+- name: Yzalt Mana Helm
+  stats:
+    armorClass: 3
+  randomStats:
+    mp:
+      min: 0
+      max: 35
+  sprite: 374
+  desc: "a large iron helm with a flared-out neck protector"
+  value: 287
+
+- name: Steffen Crown
+  stats:
+    str: 1
+    agi: 1
+    dex: 1
+    con: 1
+    int: 1
+    wis: 1
+    wil: 1
+    luk: 1
+    cha: 1
+  sprite: 127
+  desc: "the regal crown of the Steffen"
+  value: 3600
+
+  requirements:
+    alignment: Good
+
+- name: Heniz DarkVision Helm
+  effect:
+    name: DarkVision
+    autocast: true
+  sprite: 373
+  desc: "a glow in the dark helmet with eyes that let you see in the dark"
+  value: 3500
+
+  requirements:
+    alignment: Evil
+
+- name: Crazed Tonwin Helm
+  quality: 5
+  stats:
+    armorClass: 10
+    offense: 5
+    defense: 5
+    fireResist: 100
+    iceResist: 100
+  sprite: 973
+  isHeavy: true
+  desc: "a mesmerizing helm bathed in a crimson ether glow"
+  value: 22042
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

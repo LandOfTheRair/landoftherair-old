@@ -1,0 +1,17 @@
+- name: Antanian Shortsword
+  desc: "an iron shortsword"
+  tier: 1
+  type: Shortsword
+  value: 85
+  sprite: 195
+
+- name: Rylt Renegade Shortsword
+  desc: "an iron shortsword engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  stats:
+    offense: 1
+    accuracy: 1
+    weaponArmorClass: 1
+  tier: 1
+  type: Shortsword
+  value: 105
+  sprite: 195

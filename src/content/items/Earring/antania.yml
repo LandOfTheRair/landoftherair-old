@@ -1,0 +1,172 @@
+
+- name: Antanian Earring
+  stats:
+    defense: 1
+    offense: 1
+  sprite: 900
+  desc: "a golden earring"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 9
+
+- name: Tower Thief Earring
+  stats:
+    offense: 1
+  trait:
+    name:
+      - DarkerShadows
+      - ShadowSheath
+    level:
+      min: 1
+      max: 2
+  sprite: 900
+  desc: "a golden earring with a shadowy aura"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 13
+    class:
+      - "Thief"
+
+- name: Tower Warrior Earring
+  stats:
+    offense: 1
+  trait:
+    name:
+      - ForcefulStrike
+      - Riposte
+    level:
+      min: 1
+      max: 2
+  sprite: 900
+  desc: "a golden earring with tiny swords carved into it"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 13
+    class:
+      - "Warrior"
+
+- name: Tower Mage Earring
+  stats:
+    defense: 1
+  trait:
+    name:
+      - ForgedFire
+      - FrostedTouch
+    level:
+      min: 1
+      max: 2
+  sprite: 900
+  desc: "a golden earring that changes temperature rapidly in your hands"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 13
+    class:
+      - "Mage"
+
+- name: Tower Healer Earring
+  stats:
+    defense: 1
+  trait:
+    name:
+      - HealingFocus
+      - NecroticFocus
+    level:
+      min: 1
+      max: 2
+  sprite: 900
+  desc: "a golden earring bathed in a holy light"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 13
+    class:
+      - "Healer"
+
+- name: Maze Thief Earring
+  stats:
+    offense: 1
+  trait:
+    name:
+      - DarkerShadows
+      - ShadowSheath
+    level:
+      min: 1
+      max: 3
+  sprite: 900
+  desc: "a golden earring with a shadowy aura"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 15
+    class:
+      - "Thief"
+
+- name: Maze Warrior Earring
+  stats:
+    offense: 1
+  trait:
+    name:
+      - ForcefulStrike
+      - Riposte
+    level:
+      min: 1
+      max: 3
+  sprite: 900
+  desc: "a golden earring with tiny swords carved into it"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 15
+    class:
+      - "Warrior"
+
+- name: Maze Mage Earring
+  stats:
+    defense: 1
+  trait:
+    name:
+      - ForgedFire
+      - FrostedTouch
+    level:
+      min: 1
+      max: 3
+  sprite: 900
+  desc: "a golden earring that changes temperature rapidly in your hands"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 15
+    class:
+      - "Mage"
+
+- name: Maze Healer Earring
+  stats:
+    defense: 1
+  trait:
+    name:
+      - HealingFocus
+      - NecroticFocus
+    level:
+      min: 1
+      max: 3
+  sprite: 900
+  desc: "a golden earring bathed in a holy light"
+  value: 1000
+  binds: true
+
+  requirements:
+    level: 15
+    class:
+      - "Healer"

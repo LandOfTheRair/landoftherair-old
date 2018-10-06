@@ -1,0 +1,61 @@
+
+
+- name: Librarian Healer Amulet
+  stats:
+    wis: 2
+    wil: 1
+    defense: 3
+    mpregen: 5
+  binds: true
+  sprite: 3
+  desc: "an golden amulet set with an ice jade butterfly"
+  value: 5000
+
+  requirements:
+    level: 14
+
+- name: Librarian Mage Amulet
+  stats:
+    int: 2
+    wil: 1
+    defense: 3
+    mpregen: 5
+  binds: true
+  sprite: 348
+  desc: "an amulet set with a polished gem made of refined crimson ether"
+  value: 5000
+
+  requirements:
+    level: 14
+
+- name: Librarian Warrior Amulet
+  stats:
+    str: 2
+    mitigation: 3
+  binds: true
+  sprite: 2
+  desc: "a silver amulet set with a pair of small spider fangs"
+  value: 5000
+
+  requirements:
+    level: 14
+
+- name: Librarian Thief Amulet
+  stats:
+    agi: 2
+    stealth: 50
+  binds: true
+  sprite: 1
+  desc: "an amulet set with a purple gem that reflects the night of the moon"
+  value: 5000
+
+  requirements:
+    level: 14
+
+- name: Librarian Undecided Amulet
+  stats:
+    hp: 200
+  binds: true
+  sprite: 231
+  desc: "a gold chain formerly used as a bookmark"
+  value: 5000

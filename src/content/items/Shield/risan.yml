@@ -1,0 +1,69 @@
+
+
+- name: Mines Fire Offense Shield
+  stats:
+    armorClass: 14
+    fireResist: 300
+    offense: 4
+  desc: "a shield forged from Risan metals designed to protect against fire"
+  binds: true
+  value: 3004
+  sprite: 329
+
+- name: Mines Fire Defense Shield
+  stats:
+    armorClass: 14
+    fireResist: 300
+    defense: 4
+  desc: "a shield forged from Risan metals designed to protect against fire"
+  binds: true
+  value: 3004
+  sprite: 329
+
+- name: Crazed Tonwin Shield
+  quality: 5
+  stats:
+    armorClass: 25
+    defense: 5
+  isHeavy: true
+  desc: "a highly-reflective shield engraved with the head of a snake and stained with crimson ether"
+  value: 21151
+  sprite: 1004
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25
+
+- name: Frostlands Shield
+  stats:
+    armorClass: 17
+    weaponArmorClass: 3
+    offense: 2
+    defense: 2
+  tier: 6
+  desc: "a wrought iron shield engraved with PROPERTY OF BRIGANDS, PLEASE RETURN IF FOUND"
+  value: 13333
+  sprite: 329
+  binds: true
+
+  requirements:
+    level: 21
+
+- name: Frostlands Royal Shield
+  damageClass: 'ice'
+  stats:
+    armorClass: 20
+    weaponArmorClass: 7
+    fireResist: 300
+    iceResist: 300
+    offense: 2
+    defense: 2
+  tier: 6
+  desc: "a highly-polished shield engraved with the mark of the Risan royal family which is covered in a layer of frost"
+  value: 21451
+  sprite: 864
+  binds: true
+
+  requirements:
+    level: 25

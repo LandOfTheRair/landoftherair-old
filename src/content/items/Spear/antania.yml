@@ -1,0 +1,20 @@
+
+- name: Tower Spear Weak
+  desc: "a sharp spike made of a riyan metal sat atop a wooden pole"
+  tier: 3
+  type: Staff
+  value: 650
+  sprite: 51
+
+  requirements:
+    level: 12
+
+- name: Tower Spear Strong
+  desc: "a sharp spike made of a riyan metal sat atop a wooden pole"
+  tier: 4
+  type: Staff
+  value: 650
+  sprite: 51
+
+  requirements:
+    level: 14

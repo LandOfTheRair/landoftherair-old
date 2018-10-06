@@ -1,0 +1,68 @@
+- name: Antanian Cloak
+  stats:
+    armorClass: 1
+  desc: "a woolen cloak"
+  value: 1
+  sprite: 211
+
+- name: Rylt Renegade Cloak
+  stats:
+    armorClass: 1
+    defense: 1
+    offense: 1
+  desc: "a woolen cloak engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  value: 1
+  sprite: 211
+
+- name: Yzalt Mummy Cloak
+  randomStats:
+    agi:
+      min: 0
+      max: 2
+    stealth:
+      min: 5
+      max: 10
+  desc: "a disintegrating cloak made from the wrappings of a mummy that seem to blend in with your surroundings"
+  value: 760
+  sprite: 321
+  binds: true
+
+- name: Yzalt Fungus Cloak
+  stats:
+    armorClass: 2
+    stealth: 5
+    defense: 1
+    hpregen: 3
+  desc: "a woolen cloak stained green from the nearby fungus growing on it"
+  value: 679
+  sprite: 16
+  binds: true
+
+- name: Tower Trash Cloak
+  stats:
+    armorClass: 5
+    defense: 1
+    offense: 1
+  desc: "a woolen cloak"
+  value: 10
+  sprite: 211
+
+- name: Dedlaen Ghost Cloak
+  quality: 5
+  stats:
+    armorClass: 1
+    wil: 2
+    defense: 3
+    mpregen: 10
+    energyResist: 150
+  effect:
+    name: Transmute
+    uses: 100
+    potency: 20
+  desc: "a silken cloak made from the ethereal fibers of a ghost"
+  value: 3699
+  sprite: 18
+  binds: true
+
+  requirements:
+    level: 15

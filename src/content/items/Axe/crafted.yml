@@ -1,0 +1,38 @@
+
+
+- name: Antanian Silver Axe
+  desc: "a roughly-made silver axe that appears to be a twig attached to forged metal"
+  stats:
+    offense: 2
+    defense: 2
+  tier: 2
+  type: Axe
+  value: 2500
+  sprite: 165
+
+- name: Risan Silver Axe
+  desc: "a crudely-made silver axe that appears to be a twig attached to forged metal"
+  stats:
+    offense: 3
+    defense: 3
+  tier: 5
+  type: Axe
+  value: 3500
+  sprite: 165
+
+  requirements:
+    level: 15
+
+- name: Ether Axe
+  desc: "an axe forged from ether"
+  tier: 5
+  stats:
+    offense: 5
+    defense: 5
+  type: Axe
+  value: 2346
+  sprite: 41
+  binds: true
+
+  requirements:
+    level: 15

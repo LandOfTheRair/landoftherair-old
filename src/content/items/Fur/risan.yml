@@ -1,0 +1,93 @@
+  
+
+- name: Crazed Beast Fur
+  desc: "a coat of fur"
+  stats:
+    armorClass: 10
+    fireResist: 30
+    iceResist: 30
+  value: 5100
+  sprite: 297
+
+- name: Crazed Bear Fur
+  desc: "a warm coat of bear fur"
+  stats:
+    armorClass: 14
+    fireResist: 50
+    iceResist: 50
+    poisonResist: 10
+    diseaseResist: 10
+  value: 5300
+  sprite: 218
+
+- name: Mines Griffon Fur
+  desc: "a sparkling coat of fur tanned from the hide of a griffon"
+  stats:
+    armorClass: 23
+    fireResist: 150
+    iceResist: 150
+    offense: 4
+    defense: 4
+  value: 10011
+  sprite: 219
+
+  requirements:
+    level: 13
+
+- name: Frostlands Yeti Fur
+  desc: "the tanned hide of a cave yeti"
+  stats:
+    fireResist: 175
+    iceResist: 175
+  randomStats:
+    armorClass:
+      min: 18
+      max: 22
+    offense:
+      min: 2
+      max: 3
+    defense:
+      min: 2
+      max: 3
+  value: 3200
+  sprite: 278
+
+  requirements:
+    level: 20
+
+- name: Frostlands Strong Yeti Fur
+  desc: "the tanned hide of a great cave yeti"
+  stats:
+    fireResist: 200
+    iceResist: 200
+  randomStats:
+    armorClass:
+      min: 22
+      max: 25
+    offense:
+      min: 2
+      max: 3
+    defense:
+      min: 2
+      max: 3
+  value: 3300
+  sprite: 278
+
+  requirements:
+    level: 21
+
+- name: Abomniblus Fur
+  quality: 5
+  desc: "the tanned fur of an abominable yeti"
+  stats:
+    fireResist: 300
+    iceResist: 300
+    poisonResist: 100
+    diseaseResist: 50
+    armorClass: 30
+    defense: 5
+  value: 3300
+  sprite: 358
+
+  requirements:
+    level: 25

@@ -1,0 +1,31 @@
+- name: Antanian Shortbow
+  stats:
+    accuracy: 3
+  desc: "a wooden shortbow"
+  tier: 1
+  type: Ranged
+  value: 95
+  sprite: 199
+  
+- name: Rylt Renegade Shortbow
+  stats:
+    accuracy: 5
+  desc: "a wooden shortbow engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  tier: 1
+  type: Ranged
+  value: 195
+  sprite: 199
+
+- name: Heniz Poison Shortbow
+  desc: "a crudely-carved shortbow with poison tipped arrows"
+  tier: 2
+  effect:
+    name: Poison
+    potency: 7
+    chance: 75
+  type: Ranged
+  value: 195
+  sprite: 390
+
+  requirements:
+    level: 5

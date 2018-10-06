@@ -1,0 +1,23 @@
+
+
+- name: Antanian Silver Greatmace
+  desc: "a roughly-made silver greatmace that appears to be a branch attached to forged metal"
+  stats:
+    offense: 2
+    defense: 1
+    accuracy: 3
+  tier: 2
+  type: Mace
+  value: 2500
+  sprite: 325
+
+- name: Risan Silver Greatmace
+  desc: "a crudely-made silver greatmace that appears to be a branch attached to forged metal"
+  stats:
+    offense: 3
+    defense: 3
+    accuracy: 5
+  tier: 5
+  type: Mace
+  value: 3500
+  sprite: 325

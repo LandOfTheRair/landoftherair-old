@@ -1,0 +1,25 @@
+
+
+- name: Risan Crossbow
+  desc: "an wooden crossbow crafted in the land of Risan"
+  tier: 5
+  type: Ranged
+  value: 1500
+  sprite: 201
+
+  requirements:
+    level: 15
+
+- name: Frostlands Brigand Crossbow
+  stats:
+    offense: 3
+  desc: "a dual-purpose engraved with PROPERTY OF BRIGANDS, PLEASE RETURN IF FOUND"
+  offhand: true
+  tier: 6
+  type: Ranged
+  value: 12185
+  sprite: 201
+  binds: true
+
+  requirements:
+    level: 21

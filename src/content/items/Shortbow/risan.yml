@@ -1,0 +1,12 @@
+
+
+- name: Risan Shortbow
+  desc: "an wooden shortbow crafted in the land of Risan"
+  tier: 5
+  type: Ranged
+  value: 2000
+  sprite: 199
+  
+  requirements:
+    level: 15
+

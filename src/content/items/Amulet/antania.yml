@@ -1,0 +1,106 @@
+- name: Antanian Amulet
+  stats:
+    defense: 1
+  sprite: 231
+  desc: "a simple gold chain amulet"
+  value: 1000
+
+- name: Rylt Apprentice Regen Amulet
+  stats:
+    mpregen: 3
+  binds: true
+  sprite: 319
+  desc: "an amulet crafted from many pearls"
+  value: 500
+
+- name: Saraxa Regen Amulet
+  quality: 5
+  stats:
+    mpregen: 10
+    defense: 2
+  binds: true
+  tellsBind: true
+  sprite: 319
+  desc: "an amulet crafted from many pearls and engraved with the markings of a shaman"
+  value: 1000
+
+  requirements:
+    level: 5
+
+- name: Steffen Wisdom Amulet
+  randomStats:
+    wis:
+      min: 1
+      max: 2
+    defense:
+      min: 1
+      max: 2
+  stats:
+    mpregen: 5
+  binds: true
+  sprite: 489
+  desc: "an amulet set with a jade dove"
+  value: 1000
+
+  requirements:
+    level: 7
+    profession:
+      - "Healer"
+
+- name: Yzalt Combat Amulet
+  randomStats:
+    offense:
+      min: 1
+      max: 3
+    defense:
+      min: 1
+      max: 3
+  binds: true
+  sprite: 491
+  desc: "an amulet set with a purple skull"
+  value: 1010
+
+  requirements:
+    level: 5
+
+- name: Crazed Saraxa Amulet
+  quality: 5
+  stats:
+    int: 1
+    wis: 1
+    defense: 3
+    magicalDamageBoost: 40
+    healingBoost: 65
+    mp: 50
+  binds: true
+  tellsBind: true
+  sprite: 318
+  desc: "an amulet set with a polished gem made of refined crimson ether"
+  value: 3000
+
+  trait:
+    name: MagicFocus
+    level: 2
+
+  requirements:
+    level: 15
+
+- name: Insane Ranata Amulet
+  quality: 5
+  stats:
+    int: 3
+    wis: 3
+    defense: 4
+    mp: 100
+  binds: true
+  tellsBind: true
+  sprite: 360
+  desc: "an shimmering golden amulet set with a sparkling diamond"
+  value: 10000
+
+  trait:
+    name: CalmMind
+    level: 5
+
+  requirements:
+    level: 30

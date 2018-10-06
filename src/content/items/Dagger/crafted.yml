@@ -1,0 +1,44 @@
+
+- name: Antanian Copper Dagger
+  desc: "a roughly-made copper dagger that appears to be a twig attached to forged metal"
+  stats:
+    offense: 1
+    defense: 1
+    accuracy: 3
+  isSackable: true
+  tier: 2
+  type: Dagger
+  value: 2500
+  sprite: 205
+
+- name: Risan Copper Dagger
+  desc: "a crudely-made copper dagger that appears to be a twig attached to forged metal"
+  stats:
+    offense: 1
+    defense: 1
+    accuracy: 6
+  isSackable: true
+  tier: 5
+  type: Dagger
+  value: 3500
+  sprite: 205
+
+  requirements:
+    level: 15
+
+- name: Ether Dagger
+  desc: "a dagger forged from ether"
+  tier: 5
+  stats:
+    offense: 4
+    defense: 4
+    accuracy: 6
+  returnsOnThrow: true
+  offhand: true
+  type: Dagger
+  value: 2347
+  sprite: 42
+  binds: true
+
+  requirements:
+    level: 15

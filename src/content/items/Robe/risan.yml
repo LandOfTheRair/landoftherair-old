@@ -1,0 +1,83 @@
+
+
+- name: Crazed Deer Robe
+  stats:
+    energyResist: 20
+    fireResist: 20
+    iceResist: 20
+    necroticResist: 20
+    poisonResist: 20
+  desc: "a shimmering golden robe made from the hide of a crazed deer"
+  value: 2500
+  sprite: 385
+
+  requirements:
+    level: 11
+
+- name: Frostlands Sabretooth Robe
+  stats:
+    iceResist: 200
+    fireResist: 50
+    poisonResist: 50
+    diseaseResist: 25
+
+  randomStats:
+    offense:
+      min: 1
+      max: 3
+    defense:
+      min: 1
+      max: 3
+    armorClass:
+      min: 3
+      max: 7
+
+  desc: "the tanned hide of a sabretooth"
+  value: 3500
+  sprite: 286
+
+  requirements:
+    level: 25
+
+- name: Frostlands Frostfang Robe
+  quality: 5
+  stats:
+    offense: 3
+    defense: 3
+    armorClass: 10
+    iceResist: 300
+    fireResist: 100
+    poisonResist: 75
+    diseaseResist: 25
+
+  desc: "the tanned hide of a big sabretooth"
+  value: 3500
+  sprite: 286
+
+  requirements:
+    level: 25
+
+- name: Frostlands Noble Robe
+  stats:
+    offense: 5
+    defense: 5
+
+  desc: "a royal robe made of the finest threads that can be found in Risan"
+  value: 3500
+  sprite: 101
+
+- name: Frostlands Brigand Combat Robe
+  randomStats:
+    offense:
+      min: 0
+      max: 10
+    defense:
+      min: 0
+      max: 10
+  desc: "a yellow robe sewn with a black hem"
+  value: 17004
+  sprite: 380
+  binds: true
+
+  requirements:
+    level: 21

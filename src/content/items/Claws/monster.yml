@@ -1,0 +1,43 @@
+- name: Basic Claws
+  tier: 1
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0
+
+- name: Medium Claws
+  tier: 2
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0
+
+- name: Maze Mummy Claws
+  tier: 3
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0
+  effect:
+    name: Disease
+    potency: 10
+    chance: 10
+
+- name: Maze Ghoul Claws
+  tier: 3
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0
+  effect:
+    name: Stun
+    potency: 10
+    chance: 10
+
+- name: Maze Skeleton Claws
+  tier: 4
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0
+
+- name: Mines Animal Claws
+  tier: 5
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0

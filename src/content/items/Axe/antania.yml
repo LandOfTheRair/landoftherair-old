@@ -1,0 +1,45 @@
+- name: Antanian Axe
+  desc: "an iron axe"
+  tier: 1
+  type: Axe
+  value: 85
+  sprite: 165
+
+- name: Rylt Renegade Axe
+  stats:
+    accuracy: 2
+    offense: 1
+  desc: "an iron axe engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  tier: 1
+  type: Axe
+  value: 85
+  sprite: 165
+
+- name: Yzalt RatGuard Axe
+  stats:
+    offense: 1
+    defense: 1
+  desc: "a crudely stone axe with many clawmarks on the shaft"
+  tier: 2
+  type: Axe
+  value: 385
+  sprite: 52
+  binds: true
+
+- name: Dedlaen Dueling Axe
+  quality: 5
+  desc: "a finely-balanced dueling axe with a gigantic grip"
+  tier: 5
+  stats:
+    offense: 3
+    defense: 3
+    accuracy: 3
+  offhand: true
+  type: Axe
+  value: 4346
+  sprite: 451
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 15

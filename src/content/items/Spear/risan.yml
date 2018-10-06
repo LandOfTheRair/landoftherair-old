@@ -1,0 +1,19 @@
+
+
+- name: Risan Royal Spear
+  quality: 5
+  desc: "a regal spear befitting of the royal family of Risan"
+  stats:
+    int: 5
+    str: 5
+    defense: 10
+    offense: 10
+  tier: 8
+  type: Staff
+  value: 956712
+  sprite: 458
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 35

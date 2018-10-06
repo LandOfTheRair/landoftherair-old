@@ -1,0 +1,27 @@
+
+
+- name: Risan Breastplate
+  stats:
+    armorClass: 20
+  sprite: 210
+  desc: "a simple iron breastplate forged in the lands of Risan"
+  value: 15000
+
+  requirements:
+    level: 15
+
+- name: Mines Trash Breastplate
+  stats:
+    armorClass: 12
+    fireResist: 150
+  sprite: 210
+  desc: "an iron breastplate used by the miners of Risan"
+  value: 2504
+
+- name: Frostlands Trash Breastplate
+  stats:
+    armorClass: 14
+    iceResist: 150
+  sprite: 210
+  desc: "an insulatory iron breastplate"
+  value: 2509

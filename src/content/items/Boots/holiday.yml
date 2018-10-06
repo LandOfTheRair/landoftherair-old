@@ -1,0 +1,9 @@
+
+- name: Halloween Moon Boots
+  stats:
+    magicalResist: 100
+  tier: 1
+  sprite: 288
+  desc: "a mesmerizing pair of red boots depicting a dark moon rising over a bright sunscape"
+  value: 2000
+  binds: true

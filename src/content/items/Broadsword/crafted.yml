@@ -1,0 +1,17 @@
+
+
+- name: Ether Broadsword
+  desc: "a broadsword forged from ether"
+  stats:
+    weaponArmorClass: 8
+    accuracy: 4
+    offense: 3
+    defense: 3
+  tier: 5
+  type: Onehanded
+  value: 2345
+  sprite: 46
+  binds: true
+
+  requirements:
+    level: 15

@@ -1,0 +1,23 @@
+
+- name: Antanian Copper Longsword
+  desc: "a roughly-made copper longsword that appears to be a twig attached to forged metal"
+  stats:
+    offense: 3
+    defense: 3
+  tier: 2
+  type: Onehanded
+  value: 2500
+  sprite: 197
+
+- name: Risan Copper Longsword
+  desc: "a crudely-made copper longsword that appears to be a twig attached to forged metal"
+  stats:
+    offense: 5
+    defense: 5
+  tier: 5
+  type: Onehanded
+  value: 3500
+  sprite: 197
+
+  requirements:
+    level: 15

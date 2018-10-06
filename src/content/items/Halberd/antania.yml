@@ -1,0 +1,71 @@
+
+- name: Antanian Halberd
+  desc: "an iron-tipped halberd"
+  stats:
+    armorClass: 1
+    accuracy: 1
+  tier: 1
+  type: Polearm
+  value: 145
+  sprite: 230
+
+- name: Rylt Renegade Halberd
+  desc: "an iron-tipped halberd engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  stats:
+    armorClass: 2
+    offense: 1
+    accuracy: 2
+  tier: 1
+  type: Polearm
+  value: 145
+  sprite: 230
+
+- name: Tower Halberd Weak
+  desc: "a riyan halberd"
+  stats:
+    armorClass: 2
+    weaponArmorClass: 2
+    offense: 3
+  tier: 3
+  type: Polearm
+  value: 1451
+  sprite: 44
+  binds: true
+
+  requirements:
+    level: 12
+
+- name: Tower Halberd Strong
+  desc: "a riyan halberd"
+  stats:
+    armorClass: 2
+    weaponArmorClass: 2
+    offense: 3
+  tier: 4
+  type: Polearm
+  value: 1451
+  sprite: 44
+  binds: true
+
+  requirements:
+    level: 14
+    
+- name: Maze Revenant Halberd
+  desc: "a halberd that smells of death"
+  stats:
+    armorClass: 3
+    weaponArmorClass: 3
+    offense: 2
+    defense: -2
+  effect:
+    name: NecroticAura
+    potency: 2
+    autocast: true
+  tier: 4
+  type: Polearm
+  value: 14511
+  sprite: 230
+  binds: true
+
+  requirements:
+    level: 15

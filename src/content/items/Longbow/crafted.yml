@@ -1,0 +1,13 @@
+
+- name: Ether Longbow
+  desc: "a longbow forged from ether"
+  tier: 5
+  stats:
+    accuracy: 4
+  type: Ranged
+  value: 2390
+  sprite: 47
+  binds: true
+
+  requirements:
+    level: 15

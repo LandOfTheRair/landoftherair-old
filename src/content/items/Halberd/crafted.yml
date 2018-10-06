@@ -1,0 +1,40 @@
+
+- name: Antanian Copper Halberd
+  desc: "a roughly-made copper halberd that appears to be a branch attached to forged metal"
+  stats:
+    armorClass: 4
+    offense: 3
+    accuracy: 4
+  tier: 2
+  type: Polearm
+  value: 2500
+  sprite: 230
+
+- name: Risan Copper Halberd
+  desc: "a crudely-made copper halberd that appears to be a branch attached to forged metal"
+  stats:
+    armorClass: 8
+    offense: 5
+    accuracy: 6
+  tier: 5
+  type: Polearm
+  value: 3500
+  sprite: 230
+
+  requirements:
+    level: 15
+
+- name: Ether Halberd
+  desc: "a halberd forged from ether"
+  tier: 5
+  stats:
+    armorClass: 3
+    weaponArmorClass: 10
+    offense: 4
+  type: Polearm
+  value: 2344
+  sprite: 44
+  binds: true
+
+  requirements:
+    level: 15

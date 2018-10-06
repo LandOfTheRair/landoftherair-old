@@ -1,0 +1,45 @@
+
+
+- name: Mines Rockman Boots
+  tier: 3
+  sprite: 232
+  desc: "a pair of leather boots"
+  value: 75
+
+- name: Griffon Spring Boots
+  quality: 5
+  stats:
+    offense: 3
+    defense: 3
+  effect:
+    name: FleetOfFoot
+    autocast: true
+  tier: 5
+  sprite: 372
+  desc: "a pair of spongy, springy boots that allows you to move more quickly"
+  value: 1980
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 20
+
+- name: Frostlands Boots
+  stats:
+    fireResist: 175
+    iceResist: 175
+  randomStats:
+    offense:
+      min: 2
+      max: 4
+    defense:
+      min: 2
+      max: 4
+    armorClass:
+      min: 3
+      max: 5
+  tier: 6
+  sprite: 287
+  desc: "a pair of white-fur boots that keep you warm when traversing the frostlands"
+  value: 2500
+  binds: true

@@ -28,56 +28,69 @@ class ItemLoader {
   static async loadAllItems() {
     await DB.init();
 
-    recurse(`${__dirname}/../../content/items`).then(async files => {
-      const filePromises = files.map(file => {
+    let filePromises = [];
+
+    try {
+      const files = await recurse(`${__dirname}/../../content/items`);
+
+      filePromises = files.map(file => {
         const basePath = file.split('items' + path.sep)[1];
         const basePathLeftSide = basePath.split(path.sep)[0];
         const itemClassRoot = path.basename(basePathLeftSide, path.extname(basePathLeftSide));
-
-        const itemsOfType = YAML.load(file);
-
+  
+        let itemsOfType = null;
+        try {
+          itemsOfType = YAML.load(file);
+        } catch(e) {
+          console.error(`Failed to parse file: ${file}`);
+          process.exit(-1);
+        }
+  
         const promises = itemsOfType.map(itemData => {
           itemData.itemClass = itemClassRoot;
           itemData.type = itemData.type || SkillClassNames.Martial;
           if(!itemData.stats) itemData.stats = {};
-
+  
           return new Promise((resolve) => {
             ItemLoader.conditionallyAddInformation(itemData);
             if(!ItemLoader.validateItem(itemData)) return reject(new Error(`${itemData.name} failed validation.`));
             return resolve(itemData);
           });
-
+  
         });
-
+  
         return promises;
       });
+    } catch(e) {
+      console.error(e);
+      process.exit(-1);
+    }
 
-      try {
-        const allItemData = await Promise.all(flatten(filePromises));
+    try {
+      const allItemData = await Promise.all(flatten(filePromises));
 
-        console.log('Validated all items.');
+      console.log('Validated all items.');
 
-        await DB.$items.remove({}, { multi: true });
+      await DB.$items.remove({}, { multi: true });
 
-        console.log('Removed old items.');
+      console.log('Removed old items.');
 
-        const allItemDataPromises = allItemData.map((itemData: any) => {
-          return DB.$items.insert(itemData);
-        });
-
-        await Promise.all(flatten(allItemDataPromises));
-
-        console.log('Inserted all items.');
-
-      } catch(e) {
-        console.error(e);
-        process.exit(-1);
-      }
-
-      Promise.all(flatten(filePromises)).then(() => {
-        console.log('Done');
-        process.exit(0);
+      const allItemDataPromises = allItemData.map((itemData: any) => {
+        return DB.$items.insert(itemData);
       });
+
+      await Promise.all(flatten(allItemDataPromises));
+
+      console.log('Inserted all items.');
+
+    } catch(e) {
+      console.error(e);
+      process.exit(-1);
+    }
+
+    Promise.all(flatten(filePromises)).then(() => {
+      console.log('Done');
+      process.exit(0);
     });
   }
 

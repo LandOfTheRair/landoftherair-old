@@ -1,0 +1,17 @@
+
+
+- name: Halloween Pumpkin Shield
+  enchantLevel: 5
+  stats:
+    armorClass: 30
+  desc: "a strangely resilient pumpkin filled with rock candy"
+  value: 2500
+  sprite: 545
+  binds: true
+
+  trait:
+    name: SweetTooth
+    level: 2
+
+  requirements:
+    level: 15

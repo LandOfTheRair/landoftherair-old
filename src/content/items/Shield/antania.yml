@@ -1,0 +1,86 @@
+- name: Antanian Wooden Shield
+  stats:
+    armorClass: 2
+  desc: "a wooden shield"
+  value: 200
+  sprite: 327
+
+- name: Risan Wooden Shield
+  desc: "an wooden shield crafted in the land of Risan"
+  tier: 5
+  value: 2000
+  sprite: 327
+
+  requirements:
+    level: 15
+
+- name: Antanian Bubble Shield
+  stats:
+    armorClass: 4
+  desc: "an wooden shield set with a circle of iron"
+  value: 400
+  sprite: 328
+
+- name: Antanian Iron Shield
+  stats:
+    armorClass: 5
+  desc: "a wrought iron shield"
+  value: 600
+  sprite: 329
+
+- name: Rylt Renegade Iron Shield
+  stats:
+    defense: 1
+    armorClass: 6
+  desc: "a wrought iron shield engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  value: 800
+  sprite: 329
+
+- name: Takwin Shield
+  stats:
+    defense: 2
+    armorClass: 8
+  desc: "a highly reflective shield emblazoned with the emblem of the renegades"
+  value: 1500
+  sprite: 330
+  binds: true
+
+  requirements:
+    level: 5
+
+- name: Tower Shield Weak
+  stats:
+    armorClass: 12
+  desc: "a wrought metal shield made from a riyan metal"
+  value: 1800
+  sprite: 514
+  binds: true
+
+  requirements:
+    level: 12
+
+- name: Tower Shield Strong
+  stats:
+    armorClass: 14
+  desc: "a wrought metal shield made from a riyan metal"
+  value: 1800
+  sprite: 514
+  binds: true
+
+  requirements:
+    level: 14
+
+- name: Dedlaen Death Knight Shield
+  quality: 5
+  stats:
+    armorClass: 16
+    defense: 3
+    offense: -3
+  desc: "a highly-reflective metal shield inscribed with a compass"
+  value: 25111
+  sprite: 517
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 17

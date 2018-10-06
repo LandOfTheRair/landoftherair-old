@@ -1,0 +1,51 @@
+
+
+- name: Risan Dagger
+  desc: "an iron dagger forged in the land of Risan"
+  isSackable: true
+  tier: 5
+  type: Dagger
+  value: 750
+  sprite: 205
+
+  requirements:
+    level: 15
+
+- name: Frostlands Brigand Dagger
+  stats:
+    offense: 3
+    accuracy: 5
+  desc: "a small iron dagger engraved with PROPERTY OF BRIGANDS, PLEASE RETURN IF FOUND in the hilt"
+  offhand: true
+  returnsOnThrow: true
+  tier: 6
+  type: Dagger
+  value: 12185
+  sprite: 205
+  binds: true
+
+  requirements:
+    level: 21
+
+- name: Frost Chakram
+  desc: "a frozen chakram created from magical icicles"
+  tier: 6
+  damageClass: 'ice'
+  stats:
+    accuracy: 3
+    defense: 4
+    iceResist: 200
+  effect:
+    name: ImbueFrost
+    potency: 10
+    autocast: true
+  offhand: true
+  returnsOnThrow: true
+  type: Ranged
+  value: 24347
+  sprite: 710
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

@@ -1,0 +1,170 @@
+- name: Deer Robe
+  stats:
+    energyResist: 30
+    fireResist: 10
+    iceResist: 10
+    necroticResist: 10
+    poisonResist: 10
+    defense: 1
+  desc: "a gold robe made from the hide of a deer"
+  value: 100
+  sprite: 385
+
+- name: Weredeer Robe
+  stats:
+    armorClass: 2
+    energyResist: 45
+    fireResist: 15
+    iceResist: 15
+    necroticResist: 15
+    poisonResist: 20
+    defense: 2
+  desc: "a silver robe made from the hide of a weredeer"
+  value: 1000
+  sprite: 389
+
+- name: Cave Apprentice Robe
+  stats:
+    armorClass: 1
+    defense: 1
+    energyResist: 10
+    mpregen: 2
+  binds: true
+  desc: "a red robe with a shimmering gold trim"
+  value: 400
+  sprite: 488
+
+- name: Saraxa Robe
+  quality: 5
+  stats:
+    armorClass: 3
+    defense: 2
+    magicalResist: 5
+    energyResist: 20
+    necroticResist: 20
+    mpregen: 5
+  trait:
+    name: MagicFocus
+    level: 1
+  binds: true
+  tellsBind: true
+  desc: "a red robe with a shimmering gold trim engraved with the markings of a shaman"
+  value: 1400
+  sprite: 488
+
+  requirements:
+    level: 5
+
+- name: Yzalt Straw Robe
+  stats:
+    armorClass: 2
+    stealth: 15
+    perception: 2
+    defense: 1
+    offense: 1
+    hpregen: 1
+    accuracy: 3
+    iceResist: 20
+  desc: "a robe made entirely of straw from the Yzalt farmlands"
+  value: 934
+  sprite: 486
+  binds: true
+
+  requirements:
+    level: 5
+
+- name: Ranata Robe
+  quality: 5
+  stats:
+    stealth: 30
+    perception: 10
+    defense: 1
+    offense: 1
+    hpregen: 3
+    mpregen: 3
+    fireResist: 30
+    iceResist: 30
+  desc: "a shimmering black robe sewn with golden string"
+  value: 1400
+  sprite: 376
+  binds: true
+
+  requirements:
+    level: 9
+
+- name: Tower Prot Robe
+  randomStats:
+    offense:
+      min: 0
+      max: 1
+    defense:
+      min: 0
+      max: 1
+  stats:
+    fireResist: 100
+    iceResist: 100
+    energyResist: 50
+    necroticResist: 50
+  desc: "a insulatory robe made of decaying skins of several animals"
+  value: 1700
+  sprite: 927
+  binds: true
+
+  requirements:
+    level: 12
+
+- name: Crazed Saraxa Robe
+  quality: 5
+  stats:
+    armorClass: 3
+    defense: 4
+    iceResist: 100
+    fireResist: 100
+    energyResist: 100
+    necroticResist: 100
+    hpregen: 2
+  trait:
+    name: CalmMind
+    level: 3
+  binds: true
+  tellsBind: true
+  desc: "a gold-trimmed robe stained crimson from ether mist"
+  value: 7891
+  sprite: 488
+
+  requirements:
+    level: 15
+
+- name: Dedlaen Death Knight Coat
+  quality: 5
+  stats:
+    fireResist: 150
+    iceResist: 150
+    energyResist: 100
+    necroticResist: 200
+  desc: "a brown coat that smells of death"
+  value: 1900
+  sprite: 485
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 13
+
+- name: Insane Ranata Robe
+  quality: 5
+  stats:
+    agi: 2
+    offense: 5
+    defense: 5
+    hpregen: 10
+    mpregen: 10
+    iceResist: 200
+    fireResist: 200
+
+  desc: "a tattered purple cloak, the hue of which is the result of a tainted ether experiment"
+  value: 9500
+  sprite: 98
+
+  requirements:
+    level: 30

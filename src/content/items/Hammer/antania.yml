@@ -1,0 +1,41 @@
+- name: Smith Hammer
+  desc: "a hammer used for repairing gear"
+  tier: 1
+  type: Mace
+  value: 0
+  sprite: 226
+
+- name: Antanian Hammer
+  desc: "a hammer used for hammering nails"
+  tier: 1
+  type: Mace
+  value: 100
+  sprite: 226
+  
+- name: Tower Hammer Weak
+  stats:
+    accuracy: -3
+    offense: 4
+  desc: "a hammer made of riyan metal and wood"
+  tier: 3
+  type: Mace
+  value: 1401
+  sprite: 45
+  binds: true
+
+  requirements:
+    level: 12
+
+- name: Tower Hammer Strong
+  stats:
+    accuracy: -3
+    offense: 4
+  desc: "a hammer made of riyan metal and wood"
+  tier: 4
+  type: Mace
+  value: 1401
+  sprite: 45
+  binds: true
+
+  requirements:
+    level: 14

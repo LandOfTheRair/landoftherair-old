@@ -1,0 +1,35 @@
+
+- name: Overseer Jigan Staff
+  quality: 5
+  desc: "a finely-milled quarterstaff emanating a strong magical energy"
+  stats:
+    int: 3
+    wis: 3
+    defense: 4
+  tier: 5
+  type: Staff
+  value: 9567
+  sprite: 268
+  binds: true
+  tellsBind: true
+
+  trait:
+    name: CalmMind
+    level: 5
+
+  requirements:
+    level: 17
+
+- name: Frostlands Brigand Staff
+  stats:
+    offense: 3
+    accuracy: 3
+  desc: "a wooden staff engraved with PROPERTY OF BRIGANDS, PLEASE RETURN IF FOUND"
+  tier: 6
+  type: Staff
+  value: 20185
+  sprite: 196
+  binds: true
+
+  requirements:
+    level: 21

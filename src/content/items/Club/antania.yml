@@ -1,0 +1,10 @@
+- name: Tutorial Yeti Club
+  stats:
+    accuracy: 1
+    defense: 1
+    offense: 1
+  desc: "a crudely-made club"
+  tier: 1
+  type: Mace
+  value: 200
+  sprite: 238

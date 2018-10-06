@@ -1,0 +1,15 @@
+
+
+- name: FireIce Prot Robe 100
+  stats:
+    fireResist: 100
+    iceResist: 100
+  desc: "a robe made of insulating material"
+  sprite: 211
+
+- name: FireIce Prot Robe 500
+  stats:
+    fireResist: 500
+    iceResist: 500
+  desc: "a robe made of insulating material"
+  sprite: 211

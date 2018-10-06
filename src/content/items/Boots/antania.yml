@@ -1,0 +1,91 @@
+- name: Antanian Leather Boots
+  stats:
+    accuracy: 3
+  tier: 1
+  sprite: 232
+  desc: "a pair of leather boots"
+  value: 50
+
+- name: Rylt Renegade Leather Boots
+  stats:
+    defense: 1
+    offense: 1
+    accuracy: 4
+  tier: 1
+  sprite: 232
+  desc: "a pair of leather boots engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  value: 50
+
+- name: Yzalt Combat Boots
+  stats:
+    armorClass: 2
+    defense: 1
+    offense: 2
+  tier: 2
+  sprite: 369
+  desc: "a pair of black leather combat boots"
+  value: 580
+  binds: true
+
+  requirements:
+    level: 5
+
+- name: Tower Offense Boots
+  stats:
+    armorClass: 2
+  randomStats:
+    offense:
+      min: 3
+      max: 5
+  tier: 4
+  sprite: 369
+  desc: "a pair of rugged combat boots"
+  value: 980
+  binds: true
+
+  requirements:
+    level: 12
+
+- name: Tower Defense Boots
+  stats:
+    armorClass: 4
+  randomStats:
+    defense:
+      min: 3
+      max: 5
+  tier: 3
+  sprite: 369
+  desc: "a pair of rugged combat boots"
+  value: 980
+  binds: true
+
+  requirements:
+    level: 12
+
+- name: Antanian Swimming Boots
+  stats:
+    waterResist: 500
+  tier: 1
+  sprite: 370
+  desc: "a pair of sharkskin boots that help you swim more easily"
+  value: 250
+  binds: true
+
+- name: Crazed Tonwin Boots
+  quality: 5
+  stats:
+    armorClass: 15
+    offense: 5
+    defense: 5
+    fireResist: 100
+    iceResist: 100
+  isHeavy: true
+  tier: 6
+  sprite: 975
+  desc: "a mesmerizing pair of chausses bathed in a crimson ether glow"
+  value: 20042
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

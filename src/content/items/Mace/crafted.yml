@@ -1,0 +1,14 @@
+
+
+- name: Ether Mace
+  desc: "a mace forged from ether"
+  tier: 5
+  stats:
+    accuracy: 4
+  type: Mace
+  value: 2378
+  sprite: 48
+  binds: true
+
+  requirements:
+    level: 15

@@ -1,0 +1,101 @@
+- name: Antanian Dagger
+  stats:
+    accuracy: 1
+  desc: "an iron dagger"
+  isSackable: true
+  tier: 1
+  type: Dagger
+  value: 75
+  sprite: 205
+
+- name: Rylt Renegade Dagger
+  stats:
+    accuracy: 2
+    offense: 1
+  desc: "an iron dagger engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  isSackable: true
+  tier: 1
+  type: Dagger
+  value: 75
+  sprite: 205
+
+- name: Antanian Returning Dagger
+  desc: "a small iron dagger that vibrates strangely"
+  stats:
+    accuracy: 3
+  isSackable: true
+  tier: 2
+  returnsOnThrow: true
+  type: Dagger
+  value: 500
+  sprite: 216
+
+- name: Antanian Dualwielding Dagger
+  desc: "a finely-made dagger with a blue hilt"
+  stats:
+    accuracy: 3
+  isSackable: true
+  tier: 2
+  returnsOnThrow: true
+  offhand: true
+  type: Dagger
+  value: 500
+  sprite: 332
+  binds: true
+
+  requirements:
+    level: 5
+
+- name: Tower Dagger Weak
+  desc: "a small dagger made of a riyan metal"
+  stats:
+    accuracy: 4
+  isSackable: true
+  tier: 3
+  returnsOnThrow: true
+  offhand: true
+  type: Dagger
+  value: 1500
+  sprite: 162
+
+  requirements:
+    level: 12
+
+- name: Tower Dagger Strong
+  desc: "a small dagger made of a riyan metal"
+  stats:
+    accuracy: 5
+  isSackable: true
+  tier: 4
+  returnsOnThrow: true
+  offhand: true
+  type: Dagger
+  value: 1500
+  sprite: 162
+
+  requirements:
+    level: 14
+
+- name: Crazed Tonwin Dagger
+  desc: "a dirk with a blade that appears to be enveloped in blazing ether"
+  tier: 6
+  stats:
+    accuracy: 7
+    offense: 3
+    fireResist: 200
+  effect:
+    name: ImbueFlame
+    potency: 10
+    autocast: true
+  trait:
+    name: BetterBackstab
+    level: 2
+  returnsOnThrow: true
+  type: Dagger
+  value: 21347
+  sprite: 978
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

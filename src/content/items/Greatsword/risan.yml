@@ -1,0 +1,26 @@
+
+
+- name: Risan Greatsword
+  desc: "an iron greatsword forged in the land of Risan"
+  tier: 5
+  type: Twohanded
+  value: 7500
+  sprite: 198
+
+  requirements:
+    level: 15
+
+- name: Frostlands Brigand Greatsword
+  stats:
+    weaponArmorClass: 5
+    accuracy: -2
+    offense: 8
+  desc: "a massive greatsword engraved with PROPERTY OF BRIGANDS, PLEASE RETURN IF FOUND in the grip"
+  tier: 6
+  type: Twohanded
+  value: 22185
+  sprite: 198
+  binds: true
+
+  requirements:
+    level: 21

@@ -1,0 +1,79 @@
+- name: Antanian Tunic
+  stats:
+    armorClass: 1
+    defense: 1
+  desc: "a leather tunic"
+  value: 20
+  sprite: 206
+
+- name: Antanian Studded Tunic
+  stats:
+    armorClass: 2
+    defense: 1
+  desc: "a studded leather tunic"
+  value: 40
+  sprite: 209
+
+- name: Antanian Scalemail Tunic
+  stats:
+    armorClass: 3
+    defense: 1
+  desc: "a scalemail tunic"
+  value: 60
+  sprite: 207
+
+- name: Antanian Ringmail Tunic
+  stats:
+    armorClass: 4
+    defense: 1
+  desc: "a ringmail tunic"
+  value: 100
+  sprite: 208
+
+- name: Yzalt Fungus Ringmail Tunic
+  stats:
+    armorClass: 7
+    defense: 2
+    offense: 1
+    hpregen: 3
+  desc: "a ringmail tunic stained green from the nearby fungus growing on it"
+  value: 845
+  sprite: 9
+  binds: true
+
+- name: Tower Trash Tunic
+  stats:
+    armorClass: 7
+  desc: "a leather tunic"
+  value: 200
+  sprite: 206
+
+- name: Tower Bone Tunic
+  stats:
+    armorClass: 12
+    defense: 2
+  requirements:
+    level: 10
+  desc: "a plain tunic reinforced with shards of bone"
+  value: 350
+  sprite: 10
+
+- name: Maze Bone Tunic
+  stats:
+    armorClass: 14
+    defense: 2
+  requirements:
+    level: 13
+  desc: "a plain tunic reinforced with shards of bone"
+  value: 350
+  sprite: 10
+
+- name: Reinforced Maze Bone Tunic
+  stats:
+    armorClass: 16
+    defense: 3
+  requirements:
+    level: 14
+  desc: "a plain tunic double-reinforced with shards of bone"
+  value: 350
+  sprite: 10

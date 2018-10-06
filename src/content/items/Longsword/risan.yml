@@ -1,0 +1,11 @@
+
+- name: Risan Longsword
+  desc: "an iron longsword forged in the land of Risan"
+  tier: 5
+  type: Shortsword
+  value: 2500
+  sprite: 197
+  
+  requirements:
+    level: 15
+

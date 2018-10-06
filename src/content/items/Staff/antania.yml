@@ -1,0 +1,40 @@
+- name: Antanian Staff
+  desc: "a wooden staff"
+  tier: 1
+  type: Staff
+  value: 65
+  sprite: 196
+
+- name: Risan Staff
+  desc: "an wooden staff carved in the land of Risan"
+  tier: 5
+  type: Staff
+  value: 6000
+  sprite: 196
+
+  requirements:
+    level: 15
+
+- name: Rylt Renegade Staff
+  desc: "a wooden staff engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  stats:
+    offense: 1
+    accuracy: 3
+  tier: 1
+  type: Staff
+  value: 65
+  sprite: 196
+
+- name: Yzalt Heniz Staff
+  desc: "a wooden staff with a tip made for charging magical energies through it"
+  stats:
+    int: 1
+    mp: 10
+  tier: 2
+  type: Staff
+  value: 567
+  sprite: 326
+  binds: true
+
+  requirements:
+    level: 5

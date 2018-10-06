@@ -1,0 +1,74 @@
+- name: Antanian Greatsword
+  desc: "an iron greatsword"
+  tier: 1
+  type: Twohanded
+  value: 150
+  sprite: 198
+
+- name: Rylt Renegade Greatsword
+  stats:
+    offense: 1
+    accuracy: 2
+  desc: "an iron greatsword engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  tier: 1
+  type: Twohanded
+  value: 150
+  sprite: 198
+
+- name: Antanian Steffen Nodachi
+  stats:
+    offense: 3
+    accuracy: -1
+  desc: "a large steel nodachi"
+  tier: 2
+  type: Twohanded
+  value: 560
+  sprite: 308
+  binds: true
+
+- name: Tower Greatsword Weak
+  stats:
+    offense: 6
+    accuracy: -1
+  desc: "a large riyan greatsword"
+  tier: 3
+  type: Twohanded
+  value: 1560
+  sprite: 43
+  binds: true
+
+  requirements:
+    level: 12
+
+- name: Tower Greatsword Strong
+  stats:
+    offense: 6
+    accuracy: -2
+  desc: "a large riyan greatsword"
+  tier: 4
+  type: Twohanded
+  value: 1560
+  sprite: 43
+  binds: true
+
+  requirements:
+    level: 14
+
+- name: Maze Revenant Greatsword
+  stats:
+    offense: 6
+    defense: -2
+    accuracy: -2
+  desc: "an iron greatsword that smells of death"
+  effect:
+    name: NecroticAura
+    potency: 2
+    autocast: true
+  tier: 4
+  type: Twohanded
+  value: 15011
+  sprite: 198
+  binds: true
+
+  requirements:
+    level: 15

@@ -1,0 +1,34 @@
+- name: Antanian Greatmace
+  desc: "an iron greatmace"
+  tier: 1
+  type: Mace
+  value: 150
+  sprite: 325
+
+- name: Rylt Renegade Greatmace
+  stats:
+    offense: 1
+    accuracy: 2
+  desc: "an iron greatmace engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  tier: 1
+  type: Mace
+  value: 150
+  sprite: 325
+
+- name: Maze Revenant Greatmace
+  stats:
+    offense: 4
+    accuracy: 6
+    defense: -2
+  desc: "an iron greatmace that smells of death"
+  effect:
+    name: NecroticAura
+    potency: 2
+    autocast: true
+  tier: 4
+  type: Mace
+  value: 15025
+  sprite: 325
+
+  requirements:
+    level: 15

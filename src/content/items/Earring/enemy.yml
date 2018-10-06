@@ -1,0 +1,33 @@
+
+- name: Enemy TrueSight Earring
+  effect:
+    name: TrueSight
+    autocast: true
+  sprite: -1
+  desc: "a glowing golden earring"
+  value: 0
+
+- name: Enemy DarkVision Earring
+  effect:
+    name: DarkVision
+    autocast: true
+  sprite: -1
+  desc: "a glowing golden earring"
+  value: 0
+
+- name: Enemy Invisibility Earring
+  effect:
+    name: Invisible
+    autocast: true
+  sprite: -1
+  desc: "a glowing golden earring"
+  value: 0
+
+- name: Enemy Potency 15 Necrotic Aura Earring
+  effect:
+    name: NecroticAura
+    potency: 15
+    autocast: true
+  sprite: -1
+  desc: "a glowing golden earring"
+  value: 0

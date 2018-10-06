@@ -1,0 +1,10 @@
+- name: Broom
+  desc: "a simple broom"
+  tier: 5
+  effect:
+    name: Vortex
+    potency: 3
+    uses: -1
+  type: Staff
+  value: 98001
+  sprite: 229

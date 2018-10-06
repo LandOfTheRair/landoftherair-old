@@ -1,0 +1,54 @@
+- name: Antanian Longbow
+  stats:
+    accuracy: 1
+  desc: "a wooden longbow"
+  tier: 1
+  type: Ranged
+  value: 110
+  sprite: 200
+- name: Ranata Longbow
+  quality: 5
+  stats:
+    offense: 3
+
+  effect:
+    name: Darkness
+    potency: 20
+    chance: 100
+
+  trait:
+    name: ShadowDaggers
+    level: 1
+
+  desc: "a crystal longbow, glowing with dark magic"
+  tier: 2
+  type: Ranged
+  value: 2300
+  sprite: 445
+
+  requirements:
+    level: 9
+
+- name: Tower Longbow Weak
+  stats:
+    accuracy: 3
+  desc: "a longbow made of a riyan wood"
+  tier: 3
+  type: Ranged
+  value: 1110
+  sprite: 47
+
+  requirements:
+    level: 12
+
+- name: Tower Longbow Strong
+  stats:
+    accuracy: 3
+  desc: "a longbow made of a riyan wood"
+  tier: 4
+  type: Ranged
+  value: 1110
+  sprite: 47
+
+  requirements:
+    level: 14

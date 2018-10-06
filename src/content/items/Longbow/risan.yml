@@ -1,0 +1,13 @@
+
+
+- name: Risan Longbow
+  desc: "an wooden longbow crafted in the land of Risan"
+  tier: 5
+  type: Ranged
+  value: 8500
+  sprite: 200
+  
+  requirements:
+    level: 15
+
+

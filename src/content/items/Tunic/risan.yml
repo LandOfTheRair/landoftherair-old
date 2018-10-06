@@ -1,0 +1,79 @@
+
+- name: Risan Tunic
+  stats:
+    armorClass: 15
+  desc: "a leather tunic made in the lands of Risan"
+  value: 2000
+  sprite: 206
+
+  requirements:
+    level: 15
+
+- name: Risan Studded Tunic
+  stats:
+    armorClass: 17
+    defense: 2
+  desc: "a studded leather tunic made in the lands of Risan"
+  value: 4000
+  sprite: 209
+
+  requirements:
+    level: 15
+
+- name: Risan Scalemail Tunic
+  stats:
+    armorClass: 19
+    defense: 2
+  desc: "a scalemail tunic made in the lands of Risan"
+  value: 6000
+  sprite: 207
+
+  requirements:
+    level: 15
+
+- name: Risan Ringmail Tunic
+  stats:
+    armorClass: 21
+    defense: 2
+  desc: "a ringmail tunic made in the lands of Risan"
+  value: 10000
+  sprite: 208
+
+  requirements:
+    level: 15
+
+- name: Risan Trash Tunic
+  stats:
+    armorClass: 12
+  desc: "a leather tunic"
+  value: 300
+  sprite: 206
+
+- name: Remorhaz Scales Tunic
+  stats:
+    iceResist: 300
+  randomStats:
+    armorClass:
+      min: 22
+      max: 27
+    defense:
+      min: 3
+      max: 6
+  requirements:
+    level: 20
+  desc: "a tunic made from the frozen-solid scales of a remorhaz"
+  value: 5020
+  sprite: 269
+
+- name: Silver Dragon Scale Tunic
+  stats:
+    armorClass: 24
+    defense: 3
+    offense: 3
+    fireResist: 100
+    iceResist: 100
+  requirements:
+    level: 14
+  desc: "a tunic crafted from the silky scales of a silver dragon"
+  value: 3502
+  sprite: 302

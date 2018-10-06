@@ -1,0 +1,22 @@
+
+- name: Antanian Silver Hammer
+  desc: "a roughly-made silver hammer that appears to be a twig attached to forged metal"
+  stats:
+    offense: 2
+    defense: 2
+    accuracy: -1
+  tier: 2
+  type: Mace
+  value: 2500
+  sprite: 226
+
+- name: Risan Silver Hammer
+  desc: "a crudely-made silver hammer that appears to be a twig attached to forged metal"
+  stats:
+    offense: 3
+    defense: 3
+    accuracy: -2
+  tier: 5
+  type: Mace
+  value: 3500
+  sprite: 226

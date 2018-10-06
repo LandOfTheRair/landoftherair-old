@@ -1,0 +1,83 @@
+- name: Antanian Leather Gloves
+  stats:
+    accuracy: 3
+  tier: 1
+  sprite: 233
+  desc: "a pair of leather gloves"
+  value: 50
+
+- name: Rylt Renegade Leather Gloves
+  stats:
+    defense: 1
+    offense: 1
+    accuracy: 4
+  tier: 1
+  sprite: 233
+  desc: "a pair of leather gloves engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
+  value: 50
+
+- name: Steffen Strength Gloves
+  randomStats:
+    str:
+      min: 1
+      max: 3
+    offense:
+      min: 2
+      max: 4
+  tier: 2
+  desc: "a pair of golden knight gauntlets"
+  sprite: 362
+  binds: true
+
+  requirements:
+    level: 5
+
+- name: Heniz Battlemage Gloves
+  randomStats:
+    offense:
+      min: 1
+      max: 2
+    defense:
+      min: 2
+      max: 4
+    hp:
+      min: 10
+      max: 30
+    mp:
+      min: 10
+      max: 30
+  tier: 2
+  effect:
+    name: MagicMissile
+    potency: 10
+    chance: 5
+  desc: "a pair of dark gauntlets that emanate magic"
+  sprite: 461
+  binds: true
+
+  requirements:
+    level: 7
+    profession:
+      - "Mage"
+
+- name: Dedlaen Dexterity Gloves
+  tier: 4
+  randomStats:
+    offense:
+      min: 1
+      max: 3
+    defense:
+      min: 1
+      max: 3
+    dex:
+      min: 2
+      max: 5
+
+  binds: true
+
+  requirements:
+    level: 15
+
+  sprite: 362
+  desc: "a pair of golden gauntlets inscribed with a bow in one glove and a dagger in the other"
+  value: 2700
