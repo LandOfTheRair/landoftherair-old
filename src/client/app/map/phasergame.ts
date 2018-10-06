@@ -81,6 +81,9 @@ export class Game {
   private fovSprites: any = {};   // horizontal fov sprites
   private fovSprites2: any = {};  // extra fov sprites for vertical layering
 
+  private goldGroup: any = {};
+  private goldSprites: any = {};
+
   public get shouldRender() {
     if(!this.g || !this.g.camera) return false;
 
@@ -204,11 +207,19 @@ export class Game {
       this.fovGroup.destroy();
     }
 
+    if(this.goldGroup) {
+      this.goldGroup.destroy();
+    }
+
     this.visibleNPCUUIDHash = {};
     this.visibleItemUUIDHash = {};
     this.visibleSprites = {};
     this.playerSpriteHash = {};
     this.environmentalObjectHash = {};
+
+    this.fovSprites = {};
+    this.fovSprites2 = {};
+    this.goldSprites = {};
 
     if(!skipLoading) {
 
@@ -440,6 +451,7 @@ export class Game {
 
           if(!this.canCreateItemSpriteAt(x, y)) return;
           this.createItemSprite(item, x, y);
+          this.createTreasureSprite(x, y);
         });
       }
     }
@@ -478,6 +490,104 @@ export class Game {
       delete this.visibleNPCUUIDHash[uuid];
       sprite.destroy();
     });
+  }
+
+  private goldSpriteForLocation(x, y) {
+    const hasGold = (checkX, checkY) => get(this.clientGameState.groundItems, [`x${checkX}`, `y${checkY}`, 'Coin'], false);
+
+    // check and abort early
+    const goldHere = hasGold(x, y) && this.canCreateItemSpriteAt(x, y);
+    if(!goldHere) return 0;
+
+    const goldNW = hasGold(x - 1, y - 1) && this.canCreateItemSpriteAt(x - 1, y - 1);
+    const goldN  = hasGold(x,     y - 1) && this.canCreateItemSpriteAt(x,        y - 1);
+    const goldNE = hasGold(x + 1, y - 1) && this.canCreateItemSpriteAt(x + 1, y - 1);
+    const goldE =  hasGold(x + 1, y)     && this.canCreateItemSpriteAt(x + 1, y);
+    const goldSE = hasGold(x + 1, y + 1) && this.canCreateItemSpriteAt(x + 1, y + 1);
+    const goldS  = hasGold(x,     y + 1) && this.canCreateItemSpriteAt(x,     y + 1);
+    const goldSW = hasGold(x - 1, y + 1) && this.canCreateItemSpriteAt(x - 1, y + 1);
+    const goldW  = hasGold(x - 1, y)     && this.canCreateItemSpriteAt(x - 1, y);
+
+    if(!goldNW && goldN && goldNE && goldE && goldSE && goldS && goldSW && goldW) return 337; // NW corner missing
+    if(goldNW && goldN && !goldNE && goldE && goldSE && goldS && goldSW && goldW) return 338; // NE corner missing
+    if(goldNW && goldN && goldNE && goldE && !goldSE && goldS && goldSW && goldW) return 339; // SE corner missing
+    if(goldNW && goldN && goldNE && goldE && goldSE && goldS && !goldSW && goldW) return 340; // SW corner missing
+
+    if(!goldNW && goldN && !goldNE && goldE && goldSE && goldS && goldSW && goldW) return 341;  // NE,NW corner missing
+    if(goldNW && goldN && !goldNE && goldE && !goldSE && goldS && goldSW && goldW) return 342;  // NE,SE corner missing
+    if(goldNW && goldN && goldNE && goldE && !goldSE && goldS && !goldSW && goldW) return 343;  // SE,SW corner missing
+    if(!goldNW && goldN && goldNE && goldE && goldSE && goldS && !goldSW && goldW) return 344;  // SW,NW corner missing
+
+    if(!goldNW && goldN && !goldNE && goldE && goldSE && goldS && !goldSW && goldW) return 345; // NW,NE,SW corner missing
+    if(!goldNW && goldN && !goldNE && goldE && !goldSE && goldS && goldSW && goldW) return 346; // NW,NE,SE corner missing
+    if(goldNW && goldN && !goldNE && goldE && !goldSE && goldS && !goldSW && goldW) return 347; // NE,SE,SW corner missing
+    if(!goldNW && goldN && goldNE && goldE && !goldSE && goldS && !goldSW && goldW) return 348; // NW,SE,SW corner missing
+
+    if(!goldNW && goldN && !goldNE && goldE && !goldSE && goldS && !goldSW && goldW) return 349;  // ALL corner missing
+
+    if(!goldNW && !goldN && !goldNE && goldE && goldSE && goldS && goldSW && goldW) return 350; // TOP missing
+    if(goldNW && goldN && !goldNE && !goldE && !goldSE && goldS && goldSW && goldW) return 351; // RIGHT missing
+    if(goldNW && goldN && goldNE && goldE && !goldSE && !goldS && !goldSW && goldW) return 352; // BOTTOM missing
+    if(!goldNW && goldN && goldNE && goldE && goldSE && goldS && !goldSW && !goldW) return 353; // LEFT missing
+
+    if(!goldNW && goldN && goldNE && goldE && !goldSE && !goldS && !goldSW && goldW) return 354;  // NW,BOTTOM missing
+    if(goldNW && goldN && !goldNE && goldE && !goldSE && !goldS && !goldSW && goldW) return 355;  // NE,BOTTOM missing
+    if(!goldNW && !goldN && !goldNE && goldE && !goldSE && goldS && goldSW && goldW) return 356;  // SE,TOP missing
+    if(!goldNW && !goldN && !goldNE && goldE && goldSE && goldS && !goldSW && goldW) return 357;  // SW,TOP missing
+
+    if(!goldNW && goldN && !goldNE && !goldE && !goldSE && goldS && goldSW && goldW) return 358;  // NW,RIGHT missing
+    if(!goldNW && goldN && !goldNE && goldE && goldSE && goldS && !goldSW && !goldW) return 359;  // NE,LEFT missing
+    if(!goldNW && goldN && goldNE && goldE && !goldSE && goldS && !goldSW && !goldW) return 360;  // SE,LEFT missing
+    if(goldNW && goldN && !goldNE && !goldE && !goldSE && goldS && !goldSW && goldW) return 361;  // SW,RIGHT missing
+
+    if(!goldNW && !goldN && !goldNE && goldE && !goldSE && goldS && !goldSW && goldW) return 362; // SE,SW,TOP missing
+    if(!goldNW && goldN && !goldNE && !goldE && !goldSE && goldS && !goldSW && goldW) return 363; // NW,SW,RIGHT missing
+    if(!goldNW && goldN && !goldNE && goldE && !goldSE && !goldS && !goldSW && goldW) return 364; // NE,NW,BOTTOM missing
+    if(!goldNW && goldN && !goldNE && goldE && !goldSE && goldS && !goldSW && !goldW) return 365; // NE,SE,LEFT missing
+
+    if(!goldNW && !goldN && !goldNE && goldE && goldSE && goldS && !goldSW && !goldW) return 366; // E,SE,S present
+    if(!goldNW && !goldN && !goldNE && !goldE && !goldSE && goldS && goldSW && goldW) return 367; // W,SW,S present
+    if(goldNW && goldN && !goldNE && !goldE && !goldSE && !goldS && !goldSW && goldW) return 368; // W,NW,N present
+    if(!goldNW && goldN && goldNE && goldE && !goldSE && !goldS && !goldSW && !goldW) return 369; // E,NE,N present
+
+    if(!goldNW && !goldN && !goldNE && goldE && !goldSE && goldS && !goldSW && !goldW) return 370;  // E,S present
+    if(!goldNW && !goldN && !goldNE && !goldE && !goldSE && goldS && !goldSW && goldW) return 371;  // W,S present
+    if(!goldNW && goldN && !goldNE && !goldE && !goldSE && !goldS && !goldSW && goldW) return 372;  // W,N present
+    if(!goldNW && goldN && !goldNE && goldE && !goldSE && !goldS && !goldSW && !goldW) return 373;  // E,N present
+
+    if(!goldNW && !goldN && !goldNE && !goldE && !goldSE && goldS && !goldSW && !goldW) return 374; // S present
+    if(!goldNW && !goldN && !goldNE && !goldE && !goldSE && !goldS && !goldSW && goldW) return 375; // W present
+    if(!goldNW && goldN && !goldNE && !goldE && !goldSE && !goldS && !goldSW && !goldW) return 376; // N present
+    if(!goldNW && !goldN && !goldNE && goldE && !goldSE && !goldS && !goldSW && !goldW) return 377; // E present
+
+    if(!goldNW && goldN && !goldNE && !goldE && !goldSE && goldS && !goldSW && !goldW) return 378;  // N,S present
+    if(!goldNW && !goldN && !goldNE && goldE && !goldSE && !goldS && !goldSW && goldW) return 379;  // E,W present
+
+    if(goldNW && !goldN && !goldNE && !goldE && goldSE && !goldS && !goldSW && !goldW) return 380;  // NW,SE missing
+    if(!goldNW && !goldN && goldNE && !goldE && !goldSE && !goldS && goldSW && !goldW) return 381;  // NE,SW missing
+
+    if(goldNW && goldN && goldNE && goldE && goldSE && goldS && goldSW && goldW) return 382;  // ALL present
+
+    return 336;
+  }
+
+  private createTreasureSprite(x, y) {
+    const spritePos = this.goldSpriteForLocation(x, y);
+    if(!spritePos) return;
+
+    if(!this.goldSprites[x]) this.goldSprites[x] = {};
+
+    const currentItemSprite = this.goldSprites[x][y];
+
+    if(currentItemSprite) {
+      if(spritePos === currentItemSprite.frame) return;
+      currentItemSprite.destroy();
+    }
+
+    const sprite = this.g.add.sprite(x * 64, y * 64, cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'), spritePos);
+    this.goldSprites[x][y] = sprite;
+
+    this.goldGroup.add(sprite);
   }
 
   private createItemSprite(item: Item, x, y) {
@@ -524,6 +634,21 @@ export class Game {
         sprite.destroy();
       }
     });
+
+    this.goldGroup.children.forEach(sprite => {
+      const x = sprite.x / 64;
+      const y = sprite.y / 64;
+
+      const xKey = `x${x}`;
+      const yKey = `y${y}`;
+
+      let ground = this.clientGameState.groundItems[xKey] ? this.clientGameState.groundItems[xKey][yKey] : null;
+      ground = ground || {};
+
+      if(this.notInRange(centerX, centerY, x, y) || !ground.Coin) this.goldSprites[x][y] = null;
+      this.goldGroup.removeChild(sprite);
+      sprite.destroy();
+    })
   }
 
   public cacheMap(mapData) {
@@ -585,6 +710,7 @@ export class Game {
     this.groups.DenseDecor = this.g.add.group();
     this.groups.OpaqueDecor = this.g.add.group();
 
+    this.goldGroup = this.g.add.group();
     this.itemsOnGround = this.g.add.group();
 
     this.groups.Interactables = this.g.add.group();
@@ -872,7 +998,7 @@ export class Game {
     this.oldMapName = this.clientGameState.mapName;
 
     if(!this.skipLoading) {
-      this.g.load.image(cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'), this.assetService.terrainUrl, 64, 64);
+      this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'), this.assetService.terrainUrl, 64, 64);
       this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Walls'), this.assetService.wallsUrl, 64, 64);
       this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Decor'), this.assetService.decorUrl, 64, 64);
 
