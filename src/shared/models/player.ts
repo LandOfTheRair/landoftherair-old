@@ -168,7 +168,7 @@ export class Player extends Character {
 
     if(isUndefined(this.currency)) this.currency = { gold: 0 };
 
-    if((<any>this).gold) {
+    if((<any>this).gold && !this.currency.gold) {
       this.currency.gold = (<any>this).gold;
       delete (<any>this).gold;
     }
