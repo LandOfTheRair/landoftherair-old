@@ -45,6 +45,7 @@ export * from './damagers/Drain';
 
 export * from './dots/Disease';
 export * from './dots/Poison';
+export * from './dots/SearingPurification';
 
 export * from './augments/Attribute';
 export * from './augments/Applied';
