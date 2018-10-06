@@ -9,7 +9,7 @@
     <th class="text-center">Location</th>
   </tr>
   </thead>
-  <tbody *ngIf="party">
+  <tbody *ngIf="party && party.members && party.members.length > 0">
   <tr *ngFor="let char of party.members">
     <td>{{ char.name }}</td>
     <td>{{ char.baseClass }}</td>

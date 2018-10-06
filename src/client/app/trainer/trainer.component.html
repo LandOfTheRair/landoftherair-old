@@ -7,7 +7,7 @@
 
     <div class="col-4 text-right">
       <button class="btn btn-primary"
-              [disabled]="colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain"
+              [disabled]="!colyseusGame.character || colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain"
               tooltip="Gain levels based on your current experience points."
               container="body"
               (click)="train()">Train</button>
@@ -21,16 +21,16 @@
               (click)="assess()">Assess</button>
     </div>
 
-    <div class="col-4" *ngIf="colyseusGame.character.baseClass === colyseusGame.showTrainer.classTrain">
+    <div class="col-4" *ngIf="!colyseusGame.character || colyseusGame.character.baseClass === colyseusGame.showTrainer.classTrain">
       <button class="btn btn-primary"
               tooltip="Attempt to learn new skills based on your skill rating."
               container="body"
               (click)="learn()">Learn</button>
     </div>
 
-    <div class="col-4" *ngIf="colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain">
+    <div class="col-4" *ngIf="!colyseusGame.character || colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain">
       <button class="btn btn-primary"
-              [disabled]="colyseusGame.character.baseClass !== 'Undecided'"
+              [disabled]="!colyseusGame.character || colyseusGame.character.baseClass !== 'Undecided'"
               tooltip="Join this profession and begin adventuring as it."
               container="body"
               (click)="join()">Join</button>

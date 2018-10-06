@@ -128,6 +128,8 @@ export class MacroService {
   }
 
   public exportMacros() {
+    if(!this.colyseusGame.character) return;
+
     const charSlot = this.getCurrentCharSlot();
     const charName = this.colyseusGame.character.name;
     const charClass = this.colyseusGame.character.baseClass;

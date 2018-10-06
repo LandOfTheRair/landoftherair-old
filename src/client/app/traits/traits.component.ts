@@ -77,7 +77,7 @@ export class TraitsComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    if(!this.d3container) return;
+    if(!this.d3container || !this.player) return;
 
     this.treeInstance = new D3SkillTree(
       this.d3container.nativeElement,
