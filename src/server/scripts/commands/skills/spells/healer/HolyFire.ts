@@ -23,9 +23,7 @@ export class HolyFire extends Skill {
   range(attacker: Character) { return 5; }
 
   execute(user: Character, { args, effect }) {
-    if(!args) return false;
-
-    const target = this.getTarget(user, args);
+    const target = this.getTarget(user, args, true, true);
     if(!target) return;
 
     if(target === user) return;
