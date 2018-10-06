@@ -11,7 +11,7 @@ export class HolyFire extends Skill {
     icon: 'fireflake',
     color: '#f50',
     mode: 'lockActivation',
-    tooltipDesc: 'Inflict fire damage on a single target. Cost: 15 MP',
+    tooltipDesc: 'Inflict fire damage on a single tile. Cost: 30 MP',
     skillTPCost: 10,
     requireSkillLevel: 15
   };
@@ -19,7 +19,7 @@ export class HolyFire extends Skill {
   public name = ['holyfire', 'cast holyfire'];
   public format = 'Target';
 
-  mpCost() { return 15; }
+  mpCost() { return 30; }
   range(attacker: Character) { return 5; }
 
   execute(user: Character, { args, effect }) {
