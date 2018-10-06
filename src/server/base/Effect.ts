@@ -240,6 +240,7 @@ export class SpellEffect extends Effect {
 
   getTotalDamageRolls(caster: Character): number {
     let base = this.potency || 1;
+    if(!caster) return 1;
 
     const rightHand = caster.rightHand;
 
