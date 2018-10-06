@@ -1,6 +1,6 @@
 
 import { Character, SkillClassNames, StatName } from '../../shared/models/character';
-import { extend, includes, get } from 'lodash';
+import { extend, includes, get, cloneDeep } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/world/combat-helper';
 import { Item } from '../../shared/models/item';
@@ -28,7 +28,7 @@ interface EffectInfo {
 }
 
 export class Effect {
- 
+
   name = '';
   iconData = {};
   duration = 0;
@@ -56,7 +56,7 @@ export class Effect {
   public hasEnded: boolean;
 
   constructor(opts) {
-    extend(this, opts);
+    extend(this, cloneDeep(opts));
     if(!this.name) this.name = this.constructor.name;
 
     // set from a "base effect" on a creature

@@ -163,7 +163,7 @@
   binds: true
 
   trait:
-    name: SlowDigestion
+    name: SweetTooth
     level: 2
 
   requirements:

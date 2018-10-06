@@ -32,6 +32,16 @@ export class Nourishment extends SpellEffect {
 
     char.$$hungerTicks = this.duration + (3600 * 6);
 
+    const sweetToothLevel = char.getTraitLevel('SweetTooth');
+    if(sweetToothLevel) {
+      this.stats = this.stats || {};
+      this.stats.hpregen = (this.stats.hpregen || 0) + sweetToothLevel * 3;
+      this.stats.mpregen = (this.stats.mpregen || 0) + sweetToothLevel * 3;
+      this.stats.armorClass = (this.stats.armorClass || 0) - sweetToothLevel * 2;
+
+      if(this.tooltip) this.tooltip = `${this.tooltip}; Sweet Tooth: +${sweetToothLevel * 3} MP/HP Regen, -${sweetToothLevel * 2} AC`;
+    }
+
     if(this.tooltip) this.iconData.tooltipDesc = `Nourished: ${this.tooltip}`;
 
     Object.keys(this.stats || {}).forEach(stat => {

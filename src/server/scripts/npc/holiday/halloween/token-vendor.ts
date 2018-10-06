@@ -7,11 +7,11 @@ export const setup = async (npc: NPC) => {
   npc.affiliation = 'Token Vendor';
 
   const vendorItems = [
-    { name: 'Rune Scroll - Slow Digestion I' },
-    { name: 'Rune Scroll - Slow Digestion II' },
-    { name: 'Rune Scroll - Slow Digestion III' },
-    { name: 'Rune Scroll - Slow Digestion IV' },
-    { name: 'Rune Scroll - Slow Digestion V' },
+    { name: 'Rune Scroll - Sweet Tooth I' },
+    { name: 'Rune Scroll - Sweet Tooth II' },
+    { name: 'Rune Scroll - Sweet Tooth III' },
+    { name: 'Rune Scroll - Sweet Tooth IV' },
+    { name: 'Rune Scroll - Sweet Tooth V' },
     { name: 'Halloween Gem' },
     { name: 'Halloween Pumpkin Shield' },
     { name: 'Halloween Moon Boots' }
