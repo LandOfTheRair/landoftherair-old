@@ -72,7 +72,9 @@
               <app-item [item]="itemListing.itemInfo"
                         [showDesc]="false"
                         [showCount]="true"
+                        [showOunces]="true"
                         [count]="itemListing.itemInfo.itemOverride ? itemListing.itemInfo.itemOverride.shots : 0"
+                        [ounces]="itemListing.itemInfo.itemOverride ? itemListing.itemInfo.itemOverride.ounces : 0"
                         [tooltip]="requirementTooltipFor(itemListing)"
                         placement="right"></app-item>
             </div>
