@@ -259,7 +259,7 @@ export const SmithResponses = (npc: NPC) => {
 
 export const RandomlyShouts = (npc: NPC, responses: string[] = [], opts: any = { combatOnly: false }) => {
   let ticks = 0;
-  let nextTick = random(15, 30);
+  let nextTick = random(50, 60);
 
   npc.$$ai.tick.add(() => {
     ticks++;

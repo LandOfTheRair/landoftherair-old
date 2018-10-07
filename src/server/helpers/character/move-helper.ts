@@ -5,6 +5,7 @@ import { isUndefined, find, values } from 'lodash';
 
 import * as Pathfinder from 'pathfinding';
 import { CombatHelper } from '../world/combat-helper';
+import { HolidayHelper } from '../../../shared/helpers/holiday-helper';
 
 export class MoveHelper {
 
@@ -180,9 +181,14 @@ export class MoveHelper {
   }
 
   private static handleTeleport(room, player, obj, isFall?: boolean) {
-    const { teleportX, teleportY, teleportMap, requireHeld, requireQuest, requireQuestProgress, requireQuestComplete, requireParty, damagePercent } = obj.properties;
+    const {
+      teleportX, teleportY, teleportMap,
+      requireHeld, requireQuest, requireQuestProgress, requireQuestComplete, requireParty, requireHoliday,
+      damagePercent
+    } = obj.properties;
 
     if(requireParty && !player.party) return player.sendClientMessage('You must gather your party before venturing forth.');
+    if(requireHoliday && !HolidayHelper.isHoliday(requireHoliday)) return player.sendClientMessage(`That location is only seasonally open during "${requireHoliday}"!`);
 
     // check if player has a held item
     if(requireHeld && !player.hasHeldItem(requireHeld, 'left') && !player.hasHeldItem(requireHeld, 'right')) return;

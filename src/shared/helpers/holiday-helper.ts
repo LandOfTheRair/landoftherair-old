@@ -17,16 +17,23 @@ const holidayChecker = {
   // takes place in October, all month
   Halloween: () => {
     return new Date().getMonth() === 9;
+  },
+
+  // takes place in November, all month
+  Thanksgiving: () => {
+    return new Date().getMonth() === 10;
   }
 };
 
 const holidayDescriptions = {
-  Halloween: 'Go smash some zombies, take their brains, and go trick-or-treating!'
+  Halloween: 'Go smash some zombies, take their brains, and go trick-or-treating!',
+  Thanksgiving: 'Help some pilgrims shoot some turkeys, test your shooting accuracy, and gather food for a feast!'
 };
 
 export class HolidayHelper {
 
   static isHoliday(hol: Holiday): boolean {
+    if(!holidayChecker[hol]) return false;
     return holidayChecker[hol]();
   }
 

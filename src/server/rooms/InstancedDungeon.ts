@@ -9,11 +9,6 @@ export class InstancedDungeon extends GameWorld {
     return false;
   }
 
-  get exitPoint() {
-    const { kickMap, kickX, kickY } = this.state.map.properties;
-    return { kickMap, kickX, kickY };
-  }
-
   get canPartyAction(): boolean {
     return false;
   }

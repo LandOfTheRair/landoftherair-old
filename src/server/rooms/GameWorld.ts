@@ -40,6 +40,7 @@ import { SkillTreeHelper } from '../helpers/skill-trees/skill-tree-helper';
 import { MarketHelper } from '../helpers/world/market-helper';
 import { AnalyticsHelper } from '../helpers/world/analytics-helper';
 import { globalResponses, globalSetup } from '../scripts/npc/global-responses';
+import { Holiday, HolidayHelper } from '../../shared/helpers/holiday-helper';
 
 export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
 | 'block-dodge' | 'block-armor' | 'block-miss' | 'block-shield' | 'block-weapon' | 'block-offhand';
@@ -117,6 +118,10 @@ export class GameWorld extends Room<GameState> {
     return this.state.mapName;
   }
 
+  get mapHoliday(): Holiday {
+    return this.state.map.properties.holiday;
+  }
+
   get maxSkill() {
     return this.state.map.properties.maxSkill || 1;
   }
@@ -171,7 +176,9 @@ export class GameWorld extends Room<GameState> {
   }
 
   get exitPoint() {
-    return null;
+    const { kickMap, kickX, kickY } = this.state.map.properties;
+    if(!kickMap || !kickX || !kickY) return null;
+    return { kickMap, kickX, kickY };
   }
 
   get canPartyAction(): boolean {
@@ -334,6 +341,12 @@ export class GameWorld extends Room<GameState> {
       player.sendClientMessage('Magical forces push you out of the rift!');
       await this.teleport(player, { newMap: 'Rylt', x: 68, y: 13 });
       return;
+    }
+
+    if(this.mapHoliday && !HolidayHelper.isHoliday(this.mapHoliday)) {
+      player.sendClientMessage('Magical forces push you out of the rift!');
+      await this.kickOut(player);
+      return false;
     }
 
     this.analyticsHelper.startGameSession(player, options.userAgent);
