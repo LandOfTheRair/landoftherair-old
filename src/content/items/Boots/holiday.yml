@@ -13,6 +13,10 @@
   enchantLevel: 5
   stats:
     move: 1
+    offense: 3
+    defense: 3
+    agi: 2
+    dex: 2
   tier: 3
   sprite: 569
   desc: "a plain pair of clogs found traditionally in the Turkey Forest"
