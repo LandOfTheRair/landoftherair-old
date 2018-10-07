@@ -7,13 +7,13 @@ import { DB } from '../../database';
 export class ItemLoader {
 
   static WEAPON_TYPES: string[] = [
-    'Axe', 'Broadsword', 'Claws', 'Club', 'Crossbow', 'Dagger', 'Gloves', 'Greataxe', 'Greatmace', 'Greatsword',
+    'Axe', 'Blunderbuss', 'Broadsword', 'Claws', 'Club', 'Crossbow', 'Dagger', 'Gloves', 'Greataxe', 'Greatmace', 'Greatsword',
     'Halberd', 'Hammer', 'Longbow', 'Longsword', 'Mace', 'Saucer', 'Shield', 'Shortbow', 'Shortsword',
     'Spear', 'Staff', 'Wand'
   ];
 
   static ARMOR_TYPES: string[] = [
-    'Amulet', 'Boots', 'Bracers', 'Breastplate', 'Claws', 'Cloak', 'Earring', 'Fur', 'Gloves', 'Helm',
+    'Amulet', 'Boots', 'Bracers', 'Breastplate', 'Claws', 'Cloak', 'Earring', 'Fur', 'Gloves', 'Hat', 'Helm',
     'Ring', 'Robe', 'Sash', 'Saucer', 'Shield', 'Tunic'
   ];
 

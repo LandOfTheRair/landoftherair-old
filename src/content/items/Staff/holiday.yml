@@ -1,0 +1,20 @@
+- name: Thanksgiving Gobbler Staff
+  enchantLevel: 5
+  stats:
+    offense: 3
+    defense: 3
+    armorClass: 15
+    int: 2
+    wis: 2
+    wil: 2
+    mpregen: 10
+  desc: "an ornate staff made from the trees in the Turkey Forest and embedded with turkey feathers"
+  tier: 4
+  type: Staff
+  value: 3500
+  sprite: 566
+  binds: true
+
+  trait:
+    name: SlowDigestion
+    level: 2

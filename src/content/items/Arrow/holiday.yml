@@ -1,0 +1,10 @@
+
+- name: Thanksgiving Arrows
+  stats:
+    dex: 1
+    offense: 1
+  tier: 2
+  shots: 1000
+  sprite: 203
+  desc: "a bunch of silver arrows backed with turkey feathers"
+  value: 75

@@ -1,0 +1,20 @@
+
+- name: Thanksgiving Blunderbuss
+  enchantLevel: 5
+  desc: "a standard blunderbuss used primarily in the Turkey Forest"
+  tier: 2
+  type: Ranged
+  value: 5
+  sprite: 554
+  destroyOnDrop: true
+
+- name: Thanksgiving Blunderbuss (Improved)
+  desc: "an Mark-II blunderbuss used primarily in the Turkey Forest"
+  stats:
+    offense: 3
+    defense: 3
+  tier: 4
+  type: Ranged
+  value: 50
+  sprite: 554
+  binds: true

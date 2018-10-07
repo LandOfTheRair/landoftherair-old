@@ -1,0 +1,15 @@
+
+
+- name: Antanian Crafted Arrows
+  tier: 2
+  shots: 1000
+  sprite: 202
+  desc: "a large handful of arrows, carved from branches from an Antanian tree"
+  value: 500
+
+- name: Risan Crafted Arrows
+  tier: 3
+  shots: 1000
+  sprite: 202
+  desc: "a large handful of arrows, carved from branches from a Risan tree"
+  value: 500

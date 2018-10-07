@@ -1,0 +1,14 @@
+- name: Thanksgiving Pilgrim Cloak
+  enchantLevel: 5
+  stats:
+    offense: 3
+    defense: 3
+    magicalResist: 25
+  effect:
+    name: Succor
+    potency: 15
+    uses: -1
+  desc: "a silky dark cloak with an ivory-white tie holding it together"
+  value: 2500
+  sprite: 567
+  binds: true

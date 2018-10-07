@@ -1,0 +1,13 @@
+
+- name: Thanksgiving Pilgrim Hat
+  enchantLevel: 5
+  stats:
+    offense: 3
+    defense: 3
+  effect:
+    name: TrueSight
+    autocast: true
+  sprite: 568
+  desc: "a traditional pilgrim hat"
+  value: 3500
+  binds: true

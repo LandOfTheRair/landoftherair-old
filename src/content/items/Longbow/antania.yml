@@ -6,6 +6,7 @@
   type: Ranged
   value: 110
   sprite: 200
+  
 - name: Ranata Longbow
   quality: 5
   stats:

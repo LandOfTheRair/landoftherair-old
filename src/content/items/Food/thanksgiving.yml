@@ -1,0 +1,22 @@
+
+- name: Thanksgiving Corn
+  desc: "a husk of corn"
+  value: 1
+  sprite: 556
+  ounces: 1
+
+  effect:
+    name: Nourishment
+    tooltip: "+2 CHA"
+    message: "The corn is tasty!"
+    stats:
+      cha: 2
+    duration: 1800
+
+- name: Thanksgiving Cornbread
+  desc: "a loaf of famous Turkey Forest cornbread"
+  sprite: 106
+  effect:
+    name: ThanksgivingLUK
+    potency: 1
+  value: 150

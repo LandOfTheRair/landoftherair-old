@@ -1,0 +1,21 @@
+
+
+- name: Mines Fire Arrows
+  stats:
+    accuracy: 3
+  damageClass: 'fire'
+  tier: 3
+  shots: 250
+  sprite: 202
+  desc: "a large handful of arrows with tips made from volcanic rock"
+  value: 5000
+
+- name: Frostlands Arrows
+  stats:
+    accuracy: 3
+  damageClass: 'ice'
+  tier: 3
+  shots: 250
+  sprite: 202
+  desc: "a large handful of arrows with tips made from ice"
+  value: 5000

@@ -139,16 +139,16 @@ class ItemLoader {
       item.attackRange = 1;
     }
 
-    if(includes(['Shortbow', 'Longbow', 'Greatmace', 'Greataxe'], item.itemClass)) {
+    if(includes(['Blunderbuss', 'Shortbow', 'Longbow', 'Greatmace', 'Greataxe'], item.itemClass)) {
       item.twoHanded = true;
       item.secondaryType = 'Twohanded';
     }
 
-    if(includes(['Crossbow', 'Shortbow', 'Longbow'], item.itemClass)) {
+    if(includes(['Crossbow', 'Shortbow', 'Longbow', 'Blunderbuss'], item.itemClass)) {
       item.canShoot = true;
     }
 
-    if(includes(['Crossbow', 'Shortbow', 'Longbow'], item.itemClass) || item.type === 'Ranged') {
+    if(includes(['Crossbow', 'Shortbow', 'Longbow', 'Blunderbuss'], item.itemClass) || item.type === 'Ranged') {
       item.attackRange = 5;
     }
 

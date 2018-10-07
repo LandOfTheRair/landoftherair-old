@@ -1,9 +1,20 @@
 
 - name: Halloween Moon Boots
+  enchantLevel: 5
   stats:
     magicalResist: 100
-  tier: 1
+  tier: 3
   sprite: 288
   desc: "a mesmerizing pair of red boots depicting a dark moon rising over a bright sunscape"
+  value: 2000
+  binds: true
+
+- name: Thanksgiving Pilgrim Boots
+  enchantLevel: 5
+  stats:
+    move: 1
+  tier: 3
+  sprite: 569
+  desc: "a plain pair of clogs found traditionally in the Turkey Forest"
   value: 2000
   binds: true

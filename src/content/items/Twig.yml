@@ -13,6 +13,12 @@
   requirements:
     quest: RenegadeFeathers
 
+- name: Thanksgiving Turkey Feather
+  sprite: 553
+  desc: "a fan of fine feathers plucked from a turkey"
+  sellValue: 500
+  binds: true
+
 - name: Antanian Twig
   sprite: 222
   desc: "a twig taken from an Antanian tree"
