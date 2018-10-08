@@ -7765,6 +7765,46 @@
                  "width":64,
                  "x":1920,
                  "y":2048
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1603,
+                 "name":"Turkey Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/turkey"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2496,
+                 "y":8640
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1604,
+                 "name":"Turkey Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/turkey"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1152,
+                 "y":3328
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -8743,7 +8783,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1595,
+ "nextobjectid":1605,
  "orientation":"orthogonal",
  "properties":
     {

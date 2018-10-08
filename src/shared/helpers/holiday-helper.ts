@@ -4,12 +4,14 @@ import { some } from 'lodash';
 import { Player } from '../models/player';
 
 export enum Holiday {
-  Halloween = 'Halloween'
+  Halloween = 'Halloween',
+  Thanksgiving = 'Thanksgiving'
 }
 
 export enum Currency {
   Gold = 'gold',
-  Halloween = 'halloween'
+  Halloween = 'halloween',
+  Thanksgiving = 'thanksgiving'
 }
 
 const holidayChecker = {

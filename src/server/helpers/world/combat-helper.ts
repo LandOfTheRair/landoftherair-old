@@ -16,7 +16,7 @@ import { MessageHelper } from './message-helper';
 export const BaseItemStatsPerTier = {
   Arrow:                { base: 1, min: 0, max: 2, weakChance: 25, damageBonus: 10 },
   Axe:                  { base: 2, min: 0, max: 2, weakChance: 10, damageBonus: 0 },
-  Blunderbuss:          { base: 2, min: 0, max: 4, weakChance: 30, damagebonus: 0 },
+  Blunderbuss:          { base: 2, min: 0, max: 4, weakChance: 30, damageBonus: 0 },
   Broadsword:           { base: 2, min: 0, max: 2, weakChance: 5,  damageBonus: 5 },
   Claws:                { base: 3, min: 0, max: 1, weakChance: 10, damageBonus: 0 },
   Club:                 { base: 1, min: 0, max: 1, weakChance: 10, damageBonus: 5 },

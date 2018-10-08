@@ -1,0 +1,301 @@
+
+- npcId: Thanksgiving Pilgrim
+  name: pilgrim
+  monsterClass: Humanoid
+  sprite: [955, 960, 1005, 1010]
+  stats: 20
+  level: 20
+
+  skillLevels: 6
+
+  skillOnKill: 1
+
+  gold:
+    min: 1
+    max: 5
+
+  hp:
+    min: 5000
+    max: 5000
+
+  giveXp:
+    min: 1000
+    max: 2000
+
+  rightHand: Thanksgiving Blunderbuss
+
+  gear:
+    Armor: Risan Tunic
+
+- npcId: Thanksgiving Weak Turkey
+  name: turkey
+  sprite: 985
+  stats: 11
+  skillLevels: 2
+
+  level: 10
+
+  skillOnKill: 35
+
+  gold:
+    min: 400
+    max: 750
+
+  hp:
+    min: 600
+    max: 700
+
+  mp:
+    min: 300
+    max: 500
+
+  giveXp:
+    min: 2700
+    max: 2925
+
+  gear:
+    Hands: Medium Claws
+
+  usableSkills:
+    - PoisonBiteMedium
+
+  drops:
+    - result: Thanksgiving Turkey Feather
+      chance: 1
+      maxChance: 3
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 4
+
+- npcId: Thanksgiving Strong Turkey
+  name: turkey
+  sprite: 985
+  stats: 15
+  skillLevels: 4
+
+  level: 12
+
+  skillOnKill: 55
+
+  gold:
+    min: 1000
+    max: 1750
+
+  hp:
+    min: 2000
+    max: 2200
+
+  mp:
+    min: 300
+    max: 500
+
+  giveXp:
+    min: 10700
+    max: 10925
+
+  gear:
+    Armor: Thanksgiving Turkey Skin
+    Hands: Medium Claws
+
+  tansFor: Thanksgiving Turkey Skin
+
+  usableSkills:
+    - PoisonBiteMedium
+
+  drops:
+    - result: Thanksgiving Turkey Feather
+      chance: 1
+      maxChance: 2
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 3
+
+- npcId: Thanksgiving Secret Turkey
+  name: gobbler
+  sprite: 985
+  stats: 20
+  skillLevels: 6
+
+  level: 16
+
+  skillOnKill: 95
+
+  gold:
+    min: 3000
+    max: 3750
+
+  hp:
+    min: 10000
+    max: 12500
+
+  mp:
+    min: 3000
+    max: 5000
+
+  giveXp:
+    min: 10700
+    max: 10925
+
+  gear:
+    Armor: Thanksgiving Turkey Skin
+    Hands: Medium Claws
+
+  tansFor: Thanksgiving Turkey Skin
+
+  usableSkills:
+    - PoisonBiteMedium
+
+  drops:
+    - result: Thanksgiving Turkey Feather
+      chance: 1
+      maxChance: 1
+    - result: Thanksgiving Turkey Feather
+      chance: 1
+      maxChance: 2
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 3
+
+- npcId: Thanksgiving Gobbleguard
+  name: gobbleguard
+  hostility: Always
+  sprite: 985
+  stats: 20
+  otherStats:
+    mpregen: 100
+  skillLevels: 6
+
+  level: 20
+
+  skillOnKill: 55
+
+  gold:
+    min: 3000
+    max: 3750
+
+  hp:
+    min: 20000
+    max: 22500
+
+  mp:
+    min: 3000
+    max: 5000
+
+  giveXp:
+    min: 30700
+    max: 30925
+
+  gear:
+    Armor: Thanksgiving Turkey Skin
+    Hands: Medium Claws
+
+  tansFor: Thanksgiving Turkey Skin
+
+  usableSkills:
+    - PoisonBiteMedium
+    - TrueSight
+    - DarkVision
+    - Boost
+
+  drops:
+    - result: Thanksgiving Turkey Feather
+      chance: 1
+      maxChance: 3
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 2
+
+- npcId: Thanksgiving King Gobbler
+  name: Rojd
+  monsterClass: Beast
+  hostility: Always
+  sprite: 985
+  stats: 20
+  skillLevels: 8
+
+  level: 23
+
+  skillOnKill: 255
+
+  gold:
+    min: 23000
+    max: 23750
+
+  hp:
+    min: 1000000
+    max: 1000000
+
+  mp:
+    min: 300
+    max: 500
+
+  giveXp:
+    min: 200700
+    max: 200925
+
+  gear:
+    Armor: Thanksgiving King Gobbler Skin
+    Hands: Medium Claws
+
+  tansFor: Thanksgiving King Gobbler Skin
+
+  usableSkills:
+    - PoisonBiteMedium
+    - Rapidpunch
+    - Boost
+
+  drops:
+    - result: Thanksgiving Turkey Feather
+      chance: 1
+      maxChance: 1
+    - result: Thanksgiving Turkey Feather
+      chance: 1
+      maxChance: 1
+    - result: Thanksgiving Turkey Feather
+      chance: 1
+      maxChance: 1
+    - result: Thanksgiving Turkey Feather
+      chance: 1
+      maxChance: 1
+    - result: Thanksgiving Turkey Feather
+      chance: 1
+      maxChance: 1
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 1
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 1
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 1
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 1
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 1
+
+  dropPool:
+    replace: true
+    choose:
+      min: 1
+      max: 2
+    items:
+      - result: Thanksgiving Arrows
+        chance: 100
+      - result: Thanksgiving Bead Amulet
+        chance: 20
+      - result: Thanksgiving Heal Bottle
+        chance: 10
+      - result: Thanksgiving Gem
+        chance: 5
+      - result: Thanksgiving Gobbler Staff
+        chance: 1
+      - result: Thanksgiving Pilgrim Hat
+        chance: 1
+      - result: Thanksgiving Pilgrim Boots
+        chance: 1
+      - result: Thanksgiving Pilgrim Cloak
+        chance: 1
+

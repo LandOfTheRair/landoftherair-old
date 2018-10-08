@@ -28,3 +28,8 @@
   sprite: 840
   desc: "a frozen gourd"
   value: 60
+
+- name: Thanksgiving Leaf
+  sprite: 565
+  desc: "a crimson leaf, symbolizing the turning of the season"
+  value: 60

@@ -23,9 +23,13 @@
     - result: Rylt Blueflower
       chance: 1
       maxChance: 4
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 4
+      requireHoliday: Thanksgiving
 
 - npcId: Yzalt Apple Tree
-  name: apple bush
+  name: apple vine
   hostility: OnHit
   allegiance: NaturalResource
   sprite: 840
@@ -48,6 +52,10 @@
     - result: Yzalt Steffen Apple
       chance: 1
       maxChance: 4
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 4
+      requireHoliday: Thanksgiving
 
 - npcId: Yzalt Bogweed Bush
   name: bogweeds
@@ -73,6 +81,10 @@
     - result: Yzalt Bogweed
       chance: 1
       maxChance: 4
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 4
+      requireHoliday: Thanksgiving
 
 - npcId: Tower Goblood Plant
   name: flora
@@ -98,6 +110,10 @@
     - result: Tower Goblood
       chance: 1
       maxChance: 4
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 4
+      requireHoliday: Thanksgiving
 
 - npcId: Maze Corpseflower Weed
   name: weed
@@ -148,6 +164,10 @@
     - result: Mines Caveflower
       chance: 1
       maxChance: 10
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 4
+      requireHoliday: Thanksgiving
 
 - npcId: Frostlands Gourd
   name: frost sprout
@@ -173,3 +193,32 @@
     - result: Frostlands Gourd
       chance: 1
       maxChance: 15
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 4
+      requireHoliday: Thanksgiving
+
+- npcId: Thanksgiving Corn Stalk
+  name: corn stalk
+  hostility: OnHit
+  allegiance: NaturalResource
+  sprite: 840
+  alignment: Neutral
+  stats: 1
+  skillLevels: 1
+  level: 1
+
+  skillOnKill: 1
+
+  hp:
+    min: 1
+    max: 1
+
+  giveXp:
+    min: 50
+    max: 100
+
+  drops:
+    - result: Thanksgiving Corn
+      chance: 1
+      maxChance: 1

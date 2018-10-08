@@ -1,0 +1,21 @@
+
+
+- name: Thanksgiving Turkey Skin
+  desc: "the soft skin of a delicate turkey"
+  stats:
+    armorClass: 12
+    defense: 5
+    agi: 2
+
+  value: 1600
+  sprite: 217
+
+- name: Thanksgiving King Gobbler Skin
+  desc: "the refined skin of an aged turkey"
+  stats:
+    armorClass: 17
+    defense: 10
+    agi: 3
+
+  value: 1600
+  sprite: 217

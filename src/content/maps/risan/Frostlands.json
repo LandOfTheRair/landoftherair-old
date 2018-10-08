@@ -17551,6 +17551,126 @@
                  "width":64,
                  "x":12096,
                  "y":9280
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2712,
+                 "name":"Turkey Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/turkey"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6336,
+                 "y":15168
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2713,
+                 "name":"Turkey Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/turkey"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8320,
+                 "y":13568
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2714,
+                 "name":"Turkey Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/turkey"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3840,
+                 "y":12992
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2715,
+                 "name":"Turkey Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/turkey"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":896,
+                 "y":12160
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2716,
+                 "name":"Turkey Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/turkey"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":12352,
+                 "y":11456
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":2717,
+                 "name":"Turkey Spawner",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/turkey"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":15488,
+                 "y":11520
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -18078,7 +18198,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2710,
+ "nextobjectid":2718,
  "orientation":"orthogonal",
  "properties":
     {
@@ -18101,7 +18221,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.4",
  "tileheight":64,
  "tilesets":[
         {
