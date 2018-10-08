@@ -1289,7 +1289,7 @@
     },
     "HolyFire": {
         "name": "HolyFire",
-        "desc": "Inflict fire damage on a single target. Cost: 15 MP",
+        "desc": "Inflict fire damage on a single tile. Cost: 30 MP",
         "icon": "fireflake",
         "iconColor": "#f50",
         "requireSkillLevel": 15,
