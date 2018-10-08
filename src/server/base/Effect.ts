@@ -220,8 +220,8 @@ export class SpellEffect extends Effect {
     /** PERK:CLASS:MAGE:Mages use int as their primary spellcasting stat. */
     if(caster.baseClass === 'Mage')     base = this.getCasterStat(caster, 'int');
 
-    /** PERK:CLASS:THIEF:Thieves use int as their primary spellcasting stat. */
-    if(caster.baseClass === 'Thief')    base = this.getCasterStat(caster, 'int');
+    /** PERK:CLASS:THIEF:Thieves use dex as their primary spellcasting stat. */
+    if(caster.baseClass === 'Thief')    base = this.getCasterStat(caster, 'dex');
 
     /** PERK:CLASS:WARRIOR:Warriors use str as their primary spellcasting stat. */
     if(caster.baseClass === 'Warrior')  base = this.getCasterStat(caster, 'str');
