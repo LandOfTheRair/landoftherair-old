@@ -2,6 +2,8 @@
 
 - name: Miner Defense Health Helm
   sprite: 336
+  stats:
+    armorClass: 7
   randomStats:
     defense:
       min: 2
@@ -14,6 +16,8 @@
 
 - name: Miner Offense Health Helm
   sprite: 336
+  stats:
+    armorClass: 7
   randomStats:
     offense:
       min: 2
@@ -26,6 +30,8 @@
 
 - name: Miner Defense Mana Helm
   sprite: 336
+  stats:
+    armorClass: 7
   randomStats:
     defense:
       min: 2
@@ -38,6 +44,8 @@
 
 - name: Miner Offense Mana Helm
   sprite: 336
+  stats:
+    armorClass: 7
   randomStats:
     offense:
       min: 2
