@@ -14,6 +14,7 @@ export class PartyCreate extends Command {
     const partyName = args.substring(0, 15).toLowerCase().trim().split(' ').join('');
 
     if(!partyName) return player.sendClientMessage('You need to specify a party name!');
+    if(!room.partyManager) return player.sendClientMessage('Please wait a bit before trying to create a party.');
 
     if(room.partyManager.getPartyByName(partyName)) return player.sendClientMessage('That party already exists.');
 
