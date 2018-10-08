@@ -15,6 +15,7 @@ export class FrostlandsTownCastleSlaveSpawner extends Spawner {
       spawnRadius: 1,
       randomWalkRadius: 7,
       leashRadius: 12,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

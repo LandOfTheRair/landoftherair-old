@@ -16,6 +16,7 @@ export class ThanksgivingTurkeyGobbleGuardSpawner extends Spawner {
       spawnRadius: 1,
       randomWalkRadius: 15,
       leashRadius: 25,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

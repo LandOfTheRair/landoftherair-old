@@ -18,6 +18,7 @@ export class TrainingDummySpawner extends Spawner {
       eliteTickCap: 0,
       npcAISettings: ['trainingdummy'],
       canSlowDown: false,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

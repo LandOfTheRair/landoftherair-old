@@ -22,6 +22,7 @@ export class FrostlandsTownCastleGuardSpawner extends Spawner {
       spawnRadius: 1,
       randomWalkRadius: 0,
       leashRadius: 40,
+      doInitialSpawnImmediately: true,
       npcIds,
       paths
     });

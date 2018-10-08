@@ -10,6 +10,7 @@ export class ResourceSpawner extends Spawner {
       respawnRate: 1800,
       initialSpawn: 1,
       maxSpawn: 1,
+      maxCreatures: 1,
       spawnRadius: 0,
       randomWalkRadius: 0,
       leashRadius: 0,
@@ -18,7 +19,8 @@ export class ResourceSpawner extends Spawner {
       requireDeadToRespawn: true,
       canSlowDown: false,
       eliteTickCap: 0,
-      npcAISettings: ['resource']
+      npcAISettings: ['resource'],
+      doInitialSpawnImmediately: true
     }, properties);
 
     spawnerProps.npcIds = properties.resourceIds || [];

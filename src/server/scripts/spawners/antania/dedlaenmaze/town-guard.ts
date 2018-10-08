@@ -15,6 +15,7 @@ export class TownGuardSpawner extends Spawner {
       spawnRadius: 1,
       randomWalkRadius: 10,
       leashRadius: 15,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

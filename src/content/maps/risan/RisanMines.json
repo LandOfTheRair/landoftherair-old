@@ -6008,10 +6008,10 @@
                  "gid":2363,
                  "height":64,
                  "id":1560,
-                 "name":"Miner Spawner",
+                 "name":"Miner Town Spawner",
                  "properties":
                     {
-                     "script":"risan\/risanmines\/miner"
+                     "script":"risan\/risanmines\/miner-town"
                     },
                  "propertytypes":
                     {

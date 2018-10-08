@@ -15,6 +15,7 @@ export class RyltTownRandomSpawner extends Spawner {
       spawnRadius: 0,
       randomWalkRadius: 20,
       leashRadius: 35,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

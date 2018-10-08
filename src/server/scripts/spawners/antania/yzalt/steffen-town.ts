@@ -16,6 +16,7 @@ export class SteffenTownSpawner extends Spawner {
       spawnRadius: 0,
       randomWalkRadius: 35,
       leashRadius: 45,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

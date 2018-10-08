@@ -15,6 +15,7 @@ export class TowneeSpawner extends Spawner {
       spawnRadius: 3,
       randomWalkRadius: 7,
       leashRadius: 10,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

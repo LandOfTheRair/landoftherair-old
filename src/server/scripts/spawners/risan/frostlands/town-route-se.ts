@@ -22,6 +22,7 @@ export class FrostlandsTownRouteSE extends Spawner {
       spawnRadius: 1,
       randomWalkRadius: 0,
       leashRadius: 35,
+      doInitialSpawnImmediately: true,
       npcIds,
       paths
     });

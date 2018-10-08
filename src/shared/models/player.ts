@@ -109,6 +109,9 @@ export class Player extends Character {
   @nonenumerable
   public $$account: Account;
 
+  @nonenumerable
+  public $$spawnerSteps: number;
+
   get party(): Party {
     return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
   }

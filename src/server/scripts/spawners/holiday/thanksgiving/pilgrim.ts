@@ -16,6 +16,7 @@ export class ThanksgivingPilgrimSpawner extends Spawner {
       spawnRadius: 1,
       randomWalkRadius: 25,
       leashRadius: 35,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

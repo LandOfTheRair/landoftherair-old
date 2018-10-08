@@ -70,6 +70,25 @@ export class Spawner {
   npcCreateCallback: Function;
   shouldBeActive = true;
 
+  doInitialSpawnImmediately: boolean;
+  private hasDoneInitialSpawn: boolean;
+
+  private get canRespawn(): boolean {
+    return this.currentTick === 0 || this.currentTick > this.respawnRate && this.respawnRate > 0;
+  }
+
+  private get isUnderNPCCap(): boolean {
+    return (this.npcs.length + this.despawnedNPCs.length) < this.maxCreatures;
+  }
+
+  private get isAbleToSpawn(): boolean {
+    return this.alwaysSpawn || (this.room.canSpawnCreatures && !this.$$isStayingSlow);
+  }
+
+  private get canISpawnAnNPCRightNow(): boolean {
+    return this.canRespawn && this.isUnderNPCCap && this.isAbleToSpawn;
+  }
+
   constructor(private room: GameWorld, { x, y, map, name }, spawnOpts) {
     extend(this, spawnOpts);
 
@@ -84,9 +103,14 @@ export class Spawner {
     // if a room disables creature spawn, it wants them all to spawn at once
     if(room.disableCreatureSpawn) this.currentTick = 0;
 
-    if(this.currentTick === 0) {
-      this.spawnInitialNPCs();
-    }
+    if(this.doInitialSpawnImmediately) this.doInitialSpawn();
+  }
+
+  private doInitialSpawn() {
+    if(this.hasDoneInitialSpawn || !this.canISpawnAnNPCRightNow) return;
+    this.currentTick++;
+    this.hasDoneInitialSpawn = true;
+    this.spawnInitialNPCs();
   }
 
   private async spawnInitialNPCs() {
@@ -98,12 +122,15 @@ export class Spawner {
     // allow it to get into the cache
     await this.createNPC();
 
+    const promises = [];
     const spawnAfter = this.initialSpawn - 1;
     if(spawnAfter > 0) {
       for(let i = 0; i < spawnAfter; i++) {
-        this.createNPC();
+        promises.push(this.createNPC());
       }
     }
+
+    return Promise.all(promises);
   }
 
   isActive() {
@@ -421,7 +448,7 @@ export class Spawner {
     npc.setPath(sample(this.paths));
   }
 
-  tick() {
+  async tick() {
     if(!this.isActive()) return;
 
     if(this.requireDeadToRespawn) {
@@ -450,12 +477,14 @@ export class Spawner {
     }
 
     // npcs cannot spawn unless X ticks have passed, the spawner isn't overloaded, and they _always_ spawn OR they're not slow, _and_ the room isn't full
-    if(this.currentTick > this.respawnRate
-    && this.respawnRate > 0
-    && (this.npcs.length + this.despawnedNPCs.length) < this.maxCreatures
-    && (this.alwaysSpawn || (this.room.canSpawnCreatures && !this.$$isStayingSlow))) {
-      this.currentTick = 0;
-      this.createNPC();
+    if(this.canISpawnAnNPCRightNow) {
+      this.currentTick = -1;
+
+      if(this.hasDoneInitialSpawn) {
+        this.createNPC();
+      } else {
+        this.doInitialSpawn();
+      }
     }
   }
 
@@ -472,12 +501,17 @@ export class Spawner {
 
   speedUp() {
     this.$$isStayingSlow = false;
+    this.$$slowTicks = 0;
 
     this.despawnedNPCs.forEach(npc => {
       this.addNPC(npc, false);
     });
 
     this.despawnedNPCs = [];
+
+    if(this.canISpawnAnNPCRightNow) {
+      this.doInitialSpawn();
+    }
   }
 
   shouldSlowDown() {

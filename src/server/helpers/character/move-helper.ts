@@ -6,6 +6,7 @@ import { isUndefined, find, values } from 'lodash';
 import * as Pathfinder from 'pathfinding';
 import { CombatHelper } from '../world/combat-helper';
 import { HolidayHelper } from '../../../shared/helpers/holiday-helper';
+import { Player } from '../../../shared/models/player';
 
 export class MoveHelper {
 
@@ -90,9 +91,24 @@ export class MoveHelper {
       if(interactable) {
         this.handleInteractable(room, player, interactable);
       }
+
+      const targ = <Player>player;
+      if(!targ.$$spawnerSteps || targ.$$spawnerSteps <= 0) {
+        targ.$$spawnerSteps = 4;
+        MoveHelper.wakeUpNearbySpawners(targ);
+      }
+
+      targ.$$spawnerSteps--;
     }
 
     return true;
+  }
+
+  static wakeUpNearbySpawners(player: Player) {
+    player.$$room.allSpawners.forEach(spawner => {
+      if(player.distFrom(spawner) > spawner.leashRadius) return;
+      spawner.speedUp();
+    });
   }
 
   static tryToOpenDoor(player: Character, door, { gameState }): boolean {

@@ -24,6 +24,7 @@ export class HenizTownSpawner extends Spawner {
       spawnRadius: 0,
       randomWalkRadius: 0,
       leashRadius: 35,
+      doInitialSpawnImmediately: true,
       npcIds,
       paths
     });

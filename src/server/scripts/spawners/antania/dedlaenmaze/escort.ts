@@ -18,6 +18,7 @@ export class DedlaenEscortSpawner extends Spawner {
       leashRadius: 15,
       npcAISettings: ['dedlaenescort'],
       canSlowDown: false,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

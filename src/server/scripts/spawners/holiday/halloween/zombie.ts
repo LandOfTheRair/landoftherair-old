@@ -17,6 +17,7 @@ export class HalloweenZombieSpawner extends Spawner {
       randomWalkRadius: 15,
       leashRadius: 35,
       alwaysSpawn: true,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

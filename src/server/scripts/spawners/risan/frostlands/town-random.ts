@@ -16,6 +16,7 @@ export class FrostlandsTownRandomSpawner extends Spawner {
       spawnRadius: 2,
       randomWalkRadius: 20,
       leashRadius: 35,
+      doInitialSpawnImmediately: true,
       npcIds
     });
   }

@@ -6,10 +6,11 @@ export class SingleResourceSpawner extends Spawner {
 
   constructor(room, opts, properties) {
 
-    const spawnerProps = extend({
-      respawnRate: 3600,
+    const spawnerProps: any = extend({
+      respawnRate: 1800,
       initialSpawn: 1,
       maxSpawn: 1,
+      maxCreatures: 1,
       spawnRadius: 0,
       randomWalkRadius: 0,
       leashRadius: 0,
@@ -18,7 +19,8 @@ export class SingleResourceSpawner extends Spawner {
       requireDeadToRespawn: true,
       canSlowDown: false,
       eliteTickCap: 0,
-      npcAISettings: ['resource']
+      npcAISettings: ['resource'],
+      doInitialSpawnImmediately: true
     }, properties);
 
     spawnerProps.npcIds = [properties.resourceName];
