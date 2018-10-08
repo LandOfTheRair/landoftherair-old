@@ -32,7 +32,9 @@ export class SearingPurification extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.hasSkillRef = !!skillRef;
 
-    const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
+    let damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
+    if(target.alignment === caster.alignment) damage = Math.floor(damage * 0.1);
+
     this.effectInfo = { damage, caster: caster.uuid };
     this.duration = 5;
     this.flagCasterName(caster.name);
