@@ -93,7 +93,7 @@
 - name: Antanian Health Potion
   desc: "a small bottle filled with clear, odorless fluid"
   extendedDesc: "a potion of minor health"
-  sprite: 149
+  sprite: 141
   effect:
     name: MinorHP
     potency: 2
@@ -102,7 +102,7 @@
 - name: Antanian Magic Potion
   desc: "a small bottle filled with clear, odorless fluid"
   extendedDesc: "a potion of minor magic"
-  sprite: 149
+  sprite: 142
   effect:
     name: MinorMP
     potency: 5
