@@ -393,6 +393,106 @@
                  "width":64,
                  "x":1216,
                  "y":2496
+                }, 
+                {
+                 "gid":3562,
+                 "height":64,
+                 "id":196,
+                 "name":"Koda",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/koda"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":384,
+                 "y":2688
+                }, 
+                {
+                 "gid":3572,
+                 "height":64,
+                 "id":197,
+                 "name":"Sacagawea",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/sacagawea"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":512,
+                 "y":2688
+                }, 
+                {
+                 "gid":3587,
+                 "height":64,
+                 "id":198,
+                 "name":"Klarc",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/klarc"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":640,
+                 "y":2688
+                }, 
+                {
+                 "gid":3587,
+                 "height":64,
+                 "id":199,
+                 "name":"Welis",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/welis"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":768,
+                 "y":2688
+                }, 
+                {
+                 "gid":3582,
+                 "height":64,
+                 "id":200,
+                 "name":"Annalie",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/annalie"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":896,
+                 "y":2688
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -512,7 +612,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":196,
+ "nextobjectid":201,
  "orientation":"orthogonal",
  "properties":
     {

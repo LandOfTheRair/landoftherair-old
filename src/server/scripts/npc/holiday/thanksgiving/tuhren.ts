@@ -18,7 +18,7 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(!HolidayHelper.isHoliday(Holiday.Halloween)) return 'Come back when the leaves are turning.';
+      if(!HolidayHelper.isHoliday(Holiday.Thanksgiving)) return 'Come back when the leaves are turning.';
 
       if(player.rightHand) {
         if(player.rightHand.name === 'Thanksgiving Blunderbuss') {
