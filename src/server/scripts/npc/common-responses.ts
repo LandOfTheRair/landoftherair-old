@@ -988,8 +988,8 @@ export const MPDocResponses = (npc: NPC) => {
 
   const mpCosts = [
     { min: 100,     max: 500 },
-    { min: 25000,   max: 45000 },
-    { min: 500000,  max: 5000000 }
+    { min: 10000,   max: 30000 },
+    { min: 200000,  max: 2000000 }
   ];
 
   npc.parser.addCommand('hello')
