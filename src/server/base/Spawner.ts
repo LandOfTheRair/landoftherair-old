@@ -107,7 +107,6 @@ export class Spawner {
   }
 
   private doInitialSpawn() {
-    console.log(this.name)
     if(this.hasDoneInitialSpawn || !this.canISpawnAnNPCRightNow) return;
     this.currentTick++;
     this.hasDoneInitialSpawn = true;

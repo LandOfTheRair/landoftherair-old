@@ -29,9 +29,7 @@ export class HolyFire extends SpellEffect {
 
       let damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
       if(refTarget.alignment === caster.alignment) damage = Math.floor(damage * 0.1);
-
-      console.log(refTarget.alignment, caster.alignment);
-
+      
       let isCrit = false;
       let damageMultiplier = 1;
 
