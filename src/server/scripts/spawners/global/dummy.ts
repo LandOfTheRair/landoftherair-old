@@ -9,7 +9,7 @@ export class TrainingDummySpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 1,
+      respawnRate: 5,
       initialSpawn: 1,
       maxCreatures: 1,
       spawnRadius: 0,
