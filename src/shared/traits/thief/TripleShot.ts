@@ -9,7 +9,7 @@ export class TripleShot extends Trait {
   static icon = 'double-shot';
 
   static upgrades = [
-    { cost: 10, capstone: true }
+    { cost: 10 }
   ];
 
 }
