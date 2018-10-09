@@ -100,7 +100,7 @@ export class TraitsComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.treeInstance.cleanup();
+    if(this.treeInstance) this.treeInstance.cleanup();
     if(this.ttHover$)   this.ttHover$.unsubscribe();
     if(this.skillTree$) this.skillTree$.unsubscribe();
   }
