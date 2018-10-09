@@ -67,6 +67,8 @@
       chance: 1
       maxChance: 4
 
+  spawnMessage: "the gobbling of a young turkey"
+
 - npcId: Thanksgiving Strong Turkey
   name: turkey
   sprite: 985
@@ -109,6 +111,8 @@
     - result: Thanksgiving Corn
       chance: 1
       maxChance: 3
+
+  spawnMessage: "the gobbling of a turkey"
 
 - npcId: Thanksgiving Secret Turkey
   name: gobbler
@@ -155,6 +159,8 @@
     - result: Thanksgiving Corn
       chance: 1
       maxChance: 3
+
+  spawnMessage: "the guttural gobbling of a turkey"
 
 - npcId: Thanksgiving Gobbleguard
   name: gobbleguard
@@ -204,6 +210,8 @@
     - result: Thanksgiving Corn
       chance: 1
       maxChance: 2
+
+  spawnMessage: "the gobbling of a turkey"
 
 - npcId: Thanksgiving King Gobbler
   name: Rojd
@@ -298,4 +306,6 @@
         chance: 1
       - result: Thanksgiving Pilgrim Cloak
         chance: 1
+
+  spawnMessage: "a deep gobble-roar"
 
