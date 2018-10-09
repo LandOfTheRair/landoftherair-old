@@ -6,6 +6,7 @@ import { DB } from './database';
 import { GameAPI } from './api';
 import { Logger } from './logger';
 
+import * as uuid from 'uuid/v4';
 import { includes } from 'lodash';
 
 import { Server, MemsharedPresence, RedisPresence } from 'colyseus';
@@ -72,8 +73,10 @@ DB.init()
 
         Logger.log(`[Parent] Started server on port ${port}`);
 
+        const gameUUID = uuid();
+
         for (let i = 0; i < require('os').cpus().length; i++) {
-          cluster.fork();
+          cluster.fork({ GAME_INSTANCE: gameUUID });
         }
 
       } else {

@@ -18,6 +18,8 @@ export class PartyArbiter {
 
   private initListeners() {
 
+    const arbiterGameId = process.env.GAME_INSTANCE;
+
     this.redis.on('party:create', ({ leader, partyName }) => {
       this._redisCreateParty(leader, partyName);
     });
@@ -43,7 +45,7 @@ export class PartyArbiter {
     });
 
     this.redis.on('party:requestsync', () => {
-      this.redis.emit('party:sync', { parties: this.parties, roomName: 'Arbiter' });
+      this.redis.emit('party:sync', { parties: this.parties, roomName: 'Arbiter', gameId: arbiterGameId });
     });
 
   }

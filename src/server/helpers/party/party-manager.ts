@@ -20,6 +20,8 @@ export class PartyManager {
 
   private initListeners() {
 
+    const managerGameId = process.env.GAME_INSTANCE;
+
     this.redis.on('party:create', ({ leader, partyName }) => {
       this._redisCreateParty(leader, partyName);
     });
@@ -44,14 +46,18 @@ export class PartyManager {
       this._redisUpdateMember(member, partyName);
     });
 
-    this.redis.on('party:sync', ({ parties }) => {
+    this.redis.on('party:sync', ({ parties, gameId }) => {
+      if(gameId !== managerGameId) return;
+
       this.parties = {};
       Object.keys(parties).forEach(partyName => {
         this.parties[partyName] = new Party(parties[partyName]);
       });
     });
 
-    this.redis.emit('party:requestsync', {});
+    this.room.clock.setInterval(() => {
+      this.redis.emit('party:requestsync', {});
+    }, 0);
 
   }
 
