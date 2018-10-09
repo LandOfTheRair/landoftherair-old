@@ -28,27 +28,36 @@ export class LootHelper {
     const isNaturalResource = npc.isNaturalResource;
 
     if(!isNaturalResource && npc.$$room.dropTables.map.length > 0) {
-      tables.push({
-        table: new LootTable(LootHelper.filterDropTable(npc.$$room.dropTables.map), bonus),
-        func: LootFunctions.EachItem,
-        args: 0
-      });
+      const filteredTable = LootHelper.filterDropTable(npc.$$room.dropTables.map);
+      if(filteredTable.length > 0) {
+        tables.push({
+          table: new LootTable(filteredTable, bonus),
+          func: LootFunctions.EachItem,
+          args: 0
+        });
+      }
     }
 
     if(!isNaturalResource && npc.$$room.dropTables.region.length > 0) {
-      tables.push({
-        table: new LootTable(LootHelper.filterDropTable(npc.$$room.dropTables.region), bonus),
-        func: LootFunctions.EachItem,
-        args: 0
-      });
+      const filteredTable = LootHelper.filterDropTable(npc.$$room.dropTables.region);
+      if(filteredTable.length > 0) {
+        tables.push({
+          table: new LootTable(filteredTable, bonus),
+          func: LootFunctions.EachItem,
+          args: 0
+        });
+      }
     }
 
     if(npc.drops && npc.drops.length > 0) {
-      tables.push({
-        table: new LootTable(LootHelper.filterDropTable(npc.drops), bonus),
-        func: LootFunctions.EachItem,
-        args: 0
-      });
+      const filteredTable = LootHelper.filterDropTable(npc.drops);
+      if(filteredTable.length > 0) {
+        tables.push({
+          table: new LootTable(filteredTable, bonus),
+          func: LootFunctions.EachItem,
+          args: 0
+        });
+      }
     }
 
     if(npc.dropPool) {
@@ -57,11 +66,14 @@ export class LootHelper {
       const numChoices = random(choose.min, choose.max);
 
       if(numChoices > 0 && items.length > 0) {
-        tables.push({
-          table: new LootTable(LootHelper.filterDropTable(items), bonus),
-          func: replace ? LootFunctions.WithReplacement : LootFunctions.WithoutReplacement,
-          args: numChoices
-        });
+        const filteredTable = LootHelper.filterDropTable(items);
+        if(filteredTable.length > 0) {
+          tables.push({
+            table: new LootTable(filteredTable, bonus),
+            func: replace ? LootFunctions.WithReplacement : LootFunctions.WithoutReplacement,
+            args: numChoices
+          });
+        }
       }
     }
 
@@ -74,11 +86,14 @@ export class LootHelper {
       }));
 
       if(drops.length > 0) {
-        tables.push({
-          table: new LootTable(LootHelper.filterDropTable(drops), bonus),
-          func: LootFunctions.EachItem,
-          args: 0
-        });
+        const filteredTable = LootHelper.filterDropTable(drops);
+        if(filteredTable.length > 0) {
+          tables.push({
+            table: new LootTable(filteredTable, bonus),
+            func: LootFunctions.EachItem,
+            args: 0
+          });
+        }
       }
     }
 
