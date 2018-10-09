@@ -542,6 +542,8 @@ export class GameState {
       // no hitting myself
       if(me === char) return false;
 
+      if(!(<any>char).$$ready) return false;
+
       // if they can't attack, they're not worth fighting
       if((<NPC>char).hostility === 'Never') return false;
 
