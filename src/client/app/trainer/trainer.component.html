@@ -7,7 +7,8 @@
 
     <div class="col-4 text-right">
       <button class="btn btn-primary"
-              [disabled]="!colyseusGame.character || colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain"
+              [disabled]="!colyseusGame.character
+              || (colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain && colyseusGame.character.baseClass !== 'Undecided')"
               tooltip="Gain levels based on your current experience points."
               container="body"
               (click)="train()">Train</button>

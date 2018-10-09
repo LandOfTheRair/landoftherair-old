@@ -657,7 +657,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
     .set('syntax', ['train'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      if(player.baseClass !== npc.classTrain) return 'I have nothing to teach you.';
+      if(player.baseClass !== npc.classTrain && player.baseClass !== 'Undecided') return 'I have nothing to teach you.';
 
       const level = player.level;
 
@@ -676,7 +676,8 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       const gainedTP = player.skillTree.calculateNewTPFromLevels(player);
       player.$$room.updateSkillTree(player);
 
-      return `You have gained ${newLevel - level} experience level and ${gainedTP} TP. Visit your Trait Tree to spend TP!`;
+      const extraText = player.baseClass === npc.classTrain ? 'Visit your Trait Tree to spend TP!' : '';
+      return `You have gained ${newLevel - level} experience level and ${gainedTP} TP. ${extraText}`;
     });
 
   npc.parser.addCommand('join')
@@ -901,7 +902,7 @@ export const HPDocResponses = (npc: NPC) => {
     Thief:      [100, 425, 700],
     Healer:     [100, 400, 650],
     Warrior:    [100, 450, 800],
-    Undecided:  [100, 200, 300]
+    Undecided:  [100, 600, 975]
   };
 
   const levelTiers = [0, 13, 25];
