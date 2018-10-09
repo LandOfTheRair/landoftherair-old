@@ -902,7 +902,7 @@ export const HPDocResponses = (npc: NPC) => {
     Thief:      [100, 425, 700],
     Healer:     [100, 400, 650],
     Warrior:    [100, 450, 800],
-    Undecided:  [100, 600, 975]
+    Undecided:  [100, 600, 550]
   };
 
   const levelTiers = [0, 13, 25];
