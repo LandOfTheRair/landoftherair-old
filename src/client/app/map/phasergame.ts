@@ -136,9 +136,9 @@ export class Game {
         setTimeout(() => {
           sprite.destroy();
         }, 2000);
-      } catch(e) {
-        console.error(e);
-      }
+
+      // this error happens when visual effects happen but the game isn't loaded
+      } catch(e) {}
     });
   }
 
