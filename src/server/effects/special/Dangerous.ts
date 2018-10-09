@@ -21,4 +21,9 @@ export class Dangerous extends Effect {
     this.gainStat(char, 'hpregen', 100);
   }
 
+  effectTick(char: Character) {
+    if(char.combatTicks) return;
+    char.hp.add(Math.floor(char.hp.maximum / 100));
+  }
+
 }
