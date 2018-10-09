@@ -103,12 +103,11 @@ export class Spawner {
     // if a room disables creature spawn, it wants them all to spawn at once
     if(room.disableCreatureSpawn) this.currentTick = 0;
 
-    if(this.doInitialSpawnImmediately) this.doInitialSpawn();
+    if(this.doInitialSpawnImmediately && this.currentTick === 0) this.doInitialSpawn();
   }
 
   private doInitialSpawn() {
-    if(this.hasDoneInitialSpawn || !this.canISpawnAnNPCRightNow) return;
-    this.currentTick++;
+    if(this.hasDoneInitialSpawn) return;
     this.hasDoneInitialSpawn = true;
     this.spawnInitialNPCs();
   }
@@ -452,9 +451,9 @@ export class Spawner {
     if(!this.isActive()) return;
 
     if(this.requireDeadToRespawn) {
-      if(this.npcs.length === 0 || every(this.npcs, npc => npc.isDead())) this.currentTick++;
+      if(this.npcs.length === 0 || every(this.npcs, npc => npc.isDead())) this.increaseCurrentTick();
     } else {
-      this.currentTick++;
+      this.increaseCurrentTick();
     }
 
     if(this.$$slowTicks > 0) {
@@ -478,13 +477,9 @@ export class Spawner {
 
     // npcs cannot spawn unless X ticks have passed, the spawner isn't overloaded, and they _always_ spawn OR they're not slow, _and_ the room isn't full
     if(this.canISpawnAnNPCRightNow) {
-      this.currentTick = -1;
+      this.currentTick = 0;
 
-      if(this.hasDoneInitialSpawn) {
-        this.createNPC();
-      } else {
-        this.doInitialSpawn();
-      }
+      this.createNPC();
     }
   }
 
@@ -508,10 +503,7 @@ export class Spawner {
     });
 
     this.despawnedNPCs = [];
-
-    if(this.canISpawnAnNPCRightNow) {
-      this.doInitialSpawn();
-    }
+    if(this.npcs.length === 0 && !this.requireDeadToRespawn && !this.hasDoneInitialSpawn) this.doInitialSpawn();
   }
 
   shouldSlowDown() {
@@ -563,6 +555,10 @@ export class Spawner {
 
   private removeSelf() {
     this.room.removeSpawner(this);
+  }
+
+  private increaseCurrentTick() {
+    this.currentTick++;
   }
 
 }

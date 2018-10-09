@@ -10,6 +10,7 @@ export class LairSpawner extends Spawner {
       respawnRate: 3600,
       initialSpawn: 1,
       maxSpawn: 1,
+      maxCreatures: 1,
       spawnRadius: 0,
       randomWalkRadius: 2,
       leashRadius: 10,
