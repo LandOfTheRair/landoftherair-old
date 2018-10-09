@@ -55,9 +55,10 @@ export class PartyManager {
       });
     });
 
+    // this is dumb but whatever
     this.room.clock.setInterval(() => {
       this.redis.emit('party:requestsync', {});
-    }, 0);
+    }, 500);
 
   }
 
