@@ -256,6 +256,10 @@
     Head: Enemy TrueSight Earring
     Hands: Ghast Claws
 
+  drops:
+    - result: Dedlaen Ghast Heart
+      chance: -1
+
   copyDrops:
     - drop: 'gear.Hands'
       chance: -1

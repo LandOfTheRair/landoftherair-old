@@ -103,18 +103,48 @@
     level: 11
 
 - name: Dedlaen Vampire Heart
-  desc: "a crystallized heart pulsing with blood"
+  desc: "a crystallized heart with coagulated, frozen blood covering it"
   value: 7500
   sprite: 361
 
-  maxEncrusts: 1
+  maxEncrusts: 2
 
   binds: true
   tellsBind: true
 
   stats:
     str: 1
+
+  requirements:
+    level: 10
+
+- name: Dedlaen Ghast Heart
+  desc: "a crystallized heart pulsing with blood"
+  value: 7500
+  sprite: 361
+
+  maxEncrusts: 2
+
+  binds: true
+  tellsBind: true
+
+  stats:
     int: 1
+
+  requirements:
+    level: 10
+
+- name: Dedlaen CryptThing Heart
+  desc: "a still-beating heart endlessly pumping blood"
+  value: 7500
+  sprite: 361
+
+  maxEncrusts: 2
+
+  binds: true
+  tellsBind: true
+
+  stats:
     wis: 1
 
   requirements:

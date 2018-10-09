@@ -37,6 +37,8 @@
       chance: -1
 
   drops:
+    - result: Dedlaen CryptThing Heart
+      chance: -1
     - result: Dedlaen Maze Key
       chance: 1
       maxChance: 5
