@@ -251,7 +251,7 @@ export class CombatHelper {
       if(RollerHelper.XInOneHundred(procChance)) {
         attacker.sendClientMessage({
           message: `Your shadow daggers unsheathe themselves and attempt to strike ${defender.name}!`,
-          subClass: 'combat other hit'
+          subClass: 'combat self hit'
         });
         isBackstab = true;
         backstabIgnoreRange = true;
