@@ -260,8 +260,8 @@ export class CombatHelper {
 
     if(defender.isDead() || attacker.isDead()) return { isDead: true };
 
-    attacker.combatTicks = 10;
-    defender.combatTicks = 10;
+    attacker.setCombatTicks(10);
+    defender.setCombatTicks(10);
 
     let isAttackerVisible = defender.canSeeThroughStealthOf(attacker);
     if(CharacterHelper.isInDarkness(defender) && !defender.hasEffect('DarkVision')) {
@@ -871,10 +871,10 @@ export class CombatHelper {
   static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass, isOverTime }: any = {}) {
 
     if(attacker) {
-      attacker.combatTicks = 10;
+      attacker.setCombatTicks(10);
     }
 
-    attacked.combatTicks = 10;
+    attacked.setCombatTicks(10);
 
     if(skillRef && attacker) {
       attacker.flagSkill(skillRef.flagSkills);

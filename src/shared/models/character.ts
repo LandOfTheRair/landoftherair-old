@@ -1536,4 +1536,9 @@ export class Character {
       this._gainSkill(lostSkillType, -lostSkill);
     }
   }
+
+  public setCombatTicks(ticks: number) {
+    if(this.combatTicks > ticks) return;
+    this.combatTicks = ticks;
+  }
 }

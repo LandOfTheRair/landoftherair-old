@@ -24,6 +24,7 @@ export class GhostWail extends MonsterSkill {
   }
 
   use(user: Character, target: Character) {
+    user.setCombatTicks(30);
 
     user.sendClientMessageToRadius('You hear a terrifying wail!', 5);
 

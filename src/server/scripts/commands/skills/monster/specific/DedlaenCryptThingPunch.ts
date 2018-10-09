@@ -15,6 +15,7 @@ export class DedlaenCryptThingPunch extends MonsterSkill {
 
   use(user: Character, target: Character) {
     if(!RollerHelper.OneInX(20)) return;
+    user.setCombatTicks(60);
 
     target.sendClientMessageToRadius(`${target.name} was cast into a tear in the rift!`, 4);
     const allTeleportSpots = user.$$room.state.getDecorByName('CryptThing Spot');

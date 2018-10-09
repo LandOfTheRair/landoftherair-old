@@ -22,6 +22,7 @@ class MistFormEffect extends Effect {
     this.duration = 10;
     this.skillRef = skillRef;
     target.applyEffect(this);
+    caster.setCombatTicks(30);
 
     const physicalResist = new Attribute({ damageType: 'physical', duration: 10, potency: 0, unableToShred: true });
     physicalResist.cast(caster, caster, skillRef);
