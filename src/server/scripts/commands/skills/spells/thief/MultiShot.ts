@@ -17,14 +17,14 @@ export class MultiShot extends Skill {
     icon: 'double-shot',
     color: '#000',
     mode: 'lockActivation',
-    tooltipDesc: 'Shoot multiple arrows at your enemy. Cost: 10 HP',
+    tooltipDesc: 'Shoot multiple arrows at your enemy. Cost: Arrows',
     skillTPCost: 10
   };
 
   public name = ['multishot', 'cast multishot'];
   public format = 'Target';
 
-  mpCost(user: Player) { return 10; }
+  mpCost(user: Player) { return 0; }
 
   canUse(user: Player) {
     return !!(user.rightHand && user.leftHand && user.rightHand.canShoot && user.leftHand.shots);
