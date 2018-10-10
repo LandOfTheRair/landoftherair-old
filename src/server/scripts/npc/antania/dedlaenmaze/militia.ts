@@ -8,6 +8,7 @@ const GOURD_REWARD = 'Dedlaen Militia Gourd';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
+  npc.affiliation = 'Militia Man';
 
   npc.rightHand = await npc.$$room.npcLoader.loadItem('Maze Longsword');
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Tower Breastplate');

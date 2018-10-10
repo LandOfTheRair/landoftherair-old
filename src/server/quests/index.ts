@@ -20,6 +20,9 @@ export * from './antania/Yzalt/KillRanata';
 export * from './antania/TowerOfSelen/KillGoblins';
 export * from './antania/TowerOfSelen/KillOrcs';
 
+export * from './antania/DedlaenMaze/KillDarkMinions';
+export * from './antania/DedlaenMaze/KillSpooks';
+
 export * from './risan/RisanMines/DailyKillDryads';
 export * from './risan/RisanMines/DailyKillMiners';
 export * from './risan/RisanMines/DailyKillWildlife';

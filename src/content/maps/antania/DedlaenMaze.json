@@ -22654,7 +22654,7 @@
                  "gid":3202,
                  "height":64,
                  "id":5884,
-                 "name":"Gatekeeper Ralph",
+                 "name":"Ralph",
                  "properties":
                     {
                      "script":"antania\/dedlaenmaze\/gatekeeper"
@@ -22674,7 +22674,7 @@
                  "gid":3152,
                  "height":64,
                  "id":5986,
-                 "name":"Militia",
+                 "name":"Max",
                  "properties":
                     {
                      "script":"antania\/dedlaenmaze\/militia"
@@ -22689,6 +22689,46 @@
                  "width":64,
                  "x":7680,
                  "y":6400
+                }, 
+                {
+                 "gid":3202,
+                 "height":64,
+                 "id":6046,
+                 "name":"Jack",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/guard-jack"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7872,
+                 "y":6976
+                }, 
+                {
+                 "gid":3202,
+                 "height":64,
+                 "id":6047,
+                 "name":"John",
+                 "properties":
+                    {
+                     "script":"antania\/dedlaenmaze\/guard-john"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8128,
+                 "y":6976
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -25803,8 +25843,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":8000,
-                 "y":7040
+                 "x":8064,
+                 "y":7104
                 }, 
                 {
                  "gid":2363,
@@ -28155,7 +28195,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":6045,
+ "nextobjectid":6048,
  "orientation":"orthogonal",
  "properties":
     {
@@ -28184,7 +28224,7 @@
      "script":"string"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.4",
  "tileheight":64,
  "tilesets":[
         {
