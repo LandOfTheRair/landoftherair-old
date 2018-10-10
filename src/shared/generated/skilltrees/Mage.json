@@ -1159,7 +1159,7 @@
     "VolcanoStanceImproved0": {
         "name": "VolcanoStanceImproved0",
         "traitName": "VolcanoStanceImproved",
-        "desc": "Do $10|30$% more fire damage (while resisting that much more fire damage) while in Volcano stance.",
+        "desc": "Do $10|30$% more fire damage per physical hit (while resisting that much more fire damage) while in Volcano stance.",
         "icon": "fire-silhouette",
         "cost": 3,
         "unlocks": [
@@ -1173,7 +1173,7 @@
     "VolcanoStanceImproved1": {
         "name": "VolcanoStanceImproved1",
         "traitName": "VolcanoStanceImproved",
-        "desc": "Do $10|30$% more fire damage (while resisting that much more fire damage) while in Volcano stance.",
+        "desc": "Do $10|30$% more fire damage per physical hit (while resisting that much more fire damage) while in Volcano stance.",
         "icon": "fire-silhouette",
         "capstone": true,
         "cost": 10,
@@ -1185,7 +1185,7 @@
     "GlacierStanceImproved0": {
         "name": "GlacierStanceImproved0",
         "traitName": "GlacierStanceImproved",
-        "desc": "Do $10|30$% more ice damage (while resisting that much more ice damage) while in Glacier stance.",
+        "desc": "Do $10|30$% more ice damage per physical hit (while resisting that much more ice damage) while in Glacier stance.",
         "icon": "frozen-orb",
         "cost": 3,
         "unlocks": [
@@ -1199,7 +1199,7 @@
     "GlacierStanceImproved1": {
         "name": "GlacierStanceImproved1",
         "traitName": "GlacierStanceImproved",
-        "desc": "Do $10|30$% more ice damage (while resisting that much more ice damage) while in Glacier stance.",
+        "desc": "Do $10|30$% more ice damage per physical hit (while resisting that much more ice damage) while in Glacier stance.",
         "icon": "frozen-orb",
         "capstone": true,
         "cost": 10,
@@ -1251,7 +1251,7 @@
     },
     "VolcanoStance": {
         "name": "VolcanoStance",
-        "desc": "Become more offensive, increasing your physical offensive capabilities, your fire resistance, and doing fire damage on hit.",
+        "desc": "Become more offensive, increasing your physical offensive capabilities, your fire resistance, and doing fire damage on physical hits.",
         "icon": "fire-silhouette",
         "iconColor": "#DC143C",
         "bgColor": "#000",
@@ -1268,7 +1268,7 @@
     },
     "GlacierStance": {
         "name": "GlacierStance",
-        "desc": "Become more defensive, increasing your physical defensive capabilities, ice resistance, and doing ice damage on hit.",
+        "desc": "Become more defensive, increasing your physical defensive capabilities, ice resistance, and doing ice damage on physical hit.",
         "icon": "frozen-orb",
         "iconColor": "#000080",
         "bgColor": "#000",
