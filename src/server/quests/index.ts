@@ -27,6 +27,8 @@ export * from './risan/RisanMines/DailyKillDryads';
 export * from './risan/RisanMines/DailyKillMiners';
 export * from './risan/RisanMines/DailyKillWildlife';
 
+export * from './risan/RisanMines/KillDistractions';
+
 export * from './risan/Frostlands/DailyKillBrigands';
 export * from './risan/Frostlands/DailyKillCats';
 export * from './risan/Frostlands/DailyKillYetis';

@@ -3159,6 +3159,26 @@
                  "width":64,
                  "x":7936,
                  "y":9408
+                }, 
+                {
+                 "gid":3347,
+                 "height":64,
+                 "id":1634,
+                 "name":"San'jin",
+                 "properties":
+                    {
+                     "script":"risan\/mines\/guard-expert"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":8640,
+                 "y":9216
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7233,7 +7253,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1634,
+ "nextobjectid":1635,
  "orientation":"orthogonal",
  "properties":
     {
