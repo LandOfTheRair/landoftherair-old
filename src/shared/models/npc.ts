@@ -221,8 +221,11 @@ export class NPC extends Character {
       const giveXp = this.giveXp || { min: 1, max: 10 };
       const givenXp = random(giveXp.min, giveXp.max);
 
+      let adjustedXp = this.$$room.calcAdjustedXPGain(givenXp);
+      if(killer.hasEffect('Newbie')) adjustedXp += Math.floor(adjustedXp * 0.25);
+
       if(killer.$$owner) {
-        killer.$$owner.gainExpFromKills(this.$$room.calcAdjustedXPGain(givenXp));
+        killer.$$owner.gainExpFromKills(adjustedXp);
         return false;
       }
 
@@ -231,7 +234,7 @@ export class NPC extends Character {
           killer.changeRep(allegiance, delta);
         });
 
-        killer.gainExpFromKills(this.$$room.calcAdjustedXPGain(givenXp));
+        killer.gainExpFromKills(adjustedXp);
       }
     }
 

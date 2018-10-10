@@ -40,7 +40,7 @@ exec(`git clone git@github.com:landoftherair/landoftherair.wiki.git wiki`, () =>
   fs.writeFileSync(`${__dirname}/../../../wiki/Traits-And-Skills.md`, markdown, 'utf-8');
 
   exec('npm run changelog', () => {
-    exec(`cd ${__dirname}/../../../wiki && git add . && git commit -am "Updated wikidocs." && git push`, () => {
+    exec(`cd ${__dirname}/../../../wiki && git add . && git commit -am "Updated wikidocs. [skip ci]" && git push`, () => {
       fs.removeSync(`${__dirname}/../../../wiki`);
     });
   });

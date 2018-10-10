@@ -1007,7 +1007,7 @@ export class Character {
 
   clearEffects() {
     const shouldClearPermanents = !this.hasEffect('Secondwind');
-    const noClear = ['Nourishment', 'Malnourished'];
+    const noClear = ['Nourishment', 'Malnourished', 'Newbie'];
     this.effectsList.forEach(effect => {
       if(includes(noClear, effect.name)) return;
       if(get(effect, 'effectInfo.isPermanent') && !shouldClearPermanents) return;
