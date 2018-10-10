@@ -850,6 +850,8 @@ export const SpellforgingResponses = (npc: NPC) => {
         player.sendClientMessage(`${name} - ${traitLevelString}${traitTotalString}`);
       });
 
+      return 'Happy adventuring!';
+
     });
 
   npc.parser.addCommand('smash')
