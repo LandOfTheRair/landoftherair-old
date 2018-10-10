@@ -140,7 +140,10 @@ class NPCLoader {
     if(!npc.npcId) { console.error(`ERROR: ${JSON.stringify(npc)} has no npcId!`); return false; }
     if(npc.baseClass && !Classes[npc.baseClass]) { console.error(`ERROR: ${npc.npcId} has an invalid baseClass ${npc.baseClass}!`); return false; }
 
-    const validAttributes = ['physical', 'blunt', 'sharp', 'magical', 'necrotic', 'fire', 'ice', 'water', 'energy'];
+    const validAttributes = [
+      'physical', 'blunt', 'sharp', 'magical', 'necrotic', 'fire', 'ice', 'water', 'energy', 'poison', 'disease',
+      'turkey'
+    ];
 
     if(npc.baseEffects) {
       for(let i = 0; i < npc.baseEffects.length; i++) {

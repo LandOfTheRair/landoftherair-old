@@ -8,6 +8,8 @@ import { Item, SharpWeaponClasses } from '../../../shared/models/item';
 import { NPC } from '../../../shared/models/npc';
 
 type AttributeType =
+
+// base types
   'physical'
 | 'blunt'
 | 'sharp'
@@ -18,7 +20,10 @@ type AttributeType =
 | 'water'
 | 'energy'
 | 'poison'
-| 'disease';
+| 'disease'
+
+// special types
+| 'turkey';
 
 const ResistanceShredders = {
   Undead: 'EtherFire',
@@ -41,6 +46,7 @@ export class Attribute extends SpellEffect implements AttributeEffect {
       case 'physical': return '#000';
       case 'sharp':    return '#000';
       case 'blunt':    return '#000';
+      case 'turkey':   return '#000';
 
       case 'magical':  return '#f0f';
       case 'necrotic': return '#0a0';
@@ -72,6 +78,12 @@ export class Attribute extends SpellEffect implements AttributeEffect {
     if(this.potency <= 0) this.potency = 0;
     if(this.potency === 0) this.iconData.tooltipDesc = `Immune to ${capitalize(this.damageType)} damage.`;
 
+    if(this.damageType === 'turkey') {
+      this.iconData.name = 'bird-twitter';
+      this.iconData.tooltipDesc = 'Immune to all damage, except from blunderbuss-type weapons.';
+      this.unableToShred = true;
+    }
+
     if(this.unableToShred) this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Not bypassable.`;
 
     target.applyEffect(this);
@@ -82,6 +94,11 @@ export class Attribute extends SpellEffect implements AttributeEffect {
     const monsterClass = (<NPC>defender).monsterClass;
 
     const { damageClass, attackerWeapon, damage } = opts;
+
+    if(this.damageType === 'turkey') {
+      if(attackerWeapon && attackerWeapon.itemClass === 'Blunderbuss') return damage;
+      return 0;
+    }
 
     // if you have something that ignores resistance, then it is ignored
     if(attacker

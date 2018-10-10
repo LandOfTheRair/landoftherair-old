@@ -59,6 +59,12 @@
   usableSkills:
     - PoisonBiteMedium
 
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'turkey'
+        potency: 0
+
   drops:
     - result: Thanksgiving Turkey Feather
       chance: 1
@@ -104,6 +110,12 @@
   usableSkills:
     - PoisonBiteMedium
 
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'turkey'
+        potency: 0
+
   drops:
     - result: Thanksgiving Turkey Feather
       chance: 1
@@ -148,6 +160,12 @@
 
   usableSkills:
     - PoisonBiteMedium
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'turkey'
+        potency: 0
 
   drops:
     - result: Thanksgiving Turkey Feather
@@ -202,6 +220,12 @@
     - TrueSight
     - DarkVision
     - Boost
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'turkey'
+        potency: 0
 
   drops:
     - result: Thanksgiving Turkey Feather

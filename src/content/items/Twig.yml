@@ -17,7 +17,6 @@
   sprite: 553
   desc: "a fan of fine feathers plucked from a turkey"
   sellValue: 500
-  binds: true
 
 - name: Antanian Twig
   sprite: 222

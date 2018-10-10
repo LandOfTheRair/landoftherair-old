@@ -129,4 +129,9 @@ export class LootHelper {
 
     return allItems;
   }
+
+  public static async rollAnyTable(rollArray: Array<{ chance: number, result: any }>, num = 1) {
+    const table = new LootTable(rollArray);
+    return table.chooseWithoutReplacement(num);
+  }
 }
