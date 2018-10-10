@@ -17,6 +17,9 @@ export * from './antania/Yzalt/HenizFindSedgwick';
 export * from './antania/Yzalt/SteffenFindSedgwick';
 export * from './antania/Yzalt/KillRanata';
 
+export * from './antania/TowerOfSelen/KillGoblins';
+export * from './antania/TowerOfSelen/KillOrcs';
+
 export * from './risan/RisanMines/DailyKillDryads';
 export * from './risan/RisanMines/DailyKillMiners';
 export * from './risan/RisanMines/DailyKillWildlife';

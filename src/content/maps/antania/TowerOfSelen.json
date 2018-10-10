@@ -5867,6 +5867,46 @@
                  "width":64,
                  "x":5376,
                  "y":640
+                }, 
+                {
+                 "gid":2602,
+                 "height":64,
+                 "id":2467,
+                 "name":"Orjan",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/guard-orjan"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1408,
+                 "y":2880
+                }, 
+                {
+                 "gid":2602,
+                 "height":64,
+                 "id":2468,
+                 "name":"Gorji",
+                 "properties":
+                    {
+                     "script":"antania\/towerofselen\/guard-gorji"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2752,
+                 "y":5440
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7640,7 +7680,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2467,
+ "nextobjectid":2469,
  "orientation":"orthogonal",
  "properties":
     {
