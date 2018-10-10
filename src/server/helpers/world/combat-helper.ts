@@ -966,6 +966,16 @@ export class CombatHelper {
         case 'poison':    damageBoostPercent = attacker.getTraitLevelAndUsageModifier('NecroticFocus'); break;
         case 'heal':      damageBoostPercent = attacker.getTraitLevelAndUsageModifier('HealingFocus'); break;
         case 'physical':  damageBoostPercent = attacker.getTraitLevelAndUsageModifier('ForcefulStrike'); break;
+        case 'fire': {
+          if(attacker.hasEffect('GlacierStance')) damageBoostPercent = -(40 + attacker.getTraitLevel('GlacierStanceImproved') * 10);
+          if(attacker.hasEffect('VolcanoStance')) damageBoostPercent = (40 + attacker.getTraitLevel('VolcanoStanceImproved') * 10);
+          break;
+        }
+        case 'ice': {
+          if(attacker.hasEffect('VolcanoStance')) damageBoostPercent = -(40 + attacker.getTraitLevel('VolcanoStanceImproved') * 10);
+          if(attacker.hasEffect('GlacierStance')) damageBoostPercent = (40 + attacker.getTraitLevel('GlacierStanceImproved') * 10);
+          break;
+        }
       }
 
       if(isMelee && !isAttackerVisible && defender.hasEffect('BuildupSneakAttack')) {
@@ -1240,3 +1250,4 @@ export class CombatHelper {
     targetEffect.buildupDamage += damage;
   }
 }
+
