@@ -147,7 +147,10 @@ export class Game {
 
     if(!this.sfxs[convertSfx] || !this.sfxs[convertSfx].isDecoded) return;
 
-    this.sfxs[convertSfx].play();
+    // this happens periodically, but we probably can't do anything about it
+    try {
+      this.sfxs[convertSfx].play();
+    } catch(e) {}
   }
 
   private updateBgm(newBgm: string) {
