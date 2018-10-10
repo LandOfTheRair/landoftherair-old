@@ -37,6 +37,7 @@ const itemTable = [
   { chance: 150,  result: 'Rune Scroll - Slow Digestion II' },
   { chance: 150,  result: 'Thanksgiving Bead Amulet' },
   { chance: 100,  result: 'Rune Scroll - Slow Digestion III' },
+  { chance: 150,  result: 'Thanksgiving Heal Bottle' },
   { chance: 65,   result: 'Antanian Charisma Potion' },
   { chance: 35,   result: 'Rune Scroll - Slow Digestion IV' },
   { chance: 1,    result: 'Thanksgiving Pilgrim Hat' },
