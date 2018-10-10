@@ -14,7 +14,7 @@ export class GlacierStance extends Skill {
     color: '#000080',
     bgColor: '#000',
     mode: 'autoActivate',
-    tooltipDesc: 'Become more defensive, increasing your physical defensive capabilities, ice resistance, and doing ice damage on hit.'
+    tooltipDesc: 'Become more defensive, increasing your physical defensive capabilities, ice resistance, and doing ice damage on physical hit.'
   };
 
   public targetsFriendly = true;

@@ -14,7 +14,7 @@ export class VolcanoStance extends Skill {
     color: '#DC143C',
     bgColor: '#000',
     mode: 'autoActivate',
-    tooltipDesc: 'Become more offensive, increasing your physical offensive capabilities, your fire resistance, and doing fire damage on hit.'
+    tooltipDesc: 'Become more offensive, increasing your physical offensive capabilities, your fire resistance, and doing fire damage on physical hits.'
   };
 
   public targetsFriendly = true;
