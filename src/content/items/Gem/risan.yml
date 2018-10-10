@@ -16,7 +16,7 @@
 
 - name: Risan Emerald Chunk
   desc: "a chunk of raw emerald"
-  value: 2500
+  sellValue: 2500
   sprite: 246
 
   maxEncrusts: 4
@@ -29,7 +29,7 @@
 
 - name: Risan Raw Jade
   desc: "a chunk of raw jade"
-  value: 1500
+  sellValue: 1500
   sprite: 310
 
   maxEncrusts: 3
@@ -42,7 +42,7 @@
 
 - name: Risan Carved Jade
   desc: "a chunk of jade finely-carved into the shape of a scarab"
-  value: 1800
+  sellValue: 1800
   sprite: 311
   stats:
     perception: 10
@@ -52,7 +52,7 @@
 
 - name: Risan Polished Ruby
   desc: "a well-polished ruby"
-  value: 1200
+  sellValue: 1200
   sprite: 312
   stats:
     magicalResist: 3
@@ -62,7 +62,7 @@
 
 - name: Risan White Pearl
   desc: "a large white pearl"
-  value: 3000
+  sellValue: 3000
   sprite: 313
 
   maxEncrusts: 3
@@ -75,7 +75,7 @@
 
 - name: Risan Black Pearl
   desc: "a large black pearl"
-  value: 3000
+  sellValue: 3000
   sprite: 314
 
   maxEncrusts: 3
@@ -88,7 +88,7 @@
 
 - name: Risan Small Black Pearl
   desc: "a small black pearl"
-  value: 3500
+  sellValue: 3500
   sprite: 315
 
   maxEncrusts: 3
@@ -101,7 +101,7 @@
 
 - name: Risan Fire Prot Crystal
   desc: "a small crystal encasing a fire frozen in time"
-  value: 5000
+  sellValue: 5000
   sprite: 340
 
   maxEncrusts: 4
@@ -111,7 +111,7 @@
 
 - name: Risan Ice Prot Crystal
   desc: "a small crystal encasing a chunk of ice"
-  value: 5000
+  sellValue: 5000
   sprite: 339
 
   maxEncrusts: 4
@@ -121,7 +121,7 @@
 
 - name: Risan Necrotic Prot Crystal
   desc: "a small crystal encasing a chunk of earth"
-  value: 5000
+  sellValue: 5000
   sprite: 341
 
   maxEncrusts: 4
@@ -131,7 +131,7 @@
 
 - name: Risan Energy Prot Crystal
   desc: "a strangely-shaped crystal that has a pervasive energy aura"
-  value: 5000
+  sellValue: 5000
   sprite: 338
 
   maxEncrusts: 4
@@ -141,7 +141,7 @@
 
 - name: Risan Poison Prot Crystal
   desc: "an ancient piece of petrified wood"
-  value: 6000
+  sellValue: 6000
   sprite: 912
 
   maxEncrusts: 4
@@ -151,7 +151,7 @@
 
 - name: Risan Disease Prot Crystal
   desc: "a tiny piece of wood with a well-preserved beetle"
-  value: 4000
+  sellValue: 4000
   sprite: 911
 
   maxEncrusts: 4
@@ -161,7 +161,7 @@
 
 - name: Risan Purple Gem
   desc: "a small purple gem with a small ray of light inside it"
-  value: 3300
+  sellValue: 3300
   sprite: 213
 
   maxEncrusts: 4
@@ -174,7 +174,7 @@
 
 - name: Risan Small Green Gem
   desc: "a small green gem with a small ray of light inside it"
-  value: 2500
+  sellValue: 2500
   sprite: 242
 
   maxEncrusts: 4
@@ -187,7 +187,7 @@
 
 - name: Risan Big Green Gem
   desc: "a big green gem with a small ray of light inside it"
-  value: 3500
+  sellValue: 3500
   sprite: 243
 
   maxEncrusts: 4
@@ -200,7 +200,7 @@
 
 - name: Risan Small Red Gem
   desc: "a small red gem with a small ray of light inside it"
-  value: 2700
+  sellValue: 2700
   sprite: 244
 
   maxEncrusts: 4
@@ -213,7 +213,7 @@
 
 - name: Risan Big Red Gem
   desc: "a big red gem with a small ray of light inside it"
-  value: 2000
+  sellValue: 2000
   sprite: 245
 
   maxEncrusts: 4

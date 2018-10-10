@@ -2,7 +2,7 @@
 
 - name: Antanian MagicMissile Black Pearl
   desc: "a small black pearl radiating with magical energy"
-  value: 2000
+  sellValue: 2000
   sprite: 315
   stats:
     effect:
@@ -15,7 +15,7 @@
 
 - name: Antanian MagicBolt Black Pearl
   desc: "a small black pearl overflowing with magical energy"
-  value: 3000
+  sellValue: 3000
   sprite: 315
   stats:
     effect:
@@ -28,7 +28,7 @@
 
 - name: Tower FireMist Black Pearl
   desc: "a small black pearl radiating with heat"
-  value: 3000
+  sellValue: 3000
   sprite: 315
   stats:
     effect:
@@ -41,7 +41,7 @@
 
 - name: Tower IceMist Black Pearl
   desc: "a small black pearl with a thin layer of frost on it"
-  value: 3000
+  sellValue: 3000
   sprite: 315
 
   stats:
@@ -55,7 +55,7 @@
 
 - name: Dedlaen Transmute Pearl
   desc: "a small white pearl bathed in a faint golden glow"
-  value: 10000
+  sellValue: 10000
   sprite: 313
 
   effect:
@@ -74,7 +74,7 @@
 
 - name: Risan Frost Larimar
   desc: "a sparkling frost gem that refracts and changes the light around it to be blue"
-  value: 10000
+  sellValue: 10000
   sprite: 924
 
   stats:
@@ -88,7 +88,7 @@
 
 - name: Risan Ether Larimar
   desc: "a sparkling frost gem imbued with the power of red ether"
-  value: 100000
+  sellValue: 100000
   sprite: 963
 
   maxEncrusts: 1

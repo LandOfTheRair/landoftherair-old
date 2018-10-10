@@ -1,6 +1,6 @@
 - name: Antanian Purple Gem
   desc: "a small purple gem"
-  value: 300
+  sellValue: 300
   sprite: 213
 
   maxEncrusts: 7
@@ -10,14 +10,14 @@
 
 - name: Antanian Small Green Gem
   desc: "a small green gem"
-  value: 500
+  sellValue: 500
   sprite: 242
   stats:
     hp: 15
 
 - name: Antanian Big Green Gem
   desc: "a big green gem"
-  value: 1500
+  sellValue: 1500
   sprite: 243
   stats:
     defense: 1
@@ -27,14 +27,14 @@
 
 - name: Antanian Small Red Gem
   desc: "a small red gem"
-  value: 700
+  sellValue: 700
   sprite: 244
   stats:
     mp: 15
 
 - name: Antanian Big Red Gem
   desc: "a big red gem"
-  value: 2000
+  sellValue: 2000
   sprite: 245
   stats:
     offense: 1
@@ -44,7 +44,7 @@
 
 - name: Tower Thief Gem
   desc: "a slight black pearl bathed in shadows"
-  value: 6000
+  sellValue: 6000
   sprite: 315
 
   maxEncrusts: 7
@@ -59,7 +59,7 @@
 
 - name: Tower Warrior Gem
   desc: "a crimson gem forged by the intense pressure of combat"
-  value: 6000
+  sellValue: 6000
   sprite: 245
 
   maxEncrusts: 7
@@ -74,7 +74,7 @@
 
 - name: Tower Healer Gem
   desc: "an emerald gem bathed in a faint amber glow"
-  value: 6000
+  sellValue: 6000
   sprite: 243
 
   maxEncrusts: 7
@@ -89,7 +89,7 @@
 
 - name: Tower Mage Gem
   desc: "a violet gem pulsating with magical energy"
-  value: 6000
+  sellValue: 6000
   sprite: 213
 
   maxEncrusts: 7
@@ -104,7 +104,7 @@
 
 - name: Dedlaen Vampire Heart
   desc: "a crystallized heart with coagulated, frozen blood covering it"
-  value: 7500
+  sellValue: 7500
   sprite: 361
 
   maxEncrusts: 2
@@ -120,7 +120,7 @@
 
 - name: Dedlaen Ghast Heart
   desc: "a crystallized heart pulsing with blood"
-  value: 7500
+  sellValue: 7500
   sprite: 361
 
   maxEncrusts: 2
@@ -136,7 +136,7 @@
 
 - name: Dedlaen CryptThing Heart
   desc: "a still-beating heart endlessly pumping blood"
-  value: 7500
+  sellValue: 7500
   sprite: 361
 
   maxEncrusts: 2
