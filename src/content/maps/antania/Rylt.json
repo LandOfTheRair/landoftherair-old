@@ -10378,6 +10378,25 @@
                  "width":320,
                  "x":7488,
                  "y":6144
+                }, 
+                {
+                 "height":320,
+                 "id":1283,
+                 "name":"Festive",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a festive "
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":704,
+                 "x":3456,
+                 "y":320
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -10929,7 +10948,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1283,
+ "nextobjectid":1284,
  "orientation":"orthogonal",
  "properties":
     {

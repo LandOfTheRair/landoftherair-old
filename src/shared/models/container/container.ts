@@ -70,7 +70,7 @@ export class Container {
   }
 
   takeItemFromSlots(slots: number[]): Item[] {
-    return slots.reverse().map(index => this.takeItemFromSlot(index));
+    return slots.sort((x, y) => x - y).reverse().map(index => this.takeItemFromSlot(index));
   }
 
   canAccept(item: Item, index?: number): boolean {

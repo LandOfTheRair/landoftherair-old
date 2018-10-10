@@ -5615,7 +5615,197 @@
         {
          "draworder":"topdown",
          "name":"RegionDescriptions",
-         "objects":[],
+         "objects":[
+                {
+                 "height":512,
+                 "id":1594,
+                 "name":"Rojd Cave",
+                 "properties":
+                    {
+                     "desc":"You enter a smelly cave, where gobbles echo throughout."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":960,
+                 "x":5696,
+                 "y":1344
+                }, 
+                {
+                 "height":256,
+                 "id":1595,
+                 "name":"Rojd Cave",
+                 "properties":
+                    {
+                     "desc":"You enter a smelly cave, where gobbles echo throughout."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":896,
+                 "x":5760,
+                 "y":1856
+                }, 
+                {
+                 "height":128,
+                 "id":1596,
+                 "name":"Rojd Cave",
+                 "properties":
+                    {
+                     "desc":"You enter a smelly cave, where gobbles echo throughout."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":704,
+                 "x":5952,
+                 "y":2112
+                }, 
+                {
+                 "height":128,
+                 "id":1597,
+                 "name":"Rojd Cave",
+                 "properties":
+                    {
+                     "desc":"You enter a smelly cave, where gobbles echo throughout."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":6144,
+                 "y":2240
+                }, 
+                {
+                 "height":192,
+                 "id":1598,
+                 "name":"Rojd Cave",
+                 "properties":
+                    {
+                     "desc":"You enter a smelly cave, where gobbles echo throughout."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":6272,
+                 "y":1152
+                }, 
+                {
+                 "height":192,
+                 "id":1599,
+                 "name":"Rojd Cave",
+                 "properties":
+                    {
+                     "desc":"You enter a smelly cave, where gobbles echo throughout."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":6464,
+                 "y":960
+                }, 
+                {
+                 "height":512,
+                 "id":1600,
+                 "name":"Training Cave",
+                 "properties":
+                    {
+                     "desc":"You enter a cave that smells of gunpowder. It looks like a training ground for blunderbuss users."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":576,
+                 "x":512,
+                 "y":320
+                }, 
+                {
+                 "height":768,
+                 "id":1601,
+                 "name":"Cornfield",
+                 "properties":
+                    {
+                     "desc":"You are near a fertile cornfield."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":768,
+                 "x":576,
+                 "y":5696
+                }, 
+                {
+                 "height":1024,
+                 "id":1602,
+                 "name":"Settlement",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a bustling settlement where all come together in peace."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1600,
+                 "x":320,
+                 "y":3136
+                }, 
+                {
+                 "height":832,
+                 "id":1603,
+                 "name":"Settlement",
+                 "properties":
+                    {
+                     "desc":"You find yourself in a bustling settlement where all come together in peace."
+                    },
+                 "propertytypes":
+                    {
+                     "desc":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":960,
+                 "x":320,
+                 "y":4160
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -5625,24 +5815,145 @@
         {
          "draworder":"topdown",
          "name":"BackgroundMusic",
-         "objects":[],
+         "objects":[
+                {
+                 "height":1280,
+                 "id":1582,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":6528,
+                 "y":960
+                }, 
+                {
+                 "height":1216,
+                 "id":1583,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":256,
+                 "x":6272,
+                 "y":1152
+                }, 
+                {
+                 "height":1152,
+                 "id":1584,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":6144,
+                 "y":1280
+                }, 
+                {
+                 "height":960,
+                 "id":1585,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":5952,
+                 "y":1280
+                }, 
+                {
+                 "height":768,
+                 "id":1586,
+                 "name":"dungeon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":5760,
+                 "y":1344
+                }, 
+                {
+                 "height":960,
+                 "id":1587,
+                 "name":"town",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1600,
+                 "x":320,
+                 "y":3136
+                }, 
+                {
+                 "height":832,
+                 "id":1588,
+                 "name":"town",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":960,
+                 "x":320,
+                 "y":4096
+                }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
         {
          "draworder":"topdown",
          "name":"Succorport",
-         "objects":[],
+         "objects":[
+                {
+                 "height":640,
+                 "id":1589,
+                 "name":"Training Ground",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":704,
+                 "x":448,
+                 "y":256
+                }, 
+                {
+                 "height":1408,
+                 "id":1590,
+                 "name":"Rojd Cave",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":832,
+                 "x":5760,
+                 "y":960
+                }, 
+                {
+                 "height":768,
+                 "id":1591,
+                 "name":"Cornfield",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":768,
+                 "x":576,
+                 "y":5696
+                }, 
+                {
+                 "height":1792,
+                 "id":1592,
+                 "name":"Pilgrim Camp",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1536,
+                 "x":320,
+                 "y":3136
+                }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextobjectid":1582,
+ "nextobjectid":1604,
  "orientation":"orthogonal",
  "properties":
     {
