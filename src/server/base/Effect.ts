@@ -5,7 +5,6 @@ import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/world/combat-helper';
 import { Item } from '../../shared/models/item';
 import { MessageHelper } from '../helpers/world/message-helper';
-import { CharacterHelper } from '../helpers/character/character-helper';
 
 export const Maxes = {
   Lesser: 10,
