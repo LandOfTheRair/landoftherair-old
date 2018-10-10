@@ -23,7 +23,7 @@ export const BaseItemStatsPerTier = {
   Crossbow:             { base: 0, min: 0, max: 3, weakChance: 10, damageBonus: 5 },
   Dagger:               { base: 2, min: 0, max: 1, weakChance: 1,  damageBonus: 10 },
   Flail:                { base: 0, min: 1, max: 4, weakChance: 10, damageBonus: 0 },
-  Gloves:               { base: 1, min: 0, max: 2, weakChance: 10, damageBonus: 5 },
+  Gloves:               { base: 1, min: 0, max: 3, weakChance: 10, damageBonus: 5 },
   Hands:                { base: 1, min: 0, max: 1, weakChance: 10, damageBonus: 5 },
   Boots:                { base: 2, min: 1, max: 3, weakChance: 10, damageBonus: 5 },
   Greataxe:             { base: 5, min: 1, max: 2, weakChance: 10, damageBonus: 5 },
