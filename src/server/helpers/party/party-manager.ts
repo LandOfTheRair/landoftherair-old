@@ -210,4 +210,8 @@ export class PartyManager {
     delete this.parties[party.name];
   }
 
+  public giveAccountSilver(accountName: string, silver: number) {
+    this.redis.emit('account:gainsilver', { accountName, silver });
+  }
+
 }

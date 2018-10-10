@@ -48,6 +48,10 @@ export class PartyArbiter {
       this.redis.emit('party:sync', { parties: this.parties, roomName: 'Arbiter', gameId: arbiterGameId });
     });
 
+    this.redis.on('account:gainsilver', ({ accountName, silver }) => {
+      this.room.giveSilverToAccountFromGame(accountName, silver);
+    });
+
   }
 
   private _redisCreateParty(leader: PartyPlayer, partyName: string) {

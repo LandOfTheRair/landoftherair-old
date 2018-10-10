@@ -673,6 +673,13 @@ export class Lobby extends Room<LobbyState> {
     this.subscriptionHelper.giveSilver(targetAccount, silver);
   }
 
+  public async giveSilverToAccountFromGame(accountName: string, silver: number) {
+    const targetAccount = this.state.findAccountByUsername(accountName);
+    if(!targetAccount) return;
+
+    this.subscriptionHelper.giveSilver(targetAccount, silver);
+  }
+
   private async handleSubscription(client, data) {
     const gmAccount = this.state.findAccount(client.userId);
     if(!gmAccount || !gmAccount.isGM) return;
