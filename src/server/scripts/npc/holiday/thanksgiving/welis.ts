@@ -17,6 +17,7 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
-      return 'Hey! So... our pet turkey Koda went missing. You look like you could find your way around the forest. If you find him, he likes to collect feathers. He\'s a bit odd...';
+      return `Hey! So... our pet turkey Koda went missing. You look like you could find your way around the forest. 
+      If you find him, he likes to collect feathers. He\'s a bit odd...`;
     });
 };
