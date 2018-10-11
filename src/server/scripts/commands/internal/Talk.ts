@@ -15,18 +15,17 @@ export class Talk extends Command {
     if(argArr.length < 2) return;
 
     argArr[1] = argArr[1].trim();
-    const [findStrAndName, message] = argArr;
+    let [findStrAndName, message] = argArr;
 
-    let findStr = findStrAndName;
-
-    if(startsWith(findStr, '~talk') || startsWith(findStr, '~say')) {
-      findStr = findStr.split(' ')[1].trim();
+    if(startsWith(findStrAndName, '~talk') || startsWith(findStrAndName, '~say')) {
+      findStrAndName = findStrAndName.split(' ')[1].trim();
     }
 
-    const possTargets = MessageHelper.getPossibleMessageTargets(player, findStr);
+    const possTargets = MessageHelper.getPossibleMessageTargets(player, findStrAndName);
     const target = possTargets[0];
     if(!target) return player.youDontSeeThatPerson(args);
 
+    message = MessageHelper.cleanMessage(message);
     target.receiveMessage(player, message);
   }
 

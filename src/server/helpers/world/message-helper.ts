@@ -40,7 +40,7 @@ export class MessageHelper {
 
   static sendClientMessage(char: Character, message, rootCharacter?: Character) {
     if(!char.isPlayer()) return;
-    char.$$room.sendPlayerLogMessage(char, this.cleanMessage(message), rootCharacter);
+    char.$$room.sendPlayerLogMessage(char, message, rootCharacter);
   }
 
   static sendClientMessageToRadius(char: Character, message, radius = 4, except = [], useSight = false, formatArgs = []) {
