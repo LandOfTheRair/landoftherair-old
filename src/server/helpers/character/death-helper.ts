@@ -64,6 +64,8 @@ export class DeathHelper {
   }
 
   static async calculateLootDrops(npc: NPC, killer?: Character) {
+    if(npc.noItemDrop) return;
+
     const bonus = killer ? killer.getTotalStat('luk') : 0;
 
     // natural resources always drop, no matter who killed them ~immersion~

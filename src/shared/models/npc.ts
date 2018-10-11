@@ -59,6 +59,8 @@ export class NPC extends Character {
   spawnMessage: string;
   combatMessages: string[];
 
+  onlyVisibleTo?: string;
+
   $$skillRoller: any;
   $$pathDisrupted: { x: number, y: number };
   $$shouldStrip: boolean;
@@ -75,6 +77,7 @@ export class NPC extends Character {
   private $$targetDamageDone = {};
 
   noCorpseDrop?: boolean;
+  noItemDrop?: boolean;
 
   get dropsCorpse(): boolean {
     return !this.isNaturalResource && !this.noCorpseDrop;
@@ -204,7 +207,7 @@ export class NPC extends Character {
 
     super.die(killer, silent);
 
-    this.$$room.dispatchEvent('kill:npc', { npc: this });
+    this.$$room.dispatchEvent('kill:npc', { npc: this, killer });
 
     if(silent) return;
 

@@ -1434,6 +1434,8 @@ export class Character {
 
     if(char.isPlayer() && !char.hasEffect('Hidden') && !char.hasEffect('ShadowMeld')) return true;
 
+    if((<any>char).onlyVisibleTo && (<any>char).onlyVisibleTo !== this.uuid) return false;
+
     // +1 so we don't zero out stealth on tile
     const distFactor = Math.floor(this.distFrom(char) + 1);
     const otherStealth = char.getTotalStat('stealth');

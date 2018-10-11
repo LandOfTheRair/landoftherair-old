@@ -27,6 +27,37 @@
   gear:
     Armor: Risan Tunic
 
+- npcId: Thanksgiving Turkey Target
+  name: target
+  sprite: 985
+  stats: 1
+  skillLevels: 1
+
+  level: 1
+
+  skillOnKill: 1
+
+  noCorpseDrop: true
+  noItemDrop: true
+
+  gold:
+    min: 0
+    max: 0
+
+  hp:
+    min: 1
+    max: 1
+
+  giveXp:
+    min: 1
+    max: 1
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'turkey'
+        potency: 0
+
 - npcId: Thanksgiving Weak Turkey
   name: turkey
   sprite: 985

@@ -5605,6 +5605,86 @@
                  "width":64,
                  "x":3904,
                  "y":4864
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1604,
+                 "name":"Target Spawner 1",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/target"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":576,
+                 "y":576
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1605,
+                 "name":"Target Spawner 2",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/target"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":704,
+                 "y":576
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1606,
+                 "name":"Target Spawner 3",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/target"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":832,
+                 "y":576
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":1607,
+                 "name":"Target Spawner 4",
+                 "properties":
+                    {
+                     "script":"holiday\/thanksgiving\/target"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":960,
+                 "y":576
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -5808,7 +5888,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -5953,7 +6033,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1604,
+ "nextobjectid":1608,
  "orientation":"orthogonal",
  "properties":
     {
@@ -5967,8 +6047,7 @@
      "maxSkill":20,
      "region":"Antania",
      "respawnX":48,
-     "respawnY":97,
-     "script":"holiday\/turkeyforest"
+     "respawnY":97
     },
  "propertytypes":
     {
@@ -5982,8 +6061,7 @@
      "maxSkill":"int",
      "region":"string",
      "respawnX":"int",
-     "respawnY":"int",
-     "script":"string"
+     "respawnY":"int"
     },
  "renderorder":"right-down",
  "tiledversion":"1.1.4",
