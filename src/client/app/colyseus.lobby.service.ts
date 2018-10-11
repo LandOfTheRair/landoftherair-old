@@ -46,6 +46,8 @@ export class ColyseusLobbyService {
       let roomId = 'Lobby';
       if(rooms && rooms[0] && rooms[0].roomId) roomId = rooms[0].roomId;
 
+      console.warn(`Room id list`, rooms, '; joining', roomId);
+
       this.room = this.client.join(roomId);
 
       this.room.onStateChange.add((state) => {
