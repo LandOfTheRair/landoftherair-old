@@ -20,7 +20,7 @@ export class ChillBiteStrong extends MonsterSkill {
       damage,
       damageClass: 'ice',
       attackerDamageMessage: '',
-      defenderDamageMessage: `${user.name} sunk cold fangs into you!`
+      defenderDamageMessage: `%0 sunk cold fangs into you!`
     });
     const effect = new CastEffect({ potency: 6, duration: 15 });
     effect.cast(user, target, this);

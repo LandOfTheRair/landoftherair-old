@@ -21,7 +21,7 @@ export class SkillSuckWeak extends MonsterSkill {
       damage,
       damageClass: 'physical',
       attackerDamageMessage: '',
-      defenderDamageMessage: `${user.name} sucked your experience and knowledge away!`
+      defenderDamageMessage: `%0 sucked your experience and knowledge away!`
     });
   }
 

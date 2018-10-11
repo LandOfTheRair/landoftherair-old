@@ -22,7 +22,7 @@ export class PoisonBiteStrong extends MonsterSkill {
       damage,
       damageClass: 'physical',
       attackerDamageMessage: '',
-      defenderDamageMessage: `${user.name} bit you!`
+      defenderDamageMessage: `%0 bit you!`
     });
     const effect = new CastEffect({ potency: 20, duration: 10 });
     effect.cast(user, target, this);

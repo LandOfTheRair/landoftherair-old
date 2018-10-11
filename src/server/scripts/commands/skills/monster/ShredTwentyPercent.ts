@@ -19,7 +19,7 @@ export class ShredTwentyPercent extends MonsterSkill {
       damage,
       damageClass: 'physical',
       attackerDamageMessage: '',
-      defenderDamageMessage: `${user.name} shreds your flesh!`
+      defenderDamageMessage: `%0 shreds your flesh!`
     });
   }
 
