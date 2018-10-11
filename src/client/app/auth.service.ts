@@ -124,10 +124,10 @@ export class AuthService {
   }
 
   public renewToken() {
-    this.auth0.renewAuth({
+    this.auth0.checkSession({
       audience: environment.auth0.apiUrl,
-      redirectUri: `${environment.server.protocol}://${environment.server.domain}:${environment.server.port}/silent-${environment.server.silentExt}`,
-      usePostMessage: true
+      // redirectUri: `${environment.server.protocol}://${environment.server.domain}:${environment.server.port}/silent-${environment.server.silentExt}`,
+      // usePostMessage: true
     }, (err, result) => {
       if(!err && !result && this.isAuthenticated()) {
         console.error(new Error('Could not successfully renew auth token.'), err, result);
