@@ -31,7 +31,7 @@ export class FireMist extends SpellEffect {
 
       if(friendlyFireMod > 0) {
         const roll = random(0, 100);
-        if(roll <= friendlyFireMod && !caster.$$room.state.checkTargetForHostility(caster, refTarget)) return;
+        if(roll <= friendlyFireMod && (caster.isPlayer() && refTarget.isPlayer())) return;
       }
 
       const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);

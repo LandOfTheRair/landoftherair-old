@@ -964,8 +964,7 @@ export class ColyseusGameService {
 
     if(me.hasEffect('Disguise') && me.getTotalStat('cha') > compare.getTotalStat('wil')) return 'neutral';
 
-    if((me.alignment === 'Good' && compare.alignment === 'Evil')
-    || (me.alignment === 'Evil' && compare.alignment === 'Good')) return 'hostile';
+    if(me.alignment === 'Evil' && compare.alignment === 'Good') return 'hostile';
 
     const hostility = (<NPC>compare).hostility;
 
