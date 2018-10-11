@@ -46,6 +46,8 @@ export class ColyseusLobbyService {
       let roomId = 'Lobby';
       if(rooms && rooms.length > 0) roomId = (<any>sortBy(rooms, 'clients').reverse()).roomId;
 
+      if(!roomId) roomId = 'Lobby';
+
       console.warn(`Room id list`, rooms, '; joining', roomId);
 
       this.room = this.client.join(roomId);
