@@ -29,6 +29,8 @@ export class PartyManager {
       Object.keys(parties).forEach(partyName => {
         this.parties[partyName] = new Party(parties[partyName]);
       });
+    }, () => {
+      this.redis.emit('party:requestsync', {});
     });
 
     this.redis.on('party:create', ({ leader, partyName }) => {
@@ -54,11 +56,6 @@ export class PartyManager {
     this.redis.on('party:updatemember', ({ member, partyName }) => {
       this._redisUpdateMember(member, partyName);
     });
-
-    // this is dumb but whatever
-    this.room.clock.setTimeout(() => {
-      this.redis.emit('party:requestsync', {});
-    }, 1000);
 
   }
 
