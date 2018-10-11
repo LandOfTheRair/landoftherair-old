@@ -102,6 +102,8 @@ export class AuthService {
       if(authResult.idTokenPayload && authResult.idTokenPayload.sub) {
         localStorage.setItem('user_id', authResult.idTokenPayload.sub);
       }
+    } else {
+      console.error(new Error('No auth result was given.'));
     }
 
     this.scheduleRenewal();
