@@ -8,7 +8,7 @@ import { LobbyState } from '../../shared/models/lobbystate';
 import { Account, SilverPurchase } from '../../shared/models/account';
 
 import { Subject, BehaviorSubject, interval } from 'rxjs';
-import { merge } from 'lodash';
+import { merge, sortBy } from 'lodash';
 import { AlertService } from './alert.service';
 
 @Injectable()
@@ -44,7 +44,7 @@ export class ColyseusLobbyService {
       if(err) throw err;
 
       let roomId = 'Lobby';
-      if(rooms && rooms[0] && rooms[0].roomId) roomId = rooms[0].roomId;
+      if(rooms && rooms.length > 0) roomId = (<any>sortBy(rooms, 'clients').reverse()).roomId;
 
       console.warn(`Room id list`, rooms, '; joining', roomId);
 
