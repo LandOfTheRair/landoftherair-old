@@ -361,7 +361,7 @@ export class ColyseusGameService {
         bgm = `${bgm}-nostalgia`;
       }
 
-      this.bgm$.next(bgm.trim());
+      this.bgm$.next((bgm || '').trim());
     }
 
     // update hp/xp/etc for floating boxes
@@ -390,7 +390,7 @@ export class ColyseusGameService {
     }
 
     if(!this.overrideNoSfx) {
-      this.sfx$.next(subClass.trim());
+      this.sfx$.next((subClass || '').trim());
     }
   }
 
