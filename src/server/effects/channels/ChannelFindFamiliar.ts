@@ -21,35 +21,35 @@ const animalHash = {
 // this hash is for boosting stats/etc of the summoned creature, so it's useful
 const animalModHash = {
   deer: (npc: NPC, potency: number) => {
-    npc.gainBaseStat('hp', Math.floor(potency * 2000));
+    npc.gainBaseStat('hp', Math.floor(potency * 20000));
   },
   wolf: (npc: NPC, potency: number) => {
-    npc.gainBaseStat('hp', Math.floor(potency * 3000));
+    npc.gainBaseStat('hp', Math.floor(potency * 30000));
     npc.gainBaseStat('str', Math.floor(potency / 3));
   },
   bear: (npc: NPC, potency: number) => {
-    npc.gainBaseStat('hp', Math.floor(potency * 4000));
+    npc.gainBaseStat('hp', Math.floor(potency * 40000));
     npc.gainBaseStat('str', Math.floor(potency / 5));
     npc.gainBaseStat('con', Math.floor(potency / 5));
   },
   salamander: (npc: NPC, potency: number) => {
-    npc.gainBaseStat('hp', Math.floor(potency * 1500));
+    npc.gainBaseStat('hp', Math.floor(potency * 15000));
     npc.gainBaseStat('int', Math.floor(potency / 4));
   },
   chillspider: (npc: NPC, potency: number) => {
-    npc.gainBaseStat('hp', Math.floor(potency * 3000));
+    npc.gainBaseStat('hp', Math.floor(potency * 30000));
     npc.gainBaseStat('str', Math.floor(potency / 4));
   },
   water: (npc: NPC, potency: number) => {
-    npc.gainBaseStat('hp', Math.floor(potency * 3000));
+    npc.gainBaseStat('hp', Math.floor(potency * 30000));
     npc.gainBaseStat('wis', Math.floor(potency / 3));
   },
   light: (npc: NPC, potency: number) => {
-    npc.gainBaseStat('hp', Math.floor(potency * 3000));
+    npc.gainBaseStat('hp', Math.floor(potency * 30000));
     npc.gainBaseStat('wis', Math.floor(potency / 4));
   },
   nature: (npc: NPC, potency: number) => {
-    npc.gainBaseStat('hp', Math.floor(potency * 3000));
+    npc.gainBaseStat('hp', Math.floor(potency * 30000));
     npc.gainBaseStat('wis', Math.floor(potency / 3));
   },
 };
