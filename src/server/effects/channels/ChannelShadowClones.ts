@@ -96,6 +96,7 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
       shouldStrip: false,
       stripOnSpawner: true,
       removeWhenNoNPCs: true,
+      doInitialSpawnImmediately: true,
       npcIds: ['Thief Shadow Clone'],
 
       npcCreateCallback: (npc: NPC) => {

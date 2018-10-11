@@ -174,6 +174,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
       shouldStrip: false,
       stripOnSpawner: true,
       removeWhenNoNPCs: true,
+      doInitialSpawnImmediately: true,
       npcIds: [this.animalId],
 
       npcCreateCallback: (npc: NPC) => {
