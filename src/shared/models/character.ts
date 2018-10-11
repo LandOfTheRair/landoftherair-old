@@ -223,6 +223,8 @@ export class Character {
   map: string;
 
   level = 1;
+
+  @nonenumerable
   highestLevel = 1;
 
   skillOnKill: number;
