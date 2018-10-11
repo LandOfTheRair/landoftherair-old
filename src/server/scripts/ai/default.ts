@@ -226,17 +226,17 @@ export class DefaultAIBehavior {
 
       if(!hasMovedAfterPathDisruption && !npc.$$pathDisrupted) {
         const steps = [];
-  
+
         for(let i = 0; i < numSteps; i++) {
           const step = npc.path.shift();
           diffX += step.x;
           diffY += step.y;
-  
+
           steps.push(step);
         }
-  
+
         npc.takeSequenceOfSteps(steps);
-  
+
         if(!npc.path.length) {
           npc.spawner.assignPath(npc);
         }
