@@ -868,7 +868,7 @@ export class CombatHelper {
     return true;
   }
 
-  static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass, isOverTime }: any = {}) {
+  static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass, isOverTime, isAOE }: any = {}) {
 
     if(attacker) {
       attacker.setCombatTicks(10);
@@ -906,7 +906,7 @@ export class CombatHelper {
       (<NPC>attacker).registerAttackDamage(attacked, effect.name, totalDamage);
     }
 
-    if(attacker) {
+    if(attacker && !isOverTime && !isAOE) {
       attacker.$$room.combatEffect(attacker, `hit-${damage > 0 ? 'magic' : 'heal'}`, attacked.uuid);
     }
   }
@@ -1114,6 +1114,7 @@ export class CombatHelper {
 
     if(isNaN(damage)) damage = 0;
 
+    damage = Math.floor(damage);
     defender.hp.sub(damage);
 
     if(isNaN(defender.hp.total)) {

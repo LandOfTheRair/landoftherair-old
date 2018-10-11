@@ -26,7 +26,8 @@ export class EnergyWave extends SpellEffect {
         atkMsg: `You blast %0 with a wave of energy!`,
         defMsg: `%0 blasted you with a wave of energy!`,
         damage,
-        damageClass: 'energy'
+        damageClass: 'energy',
+        isAOE: true
       });
     });
   }

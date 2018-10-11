@@ -47,7 +47,8 @@ export class IceMist extends SpellEffect {
         atkMsg: `You engulf %0 in a chilling mist!`,
         defMsg: `%0 engulfed you in a chilling mist!`,
         damage: Math.floor(damage * damageMod),
-        damageClass: 'ice'
+        damageClass: 'ice',
+        isAOE: true
       });
     });
   }

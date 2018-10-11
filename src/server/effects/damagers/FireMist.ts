@@ -47,7 +47,8 @@ export class FireMist extends SpellEffect {
         atkMsg: `You engulf %0 in a hot mist!`,
         defMsg: `%0 engulfed you in a hot mist!`,
         damage: Math.floor(damage * damageMod),
-        damageClass: 'fire'
+        damageClass: 'fire',
+        isAOE: true
       });
     });
   }

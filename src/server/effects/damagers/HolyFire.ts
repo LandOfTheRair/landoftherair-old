@@ -43,7 +43,8 @@ export class HolyFire extends SpellEffect {
         atkMsg: `You ${isCrit ? 'critically ' : ' '}scorch %0!`,
         defMsg: `%0 ${isCrit ? 'critically ' : ' '}scorched you with holy fire!`,
         damage: Math.floor(damage * damageMultiplier),
-        damageClass: 'fire'
+        damageClass: 'fire',
+        isAOE: true
       });
 
       if(caster.getTraitLevel('HolyIllumination')) {

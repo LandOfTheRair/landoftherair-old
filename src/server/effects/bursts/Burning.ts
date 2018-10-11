@@ -44,7 +44,8 @@ export class Burning extends SpellEffect {
       effect: this,
       defMsg: `You are burning!`,
       damage: this.effectInfo.damage,
-      damageClass: 'fire'
+      damageClass: 'fire',
+      isOverTime: true
     });
 
   }
