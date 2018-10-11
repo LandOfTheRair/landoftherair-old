@@ -1,10 +1,9 @@
 
-import * as dice from 'dice.js';
-
 import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { Poison as CastEffect } from '../../../../effects/dots/Poison';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
+import { RollerHelper } from '../../../../../shared/helpers/roller-helper';
 
 export class ChillBiteMedium extends MonsterSkill {
 
@@ -15,7 +14,7 @@ export class ChillBiteMedium extends MonsterSkill {
   }
 
   use(user: Character, target: Character) {
-    const damage = +dice.roll(`4d${user.getTotalStat('str')}`);
+    const damage = RollerHelper.diceRoll(4, user.getTotalStat('str'));
     CombatHelper.dealDamage(user, target, {
       damage,
       damageClass: 'ice',

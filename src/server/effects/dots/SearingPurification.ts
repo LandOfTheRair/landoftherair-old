@@ -1,9 +1,9 @@
 
 import { Character } from '../../../shared/models/character';
-import * as dice from 'dice.js';
 import { CombatHelper } from '../../helpers/world/combat-helper';
 import { Skill } from '../../base/Skill';
 import { SpellEffect } from '../../base/Effect';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class RecentlyPurified extends SpellEffect {
 
@@ -32,7 +32,7 @@ export class SearingPurification extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.hasSkillRef = !!skillRef;
 
-    let damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
+    let damage = RollerHelper.diceRoll(this.getTotalDamageRolls(caster), this.getTotalDamageDieSize(caster));
     if(target.alignment === caster.alignment) damage = Math.floor(damage * 0.1);
 
     this.effectInfo = { damage, caster: caster.uuid };

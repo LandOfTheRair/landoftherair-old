@@ -4,8 +4,8 @@ import { random, isUndefined } from 'lodash';
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import * as dice from 'dice.js';
 import { MessageHelper } from '../../helpers/world/message-helper';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class IceMist extends SpellEffect {
 
@@ -34,7 +34,7 @@ export class IceMist extends SpellEffect {
         if(roll <= friendlyFireMod && (caster.isPlayer() && refTarget.isPlayer())) return;
       }
 
-      const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
+      const damage = RollerHelper.diceRoll(this.getTotalDamageRolls(caster), this.getTotalDamageDieSize(caster));
 
       const dist = caster.distFrom(refTarget);
 

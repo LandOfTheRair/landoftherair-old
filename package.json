@@ -117,7 +117,7 @@
     "jwks-rsa": "^1.2.1",
     "linkifyjs": "^2.1.4",
     "lodash": "^4.17.4",
-    "lootastic": "^1.1.0",
+    "lootastic": "^1.1.1",
     "luxon": "^0.2.11",
     "mingy": "^0.2.7",
     "minimist": "^1.2.0",

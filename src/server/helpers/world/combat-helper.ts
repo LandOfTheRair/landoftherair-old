@@ -6,7 +6,6 @@ import { ShieldClasses, Item, WeaponClasses, ItemEffect, HandsClasses, DamageTyp
 import * as Classes from '../../classes';
 import * as Effects from '../../effects';
 
-import * as dice from 'dice.js';
 import { CharacterHelper } from '../character/character-helper';
 import { NPC } from '../../../shared/models/npc';
 import { BuildupEffect } from '../../base/Effect';
@@ -421,8 +420,8 @@ export class CombatHelper {
     const defenderDodgeBlockLeftSide = Math.floor(1 + defenderScope.defense);
     const defenderDodgeRightSide = Math.floor(defenderScope.dex4 + defenderScope.agi + defenderScope.level + defenderScope.riposteLevel);
 
-    const attackerDodgeRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`) + attackerScope.accuracy;
-    let defenderDodgeRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderDodgeRightSide}`) + defenderScope.dodgeBonus;
+    const attackerDodgeRoll = RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerDodgeBlockRightSide) + attackerScope.accuracy;
+    let defenderDodgeRoll = -RollerHelper.uniformRoll(defenderDodgeBlockLeftSide, defenderDodgeRightSide) + defenderScope.dodgeBonus;
 
     if(defender.isNaturalResource) defenderDodgeRoll = 0;
 
@@ -481,8 +480,8 @@ export class CombatHelper {
     // try to block with armor
     const defenderBlockRightSide = Math.floor(defenderScope.level + defenderScope.armorClass);
 
-    const attackerACRoll = Math.max(1, +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerDodgeBlockRightSide}`) - defenderScope.armorClass);
-    let defenderACRoll = -+dice.roll(`${defenderDodgeBlockLeftSide}d${defenderBlockRightSide}`);
+    const attackerACRoll = Math.max(1, RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerDodgeBlockRightSide) - defenderScope.armorClass);
+    let defenderACRoll = -RollerHelper.uniformRoll(defenderDodgeBlockLeftSide, defenderBlockRightSide);
 
     if(defender.isNaturalResource) defenderACRoll = 0;
 
@@ -525,8 +524,8 @@ export class CombatHelper {
     const defenderWeaponBlockLeftSide = 1;
     const defenderWeaponBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.skill);
 
-    const attackerWeaponBlockRoll = +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerWeaponShieldBlockRightSide}`);
-    let defenderWeaponBlockRoll = -+dice.roll(`${defenderWeaponBlockLeftSide}d${defenderWeaponBlockRightSide}`);
+    const attackerWeaponBlockRoll = RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerWeaponShieldBlockRightSide);
+    let defenderWeaponBlockRoll = -RollerHelper.uniformRoll(defenderWeaponBlockLeftSide, defenderWeaponBlockRightSide);
 
     if(defender.isNaturalResource) defenderWeaponBlockRoll = 0;
 
@@ -576,8 +575,8 @@ export class CombatHelper {
       const defenderShieldBlockLeftSide = Math.floor(1 + defenderScope.shieldDefense);
       const defenderShieldBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.skill);
 
-      const attackerShieldBlockRoll = Math.max(1, +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerWeaponShieldBlockRightSide}`) - defenderScope.shieldAC);
-      const defenderShieldBlockRoll = -+dice.roll(`${defenderShieldBlockLeftSide}d${defenderShieldBlockRightSide}`);
+      const attackerShieldBlockRoll = Math.max(1, RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerWeaponShieldBlockRightSide) - defenderScope.shieldAC);
+      const defenderShieldBlockRoll = -RollerHelper.uniformRoll(defenderShieldBlockLeftSide, defenderShieldBlockRightSide);
 
       const shieldBlockRoll = random(attackerShieldBlockRoll, defenderShieldBlockRoll);
       if(shieldBlockRoll < 0) {
@@ -625,8 +624,8 @@ export class CombatHelper {
       const defenderOffhandBlockLeftSide = Math.floor(1 + defenderScope.offhandDefense);
       const defenderOffhandBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.offhandSkill);
 
-      const attackerOffhandBlockRoll = Math.max(1, +dice.roll(`${attackerDodgeBlockLeftSide}d${attackerWeaponShieldBlockRightSide}`) - defenderScope.offhandAC);
-      const defenderOffhandBlockRoll = -+dice.roll(`${defenderOffhandBlockLeftSide}d${defenderOffhandBlockRightSide}`);
+      const attackerOffhandBlockRoll = Math.max(1, RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerWeaponShieldBlockRightSide) - defenderScope.offhandAC);
+      const defenderOffhandBlockRoll = -RollerHelper.uniformRoll(defenderOffhandBlockLeftSide, defenderOffhandBlockRightSide);
 
       const offhandBlockRoll = random(attackerOffhandBlockRoll, defenderOffhandBlockRoll);
       if(offhandBlockRoll < 0) {
@@ -682,7 +681,7 @@ export class CombatHelper {
     /** PERK:CLASS:WARRIOR:Warriors always do at least 50% of their damage roll when rolling dice. */
     if(attacker.baseClass === 'Warrior') damageRollMinimum = Math.floor(damageRight * 0.5);
 
-    let damage = Math.floor(+dice.roll(`${damageLeft}d${damageRight}..${damageRollMinimum}`)) + damageBoost;
+    let damage = Math.floor(RollerHelper.diceRoll(damageLeft, damageRight, damageRollMinimum)) + damageBoost;
 
     if(isOffhand) {
       damage = Math.floor(damage * offhandMultiplier);
@@ -856,7 +855,7 @@ export class CombatHelper {
     if(!applyEffect) return false;
 
     const chance = effect.chance || 100;
-    if(+dice.roll('1d100') > chance) return false;
+    if(!RollerHelper.XInOneHundred(chance)) return false;
 
     const appEffect = new applyEffect(effect);
     if(!appEffect.cast) return;
@@ -880,7 +879,7 @@ export class CombatHelper {
       attacker.flagSkill(skillRef.flagSkills);
     }
 
-    const willCheck = +dice.roll('1d500') <= attacked.getTotalStat('wil');
+    const willCheck = RollerHelper.XInY(attacked.getTotalStat('wil'), 500);
 
     if(willCheck && damage > 0) {
       const willDivisor = Classes[attacked.baseClass || 'Undecided'].willDivisor;

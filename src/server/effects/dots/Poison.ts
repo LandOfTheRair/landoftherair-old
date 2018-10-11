@@ -32,7 +32,7 @@ export class Poison extends SpellEffect {
 
     const wisCheck = this.getTotalDamageDieSize(caster);
     const totalPotency = Math.floor(mult * this.getTotalDamageRolls(caster));
-    const damage = +dice.roll(`${totalPotency}d${wisCheck}`);
+    const damage = RollerHelper.diceRoll(totalPotency, wisCheck);
 
     this.duration = this.duration || this.potency;
 

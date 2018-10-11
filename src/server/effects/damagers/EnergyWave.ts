@@ -2,7 +2,7 @@
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import * as dice from 'dice.js';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class EnergyWave extends SpellEffect {
 
@@ -19,7 +19,7 @@ export class EnergyWave extends SpellEffect {
     const attacked = target.$$room.state.getAllInRange(target, totalRadius, [caster.uuid], false);
 
     attacked.forEach(refTarget => {
-      const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
+      const damage = RollerHelper.diceRoll(this.getTotalDamageRolls(caster), this.getTotalDamageDieSize(caster));
 
       this.magicalAttack(caster, refTarget, {
         skillRef,

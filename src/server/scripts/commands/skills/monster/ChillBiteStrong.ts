@@ -5,6 +5,7 @@ import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { Poison as CastEffect } from '../../../../effects/dots/Poison';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
+import { RollerHelper } from '../../../../../shared/helpers/roller-helper';
 
 export class ChillBiteStrong extends MonsterSkill {
 
@@ -15,7 +16,7 @@ export class ChillBiteStrong extends MonsterSkill {
   }
 
   use(user: Character, target: Character) {
-    const damage = +dice.roll(`6d${user.getTotalStat('str')}`);
+    const damage = RollerHelper.diceRoll(6, user.getTotalStat('str'));
     CombatHelper.dealDamage(user, target, {
       damage,
       damageClass: 'ice',

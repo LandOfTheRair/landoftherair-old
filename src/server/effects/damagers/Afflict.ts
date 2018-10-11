@@ -2,7 +2,6 @@
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import * as dice from 'dice.js';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Afflict extends SpellEffect {
@@ -13,7 +12,7 @@ export class Afflict extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    const damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
+    const damage = RollerHelper.diceRoll(this.getTotalDamageRolls(caster), this.getTotalDamageDieSize(caster));
 
     let isCrit = false;
     let damageMultiplier = 1;

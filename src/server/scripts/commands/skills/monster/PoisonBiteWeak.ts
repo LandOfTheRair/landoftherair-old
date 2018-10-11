@@ -7,6 +7,7 @@ import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { Poison as CastEffect } from '../../../../effects/dots/Poison';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
+import { RollerHelper } from '../../../../../shared/helpers/roller-helper';
 
 export class PoisonBiteWeak extends MonsterSkill {
 
@@ -17,7 +18,7 @@ export class PoisonBiteWeak extends MonsterSkill {
   }
 
   use(user: Character, target: Character) {
-    const damage = +dice.roll(`2d${user.getTotalStat('str')}`);
+    const damage = RollerHelper.diceRoll(2, user.getTotalStat('str'));
     CombatHelper.dealDamage(user, target, {
       damage,
       damageClass: 'physical',

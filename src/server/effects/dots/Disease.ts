@@ -34,7 +34,7 @@ export class Disease extends SpellEffect {
 
     const wisCheck = Math.max(1, Math.floor(mult * calcMod));
     const totalPotency = this.getTotalDamageRolls(caster);
-    const damage = +dice.roll(`${totalPotency}d${wisCheck}`);
+    const damage = RollerHelper.diceRoll(totalPotency, wisCheck);
 
     this.duration = this.duration || this.potency * 2;
 

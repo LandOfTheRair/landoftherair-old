@@ -2,7 +2,7 @@
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import * as dice from 'dice.js';
+import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Hail extends SpellEffect {
 
@@ -17,7 +17,7 @@ export class Hail extends SpellEffect {
         skillRef,
         atkMsg: `You fling hail at %0!`,
         defMsg: `%0 pelted you with bullets of hail!`,
-        damage: +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`),
+        damage: RollerHelper.diceRoll(this.getTotalDamageRolls(caster), this.getTotalDamageDieSize(caster)),
         damageClass: 'ice'
       });
     }

@@ -7,6 +7,7 @@ import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { Disease as CastEffect } from '../../../../effects/dots/Disease';
 import { CombatHelper } from '../../../../helpers/world/combat-helper';
+import { RollerHelper } from '../../../../../shared/helpers/roller-helper';
 
 export class DiseaseBiteWeak extends MonsterSkill {
 
@@ -17,7 +18,7 @@ export class DiseaseBiteWeak extends MonsterSkill {
   }
 
   use(user: Character, target: Character) {
-    const damage = +dice.roll(`2d${user.getTotalStat('str')}`);
+    const damage = RollerHelper.diceRoll(2, user.getTotalStat('str'));
     CombatHelper.dealDamage(user, target, {
       damage,
       damageClass: 'physical',

@@ -2,10 +2,8 @@
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import * as dice from 'dice.js';
 import { Light } from '../misc/Light';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
-import { CombatHelper } from '../../helpers/world/combat-helper';
 import { SearingPurification } from '../dots/SearingPurification';
 
 export class HolyFire extends SpellEffect {
@@ -27,7 +25,7 @@ export class HolyFire extends SpellEffect {
     const attacked = caster.$$room.state.getAllInRange(target, 0, [], false);
     attacked.forEach(refTarget => {
 
-      let damage = +dice.roll(`${this.getTotalDamageRolls(caster)}d${this.getTotalDamageDieSize(caster)}`);
+      let damage = RollerHelper.diceRoll(this.getTotalDamageRolls(caster), this.getTotalDamageDieSize(caster));
       if(refTarget.alignment === caster.alignment) damage = Math.floor(damage * 0.1);
 
       let isCrit = false;
