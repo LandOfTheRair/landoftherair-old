@@ -128,6 +128,7 @@ export class AuthService {
       usePostMessage: true
     }, (err, result) => {
       if(!err && !result && this.isAuthenticated()) {
+        console.error(new Error('Could not successfully renew auth token.'), err, result);
         this.scheduleRenewal();
         return;
       }
