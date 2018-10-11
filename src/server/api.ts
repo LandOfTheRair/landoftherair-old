@@ -11,6 +11,7 @@ import { DB } from './database';
 import { drawNormal as drawNormalArmor } from './tasks/analysis/_armor';
 import { drawNormal as drawNormalWeapon, drawSpecial as drawSpecialWeapon } from './tasks/analysis/_weapons';
 import { drawPremium } from './tasks/analysis/_premium';
+import { drawCsv } from './tasks/analysis/item-to-csv';
 
 const PAGE_SIZE = 50;
 
@@ -44,6 +45,11 @@ export class GameAPI {
     app.use('/debug/item-stats', async (req, res) => {
       const statStrings = await Promise.all([drawNormalArmor(), drawNormalWeapon(), drawSpecialWeapon()]);
       res.send(statStrings.map(x => `<pre>${x}</pre>`).join(''));
+    });
+
+    app.use('/debug/item-csv', async (req, res) => {
+      const itemStrings = await drawCsv();
+      res.send(itemStrings.map(x => `<pre>${x.join(',')}</pre>`).join(''));
     });
 
     app.use('/debug/premium-stats', async (req, res) => {

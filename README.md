@@ -97,6 +97,7 @@ Some routes are enabled for debugging purposes and are otherwise unused. You can
 * `/server` for server stats
 * `/premium-stats` for premium buying stats
 * `/item-stats` for avg. item stats
+* `/item-csv` for the item database dumped to a CSV
 * `/logs` for server logs (log entries expire after 6h)
 * `/maps` to see all of the maps in the game presently
 
