@@ -44,8 +44,10 @@ export * from './damagers/Asper';
 export * from './damagers/Drain';
 
 export * from './dots/Disease';
+export * from './dots/Plague';
 export * from './dots/Poison';
 export * from './dots/SearingPurification';
+export * from './dots/Venom';
 
 export * from './augments/Attribute';
 export * from './augments/Applied';
