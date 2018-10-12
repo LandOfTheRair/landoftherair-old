@@ -23,7 +23,7 @@ export class GemDust extends SpellEffect {
   }
 
   effectStart(char: Player) {
-    this.effectMessage(char, `You've been enveloped by the dust of ${this.gemDesc}.`);
+    this.targetEffectMessage(char, `You've been enveloped by the dust of ${this.gemDesc}.`);
 
     Object.keys(this.stats || {}).forEach(stat => {
       this.gainStat(char, <StatName>stat, this.stats[stat]);

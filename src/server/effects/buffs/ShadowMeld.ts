@@ -27,7 +27,7 @@ export class ShadowMeld extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You meld with the shadows.');
+    this.casterEffectMessage(char, 'You meld with the shadows.');
     this.gainStat(char, 'stealth', this.potency);
   }
 

@@ -22,7 +22,7 @@ export class Nourishment extends SpellEffect {
 
   effectStart(char: Player) {
     this.shouldNotShowMessage = false;
-    this.effectMessage(char, this.message || 'Yum!');
+    this.casterEffectMessage(char, this.message || 'Yum!');
 
     const isMalnourished = char.hasEffect('Malnourished');
     if(isMalnourished) {
