@@ -1129,7 +1129,7 @@ export class CombatHelper {
     if(wasFatal) {
       if(attacker) {
         const killMethod = defender.isNaturalResource ? 'smashed' : 'killed';
-        defender.sendClientMessageToRadius({ message: `%0 was ${killMethod} by %1!`, subClass: 'combat self kill' },
+        defender.sendClientMessageToRadius({ message: `%0 was ${killMethod} by %1!`, subClass: `combat notme kill ${defender.isPlayer() ? 'player' : 'npc'}` },
           5,
           [defender.uuid, attacker.uuid],
           true,
@@ -1137,7 +1137,7 @@ export class CombatHelper {
         );
 
         const formattedAtkMessage = MessageHelper.formatMessageFor(attacker, `You ${killMethod} %0!`, [defender]);
-        attacker.sendClientMessage({ message: formattedAtkMessage, subClass: 'combat self kill' });
+        attacker.sendClientMessage({ message: formattedAtkMessage, subClass: `combat self kill ${defender.isPlayer() ? 'player' : 'npc'}` });
 
         const formattedDefMessage = MessageHelper.formatMessageFor(defender, `You were killed by %0!`, [attacker]);
         defender.sendClientMessage({ message: formattedDefMessage, subClass: 'combat other kill' });
