@@ -24,8 +24,8 @@ export const ValidItemTypes = [
 ];
 
 export const WeaponClasses = [
-  'Axe', 'Blunderbuss', 'Broadsword', 'Crossbow', 'Dagger', 'Club', 'Flail', 'Greataxe', 'Greatmace', 'Greatsword', 
-  'Hammer', 'Halberd', 'Longbow', 'Longsword', 'Mace', 'Saucer', 'Shield', 'Shortbow', 'Shortsword', 'Spear', 'Staff', 
+  'Axe', 'Blunderbuss', 'Broadsword', 'Crossbow', 'Dagger', 'Club', 'Flail', 'Greataxe', 'Greatmace', 'Greatsword',
+  'Hammer', 'Halberd', 'Longbow', 'Longsword', 'Mace', 'Saucer', 'Shield', 'Shortbow', 'Shortsword', 'Spear', 'Staff',
   'Totem', 'Wand'
 ];
 
@@ -34,7 +34,7 @@ export const AmmoClasses = [
 ];
 
 export const SharpWeaponClasses = [
-  'Axe', 'Blunderbuss', 'Broadsword', 'Crossbow', 'Dagger', 'Greataxe', 'Greatsword', 'Halberd', 'Longbow', 
+  'Axe', 'Blunderbuss', 'Broadsword', 'Crossbow', 'Dagger', 'Greataxe', 'Greatsword', 'Halberd', 'Longbow',
   'Longsword', 'Shortbow', 'Shortsword', 'Spear'
 ];
 
@@ -140,6 +140,7 @@ export class ItemEffect {
   uses?: number;
   autocast?: boolean;
   canApply?: boolean;
+  range?: number; // used for traps
 }
 
 export enum Quality {
@@ -199,6 +200,7 @@ export class Item {
   isHeavy?: boolean;
   canShoot?: boolean;
   shots?: number;
+  trapUses?: number;
 
   trait?: { name: string, level: number };
 
@@ -405,7 +407,7 @@ export class Item {
 
   // < 0 means it lasts forever
   castAndTryBreak(): boolean {
-    if(this.effect.uses < 0) return false;
+    if(this.effect.uses < 0 || this.itemClass === 'Trap') return false;
     this.effect.uses--;
     return this.effect.uses === 0;
   }

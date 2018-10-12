@@ -2,6 +2,7 @@
 import { Character, SkillClassNames } from '../../../shared/models/character';
 
 import * as Effects from '../../effects';
+import { Item } from '../../../shared/models/item';
 
 export class TrapHelper {
 
@@ -27,7 +28,7 @@ export class TrapHelper {
     effectRef.cast(casterCreature ? casterCreature : target, target, obj);
   }
 
-  static placeTrap(x, y, user: Character, trap): boolean {
+  static placeTrap(x, y, user: Character, trap: Item): boolean {
 
     const interactable = user.$$room.state.getInteractable(x, y, true);
     if(interactable) return false;
@@ -40,7 +41,7 @@ export class TrapHelper {
     const trapInteractable = {
       x: x * 64,
       y: (y + 1) * 64,
-      uses: (trap.uses || 1) + user.getTraitLevel('ReusableTraps'),
+      uses: (trap.effect.uses || 1) + user.getTraitLevel('ReusableTraps'),
       type: 'Trap',
       properties: {
         effect: trap.effect,

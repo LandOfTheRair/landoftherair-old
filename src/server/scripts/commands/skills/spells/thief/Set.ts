@@ -45,8 +45,10 @@ export class Set extends Skill {
 
     if(!TrapHelper.placeTrap(x, y, user, trap)) return user.sendClientMessage('You cannot set a trap there.');
 
+    trap.trapUses--;
+    if(trap.trapUses <= 0) user.setRightHand(null);
+
     user.gainSkill(SkillClassNames.Thievery, 3);
-    user.setRightHand(null);
     user.sendClientMessage(`You set the ${trap.effect.name} trap.`);
   }
 

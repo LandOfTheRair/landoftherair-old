@@ -17,7 +17,8 @@ export class SetTrap extends MonsterSkill {
   use(user: Character, target: Character) {
     const trap = find(user.sack.allItems, { itemClass: 'Trap' });
     if(TrapHelper.placeTrap(user.x, user.y, user, trap)) {
-      user.sack.takeItem(trap);
+      trap.trapUses--;
+      if(trap.trapUses <= 0) user.sack.takeItem(trap);
     }
   }
 

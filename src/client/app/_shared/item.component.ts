@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { EquippableItemClasses, Item } from '../../../shared/models/item';
 import { Player } from '../../../shared/models/player';
 
-import { includes, isNumber } from 'lodash';
+import { includes, isNumber, startCase, get } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { AssetService } from '../asset.service';
 import { MaterialSlotInfo, ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
@@ -55,7 +55,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
       <span class="ounces" *ngIf="item && showOunces && realOunces > 0">{{ realOunces }}oz</span>
       <span class="value" *ngIf="item && showValue">{{ overrideValue || (item._buybackValue || item.value) + 'g' }}</span>
       <span class="value" *ngIf="item && showOunces && item.succorInfo">{{ item.succorInfo.map }}</span>
-      <span class="ounces" *ngIf="item && showDesc && item.effect && item.itemClass === 'Trap'">{{ item.effect.name }}</span>
+      <span class="ounces" *ngIf="item && showDesc && item.effect && item.itemClass === 'Trap'">{{ item.trapUses }}x {{ effectName }}</span>
       
       <ng-template #desc>
         <div [innerHtml]="descText"></div>
@@ -188,6 +188,10 @@ export class ItemComponent {
     if(!this.item) return false;
     if(!isNumber(ValidMaterialItems[this.item.name])) return false;
     return MaterialSlotInfo[ValidMaterialItems[this.item.name]].withdrawInOunces;
+  }
+
+  get effectName(): string {
+    return startCase(get(this.item, 'effect.name'));
   }
 
   constructor(public colyseusGame: ColyseusGameService, private assetService: AssetService) {}
