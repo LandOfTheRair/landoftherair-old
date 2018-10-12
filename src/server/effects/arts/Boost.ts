@@ -33,6 +33,7 @@ export class Boost extends SpellEffect {
 
   effectStart(char: Character) {
     this.effectMessageRadius(char, `${char.name} clasps ${GenderHelper.hisher(char)} hands together and exhales.`);
+    this.targetEffectMessage(char, 'You begin channeling your Boost.');
 
     if(!this.ignoreStun) {
       this.duration += 3;

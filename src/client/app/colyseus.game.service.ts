@@ -390,7 +390,6 @@ export class ColyseusGameService {
     }
 
     if(!this.overrideNoSfx) {
-      console.log(subClass)
       this.sfx$.next((subClass || '').trim());
     }
   }
