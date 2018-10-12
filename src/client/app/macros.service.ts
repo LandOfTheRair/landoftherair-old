@@ -174,6 +174,7 @@ export class MacroService {
         _.extend(this.allMacros, this.customMacros);
 
         inputEl.value = null;
+        this.resetIterableMacroGroups();
       };
 
       if(!macros.charName || _.isUndefined(macros.charSlot) || !macros.allMacroGroups || !macros.customMacros || !macros.visibleMacroGroups) return;
