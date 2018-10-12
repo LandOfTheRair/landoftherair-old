@@ -1,3 +1,6 @@
+
+import { get } from 'lodash';
+
 import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
@@ -11,8 +14,7 @@ export class TradeskillAlchemyComponent {
   slots = Array(8).fill(null).map((x, i) => i);
 
   get items() {
-    if(!this.player.tradeSkillContainers) return [];
-    return (<any>this.player.tradeSkillContainers.alchemy).items;
+    return get(this.player, 'tradeSkillContainers.alchemy.items', []);
   }
 
   get player() {
@@ -20,7 +22,7 @@ export class TradeskillAlchemyComponent {
   }
 
   get disabled(): boolean {
-    if(!this.player.tradeSkillContainers) return true;
+    if(!this.player || !this.player.tradeSkillContainers) return true;
     return this.player.tradeSkillContainers.alchemy.reagents.length === 0 || !!this.player.tradeSkillContainers.alchemy.result;
   }
 

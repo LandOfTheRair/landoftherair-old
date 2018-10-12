@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { capitalize, startCase } from 'lodash';
+import { capitalize, startCase, get } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import { Item } from '../../../shared/models/item';
 import { SpellforgingHelper } from '../../../server/helpers/tradeskill/spellforging-helper';
@@ -18,7 +18,7 @@ export class TradeskillSpellforgingComponent {
   }
 
   get items() {
-    return (<any>this.player.tradeSkillContainers.spellforging).items;
+    return get(this.player, 'tradeSkillContainers.spellforging.items', []);
   }
 
   get brickTypes(): string[] {
