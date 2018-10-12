@@ -9,7 +9,7 @@ class FloatingBox {
 
   init(element) {
     const el = document.createElement('div');
-    if(!this.el.animate) return;
+    if(!el.animate) return;
 
     el.style.position = 'absolute';
     el.style.backgroundColor = '#aaa';
