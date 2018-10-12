@@ -1,6 +1,8 @@
 
 export * from './Disease';
+export * from './Plague';
 export * from './Poison';
+export * from './Venom';
 
 export * from './Darkness';
 export * from './DarkVision';

@@ -24,7 +24,7 @@ export const setup = async (npc: NPC) => {
     'Risan Dispel Thief Trap',
     'Risan Cure Thief Trap',
     'Risan Haste Thief Trap',
-    'Medium Disease Potion (5oz)',
+    'Medium Venom Potion (5oz)',
     'Medium Blind Potion (5oz)',
     'Medium BlurredVision Potion (5oz)'
   ];

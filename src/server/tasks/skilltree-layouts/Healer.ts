@@ -160,7 +160,7 @@ const DRUID_TREE = {
 
   },
 
-  CripplingPoison0: {
+  CripplingPlague0: {
 
   },
 
@@ -182,11 +182,11 @@ const DRUID_TREE = {
 
   // SKILLS
   Antidote: {
-    unlocks: ['Poison', 'Disease']
+    unlocks: ['Plague', 'Disease']
   },
 
-  Poison: {
-    unlocks: ['CripplingPoison0']
+  Plague: {
+    unlocks: ['CripplingPlague0']
   },
 
   Disease: {

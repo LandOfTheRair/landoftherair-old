@@ -287,7 +287,7 @@
     - HolyFire
     - MagicBolt
     - Disease
-    - Poison
+    - Plague
     - Snare
     - Regen
     - Cure
@@ -300,7 +300,7 @@
 
   traitLevels:
     HolyAffliction: 1
-    CripplingPoison: 1
+    CripplingPlague: 1
     DebilitatingDisease: 1
     EffectiveSupporter: 5
     BladedWands: 1

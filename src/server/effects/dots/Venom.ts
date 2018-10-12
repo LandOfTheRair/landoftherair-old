@@ -6,19 +6,19 @@ import { Skill } from '../../base/Skill';
 import * as dice from 'dice.js';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
-export class Poison extends SpellEffect {
+export class Venom extends SpellEffect {
 
   iconData = {
-    name: 'poison-gas',
+    name: 'dripping-goo',
     color: '#0a0',
     tooltipDesc: 'Constantly receiving poison damage.'
   };
 
   maxSkillForSkillGain = 25;
-  skillMults = [[0, 1.5], [6, 1.75], [11, 2], [16, 2.25], [21, 2.5]];
+  skillMults = [[0, 2], [6, 2.5], [11, 3], [16, 3.5], [21, 4]];
 
   private critBonus: number;
-  private thiefCorrode: number;
+  private thiefDegenerate: number;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
 
@@ -30,24 +30,24 @@ export class Poison extends SpellEffect {
     const totalPotency = Math.floor(mult * this.getTotalDamageRolls(caster));
     const damage = RollerHelper.diceRoll(totalPotency, wisCheck);
 
-    this.duration = this.duration || this.potency * 2;
+    this.duration = this.duration || this.potency;
 
-    if(caster.getTraitLevel('CorrosivePoison')) {
-      this.thiefCorrode = Math.round(this.potency / 5);
+    if(caster.getTraitLevel('DegenerativeVenom')) {
+      this.thiefDegenerate = this.potency;
     }
 
     this.effectInfo = { damage, caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
-    this.effectMessage(caster, `You poisoned ${target.name}!`);
+    this.effectMessage(caster, `You inflicted ${target.name} with a deadly venom!`);
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You were poisoned!');
+    this.effectMessage(char, 'You feel a deadly venom coursing through your veins!');
 
-    if(this.thiefCorrode) {
-      this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Mitigation penalty.`;
-      this.loseStat(char, 'mitigation', this.thiefCorrode);
+    if(this.thiefDegenerate) {
+      this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Perception penalty.`;
+      this.loseStat(char, 'perception', this.thiefDegenerate);
     }
   }
 
@@ -62,8 +62,8 @@ export class Poison extends SpellEffect {
 
     CombatHelper.magicalAttack(caster, char, {
       effect: this,
-      atkMsg: `${char.name} is ${isCrit ? 'critically ' : ''}poisoned!`,
-      defMsg: `You are ${isCrit ? 'critically ' : ''}poisoned!`,
+      atkMsg: `${char.name} is ${isCrit ? 'critically ' : ''}envenomed!`,
+      defMsg: `You are ${isCrit ? 'critically ' : ''}envenomed!`,
       damage: this.effectInfo.damage * (isCrit ? 3 : 1),
       damageClass: 'poison',
       isOverTime: true
@@ -72,6 +72,6 @@ export class Poison extends SpellEffect {
   }
 
   effectEnd(char: Character) {
-    this.effectMessage(char, 'Your body flushed the poison out.');
+    this.effectMessage(char, 'Your body expelled the venom.');
   }
 }

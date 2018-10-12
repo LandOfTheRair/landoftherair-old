@@ -1,6 +1,6 @@
 
 export * from './CalmMind';
-export * from './CripplingPoison';
+export * from './CripplingPlague';
 export * from './DebilitatingDisease';
 export * from './EffectiveSupporter';
 export * from './FindFamiliarLight';

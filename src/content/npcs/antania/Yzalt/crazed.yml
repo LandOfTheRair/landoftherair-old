@@ -339,7 +339,7 @@
 
   usableSkills:
     - Afflict
-    - Poison
+    - Plague
     - Disease
     - Antidote
     - Vision
@@ -970,7 +970,7 @@
 
   usableSkills:
     - Afflict
-    - Poison
+    - Plague
     - Disease
     - Antidote
     - Vision
@@ -1102,7 +1102,7 @@
 
   usableSkills:
     - Afflict
-    - Poison
+    - Plague
     - Disease
     - Charge
     - Blind

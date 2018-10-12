@@ -35,13 +35,13 @@
     canApply: true
   value: 3000
 
-- name: Medium Disease Potion (5oz)
-  desc: "a yellow bottle with flowers painted along the sides etched with the word \"DISEASE\""
-  extendedDesc: "a bottle of Disease"
+- name: Medium Venom Potion (5oz)
+  desc: "a yellow bottle with flowers painted along the sides etched with the word \"VENOM\""
+  extendedDesc: "a bottle of Venom"
   sprite: 261
   ounces: 5
   effect:
-    name: Disease
+    name: Venom
     duration: 60
     potency: 20
     canApply: true

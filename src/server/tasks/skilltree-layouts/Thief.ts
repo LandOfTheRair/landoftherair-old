@@ -314,7 +314,7 @@ const ASSASSIN_TREE = {
 
   },
 
-  DegenerativeDisease0: {
+  DegenerativeVenom0: {
 
   },
 
@@ -360,7 +360,7 @@ const ASSASSIN_TREE = {
 
   // SKILLS
   Apply: {
-    unlocks: ['BetterBackstab0', 'Poison', 'Disease', 'Debilitate', 'EnhancedApplications0']
+    unlocks: ['BetterBackstab0', 'Poison', 'Venom', 'Debilitate', 'EnhancedApplications0']
   },
 
   Assassinate: {
@@ -375,8 +375,8 @@ const ASSASSIN_TREE = {
     unlocks: ['CorrosivePoison0']
   },
 
-  Disease: {
-    unlocks: ['DegenerativeDisease0']
+  Venom: {
+    unlocks: ['DegenerativeVenom0']
   },
 
   MultiShot: {

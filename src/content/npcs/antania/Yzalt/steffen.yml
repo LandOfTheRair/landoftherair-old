@@ -301,7 +301,7 @@
 
   usableSkills:
     - Afflict
-    - Poison
+    - Plague
 
   rightHand:
     - result: Antanian Mace
@@ -494,7 +494,7 @@
 
   usableSkills:
     - Afflict
-    - Poison
+    - Plague
 
   gear:
     Armor: Antanian Breastplate

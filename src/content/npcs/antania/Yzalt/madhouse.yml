@@ -191,11 +191,11 @@
     - Afflict
     - HolyFire
     - Cure
-    - Poison
+    - Plague
     - Disease
 
   traitLevels:
-    CripplingPoison: 1
+    CripplingPlague: 1
     DebilitatingDisease: 1
 
   gear:

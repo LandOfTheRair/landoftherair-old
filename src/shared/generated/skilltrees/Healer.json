@@ -594,16 +594,16 @@
             "Snare"
         ]
     },
-    "CripplingPoison0": {
-        "name": "CripplingPoison0",
-        "traitName": "CripplingPoison",
-        "desc": "Your Poison spell will also lower the attack and defense of the afflicted target.",
-        "icon": "poison-gas",
+    "CripplingPlague0": {
+        "name": "CripplingPlague0",
+        "traitName": "CripplingPlague",
+        "desc": "Your Plague spell will also lower the attack and defense of the afflicted target.",
+        "icon": "death-zone",
         "capstone": true,
         "cost": 25,
         "cluster": 2,
         "unlockedBy": [
-            "Poison"
+            "Plague"
         ]
     },
     "DebilitatingDisease0": {
@@ -664,7 +664,7 @@
         "iconColor": "#0a0",
         "cost": 3,
         "unlocks": [
-            "Poison",
+            "Plague",
             "Disease"
         ],
         "cluster": 2,
@@ -672,14 +672,14 @@
             "NatureSpirit0"
         ]
     },
-    "Poison": {
-        "name": "Poison",
-        "desc": "Inflict a deadly poison on your target. Cost: 15 MP",
-        "icon": "poison-gas",
+    "Plague": {
+        "name": "Plague",
+        "desc": "Inflict a deadly plague on your target. Cost: 15 MP",
+        "icon": "death-zone",
         "iconColor": "#0a0",
         "cost": 3,
         "unlocks": [
-            "CripplingPoison0"
+            "CripplingPlague0"
         ],
         "cluster": 2,
         "unlockedBy": [

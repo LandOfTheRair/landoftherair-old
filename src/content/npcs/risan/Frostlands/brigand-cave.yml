@@ -253,7 +253,7 @@
     FindFamiliarNature: 1
     FindFamiliarLight: 1
     HolyAffliction: 1
-    CripplingPoison: 1
+    CripplingPlague: 1
 
   skillOnKill: 65
 
@@ -266,7 +266,7 @@
       chance: 100
     - result: Cure
       chance: 100
-    - result: Poison
+    - result: Plague
       chance: 100
     - result: Vision
       chance: 100
@@ -370,7 +370,7 @@
     ShadowDaggers: 5
     ShadowRanger: 3
     ShadowSwap: 5
-    DegenerativeDisease: 1
+    DegenerativeVenom: 1
     DarknessWiden: 2
 
   skillOnKill: 65
@@ -378,7 +378,7 @@
   usableSkills:
     - SetTrap
     - Steal
-    - Disease
+    - Venom
     - Hide
     - EagleEye
     - ShadowClones

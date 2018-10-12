@@ -4,7 +4,7 @@ export * from './BetterBackstab';
 export * from './CorrosivePoison';
 export * from './DarkerShadows';
 export * from './DarknessWiden';
-export * from './DegenerativeDisease';
+export * from './DegenerativeVenom';
 export * from './DoubleStealing';
 export * from './EnhancedApplications';
 export * from './LockpickSpecialty';
