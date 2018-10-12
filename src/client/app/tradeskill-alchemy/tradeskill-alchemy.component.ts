@@ -11,6 +11,7 @@ export class TradeskillAlchemyComponent {
   slots = Array(8).fill(null).map((x, i) => i);
 
   get items() {
+    if(!this.player.tradeSkillContainers) return [];
     return (<any>this.player.tradeSkillContainers.alchemy).items;
   }
 
@@ -19,6 +20,7 @@ export class TradeskillAlchemyComponent {
   }
 
   get disabled(): boolean {
+    if(!this.player.tradeSkillContainers) return true;
     return this.player.tradeSkillContainers.alchemy.reagents.length === 0 || !!this.player.tradeSkillContainers.alchemy.result;
   }
 

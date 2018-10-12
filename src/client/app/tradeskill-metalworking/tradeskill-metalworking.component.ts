@@ -12,6 +12,7 @@ import { MetalworkingHelper } from '../../../server/helpers/tradeskill/metalwork
 export class TradeskillMetalworkingComponent {
 
   get upgrades() {
+    if(!this.player.tradeSkillContainers) return [];
     if(!this.player.tradeSkillContainers.metalworking.upgradeItem) return [];
     return this.player.tradeSkillContainers.metalworking.upgradeItem.previousUpgrades || [];
   }
@@ -33,6 +34,7 @@ export class TradeskillMetalworkingComponent {
   }
 
   get items() {
+    if(!this.player.tradeSkillContainers) return [];
     return (<any>this.player.tradeSkillContainers.metalworking).items;
   }
 
@@ -41,6 +43,7 @@ export class TradeskillMetalworkingComponent {
   }
 
   get ingotTypes(): string[] {
+    if(!this.player.tradeSkillContainers) return [];
     return Object.keys(this.player.tradeSkillContainers.metalworking.oreValues).map(x => capitalize(x));
   }
 
@@ -49,12 +52,14 @@ export class TradeskillMetalworkingComponent {
   }
 
   get craftDisabled(): boolean {
+    if(!this.player.tradeSkillContainers) return true;
     const item = this.player.tradeSkillContainers.metalworking.craftItem;
     const reagent = this.player.tradeSkillContainers.metalworking.craftReagent;
     return !item || !reagent;
   }
 
   get upgradeDisabled(): boolean {
+    if(!this.player.tradeSkillContainers) return true;
     const item = this.player.tradeSkillContainers.metalworking.upgradeItem;
     const reagent = this.player.tradeSkillContainers.metalworking.upgradeReagent;
     return !item || !reagent;
@@ -66,7 +71,8 @@ export class TradeskillMetalworkingComponent {
 
   constructor(public colyseusGame: ColyseusGameService) { }
 
-  oreValue(oreType) {
+  oreValue(oreType): number {
+    if(!this.player.tradeSkillContainers) return 0;
     return this.player.tradeSkillContainers.metalworking.oreValues[oreType.toLowerCase()];
   }
 
