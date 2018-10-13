@@ -41,8 +41,18 @@ export class ZombieScratch extends SpellEffect {
     char.sprite = 1465;
     char.alignment = 'Evil';
     char.monsterClass = 'Undead';
+    char.allegianceReputation = {
+      Enemy: -101,
+      None: -101,
+      Pirates: -101,
+      Townsfolk: -101,
+      Royalty: -101,
+      Adventurers: -101,
+      Wilderness: -101,
+      Underground: -101
+    };
     (<NPC>char).npcId = 'Halloween Zombie';
-    (<NPC>char).hostility = 'Always';
+    (<NPC>char).hostility = 'Faction';
     (<NPC>char).usableSkills.push('ShredTenPercent', 'HalloweenZombieScratch');
 
     (<NPC>char).drops = (<NPC>char).drops || [];

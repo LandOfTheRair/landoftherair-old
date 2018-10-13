@@ -3,7 +3,7 @@
 - npcId: Halloween Zombie
   name: zombie
   monsterClass: Undead
-  hostility: Always
+  hostility: Faction
   sprite: 1465
   alignment: Evil
   stats: 1
@@ -11,6 +11,17 @@
   level: 1
 
   skillOnKill: 15
+
+  allegianceReputation:
+    Enemy: -101
+    None: -101
+    Pirates: -101
+    Townsfolk: -101
+    Royalty: -101
+    Adventurers: -101
+    Wilderness: -101
+    Underground: -101
+
 
   gold:
     min: 15
