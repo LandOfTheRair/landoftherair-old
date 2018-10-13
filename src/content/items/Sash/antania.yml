@@ -85,16 +85,16 @@
   randomStats:
     int:
       min: 0
-      max: 2
+      max: 1
     wis:
       min: 0
-      max: 2
+      max: 1
     str:
       min: 0
-      max: 2
+      max: 1
     agi:
       min: 0
-      max: 2
+      max: 1
   sprite: 388
   desc: "a sash weaved with the iridescent threads of the rift-defying beast"
   binds: true
