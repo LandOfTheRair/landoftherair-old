@@ -42,7 +42,10 @@ export class CrazedTonwinAIBehavior extends DefaultAIBehavior {
   private async spawnBrother() {
     const npc = this.npc;
 
-    const { spawnLoc, id, effect, message } = sample(this.brotherSpawnObjects);
+    const spawnObj = sample(this.brotherSpawnObjects);
+    if(!spawnObj) throw new Error(`Invalid spawn obj, ${JSON.stringify(this.brotherSpawnObjects)} is left`);
+
+    const { spawnLoc, id, effect, message } = spawnObj;
 
     // make it so that brother can't spawn again
     this.brotherSpawnObjects = reject(this.brotherSpawnObjects, (data) => data.id === id);
