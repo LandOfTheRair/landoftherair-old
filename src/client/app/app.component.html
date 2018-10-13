@@ -448,7 +448,7 @@
     <app-traits></app-traits>
   </ng-template>
 
-  <app-window *ngIf="inGame && colyseus.game.showAlchemy.uuid"
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showAlchemy.uuid"
               windowName="tradeskillAlchemy"
               [otherWindowClasses]="'tradeskill alchemy above-game-window'"
               (active)="setActiveWindow($event)"
@@ -466,7 +466,7 @@
     <app-tradeskill-alchemy></app-tradeskill-alchemy>
   </ng-template>
 
-  <app-window *ngIf="inGame && colyseus.game.showSpellforging.uuid"
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showSpellforging.uuid"
               windowName="tradeskillSpellforging"
               [otherWindowClasses]="'tradeskill spellforging above-game-window'"
               (active)="setActiveWindow($event)"
@@ -484,7 +484,7 @@
     <app-tradeskill-spellforging></app-tradeskill-spellforging>
   </ng-template>
 
-  <app-window *ngIf="inGame && colyseus.game.showMetalworking.uuid"
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showMetalworking.uuid"
               windowName="tradeskillMetalworking"
               [otherWindowClasses]="'tradeskill metalworking above-game-window'"
               (active)="setActiveWindow($event)"
