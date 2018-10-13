@@ -22,6 +22,7 @@ export class TradeskillSpellforgingComponent {
   }
 
   get brickTypes(): string[] {
+    if(!this.player) return [];
     return Object.keys(this.player.tradeSkillContainers.spellforging.dustValues).map(x => capitalize(x));
   }
 

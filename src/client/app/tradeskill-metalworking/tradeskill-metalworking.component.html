@@ -117,7 +117,7 @@
       </div>
 
       <div class="row mt-3">
-        <div class="col text-center" *ngIf="player.tradeSkillContainers.metalworking.upgradeItem">
+        <div class="col text-center" *ngIf="player && player.tradeSkillContainers.metalworking.upgradeItem">
           Item is currently +{{ player.tradeSkillContainers.metalworking.upgradeItem.enchantLevel || 0 }}
         </div>
         <div class="col" [class.hidden]="showInfo"></div>
