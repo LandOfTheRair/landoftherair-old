@@ -608,6 +608,8 @@ export class Character {
     this.mp.maximum = Math.max(0, this.getTotalStat('mp'));
     this.mp.__current = Math.min(this.mp.__current, this.mp.maximum);
 
+    this.totalStats.stealth += this.getTraitLevelAndUsageModifier('ShadowStepper');
+
     // if you're hiding, you have a hide penalty
     if(this.totalStats.stealth > 0) {
       this.totalStats.stealth -= this.hidePenalty();

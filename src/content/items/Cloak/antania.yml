@@ -19,18 +19,18 @@
     agi:
       min: 0
       max: 2
-    stealth:
-      min: 5
-      max: 10
   desc: "a disintegrating cloak made from the wrappings of a mummy that seem to blend in with your surroundings"
   value: 760
   sprite: 321
   binds: true
 
+  trait:
+    name: ShadowStepper
+    level: 1
+
 - name: Yzalt Fungus Cloak
   stats:
     armorClass: 2
-    stealth: 5
     defense: 1
     hpregen: 3
   desc: "a woolen cloak stained green from the nearby fungus growing on it"

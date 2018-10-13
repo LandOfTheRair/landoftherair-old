@@ -70,13 +70,16 @@
   sprite: 486
   binds: true
 
+  trait:
+    name: ShadowStepper
+    level: 1
+
   requirements:
     level: 5
 
 - name: Ranata Robe
   quality: 5
   stats:
-    stealth: 30
     perception: 10
     defense: 1
     offense: 1
@@ -88,6 +91,10 @@
   value: 1400
   sprite: 376
   binds: true
+
+  trait:
+    name: ShadowStepper
+    level: 3
 
   requirements:
     level: 9
