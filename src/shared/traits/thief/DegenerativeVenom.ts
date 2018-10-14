@@ -9,7 +9,7 @@ export class DegenerativeVenom extends Trait {
   static icon = 'dripping-goo';
 
   static upgrades = [
-    { cost: 50, capstone: true }
+    { cost: 10, capstone: true }
   ];
 
 }

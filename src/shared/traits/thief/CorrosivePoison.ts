@@ -9,7 +9,7 @@ export class CorrosivePoison extends Trait {
   static icon = 'poison-gas';
 
   static upgrades = [
-    { cost: 50, capstone: true }
+    { cost: 10, capstone: true }
   ];
 
 }

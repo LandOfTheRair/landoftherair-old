@@ -9,7 +9,7 @@ export class CripplingPlague extends Trait {
   static icon = 'death-zone';
 
   static upgrades = [
-    { cost: 25, capstone: true }
+    { cost: 10, capstone: true }
   ];
 
 }

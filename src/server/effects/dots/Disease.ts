@@ -3,7 +3,6 @@ import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { CombatHelper } from '../../helpers/world/combat-helper';
 import { Skill } from '../../base/Skill';
-import * as dice from 'dice.js';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Disease extends SpellEffect {
@@ -40,7 +39,7 @@ export class Disease extends SpellEffect {
     this.duration += caster.getTraitLevel('NatureSpirit');
 
     if(caster.getTraitLevel('DebilitatingDisease')) {
-      this.healerDebilitate = Math.max(1, Math.round(this.potency / 10));
+      this.healerDebilitate = Math.max(1, Math.round(this.potency / 4));
     }
 
     this.effectInfo = { damage, caster: caster.uuid };
@@ -53,10 +52,10 @@ export class Disease extends SpellEffect {
     this.effectMessage(char, 'You were diseased!');
 
     if(this.healerDebilitate) {
-      this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} CON/WIL/Accuracy penalty.`;
+      this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} -${this.healerDebilitate} CON/WIL, -${this.healerDebilitate * 3} Accuracy.`;
       this.loseStat(char, 'wil', this.healerDebilitate);
       this.loseStat(char, 'con', this.healerDebilitate);
-      this.loseStat(char, 'accuracy', this.healerDebilitate);
+      this.loseStat(char, 'accuracy', this.healerDebilitate * 3);
     }
   }
 
