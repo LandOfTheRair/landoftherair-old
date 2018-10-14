@@ -11,6 +11,13 @@ import { MapLayer } from '../../shared/models/maplayer';
 import { LootHelper } from '../../server/helpers/world/loot-helper';
 import { SkillTree } from '../../shared/models/skill-tree';
 
+const SpecialDiscordMaps = {
+  'Rylt-CaveUpstairs-Dungeon': 'lair-mage',
+  'Rylt-BeneathPrison-Dungeon': 'lair-smith',
+  'Yzalt-BelowMadhouse-Dungeon': 'lair-lich',
+  'YzaltBasement-Dungeon': 'lair-lich'
+};
+
 export class ClientGameState {
   fovArray = Array(9).fill(null).map((x, i) => i - 4);
 
@@ -18,6 +25,14 @@ export class ClientGameState {
 
   public set currentPlayer(player: Player) {
     this._currentPlayer = player;
+
+    if(player) {
+      (<any>window).discordGlobalCharacter = player.toSaveObject();
+      if(SpecialDiscordMaps[player.map]) (<any>window).discordGlobalCharacter._gameImage = SpecialDiscordMaps[player.map];
+
+    } else {
+      (<any>window).discordGlobalCharacter = null;
+    }
   }
 
   public get currentPlayer() {
