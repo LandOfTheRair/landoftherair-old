@@ -318,6 +318,8 @@ export class ColyseusGameService {
   }
 
   private syncCharacterAttributes(x, y, dir, swimLevel) {
+    if(!this.character) return;
+
     if(dir === 'C') {
       dir = this.character.hp.__current === 0 ? 'C' : 'S';
     }
