@@ -705,6 +705,7 @@ export class GameWorld extends Room<GameState> {
       player.$$doNotSave = true;
       await this.savePlayer(player, { x, y, map: newMap }, true);
       this.state.resetFOV(player);
+      this.send(client, { action: 'set_character', character: player });
       this.send(client, { action: 'change_map', map: newMap, party: player.partyName });
     }
   }
