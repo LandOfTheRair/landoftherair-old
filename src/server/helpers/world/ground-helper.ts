@@ -11,6 +11,7 @@ export class GroundHelper {
 
   private itemGCArray: any = [];
   private trashGCArray: any = [];
+  private corpseArray: any = [];
 
   public get numberOfItems(): number {
     return this.itemGCArray.length;
@@ -18,8 +19,18 @@ export class GroundHelper {
 
   constructor(private room: GameWorld) {}
 
-  private isTrash(item: Item) {
+  private isTrash(item: Item): boolean {
     return includes(item.name, ' Trash ');
+  }
+
+  private isCorpse(item: Item): boolean {
+    return item.itemClass === 'Corpse';
+  }
+
+  private chooseArrayFor(item: Item): string {
+    if(this.isCorpse(item)) return 'corpseArray';
+    if(this.isTrash(item)) return 'trashGCArray';
+    return 'itemGCArray';
   }
 
   addItemToGround(ref, item: Item, previouslyStackedItem = null) {
@@ -27,16 +38,17 @@ export class GroundHelper {
     let baseItem = item;
 
     if(previouslyStackedItem) {
-      const oldItem = find(this.itemGCArray, { uuid: previouslyStackedItem.uuid });
+      const oldItem = find(this[this.chooseArrayFor(item)], { uuid: previouslyStackedItem.uuid });
       this.removeItemFromGround(oldItem, true);
       baseItem = previouslyStackedItem;
     }
 
-    const pushArr = this.isTrash(baseItem) ? this.trashGCArray : this.itemGCArray;
+    const pushArr = this[this.chooseArrayFor(baseItem)];
 
     pushArr.push({
       uuid: baseItem.uuid,
       itemClass: baseItem.itemClass,
+      name: baseItem.name,
       x: ref.x,
       y: ref.y
     });
@@ -56,7 +68,7 @@ export class GroundHelper {
       return;
     }
 
-    this.itemGCArray = reject(this.itemGCArray, (checkItem: any) => checkItem.uuid === item.uuid);
+    this[this.chooseArrayFor(item)] = reject(this[this.chooseArrayFor(item)], (checkItem: any) => checkItem.uuid === item.uuid);
   }
 
   watchForItemDecay(): any {

@@ -45,7 +45,7 @@ export class DeathHelper {
     const corpse = await target.$$room.itemCreator.getItemByName('Corpse');
     corpse.sprite = customSprite || target.sprite + 4;
     corpse.searchItems = searchItems || [];
-    corpse.desc = `the corpse of a ${target.name}`;
+    corpse.desc = `the corpse of ${target.isPlayer() ? target.name : 'a ' + target.name}`;
     corpse.name = `${target.name} corpse`;
     target.$$corpseRef = corpse;
 
