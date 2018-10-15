@@ -346,11 +346,6 @@ export class ItemComponent {
 
     } else if(this.context === 'Ground' || this.context === 'GroundGroup') {
 
-      if(this.item.itemClass === 'Bottle' && this.context === 'Ground') {
-        this.colyseusGame.buildUseAction(this.item, this.context);
-        return;
-      }
-
       if(this.isEquippable) {
 
         const slot = (<any>this.colyseusGame.character).getItemSlotToEquipIn(this.item);
