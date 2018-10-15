@@ -261,8 +261,8 @@ export class ItemComponent {
     if(this.item.isSackable) scopes.push('sack', 'demimagicpouch');
     if(this.item.isBeltable) scopes.push('belt', 'demimagicpouch');
 
-    if(this.item.canUse && this.item.canUse(this.player)
-    && this.context !== 'Ground'
+    if(
+      ((this.item.canUse && this.item.canUse(this.player)) || this.item.itemClass === 'Bottle')
     && this.context !== 'GroundGroup'
     && this.context !== 'Equipment') scopes.push('use');
 
@@ -345,6 +345,11 @@ export class ItemComponent {
       return;
 
     } else if(this.context === 'Ground' || this.context === 'GroundGroup') {
+
+      if(this.item.itemClass === 'Bottle' && this.context === 'Ground') {
+        this.colyseusGame.buildUseAction(this.item, this.context);
+        return;
+      }
 
       if(this.isEquippable) {
 
