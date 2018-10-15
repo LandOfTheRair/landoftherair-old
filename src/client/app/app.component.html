@@ -371,7 +371,7 @@
     <app-shop></app-shop>
   </ng-template>
 
-  <app-window *ngIf="inGame && colyseus.game.showBank.uuid"
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showBank.uuid"
               windowName="bank"
               [otherWindowClasses]="'above-game-window'"
               (active)="setActiveWindow($event)"
