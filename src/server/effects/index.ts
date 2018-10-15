@@ -102,6 +102,7 @@ export * from './bursts/Frosted';
 export * from './buildups/BuildupSneakAttack';
 export * from './bursts/DefensesShattered';
 
+export * from './antibuffs/Daze';
 export * from './antibuffs/Stun';
 export * from './antibuffs/Snare';
 export * from './antibuffs/Blind';

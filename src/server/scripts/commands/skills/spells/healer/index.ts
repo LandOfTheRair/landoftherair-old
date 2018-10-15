@@ -7,6 +7,7 @@ export * from './Autoheal';
 export * from './BarNecro';
 export * from './Blind';
 export * from './Cure';
+export * from './Daze';
 export * from './Dispel';
 export * from './HolyAura';
 export * from './HolyFire';

@@ -137,7 +137,7 @@ const DRUID_TREE = {
     unlocks: ['Vision']
   },
   NatureSpirit2: {
-    unlocks: ['Stun']
+    unlocks: ['Stun', 'Daze']
   },
   NatureSpirit3: {
     unlocks: ['Snare']
@@ -202,6 +202,10 @@ const DRUID_TREE = {
   },
 
   Blind: {
+
+  },
+
+  Daze: {
 
   },
 

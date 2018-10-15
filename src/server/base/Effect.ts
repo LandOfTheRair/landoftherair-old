@@ -5,6 +5,7 @@ import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/world/combat-helper';
 import { Item } from '../../shared/models/item';
 import { MessageHelper } from '../helpers/world/message-helper';
+import { RollerHelper } from '../../shared/helpers/roller-helper';
 
 export const Maxes = {
   Lesser: 10,
@@ -178,16 +179,22 @@ export class SpellEffect extends Effect {
 
       this.potency = caster.calcSkillLevel(flaggedSkill) + 1;
 
+      const canGainSkill = this.potency <= this.maxSkillForSkillGain;
+
+      if(canGainSkill) {
+        caster.gainSkill(flaggedSkill, 1);
+      }
+
       if(caster.hasEffect('Encumbered')
       && includes([SkillClassNames.Conjuration, SkillClassNames.Restoration], flaggedSkill)) {
         caster.sendClientMessage('Your armor exhausts you as you try to cast your spell!');
         this.potency = Math.floor(this.potency / 2);
       }
 
-      const canGainSkill = this.potency <= this.maxSkillForSkillGain;
-
-      if(canGainSkill) {
-        caster.gainSkill(flaggedSkill, 1);
+      const dazed = caster.hasEffect('Daze');
+      if(dazed && RollerHelper.XInOneHundred(dazed.setPotency)) {
+        caster.sendClientMessage('You are completely unable to concentrate on casting your spell!');
+        this.potency = 0;
       }
 
     } else {

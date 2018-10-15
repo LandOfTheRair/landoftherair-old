@@ -505,7 +505,8 @@
         "icon": "daemon-pull",
         "cost": 3,
         "unlocks": [
-            "Stun"
+            "Stun",
+            "Daze"
         ],
         "cluster": 2,
         "unlockedBy": [
@@ -609,7 +610,7 @@
     "ContagiousPlague0": {
         "name": "ContagiousPlague0",
         "traitName": "ContagiousPlague",
-        "desc": "Your Plague spell will spread to a nearby target not suffering from Plague once every 10s.",
+        "desc": "Your Plague spell will spread to a nearby target not suffering from Plague once every 3s.",
         "icon": "death-zone",
         "capstone": true,
         "cost": 15,
@@ -736,6 +737,17 @@
         "cluster": 2,
         "unlockedBy": [
             "Vision"
+        ]
+    },
+    "Daze": {
+        "name": "Daze",
+        "desc": "Attempt to daze a single target. Cost: 50 MP",
+        "icon": "knockout",
+        "iconColor": "#055",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "NatureSpirit2"
         ]
     },
     "Stun": {

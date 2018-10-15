@@ -33,6 +33,8 @@ export class Stun extends SpellEffect {
 
     if(target.hasEffect('RecentlyStunned') || target.hasEffect('Stun')) {
       return this.effectMessage(caster, `${target.name} resisted your stun!`);
+    } else {
+      this.effectMessage(caster, `You stun ${target.name}!`);
     }
 
     target.addAgro(caster, 30);
