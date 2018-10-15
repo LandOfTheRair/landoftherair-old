@@ -1032,19 +1032,19 @@
               <span *ngIf="isMacroGroupActive(group.key)">(#{{ isMacroGroupActive(group.key) }})</span>
             </div>
             <div class="text-center show-on-hover">
-              <button class="btn btn-warning btn-sm"
+              <button class="btn btn-warning ml-1 btn-sm btn-short"
                       *ngIf="!first && isMacroGroupActive(group.key) && isMacroGroupActive(group.key) !== 1"
                       (click)="removeActiveGroup(isMacroGroupActive(group.key) - 1)">Remove</button>
 
-              <button class="btn btn-primary btn-sm" *ngIf="!isMacroGroupActive(group.key)" (click)="makeActiveGroup(group.key, 0)">1</button>
-              <button class="btn btn-primary btn-sm" *ngIf="!isMacroGroupActive(group.key)" (click)="makeActiveGroup(group.key, 1)">2</button>
-              <button class="btn btn-primary btn-sm" *ngIf="!isMacroGroupActive(group.key)" (click)="makeActiveGroup(group.key, 2)">3</button>
+              <button class="btn btn-primary ml-1 btn-sm btn-short" *ngIf="!isMacroGroupActive(group.key)" (click)="makeActiveGroup(group.key, 0)">1</button>
+              <button class="btn btn-primary ml-1 btn-sm btn-short" *ngIf="!isMacroGroupActive(group.key)" (click)="makeActiveGroup(group.key, 1)">2</button>
+              <button class="btn btn-primary ml-1 btn-sm btn-short" *ngIf="!isMacroGroupActive(group.key)" (click)="makeActiveGroup(group.key, 2)">3</button>
 
-              <button class="btn btn-warning btn-sm"
+              <button class="btn btn-warning ml-1 btn-sm btn-short"
                       *ngIf="!isMacroGroupActive(group.key) && group.key === 'default'"
                       (click)="resetDefaultGroup()">Reset</button>
 
-              <button class="btn btn-danger btn-sm"
+              <button class="btn btn-danger ml-1 btn-sm btn-short"
                       *ngIf="!isMacroGroupActive(group.key) && group.key !== 'default'"
                       (click)="deleteGroup(group.key)">Delete</button>
             </div>
