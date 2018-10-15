@@ -60,6 +60,7 @@ export class KillDistractions extends Quest {
   public static givePlayerRewards(player: Player): void {
     this.rewardPlayerGold(player, 45000);
     player.gainExp(600000);
-    player.sendClientMessage('You received 600,000 XP and 45,000 gold!');
+    player.changeRep('Townsfolk', 100, true);
+    player.sendClientMessage('You received 600,000 XP, 45,000 gold, and Townsfolk reputation!');
   }
 }
