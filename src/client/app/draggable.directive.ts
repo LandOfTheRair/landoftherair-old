@@ -103,11 +103,10 @@ export class DraggableWindowDirective implements OnInit {
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
     if(this.md && this._allowDrag) {
+      event.preventDefault();
+      event.stopPropagation();
       this.setElementCoords(event.clientY - this.topStart, event.clientX - this.leftStart);
     }
-
-    event.preventDefault();
-    event.stopPropagation();
   }
 
   @HostListener('document:mouseleave', ['$event'])
