@@ -1117,7 +1117,7 @@
         "desc": "Your Venom spell will also lower the perception of the afflicted target.",
         "icon": "dripping-goo",
         "capstone": true,
-        "cost": 50,
+        "cost": 10,
         "cluster": 4,
         "unlockedBy": [
             "Venom"
@@ -1129,7 +1129,7 @@
         "desc": "Your Poison spell will also lower the mitigation of the afflicted target.",
         "icon": "poison-gas",
         "capstone": true,
-        "cost": 50,
+        "cost": 10,
         "cluster": 4,
         "unlockedBy": [
             "Poison"

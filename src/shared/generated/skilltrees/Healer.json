@@ -600,7 +600,19 @@
         "desc": "Your Plague spell will also lower the attack and defense of the afflicted target.",
         "icon": "death-zone",
         "capstone": true,
-        "cost": 25,
+        "cost": 10,
+        "cluster": 2,
+        "unlockedBy": [
+            "Plague"
+        ]
+    },
+    "ContagiousPlague0": {
+        "name": "ContagiousPlague0",
+        "traitName": "ContagiousPlague",
+        "desc": "Your Plague spell will spread to a nearby target not suffering from Plague once every 10s.",
+        "icon": "death-zone",
+        "capstone": true,
+        "cost": 15,
         "cluster": 2,
         "unlockedBy": [
             "Plague"
@@ -612,7 +624,7 @@
         "desc": "Your Disease spell will also lower the CON, WIL, and accuracy of the afflicted target.",
         "icon": "death-juice",
         "capstone": true,
-        "cost": 25,
+        "cost": 10,
         "cluster": 2,
         "unlockedBy": [
             "Disease"
@@ -679,7 +691,8 @@
         "iconColor": "#0a0",
         "cost": 3,
         "unlocks": [
-            "CripplingPlague0"
+            "CripplingPlague0",
+            "ContagiousPlague0"
         ],
         "cluster": 2,
         "unlockedBy": [

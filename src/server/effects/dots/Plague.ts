@@ -1,4 +1,6 @@
 
+import { sample } from 'lodash';
+
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { CombatHelper } from '../../helpers/world/combat-helper';
@@ -18,8 +20,9 @@ export class Plague extends SpellEffect {
 
   private critBonus: number;
   private healerCripple: number;
+  private isContagious: boolean;
 
-  cast(caster: Character, target: Character, skillRef?: Skill) {
+  cast(caster: Character, target: Character, skillRef?: Skill, wasChained?: boolean) {
 
     this.setPotencyAndGainSkill(caster, skillRef);
 
@@ -28,16 +31,20 @@ export class Plague extends SpellEffect {
     const wisCheck = this.getTotalDamageDieSize(caster);
     const totalPotency = Math.floor(mult * this.getTotalDamageRolls(caster));
     const damage = RollerHelper.diceRoll(totalPotency, wisCheck);
-
+    
     this.duration = this.duration || this.potency;
 
-    const natureSpirit = caster.getTraitLevelAndUsageModifier('NatureSpirit');
-    this.critBonus = natureSpirit;
+    if(!wasChained) {
+      const natureSpirit = caster.getTraitLevelAndUsageModifier('NatureSpirit');
+      this.critBonus = natureSpirit;
 
-    this.duration += caster.getTraitLevel('NatureSpirit');
+      this.duration += caster.getTraitLevel('NatureSpirit');
 
-    if(caster.getTraitLevel('CripplingPlague')) {
-      this.healerCripple = Math.round(this.potency / 5);
+      if(caster.getTraitLevel('CripplingPlague')) {
+        this.healerCripple = Math.round(this.potency / 5);
+      }
+
+      this.isContagious = !!caster.getTraitLevel('ContagiousPlague');
     }
 
     this.effectInfo = { damage, caster: caster.uuid };
@@ -73,6 +80,25 @@ export class Plague extends SpellEffect {
       damageClass: 'disease',
       isOverTime: true
     });
+
+    if((this.duration % 3) === 0 && this.isContagious) {
+      const possibleTargets = char.$$room.state.getAllInRange(char, 1, [], false)
+        .filter(testChar => !testChar.hasEffect('Plague') && testChar.uuid !== this.effectInfo.caster);
+      const target = sample(possibleTargets);
+
+      if(target) {
+        const plague = new Plague({
+          duration: this.duration,
+          potency: this.potency,
+          critBonus: this.critBonus,
+          healerCripple: this.healerCripple,
+          isContagious: true,
+          effectInfo: this.effectInfo
+        });
+
+        plague.cast(caster, target, <any>this, true);
+      }
+    }
 
   }
 

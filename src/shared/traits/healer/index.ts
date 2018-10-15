@@ -1,5 +1,6 @@
 
 export * from './CalmMind';
+export * from './ContagiousPlague';
 export * from './CripplingPlague';
 export * from './DebilitatingDisease';
 export * from './EffectiveSupporter';

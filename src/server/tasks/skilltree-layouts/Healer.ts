@@ -164,6 +164,10 @@ const DRUID_TREE = {
 
   },
 
+  ContagiousPlague0: {
+
+  },
+
   DebilitatingDisease0: {
 
   },
@@ -186,7 +190,7 @@ const DRUID_TREE = {
   },
 
   Plague: {
-    unlocks: ['CripplingPlague0']
+    unlocks: ['CripplingPlague0', 'ContagiousPlague0']
   },
 
   Disease: {
