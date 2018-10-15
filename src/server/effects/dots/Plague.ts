@@ -3,7 +3,6 @@ import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { CombatHelper } from '../../helpers/world/combat-helper';
 import { Skill } from '../../base/Skill';
-import * as dice from 'dice.js';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class Plague extends SpellEffect {
@@ -44,11 +43,11 @@ export class Plague extends SpellEffect {
     this.effectInfo = { damage, caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
-    this.effectMessage(caster, `You poisoned ${target.name}!`);
+    this.effectMessage(caster, `You inflicted a plague upon ${target.name}!`);
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You were poisoned!');
+    this.effectMessage(char, 'You were plagued!');
 
     if(this.healerCripple) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Offense/Defense penalty.`;
