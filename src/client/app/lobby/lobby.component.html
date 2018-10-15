@@ -17,6 +17,7 @@
 
         <div class="user"
              tooltip="This user is connected via Discord"
+             container="body"
              *ngFor="let user of lobby.lobbyState.discordAccounts"
              [class.hidden]="lobby.lobbyState.lobbyAccountDiscordHash[user.tag]">
           <span class="user-name ml-1">{{ user.username }}</span>
