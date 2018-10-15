@@ -19,6 +19,7 @@
                   [showDesc]="true"
                   [showOunces]="true"
                   context="Wardrobe"
+                  tooltipPlacement="right"
                   [contextSlot]="slot"></app-item>
       </div>
     </div>
@@ -31,11 +32,13 @@
           <div *ngFor="let itemSlot of category.layout" class="item-slot" [class.item-background]="itemSlot !== null">
             <app-item *ngIf="itemSlot !== null && !currentLocker.items[itemSlot]"
                       [showOutline]="true"
+                      [showDesc]="false"
                       [item]="{ sprite: slotInfo[itemSlot].sprite }"></app-item>
 
             <app-item [item]="currentLocker.items[itemSlot]"
                       [showDesc]="true"
                       [showOunces]="true"
+                      tooltipPlacement="right"
                       context="WardrobeMaterial"
                       [contextSlot]="itemSlot"></app-item>
           </div>
