@@ -229,7 +229,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       && !this.currentlyEditingMacro.modifiers.alt
       && !this.currentlyEditingMacro.modifiers.shift
       && includes(
-        ['W', 'T', 'N'],
+        ['W', 'T', 'N', 'C', 'V', 'A'],
         this.currentlyEditingMacro.key
       );
   }

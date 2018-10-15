@@ -204,6 +204,10 @@ export class MacroService {
     return this.allMacros[this.currentlySelectedMacro];
   }
 
+  private shouldCancelMacroEarly(macro: string) {
+    return !(macro === 'CTRL+A' || macro === 'CTRL+C' || macro === 'CTRL+V');
+  }
+
   public hasMacroMatching(key: string) {
     return this.macroMap[key.toUpperCase()];
   }
@@ -212,19 +216,29 @@ export class MacroService {
     this.macroListener = (ev) => {
       if(this.shouldIgnoreKeybinds()) return;
 
-      ev.preventDefault();
-      ev.stopPropagation();
-
       let builtMacro = '';
       if(ev.altKey) builtMacro = 'ALT+';
       if(ev.ctrlKey) builtMacro = `${builtMacro}CTRL+`;
       if(ev.shiftKey) builtMacro = `${builtMacro}SHIFT+`;
+
+      // some macros need to be canceled early
+      const shouldCancelMacroAlways = this.shouldCancelMacroEarly(builtMacro);
+      if(shouldCancelMacroAlways) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
 
       builtMacro = `${builtMacro}${ev.key.toUpperCase()}`;
 
       const macro = this.macroMap[builtMacro];
 
       if(!macro) return;
+
+      // but for convenience, if some are not bound, then we let them leak through and happen here instead
+      if(!shouldCancelMacroAlways) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
 
       const macroText = macro.macro;
 
