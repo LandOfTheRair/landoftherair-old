@@ -68,6 +68,14 @@ export class ColyseusLobbyService {
     });
   }
 
+  private sendRoomData(data) {
+    this.room.send(data);
+
+    if(this.colyseus.isDebug && (!data.action || (data.action && data.action !== 'heartbeat'))) {
+      this.colyseus.debugLobbyLogMessage(data, 'outgoing');
+    }
+  }
+
   private loginThenEmit() {
     this.auth.login();
   }
@@ -78,7 +86,7 @@ export class ColyseusLobbyService {
     const accessToken = localStorage.getItem('access_token');
     const username = localStorage.getItem('user_name');
 
-    this.room.send({ userId, idToken, accessToken, username });
+    this.sendRoomData({ userId, idToken, accessToken, username });
   }
 
   private async sendUserId() {
@@ -123,6 +131,7 @@ export class ColyseusLobbyService {
 
   private setAccount(account) {
     merge(this.myAccount, account);
+    localStorage.setItem('user_name', account.username);
     this.myAccount$.next(account);
   }
 
@@ -131,7 +140,7 @@ export class ColyseusLobbyService {
   }
 
   private interceptLobbyCommand({ action, error, ...other }) {
-    // console.info('Colyseus:Lobby', action, error, other);
+    this.colyseus.debugLobbyLogMessage({ action, error, ...other }, 'incoming');
 
     if(error) {
 
@@ -174,7 +183,7 @@ export class ColyseusLobbyService {
   }
 
   public updateAccount() {
-    this.room.send({ action: 'update_account' });
+    this.sendRoomData({ action: 'update_account' });
   }
 
   private forceLogout() {
@@ -186,7 +195,7 @@ export class ColyseusLobbyService {
   }
 
   public logout() {
-    this.room.send({ action: 'logout' });
+    this.sendRoomData({ action: 'logout' });
     this.auth.logout();
 
     window.location.reload();
@@ -199,37 +208,37 @@ export class ColyseusLobbyService {
   public sendMessage(message) {
     if(message.startsWith('/') && this.doCommand(message)) return;
 
-    this.room.send({ message });
+    this.sendRoomData({ message });
   }
 
   public getCharacterCreatorCharacter() {
     const opts = this.myCharacter;
     opts.characterCreator = true;
-    this.room.send(opts);
+    this.sendRoomData(opts);
   }
 
   public createCharacter(charSlot) {
-    this.room.send({ action: 'create', charSlot, character: this.myCharacter });
+    this.sendRoomData({ action: 'create', charSlot, character: this.myCharacter });
   }
 
   public playCharacter(charSlot) {
-    this.room.send({ action: 'play', charSlot });
+    this.sendRoomData({ action: 'play', charSlot });
   }
 
   public buySilverItem(key: SilverPurchase) {
-    this.room.send({ action: 'purchase', item: key });
+    this.sendRoomData({ action: 'purchase', item: key });
   }
 
   public buySilver(purchaseInfo) {
-    this.room.send({ action: 'rmbuy', purchaseInfo });
+    this.sendRoomData({ action: 'rmbuy', purchaseInfo });
   }
 
   public updateDiscordTag(newTag: string) {
-    this.room.send({ action: 'discord_tag', newTag });
+    this.sendRoomData({ action: 'discord_tag', newTag });
   }
 
   public updateDiscordOnline(isOnline: boolean) {
-    this.room.send({ action: 'discord_online', isOnline });
+    this.sendRoomData({ action: 'discord_online', isOnline });
   }
 
   public doCommand(string): boolean {
@@ -289,15 +298,15 @@ export class ColyseusLobbyService {
   }
 
   public tester(args) {
-    this.room.send({ action: 'tester', args });
+    this.sendRoomData({ action: 'tester', args });
   }
 
   public mute(args) {
-    this.room.send({ action: 'mute', args });
+    this.sendRoomData({ action: 'mute', args });
   }
 
   public startFestival(args) {
-    this.room.send({ action: 'festival', args });
+    this.sendRoomData({ action: 'festival', args });
   }
 
   public giveSilver(args) {
@@ -306,7 +315,7 @@ export class ColyseusLobbyService {
 
     if(isNaN(silverGiven) || !silverGiven || silverGiven < 0 || !target) return;
 
-    this.room.send({ action: 'silver', account: target, silver: silverGiven });
+    this.sendRoomData({ action: 'silver', account: target, silver: silverGiven });
   }
 
   public doSubscribe(args) {
@@ -315,27 +324,27 @@ export class ColyseusLobbyService {
 
     if(isNaN(subDays) || !subDays || subDays < 0 || !target) return;
 
-    this.room.send({ action: 'sub', account: target, period: subDays });
+    this.sendRoomData({ action: 'sub', account: target, period: subDays });
   }
 
   public doUnsubscribe(args) {
-    this.room.send({ action: 'unsub', account: args });
+    this.sendRoomData({ action: 'unsub', account: args });
   }
 
   public quit() {
-    this.room.send({ action: 'quit' });
+    this.sendRoomData({ action: 'quit' });
   }
 
   public setMOTD(newMOTD) {
-    this.room.send({ action: 'motd_set', motd: newMOTD });
+    this.sendRoomData({ action: 'motd_set', motd: newMOTD });
   }
 
   public resetMOTD() {
-    this.room.send({ action: 'motd_set', motd: '' });
+    this.sendRoomData({ action: 'motd_set', motd: '' });
   }
 
   public broadcastAlert(message) {
-    this.room.send({ action: 'alert', message });
+    this.sendRoomData({ action: 'alert', message });
   }
 
   public popupAlert({ sender, message }) {
@@ -343,14 +352,14 @@ export class ColyseusLobbyService {
   }
 
   public changeStatus(status) {
-    this.room.send({ action: 'status', status });
+    this.sendRoomData({ action: 'status', status });
   }
 
   public startHeartbeat() {
     const source = interval(20000);
     source.subscribe(() => {
       if(!this.room) return;
-      this.room.send({ action: 'heartbeat' });
+      this.sendRoomData({ action: 'heartbeat' });
     });
   }
 }

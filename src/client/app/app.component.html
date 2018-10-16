@@ -1101,7 +1101,24 @@
       </div>
 
       <div class="modal-body" *ngIf="debugOptions.isShown">
-        <strong>Be careful, modifying these settings can break your game.</strong>
+        <strong>Be careful, modifying these settings can break or slow down your game.</strong>
+
+        <div class="row mt-3">
+          <div class="col text-center"><h4>Debug Toggles</h4></div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-9 ml-auto form-check">
+            <label class="form-check-label" for="colyseusDebug">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="colyseusDebug" id="colyseusDebug"/>
+              Colyseus Debug
+            </label>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col text-center"><h4>Spritesheet Options</h4></div>
+        </div>
 
         <div class="row px-3 mt-3" *ngFor="let key of assetService.customKeys">
           <h6>{{ key }} url</h6>

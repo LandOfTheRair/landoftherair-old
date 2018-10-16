@@ -184,6 +184,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   @LocalStorage()
   public playSoundEffects: boolean;
 
+  @LocalStorage()
+  public colyseusDebug: boolean;
+
   public newMessages = 0;
 
   get windowLocations() {

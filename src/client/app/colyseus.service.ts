@@ -6,6 +6,7 @@ import { isUndefined } from 'lodash';
 import { ColyseusLobbyService } from './colyseus.lobby.service';
 import { ColyseusGameService } from './colyseus.game.service';
 import { Subject } from 'rxjs';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Injectable()
 export class ColyseusService {
@@ -15,10 +16,24 @@ export class ColyseusService {
   private _isConnecting = false;
   public isConnected$ = new Subject();
 
+  private colyseusDebug: boolean;
+
+  public get isDebug(): boolean {
+    return this.colyseusDebug;
+  }
+
   constructor(
+    private localStorage: LocalStorageService,
     public lobby: ColyseusLobbyService,
     public game: ColyseusGameService
-  ) {}
+  ) {
+    this.colyseusDebug = this.localStorage.retrieve('colyseusDebug');
+
+    this.localStorage.observe('colyseusDebug')
+      .subscribe(colyseusDebug => {
+        this.colyseusDebug = colyseusDebug;
+      });
+  }
 
   init() {
     this.initClient();
@@ -88,5 +103,10 @@ export class ColyseusService {
     // not really correct, but it keeps the message at bay
     if(isUndefined(baseVal)) return true;
     return baseVal > 0;
+  }
+
+  public debugLobbyLogMessage(data, source: 'incoming'|'outgoing') {
+    // tslint:disable-next-line
+    console.log(`Colyseus:Lobby`, `[${source}]`, data);
   }
 }
