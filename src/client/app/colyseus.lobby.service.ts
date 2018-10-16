@@ -131,7 +131,7 @@ export class ColyseusLobbyService {
 
   private setAccount(account) {
     merge(this.myAccount, account);
-    localStorage.setItem('user_name', account.username);
+    if(account) localStorage.setItem('user_name', account.username);
     this.myAccount$.next(account);
   }
 
