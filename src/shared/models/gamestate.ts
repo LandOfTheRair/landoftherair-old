@@ -466,6 +466,9 @@ export class GameState {
     // I can never be hostile to myself
     if(me === target) return false;
 
+    // I shouldn't be hostile towards my party members
+    if((<Player>me).partyName && (<Player>me).partyName === (<Player>target).partyName) return false;
+
     // GMs are never hostile
     if(target.allegiance === 'GM') return false;
 

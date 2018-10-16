@@ -45,10 +45,12 @@ export class Plague extends SpellEffect {
       }
 
       this.isContagious = !!caster.getTraitLevel('ContagiousPlague');
+
+      this.effectInfo = { damage, caster: caster.uuid };
+      this.flagCasterName(caster.name);
+
     }
 
-    this.effectInfo = { damage, caster: caster.uuid };
-    this.flagCasterName(caster.name);
     target.applyEffect(this);
     this.effectMessage(caster, `You inflicted a plague upon ${target.name}!`);
   }
@@ -83,7 +85,7 @@ export class Plague extends SpellEffect {
 
     if((this.duration % 3) === 0 && this.isContagious) {
       const possibleTargets = char.$$room.state.getAllInRange(char, 1, [], false)
-        .filter(testChar => !testChar.hasEffect('Plague') && testChar.uuid !== this.effectInfo.caster);
+        .filter(testChar => !testChar.hasEffect('Plague') && caster.$$room.state.checkTargetForHostility(caster, testChar));
       const target = sample(possibleTargets);
 
       if(target) {
