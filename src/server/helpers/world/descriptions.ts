@@ -162,7 +162,7 @@ const DecorGids = {
 const SwimInfo = {
   1:  { element: 'water', swimLevel: 1 },
   8:  { element: 'water', swimLevel: 2 },
-  9:  { element: 'fire',  swimLevel: 4 },
+  9:  { element: 'fire',  swimLevel: 8 },
   16: { element: 'water', swimLevel: 6 }
 };
 
