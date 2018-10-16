@@ -9,7 +9,7 @@
       You have no status effects.<br>
       Drop a potion or food here to consume it.
     </div>
-    <div *ngFor="let effect of allEffects" class="effect-container">
+    <div *ngFor="let effect of effects" class="effect-container">
       <app-status-effect [effect]="effect" (click)="tryUnapplying(effect)"></app-status-effect>
     </div>
   </div>
@@ -18,9 +18,9 @@
     <div class="row m-0 needs-min-height">
       <div class="col p-0">
 
-        <div class="progress" 
-             tooltip="HP" 
-             container="body" 
+        <div class="progress"
+             tooltip="HP"
+             container="body"
              (click)="isHPPercent = !isHPPercent"
              [class.critical]="healthPercent < 20">
           <div class="progress-bar bg-danger" [style.width]="healthPercent + '%'"></div>
@@ -31,8 +31,8 @@
       </div>
       <div class="col-6 p-0" *ngIf="player && player.mp.maximum > 0">
 
-        <div class="progress" 
-             tooltip="MP" 
+        <div class="progress"
+             tooltip="MP"
              container="body"
              (click)="isMPPercent = !isMPPercent">
           <div class="progress-bar bg-primary" [style.width]="magicPercent + '%'"></div>
@@ -45,10 +45,10 @@
     <div class="row m-0 needs-min-height">
       <div class="col-12 p-0">
 
-        <div class="progress" 
-             [tooltip]="'Experience Level ' + player.level" 
+        <div class="progress"
+             [tooltip]="'Experience Level ' + player.level"
              container="body"
-             (click)="isXPPercent = !isXPPercent" 
+             (click)="isXPPercent = !isXPPercent"
              *ngIf="player">
           <div class="progress-bar bg-success" [style.width]="xpPercent + '%'"></div>
           <div class="progress-bar-text" *ngIf="!isXPPercent">{{ player.exp | number }}</div>

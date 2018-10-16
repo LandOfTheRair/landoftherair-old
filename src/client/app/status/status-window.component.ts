@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { values } from 'lodash';
+import { values, extend } from 'lodash';
 import { LocalStorage } from 'ngx-webstorage';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-status-window',
   templateUrl: './status-window.component.html',
   styleUrls: ['./status-window.component.scss']
 })
-export class StatusWindowComponent {
+export class StatusWindowComponent implements OnInit, OnDestroy {
 
   @LocalStorage()
   public isXPPercent: boolean;
@@ -19,7 +20,11 @@ export class StatusWindowComponent {
 
   @LocalStorage()
   public isMPPercent: boolean;
-  
+
+  public effects = [];
+
+  private effect$: any;
+
   public get player() {
     return this.colyseusGame.character;
   }
@@ -53,7 +58,27 @@ export class StatusWindowComponent {
 
   constructor(public colyseusGame: ColyseusGameService) { }
 
+  ngOnInit() {
+    this.effect$ = timer(0, 1000).subscribe(() => {
+      this.recalculateEffects();
+    });
+  }
+
+  ngOnDestroy() {
+    this.effect$.unsubscribe();
+  }
+
   tryUnapplying(effect) {
     this.colyseusGame.tryEffectUnapply(effect);
+  }
+
+  private recalculateEffects() {
+    const newEffects = this.allEffects;
+    this.effects.length = newEffects.length;
+
+    for(let i = 0; i < newEffects.length; i++) {
+      if(!this.effects[i])  this.effects[i] = newEffects[i];
+      else                  extend(this.effects[i], newEffects[i]);
+    }
   }
 }
