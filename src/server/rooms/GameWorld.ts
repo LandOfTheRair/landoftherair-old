@@ -206,7 +206,7 @@ export class GameWorld extends Room<GameState> {
     this.analyticsHelper = new AnalyticsHelper();
 
     this.setPatchRate(1000);
-    this.setSeatReservationTime(10);
+    this.setSeatReservationTime(30);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
     this.setState(new GameState({
       players: [],
