@@ -176,6 +176,7 @@ export class NPC extends Character {
   kill(dead) {
     if(this.$$owner) {
       this.$$owner.kill(dead, { isPetKill: true });
+      return;
     }
 
     if(this.$$shouldStrip) {
@@ -217,6 +218,8 @@ export class NPC extends Character {
       this.$$ai.death.dispatch(killer);
     }
 
+    DeathHelper.calculateLootDrops(this, killer);
+
     if(killer) {
 
       this.addAgro(killer, 1);
@@ -240,8 +243,6 @@ export class NPC extends Character {
         killer.gainExpFromKills(adjustedXp);
       }
     }
-
-    await DeathHelper.calculateLootDrops(this, killer);
   }
 
   restore() {
