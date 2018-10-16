@@ -262,32 +262,43 @@ export class DefaultAIBehavior {
     if(diffX || diffY) npc.setDirBasedOnXYDiff(diffX, diffY);
 
 
-    // check if should leash
-    const distFrom = npc.distFrom(npc.spawner);
+    if(npc.$$owner) {
+      const distFrom = npc.distFrom(npc.$$owner);
 
-    // if we have no path AND no target and its out of the random walk radius, or we're past the leash radius, we leash
-
-    const noLeash = !npc.path;
-
-    if(noLeash
-      && ((!currentTarget && distFrom > npc.spawner.randomWalkRadius)
-      || (npc.spawner.leashRadius >= 0 && distFrom > npc.spawner.leashRadius))) {
-
-      npc.sendLeashMessage();
-
-      npc.x = npc.spawner.x;
-      npc.y = npc.spawner.y;
-
-      // chasing a player, probably - leash, fix hp, fix agro
-      if(distFrom > npc.spawner.leashRadius + 4) {
-        npc.hp.toMaximum();
-        npc.mp.toMaximum();
-        npc.resetAgro(true);
+      if(distFrom > 4) {
+        npc.x = npc.$$owner.x;
+        npc.y = npc.$$owner.y;
       }
 
-      // if we had a path, re-assign a path
-      if(npc.path && npc.path.length > 0) {
-        npc.spawner.assignPath(npc);
+    } else {
+
+      // check if should leash
+      const distFrom = npc.distFrom(npc.spawner);
+
+      // if we have no path AND no target and its out of the random walk radius, or we're past the leash radius, we leash
+
+      const noLeash = !npc.path;
+
+      if(noLeash
+        && ((!currentTarget && distFrom > npc.spawner.randomWalkRadius)
+          || (npc.spawner.leashRadius >= 0 && distFrom > npc.spawner.leashRadius))) {
+
+        npc.sendLeashMessage();
+
+        npc.x = npc.spawner.x;
+        npc.y = npc.spawner.y;
+
+        // chasing a player, probably - leash, fix hp, fix agro
+        if(distFrom > npc.spawner.leashRadius + 4) {
+          npc.hp.toMaximum();
+          npc.mp.toMaximum();
+          npc.resetAgro(true);
+        }
+
+        // if we had a path, re-assign a path
+        if(npc.path && npc.path.length > 0) {
+          npc.spawner.assignPath(npc);
+        }
       }
     }
 
