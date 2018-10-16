@@ -2,7 +2,7 @@
 import * as swal from 'sweetalert2';
 import * as d3 from 'd3';
 import { Subject } from 'rxjs';
-import { startCase, extend, values, minBy, maxBy, last } from 'lodash';
+import { startCase, extend, values, minBy, maxBy, last, includes } from 'lodash';
 
 import { SkillTree } from '../../../shared/models/skill-tree';
 import { ColyseusGameService } from '../colyseus.game.service';
@@ -291,9 +291,19 @@ export class D3SkillTree implements D3SkillTreeConfig {
           if(d.unbuyable) return;
           if(!this.skillTree.isAvailableToBuy(d.name)) return;
 
+          let isUnderMPCost = false;
+          if(includes(d.desc, 'Cost: ')) {
+            const testStr = d.desc.substring(d.desc.indexOf('Cost:') + 6);
+            const [cost, type] = testStr.split(' ');
+            if(!isNaN(+cost) && includes(['HP', 'MP'], type)) {
+              isUnderMPCost = this.colyseusGame.character[type.toLowerCase()].maximum <= +cost;
+            }
+          }
+
           (<any>swal)({
             titleText: `Buy ${d.traitName ? 'Trait' : 'Skill'}: ${this.fixName(d.name)}`,
-            text: `Are you sure you want to buy the trait ${this.fixName(d.name)} for ${d.cost} ${d.isParty ? 'PP' : 'TP'}?`,
+            text: `Are you sure you want to buy the trait ${this.fixName(d.name)} for ${d.cost} ${d.isParty ? 'PP' : 'TP'}? 
+            ${isUnderMPCost ? 'YOU MAY NOT BE ABLE TO CAST THIS SPELL CURRENTLY!' : ''}`,
             showCancelButton: true,
             confirmButtonText: 'Yes, buy it!'
           }).then(() => {
