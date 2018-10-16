@@ -12,7 +12,7 @@ export class Mage extends BaseClass {
 
     if(!character.getBaseStat('mp')) {
       character.gainBaseStat('mp', 30);
-      character._gainSkill(SkillClassNames.Conjuration, SkillHelper.calcSkillXP(1));
+      character._gainSkill(SkillClassNames.Conjuration, SkillHelper.calcSkillXP(0));
     }
   }
 

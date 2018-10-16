@@ -12,7 +12,7 @@ export class Healer extends BaseClass {
 
     if(!character.getBaseStat('mp')) {
       character.gainBaseStat('mp', 30);
-      character._gainSkill(SkillClassNames.Restoration, SkillHelper.calcSkillXP(1));
+      character._gainSkill(SkillClassNames.Restoration, SkillHelper.calcSkillXP(0));
     }
   }
 
