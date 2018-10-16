@@ -10,7 +10,7 @@ export class ShredTwentyPercent extends MonsterSkill {
   name = 'shredtwentypercent';
 
   canUse(user: Character, target: Character) {
-    return user.distFrom(target) <= this.range() && target.hp.gtePercent(60);
+    return user.distFrom(target) <= this.range() && target.hp.gtePercent(60) && !target.hasEffect('Dangerous');
   }
 
   use(user: Character, target: Character) {

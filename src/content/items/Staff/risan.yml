@@ -6,6 +6,7 @@
     int: 3
     wis: 3
     defense: 4
+    mpregen: 10
   tier: 5
   type: Staff
   value: 9567
@@ -14,8 +15,8 @@
   tellsBind: true
 
   trait:
-    name: CalmMind
-    level: 5
+    name: FamiliarStrength
+    level: 2
 
   requirements:
     level: 17

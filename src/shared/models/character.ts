@@ -636,6 +636,22 @@ export class Character {
         this.unapplyEffect(isEncumbered, true);
       }
     }
+
+    this.recalculateStatsBasedOnOwner();
+    if(this.$$pets) this.$$pets.forEach(pet => pet.recalculateStats());
+  }
+
+  private recalculateStatsBasedOnOwner() {
+    if(!this.$$owner) return;
+
+    const familiarStrength = this.$$owner.getTraitLevelAndUsageModifier('FamiliarStrength');
+    this.totalStats.str += familiarStrength;
+    this.totalStats.int += familiarStrength;
+    this.totalStats.wis += familiarStrength;
+
+    const familiarFortitude = this.$$owner.getTraitLevelAndUsageModifier('FamiliarFortitude');
+    this.hp.maximum += Math.floor(this.hp.maximum * (familiarFortitude / 100));
+    this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
   }
 
   itemCheck(item: Item) {

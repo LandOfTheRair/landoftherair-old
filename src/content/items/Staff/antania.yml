@@ -36,5 +36,9 @@
   sprite: 326
   binds: true
 
+  trait:
+    name: FamiliarFortitude
+    level: 1
+
   requirements:
     level: 5
