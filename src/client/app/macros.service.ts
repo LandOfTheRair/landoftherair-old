@@ -99,8 +99,9 @@ export class MacroService {
       else       this.uninit();
     });
 
-    this.colyseusGame.gameCommand$.subscribe(({ action }) => {
-      if(action === 'update_macros') this.resetUsableMacros();
+    this.colyseusGame.gameCommand$.subscribe(({ action, ...other }) => {
+      if(action === 'update_macros')     this.resetUsableMacros();
+      if(action === 'new_skill_learned') this.tryAddSkillToGroup(other.skillName);
     });
   }
 
@@ -407,5 +408,44 @@ export class MacroService {
 
   public resetDefaultMacros() {
     this.allMacroGroups.default = ['Attack', 'Search', 'Drink', 'Stairs', 'Climb', 'Restore'];
+  }
+
+  public tryAddSkillToGroup(skillName: string) {
+    (<any>swal)({
+      titleText: 'New Skill Learned',
+      text: `You have learned the skill ${_.startCase(skillName)}. Would you like to add it to a macro group?`,
+      showCancelButton: true,
+      confirmButtonText: 'Yes, add it!'
+    }).then(() => {
+      let wasAddedToExistingGroup = false;
+
+      // try to add it to any existing group;
+      Object.keys(this.allMacroGroups).forEach(groupName => {
+        if(wasAddedToExistingGroup) return;
+
+        for(let i = 0; i < 10; i++) {
+          if(this.allMacroGroups[groupName][i] === skillName) {
+            wasAddedToExistingGroup = true;
+            break;
+          }
+
+          if(!this.allMacroGroups[groupName][i]) {
+            wasAddedToExistingGroup = true;
+            this.updateMacroGroup(groupName, i, skillName);
+            break;
+          }
+        }
+      });
+
+      // if no groups could fit it, we try to add it to a new group we create
+      if(!wasAddedToExistingGroup) {
+        let newGroup = 2;
+
+        while(this.allMacroGroups[`default ${newGroup}`]) newGroup++;
+
+        this.addMacroGroup(`default ${newGroup}`);
+        this.updateMacroGroup(`default ${newGroup}`, 0, skillName);
+      }
+    }).catch(() => {});
   }
 }

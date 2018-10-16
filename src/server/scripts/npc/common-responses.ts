@@ -686,6 +686,8 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(player.baseClass !== 'Undecided') return 'You have already joined a profession.';
 
+      player.sendClientMessageFromNPC(npc, `Welcome to the ${npc.classTrain} profession, ${player.name}!`);
+
       player.changeBaseClass(npc.classTrain);
 
       player.skillTree.calculateNewTPFromSkills(player);
@@ -695,7 +697,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
       if(player.baseClass === 'Mage')   player.skillTree.buyNode(player, 'MagicMissile');
       if(player.baseClass === 'Healer') player.skillTree.buyNode(player, 'Afflict');
 
-      return `Welcome to the ${npc.classTrain} profession, ${player.name}!`;
+      return `Good luck on your journeys!`;
     });
 
   npc.parser.addCommand('learn')

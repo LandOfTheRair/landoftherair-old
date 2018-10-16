@@ -351,7 +351,7 @@ export class SkillTree {
   }
 
   private buySkill(player: Player, skillName: string): void {
-    player.sendClientMessage(`You have learned the skill "${startCase(skillName)}"!`);
+    player.sendClientMessage({ message: `You have learned the skill "${startCase(skillName)}"!`, extraData: { skillName } });
     player.learnSpell(skillName);
     player.$$room.resetMacros(player);
   }
