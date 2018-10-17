@@ -288,6 +288,9 @@ export class Character {
   @nonenumerable
   public $$owner: Character;
 
+  @nonenumerable
+  protected $$messageQueue: any[];
+
   get effectsList(): Effect[] {
     return values(this.effects);
   }
@@ -1286,20 +1289,31 @@ export class Character {
 
   receiveMessage(from, message) {}
 
-  sendClientMessage(message) {
-    MessageHelper.sendClientMessage(this, message);
+  sendClientMessage(message, shouldQueue = false) {
+
+    if(shouldQueue && this.isPlayer()) {
+      this.$$messageQueue.push(message);
+    } else {
+      MessageHelper.sendClientMessage(this, message);
+    }
 
     if(this.$$interceptor) {
       MessageHelper.sendClientMessage(this.$$interceptor, message, this);
     }
   }
 
-  sendClientMessageToRadius(message, radius = 4, except = [], useSight = false, formatArgs = []) {
-    MessageHelper.sendClientMessageToRadius(this, message, radius, except, useSight, formatArgs);
+  sendClientMessageToRadius(message, radius = 4, except = [], useSight = false, formatArgs = [], shouldQueue = false) {
+    MessageHelper.sendClientMessageToRadius(this, message, radius, except, useSight, formatArgs, shouldQueue);
   }
 
   sendClientMessageFromNPC(npc: Character, message: string): void {
     this.sendClientMessage({ name: npc.name, message, subClass: 'chatter' });
+  }
+
+  sendClientMessageBatch() {
+    if(this.$$messageQueue.length === 0) return;
+    MessageHelper.sendClientMessageBatch(this, this.$$messageQueue);
+    this.$$messageQueue = [];
   }
 
   isPlayer() {

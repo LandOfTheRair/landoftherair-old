@@ -38,12 +38,17 @@ export class MessageHelper {
     }, message);
   }
 
+  static sendClientMessageBatch(char: Character, messages: any[]) {
+    if(!char.isPlayer()) return;
+    char.$$room.sendPlayerLogMessageBatch(char, messages);
+  }
+
   static sendClientMessage(char: Character, message, rootCharacter?: Character) {
     if(!char.isPlayer()) return;
     char.$$room.sendPlayerLogMessage(char, message, rootCharacter);
   }
 
-  static sendClientMessageToRadius(char: Character, message, radius = 4, except = [], useSight = false, formatArgs = []) {
+  static sendClientMessageToRadius(char: Character, message, radius = 4, except = [], useSight = false, formatArgs = [], shouldQueue = false) {
     const sendMessage = isString(message) ? { message, subClass: 'chatter' } : message;
 
     const charRegion = char.$$room.state.getSuccorRegion(char);
@@ -59,9 +64,9 @@ export class MessageHelper {
       if(radius > 4 && char.distFrom(p) > 5) {
         const dirFrom = char.getDirBasedOnDiff(char.x - p.x, char.y - p.y);
         sendMessage.dirFrom = dirFrom.toLowerCase();
-        p.sendClientMessage(sendMessage);
+        p.sendClientMessage(sendMessage, shouldQueue);
       } else {
-        p.sendClientMessage(sendMessage);
+        p.sendClientMessage(sendMessage, shouldQueue);
       }
     });
   }

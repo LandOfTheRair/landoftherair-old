@@ -104,7 +104,7 @@ export class CombatHelper {
     if(!RollerHelper.XInOneHundred(shadowSwapLevel)) return;
 
     const hidden = new Effects.Hidden({});
-    char.sendClientMessage('You swap places with your shadow!');
+    char.sendClientMessage('You swap places with your shadow!', true);
     hidden.cast(char, char);
   }
 
@@ -147,7 +147,7 @@ export class CombatHelper {
     const sackItems = defender.sack.allItems;
 
     if(!RollerHelper.XInOneHundred(pctChance) || sackItems.length === 0) return;
-    attacker.sendClientMessage('Your survival knowledge helped you find more items!');
+    attacker.sendClientMessage('Your survival knowledge helped you find more items!', true);
 
     const randomItem = sample(sackItems);
     const copiedItem = attacker.$$room.itemCreator.duplicateItem(randomItem);
@@ -201,11 +201,11 @@ export class CombatHelper {
     if(!defender.isNaturalResource) return baseDamage;
 
     if(item.itemClass === 'Bottle') {
-      attacker.sendClientMessage('Your bottle is in critical condition!');
+      attacker.sendClientMessage('Your bottle is in critical condition!', true);
       return item.condition;
     }
 
-    attacker.sendClientMessage(`You strain your ${item.itemClass.toLowerCase()} from striking the ${defender.name}!`);
+    attacker.sendClientMessage(`You strain your ${item.itemClass.toLowerCase()} from striking the ${defender.name}!`, true);
 
     let modifier = 1;
     /** PERK:CLASS:WARRIOR:Warriors take half weapon damage when gathering from gathering nodes. */
@@ -251,7 +251,7 @@ export class CombatHelper {
         attacker.sendClientMessage({
           message: `Your shadow daggers unsheathe themselves and attempt to strike ${defender.name}!`,
           subClass: 'combat self hit'
-        });
+        }, true);
         isBackstab = true;
         backstabIgnoreRange = true;
       }
@@ -313,7 +313,7 @@ export class CombatHelper {
         attacker.setRightHand(null);
       }
 
-      attacker.sendClientMessage({ message: `You feel a burning sensation in your hand!`, target: defender.uuid });
+      attacker.sendClientMessage({ message: `You feel a burning sensation in your hand!`, target: defender.uuid }, true);
       return;
     }
 
@@ -460,7 +460,7 @@ export class CombatHelper {
             damage: 0,
             monsterName: defender.name
           }
-        });
+        }, true);
 
         defender.sendClientMessage({
           message: `${attackerName} misses!`, subClass: 'combat other miss',
@@ -471,7 +471,7 @@ export class CombatHelper {
             damage: 0,
             monsterName: attacker.name
           }
-        });
+        }, true);
       }
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
       return { dodge: true };
@@ -500,7 +500,7 @@ export class CombatHelper {
             damage: 0,
             monsterName: defender.name
           }
-        });
+        }, true);
 
         defender.sendClientMessage({
           message: `${attackerName} was blocked by your armor!`,
@@ -512,7 +512,7 @@ export class CombatHelper {
             damage: 0,
             monsterName: attacker.name
           }
-        });
+        }, true);
       }
       defenderArmor.loseCondition(1, () => defender.recalculateStats());
       if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
@@ -549,7 +549,7 @@ export class CombatHelper {
             damage: 0,
             monsterName: defender.name
           }
-        });
+        }, true);
 
         defender.sendClientMessage({
           message: `${attackerName} was blocked by your ${itemTypeToLower}!`,
@@ -561,7 +561,7 @@ export class CombatHelper {
             damage: 0,
             monsterName: attacker.name
           }
-        });
+        }, true);
       }
 
       const lostCondition = 1 - (defender.getTraitLevelAndUsageModifier('CarefulTouch'));
@@ -597,7 +597,7 @@ export class CombatHelper {
               damage: 0,
               monsterName: defender.name
             }
-          });
+          }, true);
 
           defender.sendClientMessage({
             message: `${attackerName} was blocked by your ${itemTypeToLower}!`,
@@ -609,7 +609,7 @@ export class CombatHelper {
               damage: 0,
               monsterName: attacker.name
             }
-          });
+          }, true);
         }
 
         const lostCondition = 1 - (defender.getTraitLevelAndUsageModifier('CarefulTouch'));
@@ -646,7 +646,7 @@ export class CombatHelper {
               damage: 0,
               monsterName: defender.name
             }
-          });
+          }, true);
 
           defender.sendClientMessage({
             message: `${attackerName} was blocked by your ${itemTypeToLower}!`,
@@ -658,7 +658,7 @@ export class CombatHelper {
               damage: 0,
               monsterName: attacker.name
             }
-          });
+          }, true);
         }
 
         const lostCondition = 1 - (defender.getTraitLevelAndUsageModifier('CarefulTouch'));
@@ -931,11 +931,11 @@ export class CombatHelper {
     defender.hp.sub(damage);
 
     if((damage <= 0 && !suppressIfNegative) || damage > 0) {
-      defender.sendClientMessage({ message: `${damageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' });
+      defender.sendClientMessage({ message: `${damageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' }, true);
     }
 
     if(defender.isDead()) {
-      defender.sendClientMessage({ message: `You died!`, subClass: 'combat other kill' });
+      defender.sendClientMessage({ message: `You died!`, subClass: 'combat other kill' }, true);
       defender.die();
     }
 
@@ -1024,7 +1024,7 @@ export class CombatHelper {
               damage,
               monsterName: defender.name
             }
-          });
+          }, true);
         }
 
         if(attacker && attacker !== defender && damage === 0) {
@@ -1039,7 +1039,7 @@ export class CombatHelper {
               damage: 0,
               monsterName: defender.name
             }
-          });
+          }, true);
         }
       }
 
@@ -1079,7 +1079,7 @@ export class CombatHelper {
           damage,
           monsterName: defender.name
         }
-      });
+      }, true);
     }
 
     if(defenderDamageMessage && defender && attacker !== defender) {
@@ -1096,7 +1096,7 @@ export class CombatHelper {
           damage,
           monsterName: attacker ? attacker.name : get(attackerWeapon, 'ownerName', '???')
         }
-      });
+      }, true);
     }
 
     if(attacker) {
@@ -1133,14 +1133,15 @@ export class CombatHelper {
           5,
           [defender.uuid, attacker.uuid],
           true,
-          [defender, attacker]
+          [defender, attacker],
+          true
         );
 
         const formattedAtkMessage = MessageHelper.formatMessageFor(attacker, `You ${killMethod} %0!`, [defender]);
-        attacker.sendClientMessage({ message: formattedAtkMessage, subClass: `combat self kill ${defender.isPlayer() ? 'player' : 'npc'}` });
+        attacker.sendClientMessage({ message: formattedAtkMessage, subClass: `combat self kill ${defender.isPlayer() ? 'player' : 'npc'}` }, true);
 
         const formattedDefMessage = MessageHelper.formatMessageFor(defender, `You were killed by %0!`, [attacker]);
-        defender.sendClientMessage({ message: formattedDefMessage, subClass: 'combat other kill' });
+        defender.sendClientMessage({ message: formattedDefMessage, subClass: 'combat other kill' }, true);
 
         if((<any>attacker).uuid) {
           attacker.kill(defender);
@@ -1154,8 +1155,8 @@ export class CombatHelper {
         }
 
       } else {
-        defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' }, 5, [defender.uuid]);
-        defender.sendClientMessage({ message: `You were killed!`, subClass: 'combat other kill' });
+        defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' }, 5, [defender.uuid], true);
+        defender.sendClientMessage({ message: `You were killed!`, subClass: 'combat other kill' }, true);
         defender.die(attacker);
       }
     }

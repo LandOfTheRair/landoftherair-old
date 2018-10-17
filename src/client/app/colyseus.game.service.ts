@@ -370,6 +370,10 @@ export class ColyseusGameService {
     this.clientGameState.playerBoxes$.next({ newPlayer: this.character, oldPlayer: hasOldCharacter });
   }
 
+  private logMessageBatch(messages: any[]) {
+    messages.forEach(msg => this.logMessage(msg));
+  }
+
   private logMessage({ name, message, subClass, grouping, dirFrom, extraData }: any) {
     if(this.suppressOutgoingDot && includes(subClass, 'out-overtime')) return;
 
@@ -429,6 +433,7 @@ export class ColyseusGameService {
     if(action === 'show_ground')    return this.showGroundWindow();
     if(action === 'change_map')     return this.changeMap(other.map, other.party);
     if(action === 'log_message')    return this.logMessage(other);
+    if(action === 'log_message_b')  return this.logMessageBatch(other.messages);
     if(action === 'set_character')  return this.setCharacter(other.character);
     if(action === 'update_pos')     return this.updatePos(other.x, other.y, other.dir, other.swimLevel, other.fov);
     if(action === 'update_fov')     return this.updateFOV(other.fov);

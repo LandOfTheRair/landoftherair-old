@@ -498,6 +498,15 @@ export class GameWorld extends Room<GameState> {
     this.sendClientLogMessage(client, messageData, rootCharacter);
   }
 
+  sendPlayerLogMessageBatch(player: Player, messages: any[]) {
+    const client = this.findClient(player);
+    if(!client) return;
+
+    const messagesFormatted = messages.map(msg => this.formatClientLogMessage(msg));
+
+    this.send(client, { action: 'log_message_b', messages: messagesFormatted });
+  }
+
   public updateLogSettings(player: Player, logSettings) {
     const client = this.findClient(player);
     if(!client) return;
@@ -505,8 +514,7 @@ export class GameWorld extends Room<GameState> {
     this.send(client, { action: 'combat_log', ...logSettings });
   }
 
-  sendClientLogMessage(client, messageData, rootCharacter?: Character) {
-
+  formatClientLogMessage(messageData, rootCharacter?: Character) {
     let overMessage = messageData;
     let overName = '';
     let overClass = '';
@@ -532,10 +540,7 @@ export class GameWorld extends Room<GameState> {
 
     if(rootCharacter) overName = `as ${rootCharacter.name}`;
 
-    if(!overMessage) return;
-
-    this.send(client, {
-      action: 'log_message',
+    return {
       name: overName,
       message: overMessage,
       subClass: overClass,
@@ -543,7 +548,17 @@ export class GameWorld extends Room<GameState> {
       dirFrom: overDir,
       extraData: overExtraData,
       grouping
-    });
+    };
+
+  }
+
+  sendClientLogMessage(client, messageData, rootCharacter?: Character) {
+
+    const overMessage: any = this.formatClientLogMessage(messageData, rootCharacter);
+    if(!overMessage) return;
+
+    overMessage.action = 'log_message';
+    this.send(client, overMessage);
   }
 
   showGroundWindow(player: Player) {

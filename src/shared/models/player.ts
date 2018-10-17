@@ -161,6 +161,7 @@ export class Player extends Character {
     this.initEffects();
     this.uuid = this.username;
     this.$$actionQueue = [];
+    this.$$messageQueue = [];
     if(isUndefined(this.$$hungerTicks)) {
       const nourished = this.hasEffect('Nourishment');
       this.$$hungerTicks = (nourished ? nourished.duration : 0) + 3600 * 6;
@@ -561,7 +562,10 @@ export class Player extends Character {
       malnourished.cast(this, this);
     }
 
-    if(!this.$$actionQueue || this.isUnableToAct()) return;
+    if(!this.$$actionQueue || this.isUnableToAct()) {
+      this.sendClientMessageBatch();
+      return;
+    }
 
     const actions = this.getTotalStat('actionSpeed');
     for(let i = 0; i < actions; i++) {
@@ -570,6 +574,8 @@ export class Player extends Character {
         this.$$room.executeCommand(this, nextAction.command, nextAction.args);
       }
     }
+
+    this.sendClientMessageBatch();
   }
 
   private tryToCastPartyEffects(): void {
