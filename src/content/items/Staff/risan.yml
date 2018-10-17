@@ -1,4 +1,15 @@
 
+
+- name: Risan Staff
+  desc: "an wooden staff carved in the land of Risan"
+  tier: 5
+  type: Staff
+  value: 6000
+  sprite: 196
+
+  requirements:
+    level: 15
+    
 - name: Overseer Jigan Staff
   quality: 5
   desc: "a finely-milled quarterstaff emanating a strong magical energy"
