@@ -56,7 +56,7 @@ export class AnalyticsHelper {
     if(!this.ga) return;
     if(!player.isPlayer()) return;
 
-    if(args.event_id) args.event_id = args.event_id.split(' ').join('');
+    if(args.event_id) args.event_id = this.fixStringForTracking(args.event_id);
 
     try {
       this.ga.track(type, this.userString(player), args);
