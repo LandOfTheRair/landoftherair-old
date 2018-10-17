@@ -77,8 +77,7 @@ export class StatusWindowComponent implements OnInit, OnDestroy {
     this.effects.length = newEffects.length;
 
     for(let i = 0; i < newEffects.length; i++) {
-      if(!this.effects[i])  this.effects[i] = newEffects[i];
-      else                  extend(this.effects[i], newEffects[i]);
+      this.effects[i] = newEffects[i];
     }
   }
 }
