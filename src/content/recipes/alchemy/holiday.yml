@@ -1,0 +1,14 @@
+
+- item: Halloween Brew
+  skillGained: 1000
+  maxSkillForGains: 7
+  requiredSkill: 0
+  xpGained: 5000
+  ingredients:
+    - Halloween Gem
+    - Halloween Zombie Brain
+    - Halloween Candy - Lollipops
+    - Halloween Candy - Gummies
+    - Halloween Candy - Wrapped
+    - Halloween Candy - Jellies
+    - Halloween Candy - Mints

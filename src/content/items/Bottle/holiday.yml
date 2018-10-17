@@ -1,4 +1,14 @@
 
+
+- name: Halloween Brew
+  sprite: 304
+  desc: "a pint of spooky halloween brew"
+  value: 1500
+  ounces: 16
+  effect:
+    name: DarkVision
+    duration: 21600
+
 - name: Thanksgiving Heal Bottle
   desc: "a small chalice filled with a holiday stew"
   extendedDesc: "a healing potion"
