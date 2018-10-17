@@ -406,8 +406,14 @@ export class GameWorld extends Room<GameState> {
       MoveHelper.move(player, { room: this, gameState: this.state, x: 0, y: 0 });
     }, 0);
 
-    this.send(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
-    this.send(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
+    this.clock.setTimeout(() => {
+      this.send(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
+    }, 0);
+
+    this.clock.setTimeout(() => {
+      this.send(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
+    }, 0);
+
     this.updateSkillTree(player);
   }
 
