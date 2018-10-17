@@ -11271,6 +11271,30 @@
                  "width":64,
                  "x":11648,
                  "y":11584
+                }, 
+                {
+                 "gid":1777,
+                 "height":64,
+                 "id":2787,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"FrozenCatacombs",
+                     "teleportX":138,
+                     "teleportY":182
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"StairsUp",
+                 "visible":true,
+                 "width":64,
+                 "x":6656,
+                 "y":11520
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -11328,7 +11352,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2787,
+ "nextobjectid":2788,
  "orientation":"orthogonal",
  "properties":
     {
@@ -11351,7 +11375,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.4",
  "tileheight":64,
  "tilesets":[
         {
