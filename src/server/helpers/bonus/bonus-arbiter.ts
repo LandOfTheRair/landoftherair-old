@@ -65,7 +65,7 @@ export class BonusArbiter {
 
         if(this.boughtBonusHoursRemaining[key] <= 0) {
           this.boughtBonusHoursRemaining[key] = 0;
-          this.bonusTimers[key].cancel();
+          if(this.bonusTimers[key]) this.bonusTimers[key].cancel();
           this.bonusTimers[key] = null;
         }
       });
