@@ -87,6 +87,8 @@ export class Game {
   private goldGroup: any = {};
   private goldSprites: any = {};
 
+  private loadingText: any;
+
   public get shouldRender() {
     if(!this.g || !this.g.camera) return false;
 
@@ -693,22 +695,24 @@ export class Game {
       align: 'center'
     };
 
-    const loadingText = this.g.add.text(288, 288, 'Loading... 0% complete (0/0)', textStyle);
-    loadingText.anchor.set(0.5, 0);
-    loadingText.fixedToCamera = true;
+    this.loadingText = this.g.add.text(288, 288, 'Loading... 0% complete (0/0)', textStyle);
+    this.loadingText.anchor.set(0.5, 0);
+    this.loadingText.fixedToCamera = true;
 
-    loadingText.bringToTop();
+    this.loadingText.bringToTop();
 
     this.g.load.onLoadStart.add(() => {
-      loadingText.setText('Loading... 0% complete (0/0)');
+      this.loadingText.setText('Loading... 0% complete (0/0)');
     });
 
     this.g.load.onFileComplete.add((progress, cacheKeyForLoaded, success, totalLoaded, totalFiles) => {
-      loadingText.setText(`Loading... ${progress}% complete (${totalLoaded}/${totalFiles})`);
+      this.loadingText.setText(`Loading... ${progress}% complete (${totalLoaded}/${totalFiles})`);
     });
 
     this.g.load.onLoadComplete.add(() => {
-      loadingText.destroy();
+      setTimeout(() => {
+        this.loadingText.destroy();
+      }, 1000);
     });
   }
 
@@ -1006,6 +1010,9 @@ export class Game {
     this.oldMapName = this.clientGameState.mapName;
 
     if(!this.skipLoading) {
+
+      this.setupLoadingListeners();
+
       this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Terrain'), this.assetService.terrainUrl, 64, 64);
       this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Walls'), this.assetService.wallsUrl, 64, 64);
       this.g.load.spritesheet(cacheKey(this.clientGameState.mapName, 'tileset', 'Decor'), this.assetService.decorUrl, 64, 64);
@@ -1023,8 +1030,6 @@ export class Game {
       sfxs.forEach(sfx => {
         this.g.load.audio(`sfx-${sfx}`, `${this.assetService.assetUrl}/sfx/${sfx}.mp3`);
       });
-
-      this.setupLoadingListeners();
     }
   }
 
@@ -1039,14 +1044,20 @@ export class Game {
       this.sfxs[sfx] = this.g.add.audio(`sfx-${sfx}`);
     });
 
-    if(!this.clientGameState.mapName) return;
+    if(!this.clientGameState.mapName) {
+      console.error(new Error('Error:Loading - no mapname'));
+      return;
+    }
 
     this.map = this.g.add.tiledmap(this.clientGameState.mapName);
 
     this.createLayers();
 
     // probably an early exit
-    if(this.map.tilesets.length === 0) return;
+    if(this.map.tilesets.length === 0) {
+      console.error(new Error('Error:Loading - no map tilesets'));
+      return;
+    }
 
     const decorFirstGid = this.map.tilesets[2].firstgid;
     const wallFirstGid = this.map.tilesets[1].firstgid;
@@ -1107,16 +1118,18 @@ export class Game {
     this.skipLoading = false;
   }
 
-  render() {
+  update() {
     if(!this.colyseus.game._inGame || !this.player || !this.shouldRender) return;
 
     if(!this.hasFlashed) {
       this.hasFlashed = true;
 
-      this.g.camera.flash('#000', 1);
-      this.isLoaded = true;
-      this.clientGameState.hasLoadedInGame = true;
-      this.colyseus.game.sendReadyFlag();
+      setTimeout(() => {
+        this.g.camera.flash('#000', 1);
+        this.isLoaded = true;
+        this.clientGameState.hasLoadedInGame = true;
+        this.colyseus.game.sendReadyFlag();
+      }, 1000);
     }
 
     if(this.clientGameState.updates.openDoors.length > 0) {
