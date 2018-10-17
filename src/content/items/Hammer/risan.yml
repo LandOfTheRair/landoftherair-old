@@ -5,7 +5,7 @@
     offense: 6
     fireResist: 50
   effect:
-    name: FireMist
+    name: Combust
     potency: 15
     chance: 10
     range: 0
