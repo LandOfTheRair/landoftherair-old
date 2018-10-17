@@ -317,6 +317,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   private preloadAssets() {
     this.assetService.preloadAssets.forEach(asset => {
 
+      const img = document.createElement('img');
+      img.src = asset;
+      img.onload = () => this.imageLoaded();
+      img.classList.add('hidden');
+      document.body.appendChild(img);
+
+      /*
       // normally, fuck browser detection, but only chrome does this right???
       if(includes(navigator.userAgent.toLowerCase(), 'chrome')) {
         const preload = document.createElement('link');
@@ -333,6 +340,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         img.classList.add('hidden');
         document.body.appendChild(img);
       }
+      */
 
     });
 

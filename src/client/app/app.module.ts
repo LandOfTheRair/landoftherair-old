@@ -165,7 +165,8 @@ export class APIInterceptor implements HttpInterceptor {
         'copy extends past end of input',
         'Cannot read property \'getImage\' of null',
         'cannot read property \'readyState\' of undefined',
-        'WebSocket is not open: readyState 2 (CLOSING)'
+        'WebSocket is not open: readyState 2 (CLOSING)',
+        'Uncaught (in promise): Event: {"isTrusted":true}'
       ]
     }),
 
