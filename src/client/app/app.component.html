@@ -60,7 +60,7 @@
   </ng-template>
 
   <!-- GAME WINDOWS -->
-  <app-window *ngIf="inGame"
+  <app-window *ngIf="inGame && colyseus.game.character"
               windowName="map"
               (active)="setActiveWindow($event)"
               [canClose]="colyseus.game.clientGameState.hasLoadedInGame"
@@ -78,7 +78,7 @@
     <app-map [class.hidden]="colyseus.game.isChangingMap"></app-map>
   </ng-template>
 
-  <app-window *ngIf="inGame && showStatsWindow"
+  <app-window *ngIf="inGame && colyseus.game.character && showStatsWindow"
               windowName="stats"
               otherWindowClasses="above-game-window"
               (active)="setActiveWindow($event)"
@@ -99,7 +99,7 @@
     <app-stats-window [currentPlayer]="colyseus.game.character"></app-stats-window>
   </ng-template>
 
-  <app-window *ngIf="inGame && showSkillsWindow"
+  <app-window *ngIf="inGame && colyseus.game.character && showSkillsWindow"
               windowName="skills"
               otherWindowClasses="above-game-window"
               (active)="setActiveWindow($event)"
@@ -120,7 +120,7 @@
     <app-skills-window [currentPlayer]="colyseus.game.character"></app-skills-window>
   </ng-template>
 
-  <app-window *ngIf="inGame && showTradeSkillsWindow"
+  <app-window *ngIf="inGame && colyseus.game.character && showTradeSkillsWindow"
               windowName="tradeSkills"
               otherWindowClasses="above-game-window"
               (active)="setActiveWindow($event)"
@@ -141,7 +141,7 @@
     <app-tradeskills-window [currentPlayer]="colyseus.game.character"></app-tradeskills-window>
   </ng-template>
 
-  <app-window *ngIf="inGame && showCommandLine"
+  <app-window *ngIf="inGame && colyseus.game.character && showCommandLine"
               windowName="commandLine"
               otherWindowClasses="above-game-window"
               (active)="setActiveWindow($event)"
@@ -159,7 +159,7 @@
     <app-command-line [rightClickSend]="rightClickSend"></app-command-line>
   </ng-template>
 
-  <app-window *ngIf="inGame"
+  <app-window *ngIf="inGame && colyseus.game.character"
               windowName="log"
               [otherWindowClasses]="'above-game-window ' + logWindowSize"
               (active)="setActiveWindow($event)"
@@ -176,7 +176,7 @@
                     [fontSize]="logFontSize"></app-log-window>
   </ng-template>
 
-  <app-window *ngIf="inGame"
+  <app-window *ngIf="inGame && colyseus.game.character"
               windowName="status"
               otherWindowClasses="above-game-window"
               (active)="setActiveWindow($event)"
@@ -195,7 +195,7 @@
     <app-status-window></app-status-window>
   </ng-template>
 
-  <app-window *ngIf="inGame && colyseus.game.showGround"
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showGround"
               windowName="ground"
               [otherWindowClasses]="'game-window ' + groundSize"
               (active)="setActiveWindow($event)"
@@ -213,7 +213,7 @@
     <app-ground [size]="groundSize"></app-ground>
   </ng-template>
 
-  <app-window *ngIf="inGame && showInventorySack"
+  <app-window *ngIf="inGame && colyseus.game.character && showInventorySack"
               windowName="sack"
               [otherWindowClasses]="'game-window ' + sackSize"
               (active)="setActiveWindow($event)"
@@ -231,7 +231,7 @@
     <app-inventory-sack [size]="sackSize"></app-inventory-sack>
   </ng-template>
 
-  <app-window *ngIf="inGame && showInventoryBelt"
+  <app-window *ngIf="inGame && colyseus.game.character && showInventoryBelt"
               windowName="belt"
               [otherWindowClasses]="'game-window ' + beltSize"
               (active)="setActiveWindow($event)"
@@ -249,7 +249,7 @@
     <app-inventory-belt [size]="beltSize"></app-inventory-belt>
   </ng-template>
 
-  <app-window *ngIf="inGame && showInventoryPouch && hasPouch"
+  <app-window *ngIf="inGame && colyseus.game.character && showInventoryPouch && hasPouch"
               windowName="pouch"
               [otherWindowClasses]="'game-window ' + pouchSize"
               (active)="setActiveWindow($event)"
@@ -285,7 +285,7 @@
     <app-equipment [player]="colyseus.game.character" [size]="equipmentSize"></app-equipment>
   </ng-template>
 
-  <app-window *ngIf="inGame && colyseus.game.currentViewTarget"
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.currentViewTarget"
               windowName="equipmentViewOnly"
               [otherWindowClasses]="'game-window ' + equipmentSize"
               (active)="setActiveWindow($event)"
@@ -303,7 +303,7 @@
     <app-equipment-viewonly *ngIf="colyseus.game.currentViewTarget" [player]="colyseus.game.currentViewTarget" [size]="equipmentSize"></app-equipment-viewonly>
   </ng-template>
 
-  <app-window *ngIf="inGame"
+  <app-window *ngIf="inGame && colyseus.game.character"
               windowName="npcs"
               [otherWindowClasses]="'game-window ' + npcWindowSize"
               (active)="setActiveWindow($event)"
@@ -319,7 +319,7 @@
     <app-npcs [windowSize]="npcWindowSize"></app-npcs>
   </ng-template>
 
-  <app-window *ngIf="inGame"
+  <app-window *ngIf="inGame && colyseus.game.character"
               windowName="macros"
               [otherWindowClasses]="'game-window'"
               (active)="setActiveWindow($event)"
@@ -335,7 +335,7 @@
     <app-macro-bars></app-macro-bars>
   </ng-template>
 
-  <app-window *ngIf="inGame && colyseus.game.showTrainer.uuid"
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showTrainer.uuid"
               windowName="trainer"
               [otherWindowClasses]="'above-game-window'"
               (active)="setActiveWindow($event)"
@@ -353,7 +353,7 @@
     <app-trainer></app-trainer>
   </ng-template>
 
-  <app-window *ngIf="inGame && colyseus.game.showShop.uuid"
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showShop.uuid"
               windowName="shop"
               [otherWindowClasses]="'above-game-window'"
               (active)="setActiveWindow($event)"
@@ -389,7 +389,7 @@
     <app-bank></app-bank>
   </ng-template>
 
-  <app-window *ngIf="inGame && colyseus.game.showLocker.length > 0"
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showLocker.length > 0"
               windowName="locker"
               [otherWindowClasses]="'above-game-window'"
               (active)="setActiveWindow($event)"
@@ -407,7 +407,7 @@
     <app-lockers></app-lockers>
   </ng-template>
 
-  <app-window *ngIf="inGame && showParty"
+  <app-window *ngIf="inGame && colyseus.game.character && showParty"
               windowName="party"
               [otherWindowClasses]="'above-game-window'"
               (active)="setActiveWindow($event)"
@@ -425,7 +425,7 @@
     <app-party></app-party>
   </ng-template>
 
-  <app-window *ngIf="inGame && showTraits"
+  <app-window *ngIf="inGame && colyseus.game.character && showTraits"
               windowName="traits"
               [otherWindowClasses]="'above-game-window'"
               (active)="setActiveWindow($event)"
@@ -502,7 +502,7 @@
     <app-tradeskill-metalworking></app-tradeskill-metalworking>
   </ng-template>
 
-  <app-window *ngIf="inGame && colyseus.game.showMarketBoard.uuid"
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showMarketBoard.uuid"
               windowName="marketboard"
               [otherWindowClasses]="'marketboard above-game-window'"
               (active)="setActiveWindow($event)"
