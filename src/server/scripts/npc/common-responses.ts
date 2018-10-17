@@ -269,7 +269,7 @@ export const RandomlyShouts = (npc: NPC, responses: string[] = [], opts: any = {
     if(opts.combatOnly && npc.combatTicks <= 0) return;
 
     if(ticks >= nextTick) {
-      nextTick = random(5, 10);
+      nextTick = random(50, 60);
       ticks = 0;
 
       let response = sample(responses);
