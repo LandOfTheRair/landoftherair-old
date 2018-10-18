@@ -8,7 +8,7 @@ import { LobbyState } from '../../shared/models/lobbystate';
 import { Account, SilverPurchase } from '../../shared/models/account';
 
 import { Subject, BehaviorSubject, interval } from 'rxjs';
-import { merge, sortBy } from 'lodash';
+import { merge, sortBy, random } from 'lodash';
 import { AlertService } from './alert.service';
 
 @Injectable()
@@ -32,8 +32,11 @@ export class ColyseusLobbyService {
     this.client = client;
 
     this.client.onOpen.add(() => {
-      this.initLobby();
       this.startHeartbeat();
+
+      setTimeout(() => {
+        this.initLobby();
+      }, random(1000, 2000));
     });
   }
 
