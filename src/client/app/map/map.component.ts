@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy, NgZone } from '@angular/core';
 
 import { Game } from './phasergame';
-import { Player } from '../../../shared/models/player';
 import { ColyseusService } from '../colyseus.service';
 
 import { HPBox, XPBox } from './floating-box';
@@ -18,7 +17,7 @@ export class MapComponent implements OnInit, OnDestroy {
   public mapContainer;
 
   private phaser: any;
-  private game: Game;
+  public game: Game;
 
   start$: any;
 

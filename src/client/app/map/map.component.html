@@ -1,1 +1,5 @@
 <div id="mapcanvas" #mapElement droppable dropScope="mapground" (onDrop)="colyseus.game.buildDropAction($event, 'Ground')"></div>
+
+<div class="loading-text position-absolute vertical-center" *ngIf="!clientGameState.hasLoadedInGame">
+  {{ game.loadingText | async }}
+</div>

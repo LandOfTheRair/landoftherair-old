@@ -1,7 +1,7 @@
 
 import * as TiledPlugin from 'phaser-tiled';
 
-import { find, compact, difference, values, forEach, get } from 'lodash';
+import { find, compact, difference, values, forEach, get, startCase } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
 
@@ -10,6 +10,8 @@ import { Sex, Direction, Allegiance } from '../../../shared/models/character';
 import { Item } from '../../../shared/models/item';
 import { TrueSightMap, TrueSightMapReversed, VerticalDoorGids } from './phaserconversionmaps';
 import { MapLayer } from '../../../shared/models/maplayer';
+
+import { BehaviorSubject } from 'rxjs';
 
 const cacheKey = TiledPlugin.utils.cacheKey;
 
@@ -87,8 +89,6 @@ export class Game {
   private goldGroup: any = {};
   private goldSprites: any = {};
 
-  private loadingText: any;
-
   public get shouldRender() {
     if(!this.g || !this.g.camera) return false;
 
@@ -103,6 +103,8 @@ export class Game {
   get g(): any {
     return <any>this;
   }
+
+  public loadingText = new BehaviorSubject<string>('');
 
   constructor(private clientGameState: ClientGameState, private assetService, public colyseus) {
 
@@ -689,29 +691,17 @@ export class Game {
 
   public setupLoadingListeners() {
 
-    const textStyle = {
-      fill: '#fff',
-      font: '32px Fantasy',
-      align: 'center'
-    };
-
-    this.loadingText = this.g.add.text(288, 288, 'Loading... 0% complete (0/0)', textStyle);
-    this.loadingText.anchor.set(0.5, 0);
-    this.loadingText.fixedToCamera = true;
-
-    this.loadingText.bringToTop();
-
     this.g.load.onLoadStart.add(() => {
-      this.loadingText.setText('Loading... 0% complete (0/0)');
+      this.loadingText.next('Loading... 0% complete (0/0)');
     });
 
     this.g.load.onFileComplete.add((progress, cacheKeyForLoaded, success, totalLoaded, totalFiles) => {
-      this.loadingText.setText(`Loading... ${progress}% complete (${totalLoaded}/${totalFiles})`);
+      this.loadingText.next(`Loading... ${progress}% complete (${totalLoaded}/${totalFiles})`);
     });
 
     this.g.load.onLoadComplete.add(() => {
       setTimeout(() => {
-        this.loadingText.destroy();
+        this.loadingText.next(`Welcome to ${startCase(this.clientGameState.mapName)}!`);
       }, 1000);
     });
   }
