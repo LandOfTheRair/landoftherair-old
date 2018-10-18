@@ -125,6 +125,7 @@ export class AuthService {
   }
 
   public renewToken() {
+    if(this.testUsername) return;
 
     this.auth0.checkSession({
       audience: environment.auth0.apiUrl,
