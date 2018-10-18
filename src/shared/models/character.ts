@@ -608,7 +608,7 @@ export class Character {
     this.hp.maximum = Math.max(1, this.getTotalStat('hp'));
     this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
 
-    this.mp.maximum = Math.max(0, this.getTotalStat('mp'));
+    this.mp.maximum = Math.max(0, this.stats.mp === 0 ? 0 : this.getTotalStat('mp'));
     this.mp.__current = Math.min(this.mp.__current, this.mp.maximum);
 
     this.totalStats.stealth += this.getTraitLevelAndUsageModifier('ShadowStepper');
