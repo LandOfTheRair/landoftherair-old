@@ -36,7 +36,7 @@ export class ColyseusLobbyService {
 
       setTimeout(() => {
         this.initLobby();
-      }, random(1000, 2000));
+      }, random(100, 2000));
     });
   }
 
