@@ -1066,11 +1066,26 @@ export class Game {
         if(obj.type === 'StairsUp' || obj.type === 'StairsDown') {
           sprite.inputEnabled = true;
 
-          sprite.events.onInputDown.add(() => {
-            if(this.player.x !== sprite.x / 64 || this.player.y !== sprite.y / 64) return;
+          sprite.events.onInputDown.add((spr, pointer) => {
+            if(!pointer.rightButton.isDown || this.player.x !== sprite.x / 64 || this.player.y !== sprite.y / 64) return;
 
-            this.colyseus.game.currentCommand = obj.type === 'StairsUp' ? '#up' : '#down';
+            this.colyseus.game.sendCommandString(obj.type === 'StairsUp' ? '#up' : '#down');
+          });
+        }
 
+        if(obj.type === 'Door') {
+          sprite.inputEnabled = true;
+
+          sprite.events.onInputDown.add((spr, pointer) => {
+            const diffX = (sprite.x / 64) - this.player.x;
+            const diffY = (sprite.y / 64) - this.player.y;
+
+            // in a cardinal direction, not diagonal
+            const isNearby = (Math.abs(diffX) === 1 || Math.abs(diffY) === 1) && !(Math.abs(diffX) === 1 && Math.abs(diffY) === 1);
+
+            if(!pointer.rightButton.isDown || !isNearby) return;
+
+            this.colyseus.game.sendCommandString(`#open ${this.player.getDirBasedOnDiff(diffX, diffY).substring(0, 1)}`);
           });
         }
 
