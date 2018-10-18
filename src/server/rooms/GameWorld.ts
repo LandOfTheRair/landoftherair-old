@@ -244,6 +244,12 @@ export class GameWorld extends Room<GameState> {
     finishLoad();
   }
 
+  private sendTo(client, data) {
+    // do not send to CLOSING or CLOSED sockets
+    if(client.readyState > 1) return;
+    this.send(client, data);
+  }
+
   async onDispose() {
     this.state.isDisposing = true;
 
@@ -271,7 +277,7 @@ export class GameWorld extends Room<GameState> {
     }
 
     if(!account || account.colyseusId !== client.id) {
-      this.send(client, {
+      this.sendTo(client, {
         error: 'error_invalid_token',
         prettyErrorName: 'Invalid Session Id',
         prettyErrorDesc: 'You\'re either trying to say you\'re someone else, or your token is bad. To set this right, refresh the page.'
@@ -288,12 +294,12 @@ export class GameWorld extends Room<GameState> {
     }
 
     if(!playerData) {
-      this.send(client, { error: 'invalid_char', prettyErrorName: 'Invalid Character Data', prettyErrorDesc: 'No idea how this happened!' });
+      this.sendTo(client, { error: 'invalid_char', prettyErrorName: 'Invalid Character Data', prettyErrorDesc: 'No idea how this happened!' });
       return false;
     }
 
     if(playerData.inGame === true) {
-      this.send(client, { error: 'already_in_game', prettyErrorName: 'Already In Game', prettyErrorDesc: 'You are already in game! Maybe you hit join too fast?' });
+      this.sendTo(client, { error: 'already_in_game', prettyErrorName: 'Already In Game', prettyErrorDesc: 'You are already in game! Maybe you hit join too fast?' });
       return false;
     }
 
@@ -323,12 +329,12 @@ export class GameWorld extends Room<GameState> {
       Logger.error(e);
     }
 
-    this.send(client, { action: 'set_map', map: this.state.formattedMap });
+    this.sendTo(client, { action: 'set_map', map: this.state.formattedMap });
 
     if(this.mapName === 'Tutorial') {
       this.clock.setTimeout(() => {
         player.sendClientMessage('Welcome to Land of the Rair!');
-        this.send(client, { action: 'take_tour' });
+        this.sendTo(client, { action: 'take_tour' });
       }, 0);
     }
 
@@ -402,11 +408,11 @@ export class GameWorld extends Room<GameState> {
     }, 0);
 
     this.clock.setTimeout(() => {
-      this.send(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
+      this.sendTo(client, { action: 'sync_npcs', npcs: this.state.trimmedNPCs });
     }, 0);
 
     this.clock.setTimeout(() => {
-      this.send(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
+      this.sendTo(client, { action: 'sync_ground', ground: this.state.simpleGroundItems });
     }, 0);
 
     this.updateSkillTree(player);
@@ -505,14 +511,14 @@ export class GameWorld extends Room<GameState> {
 
     const messagesFormatted = messages.map(msg => this.formatClientLogMessage(msg));
 
-    this.send(client, { action: 'log_message_b', messages: messagesFormatted });
+    this.sendTo(client, { action: 'log_message_b', messages: messagesFormatted });
   }
 
   public updateLogSettings(player: Player, logSettings) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'combat_log', ...logSettings });
+    this.sendTo(client, { action: 'combat_log', ...logSettings });
   }
 
   formatClientLogMessage(messageData, rootCharacter?: Character) {
@@ -559,70 +565,70 @@ export class GameWorld extends Room<GameState> {
     if(!overMessage) return;
 
     overMessage.action = 'log_message';
-    this.send(client, overMessage);
+    this.sendTo(client, overMessage);
   }
 
   showGroundWindow(player: Player) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_ground' });
+    this.sendTo(client, { action: 'show_ground' });
   }
 
   showTrainerWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_trainer', trainSkills: npc.trainSkills, classTrain: npc.classTrain, uuid: npc.uuid });
+    this.sendTo(client, { action: 'show_trainer', trainSkills: npc.trainSkills, classTrain: npc.classTrain, uuid: npc.uuid });
   }
 
   showShopWindow(player: Player, npc: NPC, items: Item[]) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_shop', vendorItems: items, uuid: npc.uuid, vendorCurrency: npc.$$vendorCurrency });
+    this.sendTo(client, { action: 'show_shop', vendorItems: items, uuid: npc.uuid, vendorCurrency: npc.$$vendorCurrency });
   }
 
   showBankWindow(player: Player, npc: NPC, banks: any) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_bank', uuid: get(npc || {}, 'uuid'), bankId: get(npc || {}, 'bankId'), banks });
+    this.sendTo(client, { action: 'show_bank', uuid: get(npc || {}, 'uuid'), bankId: get(npc || {}, 'bankId'), banks });
   }
 
   showAlchemyWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_ts', tradeskill: 'Alchemy', uuid: npc.uuid });
+    this.sendTo(client, { action: 'show_ts', tradeskill: 'Alchemy', uuid: npc.uuid });
   }
 
   showSpellforgingWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_ts', tradeskill: 'Spellforging', uuid: npc.uuid });
+    this.sendTo(client, { action: 'show_ts', tradeskill: 'Spellforging', uuid: npc.uuid });
   }
 
   showMarketBoard(player: Player, npc: NPC) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_mb', uuid: npc.uuid, mapRegion: this.mapRegion });
+    this.sendTo(client, { action: 'show_mb', uuid: npc.uuid, mapRegion: this.mapRegion });
   }
 
   showMetalworkingWindow(player: Player, npc: NPC) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_ts', tradeskill: 'Metalworking', uuid: npc.uuid });
+    this.sendTo(client, { action: 'show_ts', tradeskill: 'Metalworking', uuid: npc.uuid });
   }
 
   showLockerWindow(player: Player, lockers, lockerId) {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'show_lockers', lockers, lockerId });
+    this.sendTo(client, { action: 'show_lockers', lockers, lockerId });
   }
 
   openLocker(player: Player, lockerName, lockerId) {
@@ -634,7 +640,7 @@ export class GameWorld extends Room<GameState> {
     const client = player.$$room.findClient(player);
     if(!client) return;
 
-    this.send(client, { action: 'update_locker', locker });
+    this.sendTo(client, { action: 'update_locker', locker });
   }
 
   async openBank(player: Player, npc: NPC) {
@@ -721,8 +727,8 @@ export class GameWorld extends Room<GameState> {
       player.$$doNotSave = true;
       await this.savePlayer(player, { x, y, map: newMap }, true);
       this.state.resetFOV(player);
-      this.send(client, { action: 'set_character', character: player });
-      this.send(client, { action: 'change_map', map: newMap, party: player.partyName });
+      this.sendTo(client, { action: 'set_character', character: player });
+      this.sendTo(client, { action: 'change_map', map: newMap, party: player.partyName });
     }
   }
 
@@ -1058,7 +1064,7 @@ export class GameWorld extends Room<GameState> {
     if(!client) return;
 
     const effectId = VISUAL_EFFECTS[effect];
-    this.send(client, { action: 'draw_effect_r', effect: effectId, center, radius });
+    this.sendTo(client, { action: 'draw_effect_r', effect: effectId, center, radius });
   }
 
   public combatEffect(player: Character, effect: CombatEffect, enemyUUID: string) {
@@ -1067,7 +1073,7 @@ export class GameWorld extends Room<GameState> {
     const client = this.findClient(<Player>player);
     if(!client) return;
 
-    this.send(client, { action: 'draw_effect_c', effect, enemyUUID });
+    this.sendTo(client, { action: 'draw_effect_c', effect, enemyUUID });
   }
 
   public updatePos(player: Character) {
@@ -1076,7 +1082,7 @@ export class GameWorld extends Room<GameState> {
     const client = this.findClient(<Player>player);
     if(!client) return;
 
-    this.send(client, {
+    this.sendTo(client, {
       action: 'update_pos',
       x: player.x,
       y: player.y,
@@ -1090,7 +1096,7 @@ export class GameWorld extends Room<GameState> {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, {
+    this.sendTo(client, {
       action: 'update_fov',
       fov: player.fov
     });
@@ -1100,7 +1106,7 @@ export class GameWorld extends Room<GameState> {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, {
+    this.sendTo(client, {
       action: 'update_macros'
     });
   }
@@ -1109,7 +1115,7 @@ export class GameWorld extends Room<GameState> {
     const client = this.findClient(player);
     if(!client) return;
 
-    this.send(client, {
+    this.sendTo(client, {
       action: 'skill_tree',
       skillTree: player.skillTree
     });
