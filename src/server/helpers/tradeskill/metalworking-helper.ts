@@ -70,7 +70,7 @@ export class MetalworkingHelper {
     player.tradeSkillContainers.metalworking.craftResult = brick;
 
     if(player.calcSkillLevel(SkillClassNames.Metalworking) < 5) {
-      player.gainSkill(SkillClassNames.Metalworking, 20);
+      player.gainSkill(SkillClassNames.Metalworking, 20, true);
     }
   }
 
@@ -143,7 +143,7 @@ export class MetalworkingHelper {
       player.gainExp(xpGained);
 
       if(playerSkill < maxSkillForGains) {
-        player.gainSkill(SkillClassNames.Metalworking, skillGained);
+        player.gainSkill(SkillClassNames.Metalworking, skillGained, true);
       }
 
     } else {
@@ -185,7 +185,7 @@ export class MetalworkingHelper {
     container.clearUpgrade();
 
     if(player.calcSkillLevel(SkillClassNames.Metalworking) < 5) {
-      player.gainSkill(SkillClassNames.Metalworking, 20);
+      player.gainSkill(SkillClassNames.Metalworking, 20, true);
     }
     return true;
   }

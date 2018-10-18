@@ -31,7 +31,7 @@ export class AlchemyHelper {
       player.gainExp(xpGained);
 
       if(playerSkill < maxSkillForGains) {
-        player.gainSkill(SkillClassNames.Alchemy, skillGained);
+        player.gainSkill(SkillClassNames.Alchemy, skillGained, true);
       }
 
     } else {

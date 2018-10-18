@@ -32,8 +32,8 @@ export class RunewritingHelper {
     const chosenSkill = sample(possibleSkills);
 
     if(!chosenSkill) {
-      player.sendClientMessage('The corpse blood imparts no knowledge.');
       player.gainSkill(SkillClassNames.Runewriting, Math.floor(npcRef.level / 2));
+      player.sendClientMessage('The corpse blood imparts no knowledge.');
       player.$$room.dropCorpseItems(corpse);
       player.setLeftHand(null);
       return;

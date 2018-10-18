@@ -36,8 +36,11 @@ export class SpellforgingHelper {
 
     player.gainExp(200 * (itemQuality + 1));
 
-    const gainedSkill = Math.max(1, 5 - player.calcSkillLevel(SkillClassNames.Spellforging)) + itemQuality;
-    player.gainSkill(SkillClassNames.Spellforging, gainedSkill);
+    // you only get to skill 10 from disenchanting
+    if(player.calcSkillLevel(SkillClassNames.Spellforging) < 10) {
+      const gainedSkill = Math.max(1, 5 - player.calcSkillLevel(SkillClassNames.Spellforging)) + itemQuality;
+      player.gainSkill(SkillClassNames.Spellforging, gainedSkill, true);
+    }
 
     let retval = `You have gained ${enosDust} Enos Dust`;
     if(owtsDust > 0) retval = `${retval} and ${owtsDust} Owts Dust`;
@@ -120,7 +123,11 @@ export class SpellforgingHelper {
 
       container.result = item;
       container.clearReagents();
-      player.gainSkill(SkillClassNames.Spellforging, item.enchantLevel * 25);
+
+      // enchanting only gives you skill up to a point. +1 works to skill 4, +2 to skill 8, etc
+      if(player.calcSkillLevel(SkillClassNames.Spellforging) < item.enchantLevel * 4) {
+        player.gainSkill(SkillClassNames.Spellforging, item.enchantLevel * 25, true);
+      }
       return true;
     }
 
@@ -129,7 +136,11 @@ export class SpellforgingHelper {
       item.effect.chance = Math.min(100, player.calcSkillLevel(SkillClassNames.Spellforging) * 2);
       container.result = item;
       container.clearReagents();
-      player.gainSkill(SkillClassNames.Spellforging, item.effect.potency * 10);
+
+      // you only get skill from runewritten scrolls up to their written skill level
+      if(player.calcSkillLevel(SkillClassNames.Spellforging) < item.effect.potency) {
+        player.gainSkill(SkillClassNames.Spellforging, item.effect.potency * 10, true);
+      }
       return true;
     }
 
@@ -137,7 +148,11 @@ export class SpellforgingHelper {
       item.trait = clone(reagent.trait);
       container.result = item;
       container.clearReagents();
-      player.gainSkill(SkillClassNames.Spellforging, item.trait.level * 20);
+
+      // trait enchanting only gives skill up to a point, +1 to skill 4, +2 to skill 8, etc
+      if(player.calcSkillLevel(SkillClassNames.Spellforging) < item.trait.level * 4) {
+        player.gainSkill(SkillClassNames.Spellforging, item.trait.level * 20, true);
+      }
       return true;
     }
 
@@ -150,7 +165,7 @@ export class SpellforgingHelper {
     player.tradeSkillContainers.spellforging.result = brick;
 
     if(player.calcSkillLevel(SkillClassNames.Spellforging) < 5) {
-      player.gainSkill(SkillClassNames.Spellforging, 1);
+      player.gainSkill(SkillClassNames.Spellforging, 1, true);
     }
   }
 }
