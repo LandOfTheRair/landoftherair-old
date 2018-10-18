@@ -702,6 +702,11 @@ export class Game {
     this.g.load.onLoadComplete.add(() => {
       setTimeout(() => {
         this.loadingText.next(`Welcome to ${startCase(this.clientGameState.mapName)}!`);
+
+        setTimeout(() => {
+          this.loadingText.next('');
+        }, 1000);
+
       }, 1000);
     });
   }
