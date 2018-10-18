@@ -373,6 +373,45 @@
             "Push"
         ]
     },
+    "ExpandedMemory0": {
+        "name": "ExpandedMemory0",
+        "traitName": "ExpandedMemory",
+        "desc": "Gain +$10|30$ maximum teleport locations.",
+        "icon": "teleport",
+        "cost": 3,
+        "unlocks": [
+            "ExpandedMemory1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Teleport"
+        ]
+    },
+    "ExpandedMemory1": {
+        "name": "ExpandedMemory1",
+        "traitName": "ExpandedMemory",
+        "desc": "Gain +$10|30$ maximum teleport locations.",
+        "icon": "teleport",
+        "cost": 3,
+        "unlocks": [
+            "ExpandedMemory2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "ExpandedMemory0"
+        ]
+    },
+    "ExpandedMemory2": {
+        "name": "ExpandedMemory2",
+        "traitName": "ExpandedMemory",
+        "desc": "Gain +$10|30$ maximum teleport locations.",
+        "icon": "teleport",
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "ExpandedMemory1"
+        ]
+    },
     "EnergyWaveWiden0": {
         "name": "EnergyWaveWiden0",
         "traitName": "EnergyWaveWiden",
@@ -507,7 +546,8 @@
         "requireSkillLevel": 15,
         "cost": 20,
         "unlocks": [
-            "MassTeleport"
+            "MassTeleport",
+            "ExpandedMemory0"
         ],
         "cluster": 1,
         "unlockedBy": [

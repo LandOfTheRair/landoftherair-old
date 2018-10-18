@@ -19,6 +19,8 @@ export * from './FireMistWiden';
 export * from './IceMistWiden';
 export * from './EnergyWaveWiden';
 
+export * from './ExpandedMemory';
+
 export * from './DrainSlash';
 
 export * from './FindFamiliarSalamander';

@@ -94,6 +94,17 @@ const MAGE_TREE = {
     unlocks: ['Teleport']
   },
 
+  ExpandedMemory0: {
+    unlocks: ['ExpandedMemory1']
+  },
+  ExpandedMemory1: {
+    unlocks: ['ExpandedMemory2']
+  },
+  ExpandedMemory2: {
+
+  },
+
+
   EnergyWaveWiden0: {
 
   },
@@ -126,7 +137,7 @@ const MAGE_TREE = {
     unlocks: ['ConcussiveBolt0']
   },
   Teleport: {
-    unlocks: ['MassTeleport']
+    unlocks: ['MassTeleport', 'ExpandedMemory0']
   },
   MassTeleport: {
 
@@ -135,7 +146,7 @@ const MAGE_TREE = {
     unlocks: ['LingeringAsper0']
   },
   ConjureHealing: {
-    
+
   }
 };
 

@@ -37,8 +37,9 @@ export class TeleportHelper {
       return false;
     }
 
+    const maxTeleports = 20 + player.getTraitLevelAndUsageModifier('ExpandedMemory');
     const allCurrentTeleports = await this.listTeleports(player);
-    if(allCurrentTeleports.length >= this.room.maxTeleportLocations) {
+    if(allCurrentTeleports.length >= maxTeleports) {
       player.sendClientMessage('You can\'t seem to remember any more locations.');
       return false;
     }

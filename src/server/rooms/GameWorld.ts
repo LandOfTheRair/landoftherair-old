@@ -166,11 +166,6 @@ export class GameWorld extends Room<GameState> {
     return this.state.map.properties.script;
   }
 
-  // 2 teleports per map, essentially
-  get maxTeleportLocations(): number {
-    return Math.floor(Object.keys(this.allMapNames).length * 1.5);
-  }
-
   get canMemorize(): boolean {
     return true;
   }

@@ -15,7 +15,9 @@ export class ShowTeleports extends Command {
 
     const sortedTeleports = sortBy(allTeleports, t => t.location.toLowerCase());
 
-    player.sendClientMessage(`Your teleports (${allTeleports.length}/${player.$$room.maxTeleportLocations}):`);
+    const maxTeleports = 20 + player.getTraitLevelAndUsageModifier('ExpandedMemory');
+
+    player.sendClientMessage(`Your teleports (${allTeleports.length}/${maxTeleports}):`);
 
     sortedTeleports.forEach((tp, i) => {
       player.sendClientMessage(`· ${i + 1}: ${tp.location} - ${startCase(tp.teleport.map)} (${tp.teleport.region})`);
