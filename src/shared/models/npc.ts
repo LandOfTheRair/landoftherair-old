@@ -228,7 +228,7 @@ export class NPC extends Character {
       const givenXp = random(giveXp.min, giveXp.max);
 
       let adjustedXp = this.$$room.calcAdjustedXPGain(givenXp);
-      if(killer.hasEffect('Newbie')) adjustedXp += Math.floor(adjustedXp * 0.25);
+      if(killer.hasEffect('Newbie')) adjustedXp += Math.floor(adjustedXp * 0.10);
 
       if(killer.$$owner) {
         killer.$$owner.gainExpFromKills(adjustedXp);

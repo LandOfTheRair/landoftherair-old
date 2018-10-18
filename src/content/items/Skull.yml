@@ -2,6 +2,9 @@
 - name: Tutorial Yeti Skull
   desc: "a skull taken from an inexperienced yeti"
   value: 1
+  effect:
+    name: Newbie
+    autocast: true
   binds: true
   sprite: 359
 

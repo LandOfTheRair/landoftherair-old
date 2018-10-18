@@ -1,4 +1,6 @@
 
+export * from './special/Newbie';
+
 export * from './items/ExactHeal';
 export * from './buffs/Nourishment';
 export * from './special/Malnourished';
