@@ -201,7 +201,9 @@ export class ColyseusLobbyService {
     this.sendRoomData({ action: 'logout' });
     this.auth.logout();
 
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
 
   private startGame(character) {

@@ -7,7 +7,7 @@ import { Player } from '../../shared/models/player';
 import { Redis } from '../redis';
 import { CharacterCreator } from '../helpers/character/character-creator';
 
-import { truncate, pick, includes, find } from 'lodash';
+import { truncate, pick, includes, find, pull } from 'lodash';
 
 import { DB } from '../database';
 
@@ -119,7 +119,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private async tryLogin(client, { userId, username, idToken }) {
-
+    
     if(this.userIdsLoggingIn[userId]) return;
     this.userIdsLoggingIn[userId] = true;
 
@@ -144,6 +144,7 @@ export class Lobby extends Room<LobbyState> {
       this.removeUsername(username);
 
       const oldClient: any = find(this.clients, { userId });
+
       if(oldClient) {
         this.send(oldClient, {
           error: 'someone_kicked_you',
@@ -154,6 +155,8 @@ export class Lobby extends Room<LobbyState> {
         this.send(oldClient, { action: 'force_logout' });
 
         oldClient.close();
+
+        pull(this.clients, oldClient);
 
       }
 
@@ -230,6 +233,8 @@ export class Lobby extends Room<LobbyState> {
     const account = this.state.findAccount(client.userId);
     if(!account) return;
 
+    client.userId = null;
+
     account.inGame = -1;
     AccountHelper.saveAccount(account);
 
@@ -242,6 +247,8 @@ export class Lobby extends Room<LobbyState> {
 
     const account = this.state.findAccount(client.userId);
     if(!account) return;
+
+    client.userId = null;
 
     this.cleanAndSaveAccount(account);
   }
@@ -439,6 +446,8 @@ export class Lobby extends Room<LobbyState> {
 
     const account = this.state.findAccount(client.userId);
     if(!account) return;
+
+    client.userId = null;
 
     this.cleanAndSaveAccount(account);
   }
