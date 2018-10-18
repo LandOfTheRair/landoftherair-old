@@ -143,7 +143,10 @@ export class ColyseusLobbyService {
   }
 
   private interceptLobbyCommand({ action, error, ...other }) {
-    this.colyseus.debugLobbyLogMessage({ action, error, ...other }, 'incoming');
+
+    if(this.colyseus.isDebug) {
+      this.colyseus.debugLobbyLogMessage({ action, error, ...other }, 'incoming');
+    }
 
     if(error) {
 

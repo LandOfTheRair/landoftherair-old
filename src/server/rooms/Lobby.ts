@@ -119,7 +119,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private async tryLogin(client, { userId, username, idToken }) {
-    
+
     if(this.userIdsLoggingIn[userId]) return;
     this.userIdsLoggingIn[userId] = true;
 
