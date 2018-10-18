@@ -37,7 +37,7 @@ class ItemLoader {
         const basePath = file.split('items' + path.sep)[1];
         const basePathLeftSide = basePath.split(path.sep)[0];
         const itemClassRoot = path.basename(basePathLeftSide, path.extname(basePathLeftSide));
-  
+
         let itemsOfType = null;
         try {
           itemsOfType = YAML.load(file);
@@ -45,20 +45,20 @@ class ItemLoader {
           console.error(`Failed to parse file: ${file}`);
           process.exit(-1);
         }
-  
+
         const promises = itemsOfType.map(itemData => {
           itemData.itemClass = itemClassRoot;
           itemData.type = itemData.type || SkillClassNames.Martial;
           if(!itemData.stats) itemData.stats = {};
-  
+
           return new Promise((resolve) => {
             ItemLoader.conditionallyAddInformation(itemData);
             if(!ItemLoader.validateItem(itemData)) return reject(new Error(`${itemData.name} failed validation.`));
             return resolve(itemData);
           });
-  
+
         });
-  
+
         return promises;
       });
     } catch(e) {
@@ -166,6 +166,10 @@ class ItemLoader {
 
     if(includes(['Breastplate', 'Fullplate'], item.itemClass)) {
       item.isHeavy = true;
+    }
+
+    if(item.itemClass === 'Saucer') {
+      item.isSackable = true;
     }
 
     if(item.itemClass === 'Bottle' || item.itemClass === 'Food') {
