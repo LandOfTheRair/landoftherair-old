@@ -47,7 +47,7 @@ export class ColyseusLobbyService {
       if(err) throw err;
 
       let roomId = 'Lobby';
-      if(rooms && rooms.length > 0) roomId = (<any>sortBy(rooms, ['maxClients', 'clients'])).reverse()[0].roomId;
+      if(rooms && rooms.length > 0) roomId = (<any>sortBy(rooms, ['clients', 'maxClients'])).reverse()[0].roomId;
 
       if(!roomId) roomId = 'Lobby';
 
