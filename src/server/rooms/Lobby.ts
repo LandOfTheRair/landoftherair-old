@@ -233,8 +233,6 @@ export class Lobby extends Room<LobbyState> {
     const account = this.state.findAccount(client.userId);
     if(!account) return;
 
-    client.userId = null;
-
     account.inGame = -1;
     AccountHelper.saveAccount(account);
 

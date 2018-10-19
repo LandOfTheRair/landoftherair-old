@@ -106,7 +106,15 @@ export class ColyseusService {
   }
 
   public debugLobbyLogMessage(data, source: 'incoming'|'outgoing') {
+    if(!this.isDebug) return;
+
     // tslint:disable-next-line
     console.log(`Colyseus:Lobby`, `[${source}]`, data);
+  }
+
+  public debugGameLogMessage(data, source: 'incoming'|'outgoing') {
+    if(!this.isDebug) return;
+    // tslint:disable-next-line
+    console.log(`Colyseus:Game`, `[${source}]`, data);
   }
 }

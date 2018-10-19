@@ -74,7 +74,7 @@ export class ColyseusLobbyService {
   private sendRoomData(data) {
     this.room.send(data);
 
-    if(this.colyseus.isDebug && (!data.action || (data.action && data.action !== 'heartbeat'))) {
+    if(!data.action || (data.action && data.action !== 'heartbeat')) {
       this.colyseus.debugLobbyLogMessage(data, 'outgoing');
     }
   }
@@ -144,9 +144,7 @@ export class ColyseusLobbyService {
 
   private interceptLobbyCommand({ action, error, ...other }) {
 
-    if(this.colyseus.isDebug) {
-      this.colyseus.debugLobbyLogMessage({ action, error, ...other }, 'incoming');
-    }
+    this.colyseus.debugLobbyLogMessage({ action, error, ...other }, 'incoming');
 
     if(error) {
 

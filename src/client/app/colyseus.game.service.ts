@@ -409,7 +409,8 @@ export class ColyseusGameService {
   }
 
   private interceptGameCommand({ action, error, ...other }) {
-    // console.info('Colyseus:Game', action, error, other);
+
+    this.colyseus.debugGameLogMessage({ action, error, ...other }, 'incoming');
 
     if(error) {
       this.alert.alert({ title: other.prettyErrorName, text: other.prettyErrorDesc, type: 'error' });
@@ -635,6 +636,9 @@ export class ColyseusGameService {
 
   private sendAction(data) {
     data.t = Date.now();
+
+    this.colyseus.debugGameLogMessage(data, 'outgoing');
+
     this.worldRoom.send(data);
   }
 
