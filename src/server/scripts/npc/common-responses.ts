@@ -1,6 +1,6 @@
 
 import { NPC } from '../../../shared/models/npc';
-import { includes, capitalize, sample, get, random, compact, startCase } from 'lodash';
+import { includes, capitalize, sample, get, set, random, compact, startCase } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import { Logger } from '../../logger';
 import { AllNormalGearSlots, SkillClassNames } from '../../../shared/models/character';
@@ -596,17 +596,28 @@ export const EncrusterResponses = (npc: NPC) => {
       player.rightHand.value -= prevValue;
       player.rightHand.value += nextEncrust.value;
 
+      const levelRequirementForGem = get(player.leftHand, 'requirements.level', 0);
+      const itemLevelRequirement = get(player.rightHand, 'requirements.level', 0);
+
+      let newLevelText = '';
+      const newMaxLevel = Math.max(levelRequirementForGem, itemLevelRequirement);
+      if(newMaxLevel !== 0) {
+        set(player.rightHand, 'requirements.level', newMaxLevel);
+
+        if(newMaxLevel === levelRequirementForGem) newLevelText = `Your item now requires level ${levelRequirementForGem} to use.`;
+      }
+
       player.spendGold(cost, `Service:Encrust`);
       player.setLeftHand(null);
       player.rightHand.setOwner(player);
 
       player.rightHand.encrust = nextEncrust;
-      const replaceText = prevEncrust ? ` This has replaced your ${prevEncrust.desc}.` : '';
+      const replaceText = prevEncrust ? ` This has replaced your ${prevEncrust.desc}. ` : '';
       player.recalculateStats();
 
-      const maxEncrustText = nextEncrust.maxEncrusts > 0 ? ` This gem seems fairly unique, and you can only use ${nextEncrust.maxEncrusts} at a time!` : '';
+      const maxEncrustText = nextEncrust.maxEncrusts > 0 ? ` This gem seems fairly unique, and you can only use ${nextEncrust.maxEncrusts} at a time! ` : '';
 
-      return `I have set your ${player.rightHand.itemClass.toLowerCase()} with ${nextEncrust.desc}.${maxEncrustText}${replaceText}`;
+      return `I have set your ${player.rightHand.itemClass.toLowerCase()} with ${nextEncrust.desc}.${maxEncrustText}${replaceText}${newLevelText}`;
     });
 };
 
