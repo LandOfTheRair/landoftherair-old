@@ -46,7 +46,7 @@ export class SearingPurification extends SpellEffect {
   }
 
   effectTick(char: Character) {
-    const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
+    const caster = char.$$room.state.findCharacter(this.effectInfo.caster);
 
     char.mp.sub(Math.floor(char.mp.maximum * 0.02));
 

@@ -373,7 +373,7 @@ export class Player extends Character {
 
     this.$$actionQueue = [];
 
-    if(killer && !(<any>killer).$$shouldEatTier) {
+    if(!killer || (killer && !(<any>killer).$$shouldEatTier)) {
       await DeathHelper.createCorpse(this, [], this.getBaseSprite() + 4);
     }
 

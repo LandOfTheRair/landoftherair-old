@@ -38,7 +38,7 @@ export class Burning extends SpellEffect {
   effectTick(char: Character) {
     this.iconData.tooltipDesc = `Receiving ${this.effectInfo.damage.toLocaleString()} fire damage per tick.`;
 
-    const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
+    const caster = char.$$room.state.findCharacter(this.effectInfo.caster);
 
     CombatHelper.magicalAttack(caster, char, {
       effect: this,

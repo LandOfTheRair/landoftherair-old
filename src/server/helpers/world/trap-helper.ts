@@ -23,7 +23,7 @@ export class TrapHelper {
     const effectRef = new Effects[effect.name](effect);
     effectRef.casterRef = caster;
 
-    const casterCreature = target.$$room.state.findPlayer(caster.username);
+    const casterCreature = target.$$room.state.findCharacter(caster.uuid);
 
     effectRef.cast(casterCreature ? casterCreature : target, target, obj);
   }
@@ -47,7 +47,7 @@ export class TrapHelper {
         effect: trap.effect,
         caster: {
           name: user.name,
-          username: (<any>user).username,
+          uuid: user.uuid,
           casterStats: statCopy
         },
         setSkill: user.calcSkillLevel(SkillClassNames.Thievery),

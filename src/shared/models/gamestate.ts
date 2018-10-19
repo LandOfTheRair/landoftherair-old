@@ -290,6 +290,10 @@ export class GameState {
     return this.maintainedPlayerHash[username];
   }
 
+  findCharacter(uuid): Character {
+    return this.findPlayer(uuid) || this.findNPC(uuid);
+  }
+
   findPlayerByClientId(clientId): Player {
     return this.playerClientIdHash[clientId];
   }

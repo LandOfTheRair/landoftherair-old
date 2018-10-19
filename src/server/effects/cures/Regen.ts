@@ -45,7 +45,7 @@ export class Regen extends SpellEffect {
   }
 
   effectTick(char: Character) {
-    const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
+    const caster = char.$$room.state.findCharacter(this.effectInfo.caster);
 
     CombatHelper.magicalAttack(caster, char, {
       effect: this,
@@ -59,7 +59,7 @@ export class Regen extends SpellEffect {
 
   effectEnd(char: Character) {
     if(this.shouldBurst) {
-      const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
+      const caster = char.$$room.state.findCharacter(this.effectInfo.caster);
 
       CombatHelper.magicalAttack(caster, char, {
         effect: this,

@@ -52,7 +52,7 @@ export class Autoheal extends SpellEffect {
 
     const healAmt = -char.hp.maximum;
 
-    const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
+    const caster = char.$$room.state.findCharacter(this.effectInfo.caster);
 
     char.sendClientMessage('A warm surge of energy runs through your chest!');
 

@@ -66,7 +66,7 @@ export class Plague extends SpellEffect {
   }
 
   effectTick(char: Character) {
-    const caster = char.$$room.state.findPlayer(this.effectInfo.caster);
+    const caster = char.$$room.state.findCharacter(this.effectInfo.caster);
 
     let isCrit = false;
 
