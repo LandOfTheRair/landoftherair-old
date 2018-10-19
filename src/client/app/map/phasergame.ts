@@ -63,6 +63,7 @@ export class Game {
   private doorTops: any;
   private visibleNPCs: any;
   private otherPlayerSprites: any;
+  private myPlayerSprite: any;
   private vfx: any;
 
   private isRenderingTruesight: boolean;
@@ -90,6 +91,8 @@ export class Game {
   private goldSprites: any = {};
 
   public get shouldRender() {
+    if(!this.player) return false;
+    if(!this.colyseus.game._inGame || !this.colyseus.game.isRenderReady) return false;
     if(!this.g || !this.g.camera) return false;
 
     const point = this.g.camera.position;
@@ -207,6 +210,10 @@ export class Game {
 
     if(this.otherPlayerSprites) {
       this.otherPlayerSprites.destroy();
+    }
+
+    if(this.myPlayerSprite) {
+      this.myPlayerSprite.destroy();
     }
 
     if(this.vfx) {
@@ -727,6 +734,7 @@ export class Game {
     this.vfx = this.g.add.group();
     this.visibleNPCs = this.g.add.group();
     this.otherPlayerSprites = this.g.add.group();
+    this.myPlayerSprite = this.g.add.group();
 
     this.fovGroup = this.g.add.group();
   }
@@ -1116,31 +1124,29 @@ export class Game {
     });
 
     this.createFOV();
+    this.updateFOV();
 
     this.g.camera.fade('#000', 1);
 
     this.playerSprite = this.getPlayerSprite(this.player);
+    this.myPlayerSprite.add(this.playerSprite);
     this.playerSpriteHash[this.player.username] = this.playerSprite;
     this.truesightCheck();
     this.eagleeyeCheck();
     this.focusCameraOnPlayer();
 
     this.skipLoading = false;
+
+    setTimeout(() => {
+      this.g.camera.flash('#000', 1);
+      this.isLoaded = true;
+      this.clientGameState.hasLoadedInGame = true;
+      this.colyseus.game.sendReadyFlag();
+    }, 2000);
   }
 
   update() {
-    if(!this.colyseus.game._inGame || !this.player || !this.shouldRender) return;
-
-    if(!this.hasFlashed) {
-      this.hasFlashed = true;
-
-      setTimeout(() => {
-        this.g.camera.flash('#000', 1);
-        this.isLoaded = true;
-        this.clientGameState.hasLoadedInGame = true;
-        this.colyseus.game.sendReadyFlag();
-      }, 1000);
-    }
+    if(!this.shouldRender) return;
 
     if(this.clientGameState.updates.openDoors.length > 0) {
       this.updateDoors();

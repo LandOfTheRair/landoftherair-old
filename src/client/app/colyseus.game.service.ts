@@ -84,6 +84,13 @@ export class ColyseusGameService {
 
   public suppressAnimations: boolean;
 
+  private syncedNPCs: boolean;
+  private syncedGround: boolean;
+
+  public get isRenderReady(): boolean {
+    return this.syncedNPCs && this.syncedGround;
+  }
+
   constructor(
     private localStorage: LocalStorageService,
     private alert: AlertService
@@ -296,6 +303,8 @@ export class ColyseusGameService {
 
     this.worldRoom.onLeave.add(() => {
       this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'LEAVE_ROOM' }, 'incoming');
+      this.syncedNPCs = false;
+      this.syncedGround = false;
       this.clientGameState.hasLoadedInGame = false;
       this.clientGameState.removeAllPlayers();
       if(this.changingMap) return;
@@ -487,6 +496,7 @@ export class ColyseusGameService {
 
   private syncGroundItems(groundItems: any) {
     this.clientGameState.setGroundItems(groundItems);
+    this.syncedGround = true;
   }
 
   private removeGroundItem(x: number, y: number, item: Item) {
@@ -503,6 +513,7 @@ export class ColyseusGameService {
 
   private syncNPCs(npcs) {
     this.clientGameState.setMapNPCs(npcs);
+    this.syncedNPCs = true;
   }
 
   private addNPC(npc) {
