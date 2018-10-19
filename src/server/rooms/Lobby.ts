@@ -143,7 +143,7 @@ export class Lobby extends Room<LobbyState> {
     if(checkAccount) {
       const oldClient: any = find(this.clients, { userId });
 
-      if(oldClient) {
+      if(oldClient && oldClient !== client) {
         this.send(client, {
           error: 'already_logged_in',
           prettyErrorName: 'Already Logged In',
