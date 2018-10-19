@@ -196,6 +196,7 @@ export class ColyseusGameService {
     this.worldRoom = this.client.join(room, joinOpts);
 
     this.worldRoom.onStateChange.addOnce((state) => {
+      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'INITIAL_STATE_CHANGE' }, 'incoming');
       this.clientGameState.mapName = state.mapName;
       this.clientGameState.grabOldUpdates(state.mapData);
 
@@ -203,6 +204,7 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onStateChange.add((state) => {
+      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'STATE_CHANGE' }, 'incoming');
       this.clientGameState.setMapData(state.mapData || {});
       this.clientGameState.setPlayers(state.playerHash);
       this.clientGameState.setEnvironmentalObjects(state.environmentalObjects || []);
@@ -286,12 +288,14 @@ export class ColyseusGameService {
     this.worldRoom.listen('mapData/openDoors/:id/isOpen', updateDoor);
 
     this.worldRoom.onJoin.add(() => {
+      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'JOIN_ROOM' }, 'incoming');
       this.inGame$.next(true);
       this._inGame = true;
       this.clientGameState.hasLoadedInGame = false;
     });
 
     this.worldRoom.onLeave.add(() => {
+      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'LEAVE_ROOM' }, 'incoming');
       this.clientGameState.hasLoadedInGame = false;
       this.clientGameState.removeAllPlayers();
       if(this.changingMap) return;
@@ -302,6 +306,7 @@ export class ColyseusGameService {
     });
 
     this.worldRoom.onError.add((e) => {
+      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'ROOM_ERROR' }, 'incoming');
       this.alert.alert({
         title: 'World Room Error',
         text: JSON.stringify(e),
