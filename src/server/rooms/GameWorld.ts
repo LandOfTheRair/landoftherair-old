@@ -398,7 +398,6 @@ export class GameWorld extends Room<GameState> {
   }
 
   public flagClientReady(client, player) {
-    player.$$ready = true;
 
     this.setPlayerXY(player, player.x, player.y);
 
@@ -416,6 +415,9 @@ export class GameWorld extends Room<GameState> {
     }, 0);
 
     this.updateSkillTree(player);
+
+    player.$$ready = true;
+    client.$$ready = true;
   }
 
   public async kickOut(player: Player) {
@@ -429,22 +431,25 @@ export class GameWorld extends Room<GameState> {
     return this.groundHelper.saveGround();
   }
 
+  private syncNPCToClients(npcUUID: string) {
+
+    this.clients.forEach(client => {
+      if(!(<any>client).$$ready) return;
+
+      this.sendTo(client, { action: 'add_npc', npc: this.state.trimmedNPCs[npcUUID] });
+    });
+  }
+
   public addNPC(npc: NPC) {
     this.state.addNPC(npc);
 
-    this.broadcast({
-      action: 'add_npc',
-      npc: this.state.trimmedNPCs[npc.uuid]
-    });
+    this.syncNPCToClients(npc.uuid);
   }
 
   public syncNPC(npc: NPC) {
     this.state.syncNPC(npc);
 
-    this.broadcast({
-      action: 'add_npc',
-      npc: this.state.trimmedNPCs[npc.uuid]
-    });
+    this.syncNPCToClients(npc.uuid);
   }
 
   public removeNPC(npc: NPC) {
