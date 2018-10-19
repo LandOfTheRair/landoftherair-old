@@ -90,7 +90,8 @@ DB.init()
 
         const gameServer = new Server({
           presence,
-          server
+          server,
+          pingTimeout: process.env.COLYSEUS_PING_TIMEOUT ? +process.env.COLYSEUS_PING_TIMEOUT : 5000
         });
 
         gameServer.register('Lobby', Rooms.Lobby);
