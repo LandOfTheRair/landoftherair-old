@@ -13,7 +13,7 @@ export class Regen extends SpellEffect {
   };
 
   maxSkillForSkillGain = 15;
-  skillMults = [[0, 0.5], [11, 1], [21, 2]];
+  skillMults = [[0, 0.25], [11, 0.5], [21, 1]];
 
   private shouldBurst: boolean;
 
@@ -27,7 +27,7 @@ export class Regen extends SpellEffect {
 
     this.aoeAgro(caster, 30);
 
-    const damage = -(this.getTotalDamageRolls(caster) * this.getTotalDamageDieSize(caster) / 2);
+    const damage = -(this.getTotalDamageRolls(caster) * (this.getTotalDamageDieSize(caster) / 4));
 
     this.duration = this.duration || 10;
     this.updateDurationBasedOnTraits(caster);
