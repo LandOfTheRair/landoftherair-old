@@ -166,7 +166,8 @@ export class APIInterceptor implements HttpInterceptor {
         'Cannot read property \'getImage\' of null',
         'cannot read property \'readyState\' of undefined',
         'WebSocket is not open: readyState 2 (CLOSING)',
-        'Uncaught (in promise): Event: {"isTrusted":true}'
+        'Uncaught (in promise): Event: {"isTrusted":true}',
+        'Cannot read property \'loadComplete\' of null'
       ]
     }),
 
