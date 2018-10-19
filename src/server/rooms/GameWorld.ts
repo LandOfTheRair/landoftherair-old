@@ -403,6 +403,7 @@ export class GameWorld extends Room<GameState> {
 
     // 0,0 move to get info on the current tile
     this.clock.setTimeout(() => {
+      this.state.resetPlayerStatus(player);
       MoveHelper.move(player, { room: this, gameState: this.state, x: 0, y: 0 });
     }, 0);
 

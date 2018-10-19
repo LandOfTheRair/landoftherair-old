@@ -282,7 +282,6 @@ export class GameState {
     this.maintainedPlayerHash[player.username] = player;
     this.playerClientIdHash[clientId] = player;
     this.players.push(player);
-    this.resetPlayerStatus(player);
 
     this.quadtreeHelper.playerQuadtreeInsert(player);
   }
