@@ -141,11 +141,26 @@ export class Lobby extends Room<LobbyState> {
 
     const checkAccount = this.state.findAccount(userId);
     if(checkAccount) {
-      this.removeUsername(username);
-
       const oldClient: any = find(this.clients, { userId });
 
       if(oldClient) {
+        this.send(client, {
+          error: 'already_logged_in',
+          prettyErrorName: 'Already Logged In',
+          prettyErrorDesc: 'You are already logged in somewhere else. You will have to log into a different account from this location.'
+        });
+
+        this.send(client, { action: 'force_logout' });
+
+        client.close();
+
+        pull(this.clients, client);
+        delete this.userIdsLoggingIn[userId];
+        return;
+
+        /*
+        this.removeUsername(username);
+
         this.send(oldClient, {
           error: 'someone_kicked_you',
           prettyErrorName: 'Someone Kicked You',
@@ -157,6 +172,7 @@ export class Lobby extends Room<LobbyState> {
         oldClient.close();
 
         pull(this.clients, oldClient);
+        */
 
       }
 
