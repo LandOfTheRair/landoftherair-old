@@ -19,6 +19,8 @@ export class UpStairs extends Command {
 
   execute(player: Player, { room }) {
 
+    if(player.hasEffect('Snare')) return player.sendClientMessage('You are currently snared and cannot use stairs!');
+
     const interactable = player.$$room.state.getInteractable(player.x, player.y, true);
     const stairs = interactable && includes(['StairsUp', 'StairsDown'], interactable.type) ? interactable : null;
 
