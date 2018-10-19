@@ -756,6 +756,8 @@ export class ColyseusGameService {
   private resetRoom() {
     if(!this.worldRoom) return;
 
+    this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'ROOM_LEAVE_RESET' }, 'incoming');
+
     try {
       this.worldRoom.leave();
 
@@ -770,6 +772,8 @@ export class ColyseusGameService {
     setTimeout(() => {
       this.unshowWindows();
       this.clientGameState.reset();
+
+      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'ROOM_LEAVE_QUIT' }, 'incoming');
 
       this.resetRoom();
 
