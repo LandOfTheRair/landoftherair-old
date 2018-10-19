@@ -701,7 +701,7 @@ export class GameWorld extends Room<GameState> {
     this.updatePos(player);
   }
 
-  async teleport(player, opts: { newMap: string, x: number, y: number, zChange?: number, zSet?: number }) {
+  async teleport(player, opts: { newMap: string, x: number, y: number, zChange?: number, zSet?: number, extraMergeOpts?: any }) {
 
     const { newMap, x, y, zChange, zSet } = opts;
 
@@ -730,7 +730,12 @@ export class GameWorld extends Room<GameState> {
     if(newMap && player.map !== newMap) {
       player.map = newMap;
       player.$$doNotSave = true;
-      await this.savePlayer(player, { x, y, map: newMap }, true);
+      player.$$ready = false;
+
+      const saveOpts = { x, y, map: newMap };
+      merge(saveOpts, opts.extraMergeOpts || {});
+
+      await this.savePlayer(player, saveOpts, true);
       this.state.resetFOV(player);
       this.sendTo(client, { action: 'set_character', character: player });
       this.sendTo(client, { action: 'change_map', map: newMap, party: player.partyName });

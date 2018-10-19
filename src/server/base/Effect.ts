@@ -117,9 +117,9 @@ export class Effect {
   effectStart(char: Character) {}
   effectEnd(char: Character) {}
 
-  effectMessage(char: Character, message: string|any) {
+  effectMessage(char: Character, message: string|any, shouldQueue = false) {
     if(!char || this.shouldNotShowMessage) return;
-    char.sendClientMessage(message);
+    char.sendClientMessage(message, shouldQueue);
   }
 
   effectMessageRadius(char: Character, message: string|any, radius = 4, ignore: string[] = []) {

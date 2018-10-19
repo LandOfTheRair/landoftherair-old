@@ -361,7 +361,7 @@ export class Player extends Character {
       this.$$room.saveGround();
     }
 
-    this.lastDeathLocation = { x: this.x, y: this.y };
+    this.lastDeathLocation = { x: this.x, y: this.y, map: this.map };
 
     // 5 minutes to restore
     this.$$deathTicks = 60 * 5;
@@ -452,8 +452,18 @@ export class Player extends Character {
     }
 
     this.reviveHandler();
-    await this.teleportToRespawnPoint();
-    this.hp.set(1);
+
+    if(this.respawnPoint.map === this.map) {
+      this.hp.set(1);
+      await this.teleportToRespawnPoint();
+    } else {
+      await this.$$room.teleport(this, {
+        newMap: this.respawnPoint.map, x: this.respawnPoint.x, y: this.respawnPoint.y, zChange: 0,
+        extraMergeOpts: {
+          hp: { __current: 1 }
+        }
+      });
+    }
   }
 
   teleportToRespawnPoint() {

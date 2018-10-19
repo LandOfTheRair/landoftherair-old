@@ -18,7 +18,7 @@ export class LowCON extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'Your constitution is dangerously low!');
+    this.effectMessage(char, 'Your constitution is dangerously low!', true);
   }
 
   effectTick(char: Character) {
