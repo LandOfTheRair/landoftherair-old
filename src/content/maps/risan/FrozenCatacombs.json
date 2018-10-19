@@ -12365,30 +12365,6 @@
                  "y":704
                 }, 
                 {
-                 "gid":767,
-                 "height":64,
-                 "id":1782,
-                 "name":"",
-                 "properties":
-                    {
-                     "teleportMap":"Frostlands",
-                     "teleportX":164,
-                     "teleportY":209
-                    },
-                 "propertytypes":
-                    {
-                     "teleportMap":"string",
-                     "teleportX":"int",
-                     "teleportY":"int"
-                    },
-                 "rotation":0,
-                 "type":"ClimbUp",
-                 "visible":true,
-                 "width":64,
-                 "x":2048,
-                 "y":1792
-                }, 
-                {
                  "gid":2287,
                  "height":64,
                  "id":1785,
@@ -15231,6 +15207,30 @@
                  "width":64,
                  "x":9408,
                  "y":8768
+                }, 
+                {
+                 "gid":2202,
+                 "height":64,
+                 "id":3140,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"Frostlands",
+                     "teleportX":164,
+                     "teleportY":209
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"ClimbUp",
+                 "visible":true,
+                 "width":64,
+                 "x":2048,
+                 "y":1792
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -15288,7 +15288,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":3140,
+ "nextobjectid":3141,
  "orientation":"orthogonal",
  "properties":
     {
@@ -15311,7 +15311,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.4",
  "tileheight":64,
  "tilesets":[
         {
