@@ -331,13 +331,6 @@ export class GameWorld extends Room<GameState> {
 
     this.sendTo(client, { action: 'set_map', map: this.state.formattedMap });
 
-    if(this.mapName === 'Tutorial') {
-      this.clock.setTimeout(() => {
-        player.sendClientMessage('Welcome to Land of the Rair!');
-        this.sendTo(client, { action: 'take_tour' });
-      }, 0);
-    }
-
     if(this.mapSubscriberOnly && !this.subscriptionHelper.isSubscribed(player)) {
       player.sendClientMessage('Magical forces push you out of the rift!');
       await this.teleport(player, { newMap: 'Rylt', x: 68, y: 13 });
@@ -403,6 +396,12 @@ export class GameWorld extends Room<GameState> {
 
     // 0,0 move to get info on the current tile
     this.clock.setTimeout(() => {
+
+      if(this.mapName === 'Tutorial') {
+        player.sendClientMessage('Welcome to Land of the Rair!');
+        this.sendTo(client, { action: 'take_tour' });
+      }
+
       this.state.resetPlayerStatus(player);
       MoveHelper.move(player, { room: this, gameState: this.state, x: 0, y: 0 });
     }, 0);
