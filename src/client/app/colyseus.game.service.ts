@@ -784,7 +784,9 @@ export class ColyseusGameService {
       this.unshowWindows();
       this.clientGameState.reset();
 
-      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'ROOM_LEAVE_QUIT' }, 'incoming');
+      if(this.colyseus) {
+        this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'ROOM_LEAVE_QUIT' }, 'incoming');
+      }
 
       this.resetRoom();
 
