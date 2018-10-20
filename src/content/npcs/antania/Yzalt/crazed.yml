@@ -1119,6 +1119,8 @@
   drops:
     - result: Ranata Totem
       chance: -1
+    - result: Antanian Earring
+      chance: -1
 
   copyDrops:
     - drop: 'rightHand'
