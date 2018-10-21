@@ -29,6 +29,12 @@ export class InsaneRanataAIBehavior extends DefaultAIBehavior {
     const possiblePlayers = npc.$$room.state.getPlayersInRange(npc, 10);
     const target = sample(possiblePlayers);
 
+    if(!target) {
+      const runMsgObject = { name: npc.name, message: `Oh? Have you all run away? Do not anger me!`, subClass: 'chatter' };
+      npc.sendClientMessageToRadius(runMsgObject, 50);
+      return;
+    }
+
     npc.addAgro(target, 100000);
 
     const msgObject = { name: npc.name, message: `Gwahahaha, ${target.name}, you shall be my next target!`, subClass: 'chatter' };
