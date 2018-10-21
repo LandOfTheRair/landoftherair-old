@@ -125,7 +125,7 @@
   baseClass: Mage
   sprite: 545
   alignment: Evil
-  stats: 10
+  stats: 5
   skillLevels: 1
 
   level: 4
