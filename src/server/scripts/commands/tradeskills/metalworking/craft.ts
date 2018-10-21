@@ -21,6 +21,8 @@ export class Craft extends Command {
     const container = player.tradeSkillContainers.metalworking;
 
     if(container.craftResult) return player.sendClientMessage('You need to remove your previous result first.');
+    if(!container.craftItem) return player.sendClientMessage('You need a base item to craft!');
+    if(!container.craftReagent) return player.sendClientMessage('You need a reagent to craft!');
 
     const result = await MetalworkingHelper.craft(player);
     if(!result) return player.sendClientMessage('Your craft did not pan out.');
