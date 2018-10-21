@@ -598,7 +598,7 @@
                  "gid":1545,
                  "height":64,
                  "id":207,
-                 "name":"Locker #4",
+                 "name":"Sub Locker #4",
                  "properties":
                     {
                      "lockerId":"subscriber4"
@@ -611,14 +611,14 @@
                  "type":"Locker",
                  "visible":true,
                  "width":64,
-                 "x":1216,
+                 "x":1152,
                  "y":768
                 }, 
                 {
                  "gid":1545,
                  "height":64,
                  "id":208,
-                 "name":"Locker #3",
+                 "name":"Sub Locker #3",
                  "properties":
                     {
                      "lockerId":"subscriber3"
@@ -631,14 +631,14 @@
                  "type":"Locker",
                  "visible":true,
                  "width":64,
-                 "x":1088,
+                 "x":1024,
                  "y":768
                 }, 
                 {
                  "gid":1545,
                  "height":64,
                  "id":209,
-                 "name":"Locker #2",
+                 "name":"Sub Locker #2",
                  "properties":
                     {
                      "lockerId":"subscriber2"
@@ -651,14 +651,14 @@
                  "type":"Locker",
                  "visible":true,
                  "width":64,
-                 "x":960,
+                 "x":896,
                  "y":768
                 }, 
                 {
                  "gid":1545,
                  "height":64,
                  "id":210,
-                 "name":"Locker #1",
+                 "name":"Sub Locker #1",
                  "properties":
                     {
                      "lockerId":"subscriber1"
@@ -671,7 +671,7 @@
                  "type":"Locker",
                  "visible":true,
                  "width":64,
-                 "x":832,
+                 "x":768,
                  "y":768
                 }, 
                 {
@@ -865,6 +865,26 @@
                  "width":64,
                  "x":1152,
                  "y":2304
+                }, 
+                {
+                 "gid":1545,
+                 "height":64,
+                 "id":491,
+                 "name":"Global Locker",
+                 "properties":
+                    {
+                     "lockerId":"global"
+                    },
+                 "propertytypes":
+                    {
+                     "lockerId":"string"
+                    },
+                 "rotation":0,
+                 "type":"Locker",
+                 "visible":true,
+                 "width":64,
+                 "x":1280,
+                 "y":768
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1546,7 +1566,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":491,
+ "nextobjectid":492,
  "orientation":"orthogonal",
  "properties":
     {

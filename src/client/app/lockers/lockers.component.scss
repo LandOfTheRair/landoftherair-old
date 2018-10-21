@@ -2,3 +2,23 @@
 .item-slot {
   margin: 2px;
 }
+
+.nav.nav-pills {
+  max-height: 210px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  .nav-item {
+    width: 90%;
+  }
+}
+
+.locker {
+  max-height: 210px;
+  overflow-y: auto;
+  padding: 5px;
+
+  &.normal-locker {
+    overflow-y: hidden;
+  }
+}

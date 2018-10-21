@@ -41,7 +41,10 @@ export class LockerHelper {
   async openLocker(player: Player, lockerName, lockerId) {
     const regionId = player.$$room.mapRegion;
 
-    await this.createLockerIfNotExist(player, regionId, lockerName, lockerId);
+    if(lockerId !== 'global') {
+      await this.createLockerIfNotExist(player, regionId, lockerName, lockerId);
+    }
+
     const sharedLockers = await this.createSharedLockersIfNotExists(player);
     const numSharedLockers = sharedLockers.length;
 
@@ -51,13 +54,17 @@ export class LockerHelper {
     baseLockerSlots.push(MATERIAL_STORAGE_LOCKER_ID);
     baseLockerSlots.push(player.charSlot);
 
-    const lockers = await DB.$characterLockers.find({
+    const findOpts: any = {
       username: player.username,
-      charSlot: { $in: baseLockerSlots },
-      regionId: { $in: [regionId, 'Shared', MATERIAL_STORAGE_LOCKER_REGION] }
-    }).toArray();
+      charSlot: { $in: baseLockerSlots }
+    };
 
-    player.$$room.showLockerWindow(player, lockers, lockerId);
+    if(lockerId !== 'global') findOpts.regionId = { $in: [regionId, 'Shared', MATERIAL_STORAGE_LOCKER_REGION] };
+
+    const lockers = await DB.$characterLockers.find(findOpts).toArray();
+
+    const activeLockerId = lockerId === 'global' ? lockers[0].lockerId : lockerId;
+    player.$$room.showLockerWindow(player, lockers, activeLockerId);
   }
 
   async saveLocker(player: Player, locker: Locker) {
