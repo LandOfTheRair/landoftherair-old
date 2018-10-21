@@ -32,7 +32,7 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['truth'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-      return `The truth. Yes, the truth. Let's see here. In the not-so-distant future, the Heniz and Steffen were one. 
+      return `The truth. Yes, the truth. Let's see here. In the not-so-distant past, the Heniz and Steffen were one. 
       A valiant, noble kin. It seems like forever ago now. Then the magical FRUIT started growing.
       Oh boy, was it growing. Before we knew it, it was everywhere nearest the castle.
       That's when a civil WAR broke out.`;
