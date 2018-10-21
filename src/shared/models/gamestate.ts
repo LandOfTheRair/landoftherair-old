@@ -469,16 +469,17 @@ export class GameState {
     // I can never be hostile to myself
     if(me === target) return false;
 
-    // I shouldn't be hostile towards my party members
-    if((<Player>me).partyName && (<Player>me).partyName === (<Player>target).partyName) return false;
-
     // GMs are never hostile
     if(target.allegiance === 'GM') return false;
 
     // natural resources are only hostile if I have a reputation modifier for them (positive or negative)
     if(target.allegiance === 'NaturalResource' && !me.allegianceReputation.NaturalResource) return false;
 
+    // I shouldn't be hostile towards my party members
+    if((<Player>me).partyName && (<Player>me).partyName === (<Player>target).partyName) return false;
+
     // if I am a pet (owned by a player), and my prospective target is a player, we won't do this
+    // only present on server
     if(me.$$owner && me.$$owner.isPlayer() && target.isPlayer()) return false;
 
     // if either of us are agro'd to each other, there is hostility

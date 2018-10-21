@@ -996,12 +996,9 @@ export class ColyseusGameService {
 
     if(me.partyName && me.partyName === (<Player>compare).partyName) return 'neutral';
 
-    if(compare.agro[me.uuid]
-    || me.agro[compare.uuid]) return 'hostile';
+    if(compare.agro[me.uuid] || me.agro[compare.uuid]) return 'hostile';
 
     if(me.hasEffect('Disguise') && me.getTotalStat('cha') > compare.getTotalStat('wil')) return 'neutral';
-
-    if(me.alignment === 'Evil' && compare.alignment === 'Good') return 'hostile';
 
     const hostility = (<NPC>compare).hostility;
 
@@ -1010,11 +1007,15 @@ export class ColyseusGameService {
     if(hostility === 'Never') return 'friendly';
 
     if(hostility === 'Faction') {
-      if(compare.allegianceReputation[me.allegiance] < -100
-      || me.allegianceReputation[compare.allegiance] < -100) return 'hostile';
+      if(me.isHostileTo(compare.allegiance)
+      || compare.isHostileTo(me.allegiance)) return 'hostile';
     }
 
+    if(me.allegiance === compare.allegiance) return 'neutral';
+
     if(hostility === 'Always') return 'hostile';
+
+    if(me.alignment === 'Evil' && compare.alignment === 'Good') return 'hostile';
 
     return 'neutral';
   }
