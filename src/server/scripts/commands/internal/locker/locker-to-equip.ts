@@ -7,18 +7,20 @@ import { Player } from '../../../../../shared/models/player';
 export class LockerToEquip extends Command {
 
   public name = '~WtE';
-  public format = 'ItemSlot LockerID';
+  public format = 'ItemSlot RegionID LockerID';
 
   async execute(player: Player, { room, args }) {
     if(this.isAccessingLocker(player)) return;
-    const [slotStr, lockerId] = args.split(' ');
+    const [slotStr, regionId, lockerId] = args.split(' ');
     const slot = +slotStr;
     if(isUndefined(slotStr)) return;
 
     this.accessLocker(player);
-    if(!this.findLocker(player)) return this.unaccessLocker(player);
 
-    const locker = await player.$$room.lockerHelper.loadLocker(player, lockerId);
+    const lockerRef = this.findLocker(player);
+    if(!lockerRef) return this.unaccessLocker(player);
+
+    const locker = await player.$$room.lockerHelper.loadLocker(player, regionId, lockerId, lockerRef.properties.lockerId === 'global');
     if(!locker) return this.unaccessLocker(player);
 
     const item = locker.getItemFromSlot(slot);

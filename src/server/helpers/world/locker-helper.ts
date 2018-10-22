@@ -74,13 +74,15 @@ export class LockerHelper {
     );
   }
 
-  async loadLocker(player: Player, lockerId): Promise<Locker> {
+  async loadLocker(player: Player, regionId, lockerId, isGlobal: boolean): Promise<Locker> {
+    const currentRegionId = player.$$room.mapRegion;
+    if(!isGlobal && currentRegionId !== regionId) return null;
+
     if(player.$$locker) {
       const locker = await player.$$locker;
       if(player.$$locker.lockerId === lockerId) return locker;
     }
 
-    let regionId = player.$$room.mapRegion;
     let charSlot = player.charSlot;
 
     if(startsWith(lockerId, 'shared')) {

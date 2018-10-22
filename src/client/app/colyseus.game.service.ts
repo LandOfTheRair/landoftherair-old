@@ -944,11 +944,11 @@ export class ColyseusGameService {
     }
 
     if(choiceStr === 'W') {
-      args = `${args} ${this.showLocker[this.activeLockerNumber].lockerId}`;
+      args = `${args} ${this.showLocker[this.activeLockerNumber].regionId} ${this.showLocker[this.activeLockerNumber].lockerId}`;
     }
 
     if(context === 'Wardrobe') {
-      args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].lockerId}`;
+      args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].regionId} ${this.showLocker[this.activeLockerNumber].lockerId}`;
     }
 
     if(context === 'WardrobeMaterial') {
@@ -973,10 +973,10 @@ export class ColyseusGameService {
 
         if(result <= 0 || result.dismiss) return;
 
-        args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].lockerId} ${result}`;
+        args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].regionId} ${this.showLocker[this.activeLockerNumber].lockerId} ${result}`;
 
       } else {
-        args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].lockerId} 1`;
+        args = `${contextSlot} ${this.showLocker[this.activeLockerNumber].regionId} ${this.showLocker[this.activeLockerNumber].lockerId} 1`;
       }
     }
 

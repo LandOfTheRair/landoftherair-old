@@ -5,9 +5,11 @@ import { Player } from '../../../../../shared/models/player';
 export class RightToLocker extends Command {
 
   public name = '~RtW';
-  public format = 'LockerID';
+  public format = 'RegionID LockerID';
 
   async execute(player: Player, { room, args }) {
+
+    const [regionId, lockerId] = args.split(' ');
 
     if(this.isAccessingLocker(player)) return;
 
@@ -16,9 +18,10 @@ export class RightToLocker extends Command {
 
     this.accessLocker(player);
 
-    if(!this.findLocker(player)) return this.unaccessLocker(player);
+    const lockerRef = this.findLocker(player);
+    if(!lockerRef) return this.unaccessLocker(player);
 
-    const locker = await player.$$room.lockerHelper.loadLocker(player, args);
+    const locker = await player.$$room.lockerHelper.loadLocker(player, regionId, lockerId, lockerRef.properties.lockerId === 'global');
     if(!locker) return this.unaccessLocker(player);
 
     if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player, locker);

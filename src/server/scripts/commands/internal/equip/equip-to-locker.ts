@@ -7,10 +7,10 @@ import { Player } from '../../../../../shared/models/player';
 export class EquipToLocker extends Command {
 
   public name = '~EtW';
-  public format = 'ItemSlot LockerID';
+  public format = 'ItemSlot RegionID LockerID';
 
   async execute(player: Player, { room, args }) {
-    const [slot, lockerId] = args.split(' ');
+    const [slot, regionId, lockerId] = args.split(' ');
     if(this.isAccessingLocker(player)) return;
     if(isUndefined(slot)) return false;
 
@@ -19,9 +19,10 @@ export class EquipToLocker extends Command {
 
     this.accessLocker(player);
 
-    if(!this.findLocker(player)) return this.unaccessLocker(player);
+    const lockerRef = this.findLocker(player);
+    if(!lockerRef) return this.unaccessLocker(player);
 
-    const locker = await player.$$room.lockerHelper.loadLocker(player, lockerId);
+    const locker = await player.$$room.lockerHelper.loadLocker(player, regionId, lockerId, lockerRef.properties.lockerId === 'global');
     if(!locker) return this.unaccessLocker(player);
 
     if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player, locker);

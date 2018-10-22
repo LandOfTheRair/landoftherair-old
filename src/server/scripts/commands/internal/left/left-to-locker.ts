@@ -5,20 +5,23 @@ import { Player } from '../../../../../shared/models/player';
 export class LeftToLocker extends Command {
 
   public name = '~LtW';
-  public format = 'LockerID';
+  public format = 'RegionID LockerID';
 
   async execute(player: Player, { room, args }) {
 
     if(this.isAccessingLocker(player)) return;
+
+    const [regionId, lockerId] = args.split(' ');
 
     const item = player.leftHand;
     if(!item) return;
 
     this.accessLocker(player);
 
-    if(!this.findLocker(player)) return this.unaccessLocker(player);
+    const lockerRef = this.findLocker(player);
+    if(!lockerRef) return this.unaccessLocker(player);
 
-    const locker = await player.$$room.lockerHelper.loadLocker(player, args);
+    const locker = await player.$$room.lockerHelper.loadLocker(player, regionId, lockerId, lockerRef.properties.lockerId === 'global');
     if(!locker) return this.unaccessLocker(player);
 
     if(!this.addItemToContainer(player, locker, item)) return this.unaccessLocker(player, locker);

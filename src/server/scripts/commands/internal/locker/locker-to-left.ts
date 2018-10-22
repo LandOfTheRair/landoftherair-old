@@ -7,10 +7,10 @@ import { Player } from '../../../../../shared/models/player';
 export class LockerToLeft extends Command {
 
   public name = '~WtL';
-  public format = 'ItemSlot LockerID [Amt]';
+  public format = 'ItemSlot RegionID LockerID [Amt]';
 
   async execute(player: Player, { room, args }) {
-    const [slotId, lockerId, amount] = args.split(' ');
+    const [slotId, regionId, lockerId, amount] = args.split(' ');
     if(isUndefined(slotId)) return;
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
@@ -18,9 +18,11 @@ export class LockerToLeft extends Command {
     this.accessLocker(player);
 
     if(!this.checkPlayerEmptyHand(player)) return this.unaccessLocker(player);
-    if(!this.findLocker(player)) return this.unaccessLocker(player);
 
-    const locker = await player.$$room.lockerHelper.loadLocker(player, lockerId);
+    const lockerRef = this.findLocker(player);
+    if(!lockerRef) return this.unaccessLocker(player);
+
+    const locker = await player.$$room.lockerHelper.loadLocker(player, regionId, lockerId, lockerRef.properties.lockerId === 'global');
     if(!locker) return this.unaccessLocker(player);
 
     const item = locker.takeItemFromSlot(+slotId, +amount);

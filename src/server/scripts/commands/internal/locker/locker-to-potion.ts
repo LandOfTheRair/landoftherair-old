@@ -7,19 +7,21 @@ import { Player } from '../../../../../shared/models/player';
 export class LockerToPotion extends Command {
 
   public name = '~WtP';
-  public format = 'ItemSlot LockerID';
+  public format = 'ItemSlot RegionID LockerID';
 
   async execute(player: Player, { room, args }) {
-    const [slotId, lockerId] = args.split(' ');
+    const [slotId, regionId, lockerId] = args.split(' ');
     if(isUndefined(slotId)) return;
 
     if(this.isAccessingLocker(player)) return;
     if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
 
     this.accessLocker(player);
-    if(!this.findLocker(player)) return this.unaccessLocker(player);
 
-    const locker = await player.$$room.lockerHelper.loadLocker(player, lockerId);
+    const lockerRef = this.findLocker(player);
+    if(!lockerRef) return this.unaccessLocker(player);
+
+    const locker = await player.$$room.lockerHelper.loadLocker(player, regionId, lockerId, lockerRef.properties.lockerId === 'global');
     if(!locker) return this.unaccessLocker(player);
 
     const item = locker.getItemFromSlot(+slotId);
