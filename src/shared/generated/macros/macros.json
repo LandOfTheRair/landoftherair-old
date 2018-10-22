@@ -31,22 +31,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Stats",
-            "macro": "show stats",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your stats and their base level in text form.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Show Skills",
             "macro": "show skills",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "See all of your skills and skill levels in text form.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Show Stats",
+            "macro": "show stats",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your stats and their base level in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -142,6 +142,17 @@
             "requiresLearn": false
         },
         {
+            "name": "Hide",
+            "macro": "hide",
+            "icon": "hidden",
+            "color": "#cccccc",
+            "bgColor": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Hide in the shadows.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
             "name": "Jumpkick",
             "macro": "jumpkick",
             "icon": "high-kick",
@@ -158,17 +169,6 @@
             "color": "#530000",
             "mode": "lockActivation",
             "tooltipDesc": "Physically attack a target with your boots.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
-            "name": "Hide",
-            "macro": "hide",
-            "icon": "hidden",
-            "color": "#cccccc",
-            "bgColor": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Hide in the shadows.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -413,6 +413,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Snare",
+            "macro": "cast snare",
+            "icon": "light-thorny-triskelion",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Slow down the target. Cost: 50 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Secondwind",
             "macro": "cast secondwind",
             "icon": "wing-cloak",
@@ -420,16 +430,6 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Prevent losing gear on death. Cost: 250 MP",
             "skillTPCost": 20,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Snare",
-            "macro": "cast snare",
-            "icon": "light-thorny-triskelion",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Slow down the target. Cost: 50 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -454,6 +454,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Vision",
+            "macro": "cast vision",
+            "icon": "evil-eyes",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cure blindness on a single target. Cost: 10 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "VitalEssence",
             "macro": "cast vitalessence",
             "icon": "bell-shield",
@@ -461,16 +471,6 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Boost maximum vitality and armor for a single target. Cost: 200 MP",
             "requireSkillLevel": 15,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Vision",
-            "macro": "cast vision",
-            "icon": "evil-eyes",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cure blindness on a single target. Cost: 10 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -783,22 +783,22 @@
             "requiresLearn": true
         },
         {
-            "name": "DarkVision",
-            "macro": "cast darkvision",
-            "icon": "angry-eyes",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See in the darkness. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Darkness",
             "macro": "cast darkness",
             "icon": "dust-cloud",
             "color": "#000",
             "mode": "clickToTarget",
             "tooltipDesc": "Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "DarkVision",
+            "macro": "cast darkvision",
+            "icon": "angry-eyes",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See in the darkness. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -843,16 +843,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Poison",
-            "macro": "cast poison",
-            "icon": "poison-gas",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Push",
             "macro": "cast push",
             "icon": "swirl-string",
@@ -883,6 +873,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Vortex",
+            "macro": "cast vortex",
+            "icon": "wind-hole",
+            "color": "#333",
+            "mode": "autoActivate",
+            "tooltipDesc": "Create a vortex which sucks in nearby items. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Venom",
             "macro": "cast venom",
             "icon": "dripping-goo",
@@ -893,12 +893,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Vortex",
-            "macro": "cast vortex",
-            "icon": "wind-hole",
-            "color": "#333",
-            "mode": "autoActivate",
-            "tooltipDesc": "Create a vortex which sucks in nearby items. Cost: 100 MP",
+            "name": "Poison",
+            "macro": "cast poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -924,22 +924,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Disarm",
-            "macro": "cast disarm",
-            "icon": "quake-stomp",
-            "color": "#000053",
-            "mode": "clickToActivate",
-            "tooltipDesc": "Disarm a trap on an adjacent tile.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Debilitate",
             "macro": "cast debilitate",
             "icon": "one-eyed",
             "color": "#a00",
             "mode": "clickToTarget",
             "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disarm",
+            "macro": "cast disarm",
+            "icon": "quake-stomp",
+            "color": "#000053",
+            "mode": "clickToActivate",
+            "tooltipDesc": "Disarm a trap on an adjacent tile.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -962,17 +962,6 @@
             "mode": "autoActivate",
             "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
             "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MultiShot",
-            "macro": "cast multishot",
-            "icon": "double-shot",
-            "color": "#000",
-            "mode": "lockActivation",
-            "tooltipDesc": "Shoot multiple arrows at your enemy. Cost: Arrows",
-            "skillTPCost": 10,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -1007,6 +996,17 @@
             "requiresLearn": true
         },
         {
+            "name": "MultiShot",
+            "macro": "cast multishot",
+            "icon": "double-shot",
+            "color": "#000",
+            "mode": "lockActivation",
+            "tooltipDesc": "Shoot multiple arrows at your enemy. Cost: Arrows",
+            "skillTPCost": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Blindstrike",
             "macro": "art blindstrike",
             "icon": "sword-tie",
@@ -1024,17 +1024,6 @@
             "color": "#a00",
             "mode": "clickToTarget",
             "tooltipDesc": "Increase your STR, DEX, and AGI.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Multistrike",
-            "macro": "art multistrike",
-            "icon": "sword-spin",
-            "color": "#a00",
-            "mode": "autoActivate",
-            "tooltipDesc": "Attack multiple creatures on your tile. Requires weapon skill 13.",
-            "requireSkillLevel": 13,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -1091,6 +1080,17 @@
             "color": "#a00",
             "mode": "clickToTarget",
             "tooltipDesc": "Increase your physical and magical resistance.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Multistrike",
+            "macro": "art multistrike",
+            "icon": "sword-spin",
+            "color": "#a00",
+            "mode": "autoActivate",
+            "tooltipDesc": "Attack multiple creatures on your tile. Requires weapon skill 13.",
+            "requireSkillLevel": 13,
             "isSystem": true,
             "requiresLearn": true
         },
