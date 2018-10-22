@@ -308,24 +308,6 @@ export class CombatHelper {
 
     attacker.flagSkill(flagSkills);
 
-    if(attacker.rightHand && !attackerWeapon.canUseInCombat(attacker)) {
-      if(!isThrow || (isThrow && !attackerWeapon.returnsOnThrow)) {
-        attacker.$$room.addItemToGround(attacker, attacker.rightHand);
-        attacker.setRightHand(null);
-      }
-
-      attacker.sendClientMessage({ message: `You feel a burning sensation in your hand!`, target: defender.uuid }, true);
-      return;
-    }
-
-    console.log(isPunch, attackerWeapon.canUseInCombat(attacker))
-    if(isPunch && !attackerWeapon.canUseInCombat(attacker)) {
-      attacker.$$room.addItemToGround(attacker, attackerWeapon);
-      attacker.unequip('Hands');
-      attacker.sendClientMessage({ message: `You feel a burning sensation in your hand!`, target: defender.uuid }, true);
-      return;
-    }
-
     let defenderArmor = null;
 
     if(!defenderArmor && defender.gear.Robe2 && defender.gear.Robe2.hasCondition()) defenderArmor = defender.gear.Robe2;
@@ -416,6 +398,26 @@ export class CombatHelper {
       mitigation: defender.getTotalStat('mitigation'),
       dodgeBonus: Math.floor((100 - get(defender.gear, 'Armor.stats.mitigation', 0)) / 10)
     };
+
+    const isFumble = RollerHelper.XInY(attackerScope.level, attackerScope.skill * attackerScope.realLevel * attackerScope.accuracy);
+    const failMsg = isFumble ? 'You fumble your weapon.' : 'You feel a burning sensation in your hands!';
+
+    if(attacker.rightHand && (isFumble || !attackerWeapon.canUseInCombat(attacker))) {
+      if(!isThrow || (isThrow && !attackerWeapon.returnsOnThrow)) {
+        attacker.$$room.addItemToGround(attacker, attacker.rightHand);
+        attacker.setRightHand(null);
+      }
+
+      attacker.sendClientMessage({ message: failMsg, target: defender.uuid }, true);
+      return;
+    }
+
+    if(isPunch && attackerWeapon.itemClass !== 'Hands' && (isFumble || !attackerWeapon.canUseInCombat(attacker))) {
+      attacker.$$room.addItemToGround(attacker, attackerWeapon);
+      attacker.unequip('Hands');
+      attacker.sendClientMessage({ message: failMsg, target: defender.uuid }, true);
+      return;
+    }
 
     const lostAtkCondition = 1 - (attacker.getTraitLevelAndUsageModifier('CarefulTouch'));
     const totalConditionDamageDone = this.calcDurabilityDamageDoneBasedOnDefender(attackerWeapon, attacker, defender, lostAtkCondition);
