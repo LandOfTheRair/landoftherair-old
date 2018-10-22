@@ -7,8 +7,7 @@
     offense: 5
     defense: 5
     accuracy: 5
-  type: Axe
-  value: 2346
+  value: 2844
   sprite: 985
   binds: true
 
