@@ -1,5 +1,5 @@
 
-import { get, some } from 'lodash';
+import { get } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
@@ -32,9 +32,11 @@ export class Upgrade extends Command {
       return player.sendClientMessage('You cannot use upgraded fur to upgrade armor!');
     }
 
+    /*
     if(some(get(baseItem, 'previousUpgrades', []), x => x.fireResist || x.iceResist || x.diseaseResist || x.poisonResist)) {
       return player.sendClientMessage('You have already padded this armor with fur!');
     }
+    */
 
     const result = MetalworkingHelper.upgrade(player);
     if(!result) return player.sendClientMessage('Your upgrade did not pan out.');
