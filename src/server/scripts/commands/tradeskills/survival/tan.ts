@@ -49,8 +49,6 @@ export class Tan extends Command {
       // 5 skills below or worse - 0% chance to tan. 5 skills above or better - 100% chance to tan
       const pctChance = Math.abs(clamp(diff, -5, 5) - 5) * 10;
 
-      console.log(curSkill, maxSkill, (<any>corpse).tanSkillRequired, isBetterThanCorpseSkillRequired)
-
       if(isBetterThanCorpseSkillRequired || RollerHelper.XInOneHundred(pctChance)) {
         player.$$room.npcLoader.loadItem(corpse.tansFor)
           .then(item => {
