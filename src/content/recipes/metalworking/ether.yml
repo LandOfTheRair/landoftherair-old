@@ -118,3 +118,12 @@
     - Antanian Spear
     - Ether Scale (Refined)
 
+- item: Ether Claws
+  skillGained: 50
+  maxSkillForGains: 8
+  requiredSkill: 6
+  xpGained: 25000
+  ingredients:
+    - Antanian Leather Gloves
+    - Ether Scale (Refined)
+

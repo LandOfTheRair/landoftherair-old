@@ -1,0 +1,16 @@
+
+
+- name: Ether Claws
+  desc: "an pair of claws forged from ether"
+  tier: 5
+  stats:
+    offense: 5
+    defense: 5
+    accuracy: 5
+  type: Axe
+  value: 2346
+  sprite: 985
+  binds: true
+
+  requirements:
+    level: 15
