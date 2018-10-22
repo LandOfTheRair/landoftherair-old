@@ -400,7 +400,8 @@ export class CombatHelper {
     };
 
     const fumbleMultiplier = attacker.isPlayer() ? 1 : 100;
-    let isFumble = RollerHelper.XInY(1, attackerScope.skill * attackerScope.realLevel * attackerScope.accuracy * attackerScope.offense) * fumbleMultiplier;
+    const fumbleRoll = attackerScope.skill * attackerScope.realLevel * attackerScope.accuracy * attackerScope.offense;
+    let isFumble = RollerHelper.XInY(1, fumbleRoll) * fumbleMultiplier;
     const failMsg = isFumble ? 'You fumble your weapon.' : 'You feel a burning sensation in your hands!';
 
     if(attacker.hasEffect('Dangerous')) isFumble = false;
