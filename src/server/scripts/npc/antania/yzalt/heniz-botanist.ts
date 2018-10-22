@@ -21,6 +21,7 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
 
       if(player.level < 7) return 'You are not yet experienced enough to receive my blessing!';
+      if(player.baseClass === 'Warrior' || player.baseClass === 'Thief') return 'You do not need my blessing!';
 
       if(player.hasPermanentCompletionFor(QUESTNAME)) return `You've already brought me flowers, ${player.name}!`;
 
