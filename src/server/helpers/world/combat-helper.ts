@@ -238,8 +238,8 @@ export class CombatHelper {
   }
 
   private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
-    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isKick, isPunch, isRiposte, damageMult } = opts;
-    let { isBackstab, accuracyLoss } = opts;
+    const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isKick, isRiposte, damageMult } = opts;
+    let { isPunch, isBackstab, accuracyLoss } = opts;
 
     if(!accuracyLoss) accuracyLoss = 0;
 
@@ -290,6 +290,7 @@ export class CombatHelper {
       attackerWeapon = attacker.rightHand;
 
       if(isPunch || !attackerWeapon) {
+        isPunch = true;
         attackerWeapon = attacker.gear.Hands
                     || { type: SkillClassNames.Martial, itemClass: 'Hands', name: 'hands',
                          tier: 1,
@@ -308,11 +309,19 @@ export class CombatHelper {
     attacker.flagSkill(flagSkills);
 
     if(attacker.rightHand && !attackerWeapon.canUseInCombat(attacker)) {
-      if(!isThrow || (isThrow && attackerWeapon.returnsOnThrow)) {
+      if(!isThrow || (isThrow && !attackerWeapon.returnsOnThrow)) {
         attacker.$$room.addItemToGround(attacker, attacker.rightHand);
         attacker.setRightHand(null);
       }
 
+      attacker.sendClientMessage({ message: `You feel a burning sensation in your hand!`, target: defender.uuid }, true);
+      return;
+    }
+
+    console.log(isPunch, attackerWeapon.canUseInCombat(attacker))
+    if(isPunch && !attackerWeapon.canUseInCombat(attacker)) {
+      attacker.$$room.addItemToGround(attacker, attackerWeapon);
+      attacker.unequip('Hands');
       attacker.sendClientMessage({ message: `You feel a burning sensation in your hand!`, target: defender.uuid }, true);
       return;
     }
