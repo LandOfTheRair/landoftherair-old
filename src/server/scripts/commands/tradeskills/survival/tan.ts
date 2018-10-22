@@ -42,19 +42,22 @@ export class Tan extends Command {
 
       const curSkill = player.calcSkillLevel(SkillClassNames.Survival);
       const maxSkill = player.$$room.maxSkill;
-  
+
+      const isBetterThanCorpseSkillRequired = (<any>corpse).tanSkillRequired && curSkill >= (<any>corpse).tanSkillRequired;
       const diff = maxSkill - curSkill;
 
       // 5 skills below or worse - 0% chance to tan. 5 skills above or better - 100% chance to tan
       const pctChance = Math.abs(clamp(diff, -5, 5) - 5) * 10;
 
-      if(RollerHelper.XInOneHundred(pctChance)) {
+      console.log(curSkill, maxSkill, (<any>corpse).tanSkillRequired, isBetterThanCorpseSkillRequired)
+
+      if(isBetterThanCorpseSkillRequired || RollerHelper.XInOneHundred(pctChance)) {
         player.$$room.npcLoader.loadItem(corpse.tansFor)
           .then(item => {
             item.setOwner(player);
             player.$$room.addItemToGround(player, item);
           });
-  
+
         player.sendClientMessage(`You successfully tanned ${corpse.desc}!`);
         player.gainSkill(SkillClassNames.Survival, 10);
 

@@ -56,6 +56,7 @@ export class DeathHelper {
 
     if(!isPlayer) {
       corpse.tansFor = (<any>target).tansFor;
+      corpse.tanSkillRequired = (<any>target).tanSkillRequired;
       (<any>corpse).npcUUID = target.uuid;
       corpse.$$playersHeardDeath = Object.keys(target.agro);
     }
