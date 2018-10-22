@@ -9,13 +9,13 @@ import { MessageHelper } from '../world/message-helper';
 export class CharacterCreator {
 
   static alleiganceMods = {
-    None:         {},
-    Pirates:      { str: 4,  dex: 2,           int: -2, wis: -3, wil: -1,          cha: -1, gold: 500  },
+    // None:         {},
+    Pirates:      { str: 5,  dex: 2,           int: -2, wis: -3, wil: -1,          cha: -1, gold: 500  },
     Townsfolk:    { str: -1, dex: -1, agi: 1,                    wil: 1,                    gold: -300 },
-    Royalty:      { str: -2, dex: -4, agi: -2, int: 2,  wis: 2,                    cha: 2,  gold: 3500 },
-    Adventurers:  { str: 2,  dex: 2,  agi: -2, int: 1,  wis: 1,  wil: -2, luk: 1,  cha: 1 },
+    Royalty:      { str: -2, dex: -2, agi: -2, int: 2,  wis: 2,                    cha: 2,  gold: 3500 },
+    Adventurers:  { str: 2,  dex: 2,  agi: -2, int: 2,  wis: 1,  wil: -1, luk: 1,  cha: 1 },
     Wilderness:   { str: -2, dex: -2, agi: -2, int: 3,  wis: 3,  wil: 2 },
-    Underground:  { str: 3,  dex: 3,  agi: 3,  int: -1, wis: -1,          luk: -2, cha: -2 }
+    Underground:  { str: 3,  dex: 3,  agi: 3,  int: -1, wis: -1,          luk: -1, cha: -2 }
   };
 
   static allegianceDesc = {
@@ -37,8 +37,8 @@ export class CharacterCreator {
   static getDefaultCharacter() {
     return {
       name: '',
-      allegiance: 'None',
-      sex: 'Male',
+      allegiance: '',
+      sex: '',
       _validAllegiances: this.validAllegiances(),
       _allegianceDesc: 'Placeholder',
 
@@ -68,11 +68,11 @@ export class CharacterCreator {
     if(MessageHelper.hasAnyPossibleProfanity(name)) name = '';
 
     if(!includes(this.validAllegiances(), char.allegiance)) {
-      char.allegiance = 'None';
+      char.allegiance = '';
     }
 
     if(!includes(['Male', 'Female'], char.sex)) {
-      char.sex = 'Male';
+      char.sex = '';
     }
 
     char.name = capitalize(truncate(name.replace(/[^a-zA-Z]/g, ''), { length: 20, omission: '' }));
