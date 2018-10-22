@@ -32,6 +32,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          [dragEnabled]="item && !displayOnly"
          [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID, isStackableMaterial: isStackableMaterial }"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
+         (mouseenter)="determineScopes()"
          triggers="hover:mouseleave"
          [placement]="tooltipPlacement"
          container="body"
