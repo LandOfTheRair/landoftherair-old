@@ -63,7 +63,7 @@ export class CharacterHelper {
 
     this.dropHands(char);
 
-    char.sendClientMessage('You feel an overwhelming heat as your equipment disappears from your body!');
+    char.sendClientMessage('You feel an overwhelming heat as your equipment disappears from your body!', true);
 
     const pickSlot = () => ({ x: random(x - spread, x + spread), y: random(y - spread, y + spread) });
 
