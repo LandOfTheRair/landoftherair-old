@@ -1,4 +1,6 @@
 
+import { get, some } from 'lodash';
+
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
 
@@ -24,6 +26,15 @@ export class Upgrade extends Command {
 
     const baseItem = container.upgradeItem;
     const baseUpgrade = container.upgradeReagent;
+
+    if(!baseItem || !baseUpgrade) return player.sendClientMessage('You are missing upgrade components!');
+    if(baseUpgrade.itemClass === 'Fur' && get(baseUpgrade, 'previousUpgrades', []).length > 0) {
+      return player.sendClientMessage('You cannot use upgraded fur to upgrade armor!');
+    }
+
+    if(some(get(baseItem, 'previousUpgrades', []), x => x.fireResist || x.iceResist || x.diseaseResist || x.poisonResist)) {
+      return player.sendClientMessage('You have already padded this armor with fur!');
+    }
 
     const result = MetalworkingHelper.upgrade(player);
     if(!result) return player.sendClientMessage('Your upgrade did not pan out.');
