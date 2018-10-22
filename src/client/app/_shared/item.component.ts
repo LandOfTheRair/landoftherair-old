@@ -31,7 +31,6 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          [dragScope]="scopes"
          [dragEnabled]="item && !displayOnly"
          [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID, isStackableMaterial: isStackableMaterial }"
-         (mouseenter)="determineScopes()"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
          triggers="hover:mouseleave"
          [placement]="tooltipPlacement"
@@ -66,8 +65,17 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
 })
 export class ItemComponent {
 
+  private _item: Item;
+
   @Input()
-  public item: Item;
+  public set item(item: Item) {
+    this._item = item;
+    this.determineScopes();
+  }
+
+  public get item(): Item {
+    return this._item;
+  }
 
   @Input()
   public count: number;
