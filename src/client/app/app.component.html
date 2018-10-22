@@ -418,7 +418,7 @@
   ></app-window>
 
   <ng-template #partyHead>
-    Party: {{ colyseus.game.character ? colyseus.game.character.partyName : '(no party)' }}
+    Party: {{ colyseus.game.character && colyseus.game.character.partyName ? colyseus.game.character.partyName : '(no party)' }}
   </ng-template>
 
   <ng-template #partyBody>
