@@ -86,20 +86,6 @@
   stats:
     offense: 2
     defense: 2
-    physicalResist: 50
-    perception: 30
-  desc: "a white and blue robe with splotches of bloody flowers scattered around it"
-  value: 13000
-  sprite: 400
-  binds: true
-
-  requirements:
-    level: 25
-
-- name: Catacombs Robe 1F
-  stats:
-    offense: 2
-    defense: 2
     armorClass: 1
     physicalResist: 50
     perception: 30
