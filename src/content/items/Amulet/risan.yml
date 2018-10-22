@@ -59,3 +59,73 @@
   sprite: 231
   desc: "a gold chain formerly used as a bookmark"
   value: 5000
+
+- name: Catacombs Amulet 1F
+  stats:
+    necroticResist: 100
+    energyResist: 100
+    armorClass: 1
+    defense: 2
+  binds: true
+  sprite: 2
+  desc: "an amulet set with the fangs of an ancient beast"
+  value: 10000
+
+  requirements:
+    level: 25
+
+- name: Catacombs Amulet 2F
+  stats:
+    necroticResist: 200
+    energyResist: 200
+    armorClass: 2
+    defense: 4
+  binds: true
+  sprite: 2
+  desc: "an amulet set with the fangs of an ancient beast"
+  value: 15000
+
+  requirements:
+    level: 30
+
+- name: Catacombs Amulet 3F
+  stats:
+    necroticResist: 300
+    energyResist: 300
+    armorClass: 3
+    defense: 6
+  binds: true
+  sprite: 2
+  desc: "an amulet set with the fangs of an ancient beast"
+  value: 20000
+
+  requirements:
+    level: 35
+
+- name: Catacombs Amulet 4F
+  stats:
+    necroticResist: 400
+    energyResist: 400
+    armorClass: 4
+    defense: 8
+  binds: true
+  sprite: 2
+  desc: "an amulet set with the fangs of an ancient beast"
+  value: 25000
+
+  requirements:
+    level: 40
+
+- name: Catacombs Amulet 5F
+  stats:
+    necroticResist: 500
+    energyResist: 500
+    armorClass: 5
+    defense: 10
+  binds: true
+  sprite: 2
+  desc: "an amulet set with the fangs of an ancient beast"
+  value: 30000
+
+  requirements:
+    level: 45

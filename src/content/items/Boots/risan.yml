@@ -37,3 +37,81 @@
   desc: "a pair of white-fur boots that keep you warm when traversing the frostlands"
   value: 2500
   binds: true
+
+  requirements:
+    level: 20
+
+- name: Catacombs Boots 1F
+  desc: "an pair of jet black boots emblazoned with a skull emblem"
+  tier: 6
+  stats:
+    offense: 1
+    defense: 1
+    agi: 1
+    armorClass: 5
+  value: 4000
+  sprite: 511
+  binds: true
+
+  requirements:
+    level: 25
+
+- name: Catacombs Boots 2F
+  desc: "an pair of jet black boots emblazoned with a skull emblem"
+  tier: 6
+  stats:
+    offense: 2
+    defense: 2
+    agi: 2
+    armorClass: 10
+  value: 8000
+  sprite: 511
+  binds: true
+
+  requirements:
+    level: 30
+
+- name: Catacombs Boots 3F
+  desc: "an pair of jet black boots emblazoned with a skull emblem"
+  tier: 7
+  stats:
+    offense: 3
+    defense: 3
+    agi: 3
+    armorClass: 15
+  value: 12000
+  sprite: 511
+  binds: true
+
+  requirements:
+    level: 35
+
+- name: Catacombs Boots 4F
+  desc: "an pair of jet black boots emblazoned with a skull emblem"
+  tier: 7
+  stats:
+    offense: 4
+    defense: 4
+    agi: 4
+    armorClass: 20
+  value: 16000
+  sprite: 511
+  binds: true
+
+  requirements:
+    level: 40
+
+- name: Catacombs Boots 5F
+  desc: "an pair of jet black boots emblazoned with a skull emblem"
+  tier: 6
+  stats:
+    offense: 5
+    defense: 5
+    agi: 5
+    armorClass: 25
+  value: 20000
+  sprite: 511
+  binds: true
+
+  requirements:
+    level: 45

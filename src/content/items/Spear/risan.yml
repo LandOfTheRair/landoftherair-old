@@ -5,6 +5,7 @@
   desc: "a regal spear befitting of the royal family of Risan"
   stats:
     int: 5
+    wis: 5
     str: 5
     defense: 10
     offense: 10

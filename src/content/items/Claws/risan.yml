@@ -1,0 +1,81 @@
+
+
+- name: Catacombs Claws 1F
+  desc: "an pair of ancient claws set with magical green gems"
+  tier: 6
+  stats:
+    offense: 1
+    defense: 1
+    accuracy: 2
+    armorClass: 2
+    str: 1
+  value: 4000
+  sprite: 891
+  binds: true
+
+  requirements:
+    level: 25
+
+- name: Catacombs Claws 2F
+  desc: "an pair of ancient claws set with magical green gems"
+  tier: 6
+  stats:
+    offense: 2
+    defense: 2
+    accuracy: 4
+    armorClass: 4
+    str: 2
+  value: 8000
+  sprite: 891
+  binds: true
+
+  requirements:
+    level: 30
+
+- name: Catacombs Claws 3F
+  desc: "an pair of ancient claws set with magical green gems"
+  tier: 7
+  stats:
+    offense: 3
+    defense: 3
+    accuracy: 6
+    armorClass: 6
+    str: 3
+  value: 12000
+  sprite: 891
+  binds: true
+
+  requirements:
+    level: 35
+
+- name: Catacombs Claws 4F
+  desc: "an pair of ancient claws set with magical green gems"
+  tier: 7
+  stats:
+    offense: 4
+    defense: 4
+    accuracy: 8
+    armorClass: 8
+    str: 4
+  value: 16000
+  sprite: 891
+  binds: true
+
+  requirements:
+    level: 40
+
+- name: Catacombs Claws 5F
+  desc: "an pair of ancient claws set with magical green gems"
+  tier: 8
+  stats:
+    offense: 5
+    defense: 5
+    accuracy: 10
+    armorClass: 10
+    str: 5
+  value: 20000
+  sprite: 891
+  binds: true
+
+  requirements:
+    level: 45

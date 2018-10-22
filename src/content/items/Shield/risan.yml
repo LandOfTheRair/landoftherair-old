@@ -1,5 +1,14 @@
 
 
+- name: Risan Wooden Shield
+  desc: "an wooden shield crafted in the land of Risan"
+  tier: 5
+  value: 2000
+  sprite: 327
+
+  requirements:
+    level: 15
+
 - name: Mines Fire Offense Shield
   stats:
     armorClass: 14

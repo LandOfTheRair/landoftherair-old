@@ -19,3 +19,14 @@
   sprite: 202
   desc: "a large handful of arrows with tips made from ice"
   value: 5000
+
+- name: Catacombs Arrows
+  stats:
+    accuracy: 3
+  damageClass: 'necrotic'
+  tier: 4
+  shots: 500
+  sprite: 202
+  desc: "a large handful of arrows that smell like death"
+  value: 5000
+

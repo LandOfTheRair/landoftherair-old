@@ -81,3 +81,92 @@
 
   requirements:
     level: 21
+
+- name: Catacombs Robe 1F
+  stats:
+    offense: 2
+    defense: 2
+    physicalResist: 50
+    perception: 30
+  desc: "a white and blue robe with splotches of bloody flowers scattered around it"
+  value: 13000
+  sprite: 400
+  binds: true
+
+  requirements:
+    level: 25
+
+- name: Catacombs Robe 1F
+  stats:
+    offense: 2
+    defense: 2
+    armorClass: 1
+    physicalResist: 50
+    perception: 30
+  desc: "a white and blue robe with splotches of bloody flowers scattered around it"
+  value: 13000
+  sprite: 400
+  binds: true
+
+  requirements:
+    level: 25
+
+- name: Catacombs Robe 2F
+  stats:
+    offense: 4
+    defense: 4
+    armorClass: 2
+    physicalResist: 100
+    perception: 60
+  desc: "a white and blue robe with splotches of bloody flowers scattered around it"
+  value: 26000
+  sprite: 400
+  binds: true
+
+  requirements:
+    level: 30
+
+- name: Catacombs Robe 3F
+  stats:
+    offense: 6
+    defense: 6
+    armorClass: 3
+    physicalResist: 150
+    perception: 90
+  desc: "a white and blue robe with splotches of bloody flowers scattered around it"
+  value: 39000
+  sprite: 400
+  binds: true
+
+  requirements:
+    level: 35
+
+- name: Catacombs Robe 4F
+  stats:
+    offense: 8
+    defense: 8
+    armorClass: 4
+    physicalResist: 200
+    perception: 120
+  desc: "a white and blue robe with splotches of bloody flowers scattered around it"
+  value: 13000
+  sprite: 400
+  binds: true
+
+  requirements:
+    level: 40
+
+- name: Catacombs Robe 5F
+  stats:
+    offense: 10
+    defense: 10
+    armorClass: 5
+    physicalResist: 250
+    perception: 150
+  desc: "a white and blue robe with splotches of bloody flowers scattered around it"
+  value: 13000
+  sprite: 400
+  binds: true
+
+  requirements:
+    level: 45

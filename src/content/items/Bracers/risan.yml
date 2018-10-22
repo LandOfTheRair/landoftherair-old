@@ -1,0 +1,91 @@
+
+
+- name: Catacombs Bracers 1F
+  stats:
+    offense: 1
+    defense: 1
+    dex: 1
+    armorClass: 3
+    hp: 20
+    mp: 20
+    hpregen: 3
+    mpregen: 3
+  desc: "a pair of faded, ancient bracers, charged with magical energies"
+  value: 3000
+  sprite: 5
+  binds: true
+
+  requirements:
+    level: 25
+
+- name: Catacombs Bracers 2F
+  stats:
+    offense: 2
+    defense: 2
+    dex: 2
+    armorClass: 6
+    hp: 40
+    mp: 40
+    hpregen: 6
+    mpregen: 6
+  desc: "a pair of faded, ancient bracers, charged with magical energies"
+  value: 6000
+  sprite: 5
+  binds: true
+
+  requirements:
+    level: 30
+
+- name: Catacombs Bracers 3F
+  stats:
+    offense: 3
+    defense: 3
+    dex: 3
+    armorClass: 9
+    hp: 60
+    mp: 60
+    hpregen: 9
+    mpregen: 9
+  desc: "a pair of faded, ancient bracers, charged with magical energies"
+  value: 9000
+  sprite: 5
+  binds: true
+
+  requirements:
+    level: 35
+
+- name: Catacombs Bracers 4F
+  stats:
+    offense: 4
+    defense: 4
+    dex: 4
+    armorClass: 12
+    hp: 80
+    mp: 80
+    hpregen: 12
+    mpregen: 12
+  desc: "a pair of faded, ancient bracers, charged with magical energies"
+  value: 12000
+  sprite: 5
+  binds: true
+
+  requirements:
+    level: 40
+
+- name: Catacombs Bracers 5F
+  stats:
+    offense: 5
+    defense: 5
+    dex: 5
+    armorClass: 15
+    hp: 100
+    mp: 100
+    hpregen: 15
+    mpregen: 15
+  desc: "a pair of faded, ancient bracers, charged with magical energies"
+  value: 15000
+  sprite: 5
+  binds: true
+
+  requirements:
+    level: 45
