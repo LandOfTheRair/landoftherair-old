@@ -227,15 +227,15 @@
   baseClass: Warrior
   sprite: 90
   alignment: Evil
-  stats: 10
+  stats: 8
   skillLevels: 3
-  level: 18
+  level: 17
 
   skillOnKill: 45
 
   otherStats:
     con: 15
-    accuracy: 5
+    accuracy: 3
     perception: 220
 
   gold:

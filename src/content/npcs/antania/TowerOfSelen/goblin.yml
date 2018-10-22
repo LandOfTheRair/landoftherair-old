@@ -187,13 +187,13 @@
   alignment: Evil
   stats: 7
   skillLevels: 2
-  level: 14
+  level: 12
 
   skillOnKill: 45
 
   otherStats:
-    con: 15
-    accuracy: 5
+    con: 14
+    accuracy: 3
     perception: 220
 
   gold:
