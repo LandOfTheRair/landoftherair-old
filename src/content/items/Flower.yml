@@ -29,6 +29,11 @@
   desc: "a frozen gourd"
   value: 60
 
+- name: Catacombs Frostflower
+  sprite: 745
+  desc: "a small blue flower, frozen in time"
+  value: 60
+
 - name: Thanksgiving Leaf
   sprite: 565
   desc: "a crimson leaf, symbolizing the turning of the season"

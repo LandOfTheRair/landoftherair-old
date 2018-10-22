@@ -1,0 +1,70 @@
+
+- name: Catacombs Sash 1F
+  stats:
+    offense: 2
+    defense: 2
+    wil: 1
+    magicalResist: 50
+  sprite: 65
+  desc: "an ancient sash that oxidized over the years"
+  value: 5000
+  binds: true
+
+  requirements:
+    level: 25
+
+- name: Catacombs Sash 2F
+  stats:
+    offense: 4
+    defense: 4
+    wil: 2
+    magicalResist: 100
+  sprite: 65
+  desc: "an ancient sash that oxidized over the years"
+  value: 10000
+  binds: true
+
+  requirements:
+    level: 30
+    
+- name: Catacombs Sash 3F
+  stats:
+    offense: 6
+    defense: 6
+    wil: 3
+    magicalResist: 150
+  sprite: 65
+  desc: "an ancient sash that oxidized over the years"
+  value: 15000
+  binds: true
+
+  requirements:
+    level: 35
+    
+- name: Catacombs Sash 4F
+  stats:
+    offense: 8
+    defense: 8
+    wil: 4
+    magicalResist: 200
+  sprite: 65
+  desc: "an ancient sash that oxidized over the years"
+  value: 20000
+  binds: true
+
+  requirements:
+    level: 40
+    
+- name: Catacombs Sash 5F
+  stats:
+    offense: 10
+    defense: 10
+    wil: 5
+    magicalResist: 250
+  sprite: 65
+  desc: "an ancient sash that oxidized over the years"
+  value: 25000
+  binds: true
+
+  requirements:
+    level: 45
