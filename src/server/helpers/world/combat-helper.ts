@@ -399,7 +399,7 @@ export class CombatHelper {
       dodgeBonus: Math.floor((100 - get(defender.gear, 'Armor.stats.mitigation', 0)) / 10)
     };
 
-    let isFumble = RollerHelper.XInY(attackerScope.level, attackerScope.skill * attackerScope.realLevel * attackerScope.accuracy);
+    let isFumble = RollerHelper.XInY(1, attackerScope.skill * attackerScope.realLevel * attackerScope.accuracy * attackerScope.offense);
     const failMsg = isFumble ? 'You fumble your weapon.' : 'You feel a burning sensation in your hands!';
 
     if(attacker.hasEffect('Dangerous')) isFumble = false;
