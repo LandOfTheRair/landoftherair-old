@@ -834,7 +834,7 @@ export class Game {
     const wallList = layers[MapLayer.Walls].data || layers[MapLayer.Walls].tileIds;
     const wallLayerTile = wallList[(size.x * totalY) + totalX];
 
-    return hasSecretWall || (wallLayerTile !== TilesWithNoFOVUpdate.Empty && wallLayerTile !== TilesWithNoFOVUpdate.Air);
+    return (hasSecretWall && !this.isRenderingTruesight) || (wallLayerTile !== TilesWithNoFOVUpdate.Empty && wallLayerTile !== TilesWithNoFOVUpdate.Air);
   }
 
   private isDarkAt(x: number, y: number) {
