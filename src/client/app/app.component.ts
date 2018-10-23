@@ -134,6 +134,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   public logFontSize: XSize;
 
   @LocalStorage()
+  public statusBarSize: Size;
+
+  @LocalStorage()
   public logWindowSize: XSizeMax;
 
   @LocalStorage()
@@ -351,7 +354,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   private initDefaultOptions() {
-    ['sack', 'belt', 'pouch', 'equipment', 'ground', 'logFont', 'logWindow', 'npcWindow'].forEach(opt => {
+    ['sack', 'belt', 'pouch', 'equipment', 'ground', 'logFont', 'logWindow', 'npcWindow', 'statusBar'].forEach(opt => {
       if(this[`${opt}Size`]) return;
       this[`${opt}Size`] = 'normal';
     });

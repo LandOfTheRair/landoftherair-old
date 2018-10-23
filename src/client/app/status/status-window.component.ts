@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 import { values, extend } from 'lodash';
@@ -11,6 +11,9 @@ import { timer } from 'rxjs';
   styleUrls: ['./status-window.component.scss']
 })
 export class StatusWindowComponent implements OnInit, OnDestroy {
+
+  @Input()
+  public size;
 
   @LocalStorage()
   public isXPPercent: boolean;

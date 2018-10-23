@@ -1,12 +1,15 @@
 <div class="row ml-0 mr-0">
 
-  <div class="col-8 d-flex flex-row flex-wrap p-0"
+  <div class="d-flex flex-row flex-wrap p-0 effect-zone"
+       [class.small]="size === 'small'"
+       [class.col-8]="size !== 'small'"
+       [class.col-6]="size === 'small'"
        [class.justify-content-center]="allEffects.length === 0"
        droppable
        dropScope="use"
        (onDrop)="colyseusGame.buildUseAction($event.dragData.item, $event.dragData.context, $event.dragData.contextSlot)">
     <div class="vertical-center h-100 text-center background-text" *ngIf="allEffects.length === 0">
-      You have no status effects.<br>
+      <span *ngIf="size !== 'small'">You have no status effects.<br></span>
       Drop a potion or food here to consume it.
     </div>
     <div *ngFor="let effect of effects" class="effect-container">
@@ -14,48 +17,75 @@
     </div>
   </div>
 
-  <div class="col-4 p-0">
-    <div class="row m-0 needs-min-height">
+  <div class="p-0"
+       [class.col-4]="size !== 'small'"
+       [class.col-6]="size === 'small'">
+
+    <div class="row m-0 needs-min-height" *ngIf="size !== 'small'">
       <div class="col p-0">
-
-        <div class="progress"
-             tooltip="HP"
-             container="body"
-             (click)="isHPPercent = !isHPPercent"
-             [class.critical]="healthPercent < 20">
-          <div class="progress-bar bg-danger" [style.width]="healthPercent + '%'"></div>
-          <div class="progress-bar-text" *ngIf="player && !isHPPercent">{{ player.hp.__current }}/{{ player.hp.maximum }}</div>
-          <div class="progress-bar-text" *ngIf="player && isHPPercent">{{ healthPercent }}%</div>
-        </div>
-
+        <ng-container *ngTemplateOutlet="hpBar"></ng-container>
       </div>
+
       <div class="col-6 p-0" *ngIf="player && player.mp.maximum > 0">
-
-        <div class="progress"
-             tooltip="MP"
-             container="body"
-             (click)="isMPPercent = !isMPPercent">
-          <div class="progress-bar bg-primary" [style.width]="magicPercent + '%'"></div>
-          <div class="progress-bar-text" *ngIf="player && !isMPPercent">{{ player.mp.__current }}/{{ player.mp.maximum }}</div>
-          <div class="progress-bar-text" *ngIf="player && isMPPercent">{{ magicPercent }}%</div>
-        </div>
-
+        <ng-container *ngTemplateOutlet="mpBar"></ng-container>
       </div>
     </div>
-    <div class="row m-0 needs-min-height">
+
+    <div class="row m-0 needs-min-height" *ngIf="size !== 'small'">
       <div class="col-12 p-0">
-
-        <div class="progress"
-             [tooltip]="'Experience Level ' + player.level"
-             container="body"
-             (click)="isXPPercent = !isXPPercent"
-             *ngIf="player">
-          <div class="progress-bar bg-success" [style.width]="xpPercent + '%'"></div>
-          <div class="progress-bar-text" *ngIf="!isXPPercent">{{ player.exp | number }}</div>
-          <div class="progress-bar-text" *ngIf="isXPPercent">{{ xpPercent }}%</div>
-        </div>
-
+        <ng-container *ngTemplateOutlet="xpBar"></ng-container>
       </div>
     </div>
+
+    <div class="row m-0 needs-min-height" *ngIf="size === 'small'">
+      <div class="col p-0">
+        <ng-container *ngTemplateOutlet="hpBar"></ng-container>
+      </div>
+
+      <div class="col-4 p-0" *ngIf="player && player.mp.maximum > 0">
+        <ng-container *ngTemplateOutlet="mpBar"></ng-container>
+      </div>
+
+      <div class="col p-0">
+        <ng-container *ngTemplateOutlet="xpBar"></ng-container>
+      </div>
+    </div>
+
   </div>
+
 </div>
+
+<ng-template #hpBar>
+  <div class="progress"
+       tooltip="HP"
+       container="body"
+       (click)="isHPPercent = !isHPPercent"
+       [class.critical]="healthPercent < 20">
+    <div class="progress-bar bg-danger" [style.width]="healthPercent + '%'"></div>
+    <div class="progress-bar-text" *ngIf="player && !isHPPercent">{{ player.hp.__current }}/{{ player.hp.maximum }}</div>
+    <div class="progress-bar-text" *ngIf="player && isHPPercent">{{ healthPercent }}%</div>
+  </div>
+</ng-template>
+
+<ng-template #mpBar>
+  <div class="progress"
+       tooltip="MP"
+       container="body"
+       (click)="isMPPercent = !isMPPercent">
+    <div class="progress-bar bg-primary" [style.width]="magicPercent + '%'"></div>
+    <div class="progress-bar-text" *ngIf="player && !isMPPercent">{{ player.mp.__current }}/{{ player.mp.maximum }}</div>
+    <div class="progress-bar-text" *ngIf="player && isMPPercent">{{ magicPercent }}%</div>
+  </div>
+</ng-template>
+
+<ng-template #xpBar>
+  <div class="progress"
+       [tooltip]="'Experience Level ' + player.level"
+       container="body"
+       (click)="isXPPercent = !isXPPercent"
+       *ngIf="player">
+    <div class="progress-bar bg-success" [style.width]="xpPercent + '%'"></div>
+    <div class="progress-bar-text" *ngIf="!isXPPercent">{{ player.exp | number }}</div>
+    <div class="progress-bar-text" *ngIf="isXPPercent">{{ xpPercent }}%</div>
+  </div>
+</ng-template>

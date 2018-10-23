@@ -192,7 +192,7 @@
   </ng-template>
 
   <ng-template #statusBody>
-    <app-status-window></app-status-window>
+    <app-status-window [size]="statusBarSize"></app-status-window>
   </ng-template>
 
   <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showGround"
@@ -600,6 +600,16 @@
               <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="normal">Normal</label>
               <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="small">Small</label>
               <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="xsmall">Miniature</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-1">
+          <div class="col-3 text-right font-weight-bold">Status Bar Size</div>
+          <div class="col">
+            <div class="btn-group">
+              <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="normal">Two Lines</label>
+              <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="small">One Line</label>
             </div>
           </div>
         </div>

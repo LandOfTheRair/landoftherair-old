@@ -1,9 +1,22 @@
 
+.display-area, .bar-area {
+  min-height: 72px;
+}
+
 .row {
   width: 100%;
 
   .btn {
     width: 100% !important;
+  }
+}
+
+.effect-zone {
+  max-height: 72px;
+  overflow: hidden;
+
+  &.small {
+    max-height: 36px;
   }
 }
 
