@@ -1,6 +1,6 @@
 
 - name: Risan Strength Potion
-  desc: "a small bottle filled with brown fluid. It smells like a tree"
+  desc: "a small bottle filled with brown fluid that smells like a tree"
   extendedDesc: "a potion of basic strength"
   sprite: 151
   effect:
@@ -10,7 +10,7 @@
   value: 5000
 
 - name: Risan Agility Potion
-  desc: "a small bottle filled with dark-yellow fluid. It smells like feathers"
+  desc: "a small bottle filled with dark-yellow fluid that smells like feathers"
   extendedDesc: "a potion of basic agility"
   sprite: 157
   effect:
@@ -20,7 +20,7 @@
   value: 2000
 
 - name: Risan Dexterity Potion
-  desc: "a small bottle filled with yellow fluid. It smells like apples"
+  desc: "a small bottle filled with yellow fluid that smells like apples"
   extendedDesc: "a potion of basic dexterity"
   sprite: 150
   effect:
@@ -30,7 +30,7 @@
   value: 3500
 
 - name: Risan Intelligence Potion
-  desc: "a small bottle filled with puce liquid. It smells like a root"
+  desc: "a small bottle filled with puce liquid that smells like a root"
   extendedDesc: "a potion of basic intelligence"
   sprite: 158
   effect:
@@ -40,7 +40,7 @@
   value: 5000
 
 - name: Risan Wisdom Potion
-  desc: "a small bottle filled with teal. It smells like a herbs"
+  desc: "a small bottle filled with teal that smells like a herbs"
   extendedDesc: "a potion of basic wisdom"
   sprite: 156
   effect:
@@ -50,7 +50,7 @@
   value: 3000
 
 - name: Risan Willpower Potion
-  desc: "a small bottle filled with orange fluid. It smells like mushrooms"
+  desc: "a small bottle filled with orange fluid that smells like mushrooms"
   extendedDesc: "a potion of basic willpower"
   sprite: 154
   effect:
@@ -60,7 +60,7 @@
   value: 10000
 
 - name: Risan Constitution Potion
-  desc: "a small bottle filled with crimson fluid. It smells like cherries"
+  desc: "a small bottle filled with crimson fluid that smells like cherries"
   extendedDesc: "a potion of basic constitution"
   sprite: 153
   effect:
@@ -70,7 +70,7 @@
   value: 10000
 
 - name: Risan Luck Potion
-  desc: "a small bottle filled with green fluid. It smells like clovers"
+  desc: "a small bottle filled with green fluid that smells like clovers"
   extendedDesc: "a potion of basic luck"
   sprite: 152
   effect:
@@ -80,7 +80,7 @@
   value: 100000
 
 - name: Risan Charisma Potion
-  desc: "a small bottle filled with purple fluid. It smells like flowers"
+  desc: "a small bottle filled with purple fluid that smells like flowers"
   extendedDesc: "a potion of basic charisma"
   sprite: 155
   effect:

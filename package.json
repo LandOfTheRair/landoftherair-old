@@ -40,6 +40,7 @@
     "seed:npcs": "ts-node src/server/tasks/npcs.ts",
     "seed:drops": "ts-node src/server/tasks/drops.ts",
     "seed:recipes": "ts-node src/server/tasks/recipes.ts",
+    "seed:lore": "ts-node src/server/tasks/lore.ts",
     "task:seed": "npm-run-all seed:*",
     "task:macros": "npm-run-all task:macros:*",
     "task:macros:data": "ts-node src/server/tasks/macroiconnames.ts",

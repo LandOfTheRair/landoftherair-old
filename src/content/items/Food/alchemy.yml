@@ -33,7 +33,7 @@
 
 - name: Antanian Fungus Bread
   sprite: 110
-  desc: "a moldy slice of bread. Gross"
+  desc: "a moldy slice of bread"
   value: 1
   ounces: 1
   effect:
@@ -47,7 +47,7 @@
 
 - name: Antanian Fungus Loaf
   sprite: 110
-  desc: "a moldy loaf of bread. Gross"
+  desc: "a moldy loaf of bread"
   value: 1
   ounces: 12
   effect:

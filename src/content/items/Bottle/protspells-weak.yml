@@ -1,7 +1,7 @@
 
 
 - name: Weak BarFrost Potion
-  desc: "a small white bottle. The bottle cools your hand"
+  desc: "a small white bottle that cools your hand"
   extendedDesc: "a potion of BarFrost"
   sprite: 251
   effect:
@@ -11,7 +11,7 @@
   value: 500
 
 - name: Weak BarFrost Potion (10oz)
-  desc: "a small white bottle. The bottle cools your hand"
+  desc: "a small white bottle that cools your hand"
   extendedDesc: "a potion of BarFrost"
   sprite: 251
   ounces: 10
@@ -22,7 +22,7 @@
   value: 500
 
 - name: Weak BarWater Potion
-  desc: "a small white bottle. The liquid in it seems unnaturally buoyant"
+  desc: "a small white bottle whose liquid seems unnaturally buoyant"
   extendedDesc: "a potion of BarWater"
   sprite: 251
   effect:
@@ -32,7 +32,7 @@
   value: 500
 
 - name: Weak BarWater Potion (10oz)
-  desc: "a small white bottle. The liquid in it seems unnaturally buoyant"
+  desc: "a small white bottle whose liquid seems unnaturally buoyant"
   extendedDesc: "a potion of BarWater"
   sprite: 251
   ounces: 10
@@ -43,7 +43,7 @@
   value: 500
 
 - name: Weak BarNecro Potion
-  desc: "a small white bottle. It smells putrid"
+  desc: "a small white bottle which smells putrid"
   extendedDesc: "a potion of BarNecro"
   sprite: 251
   effect:
@@ -53,7 +53,7 @@
   value: 500
 
 - name: Weak BarNecro Potion (10oz)
-  desc: "a small white bottle. It smells putrid"
+  desc: "a small white bottle which smells putrid"
   extendedDesc: "a potion of BarNecro"
   sprite: 251
   ounces: 10
@@ -64,7 +64,7 @@
   value: 500
 
 - name: Weak BarFire Potion
-  desc: "a small white bottle. It feels warm to the touch"
+  desc: "a small white bottle that feels warm to the touch"
   extendedDesc: "a potion of BarFire"
   sprite: 251
   effect:
@@ -74,7 +74,7 @@
   value: 500
 
 - name: Weak BarFire Potion (10oz)
-  desc: "a small white bottle. It feels warm to the touch"
+  desc: "a small white bottle that feels warm to the touch"
   extendedDesc: "a potion of BarFire"
   sprite: 251
   ounces: 10

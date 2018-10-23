@@ -1,4 +1,11 @@
 
+- name: Antanian Spear
+  desc: "a simple spear"
+  tier: 1
+  type: Staff
+  value: 650
+  sprite: 237
+
 - name: Tower Spear Weak
   desc: "a sharp spike made of a riyan metal sat atop a wooden pole"
   tier: 3

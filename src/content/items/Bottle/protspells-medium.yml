@@ -1,7 +1,7 @@
 
 
 - name: Medium BarFrost Potion
-  desc: "a small white bottle. The bottle chills your hand"
+  desc: "a small white bottle that chills your hand"
   extendedDesc: "a potion of BarFrost"
   sprite: 251
   effect:
@@ -11,7 +11,7 @@
   value: 4500
 
 - name: Medium BarFrost Potion (10oz)
-  desc: "a small white bottle. The bottle chills your hand"
+  desc: "a small white bottle that chills your hand"
   extendedDesc: "a potion of BarFrost"
   sprite: 251
   ounces: 10
@@ -22,7 +22,7 @@
   value: 4500
 
 - name: Medium BarFire Potion
-  desc: "a small white bottle. It feels hot to the touch"
+  desc: "a small white bottle that feels hot to the touch"
   extendedDesc: "a potion of BarFire"
   sprite: 251
   effect:
@@ -32,7 +32,7 @@
   value: 4500
 
 - name: Medium BarFire Potion (10oz)
-  desc: "a small white bottle. It feels hot to the touch"
+  desc: "a small white bottle that feels hot to the touch"
   extendedDesc: "a potion of BarFire"
   sprite: 251
   ounces: 10
@@ -43,7 +43,7 @@
   value: 500
 
 - name: Medium BarNecro Potion
-  desc: "a small white bottle. The stench makes you want to vomit"
+  desc: "a small white bottle whose stench makes you want to vomit"
   extendedDesc: "a potion of BarNecro"
   sprite: 251
   effect:
@@ -53,7 +53,7 @@
   value: 4500
 
 - name: Medium BarNecro Potion (10oz)
-  desc: "a small white bottle. The stench makes you want to vomit"
+  desc: "a small white bottle whose stench makes you want to vomit"
   extendedDesc: "a potion of BarNecro"
   sprite: 251
   ounces: 10

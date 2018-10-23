@@ -8,12 +8,14 @@ import * as YAML from 'yamljs';
 import * as recurse from 'recursive-readdir';
 import * as path from 'path';
 
-import { flatten } from 'lodash';
+import { flatten, find, some } from 'lodash';
 
 class RecipeLoader {
 
   static async loadAllRecipes() {
     await DB.init();
+
+    const allItems = await DB.$items.find({}).toArray();
 
     recurse(`${__dirname}/../../content/recipes`).then(async files => {
       const filePromises = files.map(file => {
@@ -26,7 +28,7 @@ class RecipeLoader {
 
           return new Promise((resolve, reject) => {
             RecipeLoader.addItemData(itemData);
-            if(!RecipeLoader.validateItem(itemData)) return reject(new Error(`${itemData.name} failed validation.`));
+            if(!RecipeLoader.validateItem(itemData, allItems)) return reject(new Error(`${itemData.name} failed validation.`));
             return resolve(itemData);
           });
 
@@ -68,7 +70,7 @@ class RecipeLoader {
     if(!recipe.requiredSkill) recipe.requiredSkill = 0;
   }
 
-  static validateItem(recipe): boolean {
+  static validateItem(recipe, allItems): boolean {
     let hasBad = false;
 
     if(!recipe.item) {
@@ -77,22 +79,27 @@ class RecipeLoader {
     }
 
     if(recipe.skillGained <= 0) {
-      console.error(`ERROR: ${recipe.name} has an invalid amount of skill gain!`);
+      console.error(`ERROR: ${recipe.item} has an invalid amount of skill gain!`);
       hasBad = true;
     }
 
     if(recipe.maxSkillForGains <= 0) {
-      console.error(`ERROR: ${recipe.name} has an invalid max skill gain level!`);
+      console.error(`ERROR: ${recipe.item} has an invalid max skill gain level!`);
       hasBad = true;
     }
 
     if(recipe.xpGained <= 0) {
-      console.error(`ERROR: ${recipe.name} has an invalid xp gain!`);
+      console.error(`ERROR: ${recipe.item} has an invalid xp gain!`);
       hasBad = true;
     }
 
     if(!recipe.ingredients || recipe.ingredients.length === 0) {
-      console.error(`ERROR: ${recipe.name} does not have any ingredients!`);
+      console.error(`ERROR: ${recipe.item} does not have any ingredients!`);
+      hasBad = true;
+    }
+
+    if(some(recipe.ingredients, x => !find(allItems, { name: x }))) {
+      console.error(`ERROR: ${recipe.item} is referencing invalid item(s): ${recipe.ingredients.filter(x => !find(allItems, { name: x }))}`);
       hasBad = true;
     }
 
