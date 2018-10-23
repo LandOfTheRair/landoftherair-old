@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { ColyseusGameService } from '../colyseus.game.service';
 
@@ -13,6 +13,9 @@ import { findIndex } from 'lodash';
   styleUrls: ['./macro-bars.component.scss']
 })
 export class MacroBarsComponent implements OnInit {
+
+  @Input()
+  public size;
 
   public macroArray = Array(10).fill(null).map((x, i) => i);
 

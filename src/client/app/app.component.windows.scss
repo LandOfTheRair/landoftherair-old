@@ -67,6 +67,20 @@
   &.macros {
     min-width: 578px;
     max-width: 578px;
+
+    &.small, &.xsmall {
+      font-size: 100% !important;
+    }
+
+    &.small {
+      min-width: 460px;
+      max-width: 460px;
+    }
+
+    &.xsmall {
+      min-width: 342px;
+      max-width: 342px;
+    }
   }
 
   &.log {

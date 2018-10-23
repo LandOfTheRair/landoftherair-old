@@ -321,7 +321,7 @@
 
   <app-window *ngIf="inGame && colyseus.game.character"
               windowName="macros"
-              [otherWindowClasses]="'game-window'"
+              [otherWindowClasses]="'game-window ' + macroBarSize"
               (active)="setActiveWindow($event)"
               [headTemplate]="macrosHead"
               [bodyTemplate]="macrosBody"
@@ -332,7 +332,7 @@
   </ng-template>
 
   <ng-template #macrosBody>
-    <app-macro-bars></app-macro-bars>
+    <app-macro-bars [size]="macroBarSize"></app-macro-bars>
   </ng-template>
 
   <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.showTrainer.uuid"
@@ -600,6 +600,17 @@
                   <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="normal">Normal</label>
                   <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="small">Small</label>
                   <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="xsmall">Miniature</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-1">
+              <div class="col-3 text-right font-weight-bold">Macro Bar Size</div>
+              <div class="col">
+                <div class="btn-group">
+                  <label class="btn btn-info" [(ngModel)]="macroBarSize" btnRadio="normal">Normal</label>
+                  <label class="btn btn-info" [(ngModel)]="macroBarSize" btnRadio="small">Small</label>
+                  <label class="btn btn-info" [(ngModel)]="macroBarSize" btnRadio="xsmall">Miniature</label>
                 </div>
               </div>
             </div>

@@ -3,7 +3,7 @@
   <div *ngFor="let group of macroService.visibleMacroGroups; let i = index">
     <div class="macro-group" *ngIf="macroService.allMacroGroups[group]">
 
-      <div class="group-name">
+      <div class="group-name {{ size }}">
         <div class="arrow arrow-left" (click)="changeMacroGroup(i, -1)">
           &#9664;
         </div>
@@ -20,6 +20,7 @@
       <div class="macrobar-item" *ngFor="let macroIdx of macroArray">
 
         <app-macro
+          [size]="size"
           (click)="operateOnMacro(macroService.allMacros[macroService.allMacroGroups[group][macroIdx]])"
           [macroRef]="macroService.allMacroGroups[group][macroIdx]"
           [isActive]="macroService.allMacroGroups[group][macroIdx] === selectedMacro"

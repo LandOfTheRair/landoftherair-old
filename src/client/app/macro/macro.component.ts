@@ -11,6 +11,9 @@ import { startCase } from 'lodash';
 export class MacroComponent {
 
   @Input()
+  public size = 'normal';
+
+  @Input()
   public macroRef: string;
 
   @Input()

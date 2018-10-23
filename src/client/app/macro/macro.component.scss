@@ -11,6 +11,24 @@
   border-radius: 3px;
   overflow: hidden;
 
+  &.small {
+    min-width: 34px;
+    max-width: 34px;
+
+    /deep/ span.macicons {
+      font-size: 350% !important;
+    }
+  }
+
+  &.xsmall {
+    min-width: 22px;
+    max-width: 22px;
+
+    /deep/ span.macicons {
+      font-size: 150% !important;
+    }
+  }
+
   background-color: #ccc;
 
   &.has-macro:not(.disable-effects) {
