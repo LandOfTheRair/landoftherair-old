@@ -4,6 +4,7 @@ import { Player } from '../../models/player';
 
 import { get, includes } from 'lodash';
 import { RobeClasses } from '../../models/item';
+import { Character } from '../../models/character';
 
 export class UnarmoredSavant extends Trait {
 
@@ -18,11 +19,16 @@ export class UnarmoredSavant extends Trait {
 
   static currentlyInEffect(player: Player): boolean {
     const itemClass = get(player, 'gear.Armor.itemClass');
-    return super.currentlyInEffect(player) && (includes(RobeClasses, itemClass));
+    return super.currentlyInEffect(player) && (includes(RobeClasses, itemClass) || itemClass === 'Fur');
   }
 
-  static usageModifier(level: number): number {
-    return level ? 40 : 0;
+  static usageModifier(level: number, char: Character): number {
+    if(!level) return 0;
+
+    const itemClass = get(char, 'gear.Armor.itemClass');
+    if(itemClass === 'Fur') return 30;
+
+    return 40;
   }
 
 }

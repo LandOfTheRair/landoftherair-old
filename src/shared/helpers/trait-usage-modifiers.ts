@@ -11,6 +11,6 @@ export class TraitUsageModifiers {
     // this will return 0 if you try to use a trait for a class you aren't
     if(!traitObj) return 0;
 
-    return traitObj.usageModifier(level);
+    return traitObj.usageModifier(level, char);
   }
 }

@@ -2,6 +2,7 @@
 import { startCase } from 'lodash';
 
 import { Player } from './player';
+import { Character } from './character';
 
 interface TraitUpgrade {
   cost?: number;
@@ -43,7 +44,7 @@ export class Trait {
     return !this.baseClass || player.baseClass === this.baseClass;
   }
 
-  static usageModifier(level: number): number {
+  static usageModifier(level: number, character?: Character): number {
     return level;
   }
 }
