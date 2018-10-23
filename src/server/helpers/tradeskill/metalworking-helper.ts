@@ -98,6 +98,8 @@ export class MetalworkingHelper {
 
     if(!item || !reagent) return 0;
 
+    if(get(reagent, 'previousUpgrades', []).length > 0) return 0;
+
     const enchantLevel = item.enchantLevel || 0;
 
     if(enchantLevel >= 5) return 0;
