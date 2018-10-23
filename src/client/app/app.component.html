@@ -312,7 +312,7 @@
   ></app-window>
 
   <ng-template #npcsHead>
-    Characters In View
+    Characters <span *ngIf="npcWindowSize !== 'xsmall'">In View</span>
   </ng-template>
 
   <ng-template #npcsBody>
@@ -610,6 +610,17 @@
                 <div class="btn-group">
                   <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="normal">Two Lines</label>
                   <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="small">One Line</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-1">
+              <div class="col-3 text-right font-weight-bold">Character Window Size</div>
+              <div class="col">
+                <div class="btn-group">
+                  <label class="btn btn-info" [(ngModel)]="npcWindowSize" btnRadio="normal">Three Columns</label>
+                  <label class="btn btn-info" [(ngModel)]="npcWindowSize" btnRadio="small">Two Columns</label>
+                  <label class="btn btn-info" [(ngModel)]="npcWindowSize" btnRadio="xsmall">One Column</label>
                 </div>
               </div>
             </div>

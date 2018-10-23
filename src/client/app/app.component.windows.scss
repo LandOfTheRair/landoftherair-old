@@ -151,6 +151,16 @@
     min-width: 387px;
 
     &.small {
+      min-width: 268px;
+      max-width: 268px;
+    }
+
+    &.xsmall {
+      min-width: 149px;
+      max-width: 149px;
+    }
+
+    &.small, &.xsmall {
       font-size: 100% !important;
     }
 
