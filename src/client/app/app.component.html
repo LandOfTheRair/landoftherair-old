@@ -532,250 +532,250 @@
         </button>
       </div>
       <div class="modal-body" *ngIf="options.isShown">
-        <div class="row">
-          <div class="col text-center"><h4>UI Window Sizes</h4></div>
-        </div>
 
-        <div class="row mb-1 mt-2">
-          <div class="col-3 text-right font-weight-bold">Sack Icons</div>
-          <div class="col">
-            <div class="btn-group">
-              <label class="btn btn-info" [(ngModel)]="sackSize" btnRadio="normal">Normal</label>
-              <label class="btn btn-info" [(ngModel)]="sackSize" btnRadio="small">Small</label>
-              <label class="btn btn-info" [(ngModel)]="sackSize" btnRadio="xsmall">Miniature</label>
+        <tabset>
+
+          <tab heading="UI Window Sizes">
+            <div class="row mb-1 mt-2">
+              <div class="col-3 text-right font-weight-bold">Sack Icons</div>
+              <div class="col">
+                <div class="btn-group">
+                  <label class="btn btn-info" [(ngModel)]="sackSize" btnRadio="normal">Normal</label>
+                  <label class="btn btn-info" [(ngModel)]="sackSize" btnRadio="small">Small</label>
+                  <label class="btn btn-info" [(ngModel)]="sackSize" btnRadio="xsmall">Miniature</label>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="row mb-1">
-          <div class="col-3 text-right font-weight-bold">Belt Icons</div>
-          <div class="col">
-            <div class="btn-group">
-              <label class="btn btn-info" [(ngModel)]="beltSize" btnRadio="normal">Normal</label>
-              <label class="btn btn-info" [(ngModel)]="beltSize" btnRadio="small">Small</label>
-              <label class="btn btn-info" [(ngModel)]="beltSize" btnRadio="xsmall">Miniature</label>
+            <div class="row mb-1">
+              <div class="col-3 text-right font-weight-bold">Belt Icons</div>
+              <div class="col">
+                <div class="btn-group">
+                  <label class="btn btn-info" [(ngModel)]="beltSize" btnRadio="normal">Normal</label>
+                  <label class="btn btn-info" [(ngModel)]="beltSize" btnRadio="small">Small</label>
+                  <label class="btn btn-info" [(ngModel)]="beltSize" btnRadio="xsmall">Miniature</label>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="row mb-1" *ngIf="hasPouch">
-          <div class="col-3 text-right font-weight-bold">Pouch Icons</div>
-          <div class="col">
-            <div class="btn-group">
-              <label class="btn btn-info" [(ngModel)]="pouchSize" btnRadio="normal">Normal</label>
-              <label class="btn btn-info" [(ngModel)]="pouchSize" btnRadio="small">Small</label>
-              <label class="btn btn-info" [(ngModel)]="pouchSize" btnRadio="xsmall">Miniature</label>
+            <div class="row mb-1" *ngIf="hasPouch">
+              <div class="col-3 text-right font-weight-bold">Pouch Icons</div>
+              <div class="col">
+                <div class="btn-group">
+                  <label class="btn btn-info" [(ngModel)]="pouchSize" btnRadio="normal">Normal</label>
+                  <label class="btn btn-info" [(ngModel)]="pouchSize" btnRadio="small">Small</label>
+                  <label class="btn btn-info" [(ngModel)]="pouchSize" btnRadio="xsmall">Miniature</label>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="row mb-1">
-          <div class="col-3 text-right font-weight-bold">Equipment Icons</div>
-          <div class="col">
-            <div class="btn-group">
-              <label class="btn btn-info" [(ngModel)]="equipmentSize" btnRadio="normal">Normal</label>
-              <label class="btn btn-info" [(ngModel)]="equipmentSize" btnRadio="small">Small</label>
-              <label class="btn btn-info" [(ngModel)]="equipmentSize" btnRadio="xsmall">Miniature</label>
+            <div class="row mb-1">
+              <div class="col-3 text-right font-weight-bold">Equipment Icons</div>
+              <div class="col">
+                <div class="btn-group">
+                  <label class="btn btn-info" [(ngModel)]="equipmentSize" btnRadio="normal">Normal</label>
+                  <label class="btn btn-info" [(ngModel)]="equipmentSize" btnRadio="small">Small</label>
+                  <label class="btn btn-info" [(ngModel)]="equipmentSize" btnRadio="xsmall">Miniature</label>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="row mb-1">
-          <div class="col-3 text-right font-weight-bold">Ground Icons</div>
-          <div class="col">
-            <div class="btn-group">
-              <label class="btn btn-info" [(ngModel)]="groundSize" btnRadio="normal">Normal</label>
-              <label class="btn btn-info" [(ngModel)]="groundSize" btnRadio="small">Small</label>
-              <label class="btn btn-info" [(ngModel)]="groundSize" btnRadio="xsmall">Miniature</label>
+            <div class="row mb-1">
+              <div class="col-3 text-right font-weight-bold">Ground Icons</div>
+              <div class="col">
+                <div class="btn-group">
+                  <label class="btn btn-info" [(ngModel)]="groundSize" btnRadio="normal">Normal</label>
+                  <label class="btn btn-info" [(ngModel)]="groundSize" btnRadio="small">Small</label>
+                  <label class="btn btn-info" [(ngModel)]="groundSize" btnRadio="xsmall">Miniature</label>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="row mb-1">
-          <div class="col-3 text-right font-weight-bold">Log Font Size</div>
-          <div class="col">
-            <div class="btn-group">
-              <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="xlarge">Gigantic</label>
-              <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="large">Large</label>
-              <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="normal">Normal</label>
-              <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="small">Small</label>
-              <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="xsmall">Miniature</label>
+            <div class="row mb-1">
+              <div class="col-3 text-right font-weight-bold">Log Font Size</div>
+              <div class="col">
+                <div class="btn-group">
+                  <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="xlarge">Gigantic</label>
+                  <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="large">Large</label>
+                  <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="normal">Normal</label>
+                  <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="small">Small</label>
+                  <label class="btn btn-info" [(ngModel)]="logFontSize" btnRadio="xsmall">Miniature</label>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="row mb-1">
-          <div class="col-3 text-right font-weight-bold">Status Bar Size</div>
-          <div class="col">
-            <div class="btn-group">
-              <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="normal">Two Lines</label>
-              <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="small">One Line</label>
+            <div class="row mb-1">
+              <div class="col-3 text-right font-weight-bold">Status Bar Size</div>
+              <div class="col">
+                <div class="btn-group">
+                  <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="normal">Two Lines</label>
+                  <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="small">One Line</label>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </tab>
 
-        <div class="row mt-3">
-          <div class="col text-center"><h4>UI Options</h4></div>
-        </div>
+          <tab heading="UI Options">
 
-        <div class="row mt-2">
-          <div class="col-3 text-right font-weight-bold">Theme</div>
-          <div class="col form-check">
-            <select class="form-control" [(ngModel)]="theme">
-              <option [value]="'Light'">Light</option>
-              <option [value]="'Dark'">Dark</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row mt-3">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="rightClickSend">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="rightClickSend" id="rightClickSend"/>
-              Right-click to send command line
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="autoHideLobby">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="autoHideLobby" id="autoHideLobby"/>
-              Hide lobby while game is open
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="lockWindowPositions">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="lockWindowPositions" id="lockWindowPositions"/>
-              Lock All Window Positions
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="noFantasy">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="noFantasy" id="noFantasy"/>
-              Turn Off Fantasy Font
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="suppressZeroDamage">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="suppressZeroDamage" id="suppressZeroDamage"/>
-              Suppress 0-damage messages
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="suppressOutgoingDot">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="suppressOutgoingDot" id="suppressOutgoingDot"/>
-              Suppress outgoing DoT damage
-            </label>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="suppressAnimations">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="suppressAnimations" id="suppressAnimations"/>
-              Stop Item Animations
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="showActiveTarget">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="showActiveTarget" id="showActiveTarget"/>
-              Show Current Target Information (Ctrl-Click to select without attacking)
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="pinLastTarget">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="pinLastTarget" id="pinLastTarget"/>
-              Pin Last Target Click Position
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            Sort friendlies
-            <div class="form-check form-check-inline ml-1">
-              <input type="radio" class="form-check-input" [(ngModel)]="shouldSortFriendly" [value]="null" name="shouldSortFriendly1" id="shouldSortFriendly1"/>
-              <label class="form-check-label" for="shouldSortFriendly1">none</label>
+            <div class="row mt-2">
+              <div class="col-3 text-right font-weight-bold">Theme</div>
+              <div class="col form-check">
+                <select class="form-control" [(ngModel)]="theme">
+                  <option [value]="'Light'">Light</option>
+                  <option [value]="'Dark'">Dark</option>
+                </select>
+              </div>
             </div>
-            <div class="form-check form-check-inline">
-              <input type="radio" class="form-check-input" [(ngModel)]="shouldSortFriendly" [value]="true" name="shouldSortFriendly2" id="shouldSortFriendly2"/>
-              <label class="form-check-label" for="shouldSortFriendly2">first</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input type="radio" class="form-check-input" [(ngModel)]="shouldSortFriendly" [value]="false" name="shouldSortFriendly3" id="shouldSortFriendly3"/>
-              <label class="form-check-label" for="shouldSortFriendly3">last</label>
-            </div>
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            Sort by distance
-            <div class="form-check form-check-inline ml-1">
-              <input type="radio" class="form-check-input" [(ngModel)]="sortNPCsByDistance" [value]="null" name="sortNPCsByDistance1" id="sortNPCsByDistance1"/>
-              <label class="form-check-label" for="sortNPCsByDistance1">none</label>
+            <div class="row mt-3">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="rightClickSend">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="rightClickSend" id="rightClickSend"/>
+                  Right-click to send command line
+                </label>
+              </div>
             </div>
-            <div class="form-check form-check-inline">
-              <input type="radio" class="form-check-input" [(ngModel)]="sortNPCsByDistance" [value]="true" name="sortNPCsByDistance2" id="sortNPCsByDistance2" />
-              <label class="form-check-label" for="sortNPCsByDistance2">closest</label>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="autoHideLobby">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="autoHideLobby" id="autoHideLobby"/>
+                  Hide lobby while game is open
+                </label>
+              </div>
             </div>
-            <div class="form-check form-check-inline">
-              <input type="radio" class="form-check-input" [(ngModel)]="sortNPCsByDistance" [value]="false" name="sortNPCsByDistance3" id="sortNPCsByDistance3"/>
-              <label class="form-check-label" for="sortNPCsByDistance3">farthest</label>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="lockWindowPositions">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="lockWindowPositions" id="lockWindowPositions"/>
+                  Lock All Window Positions
+                </label>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="row mt-3">
-          <div class="col text-center"><h4>Audio Options</h4></div>
-        </div>
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="noFantasy">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="noFantasy" id="noFantasy"/>
+                  Turn Off Fantasy Font
+                </label>
+              </div>
+            </div>
 
-        <div class="row mt-2">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="playBackgroundMusic">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="playBackgroundMusic" id="playBackgroundMusic"/>
-              Play Background Music
-            </label>
-          </div>
-        </div>
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="suppressZeroDamage">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="suppressZeroDamage" id="suppressZeroDamage"/>
+                  Suppress 0-damage messages
+                </label>
+              </div>
+            </div>
 
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="nostalgicBackgroundMusic">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="nostalgicBackgroundMusic" id="nostalgicBackgroundMusic"/>
-              Nostalgic Background Music
-            </label>
-          </div>
-        </div>
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="suppressOutgoingDot">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="suppressOutgoingDot" id="suppressOutgoingDot"/>
+                  Suppress outgoing DoT damage
+                </label>
+              </div>
+            </div>
 
-        <div class="row">
-          <div class="col-9 ml-auto form-check">
-            <label class="form-check-label" for="playSoundEffects">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="playSoundEffects" id="playSoundEffects"/>
-              Play Sound Effects
-            </label>
-          </div>
-        </div>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="suppressAnimations">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="suppressAnimations" id="suppressAnimations"/>
+                  Stop Item Animations
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="showActiveTarget">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="showActiveTarget" id="showActiveTarget"/>
+                  Show Current Target Information (Ctrl-Click to select without attacking)
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="pinLastTarget">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="pinLastTarget" id="pinLastTarget"/>
+                  Pin Last Target Click Position
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                Sort friendlies
+                <div class="form-check form-check-inline ml-1">
+                  <input type="radio" class="form-check-input" [(ngModel)]="shouldSortFriendly" [value]="null" name="shouldSortFriendly1" id="shouldSortFriendly1"/>
+                  <label class="form-check-label" for="shouldSortFriendly1">none</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-input" [(ngModel)]="shouldSortFriendly" [value]="true" name="shouldSortFriendly2" id="shouldSortFriendly2"/>
+                  <label class="form-check-label" for="shouldSortFriendly2">first</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-input" [(ngModel)]="shouldSortFriendly" [value]="false" name="shouldSortFriendly3" id="shouldSortFriendly3"/>
+                  <label class="form-check-label" for="shouldSortFriendly3">last</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                Sort by distance
+                <div class="form-check form-check-inline ml-1">
+                  <input type="radio" class="form-check-input" [(ngModel)]="sortNPCsByDistance" [value]="null" name="sortNPCsByDistance1" id="sortNPCsByDistance1"/>
+                  <label class="form-check-label" for="sortNPCsByDistance1">none</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-input" [(ngModel)]="sortNPCsByDistance" [value]="true" name="sortNPCsByDistance2" id="sortNPCsByDistance2" />
+                  <label class="form-check-label" for="sortNPCsByDistance2">closest</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-input" [(ngModel)]="sortNPCsByDistance" [value]="false" name="sortNPCsByDistance3" id="sortNPCsByDistance3"/>
+                  <label class="form-check-label" for="sortNPCsByDistance3">farthest</label>
+                </div>
+              </div>
+            </div>
+          </tab>
+
+          <tab heading="Audio Options">
+            <div class="row mt-2">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="playBackgroundMusic">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="playBackgroundMusic" id="playBackgroundMusic"/>
+                  Play Background Music
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="nostalgicBackgroundMusic">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="nostalgicBackgroundMusic" id="nostalgicBackgroundMusic"/>
+                  Nostalgic Background Music
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="playSoundEffects">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="playSoundEffects" id="playSoundEffects"/>
+                  Play Sound Effects
+                </label>
+              </div>
+            </div>
+          </tab>
+
+        </tabset>
 
       </div>
     </div>
