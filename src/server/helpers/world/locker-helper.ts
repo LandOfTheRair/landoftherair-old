@@ -76,7 +76,7 @@ export class LockerHelper {
 
   async loadLocker(player: Player, regionId, lockerId, isGlobal: boolean): Promise<Locker> {
     const currentRegionId = player.$$room.mapRegion;
-    if(!isGlobal && currentRegionId !== regionId) return null;
+    if(!isGlobal && regionId !== 'Material' && regionId !== 'Shared' && currentRegionId !== regionId) return null;
 
     if(player.$$locker) {
       const locker = await player.$$locker;
