@@ -6,6 +6,8 @@ require('dotenv').config({ silent: true, path: argv.prod ? '.env.prod' : '.env' 
 
 import { DB } from '../database';
 
+const DROP_RATE_MAX = 10000;
+
 class LoreLoader {
 
   static async loadAllLore() {
@@ -93,7 +95,7 @@ class LoreLoader {
       mapDropData.forEach(({ mapName, drops }) => {
         drops.forEach(item => {
           if(item.result === gemScrollDesc._itemName) {
-            promises.push(DB.$mapDrops.update({ mapName: mapName }, { $addToSet: { drops: { result: itemName, chance: 1, maxChance: 1000 } } }).catch(e => {}));
+            promises.push(DB.$mapDrops.update({ mapName: mapName }, { $addToSet: { drops: { result: itemName, chance: 1, maxChance: DROP_RATE_MAX } } }).catch(e => {}));
           }
         });
       });
@@ -101,7 +103,7 @@ class LoreLoader {
       regionDropData.forEach(({ regionName, drops }) => {
         drops.forEach(item => {
           if(item.result === gemScrollDesc._itemName) {
-            promises.push(DB.$regionDrops.update({ regionName: regionName }, { $addToSet: { drops: { result: itemName, chance: 1, maxChance: 1000 } } }).catch(e => {}));
+            promises.push(DB.$regionDrops.update({ regionName: regionName }, { $addToSet: { drops: { result: itemName, chance: 1, maxChance: DROP_RATE_MAX } } }).catch(e => {}));
           }
         });
       });
@@ -148,7 +150,7 @@ class LoreLoader {
       }).catch(e => {}));
 
       regionDropData.forEach(({ regionName }) => {
-        promises.push(DB.$regionDrops.update({ regionName: regionName }, { $addToSet: { drops: { result: itemName, chance: 1, maxChance: 1000 } } }).catch(e => {}));
+        promises.push(DB.$regionDrops.update({ regionName: regionName }, { $addToSet: { drops: { result: itemName, chance: 1, maxChance: DROP_RATE_MAX } } }).catch(e => {}));
       });
     });
 
