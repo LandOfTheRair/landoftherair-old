@@ -16351,7 +16351,7 @@
      "itemExpirationHours":6,
      "itemGarbageCollection":30,
      "maxCreatures":700,
-     "maxSkill":23,
+     "maxSkill":30,
      "region":"Risan",
      "respawnX":32,
      "respawnY":27
