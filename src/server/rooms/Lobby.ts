@@ -257,14 +257,11 @@ export class Lobby extends Room<LobbyState> {
   }
 
   private logout(client) {
-    this.state.removeAccount(client.userId);
-
-    const account = this.state.findAccount(client.userId);
-    if(!account) return;
+    this.removeUsername((<any>client).username);
+    this.state.updateHashes();
+    this.updateDiscordLobbyChannelUserCount();
 
     client.userId = null;
-
-    this.cleanAndSaveAccount(account);
   }
 
   private sendMessage(client, message) {
@@ -454,16 +451,7 @@ export class Lobby extends Room<LobbyState> {
   }
 
   onLeave(client) {
-    this.removeUsername((<any>client).username);
-    this.state.updateHashes();
-    this.updateDiscordLobbyChannelUserCount();
-
-    const account = this.state.findAccount(client.userId);
-    if(!account) return;
-
-    client.userId = null;
-
-    this.cleanAndSaveAccount(account);
+    this.logout(client);
   }
 
   onDispose() {
@@ -473,7 +461,7 @@ export class Lobby extends Room<LobbyState> {
 
   removeUsername(username) {
     this.state.removeAccount(username);
-    DB.$players.update({ username }, { $set: { inGame: -1 } }, { multi: true });
+    DB.$players.update({ username }, { $set: { inGame: -1, colyseusId: null } }, { multi: true });
   }
 
   onMessage(client, data) {
