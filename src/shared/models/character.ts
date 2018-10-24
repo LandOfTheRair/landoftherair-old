@@ -1212,9 +1212,9 @@ export class Character {
       this.effects[effect.name] = effect;
     }
 
-    if(existingEffect) effect.shouldNotShowMessage = true;
+    // if(existingEffect) effect.shouldNotShowMessage = true;
     effect.effectStart(this);
-    if(existingEffect) effect.shouldNotShowMessage = false;
+    // if(existingEffect) effect.shouldNotShowMessage = false;
   }
 
   unapplyEffect(effect: Effect, prematurelyEnd = false, hideMessage = false) {
