@@ -9,3 +9,82 @@
   requirements:
     level: 15
 
+- name: Catacombs Longsword 1F
+  desc: "a longsword crafted in the ancient Risan kingdom"
+  stats:
+    accuracy: 1
+    weaponArmorClass: 2
+    offense: 3
+    defense: 3
+  tier: 6
+  offhand: true
+  type: Onehanded
+  value: 13500
+  sprite: 197
+
+  requirements:
+    level: 25
+
+- name: Catacombs Longsword 2F
+  desc: "a longsword crafted in the ancient Risan kingdom"
+  stats:
+    accuracy: 2
+    weaponArmorClass: 4
+    offense: 4
+    defense: 4
+  tier: 6
+  offhand: true
+  type: Onehanded
+  value: 23500
+  sprite: 197
+
+  requirements:
+    level: 30
+
+- name: Catacombs Longsword 3F
+  desc: "a longsword crafted in the ancient Risan kingdom"
+  stats:
+    accuracy: 3
+    weaponArmorClass: 6
+    offense: 5
+    defense: 5
+  tier: 7
+  offhand: true
+  type: Onehanded
+  value: 33500
+  sprite: 197
+
+  requirements:
+    level: 35
+
+- name: Catacombs Longsword 4F
+  desc: "a longsword crafted in the ancient Risan kingdom"
+  stats:
+    accuracy: 4
+    weaponArmorClass: 8
+    offense: 6
+    defense: 6
+  tier: 7
+  offhand: true
+  type: Onehanded
+  value: 43500
+  sprite: 197
+
+  requirements:
+    level: 40
+
+- name: Catacombs Longsword 5F
+  desc: "a longsword crafted in the ancient Risan kingdom"
+  stats:
+    accuracy: 5
+    weaponArmorClass: 10
+    offense: 7
+    defense: 7
+  tier: 8
+  offhand: true
+  type: Onehanded
+  value: 53500
+  sprite: 197
+
+  requirements:
+    level: 45

@@ -15,3 +15,28 @@
   value: 1501
   sprite: 45
   binds: true
+
+  requirements:
+    level: 15
+
+- name: Catacombs HolyFire Hammer
+  stats:
+    accuracy: 1
+    offense: 7
+  effect:
+    name: HolyFire
+    potency: 20
+    chance: 100
+    range: 0
+
+  desc: "a well-balanced throwing hammer that emanates holy power"
+  proneChance: 100
+  tier: 7
+  returnsOnThrow: true
+  type: Mace
+  value: 31501
+  sprite: 272
+  binds: true
+
+  requirements:
+    level: 30

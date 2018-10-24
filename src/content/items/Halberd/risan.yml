@@ -23,3 +23,79 @@
 
   requirements:
     level: 23
+
+- name: Catacombs Halberd 1F
+  desc: "a halberd crafted in the ancient Risan kingdom"
+  stats:
+    armorClass: 5
+    weaponArmorClass: 12
+    defense: 2
+    offense: 2
+  tier: 6
+  type: Polearm
+  value: 19511
+  sprite: 230
+
+  requirements:
+    level: 25
+
+- name: Catacombs Halberd 2F
+  desc: "a halberd crafted in the ancient Risan kingdom"
+  stats:
+    armorClass: 7
+    weaponArmorClass: 14
+    defense: 3
+    offense: 3
+  tier: 6
+  type: Polearm
+  value: 29511
+  sprite: 230
+
+  requirements:
+    level: 30
+
+- name: Catacombs Halberd 3F
+  desc: "a halberd crafted in the ancient Risan kingdom"
+  stats:
+    armorClass: 9
+    weaponArmorClass: 16
+    defense: 4
+    offense: 4
+  tier: 7
+  type: Polearm
+  value: 39511
+  sprite: 230
+
+  requirements:
+    level: 35
+
+- name: Catacombs Halberd 4F
+  desc: "a halberd crafted in the ancient Risan kingdom"
+  stats:
+    armorClass: 11
+    weaponArmorClass: 18
+    defense: 4
+    offense: 4
+  tier: 7
+  type: Polearm
+  value: 49511
+  sprite: 230
+
+  requirements:
+    level: 40
+
+- name: Catacombs Halberd 5F
+  desc: "a halberd crafted in the ancient Risan kingdom"
+  stats:
+    armorClass: 13
+    weaponArmorClass: 15
+    defense: 5
+    offense: 5
+  tier: 8
+  type: Polearm
+  value: 59511
+  sprite: 230
+
+  requirements:
+    level: 45
+

@@ -1,0 +1,76 @@
+
+
+- name: Catacombs Mace 1F
+  stats:
+    weaponArmorClass: 10
+    accuracy: 3
+    offense: 3
+    defense: 3
+  desc: "an ancient mace crafted in the ancient Risan kingdom"
+  tier: 6
+  type: Mace
+  value: 10511
+  sprite: 204
+
+  requirements:
+    level: 25
+
+- name: Catacombs Mace 2F
+  stats:
+    weaponArmorClass: 12
+    accuracy: 4
+    offense: 4
+    defense: 4
+  desc: "an ancient mace crafted in the ancient Risan kingdom"
+  tier: 6
+  type: Mace
+  value: 20511
+  sprite: 204
+
+  requirements:
+    level: 30
+
+- name: Catacombs Mace 3F
+  stats:
+    weaponArmorClass: 14
+    accuracy: 5
+    offense: 5
+    defense: 5
+  desc: "an ancient mace crafted in the ancient Risan kingdom"
+  tier: 7
+  type: Mace
+  value: 30511
+  sprite: 204
+
+  requirements:
+    level: 35
+
+- name: Catacombs Mace 4F
+  stats:
+    weaponArmorClass: 16
+    accuracy: 6
+    offense: 6
+    defense: 6
+  desc: "an ancient mace crafted in the ancient Risan kingdom"
+  tier: 7
+  type: Mace
+  value: 40511
+  sprite: 204
+
+  requirements:
+    level: 40
+
+- name: Catacombs Mace 5F
+  stats:
+    weaponArmorClass: 18
+    accuracy: 7
+    offense: 7
+    defense: 7
+  desc: "an ancient mace crafted in the ancient Risan kingdom"
+  tier: 8
+  type: Mace
+  value: 50511
+  sprite: 204
+
+  requirements:
+    level: 45

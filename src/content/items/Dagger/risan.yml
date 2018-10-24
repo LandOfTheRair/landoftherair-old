@@ -49,3 +49,78 @@
 
   requirements:
     level: 25
+
+- name: Catacombs Dagger 1F
+  stats:
+    offense: 4
+    accuracy: 6
+  desc: "a small steel dagger crafted in the ancient Risan kingdom"
+  offhand: true
+  returnsOnThrow: true
+  tier: 6
+  type: Dagger
+  value: 12185
+  sprite: 205
+
+  requirements:
+    level: 25
+
+- name: Catacombs Dagger 2F
+  stats:
+    offense: 5
+    accuracy: 7
+  desc: "a small steel dagger crafted in the ancient Risan kingdom"
+  offhand: true
+  returnsOnThrow: true
+  tier: 6
+  type: Dagger
+  value: 22185
+  sprite: 205
+
+  requirements:
+    level: 30
+
+- name: Catacombs Dagger 3F
+  stats:
+    offense: 6
+    accuracy: 8
+  desc: "a small steel dagger crafted in the ancient Risan kingdom"
+  offhand: true
+  returnsOnThrow: true
+  tier: 7
+  type: Dagger
+  value: 32185
+  sprite: 205
+
+  requirements:
+    level: 35
+
+- name: Catacombs Dagger 4F
+  stats:
+    offense: 7
+    accuracy: 9
+  desc: "a small steel dagger crafted in the ancient Risan kingdom"
+  offhand: true
+  returnsOnThrow: true
+  tier: 7
+  type: Dagger
+  value: 42185
+  sprite: 205
+
+  requirements:
+    level: 40
+
+- name: Catacombs Dagger 5F
+  stats:
+    offense: 8
+    accuracy: 10
+  desc: "a small steel dagger crafted in the ancient Risan kingdom"
+  offhand: true
+  returnsOnThrow: true
+  tier: 8
+  type: Dagger
+  value: 52185
+  sprite: 205
+
+  requirements:
+    level: 25

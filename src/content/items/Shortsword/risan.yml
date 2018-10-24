@@ -44,3 +44,100 @@
   requirements:
     level: 15
 
+- name: Catacombs Shortsword 1F
+  desc: "a shortsword crafted in the ancient Risan kingdom"
+  stats:
+    offense: 3
+    defense: 3
+    accuracy: 3
+    weaponArmorClass: 3
+  offhand: true
+  tier: 6
+  type: Shortsword
+  value: 13411
+  sprite: 305
+
+  requirements:
+    level: 25
+
+- name: Catacombs Shortsword 2F
+  desc: "a shortsword crafted in the ancient Risan kingdom"
+  stats:
+    offense: 4
+    defense: 4
+    accuracy: 4
+    weaponArmorClass: 4
+  offhand: true
+  tier: 6
+  type: Shortsword
+  value: 23411
+  sprite: 305
+
+  requirements:
+    level: 30
+
+- name: Catacombs Shortsword 3F
+  desc: "a shortsword crafted in the ancient Risan kingdom"
+  stats:
+    offense: 5
+    defense: 5
+    accuracy: 5
+    weaponArmorClass: 5
+  offhand: true
+  tier: 7
+  type: Shortsword
+  value: 33411
+  sprite: 305
+
+  requirements:
+    level: 35
+
+- name: Catacombs Shortsword 4F
+  desc: "a shortsword crafted in the ancient Risan kingdom"
+  stats:
+    offense: 6
+    defense: 6
+    accuracy: 6
+    weaponArmorClass: 6
+  offhand: true
+  tier: 7
+  type: Shortsword
+  value: 43411
+  sprite: 305
+
+  requirements:
+    level: 40
+
+- name: Catacombs Shortsword 5F
+  desc: "a shortsword crafted in the ancient Risan kingdom"
+  stats:
+    offense: 7
+    defense: 7
+    accuracy: 7
+    weaponArmorClass: 7
+  offhand: true
+  tier: 8
+  type: Shortsword
+  value: 53411
+  sprite: 305
+
+  requirements:
+    level: 45
+
+- name: Catacombs Bat Shortsword
+  desc: "a shortsword with a hilt shaped like a bat, the wings made of pure darkness"
+  stats:
+    stealth: 25
+    offense: 7
+    defense: 7
+  offhand: true
+  returnsOnThrow: true
+  tier: 7
+  type: Shortsword
+  value: 25667
+  sprite: 426
+  binds: true
+
+  requirements:
+    level: 30
+

@@ -75,3 +75,18 @@
 
   requirements:
     level: 17
+
+- name: Crazed Tonwin Shield
+  quality: 5
+  stats:
+    armorClass: 25
+    defense: 5
+  isHeavy: true
+  desc: "a highly-reflective shield engraved with the head of a snake and stained with crimson ether"
+  value: 21151
+  sprite: 1004
+  binds: true
+  tellsBind: true
+
+  requirements:
+    level: 25

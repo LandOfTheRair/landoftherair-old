@@ -29,21 +29,6 @@
   value: 3004
   sprite: 329
 
-- name: Crazed Tonwin Shield
-  quality: 5
-  stats:
-    armorClass: 25
-    defense: 5
-  isHeavy: true
-  desc: "a highly-reflective shield engraved with the head of a snake and stained with crimson ether"
-  value: 21151
-  sprite: 1004
-  binds: true
-  tellsBind: true
-
-  requirements:
-    level: 25
-
 - name: Frostlands Shield
   stats:
     armorClass: 17
@@ -76,3 +61,73 @@
 
   requirements:
     level: 25
+
+- name: Catacombs Shield 1F
+  stats:
+    armorClass: 19
+    weaponArmorClass: 5
+    offense: 1
+    defense: 1
+  tier: 6
+  desc: "a shield engraved with the symbol of ancient Risan kingdom"
+  value: 15333
+  sprite: 516
+
+  requirements:
+    level: 25
+
+- name: Catacombs Shield 2F
+  stats:
+    armorClass: 22
+    weaponArmorClass: 7
+    offense: 3
+    defense: 3
+  tier: 6
+  desc: "a shield engraved with the symbol of ancient Risan kingdom"
+  value: 25333
+  sprite: 516
+
+  requirements:
+    level: 30
+
+- name: Catacombs Shield 3F
+  stats:
+    armorClass: 25
+    weaponArmorClass: 9
+    offense: 5
+    defense: 5
+  tier: 7
+  desc: "a shield engraved with the symbol of ancient Risan kingdom"
+  value: 35333
+  sprite: 516
+
+  requirements:
+    level: 35
+
+- name: Catacombs Shield 4F
+  stats:
+    armorClass: 28
+    weaponArmorClass: 12
+    offense: 7
+    defense: 7
+  tier: 7
+  desc: "a shield engraved with the symbol of ancient Risan kingdom"
+  value: 45333
+  sprite: 516
+
+  requirements:
+    level: 40
+
+- name: Catacombs Shield 5F
+  stats:
+    armorClass: 31
+    weaponArmorClass: 15
+    offense: 9
+    defense: 9
+  tier: 8
+  desc: "a shield engraved with the symbol of ancient Risan kingdom"
+  value: 55333
+  sprite: 516
+
+  requirements:
+    level: 45

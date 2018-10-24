@@ -24,3 +24,94 @@
 
   requirements:
     level: 21
+
+- name: Catacombs Greatsword 1F
+  stats:
+    weaponArmorClass: 5
+    accuracy: -2
+    offense: 8
+    defense: 4
+  desc: "a massive greatsword crafted in the ancient Risan kingdom"
+  tier: 6
+  type: Twohanded
+  value: 23185
+  sprite: 198
+
+  requirements:
+    level: 25
+
+- name: Catacombs Greatsword 2F
+  stats:
+    weaponArmorClass: 8
+    accuracy: -2
+    offense: 9
+    defense: 5
+  desc: "a massive greatsword crafted in the ancient Risan kingdom"
+  tier: 6
+  type: Twohanded
+  value: 33185
+  sprite: 198
+
+  requirements:
+    level: 30
+
+- name: Catacombs Greatsword 3F
+  stats:
+    weaponArmorClass: 11
+    accuracy: -3
+    offense: 10
+    defense: 6
+  desc: "a massive greatsword crafted in the ancient Risan kingdom"
+  tier: 7
+  type: Twohanded
+  value: 43185
+  sprite: 198
+
+  requirements:
+    level: 35
+
+- name: Catacombs Greatsword 4F
+  stats:
+    weaponArmorClass: 15
+    accuracy: -3
+    offense: 11
+    defense: 7
+  desc: "a massive greatsword crafted in the ancient Risan kingdom"
+  tier: 7
+  type: Twohanded
+  value: 53185
+  sprite: 198
+
+  requirements:
+    level: 40
+
+- name: Catacombs Greatsword 5F
+  stats:
+    weaponArmorClass: 20
+    accuracy: -4
+    offense: 15
+    defense: 10
+  desc: "a massive greatsword crafted in the ancient Risan kingdom"
+  tier: 8
+  type: Twohanded
+  value: 23185
+  sprite: 698
+
+  requirements:
+    level: 45
+
+- name: Catacombs Bat Greatsword
+  desc: "a huge greatsword with a hilt shaped like a bat, the wings made of pure darkness"
+  stats:
+    weaponArmorClass: 10
+    stealth: 25
+    offense: 7
+    defense: 7
+  returnsOnThrow: true
+  tier: 7
+  type: Twohanded
+  value: 83185
+  sprite: 434
+
+  requirements:
+    level: 30
