@@ -32,7 +32,7 @@ export class Place extends Command {
     && (player.leftHand.itemClass.toLowerCase() === itemTypeOrName
     || includes(player.leftHand.name.toLowerCase(), itemTypeOrName))) { hand = 'left'; item = player.leftHand; }
 
-    if(!item) return false;
+    if(!item) return;
 
     if(container === 'sack' && !player.addItemToSack(item)) return;
     if(container === 'belt' && !player.addItemToBelt(item)) return;

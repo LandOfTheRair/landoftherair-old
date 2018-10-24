@@ -35,7 +35,7 @@ export class Take extends Command {
     if(takeItemSlot === -1) return player.sendClientMessage('Item was not found.');
 
     const item = player[container].takeItemFromSlot(takeItemSlot);
-    if(!item) return false;
+    if(!item) return;
 
     if(!player.rightHand) player.setRightHand(item);
     else if(!player.leftHand) player.setLeftHand(item);
