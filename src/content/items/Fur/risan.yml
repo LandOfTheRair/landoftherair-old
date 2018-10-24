@@ -91,3 +91,17 @@
 
   requirements:
     level: 25
+
+- name: Catacombs Griffon Fur
+  quality: 5
+  desc: "the tanned fur of an underground griffon"
+  stats:
+    fireResist: 500
+    iceResist: 500
+    armorClass: 30
+    defense: 5
+  value: 23300
+  sprite: 219
+
+  requirements:
+    level: 30

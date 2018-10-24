@@ -41,7 +41,81 @@
   type: Staff
   value: 20185
   sprite: 196
-  binds: true
 
   requirements:
     level: 21
+
+- name: Catacombs Staff 1F
+  stats:
+    defense: 4
+    weaponArmorClass: 4
+    armorClass: 4
+    mpregen: 4
+  desc: "a wooden staff carved from wood from the ancient Risan kingdom"
+  tier: 6
+  type: Staff
+  value: 15185
+  sprite: 196
+
+  requirements:
+    level: 25
+
+- name: Catacombs Staff 2F
+  stats:
+    defense: 5
+    weaponArmorClass: 6
+    armorClass: 6
+    mpregen: 8
+  desc: "a wooden staff carved from wood from the ancient Risan kingdom"
+  tier: 6
+  type: Staff
+  value: 25185
+  sprite: 196
+
+  requirements:
+    level: 30
+
+- name: Catacombs Staff 3F
+  stats:
+    defense: 6
+    weaponArmorClass: 8
+    armorClass: 8
+    mpregen: 12
+  desc: "a wooden staff carved from wood from the ancient Risan kingdom"
+  tier: 7
+  type: Staff
+  value: 35185
+  sprite: 196
+
+  requirements:
+    level: 35
+
+- name: Catacombs Staff 4F
+  stats:
+    defense: 7
+    weaponArmorClass: 10
+    armorClass: 10
+    mpregen: 16
+  desc: "a wooden staff carved from wood from the ancient Risan kingdom"
+  tier: 7
+  type: Staff
+  value: 45185
+  sprite: 196
+
+  requirements:
+    level: 40
+
+- name: Catacombs Staff 5F
+  stats:
+    defense: 8
+    weaponArmorClass: 12
+    armorClass: 12
+    mpregen: 20
+  desc: "a wooden staff carved from wood from the ancient Risan kingdom"
+  tier: 8
+  type: Staff
+  value: 55185
+  sprite: 196
+
+  requirements:
+    level: 45
