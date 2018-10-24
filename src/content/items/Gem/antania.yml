@@ -47,12 +47,12 @@
   sellValue: 6000
   sprite: 315
 
-  maxEncrusts: 7
+  maxEncrusts: 2
 
   stats:
-    stealth: 10
-    physicalDamageBoost: 10
-    perception: -1
+    stealth: 15
+    physicalDamageBoost: 25
+    perception: -5
 
   requirements:
     level: 11
@@ -62,12 +62,12 @@
   sellValue: 6000
   sprite: 245
 
-  maxEncrusts: 7
+  maxEncrusts: 2
 
   stats:
-    offense: 1
-    defense: 1
-    armorClass: -1
+    offense: 3
+    defense: 3
+    armorClass: -2
 
   requirements:
     level: 11
@@ -77,12 +77,12 @@
   sellValue: 6000
   sprite: 243
 
-  maxEncrusts: 7
+  maxEncrusts: 2
 
   stats:
-    healingBoost: 15
-    defense: 1
-    offense: -1
+    healingBoost: 50
+    defense: 3
+    offense: -3
 
   requirements:
     level: 11
@@ -92,12 +92,12 @@
   sellValue: 6000
   sprite: 213
 
-  maxEncrusts: 7
+  maxEncrusts: 2
 
   stats:
-    magicalDamageBoost: 15
-    defense: 1
-    offense: -1
+    magicalDamageBoost: 50
+    defense: 3
+    offense: -3
 
   requirements:
     level: 11
