@@ -1,0 +1,571 @@
+
+- npcId: Catacombs Skeleton 1F
+  name: skeleton page
+  monsterClass: Undead
+  sprite: 1015
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Warrior
+  hostility: Always
+  stats: 20
+  skillLevels: 9
+  level: 25
+
+  otherStats:
+    perception: 200
+
+  rightHand:
+    - result: Catacombs Longsword 1F
+      chance: 1000
+    - result: Risan Royal Spear
+      chance: 1
+    - result: Catacombs HolyFire Hammer
+      chance: 1
+
+  leftHand:
+    - result: none
+      chance: 10000
+    - result: Catacombs Shield 1F
+      chance: 1000
+    - result: Frostlands Royal Shield
+      chance: 1
+
+  gear:
+    Armor: Frostlands Trash Breastplate
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Robe2:
+      - result: none
+        chance: 300
+      - result: Catacombs Robe 1F
+        chance: 1
+
+    Feet:
+      - result: none
+        chance: 1000
+      - result: Catacombs Boots 1F
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  drops:
+    - result: Catacombs Raw Garnet
+      chance: 1
+      maxChance: 1000
+
+  skillOnKill: 65
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 106950
+    max: 109350
+
+  giveXp:
+    min: 107000
+    max: 109000
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.25
+
+    - name: Attribute
+      effectData:
+        damageType: 'sharp'
+        potency: 0.75
+
+- npcId: Catacombs Mummy 1F
+  name: mummy page
+  monsterClass: Undead
+  sprite: 155
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Warrior
+  hostility: Always
+  stats: 20
+  skillLevels: 9
+  level: 25
+
+  otherStats:
+    perception: 200
+
+  rightHand:
+    - result: Catacombs Greatsword 1F
+      chance: 1000
+    - result: Catacombs Greataxe 1F
+      chance: 1000
+    - result: Catacombs Halberd 1F
+      chance: 1000
+    - result: Catacombs Bat Greatsword
+      chance: 1
+    - result: Frostlands Thermidor Halberd
+      chance: 1
+
+  gear:
+    Armor: Frostlands Trash Breastplate
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Robe2:
+      - result: none
+        chance: 300
+      - result: Catacombs Robe 1F
+        chance: 1
+
+    Feet:
+      - result: none
+        chance: 1000
+      - result: Catacombs Boots 1F
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Feet'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+
+  drops:
+    - result: Catacombs Raw Garnet
+      chance: 1
+      maxChance: 1000
+
+  skillOnKill: 65
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 106950
+    max: 109350
+
+  giveXp:
+    min: 107000
+    max: 109000
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.25
+
+    - name: Attribute
+      effectData:
+        damageType: 'blunt'
+        potency: 0.75
+
+- npcId: Catacombs Ghost 1F
+  name: ghost priest
+  monsterClass: Undead
+  sprite: 300
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Healer
+  hostility: Always
+  stats: 20
+  skillLevels: 9
+  level: 25
+
+  otherStats:
+    perception: 200
+
+  rightHand: 
+    - result: Catacombs Mace 1F
+      chance: 1000
+    - result: Catacombs HolyFire Hammer
+      chance: 1
+    - result: Risan Royal Spear
+      chance: 1
+
+  gear:
+    Armor: Risan Trash Tunic
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+    Neck:
+      - result: none
+        chance: 1000
+      - result: Catacombs Amulet 1F
+        chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Neck'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  drops:
+    - result: Catacombs Raw Turquoise
+      chance: 1
+      maxChance: 1000
+
+  skillOnKill: 65
+
+  usableSkills:
+    - result: Afflict
+      chance: 100
+    - result: BarNecro
+      chance: 100
+    - result: Cure
+      chance: 100
+    - result: TrueSight
+      chance: 100
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 106950
+    max: 109350
+
+  mp:
+    min: 10000
+    max: 10000
+
+  giveXp:
+    min: 101000
+    max: 107000
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'necrotic'
+        potency: 0.75
+
+- npcId: Catacombs Wight 1F
+  name: wight initiate
+  monsterClass: Undead
+  sprite: 980
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Healer
+  hostility: Always
+  stats: 20
+  skillLevels: 9
+  level: 25
+
+  otherStats:
+    perception: 200
+
+  rightHand: 
+    - result: Catacombs Staff 1F
+      chance: 1000
+    - result: Risan Royal Spear
+      chance: 1
+
+  gear:
+    Armor: Risan Trash Tunic
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+    Waist:
+      - result: none
+        chance: 1000
+      - result: Catacombs Sash 1F
+        chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Waist'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  drops:
+    - result: Catacombs Raw Topaz
+      chance: 1
+      maxChance: 1000
+
+  skillOnKill: 65
+
+  usableSkills:
+    - result: MagicMissile
+      chance: 100
+    - result: TrueSight
+      chance: 100
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 106950
+    max: 109350
+
+  mp:
+    min: 10000
+    max: 10000
+
+  giveXp:
+    min: 101000
+    max: 107000
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'energy'
+        potency: 0.75
+
+- npcId: Catacombs Nightwalker 1F
+  name: nightwalker whitesash
+  monsterClass: Undead
+  sprite: 975
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Warrior
+  hostility: Always
+  stats: 20
+  skillLevels: 9
+  level: 25
+
+  otherStats:
+    perception: 200
+
+  leftHand:
+    - result: none
+      chance: 10000
+    - result: Catacombs Shield 1F
+      chance: 100
+    - result: Frostlands Royal Shield
+      chance: 1
+
+  gear:
+    Armor: Frostlands Trash Breastplate
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Robe2:
+      - result: none
+        chance: 300
+      - result: Catacombs Robe 1F
+        chance: 1
+
+    Feet:
+      - result: none
+        chance: 1000
+      - result: Catacombs Boots 1F
+        chance: 1
+
+    Hands: 
+      - result: Frostlands Frostgolem Gloves
+        chance: 1000
+      - result: Catacombs Claws 1F
+        chance: 1
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Feet'
+      chance: -1
+    - drop: 'gear.Robe2'
+      chance: -1
+    - drop: 'gear.Hands'
+      chance: -1
+    - drop: 'gear.leftHand'
+      chance: -1
+
+  drops:
+    - result: Catacombs Raw Amber
+      chance: 1
+      maxChance: 1000
+
+  skillOnKill: 65
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 106950
+    max: 109350
+
+  giveXp:
+    min: 107000
+    max: 109000
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 1.25
+
+    - name: Attribute
+      effectData:
+        damageType: 'blunt'
+        potency: 0.75
+
+- npcId: Catacombs Qell 1F
+  name: qell deceiver
+  monsterClass: Humanoid
+  sprite: 945
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Thief
+  hostility: Always
+  stats: 20
+  skillLevels: 10
+  level: 25
+
+  otherStats:
+    stealth: 50
+    perception: 200
+
+  rightHand:
+    - result: Catacombs Dagger 1F
+      chance: 1000
+    - result: Catacombs Shortsword 1F
+      chance: 1000
+    - result: Catacombs Longbow 1F
+      chance: 1000
+    - result: Catacombs HolyFire Hammer
+      chance: 1
+    - result: Catacombs Bat Greatsword
+      chance: 1
+    - result: Frost Chakram
+      chance: 1
+
+  leftHand:
+    - result: none
+      chance: 10000
+    - result: Catacombs Arrows
+      chance: 10
+    - result: Frost Chakram
+      chance: 1
+
+  gear:
+    Armor: Risan Trash Tunic
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
+        chance: 1
+
+    Feet:
+      - result: none
+        chance: 1000
+      - result: Catacombs Boots 1F
+        chance: 1
+
+    Wrists:
+      - result: none
+        chance: 1000
+      - result: Catacombs Bracers 1F
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Wrists'
+      chance: -1
+    - drop: 'gear.Feet'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  skillOnKill: 65
+
+  usableSkills:
+    - Steal
+    - Hide
+    - Darkness
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 106950
+    max: 109350
+
+  giveXp:
+    min: 101000
+    max: 107000
+
+  drops:
+    - result: Catacombs Raw Tourmaline
+      chance: 1
+      maxChance: 1000
