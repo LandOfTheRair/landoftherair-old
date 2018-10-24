@@ -1,0 +1,5 @@
+
+- name: Vial of Blood
+  sprite: 926
+  desc: "a vial of blood"
+  value: 1

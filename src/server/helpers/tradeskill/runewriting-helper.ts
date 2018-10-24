@@ -1,10 +1,6 @@
 
-import { includes, sample } from 'lodash';
-
 import { Player } from '../../../shared/models/player';
 import { SkillClassNames } from '../../../shared/models/character';
-import { Skill } from '../../base/Skill';
-import { CommandExecutor } from '../command-executor';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class RunewritingHelper {
@@ -17,58 +13,37 @@ export class RunewritingHelper {
 
     const ink = player.potionHand;
     const scroll = player.rightHand;
-    const corpse = player.leftHand;
+    const blood = player.leftHand;
 
-    const npcRef = player.$$room.state.findNPC((<any>corpse).npcUUID);
+    const mySkill = player.calcSkillLevel(SkillClassNames.Runewriting);
 
-    const possibleSkills = (npcRef.usableSkills || []).filter(skillName => {
-      const skillRef: Skill = CommandExecutor.getSkillRef(skillName);
-      if(!skillRef) return false;
-      if(skillRef.monsterSkill || !skillRef.requiresLearn || skillRef.unableToLearnFromStealing) return false;
-
-      return true;
-    });
-
-    const chosenSkill = sample(possibleSkills);
-
-    if(!chosenSkill) {
-      player.gainSkill(SkillClassNames.Runewriting, Math.floor(npcRef.level / 2));
-      player.sendClientMessage('The corpse blood imparts no knowledge.');
-      player.$$room.dropCorpseItems(corpse);
-      player.setLeftHand(null);
-      return;
-    }
-
-    const failChance = (5 + npcRef.level - player.level) * 5;
+    const failChance = (5 + blood.effect.potency - mySkill) * 5;
 
     if(failChance > 0 && RollerHelper.XInOneHundred(failChance)) {
-      player.sendClientMessage('The corpse blood is too difficult to inscribe.');
-      player.gainSkill(SkillClassNames.Runewriting, Math.floor(npcRef.level / 3));
-      player.$$room.dropCorpseItems(corpse);
+      player.sendClientMessage('The blood is too difficult to inscribe.');
+      player.gainSkill(SkillClassNames.Runewriting, Math.floor(blood.effect.potency / 3));
       player.setLeftHand(null);
       return;
     }
 
-    let skillGain = npcRef.level + 10;
-    if(includes(npcRef.name, 'elite')) skillGain *= 2;
+    const skillGain = blood.effect.potency + 10;
     player.gainSkill(SkillClassNames.Runewriting, skillGain);
 
     ink.ounces--;
     if(ink.ounces <= 0) player.setPotionHand(null);
 
-    scroll.name = `Runewritten Scroll - ${chosenSkill} Lv. ${npcRef.level}`;
-    scroll.desc = `a rune scroll inscribed with the spell "${chosenSkill}"`;
+    scroll.name = `Runewritten Scroll - ${blood.effect.name} Lv. ${blood.effect.potency}`;
+    scroll.desc = `a rune scroll inscribed with the spell "${blood.effect.name}"`;
     scroll.effect = {
-      name: chosenSkill,
-      potency: npcRef.level,
-      uses: player.calcSkillLevel(SkillClassNames.Runewriting) + 1
+      name: blood.effect.name,
+      potency: blood.effect.potency,
+      uses: blood.ounces + mySkill
     };
 
     scroll.cosmetic = { name: 'Ancientify', isPermanent: true };
 
-    player.$$room.dropCorpseItems(corpse);
     player.setLeftHand(null);
 
-    player.sendClientMessage(`The corpse imparts the knowledge of the spell "${chosenSkill}"!`);
+    player.sendClientMessage(`The blood imparts the knowledge of the spell "${blood.effect.name}"!`);
   }
 }
