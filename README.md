@@ -190,6 +190,7 @@ You also get access to some commands in-game:
 * `@spawnnpc npc.npcId="NPC Internal ID" spawner.*=*` - spawn a monster of the given id, with optional spawner props
 * `@summon playerish` - summon any player who matches playerish
 * `@teleport <x> <y> [map]` - teleport to X,Y, and if map is specified, you'll also change maps
+* `@teleporttile <x> <y> <map>` - create a teleport tile to X, Y, Map that anyone can use
 * `@teleportto npcish` - teleport to an npc matching a name like npcish
 * `@sight` - give yourself the ability to see through walls
 

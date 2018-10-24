@@ -756,10 +756,14 @@ export class Game {
 
       if(this.environmentalObjectHash[obj.properties.timestamp]) return;
 
-      if(this.player.getTotalStat('perception') < obj.properties.setStealth
+      if(obj.properties.setStealth
+      && this.player.getTotalStat('perception') < obj.properties.setStealth
       && obj.properties.caster.username !== this.player.username) return;
 
-      const spriteInfo = ENVIRONMENTAL_OBJECT_GID_HASH[obj.type];
+      const spriteInfo = obj.gid && obj.image
+                     ? { image: cacheKey(this.clientGameState.mapName, 'tileset', obj.image), gid: obj.gid }
+                     : ENVIRONMENTAL_OBJECT_GID_HASH[obj.type];
+
       const sprite = this.g.add.sprite(obj.x, obj.y - 64, spriteInfo.image, spriteInfo.gid);
       this.otherEnvironmentalObjects.add(sprite);
       this.environmentalObjectHash[obj.properties.timestamp] = sprite;

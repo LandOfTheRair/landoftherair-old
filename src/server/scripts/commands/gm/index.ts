@@ -22,4 +22,5 @@ export * from './GMSight';
 export * from './GMSpawnNPC';
 export * from './GMSummon';
 export * from './GMTeleport';
+export * from './GMTeleportTile';
 export * from './GMTeleportTo';
