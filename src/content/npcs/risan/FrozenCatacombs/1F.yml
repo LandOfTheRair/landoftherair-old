@@ -45,12 +45,6 @@
       - result: Catacombs Robe 1F
         chance: 1
 
-    Feet:
-      - result: none
-        chance: 1000
-      - result: Catacombs Boots 1F
-        chance: 1
-
     Hands: Frostlands Frostgolem Gloves
 
   copyDrops:
@@ -61,8 +55,6 @@
       chance: 1
       maxChance: 10
     - drop: 'gear.Robe2'
-      chance: -1
-    - drop: 'gear.Feet'
       chance: -1
     - drop: 'rightHand'
       chance: -1
@@ -141,12 +133,6 @@
       - result: Catacombs Robe 1F
         chance: 1
 
-    Feet:
-      - result: none
-        chance: 1000
-      - result: Catacombs Boots 1F
-        chance: 1
-
     Hands: Frostlands Frostgolem Gloves
 
   copyDrops:
@@ -156,8 +142,6 @@
     - drop: 'gear.Robe1'
       chance: 1
       maxChance: 10
-    - drop: 'gear.Feet'
-      chance: -1
     - drop: 'gear.Robe2'
       chance: -1
     - drop: 'rightHand'
@@ -411,12 +395,6 @@
       - result: Catacombs Robe 1F
         chance: 1
 
-    Feet:
-      - result: none
-        chance: 1000
-      - result: Catacombs Boots 1F
-        chance: 1
-
     Hands: 
       - result: Frostlands Frostgolem Gloves
         chance: 1000
@@ -430,8 +408,6 @@
     - drop: 'gear.Robe1'
       chance: 1
       maxChance: 10
-    - drop: 'gear.Feet'
-      chance: -1
     - drop: 'gear.Robe2'
       chance: -1
     - drop: 'gear.Hands'
@@ -471,7 +447,7 @@
 
 - npcId: Catacombs Qell 1F
   name: qell deceiver
-  monsterClass: Humanoid
+  monsterClass: Undead
   sprite: 945
   allegiance: Enemy
   alignment: Evil
@@ -490,8 +466,6 @@
       chance: 1000
     - result: Catacombs Shortsword 1F
       chance: 1000
-    - result: Catacombs Longbow 1F
-      chance: 1000
     - result: Catacombs HolyFire Hammer
       chance: 1
     - result: Catacombs Bat Greatsword
@@ -502,8 +476,6 @@
   leftHand:
     - result: none
       chance: 10000
-    - result: Catacombs Arrows
-      chance: 10
     - result: Frost Chakram
       chance: 1
 
@@ -520,6 +492,86 @@
       - result: none
         chance: 1000
       - result: Catacombs Boots 1F
+        chance: 1
+
+    Hands: Frostlands Frostgolem Gloves
+
+  copyDrops:
+    - drop: 'gear.Armor'
+      chance: 1
+      maxChance: 100
+    - drop: 'gear.Robe1'
+      chance: 1
+      maxChance: 10
+    - drop: 'gear.Feet'
+      chance: -1
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  skillOnKill: 65
+
+  usableSkills:
+    - Steal
+    - Hide
+    - Darkness
+    - DarkVision
+
+  gold:
+    min: 1550
+    max: 1900
+
+  hp:
+    min: 106950
+    max: 109350
+
+  giveXp:
+    min: 101000
+    max: 107000
+
+  drops:
+    - result: Catacombs Raw Tourmaline
+      chance: 1
+      maxChance: 1000
+
+- npcId: Catacombs Spectre 1F
+  name: spectre bowyer
+  monsterClass: Undead
+  sprite: 945
+  allegiance: Enemy
+  alignment: Evil
+  baseClass: Thief
+  hostility: Always
+  stats: 20
+  skillLevels: 10
+  level: 25
+
+  otherStats:
+    stealth: 50
+    perception: 200
+
+  rightHand:
+    - result: Catacombs Longbow 1F
+      chance: 1000
+    - result: Frost Chakram
+      chance: 1
+
+  leftHand:
+    - result: none
+      chance: 10000
+    - result: Catacombs Arrows
+      chance: 1000
+    - result: Frost Chakram
+      chance: 1
+
+  gear:
+    Armor: Risan Trash Tunic
+
+    Robe1:
+      - result: none
+        chance: 30
+      - result: Risan Trash Cloak
         chance: 1
 
     Wrists:
@@ -539,8 +591,6 @@
       maxChance: 10
     - drop: 'gear.Wrists'
       chance: -1
-    - drop: 'gear.Feet'
-      chance: -1
     - drop: 'rightHand'
       chance: -1
     - drop: 'leftHand'
@@ -549,9 +599,9 @@
   skillOnKill: 65
 
   usableSkills:
-    - Steal
     - Hide
     - Darkness
+    - DarkVision
 
   gold:
     min: 1550
