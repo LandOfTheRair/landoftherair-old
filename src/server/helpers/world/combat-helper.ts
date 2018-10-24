@@ -399,8 +399,12 @@ export class CombatHelper {
       dodgeBonus: Math.floor((100 - get(defender.gear, 'Armor.stats.mitigation', 0)) / 10)
     };
 
-    const fumbleMultiplier = attacker.isPlayer() ? 1 : 100;
-    const fumbleRoll = attackerScope.skill * attackerScope.realLevel * attackerScope.accuracy * attackerScope.offense;
+    const fumbleMultiplier = attacker.isPlayer() ? 1 : 10;
+    const fumbleRoll = Math.max(attackerScope.skill, 5)
+                     * Math.max(attackerScope.realLevel, 5)
+                     * Math.max(attackerScope.accuracy, 1)
+                     * Math.max(attackerScope.offense, 1);
+
     let isFumble = RollerHelper.XInY(1, fumbleRoll * fumbleMultiplier);
     const failMsg = isFumble ? 'You fumble your weapon.' : 'You feel a burning sensation in your hands!';
 
