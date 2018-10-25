@@ -464,8 +464,11 @@ export class Game {
         const itemPatchY = this.clientGameState.groundItems[xKey][yKey];
         if(!itemPatchY) continue;
 
+        const numItemsHere = Object.keys(itemPatchY).length;
         Object.keys(itemPatchY).forEach(itemType => {
           if(itemPatchY[itemType].length === 0) return;
+          if(itemType === 'Coin' && numItemsHere > 1) return;
+
           const item = itemPatchY[itemType][0];
 
           if(!this.canCreateItemSpriteAt(x, y)) return;
