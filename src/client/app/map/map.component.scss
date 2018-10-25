@@ -6,3 +6,19 @@
   text-align: center;
   font-size: 32px;
 }
+
+.item-text {
+  z-index: 900;
+
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 5px;
+  text-align: center;
+  font-size: 0.875rem;
+  opacity: 0.9;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}

@@ -60,6 +60,8 @@ export class ColyseusGameService {
   public tour$ = new Subject();
   public marketboardRemove$ = new Subject();
 
+  public currentItemDescription$ = new Subject<string>();
+
   public get skillTree$() {
     return this.clientGameState.skillTree$;
   }
@@ -1051,5 +1053,9 @@ export class ColyseusGameService {
         Math.pow(char.y - me.y, 2)
       )
     );
+  }
+
+  public updateCurrentItemDesc(str: string) {
+    this.currentItemDescription$.next(str);
   }
 }

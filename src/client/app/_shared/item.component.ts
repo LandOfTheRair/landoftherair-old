@@ -33,12 +33,8 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID, isStackableMaterial: isStackableMaterial }"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
          (mouseenter)="determineScopes()"
-         triggers="hover:mouseleave"
-         [placement]="tooltipPlacement"
-         container="body"
-         delay="750"
-         [isDisabled]="!item || !showDesc"
-         [tooltip]="desc">
+         (mouseover)="updateWithDesc()"
+         (mouseout)="removeDesc()">
       <img [src]="imgUrl" 
            [style.object-position]="spriteLocation" 
            [class.hidden]="!item" 
@@ -56,10 +52,6 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
       <span class="value" *ngIf="item && showValue">{{ overrideValue || (item._buybackValue || item.value) + 'g' }}</span>
       <span class="value" *ngIf="item && showOunces && item.succorInfo">{{ item.succorInfo.map }}</span>
       <span class="ounces" *ngIf="item && showDesc && item.effect && item.itemClass === 'Trap'">{{ item.trapUses }}x {{ effectName }}</span>
-      
-      <ng-template #desc>
-        <div [innerHtml]="descText"></div>
-      </ng-template>
     </div>
     
   `
@@ -376,6 +368,20 @@ export class ItemComponent {
 
     }
 
+  }
+
+  updateWithDesc() {
+    if(!this.item || !this.showDesc) return;
+
+    this.colyseusGame.updateCurrentItemDesc('');
+
+    setTimeout(() => {
+      this.colyseusGame.updateCurrentItemDesc(this.descText);
+    }, 750);
+  }
+
+  removeDesc() {
+    this.colyseusGame.updateCurrentItemDesc('');
   }
 
 }

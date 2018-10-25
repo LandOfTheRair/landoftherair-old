@@ -356,7 +356,7 @@ export class Item {
         .join(', ');
 
       statText = statText ? `Hidden Bonuses: ${statText}` : '';
-      if(fromClient) statText = `<br><br>${statText}`;
+      if(fromClient && statText) statText = `<br><br>${statText}`;
     }
 
     return `${starText} ${baseText}${isValuableText}${sense1Text}${sense1AfterText}${sense2Text}${traitText}

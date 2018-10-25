@@ -20,10 +20,12 @@ export class MapComponent implements OnInit, OnDestroy {
   public game: Game;
 
   start$: any;
-
-  boxes$:  any;
+  boxes$: any;
+  itemDesc$: any;
 
   started: boolean;
+
+  public currentItemDescription: string;
 
   private get clientGameState() {
     return this.colyseus.game.clientGameState;
@@ -37,6 +39,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.itemDesc$ = this.colyseus.game.currentItemDescription$.subscribe(val => this.setCurrentItemDescription(val));
     this.zone.runOutsideAngular(() => {
       this.initGame();
     });
@@ -96,6 +99,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.start$.unsubscribe();
+    this.itemDesc$.unsubscribe();
 
     if(this.boxes$)  this.boxes$.unsubscribe();
 
@@ -105,6 +109,10 @@ export class MapComponent implements OnInit, OnDestroy {
     } catch(e) {}
 
     this.cleanCanvases();
+  }
+
+  private setCurrentItemDescription(str: string) {
+    this.currentItemDescription = str;
   }
 
 }
