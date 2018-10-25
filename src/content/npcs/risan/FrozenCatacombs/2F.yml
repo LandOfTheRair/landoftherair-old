@@ -1,22 +1,22 @@
 
-- npcId: Catacombs Skeleton 1F
-  name: skeleton page
+- npcId: Catacombs Skeleton 2F
+  name: skeleton squire
   monsterClass: Undead
   sprite: 1015
   allegiance: Enemy
   alignment: Evil
   baseClass: Warrior
   hostility: Always
-  stats: 20
-  skillLevels: 9
-  level: 25
+  stats: 22
+  skillLevels: 10
+  level: 30
 
   otherStats:
-    perception: 200
+    perception: 225
 
   rightHand:
-    - result: Catacombs Longsword 1F
-      chance: 1000
+    - result: Catacombs Longsword 2F
+      chance: 900
     - result: Risan Royal Spear
       chance: 1
     - result: Catacombs HolyFire Hammer
@@ -24,8 +24,8 @@
 
   leftHand:
     - result: none
-      chance: 10000
-    - result: Catacombs Shield 1F
+      chance: 3000
+    - result: Catacombs Shield 2F
       chance: 1000
     - result: Frostlands Royal Shield
       chance: 1
@@ -42,7 +42,7 @@
     Robe2:
       - result: none
         chance: 300
-      - result: Catacombs Robe 1F
+      - result: Catacombs Robe 2F
         chance: 1
 
     Hands: Frostlands Frostgolem Gloves
@@ -64,21 +64,30 @@
   drops:
     - result: Catacombs Raw Garnet
       chance: 1
-      maxChance: 1000
+      maxChance: 900
 
-  skillOnKill: 65
+  skillOnKill: 70
+
+  usableSkills:
+    - Charge
+    - Blindstrike
+
+  traitLevels:
+    ForcefulStrike: 2
+    SterlingArmor: 3
+    Swashbuckler: 2
 
   gold:
-    min: 1550
-    max: 1900
+    min: 1850
+    max: 2125
 
   hp:
-    min: 106950
-    max: 109350
+    min: 156950
+    max: 159350
 
   giveXp:
-    min: 107000
-    max: 109000
+    min: 151000
+    max: 157000
 
   baseEffects:
     - name: Attribute
@@ -91,28 +100,28 @@
         damageType: 'sharp'
         potency: 0.75
 
-- npcId: Catacombs Mummy 1F
-  name: mummy page
+- npcId: Catacombs Mummy 2F
+  name: mummy squire
   monsterClass: Undead
   sprite: 155
   allegiance: Enemy
   alignment: Evil
   baseClass: Warrior
   hostility: Always
-  stats: 20
-  skillLevels: 9
-  level: 25
+  stats: 22
+  skillLevels: 10
+  level: 30
 
   otherStats:
-    perception: 200
+    perception: 225
 
   rightHand:
-    - result: Catacombs Greatsword 1F
-      chance: 1000
-    - result: Catacombs Greataxe 1F
-      chance: 1000
-    - result: Catacombs Halberd 1F
-      chance: 1000
+    - result: Catacombs Greatsword 2F
+      chance: 900
+    - result: Catacombs Greataxe 2F
+      chance: 900
+    - result: Catacombs Halberd 2F
+      chance: 900
     - result: Catacombs Bat Greatsword
       chance: 1
     - result: Frostlands Thermidor Halberd
@@ -130,7 +139,7 @@
     Robe2:
       - result: none
         chance: 300
-      - result: Catacombs Robe 1F
+      - result: Catacombs Robe 2F
         chance: 1
 
     Hands: Frostlands Frostgolem Gloves
@@ -150,21 +159,30 @@
   drops:
     - result: Catacombs Raw Garnet
       chance: 1
-      maxChance: 1000
+      maxChance: 900
 
-  skillOnKill: 65
+  skillOnKill: 70
+
+  usableSkills:
+    - Charge
+    - Blindstrike
+
+  traitLevels:
+    Riposte: 1
+    HolyProtection: 5
+    Swashbuckler: 2
 
   gold:
-    min: 1550
-    max: 1900
+    min: 1850
+    max: 2125
 
   hp:
-    min: 106950
-    max: 109350
+    min: 156950
+    max: 159350
 
   giveXp:
-    min: 107000
-    max: 109000
+    min: 151000
+    max: 157000
 
   baseEffects:
     - name: Attribute
@@ -177,24 +195,24 @@
         damageType: 'blunt'
         potency: 0.75
 
-- npcId: Catacombs Ghost 1F
-  name: ghost priest
+- npcId: Catacombs Ghost 2F
+  name: ghost bishop
   monsterClass: Undead
   sprite: 300
   allegiance: Enemy
   alignment: Evil
   baseClass: Healer
   hostility: Always
-  stats: 20
-  skillLevels: 9
-  level: 25
+  stats: 22
+  skillLevels: 10
+  level: 30
 
   otherStats:
-    perception: 200
+    perception: 225
 
   rightHand:
-    - result: Catacombs Mace 1F
-      chance: 1000
+    - result: Catacombs Mace 2F
+      chance: 900
     - result: Catacombs HolyFire Hammer
       chance: 1
     - result: Risan Royal Spear
@@ -213,8 +231,8 @@
 
     Neck:
       - result: none
-        chance: 1000
-      - result: Catacombs Amulet 1F
+        chance: 900
+      - result: Catacombs Amulet 2F
         chance: 1
 
   copyDrops:
@@ -234,35 +252,51 @@
   drops:
     - result: Catacombs Raw Turquoise
       chance: 1
-      maxChance: 1000
+      maxChance: 900
 
-  skillOnKill: 65
+  skillOnKill: 70
 
   usableSkills:
     - result: Afflict
       chance: 100
-    - result: BarNecro
+    - result: Plague
       chance: 100
     - result: Cure
       chance: 100
+    - result: Snare
+      chance: 100
     - result: TrueSight
       chance: 100
+    - result: DarkVision
+      chance: 100
+    - result: Aid
+      chance: 100
+    - result: BarNecro
+      chance: 100
+    - result: BarFire
+      chance: 100
+    - result: BarFrost
+      chance: 100
+
+  traitLevels:
+    HolyAffliction: 1
+    NecroticFocus: 1
 
   gold:
-    min: 1550
-    max: 1900
+    min: 1850
+    max: 2125
 
   hp:
-    min: 106950
-    max: 109350
+    min: 156950
+    max: 159350
 
   mp:
     min: 10000
     max: 10000
 
   giveXp:
-    min: 101000
-    max: 107000
+    min: 151000
+    max: 157000
 
   baseEffects:
     - name: Attribute
@@ -275,24 +309,24 @@
         damageType: 'magical'
         potency: 0.75
 
-- npcId: Catacombs Wight 1F
-  name: wight initiate
+- npcId: Catacombs Wight 2F
+  name: wight mage
   monsterClass: Undead
   sprite: 980
   allegiance: Enemy
   alignment: Evil
   baseClass: Mage
   hostility: Always
-  stats: 20
-  skillLevels: 9
-  level: 25
+  stats: 22
+  skillLevels: 10
+  level: 30
 
   otherStats:
-    perception: 200
+    perception: 225
 
   rightHand:
-    - result: Catacombs Staff 1F
-      chance: 1000
+    - result: Catacombs Staff 2F
+      chance: 900
     - result: Catacombs Rapidpunch Staff
       chance: 1
     - result: Risan Royal Spear
@@ -311,8 +345,8 @@
 
     Waist:
       - result: none
-        chance: 1000
-      - result: Catacombs Sash 1F
+        chance: 900
+      - result: Catacombs Sash 2F
         chance: 1
 
   copyDrops:
@@ -332,9 +366,9 @@
   drops:
     - result: Catacombs Raw Topaz
       chance: 1
-      maxChance: 1000
+      maxChance: 900
 
-  skillOnKill: 65
+  skillOnKill: 70
 
   usableSkills:
     - result: MagicMissile
@@ -343,22 +377,28 @@
       chance: 100
     - result: DarkVision
       chance: 100
+    - result: FindFamiliar
+      chance: 100
+
+  traitLevels:
+    FindFamiliarWolf: 1
+    MagicFocus: 1
 
   gold:
-    min: 1550
-    max: 1900
+    min: 1850
+    max: 2125
 
   hp:
-    min: 106950
-    max: 109350
+    min: 156950
+    max: 159350
 
   mp:
     min: 10000
     max: 10000
 
   giveXp:
-    min: 101000
-    max: 107000
+    min: 151000
+    max: 157000
 
   baseEffects:
     - name: Attribute
@@ -366,26 +406,26 @@
         damageType: 'energy'
         potency: 0.75
 
-- npcId: Catacombs Nightwalker 1F
-  name: nightwalker whitesash
+- npcId: Catacombs Nightwalker 2F
+  name: nightwalker goldsash
   monsterClass: Undead
   sprite: 975
   allegiance: Enemy
   alignment: Evil
   baseClass: Warrior
   hostility: Always
-  stats: 20
-  skillLevels: 9
-  level: 25
+  stats: 22
+  skillLevels: 10
+  level: 30
 
   otherStats:
-    perception: 200
+    perception: 225
 
   leftHand:
     - result: none
-      chance: 10000
-    - result: Catacombs Shield 1F
-      chance: 100
+      chance: 3000
+    - result: Catacombs Shield 2F
+      chance: 500
     - result: Frostlands Royal Shield
       chance: 1
 
@@ -401,13 +441,13 @@
     Robe2:
       - result: none
         chance: 300
-      - result: Catacombs Robe 1F
+      - result: Catacombs Robe 2F
         chance: 1
 
     Hands:
       - result: Frostlands Frostgolem Gloves
-        chance: 1000
-      - result: Catacombs Claws 1F
+        chance: 900
+      - result: Catacombs Claws 2F
         chance: 1
 
   copyDrops:
@@ -427,21 +467,32 @@
   drops:
     - result: Catacombs Raw Amber
       chance: 1
-      maxChance: 1000
+      maxChance: 900
 
-  skillOnKill: 65
+  skillOnKill: 70
+
+  usableSkills:
+    - Jumpkick
+    - Shield
+
+  traitLevels:
+    UnarmoredSavant: 1
+    StunningFist: 1
+    MartialAgility: 1
+    BrassKnuckles: 1
+    Punchkick: 1
 
   gold:
-    min: 1550
-    max: 1900
+    min: 1850
+    max: 2125
 
   hp:
-    min: 106950
-    max: 109350
+    min: 156950
+    max: 159350
 
   giveXp:
-    min: 107000
-    max: 109000
+    min: 151000
+    max: 157000
 
   baseEffects:
     - name: Attribute
@@ -454,27 +505,27 @@
         damageType: 'blunt'
         potency: 0.75
 
-- npcId: Catacombs Qell 1F
-  name: qell deceiver
+- npcId: Catacombs Qell 2F
+  name: qell pickpocket
   monsterClass: Undead
   sprite: 945
   allegiance: Enemy
   alignment: Evil
   baseClass: Thief
   hostility: Always
-  stats: 20
+  stats: 22
   skillLevels: 10
-  level: 25
+  level: 30
 
   otherStats:
-    stealth: 50
-    perception: 200
+    stealth: 75
+    perception: 225
 
   rightHand:
-    - result: Catacombs Dagger 1F
-      chance: 1000
-    - result: Catacombs Shortsword 1F
-      chance: 1000
+    - result: Catacombs Dagger 2F
+      chance: 900
+    - result: Catacombs Shortsword 2F
+      chance: 900
     - result: Catacombs HolyFire Hammer
       chance: 1
     - result: Catacombs Bat Greatsword
@@ -484,7 +535,7 @@
 
   leftHand:
     - result: none
-      chance: 10000
+      chance: 9000
     - result: Frost Chakram
       chance: 1
 
@@ -499,8 +550,8 @@
 
     Feet:
       - result: none
-        chance: 1000
-      - result: Catacombs Boots 1F
+        chance: 900
+      - result: Catacombs Boots 2F
         chance: 1
 
     Hands: Frostlands Frostgolem Gloves
@@ -519,58 +570,91 @@
     - drop: 'leftHand'
       chance: -1
 
-  skillOnKill: 65
+  skillOnKill: 70
 
   usableSkills:
+    - SetTrap
     - Steal
     - Hide
     - Darkness
     - DarkVision
+    - Poison
+
+  traitLevels:
+    OffhandFinesse: 2
+    ShadowDaggers: 2
+    ShadowSwap: 2
+
+  sack:
+    - result: Risan FireMist Thief Trap
+      chance: 5
+      maxChance: 100
+    - result: Risan IceMist Thief Trap
+      chance: 5
+      maxChance: 100
+    - result: Risan Poison Thief Trap
+      chance: 5
+      maxChance: 100
+    - result: Risan MagicBolt Thief Trap
+      chance: 5
+      maxChance: 100
+    - result: Risan HolyFire Thief Trap
+      chance: 5
+      maxChance: 100
+    - result: Risan Snare Thief Trap
+      chance: 5
+      maxChance: 100
+    - result: Risan Stun Thief Trap
+      chance: 5
+      maxChance: 100
+    - result: Risan Blind Thief Trap
+      chance: 5
+      maxChance: 100
 
   gold:
-    min: 1550
-    max: 1900
+    min: 1850
+    max: 2125
 
   hp:
-    min: 106950
-    max: 109350
+    min: 156950
+    max: 159350
 
   giveXp:
-    min: 101000
-    max: 107000
+    min: 151000
+    max: 157000
 
   drops:
     - result: Catacombs Raw Tourmaline
       chance: 1
-      maxChance: 1000
+      maxChance: 900
 
-- npcId: Catacombs Spectre 1F
-  name: spectre bowyer
+- npcId: Catacombs Spectre 2F
+  name: spectre ranger
   monsterClass: Undead
   sprite: 945
   allegiance: Enemy
   alignment: Evil
   baseClass: Thief
   hostility: Always
-  stats: 20
+  stats: 22
   skillLevels: 10
-  level: 25
+  level: 30
 
   otherStats:
-    stealth: 50
-    perception: 200
+    stealth: 75
+    perception: 225
 
   rightHand:
-    - result: Catacombs Longbow 1F
-      chance: 1000
+    - result: Catacombs Longbow 2F
+      chance: 900
     - result: Frost Chakram
       chance: 1
 
   leftHand:
     - result: none
-      chance: 10000
+      chance: 3000
     - result: Catacombs Arrows
-      chance: 1000
+      chance: 500
     - result: Frost Chakram
       chance: 1
 
@@ -585,8 +669,8 @@
 
     Wrists:
       - result: none
-        chance: 1000
-      - result: Catacombs Bracers 1F
+        chance: 900
+      - result: Catacombs Bracers 2F
         chance: 1
 
     Hands: Frostlands Frostgolem Gloves
@@ -605,24 +689,29 @@
     - drop: 'leftHand'
       chance: -1
 
-  skillOnKill: 65
+  skillOnKill: 70
 
   usableSkills:
     - Hide
     - Darkness
     - DarkVision
 
+  traitLevels:
+    ShadowRanger: 2
+    ShadowSwap: 2
+    DarkerShadows: 2
+
   gold:
-    min: 1550
-    max: 1900
+    min: 1850
+    max: 2125
 
   hp:
-    min: 106950
-    max: 109350
+    min: 156950
+    max: 159350
 
   giveXp:
-    min: 101000
-    max: 107000
+    min: 151000
+    max: 157000
 
   baseEffects:
     - name: Attribute
@@ -633,4 +722,4 @@
   drops:
     - result: Catacombs Raw Tourmaline
       chance: 1
-      maxChance: 1000
+      maxChance: 900
