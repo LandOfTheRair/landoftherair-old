@@ -192,7 +192,7 @@
   otherStats:
     perception: 200
 
-  rightHand: 
+  rightHand:
     - result: Catacombs Mace 1F
       chance: 1000
     - result: Catacombs HolyFire Hammer
@@ -285,9 +285,11 @@
   otherStats:
     perception: 200
 
-  rightHand: 
+  rightHand:
     - result: Catacombs Staff 1F
       chance: 1000
+    - result: Catacombs Rapidpunch Staff
+      chance: 1
     - result: Risan Royal Spear
       chance: 1
 
@@ -395,7 +397,7 @@
       - result: Catacombs Robe 1F
         chance: 1
 
-    Hands: 
+    Hands:
       - result: Frostlands Frostgolem Gloves
         chance: 1000
       - result: Catacombs Claws 1F

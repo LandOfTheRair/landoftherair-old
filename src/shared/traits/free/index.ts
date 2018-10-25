@@ -1,4 +1,5 @@
 
+export * from './FamiliarFists';
 export * from './FamiliarFortitude';
 export * from './FamiliarStrength';
 

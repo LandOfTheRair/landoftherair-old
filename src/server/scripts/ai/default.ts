@@ -1,7 +1,7 @@
 
 import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
-import { random, maxBy, sample, clamp, includes, size, extend, uniq } from 'lodash';
+import { random, maxBy, sample, clamp, includes, size, extend, uniq, shuffle } from 'lodash';
 import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
@@ -150,7 +150,12 @@ export class DefaultAIBehavior {
 
     let isThrowing = false;
 
-    const rolledSkills = uniq(npc.$$skillRoller.chooseWithReplacement(3));
+    let rolledSkills = uniq(npc.$$skillRoller.chooseWithReplacement(3));
+
+    if(npc.$$owner) {
+      rolledSkills.unshift(...npc.getBonusUsableSkillsBasedOnOwner());
+      rolledSkills = shuffle(rolledSkills);
+    }
 
     rolledSkills.forEach((skill: string) => {
       if(chosenSkill) return;

@@ -119,3 +119,26 @@
 
   requirements:
     level: 45
+
+- name: Catacombs Rapidpunch Staff
+  stats:
+    defense: 4
+    armorClass: 10
+    int: 2
+    wis: 2
+    wil: 2
+    mpregen: 10
+  desc: "a strange staff with an almost-closed fist at the peak"
+  tier: 6
+  type: Staff
+  value: 13344
+  sprite: 459
+
+  trait:
+    name: FamiliarFists
+    level: 1
+
+  binds: true
+
+  requirements:
+    level: 30

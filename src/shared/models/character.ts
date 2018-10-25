@@ -657,6 +657,16 @@ export class Character {
     this.hp.__current = Math.min(this.hp.__current, this.hp.maximum);
   }
 
+  public getBonusUsableSkillsBasedOnOwner(): string[] {
+    if(!this.$$owner) return [];
+
+    const allSkills = [];
+
+    if(this.$$owner.getTraitLevel('FamiliarFists')) allSkills.push('Rapidpunch');
+
+    return allSkills;
+  }
+
   itemCheck(item: Item) {
     if(!item) return;
     if(item.itemClass === 'Corpse') return;
@@ -1379,6 +1389,7 @@ export class Character {
       char.unapplyEffect(invis, true);
     }
 
+    // npcs of the same allegiance can't agro to each other
     if(char.allegiance === this.allegiance && !char.isPlayer() && !this.isPlayer()) return;
 
     const agroAdd = (uuid, val) => {
