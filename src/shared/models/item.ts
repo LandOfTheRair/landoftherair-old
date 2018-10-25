@@ -402,7 +402,10 @@ export class Item {
   }
 
   canUse(char: Character): boolean {
-    return (this.itemClass === 'Box' || this.effect || this.succorInfo || this.ounces > 0) && this.hasCondition() && this.isOwnedBy(char);
+    return (this.itemClass === 'Box' || this.effect || this.succorInfo || this.ounces > 0)
+      && this.itemClass !== 'Trap'
+      && this.hasCondition()
+      && this.isOwnedBy(char);
   }
 
   // < 0 means it lasts forever
