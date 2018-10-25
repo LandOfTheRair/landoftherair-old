@@ -1141,6 +1141,7 @@ export class CombatHelper {
 
     if(defender.$$ai) defender.$$ai.damageTaken.dispatch({ damage, attacker });
 
+
     defender.addAgro(attacker, damage);
     if(attacker) attacker.addAgro(defender, damage);
 

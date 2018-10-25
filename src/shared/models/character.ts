@@ -1381,7 +1381,7 @@ export class Character {
   }
 
   addAgro(char: Character, value) {
-    if(!char || (<any>this).hostility === 'Never') return;
+    if(!char || char === this || (<any>this).hostility === 'Never') return;
 
     // invis is normally removed on agro gain, unless it's permanent
     const invis = char.hasEffect('Invisible');

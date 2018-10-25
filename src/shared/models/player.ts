@@ -612,6 +612,9 @@ export class Player extends Character {
   }
 
   addAgro(char: Character, value) {
+    if(this.$$pets) this.$$pets.forEach(pet => pet.addAgro(char, value));
+
+    // the agro hash will get really big if we store everything on players
     if(!char || (char.$$ai && char.$$ai.tick)) return;
     super.addAgro(char, value);
   }
