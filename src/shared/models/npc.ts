@@ -74,6 +74,8 @@ export class NPC extends Character {
   $$lastResponse: string;
   $$following: boolean;
   $$hadRightHandAtSpawn: boolean;
+
+  $$stanceCooldown: number;
   private $$targetDamageDone = {};
 
   noCorpseDrop?: boolean;

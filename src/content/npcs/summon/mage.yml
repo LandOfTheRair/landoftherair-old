@@ -71,6 +71,7 @@
   usableSkills:
     - PoisonBiteWeak
     - Provoke
+    - ParryStance
 
 - npcId: Mage Summon Salamander
   name: salamander

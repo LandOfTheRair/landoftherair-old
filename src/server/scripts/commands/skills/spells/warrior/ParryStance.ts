@@ -6,6 +6,7 @@ import { Character } from '../../../../../../shared/models/character';
 import { ParryStance as CastEffect } from '../../../../../effects/stances/ParryStance';
 
 import { get } from 'lodash';
+import { NPC } from '../../../../../../shared/models/npc';
 
 export class ParryStance extends Skill {
 
@@ -25,6 +26,12 @@ export class ParryStance extends Skill {
   public name = ['parrystance', 'stance parrystance', 'stance parry'];
   public unableToLearnFromStealing = true;
 
+  canUse(user: Character) {
+    if(user.isPlayer()) return true;
+    const check = <NPC>user;
+    return !check.$$stanceCooldown || check.$$stanceCooldown <= 0;
+  }
+
   execute(user: Character) {
 
     const itemType = get(user.rightHand, 'type', 'Martial');
@@ -36,6 +43,8 @@ export class ParryStance extends Skill {
   use(user: Character) {
     const stance = new CastEffect({});
     stance.cast(user, user, this);
+
+    if(!user.isPlayer()) (<NPC>user).$$stanceCooldown = 15;
   }
 
 }

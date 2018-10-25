@@ -6,6 +6,7 @@ import { Character } from '../../../../../../shared/models/character';
 import { RageStance as CastEffect } from '../../../../../effects/stances/RageStance';
 
 import { get } from 'lodash';
+import { NPC } from '../../../../../../shared/models/npc';
 
 export class RageStance extends Skill {
 
@@ -25,6 +26,12 @@ export class RageStance extends Skill {
   public name = ['ragestance', 'stance ragestance', 'stance rage'];
   public unableToLearnFromStealing = true;
 
+  canUse(user: Character) {
+    if(user.isPlayer()) return true;
+    const check = <NPC>user;
+    return !check.$$stanceCooldown || check.$$stanceCooldown <= 0;
+  }
+
   execute(user: Character) {
 
     const itemType = get(user.rightHand, 'type', 'Martial');
@@ -36,6 +43,8 @@ export class RageStance extends Skill {
   use(user: Character) {
     const stance = new CastEffect({});
     stance.cast(user, user, this);
+
+    if(!user.isPlayer()) (<NPC>user).$$stanceCooldown = 15;
   }
 
 }

@@ -316,6 +316,10 @@ export class WeaponEffect extends Effect {
   protected skillRequired: number;
 
   static isValid(char: Character, weaponClass: string, skillRequired: number): boolean {
+
+    // always valid for npcs
+    if(!char.isPlayer()) return true;
+
     const item = char.rightHand;
     const itemType = get(item, 'type', 'Martial');
     if(itemType !== weaponClass) return false;

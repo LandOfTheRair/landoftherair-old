@@ -207,6 +207,8 @@ export class DefaultAIBehavior {
         diffY = yChange;
       }
 
+      if(npc.$$stanceCooldown > 0) npc.$$stanceCooldown--;
+
       // we have a path
     } else if(canMove && npc.path && npc.path.length > 0) {
 
