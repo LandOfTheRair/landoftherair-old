@@ -330,7 +330,7 @@
     "DarkerShadows0": {
         "name": "DarkerShadows0",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are $2|6$% darker.",
+        "desc": "Your hide stat is $2|6$% higher.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -346,7 +346,7 @@
     "DarkerShadows1": {
         "name": "DarkerShadows1",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are $2|6$% darker.",
+        "desc": "Your hide stat is $2|6$% higher.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -361,7 +361,7 @@
     "DarkerShadows2": {
         "name": "DarkerShadows2",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are $2|6$% darker.",
+        "desc": "Your hide stat is $2|6$% higher.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -377,7 +377,7 @@
     "DarkerShadows3": {
         "name": "DarkerShadows3",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are $2|6$% darker.",
+        "desc": "Your hide stat is $2|6$% higher.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -392,7 +392,7 @@
     "DarkerShadows4": {
         "name": "DarkerShadows4",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are $2|6$% darker.",
+        "desc": "Your hide stat is $2|6$% higher.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -407,7 +407,7 @@
     "DarkerShadows5": {
         "name": "DarkerShadows5",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are $2|6$% darker.",
+        "desc": "Your hide stat is $2|6$% higher.",
         "icon": "hidden",
         "cost": 3,
         "unlocks": [
@@ -422,7 +422,7 @@
     "DarkerShadows6": {
         "name": "DarkerShadows6",
         "traitName": "DarkerShadows",
-        "desc": "The shadows around you are $2|6$% darker.",
+        "desc": "Your hide stat is $2|6$% higher.",
         "icon": "hidden",
         "capstone": true,
         "cost": 10,
@@ -815,6 +815,17 @@
             "LockpickSpecialty3"
         ]
     },
+    "ThrownTraps0": {
+        "name": "ThrownTraps0",
+        "traitName": "ThrownTraps",
+        "desc": "You can now set traps $2|6$ tiles farther away.",
+        "icon": "beveled-star",
+        "cost": 15,
+        "cluster": 3,
+        "unlockedBy": [
+            "Set"
+        ]
+    },
     "Identify": {
         "name": "Identify",
         "desc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
@@ -873,12 +884,13 @@
     },
     "Set": {
         "name": "Set",
-        "desc": "Set a trap from your hand. Traps can be purchased from thief vendors.",
+        "desc": "Set a trap from your hand. Traps can be purchased from thief vendors. Allows directional targeting.",
         "icon": "quake-stomp",
         "iconColor": "#530000",
         "cost": 3,
         "unlocks": [
-            "Disarm"
+            "Disarm",
+            "ThrownTraps0"
         ],
         "cluster": 3,
         "unlockedBy": [

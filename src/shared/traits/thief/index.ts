@@ -19,5 +19,6 @@ export * from './ShadowRanger';
 export * from './ShadowSheath';
 export * from './ShadowSwap';
 export * from './StrongerTraps';
+export * from './ThrownTraps';
 export * from './TripleShot';
 export * from './WiderTraps';

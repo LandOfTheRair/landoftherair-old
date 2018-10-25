@@ -150,7 +150,7 @@ export abstract class Skill extends Command {
       return null;
     }
 
-    const range = this.range();
+    const range = this.range(user);
 
     if(target.distFrom(user) > range) {
       user.sendClientMessage('That target is too far away!');

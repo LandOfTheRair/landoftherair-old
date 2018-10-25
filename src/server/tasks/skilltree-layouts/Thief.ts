@@ -229,6 +229,10 @@ const ROGUE_TREE = {
 
   },
 
+  ThrownTraps0: {
+
+  },
+
   // SKILLS
   Identify: {
     unlocks: ['Transmute']
@@ -247,7 +251,7 @@ const ROGUE_TREE = {
   },
 
   Set: {
-    unlocks: ['Disarm']
+    unlocks: ['Disarm', 'ThrownTraps0']
   },
 
   Disarm: {

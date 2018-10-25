@@ -11,28 +11,26 @@ export class Set extends Skill {
     icon: 'quake-stomp',
     color: '#530000',
     mode: 'clickToActivate',
-    tooltipDesc: 'Set a trap from your hand. Traps can be purchased from thief vendors.'
+    tooltipDesc: 'Set a trap from your hand. Traps can be purchased from thief vendors. Allows directional targeting.'
   };
 
   public name = ['set', 'cast set'];
   public format = 'Dir';
+
+  range(user: Character) {
+    return 1 + user.getTraitLevelAndUsageModifier('ThrownTraps');
+  }
 
   execute(user: Character, { args }) {
 
     const weapon = user.rightHand;
     if(!weapon || weapon.itemClass !== 'Trap') return user.sendClientMessage('You need a trap in your right hand to set it!');
 
-    let xSet = 0;
-    let ySet = 0;
+    const target = this.getTarget(user, args, true, true);
+    if(!target) return;
 
-    if(args) {
-      const { x, y } = user.getXYFromDir(args);
-      xSet = x;
-      ySet = y;
-    }
-
-    const targetX = user.x + xSet;
-    const targetY = user.y + ySet;
+    const targetX = target.x;
+    const targetY = target.y;
 
     const interactable = user.$$room.state.getInteractable(targetX, targetY, true, 'Trap');
     if(interactable) return user.sendClientMessage('There is already a trap there!');
