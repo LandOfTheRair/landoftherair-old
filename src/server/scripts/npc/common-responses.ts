@@ -633,11 +633,14 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       npc.$$room.showTrainerWindow(player, npc);
+
+      const healerText = npc.classTrain === 'Healer' ? 'I can also RECALL you to this location when you die!' : '';
+
       return `Hail, ${player.name}! 
       If you want to try to level up, TRAIN with me. 
       Alternatively, I can let you know how your combat skills are progressing if you want to ASSESS them! 
       You can also JOIN the ${npc.classTrain} profession if you haven't chosen one already!
-      If you're a subscriber, I can also RESET your skill tree!`;
+      If you're a subscriber, I can also RESET your skill tree! ${healerText}`;
     });
 
   npc.parser.addCommand('assess')
