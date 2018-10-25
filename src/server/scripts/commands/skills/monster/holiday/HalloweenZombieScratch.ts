@@ -12,6 +12,7 @@ export class HalloweenZombieScratch extends MonsterSkill {
         && !target.hasEffect('ZombieScratch')
         && target.monsterClass === 'Humanoid'
         && !target.isPlayer()
+        && !target.$$owner
         && user.distFrom(target) <= this.range();
   }
 
