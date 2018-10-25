@@ -274,7 +274,9 @@ export class SubscriptionHelper {
   }
 
   public async startTrial(account: Account, expirationDays = 30, tier = SubscriptionTier.TRIAL_SUBSCRIPTION): Promise<Account> {
-    const date = new Date();
+    let date = new Date();
+    if(account.trialEnds > 0) date = new Date(account.trialEnds);
+
     date.setDate(date.getDate() + expirationDays);
     account.trialEnds = date.getTime();
     account.hasDoneTrial = tier <= 1;

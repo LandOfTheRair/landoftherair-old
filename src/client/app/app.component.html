@@ -1274,21 +1274,21 @@
                   <a href="http://rair.land/docs/subscriber-benefits/" target="_blank">Click this link to see all the awesome perks of subscribing!</a>
                 </div>
 
+                <div class="mt-3 text-center" *ngIf="colyseus.lobby.myAccount.subscriptionTier > 1">
+                  You have an active subscription that will end on {{ colyseus.lobby.myAccount.trialEnds | date:'medium' }}! Thanks! You can add more months to your subscription below if you're interested.
+                </div>
+
                 <div class="text-center mt-3" *ngIf="colyseus.lobby.myAccount.subscriptionTier <= 1">If you're interested in trying before buying, contact a GM to set up a trial subscription. The trial will last 30 days, but you can always go back to playing for free.</div>
 
-                <div class="mt-3" *ngIf="colyseus.lobby.myAccount.subscriptionTier <= 1">
+                <div class="mt-3">
 
                   <div *ngFor="let pricePoint of colyseus.lobby.lobbyState.silverPrices.sub" class="mt-3">
-                    <button class="btn btn-success btn-block" (click)="startPayment(pricePoint)">
-                      Subscribe for {{ pricePoint.duration }} months for {{ pricePoint.price / 100 | number }}
+                    <button class="btn btn-success btn-block" (click)="startPayment(pricePoint)" [class.btn-info]="colyseus.lobby.myAccount.subscriptionTier > 1">
+                      Subscribe for {{ pricePoint.duration }} month(s) for {{ pricePoint.price / 100 | number }}
                       <span *ngIf="pricePoint.percentOverAverage">({{ pricePoint.percentOverAverage }} free months!)</span>
                     </button>
                   </div>
 
-                </div>
-
-                <div class="mt-3 text-center" *ngIf="colyseus.lobby.myAccount.subscriptionTier > 1">
-                  You have an active subscription that will end on {{ colyseus.lobby.myAccount.trialEnds | date:'medium' }}! Thanks!
                 </div>
               </div>
             </div>

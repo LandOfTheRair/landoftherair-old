@@ -602,7 +602,7 @@ export class Lobby extends Room<LobbyState> {
           popupType: 'success',
           prettyErrorName: 'Stripe Success',
           prettyErrorDesc: `Payment successful. Thanks for your support! 
-          You are now a ${purchaseInfo.item.duration}-month subscriber to Land of the Rair! 
+          You have extended your subscription to Land of the Rair by ${purchaseInfo.item.duration} month(s)! 
           You also now have ${account.silver.toLocaleString()} silver!`
         });
 
