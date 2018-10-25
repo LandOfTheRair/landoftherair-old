@@ -1,6 +1,7 @@
 
 - npcId: Healer Summon Nature Spirit
   name: nature spirit
+  baseClass: Healer
   sprite: 465
   stats: 25
   skillLevels: 5
@@ -23,6 +24,7 @@
 
 - npcId: Healer Summon Light Spirit
   name: light spirit
+  baseClass: Healer
   sprite: 1860
   stats: 25
   skillLevels: 5
@@ -44,6 +46,7 @@
 
 - npcId: Healer Summon Water Spirit
   name: water spirit
+  baseClass: Healer
   sprite: 180
   stats: 25
   skillLevels: 5

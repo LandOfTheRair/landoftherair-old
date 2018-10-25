@@ -6,6 +6,7 @@ import { Character, SkillClassNames } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { GenderHelper } from '../../helpers/character/gender-helper';
 import { NPC } from '../../../shared/models/npc';
+import { SkillHelper } from '../../helpers/character/skill-helper';
 
 const animalHash = {
   deer: 'Mage Summon Deer',
@@ -26,6 +27,7 @@ const animalModHash = {
   wolf: (npc: NPC, potency: number) => {
     npc.gainBaseStat('hp', Math.floor(potency * 30000));
     npc.gainBaseStat('str', Math.floor(potency / 3));
+    npc._gainSkill(SkillClassNames.Martial, SkillHelper.calcSkillXP(potency / 2));
   },
   bear: (npc: NPC, potency: number) => {
     npc.gainBaseStat('hp', Math.floor(potency * 40000));
@@ -35,22 +37,27 @@ const animalModHash = {
   salamander: (npc: NPC, potency: number) => {
     npc.gainBaseStat('hp', Math.floor(potency * 15000));
     npc.gainBaseStat('int', Math.floor(potency / 4));
+    npc._gainSkill(SkillClassNames.Conjuration, SkillHelper.calcSkillXP(potency / 3));
   },
   chillspider: (npc: NPC, potency: number) => {
     npc.gainBaseStat('hp', Math.floor(potency * 30000));
     npc.gainBaseStat('str', Math.floor(potency / 4));
+    npc._gainSkill(SkillClassNames.Martial, SkillHelper.calcSkillXP(potency / 2));
   },
   water: (npc: NPC, potency: number) => {
     npc.gainBaseStat('hp', Math.floor(potency * 30000));
     npc.gainBaseStat('wis', Math.floor(potency / 3));
+    npc._gainSkill(SkillClassNames.Restoration, SkillHelper.calcSkillXP(potency / 3));
   },
   light: (npc: NPC, potency: number) => {
     npc.gainBaseStat('hp', Math.floor(potency * 30000));
     npc.gainBaseStat('wis', Math.floor(potency / 4));
+    npc._gainSkill(SkillClassNames.Restoration, SkillHelper.calcSkillXP(potency / 3));
   },
   nature: (npc: NPC, potency: number) => {
     npc.gainBaseStat('hp', Math.floor(potency * 30000));
     npc.gainBaseStat('wis', Math.floor(potency / 3));
+    npc._gainSkill(SkillClassNames.Restoration, SkillHelper.calcSkillXP(potency / 3));
   },
 };
 
@@ -195,14 +202,14 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
         npc.name = `pet ${npc.name}`;
         npc.affiliation = `${char.name}'s Pet`;
 
-        // boost stats
-        animalModHash[this.animalStr](npc, this.potency);
-
         const boost = Math.floor((char.calcSkillLevel(SkillClassNames.Conjuration) + char.calcSkillLevel(SkillClassNames.Restoration)) / 2);
 
         Object.keys(npc.allSkills).forEach(skillName => {
           npc.addSkillLevels(skillName, boost);
         });
+
+        // boost stats/skills
+        animalModHash[this.animalStr](npc, this.potency);
 
         // make them know each other
         char.$$pets = [npc];

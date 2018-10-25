@@ -47,6 +47,7 @@
 - npcId: Mage Summon Bear
   name: bear
   monsterClass: Beast
+  baseClass: Warrior
   sprite: 210
   stats: 15
   skillLevels: 4
@@ -75,6 +76,7 @@
   name: salamander
   sprite: 230
   monsterClass: Beast
+  baseClass: Mage
   stats: 15
   skills: 5
   level: 1
@@ -99,6 +101,7 @@
 - npcId: Mage Summon Chillspider
   name: chillspider
   monsterClass: Beast
+  baseClass: Warrior
   sprite: 800
   stats: 15
   skillLevels: 6
