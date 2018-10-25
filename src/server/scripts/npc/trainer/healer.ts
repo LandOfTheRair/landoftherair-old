@@ -1,5 +1,5 @@
 import { NPC } from '../../../../shared/models/npc';
-import { BaseClassTrainerResponses, RecallerResponses, ReviverResponses } from '../common-responses';
+import { AutoRevives, BaseClassTrainerResponses, RecallerResponses, ReviverResponses } from '../common-responses';
 import { SkillClassNames } from '../../../../shared/models/character';
 
 export const setup = async (npc: NPC) => {
@@ -17,4 +17,5 @@ export const responses = (npc: NPC) => {
   BaseClassTrainerResponses(npc);
   RecallerResponses(npc);
   ReviverResponses(npc);
+  AutoRevives(npc);
 };

@@ -257,6 +257,33 @@ export const SmithResponses = (npc: NPC) => {
     });
 };
 
+export const AutoRevives = (npc: NPC) => {
+  let ticks = 0;
+  let nextTick = 5;
+
+  npc.$$ai.tick.add(() => {
+    ticks++;
+
+    if(npc.isDead()) return;
+
+    if(ticks >= nextTick) {
+      nextTick = 5;
+      ticks = 0;
+
+      const targets = npc.$$room.state.getAllPlayersInRange(npc, 0).filter(checkTarget => checkTarget.isDead());
+      const target = targets[0];
+
+      if(!target) return;
+
+      const resSpell = new Revive({});
+      resSpell.cast(npc, target);
+
+      const msgObject = { name: npc.name, message: `Welcome back to life, ${target.name}!`, subClass: 'chatter' };
+      npc.sendClientMessageToRadius(msgObject, 8);
+    }
+  });
+};
+
 export const RandomlyShouts = (npc: NPC, responses: string[] = [], opts: any = { combatOnly: false }) => {
   let ticks = 0;
   let nextTick = random(50, 60);
@@ -753,7 +780,6 @@ export const ReviverResponses = (npc: NPC) => {
     .set('syntax', ['revive'])
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
-
 
       const targets = npc.$$room.state.getAllPlayersInRange(npc, 0).filter(checkTarget => checkTarget.isDead());
       const target = targets[0];
