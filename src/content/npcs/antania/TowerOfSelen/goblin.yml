@@ -4,7 +4,7 @@
   hostility: Always
   sprite: 80
   alignment: Evil
-  stats: 10
+  stats: 7
   skillLevels: 2
   level: 12
 
@@ -71,13 +71,18 @@
     - drop: 'leftHand'
       chance: -1
 
+  spawnMessage: "the indecipherable blabbering of goblins"
+  sfx: "goblin"
+  sfxMaxChance: 20
+
+
 - npcId: Tower Goblin Thief
   name: sneakgoblin
   hostility: Always
   baseClass: Thief
   sprite: 80
   alignment: Evil
-  stats: 8
+  stats: 6
   skillLevels: 2
   level: 14
 
@@ -179,15 +184,20 @@
       chance: 10
       maxChance: 100
 
+  spawnMessage: "the indecipherable blabbering of goblins"
+  sfx: "goblin"
+  sfxMaxChance: 20
+
+
 - npcId: Tower Hobgoblin
   name: hobgoblin
   hostility: Always
   baseClass: Warrior
   sprite: 90
   alignment: Evil
-  stats: 7
+  stats: 6
   skillLevels: 2
-  level: 12
+  level: 11
 
   skillOnKill: 45
 
@@ -254,3 +264,5 @@
       chance: -1
 
   spawnMessage: "the indecipherable blabbering of goblins"
+  sfx: "goblin"
+  sfxMaxChance: 20

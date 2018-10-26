@@ -92,6 +92,11 @@
     - drop: 'leftHand'
       chance: -1
 
+  spawnMessage: "the indecipherable blabbering of goblins"
+  sfx: "goblin"
+  sfxMaxChance: 20
+
+
 - npcId: Dedlaen Goblin Thief
   name: sneakgoblin
   hostility: Always
@@ -221,6 +226,11 @@
       chance: 10
       maxChance: 100
 
+  spawnMessage: "the indecipherable blabbering of goblins"
+  sfx: "goblin"
+  sfxMaxChance: 20
+
+
 - npcId: Dedlaen Hobgoblin
   name: hobgoblin
   hostility: Always
@@ -317,6 +327,8 @@
       chance: -1
 
   spawnMessage: "the indecipherable blabbering of goblins"
+  sfx: "goblin"
+  sfxMaxChance: 20
 
 - npcId: Dedlaen Orc
   name: orc
