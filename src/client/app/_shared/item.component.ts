@@ -59,6 +59,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
 export class ItemComponent {
 
   private _item: Item;
+  private _isMouseIn: boolean;
 
   @Input()
   public set item(item: Item) {
@@ -374,13 +375,16 @@ export class ItemComponent {
     if(!this.item || !this.showDesc) return;
 
     this.colyseusGame.updateCurrentItemDesc('');
+    this._isMouseIn = true;
 
     setTimeout(() => {
+      if(!this._isMouseIn) return;
       this.colyseusGame.updateCurrentItemDesc(this.descText);
     }, 750);
   }
 
   removeDesc() {
+    this._isMouseIn = false;
     this.colyseusGame.updateCurrentItemDesc('');
   }
 
