@@ -183,7 +183,7 @@ export class MoveHelper {
       }
     }
 
-    player.sendClientMessage(door.isOpen ? 'You close the door.' : 'You open the door.');
+    player.sendClientMessage({ message: door.isOpen ? 'You close the door.' : 'You open the door.', sfx: door.isOpen ? 'env-door-close' : 'env-door-open' });
     gameState.toggleDoor(door);
     return true;
   }

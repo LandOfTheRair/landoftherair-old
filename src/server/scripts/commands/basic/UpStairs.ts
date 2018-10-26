@@ -32,7 +32,7 @@ export class UpStairs extends Command {
     if(requireParty && !player.party) return player.sendClientMessage('You must gather your party before venturing forth.');
     if(requireHoliday && !HolidayHelper.isHoliday(requireHoliday)) return player.sendClientMessage(`That location is only seasonally open during "${requireHoliday}"!`);
 
-    player.sendClientMessage(`You ${interactable.type === 'StairsUp' ? 'ascend' : 'descend'} the staircase.`);
+    player.sendClientMessage({ message: `You ${interactable.type === 'StairsUp' ? 'ascend' : 'descend'} the staircase.`, sfx: 'env-stairs' });
 
     room.teleport(player, {
       x: teleportX,

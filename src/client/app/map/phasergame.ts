@@ -21,6 +21,11 @@ enum TilesWithNoFOVUpdate {
 }
 
 const bgms = ['combat', 'town', 'dungeon', 'wilderness'];
+const sfxs = [
+  'combat-block-armor', 'combat-block-weapon', 'combat-die', 'combat-hit-melee', 'combat-hit-spell', 'combat-kill', 'combat-miss',
+  'env-door-open', 'env-door-close', 'env-stairs',
+  'spell-buff'
+];
 
 const ENVIRONMENTAL_OBJECT_GID_HASH = {
   Trap: { gid: 334, image: 'Items' }
