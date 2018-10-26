@@ -350,9 +350,18 @@ export class Item {
 
     let statText = '';
     if(thiefSkill >= 10 || conjSkill >= 20) {
-      statText = Object.keys(this.stats)
-        .filter(x => this.stats[x])
-        .map(x => `${this.stats[x] < 0 ? '' : '+'}${this.stats[x]} ${x.toUpperCase()}`)
+
+      const stats = cloneDeep(this.stats);
+      if(this.encrust && this.encrust.stats) {
+        Object.keys(this.encrust.stats).forEach(key => {
+          stats[key] = stats[key] || 0;
+          stats[key] += this.encrust.stats[key];
+        });
+      }
+
+      statText = Object.keys(stats)
+        .filter(x => stats[x])
+        .map(x => `${stats[x] < 0 ? '' : '+'}${stats[x]} ${x.toUpperCase()}`)
         .join(', ');
 
       statText = statText ? `Hidden Bonuses: ${statText}` : '';

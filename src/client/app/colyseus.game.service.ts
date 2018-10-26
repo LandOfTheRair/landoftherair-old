@@ -1081,7 +1081,7 @@ export class ColyseusGameService {
     this.currentlySelectedMacro$.subscribe(mac => currentMacro = mac);
 
     setInterval(() => {
-      
+
       // if no macro, not in game, no target - bail
       if(!currentMacro.macro || !this.inGame || !this.currentTarget || !this.autoAttack) return;
 
