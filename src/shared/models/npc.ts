@@ -8,6 +8,7 @@ import { CharacterHelper } from '../../server/helpers/character/character-helper
 import { DeathHelper } from '../../server/helpers/character/death-helper';
 import { Player } from './player';
 import { Currency } from '../helpers/holiday-helper';
+import { RollerHelper } from '../helpers/roller-helper';
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
 
@@ -56,6 +57,8 @@ export class NPC extends Character {
   usableSkills: string[];
 
   leashMessage: string;
+  sfx: string;
+  sfxMaxChance: number;
   spawnMessage: string;
   combatMessages: string[];
 
@@ -265,14 +268,19 @@ export class NPC extends Character {
     }
   }
 
+  private randomlyReturnSfx(): string {
+    if(!this.sfxMaxChance || !this.sfx) return '';
+    return RollerHelper.XInY(1, this.sfxMaxChance) ? `monster-${this.sfx}` : '';
+  }
+
   sendLeashMessage() {
     if(!this.leashMessage) return;
-    this.sendClientMessageToRadius(`You hear ${this.leashMessage}.`, 8);
+    this.sendClientMessageToRadius({ message: `You hear ${this.leashMessage}.`, sfx: this.randomlyReturnSfx() }, 8);
   }
 
   sendSpawnMessage() {
     if(!this.spawnMessage) return;
-    this.sendClientMessageToRadius(`You hear ${this.spawnMessage}.`, 8);
+    this.sendClientMessageToRadius({ message: `You hear ${this.spawnMessage}.`, sfx: this.randomlyReturnSfx() }, 8);
   }
 
   setRightHand(item: Item) {

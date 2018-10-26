@@ -105,6 +105,8 @@
       maxChance: 4
 
   spawnMessage: "the gobbling of a young turkey"
+  sfx: "turkey"
+  sfxMaxChance: 20
 
 - npcId: Thanksgiving Strong Turkey
   name: turkey
@@ -156,6 +158,8 @@
       maxChance: 3
 
   spawnMessage: "the gobbling of a turkey"
+  sfx: "turkey"
+  sfxMaxChance: 20
 
 - npcId: Thanksgiving Secret Turkey
   name: gobbler
@@ -210,6 +214,8 @@
       maxChance: 3
 
   spawnMessage: "the guttural gobbling of a turkey"
+  sfx: "turkey"
+  sfxMaxChance: 20
 
 - npcId: Thanksgiving Gobbleguard
   name: gobbleguard
@@ -267,6 +273,8 @@
       maxChance: 2
 
   spawnMessage: "the gobbling of a turkey"
+  sfx: "turkey"
+  sfxMaxChance: 20
 
 - npcId: Thanksgiving King Gobbler
   name: Rojd
@@ -363,4 +371,7 @@
         chance: 1
 
   spawnMessage: "a deep gobble-roar"
+  leashMessage: "a deep gobble-roar"
+  sfx: "turkey"
+  sfxMaxChance: 1
 

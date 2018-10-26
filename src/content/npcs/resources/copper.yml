@@ -45,8 +45,6 @@
       chance: 1
       maxChance: 200
 
-  spawnMessage: "a spontaneous eruption of copper"
-
 - npcId: Rich Copper Vein
   name: rich copper vein
   hostility: OnHit
@@ -97,5 +95,3 @@
     - result: Antanian Small Red Gem
       chance: 1
       maxChance: 200
-
-  spawnMessage: "a spontaneous eruption of copper"

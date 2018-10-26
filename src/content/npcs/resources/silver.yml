@@ -45,8 +45,6 @@
       chance: 1
       maxChance: 200
 
-  spawnMessage: "a spontaneous eruption of silver"
-
 - npcId: Rich Silver Vein
   name: rich silver vein
   hostility: OnHit
@@ -97,5 +95,3 @@
     - result: Antanian Small Red Gem
       chance: 1
       maxChance: 200
-
-  spawnMessage: "a spontaneous eruption of silver"

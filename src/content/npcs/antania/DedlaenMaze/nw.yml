@@ -57,6 +57,10 @@
       chance: 1
       maxChance: 50
 
+  spawnMessage: "the clattering of bones"
+  sfx: "skeleton"
+  sfxMaxChance: 20
+
 - npcId: Dedlaen Skeleton Knight
   name: skeleton knight
   monsterClass: Undead
@@ -117,6 +121,10 @@
 
   usableSkills:
     - Charge
+
+  spawnMessage: "the clattering of bones"
+  sfx: "skeleton"
+  sfxMaxChance: 20
 
 - npcId: Dedlaen Death Knight
   name: death knight

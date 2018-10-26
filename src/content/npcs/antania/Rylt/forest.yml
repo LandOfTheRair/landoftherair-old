@@ -133,6 +133,10 @@
       maxChance: 25
   tansFor: Rylt Fur
 
+  spawnMessage: "the howling of a wolf"
+  sfx: "wolf"
+  sfxMaxChance: 20
+
 - npcId: Rylt Bear
   name: bear
   hostility: Faction
@@ -182,6 +186,8 @@
       maxChance: 25
 
   spawnMessage: "a deep roar"
+  sfx: "bear"
+  sfxMaxChance: 20
 
 - npcId: Rylt Werebear
   name: werebear
@@ -248,3 +254,5 @@
 
   spawnMessage: "a guttural roar"
   leashMessage: "a guttural roar"
+  sfx: "bear"
+  sfxMaxChance: 1

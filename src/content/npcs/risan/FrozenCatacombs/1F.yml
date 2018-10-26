@@ -91,6 +91,10 @@
         damageType: 'sharp'
         potency: 0.75
 
+  spawnMessage: "the clattering of bones"
+  sfx: "skeleton"
+  sfxMaxChance: 20
+
 - npcId: Catacombs Mummy 1F
   name: mummy page
   monsterClass: Undead
@@ -274,6 +278,10 @@
       effectData:
         damageType: 'magical'
         potency: 0.75
+
+  spawnMessage: "the screeching of an ancient banshee"
+  sfx: "ghost"
+  sfxMaxChance: 20
 
 - npcId: Catacombs Wight 1F
   name: wight initiate

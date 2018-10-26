@@ -209,6 +209,11 @@
     - result: Dedlaen Transmute Pearl
       chance: -1
 
+  spawnMessage: "the cry of a spectral horror"
+  leashMessage: "the cry of a spectral horror"
+  sfx: "ghost"
+  sfxMaxChance: 1
+
 - npcId: Dedlaen Ghast
   name: ghast
   hostility: Always

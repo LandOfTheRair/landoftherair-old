@@ -124,6 +124,10 @@
 
   tansFor: Crazed Beast Fur
 
+  spawnMessage: "the howling of a wolf"
+  sfx: "wolf"
+  sfxMaxChance: 20
+
 - npcId: Risan Crazed Bear
   name: crazed bear
   sprite: 210
@@ -188,6 +192,10 @@
 
   tansFor: Crazed Bear Fur
 
+  spawnMessage: "a deep roar"
+  sfx: "bear"
+  sfxMaxChance: 20
+
 - npcId: Mines Griffon
   name: griffon
   sprite: 435
@@ -247,6 +255,11 @@
     max: 409000
 
   tansFor: Mines Griffon Fur
+
+  spawnMessage: "the screeching of a crazed griffon"
+  leashMessage: "the screeching of a crazed griffon"
+  sfx: "bird"
+  sfxMaxChance: 1
 
 - npcId: Risan Dryad
   name: dryad

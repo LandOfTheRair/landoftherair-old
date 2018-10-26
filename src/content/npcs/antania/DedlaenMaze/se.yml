@@ -257,3 +257,8 @@
     min: 369000
     max: 375000
 
+  spawnMessage: "the splashing and crunching of a giant sea creature"
+  leashMessage: "the splashing and crunching of a giant sea creature"
+  sfx: "dragon"
+  sfxMaxChance: 1
+

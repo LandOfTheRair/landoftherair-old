@@ -31,7 +31,8 @@ const sfxs = [
   'spell-heal',
   'spell-sight-effect',
   'spell-special-revive', 'spell-special-teleport',
-  'spell-conjure'
+  'spell-conjure',
+  'monster-bear', 'monster-bird', 'monster-dragon', 'monster-ghost', 'monster-rocks', 'monster-skeleton', 'monster-turkey', 'monster-wolf'
 ];
 
 const ENVIRONMENTAL_OBJECT_GID_HASH = {

@@ -45,8 +45,6 @@
       chance: 1
       maxChance: 200
 
-  spawnMessage: "a spontaneous eruption of gold"
-
 - npcId: Rich Gold Vein
   name: rich gold vein
   hostility: OnHit
@@ -97,5 +95,3 @@
     - result: Antanian Small Red Gem
       chance: 1
       maxChance: 200
-
-  spawnMessage: "a spontaneous eruption of gold"

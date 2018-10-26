@@ -222,6 +222,8 @@
       chance: -1
 
   spawnMessage: "the sound of rocks grinding together"
+  sfx: "rocks"
+  sfxMaxChance: 20
 
 - npcId: Abomniblus
   name: Abomniblus
