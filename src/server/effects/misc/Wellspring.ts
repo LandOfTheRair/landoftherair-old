@@ -12,7 +12,7 @@ export class Wellspring extends SpellEffect {
 
     if(caster.rightHand) return caster.sendClientMessage('You must empty your right hand!');
 
-    caster.sendClientMessage('You channel your holy energies into a bottle.');
+    caster.sendClientMessage({ message: 'You channel your holy energies into a bottle.', sfx: 'spell-conjure' });
 
     const water = await caster.$$room.itemCreator.getItemByName('Holy Water');
 

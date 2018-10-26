@@ -45,11 +45,11 @@ export class Disease extends SpellEffect {
     this.effectInfo = { damage, caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
-    this.effectMessage(caster, `You diseased ${target.name}!`);
+    this.effectMessage(caster, { message: `You diseased ${target.name}!`, sfx: 'spell-debuff-give' });
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You were diseased!');
+    this.effectMessage(char, { message: 'You were diseased!', sfx: 'spell-debuff-receive' });
 
     if(this.healerDebilitate) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} -${this.healerDebilitate} CON/WIL, -${this.healerDebilitate * 3} Accuracy.`;

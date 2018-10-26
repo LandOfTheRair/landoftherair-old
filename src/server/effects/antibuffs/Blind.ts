@@ -53,13 +53,15 @@ export class Blind extends SpellEffect {
       return;
     }
 
+    caster.sendClientMessage({ message: `You blinded ${target.name}!`, sfx: 'spell-debuff-give' });
+
     this.duration = clamp((this.potency + baseStat) - targetStat, 2, 5);
     this.duration += caster.getTraitLevel('NatureSpirit');
     target.applyEffect(this);
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You can no longer see!');
+    this.effectMessage(char, { message: 'You can no longer see!', sfx: 'spell-debuff-receive' });
 
     char.$$room.state.calculateFOV(char);
     if(char.isPlayer()) {

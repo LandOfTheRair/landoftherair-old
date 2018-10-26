@@ -24,7 +24,7 @@ export class Absorption extends SpellEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Absorption on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast Absorption on ${target.name}.`, sfx: 'spell-buff-magical' });
     }
 
     this.aoeAgro(caster, 10);
@@ -33,7 +33,7 @@ export class Absorption extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'Your body builds a temporary resistance to magic.');
+    this.targetEffectMessage(char, { message: 'Your body builds a temporary resistance to magic.', sfx: 'spell-buff-magical' });
     this.gainStat(char, 'magicalResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} magic damage.`;

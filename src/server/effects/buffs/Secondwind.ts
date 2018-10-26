@@ -19,7 +19,7 @@ export class Secondwind extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Secondwind on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast Secondwind on ${target.name}.`, sfx: 'spell-buff-magical' });
     }
 
     this.aoeAgro(caster, 10);
@@ -31,7 +31,7 @@ export class Secondwind extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'You are enclosed by a safe aura!');
+    this.targetEffectMessage(char, { message: 'You are enclosed by a safe aura!', sfx: 'spell-buff-magical' });
   }
 
   effectEnd(char: Character) {

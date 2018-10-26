@@ -24,7 +24,7 @@ export class MagicShield extends SpellEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast MagicShield on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast MagicShield on ${target.name}.`, sfx: 'spell-buff-magical' });
     }
 
     this.aoeAgro(caster, 100);
@@ -33,7 +33,7 @@ export class MagicShield extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'Your skin hardens.');
+    this.targetEffectMessage(char, { message: 'Your skin hardens.', sfx: 'spell-buff-magical' });
     this.gainStat(char, 'physicalResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} physical damage.`;

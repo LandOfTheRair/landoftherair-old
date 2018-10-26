@@ -27,7 +27,7 @@ export class BarFire extends SpellEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast BarFire on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast BarFire on ${target.name}.`, sfx: 'spell-buff-protection' });
     }
 
     this.aoeAgro(caster, 10);
@@ -36,7 +36,7 @@ export class BarFire extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'Your body builds a temporary resistance to flame.');
+    this.targetEffectMessage(char, { message: 'Your body builds a temporary resistance to flame.', sfx: 'spell-buff-protection' });
     this.gainStat(char, 'fireResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} fire damage.`;

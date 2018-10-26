@@ -24,7 +24,7 @@ export class Frostspikes extends SpellEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Frostspikes on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast Frostspikes on ${target.name}.`, sfx: 'spell-buff-physical' });
     }
 
     this.aoeAgro(caster, 10);
@@ -33,7 +33,7 @@ export class Frostspikes extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'A spiky aura appears around you.');
+    this.targetEffectMessage(char, { message: 'A spiky aura appears around you.', sfx: 'spell-buff-physical' });
     this.gainStat(char, 'physicalDamageReflect', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Physical attackers take ${this.potency * this.potencyMultiplier} damage. Ice aura deals ${this.potency * this.potencyMultiplier} in a 1x1.`;

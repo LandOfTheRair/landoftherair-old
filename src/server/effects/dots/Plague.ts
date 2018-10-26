@@ -52,11 +52,11 @@ export class Plague extends SpellEffect {
     }
 
     target.applyEffect(this);
-    this.effectMessage(caster, `You inflicted a plague upon ${target.name}!`);
+    this.effectMessage(caster, { message: `You inflicted a plague upon ${target.name}!`, sfx: 'spell-debuff-give' });
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You were plagued!');
+    this.effectMessage(char, { message: 'You were plagued!', sfx: 'spell-debuff-receive' });
 
     if(this.healerCripple) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Offense/Defense penalty.`;

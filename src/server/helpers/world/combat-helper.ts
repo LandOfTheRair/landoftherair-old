@@ -892,7 +892,7 @@ export class CombatHelper {
     return true;
   }
 
-  static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass, isOverTime, isAOE }: any = {}) {
+  static magicalAttack(attacker: Character, attacked: Character, { effect, skillRef, atkMsg, defMsg, damage, damageClass, isOverTime, isAOE, customSfx }: any = {}) {
 
     if(attacker) {
       attacker.setCombatTicks(10);
@@ -919,7 +919,7 @@ export class CombatHelper {
 
     damage = attacked.isNaturalResource ? 0 : damage;
     const totalDamage = this.dealDamage(attacker, attacked, {
-      damage, damageClass, isOverTime, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg, attackerWeapon: {
+      damage, damageClass, isOverTime, customSfx, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg, attackerWeapon: {
         itemClass: effect ? effect.name : '???',
         owner: effect ? effect.effectInfo.caster : '???',
         ownerName: effect ? effect.effectInfo.casterName : '???'

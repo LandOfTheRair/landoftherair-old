@@ -10,7 +10,10 @@ export class Identify extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    if(!caster.rightHand) return caster.sendClientMessage('You are looking at your right hand. It\'s in average condition. Of course, it belongs to you.');
-    caster.sendClientMessage(caster.rightHand.descTextFor(caster, this.potency));
+    if(!caster.rightHand) {
+      return caster.sendClientMessage({ message: 'You are looking at your right hand. It\'s in average condition. Of course, it belongs to you.', sfx: 'spell-conjure' });
+    }
+
+    caster.sendClientMessage({ message: caster.rightHand.descTextFor(caster, this.potency), sfx: 'spell-conjure' });
   }
 }

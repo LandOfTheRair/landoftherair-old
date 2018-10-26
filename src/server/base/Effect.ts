@@ -1,6 +1,6 @@
 
 import { Character, SkillClassNames, StatName } from '../../shared/models/character';
-import { extend, includes, get, cloneDeep } from 'lodash';
+import { extend, includes, get, cloneDeep, isString } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/world/combat-helper';
 import { Item } from '../../shared/models/item';
@@ -155,12 +155,12 @@ export class SpellEffect extends Effect {
   maxSkillForSkillGain = 0;
   skillMults: Array<number[]>;
 
-  casterEffectMessage(char: Character, message: string) {
-    super.effectMessage(char, { message, subClass: 'spell buff give', sfx: 'spell-buff' });
+  casterEffectMessage(char: Character, message: string|any) {
+    super.effectMessage(char, isString(message) ? { message, subClass: 'spell buff give', sfx: 'spell-buff' } : message);
   }
 
-  targetEffectMessage(char: Character, message: string) {
-    super.effectMessage(char, { message, subClass: 'spell buff get', sfx: 'spell-buff' });
+  targetEffectMessage(char: Character, message: string|any) {
+    super.effectMessage(char, isString(message) ? { message, subClass: 'spell buff get', sfx: 'spell-buff' } : message);
   }
 
   setPotencyAndGainSkill(caster: Character, skillRef?: Skill) {

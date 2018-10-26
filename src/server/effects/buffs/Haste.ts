@@ -46,7 +46,7 @@ export class Haste extends SpellEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Haste on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast Haste on ${target.name}.`, sfx: 'spell-buff-physical' });
     }
 
     this.aoeAgro(caster, 100);
@@ -63,7 +63,7 @@ export class Haste extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'The world around you appears to slow down.');
+    this.targetEffectMessage(char, { message: 'The world around you appears to slow down.', sfx: 'spell-buff-physical' });
     this.gainStat(char, 'actionSpeed', 1);
   }
 

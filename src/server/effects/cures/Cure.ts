@@ -21,7 +21,8 @@ export class Cure extends SpellEffect {
       atkMsg: `You heal %0.`,
       defMsg: `%0 healed you!`,
       damage,
-      damageClass: 'heal'
+      damageClass: 'heal',
+      customSfx: 'spell-heal'
     });
   }
 }

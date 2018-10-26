@@ -21,7 +21,7 @@ export class DarkVision extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast DarkVision on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast DarkVision on ${target.name}.`, sfx: 'spell-sight-effect' });
     }
 
     this.aoeAgro(caster, 10);
@@ -34,7 +34,7 @@ export class DarkVision extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'You can see in the dark!');
+    this.targetEffectMessage(char, { message: 'You can see in the dark!', sfx: 'spell-sight-effect' });
 
     char.$$room.state.calculateFOV(char);
     if(char.isPlayer()) {

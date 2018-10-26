@@ -39,11 +39,11 @@ export class Poison extends SpellEffect {
     this.effectInfo = { damage, caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
-    this.effectMessage(caster, `You poisoned ${target.name}!`);
+    this.effectMessage(caster, { message: `You poisoned ${target.name}!`, sfx: 'spell-debuff-give' });
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You were poisoned!');
+    this.effectMessage(char, { message: 'You were poisoned!', sfx: 'spell-debuff-receive' });
 
     if(this.thiefCorrode) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Mitigation penalty.`;

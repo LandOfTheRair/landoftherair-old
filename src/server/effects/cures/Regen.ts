@@ -22,7 +22,7 @@ export class Regen extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     if(caster !== target) {
-      this.effectMessage(caster, `You are regenerating ${target.name}!`);
+      this.effectMessage(caster, { message: `You are regenerating ${target.name}!`, sfx: 'spell-heal' });
     }
 
     this.aoeAgro(caster, 30);
@@ -39,7 +39,7 @@ export class Regen extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'Your body begins to repair itself more quickly!');
+    this.effectMessage(char, { message: 'Your body begins to repair itself more quickly!', sfx: 'spell-heal' });
 
     this.iconData.tooltipDesc = `Constantly restoring ${Math.abs(this.effectInfo.damage)} health.`;
   }

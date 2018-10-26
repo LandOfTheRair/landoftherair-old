@@ -27,7 +27,7 @@ export class BarFrost extends SpellEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast BarFrost on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast BarFrost on ${target.name}.`, sfx: 'spell-buff-protection' });
     }
 
     this.aoeAgro(caster, 10);
@@ -36,7 +36,7 @@ export class BarFrost extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'Your body builds a temporary resistance to frost.');
+    this.targetEffectMessage(char, { message: 'Your body builds a temporary resistance to frost.', sfx: 'spell-buff-protection' });
     this.gainStat(char, 'iceResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} ice damage.`;

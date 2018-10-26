@@ -24,7 +24,7 @@ export class Firethorns extends SpellEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Firethorns on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast Firethorns on ${target.name}.`, sfx: 'spell-buff-physical' });
     }
 
     this.aoeAgro(caster, 10);
@@ -33,7 +33,7 @@ export class Firethorns extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'A thorny aura appears around you.');
+    this.targetEffectMessage(char, { message: 'A thorny aura appears around you.', sfx: 'spell-buff-physical' });
     this.gainStat(char, 'physicalDamageReflect', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Physical attackers take ${this.potency * this.potencyMultiplier} damage. Fire aura deals ${this.potency * this.potencyMultiplier} in a 1x1.`;

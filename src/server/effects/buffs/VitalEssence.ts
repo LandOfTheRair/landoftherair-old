@@ -25,7 +25,7 @@ export class VitalEssence extends SpellEffect implements OnHitEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast VitalEssence on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast VitalEssence on ${target.name}.`, sfx: 'spell-buff-magical' });
     }
 
     this.aoeAgro(caster, 100);
@@ -34,7 +34,7 @@ export class VitalEssence extends SpellEffect implements OnHitEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'Your body feels more durable.');
+    this.targetEffectMessage(char, { message: 'Your body feels more durable.', sfx: 'spell-buff-magical' });
     this.gainStat(char, 'hp', this.potency * this.potencyMultiplier);
 
     const acGain = Math.floor(this.potency / 2);

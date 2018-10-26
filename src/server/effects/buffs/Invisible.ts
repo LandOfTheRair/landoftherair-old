@@ -21,7 +21,7 @@ export class Invisible extends SpellEffect {
     if(!this.duration) this.duration = 300 * this.potency;
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Invisibility on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast Invisibility on ${target.name}.`, sfx: 'spell-sight-effect' });
     }
 
     this.aoeAgro(caster, 100);
@@ -30,7 +30,7 @@ export class Invisible extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'You can see through yourself!');
+    this.targetEffectMessage(char, { message: 'You can see through yourself!', sfx: 'spell-sight-effect' });
 
     // add some stealth so it triggers transparency on the client
     this.gainStat(char, 'stealth', 1);

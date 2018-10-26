@@ -24,7 +24,7 @@ export class BarWater extends SpellEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast BarWater on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast BarWater on ${target.name}.`, sfx: 'spell-buff-protection' });
     }
 
     this.aoeAgro(caster, 10);
@@ -33,7 +33,7 @@ export class BarWater extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'Gills form around your neck.');
+    this.targetEffectMessage(char, { message: 'Gills form around your neck.', sfx: 'spell-buff-protection' });
     this.gainStat(char, 'waterResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} water damage.`;

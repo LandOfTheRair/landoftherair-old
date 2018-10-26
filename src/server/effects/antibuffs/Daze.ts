@@ -35,9 +35,9 @@ export class Daze extends SpellEffect {
 
     if(target.hasEffect('RecentlyDazed') || target.hasEffect('Daze')) {
       return this.effectMessage(caster, `${target.name} resisted your daze!`);
-    } else {
-      this.effectMessage(caster, `You daze ${target.name}!`);
     }
+
+    this.effectMessage(caster, { message: `You daze ${target.name}!`, sfx: 'spell-debuff-give' });
 
     this.duration = 30;
 
@@ -46,7 +46,7 @@ export class Daze extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You are dazed!');
+    this.effectMessage(char, { message: 'You are dazed!', sfx: 'spell-debuff-receive' });
   }
 
   effectEnd(char: Character) {

@@ -38,7 +38,7 @@ export class HolyAura extends SpellEffect implements AttributeEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Holy Aura on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast Holy Aura on ${target.name}.`, sfx: 'spell-buff-magical' });
     }
 
     this.aoeAgro(caster, 100);
@@ -47,7 +47,7 @@ export class HolyAura extends SpellEffect implements AttributeEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'A holy aura surrounds your body.');
+    this.targetEffectMessage(char, { message: 'A holy aura surrounds your body.', sfx: 'spell-buff-magical' });
     this.iconData.tooltipDesc = `Invulnerable to ${this.charges} physical damage.`;
   }
 

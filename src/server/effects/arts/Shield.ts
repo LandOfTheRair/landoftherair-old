@@ -27,7 +27,7 @@ export class Shield extends SpellEffect {
 
   effectStart(char: Character) {
     this.effectMessageRadius(char, `${char.name} clasps ${GenderHelper.hisher(char)} hands together and exhales.`);
-    this.targetEffectMessage(char, 'You begin channeling your Shield.');
+    this.targetEffectMessage(char, { message: 'You begin channeling your Shield.', sfx: 'spell-buff-physical' });
 
     this.duration += 3;
 

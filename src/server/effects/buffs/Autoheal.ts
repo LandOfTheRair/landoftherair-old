@@ -23,7 +23,7 @@ export class Autoheal extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Autoheal on ${target.name}!`);
+      this.casterEffectMessage(caster, { message: `You cast Autoheal on ${target.name}!`, sfx: 'spell-buff-magical' });
     }
 
     this.isEnhanced = !!caster.getTraitLevel('ImprovedAutoheal');
@@ -43,7 +43,7 @@ export class Autoheal extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'Your chest feels unnaturally warmer!');
+    this.targetEffectMessage(char, { message: 'Your chest feels unnaturally warmer!', sfx: 'spell-buff-magical' });
     this.iconData.tooltipDesc = `Restores health when it goes lower than ${this.potency}%`;
   }
 

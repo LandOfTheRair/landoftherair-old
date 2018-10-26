@@ -20,7 +20,7 @@ export class FleetOfFoot extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast FleetOfFoot on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast FleetOfFoot on ${target.name}.`, sfx: 'spell-buff-physical' });
     }
 
     this.aoeAgro(caster, 10);
@@ -32,7 +32,7 @@ export class FleetOfFoot extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'You feel light on your feet!');
+    this.targetEffectMessage(char, { message: 'You feel light on your feet!', sfx: 'spell-buff-physical' });
   }
 
   effectEnd(char: Character) {

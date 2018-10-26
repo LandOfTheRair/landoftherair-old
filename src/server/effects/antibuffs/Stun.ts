@@ -33,8 +33,6 @@ export class Stun extends SpellEffect {
 
     if(target.hasEffect('RecentlyStunned') || target.hasEffect('Stun')) {
       return this.effectMessage(caster, `${target.name} resisted your stun!`);
-    } else {
-      this.effectMessage(caster, `You stun ${target.name}!`);
     }
 
     target.addAgro(caster, 30);
@@ -50,12 +48,15 @@ export class Stun extends SpellEffect {
 
       this.duration = Math.min(10, Math.max(7, this.potency - targetWil));
       this.duration += caster.getTraitLevel('NatureSpirit');
+
+      this.effectMessage(caster, { message: `You stun ${target.name}!`, sfx: 'spell-debuff-give' });
     }
+
     target.applyEffect(this);
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You are stunned!');
+    this.effectMessage(char, { message: 'You are stunned!', sfx: 'spell-debuff-receive' });
   }
 
   effectEnd(char: Character) {

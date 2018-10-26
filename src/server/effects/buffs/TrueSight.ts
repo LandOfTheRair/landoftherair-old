@@ -21,7 +21,7 @@ export class TrueSight extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast TrueSight on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast TrueSight on ${target.name}.`, sfx: 'spell-sight-effect' });
     }
 
     this.aoeAgro(caster, 10);
@@ -35,7 +35,7 @@ export class TrueSight extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'Your vision expands to see other planes of existence.');
+    this.targetEffectMessage(char, { message: 'Your vision expands to see other planes of existence.', sfx: 'spell-sight-effect' });
     this.gainStat(char, 'perception', this.potency);
   }
 

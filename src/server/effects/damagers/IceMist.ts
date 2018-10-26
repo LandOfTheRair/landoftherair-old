@@ -19,7 +19,7 @@ export class IceMist extends SpellEffect {
 
     const range = (isUndefined(this.range) ? 1 : this.range) + (caster.getTraitLevel('IceMistWiden') ? 1 : 0);
 
-    this.effectMessageRadius(caster, { message: 'You see a dense fog form.', subClass: 'combat magic' }, 10);
+    this.effectMessageRadius(caster, { message: 'You see a dense fog form.', subClass: 'combat magic', sfx: 'spell-aoe-frost' }, 10);
 
     MessageHelper.drawEffectInRadius(caster, 'ICE_MIST', target, range, 6);
 
@@ -48,7 +48,8 @@ export class IceMist extends SpellEffect {
         defMsg: `%0 engulfed you in a chilling mist!`,
         damage: Math.floor(damage * damageMod),
         damageClass: 'ice',
-        isAOE: true
+        isAOE: true,
+        customSfx: 'none'
       });
     });
   }

@@ -55,6 +55,8 @@ export class Snare extends SpellEffect {
       return;
     }
 
+    caster.sendClientMessage({ message: `You snare ${target.name}!`, sfx: 'spell-debuff-give' });
+
     if(caster.getTraitLevel('StrongerSnare')) {
       this.movementLoss += 1;
     }
@@ -66,7 +68,7 @@ export class Snare extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'Roots grow from the ground to slow your movement!');
+    this.effectMessage(char, { message: 'Roots grow from the ground to slow your movement!', sfx: 'spell-debuff-receive' });
     this.loseStat(char, 'move', this.movementLoss);
   }
 

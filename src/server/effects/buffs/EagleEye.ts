@@ -20,7 +20,7 @@ export class EagleEye extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast EagleEye on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast EagleEye on ${target.name}.`, sfx: 'spell-sight-effect' });
     }
 
     this.aoeAgro(caster, 10);
@@ -34,7 +34,7 @@ export class EagleEye extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'Your vision expands to see through the trees and beneath the waters.');
+    this.targetEffectMessage(char, { message: 'Your vision expands to see through the trees and beneath the waters.', sfx: 'spell-sight-effect' });
     this.gainStat(char, 'perception', this.potency * this.potencyMultiplier);
     this.gainStat(char, 'accuracy', this.potency);
 

@@ -39,11 +39,11 @@ export class Venom extends SpellEffect {
     this.effectInfo = { damage, caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
-    this.effectMessage(caster, `You inflicted ${target.name} with a deadly venom!`);
+    this.effectMessage(caster, { message: `You inflicted ${target.name} with a deadly venom!`, sfx: 'spell-debuff-give' });
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, 'You feel a deadly venom coursing through your veins!');
+    this.effectMessage(char, { message: 'You feel a deadly venom coursing through your veins!', sfx: 'spell-debuff-receive' });
 
     if(this.thiefDegenerate) {
       this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Perception penalty.`;

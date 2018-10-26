@@ -19,7 +19,7 @@ export class Aid extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Aid on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast Aid on ${target.name}.`, sfx: 'spell-buff-physical' });
     }
 
     this.aoeAgro(caster, 10);

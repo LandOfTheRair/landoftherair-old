@@ -26,7 +26,7 @@ export class ImbueFlame extends ImbueEffect implements AugmentSpellEffect {
     this.updateDurationBasedOnTraits(caster);
 
     if(caster !== target) {
-      this.casterEffectMessage(caster, `You cast Imbue Flame on ${target.name}.`);
+      this.casterEffectMessage(caster, { message: `You cast Imbue Flame on ${target.name}.`, sfx: 'spell-buff-physical' });
     }
 
     this.aoeAgro(caster, 10);
@@ -35,7 +35,7 @@ export class ImbueFlame extends ImbueEffect implements AugmentSpellEffect {
   }
 
   effectStart(char: Character) {
-    this.targetEffectMessage(char, 'A whirling red aura envelops your hands.');
+    this.targetEffectMessage(char, { message: 'A whirling red aura envelops your hands.', sfx: 'spell-buff-physical' });
 
     this.iconData.tooltipDesc = `Physical attacks sometimes do ${Math.floor(this.potency / 2)}% bonus fire damage.`;
   }

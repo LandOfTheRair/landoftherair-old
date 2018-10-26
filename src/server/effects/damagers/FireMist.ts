@@ -19,7 +19,7 @@ export class FireMist extends SpellEffect {
 
     const range = (isUndefined(this.range) ? 1 : this.range) + (caster.getTraitLevel('FireMistWiden') ? 1 : 0);
 
-    this.effectMessageRadius(caster, { message: 'You hear a soft sizzling noise.', subClass: 'combat magic' }, 10);
+    this.effectMessageRadius(caster, { message: 'You hear a soft sizzling noise.', subClass: 'combat magic', sfx: 'spell-aoe-fire' }, 10);
 
     MessageHelper.drawEffectInRadius(caster, 'FIRE_MIST', target, range, 6);
 
@@ -48,7 +48,8 @@ export class FireMist extends SpellEffect {
         defMsg: `%0 engulfed you in a hot mist!`,
         damage: Math.floor(damage * damageMod),
         damageClass: 'fire',
-        isAOE: true
+        isAOE: true,
+        customSfx: 'none'
       });
     });
   }
