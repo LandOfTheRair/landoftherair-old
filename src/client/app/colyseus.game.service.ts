@@ -390,8 +390,10 @@ export class ColyseusGameService {
     messages.forEach(msg => this.logMessage(msg));
   }
 
-  private logMessage({ name, message, subClass, grouping, dirFrom, extraData, sfx }: any) {
+  private logMessage({ name, message, subClass, grouping, dirFrom, extraData, target, sfx }: any) {
     if(this.suppressOutgoingDot && includes(subClass, 'out-overtime')) return;
+
+    if(target) this.setTarget(target);
 
     const isZero = (includes(message, '[0') && includes(message, 'damage]'))
                 || (includes(message, 'misses!'))

@@ -250,7 +250,8 @@ export class CombatHelper {
       if(RollerHelper.XInOneHundred(procChance)) {
         attacker.sendClientMessage({
           message: `Your shadow daggers unsheathe themselves and attempt to strike ${defender.name}!`,
-          subClass: 'combat self hit'
+          subClass: 'combat self hit',
+          target: defender.uuid
         }, true);
         isBackstab = true;
         backstabIgnoreRange = true;
@@ -483,7 +484,8 @@ export class CombatHelper {
         }, true);
 
         defender.sendClientMessage({
-          message: `${attackerName} misses!`, subClass: 'combat other miss',
+          message: `${attackerName} misses!`,
+          subClass: 'combat other miss',
           extraData: {
             type: 'miss',
             uuid: attacker.uuid,
