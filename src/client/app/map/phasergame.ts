@@ -25,7 +25,8 @@ const sfxs = [
   'combat-block-armor', 'combat-block-weapon', 'combat-die', 'combat-hit-melee', 'combat-hit-spell', 'combat-kill', 'combat-miss',
   'combat-special-blunderbuss',
   'env-door-open', 'env-door-close', 'env-stairs',
-  'spell-buff'
+  'spell-buff',
+  'spell-special-revive', 'spell-special-teleport'
 ];
 
 const ENVIRONMENTAL_OBJECT_GID_HASH = {

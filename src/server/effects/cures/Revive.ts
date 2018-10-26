@@ -24,5 +24,8 @@ export class Revive extends SpellEffect {
     target.hp.setToPercent(hpPercent);
     target.hp.__current = Math.round(target.hp.__current);
     target.gainBaseStat('con', 1);
+
+    caster.sendClientMessage({ message: `You are reviving ${target.name}.`, sfx: 'spell-special-revive' });
+    target.sendClientMessage({ message: `You are being revived by ${caster.name}.`, sfx: 'spell-special-revive' });
   }
 }

@@ -85,7 +85,7 @@ export class TeleportHelper {
 
   private async doPlayerTeleport(player: Player, opts: { map: string, x: number, y: number, z: number }) {
 
-    player.sendClientMessage('Your vision blurs as you travel through the rift.');
+    player.sendClientMessage({ message: 'Your vision blurs as you travel through the rift.', sfx: 'spell-special-teleport' });
 
     const { map, x, y, z } = opts;
 

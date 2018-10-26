@@ -31,9 +31,6 @@ export class Revive extends Skill {
 
     if(!target) return user.sendClientMessage('There is no one in need of revival here!');
 
-    user.sendClientMessage(`You are reviving ${target.name}.`);
-    target.sendClientMessage(`You have been revived by ${user.name}.`);
-
     this.use(user, target, effect);
   }
 
