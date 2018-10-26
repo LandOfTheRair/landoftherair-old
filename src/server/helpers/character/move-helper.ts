@@ -236,7 +236,13 @@ export class MoveHelper {
     if(isFall) {
       const hpLost = Math.floor(player.hp.maximum * ((damagePercent || 15) / 100));
       const damage = player.hasEffect('FleetOfFoot') ? 1 : hpLost;
-      CombatHelper.dealOnesidedDamage(player, { damage, damageClass: 'physical', damageMessage: 'You have fallen!', suppressIfNegative: true });
+      CombatHelper.dealOnesidedDamage(player, {
+        damage,
+        damageClass: 'physical',
+        damageMessage: 'You have fallen!',
+        suppressIfNegative: true,
+        overrideSfx: 'combat-hit-melee'
+      });
     } else {
       player.sendClientMessage('Your surroundings shift.');
     }

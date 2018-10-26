@@ -866,7 +866,8 @@ export class CombatHelper {
       damageClass: damageClass,
       damage: reflectedDamage,
       damageMessage: 'Some of the damage was reflected back at you!',
-      suppressIfNegative: true
+      suppressIfNegative: true,
+      overrideSfx: ''
     });
   }
 
@@ -934,7 +935,7 @@ export class CombatHelper {
     }
   }
 
-  static dealOnesidedDamage(defender, { damage, damageClass, damageMessage, suppressIfNegative }) {
+  static dealOnesidedDamage(defender, { damage, damageClass, damageMessage, suppressIfNegative, overrideSfx }) {
     if(!defender || defender.isDead()) return;
 
     const isHeal = damage < 0;
@@ -955,7 +956,7 @@ export class CombatHelper {
     defender.hp.sub(damage);
 
     if((damage <= 0 && !suppressIfNegative) || damage > 0) {
-      defender.sendClientMessage({ message: `${damageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit' }, true);
+      defender.sendClientMessage({ message: `${damageMessage} [${damage} ${damageClass} damage]`, subClass: 'combat other hit', sfx: overrideSfx }, true);
     }
 
     if(defender.isDead()) {

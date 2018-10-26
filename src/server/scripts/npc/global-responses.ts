@@ -42,7 +42,8 @@ export const globalResponses = (npc: NPC) => {
               damage: 10,
               damageClass: 'physical',
               damageMessage: 'You were hit by surprise!',
-              suppressIfNegative: true
+              suppressIfNegative: true,
+              overrideSfx: 'combat-hit-melee'
             });
           }
 

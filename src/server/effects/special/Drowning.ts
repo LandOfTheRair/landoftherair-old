@@ -23,6 +23,12 @@ export class Drowning extends SpellEffect {
   effectTick(char: Character) {
     const hpPercentLost = this.potency * 4;
     const hpLost = Math.floor(char.hp.maximum * (hpPercentLost / 100));
-    CombatHelper.dealOnesidedDamage(char, { damage: hpLost, damageClass: this.swimElement || 'water', damageMessage: 'You are drowning!', suppressIfNegative: true });
+    CombatHelper.dealOnesidedDamage(char, {
+      damage: hpLost,
+      damageClass: this.swimElement || 'water',
+      damageMessage: 'You are drowning!',
+      suppressIfNegative: true,
+      overrideSfx: 'combat-hit-melee'
+    });
   }
 }
