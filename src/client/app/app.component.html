@@ -660,6 +660,15 @@
 
             <div class="row">
               <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="autoAttack">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="autoAttack" id="autoAttack"/>
+                  Auto-attack while there is an active target
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
                 <label class="form-check-label" for="autoHideLobby">
                   <input type="checkbox" class="form-check-input" [(ngModel)]="autoHideLobby" id="autoHideLobby"/>
                   Hide lobby while game is open

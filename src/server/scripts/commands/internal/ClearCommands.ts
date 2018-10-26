@@ -18,7 +18,7 @@ export class ClearCommands extends Command {
 
   execute(player: Player) {
     player.$$actionQueue = [];
-    player.sendClientMessage('Command buffer cleared.');
+    player.sendClientMessage({ message: 'Command buffer and target cleared.', target: null });
   }
 
 }

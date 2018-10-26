@@ -85,8 +85,19 @@ export class MacroService {
     this.shouldIgnoreKeybinds = func;
   }
 
+  get activeMacro(): Macro {
+    return this.allMacros[this.currentlySelectedMacro];
+  }
+
   constructor(private localStorage: LocalStorageService, private colyseusGame: ColyseusGameService) {
     this.watchGameObservables();
+  }
+
+  private setActiveMacro(mac: string) {
+    this.currentlySelectedMacro = mac;
+    setTimeout(() => {
+      this.colyseusGame.currentlySelectedMacro$.next(this.activeMacro);
+    });
   }
 
   public loadSelectedMacroForCurrentPlayer() {
@@ -201,10 +212,6 @@ export class MacroService {
 
   }
 
-  get activeMacro(): Macro {
-    return this.allMacros[this.currentlySelectedMacro];
-  }
-
   private shouldCancelMacroEarly(macro: string) {
     return !(macro === 'CTRL+A' || macro === 'CTRL+C' || macro === 'CTRL+V');
   }
@@ -288,12 +295,12 @@ export class MacroService {
   }
 
   private watchActiveMacro() {
-    this.currentlySelectedMacro = this.retrieveForCharacter('selectedMacro');
+    this.setActiveMacro(this.retrieveForCharacter('selectedMacro'));
     if(this.macroSubscription) this.macroSubscription.unsubscribe();
 
     this.macroSubscription = this.observeForCharacter('selectedMacro')
       .subscribe(macro => {
-        this.currentlySelectedMacro = macro;
+        this.setActiveMacro(macro);
       });
   }
 

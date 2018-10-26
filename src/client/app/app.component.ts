@@ -152,6 +152,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   public rightClickSend: boolean;
 
   @LocalStorage()
+  public autoAttack: boolean;
+
+  @LocalStorage()
   public autoHideLobby: boolean;
 
   @LocalStorage()
@@ -365,7 +368,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const defaultOptions = [
       'showInventoryBelt', 'showInventoryPouch', 'showInventorySack', 'showEquipment', 'showCommandLine',
       'showActiveTarget', 'pinLastTarget',
-      'autoHideLobby',
+      'autoHideLobby', 'autoAttack',
       'playBackgroundMusic', 'playSoundEffects'
     ];
 

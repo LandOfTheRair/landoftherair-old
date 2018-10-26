@@ -5,7 +5,7 @@ import * as fileSaver from 'file-saver';
 
 import { Subject } from 'rxjs';
 
-import { find, includes, findIndex, extend, startsWith, capitalize, isNumber } from 'lodash';
+import { find, includes, findIndex, extend, startsWith, capitalize, isNumber, isUndefined } from 'lodash';
 import { Player } from '../../shared/models/player';
 import { Item } from '../../shared/models/item';
 import { Locker } from '../../shared/models/container/locker';
@@ -15,6 +15,7 @@ import { NPC } from '../../shared/models/npc';
 import { VALID_TRADESKILLS } from '../../shared/helpers/tradeskill-helper';
 import { SkillTree } from '../../shared/models/skill-tree';
 import { AlertService } from './alert.service';
+import { Macro } from './macros.service';
 
 @Injectable()
 export class ColyseusGameService {
@@ -61,6 +62,9 @@ export class ColyseusGameService {
   public marketboardRemove$ = new Subject();
 
   public currentItemDescription$ = new Subject<string>();
+  public currentlySelectedMacro$ = new Subject<Macro>();
+
+  private cancelNextAutoAction: boolean;
 
   public get skillTree$() {
     return this.clientGameState.skillTree$;
@@ -71,6 +75,7 @@ export class ColyseusGameService {
   private nostalgicBgm: boolean;
   private suppressZero: boolean;
   private suppressOutgoingDot: boolean;
+  private autoAttack: boolean;
 
   public currentViewTarget: any;
 
@@ -93,17 +98,25 @@ export class ColyseusGameService {
     return this.syncedNPCs && this.syncedGround;
   }
 
+  get isChangingMap() {
+    return this.changingMap;
+  }
+
+  get inGame() {
+    return this._inGame && this.worldRoom && this.clientGameState.map.type;
+  }
+
   constructor(
     private localStorage: LocalStorageService,
     private alert: AlertService
   ) {
-
     this.overrideNoBgm = !this.localStorage.retrieve('playBackgroundMusic');
     this.overrideNoSfx = !this.localStorage.retrieve('playSoundEffects');
     this.nostalgicBgm = this.localStorage.retrieve('nostalgicBackgroundMusic');
     this.suppressZero = this.localStorage.retrieve('suppressZeroDamage');
     this.suppressAnimations = this.localStorage.retrieve('suppressAnimations');
     this.suppressOutgoingDot = this.localStorage.retrieve('suppressOutgoingDot');
+    this.autoAttack = this.localStorage.retrieve('autoAttack');
 
     this.localStorage.observe('playBackgroundMusic')
       .subscribe(shouldPlayBgm => {
@@ -135,6 +148,11 @@ export class ColyseusGameService {
         this.suppressAnimations = suppressAnimations;
       });
 
+    this.localStorage.observe('autoAttack')
+      .subscribe(autoAttack => {
+        this.autoAttack = autoAttack;
+      });
+
     this.lastCommands = this.localStorage.retrieve('lastCommands') || [];
 
     (<any>window).sendCommand = this.sendCommandString.bind(this);
@@ -144,6 +162,8 @@ export class ColyseusGameService {
       event.preventDefault();
       return false;
     });
+
+    this.addAutoAttackLoop();
   }
 
   init(colyseus, client, character) {
@@ -162,14 +182,6 @@ export class ColyseusGameService {
     }
 
     this.initGame();
-  }
-
-  get isChangingMap() {
-    return this.changingMap;
-  }
-
-  get inGame() {
-    return this._inGame && this.worldRoom && this.clientGameState.map.type;
   }
 
   private initGame() {
@@ -437,7 +449,7 @@ export class ColyseusGameService {
 
     this.gameCommand$.next({ action, ...other });
 
-    if(other.target)                this.setTarget(other.target);
+    if(!isUndefined(other.target))  this.setTarget(other.target);
     if(action === 'draw_effect_r')  return this.drawEffectRadius(other);
     if(action === 'draw_effect_c')  return this.drawCombatEffect(other);
     if(action === 'set_map')        return this.setMap(other.map);
@@ -701,7 +713,10 @@ export class ColyseusGameService {
     this.localStorage.store('lastCommands', this.lastCommands);
   }
 
-  public sendCommandString(str: string, target?: string) {
+  public sendCommandString(str: string, target?: string, isManual = true) {
+
+    if(isManual) this.cancelNextAutoAction = true;
+
     // strip the leading # if it exists
     if(str.startsWith('#')) str = str.substring(1);
 
@@ -1059,5 +1074,28 @@ export class ColyseusGameService {
 
   public updateCurrentItemDesc(str: string) {
     this.currentItemDescription$.next(str);
+  }
+
+  private addAutoAttackLoop() {
+    let currentMacro: any = {};
+    this.currentlySelectedMacro$.subscribe(mac => currentMacro = mac);
+
+    setInterval(() => {
+      
+      // if no macro, not in game, no target - bail
+      if(!currentMacro.macro || !this.inGame || !this.currentTarget || !this.autoAttack) return;
+
+      // allow for interrupting auto attack
+      if(this.cancelNextAutoAction) {
+        this.cancelNextAutoAction = false;
+        return;
+      }
+
+      // auto-X based on action speed
+      const actSpeed = this.character.getTotalStat('actionSpeed');
+      for(let i = 0; i < actSpeed; i++) {
+        this.sendCommandString(currentMacro.macro, this.currentTarget, false);
+      }
+    }, 1000);
   }
 }
