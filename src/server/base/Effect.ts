@@ -156,11 +156,11 @@ export class SpellEffect extends Effect {
   skillMults: Array<number[]>;
 
   casterEffectMessage(char: Character, message: string) {
-    super.effectMessage(char, { message, subClass: 'spell buff give' });
+    super.effectMessage(char, { message, subClass: 'spell buff give', sfx: 'spell-buff' });
   }
 
   targetEffectMessage(char: Character, message: string) {
-    super.effectMessage(char, { message, subClass: 'spell buff get' });
+    super.effectMessage(char, { message, subClass: 'spell buff get', sfx: 'spell-buff' });
   }
 
   setPotencyAndGainSkill(caster: Character, skillRef?: Skill) {

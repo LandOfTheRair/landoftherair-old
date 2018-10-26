@@ -390,7 +390,7 @@ export class ColyseusGameService {
     messages.forEach(msg => this.logMessage(msg));
   }
 
-  private logMessage({ name, message, subClass, grouping, dirFrom, extraData }: any) {
+  private logMessage({ name, message, subClass, grouping, dirFrom, extraData, sfx }: any) {
     if(this.suppressOutgoingDot && includes(subClass, 'out-overtime')) return;
 
     const isZero = (includes(message, '[0') && includes(message, 'damage]'))
@@ -415,8 +415,8 @@ export class ColyseusGameService {
       this.gameCommand$.next({ action: 'new_skill_learned', skillName: extraData.skillName });
     }
 
-    if(!this.overrideNoSfx) {
-      this.sfx$.next((subClass || '').trim());
+    if(!this.overrideNoSfx && sfx) {
+      this.sfx$.next((sfx || '').trim());
     }
   }
 

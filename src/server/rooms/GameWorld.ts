@@ -532,18 +532,20 @@ export class GameWorld extends Room<GameState> {
     let overClass = '';
     let overTarget = '';
     let overDir = '';
+    let overSfx = '';
     let overExtraData = null;
 
     let grouping = 'always';
 
     if(isObject(messageData)) {
-      const { message, name, subClass, target, dirFrom, extraData } = messageData;
+      const { message, name, subClass, target, dirFrom, extraData, sfx } = messageData;
       overMessage = message;
       overName = name;
       overClass = subClass;
       overTarget = target;
       overDir = dirFrom;
       overExtraData = extraData;
+      overSfx = sfx;
 
       if(overClass) {
         grouping = overClass.split(' ')[0];
@@ -559,6 +561,7 @@ export class GameWorld extends Room<GameState> {
       target: overTarget,
       dirFrom: overDir,
       extraData: overExtraData,
+      sfx: overSfx,
       grouping
     };
 

@@ -471,6 +471,7 @@ export class CombatHelper {
         attacker.sendClientMessage({
           message: `You miss!`,
           subClass: 'combat self miss',
+          sfx: 'combat-miss',
           target: defender.uuid,
           extraData: {
             type: 'miss',
@@ -511,6 +512,7 @@ export class CombatHelper {
         attacker.sendClientMessage({
           message: `You were blocked by armor!`,
           subClass: 'combat self block armor',
+          sfx: 'combat-block-armor',
           target: defender.uuid,
           extraData: {
             type: 'block-armor',
@@ -560,6 +562,7 @@ export class CombatHelper {
         attacker.sendClientMessage({
           message: `You were blocked by a ${itemTypeToLower}!`,
           subClass: 'combat self block weapon',
+          sfx: 'combat-block-weapon',
           target: defender.uuid,
           extraData: {
             type: 'block-weapon',
@@ -608,6 +611,7 @@ export class CombatHelper {
           attacker.sendClientMessage({
             message: `You were blocked by a ${itemTypeToLower}!`,
             subClass: 'combat self block shield',
+            sfx: 'combat-block-armor',
             target: defender.uuid,
             extraData: {
               type: 'block-shield',
@@ -657,6 +661,7 @@ export class CombatHelper {
           attacker.sendClientMessage({
             message: `You were blocked by a ${itemTypeToLower}!`,
             subClass: 'combat self block offhand',
+            sfx: 'combat-block-weapon',
             target: defender.uuid,
             extraData: {
               type: 'block-offhand',
@@ -954,7 +959,7 @@ export class CombatHelper {
     }
 
     if(defender.isDead()) {
-      defender.sendClientMessage({ message: `You died!`, subClass: 'combat other kill' }, true);
+      defender.sendClientMessage({ message: `You died!`, subClass: 'combat other kill', sfx: 'combat-die' }, true);
       defender.die();
     }
 
@@ -1091,6 +1096,7 @@ export class CombatHelper {
         message: `${isRiposte ? 'You riposte the attack!' : formattedAtkMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat ${secondaryClass} ${otherClass} ${damageType} ${isOverTime ? 'out-overtime' : ''}`,
         target: defender.uuid,
+        sfx: isMelee ? 'combat-hit-melee' : 'combat-hit-spell',
         extraData: {
           type: 'damage',
           uuid: attacker ? attacker.uuid : get(attackerWeapon, 'owner', '???'),
@@ -1150,7 +1156,11 @@ export class CombatHelper {
     if(wasFatal) {
       if(attacker) {
         const killMethod = defender.isNaturalResource ? 'smashed' : 'killed';
-        defender.sendClientMessageToRadius({ message: `%0 was ${killMethod} by %1!`, subClass: `combat notme kill ${defender.isPlayer() ? 'player' : 'npc'}` },
+        defender.sendClientMessageToRadius({
+            message: `%0 was ${killMethod} by %1!`,
+            subClass: `combat notme kill ${defender.isPlayer() ? 'player' : 'npc'}`,
+            sfx: defender.isPlayer() ? 'combat-die' : 'combat-kill'
+          },
           5,
           [defender.uuid, attacker.uuid],
           true,
@@ -1159,10 +1169,14 @@ export class CombatHelper {
         );
 
         const formattedAtkMessage = MessageHelper.formatMessageFor(attacker, `You ${killMethod} %0!`, [defender]);
-        attacker.sendClientMessage({ message: formattedAtkMessage, subClass: `combat self kill ${defender.isPlayer() ? 'player' : 'npc'}` }, true);
+        attacker.sendClientMessage({
+          message: formattedAtkMessage,
+          subClass: `combat self kill ${defender.isPlayer() ? 'player' : 'npc'}`,
+          sfx: defender.isPlayer() ? 'combat-die' : 'combat-kill'
+        }, true);
 
         const formattedDefMessage = MessageHelper.formatMessageFor(defender, `You were killed by %0!`, [attacker]);
-        defender.sendClientMessage({ message: formattedDefMessage, subClass: 'combat other kill' }, true);
+        defender.sendClientMessage({ message: formattedDefMessage, subClass: 'combat other kill', sfx: 'combat-die' }, true);
 
         if((<any>attacker).uuid) {
           attacker.kill(defender);
@@ -1177,7 +1191,7 @@ export class CombatHelper {
 
       } else {
         defender.sendClientMessageToRadius({ message: `${defender.name} was killed!`, subClass: 'combat self kill' }, 5, [defender.uuid], true);
-        defender.sendClientMessage({ message: `You were killed!`, subClass: 'combat other kill' }, true);
+        defender.sendClientMessage({ message: `You were killed!`, subClass: 'combat other kill', sfx: 'combat-die' }, true);
         defender.die(attacker);
       }
     }

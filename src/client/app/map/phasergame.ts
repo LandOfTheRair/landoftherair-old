@@ -1,7 +1,7 @@
 
 import * as TiledPlugin from 'phaser-tiled';
 
-import { find, compact, difference, values, forEach, get, startCase } from 'lodash';
+import { find, compact, difference, forEach, get, startCase } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
 
@@ -20,23 +20,7 @@ enum TilesWithNoFOVUpdate {
   Air = 2386
 }
 
-const SFXMap = {
-  'combat self block armor': 'combat-block-armor',
-  'combat self block weapon': 'combat-block-weapon',
-  'combat self miss': 'combat-miss',
-  'combat other kill': 'combat-die',
-  'combat notme kill player': 'combat-die',
-  'combat notme kill npc': 'combat-kill',
-  'combat self kill npc': 'combat-kill',
-  'combat self kill player': 'combat-die',
-  'combat self hit magic': 'combat-hit-spell',
-  'combat self hit melee': 'combat-hit-melee',
-  'spell buff give': 'spell-buff',
-  'spell buff get': 'spell-buff'
-};
-
 const bgms = ['combat', 'town', 'dungeon', 'wilderness'];
-const sfxs = values(SFXMap);
 
 const ENVIRONMENTAL_OBJECT_GID_HASH = {
   Trap: { gid: 334, image: 'Items' }
@@ -153,13 +137,12 @@ export class Game {
   }
 
   private playSfx(sfx: string) {
-    const convertSfx = SFXMap[sfx];
 
-    if(!this.sfxs[convertSfx] || !this.sfxs[convertSfx].isDecoded) return;
+    if(!this.sfxs[sfx] || !this.sfxs[sfx].isDecoded) return;
 
     // this happens periodically, but we probably can't do anything about it
     try {
-      this.sfxs[convertSfx].play();
+      this.sfxs[sfx].play();
     } catch(e) {}
   }
 
