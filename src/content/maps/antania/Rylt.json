@@ -5427,7 +5427,7 @@
                  "name":"",
                  "properties":
                     {
-                     "maxLevelUpLevel":10,
+                     "maxLevelUpLevel":50,
                      "maxSkillTrain":7,
                      "script":"trainer\/mage"
                     },
@@ -5451,7 +5451,7 @@
                  "name":"",
                  "properties":
                     {
-                     "maxLevelUpLevel":10,
+                     "maxLevelUpLevel":50,
                      "maxSkillTrain":7,
                      "script":"trainer\/healer"
                     },
@@ -5475,7 +5475,7 @@
                  "name":"",
                  "properties":
                     {
-                     "maxLevelUpLevel":10,
+                     "maxLevelUpLevel":50,
                      "maxSkillTrain":7,
                      "script":"trainer\/warrior"
                     },
@@ -5827,7 +5827,7 @@
                  "name":"",
                  "properties":
                     {
-                     "maxLevelUpLevel":10,
+                     "maxLevelUpLevel":50,
                      "maxSkillTrain":7,
                      "script":"trainer\/thief"
                     },
@@ -10944,7 +10944,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
@@ -10971,7 +10971,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.4",
  "tileheight":64,
  "tilesets":[
         {

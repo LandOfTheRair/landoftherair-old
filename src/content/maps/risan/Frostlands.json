@@ -9621,7 +9621,7 @@
                  "name":"",
                  "properties":
                     {
-                     "maxLevelUpLevel":35,
+                     "maxLevelUpLevel":50,
                      "maxSkillTrain":27,
                      "script":"trainer\/mage"
                     },
@@ -9645,7 +9645,7 @@
                  "name":"",
                  "properties":
                     {
-                     "maxLevelUpLevel":35,
+                     "maxLevelUpLevel":50,
                      "maxSkillTrain":27,
                      "script":"trainer\/thief"
                     },
@@ -9669,7 +9669,7 @@
                  "name":"",
                  "properties":
                     {
-                     "maxLevelUpLevel":35,
+                     "maxLevelUpLevel":50,
                      "maxSkillTrain":27,
                      "script":"trainer\/warrior"
                     },
@@ -9693,7 +9693,7 @@
                  "name":"",
                  "properties":
                     {
-                     "maxLevelUpLevel":35,
+                     "maxLevelUpLevel":50,
                      "maxSkillTrain":27,
                      "script":"trainer\/healer"
                     },
