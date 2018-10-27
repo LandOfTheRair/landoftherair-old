@@ -376,7 +376,7 @@ export class MacroService {
   }
 
   public allMacroNames() {
-    return this.allUsableMacros.map(x => x.name);
+    return _.compact(this.allUsableMacros.map(x => x ? x.name : null));
   }
 
   public macroExists(name) {
