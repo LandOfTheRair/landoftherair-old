@@ -969,7 +969,9 @@ export class CombatHelper {
     if(damage < 0) return 0;
   }
 
-  private static determineSfx({ attackerWeapon, isMelee }) {
+  private static determineSfx({ attackerWeapon, isMelee, damage }) {
+    if(damage < 0) return '';
+
     if(attackerWeapon && attackerWeapon.itemClass === 'Blunderbuss') return 'combat-special-blunderbuss';
 
     return isMelee ? 'combat-hit-melee' : 'combat-hit-spell';
@@ -1105,7 +1107,7 @@ export class CombatHelper {
         message: `${isRiposte ? 'You riposte the attack!' : formattedAtkMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat ${secondaryClass} ${otherClass} ${damageType} ${isOverTime ? 'out-overtime' : ''}`,
         target: defender.uuid,
-        sfx: customSfx || CombatHelper.determineSfx({ attackerWeapon, isMelee }),
+        sfx: customSfx || CombatHelper.determineSfx({ attackerWeapon, isMelee, damage }),
         extraData: {
           type: 'damage',
           uuid: attacker ? attacker.uuid : get(attackerWeapon, 'owner', '???'),
