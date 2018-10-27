@@ -195,7 +195,7 @@
   baseClass: Warrior
   sprite: 90
   alignment: Evil
-  stats: 6
+  stats: 2
   skillLevels: 2
   level: 14
 
@@ -203,7 +203,7 @@
 
   otherStats:
     con: 14
-    accuracy: 3
+    accuracy: 2
     perception: 220
 
   gold:
@@ -215,8 +215,8 @@
     max: 10950
 
   giveXp:
-    min: 19500
-    max: 20500
+    min: 12500
+    max: 14500
 
   gear:
     Ear: Enemy DarkVision Earring
