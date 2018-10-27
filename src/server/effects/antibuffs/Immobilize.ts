@@ -35,7 +35,7 @@ export class Immobilize extends SpellEffect {
   }
 
   effectStart(char: Character) {
-    this.effectMessage(char, { message: 'You are stuck!', sfx: 'spell-debuff-receive' });
+    this.effectMessage(char, { message: 'You are stuck!' });
     this.loseStat(char, 'move', 5);
   }
 
