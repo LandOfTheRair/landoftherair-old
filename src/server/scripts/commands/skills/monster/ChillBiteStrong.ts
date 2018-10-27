@@ -9,7 +9,7 @@ export class ChillBiteStrong extends MonsterSkill {
   name = 'chillbitestrong';
 
   canUse(user: Character, target: Character) {
-    return user.distFrom(target) <= this.range() && !target.hasEffect('Frosted');
+    return user.distFrom(target) <= this.range() && !target.hasEffect('Frosted') && !target.hasEffect('RecentlyFrosted');
   }
 
   use(user: Character, target: Character) {
