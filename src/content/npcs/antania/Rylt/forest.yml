@@ -46,7 +46,7 @@
   monsterClass: Beast
   stats: 15
   skillLevels: 3
-  level: 4
+  level: 5
 
   otherStats:
     perception: 20
