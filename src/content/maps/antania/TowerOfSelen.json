@@ -5847,28 +5847,6 @@
                  "y":4608
                 }, 
                 {
-                 "gid":3342,
-                 "height":64,
-                 "id":2425,
-                 "name":"Aychp'oc",
-                 "properties":
-                    {
-                     "hpTier":1,
-                     "script":"global\/hpdoc"
-                    },
-                 "propertytypes":
-                    {
-                     "hpTier":"int",
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5376,
-                 "y":640
-                }, 
-                {
                  "gid":2602,
                  "height":64,
                  "id":2467,
@@ -5907,6 +5885,28 @@
                  "width":64,
                  "x":2752,
                  "y":5440
+                }, 
+                {
+                 "gid":3342,
+                 "height":64,
+                 "id":2469,
+                 "name":"Aychp'oc",
+                 "properties":
+                    {
+                     "hpTier":1,
+                     "script":"global\/hpdoc"
+                    },
+                 "propertytypes":
+                    {
+                     "hpTier":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2240,
+                 "y":4224
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -7441,7 +7441,7 @@
                  "name":"HP Doc",
                  "properties":
                     {
-                     "desc":"You see an eccentric, strange creature as you enter the door."
+                     "desc":"You enter the building and see it is empty, and that someone was living here up until recently."
                     },
                  "propertytypes":
                     {
@@ -7680,7 +7680,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2469,
+ "nextobjectid":2470,
  "orientation":"orthogonal",
  "properties":
     {
