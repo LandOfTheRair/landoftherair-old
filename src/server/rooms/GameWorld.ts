@@ -645,6 +645,7 @@ export class GameWorld extends Room<GameState> {
 
   updateLocker(player: Player, locker: Locker) {
     this.lockerHelper.saveLocker(player, locker);
+    this.savePlayer(player);
     const client = player.$$room.findClient(player);
     if(!client) return;
 
@@ -673,6 +674,7 @@ export class GameWorld extends Room<GameState> {
     player.spendGold(amount, 'Service:Bank');
 
     BankHelper.saveBank(player);
+    this.savePlayer(player);
     this.showBankWindow(player, null, player.$$banks);
     return amount;
   }
@@ -691,6 +693,7 @@ export class GameWorld extends Room<GameState> {
     player.$$banks[region] -= amount;
     player.earnGold(amount, 'Service:Bank');
     BankHelper.saveBank(player);
+    this.savePlayer(player);
     this.showBankWindow(player, null, player.$$banks);
     return amount;
   }
