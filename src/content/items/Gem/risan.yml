@@ -223,3 +223,17 @@
 
   requirements:
     level: 20
+
+- name: Catacombs Lich Phylactery
+  desc: "a gooey phylactery filled with the essence of undeath"
+  sellValue: 2000000
+  sprite: 245
+
+  maxEncrusts: 1
+
+  stats:
+    hp: 300
+    mp: 300
+
+  requirements:
+    level: 45

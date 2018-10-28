@@ -156,3 +156,15 @@
 
   requirements:
     level: 45
+
+- name: Catacombs Lich Cloak
+  stats:
+    conjurationBonus: 5
+    restorationBonus: 5
+  desc: "an iridescent blue robe interwoven with fibers of raw magic"
+  value: 13000
+  sprite: 483
+  binds: true
+
+  requirements:
+    level: 45
