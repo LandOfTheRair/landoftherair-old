@@ -1176,7 +1176,7 @@ export class Character {
     this._gainSkill(type, skillGained);
   }
 
-  _gainSkill(type, skillGained) {
+  _gainSkill(type, skillGained: number) {
     type = type.toLowerCase();
 
     const prevVal = this.skills[type];
@@ -1189,6 +1189,11 @@ export class Character {
       this.skills[type] = prevVal;
       throw new Error(`Invalid skill value for ${this.name}: ${type}, gained: ${skillGained}, cur: ${this.skills[type]}`);
     }
+  }
+
+  setSkill(type, skill: number) {
+    type = type.toLowerCase();
+    this.skills[type] = skill;
   }
 
   addSkillLevels(type: string, levels: number) {

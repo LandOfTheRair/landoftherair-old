@@ -1,5 +1,6 @@
 
 export * from './GMAllegiance';
+export * from './GMCopyPlayer';
 export * from './GMCreateGold';
 export * from './GMCreateItem';
 export * from './GMCurrency';
