@@ -22,6 +22,11 @@ export class PickupMarketItem extends Command {
     try {
       await player.$$room.marketHelper.pickupItem(player, itemUUID);
 
+      if(player.addItemToSack(player.rightHand)) {
+        player.setRightHand(null);
+        player.sendClientMessage('Automatically added item to sack.');
+      }
+
     } catch(e) {
       player.sendClientMessage('Could not complete transaction.');
 
