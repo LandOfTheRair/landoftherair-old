@@ -322,7 +322,7 @@ export class SkillTree {
     player.unlearnSpell(skillName);
   }
 
-  public buyNode(player: Player, traitName: string) {
+  public buyNode(player: Player, traitName: string, autoLearn = false) {
 
     const ref = this.linkBuyableNodeToRealNode(traitName);
     if(!ref) return;
@@ -333,7 +333,7 @@ export class SkillTree {
 
     // is skill
     } else {
-      this.buySkill(player, ref.name);
+      this.buySkill(player, ref.name, autoLearn);
 
     }
 
@@ -350,8 +350,8 @@ export class SkillTree {
     player.increaseTraitLevel(realName, boost);
   }
 
-  private buySkill(player: Player, skillName: string): void {
-    player.sendClientMessage({ message: `You have learned the skill "${startCase(skillName)}"!`, extraData: { skillName } });
+  private buySkill(player: Player, skillName: string, autoLearn: boolean): void {
+    player.sendClientMessage({ message: `You have learned the skill "${startCase(skillName)}"!`, extraData: { skillName, autoLearn } });
     player.learnSpell(skillName);
     player.$$room.resetMacros(player);
   }

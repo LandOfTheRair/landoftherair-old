@@ -68,7 +68,11 @@ export class CharacterSelectComponent implements OnInit, OnDestroy {
   }
 
   invalidCharacterInfo() {
-    return this.invalidName() || (this.needsOverwrite && !this.confirmOverwrite) || !this.lobby.myCharacter.allegiance || !this.lobby.myCharacter.sex;
+    return this.invalidName()
+      || (this.needsOverwrite && !this.confirmOverwrite)
+      || !this.lobby.myCharacter.allegiance
+      || !this.lobby.myCharacter.baseClass
+      || !this.lobby.myCharacter.sex;
   }
 
   validateName() {

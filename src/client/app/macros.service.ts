@@ -112,7 +112,7 @@ export class MacroService {
 
     this.colyseusGame.gameCommand$.subscribe(({ action, ...other }) => {
       if(action === 'update_macros')     this.resetUsableMacros();
-      if(action === 'new_skill_learned') this.tryAddSkillToGroup(other.skillName);
+      if(action === 'new_skill_learned') this.tryAddSkillToGroup(other.skillName, other.autoLearn);
     });
   }
 
@@ -417,13 +417,9 @@ export class MacroService {
     this.allMacroGroups.default = ['Attack', 'Search', 'Drink', 'Stairs', 'Climb', 'Restore'];
   }
 
-  public tryAddSkillToGroup(skillName: string) {
-    (<any>swal)({
-      titleText: 'New Skill Learned',
-      text: `You have learned the skill ${_.startCase(skillName)}. Would you like to add it to a macro group?`,
-      showCancelButton: true,
-      confirmButtonText: 'Yes, add it!'
-    }).then(() => {
+  public tryAddSkillToGroup(skillName: string, autoLearn = false) {
+
+    const finish = () => {
       let wasAddedToExistingGroup = false;
 
       // try to add it to any existing group;
@@ -453,6 +449,20 @@ export class MacroService {
         this.addMacroGroup(`default ${newGroup}`);
         this.updateMacroGroup(`default ${newGroup}`, 0, skillName);
       }
+    };
+
+    if(autoLearn) {
+      finish();
+      return;
+    }
+
+    (<any>swal)({
+      titleText: 'New Skill Learned',
+      text: `You have learned the skill ${_.startCase(skillName)}. Would you like to add it to a macro group?`,
+      showCancelButton: true,
+      confirmButtonText: 'Yes, add it!'
+    }).then(() => {
+      finish();
     }).catch(() => {});
   }
 }

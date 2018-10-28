@@ -33,23 +33,47 @@
       <div class="modal-body">
 
         <div class="row">
-          <div class="col text-center">
-            <label for="name">
-              <h3>Name</h3>
-              <h6><em><small>(Your character will have one name, no spaces, 20 characters max)</small></em></h6>
-            </label>
-          </div>
-        </div>
+          <div class="col-8">
+            <div class="row">
+              <div class="col text-center">
+                <label for="name">
+                  <h3>Name</h3>
+                  <h6><em><small>(Your character will have one name, no spaces, 20 characters max)</small></em></h6>
+                </label>
+              </div>
+            </div>
 
-        <div class="row d-flex justify-content-center">
-          <div class="col-6">
-            <input class="form-control"
-                   placeholder="Enter a character name (letters only)..."
-                   maxlength="20"
-                   type="text"
-                   id="name"
-                   (keyup)="validateName()"
-                   [(ngModel)]="lobby.myCharacter.name" />
+            <div class="row d-flex justify-content-center">
+              <div class="col-8">
+                <input class="form-control"
+                       placeholder="Enter a character name (letters only)..."
+                       maxlength="20"
+                       type="text"
+                       id="name"
+                       (keyup)="validateName()"
+                       [(ngModel)]="lobby.myCharacter.name" />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="row">
+              <div class="col text-center">
+                <h3>Sex</h3>
+                <h6>&nbsp;</h6>
+              </div>
+            </div>
+
+            <div class="row mt-1 d-flex justify-content-center">
+              <div class="btn-group">
+                <label class="btn btn-info"
+                       *ngFor="let sex of ['Male', 'Female']"
+                       [btnRadio]="sex"
+                       [class.active]="sex === lobby.myCharacter.sex"
+                       (click)="getCharacter()"
+                       [(ngModel)]="lobby.myCharacter.sex">{{ sex }}</label>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -60,69 +84,90 @@
         </div>
 
         <div class="row mt-1 d-flex justify-content-center">
-          <div class="btn-group">
-            <label class="btn btn-info"
+          <div class="col-6 mb-3">
+            <label class="btn btn-info mr-2"
                    *ngFor="let allegiance of lobby.myCharacter._validAllegiances"
                    [btnRadio]="allegiance"
                    [class.active]="allegiance === lobby.myCharacter.allegiance"
                    (click)="getCharacter()"
                    [(ngModel)]="lobby.myCharacter.allegiance">{{ allegiance }}</label>
           </div>
-        </div>
 
-        <div class="row mt-3">
-          <div class="col text-center">
-            <h3>Sex</h3>
-          </div>
-        </div>
-
-        <div class="row mt-1 d-flex justify-content-center">
-          <div class="btn-group">
-            <label class="btn btn-info"
-                   *ngFor="let sex of ['Male', 'Female']"
-                   [btnRadio]="sex"
-                   [class.active]="sex === lobby.myCharacter.sex"
-                   (click)="getCharacter()"
-                   [(ngModel)]="lobby.myCharacter.sex">{{ sex }}</label>
+          <div class="col-6">
+            {{ lobby.myCharacter._allegianceDesc }}
           </div>
         </div>
 
         <div class="row mt-3">
-          <div class="col text-center">
-            <h3>Statistics</h3>
+          <div class="col-6">
+
+            <div class="row">
+              <div class="col text-center">
+                <h3>Class</h3>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col">
+                <label class="btn btn-info mr-2"
+                       *ngFor="let baseclass of lobby.myCharacter._validClasses"
+                       [btnRadio]="baseclass"
+                       [class.active]="baseclass === lobby.myCharacter.baseClass"
+                       (click)="getCharacter()"
+                       [(ngModel)]="lobby.myCharacter.baseClass">{{ baseclass }}</label>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col">
+                {{ lobby.myCharacter._classDesc }}
+              </div>
+            </div>
           </div>
+
+          <div class="col-6">
+
+            <div class="row">
+              <div class="col text-center">
+                <h3>Statistics</h3>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col">
+                <table class="table table-bordered">
+                  <tr>
+                    <td><strong>STR</strong> {{ lobby.myCharacter.str }}</td>
+                    <td><strong>DEX</strong> {{ lobby.myCharacter.dex }}</td>
+                    <td><strong>AGI</strong> {{ lobby.myCharacter.agi }}</td>
+                  </tr>
+
+                  <tr>
+                    <td><strong>INT</strong> {{ lobby.myCharacter.int }}</td>
+                    <td><strong>WIS</strong> {{ lobby.myCharacter.wis }}</td>
+                    <td><strong>WIL</strong> {{ lobby.myCharacter.wil }}</td>
+                  </tr>
+
+                  <tr>
+                    <td><strong>CON</strong> {{ lobby.myCharacter.con }}</td>
+                    <td><strong>LUK</strong> {{ lobby.myCharacter.luk }}</td>
+                    <td><strong>CHA</strong> {{ lobby.myCharacter.cha }}</td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="3" class="text-center"><strong>Gold</strong> {{ lobby.myCharacter.gold | number:0 }}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
         <div class="row mt-1">
 
           <div class="col-6">
-            <table class="table table-bordered">
-              <tr>
-                <td><strong>STR</strong> {{ lobby.myCharacter.str }}</td>
-                <td><strong>DEX</strong> {{ lobby.myCharacter.dex }}</td>
-                <td><strong>AGI</strong> {{ lobby.myCharacter.agi }}</td>
-              </tr>
-
-              <tr>
-                <td><strong>INT</strong> {{ lobby.myCharacter.int }}</td>
-                <td><strong>WIS</strong> {{ lobby.myCharacter.wis }}</td>
-                <td><strong>WIL</strong> {{ lobby.myCharacter.wil }}</td>
-              </tr>
-
-              <tr>
-                <td><strong>CON</strong> {{ lobby.myCharacter.con }}</td>
-                <td><strong>LUK</strong> {{ lobby.myCharacter.luk }}</td>
-                <td><strong>CHA</strong> {{ lobby.myCharacter.cha }}</td>
-              </tr>
-
-              <tr>
-                <td colspan="3" class="text-center"><strong>Gold</strong> {{ lobby.myCharacter.gold | number:0 }}</td>
-              </tr>
-            </table>
-          </div>
-
-          <div class="col-6">
-            {{ lobby.myCharacter._allegianceDesc }}
           </div>
 
         </div>

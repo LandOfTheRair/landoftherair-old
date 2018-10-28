@@ -359,6 +359,7 @@ export class Lobby extends Room<LobbyState> {
     const stats = pick(character, ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'con', 'luk', 'cha']);
     const name = character.name;
     const sex = character.sex;
+    const baseClass = character.baseClass;
     const gold = character.currentGold;
     const allegiance = character.allegiance;
 
@@ -366,7 +367,7 @@ export class Lobby extends Room<LobbyState> {
       username: account.username,
       createdAt: Date.now(),
       charSlot,
-      stats, sex, name, allegiance, gold,
+      stats, sex, name, allegiance, gold, baseClass,
       x: 14, y: 14, map: 'Tutorial'
     });
 

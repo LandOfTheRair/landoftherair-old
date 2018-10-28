@@ -1,5 +1,5 @@
 
-import { includes, truncate, capitalize, sampleSize } from 'lodash';
+import { includes, truncate, capitalize, sampleSize, sample } from 'lodash';
 import { Player } from '../../../shared/models/player';
 import { ItemCreator } from '../world/item-creator';
 import { SkillClassNames } from '../../../shared/models/character';
@@ -8,18 +8,26 @@ import { MessageHelper } from '../world/message-helper';
 
 export class CharacterCreator {
 
-  static alleiganceMods = {
+  static allegianceMods = {
     // None:         {},
     Pirates:      { str: 5,  dex: 2,           int: -2, wis: -3, wil: -1,          cha: -1, gold: 500  },
     Townsfolk:    { str: -1, dex: -1, agi: 1,                    wil: 1,                    gold: -300 },
     Royalty:      { str: -2, dex: -2, agi: -2, int: 2,  wis: 2,                    cha: 2,  gold: 3500 },
     Adventurers:  { str: 2,  dex: 2,  agi: -2, int: 2,  wis: 1,  wil: -1, luk: 1,  cha: 1 },
-    Wilderness:   { str: -2, dex: -2, agi: -2, int: 3,  wis: 3,  wil: 2 },
+    Wilderness:   { str: -2, dex: -2, agi: -2, int: 3,  wis: 3,  wil: 1,  luk: 1,  cha: -1 },
     Underground:  { str: 3,  dex: 3,  agi: 3,  int: -1, wis: -1,          luk: -1, cha: -2 }
   };
 
+  static classMods = {
+    Undecided: { luk: 1 },
+    Mage:      { int: 1 },
+    Thief:     { agi: 1 },
+    Healer:    { wis: 1 },
+    Warrior:   { str: 1 }
+  };
+
   static allegianceDesc = {
-    None:         'You have no particular affiliation. You specialize in nothing in particular, and are all-around fairly average.',
+    // None:         'You have no particular affiliation. You specialize in nothing in particular, and are all-around fairly average.',
     Pirates:      'Yarr. Ye be strong and dextrous, but what ye make up in physical, ye lack in the mental. At least ye get some gold, aye?',
     Townsfolk:    'You happen to be a person of the town. You may not be used to defending your town, but you can dodge a thrown milk can.',
     Royalty:      'You may never have picked up a sword in your life, but you are very well read, knowledgable, and wealthy.',
@@ -30,17 +38,32 @@ export class CharacterCreator {
     You have not seen yourself since you were young, so your appearance is lacking.`
   };
 
+  static classDesc = {
+    Undecided: 'You don\'t know what you want to do, but you do know you want to go on an adventure!',
+    Mage: 'You want to fling magic at your enemies, using a combination of energy, fire, and frost.',
+    Thief: 'You want to hide from your enemies, throwing daggers at them, having them set off traps, and shooting arrows at them.',
+    Healer: 'You want to keep your allies (and yourself) alive while using dark arts to combat your foes.',
+    Warrior: 'You want to pick up a weapon and swing it at your foes.'
+  };
+
   static validAllegiances() {
-    return Object.keys(this.alleiganceMods);
+    return Object.keys(this.allegianceDesc);
+  }
+
+  static validClasses() {
+    return Object.keys(this.classDesc);
   }
 
   static getDefaultCharacter() {
     return {
       name: '',
       allegiance: '',
+      baseClass: '',
       sex: '',
       _validAllegiances: this.validAllegiances(),
+      _validClasses: this.validClasses(),
       _allegianceDesc: 'Placeholder',
+      _classDesc: 'Placeholder',
 
       str: 10,
       dex: 10,
@@ -58,17 +81,22 @@ export class CharacterCreator {
     };
   }
 
-  static getCustomizedCharacter({ allegiance, sex, name }) {
+  static getCustomizedCharacter({ allegiance, sex, name, baseClass }) {
     const char = this.getDefaultCharacter();
     char.allegiance = allegiance;
     char.sex = sex;
+    char.baseClass = baseClass;
 
     if(!name) name = '';
 
     if(MessageHelper.hasAnyPossibleProfanity(name)) name = '';
 
     if(!includes(this.validAllegiances(), char.allegiance)) {
-      char.allegiance = '';
+      char.allegiance = sample(this.validAllegiances());
+    }
+
+    if(!includes(this.validClasses(), char.baseClass)) {
+      char.baseClass = 'Undecided';
     }
 
     if(!includes(['Male', 'Female'], char.sex)) {
@@ -78,11 +106,18 @@ export class CharacterCreator {
     char.name = capitalize(truncate(name.replace(/[^a-zA-Z]/g, ''), { length: 20, omission: '' }));
 
     char._allegianceDesc = this.allegianceDesc[char.allegiance];
+    char._classDesc = this.classDesc[char.baseClass];
 
-    const allegianceMod = this.alleiganceMods[char.allegiance] || {};
+    const allegianceMod = this.allegianceMods[char.allegiance] || {};
 
     Object.keys(allegianceMod).forEach(key => {
       char[key] += allegianceMod[key];
+    });
+
+    const classMod = this.classMods[char.baseClass] || {};
+
+    Object.keys(classMod).forEach(key => {
+      char[key] += classMod[key];
     });
 
     return char;

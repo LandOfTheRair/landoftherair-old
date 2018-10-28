@@ -731,13 +731,6 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
       player.changeBaseClass(npc.classTrain);
 
-      player.skillTree.calculateNewTPFromSkills(player);
-      player.skillTree.syncWithPlayer(player);
-      player.$$room.updateSkillTree(player);
-
-      if(player.baseClass === 'Mage')   player.skillTree.buyNode(player, 'MagicMissile');
-      if(player.baseClass === 'Healer') player.skillTree.buyNode(player, 'Afflict');
-
       return `Good luck on your journeys!`;
     });
 

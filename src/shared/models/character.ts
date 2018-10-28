@@ -1018,6 +1018,8 @@ export class Character {
   changeBaseClass(newClass) {
     this.baseClass = newClass;
     Classes[this.baseClass].becomeClass(this);
+    this.$$room.givePlayerBasicAbilities(this);
+
   }
 
   kill(dead: Character, opts: { isPetKill: boolean } = { isPetKill: false }) {}

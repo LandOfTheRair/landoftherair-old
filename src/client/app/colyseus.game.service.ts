@@ -426,7 +426,7 @@ export class ColyseusGameService {
     }
 
     if(extraData && extraData.skillName) {
-      this.gameCommand$.next({ action: 'new_skill_learned', skillName: extraData.skillName });
+      this.gameCommand$.next({ action: 'new_skill_learned', skillName: extraData.skillName, autoLearn: extraData.autoLearn });
     }
 
     if(!this.overrideNoSfx && sfx) {

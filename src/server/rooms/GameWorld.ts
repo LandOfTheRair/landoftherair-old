@@ -398,7 +398,7 @@ export class GameWorld extends Room<GameState> {
     this.clock.setTimeout(() => {
 
       if(this.mapName === 'Tutorial') {
-        player.sendClientMessage('Welcome to Land of the Rair!');
+        this.givePlayerBasicAbilities(player);
         this.sendTo(client, { action: 'take_tour' });
       }
 
@@ -1187,6 +1187,17 @@ export class GameWorld extends Room<GameState> {
 
   public broadcastBoughtListing(listingId: string) {
     this.broadcast({ action: 'mb_bought', listingId });
+  }
+
+  public givePlayerBasicAbilities(player: Player) {
+    if(Object.keys(player.skillTree.nodesClaimed).length > 0) return;
+
+    player.skillTree.calculateNewTPFromSkills(player);
+    player.skillTree.syncWithPlayer(player);
+    player.$$room.updateSkillTree(player);
+
+    if(player.baseClass === 'Mage')   player.skillTree.buyNode(player, 'MagicMissile', true);
+    if(player.baseClass === 'Healer') player.skillTree.buyNode(player, 'Afflict', true);
   }
 
 }
