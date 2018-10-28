@@ -1,4 +1,6 @@
 
+import { includes } from 'lodash';
+
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { StatName } from '../../../../shared/models/character';
@@ -22,7 +24,7 @@ export class ShowStats extends Command {
     player.sendClientMessage(`Your allegiance lies with ${player.allegiance === 'None' ? 'no one' : `the ${player.allegiance}`}.`);
 
     const baseKeys = args
-      ? Object.keys(player.baseStats)
+      ? Object.keys(player.baseStats).filter(x => !includes(x, 'Bonus'))
       : ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'luk', 'con', 'cha', 'hp', 'mp', 'offense', 'defense', 'armorClass'];
 
     baseKeys.forEach((key: StatName) => {

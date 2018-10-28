@@ -18,6 +18,8 @@
     wis: 3
     defense: 4
     mpregen: 10
+    conjurationBonus: 2
+    restorationBonus: 2
   tier: 5
   type: Staff
   value: 9567

@@ -1203,7 +1203,7 @@ export class Character {
   }
 
   calcSkillLevel(type: string) {
-    return SkillHelper.calcSkillLevel(this, type);
+    return SkillHelper.calcSkillLevel(this, type) + this.getTotalStat(<StatName>`${type.toLowerCase()}Bonus`);
   }
 
   applyEffect(effect: Effect) {
