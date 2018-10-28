@@ -462,8 +462,13 @@ export class Game {
 
         const numItemsHere = Object.keys(itemPatchY).length;
         Object.keys(itemPatchY).forEach(itemType => {
-          if(itemPatchY[itemType].length === 0) return;
-          if(itemType === 'Coin' && numItemsHere > 1) return;
+          const hasTreasureSprite = get(this.goldSprites, [x, y]);
+
+          // if we have a treasure sprite, we need to try to update it
+          if(itemPatchY[itemType].length === 0 || (itemType === 'Coin' && numItemsHere > 1)) {
+            if(hasTreasureSprite) this.createTreasureSprite(x, y);
+            return;
+          }
 
           const item = itemPatchY[itemType][0];
 
