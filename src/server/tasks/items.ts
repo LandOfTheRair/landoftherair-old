@@ -219,7 +219,13 @@ class ItemLoader {
 
     if(item.stats) {
       const statsTest = new Stats();
-      const invalidStats = difference(Object.keys(item.stats), Object.keys(statsTest));
+      let invalidStats = difference(Object.keys(item.stats), Object.keys(statsTest));
+
+      invalidStats = invalidStats.filter(x => {
+        if(!includes(x, 'Bonus')) return true;
+        return !includes(ValidSkillNames, capitalize(x.substring(0, x.indexOf('Bonus'))));
+      });
+
       if(invalidStats.length > 0 && invalidStats[0] !== 'effect') {
         console.error(`ERROR: ${item.name} has invalid stats: ${invalidStats.join(', ')}`);
         hasBad = true;
