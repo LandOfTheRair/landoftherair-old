@@ -45,7 +45,7 @@ class FloatingBox {
     if(this.isRemoved) return;
 
     this.isRemoved = true;
-    this.el.parentNode.removeChild(this.el);
+    if(this.el) this.el.parentNode.removeChild(this.el);
   }
 }
 
