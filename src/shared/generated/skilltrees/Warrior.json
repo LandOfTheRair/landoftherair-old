@@ -951,7 +951,7 @@
     "UnarmoredSavant0": {
         "name": "UnarmoredSavant0",
         "traitName": "UnarmoredSavant",
-        "desc": "Gain a 40% bonus to mitigation if you are using a robe or cloak in your main armor slot.",
+        "desc": "Gain a 40% bonus to mitigation if you are using a fur, robe, or cloak in your main armor slot.",
         "icon": "robe",
         "capstone": true,
         "cost": 30,
