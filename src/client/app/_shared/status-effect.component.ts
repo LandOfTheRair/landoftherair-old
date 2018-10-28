@@ -55,6 +55,7 @@ import { startCase } from 'lodash';
                   [name]="effect.iconData.name"
                   size="small"
                   container="body"
+                  placement="auto"
                   [tooltip]="effectTooltipTemplate"></app-icon>
         
         <ng-template #effectTooltipTemplate>
