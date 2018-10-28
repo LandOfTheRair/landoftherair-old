@@ -111,9 +111,6 @@ export class ItemComponent {
   public overrideValue: number|string;
 
   @Input()
-  public tooltipPlacement = 'auto';
-
-  @Input()
   public size: 'xsmall' | 'small' | 'normal' = 'normal';
 
   public scopes: string[] = [];
