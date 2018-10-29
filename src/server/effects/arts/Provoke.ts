@@ -10,7 +10,7 @@ export class Provoke extends WeaponEffect {
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     caster.sendClientMessage(`You provoke ${target.name}!`);
-    target.sendClientMessage(`${caster.name} provoked you!`);
+    target.sendClientMessage({ message: `${caster.name} provoked you!`, target: caster.uuid });
 
     this.potency = caster.rightHand ? caster.calcSkillLevel(caster.rightHand.type) : 1;
     target.addAgroOverTop(caster, 25 * this.potency);
