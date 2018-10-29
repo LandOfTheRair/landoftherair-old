@@ -3,7 +3,7 @@ import { ClientGameState } from './clientgamestate';
 import * as swal from 'sweetalert2';
 import * as fileSaver from 'file-saver';
 
-import { Subject } from 'rxjs';
+import { Subject, timer } from 'rxjs';
 
 import { find, includes, findIndex, extend, startsWith, capitalize, isNumber, isUndefined } from 'lodash';
 import { Player } from '../../shared/models/player';
@@ -1080,7 +1080,7 @@ export class ColyseusGameService {
     let currentMacro: any = {};
     this.currentlySelectedMacro$.subscribe(mac => currentMacro = mac);
 
-    setInterval(() => {
+    timer(0, 1000).subscribe(() => {
 
       // if no macro, not in game, no target - bail
       if(!currentMacro || !currentMacro.macro || !this.inGame || !this.currentTarget || !this.autoAttack) return;
@@ -1096,6 +1096,6 @@ export class ColyseusGameService {
       for(let i = 0; i < actSpeed; i++) {
         this.sendCommandString(currentMacro.macro, this.currentTarget, false);
       }
-    }, 1000);
+    });
   }
 }
