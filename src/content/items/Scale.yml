@@ -8,3 +8,13 @@
   sprite: 965
   desc: "a refined crimson scale tainted by ether mist"
   value: 500
+
+- name: Silver Scale
+  sprite: 967
+  desc: "a shining silver scale"
+  value: 100
+
+- name: Silver Scale (Refined)
+  sprite: 967
+  desc: "a refined shining silver scale"
+  value: 500

@@ -23,7 +23,9 @@ export enum MaterialSlot {
   RisanBranch = 17,
   RisanFrozenTwig = 18,
   FrostlandsGourd = 19,
-  CatacombsFrostflower = 20
+  CatacombsFrostflower = 20,
+  SilverScale = 21,
+  SilverScaleRefined = 22
 }
 
 // the valid items for deposit and the slot they map to
@@ -51,7 +53,9 @@ export const ValidMaterialItems = {
   'Risan Branch': MaterialSlot.RisanBranch,
   'Risan Frozen Twig': MaterialSlot.RisanFrozenTwig,
   'Frostlands Gourd': MaterialSlot.FrostlandsGourd,
-  'Catacombs Frostflower': MaterialSlot.CatacombsFrostflower
+  'Catacombs Frostflower': MaterialSlot.CatacombsFrostflower,
+  'Silver Scale': MaterialSlot.SilverScale,
+  'Silver Scale (Refined)': MaterialSlot.SilverScaleRefined
 };
 
 export const ReverseValidItems = invertBy(ValidMaterialItems);
@@ -77,7 +81,9 @@ export const MaterialSlotInfo = {
   [MaterialSlot.RisanBranch]:           { sprite: 1008, withdrawInOunces: false },
   [MaterialSlot.RisanFrozenTwig]:       { sprite: 283,  withdrawInOunces: false },
   [MaterialSlot.FrostlandsGourd]:       { sprite: 840,  withdrawInOunces: false },
-  [MaterialSlot.CatacombsFrostflower]:  { sprite: 745,  withdrawInOunces: false }
+  [MaterialSlot.CatacombsFrostflower]:  { sprite: 745,  withdrawInOunces: false },
+  [MaterialSlot.SilverScale]:           { sprite: 967,  withdrawInOunces: false },
+  [MaterialSlot.SilverScaleRefined]:    { sprite: 967,  withdrawInOunces: false }
 };
 
 // these *can* be changed to adjust the layout of the slots
@@ -93,8 +99,8 @@ const FLOWER_LAYOUT = [
 ];
 
 const SCALE_LAYOUT = [
-  MaterialSlot.RedEtherScale, null, null, null, null,
-  MaterialSlot.RedEtherScaleRefined, null, null, null, null
+  MaterialSlot.RedEtherScale, MaterialSlot.SilverScale, null, null, null,
+  MaterialSlot.RedEtherScaleRefined, MaterialSlot.SilverScaleRefined, null, null, null
 ];
 
 export const MaterialStorageLayout = [

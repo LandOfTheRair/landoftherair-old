@@ -1,0 +1,77 @@
+
+
+- npcId: Catacombs Frost Dragon
+  name: dragon
+  sprite: 475
+  baseClass: Mage
+  allegiance: Enemy
+  alignment: Evil
+  hostility: Always
+  monsterClass: Dragon
+  stats: 25
+  skillLevels: 13
+  level: 25
+
+  otherStats:
+    int: 30
+    armorClass: 85
+    offense: 20
+    defense: 15
+    perception: 250
+
+  gear:
+    Armor: Catacombs Silver Dragon Scale Tunic
+    Hands: Mines Animal Claws
+
+  traitLevels:
+    SterlingArmor: 15
+    HolyProtection: 15
+    IceMistWiden: 4
+
+  skillOnKill: 500
+
+  usableSkills:
+    - IceMist
+    - ChillBiteStrong
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0
+
+  gold:
+    min: 32350
+    max: 33500
+
+  hp:
+    min: 7500000
+    max: 7500000
+
+  mp:
+    min: 105000
+    max: 105000
+
+  giveXp:
+    min: 1362000
+    max: 1365000
+
+  drops:
+    - result: Risan Frost Larimar
+      chance: 1
+      maxChance: 10
+    - result: Silver Scale
+      chance: 1
+      maxChance: 1
+
+  tansFor: Catacombs Silver Dragon Scale Tunic
+  tanSkillRequired: 25
+
+  spawnMessage: "a billowing gust of wind displaced by a strong crunching sound"
+  leashMessage: "a billowing gust of wind displaced by a strong crunching sound"
+  sfx: "dragon"
+  sfxMaxChance: 1

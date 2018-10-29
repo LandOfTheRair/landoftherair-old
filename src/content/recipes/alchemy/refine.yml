@@ -30,3 +30,15 @@
   ingredients:
     - Ether Scale (Refined)
     - Risan Frost Larimar
+
+- item: Silver Scale (Refined)
+  skillGained: 500
+  maxSkillForGains: 15
+  requiredSkill: 7
+  xpGained: 10000
+  ingredients:
+    - Silver Scale
+    - Silver Scale
+    - Silver Scale
+    - Silver Scale
+    - Silver Scale

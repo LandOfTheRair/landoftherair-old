@@ -1,0 +1,25 @@
+
+
+- name: Silver Dragon Scale Tunic
+  stats:
+    armorClass: 24
+    defense: 3
+    offense: 3
+    iceResist: 100
+  requirements:
+    level: 14
+  desc: "a tunic crafted from the silky scales of a silver dragon"
+  value: 3502
+  sprite: 302
+
+- name: Catacombs Silver Dragon Scale Tunic
+  stats:
+    armorClass: 35
+    defense: 3
+    offense: 3
+    iceResist: 400
+  requirements:
+    level: 25
+  desc: "a tunic tanned from the silky scales of a silver dragon"
+  value: 4502
+  sprite: 302

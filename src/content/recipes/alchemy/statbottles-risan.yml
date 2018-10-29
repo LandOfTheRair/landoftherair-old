@@ -1,0 +1,76 @@
+
+
+- item: Risan Strength Potion
+  skillGained: 1000
+  maxSkillForGains: 17
+  requiredSkill: 8
+  xpGained: 15000
+  ingredients:
+    - Silver Scale (Refined)
+    - Antanian Bottle of Water
+    - Bradley Constitution Potion
+    - Catacombs Raw Garnet
+    - Frostlands Gourd
+    - Frostlands Gourd
+    - Catacombs Frostflower
+    - Catacombs Frostflower
+
+- item: Antanian Dexterity Potion
+  skillGained: 1000
+  maxSkillForGains: 17
+  requiredSkill: 8
+  xpGained: 15000
+  ingredients:
+    - Silver Scale (Refined)
+    - Antanian Bottle of Water
+    - Bradley Constitution Potion
+    - Catacombs Raw Amber
+    - Frostlands Gourd
+    - Frostlands Gourd
+    - Catacombs Frostflower
+    - Catacombs Frostflower
+
+- item: Antanian Intelligence Potion
+  skillGained: 1000
+  maxSkillForGains: 17
+  requiredSkill: 8
+  xpGained: 15000
+  ingredients:
+    - Silver Scale (Refined)
+    - Antanian Bottle of Water
+    - Bradley Constitution Potion
+    - Catacombs Raw Topaz
+    - Frostlands Gourd
+    - Frostlands Gourd
+    - Catacombs Frostflower
+    - Catacombs Frostflower
+
+- item: Antanian Wisdom Potion
+  skillGained: 1000
+  maxSkillForGains: 17
+  requiredSkill: 8
+  xpGained: 15000
+  ingredients:
+    - Silver Scale (Refined)
+    - Antanian Bottle of Water
+    - Bradley Constitution Potion
+    - Catacombs Raw Turquoise
+    - Frostlands Gourd
+    - Frostlands Gourd
+    - Catacombs Frostflower
+    - Catacombs Frostflower
+
+- item: Antanian Agility Potion
+  skillGained: 1000
+  maxSkillForGains: 17
+  requiredSkill: 8
+  xpGained: 15000
+  ingredients:
+    - Silver Scale (Refined)
+    - Antanian Bottle of Water
+    - Bradley Constitution Potion
+    - Catacombs Raw Tourmaline
+    - Frostlands Gourd
+    - Frostlands Gourd
+    - Catacombs Frostflower
+    - Catacombs Frostflower
