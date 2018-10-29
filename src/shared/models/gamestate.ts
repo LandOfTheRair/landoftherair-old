@@ -581,6 +581,7 @@ export class GameState {
 
     const swimTile = mapLayers[MapLayer.Fluids].data[playerOffset];
     const swimInfo = GetSwimLevel(swimTile);
+
     if(swimInfo) {
       player.$$swimElement = swimInfo.element;
       player.swimLevel = swimInfo.swimLevel;
