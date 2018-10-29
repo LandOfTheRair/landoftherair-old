@@ -1,5 +1,5 @@
 
-import { compact, get } from 'lodash';
+import { compact, get, pull } from 'lodash';
 
 import { SkillClassNames } from '../../../shared/models/character';
 import { Player } from '../../../shared/models/player';
@@ -11,11 +11,20 @@ export class AlchemyHelper {
     const playerSkill = player.calcSkillLevel(SkillClassNames.Alchemy);
 
     const reagentNames = compact(reagents.map(x => x ? x.name : null));
-    const recipeMatch = await player.$$room.itemCreator.getRecipe({
+    let recipeMatch = await player.$$room.itemCreator.getRecipe({
       recipeType: 'alchemy',
       ingredients: { $all: reagentNames, $size: reagentNames.length },
       requiredSkill: { $lte: playerSkill }
     });
+
+    if(recipeMatch) {
+      const ingredients = recipeMatch.ingredients.sort();
+      const alchemyItems = reagentNames.sort();
+
+      for(let i = 0; i < ingredients.length; i++) {
+        if(ingredients[i] !== alchemyItems[i]) recipeMatch = null;
+      }
+    }
 
     let returnedItem = null;
 
