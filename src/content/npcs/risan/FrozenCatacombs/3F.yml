@@ -673,7 +673,7 @@
 - npcId: Catacombs Spectre 3F
   name: spectre archer
   monsterClass: Undead
-  sprite: 945
+  sprite: 970
   allegiance: Enemy
   alignment: Evil
   baseClass: Thief

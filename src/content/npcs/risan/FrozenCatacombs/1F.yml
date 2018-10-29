@@ -555,7 +555,7 @@
 - npcId: Catacombs Spectre 1F
   name: spectre bowyer
   monsterClass: Undead
-  sprite: 945
+  sprite: 970
   allegiance: Enemy
   alignment: Evil
   baseClass: Thief

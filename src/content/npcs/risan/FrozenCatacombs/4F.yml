@@ -684,7 +684,7 @@
 - npcId: Catacombs Spectre 4F
   name: spectre composite
   monsterClass: Undead
-  sprite: 945
+  sprite: 970
   allegiance: Enemy
   alignment: Evil
   baseClass: Thief

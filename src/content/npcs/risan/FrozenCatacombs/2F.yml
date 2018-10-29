@@ -639,7 +639,7 @@
 - npcId: Catacombs Spectre 2F
   name: spectre ranger
   monsterClass: Undead
-  sprite: 945
+  sprite: 970
   allegiance: Enemy
   alignment: Evil
   baseClass: Thief
