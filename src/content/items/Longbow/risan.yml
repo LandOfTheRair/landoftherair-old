@@ -6,7 +6,7 @@
   type: Ranged
   value: 8500
   sprite: 200
-  
+
   requirements:
     level: 15
 
@@ -18,7 +18,7 @@
     accuracy: 3
   type: Ranged
   value: 12390
-  sprite: 47
+  sprite: 444
 
   requirements:
     level: 25
@@ -31,7 +31,7 @@
     accuracy: 3
   type: Ranged
   value: 22390
-  sprite: 47
+  sprite: 444
 
   requirements:
     level: 30
@@ -44,7 +44,7 @@
     accuracy: 4
   type: Ranged
   value: 32390
-  sprite: 47
+  sprite: 444
 
   requirements:
     level: 35
@@ -57,7 +57,7 @@
     accuracy: 5
   type: Ranged
   value: 42390
-  sprite: 47
+  sprite: 444
 
   requirements:
     level: 40
@@ -70,7 +70,7 @@
     accuracy: 6
   type: Ranged
   value: 52390
-  sprite: 47
+  sprite: 444
 
   requirements:
     level: 45

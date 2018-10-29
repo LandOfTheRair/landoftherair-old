@@ -60,7 +60,7 @@
   tier: 6
   type: Dagger
   value: 12185
-  sprite: 205
+  sprite: 411
 
   requirements:
     level: 25
@@ -75,7 +75,7 @@
   tier: 6
   type: Dagger
   value: 22185
-  sprite: 205
+  sprite: 411
 
   requirements:
     level: 30
@@ -90,7 +90,7 @@
   tier: 7
   type: Dagger
   value: 32185
-  sprite: 205
+  sprite: 411
 
   requirements:
     level: 35
@@ -105,7 +105,7 @@
   tier: 7
   type: Dagger
   value: 42185
-  sprite: 205
+  sprite: 411
 
   requirements:
     level: 40
@@ -120,7 +120,7 @@
   tier: 8
   type: Dagger
   value: 52185
-  sprite: 205
+  sprite: 411
 
   requirements:
     level: 25

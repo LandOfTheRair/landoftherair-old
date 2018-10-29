@@ -10,7 +10,7 @@
     armorClass: 2
     str: 1
   value: 4000
-  sprite: 891
+  sprite: 463
   binds: true
 
   requirements:
@@ -26,7 +26,7 @@
     armorClass: 4
     str: 2
   value: 8000
-  sprite: 891
+  sprite: 463
   binds: true
 
   requirements:
@@ -42,7 +42,7 @@
     armorClass: 6
     str: 3
   value: 12000
-  sprite: 891
+  sprite: 463
   binds: true
 
   requirements:
@@ -58,7 +58,7 @@
     armorClass: 8
     str: 4
   value: 16000
-  sprite: 891
+  sprite: 463
   binds: true
 
   requirements:
@@ -74,7 +74,7 @@
     armorClass: 10
     str: 5
   value: 20000
-  sprite: 891
+  sprite: 463
   binds: true
 
   requirements:
