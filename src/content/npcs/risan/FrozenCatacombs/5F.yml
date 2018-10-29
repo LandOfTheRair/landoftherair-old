@@ -13,6 +13,11 @@
 
   otherStats:
     perception: 350
+    offense: 50
+    accuracy: 50
+    armorClass: 60
+    defense: 60
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Longsword 5F
@@ -132,6 +137,11 @@
 
   otherStats:
     perception: 350
+    offense: 50
+    accuracy: 50
+    armorClass: 60
+    defense: 60
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Greatsword 5F
@@ -230,6 +240,10 @@
 
   otherStats:
     perception: 350
+    offense: 50
+    accuracy: 50
+    armorClass: 60
+    defense: 60
 
   rightHand:
     - result: Catacombs Mace 5F
@@ -356,6 +370,10 @@
 
   otherStats:
     perception: 350
+    offense: 50
+    accuracy: 50
+    armorClass: 60
+    defense: 60
 
   rightHand:
     - result: Catacombs Staff 5F
@@ -467,6 +485,11 @@
 
   otherStats:
     perception: 350
+    offense: 50
+    accuracy: 50
+    armorClass: 60
+    defense: 80
+    damageFactor: 0.4
 
   leftHand:
     - result: none
@@ -477,7 +500,7 @@
       chance: 1
 
   gear:
-    Armor: Frostlands Trash Breastplate
+    Armor: Risan Trash Tunic
 
     Robe1:
       - result: none
@@ -568,6 +591,11 @@
   otherStats:
     stealth: 150
     perception: 350
+    offense: 50
+    accuracy: 50
+    armorClass: 60
+    defense: 60
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Dagger 5F
@@ -691,7 +719,7 @@
 - npcId: Catacombs Spectre 5F
   name: spectre sagittarius
   monsterClass: Undead
-  sprite: 970
+  sprite: 305
   allegiance: Enemy
   alignment: Evil
   baseClass: Thief
@@ -703,6 +731,11 @@
   otherStats:
     stealth: 150
     perception: 350
+    offense: 50
+    accuracy: 50
+    armorClass: 60
+    defense: 60
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Longbow 5F

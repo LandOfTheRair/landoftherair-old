@@ -13,6 +13,11 @@
 
   otherStats:
     perception: 300
+    offense: 40
+    accuracy: 40
+    armorClass: 50
+    defense: 50
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Longsword 4F
@@ -132,6 +137,11 @@
 
   otherStats:
     perception: 300
+    offense: 40
+    accuracy: 40
+    armorClass: 50
+    defense: 50
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Greatsword 4F
@@ -230,6 +240,10 @@
 
   otherStats:
     perception: 300
+    offense: 40
+    accuracy: 40
+    armorClass: 50
+    defense: 50
 
   rightHand:
     - result: Catacombs Mace 4F
@@ -355,6 +369,10 @@
 
   otherStats:
     perception: 300
+    offense: 40
+    accuracy: 40
+    armorClass: 50
+    defense: 50
 
   rightHand:
     - result: Catacombs Staff 4F
@@ -462,6 +480,11 @@
 
   otherStats:
     perception: 300
+    offense: 40
+    accuracy: 40
+    armorClass: 50
+    defense: 70
+    damageFactor: 0.4
 
   leftHand:
     - result: none
@@ -472,7 +495,7 @@
       chance: 1
 
   gear:
-    Armor: Frostlands Trash Breastplate
+    Armor: Risan Trash Tunic
 
     Robe1:
       - result: none
@@ -562,6 +585,11 @@
   otherStats:
     stealth: 150
     perception: 300
+    offense: 40
+    accuracy: 40
+    armorClass: 50
+    defense: 50
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Dagger 4F
@@ -684,7 +712,7 @@
 - npcId: Catacombs Spectre 4F
   name: spectre composite
   monsterClass: Undead
-  sprite: 970
+  sprite: 305
   allegiance: Enemy
   alignment: Evil
   baseClass: Thief
@@ -696,6 +724,11 @@
   otherStats:
     stealth: 150
     perception: 300
+    offense: 40
+    accuracy: 40
+    armorClass: 50
+    defense: 50
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Longbow 4F

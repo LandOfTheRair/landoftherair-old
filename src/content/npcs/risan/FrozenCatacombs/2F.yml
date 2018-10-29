@@ -12,7 +12,12 @@
   level: 30
 
   otherStats:
+    offense: 20
+    accuracy: 20
     perception: 225
+    armorClass: 30
+    defense: 30
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Longsword 2F
@@ -117,7 +122,12 @@
   level: 30
 
   otherStats:
+    offense: 20
+    accuracy: 20
     perception: 225
+    armorClass: 30
+    defense: 30
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Greatsword 2F
@@ -213,6 +223,8 @@
 
   otherStats:
     perception: 225
+    armorClass: 30
+    defense: 30
 
   rightHand:
     - result: Catacombs Mace 2F
@@ -331,6 +343,8 @@
 
   otherStats:
     perception: 225
+    armorClass: 30
+    defense: 30
 
   rightHand:
     - result: Catacombs Staff 2F
@@ -427,7 +441,12 @@
   level: 30
 
   otherStats:
+    offense: 20
+    accuracy: 20
     perception: 225
+    armorClass: 30
+    defense: 50
+    damageFactor: 0.4
 
   leftHand:
     - result: none
@@ -438,7 +457,7 @@
       chance: 1
 
   gear:
-    Armor: Frostlands Trash Breastplate
+    Armor: Risan Trash Tunic
 
     Robe1:
       - result: none
@@ -527,7 +546,12 @@
 
   otherStats:
     stealth: 75
+    offense: 20
+    accuracy: 20
     perception: 225
+    armorClass: 30
+    defense: 30
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Dagger 2F
@@ -639,7 +663,7 @@
 - npcId: Catacombs Spectre 2F
   name: spectre ranger
   monsterClass: Undead
-  sprite: 970
+  sprite: 305
   allegiance: Enemy
   alignment: Evil
   baseClass: Thief
@@ -650,7 +674,12 @@
 
   otherStats:
     stealth: 75
+    offense: 20
+    accuracy: 20
     perception: 225
+    armorClass: 30
+    defense: 30
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Longbow 2F

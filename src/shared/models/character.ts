@@ -157,6 +157,7 @@ export class Stats {
   diseaseResist? = 0;
 
   actionSpeed? = 1;
+  damageFactor? = 1;
 }
 
 export type MonsterClass = 'Undead' | 'Beast' | 'Humanoid' | 'Dragon';
@@ -169,7 +170,7 @@ export type StatName =
 | 'magicalDamageBoost' | 'physicalDamageBoost' | 'healingBoost' | 'physicalDamageReflect' | 'magicalDamageReflect'
 | 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist'
 | 'poisonResist' | 'diseaseResist'
-| 'actionSpeed';
+| 'actionSpeed' | 'damageFactor';
 
 export const MaxSizes = {
   Belt: 5,

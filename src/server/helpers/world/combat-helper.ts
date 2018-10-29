@@ -1093,6 +1093,14 @@ export class CombatHelper {
 
     if(isWeak && RollerHelper.XInOneHundred(defender.getTraitLevelAndUsageModifier('SterlingArmor'))) damage = 0;
 
+    const damageFactor = attacker.getTotalStat('damageFactor');
+    damage = Math.floor(damage * damageFactor);
+
+    if(isNaN(damage)) damage = 0;
+
+    damage = Math.floor(damage);
+
+    // DAMAGE CAN NOT BE MODIFIED PAST THIS POINT
     const absDmg = Math.round(Math.abs(damage));
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;
 
@@ -1150,10 +1158,6 @@ export class CombatHelper {
         damage, damageClass
       }));
     }
-
-    if(isNaN(damage)) damage = 0;
-
-    damage = Math.floor(damage);
     defender.hp.sub(damage);
 
     if(isNaN(defender.hp.total)) {

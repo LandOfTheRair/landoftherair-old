@@ -12,7 +12,12 @@
   level: 25
 
   otherStats:
+    offense: 15
+    accuracy: 15
     perception: 200
+    armorClass: 20
+    defense: 20
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Longsword 1F
@@ -108,7 +113,12 @@
   level: 25
 
   otherStats:
+    offense: 15
+    accuracy: 15
     perception: 200
+    armorClass: 20
+    defense: 20
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Greatsword 1F
@@ -195,6 +205,7 @@
 
   otherStats:
     perception: 200
+    defense: 30
 
   rightHand:
     - result: Catacombs Mace 1F
@@ -297,6 +308,7 @@
 
   otherStats:
     perception: 200
+    defense: 20
 
   rightHand:
     - result: Catacombs Staff 1F
@@ -383,11 +395,16 @@
   baseClass: Warrior
   hostility: Always
   stats: 20
-  skillLevels: 9
+  skillLevels: 8
   level: 25
 
   otherStats:
     perception: 200
+    offense: 15
+    accuracy: 15
+    armorClass: 20
+    defense: 40
+    damageFactor: 0.4
 
   leftHand:
     - result: none
@@ -398,7 +415,7 @@
       chance: 1
 
   gear:
-    Armor: Frostlands Trash Breastplate
+    Armor: Risan Trash Tunic
 
     Robe1:
       - result: none
@@ -470,13 +487,18 @@
   alignment: Evil
   baseClass: Thief
   hostility: Always
-  stats: 20
-  skillLevels: 10
+  stats: 10
+  skillLevels: 9
   level: 25
 
   otherStats:
     stealth: 50
     perception: 200
+    offense: 15
+    accuracy: 15
+    armorClass: 20
+    defense: 20
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Dagger 1F
@@ -555,18 +577,23 @@
 - npcId: Catacombs Spectre 1F
   name: spectre bowyer
   monsterClass: Undead
-  sprite: 970
+  sprite: 305
   allegiance: Enemy
   alignment: Evil
   baseClass: Thief
   hostility: Always
-  stats: 20
-  skillLevels: 10
+  stats: 15
+  skillLevels: 6
   level: 25
 
   otherStats:
     stealth: 50
     perception: 200
+    offense: 15
+    accuracy: 15
+    armorClass: 20
+    defense: 20
+    damageFactor: 0.2
 
   rightHand:
     - result: Catacombs Longbow 1F

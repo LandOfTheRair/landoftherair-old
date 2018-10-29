@@ -15575,26 +15575,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3290,
-                 "name":"Nightwalker 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2752,
-                 "y":2688
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3291,
                  "name":"Nightwalker 1F Spawner",
                  "properties":
@@ -15609,28 +15589,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":2560,
-                 "y":2560
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3292,
-                 "name":"Nightwalker 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2752,
-                 "y":2368
+                 "x":2624,
+                 "y":2496
                 }, 
                 {
                  "gid":2363,
@@ -15651,26 +15611,6 @@
                  "width":64,
                  "x":4544,
                  "y":1280
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3294,
-                 "name":"Nightwalker 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4992,
-                 "y":1728
                 }, 
                 {
                  "gid":2363,
@@ -15715,26 +15655,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3299,
-                 "name":"Qell 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-qell"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4928,
-                 "y":1344
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3300,
                  "name":"Qell 1F Spawner",
                  "properties":
@@ -15749,28 +15669,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4672,
-                 "y":1600
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3301,
-                 "name":"Qell 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-qell"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":832,
-                 "y":2112
+                 "x":4864,
+                 "y":1728
                 }, 
                 {
                  "gid":2363,
@@ -15850,7 +15750,7 @@
                  "visible":true,
                  "width":64,
                  "x":4800,
-                 "y":3328
+                 "y":3264
                 }, 
                 {
                  "gid":2363,
@@ -15869,28 +15769,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":5184,
-                 "y":3648
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3307,
-                 "name":"Mummy 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4864,
-                 "y":1472
+                 "x":5056,
+                 "y":3776
                 }, 
                 {
                  "gid":2363,
@@ -15909,28 +15789,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4672,
-                 "y":1344
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3309,
-                 "name":"Wight 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3776,
-                 "y":1792
+                 "x":4928,
+                 "y":1536
                 }, 
                 {
                  "gid":2363,
@@ -15949,7 +15809,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":3584,
+                 "x":3776,
                  "y":1728
                 }, 
                 {
@@ -15975,26 +15835,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3312,
-                 "name":"Wight 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4992,
-                 "y":1472
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3313,
                  "name":"Wight 1F Spawner",
                  "properties":
@@ -16009,7 +15849,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4544,
+                 "x":4608,
                  "y":1472
                 }, 
                 {
@@ -16029,48 +15869,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1280,
-                 "y":3392
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3315,
-                 "name":"Wight 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1600,
-                 "y":3520
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3316,
-                 "name":"Ghost 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
                  "x":1344,
-                 "y":3584
+                 "y":3456
                 }, 
                 {
                  "gid":2363,
@@ -16090,7 +15890,7 @@
                  "visible":true,
                  "width":64,
                  "x":1536,
-                 "y":3392
+                 "y":3584
                 }, 
                 {
                  "gid":2363,
@@ -16109,68 +15909,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":2496,
+                 "x":2560,
                  "y":1216
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3319,
-                 "name":"Ghost 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2752,
-                 "y":1152
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3320,
-                 "name":"Ghost 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2688,
-                 "y":1280
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3321,
-                 "name":"Ghost 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4800,
-                 "y":1664
                 }, 
                 {
                  "gid":2363,
@@ -16229,8 +15969,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":3456,
-                 "y":896
+                 "x":2688,
+                 "y":704
                 }, 
                 {
                  "gid":2363,
@@ -16255,26 +15995,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3326,
-                 "name":"Skeleton 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3520,
-                 "y":1088
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3327,
                  "name":"Skeleton 1F Spawner",
                  "properties":
@@ -16289,48 +16009,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4480,
-                 "y":1600
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3328,
-                 "name":"Skeleton 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4800,
-                 "y":1344
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3330,
-                 "name":"Spectre 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-spectre"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2752,
-                 "y":640
+                 "x":4608,
+                 "y":1664
                 }, 
                 {
                  "gid":2363,
@@ -16369,8 +16049,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":2944,
-                 "y":704
+                 "x":3520,
+                 "y":896
                 }, 
                 {
                  "gid":2363,
@@ -16389,28 +16069,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4928,
-                 "y":1216
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3334,
-                 "name":"Spectre 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-spectre"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4608,
-                 "y":1728
+                 "x":4992,
+                 "y":1280
                 }, 
                 {
                  "gid":2363,
@@ -16429,48 +16089,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":4928,
-                 "y":3520
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3337,
-                 "name":"Skeleton 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4800,
-                 "y":3712
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3338,
-                 "name":"Mummy 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":4672,
-                 "y":3456
+                 "x":4608,
+                 "y":3584
                 }, 
                 {
                  "gid":2363,
@@ -16489,8 +16109,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":5056,
-                 "y":3776
+                 "x":5248,
+                 "y":3520
                 }, 
                 {
                  "gid":2363,
@@ -16550,7 +16170,7 @@
                  "visible":true,
                  "width":64,
                  "x":2624,
-                 "y":3072
+                 "y":3136
                 }, 
                 {
                  "gid":2363,
@@ -16570,7 +16190,7 @@
                  "visible":true,
                  "width":64,
                  "x":2752,
-                 "y":3200
+                 "y":2688
                 }, 
                 {
                  "gid":2363,
@@ -16610,7 +16230,7 @@
                  "visible":true,
                  "width":64,
                  "x":3392,
-                 "y":3776
+                 "y":3712
                 }, 
                 {
                  "gid":2363,
@@ -16850,7 +16470,7 @@
                  "visible":true,
                  "width":64,
                  "x":768,
-                 "y":1408
+                 "y":1472
                 }, 
                 {
                  "gid":2363,
@@ -16890,7 +16510,7 @@
                  "visible":true,
                  "width":64,
                  "x":1600,
-                 "y":1152
+                 "y":1216
                 }, 
                 {
                  "gid":2363,
@@ -16910,27 +16530,7 @@
                  "visible":true,
                  "width":64,
                  "x":512,
-                 "y":3840
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3363,
-                 "name":"Ghost 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":960,
-                 "y":4096
+                 "y":3904
                 }, 
                 {
                  "gid":2363,
@@ -16949,27 +16549,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":512,
-                 "y":3968
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3365,
-                 "name":"Wight 1F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/1f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1024,
+                 "x":640,
                  "y":4096
                 }, 
                 {
@@ -16989,8 +16569,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":640,
-                 "y":4096
+                 "x":832,
+                 "y":4160
                 }, 
                 {
                  "gid":2363,
@@ -17095,26 +16675,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3374,
-                 "name":"Mummy 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":9408,
-                 "y":2048
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3375,
                  "name":"Mummy 2F Spawner",
                  "properties":
@@ -17129,28 +16689,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":9600,
+                 "x":9536,
                  "y":2368
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3376,
-                 "name":"Skeleton 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":9600,
-                 "y":2112
                 }, 
                 {
                  "gid":2363,
@@ -17169,8 +16709,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":9408,
-                 "y":2304
+                 "x":9472,
+                 "y":2176
                 }, 
                 {
                  "gid":2363,
@@ -17295,46 +16835,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3384,
-                 "name":"Mummy 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":8896,
-                 "y":3456
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3385,
-                 "name":"Spectre 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-spectre"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":8768,
-                 "y":1280
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3387,
                  "name":"Spectre 2F Spawner",
                  "properties":
@@ -17349,27 +16849,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":8960,
-                 "y":1408
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3389,
-                 "name":"Ghost 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":8704,
+                 "x":8768,
                  "y":1472
                 }, 
                 {
@@ -17389,7 +16869,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":9024,
+                 "x":8832,
                  "y":1280
                 }, 
                 {
@@ -17495,26 +16975,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3396,
-                 "name":"Spectre 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-spectre"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":10368,
-                 "y":3456
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3397,
                  "name":"Qell 2F Spawner",
                  "properties":
@@ -17555,26 +17015,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3400,
-                 "name":"Qell 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-qell"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":7296,
-                 "y":3520
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3401,
                  "name":"Qell 2F Spawner",
                  "properties":
@@ -17589,28 +17029,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":7552,
+                 "x":7360,
                  "y":3520
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3402,
-                 "name":"Nightwalker 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":9792,
-                 "y":3392
                 }, 
                 {
                  "gid":2363,
@@ -17675,26 +17095,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3408,
-                 "name":"Nightwalker 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":9280,
-                 "y":1088
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3409,
                  "name":"Nightwalker 2F Spawner",
                  "properties":
@@ -17715,46 +17115,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3410,
-                 "name":"Nightwalker 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":9664,
-                 "y":1472
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3411,
-                 "name":"Wight 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":9664,
-                 "y":3456
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3413,
                  "name":"Wight 2F Spawner",
                  "properties":
@@ -17771,26 +17131,6 @@
                  "width":64,
                  "x":9920,
                  "y":3328
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3414,
-                 "name":"Wight 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":7424,
-                 "y":3648
                 }, 
                 {
                  "gid":2363,
@@ -17829,8 +17169,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":7552,
-                 "y":3584
+                 "x":7616,
+                 "y":3648
                 }, 
                 {
                  "gid":2363,
@@ -18030,7 +17370,7 @@
                  "visible":true,
                  "width":64,
                  "x":8832,
-                 "y":4032
+                 "y":4096
                 }, 
                 {
                  "gid":2363,
@@ -18895,26 +18235,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3472,
-                 "name":"Qell 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-qell"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":10752,
-                 "y":960
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3473,
                  "name":"Qell 2F Spawner",
                  "properties":
@@ -18931,26 +18251,6 @@
                  "width":64,
                  "x":11136,
                  "y":960
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3475,
-                 "name":"Qell 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-qell"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":7040,
-                 "y":9152
                 }, 
                 {
                  "gid":2363,
@@ -19109,28 +18409,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":10560,
-                 "y":11200
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3484,
-                 "name":"Mummy 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
                  "x":10816,
-                 "y":11392
+                 "y":11264
                 }, 
                 {
                  "gid":2363,
@@ -19189,48 +18469,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":10560,
-                 "y":11392
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3488,
-                 "name":"Skeleton 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-skeleton"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":10816,
-                 "y":11264
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3489,
-                 "name":"Skeleton 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-skeleton"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":11584,
-                 "y":10752
+                 "x":10496,
+                 "y":11456
                 }, 
                 {
                  "gid":2363,
@@ -19249,8 +18489,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11328,
-                 "y":10944
+                 "x":11264,
+                 "y":11008
                 }, 
                 {
                  "gid":2363,
@@ -19429,28 +18669,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":10752,
-                 "y":9152
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3500,
-                 "name":"Skeleton 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-skeleton"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":10624,
-                 "y":9152
+                 "x":10688,
+                 "y":9216
                 }, 
                 {
                  "gid":2363,
@@ -19555,26 +18775,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3507,
-                 "name":"Nightwalker 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":8064,
-                 "y":11072
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3508,
                  "name":"Nightwalker 3F Spawner",
                  "properties":
@@ -19590,7 +18790,7 @@
                  "visible":true,
                  "width":64,
                  "x":7872,
-                 "y":11328
+                 "y":11392
                 }, 
                 {
                  "gid":2363,
@@ -19609,28 +18809,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11520,
-                 "y":10944
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3510,
-                 "name":"Nightwalker 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":11328,
-                 "y":10752
+                 "x":11584,
+                 "y":11008
                 }, 
                 {
                  "gid":2363,
@@ -19669,8 +18849,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11456,
-                 "y":9728
+                 "x":11648,
+                 "y":9920
                 }, 
                 {
                  "gid":2363,
@@ -19749,8 +18929,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":10688,
-                 "y":11392
+                 "x":10752,
+                 "y":11456
                 }, 
                 {
                  "gid":2363,
@@ -19849,7 +19029,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11136,
+                 "x":11200,
                  "y":9088
                 }, 
                 {
@@ -19871,26 +19051,6 @@
                  "width":64,
                  "x":9280,
                  "y":9408
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3523,
-                 "name":"Ghost 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":7808,
-                 "y":9344
                 }, 
                 {
                  "gid":2363,
@@ -20035,26 +19195,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3534,
-                 "name":"Spectre 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-spectre"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":11456,
-                 "y":11392
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3535,
                  "name":"Spectre 3F Spawner",
                  "properties":
@@ -20069,7 +19209,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":10112,
+                 "x":10176,
                  "y":8960
                 }, 
                 {
@@ -20091,26 +19231,6 @@
                  "width":64,
                  "x":9728,
                  "y":9216
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3537,
-                 "name":"Spectre 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-spectre"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":8320,
-                 "y":9344
                 }, 
                 {
                  "gid":2363,
@@ -20249,28 +19369,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11456,
-                 "y":10880
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3546,
-                 "name":"Wight 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":11264,
-                 "y":10816
+                 "x":11328,
+                 "y":10752
                 }, 
                 {
                  "gid":2363,
@@ -20371,46 +19471,6 @@
                  "width":64,
                  "x":10432,
                  "y":10240
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3552,
-                 "name":"Wight 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":10176,
-                 "y":9280
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3553,
-                 "name":"Wight 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":10176,
-                 "y":8960
                 }, 
                 {
                  "gid":2363,
@@ -20549,7 +19609,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":10880,
+                 "x":11264,
                  "y":11648
                 }, 
                 {
@@ -20589,8 +19649,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11456,
-                 "y":11648
+                 "x":11392,
+                 "y":11392
                 }, 
                 {
                  "gid":2363,
@@ -20655,26 +19715,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3566,
-                 "name":"Nightwalker 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":11264,
-                 "y":9024
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3567,
                  "name":"Mummy 3F Spawner",
                  "properties":
@@ -20711,26 +19751,6 @@
                  "width":64,
                  "x":8448,
                  "y":8832
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3569,
-                 "name":"Mummy 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6976,
-                 "y":9728
                 }, 
                 {
                  "gid":2363,
@@ -20975,46 +19995,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3582,
-                 "name":"Mummy 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":7872,
-                 "y":9728
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3583,
-                 "name":"Skeleton 3F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/3f-skeleton"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":7808,
-                 "y":9984
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3584,
                  "name":"Skeleton 3F Spawner",
                  "properties":
@@ -21129,8 +20109,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":11648,
-                 "y":9856
+                 "x":11392,
+                 "y":9728
                 }, 
                 {
                  "gid":2363,
@@ -21410,7 +20390,7 @@
                  "visible":true,
                  "width":64,
                  "x":2240,
-                 "y":8576
+                 "y":8640
                 }, 
                 {
                  "gid":2363,
@@ -21495,26 +20475,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3610,
-                 "name":"Nightwalker 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":576,
-                 "y":11584
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3612,
                  "name":"Nightwalker 4F Spawner",
                  "properties":
@@ -21555,26 +20515,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3614,
-                 "name":"Nightwalker 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1792,
-                 "y":10496
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3615,
                  "name":"Skeleton 4F Spawner",
                  "properties":
@@ -21610,7 +20550,7 @@
                  "visible":true,
                  "width":64,
                  "x":640,
-                 "y":11392
+                 "y":11584
                 }, 
                 {
                  "gid":2363,
@@ -21675,46 +20615,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3620,
-                 "name":"Skeleton 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-skeleton"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2624,
-                 "y":11136
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3621,
-                 "name":"Skeleton 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-skeleton"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2880,
-                 "y":9856
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3624,
                  "name":"Skeleton 4F Spawner",
                  "properties":
@@ -21750,46 +20650,6 @@
                  "visible":true,
                  "width":64,
                  "x":2624,
-                 "y":9088
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3626,
-                 "name":"Skeleton 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-skeleton"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":512,
-                 "y":9024
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3627,
-                 "name":"Skeleton 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-skeleton"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":576,
                  "y":9088
                 }, 
                 {
@@ -21850,7 +20710,7 @@
                  "visible":true,
                  "width":64,
                  "x":1792,
-                 "y":10304
+                 "y":10368
                 }, 
                 {
                  "gid":2363,
@@ -21871,26 +20731,6 @@
                  "width":64,
                  "x":1920,
                  "y":9792
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3632,
-                 "name":"Mummy 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1792,
-                 "y":10432
                 }, 
                 {
                  "gid":2363,
@@ -21929,28 +20769,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":384,
-                 "y":11456
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3636,
-                 "name":"Mummy 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":640,
-                 "y":11584
+                 "x":448,
+                 "y":11520
                 }, 
                 {
                  "gid":2363,
@@ -22015,46 +20835,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3640,
-                 "name":"Mummy 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":704,
-                 "y":8576
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3641,
-                 "name":"Mummy 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-mummy"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1728,
-                 "y":8576
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3642,
                  "name":"Wight 4F Spawner",
                  "properties":
@@ -22071,26 +20851,6 @@
                  "width":64,
                  "x":1792,
                  "y":9792
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3643,
-                 "name":"Wight 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2944,
-                 "y":9920
                 }, 
                 {
                  "gid":2363,
@@ -22115,26 +20875,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3645,
-                 "name":"Wight 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2240,
-                 "y":11136
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3647,
                  "name":"Wight 4F Spawner",
                  "properties":
@@ -22150,7 +20890,7 @@
                  "visible":true,
                  "width":64,
                  "x":1408,
-                 "y":11648
+                 "y":11584
                 }, 
                 {
                  "gid":2363,
@@ -22169,8 +20909,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":512,
-                 "y":9728
+                 "x":576,
+                 "y":9792
                 }, 
                 {
                  "gid":2363,
@@ -22250,7 +20990,7 @@
                  "visible":true,
                  "width":64,
                  "x":1792,
-                 "y":8576
+                 "y":8640
                 }, 
                 {
                  "gid":2363,
@@ -22469,7 +21209,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":2880,
+                 "x":2816,
                  "y":9984
                 }, 
                 {
@@ -22531,26 +21271,6 @@
                  "width":64,
                  "x":1600,
                  "y":9664
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3669,
-                 "name":"Wight 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":576,
-                 "y":9792
                 }, 
                 {
                  "gid":2363,
@@ -22675,26 +21395,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3677,
-                 "name":"Wight 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2624,
-                 "y":9472
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3678,
                  "name":"Wight 4F Spawner",
                  "properties":
@@ -22715,26 +21415,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3679,
-                 "name":"Wight 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1408,
-                 "y":11520
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3680,
                  "name":"Wight 4F Spawner",
                  "properties":
@@ -22751,26 +21431,6 @@
                  "width":64,
                  "x":1088,
                  "y":11712
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3681,
-                 "name":"Wight 4F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/4f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1792,
-                 "y":11520
                 }, 
                 {
                  "gid":2363,
@@ -23149,8 +21809,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":640,
-                 "y":9024
+                 "x":576,
+                 "y":9088
                 }, 
                 {
                  "gid":2363,
@@ -23549,8 +22209,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":2560,
-                 "y":9280
+                 "x":2624,
+                 "y":9472
                 }, 
                 {
                  "gid":2363,
@@ -23590,7 +22250,7 @@
                  "visible":true,
                  "width":64,
                  "x":1792,
-                 "y":10304
+                 "y":10496
                 }, 
                 {
                  "gid":2363,
@@ -23650,7 +22310,7 @@
                  "visible":true,
                  "width":64,
                  "x":1792,
-                 "y":11648
+                 "y":11584
                 }, 
                 {
                  "gid":2363,
@@ -23689,7 +22349,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":2880,
+                 "x":2560,
                  "y":9280
                 }, 
                 {
@@ -25880,7 +24540,7 @@
                  "visible":true,
                  "width":64,
                  "x":10688,
-                 "y":11264
+                 "y":11328
                 }, 
                 {
                  "gid":2363,
@@ -25910,7 +24570,47 @@
                  "visible":true,
                  "width":64,
                  "x":11392,
-                 "y":10816
+                 "y":10880
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":3858,
+                 "name":"Wight 1F Spawner",
+                 "properties":
+                    {
+                     "script":"risan\/frozencatacombs\/1f-wight"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2816,
+                 "y":3072
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":3859,
+                 "name":"Spectre 1F Spawner",
+                 "properties":
+                    {
+                     "script":"risan\/frozencatacombs\/1f-spectre"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":768,
+                 "y":2048
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -26886,7 +25586,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":3857,
+ "nextobjectid":3860,
  "orientation":"orthogonal",
  "properties":
     {
