@@ -1,5 +1,5 @@
 
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy } from '@angular/core';
 
 import { EquippableItemClasses, Item } from '../../../shared/models/item';
 import { Player } from '../../../shared/models/player';
@@ -56,10 +56,11 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
     
   `
 })
-export class ItemComponent {
+export class ItemComponent implements OnDestroy {
 
   private _item: Item;
   private _isMouseIn: boolean;
+  private _mouseTimeout: any;
 
   @Input()
   public set item(item: Item) {
@@ -194,6 +195,11 @@ export class ItemComponent {
   }
 
   constructor(public colyseusGame: ColyseusGameService, private assetService: AssetService) {}
+
+  ngOnDestroy() {
+    this.removeDesc();
+    if(this._mouseTimeout) clearTimeout(this._mouseTimeout);
+  }
 
   doColyseusMoveAction(choice) {
     this.colyseusGame.buildAction(this.item, {
@@ -374,7 +380,7 @@ export class ItemComponent {
     this.colyseusGame.updateCurrentItemDesc('');
     this._isMouseIn = true;
 
-    setTimeout(() => {
+    this._mouseTimeout = setTimeout(() => {
       if(!this._isMouseIn) return;
       this.colyseusGame.updateCurrentItemDesc(this.descText);
     }, 750);
