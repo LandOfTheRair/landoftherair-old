@@ -257,8 +257,8 @@
     max: 15950
 
   giveXp:
-    min: 29500
-    max: 30500
+    min: 69500
+    max: 70500
 
   gear:
     Ear: Enemy DarkVision Earring
