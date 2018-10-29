@@ -168,3 +168,19 @@
 
   requirements:
     level: 45
+
+- name: Catacombs Tomb Guardian Fur
+  quality: 5
+  stats:
+    offense: 5
+    defense: 5
+    armorClass: 15
+    iceResist: 400
+    fireResist: 400
+
+  desc: "a fluffy robe made of chilled sparkling feathers"
+  value: 5500
+  sprite: 290
+
+  requirements:
+    level: 30

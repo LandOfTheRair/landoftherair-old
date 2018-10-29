@@ -41,3 +41,9 @@
   sprite: -1
   desc: "a pair of sharp claws"
   value: 0
+
+- name: Catacombs Lair Claws
+  tier: 6
+  sprite: -1
+  desc: "a pair of sharp claws"
+  value: 0

@@ -25547,6 +25547,86 @@
                  "width":64,
                  "x":3392,
                  "y":2688
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":3836,
+                 "name":"Guardian Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Catacombs Tomb Guardian",
+                     "maxSpawn":1,
+                     "randomWalkRadius":10,
+                     "respawnRate":3600,
+                     "script":"global\/lair",
+                     "shouldEatTier":2,
+                     "shouldStrip":true,
+                     "stripRadius":1,
+                     "stripX":158,
+                     "stripY":21
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string",
+                     "shouldEatTier":"float",
+                     "shouldStrip":"bool",
+                     "stripRadius":"int",
+                     "stripX":"int",
+                     "stripY":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10112,
+                 "y":832
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":3837,
+                 "name":"Guardian Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Catacombs Tomb Guardian",
+                     "maxSpawn":1,
+                     "randomWalkRadius":10,
+                     "respawnRate":3600,
+                     "script":"global\/lair",
+                     "shouldEatTier":2,
+                     "shouldStrip":true,
+                     "stripRadius":1,
+                     "stripX":163,
+                     "stripY":21
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string",
+                     "shouldEatTier":"float",
+                     "shouldStrip":"bool",
+                     "stripRadius":"int",
+                     "stripX":"int",
+                     "stripY":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10432,
+                 "y":832
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -26484,7 +26564,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":3836,
+ "nextobjectid":3838,
  "orientation":"orthogonal",
  "properties":
     {

@@ -2,7 +2,7 @@
 
 - npcId: Catacombs Frost Dragon
   name: dragon
-  sprite: 475
+  sprite: 255
   baseClass: Mage
   allegiance: Enemy
   alignment: Evil
@@ -21,7 +21,7 @@
 
   gear:
     Armor: Catacombs Silver Dragon Scale Tunic
-    Hands: Mines Animal Claws
+    Hands: Catacombs Lair Claws
 
   traitLevels:
     SterlingArmor: 15
@@ -65,8 +65,7 @@
       chance: 1
       maxChance: 10
     - result: Silver Scale
-      chance: 1
-      maxChance: 1
+      chance: -1
 
   tansFor: Catacombs Silver Dragon Scale Tunic
   tanSkillRequired: 25
@@ -74,4 +73,73 @@
   spawnMessage: "a billowing gust of wind displaced by a strong crunching sound"
   leashMessage: "a billowing gust of wind displaced by a strong crunching sound"
   sfx: "dragon"
+  sfxMaxChance: 1
+
+
+- npcId: Catacombs Tomb Guardian
+  name: tomb guardian
+  sprite: 370
+  allegiance: Enemy
+  alignment: Evil
+  hostility: Always
+  monsterClass: Beast
+  stats: 25
+  skillLevels:
+    Martial: 14
+  level: 30
+
+  otherStats:
+    armorClass: 45
+    perception: 300
+
+  gear:
+    Armor: Catacombs Tomb Guardian Fur
+    Hands: Catacombs Lair Claws
+
+  skillOnKill: 500
+
+  usableSkills:
+    - ChillBiteStrong
+    - IceMist
+
+  drops:
+    - result: Risan Frost Larimar
+      chance: 1
+      maxChance: 10
+    - result: Silver Scale
+      chance: -1
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'magical'
+        potency: 0.75
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.75
+
+  traitLevels:
+    StunningFist: 10
+    MartialAgility: 10
+
+  gold:
+    min: 41450
+    max: 42500
+
+  hp:
+    min: 3000000
+    max: 3000000
+
+  giveXp:
+    min: 1299000
+    max: 1409000
+
+  tansFor: Catacombs Tomb Guardian Fur
+  tanSkillRequired: 20
+
+  spawnMessage: "the screeching of an enormous bird"
+  leashMessage: "the screeching of an enormous bird"
+  sfx: "bird"
   sfxMaxChance: 1
