@@ -229,14 +229,14 @@ export class MacroService {
       if(ev.ctrlKey) builtMacro = `${builtMacro}CTRL+`;
       if(ev.shiftKey) builtMacro = `${builtMacro}SHIFT+`;
 
+      builtMacro = `${builtMacro}${ev.key.toUpperCase()}`;
+
       // some macros need to be canceled early
       const shouldCancelMacroAlways = this.shouldCancelMacroEarly(builtMacro);
       if(shouldCancelMacroAlways) {
         ev.preventDefault();
         ev.stopPropagation();
       }
-
-      builtMacro = `${builtMacro}${ev.key.toUpperCase()}`;
 
       const macro = this.macroMap[builtMacro];
 
