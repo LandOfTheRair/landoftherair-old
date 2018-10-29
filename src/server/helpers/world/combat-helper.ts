@@ -1186,6 +1186,7 @@ export class CombatHelper {
         const formattedAtkMessage = MessageHelper.formatMessageFor(attacker, `You ${killMethod} %0!`, [defender]);
         attacker.sendClientMessage({
           message: formattedAtkMessage,
+          target: null,
           subClass: `combat self kill ${defender.isPlayer() ? 'player' : 'npc'}`,
           sfx: defender.isPlayer() ? 'combat-die' : 'combat-kill'
         }, true);
