@@ -64,3 +64,16 @@
   desc: "a tunic made from the frozen-solid scales of a remorhaz"
   value: 5020
   sprite: 269
+
+- name: Catacombs Bone Tunic
+  stats:
+    armorClass: 25
+    defense: 5
+    offense: 5
+    fireResist: 200
+    iceResist: 200
+  requirements:
+    level: 25
+  desc: "an ancient tunic reinforced with layers of years-old bone"
+  value: 3502
+  sprite: 10

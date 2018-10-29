@@ -57,8 +57,8 @@
     max: 105000
 
   giveXp:
-    min: 1362000
-    max: 1365000
+    min: 2362000
+    max: 2365000
 
   drops:
     - result: Risan Frost Larimar
@@ -143,3 +143,118 @@
   leashMessage: "the screeching of an enormous bird"
   sfx: "bird"
   sfxMaxChance: 1
+
+- npcId: Catacombs Frost Knight
+  name: frost knight
+  monsterClass: Undead
+  hostility: Always
+  baseClass: Mage
+  sprite: 285
+  alignment: Evil
+  stats: 24
+  skillLevels: 12
+  level: 35
+
+  skillOnKill: 1000
+
+  otherStats:
+    con: 25
+    accuracy: 10
+    offense: 10
+    perception: 300
+    mpregen: 50
+
+  gold:
+    min: 23050
+    max: 33700
+
+  hp:
+    min: 1287950
+    max: 1291350
+
+  mp:
+    min: 10000
+    max: 10000
+
+  giveXp:
+    min: 939000
+    max: 995000
+
+  rightHand:
+    - result: Catacombs Longsword 3F
+      chance: 50
+    - result: Risan Royal Spear
+      chance: 1
+    - result: Catacombs HolyFire Hammer
+      chance: 1
+    - result: Catacombs Bat Greatsword
+      chance: 1
+    - result: Frostlands Thermidor Halberd
+      chance: 1
+
+  leftHand:
+    - result: Catacombs Longsword 5F
+      chance: 50
+    - result: Catacombs Dagger 5F
+      chance: 50
+    - result: Catacombs Shortsword 5F
+      chance: 50
+    - result: Catacombs Shield 5F
+      chance: 50
+    - result: Frostlands Royal Shield
+      chance: 1
+
+  gear:
+    Armor: Catacombs Bone Tunic
+    Hands: Catacombs Lair Claws
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'magical'
+        potency: 0.5
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.5
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+
+  dropPool:
+    choose:
+      min: 1
+      max: 1
+    items:
+      - Catacombs Raw Garnet
+      - Catacombs Raw Turquoise
+      - Catacombs Raw Topaz
+      - Catacombs Raw Tourmaline
+      - Catacombs Raw Amber
+
+  usableSkills:
+    - Thruststrike
+    - Haste
+    - ImbueFrost
+    - Absorption
+    - MagicShield
+    - DarkVision
+    - TrueSight
+    - Boost
+    - Shield
+
+  traitLevels:
+    ForcefulStrike: 2
+    SterlingArmor: 2
+    OffhandFinesse: 5
+    BoostedBoost: 1
+    Riposte: 3
+    HolyProtection: 10
+    Swashbuckler: 5
+    DoubleThrust: 1

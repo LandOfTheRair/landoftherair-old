@@ -25627,6 +25627,126 @@
                  "width":64,
                  "x":10432,
                  "y":832
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":3838,
+                 "name":"Frost Knight Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Catacombs Frost Knight",
+                     "maxSpawn":1,
+                     "randomWalkRadius":10,
+                     "respawnRate":3600,
+                     "script":"global\/lair"
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7296,
+                 "y":10496
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":3839,
+                 "name":"Frost Knight Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Catacombs Frost Knight",
+                     "maxSpawn":1,
+                     "randomWalkRadius":10,
+                     "respawnRate":3600,
+                     "script":"global\/lair"
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":7936,
+                 "y":11264
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":3840,
+                 "name":"Frost Knight Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Catacombs Frost Knight",
+                     "maxSpawn":1,
+                     "randomWalkRadius":10,
+                     "respawnRate":3600,
+                     "script":"global\/lair"
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10688,
+                 "y":11264
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":3841,
+                 "name":"Frost Knight Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Catacombs Frost Knight",
+                     "maxSpawn":1,
+                     "randomWalkRadius":10,
+                     "respawnRate":3600,
+                     "script":"global\/lair"
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":11392,
+                 "y":10816
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -26564,7 +26684,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":3838,
+ "nextobjectid":3842,
  "orientation":"orthogonal",
  "properties":
     {
