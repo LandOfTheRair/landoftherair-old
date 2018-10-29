@@ -34,7 +34,9 @@ export class GMCopyPlayer extends Command {
         continue;
       }
 
-      player.belt.addItem(new Item(item, { doRegenerate: true }), i);
+      const itemInst = new Item(item, { doRegenerate: true });
+      itemInst.owner = player.uuid;
+      player.belt.addItem(itemInst, i);
     }
 
     gearSlots.forEach(slot => {
@@ -44,7 +46,9 @@ export class GMCopyPlayer extends Command {
         return;
       }
 
-      set(player, slot, new Item(item, { doRegenerate: true }));
+      const itemInst = new Item(item, { doRegenerate: true });
+      itemInst.owner = player.uuid;
+      set(player, slot, itemInst);
     });
 
     player.clearAllEffects();
