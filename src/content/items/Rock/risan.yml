@@ -1,26 +1,26 @@
 
 
 - name: Catacombs Raw Topaz
-  sprite: 220
+  sprite: 58
   desc: "a chunk of raw pink topaz"
   sellValue: 100000
 
 - name: Catacombs Raw Tourmaline
-  sprite: 221
+  sprite: 59
   desc: "a chunk of raw green tourmaline"
   sellValue: 100000
 
 - name: Catacombs Raw Amber
-  sprite: 222
+  sprite: 60
   desc: "a chunk of raw amber"
   sellValue: 100000
 
 - name: Catacombs Raw Turquoise
-  sprite: 224
+  sprite: 61
   desc: "a chunk of raw turquoise"
   sellValue: 100000
 
 - name: Catacombs Raw Garnet
-  sprite: 225
+  sprite: 62
   desc: "a chunk of raw garnet"
   sellValue: 100000
