@@ -31,8 +31,14 @@
   skillOnKill: 500
 
   usableSkills:
-    - IceMist
-    - ChillBiteStrong
+    - result: Attack
+      chance: 100
+    - result: IceMist
+      chance: 10
+    - result: ChillBiteStrong
+      chance: 50
+    - result: Hail
+      chance: 25
 
   baseEffects:
     - name: Attribute
@@ -99,8 +105,12 @@
   skillOnKill: 500
 
   usableSkills:
-    - ChillBiteStrong
-    - IceMist
+    - result: Attack
+      chance: 100
+    - result: IceMist
+      chance: 25
+    - result: ChillBiteStrong
+      chance: 50
 
   drops:
     - result: Risan Frost Larimar
