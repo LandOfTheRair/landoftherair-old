@@ -15,7 +15,7 @@
     - Catacombs Frostflower
     - Catacombs Frostflower
 
-- item: Antanian Dexterity Potion
+- item: Risan Dexterity Potion
   skillGained: 1000
   maxSkillForGains: 17
   requiredSkill: 8
@@ -30,7 +30,7 @@
     - Catacombs Frostflower
     - Catacombs Frostflower
 
-- item: Antanian Intelligence Potion
+- item: Risan Intelligence Potion
   skillGained: 1000
   maxSkillForGains: 17
   requiredSkill: 8
@@ -45,7 +45,7 @@
     - Catacombs Frostflower
     - Catacombs Frostflower
 
-- item: Antanian Wisdom Potion
+- item: Risan Wisdom Potion
   skillGained: 1000
   maxSkillForGains: 17
   requiredSkill: 8
@@ -60,7 +60,7 @@
     - Catacombs Frostflower
     - Catacombs Frostflower
 
-- item: Antanian Agility Potion
+- item: Risan Agility Potion
   skillGained: 1000
   maxSkillForGains: 17
   requiredSkill: 8

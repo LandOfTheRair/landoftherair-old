@@ -10,17 +10,17 @@
   desc: "a chunk of raw green tourmaline"
   sellValue: 100000
 
-- name: Catacombs Amber
+- name: Catacombs Raw Amber
   sprite: 222
   desc: "a chunk of raw amber"
   sellValue: 100000
 
-- name: Catacombs Turquoise
+- name: Catacombs Raw Turquoise
   sprite: 224
   desc: "a chunk of raw turquoise"
   sellValue: 100000
 
-- name: Catacombs Garnet
+- name: Catacombs Raw Garnet
   sprite: 225
   desc: "a chunk of raw garnet"
   sellValue: 100000
