@@ -107,8 +107,11 @@
   name: yeti
   hostility: Always
   sprite: 220
-  stats: 3
+  stats: 1
   level: 1
+
+  otherStats:
+    accuracy: -5
 
   skillOnKill: 30
 
