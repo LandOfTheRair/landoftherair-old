@@ -10405,7 +10405,7 @@
                  "name":"Festive",
                  "properties":
                     {
-                     "desc":"You find yourself in a festive "
+                     "desc":"You find yourself in a festive portal area, with all manner of holiday connections."
                     },
                  "propertytypes":
                     {
@@ -10420,7 +10420,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
