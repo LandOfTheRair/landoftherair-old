@@ -189,7 +189,7 @@ export abstract class Skill extends Command {
         gainThiefSkill(user, 1);
         target.addAgro(user, 1);
         user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
-        target.sendClientMessage({ message: `${userName} just tried to steal from you!`, target: user.uuid });
+        target.sendClientMessage({ message: `${userName} just tried to steal from you!` });
         return;
       }
 
@@ -218,7 +218,7 @@ export abstract class Skill extends Command {
         gainThiefSkill(user, 1);
         target.addAgro(user, 1);
         user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
-        target.sendClientMessage({ message: `${userName} just tried to steal from you!`, target: user.uuid });
+        target.sendClientMessage({ message: `${userName} just tried to steal from you!` });
         return;
       }
 
