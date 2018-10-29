@@ -159,7 +159,7 @@ export class Stats {
   actionSpeed? = 1;
 }
 
-export type MonsterClass = 'Undead' | 'Beast' | 'Humanoid';
+export type MonsterClass = 'Undead' | 'Beast' | 'Humanoid' | 'Dragon';
 
 export type StatName =
   'str' | 'dex' | 'agi' | 'int' | 'wis' | 'wil' | 'luk' | 'cha' | 'con'

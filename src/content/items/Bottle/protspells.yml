@@ -104,3 +104,23 @@
     name: BeastRipper
     potency: 2
   value: 10000
+
+- name: ScaleShredder Potion
+  desc: "a translucent blue bottle with an orange mist that smells like passionfruit"
+  extendedDesc: "a bottle of Scale Shredder"
+  sprite: 891
+  ounces: 1
+  effect:
+    name: ScaleShredder
+    potency: 2
+  value: 2000
+
+- name: ScaleShredder Potion (5oz)
+  desc: "a translucent blue bottle with an orange mist that smells like passionfruit"
+  extendedDesc: "a bottle of Scale Shredder"
+  sprite: 891
+  ounces: 5
+  effect:
+    name: ScaleShredder
+    potency: 2
+  value: 10000

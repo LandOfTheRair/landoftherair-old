@@ -59,6 +59,7 @@ export * from './augments/ImbueFrost';
 
 export * from './augments/BeastRipper';
 export * from './augments/EtherFire';
+export * from './augments/ScaleShredder';
 
 export * from './auras/NecroticAura';
 export * from './auras/Firethorns';

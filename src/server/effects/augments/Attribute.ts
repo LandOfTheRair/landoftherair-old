@@ -27,7 +27,8 @@ type AttributeType =
 
 const ResistanceShredders = {
   Undead: 'EtherFire',
-  Beast: 'BeastRipper'
+  Beast: 'BeastRipper',
+  Dragon: 'ScaleShredder'
 };
 
 export class Attribute extends SpellEffect implements AttributeEffect {

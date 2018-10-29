@@ -20,3 +20,13 @@
     - Holy Water
     - Weak BarNecro Potion
     - Antanian Bear Meat
+
+- item: ScaleShredder Potion (5oz)
+  skillGained: 50
+  maxSkillForGains: 9
+  requiredSkill: 2
+  xpGained: 5000
+  ingredients:
+    - Holy Water
+    - Weak BarFrost Potion
+    - Catacombs Frostflower
