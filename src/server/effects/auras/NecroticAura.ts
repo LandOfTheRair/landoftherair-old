@@ -40,7 +40,8 @@ export class NecroticAura extends Effect {
         effect: this,
         defMsg: `You are nauseous!`,
         damage: damage,
-        damageClass: 'necrotic'
+        damageClass: 'necrotic',
+        isAOE: true
       });
     });
   }

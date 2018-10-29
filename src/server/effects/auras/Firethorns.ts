@@ -47,7 +47,8 @@ export class Firethorns extends SpellEffect {
         effect: this,
         defMsg: `You are overwhelmed by the surrounding warmth!`,
         damage: damage,
-        damageClass: 'fire'
+        damageClass: 'fire',
+        isAOE: true
       });
     });
   }

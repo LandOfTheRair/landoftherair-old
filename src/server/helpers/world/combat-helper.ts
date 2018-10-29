@@ -921,7 +921,9 @@ export class CombatHelper {
 
     damage = attacked.isNaturalResource ? 0 : damage;
     const totalDamage = this.dealDamage(attacker, attacked, {
-      damage, damageClass, isOverTime, customSfx, attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg, attackerWeapon: {
+      damage, damageClass, isOverTime, customSfx, ignoreTargetChanges: isAOE,
+      attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg,
+      attackerWeapon: {
         itemClass: effect ? effect.name : '???',
         owner: effect ? effect.effectInfo.caster : '???',
         ownerName: effect ? effect.effectInfo.casterName : '???'
@@ -980,7 +982,7 @@ export class CombatHelper {
   static dealDamage(
     attacker: Character,
     defender: Character,
-    { damage, damageClass, attackerDamageMessage, defenderDamageMessage, isOverTime, customSfx,
+    { damage, damageClass, attackerDamageMessage, defenderDamageMessage, isOverTime, customSfx, ignoreTargetChanges,
       attackerWeapon, isRanged, isAttackerVisible, isRiposte, isWeak, isMelee }: any
   ): number {
 
@@ -1103,10 +1105,12 @@ export class CombatHelper {
 
       const formattedAtkMessage = MessageHelper.formatMessageFor(attacker, attackerDamageMessage, [defender]);
 
+      if(isRiposte) ignoreTargetChanges = true;
+
       attacker.sendClientMessage({
         message: `${isRiposte ? 'You riposte the attack!' : formattedAtkMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat ${secondaryClass} ${otherClass} ${damageType} ${isOverTime ? 'out-overtime' : ''}`,
-        target: defender.uuid,
+        target: ignoreTargetChanges ? '' : defender.uuid,
         sfx: customSfx || CombatHelper.determineSfx({ attackerWeapon, isMelee, damage }),
         extraData: {
           type: 'damage',

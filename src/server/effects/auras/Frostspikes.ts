@@ -47,7 +47,8 @@ export class Frostspikes extends SpellEffect {
         effect: this,
         defMsg: `You are frozen to the core by the surrounding chill!`,
         damage: damage,
-        damageClass: 'ice'
+        damageClass: 'ice',
+        isAOE: true
       });
     });
   }
