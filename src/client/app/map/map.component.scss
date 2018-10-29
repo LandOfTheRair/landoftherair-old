@@ -5,10 +5,12 @@
   width: 100%;
   text-align: center;
   font-size: 32px;
+
+  user-select: none;
 }
 
 .item-text {
-  z-index: 1900;
+  z-index: 5000;
 
   position: absolute;
   left: 15%;
@@ -21,4 +23,6 @@
   color: #fff;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
+
+  user-select: none;
 }

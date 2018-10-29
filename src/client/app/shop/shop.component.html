@@ -2,7 +2,7 @@
 <div class="p-1 shop-container" droppable dropScope="merchant" (onDrop)="colyseusGame.buildDropAction($event, 'Merchant')">
 
   <div class="row mt-1">
-    <div class="col text-center">
+    <div class="col text-center title">
       You have
       {{ (colyseusGame.character.currency[colyseusGame.showShop.vendorCurrency || 'gold'] || 0) | number:0 }}
       {{ colyseusGame.showShop.vendorCurrency }}
@@ -16,7 +16,7 @@
          [class.col-9]="!colyseusGame.showShop.vendorCurrency"
          [class.col-12]="colyseusGame.showShop.vendorCurrency">
 
-      <h4 class="w-100 text-center">Vendor Items</h4>
+      <h4 class="w-100 text-center title">Vendor Items</h4>
 
       <div class="item-slot item-background" *ngFor="let slot of shopSlots">
         <app-item [item]="colyseusGame.showShop.vendorItems[slot]"
@@ -33,7 +33,7 @@
 
     <div class="col-3 buyback-area d-flex flex-wrap flex-column" [class.hidden]="colyseusGame.showShop.vendorCurrency">
 
-      <h4 class="w-100 text-center">Buyback</h4>
+      <h4 class="w-100 text-center title">Buyback</h4>
 
       <div class="item-slot item-background" *ngFor="let slot of buybackSlots">
         <app-item [item]="colyseusGame.character.buyback[slot]"
@@ -48,9 +48,9 @@
   </div>
 
   <div class="row m-3 mb-3 p-0" [class.hidden]="colyseusGame.showShop.vendorCurrency || allSackItemTypes.length === 0">
-    <h4 class="w-100 text-center">Sell From Sack</h4>
+    <h4 class="w-100 text-center title">Sell From Sack</h4>
 
-    <div class="col-4 text-right vertical-center">
+    <div class="col-4 text-right vertical-center title">
       Sell all:
     </div>
 

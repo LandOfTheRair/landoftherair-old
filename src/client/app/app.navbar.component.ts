@@ -21,6 +21,10 @@ import { ColyseusService } from './colyseus.service';
     .wide-item {
       width: 250px;
     }
+    
+    a.nav-link, a.dropdown-item, img, span {
+      user-select: none;
+    }
   `],
   template: `
     <nav class="navbar navbar-expand-lg navbar-light bg-faded">
