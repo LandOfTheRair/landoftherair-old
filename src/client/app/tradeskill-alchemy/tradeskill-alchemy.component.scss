@@ -9,7 +9,15 @@
   flex-wrap: wrap;
 }
 
-.left-side, .right-side {
+.left-side, .right-side, .slot-center {
   display: flex;
   justify-content: center;
+}
+
+.right-side {
+  flex-direction: column;
+}
+
+.title {
+  user-select: none;
 }

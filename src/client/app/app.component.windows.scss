@@ -240,7 +240,11 @@
 
     z-index: 1000;
 
-    &.alchemy, &.spellforging, &.metalworking {
+    &.alchemy {
+      min-height: 250px;
+    }
+
+    &.spellforging, &.metalworking {
       min-height: 300px;
     }
 

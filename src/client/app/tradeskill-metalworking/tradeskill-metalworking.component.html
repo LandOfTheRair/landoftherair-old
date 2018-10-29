@@ -6,7 +6,7 @@
 
       <div class="row">
         <div class="col-8 text-center">
-          <h3>Craft Item</h3>
+          <h3 class="title">Craft Item</h3>
         </div>
         <div class="col-4 text-center">
           <button class="btn btn-primary btn-block" [disabled]="craftDisabled" (click)="craft()">Craft</button>
@@ -60,7 +60,7 @@
 
       <div class="row mt-3">
         <div class="col-8 text-center">
-          <h3>Upgrade Item</h3>
+          <h3 class="title">Upgrade Item</h3>
         </div>
         <div class="col-4 text-center">
           <button class="btn btn-primary btn-block" [disabled]="upgradeDisabled" (click)="upgrade()">Upgrade</button>
@@ -134,7 +134,9 @@
     <div class="col-4">
 
       <div class="row">
-        <div class="col-12"><h3 class="text-center">Ore</h3></div>
+        <div class="col-12">
+          <h3 class="text-center title">Ore</h3>
+        </div>
       </div>
 
       <div class="row">
@@ -142,8 +144,8 @@
         <div class="col col-12">
           <table class="table table-sm">
             <tr *ngFor="let brick of ingotTypes">
-              <td>{{ brick }}</td>
-              <td>{{ oreValue(brick) | number }}</td>
+              <td class="title">{{ brick }}</td>
+              <td class="title">{{ oreValue(brick) | number }}</td>
               <td class="text-right"><button class="btn btn-outline-primary btn-sm" [disabled]="!canSmeltIngot(brick)" (click)="smelt(brick)">Ingot</button></td>
             </tr>
           </table>
