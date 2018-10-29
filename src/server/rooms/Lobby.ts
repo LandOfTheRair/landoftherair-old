@@ -239,12 +239,6 @@ export class Lobby extends Room<LobbyState> {
     delete this.userIdsLoggingIn[userId];
   }
 
-  private cleanAndSaveAccount(account: Account) {
-    account.inGame = -1;
-    account.colyseusId = null;
-    AccountHelper.saveAccount(account);
-  }
-
   quit(client) {
     const account = this.state.findAccount(client.userId);
     if(!account) return;
@@ -367,7 +361,7 @@ export class Lobby extends Room<LobbyState> {
       username: account.username,
       createdAt: Date.now(),
       charSlot,
-      stats, sex, name, allegiance, gold, baseClass,
+      stats, sex, name, allegiance, currency: { gold: character.gold }, baseClass,
       x: 14, y: 14, map: 'Tutorial'
     });
 
