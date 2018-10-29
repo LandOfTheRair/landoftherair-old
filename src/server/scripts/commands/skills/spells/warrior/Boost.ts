@@ -18,8 +18,8 @@ export class Boost extends Skill {
 
   public name = ['boost', 'art boost'];
 
-  canUse(user: Character) {
-    return !user.hasEffect('Boost');
+  canUse(user: Character, target: Character) {
+    return user === target && !user.hasEffect('Boost');
   }
 
   execute(user: Character, { effect }) {
