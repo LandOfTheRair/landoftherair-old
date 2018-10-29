@@ -167,7 +167,8 @@ export class APIInterceptor implements HttpInterceptor {
         'cannot read property \'readyState\' of undefined',
         'WebSocket is not open: readyState 2 (CLOSING)',
         'Uncaught (in promise): Event: {"isTrusted":true}',
-        'Cannot read property \'loadComplete\' of null'
+        'Cannot read property \'loadComplete\' of null',
+        'Unable to get property \'noAudio\' of undefined or null reference'
       ]
     }),
 
