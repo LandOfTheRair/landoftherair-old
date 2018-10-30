@@ -102,3 +102,24 @@
     animation: bg-EtherNebula 1000ms ease-in infinite;
   }
 }
+
+@keyframes bg-SnowflakeJoy {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.cosmetic-bg-SnowflakeJoy {
+  &:after {
+    content: '❄';
+    margin: 7px;
+    color: #34adad;
+  }
+
+  &.animate {
+    animation: bg-SnowflakeJoy 3000ms linear infinite;
+  }
+}

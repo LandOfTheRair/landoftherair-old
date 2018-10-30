@@ -38,3 +38,11 @@
   cosmetic:
     name: EtherNebula
     isPermanent: true
+
+- name: Cosmetic Scroll - Snowflake Joy
+  sprite: 224
+  desc: "a cosmetic scroll featuring \"Snowflake Joy\""
+  value: 1
+  cosmetic:
+    name: SnowflakeJoy
+    isPermanent: true
