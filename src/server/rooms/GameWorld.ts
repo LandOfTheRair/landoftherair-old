@@ -554,16 +554,19 @@ export class GameWorld extends Room<GameState> {
 
     if(rootCharacter) overName = `as ${rootCharacter.name}`;
 
-    return {
-      name: overName,
-      message: overMessage,
-      subClass: overClass,
-      target: overTarget,
-      dirFrom: overDir,
-      extraData: overExtraData,
-      sfx: overSfx,
-      grouping
-    };
+    const opts: any = {};
+    if(overName) opts.name = overName;
+    if(overMessage) opts.message = overMessage;
+    if(overClass) opts.subClass = overClass;
+    if(overDir) opts.dirFrom = overDir;
+    if(overExtraData) opts.extraData = overExtraData;
+    if(overSfx) opts.sfx = overSfx;
+    if(grouping) opts.grouping = grouping;
+
+    // explicit null set = cancel target
+    if(overTarget || overTarget === null) opts.target = overTarget;
+
+    return opts;
 
   }
 
