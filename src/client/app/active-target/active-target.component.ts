@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { find, values } from 'lodash';
+import { find, values, extend } from 'lodash';
+import { timer } from 'rxjs/index';
 
 @Component({
   selector: 'app-active-target',
@@ -13,6 +14,9 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
   player$: any;
 
   public dirString: string;
+
+  private effect$: any;
+  public effects = [];
 
   get target() {
     return this.colyseusGame.clientGameState.activeTarget;
@@ -49,10 +53,15 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
       this.verifyAndUpdateTarget();
       this.distanceCheckAndClearTarget(newPlayer);
     });
+
+    this.effect$ = timer(0, 1000).subscribe(() => {
+      this.recalculateEffects();
+    });
   }
 
   ngOnDestroy() {
     this.player$.unsubscribe();
+    this.effect$.unsubscribe();
   }
 
   verifyAndUpdateTarget() {
@@ -84,6 +93,28 @@ export class ActiveTargetComponent implements OnInit, OnDestroy {
     if(!fov[xDiff]) return clear();
     if(!fov[xDiff][yDiff]) return clear();
 
+  }
+
+  private recalculateEffects() {
+    if(!this.target) {
+      this.effects = [];
+      return;
+    }
+
+    const newEffects = this.targetEffects;
+    this.effects.length = newEffects.length;
+
+    for(let i = 0; i < newEffects.length; i++) {
+
+      if(!this.effects[i]) {
+        this.effects[i] = newEffects[i];
+
+      } else {
+        Object.keys(this.effects[i]).forEach(key => delete this.effects[i][key]);
+        extend(this.effects[i], newEffects[i]);
+      }
+
+    }
   }
 
 }
