@@ -974,6 +974,7 @@ export class GameWorld extends Room<GameState> {
     });
 
     if((this.ticks % TickRatesPerTimer.CharacterAction) === 0) {
+      this.broadcast({ action: 'tick' });
       this.state.tickPlayers();
       this.spawners.forEach(spawner => spawner.npcTick(this.ticks % 2 === 0, playerLocations));
     }
