@@ -9,12 +9,14 @@
   hostility: Always
   monsterClass: Dragon
   stats: 25
-  skillLevels: 13
+  skillLevels:
+    Martial: 13
+    Conjuration: 13
   level: 25
 
   otherStats:
     int: 30
-    armorClass: 85
+    armorClass: 55
     offense: 20
     defense: 15
     perception: 250
@@ -41,6 +43,10 @@
       chance: 25
 
   baseEffects:
+    - name: Mood
+      effectData:
+        effectInfo:
+          enrageTimer: 300000
     - name: Attribute
       effectData:
         damageType: 'physical'
@@ -49,6 +55,14 @@
       effectData:
         damageType: 'ice'
         potency: 0
+    - name: TrueSight
+      effectData:
+        effectInfo:
+          isPermanent: true
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   gold:
     min: 32350

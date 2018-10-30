@@ -55,7 +55,7 @@ import { startCase } from 'lodash';
                   [name]="effect.iconData.name"
                   size="small"
                   container="body"
-                  placement="auto"
+                  [placement]="placement"
                   [tooltip]="effectTooltipTemplate"></app-icon>
         
         <ng-template #effectTooltipTemplate>
@@ -73,6 +73,9 @@ export class StatusEffectComponent {
 
   @Input()
   public effect: any;
+
+  @Input()
+  public placement = 'auto';
 
   get effectName(): string {
     return startCase(this.effect.name);

@@ -25,6 +25,7 @@ interface EffectInfo {
   isPermanent?: boolean;
   isFrozen?: boolean;
   canManuallyUnapply?: boolean;
+  enrageTimer?: number;
 }
 
 export class Effect {
@@ -63,6 +64,11 @@ export class Effect {
     if(get(this, 'effectInfo.isPermanent')) {
       this.flagPermanent('caster');
     }
+  }
+
+  protected resetStats(char: Character) {
+    this.statBoosts = {};
+    char.recalculateStats();
   }
 
   public gainStat(char: Character, stat: StatName, value: number) {

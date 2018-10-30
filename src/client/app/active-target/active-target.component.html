@@ -18,7 +18,7 @@
   </div>
   <div class="target-status">
     <div *ngFor="let effect of targetEffects" class="effect-container">
-      <app-status-effect [effect]="effect" *ngIf="effect"></app-status-effect>
+      <app-status-effect [effect]="effect" placement="bottom" *ngIf="effect"></app-status-effect>
     </div>
   </div>
 </div>
