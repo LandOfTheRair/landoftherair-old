@@ -72,8 +72,9 @@
     offense: 5
     fireResist: 200
     iceResist: 200
+    energyResist: 200
   requirements:
     level: 25
-  desc: "an ancient tunic reinforced with layers of years-old bone"
+  desc: "an ancient tunic bathed in an arcane glow reinforced with layers of years-old bone"
   value: 3502
   sprite: 10

@@ -68,8 +68,9 @@
     weaponArmorClass: 5
     offense: 1
     defense: 1
+    energyResist: 200
   tier: 6
-  desc: "a shield engraved with the symbol of ancient Risan kingdom"
+  desc: "a shield engraved with the arcane symbol of ancient Risan kingdom"
   value: 15333
   sprite: 516
 
@@ -82,8 +83,9 @@
     weaponArmorClass: 7
     offense: 3
     defense: 3
+    energyResist: 400
   tier: 6
-  desc: "a shield engraved with the symbol of ancient Risan kingdom"
+  desc: "a shield engraved with the arcane symbol of ancient Risan kingdom"
   value: 25333
   sprite: 516
 
@@ -96,8 +98,9 @@
     weaponArmorClass: 9
     offense: 5
     defense: 5
+    energyResist: 600
   tier: 7
-  desc: "a shield engraved with the symbol of ancient Risan kingdom"
+  desc: "a shield engraved with the arcane symbol of ancient Risan kingdom"
   value: 35333
   sprite: 516
 
@@ -110,8 +113,9 @@
     weaponArmorClass: 12
     offense: 7
     defense: 7
+    energyResist: 800
   tier: 7
-  desc: "a shield engraved with the symbol of ancient Risan kingdom"
+  desc: "a shield engraved with the arcane symbol of ancient Risan kingdom"
   value: 45333
   sprite: 516
 
@@ -124,8 +128,9 @@
     weaponArmorClass: 15
     offense: 9
     defense: 9
+    energyResist: 1000
   tier: 8
-  desc: "a shield engraved with the symbol of ancient Risan kingdom"
+  desc: "a shield engraved with the arcane symbol of ancient Risan kingdom"
   value: 55333
   sprite: 516
 

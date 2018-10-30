@@ -5,8 +5,9 @@
     defense: 2
     wil: 1
     magicalResist: 50
+    energyResist: 100
   sprite: 65
-  desc: "an ancient sash that oxidized over the years"
+  desc: "an ancient sash bathed in an arcane glow"
   value: 5000
   binds: true
 
@@ -19,50 +20,54 @@
     defense: 4
     wil: 2
     magicalResist: 100
+    energyResist: 200
   sprite: 65
-  desc: "an ancient sash that oxidized over the years"
+  desc: "an ancient sash bathed in an arcane glow"
   value: 10000
   binds: true
 
   requirements:
     level: 30
-    
+
 - name: Catacombs Sash 3F
   stats:
     offense: 6
     defense: 6
     wil: 3
     magicalResist: 150
+    energyResist: 300
   sprite: 65
-  desc: "an ancient sash that oxidized over the years"
+  desc: "an ancient sash bathed in an arcane glow"
   value: 15000
   binds: true
 
   requirements:
     level: 35
-    
+
 - name: Catacombs Sash 4F
   stats:
     offense: 8
     defense: 8
     wil: 4
     magicalResist: 200
+    energyResist: 400
   sprite: 65
-  desc: "an ancient sash that oxidized over the years"
+  desc: "an ancient sash bathed in an arcane glow"
   value: 20000
   binds: true
 
   requirements:
     level: 40
-    
+
 - name: Catacombs Sash 5F
   stats:
     offense: 10
     defense: 10
     wil: 5
     magicalResist: 250
+    energyResist: 500
   sprite: 65
-  desc: "an ancient sash that oxidized over the years"
+  desc: "an ancient sash bathed in an arcane glow"
   value: 25000
   binds: true
 

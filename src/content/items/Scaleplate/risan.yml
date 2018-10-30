@@ -6,9 +6,10 @@
     defense: 3
     offense: 3
     iceResist: 100
+    energyResist: 200
   requirements:
     level: 14
-  desc: "a tunic crafted from the silky scales of a silver dragon"
+  desc: "a tunic crafted from the silky, arcane scales of a silver dragon"
   value: 3502
   sprite: 302
 
@@ -18,8 +19,9 @@
     defense: 3
     offense: 3
     iceResist: 400
+    energyResist: 500
   requirements:
     level: 25
-  desc: "a tunic tanned from the silky scales of a silver dragon"
+  desc: "a tunic tanned from the silky, arcane scales of an elder silver dragon"
   value: 4502
   sprite: 302
