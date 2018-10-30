@@ -288,6 +288,8 @@
   skillOnKill: 75
 
   usableSkills:
+    - result: Charge
+      chance: 100
     - result: Afflict
       chance: 100
     - result: Plague
@@ -415,6 +417,8 @@
   skillOnKill: 75
 
   usableSkills:
+    - result: Charge
+      chance: 100
     - result: MagicBolt
       chance: 100
     - result: Asper

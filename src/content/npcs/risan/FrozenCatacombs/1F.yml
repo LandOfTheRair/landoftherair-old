@@ -254,6 +254,8 @@
   skillOnKill: 65
 
   usableSkills:
+    - result: Attack
+      chance: 100
     - result: Afflict
       chance: 100
     - result: BarNecro
@@ -357,6 +359,8 @@
   skillOnKill: 65
 
   usableSkills:
+    - result: Attack
+      chance: 100
     - result: MagicMissile
       chance: 100
     - result: TrueSight
