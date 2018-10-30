@@ -31,22 +31,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Skills",
-            "macro": "show skills",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your skills and skill levels in text form.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Show Stats",
             "macro": "show stats",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "See all of your stats and their base level in text form.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Show Skills",
+            "macro": "show skills",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your skills and skill levels in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -379,17 +379,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Regen",
-            "macro": "cast regen",
-            "icon": "star-swirl",
-            "color": "#00c",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
-            "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "PowerwordHeal",
             "macro": "powerword heal",
             "icon": "tentacle-heart",
@@ -399,6 +388,17 @@
             "tooltipDesc": "Heal your party. Cost: 25 MP / target",
             "requireSkillLevel": 13,
             "skillTPCost": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Regen",
+            "macro": "cast regen",
+            "icon": "star-swirl",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
+            "requireSkillLevel": 10,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -413,6 +413,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Snare",
+            "macro": "cast snare",
+            "icon": "light-thorny-triskelion",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Slow down the target. Cost: 50 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Secondwind",
             "macro": "cast secondwind",
             "icon": "wing-cloak",
@@ -420,16 +430,6 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Prevent losing gear on death. Cost: 250 MP",
             "skillTPCost": 20,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Snare",
-            "macro": "cast snare",
-            "icon": "light-thorny-triskelion",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Slow down the target. Cost: 50 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -525,16 +525,6 @@
             "requiresLearn": true
         },
         {
-            "name": "FindFamiliar",
-            "macro": "cast findfamiliar",
-            "icon": "eagle-emblem",
-            "color": "#0aa",
-            "mode": "autoActivate",
-            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Disease",
             "macro": "cast disease",
             "icon": "death-juice",
@@ -545,12 +535,32 @@
             "requiresLearn": true
         },
         {
+            "name": "FindFamiliar",
+            "macro": "cast findfamiliar",
+            "icon": "eagle-emblem",
+            "color": "#0aa",
+            "mode": "autoActivate",
+            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Identify",
             "macro": "cast identify",
             "icon": "uncertainty",
             "color": "#665600",
             "mode": "autoActivate",
             "tooltipDesc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Plague",
+            "macro": "cast plague",
+            "icon": "death-zone",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly plague on your target. Cost: 15 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -595,16 +605,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Vortex",
-            "macro": "cast vortex",
-            "icon": "wind-hole",
-            "color": "#333",
-            "mode": "autoActivate",
-            "tooltipDesc": "Create a vortex which sucks in nearby items. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Venom",
             "macro": "cast venom",
             "icon": "dripping-goo",
@@ -615,12 +615,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Plague",
-            "macro": "cast plague",
-            "icon": "death-zone",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly plague on your target. Cost: 15 MP",
+            "name": "Vortex",
+            "macro": "cast vortex",
+            "icon": "wind-hole",
+            "color": "#333",
+            "mode": "autoActivate",
+            "tooltipDesc": "Create a vortex which sucks in nearby items. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -723,6 +723,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Frostspikes",
+            "macro": "cast frostspikes",
+            "icon": "barbed-coil",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Physical attackers take ice damage. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "GlacierStance",
             "macro": "stance glacier",
             "icon": "frozen-orb",
@@ -741,16 +751,6 @@
             "mode": "lockActivation",
             "tooltipDesc": "Inflict ice damage on a single target. Cost: 20 MP",
             "skillTPCost": 5,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Frostspikes",
-            "macro": "cast frostspikes",
-            "icon": "barbed-coil",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Physical attackers take ice damage. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -843,16 +843,6 @@
             "requiresLearn": true
         },
         {
-            "name": "MassTeleport",
-            "macro": "cast massteleport",
-            "icon": "vortex",
-            "color": "#a0a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Teleport those on your tile to a previously-memorized location. Cost: 100% MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "MagicShield",
             "macro": "cast magicshield",
             "icon": "energy-shield",
@@ -862,6 +852,16 @@
             "skillTPCost": 10,
             "requireCharacterLevel": 10,
             "requireSkillLevel": 7,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MassTeleport",
+            "macro": "cast massteleport",
+            "icon": "vortex",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Teleport those on your tile to a previously-memorized location. Cost: 100% MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -899,6 +899,16 @@
             "bgColor": "#000",
             "mode": "autoActivate",
             "tooltipDesc": "Become more offensive, increasing your physical offensive capabilities, your fire resistance, and doing fire damage on physical hits.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Apply",
+            "macro": "cast apply",
+            "icon": "bloody-sword",
+            "color": "#050",
+            "mode": "autoActivate",
+            "tooltipDesc": "Apply a bottle's effects from your left hand onto your weapon strikes.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -952,16 +962,6 @@
             "mode": "autoActivate",
             "tooltipDesc": "See through the trees and to the depths of the waters. Cost: 50 HP",
             "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Apply",
-            "macro": "cast apply",
-            "icon": "bloody-sword",
-            "color": "#050",
-            "mode": "autoActivate",
-            "tooltipDesc": "Apply a bottle's effects from your left hand onto your weapon strikes.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -1039,18 +1039,6 @@
             "requiresLearn": true
         },
         {
-            "name": "ParryStance",
-            "macro": "stance parry",
-            "icon": "surrounded-shield",
-            "color": "#fff",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more defensive, but lose offensive power. You also taunt foes. Requires weapon skill 10.",
-            "requireSkillLevel": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Provoke",
             "macro": "art provoke",
             "icon": "enrage",
@@ -1069,6 +1057,30 @@
             "mode": "autoActivate",
             "tooltipDesc": "Become more offensive, but lose defensive power. Requires weapon skill 10.",
             "requireSkillLevel": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "ParryStance",
+            "macro": "stance parry",
+            "icon": "surrounded-shield",
+            "color": "#fff",
+            "bgColor": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "Become more defensive, but lose offensive power. You also taunt foes. Requires weapon skill 10.",
+            "requireSkillLevel": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Rapidpunch",
+            "macro": "art rapidpunch",
+            "icon": "fire-punch",
+            "color": "#a00",
+            "mode": "lockActivation",
+            "tooltipDesc": "Punch a single target many times in succession.",
+            "requireSkillLevel": 15,
+            "skillTPCost": 10,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -1101,18 +1113,6 @@
             "mode": "lockActivation",
             "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Deals more damage than Charge.",
             "requireSkillLevel": 7,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Rapidpunch",
-            "macro": "art rapidpunch",
-            "icon": "fire-punch",
-            "color": "#a00",
-            "mode": "lockActivation",
-            "tooltipDesc": "Punch a single target many times in succession.",
-            "requireSkillLevel": 15,
-            "skillTPCost": 10,
             "isSystem": true,
             "requiresLearn": true
         }
