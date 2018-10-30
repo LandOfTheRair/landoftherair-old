@@ -248,6 +248,13 @@
       - Catacombs Raw Tourmaline
       - Catacombs Raw Amber
 
+  drops:
+    - result: Risan Frost Larimar
+      chance: 1
+      maxChance: 10
+    - result: Silver Scale
+      chance: -1
+
   usableSkills:
     - Thruststrike
     - Haste
@@ -268,3 +275,154 @@
     HolyProtection: 10
     Swashbuckler: 5
     DoubleThrust: 1
+
+- npcId: Catacombs Lich
+  name: archlich
+  monsterClass: Undead
+  affiliation: The Royal Undeath
+  hostility: Always
+  baseClass: Mage
+  sprite: 480
+  alignment: Evil
+  stats: 24
+  skillLevels: 15
+  level: 45
+
+  skillOnKill: 2000
+
+  otherStats:
+    con: 40
+    accuracy: 10
+    offense: 10
+    perception: 500
+    mpregen: 100
+    defense: 50
+    offense: 50
+    accuracy: 20
+    damageFactor: 0.5
+
+  gold:
+    min: 123050
+    max: 133700
+
+  hp:
+    min: 10287950
+    max: 10291350
+
+  mp:
+    min: 100000
+    max: 100000
+
+  giveXp:
+    min: 10939000
+    max: 10995000
+
+  rightHand: Risan Royal Spear
+
+  gear:
+    Armor: Catacombs Bone Tunic
+    Hands: Catacombs Lair Claws
+    Robe1: Catacombs Lich Cloak
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'magical'
+        potency: 0.25
+
+    - name: Attribute
+      effectData:
+        damageType: 'physical'
+        potency: 0.25
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'gear.Armor'
+      chance: -1
+    - drop: 'gear.Robe1'
+      chance: -1
+
+  drops:
+    - result: Risan Frost Larimar
+      chance: -1
+    - result: Silver Scale
+      chance: -1
+    - result: Catacombs Lich Phylactery
+      chance: -1
+
+  dropPool:
+    choose:
+      min: 1
+      max: 3
+    items:
+      - Catacombs Raw Garnet
+      - Catacombs Raw Turquoise
+      - Catacombs Raw Topaz
+      - Catacombs Raw Tourmaline
+      - Catacombs Raw Amber
+
+  usableSkills:
+    - result: Thruststrike
+      chance: 100
+    - result: RiftSlash
+      chance: 50
+    - result: Haste
+      chance: 100
+    - result: ImbueFrost
+      chance: 100
+    - result: Afflict
+      chance: 100
+    - result: MagicBolt
+      chance: 100
+    - result: Absorption
+      chance: 100
+    - result: MagicShield
+      chance: 100
+    - result: DarkVision
+      chance: 100
+    - result: TrueSight
+      chance: 100
+    - result: Shield
+      chance: 100
+    - result: BarFire
+      chance: 100
+    - result: BarFrost
+      chance: 100
+    - result: Aid
+      chance: 100
+    - result: Daze
+      chance: 100
+    - result: Frostspikes
+      chance: 100
+    - result: HolyAura
+      chance: 100
+    - result: Plague
+      chance: 50
+    - result: Poison
+      chance: 50
+    - result: Disease
+      chance: 50
+    - result: Venom
+      chance: 50
+    - result: Dispel
+      chance: 10
+    - result: CatacombsLichSummon
+      chance: 10
+
+  traitLevels:
+    SterlingArmor: 2
+    OffhandFinesse: 5
+    BoostedBoost: 1
+    Riposte: 3
+    HolyProtection: 10
+    Swashbuckler: 5
+    DoubleThrust: 1
+    ConcussiveBolt: 5
+    ContagiousPlague: 1
+    CripplingPlague: 1
+    DebilitatingDisease: 1
+    EffectiveSupporter: 10
+    HolyAffliction: 1
+    DegenerativeVenom: 1
+    CorrosivePoison: 1

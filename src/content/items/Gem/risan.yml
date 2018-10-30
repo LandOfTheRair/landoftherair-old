@@ -232,8 +232,8 @@
   maxEncrusts: 1
 
   stats:
-    hp: 300
-    mp: 300
+    hp: 500
+    mp: 500
 
   requirements:
     level: 45

@@ -24611,6 +24611,44 @@
                  "width":64,
                  "x":768,
                  "y":2048
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":3860,
+                 "name":"Archlich Spawner",
+                 "properties":
+                    {
+                     "initialSpawn":1,
+                     "lairName":"Catacombs Lich",
+                     "maxSpawn":1,
+                     "randomWalkRadius":10,
+                     "respawnRate":14400,
+                     "script":"global\/lair",
+                     "shouldStrip":true,
+                     "stripRadius":1,
+                     "stripX":32,
+                     "stripY":12
+                    },
+                 "propertytypes":
+                    {
+                     "initialSpawn":"int",
+                     "lairName":"string",
+                     "maxSpawn":"int",
+                     "randomWalkRadius":"int",
+                     "respawnRate":"int",
+                     "script":"string",
+                     "shouldStrip":"bool",
+                     "stripRadius":"int",
+                     "stripX":"int",
+                     "stripY":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5312,
+                 "y":4416
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -25586,7 +25624,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":3860,
+ "nextobjectid":3862,
  "orientation":"orthogonal",
  "properties":
     {
