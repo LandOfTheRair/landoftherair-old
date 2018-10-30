@@ -25,12 +25,16 @@ export class Take extends Command {
     const containerItems = player[container].allItems;
     let takeItemSlot = -1;
 
-    containerItems.forEach((checkItem, i) => {
-      if(takeItemSlot >= 0) return;
+    for(let i = containerItems.length; i > 0; i--) {
+      if(takeItemSlot >= 0) continue;
 
+      const checkItem = containerItems[i];
+      if(!checkItem) continue;
+
+      if(itemTypeOrName === 'any') takeItemSlot = i;
       if(checkItem.itemClass.toLowerCase() === itemTypeOrName) takeItemSlot = i;
       if(includes(checkItem.name.toLowerCase(), itemTypeOrName)) takeItemSlot = i;
-    });
+    }
 
     if(takeItemSlot === -1) return player.sendClientMessage('Item was not found.');
 
