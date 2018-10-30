@@ -1,4 +1,6 @@
 
+export * from './Leash';
+
 export * from './DoubleAttack';
 export * from './SetTrap';
 

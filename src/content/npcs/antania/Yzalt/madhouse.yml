@@ -92,20 +92,36 @@
     Robe1: Insane Ranata Robe
 
   usableSkills:
-    - Afflict
-    - HolyFire
-    - Charge
-    - Blind
-    - Antidote
-    - Vision
-    - Snare
-    - BarNecro
-    - Hide
-    - DarkVision
-    - TrueSight
-    - HolyAura
-    - FindFamiliar
-    - Daze
+    - result: Afflict
+      chance: 100
+    - result: HolyFire
+      chance: 100
+    - result: Charge
+      chance: 100
+    - result: Blind
+      chance: 100
+    - result: Antidote
+      chance: 100
+    - result: Vision
+      chance: 100
+    - result: Snare
+      chance: 100
+    - result: BarNecro
+      chance: 100
+    - result: Hide
+      chance: 100
+    - result: DarkVision
+      chance: 100
+    - result: TrueSight
+      chance: 100
+    - result: HolyAura
+      chance: 100
+    - result: FindFamiliar
+      chance: 100
+    - result: Daze
+      chance: 100
+    - result: Leash
+      chance: 10
 
   traitLevels:
     FindFamiliarLight: 1

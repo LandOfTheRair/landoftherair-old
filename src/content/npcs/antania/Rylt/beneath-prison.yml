@@ -52,13 +52,22 @@
     Head: Crazed Tonwin Helm
 
   usableSkills:
-    - Charge
-    - DarkVision
-    - TrueSight
-    - ShadowMeld
-    - EagleEye
-    - Backstab
-    - Hide
+    - result: Charge
+      chance: 100
+    - result: DarkVision
+      chance: 100
+    - result: TrueSight
+      chance: 100
+    - result: ShadowMeld
+      chance: 100
+    - result: EagleEye
+      chance: 100
+    - result: Backstab
+      chance: 100
+    - result: Hide
+      chance: 100
+    - result: Leash
+      chance: 10
 
   copyDrops:
     - drop: 'rightHand'

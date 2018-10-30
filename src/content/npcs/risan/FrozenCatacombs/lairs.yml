@@ -41,6 +41,8 @@
       chance: 50
     - result: Hail
       chance: 25
+    - result: Leash
+      chance: 10
 
   baseEffects:
     - name: Mood
@@ -125,6 +127,8 @@
       chance: 25
     - result: ChillBiteStrong
       chance: 50
+    - result: Leash
+      chance: 10
 
   drops:
     - result: Risan Frost Larimar
@@ -423,6 +427,8 @@
       chance: 10
     - result: CatacombsLichSummon
       chance: 10
+    - result: Leash
+      chance: 10
 
   traitLevels:
     SterlingArmor: 2
@@ -440,3 +446,8 @@
     HolyAffliction: 1
     DegenerativeVenom: 1
     CorrosivePoison: 1
+
+  combatMessages:
+    - "Gwahaha, you shall meet your end here in this frozen tomb!"
+    - "My students shall rise up and bring a proper rule to this world!"
+    - "The ancient Risan kingdom will take power once more!"

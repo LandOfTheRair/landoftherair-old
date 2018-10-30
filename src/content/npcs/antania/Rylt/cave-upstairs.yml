@@ -53,18 +53,32 @@
     Robe2: Crazed Saraxa Robe
 
   usableSkills:
-    - Charge
-    - Darkness
-    - EnergyBolt
-    - FireMist
-    - Combust
-    - Hail
-    - DarkVision
-    - BarFire
-    - BarFrost
-    - Absorption
-    - TrueSight
-    - MagicShield
+    - result: Charge
+      chance: 100
+    - result: Darkness
+      chance: 100
+    - result: EnergyBolt
+      chance: 100
+    - result: FireMist
+      chance: 100
+    - result: Combust
+      chance: 100
+    - result: Hail
+      chance: 100
+    - result: DarkVision
+      chance: 100
+    - result: BarFire
+      chance: 100
+    - result: BarFrost
+      chance: 100
+    - result: Absorption
+      chance: 100
+    - result: TrueSight
+      chance: 100
+    - result: MagicShield
+      chance: 100
+    - result: Leash
+      chance: 10
 
   copyDrops:
     - drop: 'rightHand'

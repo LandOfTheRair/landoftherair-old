@@ -1169,7 +1169,10 @@
   rightHand: Sedgwick's Greataxe
 
   usableSkills:
-    - Charge
+    - result: Charge
+      chance: 200
+    - result: Leash
+      chance: 10
 
   gear:
     Armor: Yzalt Fungus Ringmail Tunic
