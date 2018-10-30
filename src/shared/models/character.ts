@@ -1568,7 +1568,7 @@ export class Character {
   }
 
   public youDontSeeThatPerson(uuid: string): void {
-    this.sendClientMessage('You do not see that person.');
+    this.sendClientMessage({ message: 'You do not see that person.', target: null });
   }
 
   public loseExpOrSkill(opts: { lostXPMin?: number, lostXPMax?: number, lostSkillMin?: number, lostSkillMax?: number }) {
