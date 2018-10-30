@@ -1084,7 +1084,7 @@ export class ColyseusGameService {
       if(action !== 'tick') return;
 
       // if no macro, not in game, no target - bail
-      if(!currentMacro || !currentMacro.macro || !this.inGame || !this.currentTarget || !this.autoAttack) return;
+      if(!currentMacro || !this.character || !currentMacro.macro || !this.inGame || !this.currentTarget || !this.autoAttack) return;
 
       // allow for interrupting auto attack
       if(this.cancelNextAutoAction) {
