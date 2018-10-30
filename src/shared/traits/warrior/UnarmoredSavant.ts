@@ -10,7 +10,7 @@ export class UnarmoredSavant extends Trait {
 
   static baseClass = 'Warrior';
   static traitName = 'UnarmoredSavant';
-  static description = 'Gain a 40% bonus to mitigation if you are using a fur, robe, or cloak in your main armor slot.';
+  static description = 'You will have 40 base mitigation if you are using a fur, robe, or cloak in your main armor slot.';
   static icon = 'robe';
 
   static upgrades = [
