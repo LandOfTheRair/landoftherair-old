@@ -10,6 +10,8 @@ export const setup = async (npc: NPC) => {
     'Mend Bottle (5oz)',
     'Instant Heal Bottle',
     'Instant Heal Bottle (5oz)',
+    { name: 'EtherFire Potion', valueMult: 25 },
+    { name: 'BeastRipper Potion', valueMult: 25 },
     { name: 'ScaleShredder Potion', valueMult: 25 },
   ];
 
