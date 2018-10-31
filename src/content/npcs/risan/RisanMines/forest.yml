@@ -60,6 +60,7 @@
       maxChance: 25
 
   tansFor: Crazed Deer Robe
+  tanSkillRequired: 12
 
 - npcId: Risan Crazed Wolf
   name: crazed wolf
@@ -123,6 +124,7 @@
     max: 25000
 
   tansFor: Crazed Beast Fur
+  tanSkillRequired: 12
 
   spawnMessage: "the howling of a wolf"
   sfx: "wolf"
@@ -191,6 +193,7 @@
     max: 31000
 
   tansFor: Crazed Bear Fur
+  tanSkillRequired: 12
 
   spawnMessage: "a deep roar"
   sfx: "bear"
@@ -255,6 +258,7 @@
     max: 409000
 
   tansFor: Mines Griffon Fur
+  tanSkillRequired: 14
 
   spawnMessage: "the screeching of a crazed griffon"
   leashMessage: "the screeching of a crazed griffon"

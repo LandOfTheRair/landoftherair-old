@@ -74,6 +74,7 @@
       maxChance: 5000
 
   tansFor: Frostlands Sabretooth Robe
+  tanSkillRequired: 14
 
 - npcId: Frostfang
   name: Frostfang
@@ -154,3 +155,4 @@
       maxChance: 100
 
   tansFor: Frostlands Frostfang Robe
+  tanSkillRequired: 16

@@ -79,6 +79,7 @@
     max: 55000
 
   tansFor: Frostlands Yeti Fur
+  tanSkillRequired: 13
 
 - npcId: Frostlands Strong Yeti
   name: yeti
@@ -160,6 +161,7 @@
     max: 75000
 
   tansFor: Frostlands Strong Yeti Fur
+  tanSkillRequired: 14
 
 - npcId: Frostlands Frostgolem
   name: frostgolem
@@ -303,3 +305,4 @@
       maxChance: 10
 
   tansFor: Abomniblus Fur
+  tanSkillRequired: 16
