@@ -31,7 +31,7 @@
 - item: Silver Fullplate II
   skillGained: 110
   maxSkillForGains: 18
-  requiredSkill: 15
+  requiredSkill: 14
   xpGained: 100000
   transferOwner: true
   ingredients:
@@ -70,7 +70,7 @@
 - item: Silver Scaleplate II
   skillGained: 110
   maxSkillForGains: 18
-  requiredSkill: 15
+  requiredSkill: 14
   xpGained: 100000
   transferOwner: true
   ingredients:
