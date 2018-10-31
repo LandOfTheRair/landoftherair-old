@@ -82,6 +82,10 @@ export class GameState {
     delete map.properties;
     delete map.propertytypes;
 
+    map.tilesets.forEach(tileset => {
+      delete tileset.terrains;
+    });
+
     const mapWallTiles = map.layers[MapLayer.Walls].data;
 
     // clear air tiles that are on the wall layer because they're see-through
