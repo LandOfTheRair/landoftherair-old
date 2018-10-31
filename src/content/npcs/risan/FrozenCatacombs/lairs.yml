@@ -107,7 +107,8 @@
   monsterClass: Beast
   stats: 25
   skillLevels:
-    Martial: 14
+    Martial: 13
+    Conjuration: 16
   level: 30
 
   otherStats:
@@ -125,7 +126,7 @@
       chance: 100
     - result: IceMist
       chance: 25
-    - result: ChillBiteStrong
+    - result: ChillBiteFrostDragon
       chance: 50
     - result: Leash
       chance: 10
@@ -138,6 +139,11 @@
       chance: -1
 
   baseEffects:
+    - name: Mood
+      effectData:
+        effectInfo:
+          enrageTimer: 300000
+
     - name: Attribute
       effectData:
         damageType: 'magical'

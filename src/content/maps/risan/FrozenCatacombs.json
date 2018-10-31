@@ -17429,28 +17429,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":7616,
-                 "y":3008
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3430,
-                 "name":"Skeleton 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6528,
-                 "y":3520
+                 "x":7104,
+                 "y":1664
                 }, 
                 {
                  "gid":2363,
@@ -17469,28 +17449,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6784,
-                 "y":2624
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3432,
-                 "name":"Skeleton 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":7104,
-                 "y":1536
+                 "x":6528,
+                 "y":2816
                 }, 
                 {
                  "gid":2363,
@@ -17509,28 +17469,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6400,
-                 "y":1152
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3434,
-                 "name":"Skeleton 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6400,
-                 "y":640
+                 "x":6464,
+                 "y":1280
                 }, 
                 {
                  "gid":2363,
@@ -17649,8 +17589,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6144,
-                 "y":640
+                 "x":6208,
+                 "y":768
                 }, 
                 {
                  "gid":2363,
@@ -17670,7 +17610,7 @@
                  "visible":true,
                  "width":64,
                  "x":6528,
-                 "y":1984
+                 "y":2048
                 }, 
                 {
                  "gid":2363,
@@ -17689,48 +17629,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":7616,
-                 "y":1728
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3443,
-                 "name":"Spectre 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-spectre"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6336,
-                 "y":2944
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3444,
-                 "name":"Qell 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-qell"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6208,
-                 "y":3328
+                 "x":7488,
+                 "y":1856
                 }, 
                 {
                  "gid":2363,
@@ -17749,28 +17649,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":7104,
-                 "y":2176
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3446,
-                 "name":"Wight 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-wight"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6912,
-                 "y":2432
+                 "x":6848,
+                 "y":2688
                 }, 
                 {
                  "gid":2363,
@@ -17789,8 +17669,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6464,
-                 "y":2048
+                 "x":6848,
+                 "y":2432
                 }, 
                 {
                  "gid":2363,
@@ -17829,8 +17709,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6016,
-                 "y":896
+                 "x":6912,
+                 "y":1344
                 }, 
                 {
                  "gid":2363,
@@ -17849,8 +17729,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6912,
-                 "y":1344
+                 "x":6528,
+                 "y":960
                 }, 
                 {
                  "gid":2363,
@@ -17869,8 +17749,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6912,
-                 "y":1920
+                 "x":7040,
+                 "y":2176
                 }, 
                 {
                  "gid":2363,
@@ -17889,7 +17769,7 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6528,
+                 "x":6400,
                  "y":3200
                 }, 
                 {
@@ -17909,8 +17789,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6848,
-                 "y":1664
+                 "x":6656,
+                 "y":1728
                 }, 
                 {
                  "gid":2363,
@@ -17935,26 +17815,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3456,
-                 "name":"Ghost 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-ghost"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":7360,
-                 "y":2624
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3457,
                  "name":"Ghost 2F Spawner",
                  "properties":
@@ -17969,8 +17829,8 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":6144,
-                 "y":3584
+                 "x":6336,
+                 "y":3456
                 }, 
                 {
                  "gid":2363,
@@ -18015,26 +17875,6 @@
                 {
                  "gid":2363,
                  "height":64,
-                 "id":3460,
-                 "name":"Nightwalker 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6592,
-                 "y":2752
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
                  "id":3461,
                  "name":"Nightwalker 2F Spawner",
                  "properties":
@@ -18051,26 +17891,6 @@
                  "width":64,
                  "x":7232,
                  "y":3072
-                }, 
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":3462,
-                 "name":"Nightwalker 2F Spawner",
-                 "properties":
-                    {
-                     "script":"risan\/frozencatacombs\/2f-nightwalker"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":6336,
-                 "y":3584
                 }, 
                 {
                  "gid":2363,
