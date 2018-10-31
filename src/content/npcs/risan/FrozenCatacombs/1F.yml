@@ -200,7 +200,7 @@
   baseClass: Healer
   hostility: Always
   stats: 20
-  skillLevels: 9
+  skillLevels: 8
   level: 25
 
   otherStats:

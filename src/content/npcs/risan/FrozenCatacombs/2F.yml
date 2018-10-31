@@ -218,7 +218,7 @@
   baseClass: Healer
   hostility: Always
   stats: 22
-  skillLevels: 10
+  skillLevels: 9
   level: 30
 
   otherStats:
@@ -278,7 +278,7 @@
     - result: Afflict
       chance: 100
     - result: Plague
-      chance: 100
+      chance: 10
     - result: Cure
       chance: 100
     - result: Snare
