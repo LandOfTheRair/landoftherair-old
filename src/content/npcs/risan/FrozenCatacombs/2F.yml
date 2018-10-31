@@ -297,7 +297,6 @@
       chance: 100
 
   traitLevels:
-    HolyAffliction: 1
     NecroticFocus: 1
 
   gold:

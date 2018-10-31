@@ -320,7 +320,6 @@
       chance: 100
 
   traitLevels:
-    HolyAffliction: 3
     NecroticFocus: 3
     CripplingPlague: 1
     StrongerSnare: 1
