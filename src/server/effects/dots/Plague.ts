@@ -46,7 +46,7 @@ export class Plague extends SpellEffect {
 
       this.isContagious = !!caster.getTraitLevel('ContagiousPlague');
 
-      this.effectInfo = { damage, caster: caster.uuid };
+      this.effectInfo = { damage, damageFactor: caster.getTotalStat('damageFactor'), caster: caster.uuid };
       this.flagCasterName(caster.name);
 
     }

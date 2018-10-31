@@ -711,6 +711,10 @@
     min: 516950
     max: 519350
 
+  mp:
+    min: 1000
+    max: 1000
+
   giveXp:
     min: 351000
     max: 357000
@@ -810,6 +814,10 @@
   hp:
     min: 516950
     max: 519350
+
+  mp:
+    min: 1000
+    max: 1000
 
   giveXp:
     min: 351000

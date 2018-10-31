@@ -42,7 +42,7 @@ export class Disease extends SpellEffect {
       this.healerDebilitate = Math.max(1, Math.round(this.potency / 4));
     }
 
-    this.effectInfo = { damage, caster: caster.uuid };
+    this.effectInfo = { damage, damageFactor: caster.getTotalStat('damageFactor'), caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
     this.effectMessage(caster, { message: `You diseased ${target.name}!`, sfx: 'spell-debuff-give' });

@@ -36,7 +36,7 @@ export class Venom extends SpellEffect {
       this.thiefDegenerate = this.potency;
     }
 
-    this.effectInfo = { damage, caster: caster.uuid };
+    this.effectInfo = { damage, damageFactor: caster.getTotalStat('damageFactor'), caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
     this.effectMessage(caster, { message: `You inflicted ${target.name} with a deadly venom!`, sfx: 'spell-debuff-give' });

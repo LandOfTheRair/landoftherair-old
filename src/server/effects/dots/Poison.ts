@@ -36,7 +36,7 @@ export class Poison extends SpellEffect {
       this.thiefCorrode = Math.round(this.potency / 5);
     }
 
-    this.effectInfo = { damage, caster: caster.uuid };
+    this.effectInfo = { damage, damageFactor: caster.getTotalStat('damageFactor'), caster: caster.uuid };
     this.flagCasterName(caster.name);
     target.applyEffect(this);
     this.effectMessage(caster, { message: `You poisoned ${target.name}!`, sfx: 'spell-debuff-give' });

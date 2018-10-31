@@ -922,6 +922,7 @@ export class CombatHelper {
     damage = attacked.isNaturalResource ? 0 : damage;
     const totalDamage = this.dealDamage(attacker, attacked, {
       damage, damageClass, isOverTime, customSfx, ignoreTargetChanges: isAOE,
+      overrideDamageFactor: effect && effect.effectInfo ? effect.effectInfo.damageFactor : null,
       attackerDamageMessage: atkMsg, defenderDamageMessage: defMsg,
       attackerWeapon: {
         itemClass: effect ? effect.name : '???',
@@ -983,7 +984,7 @@ export class CombatHelper {
     attacker: Character,
     defender: Character,
     { damage, damageClass, attackerDamageMessage, defenderDamageMessage, isOverTime, customSfx, ignoreTargetChanges,
-      attackerWeapon, isRanged, isAttackerVisible, isRiposte, isWeak, isMelee }: any
+      attackerWeapon, isRanged, isAttackerVisible, isRiposte, isWeak, isMelee, overrideDamageFactor }: any
   ): number {
 
     if(defender.isDead() || (<any>defender).hostility === 'Never') return;
@@ -1093,7 +1094,12 @@ export class CombatHelper {
 
     if(isWeak && RollerHelper.XInOneHundred(defender.getTraitLevelAndUsageModifier('SterlingArmor'))) damage = 0;
 
-    if(attacker) {
+    // apply either the stored damage factor (for dots) or the normal damage factor (where applicable)
+    if(overrideDamageFactor) {
+      console.log(damage, overrideDamageFactor);
+      damage = Math.floor(damage * overrideDamageFactor);
+
+    } else if(attacker) {
       const damageFactor = attacker.getTotalStat('damageFactor');
       damage = Math.floor(damage * damageFactor);
     }

@@ -35,7 +35,7 @@ export class SearingPurification extends SpellEffect {
     let damage = RollerHelper.diceRoll(this.getTotalDamageRolls(caster), this.getTotalDamageDieSize(caster));
     if(target.alignment === caster.alignment) damage = Math.floor(damage * 0.1);
 
-    this.effectInfo = { damage, caster: caster.uuid };
+    this.effectInfo = { damage, damageFactor: caster.getTotalStat('damageFactor'), caster: caster.uuid };
     this.duration = 5;
     this.flagCasterName(caster.name);
     target.applyEffect(this);

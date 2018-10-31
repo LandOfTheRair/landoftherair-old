@@ -20,6 +20,7 @@ export const Maxes = {
 
 interface EffectInfo {
   damage?: number;
+  damageFactor?: number;
   caster: string;
   casterName?: string;
   isPermanent?: boolean;
