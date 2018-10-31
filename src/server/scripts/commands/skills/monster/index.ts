@@ -22,6 +22,7 @@ export * from './ShredTwentyPercent';
 export * from './SkillSuckWeak';
 
 export * from './specific/CatacombsLichSummon';
+export * from './specific/ChillBiteFrostDragon';
 export * from './specific/GhostWail';
 export * from './specific/DedlaenCryptThingPunch';
 export * from './specific/DedlaenDragonTurtleFire';

@@ -37,7 +37,7 @@
       chance: 100
     - result: IceMist
       chance: 10
-    - result: ChillBiteStrong
+    - result: ChillBiteFrostDragon
       chance: 50
     - result: Hail
       chance: 25
