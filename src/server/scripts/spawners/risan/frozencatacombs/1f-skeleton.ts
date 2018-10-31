@@ -11,7 +11,7 @@ export class CatacombsSkeleton1FSpawner extends Spawner {
     super(room, opts, {
       respawnRate: 15,
       initialSpawn: 2,
-      maxCreatures: 5,
+      maxCreatures: 3,
       spawnRadius: 1,
       randomWalkRadius: 15,
       leashRadius: 25,
