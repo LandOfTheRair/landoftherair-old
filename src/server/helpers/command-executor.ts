@@ -47,6 +47,7 @@ export class CommandExecutor {
   }
 
   static getSkillRef(skillName) {
+    if(!skillName) return null;
     return skillHash[skillName.toLowerCase()];
   }
 
