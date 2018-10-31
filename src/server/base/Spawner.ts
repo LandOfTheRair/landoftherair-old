@@ -524,7 +524,7 @@ export class Spawner {
     if(!this.canSlowDown) return false;
     const playersInRange = this.room.state.getAllPlayersInRange(this, this.leashRadius);
     if(playersInRange.length === 0) return true;
-    return !some(playersInRange, player => player.$$spawnerRegionId === this.spawnerRegionId);
+    return !some(playersInRange, player => this.canActivateFor(player));
   }
 
   npcTick(canMove: boolean, playerLocations: any): void {
@@ -579,7 +579,11 @@ export class Spawner {
 
   public canActivateFor(player: Player): boolean {
     if(player.$$spawnerRegionId && this.spawnerRegionId && player.$$spawnerRegionId !== this.spawnerRegionId) return false;
-    if(player.distFrom(this) > this.leashRadius) return false;
+
+    const tileDist = player.distFrom(this);
+    if(tileDist <= 5) return true;
+    if(tileDist > this.leashRadius) return false;
+
     return true;
   }
 
