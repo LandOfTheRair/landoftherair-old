@@ -200,12 +200,14 @@ export class GameWorld extends Room<GameState> {
     this.marketHelper = new MarketHelper();
     this.analyticsHelper = new AnalyticsHelper();
 
+    const mapData = this.formatMapData(cloneDeep(require(opts.mapPath)));
+
     this.setPatchRate(1000);
     this.setSeatReservationTime(30);
     this.setSimulationInterval(this.tick.bind(this), TICK_TIMER);
     this.setState(new GameState({
       players: [],
-      map: cloneDeep(require(opts.mapPath)),
+      map: mapData,
       mapName: opts.mapName
     }));
 
@@ -388,6 +390,30 @@ export class GameWorld extends Room<GameState> {
     data.args = (data.args || '').trim().split('  ').join(' ');
 
     CommandExecutor.queueCommand(player, data.command, data);
+  }
+
+  private formatMapData(mapData) {
+    const layer = mapData.layers[MapLayer.SpawnerZones];
+
+    let currentSpawnId = 1;
+
+    if(!layer.objects.length) {
+      layer.objects.push({
+        x: 0,
+        y: 0,
+        width: mapData.width * 64,
+        height: mapData.height * 64
+      });
+    }
+
+    layer.objects.forEach(obj => {
+      const spawnRegionId = get(obj, 'properties.spawnerRegionId');
+      if(!spawnRegionId) {
+        set(obj, 'properties.spawnerRegionId', currentSpawnId++);
+      }
+    });
+
+    return mapData;
   }
 
   public flagClientReady(client, player) {
@@ -898,7 +924,7 @@ export class GameWorld extends Room<GameState> {
       respawnRate: 0
     });
 
-    this.spawners.push(normalNPCSpawner);
+    this.addSpawner(normalNPCSpawner);
 
     npcs.forEach(async npcData => {
       const data: any = npcData.properties || {};
@@ -953,7 +979,7 @@ export class GameWorld extends Room<GameState> {
       }
 
       const spawnerObject = new spawnerProto(this, { map: this.state.mapName, x: spawnerX, y: spawnerY, name: spawnerData.name }, properties);
-      this.spawners.push(spawnerObject);
+      this.addSpawner(spawnerObject);
     });
   }
 

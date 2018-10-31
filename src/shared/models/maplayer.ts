@@ -13,5 +13,6 @@ export const MapLayer = {
   Spawners: 10,
   RegionDescriptions: 11,
   BackgroundMusic: 12,
-  Succorport: 13
+  Succorport: 13,
+  SpawnerZones: 14
 };

@@ -1134,6 +1134,16 @@
          "visible":false,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"SpawnerZones",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
  "nextobjectid":224,
  "orientation":"orthogonal",
@@ -1154,7 +1164,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.4",
  "tileheight":64,
  "tilesets":[
         {

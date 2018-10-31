@@ -18711,6 +18711,16 @@
          "visible":false,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"SpawnerZones",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
  "nextobjectid":8568,
  "orientation":"orthogonal",
@@ -18741,7 +18751,7 @@
      "script":"string"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.1",
+ "tiledversion":"1.1.4",
  "tileheight":64,
  "tilesets":[
         {
@@ -20567,12 +20577,12 @@
          "columns":40,
          "firstgid":2577,
          "image":"..\/..\/..\/client\/assets\/spritesheets\/creatures.png",
-         "imageheight":2944,
+         "imageheight":3008,
          "imagewidth":2560,
          "margin":0,
          "name":"Creatures",
          "spacing":0,
-         "tilecount":1840,
+         "tilecount":1880,
          "tileheight":64,
          "tilewidth":64
         }],

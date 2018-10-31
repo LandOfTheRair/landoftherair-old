@@ -12,6 +12,8 @@ import { GameWorld } from '../rooms/GameWorld';
 import { StatName } from '../../shared/models/character';
 import { RollerHelper } from '../../shared/helpers/roller-helper';
 import { Currency } from '../../shared/helpers/holiday-helper';
+import { Player } from '../../shared/models/player';
+import { MapLayer } from '../../shared/models/maplayer';
 
 export class Spawner {
 
@@ -19,6 +21,7 @@ export class Spawner {
   y: number;
   map: string;
   name: string;
+  spawnerRegionId: string|number;
 
   currentTick = 0;
 
@@ -97,6 +100,8 @@ export class Spawner {
     this.map = map;
     this.name = name;
 
+    this.determineSpawnerRegion();
+
     // analysis script
     if(!room) return;
 
@@ -104,6 +109,15 @@ export class Spawner {
     if(room.disableCreatureSpawn) this.currentTick = 0;
 
     if(this.doInitialSpawnImmediately && this.currentTick === 0) this.doInitialSpawn();
+  }
+
+  private determineSpawnerRegion() {
+    this.room.state.map.layers[MapLayer.SpawnerZones].objects.forEach(zone => {
+      if(this.spawnerRegionId) return;
+      if(!this.room.state.isInRegion({ x: this.x, y: this.y }, zone)) return;
+
+      this.spawnerRegionId = zone.properties.spawnerRegionId;
+    });
   }
 
   private doInitialSpawn() {
@@ -508,7 +522,9 @@ export class Spawner {
 
   shouldSlowDown() {
     if(!this.canSlowDown) return false;
-    return this.room.state.getAllPlayersInRange(this, this.leashRadius).length === 0;
+    const playersInRange = this.room.state.getAllPlayersInRange(this, this.leashRadius);
+    if(playersInRange.length === 0) return true;
+    return !some(playersInRange, player => player.$$spawnerRegionId === this.spawnerRegionId);
   }
 
   npcTick(canMove: boolean, playerLocations: any): void {
@@ -559,6 +575,12 @@ export class Spawner {
 
   private increaseCurrentTick() {
     this.currentTick++;
+  }
+
+  public canActivateFor(player: Player): boolean {
+    if(player.$$spawnerRegionId && this.spawnerRegionId && player.$$spawnerRegionId !== this.spawnerRegionId) return false;
+    if(player.distFrom(this) > this.leashRadius) return false;
+    return true;
   }
 
 }

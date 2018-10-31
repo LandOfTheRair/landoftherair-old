@@ -112,6 +112,9 @@ export class Player extends Character {
   @nonenumerable
   public $$spawnerSteps: number;
 
+  @nonenumerable
+  public $$spawnerRegionId: string|number;
+
   get party(): Party {
     return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
   }

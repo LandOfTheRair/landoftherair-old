@@ -63,6 +63,7 @@ test('All maps have layers in the correct order', t => {
     t.is(layers[11].name, 'RegionDescriptions', tagFor(map, 'maplayer'));
     t.is(layers[12].name, 'BackgroundMusic', tagFor(map, 'maplayer'));
     t.is(layers[13].name, 'Succorport', tagFor(map, 'maplayer'));
+    t.is(layers[14].name, 'SpawnerZones', tagFor(map, 'maplayer'));
   });
 });
 

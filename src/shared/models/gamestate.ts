@@ -438,8 +438,8 @@ export class GameState {
   /**
    * THIS FUNCTION GETS PLAYERS REGARDLESS OF SIGHT
    */
-  getAllPlayersInRange(ref: { x: number, y: number }, radius: number): Character[] {
-    return this.getAllPlayersFromQuadtrees(ref, radius);
+  getAllPlayersInRange(ref: { x: number, y: number }, radius: number): Player[] {
+    return <Player[]>this.getAllPlayersFromQuadtrees(ref, radius);
   }
 
   getPlayersInRange(ref: Character, radius, except: string[] = [], useSight = true): Character[] {
@@ -566,15 +566,16 @@ export class GameState {
     });
   }
 
-  isInRegion(player, reg) {
-    const x = (reg.x / 64);
-    const y = (reg.y / 64);
+  isInRegion({ x, y }, reg) {
+    const rx = (reg.x / 64);
+    const ry = (reg.y / 64);
     const width = reg.width / 64;
     const height = reg.height / 64;
-    return player.x >= x
-      && player.x < x + width
-      && player.y >= y
-      && player.y < y + height;
+
+    return x >= rx
+      && x < rx + width
+      && y >= ry
+      && y < ry + height;
   };
 
   resetPlayerStatus(player: Player, ignoreMessages = false): void {
@@ -630,6 +631,9 @@ export class GameState {
 
     const bgmObj: any = filter(this.map.layers[MapLayer.BackgroundMusic].objects, reg => this.isInRegion(player, reg))[0];
     player.bgmSetting = bgmObj ? bgmObj.name : 'wilderness';
+
+    const spawnerRegionObj = filter(this.map.layers[MapLayer.SpawnerZones].objects, reg => this.isInRegion(player, reg))[0];
+    player.$$spawnerRegionId = spawnerRegionObj ? spawnerRegionObj.properties.spawnerRegionId : null;
 
     if(hasNewRegion && regionDesc) {
       player.$$lastRegion = regionDesc;

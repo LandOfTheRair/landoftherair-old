@@ -106,7 +106,7 @@ export class MoveHelper {
 
   static wakeUpNearbySpawners(player: Player) {
     player.$$room.allSpawners.forEach(spawner => {
-      if(player.distFrom(spawner) > spawner.leashRadius) return;
+      if(!spawner.canActivateFor(player)) return;
       spawner.speedUp();
     });
   }
@@ -232,6 +232,8 @@ export class MoveHelper {
     }
 
     room.teleport(player, { x: teleportX, y: teleportY, newMap: teleportMap });
+
+    MoveHelper.wakeUpNearbySpawners(player);
 
     if(isFall) {
       const hpLost = Math.floor(player.hp.maximum * ((damagePercent || 15) / 100));
