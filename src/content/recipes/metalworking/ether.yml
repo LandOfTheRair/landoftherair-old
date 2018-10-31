@@ -1,4 +1,5 @@
 
+# FULLPLATES
 - item: Ether Fullplate
   skillGained: 20
   maxSkillForGains: 10
@@ -18,6 +19,26 @@
     - Ether Fullplate
     - Ether Scale (Refined)
 
+- item: Silver Fullplate
+  skillGained: 80
+  maxSkillForGains: 15
+  requiredSkill: 12
+  xpGained: 50000
+  ingredients:
+    - Risan Breastplate
+    - Silver Scale
+
+- item: Silver Fullplate II
+  skillGained: 110
+  maxSkillForGains: 18
+  requiredSkill: 15
+  xpGained: 100000
+  transferOwner: true
+  ingredients:
+    - Silver Fullplate
+    - Silver Scale (Refined)
+
+# SCALEPLATES
 - item: Ether Scaleplate
   skillGained: 20
   maxSkillForGains: 10
@@ -37,6 +58,26 @@
     - Ether Scaleplate
     - Ether Scale (Refined)
 
+- item: Silver Scaleplate
+  skillGained: 80
+  maxSkillForGains: 15
+  requiredSkill: 12
+  xpGained: 50000
+  ingredients:
+    - Risan Scalemail Tunic
+    - Silver Scale
+
+- item: Silver Scaleplate II
+  skillGained: 110
+  maxSkillForGains: 18
+  requiredSkill: 15
+  xpGained: 100000
+  transferOwner: true
+  ingredients:
+    - Silver Scaleplate
+    - Silver Scale (Refined)
+
+# ETHER WEAPONS
 - item: Ether Broadsword
   skillGained: 50
   maxSkillForGains: 8

@@ -24,3 +24,33 @@
 
   requirements:
     level: 21
+
+- name: Silver Scaleplate
+  sprite: 302
+  stats:
+    defense: 3
+    armorClass: 30
+    iceResist: 300
+    energyResist: 400
+    necroticResist: 400
+  desc: "a shining silver scaleplate made of silver scales"
+  binds: true
+  value: 5000
+
+  requirements:
+    level: 30
+
+- name: Silver Scaleplate II
+  sprite: 955
+  stats:
+    defense: 5
+    armorClass: 35
+    iceResist: 500
+    energyResist: 600
+    necroticResist: 600
+  desc: "a shining silver scaleplate, twice refined, forged with refined silver scales"
+  binds: true
+  value: 15000
+
+  requirements:
+    level: 40

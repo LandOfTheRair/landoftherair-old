@@ -26,3 +26,34 @@
 
   requirements:
     level: 25
+
+
+- name: Silver Fullplate
+  sprite: 528
+  stats:
+    offense: 3
+    armorClass: 35
+    iceResist: 250
+    energyResist: 325
+    necroticResist: 325
+  desc: "a silver fullplate made of refined silver ether scales"
+  binds: true
+  value: 5000
+
+  requirements:
+    level: 30
+
+- name: Silver Fullplate II
+  sprite: 529
+  stats:
+    offense: 5
+    armorClass: 40
+    iceResist: 400
+    energyResist: 450
+    necroticResist: 450
+  desc: "a silver fullplate, twice refined, forged with silver ether scales"
+  binds: true
+  value: 15000
+
+  requirements:
+    level: 40
