@@ -45,7 +45,9 @@ export class GroundHelper {
 
     const pushArr = this[this.chooseArrayFor(baseItem)];
 
-    pushArr.push({
+    const func = baseItem.owner ? 'push' : 'unshift';
+
+    pushArr[func]({
       uuid: baseItem.uuid,
       itemClass: baseItem.itemClass,
       name: baseItem.name,
