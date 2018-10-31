@@ -1,7 +1,7 @@
 
 - item: Basic Machleum Ring
   skillGained: 20
-  maxSkillForGains: 10
+  maxSkillForGains: 15
   requiredSkill: 10
   xpGained: 25000
   ingredients:
