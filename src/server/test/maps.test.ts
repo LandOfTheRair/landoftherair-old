@@ -45,6 +45,27 @@ test('All maps have valid script references', t => {
   });
 });
 
+test('All maps have layers in the correct order', t => {
+  allMaps.forEach(map => {
+    const layers = map.layers;
+
+    t.is(layers[0].name, 'Terrain', tagFor(map, 'maplayer'));
+    t.is(layers[1].name, 'Floors', tagFor(map, 'maplayer'));
+    t.is(layers[2].name, 'Fluids', tagFor(map, 'maplayer'));
+    t.is(layers[3].name, 'Foliage', tagFor(map, 'maplayer'));
+    t.is(layers[4].name, 'Walls', tagFor(map, 'maplayer'));
+    t.is(layers[5].name, 'Decor', tagFor(map, 'maplayer'));
+    t.is(layers[6].name, 'DenseDecor', tagFor(map, 'maplayer'));
+    t.is(layers[7].name, 'OpaqueDecor', tagFor(map, 'maplayer'));
+    t.is(layers[8].name, 'Interactables', tagFor(map, 'maplayer'));
+    t.is(layers[9].name, 'NPCs', tagFor(map, 'maplayer'));
+    t.is(layers[10].name, 'Spawners', tagFor(map, 'maplayer'));
+    t.is(layers[11].name, 'RegionDescriptions', tagFor(map, 'maplayer'));
+    t.is(layers[12].name, 'BackgroundMusic', tagFor(map, 'maplayer'));
+    t.is(layers[13].name, 'Succorport', tagFor(map, 'maplayer'));
+  });
+});
+
 test('All maps have the correct number of tilesets in the correct order', t => {
   allMaps.forEach(map => {
     const tilesets = map.tilesets;
