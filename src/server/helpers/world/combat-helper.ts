@@ -1096,7 +1096,6 @@ export class CombatHelper {
 
     // apply either the stored damage factor (for dots) or the normal damage factor (where applicable)
     if(overrideDamageFactor) {
-      console.log(damage, overrideDamageFactor);
       damage = Math.floor(damage * overrideDamageFactor);
 
     } else if(attacker) {
