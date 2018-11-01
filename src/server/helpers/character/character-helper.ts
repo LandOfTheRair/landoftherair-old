@@ -116,14 +116,16 @@ export class CharacterHelper {
     if(char.$$corpseRef && char.$$corpseRef.$heldBy) {
       const holder = char.$$room.state.findPlayer(char.$$corpseRef.$heldBy);
 
-      if(char.isPlayer()) {
-        char.$$room.setPlayerXY(char, holder.x, holder.y);
-        char.fov = cloneDeep(holder.fov);
-        char.$$room.updateFOV(char);
+      if(holder) {
+        if(char.isPlayer()) {
+          char.$$room.setPlayerXY(char, holder.x, holder.y);
+          char.fov = cloneDeep(holder.fov);
+          char.$$room.updateFOV(char);
 
-      } else {
-        char.x = holder.x;
-        char.y = holder.y;
+        } else {
+          char.x = holder.x;
+          char.y = holder.y;
+        }
       }
     }
 
