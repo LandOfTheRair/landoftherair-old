@@ -1,5 +1,5 @@
 
-import { random } from 'lodash';
+import { random, isNumber } from 'lodash';
 
 import { NPC } from '../../../../../shared/models/npc';
 import { Player } from '../../../../../shared/models/player';
@@ -21,12 +21,16 @@ export const responses = (npc: NPC) => {
   const currentTargets = {};
   const scores = {};
   const rounds = {};
+  const clearTimers = {};
 
   const cleanUpPlayerData = (uuid: string) => {
+    if(clearTimers[uuid]) clearTimers[uuid].clear();
+
     delete currentNPCRefs[uuid];
     delete currentTargets[uuid];
     delete scores[uuid];
     delete rounds[uuid];
+    delete clearTimers[uuid];
   };
 
   const startTargetPractice = (player: Player) => {
@@ -50,7 +54,7 @@ export const responses = (npc: NPC) => {
       if(rounds[uuid] > 10) {
         player.receiveMessage(npc, `Well done! Come see me for your reward!`);
 
-        npc.$$room.clock.setTimeout(() => {
+        clearTimers[uuid] = npc.$$room.clock.setTimeout(() => {
           cleanUpPlayerData(uuid);
         }, 60000);
         return;
@@ -106,9 +110,9 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(scores[player.uuid]) {
+      if(isNumber(scores[player.uuid])) {
         if(rounds[player.uuid] >= 10) {
-          const tokens = scores[player.uuid] * 10;
+          const tokens = Math.max(10, scores[player.uuid] * 10);
           player.earnCurrency(Currency.Thanksgiving, tokens, 'Planst');
           player.sendClientMessage(`Planst hands you ${tokens} holiday tokens!`);
 
