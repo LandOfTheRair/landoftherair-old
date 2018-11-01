@@ -100,7 +100,7 @@ export const responses = (npc: NPC) => {
       if(scores[player.uuid]) {
         if(rounds[player.uuid] >= 10) {
           const tokens = scores[player.uuid] * 10;
-          player.earnCurrency(Currency.Thanksgiving, tokens, 'Koda');
+          player.earnCurrency(Currency.Thanksgiving, tokens, 'Planst');
           player.sendClientMessage(`Planst hands you ${tokens} holiday tokens!`);
 
           if(scores[player.uuid] === 10 && player.rightHand && player.rightHand.name === 'Thanksgiving Blunderbuss') {
