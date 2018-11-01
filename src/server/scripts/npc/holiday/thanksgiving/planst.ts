@@ -40,7 +40,7 @@ export const responses = (npc: NPC) => {
     const uuid = player.uuid;
 
     const spawnNPCS = async () => {
-      
+
       const doesPlayerExistStill = npc.$$room.state.findPlayer(uuid);
 
       if(!player || !doesPlayerExistStill) {

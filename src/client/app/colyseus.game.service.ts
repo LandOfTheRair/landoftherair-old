@@ -574,7 +574,9 @@ export class ColyseusGameService {
   }
 
   private updateActiveWindowForGameWindow(window: string) {
-    this.localStorage.store('activeWindow', window);
+    setTimeout(() => {
+      this.localStorage.store('activeWindow', window);
+    });
   }
 
   private updateLocker(updateLocker: Locker) {
