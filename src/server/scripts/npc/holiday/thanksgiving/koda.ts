@@ -17,7 +17,7 @@ export const setup = async (npc: NPC) => {
 };
 
 const tokenTable = [
-  { result: 1,      chance: 50  },
+  { result: 1,      chance: 15  },
   { result: 10,     chance: 300 },
   { result: 15,     chance: 300 },
   { result: 25,     chance: 300 },
@@ -28,10 +28,10 @@ const tokenTable = [
 ];
 
 const itemTable = [
-  { chance: 400,  result: 'Thanksgiving Corn' },
-  { chance: 400,  result: 'Thanksgiving Arrows' },
-  { chance: 400,  result: 'Thanksgiving Cornbread' },
-  { chance: 400,  result: 'Rune Scroll - Slow Digestion I' },
+  { chance: 800,  result: 'Thanksgiving Corn' },
+  { chance: 800,  result: 'Thanksgiving Arrows' },
+  { chance: 800,  result: 'Thanksgiving Cornbread' },
+  { chance: 800,  result: 'Rune Scroll - Slow Digestion I' },
   { chance: 300,  result: 'Gold Coin' },
   { chance: 200,  result: 'Thanksgiving Gem' },
   { chance: 150,  result: 'Rune Scroll - Slow Digestion II' },
