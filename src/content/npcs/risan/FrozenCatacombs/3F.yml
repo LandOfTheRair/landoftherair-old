@@ -15,8 +15,8 @@
     perception: 250
     offense: 30
     accuracy: 30
-    armorClass: 40
-    defense: 40
+    armorClass: 30
+    defense: 30
     damageFactor: 0.2
 
   rightHand:
@@ -137,8 +137,8 @@
     perception: 250
     offense: 30
     accuracy: 30
-    armorClass: 40
-    defense: 40
+    armorClass: 30
+    defense: 30
     damageFactor: 0.2
 
   rightHand:
@@ -238,8 +238,8 @@
     perception: 250
     offense: 30
     accuracy: 30
-    armorClass: 40
-    defense: 40
+    armorClass: 30
+    defense: 30
 
   rightHand:
     - result: Catacombs Mace 3F
@@ -365,8 +365,8 @@
     perception: 250
     offense: 30
     accuracy: 30
-    armorClass: 40
-    defense: 40
+    armorClass: 30
+    defense: 30
 
   rightHand:
     - result: Catacombs Staff 3F
@@ -475,8 +475,8 @@
     perception: 250
     offense: 30
     accuracy: 30
-    armorClass: 40
-    defense: 60
+    armorClass: 30
+    defense: 40
     damageFactor: 0.4
 
   leftHand:
@@ -580,8 +580,8 @@
     perception: 250
     offense: 30
     accuracy: 30
-    armorClass: 40
-    defense: 40
+    armorClass: 30
+    defense: 30
     damageFactor: 0.2
 
   rightHand:
@@ -721,8 +721,8 @@
     perception: 250
     offense: 30
     accuracy: 30
-    armorClass: 40
-    defense: 40
+    armorClass: 30
+    defense: 30
     damageFactor: 0.2
 
   rightHand:

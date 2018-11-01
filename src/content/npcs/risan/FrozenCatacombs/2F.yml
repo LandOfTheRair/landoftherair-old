@@ -15,8 +15,8 @@
     offense: 20
     accuracy: 20
     perception: 225
-    armorClass: 30
-    defense: 30
+    armorClass: 25
+    defense: 25
     damageFactor: 0.2
 
   rightHand:
@@ -125,8 +125,8 @@
     offense: 20
     accuracy: 20
     perception: 225
-    armorClass: 30
-    defense: 30
+    armorClass: 25
+    defense: 25
     damageFactor: 0.2
 
   rightHand:
@@ -223,8 +223,8 @@
 
   otherStats:
     perception: 225
-    armorClass: 30
-    defense: 30
+    armorClass: 25
+    defense: 25
 
   rightHand:
     - result: Catacombs Mace 2F
@@ -344,8 +344,8 @@
 
   otherStats:
     perception: 225
-    armorClass: 30
-    defense: 30
+    armorClass: 25
+    defense: 25
 
   rightHand:
     - result: Catacombs Staff 2F
@@ -447,8 +447,8 @@
     offense: 20
     accuracy: 20
     perception: 225
-    armorClass: 30
-    defense: 50
+    armorClass: 25
+    defense: 35
     damageFactor: 0.4
 
   leftHand:
@@ -552,8 +552,8 @@
     offense: 20
     accuracy: 20
     perception: 225
-    armorClass: 30
-    defense: 30
+    armorClass: 25
+    defense: 25
     damageFactor: 0.2
 
   rightHand:
@@ -684,8 +684,8 @@
     offense: 20
     accuracy: 20
     perception: 225
-    armorClass: 30
-    defense: 30
+    armorClass: 25
+    defense: 25
     damageFactor: 0.2
 
   rightHand:

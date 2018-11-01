@@ -15,8 +15,8 @@
     perception: 350
     offense: 50
     accuracy: 50
-    armorClass: 60
-    defense: 60
+    armorClass: 40
+    defense: 40
     damageFactor: 0.2
 
   rightHand:
@@ -139,8 +139,8 @@
     perception: 350
     offense: 50
     accuracy: 50
-    armorClass: 60
-    defense: 60
+    armorClass: 40
+    defense: 40
     damageFactor: 0.2
 
   rightHand:
@@ -242,8 +242,8 @@
     perception: 350
     offense: 50
     accuracy: 50
-    armorClass: 60
-    defense: 60
+    armorClass: 40
+    defense: 40
 
   rightHand:
     - result: Catacombs Mace 5F
@@ -372,8 +372,8 @@
     perception: 350
     offense: 50
     accuracy: 50
-    armorClass: 60
-    defense: 60
+    armorClass: 40
+    defense: 40
 
   rightHand:
     - result: Catacombs Staff 5F
@@ -489,8 +489,8 @@
     perception: 350
     offense: 50
     accuracy: 50
-    armorClass: 60
-    defense: 80
+    armorClass: 40
+    defense: 50
     damageFactor: 0.4
 
   leftHand:
@@ -595,8 +595,8 @@
     perception: 350
     offense: 50
     accuracy: 50
-    armorClass: 60
-    defense: 60
+    armorClass: 40
+    defense: 40
     damageFactor: 0.2
 
   rightHand:
@@ -739,8 +739,8 @@
     perception: 350
     offense: 50
     accuracy: 50
-    armorClass: 60
-    defense: 60
+    armorClass: 40
+    defense: 40
     damageFactor: 0.2
 
   rightHand:
