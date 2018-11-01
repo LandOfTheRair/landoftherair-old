@@ -10,6 +10,7 @@ import { GameWorld } from '../../rooms/GameWorld';
 export class GroundHelper {
 
   private itemGCArray: any = [];
+  private tiedItemGCArray: any = [];
   private trashGCArray: any = [];
   private corpseArray: any = [];
 
@@ -30,6 +31,7 @@ export class GroundHelper {
   private chooseArrayFor(item: Item): string {
     if(this.isCorpse(item)) return 'corpseArray';
     if(this.isTrash(item)) return 'trashGCArray';
+    if(item.owner || item.binds) return 'tiedItemGCArray';
     return 'itemGCArray';
   }
 
@@ -43,23 +45,25 @@ export class GroundHelper {
       baseItem = previouslyStackedItem;
     }
 
+    // we have to do this BEFORE we push, in case we're adding an item that would be instantly removed.
+    while(this.trashGCArray.length + this.itemGCArray.length + this.tiedItemGCArray.length > this.room.maxItemsOnGround) {
+      let arr = this.tiedItemGCArray;
+      if(this.itemGCArray.length > 0) arr = this.itemGCArray;
+      if(this.trashGCArray.length > 0) arr = this.trashGCArray;
+
+      const removeItem = arr.shift();
+      this.removeItemFromGround(removeItem);
+    }
+
     const pushArr = this[this.chooseArrayFor(baseItem)];
 
-    const func = baseItem.owner ? 'push' : 'unshift';
-
-    pushArr[func]({
+    pushArr.push({
       uuid: baseItem.uuid,
       itemClass: baseItem.itemClass,
       name: baseItem.name,
       x: ref.x,
       y: ref.y
     });
-
-    while(this.trashGCArray.length + this.itemGCArray.length > this.room.maxItemsOnGround) {
-      const shiftArr = this.trashGCArray.length > 0 ? this.trashGCArray : this.itemGCArray;
-      const removeItem = shiftArr.shift();
-      this.removeItemFromGround(removeItem);
-    }
   }
 
   removeItemFromGround(item, fromGW = false) {
