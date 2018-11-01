@@ -9,3 +9,4 @@ export * from './FindFamiliarGobbler';
 export * from './ShadowStepper';
 export * from './SlowDigestion';
 export * from './SweetTooth';
+export * from './WintersEmbrace';
