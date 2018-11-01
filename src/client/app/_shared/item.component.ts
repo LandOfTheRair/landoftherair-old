@@ -32,7 +32,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
          [dragEnabled]="item && !displayOnly"
          [dragData]="{ item: item, context: context, contextSlot: contextSlot, containerUUID: containerUUID, isStackableMaterial: isStackableMaterial }"
          (contextmenu)="automaticallyTakeActionBasedOnOpenWindows()"
-         (mouseenter)="updateWithDesc() && determineScopes()"
+         (mouseenter)="updateWithDesc()"
          (mouseleave)="removeDesc()">
       <img [src]="imgUrl" 
            [style.object-position]="spriteLocation" 
@@ -374,6 +374,7 @@ export class ItemComponent implements OnDestroy {
   }
 
   updateWithDesc() {
+    this.determineScopes();
     if(!this.item || !this.showDesc) return;
 
     this.colyseusGame.updateCurrentItemDesc('');
