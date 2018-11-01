@@ -151,6 +151,8 @@ export class NPC extends Character {
   tick(canMove = false, amINearAPlayer?) {
     super.tick();
 
+    if(this.isDead()) return;
+
     if(this.$$ai && this.$$ai.mechanicTick) {
       this.$$ai.mechanicTick.dispatch();
     }
@@ -218,6 +220,9 @@ export class NPC extends Character {
     if(silent) return;
 
     if(!this.spawner) return false;
+
+    const deadSpawner = this.$$room.spawners[0];
+    deadSpawner.moveNPCToThisSpawner(this);
 
     if(this.$$ai && this.$$ai.death) {
       this.$$ai.death.dispatch(killer);

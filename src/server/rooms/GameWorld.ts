@@ -960,6 +960,15 @@ export class GameWorld extends Room<GameState> {
   }
 
   private loadSpawners(timerData: any[]) {
+    const deadSpawner = new Spawner(this, { x: 0, y: 0, map: this.state.mapName, name: 'Dead NPC Spawner' }, {
+      leashRadius: -1,
+      canSlowDown: false,
+      shouldBeActive: false,
+      respawnRate: 0
+    });
+
+    this.addSpawner(deadSpawner);
+
     const spawners = this.state.map.layers[MapLayer.Spawners].objects;
 
     const now = Date.now();

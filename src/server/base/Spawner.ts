@@ -444,6 +444,14 @@ export class Spawner {
 
   }
 
+  public moveNPCToThisSpawner(npc: NPC) {
+    const oldSpawner = npc.spawner;
+    oldSpawner.removeNPC(npc);
+
+    npc.spawner = this;
+    this.addNPC(npc);
+  }
+
   addNPC(npc: NPC, doIncrement = true) {
     this.npcs.push(npc);
     this.room.addNPC(npc);
@@ -533,7 +541,7 @@ export class Spawner {
       const oldPos = { x: npc.x, y: npc.y };
 
       const amINearAPlayer = get(playerLocations, [npc.x, npc.y]);
-      if(!amINearAPlayer) {
+      if(!amINearAPlayer || npc.isDead()) {
         npc.fov = null;
       }
 
@@ -553,7 +561,7 @@ export class Spawner {
       }
 
       npc.tick(canMove, amINearAPlayer);
-      if(amINearAPlayer && (oldPos.x !== npc.x || oldPos.y !== npc.y)) npc.$$room.state.calculateFOV(npc);
+      if(amINearAPlayer && (oldPos.x !== npc.x || oldPos.y !== npc.y) && !npc.isDead()) npc.$$room.state.calculateFOV(npc);
     });
   }
 
