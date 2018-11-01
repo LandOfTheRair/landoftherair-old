@@ -263,6 +263,12 @@
     - Tower Shield Strong
     - Antanian Arrows
 
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
+
   drops:
     - result: Warlord's Key
       chance: -1

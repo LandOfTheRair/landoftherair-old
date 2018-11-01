@@ -1114,7 +1114,6 @@
   gear:
     Armor: Yzalt Fungus Ringmail Tunic
     Robe1: Ranata Robe
-    Ear: Enemy DarkVision Earring
 
   drops:
     - result: Ranata Totem
@@ -1127,6 +1126,12 @@
       chance: -1
     - drop: 'gear.Robe1'
       chance: -1
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   combatMessages:
     - "WHO INTRUDES UPON MY HOME?"
@@ -1177,7 +1182,6 @@
   gear:
     Armor: Yzalt Fungus Ringmail Tunic
     Robe1: Ranata Robe
-    Ear: Enemy DarkVision Earring
 
   dropPool:
     choose:
@@ -1200,6 +1204,12 @@
       - Rune Scroll - Shadow Swap I
       - Rune Scroll - Darker Shadows I
       - Rune Scroll - Shadow Daggers I
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   copyDrops:
     - drop: 'rightHand'

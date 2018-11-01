@@ -119,6 +119,11 @@
         damageType: 'sharp'
         potency: 0.75
 
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
+
   spawnMessage: "the clattering of bones"
   sfx: "skeleton"
   sfxMaxChance: 20
@@ -225,6 +230,11 @@
       effectData:
         damageType: 'blunt'
         potency: 0.75
+
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
 - npcId: Catacombs Ghost 5F
   name: ghost archbishop
@@ -352,6 +362,11 @@
         damageType: 'magical'
         potency: 0.75
 
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
+
   spawnMessage: "the screeching of an ancient banshee"
   sfx: "ghost"
   sfxMaxChance: 20
@@ -473,6 +488,11 @@
         damageType: 'energy'
         potency: 0.75
 
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
+
 - npcId: Catacombs Nightwalker 5F
   name: nightwalker shadowbelt
   monsterClass: Undead
@@ -577,6 +597,11 @@
       effectData:
         damageType: 'blunt'
         potency: 0.75
+
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
 - npcId: Catacombs Qell 5F
   name: qell shadow
@@ -722,6 +747,12 @@
       chance: 1
       maxchance: 600
 
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
+
 - npcId: Catacombs Spectre 5F
   name: spectre sagittarius
   monsterClass: Undead
@@ -826,6 +857,11 @@
       effectData:
         damageType: 'physical'
         potency: 0.75
+
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   drops:
     - result: Catacombs Raw Tourmaline

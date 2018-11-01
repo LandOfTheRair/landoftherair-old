@@ -34,7 +34,6 @@
     max: 8000
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor: Tower Trash Breastplate
     Robe1:
       - result: none
@@ -43,6 +42,12 @@
         chance: 1
 
   rightHand: Tower Halberd Weak
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   copyDrops:
     - drop: 'gear.Armor'

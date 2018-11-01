@@ -28,7 +28,6 @@
     max: 14500
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Tower Trash Tunic
         chance: 20
@@ -91,6 +90,12 @@
       chance: -1
     - drop: 'leftHand'
       chance: -1
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   spawnMessage: "the indecipherable blabbering of goblins"
   sfx: "goblin"
@@ -261,7 +266,6 @@
     max: 70500
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Tower Trash Tunic
         chance: 20
@@ -310,6 +314,12 @@
     - result: Maze Thief Earring
       chance: 1
       maxChance: 3500
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   usableSkills:
     - Boost
@@ -815,9 +825,6 @@
 
   leftHand: Dedlaen Dueling Axe
 
-  gear:
-    Ear: Enemy TrueSight Earring
-
   usableSkills:
     - Charge
 
@@ -835,6 +842,12 @@
       chance: -1
     - drop: 'rightHand'
       chance: -1
+
+  baseEffects:
+    - name: TrueSight
+      effectData:
+        effectInfo:
+          isPermanent: true
 
 - npcId: Dedlaen Escort Townee
   name: townee
@@ -863,7 +876,12 @@
 
   gear:
     Armor: Antanian Tunic
-    Ear: Enemy DarkVision Earring
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   leashMessage: "the townee says: This is too much for me! I can't do this!"
 
@@ -895,12 +913,17 @@
 
   gear:
     Armor: Antanian Tunic
-    Ear: Enemy DarkVision Earring
 
   rightHand:
     - Antanian Greatmace
     - Antanian Greataxe
     - Antanian Greatsword
     - Antanian Halberd
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   leashMessage: "the guard says: Maybe this was too tough after all..."

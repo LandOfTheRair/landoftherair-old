@@ -28,7 +28,6 @@
     max: 7500
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Tower Trash Tunic
         chance: 20
@@ -53,11 +52,17 @@
     - result: Tower Greatsword Weak
       chance: 10
 
-  rightHand:
+  leftHand:
     - result: none
       chance: 5
     - result: Tower Shield Weak
       chance: 1
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   copyDrops:
     - drop: 'gear.Armor'
@@ -219,7 +224,6 @@
     max: 14500
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Tower Trash Tunic
         chance: 20
@@ -247,6 +251,12 @@
       chance: 5
     - result: Tower Shield Strong
       chance: 1
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   usableSkills:
     - Boost

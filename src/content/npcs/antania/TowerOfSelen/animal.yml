@@ -29,9 +29,14 @@
     max: 3000
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor: Tower Warg Leather
     Hands: Medium Claws
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   usableSkills:
     - PoisonBiteMedium
@@ -67,8 +72,13 @@
     max: 3300
 
   gear:
-    Ear: Enemy DarkVision Earring
     Hands: Medium Claws
+
+  baseEffects:
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   drops:
     - result: Tower Spider Egg

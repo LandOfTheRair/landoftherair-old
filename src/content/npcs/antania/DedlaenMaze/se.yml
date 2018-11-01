@@ -231,8 +231,13 @@
     max: 27700
 
   gear:
-    Ear: Enemy TrueSight Earring
     Hands: Maze Skeleton Claws
+
+  baseEffects:
+    - name: TrueSight
+      effectData:
+        effectInfo:
+          isPermanent: true
 
   usableSkills:
     - ShredTwentyPercent
