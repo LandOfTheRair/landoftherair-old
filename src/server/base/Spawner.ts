@@ -578,6 +578,7 @@ export class Spawner {
   }
 
   public canActivateFor(player: Player): boolean {
+    if(!player) return false;
     if(player.$$spawnerRegionId && this.spawnerRegionId && player.$$spawnerRegionId !== this.spawnerRegionId) return false;
 
     const tileDist = player.distFrom(this);
