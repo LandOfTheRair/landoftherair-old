@@ -234,7 +234,6 @@
     max: 38000
 
   gear:
-    Ear: Enemy DarkVision Earring
     Armor:
       - result: Tower Trash Breastplate
         chance: 20
