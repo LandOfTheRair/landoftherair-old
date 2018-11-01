@@ -9,6 +9,39 @@
     name: DarkVision
     duration: 21600
 
+- name: Thanksgiving Heal Bottle (XS)
+  desc: "a small chalice filled with a holiday stew"
+  extendedDesc: "a healing potion"
+  sprite: 561
+  ounces: 25
+  effect:
+    name: ExactHeal
+    potency: 1000
+  value: 100
+  binds: true
+
+- name: Thanksgiving Heal Bottle (SM)
+  desc: "a small chalice filled with a holiday stew"
+  extendedDesc: "a healing potion"
+  sprite: 561
+  ounces: 100
+  effect:
+    name: ExactHeal
+    potency: 1000
+  value: 100
+  binds: true
+
+- name: Thanksgiving Heal Bottle (MD)
+  desc: "a small chalice filled with a holiday stew"
+  extendedDesc: "a healing potion"
+  sprite: 561
+  ounces: 250
+  effect:
+    name: ExactHeal
+    potency: 1000
+  value: 100
+  binds: true
+
 - name: Thanksgiving Heal Bottle
   desc: "a small chalice filled with a holiday stew"
   extendedDesc: "a healing potion"

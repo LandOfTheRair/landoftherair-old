@@ -1,5 +1,7 @@
+
+import { sample } from 'lodash';
+
 import { NPC } from '../../../../../shared/models/npc';
-import { Holiday, HolidayHelper } from '../../../../../shared/helpers/holiday-helper';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
@@ -44,7 +46,14 @@ export const responses = (npc: NPC) => {
 
       npc.$$room.npcLoader.takeItemsFromPlayerSack(player, allSlots);
 
-      npc.$$room.npcLoader.loadItem('Thanksgiving Heal Bottle')
+      const item = sample([
+        'Thanksgiving Heal Bottle (XS)',
+        'Thanksgiving Heal Bottle (SM)',
+        'Thanksgiving Heal Bottle (MD)',
+        'Thanksgiving Heal Bottle'
+      ]);
+
+      npc.$$room.npcLoader.loadItem(item)
         .then(newItem => {
           player.setRightHand(newItem);
         });
