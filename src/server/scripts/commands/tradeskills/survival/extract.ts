@@ -64,7 +64,7 @@ export class Extract extends Command {
 
     let skillGain = npcRef.level + 10;
     if(includes(npcRef.name, 'elite')) skillGain *= 2;
-    player.gainSkill(SkillClassNames.Runewriting, skillGain);
+    player.gainSkill(SkillClassNames.Survival, skillGain);
 
     player.sendClientMessage(`The corpse blood imparts the knowledge of the spell "${chosenSkill}"!`);
 
