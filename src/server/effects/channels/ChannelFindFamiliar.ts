@@ -17,7 +17,8 @@ const animalHash = {
   water: 'Healer Summon Water Spirit',
   light: 'Healer Summon Light Spirit',
   nature: 'Healer Summon Nature Spirit',
-  turkey: 'Holiday Summon Turkey'
+  turkey: 'Holiday Summon Turkey',
+  snowman: 'Holiday Summon Snowman'
 };
 
 // this hash is for boosting stats/etc of the summoned creature, so it's useful
@@ -67,6 +68,13 @@ const animalModHash = {
     npc.gainBaseStat('agi', Math.floor(potency / 5));
     npc.gainBaseStat('offense', potency);
     npc.gainBaseStat('accuracy', potency);
+  },
+  snowman: (npc: NPC, potency: number) => {
+    npc.gainBaseStat('hp', Math.floor(potency * 10000));
+    npc.gainBaseStat('int', Math.floor(potency / 5));
+    npc.gainBaseStat('wis', Math.floor(potency / 5));
+    npc.gainBaseStat('wil', Math.floor(potency / 5));
+    npc.gainBaseStat('defense', potency);
   }
 };
 
@@ -155,6 +163,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
 
     // holiday animals
     if(caster.getTraitLevel('FindFamiliarGobbler'))     allPossibleAnimals.push('turkey');
+    if(caster.getTraitLevel('FindFamiliarSnowman'))     allPossibleAnimals.push('snowman');
 
     // can't cast for an animal at a higher skill
     if(!includes(allPossibleAnimals, animalStr)) animalStr = '';

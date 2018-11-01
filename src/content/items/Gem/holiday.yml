@@ -25,3 +25,13 @@
 
   stats:
     cha: 1
+
+- name: Christmas Gem
+  desc: "a sparkling blue diamond with a snowflake embedded in it"
+  value: 50
+  sprite: 1010
+
+  maxEncrusts: 3
+
+  stats:
+    wil: 1

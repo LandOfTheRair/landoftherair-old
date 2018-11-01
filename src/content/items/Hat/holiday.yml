@@ -11,3 +11,21 @@
   desc: "a traditional pilgrim hat"
   value: 3500
   binds: true
+
+- name: Christmas Top Hat
+  sprite: 578
+  desc: "a top hat worn by the snowmen of Winter Wonderland"
+  value: 3500
+
+- name: Christmas Top Hat (Improved)
+  enchantLevel: 5
+  stats:
+    offense: 3
+    defense: 3
+  effect:
+    name: DarkVision
+    autocast: true
+  sprite: 578
+  desc: "a top hat worn by the snowmen of Winter Wonderland"
+  value: 3500
+  binds: true

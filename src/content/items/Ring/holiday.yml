@@ -1,0 +1,19 @@
+
+- name: Christmas Wreath Ring
+  enchantLevel: 5
+  stats:
+    str: 1
+    dex: 1
+    agi: 1
+    int: 1
+    wis: 1
+    wil: 1
+    con: 1
+    luk: 1
+    cha: 1
+    fireResist: 200
+    iceResist: 200
+  sprite: 580
+  binds: true
+  desc: "a small ring fashioned out of festive leaves"
+  value: 150
