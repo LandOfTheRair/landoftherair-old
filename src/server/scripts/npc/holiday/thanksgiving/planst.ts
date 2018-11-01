@@ -22,11 +22,11 @@ export const responses = (npc: NPC) => {
   const scores = {};
   const rounds = {};
 
-  const cleanUpPlayerData = (player: Player) => {
-    delete currentNPCRefs[player.uuid];
-    delete currentTargets[player.uuid];
-    delete scores[player.uuid];
-    delete rounds[player.uuid];
+  const cleanUpPlayerData = (uuid: string) => {
+    delete currentNPCRefs[uuid];
+    delete currentTargets[uuid];
+    delete scores[uuid];
+    delete rounds[uuid];
   };
 
   const startTargetPractice = (player: Player) => {
@@ -41,8 +41,10 @@ export const responses = (npc: NPC) => {
       if(rounds[player.uuid] > 10) {
         player.receiveMessage(npc, `Well done! Come see me for your reward!`);
 
+        const uuid = player.uuid;
+
         npc.$$room.clock.setTimeout(() => {
-          cleanUpPlayerData(player);
+          cleanUpPlayerData(uuid);
         }, 60000);
         return;
       }
@@ -110,7 +112,7 @@ export const responses = (npc: NPC) => {
               });
           }
 
-          cleanUpPlayerData(player);
+          cleanUpPlayerData(player.uuid);
 
           return 'Well done! Here is your reward!';
         }
