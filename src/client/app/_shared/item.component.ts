@@ -199,7 +199,6 @@ export class ItemComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.removeDesc();
-    if(this._mouseTimeout) clearTimeout(this._mouseTimeout);
   }
 
   doColyseusMoveAction(choice) {
@@ -376,19 +375,26 @@ export class ItemComponent implements OnDestroy {
   }
 
   updateWithDesc() {
-    if(!this.item || !this.showDesc) return;
+    if(!this.item || !this.showDesc || this._mouseTimeout) return;
 
     this._isMouseIn = true;
 
     this._mouseTimeout = setTimeout(() => {
       if(!this._isMouseIn) return;
       this.colyseusGame.updateCurrentItemDesc(this.descText);
+      this._mouseTimeout = null;
     }, 750);
   }
 
   removeDesc() {
     this._isMouseIn = false;
+
     this.colyseusGame.updateCurrentItemDesc('');
+    
+    if(this._mouseTimeout) {
+      clearTimeout(this._mouseTimeout);
+      this._mouseTimeout = null;
+    }
   }
 
 }
