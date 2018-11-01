@@ -16,7 +16,8 @@ const animalHash = {
   chillspider: 'Mage Summon Chillspider',
   water: 'Healer Summon Water Spirit',
   light: 'Healer Summon Light Spirit',
-  nature: 'Healer Summon Nature Spirit'
+  nature: 'Healer Summon Nature Spirit',
+  turkey: 'Holiday Summon Turkey'
 };
 
 // this hash is for boosting stats/etc of the summoned creature, so it's useful
@@ -59,6 +60,14 @@ const animalModHash = {
     npc.gainBaseStat('wis', Math.floor(potency / 3));
     npc._gainSkill(SkillClassNames.Restoration, SkillHelper.calcSkillXP(potency / 3));
   },
+  turkey: (npc: NPC, potency: number) => {
+    npc.gainBaseStat('hp', Math.floor(potency * 10000));
+    npc.gainBaseStat('str', Math.floor(potency / 5));
+    npc.gainBaseStat('dex', Math.floor(potency / 5));
+    npc.gainBaseStat('agi', Math.floor(potency / 5));
+    npc.gainBaseStat('offense', potency);
+    npc.gainBaseStat('accuracy', potency);
+  }
 };
 
 class SummonedPet extends Effect {
@@ -143,6 +152,9 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
     if(caster.getTraitLevel('FindFamiliarBear'))        allPossibleAnimals.push('bear');
     if(caster.getTraitLevel('FindFamiliarSalamander'))  allPossibleAnimals.push('salamander');
     if(caster.getTraitLevel('FindFamiliarChillspider')) allPossibleAnimals.push('chillspider');
+
+    // holiday animals
+    if(caster.getTraitLevel('FindFamiliarGobbler'))     allPossibleAnimals.push('turkey');
 
     // can't cast for an animal at a higher skill
     if(!includes(allPossibleAnimals, animalStr)) animalStr = '';

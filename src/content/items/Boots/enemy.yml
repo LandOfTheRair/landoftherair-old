@@ -1,6 +1,12 @@
 
 - name: Mines Rockman Boots
   tier: 3
-  sprite: 232
+  sprite: -1
+  desc: "a pair of leather boots"
+  value: 75
+
+- name: Summon Turkey Boots
+  tier: 4
+  sprite: -1
   desc: "a pair of leather boots"
   value: 75

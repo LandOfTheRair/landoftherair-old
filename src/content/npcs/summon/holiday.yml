@@ -1,0 +1,29 @@
+
+- npcId: Holiday Summon Turkey
+  name: turkey
+  monsterClass: Beast
+  sprite: 985
+  stats: 10
+  skillLevels: 5
+  level: 1
+
+  gear:
+    Armor: Thanksgiving Turkey Skin
+    Hands: Medium Claws
+    Feet: Summon Turkey Boots
+
+  usableSkills:
+    - PoisonBiteWeak
+    - Jumpkick
+    - RageStance
+
+  traitLevels:
+    Punchkick: 1
+
+  hp:
+    min: 2000
+    max: 2000
+
+  spawnMessage: "the gobbling of a turkey"
+  sfx: "turkey"
+  sfxMaxChance: 1

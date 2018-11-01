@@ -18,3 +18,7 @@
   value: 50
   sprite: 554
   binds: true
+
+  trait:
+    name: SlowDigestion
+    level: 2

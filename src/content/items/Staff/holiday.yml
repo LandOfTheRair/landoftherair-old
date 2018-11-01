@@ -16,5 +16,5 @@
   binds: true
 
   trait:
-    name: SlowDigestion
-    level: 2
+    name: FindFamiliarGobbler
+    level: 5
