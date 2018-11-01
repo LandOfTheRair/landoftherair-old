@@ -24,6 +24,8 @@ export const responses = (npc: NPC) => {
   const clearTimers = {};
 
   const cleanUpPlayerData = (uuid: string) => {
+    if(currentNPCRefs[uuid]) currentNPCRefs[uuid].forEach(targ => targ.die(npc, true));
+
     if(clearTimers[uuid]) clearTimers[uuid].clear();
 
     delete currentNPCRefs[uuid];
@@ -38,13 +40,15 @@ export const responses = (npc: NPC) => {
     const uuid = player.uuid;
 
     const spawnNPCS = async () => {
-
+      
       const doesPlayerExistStill = npc.$$room.state.findPlayer(uuid);
 
       if(!player || !doesPlayerExistStill) {
         cleanUpPlayerData(uuid);
         return;
       }
+
+      if(clearTimers[uuid]) return;
 
       rounds[uuid] = rounds[uuid] || 0;
       rounds[uuid]++;
@@ -78,7 +82,7 @@ export const responses = (npc: NPC) => {
       player.receiveMessage(npc, `Round ${rounds[uuid]}: Hit target ${realTargetNumber}!`);
 
       npc.$$room.clock.setTimeout(() => {
-        currentNPCRefs[uuid].forEach(targ => targ.die(npc, true));
+        if(currentNPCRefs[uuid]) currentNPCRefs[uuid].forEach(targ => targ.die(npc, true));
 
         npc.$$room.clock.setTimeout(() => {
           spawnNPCS();
@@ -93,7 +97,7 @@ export const responses = (npc: NPC) => {
     const checkNPC = opts.npc;
     const killer = opts.killer;
 
-    if(checkNPC.npcId !== 'Thanksgiving Turkey Target') return;
+    if(checkNPC.npcId !== 'Thanksgiving Turkey Target' || !currentTargets[killer.uuid]) return;
     const targetNecessary = currentTargets[killer.uuid];
 
     scores[killer.uuid] = scores[killer.uuid] || 0;
@@ -111,7 +115,7 @@ export const responses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
       if(isNumber(scores[player.uuid])) {
-        if(rounds[player.uuid] >= 10) {
+        if(rounds[player.uuid] > 10) {
           const tokens = Math.max(10, scores[player.uuid] * 10);
           player.earnCurrency(Currency.Thanksgiving, tokens, 'Planst');
           player.sendClientMessage(`Planst hands you ${tokens} holiday tokens!`);
@@ -128,7 +132,7 @@ export const responses = (npc: NPC) => {
           return 'Well done! Here is your reward!';
         }
 
-        return `Current score: ${scores[player.uuid]}`;
+        return `Your current score is ${scores[player.uuid]}.`;
       }
 
       return 'Want a chance to upgrade your weak Mark-I Blunderbuss? Want a BlunderBOSS? Participate in my TARGET PRACTICE and I\'ll reward you with a better gun!';
@@ -152,7 +156,7 @@ export const responses = (npc: NPC) => {
         return 'You might want to hold a Blunderbuss Mark-I or Mark-II for this.';
       }
 
-      if(currentTargets[player.uuid]) return 'You are already doing this event! Wait until it is over.';
+      if(isNumber(scores[player.uuid])) return 'You are already doing this event! Wait until it is over.';
 
       if(Object.keys(currentTargets).length >= 20) return 'Too many players are doing this event, please come back later!';
 
