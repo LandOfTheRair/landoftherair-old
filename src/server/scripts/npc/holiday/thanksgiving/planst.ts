@@ -118,7 +118,7 @@ export const responses = (npc: NPC) => {
         if(rounds[player.uuid] > 10) {
           const tokens = Math.max(10, scores[player.uuid] * 10);
           player.earnCurrency(Currency.Thanksgiving, tokens, 'Planst');
-          player.sendClientMessage(`Planst hands you ${tokens} holiday tokens!`);
+          player.sendClientMessage({ message: `Planst hands you ${tokens} holiday tokens!`, grouping: 'always' });
 
           if(scores[player.uuid] === 10 && player.rightHand && player.rightHand.name === 'Thanksgiving Blunderbuss') {
             npc.$$room.npcLoader.loadItem('Thanksgiving Blunderbuss (Improved)')

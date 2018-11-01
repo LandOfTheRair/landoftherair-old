@@ -65,7 +65,7 @@ export class HolidayHelper {
     if(player.$$room.subscriptionHelper.isSubscribed(player)) amt *= 2;
 
     player.earnCurrency(<Currency>HolidayHelper.currentHoliday().toLowerCase(), amt);
-    player.sendClientMessage(`You also earned ${amt} holiday tokens!`);
+    player.sendClientMessage({ message: `You also earned ${amt} holiday tokens!`, grouping: 'always' });
   }
 }
 

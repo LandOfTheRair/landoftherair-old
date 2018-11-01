@@ -59,7 +59,7 @@ export const responses = (npc: NPC) => {
 
           if(RollerHelper.XInOneHundred(90)) {
             LootHelper.rollAnyTable(tokenTable).then(([numTokens]) => {
-              player.sendClientMessage(`Koda hands you ${numTokens} holiday tokens!`);
+              player.sendClientMessage({ message: `Koda hands you ${numTokens} holiday tokens!`, grouping: 'always' });
               player.earnCurrency(Currency.Thanksgiving, numTokens, 'Koda');
               player.setRightHand(null);
             });
