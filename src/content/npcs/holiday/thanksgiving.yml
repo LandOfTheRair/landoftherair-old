@@ -61,7 +61,7 @@
 - npcId: Thanksgiving Weak Turkey
   name: turkey
   sprite: 985
-  stats: 11
+  stats: 7
   skillLevels: 2
 
   level: 10
@@ -111,8 +111,8 @@
 - npcId: Thanksgiving Strong Turkey
   name: turkey
   sprite: 985
-  stats: 15
-  skillLevels: 4
+  stats: 10
+  skillLevels: 3
 
   level: 12
 
@@ -164,8 +164,8 @@
 - npcId: Thanksgiving Secret Turkey
   name: gobbler
   sprite: 985
-  stats: 20
-  skillLevels: 6
+  stats: 14
+  skillLevels: 4
 
   level: 16
 
