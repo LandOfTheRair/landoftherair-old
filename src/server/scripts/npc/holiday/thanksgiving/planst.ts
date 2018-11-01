@@ -31,17 +31,24 @@ export const responses = (npc: NPC) => {
 
   const startTargetPractice = (player: Player) => {
 
+    const uuid = player.uuid;
+
     const spawnNPCS = async () => {
 
-      rounds[player.uuid] = rounds[player.uuid] || 0;
-      rounds[player.uuid]++;
+      const doesPlayerExistStill = npc.$$room.state.findPlayer(uuid);
 
-      currentNPCRefs[player.uuid] = [];
+      if(!player || !doesPlayerExistStill) {
+        cleanUpPlayerData(uuid);
+        return;
+      }
 
-      if(rounds[player.uuid] > 10) {
+      rounds[uuid] = rounds[uuid] || 0;
+      rounds[uuid]++;
+
+      currentNPCRefs[uuid] = [];
+
+      if(rounds[uuid] > 10) {
         player.receiveMessage(npc, `Well done! Come see me for your reward!`);
-
-        const uuid = player.uuid;
 
         npc.$$room.clock.setTimeout(() => {
           cleanUpPlayerData(uuid);
@@ -57,17 +64,17 @@ export const responses = (npc: NPC) => {
 
         target.name = `target ${i}`;
         target.affiliation = realTargetNumber === i ? 'Real Target' : 'Turkey Target';
-        target.onlyVisibleTo = player.uuid;
+        target.onlyVisibleTo = uuid;
 
         npc.$$room.syncNPC(target);
-        currentNPCRefs[player.uuid].push(target);
+        currentNPCRefs[uuid].push(target);
       }
 
-      currentTargets[player.uuid] = `target ${realTargetNumber}`;
-      player.receiveMessage(npc, `Round ${rounds[player.uuid]}: Hit target ${realTargetNumber}!`);
+      currentTargets[uuid] = `target ${realTargetNumber}`;
+      player.receiveMessage(npc, `Round ${rounds[uuid]}: Hit target ${realTargetNumber}!`);
 
       npc.$$room.clock.setTimeout(() => {
-        currentNPCRefs[player.uuid].forEach(targ => targ.die(npc, true));
+        currentNPCRefs[uuid].forEach(targ => targ.die(npc, true));
 
         npc.$$room.clock.setTimeout(() => {
           spawnNPCS();
