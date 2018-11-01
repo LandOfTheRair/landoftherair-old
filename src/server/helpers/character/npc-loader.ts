@@ -1,5 +1,6 @@
 
 import { species } from 'fantastical';
+import { DateTime } from 'luxon';
 import { capitalize, isString, sample, kebabCase, includes } from 'lodash';
 import * as Cache from 'node-cache';
 
@@ -159,12 +160,12 @@ export class NPCLoader {
 
   getCurrentDailyDayOfYear(player: Player): number {
 
-    const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 0);
-    const diff = (+now - +start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+    const now = DateTime.fromObject({ zone: 'utc' });
+    const start = DateTime.fromObject({ zone: 'utc', year: now.year, month: 1, day: 1 });
+    const diff = +now - +start;
     const oneDay = 1000 * 60 * 60 * 24;
     const day = Math.floor(diff / oneDay);
-
+    
     return day + this.getDailyOffset(player);
   }
 

@@ -17,6 +17,8 @@ declare module 'luxon' {
     static fromObject(obj: any): DateTime;
     minus(obj: any): DateTime;
     plus(obj: any): DateTime;
+
+    year: number;
   }
 }
 
