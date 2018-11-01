@@ -3,7 +3,7 @@
   stats:
     offense: 3
     defense: 3
-    armorClass: 15
+    weaponArmorClass: 15
     int: 2
     wis: 2
     wil: 2
