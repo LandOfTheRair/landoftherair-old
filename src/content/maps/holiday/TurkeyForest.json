@@ -6054,7 +6054,7 @@
      "kickX":68,
      "kickY":13,
      "maxCreatures":500,
-     "maxSkill":20,
+     "maxSkill":30,
      "region":"Antania",
      "respawnX":48,
      "respawnY":97
@@ -6074,7 +6074,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.4",
+ "tiledversion":"1.1.5",
  "tileheight":64,
  "tilesets":[
         {

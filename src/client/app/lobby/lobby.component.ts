@@ -64,7 +64,14 @@ export class LobbyComponent implements OnInit, OnDestroy, AfterViewInit {
 
   sortAndSetAccounts(accounts: Account[]) {
     this.displayAccounts = <any>sortBy(accounts, [
-      acc => -this.lobby.lobbyState.subTier[acc.username],
+      acc => {
+        const myTier = this.lobby.lobbyState.subTier[acc.username];
+
+        if(myTier === 10) return 1;
+        if(acc.isTester) return 2;
+        if(myTier) return 3;
+        return 4;
+      },
       acc => acc.username.toLowerCase()
     ]);
   }

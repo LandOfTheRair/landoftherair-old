@@ -1,5 +1,5 @@
 
-import { random } from 'lodash';
+import { random, isNumber } from 'lodash';
 
 import { NPC } from '../../../../../shared/models/npc';
 import { Player } from '../../../../../shared/models/player';
@@ -21,28 +21,41 @@ export const responses = (npc: NPC) => {
   const currentTargets = {};
   const scores = {};
   const rounds = {};
+  const clearTimers = {};
 
-  const cleanUpPlayerData = (player: Player) => {
-    delete currentNPCRefs[player.uuid];
-    delete currentTargets[player.uuid];
-    delete scores[player.uuid];
-    delete rounds[player.uuid];
+  const cleanUpPlayerData = (uuid: string) => {
+    if(clearTimers[uuid]) clearTimers[uuid].clear();
+
+    delete currentNPCRefs[uuid];
+    delete currentTargets[uuid];
+    delete scores[uuid];
+    delete rounds[uuid];
+    delete clearTimers[uuid];
   };
 
   const startTargetPractice = (player: Player) => {
 
+    const uuid = player.uuid;
+
     const spawnNPCS = async () => {
 
-      rounds[player.uuid] = rounds[player.uuid] || 0;
-      rounds[player.uuid]++;
+      const doesPlayerExistStill = npc.$$room.state.findPlayer(uuid);
 
-      currentNPCRefs[player.uuid] = [];
+      if(!player || !doesPlayerExistStill) {
+        cleanUpPlayerData(uuid);
+        return;
+      }
 
-      if(rounds[player.uuid] > 10) {
+      rounds[uuid] = rounds[uuid] || 0;
+      rounds[uuid]++;
+
+      currentNPCRefs[uuid] = [];
+
+      if(rounds[uuid] > 10) {
         player.receiveMessage(npc, `Well done! Come see me for your reward!`);
 
-        npc.$$room.clock.setTimeout(() => {
-          cleanUpPlayerData(player);
+        clearTimers[uuid] = npc.$$room.clock.setTimeout(() => {
+          cleanUpPlayerData(uuid);
         }, 60000);
         return;
       }
@@ -55,17 +68,17 @@ export const responses = (npc: NPC) => {
 
         target.name = `target ${i}`;
         target.affiliation = realTargetNumber === i ? 'Real Target' : 'Turkey Target';
-        target.onlyVisibleTo = player.uuid;
+        target.onlyVisibleTo = uuid;
 
         npc.$$room.syncNPC(target);
-        currentNPCRefs[player.uuid].push(target);
+        currentNPCRefs[uuid].push(target);
       }
 
-      currentTargets[player.uuid] = `target ${realTargetNumber}`;
-      player.receiveMessage(npc, `Round ${rounds[player.uuid]}: Hit target ${realTargetNumber}!`);
+      currentTargets[uuid] = `target ${realTargetNumber}`;
+      player.receiveMessage(npc, `Round ${rounds[uuid]}: Hit target ${realTargetNumber}!`);
 
       npc.$$room.clock.setTimeout(() => {
-        currentNPCRefs[player.uuid].forEach(targ => targ.die(npc, true));
+        currentNPCRefs[uuid].forEach(targ => targ.die(npc, true));
 
         npc.$$room.clock.setTimeout(() => {
           spawnNPCS();
@@ -97,10 +110,10 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      if(scores[player.uuid]) {
+      if(isNumber(scores[player.uuid])) {
         if(rounds[player.uuid] >= 10) {
-          const tokens = scores[player.uuid] * 10;
-          player.earnCurrency(Currency.Thanksgiving, tokens, 'Koda');
+          const tokens = Math.max(10, scores[player.uuid] * 10);
+          player.earnCurrency(Currency.Thanksgiving, tokens, 'Planst');
           player.sendClientMessage(`Planst hands you ${tokens} holiday tokens!`);
 
           if(scores[player.uuid] === 10 && player.rightHand && player.rightHand.name === 'Thanksgiving Blunderbuss') {
@@ -110,7 +123,7 @@ export const responses = (npc: NPC) => {
               });
           }
 
-          cleanUpPlayerData(player);
+          cleanUpPlayerData(player.uuid);
 
           return 'Well done! Here is your reward!';
         }
