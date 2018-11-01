@@ -1,0 +1,9 @@
+
+- name: Christmas Carrot
+  desc: "a crunchy carrot found buried deep within frozen land"
+  value: 1000
+  sprite: 570
+  ounces: 1
+
+  effect:
+    name: ChristmasCarrot

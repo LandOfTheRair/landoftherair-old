@@ -18,3 +18,24 @@
   trait:
     name: FindFamiliarGobbler
     level: 5
+
+- name: Christmas Candy Staff
+  enchantLevel: 5
+  stats:
+    offense: 3
+    defense: 3
+    weaponArmorClass: 15
+    int: 2
+    wis: 2
+    wil: 2
+    mpregen: 10
+  desc: "a candy cane sweetly created in the Winter Wonderland"
+  tier: 4
+  type: Staff
+  value: 4000
+  sprite: 575
+  binds: true
+
+  trait:
+    name: FindFamiliarFrosty
+    level: 5

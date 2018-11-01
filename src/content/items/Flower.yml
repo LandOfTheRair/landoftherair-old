@@ -38,3 +38,8 @@
   sprite: 565
   desc: "a crimson leaf, symbolizing the turning of the season"
   value: 60
+
+- name: Christmas Walnuts
+  sprite: 577
+  desc: "a handful of walnuts"
+  value: 60

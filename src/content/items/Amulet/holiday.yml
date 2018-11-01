@@ -5,3 +5,20 @@
   desc: "a bead necklace shared amongst the people of the Turkey Forest"
   value: 500
   binds: true
+
+- name: Christmas Scarf
+  sprite: 581
+  desc: "a scarf used to stay warm during the winter months"
+  value: 500
+
+- name: Christmas Scarf (Improved)
+  enchantLevel: 5
+  stats:
+    offense: 3
+    defense: 3
+    fireResist: 300
+    iceResist: 300
+  sprite: 581
+  desc: "a scarf used to stay warm during the winter months"
+  value: 500
+  binds: true

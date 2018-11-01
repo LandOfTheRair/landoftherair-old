@@ -1,0 +1,24 @@
+
+
+- name: Christmas Pipe
+  enchantLevel: 5
+  proneChance: 25
+  damageClass: 'fire'
+  stats:
+    accuracy: 3
+    offense: 3
+    defense: 3
+    weaponArmorClass: 15
+  effect:
+    name: Combust
+    potency: 15
+    chance: 25
+  desc: "a pipe used to stay warm in the cold months"
+  binds: true
+  tier: 4
+  type: Mace
+  value: 12200
+  sprite: 571
+
+  requirements:
+    level: 15

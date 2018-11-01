@@ -154,5 +154,6 @@ export * from './party/PartyDefense';
 
 export * from './map/MinerFever';
 
+export * from './holiday/ChristmasCarrot';
 export * from './holiday/ThanksgivingLUK';
 export * from './holiday/ZombieScratch';

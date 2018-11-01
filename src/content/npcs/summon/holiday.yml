@@ -27,3 +27,33 @@
   spawnMessage: "the gobbling of a turkey"
   sfx: "turkey"
   sfxMaxChance: 1
+
+- npcId: Holiday Summon Snowman
+  name: snowman
+  sprite: 1020
+  stats: 10
+  skillLevels: 5
+  level: 1
+
+  otherStats:
+    iceResist: 5000
+
+  gear:
+    Hands: Medium Claws
+
+  usableSkills:
+    - IceMist
+    - GlacierStance
+    - ImbueFrost
+    - Hail
+    - Frostspikes
+
+  traitLevels:
+    FrostedTouch: 5
+    IceMistWiden: 3
+    WintersEmbrace: 1
+    WintersChill: 1
+
+  hp:
+    min: 2000
+    max: 2000
