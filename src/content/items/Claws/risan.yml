@@ -1,7 +1,7 @@
 
 
 - name: Catacombs Claws 1F
-  desc: "an pair of ancient claws set with magical green gems"
+  desc: "a pair of ancient claws set with magical green gems"
   tier: 6
   stats:
     offense: 1
@@ -21,7 +21,7 @@
     level: 25
 
 - name: Catacombs Claws 2F
-  desc: "an pair of ancient claws set with magical green gems"
+  desc: "a pair of ancient claws set with magical green gems"
   tier: 6
   stats:
     offense: 2
@@ -41,7 +41,7 @@
     level: 30
 
 - name: Catacombs Claws 3F
-  desc: "an pair of ancient claws set with magical green gems"
+  desc: "a pair of ancient claws set with magical green gems"
   tier: 7
   stats:
     offense: 3
@@ -61,7 +61,7 @@
     level: 35
 
 - name: Catacombs Claws 4F
-  desc: "an pair of ancient claws set with magical green gems"
+  desc: "a pair of ancient claws set with magical green gems"
   tier: 7
   stats:
     offense: 4
@@ -81,7 +81,7 @@
     level: 40
 
 - name: Catacombs Claws 5F
-  desc: "an pair of ancient claws set with magical green gems"
+  desc: "a pair of ancient claws set with magical green gems"
   tier: 8
   stats:
     offense: 5
