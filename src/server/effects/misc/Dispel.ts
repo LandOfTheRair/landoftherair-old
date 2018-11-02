@@ -18,8 +18,8 @@ export class Dispel extends SpellEffect {
 
     target.addAgro(caster, 5);
 
-    target.sendClientMessage({ message: `${caster.name} dispelled a buff from you!`, sfx: 'spell-debuff-give' });
-    caster.sendClientMessage({ message: `You dispelled a buff on ${target.name}!`, sfx: 'spell-debuff-receive' });
+    this.effectMessage(caster, { message: `You dispelled a buff on ${target.name}!`, sfx: 'spell-debuff-give' }, true);
+    this.effectMessage(target, { message: `${caster.name} dispelled a buff from you!`, sfx: 'spell-debuff-receive' }, true);
 
     const effect = sample(effects);
     target.unapplyEffect(effect, true, true);
