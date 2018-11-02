@@ -16,7 +16,7 @@ export class DebugCountMobs extends Command {
     const greenSpawner: any = find(room.spawners, { name: 'NPC Green Spawner' });
     const greenNPCs = greenSpawner ? greenSpawner.npcs.length : 0;
 
-    player.sendClientMessage(`Currently ${Object.keys(room.state.mapNPCs).length - greenNPCs} NPCs (${lairNPCs - greenNPCs} lair creatures) 
+    player.sendClientMessage(`[debug] Currently ${Object.keys(room.state.mapNPCs).length - greenNPCs} NPCs (${lairNPCs - greenNPCs} lair creatures) 
     and ${room.state.players.length} players in ${room.state.mapName}. 
     There are ${room.spawners.length - activeSpawners}/${room.spawners.length} active spawners; ${alwaysActiveSpawners - 1} are lair spawners.`);
   }

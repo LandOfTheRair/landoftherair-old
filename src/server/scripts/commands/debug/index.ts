@@ -12,3 +12,5 @@ export * from './DebugPing';
 export * from './DebugFlaggedSkills';
 export * from './DebugPos';
 export * from './DebugReset';
+
+export * from './DebugToggleFOV';

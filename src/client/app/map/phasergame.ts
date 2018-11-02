@@ -884,8 +884,15 @@ export class Game {
         fovSprite2.cameraOffset.x = 64 * (x + 4);
         fovSprite2.cameraOffset.y = 64 * (y + 4);
 
+        if(this.colyseus.game.debugFOVHide) {
+          fovSprite.alpha = 0;
+          fovSprite2.alpha = 0;
+          continue;
+        }
+
         if(!isPlayerInHash) {
           fovSprite.alpha = 1;
+          fovSprite2.alpha = 1;
           continue;
         }
 

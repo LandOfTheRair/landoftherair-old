@@ -8,7 +8,7 @@ export class DebugCountItems extends Command {
 
   execute(player: Player, { room }) {
 
-    player.sendClientMessage(`Currently ${room.groundItemCount} items on the ground in this world.`);
+    player.sendClientMessage(`[debug] Currently ${room.groundItemCount} items on the ground in this world.`);
   }
 
 }

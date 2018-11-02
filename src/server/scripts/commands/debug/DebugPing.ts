@@ -8,7 +8,7 @@ export class DebugPing extends Command {
 
   execute(player: Player, { t }) {
     const now = Date.now();
-    player.sendClientMessage(`Ping-pong! Your ping is ${now - t}ms (< 100ms is optimal).`);
+    player.sendClientMessage(`[debug] Ping-pong! Your ping is ${now - t}ms (< 100ms is optimal).`);
   }
 
 }

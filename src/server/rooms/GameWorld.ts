@@ -252,6 +252,13 @@ export class GameWorld extends Room<GameState> {
     this.send(client, data);
   }
 
+  public sendRawData(player: Player, data) {
+    const client = this.findClient(player);
+    if(!client) return;
+
+    this.sendTo(client, data);
+  }
+
   async onDispose() {
     this.state.isDisposing = true;
 

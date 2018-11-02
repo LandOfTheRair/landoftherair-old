@@ -64,6 +64,8 @@ export class ColyseusGameService {
   public currentItemDescription$ = new Subject<string>();
   public currentlySelectedMacro$ = new Subject<Macro>();
 
+  public debugFOVHide: boolean;
+
   private cancelNextAutoAction: boolean;
 
   public get skillTree$() {
@@ -468,6 +470,7 @@ export class ColyseusGameService {
     if(action === 'set_character')  return this.setCharacter(other.character);
     if(action === 'update_pos')     return this.updatePos(other.x, other.y, other.dir, other.swimLevel, other.fov);
     if(action === 'update_fov')     return this.updateFOV(other.fov);
+    if(action === 'toggle_fov')     return this.toggleFOV();
     if(action === 'add_npc')        return this.addNPC(other.npc);
     if(action === 'remove_npc')     return this.removeNPC(other.npcUUID);
     if(action === 'sync_npcs')      return this.syncNPCs(other.npcs);
@@ -478,6 +481,10 @@ export class ColyseusGameService {
     if(action === 'take_tour')      return this.takeTour();
     if(action === 'combat_log')     return this.updateCombatLogRecordingSettings(other);
     if(action === 'skill_tree')     return this.updateSkillTree(other.skillTree);
+  }
+
+  private toggleFOV() {
+    this.debugFOVHide = !this.debugFOVHide;
   }
 
   private resyncMarketboardItems(removeListingId: string) {

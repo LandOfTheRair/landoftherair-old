@@ -137,6 +137,7 @@ Some commands are hidden and don't really need to be used by players, but should
 * `~~combatlogstart <maxentries=1000>` - start logging combat data (this will clear any existing combat log data) - more than 1000 entries is not recommended
 * `~~combatlogstop` - stop logging combat data
 * `~~combatlogdownload` - download a CSV of your combat log data
+* `~~togglefov` - toggle the FOV (dark spaces) on/off
 
 #### Testing Commands
 
