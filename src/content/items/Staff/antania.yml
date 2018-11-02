@@ -15,6 +15,21 @@
   value: 65
   sprite: 196
 
+- name: Antanian Golden Staff
+  desc: "a wooden staff crafted from a local tree, tipped with gold"
+  stats:
+    int: 1
+    wis: 1
+    mp: 50
+  tier: 2
+  type: Staff
+  value: 567
+  sprite: 326
+  binds: true
+
+  requirements:
+    level: 5
+
 - name: Yzalt Heniz Staff
   desc: "a wooden staff with a tip made for charging magical energies through it"
   stats:

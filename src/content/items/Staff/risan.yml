@@ -10,6 +10,21 @@
   requirements:
     level: 15
 
+- name: Risan Golden Staff
+  desc: "a wooden staff crafted from a local tree, tipped with gold"
+  stats:
+    int: 2
+    wis: 2
+    mp: 100
+  tier: 5
+  type: Staff
+  value: 5267
+  sprite: 326
+  binds: true
+
+  requirements:
+    level: 15
+
 - name: Overseer Jigan Staff
   quality: 5
   desc: "a finely-milled quarterstaff emanating a strong magical energy"

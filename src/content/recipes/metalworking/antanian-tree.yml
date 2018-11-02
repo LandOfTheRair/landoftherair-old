@@ -71,6 +71,15 @@
     - Antanian Branch
     - Silver Ore (Large)
 
+- item: Antanian Golden Staff
+  skillGained: 50
+  maxSkillForGains: 14
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Antanian Branch
+    - Gold Ore (Small)
+
 - item: Antanian Crafted Arrows
   skillGained: 20
   maxSkillForGains: 7

@@ -71,6 +71,15 @@
     - Risan Branch
     - Silver Ore (Large)
 
+- item: Risan Golden Staff
+  skillGained: 50
+  maxSkillForGains: 14
+  requiredSkill: 7
+  xpGained: 15000
+  ingredients:
+    - Risan Branch
+    - Gold Ore (Small)
+
 - item: Risan Crafted Arrows
   skillGained: 50
   maxSkillForGains: 14
