@@ -99,10 +99,10 @@
   drops:
     - result: Thanksgiving Turkey Feather
       chance: 1
-      maxChance: 3
+      maxChance: 15
     - result: Thanksgiving Corn
       chance: 1
-      maxChance: 4
+      maxChance: 50
 
   spawnMessage: "the gobbling of a young turkey"
   sfx: "turkey"
@@ -152,10 +152,10 @@
   drops:
     - result: Thanksgiving Turkey Feather
       chance: 1
-      maxChance: 2
+      maxChance: 10
     - result: Thanksgiving Corn
       chance: 1
-      maxChance: 3
+      maxChance: 40
 
   spawnMessage: "the gobbling of a turkey"
   sfx: "turkey"
@@ -205,13 +205,13 @@
   drops:
     - result: Thanksgiving Turkey Feather
       chance: 1
-      maxChance: 1
+      maxChance: 10
     - result: Thanksgiving Turkey Feather
       chance: 1
-      maxChance: 2
+      maxChance: 5
     - result: Thanksgiving Corn
       chance: 1
-      maxChance: 3
+      maxChance: 20
 
   spawnMessage: "the guttural gobbling of a turkey"
   sfx: "turkey"
@@ -267,7 +267,7 @@
   drops:
     - result: Thanksgiving Turkey Feather
       chance: 1
-      maxChance: 3
+      maxChance: 5
     - result: Thanksgiving Corn
       chance: 1
       maxChance: 2
