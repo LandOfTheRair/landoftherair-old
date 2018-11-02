@@ -52,3 +52,16 @@
     potency: 1000
   value: 100
   binds: true
+
+- name: Christmas Egg Nog
+  sprite: 573
+  desc: "a warm glass of egg nog"
+  value: 50
+  ounces: 10
+  effect:
+    name: Nourishment
+    tooltip: "+3 WIL"
+    message: "The egg nog is delicious!"
+    stats:
+      wil: 3
+    duration: 21600

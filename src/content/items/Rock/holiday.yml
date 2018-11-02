@@ -1,4 +1,8 @@
 
+- name: Christmas Gingerbread
+  sprite: 572
+  desc: "an overcooked, inedible gingerbread man"
+  sellValue: 1
 
 - name: Christmas Coal
   sprite: 579

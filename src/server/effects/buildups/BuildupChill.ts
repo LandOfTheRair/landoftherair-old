@@ -26,7 +26,7 @@ export class BuildupChill extends BuildupEffect {
 
     if(caster) {
       isPermaFrosted = RollerHelper.XInOneHundred(caster.getTraitLevelAndUsageModifier('WintersEmbrace'));
-      
+
       if(isPermaFrosted) {
         caster.sendClientMessage(`You freeze ${char.name} solid!`, true);
       }

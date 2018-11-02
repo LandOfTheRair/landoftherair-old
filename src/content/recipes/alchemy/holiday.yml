@@ -12,3 +12,27 @@
     - Halloween Candy - Wrapped
     - Halloween Candy - Jellies
     - Halloween Candy - Mints
+
+- item: Christmas Gingerbread
+  skillGained: 1000
+  maxSkillForGains: 7
+  requiredSkill: 0
+  xpGained: 5000
+  ingredients:
+    - Antanian Bottle of Water
+    - Christmas Walnuts
+
+- item: Christmas Egg Nog
+  skillGained: 1000
+  maxSkillForGains: 7
+  requiredSkill: 0
+  xpGained: 5000
+  ingredients:
+    - Antanian Bottle of Water
+    - Antanian Bottle of Water
+    - Christmas Gingerbread
+    - Christmas Gingerbread
+    - Christmas Gingerbread
+    - Christmas Gingerbread
+    - Christmas Gingerbread
+    - Christmas Gingerbread
