@@ -121,9 +121,14 @@ export const responses = (npc: NPC) => {
           player.sendClientMessage({ message: `Planst hands you ${tokens} holiday tokens!`, grouping: 'always' });
 
           if(scores[player.uuid] === 10 && player.rightHand && player.rightHand.name === 'Thanksgiving Blunderbuss') {
+
+            player.setHandsBusy();
+
             npc.$$room.npcLoader.loadItem('Thanksgiving Blunderbuss (Improved)')
               .then(newItem => {
                 player.setRightHand(newItem);
+
+                player.setHandsFree();
               });
           }
 

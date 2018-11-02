@@ -10,7 +10,7 @@ export class SackToGround extends Command {
   public format = 'ItemSlot';
 
   execute(player: Player, { room, args }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     const slot = +args;
     if(isUndefined(slot)) return false;
 

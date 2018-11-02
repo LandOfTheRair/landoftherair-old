@@ -8,7 +8,7 @@ export class Swap extends Command {
   public format = '';
 
   async execute(player: Player) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     const left = player.leftHand;
     const right = player.rightHand;
 

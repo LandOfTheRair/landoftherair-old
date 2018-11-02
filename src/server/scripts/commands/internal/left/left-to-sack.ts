@@ -9,7 +9,7 @@ export class LeftToSack extends Command {
 
   execute(player: Player) {
     const item = player.leftHand;
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(!item) return;
 
     if(!player.addItemToSack(item)) return;

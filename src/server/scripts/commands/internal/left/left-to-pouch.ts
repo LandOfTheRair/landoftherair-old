@@ -8,7 +8,7 @@ export class LeftToPouch extends Command {
   public format = '';
 
   execute(player: Player) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     const item = player.leftHand;
     if(!item) return;
 

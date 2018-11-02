@@ -8,7 +8,7 @@ export class PotionToLeft extends Command {
   public format = '';
 
   async execute(player: Player) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(!player.potionHand) return false;
 
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');

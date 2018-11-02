@@ -25,9 +25,13 @@ export const responses = (npc: NPC) => {
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, GHOST_PEARL);
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, VAMPIRE_HEART);
 
+        player.setHandsBusy();
+
         npc.$$room.npcLoader.loadItem(DEDLAEN_MAZE_KEY)
           .then(item => {
             player.setRightHand(item);
+
+            player.setHandsFree();
           });
 
         return 'Here you go. Maybe it\'ll do you more good than it will for me.';

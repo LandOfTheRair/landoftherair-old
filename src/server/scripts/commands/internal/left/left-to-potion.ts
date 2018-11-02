@@ -9,7 +9,7 @@ export class LeftToPotion extends Command {
 
   execute(player: Player) {
     const left = player.leftHand;
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(!left) return;
 
     if(left.itemClass !== 'Bottle') return player.sendClientMessage('That item is not a bottle.');

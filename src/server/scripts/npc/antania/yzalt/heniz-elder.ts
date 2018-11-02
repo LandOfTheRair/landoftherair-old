@@ -50,9 +50,13 @@ export const responses = (npc: NPC) => {
 
           KillRanata.completeFor(player);
 
+          player.setHandsBusy();
+
           npc.$$room.npcLoader.loadItem(HENIZ_HELM)
             .then(item => {
               player.setRightHand(item);
+
+              player.setHandsFree();
             });
 
           return `I wish it didn't have to end this way, but thank you for dealing with this threat. 

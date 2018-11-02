@@ -9,7 +9,7 @@ export class LeftToLocker extends Command {
 
   async execute(player: Player, { room, args }) {
 
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     const [regionId, lockerId] = args.split(' ');
 

@@ -26,9 +26,13 @@ export const responses = (npc: NPC) => {
         return 'Empty your right hand and I can hook you up, mate.';
       }
 
+      player.setHandsBusy();
+
       npc.$$room.npcLoader.loadItem('Halloween Basket')
         .then(newItem => {
           player.setRightHand(newItem);
+
+          player.setHandsFree();
         });
 
       return 'There you are! Right click on any friendly creature or tell them "trick or treat" and they\'ll probably give you some candy. Probably.';

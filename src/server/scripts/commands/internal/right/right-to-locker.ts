@@ -11,7 +11,7 @@ export class RightToLocker extends Command {
 
     const [regionId, lockerId] = args.split(' ');
 
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     const item = player.rightHand;
     if(!item) return;

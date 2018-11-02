@@ -9,7 +9,7 @@ export class GroundToPotion extends Command {
 
   execute(player: Player, { room, args }) {
     const splitArgs = args.split(' ');
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(splitArgs.length < 1) return false;
 
     const [itemType, itemId] = splitArgs;

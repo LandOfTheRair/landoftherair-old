@@ -80,9 +80,13 @@ export const responses = (npc: NPC) => {
 
       if(player.rightHand) return 'Please empty your right hand.';
 
+      player.setHandsBusy();
+
       npc.$$room.npcLoader.loadItem(RANATA_KEY)
         .then(item => {
           player.setRightHand(item);
+
+          player.setHandsFree();
         });
 
       return `It's sad - Ranata and I go way back, but he must be stopped.
@@ -101,9 +105,13 @@ export const responses = (npc: NPC) => {
 
       if(player.rightHand) return 'Please empty your right hand.';
 
+      player.setHandsBusy();
+
       npc.$$room.npcLoader.loadItem(RANATA_KEY)
         .then(item => {
           player.setRightHand(item);
+
+          player.setHandsFree();
         });
 
       return `Well, I suppose it's no surprise, but at least now I'll know what happens to him.

@@ -13,7 +13,7 @@ export class BeltToGround extends Command {
     const slot = +args;
     if(isUndefined(args)) return false;
 
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     const item = player.belt.takeItemFromSlot(slot);
     if(!item) return;

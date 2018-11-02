@@ -22,10 +22,14 @@ export const responses = (npc: NPC) => {
         return `Hello ${player.name}! I can bake you some corn bread - it's my specialty. Bring me two ears of corn and I'll hook you up!`;
       }
 
+      player.setHandsBusy();
+
       npc.$$room.npcLoader.loadItem('Thanksgiving Cornbread')
         .then(newItem => {
           player.setRightHand(newItem);
           player.setLeftHand(null);
+
+          player.setHandsFree();
         });
 
       return `Here you go! You might even get lucky!`;

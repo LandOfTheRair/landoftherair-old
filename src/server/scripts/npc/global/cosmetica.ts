@@ -55,9 +55,13 @@ export const responses = (npc: NPC) => {
 
       player.rightHand.cosmetic = null;
 
+      player.setHandsBusy();
+
       player.$$room.npcLoader.loadItem(`Cosmetic Scroll - ${cosmetic}`)
         .then(item => {
           player.setLeftHand(item);
+
+          player.setHandsFree();
         });
 
       return 'Thy will be done! Beware, this scroll is not bound to you!';
@@ -98,10 +102,13 @@ export const responses = (npc: NPC) => {
 
       if(!silverKey) return 'Invalid type! Not sure how we got here? You should probably report this.';
 
+      player.setHandsBusy();
 
       player.$$room.npcLoader.loadItem(`Cosmetic Scroll - ${itemSuffix}`)
         .then(item => {
           player.setRightHand(item);
+
+          player.setHandsFree();
         });
 
       player.$$room.subscriptionHelper.decrementSilverPurchase(player.$$account, silverKey);

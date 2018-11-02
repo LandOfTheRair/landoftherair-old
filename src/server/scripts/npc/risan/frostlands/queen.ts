@@ -35,11 +35,15 @@ export const responses = (npc: NPC) => {
         if(item.name === 'Basic Machleum Ring') {
           if(!mod || mod.name !== 'Risan Frost Larimar') return 'Ring and gem! Need both!';
 
+          player.setHandsBusy();
+
           npc.$$room.npcLoader.loadItem(`${player.baseClass} Simple Machleum Ring`)
             .then(newItem => {
               mergeItems(newItem, player.rightHand);
               player.setRightHand(newItem);
               player.setLeftHand(null);
+
+              player.setHandsFree();
             });
 
           return 'Good! Here, have ring. Want better? Bring ether red gem. More tricks to share, yes yes!';
@@ -48,11 +52,15 @@ export const responses = (npc: NPC) => {
         if(includes(item.name, 'Simple Machleum Ring')) {
           if(!mod || mod.name !== 'Risan Ether Larimar') return 'Ring and ether red gem! Need both!';
 
+          player.setHandsBusy();
+
           npc.$$room.npcLoader.loadItem(`${player.baseClass} Double Machleum Ring`)
             .then(newItem => {
               mergeItems(newItem, player.rightHand);
               player.setRightHand(newItem);
               player.setLeftHand(null);
+
+              player.setHandsFree();
             });
 
           return 'Good! Here, new ring. Best ring in kingdom, probably. Best jeweler, yes!';

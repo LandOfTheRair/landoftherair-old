@@ -8,7 +8,7 @@ export class SackToMerchant extends Command {
   public format = 'Slot MerchantUUID';
 
   execute(player: Player, { room, args }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     const [slot, merchantUUID] = args.split(' ');
 

@@ -10,7 +10,7 @@ export class PouchToSack extends Command {
   public format = 'ItemSlot';
 
   execute(player: Player, { args }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     const slot = +args;
     if(isUndefined(args)) return false;
 

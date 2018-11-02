@@ -108,8 +108,8 @@ export abstract class Command {
     }
   }
 
-  isAccessingLocker(player: Player) {
-    return player.$$isAccessingLocker;
+  isBusy(player: Player) {
+    return player.$$isAccessingLocker || player.$$areHandsBusy;
   }
 
   takeItemCheck(player: Player, item: Item): boolean {

@@ -22,9 +22,13 @@ export const responses = (npc: NPC) => {
 
         npc.$$room.npcLoader.takePlayerItem(player, MINO_HORN);
 
+        player.setHandsBusy();
+
         npc.$$room.npcLoader.loadItem(DEDLAEN_CITY_KEY)
           .then(item => {
             player.setRightHand(item);
+
+            player.setHandsFree();
           });
 
         return 'Well, I see I shouldn\'t have underestimated you. Here you go! Don\'t die out there.';

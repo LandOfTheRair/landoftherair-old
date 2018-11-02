@@ -53,9 +53,13 @@ export const responses = (npc: NPC) => {
         'Thanksgiving Heal Bottle'
       ]);
 
+      player.setHandsBusy();
+
       npc.$$room.npcLoader.loadItem(item)
         .then(newItem => {
           player.setRightHand(newItem);
+
+          player.setHandsFree();
         });
 
       return `Thank you for making our feast a success, ${player.name}!`;

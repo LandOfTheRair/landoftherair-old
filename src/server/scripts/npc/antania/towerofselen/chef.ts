@@ -21,10 +21,14 @@ export const responses = (npc: NPC) => {
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, SPIDER_EGG);
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, FLOWER);
 
+        player.setHandsBusy();
+
         npc.$$room.npcLoader.loadItem('Antanian Magic Potion')
           .then(item => {
             item.binds = true;
             player.setRightHand(item);
+
+            player.setHandsFree();
           });
 
         return 'Thanks! I hope you enjoy my concoction.';

@@ -10,7 +10,7 @@ export class LockerToEquip extends Command {
   public format = 'ItemSlot RegionID LockerID';
 
   async execute(player: Player, { room, args }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     const [slotStr, regionId, lockerId] = args.split(' ');
     const slot = +slotStr;
     if(isUndefined(slotStr)) return;

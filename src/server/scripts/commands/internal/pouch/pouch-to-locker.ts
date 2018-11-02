@@ -8,7 +8,7 @@ export class PouchToLocker extends Command {
   public format = 'Slot RegionID LockerID';
 
   async execute(player: Player, { room, args }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     const [slot, regionId, lockerId] = args.split(' ');
 

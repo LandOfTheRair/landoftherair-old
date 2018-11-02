@@ -11,7 +11,7 @@ export class LeftToBelt extends Command {
     const item = player.leftHand;
     if(!item) return;
 
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(!player.addItemToBelt(item)) return;
     player.setLeftHand(null);
   }

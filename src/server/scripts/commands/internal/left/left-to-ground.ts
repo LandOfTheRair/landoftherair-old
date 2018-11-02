@@ -9,7 +9,7 @@ export class LeftToGround extends Command {
 
   execute(player: Player, { room }) {
     if(!player.leftHand) return;
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     const item = player.leftHand;
     player.setLeftHand(null);

@@ -13,7 +13,7 @@ export class LockerToPotion extends Command {
     const [slotId, regionId, lockerId] = args.split(' ');
     if(isUndefined(slotId)) return;
 
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(player.potionHand) return player.sendClientMessage('Your potion slot is occupied.');
 
     this.accessLocker(player);

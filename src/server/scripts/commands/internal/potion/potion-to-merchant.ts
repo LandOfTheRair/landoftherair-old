@@ -8,7 +8,7 @@ export class PotionToMerchant extends Command {
   public format = 'MerchantUUID';
 
   execute(player: Player, { room, args }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     const merchantUUID = args;
 

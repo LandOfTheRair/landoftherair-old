@@ -8,7 +8,7 @@ export class RightToGround extends Command {
   public format = '';
 
   execute(player: Player, { room }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(!player.rightHand) return;
 
     const item = player.rightHand;

@@ -60,11 +60,15 @@ export const responses = (npc: NPC) => {
       if(player.rightHand) {
         if(player.rightHand.name === 'Thanksgiving Turkey Feather') {
 
+          player.setHandsBusy();
+
           if(RollerHelper.XInOneHundred(90)) {
             LootHelper.rollAnyTable(tokenTable).then(([numTokens]) => {
               player.sendClientMessage({ message: `Koda hands you ${numTokens} holiday tokens!`, grouping: 'always' });
               player.earnCurrency(Currency.Thanksgiving, numTokens, 'Koda');
               player.setRightHand(null);
+
+              player.setHandsFree();
             });
 
           } else {
@@ -76,6 +80,8 @@ export const responses = (npc: NPC) => {
               }
 
               player.setRightHand(item);
+
+              player.setHandsFree();
             });
           }
 

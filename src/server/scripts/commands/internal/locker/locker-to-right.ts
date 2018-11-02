@@ -14,7 +14,7 @@ export class LockerToRight extends Command {
     if(isUndefined(slotId)) return;
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     this.accessLocker(player);
 

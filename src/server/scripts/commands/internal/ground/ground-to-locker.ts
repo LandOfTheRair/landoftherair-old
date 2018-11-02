@@ -9,7 +9,7 @@ export class GroundToLocker extends Command {
 
   async execute(player: Player, { room, args }) {
     const splitArgs = args.split(' ');
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(splitArgs.length < 4) return;
 
     const [itemType, itemId, regionId, lockerId] = splitArgs;

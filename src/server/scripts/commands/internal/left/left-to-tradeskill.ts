@@ -10,7 +10,7 @@ export class LeftToTradeskill extends Command {
   public format = 'TradeskillSlot TradeskillDestSlot AlchUUID';
 
   execute(player: Player, { room, args }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     const [tsSlot, tsDestSlot, alchUUID] = args.split(' ');
     if(!tsSlot || isUndefined(tsDestSlot) || !alchUUID) return false;

@@ -10,7 +10,7 @@ export class LockerToGround extends Command {
   public format = 'ItemSlot RegionID LockerID [Amt]';
 
   async execute(player: Player, { room, args }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     const [slotId, regionId, lockerId, amount] = args.split(' ');
     if(isUndefined(slotId)) return;
 

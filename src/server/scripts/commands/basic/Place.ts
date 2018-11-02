@@ -10,7 +10,7 @@ export class Place extends Command {
   public format = 'ItemType|ItemName [in sack|belt|pouch]';
 
   execute(player: Player, { args }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     if(includes(args, ' in')) args = args.split(' in').join('');
 

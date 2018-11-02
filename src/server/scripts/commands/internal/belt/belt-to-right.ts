@@ -14,7 +14,7 @@ export class BeltToRight extends Command {
     if(isUndefined(args)) return false;
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     const item = player.belt.takeItemFromSlot(slot);
     if(!item) return false;

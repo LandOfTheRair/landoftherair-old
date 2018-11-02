@@ -11,7 +11,7 @@ export class BeltToTradeskill extends Command {
 
   execute(player: Player, { room, args }) {
     const [sackSlot, tsSlot, tsDestSlot, alchUUID] = args.split(' ');
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(isUndefined(sackSlot) || !tsSlot || isUndefined(tsDestSlot) || !alchUUID) return false;
 
     const container = room.state.findNPC(alchUUID);

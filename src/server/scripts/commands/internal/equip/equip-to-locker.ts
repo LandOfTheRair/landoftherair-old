@@ -11,7 +11,7 @@ export class EquipToLocker extends Command {
 
   async execute(player: Player, { room, args }) {
     const [slot, regionId, lockerId] = args.split(' ');
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(isUndefined(slot)) return false;
 
     const item = player.gear[slot];

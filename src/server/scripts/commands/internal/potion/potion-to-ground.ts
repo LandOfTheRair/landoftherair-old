@@ -8,7 +8,7 @@ export class PotionToGround extends Command {
   public format = '';
 
   execute(player: Player, { room }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(!player.potionHand) return false;
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 

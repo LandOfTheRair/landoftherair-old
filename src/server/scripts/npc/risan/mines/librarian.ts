@@ -23,9 +23,13 @@ export const responses = (npc: NPC) => {
       if(npc.$$room.npcLoader.checkPlayerHeldItem(player, HEART, 'right')) {
         npc.$$room.npcLoader.takePlayerItem(player, HEART, 'right');
 
+        player.setHandsBusy();
+
         npc.$$room.npcLoader.loadItem(`Librarian ${player.baseClass} Amulet`)
           .then(item => {
             player.setRightHand(item);
+
+            player.setHandsFree();
           });
 
         return `I'll be damned, the queen does exist. I can't offer you much, but I can offer you a fine bookmark from my collection.`;

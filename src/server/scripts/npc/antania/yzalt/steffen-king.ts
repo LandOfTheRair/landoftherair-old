@@ -47,9 +47,13 @@ export const responses = (npc: NPC) => {
 
           KillRanata.completeFor(player);
 
+          player.setHandsBusy();
+
           npc.$$room.npcLoader.loadItem(STEFFEN_HELM)
             .then(item => {
               player.setRightHand(item);
+
+              player.setHandsFree();
             });
 
           return `Thank you for dealing with that vile lich. While it's not much, take my crown.

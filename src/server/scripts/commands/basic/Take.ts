@@ -10,7 +10,7 @@ export class Take extends Command {
   public format = 'ItemType|ItemName [from sack|belt|pouch]';
 
   execute(player: Player, { args }) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full.');
 
     if(includes(args, ' from')) args = args.split(' from').join('');

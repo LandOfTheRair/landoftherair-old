@@ -8,7 +8,7 @@ export class PotionToPouch extends Command {
   public format = '';
 
   async execute(player: Player) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(!player.potionHand) return false;
 
     if(!this.checkPlayerEmptyHand(player)) return false;

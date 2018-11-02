@@ -74,10 +74,14 @@ export const responses = (npc: NPC) => {
       if(npc.$$room.npcLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
         npc.$$room.npcLoader.takePlayerItem(player, TONWIN_SWORD);
 
+        player.setHandsBusy();
+
         npc.$$room.npcLoader.loadItem('Gold Coin')
           .then(item => {
             item.value = 20000;
             player.setRightHand(item);
+
+            player.setHandsFree();
           });
 
         return `Thank you, ${player.name}. Here is your reward for my freedom!`;

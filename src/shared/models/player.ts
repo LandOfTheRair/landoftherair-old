@@ -91,8 +91,16 @@ export class Player extends Character {
 
   private lastDeathLocation: any;
 
+  @nonenumerable
   public $$hungerTicks: number;
+
+  @nonenumerable
   public $$isAccessingLocker: boolean;
+
+  @nonenumerable
+  public $$areHandsBusy: boolean;
+
+  @nonenumerable
   public $$ready: boolean;
 
   public tradeSkillContainers: {
@@ -855,6 +863,14 @@ export class Player extends Character {
     if(reason) {
       this.$$room.analyticsHelper.trackCurrencySink('Source', this, currency, amt, reason);
     }
+  }
+
+  public setHandsBusy() {
+    this.$$areHandsBusy = true;
+  }
+
+  public setHandsFree() {
+    this.$$areHandsBusy = false;
   }
 
 }

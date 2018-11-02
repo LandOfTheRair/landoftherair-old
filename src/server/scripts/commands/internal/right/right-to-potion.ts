@@ -8,7 +8,7 @@ export class RightToPotion extends Command {
   public format = '';
 
   execute(player: Player) {
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     const right = player.rightHand;
     if(!right) return;
     if(right.itemClass !== 'Bottle') return player.sendClientMessage('That item is not a bottle.');

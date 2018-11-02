@@ -11,7 +11,7 @@ export class BeltToLocker extends Command {
 
     const [slot, regionId, lockerId] = args.split(' ');
 
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
 
     this.accessLocker(player);
 

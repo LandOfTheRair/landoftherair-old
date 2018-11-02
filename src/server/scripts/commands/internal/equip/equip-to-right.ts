@@ -11,7 +11,7 @@ export class EquipToRight extends Command {
 
   execute(player: Player, { args }) {
     const slot = args;
-    if(this.isAccessingLocker(player)) return;
+    if(this.isBusy(player)) return;
     if(isUndefined(slot)) return false;
 
     const item = player.gear[slot];
