@@ -37,7 +37,7 @@ export class ImbueFrost extends ImbueEffect implements AugmentSpellEffect {
   effectStart(char: Character) {
     this.targetEffectMessage(char, { message: 'A whirling blue aura envelops your hands.', sfx: 'spell-buff-physical' });
 
-    this.iconData.tooltipDesc = `Physical attacks sometimes do ${Math.floor(this.potency / 2)}% bonus ice damage.`;
+    this.iconData.tooltipDesc = `Physical attacks do ${Math.floor(this.potency / 2)}% bonus ice damage ${this.potency}% of the time.`;
   }
 
   effectEnd(char: Character) {

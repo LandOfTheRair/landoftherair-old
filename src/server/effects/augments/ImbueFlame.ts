@@ -37,7 +37,7 @@ export class ImbueFlame extends ImbueEffect implements AugmentSpellEffect {
   effectStart(char: Character) {
     this.targetEffectMessage(char, { message: 'A whirling red aura envelops your hands.', sfx: 'spell-buff-physical' });
 
-    this.iconData.tooltipDesc = `Physical attacks sometimes do ${Math.floor(this.potency / 2)}% bonus fire damage.`;
+    this.iconData.tooltipDesc = `Physical attacks do ${Math.floor(this.potency / 2)}% bonus fire damage ${this.potency}% of the time.`;
   }
 
   effectEnd(char: Character) {

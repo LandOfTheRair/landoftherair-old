@@ -8,3 +8,16 @@
   sprite: 579
   desc: "a chunk of coal"
   sellValue: 1
+
+- name: Christmas Snowglobe
+  sprite: 576
+  desc: "a snowglobe depicting the blizzards of the Winter Wonderland"
+  binds: true
+  uses: -1
+  sellValue: 100000
+
+  effect:
+    name: ImbueFrost
+    potency: 50
+    duration: 7200
+
