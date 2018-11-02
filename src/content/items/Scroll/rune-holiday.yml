@@ -86,3 +86,47 @@
     name: EtherNebula
     isPermanent: true
   value: 8000
+
+# Christmas Rune Scrolls
+- name: Rune Scroll - Winters Embrace I
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Winter's Embrace I\""
+  trait:
+    name: WintersEmbrace
+    level: 1
+  value: 500
+
+- name: Rune Scroll - Winters Embrace II
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Winter's Embrace II\""
+  trait:
+    name: WintersEmbrace
+    level: 2
+  value: 1000
+
+- name: Rune Scroll - Winters Embrace III
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Winter's Embrace III\""
+  trait:
+    name: WintersEmbrace
+    level: 3
+  value: 2000
+
+- name: Rune Scroll - Winters Embrace IV
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Winter's Embrace IV\""
+  trait:
+    name: WintersEmbrace
+    level: 4
+  value: 4000
+
+- name: Rune Scroll - Winters Embrace V
+  sprite: 681
+  desc: "a runic scroll imbued with the empowerment \"Winter's Embrace V\""
+  trait:
+    name: WintersEmbrace
+    level: 5
+  cosmetic:
+    name: SnowflakeJoy
+    isPermanent: true
+  value: 8000
