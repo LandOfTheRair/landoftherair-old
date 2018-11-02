@@ -260,8 +260,11 @@ export class NPC extends Character {
 
       if(this.$$corpseRef.$heldBy) {
         const holder = this.$$room.state.findPlayer(this.$$corpseRef.$heldBy);
-        holder.sendClientMessage(`The corpse turned to dust in your hands.`);
-        DeathHelper.corpseCheck(holder);
+
+        if(holder) {
+          holder.sendClientMessage(`The corpse turned to dust in your hands.`);
+          DeathHelper.corpseCheck(holder);
+        }
       }
 
       this.$$room.dropCorpseItems(this.$$corpseRef);

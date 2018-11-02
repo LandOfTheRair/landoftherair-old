@@ -128,7 +128,7 @@ export const responses = (npc: NPC) => {
           }
 
           cleanUpPlayerData(player.uuid);
-          
+
           return `Well done! Here is your reward! Your final score was ${scores[player.uuid]}.`;
         }
 
