@@ -123,6 +123,20 @@ export class Lobby extends Room<LobbyState> {
     if(this.userIdsLoggingIn[userId]) return;
     this.userIdsLoggingIn[userId] = true;
 
+    const alreadyLoggedIn = () => {
+      this.send(client, {
+        error: 'already_logged_in',
+        prettyErrorName: 'Already Logged In',
+        prettyErrorDesc: 'You are already logged in somewhere else. You will have to log into a different account from this location.'
+      });
+
+      this.send(client, { action: 'force_logout' });
+
+      client.close();
+
+      pull(this.clients, client);
+    };
+
     if(process.env.AUTH0_JWKS_URI) {
       const isValidRS256Token = await JWTHelper.verifyRS256Token(idToken);
 
@@ -144,17 +158,7 @@ export class Lobby extends Room<LobbyState> {
       const oldClient: any = find(this.clients, { userId });
 
       if(oldClient && oldClient !== client) {
-        this.send(client, {
-          error: 'already_logged_in',
-          prettyErrorName: 'Already Logged In',
-          prettyErrorDesc: 'You are already logged in somewhere else. You will have to log into a different account from this location.'
-        });
-
-        this.send(client, { action: 'force_logout' });
-
-        client.close();
-
-        pull(this.clients, client);
+        alreadyLoggedIn();
         delete this.userIdsLoggingIn[userId];
         return;
 
@@ -217,7 +221,14 @@ export class Lobby extends Room<LobbyState> {
       return;
     }
 
-    await this.subscriptionHelper.checkAccountForExpiration(account);
+    const tryFindAcc = this.state.findAccount(userId);
+    if(tryFindAcc) {
+      alreadyLoggedIn();
+      delete this.userIdsLoggingIn[userId];
+      return;
+    }
+
+    this.subscriptionHelper.checkAccountForExpiration(account);
     DiscordHelper.activateTag(account, account.discordTag);
 
     const { email, emailVerified } = JWTHelper.extractEmailAndVerifiedStatusFromToken(idToken);
