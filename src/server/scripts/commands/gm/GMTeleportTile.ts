@@ -1,7 +1,6 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { SkillClassNames } from '../../../../shared/models/character';
 
 export class GMTeleportTile extends Command {
 

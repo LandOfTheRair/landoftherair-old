@@ -1,7 +1,5 @@
 import { NPC } from '../../../../../shared/models/npc';
 
-import { RenegadeFeathers } from '../../../../quests';
-
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Deer Robe');

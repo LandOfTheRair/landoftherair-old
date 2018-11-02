@@ -354,7 +354,6 @@ export class Lobby extends Room<LobbyState> {
     const name = character.name;
     const sex = character.sex;
     const baseClass = character.baseClass;
-    const gold = character.currentGold;
     const allegiance = character.allegiance;
 
     const player: Player = new Player({

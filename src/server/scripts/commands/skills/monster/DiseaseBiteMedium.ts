@@ -1,8 +1,4 @@
 
-
-
-import * as dice from 'dice.js';
-
 import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { Disease as CastEffect } from '../../../../effects/dots/Disease';

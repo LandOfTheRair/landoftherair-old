@@ -1,5 +1,5 @@
 
-import { Effect, Maxes } from '../../base/Effect';
+import { Effect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 
 import { DarkVision, TrueSight, EagleEye } from '../';
@@ -22,7 +22,7 @@ export class ChristmasCarrot extends Effect {
     dv.shouldNotShowMessage = false;
     ee.shouldNotShowMessage = false;
     ts.shouldNotShowMessage = false;
-    
+
     this.effectMessage(char, { message: 'Your eyes are far-out, man!', sfx: 'spell-buff' });
   }
 }

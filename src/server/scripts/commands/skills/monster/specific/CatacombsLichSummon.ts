@@ -3,7 +3,6 @@ import { sample } from 'lodash';
 
 import { MonsterSkill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
-import { RollerHelper } from '../../../../../../shared/helpers/roller-helper';
 
 export class CatacombsLichSummon extends MonsterSkill {
 

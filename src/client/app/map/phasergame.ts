@@ -946,7 +946,7 @@ export class Game {
             fovSprite.alpha = 1;
             fovSprite.scale.x = 0.35;
             fovSprite.cameraOffset.x += 42;
-            continue;
+
           }
         }
 

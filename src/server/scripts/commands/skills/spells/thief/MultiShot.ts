@@ -1,13 +1,9 @@
 
-
-
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { CombatHelper } from '../../../../../helpers/world/combat-helper';
 import { MessageHelper } from '../../../../../helpers/world/message-helper';
 import { Player } from '../../../../../../shared/models/player';
-import { RollerHelper } from '../../../../../../shared/helpers/roller-helper';
-import { Drain } from '../../../../../effects';
 
 export class MultiShot extends Skill {
 

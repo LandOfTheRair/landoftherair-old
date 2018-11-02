@@ -1,8 +1,4 @@
 
-
-
-import * as dice from 'dice.js';
-
 import { MonsterSkill } from '../../../../base/Skill';
 import { Character } from '../../../../../shared/models/character';
 import { Poison as CastEffect } from '../../../../effects/dots/Poison';

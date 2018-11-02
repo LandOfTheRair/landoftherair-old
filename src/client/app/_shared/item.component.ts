@@ -58,8 +58,6 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
 export class ItemComponent implements OnDestroy {
 
   private _item: Item;
-  private _isMouseIn: boolean;
-  private _mouseTimeout: any;
 
   @Input()
   public set item(item: Item) {
@@ -375,28 +373,13 @@ export class ItemComponent implements OnDestroy {
   }
 
   updateWithDesc() {
-    if(!this.item || !this.showDesc || this._mouseTimeout) return;
+    if(!this.item || !this.showDesc) return;
 
-    this._isMouseIn = true;
     this.colyseusGame.updateCurrentItemDesc(this.descText);
-
-    /*
-    this._mouseTimeout = setTimeout(() => {
-      if(!this._isMouseIn) return;
-      this._mouseTimeout = null;
-    }, 750);
-    */
   }
 
   removeDesc() {
-    this._isMouseIn = false;
     this.colyseusGame.updateCurrentItemDesc('');
-    /*
-    if(this._mouseTimeout) {
-      clearTimeout(this._mouseTimeout);
-      this._mouseTimeout = null;
-    }
-    */
   }
 
 }

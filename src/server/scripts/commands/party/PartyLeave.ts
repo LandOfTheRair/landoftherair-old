@@ -8,8 +8,6 @@ export class PartyLeave extends Command {
 
   execute(player: Player, { room }) {
     if(!player.party) return player.sendClientMessage('You are not in a party!');
-    const partyName = player.partyName;
-
     room.partyManager.leaveParty(player);
 
     if(!room.canPartyAction) {

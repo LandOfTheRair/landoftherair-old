@@ -2,7 +2,7 @@
 import { NPC } from '../../../shared/models/npc';
 import { Item } from '../../../shared/models/item';
 
-import { compact, get, random, includes, cloneDeep } from 'lodash';
+import { compact, get, random, includes } from 'lodash';
 
 import { LootRoller, LootFunctions, LootTable } from 'lootastic';
 import { HolidayHelper } from '../../../shared/helpers/holiday-helper';

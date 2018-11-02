@@ -23,7 +23,7 @@ class LoreLoader {
 
       allPromises.push(...LoreLoader.allGemDescInserts(allItemData, allMapDropData, allRegionDropData));
 
-      console.log('Inserted all gem description scrolls')
+      console.log('Inserted all gem description scrolls');
 
       allPromises.push(...LoreLoader.allRecipeScrollInserts(allItemData, allMapDropData, allRegionDropData, allRecipeData));
 
