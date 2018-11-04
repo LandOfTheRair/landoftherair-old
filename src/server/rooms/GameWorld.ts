@@ -787,7 +787,7 @@ export class GameWorld extends Room<GameState> {
   addItemToGround(ref, item) {
     // invalid items *do* not belong on the ground. fumbling f.ex. gloves is fine, they'll be a potato til they respawn
     // but graphical glitches are a no no!
-    if(item.sprite < 0) return;
+    if(item.sprite < 0 || !ref) return;
 
     // drop items on destroy if they're supposed to, or if they're a tester.
     if(ref.isPlayer && ref.isPlayer() && item.isOwnedBy(ref) && this.subscriptionHelper.isTester(ref)) return;
