@@ -967,6 +967,16 @@
           </div>
         </div>
 
+        <div class="row mb-1" *ngIf="currentlyEditingMacro.lockActivation">
+          <div class="col-3"></div>
+          <div class="col-9">
+            <label class="form-check-label" for="macroLockActivationIgnore">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="currentlyEditingMacro.ignoreAutoattackOption" id="macroLockActivationIgnore"/>
+              Ignore Auto-attack For This Macro
+            </label>
+          </div>
+        </div>
+
         <div class="row mb-1">
           <div class="col-3 text-right font-weight-bold">FG Color</div>
           <div class="col-3">

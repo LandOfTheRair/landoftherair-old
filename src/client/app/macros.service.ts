@@ -18,6 +18,7 @@ export class Macro {
   autoActivate: boolean;
   lockActivation: boolean;
   clickToTarget = true;
+  ignoreAutoattackOption: boolean;
 
   appendTargetToEachMacro = true;
   macro = '';
