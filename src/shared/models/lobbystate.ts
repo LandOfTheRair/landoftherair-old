@@ -99,11 +99,6 @@ export class LobbyState {
     this.account$.next(this.accounts);
   }
 
-  removeAccountAtPosition(position: number) {
-    pullAt(this.accounts, [position]);
-    this.account$.next(this.accounts);
-  }
-
   setDiscordAlwaysOnlineUsers(accts: DiscordMockAccount[]) {
     this.discordAccounts = accts;
   }

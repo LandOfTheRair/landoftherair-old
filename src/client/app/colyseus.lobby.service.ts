@@ -56,6 +56,7 @@ export class ColyseusLobbyService {
       this.room = this.client.join(roomId);
 
       this.room.onStateChange.add((state) => {
+        this.colyseus.debugLobbyLogMessage({ CLIENT_INFO: 'STATE_CHANGE', state }, 'incoming');
         this.lobbyState.syncTo(state);
         this.setAccount(this.lobbyState.findAccountByUsername(this.myAccount.username));
       });

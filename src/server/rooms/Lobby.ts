@@ -123,18 +123,23 @@ export class Lobby extends Room<LobbyState> {
     if(this.userIdsLoggingIn[userId]) return;
     this.userIdsLoggingIn[userId] = true;
 
-    const alreadyLoggedIn = () => {
-      this.send(client, {
-        error: 'already_logged_in',
-        prettyErrorName: 'Already Logged In',
-        prettyErrorDesc: 'You are already logged in somewhere else. You will have to log into a different account from this location.'
+    const alreadyLoggedIn = async (oldClient) => {
+      await this.removeUsername(username);
+
+      this.send(oldClient, {
+        error: 'someone_kicked_you',
+        prettyErrorName: 'Someone Kicked You',
+        prettyErrorDesc: 'You have been forcibly logged out from this location.'
       });
 
-      this.send(client, { action: 'force_logout' });
+      this.send(oldClient, { action: 'force_logout' });
 
-      client.close();
+      oldClient.close();
 
-      pull(this.clients, client);
+      oldClient.username = null;
+      oldClient.userId = null;
+
+      pull(this.clients, oldClient);
     };
 
     if(process.env.AUTH0_JWKS_URI) {
@@ -157,27 +162,8 @@ export class Lobby extends Room<LobbyState> {
     if(checkAccount) {
       const oldClient: any = find(this.clients, { userId });
 
-      if(oldClient && oldClient !== client) {
-        alreadyLoggedIn();
-        delete this.userIdsLoggingIn[userId];
-        return;
-
-        /*
-        this.removeUsername(username);
-
-        this.send(oldClient, {
-          error: 'someone_kicked_you',
-          prettyErrorName: 'Someone Kicked You',
-          prettyErrorDesc: 'You have been forcibly logged out from this location.'
-        });
-
-        this.send(oldClient, { action: 'force_logout' });
-
-        oldClient.close();
-
-        pull(this.clients, oldClient);
-        */
-
+      if(oldClient && oldClient !== client && oldClient.id === checkAccount.colyseusId) {
+        await alreadyLoggedIn(oldClient);
       }
 
     }
@@ -217,13 +203,6 @@ export class Lobby extends Room<LobbyState> {
     }
 
     if(!account || !account.username || !account.userId) {
-      delete this.userIdsLoggingIn[userId];
-      return;
-    }
-
-    const tryFindAcc = this.state.findAccount(userId);
-    if(tryFindAcc) {
-      alreadyLoggedIn();
       delete this.userIdsLoggingIn[userId];
       return;
     }
@@ -464,9 +443,9 @@ export class Lobby extends Room<LobbyState> {
     this.updateDiscordLobbyChannelUserCount();
   }
 
-  removeUsername(username) {
+  async removeUsername(username) {
     this.state.removeAccount(username);
-    DB.$players.update({ username }, { $set: { inGame: -1, colyseusId: null } }, { multi: true });
+    return DB.$players.update({ username }, { $set: { inGame: -1, colyseusId: null } }, { multi: true });
   }
 
   onMessage(client, data) {
