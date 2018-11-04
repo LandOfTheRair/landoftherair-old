@@ -5,7 +5,7 @@ import { DB } from '../../database';
 import { Item, Quality } from '../../../shared/models/item';
 import { GameWorld } from '../../rooms/GameWorld';
 
-import { random, sampleSize, sum, sample, isArray, isNumber } from 'lodash';
+import { random, sampleSize, sum, sample, isArray, isNumber, includes } from 'lodash';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -82,15 +82,26 @@ export class ItemCreator {
 
     if(name === 'none') return Promise.resolve(null);
 
-    const finalizeItem = (itemData) => this.rollStatsForItem(new Item(itemData), room);
+    let createItemName = name;
+    if(includes(name, 'Vial of Blood')) createItemName = 'Vial of Blood';
+    if(includes(name, 'Runewritten Scroll')) createItemName = 'Runewritten Scroll';
 
-    const data = this.cache.get(name);
+    const finalizeItem = (itemData) => {
+      const createdItem = new Item(itemData);
+      this.rollStatsForItem(createdItem, room);
+
+      if(name !== createItemName) createdItem.name = name;
+
+      return createdItem;
+    };
+
+    const data = this.cache.get(createItemName);
     if(data) return finalizeItem(data);
 
-    const item = await DB.$items.findOne({ name });
-    if(!item) throw new Error(`Item ${name} does not exist.`);
+    const item = await DB.$items.findOne({ name: createItemName });
+    if(!item) throw new Error(`Item ${createItemName} does not exist.`);
 
-    if(isProd) this.cache.set(name, item);
+    if(isProd) this.cache.set(createItemName, item);
 
     return finalizeItem(item);
   }

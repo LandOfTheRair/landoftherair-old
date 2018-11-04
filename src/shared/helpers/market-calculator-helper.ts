@@ -1,7 +1,7 @@
 import { Item } from '../models/item';
 import { Player } from '../models/player';
 
-import { isNumber } from 'lodash';
+import { isNumber, includes } from 'lodash';
 
 export class MarketCalculatorHelper {
 
@@ -57,5 +57,7 @@ export class MarketCalculatorHelper {
     const totalListingFee = MarketCalculatorHelper.calculateListingCostForRegion(baseItemListCost, region);
 
     if(gold < totalListingFee)                return 'Not enough funds to pay listing fee.';
+
+    if(includes(item.name, '(Filled')) return 'Item is filled with strange liquid, and the market does not want to be responsible.';
   }
 }

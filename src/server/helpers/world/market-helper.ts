@@ -73,6 +73,7 @@ export class MarketHelper {
         condition: item.condition,
 
         itemOverride: {
+          desc: item.desc,
           enchantLevel: item.enchantLevel,
           shots: item.shots,
           ounces: item.ounces,
@@ -140,12 +141,17 @@ export class MarketHelper {
 
       const item = await player.$$room.itemCreator.getItemByName(itemData.itemId);
 
+      if(itemData.itemOverride.desc) item.desc = itemData.itemOverride.desc;
       if(itemData.itemOverride.shots) item.shots = itemData.itemOverride.shots;
       if(itemData.itemOverride.ounces) item.ounces = itemData.itemOverride.ounces;
       if(itemData.itemOverride.quality) item.quality = itemData.itemOverride.quality;
       if(itemData.itemOverride.enchantLevel) item.enchantLevel = itemData.itemOverride.enchantLevel;
       if(itemData.itemOverride.cosmetic) item.cosmetic = itemData.itemOverride.cosmetic;
       item.condition = itemData.itemOverride.condition || 5000;
+
+      if(itemData.itemOverride.effect && !item.effect) item.effect = {};
+      if(itemData.itemOverride.trait && !item.trait) item.trait = {};
+      if(itemData.itemOverride.stats && !item.stats) item.stats = {};
 
       extend(item.effect,   itemData.itemOverride.effect);
       extend(item.trait,    itemData.itemOverride.trait);
