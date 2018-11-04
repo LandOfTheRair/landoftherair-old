@@ -47,7 +47,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
            [ngClass]="['cosmetic-bg-' + cosmeticName]" 
            *ngIf="item && cosmeticName"></div>
       <span class="count" *ngIf="item && showCount && realCount > 0">{{ realCount }}x</span>
-      <span class="ounces" *ngIf="item && showOunces && realOunces > 0">{{ realOunces }}oz</span>
+      <span class="ounces" *ngIf="item && showOunces && realOunces >= 0">{{ realOunces }}oz</span>
       <span class="value" *ngIf="item && showValue">{{ overrideValue || (item._buybackValue || item.value) + 'g' }}</span>
       <span class="value" *ngIf="item && showOunces && item.succorInfo">{{ item.succorInfo.map }}</span>
       <span class="ounces" *ngIf="item && showDesc && item.effect && item.itemClass === 'Trap'">{{ item.trapUses }}x {{ effectName }}</span>

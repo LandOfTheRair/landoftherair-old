@@ -2,3 +2,12 @@
   sprite: 224
   desc: "an empty scroll"
   value: 100
+
+- name: Runewritten Scroll
+  sprite: 224
+  desc: "a runewritten scroll"
+  value: 100
+
+  cosmetic:
+    name: Ancientify
+    isPermanent: true

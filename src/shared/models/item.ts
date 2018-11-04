@@ -301,7 +301,9 @@ export class Item {
       else                                      ownedText = 'This item does NOT belong to you. ';
     }
 
-    const fluidText = this.itemClass === 'Bottle' &&  this.ounces > 0 ? `It is filled with ${this.ounces}oz of fluid. ` : '';
+    let fluidText = this.itemClass === 'Bottle' && this.ounces > 0 ? `It is filled with ${this.ounces}oz of fluid. ` : '';
+    if(this.itemClass === 'Bottle' && this.ounces === 0) fluidText = 'It is empty.';
+
     let usesText = this.usesString();
     usesText = usesText ? `The item ${usesText}. ` : '';
 
@@ -411,7 +413,7 @@ export class Item {
   }
 
   canUse(char: Character): boolean {
-    return (this.itemClass === 'Box' || this.effect || this.succorInfo || this.ounces > 0)
+    return (this.itemClass === 'Box' || this.effect || this.succorInfo || this.ounces >= 0)
       && this.itemClass !== 'Trap'
       && this.hasCondition()
       && this.isOwnedBy(char);
@@ -427,6 +429,7 @@ export class Item {
   use(char: Character, fromApply = false): boolean {
     if(fromApply) return true;
     if(!this.canUse(char)) return false;
+
     if(this.effect && (isNumber(this.ounces) ? this.ounces !== 0 : true)) {
       // swallow effects that don't exist
       if(!Effects[this.effect.name]) return true;

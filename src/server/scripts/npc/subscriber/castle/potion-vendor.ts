@@ -19,6 +19,7 @@ export const setup = async (npc: NPC) => {
     'Antanian Loaf of Bread',
     'Antanian Bottle of Water',
     'Antanian Pint of Water',
+    'Empty Bottle',
     'Identify Ring',
     'Transmute Ring',
     'Succor Ring',

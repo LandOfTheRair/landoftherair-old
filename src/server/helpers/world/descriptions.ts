@@ -159,11 +159,18 @@ const DecorGids = {
   962: BLOOD_PUDDLE_DESC
 };
 
+export enum SwimLevel {
+  SpringWater = 1,
+  NormalWater = 2,
+  ChillWater = 6,
+  Lava = 8
+}
+
 const SwimInfo = {
-  1:  { element: 'water', swimLevel: 1 },
-  8:  { element: 'water', swimLevel: 2 },
-  9:  { element: 'fire',  swimLevel: 8 },
-  16: { element: 'water', swimLevel: 6 }
+  1:  { element: 'water', swimLevel: SwimLevel.SpringWater },
+  8:  { element: 'water', swimLevel: SwimLevel.NormalWater },
+  9:  { element: 'fire',  swimLevel: SwimLevel.Lava },
+  16: { element: 'water', swimLevel: SwimLevel.ChillWater }
 };
 
 export const GetSwimLevel = (gid) => {

@@ -1,5 +1,5 @@
 
-import { reject, difference, values, isArray } from 'lodash';
+import { reject, difference, values, isArray, isNumber } from 'lodash';
 
 import { SkillClassNames, Stats } from '../../shared/models/character';
 import * as Classes from '../classes';
@@ -173,7 +173,7 @@ class ItemLoader {
     }
 
     if(item.itemClass === 'Bottle' || item.itemClass === 'Food') {
-      item.ounces = item.ounces || 1;
+      item.ounces = isNumber(item.ounces) ? item.ounces : 1;
     }
 
     item.type = capitalize(item.type);

@@ -1,5 +1,11 @@
 
 
+- name: Empty Bottle
+  sprite: 252
+  desc: "a bottle"
+  value: 50
+  ounces: 0
+
 - name: Antanian Bottle of Water
   sprite: 38
   desc: "a bottle of water"

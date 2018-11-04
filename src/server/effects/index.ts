@@ -30,6 +30,11 @@ export * from './special/Mood';
 export * from './misc/Vortex';
 export * from './misc/Hidden';
 
+export * from './items/FillNormalWater';
+export * from './items/FillChilledWater';
+export * from './items/FillLava';
+export * from './items/FillSpringWater';
+
 export * from './cures/Antidote';
 
 export * from './buffs/DarkVision';
