@@ -14411,18 +14411,6 @@
                  "width":64,
                  "x":7616,
                  "y":6784
-                }, 
-                {
-                 "gid":2216,
-                 "height":64,
-                 "id":6048,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":832,
-                 "y":11968
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -22067,6 +22055,28 @@
                  "width":64,
                  "x":7552,
                  "y":6784
+                }, 
+                {
+                 "gid":2216,
+                 "height":64,
+                 "id":6109,
+                 "name":"",
+                 "properties":
+                    {
+                     "fillDesc":"filled with spring water",
+                     "fillEffect":"FillSpringWater"
+                    },
+                 "propertytypes":
+                    {
+                     "fillDesc":"string",
+                     "fillEffect":"string"
+                    },
+                 "rotation":0,
+                 "type":"Fillable",
+                 "visible":true,
+                 "width":64,
+                 "x":832,
+                 "y":11968
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -28564,7 +28574,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":6109,
+ "nextobjectid":6110,
  "orientation":"orthogonal",
  "properties":
     {

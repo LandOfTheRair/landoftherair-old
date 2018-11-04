@@ -470,7 +470,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":320,
@@ -492,7 +492,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":384,
@@ -514,7 +514,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":448,
@@ -536,7 +536,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":384,
@@ -558,7 +558,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":384,
@@ -580,7 +580,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":448,
@@ -602,7 +602,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":320,
@@ -624,7 +624,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":448,
@@ -646,7 +646,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":320,
@@ -668,7 +668,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2688,
@@ -690,7 +690,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2688,
@@ -712,7 +712,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2560,
@@ -734,7 +734,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2624,
@@ -756,7 +756,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2560,
@@ -778,7 +778,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2624,
@@ -800,7 +800,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2688,
@@ -822,7 +822,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2560,
@@ -844,7 +844,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2624,
@@ -866,7 +866,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2688,
@@ -888,7 +888,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2688,
@@ -910,7 +910,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2560,
@@ -932,7 +932,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2624,
@@ -954,7 +954,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2560,
@@ -976,7 +976,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2624,
@@ -998,7 +998,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2688,
@@ -1020,7 +1020,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2560,
@@ -1042,7 +1042,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":2624,
@@ -1064,7 +1064,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":448,
@@ -1086,7 +1086,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":448,
@@ -1108,7 +1108,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":320,
@@ -1130,7 +1130,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":384,
@@ -1152,7 +1152,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":320,
@@ -1174,7 +1174,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":384,
@@ -1196,7 +1196,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":448,
@@ -1218,7 +1218,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":320,
@@ -1240,7 +1240,7 @@
                      "fillEffect":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Fillable",
                  "visible":true,
                  "width":64,
                  "x":384,
