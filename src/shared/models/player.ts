@@ -101,6 +101,9 @@ export class Player extends Character {
   public $$areHandsBusy: boolean;
 
   @nonenumerable
+  public $$tradeskillBusy: boolean;
+
+  @nonenumerable
   public $$ready: boolean;
 
   public tradeSkillContainers: {
@@ -871,6 +874,14 @@ export class Player extends Character {
 
   public setHandsFree() {
     this.$$areHandsBusy = false;
+  }
+
+  public setTradeskillBusy() {
+    this.$$tradeskillBusy = true;
+  }
+
+  public setTradeskillFree() {
+    this.$$tradeskillBusy = false;
   }
 
 }

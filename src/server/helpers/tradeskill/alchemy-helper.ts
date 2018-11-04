@@ -10,6 +10,8 @@ export class AlchemyHelper {
     const reagents = player.tradeSkillContainers.alchemy.reagents;
     const playerSkill = player.calcSkillLevel(SkillClassNames.Alchemy);
 
+    player.setTradeskillBusy();
+
     const reagentNames = compact(reagents.map(x => x ? x.name : null));
     let recipeMatch = await player.$$room.itemCreator.getRecipe({
       recipeType: 'alchemy',
@@ -49,6 +51,8 @@ export class AlchemyHelper {
 
     player.tradeSkillContainers.alchemy.clearReagents();
     player.tradeSkillContainers.alchemy.result = returnedItem;
+
+    player.setTradeskillFree();
 
     return returnedItem;
   }

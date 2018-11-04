@@ -109,7 +109,7 @@ export abstract class Command {
   }
 
   isBusy(player: Player) {
-    return player.$$isAccessingLocker || player.$$areHandsBusy;
+    return player.$$isAccessingLocker || player.$$areHandsBusy || player.$$tradeskillBusy;
   }
 
   takeItemCheck(player: Player, item: Item): boolean {

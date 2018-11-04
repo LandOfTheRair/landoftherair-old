@@ -117,6 +117,8 @@ export class MetalworkingHelper {
     const container = player.tradeSkillContainers.metalworking;
     const playerSkill = player.calcSkillLevel(SkillClassNames.Metalworking);
 
+    player.setTradeskillBusy();
+
     const reagentNames = [container.craftItem, container.craftReagent].map(x => x.name);
     const recipeMatch = await player.$$room.itemCreator.getRecipe({
       recipeType: 'metalworking',
@@ -157,6 +159,8 @@ export class MetalworkingHelper {
     container.clearCraft();
     container.craftResult = returnedItem;
 
+    player.setTradeskillFree();
+
     return success;
   }
 
@@ -170,6 +174,8 @@ export class MetalworkingHelper {
       container.clearUpgradeIngredient();
       return false;
     }
+
+    player.setTradeskillBusy();
 
     const buff = this.getBuffForItem(item, reagent);
     Object.keys(buff).forEach(stat => {
@@ -189,6 +195,9 @@ export class MetalworkingHelper {
     if(player.calcSkillLevel(SkillClassNames.Metalworking) < 5) {
       player.gainSkill(SkillClassNames.Metalworking, 20, true);
     }
+
+    player.setTradeskillFree();
+
     return true;
   }
 

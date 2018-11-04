@@ -101,6 +101,8 @@ export class SpellforgingHelper {
       return false;
     }
 
+    player.setTradeskillBusy();
+
     if(reagent.itemClass === 'Rock') {
       item.enchantLevel = item.enchantLevel || 0;
       item.enchantLevel++;
@@ -128,6 +130,9 @@ export class SpellforgingHelper {
       if(player.calcSkillLevel(SkillClassNames.Spellforging) < item.enchantLevel * 4) {
         player.gainSkill(SkillClassNames.Spellforging, item.enchantLevel * 25, true);
       }
+
+      player.setTradeskillFree();
+
       return true;
     }
 
@@ -141,6 +146,9 @@ export class SpellforgingHelper {
       if(player.calcSkillLevel(SkillClassNames.Spellforging) < item.effect.potency) {
         player.gainSkill(SkillClassNames.Spellforging, item.effect.potency * 10, true);
       }
+
+      player.setTradeskillFree();
+
       return true;
     }
 
@@ -153,8 +161,13 @@ export class SpellforgingHelper {
       if(player.calcSkillLevel(SkillClassNames.Spellforging) < item.trait.level * 4) {
         player.gainSkill(SkillClassNames.Spellforging, item.trait.level * 20, true);
       }
+
+      player.setTradeskillFree();
+
       return true;
     }
+
+    player.setTradeskillFree();
 
     return true;
   }
