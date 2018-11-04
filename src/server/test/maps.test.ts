@@ -8,6 +8,7 @@ import * as path from 'path';
 import { includes, find, isNumber } from 'lodash';
 
 import { MapLayer } from '../../shared/models/maplayer';
+import * as Effects from '../effects';
 
 let allMaps = [];
 const allMapNames = {};
@@ -195,6 +196,10 @@ test('All Interactables have valid properties', t => {
       if(!interactable.type) {
         t.fail(`Interactable (${map._name}) ${JSON.stringify(interactable)} has no type!`);
         return;
+      }
+
+      if(interactable.type === 'Fillable') {
+        if(!Effects[interactable.properties.fillEffect]) t.fail(`Interactable ${map._name} does not have a valid fillEffect: ${interactable.properties.fillEffect}`);
       }
 
       if(interactable.type === 'Locker') {
