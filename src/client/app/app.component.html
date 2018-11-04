@@ -346,7 +346,7 @@
   ></app-window>
 
   <ng-template #trainerHead>
-    {{ colyseus.game.showTrainer.classTrain }} Guide
+    {{ colyseus.game.showTrainer.classTrain === 'Undecided' ? 'Tradeskill' : colyseus.game.showTrainer.classTrain }} Guide
   </ng-template>
 
   <ng-template #trainerBody>

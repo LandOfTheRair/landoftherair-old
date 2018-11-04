@@ -1287,6 +1287,30 @@
                  "width":64,
                  "x":1728,
                  "y":1280
+                }, 
+                {
+                 "gid":3082,
+                 "height":64,
+                 "id":493,
+                 "name":"Anjen",
+                 "properties":
+                    {
+                     "maxLevelUpLevel":50,
+                     "maxSkillTrain":30,
+                     "script":"trainer\/tradeskill"
+                    },
+                 "propertytypes":
+                    {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1024,
+                 "y":1088
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1576,7 +1600,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":492,
+ "nextobjectid":494,
  "orientation":"orthogonal",
  "properties":
     {
