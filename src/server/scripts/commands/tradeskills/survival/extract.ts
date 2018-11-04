@@ -35,6 +35,8 @@ export class Extract extends Command {
     if(!npcRef) return player.sendClientMessage('The corpse blood is no longer extractable');
 
     const possibleSkills = (npcRef.usableSkills || []).filter(skillName => {
+      if(skillName && skillName.result) skillName = skillName.result;
+
       const skillRef: Skill = CommandExecutor.getSkillRef(skillName);
       if(!skillRef) return false;
       if(skillRef.monsterSkill || !skillRef.requiresLearn || skillRef.unableToLearnFromStealing) return false;
