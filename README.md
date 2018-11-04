@@ -165,6 +165,7 @@ As a GM, you get access to several commands in the lobby:
 * `/unsubscribe <account>` - remove the accounts subscription
 * `/silver <silver> <account>` - give `silver` silver to the target account
 * `/tester <account>` - make `account` a test account
+* `/kick <account>` - kick `account` from the lobby
 * `/festival <festivalish>` - update the global festival data using festivalish (settings that can be changed are `GameSettings`, see below)
 
 You also get access to some commands in-game:

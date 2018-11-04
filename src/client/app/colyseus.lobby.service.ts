@@ -297,11 +297,20 @@ export class ColyseusLobbyService {
       return true;
     }
 
+    if(command === '/kick') {
+      this.kick(args);
+      return true;
+    }
+
     if(command.startsWith('/')) {
       return true;
     }
 
     return false;
+  }
+
+  public kick(args) {
+    this.sendRoomData({ action: 'kick', args });
   }
 
   public tester(args) {

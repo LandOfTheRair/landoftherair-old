@@ -118,29 +118,29 @@ export class Lobby extends Room<LobbyState> {
     return account;
   }
 
+  private async kickAccount(oldClient, username: string) {
+    await this.removeUsername(username);
+
+    this.send(oldClient, {
+      error: 'someone_kicked_you',
+      prettyErrorName: 'Someone Kicked You',
+      prettyErrorDesc: 'You have been forcibly logged out from this location.'
+    });
+
+    this.send(oldClient, { action: 'force_logout' });
+
+    oldClient.close();
+
+    oldClient.username = null;
+    oldClient.userId = null;
+
+    pull(this.clients, oldClient);
+  }
+
   private async tryLogin(client, { userId, username, idToken }) {
 
     if(this.userIdsLoggingIn[userId]) return;
     this.userIdsLoggingIn[userId] = true;
-
-    const alreadyLoggedIn = async (oldClient) => {
-      await this.removeUsername(username);
-
-      this.send(oldClient, {
-        error: 'someone_kicked_you',
-        prettyErrorName: 'Someone Kicked You',
-        prettyErrorDesc: 'You have been forcibly logged out from this location.'
-      });
-
-      this.send(oldClient, { action: 'force_logout' });
-
-      oldClient.close();
-
-      oldClient.username = null;
-      oldClient.userId = null;
-
-      pull(this.clients, oldClient);
-    };
 
     if(process.env.AUTH0_JWKS_URI) {
       const isValidRS256Token = await JWTHelper.verifyRS256Token(idToken);
@@ -163,7 +163,7 @@ export class Lobby extends Room<LobbyState> {
       const oldClient: any = find(this.clients, { userId });
 
       if(oldClient && oldClient !== client && oldClient.id === checkAccount.colyseusId) {
-        await alreadyLoggedIn(oldClient);
+        await this.kickAccount(oldClient, username);
       }
 
     }
@@ -476,6 +476,7 @@ export class Lobby extends Room<LobbyState> {
     if(data.action === 'discord_online')  return this.trySetDiscordOnline(client, data.isOnline);
     if(data.action === 'mute')            return this.toggleMute(client, data.args);
     if(data.action === 'tester')          return this.toggleTester(client, data.args);
+    if(data.action === 'kick')            return this.kick(client, data.args);
     if(data.action === 'update_account')  return this.updateAccount(client);
     if(data.userId && data.accessToken)   return this.tryLogin(client, data);
     if(data.message)                      return this.sendMessage(client, data.message);
@@ -487,6 +488,19 @@ export class Lobby extends Room<LobbyState> {
     if(!account) return;
 
     this.send(client, { action: 'set_account', account: account.toSaveObject() });
+  }
+
+  private kick(client, account: string) {
+    const gmAccount = this.state.findAccount(client.userId);
+    if(!gmAccount || !gmAccount.isGM) return;
+
+    const targetAccount = this.state.findAccountByUsername(account);
+    if(!targetAccount) return;
+
+    const oldClient: any = find(this.clients, { userId: targetAccount.userId });
+    if(!oldClient) return;
+
+    this.kickAccount(oldClient, targetAccount.username);
   }
 
   private toggleTester(client, account: string) {
