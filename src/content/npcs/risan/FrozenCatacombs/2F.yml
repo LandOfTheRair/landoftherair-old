@@ -91,8 +91,8 @@
     max: 159350
 
   giveXp:
-    min: 151000
-    max: 157000
+    min: 121000
+    max: 127000
 
   baseEffects:
     - name: Attribute

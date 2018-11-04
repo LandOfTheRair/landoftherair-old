@@ -101,12 +101,12 @@
     max: 2675
 
   hp:
-    min: 316950
-    max: 319350
+    min: 256950
+    max: 269350
 
   giveXp:
-    min: 251000
-    max: 257000
+    min: 191000
+    max: 197000
 
   baseEffects:
     - name: Attribute
@@ -213,8 +213,8 @@
     max: 2675
 
   hp:
-    min: 316950
-    max: 319350
+    min: 256950
+    max: 269350
 
   giveXp:
     min: 251000
@@ -339,8 +339,8 @@
     max: 2675
 
   hp:
-    min: 316950
-    max: 319350
+    min: 256950
+    max: 269350
 
   mp:
     min: 10000
@@ -466,8 +466,8 @@
     max: 2675
 
   hp:
-    min: 316950
-    max: 319350
+    min: 256950
+    max: 269350
 
   mp:
     min: 10000
@@ -574,8 +574,8 @@
     max: 2675
 
   hp:
-    min: 316950
-    max: 319350
+    min: 256950
+    max: 269350
 
   giveXp:
     min: 251000
@@ -724,8 +724,8 @@
     max: 2675
 
   hp:
-    min: 316950
-    max: 319350
+    min: 256950
+    max: 269350
 
   mp:
     min: 1000
@@ -834,8 +834,8 @@
     max: 2675
 
   hp:
-    min: 316950
-    max: 319350
+    min: 256950
+    max: 269350
 
   mp:
     min: 1000

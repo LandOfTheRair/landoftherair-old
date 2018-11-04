@@ -101,12 +101,12 @@
     max: 3500
 
   hp:
-    min: 416950
-    max: 419350
+    min: 316950
+    max: 319350
 
   giveXp:
-    min: 351000
-    max: 357000
+    min: 241000
+    max: 247000
 
   baseEffects:
     - name: Attribute
