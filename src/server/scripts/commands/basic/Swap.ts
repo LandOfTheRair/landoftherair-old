@@ -1,6 +1,6 @@
 
 import { Command } from '../../../base/Command';
-import { Player } from 'shared/models/player';
+import { Player } from '../../../../shared/models/player';
 
 export class Swap extends Command {
 

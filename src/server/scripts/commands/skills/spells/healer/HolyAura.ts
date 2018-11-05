@@ -1,7 +1,7 @@
 
 import { Skill } from '../../../../../base/Skill';
-import { Character } from 'shared/models/character';
 import { HolyAura as CastEffect } from '../../../../../effects/buffs/HolyAura';
+import { Character } from '../../../../../../shared/models/character';
 
 export class HolyAura extends Skill {
 
