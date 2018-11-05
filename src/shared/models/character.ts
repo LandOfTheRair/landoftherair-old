@@ -1,22 +1,13 @@
-
 import { RestrictedNumber } from 'restricted-number';
 import { Signal } from 'signals.js';
 
-import {
-  merge, includes, compact, values, random,
-  startsWith, clone, get, reject, pick,
-  sample, filter, maxBy, capitalize, isArray
-} from 'lodash';
+import { capitalize, clone, compact, filter, get, includes, isArray, maxBy, merge, pick, random, reject, sample, startsWith, values } from 'lodash';
 
-import {
-  Item, EquippableItemClassesWithWeapons, EquipHash, GivesBonusInHandItemClasses, ValidItemTypes, WeaponClasses, ShieldClasses
-} from './item';
 import { MapLayer } from './maplayer';
 
 import { HideReductionPercents } from '../../server/helpers/character/hide-reductions';
 
 import * as Classes from '../../server/classes';
-import { AttributeEffect, AugmentSpellEffect, OnHitEffect, Effect } from '../../server/base/Effect';
 import * as Effects from '../../server/effects';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
@@ -30,160 +21,27 @@ import { SkillHelper } from '../../server/helpers/character/skill-helper';
 import { XPHelper } from '../../server/helpers/character/xp-helper';
 import { TraitUsageModifiers } from '../helpers/trait-usage-modifiers';
 import { VALID_TRADESKILLS_HASH } from '../helpers/tradeskill-helper';
-import { Currency } from '../helpers/holiday-helper';
+import { Currency } from '../interfaces/holiday';
+import {
+  Alignment,
+  Allegiance,
+  AllNormalGearSlots, CharacterClass,
+  Direction, ICharacter,
+  MaxSizes,
+  MonsterClass,
+  Sex,
+  SkillClassNames,
+  Skills,
+  StatName,
+  Stats
+} from '../interfaces/character';
 
-export type Allegiance =
-  'None'
-| 'Pirates'
-| 'Townsfolk'
-| 'Royalty'
-| 'Adventurers'
-| 'Wilderness'
-| 'Underground'
-| 'Enemy'
-| 'NaturalResource'
-| 'GM';
+import { EquipHash, EquippableItemClassesWithWeapons, GivesBonusInHandItemClasses, IItem, ShieldClasses, ValidItemTypes, WeaponClasses } from '../interfaces/item';
+import { AttributeEffect, AugmentSpellEffect, IEffect, OnHitEffect } from '../interfaces/effect';
+import { Item } from './item';
 
-export type Sex = 'Male' | 'Female';
 
-export type Direction = 'N' | 'S' | 'E' | 'W' | 'C';
-
-export type Alignment = 'Good' | 'Neutral' | 'Evil';
-
-export type CharacterClass =
-  'Undecided'
-| 'Mage'
-| 'Healer'
-| 'Warrior'
-| 'Thief';
-
-export const SkillClassNames = {
-  Mace: 'Mace',
-  Axe: 'Axe',
-  Dagger: 'Dagger',
-  OneHanded: 'Onehanded',
-  TwoHanded: 'Twohanded',
-  Shortsword: 'Shortsword',
-  Polearm: 'Polearm',
-  Ranged: 'Ranged',
-  Martial: 'Martial',
-  Staff: 'Staff',
-  Throwing: 'Throwing',
-  Thievery: 'Thievery',
-  Wand: 'Wand',
-  Conjuration: 'Conjuration',
-  Restoration: 'Restoration',
-
-  Alchemy: 'Alchemy',
-  Spellforging: 'Spellforging',
-  Runewriting: 'Runewriting',
-  Metalworking: 'Metalworking',
-  Survival: 'Survival'
-};
-
-export class Skills {
-
-  // combat skills
-  mace = 0;
-  axe = 0;
-  dagger = 0;
-  onehanded = 0;
-  twohanded = 0;
-  shortsword = 0;
-  polearm = 0;
-  ranged = 0;
-  martial = 0;
-  staff = 0;
-  throwing = 0;
-  thievery = 0;
-  wand = 0;
-  conjuration = 0;
-  restoration = 0;
-
-  // trade skills
-  alchemy = 0;
-  spellforging = 0;
-  metalworking = 0;
-  survival = 0;
-  runewriting = 0;
-}
-
-export class Stats {
-  str? = 0;
-  dex? = 0;
-  agi? = 0;
-
-  int? = 0;
-  wis? = 0;
-  wil? = 0;
-
-  luk? = 0;
-  cha? = 0;
-  con? = 0;
-
-  move? = 3;
-  hpregen? = 1;
-  mpregen? = 1;
-
-  hp? = 100;
-  mp? = 0;
-
-  weaponDamageRolls? = 0;
-  weaponArmorClass? = 0;
-  armorClass? = 0;
-  accuracy? = 0;
-  offense? = 0;
-  defense? = 0;
-
-  stealth? = 0;
-  perception? = 0;
-
-  physicalDamageBoost? = 0;
-  magicalDamageBoost? = 0;
-  healingBoost? = 0;
-
-  physicalDamageReflect? = 0;
-  magicalDamageReflect? = 0;
-
-  mitigation? = 0;
-  magicalResist? = 0;
-  physicalResist? = 0;
-  necroticResist? = 0;
-  energyResist? = 0;
-  waterResist? = 0;
-  fireResist? = 0;
-  iceResist? = 0;
-  poisonResist? = 0;
-  diseaseResist? = 0;
-
-  actionSpeed? = 1;
-  damageFactor? = 1;
-}
-
-export type MonsterClass = 'Undead' | 'Beast' | 'Humanoid' | 'Dragon';
-
-export type StatName =
-  'str' | 'dex' | 'agi' | 'int' | 'wis' | 'wil' | 'luk' | 'cha' | 'con'
-| 'move' | 'hpregen' | 'mpregen' | 'hp' | 'mp'
-| 'armorClass' | 'accuracy' | 'offense' | 'defense' | 'weaponArmorClass' | 'weaponDamageRolls' | 'mitigation'
-| 'stealth' | 'perception'
-| 'magicalDamageBoost' | 'physicalDamageBoost' | 'healingBoost' | 'physicalDamageReflect' | 'magicalDamageReflect'
-| 'magicalResist' | 'physicalResist' | 'necroticResist'| 'energyResist' | 'waterResist' | 'fireResist' | 'iceResist'
-| 'poisonResist' | 'diseaseResist'
-| 'actionSpeed' | 'damageFactor';
-
-export const MaxSizes = {
-  Belt: 5,
-  Sack: 25,
-  Buyback: 5
-};
-
-export const AllNormalGearSlots = [
-  'rightHand', 'leftHand', 'gear.Armor', 'gear.Robe1', 'gear.Robe2', 'gear.Ring1', 'gear.Ring2',
-  'gear.Head', 'gear.Neck', 'gear.Waist', 'gear.Wrists', 'gear.Hands', 'gear.Feet', 'gear.Ear'
-];
-
-export class Character {
+export class Character implements ICharacter {
   name: string;
   agro: any = {};
   uuid: string;
@@ -237,12 +95,12 @@ export class Character {
   belt: Belt = new Belt({ size: this.beltSize });
   pouch: Pouch = new Pouch({ size: 0 });
 
-  effects: { [key: string]: Effect } = {};
+  effects: { [key: string]: IEffect } = {};
 
-  gear: any = {};
-  leftHand: Item;
-  rightHand: Item;
-  potionHand: Item;
+  gear: { [key: string]: IItem } = {};
+  leftHand: IItem;
+  rightHand: IItem;
+  potionHand: IItem;
 
   swimLevel: number;
 
@@ -259,7 +117,7 @@ export class Character {
   $$room: any;
 
   @nonenumerable
-  $$corpseRef: Item;
+  $$corpseRef: IItem;
 
   @nonenumerable
   aquaticOnly: boolean;
@@ -275,7 +133,7 @@ export class Character {
   @nonenumerable
   $$flaggedSkills;
 
-  $$interceptor: Character;
+  $$interceptor: ICharacter;
 
   sprite: number;
 
@@ -284,19 +142,19 @@ export class Character {
   affiliation?: string;
 
   @nonenumerable
-  public $$pets: Character[];
+  public $$pets: ICharacter[];
 
   @nonenumerable
-  public $$owner: Character;
+  public $$owner: ICharacter;
 
   @nonenumerable
   protected $$messageQueue: any[];
 
-  get effectsList(): Effect[] {
+  get effectsList(): IEffect[] {
     return values(this.effects);
   }
 
-  get dispellableEffects(): Effect[] {
+  get dispellableEffects(): IEffect[] {
     return this.effectsList.filter(x => x.canBeUnapplied());
   }
 
@@ -422,7 +280,7 @@ export class Character {
     return pick(this, keys);
   }
 
-  sellValue(item: Item) {
+  sellValue(item: IItem) {
     if(item.sellValue) return item.sellValue;
 
     // every cha after 10 increases the sale value by ~2%
@@ -438,7 +296,7 @@ export class Character {
     return EquipHash[itemClass] || itemClass;
   }
 
-  private getItemSlotToEquipIn(item: Item) {
+  private getItemSlotToEquipIn(item: IItem) {
 
     let slot = item.itemClass;
 
@@ -496,7 +354,7 @@ export class Character {
     this.recalculateStats();
   }
 
-  canGetBonusFromItemInHand(item: Item): boolean {
+  canGetBonusFromItemInHand(item: IItem): boolean {
 
     const isShield = includes(ShieldClasses, item.itemClass);
 
@@ -514,7 +372,7 @@ export class Character {
         && includes(GivesBonusInHandItemClasses, item.itemClass);
   }
 
-  private adjustStatsBasedOnEffect(eff: Effect, isLose = false) {
+  private adjustStatsBasedOnEffect(eff: IEffect, isLose = false) {
     const statBuffs = eff.allBoosts || {};
 
     Object.keys(statBuffs).forEach(stat => {
@@ -553,7 +411,7 @@ export class Character {
 
     const encrustMaxes = {};
 
-    const addStatsForItem = (item: Item) => {
+    const addStatsForItem = (item: IItem) => {
       Object.keys(item.stats).forEach(stat => {
         if(isNaN(item.stats[stat])) return;
         this.totalStats[stat] = this.totalStats[stat] || 0;
@@ -668,7 +526,7 @@ export class Character {
     return allSkills;
   }
 
-  itemCheck(item: Item) {
+  itemCheck(item: IItem) {
     if(!item) return;
     if(item.itemClass === 'Corpse') return;
     if(item.binds && !item.owner) {
@@ -684,7 +542,7 @@ export class Character {
     }
   }
 
-  setLeftHand(item: Item, recalc = true) {
+  setLeftHand(item: IItem, recalc = true) {
     const oldLeftHand = this.leftHand;
 
     this.leftHand = item;
@@ -698,7 +556,7 @@ export class Character {
     }
   }
 
-  setRightHand(item: Item, recalc = true) {
+  setRightHand(item: IItem, recalc = true) {
     const oldRightHand = this.rightHand;
 
     this.rightHand = item;
@@ -712,19 +570,19 @@ export class Character {
     }
   }
 
-  setPotionHand(item: Item) {
+  setPotionHand(item: IItem) {
     this.itemCheck(item);
     this.potionHand = item;
   }
 
-  private checkAndCreatePermanentEffect(item: Item) {
+  private checkAndCreatePermanentEffect(item: IItem) {
     if(!item || !item.effect || !item.effect.autocast || !item.effect.name) return;
     const effect = new Effects[item.effect.name](item.effect);
     effect.flagPermanent(this.uuid);
     effect.cast(this, this);
   }
 
-  private checkAndUnapplyPermanentEffect(item: Item) {
+  private checkAndUnapplyPermanentEffect(item: IItem) {
     if(!item || !item.effect || !item.effect.autocast || !item.effect.name) return;
 
     const effect = this.hasEffect(item.effect.name);
@@ -744,13 +602,13 @@ export class Character {
     });
   }
 
-  equip(item: Item) {
+  equip(item: IItem) {
     if(!this.canEquip(item)) return false;
     this._equip(item);
     return true;
   }
 
-  _equip(item: Item) {
+  _equip(item: IItem) {
     const slot = this.getItemSlotToEquipIn(item);
     if(!slot) return false;
 
@@ -770,7 +628,7 @@ export class Character {
     this.recalculateStats();
   }
 
-  private checkCanEquipWithoutGearCheck(item: Item) {
+  private checkCanEquipWithoutGearCheck(item: IItem) {
     if(!item) return false;
     if(!item.hasCondition()) return false;
     if(!includes(EquippableItemClassesWithWeapons, item.itemClass)) return false;
@@ -788,7 +646,7 @@ export class Character {
     return true;
   }
 
-  canEquip(item: Item) {
+  canEquip(item: IItem) {
     if(!item) return false;
     if(!item.isOwnedBy(this)) return false;
     if(!this.checkCanEquipWithoutGearCheck(item)) return false;
@@ -798,7 +656,7 @@ export class Character {
     return true;
   }
 
-  addItemToSack(item: Item) {
+  addItemToSack(item: IItem) {
     if(item.itemClass === 'Coin') {
       this.earnGold(item.value, 'Game:SackGold');
       return true;
@@ -814,7 +672,7 @@ export class Character {
     return true;
   }
 
-  addItemToPouch(item: Item) {
+  addItemToPouch(item: IItem) {
     const result = this.pouch.addItem(item);
     if(result) {
       this.sendClientMessage(result);
@@ -825,7 +683,7 @@ export class Character {
     return true;
   }
 
-  addItemToBelt(item: Item) {
+  addItemToBelt(item: IItem) {
     const result = this.belt.addItem(item);
     if(result) {
       this.sendClientMessage(result);
@@ -892,7 +750,7 @@ export class Character {
     this.dir = <Direction>this.getDirBasedOnDiff(x, y).substring(0, 1);
   }
 
-  setDirRelativeTo(char: Character) {
+  setDirRelativeTo(char: ICharacter) {
     const diffX = char.x - this.x;
     const diffY = char.y - this.y;
 
@@ -1020,10 +878,9 @@ export class Character {
     this.baseClass = newClass;
     Classes[this.baseClass].becomeClass(this);
     this.$$room.givePlayerBasicAbilities(this);
-
   }
 
-  kill(dead: Character, opts: { isPetKill: boolean } = { isPetKill: false }) {}
+  kill(dead: ICharacter, opts: { isPetKill: boolean } = { isPetKill: false }) {}
 
   flagSkill(skills) {}
 
@@ -1051,7 +908,7 @@ export class Character {
     });
   }
 
-  die(killer?: Character, silent = false) {
+  die(killer?: ICharacter, silent = false) {
     this.dir = 'C';
     this.clearEffects();
 
@@ -1062,7 +919,7 @@ export class Character {
     if(silent) {
       this.hp.toMinimum();
       this.$$deathTicks = 5;
-      if(this.$$owner) this.$$owner.$$pets = reject(this.$$owner.$$pets, (x: Character) => x === this);
+      if(this.$$owner) this.$$owner.$$pets = this.$$owner.$$pets.filter((x: Character) => x !== this);
     }
   }
 
@@ -1209,7 +1066,7 @@ export class Character {
     return SkillHelper.calcSkillLevel(this, type) + this.getTotalStat(<StatName>`${type.toLowerCase()}Bonus`);
   }
 
-  applyEffect(effect: Effect) {
+  applyEffect(effect: IEffect) {
     if(this.isNaturalResource) return;
 
     const existingEffect = this.hasEffect(effect.name);
@@ -1235,7 +1092,7 @@ export class Character {
     // if(existingEffect) effect.shouldNotShowMessage = false;
   }
 
-  unapplyEffect(effect: Effect, prematurelyEnd = false, hideMessage = false) {
+  unapplyEffect(effect: IEffect, prematurelyEnd = false, hideMessage = false) {
 
     this.adjustStatsBasedOnEffect(effect, true);
 
@@ -1248,7 +1105,7 @@ export class Character {
     delete this.effects[effect.name];
   }
 
-  hasEffect(effectName): Effect {
+  hasEffect(effectName): IEffect {
     return this.effects[effectName];
   }
 
@@ -1263,7 +1120,7 @@ export class Character {
   }
 
   useItem(source: 'leftHand' | 'rightHand' | 'potionHand', fromApply = false) {
-    const item: Item = this[source];
+    const item: IItem = this[source];
 
     if(item && item.succorInfo && this.$$room.state.isSuccorRestricted(this)) {
       return this.sendClientMessage('You stop, unable to envision the place in your memory!');
@@ -1324,7 +1181,7 @@ export class Character {
     MessageHelper.sendClientMessageToRadius(this, message, radius, except, useSight, formatArgs, shouldQueue);
   }
 
-  sendClientMessageFromNPC(npc: Character, message: string): void {
+  sendClientMessageFromNPC(npc: ICharacter, message: string): void {
     this.sendClientMessage({ name: npc.name, message, subClass: 'chatter' });
   }
 
@@ -1374,7 +1231,7 @@ export class Character {
     Object.keys(this.agro).forEach(uuid => this.agro[uuid] = 1);
   }
 
-  addAgroOverTop(char: Character, value: number) {
+  addAgroOverTop(char: ICharacter, value: number) {
     if(!char || (<any>this).hostility === 'Never') return;
 
     const myAgro = this.agro[char.uuid] || 0;
@@ -1388,7 +1245,7 @@ export class Character {
     this.addAgro(char, boostValue);
   }
 
-  addAgro(char: Character, value) {
+  addAgro(char: ICharacter, value) {
     if(!char || char === this || (<any>this).hostility === 'Never') return;
 
     // invis is normally removed on agro gain, unless it's permanent
@@ -1418,7 +1275,7 @@ export class Character {
     }
   }
 
-  removeAgro(char: Character) {
+  removeAgro(char: ICharacter) {
     this.removeAgroUUID(char.uuid);
   }
 
@@ -1477,7 +1334,7 @@ export class Character {
     return !!(this.hasEffect('Hidden') || this.hasEffect('ShadowMeld'));
   }
 
-  canSeeThroughStealthOf(char: Character) {
+  canSeeThroughStealthOf(char: ICharacter) {
     if(this.allegiance === 'GM') return true;
 
     // you can see through invis with truesight

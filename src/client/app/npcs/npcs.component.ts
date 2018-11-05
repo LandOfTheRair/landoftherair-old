@@ -2,10 +2,10 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 import { compact, find, pull, findIndex, sortBy, cloneDeep, isBoolean } from 'lodash';
-import { NPC } from '../../../shared/models/npc';
 import { MacroService } from '../macros.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { timer } from 'rxjs';
+import { INPC } from '../../../shared/interfaces/character';
 
 @Component({
   selector: 'app-npcs',
@@ -27,7 +27,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
   private pinUUID: string;
   private pinPos: number;
 
-  public visibleNPCList: NPC[] = [];
+  public visibleNPCList: INPC[] = [];
 
   private move$;
   private timer$;
@@ -135,7 +135,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
     return unsorted;
   }
 
-  public doAction(npc: NPC, $event, index) {
+  public doAction(npc: INPC, $event, index) {
 
     // always set target, but if you hold ctrl, don't do anything else
     this.colyseusGame.clientGameState.activeTarget = npc;

@@ -1,15 +1,15 @@
 
 import { NPC } from '../../../shared/models/npc';
-import { Item } from '../../../shared/models/item';
 
 import { compact, get, random, includes } from 'lodash';
 
 import { LootRoller, LootFunctions, LootTable } from 'lootastic';
 import { HolidayHelper } from '../../../shared/helpers/holiday-helper';
+import { IItem } from '../../../shared/interfaces/item';
 
 export class LootHelper {
 
-  static isItemValueStackable(item: Item): boolean {
+  static isItemValueStackable(item: IItem): boolean {
     return item.itemClass === 'Coin';
   }
 
@@ -17,7 +17,7 @@ export class LootHelper {
     return dropTable.filter(item => item.requireHoliday ? HolidayHelper.isHoliday(item.requireHoliday) : true);
   }
 
-  static async getAllLoot(npc: NPC, bonus = 0, sackOnly = false): Promise<Item[]> {
+  static async getAllLoot(npc: NPC, bonus = 0, sackOnly = false): Promise<IItem[]> {
     const tables = [];
 
     // elites double the players loot finding capability
@@ -124,8 +124,8 @@ export class LootHelper {
 
     const items = LootRoller.rollTables(tables);
 
-    const itemPromises: Array<Promise<Item>> = items.map(itemName => room.itemCreator.getItemByName(itemName, room));
-    const allItems: Item[] = await Promise.all(itemPromises);
+    const itemPromises: Array<Promise<IItem>> = items.map(itemName => room.itemCreator.getItemByName(itemName, room));
+    const allItems: IItem[] = await Promise.all(itemPromises);
 
     return allItems;
   }

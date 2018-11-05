@@ -1,11 +1,12 @@
 
 import { Player } from '../../../shared/models/player';
-import { SkillClassNames, StatName } from '../../../shared/models/character';
+import { StatName } from '../../../shared/interfaces/character';
 import { SkillHelper } from '../character/skill-helper';
 import { Loadouts } from './loadout-listing';
 
 import { get } from 'lodash';
-import { Currency } from '../../../shared/helpers/holiday-helper';
+import { Currency } from '../../../shared/interfaces/holiday';
+import { SkillClassNames } from '../../../shared/interfaces/character';
 
 export class TesterHelper {
 

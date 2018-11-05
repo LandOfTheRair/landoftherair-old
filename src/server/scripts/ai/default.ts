@@ -2,11 +2,12 @@
 import { NPC } from '../../../shared/models/npc';
 import { CommandExecutor } from '../../helpers/command-executor';
 import { random, maxBy, sample, clamp, includes, size, extend, uniq, shuffle } from 'lodash';
-import { ShieldClasses, WeaponClasses } from '../../../shared/models/item';
+import { ShieldClasses} from '../../../shared/interfaces/item';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 import { MoveHelper } from '../../helpers/character/move-helper';
+import { WeaponClasses } from '../../../shared/interfaces/item';
 
 export class DefaultAIBehavior {
 

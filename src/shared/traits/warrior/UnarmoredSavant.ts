@@ -3,7 +3,7 @@ import { Trait } from '../../models/trait';
 import { Player } from '../../models/player';
 
 import { get, includes } from 'lodash';
-import { RobeClasses } from '../../models/item';
+import { RobeClasses } from '../../interfaces/item';
 import { Character } from '../../models/character';
 
 export class UnarmoredSavant extends Trait {

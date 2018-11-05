@@ -5,13 +5,13 @@ import { find, compact, difference, forEach, get, startCase } from 'lodash';
 
 import { ClientGameState } from '../clientgamestate';
 
-import { Player } from '../../../shared/models/player';
-import { Sex, Direction, Allegiance } from '../../../shared/models/character';
+import { Direction, IPlayer } from '../../../shared/interfaces/character';
 import { Item } from '../../../shared/models/item';
 import { TrueSightMap, TrueSightMapReversed, VerticalDoorGids } from './phaserconversionmaps';
 import { MapLayer } from '../../../shared/models/maplayer';
 
 import { BehaviorSubject } from 'rxjs';
+import { Allegiance, Sex } from '../../../shared/interfaces/character';
 
 const cacheKey = TiledPlugin.utils.cacheKey;
 
@@ -263,7 +263,7 @@ export class Game {
     this.g.camera.focusOnXY((this.player.x * 64) + 32, (this.player.y * 64) + 32);
   }
 
-  getStartingSpriteForSex(player: Player) {
+  getStartingSpriteForSex(player: IPlayer) {
     return player.getBaseSprite();
   }
 
@@ -304,7 +304,7 @@ export class Game {
     }
   }
 
-  getPlayerSprite(player: Player) {
+  getPlayerSprite(player: IPlayer) {
     const spriteGender = this.getStartingSpriteForSex(player);
     const spriteDir = this.getSpriteOffsetForDirection(player.dir);
 
@@ -318,7 +318,7 @@ export class Game {
     return sprite;
   }
 
-  updatePlayerSprite(sprite, player: Player) {
+  updatePlayerSprite(sprite, player: IPlayer) {
 
     let frame = 0;
     let key = '';

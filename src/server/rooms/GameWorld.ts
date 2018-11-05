@@ -1,5 +1,4 @@
-
-import { isObject, cloneDeep, find, get, set, clone, pull, merge, pullAll } from 'lodash';
+import { clone, cloneDeep, find, get, isObject, merge, pull, pullAll, set } from 'lodash';
 
 import { Parser } from 'mingy';
 
@@ -20,7 +19,7 @@ import { Character } from '../../shared/models/character';
 import { ItemCreator } from '../helpers/world/item-creator';
 import { Item } from '../../shared/models/item';
 import { Locker } from '../../shared/models/container/locker';
-import { VISUAL_EFFECTS, VisualEffect } from '../helpers/world/visual-effects';
+import { VISUAL_EFFECTS} from '../../shared/interfaces/gameworld';
 
 import { PartyManager } from '../helpers/party/party-manager';
 import { BonusHelper } from '../helpers/bonus/bonus-helper';
@@ -40,10 +39,9 @@ import { SkillTreeHelper } from '../helpers/skill-trees/skill-tree-helper';
 import { MarketHelper } from '../helpers/world/market-helper';
 import { AnalyticsHelper } from '../helpers/world/analytics-helper';
 import { globalResponses, globalSetup } from '../scripts/npc/global-responses';
-import { Holiday, HolidayHelper } from '../../shared/helpers/holiday-helper';
-
-export type CombatEffect = 'hit-min' | 'hit-mid' | 'hit-max' | 'hit-magic' | 'hit-heal' | 'hit-buff'
-| 'block-dodge' | 'block-armor' | 'block-miss' | 'block-shield' | 'block-weapon' | 'block-offhand';
+import { HolidayHelper } from '../../shared/helpers/holiday-helper';
+import { Holiday } from '../../shared/interfaces/holiday';
+import { CombatEffect, IGameWorld, VisualEffect } from '../../shared/interfaces/gameworld';
 
 const TICK_TIMER = 1000;
 
@@ -61,7 +59,7 @@ const TickRatesPerTimer = {
   PlayerSave: 60
 };
 
-export class GameWorld extends Room<GameState> {
+export class GameWorld extends Room<GameState> implements IGameWorld {
 
   private allMapNames = {};
 
@@ -494,7 +492,7 @@ export class GameWorld extends Room<GameState> {
     });
   }
 
-  private async savePlayer(player: Player, extraOpts: any = {}, forceSave = false) {
+  public async savePlayer(player: Player, extraOpts: any = {}, forceSave = false) {
     if(!forceSave && player.$$doNotSave) return;
 
     const savePlayer = player.toSaveObject();

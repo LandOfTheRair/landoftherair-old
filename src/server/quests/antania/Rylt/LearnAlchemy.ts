@@ -3,7 +3,7 @@ import { clone } from 'lodash';
 
 import { Quest } from '../../../base/Quest';
 import { Player } from '../../../../shared/models/player';
-import { SkillClassNames } from '../../../../shared/models/character';
+import { SkillClassNames } from '../../../../shared/interfaces/character';
 
 export class LearnAlchemy extends Quest {
 

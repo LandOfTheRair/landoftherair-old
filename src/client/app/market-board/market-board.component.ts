@@ -8,9 +8,10 @@ import { toRoman } from 'roman-numerals';
 import debounce from 'debounce-decorator';
 import { Subscription, empty } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { EquippableItemClasses, WeaponClasses } from '../../../shared/models/item';
+import { EquippableItemClasses} from '../../../shared/interfaces/item';
 import { MarketCalculatorHelper } from '../../../shared/helpers/market-calculator-helper';
 import * as swal from 'sweetalert2';
+import { WeaponClasses } from '../../../shared/interfaces/item';
 
 @Component({
   selector: 'app-market-board',

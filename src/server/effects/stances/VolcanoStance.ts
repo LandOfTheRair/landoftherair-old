@@ -1,11 +1,12 @@
 
-import { AugmentSpellEffect, StanceEffect } from '../../base/Effect';
+import { StanceEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { GenderHelper } from '../../helpers/character/gender-helper';
 import { Item } from '../../../shared/models/item';
+import { AttributeEffect, AugmentSpellEffect } from '../../../shared/interfaces/effect';
 
-export class VolcanoStance extends StanceEffect implements AugmentSpellEffect {
+export class VolcanoStance extends StanceEffect implements AugmentSpellEffect, AttributeEffect {
 
   static get skillRequired() { return 0; }
   protected skillRequired = VolcanoStance.skillRequired;

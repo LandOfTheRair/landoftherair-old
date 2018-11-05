@@ -5,30 +5,30 @@ import { nonenumerable } from 'nonenumerable';
 import { RestrictedNumber } from 'restricted-number';
 
 import { Account } from './account';
-import { Character, MaxSizes, AllNormalGearSlots, Allegiance } from './character';
+import { Character } from './character';
 import { Item } from './item';
 
 import { Party } from './party';
 import { Quest } from '../../server/base/Quest';
 
 import * as Quests from '../../server/quests';
-import * as Effects from '../../server/effects';
-import { LowCON } from '../../server/effects/special/LowCON';
-import { Dead } from '../../server/effects/special/Dead';
+
+import { PartyDefense, PartyOffense, PartyHealthRegeneration, PartyManaRegeneration, Dead, LowCON, Malnourished } from '../../server/effects';
+
 import { CharacterHelper } from '../../server/helpers/character/character-helper';
 
 import { AllTraits } from '../traits/trait-hash';
 import { DeathHelper } from '../../server/helpers/character/death-helper';
 import { PartyHelper } from '../../server/helpers/party/party-helper';
-import { Malnourished } from '../../server/effects/special/Malnourished';
 import { AlchemyContainer } from './container/tradeskills/alchemy';
 import { SpellforgingContainer } from './container/tradeskills/spellforging';
 import { MetalworkingContainer } from './container/tradeskills/metalworking';
 import { SkillTree } from './skill-tree';
 import { RollerHelper } from '../helpers/roller-helper';
-import { Currency } from '../helpers/holiday-helper';
+import { Currency } from '../interfaces/holiday';
+import { Allegiance, AllNormalGearSlots, IPlayer, MaxSizes } from '../interfaces/character';
 
-export class Player extends Character {
+export class Player extends Character implements IPlayer {
   @nonenumerable
   _id?: any;
 
@@ -616,7 +616,14 @@ export class Player extends Character {
     const level = this.getTraitLevelAndUsageModifier(effect);
     if(level === 0) return;
 
-    const partyEffect = new Effects[effect]({ potency: level });
+    const effMap = {
+      Warrior: PartyDefense,
+      Healer: PartyHealthRegeneration,
+      Thief: PartyOffense,
+      Mage: PartyManaRegeneration
+    };
+
+    const partyEffect = new effMap[this.baseClass]({ potency: level });
     partyEffect.cast(this, this);
   }
 

@@ -1,7 +1,7 @@
 
 import { reject, difference, values, isArray, isNumber } from 'lodash';
 
-import { SkillClassNames, Stats } from '../../shared/models/character';
+import { Stats } from '../../shared/interfaces/character';
 import * as Classes from '../classes';
 import * as Effects from '../effects';
 import { AllTraits } from '../../shared/traits/trait-hash';
@@ -18,8 +18,9 @@ import * as path from 'path';
 import { includes, flatten, isUndefined, capitalize } from 'lodash';
 
 import {
-  Item, ValidItemTypes, WeaponClasses, ArmorClasses, ShieldClasses, AmmoClasses
-} from '../../shared/models/item';
+  Item} from '../../shared/models/item';
+import { SkillClassNames } from '../../shared/interfaces/character';
+import { AmmoClasses, ArmorClasses, ShieldClasses, ValidItemTypes, WeaponClasses } from '../../shared/interfaces/item';
 
 const ValidSkillNames = values(SkillClassNames);
 

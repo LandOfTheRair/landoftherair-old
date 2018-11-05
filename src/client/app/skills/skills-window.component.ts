@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Player } from '../../../shared/models/player';
 
 import { SkillNames } from './skill-names';
+import { IPlayer } from '../../../shared/interfaces/character';
 
 @Component({
   selector: 'app-skills-window',
@@ -11,7 +11,7 @@ import { SkillNames } from './skill-names';
 export class SkillsWindowComponent {
 
   @Input()
-  public currentPlayer: Player = new Player({});
+  public currentPlayer: IPlayer;
 
   constructor() { }
 

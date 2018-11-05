@@ -1,7 +1,8 @@
 
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character} from '../../../../../../shared/models/character';
 import { TrapHelper } from '../../../../../helpers/world/trap-helper';
+import { SkillClassNames } from '../../../../../../shared/interfaces/character';
 
 export class Set extends Skill {
 

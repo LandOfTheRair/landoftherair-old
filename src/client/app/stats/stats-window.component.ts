@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Player } from '../../../shared/models/player';
+import { IPlayer } from '../../../shared/interfaces/character';
 
 @Component({
   selector: 'app-stats-window',
@@ -9,7 +9,7 @@ import { Player } from '../../../shared/models/player';
 export class StatsWindowComponent {
 
   @Input()
-  public currentPlayer: Player = new Player({});
+  public currentPlayer: IPlayer;
 
   get stats(): any {
     if(!this.currentPlayer) return {};

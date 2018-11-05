@@ -1,7 +1,6 @@
 
 import { extend, maxBy, values, every, some, startCase } from 'lodash';
-import { Player } from './player';
-import { SkillClassNames } from './character';
+import { IPlayer, SkillClassNames } from '../interfaces/character';
 import { nonenumerable } from 'nonenumerable';
 import { AllTrees } from '../generated/skilltrees';
 
@@ -62,7 +61,7 @@ export class SkillTree {
     return this.traitPoints >= node.cost;
   }
 
-  public isCapableOfBuying(traitName: string, player: Player): boolean {
+  public isCapableOfBuying(traitName: string, player: IPlayer): boolean {
     const node = this.linkBuyableNodeToRealNode(traitName);
     if(!node) return false;
 
@@ -106,7 +105,7 @@ export class SkillTree {
   }
 
 
-  public calculateNewTPFromLevels(player: Player): number {
+  public calculateNewTPFromLevels(player: IPlayer): number {
     const level = player.level;
 
     let gainedTP = 0;
@@ -124,7 +123,7 @@ export class SkillTree {
     return gainedTP;
   }
 
-  public calculateNewTPFromSkills(player: Player): number {
+  public calculateNewTPFromSkills(player: IPlayer): number {
     const highestSkill = this.getHighestRelevantSkillLevel(player);
 
     let gainedTP = 0;
@@ -142,7 +141,7 @@ export class SkillTree {
     return gainedTP;
   }
 
-  private getHighestRelevantSkillLevel(player: Player): number {
+  private getHighestRelevantSkillLevel(player: IPlayer): number {
     switch(player.baseClass) {
       case 'Mage':    return player.calcSkillLevel(SkillClassNames.Conjuration);
       case 'Thief':   return player.calcSkillLevel(SkillClassNames.Thievery);
@@ -199,7 +198,7 @@ export class SkillTree {
     this.gainResetPoints(-rp);
   }
 
-  public reset(player: Player): void {
+  public reset(player: IPlayer): void {
 
     Object.keys(this.nodesClaimed).forEach(claimedNode => {
       this.refundNode(player, claimedNode, false, false);
@@ -216,7 +215,7 @@ export class SkillTree {
     this.updateBuyableNodes();
   }
 
-  public validateSelf(player: Player): void {
+  public validateSelf(player: IPlayer): void {
 
     Object.keys(this.nodesClaimed).forEach(claimedNode => {
       const realNode = this.linkBuyableNodeToRealNode(claimedNode);
@@ -252,7 +251,7 @@ export class SkillTree {
     });
   }
 
-  public syncWithPlayer(player: Player): void {
+  public syncWithPlayer(player: IPlayer): void {
     this.baseClass = player.baseClass;
 
     this.validateSelf(player);
@@ -280,7 +279,7 @@ export class SkillTree {
     delete this.nodesClaimed[traitNode.name];
   }
 
-  public refundNode(player: Player, traitName: string, recalculateBuyable = true, consumeRP = true): void {
+  public refundNode(player: IPlayer, traitName: string, recalculateBuyable = true, consumeRP = true): void {
 
     const ref = this.linkBuyableNodeToRealNode(traitName);
     if(!ref) return;
@@ -305,7 +304,7 @@ export class SkillTree {
 
   }
 
-  private refundTrait(player: Player, traitName: string, realName: string): void {
+  private refundTrait(player: IPlayer, traitName: string, realName: string): void {
     const node = this.linkBuyableNodeToRealNode(traitName);
 
     player.sendClientMessage(`You have refunded the trait "${startCase(realName)}"!`);
@@ -314,7 +313,7 @@ export class SkillTree {
     player.decreaseTraitLevel(realName, boost);
   }
 
-  private refundSkill(player: Player, skillName: string): void {
+  private refundSkill(player: IPlayer, skillName: string): void {
     const node = this.linkBuyableNodeToRealNode(skillName);
     if(!node) return;
 
@@ -322,7 +321,7 @@ export class SkillTree {
     player.unlearnSpell(skillName);
   }
 
-  public buyNode(player: Player, traitName: string, autoLearn = false) {
+  public buyNode(player: IPlayer, traitName: string, autoLearn = false) {
 
     const ref = this.linkBuyableNodeToRealNode(traitName);
     if(!ref) return;
@@ -342,7 +341,7 @@ export class SkillTree {
     player.$$room.savePlayer(player);
   }
 
-  private buyTrait(player: Player, traitName: string, realName: string): void {
+  private buyTrait(player: IPlayer, traitName: string, realName: string): void {
     const node = this.linkBuyableNodeToRealNode(traitName);
 
     player.sendClientMessage(`You have expanded your knowledge with the trait "${startCase(realName)}"!`);
@@ -350,7 +349,7 @@ export class SkillTree {
     player.increaseTraitLevel(realName, boost);
   }
 
-  private buySkill(player: Player, skillName: string, autoLearn: boolean): void {
+  private buySkill(player: IPlayer, skillName: string, autoLearn: boolean): void {
     player.sendClientMessage({ message: `You have learned the skill "${startCase(skillName)}"!`, extraData: { skillName, autoLearn } });
     player.learnSpell(skillName);
     player.$$room.resetMacros(player);

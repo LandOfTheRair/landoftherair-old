@@ -1,19 +1,19 @@
 
-import { Character } from '../../shared/models/character';
 import * as dice from 'dice.js';
+import { ICharacter } from '../../shared/interfaces/character';
 
 export class BaseClass {
-  static becomeClass(character: Character) {
+  static becomeClass(character: ICharacter) {
   }
 
-  static rollDie(roll: string, character: Character) {
+  static rollDie(roll: string, character: ICharacter) {
     return +dice.roll(roll, character.sumStats);
   }
 
-  static gainLevelStats(character: Character) {
+  static gainLevelStats(character: ICharacter) {
   }
 
-  static calcBonusStatsForCharacter(character: Character): any {
+  static calcBonusStatsForCharacter(character: ICharacter): any {
     return {};
   }
 }

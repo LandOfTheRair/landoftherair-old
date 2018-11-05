@@ -9,9 +9,9 @@ import { LootHelper } from '../helpers/world/loot-helper';
 import { Dangerous } from '../effects/special/Dangerous';
 import * as Effects from '../effects';
 import { GameWorld } from '../rooms/GameWorld';
-import { StatName } from '../../shared/models/character';
+import { StatName } from '../../shared/interfaces/character';
 import { RollerHelper } from '../../shared/helpers/roller-helper';
-import { Currency } from '../../shared/helpers/holiday-helper';
+import { Currency } from '../../shared/interfaces/holiday';
 import { Player } from '../../shared/models/player';
 import { MapLayer } from '../../shared/models/maplayer';
 

@@ -3,7 +3,7 @@ import { NPC } from '../../../shared/models/npc';
 import { includes, capitalize, sample, get, set, random, compact, startCase } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import { Logger } from '../../logger';
-import { AllNormalGearSlots, SkillClassNames } from '../../../shared/models/character';
+import { AllNormalGearSlots} from '../../../shared/interfaces/character';
 import { Item } from '../../../shared/models/item';
 import { Revive } from '../../effects/cures/Revive';
 import { LearnAlchemy } from '../../quests/antania/Rylt/LearnAlchemy';
@@ -12,6 +12,7 @@ import { SpellforgingHelper } from '../../helpers/tradeskill/spellforging-helper
 import { MetalworkingHelper } from '../../helpers/tradeskill/metalworking-helper';
 import { ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
 import { GemDust } from '../../effects/buffs/GemDust';
+import { SkillClassNames } from '../../../shared/interfaces/character';
 
 export const TannerResponses = (npc: NPC) => {
   npc.parser.addCommand('hello')

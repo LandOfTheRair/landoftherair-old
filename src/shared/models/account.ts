@@ -1,23 +1,8 @@
-
 import { nonenumerable } from 'nonenumerable';
 import { merge, pick } from 'lodash';
+import { Status, SubscriptionTier, IAccount } from '../interfaces/account';
 
-export type Status = 'Available' | 'AFK';
-
-export enum SubscriptionTier {
-  NO_SUBSCRIPTION = 0,
-  TRIAL_SUBSCRIPTION = 1,
-  BASIC_SUBSCRIPTION = 5
-}
-
-export type SilverPurchase =
-  'MorePotions' | 'MoreCharacters' | 'MoreMarketboard'
-| 'BiggerBelt' | 'BiggerSack' | 'ExpandedStorage'
-| 'SharedLockers' | 'MagicPouch'
-| 'FestivalXP' | 'FestivalSkill' | 'FestivalGold' | 'FestivalTrait' | 'FestivalItemFind'
-| 'CosmeticInversify' | 'CosmeticAncientify' | 'CosmeticEtherPulse' | 'CosmeticGhostEther';
-
-export class Account {
+export class Account implements IAccount {
   @nonenumerable
   _id?: any;
 

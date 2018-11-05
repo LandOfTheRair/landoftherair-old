@@ -1,8 +1,9 @@
 
-import { AugmentSpellEffect, ImbueEffect } from '../../base/Effect';
+import { ImbueEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
+import { AugmentSpellEffect } from '../../../shared/interfaces/effect';
 
 export class ImbueFlame extends ImbueEffect implements AugmentSpellEffect {
 

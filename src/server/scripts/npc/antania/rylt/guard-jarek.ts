@@ -1,7 +1,8 @@
 import { NPC } from '../../../../../shared/models/npc';
 
 import { KillRebels, KillZombies } from '../../../../quests';
-import { Holiday, HolidayHelper } from '../../../../../shared/helpers/holiday-helper';
+import { HolidayHelper } from '../../../../../shared/helpers/holiday-helper';
+import { Holiday } from '../../../../../shared/interfaces/holiday';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';

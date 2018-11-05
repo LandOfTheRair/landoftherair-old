@@ -3,7 +3,7 @@ import { includes } from 'lodash';
 
 import { Command } from '../../../../base/Command';
 import { Player } from '../../../../../shared/models/player';
-import { SharpWeaponClasses } from '../../../../../shared/models/item';
+import { SharpWeaponClasses } from '../../../../../shared/interfaces/item';
 import { SurvivalHelper } from '../../../../helpers/tradeskill/survival-helper';
 
 export class Tan extends Command {

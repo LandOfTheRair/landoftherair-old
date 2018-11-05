@@ -1,18 +1,18 @@
 
-import { Character } from '../../../shared/models/character';
 import { random, cloneDeep } from 'lodash';
 import { Item } from '../../../shared/models/item';
 import * as Classes from '../../classes';
+import { ICharacter, IPlayer } from '../../../shared/interfaces/character';
 
 export class CharacterHelper {
 
-  static isAbleToSee(char: Character): boolean {
+  static isAbleToSee(char: ICharacter): boolean {
     if(char.hasEffect('Blind')) return false;
     if(CharacterHelper.isInDarkness(char) && !char.hasEffect('DarkVision')) return false;
     return true;
   }
 
-  static canHide(char: Character): boolean|string {
+  static canHide(char: ICharacter): boolean|string {
     if(char.hasEffect('Revealed')) return 'You cannot hide right now!';
     if(char.hasEffect('Hidden')) return 'You are already hidden!';
     if(char.hasEffect('ShadowMeld')) return 'You are already melded with the shadows!';
@@ -32,11 +32,11 @@ export class CharacterHelper {
     return true;
   }
 
-  static isInDarkness(char: Character): boolean {
+  static isInDarkness(char: ICharacter): boolean {
     return char.$$room.state.isDarkAt(char.x, char.y);
   }
 
-  static isNearWall(char: Character): boolean {
+  static isNearWall(char: ICharacter): boolean {
     for(let x = char.x - 1; x <= char.x + 1; x++) {
       for(let y = char.y - 1; y <= char.y + 1; y++) {
         const tile = char.$$room.state.checkIfDenseWall(x, y, false);
@@ -46,7 +46,7 @@ export class CharacterHelper {
     return false;
   }
 
-  static dropHands(char: Character): void {
+  static dropHands(char: ICharacter): void {
     if(char.rightHand) {
       char.$$room.addItemToGround(char, char.rightHand);
       char.setRightHand(null);
@@ -58,7 +58,7 @@ export class CharacterHelper {
     }
   }
 
-  static strip(char: Character, { x, y }, spread = 0) {
+  static strip(char: ICharacter, { x, y }, spread = 0) {
     if(char.hasEffect('Secondwind')) return;
 
     this.dropHands(char);
@@ -109,7 +109,7 @@ export class CharacterHelper {
     }
   }
 
-  static handleDeadCharacter(char: Character) {
+  static handleDeadCharacter(char: ICharacter) {
 
     char.dir = 'C';
 
@@ -118,9 +118,9 @@ export class CharacterHelper {
 
       if(holder) {
         if(char.isPlayer()) {
-          char.$$room.setPlayerXY(char, holder.x, holder.y);
+          char.$$room.setPlayerXY(<IPlayer>char, holder.x, holder.y);
           char.fov = cloneDeep(holder.fov);
-          char.$$room.updateFOV(char);
+          char.$$room.updateFOV(<IPlayer>char);
 
         } else {
           char.x = holder.x;
@@ -137,7 +137,7 @@ export class CharacterHelper {
     }
   }
 
-  static setUpClassFor(char: Character) {
+  static setUpClassFor(char: ICharacter) {
     Classes[char.baseClass || 'Undecided'].becomeClass(char);
   }
 }

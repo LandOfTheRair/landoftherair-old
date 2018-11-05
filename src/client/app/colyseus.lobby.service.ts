@@ -5,11 +5,12 @@ import * as swal from 'sweetalert2';
 import { AuthService } from './auth.service';
 
 import { LobbyState } from '../../shared/models/lobbystate';
-import { Account, SilverPurchase } from '../../shared/models/account';
+import { Account} from '../../shared/models/account';
 
 import { Subject, BehaviorSubject, interval } from 'rxjs';
 import { merge, sortBy, random } from 'lodash';
 import { AlertService } from './alert.service';
+import { SilverPurchase } from '../../shared/interfaces/account';
 
 @Injectable()
 export class ColyseusLobbyService {

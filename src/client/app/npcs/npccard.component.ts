@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { NPC } from '../../../shared/models/npc';
 import { ColyseusGameService } from '../colyseus.game.service';
+import { INPC } from '../../../shared/interfaces/character';
 
 @Component({
   selector: 'app-npc-card',
@@ -300,7 +300,7 @@ import { ColyseusGameService } from '../colyseus.game.service';
 })
 export class NpcCardComponent implements OnInit, OnDestroy {
   @Input()
-  public npc: NPC;
+  public npc: INPC;
 
   public effect = '';
   private cfx$: any;
@@ -322,15 +322,15 @@ export class NpcCardComponent implements OnInit, OnDestroy {
     this.cfx$.unsubscribe();
   }
 
-  public npcArmorItem(npc: NPC) {
+  public npcArmorItem(npc: INPC) {
     return npc.gear.Robe2 || npc.gear.Robe1 || npc.gear.Armor;
   }
 
-  public directionTo(npc: NPC) {
+  public directionTo(npc: INPC) {
     return this.colyseusGame.directionTo(npc);
   }
 
-  public barClass(npc: NPC) {
+  public barClass(npc: INPC) {
     return this.colyseusGame.hostilityLevelFor(npc);
   }
 }

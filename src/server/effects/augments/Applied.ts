@@ -1,11 +1,12 @@
 
 import { startCase } from 'lodash';
 
-import { AugmentSpellEffect, SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 
 import * as Effects from '../index';
+import { AugmentSpellEffect } from '../../../shared/interfaces/effect';
+import { SpellEffect } from '../../base/Effect';
 
 export class Applied extends SpellEffect implements AugmentSpellEffect {
 

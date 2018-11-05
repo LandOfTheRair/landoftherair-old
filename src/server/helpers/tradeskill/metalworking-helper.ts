@@ -1,9 +1,8 @@
 
-import { Player } from '../../../shared/models/player';
-import { SkillClassNames } from '../../../shared/models/character';
+import { IPlayer, SkillClassNames } from '../../../shared/interfaces/character';
 import { capitalize, clamp, includes, get, cloneDeep } from 'lodash';
-import { ArmorClasses, Item, ShieldClasses } from '../../../shared/models/item';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
+import { ArmorClasses, IItem, ShieldClasses } from '../../../shared/interfaces/item';
 
 const ingotCraftBuffs = {
   'Copper Ingot (Pillars)': {
@@ -44,7 +43,7 @@ const ingotUpgradeBuffs = {
 export class MetalworkingHelper {
 
   /** PERK:CLASS:Warrior:Warriors can engage in metalworking. */
-  static canMetalwork(player: Player): boolean {
+  static canMetalwork(player: IPlayer): boolean {
     return player.baseClass === 'Warrior';
   }
 
@@ -56,7 +55,7 @@ export class MetalworkingHelper {
     }
   }
 
-  static getUpgradeCreateType(item: Item): 'armor'|'weapon'|'ring' {
+  static getUpgradeCreateType(item: IItem): 'armor'|'weapon'|'ring' {
     if(includes(ShieldClasses, item.itemClass)) return 'armor';
     if(item.itemClass === 'Ring')               return 'ring';
     if(includes(ArmorClasses, item.itemClass))  return 'armor';
@@ -64,7 +63,7 @@ export class MetalworkingHelper {
     return 'weapon';
   }
 
-  static async createIngotFor(player: Player, type: string): Promise<void> {
+  static async createIngotFor(player: IPlayer, type: string): Promise<void> {
     type = capitalize(type);
     const brick = await player.$$room.itemCreator.getItemByName(`${type} Ingot (${this.chooseIngotType(type)})`);
     player.tradeSkillContainers.metalworking.craftResult = brick;
@@ -74,7 +73,7 @@ export class MetalworkingHelper {
     }
   }
 
-  static getBuffForItem(item: Item, buffItem: Item, isCreate = false): any {
+  static getBuffForItem(item: IItem, buffItem: IItem, isCreate = false): any {
 
     // move prots over
     if(buffItem.itemClass === 'Fur') {
@@ -91,7 +90,7 @@ export class MetalworkingHelper {
     return get(isCreate ? ingotCraftBuffs : ingotUpgradeBuffs, [buffItem.name, type], {});
   }
 
-  static successPercent(player: Player): number {
+  static successPercent(player: IPlayer): number {
     const container = player.tradeSkillContainers.metalworking;
     const item = container.upgradeItem;
     const reagent = container.upgradeReagent;
@@ -113,7 +112,7 @@ export class MetalworkingHelper {
     return workVal;
   }
 
-  static async craft(player: Player): Promise<boolean> {
+  static async craft(player: IPlayer): Promise<boolean> {
     const container = player.tradeSkillContainers.metalworking;
     const playerSkill = player.calcSkillLevel(SkillClassNames.Metalworking);
 
@@ -164,7 +163,7 @@ export class MetalworkingHelper {
     return success;
   }
 
-  static upgrade(player: Player): boolean {
+  static upgrade(player: IPlayer): boolean {
     const container = player.tradeSkillContainers.metalworking;
     const item = container.upgradeItem;
     const reagent = container.upgradeReagent;
@@ -201,7 +200,7 @@ export class MetalworkingHelper {
     return true;
   }
 
-  static async forgeItem(player: Player): Promise<boolean> {
+  static async forgeItem(player: IPlayer): Promise<boolean> {
     const left = player.leftHand;
     const right = player.rightHand;
 

@@ -1,6 +1,6 @@
 import { NPC } from '../../../../shared/models/npc';
 import { AutoRevives, BaseClassTrainerResponses, RecallerResponses, ReviverResponses } from '../common-responses';
-import { SkillClassNames } from '../../../../shared/models/character';
+import { SkillClassNames } from '../../../../shared/interfaces/character';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';

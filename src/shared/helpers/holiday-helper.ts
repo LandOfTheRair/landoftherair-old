@@ -1,18 +1,7 @@
-
 import { some } from 'lodash';
 
-import { Player } from '../models/player';
-
-export enum Holiday {
-  Halloween = 'Halloween',
-  Thanksgiving = 'Thanksgiving'
-}
-
-export enum Currency {
-  Gold = 'gold',
-  Halloween = 'halloween',
-  Thanksgiving = 'thanksgiving'
-}
+import { Currency, Holiday } from '../interfaces/holiday';
+import { IPlayer } from '../interfaces/character';
 
 const holidayChecker = {
 
@@ -59,7 +48,7 @@ export class HolidayHelper {
     return holidayDescriptions[holiday];
   }
 
-  static tryGrantHolidayTokens(player: Player, amt: number): void {
+  static tryGrantHolidayTokens(player: IPlayer, amt: number): void {
     if(!HolidayHelper.isAnyHoliday()) return;
 
     if(player.$$room.subscriptionHelper.isSubscribed(player)) amt *= 2;

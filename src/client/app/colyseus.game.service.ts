@@ -10,12 +10,11 @@ import { Player } from '../../shared/models/player';
 import { Item } from '../../shared/models/item';
 import { Locker } from '../../shared/models/container/locker';
 import { LocalStorageService } from 'ngx-webstorage';
-import { Character } from '../../shared/models/character';
-import { NPC } from '../../shared/models/npc';
 import { VALID_TRADESKILLS } from '../../shared/helpers/tradeskill-helper';
 import { SkillTree } from '../../shared/models/skill-tree';
 import { AlertService } from './alert.service';
 import { Macro } from './macros.service';
+import { ICharacter, INPC } from '../../shared/interfaces/character';
 
 @Injectable()
 export class ColyseusGameService {
@@ -1015,7 +1014,7 @@ export class ColyseusGameService {
     this.sendRawCommand('~use', `${context} ${isNumber(contextSlot) ? contextSlot : -1} ${item.itemClass} ${item.uuid}`);
   }
 
-  public hostilityLevelFor(compare: Character): 'hostile'|'neutral'|'friendly' {
+  public hostilityLevelFor(compare: ICharacter): 'hostile'|'neutral'|'friendly' {
     const me = this.character;
     if(!me) return 'neutral';
 
@@ -1028,7 +1027,7 @@ export class ColyseusGameService {
 
     if(me.hasEffect('Disguise') && me.getTotalStat('cha') > compare.getTotalStat('wil')) return 'neutral';
 
-    const hostility = (<NPC>compare).hostility;
+    const hostility = (<INPC>compare).hostility;
 
     if(!hostility) return 'neutral';
 
@@ -1048,7 +1047,7 @@ export class ColyseusGameService {
     return 'neutral';
   }
 
-  public directionTo(char: Character) {
+  public directionTo(char: ICharacter) {
     if(!char) return '';
 
     const me = this.character;
@@ -1071,7 +1070,7 @@ export class ColyseusGameService {
     return '✧';
   }
 
-  public distanceTo(char: Character): number {
+  public distanceTo(char: ICharacter): number {
     const me = this.character;
     return Math.floor(
       Math.sqrt(

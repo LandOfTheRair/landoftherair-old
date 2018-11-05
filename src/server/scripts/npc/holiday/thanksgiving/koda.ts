@@ -4,7 +4,7 @@ import { sample } from 'lodash';
 import { NPC } from '../../../../../shared/models/npc';
 import { RollerHelper } from '../../../../../shared/helpers/roller-helper';
 import { LootHelper } from '../../../../helpers/world/loot-helper';
-import { Currency } from '../../../../../shared/helpers/holiday-helper';
+import { Currency } from '../../../../../shared/interfaces/holiday';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';

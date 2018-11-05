@@ -1,8 +1,9 @@
 
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character} from '../../../shared/models/character';
 
 import * as Effects from '../../effects';
 import { Item } from '../../../shared/models/item';
+import { SkillClassNames } from '../../../shared/interfaces/character';
 
 export class TrapHelper {
 

@@ -1,6 +1,7 @@
 
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character} from '../../../../../../shared/models/character';
+import { SkillClassNames } from '../../../../../../shared/interfaces/character';
 
 export class Disarm extends Skill {
 

@@ -3,7 +3,7 @@ import { includes } from 'lodash';
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { StatName } from '../../../../shared/models/character';
+import { StatName } from '../../../../shared/interfaces/character';
 
 export class ShowStats extends Command {
 

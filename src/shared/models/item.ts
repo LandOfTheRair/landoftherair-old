@@ -1,166 +1,31 @@
-
-import { extend, includes, isNumber, size, startCase, get, isUndefined, cloneDeep } from 'lodash';
+import { cloneDeep, extend, get, includes, isNumber, isUndefined, size, startCase } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import * as uuid from 'uuid/v4';
-import { Alignment, Character, SkillClassNames } from './character';
 
 import * as Effects from '../../server/effects';
 import { nonenumerable } from 'nonenumerable';
 import { LootHelper } from '../../server/helpers/world/loot-helper';
+import { ICharacter, SkillClassNames, Stats } from '../interfaces/character';
+import {
+  DamageType,
+  Encrust,
+  IItem,
+  ItemCosmetic,
+  ItemEffect,
+  ItemRequirements,
+  Quality,
+} from '../interfaces/item';
 
-export type DamageType =
-  'physical'
-| 'necrotic'
-| 'fire'
-| 'ice'
-| 'water'
-| 'energy'
-| 'poison'
-| 'disease';
-
-export const ValidItemTypes = [
-  'Mace', 'Axe', 'Dagger', 'Wand', 'Onehanded', 'Twohanded', 'Polearm', 'Ranged',
-  'Martial', 'Staff', 'Restoration', 'Conjuration', 'Throwing', 'Thievery', 'Shortsword'
-];
-
-export const WeaponClasses = [
-  'Axe', 'Blunderbuss', 'Broadsword', 'Crossbow', 'Dagger', 'Club', 'Flail', 'Greataxe', 'Greatmace', 'Greatsword',
-  'Hammer', 'Halberd', 'Longbow', 'Longsword', 'Mace', 'Saucer', 'Shield', 'Shortbow', 'Shortsword', 'Spear', 'Staff',
-  'Totem', 'Wand'
-];
-
-export const AmmoClasses = [
-  'Arrow'
-];
-
-export const SharpWeaponClasses = [
-  'Axe', 'Blunderbuss', 'Broadsword', 'Crossbow', 'Dagger', 'Greataxe', 'Greatsword', 'Halberd', 'Longbow',
-  'Longsword', 'Shortbow', 'Shortsword', 'Spear'
-];
-
-export const ShieldClasses = [
-  'Shield', 'Saucer'
-];
-
-export const ArmorClasses = [
-  'Tunic', 'Breastplate', 'Fur', 'Fullplate', 'Scaleplate'
-];
-
-export const RobeClasses = [
-  'Cloak', 'Robe'
-];
-
-export const HeadClasses = [
-  'Hat', 'Helm', 'Skull', 'Saucer'
-];
-
-export const NeckClasses = [
-  'Amulet'
-];
-
-export const WaistClasses = [
-  'Sash'
-];
-
-export const WristsClasses = [
-  'Bracers'
-];
-
-export const RingClasses = [
-  'Ring'
-];
-
-export const FeetClasses = [
-  'Boots'
-];
-
-export const HandsClasses = [
-  'Gloves', 'Claws'
-];
-
-export const EarClasses = [
-  'Earring'
-];
-
-export const EquipHash = {};
-ArmorClasses.forEach(t => EquipHash[t] = 'Armor');
-RobeClasses.forEach(t => EquipHash[t] = 'Robe');
-HeadClasses.forEach(t => EquipHash[t] = 'Head');
-NeckClasses.forEach(t => EquipHash[t] = 'Neck');
-WaistClasses.forEach(t => EquipHash[t] = 'Waist');
-WristsClasses.forEach(t => EquipHash[t] = 'Wrists');
-RingClasses.forEach(t => EquipHash[t] = 'Ring');
-FeetClasses.forEach(t => EquipHash[t] = 'Feet');
-HandsClasses.forEach(t => EquipHash[t] = 'Hands');
-EarClasses.forEach(t => EquipHash[t] = 'Ear');
-
-export const GivesBonusInHandItemClasses = WeaponClasses.concat(NeckClasses).concat(AmmoClasses);
-
-export const EquippableItemClasses = HeadClasses
-  .concat(NeckClasses)
-  .concat(WaistClasses)
-  .concat(WristsClasses)
-  .concat(RingClasses)
-  .concat(FeetClasses)
-  .concat(HandsClasses)
-  .concat(ArmorClasses)
-  .concat(RobeClasses)
-  .concat(EarClasses);
-
-export const EquippableItemClassesWithWeapons = EquippableItemClasses
-  .concat(WeaponClasses)
-  .concat(AmmoClasses);
-
-export class ItemRequirements {
-  level?: number;
-  profession?: string[];
-  alignment?: Alignment;
-  quest?: string;
-  skill?: { name: string, level: number };
-}
-
-export class Encrust {
-  name?: string;
-  desc: string;
-  sprite: number;
-  stats: any = {};
-  value: number;
-  maxEncrusts?: number;
-}
-
-export class ItemCosmetic {
-  name: string;
-  isPermanent?: boolean;
-}
-
-export class ItemEffect {
-  name: string;
-  chance?: number;
-  potency: number;
-  uses?: number;
-  autocast?: boolean;
-  canApply?: boolean;
-  range?: number; // used for traps
-}
-
-export enum Quality {
-  POOR = 1,
-  BELOW_AVERAGE = 2,
-  AVERAGE = 3,
-  ABOVE_AVERAGE = 4,
-  PERFECT = 5
-}
-
-export class Item {
+export class Item implements IItem {
   @nonenumerable
-  _id: any;
+  _id?: any;
 
   name: string;
-  desc: string;
-  extendedDesc: string;
-  sprite: number;
+  desc?: string;
+  extendedDesc?: string;
+  sprite?: number;
   itemClass: string;
-  createdAt: number;
+  createdAt?: number;
 
   encrust?: Encrust;
   quality?: Quality;
@@ -175,27 +40,27 @@ export class Item {
   tier: number;
 
   ounces?: number;
-  value = 0;
+  value? = 0;
   maxEncrusts?: number;
   _buybackValue?: number;
   sellValue?: number;
-  stats: any = {};
+  stats?: Stats = {};
   requirements?: ItemRequirements;
-  condition = 20000;
-  type = 'Martial';
-  secondaryType: string;
+  condition? = 20000;
+  type? = 'Martial';
+  secondaryType?: string;
 
-  twoHanded: boolean;
-  proneChance: number;
+  twoHanded?: boolean;
+  proneChance?: number;
 
-  isBeltable: boolean;
-  isSackable = true;
+  isBeltable?: boolean;
+  isSackable? = true;
 
-  attackRange: number;
-  offhand: boolean;
-  returnsOnThrow: boolean;
-  binds: boolean;
-  tellsBind: boolean;
+  attackRange?: number;
+  offhand?: boolean;
+  returnsOnThrow?: boolean;
+  binds?: boolean;
+  tellsBind?: boolean;
 
   isHeavy?: boolean;
   canShoot?: boolean;
@@ -204,16 +69,16 @@ export class Item {
 
   trait?: { name: string, level: number };
 
-  enchantLevel: number;
+  enchantLevel?: number;
 
   @nonenumerable
-  searchItems: Item[];
+  searchItems?: IItem[];
 
   @nonenumerable
-  tansFor: string;
+  tansFor?: string;
 
-  x: number;
-  y: number;
+  x?: number;
+  y?: number;
 
   @nonenumerable
   $heldBy?: any;
@@ -224,14 +89,14 @@ export class Item {
   @nonenumerable
   $$playersHeardDeath?: string[];
 
-  effect: ItemEffect;
+  effect?: ItemEffect;
 
-  succorInfo: { map: string, x: number, y: number, z: number };
-  destroyOnDrop: boolean;
+  succorInfo?: { map: string, x: number, y: number, z: number };
+  destroyOnDrop?: boolean;
 
   containedItems?: Array<{ chance: number, result: string }>;
-  expiresAt: number;
-  notUsableAfterHours: number;
+  expiresAt?: number;
+  notUsableAfterHours?: number;
 
   daily?: boolean;
   previousUpgrades?: any[];
@@ -285,11 +150,11 @@ export class Item {
     return 4;
   }
 
-  setOwner(player: Character) {
+  setOwner(player: ICharacter) {
     this.owner = player.uuid;
   }
 
-  descTextFor(player: Character, senseLevel = 0, fromClient = false) {
+  descTextFor(player: ICharacter, senseLevel = 0, fromClient = false) {
 
     const starText = this.quality - 2 > 0 ? Array(this.quality - 2).fill('★').join('') : '';
 
@@ -375,7 +240,7 @@ export class Item {
     ${conditionText}${ownedText}${appraiseText}${usefulText}${statText}`;
   }
 
-  isOwnedBy(char: Character): boolean {
+  isOwnedBy(char: ICharacter): boolean {
     return (!this.owner || this.owner && (<any>char).username === this.owner) && this.canUseExpiration();
   }
 
@@ -386,7 +251,7 @@ export class Item {
     return +date > Date.now();
   }
 
-  canUseInCombat(char: Character): boolean {
+  canUseInCombat(char: ICharacter): boolean {
     const baseCondition = this.isOwnedBy(char) && this.hasCondition();
     if(!this.requirements) return baseCondition;
 
@@ -412,7 +277,7 @@ export class Item {
     if(onBreak && this.condition <= 0) onBreak();
   }
 
-  canUse(char: Character): boolean {
+  canUse(char: ICharacter): boolean {
     return (this.itemClass === 'Box' || this.effect || this.succorInfo || this.ounces >= 0)
       && this.itemClass !== 'Trap'
       && this.hasCondition()
@@ -426,7 +291,7 @@ export class Item {
     return this.effect.uses === 0;
   }
 
-  use(char: Character, fromApply = false): boolean {
+  use(char: ICharacter, fromApply = false): boolean {
     if(fromApply) return true;
     if(!this.canUse(char)) return false;
 

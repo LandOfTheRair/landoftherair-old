@@ -2,10 +2,11 @@
 import * as Cache from 'node-cache';
 
 import { DB } from '../../database';
-import { Item, Quality } from '../../../shared/models/item';
+import { Item} from '../../../shared/models/item';
 import { GameWorld } from '../../rooms/GameWorld';
 
 import { random, sampleSize, sum, sample, isArray, isNumber, includes } from 'lodash';
+import { Quality } from '../../../shared/interfaces/item';
 
 const isProd = process.env.NODE_ENV === 'production';
 

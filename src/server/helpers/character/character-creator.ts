@@ -2,7 +2,7 @@
 import { includes, truncate, capitalize, sampleSize, sample } from 'lodash';
 import { Player } from '../../../shared/models/player';
 import { ItemCreator } from '../world/item-creator';
-import { SkillClassNames } from '../../../shared/models/character';
+import { SkillClassNames } from '../../../shared/interfaces/character';
 import { SkillHelper } from './skill-helper';
 import { MessageHelper } from '../world/message-helper';
 

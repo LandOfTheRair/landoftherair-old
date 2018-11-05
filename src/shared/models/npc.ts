@@ -1,29 +1,27 @@
+import { flatten, get, random, sample, set } from 'lodash';
 
-import { flatten, random, set, get, sample } from 'lodash';
-
-import { Allegiance, Character, Direction } from './character';
+import { Character } from './character';
 import { Item } from './item';
 import * as uuid from 'uuid/v4';
 import { CharacterHelper } from '../../server/helpers/character/character-helper';
 import { DeathHelper } from '../../server/helpers/character/death-helper';
 import { Player } from './player';
-import { Currency } from '../helpers/holiday-helper';
+import { Currency } from '../interfaces/holiday';
 import { RollerHelper } from '../helpers/roller-helper';
+import { Allegiance, Direction, Hostility, INPC } from '../interfaces/character';
 
-export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
-
-export class NPC extends Character {
+export class NPC extends Character implements INPC {
   npcId: string;
   uuid: string;
 
   hostility: Hostility = 'OnHit';
 
-  vendorItems: Item[];
+  vendorItems?: Item[];
 
-  classTrain: string;
-  trainSkills: string[] = [];
-  maxSkillTrain: number;
-  maxLevelUpLevel: number;
+  classTrain?: string;
+  trainSkills?: string[] = [];
+  maxSkillTrain?: number;
+  maxLevelUpLevel?: number;
 
   script: string;
   parser: any;

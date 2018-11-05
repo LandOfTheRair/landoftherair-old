@@ -3,8 +3,9 @@ import { extend, clone, includes } from 'lodash';
 
 import { Item } from '../../item';
 import { Container } from '../container';
+import { ISpellforgingContainer } from '../../../interfaces/container';
 
-export class SpellforgingContainer extends Container {
+export class SpellforgingContainer extends Container implements ISpellforgingContainer {
 
   protected autoFix = false;
 

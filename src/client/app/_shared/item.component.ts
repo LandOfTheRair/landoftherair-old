@@ -1,13 +1,14 @@
 
 import { ChangeDetectionStrategy, Component, Input, OnDestroy } from '@angular/core';
 
-import { EquippableItemClasses, Item } from '../../../shared/models/item';
-import { Player } from '../../../shared/models/player';
+import { Item } from '../../../shared/models/item';
 
 import { includes, isNumber, startCase, get } from 'lodash';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { AssetService } from '../asset.service';
 import { MaterialSlotInfo, ValidMaterialItems } from '../../../shared/helpers/material-storage-layout';
+import { EquippableItemClasses } from '../../../shared/interfaces/item';
+import { IPlayer } from '../../../shared/interfaces/character';
 
 const POSSIBLE_TRADESKILL_SCOPES = ['Alchemy', 'Spellforging', 'Metalworking'];
 
@@ -124,7 +125,7 @@ export class ItemComponent implements OnDestroy {
     return includes(EquippableItemClasses, this.item.itemClass);
   }
 
-  get player(): Player {
+  get player(): IPlayer {
     return this.colyseusGame.character;
   }
 

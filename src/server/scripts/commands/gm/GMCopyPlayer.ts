@@ -5,7 +5,8 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { MessageHelper } from '../../../helpers/world/message-helper';
 import { Item } from '../../../../shared/models/item';
-import { AllNormalGearSlots, Character, StatName } from '../../../../shared/models/character';
+import { Character} from '../../../../shared/models/character';
+import { AllNormalGearSlots, StatName } from '../../../../shared/interfaces/character';
 
 export class GMCopyPlayer extends Command {
 

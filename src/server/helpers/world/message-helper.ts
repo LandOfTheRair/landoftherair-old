@@ -1,10 +1,10 @@
 
 import { isString, isUndefined, startsWith, set } from 'lodash';
-import { Character } from '../../../shared/models/character';
-import { VisualEffect } from './visual-effects';
+import { VisualEffect } from '../../../shared/interfaces/gameworld';
 
 import { CensorSensor, CensorTier } from 'censor-sensor';
 import { CharacterHelper } from '../character/character-helper';
+import { ICharacter, IPlayer } from '../../../shared/interfaces/character';
 
 const censor = new CensorSensor();
 censor.disableTier(CensorTier.CommonProfanity);
@@ -25,7 +25,7 @@ export class MessageHelper {
     return censor.cleanProfanity(message || '');
   }
 
-  static formatMessageFor(char: Character, message: string, args: Character[]) {
+  static formatMessageFor(char: ICharacter, message: string, args: ICharacter[]) {
     if(!args.length) return message;
 
     return [...args].reduce((str, c, idx) => {
@@ -38,17 +38,17 @@ export class MessageHelper {
     }, message);
   }
 
-  static sendClientMessageBatch(char: Character, messages: any[]) {
+  static sendClientMessageBatch(char: ICharacter, messages: any[]) {
     if(!char.isPlayer()) return;
-    char.$$room.sendPlayerLogMessageBatch(char, messages);
+    char.$$room.sendPlayerLogMessageBatch(<IPlayer>char, messages);
   }
 
-  static sendClientMessage(char: Character, message, rootCharacter?: Character) {
+  static sendClientMessage(char: ICharacter, message, rootCharacter?: ICharacter) {
     if(!char.isPlayer()) return;
-    char.$$room.sendPlayerLogMessage(char, message, rootCharacter);
+    char.$$room.sendPlayerLogMessage(<IPlayer>char, message, rootCharacter);
   }
 
-  static sendClientMessageToRadius(char: Character, message, radius = 4, except = [], useSight = false, formatArgs = [], shouldQueue = false) {
+  static sendClientMessageToRadius(char: ICharacter, message, radius = 4, except = [], useSight = false, formatArgs = [], shouldQueue = false) {
     const sendMessage = isString(message) ? { message, subClass: 'chatter' } : message;
 
     const charRegion = char.$$room.state.getSuccorRegion(char);
@@ -71,13 +71,13 @@ export class MessageHelper {
     });
   }
 
-  static drawEffectInRadius(char: Character, effectName: VisualEffect, center: any, effectRadius = 0, drawRadius = 0) {
+  static drawEffectInRadius(char: ICharacter, effectName: VisualEffect, center: any, effectRadius = 0, drawRadius = 0) {
     char.$$room.state.getPlayersInRange(char, drawRadius).forEach(p => {
       p.$$room.drawEffect(p, { x: center.x, y: center.y }, effectName, effectRadius);
     });
   }
 
-  static getPossibleMessageTargets(player: Character, findStr: string, useSight = true): any[] {
+  static getPossibleMessageTargets(player: ICharacter, findStr: string, useSight = true): any[] {
     const allTargets = player.$$room.state.getAllInRange(player, 4, [], useSight);
     const possTargets = allTargets.filter(target => {
       if(target.isDead()) return false;
@@ -96,7 +96,7 @@ export class MessageHelper {
     return possTargets;
   }
 
-  static getPossibleAuguryTargets(player: Character, findStr: string): any[] {
+  static getPossibleAuguryTargets(player: ICharacter, findStr: string): any[] {
     // -1 is a special case that gets everything
     const allTargets = player.$$room.state.getAllNPCsFromQuadtrees(player, -1);
     const possTargets = allTargets.filter(target => {
@@ -106,7 +106,7 @@ export class MessageHelper {
     return possTargets;
   }
 
-  static doesTargetMatchSearch(target: Character, findStr: string): boolean {
+  static doesTargetMatchSearch(target: ICharacter, findStr: string): boolean {
     return target.uuid === findStr || startsWith(target.name.toLowerCase(), findStr.toLowerCase());
   }
 

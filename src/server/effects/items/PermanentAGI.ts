@@ -1,6 +1,7 @@
 
-import { Effect, Maxes } from '../../base/Effect';
+import { Effect} from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
+import { Maxes } from '../../../shared/interfaces/effect';
 
 export class PermanentAGI extends Effect {
   effectStart(char: Character) {

@@ -1,7 +1,7 @@
 import { Item } from '../models/item';
-import { Player } from '../models/player';
 
 import { isNumber, includes } from 'lodash';
+import { IPlayer } from '../interfaces/character';
 
 export class MarketCalculatorHelper {
 
@@ -26,7 +26,7 @@ export class MarketCalculatorHelper {
     return Math.max(1, Math.floor(baseCost * listPercent));
   }
 
-  static calculateListingCost(player: Player, baseCost: number): number {
+  static calculateListingCost(player: IPlayer, baseCost: number): number {
     return MarketCalculatorHelper.calculateListingCostForRegion(baseCost, player.$$room.mapRegion);
   }
 
@@ -35,11 +35,11 @@ export class MarketCalculatorHelper {
     return Math.max(1, Math.floor(baseCost * listPercent));
   }
 
-  static calculateTaxCost(player: Player, baseCost: number): number {
+  static calculateTaxCost(player: IPlayer, baseCost: number): number {
     return MarketCalculatorHelper.calculateTaxCostForRegion(baseCost, player.$$room.mapRegion);
   }
 
-  static itemListError(player: Player, region: string, item: Item, baseItemListCost: number) {
+  static itemListError(player: IPlayer, region: string, item: Item, baseItemListCost: number) {
     if(!item)                                 return 'You need to have an item to list for sale!';
 
     if(item.itemClass === 'Corpse'

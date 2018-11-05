@@ -2,11 +2,12 @@
 
 
 import { Skill } from '../../../../../base/Skill';
-import { Character, SkillClassNames } from '../../../../../../shared/models/character';
+import { Character} from '../../../../../../shared/models/character';
 import { CombatHelper } from '../../../../../helpers/world/combat-helper';
 import { MoveHelper } from '../../../../../helpers/character/move-helper';
 import { MessageHelper } from '../../../../../helpers/world/message-helper';
 import { Player } from '../../../../../../shared/models/player';
+import { SkillClassNames } from '../../../../../../shared/interfaces/character';
 
 export class Thruststrike extends Skill {
 

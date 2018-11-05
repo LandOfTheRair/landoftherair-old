@@ -1,8 +1,8 @@
 
 import { includes, random, capitalize, get, clamp, cloneDeep, sample } from 'lodash';
 
-import { Character, SkillClassNames, StatName } from '../../../shared/models/character';
-import { ShieldClasses, Item, WeaponClasses, ItemEffect, HandsClasses, DamageType, AmmoClasses } from '../../../shared/models/item';
+import { Character} from '../../../shared/models/character';
+import { Item} from '../../../shared/models/item';
 import * as Classes from '../../classes';
 import * as Effects from '../../effects';
 
@@ -11,6 +11,8 @@ import { NPC } from '../../../shared/models/npc';
 import { BuildupEffect } from '../../base/Effect';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 import { MessageHelper } from './message-helper';
+import { SkillClassNames, StatName } from '../../../shared/interfaces/character';
+import { AmmoClasses, DamageType, HandsClasses, ItemEffect, ShieldClasses, WeaponClasses } from '../../../shared/interfaces/item';
 
 export const BaseItemStatsPerTier = {
   Arrow:                { base: 1, min: 0, max: 2, weakChance: 25, damageBonus: 10 },
@@ -282,10 +284,7 @@ export class CombatHelper {
 
     } else if(isKick) {
       attackerWeapon = attacker.gear.Feet
-                    || { type: SkillClassNames.Martial, itemClass: 'Boots', name: 'feet',
-                         tier: 1,
-                         canUseInCombat: () => true,
-                         isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
+                    || new Item({ type: SkillClassNames.Martial, itemClass: 'Boots', name: 'feet', tier: 1 });
 
     } else {
       attackerWeapon = attacker.rightHand;
@@ -293,10 +292,7 @@ export class CombatHelper {
       if(isPunch || !attackerWeapon) {
         isPunch = true;
         attackerWeapon = attacker.gear.Hands
-                    || { type: SkillClassNames.Martial, itemClass: 'Hands', name: 'hands',
-                         tier: 1,
-                         canUseInCombat: () => true,
-                         isOwnedBy: () => true, hasCondition: () => true, loseCondition: (x, y) => {} };
+                    || new Item({ type: SkillClassNames.Martial, itemClass: 'Hands', name: 'hands', tier: 1 });
       }
     }
 
@@ -397,7 +393,7 @@ export class CombatHelper {
       realLevel: defender.level,
       riposteLevel: defender.getTraitLevel('Riposte'),
       mitigation: defender.getTotalStat('mitigation'),
-      dodgeBonus: Math.floor((100 - get(defender.gear, 'Armor.stats.mitigation', 0)) / 10)
+      dodgeBonus: Math.floor((100 - <number>get(defender.gear, 'Armor.stats.mitigation', 0)) / 10)
     };
 
     const fumbleMultiplier = attacker.isPlayer() ? 1 : 10;

@@ -1,6 +1,6 @@
 
 import { Player } from '../../../shared/models/player';
-import { SkillClassNames } from '../../../shared/models/character';
+import { SkillClassNames } from '../../../shared/interfaces/character';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class RunewritingHelper {

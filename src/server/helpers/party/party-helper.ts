@@ -2,7 +2,7 @@
 import { compact } from 'lodash';
 
 import { Player } from '../../../shared/models/player';
-import { Allegiance } from '../../../shared/models/character';
+import { Allegiance } from '../../../shared/interfaces/character';
 
 export class PartyHelper {
 

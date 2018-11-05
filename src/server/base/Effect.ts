@@ -1,35 +1,12 @@
-
-import { Character, SkillClassNames, StatName } from '../../shared/models/character';
-import { extend, includes, get, cloneDeep, isString } from 'lodash';
+import { cloneDeep, extend, get, includes, isString } from 'lodash';
 import { Skill } from './Skill';
 import { CombatHelper } from '../helpers/world/combat-helper';
-import { Item } from '../../shared/models/item';
 import { MessageHelper } from '../helpers/world/message-helper';
 import { RollerHelper } from '../../shared/helpers/roller-helper';
+import { ICharacter, SkillClassNames, StatName } from '../../shared/interfaces/character';
+import { EffectInfo, IEffect } from '../../shared/interfaces/effect';
 
-export const Maxes = {
-  Lesser: 10,
-  Bradley: 13,
-  Minor: 15,
-  Basic: 18,
-  Greater: 21,
-  Major: 24,
-  Advanced: 27,
-  Pure: 30
-};
-
-interface EffectInfo {
-  damage?: number;
-  damageFactor?: number;
-  caster: string;
-  casterName?: string;
-  isPermanent?: boolean;
-  isFrozen?: boolean;
-  canManuallyUnapply?: boolean;
-  enrageTimer?: number;
-}
-
-export class Effect {
+export class Effect implements IEffect {
 
   name = '';
   iconData = {};
@@ -67,12 +44,12 @@ export class Effect {
     }
   }
 
-  protected resetStats(char: Character) {
+  protected resetStats(char: ICharacter) {
     this.statBoosts = {};
     char.recalculateStats();
   }
 
-  public gainStat(char: Character, stat: StatName, value: number) {
+  public gainStat(char: ICharacter, stat: StatName, value: number) {
     this.statBoosts = this.statBoosts || {};
     this.statBoosts[stat] = this.statBoosts[stat] || 0;
     this.statBoosts[stat] += value;
@@ -80,7 +57,7 @@ export class Effect {
     char.recalculateStats();
   }
 
-  public loseStat(char: Character, stat: StatName, value: number) {
+  public loseStat(char: ICharacter, stat: StatName, value: number) {
     this.gainStat(char, stat, -value);
   }
 
@@ -104,13 +81,13 @@ export class Effect {
     this.effectInfo.canManuallyUnapply = true;
   }
 
-  protected aoeAgro(caster: Character, agro: number) {
+  protected aoeAgro(caster: ICharacter, agro: number) {
     caster.$$room.state.getAllHostilesInRange(caster, 4).forEach(mon => {
       mon.addAgro(caster, agro);
     });
   }
 
-  tick(char: Character) {
+  tick(char: ICharacter) {
     this.effectTick(char);
 
     if(this.duration > 0) this.duration--;
@@ -120,16 +97,16 @@ export class Effect {
     }
   }
 
-  effectTick(char: Character) {}
-  effectStart(char: Character) {}
-  effectEnd(char: Character) {}
+  effectTick(char: ICharacter) {}
+  effectStart(char: ICharacter) {}
+  effectEnd(char: ICharacter) {}
 
-  effectMessage(char: Character, message: string|any, shouldQueue = false) {
+  effectMessage(char: ICharacter, message: string|any, shouldQueue = false) {
     if(!char || this.shouldNotShowMessage) return;
     char.sendClientMessage(message, shouldQueue);
   }
 
-  effectMessageRadius(char: Character, message: string|any, radius = 4, ignore: string[] = []) {
+  effectMessageRadius(char: ICharacter, message: string|any, radius = 4, ignore: string[] = []) {
     if(!char || this.shouldNotShowMessage) return;
     MessageHelper.sendClientMessageToRadius(char, message, radius, ignore);
   }
@@ -162,15 +139,15 @@ export class SpellEffect extends Effect {
   maxSkillForSkillGain = 0;
   skillMults: Array<number[]>;
 
-  casterEffectMessage(char: Character, message: string|any) {
+  casterEffectMessage(char: ICharacter, message: string|any) {
     super.effectMessage(char, isString(message) ? { message, subClass: 'spell buff give', sfx: 'spell-buff' } : message);
   }
 
-  targetEffectMessage(char: Character, message: string|any) {
+  targetEffectMessage(char: ICharacter, message: string|any) {
     super.effectMessage(char, isString(message) ? { message, subClass: 'spell buff get', sfx: 'spell-buff' } : message);
   }
 
-  setPotencyAndGainSkill(caster: Character, skillRef?: Skill) {
+  setPotencyAndGainSkill(caster: ICharacter, skillRef?: Skill) {
 
     this.hasSkillRef = !!skillRef;
 
@@ -222,7 +199,7 @@ export class SpellEffect extends Effect {
     return retMult;
   }
 
-  getCoreStat(caster: Character): number {
+  getCoreStat(caster: ICharacter): number {
     if(!this.hasSkillRef) return 1;
 
     let base = 0;
@@ -242,11 +219,11 @@ export class SpellEffect extends Effect {
     return Math.max(1, base);
   }
 
-  getTotalDamageDieSize(caster: Character): number {
+  getTotalDamageDieSize(caster: ICharacter): number {
     return Math.floor(this.getMultiplier() * this.getCoreStat(caster));
   }
 
-  getTotalDamageRolls(caster: Character): number {
+  getTotalDamageRolls(caster: ICharacter): number {
     let base = this.potency || 1;
     if(!caster) return 1;
 
@@ -270,7 +247,7 @@ export class SpellEffect extends Effect {
     return base;
   }
 
-  updateDurationBasedOnTraits(caster: Character): void {
+  updateDurationBasedOnTraits(caster: ICharacter): void {
     let durationMultiplierBonus = 0;
 
     durationMultiplierBonus += caster.getTraitLevelAndUsageModifier('EffectiveSupporter');
@@ -284,12 +261,12 @@ export class SpellEffect extends Effect {
     return caster.getTotalStat(stat);
   }
 
-  cast(caster: Character, target: Character, skillRef?: Skill) {}
+  cast(caster: ICharacter, target: ICharacter, skillRef?: Skill) {}
 }
 
 export class ChanneledSpellEffect extends SpellEffect {
 
-  cast(char: Character, target: Character, skillRef?: Skill) {
+  cast(char: ICharacter, target: ICharacter, skillRef?: Skill) {
 
     // only one stance can be active at a time
     char.effectsList.forEach(eff => {
@@ -302,7 +279,7 @@ export class ChanneledSpellEffect extends SpellEffect {
 
 export class ImbueEffect extends SpellEffect {
 
-  cast(char: Character, target: Character, skillRef?: Skill): boolean {
+  cast(char: ICharacter, target: ICharacter, skillRef?: Skill): boolean {
     let foundSelf = false;
 
     // only one imbue can be active at a time
@@ -322,7 +299,7 @@ export class WeaponEffect extends Effect {
 
   protected skillRequired: number;
 
-  static isValid(char: Character, weaponClass: string, skillRequired: number): boolean {
+  static isValid(char: ICharacter, weaponClass: string, skillRequired: number): boolean {
 
     // always valid for npcs
     if(!char.isPlayer()) return true;
@@ -340,7 +317,7 @@ export class StanceEffect extends WeaponEffect {
 
   public weaponClass: string;
 
-  cast(char: Character, target: Character, skillRef?: Skill): boolean {
+  cast(char: ICharacter, target: ICharacter, skillRef?: Skill): boolean {
     this.weaponClass = get(char.rightHand, 'type', 'Martial');
 
     let foundSelf = false;
@@ -355,7 +332,7 @@ export class StanceEffect extends WeaponEffect {
     return foundSelf;
   }
 
-  tick(char: Character) {
+  tick(char: ICharacter) {
     super.tick(char);
 
     if(!StanceEffect.isValid(char, this.weaponClass, this.skillRequired)) {
@@ -370,7 +347,7 @@ export class BuildupEffect extends SpellEffect {
   public buildupDamage = 0;
   public decayRate = 3;
 
-  effectTick(char: Character) {
+  effectTick(char: ICharacter) {
     if(this.buildupCur >= this.buildupMax) {
       this.buildupProc(char);
       char.unapplyEffect(this);
@@ -383,17 +360,5 @@ export class BuildupEffect extends SpellEffect {
     }
   }
 
-  buildupProc(char: Character) {}
-}
-
-export interface AugmentSpellEffect {
-  augmentAttack(attacker: Character, defender: Character, opts: { damage: number, damageClass: string });
-}
-
-export interface AttributeEffect {
-  modifyDamage(attacker: Character, defender: Character, opts: { attackerWeapon: Item, damage: number, damageClass: string });
-}
-
-export interface OnHitEffect {
-  onHit(attacker: Character, defender: Character, opts: { damage: number, damageClass: string });
+  buildupProc(char: ICharacter) {}
 }

@@ -4,8 +4,9 @@ import { NPC } from '../../../../shared/models/npc';
 import { CrazedTonwinAIBehavior } from '../crazedtonwin';
 import { Skill } from '../../../base/Skill';
 import { Boost, Haste, VitalEssence } from '../../../effects';
-import { AttributeEffect, SpellEffect } from '../../../base/Effect';
+import { SpellEffect } from '../../../base/Effect';
 import { Item } from '../../../../shared/models/item';
+import { AttributeEffect } from '../../../../shared/interfaces/effect';
 
 export class Invulnerable extends SpellEffect implements AttributeEffect {
   iconData = {

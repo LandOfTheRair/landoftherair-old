@@ -11,7 +11,7 @@ import * as macicons from '../macicons/macicons.json';
 import { includes, isNull, cloneDeep, get, startCase } from 'lodash';
 import { AuthService } from './auth.service';
 import { AssetService } from './asset.service';
-import { SilverPurchase } from '../../shared/models/account';
+import { SilverPurchase } from '../../shared/interfaces/account';
 
 import { environment } from '../environments/environment';
 import { WindowManagerService } from './windowmanager.service';

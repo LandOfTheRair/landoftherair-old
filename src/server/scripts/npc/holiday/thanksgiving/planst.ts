@@ -3,7 +3,7 @@ import { random, isNumber } from 'lodash';
 
 import { NPC } from '../../../../../shared/models/npc';
 import { Player } from '../../../../../shared/models/player';
-import { Currency } from '../../../../../shared/helpers/holiday-helper';
+import { Currency } from '../../../../../shared/interfaces/holiday';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';

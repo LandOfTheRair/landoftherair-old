@@ -1,10 +1,11 @@
 
 import { Effect } from '../../base/Effect';
-import { Character, StatName } from '../../../shared/models/character';
+import { Character} from '../../../shared/models/character';
 
 import { LootHelper } from '../../helpers/world/loot-helper';
 
-import * as Effects from '../../';
+import { Stun, Poison } from '../';
+import { StatName } from '../../../shared/interfaces/character';
 
 const resultTable = [
   { chance: 100000  , result: { message: 'Your chest feels like it\'s on fire!',
@@ -12,9 +13,9 @@ const resultTable = [
   { chance: 75000   , result: { message: 'You feel revitalized!',
     stats: { con: 3 } } },
   { chance: 50000   , result: { message: 'Wow, that\'s strong!',
-    effect: { name: 'Stun', duration: 3, potency: 50 } } },
+    effectProto: Stun, effect: { name: 'Stun', duration: 3, potency: 50 } } },
   { chance: 50000   , result: { message: 'Ugh, nasty!',
-    effect: { name: 'Poison', duration: 100, potency: 15 } } },
+    effectProto: Poison, effect: { name: 'Poison', duration: 100, potency: 15 } } },
   { chance: 50000   , result: { message: 'Your chest feels like it\'s on fire!',
     stats: { con: -1, str: -1 } } },
   { chance: 50000   , result: { message: 'Your chest feels like it\'s on fire!',
@@ -75,13 +76,24 @@ const resultTable = [
 
 export class FillFateWater extends Effect {
   effectStart(char: Character) {
-    LootHelper.rollAnyTable(resultTable).then(({ message, stats, alignment, allegiance, effect }) => {
 
-      if(effect) {
-        const eff = new Effects[effect.name](effect);
+    LootHelper.rollAnyTable(resultTable).then((res) => {
+      let { message } = res[0];
+      const { stats, alignment, sex, allegiance, effect, effectProto } = res[0];
+
+      if(effect && effectProto) {
+        const eff = new effectProto(effect);
         eff.shouldShowMessage = false;
         eff.cast(char, char);
         eff.shouldShowMessage = true;
+      }
+
+      if(sex) {
+        if(sex === char.sex) {
+          message = 'The water was tasteless.';
+        }
+
+        char.sex = sex;
       }
 
       if(allegiance) {
@@ -111,7 +123,7 @@ export class FillFateWater extends Effect {
         });
       }
 
-      this.effectMessage(char, message);
+      char.sendClientMessage(message);
     });
   }
 }

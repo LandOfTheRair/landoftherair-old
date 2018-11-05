@@ -1,10 +1,12 @@
 
 import { extend, clone, includes } from 'lodash';
 
-import { Item, ArmorClasses, WeaponClasses } from '../../item';
+import { Item} from '../../item';
 import { Container } from '../container';
+import { ArmorClasses, WeaponClasses } from '../../../interfaces/item';
+import { IMetalworkingContainer } from '../../../interfaces/container';
 
-export class MetalworkingContainer extends Container {
+export class MetalworkingContainer extends Container implements IMetalworkingContainer {
 
   protected autoFix = false;
 

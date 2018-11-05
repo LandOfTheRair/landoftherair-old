@@ -1,8 +1,9 @@
 
 import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
-import { Item, EquippableItemClassesWithWeapons, ValidItemTypes } from '../../../../shared/models/item';
+import { Item} from '../../../../shared/models/item';
 import { includes } from 'lodash';
+import { EquippableItemClassesWithWeapons, ValidItemTypes } from '../../../../shared/interfaces/item';
 
 export class GMForgeItem extends Command {
 

@@ -3,8 +3,9 @@ import { extend } from 'lodash';
 
 import { Item } from '../../item';
 import { Container } from '../container';
+import { IAlchemyContainer } from '../../../interfaces/container';
 
-export class AlchemyContainer extends Container {
+export class AlchemyContainer extends Container implements IAlchemyContainer {
 
   protected autoFix = false;
 

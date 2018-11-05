@@ -1,7 +1,7 @@
 
 import { compact, get } from 'lodash';
 
-import { SkillClassNames } from '../../../shared/models/character';
+import { SkillClassNames } from '../../../shared/interfaces/character';
 import { Player } from '../../../shared/models/player';
 import { Item } from '../../../shared/models/item';
 

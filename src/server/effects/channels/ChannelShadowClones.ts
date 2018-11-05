@@ -2,10 +2,11 @@
 import { some, cloneDeep } from 'lodash';
 
 import { ChanneledSpellEffect, Effect } from '../../base/Effect';
-import { Character, StatName } from '../../../shared/models/character';
+import { Character} from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { NPC } from '../../../shared/models/npc';
 import { Item } from '../../../shared/models/item';
+import { StatName } from '../../../shared/interfaces/character';
 
 class SummonedClone extends Effect {
 

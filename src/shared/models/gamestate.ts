@@ -1,5 +1,4 @@
-
-import { cloneDeep, reject, filter, extend, find, size, pick, minBy, includes, reduce, get, isUndefined, compact, values } from 'lodash';
+import { cloneDeep, compact, extend, filter, find, get, includes, isUndefined, minBy, pick, reduce, reject, size, values } from 'lodash';
 
 import { Player } from './player';
 
@@ -14,13 +13,9 @@ import { nonenumerable } from 'nonenumerable';
 import { LootHelper } from '../../server/helpers/world/loot-helper';
 import { QuadtreeHelper } from '../../server/helpers/world/quadtree-helper';
 import { Swimming } from '../../server/effects/special/Swimming';
+import { IGameState, TilesWithNoFOVUpdate } from '../interfaces/gamestate';
 
-enum TilesWithNoFOVUpdate {
-  Empty = 0,
-  Air = 2386
-}
-
-export class GameState {
+export class GameState implements IGameState {
 
   public isDisposing: boolean;
 
@@ -510,7 +505,7 @@ export class GameState {
     return false;
   }
 
-  private getAllNPCsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
+  public getAllNPCsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
     const foundNPCsInRange = radius >= 0 ? this.quadtreeHelper.npcQuadtreeSearch(pos, radius) : this.quadtreeHelper.npcs;
     const foundNPCRefs = foundNPCsInRange.map(npc => this.mapNPCs[npc.uuid]);
 

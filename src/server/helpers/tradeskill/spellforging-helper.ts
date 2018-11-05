@@ -1,14 +1,14 @@
 
-import { Player } from '../../../shared/models/player';
-import { Item, EquippableItemClassesWithWeapons, AmmoClasses } from '../../../shared/models/item';
+import { Item} from '../../../shared/models/item';
 
 import { includes, random, clone, clamp, capitalize } from 'lodash';
-import { SkillClassNames } from '../../../shared/models/character';
+import { IPlayer, SkillClassNames } from '../../../shared/interfaces/character';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
+import { AmmoClasses, EquippableItemClassesWithWeapons } from '../../../shared/interfaces/item';
 
 export class SpellforgingHelper {
 
-  static canSpellforge(player: Player): boolean {
+  static canSpellforge(player: IPlayer): boolean {
     return player.calcSkillLevel(SkillClassNames.Conjuration) >= 1;
   }
 
@@ -16,7 +16,7 @@ export class SpellforgingHelper {
     return includes(EquippableItemClassesWithWeapons, item.itemClass);
   }
 
-  static async disenchant(player: Player): Promise<string> {
+  static async disenchant(player: IPlayer): Promise<string> {
     const container = player.tradeSkillContainers.spellforging;
     const item = container.modifyItem;
 
@@ -48,7 +48,7 @@ export class SpellforgingHelper {
     return retval;
   }
 
-  static successPercent(player: Player): number {
+  static successPercent(player: IPlayer): number {
     const container = player.tradeSkillContainers.spellforging;
     const item = container.modifyItem;
     const reagent = container.reagent;
@@ -91,7 +91,7 @@ export class SpellforgingHelper {
     }
   }
 
-  static enchant(player: Player): boolean {
+  static enchant(player: IPlayer): boolean {
     const container = player.tradeSkillContainers.spellforging;
     const item = container.modifyItem;
     const reagent = container.reagent;
@@ -172,7 +172,7 @@ export class SpellforgingHelper {
     return true;
   }
 
-  static async createBrickFor(player: Player, type: string): Promise<void> {
+  static async createBrickFor(player: IPlayer, type: string): Promise<void> {
     type = capitalize(type);
     const brick = await player.$$room.itemCreator.getItemByName(`Enchanting Brick - ${type}`);
     player.tradeSkillContainers.spellforging.result = brick;

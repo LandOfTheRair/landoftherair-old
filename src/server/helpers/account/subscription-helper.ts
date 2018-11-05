@@ -3,9 +3,10 @@ import { get, find, includes } from 'lodash';
 import * as stripe from 'stripe';
 
 import { AccountHelper } from './account-helper';
-import { Account, SilverPurchase, SubscriptionTier } from '../../../shared/models/account';
+import { Account} from '../../../shared/models/account';
 import { Player } from '../../../shared/models/player';
 import { Lobby } from '../../rooms/Lobby';
+import { SilverPurchase, SubscriptionTier } from '../../../shared/interfaces/account';
 
 const SUBSCRIPTION_TIER_MULTIPLER = 5;
 const BASE_ACTION_QUEUE_SIZE = 20;

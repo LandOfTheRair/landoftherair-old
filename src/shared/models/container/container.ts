@@ -2,8 +2,9 @@
 import { startCase, compact, findIndex, sample, isUndefined, isNumber } from 'lodash';
 
 import { Item } from '../item';
+import { IContainer } from '../../interfaces/container';
 
-export class Container {
+export class Container implements IContainer {
 
   public size: number;
   protected autoFix = true;

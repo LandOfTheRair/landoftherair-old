@@ -3,7 +3,7 @@ import { clamp, includes, sample } from 'lodash';
 
 import { Player } from '../../../shared/models/player';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
-import { SkillClassNames } from '../../../shared/models/character';
+import { SkillClassNames } from '../../../shared/interfaces/character';
 import { Skill } from '../../base/Skill';
 import { CommandExecutor } from '../command-executor';
 

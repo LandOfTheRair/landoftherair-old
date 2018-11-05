@@ -1,5 +1,5 @@
 
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character} from '../../../shared/models/character';
 import { MapLayer } from '../../../shared/models/maplayer';
 import { isUndefined, find, values } from 'lodash';
 
@@ -7,6 +7,7 @@ import * as Pathfinder from 'pathfinding';
 import { CombatHelper } from '../world/combat-helper';
 import { HolidayHelper } from '../../../shared/helpers/holiday-helper';
 import { Player } from '../../../shared/models/player';
+import { SkillClassNames } from '../../../shared/interfaces/character';
 
 export class MoveHelper {
 

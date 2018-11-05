@@ -2,11 +2,12 @@
 import { some, includes, sample } from 'lodash';
 
 import { ChanneledSpellEffect, Effect } from '../../base/Effect';
-import { Character, SkillClassNames } from '../../../shared/models/character';
+import { Character} from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { GenderHelper } from '../../helpers/character/gender-helper';
 import { NPC } from '../../../shared/models/npc';
 import { SkillHelper } from '../../helpers/character/skill-helper';
+import { SkillClassNames } from '../../../shared/interfaces/character';
 
 const animalHash = {
   deer: 'Mage Summon Deer',

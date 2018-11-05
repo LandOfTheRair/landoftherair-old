@@ -1,15 +1,16 @@
 
 import { extend, merge, differenceBy, values, filter, reject, size, get, set, findIndex } from 'lodash';
 
-import { Player } from '../../shared/models/player';
-
 import { BehaviorSubject, Subject } from 'rxjs';
 
-import { Item } from '../../shared/models/item';
-import { Character } from '../../shared/models/character';
 import { MapLayer } from '../../shared/models/maplayer';
 import { LootHelper } from '../../server/helpers/world/loot-helper';
 import { SkillTree } from '../../shared/models/skill-tree';
+import { ICharacter, IPlayer } from '../../shared/interfaces/character';
+import { Character } from '../../shared/models/character';
+import { Player } from '../../shared/models/player';
+import { Item } from '../../shared/models/item';
+import { IItem } from '../../shared/interfaces/item';
 
 const SpecialDiscordMaps = {
   'Rylt-CaveUpstairs-Dungeon': 'lair-mage',
@@ -21,9 +22,9 @@ const SpecialDiscordMaps = {
 export class ClientGameState {
   fovArray = Array(9).fill(null).map((x, i) => i - 4);
 
-  _currentPlayer: Player;
+  _currentPlayer: IPlayer;
 
-  public set currentPlayer(player: Player) {
+  public set currentPlayer(player: IPlayer) {
     this._currentPlayer = player;
 
     if(player) {
@@ -39,16 +40,16 @@ export class ClientGameState {
     return this._currentPlayer;
   }
 
-  private playerHash: { [key: string]: Player } = {};
+  private playerHash: { [key: string]: IPlayer } = {};
   map: any = {};
   mapName = '';
   mapData: any = { openDoors: {} };
-  mapNPCs: { [key: string]: Character } = {};
+  mapNPCs: { [key: string]: ICharacter } = {};
   fov: any = {};
   darkness: any = {};
   secretWallHash: any = {};
 
-  _activeTarget: Character;
+  _activeTarget: ICharacter;
 
   groundItems: any = {};
 
@@ -61,7 +62,7 @@ export class ClientGameState {
     openDoors: []
   };
 
-  playerBoxes$  = new Subject<{ newPlayer: Player, oldPlayer: Player }>();
+  playerBoxes$  = new Subject<{ newPlayer: IPlayer, oldPlayer: IPlayer }>();
   updateGround$ = new BehaviorSubject({});
 
   setMap$ = new BehaviorSubject({});
@@ -72,8 +73,8 @@ export class ClientGameState {
     return values(this.playerHash);
   }
 
-  get allCharacters(): Character[] {
-    return (<Character[]>values(this.mapNPCs)).concat(this.players);
+  get allCharacters(): ICharacter[] {
+    return (<ICharacter[]>values(this.mapNPCs)).concat(this.players);
   }
 
   get activeTarget() {
@@ -100,7 +101,7 @@ export class ClientGameState {
     });
   }
 
-  setPlayer(player: Player) {
+  setPlayer(player: IPlayer) {
     this.currentPlayer = player;
   }
 
@@ -147,7 +148,7 @@ export class ClientGameState {
     this.mapNPCs = data;
   }
 
-  addGroundItem(x: number, y: number, item: Item) {
+  addGroundItem(x: number, y: number, item: IItem) {
     const xKey = `x${x}`;
     const yKey = `y${y}`;
 
@@ -166,7 +167,7 @@ export class ClientGameState {
     this.updateGroundItems();
   }
 
-  updateGroundItem(x: number, y: number, item: Item) {
+  updateGroundItem(x: number, y: number, item: IItem) {
     const xKey = `x${x}`;
     const yKey = `y${y}`;
 
@@ -184,7 +185,7 @@ export class ClientGameState {
     this.updateGroundItems();
   }
 
-  removeGroundItem(x: number, y: number, item: Item) {
+  removeGroundItem(x: number, y: number, item: IItem) {
     const xKey = `x${x}`;
     const yKey = `y${y}`;
 
@@ -192,7 +193,7 @@ export class ClientGameState {
     this.groundItems[xKey][yKey] = this.groundItems[xKey][yKey] || {};
     this.groundItems[xKey][yKey][item.itemClass] = this.groundItems[xKey][yKey][item.itemClass] || [];
 
-    this.groundItems[xKey][yKey][item.itemClass] = reject(this.groundItems[xKey][yKey][item.itemClass], (i: Item) => i.uuid === item.uuid);
+    this.groundItems[xKey][yKey][item.itemClass] = reject(this.groundItems[xKey][yKey][item.itemClass], (i: IItem) => i.uuid === item.uuid);
 
     if(size(this.groundItems[xKey][yKey][item.itemClass]) === 0) delete this.groundItems[xKey][yKey][item.itemClass];
     if(size(this.groundItems[xKey][yKey]) === 0) delete this.groundItems[xKey][yKey];
@@ -249,7 +250,7 @@ export class ClientGameState {
     return this.playerHash[username];
   }
 
-  private removePlayer(player: Player) {
+  private removePlayer(player: IPlayer) {
     delete this.playerHash[player.username];
   }
 

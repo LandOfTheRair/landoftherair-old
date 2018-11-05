@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Player } from '../../../shared/models/player';
+import { IPlayer } from '../../../shared/interfaces/character';
 
 @Component({
   selector: 'app-character-tagline',
@@ -9,5 +9,5 @@ import { Player } from '../../../shared/models/player';
 export class PlayerTaglineComponent {
 
   @Input()
-  public player: Player = new Player({});
+  public player: IPlayer;
 }

@@ -1,10 +1,11 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character, StatName } from '../../../shared/models/character';
+import { Character} from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { random, clamp } from 'lodash';
 import { Stun } from '../antibuffs/Stun';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
+import { StatName } from '../../../shared/interfaces/character';
 
 export class Push extends SpellEffect {
 

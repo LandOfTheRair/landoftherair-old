@@ -1,7 +1,8 @@
 
-import { SpellEffect, OnHitEffect } from '../../base/Effect';
+import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
+import { OnHitEffect } from '../../../shared/interfaces/effect';
 
 export class VitalEssence extends SpellEffect implements OnHitEffect {
 

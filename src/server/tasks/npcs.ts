@@ -1,3 +1,4 @@
+import { Skills } from '../../shared/interfaces/character';
 
 const argv = require('minimist')(process.argv.slice(2));
 require('dotenv').config({ silent: true, path: argv.prod ? '.env.prod' : '.env' });
@@ -11,7 +12,7 @@ import { includes, flatten, isNumber, size, extend, get, isString, isArray } fro
 
 import * as Effects from '../effects';
 
-import { Stats, Skills } from '../../shared/models/character';
+import { Stats} from '../../shared/interfaces/character';
 
 import { NPC } from '../../shared/models/npc';
 

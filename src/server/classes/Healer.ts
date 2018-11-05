@@ -1,13 +1,13 @@
 
 import { BaseClass } from '../base/BaseClass';
-import { Character, SkillClassNames } from '../../shared/models/character';
 import { SkillHelper } from '../helpers/character/skill-helper';
+import { ICharacter, SkillClassNames } from '../../shared/interfaces/character';
 
 export class Healer extends BaseClass {
   static combatLevelDivisor = 3;
   static willDivisor = 3;
 
-  static becomeClass(character: Character) {
+  static becomeClass(character: ICharacter) {
     BaseClass.becomeClass(character);
 
     if(!character.getBaseStat('mp')) {
@@ -16,7 +16,7 @@ export class Healer extends BaseClass {
     }
   }
 
-  static gainLevelStats(character: Character) {
+  static gainLevelStats(character: ICharacter) {
     BaseClass.gainLevelStats(character);
     character.gainBaseStat('hp', this.rollDie(`f([con] / 5)d3 + f([con] / 3)`, character));
     character.gainBaseStat('mp', this.rollDie(`1d[wis] + f([wis] / 3)`, character));

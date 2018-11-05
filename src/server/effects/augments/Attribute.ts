@@ -1,11 +1,13 @@
 
 import { capitalize, includes } from 'lodash';
 
-import { AttributeEffect, SpellEffect } from '../../base/Effect';
+import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import { Item, SharpWeaponClasses } from '../../../shared/models/item';
+import { Item} from '../../../shared/models/item';
 import { NPC } from '../../../shared/models/npc';
+import { SharpWeaponClasses } from '../../../shared/interfaces/item';
+import { AttributeEffect } from '../../../shared/interfaces/effect';
 
 type AttributeType =
 

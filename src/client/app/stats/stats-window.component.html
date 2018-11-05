@@ -1,4 +1,4 @@
-<table class="table table-bordered m-0">
+<table class="table table-bordered m-0" *ngIf="currentPlayer">
   <tr>
     <th><app-icon name="biceps" tooltip="STR: Affects how likely you are to hit in combat and how much damage you deal" container="body" bgColor="transparent"></app-icon></th>
     <td>{{ stats.str }} ({{ baseStats.str }})</td>
