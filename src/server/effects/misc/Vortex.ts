@@ -15,6 +15,8 @@ export class Vortex extends SpellEffect {
         const items = caster.$$room.state.getGroundItems(x, y);
 
         Object.keys(items).forEach(itemClass => {
+          if(!items[itemClass]) return;
+
           items[itemClass].forEach(item => {
             caster.$$room.removeItemFromGround(item);
             caster.$$room.addItemToGround(caster, item);
