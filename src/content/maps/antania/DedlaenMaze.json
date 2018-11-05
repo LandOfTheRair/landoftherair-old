@@ -22063,8 +22063,8 @@
                  "name":"",
                  "properties":
                     {
-                     "fillDesc":"filled with spring water",
-                     "fillEffect":"FillSpringWater"
+                     "fillDesc":"filled with cloudy water",
+                     "fillEffect":"FillFateWater"
                     },
                  "propertytypes":
                     {

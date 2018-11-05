@@ -30,6 +30,7 @@ export * from './special/Mood';
 export * from './misc/Vortex';
 export * from './misc/Hidden';
 
+export * from './items/FillFateWater';
 export * from './items/FillNormalWater';
 export * from './items/FillChilledWater';
 export * from './items/FillLava';
