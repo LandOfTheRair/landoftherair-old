@@ -524,7 +524,7 @@ export class GameState implements IGameState {
   private getAllPlayersFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
     const foundPlayersInRange = this.quadtreeHelper.playerQuadtreeSearch(pos, radius);
     const foundPlayerRefs = foundPlayersInRange.map(player => this.maintainedPlayerHash[player.uuid]);
-    return foundPlayerRefs;
+    return compact(foundPlayerRefs);
   }
 
   private getAllTargetsFromQuadtrees(pos: { x: number, y: number }, radius: number): Character[] {
