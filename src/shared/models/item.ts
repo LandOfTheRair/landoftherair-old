@@ -294,6 +294,7 @@ export class Item implements IItem {
   use(char: ICharacter, fromApply = false): boolean {
     if(fromApply) return true;
     if(!this.canUse(char)) return false;
+    const hand = char.rightHand === this ? 'RightHand' : 'LeftHand';
 
     if(this.effect && (isNumber(this.ounces) ? this.ounces !== 0 : true)) {
       // swallow effects that don't exist
@@ -307,13 +308,19 @@ export class Item implements IItem {
       }
     }
 
+    if(this.effect && this.effect.uses) {
+      if(this.castAndTryBreak()) {
+        char.sendClientMessage('Your item has fizzled and turned to dust.');
+        char[`set${hand}`](null);
+      }
+    }
+
     if(this.itemClass === 'Box') {
       if(this.containedItems.length === 0) return false;
 
       const containedItems = this.containedItems;
       this.containedItems = [];
 
-      const hand = char.rightHand === this ? 'RightHand' : 'LeftHand';
       LootHelper.rollSingleTable(containedItems, char.$$room).then(items => {
         const setItem = items[0];
         char[`set${hand}`](setItem);
