@@ -1,0 +1,5 @@
+
+- name: Blank Thief Trap
+  sprite: 334
+  desc: "an empty trap"
+  value: 100

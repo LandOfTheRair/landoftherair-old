@@ -763,9 +763,17 @@ export class Game {
       && this.player.getTotalStat('perception') < obj.properties.setStealth
       && obj.properties.caster.username !== this.player.username) return;
 
-      const spriteInfo = obj.gid && obj.image
-                     ? { image: cacheKey(this.clientGameState.mapName, 'tileset', obj.image), gid: obj.gid }
-                     : ENVIRONMENTAL_OBJECT_GID_HASH[obj.type];
+      let spriteInfo = null;
+
+      if(obj.gid && obj.image) {
+        spriteInfo = { image: cacheKey(this.clientGameState.mapName, 'tileset', obj.image), gid: obj.gid };
+      }
+
+      const envRef = ENVIRONMENTAL_OBJECT_GID_HASH[obj.type];
+
+      if(envRef) {
+        spriteInfo = { image: envRef.image, gid: obj.sprite || envRef.gid };
+      }
 
       const sprite = this.g.add.sprite(obj.x, obj.y - 64, spriteInfo.image, spriteInfo.gid);
       this.otherEnvironmentalObjects.add(sprite);

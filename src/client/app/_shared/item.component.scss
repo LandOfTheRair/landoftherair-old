@@ -48,6 +48,8 @@ img {
 .ounces {
   top: 5px;
   left: 5px;
+  max-height: 16px;
+  overflow: hidden;
 }
 
 .glow-container {

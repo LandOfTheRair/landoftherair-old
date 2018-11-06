@@ -29,7 +29,7 @@ export const setup = async (npc: NPC) => {
   npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);
 
   npc.rightHand = await npc.$$room.npcLoader.loadItem('Lockpick');
-  npc.leftHand = await npc.$$room.npcLoader.loadItem('Antanian FireMist Thief Trap');
+  npc.leftHand = await npc.$$room.npcLoader.loadItem('Blank Thief Trap');
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };

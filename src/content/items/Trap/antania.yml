@@ -1,6 +1,6 @@
 - name: Antanian FireMist Thief Trap
-  sprite: 334
-  desc: "a trap imbued with the spell FireMist"
+  sprite: 1024
+  desc: "a trap imbued with the spell Fire Mist"
   trapUses: 5
   effect:
     name: FireMist
@@ -10,8 +10,8 @@
   value: 1500
 
 - name: Antanian IceMist Thief Trap
-  sprite: 334
-  desc: "a trap imbued with the spell IceMist"
+  sprite: 1027
+  desc: "a trap imbued with the spell Ice Mist"
   trapUses: 5
   effect:
     name: IceMist
@@ -21,7 +21,7 @@
   value: 1500
 
 - name: Antanian Poison Thief Trap
-  sprite: 334
+  sprite: 1028
   desc: "a trap imbued with the spell Poison"
   trapUses: 5
   effect:
@@ -32,7 +32,7 @@
   value: 1000
 
 - name: Antanian Afflict Thief Trap
-  sprite: 334
+  sprite: 1025
   desc: "a trap imbued with the spell Afflict"
   trapUses: 5
   effect:
@@ -43,8 +43,8 @@
   value: 1000
 
 - name: Antanian MagicMissile Thief Trap
-  sprite: 334
-  desc: "a trap imbued with the spell MagicMissile"
+  sprite: 1025
+  desc: "a trap imbued with the spell Magic Missile"
   trapUses: 5
   effect:
     name: MagicMissile
@@ -63,7 +63,7 @@
   value: 1500
 
 - name: Antanian Darkness Thief Trap
-  sprite: 334
+  sprite: 1025
   desc: "a trap imbued with the spell Darkness"
   trapUses: 5
   effect:
@@ -74,7 +74,7 @@
   value: 2000
 
 - name: Antanian Snare Thief Trap
-  sprite: 334
+  sprite: 1028
   desc: "a trap imbued with the spell Snare"
   trapUses: 5
   effect:
@@ -85,7 +85,7 @@
   value: 2000
 
 - name: Antanian Stun Thief Trap
-  sprite: 334
+  sprite: 1028
   desc: "a trap imbued with the spell Stun"
   trapUses: 5
   effect:
@@ -96,7 +96,7 @@
   value: 2000
 
 - name: Antanian Blind Thief Trap
-  sprite: 334
+  sprite: 1028
   desc: "a trap imbued with the spell Blind"
   trapUses: 5
   effect:

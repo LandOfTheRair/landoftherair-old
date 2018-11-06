@@ -44,6 +44,7 @@ export class TrapHelper {
       y: (y + 1) * 64,
       uses: (trap.effect.uses || 1) + user.getTraitLevel('ReusableTraps'),
       type: 'Trap',
+      sprite: trap.sprite,
       properties: {
         effect: trap.effect,
         caster: {
