@@ -11,3 +11,12 @@
   cosmetic:
     name: Ancientify
     isPermanent: true
+
+- name: Fate Scroll
+  sprite: 368
+  desc: "a card with ominous runes written on it"
+  value: 30000
+  effect:
+    name: Fate
+    uses: 1
+    potency: 1

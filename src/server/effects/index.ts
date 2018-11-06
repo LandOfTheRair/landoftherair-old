@@ -123,6 +123,7 @@ export * from './antibuffs/Immobilize';
 export * from './misc/Augury';
 export * from './misc/ConjureHealing';
 export * from './misc/Dispel';
+export * from './misc/Fate';
 export * from './misc/Identify';
 export * from './misc/Succor';
 export * from './misc/Transmute';
