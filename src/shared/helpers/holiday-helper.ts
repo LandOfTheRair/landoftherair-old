@@ -13,12 +13,18 @@ const holidayChecker = {
   // takes place in November, all month
   Thanksgiving: () => {
     return new Date().getMonth() === 10;
+  },
+
+  // takes place in December, all month
+  Christmas: () => {
+    return new Date().getMonth() === 11;
   }
 };
 
 const holidayDescriptions = {
   Halloween: 'Go smash some zombies, take their brains, and go trick-or-treating!',
-  Thanksgiving: 'Help some pilgrims shoot some turkeys, test your shooting accuracy, and gather food for a feast!'
+  Thanksgiving: 'Help some pilgrims shoot some turkeys, test your shooting accuracy, and gather food for a feast!',
+  Christmas: 'Stop Jack Frost from taking over Christmas, help some elves, and find some reindeer!'
 };
 
 export class HolidayHelper {

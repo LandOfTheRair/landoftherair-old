@@ -19,3 +19,17 @@
 
   value: 1600
   sprite: 217
+
+- name: Christmas Reindeer Skin
+  desc: "the fluffy fur of a wonderland reindeer"
+  stats:
+    armorClass: 12
+    defense: 5
+    fireResist: 100
+    iceResist: 100
+    dex: 1
+    agi: 1
+    wil: 1
+
+  value: 1600
+  sprite: 217

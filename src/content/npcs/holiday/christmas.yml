@@ -1,0 +1,284 @@
+- npcId: Christmas Elf
+  name: elf
+  monsterClass: Humanoid
+  hostility: Faction
+  allegiance: Townsfolk
+  sprite: 1025
+  stats: 20
+  level: 20
+
+  allegianceReputation:
+    Enemy: -101
+    Pirates: -101
+
+  skillLevels: 6
+
+  skillOnKill: 1
+
+  gold:
+    min: 1
+    max: 5
+
+  hp:
+    min: 5000
+    max: 5000
+
+  giveXp:
+    min: 1000
+    max: 2000
+
+  gear:
+    Armor: Risan Tunic
+
+- npcId: Christmas Weak Snowman
+  name: snowman
+  hostility: Faction
+  allegiance: Pirates
+  sprite: 1020
+  stats: 7
+  skillLevels: 2
+
+  allegianceReputation:
+    Townsfolk: -101
+    Wilderness: -101
+
+  level: 10
+
+  skillOnKill: 35
+
+  gold:
+    min: 400
+    max: 750
+
+  hp:
+    min: 600
+    max: 700
+
+  mp:
+    min: 300
+    max: 500
+
+  giveXp:
+    min: 2700
+    max: 2925
+
+  gear:
+    Hands: Medium Claws
+
+  usableSkills:
+    - Hail
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 2
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0
+
+- npcId: Christmas Strong Snowman
+  name: snowman
+  hostility: Faction
+  allegiance: Pirates
+  sprite: 1020
+  stats: 10
+  skillLevels: 3
+
+  level: 12
+
+  skillOnKill: 55
+
+  gold:
+    min: 1000
+    max: 1750
+
+  hp:
+    min: 2000
+    max: 2200
+
+  mp:
+    min: 300
+    max: 500
+
+  giveXp:
+    min: 10700
+    max: 10925
+
+  gear:
+    Hands: Medium Claws
+
+  usableSkills:
+    - Hail
+    - IceMist
+
+  traitLevels:
+    IceMistWiden: 1
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 2
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0
+
+- npcId: Christmas King Snowman
+  name: Jack Frost
+  hostility: Always
+  sprite: 1020
+  stats: 10
+  skillLevels: 8
+
+  level: 23
+
+  skillOnKill: 255
+
+  gold:
+    min: 23000
+    max: 23750
+
+  hp:
+    min: 1000000
+    max: 1000000
+
+  mp:
+    min: 30000
+    max: 50000
+
+  giveXp:
+    min: 200700
+    max: 200925
+
+  gear:
+    Hands: Medium Claws
+
+  usableSkills:
+    - Hail
+    - IceMist
+
+  traitLevels:
+    IceMistWiden: 5
+    FrostedTouch: 5
+    WintersEmbrace: 5
+
+  combatMessages:
+    - "Gwahaha, Christmas is mine!"
+    - "You'll never save Santa Claus!"
+    - "Don't even try to stop me!"
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 2
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0
+
+- npcId: Christmas Weak Reindeer
+  name: reindeer
+  allegiance: Wilderness
+  hostility: Faction
+  sprite: 1030
+  stats: 7
+  skillLevels: 2
+
+  allegianceReputation:
+    Enemy: -101
+    Pirates: -101
+
+  level: 10
+
+  skillOnKill: 35
+
+  gold:
+    min: 400
+    max: 750
+
+  hp:
+    min: 600
+    max: 700
+
+  mp:
+    min: 300
+    max: 500
+
+  giveXp:
+    min: 2700
+    max: 2925
+
+  gear:
+    Hands: Medium Claws
+
+  usableSkills:
+    - PoisonBiteWeak
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 0.5
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0.5
+
+- npcId: Christmas Strong Reindeer
+  name: reindeer
+  allegiance: Wilderness
+  hostility: Faction
+  sprite: 1030
+  stats: 10
+  skillLevels: 3
+
+  allegianceReputation:
+    Enemy: -101
+    Pirates: -101
+
+  level: 12
+
+  skillOnKill: 55
+
+  gold:
+    min: 1000
+    max: 1750
+
+  hp:
+    min: 2000
+    max: 2200
+
+  mp:
+    min: 300
+    max: 500
+
+  giveXp:
+    min: 10700
+    max: 10925
+
+  gear:
+    Armor: Christmas Reindeer Skin
+    Hands: Medium Claws
+
+  tansFor: Christmas Reindeer Skin
+  tanSkillRequired: 15
+
+  usableSkills:
+    - PoisonBiteStrong
+
+  traitLevels:
+    IceMistWiden: 1
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 0.5
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 0.5
