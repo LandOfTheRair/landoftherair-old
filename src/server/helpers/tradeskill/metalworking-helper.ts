@@ -68,7 +68,7 @@ export class MetalworkingHelper {
     const brick = await player.$$room.itemCreator.getItemByName(`${type} Ingot (${this.chooseIngotType(type)})`);
     player.tradeSkillContainers.metalworking.craftResult = brick;
 
-    if(player.calcSkillLevel(SkillClassNames.Metalworking) < 5) {
+    if(player.calcBaseSkillLevel(SkillClassNames.Metalworking) < 5) {
       player.gainSkill(SkillClassNames.Metalworking, 20, true);
     }
   }
@@ -191,7 +191,7 @@ export class MetalworkingHelper {
     container.upgradeResult = item;
     container.clearUpgrade();
 
-    if(player.calcSkillLevel(SkillClassNames.Metalworking) < 5) {
+    if(player.calcBaseSkillLevel(SkillClassNames.Metalworking) < 5) {
       player.gainSkill(SkillClassNames.Metalworking, 20, true);
     }
 

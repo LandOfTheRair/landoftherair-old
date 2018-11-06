@@ -25,7 +25,7 @@ export class SkillHelper {
     skill = skill.toLowerCase();
 
     const skillValue = player.allSkills[skill] || 0;
-    const skillLevel = player.calcSkillLevel(skill);
+    const skillLevel = player.calcBaseSkillLevel(skill);
 
     const nextLevel = skillLevel === 0 ? 100 : this.calcSkillXP(skillLevel);
     const prevLevel = skillLevel === 0 ? 0 : this.calcSkillXP(skillLevel - 1);

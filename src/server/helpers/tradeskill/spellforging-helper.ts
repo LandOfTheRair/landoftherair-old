@@ -9,7 +9,7 @@ import { AmmoClasses, EquippableItemClassesWithWeapons } from '../../../shared/i
 export class SpellforgingHelper {
 
   static canSpellforge(player: IPlayer): boolean {
-    return player.calcSkillLevel(SkillClassNames.Conjuration) >= 1;
+    return player.calcBaseSkillLevel(SkillClassNames.Conjuration) >= 1;
   }
 
   static canDisenchant(item: Item): boolean {
@@ -37,7 +37,7 @@ export class SpellforgingHelper {
     player.gainExp(200 * (itemQuality + 1));
 
     // you only get to skill 10 from disenchanting
-    if(player.calcSkillLevel(SkillClassNames.Spellforging) < 10) {
+    if(player.calcBaseSkillLevel(SkillClassNames.Spellforging) < 10) {
       const gainedSkill = Math.max(1, 5 - player.calcSkillLevel(SkillClassNames.Spellforging)) + itemQuality;
       player.gainSkill(SkillClassNames.Spellforging, gainedSkill, true);
     }
@@ -127,7 +127,7 @@ export class SpellforgingHelper {
       container.clearReagents();
 
       // enchanting only gives you skill up to a point. +1 works to skill 4, +2 to skill 8, etc
-      if(player.calcSkillLevel(SkillClassNames.Spellforging) < item.enchantLevel * 4) {
+      if(player.calcBaseSkillLevel(SkillClassNames.Spellforging) < item.enchantLevel * 4) {
         player.gainSkill(SkillClassNames.Spellforging, item.enchantLevel * 25, true);
       }
 
@@ -143,7 +143,7 @@ export class SpellforgingHelper {
       container.clearReagents();
 
       // you only get skill from runewritten scrolls up to their written skill level
-      if(player.calcSkillLevel(SkillClassNames.Spellforging) < item.effect.potency) {
+      if(player.calcBaseSkillLevel(SkillClassNames.Spellforging) < item.effect.potency) {
         player.gainSkill(SkillClassNames.Spellforging, item.effect.potency * 10, true);
       }
 
@@ -177,7 +177,7 @@ export class SpellforgingHelper {
     const brick = await player.$$room.itemCreator.getItemByName(`Enchanting Brick - ${type}`);
     player.tradeSkillContainers.spellforging.result = brick;
 
-    if(player.calcSkillLevel(SkillClassNames.Spellforging) < 5) {
+    if(player.calcBaseSkillLevel(SkillClassNames.Spellforging) < 5) {
       player.gainSkill(SkillClassNames.Spellforging, 1, true);
     }
   }

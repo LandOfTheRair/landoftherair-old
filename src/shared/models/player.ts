@@ -846,9 +846,9 @@ export class Player extends Character implements IPlayer {
       val = this.$$room.subscriptionHelper.modifySkillGainForSubscription(this, skillGained);
     }
 
-    const curLevel = this.calcSkillLevel(type);
+    const curLevel = this.calcBaseSkillLevel(type);
     super._gainSkill(type, val);
-    const newLevel = this.calcSkillLevel(type);
+    const newLevel = this.calcBaseSkillLevel(type);
 
     if(this.$$room && curLevel !== newLevel) {
       if(newLevel > curLevel) {

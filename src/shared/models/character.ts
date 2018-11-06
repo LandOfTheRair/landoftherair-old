@@ -638,7 +638,7 @@ export class Character implements ICharacter {
       if(item.requirements.alignment && this.alignment !== item.requirements.alignment) return false;
       if(item.requirements.skill) {
         const { name, level } = item.requirements.skill;
-        const myLevel = this.calcSkillLevel(name);
+        const myLevel = this.calcBaseSkillLevel(name);
         if(myLevel < level) return false;
       }
     }
@@ -1023,7 +1023,7 @@ export class Character implements ICharacter {
 
     // you can gain up to 2 skills post-cap if you feel like grinding heavily
     if(!bypassRoomCap && skillGained > 0 && !VALID_TRADESKILLS_HASH[type]) {
-      const curLevel = this.calcSkillLevel(type);
+      const curLevel = this.calcBaseSkillLevel(type);
       const maxLevel = this.$$room.state.maxSkill;
       const diff = curLevel - maxLevel;
 
@@ -1063,7 +1063,11 @@ export class Character implements ICharacter {
   }
 
   calcSkillLevel(type: string) {
-    return SkillHelper.calcSkillLevel(this, type) + this.getTotalStat(<StatName>`${type.toLowerCase()}Bonus`);
+    return this.calcBaseSkillLevel(type) + this.getTotalStat(<StatName>`${type.toLowerCase()}Bonus`);
+  }
+
+  calcBaseSkillLevel(type: string) {
+    return SkillHelper.calcSkillLevel(this, type);
   }
 
   applyEffect(effect: IEffect) {

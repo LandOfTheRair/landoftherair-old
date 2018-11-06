@@ -6,7 +6,7 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 export class RunewritingHelper {
 
   static canRunewrite(player: Player): boolean {
-    return player.calcSkillLevel(SkillClassNames.Restoration) >= 1;
+    return player.calcBaseSkillLevel(SkillClassNames.Restoration) >= 1;
   }
 
   static doRunewrite(player: Player): void {

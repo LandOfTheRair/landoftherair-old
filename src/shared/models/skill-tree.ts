@@ -143,9 +143,9 @@ export class SkillTree {
 
   private getHighestRelevantSkillLevel(player: IPlayer): number {
     switch(player.baseClass) {
-      case 'Mage':    return player.calcSkillLevel(SkillClassNames.Conjuration);
-      case 'Thief':   return player.calcSkillLevel(SkillClassNames.Thievery);
-      case 'Healer':  return player.calcSkillLevel(SkillClassNames.Restoration);
+      case 'Mage':    return player.calcBaseSkillLevel(SkillClassNames.Conjuration);
+      case 'Thief':   return player.calcBaseSkillLevel(SkillClassNames.Thievery);
+      case 'Healer':  return player.calcBaseSkillLevel(SkillClassNames.Restoration);
       case 'Warrior': {
         const otherSkills = [
           SkillClassNames.OneHanded,  SkillClassNames.TwoHanded,  SkillClassNames.Dagger,
@@ -155,7 +155,7 @@ export class SkillTree {
         ];
 
         const highestSkill = maxBy(otherSkills, skill => player.allSkills[skill.toLowerCase()]);
-        return player.calcSkillLevel(highestSkill);
+        return player.calcBaseSkillLevel(highestSkill);
       }
     }
   }

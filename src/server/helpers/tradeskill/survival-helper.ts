@@ -40,7 +40,7 @@ export class SurvivalHelper {
       if(corpseNPC) corpseNPC.restore();
       else          player.$$room.removeItemFromGround(corpse);
 
-      const curSkill = player.calcSkillLevel(SkillClassNames.Survival);
+      const curSkill = player.calcBaseSkillLevel(SkillClassNames.Survival);
       const maxSkill = player.$$room.maxSkill;
 
       const isBetterThanCorpseSkillRequired = (<any>corpse).tanSkillRequired && curSkill >= (<any>corpse).tanSkillRequired;

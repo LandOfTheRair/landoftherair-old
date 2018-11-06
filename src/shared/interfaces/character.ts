@@ -329,6 +329,7 @@ export interface ICharacter {
   setSkill(type: string, skill: number): void;
   addSkillLevels(type: string, levels: number): void;
   calcSkillLevel(type: string): number;
+  calcBaseSkillLevel(type: string): number;
 
   getBonusUsableSkillsBasedOnOwner(): string[];
   killAllPets(): void;

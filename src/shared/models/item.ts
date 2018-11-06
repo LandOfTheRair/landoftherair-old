@@ -264,7 +264,7 @@ export class Item implements IItem {
     return baseCondition
         && level <= char.level
         && alignment === char.alignment
-        && char.calcSkillLevel(skill.name) >= skill.level
+        && char.calcBaseSkillLevel(skill.name) >= skill.level
         && includes(profession, char.baseClass);
   }
 

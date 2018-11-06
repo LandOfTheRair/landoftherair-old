@@ -681,7 +681,7 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
       if(!includes(npc.trainSkills, capitalize(skill))) return 'I cannot teach you anything about this.';
 
-      const skillLevel = player.calcSkillLevel(skill);
+      const skillLevel = player.calcBaseSkillLevel(skill);
 
       const maxAssessSkill = npc.maxSkillTrain;
 
