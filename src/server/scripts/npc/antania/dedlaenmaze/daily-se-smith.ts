@@ -40,14 +40,7 @@ export const responses = (npc: NPC) => {
         npc.$$room.npcLoader.takePlayerItem(player, VAMPIRE_HEART);
         npc.$$room.npcLoader.takeItemsFromPlayerSack(player, indexes);
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem(DEDLAES_RING)
-          .then(item => {
-            player.setRightHand(item);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, DEDLAES_RING);
 
         return 'You\'ve earned this. It\'s very tough to make, but it is the most excellent pair of bracers a craftsman in this region can make!';
       }

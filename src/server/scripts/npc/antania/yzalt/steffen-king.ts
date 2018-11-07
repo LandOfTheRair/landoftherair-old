@@ -46,15 +46,8 @@ export const responses = (npc: NPC) => {
           if(player.rightHand) return 'Please empty your right hand.';
 
           KillRanata.completeFor(player);
-
-          player.setHandsBusy();
-
-          npc.$$room.npcLoader.loadItem(STEFFEN_HELM)
-            .then(item => {
-              player.setRightHand(item);
-
-              player.setHandsFree();
-            });
+      
+          npc.$$room.npcLoader.putItemInPlayerHand(player, STEFFEN_HELM);
 
           return `Thank you for dealing with that vile lich. While it's not much, take my crown.
           It should help an adventurer like you more than an old coot like me.`;

@@ -19,14 +19,7 @@ export const responses = (npc: NPC) => {
       if(npc.$$room.npcLoader.checkPlayerHeldItem(player, 'Christmas Egg Nog')) {
         npc.$$room.npcLoader.takePlayerItem(player, 'Christmas Egg Nog');
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem('Christmas Pipe')
-          .then(newItem => {
-            player.setRightHand(newItem);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, 'Christmas Pipe');
 
         return 'Why thank you! This might help you keep warm... it wasn\'t helping me much...';
       }

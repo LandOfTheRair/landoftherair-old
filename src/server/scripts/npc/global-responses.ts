@@ -62,11 +62,8 @@ export const globalResponses = (npc: NPC) => {
         if(RollerHelper.XInOneHundred(10)) {
           item = 'Halloween Candy Pile';
         }
-
-        npc.$$room.npcLoader.loadItem(item)
-          .then(newItem => {
-            player.setLeftHand(newItem);
-          });
+      
+        npc.$$room.npcLoader.putItemInPlayerHand(player, item, 'left');
 
         return 'Here ya go! Happy holidays!';
       });

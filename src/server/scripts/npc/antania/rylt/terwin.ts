@@ -50,14 +50,7 @@ export const responses = (npc: NPC) => {
       if(npc.$$room.npcLoader.checkPlayerHeldItem(player, GUARD_KEY)) {
         npc.$$room.npcLoader.takePlayerItem(player, GUARD_KEY);
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem(ENCHANTED_GUARD_KEY)
-          .then(item => {
-            player.setRightHand(item);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, ENCHANTED_GUARD_KEY);
 
         return `Here ya go! Now go kill my brother and set me free!`;
       }
@@ -73,14 +66,7 @@ export const responses = (npc: NPC) => {
       if(npc.$$room.npcLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
         npc.$$room.npcLoader.takePlayerItem(player, TONWIN_SWORD);
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem(TERWIN_RING)
-          .then(item => {
-            player.setRightHand(item);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, TERWIN_RING);
 
         return `Take our family heirloom, and I will take my freedom. You have my thanks.`;
       }
