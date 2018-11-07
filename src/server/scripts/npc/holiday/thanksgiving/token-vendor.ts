@@ -21,6 +21,9 @@ export const setup = async (npc: NPC) => {
   ];
 
   const dailyVendorItems = [
+    'Thanksgiving Heal Bottle (XS)',
+    'Thanksgiving Heal Bottle (SM)',
+    'Thanksgiving Heal Bottle (MD)',
     'Thanksgiving Heal Bottle',
     'Antanian Charisma Potion'
   ];
