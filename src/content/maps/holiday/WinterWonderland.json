@@ -941,7 +941,7 @@
                  "name":"Rudolph",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/rudolph"
                     },
                  "propertytypes":
                     {
@@ -1161,7 +1161,7 @@
                  "name":"Mrs. Claus",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/gertrude"
                     },
                  "propertytypes":
                     {
@@ -1181,7 +1181,7 @@
                  "name":"Frosty",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/frosty"
                     },
                  "propertytypes":
                     {
@@ -1221,7 +1221,7 @@
                  "name":"Alan",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/alan"
                     },
                  "propertytypes":
                     {
@@ -1241,7 +1241,7 @@
                  "name":"James",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/james"
                     },
                  "propertytypes":
                     {
@@ -3668,7 +3668,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1405,
+ "nextobjectid":1407,
  "orientation":"orthogonal",
  "properties":
     {

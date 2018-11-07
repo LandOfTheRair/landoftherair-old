@@ -99,6 +99,10 @@ export class NPCLoader {
     return dailyItems;
   }
 
+  checkPlayerHeldItems(player: Player, itemName1: string, itemName2: string) {
+    return player.hasHeldItems(itemName1, itemName2);
+  }
+
   checkPlayerHeldItemEitherHand(player: Player, itemName: string) {
     return player.hasHeldItem(itemName, 'right') || player.hasHeldItem(itemName, 'left');
   }

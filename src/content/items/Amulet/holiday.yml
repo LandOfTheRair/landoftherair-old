@@ -10,6 +10,7 @@
   sprite: 581
   desc: "a scarf used to stay warm during the winter months"
   value: 300
+  binds: true
 
 - name: Christmas Scarf (Improved)
   enchantLevel: 5

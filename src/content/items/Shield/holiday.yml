@@ -20,6 +20,7 @@
   desc: "an oversized button, taken from the shirt of a cold giant"
   value: 300
   sprite: 574
+  binds: true
 
 - name: Christmas Button Shield (Improved)
   enchantLevel: 5
