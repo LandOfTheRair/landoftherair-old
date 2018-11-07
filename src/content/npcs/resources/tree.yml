@@ -28,6 +28,31 @@
       maxChance: 2
       requireHoliday: Thanksgiving
 
+    - result: Christmas Gift - Green
+      chance: 1
+      maxChance: 50
+      requireHoliday: Christmas
+
+    - result: Christmas Gift - Red
+      chance: 1
+      maxChance: 50
+      requireHoliday: Christmas
+
+    - result: Christmas Gift - Blue
+      chance: 1
+      maxChance: 50
+      requireHoliday: Christmas
+
+    - result: Christmas Gift - Yellow
+      chance: 1
+      maxChance: 50
+      requireHoliday: Christmas
+
+    - result: Christmas Gift - Rainbow
+      chance: 1
+      maxChance: 50
+      requireHoliday: Christmas
+
   dropPool:
     replace: true
     choose:
@@ -71,6 +96,31 @@
       chance: 1
       maxChance: 2
       requireHoliday: Thanksgiving
+
+    - result: Christmas Gift - Green
+      chance: 1
+      maxChance: 50
+      requireHoliday: Christmas
+
+    - result: Christmas Gift - Red
+      chance: 1
+      maxChance: 50
+      requireHoliday: Christmas
+
+    - result: Christmas Gift - Blue
+      chance: 1
+      maxChance: 50
+      requireHoliday: Christmas
+
+    - result: Christmas Gift - Yellow
+      chance: 1
+      maxChance: 50
+      requireHoliday: Christmas
+
+    - result: Christmas Gift - Rainbow
+      chance: 1
+      maxChance: 50
+      requireHoliday: Christmas
 
   dropPool:
     replace: true

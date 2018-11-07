@@ -93,3 +93,28 @@
   chance: 1
   maxChance: 500
   requireHoliday: Halloween
+
+- result: Christmas Gift - Green
+  chance: 1
+  maxChance: 1000
+  requireHoliday: Christmas
+
+- result: Christmas Gift - Red
+  chance: 1
+  maxChance: 1000
+  requireHoliday: Christmas
+
+- result: Christmas Gift - Blue
+  chance: 1
+  maxChance: 1000
+  requireHoliday: Christmas
+
+- result: Christmas Gift - Yellow
+  chance: 1
+  maxChance: 1000
+  requireHoliday: Christmas
+
+- result: Christmas Gift - Rainbow
+  chance: 1
+  maxChance: 1000
+  requireHoliday: Christmas
