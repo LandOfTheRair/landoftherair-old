@@ -103,7 +103,7 @@
 
 - name: Catacombs Boots 5F
   desc: "an pair of jet black boots emblazoned with a skull emblem"
-  tier: 6
+  tier: 8
   stats:
     offense: 5
     defense: 5
