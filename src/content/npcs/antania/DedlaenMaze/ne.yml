@@ -52,7 +52,7 @@
     - result: Tower Greatsword Weak
       chance: 10
 
-  rightHand:
+  leftHand:
     - result: none
       chance: 5
     - result: Tower Shield Weak
