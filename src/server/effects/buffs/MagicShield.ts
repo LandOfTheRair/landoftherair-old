@@ -15,6 +15,8 @@ export class MagicShield extends SpellEffect {
   maxSkillForSkillGain = 15;
   potencyMultiplier = 3;
 
+  private bonusMitigation: number;
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagUnapply();
@@ -27,6 +29,10 @@ export class MagicShield extends SpellEffect {
       this.casterEffectMessage(caster, { message: `You cast MagicShield on ${target.name}.`, sfx: 'spell-buff-magical' });
     }
 
+    if(caster === target) {
+      this.bonusMitigation = caster.getTraitLevelAndUsageModifier('MitigatingMagic');
+    }
+
     this.aoeAgro(caster, 100);
 
     target.applyEffect(this);
@@ -37,6 +43,11 @@ export class MagicShield extends SpellEffect {
     this.gainStat(char, 'physicalResist', this.potency * this.potencyMultiplier);
 
     this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} physical damage.`;
+
+    if(this.bonusMitigation) {
+      this.gainStat(char, 'mitigation', this.bonusMitigation);
+      this.iconData.tooltipDesc = `${this.iconData.tooltipDesc} Gain +${this.bonusMitigation} mitigation.`;
+    }
   }
 
   effectEnd(char: Character) {

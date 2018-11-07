@@ -658,6 +658,17 @@
             "WandSpecialty1"
         ]
     },
+    "MitigatingMagic0": {
+        "name": "MitigatingMagic0",
+        "traitName": "MitigatingMagic",
+        "desc": "Your Magic Shield spell will increase your mitigation by $5|15$.",
+        "icon": "energy-shield",
+        "cost": 3,
+        "cluster": 2,
+        "unlockedBy": [
+            "MagicShield"
+        ]
+    },
     "TrueSight": {
         "name": "TrueSight",
         "desc": "See hidden walls and other hidden features. Cost: 25 MP",
@@ -725,7 +736,8 @@
         "requireSkillLevel": 7,
         "cost": 10,
         "unlocks": [
-            "Invisibility"
+            "Invisibility",
+            "MitigatingMagic0"
         ],
         "cluster": 2,
         "unlockedBy": [

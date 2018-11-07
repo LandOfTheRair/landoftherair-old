@@ -4,6 +4,7 @@ export * from './ConcussiveBolt';
 export * from './ForgedFire';
 export * from './FrostedTouch';
 export * from './ManaPool';
+export * from './MitigatingMagic';
 export * from './MagicFocus';
 export * from './WandSpecialty';
 export * from './PartyManaRegeneration';

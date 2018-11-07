@@ -176,6 +176,10 @@ const PROTECTOR_TREE = {
 
   },
 
+  MitigatingMagic0: {
+
+  },
+
   // SKILLS
   TrueSight: {
     unlocks: ['BarFrost', 'BarFire', 'BarWater']
@@ -190,7 +194,7 @@ const PROTECTOR_TREE = {
     unlocks: ['Absorption']
   },
   MagicShield: {
-    unlocks: ['Invisibility']
+    unlocks: ['Invisibility', 'MitigatingMagic0']
   },
   Absorption: {
     unlocks: ['Invisibility']
