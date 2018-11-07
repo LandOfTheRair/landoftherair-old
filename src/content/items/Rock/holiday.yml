@@ -14,7 +14,7 @@
   desc: "a snowglobe depicting the blizzards of the Winter Wonderland"
   binds: true
   uses: -1
-  sellValue: 100000
+  value: 5000
 
   effect:
     name: ImbueFrost

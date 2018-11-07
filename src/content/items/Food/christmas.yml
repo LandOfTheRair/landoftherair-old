@@ -1,7 +1,7 @@
 
 - name: Christmas Carrot
   desc: "a crunchy carrot found buried deep within frozen land"
-  value: 1000
+  value: 75
   sprite: 570
   ounces: 1
 

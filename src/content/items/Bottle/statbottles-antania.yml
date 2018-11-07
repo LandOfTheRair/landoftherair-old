@@ -18,7 +18,7 @@
     name: PermanentAGI
     tier: Minor
     potency: 1
-  value: 2000
+  value: 1500
 
 - name: Antanian Dexterity Potion
   desc: "a small bottle filled with yellow fluid that smells faintly like apples"
@@ -28,7 +28,7 @@
     name: PermanentDEX
     tier: Minor
     potency: 1
-  value: 3500
+  value: 1500
 
 - name: Antanian Intelligence Potion
   desc: "a small bottle filled with puce liquid that smells faintly like a root"
@@ -38,7 +38,7 @@
     name: PermanentINT
     tier: Minor
     potency: 1
-  value: 5000
+  value: 1500
 
 - name: Antanian Wisdom Potion
   desc: "a small bottle filled with teal that smells faintly like herbs"
@@ -48,7 +48,7 @@
     name: PermanentWIS
     tier: Minor
     potency: 1
-  value: 3000
+  value: 1500
 
 - name: Antanian Willpower Potion
   desc: "a small bottle filled with orange fluid that smells faintly like mushrooms"
@@ -58,7 +58,7 @@
     name: PermanentWIL
     tier: Minor
     potency: 1
-  value: 10000
+  value: 2000
 
 - name: Antanian Constitution Potion
   desc: "a small bottle filled with crimson fluid that smells faintly like cherries"
@@ -68,7 +68,7 @@
     name: PermanentCON
     tier: Minor
     potency: 1
-  value: 10000
+  value: 250
 
 - name: Antanian Luck Potion
   desc: "a small bottle filled with green fluid that smells faintly like clovers"
@@ -78,7 +78,7 @@
     name: PermanentLUK
     tier: Minor
     potency: 1
-  value: 100000
+  value: 2000
 
 - name: Antanian Charisma Potion
   desc: "a small bottle filled with purple fluid that smells faintly like flowers"

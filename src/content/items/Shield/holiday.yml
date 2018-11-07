@@ -17,11 +17,16 @@
     level: 15
 
 - name: Christmas Button Shield
+  desc: "an oversized button, taken from the shirt of a cold giant"
+  value: 300
+  sprite: 574
+
+- name: Christmas Button Shield (Improved)
   enchantLevel: 5
   stats:
     armorClass: 30
   desc: "an oversized button, taken from the shirt of a cold giant"
-  value: 2500
+  value: 500
   sprite: 574
   binds: true
 

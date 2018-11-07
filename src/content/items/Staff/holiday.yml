@@ -20,6 +20,14 @@
     level: 5
 
 - name: Christmas Candy Staff
+  desc: "a candy cane sweetly created in the Winter Wonderland"
+  tier: 2
+  type: Staff
+  value: 600
+  sprite: 575
+  binds: true
+
+- name: Christmas Candy Staff (Improved)
   enchantLevel: 5
   stats:
     offense: 3
@@ -32,7 +40,7 @@
   desc: "a candy cane sweetly created in the Winter Wonderland"
   tier: 4
   type: Staff
-  value: 4000
+  value: 1000
   sprite: 575
   binds: true
 

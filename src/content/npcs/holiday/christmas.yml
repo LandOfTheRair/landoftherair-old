@@ -65,6 +65,22 @@
   gear:
     Hands: Medium Claws
 
+  rightHand:
+    - result: none
+      chance: 500
+    - result: Christmas Candy Staff
+      chance: 1
+
+  leftHand:
+    - result: none
+      chance: 500
+    - result: Christmas Button Shield
+      chance: 1
+
+  copyDrops:
+    - drop: 'leftHand'
+      chance: -1
+
   usableSkills:
     - Hail
 

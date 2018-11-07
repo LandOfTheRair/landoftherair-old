@@ -15,7 +15,7 @@
 - name: Christmas Top Hat
   sprite: 578
   desc: "a top hat worn by the snowmen of Winter Wonderland"
-  value: 3500
+  value: 600
 
 - name: Christmas Top Hat (Improved)
   enchantLevel: 5
@@ -27,5 +27,5 @@
     autocast: true
   sprite: 578
   desc: "a top hat worn by the snowmen of Winter Wonderland"
-  value: 3500
+  value: 1000
   binds: true

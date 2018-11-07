@@ -29,7 +29,7 @@
 - name: Christmas Gem
   desc: "a sparkling blue diamond with a snowflake embedded in it"
   value: 50
-  sprite: 1010
+  sprite: 1014
 
   maxEncrusts: 3
 

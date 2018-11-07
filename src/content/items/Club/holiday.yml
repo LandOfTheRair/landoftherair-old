@@ -1,6 +1,16 @@
 
 
+
 - name: Christmas Pipe
+  damageClass: 'fire'
+  desc: "a pipe used to stay warm in the cold months"
+  binds: true
+  tier: 2
+  type: Mace
+  value: 300
+  sprite: 571
+
+- name: Christmas Pipe (Improved)
   enchantLevel: 5
   proneChance: 25
   damageClass: 'fire'
@@ -17,7 +27,7 @@
   binds: true
   tier: 4
   type: Mace
-  value: 12200
+  value: 500
   sprite: 571
 
   requirements:

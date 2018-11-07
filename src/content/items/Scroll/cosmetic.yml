@@ -42,7 +42,7 @@
 - name: Cosmetic Scroll - Snowflake Joy
   sprite: 224
   desc: "a cosmetic scroll featuring \"Snowflake Joy\""
-  value: 1
+  value: 15000
   cosmetic:
     name: SnowflakeJoy
     isPermanent: true
