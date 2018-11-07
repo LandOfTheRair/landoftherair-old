@@ -17,16 +17,9 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
-      player.setHandsBusy();
-
       if(player.hasHeldItems('Thanksgiving Cornbread', 'Thanksgiving Corn')) {
-        npc.$$room.npcLoader.loadItem('Thanksgiving Bead Amulet')
-          .then(newItem => {
-            player.setRightHand(newItem);
-            player.setLeftHand(null);
-
-            player.setHandsFree();
-          });
+        player.setLeftHand(null);
+        npc.$$room.npcLoader.putItemInPlayerHand(player, 'Thanksgiving Bead Amulet');
 
         return 'Mmmhmm! Oh man, so good! Here, the natives made me this, but I think you should have it.';
       }

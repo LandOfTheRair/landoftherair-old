@@ -162,6 +162,20 @@ export class NPCLoader {
     return player.sack.takeItemFromSlots(sackIndexes);
   }
 
+  putItemInPlayerHand(player: Player, itemName: string, hand: 'left'|'right' = 'right'): Promise<any> {
+    player.setHandsBusy();
+
+    return this.loadItem(itemName)
+      .then(item => {
+        if(hand === 'right') player.setRightHand(item);
+        if(hand === 'left') player.setLeftHand(item);
+
+        player.setHandsFree();
+
+        return item;
+      });
+  }
+
   getCurrentDailyDayOfYear(player: Player): number {
 
     const now = DateTime.fromObject({ zone: 'utc' });

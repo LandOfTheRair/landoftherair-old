@@ -39,14 +39,7 @@ export const responses = (npc: NPC) => {
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Christmas Top Hat');
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Enchanting Brick - Enos');
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem('Christmas Top Hat (Improved)')
-          .then(newItem => {
-            player.setRightHand(newItem);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, 'Christmas Top Hat (Improved)');
 
         return 'Thank you! My magic is slowly returning!';
       }
@@ -55,14 +48,7 @@ export const responses = (npc: NPC) => {
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Christmas Button Shield');
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Enchanting Brick - Enos');
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem('Christmas Button Shield (Improved)')
-          .then(newItem => {
-            player.setRightHand(newItem);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, 'Christmas Button Shield (Improved)');
 
         return 'Thank you! My magic is slowly returning!';
       }
@@ -71,14 +57,7 @@ export const responses = (npc: NPC) => {
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Christmas Scarf');
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Enchanting Brick - Enos');
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem('Christmas Scarf (Improved)')
-          .then(newItem => {
-            player.setRightHand(newItem);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, 'Christmas Scarf (Improved)');
 
         return 'Thank you! My magic is slowly returning!';
       }
@@ -87,14 +66,7 @@ export const responses = (npc: NPC) => {
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Christmas Candy Staff');
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Enchanting Brick - Enos');
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem('Christmas Candy Staff (Improved)')
-          .then(newItem => {
-            player.setRightHand(newItem);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, 'Christmas Candy Staff (Improved)');
 
         return 'Thank you! My magic is slowly returning!';
       }

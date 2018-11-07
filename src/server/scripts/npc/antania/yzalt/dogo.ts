@@ -43,15 +43,8 @@ export const responses = (npc: NPC) => {
         if(player.rightHand.name === CHILD_DOLL) return 'Yes, bring to me the lost child!';
         return 'Empty your right hand if you wish to embark on the search for good!';
       }
-
-      player.setHandsBusy();
-
-      npc.$$room.npcLoader.loadItem(CHILD_DOLL)
-        .then(item => {
-          player.setRightHand(item);
-
-          player.setHandsFree();
-        });
+      
+      npc.$$room.npcLoader.putItemInPlayerHand(player, CHILD_DOLL);
 
       return 'I am Dogo, the bastion of good. Bring to me a child in need. That will be your good deed.';
     });

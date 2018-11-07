@@ -29,14 +29,7 @@ export const responses = (npc: NPC) => {
         return 'Empty your right hand and I\'ll toss ya a spare blunderbuss. Hear the turkeys here don\'t take t\' much else.';
       }
 
-      player.setHandsBusy();
-
-      npc.$$room.npcLoader.loadItem('Thanksgiving Blunderbuss')
-        .then(newItem => {
-          player.setRightHand(newItem);
-
-          player.setHandsFree();
-        });
+      npc.$$room.npcLoader.putItemInPlayerHand(player, 'Thanksgiving Blunderbuss');
 
       return 'Yeah, take a blunderbuss. I hear there\'s someone who can make \'em last longer, if that\'s something you\'re into.';
     });

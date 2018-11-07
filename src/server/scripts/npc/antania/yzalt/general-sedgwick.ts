@@ -80,14 +80,7 @@ export const responses = (npc: NPC) => {
 
       if(player.rightHand) return 'Please empty your right hand.';
 
-      player.setHandsBusy();
-
-      npc.$$room.npcLoader.loadItem(RANATA_KEY)
-        .then(item => {
-          player.setRightHand(item);
-
-          player.setHandsFree();
-        });
+      npc.$$room.npcLoader.putItemInPlayerHand(player, RANATA_KEY);
 
       return `It's sad - Ranata and I go way back, but he must be stopped.
         There isn't any secret magic like I told Ergorat, but there is this key.
@@ -104,15 +97,8 @@ export const responses = (npc: NPC) => {
       }
 
       if(player.rightHand) return 'Please empty your right hand.';
-
-      player.setHandsBusy();
-
-      npc.$$room.npcLoader.loadItem(RANATA_KEY)
-        .then(item => {
-          player.setRightHand(item);
-
-          player.setHandsFree();
-        });
+      
+      npc.$$room.npcLoader.putItemInPlayerHand(player, RANATA_KEY);
 
       return `Well, I suppose it's no surprise, but at least now I'll know what happens to him.
       Down in the madhouse, no one's ever been down there but me, once, and that's when it wasn't called the madhouse.

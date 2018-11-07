@@ -102,15 +102,9 @@ export const responses = (npc: NPC) => {
         npc.$$room.npcLoader.takePlayerItem(player, BEAR_MEAT, 'left');
         npc.$$room.npcLoader.takePlayerItem(player, 'Mend Bottle', 'right');
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem('Bear Meat Antidote')
-          .then(item => {
-            item.ounces = REQUIRED_MEATS;
-            player.setRightHand(item);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, 'Bear Meat Antidote').then(item => {
+          item.ounces = REQUIRED_MEATS;
+        });
 
         return `Thanks, ${player.name}! There's a bottle of antidote for ya. And thanks for the meat, heheh.`;
       }

@@ -26,14 +26,7 @@ export const responses = (npc: NPC) => {
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, FROSTFANG_FUR);
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, YETI_CLUB);
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem(`Frostlands Royal ${player.baseClass} Gauntlets`)
-          .then(item => {
-            player.setRightHand(item);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, `Frostlands Royal ${player.baseClass} Gauntlets`);
 
         return `You have done our kingdom a great deed today. Thank you, ${player.name}!`;
       }

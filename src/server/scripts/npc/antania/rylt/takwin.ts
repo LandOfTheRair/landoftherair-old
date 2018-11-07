@@ -52,14 +52,7 @@ export const responses = (npc: NPC) => {
       if(npc.$$room.npcLoader.checkPlayerHeldItem(player, TONWIN_SWORD)) {
         npc.$$room.npcLoader.takePlayerItem(player, TONWIN_SWORD);
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem(TAKWIN_GIFT)
-          .then(item => {
-            player.setRightHand(item);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, TAKWIN_GIFT);
 
         return `Thank you, ${player.name}. Here is our family heirloom! May it protect you more than it did us!`;
       }

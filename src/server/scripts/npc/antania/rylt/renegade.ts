@@ -19,15 +19,9 @@ export const responses = (npc: NPC) => {
       if(npc.$$room.npcLoader.checkPlayerHeldItem(player, RENEGADE_BOOK)) {
         npc.$$room.npcLoader.takePlayerItem(player, RENEGADE_BOOK);
 
-        player.setHandsBusy();
-
-        npc.$$room.npcLoader.loadItem('Antanian Health Potion')
-          .then(item => {
-            item.binds = true;
-            player.setRightHand(item);
-
-            player.setHandsFree();
-          });
+        npc.$$room.npcLoader.putItemInPlayerHand(player, 'Antanian Health Potion').then(item => {
+          item.setOwner(player);
+        });
 
         return 'Well, thank you, kind adventurer. Here is your reward, as promised.';
       }

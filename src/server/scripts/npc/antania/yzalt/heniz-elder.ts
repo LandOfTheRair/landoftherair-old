@@ -49,15 +49,8 @@ export const responses = (npc: NPC) => {
           if(player.rightHand) return 'Please empty your right hand.';
 
           KillRanata.completeFor(player);
-
-          player.setHandsBusy();
-
-          npc.$$room.npcLoader.loadItem(HENIZ_HELM)
-            .then(item => {
-              player.setRightHand(item);
-
-              player.setHandsFree();
-            });
+      
+          npc.$$room.npcLoader.putItemInPlayerHand(player, HENIZ_HELM);
 
           return `I wish it didn't have to end this way, but thank you for dealing with this threat. 
           Here is the treasure of the Heniz - it will let you see in the darkest depths. 
