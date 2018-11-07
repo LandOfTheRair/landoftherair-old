@@ -14,6 +14,7 @@ export class BarNecro extends SpellEffect {
 
   maxSkillForSkillGain = 7;
   potencyMultiplier = 20;
+  private diseasePoisonResistMultiplier = 1;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
@@ -29,16 +30,20 @@ export class BarNecro extends SpellEffect {
 
     this.aoeAgro(caster, 10);
 
+    this.diseasePoisonResistMultiplier = caster.getTraitLevelAndUsageModifier('NecroticResistBoost') || 1;
+
     target.applyEffect(this);
   }
 
   effectStart(char: Character) {
     this.targetEffectMessage(char, { message: 'Your body builds a temporary resistance to the dark arts.', sfx: 'spell-buff-protection' });
     this.gainStat(char, 'necroticResist', this.potency * this.potencyMultiplier);
-    this.gainStat(char, 'poisonResist', this.potency * 2);
-    this.gainStat(char, 'diseaseResist', this.potency);
+    this.gainStat(char, 'poisonResist', this.potency * this.diseasePoisonResistMultiplier * 3);
+    this.gainStat(char, 'diseaseResist', this.potency * this.diseasePoisonResistMultiplier * 2);
 
-    this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} necrotic damage, ${this.potency * 2} poison damage, ${this.potency} disease damage.`;
+    this.iconData.tooltipDesc = `Negates ${this.potency * this.potencyMultiplier} necrotic damage, 
+      ${this.potency * this.diseasePoisonResistMultiplier * 3} poison damage, 
+      and ${this.potency * this.diseasePoisonResistMultiplier * 2} disease damage.`;
   }
 
   effectEnd(char: Character) {

@@ -254,13 +254,17 @@ const BARD_TREE = {
 
   },
 
+  NecroticResistBoost0: {
+
+  },
+
   // SKILLS
   TrueSight: {
     unlocks: ['BarNecro', 'BarFrost', 'BarFire', 'Regen']
   },
 
   BarNecro: {
-    unlocks: ['PowerwordBarNecro']
+    unlocks: ['PowerwordBarNecro', 'NecroticResistBoost0']
   },
 
   PowerwordBarNecro: {

@@ -886,6 +886,17 @@
             "Autoheal"
         ]
     },
+    "NecroticResistBoost0": {
+        "name": "NecroticResistBoost0",
+        "traitName": "NecroticResistBoost",
+        "desc": "Multiply your poison and disease resist from Bar Necro by $2|6$.",
+        "icon": "rosa-shield",
+        "cost": 3,
+        "cluster": 3,
+        "unlockedBy": [
+            "BarNecro"
+        ]
+    },
     "TrueSight": {
         "name": "TrueSight",
         "desc": "See hidden walls and other hidden features. Cost: 25 MP",
@@ -910,7 +921,8 @@
         "iconColor": "#1b390e",
         "cost": 3,
         "unlocks": [
-            "PowerwordBarNecro"
+            "PowerwordBarNecro",
+            "NecroticResistBoost0"
         ],
         "cluster": 3,
         "unlockedBy": [

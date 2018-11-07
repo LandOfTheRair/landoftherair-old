@@ -15,6 +15,7 @@ export * from './HolyAffliction';
 export * from './HolyIllumination';
 export * from './ImprovedAutoheal';
 export * from './NecroticFocus';
+export * from './NecroticResistBoost';
 export * from './PartyHealthRegeneration';
 export * from './RegenerativeRefrain';
 export * from './SearingPurification';
