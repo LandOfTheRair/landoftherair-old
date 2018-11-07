@@ -35,3 +35,5 @@ export * from './risan/Frostlands/DailyKillYetis';
 export * from './risan/Frostlands/DailyKillThermidors';
 
 export * from './gm/TestArea/TestQuest';
+
+export * from './holiday/Christmas/SantasPresents';
