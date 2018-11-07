@@ -139,6 +139,7 @@
     Hands: Medium Claws
 
   tansFor: Thanksgiving Turkey Skin
+  tanSkillRequired: 10
 
   usableSkills:
     - PoisonBiteMedium
@@ -192,6 +193,7 @@
     Hands: Medium Claws
 
   tansFor: Thanksgiving Turkey Skin
+  tanSkillRequired: 10
 
   usableSkills:
     - PoisonBiteMedium
@@ -251,6 +253,7 @@
     Hands: Medium Claws
 
   tansFor: Thanksgiving Turkey Skin
+  tanSkillRequired: 10
 
   usableSkills:
     - PoisonBiteMedium
@@ -309,6 +312,7 @@
     Hands: Medium Claws
 
   tansFor: Thanksgiving King Gobbler Skin
+  tanSkillRequired: 15
 
   usableSkills:
     - PoisonBiteMedium
