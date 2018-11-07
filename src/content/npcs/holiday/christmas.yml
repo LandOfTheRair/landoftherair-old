@@ -64,6 +64,16 @@
 
   gear:
     Hands: Medium Claws
+    Head:
+      - result: none
+        chance: 500
+      - result: Christmas Top Hat
+        chance: 1
+    Neck:
+      - result: none
+        chance: 500
+      - result: Christmas Scarf
+        chance: 1
 
   rightHand:
     - result: none
@@ -78,7 +88,13 @@
       chance: 1
 
   copyDrops:
+    - drop: 'rightHand'
+      chance: -1
     - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Neck'
       chance: -1
 
   usableSkills:
@@ -124,6 +140,38 @@
 
   gear:
     Hands: Medium Claws
+    Head:
+      - result: none
+        chance: 500
+      - result: Christmas Top Hat
+        chance: 1
+    Neck:
+      - result: none
+        chance: 500
+      - result: Christmas Scarf
+        chance: 1
+
+  rightHand:
+    - result: none
+      chance: 500
+    - result: Christmas Candy Staff
+      chance: 1
+
+  leftHand:
+    - result: none
+      chance: 500
+    - result: Christmas Button Shield
+      chance: 1
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+    - drop: 'gear.Head'
+      chance: -1
+    - drop: 'gear.Neck'
+      chance: -1
 
   usableSkills:
     - Hail
@@ -171,6 +219,48 @@
 
   gear:
     Hands: Medium Claws
+
+  rightHand: Christmas Candy Staff
+  leftHand: Christmas Button Shield
+
+  copyDrops:
+    - drop: 'rightHand'
+      chance: -1
+    - drop: 'leftHand'
+      chance: -1
+
+  dropPool:
+    replace: true
+    choose:
+      min: 1
+      max: 2
+    items:
+      - result: Christmas Coal
+        chance: 300
+      - result: Christmas Carrot
+        chance: 300
+      - result: Christmas Walnuts
+        chance: 300
+      - result: Christmas Button Shield
+        chance: 50
+      - result: Christmas Scarf
+        chance: 50
+      - result: Christmas Top Hat
+        chance: 50
+      - result: Christmas Pipe
+        chance: 50
+      - result: Christmas Gem
+        chance: 25
+      - result: Christmas Button Shield (Improved)
+        chance: 1
+      - result: Christmas Scarf (Improved)
+        chance: 1
+      - result: Christmas Top Hat (Improved)
+        chance: 1
+      - result: Christmas Pipe (Improved)
+        chance: 1
+      - result: Christmas Snowglobe
+        chance: 1
 
   usableSkills:
     - Hail
@@ -231,6 +321,11 @@
   gear:
     Hands: Medium Claws
 
+  drops:
+    - result: Christmas Coal
+      chance: 1
+      maxChance: 50
+
   usableSkills:
     - PoisonBiteWeak
 
@@ -279,6 +374,11 @@
   gear:
     Armor: Christmas Reindeer Skin
     Hands: Medium Claws
+
+  drops:
+    - result: Christmas Coal
+      chance: 1
+      maxChance: 30
 
   tansFor: Christmas Reindeer Skin
   tanSkillRequired: 15

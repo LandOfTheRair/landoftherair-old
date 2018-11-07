@@ -3,6 +3,14 @@
   chance: 1
   maxChance: 50
 
+- result: Christmas Carrot
+  chance: 1
+  maxChance: 1000
+
+- result: Christmas Snowglobe
+  chance: 1
+  maxChance: 50000
+
 - result: Cosmetic Scroll - Snowflake Joy
   chance: 1
   maxChance: 50000
