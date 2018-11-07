@@ -617,7 +617,7 @@
 
   otherStats:
     stealth: 150
-    perception: 350
+    perception: 275
     offense: 50
     accuracy: 50
     armorClass: 40
@@ -767,7 +767,7 @@
 
   otherStats:
     stealth: 150
-    perception: 350
+    perception: 250
     offense: 50
     accuracy: 50
     armorClass: 40

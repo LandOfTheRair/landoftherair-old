@@ -576,7 +576,7 @@
     stealth: 75
     offense: 20
     accuracy: 20
-    perception: 225
+    perception: 175
     armorClass: 25
     defense: 25
     damageFactor: 0.2
@@ -714,7 +714,7 @@
     stealth: 75
     offense: 20
     accuracy: 20
-    perception: 225
+    perception: 150
     armorClass: 25
     defense: 25
     damageFactor: 0.2
