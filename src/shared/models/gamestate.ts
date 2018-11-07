@@ -14,6 +14,7 @@ import { LootHelper } from '../../server/helpers/world/loot-helper';
 import { QuadtreeHelper } from '../../server/helpers/world/quadtree-helper';
 import { Swimming } from '../../server/effects/special/Swimming';
 import { IGameState, TilesWithNoFOVUpdate } from '../interfaces/gamestate';
+import { StatName, Stats } from '../interfaces/character';
 
 export class GameState implements IGameState {
 
@@ -70,6 +71,9 @@ export class GameState implements IGameState {
 
   @nonenumerable
   private opaqueHash: any = {};
+
+  @nonenumerable
+  private roomStats: Stats = {};
 
   get formattedMap() {
     const map = cloneDeep(this.map);
@@ -911,5 +915,13 @@ export class GameState implements IGameState {
 
       }
     }
+  }
+
+  public setRoomStats(stats: any) {
+    this.roomStats = stats;
+  }
+
+  public getRoomStats() {
+    return this.roomStats || {};
   }
 }

@@ -596,4 +596,9 @@ export class Spawner {
     return true;
   }
 
+  public recalculateAllStats() {
+    this.npcs.forEach(npc => npc.recalculateStats());
+    this.despawnedNPCs.forEach(npc => npc.recalculateStats());
+  }
+
 }

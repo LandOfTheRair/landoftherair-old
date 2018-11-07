@@ -326,4 +326,15 @@ export class NPC extends Character implements INPC {
 
     return get(this, ['traitLevels', trait], 0);
   }
+
+  recalculateStats() {
+    super.recalculateStats();
+
+    if(!this.$$room) return;
+    const roomStats = this.$$room.state.getRoomStats();
+    Object.keys(roomStats).forEach(stat => {
+      this.totalStats[stat] = this.totalStats[stat] || 0;
+      this.totalStats[stat] += roomStats[stat];
+    });
+  }
 }

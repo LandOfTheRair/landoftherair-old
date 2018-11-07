@@ -1,4 +1,4 @@
-import { ICharacter, INPC, IPlayer } from './character';
+import { ICharacter, INPC, IPlayer, StatName } from './character';
 import { IItem } from './item';
 
 export enum TilesWithNoFOVUpdate {
@@ -93,4 +93,7 @@ export interface IGameState {
   serializableGroundItems(): any;
   getGroundItems(x: number, y: number): any;
   findChest(x: number, y: number): any;
+
+  setRoomStats(stats: any): void;
+  getRoomStats(): any;
 }
