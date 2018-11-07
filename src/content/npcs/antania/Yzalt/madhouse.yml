@@ -589,16 +589,16 @@
       chance: -1
 
   sack:
-    - result: Risan HolyFire Thief Trap
+    - result: Enemy Medium HolyFire Thief Trap
       chance: 10
       maxChance: 100
-    - result: Risan MagicBolt Thief Trap
+    - result: Enemy Medium MagicBolt Thief Trap
       chance: 10
       maxChance: 100
-    - result: Risan Distraction Thief Trap
+    - result: Enemy Medium Distraction Thief Trap
       chance: 10
       maxChance: 100
-    - result: Risan Haste Thief Trap
+    - result: Enemy Medium Haste Thief Trap
       chance: 10
       maxChance: 100
 

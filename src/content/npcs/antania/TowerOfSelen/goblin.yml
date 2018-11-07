@@ -173,19 +173,19 @@
     - Transmute
 
   sack:
-    - result: Antanian FireMist Thief Trap
+    - result: Enemy Weak FireMist Thief Trap
       chance: 10
       maxChance: 100
-    - result: Antanian IceMist Thief Trap
+    - result: Enemy Weak IceMist Thief Trap
       chance: 10
       maxChance: 100
-    - result: Antanian Poison Thief Trap
+    - result: Enemy Weak Poison Thief Trap
       chance: 10
       maxChance: 100
-    - result: Antanian MagicMissile Thief Trap
+    - result: Enemy Weak MagicMissile Thief Trap
       chance: 10
       maxChance: 100
-    - result: Antanian Afflict Thief Trap
+    - result: Enemy Weak Afflict Thief Trap
       chance: 10
       maxChance: 100
 

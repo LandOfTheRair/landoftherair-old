@@ -1,0 +1,178 @@
+- name: Enemy Weak FireMist Thief Trap
+  sprite: 1024
+  desc: "a trap imbued with the spell Fire Mist"
+  effect:
+    name: FireMist
+    potency: 5
+  value: 1500
+
+- name: Enemy Weak IceMist Thief Trap
+  sprite: 1027
+  desc: "a trap imbued with the spell Ice Mist"
+  effect:
+    name: IceMist
+    potency: 5
+  value: 1500
+
+- name: Enemy Weak Poison Thief Trap
+  sprite: 1028
+  desc: "a trap imbued with the spell Poison"
+  effect:
+    name: Poison
+    potency: 5
+  value: 1000
+
+- name: Enemy Weak Afflict Thief Trap
+  sprite: 1025
+  desc: "a trap imbued with the spell Afflict"
+  effect:
+    name: Afflict
+    potency: 5
+  value: 1000
+
+- name: Enemy Weak MagicMissile Thief Trap
+  sprite: 1025
+  desc: "a trap imbued with the spell Magic Missile"
+  effect:
+    name: MagicMissile
+    potency: 5
+  value: 1000
+
+- name: Enemy Weak Distraction Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Distraction"
+  effect:
+    name: Distraction
+    potency: 10
+  value: 1500
+
+- name: Enemy Weak Darkness Thief Trap
+  sprite: 1025
+  desc: "a trap imbued with the spell Darkness"
+  effect:
+    name: Darkness
+    potency: 15
+  value: 2000
+
+- name: Enemy Weak Snare Thief Trap
+  sprite: 1028
+  desc: "a trap imbued with the spell Snare"
+  effect:
+    name: Snare
+    potency: 10
+  value: 2000
+
+- name: Enemy Weak Stun Thief Trap
+  sprite: 1028
+  desc: "a trap imbued with the spell Stun"
+  effect:
+    name: Stun
+    potency: 10
+  value: 2000
+
+- name: Enemy Weak Blind Thief Trap
+  sprite: 1028
+  desc: "a trap imbued with the spell Blind"
+  effect:
+    name: Blind
+    potency: 10
+  value: 2000
+
+- name: Enemy Medium FireMist Thief Trap
+  sprite: 1024
+  desc: "a trap imbued with the spell Fire Mist"
+  effect:
+    uses: 3
+    name: FireMist
+    potency: 10
+  value: 3500
+
+- name: Enemy Medium IceMist Thief Trap
+  sprite: 1027
+  desc: "a trap imbued with the spell Ice Mist"
+  effect:
+    uses: 3
+    name: IceMist
+    potency: 10
+  value: 3500
+
+- name: Enemy Medium Poison Thief Trap
+  sprite: 1028
+  desc: "a trap imbued with the spell Poison"
+  effect:
+    uses: 3
+    name: Poison
+    potency: 15
+  value: 3000
+
+- name: Enemy Medium HolyFire Thief Trap
+  sprite: 1025
+  desc: "a trap imbued with the spell Holy Fire"
+  effect:
+    uses: 3
+    name: HolyFire
+    potency: 10
+  value: 3000
+
+- name: Enemy Medium MagicBolt Thief Trap
+  sprite: 1025
+  desc: "a trap imbued with the spell Magic Bolt"
+  effect:
+    uses: 3
+    name: MagicBolt
+    potency: 10
+  value: 3000
+
+- name: Enemy Medium Distraction Thief Trap
+  sprite: 334
+  desc: "a trap imbued with the spell Distraction"
+  effect:
+    uses: 3
+    name: Distraction
+    potency: 30
+  value: 3500
+
+- name: Enemy Medium Darkness Thief Trap
+  sprite: 1025
+  desc: "a trap imbued with the spell Darkness"
+  effect:
+    uses: 3
+    name: Darkness
+    potency: 35
+  value: 4000
+
+- name: Enemy Medium Snare Thief Trap
+  sprite: 1028
+  desc: "a trap imbued with the spell Snare"
+  effect:
+    uses: 3
+    name: Snare
+    potency: 20
+  value: 4000
+
+- name: Enemy Medium Stun Thief Trap
+  sprite: 1028
+  desc: "a trap imbued with the spell Stun"
+  effect:
+    uses: 3
+    name: Stun
+    potency: 20
+  value: 4000
+
+- name: Enemy Medium Blind Thief Trap
+  sprite: 1028
+  desc: "a trap imbued with the spell Blind"
+  effect:
+    uses: 3
+    name: Blind
+    potency: 20
+  value: 4000
+
+- name: Enemy Medium Dispel Thief Trap
+  sprite: 1028
+  desc: "a trap imbued with the spell Dispel"
+  effect:
+    uses: 5
+    name: Dispel
+    potency: 30
+  value: 4000

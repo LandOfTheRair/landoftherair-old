@@ -114,7 +114,6 @@
     uses: 3
     name: Blind
     potency: 35
-    levelRequirement: 3
     levelRequirement: 15
     skillRequirement: 15
   value: 4000
