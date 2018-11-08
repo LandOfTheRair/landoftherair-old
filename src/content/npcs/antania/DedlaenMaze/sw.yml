@@ -282,7 +282,7 @@
           isPermanent: true
     - name: NecroticAura
       effectData:
-        potency: 10
+        potency: 8
         effectInfo:
           isPermanent: true
 

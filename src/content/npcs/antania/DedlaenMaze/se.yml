@@ -76,7 +76,7 @@
   hostility: OnHit
   baseClass: Mage
   sprite: 430
-  stats: 15
+  stats: 20
   skillLevels: 7
   level: 20
 
@@ -121,7 +121,7 @@
     - DarkVision
     - Absorption
     - ChillBiteMedium
-    - Poison
+    - Disease
 
   drops:
     - result: Dedlaen Naga Key
