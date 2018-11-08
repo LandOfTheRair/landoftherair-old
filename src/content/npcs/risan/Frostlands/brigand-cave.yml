@@ -8,11 +8,12 @@
   baseClass: Warrior
   hostility: Always
   stats: 22
-  skillLevels: 10
+  skillLevels: 8
   level: 27
 
   otherStats:
     perception: 200
+    damageFactor: 0.7
 
   rightHand:
     - Frostlands Brigand Axe
@@ -107,6 +108,7 @@
 
   otherStats:
     perception: 200
+    damageFactor: 0.7
 
   rightHand: Frostlands Brigand Staff
 
@@ -200,6 +202,7 @@
 
   otherStats:
     perception: 200
+    damageFactor: 0.7
 
   rightHand: Frostlands Brigand Flail
 
@@ -301,13 +304,14 @@
   alignment: Evil
   baseClass: Thief
   hostility: Always
-  stats: 22
+  stats: 18
   skillLevels: 11
   level: 27
 
   otherStats:
     stealth: 50
     perception: 200
+    damageFactor: 0.5
 
   rightHand:
     - result: Frostlands Brigand Dagger
@@ -443,6 +447,7 @@
 
   otherStats:
     perception: 200
+    damageFactor: 0.7
 
   rightHand:
     - result: Frostlands Shield
@@ -532,6 +537,7 @@
 
   otherStats:
     perception: 200
+    damageFactor: 0.7
 
   leftHand:
     - result: none

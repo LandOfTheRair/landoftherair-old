@@ -10,7 +10,7 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 export class IceMist extends SpellEffect {
 
   maxSkillForSkillGain = 15;
-  skillMults = [[0, 2], [6, 2.25], [11, 2.5], [16, 2.75], [21, 3]];
+  skillMults = [[0, 2.5], [6, 3], [11, 3.5], [16, 4], [21, 4.5]];
 
   private range: number;
 

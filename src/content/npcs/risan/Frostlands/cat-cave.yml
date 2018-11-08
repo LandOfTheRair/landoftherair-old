@@ -14,6 +14,7 @@
     armorClass: 50
     defense: 15
     perception: 150
+    damageFactor: 0.5
 
   gear:
     Armor: Frostlands Sabretooth Robe
@@ -92,6 +93,7 @@
     offense: 10
     defense: 15
     perception: 150
+    damageFactor: 0.5
 
   gear:
     Armor: Frostlands Frostfang Robe

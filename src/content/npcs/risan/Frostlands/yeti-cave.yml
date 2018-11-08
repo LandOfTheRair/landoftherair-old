@@ -14,6 +14,8 @@
     armorClass: 40
     defense: 10
     perception: 150
+    accuracy: 5
+    damageFactor: 0.5
 
   rightHand:
     - result: Frostlands Yeti Club
@@ -96,6 +98,8 @@
     armorClass: 50
     defense: 15
     perception: 150
+    accuracy: 5
+    damageFactor: 0.5
 
   rightHand:
     - result: Frostlands Yeti Club
@@ -178,6 +182,7 @@
     offense: 10
     defense: 10
     move: 2
+    damageFactor: 0.3
 
   skillOnKill: 35
 
@@ -241,9 +246,8 @@
   level: 35
 
   otherStats:
-    int: 20
     armorClass: 65
-    offense: 15
+    offense: 25
     defense: 10
     perception: 150
 

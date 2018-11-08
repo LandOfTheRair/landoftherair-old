@@ -13,6 +13,7 @@
 
   otherStats:
     perception: 100
+    damageFactor: 0.5
 
   gear:
     Armor: Crazed Beast Fur

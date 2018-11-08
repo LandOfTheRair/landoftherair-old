@@ -15,6 +15,7 @@
     defense: 50
     armorClass: 40
     perception: 100
+    damageFactor: 0.5
 
   gear:
     Hands: Mines Animal Claws

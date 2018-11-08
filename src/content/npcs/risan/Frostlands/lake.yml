@@ -16,6 +16,7 @@
     defense: 30
     offense: 15
     waterResist: 5000
+    damageFactor: 0.5
 
   rightHand:
     - result: Risan Halberd
