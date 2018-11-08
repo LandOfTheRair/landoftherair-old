@@ -177,6 +177,10 @@ class ItemLoader {
       item.ounces = isNumber(item.ounces) ? item.ounces : 1;
     }
 
+    if(item.itemClass === 'Trap') {
+      item.trapUses = item.trapUses || 1;
+    }
+
     item.type = capitalize(item.type);
     if(item.secondaryType) item.secondaryType = capitalize(item.secondaryType);
   }
