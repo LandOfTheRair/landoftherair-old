@@ -175,10 +175,10 @@
   monsterClass: Humanoid
   hostility: Always
   sprite: 550
-  stats: 19
-  skillLevels: 5
+  stats: 25
+  skillLevels: 7
 
-  level: 17
+  level: 25
 
   skillOnKill: 55
 
@@ -187,8 +187,8 @@
     max: 3350
 
   hp:
-    min: 92500
-    max: 92600
+    min: 122500
+    max: 122600
 
   mp:
     min: 12300
@@ -306,10 +306,10 @@
   hostility: Always
   sprite: 545
   baseClass: Mage
-  stats: 19
-  skillLevels: 5
+  stats: 25
+  skillLevels: 7
 
-  level: 17
+  level: 25
 
   skillOnKill: 55
 
@@ -318,8 +318,8 @@
     max: 3350
 
   hp:
-    min: 92500
-    max: 92600
+    min: 122500
+    max: 122600
 
   mp:
     min: 12300
@@ -446,10 +446,10 @@
   sprite: 585
   alignment: Evil
   baseClass: Thief
-  stats: 19
-  skillLevels: 5
+  stats: 25
+  skillLevels: 7
 
-  level: 17
+  level: 25
 
   skillOnKill: 55
 
@@ -458,8 +458,8 @@
     max: 3350
 
   hp:
-    min: 92500
-    max: 92600
+    min: 122500
+    max: 122600
 
   mp:
     min: 12300
@@ -608,10 +608,10 @@
   hostility: Always
   sprite: 590
   baseClass: Warrior
-  stats: 19
-  skillLevels: 5
+  stats: 25
+  skillLevels: 7
 
-  level: 17
+  level: 25
 
   skillOnKill: 55
 
@@ -620,8 +620,8 @@
     max: 3350
 
   hp:
-    min: 92500
-    max: 92600
+    min: 142500
+    max: 142600
 
   mp:
     min: 12300
