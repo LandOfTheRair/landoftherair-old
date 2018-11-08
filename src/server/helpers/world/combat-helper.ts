@@ -813,34 +813,37 @@ export class CombatHelper {
 
     if(isThrow) this.resolveThrow(attacker, defender, throwHand, attackerWeapon);
 
-    let didEffect = false;
 
+    // try to do ammo effect
     if(attackerWeapon.canShoot && attacker.leftHand && attacker.leftHand.shots) {
       const encrustEffectAmmo = get(attacker.leftHand, 'encrust.stats.effect', null);
 
       // encrusted effect takes priority if it exists
       if(encrustEffectAmmo && !encrustEffectAmmo.autocast) {
-        didEffect = this.tryApplyEffect(attacker, defender, encrustEffectAmmo, attacker.leftHand);
+        this.tryApplyEffect(attacker, defender, encrustEffectAmmo, attacker.leftHand);
 
-      } else if(attacker.leftHand.effect && !attacker.leftHand.effect.autocast) {
+      }
+
+      if(attacker.leftHand.effect && !attacker.leftHand.effect.autocast) {
         const effect = cloneDeep(attacker.leftHand.effect);
         effect.potency += attackerScope.skill;
-        didEffect = this.tryApplyEffect(attacker, defender, effect, attacker.leftHand);
+        this.tryApplyEffect(attacker, defender, effect, attacker.leftHand);
       }
     }
 
-    if(!didEffect) {
-      const encrustEffect = get(attackerWeapon, 'encrust.stats.effect', null);
+    // then try to do encrust effect
+    const encrustEffect = get(attackerWeapon, 'encrust.stats.effect', null);
 
-      // encrusted effect takes priority if it exists
-      if(encrustEffect && !encrustEffect.autocast) {
-        this.tryApplyEffect(attacker, defender, encrustEffect, attackerWeapon);
+    // encrusted effect takes priority if it exists
+    if(encrustEffect && !encrustEffect.autocast) {
+      this.tryApplyEffect(attacker, defender, encrustEffect, attackerWeapon);
 
-      } else if(attackerWeapon.effect && !attackerWeapon.effect.autocast) {
-        const effect = cloneDeep(attackerWeapon.effect);
-        effect.potency += attackerScope.skill;
-        this.tryApplyEffect(attacker, defender, effect, attackerWeapon);
-      }
+    }
+
+    if(attackerWeapon.effect && !attackerWeapon.effect.autocast) {
+      const effect = cloneDeep(attackerWeapon.effect);
+      effect.potency += attackerScope.skill;
+      this.tryApplyEffect(attacker, defender, effect, attackerWeapon);
     }
 
     if(damage <= 0) {
