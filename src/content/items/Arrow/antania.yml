@@ -2,7 +2,7 @@
   stats:
     accuracy: 1
   tier: 1
-  shots: 250
+  shots: 2500
   sprite: 202
   desc: "a large handful of copper-tipped arrows"
   value: 100
@@ -11,7 +11,7 @@
   stats:
     accuracy: 1
   tier: 1
-  shots: 100
+  shots: 1000
   effect:
     name: Poison
     potency: 10
@@ -24,7 +24,7 @@
   stats:
     accuracy: 1
   tier: 1
-  shots: 100
+  shots: 1000
   effect:
     name: Darkness
     potency: 10
