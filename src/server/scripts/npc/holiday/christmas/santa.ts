@@ -25,62 +25,27 @@ export const responses = (npc: NPC) => {
 
     // 5: carrot
     if(gifts >= 5 && gifts - num < 5) {
-      player.setHandsBusy();
-
-      npc.$$room.npcLoader.loadItem('Christmas Carrot')
-        .then(newItem => {
-          player.setRightHand(newItem);
-
-          player.setHandsFree();
-        });
+      npc.$$room.npcLoader.putItemInPlayerHand(player, 'Christmas Carrot');
     }
 
     // 50: gem
     if(gifts >= 50 && gifts - num < 50) {
-      player.setHandsBusy();
-
-      npc.$$room.npcLoader.loadItem('Christmas Gem')
-        .then(newItem => {
-          player.setRightHand(newItem);
-
-          player.setHandsFree();
-        });
+      npc.$$room.npcLoader.putItemInPlayerHand(player, 'Christmas Gem');
     }
 
     // 150: coal
     if(gifts >= 150 && gifts - num < 150) {
-      player.setHandsBusy();
-
-      npc.$$room.npcLoader.loadItem('Christmas Coal')
-        .then(newItem => {
-          player.setRightHand(newItem);
-
-          player.setHandsFree();
-        });
+      npc.$$room.npcLoader.putItemInPlayerHand(player, 'Christmas Coal');
     }
 
     // 250: wil pot
     if(gifts >= 250 && gifts - num < 250) {
-      player.setHandsBusy();
-
-      npc.$$room.npcLoader.loadItem('Antanian Willpower Potion')
-        .then(newItem => {
-          player.setRightHand(newItem);
-
-          player.setHandsFree();
-        });
+      npc.$$room.npcLoader.putItemInPlayerHand(player, 'Antanian Willpower Potion');
     }
 
     // 500: snowglobe
     if(gifts >= 500 && gifts - num < 500) {
-      player.setHandsBusy();
-
-      npc.$$room.npcLoader.loadItem('Christmas Snowglobe')
-        .then(newItem => {
-          player.setRightHand(newItem);
-
-          player.setHandsFree();
-        });
+      npc.$$room.npcLoader.putItemInPlayerHand(player, 'Christmas Snowglobe');
     }
 
     if(SantasPresents.isComplete(player)) {
