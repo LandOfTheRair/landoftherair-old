@@ -374,12 +374,14 @@ export class ItemComponent implements OnDestroy {
   }
 
   updateWithDesc() {
+    this.colyseusGame.colyseus.debugGameLogMessage({ action: 'ADD', HOVER_INFO: this.descText, item: this.item }, 'incoming');
     if(!this.item || !this.showDesc) return;
 
     this.colyseusGame.updateCurrentItemDesc(this.descText);
   }
 
   removeDesc() {
+    this.colyseusGame.colyseus.debugGameLogMessage({ action: 'REMOVE', HOVER_INFO: this.descText, item: this.item, del: new Error().stack }, 'incoming');
     this.colyseusGame.updateCurrentItemDesc('');
   }
 
