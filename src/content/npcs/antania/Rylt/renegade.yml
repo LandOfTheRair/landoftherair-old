@@ -15,6 +15,8 @@
   otherStats:
     fireResist: 70
     perception: 80
+    damageFactor: 0.5
+    accuracy: -5
 
   gold:
     min: 100
@@ -134,6 +136,8 @@
   otherStats:
     fireResist: 70
     perception: 80
+    damageFactor: 0.5
+    accuracy: -5
 
   gold:
     min: 150
@@ -190,6 +194,8 @@
   otherStats:
     fireResist: 70
     perception: 80
+    damageFactor: 0.5
+    accuracy: -5
 
   gold:
     min: 150
@@ -246,6 +252,8 @@
   otherStats:
     fireResist: 70
     perception: 100
+    damageFactor: 0.5
+    accuracy: -5
 
   gold:
     min: 500
@@ -326,6 +334,8 @@
     con: 20
     fireResist: 70
     perception: 150
+    damageFactor: 0.5
+    accuracy: -15
 
   skillOnKill: 50
 

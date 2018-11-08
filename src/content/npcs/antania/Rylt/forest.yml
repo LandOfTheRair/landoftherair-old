@@ -11,6 +11,10 @@
     Martial: 2
   level: 2
 
+  otherStats:
+    damageFactor: 0.7
+    accuracy: -5
+
   gear:
     Armor: Deer Robe
     Hands: Basic Claws
@@ -50,6 +54,8 @@
 
   otherStats:
     perception: 20
+    damageFactor: 0.5
+    accuracy: -10
 
   skillOnKill: 25
 
@@ -103,6 +109,8 @@
 
   otherStats:
     perception: 15
+    damageFactor: 0.5
+    accuracy: -5
 
   skillOnKill: 4
 
@@ -152,6 +160,8 @@
 
   otherStats:
     perception: 15
+    damageFactor: 0.5
+    accuracy: -5
 
   skillOnKill: 5
 
@@ -204,6 +214,8 @@
 
   otherStats:
     perception: 75
+    damageFactor: 0.5
+    accuracy: -15
 
   skillOnKill: 25
 

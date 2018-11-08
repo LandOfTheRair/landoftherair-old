@@ -15,6 +15,8 @@
   otherStats:
     con: 7
     perception: 80
+    damageFactor: 0.5
+    accuracy: -5
 
   gold:
     min: 30
@@ -120,6 +122,8 @@
   otherStats:
     con: 7
     perception: 80
+    damageFactor: 0.5
+    accuracy: -5
 
   skillOnKill: 20
 
@@ -169,6 +173,8 @@
 
   otherStats:
     perception: 110
+    damageFactor: 0.5
+    accuracy: -10
 
   gold:
     min: 100
@@ -267,6 +273,8 @@
 
   otherStats:
     perception: 115
+    damageFactor: 0.5
+    accuracy: -10
 
   gold:
     min: 150
@@ -369,6 +377,8 @@
   otherStats:
     stealth: 30
     perception: 120
+    damageFactor: 0.5
+    accuracy: -10
 
   skillLevels: 2
 
@@ -476,6 +486,8 @@
 
   otherStats:
     perception: 120
+    damageFactor: 0.5
+    accuracy: -10
 
   gold:
     min: 150
@@ -529,6 +541,8 @@
 
   otherStats:
     perception: 120
+    damageFactor: 0.5
+    accuracy: -10
 
   level: 4
   skillOnKill: 7
@@ -584,6 +598,8 @@
     con: 20
     stealth: 20
     perception: 250
+    damageFactor: 0.5
+    accuracy: -5
 
   level: 13
   skillOnKill: 100

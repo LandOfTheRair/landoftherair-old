@@ -14,6 +14,8 @@
   otherStats:
     con: 7
     perception: 80
+    damageFactor: 0.8
+    accuracy: -5
 
   gold:
     min: 40
@@ -244,6 +246,7 @@
   otherStats:
     con: 15
     perception: 100
+    damageFactor: 0.6
 
   skillOnKill: 25
 
