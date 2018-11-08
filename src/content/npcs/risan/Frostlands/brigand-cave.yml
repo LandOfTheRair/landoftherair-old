@@ -401,7 +401,7 @@
     - result: Enemy Medium Poison Thief Trap
       chance: 5
       maxChance: 100
-    - result: Enemy Medium Medium MagicBolt Thief Trap
+    - result: Enemy Medium MagicBolt Thief Trap
       chance: 5
       maxChance: 100
     - result: Enemy Medium HolyFire Thief Trap
