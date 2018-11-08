@@ -252,7 +252,7 @@ export class Player extends Character implements IPlayer {
 
         const item = get(this, slot);
 
-        if(!item || item.itemClass === 'Trap') return false;
+        if(!item || item.itemClass === 'Trap' || item.itemClass === 'Arrow') return false;
 
         if(item.castAndTryBreak()) {
           this.sendClientMessage('Your item has fizzled and turned to dust.');

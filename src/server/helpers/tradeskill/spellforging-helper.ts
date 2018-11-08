@@ -138,6 +138,7 @@ export class SpellforgingHelper {
 
     if(includes(reagent.name, 'Runewritten Scroll')) {
       item.effect = clone(reagent.effect);
+      delete item.effect.uses;
       item.effect.chance = Math.min(100, player.calcSkillLevel(SkillClassNames.Spellforging) * 2);
       container.result = item;
       container.clearReagents();
