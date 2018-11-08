@@ -13,6 +13,8 @@
 
   otherStats:
     perception: 100
+    damageFactor: 0.3
+    accuracy: 7
 
   gear:
     Armor: Crazed Deer Robe
@@ -76,6 +78,8 @@
 
   otherStats:
     perception: 100
+    damageFactor: 0.3
+    accuracy: 7
 
   gear:
     Armor: Crazed Beast Fur
@@ -145,6 +149,8 @@
   otherStats:
     armorClass: 10
     perception: 100
+    damageFactor: 0.3
+    accuracy: 7
 
   gear:
     Armor: Crazed Bear Fur
@@ -277,7 +283,9 @@
   level: 18
 
   otherStats:
+    dex: 8
     perception: 150
+    damageFactor: 0.8
 
   rightHand:
     - result: Risan Mines Spirit Shortsword
@@ -379,8 +387,10 @@
   level: 20
 
   otherStats:
-    accuracy: -3
+    dex: 8
+    accuracy: 5
     perception: 150
+    damageFactor: 0.7
 
   rightHand:
     - result: Risan Mines Spirit Shortsword
