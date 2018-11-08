@@ -88,6 +88,8 @@ EarClasses.forEach(t => EquipHash[t] = 'Ear');
 
 export const GivesBonusInHandItemClasses = WeaponClasses.concat(NeckClasses).concat(AmmoClasses);
 
+export const CanUseEffectItemClasses = WeaponClasses.concat(HandsClasses).concat(AmmoClasses);
+
 export const EquippableItemClasses = HeadClasses
   .concat(NeckClasses)
   .concat(WaistClasses)

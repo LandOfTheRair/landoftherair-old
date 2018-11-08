@@ -12,7 +12,7 @@ import { BuildupEffect } from '../../base/Effect';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 import { MessageHelper } from './message-helper';
 import { SkillClassNames, StatName } from '../../../shared/interfaces/character';
-import { AmmoClasses, DamageType, HandsClasses, ItemEffect, ShieldClasses, WeaponClasses } from '../../../shared/interfaces/item';
+import { CanUseEffectItemClasses, DamageType, HandsClasses, ItemEffect, ShieldClasses, WeaponClasses } from '../../../shared/interfaces/item';
 
 export const BaseItemStatsPerTier = {
   Arrow:                { base: 1, min: 0, max: 2, weakChance: 25, damageBonus: 10 },
@@ -872,7 +872,7 @@ export class CombatHelper {
   static tryApplyEffect(attacker: Character, defender: Character, effect: ItemEffect, source?: Item): boolean {
 
     // non-weapons (like bottles) can't trigger effects
-    if(source && !includes(WeaponClasses.concat(HandsClasses).concat(AmmoClasses), source.itemClass)) return false;
+    if(source && !includes(CanUseEffectItemClasses, source.itemClass)) return false;
 
     const applyEffect = Effects[effect.name];
     if(!applyEffect) return false;
