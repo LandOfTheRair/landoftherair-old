@@ -33,6 +33,8 @@
     armorClass: 2
     defense: 1
     hpregen: 3
+    poisonResist: 30
+    diseaseResist: 15
   desc: "a woolen cloak stained green from the nearby fungus growing on it"
   value: 679
   sprite: 16

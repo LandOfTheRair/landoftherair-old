@@ -36,6 +36,8 @@
     defense: 2
     offense: 1
     hpregen: 3
+    poisonResist: 50
+    diseaseResist: 25
   desc: "a ringmail tunic stained green from the nearby fungus growing on it"
   value: 845
   sprite: 9

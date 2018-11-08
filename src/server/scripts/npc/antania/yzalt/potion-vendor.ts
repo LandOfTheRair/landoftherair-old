@@ -18,7 +18,9 @@ export const setup = async (npc: NPC) => {
     'Antanian Bottle of Water',
     'Antanian Pint of Water',
     'Empty Bottle',
-    'Bradley Constitution Potion'
+    'Bradley Constitution Potion',
+    'BarFire Ring',
+    'BarFrost Ring'
   ];
 
   npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);

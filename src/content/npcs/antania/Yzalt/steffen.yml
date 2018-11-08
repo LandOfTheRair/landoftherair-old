@@ -176,6 +176,7 @@
   stats: 9
   otherStats:
     perception: 90
+    damageFactor: 0.5
   skillLevels: 2
 
   level: 10
@@ -272,6 +273,7 @@
   stats: 9
   otherStats:
     perception: 90
+    damageFactor: 0.5
   skillLevels:
     Mace: 2
     Restoration: 3
@@ -365,6 +367,7 @@
   stats: 13
   otherStats:
     perception: 90
+    damageFactor: 0.5
   skillLevels: 3
 
   level: 13
@@ -461,6 +464,7 @@
   stats: 15
   otherStats:
     perception: 90
+    damageFactor: 0.5
   skillLevels: 3
 
   level: 13

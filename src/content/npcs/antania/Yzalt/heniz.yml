@@ -164,6 +164,7 @@
     iceResist: 100
     perception: 90
     stealth: 40
+    damageFactor: 0.5
 
   gold:
     min: 50
@@ -260,6 +261,7 @@
     fireResist: 100
     iceResist: 100
     perception: 90
+    damageFactor: 0.5
 
   level: 10
 
@@ -365,6 +367,7 @@
     fireResist: 100
     iceResist: 100
     perception: 90
+    damageFactor: 0.5
 
   gold:
     min: 50
@@ -464,6 +467,7 @@
     fireResist: 100
     iceResist: 100
     perception: 90
+    damageFactor: 0.5
 
   level: 13
 

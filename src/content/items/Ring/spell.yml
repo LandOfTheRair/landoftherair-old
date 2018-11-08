@@ -9,8 +9,8 @@
     potency: 1
 
 - name: Transmute Ring
-  sprite: 239
-  desc: "a silver ring set with a blue coin"
+  sprite: 1030
+  desc: "a silver ring set with a gold coin"
   value: 100
   effect:
     name: Transmute
@@ -18,8 +18,8 @@
     potency: 10
 
 - name: Succor Ring
-  sprite: 239
-  desc: "a silver ring set with ancient blue wood"
+  sprite: 1030
+  desc: "a silver ring set with ancient orange wood"
   value: 100
   effect:
     name: Succor
@@ -27,8 +27,8 @@
     potency: 1
 
 - name: DarkVision Ring
-  sprite: 239
-  desc: "a silver ring set with a blue gem encased in a shadowy aura"
+  sprite: 1029
+  desc: "a silver ring set with a purple gem encased in a shadowy aura"
   value: 100
   effect:
     name: DarkVision
@@ -36,8 +36,8 @@
     potency: 10
 
 - name: Revive Ring
-  sprite: 239
-  desc: "a silver ring set with a blue gem encased in a holy aura"
+  sprite: 1033
+  desc: "a silver ring encased in a holy aura"
   value: 100
   effect:
     name: Revive
@@ -50,5 +50,23 @@
   value: 100
   effect:
     name: EagleEye
+    uses: 10
+    potency: 10
+
+- name: BarFire Ring
+  sprite: 1032
+  desc: "a silver ring set with a warm red gem"
+  value: 100
+  effect:
+    name: BarFire
+    uses: 10
+    potency: 10
+
+- name: BarFrost Ring
+  sprite: 239
+  desc: "a silver ring set with a frozen blue gem"
+  value: 100
+  effect:
+    name: BarFrost
     uses: 10
     potency: 10
