@@ -164,7 +164,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
 
     // holiday animals
     if(caster.getTraitLevel('FindFamiliarGobbler'))     allPossibleAnimals.push('turkey');
-    if(caster.getTraitLevel('FindFamiliarSnowman'))     allPossibleAnimals.push('snowman');
+    if(caster.getTraitLevel('FindFamiliarFrosty'))      allPossibleAnimals.push('snowman');
 
     // can't cast for an animal at a higher skill
     if(!includes(allPossibleAnimals, animalStr)) animalStr = '';
