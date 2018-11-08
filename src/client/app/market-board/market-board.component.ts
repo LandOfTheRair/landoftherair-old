@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { HttpClient } from '@angular/common/http';
 
-import { reject, get, startCase, isNumber } from 'lodash';
+import { reject, get, startCase, isNumber, includes } from 'lodash';
 import { toRoman } from 'roman-numerals';
 
 import debounce from 'debounce-decorator';
@@ -319,6 +319,14 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     if(!trait || !trait.name || !trait.level) return '';
 
     return `${startCase(trait.name)} ${toRoman(trait.level)}`;
+  }
+
+  public effectStringFor(itemInfo) {
+    const effect = get(itemInfo, 'itemOverride.effect', { name: '', potency: '' });
+    if(!effect || !effect.name || !effect.potency) return '';
+    if(includes(effect.name, 'Permanent') || includes(effect.name, 'Fill')) return '';
+
+    return `${startCase(effect.name)} Lv. ${effect.potency}`;
   }
 
   list() {
