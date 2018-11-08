@@ -872,7 +872,7 @@ export class CombatHelper {
   static tryApplyEffect(attacker: Character, defender: Character, effect: ItemEffect, source?: Item): boolean {
 
     // non-weapons (like bottles) can't trigger effects
-    if(source && !includes(WeaponClasses.concat(AmmoClasses), source.itemClass)) return false;
+    if(source && !includes(WeaponClasses.concat(HandsClasses).concat(AmmoClasses), source.itemClass)) return false;
 
     const applyEffect = Effects[effect.name];
     if(!applyEffect) return false;
