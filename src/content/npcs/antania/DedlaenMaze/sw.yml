@@ -16,6 +16,7 @@
     accuracy: 4
     offense: 4
     perception: 245
+    damageFactor: 0.5
 
   gold:
     min: 550
@@ -70,6 +71,7 @@
     accuracy: 2
     offense: 2
     perception: 265
+    damageFactor: 0.5
 
   usableSkills:
     - DoubleAttack
@@ -242,6 +244,7 @@
     defense: 3
     mpregen: 50
     perception: 300
+    damageFactor: 0.5
 
   usableSkills:
     - DoubleAttack
