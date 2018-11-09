@@ -59,6 +59,7 @@ export type MenuContext = 'Sack' | 'Belt' | 'Ground' | 'DemiMagicPouch'
 export class ItemComponent implements OnDestroy {
 
   private _item: Item;
+  private hasTooltip: boolean;
 
   @Input()
   public set item(item: Item) {
@@ -377,10 +378,14 @@ export class ItemComponent implements OnDestroy {
     if(!this.item || !this.showDesc) return;
 
     this.colyseusGame.updateCurrentItemDesc(this.descText);
+    this.hasTooltip = true;
   }
 
   removeDesc() {
+    if(!this.hasTooltip) return;
+    
     this.colyseusGame.updateCurrentItemDesc('');
+    this.hasTooltip = false;
   }
 
 }
