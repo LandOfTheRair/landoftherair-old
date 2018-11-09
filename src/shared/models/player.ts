@@ -27,6 +27,7 @@ import { SkillTree } from './skill-tree';
 import { RollerHelper } from '../helpers/roller-helper';
 import { Currency } from '../interfaces/holiday';
 import { Allegiance, AllNormalGearSlots, IPlayer, MaxSizes } from '../interfaces/character';
+import { HolidayHelper } from '../helpers/holiday-helper';
 
 export class Player extends Character implements IPlayer {
   @nonenumerable
@@ -207,6 +208,7 @@ export class Player extends Character implements IPlayer {
       this.partyExp = new RestrictedNumber(0, this.partyExp.maximum, this.partyExp.__current);
     }
 
+    this.validateQuests();
     this.recalculateStats();
   }
 
@@ -889,6 +891,15 @@ export class Player extends Character implements IPlayer {
 
   public setTradeskillFree() {
     this.$$tradeskillBusy = false;
+  }
+
+  private validateQuests() {
+    Object.keys(this.activeQuests).forEach(quest => {
+      const requirements = Quests[quest].requirements;
+      if(requirements.activeHoliday && !HolidayHelper.isHoliday(requirements.activeHoliday)) {
+        this.removeQuest(Quests[quest]);
+      }
+    });
   }
 
 }
