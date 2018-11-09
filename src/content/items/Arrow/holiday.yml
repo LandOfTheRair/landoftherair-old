@@ -8,3 +8,16 @@
   sprite: 203
   desc: "a bunch of silver arrows backed with turkey feathers"
   value: 75
+
+- name: Christmas Snowball
+  stats:
+    offense: 3
+  effect:
+    name: IceMist
+    potency: 10
+    chance: 100
+  tier: 2
+  shots: 50000
+  sprite: 1034
+  desc: "a bunch of snowballs"
+  value: 75

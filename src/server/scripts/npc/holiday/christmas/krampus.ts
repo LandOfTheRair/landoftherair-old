@@ -14,6 +14,6 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
-      return 'Help us protect our hard-working present elves from the evil snowmen, and they will reward you!';
+      return 'Ho ho ho! Just kidding, come back next year.';
     });
 };

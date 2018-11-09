@@ -29,4 +29,5 @@ export * from './specific/DedlaenDragonTurtleFire';
 export * from './specific/DedlaenSpiderImmobilize';
 export * from './specific/VampireMistForm';
 
+export * from './holiday/ChristmasPresentElfDropPresent';
 export * from './holiday/HalloweenZombieScratch';

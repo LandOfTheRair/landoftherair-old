@@ -27,6 +27,7 @@ export const setup = async (npc: NPC) => {
     { name: 'Christmas Candy Staff' },
     { name: 'Christmas Candy Staff (Improved)' },
     { name: 'Christmas Snowglobe' },
+    { name: 'Christmas Snowball' },
     { name: 'Cosmetic Scroll - Snowflake Joy' },
   ];
 

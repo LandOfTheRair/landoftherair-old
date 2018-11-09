@@ -20,8 +20,8 @@
     max: 5
 
   hp:
-    min: 5000
-    max: 5000
+    min: 500
+    max: 500
 
   giveXp:
     min: 1000
@@ -30,9 +30,77 @@
   gear:
     Armor: Risan Tunic
 
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 0
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 2
+
+- npcId: Christmas Present Elf
+  name: present elf
+  monsterClass: Humanoid
+  hostility: Faction
+  allegiance: Townsfolk
+  sprite: 1025
+  stats: 20
+  level: 20
+
+  allegianceReputation:
+    Enemy: -101
+    Pirates: -101
+
+  skillLevels:
+    Conjuration: 20
+    Martial: 6
+
+  skillOnKill: 1
+
+  gold:
+    min: 1
+    max: 5
+
+  hp:
+    min: 100
+    max: 100
+
+  mp:
+    min: 100000
+    max: 100000
+
+  usableSkills:
+    - result: Attack
+      chance: 100
+    - result: BarFrost
+      chance: 100
+    - result: MagicShield
+      chance: 100
+    - result: ChristmasPresentElfDropPresent
+      chance: 5
+
+  giveXp:
+    min: 1000
+    max: 2000
+
+  gear:
+    Armor: Risan Tunic
+
+  baseEffects:
+    - name: Attribute
+      effectData:
+        damageType: 'fire'
+        potency: 0
+    - name: Attribute
+      effectData:
+        damageType: 'ice'
+        potency: 2
+
 - npcId: Christmas Weak Snowman
   name: snowman
-  hostility: Faction
+  hostility: Always
   allegiance: Pirates
   sprite: 1020
   stats: 7
@@ -96,6 +164,11 @@
       chance: -1
     - drop: 'gear.Neck'
       chance: -1
+
+  drops:
+    - result: Christmas Snowball
+      chance: 1
+      maxChance: 500
 
   usableSkills:
     - Hail
@@ -173,6 +246,11 @@
     - drop: 'gear.Neck'
       chance: -1
 
+  drops:
+    - result: Christmas Snowball
+      chance: 1
+      maxChance: 450
+
   usableSkills:
     - Hail
     - IceMist
@@ -241,6 +319,8 @@
         chance: 300
       - result: Christmas Walnuts
         chance: 300
+      - result: Christmas Snowball
+        chance: 100
       - result: Christmas Button Shield
         chance: 50
       - result: Christmas Scarf

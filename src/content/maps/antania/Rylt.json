@@ -10853,15 +10853,15 @@
          "name":"BackgroundMusic",
          "objects":[
                 {
-                 "height":2112,
+                 "height":2880,
                  "id":663,
                  "name":"town",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":2880,
+                 "width":3008,
                  "x":2816,
-                 "y":1024
+                 "y":256
                 }, 
                 {
                  "height":4224,
@@ -11085,7 +11085,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
