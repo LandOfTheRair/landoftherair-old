@@ -16,6 +16,6 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 2) return 'Please move closer.';
 
-      return 'Welcome to our winter wonderland! Please keep magical fire far away!';
+      return 'Did you know you can make Gingerbread men with water and walnuts? Just be careful not to burn them!';
     });
 };
