@@ -383,7 +383,7 @@ export class ItemComponent implements OnDestroy {
 
   removeDesc() {
     if(!this.hasTooltip) return;
-    
+
     this.colyseusGame.updateCurrentItemDesc('');
     this.hasTooltip = false;
   }

@@ -4,7 +4,7 @@ export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
   npc.affiliation = 'Christmas Helpers';
 
-  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Risan Tunic');
+  npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Christmas Reindeer Skin');
 
   npc.recalculateStats();
 };

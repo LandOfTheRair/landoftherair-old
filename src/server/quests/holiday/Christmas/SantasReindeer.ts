@@ -1,15 +1,13 @@
 
-import { clone, includes } from 'lodash';
+import { clone, capitalize } from 'lodash';
 
 import { Quest } from '../../../base/Quest';
 import { Player } from '../../../../shared/models/player';
-import { HolidayHelper } from '../../../../shared/helpers/holiday-helper';
 import { Holiday } from '../../../../shared/interfaces/holiday';
 
-export class SantasPresents extends Quest {
+export class SantasReindeer extends Quest {
 
   public static isRepeatable = true;
-  static presentsRequired = 500;
 
   public static get requirements() {
     return {
@@ -19,28 +17,32 @@ export class SantasPresents extends Quest {
   }
 
   public static get initialData(): any {
-    return clone({ gifts: 0 });
+    return clone({ blitzen: false, comet: false, prancer: false, dancer: false, dasher: false, cupid: false, vixen: false, donner: false });
   }
 
   public static updateProgress(player: Player, questOpts: any = {}): void {
-    const { gifts } = player.getQuestData(this);
-
-    const structure = this.initialData;
-    structure.gifts = gifts + (questOpts.giftBoost ? questOpts.giftBoost : 1);
-
-    player.setQuestData(this, structure);
+    const reindeer = player.getQuestData(this);
+    reindeer[questOpts.reindeer] = true;
+    player.setQuestData(this, reindeer);
   }
 
   public static isComplete(player: Player): boolean {
-    const { gifts } = player.getQuestData(this);
+    const { blitzen, comet, prancer, dancer, dasher, cupid, vixen, donner } = player.getQuestData(this);
 
-    return gifts >= this.presentsRequired;
+    return blitzen && comet && prancer && dasher && dancer && cupid && vixen && donner;
   }
 
   public static incompleteText(player: Player): string {
-    const { gifts } = player.getQuestData(this);
+    const reindeers = player.getQuestData(this);
 
-    return `You need to bring me ${this.presentsRequired - gifts} gifts yet!`;
+    const unfound = [];
+    Object.keys(reindeers).forEach(deer => {
+      if(reindeers[deer]) return;
+
+      unfound.push(capitalize(deer));
+    });
+
+    return `You need to find ${unfound.join(', ')} yet!`;
   }
 
   public static completeFor(player: Player): void {
@@ -52,6 +54,5 @@ export class SantasPresents extends Quest {
     this.rewardPlayerGold(player, 100000);
     player.gainExp(50000);
     player.sendClientMessage('You received 50,000 XP and 100,000 gold!');
-    HolidayHelper.tryGrantHolidayTokens(player, 500);
   }
 }

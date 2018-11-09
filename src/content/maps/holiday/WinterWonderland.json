@@ -961,7 +961,7 @@
                  "name":"Blitzen",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/reindeer-blitzen"
                     },
                  "propertytypes":
                     {
@@ -981,7 +981,7 @@
                  "name":"Donner",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/reindeer-donner"
                     },
                  "propertytypes":
                     {
@@ -1001,7 +1001,7 @@
                  "name":"Prancer",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/reindeer-prancer"
                     },
                  "propertytypes":
                     {
@@ -1021,7 +1021,7 @@
                  "name":"Dancer",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/reindeer-dancer"
                     },
                  "propertytypes":
                     {
@@ -1035,33 +1035,13 @@
                  "y":2176
                 }, 
                 {
-                 "gid":3597,
-                 "height":64,
-                 "id":1227,
-                 "name":"Frosty",
-                 "properties":
-                    {
-                     "script":"holiday\/christmas\/placeholder"
-                    },
-                 "propertytypes":
-                    {
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5440,
-                 "y":5824
-                }, 
-                {
                  "gid":3607,
                  "height":64,
                  "id":1229,
                  "name":"Dasher",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/reindeer-dasher"
                     },
                  "propertytypes":
                     {
@@ -1081,7 +1061,7 @@
                  "name":"Vixen",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/reindeer-vixen"
                     },
                  "propertytypes":
                     {
@@ -1101,7 +1081,7 @@
                  "name":"Cupid",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/reindeer-cupid"
                     },
                  "propertytypes":
                     {
@@ -1121,7 +1101,7 @@
                  "name":"Comet",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/reindeer-comet"
                     },
                  "propertytypes":
                     {
@@ -1141,7 +1121,7 @@
                  "name":"Keeble",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/keeble"
                     },
                  "propertytypes":
                     {
@@ -1201,7 +1181,7 @@
                  "name":"Alf",
                  "properties":
                     {
-                     "script":"holiday\/christmas\/placeholder"
+                     "script":"holiday\/christmas\/alf"
                     },
                  "propertytypes":
                     {
