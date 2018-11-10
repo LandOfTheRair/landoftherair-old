@@ -75,6 +75,51 @@
     - Maze Corpseflower
     - Maze Corpseflower
 
+- item: Antanian Willpower Potion
+  skillGained: 1000
+  maxSkillForGains: 17
+  requiredSkill: 7
+  xpGained: 5000
+  ingredients:
+    - Ether Scale (Refined)
+    - Ether Scale (Refined)
+    - Antanian Intelligence Potion
+    - Antanian Intelligence Potion
+    - Antanian Wisdom Potion
+    - Antanian Wisdom Potion
+    - Antanian Constitution Potion
+    - Antanian Constitution Potion
+
+- item: Antanian Charisma Potion
+  skillGained: 1000
+  maxSkillForGains: 17
+  requiredSkill: 7
+  xpGained: 5000
+  ingredients:
+    - Ether Scale (Refined)
+    - Ether Scale (Refined)
+    - Antanian Strength Potion
+    - Antanian Strength Potion
+    - Antanian Dexterity Potion
+    - Antanian Dexterity Potion
+    - Antanian Agility Potion
+    - Antanian Agility Potion
+
+- item: Antanian Luck Potion
+  skillGained: 1000
+  maxSkillForGains: 19
+  requiredSkill: 9
+  xpGained: 5000
+  ingredients:
+    - Antanian Strength Potion
+    - Antanian Dexterity Potion
+    - Antanian Agility Potion
+    - Antanian Intelligence Potion
+    - Antanian Wisdom Potion
+    - Antanian Willpower Potion
+    - Antanian Charisma Potion
+    - Antanian Constitution Potion
+
 # substitution recipes, using the turtle egg instead of the other component
 - item: Antanian Strength Potion
   skillGained: 1000
