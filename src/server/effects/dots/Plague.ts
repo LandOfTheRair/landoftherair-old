@@ -83,7 +83,7 @@ export class Plague extends SpellEffect {
       isOverTime: true
     });
 
-    if((this.duration % 3) === 0 && this.isContagious) {
+    if((this.duration % 3) === 0 && this.isContagious && caster) {
       const possibleTargets = char.$$room.state.getAllInRange(char, 1, [], false)
         .filter(testChar => !testChar.hasEffect('Plague') && caster.$$room.state.checkTargetForHostility(caster, testChar));
       const target = sample(possibleTargets);
