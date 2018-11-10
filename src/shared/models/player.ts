@@ -895,7 +895,7 @@ export class Player extends Character implements IPlayer {
 
   private validateQuests() {
     if(!this.activeQuests) return;
-    
+
     Object.keys(this.activeQuests).forEach(quest => {
       const requirements = Quests[quest].requirements;
       if(requirements.activeHoliday && !HolidayHelper.isHoliday(requirements.activeHoliday)) {
