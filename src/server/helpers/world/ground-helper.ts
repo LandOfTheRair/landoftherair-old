@@ -30,8 +30,8 @@ export class GroundHelper {
 
   private chooseArrayFor(item: Item): string {
     if(this.isCorpse(item)) return 'corpseArray';
-    if(this.isTrash(item)) return 'trashGCArray';
     if(item.owner || item.binds) return 'tiedItemGCArray';
+    if(this.isTrash(item)) return 'trashGCArray';
     return 'itemGCArray';
   }
 
@@ -47,12 +47,16 @@ export class GroundHelper {
 
     // we have to do this BEFORE we push, in case we're adding an item that would be instantly removed.
     while(this.trashGCArray.length + this.itemGCArray.length + this.tiedItemGCArray.length > this.room.maxItemsOnGround) {
-      let arr = this.tiedItemGCArray;
-      if(this.itemGCArray.length > 0) arr = this.itemGCArray;
+      let arr = this.trashGCArray;
+
+      if(this.tiedItemGCArray.length > 100) arr = this.tiedItemGCArray;
+      if(this.itemGCArray.length > 100) arr = this.itemGCArray;
       if(this.trashGCArray.length > 0) arr = this.trashGCArray;
 
       const removeItem = arr.shift();
-      this.removeItemFromGround(removeItem);
+      if(removeItem) {
+        this.removeItemFromGround(removeItem);
+      }
     }
 
     const pushArr = this[this.chooseArrayFor(baseItem)];
