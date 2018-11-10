@@ -30,7 +30,6 @@
   type: Polearm
   value: 1451
   sprite: 44
-  binds: true
 
   requirements:
     level: 12
@@ -45,11 +44,10 @@
   type: Polearm
   value: 1451
   sprite: 44
-  binds: true
 
   requirements:
     level: 14
-    
+
 - name: Maze Revenant Halberd
   desc: "a halberd that smells of death"
   stats:

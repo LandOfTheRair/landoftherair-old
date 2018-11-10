@@ -11,7 +11,7 @@
   type: Mace
   value: 100
   sprite: 226
-  
+
 - name: Tower Hammer Weak
   stats:
     accuracy: -3
@@ -21,7 +21,6 @@
   type: Mace
   value: 1401
   sprite: 45
-  binds: true
 
   requirements:
     level: 12
@@ -35,7 +34,6 @@
   type: Mace
   value: 1401
   sprite: 45
-  binds: true
 
   requirements:
     level: 14

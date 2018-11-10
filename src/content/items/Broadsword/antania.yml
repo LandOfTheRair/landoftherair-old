@@ -10,7 +10,6 @@
   type: Onehanded
   value: 1378
   sprite: 46
-  binds: true
 
   requirements:
     level: 12
@@ -26,7 +25,6 @@
   type: Onehanded
   value: 1378
   sprite: 46
-  binds: true
 
   requirements:
     level: 14

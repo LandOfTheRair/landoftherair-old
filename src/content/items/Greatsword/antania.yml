@@ -35,7 +35,6 @@
   type: Twohanded
   value: 1560
   sprite: 43
-  binds: true
 
   requirements:
     level: 12
@@ -49,7 +48,6 @@
   type: Twohanded
   value: 1560
   sprite: 43
-  binds: true
 
   requirements:
     level: 14

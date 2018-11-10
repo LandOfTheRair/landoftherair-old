@@ -45,7 +45,6 @@
   desc: "a wrought metal shield made from a riyan metal"
   value: 1800
   sprite: 514
-  binds: true
 
   requirements:
     level: 12
@@ -56,7 +55,6 @@
   desc: "a wrought metal shield made from a riyan metal"
   value: 1800
   sprite: 514
-  binds: true
 
   requirements:
     level: 14

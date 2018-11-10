@@ -16,7 +16,6 @@
       max: 5
   desc: "a club forged from the bones of a yeti"
   tier: 6
-  binds: true
   type: Mace
   value: 2200
   sprite: 238

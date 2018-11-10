@@ -6,7 +6,7 @@
   type: Shortsword
   value: 3500
   sprite: 195
-  
+
   requirements:
     level: 15
 
@@ -18,7 +18,6 @@
     accuracy: 3
     weaponArmorClass: 3
   offhand: true
-  binds: true
   tier: 5
   type: Shortsword
   value: 3411
