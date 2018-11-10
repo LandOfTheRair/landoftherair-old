@@ -57,7 +57,7 @@ export class SurvivalHelper {
           });
 
         player.sendClientMessage(`You successfully tanned ${corpse.desc}!`);
-        player.gainSkill(SkillClassNames.Survival, 10);
+        player.gainSkill(SkillClassNames.Survival, (<any>corpse).tanSkillRequired);
 
       } else {
         player.sendClientMessage(`You failed to tan ${corpse.desc}.`);
@@ -100,6 +100,8 @@ export class SurvivalHelper {
       player.gainSkill(SkillClassNames.Survival, Math.floor(npcRef.level / 2));
       player.sendClientMessage('The corpse blood had no magical energy left.');
       player.$$room.dropCorpseItems(corpse);
+      corpse.$heldBy = null;
+      npcRef.restore(true);
       player.setLeftHand(null);
       return;
     }
@@ -110,6 +112,8 @@ export class SurvivalHelper {
       player.gainSkill(SkillClassNames.Survival, Math.floor(npcRef.level / 3));
       player.sendClientMessage('The corpse blood is too difficult to extract.');
       player.$$room.dropCorpseItems(corpse);
+      corpse.$heldBy = null;
+      npcRef.restore(true);
       player.setLeftHand(null);
       return;
     }
@@ -122,6 +126,8 @@ export class SurvivalHelper {
 
     player.$$room.dropCorpseItems(corpse);
     player.setLeftHand(null);
+    corpse.$heldBy = null;
+    npcRef.restore(true);
 
     player.$$room.npcLoader.loadItem('Vial of Blood')
       .then(item => {
