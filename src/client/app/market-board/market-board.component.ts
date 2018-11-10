@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { HttpClient } from '@angular/common/http';
 
-import { reject, get, startCase, isNumber, includes } from 'lodash';
+import { reject, get, startCase, isNumber, includes, compact } from 'lodash';
 import { toRoman } from 'roman-numerals';
 
 import debounce from 'debounce-decorator';
@@ -311,7 +311,10 @@ export class MarketBoardComponent implements OnInit, OnDestroy {
     const stats = get(itemInfo, 'itemOverride.stats', {});
     const statKeys = Object.keys(stats);
     if(statKeys.length === 0) return '';
-    return statKeys.map(stat => `${stats[stat] < 0 ? '' : '+'}${stats[stat]} ${stat.toUpperCase()}`).join(', ');
+    return compact(statKeys.map(stat => {
+      if(stat === 'effect') return '';
+      return `${stats[stat] < 0 ? '' : '+'}${stats[stat]} ${stat.toUpperCase()}`
+    })).join(', ');
   }
 
   public traitStringFor(itemInfo) {

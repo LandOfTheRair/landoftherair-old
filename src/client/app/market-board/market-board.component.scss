@@ -1,4 +1,8 @@
 
+.nav-item {
+  user-select: none;
+}
+
 .thin-line {
   line-height: 1.2em;
   min-height: 1.2em;
@@ -70,6 +74,7 @@ input {
       border-top: 1px solid #000;
       border-bottom: 1px solid #000;
       background-color: darken(#343a40, 10%);
+      user-select: none;
     }
   }
 
