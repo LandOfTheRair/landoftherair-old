@@ -62,6 +62,8 @@ export class HolyAura extends SpellEffect implements AttributeEffect {
   }
 
   modifyDamage(attacker: Character, defender: Character, opts: { damage: number }) {
+    if(opts.damage <= 0) return opts.damage;
+
     this.charges -= opts.damage;
     if(this.charges <= 0) defender.unapplyEffect(this);
 
