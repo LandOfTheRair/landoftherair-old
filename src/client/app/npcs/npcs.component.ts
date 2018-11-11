@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { compact, find, pull, findIndex, sortBy, cloneDeep, isBoolean } from 'lodash';
+import { compact, isNumber, sortBy, cloneDeep, isBoolean, maxBy } from 'lodash';
 import { MacroService } from '../macros.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { timer } from 'rxjs';
@@ -26,6 +26,8 @@ export class NpcsComponent implements OnInit, OnDestroy {
 
   private pinUUID: string;
   private pinPos: number;
+
+  private previousPlacements: { [key: string]: number } = {};
 
   public visibleNPCList: INPC[] = [];
 
@@ -99,37 +101,72 @@ export class NpcsComponent implements OnInit, OnDestroy {
       return testnpc;
     }));
 
-    if(isBoolean(this.shouldSortDistance)) {
+    if(unsorted.length === 0) return [];
+
+    const shouldSortDistance = isBoolean(this.shouldSortDistance);
+    const shouldSortFriendly = isBoolean(this.shouldSortFriendly);
+
+    // iterate over unsorted, find their place, or find them a new place (only if we are doing no sorting)
+    if(!shouldSortDistance && !shouldSortFriendly) {
+      const highestOldSpace = this.previousPlacements[maxBy(Object.keys(this.previousPlacements), key => this.previousPlacements[key])];
+      const oldPositionSorting = Array(highestOldSpace).fill(null);
+      const newPositionHash = {};
+
+      const unfilledSpaces = oldPositionSorting.reduce((prev, cur, idx) => {
+        prev[idx] = null;
+        return prev;
+      }, {});
+
+      const needFill = [];
+
+      // sort old creatures into the array, and if they weren't there before, we mark them as filler
+      for(let i = 0; i < unsorted.length; i++) {
+        const creature = unsorted[i];
+
+        const oldPos = this.previousPlacements[creature.uuid];
+        if(isNumber(oldPos)) {
+          oldPositionSorting[oldPos] = creature;
+          delete unfilledSpaces[oldPos];
+        } else {
+          needFill.push(creature);
+        }
+      }
+
+      // get all the filler spaces, and put the unsorted creatures into them
+      const fillKeys = Object.keys(unfilledSpaces);
+
+      for(let i = 0; i < needFill.length; i++) {
+        const fillSpot = fillKeys.shift();
+        if(fillSpot) {
+          oldPositionSorting[+fillSpot] = needFill[i];
+        } else {
+          oldPositionSorting.push(needFill[i]);
+        }
+      }
+
+      // create a new position hash
+      for(let i = 0; i < oldPositionSorting.length; i++) {
+        const creature = oldPositionSorting[i];
+        if(!creature) continue;
+
+        newPositionHash[creature.uuid] = i;
+      }
+
+      this.previousPlacements = newPositionHash;
+      unsorted = oldPositionSorting;
+    }
+
+    // sort them by distance
+    if(shouldSortDistance) {
       unsorted = sortBy(unsorted, testnpc => testnpc.distFrom(me));
 
       if(!this.shouldSortDistance) unsorted = unsorted.reverse();
     }
 
-    if(isBoolean(this.shouldSortFriendly)) {
+    // sort them by friendly
+    if(shouldSortFriendly) {
       const sortOrder = this.shouldSortFriendly ? { neutral: 0, friendly: 1, hostile: 2 } : { hostile: 0, neutral: 1, friendly: 2 };
       unsorted = sortBy(unsorted, testnpc => sortOrder[this.colyseusGame.hostilityLevelFor(testnpc)]);
-    }
-
-    if(!this.pinUUID || !this.shouldPin) return unsorted;
-
-    const args: any = { uuid: this.pinUUID };
-    const npc: any = find(unsorted, args);
-    const index = findIndex(unsorted, npc);
-
-    if(!npc || index === this.pinPos) return unsorted;
-
-    pull(unsorted, npc);
-
-    if(this.pinPos > unsorted.length) {
-      const difference = this.pinPos - unsorted.length;
-      if(difference > 0) {
-        for(let i = 0; i < difference; i++) {
-          unsorted.push(null);
-        }
-      }
-      unsorted.push(npc);
-    } else {
-      unsorted.splice(this.pinPos, 0, npc);
     }
 
     return unsorted;
