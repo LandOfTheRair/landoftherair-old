@@ -810,10 +810,10 @@
      "itemGarbageCollection":30,
      "maxCreatures":500,
      "maxSkill":15,
-     "region":"Antania",
-     "respawnMap":"TowerOfSelen",
+     "region":"Elgun",
+     "respawnMap":"TowerOfPandira",
      "respawnX":10,
-     "respawnY":86
+     "respawnY":8
     },
  "propertytypes":
     {

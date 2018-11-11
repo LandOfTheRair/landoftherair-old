@@ -1,0 +1,90 @@
+
+- name: Elgun Strength Potion
+  desc: "a small bottle filled with brown fluid that smells like a jungle"
+  extendedDesc: "a potion of greater strength"
+  sprite: 151
+  effect:
+    name: PermanentSTR
+    tier: Greater
+    potency: 1
+  value: 5000
+
+- name: Elgun Agility Potion
+  desc: "a small bottle filled with dark-yellow fluid that smells like a jungle bird"
+  extendedDesc: "a potion of greater agility"
+  sprite: 157
+  effect:
+    name: PermanentAGI
+    tier: Greater
+    potency: 1
+  value: 2000
+
+- name: Elgun Dexterity Potion
+  desc: "a small bottle filled with yellow fluid that smells like jungle apples"
+  extendedDesc: "a potion of greater dexterity"
+  sprite: 150
+  effect:
+    name: PermanentDEX
+    tier: Greater
+    potency: 1
+  value: 3500
+
+- name: Elgun Intelligence Potion
+  desc: "a small bottle filled with puce liquid that smells like a jungle root"
+  extendedDesc: "a potion of greater intelligence"
+  sprite: 158
+  effect:
+    name: PermanentINT
+    tier: Greater
+    potency: 1
+  value: 5000
+
+- name: Elgun Wisdom Potion
+  desc: "a small bottle filled with teal that smells like jungle herbs"
+  extendedDesc: "a potion of greater wisdom"
+  sprite: 156
+  effect:
+    name: PermanentWIS
+    tier: Greater
+    potency: 1
+  value: 3000
+
+- name: Elgun Willpower Potion
+  desc: "a small bottle filled with orange fluid that smells like jungle mushrooms"
+  extendedDesc: "a potion of greater willpower"
+  sprite: 154
+  effect:
+    name: PermanentWIL
+    tier: Greater
+    potency: 1
+  value: 10000
+
+- name: Elgun Constitution Potion
+  desc: "a small bottle filled with crimson fluid that smells like jungle fruit"
+  extendedDesc: "a potion of greater constitution"
+  sprite: 153
+  effect:
+    name: PermanentCON
+    tier: Greater
+    potency: 1
+  value: 10000
+
+- name: Elgun Luck Potion
+  desc: "a small bottle filled with green fluid that smells like jungle clovers"
+  extendedDesc: "a potion of greater luck"
+  sprite: 152
+  effect:
+    name: PermanentLUK
+    tier: Greater
+    potency: 1
+  value: 100000
+
+- name: Elgun Charisma Potion
+  desc: "a small bottle filled with purple fluid that smells like jungle flowers"
+  extendedDesc: "a potion of greater charisma"
+  sprite: 155
+  effect:
+    name: PermanentCHA
+    tier: Greater
+    potency: 1
+  value: 200000

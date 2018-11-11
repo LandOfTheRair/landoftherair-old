@@ -1,0 +1,37 @@
+
+# special bottles
+- result: Elgun Strength Potion
+  chance: 1
+  maxChance: 70000
+
+- result: Elgun Agility Potion
+  chance: 1
+  maxChance: 65000
+
+- result: Elgun Dexterity Potion
+  chance: 1
+  maxChance: 70000
+
+- result: Elgun Intelligence Potion
+  chance: 1
+  maxChance: 65000
+
+- result: Elgun Wisdom Potion
+  chance: 1
+  maxChance: 75000
+
+- result: Elgun Willpower Potion
+  chance: 1
+  maxChance: 150000
+
+- result: Elgun Constitution Potion
+  chance: 1
+  maxChance: 1000
+
+- result: Elgun Luck Potion
+  chance: 1
+  maxChance: 400000
+
+- result: Elgun Charisma Potion
+  chance: 1
+  maxChance: 300000
