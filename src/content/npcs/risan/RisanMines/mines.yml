@@ -49,7 +49,7 @@
       - result: Miner Offense Mana Helm
         chance: 1
 
-  rightHand: Mines Hammer
+  rightHand: Mines Trash Hammer
 
   usableSkills:
     - Charge
@@ -130,7 +130,7 @@
       - result: Miner Offense Mana Helm
         chance: 1
 
-  rightHand: Mines Hammer
+  rightHand: Mines Trash Hammer
 
   usableSkills:
     - Charge
