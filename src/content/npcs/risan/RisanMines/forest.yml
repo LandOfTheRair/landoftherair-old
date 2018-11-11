@@ -288,14 +288,14 @@
     damageFactor: 0.8
 
   rightHand:
-    - result: Risan Mines Spirit Shortsword
+    - result: Risan Mines Trash Spirit Shortsword
       chance: 5000
     - result: Risan Mines Rare Spirit Shortsword
       chance: 1
   leftHand:
     - result: none
       chance: 3000
-    - result: Risan Mines Spirit Shortsword
+    - result: Risan Mines Trash Spirit Shortsword
       chance: 100
     - result: Risan Mines Rare Spirit Shortsword
       chance: 1
@@ -393,14 +393,14 @@
     damageFactor: 0.7
 
   rightHand:
-    - result: Risan Mines Spirit Shortsword
+    - result: Risan Mines Trash Spirit Shortsword
       chance: 5000
     - result: Risan Mines Rare Spirit Shortsword
       chance: 1
   leftHand:
     - result: none
       chance: 3000
-    - result: Risan Mines Spirit Shortsword
+    - result: Risan Mines Trash Spirit Shortsword
       chance: 100
     - result: Risan Mines Rare Spirit Shortsword
       chance: 1
@@ -494,9 +494,9 @@
     con: 30
     perception: 150
 
-  rightHand: Risan Mines Spirit Shortsword
+  rightHand: Risan Mines Trash Spirit Shortsword
   leftHand:
-    - result: Risan Mines Spirit Shortsword
+    - result: Risan Mines Trash Spirit Shortsword
       chance: 4000
     - result: Risan Mines Rare Spirit Shortsword
       chance: 1

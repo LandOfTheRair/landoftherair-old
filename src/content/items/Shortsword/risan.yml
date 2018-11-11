@@ -10,7 +10,7 @@
   requirements:
     level: 15
 
-- name: Risan Mines Spirit Shortsword
+- name: Risan Mines Trash Spirit Shortsword
   desc: "a dull silver shortsword"
   stats:
     offense: 3
