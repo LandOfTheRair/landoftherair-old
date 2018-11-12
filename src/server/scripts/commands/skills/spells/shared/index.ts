@@ -17,5 +17,6 @@ export * from './Push';
 export * from './Vortex';
 
 export * from './FindFamiliar';
+export * from './FleetOfFoot';
 
 export * from './Fate';

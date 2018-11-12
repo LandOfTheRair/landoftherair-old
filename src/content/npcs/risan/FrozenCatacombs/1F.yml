@@ -274,6 +274,8 @@
       chance: 100
     - result: TrueSight
       chance: 100
+    - result: FleetOfFoot
+      chance: 100
 
   gold:
     min: 1550

@@ -305,6 +305,8 @@
       chance: 100
     - result: BarFrost
       chance: 100
+    - result: FleetOfFoot
+      chance: 100
 
   traitLevels:
     NecroticFocus: 1

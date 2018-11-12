@@ -322,6 +322,8 @@
       chance: 100
     - result: VitalEssence
       chance: 100
+    - result: FleetOfFoot
+      chance: 100
 
   traitLevels:
     NecroticFocus: 2
