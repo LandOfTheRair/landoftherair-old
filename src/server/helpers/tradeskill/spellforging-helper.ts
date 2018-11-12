@@ -1,10 +1,8 @@
 
-import { Item} from '../../../shared/models/item';
-
 import { includes, random, clone, clamp, capitalize } from 'lodash';
 import { IPlayer, SkillClassNames } from '../../../shared/interfaces/character';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
-import { AmmoClasses, EquippableItemClassesWithWeapons } from '../../../shared/interfaces/item';
+import { AmmoClasses, EquippableItemClassesWithWeapons, IItem } from '../../../shared/interfaces/item';
 
 export class SpellforgingHelper {
 
@@ -12,7 +10,7 @@ export class SpellforgingHelper {
     return player.calcBaseSkillLevel(SkillClassNames.Conjuration) >= 1;
   }
 
-  static canDisenchant(item: Item): boolean {
+  static canDisenchant(item: IItem): boolean {
     return includes(EquippableItemClassesWithWeapons, item.itemClass);
   }
 
