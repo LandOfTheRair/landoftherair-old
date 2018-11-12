@@ -1,13 +1,13 @@
 
 import { Player } from '../../shared/models/player';
 import { find } from 'lodash';
-import { Item } from '../../shared/models/item';
 import { Container } from '../../shared/models/container/container';
 import { MapLayer } from '../../shared/models/maplayer';
 import { MessageHelper } from '../helpers/world/message-helper';
 import { MaterialStorageHelper } from '../helpers/tradeskill/material-storage-helper';
 import { Locker } from '../../shared/models/container/locker';
 import { NPC } from '../../shared/models/npc';
+import { IItem } from '../../shared/interfaces/item';
 
 export abstract class Command {
 
@@ -43,7 +43,7 @@ export abstract class Command {
     return 'RightHand';
   }
 
-  addItemToContainer(player, container: Container, item: Item, index?: number) {
+  addItemToContainer(player, container: Container, item: IItem, index?: number) {
     if(!container) return player.sendClientMessage('Bad container name.');
     const didFail = container.addItem(item, index, { maxSize: MaterialStorageHelper.getTotalSizeAvailable(player) });
     if(didFail) return player.sendClientMessage(didFail);
@@ -83,14 +83,14 @@ export abstract class Command {
     return locker;
   }
 
-  getItemsFromGround(player, itemClass): Item[] {
+  getItemsFromGround(player, itemClass): IItem[] {
     const ground = player.$$room.state.getGroundItems(player.x, player.y);
     const items = ground[itemClass];
     if(!items) return player.sendClientMessage('You do not see that item.');
     return items;
   }
 
-  getItemFromGround(player, itemClass, itemId): Item {
+  getItemFromGround(player, itemClass, itemId): IItem {
     const ground = player.$$room.state.getGroundItems(player.x, player.y);
     const item: any = find(ground[itemClass], { uuid: itemId });
     if(!item) return player.sendClientMessage('You do not see that item.');
@@ -112,7 +112,7 @@ export abstract class Command {
     return player.$$isAccessingLocker || player.$$areHandsBusy || player.$$tradeskillBusy;
   }
 
-  takeItemCheck(player: Player, item: Item): boolean {
+  takeItemCheck(player: Player, item: IItem): boolean {
     if(!player.canTakeItem(item)) {
       player.sendClientMessage('You don\'t need that item right now.');
       return false;
