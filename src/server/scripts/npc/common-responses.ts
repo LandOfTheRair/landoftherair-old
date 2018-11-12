@@ -944,21 +944,22 @@ export const HPDocResponses = (npc: NPC) => {
   }
 
   const hpTiers = {
-    Mage:       [100, 375, 600],
-    Thief:      [100, 425, 700],
-    Healer:     [100, 400, 650],
-    Warrior:    [100, 450, 800],
-    Undecided:  [100, 600, 550]
+    Mage:       [100, 375, 600, 2400],
+    Thief:      [100, 425, 700, 2800],
+    Healer:     [100, 400, 650, 2600],
+    Warrior:    [100, 450, 800, 3000],
+    Undecided:  [100, 600, 550, 2200]
   };
 
-  const levelTiers = [0, 13, 25];
+  const levelTiers = [0, 13, 25, 50];
 
-  const hpNormalizers = [100, 200, 300];
+  const hpNormalizers = [100, 200, 300, 1500];
 
   const hpCosts = [
     { min: 100,     max: 500 },
     { min: 5000,    max: 15000 },
-    { min: 100000,  max: 1000000 }
+    { min: 100000,  max: 1000000 },
+    { min: 1000000, max: 10000000 }
   ];
 
   npc.parser.addCommand('hello')
@@ -1022,21 +1023,22 @@ export const MPDocResponses = (npc: NPC) => {
   }
 
   const mpTiers = {
-    Mage:       [0, 0, 1000],
-    Thief:      [0, 0, 0],
-    Healer:     [0, 0, 900],
-    Warrior:    [0, 0, 0],
-    Undecided:  [0, 0, 0]
+    Mage:       [0, 0, 1000, 2000],
+    Thief:      [0, 0, 0, 0],
+    Healer:     [0, 0, 900, 1800],
+    Warrior:    [0, 0, 0, 0],
+    Undecided:  [0, 0, 0, 0]
   };
 
-  const levelTiers = [0, 13, 25];
+  const levelTiers = [0, 13, 25, 50];
 
-  const mpNormalizers = [100, 200, 300];
+  const mpNormalizers = [100, 200, 300, 1500];
 
   const mpCosts = [
     { min: 100,     max: 500 },
     { min: 10000,   max: 30000 },
-    { min: 200000,  max: 2000000 }
+    { min: 200000,  max: 2000000 },
+    { min: 2000000, max: 20000000 }
   ];
 
   npc.parser.addCommand('hello')

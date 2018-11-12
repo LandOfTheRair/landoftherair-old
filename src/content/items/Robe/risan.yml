@@ -184,3 +184,17 @@
 
   requirements:
     level: 30
+
+- name: Club Shirt
+  stats:
+    energyResist: 400
+    necroticResist: 400
+
+  desc: "a warm robe depicting the eruption of a volcano"
+  value: 2500
+  sprite: 401
+  binds: true
+
+  requirements:
+    level: 35
+

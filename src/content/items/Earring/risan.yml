@@ -83,3 +83,17 @@
     level: 15
     class:
       - "Healer"
+
+- name: Club Earring
+  stats:
+    defense: 7
+    offense: 7
+    hpregen: 5
+    mpregen: 5
+  sprite: 1023
+  desc: "a golden earring set with a green gem"
+  value: 9000
+  binds: true
+
+  requirements:
+    level: 35

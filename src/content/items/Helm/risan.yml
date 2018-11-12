@@ -55,3 +55,12 @@
       max: 75
   desc: "a helmet designed to protect the face from overexposure to heat"
   value: 4500
+
+- name: Club Helm
+  sprite: 466
+  stats:
+    armorClass: 10
+    defense: 5
+  desc: "a helmet crafted with the finest metals in Risan"
+  value: 1500
+  binds: true
