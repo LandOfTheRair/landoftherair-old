@@ -1,0 +1,30 @@
+
+<div class="row">
+  <div class="col">
+    <h3 class="my-3 text-center">
+      Current Page: {{ (book.bookCurrentPage || 0) + 1 }} / {{ book.bookPages.length }}
+    </h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <p *ngIf="!currentPage || !currentPage.text">
+      <i>This page is empty.</i>
+    </p>
+
+    <p *ngIf="currentPage">
+      {{ currentPage.text }}
+    </p>
+  </div>
+</div>
+
+<div class="bottom row">
+  <div class="col-5 p-0">
+    <button class="btn btn-primary w-100" (click)="prevPage()" [disabled]="book.bookCurrentPage === 0">Previous Page</button>
+  </div>
+  <div class="col-2"></div>
+  <div class="col-5 p-0 text-right">
+    <button class="btn btn-primary w-100" (click)="nextPage()" [disabled]="book.bookCurrentPage === book.bookPages.length - 1">Next Page</button>
+  </div>
+</div>

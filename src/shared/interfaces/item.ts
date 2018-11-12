@@ -196,6 +196,11 @@ export interface IItem {
 
   trait?: { name: string, level: number };
 
+  bookPage?: number;        // the page this item fits into
+  bookPages?: Array<{ id: string, text: string }>;
+  bookItemFilter?: string;
+  bookCurrentPage?: number; // the page this book is on
+
   enchantLevel?: number;
 
   searchItems?: IItem[];

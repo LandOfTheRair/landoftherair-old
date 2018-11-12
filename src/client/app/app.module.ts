@@ -75,8 +75,8 @@ import { MacroComponent } from './macro/macro.component';
 import { ActiveTargetComponent } from './active-target/active-target.component';
 import { PartyComponent } from './party/party.component';
 import { TraitsComponent } from './traits/traits.component';
-
 import { MarketBoardComponent } from './market-board/market-board.component';
+import { BookComponent } from './book/book.component';
 
 import { TradeskillAlchemyComponent } from './tradeskill-alchemy/tradeskill-alchemy.component';
 import { TradeskillSpellforgingComponent } from './tradeskill-spellforging/tradeskill-spellforging.component';
@@ -145,6 +145,7 @@ export class APIInterceptor implements HttpInterceptor {
     PartyComponent,
     TraitsComponent,
     MarketBoardComponent,
+    BookComponent,
 
     TradeskillAlchemyComponent,
     TradeskillSpellforgingComponent,

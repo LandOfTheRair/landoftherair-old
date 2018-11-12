@@ -520,6 +520,23 @@
     <app-market-board></app-market-board>
   </ng-template>
 
+  <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.character.rightHand && colyseus.game.character.rightHand.bookPages"
+              windowName="book"
+              [otherWindowClasses]="'book above-game-window'"
+              (active)="setActiveWindow($event)"
+              [canClose]="false"
+              [headTemplate]="bookHead"
+              [bodyTemplate]="bookBody"
+  ></app-window>
+
+  <ng-template #bookHead>
+    Reading Book
+  </ng-template>
+
+  <ng-template #bookBody>
+    <app-book></app-book>
+  </ng-template>
+
 </div>
 
 <div class="modal fade" bsModal #options="bs-modal" tabindex="-1">

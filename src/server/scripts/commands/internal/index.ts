@@ -3,6 +3,7 @@ export * from './ClearCommands';
 export * from './Interact';
 export * from './Look';
 export * from './Move';
+export * from './Page';
 export * from './Say';
 export * from './PartySay';
 export * from './Talk';

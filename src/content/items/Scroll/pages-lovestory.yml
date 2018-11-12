@@ -1,0 +1,42 @@
+
+- name: Risan Love Story Page 1
+  sprite: 224
+  desc: "page 1 of a love story"
+  extendedDesc: "HELP"
+  value: 100
+  bookPage: 0
+
+- name: Risan Love Story Page 2
+  sprite: 224
+  desc: "page 2 of a love story"
+  extendedDesc: "I"
+  value: 100
+  bookPage: 1
+
+- name: Risan Love Story Page 3
+  sprite: 224
+  desc: "page 3 of a love story"
+  extendedDesc: "HAVE"
+  value: 100
+  bookPage: 2
+
+- name: Risan Love Story Page 4
+  sprite: 224
+  desc: "page 4 of a love story"
+  extendedDesc: "BEEN"
+  value: 100
+  bookPage: 3
+
+- name: Risan Love Story Page 5
+  sprite: 224
+  desc: "page 5 of a love story"
+  extendedDesc: "TAKEN"
+  value: 100
+  bookPage: 4
+
+- name: Risan Love Story Page 6
+  sprite: 224
+  desc: "page 6 of a love story"
+  extendedDesc: "epilogue"
+  value: 100
+  bookPage: 5

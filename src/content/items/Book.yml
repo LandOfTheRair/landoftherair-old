@@ -1,5 +1,5 @@
 - name: Rylt Renegade Book
-  sprite: 1017
+  sprite: 1018
   desc: "a very well-written novel about renegades and, er, other 'things'"
   value: 1
   binds: true
@@ -9,3 +9,38 @@
   desc: "a strange book entitled \"The Saucy Miner\" - it seems to be a recipe book"
   value: 1
   binds: true
+
+  bookPages:
+    - id: ""
+      text: "Stewed rockgolem: Spring water, 2 rocks. Boil until tender."
+    - id: ""
+      text: "Broiled rockgolem: Place rock on mine shaft. Run briefly, come back, enjoy."
+
+- name: Risan Love Story
+  sprite: 1019
+  desc: "a short story, torn to shreds"
+  value: 1
+  binds: true
+  destroyOnDrop: true
+  bookItemFilter: "Risan Love Story Page"
+
+- name: Tweans Gem Codex
+  sprite: 1020
+  desc: "a book entitled Twean's Gem Codex"
+  value: 100
+  binds: true
+  bookItemFilter: "Lore Scroll - Gem -"
+
+- name: Selens Alchemical Guide
+  sprite: 1019
+  desc: "a book entitled Selen's Alchemical Guide"
+  value: 100
+  binds: true
+  bookItemFilter: "Lore Scroll - Crafting - Selen"
+
+- name: Pandiras Hammer Teachings
+  sprite: 1017
+  desc: "a book entitled Pandira's Hammer Teachings"
+  value: 100
+  binds: true
+  bookItemFilter: "Lore Scroll - Crafting - Pandira"

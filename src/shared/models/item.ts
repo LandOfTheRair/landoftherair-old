@@ -1,4 +1,4 @@
-import { cloneDeep, extend, get, includes, isNumber, isUndefined, size, startCase } from 'lodash';
+import { cloneDeep, extend, get, includes, isNumber, isUndefined, size, startCase, find } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import * as uuid from 'uuid/v4';
 
@@ -68,6 +68,11 @@ export class Item implements IItem {
   trapUses?: number;
 
   trait?: { name: string, level: number };
+
+  bookPage?: number;
+  bookPages?: Array<{ id: string, text: string }>;
+  bookItemFilter?: string;
+  bookCurrentPage?: number;
 
   enchantLevel?: number;
 
@@ -278,7 +283,7 @@ export class Item implements IItem {
   }
 
   canUse(char: ICharacter): boolean {
-    return (this.itemClass === 'Box' || this.effect || this.succorInfo || this.ounces >= 0)
+    return (this.itemClass === 'Box' || (this.itemClass === 'Book' && this.bookItemFilter) || this.effect || this.succorInfo || this.ounces >= 0)
       && this.itemClass !== 'Trap'
       && this.hasCondition()
       && this.isOwnedBy(char);
@@ -315,25 +320,82 @@ export class Item implements IItem {
       }
     }
 
+    if(this.itemClass === 'Book') {
+      if(!this.bookItemFilter) return false;
+
+      this.handleBook(char);
+    }
+
     if(this.itemClass === 'Box') {
-      if(this.containedItems.length === 0) return false;
-
-      const containedItems = this.containedItems;
-      this.containedItems = [];
-
-      LootHelper.rollSingleTable(containedItems, char.$$room).then(items => {
-        const setItem = items[0];
-        char[`set${hand}`](setItem);
-
-        if(setItem) {
-          char.sendClientMessage(`You got ${setItem.desc} from the box!`);
-        } else {
-          char.sendClientMessage(`The box was empty!`);
-        }
-
-      });
+      this.handleBox(char, hand);
     }
 
     return true;
+  }
+
+  private handleBook(char: ICharacter) {
+    const pageIndexes = char.$$room.npcLoader.getItemsFromPlayerSackByName(char, this.bookItemFilter, true);
+
+    if(pageIndexes.length === 0) {
+      char.sendClientMessage('No new pages were found in your sack.');
+      return;
+    }
+
+    this.bookPages = this.bookPages || [];
+    delete this.destroyOnDrop;
+
+    const takeIndexes = [];
+    pageIndexes.forEach(idx => {
+      const item = char.sack.getItemFromSlot(idx);
+
+      // if it fits into a specific page, we put it there
+      if(item.bookPage) {
+        if(!this.bookPages[item.bookPage]) {
+          takeIndexes.push(idx);
+          this.bookPages[item.bookPage] = { id: item.name, text: item.extendedDesc };
+        }
+
+      // if it does not have a specific page...
+      } else {
+
+        // first, we check for an old one matching the id, and try to update it
+        const prevPage = find(this.bookPages, { id: item.name });
+        if(prevPage) {
+          if(prevPage.text === item.extendedDesc) return;
+
+          prevPage.text = item.extendedDesc;
+
+        // but if it doesn't exist, we just push it
+        } else {
+          this.bookPages.push({ id: item.name, text: item.extendedDesc });
+        }
+
+        takeIndexes.push(idx);
+      }
+    });
+
+    char.$$room.npcLoader.takeItemsFromPlayerSack(char, takeIndexes);
+
+    char.sendClientMessage(`Found ${takeIndexes.length} new or updated pages in your sack.`);
+  }
+
+  private handleBox(char: ICharacter, hand: string) {
+    if(this.containedItems.length === 0) return false;
+
+    const containedItems = this.containedItems;
+    this.containedItems = [];
+
+    LootHelper.rollSingleTable(containedItems, char.$$room).then(items => {
+      const setItem = items[0];
+      char[`set${hand}`](setItem);
+
+      if(setItem) {
+        char.sendClientMessage(`You got ${setItem.desc} from the box!`);
+      } else {
+        char.sendClientMessage(`The box was empty!`);
+      }
+
+    });
+
   }
 }

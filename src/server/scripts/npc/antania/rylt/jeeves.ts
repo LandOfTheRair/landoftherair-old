@@ -6,20 +6,17 @@ export const setup = async (npc: NPC) => {
   npc.affiliation = 'Potion Vendor';
 
   const vendorItems = [
-    'Mend Bottle',
-    'Mend Bottle (5oz)',
-    'Instant Heal Bottle',
-    'Instant Heal Bottle (5oz)',
-    'Antanian Slice of Bread',
-    'Antanian Loaf of Bread',
-    'Antanian Bottle of Water',
-    'Antanian Pint of Water',
-    'Empty Bottle'
+    'Scribe Scroll',
+    'Ink Vial',
+    'Ink Vial (15oz)',
+    'Tweans Gem Codex',
+    'Selens Alchemical Guide',
+    'Pandiras Hammer Teachings'
   ];
 
   npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);
 
-  npc.rightHand = await npc.$$room.npcLoader.loadItem('Instant Heal Bottle');
+  npc.rightHand = await npc.$$room.npcLoader.loadItem('Tweans Gem Codex');
   npc.gear.Armor = await npc.$$room.npcLoader.loadItem('Antanian Tunic');
   npc.recalculateStats();
 };

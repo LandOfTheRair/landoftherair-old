@@ -74,7 +74,7 @@ class LoreLoader {
 
       return {
         _itemName: x.name,
-        scrollDesc: `Twean's Gem Codex: If you find ${x.desc}, it will ${effectText} ${bonusText}`
+        scrollDesc: `If you find ${x.desc}, it will ${effectText} ${bonusText}`
       };
 
     });
@@ -87,7 +87,8 @@ class LoreLoader {
         name: itemName,
         sprite: 224,
         value: 1,
-        desc: gemScrollDesc.scrollDesc,
+        desc: `Twean's Gem Codex: ${gemScrollDesc.scrollDesc}`,
+        extendedDesc: gemScrollDesc.scrollDesc,
         itemClass: 'Scroll',
         type: 'Martial'
       }).catch(e => {}));
@@ -130,7 +131,8 @@ class LoreLoader {
 
       return {
         _itemName: x.item,
-        scrollDesc: `${leader}: If you want to make ${itemDesc}, you must mix these ${ingredientDescs.length} items: ${ingredientDescs.join(', ')}`
+        _leader: leader,
+        scrollDesc: `If you want to make ${itemDesc}, you must mix these ${ingredientDescs.length} items: ${ingredientDescs.join(', ')}.`
       };
 
     });
@@ -138,13 +140,14 @@ class LoreLoader {
 
     allIngScrollDescs.forEach(ingScrollDesc => {
 
-      const itemName = `Lore Scroll - Crafting - ${ingScrollDesc._itemName}`;
+      const itemName = `Lore Scroll - Crafting - ${ingScrollDesc._leader} - ${ingScrollDesc._itemName}`;
 
       promises.push(DB.$items.insert({
         name: itemName,
         sprite: 224,
         value: 1,
-        desc: ingScrollDesc.scrollDesc,
+        desc: `${ingScrollDesc._leader}: ${ingScrollDesc.scrollDesc}`,
+        extendedDesc: ingScrollDesc.scrollDesc,
         itemClass: 'Scroll',
         type: 'Martial'
       }).catch(e => {}));

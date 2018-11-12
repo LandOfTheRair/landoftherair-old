@@ -579,7 +579,7 @@ export class ColyseusGameService {
     this.clientGameState.setMap(map);
   }
 
-  private updateActiveWindowForGameWindow(window: string) {
+  public updateActiveWindowForGameWindow(window: string) {
     setTimeout(() => {
       this.localStorage.store('activeWindow', window);
     });

@@ -269,6 +269,15 @@
     max-height: 530px;
   }
 
+  &.book {
+    min-width: 350px;
+    max-width: 350px;
+
+    z-index: 1000;
+    min-height: 430px;
+    max-height: 430px;
+  }
+
   position: absolute !important;
 
   border: 1px solid #000;
