@@ -27,6 +27,8 @@ import { SkillTree } from './skill-tree';
 import { RollerHelper } from '../helpers/roller-helper';
 import { Currency } from '../interfaces/holiday';
 import { Allegiance, AllNormalGearSlots, IPlayer, MaxSizes } from '../interfaces/character';
+import { IItem } from '../interfaces/item';
+
 import { HolidayHelper } from '../helpers/holiday-helper';
 
 export class Player extends Character implements IPlayer {
@@ -710,7 +712,7 @@ export class Player extends Character implements IPlayer {
     delete this.activeQuests[quest.name];
   }
 
-  canTakeItem(item: Item): boolean {
+  canTakeItem(item: IItem): boolean {
     if(!item.requirements) return true;
     if(!item.requirements.quest) return true;
 
@@ -761,7 +763,7 @@ export class Player extends Character implements IPlayer {
     super.recalculateStats();
   }
 
-  private get traitableGear(): Item[] {
+  private get traitableGear(): IItem[] {
     const baseValue = values(this.gear);
     if(this.leftHand && this.canGetBonusFromItemInHand(this.leftHand)) baseValue.push(this.leftHand);
     if(this.rightHand && this.canGetBonusFromItemInHand(this.rightHand)) baseValue.push(this.rightHand);
@@ -815,7 +817,7 @@ export class Player extends Character implements IPlayer {
     return checkTimestamp < +theoreticalResetTime;
   }
 
-  public canBuyDailyItem(item: Item): boolean {
+  public canBuyDailyItem(item: IItem): boolean {
     if(!item.daily) throw new Error('Attempting to buy item as a daily item ' + JSON.stringify(item));
 
     if(!this.daily.item[item.uuid]) return true;
@@ -832,7 +834,7 @@ export class Player extends Character implements IPlayer {
     this.daily.quest[key] = +DateTime.fromObject({ zone: 'utc' });
   }
 
-  public buyDailyItem(item: Item) {
+  public buyDailyItem(item: IItem) {
     this.daily.item[item.uuid] = +DateTime.fromObject({ zone: 'utc' });
   }
 

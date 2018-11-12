@@ -12,7 +12,7 @@ import { BuildupEffect } from '../../base/Effect';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 import { MessageHelper } from './message-helper';
 import { SkillClassNames, StatName } from '../../../shared/interfaces/character';
-import { CanUseEffectItemClasses, DamageType, HandsClasses, ItemEffect, ShieldClasses, WeaponClasses } from '../../../shared/interfaces/item';
+import { CanUseEffectItemClasses, DamageType, HandsClasses, IItem, ItemEffect, ShieldClasses, WeaponClasses } from '../../../shared/interfaces/item';
 
 export const BaseItemStatsPerTier = {
   Arrow:                { base: 1, min: 0, max: 2, weakChance: 25, damageBonus: 10 },
@@ -47,7 +47,7 @@ export const BaseItemStatsPerTier = {
 
 export class CombatHelper {
 
-  static determineWeaponInformation(attacker: Character, item: Item, baseRolls = 0) {
+  static determineWeaponInformation(attacker: Character, item: IItem, baseRolls = 0) {
     if(!BaseItemStatsPerTier[item.itemClass]) {
       return { damageRolls: 0, damageBonus: 0, isWeak: false, isStrong: false };
     }
@@ -110,7 +110,7 @@ export class CombatHelper {
     hidden.cast(char, char);
   }
 
-  private static attemptToStun(attacker: Character, weapon: Item, defender: Character) {
+  private static attemptToStun(attacker: Character, weapon: IItem, defender: Character) {
 
     const hasFleetOfFoot = defender.hasEffect('FleetOfFoot');
     const hasUnshakeable = defender.hasEffect('Unshakeable');
@@ -160,7 +160,7 @@ export class CombatHelper {
     return includes(ShieldClasses, item.itemClass);
   }
 
-  static resolveThrow(attacker, defender, hand, item: Item) {
+  static resolveThrow(attacker, defender, hand, item: IItem) {
     if(item.returnsOnThrow) return;
 
     const breakTypes = {
@@ -199,7 +199,7 @@ export class CombatHelper {
     attacker.setDirRelativeTo(defender);
   }
 
-  private static calcDurabilityDamageDoneBasedOnDefender(item: Item, attacker: Character, defender: Character, baseDamage: number): number {
+  private static calcDurabilityDamageDoneBasedOnDefender(item: IItem, attacker: Character, defender: Character, baseDamage: number): number {
     if(!defender.isNaturalResource) return baseDamage;
 
     if(item.itemClass === 'Bottle') {
@@ -222,7 +222,7 @@ export class CombatHelper {
     return classMultiplier * baseDamage * modifier;
   }
 
-  private static calcDamageDoneBasedOnDefender(item: Item, attacker: Character, defender: Character, baseDamage: number, criticality: number): number {
+  private static calcDamageDoneBasedOnDefender(item: IItem, attacker: Character, defender: Character, baseDamage: number, criticality: number): number {
     if(!defender.isNaturalResource) return baseDamage;
 
     if(!includes(WeaponClasses, item.itemClass) && item.itemClass !== 'Gloves' && item.itemClass !== 'Claws' && item.itemClass !== 'Boots') return 0;
@@ -274,7 +274,7 @@ export class CombatHelper {
       isBackstab = true;
     }
 
-    let attackerWeapon: Item;
+    let attackerWeapon: IItem;
 
     if(isThrow) {
       attackerWeapon = attacker[`${throwHand}Hand`];
@@ -872,7 +872,7 @@ export class CombatHelper {
     });
   }
 
-  static tryApplyEffect(attacker: Character, defender: Character, effect: ItemEffect, source?: Item): boolean {
+  static tryApplyEffect(attacker: Character, defender: Character, effect: ItemEffect, source?: IItem): boolean {
 
     // non-weapons (like bottles) can't trigger effects
     if(source && !includes(CanUseEffectItemClasses, source.itemClass)) return false;

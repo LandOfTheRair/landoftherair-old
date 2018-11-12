@@ -1,9 +1,8 @@
 
 import { extend, clone, includes } from 'lodash';
 
-import { Item} from '../../item';
 import { Container } from '../container';
-import { ArmorClasses, WeaponClasses } from '../../../interfaces/item';
+import { ArmorClasses, IItem, WeaponClasses } from '../../../interfaces/item';
 import { IMetalworkingContainer } from '../../../interfaces/container';
 
 export class MetalworkingContainer extends Container implements IMetalworkingContainer {
@@ -26,35 +25,35 @@ export class MetalworkingContainer extends Container implements IMetalworkingCon
     this.initItems();
   }
 
-  get craftItem(): Item {
+  get craftItem(): IItem {
     return this.items[0];
   }
 
-  get craftReagent(): Item {
+  get craftReagent(): IItem {
     return this.items[1];
   }
 
-  get craftResult(): Item {
+  get craftResult(): IItem {
     return this.items[2];
   }
 
-  set craftResult(item: Item) {
+  set craftResult(item: IItem) {
     this.items[2] = item;
   }
 
-  get upgradeItem(): Item {
+  get upgradeItem(): IItem {
     return this.items[3];
   }
 
-  get upgradeReagent(): Item {
+  get upgradeReagent(): IItem {
     return this.items[4];
   }
 
-  get upgradeResult(): Item {
+  get upgradeResult(): IItem {
     return this.items[5];
   }
 
-  set upgradeResult(item: Item) {
+  set upgradeResult(item: IItem) {
     this.items[5] = item;
   }
 

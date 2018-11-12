@@ -1,9 +1,9 @@
 
 import { extend } from 'lodash';
 
-import { Item } from '../../item';
 import { Container } from '../container';
 import { IAlchemyContainer } from '../../../interfaces/container';
+import { IItem } from '../../../interfaces/item';
 
 export class AlchemyContainer extends Container implements IAlchemyContainer {
 
@@ -15,15 +15,15 @@ export class AlchemyContainer extends Container implements IAlchemyContainer {
     this.initItems();
   }
 
-  get reagents(): Item[] {
+  get reagents(): IItem[] {
     return this.items.slice(0, 8);
   }
 
-  get result(): Item {
+  get result(): IItem {
     return this.items[8];
   }
 
-  set result(item: Item) {
+  set result(item: IItem) {
     this.items[8] = item;
   }
 

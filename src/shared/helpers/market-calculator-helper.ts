@@ -1,7 +1,7 @@
-import { Item } from '../models/item';
 
 import { isNumber, includes } from 'lodash';
 import { IPlayer } from '../interfaces/character';
+import { IItem } from '../interfaces/item';
 
 export class MarketCalculatorHelper {
 
@@ -39,7 +39,7 @@ export class MarketCalculatorHelper {
     return MarketCalculatorHelper.calculateTaxCostForRegion(baseCost, player.$$room.mapRegion);
   }
 
-  static itemListError(player: IPlayer, region: string, item: Item, baseItemListCost: number) {
+  static itemListError(player: IPlayer, region: string, item: IItem, baseItemListCost: number) {
     if(!item)                                 return 'You need to have an item to list for sale!';
 
     if(item.itemClass === 'Corpse'

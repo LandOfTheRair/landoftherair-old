@@ -1,9 +1,9 @@
 
 import { extend, clone, includes } from 'lodash';
 
-import { Item } from '../../item';
 import { Container } from '../container';
 import { ISpellforgingContainer } from '../../../interfaces/container';
+import { IItem } from '../../../interfaces/item';
 
 export class SpellforgingContainer extends Container implements ISpellforgingContainer {
 
@@ -24,19 +24,19 @@ export class SpellforgingContainer extends Container implements ISpellforgingCon
     this.initItems();
   }
 
-  get modifyItem(): Item {
+  get modifyItem(): IItem {
     return this.items[0];
   }
 
-  get reagent(): Item {
+  get reagent(): IItem {
     return this.items[1];
   }
 
-  get result(): Item {
+  get result(): IItem {
     return this.items[2];
   }
 
-  set result(item: Item) {
+  set result(item: IItem) {
     this.items[2] = item;
   }
 

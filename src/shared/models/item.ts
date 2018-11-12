@@ -277,7 +277,7 @@ export class Item implements IItem {
     return this.condition > 0;
   }
 
-  loseCondition(val = 1, onBreak = () => {}): void {
+  loseCondition(val = 1, onBreak: Function = () => {}): void {
     this.condition -= val;
     if(onBreak && this.condition <= 0) onBreak();
   }

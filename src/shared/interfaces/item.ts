@@ -231,7 +231,7 @@ export interface IItem {
   conditionACModifier(): number;
 
   hasCondition(): boolean;
-  loseCondition(val: number, onBreak: Function): void;
+  loseCondition(val?: number, onBreak?: Function): void;
 
   descTextFor(player: ICharacter, senseLevel: number, fromClient?: boolean): string;
 

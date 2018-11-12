@@ -1,14 +1,15 @@
 
 import { startCase, compact, findIndex, sample, isUndefined, isNumber } from 'lodash';
 
-import { Item } from '../item';
 import { IContainer } from '../../interfaces/container';
+import { IItem } from '../../interfaces/item';
+import { Item } from '../item';
 
 export class Container implements IContainer {
 
   public size: number;
   protected autoFix = true;
-  protected items: Item[] = [];
+  protected items: IItem[] = [];
 
   public get allItems() {
     return this.items;
@@ -35,7 +36,7 @@ export class Container implements IContainer {
     this.items = compact(this.items);
   }
 
-  addItem(item: Item, index?: number, extra?: any): string {
+  addItem(item: IItem, index?: number, extra?: any): string {
     const containerName = startCase(this.constructor.name).toLowerCase();
     if(!this.canAccept(item, index)) return `That item does not fit properly in that slot of your ${containerName}.`;
     if(this.isFull() && isUndefined(index)) return `Your ${containerName} is full.`;
@@ -48,11 +49,11 @@ export class Container implements IContainer {
     }
   }
 
-  getItemFromSlot(slot: number): Item {
+  getItemFromSlot(slot: number): IItem {
     return this.items[slot];
   }
 
-  takeItemFromSlot(slot: number, amt?: number): Item {
+  takeItemFromSlot(slot: number, amt?: number): IItem {
     const item = this.items[slot];
     if(!item) return null;
 
@@ -61,20 +62,20 @@ export class Container implements IContainer {
     return item;
   }
 
-  randomItem(): Item {
+  randomItem(): IItem {
     return sample(this.items);
   }
 
-  takeItem(item: Item): Item {
+  takeItem(item: IItem): IItem {
     const index = findIndex(this.items, x => x === item);
     return this.takeItemFromSlot(index);
   }
 
-  takeItemFromSlots(slots: number[]): Item[] {
+  takeItemFromSlots(slots: number[]): IItem[] {
     return slots.sort((x, y) => x - y).reverse().map(index => this.takeItemFromSlot(index));
   }
 
-  canAccept(item: Item, index?: number): boolean {
+  canAccept(item: IItem, index?: number): boolean {
     if(!item) return false;
     return item.itemClass !== 'Corpse' && item.itemClass !== 'Coin';
   }
