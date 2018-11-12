@@ -2,8 +2,8 @@
 import { Character} from '../../../shared/models/character';
 
 import * as Effects from '../../effects';
-import { Item } from '../../../shared/models/item';
 import { SkillClassNames } from '../../../shared/interfaces/character';
+import { IItem } from '../../../shared/interfaces/item';
 
 export class TrapHelper {
 
@@ -29,7 +29,7 @@ export class TrapHelper {
     effectRef.cast(casterCreature ? casterCreature : target, target, obj);
   }
 
-  static placeTrap(x, y, user: Character, trap: Item): boolean {
+  static placeTrap(x, y, user: Character, trap: IItem): boolean {
 
     const interactable = user.$$room.state.getInteractable(x, y, true);
     if(interactable) return false;
