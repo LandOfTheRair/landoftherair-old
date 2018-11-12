@@ -12599,6 +12599,50 @@
                  "width":64,
                  "x":10752,
                  "y":14976
+                }, 
+                {
+                 "gid":3342,
+                 "height":64,
+                 "id":2943,
+                 "name":"Heo",
+                 "properties":
+                    {
+                     "hpTier":3,
+                     "script":"global\/hpdoc"
+                    },
+                 "propertytypes":
+                    {
+                     "hpTier":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10752,
+                 "y":15552
+                }, 
+                {
+                 "gid":3332,
+                 "height":64,
+                 "id":2944,
+                 "name":"Meo",
+                 "properties":
+                    {
+                     "mpTier":3,
+                     "script":"global\/mpdoc"
+                    },
+                 "propertytypes":
+                    {
+                     "mpTier":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":10752,
+                 "y":15680
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -20943,7 +20987,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2943,
+ "nextobjectid":2945,
  "orientation":"orthogonal",
  "properties":
     {
