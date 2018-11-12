@@ -2,7 +2,7 @@
 - item: Antanian Copper Dagger
   skillGained: 20
   maxSkillForGains: 7
-  requiredSkill: 1
+  requiredSkill: 0
   xpGained: 1500
   ingredients:
     - Antanian Twig
@@ -11,7 +11,7 @@
 - item: Antanian Copper Longsword
   skillGained: 20
   maxSkillForGains: 7
-  requiredSkill: 1
+  requiredSkill: 0
   xpGained: 1500
   ingredients:
     - Antanian Twig
@@ -20,7 +20,7 @@
 - item: Antanian Copper Greatsword
   skillGained: 20
   maxSkillForGains: 7
-  requiredSkill: 1
+  requiredSkill: 0
   xpGained: 1500
   ingredients:
     - Antanian Branch
@@ -29,7 +29,7 @@
 - item: Antanian Copper Halberd
   skillGained: 20
   maxSkillForGains: 7
-  requiredSkill: 1
+  requiredSkill: 0
   xpGained: 1500
   ingredients:
     - Antanian Branch
@@ -38,7 +38,7 @@
 - item: Antanian Silver Axe
   skillGained: 20
   maxSkillForGains: 7
-  requiredSkill: 1
+  requiredSkill: 0
   xpGained: 1500
   ingredients:
     - Antanian Twig
@@ -47,7 +47,7 @@
 - item: Antanian Silver Hammer
   skillGained: 20
   maxSkillForGains: 7
-  requiredSkill: 1
+  requiredSkill: 0
   xpGained: 1500
   ingredients:
     - Antanian Twig
@@ -56,7 +56,7 @@
 - item: Antanian Silver Greataxe
   skillGained: 20
   maxSkillForGains: 7
-  requiredSkill: 1
+  requiredSkill: 0
   xpGained: 1500
   ingredients:
     - Antanian Branch
@@ -65,7 +65,7 @@
 - item: Antanian Silver Greatmace
   skillGained: 20
   maxSkillForGains: 7
-  requiredSkill: 1
+  requiredSkill: 0
   xpGained: 1500
   ingredients:
     - Antanian Branch
@@ -83,7 +83,7 @@
 - item: Antanian Crafted Arrows
   skillGained: 20
   maxSkillForGains: 7
-  requiredSkill: 1
+  requiredSkill: 0
   xpGained: 1500
   ingredients:
     - Antanian Twig
