@@ -2,41 +2,42 @@
 - name: Risan Love Story Page 1
   sprite: 224
   desc: "page 1 of a love story"
-  extendedDesc: "HELP"
+  extendedDesc: "Hello, Evelyn. Life just isn't worth living anymore. Please understand."
   value: 100
   bookPage: 0
 
 - name: Risan Love Story Page 2
   sprite: 224
   desc: "page 2 of a love story"
-  extendedDesc: "I"
+  extendedDesc: "I can't do this anymore."
   value: 100
   bookPage: 1
 
 - name: Risan Love Story Page 3
   sprite: 224
   desc: "page 3 of a love story"
-  extendedDesc: "HAVE"
+  extendedDesc: "Hopefully no one has been looking for me. Anyway, i hope you've been well. Very rough over here, but that's okay, you're okay. Everything will be alright."
   value: 100
   bookPage: 2
 
 - name: Risan Love Story Page 4
   sprite: 224
   desc: "page 4 of a love story"
-  extendedDesc: "BEEN"
+  extendedDesc: "Bye, Evelyn. Even in the end, i still can't face you. Never before has life been like this for us, for me."
   value: 100
   bookPage: 3
 
 - name: Risan Love Story Page 5
   sprite: 224
   desc: "page 5 of a love story"
-  extendedDesc: "TAKEN"
+  extendedDesc: "Today will be my list day. Again and again, my past has tormented me. Keep going strong, Evelyn. Never again will you worry about me."
   value: 100
   bookPage: 4
 
 - name: Risan Love Story Page 6
   sprite: 224
   desc: "page 6 of a love story"
-  extendedDesc: "epilogue"
+  extendedDesc: "Evelyn - please - re-read the big letters on the previous pages. They’re forcing me to be a brigand. I’ll come home as soon as I can get away. -Jacques"
   value: 100
   bookPage: 5
+  destroyOnDrop: true

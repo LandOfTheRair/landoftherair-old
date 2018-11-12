@@ -70,3 +70,17 @@
     name: BarFrost
     uses: 10
     potency: 10
+
+- name: Secondwind Ring
+  sprite: 970
+  desc: "a golden wedding ring set with a purple gem that has wings carved into it"
+  value: 100
+  binds: true
+  stats:
+    defense: 10
+  effect:
+    name: Secondwind
+    uses: 100
+    potency: 50
+  requirements:
+    level: 20

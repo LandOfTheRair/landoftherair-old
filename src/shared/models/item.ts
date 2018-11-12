@@ -349,7 +349,7 @@ export class Item implements IItem {
       const item = char.sack.getItemFromSlot(idx);
 
       // if it fits into a specific page, we put it there
-      if(item.bookPage) {
+      if(isNumber(item.bookPage)) {
         if(!this.bookPages[item.bookPage]) {
           takeIndexes.push(idx);
           this.bookPages[item.bookPage] = { id: item.name, text: item.extendedDesc };
@@ -397,5 +397,12 @@ export class Item implements IItem {
 
     });
 
+  }
+
+  public hasPageCount(total: number): boolean {
+    if(!this.bookPages) return false;
+
+    const filteredTotal = this.bookPages.filter(x => x);
+    return filteredTotal.length >= total;
   }
 }

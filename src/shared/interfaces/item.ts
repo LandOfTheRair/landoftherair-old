@@ -244,4 +244,6 @@ export interface IItem {
   canUseExpiration(): boolean;
 
   castAndTryBreak(): boolean;
+
+  hasPageCount(total: number): boolean;
 }

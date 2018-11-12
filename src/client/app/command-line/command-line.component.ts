@@ -139,9 +139,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
     this.colyseusGame.sendCommandString(this.colyseusGame.currentCommand);
 
-    if(this.colyseusGame.currentCommand !== '.') {
-      this.colyseusGame.doCommand(this.colyseusGame.currentCommand);
-    }
+    this.colyseusGame.doCommand(this.colyseusGame.currentCommand);
 
     this.colyseusGame.currentCommand = '';
 

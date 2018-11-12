@@ -711,7 +711,8 @@ export class ColyseusGameService {
   }
 
   public doCommand(command) {
-
+    if(command === '.') return;
+    if(startsWith(command, '~')) return;
     if(this.lastCommands[0] === command) return;
 
     this.lastCommands.unshift(command);

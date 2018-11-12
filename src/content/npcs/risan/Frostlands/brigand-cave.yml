@@ -66,6 +66,11 @@
     - drop: 'leftHand'
       chance: -1
 
+  drops:
+    - result: Risan Love Story Page 1
+      chance: 1
+      maxChance: 250
+
   traitLevels:
     OffhandFinesse: 4
     Riposte: 5
@@ -156,6 +161,11 @@
       chance: -1
     - drop: 'leftHand'
       chance: -1
+
+  drops:
+    - result: Risan Love Story Page 2
+      chance: 1
+      maxChance: 250
 
   traitLevels:
     ForgedFire: 5
@@ -250,6 +260,11 @@
       chance: -1
     - drop: 'leftHand'
       chance: -1
+
+  drops:
+    - result: Risan Love Story Page 3
+      chance: 1
+      maxChance: 250
 
   traitLevels:
     FindFamiliarWater: 1
@@ -367,6 +382,11 @@
       chance: -1
     - drop: 'leftHand'
       chance: -1
+
+  drops:
+    - result: Risan Love Story Page 4
+      chance: 1
+      maxChance: 250
 
   traitLevels:
     OffhandFinesse: 5
@@ -497,6 +517,11 @@
       chance: -1
     - drop: 'leftHand'
       chance: -1
+
+  drops:
+    - result: Risan Love Story Page 5
+      chance: 1
+      maxChance: 250
 
   traitLevels:
     Shieldbearer: 1
