@@ -10864,7 +10864,7 @@
                  "y":256
                 }, 
                 {
-                 "height":4224,
+                 "height":4288,
                  "id":664,
                  "name":"dungeon",
                  "rotation":0,
@@ -10872,7 +10872,7 @@
                  "visible":true,
                  "width":1472,
                  "x":320,
-                 "y":4352
+                 "y":4288
                 }, 
                 {
                  "height":2944,
@@ -11085,7 +11085,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -11425,7 +11425,7 @@
      "respawnY":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.4",
+ "tiledversion":"1.1.5",
  "tileheight":64,
  "tilesets":[
         {
