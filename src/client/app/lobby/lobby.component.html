@@ -53,7 +53,7 @@
           <button class="btn form-control no-border-radius dropdown-toggle border-top-button border-right-button"
                   dropdownToggle
                   type="button"
-                  [class.btn-success]="lobby.lobbyState.status[lobby.myAccount.username] === 'Available'"
+                  [class.btn-success]="!lobby.myAccount.username || lobby.lobbyState.status[lobby.myAccount.username] === 'Available'"
                   [class.btn-secondary]="lobby.lobbyState.status[lobby.myAccount.username] === 'AFK'"
                   [disabled]="!lobby.colyseus.isConnected">{{ lobby.lobbyState.status[lobby.myAccount.username] }} <span class="caret"></span></button>
 
