@@ -46,7 +46,7 @@ export class Player extends Character implements IPlayer {
   @nonenumerable
   inGame: boolean;
 
-  buyback: Item[];
+  buyback: IItem[];
 
   private learnedSpells: any;
 
@@ -535,7 +535,7 @@ export class Player extends Character implements IPlayer {
     return item;
   }
 
-  sellItem(item: Item): number {
+  sellItem(item: IItem): number {
     const value = this.sellValue(item);
     this.earnGold(value, `Sell:${item.name}`);
     item._buybackValue = value;
