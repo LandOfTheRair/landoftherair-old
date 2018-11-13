@@ -9,7 +9,7 @@ export class CatacombsSpectre4FSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 15,
+      respawnRate: 60,
       initialSpawn: 2,
       maxCreatures: 3,
       spawnRadius: 1,
