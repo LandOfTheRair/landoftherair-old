@@ -242,6 +242,8 @@ export class NPC extends Character implements INPC {
       let adjustedXp = this.$$room.calcAdjustedXPGain(givenXp);
       if(killer.hasEffect('Newbie')) adjustedXp += Math.floor(adjustedXp * 0.10);
 
+      adjustedXp = this.calculateXPGainForPlayer(killer, adjustedXp);
+
       const earnedAP = this.calculateAPGainForPlayer(killer);
 
       killer.gainExpFromKills(adjustedXp, earnedAP);
@@ -253,6 +255,12 @@ export class NPC extends Character implements INPC {
 
       }
     }
+  }
+
+  private calculateXPGainForPlayer(char: Character, baseXp: number): number {
+    if(char.level - 10 > this.level) return 0;
+    if(char.level - 5 > this.level) return Math.floor(baseXp / 2);
+    return baseXp;
   }
 
   private calculateAPGainForPlayer(char: Character): number {

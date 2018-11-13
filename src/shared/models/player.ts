@@ -841,7 +841,7 @@ export class Player extends Character implements IPlayer {
   }
 
   gainExp(xpGain: number) {
-    if(this.gainingAP && xpGain > 0) return;
+    if(this.gainingAP && xpGain >= 0) return;
 
     super.gainExp(this.$$room.subscriptionHelper.modifyXPGainForSubscription(this, xpGain));
   }
