@@ -144,6 +144,16 @@
         effectInfo:
           enrageTimer: 300000
 
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
+
+    - name: TrueSight
+      effectData:
+        effectInfo:
+          isPermanent: true
+
     - name: Attribute
       effectData:
         damageType: 'magical'
