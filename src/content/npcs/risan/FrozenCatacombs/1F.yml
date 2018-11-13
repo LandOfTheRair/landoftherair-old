@@ -15,8 +15,8 @@
     offense: 15
     accuracy: 15
     perception: 200
-    armorClass: 20
-    defense: 20
+    armorClass: 15
+    defense: 15
     damageFactor: 0.2
 
   rightHand:
@@ -121,8 +121,8 @@
     offense: 15
     accuracy: 15
     perception: 200
-    armorClass: 20
-    defense: 20
+    armorClass: 15
+    defense: 15
     damageFactor: 0.2
 
   rightHand:
@@ -429,7 +429,7 @@
     offense: 15
     accuracy: 15
     armorClass: 20
-    defense: 40
+    defense: 25
     damageFactor: 0.4
 
   leftHand:
@@ -527,8 +527,8 @@
     perception: 150
     offense: 15
     accuracy: 15
-    armorClass: 20
-    defense: 20
+    armorClass: 15
+    defense: 15
     damageFactor: 0.2
 
   rightHand:
@@ -632,8 +632,8 @@
     perception: 125
     offense: 15
     accuracy: 15
-    armorClass: 20
-    defense: 20
+    armorClass: 15
+    defense: 15
     damageFactor: 0.2
 
   rightHand:
