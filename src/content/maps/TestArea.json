@@ -793,6 +793,50 @@
                  "width":64,
                  "x":1152,
                  "y":1088
+                }, 
+                {
+                 "gid":3247,
+                 "height":64,
+                 "id":218,
+                 "name":"Alterna",
+                 "properties":
+                    {
+                     "script":"subscriber\/castle\/alterna"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1984,
+                 "y":512
+                }, 
+                {
+                 "gid":3092,
+                 "height":64,
+                 "id":219,
+                 "name":"",
+                 "properties":
+                    {
+                     "maxLevelUpLevel":50,
+                     "maxSkillTrain":27,
+                     "script":"trainer\/mage"
+                    },
+                 "propertytypes":
+                    {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1856,
+                 "y":576
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -804,42 +848,6 @@
          "draworder":"topdown",
          "name":"Spawners",
          "objects":[
-                {
-                 "gid":2363,
-                 "height":64,
-                 "id":189,
-                 "name":"Tutorial Yeti Spawner",
-                 "properties":
-                    {
-                     "canSlowDown":true,
-                     "initialSpawn":3,
-                     "lairName":"Tutorial Yeti",
-                     "maxSpawn":30,
-                     "randomWalkRadius":5,
-                     "requireDeadToRespawn":false,
-                     "respawnRate":10,
-                     "script":"global\/lair",
-                     "shouldStrip":false
-                    },
-                 "propertytypes":
-                    {
-                     "canSlowDown":"bool",
-                     "initialSpawn":"int",
-                     "lairName":"string",
-                     "maxSpawn":"int",
-                     "randomWalkRadius":"int",
-                     "requireDeadToRespawn":"bool",
-                     "respawnRate":"int",
-                     "script":"string",
-                     "shouldStrip":"bool"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2368,
-                 "y":512
-                }, 
                 {
                  "gid":2363,
                  "height":64,
@@ -875,6 +883,26 @@
                  "width":64,
                  "x":2368,
                  "y":2432
+                }, 
+                {
+                 "gid":2363,
+                 "height":64,
+                 "id":216,
+                 "name":"Town Spawner",
+                 "properties":
+                    {
+                     "script":"test\/test"
+                    },
+                 "propertytypes":
+                    {
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2368,
+                 "y":512
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -922,7 +950,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":216,
+ "nextobjectid":220,
  "orientation":"orthogonal",
  "properties":
     {

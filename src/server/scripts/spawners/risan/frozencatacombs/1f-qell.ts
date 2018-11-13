@@ -15,6 +15,7 @@ export class CatacombsQell1FSpawner extends Spawner {
       spawnRadius: 1,
       randomWalkRadius: 15,
       leashRadius: 25,
+      eliteTickCap: 45,
       npcIds
     });
   }

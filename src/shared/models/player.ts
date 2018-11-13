@@ -129,6 +129,8 @@ export class Player extends Character implements IPlayer {
   @nonenumerable
   public $$spawnerRegionId: string|number;
 
+  public gainingAP: boolean;
+
   get party(): Party {
     return this.$$room && this.$$room.partyManager ? this.$$room.partyManager.getPartyByName(this.partyName) : null;
   }
@@ -317,11 +319,11 @@ export class Player extends Character implements IPlayer {
     }
   }
 
-  gainExpFromKills(xpGain: number) {
-    super.gainExpFromKills(xpGain);
+  gainExpFromKills(xpGain: number, apGain: number) {
+    super.gainExpFromKills(xpGain, apGain);
 
     if(this.party) {
-      const numMembersSharedWith = PartyHelper.shareExpWithParty(this, xpGain);
+      const numMembersSharedWith = PartyHelper.shareExpWithParty(this, xpGain, apGain);
 
       if(numMembersSharedWith > 0) {
         this.gainPartyExp(xpGain);
@@ -839,7 +841,15 @@ export class Player extends Character implements IPlayer {
   }
 
   gainExp(xpGain: number) {
+    if(this.gainingAP && xpGain > 0) return;
+
     super.gainExp(this.$$room.subscriptionHelper.modifyXPGainForSubscription(this, xpGain));
+  }
+
+  gainAxp(axpGain: number) {
+    if(!this.gainingAP) return;
+
+    super.gainAxp(this.$$room.subscriptionHelper.modifyAXPGainForSubscription(this, axpGain));
   }
 
   _gainSkill(type, skillGained) {

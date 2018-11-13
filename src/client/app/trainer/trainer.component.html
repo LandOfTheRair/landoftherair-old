@@ -5,13 +5,22 @@
 
   <div class="row mt-1">
 
-    <div class="col-4 text-right">
+    <div class="col-4 text-right" *ngIf="colyseusGame.character && !colyseusGame.character.gainingAP">
       <button class="btn btn-primary"
               [disabled]="!colyseusGame.character
               || (colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain && colyseusGame.character.baseClass !== 'Undecided')"
               tooltip="Gain levels based on your current experience points."
               container="body"
               (click)="train()">Train</button>
+    </div>
+
+    <div class="col-4 text-right" *ngIf="colyseusGame.character && colyseusGame.character.gainingAP">
+      <button class="btn btn-primary"
+              [disabled]="!colyseusGame.character
+              || (colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain && colyseusGame.character.baseClass !== 'Undecided')"
+              tooltip="Gain ancient points based on your current ancient experience points."
+              container="body"
+              (click)="ancient()">Ancient</button>
     </div>
 
     <div class="col-4 text-center">
@@ -22,14 +31,14 @@
               (click)="assess()">Assess</button>
     </div>
 
-    <div class="col-4" *ngIf="!colyseusGame.character || colyseusGame.character.baseClass === colyseusGame.showTrainer.classTrain">
+    <div class="col-4" *ngIf="colyseusGame.character && colyseusGame.character.baseClass === colyseusGame.showTrainer.classTrain">
       <button class="btn btn-primary"
               tooltip="Attempt to learn new skills based on your skill rating."
               container="body"
               (click)="learn()">Learn</button>
     </div>
 
-    <div class="col-4" *ngIf="!colyseusGame.character || colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain">
+    <div class="col-4" *ngIf="colyseusGame.character && colyseusGame.character.baseClass !== colyseusGame.showTrainer.classTrain">
       <button class="btn btn-primary"
               [disabled]="!colyseusGame.character || colyseusGame.character.baseClass !== 'Undecided'"
               tooltip="Join this profession and begin adventuring as it."

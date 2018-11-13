@@ -14,5 +14,6 @@ export class GMGainTraitPoints extends Command {
     player.skillTree.reset(player);
     player.skillTree.gainResetPoints(traitGain);
     player.skillTree.gainTraitPoints(traitGain);
+    player.skillTree.gainAncientPoints(traitGain);
   }
 }

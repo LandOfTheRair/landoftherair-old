@@ -1,4 +1,4 @@
-import { flatten, get, random, sample, set } from 'lodash';
+import { flatten, get, random, sample, set, includes } from 'lodash';
 
 import { Character } from './character';
 import * as uuid from 'uuid/v4';
@@ -84,6 +84,10 @@ export class NPC extends Character implements INPC {
 
   get dropsCorpse(): boolean {
     return !this.isNaturalResource && !this.noCorpseDrop;
+  }
+
+  get isElite(): boolean {
+    return includes(this.name, 'elite');
   }
 
   init() {
@@ -238,19 +242,25 @@ export class NPC extends Character implements INPC {
       let adjustedXp = this.$$room.calcAdjustedXPGain(givenXp);
       if(killer.hasEffect('Newbie')) adjustedXp += Math.floor(adjustedXp * 0.10);
 
-      if(killer.$$owner) {
-        killer.$$owner.gainExpFromKills(adjustedXp);
-        return false;
-      }
+      const earnedAP = this.calculateAPGainForPlayer(killer);
+
+      killer.gainExpFromKills(adjustedXp, earnedAP);
 
       if((<Player>killer).username) {
         this.repMod.forEach(({ allegiance, delta }) => {
           killer.changeRep(allegiance, delta);
         });
 
-        killer.gainExpFromKills(adjustedXp);
       }
     }
+  }
+
+  private calculateAPGainForPlayer(char: Character): number {
+    if(!this.isElite) return 0;
+    if(char.level > this.level - 5) return 0;
+
+    if(this.hasEffect('Dangerous')) return 5;
+    return 1;
   }
 
   restore() {

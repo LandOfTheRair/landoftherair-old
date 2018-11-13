@@ -54,6 +54,12 @@ export class StatusWindowComponent implements OnInit, OnDestroy {
     return Math.floor(Math.min(100, (this.player.exp - baseXp) / (neededXp - baseXp) * 100));
   }
 
+  get axpPercent(): number {
+    if(!this.player) return 0;
+
+    return Math.min(100, this.player.axp);
+  }
+
   get allEffects(): any[] {
     if(!this.player) return [];
     return values(this.player.effects);

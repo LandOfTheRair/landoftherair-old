@@ -4,7 +4,7 @@ import { startCase } from 'lodash';
 import { Player } from './player';
 import { Trait } from './trait';
 
-export class PartyTrait extends Trait {
+export class AncientTrait extends Trait {
 
   static baseClass: string;
   static traitName = 'Name';
@@ -12,13 +12,13 @@ export class PartyTrait extends Trait {
   static icon = '';
 
   static canBuy(player: Player, cost: number): boolean {
-    return player.skillTree.hasPartyPoints(cost);
+    return player.skillTree.hasAncientPoints(cost);
   }
 
   static buy(player: Player, cost: number, extra): void {
-    player.skillTree.losePartyPoints(cost);
+    player.skillTree.loseAncientPoints(cost);
     player.increaseTraitLevel(this.traitName, 1, this.baseClass, extra);
-    player.sendClientMessage(`Your party knowledge has expanded in the form of "${startCase(this.traitName)}"!`);
+    player.sendClientMessage(`Your ancient knowledge has expanded in the form of "${startCase(this.traitName)}"!`);
     player.recalculateStats();
   }
 }

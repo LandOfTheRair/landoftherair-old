@@ -55,6 +55,12 @@ export class XPBox extends FloatingBox {
   }
 }
 
+export class AXPBox extends FloatingBox {
+  constructor(value: number) {
+    super(value, 'left', 'yellow', 'AXP');
+  }
+}
+
 export class HPBox extends FloatingBox {
   constructor(value: number) {
     super(value, 'right', value < 0 ? 'red' : 'blue', 'HP');

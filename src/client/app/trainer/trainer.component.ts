@@ -53,6 +53,10 @@ export class TrainerComponent {
     this.colyseusGame.train();
   }
 
+  ancient() {
+    this.colyseusGame.ancient();
+  }
+
   learn() {
     this.colyseusGame.learn();
   }

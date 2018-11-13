@@ -83,9 +83,17 @@
        [tooltip]="'Experience Level ' + player.level"
        container="body"
        (click)="isXPPercent = !isXPPercent"
-       *ngIf="player">
+       *ngIf="player && !player.gainingAP">
     <div class="progress-bar bg-success" [style.width]="xpPercent + '%'"></div>
     <div class="progress-bar-text" *ngIf="!isXPPercent">{{ player.exp | number }}</div>
     <div class="progress-bar-text" *ngIf="isXPPercent">{{ xpPercent }}%</div>
+  </div>
+
+  <div class="progress"
+       [tooltip]="'Ancient Experience'"
+       container="body"
+       *ngIf="player && player.gainingAP">
+    <div class="progress-bar bg-warning" [style.width]="axpPercent + '%'"></div>
+    <div class="progress-bar-text">{{ player.axp | number }}</div>
   </div>
 </ng-template>

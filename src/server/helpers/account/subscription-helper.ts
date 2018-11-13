@@ -376,6 +376,14 @@ export class SubscriptionHelper {
     return Math.max(1, Math.floor(xp + (xp * this.subscriptionTierMultiplier(player))));
   }
 
+  // SUBSCRIBER BENEFIT: 2x AXP
+  public modifyAXPGainForSubscription(player: Player, xp: number): number {
+    if(xp < 0) return xp;
+    if(!this.subscriptionTier(player)) return xp;
+
+    return xp * 2;
+  }
+
   // SUBSCRIBER BENEFIT: +(TIER * 5)% SKILL
   public modifySkillGainForSubscription(player: Player, skill: number): number {
     if(skill < 0) return skill;

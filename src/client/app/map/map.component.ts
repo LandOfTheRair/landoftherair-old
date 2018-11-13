@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, OnDestroy, NgZone } from '@angular/core';
 import { Game } from './phasergame';
 import { ColyseusService } from '../colyseus.service';
 
-import { HPBox, XPBox } from './floating-box';
+import { HPBox, XPBox, AXPBox } from './floating-box';
 import { AssetService } from '../asset.service';
 
 @Component({
@@ -81,6 +81,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
         const hpDifference = newPlayer.hp.__current - oldPlayer.hp.__current;
         const xpDifference = newPlayer.exp - oldPlayer.exp;
+        const axpDifference = newPlayer.axp - oldPlayer.axp;
 
         if(hpDifference !== 0) {
           const box = new HPBox(hpDifference);
@@ -90,6 +91,12 @@ export class MapComponent implements OnInit, OnDestroy {
 
         if(xpDifference !== 0) {
           const box = new XPBox(xpDifference);
+          box.init(this.mapContainer.nativeElement);
+          allBoxes.push(box);
+        }
+
+        if(axpDifference !== 0) {
+          const box = new AXPBox(axpDifference);
           box.init(this.mapContainer.nativeElement);
           allBoxes.push(box);
         }

@@ -167,6 +167,7 @@ export interface ICharacter {
   hp: RestrictedNumber;
   mp: RestrictedNumber;
   exp: number;
+  axp: number;
   currency: any;
 
   currentGold: number;
@@ -314,7 +315,8 @@ export interface ICharacter {
   hasEffect(effectName: string): IEffect;
 
   gainExp(xp: number): void;
-  gainExpFromKills(xp: number): void;
+  gainAxp(axp: number): void;
+  gainExpFromKills(xp: number, axp: number): void;
   tryLevelUp(maxLevel: number): void;
   gainLevelStats(): void;
   calcLevelXP(level: number): number;

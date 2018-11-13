@@ -12,6 +12,8 @@ export class SkillTree {
   private traitPoints: number;
   private resetPoints: number;
   private partyPoints: number;
+  private ancientPoints: number;
+  private totalAncientPoints: number;
 
   private baseClass: string;
 
@@ -31,6 +33,8 @@ export class SkillTree {
     if(!this.traitPoints) this.traitPoints = 0;
     if(!this.resetPoints) this.resetPoints = 0;
     if(!this.partyPoints) this.partyPoints = 0;
+    if(!this.ancientPoints) this.ancientPoints = 0;
+    if(!this.totalAncientPoints) this.totalAncientPoints = 0;
 
     this.updateBuyableNodes();
   }
@@ -57,6 +61,7 @@ export class SkillTree {
     const node = this.linkBuyableNodeToRealNode(traitName);
     if(!node) return false;
 
+    if(node.isAncient) return this.ancientPoints >= node.cost;
     if(node.isParty) return this.partyPoints >= node.cost;
     return this.traitPoints >= node.cost;
   }
@@ -103,7 +108,6 @@ export class SkillTree {
     });
 
   }
-
 
   public calculateNewTPFromLevels(player: IPlayer): number {
     const level = player.level;
@@ -160,6 +164,7 @@ export class SkillTree {
     }
   }
 
+  // TP
   public hasTraitPoints(tp = 0): boolean {
     return this.traitPoints >= tp;
   }
@@ -175,6 +180,11 @@ export class SkillTree {
     this.gainTraitPoints(-tp);
   }
 
+  // PP
+  public hasPartyPoints(pp = 0): boolean {
+    return this.partyPoints >= pp;
+  }
+
   public gainPartyPoints(pp = 0): void {
     if(!this.partyPoints) this.partyPoints = 0;
 
@@ -184,6 +194,26 @@ export class SkillTree {
 
   public losePartyPoints(pp = 1): void {
     this.gainPartyPoints(-pp);
+  }
+
+  // AP
+  public hasAncientPoints(ap = 0): boolean {
+    return this.ancientPoints >= ap;
+  }
+
+  public gainAncientPoints(ap = 0): void {
+    if(!this.ancientPoints) this.ancientPoints = 0;
+    this.ancientPoints += ap;
+
+    if(ap > 0) {
+      this.totalAncientPoints += ap;
+    }
+
+    if(this.ancientPoints < 0 || isNaN(this.ancientPoints)) this.ancientPoints = 0;
+  }
+
+  public loseAncientPoints(ap = 1): void {
+    this.gainAncientPoints(-ap);
   }
 
   // to check if anything is resettable, make sure all of its unlocked nodes are not bought. if any are, it can't be reset
@@ -210,6 +240,7 @@ export class SkillTree {
 
     player.unlearnAll();
     this.traitPoints = 0;
+    this.ancientPoints = this.totalAncientPoints;
 
     player.$$room.savePlayer(player);
     this.updateBuyableNodes();

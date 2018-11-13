@@ -47,7 +47,7 @@ export class PartyHelper {
     });
   }
 
-  static shareExpWithParty(player: Player, exp: number): number {
+  static shareExpWithParty(player: Player, exp: number, axp: number): number {
     const party = player.party;
 
     const members = party.members;
@@ -67,6 +67,7 @@ export class PartyHelper {
     PartyHelper.getPartyMembersInRange(player).forEach(partyMember => {
       foundMembers++;
       partyMember.gainExp(exp);
+      partyMember.gainAxp(axp);
     });
 
     return foundMembers;

@@ -49,6 +49,7 @@ export class Character implements ICharacter {
   hp: RestrictedNumber = new RestrictedNumber(0, 100, 100);
   mp: RestrictedNumber = new RestrictedNumber(0, 0, 0);
   exp = 1000;
+  axp = 0;
 
   currency: any = { gold: 0 };
 
@@ -900,7 +901,7 @@ export class Character implements ICharacter {
 
   clearEffects() {
     const shouldClearPermanents = !this.hasEffect('Secondwind');
-    const noClear = ['Nourishment', 'Malnourished', 'Newbie'];
+    const noClear = ['Nourishment', 'Malnourished', 'Newbie', 'Dangerous'];
     this.effectsList.forEach(effect => {
       if(includes(noClear, effect.name)) return;
       if(get(effect, 'effectInfo.isPermanent') && !shouldClearPermanents) return;
@@ -955,11 +956,18 @@ export class Character implements ICharacter {
     }
   }
 
-  gainExpFromKills(xp: number) {
+  gainAxp(axp: number) {
+    if(this.isDead()) return;
+
+    this.axp += axp;
+  }
+
+  gainExpFromKills(xp: number, ap: number) {
     this.gainExp(xp);
+    this.gainAxp(ap);
 
     if(this.$$owner) {
-      this.$$owner.gainExpFromKills(xp);
+      this.$$owner.gainExpFromKills(xp, ap);
     }
   }
 

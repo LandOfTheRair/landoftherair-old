@@ -701,10 +701,11 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(player.baseClass !== npc.classTrain && player.baseClass !== 'Undecided') return 'I have nothing to teach you.';
+      if(player.gainingAP) return 'You are currently not training this way.';
 
       const level = player.level;
 
-      const trainCost = npc.maxLevelUpLevel * 50;
+      const trainCost = npc.maxLevelUpLevel * 10;
       if(player.currentGold < trainCost) return `I require ${trainCost} gold for my training.`;
 
       if(level >= npc.maxLevelUpLevel) return 'You are too advanced for my teachings.';
@@ -721,6 +722,26 @@ export const BaseClassTrainerResponses = (npc: NPC) => {
 
       const extraText = player.baseClass === npc.classTrain ? 'Visit your Trait Tree to spend TP!' : '';
       return `You have gained ${newLevel - level} experience level and ${gainedTP} TP. ${extraText}`;
+    });
+
+  npc.parser.addCommand('ancient')
+    .set('syntax', ['ancient'])
+    .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 0) return 'Please move closer.';
+      if(player.baseClass !== npc.classTrain && player.baseClass !== 'Undecided') return 'I have nothing to teach you.';
+      if(!player.gainingAP) return 'You are currently not training this way.';
+
+      if(player.axp < 100) return 'You do not have enough ancient experience to learn from me.';
+
+      player.axp -= 100;
+      player.$$skillTree.gainAncientPoints(1);
+
+      const trainCost = npc.maxLevelUpLevel * 500;
+      if(player.currentGold < trainCost) return `I require ${trainCost} gold for my training.`;
+
+      player.spendGold(trainCost, `Service:Ancient`);
+
+      return `You have gained 1 AP!`;
     });
 
   npc.parser.addCommand('join')

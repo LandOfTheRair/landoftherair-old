@@ -126,6 +126,8 @@ export class TesterHelper {
     player.skillTree.gainResetPoints(1000);
     player.skillTree.losePartyPoints(9999);
     player.skillTree.gainPartyPoints(1000);
+    player.skillTree.loseAncientPoints(9999);
+    player.skillTree.gainAncientPoints(1000);
 
     const allTraits = player.allTraitLevels || {};
     Object.keys(allTraits).forEach(key => {
