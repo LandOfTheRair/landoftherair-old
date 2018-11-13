@@ -186,6 +186,7 @@ export class GameState implements IGameState {
 
   private tickAllEffects() {
     this.players.forEach(player => {
+      if(!player.$$ready) return;
       player.tickEffects();
     });
   }
