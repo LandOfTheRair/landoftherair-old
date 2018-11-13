@@ -12229,14 +12229,12 @@
                  "name":"",
                  "properties":
                     {
-                     "requireQuestComplete":"ClubAccess",
                      "teleportMap":"Frostlands",
                      "teleportX":164,
                      "teleportY":241
                     },
                  "propertytypes":
                     {
-                     "requireQuestComplete":"string",
                      "teleportMap":"string",
                      "teleportX":"int",
                      "teleportY":"int"
