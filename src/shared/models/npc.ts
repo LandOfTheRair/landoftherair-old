@@ -236,6 +236,7 @@ export class NPC extends Character implements INPC {
 
       this.addAgro(killer, 1);
 
+      // xp gain
       const giveXp = this.giveXp || { min: 1, max: 10 };
       const givenXp = random(giveXp.min, giveXp.max);
 
@@ -248,6 +249,11 @@ export class NPC extends Character implements INPC {
 
       killer.gainExpFromKills(adjustedXp, earnedAP);
 
+      // skill gain
+      const gainedSkill = this.calculateSkillGainForPlayer(killer, this.skillOnKill);
+      killer.gainSkillFromKills(gainedSkill);
+
+      // rep change
       if((<Player>killer).username) {
         this.repMod.forEach(({ allegiance, delta }) => {
           killer.changeRep(allegiance, delta);
@@ -255,6 +261,12 @@ export class NPC extends Character implements INPC {
 
       }
     }
+  }
+
+  private calculateSkillGainForPlayer(char: Character, baseSkill: number): number {
+    if(char.level - 10 > this.level) return 0;
+    if(char.level - 5 > this.level) return Math.floor(baseSkill / 2);
+    return baseSkill;
   }
 
   private calculateXPGainForPlayer(char: Character, baseXp: number): number {

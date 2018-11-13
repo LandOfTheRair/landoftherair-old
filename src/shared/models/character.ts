@@ -971,6 +971,12 @@ export class Character implements ICharacter {
     }
   }
 
+  gainSkillFromKills(skill: number) {
+    if(this.$$owner) {
+      this.$$owner.gainSkillFromKills(skill);
+    }
+  }
+
   tryLevelUp(maxLevel = 0) {
     do {
       if(this.level >= maxLevel) break;

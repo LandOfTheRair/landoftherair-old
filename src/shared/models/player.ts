@@ -301,11 +301,6 @@ export class Player extends Character implements IPlayer {
       }
     }
 
-    if(!opts.isPetKill) {
-      const skillGain = target.skillOnKill;
-      this.gainSkillFromKills(skillGain);
-    }
-
   }
 
   gainSkillFromKills(skillGain: number) {

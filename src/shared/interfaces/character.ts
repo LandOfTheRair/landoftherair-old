@@ -317,6 +317,7 @@ export interface ICharacter {
   gainExp(xp: number): void;
   gainAxp(axp: number): void;
   gainExpFromKills(xp: number, axp: number): void;
+  gainSkillFromKills(skill: number): void;
   tryLevelUp(maxLevel: number): void;
   gainLevelStats(): void;
   calcLevelXP(level: number): number;
