@@ -73,6 +73,7 @@ export class Item implements IItem {
   bookPages?: Array<{ id: string, text: string }>;
   bookItemFilter?: string;
   bookCurrentPage?: number;
+  bookFindablePages?: number;
 
   enchantLevel?: number;
 

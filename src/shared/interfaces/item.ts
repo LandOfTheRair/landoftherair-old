@@ -200,6 +200,7 @@ export interface IItem {
   bookPages?: Array<{ id: string, text: string }>;
   bookItemFilter?: string;
   bookCurrentPage?: number; // the page this book is on
+  bookFindablePages?: number;
 
   enchantLevel?: number;
 

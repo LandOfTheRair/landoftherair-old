@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { IPlayer } from '../../../shared/interfaces/character';
+import { Component, OnInit } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
 @Component({
@@ -8,6 +7,8 @@ import { ColyseusGameService } from '../colyseus.game.service';
   styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit {
+
+  public pageDisplaySlots: any[] = [];
 
   public get book() {
     return this.colyseusGame.character.rightHand;
@@ -19,11 +20,11 @@ export class BookComponent implements OnInit {
 
   constructor(public colyseusGame: ColyseusGameService) { }
 
-  // TODO checkboxes for each page, centered, max of 10 per line
-
   ngOnInit() {
     this.colyseusGame.updateActiveWindowForGameWindow('book');
     if(!this.book.bookCurrentPage) this.colyseusGame.sendCommandString(`~page right 0`);
+
+    this.pageDisplaySlots = Array(Math.max(this.book.bookPages.length, this.book.bookFindablePages)).fill(null).map((x, i) => i);
   }
 
   prevPage() {

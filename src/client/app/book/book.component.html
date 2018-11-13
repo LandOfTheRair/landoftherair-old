@@ -8,6 +8,17 @@
 </div>
 
 <div class="row">
+  <div class="col text-center">
+    <input type="checkbox"
+           disabled="true"
+           *ngFor="let slot of pageDisplaySlots"
+           [checked]="book.bookPages[slot]"
+           [class.mr-2]="((slot + 1) % 5) === 0"
+           />
+  </div>
+</div>
+
+<div class="row">
   <div class="col">
     <p *ngIf="!currentPage || !currentPage.text">
       <i>This page is empty.</i>

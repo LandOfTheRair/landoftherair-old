@@ -23,6 +23,7 @@
   binds: true
   destroyOnDrop: true
   bookItemFilter: "Risan Love Story Page"
+  bookFindablePages: 5
 
 - name: Tweans Gem Codex
   sprite: 1020
