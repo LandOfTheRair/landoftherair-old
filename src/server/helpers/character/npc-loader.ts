@@ -10,7 +10,7 @@ import { DB } from '../../database';
 import { Player } from '../../../shared/models/player';
 
 import * as Effects from '../../effects';
-import { Item } from '../../../shared/models/item';
+import { IItem } from '../../../shared/interfaces/item';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -54,11 +54,11 @@ export class NPCLoader {
     return species[func](sample(['male', 'female']));
   }
 
-  loadItem(item): Promise<Item> {
+  loadItem(item): Promise<IItem> {
     return this.itemCreator.getItemByName(item);
   }
 
-  private async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>): Promise<Item[]> {
+  private async _loadVendorItems(npc: NPC, items: Array<{ name: string, valueMult: number }>): Promise<IItem[]> {
     npc.vendorItems = npc.vendorItems || [];
 
     const loadedItems = await Promise.all(items.map(async ({ name, valueMult }) => {
@@ -158,7 +158,7 @@ export class NPCLoader {
     return indexes;
   }
 
-  takeItemsFromPlayerSack(player: Player, sackIndexes = []): Item[] {
+  takeItemsFromPlayerSack(player: Player, sackIndexes = []): IItem[] {
     return player.sack.takeItemFromSlots(sackIndexes);
   }
 

@@ -4,6 +4,7 @@ import { extend, isNumber } from 'lodash';
 import { Container } from './container';
 import { MaterialSlotInfo, ReverseValidItems, ValidMaterialItems } from '../../helpers/material-storage-layout';
 import { Item } from '../item';
+import { IItem } from '../../interfaces/item';
 
 export class MaterialLocker extends Container {
   protected autoFix = false;
@@ -16,7 +17,7 @@ export class MaterialLocker extends Container {
     this.initItems();
   }
 
-  addItem(item: Item, index?: number, extra?: any): string {
+  addItem(item: IItem, index?: number, extra?: any): string {
     if(!extra) return 'You cannot add things to material storage like that.';
     if(!this.canAccept(item)) return 'That item is not a valid material.';
 
@@ -59,7 +60,7 @@ export class MaterialLocker extends Container {
     }
   }
 
-  takeItemFromSlot(slot: number, amt = 1): Item {
+  takeItemFromSlot(slot: number, amt = 1): IItem {
     const item = this.items[slot];
     if(!item) return null;
 
@@ -92,7 +93,7 @@ export class MaterialLocker extends Container {
     return item;
   }
 
-  canAccept(item: Item): boolean {
+  canAccept(item: IItem): boolean {
     if(!item) return false;
     return isNumber(ValidMaterialItems[item.name]);
   }

@@ -387,7 +387,7 @@
     "Swashbuckler0": {
         "name": "Swashbuckler0",
         "traitName": "Swashbuckler",
-        "desc": "Reduce your chance of getting a glancing blow by $12.5|37.5$%.",
+        "desc": "Reduce your chance of an outgoing glancing blow by $12.5|37.5$%.",
         "icon": "spiral-thrust",
         "cost": 3,
         "unlocks": [
@@ -401,7 +401,7 @@
     "Swashbuckler1": {
         "name": "Swashbuckler1",
         "traitName": "Swashbuckler",
-        "desc": "Reduce your chance of getting a glancing blow by $12.5|37.5$%.",
+        "desc": "Reduce your chance of an outgoing glancing blow by $12.5|37.5$%.",
         "icon": "spiral-thrust",
         "cost": 3,
         "unlocks": [
@@ -415,7 +415,7 @@
     "Swashbuckler2": {
         "name": "Swashbuckler2",
         "traitName": "Swashbuckler",
-        "desc": "Reduce your chance of getting a glancing blow by $12.5|37.5$%.",
+        "desc": "Reduce your chance of an outgoing glancing blow by $12.5|37.5$%.",
         "icon": "spiral-thrust",
         "cost": 3,
         "unlocks": [
@@ -429,7 +429,7 @@
     "Swashbuckler3": {
         "name": "Swashbuckler3",
         "traitName": "Swashbuckler",
-        "desc": "Reduce your chance of getting a glancing blow by $12.5|37.5$%.",
+        "desc": "Reduce your chance of an outgoing glancing blow by $12.5|37.5$%.",
         "icon": "spiral-thrust",
         "cost": 3,
         "unlocks": [
@@ -443,7 +443,7 @@
     "Swashbuckler4": {
         "name": "Swashbuckler4",
         "traitName": "Swashbuckler",
-        "desc": "Reduce your chance of getting a glancing blow by $12.5|37.5$%.",
+        "desc": "Reduce your chance of an outgoing glancing blow by $12.5|37.5$%.",
         "icon": "spiral-thrust",
         "capstone": true,
         "cost": 10,

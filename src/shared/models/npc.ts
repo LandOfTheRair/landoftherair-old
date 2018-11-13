@@ -1,7 +1,6 @@
 import { flatten, get, random, sample, set } from 'lodash';
 
 import { Character } from './character';
-import { Item } from './item';
 import * as uuid from 'uuid/v4';
 import { CharacterHelper } from '../../server/helpers/character/character-helper';
 import { DeathHelper } from '../../server/helpers/character/death-helper';
@@ -9,6 +8,7 @@ import { Player } from './player';
 import { Currency } from '../interfaces/holiday';
 import { RollerHelper } from '../helpers/roller-helper';
 import { Allegiance, Direction, Hostility, INPC } from '../interfaces/character';
+import { IItem } from '../interfaces/item';
 
 export class NPC extends Character implements INPC {
   npcId: string;
@@ -16,7 +16,7 @@ export class NPC extends Character implements INPC {
 
   hostility: Hostility = 'OnHit';
 
-  vendorItems?: Item[];
+  vendorItems?: IItem[];
 
   classTrain?: string;
   trainSkills?: string[] = [];
@@ -46,7 +46,7 @@ export class NPC extends Character implements INPC {
 
   copyDrops: any[];
   drops: any[];
-  dropPool: { items: Item[], choose: { min: number, max: number }, replace?: boolean };
+  dropPool: { items: IItem[], choose: { min: number, max: number }, replace?: boolean };
   giveXp: { min: number, max: number };
   repMod: Array<{ delta: number, allegiance: Allegiance }>;
 
@@ -289,12 +289,12 @@ export class NPC extends Character implements INPC {
     this.sendClientMessageToRadius({ message: `You hear ${this.spawnMessage}.`, sfx: this.randomlyReturnSfx() }, 8);
   }
 
-  setRightHand(item: Item) {
+  setRightHand(item: IItem) {
     super.setRightHand(item);
     this.$$room.syncNPC(this);
   }
 
-  setLeftHand(item: Item) {
+  setLeftHand(item: IItem) {
     super.setLeftHand(item);
     this.$$room.syncNPC(this);
   }
