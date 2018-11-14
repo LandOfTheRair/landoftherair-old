@@ -9,7 +9,7 @@ export class CatacombsQell3FSpawner extends Spawner {
 
   constructor(room, opts) {
     super(room, opts, {
-      respawnRate: 60,
+      respawnRate: 40,
       initialSpawn: 2,
       maxCreatures: 3,
       spawnRadius: 1,
