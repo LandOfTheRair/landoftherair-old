@@ -16,6 +16,8 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
 
+      if(player.level < 25) return 'You are not strong enough to be here!';
+
       if(npc.$$room.npcLoader.checkPlayerHeldItem(player, 'Silver Scale')) {
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Silver Scale');
 

@@ -15,6 +15,8 @@ export const responses = (npc: NPC) => {
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
 
+      if(player.level < 25) return 'You are not strong enough to be here!';
+
       if(npc.$$room.npcLoader.checkPlayerHeldItem(player, 'Frostlands Frostfang Robe')) {
         npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Frostlands Frostfang Robe');
 
