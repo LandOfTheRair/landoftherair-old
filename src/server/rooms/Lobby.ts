@@ -227,6 +227,24 @@ export class Lobby extends Room<LobbyState> {
     this.state.updateHashes();
     this.updateDiscordLobbyChannelUserCount();
     delete this.userIdsLoggingIn[userId];
+
+    this.removeCharactersFromDungeons(account);
+  }
+
+  private async removeCharactersFromDungeons(acc: Account) {
+    const characters = await DB.$players.find({ username: acc.username });
+    characters.forEach(char => {
+      if(!includes(char.map, '-Dungeon')) return;
+
+      DB.$players.update(
+        { username: acc.username, charSlot: char.charSlot },
+        { $set: {
+          map: char.respawnPoint.map,
+          x: char.respawnPoint.x,
+          y: char.respawnPoint.y
+        } }
+      );
+    });
   }
 
   quit(client) {
