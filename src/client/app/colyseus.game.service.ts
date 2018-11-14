@@ -44,6 +44,7 @@ export class ColyseusGameService {
   currentTarget: string;
 
   private changingMap: boolean;
+  private currentMap: string;
   private isQuitting: boolean;
 
   public lastCommands: string[];
@@ -204,6 +205,7 @@ export class ColyseusGameService {
 
   private joinRoom(room, party?: string) {
     this._joiningGame = true;
+    this.currentMap = room;
 
     this.resetRoom();
 
@@ -310,19 +312,20 @@ export class ColyseusGameService {
     this.worldRoom.listen('mapData/openDoors/:id/isOpen', updateDoor);
 
     this.worldRoom.onJoin.add(() => {
-      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'JOIN_ROOM' }, 'incoming');
+      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'JOIN_ROOM', map: room }, 'incoming');
       this.inGame$.next(true);
       this._inGame = true;
       this.clientGameState.hasLoadedInGame = false;
-    });
 
-    this.worldRoom.onLeave.add(() => {
-      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'LEAVE_ROOM' }, 'incoming');
       this.syncedNPCs = false;
       this.syncedGround = false;
       this.clientGameState.hasLoadedInGame = false;
       this.clientGameState.removeAllPlayers();
-      if(this.changingMap) return;
+    });
+
+    this.worldRoom.onLeave.add(() => {
+      this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'LEAVE_ROOM', map: room }, 'incoming');
+      if(this.changingMap || this.currentMap !== room) return;
 
       this.inGame$.next(false);
       this._inGame = false;
