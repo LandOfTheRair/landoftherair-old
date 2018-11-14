@@ -97,8 +97,7 @@ export class SurvivalHelper {
     const chosenSkill = sample(possibleSkills);
 
     if(!chosenSkill) {
-      player.gainSkill(SkillClassNames.Survival, Math.floor(npcRef.level / 2));
-      player.sendClientMessage('The corpse blood had no magical energy left.');
+      player.sendClientMessage('The corpse blood had no magical energy.');
       player.$$room.dropCorpseItems(corpse);
       corpse.$heldBy = null;
       npcRef.restore(true);
