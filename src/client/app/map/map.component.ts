@@ -27,7 +27,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   public currentItemDescription: string;
 
-  private get clientGameState() {
+  public get clientGameState() {
     return this.colyseus.game.clientGameState;
   }
 

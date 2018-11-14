@@ -418,6 +418,8 @@ export interface IPlayer extends ICharacter {
 
   allTraitLevels: any;
 
+  gainingAP: boolean;
+
   initTradeskills(): void;
   initBuyback(): void;
 
