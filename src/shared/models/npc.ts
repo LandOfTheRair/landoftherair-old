@@ -264,8 +264,6 @@ export class NPC extends Character implements INPC {
   }
 
   private calculateSkillGainForPlayer(char: Character, baseSkill: number): number {
-    if(char.level - 10 > this.level) return 0;
-    if(char.level - 5 > this.level) return Math.floor(baseSkill / 2);
     return baseSkill;
   }
 
