@@ -7,6 +7,8 @@
   skillLevels: 5
   level: 1
 
+  noCorpseDrop: true
+
   gear:
     Armor: Thanksgiving Turkey Skin
     Hands: Medium Claws
@@ -34,6 +36,8 @@
   stats: 10
   skillLevels: 5
   level: 1
+
+  noCorpseDrop: true
 
   otherStats:
     iceResist: 5000

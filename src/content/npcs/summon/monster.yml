@@ -8,6 +8,8 @@
   skillLevels: 4
   level: 18
 
+  noCorpseDrop: true
+
   skillOnKill: 15
 
   otherStats:

@@ -7,6 +7,8 @@
   skillLevels: 3
   level: 1
 
+  noCorpseDrop: true
+
   gear:
     Armor: Deer Robe
     Hands: Basic Claws
@@ -24,6 +26,8 @@
   stats: 10
   skillLevels: 3
   level: 1
+
+  noCorpseDrop: true
 
   otherStats:
     perception: 15
@@ -52,6 +56,8 @@
   stats: 15
   skillLevels: 4
   level: 1
+
+  noCorpseDrop: true
 
   otherStats:
     perception: 15
@@ -82,6 +88,8 @@
   skills: 5
   level: 1
 
+  noCorpseDrop: true
+
   otherStats:
     fireResist: 5000
 
@@ -107,6 +115,8 @@
   stats: 15
   skillLevels: 6
   level: 1
+
+  noCorpseDrop: true
 
   hp:
     min: 3000

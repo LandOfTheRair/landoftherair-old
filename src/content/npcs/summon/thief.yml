@@ -6,6 +6,8 @@
   skillLevels: 1
   level: 1
 
+  noCorpseDrop: true
+
   gear:
     Armor: Antanian Tunic
 
@@ -19,6 +21,8 @@
   stats: 1
   skillLevels: 1
   level: 1
+
+  noCorpseDrop: true
 
   gear:
     Armor: Antanian Tunic

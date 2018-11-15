@@ -7,6 +7,8 @@
   skillLevels: 5
   level: 1
 
+  noCorpseDrop: true
+
   usableSkills:
     - Snare
     - Stun
@@ -30,6 +32,8 @@
   skillLevels: 5
   level: 1
 
+  noCorpseDrop: true
+
   usableSkills:
     - Cure
     - Regen
@@ -51,6 +55,8 @@
   stats: 25
   skillLevels: 5
   level: 1
+
+  noCorpseDrop: true
 
   usableSkills:
     - BarFire
