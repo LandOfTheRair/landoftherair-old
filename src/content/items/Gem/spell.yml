@@ -84,7 +84,7 @@
       potency: 30
 
   requirements:
-    level: 25
+    level: 27
 
 - name: Risan Ether Larimar
   desc: "a sparkling frost gem imbued with the power of red ether"

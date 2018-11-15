@@ -384,7 +384,7 @@
   baseClass: Thief
   stats: 16
   skillLevels: 7
-  level: 20
+  level: 16
 
   otherStats:
     dex: 8

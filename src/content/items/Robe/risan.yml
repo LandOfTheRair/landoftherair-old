@@ -55,7 +55,7 @@
   sprite: 286
 
   requirements:
-    level: 25
+    level: 27
 
 - name: Frostlands Noble Robe
   stats:

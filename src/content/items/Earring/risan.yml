@@ -17,7 +17,7 @@
   binds: true
 
   requirements:
-    level: 15
+    level: 27
     class:
       - "Thief"
 
@@ -38,7 +38,7 @@
   binds: true
 
   requirements:
-    level: 15
+    level: 27
     class:
       - "Warrior"
 
@@ -59,7 +59,7 @@
   binds: true
 
   requirements:
-    level: 15
+    level: 27
     class:
       - "Mage"
 
@@ -80,7 +80,7 @@
   binds: true
 
   requirements:
-    level: 15
+    level: 27
     class:
       - "Healer"
 

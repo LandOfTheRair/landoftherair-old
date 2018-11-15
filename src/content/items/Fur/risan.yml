@@ -1,4 +1,4 @@
-  
+
 
 - name: Crazed Beast Fur
   desc: "a coat of fur"
@@ -90,7 +90,7 @@
   sprite: 358
 
   requirements:
-    level: 25
+    level: 27
 
 - name: Catacombs Griffon Fur
   quality: 5

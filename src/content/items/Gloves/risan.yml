@@ -13,7 +13,7 @@
   tellsBind: true
 
   requirements:
-    level: 25
+    level: 27
 
   sprite: 131
   desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of Anata, the Enchanter"
@@ -31,7 +31,7 @@
   tellsBind: true
 
   requirements:
-    level: 25
+    level: 27
 
   sprite: 131
   desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of Kieru, the Crusader"
@@ -49,7 +49,7 @@
   tellsBind: true
 
   requirements:
-    level: 25
+    level: 27
 
   sprite: 131
   desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of Yneta, the Strong"
@@ -67,7 +67,7 @@
   tellsBind: true
 
   requirements:
-    level: 25
+    level: 27
 
   sprite: 131
   desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of Shalala, the Shadow"
@@ -83,7 +83,7 @@
   tellsBind: true
 
   requirements:
-    level: 25
+    level: 27
 
   sprite: 131
   desc: "a pair of royal gauntlets from the Frostlands Kingdom of Risan, enscribed with the runes of S'ekthi, the Leader"
