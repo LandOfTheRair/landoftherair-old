@@ -54,7 +54,7 @@ export class Distraction extends SpellEffect {
         summoned.cast(caster, npc);
 
         // boost stats
-        npc.loseBaseStat('move', 5);
+        npc.setBaseStat('move', 0);
         npc.gainBaseStat('hp', npc.getBaseStat('hp') * this.potency);
         npc.recalculateStats();
       }
