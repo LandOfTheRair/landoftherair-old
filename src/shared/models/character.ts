@@ -910,7 +910,10 @@ export class Character implements ICharacter {
   }
 
   die(killer?: ICharacter, silent = false) {
+    if(this.isDead()) return;
+
     this.dir = 'C';
+    this.hp.toMinimum();
     this.clearEffects();
 
     this.$$deathTicks = 120;
@@ -918,10 +921,10 @@ export class Character implements ICharacter {
     this.$$room.analyticsHelper.trackKill(this, killer);
 
     if(silent) {
-      this.hp.toMinimum();
       this.$$deathTicks = 5;
-      if(this.$$owner) this.$$owner.$$pets = this.$$owner.$$pets.filter((x: Character) => x !== this);
     }
+
+    if(this.$$owner) this.$$owner.$$pets = this.$$owner.$$pets.filter((x: Character) => x !== this);
   }
 
   revive() {}
