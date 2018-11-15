@@ -233,7 +233,7 @@ export class Item implements IItem {
       }
 
       statText = Object.keys(stats)
-        .filter(x => stats[x])
+        .filter(x => stats[x] && x !== 'effect')
         .map(x => `${stats[x] < 0 ? '' : '+'}${stats[x]} ${x.toUpperCase()}`)
         .join(', ');
 
