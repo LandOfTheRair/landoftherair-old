@@ -64,9 +64,16 @@ export class PartyHelper {
 
     let foundMembers = 0;
 
+    const partyAverage = party.averageLevel;
+
     PartyHelper.getPartyMembersInRange(player).forEach(partyMember => {
       foundMembers++;
-      partyMember.gainExp(exp);
+
+      let modExp = exp;
+      if(partyMember.level < partyAverage - 5 || partyMember.level > partyAverage + 5)   modExp = Math.floor(exp * 0.5);
+      if(partyMember.level < partyAverage - 10 || partyMember.level > partyAverage + 10) modExp = 1;
+      
+      partyMember.gainExp(modExp);
       partyMember.gainAxp(axp);
     });
 
