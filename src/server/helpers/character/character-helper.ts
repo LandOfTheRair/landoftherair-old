@@ -113,6 +113,8 @@ export class CharacterHelper {
 
     char.dir = 'C';
 
+    console.log(char.name, char.$$deathTicks)
+
     if(char.$$corpseRef && char.$$corpseRef.$heldBy) {
       const holder = char.$$room.state.findPlayer(char.$$corpseRef.$heldBy);
 

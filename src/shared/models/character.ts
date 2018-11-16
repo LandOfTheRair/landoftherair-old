@@ -910,7 +910,7 @@ export class Character implements ICharacter {
   }
 
   die(killer?: ICharacter, silent = false) {
-    if(this.isDead()) return;
+    if(this.$$deathTicks > 0) return;
 
     this.dir = 'C';
     this.hp.toMinimum();
