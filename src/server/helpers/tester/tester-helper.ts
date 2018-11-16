@@ -101,9 +101,12 @@ export class TesterHelper {
     const skillGain = SkillHelper.calcSkillXP(level - 1);
 
     Object.keys(SkillClassNames).forEach(skill => {
-      player._gainSkill(skill, -curSkill[skill.toLowerCase()]);
 
-      player.gainSkill(skill, skillGain);
+      try {
+        player._gainSkill(skill, -curSkill[skill.toLowerCase()]);
+        player.gainSkill(skill, skillGain);
+      } catch(e) {}
+      
     });
 
     this.sendMessage(player, `Set all skill levels to: ${level}`);
