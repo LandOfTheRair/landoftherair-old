@@ -2,7 +2,7 @@
 import { Spawner } from '../../../base/Spawner';
 
 const npcIds = [
-  'Rylt Townee'
+  'Crazed Tonwin'
 ];
 
 export class TestSpawner extends Spawner {
