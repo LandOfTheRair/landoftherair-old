@@ -1358,6 +1358,8 @@ export class Character implements ICharacter {
   canSeeThroughStealthOf(char: ICharacter) {
     if(this.allegiance === 'GM') return true;
 
+    if((<any>char).partyName && (<any>char).partyName === (<any>this).partyName) return true;
+
     // you can see through invis with truesight
     if(char.hasEffect('Invisible') && !this.hasEffect('TrueSight')) return false;
 
