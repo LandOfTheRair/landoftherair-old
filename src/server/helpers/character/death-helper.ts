@@ -58,11 +58,12 @@ export class DeathHelper {
       corpse.tansFor = (<any>target).tansFor;
       corpse.tanSkillRequired = (<any>target).tanSkillRequired;
       (<any>corpse).npcUUID = target.uuid;
+
       corpse.$$playersHeardDeath = Object.keys(target.agro).filter(uuid => {
         const player = target.$$room.state.findPlayer(uuid);
 
         if(!player) return false;
-        if(player.distFrom(target) > 3) return false;
+        if(player.distFrom(target) > 5) return false;
 
         return true;
       });
