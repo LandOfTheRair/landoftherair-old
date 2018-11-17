@@ -26,9 +26,9 @@ export class UnarmoredSavant extends Trait {
     if(!level) return 0;
 
     const itemClass = get(char, 'gear.Armor.itemClass');
-    if(itemClass === 'Fur') return 30;
+    if(itemClass === 'Fur') return 50;
 
-    return 40;
+    return 60;
   }
 
 }
