@@ -275,10 +275,16 @@ export class NPC extends Character implements INPC {
 
   private calculateAPGainForPlayer(char: Character): number {
     if(!this.isElite && !this.hasEffect('Dangerous')) return 0;
-    if(char.level > this.level + 5) return 0;
 
-    if(this.hasEffect('Dangerous')) return 5;
-    return 1;
+    let value = 0;
+
+    if(char.level <= this.level + 15)           value = 1;
+    if(char.level <= this.level + 10)           value = 2;
+    if(char.level <= this.level + 5)            value = 3;
+
+    if(this.hasEffect('Dangerous'))  value = 5;
+
+    return value;
   }
 
   restore() {

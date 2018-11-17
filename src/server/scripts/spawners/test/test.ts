@@ -16,7 +16,6 @@ export class TestSpawner extends Spawner {
       randomWalkRadius: 25,
       leashRadius: 30,
       eliteTickCap: 2,
-      isDangerous: true,
       npcIds
     });
   }
