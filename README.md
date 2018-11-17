@@ -127,7 +127,8 @@ Some commands are hidden and don't really need to be used by players, but should
 
 #### Debugging Commands
 
-* `~~pos` - get your current x, y, and map.
+* `~~bonuses` - see the current map bonuses
+* `~~pos` - get your current x, y, and map
 * `~~reset` - reset your buffs and additionalStats
 * `~~items` - count the number of items in the world
 * `~~mobs` - count the number of mobs in the world

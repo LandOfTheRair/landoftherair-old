@@ -1,4 +1,6 @@
 
+export * from './DebugBonuses';
+
 export * from './DebugCombatLogDownload';
 export * from './DebugCombatLogStart';
 export * from './DebugCombatLogStop';
