@@ -1,6 +1,4 @@
 
-import { sampleSize } from 'lodash';
-
 import { WeaponEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
@@ -15,7 +13,7 @@ export class Multistrike extends WeaponEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     const numTargets = 3 + caster.getTraitLevelAndUsageModifier('Multitarget');
 
-    const attacked = sampleSize(target.$$room.state.getAllInRange(target, 0, [caster.uuid]), numTargets);
+    const attacked = target.$$room.state.getAllInRange(target, 0, [caster.uuid]).slice(0, numTargets);
 
     attacked.forEach(refTarget => {
       CombatHelper.physicalAttack(caster, refTarget);

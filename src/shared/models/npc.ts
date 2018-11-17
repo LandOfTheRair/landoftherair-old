@@ -269,7 +269,7 @@ export class NPC extends Character implements INPC {
 
   private calculateXPGainForPlayer(char: Character, baseXp: number): number {
     const levelDiff = Math.abs(char.level - this.level);
-    
+
     if(levelDiff > 10) return Math.floor(baseXp * 0.75);
     if(levelDiff > 15) return Math.floor(baseXp * 0.50);
     if(levelDiff > 20) return Math.floor(baseXp * 0.25);
