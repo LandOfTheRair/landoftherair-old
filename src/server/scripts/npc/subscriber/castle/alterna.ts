@@ -14,7 +14,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
-      if(player.level < 30 && !player.gainingAP) return 'You might want to come back when you\'re stronger.';
+      if(player.level < 50 && !player.gainingAP) return 'You might want to come back when you\'re stronger.';
 
       return `Greetings, ${player.name}! I can provide you with a way to become more powerful, at the cost of killing more powerful creatures. Just tell me if you want to SWAP.`;
     });
@@ -23,7 +23,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('swap')
     .set('syntax', ['swap'])
     .set('logic', (args, { player }) => {
-      if(player.level < 30 && !player.gainingAP) return 'You might want to come back when you\'re stronger.';
+      if(player.level < 50 && !player.gainingAP) return 'You might want to come back when you\'re stronger.';
 
       player.gainingAP = !player.gainingAP;
 
