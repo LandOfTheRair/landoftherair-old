@@ -47,12 +47,12 @@ export const responses = (npc: NPC) => {
 
         player.earnGold(30000, 'Quest:MazeDaily');
         player.gainExp(100000);
-        player.$$room.subscriptionHelper.giveSilver(player.$$account, 1);
+        player.$$room.partyManager.giveAccountSilver(player.username, 2);
 
         const gainedResetPoints = player.skillTree.canGainResetPoints ? 3 : 0;
         player.skillTree.gainResetPoints(gainedResetPoints);
 
-        player.sendClientMessage(`You received 100,000 XP, 30,000 gold, 1 silver and ${gainedResetPoints} RP!`);
+        player.sendClientMessage(`You received 100,000 XP, 30,000 gold, 2 silver and ${gainedResetPoints} RP!`);
 
         HolidayHelper.tryGrantHolidayTokens(player, 25);
 
