@@ -104,7 +104,7 @@
   value: 2500
 
 - name: Weak EagleEye Potion
-  desc: "a small red bottle covered in animalistic eyes"
+  desc: "a small white bottle covered in animalistic eyes"
   extendedDesc: "a flask of EagleEye"
   sprite: 250
   effect:
