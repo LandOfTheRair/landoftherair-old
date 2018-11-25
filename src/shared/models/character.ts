@@ -1224,7 +1224,7 @@ export class Character implements ICharacter {
       return;
     }
 
-    const hpRegen = this.getTotalStat('hpregen');
+    const hpRegen = this.getTotalStat('hpregen') + Math.max(0, this.getTotalStat('con') - 15);
     const mpRegen = this.getTotalStat('mpregen');
 
     if(this.hp.__current + hpRegen > 0) this.hp.add(hpRegen);
