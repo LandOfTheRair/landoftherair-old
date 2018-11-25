@@ -8,7 +8,7 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 export class MagicBolt extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillMults = [[0, 4], [6, 5], [11, 6], [16, 7], [21, 8]];
+  skillMults = [[0, 4], [6, 5], [11, 6], [16, 7], [21, 8], [26, 9], [31, 11]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

@@ -16,7 +16,7 @@ export class Plague extends SpellEffect {
   };
 
   maxSkillForSkillGain = 25;
-  skillMults = [[0, 1], [6, 1.25], [11, 1.5], [16, 1.75], [21, 2]];
+  skillMults = [[0, 1], [6, 1.25], [11, 1.5], [16, 1.75], [21, 2], [26, 2.25], [31, 3]];
 
   private critBonus: number;
   private healerCripple: number;

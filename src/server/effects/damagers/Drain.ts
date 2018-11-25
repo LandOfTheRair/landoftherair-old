@@ -13,7 +13,7 @@ export class Drain extends SpellEffect {
   };
 
   maxSkillForSkillGain = 25;
-  skillMults = [[0, 1], [11, 2], [21, 4]];
+  skillMults = [[0, 1], [11, 2], [21, 4], [31, 7]];
 
   private damagePerRound: number;
 

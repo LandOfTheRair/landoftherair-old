@@ -10,7 +10,7 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 export class FireMist extends SpellEffect {
 
   maxSkillForSkillGain = 15;
-  skillMults = [[0, 3], [6, 3.5], [11, 4], [16, 4.5], [21, 5]];
+  skillMults = [[0, 3], [6, 3.5], [11, 4], [16, 4.5], [21, 5], [26, 5.5], [31, 7]];
 
   private range: number;
 

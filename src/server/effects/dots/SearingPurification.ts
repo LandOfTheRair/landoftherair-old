@@ -27,7 +27,7 @@ export class SearingPurification extends SpellEffect {
     tooltipDesc: 'Being purified by holy light.'
   };
 
-  skillMults = [[0, 3], [6, 3.5], [11, 4], [16, 4.5], [21, 5]];
+  skillMults = [[0, 3], [6, 3.5], [11, 4], [16, 4.5], [21, 5], [26, 5.5], [31, 7]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.hasSkillRef = !!skillRef;

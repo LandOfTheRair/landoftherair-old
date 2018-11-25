@@ -14,7 +14,7 @@ export class Venom extends SpellEffect {
   };
 
   maxSkillForSkillGain = 25;
-  skillMults = [[0, 1], [6, 1.5], [11, 2], [16, 2.5], [21, 3]];
+  skillMults = [[0, 1], [6, 1.5], [11, 2], [16, 2.5], [21, 3], [26, 3.5], [31, 5]];
 
   private critBonus: number;
   private thiefDegenerate: number;

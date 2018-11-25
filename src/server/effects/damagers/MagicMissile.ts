@@ -7,7 +7,7 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 export class MagicMissile extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillMults = [[0, 1], [6, 1.75], [11, 2.5], [16, 3.25], [21, 4]];
+  skillMults = [[0, 1], [6, 1.75], [11, 2.5], [16, 3.25], [21, 4], [26, 4.75], [31, 6]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

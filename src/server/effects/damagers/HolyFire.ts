@@ -9,7 +9,7 @@ import { SearingPurification } from '../dots/SearingPurification';
 export class HolyFire extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillMults = [[0, 1.5], [6, 2], [11, 2.5], [16, 3], [21, 3.5]];
+  skillMults = [[0, 1.5], [6, 2], [11, 2.5], [16, 3], [21, 3.5], [26, 4], [31, 5]];
 
   iconData = {
     name: 'fireflake',
