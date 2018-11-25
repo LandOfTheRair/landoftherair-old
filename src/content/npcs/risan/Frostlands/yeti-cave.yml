@@ -107,6 +107,8 @@
     - result: Frostlands Frozen Yeti Club
       chance: 1
 
+  leftHand: Risan Wooden Shield
+
   gear:
     Armor: Frostlands Strong Yeti Fur
     Hands: Mines Animal Claws

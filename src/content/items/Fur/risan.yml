@@ -39,6 +39,7 @@
   stats:
     fireResist: 175
     iceResist: 175
+    energyResist: 25
   randomStats:
     armorClass:
       min: 18
@@ -60,6 +61,8 @@
   stats:
     fireResist: 200
     iceResist: 200
+    energyResist: 50
+    necroticResist: 50
   randomStats:
     armorClass:
       min: 22

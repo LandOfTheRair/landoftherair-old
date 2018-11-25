@@ -1,6 +1,8 @@
 
 
 - name: Risan Wooden Shield
+  stats:
+    armorClass: 10
   desc: "an wooden shield crafted in the land of Risan"
   tier: 5
   value: 2000
