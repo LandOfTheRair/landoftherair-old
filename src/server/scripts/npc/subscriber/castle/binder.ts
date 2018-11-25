@@ -26,7 +26,10 @@ export const responses = (npc: NPC) => {
       if(!item) return 'You must be holding an item in your right hand!';
       if(item.owner) return 'That item already has an owner!';
 
-      item.owner = player.username;
+      if(item.itemClass === 'Corpse') return 'That is disrespectful.';
+      if(item.itemClass === 'Coin') return 'I can\'t engrave onto something so small.';
+
+      item.setOwner(player);
       return 'Done! It is now yours.';
     });
 };

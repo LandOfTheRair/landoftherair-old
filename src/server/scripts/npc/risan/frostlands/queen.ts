@@ -23,6 +23,8 @@ export const responses = (npc: NPC) => {
       const item = player.rightHand;
       const mod = player.leftHand;
 
+      if(!item.isOwnedBy(player)) return 'Not your ring!';
+
       const mergeItems = (newRing, oldRing) => {
         newRing.enchantLevel = oldRing.enchantLevel;
         Object.keys(oldRing.stats).forEach(stat => {
