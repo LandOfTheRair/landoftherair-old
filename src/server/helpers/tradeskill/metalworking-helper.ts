@@ -77,12 +77,14 @@ export class MetalworkingHelper {
 
     // move prots over
     if(buffItem.itemClass === 'Fur') {
-      return {
-        fireResist: buffItem.stats.fireResist || 0,
-        iceResist: buffItem.stats.iceResist || 0,
-        poisonResist: buffItem.stats.poisonResist || 0,
-        diseaseResist: buffItem.stats.diseaseResist || 0
-      };
+      const buff = {};
+
+      ['fireResist', 'iceResist', 'poisonResist', 'diseaseResist', 'energyResist', 'necroticResist', 'magicalResist', 'physicalResist'].forEach(stat => {
+        if(!buffItem.stats[stat]) return;
+        buff[stat] = buffItem.stats[stat];
+      });
+
+      return buff;
     }
 
     // move specific ingot buffs over
@@ -163,6 +165,20 @@ export class MetalworkingHelper {
     return success;
   }
 
+  static doSpecificItemUpgrade(targetItem: IItem, buffItem: IItem): void {
+    const buff = this.getBuffForItem(targetItem, buffItem);
+    Object.keys(buff).forEach(stat => {
+      targetItem.stats[stat] = targetItem.stats[stat] || 0;
+      targetItem.stats[stat] += buff[stat];
+    });
+
+    targetItem.previousUpgrades = targetItem.previousUpgrades || [];
+    targetItem.previousUpgrades.push(buff);
+
+    targetItem.enchantLevel = targetItem.enchantLevel || 0;
+    targetItem.enchantLevel++;
+  }
+
   static upgrade(player: IPlayer): boolean {
     const container = player.tradeSkillContainers.metalworking;
     const item = container.upgradeItem;
@@ -176,17 +192,7 @@ export class MetalworkingHelper {
 
     player.setTradeskillBusy();
 
-    const buff = this.getBuffForItem(item, reagent);
-    Object.keys(buff).forEach(stat => {
-      item.stats[stat] = item.stats[stat] || 0;
-      item.stats[stat] += buff[stat];
-    });
-
-    item.previousUpgrades = item.previousUpgrades || [];
-    item.previousUpgrades.push(buff);
-
-    item.enchantLevel = item.enchantLevel || 0;
-    item.enchantLevel++;
+    this.doSpecificItemUpgrade(item, reagent);
 
     container.upgradeResult = item;
     container.clearUpgrade();

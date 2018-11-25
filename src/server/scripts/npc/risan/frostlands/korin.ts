@@ -14,6 +14,7 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
+      if(npc.distFrom(player) > 1) return 'Please move closer.';
 
       if(player.level < 25) return 'You are not strong enough to be here!';
 
