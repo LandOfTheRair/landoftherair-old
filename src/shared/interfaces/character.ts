@@ -1,6 +1,6 @@
 import { RestrictedNumber } from 'restricted-number';
 import { IAlchemyContainer, IContainer, IMetalworkingContainer, ISpellforgingContainer } from './container';
-import { IItem } from './item';
+import { IItem, ItemEffect } from './item';
 import { AttributeEffect, AugmentSpellEffect, IEffect, OnHitEffect } from './effect';
 import { IGameWorld } from './gameworld';
 import { Currency } from './holiday';
@@ -133,6 +133,8 @@ export class Stats {
 
   actionSpeed? = 1;
   damageFactor? = 1;
+
+  effect?: ItemEffect;
 }
 
 export type MonsterClass = 'Undead' | 'Beast' | 'Humanoid' | 'Dragon';

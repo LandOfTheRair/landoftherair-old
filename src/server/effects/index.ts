@@ -35,6 +35,7 @@ export * from './items/FillNormalWater';
 export * from './items/FillChilledWater';
 export * from './items/FillLava';
 export * from './items/FillSpringWater';
+export * from './items/Runeblood';
 
 export * from './cures/Antidote';
 

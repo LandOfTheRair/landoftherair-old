@@ -17,26 +17,28 @@ export class RunewritingHelper {
 
     const mySkill = player.calcSkillLevel(SkillClassNames.Runewriting);
 
-    const failChance = (5 + blood.effect.potency - mySkill) * 5;
+    const effect = blood.stats.effect;
+
+    const failChance = (5 + effect.potency - mySkill) * 5;
 
     if(failChance > 0 && RollerHelper.XInOneHundred(failChance)) {
       player.sendClientMessage('The blood is too difficult to inscribe.');
-      player.gainSkill(SkillClassNames.Runewriting, Math.floor(blood.effect.potency / 3));
+      player.gainSkill(SkillClassNames.Runewriting, Math.floor(effect.potency / 3));
       player.setLeftHand(null);
       return;
     }
 
-    const skillGain = blood.effect.potency + 10;
+    const skillGain = effect.potency + 10;
     player.gainSkill(SkillClassNames.Runewriting, skillGain);
 
     ink.ounces--;
     if(ink.ounces <= 0) player.setPotionHand(null);
 
-    scroll.name = `Runewritten Scroll - ${blood.effect.name} Lv. ${blood.effect.potency}`;
-    scroll.desc = `a rune scroll inscribed with the spell "${blood.effect.name}"`;
+    scroll.name = `Runewritten Scroll - ${effect.name} Lv. ${effect.potency}`;
+    scroll.desc = `a rune scroll inscribed with the spell "${effect.name}"`;
     scroll.effect = {
-      name: blood.effect.name,
-      potency: blood.effect.potency,
+      name: effect.name,
+      potency: effect.potency,
       uses: blood.ounces + mySkill
     };
 
@@ -44,6 +46,6 @@ export class RunewritingHelper {
 
     player.setLeftHand(null);
 
-    player.sendClientMessage(`The blood imparts the knowledge of the spell "${blood.effect.name}"!`);
+    player.sendClientMessage(`The blood imparts the knowledge of the spell "${effect.name}"!`);
   }
 }

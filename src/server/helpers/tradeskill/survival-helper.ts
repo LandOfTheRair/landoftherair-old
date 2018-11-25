@@ -134,9 +134,11 @@ export class SurvivalHelper {
         item.name = `Vial of Blood - ${chosenSkill} Lv. ${npcRef.level}`;
         item.desc = `a vial of blood whose runes spell "${chosenSkill}"`;
 
-        item.ounces = player.calcSkillLevel(SkillClassNames.Survival) + 1;
+        item.ounces = Math.max(1, player.calcSkillLevel(SkillClassNames.Survival) + 1 + sample([-1, 0, 1]));
 
-        item.effect = {
+        item.effect = { name: 'Runeblood', potency: 1 };
+
+        item.stats.effect = {
           name: chosenSkill,
           potency: npcRef.level
         };
