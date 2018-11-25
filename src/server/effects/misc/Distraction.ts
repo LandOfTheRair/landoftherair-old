@@ -19,6 +19,7 @@ class SummonedDistraction extends Effect {
   }
 
   effectEnd(char: Character) {
+    char.unapplyEffect(this, true, true);
     char.die(null, true);
   }
 }
