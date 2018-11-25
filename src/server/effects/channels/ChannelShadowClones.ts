@@ -123,17 +123,19 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
 
         const reversedPotency = (this.potency * 5) + 10;
         npc.gainBaseStat('hp', char.getBaseStat('hp') * reversedPotency);
+        npc.gainBaseStat('offense', reversedPotency * 3);
+        npc.gainBaseStat('accuracy', reversedPotency * 2);
 
         npc.recalculateStats();
 
-        if(char.rightHand) {
+        if(char.rightHand && char.rightHand.canUseInCombat(char)) {
           npc.rightHand = new Item(cloneDeep(char.rightHand));
           npc.rightHand.requirements = null;
           npc.rightHand.destroyOnDrop = true;
           npc.rightHand.tier = Math.max(1, (npc.rightHand.tier || 0) - 1);
         }
 
-        if(char.leftHand) {
+        if(char.leftHand && char.leftHand.canUseInCombat(char)) {
           npc.leftHand = new Item(cloneDeep(char.leftHand));
           npc.leftHand.requirements = null;
           npc.leftHand.destroyOnDrop = true;
