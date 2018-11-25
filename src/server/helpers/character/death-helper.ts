@@ -1,4 +1,5 @@
 
+import { sortBy } from 'lodash';
 
 import { Player } from '../../../shared/models/player';
 import { Item } from '../../../shared/models/item';
@@ -59,11 +60,20 @@ export class DeathHelper {
       corpse.tanSkillRequired = (<any>target).tanSkillRequired;
       (<any>corpse).npcUUID = target.uuid;
 
+      const topAgro = sortBy(Object.keys(target.agro), (key) => target.agro[key])
+        .reverse()
+        .slice(0, 3)
+        .reduce((prev, cur: string) => {
+          prev[cur] = true;
+          return prev;
+        }, {});
+
       corpse.$$playersHeardDeath = Object.keys(target.agro).filter(uuid => {
         const player = target.$$room.state.findPlayer(uuid);
 
         if(!player) return false;
-        if(player.distFrom(target) > 5) return false;
+        
+        if(player.distFrom(target) > 5 && !topAgro[uuid]) return false;
 
         return true;
       });
