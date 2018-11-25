@@ -72,7 +72,7 @@ export class DeathHelper {
         const player = target.$$room.state.findPlayer(uuid);
 
         if(!player) return false;
-        
+
         if(player.distFrom(target) > 5 && !topAgro[uuid]) return false;
 
         return true;

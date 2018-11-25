@@ -32,7 +32,7 @@ export class DefaultAIBehavior {
         if(!items || !items.length) return;
 
         items.forEach(item => {
-          if(npc.rightHand || !item.isOwnedBy || !item.isOwnedBy(npc)) return;
+          if(npc.rightHand || !item.isOwnedBy || !item.isOwnedBy(npc) || item.binds) return;
           npc.setRightHand(item);
           npc.$$room.removeItemFromGround(item);
         });
@@ -45,7 +45,7 @@ export class DefaultAIBehavior {
         if(!items || !items.length) return;
 
         items.forEach(item => {
-          if(npc.leftHand || !item.isOwnedBy || !item.isOwnedBy(npc)) return;
+          if(npc.leftHand || !item.isOwnedBy || !item.isOwnedBy(npc) || item.binds) return;
           npc.setLeftHand(item);
           npc.$$room.removeItemFromGround(item);
         });
