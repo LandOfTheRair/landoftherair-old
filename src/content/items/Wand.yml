@@ -2,6 +2,8 @@
   quality: 5
   desc: "a blue wand engraved with the markings of a shaman"
   tier: 1
+  stats:
+    conjurationBonus: 3
   effect:
     name: MagicMissile
     potency: 5
@@ -19,6 +21,8 @@
 - name: Heniz FireMist Wand
   desc: "a blue wand engraved with the blazing Heniz runes"
   tier: 1
+  stats:
+    conjurationBonus: 3
   effect:
     name: Combust
     potency: 8
@@ -38,6 +42,8 @@
 - name: Heniz IceMist Wand
   desc: "a blue wand engraved with the frozen Heniz runes"
   tier: 1
+  stats:
+    conjurationBonus: 3
   effect:
     name: Hail
     potency: 8
@@ -58,6 +64,8 @@
   quality: 5
   desc: "a crimson wand stained from over-exposure to ether mist"
   tier: 3
+  stats:
+    conjurationBonus: 5
   effect:
     name: MagicBolt
     potency: 5
@@ -83,6 +91,8 @@
   quality: 5
   desc: "a blue wand forged with metals from the Risan mines"
   tier: 2
+  stats:
+    conjurationBonus: 4
   effect:
     name: Asper
     potency: 10

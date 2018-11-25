@@ -2,6 +2,8 @@
   quality: 5
   desc: "a wooden totem with a hand carved into it"
   tier: 1
+  stats:
+    restorationBonus: 3
   effect:
     name: Afflict
     potency: 5
@@ -19,6 +21,8 @@
   quality: 5
   desc: "a wooden post with a strange tribal club attached to it"
   tier: 2
+  stats:
+    restorationBonus: 4
   effect:
     name: HolyFire
     potency: 15
@@ -39,6 +43,8 @@
   quality: 5
   desc: "a bloody wooden totem with a hand carved into it"
   tier: 3
+  stats:
+    restorationBonus: 5
   effect:
     name: Afflict
     potency: 20

@@ -227,19 +227,6 @@ export class SpellEffect extends Effect {
     let base = this.potency || 1;
     if(!caster) return 1;
 
-    const rightHand = caster.rightHand;
-
-    // check based on type, they're both technically wands
-    /** PERK:CLASS:MAGE:Mages get a bonus to damage if they hold a wand in their right hand. */
-    if(caster.baseClass === 'Mage' && rightHand && rightHand.itemClass === 'Wand' && rightHand.isOwnedBy(caster)) {
-      base += rightHand.tier || 0;
-    }
-
-    /** PERK:CLASS:HEALER:Healers get a bonus to damage if they hold a totem in their right hand. */
-    if(caster.baseClass === 'Healer' && rightHand && rightHand.itemClass === 'Totem' && rightHand.isOwnedBy(caster)) {
-      base += rightHand.tier || 0;
-    }
-
     if(caster && caster.baseClass === 'Thief' && caster.getTraitLevelAndUsageModifier) {
       base += caster.getTraitLevelAndUsageModifier('StrongerTraps');
     }
