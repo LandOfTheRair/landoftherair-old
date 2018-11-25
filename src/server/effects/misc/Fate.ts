@@ -1,6 +1,6 @@
 
 import { SpellEffect } from '../../base/Effect';
-import { Character} from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 
 import { LootHelper } from '../../helpers/world/loot-helper';
 

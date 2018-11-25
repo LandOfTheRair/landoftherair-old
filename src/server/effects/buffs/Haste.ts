@@ -2,7 +2,7 @@
 import { sample } from 'lodash';
 
 import { SpellEffect } from '../../base/Effect';
-import { Character} from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
 import { StatName } from '../../../shared/interfaces/character';
 

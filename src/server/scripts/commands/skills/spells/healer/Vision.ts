@@ -1,6 +1,6 @@
 
 import { Skill } from '../../../../../base/Skill';
-import { Character} from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Vision as CastEffect } from '../../../../../effects/cures/Vision';
 import { SkillClassNames } from '../../../../../../shared/interfaces/character';
 

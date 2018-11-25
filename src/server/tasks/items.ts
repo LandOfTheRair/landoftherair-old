@@ -4,7 +4,6 @@ import { reject, difference, values, isArray, isNumber } from 'lodash';
 import { Stats } from '../../shared/interfaces/character';
 import * as Classes from '../classes';
 import * as Effects from '../effects';
-import { AllTraits } from '../../shared/traits/trait-hash';
 
 const argv = require('minimist')(process.argv.slice(2));
 require('dotenv').config({ silent: true, path: argv.prod ? '.env.prod' : '.env' });

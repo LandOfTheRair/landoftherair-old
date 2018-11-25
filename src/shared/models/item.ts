@@ -2,7 +2,6 @@ import { cloneDeep, extend, get, includes, isNumber, isUndefined, size, startCas
 import { toRoman } from 'roman-numerals';
 import * as uuid from 'uuid/v4';
 
-import * as Effects from '../../server/effects';
 import { nonenumerable } from 'nonenumerable';
 import { LootHelper } from '../../server/helpers/world/loot-helper';
 import { ICharacter, SkillClassNames, Stats } from '../interfaces/character';
@@ -308,8 +307,9 @@ export class Item implements IItem {
 
     if(this.effect && (isNumber(this.ounces) ? this.ounces !== 0 : true)) {
       // swallow effects that don't exist
-      if(!Effects[this.effect.name]) return true;
-      const eff = new Effects[this.effect.name](this.effect);
+      const effProto = char.$$room.effectHelper.getEffectByName(this.effect.name, false);
+      if(!effProto) return true;
+      const eff = new effProto(this.effect);
 
       if(eff.cast) {
         eff.cast(char, char);

@@ -1,7 +1,6 @@
 
-import { Character} from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 
-import * as Effects from '../../effects';
 import { SkillClassNames } from '../../../shared/interfaces/character';
 import { IItem } from '../../../shared/interfaces/item';
 
@@ -21,7 +20,8 @@ export class TrapHelper {
     target.sendClientMessage('You\'ve triggered a trap!');
 
     const { effect, caster } = obj.properties;
-    const effectRef = new Effects[effect.name](effect);
+    const effectProto = target.$$room.effectHelper.getEffectByName(effect.name);
+    const effectRef = new effectProto(effect);
     effectRef.casterRef = caster;
 
     const casterCreature = target.$$room.state.findCharacter(caster.uuid);

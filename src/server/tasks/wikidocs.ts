@@ -3,10 +3,9 @@ import { exec } from 'child_process';
 import * as fs from 'fs-extra';
 
 import * as AllSkills from '../scripts/commands/skills/spells';
-import { AllTraits } from '../../shared/traits/trait-hash';
+import { AllTraits } from '../traits/trait-hash';
 
 import { sortBy, startCase } from 'lodash';
-import { EWOULDBLOCK } from 'constants';
 
 let markdown = ``;
 

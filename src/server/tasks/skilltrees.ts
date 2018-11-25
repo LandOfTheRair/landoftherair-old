@@ -6,7 +6,7 @@ import * as fs from 'fs';
 
 import { cloneDeep, last, includes } from 'lodash';
 
-import { AllTraits } from '../../shared/traits/trait-hash';
+import { AllTraits } from '../traits/trait-hash';
 import * as AllSkills from '../scripts/commands/skills/spells';
 
 import { AllTrees as MageLayout } from './skilltree-layouts/Mage';

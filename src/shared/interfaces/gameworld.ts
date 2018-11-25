@@ -33,6 +33,9 @@ export interface IGameWorld {
   npcLoader: any;
   lockerHelper: any;
   analyticsHelper: any;
+  traitHelper: any;
+  effectHelper: any;
+  questHelper: any;
 
   groundItemCount: number;
   totalCreaturesInWorld: number;

@@ -1,5 +1,6 @@
 import { RestrictedNumber } from 'restricted-number';
 import { Signal } from 'signals.js';
+import { nonenumerable } from 'nonenumerable';
 
 import { capitalize, clone, compact, filter, get, includes, isArray, maxBy, merge, pick, random, reject, sample, startsWith, values } from 'lodash';
 
@@ -8,18 +9,14 @@ import { MapLayer } from './maplayer';
 import { HideReductionPercents } from '../../server/helpers/character/hide-reductions';
 
 import * as Classes from '../../server/classes';
-import * as Effects from '../../server/effects';
 import { Sack } from './container/sack';
 import { Belt } from './container/belt';
 import { Pouch } from './container/pouch';
-import { MoveHelper } from '../../server/helpers/character/move-helper';
-import { nonenumerable } from 'nonenumerable';
 import { CharacterHelper } from '../../server/helpers/character/character-helper';
 import { MessageHelper } from '../../server/helpers/world/message-helper';
 import { TrapHelper } from '../../server/helpers/world/trap-helper';
 import { SkillHelper } from '../../server/helpers/character/skill-helper';
 import { XPHelper } from '../../server/helpers/character/xp-helper';
-import { TraitUsageModifiers } from '../helpers/trait-usage-modifiers';
 import { VALID_TRADESKILLS_HASH } from '../helpers/tradeskill-helper';
 import { Currency } from '../interfaces/holiday';
 import {
@@ -39,6 +36,7 @@ import {
 import { EquipHash, EquippableItemClassesWithWeapons, GivesBonusInHandItemClasses, IItem, ShieldClasses, ValidItemTypes, WeaponClasses } from '../interfaces/item';
 import { AttributeEffect, AugmentSpellEffect, IEffect, OnHitEffect } from '../interfaces/effect';
 import { Item } from './item';
+import { InteractionHelper } from '../../server/helpers/world/interaction-helper';
 
 
 export class Character implements ICharacter {
@@ -246,11 +244,14 @@ export class Character implements ICharacter {
     if(isArray(this.effects)) this.effects = {};
 
     Object.keys(this.effects).forEach(effName => {
-      if(!Effects[effName]) {
+      const effProto = this.getEffect(effName, false);
+
+      if(!effProto) {
         delete this.effects[effName];
         return;
       }
-      const eff = new Effects[effName](this.effects[effName]);
+
+      const eff = new effProto(this.effects[effName]);
       eff.iconData = this.effects[effName].iconData;
 
       this.effects[effName] = eff;
@@ -266,6 +267,10 @@ export class Character implements ICharacter {
 
   init() {}
   initServer() {}
+
+  protected getEffect(name: string, throwError?: boolean) {
+    return this.$$room.effectHelper.getEffectByName(name, throwError);
+  }
 
   toSaveObject(): any {
     let keys = reject(Object.getOwnPropertyNames(this), key => {
@@ -491,7 +496,8 @@ export class Character implements ICharacter {
         this.unapplyEffect(isEncumbered, true);
 
       } else if(!isEncumbered && castEncumber) {
-        const encumbered = new Effects.Encumbered({});
+        const encProto = this.getEffect('Encumbered');
+        const encumbered = new encProto({});
         encumbered.cast(this, this);
       }
     } else {
@@ -578,7 +584,9 @@ export class Character implements ICharacter {
 
   private checkAndCreatePermanentEffect(item: IItem) {
     if(!item || !item.effect || !item.effect.autocast || !item.effect.name) return;
-    const effect = new Effects[item.effect.name](item.effect);
+
+    const effectProto = this.getEffect(item.effect.name);
+    const effect = new effectProto(item.effect);
     effect.flagPermanent(this.uuid);
     effect.cast(this, this);
   }
@@ -804,7 +812,7 @@ export class Character implements ICharacter {
         const object = this.$$room.state.getInteractableOrDenseObject(this.x + step.x, this.y + step.y);
         if(object && object.density) {
           if(object.type === 'Door') {
-            if(!MoveHelper.tryToOpenDoor(this, object, { gameState: this.$$room.state })) {
+            if(!InteractionHelper.tryToOpenDoor(this, object, { gameState: this.$$room.state })) {
               successfulStepsNoDensity = false;
               return;
             }
@@ -1390,7 +1398,8 @@ export class Character implements ICharacter {
   public getTraitLevelAndUsageModifier(trait: string): number {
     const level = this.getTraitLevel(trait);
 
-    return TraitUsageModifiers.getTraitLevelAndUsageModifier(this, trait, level);
+    if(!this.$$room) return 0;
+    return this.$$room.traitHelper.getTraitLevelAndUsageModifier(this, trait, level);
   }
 
   private adjustStatsForTraits(): void {

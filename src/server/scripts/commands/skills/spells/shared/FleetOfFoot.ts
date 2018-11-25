@@ -2,7 +2,7 @@
 
 
 import { Skill } from '../../../../../base/Skill';
-import { Character} from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { FleetOfFoot as CastEffect } from '../../../../../effects/';
 
 export class FleetOfFoot extends Skill {

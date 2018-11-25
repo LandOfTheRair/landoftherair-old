@@ -3,7 +3,7 @@ import { Command } from '../../../base/Command';
 import { Player } from '../../../../shared/models/player';
 import { MapLayer } from '../../../../shared/models/maplayer';
 import { find, includes } from 'lodash';
-import { MoveHelper } from '../../../helpers/character/move-helper';
+import { InteractionHelper } from '../../../helpers/world/interaction-helper';
 
 export class OpenDoor extends Command {
 
@@ -32,7 +32,7 @@ export class OpenDoor extends Command {
       return;
     }
 
-    MoveHelper.tryToOpenDoor(player, door, { gameState });
+    InteractionHelper.tryToOpenDoor(player, door, { gameState });
   }
 
 }

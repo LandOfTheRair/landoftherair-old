@@ -2,7 +2,7 @@
 
 
 import { Skill } from '../../../../../base/Skill';
-import { Character} from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { Push as CastEffect } from '../../../../../effects/misc/Push';
 import { StatName } from '../../../../../../shared/interfaces/character';
 

@@ -1,14 +1,13 @@
 
 import { includes, random, capitalize, get, clamp, cloneDeep, sample } from 'lodash';
 
-import { Character} from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Item} from '../../../shared/models/item';
 import * as Classes from '../../classes';
-import * as Effects from '../../effects';
 
 import { CharacterHelper } from '../character/character-helper';
 import { NPC } from '../../../shared/models/npc';
-import { BuildupEffect } from '../../base/Effect';
+import { BuildupEffect, Effect } from '../../base/Effect';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 import { MessageHelper } from './message-helper';
 import { SkillClassNames, StatName } from '../../../shared/interfaces/character';
@@ -46,6 +45,10 @@ export const BaseItemStatsPerTier = {
 };
 
 export class CombatHelper {
+
+  private static getEffect(char: Character, effectName: string): Effect {
+    return char.$$room.effectHelper.getEffectByName(effectName);
+  }
 
   static determineWeaponInformation(attacker: Character, item: IItem, baseRolls = 0) {
     if(!BaseItemStatsPerTier[item.itemClass]) {
@@ -105,7 +108,8 @@ export class CombatHelper {
 
     if(!RollerHelper.XInOneHundred(shadowSwapLevel)) return;
 
-    const hidden = new Effects.Hidden({});
+    const Hidden: any = this.getEffect(char, 'Hidden');
+    const hidden = new Hidden({});
     char.sendClientMessage('You swap places with your shadow!', true);
     hidden.cast(char, char);
   }
@@ -117,7 +121,8 @@ export class CombatHelper {
 
     // prone can happen randomly
     if(!hasFleetOfFoot && !hasUnshakeable && weapon.proneChance > 0 && RollerHelper.XInOneHundred(weapon.proneChance)) {
-      const push = new Effects.Push({ potency: attacker.level });
+      const Push: any = this.getEffect(attacker, 'Push');
+      const push = new Push({ potency: attacker.level });
       push.cast(attacker, defender);
     }
 
@@ -134,7 +139,8 @@ export class CombatHelper {
 
     // low chance of cstun
     if(RollerHelper.OneInX(defender.getTotalStat('con') * conMultiplier)) {
-      const stun = new Effects.Stun({ shouldNotShowMessage: true });
+      const Stun: any = this.getEffect(attacker, 'Stun');
+      const stun = new Stun({ shouldNotShowMessage: true });
       stun.cast(attacker, defender);
     }
   }
@@ -877,7 +883,7 @@ export class CombatHelper {
     // non-weapons (like bottles) can't trigger effects
     if(source && !includes(CanUseEffectItemClasses, source.itemClass)) return false;
 
-    const applyEffect = Effects[effect.name];
+    const applyEffect: any = this.getEffect(attacker, effect.name);
     if(!applyEffect) return false;
 
     const chance = effect.chance || 100;
@@ -1299,7 +1305,8 @@ export class CombatHelper {
     if(!targetEffect) {
       const buildupMax = 200 + (10 * defender.level);
 
-      targetEffect = new Effects[debuff]({});
+      const debuffProto: any = this.getEffect(attacker, debuff)
+      targetEffect = new debuffProto({});
       targetEffect.buildupMax = buildupMax;
       targetEffect.buildupCur = bonusIncrease;
       targetEffect.decayRate -= this.elementalDecayRateValue(attacker, debuff);

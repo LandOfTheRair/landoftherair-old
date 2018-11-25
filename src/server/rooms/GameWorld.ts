@@ -42,6 +42,9 @@ import { globalResponses, globalSetup } from '../scripts/npc/global-responses';
 import { HolidayHelper } from '../../shared/helpers/holiday-helper';
 import { Holiday } from '../../shared/interfaces/holiday';
 import { CombatEffect, IGameWorld, VisualEffect } from '../../shared/interfaces/gameworld';
+import { TraitHelper } from '../helpers/world/trait-helper';
+import { EffectHelper } from '../helpers/world/effect-helper';
+import { QuestHelper } from '../helpers/world/quest-helper';
 
 const TICK_TIMER = 1000;
 
@@ -83,6 +86,9 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
   public lockerHelper: LockerHelper;
   private marketHelper: MarketHelper;
   public analyticsHelper: AnalyticsHelper;
+  public traitHelper: TraitHelper;
+  public effectHelper: EffectHelper;
+  public questHelper: QuestHelper;
 
   public get groundItemCount(): number {
     return this.groundHelper.numberOfItems;
@@ -197,6 +203,9 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
     this.lockerHelper = new LockerHelper();
     this.marketHelper = new MarketHelper();
     this.analyticsHelper = new AnalyticsHelper();
+    this.traitHelper = new TraitHelper();
+    this.effectHelper = new EffectHelper();
+    this.questHelper = new QuestHelper();
 
     const mapData = this.formatMapData(cloneDeep(require(opts.mapPath)));
 

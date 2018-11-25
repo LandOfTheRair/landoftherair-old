@@ -11,13 +11,8 @@ import { Item } from './item';
 import { Party } from './party';
 import { Quest } from '../../server/base/Quest';
 
-import * as Quests from '../../server/quests';
-
-import { PartyDefense, PartyOffense, PartyHealthRegeneration, PartyManaRegeneration, Dead, LowCON, Malnourished } from '../../server/effects';
-
 import { CharacterHelper } from '../../server/helpers/character/character-helper';
 
-import { AllTraits } from '../traits/trait-hash';
 import { DeathHelper } from '../../server/helpers/character/death-helper';
 import { PartyHelper } from '../../server/helpers/party/party-helper';
 import { AlchemyContainer } from './container/tradeskills/alchemy';
@@ -377,6 +372,7 @@ export class Player extends Character implements IPlayer {
     this.$$deathTicks = 60 * 5;
     this.combatTicks = 0;
 
+    const Dead = this.getEffect('Dead');
     const dead = new Dead({});
     dead.cast(this, this);
     dead.duration = this.$$deathTicks;
@@ -393,6 +389,7 @@ export class Player extends Character implements IPlayer {
     if(myCon > 3) this.loseBaseStat('con', 1);
 
     if(this.getBaseStat('con') <= 3) {
+      const LowCON = this.getEffect('LowCON');
       const lowCon = new LowCON({});
       lowCon.cast(this, this);
     }
@@ -578,6 +575,7 @@ export class Player extends Character implements IPlayer {
     this.$$hungerTicks--;
 
     if(this.$$hungerTicks <= 0 && !this.hasEffect('Malnourished')) {
+      const Malnourished = this.getEffect('Malnourished');
       const malnourished = new Malnourished({});
       malnourished.cast(this, this);
     }
@@ -618,10 +616,10 @@ export class Player extends Character implements IPlayer {
     if(level === 0) return;
 
     const effMap = {
-      Warrior: PartyDefense,
-      Healer: PartyHealthRegeneration,
-      Thief: PartyOffense,
-      Mage: PartyManaRegeneration
+      Warrior: this.getEffect('PartyDefense'),
+      Healer: this.getEffect('PartyHealthRegeneration'),
+      Thief: this.getEffect('PartyOffense'),
+      Mage: this.getEffect('PartyManaRegeneration')
     };
 
     const partyEffect = new effMap[this.baseClass]({ potency: level });
@@ -677,8 +675,7 @@ export class Player extends Character implements IPlayer {
 
     if(questOpts.kill) {
       Object.keys(this.activeQuests || {}).forEach(quest => {
-        const realQuest = Quests[quest];
-        if(!realQuest) return;
+        const realQuest = this.$$room.questHelper.getQuestByName(quest);
 
         const { type } = realQuest.requirements;
         if(type !== 'kill') return;
@@ -701,12 +698,12 @@ export class Player extends Character implements IPlayer {
     if(!data.isRepeatable) {
       this.permanentlyCompleteQuest(quest.name);
     }
-    this.removeQuest(quest);
+    this.removeQuest(quest.name);
   }
 
-  removeQuest(quest: Quest) {
-    delete this.questProgress[quest.name];
-    delete this.activeQuests[quest.name];
+  removeQuest(questName: string) {
+    delete this.questProgress[questName];
+    delete this.activeQuests[questName];
   }
 
   canTakeItem(item: IItem): boolean {
@@ -781,7 +778,7 @@ export class Player extends Character implements IPlayer {
   public isTraitInEffect(trait: string): boolean {
     if(!this.traitLevels) return false;
 
-    const traitObj = AllTraits.Common[trait] || AllTraits.Free[trait] || AllTraits[this.baseClass][trait];
+    const traitObj = this.$$room.traitHelper.getTraitByName(trait, this);
     if(!traitObj) return false;
     if(traitObj.isFree) return traitObj.currentlyInEffect(this);
 
@@ -905,9 +902,16 @@ export class Player extends Character implements IPlayer {
     if(!this.activeQuests) return;
 
     Object.keys(this.activeQuests).forEach(quest => {
-      const requirements = Quests[quest].requirements;
+      const realQuest = this.$$room.questHelper.getQuestByName(quest, false);
+
+      if(!realQuest) {
+        this.removeQuest(quest);
+        return;
+      }
+
+      const requirements = realQuest.requirements;
       if(requirements.activeHoliday && !HolidayHelper.isHoliday(requirements.activeHoliday)) {
-        this.removeQuest(Quests[quest]);
+        this.removeQuest(realQuest.name);
       }
     });
   }

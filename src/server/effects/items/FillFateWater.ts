@@ -1,6 +1,6 @@
 
 import { Effect } from '../../base/Effect';
-import { Character} from '../../../shared/models/character';
+import { Character } from '../../../shared/models/character';
 import { Fate } from '../misc/Fate';
 
 export class FillFateWater extends Effect {

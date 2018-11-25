@@ -2,7 +2,7 @@
 
 
 import { Skill } from '../../../../../base/Skill';
-import { Character} from '../../../../../../shared/models/character';
+import { Character } from '../../../../../../shared/models/character';
 import { CombatHelper } from '../../../../../helpers/world/combat-helper';
 import { MessageHelper } from '../../../../../helpers/world/message-helper';
 import { Player } from '../../../../../../shared/models/player';
