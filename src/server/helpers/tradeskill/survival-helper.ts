@@ -144,4 +144,37 @@ export class SurvivalHelper {
         };
       });
   }
+
+  static repair(player: Player) {
+
+    const target = player.rightHand;
+    const hammer = player.leftHand;
+
+    const baseCondition = target.condition;
+
+    // do repair
+    let earnedCondition = 10000;
+    if(hammer.name === 'Smith Hammer') earnedCondition += 5000;
+    earnedCondition += player.calcSkillLevel(SkillClassNames.Survival) * 1000;
+
+    if(target.condition >= earnedCondition) {
+      player.sendClientMessage('That item is currently above your skills.');
+      return;
+    }
+
+    hammer.loseCondition(500, () => player.recalculateStats());
+
+    target.condition = earnedCondition;
+
+    player.sendClientMessage(`Your ${target.itemClass.toLowerCase()} is now in ${target.conditionString()} condition.`);
+    player.recalculateStats();
+
+    // gain skill
+    let skillGained = 0;
+    if(baseCondition < 10000) skillGained += 2;
+    if(baseCondition < 5000)  skillGained += 3;
+    if(baseCondition === 0)   skillGained += 5;
+
+    player.gainSkill(SkillClassNames.Survival, skillGained);
+  }
 }

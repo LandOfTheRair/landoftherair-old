@@ -119,6 +119,10 @@ export class Item implements IItem {
     if(!this.value && this.sellValue) this.value = this.sellValue;
   }
 
+  isBroken(): boolean {
+    return this.condition <= 0;
+  }
+
   usesString(): string {
     if(!this.effect || !this.effect.uses || this.effect.uses < 0) return '';
     const uses = this.effect.uses;

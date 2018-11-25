@@ -125,7 +125,7 @@ export class MoveHelper {
 
       if(player.rightHand && player.rightHand.itemClass === 'Key') {
 
-        if(player.rightHand.condition === 0) {
+        if(player.rightHand.isBroken()) {
           player.sendClientMessage('That key is not currently usable!');
           return;
         }

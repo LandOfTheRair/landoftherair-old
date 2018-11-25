@@ -227,6 +227,7 @@ export interface IItem {
   daily?: boolean;
   previousUpgrades?: any[];
 
+  isBroken(): boolean;
   usesString(): string;
   conditionString(): string;
   conditionACModifier(): number;

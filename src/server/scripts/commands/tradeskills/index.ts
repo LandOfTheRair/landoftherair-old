@@ -11,4 +11,5 @@ export * from './spellforging/forge';
 export * from './runewriting/runewrite';
 
 export * from './survival/extract';
+export * from './survival/repair';
 export * from './survival/tan';
