@@ -123,6 +123,7 @@ export interface IGameWorld {
   calcAdjustedGoldGain(gold: number): number;
   calcAdjustedSkillGain(skill: number): number;
   calcAdjustedXPGain(xp: number): number;
+  calcAdjustedAXPGain(axp: number): number;
   calcAdjustedItemFindGain(itemFind: number): number;
   calcAdjustedPartyXPGain(xp: number): number;
 

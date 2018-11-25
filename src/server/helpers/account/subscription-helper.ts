@@ -54,6 +54,16 @@ export const AllSilverPurchases: SilverPurchaseItem[] = [
     postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'xpMult', 6)
   },
   {
+    name: 'Festival: Ancient XP Gain +100%',
+    desc: 'Gain Ancient XP +100% faster for 6 hours. Additional purchases increase duration, not bonus.',
+    icon: 'two-shadows',
+    fgColor: '#a00',
+    maxPurchases: 99999,
+    key: 'FestivalAXP',
+    cost: 150,
+    postBuy: (account, lobby: Lobby) => lobby.updateFestivalTime(account, 'axpMult', 6)
+  },
+  {
     name: 'Festival: Skill Gain +100%',
     desc: 'Gain Skill +100% faster for 6 hours. Additional purchases increase duration, not bonus.',
     icon: 'two-shadows',

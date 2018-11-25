@@ -10,7 +10,7 @@ export type SilverPurchase =
   'MorePotions' | 'MoreCharacters' | 'MoreMarketboard'
   | 'BiggerBelt' | 'BiggerSack' | 'ExpandedStorage'
   | 'SharedLockers' | 'MagicPouch'
-  | 'FestivalXP' | 'FestivalSkill' | 'FestivalGold' | 'FestivalTrait' | 'FestivalItemFind'
+  | 'FestivalXP' | 'FestivalAXP' | 'FestivalSkill' | 'FestivalGold' | 'FestivalTrait' | 'FestivalItemFind'
   | 'CosmeticInversify' | 'CosmeticAncientify' | 'CosmeticEtherPulse' | 'CosmeticGhostEther';
 
 export interface IAccount {

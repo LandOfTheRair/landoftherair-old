@@ -205,6 +205,7 @@ You also get access to some commands in-game:
 Internally, there are a large handful of game settings that control how players gain anything. They are pretty self-explanatory:
 
 * `xpMult` - the xp multiplier, default 1
+* `axpMult` - the ancient xp multiplier, default 1
 * `skillMult` - the skill multiplier, default 1
 * `goldMult` - the gold multiplier, default 1
 * `itemFindMult` - the item find multiplier, default 1

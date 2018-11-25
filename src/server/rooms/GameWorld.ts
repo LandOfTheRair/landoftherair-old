@@ -1193,6 +1193,10 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
     return Math.floor(xp * this.bonusHelper.settings.xpMult);
   }
 
+  public calcAdjustedAXPGain(axp: number) {
+    return Math.floor(axp * this.bonusHelper.settings.axpMult);
+  }
+
   public calcAdjustedItemFindGain(itemFindBonus: number) {
     return Math.floor(itemFindBonus * this.bonusHelper.settings.itemFindMult);
   }

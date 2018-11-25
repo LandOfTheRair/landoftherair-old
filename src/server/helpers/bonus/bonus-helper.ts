@@ -5,6 +5,7 @@ import { GameWorld } from '../../rooms/GameWorld';
 
 export interface GameSettings {
   xpMult: number;
+  axpMult: number;
   skillMult: number;
   goldMult: number;
   itemFindMult: number;
@@ -16,6 +17,7 @@ export interface GameSettings {
 
 const BASE_SETTINGS: GameSettings = {
   xpMult: 1,
+  axpMult: 1,
   skillMult: 1,
   goldMult: 1,
   itemFindMult: 1,

@@ -844,7 +844,8 @@ export class Player extends Character implements IPlayer {
   gainAxp(axpGain: number) {
     if(!this.gainingAP) return;
 
-    super.gainAxp(this.$$room.subscriptionHelper.modifyAXPGainForSubscription(this, axpGain));
+    const modifiedAXP = this.$$room.calcAdjustedAXPGain(axpGain);
+    super.gainAxp(this.$$room.subscriptionHelper.modifyAXPGainForSubscription(this, modifiedAXP));
   }
 
   _gainSkill(type, skillGained) {

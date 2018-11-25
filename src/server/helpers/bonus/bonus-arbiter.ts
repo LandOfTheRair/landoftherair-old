@@ -8,7 +8,7 @@ import { Lobby } from '../../rooms/Lobby';
 export class BonusArbiter {
 
   private bonusSyncData: GameSettings = {
-    xpMult: 1, goldMult: 1, skillMult: 1, partyXPMult: 1, itemFindMult: 1,
+    xpMult: 1, axpMult: 1, goldMult: 1, skillMult: 1, partyXPMult: 1, itemFindMult: 1,
     numberOfRandomStatsForItems: 0,
     randomStatMaxValue: 0,
     randomStatChance: 0
@@ -16,6 +16,7 @@ export class BonusArbiter {
 
   private boughtBonusHoursRemaining = {
     xpMult: 0,
+    axpMult: 0,
     goldMult: 0,
     skillMult: 0,
     itemFindMult: 0
@@ -23,6 +24,7 @@ export class BonusArbiter {
 
   private bonusTimers = {
     xpMult: null,
+    axpMult: null,
     goldMult: null,
     skillMult: null,
     itemFindMult: null
