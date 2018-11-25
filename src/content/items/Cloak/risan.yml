@@ -110,3 +110,19 @@
   trait:
     name: DeathGrip
     level: 5
+
+- name: Catacombs Lich Cloak
+  stats:
+    conjurationBonus: 5
+    restorationBonus: 5
+    offense: 5
+    defense: 5
+    magicalResist: 125
+    physicalResist: 125
+  desc: "an iridescent blue cloak interwoven with fibers of raw magic"
+  value: 13000
+  sprite: 483
+  binds: true
+
+  requirements:
+    level: 45
