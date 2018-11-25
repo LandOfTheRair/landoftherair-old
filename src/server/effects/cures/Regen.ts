@@ -13,7 +13,7 @@ export class Regen extends SpellEffect {
   };
 
   maxSkillForSkillGain = 15;
-  skillMults = [[0, 0.25], [11, 0.5], [21, 1], [26, 1.75], [31, 3]];
+  skillMults = [[0, 0.25], [11, 0.5], [21, 1], [31, 2.5], [41, 5]];
 
   private shouldBurst: boolean;
 

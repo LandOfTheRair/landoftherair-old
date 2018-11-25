@@ -7,7 +7,7 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 export class EnergyWave extends SpellEffect {
 
   maxSkillForSkillGain = 15;
-  skillMults = [[0, 0.7], [6, 1.2], [11, 1.7], [16, 2.2], [21, 2.7], [26, 3.2], [31, 4.5]];
+  skillMults = [[0, 0.7], [6, 1.2], [11, 1.7], [16, 2.2], [21, 2.7], [26, 3.2], [31, 4.2], [36, 5.7], [41, 8]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

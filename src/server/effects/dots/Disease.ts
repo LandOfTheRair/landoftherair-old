@@ -14,7 +14,7 @@ export class Disease extends SpellEffect {
   };
 
   maxSkillForSkillGain = 25;
-  skillMults = [[0, 2], [6, 2.5], [11, 3], [16, 3.5], [21, 4], [26, 3.5], [31, 5]];
+  skillMults = [[0, 2], [6, 2.5], [11, 3], [16, 3.5], [21, 4], [26, 3.5], [31, 5], [36, 7], [41, 10]];
 
   private critBonus: number;
   private healerDebilitate: number;

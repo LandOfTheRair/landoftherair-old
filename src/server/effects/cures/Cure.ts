@@ -7,7 +7,7 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 export class Cure extends SpellEffect {
 
   maxSkillForSkillGain = 7;
-  skillMults = [[0, 4], [11, 6], [21, 10], [26, 15], [31, 25]];
+  skillMults = [[0, 4], [11, 6], [21, 10], [31, 15], [41, 25]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);

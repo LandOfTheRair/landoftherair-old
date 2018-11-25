@@ -7,7 +7,7 @@ import { RollerHelper } from '../../../shared/helpers/roller-helper';
 export class Hail extends SpellEffect {
 
   maxSkillForSkillGain = 30;
-  skillMults = [[0, 2.5], [6, 3], [11, 3.5], [16, 4], [21, 4.5], [26, 5], [31, 6]];
+  skillMults = [[0, 2.5], [6, 3], [11, 3.5], [16, 4], [21, 4.5], [26, 5], [31, 6], [36, 7], [41, 9]];
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
