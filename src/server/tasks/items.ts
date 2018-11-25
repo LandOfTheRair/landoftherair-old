@@ -1,25 +1,23 @@
 
-import { reject, difference, values, isArray, isNumber } from 'lodash';
-
-import { Stats } from '../../shared/interfaces/character';
-import * as Classes from '../classes';
-import * as Effects from '../effects';
-
-const argv = require('minimist')(process.argv.slice(2));
-require('dotenv').config({ silent: true, path: argv.prod ? '.env.prod' : '.env' });
-
-import { DB } from '../database';
+import { reject, difference, values, isArray, isNumber, includes, flatten, isUndefined, capitalize } from 'lodash';
 
 import * as YAML from 'yamljs';
 import * as recurse from 'recursive-readdir';
 import * as path from 'path';
 
-import { includes, flatten, isUndefined, capitalize } from 'lodash';
+import { Stats } from '../../shared/interfaces/character';
+import * as Classes from '../classes';
+import * as Effects from '../effects';
+import { AllTraits } from '../traits/trait-hash';
 
-import {
-  Item} from '../../shared/models/item';
+import { Item } from '../../shared/models/item';
 import { SkillClassNames } from '../../shared/interfaces/character';
 import { AmmoClasses, ArmorClasses, ShieldClasses, ValidItemTypes, WeaponClasses } from '../../shared/interfaces/item';
+
+const argv = require('minimist')(process.argv.slice(2));
+require('dotenv').config({ silent: true, path: argv.prod ? '.env.prod' : '.env' });
+
+import { DB } from '../database';
 
 const ValidSkillNames = values(SkillClassNames);
 
