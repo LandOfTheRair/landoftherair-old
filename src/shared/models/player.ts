@@ -250,7 +250,7 @@ export class Player extends Character implements IPlayer {
       if(isLearned < 0) {
         const slot = find(AllNormalGearSlots, itemSlot => {
           const checkItem = get(this, itemSlot);
-          if(!checkItem || !checkItem.effect) return false;
+          if(!checkItem || !checkItem.effect || !checkItem.effect.name) return false;
           return checkItem.effect.name.toLowerCase() === skillName.toLowerCase();
         });
 
