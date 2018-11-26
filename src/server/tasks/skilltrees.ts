@@ -9,10 +9,17 @@ import { cloneDeep, last, includes } from 'lodash';
 import { AllTraits } from '../traits/trait-hash';
 import * as AllSkills from '../scripts/commands/skills/spells';
 
+import { AllTrees as AncientLayout } from './skilltree-layouts/Ancient';
 import { AllTrees as MageLayout } from './skilltree-layouts/Mage';
 import { AllTrees as HealerLayout } from './skilltree-layouts/Healer';
 import { AllTrees as ThiefLayout } from './skilltree-layouts/Thief';
 import { AllTrees as WarriorLayout } from './skilltree-layouts/Warrior';
+
+AncientLayout.forEach(tree => {
+  Object.keys(tree).forEach(nodeName => {
+    tree[nodeName].isAncient = true;
+  });
+});
 
 const Layouts = {
   Mage: MageLayout,
@@ -25,7 +32,7 @@ export class SkillTreeCreator {
   static organize() {
 
     Object.keys(Layouts).forEach(baseClass => {
-      const allTrees = cloneDeep(Layouts[baseClass]);
+      const allTrees = cloneDeep(Layouts[baseClass].concat(AncientLayout));
       const resultingLayout: any = {};
 
       // build base tre
@@ -50,7 +57,7 @@ export class SkillTreeCreator {
             entireName = entireName.substring(0, entireName.length - 1);
           }
 
-          const traitRef = AllTraits[baseClass][entireName] || AllTraits.Common[entireName];
+          const traitRef = AllTraits[baseClass][entireName] || AllTraits.Common[entireName] || AllTraits.Ancient[entireName];
           const skillRef = AllSkills[entireName];
 
           // is trait
@@ -69,9 +76,10 @@ export class SkillTreeCreator {
                 desc: traitRef.description,
                 icon: traitRef.icon,
                 capstone: upgrade.capstone,
+                isAncient: existingTraitItem.isAncient,
                 requireCharacterLevel: upgrade.requireCharacterLevel,
                 requireSkillLevel: upgrade.requireSkillLevel,
-                cost: Trait.determineUpgradeCost(upgrade),
+                cost: Trait.determineUpgradeCost(traitRef, upgrade),
                 unlocks: existingTraitItem.unlocks,
                 cluster: treeIndex + 1
               };
@@ -113,7 +121,7 @@ export class SkillTreeCreator {
         const node = resultingLayout[nodeName];
 
         if(!node.unlocks) return;
-
+        
         node.unlocks.forEach(unlock => {
           const unlockedNode = resultingLayout[unlock];
 

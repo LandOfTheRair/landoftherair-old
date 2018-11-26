@@ -17,6 +17,10 @@ export class SkillTree {
 
   private baseClass: string;
 
+  public get hasAnyAncientPoints(): boolean {
+    return this.totalAncientPoints > 0;
+  }
+
   public get canGainResetPoints(): boolean {
     return this.resetPoints < 100;
   }
@@ -296,6 +300,11 @@ export class SkillTree {
       return;
     }
 
+    if(traitNode.isAncient) {
+      this.ancientPoints -= traitNode.cost;
+      return;
+    }
+
     this.traitPoints -= traitNode.cost;
   }
 
@@ -303,6 +312,8 @@ export class SkillTree {
 
     if(traitNode.isParty) {
       this.partyPoints += this.nodesClaimed[traitNode.name];
+    } else if(traitNode.isAncient) {
+      this.ancientPoints += this.nodesClaimed[traitNode.name];
     } else {
       this.traitPoints += this.nodesClaimed[traitNode.name];
     }

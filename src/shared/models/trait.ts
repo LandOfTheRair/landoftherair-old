@@ -19,11 +19,18 @@ export class Trait {
   static description = 'Description';
   static icon = '';
   static isFree: boolean;
+  static isAncient: boolean;
 
   static upgrades: TraitUpgrade[] = [];
 
-  static determineUpgradeCost(upgrade: TraitUpgrade): number {
+  static determineUpgradeCost(traitRef: Trait, upgrade: TraitUpgrade): number {
     if(upgrade.cost)      return upgrade.cost;
+
+    if(traitRef.isAncient) {
+      if(upgrade.capstone) return 3;
+      return 1;
+    }
+
     if(upgrade.capstone)  return 10;
     return 3;
   }

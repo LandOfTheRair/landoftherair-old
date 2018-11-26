@@ -125,4 +125,10 @@ export class TraitsComponent implements AfterViewInit, OnInit, OnDestroy {
     return split.join('');
   }
 
+  public determineType(node): string {
+    if(node.isParty) return 'PP';
+    if(node.isAncient) return 'AP';
+    return 'TP';
+  }
+
 }

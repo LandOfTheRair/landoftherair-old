@@ -10,6 +10,7 @@ export class AncientTrait extends Trait {
   static traitName = 'Name';
   static description = 'Description';
   static icon = '';
+  static isAncient = true;
 
   static canBuy(player: Player, cost: number): boolean {
     return player.skillTree.hasAncientPoints(cost);
