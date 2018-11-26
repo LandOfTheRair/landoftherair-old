@@ -376,7 +376,9 @@ export class ColyseusGameService {
 
     const hasOldCharacter = this.character;
 
-    this.clientGameState.setPlayer(new Player(character));
+    const char = new Player(character);
+    char.init();
+    this.clientGameState.setPlayer(char);
 
     if(hasOldCharacter) {
       const { x, y, dir, swimLevel } = hasOldCharacter;

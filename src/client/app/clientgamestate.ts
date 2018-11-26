@@ -241,6 +241,7 @@ export class ClientGameState {
 
     newList.forEach(playerUsername => {
       this.playerHash[playerUsername] = new Player(players[playerUsername]);
+      this.playerHash[playerUsername].init();
     });
 
     delPlayers.forEach(p => this.removePlayer(this.playerHash[p]));
