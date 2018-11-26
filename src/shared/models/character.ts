@@ -262,7 +262,6 @@ export class Character implements ICharacter {
     merge(this, opts);
 
     this.initHpMp();
-    this.init();
   }
 
   init() {}

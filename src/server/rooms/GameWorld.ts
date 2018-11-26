@@ -321,8 +321,10 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
 
     // needs to be available when player.init() is called
     playerData.$$account = account;
-    playerData.$$room = this;
     const player = new Player(playerData);
+    player.$$room = this;
+    player.init();
+
     player.z = player.z || 0;
 
     this.usernameClientHash[player.username] = { client };
@@ -948,6 +950,7 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
       data.y = (npcData.y / 64) - 1;
       const npc = new NPC(data);
       npc.$$room = this;
+      npc.init();
 
       CharacterHelper.setUpClassFor(npc);
 
