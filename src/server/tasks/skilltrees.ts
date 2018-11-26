@@ -121,7 +121,7 @@ export class SkillTreeCreator {
         const node = resultingLayout[nodeName];
 
         if(!node.unlocks) return;
-
+        
         node.unlocks.forEach(unlock => {
           const unlockedNode = resultingLayout[unlock];
 

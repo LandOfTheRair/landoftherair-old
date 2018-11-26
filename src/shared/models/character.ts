@@ -482,8 +482,6 @@ export class Character implements ICharacter {
       this.totalStats.stealth -= this.hidePenalty();
     }
 
-    this.totalStats.mitigation += this.getTraitLevelAndUsageModifier('UnarmoredSavant');
-
     // always recalculate perception
     this.totalStats.perception += this.perceptionLevel();
 
@@ -1396,26 +1394,39 @@ export class Character implements ICharacter {
 
   public getTraitLevelAndUsageModifier(trait: string): number {
     const level = this.getTraitLevel(trait);
-
+    if(level === 0) return 0;
     if(!this.$$room) return 0;
     return this.$$room.traitHelper.getTraitLevelAndUsageModifier(this, trait, level);
   }
 
   private adjustStatsForTraits(): void {
 
-    // all traits
-    this.totalStats.armorClass += this.getTraitLevelAndUsageModifier('NaturalArmor');
+    const stats = {
+      armorClass: ['NaturalArmor', 'AncientArmor'],
 
-    // warrior traits
-    this.totalStats.accuracy += this.getTraitLevelAndUsageModifier('EagleEye');
-    this.totalStats.defense += this.getTraitLevelAndUsageModifier('FunkyMoves');
-    this.totalStats.offense += this.getTraitLevelAndUsageModifier('SwordTricks');
-    this.totalStats.magicalResist += this.getTraitLevelAndUsageModifier('HolyProtection');
-    this.totalStats.physicalResist += this.getTraitLevelAndUsageModifier('SilverSkin');
+      accuracy: ['EagleEye'],
+      defense: ['FunkyMoves', 'AncientDefense'],
+      offense: ['SwordTricks', 'AncientOffense'],
+      magicalResist: ['HolyProtection', 'AncientAura'],
+      physicalResist: ['SilverSkin', 'AncientSkin'],
+      fireResist: ['AncientForge'],
+      iceResist: ['AncientBlizzard'],
+      diseaseResist: ['AncientPlague'],
+      poisonResist: ['AncientPoison'],
+      mitigation: ['UnarmoredSavant', 'AncientMitigation'],
 
-    // mage & healer traits
-    this.totalStats.mp += this.getTraitLevelAndUsageModifier('ManaPool');
-    this.totalStats.mpregen += this.getTraitLevelAndUsageModifier('CalmMind');
+      mp: ['ManaPool'],
+      mpregen: ['CalmMind', 'AncientRegeneration'],
+      hpregen: ['AncientRegeneration'],
+
+      damageFactor: ['AncientForce']
+    };
+
+    Object.keys(stats).forEach(stat => {
+      stats[stat].forEach(trait => {
+        this.totalStats[stat] += this.getTraitLevelAndUsageModifier(trait);
+      });
+    });
   }
 
   public isUnableToAct(): boolean {

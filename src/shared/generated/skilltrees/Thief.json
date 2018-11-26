@@ -1356,11 +1356,16 @@
     },
     "Ancient": {
         "icon": "drakkar",
-        "desc": "Ancient abilities are waiting deep inside you to activate!",
+        "desc": "Expand your ancient knowledge!",
         "unbuyable": true,
         "root": true,
         "unlocks": [
-            "AncientPotions0"
+            "AncientPotions0",
+            "AncientArmor0",
+            "AncientForce0",
+            "AncientDefense0",
+            "AncientOffense0",
+            "AncientRegeneration0"
         ],
         "isAncient": true,
         "name": "Ancient",
@@ -1406,6 +1411,588 @@
         "cluster": 5,
         "unlockedBy": [
             "AncientPotions1"
+        ]
+    },
+    "AncientArmor0": {
+        "name": "AncientArmor0",
+        "traitName": "AncientArmor",
+        "desc": "Increase your armor class by $3|9$.",
+        "icon": "armor-vest",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientArmor1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "Ancient"
+        ]
+    },
+    "AncientArmor1": {
+        "name": "AncientArmor1",
+        "traitName": "AncientArmor",
+        "desc": "Increase your armor class by $3|9$.",
+        "icon": "armor-vest",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientArmor2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientArmor0"
+        ]
+    },
+    "AncientArmor2": {
+        "name": "AncientArmor2",
+        "traitName": "AncientArmor",
+        "desc": "Increase your armor class by $3|9$.",
+        "icon": "armor-vest",
+        "capstone": true,
+        "isAncient": true,
+        "cost": 3,
+        "unlocks": [
+            "AncientSkin0",
+            "AncientAura0"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientArmor1"
+        ]
+    },
+    "AncientForce0": {
+        "name": "AncientForce0",
+        "traitName": "AncientForce",
+        "desc": "Increase your damage by $5|15$%.",
+        "icon": "crossed-swords",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientForce1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "Ancient"
+        ]
+    },
+    "AncientForce1": {
+        "name": "AncientForce1",
+        "traitName": "AncientForce",
+        "desc": "Increase your damage by $5|15$%.",
+        "icon": "crossed-swords",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientForce2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientForce0"
+        ]
+    },
+    "AncientForce2": {
+        "name": "AncientForce2",
+        "traitName": "AncientForce",
+        "desc": "Increase your damage by $5|15$%.",
+        "icon": "crossed-swords",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientForce3"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientForce1"
+        ]
+    },
+    "AncientForce3": {
+        "name": "AncientForce3",
+        "traitName": "AncientForce",
+        "desc": "Increase your damage by $5|15$%.",
+        "icon": "crossed-swords",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientForce4"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientForce2"
+        ]
+    },
+    "AncientForce4": {
+        "name": "AncientForce4",
+        "traitName": "AncientForce",
+        "desc": "Increase your damage by $5|15$%.",
+        "icon": "crossed-swords",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientForce3"
+        ]
+    },
+    "AncientSkin0": {
+        "name": "AncientSkin0",
+        "traitName": "AncientSkin",
+        "desc": "Increase your physical resistance by $50|150$.",
+        "icon": "leg-armor",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientSkin1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientArmor2"
+        ]
+    },
+    "AncientSkin1": {
+        "name": "AncientSkin1",
+        "traitName": "AncientSkin",
+        "desc": "Increase your physical resistance by $50|150$.",
+        "icon": "leg-armor",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientSkin2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientSkin0"
+        ]
+    },
+    "AncientSkin2": {
+        "name": "AncientSkin2",
+        "traitName": "AncientSkin",
+        "desc": "Increase your physical resistance by $50|150$.",
+        "icon": "leg-armor",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientMitigation0"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientSkin1"
+        ]
+    },
+    "AncientAura0": {
+        "name": "AncientAura0",
+        "traitName": "AncientAura",
+        "desc": "Increase your magical resistance by $50|150$.",
+        "icon": "aura",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientForge0",
+            "AncientBlizzard0",
+            "AncientPlague0",
+            "AncientPoison0"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientArmor2"
+        ]
+    },
+    "AncientDefense0": {
+        "name": "AncientDefense0",
+        "traitName": "AncientDefense",
+        "desc": "Increase your defense by $3|9$.",
+        "icon": "wingfoot",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientDefense1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "Ancient"
+        ]
+    },
+    "AncientDefense1": {
+        "name": "AncientDefense1",
+        "traitName": "AncientDefense",
+        "desc": "Increase your defense by $3|9$.",
+        "icon": "wingfoot",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientDefense2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientDefense0"
+        ]
+    },
+    "AncientDefense2": {
+        "name": "AncientDefense2",
+        "traitName": "AncientDefense",
+        "desc": "Increase your defense by $3|9$.",
+        "icon": "wingfoot",
+        "capstone": true,
+        "isAncient": true,
+        "cost": 3,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientDefense1"
+        ]
+    },
+    "AncientOffense0": {
+        "name": "AncientOffense0",
+        "traitName": "AncientOffense",
+        "desc": "Increase your offense by $3|9$.",
+        "icon": "sword-clash",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientOffense1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "Ancient"
+        ]
+    },
+    "AncientOffense1": {
+        "name": "AncientOffense1",
+        "traitName": "AncientOffense",
+        "desc": "Increase your offense by $3|9$.",
+        "icon": "sword-clash",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientOffense2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientOffense0"
+        ]
+    },
+    "AncientOffense2": {
+        "name": "AncientOffense2",
+        "traitName": "AncientOffense",
+        "desc": "Increase your offense by $3|9$.",
+        "icon": "sword-clash",
+        "capstone": true,
+        "isAncient": true,
+        "cost": 3,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientOffense1"
+        ]
+    },
+    "AncientMitigation0": {
+        "name": "AncientMitigation0",
+        "traitName": "AncientMitigation",
+        "desc": "Increase your mitigation by $1|3$.",
+        "icon": "chest-armor",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientMitigation1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientSkin2"
+        ]
+    },
+    "AncientMitigation1": {
+        "name": "AncientMitigation1",
+        "traitName": "AncientMitigation",
+        "desc": "Increase your mitigation by $1|3$.",
+        "icon": "chest-armor",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientMitigation2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientMitigation0"
+        ]
+    },
+    "AncientMitigation2": {
+        "name": "AncientMitigation2",
+        "traitName": "AncientMitigation",
+        "desc": "Increase your mitigation by $1|3$.",
+        "icon": "chest-armor",
+        "capstone": true,
+        "isAncient": true,
+        "cost": 3,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientMitigation1"
+        ]
+    },
+    "AncientForge0": {
+        "name": "AncientForge0",
+        "traitName": "AncientForge",
+        "desc": "Increase your fire resistance by $50|150$.",
+        "icon": "celebration-fire",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientForge1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientAura0"
+        ]
+    },
+    "AncientForge1": {
+        "name": "AncientForge1",
+        "traitName": "AncientForge",
+        "desc": "Increase your fire resistance by $50|150$.",
+        "icon": "celebration-fire",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientForge2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientForge0"
+        ]
+    },
+    "AncientForge2": {
+        "name": "AncientForge2",
+        "traitName": "AncientForge",
+        "desc": "Increase your fire resistance by $50|150$.",
+        "icon": "celebration-fire",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientForge3"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientForge1"
+        ]
+    },
+    "AncientForge3": {
+        "name": "AncientForge3",
+        "traitName": "AncientForge",
+        "desc": "Increase your fire resistance by $50|150$.",
+        "icon": "celebration-fire",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientForge4"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientForge2"
+        ]
+    },
+    "AncientForge4": {
+        "name": "AncientForge4",
+        "traitName": "AncientForge",
+        "desc": "Increase your fire resistance by $50|150$.",
+        "icon": "celebration-fire",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientForge3"
+        ]
+    },
+    "AncientBlizzard0": {
+        "name": "AncientBlizzard0",
+        "traitName": "AncientBlizzard",
+        "desc": "Increase your ice resistance by $50|150$.",
+        "icon": "melting-ice-cube",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientBlizzard1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientAura0"
+        ]
+    },
+    "AncientBlizzard1": {
+        "name": "AncientBlizzard1",
+        "traitName": "AncientBlizzard",
+        "desc": "Increase your ice resistance by $50|150$.",
+        "icon": "melting-ice-cube",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientBlizzard2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientBlizzard0"
+        ]
+    },
+    "AncientBlizzard2": {
+        "name": "AncientBlizzard2",
+        "traitName": "AncientBlizzard",
+        "desc": "Increase your ice resistance by $50|150$.",
+        "icon": "melting-ice-cube",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientBlizzard3"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientBlizzard1"
+        ]
+    },
+    "AncientBlizzard3": {
+        "name": "AncientBlizzard3",
+        "traitName": "AncientBlizzard",
+        "desc": "Increase your ice resistance by $50|150$.",
+        "icon": "melting-ice-cube",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientBlizzard4"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientBlizzard2"
+        ]
+    },
+    "AncientBlizzard4": {
+        "name": "AncientBlizzard4",
+        "traitName": "AncientBlizzard",
+        "desc": "Increase your ice resistance by $50|150$.",
+        "icon": "melting-ice-cube",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientBlizzard3"
+        ]
+    },
+    "AncientPlague0": {
+        "name": "AncientPlague0",
+        "traitName": "AncientPlague",
+        "desc": "Increase your disease resistance by $50|150$.",
+        "icon": "death-zone",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientPlague1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientAura0"
+        ]
+    },
+    "AncientPlague1": {
+        "name": "AncientPlague1",
+        "traitName": "AncientPlague",
+        "desc": "Increase your disease resistance by $50|150$.",
+        "icon": "death-zone",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientPlague2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientPlague0"
+        ]
+    },
+    "AncientPlague2": {
+        "name": "AncientPlague2",
+        "traitName": "AncientPlague",
+        "desc": "Increase your disease resistance by $50|150$.",
+        "icon": "death-zone",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientPlague1"
+        ]
+    },
+    "AncientPoison0": {
+        "name": "AncientPoison0",
+        "traitName": "AncientPoison",
+        "desc": "Increase your poison resistance by $50|150$.",
+        "icon": "poison-gas",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientPoison1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientAura0"
+        ]
+    },
+    "AncientPoison1": {
+        "name": "AncientPoison1",
+        "traitName": "AncientPoison",
+        "desc": "Increase your poison resistance by $50|150$.",
+        "icon": "poison-gas",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientPoison2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientPoison0"
+        ]
+    },
+    "AncientPoison2": {
+        "name": "AncientPoison2",
+        "traitName": "AncientPoison",
+        "desc": "Increase your poison resistance by $50|150$.",
+        "icon": "poison-gas",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientPoison1"
+        ]
+    },
+    "AncientRegeneration0": {
+        "name": "AncientRegeneration0",
+        "traitName": "AncientRegeneration",
+        "desc": "Increase your HP/MP regeneration by $3|9$.",
+        "icon": "psychic-waves",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientRegeneration1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "Ancient"
+        ]
+    },
+    "AncientRegeneration1": {
+        "name": "AncientRegeneration1",
+        "traitName": "AncientRegeneration",
+        "desc": "Increase your HP/MP regeneration by $3|9$.",
+        "icon": "psychic-waves",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientRegeneration2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientRegeneration0"
+        ]
+    },
+    "AncientRegeneration2": {
+        "name": "AncientRegeneration2",
+        "traitName": "AncientRegeneration",
+        "desc": "Increase your HP/MP regeneration by $3|9$.",
+        "icon": "psychic-waves",
+        "capstone": true,
+        "isAncient": true,
+        "cost": 3,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientRegeneration1"
         ]
     }
 }
