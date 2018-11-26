@@ -116,7 +116,6 @@ export class D3SkillTree implements D3SkillTreeConfig {
   }
 
   private filterAncientNodes() {
-    console.log(this.skillTree.hasAnyAncientPoints)
     if(this.skillTree.hasAnyAncientPoints) return;
 
     Object.keys(this.tree).forEach(node => {
@@ -327,13 +326,13 @@ export class D3SkillTree implements D3SkillTreeConfig {
             }
           }
 
-          let type = 'TP';
-          if(d.isParty) type = 'PP';
-          if(d.isAncient) type = 'AP';
+          let traitType = 'TP';
+          if(d.isParty) traitType = 'PP';
+          if(d.isAncient) traitType = 'AP';
 
           (<any>swal)({
             titleText: `Buy ${d.traitName ? 'Trait' : 'Skill'}: ${this.fixName(d.name)}`,
-            text: `Are you sure you want to buy the trait ${this.fixName(d.name)} for ${d.cost} ${type}? 
+            text: `Are you sure you want to buy the trait ${this.fixName(d.name)} for ${d.cost} ${traitType}? 
             ${isUnderMPCost ? 'YOU MAY NOT BE ABLE TO CAST THIS SPELL CURRENTLY!' : ''}`,
             showCancelButton: true,
             confirmButtonText: 'Yes, buy it!'
