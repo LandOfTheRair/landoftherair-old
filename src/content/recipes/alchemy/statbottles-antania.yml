@@ -196,3 +196,12 @@
     - Maze Corpseflower
     - Maze Corpseflower
 
+- item: Antanian Magic Potion
+  skillGained: 100
+  maxSkillForGains: 5
+  requiredSkill: 1
+  xpGained: 5000
+  ingredients:
+    - Tower Goblood
+    - Tower Spider Egg
+
