@@ -19,6 +19,7 @@
     armorClass: 55
     offense: 20
     defense: 15
+    agi: 15
     perception: 250
 
   gear:
@@ -113,6 +114,7 @@
 
   otherStats:
     armorClass: 45
+    agi: 20
     perception: 300
 
   gear:
@@ -203,6 +205,7 @@
 
   otherStats:
     con: 25
+    agi: 20
     accuracy: 10
     offense: 10
     perception: 300

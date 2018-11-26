@@ -15,8 +15,9 @@
     offense: 15
     accuracy: 15
     perception: 200
-    armorClass: 5
-    defense: 5
+    armorClass: 1
+    defense: 1
+    agi: 5
     damageFactor: 0.2
 
   rightHand:
@@ -121,8 +122,9 @@
     offense: 15
     accuracy: 15
     perception: 200
-    armorClass: 5
-    defense: 5
+    armorClass: 1
+    defense: 1
+    agi: 5
     damageFactor: 0.2
 
   rightHand:
@@ -216,6 +218,7 @@
   otherStats:
     perception: 200
     defense: 30
+    agi: 5
 
   rightHand:
     - result: Catacombs Mace 1F
@@ -328,6 +331,7 @@
   otherStats:
     perception: 200
     defense: 20
+    agi: 5
 
   rightHand:
     - result: Catacombs Staff 1F
@@ -428,8 +432,9 @@
     perception: 200
     offense: 15
     accuracy: 15
-    armorClass: 20
-    defense: 25
+    armorClass: 5
+    defense: 5
+    agi: 5
     damageFactor: 0.4
 
   leftHand:
@@ -527,8 +532,9 @@
     perception: 150
     offense: 15
     accuracy: 15
-    armorClass: 5
-    defense: 5
+    armorClass: 1
+    defense: 1
+    agi: 5
     damageFactor: 0.2
 
   rightHand:
@@ -632,8 +638,9 @@
     perception: 125
     offense: 15
     accuracy: 15
-    armorClass: 5
-    defense: 5
+    armorClass: 1
+    defense: 1
+    agi: 5
     damageFactor: 0.2
 
   rightHand:
