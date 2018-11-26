@@ -27,7 +27,7 @@
     hpregen: 5
   trait:
     name:
-      - Multitarget
+      - BoostedBoost
       - MartialAgility
     level:
       min: 1
