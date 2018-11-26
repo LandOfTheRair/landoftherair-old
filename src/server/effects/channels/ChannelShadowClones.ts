@@ -126,11 +126,10 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
         npc.gainBaseStat('offense', reversedPotency * 3);
         npc.gainBaseStat('accuracy', reversedPotency * 2);
 
-        npc.recalculateStats();
-
         if(char.rightHand && char.rightHand.canUseInCombat(char)) {
           npc.rightHand = new Item(cloneDeep(char.rightHand));
           npc.rightHand.requirements = null;
+          npc.rightHand.owner = null;
           npc.rightHand.destroyOnDrop = true;
           npc.rightHand.tier = Math.max(1, (npc.rightHand.tier || 0) - 1);
         }
@@ -138,9 +137,12 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
         if(char.leftHand && char.leftHand.canUseInCombat(char)) {
           npc.leftHand = new Item(cloneDeep(char.leftHand));
           npc.leftHand.requirements = null;
+          npc.leftHand.owner = null;
           npc.leftHand.destroyOnDrop = true;
           npc.leftHand.tier = Math.max(1, (npc.leftHand.tier || 0) - 1);
         }
+
+        npc.recalculateStats();
 
         // make them know each other
         char.$$pets = char.$$pets || [];
