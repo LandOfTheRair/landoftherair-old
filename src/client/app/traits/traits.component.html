@@ -10,7 +10,7 @@
         <div class="name">
           {{ fixName(ttData.name) }}
           <br>
-          <span class="cost" *ngIf="ttData.cost">({{ ttData.cost }} {{ ttData.isParty ? 'PP' : 'TP' }})</span>
+          <span class="cost" *ngIf="ttData.cost">({{ ttData.cost }} {{ determineType(ttData) }})</span>
         </div>
       </div>
 

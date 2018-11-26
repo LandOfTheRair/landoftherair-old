@@ -1502,5 +1502,59 @@
         "unlockedBy": [
             "ForcefulStrike0"
         ]
+    },
+    "Ancient": {
+        "icon": "drakkar",
+        "desc": "Ancient abilities are waiting deep inside you to activate!",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "AncientPotions0"
+        ],
+        "isAncient": true,
+        "name": "Ancient",
+        "cluster": 5
+    },
+    "AncientPotions0": {
+        "name": "AncientPotions0",
+        "traitName": "AncientPotions",
+        "desc": "Increase the healing from all potions by $500|1500$.",
+        "icon": "bubbling-flask",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientPotions1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "Ancient"
+        ]
+    },
+    "AncientPotions1": {
+        "name": "AncientPotions1",
+        "traitName": "AncientPotions",
+        "desc": "Increase the healing from all potions by $500|1500$.",
+        "icon": "bubbling-flask",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientPotions2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientPotions0"
+        ]
+    },
+    "AncientPotions2": {
+        "name": "AncientPotions2",
+        "traitName": "AncientPotions",
+        "desc": "Increase the healing from all potions by $500|1500$.",
+        "icon": "bubbling-flask",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientPotions1"
+        ]
     }
 }

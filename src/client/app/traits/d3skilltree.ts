@@ -2,7 +2,7 @@
 import * as swal from 'sweetalert2';
 import * as d3 from 'd3';
 import { Subject } from 'rxjs';
-import { startCase, extend, values, minBy, maxBy, last, includes } from 'lodash';
+import { startCase, extend, values, minBy, maxBy, last, includes, cloneDeep } from 'lodash';
 
 import { SkillTree } from '../../../shared/models/skill-tree';
 import { ColyseusGameService } from '../colyseus.game.service';
@@ -55,8 +55,12 @@ export class D3SkillTree implements D3SkillTreeConfig {
   private nodes: any[] = [];
   private links: any[] = [];
 
+  private tree: any;
+
   private svg;
   private simulation;
+
+  private hasInit: boolean;
 
   private svgNodeList: any;
 
@@ -64,6 +68,10 @@ export class D3SkillTree implements D3SkillTreeConfig {
 
   public set skillTree(val: SkillTree) {
     this._skillTree = val;
+    if(!this.hasInit) {
+      this.init();
+      return;
+    }
     this.updateSVGNodes();
   }
 
@@ -76,11 +84,11 @@ export class D3SkillTree implements D3SkillTreeConfig {
     private ttElement: HTMLElement,
     private colyseusGame: ColyseusGameService,
     private assetUrl: string,
-    private tree: any,
+    tree: any,
     opts: D3SkillTreeConfig
   ) {
+    this.tree = cloneDeep(tree);
     extend(this, opts);
-    this.init();
   }
 
   public cleanup() {
@@ -99,10 +107,22 @@ export class D3SkillTree implements D3SkillTreeConfig {
   }
 
   private init() {
+    this.hasInit = true;
+    this.filterAncientNodes();
     this.initClusters();
     this.initNodes();
     this.initLinks();
     this.initSVG();
+  }
+
+  private filterAncientNodes() {
+    console.log(this.skillTree.hasAnyAncientPoints)
+    if(this.skillTree.hasAnyAncientPoints) return;
+
+    Object.keys(this.tree).forEach(node => {
+      if(!this.tree[node].isAncient) return;
+      delete this.tree[node];
+    });
   }
 
   private initClusters() {
@@ -181,10 +201,17 @@ export class D3SkillTree implements D3SkillTreeConfig {
   }
 
   private getNodeFillColor(d) {
-    if(d.unbuyable) return '#ddd';
-
     if(!this.skillTree) return '#555';
 
+    if(d.isAncient) {
+      if(d.unbuyable) return '#d4af37';
+      if(this.skillTree.isAvailableToBuy(d.name)) return '#ffd700';
+      if(this.skillTree.isBought(d.name))         return '#daa520';
+
+      return '#996515';
+    }
+
+    if(d.unbuyable) return '#ddd';
     if(this.skillTree.isAvailableToBuy(d.name)) return '#777';
     if(this.skillTree.isBought(d.name))         return '#aaa';
 
@@ -300,9 +327,13 @@ export class D3SkillTree implements D3SkillTreeConfig {
             }
           }
 
+          let type = 'TP';
+          if(d.isParty) type = 'PP';
+          if(d.isAncient) type = 'AP';
+
           (<any>swal)({
             titleText: `Buy ${d.traitName ? 'Trait' : 'Skill'}: ${this.fixName(d.name)}`,
-            text: `Are you sure you want to buy the trait ${this.fixName(d.name)} for ${d.cost} ${d.isParty ? 'PP' : 'TP'}? 
+            text: `Are you sure you want to buy the trait ${this.fixName(d.name)} for ${d.cost} ${type}? 
             ${isUnderMPCost ? 'YOU MAY NOT BE ABLE TO CAST THIS SPELL CURRENTLY!' : ''}`,
             showCancelButton: true,
             confirmButtonText: 'Yes, buy it!'
@@ -319,7 +350,7 @@ export class D3SkillTree implements D3SkillTreeConfig {
           if(this.skillTree.isAvailableToBuy(d.name)) {
             d3.select(nodes[i])
               .style('stroke-width', '5px')
-              .style('fill', '#888');
+              .style('fill', d.isAncient ? 'ffd700' : '#888');
           }
 
           tooltip

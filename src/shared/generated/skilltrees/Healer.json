@@ -1182,7 +1182,7 @@
     "TotemSpecialty0": {
         "name": "TotemSpecialty0",
         "traitName": "TotemSpecialty",
-        "desc": "Spells cost $2|6$% less to cast while holding a totem in your right hand.",
+        "desc": "Spells cost $5|15$% less to cast while holding a totem in your right hand.",
         "icon": "grapple",
         "requireCharacterLevel": 10,
         "cost": 3,
@@ -1197,7 +1197,7 @@
     "TotemSpecialty1": {
         "name": "TotemSpecialty1",
         "traitName": "TotemSpecialty",
-        "desc": "Spells cost $2|6$% less to cast while holding a totem in your right hand.",
+        "desc": "Spells cost $5|15$% less to cast while holding a totem in your right hand.",
         "icon": "grapple",
         "requireCharacterLevel": 10,
         "cost": 3,
@@ -1212,7 +1212,7 @@
     "TotemSpecialty2": {
         "name": "TotemSpecialty2",
         "traitName": "TotemSpecialty",
-        "desc": "Spells cost $2|6$% less to cast while holding a totem in your right hand.",
+        "desc": "Spells cost $5|15$% less to cast while holding a totem in your right hand.",
         "icon": "grapple",
         "capstone": true,
         "requireCharacterLevel": 15,
@@ -1360,6 +1360,60 @@
         "cluster": 4,
         "unlockedBy": [
             "NecroticFocus7"
+        ]
+    },
+    "Ancient": {
+        "icon": "drakkar",
+        "desc": "Ancient abilities are waiting deep inside you to activate!",
+        "unbuyable": true,
+        "root": true,
+        "unlocks": [
+            "AncientPotions0"
+        ],
+        "isAncient": true,
+        "name": "Ancient",
+        "cluster": 5
+    },
+    "AncientPotions0": {
+        "name": "AncientPotions0",
+        "traitName": "AncientPotions",
+        "desc": "Increase the healing from all potions by $500|1500$.",
+        "icon": "bubbling-flask",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientPotions1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "Ancient"
+        ]
+    },
+    "AncientPotions1": {
+        "name": "AncientPotions1",
+        "traitName": "AncientPotions",
+        "desc": "Increase the healing from all potions by $500|1500$.",
+        "icon": "bubbling-flask",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientPotions2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientPotions0"
+        ]
+    },
+    "AncientPotions2": {
+        "name": "AncientPotions2",
+        "traitName": "AncientPotions",
+        "desc": "Increase the healing from all potions by $500|1500$.",
+        "icon": "bubbling-flask",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientPotions1"
         ]
     }
 }
