@@ -439,9 +439,9 @@
     Traits
     (
     {{ (colyseus.game.skillTree$ | async).traitPoints || 0 }} TP
-    - {{ (colyseus.game.skillTree$ | async).partyPoints || 0 }} PP
-    - {{ (colyseus.game.skillTree$ | async).resetPoints || 0 }} RP
-    <span *ngIf="(colyseus.game.skillTree$ | async).totalAncientPoints">- {{ (colyseus.game.skillTree$ | async).ancientPoints || 0 }} AP</span>
+    / {{ (colyseus.game.skillTree$ | async).partyPoints || 0 }} PP
+    / {{ (colyseus.game.skillTree$ | async).resetPoints || 0 }} RP
+    <span *ngIf="(colyseus.game.skillTree$ | async).totalAncientPoints">/ {{ (colyseus.game.skillTree$ | async).ancientPoints || 0 }} AP</span>
     )
   </ng-template>
 
