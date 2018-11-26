@@ -11,7 +11,7 @@ export class TraitHelper {
 
   getTraitLevelAndUsageModifier(char: ICharacter, trait: string, level: number): number {
 
-    const traitObj = this.getTraitByName(trait, char);
+    const traitObj: any = this.getTraitByName(trait, char);
 
     // this will return 0 if you try to use a trait for a class you aren't
     if(!traitObj) return 0;

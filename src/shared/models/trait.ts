@@ -23,7 +23,7 @@ export class Trait {
 
   static upgrades: TraitUpgrade[] = [];
 
-  static determineUpgradeCost(traitRef: Trait, upgrade: TraitUpgrade): number {
+  static determineUpgradeCost(traitRef: any, upgrade: TraitUpgrade): number {
     if(upgrade.cost)      return upgrade.cost;
 
     if(traitRef.isAncient) {
