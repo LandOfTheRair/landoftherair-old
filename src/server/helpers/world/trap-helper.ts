@@ -1,4 +1,6 @@
 
+import { cloneDeep } from 'lodash';
+
 import { Character } from '../../../shared/models/character';
 
 import { SkillClassNames } from '../../../shared/interfaces/character';
@@ -36,17 +38,19 @@ export class TrapHelper {
 
     const statCopy = user.sumStats;
 
-    trap.effect.range = user.getTraitLevel('WiderTraps');
-    trap.effect.potency += user.getTraitLevelAndUsageModifier('StrongerTraps');
+    const effect = cloneDeep(trap.effect);
+
+    effect.range = user.getTraitLevel('WiderTraps');
+    effect.potency += user.getTraitLevelAndUsageModifier('StrongerTraps');
 
     const trapInteractable = {
       x: x * 64,
       y: (y + 1) * 64,
-      uses: (trap.effect.uses || 1) + user.getTraitLevel('ReusableTraps'),
+      uses: (effect.uses || 1) + user.getTraitLevel('ReusableTraps'),
       type: 'Trap',
       sprite: trap.sprite,
       properties: {
-        effect: trap.effect,
+        effect,
         caster: {
           name: user.name,
           uuid: user.uuid,
