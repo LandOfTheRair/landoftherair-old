@@ -199,7 +199,7 @@ export class D3SkillTree implements D3SkillTreeConfig {
       .zoom()
       .translateExtent([
         [-this.maxWidth * 0.5, -this.maxHeight * 0.5],
-        [this.maxWidth, this.maxHeight]
+        [this.maxWidth * 1.5, this.maxHeight]
       ])
       .scaleExtent([0.5, 5])
       .on('zoom', () => {
