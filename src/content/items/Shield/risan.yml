@@ -41,7 +41,6 @@
   desc: "a wrought iron shield engraved with PROPERTY OF BRIGANDS, PLEASE RETURN IF FOUND"
   value: 13333
   sprite: 329
-  binds: true
 
   requirements:
     level: 21

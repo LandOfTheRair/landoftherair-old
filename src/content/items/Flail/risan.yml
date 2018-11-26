@@ -9,7 +9,6 @@
   type: Mace
   value: 12185
   sprite: 349
-  binds: true
 
   requirements:
     level: 21

@@ -10,7 +10,6 @@
   type: Onehanded
   value: 12385
   sprite: 350
-  binds: true
 
   requirements:
     level: 21

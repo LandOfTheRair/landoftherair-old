@@ -19,7 +19,6 @@
   type: Ranged
   value: 12185
   sprite: 201
-  binds: true
 
   requirements:
     level: 21

@@ -20,7 +20,6 @@
   type: Twohanded
   value: 22185
   sprite: 198
-  binds: true
 
   requirements:
     level: 21

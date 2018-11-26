@@ -22,7 +22,6 @@
   type: Dagger
   value: 12185
   sprite: 205
-  binds: true
 
   requirements:
     level: 21
