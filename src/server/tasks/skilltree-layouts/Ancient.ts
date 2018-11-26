@@ -41,7 +41,7 @@ const ANCIENT_TREE = {
     unlocks: ['AncientForce4']
   },
   AncientForce4: {
-    
+
   },
 
   AncientSkin0: {
@@ -55,7 +55,7 @@ const ANCIENT_TREE = {
   },
 
   AncientAura0: {
-    unlocks: ['AncientForge0', 'AncientBlizzard0', 'AncientPlague0', 'AncientPoison0']
+    unlocks: ['AncientForge0', 'AncientBlizzard0', 'AncientPlague0', 'AncientPoison0', 'AncientEnergy0', 'AncientNecrosis0']
   },
 
   AncientDefense0: {
@@ -65,7 +65,7 @@ const ANCIENT_TREE = {
     unlocks: ['AncientDefense2']
   },
   AncientDefense2: {
-    
+
   },
 
   AncientOffense0: {
@@ -75,7 +75,7 @@ const ANCIENT_TREE = {
     unlocks: ['AncientOffense2']
   },
   AncientOffense2: {
-    
+
   },
 
   AncientMitigation0: {
@@ -85,7 +85,7 @@ const ANCIENT_TREE = {
     unlocks: ['AncientMitigation2']
   },
   AncientMitigation2: {
-    
+
   },
 
   AncientForge0: {
@@ -101,7 +101,7 @@ const ANCIENT_TREE = {
     unlocks: ['AncientForge4']
   },
   AncientForge4: {
-    
+
   },
 
   AncientBlizzard0: {
@@ -117,7 +117,39 @@ const ANCIENT_TREE = {
     unlocks: ['AncientBlizzard4']
   },
   AncientBlizzard4: {
-    
+
+  },
+
+  AncientNecrosis0: {
+    unlocks: ['AncientNecrosis1']
+  },
+  AncientNecrosis1: {
+    unlocks: ['AncientNecrosis2']
+  },
+  AncientNecrosis2: {
+    unlocks: ['AncientNecrosis3']
+  },
+  AncientNecrosis3: {
+    unlocks: ['AncientNecrosis4']
+  },
+  AncientNecrosis4: {
+
+  },
+
+  AncientEnergy0: {
+    unlocks: ['AncientEnergy1']
+  },
+  AncientEnergy1: {
+    unlocks: ['AncientEnergy2']
+  },
+  AncientEnergy2: {
+    unlocks: ['AncientEnergy3']
+  },
+  AncientEnergy3: {
+    unlocks: ['AncientEnergy4']
+  },
+  AncientEnergy4: {
+
   },
 
   AncientPlague0: {
@@ -127,7 +159,7 @@ const ANCIENT_TREE = {
     unlocks: ['AncientPlague2']
   },
   AncientPlague2: {
-    
+
   },
 
   AncientPoison0: {
@@ -137,7 +169,7 @@ const ANCIENT_TREE = {
     unlocks: ['AncientPoison2']
   },
   AncientPoison2: {
-    
+
   },
 
   AncientRegeneration0: {
@@ -147,7 +179,7 @@ const ANCIENT_TREE = {
     unlocks: ['AncientRegeneration2']
   },
   AncientRegeneration2: {
-    
+
   }
 };
 

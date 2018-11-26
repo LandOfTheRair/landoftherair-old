@@ -1410,6 +1410,8 @@ export class Character implements ICharacter {
       magicalResist: ['HolyProtection', 'AncientAura'],
       physicalResist: ['SilverSkin', 'AncientSkin'],
       fireResist: ['AncientForge'],
+      necroticResist: ['AncientNecrosis'],
+      energyResist: ['AncientEnergy'],
       iceResist: ['AncientBlizzard'],
       diseaseResist: ['AncientPlague'],
       poisonResist: ['AncientPoison'],
