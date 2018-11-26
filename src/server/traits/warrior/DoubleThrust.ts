@@ -9,7 +9,7 @@ export class DoubleThrust extends Trait {
   static icon = 'saber-slash';
 
   static upgrades = [
-    { cost: 40, capstone: true }
+    { cost: 20, capstone: true, requireCharacterLevel: 20 }
   ];
 
 }

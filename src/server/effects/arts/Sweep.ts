@@ -15,11 +15,14 @@ export class Sweep extends WeaponEffect {
 
     const attacked = target.$$room.state.getAllInRange(target, 0, [caster.uuid], false ).slice(0, numTargets);
 
+    const damageMult = 1 + caster.getTraitLevelAndUsageModifier('ImprovedSweep');
+
     attacked.forEach(refTarget => {
-      CombatHelper.physicalAttack(caster, refTarget, { isKick: true });
+      if(caster.isPlayer() && refTarget.isPlayer()) return;
+      CombatHelper.physicalAttack(caster, refTarget, { damageMult, isKick: true });
     });
 
-    if(attacked.length > 0) {
+    if(attacked.length > 0 && !caster.getTraitLevelAndUsageModifier('ImprovedSweep')) {
       const debuff = new LoweredDefenses({ potency: 4 });
       debuff.cast(caster, caster);
     }

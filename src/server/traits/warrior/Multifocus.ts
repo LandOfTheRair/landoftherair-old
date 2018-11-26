@@ -9,7 +9,7 @@ export class Multifocus extends Trait {
   static icon = 'sword-spin';
 
   static upgrades = [
-    { cost: 40, capstone: true }
+    { cost: 20, capstone: true }
   ];
 
 }

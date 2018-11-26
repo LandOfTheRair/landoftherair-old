@@ -146,7 +146,7 @@ const DUELIST_TREE = {
     unlocks: ['OffhandFinesse1']
   },
   OffhandFinesse1: {
-    unlocks: ['OffhandFinesse2', 'Provoke']
+    unlocks: ['OffhandFinesse2']
   },
   OffhandFinesse2: {
     unlocks: ['OffhandFinesse3']
@@ -178,14 +178,17 @@ const DUELIST_TREE = {
     unlocks: ['BoostedBoost1']
   },
   BoostedBoost1: {
+    unlocks: ['ImprovedBoostedBoost0']
+  },
+
+  ImprovedBoostedBoost0: {
+    unlocks: ['ImprovedBoostedBoost1']
+  },
+  ImprovedBoostedBoost1: {
 
   },
 
   // SKILLS
-
-  Provoke: {
-
-  },
 
   RageStance: {
 
@@ -221,6 +224,9 @@ const MONK_TREE = {
   },
 
   Punchkick0: {
+    unlocks: ['Punchkick1']
+  },
+  Punchkick1: {
 
   },
 
@@ -262,17 +268,25 @@ const MONK_TREE = {
 
   },
 
+  ImprovedSweep0: {
+
+  },
+
+  ImprovedRapidpunch0: {
+
+  },
+
   // SKILLS
   Shield: {
 
   },
 
   Sweep: {
-
+    unlocks: ['ImprovedSweep0']
   },
 
   Rapidpunch: {
-
+    unlocks: ['ImprovedRapidpunch0']
   }
 };
 
@@ -282,7 +296,7 @@ const PALADIN_TREE = {
     desc: 'The Paladin excels at using big weapons, and learns some new tricks to get the most use out of them.',
     unbuyable: true,
     root: true,
-    unlocks: ['Shieldbearer0', 'SterlingArmor0', 'HolyProtection0', 'ForcefulStrike0']
+    unlocks: ['Provoke', 'SterlingArmor0', 'HolyProtection0', 'SilverSkin0', 'ForcefulStrike0']
   },
 
   // TRAITS
@@ -322,6 +336,22 @@ const PALADIN_TREE = {
 
   },
 
+  SilverSkin0: {
+    unlocks: ['SilverSkin1']
+  },
+  SilverSkin1: {
+    unlocks: ['SilverSkin2']
+  },
+  SilverSkin2: {
+    unlocks: ['SilverSkin3']
+  },
+  SilverSkin3: {
+    unlocks: ['SilverSkin4']
+  },
+  SilverSkin4: {
+
+  },
+
   ForcefulStrike0: {
     unlocks: ['ForcefulStrike1', 'Thruststrike']
   },
@@ -339,21 +369,30 @@ const PALADIN_TREE = {
   },
 
   Multitarget0: {
-    unlocks: ['Multitarget1']
-  },
-  Multitarget1: {
 
   },
 
   Multifocus0: {
+    unlocks: ['ImprovedMultifocus0']
+  },
+
+  ImprovedMultifocus0: {
 
   },
 
   DoubleThrust0: {
+    unlocks: ['TripleThrust0']
+  },
+
+  TripleThrust0: {
 
   },
 
   // SKILLS
+  Provoke: {
+    unlocks: ['Shieldbearer0']
+  },
+
   Multistrike: {
     unlocks: ['Multitarget0', 'Multifocus0']
   },

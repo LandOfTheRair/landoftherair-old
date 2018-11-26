@@ -9,7 +9,7 @@ export class Multitarget extends Trait {
   static icon = 'sword-spin';
 
   static upgrades = [
-    { cost: 10 }, { cost: 10 }
+    { cost: 20, capstone: true }
   ];
 
   static usageModifier(level: number): number {

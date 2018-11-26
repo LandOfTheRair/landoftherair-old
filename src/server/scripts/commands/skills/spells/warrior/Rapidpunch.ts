@@ -43,6 +43,8 @@ export class Rapidpunch extends Skill {
 
   use(user: Character, target: Character) {
 
+    const isImproved = user.getTraitLevelAndUsageModifier('ImprovedRapidpunch');
+
     const totalAccuracy = user.getTotalStat('accuracy');
     const accuracyPenaltyPerHit = Math.floor(totalAccuracy / 16);
 
@@ -50,11 +52,13 @@ export class Rapidpunch extends Skill {
       /** PERK:CLASS:WARRIOR:Warriors gain skill on physical hits. */
       if(user.baseClass === 'Warrior') user.gainSkill(user.rightHand ? user.rightHand.itemClass : SkillClassNames.Martial, 1);
 
-      CombatHelper.physicalAttack(user, target, { damageMult: 0.65, isPunch: true, accuracyLoss: i * accuracyPenaltyPerHit });
+      CombatHelper.physicalAttack(user, target, { damageMult: 0.65 + isImproved, isPunch: true, accuracyLoss: isImproved ? 0 : i * accuracyPenaltyPerHit });
     }
 
-    const debuff = new LoweredDefenses({ potency: 5 });
-    debuff.cast(user, user);
+    if(!isImproved) {
+      const debuff = new LoweredDefenses({ potency: 5 });
+      debuff.cast(user, user);
+    }
   }
 
 }

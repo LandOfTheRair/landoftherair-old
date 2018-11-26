@@ -1412,6 +1412,7 @@ export class Character implements ICharacter {
     this.totalStats.defense += this.getTraitLevelAndUsageModifier('FunkyMoves');
     this.totalStats.offense += this.getTraitLevelAndUsageModifier('SwordTricks');
     this.totalStats.magicalResist += this.getTraitLevelAndUsageModifier('HolyProtection');
+    this.totalStats.physicalResist += this.getTraitLevelAndUsageModifier('SilverSkin');
 
     // mage & healer traits
     this.totalStats.mp += this.getTraitLevelAndUsageModifier('ManaPool');

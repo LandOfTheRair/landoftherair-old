@@ -9,7 +9,11 @@ export class BoostedBoost extends Trait {
   static icon = 'fist';
 
   static upgrades = [
-    { cost: 20 }, { cost: 20 }
+    { cost: 5 }, { cost: 10, capstone: true }
   ];
+
+  static usageModifier(level: number): number {
+    return level;
+  }
 
 }

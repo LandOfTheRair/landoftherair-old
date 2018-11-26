@@ -244,7 +244,8 @@
         "traitName": "EagleEye",
         "desc": "Sharpen your vision, increasing your accuracy by $1|3$.",
         "icon": "bullseye",
-        "cost": 3,
+        "capstone": true,
+        "cost": 10,
         "cluster": 1,
         "unlockedBy": [
             "EagleEye3"
@@ -311,7 +312,8 @@
         "traitName": "SwordTricks",
         "desc": "Learn some new sword tricks, increasing your offense by $1|3$.",
         "icon": "sword-clash",
-        "cost": 3,
+        "capstone": true,
+        "cost": 10,
         "cluster": 1,
         "unlockedBy": [
             "SwordTricks3"
@@ -378,7 +380,8 @@
         "traitName": "FunkyMoves",
         "desc": "Learn to dance better, increasing your defense by $1|3$.",
         "icon": "wingfoot",
-        "cost": 3,
+        "capstone": true,
+        "cost": 10,
         "cluster": 1,
         "unlockedBy": [
             "FunkyMoves3"
@@ -557,8 +560,7 @@
         "icon": "crossed-axes",
         "cost": 3,
         "unlocks": [
-            "OffhandFinesse2",
-            "Provoke"
+            "OffhandFinesse2"
         ],
         "cluster": 2,
         "unlockedBy": [
@@ -681,7 +683,7 @@
         "traitName": "BoostedBoost",
         "desc": "Boost adds +$1|3$ more to each stat boosted.",
         "icon": "fist",
-        "cost": 20,
+        "cost": 5,
         "unlocks": [
             "BoostedBoost1"
         ],
@@ -695,21 +697,42 @@
         "traitName": "BoostedBoost",
         "desc": "Boost adds +$1|3$ more to each stat boosted.",
         "icon": "fist",
-        "cost": 20,
+        "capstone": true,
+        "cost": 10,
+        "unlocks": [
+            "ImprovedBoostedBoost0"
+        ],
         "cluster": 2,
         "unlockedBy": [
             "BoostedBoost0"
         ]
     },
-    "Provoke": {
-        "name": "Provoke",
-        "desc": "Provoke a single creature.",
-        "icon": "enrage",
-        "iconColor": "#a00",
-        "cost": 3,
+    "ImprovedBoostedBoost0": {
+        "name": "ImprovedBoostedBoost0",
+        "traitName": "ImprovedBoostedBoost",
+        "desc": "Boost adds +$3|9$ more to each stat boosted. WIL/HPREGEN is also boosted. There is no longer any penalty for using Boost.",
+        "icon": "fist",
+        "requireCharacterLevel": 30,
+        "cost": 25,
+        "unlocks": [
+            "ImprovedBoostedBoost1"
+        ],
         "cluster": 2,
         "unlockedBy": [
-            "OffhandFinesse1"
+            "BoostedBoost1"
+        ]
+    },
+    "ImprovedBoostedBoost1": {
+        "name": "ImprovedBoostedBoost1",
+        "traitName": "ImprovedBoostedBoost",
+        "desc": "Boost adds +$3|9$ more to each stat boosted. WIL/HPREGEN is also boosted. There is no longer any penalty for using Boost.",
+        "icon": "fist",
+        "capstone": true,
+        "requireCharacterLevel": 40,
+        "cost": 50,
+        "cluster": 2,
+        "unlockedBy": [
+            "ImprovedBoostedBoost0"
         ]
     },
     "RageStance": {
@@ -771,7 +794,7 @@
         "traitName": "BrassKnuckles",
         "desc": "Your open-hand fist attacks gain a +$1|3$ tier bonus.",
         "icon": "brass-knuckles",
-        "cost": 20,
+        "cost": 10,
         "unlocks": [
             "BrassKnuckles1",
             "Punchkick0"
@@ -786,7 +809,7 @@
         "traitName": "BrassKnuckles",
         "desc": "Your open-hand fist attacks gain a +$1|3$ tier bonus.",
         "icon": "brass-knuckles",
-        "cost": 20,
+        "cost": 10,
         "unlocks": [
             "BrassKnuckles2"
         ],
@@ -800,7 +823,7 @@
         "traitName": "BrassKnuckles",
         "desc": "Your open-hand fist attacks gain a +$1|3$ tier bonus.",
         "icon": "brass-knuckles",
-        "cost": 20,
+        "cost": 10,
         "unlocks": [
             "MirroredEnchantments0"
         ],
@@ -815,9 +838,23 @@
         "desc": "Your jumpkick ability includes an additional punch.",
         "icon": "high-kick",
         "cost": 20,
+        "unlocks": [
+            "Punchkick1"
+        ],
         "cluster": 3,
         "unlockedBy": [
             "BrassKnuckles0"
+        ]
+    },
+    "Punchkick1": {
+        "name": "Punchkick1",
+        "traitName": "Punchkick",
+        "desc": "Your jumpkick ability includes an additional punch.",
+        "icon": "high-kick",
+        "cost": 20,
+        "cluster": 3,
+        "unlockedBy": [
+            "Punchkick0"
         ]
     },
     "MartialAgility0": {
@@ -972,6 +1009,32 @@
             "BrassKnuckles2"
         ]
     },
+    "ImprovedSweep0": {
+        "name": "ImprovedSweep0",
+        "traitName": "ImprovedSweep",
+        "desc": "Remove the defensive penalty for using Sweep and increase the damage by 100%.",
+        "icon": "foot-trip",
+        "capstone": true,
+        "requireCharacterLevel": 25,
+        "cost": 30,
+        "cluster": 3,
+        "unlockedBy": [
+            "Sweep"
+        ]
+    },
+    "ImprovedRapidpunch0": {
+        "name": "ImprovedRapidpunch0",
+        "traitName": "ImprovedRapidpunch",
+        "desc": "Remove the defensive and accuracy penalty for using Rapidpunch and increase the damage by 20%.",
+        "icon": "fire-punch",
+        "capstone": true,
+        "requireCharacterLevel": 35,
+        "cost": 50,
+        "cluster": 3,
+        "unlockedBy": [
+            "Rapidpunch"
+        ]
+    },
     "Shield": {
         "name": "Shield",
         "desc": "Increase your physical and magical resistance.",
@@ -990,6 +1053,9 @@
         "iconColor": "#a00",
         "requireSkillLevel": 13,
         "cost": 3,
+        "unlocks": [
+            "ImprovedSweep0"
+        ],
         "cluster": 3,
         "unlockedBy": [
             "MartialAcuity2"
@@ -1002,6 +1068,9 @@
         "iconColor": "#a00",
         "requireSkillLevel": 15,
         "cost": 10,
+        "unlocks": [
+            "ImprovedRapidpunch0"
+        ],
         "cluster": 3,
         "unlockedBy": [
             "MartialAcuity2"
@@ -1013,9 +1082,10 @@
         "unbuyable": true,
         "root": true,
         "unlocks": [
-            "Shieldbearer0",
+            "Provoke",
             "SterlingArmor0",
             "HolyProtection0",
+            "SilverSkin0",
             "ForcefulStrike0"
         ],
         "name": "Paladin",
@@ -1030,7 +1100,7 @@
         "cost": 40,
         "cluster": 4,
         "unlockedBy": [
-            "Paladin"
+            "Provoke"
         ]
     },
     "SterlingArmor0": {
@@ -1169,6 +1239,74 @@
             "HolyProtection3"
         ]
     },
+    "SilverSkin0": {
+        "name": "SilverSkin0",
+        "traitName": "SilverSkin",
+        "desc": "Decrease the amount of physical damage you take by $10|30$.",
+        "icon": "leg-armor",
+        "cost": 3,
+        "unlocks": [
+            "SilverSkin1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Paladin"
+        ]
+    },
+    "SilverSkin1": {
+        "name": "SilverSkin1",
+        "traitName": "SilverSkin",
+        "desc": "Decrease the amount of physical damage you take by $10|30$.",
+        "icon": "leg-armor",
+        "cost": 3,
+        "unlocks": [
+            "SilverSkin2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "SilverSkin0"
+        ]
+    },
+    "SilverSkin2": {
+        "name": "SilverSkin2",
+        "traitName": "SilverSkin",
+        "desc": "Decrease the amount of physical damage you take by $10|30$.",
+        "icon": "leg-armor",
+        "cost": 3,
+        "unlocks": [
+            "SilverSkin3"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "SilverSkin1"
+        ]
+    },
+    "SilverSkin3": {
+        "name": "SilverSkin3",
+        "traitName": "SilverSkin",
+        "desc": "Decrease the amount of physical damage you take by $10|30$.",
+        "icon": "leg-armor",
+        "cost": 3,
+        "unlocks": [
+            "SilverSkin4"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "SilverSkin2"
+        ]
+    },
+    "SilverSkin4": {
+        "name": "SilverSkin4",
+        "traitName": "SilverSkin",
+        "desc": "Decrease the amount of physical damage you take by $10|30$.",
+        "icon": "leg-armor",
+        "capstone": true,
+        "cost": 10,
+        "cluster": 4,
+        "unlockedBy": [
+            "SilverSkin3"
+        ]
+    },
     "ForcefulStrike0": {
         "name": "ForcefulStrike0",
         "traitName": "ForcefulStrike",
@@ -1244,24 +1382,11 @@
         "traitName": "Multitarget",
         "desc": "Increase the number of enemies you can strike with Multistrike by $3|9$.",
         "icon": "sword-spin",
-        "cost": 10,
-        "unlocks": [
-            "Multitarget1"
-        ],
+        "capstone": true,
+        "cost": 20,
         "cluster": 4,
         "unlockedBy": [
             "Multistrike"
-        ]
-    },
-    "Multitarget1": {
-        "name": "Multitarget1",
-        "traitName": "Multitarget",
-        "desc": "Increase the number of enemies you can strike with Multistrike by $3|9$.",
-        "icon": "sword-spin",
-        "cost": 10,
-        "cluster": 4,
-        "unlockedBy": [
-            "Multitarget0"
         ]
     },
     "Multifocus0": {
@@ -1270,10 +1395,26 @@
         "desc": "Lower the defensive penalty for using Multistrike by 50%.",
         "icon": "sword-spin",
         "capstone": true,
-        "cost": 40,
+        "cost": 20,
+        "unlocks": [
+            "ImprovedMultifocus0"
+        ],
         "cluster": 4,
         "unlockedBy": [
             "Multistrike"
+        ]
+    },
+    "ImprovedMultifocus0": {
+        "name": "ImprovedMultifocus0",
+        "traitName": "ImprovedMultifocus",
+        "desc": "Remove the defensive penalty for using Multistrike.",
+        "icon": "sword-spin",
+        "capstone": true,
+        "requireCharacterLevel": 35,
+        "cost": 30,
+        "cluster": 4,
+        "unlockedBy": [
+            "Multifocus0"
         ]
     },
     "DoubleThrust0": {
@@ -1282,10 +1423,41 @@
         "desc": "Thruststrike now attacks with a slightly-weaker second swing.",
         "icon": "saber-slash",
         "capstone": true,
-        "cost": 40,
+        "requireCharacterLevel": 20,
+        "cost": 20,
+        "unlocks": [
+            "TripleThrust0"
+        ],
         "cluster": 4,
         "unlockedBy": [
             "Thruststrike"
+        ]
+    },
+    "TripleThrust0": {
+        "name": "TripleThrust0",
+        "traitName": "TripleThrust",
+        "desc": "Thruststrike now attacks with a slightly-weaker third swing.",
+        "icon": "saber-slash",
+        "capstone": true,
+        "requireCharacterLevel": 30,
+        "cost": 40,
+        "cluster": 4,
+        "unlockedBy": [
+            "DoubleThrust0"
+        ]
+    },
+    "Provoke": {
+        "name": "Provoke",
+        "desc": "Provoke a single creature.",
+        "icon": "enrage",
+        "iconColor": "#a00",
+        "cost": 3,
+        "unlocks": [
+            "Shieldbearer0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Paladin"
         ]
     },
     "Multistrike": {

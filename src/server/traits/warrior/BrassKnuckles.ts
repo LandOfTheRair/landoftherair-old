@@ -10,7 +10,7 @@ export class BrassKnuckles extends Trait {
   static icon = 'brass-knuckles';
 
   static upgrades = [
-    { cost: 20 }, { cost: 20 }, { cost: 20 }
+    { cost: 10 }, { cost: 10 }, { cost: 10 }
   ];
 
   static currentlyInEffect(player: Player): boolean {

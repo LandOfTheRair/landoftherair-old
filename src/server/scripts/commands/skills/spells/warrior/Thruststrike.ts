@@ -67,6 +67,10 @@ export class Thruststrike extends Skill {
     if(user.getTraitLevel('DoubleThrust')) {
       CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
     }
+
+    if(user.getTraitLevel('TripleThrust')) {
+      CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
+    }
   }
 
 }

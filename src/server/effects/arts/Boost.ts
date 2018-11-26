@@ -17,6 +17,8 @@ export class Boost extends SpellEffect {
   private ignoreDefenseLoss: boolean;
   private ignoreStun: boolean;
 
+  private statBoost: number;
+
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.flagUnapply();
     this.flagCasterName(caster.name);
@@ -24,7 +26,11 @@ export class Boost extends SpellEffect {
     if(!this.duration) this.duration = 300;
     if(!this.potency)  this.potency = 1;
 
-    this.potency += caster.getTraitLevel('BoostedBoost');
+    this.statBoost = 3;
+    this.statBoost += caster.getTraitLevelAndUsageModifier('BoostedBoost');
+    this.statBoost += caster.getTraitLevelAndUsageModifier('ImprovedBoostedBoost');
+
+    this.ignoreDefenseLoss = !!caster.getTraitLevel('ImprovedBoostedBoost');
 
     this.aoeAgro(caster, 10);
 
@@ -44,15 +50,21 @@ export class Boost extends SpellEffect {
     }
 
     if(!this.ignoreDefenseLoss) {
-      const debuff = new LoweredDefenses({ potency: 6, duration: 23 });
+      const debuff = new LoweredDefenses({ potency: 3, duration: 23 });
       debuff.cast(char, char);
     }
 
-    this.iconData.tooltipDesc = `+${this.potency} STR/DEX/AGI`;
+    const isImproved = char.getTraitLevel('ImprovedBoostedBoost');
+    this.iconData.tooltipDesc = `+${this.statBoost} STR/DEX/AGI${isImproved ? `/WIL/HPREGEN` : ''}`;
 
-    this.gainStat(char, 'str', this.potency);
-    this.gainStat(char, 'dex', this.potency);
-    this.gainStat(char, 'agi', this.potency);
+    this.gainStat(char, 'str', this.statBoost);
+    this.gainStat(char, 'dex', this.statBoost);
+    this.gainStat(char, 'agi', this.statBoost);
+
+    if(isImproved) {
+      this.gainStat(char, 'wil', this.statBoost);
+      this.gainStat(char, 'hpregen', this.statBoost);
+    }
   }
 
   effectEnd(char: Character) {

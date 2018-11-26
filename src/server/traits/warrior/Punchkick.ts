@@ -10,7 +10,7 @@ export class Punchkick extends Trait {
   static icon = 'high-kick';
 
   static upgrades = [
-    { cost: 20 }
+    { cost: 20 }, { cost: 20 }
   ];
 
   static currentlyInEffect(player: Player): boolean {

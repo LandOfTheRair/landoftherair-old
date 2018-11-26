@@ -16,10 +16,11 @@ export class Multistrike extends WeaponEffect {
     const attacked = target.$$room.state.getAllInRange(target, 0, [caster.uuid]).slice(0, numTargets);
 
     attacked.forEach(refTarget => {
+      if(caster.isPlayer() && refTarget.isPlayer()) return;
       CombatHelper.physicalAttack(caster, refTarget);
     });
 
-    if(attacked.length > 0) {
+    if(attacked.length > 0 && !caster.getTraitLevel('ImprovedMultifocus')) {
       const divisor = caster.getTraitLevel('Multifocus') ? 2 : 1;
 
       let castPotency = attacked.length / divisor;
