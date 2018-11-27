@@ -217,7 +217,7 @@
 
   otherStats:
     perception: 200
-    defense: 30
+    defense: 1
     agi: 5
 
   rightHand:
@@ -330,7 +330,7 @@
 
   otherStats:
     perception: 200
-    defense: 20
+    defense: 1
     agi: 5
 
   rightHand:
