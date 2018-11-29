@@ -55,7 +55,10 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('hello')
     .set('syntax', ['hello'])
     .set('logic', (args, { player }) => {
-      if(npc.distFrom(player) > 0) return 'Gobble? Gobble gobble?';
+      if(npc.distFrom(player) > 0) {
+        player.sendClientMessage('Koda gestures for you to come closer.');
+        return 'Gobble? Gobble gobble?';
+      }
 
       if(player.rightHand) {
         if(player.rightHand.name === 'Thanksgiving Turkey Feather') {
