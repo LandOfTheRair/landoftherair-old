@@ -46,7 +46,7 @@ export class HolyFire extends SpellEffect {
       });
 
       if(caster.getTraitLevel('HolyIllumination')) {
-        const light = new Light({ radius: 0 });
+        const light = new Light({ range: 0 });
         light.cast(caster, refTarget);
       }
 

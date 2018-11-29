@@ -9,14 +9,14 @@ export class Light extends SpellEffect {
 
   maxSkillForSkillGain = 13;
 
-  private radius: number;
+  private range: number;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
     this.setPotencyAndGainSkill(caster, skillRef);
 
-    if(isUndefined(this.radius)) this.radius = 1;
+    if(isUndefined(this.range)) this.range = 1;
 
-    target.$$room.removeDarkness(target.x, target.y, this.radius, this.potency * 10);
+    target.$$room.removeDarkness(target.x, target.y, this.range, this.potency * 10);
 
     this.aoeAgro(caster, 10);
   }
