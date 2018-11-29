@@ -111,6 +111,7 @@
   type: Twohanded
   value: 83185
   sprite: 434
+  binds: true
 
   requirements:
     level: 30
