@@ -16,6 +16,8 @@ export class FleetOfFoot extends Skill {
     tooltipDesc: 'Take less damage from falls and be immune to prone. Cost: 25 MP'
   };
 
+  public targetsFriendly = true;
+
   public name = ['fleetoffoot', 'cast fleetoffoot'];
 
   mpCost() { return 25; }
