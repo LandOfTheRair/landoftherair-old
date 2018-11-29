@@ -84,3 +84,75 @@
     potency: 50
   requirements:
     level: 20
+
+- name: Identify Ring (Medium)
+  sprite: 239
+  desc: "a silver ring set with a crystallized blue eye"
+  value: 20000
+  effect:
+    name: Identify
+    uses: 30
+    potency: 20
+
+- name: Transmute Ring (Medium)
+  sprite: 1030
+  desc: "a silver ring set with a gold coin"
+  value: 20000
+  effect:
+    name: Transmute
+    uses: 30
+    potency: 20
+
+- name: Succor Ring (Medium)
+  sprite: 1030
+  desc: "a silver ring set with ancient orange wood"
+  value: 20000
+  effect:
+    name: Succor
+    uses: 30
+    potency: 10
+
+- name: DarkVision Ring (Medium)
+  sprite: 1029
+  desc: "a silver ring set with a purple gem encased in a shadowy aura"
+  value: 20000
+  effect:
+    name: DarkVision
+    uses: 30
+    potency: 20
+
+- name: Revive Ring (Medium)
+  sprite: 1033
+  desc: "a silver ring encased in a holy aura"
+  value: 20000
+  effect:
+    name: Revive
+    uses: 30
+    potency: 20
+
+- name: EagleEye Ring (Medium)
+  sprite: 239
+  desc: "a silver ring set with the light blue eye of an eagle"
+  value: 20000
+  effect:
+    name: EagleEye
+    uses: 30
+    potency: 20
+
+- name: BarFire Ring (Medium)
+  sprite: 1032
+  desc: "a silver ring set with a warm red gem"
+  value: 20000
+  effect:
+    name: BarFire
+    uses: 30
+    potency: 20
+
+- name: BarFrost Ring (Medium)
+  sprite: 239
+  desc: "a silver ring set with a frozen blue gem"
+  value: 20000
+  effect:
+    name: BarFrost
+    uses: 30
+    potency: 20
