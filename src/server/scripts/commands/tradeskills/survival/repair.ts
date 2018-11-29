@@ -11,9 +11,9 @@ export class Repair extends Command {
 
   async execute(player: Player) {
 
-    if(!player.rightHand) return player.sendClientMessage('You must be holding something to repair!');
-    if(!player.leftHand || player.leftHand.itemClass !== 'Hammer') return player.sendClientMessage('You must be holding a hammer in your left hand to repair!');
-    if(player.leftHand.isBroken()) return player.sendClientMessage('That hammer can\'t be used for anything!');
+    if(!player.leftHand) return player.sendClientMessage('You must be holding something to repair!');
+    if(!player.rightHand || player.rightHand.itemClass !== 'Hammer') return player.sendClientMessage('You must be holding a hammer in your right hand to repair!');
+    if(player.rightHand.isBroken()) return player.sendClientMessage('That hammer can\'t be used for anything!');
 
     SurvivalHelper.repair(player);
   }

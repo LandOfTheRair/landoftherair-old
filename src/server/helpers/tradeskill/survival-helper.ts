@@ -147,8 +147,8 @@ export class SurvivalHelper {
 
   static repair(player: Player) {
 
-    const target = player.rightHand;
-    const hammer = player.leftHand;
+    const target = player.leftHand;
+    const hammer = player.rightHand;
 
     const baseCondition = target.condition;
 
