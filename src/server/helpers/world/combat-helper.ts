@@ -465,7 +465,7 @@ export class CombatHelper {
     }
 
     const dodgeRoll = random(defenderDodgeRoll, attackerDodgeRoll);
-
+    
     if(dodgeRoll < 0 || attackDistance < distBetween) {
       if(!isRiposte) {
         if(distBetween === 0)  this.attemptToRiposte(attacker, defender);
@@ -504,7 +504,7 @@ export class CombatHelper {
     // try to block with armor
     const defenderBlockRightSide = Math.floor(defenderScope.level + defenderScope.armorClass);
 
-    const attackerACRoll = Math.max(1, RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerDodgeBlockRightSide) - defenderScope.armorClass);
+    const attackerACRoll = Math.max(1, RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerDodgeBlockRightSide));
     let defenderACRoll = -RollerHelper.uniformRoll(defenderDodgeBlockLeftSide, defenderBlockRightSide);
 
     if(defender.isNaturalResource) defenderACRoll = 0;
