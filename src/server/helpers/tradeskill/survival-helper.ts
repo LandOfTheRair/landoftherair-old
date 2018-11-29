@@ -94,7 +94,8 @@ export class SurvivalHelper {
       return true;
     });
 
-    const chosenSkill = sample(possibleSkills);
+    let chosenSkill = sample(possibleSkills);
+    if(chosenSkill && chosenSkill.result) chosenSkill = chosenSkill.result;
 
     if(!chosenSkill) {
       player.sendClientMessage('The corpse blood had no magical energy.');
