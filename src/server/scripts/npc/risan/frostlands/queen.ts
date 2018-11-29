@@ -23,6 +23,8 @@ export const responses = (npc: NPC) => {
       const item = player.rightHand;
       const mod = player.leftHand;
 
+      if(!item || !mod) return 'Not enough items!';
+
       if(!item.isOwnedBy(player)) return 'Not your ring!';
 
       const mergeItems = (newRing, oldRing) => {
