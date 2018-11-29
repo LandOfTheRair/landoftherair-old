@@ -8,11 +8,11 @@
   monsterClass: Beast
   stats: 21
   skillLevels: 10
-  level: 29
+  level: 25
 
   otherStats:
-    armorClass: 40
-    defense: 10
+    armorClass: 10
+    defense: 5
     perception: 150
     accuracy: 5
     damageFactor: 0.5
@@ -92,11 +92,11 @@
   monsterClass: Beast
   stats: 25
   skillLevels: 11
-  level: 31
+  level: 26
 
   otherStats:
-    armorClass: 50
-    defense: 15
+    armorClass: 15
+    defense: 10
     perception: 150
     accuracy: 5
     damageFactor: 0.5
@@ -178,7 +178,7 @@
   level: 26
 
   otherStats:
-    armorClass: 50
+    armorClass: 30
     perception: 150
     accuracy: 7
     offense: 10

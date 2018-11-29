@@ -8,11 +8,11 @@
   monsterClass: Beast
   stats: 23
   skillLevels: 10
-  level: 30
+  level: 22
 
   otherStats:
-    armorClass: 50
-    defense: 15
+    armorClass: 5
+    defense: 5
     perception: 150
     damageFactor: 0.5
 
@@ -89,7 +89,7 @@
   level: 35
 
   otherStats:
-    armorClass: 50
+    armorClass: 25
     offense: 10
     defense: 15
     perception: 150
