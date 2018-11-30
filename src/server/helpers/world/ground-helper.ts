@@ -36,6 +36,7 @@ export class GroundHelper {
   }
 
   addItemToGround(ref, item: Item, previouslyStackedItem = null) {
+    if(!item) return;
 
     let baseItem = item;
 

@@ -465,7 +465,7 @@ export class CombatHelper {
     }
 
     const dodgeRoll = random(defenderDodgeRoll, attackerDodgeRoll);
-    
+
     if(dodgeRoll < 0 || attackDistance < distBetween) {
       if(!isRiposte) {
         if(distBetween === 0)  this.attemptToRiposte(attacker, defender);
