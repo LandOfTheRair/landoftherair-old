@@ -84,8 +84,8 @@
     - Shield
 
   gold:
-    min: 1550
-    max: 1900
+    min: 4550
+    max: 4900
 
   hp:
     min: 96950
@@ -183,8 +183,8 @@
     - MagicShield
 
   gold:
-    min: 1550
-    max: 1900
+    min: 4550
+    max: 4900
 
   hp:
     min: 96950
@@ -296,8 +296,8 @@
       chance: 100
 
   gold:
-    min: 1550
-    max: 1900
+    min: 4550
+    max: 4900
 
   hp:
     min: 96950
@@ -438,8 +438,8 @@
       maxChance: 100
 
   gold:
-    min: 1550
-    max: 1900
+    min: 4550
+    max: 4900
 
   hp:
     min: 96950
@@ -533,8 +533,8 @@
     - Blindstrike
 
   gold:
-    min: 1550
-    max: 1900
+    min: 4550
+    max: 4900
 
   hp:
     min: 96950
@@ -618,8 +618,8 @@
     - Jumpkick
 
   gold:
-    min: 1550
-    max: 1900
+    min: 4550
+    max: 4900
 
   hp:
     min: 96950
