@@ -12,11 +12,18 @@
 }
 
 .effect-zone {
-  max-height: 72px;
   overflow: hidden;
+
+  &.normal {
+    max-height: 72px;
+  }
 
   &.small {
     max-height: 36px;
+  }
+
+  &.xsmall {
+    padding: 5px;
   }
 }
 

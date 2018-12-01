@@ -178,9 +178,9 @@
 
   <app-window *ngIf="inGame && colyseus.game.character"
               windowName="status"
-              otherWindowClasses="above-game-window"
+              [otherWindowClasses]="'above-game-window ' + statusBarSize"
               (active)="setActiveWindow($event)"
-              [canMinimize]="true"
+              [canMinimize]="statusBarSize !== 'xsmall'"
               (minimize)="minimize($event)"
               [minimized]="minimized.status"
               [headTemplate]="statusHead"
@@ -188,7 +188,7 @@
   ></app-window>
 
   <ng-template #statusHead>
-    <app-character-tagline [player]="colyseus.game.character"></app-character-tagline>
+    <app-character-tagline [player]="colyseus.game.character" [short]="statusBarSize === 'xsmall'"></app-character-tagline>
   </ng-template>
 
   <ng-template #statusBody>
@@ -639,6 +639,7 @@
                 <div class="btn-group">
                   <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="normal">Two Lines</label>
                   <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="small">One Line</label>
+                  <label class="btn btn-info" [(ngModel)]="statusBarSize" btnRadio="xsmall">Vertical</label>
                 </div>
               </div>
             </div>

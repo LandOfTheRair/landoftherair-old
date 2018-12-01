@@ -100,9 +100,26 @@
   &.status {
     min-width: 578px;
 
+    &.small, &.xsmall {
+      font-size: 100% !important;
+    }
+
     .window-body {
       max-width: 576px;
       min-width: 576px;
+    }
+
+    &.xsmall {
+      min-width: 98px;
+      max-width: 98px;
+
+      min-height: 604px;
+      max-height: 604px;
+
+      .window-body {
+        min-width: 96px;
+        max-width: 96px;
+      }
     }
   }
 

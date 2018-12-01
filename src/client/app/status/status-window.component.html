@@ -1,15 +1,38 @@
 <div class="row ml-0 mr-0">
 
-  <div class="d-flex flex-row flex-wrap p-0 effect-zone"
+  <div class="row m-0 p-0" *ngIf="size === 'xsmall'">
+    <div class="col p-0">
+      <div class="row needs-min-height m-0">
+        <div class="col-12 p-0">
+          <ng-container *ngTemplateOutlet="hpBar"></ng-container>
+        </div>
+      </div>
+      <div class="row needs-min-height m-0" *ngIf="player && player.mp.maximum > 0">
+        <div class="col-12 p-0">
+          <ng-container *ngTemplateOutlet="mpBar"></ng-container>
+        </div>
+      </div>
+      <div class="row needs-min-height m-0">
+        <div class="col-12 p-0">
+          <ng-container *ngTemplateOutlet="xpBar"></ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row flex-wrap effect-zone"
+       [class.p-0]="size !== 'xsmall'"
        [class.small]="size === 'small'"
-       [class.col-8]="size !== 'small'"
+       [class.xsmall]="size === 'xsmall'"
+       [class.col-8]="size === 'normal'"
        [class.col-6]="size === 'small'"
+       [class.col-12]="size === 'xsmall'"
        [class.justify-content-center]="allEffects.length === 0"
        droppable
        dropScope="use"
        (onDrop)="colyseusGame.buildUseAction($event.dragData.item, $event.dragData.context, $event.dragData.contextSlot)">
     <div class="vertical-center h-100 text-center background-text" *ngIf="allEffects.length === 0">
-      <span *ngIf="size !== 'small'">You have no status effects.<br></span>
+      <span *ngIf="size === 'small'">You have no status effects.<br></span>
       Drop a potion or food here to consume it.
     </div>
     <div *ngFor="let effect of effects" class="effect-container">
@@ -17,11 +40,12 @@
     </div>
   </div>
 
-  <div class="p-0"
-       [class.col-4]="size !== 'small'"
+  <div *ngIf="size !== 'xsmall'"
+       class="p-0"
+       [class.col-4]="size === 'normal'"
        [class.col-6]="size === 'small'">
 
-    <div class="row m-0 needs-min-height" *ngIf="size !== 'small'">
+    <div class="row m-0 needs-min-height" *ngIf="size === 'normal'">
       <div class="col p-0">
         <ng-container *ngTemplateOutlet="hpBar"></ng-container>
       </div>
@@ -31,7 +55,7 @@
       </div>
     </div>
 
-    <div class="row m-0 needs-min-height" *ngIf="size !== 'small'">
+    <div class="row m-0 needs-min-height" *ngIf="size === 'normal'">
       <div class="col-12 p-0">
         <ng-container *ngTemplateOutlet="xpBar"></ng-container>
       </div>
