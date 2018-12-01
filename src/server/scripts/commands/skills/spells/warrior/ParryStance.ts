@@ -26,10 +26,10 @@ export class ParryStance extends Skill {
   public name = ['parrystance', 'stance parrystance', 'stance parry'];
   public unableToLearnFromStealing = true;
 
-  canUse(user: Character) {
+  canUse(user: Character, target: Character) {
     if(user.isPlayer()) return true;
     const check = <NPC>user;
-    return !check.$$stanceCooldown || check.$$stanceCooldown <= 0;
+    return super.canUse(user, target) && user.rightHand && !check.$$stanceCooldown || check.$$stanceCooldown <= 0;
   }
 
   execute(user: Character) {

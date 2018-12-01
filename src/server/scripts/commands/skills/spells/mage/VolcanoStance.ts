@@ -4,6 +4,7 @@
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { VolcanoStance as CastEffect } from '../../../../../effects/stances/VolcanoStance';
+import { NPC } from '../../../../../../shared/models/npc';
 
 export class VolcanoStance extends Skill {
 
@@ -20,6 +21,13 @@ export class VolcanoStance extends Skill {
   public targetsFriendly = true;
 
   public name = ['volcanostance', 'stance volcanostance', 'stance volcano'];
+  public unableToLearnFromStealing = true;
+
+  canUse(user: Character, target: Character) {
+    if(user.isPlayer()) return true;
+    const check = <NPC>user;
+    return super.canUse(user, target) && user.rightHand && !check.$$stanceCooldown || check.$$stanceCooldown <= 0;
+  }
 
   execute(user: Character) {
 
@@ -33,6 +41,8 @@ export class VolcanoStance extends Skill {
   use(user: Character) {
     const stance = new CastEffect({});
     stance.cast(user, user, this);
+
+    if(!user.isPlayer()) (<NPC>user).$$stanceCooldown = 15;
   }
 
 }
