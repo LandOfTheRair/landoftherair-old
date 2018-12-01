@@ -1100,7 +1100,77 @@
         "cost": 40,
         "cluster": 4,
         "unlockedBy": [
+            "PhysicalShielding4"
+        ]
+    },
+    "PhysicalShielding0": {
+        "name": "PhysicalShielding0",
+        "traitName": "PhysicalShielding",
+        "desc": "Increase your physical resistance by $20|60$% of your shield armor class.",
+        "icon": "bordered-shield",
+        "cost": 3,
+        "unlocks": [
+            "PhysicalShielding1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
             "Provoke"
+        ]
+    },
+    "PhysicalShielding1": {
+        "name": "PhysicalShielding1",
+        "traitName": "PhysicalShielding",
+        "desc": "Increase your physical resistance by $20|60$% of your shield armor class.",
+        "icon": "bordered-shield",
+        "cost": 3,
+        "unlocks": [
+            "PhysicalShielding2"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "PhysicalShielding0"
+        ]
+    },
+    "PhysicalShielding2": {
+        "name": "PhysicalShielding2",
+        "traitName": "PhysicalShielding",
+        "desc": "Increase your physical resistance by $20|60$% of your shield armor class.",
+        "icon": "bordered-shield",
+        "cost": 3,
+        "unlocks": [
+            "PhysicalShielding3"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "PhysicalShielding1"
+        ]
+    },
+    "PhysicalShielding3": {
+        "name": "PhysicalShielding3",
+        "traitName": "PhysicalShielding",
+        "desc": "Increase your physical resistance by $20|60$% of your shield armor class.",
+        "icon": "bordered-shield",
+        "cost": 3,
+        "unlocks": [
+            "PhysicalShielding4"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "PhysicalShielding2"
+        ]
+    },
+    "PhysicalShielding4": {
+        "name": "PhysicalShielding4",
+        "traitName": "PhysicalShielding",
+        "desc": "Increase your physical resistance by $20|60$% of your shield armor class.",
+        "icon": "bordered-shield",
+        "cost": 3,
+        "unlocks": [
+            "Shieldbearer0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "PhysicalShielding3"
         ]
     },
     "SterlingArmor0": {
@@ -1453,7 +1523,7 @@
         "iconColor": "#a00",
         "cost": 3,
         "unlocks": [
-            "Shieldbearer0"
+            "PhysicalShielding0"
         ],
         "cluster": 4,
         "unlockedBy": [
@@ -1737,7 +1807,9 @@
             "AncientForge0",
             "AncientBlizzard0",
             "AncientPlague0",
-            "AncientPoison0"
+            "AncientPoison0",
+            "AncientEnergy0",
+            "AncientNecrosis0"
         ],
         "cluster": 5,
         "unlockedBy": [
@@ -2015,6 +2087,150 @@
         "cluster": 5,
         "unlockedBy": [
             "AncientBlizzard3"
+        ]
+    },
+    "AncientNecrosis0": {
+        "name": "AncientNecrosis0",
+        "traitName": "AncientNecrosis",
+        "desc": "Increase your necrotic resistance by $50|150$.",
+        "icon": "plasma-bolt",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientNecrosis1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientAura0"
+        ]
+    },
+    "AncientNecrosis1": {
+        "name": "AncientNecrosis1",
+        "traitName": "AncientNecrosis",
+        "desc": "Increase your necrotic resistance by $50|150$.",
+        "icon": "plasma-bolt",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientNecrosis2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientNecrosis0"
+        ]
+    },
+    "AncientNecrosis2": {
+        "name": "AncientNecrosis2",
+        "traitName": "AncientNecrosis",
+        "desc": "Increase your necrotic resistance by $50|150$.",
+        "icon": "plasma-bolt",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientNecrosis3"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientNecrosis1"
+        ]
+    },
+    "AncientNecrosis3": {
+        "name": "AncientNecrosis3",
+        "traitName": "AncientNecrosis",
+        "desc": "Increase your necrotic resistance by $50|150$.",
+        "icon": "plasma-bolt",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientNecrosis4"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientNecrosis2"
+        ]
+    },
+    "AncientNecrosis4": {
+        "name": "AncientNecrosis4",
+        "traitName": "AncientNecrosis",
+        "desc": "Increase your necrotic resistance by $50|150$.",
+        "icon": "plasma-bolt",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientNecrosis3"
+        ]
+    },
+    "AncientEnergy0": {
+        "name": "AncientEnergy0",
+        "traitName": "AncientEnergy",
+        "desc": "Increase your energy resistance by $50|150$.",
+        "icon": "plasma-bolt",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientEnergy1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientAura0"
+        ]
+    },
+    "AncientEnergy1": {
+        "name": "AncientEnergy1",
+        "traitName": "AncientEnergy",
+        "desc": "Increase your energy resistance by $50|150$.",
+        "icon": "plasma-bolt",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientEnergy2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientEnergy0"
+        ]
+    },
+    "AncientEnergy2": {
+        "name": "AncientEnergy2",
+        "traitName": "AncientEnergy",
+        "desc": "Increase your energy resistance by $50|150$.",
+        "icon": "plasma-bolt",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientEnergy3"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientEnergy1"
+        ]
+    },
+    "AncientEnergy3": {
+        "name": "AncientEnergy3",
+        "traitName": "AncientEnergy",
+        "desc": "Increase your energy resistance by $50|150$.",
+        "icon": "plasma-bolt",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientEnergy4"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientEnergy2"
+        ]
+    },
+    "AncientEnergy4": {
+        "name": "AncientEnergy4",
+        "traitName": "AncientEnergy",
+        "desc": "Increase your energy resistance by $50|150$.",
+        "icon": "plasma-bolt",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientEnergy3"
         ]
     },
     "AncientPlague0": {

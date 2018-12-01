@@ -1408,7 +1408,7 @@ export class Character implements ICharacter {
       defense: ['FunkyMoves', 'AncientDefense'],
       offense: ['SwordTricks', 'AncientOffense'],
       magicalResist: ['HolyProtection', 'AncientAura'],
-      physicalResist: ['SilverSkin', 'AncientSkin'],
+      physicalResist: ['SilverSkin', 'AncientSkin', 'PhysicalShielding'],
       fireResist: ['AncientForge'],
       necroticResist: ['AncientNecrosis'],
       energyResist: ['AncientEnergy'],

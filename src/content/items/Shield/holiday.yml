@@ -4,6 +4,7 @@
   enchantLevel: 5
   stats:
     armorClass: 30
+    defense: 5
   desc: "a strangely resilient pumpkin filled with rock candy"
   value: 2500
   sprite: 545
@@ -26,6 +27,7 @@
   enchantLevel: 5
   stats:
     armorClass: 30
+    defense: 5
   desc: "an oversized button, taken from the shirt of a cold giant"
   value: 500
   sprite: 574

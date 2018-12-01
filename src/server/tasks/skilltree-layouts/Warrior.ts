@@ -304,6 +304,22 @@ const PALADIN_TREE = {
 
   },
 
+  PhysicalShielding0: {
+    unlocks: ['PhysicalShielding1']
+  },
+  PhysicalShielding1: {
+    unlocks: ['PhysicalShielding2']
+  },
+  PhysicalShielding2: {
+    unlocks: ['PhysicalShielding3']
+  },
+  PhysicalShielding3: {
+    unlocks: ['PhysicalShielding4']
+  },
+  PhysicalShielding4: {
+    unlocks: ['Shieldbearer0']
+  },
+
   SterlingArmor0: {
     unlocks: ['SterlingArmor1']
   },
@@ -390,7 +406,7 @@ const PALADIN_TREE = {
 
   // SKILLS
   Provoke: {
-    unlocks: ['Shieldbearer0']
+    unlocks: ['PhysicalShielding0']
   },
 
   Multistrike: {

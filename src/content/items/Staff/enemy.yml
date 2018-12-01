@@ -1,0 +1,10 @@
+
+
+- name: Christmas Candy Staff (Dummy)
+  desc: "a candy cane sweetly created in the Winter Wonderland"
+  tier: 3
+  type: Staff
+  value: 600
+  sprite: 575
+  binds: true
+  destroysOnDrop: true

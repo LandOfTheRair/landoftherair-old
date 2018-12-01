@@ -1,6 +1,7 @@
 - name: Antanian Wooden Shield
   stats:
     armorClass: 2
+    defense: 1
   desc: "a wooden shield"
   value: 200
   sprite: 327
@@ -8,6 +9,7 @@
 - name: Antanian Bubble Shield
   stats:
     armorClass: 4
+    defense: 1
   desc: "an wooden shield set with a circle of iron"
   value: 400
   sprite: 328
@@ -15,13 +17,14 @@
 - name: Antanian Iron Shield
   stats:
     armorClass: 5
+    defense: 1
   desc: "a wrought iron shield"
   value: 600
   sprite: 329
 
 - name: Rylt Renegade Iron Shield
   stats:
-    defense: 1
+    defense: 2
     armorClass: 6
   desc: "a wrought iron shield engraved with PROPERTY OF RENEGADES, PLEASE RETURN IF FOUND"
   value: 800
@@ -29,7 +32,7 @@
 
 - name: Takwin Shield
   stats:
-    defense: 2
+    defense: 3
     armorClass: 8
   desc: "a highly reflective shield emblazoned with the emblem of the renegades"
   value: 1500
@@ -42,6 +45,7 @@
 - name: Tower Shield Weak
   stats:
     armorClass: 12
+    defense: 3
   desc: "a wrought metal shield made from a riyan metal"
   value: 1800
   sprite: 514
@@ -52,6 +56,7 @@
 - name: Tower Shield Strong
   stats:
     armorClass: 14
+    defense: 4
   desc: "a wrought metal shield made from a riyan metal"
   value: 1800
   sprite: 514

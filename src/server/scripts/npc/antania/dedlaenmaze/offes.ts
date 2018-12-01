@@ -42,7 +42,6 @@ export const responses = (npc: NPC) => {
         const right = player.rightHand;
         if(!right) return 'Please hold an item in your right hand.';
         right.stats.offense = right.stats.offense || 0;
-        if(right.stats.offense < 1) return 'That item is too weak for me to upgrade!';
         if(right.stats.offense > 1) return 'That item is too strong for me to upgrade!';
 
         npc.$$room.npcLoader.takePlayerItem(player, TITANIUM, 'left');

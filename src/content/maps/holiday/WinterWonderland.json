@@ -669,30 +669,6 @@
                  "width":64,
                  "x":3712,
                  "y":6016
-                }, 
-                {
-                 "gid":3097,
-                 "height":64,
-                 "id":1475,
-                 "name":"",
-                 "properties":
-                    {
-                     "maxLevelUpLevel":50,
-                     "maxSkillTrain":30,
-                     "script":"trainer\/healer"
-                    },
-                 "propertytypes":
-                    {
-                     "maxLevelUpLevel":"int",
-                     "maxSkillTrain":"int",
-                     "script":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3648,
-                 "y":6144
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1525,6 +1501,30 @@
                  "width":64,
                  "x":768,
                  "y":448
+                }, 
+                {
+                 "gid":3097,
+                 "height":64,
+                 "id":1476,
+                 "name":"",
+                 "properties":
+                    {
+                     "maxLevelUpLevel":50,
+                     "maxSkillTrain":30,
+                     "script":"trainer\/healer"
+                    },
+                 "propertytypes":
+                    {
+                     "maxLevelUpLevel":"int",
+                     "maxSkillTrain":"int",
+                     "script":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3648,
+                 "y":6144
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -4337,7 +4337,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1476,
+ "nextobjectid":1477,
  "orientation":"orthogonal",
  "properties":
     {
