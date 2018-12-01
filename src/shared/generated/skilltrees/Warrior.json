@@ -1107,7 +1107,7 @@
         "name": "PhysicalShielding0",
         "traitName": "PhysicalShielding",
         "desc": "Increase your physical resistance by $20|60$% of your shield armor class.",
-        "icon": "leg-armor",
+        "icon": "bordered-shield",
         "cost": 3,
         "unlocks": [
             "PhysicalShielding1"
@@ -1121,7 +1121,7 @@
         "name": "PhysicalShielding1",
         "traitName": "PhysicalShielding",
         "desc": "Increase your physical resistance by $20|60$% of your shield armor class.",
-        "icon": "leg-armor",
+        "icon": "bordered-shield",
         "cost": 3,
         "unlocks": [
             "PhysicalShielding2"
@@ -1135,7 +1135,7 @@
         "name": "PhysicalShielding2",
         "traitName": "PhysicalShielding",
         "desc": "Increase your physical resistance by $20|60$% of your shield armor class.",
-        "icon": "leg-armor",
+        "icon": "bordered-shield",
         "cost": 3,
         "unlocks": [
             "PhysicalShielding3"
@@ -1149,7 +1149,7 @@
         "name": "PhysicalShielding3",
         "traitName": "PhysicalShielding",
         "desc": "Increase your physical resistance by $20|60$% of your shield armor class.",
-        "icon": "leg-armor",
+        "icon": "bordered-shield",
         "cost": 3,
         "unlocks": [
             "PhysicalShielding4"
@@ -1163,7 +1163,7 @@
         "name": "PhysicalShielding4",
         "traitName": "PhysicalShielding",
         "desc": "Increase your physical resistance by $20|60$% of your shield armor class.",
-        "icon": "leg-armor",
+        "icon": "bordered-shield",
         "cost": 3,
         "unlocks": [
             "Shieldbearer0"
