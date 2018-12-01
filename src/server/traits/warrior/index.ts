@@ -17,6 +17,7 @@ export * from './Multifocus';
 export * from './Multitarget';
 export * from './OffhandFinesse';
 export * from './PartyDefense';
+export * from './PhysicalShielding';
 export * from './Punchkick';
 export * from './Riposte';
 export * from './Shieldbearer';
