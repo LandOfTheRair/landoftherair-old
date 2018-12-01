@@ -1,4 +1,7 @@
 import { NPC } from '../../../../../shared/models/npc';
+import { SantasReindeer } from '../../../../quests';
+
+const REINDEER = 'donner';
 
 export const setup = async (npc: NPC) => {
   npc.hostility = 'Never';
@@ -16,6 +19,16 @@ export const responses = (npc: NPC) => {
     .set('logic', (args, { player }) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
 
-      return `Hello!`;
+      if(!player.hasQuest(SantasReindeer)) player.startQuest(SantasReindeer);
+
+      const data = player.getQuestData(SantasReindeer);
+      if(data[REINDEER]) return 'Thanks! I\'ll head back to Alf right away.';
+
+      if(!player.rightHand || player.rightHand.name !== 'Christmas Walnuts') return 'I\'m so hungry...';
+
+      player.setRightHand(null);
+      SantasReindeer.updateProgress(player, { reindeer: REINDEER });
+
+      return `Thanks! I'll head back to Alf right away.`;
     });
 };
