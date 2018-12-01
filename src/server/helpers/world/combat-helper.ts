@@ -440,7 +440,7 @@ export class CombatHelper {
     const attackerDodgeBlockRightSide = Math.floor(attackerScope.dex + attackerScope.skill);
 
     const defenderDodgeBlockLeftSide = Math.floor(1 + defenderScope.defense);
-    const defenderDodgeRightSide = Math.floor(defenderScope.dex4 + defenderScope.agi + defenderScope.level + defenderScope.riposteLevel);
+    const defenderDodgeRightSide = Math.floor(defenderScope.dex4 + defenderScope.agi + defenderScope.riposteLevel);
 
     const attackerDodgeRoll = RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerDodgeBlockRightSide) + attackerScope.accuracy;
     let defenderDodgeRoll = -RollerHelper.uniformRoll(defenderDodgeBlockLeftSide, defenderDodgeRightSide) + defenderScope.dodgeBonus;
@@ -502,7 +502,7 @@ export class CombatHelper {
     }
 
     // try to block with armor
-    const defenderBlockRightSide = Math.floor(defenderScope.level + defenderScope.armorClass);
+    const defenderBlockRightSide = Math.floor(defenderScope.armorClass);
 
     const attackerACRoll = Math.max(1, RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerDodgeBlockRightSide));
     let defenderACRoll = -RollerHelper.uniformRoll(defenderDodgeBlockLeftSide, defenderBlockRightSide);
@@ -696,8 +696,8 @@ export class CombatHelper {
       }
     }
 
-    const damageLeft = attackerScope.damageRolls + attackerScope.skill4;
-    const damageRight = Math.floor(attackerScope.damageStat + attackerScope.level + attackerScope.skill);
+    const damageLeft = attackerScope.damageRolls + attackerScope.level + attackerScope.skill4;
+    const damageRight = Math.floor(attackerScope.damageStat + attackerScope.skill);
     const damageBoost = attacker.getTotalStat('physicalDamageBoost') + damageBonus;
 
     // thieves get +25% to the bottom damage range, warriors get +50%
