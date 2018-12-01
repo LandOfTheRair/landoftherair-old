@@ -545,8 +545,8 @@ export class CombatHelper {
     }
 
     // try to block with weapon
-    const attackerWeaponShieldBlockRightSide = Math.floor(attackerScope.damageStat4 + attackerScope.dex + attackerScope.skill) - defenderScope.weaponAC;
-    const defenderWeaponBlockLeftSide = 1;
+    const attackerWeaponShieldBlockRightSide = Math.floor(attackerScope.damageStat4 + attackerScope.dex + attackerScope.skill);
+    const defenderWeaponBlockLeftSide = 1 + defenderScope.weaponAC;
     const defenderWeaponBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.skill);
 
     const attackerWeaponBlockRoll = RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerWeaponShieldBlockRightSide);
@@ -598,10 +598,10 @@ export class CombatHelper {
 
     // try to block with shield
     if(defenderShield && defender.leftHand.isOwnedBy(defender) && defenderShield.hasCondition()) {
-      const defenderShieldBlockLeftSide = Math.floor(1 + defenderScope.shieldDefense);
+      const defenderShieldBlockLeftSide = Math.floor(1 + defenderScope.shieldDefense + defenderScope.shieldAC);
       const defenderShieldBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.skill);
 
-      const attackerShieldBlockRoll = Math.max(1, RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerWeaponShieldBlockRightSide) - defenderScope.shieldAC);
+      const attackerShieldBlockRoll = Math.max(1, RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerWeaponShieldBlockRightSide));
       const defenderShieldBlockRoll = -RollerHelper.uniformRoll(defenderShieldBlockLeftSide, defenderShieldBlockRightSide);
 
       const shieldBlockRoll = random(attackerShieldBlockRoll, defenderShieldBlockRoll);
@@ -648,10 +648,10 @@ export class CombatHelper {
 
     // try to block with offhand weapon
     if(defenderOffhand && defender.leftHand.isOwnedBy(defender) && defenderOffhand.hasCondition()) {
-      const defenderOffhandBlockLeftSide = Math.floor(1 + defenderScope.offhandDefense);
+      const defenderOffhandBlockLeftSide = Math.floor(1 + defenderScope.offhandDefense + defenderScope.offhandAC);
       const defenderOffhandBlockRightSide = Math.floor(defenderScope.dex4 + defenderScope.offhandSkill);
 
-      const attackerOffhandBlockRoll = Math.max(1, RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerWeaponShieldBlockRightSide) - defenderScope.offhandAC);
+      const attackerOffhandBlockRoll = Math.max(1, RollerHelper.uniformRoll(attackerDodgeBlockLeftSide, attackerWeaponShieldBlockRightSide));
       const defenderOffhandBlockRoll = -RollerHelper.uniformRoll(defenderOffhandBlockLeftSide, defenderOffhandBlockRightSide);
 
       const offhandBlockRoll = random(attackerOffhandBlockRoll, defenderOffhandBlockRoll);
