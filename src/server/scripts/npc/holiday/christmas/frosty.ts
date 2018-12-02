@@ -71,6 +71,15 @@ export const responses = (npc: NPC) => {
         return 'Thank you! My magic is slowly returning!';
       }
 
+      if(npc.$$room.npcLoader.checkPlayerHeldItems(player, 'Christmas Pipe', 'Enchanting Brick - Enos')) {
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Christmas Pipe');
+        npc.$$room.npcLoader.takePlayerItemFromEitherHand(player, 'Enchanting Brick - Enos');
+
+        npc.$$room.npcLoader.putItemInPlayerHand(player, 'Christmas Pipe (Improved)');
+
+        return 'Thank you! My magic is slowly returning!';
+      }
+
       return 'Hello, adventurer! Can you help me reclaim my MAGIC, or my SENSES?';
     });
 
