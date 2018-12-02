@@ -463,7 +463,8 @@
         "unlocks": [
             "ForcefulStrike5",
             "OffhandFinesse0",
-            "Riposte0"
+            "Riposte0",
+            "Boost"
         ],
         "name": "Duelist",
         "cluster": 2
@@ -531,9 +532,6 @@
         "desc": "Strike more forcefully, dealing $10|30$% additional damage if your health is above 50%.",
         "icon": "striped-sword",
         "cost": 3,
-        "unlocks": [
-            "Boost"
-        ],
         "cluster": 2,
         "unlockedBy": [
             "ForcefulStrike8"
@@ -772,7 +770,7 @@
         ],
         "cluster": 2,
         "unlockedBy": [
-            "ForcefulStrike9"
+            "Duelist"
         ]
     },
     "Monk": {

@@ -121,7 +121,7 @@ const DUELIST_TREE = {
     desc: 'The Duelist class excels at stylized combat - dual-wielding weapons and counter-attacking with flair and finesse.',
     unbuyable: true,
     root: true,
-    unlocks: ['ForcefulStrike5', 'OffhandFinesse0', 'Riposte0']
+    unlocks: ['ForcefulStrike5', 'OffhandFinesse0', 'Riposte0', 'Boost']
   },
 
   // TRAITS
@@ -139,7 +139,7 @@ const DUELIST_TREE = {
     unlocks: ['ForcefulStrike9']
   },
   ForcefulStrike9: {
-    unlocks: ['Boost']
+
   },
 
   OffhandFinesse0: {
