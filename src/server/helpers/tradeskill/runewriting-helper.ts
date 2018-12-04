@@ -79,7 +79,7 @@ export class RunewritingHelper {
     if(!item.effect || item.effect.name !== effect.name) item.effect = { potency: 0, name: effect.name };
     item.effect.potency++;
     item.effect.chance = mySkill;
-    
+
     player.setLeftHand(null);
     player.sendClientMessage(`The scroll imparts the spell "${effect.name}" onto your ${player.rightHand.itemClass.toLowerCase()}!`);
   }
