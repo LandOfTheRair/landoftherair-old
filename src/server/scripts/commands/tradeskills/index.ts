@@ -8,6 +8,7 @@ export * from './spellforging/disenchant';
 export * from './spellforging/enchant';
 export * from './spellforging/forge';
 
+export * from './runewriting/imbue';
 export * from './runewriting/runewrite';
 
 export * from './survival/extract';
