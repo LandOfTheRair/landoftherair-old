@@ -75,9 +75,9 @@
     - result: Rune Scroll - Winters Embrace IV
       chance: 100
     - result: Rune Scroll - Winters Embrace V
-      chance: 10
+      chance: 1
     - result: Cosmetic Scroll - Snowflake Joy
-      chance: 10
+      chance: 1
 
 - name: Christmas Gift - Rainbow
   desc: "a gift box wrapped with shiny multi-colored wrapping paper, tied with a golden bow"
