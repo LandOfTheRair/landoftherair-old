@@ -96,7 +96,11 @@ import { ColyseusService } from './colyseus.service';
                 <a class="dropdown-item"
                    (click)="openWindow.emit({ key: 'showTraits', window: 'traits' })">Traits</a>
               </li>
-              <li class="divider dropdown-divider" *ngIf="inGame"></li>
+              <li>
+                <a class="dropdown-item"
+                   (click)="openWindow.emit({ key: 'showJournal', window: 'journal' })">Journal</a>
+              </li>
+              <li class="divider dropdown-divider"></li>
               <li>
                 <a class="dropdown-item" (click)="options.show()">Options</a>
               </li>

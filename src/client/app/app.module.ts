@@ -1,3 +1,6 @@
+
+import { compact } from 'lodash';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injectable, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -84,6 +87,7 @@ import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/trade
 
 import { environment } from '../environments/environment';
 import { AlertService } from './alert.service';
+import { JournalComponent } from './journal/journal.component';
 
 const envUrl = `${environment.server.protocol}://${environment.server.domain}:${environment.server.port}`;
 
@@ -146,17 +150,18 @@ export class APIInterceptor implements HttpInterceptor {
     TraitsComponent,
     MarketBoardComponent,
     BookComponent,
+    JournalComponent,
 
     TradeskillAlchemyComponent,
     TradeskillSpellforgingComponent,
     TradeskillMetalworkingComponent
   ],
-  imports: [
+  imports: compact([
     BrowserModule,
     FormsModule,
     HttpClientModule,
 
-    RollbarModule.forRoot({
+    environment.production ? RollbarModule.forRoot({
       accessToken: environment.rollbar.token,
       enabled: !!environment.rollbar.token,
       captureUncaught: true,
@@ -171,7 +176,7 @@ export class APIInterceptor implements HttpInterceptor {
         'Cannot read property \'loadComplete\' of null',
         'Unable to get property \'noAudio\' of undefined or null reference'
       ]
-    }),
+    }) : null,
 
     ResizableModule,
     ColorPickerModule,
@@ -187,9 +192,9 @@ export class APIInterceptor implements HttpInterceptor {
     TabsModule.forRoot(),
 
     StripeCheckoutModule
-  ],
-  providers: [
-    { provide: ErrorHandler, useClass: RollbarService },
+  ]),
+  providers: compact([
+    environment.production ? { provide: ErrorHandler, useClass: RollbarService } : null,
     AlertService,
     AuthService,
     ColyseusService,
@@ -203,7 +208,7 @@ export class APIInterceptor implements HttpInterceptor {
       useClass: APIInterceptor,
       multi: true
     }
-  ],
+  ]),
   bootstrap: [AppComponent]
 })
 export class AppModule { }

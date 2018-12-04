@@ -43,7 +43,8 @@ const WindowDefaults: { [key: string]: WindowProps } = {
   tradeskillSpellforging:     { x: 670,  y: 120 },
   tradeskillMetalworking:     { x: 670,  y: 120 },
   marketboard:                { x: 670,  y: 120 },
-  book:                       { x: 670,  y: 120 }
+  book:                       { x: 670,  y: 120 },
+  journal:                    { x: 670,  y: 120 }
 };
 
 @Injectable()

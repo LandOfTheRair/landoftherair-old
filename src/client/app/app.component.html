@@ -538,6 +538,25 @@
     <app-book [book]="colyseus.game.character.rightHand"></app-book>
   </ng-template>
 
+  <app-window *ngIf="showJournal"
+              windowName="journal"
+              [otherWindowClasses]="'journal above-game-window'"
+              [hidden]="!loggedIn"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showJournal = false"
+              [headTemplate]="journalHead"
+              [bodyTemplate]="journalBody"
+  ></app-window>
+
+  <ng-template #journalHead>
+    Journal
+  </ng-template>
+
+  <ng-template #journalBody>
+    <app-journal></app-journal>
+  </ng-template>
+
 </div>
 
 <div class="modal fade" bsModal #options="bs-modal" tabindex="-1">

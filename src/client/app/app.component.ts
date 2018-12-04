@@ -114,6 +114,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   @LocalStorage()
   public showTraits: boolean;
 
+  @LocalStorage()
+  public showJournal: boolean;
+
   // options
   @LocalStorage()
   public sackSize: Size;
@@ -606,7 +609,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.newMessages = 0;
     }
 
-    if(win !== 'commandLine' && win !== 'lobby' && win !== 'marketboard' && win !== 'bank' && win !== 'shop') {
+    if(win !== 'commandLine' && win !== 'lobby' && win !== 'marketboard' && win !== 'bank' && win !== 'shop' && win !== 'journal') {
       (<HTMLElement>document.activeElement).blur();
     }
   }
