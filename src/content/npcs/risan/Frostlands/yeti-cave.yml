@@ -193,12 +193,12 @@
     max: 2000
 
   hp:
-    min: 55950
-    max: 57350
+    min: 35950
+    max: 37350
 
   giveXp:
-    min: 86000
-    max: 99000
+    min: 46000
+    max: 49000
 
   usableSkills:
     - Kick

@@ -75,16 +75,16 @@
   skillOnKill: 65
 
   gold:
-    min: 1550
-    max: 1900
+    min: 2550
+    max: 2900
 
   hp:
-    min: 106950
-    max: 109350
+    min: 56950
+    max: 59350
 
   giveXp:
-    min: 107000
-    max: 109000
+    min: 67000
+    max: 69000
 
   baseEffects:
     - name: Attribute
@@ -176,16 +176,16 @@
   skillOnKill: 65
 
   gold:
-    min: 1550
-    max: 1900
+    min: 2550
+    max: 2900
 
   hp:
-    min: 106950
-    max: 109350
+    min: 56950
+    max: 59350
 
   giveXp:
-    min: 107000
-    max: 109000
+    min: 67000
+    max: 69000
 
   baseEffects:
     - name: Attribute
@@ -281,20 +281,20 @@
       chance: 100
 
   gold:
-    min: 1550
-    max: 1900
+    min: 2550
+    max: 2900
 
   hp:
-    min: 106950
-    max: 109350
+    min: 56950
+    max: 59350
+
+  giveXp:
+    min: 67000
+    max: 69000
 
   mp:
     min: 10000
     max: 10000
-
-  giveXp:
-    min: 101000
-    max: 107000
 
   baseEffects:
     - name: Attribute
@@ -390,20 +390,20 @@
       chance: 100
 
   gold:
-    min: 1550
-    max: 1900
+    min: 2550
+    max: 2900
 
   hp:
-    min: 106950
-    max: 109350
+    min: 56950
+    max: 59350
+
+  giveXp:
+    min: 67000
+    max: 69000
 
   mp:
     min: 10000
     max: 10000
-
-  giveXp:
-    min: 101000
-    max: 107000
 
   baseEffects:
     - name: Attribute
@@ -488,16 +488,16 @@
   skillOnKill: 65
 
   gold:
-    min: 1550
-    max: 1900
+    min: 2550
+    max: 2900
 
   hp:
-    min: 106950
-    max: 109350
+    min: 56950
+    max: 59350
 
   giveXp:
-    min: 107000
-    max: 109000
+    min: 67000
+    max: 69000
 
   baseEffects:
     - name: Attribute
@@ -595,20 +595,20 @@
     - DarkVision
 
   gold:
-    min: 1550
-    max: 1900
+    min: 2550
+    max: 2900
 
   hp:
-    min: 106950
-    max: 109350
+    min: 56950
+    max: 59350
+
+  giveXp:
+    min: 67000
+    max: 69000
 
   mp:
     min: 1000
     max: 1000
-
-  giveXp:
-    min: 101000
-    max: 107000
 
   drops:
     - result: Catacombs Raw Tourmaline
@@ -696,20 +696,20 @@
     - DarkVision
 
   gold:
-    min: 1550
-    max: 1900
+    min: 2550
+    max: 2900
 
   hp:
-    min: 106950
-    max: 109350
+    min: 56950
+    max: 59350
+
+  giveXp:
+    min: 67000
+    max: 69000
 
   mp:
     min: 1000
     max: 1000
-
-  giveXp:
-    min: 101000
-    max: 107000
 
   baseEffects:
     - name: Attribute

@@ -98,16 +98,16 @@
     BoostedBoost: 2
 
   gold:
-    min: 3000
-    max: 3500
+    min: 6550
+    max: 6900
 
   hp:
-    min: 316950
-    max: 319350
+    min: 139150
+    max: 139350
 
   giveXp:
-    min: 241000
-    max: 247000
+    min: 147000
+    max: 149000
 
   baseEffects:
     - name: Attribute
@@ -211,16 +211,16 @@
     DoubleThrust: 2
 
   gold:
-    min: 3000
-    max: 3500
+    min: 6550
+    max: 6900
 
   hp:
-    min: 416950
-    max: 419350
+    min: 139150
+    max: 139350
 
   giveXp:
-    min: 351000
-    max: 357000
+    min: 147000
+    max: 149000
 
   baseEffects:
     - name: Attribute
@@ -341,20 +341,20 @@
     SearingAffliction: 1
 
   gold:
-    min: 3000
-    max: 3500
+    min: 6550
+    max: 6900
 
   hp:
-    min: 416950
-    max: 419350
+    min: 139150
+    max: 139350
+
+  giveXp:
+    min: 147000
+    max: 149000
 
   mp:
     min: 10000
     max: 10000
-
-  giveXp:
-    min: 351000
-    max: 357000
 
   baseEffects:
     - name: Attribute
@@ -473,20 +473,20 @@
     ConcussiveBolt: 4
 
   gold:
-    min: 3000
-    max: 3500
+    min: 6550
+    max: 6900
 
   hp:
-    min: 416950
-    max: 419350
+    min: 139150
+    max: 139350
+
+  giveXp:
+    min: 147000
+    max: 149000
 
   mp:
     min: 10000
     max: 10000
-
-  giveXp:
-    min: 351000
-    max: 357000
 
   baseEffects:
     - name: Attribute
@@ -583,16 +583,16 @@
     Punchkick: 2
 
   gold:
-    min: 3000
-    max: 3500
+    min: 6550
+    max: 6900
 
   hp:
-    min: 416950
-    max: 419350
+    min: 139150
+    max: 139350
 
   giveXp:
-    min: 351000
-    max: 357000
+    min: 147000
+    max: 149000
 
   baseEffects:
     - name: Attribute
@@ -735,20 +735,20 @@
       maxChance: 100
 
   gold:
-    min: 3000
-    max: 3500
+    min: 6550
+    max: 6900
 
   hp:
-    min: 416950
-    max: 419350
+    min: 139150
+    max: 139350
+
+  giveXp:
+    min: 147000
+    max: 149000
 
   mp:
     min: 1000
     max: 1000
-
-  giveXp:
-    min: 351000
-    max: 357000
 
   drops:
     - result: Catacombs Raw Tourmaline
@@ -846,20 +846,20 @@
     DegenerativeVenom: 1
 
   gold:
-    min: 3000
-    max: 3500
+    min: 6550
+    max: 6900
 
   hp:
-    min: 416950
-    max: 419350
+    min: 139150
+    max: 139350
+
+  giveXp:
+    min: 147000
+    max: 149000
 
   mp:
     min: 1000
     max: 1000
-
-  giveXp:
-    min: 351000
-    max: 357000
 
   baseEffects:
     - name: Attribute

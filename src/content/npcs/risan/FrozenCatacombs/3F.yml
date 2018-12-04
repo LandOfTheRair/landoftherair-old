@@ -96,16 +96,16 @@
     OffhandFinesse: 2
 
   gold:
-    min: 2150
-    max: 2425
+    min: 4550
+    max: 4900
 
   hp:
-    min: 206950
-    max: 209350
+    min: 96950
+    max: 99350
 
   giveXp:
-    min: 151000
-    max: 157000
+    min: 107000
+    max: 109000
 
   baseEffects:
     - name: Attribute
@@ -207,16 +207,16 @@
     Swashbuckler: 4
 
   gold:
-    min: 2150
-    max: 2425
+    min: 4550
+    max: 4900
 
   hp:
-    min: 206950
-    max: 209350
+    min: 96950
+    max: 99350
 
   giveXp:
-    min: 201000
-    max: 207000
+    min: 107000
+    max: 109000
 
   baseEffects:
     - name: Attribute
@@ -334,20 +334,20 @@
     StrongerSnare: 1
 
   gold:
-    min: 2150
-    max: 2425
+    min: 4550
+    max: 4900
 
   hp:
-    min: 206950
-    max: 209350
+    min: 96950
+    max: 99350
+
+  giveXp:
+    min: 107000
+    max: 109000
 
   mp:
     min: 10000
     max: 10000
-
-  giveXp:
-    min: 201000
-    max: 207000
 
   baseEffects:
     - name: Attribute
@@ -459,20 +459,20 @@
     MagicFocus: 2
 
   gold:
-    min: 2150
-    max: 2425
+    min: 4550
+    max: 4900
 
   hp:
-    min: 206950
-    max: 209350
+    min: 96950
+    max: 99350
+
+  giveXp:
+    min: 107000
+    max: 109000
 
   mp:
     min: 10000
     max: 10000
-
-  giveXp:
-    min: 201000
-    max: 207000
 
   baseEffects:
     - name: Attribute
@@ -561,23 +561,21 @@
     - Shield
 
   traitLevels:
-    UnarmoredSavant: 1
     StunningFist: 2
-    MartialAgility: 2
     BrassKnuckles: 2
     Punchkick: 1
 
   gold:
-    min: 2150
-    max: 2425
+    min: 4550
+    max: 4900
 
   hp:
-    min: 206950
-    max: 209350
+    min: 96950
+    max: 99350
 
   giveXp:
-    min: 201000
-    max: 207000
+    min: 107000
+    max: 109000
 
   baseEffects:
     - name: Attribute
@@ -717,20 +715,20 @@
       maxChance: 100
 
   gold:
-    min: 2150
-    max: 2425
+    min: 4550
+    max: 4900
 
   hp:
-    min: 206950
-    max: 209350
+    min: 96950
+    max: 99350
+
+  giveXp:
+    min: 107000
+    max: 109000
 
   mp:
     min: 1000
     max: 1000
-
-  giveXp:
-    min: 201000
-    max: 207000
 
   drops:
     - result: Catacombs Raw Tourmaline
@@ -825,21 +823,22 @@
     ShadowSwap: 2
     DarkerShadows: 2
 
+
   gold:
-    min: 2150
-    max: 2425
+    min: 4550
+    max: 4900
 
   hp:
-    min: 206950
-    max: 209350
+    min: 96950
+    max: 99350
+
+  giveXp:
+    min: 107000
+    max: 109000
 
   mp:
     min: 1000
     max: 1000
-
-  giveXp:
-    min: 201000
-    max: 207000
 
   baseEffects:
     - name: Attribute

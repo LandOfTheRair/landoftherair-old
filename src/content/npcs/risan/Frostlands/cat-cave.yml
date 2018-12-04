@@ -49,16 +49,16 @@
     max: 1500
 
   hp:
-    min: 56950
-    max: 59350
+    min: 36950
+    max: 39350
 
   mp:
     min: 1000
     max: 1000
 
   giveXp:
-    min: 62000
-    max: 65000
+    min: 42000
+    max: 45000
 
   drops:
     - result: Frostlands Mage Earring

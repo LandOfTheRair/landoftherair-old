@@ -98,16 +98,16 @@
     BoostedBoost: 1
 
   gold:
-    min: 2300
-    max: 2675
+    min: 5550
+    max: 5900
 
   hp:
-    min: 256950
-    max: 269350
+    min: 119150
+    max: 119350
 
   giveXp:
-    min: 191000
-    max: 197000
+    min: 127000
+    max: 129000
 
   baseEffects:
     - name: Attribute
@@ -211,16 +211,16 @@
     DoubleThrust: 1
 
   gold:
-    min: 2300
-    max: 2675
+    min: 5550
+    max: 5900
 
   hp:
-    min: 256950
-    max: 269350
+    min: 119150
+    max: 119350
 
   giveXp:
-    min: 251000
-    max: 257000
+    min: 127000
+    max: 129000
 
   baseEffects:
     - name: Attribute
@@ -340,20 +340,20 @@
     StrongerSnare: 1
 
   gold:
-    min: 2300
-    max: 2675
+    min: 5550
+    max: 5900
 
   hp:
-    min: 256950
-    max: 269350
+    min: 119150
+    max: 119350
+
+  giveXp:
+    min: 127000
+    max: 129000
 
   mp:
     min: 10000
     max: 10000
-
-  giveXp:
-    min: 251000
-    max: 257000
 
   baseEffects:
     - name: Attribute
@@ -468,20 +468,20 @@
     ConcussiveBolt: 2
 
   gold:
-    min: 2300
-    max: 2675
+    min: 5550
+    max: 5900
 
   hp:
-    min: 256950
-    max: 269350
+    min: 119150
+    max: 119350
+
+  giveXp:
+    min: 127000
+    max: 129000
 
   mp:
     min: 10000
     max: 10000
-
-  giveXp:
-    min: 251000
-    max: 257000
 
   baseEffects:
     - name: Attribute
@@ -570,23 +570,22 @@
     - Shield
 
   traitLevels:
-    UnarmoredSavant: 1
     StunningFist: 3
-    MartialAgility: 3
+    MartialAgility: 1
     BrassKnuckles: 3
     Punchkick: 2
 
   gold:
-    min: 2300
-    max: 2675
+    min: 5550
+    max: 5900
 
   hp:
-    min: 256950
-    max: 269350
+    min: 119150
+    max: 119350
 
   giveXp:
-    min: 251000
-    max: 257000
+    min: 127000
+    max: 129000
 
   baseEffects:
     - name: Attribute
@@ -728,20 +727,20 @@
       maxChance: 100
 
   gold:
-    min: 2300
-    max: 2675
+    min: 5550
+    max: 5900
 
   hp:
-    min: 256950
-    max: 269350
+    min: 119150
+    max: 119350
+
+  giveXp:
+    min: 127000
+    max: 129000
 
   mp:
     min: 1000
     max: 1000
-
-  giveXp:
-    min: 251000
-    max: 257000
 
   drops:
     - result: Catacombs Raw Tourmaline
@@ -839,20 +838,20 @@
     DegenerativeVenom: 1
 
   gold:
-    min: 2300
-    max: 2675
+    min: 5550
+    max: 5900
 
   hp:
-    min: 256950
-    max: 269350
+    min: 119150
+    max: 119350
+
+  giveXp:
+    min: 127000
+    max: 129000
 
   mp:
     min: 1000
     max: 1000
-
-  giveXp:
-    min: 251000
-    max: 257000
 
   baseEffects:
     - name: Attribute
