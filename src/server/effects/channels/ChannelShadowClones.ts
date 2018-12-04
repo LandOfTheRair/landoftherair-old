@@ -37,6 +37,34 @@ class ActiveClones extends Effect {
   }
 
   effectTick(char: Character) {
+    if(!char.$$pets) return;
+
+    char.$$pets.forEach(npc => {
+      if(char.rightHand) {
+        if(char.rightHand.canUseInCombat(char) && (!npc.rightHand || npc.rightHand.uuid !== char.rightHand.uuid)) {
+          const item = new Item(cloneDeep(char.rightHand));
+          item.requirements = null;
+          item.owner = null;
+          item.destroyOnDrop = true;
+          npc.setRightHand(item);
+        }
+      } else {
+        npc.setRightHand(null);
+      }
+
+      if(char.leftHand) {
+        if(char.leftHand && char.leftHand.canUseInCombat(char) && (!npc.leftHand || npc.leftHand.uuid !== char.leftHand.uuid)) {
+          const item = new Item(cloneDeep(char.leftHand));
+          item.requirements = null;
+          item.owner = null;
+          item.destroyOnDrop = true;
+          npc.setLeftHand(item);
+        }
+      } else {
+        npc.setLeftHand(null);
+      }
+    });
+
     if(char.$$pets && some(char.$$pets, pet => !pet.isDead())) return;
 
     this.effectEnd(char);
@@ -125,22 +153,6 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
         npc.gainBaseStat('hp', char.getBaseStat('hp') * reversedPotency);
         npc.gainBaseStat('offense', reversedPotency * 3);
         npc.gainBaseStat('accuracy', reversedPotency * 2);
-
-        if(char.rightHand && char.rightHand.canUseInCombat(char)) {
-          npc.rightHand = new Item(cloneDeep(char.rightHand));
-          npc.rightHand.requirements = null;
-          npc.rightHand.owner = null;
-          npc.rightHand.destroyOnDrop = true;
-          npc.rightHand.tier = Math.max(1, (npc.rightHand.tier || 0) - 1);
-        }
-
-        if(char.leftHand && char.leftHand.canUseInCombat(char)) {
-          npc.leftHand = new Item(cloneDeep(char.leftHand));
-          npc.leftHand.requirements = null;
-          npc.leftHand.owner = null;
-          npc.leftHand.destroyOnDrop = true;
-          npc.leftHand.tier = Math.max(1, (npc.leftHand.tier || 0) - 1);
-        }
 
         npc.recalculateStats();
 
