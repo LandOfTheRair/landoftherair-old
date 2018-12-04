@@ -5,7 +5,7 @@ import * as fileSaver from 'file-saver';
 
 import { Subject } from 'rxjs';
 
-import { find, includes, findIndex, extend, startsWith, capitalize, isNumber, isUndefined } from 'lodash';
+import { find, includes, findIndex, extend, startsWith, capitalize, isNumber, isUndefined, sortBy } from 'lodash';
 import { Player } from '../../shared/models/player';
 import { Item } from '../../shared/models/item';
 import { Locker } from '../../shared/models/container/locker';
@@ -203,7 +203,7 @@ export class ColyseusGameService {
     this.joinRoom(this.character.map);
   }
 
-  private joinRoom(room, party?: string) {
+  private async joinRoom(room, party?: string) {
     this._joiningGame = true;
     this.currentMap = room;
 
@@ -217,7 +217,26 @@ export class ColyseusGameService {
 
     if(party) joinOpts.party = party;
 
-    this.worldRoom = this.client.join(room, joinOpts);
+    let joinRoom = room;
+
+    if(!party) {
+      joinRoom = await new Promise((resolve, reject) => {
+        this.client.getAvailableRooms(room, (rooms, err) => {
+          if(err) return reject(err);
+
+          let roomId = room;
+          if(rooms && rooms.length > 0) roomId = (<any>sortBy(rooms, ['clients', 'maxClients'])).reverse()[0].roomId;
+
+          if(!roomId) roomId = room;
+
+          console.warn(`World room id list`, rooms, '; joining', roomId);
+          resolve(roomId);
+
+        });
+      });
+    }
+
+    this.worldRoom = this.client.join(joinRoom, joinOpts);
 
     this.worldRoom.onStateChange.addOnce((state) => {
       this.colyseus.debugGameLogMessage({ CLIENT_INFO: 'INITIAL_STATE_CHANGE' }, 'incoming');
