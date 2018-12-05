@@ -19,7 +19,7 @@ export class RunewritingHelper {
 
     const effect = blood.stats.effect;
 
-    const failChance = (5 +  (effect.potency / 2) - mySkill) * 5;
+    const failChance = effect ? (5 + (effect.potency / 2) - mySkill) * 5 : 100;
 
     if(failChance > 0 && RollerHelper.XInOneHundred(failChance)) {
       player.sendClientMessage('The blood is too difficult to inscribe.');
