@@ -136,6 +136,7 @@ export class ClientGameState {
   }
 
   addNPC(npc) {
+    if(!npc) return;
     this.mapNPCs[npc.uuid] = new Character(npc);
   }
 
