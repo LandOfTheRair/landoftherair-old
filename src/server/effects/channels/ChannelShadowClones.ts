@@ -40,8 +40,12 @@ class ActiveClones extends Effect {
     if(!char.$$pets) return;
 
     char.$$pets.forEach(npc => {
+
+      let itemChanged = false;
+
       if(char.rightHand) {
         if(char.rightHand.canUseInCombat(char) && (!npc.rightHand || npc.rightHand.uuid !== char.rightHand.uuid)) {
+          itemChanged = true;
           const item = new Item(cloneDeep(char.rightHand));
           item.requirements = null;
           item.owner = null;
@@ -49,11 +53,15 @@ class ActiveClones extends Effect {
           npc.setRightHand(item);
         }
       } else {
-        npc.setRightHand(null);
+        if(!npc.rightHand) {
+          itemChanged = true;
+          npc.setRightHand(null);
+        }
       }
 
       if(char.leftHand) {
         if(char.leftHand && char.leftHand.canUseInCombat(char) && (!npc.leftHand || npc.leftHand.uuid !== char.leftHand.uuid)) {
+          itemChanged = true;
           const item = new Item(cloneDeep(char.leftHand));
           item.requirements = null;
           item.owner = null;
@@ -61,8 +69,13 @@ class ActiveClones extends Effect {
           npc.setLeftHand(item);
         }
       } else {
-        npc.setLeftHand(null);
+        if(!npc.leftHand) {
+          itemChanged = true;
+          npc.setLeftHand(null);
+        }
       }
+
+      if(itemChanged) npc.$$room.syncNPC(<NPC>npc);
     });
 
     if(char.$$pets && some(char.$$pets, pet => !pet.isDead())) return;
