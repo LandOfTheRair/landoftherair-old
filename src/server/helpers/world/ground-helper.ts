@@ -72,6 +72,7 @@ export class GroundHelper {
   }
 
   removeItemFromGround(item, fromGW = false) {
+    if(!item) return;
 
     // inf loop protection not called from the game world, called as part of the gc above
     if(!fromGW) {
