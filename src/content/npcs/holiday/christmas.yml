@@ -112,7 +112,7 @@
 
   level: 10
 
-  skillOnKill: 35
+  skillOnKill: 15
 
   gold:
     min: 400
@@ -193,7 +193,7 @@
 
   level: 12
 
-  skillOnKill: 55
+  skillOnKill: 25
 
   gold:
     min: 1000
@@ -380,7 +380,7 @@
 
   level: 10
 
-  skillOnKill: 35
+  skillOnKill: 15
 
   gold:
     min: 400
@@ -433,7 +433,7 @@
 
   level: 12
 
-  skillOnKill: 55
+  skillOnKill: 25
 
   gold:
     min: 1000
