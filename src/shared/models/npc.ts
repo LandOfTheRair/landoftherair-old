@@ -286,7 +286,7 @@ export class NPC extends Character implements INPC {
     if(char.level <= this.level + 10)           value = 2;
     if(char.level <= this.level + 5)            value = 3;
 
-    if(this.hasEffect('Dangerous'))  value = 5;
+    if(this.hasEffect('Dangerous') && value > 0)  value = 5;
 
     return value;
   }
