@@ -18,6 +18,7 @@ export class FindFamiliar extends Skill {
 
   public name = ['findfamiliar', 'cast findfamiliar'];
   public format = '[AnimalType]';
+  public unableToLearnFromStealing = true;
 
   canUse(user: Character, target: Character) {
     return !(user.hasEffect('ChannelFindFamiliar') || user.hasEffect('ActivePet'));

@@ -16,6 +16,7 @@ export class Disarm extends Skill {
 
   public name = ['disarm', 'cast disarm'];
   public format = 'Dir';
+  public unableToLearnFromStealing = true;
 
   execute(user: Character, { args }) {
 

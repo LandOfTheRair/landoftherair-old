@@ -16,6 +16,7 @@ export class Wellspring extends Skill {
 
   public name = ['wellspring', 'cast wellspring'];
   public format = '';
+  public unableToLearnFromStealing = true;
 
   canUse(user: Character, target: Character) {
     return false;

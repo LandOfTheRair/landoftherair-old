@@ -15,6 +15,7 @@ export class Apply extends Skill {
   };
 
   public name = ['apply', 'cast apply'];
+  public unableToLearnFromStealing = true;
 
   execute(user: Character) {
     if(!user.leftHand || user.leftHand.itemClass !== 'Bottle') return user.sendClientMessage('You are not holding a bottle!');

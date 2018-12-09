@@ -25,6 +25,7 @@ export class RiftSlash extends Skill {
 
   public name = ['riftslash', 'cast riftslash'];
   public format = 'Target';
+  public unableToLearnFromStealing = true;
 
   mpCost(user: Player) { return 10; }
 

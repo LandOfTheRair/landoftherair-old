@@ -17,6 +17,7 @@ export class Set extends Skill {
 
   public name = ['set', 'cast set'];
   public format = 'Dir';
+  public unableToLearnFromStealing = true;
 
   range(user: Character) {
     return 1 + user.getTraitLevelAndUsageModifier('ThrownTraps');

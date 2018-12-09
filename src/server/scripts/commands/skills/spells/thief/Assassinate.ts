@@ -24,6 +24,7 @@ export class Assassinate extends Skill {
 
   public name = ['assassinate', 'cast assassinate'];
   public format = 'Target';
+  public unableToLearnFromStealing = true;
 
   range(attacker: Character) {
     return this.calcPlainAttackRange(attacker);

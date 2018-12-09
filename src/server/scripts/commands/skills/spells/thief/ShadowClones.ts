@@ -18,6 +18,7 @@ export class ShadowClones extends Skill {
 
   public name = ['shadowclones', 'cast shadowclones'];
   public format = 'Target';
+  public unableToLearnFromStealing = true;
 
   canUse(user: Character, target: Character) {
     return false;

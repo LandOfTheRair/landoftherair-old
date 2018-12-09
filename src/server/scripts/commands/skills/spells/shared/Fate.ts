@@ -20,6 +20,7 @@ export class Fate extends Skill {
 
   public name = ['fate', 'cast fate'];
   public format = '';
+  public unableToLearnFromStealing = true;
 
   // it would be funny to have an enemy that can cast fate, though.
   canUse(user: Character, target: Character) {

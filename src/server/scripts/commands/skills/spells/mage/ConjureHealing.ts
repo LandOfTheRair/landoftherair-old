@@ -16,6 +16,7 @@ export class ConjureHealing extends Skill {
 
   public name = ['conjurehealing', 'cast conjurehealing'];
   public format = '';
+  public unableToLearnFromStealing = true;
 
   canUse(user: Character, target: Character) {
     return false;

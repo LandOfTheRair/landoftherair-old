@@ -18,6 +18,7 @@ export class Teleport extends Skill {
 
   public name = ['teleport', 'cast teleport'];
   public format = 'Location';
+  public unableToLearnFromStealing = true;
 
   mpCost(user: Player) { return Math.floor(user.mp.maximum / 2); }
 
