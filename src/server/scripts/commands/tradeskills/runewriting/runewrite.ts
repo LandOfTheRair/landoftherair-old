@@ -26,6 +26,7 @@ export class Runewrite extends Command {
 
     // must be a corpse, but not a player corpse
     if(!includes(player.leftHand.name, 'Vial of Blood')) return player.sendClientMessage('You can only scribe corpse blood!');
+    if(!player.leftHand.effect) return player.sendClientMessage('Your blood has no magic left in it!');
 
     RunewritingHelper.doRunewrite(player);
   }
