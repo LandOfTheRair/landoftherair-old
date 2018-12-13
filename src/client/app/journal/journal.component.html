@@ -1,2 +1,2 @@
 
-<div contenteditable class="journal" #journal (blur)="save()" (keyup)="save()"></div>
+<textarea class="journal" [(ngModel)]="journal" placeholder="Enter the details of your journal here..."></textarea>
