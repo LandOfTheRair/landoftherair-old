@@ -906,7 +906,7 @@ export class Character implements ICharacter {
 
   clearEffects() {
     const shouldClearPermanents = !this.hasEffect('Secondwind');
-    const noClear = ['Nourishment', 'Malnourished', 'Newbie', 'Dangerous'];
+    const noClear = ['Nourishment', 'Malnourished', 'Newbie', 'Dangerous', 'SummonedDistraction'];
     this.effectsList.forEach(effect => {
       if(includes(noClear, effect.name)) return;
       if(get(effect, 'effectInfo.isPermanent') && !shouldClearPermanents) return;

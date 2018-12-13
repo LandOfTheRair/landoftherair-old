@@ -25,7 +25,7 @@ export class Take extends Command {
     const containerItems = player[container].allItems;
     let takeItemSlot = -1;
 
-    for(let i = containerItems.length; i > 0; i--) {
+    for(let i = containerItems.length; i >= 0; i--) {
       if(takeItemSlot >= 0) continue;
 
       const checkItem = containerItems[i];
