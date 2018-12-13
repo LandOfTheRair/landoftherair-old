@@ -28,7 +28,7 @@ export const AmmoClasses = [
 export const SharpWeaponClasses = [
   'Axe', 'Blunderbuss', 'Broadsword', 'Crossbow', 'Dagger', 'Greataxe', 'Greatsword', 'Halberd', 'Longbow',
   'Longsword', 'Shortbow', 'Shortsword', 'Spear'
-];
+];  
 
 export const ShieldClasses = [
   'Shield', 'Saucer'
