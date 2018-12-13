@@ -434,6 +434,15 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
 
   public flagClientReady(client, player) {
 
+    if(!player) {
+      this.sendTo(client, {
+        error: 'error_invalid_player',
+        prettyErrorName: 'Invalid Player Ready',
+        prettyErrorDesc: 'Player was flagged ready but did not exist.'
+      });
+      return;
+    }
+
     this.setPlayerXY(player, player.x, player.y);
 
     // 0,0 move to get info on the current tile
