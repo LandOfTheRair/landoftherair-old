@@ -292,7 +292,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     try {
       await this.authService.handleAuthentication();
     } catch(e) {
-      console.error('failed to log in', e);
+      throw new Error('Authservice failed to handle authentication on login correctly')
     }
 
     this.colyseus.isConnected$.subscribe((isConnected) => {

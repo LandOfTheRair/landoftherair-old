@@ -35,7 +35,11 @@ export class AuthService {
   }
 
   public async login() {
-    await this.resolveReady();
+    try {
+      await this.resolveReady();
+    } catch(e) {
+      throw new Error('Unable to resolve ready for auth.')
+    }
     this.auth0.authorize();
   }
 

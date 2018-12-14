@@ -95,7 +95,11 @@ export class ColyseusLobbyService {
   }
 
   private async sendUserId() {
-    await this.auth.isReady;
+    try {
+      await this.auth.isReady;
+    } catch(e) {
+      throw new Error('Unable to resolve auth.isReady');
+    }
 
     const hasIdToken = localStorage.getItem('id_token');
     const hasUserId = localStorage.getItem('user_id');

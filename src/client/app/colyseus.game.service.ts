@@ -220,7 +220,7 @@ export class ColyseusGameService {
     let joinRoom = room;
 
     if(!party) {
-      joinRoom = await new Promise((resolve, reject) => {
+      const promise = new Promise((resolve, reject) => {
         this.client.getAvailableRooms(room, (rooms, err) => {
           if(err) return reject(err);
 
@@ -234,6 +234,12 @@ export class ColyseusGameService {
 
         });
       });
+
+      try {
+        joinRoom = await promise;
+      } catch(e) {
+        throw new Error('Unable to await joinRoom promise')
+      }
     }
 
     this.worldRoom = this.client.join(joinRoom, joinOpts);
