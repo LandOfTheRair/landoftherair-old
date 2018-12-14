@@ -141,7 +141,8 @@ export class DefaultAIBehavior {
 
     // do movement
     const moveRate = npc.getTotalStat('move');
-    const numSteps = random(0, Math.min(moveRate, npc.path ? npc.path.length : moveRate));
+    let numSteps = random(0, Math.min(moveRate, npc.path ? npc.path.length : moveRate));
+    if(numSteps < 0) numSteps = 0;
 
     if(RollerHelper.OneInX(100)) {
       this.checkGroundForItems();

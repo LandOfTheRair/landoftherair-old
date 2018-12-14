@@ -44,7 +44,8 @@ export class DedlaenEscortAIBehavior extends DefaultAIBehavior {
     } else {
       const oldX = npc.x;
       const oldY = npc.y;
-      const numSteps = random(0, moveRate);
+      let numSteps = random(0, moveRate);
+      if(numSteps < 0) numSteps = 0;
       const steps = Array(numSteps).fill(null).map(() => ({ x: random(-1, 1), y: random(-1, 1) }));
       npc.takeSequenceOfSteps(steps);
       diffX = npc.x - oldX;
