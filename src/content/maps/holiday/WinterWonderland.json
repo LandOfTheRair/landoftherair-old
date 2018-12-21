@@ -1131,6 +1131,30 @@
                  "width":64,
                  "x":3648,
                  "y":6016
+                }, 
+                {
+                 "gid":2383,
+                 "height":64,
+                 "id":1477,
+                 "name":"",
+                 "properties":
+                    {
+                     "teleportMap":"WinterWonderland",
+                     "teleportX":71,
+                     "teleportY":11
+                    },
+                 "propertytypes":
+                    {
+                     "teleportMap":"string",
+                     "teleportX":"int",
+                     "teleportY":"int"
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":64,
+                 "x":4672,
+                 "y":768
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -4337,7 +4361,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1477,
+ "nextobjectid":1478,
  "orientation":"orthogonal",
  "properties":
     {
