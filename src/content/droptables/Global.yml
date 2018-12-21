@@ -64,7 +64,7 @@
 # Misc
 - result: Abacus of Life
   chance: 1
-  maxChance: 200000
+  maxChance: 100000
 
 # Holidays
 
