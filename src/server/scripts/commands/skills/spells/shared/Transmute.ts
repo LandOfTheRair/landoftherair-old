@@ -8,7 +8,7 @@ export class Transmute extends Skill {
   static macroMetadata = {
     name: 'Transmute',
     macro: 'cast transmute',
-    icon: 'coins',
+    icon: 'coins-pile',
     color: '#665600',
     mode: 'autoActivate',
     tooltipDesc: 'Convert the items on your current tile into gold. Allows directional targeting. Cost: 15 MP'
