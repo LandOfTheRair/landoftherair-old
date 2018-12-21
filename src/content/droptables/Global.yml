@@ -61,6 +61,11 @@
   chance: 1
   maxChance: 1000000
 
+# Misc
+- result: Abacus of Life
+  chance: 1
+  maxChance: 200000
+
 # Holidays
 
 ## Halloween
@@ -94,6 +99,7 @@
   maxChance: 500
   requireHoliday: Halloween
 
+## Christmas
 - result: Christmas Gift - Green
   chance: 1
   maxChance: 1000

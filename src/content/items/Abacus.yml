@@ -1,0 +1,9 @@
+
+- name: Abacus of Life
+  sprite: 707
+  desc: "a golden abacus whose strings twang with the sounds of life"
+  value: 1000000
+  effect:
+    name: Reincarnate
+    uses: 1
+    potency: 1

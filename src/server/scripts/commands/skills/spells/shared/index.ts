@@ -20,3 +20,4 @@ export * from './FindFamiliar';
 export * from './FleetOfFoot';
 
 export * from './Fate';
+export * from './Reincarnate';
