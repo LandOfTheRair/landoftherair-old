@@ -20,7 +20,7 @@ export class Use extends Command {
 
     if(!player.hasEmptyHand()) return player.sendClientMessage('Your hands are full!');
 
-    const emptyHand = player.rightHand ? 'Left' : 'Right';
+    const emptyHand = player.leftHand ? 'Right' : 'Left';
     const slotName = `${emptyHand.toLowerCase()}Hand`;
     const func = player[`set${emptyHand}Hand`].bind(player);
 
