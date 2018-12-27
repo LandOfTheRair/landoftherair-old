@@ -77,6 +77,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public currentHoliday: { name: string, description: string };
 
+  public showCommandLineToggle: boolean;
+
   @LocalStorage()
   public activeWindow: string;
 
@@ -186,6 +188,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @LocalStorage()
   public sortNPCsByDistance: boolean;
+
+  @LocalStorage()
+  public enterToggleCommand: boolean;
 
   @LocalStorage()
   public playBackgroundMusic: boolean;
@@ -326,6 +331,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
+  public toggleCmdVisibilityKeypress(val) {
+    if(!this.enterToggleCommand) return;
+    this.showCommandLineToggle = val;
+  }
+
   private preloadAssets() {
     this.assetService.preloadAssets.forEach(asset => {
 
@@ -382,6 +392,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     if(isNull(this.theme)) {
       this.theme = 'Dark';
     }
+
+    this.showCommandLineToggle = !this.enterToggleCommand;
   }
 
   private watchOptions() {

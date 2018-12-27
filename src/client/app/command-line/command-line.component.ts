@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ViewChild, EventEmitter, Output } from '@angular/core';
 import { LocalStorage } from 'ngx-webstorage';
 import { ColyseusGameService } from '../colyseus.game.service';
 import { ColyseusLobbyService } from '../colyseus.lobby.service';
@@ -19,6 +19,9 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
   @Input()
   public rightClickSend: boolean;
+
+  @Output()
+  public visibility = new EventEmitter();
 
   @ViewChild('cmdEntry')
   public cmdEntryInput;
@@ -69,6 +72,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
       }
 
       if(this.cmdEntryInput.nativeElement === document.activeElement && ev.key === 'Enter' && !this.colyseusGame.currentCommand) {
+        this.visibility.emit(false);
         this.cmdEntryInput.nativeElement.blur();
         ev.preventDefault();
         ev.stopPropagation();
@@ -79,7 +83,11 @@ export class CommandLineComponent implements OnInit, OnDestroy {
       if(this.macroService.hasMacroMatching(ev.key)) return;
       if(ev.key !== 'Enter') return;
 
-      this.cmdEntryInput.nativeElement.focus();
+      this.visibility.emit(true);
+
+      setTimeout(() => {
+        this.cmdEntryInput.nativeElement.focus();
+      }, 0);
     };
 
     document.addEventListener('keydown', this.listener);
@@ -144,6 +152,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
     this.colyseusGame.currentCommand = '';
 
     (<HTMLElement>document.activeElement).blur();
+    this.visibility.emit(false);
   }
 
   setCommandFromIndex() {

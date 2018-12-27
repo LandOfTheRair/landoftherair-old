@@ -142,6 +142,7 @@
   </ng-template>
 
   <app-window *ngIf="inGame && colyseus.game.character && showCommandLine"
+              [class.hidden]="!showCommandLineToggle"
               windowName="commandLine"
               otherWindowClasses="above-game-window"
               (active)="setActiveWindow($event)"
@@ -156,7 +157,7 @@
   </ng-template>
 
   <ng-template #commandLineBody>
-    <app-command-line [rightClickSend]="rightClickSend"></app-command-line>
+    <app-command-line [rightClickSend]="rightClickSend" (visibility)="toggleCmdVisibilityKeypress($event)"></app-command-line>
   </ng-template>
 
   <app-window *ngIf="inGame && colyseus.game.character"
@@ -756,6 +757,15 @@
                 <label class="form-check-label" for="suppressAnimations">
                   <input type="checkbox" class="form-check-input" [(ngModel)]="suppressAnimations" id="suppressAnimations"/>
                   Stop Item Animations
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="enterToggleCommand">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="enterToggleCommand" id="enterToggleCommand"/>
+                  Use Enter to toggle Command Line visibility
                 </label>
               </div>
             </div>
