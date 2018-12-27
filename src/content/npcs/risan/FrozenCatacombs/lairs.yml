@@ -372,6 +372,16 @@
         damageType: 'physical'
         potency: 0.25
 
+    - name: TrueSight
+      effectData:
+        effectInfo:
+          isPermanent: true
+
+    - name: DarkVision
+      effectData:
+        effectInfo:
+          isPermanent: true
+
   copyDrops:
     - drop: 'rightHand'
       chance: -1
