@@ -655,6 +655,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    console.info('[Stripe] after view init');
     (<any>this).stripeCheckoutLoader.createHandler({
       key: this.stripeKey,
       name: 'Land of the Rair',
@@ -667,11 +668,13 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.colyseus.lobby.buySilver({ token, item: this.currentlyBuyingItem });
       }
     }).then((handler: StripeCheckoutHandler) => {
+      console.info('[Stripe] handler set');
       this.stripeCheckoutHandler = handler;
     });
   }
 
   startPayment(item) {
+    console.info('[Stripe] starting payment for', item);
     if(!this.stripeCheckoutHandler) return;
 
     this.currentlyBuyingItem = item;
