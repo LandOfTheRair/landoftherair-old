@@ -670,6 +670,7 @@ export class AppComponent implements OnInit {
       }
     }).then((handler: StripeCheckoutHandler) => {
       this.stripeCheckoutHandler = handler;
+      console.log('set', handler);
     }).catch(() => {});
   }
 
