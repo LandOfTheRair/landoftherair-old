@@ -293,18 +293,10 @@ export class NPC extends Character implements INPC {
 
   restore() {
     if(this.$$corpseRef) {
-
-      if(this.$$corpseRef.$heldBy) {
-        const holder = this.$$room.state.findPlayer(this.$$corpseRef.$heldBy);
-
-        if(holder) {
-          holder.sendClientMessage(`The corpse turned to dust in your hands.`);
-          DeathHelper.corpseCheck(holder);
-        }
+      if(!this.$$corpseRef.$heldBy) {
+        this.$$room.dropCorpseItems(this.$$corpseRef);
+        this.$$room.removeItemFromGround(this.$$corpseRef);
       }
-
-      this.$$room.dropCorpseItems(this.$$corpseRef);
-      this.$$room.removeItemFromGround(this.$$corpseRef);
     }
 
     if(this.spawner) {

@@ -21,6 +21,7 @@ export class DeathHelper {
 
     if(player.leftHand
       && player.leftHand.itemClass === 'Corpse'
+      && player.leftHand.itemClass.$$isPlayerCorpse
       && (!specificCorpse || (specificCorpse && player.leftHand === specificCorpse) )) {
       item = player.leftHand;
       player.setLeftHand(null);
@@ -28,6 +29,7 @@ export class DeathHelper {
 
     if(player.rightHand
       && player.rightHand.itemClass === 'Corpse'
+      && player.rightHand.itemClass.$$isPlayerCorpse
       && (!specificCorpse || (specificCorpse && player.rightHand === specificCorpse) )) {
       item = player.rightHand;
       player.setRightHand(null);

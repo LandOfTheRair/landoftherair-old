@@ -526,11 +526,11 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
 
     merge(savePlayer, extraOpts);
 
-    if(player.leftHand && player.leftHand.itemClass === 'Corpse') {
+    if(player.leftHand && player.leftHand.itemClass === 'Corpse' && player.leftHand.$$isPlayerCorpse) {
       savePlayer.leftHand = null;
     }
 
-    if(player.rightHand && player.rightHand.itemClass === 'Corpse') {
+    if(player.rightHand && player.rightHand.itemClass === 'Corpse' && player.rightHand.$$isPlayerCorpse) {
       savePlayer.rightHand = null;
     }
 
