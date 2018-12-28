@@ -679,6 +679,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.currentlyBuyingItem = item;
 
+    console.info('[Stripe] opening payment for', item);
     this.stripeCheckoutHandler.open({
       amount: item.price,
       email: this.colyseus.lobby.myAccount.email,
