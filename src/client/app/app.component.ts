@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { StripeCheckoutLoader, StripeCheckoutHandler } from 'ng-stripe-checkout';
 import { ColyseusService } from './colyseus.service';
 
@@ -27,7 +27,7 @@ type Theme = 'Light' | 'Dark';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
 
   @ViewChild('viewMacro')
   public viewMacroModal;
@@ -329,6 +329,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     if(HolidayHelper.isAnyHoliday()) {
       this.currentHoliday = { name: HolidayHelper.currentHoliday(), description: HolidayHelper.currentHolidayDescription(HolidayHelper.currentHoliday()) };
     }
+
+    this.initStripe();
   }
 
   public toggleCmdVisibilityKeypress(val) {
@@ -654,34 +656,28 @@ export class AppComponent implements OnInit, AfterViewInit {
     }).catch(() => {});
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      console.info('[Stripe] after view init');
-      (<any>this).stripeCheckoutLoader.createHandler({
-        key: this.stripeKey,
-        name: 'Land of the Rair',
-        allowRememberMe: true,
-        zipCode: true,
-        billingAddress: true,
-        currency: 'USD',
-        image: 'https://play.rair.land/assets/favicon/android-chrome-512x512.png',
-        token: (token) => {
-          this.colyseus.lobby.buySilver({ token, item: this.currentlyBuyingItem });
-        }
-      }).then((handler: StripeCheckoutHandler) => {
-        console.info('[Stripe] handler set');
-        this.stripeCheckoutHandler = handler;
-      });
-    }, 0);
+  private initStripe() {
+    (<any>this).stripeCheckoutLoader.createHandler({
+      key: this.stripeKey,
+      name: 'Land of the Rair',
+      allowRememberMe: true,
+      zipCode: true,
+      billingAddress: true,
+      currency: 'USD',
+      image: 'https://play.rair.land/assets/favicon/android-chrome-512x512.png',
+      token: (token) => {
+        this.colyseus.lobby.buySilver({ token, item: this.currentlyBuyingItem });
+      }
+    }).then((handler: StripeCheckoutHandler) => {
+      this.stripeCheckoutHandler = handler;
+    });
   }
 
   startPayment(item) {
-    console.info('[Stripe] starting payment for', item);
     if(!this.stripeCheckoutHandler) return;
 
     this.currentlyBuyingItem = item;
 
-    console.info('[Stripe] opening payment for', item);
     this.stripeCheckoutHandler.open({
       amount: item.price,
       email: this.colyseus.lobby.myAccount.email,
