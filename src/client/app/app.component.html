@@ -1333,7 +1333,7 @@
                     <img src="https://rair.land/img/coin.png" width="64" height="64" />
                   </div>
                   <div class="col-md-10 d-flex justify-content-center align-items-center">
-                    <button class="btn btn-primary btn-block" (click)="startPayment(pricePoint)">
+                    <button class="btn btn-primary btn-block" (click)="startPayment(pricePoint)" [disabled]="!stripeCheckoutHandler">
                       Buy {{ pricePoint.silver | number }} silver for {{ pricePoint.price / 100 | number }}
                       <span *ngIf="pricePoint.percentOverAverage">(+{{ pricePoint.percentOverAverage }}% more!)</span>
                     </button>
@@ -1358,7 +1358,10 @@
                 <div class="mt-3">
 
                   <div *ngFor="let pricePoint of colyseus.lobby.lobbyState.silverPrices.sub" class="mt-3">
-                    <button class="btn btn-success btn-block" (click)="startPayment(pricePoint)" [class.btn-info]="colyseus.lobby.myAccount.subscriptionTier > 1">
+                    <button class="btn btn-success btn-block"
+                            (click)="startPayment(pricePoint)"
+                            [disabled]="!stripeCheckoutHandler"
+                            [class.btn-info]="colyseus.lobby.myAccount.subscriptionTier > 1">
                       Subscribe for {{ pricePoint.duration }} month(s) for {{ pricePoint.price / 100 | number }}
                       <span *ngIf="pricePoint.percentOverAverage">({{ pricePoint.percentOverAverage }} free months!)</span>
                     </button>

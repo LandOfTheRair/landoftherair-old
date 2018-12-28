@@ -655,20 +655,20 @@ export class AppComponent implements OnInit {
   }
 
   private initStripe() {
-    this.stripeCheckoutHandler = (<any>window).StripeCheckout.configure({
-      key: this.stripeKey,
-      name: 'Land of the Rair',
-      allowRememberMe: true,
-      zipCode: true,
-      billingAddress: true,
-      currency: 'USD',
-      image: 'https://play.rair.land/assets/favicon/android-chrome-512x512.png',
-      token: (token) => {
-        this.colyseus.lobby.buySilver({ token, item: this.currentlyBuyingItem });
-      }
-    });
-
-    console.log('set', this.stripeCheckoutHandler);
+    setTimeout(() => {
+      this.stripeCheckoutHandler = (<any>window).StripeCheckout.configure({
+        key: this.stripeKey,
+        name: 'Land of the Rair',
+        allowRememberMe: true,
+        zipCode: true,
+        billingAddress: true,
+        currency: 'USD',
+        image: 'https://play.rair.land/assets/favicon/android-chrome-512x512.png',
+        token: (token) => {
+          this.colyseus.lobby.buySilver({ token, item: this.currentlyBuyingItem });
+        }
+      });
+    }, 5000);
   }
 
   startPayment(item) {
