@@ -295,7 +295,7 @@ export class AppComponent implements OnInit {
     try {
       await this.authService.handleAuthentication();
     } catch(e) {
-      throw new Error('Authservice failed to handle authentication on login correctly')
+      throw new Error('Authservice failed to handle authentication on login correctly');
     }
 
     this.colyseus.isConnected$.subscribe((isConnected) => {
@@ -667,6 +667,8 @@ export class AppComponent implements OnInit {
         this.colyseus.lobby.buySilver({ token, item: this.currentlyBuyingItem });
       }
     });
+
+    console.log('set', this.stripeCheckoutHandler);
   }
 
   startPayment(item) {
