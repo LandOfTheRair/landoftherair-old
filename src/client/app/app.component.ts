@@ -668,12 +668,15 @@ export class AppComponent implements OnInit {
       token: (token) => {
         this.colyseus.lobby.buySilver({ token, item: this.currentlyBuyingItem });
       }
-    }).then(async (handler: StripeCheckoutHandler) => {
-      this.stripeCheckoutHandler = await handler;
+    }).then((handler: StripeCheckoutHandler) => {
+      this.stripeCheckoutHandler = handler;
+      console.log('set', handler);
     }).catch(() => {});
   }
 
   startPayment(item) {
+
+    console.log(this.stripeCheckoutHandler, this.stripeKey);
     if(!this.stripeCheckoutHandler) return;
 
     this.currentlyBuyingItem = item;
