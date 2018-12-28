@@ -175,7 +175,8 @@ export class APIInterceptor implements HttpInterceptor {
         'Uncaught (in promise): Event: {"isTrusted":true}',
         'Cannot read property \'loadComplete\' of null',
         'Unable to get property \'noAudio\' of undefined or null reference',
-        'Authservice failed to handle authentication on login correctly'
+        'Authservice failed to handle authentication on login correctly',
+        'TypeError: Cannot read property \'noAudio\' of null'
       ]
     }) : null,
 
