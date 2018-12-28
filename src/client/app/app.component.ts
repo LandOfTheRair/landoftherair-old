@@ -675,7 +675,7 @@ export class AppComponent implements OnInit {
 
   startPayment(item) {
 
-    console.log(this.stripeCheckoutHandler);
+    console.log(this.stripeCheckoutHandler, this.stripeKey);
     if(!this.stripeCheckoutHandler) return;
 
     this.currentlyBuyingItem = item;
@@ -684,8 +684,6 @@ export class AppComponent implements OnInit {
       amount: item.price,
       email: this.colyseus.lobby.myAccount.email,
       description: item.silver ? `${item.silver.toLocaleString()} Silver` : `${item.duration} Month Subscription`
-    }).then(() => {
-      console.log('success', item);
     }).catch(e => {
       console.error(e);
     });
