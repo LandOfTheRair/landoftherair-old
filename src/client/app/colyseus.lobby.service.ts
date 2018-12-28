@@ -205,6 +205,8 @@ export class ColyseusLobbyService {
   }
 
   public logout() {
+    delete this.myAccount.username;
+
     this.sendRoomData({ action: 'logout' });
     this.auth.logout();
 
