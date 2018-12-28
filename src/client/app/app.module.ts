@@ -23,7 +23,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { WalkthroughModule } from 'angular-walkthrough';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { StripeCheckoutModule } from 'ng-stripe-checkout';
 import { ResizableModule } from 'angular-resizable-element';
 
 import { RollbarModule, RollbarService } from 'angular-rollbar';
@@ -191,9 +190,7 @@ export class APIInterceptor implements HttpInterceptor {
     ModalModule.forRoot(),
     ButtonsModule.forRoot(),
     TooltipModule.forRoot(),
-    TabsModule.forRoot(),
-
-    StripeCheckoutModule
+    TabsModule.forRoot()
   ]),
   providers: compact([
     environment.production ? { provide: ErrorHandler, useClass: RollbarService } : null,

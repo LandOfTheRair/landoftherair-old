@@ -126,7 +126,6 @@
     "mongodb": "^2.2.27",
     "mrpas": "^1.2.1",
     "ng-drag-drop": "5.0.0",
-    "ng-stripe-checkout": "^1.0.4",
     "ngx-bootstrap": "3.0.1",
     "ngx-color-picker": "6.7.0",
     "ngx-webstorage": "2.0.1",

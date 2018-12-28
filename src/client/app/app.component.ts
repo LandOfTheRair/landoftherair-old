@@ -1,5 +1,4 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { StripeCheckoutLoader, StripeCheckoutHandler } from 'ng-stripe-checkout';
 import { ColyseusService } from './colyseus.service';
 
 import * as swal from 'sweetalert2';
@@ -254,7 +253,7 @@ export class AppComponent implements OnInit {
       );
   }
 
-  private stripeCheckoutHandler: StripeCheckoutHandler;
+  private stripeCheckoutHandler: any;
   private currentlyBuyingItem: any;
 
   constructor(
@@ -264,8 +263,7 @@ export class AppComponent implements OnInit {
     public assetService: AssetService,
     public windowManager: WindowManagerService,
     private localStorage: LocalStorageService,
-    private renderer: Renderer2,
-    public stripeCheckoutLoader: StripeCheckoutLoader
+    private renderer: Renderer2
   ) {
     this.macroService.ignoreFunction = () => {
 
@@ -657,7 +655,7 @@ export class AppComponent implements OnInit {
   }
 
   private initStripe() {
-    (<any>this).stripeCheckoutLoader.createHandler({
+    this.stripeCheckoutHandler = (<any>window).StripeCheckout.configure({
       key: this.stripeKey,
       name: 'Land of the Rair',
       allowRememberMe: true,
@@ -668,16 +666,10 @@ export class AppComponent implements OnInit {
       token: (token) => {
         this.colyseus.lobby.buySilver({ token, item: this.currentlyBuyingItem });
       }
-    }).then((handler: StripeCheckoutHandler) => {
-      this.stripeCheckoutHandler = handler;
-      if((<any>this.stripeCheckoutHandler).stripeCheckout) this.stripeCheckoutHandler = (<any>this.stripeCheckoutHandler).stripeCheckout;
-      console.log('set', handler);
-    }).catch(() => {});
+    });
   }
 
   startPayment(item) {
-
-    console.log(this.stripeCheckoutHandler, this.stripeKey);
     if(!this.stripeCheckoutHandler) return;
 
     this.currentlyBuyingItem = item;
