@@ -755,6 +755,12 @@ export class Player extends Character implements IPlayer {
 
     // recalculate everything else
     super.recalculateStats();
+
+    if(this.baseClass === 'Warrior' || this.baseClass === 'Thief') {
+      const weaponSkill = this.calcSkillLevel(get(this.rightHand, 'type', 'Martial'));
+      this.totalStats.accuracy += Math.floor(weaponSkill / 3);
+      this.totalStats.damageFactor += weaponSkill / 100;
+    }
   }
 
   private get traitableGear(): IItem[] {
