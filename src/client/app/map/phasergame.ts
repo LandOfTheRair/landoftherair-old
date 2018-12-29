@@ -1054,6 +1054,7 @@ export class Game {
 
       sfxs.forEach(sfx => {
         this.g.load.audio(`sfx-${sfx}`, `${this.assetService.assetUrl}/sfx/${sfx}.mp3`);
+        this.g.load.audio(`sfx-${sfx}-nostalgia`, `${this.assetService.assetUrl}/sfx/${sfx}-nostalgia.mp3`);
       });
     }
   }
@@ -1067,6 +1068,7 @@ export class Game {
 
     sfxs.forEach(sfx => {
       this.sfxs[sfx] = this.g.add.audio(`sfx-${sfx}`);
+      this.sfxs[`${sfx}-nostalgia`] = this.g.add.audio(`sfx-${sfx}-nostalgia`);
     });
 
     if(!this.clientGameState.mapName) {

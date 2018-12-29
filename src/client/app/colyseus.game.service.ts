@@ -461,6 +461,11 @@ export class ColyseusGameService {
     }
 
     if(!this.overrideNoSfx && sfx) {
+
+      if(this.nostalgicBgm) {
+        sfx = `${sfx}-nostalgia`;
+      }
+
       this.sfx$.next((sfx || '').trim());
     }
   }
