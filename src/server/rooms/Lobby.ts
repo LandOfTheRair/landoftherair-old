@@ -7,7 +7,7 @@ import { Player } from '../../shared/models/player';
 import { Redis } from '../redis';
 import { CharacterCreator } from '../helpers/character/character-creator';
 
-import { truncate, pick, includes, find, pull } from 'lodash';
+import { truncate, pick, includes, find, pull, filter } from 'lodash';
 
 import { DB } from '../database';
 
@@ -160,12 +160,13 @@ export class Lobby extends Room<LobbyState> {
 
     const checkAccount = this.state.findAccount(userId);
     if(checkAccount) {
-      const oldClient: any = find(this.clients, { userId });
+      const oldClients: any[] = filter(this.clients, { userId });
 
-      if(oldClient && oldClient !== client && oldClient.id === checkAccount.colyseusId) {
-        await this.kickAccount(oldClient, username);
-      }
+      const kicks = oldClients.map(oldClient => {
+        return this.kickAccount(oldClient, username);
+      });
 
+      await Promise.all(kicks);
     }
 
     let account = await AccountHelper.getAccountById(userId);
