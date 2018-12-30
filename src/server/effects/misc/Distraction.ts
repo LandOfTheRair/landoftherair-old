@@ -26,7 +26,7 @@ class SummonedDistraction extends Effect {
 
 export class Distraction extends SpellEffect {
 
-  cast(caster: Character, target: Character, skillRef?: Skill) {
+  cast(caster: Character, target: Character, skillRef?: any) {
     super.cast(caster, target, skillRef);
 
     const defaultSpawner = {
@@ -61,7 +61,7 @@ export class Distraction extends SpellEffect {
       }
     };
 
-    caster.$$room.createSpawner(defaultSpawner, caster);
+    caster.$$room.createSpawner(defaultSpawner, target);
   }
 
 }
