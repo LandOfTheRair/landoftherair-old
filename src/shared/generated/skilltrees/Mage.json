@@ -482,7 +482,7 @@
     "Transmute": {
         "name": "Transmute",
         "desc": "Convert the items on your current tile into gold. Allows directional targeting. Cost: 15 MP",
-        "icon": "coins",
+        "icon": "coins-pile",
         "iconColor": "#665600",
         "cost": 3,
         "cluster": 1,

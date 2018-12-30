@@ -31,22 +31,22 @@
             "requiresLearn": false
         },
         {
-            "name": "Show Skills",
-            "macro": "show skills",
-            "icon": "checklist",
-            "color": "#000000",
-            "mode": "autoActivate",
-            "tooltipDesc": "See all of your skills and skill levels in text form.",
-            "isSystem": true,
-            "requiresLearn": false
-        },
-        {
             "name": "Show Stats",
             "macro": "show stats",
             "icon": "checklist",
             "color": "#000000",
             "mode": "autoActivate",
             "tooltipDesc": "See all of your stats and their base level in text form.",
+            "isSystem": true,
+            "requiresLearn": false
+        },
+        {
+            "name": "Show Skills",
+            "macro": "show skills",
+            "icon": "checklist",
+            "color": "#000000",
+            "mode": "autoActivate",
+            "tooltipDesc": "See all of your skills and skill levels in text form.",
             "isSystem": true,
             "requiresLearn": false
         },
@@ -225,22 +225,22 @@
             "requiresLearn": true
         },
         {
-            "name": "Antidote",
-            "macro": "cast antidote",
-            "icon": "miracle-medecine",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cure poison on a single target. Cost: 10 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Augury",
             "macro": "cast augury",
             "icon": "dove",
             "color": "#000",
             "mode": "clickToTarget",
             "tooltipDesc": "Use the winds to divine the location of your target. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Antidote",
+            "macro": "cast antidote",
+            "icon": "miracle-medecine",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cure poison on a single target. Cost: 10 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -266,6 +266,16 @@
             "requiresLearn": true
         },
         {
+            "name": "Blind",
+            "macro": "cast blind",
+            "icon": "evil-eyes",
+            "color": "#900",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Attempt to blind a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Cure",
             "macro": "cast cure",
             "icon": "tentacle-heart",
@@ -273,16 +283,6 @@
             "mode": "clickToTarget",
             "tooltipDesc": "Heal a single target. Cost: 5 MP",
             "skillTPCost": 1,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Blind",
-            "macro": "cast blind",
-            "icon": "evil-eyes",
-            "color": "#900",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Attempt to blind a single target. Cost: 20 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -379,6 +379,17 @@
             "requiresLearn": true
         },
         {
+            "name": "Regen",
+            "macro": "cast regen",
+            "icon": "star-swirl",
+            "color": "#00c",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
+            "requireSkillLevel": 10,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "PowerwordHeal",
             "macro": "powerword heal",
             "icon": "tentacle-heart",
@@ -388,17 +399,6 @@
             "tooltipDesc": "Heal your party. Cost: 25 MP / target",
             "requireSkillLevel": 13,
             "skillTPCost": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Regen",
-            "macro": "cast regen",
-            "icon": "star-swirl",
-            "color": "#00c",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Cast a restorative aura on the target. Cost: 30 MP",
-            "requireSkillLevel": 10,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -434,16 +434,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Succor",
-            "macro": "cast succor",
-            "icon": "blackball",
-            "color": "#080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Create a consumable that will let you return to your current location. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Stun",
             "macro": "cast stun",
             "icon": "knockout",
@@ -454,22 +444,22 @@
             "requiresLearn": true
         },
         {
+            "name": "Succor",
+            "macro": "cast succor",
+            "icon": "blackball",
+            "color": "#080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Create a consumable that will let you return to your current location. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Vision",
             "macro": "cast vision",
             "icon": "evil-eyes",
             "color": "#0a0",
             "mode": "clickToTarget",
             "tooltipDesc": "Cure blindness on a single target. Cost: 10 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Wellspring",
-            "macro": "cast wellspring",
-            "icon": "holy-water",
-            "color": "#080",
-            "mode": "autoActivate",
-            "tooltipDesc": "Create a bottle of holy water. Cost: 25 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -485,12 +475,32 @@
             "requiresLearn": true
         },
         {
+            "name": "Wellspring",
+            "macro": "cast wellspring",
+            "icon": "holy-water",
+            "color": "#080",
+            "mode": "autoActivate",
+            "tooltipDesc": "Create a bottle of holy water. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
             "name": "Apply",
             "macro": "cast apply",
             "icon": "bloody-sword",
             "color": "#050",
             "mode": "autoActivate",
             "tooltipDesc": "Apply a bottle's effects from your left hand onto your weapon strikes.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Debilitate",
+            "macro": "cast debilitate",
+            "icon": "one-eyed",
+            "color": "#a00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -506,22 +516,23 @@
             "requiresLearn": true
         },
         {
-            "name": "Debilitate",
-            "macro": "cast debilitate",
-            "icon": "one-eyed",
-            "color": "#a00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Increase your targets vulnerability to backstabs. Cost: 100 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Disarm",
             "macro": "cast disarm",
             "icon": "quake-stomp",
             "color": "#000053",
             "mode": "clickToActivate",
             "tooltipDesc": "Disarm a trap on an adjacent tile.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disguise",
+            "macro": "cast disguise",
+            "icon": "duality",
+            "color": "#111",
+            "mode": "autoActivate",
+            "tooltipDesc": "Blend in with enemies. Cost: 100 HP",
+            "requireSkillLevel": 15,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -558,17 +569,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Disguise",
-            "macro": "cast disguise",
-            "icon": "duality",
-            "color": "#111",
-            "mode": "autoActivate",
-            "tooltipDesc": "Blend in with enemies. Cost: 100 HP",
-            "requireSkillLevel": 15,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "ShadowClones",
             "macro": "cast shadowclones",
             "icon": "dark-squad",
@@ -585,166 +585,6 @@
             "color": "#00c",
             "mode": "autoActivate",
             "tooltipDesc": "Force a shadow to follow you and meld with it. Cost: 50 HP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "BarFire",
-            "macro": "cast barfire",
-            "icon": "rosa-shield",
-            "color": "#DC143C",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield fire damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "BarFrost",
-            "macro": "cast barfrost",
-            "icon": "rosa-shield",
-            "color": "#000080",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Darkness",
-            "macro": "cast darkness",
-            "icon": "dust-cloud",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "DarkVision",
-            "macro": "cast darkvision",
-            "icon": "angry-eyes",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See in the darkness. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Fate",
-            "macro": "cast fate",
-            "icon": "solar-time",
-            "color": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "???",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "FindFamiliar",
-            "macro": "cast findfamiliar",
-            "icon": "eagle-emblem",
-            "color": "#0aa",
-            "mode": "autoActivate",
-            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Disease",
-            "macro": "cast disease",
-            "icon": "death-juice",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "FleetOfFoot",
-            "macro": "cast fleetoffoot",
-            "icon": "wing-foot",
-            "color": "#0aa",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Take less damage from falls and be immune to prone. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Identify",
-            "macro": "cast identify",
-            "icon": "uncertainty",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "tooltipDesc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Poison",
-            "macro": "cast poison",
-            "icon": "poison-gas",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Plague",
-            "macro": "cast plague",
-            "icon": "death-zone",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly plague on your target. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Push",
-            "macro": "cast push",
-            "icon": "swirl-string",
-            "color": "#000",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Transmute",
-            "macro": "cast transmute",
-            "icon": "coins",
-            "color": "#665600",
-            "mode": "autoActivate",
-            "tooltipDesc": "Convert the items on your current tile into gold. Allows directional targeting. Cost: 15 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "TrueSight",
-            "macro": "cast truesight",
-            "icon": "all-seeing-eye",
-            "color": "#00a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Venom",
-            "macro": "cast venom",
-            "icon": "dripping-goo",
-            "color": "#0a0",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Inflict a deadly venom on your target. Cost: 30 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "Vortex",
-            "macro": "cast vortex",
-            "icon": "wind-hole",
-            "color": "#333",
-            "mode": "autoActivate",
-            "tooltipDesc": "Create a vortex which sucks in nearby items. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -837,16 +677,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Firethorns",
-            "macro": "cast firethorns",
-            "icon": "barbed-coil",
-            "color": "#f00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Physical attackers take fire damage. Cost: 100 MP",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Frostspikes",
             "macro": "cast frostspikes",
             "icon": "barbed-coil",
@@ -868,13 +698,12 @@
             "requiresLearn": true
         },
         {
-            "name": "Hail",
-            "macro": "cast hail",
-            "icon": "burning-dot",
-            "color": "#000080",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict ice damage on a single target. Cost: 20 MP",
-            "skillTPCost": 5,
+            "name": "Firethorns",
+            "macro": "cast firethorns",
+            "icon": "barbed-coil",
+            "color": "#f00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Physical attackers take fire damage. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -888,6 +717,17 @@
             "requireCharacterLevel": 20,
             "requireSkillLevel": 15,
             "skillTPCost": 20,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Hail",
+            "macro": "cast hail",
+            "icon": "burning-dot",
+            "color": "#000080",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict ice damage on a single target. Cost: 20 MP",
+            "skillTPCost": 5,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -966,30 +806,6 @@
             "requiresLearn": true
         },
         {
-            "name": "MagicMissile",
-            "macro": "cast magicmissile",
-            "icon": "missile-swarm",
-            "color": "#a0a",
-            "mode": "lockActivation",
-            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
-            "skillTPCost": 1,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "MagicShield",
-            "macro": "cast magicshield",
-            "icon": "energy-shield",
-            "color": "#a0a",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
-            "skillTPCost": 10,
-            "requireCharacterLevel": 10,
-            "requireSkillLevel": 7,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "RiftSlash",
             "macro": "cast riftslash",
             "icon": "running-ninja",
@@ -999,17 +815,6 @@
             "requireCharacterLevel": 5,
             "requireSkillLevel": 5,
             "skillTPCost": 10,
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
-            "name": "VolcanoStance",
-            "macro": "stance volcano",
-            "icon": "fire-silhouette",
-            "color": "#DC143C",
-            "bgColor": "#000",
-            "mode": "autoActivate",
-            "tooltipDesc": "Become more offensive, increasing your physical offensive capabilities, your fire resistance, and doing fire damage on physical hits.",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -1027,13 +832,207 @@
             "requiresLearn": true
         },
         {
-            "name": "Blindstrike",
-            "macro": "art blindstrike",
-            "icon": "sword-tie",
-            "color": "#a00",
+            "name": "MagicMissile",
+            "macro": "cast magicmissile",
+            "icon": "missile-swarm",
+            "color": "#a0a",
+            "mode": "lockActivation",
+            "tooltipDesc": "Inflict energy damage on a single target. Cost: 5 MP",
+            "skillTPCost": 1,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "VolcanoStance",
+            "macro": "stance volcano",
+            "icon": "fire-silhouette",
+            "color": "#DC143C",
+            "bgColor": "#000",
             "mode": "autoActivate",
-            "tooltipDesc": "Attack a random creature on your tile, even while you are unable to see.",
-            "requireSkillLevel": 10,
+            "tooltipDesc": "Become more offensive, increasing your physical offensive capabilities, your fire resistance, and doing fire damage on physical hits.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "MagicShield",
+            "macro": "cast magicshield",
+            "icon": "energy-shield",
+            "color": "#a0a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Negate some physical damage. Cost: 100 MP",
+            "skillTPCost": 10,
+            "requireCharacterLevel": 10,
+            "requireSkillLevel": 7,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFire",
+            "macro": "cast barfire",
+            "icon": "rosa-shield",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield fire damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "BarFrost",
+            "macro": "cast barfrost",
+            "icon": "rosa-shield",
+            "color": "#000080",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Shield frost damage for a single target. Cost: 20 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Darkness",
+            "macro": "cast darkness",
+            "icon": "dust-cloud",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "DarkVision",
+            "macro": "cast darkvision",
+            "icon": "angry-eyes",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See in the darkness. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Disease",
+            "macro": "cast disease",
+            "icon": "death-juice",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly disease on your target. Cost: 30 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Fate",
+            "macro": "cast fate",
+            "icon": "solar-time",
+            "color": "#000",
+            "mode": "autoActivate",
+            "tooltipDesc": "???",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "FindFamiliar",
+            "macro": "cast findfamiliar",
+            "icon": "eagle-emblem",
+            "color": "#0aa",
+            "mode": "autoActivate",
+            "tooltipDesc": "Summon a familiar. Channel: 5s. Cost: 100 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Identify",
+            "macro": "cast identify",
+            "icon": "uncertainty",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "tooltipDesc": "Identify the attributes of the item in your right hand. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "FleetOfFoot",
+            "macro": "cast fleetoffoot",
+            "icon": "wing-foot",
+            "color": "#0aa",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Take less damage from falls and be immune to prone. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Poison",
+            "macro": "cast poison",
+            "icon": "poison-gas",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly poison on your target. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Push",
+            "macro": "cast push",
+            "icon": "swirl-string",
+            "color": "#000",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Push an enemy around. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Plague",
+            "macro": "cast plague",
+            "icon": "death-zone",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly plague on your target. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Transmute",
+            "macro": "cast transmute",
+            "icon": "coins-pile",
+            "color": "#665600",
+            "mode": "autoActivate",
+            "tooltipDesc": "Convert the items on your current tile into gold. Allows directional targeting. Cost: 15 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "TrueSight",
+            "macro": "cast truesight",
+            "icon": "all-seeing-eye",
+            "color": "#00a",
+            "mode": "clickToTarget",
+            "tooltipDesc": "See hidden walls and other hidden features. Cost: 25 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Reincarnage",
+            "macro": "cast reincarnate",
+            "icon": "life-in-the-balance",
+            "color": "#DC143C",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Bring a strong foe back to life.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Venom",
+            "macro": "cast venom",
+            "icon": "dripping-goo",
+            "color": "#0a0",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Inflict a deadly venom on your target. Cost: 30 MP",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Vortex",
+            "macro": "cast vortex",
+            "icon": "wind-hole",
+            "color": "#333",
+            "mode": "autoActivate",
+            "tooltipDesc": "Create a vortex which sucks in nearby items. Cost: 100 MP",
             "isSystem": true,
             "requiresLearn": true
         },
@@ -1044,6 +1043,17 @@
             "color": "#a00",
             "mode": "clickToTarget",
             "tooltipDesc": "Increase your STR, DEX, and AGI.",
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Blindstrike",
+            "macro": "art blindstrike",
+            "icon": "sword-tie",
+            "color": "#a00",
+            "mode": "autoActivate",
+            "tooltipDesc": "Attack a random creature on your tile, even while you are unable to see.",
+            "requireSkillLevel": 10,
             "isSystem": true,
             "requiresLearn": true
         },
@@ -1105,16 +1115,6 @@
             "requiresLearn": true
         },
         {
-            "name": "Shield",
-            "macro": "art shield",
-            "icon": "vibrating-shield",
-            "color": "#a00",
-            "mode": "clickToTarget",
-            "tooltipDesc": "Increase your physical and magical resistance.",
-            "isSystem": true,
-            "requiresLearn": true
-        },
-        {
             "name": "Sweep",
             "macro": "art sweep",
             "icon": "foot-trip",
@@ -1133,6 +1133,16 @@
             "mode": "lockActivation",
             "tooltipDesc": "Charge towards an enemy, attacking with the item in your right hand. Deals more damage than Charge.",
             "requireSkillLevel": 7,
+            "isSystem": true,
+            "requiresLearn": true
+        },
+        {
+            "name": "Shield",
+            "macro": "art shield",
+            "icon": "vibrating-shield",
+            "color": "#a00",
+            "mode": "clickToTarget",
+            "tooltipDesc": "Increase your physical and magical resistance.",
             "isSystem": true,
             "requiresLearn": true
         }
