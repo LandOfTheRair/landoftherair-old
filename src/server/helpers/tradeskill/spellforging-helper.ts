@@ -57,16 +57,21 @@ export class SpellforgingHelper {
     const forgeSkill = player.calcSkillLevel(SkillClassNames.Spellforging);
 
     if(reagent.itemClass === 'Rock') {
-      const enchantLevel = item.enchantLevel || 0;
+      const enchantLevel = item.enchantLevel;
 
-      if(enchantLevel >= 5) return 0;
+      if(enchantLevel >= item.maxEnchantLevel) return 0;
       if(!enchantLevel) return 100;
 
-      const requiredForgeSkillLevel = enchantLevel * 4;
-      const requiredConjSkillLevel = enchantLevel * 5;
+      const bigMod = 1 / (item.maxEnchantLevel / 5);
 
-      const forgeVal = clamp((forgeSkill - requiredForgeSkillLevel + 4) * 25, 0, 100);
-      const conjVal = clamp((conjSkill - requiredConjSkillLevel + 5) * 20, 0, 100);
+      const forgeMod = 4 * bigMod;
+      const conjMod = 5 * bigMod;
+
+      const requiredForgeSkillLevel = enchantLevel * forgeMod;
+      const requiredConjSkillLevel = enchantLevel * conjMod;
+
+      const forgeVal = clamp((forgeSkill - requiredForgeSkillLevel + forgeMod) * 25, 0, 100);
+      const conjVal = clamp((conjSkill - requiredConjSkillLevel + conjMod) * 20, 0, 100);
 
       return Math.floor((forgeVal + conjVal) / 2);
     }
@@ -102,24 +107,14 @@ export class SpellforgingHelper {
     player.setTradeskillBusy();
 
     if(reagent.itemClass === 'Rock') {
-      item.enchantLevel = item.enchantLevel || 0;
-      item.enchantLevel++;
 
-      if(includes(reagent.name, 'Enos')) {
+      const upgrade = {
+        name: reagent.name,
+        sprite: reagent.sprite,
+        stats: reagent.stats
+      };
 
-        item.stats.accuracy = item.stats.accuracy || 0;
-        item.stats.accuracy++;
-
-        item.stats.offense = item.stats.offense || 0;
-        item.stats.offense++;
-
-        item.stats.defense = item.stats.defense || 0;
-        item.stats.defense++;
-      }
-
-      if(includes(reagent.name, 'Owts')) {
-        item.tier += 1;
-      }
+      item.addUpgrade(upgrade);
 
       container.result = item;
       container.clearReagents();

@@ -87,6 +87,8 @@ export class MetalworkingHelper {
       return buff;
     }
 
+    if(buffItem.stats) return buffItem.stats;
+
     // move specific ingot buffs over
     const type = MetalworkingHelper.getUpgradeCreateType(item);
     return get(isCreate ? ingotCraftBuffs : ingotUpgradeBuffs, [buffItem.name, type], {});
@@ -143,7 +145,7 @@ export class MetalworkingHelper {
       }
 
       // transfer upgrades
-      returnedItem.previousUpgrades = container.craftItem.previousUpgrades;
+      returnedItem.upgrades = container.craftItem.upgrades;
 
       player.gainExp(xpGained);
 
@@ -167,16 +169,12 @@ export class MetalworkingHelper {
 
   static doSpecificItemUpgrade(targetItem: IItem, buffItem: IItem): void {
     const buff = this.getBuffForItem(targetItem, buffItem);
-    Object.keys(buff).forEach(stat => {
-      targetItem.stats[stat] = targetItem.stats[stat] || 0;
-      targetItem.stats[stat] += buff[stat];
+
+    targetItem.addUpgrade({
+      name: buffItem.name,
+      sprite: buffItem.sprite,
+      stats: buff
     });
-
-    targetItem.previousUpgrades = targetItem.previousUpgrades || [];
-    targetItem.previousUpgrades.push(buff);
-
-    targetItem.enchantLevel = targetItem.enchantLevel || 0;
-    targetItem.enchantLevel++;
   }
 
   static upgrade(player: IPlayer): boolean {
@@ -210,22 +208,22 @@ export class MetalworkingHelper {
     const left = player.leftHand;
     const right = player.rightHand;
 
-    const retroApplyUpgrades = cloneDeep(right.previousUpgrades) || [];
+    const retroApplyUpgrades = cloneDeep(right.upgrades) || [];
 
     const newItem = await player.$$room.itemCreator.getItemByName(right.encrust.name, player.$$room);
 
     const applyBuff = this.getBuffForItem(newItem, left, true);
-    retroApplyUpgrades.push(applyBuff);
 
-    retroApplyUpgrades.forEach(buff => {
-      Object.keys(buff).forEach(stat => {
-        newItem.stats[stat] = newItem.stats[stat] || 0;
-        newItem.stats[stat] += buff[stat];
-      });
-    });
+    retroApplyUpgrades.forEach(upg => newItem.addUpgrade(upg));
 
-    newItem.previousUpgrades = right.previousUpgrades || [];
-    newItem.previousUpgrades.push(applyBuff);
+    const applyUpg = {
+      name: left.name,
+      sprite: left.sprite,
+      permanent: true,
+      stats: applyBuff
+    };
+
+    newItem.addUpgrade(applyUpg);
 
     player.setRightHand(newItem);
     player.setLeftHand(null);

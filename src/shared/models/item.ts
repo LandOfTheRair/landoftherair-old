@@ -1,4 +1,4 @@
-import { cloneDeep, extend, get, includes, isNumber, isUndefined, size, startCase, find } from 'lodash';
+import { cloneDeep, extend, get, includes, isNumber, isUndefined, size, startCase, find, compact } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import * as uuid from 'uuid/v4';
 
@@ -11,7 +11,7 @@ import {
   IItem,
   ItemCosmetic,
   ItemEffect,
-  ItemRequirements,
+  ItemRequirements, ItemUpgrade,
   Quality,
 } from '../interfaces/item';
 
@@ -74,8 +74,6 @@ export class Item implements IItem {
   bookCurrentPage?: number;
   bookFindablePages?: number;
 
-  enchantLevel?: number;
-
   @nonenumerable
   searchItems?: IItem[];
 
@@ -104,7 +102,12 @@ export class Item implements IItem {
   notUsableAfterHours?: number;
 
   daily?: boolean;
-  previousUpgrades?: any[];
+  maxEnchantLevel?: number;
+  upgrades?: ItemUpgrade[];
+
+  get enchantLevel(): number {
+    return this.upgrades ? this.upgrades.length : 0;
+  }
 
   constructor(opts, extraOpts: { doRegenerate?: boolean } = {}) {
     if(extraOpts.doRegenerate) {
@@ -116,6 +119,7 @@ export class Item implements IItem {
     if(!this.uuid) this.uuid = uuid();
     if(!this.createdAt) this.createdAt = Date.now();
     if(!this.value && this.sellValue) this.value = this.sellValue;
+    if(!isNumber(this.maxEnchantLevel)) this.maxEnchantLevel = 5;
   }
 
   isBroken(): boolean {
@@ -409,5 +413,50 @@ export class Item implements IItem {
 
     const filteredTotal = this.bookPages.filter(x => x);
     return filteredTotal.length >= total;
+  }
+
+  public addUpgrade(upgrade: ItemUpgrade): void {
+    if(!this.upgrades) this.upgrades = [];
+    if(this.upgrades.length > this.maxEnchantLevel) return;
+    this.upgrades.push(upgrade);
+
+    Object.keys(upgrade.stats).forEach(stat => {
+      this.handleUpgradeStat(stat, upgrade.stats[stat]);
+    });
+  }
+
+  public removeUpgrade(upgradeIdx: number): ItemUpgrade {
+    const upgrade = this.upgrades[upgradeIdx];
+
+    Object.keys(upgrade.stats).forEach(stat => {
+      this.handleUpgradeStat(stat, -upgrade.stats[stat]);
+    });
+
+    this.upgrades[upgradeIdx] = null;
+    this.upgrades = compact(this.upgrades);
+    return upgrade;
+  }
+
+  private handleUpgradeStat(stat: string, val: number) {
+
+    switch(stat) {
+      case 'tier': {
+        this.tier = this.tier || 1;
+        this.tier += val;
+        break;
+      }
+
+      case 'proneChance': {
+        this.proneChance = this.proneChance || 0;
+        this.proneChance += val;
+        break;
+      }
+
+      default: {
+        this.stats[stat] = this.stats[stat] || 0;
+        this.stats[stat] += val;
+        break;
+      }
+    }
   }
 }

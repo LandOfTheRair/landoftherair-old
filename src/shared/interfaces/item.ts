@@ -28,7 +28,7 @@ export const AmmoClasses = [
 export const SharpWeaponClasses = [
   'Axe', 'Blunderbuss', 'Broadsword', 'Crossbow', 'Dagger', 'Greataxe', 'Greatsword', 'Halberd', 'Longbow',
   'Longsword', 'Shortbow', 'Shortsword', 'Spear'
-];  
+];
 
 export const ShieldClasses = [
   'Shield', 'Saucer'
@@ -145,6 +145,13 @@ export enum Quality {
   PERFECT = 5
 }
 
+export class ItemUpgrade {
+  name: string;
+  sprite: number;
+  permanent?: boolean;
+  stats: Stats;
+}
+
 export interface IItem {
   _id?: string;
 
@@ -225,7 +232,11 @@ export interface IItem {
   notUsableAfterHours?: number;
 
   daily?: boolean;
-  previousUpgrades?: any[];
+  maxEnchantLevel?: number;
+  upgrades?: ItemUpgrade[];
+
+  addUpgrade(upgrade: ItemUpgrade): void;
+  removeUpgrade(upgradeIdx: number): void;
 
   isBroken(): boolean;
   usesString(): string;

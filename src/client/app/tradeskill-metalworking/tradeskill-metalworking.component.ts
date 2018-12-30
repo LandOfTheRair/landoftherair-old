@@ -3,6 +3,7 @@ import { ColyseusGameService } from '../colyseus.game.service';
 
 import { capitalize, sortBy, get } from 'lodash';
 import { MetalworkingHelper } from '../../../server/helpers/tradeskill/metalworking-helper';
+import { ItemUpgrade } from '../../../shared/interfaces/item';
 
 @Component({
   selector: 'app-tradeskill-metalworking',
@@ -11,30 +12,17 @@ import { MetalworkingHelper } from '../../../server/helpers/tradeskill/metalwork
 })
 export class TradeskillMetalworkingComponent {
 
-  get upgrades() {
-    if(!this.player || !this.player.tradeSkillContainers) return [];
-    if(!this.player.tradeSkillContainers.metalworking.upgradeItem) return [];
-    return this.player.tradeSkillContainers.metalworking.upgradeItem.previousUpgrades || [];
-  }
-
-  get upgradeString() {
-    const upgrades = this.upgrades;
-    const sumObject = upgrades.reduce((prev, cur) => {
-      Object.keys(cur).forEach(key => {
-        prev[key] = prev[key] || 0;
-        prev[key] += cur[key];
-      });
-      return prev;
-    }, {});
-
-    return sortBy(Object.keys(sumObject))
-      .filter(x => sumObject[x] > 0)
-      .map(key => `${key.toUpperCase()} +${sumObject[key]}`)
-      .join(', ');
-  }
-
   get items() {
     return get(this.player, 'tradeSkillContainers.metalworking.items', []);
+  }
+
+  get item() {
+    return this.player.tradeSkillContainers.metalworking.upgradeItem;
+  }
+
+  get slots() {
+    const item = this.item;
+    return Array.from(Array(item.maxEnchantLevel || 0).keys());
   }
 
   get player() {
@@ -89,6 +77,13 @@ export class TradeskillMetalworkingComponent {
 
   upgrade() {
     this.colyseusGame.sendRawCommand('upgrade', this.colyseusGame.showMetalworking.uuid);
+  }
+
+  formatTooltip(upgrade: ItemUpgrade) {
+
+    return sortBy(Object.keys(upgrade.stats))
+      .map(key => `${key.toUpperCase()} ${upgrade.stats[key] > 0 ? '+' : ''}${upgrade.stats[key]}`)
+      .join(', ');
   }
 
 }

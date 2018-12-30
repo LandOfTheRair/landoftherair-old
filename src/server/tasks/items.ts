@@ -228,7 +228,7 @@ class ItemLoader {
         return !includes(ValidSkillNames, capitalize(x.substring(0, x.indexOf('Bonus'))));
       });
 
-      if(invalidStats.length > 0 && invalidStats[0] !== 'effect') {
+      if(invalidStats.length > 0 && invalidStats[0] !== 'effect' && invalidStats[0] !== 'tier') {
         console.error(`ERROR: ${item.name} has invalid stats: ${invalidStats.join(', ')}`);
         hasBad = true;
       }

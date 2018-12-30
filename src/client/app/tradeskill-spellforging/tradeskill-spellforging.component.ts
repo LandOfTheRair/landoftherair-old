@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ColyseusGameService } from '../colyseus.game.service';
 
-import { capitalize, startCase, get } from 'lodash';
+import { capitalize, startCase, get, sortBy } from 'lodash';
 import { toRoman } from 'roman-numerals';
 import { Item } from '../../../shared/models/item';
 import { SpellforgingHelper } from '../../../server/helpers/tradeskill/spellforging-helper';
+import { ItemUpgrade } from '../../../shared/interfaces/item';
 
 @Component({
   selector: 'app-tradeskill-spellforging',
@@ -21,6 +22,15 @@ export class TradeskillSpellforgingComponent {
     return get(this.player, 'tradeSkillContainers.spellforging.items', []);
   }
 
+  get item() {
+    return this.player.tradeSkillContainers.spellforging.modifyItem;
+  }
+
+  get slots() {
+    const item = this.item;
+    return Array.from(Array(item.maxEnchantLevel || 0).keys());
+  }
+
   get brickTypes(): string[] {
     if(!this.player) return [];
     return Object.keys(this.player.tradeSkillContainers.spellforging.dustValues).map(x => capitalize(x));
@@ -35,14 +45,14 @@ export class TradeskillSpellforgingComponent {
   }
 
   get showInfo(): boolean {
-    const item = this.player.tradeSkillContainers.spellforging.modifyItem;
+    const item = this.item;
     const reagent = this.player.tradeSkillContainers.spellforging.reagent;
     return !!(item && reagent);
   }
 
   get hasWarning(): boolean {
     if(!this.showInfo) return false;
-    const item = this.player.tradeSkillContainers.spellforging.modifyItem;
+    const item = this.item;
     const reagent = this.player.tradeSkillContainers.spellforging.reagent;
     if(!item.trait || !reagent.trait) return false;
     return reagent.itemClass === 'Scroll' && (item.trait.name !== reagent.trait.name || item.trait.level !== reagent.trait.level);
@@ -50,7 +60,7 @@ export class TradeskillSpellforgingComponent {
 
   get hasEffectWarning(): boolean {
     if(!this.showInfo) return false;
-    const item = this.player.tradeSkillContainers.spellforging.modifyItem;
+    const item = this.item;
     const reagent = this.player.tradeSkillContainers.spellforging.reagent;
     if(!item.effect || !reagent.effect) return false;
     return item.effect.name !== reagent.effect.name || item.effect.potency !== reagent.effect.potency;
@@ -69,6 +79,13 @@ export class TradeskillSpellforgingComponent {
   formatTrait(item: Item) {
     if(!item.trait) return '';
     return `${startCase(item.trait.name)} ${toRoman(item.trait.level)}`;
+  }
+
+  formatTooltip(upgrade: ItemUpgrade) {
+
+    return sortBy(Object.keys(upgrade.stats))
+      .map(key => `${key.toUpperCase()} ${upgrade.stats[key] > 0 ? '+' : ''}${upgrade.stats[key]}`)
+      .join(', ');
   }
 
   canBuyBrick(dustType): boolean {

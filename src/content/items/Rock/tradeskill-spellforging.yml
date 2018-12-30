@@ -5,7 +5,33 @@
   desc: "a machleum brick, emanating with the power of ether"
   value: 100
 
+  stats:
+    offense: 1
+    defense: 1
+    accuracy: 1
+
 - name: Enchanting Brick - Owts
   sprite: 683
   desc: "a shimmering machleum brick, overflowing with the magical power of ether"
   value: 100
+
+  stats:
+    tier: 1
+
+- name: Enchanting Brick - Daus
+  sprite: 67
+  desc: "a solid chunk of machleite, commonly used by enchanters"
+  value: 100000
+
+  stats:
+    defense: 2
+    mp: 10
+
+- name: Enchanting Brick - Oles
+  sprite: 67
+  desc: "a sharp brick of machleite, commonly used by enchanters"
+  value: 100000
+
+  stats:
+    offense: 2
+    hp: 10

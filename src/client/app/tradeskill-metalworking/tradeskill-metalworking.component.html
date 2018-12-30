@@ -120,12 +120,18 @@
         </div>
       </div>
 
-      <div class="row mt-3" *ngIf="upgrades.length > 0">
-        <div class="col-6 text-center">
-          Upgrades ({{ upgrades.length }})
-        </div>
-        <div class="col">
-          {{ upgradeString }}
+      <div class="row mt-3 item-row upgrade-row" *ngIf="item">
+        <div class="item-slot item-background" *ngFor="let slot of slots">
+          <span class="item-slot-bg-text" *ngIf="!item.upgrades || !item.upgrades[slot]">Slot {{ slot + 1 }}</span>
+          <app-item size="normal"
+                    [showDesc]="false"
+                    [showValue]="true"
+                    overrideValue="Permanent"
+                    [tooltip]="formatTooltip(item.upgrades[slot])"
+                    container="body"
+                    *ngIf="item.upgrades && item.upgrades[slot]"
+                    [item]="{ sprite: item.upgrades[slot].sprite }"
+          ></app-item>
         </div>
       </div>
 

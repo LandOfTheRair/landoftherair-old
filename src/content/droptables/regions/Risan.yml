@@ -110,8 +110,24 @@
   chance: 1
   maxChance: 1500
 
-# Rune Scrolls
+# Materials
+- result: Titanium Ingot (Daus)
+  chance: 1
+  maxChance: 8000
 
+- result: Titanium Ingot (Oles)
+  chance: 1
+  maxChance: 8000
+
+- result: Enchanting Brick - Daus
+  chance: 1
+  maxChance: 8000
+
+- result: Enchanting Brick - Oles
+  chance: 1
+  maxChance: 8000
+
+# Rune Scrolls
 - result: Rune Scroll - Holy Affliction I
   chance: 1
   maxChance: 10000

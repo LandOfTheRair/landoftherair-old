@@ -47,7 +47,7 @@ export const responses = (npc: NPC) => {
       if(!armor.canUseInCombat(player)) return 'Shnope. You ain\'t able to use that armor. Can\'t help ya.';
       if(!fur.canUseInCombat(player)) return 'Shnope. You ain\'t able to use that fur. Can\'t help ya.';
 
-      if(armor.enchantLevel >= 5) return 'Shnope. That armor is already too powerful.';
+      if(armor.enchantLevel >= armor.maxEnchantLevel) return 'Shnope. That armor is already too powerful.';
 
       MetalworkingHelper.doSpecificItemUpgrade(armor, fur);
 

@@ -23,6 +23,7 @@
   desc: "a red fullplate, twice refined, forged with ether"
   binds: true
   value: 15000
+  maxEnchantLevel: 10
 
   requirements:
     level: 25
@@ -54,6 +55,7 @@
   desc: "a silver fullplate, twice refined, forged with silver ether scales"
   binds: true
   value: 15000
+  maxEnchantLevel: 10
 
   requirements:
     level: 40

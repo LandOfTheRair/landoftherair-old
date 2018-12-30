@@ -80,6 +80,24 @@
   desc: "a gold ingot inscribed with an hourglass"
   value: 55000
 
+- name: Titanium Ingot (Daus)
+  sprite: 68
+  desc: "a refined chunk of Risan titanium, commonly used by blacksmiths"
+  value: 100000
+
+  stats:
+    defense: 2
+    magicalResist: 2
+
+- name: Titanium Ingot (Oles)
+  sprite: 68
+  desc: "a sharp chunk of Risan titanium, commonly used by blacksmiths"
+  value: 100000
+
+  stats:
+    offense: 2
+    physicalResist: 2
+
 - name: Armor Mold
   sprite: 992
   desc: "a mold of armor"
