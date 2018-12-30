@@ -115,6 +115,8 @@ export class Item implements IItem {
       opts.uuid = null;
     }
 
+    if(opts.enchantLevel) delete opts.enchantLevel;
+    
     extend(this, opts);
     if(!this.uuid) this.uuid = uuid();
     if(!this.createdAt) this.createdAt = Date.now();
