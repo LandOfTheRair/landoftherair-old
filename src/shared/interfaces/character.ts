@@ -5,6 +5,7 @@ import { AttributeEffect, AugmentSpellEffect, IEffect, OnHitEffect } from './eff
 import { IGameWorld } from './gameworld';
 import { Currency } from './holiday';
 import { IAccount } from './account';
+import { Statistics } from '../../server/helpers/statistics/statistics-helper';
 
 
 export type Allegiance =
@@ -410,6 +411,7 @@ export interface IPlayer extends ICharacter {
   $$account: IAccount;
   $$spawnerSteps: number;
   $$spawnerRegionId: string|number;
+  $$statistics: Statistics;
 
   tradeSkillContainers: { alchemy?: IAlchemyContainer, spellforging?: ISpellforgingContainer, metalworking?: IMetalworkingContainer };
 

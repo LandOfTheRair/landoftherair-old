@@ -45,6 +45,8 @@ export class AlchemyHelper {
         player.gainSkill(SkillClassNames.Alchemy, skillGained, true);
       }
 
+      player.$$statistics.craftAlchemy();
+
     } else {
       returnedItem = await player.$$room.itemCreator.getItemByName('Alchemical Mistake', player.$$room);
     }

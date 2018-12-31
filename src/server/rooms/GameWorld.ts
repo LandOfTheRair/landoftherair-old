@@ -45,6 +45,7 @@ import { CombatEffect, IGameWorld, VisualEffect } from '../../shared/interfaces/
 import { TraitHelper } from '../helpers/world/trait-helper';
 import { EffectHelper } from '../helpers/world/effect-helper';
 import { QuestHelper } from '../helpers/world/quest-helper';
+import { StatisticsHelper } from '../helpers/statistics/statistics-helper';
 
 const TICK_TIMER = 1000;
 
@@ -89,6 +90,7 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
   public traitHelper: TraitHelper;
   public effectHelper: EffectHelper;
   public questHelper: QuestHelper;
+  public statisticsHelper: StatisticsHelper;
 
   public get groundItemCount(): number {
     return this.groundHelper.numberOfItems;
@@ -206,6 +208,7 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
     this.traitHelper = new TraitHelper();
     this.effectHelper = new EffectHelper();
     this.questHelper = new QuestHelper();
+    this.statisticsHelper = new StatisticsHelper();
 
     const mapData = this.formatMapData(cloneDeep(require(opts.mapPath)));
 
@@ -536,6 +539,7 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
 
     await this.savePlayerPouch(savePlayer);
     await this.skillTreeHelper.saveSkillTree(player);
+    await this.statisticsHelper.saveStatistics(player);
 
     return DB.$players.update({ username: savePlayer.username, charSlot: savePlayer.charSlot }, { $set: savePlayer });
   }

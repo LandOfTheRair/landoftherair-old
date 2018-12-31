@@ -63,6 +63,8 @@ export class SurvivalHelper {
         player.sendClientMessage(`You failed to tan ${corpse.desc}.`);
         player.gainSkill(SkillClassNames.Survival, 3);
       }
+
+      player.$$statistics.craftSurvival();
     });
   }
 
@@ -144,6 +146,8 @@ export class SurvivalHelper {
           potency: npcRef.level
         };
       });
+
+    player.$$statistics.craftSurvival();
   }
 
   static repair(player: Player) {

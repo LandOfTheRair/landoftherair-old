@@ -21,6 +21,7 @@ class Database {
   public $characterLockers: any;
   public $characterPouches: any;
   public $characterSkillTrees: any;
+  public $characterStatistics: any;
   public $mapBossTimers: any;
   public $lobbySettings: any;
   public $logs: any;
@@ -79,6 +80,9 @@ class Database {
 
     this.$characterSkillTrees = this.client.collection('characterSkillTrees');
     this.$characterSkillTrees.ensureIndex({ username: 1, charSlot: 1 }, { unique: true });
+
+    this.$characterStatistics = this.client.collection('characterStatistics');
+    this.$characterStatistics.ensureIndex({ username: 1, charSlot: 1 }, { unique: true });
 
     this.$lobbySettings = this.client.collection('lobbySettings');
 

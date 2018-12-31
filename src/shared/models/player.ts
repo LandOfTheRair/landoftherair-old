@@ -25,6 +25,7 @@ import { Allegiance, AllNormalGearSlots, IPlayer, MaxSizes } from '../interfaces
 import { IItem } from '../interfaces/item';
 
 import { HolidayHelper } from '../helpers/holiday-helper';
+import { Statistics } from './statistics';
 
 export class Player extends Character implements IPlayer {
   @nonenumerable
@@ -124,6 +125,9 @@ export class Player extends Character implements IPlayer {
   @nonenumerable
   public $$spawnerRegionId: string|number;
 
+  @nonenumerable
+  public $$statistics: Statistics;
+
   public gainingAP: boolean;
 
   get party(): Party {
@@ -187,6 +191,7 @@ export class Player extends Character implements IPlayer {
     if(isUndefined(this.currency)) this.currency = { gold: 0 };
 
     this.$$skillTree = await this.$$room.skillTreeHelper.loadSkillTree(this);
+    this.$$statistics = await this.$$room.statisticsHelper.loadStatistics(this);
 
     delete (<any>this).additionalStats;
 
@@ -287,6 +292,8 @@ export class Player extends Character implements IPlayer {
   kill(target: Character, opts: { isPetKill: boolean } = { isPetKill: false }) {
     this.clearActionQueueOf(target.uuid);
 
+    this.$$statistics.addKill();
+
     const npcId = (<any>target).npcId;
     if(npcId) {
       this.checkForQuestUpdates({ kill: npcId });
@@ -360,6 +367,8 @@ export class Player extends Character implements IPlayer {
     const hasSecondWind = this.hasEffect('Secondwind');
 
     super.die(killer);
+
+    this.$$statistics.addDeath();
 
     // if a room would kick you out of the map on death, save the ground now just in case
     if(this.$$room.exitPoint) {

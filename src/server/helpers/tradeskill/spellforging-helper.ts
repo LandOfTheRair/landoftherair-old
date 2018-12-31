@@ -106,6 +106,8 @@ export class SpellforgingHelper {
 
     player.setTradeskillBusy();
 
+    player.$$statistics.craftSpellforging();
+
     if(reagent.itemClass === 'Rock') {
 
       const upgrade = {
