@@ -23,6 +23,10 @@ export class Statistics {
   private craftsRunewriting = 0;
   private craftsMetalworking = 0;
   private craftsSurvival = 0;
+  private stepsTaken = 0;
+  private lairsKilled = 0;
+  private npcsGreeted = 0;
+  private timesStripped = 0;
 
   constructor(opts) {
     extend(this, opts);
@@ -69,6 +73,22 @@ export class Statistics {
 
   public craftSurvival() {
     this.craftsSurvival++;
+  }
+
+  public addStep(num: number = 1) {
+    this.stepsTaken += num;
+  }
+
+  public addLairKill() {
+    this.lairsKilled++;
+  }
+
+  public addNpcGreet() {
+    this.npcsGreeted++;
+  }
+
+  public addStrip() {
+    this.timesStripped++;
   }
 
 }

@@ -293,6 +293,7 @@ export class Player extends Character implements IPlayer {
     this.clearActionQueueOf(target.uuid);
 
     this.$$statistics.addKill();
+    if(target.hasEffect('Dangerous')) this.$$statistics.addLairKill();
 
     const npcId = (<any>target).npcId;
     if(npcId) {
@@ -814,6 +815,7 @@ export class Player extends Character implements IPlayer {
 
   takeSequenceOfSteps(steps, isChasing, recalculateFOV) {
     this.$$locker = null;
+    this.$$statistics.addStep(steps.length);
     return super.takeSequenceOfSteps(steps, isChasing, recalculateFOV);
   }
 

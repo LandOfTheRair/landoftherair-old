@@ -58,8 +58,10 @@ export class CharacterHelper {
     }
   }
 
-  static strip(char: ICharacter, { x, y }, spread = 0) {
+  static strip(char: IPlayer, { x, y }, spread = 0) {
     if(char.hasEffect('Secondwind')) return;
+
+    char.$$statistics.addStrip();
 
     this.dropHands(char);
 
@@ -112,7 +114,7 @@ export class CharacterHelper {
   static handleDeadCharacter(char: ICharacter) {
 
     char.dir = 'C';
-    
+
     if(char.$$corpseRef && char.$$corpseRef.$heldBy) {
       const holder = char.$$room.state.findPlayer(char.$$corpseRef.$heldBy);
 

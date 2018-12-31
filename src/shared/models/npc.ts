@@ -107,6 +107,8 @@ export class NPC extends Character implements INPC {
     this.parser.setEnv('player', player);
     let output = this.parser.parse(message);
 
+    if(message === 'hello') player.$$statistics.addNpcGreet();
+
     this.setDirRelativeTo(player);
     this.$$room.state.updateNPCVolatile(this);
 
