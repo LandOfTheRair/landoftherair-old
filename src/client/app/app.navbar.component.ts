@@ -53,7 +53,10 @@ import { ColyseusService } from './colyseus.service';
                 <a class="dropdown-item" (click)="aboutModal.show()">About</a>
               </li>
               <li>
-                <a class="dropdown-item" target="_blank" href="http://rair.land/docs/home/">Help!</a>
+                <a class="dropdown-item" target="_blank" href="https://global.rair.land/">Leaderboard</a>
+              </li>
+              <li>
+                <a class="dropdown-item" target="_blank" href="https://rair.land/docs/home/">Help!</a>
               </li>
               <li class="divider dropdown-divider"></li>
               <li *ngIf="inGame">
