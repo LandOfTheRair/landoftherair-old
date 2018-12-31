@@ -29,12 +29,12 @@ export const TannerResponses = (npc: NPC) => {
       if(!ground.Corpse || !ground.Corpse.length) return 'There are no corpses here!';
 
       ground.Corpse.forEach(corpse => {
-        if(corpse.$$isPlayerCorpse) {
+        if(corpse.isPlayerCorpse) {
           player.sendClientMessageFromNPC(npc, `You cannot tan players! What do I look like, a cannibal?`);
           return;
         }
 
-        if(!includes(corpse.$$playersHeardDeath, player.username)) {
+        if(!includes(corpse.playersHeardDeath, player.username)) {
           player.sendClientMessageFromNPC(npc, `You didn't have a hand in killing the ${corpse.desc.split('the corpse of a ')[1]}!`);
           return;
         }
@@ -53,10 +53,9 @@ export const TannerResponses = (npc: NPC) => {
             item.setOwner(player);
             npc.$$room.addItemToGround(npc, item);
           });
-
-        return `Here you go, ${player.name}! I've tanned ${corpse.desc} for you.`;
       });
 
+      return `Here you go, ${player.name}! I've tanned some corpses for you.`;
     });
 };
 

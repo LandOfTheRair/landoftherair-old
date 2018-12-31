@@ -219,8 +219,8 @@ export interface IItem {
   y?: number;
 
   $heldBy?: any;
-  $$isPlayerCorpse?: boolean;
-  $$playersHeardDeath?: string[];
+  isPlayerCorpse?: boolean;
+  playersHeardDeath?: string[];
 
   effect?: ItemEffect;
 

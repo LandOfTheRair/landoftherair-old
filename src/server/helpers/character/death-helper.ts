@@ -21,7 +21,7 @@ export class DeathHelper {
 
     if(player.leftHand
       && player.leftHand.itemClass === 'Corpse'
-      && player.leftHand.itemClass.$$isPlayerCorpse
+      && player.leftHand.itemClass.isPlayerCorpse
       && (!specificCorpse || (specificCorpse && player.leftHand === specificCorpse) )) {
       item = player.leftHand;
       player.setLeftHand(null);
@@ -29,7 +29,7 @@ export class DeathHelper {
 
     if(player.rightHand
       && player.rightHand.itemClass === 'Corpse'
-      && player.rightHand.itemClass.$$isPlayerCorpse
+      && player.rightHand.itemClass.isPlayerCorpse
       && (!specificCorpse || (specificCorpse && player.rightHand === specificCorpse) )) {
       item = player.rightHand;
       player.setRightHand(null);
@@ -55,7 +55,7 @@ export class DeathHelper {
     target.$$room.addItemToGround(target, corpse);
 
     const isPlayer = target.isPlayer();
-    corpse.$$isPlayerCorpse = isPlayer;
+    corpse.isPlayerCorpse = isPlayer;
 
     if(!isPlayer) {
       corpse.tansFor = (<any>target).tansFor;
@@ -70,7 +70,7 @@ export class DeathHelper {
           return prev;
         }, {});
 
-      corpse.$$playersHeardDeath = Object.keys(target.agro).filter(uuid => {
+      corpse.playersHeardDeath = Object.keys(target.agro).filter(uuid => {
         const player = target.$$room.state.findPlayer(uuid);
 
         if(!player) return false;

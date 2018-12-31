@@ -19,12 +19,12 @@ export class SurvivalHelper {
     ground.Corpse.forEach(corpse => {
       if(didTan) return;
 
-      if(corpse.$$isPlayerCorpse) {
+      if(corpse.isPlayerCorpse) {
         player.sendClientMessage(`You cannot tan players, you monster!`);
         return;
       }
 
-      if(!includes(corpse.$$playersHeardDeath, player.username)) {
+      if(!includes(corpse.playersHeardDeath, player.username)) {
         player.sendClientMessage(`You didn't have a hand in killing the ${corpse.desc.split('the corpse of a ')[1]}!`);
         return;
       }
@@ -72,12 +72,12 @@ export class SurvivalHelper {
 
     const corpse = player.leftHand;
 
-    if(corpse.$$isPlayerCorpse) {
+    if(corpse.isPlayerCorpse) {
       player.sendClientMessage(`You cannot tan players, you monster!`);
       return;
     }
 
-    if(!includes(corpse.$$playersHeardDeath, player.username)) {
+    if(!includes(corpse.playersHeardDeath, player.username)) {
       player.sendClientMessage(`You didn't have a hand in killing the ${corpse.desc.split('the corpse of a ')[1]}!`);
       return;
     }

@@ -74,23 +74,17 @@ export class Item implements IItem {
   bookCurrentPage?: number;
   bookFindablePages?: number;
 
-  @nonenumerable
-  searchItems?: IItem[];
-
-  @nonenumerable
-  tansFor?: string;
-
   x?: number;
   y?: number;
 
-  @nonenumerable
   $heldBy?: any;
 
-  @nonenumerable
-  $$isPlayerCorpse?: boolean;
+  tansFor?: string;
 
-  @nonenumerable
-  $$playersHeardDeath?: string[];
+  searchItems?: IItem[];
+
+  isPlayerCorpse?: boolean;
+  playersHeardDeath?: string[];
 
   effect?: ItemEffect;
 
