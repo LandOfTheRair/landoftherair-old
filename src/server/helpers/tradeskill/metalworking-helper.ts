@@ -153,7 +153,7 @@ export class MetalworkingHelper {
         player.gainSkill(SkillClassNames.Metalworking, skillGained, true);
       }
 
-      player.$$statistics.craftSmithing();
+      player.$$statistics.craftMetalworking();
 
     } else {
       returnedItem = container.craftItem;
@@ -193,7 +193,7 @@ export class MetalworkingHelper {
     player.setTradeskillBusy();
 
     this.doSpecificItemUpgrade(item, reagent);
-    player.$$statistics.craftSmithing();
+    player.$$statistics.craftMetalworking();
 
     container.upgradeResult = item;
     container.clearUpgrade();

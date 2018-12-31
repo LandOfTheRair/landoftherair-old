@@ -21,7 +21,7 @@ export class Statistics {
   private craftsAlchemy = 0;
   private craftsSpellforging = 0;
   private craftsRunewriting = 0;
-  private craftsSmithing = 0;
+  private craftsMetalworking = 0;
   private craftsSurvival = 0;
 
   constructor(opts) {
@@ -63,8 +63,8 @@ export class Statistics {
     this.craftsRunewriting++;
   }
 
-  public craftSmithing() {
-    this.craftsSmithing++;
+  public craftMetalworking() {
+    this.craftsMetalworking++;
   }
 
   public craftSurvival() {
