@@ -5,7 +5,7 @@ import { AttributeEffect, AugmentSpellEffect, IEffect, OnHitEffect } from './eff
 import { IGameWorld } from './gameworld';
 import { Currency } from './holiday';
 import { IAccount } from './account';
-import { Statistics } from '../../server/helpers/statistics/statistics-helper';
+import { Statistics } from '../models/statistics';
 
 
 export type Allegiance =
