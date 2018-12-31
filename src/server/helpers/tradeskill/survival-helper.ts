@@ -102,7 +102,7 @@ export class SurvivalHelper {
     if(!chosenSkill) {
       player.sendClientMessage('The corpse blood had no magical energy.');
       player.$$room.dropCorpseItems(corpse);
-      corpse.$heldBy = null;
+      corpse.heldBy = null;
       npcRef.restore(true);
       player.setLeftHand(null);
       return;
@@ -114,7 +114,7 @@ export class SurvivalHelper {
       player.gainSkill(SkillClassNames.Survival, Math.floor(npcRef.level / 3));
       player.sendClientMessage('The corpse blood is too difficult to extract.');
       player.$$room.dropCorpseItems(corpse);
-      corpse.$heldBy = null;
+      corpse.heldBy = null;
       npcRef.restore(true);
       player.setLeftHand(null);
       return;
@@ -128,7 +128,7 @@ export class SurvivalHelper {
 
     player.$$room.dropCorpseItems(corpse);
     player.setLeftHand(null);
-    corpse.$heldBy = null;
+    corpse.heldBy = null;
     npcRef.restore(true);
 
     player.$$room.npcLoader.loadItem('Vial of Blood')

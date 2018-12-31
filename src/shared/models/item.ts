@@ -77,12 +77,9 @@ export class Item implements IItem {
   x?: number;
   y?: number;
 
-  $heldBy?: any;
-
+  heldBy?: string;
   tansFor?: string;
-
   searchItems?: IItem[];
-
   isPlayerCorpse?: boolean;
   playersHeardDeath?: string[];
 

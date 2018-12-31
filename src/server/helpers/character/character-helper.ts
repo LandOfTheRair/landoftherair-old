@@ -115,8 +115,8 @@ export class CharacterHelper {
 
     char.dir = 'C';
 
-    if(char.$$corpseRef && char.$$corpseRef.$heldBy) {
-      const holder = char.$$room.state.findPlayer(char.$$corpseRef.$heldBy);
+    if(char.$$corpseRef && char.$$corpseRef.heldBy) {
+      const holder = char.$$room.state.findPlayer(char.$$corpseRef.heldBy);
 
       if(holder) {
         if(char.isPlayer()) {

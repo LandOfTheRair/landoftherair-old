@@ -767,7 +767,7 @@ export class GameState implements IGameState {
 
         Object.keys(groundItems[x][y]).forEach(cat => {
           groundItems[x][y][cat].forEach(item => {
-            delete item.$heldBy;
+            delete item.heldBy;
           });
 
           if(!groundItems[x][y][cat]) delete groundItems[x][y][cat];

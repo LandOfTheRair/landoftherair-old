@@ -828,7 +828,7 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
       this.itemCreator.setItemExpiry(item, item.owner ? this.decayRateHours * 4 : this.decayRateHours);
     }
 
-    item.$heldBy = null;
+    item.heldBy = null;
     const stackedItem = this.state.addItemToGround(ref, item);
     this.groundHelper.addItemToGround(ref, item, stackedItem);
 
@@ -1071,7 +1071,7 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
 
     const removeItemFromCorpse = (item) => {
       // if items are dropping from the corpse from someones hands, that means we have to do it at the players loc
-      const ref = corpse.$heldBy ? this.state.findPlayer(corpse.$heldBy) : corpse;
+      const ref = corpse.heldBy ? this.state.findPlayer(corpse.heldBy) : corpse;
 
       this.addItemToGround(ref, item);
       removedItems.push(item);
@@ -1126,8 +1126,8 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
   }
 
   removeCorpse(corpseRef: Item): void {
-    if(corpseRef.$heldBy) {
-      const player = this.state.findPlayer(corpseRef.$heldBy);
+    if(corpseRef.heldBy) {
+      const player = this.state.findPlayer(corpseRef.heldBy);
       player.sendClientMessage('The corpse fizzles from your hand.');
       DeathHelper.corpseCheck(player, corpseRef);
     }

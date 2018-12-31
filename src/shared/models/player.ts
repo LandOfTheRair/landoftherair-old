@@ -509,7 +509,7 @@ export class Player extends Character implements IPlayer {
     if(!item) return;
 
     if(item.itemClass === 'Corpse') {
-      item.$heldBy = this.username;
+      item.heldBy = this.username;
 
       // find the corpses owner and give it 600 death ticks if a player picks it up
       this.$$room.state.getAllInRangeRaw(this, 0).forEach(creature => {

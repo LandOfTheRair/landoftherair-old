@@ -295,7 +295,7 @@ export class NPC extends Character implements INPC {
 
   restore() {
     if(this.$$corpseRef) {
-      if(!this.$$corpseRef.$heldBy) {
+      if(!this.$$corpseRef.heldBy) {
         this.$$room.dropCorpseItems(this.$$corpseRef);
         this.$$room.removeItemFromGround(this.$$corpseRef);
       }
