@@ -77,6 +77,8 @@
           <span class="item-slot-bg-text" *ngIf="!item.upgrades || !item.upgrades[slot]">Slot {{ slot + 1 }}</span>
           <app-item size="normal"
                     [showDesc]="false"
+                    [showValue]="item.upgrades[slot].permanent"
+                    overrideValue="Permanent"
                     [tooltip]="formatTooltip(item.upgrades[slot])"
                     container="body"
                     *ngIf="item.upgrades && item.upgrades[slot]"
