@@ -286,6 +286,24 @@
     <app-equipment [player]="colyseus.game.character" [size]="equipmentSize"></app-equipment>
   </ng-template>
 
+  <app-window *ngIf="inGame && showEquipmentQuick"
+              windowName="equipmentQuick"
+              [otherWindowClasses]="'game-window ' + equipmentSize"
+              (active)="setActiveWindow($event)"
+              [canClose]="true"
+              (close)="showEquipmentQuick = false"
+              [headTemplate]="equipmentQuickHead"
+              [bodyTemplate]="equipmentQuickBody"
+  ></app-window>
+
+  <ng-template #equipmentQuickHead>
+    Equipment (Hands)
+  </ng-template>
+
+  <ng-template #equipmentQuickBody>
+    <app-equipment-quick [player]="colyseus.game.character" [size]="equipmentSize"></app-equipment-quick>
+  </ng-template>
+
   <app-window *ngIf="inGame && colyseus.game.character && colyseus.game.currentViewTarget"
               windowName="equipmentViewOnly"
               [otherWindowClasses]="'game-window ' + equipmentSize"

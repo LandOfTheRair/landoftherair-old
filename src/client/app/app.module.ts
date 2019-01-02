@@ -87,6 +87,7 @@ import { TradeskillMetalworkingComponent } from './tradeskill-metalworking/trade
 import { environment } from '../environments/environment';
 import { AlertService } from './alert.service';
 import { JournalComponent } from './journal/journal.component';
+import { EquipmentQuickComponent } from './equipment-quick/equipment-quick.component';
 
 const envUrl = `${environment.server.protocol}://${environment.server.domain}:${environment.server.port}`;
 
@@ -136,6 +137,7 @@ export class APIInterceptor implements HttpInterceptor {
     InventoryBeltComponent,
     InventoryPouchComponent,
     EquipmentComponent,
+    EquipmentQuickComponent,
     EquipmentViewOnlyComponent,
     NpcsComponent,
     MacroBarsComponent,

@@ -1,0 +1,42 @@
+<div class="p-1 item-container d-flex flex-wrap" *ngIf="player">
+
+  <div class="item-slot item-background" droppable dropScope="coin" (onDrop)="colyseusGame.buildDropAction($event, 'Sack')">
+    <app-item [size]="size" [item]="{ sprite: 212, value: player.currentGold, itemClass: 'Coin', desc: 'gold coins' }" showValue="true" context="Coin"></app-item>
+  </div>
+
+  <div class="item-slot item-background"
+       droppable
+       dropScope="right"
+       (onDrop)="colyseusGame.buildDropAction($event, 'Right')">
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.rightHand">Right Hand</span>
+    <app-item [size]="size"
+              [item]="player.rightHand"
+              [showOunces]="true"
+              [showValue]="player.rightHand && player.rightHand.itemClass === 'Coin'"
+              context="Right"></app-item>
+  </div>
+
+  <div class="item-slot"></div>
+
+  <div class="item-slot item-background"
+       droppable
+       dropScope="left"
+       (onDrop)="colyseusGame.buildDropAction($event, 'Left')">
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.leftHand">Left Hand</span>
+    <app-item [size]="size"
+              [item]="player.leftHand"
+              [showValue]="player.leftHand && player.leftHand.itemClass === 'Coin'"
+              context="Left"
+              [showOunces]="true"></app-item>
+  </div>
+
+  <div class="item-slot item-background"
+       droppable
+       dropScope="potion"
+       (onDrop)="colyseusGame.buildDropAction($event, 'Potion')">
+    <span class="item-slot-bg-text {{ size }}" *ngIf="!player.potionHand">Potion</span>
+    <app-item [size]="size" [item]="player.potionHand" showOunces="true" context="Potion"></app-item>
+  </div>
+
+
+</div>

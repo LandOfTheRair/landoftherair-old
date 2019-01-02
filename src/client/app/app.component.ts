@@ -107,7 +107,10 @@ export class AppComponent implements OnInit {
   public showInventoryPouch: boolean;
 
   @LocalStorage()
-  public showEquipment: boolean;
+  public showEquipment: boolean
+
+  @LocalStorage()
+  public showEquipmentQuick: boolean;
 
   @LocalStorage()
   public showParty: boolean;
@@ -379,7 +382,7 @@ export class AppComponent implements OnInit {
     });
 
     const defaultOptions = [
-      'showInventoryBelt', 'showInventoryPouch', 'showInventorySack', 'showEquipment', 'showCommandLine',
+      'showInventoryBelt', 'showInventoryPouch', 'showInventorySack', 'showEquipment', 'showCommandLine', 'showEquipmentQuick',
       'showActiveTarget', 'pinLastTarget',
       'autoHideLobby', 'autoAttack',
       'playBackgroundMusic', 'playSoundEffects'

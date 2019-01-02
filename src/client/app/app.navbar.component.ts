@@ -155,6 +155,11 @@ import { ColyseusService } from './colyseus.service';
               <app-icon name="battle-gear" size="small" fgColor="#ccc" bgColor="transparent"></app-icon>
             </a>
           </li>
+          <li class="nav-item" tooltip="Toggle Hands" placement="auto">
+            <a class="nav-link" (click)="openWindow.emit({ key: 'showEquipmentQuick', window: 'equipmentQuick' })">
+              <app-icon name="hand" size="small" fgColor="#ccc" bgColor="transparent"></app-icon>
+            </a>
+          </li>
           <li class="nav-item" *ngIf="hasMultipleCurrencies" dropdown container="body">
             <a class="nav-link" dropdownToggle>
               <app-icon name="two-coins" size="small" fgColor="#ccc" bgColor="transparent"></app-icon>
