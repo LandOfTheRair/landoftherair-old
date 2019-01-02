@@ -121,6 +121,12 @@ export class D3SkillTree implements D3SkillTreeConfig {
     Object.keys(this.tree).forEach(node => {
       if(!this.tree[node].isAncient) return;
       delete this.tree[node];
+
+      Object.keys(this.tree).forEach(alsoNode => {
+        if(!this.tree[alsoNode].unlocks || !includes(this.tree[alsoNode].unlocks, node)) return;
+
+        this.tree[alsoNode].unlocks = this.tree[alsoNode].unlocks.filter(x => x !== node);
+      })
     });
   }
 
