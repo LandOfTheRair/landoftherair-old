@@ -53,7 +53,7 @@ export const responses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(!player.rightHand) return 'You are not holding anything!';
       if(!player.rightHand.isOwnedBy(player)) return 'That is not your item!';
-      if(!player.rightHand.upgrades.length) return 'Your item has no upgrades!';
+      if(!player.rightHand.upgrades || !player.rightHand.upgrades.length) return 'Your item has no upgrades!';
 
       player.sendClientMessageFromNPC(npc, `${player.name}, here are your items upgrades:`);
       for(let i = 0; i < player.rightHand.upgrades.length; i++) {
@@ -69,7 +69,7 @@ export const responses = (npc: NPC) => {
       if(npc.distFrom(player) > 0) return 'Please move closer.';
       if(!player.rightHand) return 'You are not holding anything!';
       if(!player.rightHand.isOwnedBy(player)) return 'That is not your item!';
-      if(!player.rightHand.upgrades.length) return 'Your item has no upgrades!';
+      if(!player.rightHand.upgrades || !player.rightHand.upgrades.length) return 'Your item has no upgrades!';
 
       const upgrade = +args['upgrade*'] - 1;
       const upgradeRef = player.rightHand.upgrades[upgrade];
