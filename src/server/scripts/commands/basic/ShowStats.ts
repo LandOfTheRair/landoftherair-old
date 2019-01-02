@@ -17,13 +17,22 @@ export class ShowStats extends Command {
   };
 
   public name = 'show stats';
-  public format = '[all]';
+  public format = '[all|leader]';
 
   execute(player: Player, { args }) {
     player.sendClientMessage(`You are ${player.name}, the ${player.alignment} level ${player.level} ${player.baseClass}.`);
+
+    if(args === 'leader') {
+      const allStats = player.$$statistics.allStatisticAndValues;
+      allStats.forEach(({ name, value }) => {
+        player.sendClientMessage(`Your stat "${name}" is ${value}.`);
+      });
+      return;
+    }
+
     player.sendClientMessage(`Your allegiance lies with ${player.allegiance === 'None' ? 'no one' : `the ${player.allegiance}`}.`);
 
-    const baseKeys = args
+    const baseKeys = args === 'all'
       ? Object.keys(player.baseStats).filter(x => !includes(x, 'Bonus'))
       : ['str', 'dex', 'agi', 'int', 'wis', 'wil', 'luk', 'con', 'cha', 'hp', 'mp', 'offense', 'defense', 'armorClass'];
 

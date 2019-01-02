@@ -32,6 +32,24 @@ export class Statistics {
     extend(this, opts);
   }
 
+  public get allStatisticAndValues(): any[] {
+    return [
+      { name: 'Killstreak', value: this.bestKillstreak },
+      { name: 'Killstreak (cur)', value: this.killstreak },
+      { name: 'Kills', value: this.kills },
+      { name: 'Kills (Lair)', value: this.lairsKilled },
+      { name: 'Deaths', value: this.deaths },
+      { name: 'Strips', value: this.timesStripped },
+      { name: 'Crafts (Alchemy)', value: this.craftsAlchemy },
+      { name: 'Crafts (Spellforging)', value: this.craftsSpellforging },
+      { name: 'Crafts (Runewriting)', value: this.craftsRunewriting },
+      { name: 'Crafts (Metalworking)', value: this.craftsMetalworking },
+      { name: 'Crafts (Survival)', value: this.craftsSurvival },
+      { name: 'Steps Taken', value: this.stepsTaken },
+      { name: 'NPCs Greeted', value: this.npcsGreeted }
+    ]
+  }
+
   public importFrom(player: Player) {
     this.level = player.level;
     this.xp = player.exp;
