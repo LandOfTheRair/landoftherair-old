@@ -1,9 +1,8 @@
 
-
-
 import { Skill } from '../../../../../base/Skill';
 import { Character } from '../../../../../../shared/models/character';
 import { Fate as CastEffect } from '../../../../../effects';
+import { Player } from '../../../../../../shared/models/player';
 
 export class Fate extends Skill {
 
@@ -30,12 +29,12 @@ export class Fate extends Skill {
   mpCost() { return 0; }
   range(attacker: Character) { return 0; }
 
-  execute(user: Character, { args, effect }) {
+  execute(user: Player, { args, effect }) {
     if(user.level < 15) return user.sendClientMessage('Hmmm... maybe you should be more experienced first.');
     this.use(user, user, effect);
   }
 
-  use(user: Character, target: Character, baseEffect = {}) {
+  use(user: Player, target: Player, baseEffect = {}) {
     const effect = new CastEffect(baseEffect);
     effect.cast(user, target);
   }
