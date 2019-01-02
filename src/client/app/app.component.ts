@@ -205,6 +205,10 @@ export class AppComponent implements OnInit {
 
   public newMessages = 0;
 
+  private macroIgnoreWindows = {
+    cmd: true, lobby: true, bank: true, shop: true, marketboard: true, party: true, commandLine: true, journal: true
+  };
+
   get windowLocations() {
     return this.windowManager.windowLocations;
   }
@@ -277,11 +281,7 @@ export class AppComponent implements OnInit {
 
       if(document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return true;
 
-      if(this.activeWindow === 'cmd'
-      || this.activeWindow === 'lobby'
-      || this.activeWindow === 'bank'
-      || this.activeWindow === 'shop'
-      || this.activeWindow === 'marketboard') return true;
+      if(this.macroIgnoreWindows[this.activeWindow]) return true;
 
       return false;
     };
@@ -621,7 +621,8 @@ export class AppComponent implements OnInit {
       this.newMessages = 0;
     }
 
-    if(win !== 'commandLine' && win !== 'lobby' && win !== 'marketboard' && win !== 'bank' && win !== 'shop' && win !== 'journal') {
+
+    if(!this.macroIgnoreWindows[this.activeWindow]) {
       (<HTMLElement>document.activeElement).blur();
     }
   }
