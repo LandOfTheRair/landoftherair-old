@@ -148,7 +148,6 @@ export class SpellEffect extends Effect {
   }
 
   setPotencyAndGainSkill(caster: ICharacter, skillRef?: Skill) {
-
     this.hasSkillRef = !!skillRef;
 
     // called from something like a trap

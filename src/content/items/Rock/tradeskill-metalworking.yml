@@ -98,6 +98,17 @@
     offense: 2
     physicalResist: 2
 
+- name: Titanium Ingot (Fate)
+  sprite: 68
+  desc: "a dynamic chunk of Risan titanium, commonly used by blacksmiths"
+  value: 25
+
+  stats:
+    offense: 1
+    defense: 1
+    physicalResist: 3
+    magicalResist: 3
+
 - name: Armor Mold
   sprite: 992
   desc: "a mold of armor"

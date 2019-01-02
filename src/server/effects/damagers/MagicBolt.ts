@@ -14,7 +14,7 @@ export class MagicBolt extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
 
     let damage = RollerHelper.diceRoll(this.getTotalDamageRolls(caster), this.getTotalDamageDieSize(caster));
-    
+
     const energeticBolts = caster.hasEffect('EnergeticBolts');
     if(energeticBolts) damage += Math.floor(damage * energeticBolts.setPotency * 0.05);
 

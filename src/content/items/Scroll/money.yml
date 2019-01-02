@@ -1,0 +1,20 @@
+
+- name: Money Scroll 1M
+  sprite: 224
+  desc: "an cashier's cheque worth 1 million"
+  sellValue: 1000000
+
+- name: Money Scroll 25M
+  sprite: 224
+  desc: "an cashier's cheque worth 25 million"
+  sellValue: 25000000
+
+- name: Money Scroll 100M
+  sprite: 224
+  desc: "an cashier's cheque worth 100 million"
+  sellValue: 100000000
+
+- name: Money Scroll 1B
+  sprite: 224
+  desc: "an cashier's cheque worth 1 billion"
+  sellValue: 1000000000

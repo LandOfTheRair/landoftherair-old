@@ -1,6 +1,6 @@
 
 import { extend, maxBy, values, every, some, startCase } from 'lodash';
-import { IPlayer, SkillClassNames } from '../interfaces/character';
+import { IPlayer, SkillClassNames, SpellLearned } from '../interfaces/character';
 import { nonenumerable } from 'nonenumerable';
 import { AllTrees } from '../generated/skilltrees';
 
@@ -393,7 +393,7 @@ export class SkillTree {
 
   private buySkill(player: IPlayer, skillName: string, autoLearn: boolean): void {
     player.sendClientMessage({ message: `You have learned the skill "${startCase(skillName)}"!`, extraData: { skillName, autoLearn } });
-    player.learnSpell(skillName);
+    player.learnSpell(skillName, SpellLearned.FromTraits);
     player.$$room.resetMacros(player);
   }
 }

@@ -3,6 +3,8 @@
 const FIRST_LEVEL_CONSTANT_CHANGER = 19;
 
 export class XPHelper {
+  static MAX_LEVEL = 50;
+
   static calcLevelXP(level: number): number {
     const pre20XP = Math.pow(2, Math.min(FIRST_LEVEL_CONSTANT_CHANGER, level - 1)) * 1000;
 

@@ -20,7 +20,7 @@
 
 - name: Enchanting Brick - Daus
   sprite: 67
-  desc: "a solid chunk of machleite, commonly used by enchanters"
+  desc: "a solid sliver of machleite, commonly used by enchanters"
   value: 100000
 
   stats:
@@ -29,9 +29,20 @@
 
 - name: Enchanting Brick - Oles
   sprite: 67
-  desc: "a sharp brick of machleite, commonly used by enchanters"
+  desc: "a sharp sliver of machleite, commonly used by enchanters"
   value: 100000
 
   stats:
     offense: 2
     hp: 10
+
+- name: Enchanting Brick - Fate
+  sprite: 67
+  desc: "a dynamic sliver of machleite, commonly used by enchanters"
+  value: 25
+
+  stats:
+    offense: 1
+    defense: 1
+    hp: 15
+    mp: 15

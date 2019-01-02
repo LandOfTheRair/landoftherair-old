@@ -355,7 +355,7 @@ export class Character implements ICharacter {
 
   loseBaseStat(stat: StatName, value = 1) {
     this.stats[stat] -= value;
-    if(this.stats[stat] <= 1) this.stats[stat] = 1;
+    if(this.stats[stat] <= 0) this.stats[stat] = 0;
     this.recalculateStats();
   }
 

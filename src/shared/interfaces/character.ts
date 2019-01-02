@@ -7,7 +7,6 @@ import { Currency } from './holiday';
 import { IAccount } from './account';
 import { Statistics } from '../models/statistics';
 
-
 export type Allegiance =
   'None'
   | 'Pirates'
@@ -162,6 +161,13 @@ export const AllNormalGearSlots = [
 ];
 
 export type Hostility = 'Never' | 'OnHit' | 'Faction' | 'Always';
+
+export enum SpellLearned {
+  FromFate = -2,
+  FromItem = -1,
+  Unlearned = 0,
+  FromTraits = 1
+}
 
 export interface ICharacter {
   name: string;
@@ -430,7 +436,7 @@ export interface IPlayer extends ICharacter {
   saveSkillTree(): void;
   unlearnSpell(skillName: string): void;
   unlearnAll(): void;
-  learnSpell(skillName: string, conditional?: boolean): boolean;
+  learnSpell(skillName: string, conditional?: SpellLearned): boolean;
   hasLearned(skillName: string): boolean;
 
   teleportToRespawnPoint(): void;

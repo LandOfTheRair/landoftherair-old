@@ -31,6 +31,7 @@ export class Fate extends Skill {
   range(attacker: Character) { return 0; }
 
   execute(user: Character, { args, effect }) {
+    if(user.level < 15) return user.sendClientMessage('Hmmm... maybe you should be more experienced first.');
     this.use(user, user, effect);
   }
 

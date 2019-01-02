@@ -21,7 +21,7 @@ import { MetalworkingContainer } from './container/tradeskills/metalworking';
 import { SkillTree } from './skill-tree';
 import { RollerHelper } from '../helpers/roller-helper';
 import { Currency } from '../interfaces/holiday';
-import { Allegiance, AllNormalGearSlots, IPlayer, MaxSizes } from '../interfaces/character';
+import { Allegiance, AllNormalGearSlots, IPlayer, MaxSizes, SpellLearned } from '../interfaces/character';
 import { IItem } from '../interfaces/item';
 
 import { HolidayHelper } from '../helpers/holiday-helper';
@@ -226,28 +226,31 @@ export class Player extends Character implements IPlayer {
 
   unlearnAll(): void {
     Object.keys(this.learnedSpells).forEach(spell => {
-      if(this.learnedSpells[spell] === -1) return;
+      if(this.learnedSpells[spell] === SpellLearned.FromItem || this.learnedSpells[spell] === SpellLearned.FromFate) return;
       delete this.learnedSpells[spell];
     });
   }
 
-  learnSpell(skillName, conditional = false): boolean {
+  learnSpell(skillName, conditional?: SpellLearned): boolean {
     this.learnedSpells = this.learnedSpells || {};
     const storeName = skillName.toLowerCase();
-    if(this.learnedSpells[storeName] > 0) return false;
-    if(conditional && !this.learnedSpells[storeName]) {
+    if(this.learnedSpells[storeName] === SpellLearned.FromTraits) return false;
+    if(conditional === SpellLearned.FromItem && !this.learnedSpells[storeName]) {
       this.sendClientMessage(`Your item has bestowed the ability to cast ${skillName}!`);
     }
-    this.learnedSpells[storeName] = conditional ? -1 : 1;
+    if(conditional === SpellLearned.FromFate && !this.learnedSpells[storeName]) {
+      this.sendClientMessage(`Divine providence has bestowed the ability to cast ${skillName}!`);
+    }
+    this.learnedSpells[storeName] = conditional;
     return true;
   }
 
   hasLearned(skillName) {
     if(this.learnedSpells) {
       const isLearned = this.learnedSpells[skillName.toLowerCase()];
-      if(isLearned > 0) return true;
+      if(isLearned === SpellLearned.FromFate || isLearned === SpellLearned.FromTraits) return true;
 
-      if(isLearned < 0) {
+      if(isLearned === SpellLearned.FromItem) {
         const slot = find(AllNormalGearSlots, itemSlot => {
           const checkItem = get(this, itemSlot);
           if(!checkItem || !checkItem.effect || !checkItem.effect.name) return false;
@@ -520,7 +523,7 @@ export class Player extends Character implements IPlayer {
     }
 
     if(item.effect && item.effect.uses && item.itemClass !== 'Trap') {
-      this.learnSpell(item.effect.name, true);
+      this.learnSpell(item.effect.name, SpellLearned.FromItem);
     }
   }
 

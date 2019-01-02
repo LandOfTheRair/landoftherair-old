@@ -123,3 +123,85 @@
     animation: bg-SnowflakeJoy 3000ms linear infinite;
   }
 }
+
+@keyframes bg-Fate {
+  0% {
+    background: radial-gradient(
+        circle at 50% 0%,
+        rgba(0, 0, 0, 1) 15%,
+        rgba(255, 0, 0, 0.8)
+    );
+  }
+
+  12.5% {
+    background: radial-gradient(
+        circle at 75% 25%,
+        rgba(0, 0, 0, 1) 15%,
+        rgba(255, 0, 0, 0.8)
+    );
+  }
+
+  25% {
+    background: radial-gradient(
+        circle at 100% 50%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(255, 0, 0, 0.8)
+    );
+  }
+
+  37.5% {
+    background: radial-gradient(
+        circle at 75% 75%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(255, 0, 0, 0.8)
+    );
+  }
+
+  50% {
+    background: radial-gradient(
+        circle at 50% 100%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(255, 0, 0, 0.8)
+    );
+  }
+
+  62.5% {
+    background: radial-gradient(
+        circle at 25% 75%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(255, 0, 0, 0.8)
+    );
+  }
+
+  75% {
+    background: radial-gradient(
+        circle at 0% 50%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(255, 0, 0, 0.8)
+    );
+  }
+
+  87.5% {
+    background: radial-gradient(
+        circle at 25% 25%,
+        rgba(0, 0, 0, 1) 35%,
+        rgba(255, 0, 0, 0.8)
+    );
+  }
+
+  100% {
+    background: radial-gradient(
+        circle at 50% 0%,
+        rgba(0, 0, 0, 1) 15%,
+        rgba(255, 0, 0, 0.8)
+    );
+  }
+}
+
+.cosmetic-bg-Fate {
+  clip-path: polygon(33% 33%, 50% 0%, 66% 33%, 100% 50%, 66% 66%, 50% 100%, 33% 66%, 0% 50%);
+
+  &.animate {
+    animation: bg-Fate 800ms linear infinite;
+  }
+}

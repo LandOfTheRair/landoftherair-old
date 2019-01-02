@@ -17,6 +17,7 @@
   max-height: 210px;
   overflow-y: auto;
   padding: 5px;
+  overflow-x: hidden;
 
   &.normal-locker {
     overflow-y: hidden;

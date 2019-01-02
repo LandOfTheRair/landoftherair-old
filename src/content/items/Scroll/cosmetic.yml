@@ -46,3 +46,11 @@
   cosmetic:
     name: SnowflakeJoy
     isPermanent: true
+
+- name: Cosmetic Scroll - Fate
+  sprite: 224
+  desc: "a cosmetic scroll featuring \"Fate\""
+  value: 500
+  cosmetic:
+    name: Fate
+    isPermanent: true
