@@ -8,6 +8,7 @@ export * from './MitigatingMagic';
 export * from './MagicFocus';
 export * from './WandSpecialty';
 export * from './PartyManaRegeneration';
+export * from './EnergeticBolts';
 
 export * from './FriendlyFire';
 export * from './ThermalBarrier';

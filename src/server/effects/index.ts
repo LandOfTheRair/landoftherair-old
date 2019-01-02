@@ -98,6 +98,8 @@ export * from './cures/Regen';
 export * from './cures/Revive';
 export * from './cures/Vision';
 
+export * from './buffs/EnergeticBolts';
+
 export * from './misc/Darkness';
 export * from './misc/Light';
 

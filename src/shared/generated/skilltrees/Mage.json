@@ -537,6 +537,18 @@
             "MagicBolt"
         ]
     },
+    "EnergeticBolts0": {
+        "name": "EnergeticBolts0",
+        "traitName": "EnergeticBolts",
+        "desc": "Your Magic Bolt spell will successively cost 3 more MP (up to +30) per cast and increase the damage by 5% (up to +50%) for seconds.",
+        "icon": "burning-dot",
+        "capstone": true,
+        "cost": 20,
+        "cluster": 1,
+        "unlockedBy": [
+            "MagicBolt"
+        ]
+    },
     "MagicMissile": {
         "name": "MagicMissile",
         "desc": "Inflict energy damage on a single target. Cost: 5 MP",
@@ -615,12 +627,13 @@
     },
     "MagicBolt": {
         "name": "MagicBolt",
-        "desc": "Inflict energy damage on a single target. Cost: 10 MP",
+        "desc": "Inflict energy damage on a single target. Cost: 20 MP",
         "icon": "burning-dot",
         "iconColor": "#a0a",
         "cost": 10,
         "unlocks": [
-            "ConcussiveBolt0"
+            "ConcussiveBolt0",
+            "EnergeticBolts0"
         ],
         "cluster": 1,
         "unlockedBy": [
