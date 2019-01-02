@@ -6,6 +6,7 @@ export * from './AncientDefense';
 export * from './AncientEnergy';
 export * from './AncientForce';
 export * from './AncientForge';
+export * from './AncientGrip';
 export * from './AncientMitigation';
 export * from './AncientNecrosis';
 export * from './AncientOffense';

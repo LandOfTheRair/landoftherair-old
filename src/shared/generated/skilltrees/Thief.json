@@ -14,6 +14,90 @@
         "name": "Thief",
         "cluster": 1
     },
+    "AncientGrip0": {
+        "name": "AncientGrip0",
+        "traitName": "AncientGrip",
+        "desc": "Increase your chance to hold onto your items by $15|45$.",
+        "icon": "drop-weapon",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientGrip1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "DeathGrip2"
+        ]
+    },
+    "AncientGrip1": {
+        "name": "AncientGrip1",
+        "traitName": "AncientGrip",
+        "desc": "Increase your chance to hold onto your items by $15|45$.",
+        "icon": "drop-weapon",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientGrip2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "AncientGrip0"
+        ]
+    },
+    "AncientGrip2": {
+        "name": "AncientGrip2",
+        "traitName": "AncientGrip",
+        "desc": "Increase your chance to hold onto your items by $15|45$.",
+        "icon": "drop-weapon",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 1,
+        "unlockedBy": [
+            "AncientGrip1"
+        ]
+    },
+    "AncientArmor3": {
+        "name": "AncientArmor3",
+        "traitName": "AncientArmor",
+        "desc": "Increase your armor class by $3|9$.",
+        "icon": "armor-vest",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientArmor4"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "NaturalArmor2"
+        ]
+    },
+    "AncientArmor4": {
+        "name": "AncientArmor4",
+        "traitName": "AncientArmor",
+        "desc": "Increase your armor class by $3|9$.",
+        "icon": "armor-vest",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientArmor5"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "AncientArmor3"
+        ]
+    },
+    "AncientArmor5": {
+        "name": "AncientArmor5",
+        "traitName": "AncientArmor",
+        "desc": "Increase your armor class by $3|9$.",
+        "icon": "armor-vest",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 1,
+        "unlockedBy": [
+            "AncientArmor4"
+        ]
+    },
     "PartyOffense0": {
         "name": "PartyOffense0",
         "traitName": "PartyOffense",
@@ -134,6 +218,9 @@
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 10,
+        "unlocks": [
+            "AncientGrip0"
+        ],
         "cluster": 1,
         "unlockedBy": [
             "DeathGrip1"
@@ -175,6 +262,9 @@
         "capstone": true,
         "requireCharacterLevel": 15,
         "cost": 10,
+        "unlocks": [
+            "AncientArmor3"
+        ],
         "cluster": 1,
         "unlockedBy": [
             "NaturalArmor1"

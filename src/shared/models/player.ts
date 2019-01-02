@@ -423,7 +423,8 @@ export class Player extends Character implements IPlayer {
 
     if(killer && !killer.isPlayer()) {
 
-      if(!RollerHelper.XInOneHundred(this.getTraitLevelAndUsageModifier('DeathGrip')) && !hasSecondWind) {
+      const gripModifier = this.getTraitLevelAndUsageModifier('DeathGrip') + this.getTraitLevelAndUsageModifier('AncientGrip');
+      if(!RollerHelper.XInOneHundred(gripModifier) && !hasSecondWind) {
         CharacterHelper.dropHands(this);
       }
 

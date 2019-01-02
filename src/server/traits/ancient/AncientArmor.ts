@@ -8,7 +8,7 @@ export class AncientArmor extends AncientTrait {
   static icon = 'armor-vest';
 
   static upgrades = [
-    { }, { }, { capstone: true }
+    { }, { }, { capstone: true }, { }, { }, { }
   ];
 
   static usageModifier(level: number): number {

@@ -76,7 +76,7 @@ export class SkillTreeCreator {
                 desc: traitRef.description,
                 icon: traitRef.icon,
                 capstone: upgrade.capstone,
-                isAncient: existingTraitItem.isAncient,
+                isAncient: traitRef.isAncient,
                 requireCharacterLevel: upgrade.requireCharacterLevel,
                 requireSkillLevel: upgrade.requireSkillLevel,
                 cost: Trait.determineUpgradeCost(traitRef, upgrade),
@@ -121,7 +121,7 @@ export class SkillTreeCreator {
         const node = resultingLayout[nodeName];
 
         if(!node.unlocks) return;
-        
+
         node.unlocks.forEach(unlock => {
           const unlockedNode = resultingLayout[unlock];
 

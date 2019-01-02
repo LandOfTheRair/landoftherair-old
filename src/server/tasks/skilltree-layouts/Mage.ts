@@ -8,6 +8,27 @@ const MAGE_TREE = {
     unlocks: ['MagicMissile', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0', 'PartyManaRegeneration0']
   },
 
+  // ANCIENT
+  AncientGrip0: {
+    unlocks: ['AncientGrip1']
+  },
+  AncientGrip1: {
+    unlocks: ['AncientGrip2']
+  },
+  AncientGrip2: {
+
+  },
+
+  AncientArmor3: {
+    unlocks: ['AncientArmor4']
+  },
+  AncientArmor4: {
+    unlocks: ['AncientArmor5']
+  },
+  AncientArmor5: {
+
+  },
+
   // TRAITS
   PartyManaRegeneration0: {
     unlocks: ['PartyManaRegeneration1']
@@ -56,7 +77,7 @@ const MAGE_TREE = {
     unlocks: ['DeathGrip2']
   },
   DeathGrip2: {
-
+    unlocks: ['AncientGrip0']
   },
 
   NaturalArmor0: {
@@ -66,7 +87,7 @@ const MAGE_TREE = {
     unlocks: ['NaturalArmor2']
   },
   NaturalArmor2: {
-
+    unlocks: ['AncientArmor3']
   },
 
   MagicFocus0: {

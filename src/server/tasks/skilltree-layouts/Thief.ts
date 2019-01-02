@@ -8,6 +8,27 @@ const THIEF_TREE = {
     unlocks: ['PartyOffense0', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0', 'NimbleStealing0']
   },
 
+  // ANCIENT
+  AncientGrip0: {
+    unlocks: ['AncientGrip1']
+  },
+  AncientGrip1: {
+    unlocks: ['AncientGrip2']
+  },
+  AncientGrip2: {
+
+  },
+
+  AncientArmor3: {
+    unlocks: ['AncientArmor4']
+  },
+  AncientArmor4: {
+    unlocks: ['AncientArmor5']
+  },
+  AncientArmor5: {
+
+  },
+
   // TRAITS
   PartyOffense0: {
     unlocks: ['PartyOffense1']
@@ -36,7 +57,7 @@ const THIEF_TREE = {
     unlocks: ['DeathGrip2']
   },
   DeathGrip2: {
-
+    unlocks: ['AncientGrip0']
   },
 
   NaturalArmor0: {
@@ -46,7 +67,7 @@ const THIEF_TREE = {
     unlocks: ['NaturalArmor2']
   },
   NaturalArmor2: {
-
+    unlocks: ['AncientArmor3']
   },
 
   NimbleStealing0: {

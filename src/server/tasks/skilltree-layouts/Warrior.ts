@@ -8,6 +8,27 @@ const WARRIOR_TREE = {
     unlocks: ['PartyDefense0', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0', 'EagleEye0', 'SwordTricks0', 'FunkyMoves0', 'Swashbuckler0']
   },
 
+  // ANCIENT
+  AncientGrip0: {
+    unlocks: ['AncientGrip1']
+  },
+  AncientGrip1: {
+    unlocks: ['AncientGrip2']
+  },
+  AncientGrip2: {
+
+  },
+
+  AncientArmor3: {
+    unlocks: ['AncientArmor4']
+  },
+  AncientArmor4: {
+    unlocks: ['AncientArmor5']
+  },
+  AncientArmor5: {
+
+  },
+
   // TRAITS
   PartyDefense0: {
     unlocks: ['PartyDefense1']
@@ -36,7 +57,7 @@ const WARRIOR_TREE = {
     unlocks: ['DeathGrip2']
   },
   DeathGrip2: {
-
+    unlocks: ['AncientGrip0']
   },
 
   NaturalArmor0: {
@@ -46,7 +67,7 @@ const WARRIOR_TREE = {
     unlocks: ['NaturalArmor2']
   },
   NaturalArmor2: {
-
+    unlocks: ['AncientArmor3']
   },
 
   EagleEye0: {
