@@ -11,7 +11,8 @@ export const setup = async (npc: NPC) => {
     'Ink Vial (15oz)',
     'Tweans Gem Codex',
     'Selens Alchemical Guide',
-    'Pandiras Hammer Teachings'
+    'Pandiras Hammer Teachings',
+    'Newbie Book'
   ];
 
   npc.$$room.npcLoader.loadVendorItems(npc, vendorItems);

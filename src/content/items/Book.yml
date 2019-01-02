@@ -1,3 +1,28 @@
+
+- name: Newbie Book
+  sprite: 406
+  desc: "a book designed to help new adventurers out if held in the left hand"
+  value: 1
+  binds: true
+
+  bookPages:
+    - id: ""
+      text: "Remember: click the NPC box in the top left to interact with an NPC or attack a creature."
+    - id: ""
+      text: "Don't forget: you're right handed. Weapons need to go in your right hand."
+    - id: ""
+      text: "Any gear is better than no gear. Buy some boots and cloaks from the shop to get started."
+    - id: ""
+      text: "Daily remember: buy potions from the Alchemist and combine them to stay out longer."
+    - id: ""
+      text: "If you die: buy a Constitution Potion from the tavern keep. It'll keep the nasty away longer."
+    - id: ""
+      text: "Woodland creatures: remember to tan the woodland creatures by taking their corpse to the tanner"
+    - id: ""
+      text: "Want to level up? First, make sure you've dedicated to a class (don't be Undecided) and then find that trainer, and hit Train."
+    - id: ""
+      text: "Encrusting: if you find any gems, you can slot them into your gear at the Encruster. Every gem has a different bonus."
+
 - name: Rylt Renegade Book
   sprite: 1018
   desc: "a very well-written novel about renegades and, er, other 'things'"

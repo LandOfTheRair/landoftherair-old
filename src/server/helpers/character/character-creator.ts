@@ -191,6 +191,7 @@ export class CharacterCreator {
 
     player.gear.Armor = await itemCreator.getItemByName(body);
     player.rightHand = await itemCreator.getItemByName(mainhand);
+    player.sack.addItem(await itemCreator.getItemByName('Newbie Book'));
     player._gainSkill(skill2, SkillHelper.calcSkillXP(2));
 
   }
