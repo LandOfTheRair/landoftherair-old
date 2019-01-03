@@ -35,3 +35,5 @@ export * from './BladedWands';
 export * from './LightenArmor';
 export * from './VolcanoStanceImproved';
 export * from './GlacierStanceImproved';
+
+export * from './MagicalReinforcement';

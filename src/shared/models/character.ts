@@ -1406,7 +1406,7 @@ export class Character implements ICharacter {
       armorClass: ['NaturalArmor', 'AncientArmor'],
 
       accuracy: ['EagleEye'],
-      defense: ['FunkyMoves', 'AncientDefense'],
+      defense: ['FunkyMoves', 'AncientDefense', 'MagicalReinforcement'],
       offense: ['SwordTricks', 'AncientOffense'],
       magicalResist: ['HolyProtection', 'AncientAura'],
       physicalResist: ['SilverSkin', 'AncientSkin', 'PhysicalShielding'],

@@ -1215,10 +1215,36 @@
             "BladedWands0",
             "StrongMind0",
             "FindFamiliar",
-            "RiftSlash"
+            "RiftSlash",
+            "MagicalReinforcement0"
         ],
         "name": "Battlemage",
         "cluster": 4
+    },
+    "MagicalReinforcement0": {
+        "name": "MagicalReinforcement0",
+        "traitName": "MagicalReinforcement",
+        "desc": "Gain +1 defense per weapon skill.",
+        "icon": "shining-sword",
+        "cost": 15,
+        "unlocks": [
+            "MagicalReinforcement1"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Battlemage"
+        ]
+    },
+    "MagicalReinforcement1": {
+        "name": "MagicalReinforcement1",
+        "traitName": "MagicalReinforcement",
+        "desc": "Gain +1 defense per weapon skill.",
+        "icon": "shining-sword",
+        "cost": 30,
+        "cluster": 4,
+        "unlockedBy": [
+            "MagicalReinforcement0"
+        ]
     },
     "LightenArmor0": {
         "name": "LightenArmor0",
