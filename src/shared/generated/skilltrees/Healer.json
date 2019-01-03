@@ -1463,11 +1463,55 @@
             "AncientForce0",
             "AncientDefense0",
             "AncientOffense0",
-            "AncientRegeneration0"
+            "AncientRegeneration0",
+            "AncientTechnique0"
         ],
         "isAncient": true,
         "name": "Ancient",
         "cluster": 5
+    },
+    "AncientTechnique0": {
+        "name": "AncientTechnique0",
+        "traitName": "AncientTechnique",
+        "desc": "Decrease your aggro generation by $10|30$%.",
+        "icon": "diamonds-smile",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientTechnique1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "Ancient"
+        ]
+    },
+    "AncientTechnique1": {
+        "name": "AncientTechnique1",
+        "traitName": "AncientTechnique",
+        "desc": "Decrease your aggro generation by $10|30$%.",
+        "icon": "diamonds-smile",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientTechnique2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientTechnique0"
+        ]
+    },
+    "AncientTechnique2": {
+        "name": "AncientTechnique2",
+        "traitName": "AncientTechnique",
+        "desc": "Decrease your aggro generation by $10|30$%.",
+        "icon": "diamonds-smile",
+        "capstone": true,
+        "isAncient": true,
+        "cost": 3,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientTechnique1"
+        ]
     },
     "AncientPotions0": {
         "name": "AncientPotions0",
