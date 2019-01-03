@@ -1310,6 +1310,7 @@ export class Character implements ICharacter {
   }
 
   changeRep(allegiance: Allegiance, modifier) {
+    if(allegiance === 'None') return;
     this.allegianceReputation[allegiance] = this.allegianceReputation[allegiance] || 0;
     this.allegianceReputation[allegiance] += modifier;
   }
