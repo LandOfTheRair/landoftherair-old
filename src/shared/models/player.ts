@@ -90,8 +90,7 @@ export class Player extends Character implements IPlayer {
 
   private lastDeathLocation: any;
 
-  @nonenumerable
-  public $$hungerTicks: number;
+  public hungerTicks: number;
 
   @nonenumerable
   public $$isAccessingLocker: boolean;
@@ -180,9 +179,9 @@ export class Player extends Character implements IPlayer {
     this.uuid = this.username;
     this.$$actionQueue = [];
     this.$$messageQueue = [];
-    if(isUndefined(this.$$hungerTicks)) {
+    if(isUndefined(this.hungerTicks)) {
       const nourished = this.hasEffect('Nourishment');
-      this.$$hungerTicks = (nourished ? nourished.duration : 0) + 3600 * 6;
+      this.hungerTicks = (nourished ? nourished.duration : 0) + 3600 * 6;
     }
     if(isUndefined(this.daily)) this.daily = { quest: {}, item: {} };
     if(isUndefined(this.daily.item)) this.daily.item = {};
@@ -586,9 +585,9 @@ export class Player extends Character implements IPlayer {
 
     if(this.isInCombat) this.combatTicks--;
 
-    this.$$hungerTicks--;
+    this.hungerTicks--;
 
-    if(this.$$hungerTicks <= 0 && !this.hasEffect('Malnourished')) {
+    if(this.hungerTicks <= 0 && !this.hasEffect('Malnourished')) {
       const Malnourished = this.getEffect('Malnourished');
       const malnourished = new Malnourished({});
       malnourished.cast(this, this);

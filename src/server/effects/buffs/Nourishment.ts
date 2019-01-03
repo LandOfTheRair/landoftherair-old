@@ -32,7 +32,7 @@ export class Nourishment extends SpellEffect {
 
     this.duration += Math.round(this.duration * char.getTraitLevelAndUsageModifier('SlowDigestion'));
 
-    char.$$hungerTicks = this.duration + (3600 * 6);
+    char.hungerTicks = this.duration + (3600 * 6);
 
     const sweetToothLevel = char.getTraitLevel('SweetTooth');
     if(sweetToothLevel) {

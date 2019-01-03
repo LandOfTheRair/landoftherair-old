@@ -409,7 +409,7 @@ export interface IPlayer extends ICharacter {
 
   partyName: string;
 
-  $$hungerTicks: number;
+  hungerTicks: number;
   $$isAccessingLocker: boolean;
   $$areHandsBusy: boolean;
   $$tradeskillBusy: boolean;
