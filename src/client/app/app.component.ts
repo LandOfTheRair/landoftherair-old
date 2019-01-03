@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
 import { ColyseusService } from './colyseus.service';
 
 import * as swal from 'sweetalert2';
@@ -206,6 +207,9 @@ export class AppComponent implements OnInit {
   @LocalStorage()
   public colyseusDebug: boolean;
 
+  @LocalStorage()
+  public customCSS: string;
+
   public newMessages = 0;
 
   private macroIgnoreWindows = {
@@ -332,6 +336,32 @@ export class AppComponent implements OnInit {
     }
 
     this.initStripe();
+
+    this.watchCSS();
+  }
+
+  private watchCSS() {
+
+    let domEl = null;
+
+    const updateCSS = (css) => {
+      if(domEl) {
+        domEl.parentElement.removeChild(domEl);
+        domEl = null;
+      }
+
+      domEl = document.createElement('style');
+      domEl.type = 'text/css';
+      document.head.appendChild(domEl);
+
+      domEl.appendChild(document.createTextNode(css));
+    };
+
+    this.localStorage.observe('customCSS').pipe(debounceTime(5000)).subscribe(newCSS => {
+      updateCSS(newCSS);
+    });
+
+    updateCSS(this.customCSS);
   }
 
   public toggleCmdVisibilityKeypress(val) {

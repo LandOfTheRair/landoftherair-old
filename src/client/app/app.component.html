@@ -861,16 +861,20 @@
                 </label>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-9 ml-auto form-check">
+                <label class="form-check-label" for="nostalgicBackgroundMusic">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]="nostalgicBackgroundMusic" id="nostalgicBackgroundMusic"/>
+                  Nostalgic Noises (Background Music & Sound Effects)
+                </label>
+              </div>
+            </div>
           </tab>
 
-          <div class="row">
-            <div class="col-9 ml-auto form-check">
-              <label class="form-check-label" for="nostalgicBackgroundMusic">
-                <input type="checkbox" class="form-check-input" [(ngModel)]="nostalgicBackgroundMusic" id="nostalgicBackgroundMusic"/>
-                Nostalgic Noises (Background Music & Sound Effects)
-              </label>
-            </div>
-          </div>
+          <tab heading="Custom CSS">
+            <textarea class="form-control custom-css" [(ngModel)]="customCSS" placeholder="Add custom CSS here..."></textarea>
+          </tab>
 
         </tabset>
 
