@@ -915,11 +915,11 @@ export class Character implements ICharacter {
   }
 
   die(killer?: ICharacter, silent = false) {
+    this.clearEffects();
     if(this.$$deathTicks > 0) return;
 
     this.dir = 'C';
     this.hp.toMinimum();
-    this.clearEffects();
 
     this.$$deathTicks = 120;
 
