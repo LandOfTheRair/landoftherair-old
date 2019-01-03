@@ -1,6 +1,6 @@
 {
   "name": "landoftherair",
-  "version": "0.2.69",
+  "version": "0.2.70",
   "description": "a prototype morpg",
   "main": "index.js",
   "scripts": {
