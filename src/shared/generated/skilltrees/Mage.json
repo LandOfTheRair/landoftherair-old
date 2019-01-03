@@ -1216,10 +1216,23 @@
             "StrongMind0",
             "FindFamiliar",
             "RiftSlash",
-            "MagicalReinforcement0"
+            "MagicalReinforcement0",
+            "CrossoverKnowledge0"
         ],
         "name": "Battlemage",
         "cluster": 4
+    },
+    "CrossoverKnowledge0": {
+        "name": "CrossoverKnowledge0",
+        "traitName": "CrossoverKnowledge",
+        "desc": "Half of your weapon skill will apply to your magical skills as well.",
+        "icon": "rune-sword",
+        "capstone": true,
+        "cost": 15,
+        "cluster": 4,
+        "unlockedBy": [
+            "Battlemage"
+        ]
     },
     "MagicalReinforcement0": {
         "name": "MagicalReinforcement0",

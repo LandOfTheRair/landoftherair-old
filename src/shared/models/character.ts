@@ -1016,7 +1016,11 @@ export class Character implements ICharacter {
   }
 
   gainCurrentSkills(skillGained = 1) {
-    if(!this.$$flaggedSkills || !this.$$flaggedSkills.length) return;
+    if(!this.$$flaggedSkills || !this.$$flaggedSkills.length || !this.isPlayer()) return;
+    if(this.getTraitLevel('CrossoverKnowledge') && !includes(this.$$flaggedSkills, SkillClassNames.Conjuration)) {
+      this.$$flaggedSkills.push(SkillClassNames.Conjuration);
+    }
+
     const [primary, secondary, tertiary, quaternary] = compact(this.$$flaggedSkills);
     if(!primary) return;
 
