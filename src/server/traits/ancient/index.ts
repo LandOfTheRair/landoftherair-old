@@ -15,3 +15,4 @@ export * from './AncientPoison';
 export * from './AncientPotions';
 export * from './AncientRegeneration';
 export * from './AncientSkin';
+export * from './AncientTechnique';
