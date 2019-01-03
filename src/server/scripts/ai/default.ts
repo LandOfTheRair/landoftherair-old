@@ -289,7 +289,7 @@ export class DefaultAIBehavior {
       const noLeash = !npc.path;
 
       if(noLeash
-        && ((!currentTarget && distFrom > npc.spawner.randomWalkRadius)
+        && ((!currentTarget && npc.spawner.randomWalkRadius >= 0 && distFrom > npc.spawner.randomWalkRadius)
           || (npc.spawner.leashRadius >= 0 && distFrom > npc.spawner.leashRadius))) {
 
         npc.sendLeashMessage();

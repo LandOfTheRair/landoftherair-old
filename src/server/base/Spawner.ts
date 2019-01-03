@@ -531,7 +531,7 @@ export class Spawner {
   }
 
   shouldSlowDown() {
-    if(!this.canSlowDown) return false;
+    if(!this.canSlowDown || this.leashRadius < 0) return false;
     const playersInRange = this.room.state.getAllPlayersInRange(this, this.leashRadius);
     if(playersInRange.length === 0) return true;
     return !some(playersInRange, player => this.canActivateFor(player));
@@ -593,7 +593,7 @@ export class Spawner {
 
     const tileDist = player.distFrom(this);
     if(tileDist <= 5) return true;
-    if(tileDist > this.leashRadius) return false;
+    if(this.leashRadius >= 0 && tileDist > this.leashRadius) return false;
 
     return true;
   }
