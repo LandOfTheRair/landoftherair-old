@@ -26,7 +26,7 @@
 
 - result: Risan Constitution Potion
   chance: 1
-  maxChance: 1000
+  maxChance: 5000
 
 - result: Risan Luck Potion
   chance: 1
@@ -35,14 +35,6 @@
 - result: Risan Charisma Potion
   chance: 1
   maxChance: 250000
-
-- result: Antanian Health Potion
-  chance: 1
-  maxChance: 3000
-
-- result: Antanian Magic Potion
-  chance: 1
-  maxChance: 3000
 
 - result: Risan Experience Potion
   chance: 1
@@ -113,19 +105,19 @@
 # Materials
 - result: Titanium Ingot (Daus)
   chance: 1
-  maxChance: 8000
+  maxChance: 15000
 
 - result: Titanium Ingot (Oles)
   chance: 1
-  maxChance: 8000
+  maxChance: 15000
 
 - result: Enchanting Brick - Daus
   chance: 1
-  maxChance: 8000
+  maxChance: 15000
 
 - result: Enchanting Brick - Oles
   chance: 1
-  maxChance: 8000
+  maxChance: 15000
 
 # Rune Scrolls
 - result: Rune Scroll - Holy Affliction I
