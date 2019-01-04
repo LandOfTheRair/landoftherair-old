@@ -78,6 +78,8 @@ export class ColyseusGameService {
   private suppressZero: boolean;
   private suppressOutgoingDot: boolean;
   private autoAttack: boolean;
+  private bgmVolume: number;
+  private sfxVolume: number;
 
   public currentViewTarget: any;
 
@@ -119,6 +121,8 @@ export class ColyseusGameService {
     this.suppressAnimations = this.localStorage.retrieve('suppressAnimations');
     this.suppressOutgoingDot = this.localStorage.retrieve('suppressOutgoingDot');
     this.autoAttack = this.localStorage.retrieve('autoAttack');
+    this.bgmVolume = this.localStorage.retrieve('bgmVolume');
+    this.sfxVolume = this.localStorage.retrieve('sfxVolume');
 
     this.localStorage.observe('playBackgroundMusic')
       .subscribe(shouldPlayBgm => {
@@ -153,6 +157,16 @@ export class ColyseusGameService {
     this.localStorage.observe('autoAttack')
       .subscribe(autoAttack => {
         this.autoAttack = autoAttack;
+      });
+
+    this.localStorage.observe('bgmVolume')
+      .subscribe(bgmVolume => {
+        this.bgmVolume = bgmVolume;
+      });
+
+    this.localStorage.observe('sfxVolume')
+      .subscribe(sfxVolume => {
+        this.sfxVolume = sfxVolume;
       });
 
     this.lastCommands = this.localStorage.retrieve('lastCommands') || [];
@@ -414,7 +428,7 @@ export class ColyseusGameService {
 
     // set bgm for the game (considering options)
     if(this.overrideNoBgm) {
-      this.bgm$.next('');
+      this.bgm$.next({ bgm: '', vol: this.bgmVolume });
 
     } else {
       let bgm = this.character.combatTicks > 0 ? 'combat' : this.character.bgmSetting;
@@ -422,7 +436,7 @@ export class ColyseusGameService {
         bgm = `${bgm}-nostalgia`;
       }
 
-      this.bgm$.next((bgm || '').trim());
+      this.bgm$.next({ bgm: (bgm || '').trim(), volume: this.bgmVolume });
     }
 
     // update hp/xp/etc for floating boxes
@@ -466,7 +480,7 @@ export class ColyseusGameService {
         sfx = `${sfx}-nostalgia`;
       }
 
-      this.sfx$.next((sfx || '').trim());
+      this.sfx$.next({ sfx: (sfx || '').trim(), volume: this.sfxVolume });
     }
   }
 

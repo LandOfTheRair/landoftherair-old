@@ -113,7 +113,7 @@ export class Game {
       // this.reset();
 
       if(!inGame) {
-        this.updateBgm('');
+        this.updateBgm({ bgm: '', volume: 0 });
         return;
       }
     });
@@ -149,38 +149,38 @@ export class Game {
     });
   }
 
-  private playSfx(sfx: string) {
+  private playSfx({ sfx, volume }) {
 
     if(!this.sfxs[sfx] || !this.sfxs[sfx].isDecoded) return;
 
     // this happens periodically, but we probably can't do anything about it
     try {
-      this.sfxs[sfx].play();
+      this.sfxs[sfx].play('', 0, volume);
     } catch(e) {}
   }
 
-  private updateBgm(newBgm: string) {
-    if(!newBgm && this.currentBgm && this.bgms[this.currentBgm]) {
+  private updateBgm({ bgm, volume }) {
+    if(!bgm && this.currentBgm && this.bgms[this.currentBgm]) {
       this.bgms[this.currentBgm].stop();
       this.currentBgm = '';
       return;
     }
 
-    if(newBgm === this.currentBgm) return;
+    if(bgm === this.currentBgm) return;
 
     if(this.currentBgm && this.bgms[this.currentBgm]) {
       this.bgms[this.currentBgm].stop();
     }
 
-    if(this.bgms[newBgm] && this.bgms[newBgm].isDecoded) {
-      this.currentBgm = newBgm;
-      this.bgms[this.currentBgm].loopFull();
+    if(this.bgms[bgm] && this.bgms[bgm].isDecoded) {
+      this.currentBgm = bgm;
+      this.bgms[this.currentBgm].loopFull(volume);
     }
 
   }
 
   public reset(skipLoading = false) {
-    this.updateBgm('');
+    this.updateBgm({ bgm: '', volume: 0 });
     this.g.lockRender = true;
     this.hasFlashed = false;
 

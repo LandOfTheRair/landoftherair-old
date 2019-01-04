@@ -8,7 +8,7 @@ import { MacroService, Macro } from './macros.service';
 
 import * as macicons from '../macicons/macicons.json';
 
-import { includes, isNull, cloneDeep, get, startCase } from 'lodash';
+import { includes, isNull, cloneDeep, get, startCase, clamp } from 'lodash';
 import { AuthService } from './auth.service';
 import { AssetService } from './asset.service';
 import { SilverPurchase } from '../../shared/interfaces/account';
@@ -203,6 +203,12 @@ export class AppComponent implements OnInit {
 
   @LocalStorage()
   public playSoundEffects: boolean;
+
+  @LocalStorage()
+  public bgmVolume: number;
+
+  @LocalStorage()
+  public sfxVolume: number;
 
   @LocalStorage()
   public colyseusDebug: boolean;
@@ -425,6 +431,9 @@ export class AppComponent implements OnInit {
     if(isNull(this.theme)) {
       this.theme = 'Dark';
     }
+
+    if(isNull(this.bgmVolume)) this.bgmVolume = 1;
+    if(isNull(this.sfxVolume)) this.sfxVolume = 1;
 
     this.showCommandLineToggle = !this.enterToggleCommand;
   }
@@ -760,6 +769,14 @@ export class AppComponent implements OnInit {
 
   public updateAccount() {
     this.colyseus.lobby.updateAccount();
+  }
+
+  public modMusicVol(mod: number) {
+    this.bgmVolume = clamp(this.bgmVolume + mod, 0, 1);
+  }
+
+  public modSfxVol(mod: number) {
+    this.sfxVolume = clamp(this.sfxVolume  + mod, 0, 1);
   }
 
 }
