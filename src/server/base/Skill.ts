@@ -5,6 +5,7 @@ import { Command } from './Command';
 import { random, get } from 'lodash';
 import { MessageHelper } from '../helpers/world/message-helper';
 import { Direction, SkillClassNames } from '../../shared/interfaces/character';
+import { RollerHelper } from '../../shared/helpers/roller-helper';
 
 interface MacroMetadata {
   name: string;
@@ -84,8 +85,9 @@ export abstract class Skill extends Command {
 
     if(effect) return true;
 
-    const mpCost = this.modifiedMPCost(user, this.mpCost(user, targets));
+    if(RollerHelper.XInOneHundred(user.getTraitLevelAndUsageModifier('Clearcasting'))) return true;
 
+    const mpCost = this.modifiedMPCost(user, this.mpCost(user, targets));
 
     /** PERK:CLASS:THIEF:Thieves cast spells with their HP instead of using MP. */
     if(user.baseClass === 'Thief' || user.baseClass === 'Warrior') {

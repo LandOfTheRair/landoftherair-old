@@ -11,10 +11,54 @@
             "ManaPool0",
             "CarefulTouch0",
             "DeathGrip0",
-            "NaturalArmor0"
+            "NaturalArmor0",
+            "Clearcasting0"
         ],
         "name": "Healer",
         "cluster": 1
+    },
+    "Clearcasting0": {
+        "name": "Clearcasting0",
+        "traitName": "Clearcasting",
+        "desc": "Increase the chance of not consuming resources when casting a spell by $3|9$%.",
+        "icon": "magic-swirl",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "Clearcasting1"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Healer"
+        ]
+    },
+    "Clearcasting1": {
+        "name": "Clearcasting1",
+        "traitName": "Clearcasting",
+        "desc": "Increase the chance of not consuming resources when casting a spell by $3|9$%.",
+        "icon": "magic-swirl",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "Clearcasting2"
+        ],
+        "cluster": 1,
+        "unlockedBy": [
+            "Clearcasting0"
+        ]
+    },
+    "Clearcasting2": {
+        "name": "Clearcasting2",
+        "traitName": "Clearcasting",
+        "desc": "Increase the chance of not consuming resources when casting a spell by $3|9$%.",
+        "icon": "magic-swirl",
+        "capstone": true,
+        "isAncient": true,
+        "cost": 3,
+        "cluster": 1,
+        "unlockedBy": [
+            "Clearcasting1"
+        ]
     },
     "AncientGrip0": {
         "name": "AncientGrip0",

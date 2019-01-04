@@ -5,10 +5,20 @@ const HEALER_TREE = {
     desc: 'The Healer is a class focused on keeping its allies and itself alive.',
     unbuyable: true,
     root: true,
-    unlocks: ['Cure', 'PartyHealthRegeneration0', 'CalmMind0', 'ManaPool0', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0']
+    unlocks: ['Cure', 'PartyHealthRegeneration0', 'CalmMind0', 'ManaPool0', 'CarefulTouch0', 'DeathGrip0', 'NaturalArmor0', 'Clearcasting0']
   },
 
   // ANCIENT
+  Clearcasting0: {
+    unlocks: ['Clearcasting1']
+  },
+  Clearcasting1: {
+    unlocks: ['Clearcasting2']
+  },
+  Clearcasting2: {
+
+  },
+
   AncientGrip0: {
     unlocks: ['AncientGrip1']
   },
