@@ -1680,6 +1680,49 @@
         "name": "Ancient",
         "cluster": 5
     },
+    "SustainedImmunity0": {
+        "name": "SustainedImmunity0",
+        "traitName": "SustainedImmunity",
+        "desc": "Increase the duration of bad \"Recently\" effects by $20|60$%.",
+        "icon": "auto-repair",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "SustainedImmunity1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientArmor1"
+        ]
+    },
+    "SustainedImmunity1": {
+        "name": "SustainedImmunity1",
+        "traitName": "SustainedImmunity",
+        "desc": "Increase the duration of bad \"Recently\" effects by $20|60$%.",
+        "icon": "auto-repair",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "SustainedImmunity2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "SustainedImmunity0"
+        ]
+    },
+    "SustainedImmunity2": {
+        "name": "SustainedImmunity2",
+        "traitName": "SustainedImmunity",
+        "desc": "Increase the duration of bad \"Recently\" effects by $20|60$%.",
+        "icon": "auto-repair",
+        "capstone": true,
+        "isAncient": true,
+        "cost": 3,
+        "cluster": 5,
+        "unlockedBy": [
+            "SustainedImmunity1"
+        ]
+    },
     "AncientTechnique0": {
         "name": "AncientTechnique0",
         "traitName": "AncientTechnique",
@@ -1831,7 +1874,8 @@
         "isAncient": true,
         "cost": 1,
         "unlocks": [
-            "AncientArmor2"
+            "AncientArmor2",
+            "SustainedImmunity0"
         ],
         "cluster": 5,
         "unlockedBy": [

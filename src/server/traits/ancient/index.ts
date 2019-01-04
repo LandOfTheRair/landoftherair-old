@@ -17,3 +17,4 @@ export * from './AncientPotions';
 export * from './AncientRegeneration';
 export * from './AncientSkin';
 export * from './AncientTechnique';
+export * from './SustainedImmunity';

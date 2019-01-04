@@ -2,7 +2,6 @@
 import { SpellEffect } from '../../base/Effect';
 import { Character } from '../../../shared/models/character';
 import { Skill } from '../../base/Skill';
-import { RollerHelper } from '../../../shared/helpers/roller-helper';
 
 export class RecentlyFrosted extends SpellEffect {
 
@@ -13,7 +12,7 @@ export class RecentlyFrosted extends SpellEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = 10;
+    this.duration = Math.floor(10 / caster.getTraitLevelAndUsageModifier('SustainedImmunity'));
     target.applyEffect(this);
   }
 }

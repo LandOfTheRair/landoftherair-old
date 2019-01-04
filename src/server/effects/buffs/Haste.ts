@@ -17,7 +17,7 @@ export class RecentlyHasted extends SpellEffect {
   private ticks: number;
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = 60;
+    this.duration = Math.floor(60 * caster.getTraitLevelAndUsageModifier('SustainedImmunity'));
     this.ticks = 0;
     target.applyEffect(this);
   }

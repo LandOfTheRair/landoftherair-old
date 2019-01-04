@@ -8,6 +8,16 @@ const ANCIENT_TREE = {
     unlocks: ['AncientPotions0', 'AncientArmor0', 'AncientForce0', 'AncientDefense0', 'AncientOffense0', 'AncientRegeneration0', 'AncientTechnique0', 'AncientEnhancement0']
   },
 
+  SustainedImmunity0: {
+    unlocks: ['SustainedImmunity1']
+  },
+  SustainedImmunity1: {
+    unlocks: ['SustainedImmunity2']
+  },
+  SustainedImmunity2: {
+
+  },
+
   AncientTechnique0: {
     unlocks: ['AncientTechnique1']
   },
@@ -42,7 +52,7 @@ const ANCIENT_TREE = {
     unlocks: ['AncientArmor1']
   },
   AncientArmor1: {
-    unlocks: ['AncientArmor2']
+    unlocks: ['AncientArmor2', 'SustainedImmunity0']
   },
   AncientArmor2: {
     unlocks: ['AncientSkin0', 'AncientAura0']

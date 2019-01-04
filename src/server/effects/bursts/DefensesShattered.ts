@@ -13,7 +13,7 @@ export class RecentlyShattered extends SpellEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = 60;
+    this.duration = Math.floor(60 / caster.getTraitLevelAndUsageModifier('SustainedImmunity'));
     target.applyEffect(this);
   }
 }
