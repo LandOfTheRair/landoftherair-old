@@ -36,7 +36,7 @@ export class HolyAura extends SpellEffect implements AttributeEffect {
 
     if(!this.duration) this.duration = 30;
     if(!this.charges) this.charges = 50 * this.potency;
-    this.updateDurationBasedOnTraits(caster);
+    this.updateBuffDurationBasedOnTraits(caster);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, { message: `You cast Holy Aura on ${target.name}.`, sfx: 'spell-buff-magical' });

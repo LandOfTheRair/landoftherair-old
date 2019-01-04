@@ -25,7 +25,7 @@ export class Secondwind extends SpellEffect {
     this.aoeAgro(caster, 10);
 
     if(!this.duration) this.duration = this.potency * 10;
-    this.updateDurationBasedOnTraits(caster);
+    this.updateBuffDurationBasedOnTraits(caster);
 
     target.applyEffect(this);
   }

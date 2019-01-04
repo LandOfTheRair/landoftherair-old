@@ -34,6 +34,7 @@ export class Asper extends SpellEffect {
 
     if(damage > 0 && caster.getTraitLevel('LingeringAsper')) {
       this.duration = 3;
+      this.updateDebuffDurationBasedOnTraits(caster);
       target.applyEffect(this);
     }
   }

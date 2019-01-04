@@ -5,7 +5,7 @@ const ANCIENT_TREE = {
     desc: 'Expand your ancient knowledge!',
     unbuyable: true,
     root: true,
-    unlocks: ['AncientPotions0', 'AncientArmor0', 'AncientForce0', 'AncientDefense0', 'AncientOffense0', 'AncientRegeneration0', 'AncientTechnique0']
+    unlocks: ['AncientPotions0', 'AncientArmor0', 'AncientForce0', 'AncientDefense0', 'AncientOffense0', 'AncientRegeneration0', 'AncientTechnique0', 'AncientEnhancement0']
   },
 
   AncientTechnique0: {
@@ -15,6 +15,16 @@ const ANCIENT_TREE = {
     unlocks: ['AncientTechnique2']
   },
   AncientTechnique2: {
+
+  },
+
+  AncientEnhancement0: {
+    unlocks: ['AncientEnhancement1']
+  },
+  AncientEnhancement1: {
+    unlocks: ['AncientEnhancement2']
+  },
+  AncientEnhancement2: {
 
   },
 
@@ -45,12 +55,6 @@ const ANCIENT_TREE = {
     unlocks: ['AncientForce2']
   },
   AncientForce2: {
-    unlocks: ['AncientForce3']
-  },
-  AncientForce3: {
-    unlocks: ['AncientForce4']
-  },
-  AncientForce4: {
 
   },
 

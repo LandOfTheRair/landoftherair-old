@@ -32,6 +32,7 @@ export class Boost extends SpellEffect {
 
     this.ignoreDefenseLoss = !!caster.getTraitLevel('ImprovedBoostedBoost');
 
+    this.updateBuffDurationBasedOnTraits(caster);
     this.aoeAgro(caster, 10);
 
     target.applyEffect(this);

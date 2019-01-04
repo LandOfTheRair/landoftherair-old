@@ -39,6 +39,7 @@ export class Debilitate extends SpellEffect {
     this.flagCasterName(caster.name);
 
     this.duration = 10;
+    this.updateDebuffDurationBasedOnTraits(caster);
 
     if(target.hasEffect('RecentlyDebilitated') || target.hasEffect('Debilitate')) {
       return this.effectMessage(caster, `${target.name} resisted your debilitation!`);

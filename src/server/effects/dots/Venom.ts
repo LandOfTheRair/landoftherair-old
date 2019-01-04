@@ -30,6 +30,7 @@ export class Venom extends SpellEffect {
     const damage = RollerHelper.diceRoll(totalPotency, wisCheck);
 
     this.duration = this.duration || this.potency;
+    this.updateDebuffDurationBasedOnTraits(caster);
 
     if(caster.getTraitLevel('DegenerativeVenom')) {
       this.thiefDegenerate = this.potency;

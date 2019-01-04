@@ -29,7 +29,7 @@ export class DarkVision extends SpellEffect {
     /** PERK:CLASS:THIEF:Thief DarkVision lasts 50% as long. */
     const durationMult = caster.baseClass === 'Thief' ? 50 : 100;
     if(!this.duration) this.duration = this.potency * durationMult;
-    this.updateDurationBasedOnTraits(caster);
+    this.updateBuffDurationBasedOnTraits(caster);
     target.applyEffect(this);
   }
 

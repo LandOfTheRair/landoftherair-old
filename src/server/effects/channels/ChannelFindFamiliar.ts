@@ -247,6 +247,7 @@ export class ChannelFindFamiliar extends ChanneledSpellEffect {
 
     const activePet = new ActivePet({ potency: this.potency });
     activePet.duration = this.potency * 50;
+    activePet.updateBuffDurationBasedOnTraits(char);
     activePet.cast(char, char);
   }
 }

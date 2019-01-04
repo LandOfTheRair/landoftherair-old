@@ -129,6 +129,23 @@ export class Effect implements IEffect {
 
     CombatHelper.magicalAttack(caster, ref, opts);
   }
+
+  updateBuffDurationBasedOnTraits(caster: ICharacter): void {
+    let durationMultiplierBonus = 0;
+
+    durationMultiplierBonus += caster.getTraitLevelAndUsageModifier('EffectiveSupporter');
+    durationMultiplierBonus += caster.getTraitLevelAndUsageModifier('AncientEnhancement');
+
+    this.duration += Math.floor(this.duration * durationMultiplierBonus);
+  }
+
+  updateDebuffDurationBasedOnTraits(caster: ICharacter): void {
+    let durationMultiplierBonus = 0;
+
+    durationMultiplierBonus += caster.getTraitLevelAndUsageModifier('AncientEnhancement');
+
+    this.duration += Math.floor(this.duration * durationMultiplierBonus);
+  }
 }
 
 export class SpellEffect extends Effect {
@@ -231,14 +248,6 @@ export class SpellEffect extends Effect {
     }
 
     return base;
-  }
-
-  updateDurationBasedOnTraits(caster: ICharacter): void {
-    let durationMultiplierBonus = 0;
-
-    durationMultiplierBonus += caster.getTraitLevelAndUsageModifier('EffectiveSupporter');
-
-    this.duration += Math.floor(this.duration * durationMultiplierBonus);
   }
 
   getCasterStat(caster, stat) {

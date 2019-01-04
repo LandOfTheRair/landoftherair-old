@@ -21,6 +21,7 @@ export class Shield extends SpellEffect {
     if(!this.duration) this.duration = 300;
     if(!this.potency)  this.potency = caster.calcSkillLevel(SkillClassNames.Martial) * 3;
 
+    this.updateBuffDurationBasedOnTraits(caster);
     this.aoeAgro(caster, 10);
 
     target.applyEffect(this);

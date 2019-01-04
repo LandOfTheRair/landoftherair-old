@@ -19,6 +19,7 @@ export class Invisible extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 300 * this.potency;
+    this.updateBuffDurationBasedOnTraits(caster);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, { message: `You cast Invisibility on ${target.name}.`, sfx: 'spell-sight-effect' });

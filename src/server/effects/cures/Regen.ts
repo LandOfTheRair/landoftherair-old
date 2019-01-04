@@ -30,7 +30,7 @@ export class Regen extends SpellEffect {
     const damage = -(this.getTotalDamageRolls(caster) * (this.getTotalDamageDieSize(caster) / 4));
 
     this.duration = this.duration || 10;
-    this.updateDurationBasedOnTraits(caster);
+    this.updateBuffDurationBasedOnTraits(caster);
 
     this.shouldBurst = !!caster.getTraitLevel('RegenerativeRefrain');
 

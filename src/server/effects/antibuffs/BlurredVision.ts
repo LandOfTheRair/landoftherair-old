@@ -17,6 +17,7 @@ export class BlurredVision extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 30 * this.potency;
+    this.updateDebuffDurationBasedOnTraits(caster);
     this.aoeAgro(caster, 10);
 
     target.applyEffect(this);

@@ -40,6 +40,7 @@ export class Drain extends SpellEffect {
 
     if(damage > 0 && lingeringDrainDuration) {
       this.duration = lingeringDrainDuration;
+      this.updateDebuffDurationBasedOnTraits(caster);
       target.applyEffect(this);
     }
   }

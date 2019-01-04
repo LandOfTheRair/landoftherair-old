@@ -31,7 +31,7 @@ export class Daze extends SpellEffect {
     this.setPotencyAndGainSkill(caster, skillRef);
     this.flagCasterName(caster.name);
 
-    this.iconData.tooltipDesc = `Dazeed and failing spell casts ${this.potency}% of the time.`;
+    this.iconData.tooltipDesc = `Dazed and failing spell casts ${this.potency}% of the time.`;
 
     if(target.hasEffect('RecentlyDazed') || target.hasEffect('Daze')) {
       return this.effectMessage(caster, `${target.name} resisted your daze!`);
@@ -40,6 +40,7 @@ export class Daze extends SpellEffect {
     this.effectMessage(caster, { message: `You daze ${target.name}!`, sfx: 'spell-debuff-give' });
 
     this.duration = 30;
+    this.updateDebuffDurationBasedOnTraits(caster);
 
     target.addAgro(caster, 30);
     target.applyEffect(this);

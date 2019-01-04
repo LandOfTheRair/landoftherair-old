@@ -19,6 +19,7 @@ export class Disguise extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 5 * this.potency;
+    this.updateBuffDurationBasedOnTraits(caster);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, `You cast Disguise on ${target.name}.`);

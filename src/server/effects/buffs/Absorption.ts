@@ -21,7 +21,7 @@ export class Absorption extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 30 * this.potency;
-    this.updateDurationBasedOnTraits(caster);
+    this.updateBuffDurationBasedOnTraits(caster);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, { message: `You cast Absorption on ${target.name}.`, sfx: 'spell-buff-magical' });

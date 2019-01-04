@@ -64,6 +64,7 @@ export class Snare extends SpellEffect {
 
     this.duration = clamp((this.potency + baseStat) - targetStat, 3, 5);
     this.duration += caster.getTraitLevel('NatureSpirit');
+    this.updateDebuffDurationBasedOnTraits(caster);
 
     target.applyEffect(this);
   }

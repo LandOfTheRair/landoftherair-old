@@ -44,7 +44,7 @@ export class Haste extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 45 * this.potency;
-    this.updateDurationBasedOnTraits(caster);
+    this.updateBuffDurationBasedOnTraits(caster);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, { message: `You cast Haste on ${target.name}.`, sfx: 'spell-buff-physical' });

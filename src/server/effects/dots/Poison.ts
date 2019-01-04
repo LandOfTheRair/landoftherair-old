@@ -30,6 +30,7 @@ export class Poison extends SpellEffect {
     const damage = RollerHelper.diceRoll(totalPotency, wisCheck);
 
     this.duration = this.duration || this.potency * 2;
+    this.updateDebuffDurationBasedOnTraits(caster);
 
     if(caster.getTraitLevel('CorrosivePoison')) {
       this.thiefCorrode = Math.round(this.potency / 5);

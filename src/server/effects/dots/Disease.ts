@@ -37,6 +37,7 @@ export class Disease extends SpellEffect {
     this.critBonus = natureSpirit;
 
     this.duration += caster.getTraitLevel('NatureSpirit');
+    this.updateDebuffDurationBasedOnTraits(caster);
 
     if(caster.getTraitLevel('DebilitatingDisease')) {
       this.healerDebilitate = Math.max(1, Math.round(this.potency / 4));

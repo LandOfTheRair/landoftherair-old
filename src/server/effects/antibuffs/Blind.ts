@@ -58,6 +58,7 @@ export class Blind extends SpellEffect {
 
     this.duration = clamp((this.potency + baseStat) - targetStat, 2, 5);
     this.duration += caster.getTraitLevel('NatureSpirit');
+    this.updateDebuffDurationBasedOnTraits(caster);
     target.applyEffect(this);
   }
 

@@ -24,7 +24,7 @@ export class BarFrost extends SpellEffect {
 
     this.potency += Math.floor(this.potency * caster.getTraitLevelAndUsageModifier('ThermalBarrier'));
 
-    this.updateDurationBasedOnTraits(caster);
+    this.updateBuffDurationBasedOnTraits(caster);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, { message: `You cast BarFrost on ${target.name}.`, sfx: 'spell-buff-protection' });

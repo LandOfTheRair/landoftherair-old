@@ -23,7 +23,7 @@ export class VitalEssence extends SpellEffect implements OnHitEffect {
     this.flagCasterName(caster.name);
 
     if(!this.charges) this.charges = 5 * this.potency;
-    this.updateDurationBasedOnTraits(caster);
+    this.updateBuffDurationBasedOnTraits(caster);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, { message: `You cast VitalEssence on ${target.name}.`, sfx: 'spell-buff-magical' });

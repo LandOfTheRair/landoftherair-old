@@ -24,6 +24,7 @@ export class Applied extends SpellEffect implements AugmentSpellEffect {
     this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 120;
+    this.updateBuffDurationBasedOnTraits(caster);
 
     this.duration += caster.getTraitLevelAndUsageModifier('EnhancedApplications');
 

@@ -48,6 +48,7 @@ export class Stun extends SpellEffect {
 
       this.duration = Math.min(10, Math.max(7, this.potency - targetWil));
       this.duration += caster.getTraitLevel('NatureSpirit');
+      this.updateDebuffDurationBasedOnTraits(caster);
 
       this.effectMessage(caster, { message: `You stun ${target.name}!`, sfx: 'spell-debuff-give' });
     }

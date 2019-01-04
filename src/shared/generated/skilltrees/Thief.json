@@ -1456,7 +1456,8 @@
             "AncientDefense0",
             "AncientOffense0",
             "AncientRegeneration0",
-            "AncientTechnique0"
+            "AncientTechnique0",
+            "AncientEnhancement0"
         ],
         "isAncient": true,
         "name": "Ancient",
@@ -1503,6 +1504,49 @@
         "cluster": 5,
         "unlockedBy": [
             "AncientTechnique1"
+        ]
+    },
+    "AncientEnhancement0": {
+        "name": "AncientEnhancement0",
+        "traitName": "AncientEnhancement",
+        "desc": "Your over-time spells last $10|30$% longer.",
+        "icon": "burning-passion",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientEnhancement1"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "Ancient"
+        ]
+    },
+    "AncientEnhancement1": {
+        "name": "AncientEnhancement1",
+        "traitName": "AncientEnhancement",
+        "desc": "Your over-time spells last $10|30$% longer.",
+        "icon": "burning-passion",
+        "isAncient": true,
+        "cost": 1,
+        "unlocks": [
+            "AncientEnhancement2"
+        ],
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientEnhancement0"
+        ]
+    },
+    "AncientEnhancement2": {
+        "name": "AncientEnhancement2",
+        "traitName": "AncientEnhancement",
+        "desc": "Your over-time spells last $10|30$% longer.",
+        "icon": "burning-passion",
+        "capstone": true,
+        "isAncient": true,
+        "cost": 3,
+        "cluster": 5,
+        "unlockedBy": [
+            "AncientEnhancement1"
         ]
     },
     "AncientPotions0": {
@@ -1629,41 +1673,12 @@
         "traitName": "AncientForce",
         "desc": "Increase your damage by $5|15$%.",
         "icon": "crossed-swords",
+        "capstone": true,
         "isAncient": true,
-        "cost": 1,
-        "unlocks": [
-            "AncientForce3"
-        ],
+        "cost": 3,
         "cluster": 5,
         "unlockedBy": [
             "AncientForce1"
-        ]
-    },
-    "AncientForce3": {
-        "name": "AncientForce3",
-        "traitName": "AncientForce",
-        "desc": "Increase your damage by $5|15$%.",
-        "icon": "crossed-swords",
-        "isAncient": true,
-        "cost": 1,
-        "unlocks": [
-            "AncientForce4"
-        ],
-        "cluster": 5,
-        "unlockedBy": [
-            "AncientForce2"
-        ]
-    },
-    "AncientForce4": {
-        "name": "AncientForce4",
-        "traitName": "AncientForce",
-        "desc": "Increase your damage by $5|15$%.",
-        "icon": "crossed-swords",
-        "isAncient": true,
-        "cost": 1,
-        "cluster": 5,
-        "unlockedBy": [
-            "AncientForce3"
         ]
     },
     "AncientSkin0": {

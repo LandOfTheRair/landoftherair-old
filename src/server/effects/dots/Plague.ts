@@ -51,6 +51,8 @@ export class Plague extends SpellEffect {
 
     }
 
+    this.updateDebuffDurationBasedOnTraits(caster);
+
     target.applyEffect(this);
     this.effectMessage(caster, { message: `You inflicted a plague upon ${target.name}!`, sfx: 'spell-debuff-give' });
   }

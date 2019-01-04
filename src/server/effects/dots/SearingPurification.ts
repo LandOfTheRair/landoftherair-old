@@ -37,6 +37,7 @@ export class SearingPurification extends SpellEffect {
 
     this.effectInfo = { damage, damageFactor: caster.getTotalStat('damageFactor'), caster: caster.uuid };
     this.duration = 5;
+    this.updateDebuffDurationBasedOnTraits(caster);
     this.flagCasterName(caster.name);
     target.applyEffect(this);
   }

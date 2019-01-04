@@ -22,7 +22,7 @@ export class BarNecro extends SpellEffect {
     this.flagCasterName(caster.name);
 
     if(!this.duration) this.duration = 100 * this.potency;
-    this.updateDurationBasedOnTraits(caster);
+    this.updateBuffDurationBasedOnTraits(caster);
 
     if(caster !== target) {
       this.casterEffectMessage(caster, { message: `You cast BarNecro on ${target.name}.`, sfx: 'spell-buff-protection' });

@@ -8,7 +8,7 @@ export class AncientForce extends AncientTrait {
   static icon = 'crossed-swords';
 
   static upgrades = [
-    { }, { }, { }, { }, { }
+    { }, { }, { capstone: true }
   ];
 
   static usageModifier(level: number): number {

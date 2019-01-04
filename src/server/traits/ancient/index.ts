@@ -4,6 +4,7 @@ export * from './AncientAura';
 export * from './AncientBlizzard';
 export * from './AncientDefense';
 export * from './AncientEnergy';
+export * from './AncientEnhancement';
 export * from './AncientForce';
 export * from './AncientForge';
 export * from './AncientGrip';
