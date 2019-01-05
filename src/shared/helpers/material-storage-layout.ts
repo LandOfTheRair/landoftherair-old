@@ -25,7 +25,13 @@ export enum MaterialSlot {
   FrostlandsGourd = 19,
   CatacombsFrostflower = 20,
   SilverScale = 21,
-  SilverScaleRefined = 22
+  SilverScaleRefined = 22,
+  EnchantingEnos = 23,
+  EnchantingOwts = 24,
+  EnchantingDaus = 25,
+  EnchantingOles = 26,
+  MetalworkingDaus = 27,
+  MetalworkingOles = 28
 }
 
 // the valid items for deposit and the slot they map to
@@ -55,7 +61,13 @@ export const ValidMaterialItems = {
   'Frostlands Gourd': MaterialSlot.FrostlandsGourd,
   'Catacombs Frostflower': MaterialSlot.CatacombsFrostflower,
   'Silver Scale': MaterialSlot.SilverScale,
-  'Silver Scale (Refined)': MaterialSlot.SilverScaleRefined
+  'Silver Scale (Refined)': MaterialSlot.SilverScaleRefined,
+  'Enchanting Brick - Enos': MaterialSlot.EnchantingEnos,
+  'Enchanting Brick - Owts': MaterialSlot.EnchantingOwts,
+  'Enchanting Brick - Oles': MaterialSlot.EnchantingOles,
+  'Enchanting Brick - Daus': MaterialSlot.EnchantingDaus,
+  'Titanium Ingot (Oles)': MaterialSlot.MetalworkingOles,
+  'Titanium Ingot (Daus)': MaterialSlot.MetalworkingDaus
 };
 
 export const ReverseValidItems = invertBy(ValidMaterialItems);
@@ -83,12 +95,18 @@ export const MaterialSlotInfo = {
   [MaterialSlot.FrostlandsGourd]:       { sprite: 840,  withdrawInOunces: false },
   [MaterialSlot.CatacombsFrostflower]:  { sprite: 745,  withdrawInOunces: false },
   [MaterialSlot.SilverScale]:           { sprite: 967,  withdrawInOunces: false },
-  [MaterialSlot.SilverScaleRefined]:    { sprite: 967,  withdrawInOunces: false }
+  [MaterialSlot.SilverScaleRefined]:    { sprite: 967,  withdrawInOunces: false },
+  [MaterialSlot.EnchantingEnos]:        { sprite: 616,  withdrawInOunces: false },
+  [MaterialSlot.EnchantingOwts]:        { sprite: 683,  withdrawInOunces: false },
+  [MaterialSlot.EnchantingDaus]:        { sprite: 67,   withdrawInOunces: false },
+  [MaterialSlot.EnchantingOles]:        { sprite: 67,   withdrawInOunces: false },
+  [MaterialSlot.MetalworkingOles]:      { sprite: 68,   withdrawInOunces: false },
+  [MaterialSlot.MetalworkingDaus]:      { sprite: 68,   withdrawInOunces: false }
 };
 
 // these *can* be changed to adjust the layout of the slots
 const RAW_MATERIAL_LAYOUT = [
-  MaterialSlot.CopperOre, MaterialSlot.SilverOre, MaterialSlot.GoldOre, null, null,
+  MaterialSlot.CopperOre, MaterialSlot.SilverOre, MaterialSlot.GoldOre, MaterialSlot.MetalworkingDaus, MaterialSlot.MetalworkingOles,
   MaterialSlot.CopperIngot, MaterialSlot.SilverIngot, MaterialSlot.GoldIngot, null, null,
   MaterialSlot.AntanianTwig, MaterialSlot.AntanianBranch, MaterialSlot.RisanTwig, MaterialSlot.RisanBranch, MaterialSlot.RisanFrozenTwig
 ];
@@ -103,8 +121,13 @@ const SCALE_LAYOUT = [
   MaterialSlot.RedEtherScaleRefined, MaterialSlot.SilverScaleRefined, null, null, null
 ];
 
+const ENCHANTING_LAYOUT = [
+  MaterialSlot.EnchantingEnos, MaterialSlot.EnchantingOwts, MaterialSlot.EnchantingDaus, MaterialSlot.EnchantingOles, null
+];
+
 export const MaterialStorageLayout = [
   { category: 'Natural Resources', layout: RAW_MATERIAL_LAYOUT },
-  { category: 'Flowers',      layout: FLOWER_LAYOUT },
-  { category: 'Scales',       layout: SCALE_LAYOUT }
+  { category: 'Flowers',           layout: FLOWER_LAYOUT },
+  { category: 'Scales',            layout: SCALE_LAYOUT },
+  { category: 'Enchantments',      layout: ENCHANTING_LAYOUT }
 ];
