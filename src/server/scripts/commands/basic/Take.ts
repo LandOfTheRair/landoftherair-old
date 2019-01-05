@@ -17,7 +17,7 @@ export class Take extends Command {
 
     let [itemTypeOrName, container] = args.split(' ');
 
-    itemTypeOrName = itemTypeOrName.toLowerCase();
+    itemTypeOrName = itemTypeOrName.toLowerCase().split(' ').join('');
     container = (container || 'sack').toLowerCase();
 
     if(!includes(['belt', 'sack', 'pouch'], container)) return player.sendClientMessage('Invalid container.');
@@ -33,7 +33,7 @@ export class Take extends Command {
 
       if(itemTypeOrName === 'any') takeItemSlot = i;
       if(checkItem.itemClass.toLowerCase() === itemTypeOrName) takeItemSlot = i;
-      if(includes(checkItem.name.toLowerCase(), itemTypeOrName)) takeItemSlot = i;
+      if(includes(checkItem.name.toLowerCase().split(' ').join(''), itemTypeOrName)) takeItemSlot = i;
     }
 
     if(takeItemSlot === -1) return player.sendClientMessage('Item was not found.');

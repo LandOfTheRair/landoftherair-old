@@ -16,7 +16,7 @@ export class Place extends Command {
 
     let [itemTypeOrName, container] = args.split(' ');
 
-    itemTypeOrName = itemTypeOrName.toLowerCase();
+    itemTypeOrName = itemTypeOrName.toLowerCase().split(' ').join('');
     container = (container || 'sack').toLowerCase();
 
     if(!includes(['belt', 'sack', 'pouch'], container)) return player.sendClientMessage('Invalid container.');
@@ -26,11 +26,11 @@ export class Place extends Command {
 
     if(player.rightHand
     && (player.rightHand.itemClass.toLowerCase() === itemTypeOrName
-    || includes(player.rightHand.name.toLowerCase(), itemTypeOrName))) { hand = 'right'; item = player.rightHand; }
+    || includes(player.rightHand.name.toLowerCase().split(' ').join(''), itemTypeOrName))) { hand = 'right'; item = player.rightHand; }
 
     if(player.leftHand
     && (player.leftHand.itemClass.toLowerCase() === itemTypeOrName
-    || includes(player.leftHand.name.toLowerCase(), itemTypeOrName))) { hand = 'left'; item = player.leftHand; }
+    || includes(player.leftHand.name.toLowerCase().split(' ').join(''), itemTypeOrName))) { hand = 'left'; item = player.leftHand; }
 
     if(!item) return;
 
