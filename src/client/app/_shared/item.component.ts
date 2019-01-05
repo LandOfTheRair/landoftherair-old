@@ -346,6 +346,16 @@ export class ItemComponent implements OnDestroy {
       return;
 
     } else if(this.context !== 'Ground' && this.context !== 'GroundGroup') {
+      if(this.context === 'Right' || this.context === 'Left') {
+        this.doColyseusMoveAction('B');
+        return;
+      }
+
+      if(this.context === 'Belt') {
+        this.doColyseusMoveAction('R');
+        return;
+      }
+
       this.doColyseusMoveAction('G');
       return;
 

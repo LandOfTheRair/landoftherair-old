@@ -284,7 +284,7 @@ export class Item implements IItem {
   }
 
   canUse(char: ICharacter): boolean {
-    return (this.itemClass === 'Box' || (this.itemClass === 'Book' && this.bookItemFilter) || this.effect || this.succorInfo || this.ounces >= 0)
+    return (this.itemClass === 'Box' || (this.itemClass === 'Book' && this.bookItemFilter) || (this.effect && this.effect.uses) || this.succorInfo || this.ounces >= 0)
       && this.itemClass !== 'Trap'
       && this.hasCondition()
       && this.isOwnedBy(char);
