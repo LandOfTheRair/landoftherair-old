@@ -5,6 +5,7 @@ export * from './metalworking/smelt';
 export * from './metalworking/upgrade';
 
 export * from './spellforging/disenchant';
+export * from './spellforging/disenchantall';
 export * from './spellforging/enchant';
 export * from './spellforging/forge';
 

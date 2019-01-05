@@ -6,9 +6,13 @@
       <div class="row">
 
         <div class="col-4 text-center">
+          <select class="form-control" [(ngModel)]="disenchantType" placeholder="Select Item Type...">
+            <option value="Single">Single Item</option>
+            <option *ngFor="let itemType of allSackItemTypes">{{ itemType }}</option>
+          </select>
         </div>
         <div class="col-4 text-center">
-          <button class="btn btn-warning btn-block" [disabled]="disenchantDisabled" (click)="disenchant()">Disenchant</button>
+          <button class="btn btn-warning btn-block" [disabled]="disenchantDisabled" (click)="disenchantType === 'Single' ? disenchant() : disenchantall()">Disenchant {{ disenchantType === 'Single' ? '' : ' All'}}</button>
         </div>
         <div class="col-4 text-center">
           <button class="btn btn-primary btn-block" [disabled]="enchantDisabled" (click)="enchant()">Enchant</button>

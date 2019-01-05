@@ -219,7 +219,7 @@ export class AppComponent implements OnInit {
   public newMessages = 0;
 
   private macroIgnoreWindows = {
-    cmd: true, lobby: true, bank: true, shop: true, marketboard: true, party: true, commandLine: true, journal: true
+    cmd: true, lobby: true, bank: true, shop: true, marketboard: true, party: true, commandLine: true, journal: true, tradeskillSpellforging: true
   };
 
   get windowLocations() {

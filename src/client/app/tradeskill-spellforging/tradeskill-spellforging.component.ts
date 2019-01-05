@@ -6,6 +6,7 @@ import { toRoman } from 'roman-numerals';
 import { Item } from '../../../shared/models/item';
 import { SpellforgingHelper } from '../../../server/helpers/tradeskill/spellforging-helper';
 import { ItemUpgrade } from '../../../shared/interfaces/item';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-tradeskill-spellforging',
@@ -13,6 +14,8 @@ import { ItemUpgrade } from '../../../shared/interfaces/item';
   styleUrls: ['./tradeskill-spellforging.component.scss']
 })
 export class TradeskillSpellforgingComponent {
+
+  public disenchantType = 'Single';
 
   get player() {
     return this.colyseusGame.character;
@@ -37,7 +40,7 @@ export class TradeskillSpellforgingComponent {
   }
 
   get disenchantDisabled(): boolean {
-    return !this.player.tradeSkillContainers.spellforging.modifyItem || !!this.player.tradeSkillContainers.spellforging.reagent;
+    return (!this.player.tradeSkillContainers.spellforging.modifyItem || !!this.player.tradeSkillContainers.spellforging.reagent) && this.disenchantType === 'Single';
   }
 
   get enchantDisabled(): boolean {
@@ -68,6 +71,16 @@ export class TradeskillSpellforgingComponent {
 
   get successChance(): number {
     return SpellforgingHelper.successPercent(this.player);
+  }
+
+  get allSackItemTypes() {
+    if(!this.colyseusGame.character) return [];
+
+    return _(this.colyseusGame.character.sack.allItems)
+      .map('itemClass')
+      .uniq()
+      .sort()
+      .value();
   }
 
   constructor(public colyseusGame: ColyseusGameService) { }
@@ -102,6 +115,10 @@ export class TradeskillSpellforgingComponent {
 
   enchant() {
     this.colyseusGame.sendRawCommand('enchant', this.colyseusGame.showSpellforging.uuid);
+  }
+
+  disenchantall() {
+    this.colyseusGame.sendRawCommand('disenchantall', `${this.colyseusGame.showSpellforging.uuid} ${this.disenchantType}`);
   }
 
 }
