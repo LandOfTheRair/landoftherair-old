@@ -119,7 +119,9 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   private setCurrentItemDescription(str: string) {
-    this.currentItemDescription = str;
+    setTimeout(() => {
+      this.currentItemDescription = str;
+    }, 0);
   }
 
 }
