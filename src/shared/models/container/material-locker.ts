@@ -18,8 +18,8 @@ export class MaterialLocker extends Container {
   }
 
   addItem(item: IItem, index?: number, extra?: any): string {
-    if(!extra) return 'You cannot add things to material storage like that.';
-    if(!this.canAccept(item)) return 'That item is not a valid material.';
+    if(!extra) return `You cannot add "${item.name}" to material storage like that.`;
+    if(!this.canAccept(item)) return `${item.name} item is not a valid material.`;
 
     const { maxSize } = extra;
 
@@ -37,7 +37,7 @@ export class MaterialLocker extends Container {
         this.items[desiredIndex] = copy;
         copy.sprite = slotInfo.sprite;
 
-        return 'Not all of the items fit in your material storage.';
+        return `Not all of the ${item.desc} fit in your material storage.`;
 
       // if it fits, let it in
       } else {
@@ -56,7 +56,7 @@ export class MaterialLocker extends Container {
 
     if(totalAddOunces !== baseAddOunces) {
       if(item.ounces > 0) item.ounces -= totalAddOunces;
-      return 'Not all of the items fit in your material storage.';
+      return `Not all of the ${item.desc} fit in your material storage.`;
     }
   }
 

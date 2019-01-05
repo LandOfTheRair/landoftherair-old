@@ -33,4 +33,8 @@ export class LockersComponent {
   constructor(public colyseusGame: ColyseusGameService) {
     this.slots = Array(this.maxSize).fill(null).map((v, i) => i).reverse();
   }
+
+  public depositAll() {
+    this.colyseusGame.sendRawCommand('~depositall', '');
+  }
 }

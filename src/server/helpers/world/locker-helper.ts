@@ -8,6 +8,7 @@ import { MaterialLocker } from '../../../shared/models/container/material-locker
 
 const MATERIAL_STORAGE_LOCKER_ID = -500;
 const MATERIAL_STORAGE_LOCKER_REGION = 'Material';
+const MATERIAL_STORAGE_LOCKER_ID_NAME = 'materials';
 
 export class LockerHelper {
 
@@ -74,7 +75,7 @@ export class LockerHelper {
     );
   }
 
-  async loadLocker(player: Player, regionId, lockerId, isGlobal: boolean): Promise<Locker> {
+  async loadLocker(player: Player, regionId, lockerId, isGlobal = false): Promise<Locker> {
     const currentRegionId = player.$$room.mapRegion;
     if(!isGlobal && regionId !== 'Material' && regionId !== 'Shared' && currentRegionId !== regionId) return null;
 
@@ -93,9 +94,10 @@ export class LockerHelper {
     if(startsWith(lockerId, 'material')) {
       regionId = MATERIAL_STORAGE_LOCKER_REGION;
       charSlot = MATERIAL_STORAGE_LOCKER_ID;
+      lockerId = MATERIAL_STORAGE_LOCKER_ID_NAME;
     }
 
-    player.$$locker = DB.$characterLockers.findOne({ username: player.username, charSlot, regionId, lockerId })
+    player.$$locker = await DB.$characterLockers.findOne({ username: player.username, charSlot, regionId, lockerId })
       .then(lock => {
         if(!lock || !lock.lockerId) return null;
 

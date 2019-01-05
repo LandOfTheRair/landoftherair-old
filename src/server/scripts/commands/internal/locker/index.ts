@@ -1,3 +1,4 @@
+export * from './depositall';
 export * from './locker-to-left';
 export * from './locker-to-right';
 export * from './locker-to-ground';
