@@ -533,7 +533,7 @@ export class Character implements ICharacter {
   itemCheck(item: IItem) {
     if(!item) return;
     if(item.itemClass === 'Corpse') return;
-    if(item.binds && !item.owner) {
+    if(item.binds && !item.owner && item.setOwner) {
       item.setOwner(this);
       if(item.tellsBind) {
         this.sendClientMessageToRadius({
