@@ -1123,6 +1123,18 @@
             "Rapidpunch"
         ]
     },
+    "Supersweep0": {
+        "name": "Supersweep0",
+        "traitName": "Supersweep",
+        "desc": "Sweep can now hit an additional tile away.",
+        "icon": "foot-trip",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 3,
+        "unlockedBy": [
+            "Sweep"
+        ]
+    },
     "Shield": {
         "name": "Shield",
         "desc": "Increase your physical and magical resistance.",
@@ -1142,7 +1154,8 @@
         "requireSkillLevel": 13,
         "cost": 3,
         "unlocks": [
-            "ImprovedSweep0"
+            "ImprovedSweep0",
+            "Supersweep0"
         ],
         "cluster": 3,
         "unlockedBy": [
@@ -1604,6 +1617,18 @@
             "DoubleThrust0"
         ]
     },
+    "Superstrike0": {
+        "name": "Superstrike0",
+        "traitName": "Superstrike",
+        "desc": "Multistrike can now hit an additional tile away.",
+        "icon": "sword-spin",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 4,
+        "unlockedBy": [
+            "Multistrike"
+        ]
+    },
     "Provoke": {
         "name": "Provoke",
         "desc": "Provoke a single creature.",
@@ -1627,7 +1652,8 @@
         "cost": 3,
         "unlocks": [
             "Multitarget0",
-            "Multifocus0"
+            "Multifocus0",
+            "Superstrike0"
         ],
         "cluster": 4,
         "unlockedBy": [

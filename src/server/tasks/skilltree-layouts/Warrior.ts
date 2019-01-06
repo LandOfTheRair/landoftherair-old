@@ -297,13 +297,17 @@ const MONK_TREE = {
 
   },
 
+  Supersweep0: {
+
+  },
+
   // SKILLS
   Shield: {
 
   },
 
   Sweep: {
-    unlocks: ['ImprovedSweep0']
+    unlocks: ['ImprovedSweep0', 'Supersweep0']
   },
 
   Rapidpunch: {
@@ -425,13 +429,17 @@ const PALADIN_TREE = {
 
   },
 
+  Superstrike0: {
+
+  },
+
   // SKILLS
   Provoke: {
     unlocks: ['PhysicalShielding0']
   },
 
   Multistrike: {
-    unlocks: ['Multitarget0', 'Multifocus0']
+    unlocks: ['Multitarget0', 'Multifocus0', 'Superstrike0']
   },
 
   Blindstrike: {
