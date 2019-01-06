@@ -164,6 +164,11 @@ export abstract class Skill extends Command {
   }
 
   async facilitateSteal(user: Character, target: Character) {
+    
+    if((<any>target).hostility === 'Never') {
+      user.sendClientMessage('What are you doing?');
+      return;
+    }
 
     if(target.sack.allItems.length === 0 && target.currentGold <= 0) {
       user.sendClientMessage('You can\'t seem to find anything to take!');
