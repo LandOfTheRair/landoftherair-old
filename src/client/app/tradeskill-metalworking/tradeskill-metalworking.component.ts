@@ -29,6 +29,14 @@ export class TradeskillMetalworkingComponent {
     return this.colyseusGame.character;
   }
 
+  get craftItem() {
+    return this.player.tradeSkillContainers.metalworking.craftItem;
+  }
+
+  get craftReagent() {
+    return this.player.tradeSkillContainers.metalworking.craftReagent;
+  }
+
   get ingotTypes(): string[] {
     if(!this.player || !this.player.tradeSkillContainers) return [];
     return Object.keys(this.player.tradeSkillContainers.metalworking.oreValues).map(x => capitalize(x));
@@ -40,8 +48,8 @@ export class TradeskillMetalworkingComponent {
 
   get craftDisabled(): boolean {
     if(!this.player || !this.player.tradeSkillContainers) return true;
-    const item = this.player.tradeSkillContainers.metalworking.craftItem;
-    const reagent = this.player.tradeSkillContainers.metalworking.craftReagent;
+    const item = this.craftItem;
+    const reagent = this.craftReagent;
     return !item || !reagent;
   }
 
@@ -50,6 +58,14 @@ export class TradeskillMetalworkingComponent {
     const item = this.player.tradeSkillContainers.metalworking.upgradeItem;
     const reagent = this.player.tradeSkillContainers.metalworking.upgradeReagent;
     return !item || !reagent;
+  }
+
+  get overOunceError(): string {
+    if(
+       (this.craftItem && this.craftItem.ounces > 1)
+    || (this.craftReagent && this.craftReagent.ounces > 1)
+    ) return 'Warning! You only need 1oz of item, but there is more here. It will be entirely consumed. To split stack, place in material storage and withdraw 1oz.';
+    return '';
   }
 
   get showInfo(): boolean {

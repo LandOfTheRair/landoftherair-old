@@ -58,6 +58,10 @@
 
       </div>
 
+      <div class="row my-3" *ngIf="!craftDisabled && overOunceError">
+        <div class="col text-center text-danger">{{ overOunceError }}</div>
+      </div>
+
       <div class="row mt-3">
         <div class="col-8 text-center">
           <h3 class="title">Upgrade Item</h3>
