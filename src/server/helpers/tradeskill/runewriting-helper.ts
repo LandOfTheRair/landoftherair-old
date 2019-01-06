@@ -19,6 +19,12 @@ export class RunewritingHelper {
 
     const effect = blood.stats.effect;
 
+    if(!effect || !effect.potency) {
+      player.sendClientMessage('The blood is empty.');
+      player.gainSkill(SkillClassNames.Runewriting, 1);
+      player.setLeftHand(null);
+    }
+
     const failChance = effect ? (5 + (effect.potency / 2) - mySkill) * 5 : 100;
 
     if(failChance > 0 && RollerHelper.XInOneHundred(failChance)) {
