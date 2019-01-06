@@ -1044,6 +1044,13 @@ export class Character implements ICharacter {
     }
   }
 
+  isValidTargetForSkillGain(target: Character): boolean {
+    if(!target) return false;
+    if((<any>target).hostility === 'Never') return false;
+    if(target.$$owner) return false;
+    return true;
+  }
+
   gainSkill(type, skillGained = 1, bypassRoomCap = false) {
     if(!this.isValidSkill(type)) return;
 

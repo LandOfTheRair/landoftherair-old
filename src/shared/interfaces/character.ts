@@ -333,6 +333,7 @@ export interface ICharacter {
 
   loseExpOrSkill(opts): void;
 
+  isValidTargetForSkillGain(char: ICharacter): boolean;
   isValidSkill(type: string);
   flagSkill(skills: string[]): void;
   gainCurrentSkills(skillGained: number): void;

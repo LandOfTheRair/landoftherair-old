@@ -857,7 +857,9 @@ export class CombatHelper {
       return { noDamage: true };
     }
 
-    attacker.gainCurrentSkills(1);
+    if(attacker.isValidTargetForSkillGain(defender)) {
+      attacker.gainCurrentSkills(1);
+    }
 
     return { hit: true, damage, dealtBy: attackerWeapon.itemClass.toLowerCase(), damageType };
   }
