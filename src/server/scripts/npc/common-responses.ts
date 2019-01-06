@@ -34,6 +34,7 @@ export const TannerResponses = (npc: NPC) => {
           return;
         }
 
+
         if(!includes(corpse.playersHeardDeath, player.username)) {
           player.sendClientMessageFromNPC(npc, `You didn't have a hand in killing the ${corpse.desc.split('the corpse of a ')[1]}!`);
           return;

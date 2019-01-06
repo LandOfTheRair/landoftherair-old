@@ -13,7 +13,7 @@ export class Swashbuckler extends Trait {
   ];
 
   static usageModifier(level: number): number {
-    return Math.max(0.025, 1 - (level * 0.125));
+    return Math.min(1, (level * 0.125));
   }
 
 }

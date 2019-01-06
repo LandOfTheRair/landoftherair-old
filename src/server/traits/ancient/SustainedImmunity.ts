@@ -12,7 +12,7 @@ export class SustainedImmunity extends AncientTrait {
   ];
 
   static usageModifier(level: number): number {
-    return Math.max(0, 1 - (0.2 * level));
+    return (0.2 * level);
   }
 
 }

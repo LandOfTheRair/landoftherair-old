@@ -75,7 +75,8 @@ export class CombatHelper {
     const baseTier = base * tier;
 
     // try to flub
-    const didFlub = RollerHelper.XInOneHundred(weakChance * attacker.getTraitLevelAndUsageModifier('Swashbuckler'));
+    const swashLevel = 1 - attacker.getTraitLevelAndUsageModifier('Swashbuckler');
+    const didFlub = RollerHelper.XInOneHundred(weakChance * swashLevel);
 
     const bonusRolls = didFlub ? minTier : random(minTier, maxTier);
 

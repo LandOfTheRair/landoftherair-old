@@ -30,7 +30,7 @@ export class Immobilize extends SpellEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     if(target.getTotalStat('str') > 25) return;
 
-    this.duration = Math.floor(Math.max(2, 20 - target.getTotalStat('str')) / caster.getTraitLevelAndUsageModifier('SustainedImmunity'));
+    this.duration = Math.floor(Math.max(2, 20 - target.getTotalStat('str')) / (1 - caster.getTraitLevelAndUsageModifier('SustainedImmunity')));
     target.applyEffect(this);
   }
 

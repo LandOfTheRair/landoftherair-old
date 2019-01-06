@@ -12,7 +12,7 @@ export class RecentlyDebilitated extends SpellEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = Math.floor((this.duration || 60) / caster.getTraitLevelAndUsageModifier('SustainedImmunity'));
+    this.duration = Math.floor((this.duration || 60) / (1 - caster.getTraitLevelAndUsageModifier('SustainedImmunity')));
     this.potency = Math.floor(target.getTotalStat('perception') / 10);
     target.applyEffect(this);
   }
