@@ -13,7 +13,7 @@ export class Multistrike extends WeaponEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     const numTargets = 3 + caster.getTraitLevelAndUsageModifier('Multitarget');
 
-    const attacked = target.$$room.state.getAllInRange(target, 0, [caster.uuid]).slice(0, numTargets);
+    const attacked = target.$$room.state.getAllInRange(target, caster.getTraitLevel('Supersweep'), [caster.uuid]).slice(0, numTargets);
 
     attacked.forEach(refTarget => {
       if(caster.isPlayer() && refTarget.isPlayer()) return;

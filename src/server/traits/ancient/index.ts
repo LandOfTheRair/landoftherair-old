@@ -20,4 +20,6 @@ export * from './AncientTechnique';
 
 export * from './Clearcasting';
 export * from './DarknessClones';
+export * from './Superstrike';
+export * from './Supersweep';
 export * from './SustainedImmunity';

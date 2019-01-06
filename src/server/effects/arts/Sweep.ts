@@ -13,7 +13,7 @@ export class Sweep extends WeaponEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     const numTargets = 9;
 
-    const attacked = target.$$room.state.getAllInRange(target, 0, [caster.uuid], false ).slice(0, numTargets);
+    const attacked = target.$$room.state.getAllInRange(target, caster.getTraitLevel('Supersweep'), [caster.uuid], false ).slice(0, numTargets);
 
     const damageMult = 1 + caster.getTraitLevelAndUsageModifier('ImprovedSweep');
 
