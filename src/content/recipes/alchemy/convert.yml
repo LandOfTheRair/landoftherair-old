@@ -1,0 +1,33 @@
+
+- item: Copper Ore (Large)
+  skillGained: 5
+  maxSkillForGains: 3
+  xpGained: 100
+  ingredients:
+    - Copper Ore (Small)
+    - Copper Ore (Small)
+    - Copper Ore (Small)
+    - Copper Ore (Small)
+    - Copper Ore (Small)
+
+- item: Silver Ore (Large)
+  skillGained: 5
+  maxSkillForGains: 3
+  xpGained: 100
+  ingredients:
+    - Silver Ore (Small)
+    - Silver Ore (Small)
+    - Silver Ore (Small)
+    - Silver Ore (Small)
+    - Silver Ore (Small)
+
+- item: Gold Ore (Large)
+  skillGained: 5
+  maxSkillForGains: 3
+  xpGained: 100
+  ingredients:
+    - Gold Ore (Small)
+    - Gold Ore (Small)
+    - Gold Ore (Small)
+    - Gold Ore (Small)
+    - Gold Ore (Small)
