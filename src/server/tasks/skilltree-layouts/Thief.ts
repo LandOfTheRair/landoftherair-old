@@ -143,6 +143,10 @@ const NINJA_TREE = {
 
   },
 
+  DarknessClones0: {
+
+  },
+
   // SKILLS
   Darkness: {
     unlocks: ['DarknessWiden0', 'ShadowMeld', 'ShadowClones']
@@ -157,7 +161,7 @@ const NINJA_TREE = {
   },
 
   ShadowClones: {
-
+    unlocks: ['DarknessClones0']
   },
 
   TrueSight: {

@@ -170,6 +170,10 @@ export class ChannelShadowClones extends ChanneledSpellEffect {
 
         npc.recalculateStats();
 
+        if(char.getTraitLevel('DarknessClones')) {
+          npc.usableSkills = ['Hide', 'ShadowMeld', 'Backstab'];
+        }
+
         // make them know each other
         char.$$pets = char.$$pets || [];
         char.$$pets.push(npc);

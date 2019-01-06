@@ -533,6 +533,18 @@
             "Darkness"
         ]
     },
+    "DarknessClones0": {
+        "name": "DarknessClones0",
+        "traitName": "DarknessClones",
+        "desc": "Allow your shadow clones to Hide, Shadow Meld, and Backstab.",
+        "icon": "backup",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 2,
+        "unlockedBy": [
+            "ShadowClones"
+        ]
+    },
     "Darkness": {
         "name": "Darkness",
         "desc": "Drop an area darkness effect on the target (3x3). Allows directional targeting. Cost: 25 MP",
@@ -580,6 +592,9 @@
         "icon": "dark-squad",
         "iconColor": "#111",
         "cost": 3,
+        "unlocks": [
+            "DarknessClones0"
+        ],
         "cluster": 2,
         "unlockedBy": [
             "Darkness"

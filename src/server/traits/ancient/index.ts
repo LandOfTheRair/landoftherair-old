@@ -19,4 +19,5 @@ export * from './AncientSkin';
 export * from './AncientTechnique';
 
 export * from './Clearcasting';
+export * from './DarknessClones';
 export * from './SustainedImmunity';
