@@ -1293,8 +1293,7 @@ export class Character implements ICharacter {
       if(this.agro[uuid] <= 0) this.removeAgroUUID(char.uuid);
     };
 
-    value = Math.floor(value * char.getTraitLevelAndUsageModifier('AncientTechnique'));
-
+    value = Math.floor(value * (1 - char.getTraitLevelAndUsageModifier('AncientTechnique')));
     agroAdd(char.uuid, value);
 
     if(char.isPlayer() && value > 0) {

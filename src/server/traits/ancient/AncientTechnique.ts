@@ -12,7 +12,7 @@ export class AncientTechnique extends AncientTrait {
   ];
 
   static usageModifier(level: number): number {
-    return 1 - (0.1 * level);
+    return (0.1 * level);
   }
 
 }
