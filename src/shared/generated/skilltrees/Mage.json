@@ -1261,10 +1261,25 @@
             "FindFamiliar",
             "RiftSlash",
             "MagicalReinforcement0",
-            "CrossoverKnowledge0"
+            "LearnedStrikes0"
         ],
         "name": "Battlemage",
         "cluster": 4
+    },
+    "LearnedStrikes0": {
+        "name": "LearnedStrikes0",
+        "traitName": "LearnedStrikes",
+        "desc": "Gain weapon skill with each strike.",
+        "icon": "rune-sword",
+        "capstone": true,
+        "cost": 10,
+        "unlocks": [
+            "CrossoverKnowledge0"
+        ],
+        "cluster": 4,
+        "unlockedBy": [
+            "Battlemage"
+        ]
     },
     "CrossoverKnowledge0": {
         "name": "CrossoverKnowledge0",
@@ -1275,7 +1290,7 @@
         "cost": 15,
         "cluster": 4,
         "unlockedBy": [
-            "Battlemage"
+            "LearnedStrikes0"
         ]
     },
     "MagicalReinforcement0": {
