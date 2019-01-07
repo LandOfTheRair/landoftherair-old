@@ -37,4 +37,5 @@ export * from './VolcanoStanceImproved';
 export * from './GlacierStanceImproved';
 
 export * from './MagicalReinforcement';
+export * from './LearnedStrikes';
 export * from './CrossoverKnowledge';

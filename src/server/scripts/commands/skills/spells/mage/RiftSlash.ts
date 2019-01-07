@@ -8,6 +8,7 @@ import { MessageHelper } from '../../../../../helpers/world/message-helper';
 import { Player } from '../../../../../../shared/models/player';
 import { RollerHelper } from '../../../../../../shared/helpers/roller-helper';
 import { Drain } from '../../../../../effects';
+import { SkillClassNames } from '../../../../../../shared/interfaces/character';
 
 export class RiftSlash extends Skill {
 
@@ -54,6 +55,9 @@ export class RiftSlash extends Skill {
 
     user.$$room.teleport(user, { x: target.x, y: target.y });
     user.$$room.updatePos(user);
+
+    if((user.baseClass === 'Warrior' || user.getTraitLevel('LearnedStrikes'))
+    && user.isValidTargetForSkillGain(target)) user.gainSkill(user.rightHand ? user.rightHand.itemClass : SkillClassNames.Martial, 1);
 
     CombatHelper.physicalAttack(user, target, { attackRange: this.range(user) });
 

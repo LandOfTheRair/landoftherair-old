@@ -339,10 +339,14 @@ const BATTLEMAGE_TREE = {
     unbuyable: true,
     root: true,
     desc: 'The Battlemage applies their extensive magic knowledge to physical combat, and they are also capable of conjuring familiars to help.',
-    unlocks: ['LightenArmor0', 'BladedWands0', 'StrongMind0', 'FindFamiliar', 'RiftSlash', 'MagicalReinforcement0', 'CrossoverKnowledge0']
+    unlocks: ['LightenArmor0', 'BladedWands0', 'StrongMind0', 'FindFamiliar', 'RiftSlash', 'MagicalReinforcement0', 'LearnedStrikes0']
   },
 
   // TRAITS
+  LearnedStrikes0: {
+    unlocks: ['CrossoverKnowledge0']
+  },
+
   CrossoverKnowledge0: {
 
   },

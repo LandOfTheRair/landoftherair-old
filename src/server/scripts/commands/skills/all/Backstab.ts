@@ -70,6 +70,8 @@ export class Backstab extends Skill {
     MoveHelper.move(user, { room: user.$$room, gameState: user.$$room.state, x: xDiff, y: yDiff }, true);
     user.$$room.updatePos(user);
 
+    if((user.baseClass === 'Warrior' || user.getTraitLevel('LearnedStrikes'))
+    && user.isValidTargetForSkillGain(target)) user.gainSkill(user.rightHand ? user.rightHand.itemClass : SkillClassNames.Martial, 1);
     CombatHelper.physicalAttack(user, target, { isBackstab: true, attackRange: this.range(user) });
   }
 

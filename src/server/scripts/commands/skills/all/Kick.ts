@@ -43,7 +43,8 @@ export class Kick extends Skill {
   use(user: Character, target: Character) {
 
     /** PERK:CLASS:WARRIOR:Warriors gain skill on physical hits. */
-    if(user.baseClass === 'Warrior') user.gainSkill(SkillClassNames.Martial, 1);
+    if((user.baseClass === 'Warrior' || user.getTraitLevel('LearnedStrikes'))
+      && user.isValidTargetForSkillGain(target)) user.gainSkill(SkillClassNames.Martial, 1);
     CombatHelper.physicalAttack(user, target, { attackRange: 0, isKick: true });
   }
 
