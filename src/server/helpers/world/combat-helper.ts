@@ -246,6 +246,12 @@ export class CombatHelper {
     return criticality;
   }
 
+  private static determineIfTarget(attacker: Character, defender: Character): string {
+    if(!defender) return null;
+    if(defender.agro[attacker.uuid]) return defender.uuid;
+    return null;
+  }
+
   private static doPhysicalAttack(attacker: Character, defender: Character, opts: any = {}) {
     const { isThrow, throwHand, isMug, isAssassinate, attackRange, isOffhand, isKick, isRiposte, damageMult } = opts;
     let { isPunch, isBackstab, accuracyLoss } = opts;
@@ -260,7 +266,7 @@ export class CombatHelper {
         attacker.sendClientMessage({
           message: `Your shadow daggers unsheathe themselves and attempt to strike ${defender.name}!`,
           subClass: 'combat self hit',
-          target: defender.uuid
+          target: this.determineIfTarget(attacker, defender)
         }, true);
         isBackstab = true;
         backstabIgnoreRange = true;
@@ -414,27 +420,28 @@ export class CombatHelper {
 
     if(attacker.hasEffect('Dangerous')) isFumble = false;
 
+    defender.addAgro(attacker, 1);
+
     if(attacker.rightHand && (isFumble || !attackerWeapon.canUseInCombat(attacker))) {
       if(!isThrow || (isThrow && !attackerWeapon.returnsOnThrow)) {
         attacker.$$room.addItemToGround(attacker, attacker.rightHand);
         attacker.setRightHand(null);
       }
 
-      attacker.sendClientMessage({ message: failMsg, target: defender.uuid }, true);
+      attacker.sendClientMessage({ message: failMsg, target: this.determineIfTarget(attacker, defender) }, true);
       return;
     }
 
     if(isPunch && attackerWeapon.itemClass !== 'Hands' && (isFumble || !attackerWeapon.canUseInCombat(attacker))) {
       attacker.$$room.addItemToGround(attacker, attackerWeapon);
       attacker.unequip('Hands');
-      attacker.sendClientMessage({ message: failMsg, target: defender.uuid }, true);
+      attacker.sendClientMessage({ message: failMsg, target: this.determineIfTarget(attacker, defender) }, true);
       return;
     }
 
     const lostAtkCondition = 1 - (attacker.getTraitLevelAndUsageModifier('CarefulTouch'));
     const totalConditionDamageDone = this.calcDurabilityDamageDoneBasedOnDefender(attackerWeapon, attacker, defender, lostAtkCondition);
     attackerWeapon.loseCondition(totalConditionDamageDone, () => attacker.recalculateStats());
-    defender.addAgro(attacker, 1);
 
     // try to dodge
     const attackerDodgeBlockLeftSide = Math.floor(10 + attackerScope.skill + attackerScope.offense);
@@ -476,7 +483,7 @@ export class CombatHelper {
           message: `You miss!`,
           subClass: 'combat self miss',
           sfx: 'combat-miss',
-          target: defender.uuid,
+          target: this.determineIfTarget(attacker, defender),
           extraData: {
             type: 'miss',
             uuid: attacker.uuid,
@@ -518,7 +525,7 @@ export class CombatHelper {
           message: `You were blocked by armor!`,
           subClass: 'combat self block armor',
           sfx: 'combat-block-armor',
-          target: defender.uuid,
+          target: this.determineIfTarget(attacker, defender),
           extraData: {
             type: 'block-armor',
             uuid: attacker.uuid,
@@ -568,7 +575,7 @@ export class CombatHelper {
           message: `You were blocked by a ${itemTypeToLower}!`,
           subClass: 'combat self block weapon',
           sfx: 'combat-block-weapon',
-          target: defender.uuid,
+          target: this.determineIfTarget(attacker, defender),
           extraData: {
             type: 'block-weapon',
             uuid: attacker.uuid,
@@ -617,7 +624,7 @@ export class CombatHelper {
             message: `You were blocked by a ${itemTypeToLower}!`,
             subClass: 'combat self block shield',
             sfx: 'combat-block-armor',
-            target: defender.uuid,
+            target: this.determineIfTarget(attacker, defender),
             extraData: {
               type: 'block-shield',
               uuid: attacker.uuid,
@@ -667,7 +674,7 @@ export class CombatHelper {
             message: `You were blocked by a ${itemTypeToLower}!`,
             subClass: 'combat self block offhand',
             sfx: 'combat-block-weapon',
-            target: defender.uuid,
+            target: this.determineIfTarget(attacker, defender),
             extraData: {
               type: 'block-offhand',
               uuid: attacker.uuid,
@@ -1062,7 +1069,7 @@ export class CombatHelper {
           attacker.sendClientMessage({
             message: `Your attack is mangled by a magical force!`,
             subClass: `combat self blocked`,
-            target: defender.uuid,
+            target: this.determineIfTarget(attacker, defender),
             extraData: {
               type: 'hit-physical',
               uuid: attacker ? attacker.uuid : get(attackerWeapon, 'owner', '???'),
@@ -1077,7 +1084,7 @@ export class CombatHelper {
           attacker.sendClientMessage({
             message: `Your attack did no visible damage!`,
             subClass: `combat self blocked`,
-            target: defender.uuid,
+            target: this.determineIfTarget(attacker, defender),
             extraData: {
               type: 'hit-physical',
               uuid: attacker ? attacker.uuid : get(attackerWeapon, 'owner', '???'),
@@ -1115,6 +1122,9 @@ export class CombatHelper {
 
     damage = Math.floor(damage);
 
+    defender.addAgro(attacker, damage);
+    if(attacker) attacker.addAgro(defender, damage);
+
     // DAMAGE CAN NOT BE MODIFIED PAST THIS POINT
     const absDmg = Math.round(Math.abs(damage));
     const dmgString = isHeal ? 'health' : `${damageClass} damage`;
@@ -1133,7 +1143,7 @@ export class CombatHelper {
       attacker.sendClientMessage({
         message: `${isRiposte ? 'You riposte the attack!' : formattedAtkMessage} [${absDmg} ${dmgString}]`,
         subClass: `combat ${secondaryClass} ${otherClass} ${damageType} ${isOverTime ? 'out-overtime' : ''}`,
-        target: ignoreTargetChanges ? '' : defender.uuid,
+        target: ignoreTargetChanges ? '' : this.determineIfTarget(attacker, defender),
         sfx: customSfx || CombatHelper.determineSfx({ attackerWeapon, isMelee, damage }),
         extraData: {
           type: 'damage',
@@ -1173,6 +1183,7 @@ export class CombatHelper {
         damage, damageClass
       }));
     }
+
     defender.hp.sub(damage);
 
     if(isNaN(defender.hp.total)) {
@@ -1180,10 +1191,6 @@ export class CombatHelper {
     }
 
     if(defender.$$ai) defender.$$ai.damageTaken.dispatch({ damage, attacker });
-
-
-    defender.addAgro(attacker, damage);
-    if(attacker) attacker.addAgro(defender, damage);
 
     const wasFatal = defender.isDead();
 

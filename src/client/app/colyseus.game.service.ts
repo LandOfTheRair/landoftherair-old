@@ -485,8 +485,6 @@ export class ColyseusGameService {
   }
 
   private setTarget(target: string) {
-    const check = this.clientGameState.mapNPCs[target];
-    if(check && !check.agro[this.character.username]) return;
     this.currentTarget = target;
   }
 

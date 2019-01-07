@@ -191,7 +191,7 @@ export abstract class Skill extends Command {
       if(random(0, stealRoll) < 30 - stealMod) {
         gainThiefSkill(user, 1);
         target.addAgro(user, 1);
-        user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
+        user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.agro[user.uuid] ? target.uuid : '' });
         target.sendClientMessage({ message: `${userName} just tried to steal from you!` });
         return;
       }
@@ -214,13 +214,13 @@ export abstract class Skill extends Command {
       const item = await user.$$room.itemCreator.getGold(stolenGold);
 
       user[`set${handName}`](item);
-      user.sendClientMessage({ message: `You stole ${stolenGold} gold from ${target.name}!`, target: target.uuid });
+      user.sendClientMessage({ message: `You stole ${stolenGold} gold from ${target.name}!`, target: target.agro[user.uuid] ? target.uuid : ''  });
 
     } else if(target.sack.allItems.length > 0) {
       if(random(0, stealRoll) < 60 - stealMod) {
         gainThiefSkill(user, 1);
         target.addAgro(user, 1);
-        user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.uuid });
+        user.sendClientMessage({ message: 'Your stealing attempt was thwarted!', target: target.agro[user.uuid] ? target.uuid : ''  });
         target.sendClientMessage({ message: `${userName} just tried to steal from you!` });
         return;
       }
@@ -232,7 +232,7 @@ export abstract class Skill extends Command {
       target.sack.takeItem(item);
       user[`set${handName}`](item);
 
-      user.sendClientMessage({ message: `You stole a ${item.itemClass.toLowerCase()} from ${target.name}!`, target: target.uuid });
+      user.sendClientMessage({ message: `You stole a ${item.itemClass.toLowerCase()} from ${target.name}!`, target: target.agro[user.uuid] ? target.uuid : ''  });
 
     }
 

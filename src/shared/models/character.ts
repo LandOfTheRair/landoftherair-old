@@ -1283,7 +1283,7 @@ export class Character implements ICharacter {
   }
 
   addAgro(char: ICharacter, value) {
-    if(!char || char === this || (<any>this).hostility === 'Never') return;
+    if(!char || char === this || (<any>this).hostility === 'Never' || char === this.$$owner) return;
 
     // invis is normally removed on agro gain, unless it's permanent
     const invis = char.hasEffect('Invisible');
