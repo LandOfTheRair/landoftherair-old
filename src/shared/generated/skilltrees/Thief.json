@@ -1357,9 +1357,24 @@
         "icon": "bloody-sword",
         "capstone": true,
         "cost": 30,
+        "unlocks": [
+            "PotentApplications0"
+        ],
         "cluster": 4,
         "unlockedBy": [
             "Apply"
+        ]
+    },
+    "PotentApplications0": {
+        "name": "PotentApplications0",
+        "traitName": "PotentApplications",
+        "desc": "Your applications last $600|1800$ seconds longer.",
+        "icon": "bloody-sword",
+        "isAncient": true,
+        "cost": 1,
+        "cluster": 4,
+        "unlockedBy": [
+            "EnhancedApplications0"
         ]
     },
     "TripleShot0": {

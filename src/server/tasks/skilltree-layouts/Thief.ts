@@ -380,6 +380,10 @@ const ASSASSIN_TREE = {
   },
 
   EnhancedApplications0: {
+    unlocks: ['PotentApplications0']
+  },
+
+  PotentApplications0: {
 
   },
 
