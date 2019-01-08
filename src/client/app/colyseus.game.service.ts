@@ -64,6 +64,8 @@ export class ColyseusGameService {
   public currentItemDescription$ = new Subject<string>();
   public currentlySelectedMacro$ = new Subject<Macro>();
 
+  public macroCommand = new Subject<string>();
+
   public debugFOVHide: boolean;
 
   private cancelNextAutoAction: boolean;

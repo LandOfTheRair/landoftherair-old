@@ -80,7 +80,7 @@ export class MacroBarsComponent implements OnInit {
       return;
     }
 
-    this.colyseusGame.currentCommand = `#${macro.macro}`;
+    this.colyseusGame.macroCommand.next(`#${macro.macro}`);
   }
 
   public changeMacroGroup(macroBarIndex, modifier = 0) {

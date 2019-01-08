@@ -31,6 +31,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
   private listener: any;
   private sendListener: any;
+  private macro$: any;
 
   private curIndex = -1;
 
@@ -85,9 +86,7 @@ export class CommandLineComponent implements OnInit, OnDestroy {
 
       this.visibility.emit(true);
 
-      setTimeout(() => {
-        this.cmdEntryInput.nativeElement.focus();
-      }, 0);
+      this.focusSelf();
     };
 
     document.addEventListener('keydown', this.listener);
@@ -103,11 +102,25 @@ export class CommandLineComponent implements OnInit, OnDestroy {
     document.addEventListener('contextmenu', this.sendListener);
 
     if(!this.cmdMode) this.cmdMode = 'cmd';
+
+    this.macro$ = this.colyseusGame.macroCommand.subscribe(command => {
+      this.colyseusGame.currentCommand = command;
+      this.visibility.emit(true);
+
+      this.focusSelf();
+    });
   }
 
   ngOnDestroy() {
     document.removeEventListener('keydown', this.listener);
     document.removeEventListener('contextmenu', this.sendListener);
+    this.macro$.unsubscribe();
+  }
+
+  private focusSelf() {
+    setTimeout(() => {
+      this.cmdEntryInput.nativeElement.focus();
+    }, 0);
   }
 
   sendCommand() {
