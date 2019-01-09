@@ -61,7 +61,9 @@ export class CharacterHelper {
   static strip(char: IPlayer, { x, y }, spread = 0) {
     if(char.hasEffect('Secondwind')) return;
 
-    char.$$statistics.addStrip();
+    if(char.isPlayer()) {
+      char.$$statistics.addStrip();
+    }
 
     this.dropHands(char);
 
