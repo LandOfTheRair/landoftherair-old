@@ -191,7 +191,7 @@ export class NpcsComponent implements OnInit, OnDestroy {
       this.colyseusGame.sendCommandString(this.colyseusGame.currentCommand, npc.uuid);
       this.colyseusGame.currentCommand = '';
 
-    } else {
+    } else if(this.macroService.activeMacro) {
       this.colyseusGame.sendCommandString(this.macroService.activeMacro.macro, npc.uuid);
     }
   }
