@@ -6,6 +6,7 @@ import { isArray, startsWith, includes } from 'lodash';
 import { Skill } from '../base/Skill';
 import { Command } from '../base/Command';
 import { Character } from '../../shared/models/character';
+import { IItem } from '../../shared/interfaces/item';
 
 const commandHash = {};
 const skillHash = {};
@@ -107,7 +108,7 @@ export class CommandExecutor {
       return { wasSuccess: false };
     }
 
-    if(hasLearned.effect) args.effect = hasLearned.effect;
+    if((<IItem>hasLearned).effect) args.effect = (<IItem>hasLearned).effect;
 
     const wasSuccess = await cmd.execute(player, args);
     if(wasSuccess === false) {
