@@ -251,8 +251,14 @@ export class Character implements ICharacter {
         return;
       }
 
-      const eff = new effProto(this.effects[effName]);
-      eff.iconData = this.effects[effName].iconData;
+      const effData = this.effects[effName];
+      if(!Number.isFinite(effData.duration)) {
+        delete this.effects[effName];
+        return;
+      }
+
+      const eff = new effProto(effData);
+      eff.iconData = effData.iconData;
 
       this.effects[effName] = eff;
     });
