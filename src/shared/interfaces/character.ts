@@ -438,7 +438,7 @@ export interface IPlayer extends ICharacter {
   unlearnSpell(skillName: string): void;
   unlearnAll(): void;
   learnSpell(skillName: string, conditional?: SpellLearned): boolean;
-  hasLearned(skillName: string): boolean;
+  hasLearned(skillName: string): boolean|SpellLearned;
 
   teleportToRespawnPoint(): void;
   getBaseSprite(): number;

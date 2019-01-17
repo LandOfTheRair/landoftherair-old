@@ -234,20 +234,20 @@ export class Player extends Character implements IPlayer {
     this.learnedSpells = this.learnedSpells || {};
     const storeName = skillName.toLowerCase();
     if(this.learnedSpells[storeName] === SpellLearned.FromTraits) return false;
+    if(conditional === SpellLearned.FromFate && this.learnedSpells[storeName] !== SpellLearned.FromFate) {
+      this.sendClientMessage(`Divine providence has bestowed the ability to cast ${skillName}!`);
+    }
     if(conditional === SpellLearned.FromItem && !this.learnedSpells[storeName]) {
       this.sendClientMessage(`Your item has bestowed the ability to cast ${skillName}!`);
-    }
-    if(conditional === SpellLearned.FromFate && !this.learnedSpells[storeName]) {
-      this.sendClientMessage(`Divine providence has bestowed the ability to cast ${skillName}!`);
     }
     this.learnedSpells[storeName] = conditional;
     return true;
   }
 
-  hasLearned(skillName) {
+  hasLearned(skillName): boolean|SpellLearned {
     if(this.learnedSpells) {
       const isLearned = this.learnedSpells[skillName.toLowerCase()];
-      if(isLearned === SpellLearned.FromFate || isLearned === SpellLearned.FromTraits) return true;
+      if(isLearned === SpellLearned.FromFate || isLearned === SpellLearned.FromTraits) return isLearned;
 
       if(isLearned === SpellLearned.FromItem) {
         const slot = find(AllNormalGearSlots, itemSlot => {

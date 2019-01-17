@@ -275,7 +275,8 @@ export class Fate extends SpellEffect {
     }
 
     if(learnSpell) {
-      if(char.hasLearned(learnSpell)
+      const learnState = char.hasLearned(learnSpell);
+      if((learnState !== SpellLearned.FromFate && learnState !== SpellLearned.FromTraits)
       || (learnSpell === 'Succor' && char.baseClass === 'Healer')
       || (learnSpell === 'Identify' && (char.baseClass === 'Mage' || char.baseClass === 'Thief'))) {
         message = 'You feel a magical energy encompass you for a moment, then it fades.';
