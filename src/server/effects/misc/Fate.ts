@@ -182,6 +182,12 @@ export class Fate extends SpellEffect {
     { chance: 3000    , result: { message: 'Your chest feels like it\'s on fire!',
         stats: { con: -1, cha: -1 } } },
 
+    { chance: 2500    , result: { message: 'You feel a magical energy fade from you!',
+        unlearnSpell: 'Identify' } },
+
+    { chance: 2500    , result: { message: 'You feel a magical energy fade from you!',
+        unlearnSpell: 'Succor' } },
+
     { chance: 2500    , result: { message: 'You feel like you met your maker!',
         fate: 100 } },
 
@@ -208,7 +214,7 @@ export class Fate extends SpellEffect {
 
     const res = await LootHelper.rollAnyTable(this.resultTable);
     let { message } = res[0];
-    const { stats, alignment, sex, allegiance, effect, effectProto, fate, xp, gold, learnSpell, statBoost } = res[0];
+    const { stats, alignment, sex, allegiance, effect, effectProto, fate, xp, gold, learnSpell, unlearnSpell, statBoost } = res[0];
 
     if(effect && effectProto) {
       const eff = new effectProto(effect);
@@ -282,6 +288,13 @@ export class Fate extends SpellEffect {
         message = 'You feel a magical energy encompass you for a moment, then it fades.';
       } else {
         char.learnSpell(learnSpell, SpellLearned.FromFate);
+      }
+    }
+
+    if(unlearnSpell) {
+      const learnState = char.hasLearned(learnSpell);
+      if(learnState === SpellLearned.FromFate) {
+        char.learnSpell(learnSpell, SpellLearned.Unlearned);
       }
     }
 
