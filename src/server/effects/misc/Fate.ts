@@ -144,6 +144,8 @@ export class Fate extends SpellEffect {
         alignment: 'Evil' } },
 
 
+    { chance: 35000   , result: { message: 'You feel your experience being drained away!',
+        xp: -10 } },
     { chance: 30000   , result: { message: 'You feel your sack get lighter!',
         gold: -100000 } },
     { chance: 25000   , result: { message: 'You feel your sack get heavier!',
@@ -166,6 +168,9 @@ export class Fate extends SpellEffect {
     { chance: 20000   , result: { message: 'Your world view has expanded!',
         stats: { wis: 1 } } },
 
+    { chance: 15000   , result: { message: 'You feel your experience being drained away!',
+        xp: -20 } },
+
     { chance: 10000   , result: { statBoost: 2 } },
 
     { chance: 5000    , result: { message: 'You feel like you can do anything!',
@@ -174,6 +179,9 @@ export class Fate extends SpellEffect {
         stats: { luk: 1 } } },
     { chance: 5000    , result: { message: 'You feel pretty!',
         stats: { cha: 1 } } },
+
+    { chance: 4000    , result: { message: 'You feel your experience being drained away!',
+        xp: -1, megaXp: true } },
 
     { chance: 3000    , result: { message: 'Your chest feels like it\'s on fire!',
         stats: { con: -1, wil: -1 } } },
@@ -214,7 +222,7 @@ export class Fate extends SpellEffect {
 
     const res = await LootHelper.rollAnyTable(this.resultTable);
     let { message } = res[0];
-    const { stats, alignment, sex, allegiance, effect, effectProto, fate, xp, gold, learnSpell, unlearnSpell, statBoost } = res[0];
+    const { stats, alignment, sex, allegiance, effect, effectProto, fate, xp, megaXp, gold, learnSpell, unlearnSpell, statBoost } = res[0];
 
     if(effect && effectProto) {
       const eff = new effectProto(effect);
@@ -260,12 +268,20 @@ export class Fate extends SpellEffect {
 
     if(xp) {
 
-      if(target.level === XPHelper.MAX_LEVEL || target.gainingAP) {
+      if((target.level === XPHelper.MAX_LEVEL && xp > 0) || target.gainingAP) {
         message = 'You feel like you could have learned something, but didn\'t.';
       } else {
-        const baseXp = target.calcLevelXP(target.level);
-        const neededXp = target.calcLevelXP(target.level + 1);
-        const xpChange = Math.floor((neededXp - baseXp) * (xp / 100));
+
+        let xpChange = 0;
+
+        if(megaXp) {
+          xpChange = Math.floor(target.exp * (xp / 100));
+
+        } else {
+          const baseXp = target.calcLevelXP(target.level);
+          const neededXp = target.calcLevelXP(target.level + 1);
+          xpChange = Math.floor((neededXp - baseXp) * (xp / 100));
+        }
 
         char.gainExp(xpChange);
       }
