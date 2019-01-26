@@ -28,7 +28,7 @@ export class Upgrade extends Command {
     const baseUpgrade = container.upgradeReagent;
 
     if(!baseItem || !baseUpgrade) return player.sendClientMessage('You are missing upgrade components!');
-    if(baseUpgrade.itemClass === 'Fur' && get(baseUpgrade, 'previousUpgrades', []).length > 0) {
+    if(baseUpgrade.itemClass === 'Fur' && get(baseUpgrade, 'upgrades', []).length > 0) {
       return player.sendClientMessage('You cannot use upgraded fur to upgrade armor!');
     }
 
