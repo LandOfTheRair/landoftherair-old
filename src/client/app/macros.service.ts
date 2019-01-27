@@ -217,13 +217,14 @@ export class MacroService {
     return !(macro === 'CTRL+A' || macro === 'CTRL+C' || macro === 'CTRL+V');
   }
 
-  public hasMacroMatching(key: string) {
+  public hasMacroMatching(key: string): boolean {
+    if(!key) return false;
     return this.macroMap[key.toUpperCase()];
   }
 
   private watchForMacros() {
     this.macroListener = (ev) => {
-      if(this.shouldIgnoreKeybinds()) return;
+      if(this.shouldIgnoreKeybinds() || !ev || !ev.key) return;
 
       let builtMacro = '';
       if(ev.altKey) builtMacro = 'ALT+';
