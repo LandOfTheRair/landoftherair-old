@@ -40,7 +40,7 @@ export class AuthService {
     } catch(e) {
       throw new Error('Unable to resolve ready for auth.')
     }
-    this.auth0.authorize();
+    this.auth0.authorize({ prompt: 'select_account' });
   }
 
   public async handleAuthentication(): Promise<any> {
