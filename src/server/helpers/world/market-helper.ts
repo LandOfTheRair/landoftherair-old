@@ -74,7 +74,7 @@ export class MarketHelper {
 
         itemOverride: {
           desc: item.desc,
-          enchantLevel: item.enchantLevel,
+          upgrades: item.upgrades,
           shots: item.shots,
           ounces: item.ounces,
           effect: item.effect,
@@ -145,7 +145,7 @@ export class MarketHelper {
       if(itemData.itemOverride.shots) item.shots = itemData.itemOverride.shots;
       if(itemData.itemOverride.ounces) item.ounces = itemData.itemOverride.ounces;
       if(itemData.itemOverride.quality) item.quality = itemData.itemOverride.quality;
-      if(itemData.itemOverride.enchantLevel) item.enchantLevel = itemData.itemOverride.enchantLevel;
+      if(itemData.itemOverride.upgrades) item.upgrades = itemData.itemOverride.upgrades;
       if(itemData.itemOverride.cosmetic) item.cosmetic = itemData.itemOverride.cosmetic;
       item.condition = itemData.itemOverride.condition || 5000;
 
