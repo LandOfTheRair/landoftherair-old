@@ -531,7 +531,7 @@ export class AppComponent implements OnInit {
     $event.stopPropagation();
 
     const { key, shiftKey, altKey, ctrlKey } = $event;
-    if(includes(['Shift', 'Control', 'Alt'], key)) return;
+    if(!key || includes(['Shift', 'Control', 'Alt'], key)) return;
 
     this.currentlyEditingMacro.key = key.toUpperCase();
     this.currentlyEditingMacro.modifiers.shift = shiftKey;
