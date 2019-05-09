@@ -9,8 +9,8 @@
 
         <div class="user" *ngFor="let user of displayAccounts">
           <span *ngIf="getMarkingClass(user)" [ngClass]="['user-marking', getMarkingClass(user)]"></span>
-          <span class="user-name ml-1" [class.afk]="lobby.lobbyState.status[user.username] === 'AFK'">{{ user.username }}</span>
-          <span class="user-ingame float-right" *ngIf="lobby.lobbyState.inGame[user.username] >= 0">
+          <span class="user-name ml-1" [class.afk]="lobby && lobby.lobbyState.status[user.username] === 'AFK'">{{ user.username }}</span>
+          <span class="user-ingame float-right" *ngIf="lobby && lobby.lobbyState.inGame[user.username] >= 0">
             <img src="assets/in-game.png" height="16" width="16" />
           </span>
         </div>
@@ -19,7 +19,7 @@
              tooltip="This user is connected via Discord"
              container="body"
              *ngFor="let user of lobby.lobbyState.discordAccounts"
-             [class.hidden]="lobby.lobbyState.lobbyAccountDiscordHash[user.tag]">
+             [class.hidden]="lobby && lobby.lobbyState.lobbyAccountDiscordHash[user.tag]">
           <span class="user-name ml-1">{{ user.username }}</span>
         </div>
 
