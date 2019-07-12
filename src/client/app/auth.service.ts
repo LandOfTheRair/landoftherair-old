@@ -76,6 +76,7 @@ export class AuthService {
         } else if(err) {
           console.error('AUTH ERROR', err);
           reject(err);
+          throw err;
 
         // already authenticated
         } else {
