@@ -230,10 +230,10 @@ export class D3SkillTree implements D3SkillTreeConfig {
     const zoom = d3
       .zoom()
       .translateExtent([
-        [-this.maxWidth * 0.5, -this.maxHeight * 0.5],
-        [this.maxWidth * 1.5, this.maxHeight]
+        [-this.maxWidth * 2.5, -this.maxHeight * 2.5],
+        [this.maxWidth * 2.5, this.maxHeight * 2.5]
       ])
-      .scaleExtent([0.5, 5])
+      .scaleExtent([0.2, 5])
       .on('zoom', () => {
         this.svg.attr('transform', d3.event.transform);
       });
