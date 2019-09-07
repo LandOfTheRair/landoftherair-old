@@ -1128,8 +1128,10 @@ export class GameWorld extends Room<GameState> implements IGameWorld {
   removeCorpse(corpseRef: Item): void {
     if(corpseRef.heldBy) {
       const player = this.state.findPlayer(corpseRef.heldBy);
-      player.sendClientMessage('The corpse fizzles from your hand.');
-      DeathHelper.corpseCheck(player, corpseRef);
+      if(player) {
+        player.sendClientMessage('The corpse fizzles from your hand.');
+        DeathHelper.corpseCheck(player, corpseRef);
+      }
     }
 
     this.removeItemFromGround(corpseRef);
