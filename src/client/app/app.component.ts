@@ -699,6 +699,8 @@ export class AppComponent implements OnInit {
 
   private initStripe() {
     setTimeout(() => {
+      if(!(<any>window).StripeCheckout) return;
+
       this.stripeCheckoutHandler = (<any>window).StripeCheckout.configure({
         key: this.stripeKey,
         name: 'Land of the Rair',
@@ -715,7 +717,7 @@ export class AppComponent implements OnInit {
   }
 
   startPayment(item) {
-    if(!this.stripeCheckoutHandler) return;
+    if(!this.stripeCheckoutHandler) return alert('Could not start; Stripe was unable to initialize properly.');
 
     this.currentlyBuyingItem = item;
 
