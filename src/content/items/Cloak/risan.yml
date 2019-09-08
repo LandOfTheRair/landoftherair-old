@@ -113,12 +113,12 @@
 
 - name: Catacombs Lich Cloak
   stats:
-    conjurationBonus: 5
-    restorationBonus: 5
+    conjurationBonus: 3
+    restorationBonus: 3
     offense: 5
     defense: 5
-    magicalResist: 125
-    physicalResist: 125
+    magicalResist: 75
+    physicalResist: 75
   desc: "an iridescent blue cloak interwoven with fibers of raw magic"
   value: 13000
   sprite: 483
