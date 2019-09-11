@@ -39,7 +39,7 @@
 - name: Enchanting Brick - Fate
   sprite: 67
   desc: "a dynamic sliver of machleite, commonly used by enchanters"
-  value: 25
+  value: 250
 
   stats:
     offense: 1

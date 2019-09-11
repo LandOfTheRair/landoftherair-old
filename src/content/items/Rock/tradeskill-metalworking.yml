@@ -101,7 +101,7 @@
 - name: Titanium Ingot (Fate)
   sprite: 68
   desc: "a dynamic chunk of Risan titanium, commonly used by blacksmiths"
-  value: 25
+  value: 250
 
   stats:
     offense: 1
