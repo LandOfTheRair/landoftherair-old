@@ -31,7 +31,7 @@ export class LootHelper {
       const filteredTable = LootHelper.filterDropTable(npc.$$room.dropTables.map);
       if(filteredTable.length > 0) {
         tables.push({
-          table: new LootTable(filteredTable, bonus),
+          table: new LootTable(filteredTable, { rollModifier: bonus }),
           func: LootFunctions.EachItem,
           args: 0
         });
@@ -42,7 +42,7 @@ export class LootHelper {
       const filteredTable = LootHelper.filterDropTable(npc.$$room.dropTables.region);
       if(filteredTable.length > 0) {
         tables.push({
-          table: new LootTable(filteredTable, bonus),
+          table: new LootTable(filteredTable, { rollModifier: bonus }),
           func: LootFunctions.EachItem,
           args: 0
         });
@@ -53,7 +53,7 @@ export class LootHelper {
       const filteredTable = LootHelper.filterDropTable(npc.drops);
       if(filteredTable.length > 0) {
         tables.push({
-          table: new LootTable(filteredTable, bonus),
+          table: new LootTable(filteredTable, { rollModifier: bonus }),
           func: LootFunctions.EachItem,
           args: 0
         });
@@ -69,7 +69,7 @@ export class LootHelper {
         const filteredTable = LootHelper.filterDropTable(items);
         if(filteredTable.length > 0) {
           tables.push({
-            table: new LootTable(filteredTable, bonus),
+            table: new LootTable(filteredTable, { rollModifier: bonus }),
             func: replace ? LootFunctions.WithReplacement : LootFunctions.WithoutReplacement,
             args: numChoices
           });
@@ -89,7 +89,7 @@ export class LootHelper {
         const filteredTable = LootHelper.filterDropTable(drops);
         if(filteredTable.length > 0) {
           tables.push({
-            table: new LootTable(filteredTable, bonus),
+            table: new LootTable(filteredTable, { rollModifier: bonus }),
             func: LootFunctions.EachItem,
             args: 0
           });
@@ -106,7 +106,7 @@ export class LootHelper {
 
   public static async rollSingleTable(rollArray: Array<{ chance: number, result: string }>, room) {
     return this.getItemsFromTables([{
-      table: new LootTable(LootHelper.filterDropTable(rollArray), 0),
+      table: new LootTable(LootHelper.filterDropTable(rollArray)),
       func: LootFunctions.WithoutReplacement,
       args: 1
     }], room);
@@ -114,7 +114,7 @@ export class LootHelper {
 
   public static async rollSingleTableForEachItem(rollArray: Array<{ chance: number, result: string }>, room) {
     return this.getItemsFromTables([{
-      table: new LootTable(LootHelper.filterDropTable(rollArray), 0),
+      table: new LootTable(LootHelper.filterDropTable(rollArray)),
       func: LootFunctions.EachItem,
       args: 1
     }], room);
