@@ -194,7 +194,7 @@ export class CombatHelper {
   static physicalAttack(attacker: Character, defender: Character, opts: any = {}) {
     this.doPhysicalAttack(attacker, defender, opts);
 
-    const shouldOffhandProcCheck = !opts.isThrow || (opts.isThrow && get(attacker.leftHand, 'returnsOnThrow'));
+    const shouldOffhandProcCheck = (!opts.isThrow && !opts.isKick && !opts.isPunch) || (opts.isThrow && get(attacker.leftHand, 'returnsOnThrow'));
 
     if(shouldOffhandProcCheck && get(attacker.leftHand, 'offhand')) {
       opts = opts || {};
