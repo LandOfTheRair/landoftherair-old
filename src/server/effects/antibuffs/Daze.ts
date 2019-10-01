@@ -12,7 +12,7 @@ export class RecentlyDazed extends SpellEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = Math.floor(60 / (1 - caster.getTraitLevelAndUsageModifier('SustainedImmunity')));
+    this.duration = Math.floor(60 * (1 + caster.getTraitLevelAndUsageModifier('SustainedImmunity')));
     target.applyEffect(this);
   }
 }

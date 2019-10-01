@@ -144,7 +144,7 @@ export class NPCLoader {
     for(let i = 0; i < player.sack.allItems.length; i++) {
       const item = player.sack.allItems[i];
 
-      if(!item || !item.isOwnedBy(player)) continue;
+      if(!item || !item.isOwnedBy || !item.isOwnedBy(player)) continue;
 
       if(partial) {
         if(!includes(item.name, name)) continue;

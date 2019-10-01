@@ -54,6 +54,15 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('skull')
     .set('syntax', ['skull'])
     .set('logic', (args, { player }) => {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, 'Tutorial Yeti Skull')) {
+        npc.$$room.npcLoader.takePlayerItem(player, 'Tutorial Yeti Skull');
+        npc.$$room.npcLoader.givePlayerItem(player, 'Tutorial Key');
+
+        player.$$room.analyticsHelper.trackTutorial(player, 'Hermit:Finish');
+        return `Ah, thank you ${player.name}! I see you've brought me the skull of the feared yeti. 
+        Here, you can have this key. Now go out into the world and do great things!`;
+      }
+
       player.$$room.analyticsHelper.trackTutorial(player, 'Hermit:Skull');
 
       return `Yeti skulls happen to be a prized item in these parts. No, I'm not some sort of weirdo! I'll trade you a KEY for his skull. 
@@ -73,6 +82,15 @@ export const responses = (npc: NPC) => {
   npc.parser.addCommand('key')
     .set('syntax', ['key'])
     .set('logic', (args, { player }) => {
+      if(npc.$$room.npcLoader.checkPlayerHeldItem(player, 'Tutorial Yeti Skull')) {
+        npc.$$room.npcLoader.takePlayerItem(player, 'Tutorial Yeti Skull');
+        npc.$$room.npcLoader.givePlayerItem(player, 'Tutorial Key');
+
+        player.$$room.analyticsHelper.trackTutorial(player, 'Hermit:Finish');
+        return `Ah, thank you ${player.name}! I see you've brought me the skull of the feared yeti. 
+        Here, you can have this key. Now go out into the world and do great things!`;
+      }
+      
       player.$$room.analyticsHelper.trackTutorial(player, 'Hermit:Key');
 
       return `Yes, I'm willing to trade this key for the Yeti's skull. A small price for your freedom, wouldn't you say?`;

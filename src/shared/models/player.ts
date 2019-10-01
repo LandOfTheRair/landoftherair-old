@@ -245,7 +245,7 @@ export class Player extends Character implements IPlayer {
   }
 
   hasLearned(skillName): boolean|SpellLearned|IItem {
-    if(this.learnedSpells) {
+    if(this.learnedSpells && skillName) {
       const isLearned = this.learnedSpells[skillName.toLowerCase()];
       if(isLearned === SpellLearned.FromFate || isLearned === SpellLearned.FromTraits) return isLearned;
 

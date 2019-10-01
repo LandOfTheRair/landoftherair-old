@@ -49,7 +49,7 @@ export const responses = (npc: NPC) => {
 
       if(armor.enchantLevel >= armor.maxEnchantLevel) return 'Shnope. That armor is already too powerful.';
 
-      if(fur.upgrades.length > 0) return 'Shnope. That fur is too heavy for me to use.';
+      if(fur.upgrades && fur.upgrades.length > 0) return 'Shnope. That fur is too heavy for me to use.';
 
       MetalworkingHelper.doSpecificItemUpgrade(armor, fur);
 

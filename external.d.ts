@@ -24,7 +24,7 @@ declare module 'luxon' {
 
 declare module 'lootastic' {
   export class LootTable {
-    constructor(choices: any[], bonus?: number);
+    constructor(choices: any[], { rollModifier: number }?);
 
     chooseWithReplacement(num: number): any;
     chooseWithoutReplacement(num: number): any;

@@ -408,7 +408,7 @@ export class Spawner {
       return { result: x, chance: 1 };
     });
 
-    npc.$$skillRoller = new LootTable(mappedSkills, 0);
+    npc.$$skillRoller = new LootTable(mappedSkills, { rollModifier: 0 });
 
     npc.recalculateStats();
     this.tryElitify(npc);

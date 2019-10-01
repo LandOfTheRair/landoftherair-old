@@ -10,10 +10,10 @@ export const setup = async (npc: NPC) => {
   const vendorItems = [
     'Abacus of Life',
 
-    { name: 'Money Scroll 1M', valueMult: 0.00001 },
-    { name: 'Money Scroll 25M', valueMult: 0.00001 },
-    { name: 'Money Scroll 100M', valueMult: 0.00001 },
-    { name: 'Money Scroll 1B', valueMult: 0.00001 },
+    { name: 'Money Scroll 1M', valueMult: 0.0001 },
+    { name: 'Money Scroll 25M', valueMult: 0.0001 },
+    { name: 'Money Scroll 100M', valueMult: 0.0001 },
+    { name: 'Money Scroll 1B', valueMult: 0.0001 },
 
     'Cosmetic Scroll - Fate',
     'Titanium Ingot (Fate)',

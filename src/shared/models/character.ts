@@ -641,7 +641,7 @@ export class Character implements ICharacter {
   }
 
   private checkCanEquipWithoutGearCheck(item: IItem) {
-    if(!item) return false;
+    if(!item || !item.hasCondition) return false;
     if(!item.hasCondition()) return false;
     if(!includes(EquippableItemClassesWithWeapons, item.itemClass)) return false;
     if(item.requirements) {

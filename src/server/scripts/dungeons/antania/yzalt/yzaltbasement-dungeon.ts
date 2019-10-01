@@ -23,7 +23,7 @@ export const setup = async (room) => {
   ];
 
   const lootTables = [{
-    table: new LootTable(possibleLoot, 0),
+    table: new LootTable(possibleLoot),
     func: LootFunctions.WithoutReplacement,
     args: 1
   }];

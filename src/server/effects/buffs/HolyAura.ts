@@ -13,7 +13,7 @@ export class RecentlyShielded extends SpellEffect {
   };
 
   cast(caster: Character, target: Character, skillRef?: Skill) {
-    this.duration = Math.floor(10 * (1 - caster.getTraitLevelAndUsageModifier('SustainedImmunity')));
+    this.duration = 10;
     target.applyEffect(this);
   }
 }
