@@ -1,6 +1,6 @@
 
 import { IPlayer, SkillClassNames } from '../../../shared/interfaces/character';
-import { capitalize, clamp, includes, get, cloneDeep } from 'lodash';
+import { capitalize, clamp, includes, get, cloneDeep, isEmpty } from 'lodash';
 import { RollerHelper } from '../../../shared/helpers/roller-helper';
 import { ArmorClasses, IItem, ShieldClasses } from '../../../shared/interfaces/item';
 
@@ -87,7 +87,7 @@ export class MetalworkingHelper {
       return buff;
     }
 
-    if(buffItem.stats) return buffItem.stats;
+    if(buffItem.stats && !isEmpty(buffItem.stats)) return buffItem.stats;
 
     // move specific ingot buffs over
     const type = MetalworkingHelper.getUpgradeCreateType(item);
