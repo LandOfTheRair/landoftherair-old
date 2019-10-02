@@ -295,7 +295,7 @@ export class Character implements ICharacter {
     if(item.sellValue) return item.sellValue;
     
     // every cha after 10 increases the sale value by ~2%
-    const valueMod = ((this.getTotalStat('cha') - 10) / 50);
+    const valueMod = (Math.max(((this.getTotalStat('cha') - 10)/50), 0) +1) * 0.1;
     return clamp(Math.floor(item.value * valueMod), 1, item.value);
   }
 
