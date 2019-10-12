@@ -617,7 +617,6 @@ export const EncrusterResponses = (npc: NPC) => {
         })
       }
   
-
       const prevEncrust = player.rightHand.encrust;
 
       const nextEncrust = {
