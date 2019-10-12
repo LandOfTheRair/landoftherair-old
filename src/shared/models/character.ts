@@ -1193,6 +1193,7 @@ export class Character implements ICharacter {
   }
 
   doSuccor(succorInfo) {
+    if(this.isDead()) return;
     if(this.$$room.state.isSuccorRestricted(this)) return this.sendClientMessage('The blob turns to ash in your hand!');
 
     this.sendClientMessage('You are whisked back to the place in your stored memories!');
