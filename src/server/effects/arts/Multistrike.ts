@@ -13,11 +13,13 @@ export class Multistrike extends WeaponEffect {
   cast(caster: Character, target: Character, skillRef?: Skill) {
     const numTargets = 3 + caster.getTraitLevelAndUsageModifier('Multitarget');
 
-    const attacked = target.$$room.state.getAllInRange(target, caster.getTraitLevel('Supersweep'), [caster.uuid]).slice(0, numTargets);
+    const superStrikeLevel = caster.getTraitLevel('Superstrike');
+
+    const attacked = target.$$room.state.getAllInRange(target, superStrikeLevel, [caster.uuid]).slice(0, numTargets);
 
     attacked.forEach(refTarget => {
       if(caster.isPlayer() && refTarget.isPlayer()) return;
-      CombatHelper.physicalAttack(caster, refTarget);
+      CombatHelper.physicalAttack(caster, refTarget, { attackRange: superStrikeLevel });
     });
 
     if(attacked.length > 0 && !caster.getTraitLevel('ImprovedMultifocus')) {
