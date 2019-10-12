@@ -98,6 +98,11 @@ export class SpellforgingHelper {
     const container = player.tradeSkillContainers.spellforging;
     const item = container.modifyItem;
     const reagent = container.reagent;
+    if(reagent.upgrades){
+      reagent.upgrades.forEach(function(upgrade) {
+        reagent.removeUpgrade(0);
+      })
+    }
 
     if(!RollerHelper.XInOneHundred(this.successPercent(player))) {
       container.clearIngredient();
