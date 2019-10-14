@@ -19,7 +19,7 @@ export class Revive extends SpellEffect {
     if(this.potency > 21) hpPercent = 40;
 
     if(!target) return;
-    if(!target.isDead) return;
+
     target.revive();
     target.hp.setToPercent(hpPercent);
     target.hp.__current = Math.round(target.hp.__current);
