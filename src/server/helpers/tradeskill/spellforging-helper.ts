@@ -99,7 +99,7 @@ export class SpellforgingHelper {
     const item = container.modifyItem;
     const reagent = container.reagent;
     if(reagent.upgrades){
-      reagent.upgrades.forEach(function(upgrade) {
+      reagent.upgrades.forEach(upgrade => {
         reagent.removeUpgrade(0);
       })
     }

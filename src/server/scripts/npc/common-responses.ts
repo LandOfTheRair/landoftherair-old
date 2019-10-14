@@ -612,7 +612,7 @@ export const EncrusterResponses = (npc: NPC) => {
       if(player.currentGold < cost) return `I require ${cost.toLocaleString()} gold for this transaction.`;
 
       if(player.leftHand.upgrades){
-        player.leftHand.upgrades.forEach(function(upgrade) {
+        player.leftHand.upgrades.forEach(upgrade => {
           player.leftHand.removeUpgrade(0);
         })
       }
