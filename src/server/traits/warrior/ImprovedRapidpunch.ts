@@ -13,7 +13,7 @@ export class ImprovedRapidpunch extends Trait {
   ];
 
   static usageModifier(level: number): number {
-    return level ? 20 : 0;
+    return level ? 0.20 : 0;
   }
 
 }
