@@ -98,7 +98,7 @@ export class SpellforgingHelper {
     const container = player.tradeSkillContainers.spellforging;
     const item = container.modifyItem;
     const reagent = container.reagent;
-    if(reagent.upgrades){
+    if(reagent.upgrades) {
       reagent.upgrades.forEach(upgrade => {
         reagent.removeUpgrade(0);
       })
