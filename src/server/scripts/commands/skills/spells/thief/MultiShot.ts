@@ -19,6 +19,7 @@ export class MultiShot extends Skill {
 
   public name = ['multishot', 'cast multishot'];
   public format = 'Target';
+  public unableToLearnFromStealing = true;
 
   mpCost(user: Player) { return 0; }
 
