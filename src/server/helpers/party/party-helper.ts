@@ -15,6 +15,8 @@ export class PartyHelper {
 
       if(player.distFrom(memberRef) > distance) return null;
 
+      if(memberRef.hasEffect('Invisible')) return null;
+
       return memberRef;
     });
 
