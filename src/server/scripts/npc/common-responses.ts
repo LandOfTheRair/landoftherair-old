@@ -397,6 +397,7 @@ export const AlchemistResponses = (npc: NPC) => {
         if(!checkItem.effect) return;
         if(checkItem.effect.name !== item.effect.name) return;
         if(checkItem.effect.potency !== item.effect.potency) return;
+        if(checkItem.effect.tier !== item.effect.tier) return;
         if(checkItem.ounces + item.ounces > maxOz) return;
         if(item.ounces === 0) return;
 
